@@ -125,6 +125,13 @@ array-flatten@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.1.tgz#426bb9da84090c1838d812c8150af20a8331e296"
 
+array-includes@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
+  dependencies:
+    define-properties "^1.1.2"
+    es-abstract "^1.7.0"
+
 array-map@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/array-map/-/array-map-0.0.0.tgz#88a2bab73d1cf7bcd5c1b118a003f66f665fa662"
@@ -194,6 +201,17 @@ async@^2.1.2:
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
+
+autoprefixer@^7.1.3:
+  version "7.1.6"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.1.6.tgz#fb933039f74af74a83e71225ce78d9fd58ba84d7"
+  dependencies:
+    browserslist "^2.5.1"
+    caniuse-lite "^1.0.30000748"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^6.0.13"
+    postcss-value-parser "^3.2.3"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -326,6 +344,13 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
+browserslist@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.5.1.tgz#68e4bc536bbcc6086d62843a2ffccea8396821c6"
+  dependencies:
+    caniuse-lite "^1.0.30000744"
+    electron-to-chromium "^1.3.24"
+
 buffer-indexof@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
@@ -380,6 +405,10 @@ camelcase@^3.0.0:
 camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
+
+caniuse-lite@^1.0.30000744, caniuse-lite@^1.0.30000748:
+  version "1.0.30000755"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000755.tgz#9ce5f6e06bd75ec8209abe8853c3beef02248d65"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -590,6 +619,10 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
 
+cssbeautify@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/cssbeautify/-/cssbeautify-0.3.1.tgz#12dd1f734035c2e6faca67dcbdcef74e42811397"
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -621,6 +654,12 @@ debug@2.6.7, debug@^2.2.0:
 debug@2.6.8, debug@^2.6.6, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
+  dependencies:
+    ms "2.0.0"
+
+debug@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
     ms "2.0.0"
 
@@ -734,6 +773,10 @@ ejs@^2.5.6:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
+electron-to-chromium@^1.3.24:
+  version "1.3.27"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
+
 elliptic@^6.0.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
@@ -783,6 +826,16 @@ es-abstract@^1.4.3:
     function-bind "^1.1.0"
     is-callable "^1.1.3"
     is-regex "^1.0.3"
+
+es-abstract@^1.7.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.9.0.tgz#690829a07cae36b222e7fd9b75c0d0573eb25227"
+  dependencies:
+    es-to-primitive "^1.1.1"
+    function-bind "^1.1.1"
+    has "^1.0.1"
+    is-callable "^1.1.3"
+    is-regex "^1.0.4"
 
 es-to-primitive@^1.1.1:
   version "1.1.1"
@@ -1039,7 +1092,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-find-up@^2.0.0:
+find-up@^2.0.0, find-up@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
@@ -1114,6 +1167,10 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
 function-bind@^1.0.2, function-bind@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
+
+function-bind@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
 gauge@~2.7.3:
   version "2.7.4"
@@ -1210,10 +1267,6 @@ has-ansi@^2.0.0:
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
   dependencies:
     ansi-regex "^2.0.0"
-
-has-flag@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-1.0.0.tgz#9d9e793165ce017a00f00418c43f942a7b1d11fa"
 
 has-flag@^2.0.0:
   version "2.0.0"
@@ -1324,6 +1377,13 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
+import-local@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/import-local/-/import-local-0.1.1.tgz#b1179572aacdc11c6a91009fb430dbcab5f668a8"
+  dependencies:
+    pkg-dir "^2.0.0"
+    resolve-cwd "^2.0.0"
+
 indent-string@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
@@ -1353,7 +1413,7 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-internal-ip@^1.2.0:
+internal-ip@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-1.2.0.tgz#ae9fbf93b984878785d50a8de1b356956058cf5c"
   dependencies:
@@ -1483,7 +1543,7 @@ is-primitive@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-primitive/-/is-primitive-2.0.0.tgz#207bab91638499c07b2adf240a41a87210034575"
 
-is-regex@^1.0.3:
+is-regex@^1.0.3, is-regex@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.0.4.tgz#5517489b547091b0930e095654ced25ee97e9491"
   dependencies:
@@ -1504,6 +1564,10 @@ is-typedarray@~1.0.0:
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
+
+is-wsl@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
 
 isarray@0.0.1:
   version "0.0.1"
@@ -1526,6 +1590,14 @@ isobject@^2.0.0:
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
+
+j2c-plugin-prefix-browser@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/j2c-plugin-prefix-browser/-/j2c-plugin-prefix-browser-1.0.6.tgz#bf36395d1dc3d95f3e3dacea9dca9829baa95fd1"
+
+j2c@^1.0.0-4:
+  version "1.0.0-4"
+  resolved "https://registry.yarnpkg.com/j2c/-/j2c-1.0.0-4.tgz#a1c85b2b8bc4f71cb8f8bb53e8b396fa3fd899f0"
 
 jodid25519@^1.0.0:
   version "1.0.2"
@@ -1796,6 +1868,10 @@ mithril@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.3.tgz#ece88a8e71a6906021c9b7a907abd40ec3d901b8"
 
+mithril@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.5.tgz#a64f19c24f762011f52a07d6a139c2f002d3536d"
+
 mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
@@ -1897,6 +1973,10 @@ normalize-path@^2.0.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
+normalize-range@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+
 npm-run-all@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.1.tgz#3095cf3f3cacf57fcb662b210ab10c609af6ddbb"
@@ -1925,6 +2005,10 @@ npmlog@^4.0.2:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+num2fraction@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -1973,12 +2057,11 @@ opener@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
 
-opn@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
+opn@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/opn/-/opn-5.1.0.tgz#72ce2306a17dbea58ff1041853352b4a8fc77519"
   dependencies:
-    object-assign "^4.0.1"
-    pinkie-promise "^2.0.0"
+    is-wsl "^1.1.0"
 
 original@>=0.0.5:
   version "1.0.0"
@@ -2152,6 +2235,849 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
+pkg-dir@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
+  dependencies:
+    find-up "^2.1.0"
+
+polythene-core-base-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-base-spinner/-/polythene-core-base-spinner-1.0.0-rc.8.tgz#f9e9741b5a85c00dcd2b0015648cc8ad1ccd75e8"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-button/-/polythene-core-button-1.0.0-rc.8.tgz#0d46dca26538876570d3e251e2a2773f6f40ce21"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-card@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-card/-/polythene-core-card-1.0.0-rc.8.tgz#4b5814401ee9b77ce730f90171898a244b2be100"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-checkbox@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-checkbox/-/polythene-core-checkbox-1.0.0-rc.8.tgz#e47a511cc2fe1c0e475b252311651eca3e26f34e"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-css@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-css/-/polythene-core-css-1.0.0-rc.8.tgz#5e982e7cecd398d77e554471a50efe7ca67d2b93"
+  dependencies:
+    j2c "^1.0.0-4"
+    j2c-plugin-prefix-browser "^1.0.6"
+    polythene-core "^1.0.0-rc.8"
+
+polythene-core-dialog-pane@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-dialog-pane/-/polythene-core-dialog-pane-1.0.0-rc.8.tgz#c22f29a956aaa51ff08aa807b6d77dbec4b95e21"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-dialog@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-dialog/-/polythene-core-dialog-1.0.0-rc.8.tgz#13116504018d848661f51f38e651d408980cf09c"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-menu "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-fab@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-fab/-/polythene-core-fab-1.0.0-rc.8.tgz#a2a495ab00485e68e43b63cd553ab8183b1bcf3e"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-icon-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-icon-button/-/polythene-core-icon-button-1.0.0-rc.8.tgz#20afa80ac050769ab83c2427968178c2c385bfa6"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-icon@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-icon/-/polythene-core-icon-1.0.0-rc.8.tgz#232ef7604951600a9614dc8e1670b8c79055faca"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-ios-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-ios-spinner/-/polythene-core-ios-spinner-1.0.0-rc.8.tgz#5e90b0cb8baac2b14f4c2199df9fc15ea1ce18aa"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-base-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-list-tile@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-list-tile/-/polythene-core-list-tile-1.0.0-rc.8.tgz#941e2df34bbcd11f2631cdb6df7e55c7d29851be"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-list@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-list/-/polythene-core-list-1.0.0-rc.8.tgz#db9563da5339b960c8b1fa1341cf035a9e0df622"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-list-tile "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-material-design-progress-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-material-design-progress-spinner/-/polythene-core-material-design-progress-spinner-1.0.0-rc.8.tgz#1779dd0ce17396885e9a4e1b81dda63f95594b54"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-base-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+    polythene-utilities "^1.0.0-rc.8"
+
+polythene-core-material-design-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-material-design-spinner/-/polythene-core-material-design-spinner-1.0.0-rc.8.tgz#68afb1b23c4bfcc83820b609ead01b0d875eb705"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-base-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-menu@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-menu/-/polythene-core-menu-1.0.0-rc.8.tgz#8697cd47a000ffd69ff99d5e2141aba795db284c"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-list-tile "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-notification@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-notification/-/polythene-core-notification-1.0.0-rc.8.tgz#93e5a13158bb53176712ef722f64e4ce52ebf2de"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+    polythene-utilities "^1.0.0-rc.8"
+
+polythene-core-radio-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-radio-button/-/polythene-core-radio-button-1.0.0-rc.8.tgz#7852187b3ec137d16928418bfd4a07db7d6f859a"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-radio-group@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-radio-group/-/polythene-core-radio-group-1.0.0-rc.8.tgz#4d33036fbbf556a7b440c6822e05fece254b8f18"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-raised-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-raised-button/-/polythene-core-raised-button-1.0.0-rc.8.tgz#e70109dbe6a67d52111ab44e06ad4163511ff428"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-ripple@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-ripple/-/polythene-core-ripple-1.0.0-rc.8.tgz#04bbb7bbade84a772ee4bc256c29728fb828250c"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-search@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-search/-/polythene-core-search-1.0.0-rc.8.tgz#b4550326d330860d82258deb8835a550223d90ab"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-selection-control@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-selection-control/-/polythene-core-selection-control-1.0.0-rc.8.tgz#345bd0a0d92e9c57b2cec8b792b74bc4f88b65f6"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-shadow@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-shadow/-/polythene-core-shadow-1.0.0-rc.8.tgz#f1cf09e13e3109b089b110287e6e1c9c48abb4a5"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-slider@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-slider/-/polythene-core-slider-1.0.0-rc.8.tgz#b6ed8e8a62806f23afce52d71cbb8b83da52b570"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-snackbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-snackbar/-/polythene-core-snackbar-1.0.0-rc.8.tgz#ed484604bc54de2633be6507886189a968681e33"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-notification "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-svg@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-svg/-/polythene-core-svg-1.0.0-rc.8.tgz#102fbdfeeae81ebdb7d674f322f4965ba3db45c9"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+
+polythene-core-switch@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-switch/-/polythene-core-switch-1.0.0-rc.8.tgz#52c4881c262415f0aaef8b7fa654e471ee7a41ce"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-icon-button "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-tabs@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-tabs/-/polythene-core-tabs-1.0.0-rc.8.tgz#121925fd448dc51ae4ce8e012f6b61bfd55a7c53"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-button "^1.0.0-rc.8"
+    polythene-core-icon-button "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+    polythene-utilities "^1.0.0-rc.8"
+
+polythene-core-textfield@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-textfield/-/polythene-core-textfield-1.0.0-rc.8.tgz#a81e055692506fc86d34f35db4ee732f8f5e789e"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core-toolbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core-toolbar/-/polythene-core-toolbar-1.0.0-rc.8.tgz#ff462de7a0a4d84d5e9cf89b8dbac7c606c68ee5"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-core@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-core/-/polythene-core-1.0.0-rc.8.tgz#aeb8c043d4d25fc1b6f84a1ce34732447cd0fbfa"
+
+polythene-css-base-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-base-spinner/-/polythene-css-base-spinner-1.0.0-rc.8.tgz#4a84a2aff39c11d8916810044b0f7139a463aa5d"
+  dependencies:
+    polythene-core-base-spinner "^1.0.0-rc.8"
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-button/-/polythene-css-button-1.0.0-rc.8.tgz#657c443efb38d525c58aae57924e21bf8aa82fd1"
+  dependencies:
+    polythene-core-button "^1.0.0-rc.8"
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-card@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-card/-/polythene-css-card-1.0.0-rc.8.tgz#c8c9f104839f88c223025f3f5d13a1f98fbd0333"
+  dependencies:
+    polythene-core-card "^1.0.0-rc.8"
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-checkbox@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-checkbox/-/polythene-css-checkbox-1.0.0-rc.8.tgz#db06cbfe6e97616d0ba35e0b84ddf9901f37449f"
+  dependencies:
+    polythene-core-checkbox "^1.0.0-rc.8"
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-css-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-dialog-pane@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-dialog-pane/-/polythene-css-dialog-pane-1.0.0-rc.8.tgz#da25a027d72f93ecfe144f4fb82f844924b92566"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-dialog-pane "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-dialog@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-dialog/-/polythene-css-dialog-1.0.0-rc.8.tgz#69da172ff3ed8530d1102c70b97b60c5f0137e7c"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-dialog "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-fab@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-fab/-/polythene-css-fab-1.0.0-rc.8.tgz#a639135994c0c743736f5936482969b10f889052"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-fab "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-icon-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-icon-button/-/polythene-css-icon-button-1.0.0-rc.8.tgz#a0238456459e22c63840cac9749922af0f460c58"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-icon-button "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-icon@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-icon/-/polythene-css-icon-1.0.0-rc.8.tgz#0c8907578d8753bcbbfd4cd5ba1911d4002cf24b"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-icon "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-ios-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-ios-spinner/-/polythene-css-ios-spinner-1.0.0-rc.8.tgz#89fd82c5ee7105d8261d89acc6e3c08dbefa6cbe"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-ios-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-list-tile@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-list-tile/-/polythene-css-list-tile-1.0.0-rc.8.tgz#6774bb87ba4225a5656f4bc1fd630a0ee062ede0"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-list-tile "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-list@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-list/-/polythene-css-list-1.0.0-rc.8.tgz#8f169ead3b31b7afa829f71596a75b28e90154cd"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-list "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-material-design-progress-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-material-design-progress-spinner/-/polythene-css-material-design-progress-spinner-1.0.0-rc.8.tgz#5c84ccddd4de334f9288669a57ddc0bb0c605f7a"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-material-design-progress-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-material-design-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-material-design-spinner/-/polythene-css-material-design-spinner-1.0.0-rc.8.tgz#3eb03abcd0272d2c0fadb3c30324a17d30779bdc"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-material-design-spinner "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-menu@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-menu/-/polythene-css-menu-1.0.0-rc.8.tgz#32b68a9f142fe647f252ae7aa066b486c31371a1"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-menu "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-notification@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-notification/-/polythene-css-notification-1.0.0-rc.8.tgz#71ab7e5da4d4b98d19e04cc08c570d961d70cd77"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-notification "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-radio-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-radio-button/-/polythene-css-radio-button-1.0.0-rc.8.tgz#f1ae9c80faa7f7d5f2f94b0b493e9ad233724cc8"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-radio-button "^1.0.0-rc.8"
+    polythene-css-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-raised-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-raised-button/-/polythene-css-raised-button-1.0.0-rc.8.tgz#2517096e80338cf815a5e9c7b1ca0664a8f7c742"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-raised-button "^1.0.0-rc.8"
+
+polythene-css-ripple@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-ripple/-/polythene-css-ripple-1.0.0-rc.8.tgz#c8b24f81d0863b637e2fd005d167128de092d7fa"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-ripple "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-search@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-search/-/polythene-css-search-1.0.0-rc.8.tgz#5ea77160f981199b769df99d1dcc89f69c525254"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-search "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-selection-control@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-selection-control/-/polythene-css-selection-control-1.0.0-rc.8.tgz#4ff931a23193772c63f0096a6bbff000bc5fe2f4"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-shadow@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-shadow/-/polythene-css-shadow-1.0.0-rc.8.tgz#c8db06ba00cacd120b1a20d535bda04f4588d178"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-shadow "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-slider@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-slider/-/polythene-css-slider-1.0.0-rc.8.tgz#a7bc7f9ac8ee5cd037738eb02c5ff8179154c370"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-slider "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-snackbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-snackbar/-/polythene-css-snackbar-1.0.0-rc.8.tgz#497fa4752ffd9420705ea8a923b425822a424670"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-snackbar "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-svg@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-svg/-/polythene-css-svg-1.0.0-rc.8.tgz#648fdca87b1cdb326cb2c8547b4efbd9d677de28"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-svg "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-switch@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-switch/-/polythene-css-switch-1.0.0-rc.8.tgz#7a6e0b6ce56dd29cc20146f57e679f64a64b5f42"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-switch "^1.0.0-rc.8"
+    polythene-css-selection-control "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-tabs@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-tabs/-/polythene-css-tabs-1.0.0-rc.8.tgz#7105ea27a029d1b805d30f80eac29f1efdc3c7c4"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-tabs "^1.0.0-rc.8"
+    polythene-css-button "^1.0.0-rc.8"
+    polythene-css-icon-button "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-textfield@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-textfield/-/polythene-css-textfield-1.0.0-rc.8.tgz#1d8186378dcf513c367daa3203c59ff66150a800"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-textfield "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-toolbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-toolbar/-/polythene-css-toolbar-1.0.0-rc.8.tgz#413c02df177d795fd99f9eb53d51677910538a8c"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-core-toolbar "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+
+polythene-css-typography@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css-typography/-/polythene-css-typography-1.0.0-rc.8.tgz#1925d7dfe6c81cdabcb869ec6a0dcb5518fc7ce4"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-style "^1.0.0-rc.8"
+    polythene-theme "^1.0.0-rc.8"
+    polythene-utilities "^1.0.0-rc.8"
+
+polythene-css@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-css/-/polythene-css-1.0.0-rc.8.tgz#58b20850851489b24783c3abbbd05324153a1ff7"
+  dependencies:
+    polythene-core-css "^1.0.0-rc.8"
+    polythene-css-base-spinner "^1.0.0-rc.8"
+    polythene-css-button "^1.0.0-rc.8"
+    polythene-css-card "^1.0.0-rc.8"
+    polythene-css-checkbox "^1.0.0-rc.8"
+    polythene-css-dialog "^1.0.0-rc.8"
+    polythene-css-dialog-pane "^1.0.0-rc.8"
+    polythene-css-fab "^1.0.0-rc.8"
+    polythene-css-icon "^1.0.0-rc.8"
+    polythene-css-icon-button "^1.0.0-rc.8"
+    polythene-css-ios-spinner "^1.0.0-rc.8"
+    polythene-css-list "^1.0.0-rc.8"
+    polythene-css-list-tile "^1.0.0-rc.8"
+    polythene-css-material-design-progress-spinner "^1.0.0-rc.8"
+    polythene-css-material-design-spinner "^1.0.0-rc.8"
+    polythene-css-menu "^1.0.0-rc.8"
+    polythene-css-notification "^1.0.0-rc.8"
+    polythene-css-radio-button "^1.0.0-rc.8"
+    polythene-css-raised-button "^1.0.0-rc.8"
+    polythene-css-ripple "^1.0.0-rc.8"
+    polythene-css-search "^1.0.0-rc.8"
+    polythene-css-selection-control "^1.0.0-rc.8"
+    polythene-css-shadow "^1.0.0-rc.8"
+    polythene-css-slider "^1.0.0-rc.8"
+    polythene-css-snackbar "^1.0.0-rc.8"
+    polythene-css-svg "^1.0.0-rc.8"
+    polythene-css-switch "^1.0.0-rc.8"
+    polythene-css-tabs "^1.0.0-rc.8"
+    polythene-css-textfield "^1.0.0-rc.8"
+    polythene-css-toolbar "^1.0.0-rc.8"
+    polythene-css-typography "^1.0.0-rc.8"
+
+polythene-mithril-base-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-base-spinner/-/polythene-mithril-base-spinner-1.0.0-rc.8.tgz#eff3e521f0f277086e6e93eae77abc8116f987d7"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-base-spinner "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-base@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-base/-/polythene-mithril-base-1.0.0-rc.8.tgz#9cbb451e11275d7eb671ac586bc4873db94fa8f7"
+  dependencies:
+    mithril "1.1.3"
+    polythene-core "^1.0.0-rc.8"
+
+polythene-mithril-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-button/-/polythene-mithril-button-1.0.0-rc.8.tgz#e6a3577bc5fc36eeec4fb6a10d5a24d29672ae71"
+  dependencies:
+    polythene-core-button "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-ripple "^1.0.0-rc.8"
+
+polythene-mithril-card@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-card/-/polythene-mithril-card-1.0.0-rc.8.tgz#76464f37bf17da8b31b8c12d7451afb0806e8e41"
+  dependencies:
+    polythene-core-card "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-list-tile "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-checkbox@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-checkbox/-/polythene-mithril-checkbox-1.0.0-rc.8.tgz#fe007ff041c6a6def882fe4d86bccf3531e2cba0"
+  dependencies:
+    polythene-core-checkbox "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-icon-button "^1.0.0-rc.8"
+
+polythene-mithril-dialog-pane@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-dialog-pane/-/polythene-mithril-dialog-pane-1.0.0-rc.8.tgz#dc0b91d6fab89a152926d2c17f4665a6f083e85f"
+  dependencies:
+    polythene-core-dialog-pane "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-dialog@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-dialog/-/polythene-mithril-dialog-1.0.0-rc.8.tgz#6a5d4aa581b02b2108f683cd66d6598029251ec6"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-dialog "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-dialog-pane "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-fab@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-fab/-/polythene-mithril-fab-1.0.0-rc.8.tgz#6972b172591d123b94029bbb008bc797488ae0fa"
+  dependencies:
+    polythene-core-fab "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-raised-button "^1.0.0-rc.8"
+
+polythene-mithril-icon-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-icon-button/-/polythene-mithril-icon-button-1.0.0-rc.8.tgz#312fa99a1cd6ecc9bbfa570c85ad2cc22f22b526"
+  dependencies:
+    polythene-core-icon-button "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-button "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+
+polythene-mithril-icon@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-icon/-/polythene-mithril-icon-1.0.0-rc.8.tgz#d0bac2983c78e7cf7226c2abd205feed59750180"
+  dependencies:
+    polythene-core-icon "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-svg "^1.0.0-rc.8"
+
+polythene-mithril-ios-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-ios-spinner/-/polythene-mithril-ios-spinner-1.0.0-rc.8.tgz#76c928218f4cd916cb81e02eb8c73d019d0900ea"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-ios-spinner "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-base-spinner "^1.0.0-rc.8"
+
+polythene-mithril-list-tile@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-list-tile/-/polythene-mithril-list-tile-1.0.0-rc.8.tgz#05eb2e028e08a343358327f8ffdd135c2701a112"
+  dependencies:
+    polythene-core-list-tile "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-ripple "^1.0.0-rc.8"
+
+polythene-mithril-list@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-list/-/polythene-mithril-list-1.0.0-rc.8.tgz#8aa2c9045df0b725cb63638bd4a943f28f95d376"
+  dependencies:
+    polythene-core-list "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-list-tile "^1.0.0-rc.8"
+
+polythene-mithril-material-design-progress-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-material-design-progress-spinner/-/polythene-mithril-material-design-progress-spinner-1.0.0-rc.8.tgz#4f5130ed9496046527a0d4a8a5a4a9770ee0ff4d"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-material-design-progress-spinner "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-base-spinner "^1.0.0-rc.8"
+
+polythene-mithril-material-design-spinner@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-material-design-spinner/-/polythene-mithril-material-design-spinner-1.0.0-rc.8.tgz#7b9ee32a7084e3fe6e59cb4bb76931f4b1b92ea1"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-material-design-spinner "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-base-spinner "^1.0.0-rc.8"
+
+polythene-mithril-menu@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-menu/-/polythene-mithril-menu-1.0.0-rc.8.tgz#768d9a7cb83fd0003a3870ddc6d4f2c9c08f4f61"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-menu "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-notification@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-notification/-/polythene-mithril-notification-1.0.0-rc.8.tgz#9c23afdbf2e8454520e3196b7f2a5145f7305fc3"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-notification "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-radio-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-radio-button/-/polythene-mithril-radio-button-1.0.0-rc.8.tgz#1c1c40880643b41a8aa36da7bf5baff795275358"
+  dependencies:
+    polythene-core-radio-button "^1.0.0-rc.8"
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-icon-button "^1.0.0-rc.8"
+
+polythene-mithril-radio-group@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-radio-group/-/polythene-mithril-radio-group-1.0.0-rc.8.tgz#f0cabddf79400f2cfd1a33194a2d546cacb42640"
+  dependencies:
+    polythene-core-radio-group "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-radio-button "^1.0.0-rc.8"
+
+polythene-mithril-raised-button@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-raised-button/-/polythene-mithril-raised-button-1.0.0-rc.8.tgz#3fb709be341c1adc4695d7cd06d83dbce0dfd3b7"
+  dependencies:
+    polythene-core-raised-button "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-button "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-ripple@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-ripple/-/polythene-mithril-ripple-1.0.0-rc.8.tgz#f4ac220db3060351e8ad191a52ec6be76866fbf6"
+  dependencies:
+    polythene-core-ripple "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-search@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-search/-/polythene-mithril-search-1.0.0-rc.8.tgz#c1843e400344780b79abff1344e8a261ffd98cb3"
+  dependencies:
+    polythene-core-search "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-textfield "^1.0.0-rc.8"
+
+polythene-mithril-shadow@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-shadow/-/polythene-mithril-shadow-1.0.0-rc.8.tgz#28c9b984f533e63cd8fd3797a385ff6d9fc7a194"
+  dependencies:
+    polythene-core-shadow "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-slider@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-slider/-/polythene-mithril-slider-1.0.0-rc.8.tgz#78df5da5fbd1a924c05ded4d717cd296e8c4b976"
+  dependencies:
+    polythene-core-slider "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-snackbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-snackbar/-/polythene-mithril-snackbar-1.0.0-rc.8.tgz#29bb7bcacc81531b29a2a845aa3bf8c751d526d0"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-snackbar "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-svg@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-svg/-/polythene-mithril-svg-1.0.0-rc.8.tgz#92b8b3c29e35a28f990c94051b4c7510a6d3f21c"
+  dependencies:
+    polythene-core-svg "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-switch@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-switch/-/polythene-mithril-switch-1.0.0-rc.8.tgz#2b1176ba32555fec3d78c5c51b8f48a7c2d5a137"
+  dependencies:
+    polythene-core-selection-control "^1.0.0-rc.8"
+    polythene-core-switch "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-icon-button "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+
+polythene-mithril-tabs@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-tabs/-/polythene-mithril-tabs-1.0.0-rc.8.tgz#1cf8fa93a182c5fb0b6d82070494f7b40ef6d602"
+  dependencies:
+    polythene-core-tabs "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-button "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-icon-button "^1.0.0-rc.8"
+
+polythene-mithril-textfield@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-textfield/-/polythene-mithril-textfield-1.0.0-rc.8.tgz#81c64080315b529c98f1017c3f1e5b597e23e8f7"
+  dependencies:
+    polythene-core-textfield "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril-toolbar@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril-toolbar/-/polythene-mithril-toolbar-1.0.0-rc.8.tgz#bd636fcc62b51a0f23908432ad934b2be6acaa73"
+  dependencies:
+    polythene-core-toolbar "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+
+polythene-mithril@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-mithril/-/polythene-mithril-1.0.0-rc.8.tgz#6b57c318df934e97f4e4eb9690f9f625c67df6fd"
+  dependencies:
+    mithril "1.1.3"
+    polythene-css "^1.0.0-rc.8"
+    polythene-mithril-base "^1.0.0-rc.8"
+    polythene-mithril-button "^1.0.0-rc.8"
+    polythene-mithril-card "^1.0.0-rc.8"
+    polythene-mithril-checkbox "^1.0.0-rc.8"
+    polythene-mithril-dialog "^1.0.0-rc.8"
+    polythene-mithril-dialog-pane "^1.0.0-rc.8"
+    polythene-mithril-fab "^1.0.0-rc.8"
+    polythene-mithril-icon "^1.0.0-rc.8"
+    polythene-mithril-icon-button "^1.0.0-rc.8"
+    polythene-mithril-ios-spinner "^1.0.0-rc.8"
+    polythene-mithril-list "^1.0.0-rc.8"
+    polythene-mithril-list-tile "^1.0.0-rc.8"
+    polythene-mithril-material-design-progress-spinner "^1.0.0-rc.8"
+    polythene-mithril-material-design-spinner "^1.0.0-rc.8"
+    polythene-mithril-menu "^1.0.0-rc.8"
+    polythene-mithril-notification "^1.0.0-rc.8"
+    polythene-mithril-radio-button "^1.0.0-rc.8"
+    polythene-mithril-radio-group "^1.0.0-rc.8"
+    polythene-mithril-raised-button "^1.0.0-rc.8"
+    polythene-mithril-ripple "^1.0.0-rc.8"
+    polythene-mithril-search "^1.0.0-rc.8"
+    polythene-mithril-shadow "^1.0.0-rc.8"
+    polythene-mithril-slider "^1.0.0-rc.8"
+    polythene-mithril-snackbar "^1.0.0-rc.8"
+    polythene-mithril-svg "^1.0.0-rc.8"
+    polythene-mithril-switch "^1.0.0-rc.8"
+    polythene-mithril-tabs "^1.0.0-rc.8"
+    polythene-mithril-textfield "^1.0.0-rc.8"
+    polythene-mithril-toolbar "^1.0.0-rc.8"
+
+polythene-scripts@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-scripts/-/polythene-scripts-1.0.0-rc.8.tgz#b841fbee0cac35dded800148b0e67334520379df"
+  dependencies:
+    autoprefixer "^7.1.3"
+    cssbeautify "^0.3.1"
+    j2c "^1.0.0-4"
+    j2c-plugin-prefix-browser "^1.0.6"
+    postcss "^6.0.10"
+
+polythene-style@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-style/-/polythene-style-1.0.0-rc.8.tgz#95f917369aac4ea40cf1531e730342fa1de669b4"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+
+polythene-theme@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-theme/-/polythene-theme-1.0.0-rc.8.tgz#4aae1f93e75540e97f3f72f10f5b374cbeeecff6"
+  dependencies:
+    polythene-style "^1.0.0-rc.8"
+
+polythene-utilities@^1.0.0-rc.8:
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/polythene-utilities/-/polythene-utilities-1.0.0-rc.8.tgz#6f44435eb9d4e32fc93c7329c467b7b5ca38ea75"
+  dependencies:
+    polythene-core "^1.0.0-rc.8"
+    polythene-core-css "^1.0.0-rc.8"
+    webfontloader "^1.6.27"
+
 portfinder@^1.0.9:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -2159,6 +3085,18 @@ portfinder@^1.0.9:
     async "^1.5.2"
     debug "^2.2.0"
     mkdirp "0.5.x"
+
+postcss-value-parser@^3.2.3:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
+
+postcss@^6.0.10, postcss@^6.0.13:
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.13.tgz#b9ecab4ee00c89db3ec931145bd9590bbf3f125f"
+  dependencies:
+    chalk "^2.1.0"
+    source-map "^0.6.1"
+    supports-color "^4.4.0"
 
 preserve@^0.2.0:
   version "0.2.0"
@@ -2386,6 +3324,16 @@ requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resolve-cwd@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
+  dependencies:
+    resolve-from "^3.0.0"
+
+resolve-from@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
+
 right-align@^0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/right-align/-/right-align-0.1.3.tgz#61339b722fe6a3515689210d24e14c96148613ef"
@@ -2563,6 +3511,10 @@ source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
+source-map@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+
 spdx-correct@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-1.0.2.tgz#4b3073d933ff51f3912f03ac5519498a4150db40"
@@ -2725,15 +3677,15 @@ supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.1.1:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
-  dependencies:
-    has-flag "^1.0.0"
-
 supports-color@^4.0.0, supports-color@^4.2.1:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.4.0.tgz#883f7ddabc165142b2a61427f3352ded195d1a3e"
+  dependencies:
+    has-flag "^2.0.0"
+
+supports-color@^4.4.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
   dependencies:
     has-flag "^2.0.0"
 
@@ -2928,6 +3880,10 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+webfontloader@^1.6.27:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
+
 webpack-bundle-analyzer@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.9.0.tgz#b58bc34cc30b27ffdbaf3d00bf27aba6fa29c6e3"
@@ -2954,33 +3910,36 @@ webpack-dev-middleware@^1.11.0:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-dev-server@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.7.1.tgz#21580f5a08cd065c71144cf6f61c345bca59a8b8"
+webpack-dev-server@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.3.tgz#f0554e88d129e87796a6f74a016b991743ca6f81"
   dependencies:
     ansi-html "0.0.7"
+    array-includes "^3.0.3"
     bonjour "^3.5.0"
     chokidar "^1.6.0"
     compression "^1.5.2"
     connect-history-api-fallback "^1.3.0"
+    debug "^3.1.0"
     del "^3.0.0"
     express "^4.13.3"
     html-entities "^1.2.0"
     http-proxy-middleware "~0.17.4"
-    internal-ip "^1.2.0"
+    import-local "^0.1.1"
+    internal-ip "1.2.0"
     ip "^1.1.5"
     loglevel "^1.4.1"
-    opn "4.0.2"
+    opn "^5.1.0"
     portfinder "^1.0.9"
     selfsigned "^1.9.1"
     serve-index "^1.7.2"
     sockjs "0.3.18"
     sockjs-client "1.1.4"
     spdy "^3.4.1"
-    strip-ansi "^3.0.0"
-    supports-color "^3.1.1"
+    strip-ansi "^3.0.1"
+    supports-color "^4.2.1"
     webpack-dev-middleware "^1.11.0"
-    yargs "^6.0.0"
+    yargs "^6.6.0"
 
 webpack-sources@^1.0.1:
   version "1.0.1"
@@ -2989,9 +3948,9 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.5.3"
 
-webpack@^3.5.5:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.5.5.tgz#3226f09fc8b3e435ff781e7af34f82b68b26996c"
+webpack@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
@@ -3096,7 +4055,7 @@ yargs-parser@^7.0.0:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@^6.0.0:
+yargs@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
   dependencies:
