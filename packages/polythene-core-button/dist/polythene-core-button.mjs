@@ -114,7 +114,7 @@ var createContent = function createContent(vnode, _ref3) {
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, buttonClasses.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
-  disabled || noink || !Ripple || !state.dom() ? null : h(Ripple, _extends({}, {
+  disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false) ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()
   }, attrs.ripple)),

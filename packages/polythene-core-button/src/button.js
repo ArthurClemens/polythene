@@ -133,7 +133,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
           ? attrs.shadowComponent
           : null,
         // Ripple
-        disabled || noink || !Ripple || !state.dom()
+        disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
           ? null
           : h(Ripple, Object.assign({},
             {

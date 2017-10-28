@@ -29,6 +29,7 @@ var keys = {
 };
 
 var renderer = m;
+renderer.displayName = "mithril";
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;

@@ -2419,6 +2419,8 @@ renderer.trust = function (html) {
   });
 };
 
+renderer.displayName = "react";
+
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
