@@ -1,17 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
+import { shadowClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-shadow",
-
-  // elements
-  bottomShadow: "pe-shadow__bottom",
-  topShadow: "pe-shadow__top",
-
-  // states
-  animated: "pe-shadow--animated",
-  depth_n: "pe-shadow--z-"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -24,7 +13,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.animated && classes.animated, attrs.className || attrs[k.class]].join(" ")
+    className: [shadowClasses.component, attrs.animated && shadowClasses.animated, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -33,13 +22,13 @@ var createContent = function createContent(vnode, _ref2) {
 
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  var depthClass = "" + classes.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
+  var depthClass = "" + shadowClasses.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
   return [content, h("div", {
     key: "bottom",
-    className: [classes.bottomShadow, depthClass].join(" ")
+    className: [shadowClasses.bottomShadow, depthClass].join(" ")
   }), h("div", {
     key: "top",
-    className: [classes.topShadow, depthClass].join(" ")
+    className: [shadowClasses.topShadow, depthClass].join(" ")
   })];
 };
 
@@ -71,4 +60,4 @@ var vars$1 = {
   "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
 };
 
-export { shadow as coreShadow, classes, vars$1 as vars };
+export { shadow as coreShadow, shadowClasses as classes, vars$1 as vars };

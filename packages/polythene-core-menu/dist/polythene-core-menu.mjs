@@ -1,25 +1,6 @@
 import { filterSupportedAttributes, hide, isServer, show, subscribe, unsubscribe } from 'polythene-core';
-import { classes } from 'polythene-core-list-tile';
+import { menuClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes$1 = {
-  component: "pe-menu",
-
-  // elements
-  content: "pe-menu__content",
-  placeholder: "pe-menu__placeholder",
-  target: "pe-menu__target",
-
-  // states
-  permanent: "pe-menu--permanent",
-  visible: "pe-menu--visible",
-  width_auto: "pe-menu--width-auto",
-  width_n: "pe-menu--width-",
-
-  // lookup
-  listTile: classes.component,
-  selectedListTile: classes.selected
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -47,12 +28,12 @@ var positionMenu = function positionMenu(state, attrs) {
   if (!menuEl) {
     return;
   }
-  var contentEl = state.dom().querySelector("." + classes$1.content);
+  var contentEl = state.dom().querySelector("." + menuClasses.content);
   var origin = attrs.origin || "top-left";
   var positionOffset = 0;
   if (attrs.reposition) {
-    var firstItem = contentEl.querySelectorAll("." + classes$1.listTile)[0];
-    var selectedItem = contentEl.querySelector("." + classes$1.selectedListTile);
+    var firstItem = contentEl.querySelectorAll("." + menuClasses.listTile)[0];
+    var selectedItem = contentEl.querySelector("." + menuClasses.selectedListTile);
     if (firstItem && selectedItem) {
       // calculate v position: menu should shift upward relative to the first item
       var firstItemRect = firstItem.getBoundingClientRect();
@@ -108,7 +89,7 @@ var showMenu = function showMenu(state, attrs) {
   var el = state.dom();
   return show(_extends({}, attrs, transitions ? transitions.show(el, attrs) : {
     el: el,
-    showClass: classes$1.visible
+    showClass: menuClasses.visible
   })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
@@ -128,7 +109,7 @@ var hideMenu = function hideMenu(state, attrs) {
   var el = state.dom();
   return hide(_extends({}, attrs, transitions ? transitions.hide(el, attrs) : {
     el: el,
-    showClass: classes$1.visible
+    showClass: menuClasses.visible
   })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
@@ -145,7 +126,7 @@ var unifySize = function unifySize(size) {
 };
 
 var widthClass = function widthClass(size) {
-  return classes$1.width_n + size.toString().replace(".", "-");
+  return menuClasses.width_n + size.toString().replace(".", "-");
 };
 
 var handleSubscriptions = function handleSubscriptions(vnode, which) {
@@ -238,7 +219,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.permanent ? classes$1.permanent : null, attrs.target ? classes$1.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [menuClasses.component, attrs.permanent ? menuClasses.permanent : null, attrs.target ? menuClasses.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -252,7 +233,7 @@ var createContent = function createContent(vnode, _ref2) {
   var attrs = vnode.attrs;
   var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
   return h("div", (_h = {
-    className: classes$1.content
+    className: menuClasses.content
   }, _defineProperty(_h, k.onclick, function (e) {
     return e.preventDefault();
   }), _defineProperty(_h, "style", attrs.style), _h), [z > 0 && h(Shadow, {
@@ -287,4 +268,4 @@ var vars$1 = {
   // text colors are set by content, usually list tiles
 };
 
-export { menu as coreMenu, classes$1 as classes, vars$1 as vars };
+export { menu as coreMenu, menuClasses as classes, vars$1 as vars };

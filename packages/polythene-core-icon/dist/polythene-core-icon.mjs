@@ -1,16 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
+import { iconClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-icon",
-
-  // states
-  avatar: "pe-icon--avatar",
-  large: "pe-icon--large",
-  medium: "pe-icon--medium",
-  regular: "pe-icon--regular",
-  small: "pe-icon--small"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -19,10 +9,10 @@ var getElement = function getElement(vnode) {
 };
 
 var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large
+  small: iconClasses.small,
+  regular: iconClasses.regular,
+  medium: iconClasses.medium,
+  large: iconClasses.large
 };
 
 var classForSize = function classForSize() {
@@ -35,7 +25,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [iconClasses.component, classForSize(attrs.size), attrs.avatar ? iconClasses.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -62,4 +52,4 @@ var vars$1 = {
   color_dark: "currentcolor"
 };
 
-export { icon as coreIcon, classes, vars$1 as vars };
+export { icon as coreIcon, iconClasses as classes, vars$1 as vars };

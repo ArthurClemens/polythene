@@ -1,25 +1,6 @@
 import { filterSupportedAttributes, isClient } from 'polythene-core';
+import { buttonClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var baseClass = "pe-button";
-
-var classes = {
-  base: baseClass,
-  component: baseClass + " pe-text-button",
-
-  // elements
-  content: "pe-button__content",
-  focus: "pe-button__focus",
-  label: "pe-button__label",
-  wash: "pe-button__wash",
-
-  // states
-  borders: "pe-button--borders",
-  disabled: "pe-button--disabled",
-  focused: "pe-button--focus",
-  inactive: "pe-button--inactive",
-  selected: "pe-button--selected"
-};
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -103,7 +84,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
-    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || buttonClasses.component, attrs.selected ? buttonClasses.selected : null, disabled ? buttonClasses.disabled : null, inactive ? buttonClasses.inactive : null, attrs.borders ? buttonClasses.borders : null, state.focus() ? buttonClasses.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
     return state.click(e), attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
   }), _defineProperty(_ref2, k.onkeydown, function (e) {
@@ -128,9 +109,9 @@ var createContent = function createContent(vnode, _ref3) {
   var noink = attrs.ink !== undefined && attrs.ink === false;
   var disabled = attrs.disabled;
   var children = attrs.children || vnode.children;
-  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: buttonClasses.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
+  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, buttonClasses.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
   disabled || noink || !Ripple || !state.dom() ? null : h(Ripple, _extends({}, {
@@ -138,9 +119,9 @@ var createContent = function createContent(vnode, _ref3) {
     target: state.dom()
   }, attrs.ripple)),
   // hover
-  noWash ? null : h("div", { key: "wash", className: classes.wash }),
+  noWash ? null : h("div", { key: "wash", className: buttonClasses.wash }),
   // focus
-  disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
+  disabled ? null : h("div", { key: "focus", className: buttonClasses.focus }), label]) : null;
 };
 
 var button = Object.freeze({
@@ -202,4 +183,4 @@ var vars$1 = {
   // color_dark_disabled_border:      "transparent"
 };
 
-export { button as coreButton, classes, vars$1 as vars };
+export { button as coreButton, buttonClasses as classes, vars$1 as vars };

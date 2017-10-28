@@ -1,20 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { classes } from 'polythene-core-list-tile';
+import { listClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes$1 = {
-  component: "pe-list",
-
-  // elements
-  header: classes.header,
-
-  // states
-  borders: "pe-list--borders",
-  compact: "pe-list--compact",
-  hasHeader: "pe-list--header",
-  indentedBorders: "pe-list--indented-borders",
-  padding: "pe-list--padding"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -73,7 +59,7 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.borders ? classes$1.borders : null, attrs.indentedBorders ? classes$1.indentedBorders : null, attrs.header ? classes$1.hasHeader : null, attrs.compact ? classes$1.compact : null, attrs.padding !== false ? classes$1.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [listClasses.component, attrs.borders ? listClasses.borders : null, attrs.indentedBorders ? listClasses.indentedBorders : null, attrs.header ? listClasses.hasHeader : null, attrs.compact ? listClasses.compact : null, attrs.padding !== false ? listClasses.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.keyboardControl && _defineProperty({}, k.onkeydown, function (e) {
     var highlightIndex = state.highlightIndex();
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -104,7 +90,7 @@ var createContent = function createContent(vnode, _ref3) {
   var headerOpts = void 0;
   if (attrs.header) {
     headerOpts = _extends({}, attrs.header);
-    headerOpts[k.class] = [classes$1.header, headerOpts[k.class] || null].join(" ");
+    headerOpts[k.class] = [listClasses.header, headerOpts[k.class] || null].join(" ");
   }
   var highlightIndex = state.highlightIndex();
   var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
@@ -157,4 +143,4 @@ var vars$1 = {
   // color_dark_background:  "inherit"
 };
 
-export { list as coreList, classes$1 as classes, vars$1 as vars };
+export { list as coreList, listClasses as classes, vars$1 as vars };

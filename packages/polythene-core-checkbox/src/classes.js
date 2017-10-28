@@ -1,4 +1,1 @@
-
-export default {
-  component: "pe-checkbox-control"
-};
+import { checkboxClasses } from "polythene-css-classes"; export default checkboxClasses;

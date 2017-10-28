@@ -1,5 +1,6 @@
 import { filterSupportedAttributes, isClient, isTouch, pointerEndMoveEvent, pointerMoveEvent, pointerStartMoveEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
+import { sliderClasses } from 'polythene-css-classes';
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
@@ -75,33 +76,6 @@ var themeVars = {
   color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-var classes = {
-  component: "pe-slider",
-
-  // elements
-  control: "pe-slider__control",
-  label: "pe-slider__label",
-  pin: "pe-slider__pin",
-  thumb: "pe-slider__thumb",
-  tick: "pe-slider__ticks-tick",
-  ticks: "pe-slider__ticks",
-  track: "pe-slider__track",
-  trackBar: "pe-slider__track-bar",
-  trackBarValue: "pe-slider__track-bar-value",
-  trackPart: "pe-slider__track-part",
-  trackPartRest: "pe-slider__track-rest",
-  trackPartValue: "pe-slider__track-value",
-
-  // states
-  hasFocus: "pe-slider--focus",
-  hasPin: "pe-slider--pin",
-  hasTicks: "pe-slider--ticks",
-  hasTrack: "pe-slider--track",
-  isActive: "pe-slider--active",
-  isAtMin: "pe-slider--min",
-  isDisabled: "pe-slider--disabled"
-};
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -147,7 +121,7 @@ var generateTickMarks = function generateTickMarks(h, stepCount) {
   var s = stepCount + 1;
   while (s > 0) {
     items.push(h("div", {
-      className: classes.tick,
+      className: sliderClasses.tick,
       key: "tick-" + s
     }));
     s--;
@@ -261,16 +235,16 @@ var createSlider = function createSlider(vnode, _ref) {
   var flexRestValue = 1 - fraction;
   var flexRestCss = flexRestValue + " 1 0%";
 
-  return h("div", _extends({}, { className: classes.track }, interactiveTrack && !attrs.disabled && _defineProperty({}, k["on" + pointerStartMoveEvent], onStartTrack)), [h("div", {
-    className: classes.trackPart + " " + classes.trackPartValue,
+  return h("div", _extends({}, { className: sliderClasses.track }, interactiveTrack && !attrs.disabled && _defineProperty({}, k["on" + pointerStartMoveEvent], onStartTrack)), [h("div", {
+    className: sliderClasses.trackPart + " " + sliderClasses.trackPartValue,
     key: "trackPartValue",
     style: {
       flex: flexValueCss,
       msFlex: flexValueCss,
       WebkitFlex: flexValueCss
     }
-  }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), h("div", _extends({}, {
-    className: classes.control,
+  }, h("div", { className: sliderClasses.trackBar }, h("div", { className: sliderClasses.trackBarValue }))), h("div", _extends({}, {
+    className: sliderClasses.control,
     key: "control"
   }, attrs.disabled ? { disabled: true } : (_ref3 = {}, _defineProperty(_ref3, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref3, k.onfocus, function () {
     return focus(state, state.controlEl);
@@ -298,10 +272,10 @@ var createSlider = function createSlider(vnode, _ref) {
     readRangeData(state);
     updatePinPosition(state);
   }), _ref3), !attrs.disabled && _defineProperty({}, k["on" + pointerStartMoveEvent], onInitDrag), attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? h("div", {
-    className: classes.thumb,
+    className: sliderClasses.thumb,
     key: "icon"
   }, attrs.icon) : null), h("div", {
-    className: classes.trackPart + " " + classes.trackPartRest,
+    className: sliderClasses.trackPart + " " + sliderClasses.trackPartRest,
     key: "trackPartRest",
     style: {
       flex: flexRestCss,
@@ -309,11 +283,11 @@ var createSlider = function createSlider(vnode, _ref) {
       WebkitFlex: flexRestCss,
       maxWidth: flexRestValue * 100 + "%" // for IE Edge
     }
-  }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), hasTicks && !attrs.disabled ? h("div", {
-    className: classes.ticks,
+  }, h("div", { className: sliderClasses.trackBar }, h("div", { className: sliderClasses.trackBarValue }))), hasTicks && !attrs.disabled ? h("div", {
+    className: sliderClasses.ticks,
     key: "ticks"
   }, generateTickMarks(h, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
-    className: classes.pin,
+    className: sliderClasses.pin,
     key: "pin",
     value: state.value()
   }) : null]);
@@ -393,9 +367,9 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
 
-  state.trackEl = dom.querySelector("." + classes.track);
-  state.controlEl = dom.querySelector("." + classes.control);
-  state.pinEl = dom.querySelector("." + classes.pin);
+  state.trackEl = dom.querySelector("." + sliderClasses.track);
+  state.controlEl = dom.querySelector("." + sliderClasses.control);
+  state.pinEl = dom.querySelector("." + sliderClasses.pin);
 
   readRangeData(state);
 
@@ -422,7 +396,7 @@ var createProps = function createProps(vnode, _ref5) {
   var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
   var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [sliderClasses.component, attrs.disabled ? sliderClasses.isDisabled : null, attrs.pin ? sliderClasses.hasPin : null, interactiveTrack ? sliderClasses.hasTrack : null, state.isActive() ? sliderClasses.isActive : null, state.hasFocus() ? sliderClasses.hasFocus : null, state.fraction() === 0 ? sliderClasses.isAtMin : null, hasTicks ? sliderClasses.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -443,4 +417,4 @@ var slider = Object.freeze({
 	createContent: createContent
 });
 
-export { slider as coreSlider, classes, themeVars as vars };
+export { slider as coreSlider, sliderClasses as classes, themeVars as vars };

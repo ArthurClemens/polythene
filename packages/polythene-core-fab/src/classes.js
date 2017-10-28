@@ -1,10 +1,1 @@
-
-export default {
-  component: "pe-fab",
-
-  // elements
-  content:   "pe-fab__content",
-
-  // states
-  mini:      "pe-fab--mini",
-};
+import { fabClasses } from "polythene-css-classes"; export default fabClasses;

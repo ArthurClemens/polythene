@@ -1,34 +1,15 @@
 import { filterSupportedAttributes, hide, show } from 'polythene-core';
+import { baseSpinnerClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-spinner",
-
-  // elements
-  animation: "pe-spinner__animation",
-  placeholder: "pe-spinner__placeholder",
-
-  // states
-  animated: "pe-spinner--animated",
-  fab: "pe-spinner--fab",
-  large: "pe-spinner--large",
-  medium: "pe-spinner--medium",
-  permanent: "pe-spinner--permanent",
-  raised: "pe-spinner--raised",
-  regular: "pe-spinner--regular",
-  singleColor: "pe-spinner--single-color",
-  small: "pe-spinner--small",
-  visible: "pe-spinner--visible"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large,
-  fab: classes.fab
+  small: baseSpinnerClasses.small,
+  regular: baseSpinnerClasses.regular,
+  medium: baseSpinnerClasses.medium,
+  large: baseSpinnerClasses.large,
+  fab: baseSpinnerClasses.fab
 };
 
 var classForSize = function classForSize() {
@@ -42,7 +23,7 @@ var showSpinner = function showSpinner(state, attrs) {
   }
   return show(_extends({}, attrs, {
     el: state.dom(),
-    showClass: classes.visible
+    showClass: baseSpinnerClasses.visible
   })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
@@ -60,7 +41,7 @@ var hideSpinner = function hideSpinner(state, attrs) {
   }
   return hide(_extends({}, attrs, {
     el: state.dom(),
-    showClass: classes.visible
+    showClass: baseSpinnerClasses.visible
   })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
@@ -100,7 +81,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.instanceClass, classForSize(attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
+    className: [baseSpinnerClasses.component, attrs.instanceClass, classForSize(attrs.size), attrs.singleColor ? baseSpinnerClasses.singleColor : null, attrs.raised ? baseSpinnerClasses.raised : null, attrs.animated ? baseSpinnerClasses.animated : null, attrs.permanent ? baseSpinnerClasses.permanent : null, attrs.permanent ? baseSpinnerClasses.visible : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -150,4 +131,4 @@ var vars$1 = {
   color_dark_raised_background: rgba(vars.color_light_background)
 };
 
-export { spinner as coreBaseSpinner, classes, vars$1 as vars };
+export { spinner as coreBaseSpinner, baseSpinnerClasses as classes, vars$1 as vars };

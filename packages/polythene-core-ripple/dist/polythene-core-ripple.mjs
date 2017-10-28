@@ -1,5 +1,6 @@
 import { filterSupportedAttributes, getAnimationEndEvent, isServer, isTouch, pointerEndEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
+import { rippleClasses } from 'polythene-css-classes';
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
 var DEFAULT_START_OPACITY = 0.2;
@@ -89,18 +90,6 @@ var animation = (function (_ref) {
   });
 });
 
-var classes = {
-  component: "pe-ripple",
-
-  // elements
-  mask: "pe-ripple__mask",
-  waves: "pe-ripple__waves",
-
-  // states
-  unconstrained: "pe-ripple--unconstrained",
-  wavesAnimating: "pe-ripple__waves--animating"
-};
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getElement = function getElement(vnode) {
@@ -120,7 +109,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [rippleClasses.component, attrs.unconstrained ? rippleClasses.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -143,7 +132,7 @@ var onMount = function onMount(vnode) {
       attrs.start(e);
     }
     var id = "ripple_animation_" + new Date().getTime();
-    state.animations[id] = animation({ e: e, id: id, el: vnode.dom, attrs: attrs, classes: classes }).then(function (evt) {
+    state.animations[id] = animation({ e: e, id: id, el: vnode.dom, attrs: attrs, classes: rippleClasses }).then(function (evt) {
       if (attrs.end) {
         attrs.end(evt);
       }
@@ -179,4 +168,4 @@ var vars$1 = {
   // color_dark:    "inherit"
 };
 
-export { ripple as coreRipple, classes, vars$1 as vars };
+export { ripple as coreRipple, rippleClasses as classes, vars$1 as vars };

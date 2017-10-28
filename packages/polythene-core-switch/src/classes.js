@@ -1,9 +1,1 @@
-
-export default {
-  component: "pe-switch-control",
-
-  // elements
-  knob:      "pe-switch-control__knob",
-  thumb:     "pe-switch-control__thumb",
-  track:     "pe-switch-control__track",
-};
+import { switchClasses } from "polythene-css-classes"; export default switchClasses;

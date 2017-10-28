@@ -1,6 +1,5 @@
-var classes = {
-  component: "pe-checkbox-control"
-};
+import { checkboxClasses } from 'polythene-css-classes';
+
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -23,7 +22,7 @@ var createProps = function createProps(vnode) {
     selectable: attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
-    instanceClass: classes.component,
+    instanceClass: checkboxClasses.component,
     type: "checkbox"
   });
 };
@@ -32,5 +31,5 @@ var checkbox = Object.freeze({
 	createProps: createProps
 });
 
-export { checkbox as coreCheckbox, classes };
+export { checkbox as coreCheckbox, checkboxClasses as classes };
 export { vars } from 'polythene-core-selection-control';

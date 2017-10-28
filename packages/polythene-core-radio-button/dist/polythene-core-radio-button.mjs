@@ -1,6 +1,5 @@
-var classes = {
-  component: "pe-radio-control"
-};
+import { radioButtonClasses } from 'polythene-css-classes';
+
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -23,7 +22,7 @@ var createProps = function createProps(vnode) {
     selectable: attrs.selectable || function (selected) {
       return !selected;
     }, // default: only selectable when not checked
-    instanceClass: classes.component,
+    instanceClass: radioButtonClasses.component,
     type: "radio"
   });
 };
@@ -32,5 +31,5 @@ var radioButton = Object.freeze({
 	createProps: createProps
 });
 
-export { radioButton as coreRadioButton, classes };
+export { radioButton as coreRadioButton, radioButtonClasses as classes };
 export { vars } from 'polythene-core-selection-control';

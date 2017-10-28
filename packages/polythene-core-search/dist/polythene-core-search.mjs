@@ -1,16 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
+import { searchClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-search",
-
-  // elements
-  content: "pe-search__content",
-
-  // states
-  searchFullWidth: "pe-search--full-width",
-  searchInset: "pe-search--inset"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -34,7 +24,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [searchClasses.component, attrs.fullWidth ? searchClasses.searchFullWidth : searchClasses.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -47,7 +37,7 @@ var createContent = function createContent(vnode, _ref2) {
   var searchState = getNameOfState(state.searchState());
   var buttons = (attrs.buttons || {})[searchState] || {};
   var textfieldAttrs = attrs.textfield || {};
-  return h("div", { className: classes.content }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
+  return h("div", { className: searchClasses.content }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
     key: "input",
     onChange: function onChange(newState) {
       state.searchState(newState);
@@ -109,4 +99,4 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
-export { search as coreSearch, classes, vars$1 as vars };
+export { search as coreSearch, searchClasses as classes, vars$1 as vars };

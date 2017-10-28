@@ -1,32 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
+import { selectionControlClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-control",
-
-  // elements
-  formLabel: "pe-control__form-label",
-  input: "pe-control__input",
-  label: "pe-control__label",
-
-  // states
-  disabled: "pe-control--disabled",
-  inactive: "pe-control--inactive",
-  large: "pe-control--large",
-  medium: "pe-control--medium",
-  off: "pe-control--off",
-  on: "pe-control--on",
-  regular: "pe-control--regular",
-  small: "pe-control--small",
-
-  // control view elements
-  box: "pe-control__box",
-  button: "pe-control__button",
-
-  // control view states
-  buttonOff: "pe-control__button--off",
-  buttonOn: "pe-control__button--on"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -37,10 +11,10 @@ var getElement = function getElement(vnode) {
 };
 
 var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large
+  small: selectionControlClasses.small,
+  regular: selectionControlClasses.regular,
+  medium: selectionControlClasses.medium,
+  large: selectionControlClasses.large
 };
 
 var classForSize = function classForSize() {
@@ -105,8 +79,8 @@ var createProps = function createProps(vnode, _ref) {
       inactive = _currentState.inactive;
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
-    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [selectionControlClasses.component, attrs.instanceClass, // for instance pe-checkbox-control
+    checked ? selectionControlClasses.on : selectionControlClasses.off, attrs.disabled ? selectionControlClasses.disabled : null, inactive ? selectionControlClasses.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -133,12 +107,12 @@ var createContent = function createContent(vnode, _ref2) {
     }
   };
 
-  return h("label", _extends({}, { className: classes.formLabel }), [h(ViewControl, _extends({}, attrs, {
+  return h("label", _extends({}, { className: selectionControlClasses.formLabel }), [h(ViewControl, _extends({}, attrs, {
     inactive: inactive,
     checked: checked,
     key: "control",
     events: _defineProperty({}, k.onkeydown, viewControlKeyDownHandler)
-  })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
+  })), attrs.label ? h("." + selectionControlClasses.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
     name: attrs.name,
     type: attrs.type,
     value: attrs.value,
@@ -155,10 +129,10 @@ var selectionControl = Object.freeze({
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var CONTENT = [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }];
+var CONTENT = [{ iconType: "iconOn", className: selectionControlClasses.buttonOn }, { iconType: "iconOff", className: selectionControlClasses.buttonOff }];
 
 var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || "." + classes.box;
+  return vnode.attrs.element || "." + selectionControlClasses.box;
 };
 
 var createIcon = function createIcon(h, iconType, attrs, className) {
@@ -181,7 +155,7 @@ var createContent$1 = function createContent(vnode, _ref) {
   return h(IconButton, _extends$1({}, {
     element: "div",
     key: attrs.key,
-    className: classes.button,
+    className: selectionControlClasses.button,
     content: CONTENT.map(function (o) {
       return h(Icon, createIcon(h, o.iconType, attrs, o.className));
     }),
@@ -253,4 +227,4 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
-export { selectionControl as coreSelectionControl, viewControl, classes, vars$1 as vars };
+export { selectionControl as coreSelectionControl, viewControl, selectionControlClasses as classes, vars$1 as vars };

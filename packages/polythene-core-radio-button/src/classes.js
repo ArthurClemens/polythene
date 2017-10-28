@@ -1,4 +1,1 @@
-
-export default {
-  component: "pe-radio-control"
-};
+import { radioButtonClasses } from "polythene-css-classes"; export default radioButtonClasses;

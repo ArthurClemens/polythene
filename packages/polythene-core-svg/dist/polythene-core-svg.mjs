@@ -1,8 +1,5 @@
 import { filterSupportedAttributes } from 'polythene-core';
-
-var classes = {
-  component: "pe-svg"
-};
+import { svgClasses } from 'polythene-css-classes';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -23,7 +20,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [svgClasses.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -44,4 +41,4 @@ var vars = {
   color_dark: "currentcolor"
 };
 
-export { svg as coreSVG, classes, vars };
+export { svg as coreSVG, svgClasses as classes, vars };

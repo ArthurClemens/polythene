@@ -1,8 +1,1 @@
-
-export default {
-  component: "pe-ios-spinner",
-
-  // elements
-  blades:    "pe-ios-spinner__blades",
-  blade:     "pe-ios-spinner__blade",
-};
+import { iOSSpinnerClasses } from "polythene-css-classes"; export default iOSSpinnerClasses;

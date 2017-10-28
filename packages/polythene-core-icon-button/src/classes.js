@@ -1,10 +1,1 @@
-
-export default {
-  component: "pe-button pe-icon-button",
-
-  // elements
-  content:   "pe-icon-button__content",
-
-  // states
-  compact:   "pe-icon-button--compact",
-};
+import { iconButtonClasses } from "polythene-css-classes"; export default iconButtonClasses;

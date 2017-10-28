@@ -1,4 +1,1 @@
-
-export default {
-  component: "pe-button pe-text-button pe-raised-button"
-};
+import { raisedButtonClasses } from "polythene-css-classes"; export default raisedButtonClasses;

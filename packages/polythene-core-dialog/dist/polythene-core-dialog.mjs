@@ -1,23 +1,6 @@
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { classes } from 'polythene-core-menu';
+import { dialogClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes$1 = {
-  component: "pe-dialog",
-
-  // elements
-  placeholder: "pe-dialog__placeholder",
-  holder: "pe-dialog__holder",
-  content: "pe-dialog__content",
-
-  // states
-  fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
-  open: "pe-dialog--open",
-
-  // lookup
-  menuContent: classes.content
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -107,7 +90,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes$1.component, attrs.fullScreen ? classes$1.fullScreen : null, attrs.backdrop ? classes$1.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [dialogClasses.component, attrs.fullScreen ? dialogClasses.fullScreen : null, attrs.backdrop ? dialogClasses.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
     if (e.target !== state.el) {
       return;
@@ -143,7 +126,7 @@ var createContent = function createContent(vnode, _ref2) {
     fullBleed: attrs.fullBleed
   });
   return h("div", {
-    className: [classes$1.content, attrs.menu ? classes$1.menuContent : null].join(" "),
+    className: [dialogClasses.content, attrs.menu ? dialogClasses.menuContent : null].join(" "),
     style: attrs.style
   }, [attrs.fullScreen ? null : h(Shadow, {
     z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
@@ -217,4 +200,4 @@ var transitions = {
   hide: hide$1
 };
 
-export { dialogInstance as coreDialogInstance, classes$1 as classes, vars$1 as vars, transitions };
+export { dialogInstance as coreDialogInstance, dialogClasses as classes, vars$1 as vars, transitions };

@@ -1,4 +1,1 @@
-
-export default {
-  component:       "pe-radio-group",
-};
+import { radioGroupClasses } from "polythene-css-classes"; export default radioGroupClasses;

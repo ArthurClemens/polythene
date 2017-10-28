@@ -1,43 +1,6 @@
 import { filterSupportedAttributes } from 'polythene-core';
+import { cardClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-card",
-
-  // elements
-  actions: "pe-card__actions",
-  content: "pe-card__content",
-  header: "pe-card__header",
-  headerTitle: "pe-card__header-title",
-  media: "pe-card__media",
-  mediaDimmer: "pe-card__media__dimmer",
-  overlay: "pe-card__overlay",
-  overlayContent: "pe-card__overlay__content",
-  primary: "pe-card__primary",
-  primaryMedia: "pe-card__primary-media",
-  subtitle: "pe-card__subtitle",
-  text: "pe-card__text",
-  title: "pe-card__title",
-
-  // states
-  actionsBordered: "pe-card__actions--borders",
-  actionsHorizontal: "pe-card__actions--horizontal",
-  actionsJustified: "pe-card__actions--justified",
-  actionsTight: "pe-card__actions--tight",
-  actionsVertical: "pe-card__actions--vertical",
-  mediaCropX: "pe-card__media--crop-x",
-  mediaCropY: "pe-card__media--crop-y",
-  mediaLarge: "pe-card__media--large",
-  mediaMedium: "pe-card__media--medium",
-  mediaRatioLandscape: "pe-card__media--landscape",
-  mediaRatioSquare: "pe-card__media--square",
-  mediaRegular: "pe-card__media--regular",
-  mediaSmall: "pe-card__media--small",
-  overlaySheet: "pe-card__overlay--sheet",
-  primaryHasMedia: "pe-card__primary--media",
-  primaryTight: "pe-card__primary--tight",
-  textTight: "pe-card__text--tight"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -51,14 +14,14 @@ var createOverlay = function createOverlay(_ref) {
   var content = attrs.content.map(dispatcher);
   return h("div", {
     key: attrs.key || "card-overlay",
-    className: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    className: [cardClasses.overlay, attrs.sheet ? cardClasses.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [h(element, {
     key: "content",
-    className: [classes.overlayContent, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.overlayContent, attrs.className || attrs[k.class]].join(" ")
   }, content), h("div", {
     key: "dimmer",
-    className: classes.mediaDimmer
+    className: cardClasses.mediaDimmer
   })]);
 };
 
@@ -70,7 +33,7 @@ var createText = function createText(_ref2) {
   var element = attrs.element || "div";
   return h(element, {
     key: attrs.key || "card-text",
-    className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.text, attrs.tight ? cardClasses.textTight : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.content);
 };
 
@@ -83,7 +46,7 @@ var createHeader = function createHeader(_ref3) {
 
   return h(ListTile, _extends({}, attrs, {
     key: attrs.key || "card-header",
-    className: [classes.header, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.header, attrs.className || attrs[k.class]].join(" ")
   }, attrs.icon ? { front: h(Icon, attrs.icon) } : null));
 };
 
@@ -96,7 +59,7 @@ var createProps = function createProps(vnode, _ref4) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.url, attrs.events);
 };
 
@@ -143,7 +106,7 @@ var createContent = function createContent(vnode, _ref5) {
     animated: true,
     key: "shadow"
   }), h("div", {
-    className: classes.content,
+    className: cardClasses.content,
     key: "content"
   }, contents)];
 };
@@ -157,9 +120,9 @@ var card = Object.freeze({
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var actionLayoutClasses = {
-  horizontal: classes.actionsHorizontal,
-  vertical: classes.actionsVertical,
-  justified: classes.actionsJustified
+  horizontal: cardClasses.actionsHorizontal,
+  vertical: cardClasses.actionsVertical,
+  justified: cardClasses.actionsJustified
 };
 
 var actionClassForLayout = function actionClassForLayout() {
@@ -173,7 +136,7 @@ var createProps$1 = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends$1({}, filterSupportedAttributes(attrs), {
     key: "card-actions",
-    className: [classes.actions, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.actions, actionClassForLayout(attrs.layout), attrs.bordered ? cardClasses.actionsBordered : null, attrs.tight ? cardClasses.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -194,10 +157,10 @@ var imageRatios = {
 };
 
 var mediaSizeClasses = {
-  small: classes.mediaSmall,
-  regular: classes.mediaRegular,
-  medium: classes.mediaMedium,
-  large: classes.mediaLarge
+  small: cardClasses.mediaSmall,
+  regular: cardClasses.mediaRegular,
+  medium: cardClasses.mediaMedium,
+  large: cardClasses.mediaLarge
 };
 
 var mediaSizeClass = function mediaSizeClass() {
@@ -215,7 +178,7 @@ var initImage = function initImage(_ref) {
     var naturalRatio = this.naturalWidth / this.naturalHeight;
     // crop-x: crop over x axis
     // crop-y: crop over y axis
-    var cropClass = naturalRatio < imageRatios[ratio] ? classes.mediaCropX : classes.mediaCropY;
+    var cropClass = naturalRatio < imageRatios[ratio] ? cardClasses.mediaCropX : cardClasses.mediaCropY;
     img.className = cropClass;
 
     var containerWidth = dom.clientWidth;
@@ -274,7 +237,7 @@ var createProps$2 = function createProps(vnode, _ref2) {
   var ratio = attrs.ratio || "landscape";
   return _extends$2({}, filterSupportedAttributes(attrs), {
     key: "card-media",
-    className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
+    className: [cardClasses.media, mediaSizeClass(attrs.size), ratio === "landscape" ? cardClasses.mediaRatioLandscape : cardClasses.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -284,7 +247,7 @@ var createContent$2 = function createContent(vnode, _ref3) {
   var attrs = vnode.attrs;
   var dispatcher = attrs.dispatcher;
   return [_extends$2({}, attrs.content, { key: "content" }), attrs.overlay ? dispatcher({ overlay: attrs.overlay, key: "overlay" }) : h("div", {
-    className: classes.mediaDimmer,
+    className: cardClasses.mediaDimmer,
     key: "dimmer"
   })];
 };
@@ -304,7 +267,7 @@ var createProps$3 = function createProps(vnode) {
   }, false) : attrs.media || false;
   return _extends$3({}, filterSupportedAttributes(attrs), {
     key: "card-primary",
-    className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null].join(" ")
+    className: [cardClasses.primary, attrs.tight ? cardClasses.primaryTight : null, primaryHasMedia ? cardClasses.primaryHasMedia : null].join(" ")
   });
 };
 
@@ -316,16 +279,16 @@ var createContent$3 = function createContent(vnode, _ref) {
   var primaryDispatch = {
     title: function title(pAttrs) {
       return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
-        className: classes.title,
+        className: cardClasses.title,
         key: "title"
       }, [pAttrs.title, pAttrs.subtitle ? h("div", {
-        className: classes.subtitle,
+        className: cardClasses.subtitle,
         key: "subtitle"
       }, pAttrs.subtitle) : null]);
     },
     media: function media(pAttrs) {
       return h("div", {
-        className: classes.primaryMedia,
+        className: cardClasses.primaryMedia,
         key: "media"
       }, dispatcher({ media: pAttrs }));
     },
@@ -400,4 +363,4 @@ var vars$1 = {
   color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
 
-export { card as coreCard, cardActions as coreCardActions, cardMedia as coreCardMedia, cardPrimary as coreCardPrimary, classes, vars$1 as vars };
+export { card as coreCard, cardActions as coreCardActions, cardMedia as coreCardMedia, cardPrimary as coreCardPrimary, cardClasses as classes, vars$1 as vars };

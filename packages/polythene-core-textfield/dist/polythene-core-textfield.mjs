@@ -1,36 +1,6 @@
 import { filterSupportedAttributes, pointerStartEvent } from 'polythene-core';
+import { textfFieldClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-textfield",
-
-  // elements
-  counter: "pe-textfield__counter",
-  error: "pe-textfield__error",
-  errorPlaceholder: "pe-textfield__error-placeholder",
-  focusHelp: "pe-textfield__help-focus",
-  help: "pe-textfield__help",
-  input: "pe-textfield__input",
-  inputArea: "pe-textfield__input-area",
-  label: "pe-textfield__label",
-  optionalIndicator: "pe-textfield__optional-indicator",
-  requiredIndicator: "pe-textfield__required-indicator",
-
-  // states
-  hasCounter: "pe-textfield--counter",
-  hasFloatingLabel: "pe-textfield--floating-label",
-  hasFullWidth: "pe-textfield--full-width",
-  hideClear: "pe-textfield--hide-clear",
-  hideSpinner: "pe-textfield--hide-spinner",
-  hideValidation: "pe-textfield--hide-validation",
-  isDense: "pe-textfield--dense",
-  isRequired: "pe-textfield--required",
-  stateDirty: "pe-textfield--dirty",
-  stateDisabled: "pe-textfield--disabled",
-  stateFocused: "pe-textfield--focused",
-  stateInvalid: "pe-textfield--invalid",
-  stateReadonly: "pe-textfield--readonly"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -196,7 +166,7 @@ var createProps = function createProps(vnode, _ref2) {
   var isInvalid = state.isInvalid();
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [textfFieldClasses.component, isInvalid ? textfFieldClasses.stateInvalid : "", state.hasFocus() ? textfFieldClasses.stateFocused : "", state.isDirty() ? textfFieldClasses.stateDirty : "", attrs.floatingLabel ? textfFieldClasses.hasFloatingLabel : "", attrs.disabled ? textfFieldClasses.stateDisabled : "", attrs.readonly ? textfFieldClasses.stateReadonly : "", attrs.dense ? textfFieldClasses.isDense : "", attrs.required ? textfFieldClasses.isRequired : "", attrs.fullWidth ? textfFieldClasses.hasFullWidth : "", attrs.counter ? textfFieldClasses.hasCounter : "", attrs.hideSpinner !== false ? textfFieldClasses.hideSpinner : "", attrs.hideClear !== false ? textfFieldClasses.hideClear : "", attrs.hideValidation ? textfFieldClasses.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -232,20 +202,20 @@ var createContent = function createContent(vnode, _ref3) {
 
   var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
     key: "required",
-    className: classes.requiredIndicator
+    className: textfFieldClasses.requiredIndicator
   }, attrs.requiredIndicator || "*") : null;
   var optionalIndicator = !attrs.required && attrs.optionalIndicator ? h("span", {
     key: "optional",
-    className: classes.optionalIndicator
+    className: textfFieldClasses.optionalIndicator
   }, attrs.optionalIndicator) : null;
   var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
 
   return [h("div", {
-    className: classes.inputArea,
+    className: textfFieldClasses.inputArea,
     key: "input-area"
   }, [label ? h("label", _defineProperty({
     key: "label",
-    className: classes.label
+    className: textfFieldClasses.label
   }, k["on" + pointerStartEvent], function () {
     if (!inactive) {
       setTimeout(function () {
@@ -254,7 +224,7 @@ var createContent = function createContent(vnode, _ref3) {
     }
   }), label) : null, h(inputType, _extends({}, {
     key: "input",
-    className: classes.input,
+    className: textfFieldClasses.input,
     disabled: attrs.disabled
   }, type ? { type: type } : null, attrs.name ? { name: attrs.name } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
     if (inactive) {
@@ -274,13 +244,13 @@ var createContent = function createContent(vnode, _ref3) {
     // at the next redraw state.hasFocus() will be read and the focus class be set
     // in the props.class statement
     if (state.el()) {
-      state.el().classList.add(classes.stateFocused);
+      state.el().classList.add(textfFieldClasses.stateFocused);
     }
     notifyState(vnode);
   }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
     state.setValue({ type: "onblur", focus: false });
     // same principle as onfocus
-    state.el().classList.remove(classes.stateFocused);
+    state.el().classList.remove(textfFieldClasses.stateFocused);
   }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
     // default input event
     // may be overwritten by attrs.events
@@ -294,16 +264,16 @@ var createContent = function createContent(vnode, _ref3) {
   }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
   attrs[k.readonly] !== undefined ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
     key: "counter",
-    className: classes.counter
+    className: textfFieldClasses.counter
   }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {
     key: "help",
-    className: [classes.help, attrs.focusHelp ? classes.focusHelp : null].join(" ")
+    className: [textfFieldClasses.help, attrs.focusHelp ? textfFieldClasses.focusHelp : null].join(" ")
   }, attrs.help) : null, showError ? h("div", {
     key: "error",
-    className: classes.error
+    className: textfFieldClasses.error
   }, state.error()) : validates && !attrs.help ? h("div", {
     key: "error-placeholder",
-    className: classes.errorPlaceholder
+    className: textfFieldClasses.errorPlaceholder
   }) : null];
 };
 
@@ -388,4 +358,4 @@ var vars$1 = {
   color_dark_counter_ok_border: rgba(vars.color_primary)
 };
 
-export { textfield as coreTextField, classes, vars$1 as vars };
+export { textfield as coreTextField, textfFieldClasses as classes, vars$1 as vars };

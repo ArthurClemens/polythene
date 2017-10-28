@@ -1,9 +1,6 @@
 import { isServer, pointerEndEvent, pointerStartMoveEvent, subscribe } from 'polythene-core';
+import { raisedButtonClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
-
-var classes = {
-  component: "pe-button pe-text-button pe-raised-button"
-};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -92,7 +89,7 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
   return _extends({}, {
-    parentClassName: [attrs.parentClassName || classes.component].join(" "),
+    parentClassName: [attrs.parentClassName || raisedButtonClasses.component].join(" "),
     animateOnTap: false,
     shadowComponent: h(Shadow, {
       z: attrs.disabled ? 0 : state.z,
@@ -137,4 +134,4 @@ var vars$1 = {
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-export { raisedButton as coreRaisedButton, classes, vars$1 as vars };
+export { raisedButton as coreRaisedButton, raisedButtonClasses as classes, vars$1 as vars };

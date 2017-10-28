@@ -1,12 +1,1 @@
-
-export default {
-  component:      "pe-ripple",
-
-  // elements
-  mask:           "pe-ripple__mask",
-  waves:          "pe-ripple__waves",
-
-  // states
-  unconstrained:    "pe-ripple--unconstrained",
-  wavesAnimating: "pe-ripple__waves--animating",
-};
+import { rippleClasses } from "polythene-css-classes"; export default rippleClasses;

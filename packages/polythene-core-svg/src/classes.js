@@ -1,4 +1,1 @@
-
-export default {
-  component: "pe-svg"
-};
+import { svgClasses } from "polythene-css-classes"; export default svgClasses;
