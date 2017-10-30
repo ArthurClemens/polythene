@@ -26,6 +26,6 @@
     "react-router-dom": "^4.1.2",
     "recompose": "^0.24.0"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }
