@@ -4,6 +4,7 @@ const fs           = require("fs");
 const J2c          = require("j2c");
 const postcss      = require("postcss");
 const cssnano      = require("cssnano");
+const tar          = require("tar");
 
 const j2c = new J2c();
 const COLOR_RED = "\x1b[31m";
@@ -31,7 +32,7 @@ const beautifyCSS = cssString =>
   });
 
 const saveToFile = (path, cssString) => 
-  fs.writeFile(path, cssString, "ascii", err => {  
+  fs.writeFileSync(path, cssString, "ascii", err => {  
     // throws an error, you could also catch it here
     if (err) throw err;
   });
@@ -43,7 +44,7 @@ export const processCSS = ({ styles, path, autoPrefix }) => {
   return { cssString, path, autoPrefix };
 };
 
-export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=true }) => {
+export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=true, gzip }) => {
   const cssString = css
     ? css
     : styles
@@ -76,6 +77,12 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=tr
         console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
       });
       saveToFile(path, beautify ? beautifyCSS(result.css) : result.css);
+      if (gzip) {
+        tar.c(
+          { gzip: true },
+          [path]
+        ).pipe(fs.createWriteStream(`${path}.gz`));
+      }
       if (sourceMap) {
         saveToFile(mapPath, result.map);
       }

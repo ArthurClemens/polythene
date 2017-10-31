@@ -12,5 +12,6 @@ const styles = [
 writeCSS({
   styles,
   path: "./dist/css/theme.css",
-  autoPrefix: true
+  autoPrefix: true,
+  gzip: true,
 });

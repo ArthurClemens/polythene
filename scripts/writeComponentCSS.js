@@ -14,5 +14,6 @@ if (styles) {
     path: outPath,
     styles,
     beautify: true,
+    gzip: true,
   });
 }

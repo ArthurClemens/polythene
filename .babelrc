@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
+    ["env", { "modules": false }]
   ],
   "plugins": [
     "transform-async-to-generator",
@@ -8,12 +8,4 @@
     "transform-object-rest-spread",
     "transform-react-jsx"
   ],
-  "env": {
-    "test": {
-      "presets": [
-        "es2015"
-      ],
-      "plugins": ["transform-runtime"]
-    }
-  }
 }

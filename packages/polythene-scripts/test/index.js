@@ -48,3 +48,14 @@ writeCSS({
   path: "./test/test-beautify.css",
   beautify: true
 });
+
+/* 
+Expect file:
+* to be gzipped
+* to have a sourcemap
+*/
+writeCSS({
+  styles,
+  path: "./test/test-gzip.css",
+  gzip: true
+});
