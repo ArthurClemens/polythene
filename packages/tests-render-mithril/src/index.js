@@ -21,7 +21,10 @@ const navBar = () =>
   ));
 
 const index = {
-  oncreate: () => document.title = TITLE,
+  oncreate: () => (
+    document.title = TITLE,
+    scrollTo(0, 0)
+  ),
   view: () =>
     [
       navBar(),
