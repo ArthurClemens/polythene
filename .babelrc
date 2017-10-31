@@ -3,9 +3,8 @@
     ["env", { "modules": false }]
   ],
   "plugins": [
-    "transform-async-to-generator",
-    "transform-object-assign",
     "transform-object-rest-spread",
-    "transform-react-jsx"
-  ],
+    "transform-react-jsx",
+    "transform-object-assign"
+  ]
 }
