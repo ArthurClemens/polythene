@@ -4,8 +4,6 @@
 
 ### 1.0.0-rc.9
 
-Added gzip compression to generated CSS files.
-
 Bug fixes.
 
 
