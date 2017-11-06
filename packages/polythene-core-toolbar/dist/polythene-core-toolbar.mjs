@@ -19,7 +19,7 @@ var createProps = function createProps(vnode, _ref) {
 
 var createContent = function createContent(vnode) {
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children;
 };
 
 var toolbar = Object.freeze({
@@ -78,11 +78,10 @@ var vars$1 = {
 
   // color vars
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary)
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
 
-  // background colors may be set in theme; disabled by default
-  // color_light_background:    "transparent",
-  // color_dark_background:     "transparent",
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background)
 };
 
 export { toolbar as coreToolbar, toolbarTitle as coreToolbarTitle, toolbarClasses as classes, vars$1 as vars };

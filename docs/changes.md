@@ -4,6 +4,10 @@
 
 ### 1.0.0-rc.9
 
+Changes to components:
+
+* Toolbar now has a default background color
+
 Bug fixes.
 
 

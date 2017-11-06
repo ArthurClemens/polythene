@@ -26,5 +26,5 @@ export const createContent = vnode => {
   const attrs = vnode.attrs;
   return attrs.content
     ? attrs.content
-    : attrs.children || vnode.children || attrs;
+    : attrs.children || vnode.children;
 };
