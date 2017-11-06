@@ -105,7 +105,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var setValue = createStream({});
   var error = createStream(attrs.error);
   var hasFocus = createStream(attrs.focus || false);
-  var setFocus = createStream(null);
+  var setFocus = createStream(false);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
@@ -166,7 +166,7 @@ var createProps = function createProps(vnode, _ref2) {
   var isInvalid = state.isInvalid();
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [textfFieldClasses.component, isInvalid ? textfFieldClasses.stateInvalid : "", state.hasFocus() ? textfFieldClasses.stateFocused : "", state.isDirty() ? textfFieldClasses.stateDirty : "", attrs.floatingLabel ? textfFieldClasses.hasFloatingLabel : "", attrs.disabled ? textfFieldClasses.stateDisabled : "", attrs.readonly ? textfFieldClasses.stateReadonly : "", attrs.dense ? textfFieldClasses.isDense : "", attrs.required ? textfFieldClasses.isRequired : "", attrs.fullWidth ? textfFieldClasses.hasFullWidth : "", attrs.counter ? textfFieldClasses.hasCounter : "", attrs.hideSpinner !== false ? textfFieldClasses.hideSpinner : "", attrs.hideClear !== false ? textfFieldClasses.hideClear : "", attrs.hideValidation ? textfFieldClasses.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [textfFieldClasses.component, isInvalid ? textfFieldClasses.stateInvalid : "", state.hasFocus() ? textfFieldClasses.stateFocused : "", state.isDirty() ? textfFieldClasses.stateDirty : "", attrs.floatingLabel ? textfFieldClasses.hasFloatingLabel : "", attrs.disabled ? textfFieldClasses.stateDisabled : "", attrs.readonly ? textfFieldClasses.stateReadonly : "", attrs.dense ? textfFieldClasses.isDense : "", attrs.required ? textfFieldClasses.isRequired : "", attrs.fullWidth ? textfFieldClasses.hasFullWidth : "", attrs.counter ? textfFieldClasses.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? textfFieldClasses.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? textfFieldClasses.hideClear : "", attrs.hideValidation ? textfFieldClasses.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -189,8 +189,8 @@ var createContent = function createContent(vnode, _ref3) {
     state.setFocus(true);
   }
 
-  var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined ? "" : value.toString();
+  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+  var valueStr = value === undefined || value === null ? "" : value.toString();
 
   if (inputEl && state.previousValue() !== valueStr) {
     inputEl.value = valueStr;
@@ -238,7 +238,6 @@ var createContent = function createContent(vnode, _ref3) {
     if (inactive) {
       return;
     }
-    state.setFocus(true);
     // set CSS class manually in case field gets focus but is off screen
     // and no redraw is triggered
     // at the next redraw state.hasFocus() will be read and the focus class be set
@@ -262,7 +261,7 @@ var createContent = function createContent(vnode, _ref3) {
       inputEl.blur(e);
     }
   }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-  attrs[k.readonly] !== undefined ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
+  attrs.required !== undefined && !!attrs.required ? { required: true } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
     key: "counter",
     className: textfFieldClasses.counter
   }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {

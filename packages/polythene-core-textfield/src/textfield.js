@@ -100,7 +100,7 @@ export const getInitialState = (vnode, createStream) => {
   const setValue = createStream({});
   const error = createStream(attrs.error);
   const hasFocus = createStream(attrs.focus || false);
-  const setFocus = createStream(null);
+  const setFocus = createStream(false);
   const isTouched = createStream(false); // true when any change is made
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
@@ -177,8 +177,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.required              ? classes.isRequired : "",
         attrs.fullWidth             ? classes.hasFullWidth : "",
         attrs.counter               ? classes.hasCounter : "",
-        attrs.hideSpinner !== false ? classes.hideSpinner : "",
-        attrs.hideClear !== false   ? classes.hideClear : "",
+        attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "",
+        attrs.hideClear !== false   && attrs.hideClear !== undefined ? classes.hideClear : "",
         attrs.hideValidation        ? classes.hideValidation : "",
         attrs.tone === "dark"       ? "pe-dark-tone" : null,
         attrs.tone === "light"      ? "pe-light-tone" : null,
@@ -208,12 +208,12 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     state.setFocus(true);
   }
 
-  const value = attrs.value !== undefined
+  const value = (attrs.value !== undefined && attrs.value !== null)
     ? attrs.value 
     : inputEl
       ? inputEl.value
       : state.previousValue();
-  const valueStr = value === undefined
+  const valueStr = (value === undefined || value === null)
     ? ""
     : value.toString();
 
@@ -301,7 +301,6 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 if (inactive) {
                   return;
                 }
-                state.setFocus(true);
                 // set CSS class manually in case field gets focus but is off screen
                 // and no redraw is triggered
                 // at the next redraw state.hasFocus() will be read and the focus class be set
@@ -347,16 +346,16 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             : null,
 
           attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-          attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
-          attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
-          attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
-          attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
-          attrs.max !== undefined ?          { max: attrs.max } : null,
-          attrs.min !== undefined ?          { min: attrs.min } : null,
-          attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
-          attrs.required !== undefined ?     { required: attrs.required } : null,
-          attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
-          attrs.rows !== undefined ?         { rows: attrs.rows } : null
+          attrs.required !== undefined && !!attrs.required ?       { required: true } : null,
+          attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? { [k.readonly]: true } : null,
+          attrs.pattern !== undefined ?                            { pattern: attrs.pattern } : null,
+          attrs[k.maxlength] !== undefined ?                       { [k.maxlength]: attrs[k.maxlength] } : null,
+          attrs[k.minlength] !== undefined ?                       { [k.minlength]: attrs[k.minlength] } : null,
+          attrs.max !== undefined ?                                { max: attrs.max } : null,
+          attrs.min !== undefined ?                                { min: attrs.min } : null,
+          attrs[k.autofocus] !== undefined ?                       { [k.autofocus]: attrs[k.autofocus] } : null,
+          attrs[k.tabindex] !== undefined ?                        { [k.tabindex]: attrs[k.tabindex] } : null,
+          attrs.rows !== undefined ?                               { rows: attrs.rows } : null
         ))
       ]
     ),
