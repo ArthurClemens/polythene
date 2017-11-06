@@ -1,3 +1,23 @@
+exports[`test Autocomplete form 1`] = `
+<form
+  autoComplete="on">
+  <div
+    autofill={true}
+    label="Customer information">
+    <TextField
+      floatingLabel={true}
+      label="Email"
+      type="email" />
+    <TextField
+      floatingLabel={true}
+      label="First name" />
+    <TextField
+      floatingLabel={true}
+      label="Last name" />
+  </div>
+</form>
+`;
+
 exports[`test Custom validation (only use lowercase characters) 1`] = `
 <div
   style={
@@ -55,7 +75,7 @@ exports[`test Give focus 1`] = `
 
 exports[`test No options 1`] = `
 <div
-  className="pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear    ">
+  className="pe-textfield                ">
   <div
     className="pe-textfield__input-area">
     <input
@@ -85,7 +105,7 @@ exports[`test Option: autofocus 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear    class-x">
+  className="pe-textfield                class-x">
   <div
     className="pe-textfield__input-area">
     <input
@@ -102,7 +122,7 @@ exports[`test Option: class 1`] = `
 
 exports[`test Option: className 1`] = `
 <div
-  className="pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear    className-x">
+  className="pe-textfield                className-x">
   <div
     className="pe-textfield__input-area">
     <input
@@ -169,7 +189,7 @@ exports[`test Option: counter, maxLength 1`] = `
 
 exports[`test Option: defaultValue 1`] = `
 <div
-  className="pe-textfield   pe-textfield--dirty        pe-textfield--hide-spinner pe-textfield--hide-clear    ">
+  className="pe-textfield   pe-textfield--dirty             ">
   <div
     className="pe-textfield__input-area">
     <input
@@ -242,7 +262,7 @@ exports[`test Option: disabled (label) 1`] = `
 
 exports[`test Option: element 1`] = `
 <a
-  className="pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear    ">
+  className="pe-textfield                ">
   <div
     className="pe-textfield__input-area">
     <input
@@ -369,7 +389,7 @@ exports[`test Option: help 1`] = `
 
 exports[`test Option: id 1`] = `
 <div
-  className="pe-textfield           pe-textfield--hide-spinner pe-textfield--hide-clear    "
+  className="pe-textfield                "
   id="id-x">
   <div
     className="pe-textfield__input-area">
@@ -559,6 +579,23 @@ exports[`test Option: readonly -- dark theme class 1`] = `
   <TextField
     defaultValue="John"
     readonly={true} />
+</div>
+`;
+
+exports[`test Option: readonly is false 1`] = `
+<div
+  className="pe-textfield                ">
+  <div
+    className="pe-textfield__input-area">
+    <input
+      className="pe-textfield__input"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      type="text" />
+  </div>
 </div>
 `;
 
@@ -756,7 +793,24 @@ exports[`test Option: value (JSX) 1`] = `
 
 exports[`test Option: value 1`] = `
 <div
-  className="pe-textfield   pe-textfield--dirty        pe-textfield--hide-spinner pe-textfield--hide-clear    ">
+  className="pe-textfield   pe-textfield--dirty             ">
+  <div
+    className="pe-textfield__input-area">
+    <input
+      className="pe-textfield__input"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      type="text" />
+  </div>
+</div>
+`;
+
+exports[`test Option: value is null 1`] = `
+<div
+  className="pe-textfield   pe-textfield--dirty             ">
   <div
     className="pe-textfield__input-area">
     <input

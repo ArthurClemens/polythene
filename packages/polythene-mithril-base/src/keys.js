@@ -1,5 +1,7 @@
 
 export const keys = {
+  autocomplete: "autocomplete",
+  autofill:     "autofill",
   autofocus:    "autofocus",
   class:        "class",
   className:    "class",

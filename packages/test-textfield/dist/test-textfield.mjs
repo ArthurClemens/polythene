@@ -772,6 +772,26 @@ var genericTests = (function (_ref) {
         });
       }
     }
+  }, {
+    name: "Autocomplete form",
+    component: {
+      view: function view() {
+        return h("form", _defineProperty({}, k["autocomplete"], "on"), h("div", {
+          autofill: true,
+          label: "Customer information"
+        }, [h(TextField$$1, {
+          type: "email",
+          label: "Email",
+          floatingLabel: true
+        }), h(TextField$$1, {
+          label: "First name",
+          floatingLabel: true
+        }), h(TextField$$1, {
+          label: "Last name",
+          floatingLabel: true
+        })]));
+      }
+    }
   },
 
   /* Dark tone */

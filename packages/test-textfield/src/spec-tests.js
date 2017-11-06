@@ -47,5 +47,22 @@ export default ({ TextField }) => {
         element: "a"
       }
     },
+    
+    // Check for various inputs
+    
+    {
+      name: "Option: value is null",
+      component: TextField,
+      attrs: {
+        value: null
+      }
+    },
+    {
+      name: "Option: readonly is false",
+      component: TextField,
+      attrs: {
+        readonly: false
+      }
+    },
   ];
 };

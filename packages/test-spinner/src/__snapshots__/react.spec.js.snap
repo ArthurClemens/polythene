@@ -54,7 +54,7 @@ exports[`test Interactive (animated) -- Material Design Progress Spinner 1`] = `
           show={true}
           updateDuration={0.3} />
       }
-      max={1}
+      max={1000}
       min={0}
       onChange={[Function]}
       step={0}
@@ -91,7 +91,7 @@ exports[`test Interactive (animated, updateDuration) -- Material Design Progress
           percentage={0}
           show={true} />
       }
-      max={1}
+      max={1000}
       min={0}
       onChange={[Function]}
       step={0}
@@ -148,21 +148,21 @@ exports[`test Material Design Spinner -- dark tone class -- Material Design Spin
 `;
 
 exports[`test No options -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   instance={[Function]}
   permanent={true}
   placeholderClassName="pe-spinner__placeholder" />
 `;
 
 exports[`test No options 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   instance={[Function]}
   permanent={true}
   placeholderClassName="pe-spinner__placeholder" />
 `;
 
 exports[`test Option: class -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   className="class-x"
   instance={[Function]}
   permanent={true}
@@ -170,7 +170,7 @@ exports[`test Option: class -- Material Design Spinner 1`] = `
 `;
 
 exports[`test Option: class -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   className="class-x"
   instance={[Function]}
   permanent={true}
@@ -178,7 +178,7 @@ exports[`test Option: class -- iOS Spinner 1`] = `
 `;
 
 exports[`test Option: className -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   className="className-x"
   instance={[Function]}
   permanent={true}
@@ -186,7 +186,7 @@ exports[`test Option: className -- Material Design Spinner 1`] = `
 `;
 
 exports[`test Option: className -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   className="className-x"
   instance={[Function]}
   permanent={true}
@@ -194,7 +194,7 @@ exports[`test Option: className -- iOS Spinner 1`] = `
 `;
 
 exports[`test Option: content -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   content={
     <span>
       Content
@@ -206,7 +206,7 @@ exports[`test Option: content -- Material Design Spinner 1`] = `
 `;
 
 exports[`test Option: content -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   content={
     <span>
       Content
@@ -218,7 +218,7 @@ exports[`test Option: content -- iOS Spinner 1`] = `
 `;
 
 exports[`test Option: element -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   element="span"
   instance={[Function]}
   permanent={true}
@@ -226,7 +226,7 @@ exports[`test Option: element -- Material Design Spinner 1`] = `
 `;
 
 exports[`test Option: element -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   element="span"
   instance={[Function]}
   permanent={true}
@@ -234,7 +234,7 @@ exports[`test Option: element -- iOS Spinner 1`] = `
 `;
 
 exports[`test Option: id -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   id="id-x"
   instance={[Function]}
   permanent={true}
@@ -242,7 +242,7 @@ exports[`test Option: id -- Material Design Spinner 1`] = `
 `;
 
 exports[`test Option: id -- iOS Spinner 1`] = `
-<SpinnerToggle
+<IOSSpinnerToggle
   id="id-x"
   instance={[Function]}
   permanent={true}
@@ -260,14 +260,14 @@ exports[`test Option: permanent (JSX) -- iOS Spinner 1`] = `
 `;
 
 exports[`test Option: permanent -- Material Design Spinner 1`] = `
-<SpinnerToggle
+<MaterialDesignSpinnerToggle
   instance={[Function]}
   permanent={true}
   placeholderClassName="pe-spinner__placeholder" />
 `;
 
 exports[`test Option: permanent 1`] = `
-<SpinnerToggle
+<MaterialDesignProgressSpinnerToggle
   instance={[Function]}
   percentage={0.75}
   permanent={true}

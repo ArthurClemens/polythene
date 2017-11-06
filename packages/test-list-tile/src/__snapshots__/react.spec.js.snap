@@ -9,12 +9,14 @@ exports[`test Child node 1`] = `
       className="pe-list-tile__content">
       <Icon
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
   </div>
@@ -33,12 +35,14 @@ exports[`test Dark tone class + light tone 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -64,12 +68,14 @@ exports[`test Dark tone class + light tone class 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -151,12 +157,14 @@ exports[`test Option: compact front (Icon) 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -179,12 +187,14 @@ exports[`test Option: content 1`] = `
     style={null}>
     <Icon
       svg={
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-            }
-          } />
+        Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                Object {
+                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                  }
+            } />,
+        }
       } />
   </div>
 </div>
@@ -272,12 +282,14 @@ exports[`test Option: front (Icon) 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -488,12 +500,14 @@ exports[`test Option: secondary (Icon) 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
   </div>
@@ -521,12 +535,14 @@ exports[`test Option: secondary (content) 1`] = `
       className="pe-list-tile__content">
       <Icon
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
   </div>
@@ -592,12 +608,14 @@ exports[`test Option: style (colors) 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -708,12 +726,14 @@ exports[`test Themed (color and font size) -- dark tone class 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div
@@ -739,12 +759,14 @@ exports[`test Themed (color and font size) 1`] = `
       <Icon
         size="medium"
         svg={
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-              }
-            } />
+          Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                  Object {
+                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+                    }
+              } />,
+          }
         } />
     </div>
     <div

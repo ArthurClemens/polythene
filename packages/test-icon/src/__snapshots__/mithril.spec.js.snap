@@ -2,7 +2,8 @@ exports[`test Child node (trusted svg children) -- dark tone class (color set wi
 "<div style=\"color: rgb(255, 255, 255);\" class=
 \"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>
@@ -15,7 +16,8 @@ exports[`test Child node (trusted svg children) -- dark tone class (color set wi
 exports[`test Child node (trusted svg children) 1`] = `
 "<div class=\"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>
@@ -29,7 +31,8 @@ exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\">
   <div class=\"pe-icon pe-icon--regular pe-light-tone\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -39,7 +42,8 @@ exports[`test Dark tone class + light tone 1`] = `
   <div class=
   \"pe-icon pe-icon--regular pe-light-tone tests-icon-themed-icon\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -54,7 +58,8 @@ exports[`test Dark tone class + light tone class 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
   <div class=\"pe-icon pe-icon--regular\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -63,7 +68,8 @@ exports[`test Dark tone class + light tone class 1`] = `
   </div>
   <div class=\"pe-icon pe-icon--regular tests-icon-themed-icon\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -100,7 +106,8 @@ exports[`test Option: className 1`] = `
 exports[`test Option: content (trusted svg content) 1`] = `
 "<div class=\"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>
@@ -135,7 +142,8 @@ exports[`test Option: size 1`] = `
 "<div style=\"display: flex;\">
   <div class=\"pe-icon pe-icon--small\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -144,7 +152,8 @@ exports[`test Option: size 1`] = `
   </div>
   <div class=\"pe-icon pe-icon--regular\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -153,7 +162,8 @@ exports[`test Option: size 1`] = `
   </div>
   <div class=\"pe-icon pe-icon--medium\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -162,7 +172,8 @@ exports[`test Option: size 1`] = `
   </div>
   <div class=\"pe-icon pe-icon--large\">
     <div class=\"pe-svg\">
-      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+      <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+      \"false\">
         <path d=
         \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
         </path>
@@ -193,7 +204,8 @@ exports[`test Option: style 1`] = `
 "<div style=\"color: rgb(239, 108, 0);\" class=
 \"pe-icon pe-icon--regular\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>
@@ -206,7 +218,8 @@ exports[`test Option: style 1`] = `
 exports[`test Themed (color and size) -- dark tone class 1`] = `
 "<div class=\"pe-icon pe-icon--regular tests-icon-themed-icon\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>
@@ -219,7 +232,8 @@ exports[`test Themed (color and size) -- dark tone class 1`] = `
 exports[`test Themed (color and size) 1`] = `
 "<div class=\"pe-icon pe-icon--regular tests-icon-themed-icon\">
   <div class=\"pe-svg\">
-    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+    <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+    \"false\">
       <path d=
       \"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\">
       </path>

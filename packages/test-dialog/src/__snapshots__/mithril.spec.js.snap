@@ -290,6 +290,7 @@ exports[`test Option: modal with backdrop - spec 1`] = `
           <div class=\"pe-dialog-pane__actions\">
             <a class=\"pe-button pe-text-button\" tabindex=\"0\">
             <div class=\"pe-button__content\">
+              <div class=\"pe-ripple\"></div>
               <div class=\"pe-button__wash\"></div>
               <div class=\"pe-button__focus\"></div>
               <div class=\"pe-button__label\">
@@ -298,6 +299,7 @@ exports[`test Option: modal with backdrop - spec 1`] = `
             </div></a><a class=\"pe-button pe-text-button\" tabindex=
             \"0\">
             <div class=\"pe-button__content\">
+              <div class=\"pe-ripple\"></div>
               <div class=\"pe-button__wash\"></div>
               <div class=\"pe-button__focus\"></div>
               <div class=\"pe-button__label\">

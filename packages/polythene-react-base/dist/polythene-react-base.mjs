@@ -1,6 +1,8 @@
 import { isClient } from 'polythene-core';
 
 var keys = {
+  autocomplete: "autoComplete",
+  autofill: "autoFill",
   autofocus: "autoFocus",
   class: "className",
   className: "className",
