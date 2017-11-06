@@ -24,6 +24,11 @@
   "devDependencies": {
     "react": "^15.6.1"
   },
+  "jest": {
+      "setupFiles": [
+        "../../scripts/jest-shim.js"
+      ]
+  },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

@@ -25,6 +25,11 @@
     "react": "^15.6.1",
     "recompose": "^0.24.0"
   },
+  "jest": {
+      "setupFiles": [
+        "../../scripts/jest-shim.js"
+      ]
+  },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }
