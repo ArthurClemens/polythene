@@ -95,16 +95,6 @@ To read the checked state, use `onChange`:
 
 #### With JSX
 
-Before `1.0.0-rc.6`:
-
-~~~jsx
-<RadioGroup
-  onChange={newValue => this.setState({ checkedValue: newValue })}
-/>
-~~~
-
-After `1.0.0-rc.6`:
-
 ~~~jsx
 <RadioGroup
   onChange={state => this.setState({ checkedValue: state.value })}
@@ -112,16 +102,6 @@ After `1.0.0-rc.6`:
 ~~~
 
 #### With hyperscript
-
-Before `1.0.0-rc.6`:
-
-~~~javascript
-h(RadioGroup, {
-  onChange: newValue => this.setState({ checkedValue: newValue })
-})
-~~~
-
-After `1.0.0-rc.6`:
 
 ~~~javascript
 h(RadioGroup, {

@@ -43,7 +43,7 @@ var createContent = function createContent(vnode, _ref2) {
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
-    var isChecked = isDefaultChecked || attrs.checked || checkedValue === buttonOpts.value;
+    var isChecked = isDefaultChecked || buttonOpts.checked || checkedValue === buttonOpts.value;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,

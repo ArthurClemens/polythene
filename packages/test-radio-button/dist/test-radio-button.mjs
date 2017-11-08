@@ -241,7 +241,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var events = (function (_ref) {
   var h = _ref.h,
       k = _ref.k,
-      RadioGroup$$1 = _ref.RadioGroup;
+      RadioButton$$1 = _ref.RadioButton;
   return {
     oninit: function oninit(vnode) {
       var checkedValue = stream();
@@ -257,23 +257,22 @@ var events = (function (_ref) {
         style: {
           margin: "0 0 1rem 0"
         }
-      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioGroup$$1, {
+      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioButton$$1, {
         name: "events",
-        content: [{
-          value: "One",
-          label: "One",
-          events: _defineProperty({}, k.onclick, function () {
-            return state.checkedValue("One");
-          }),
-          checked: checkedValue === "One"
-        }, {
-          value: "Two",
-          label: "Two",
-          events: _defineProperty({}, k.onclick, function () {
-            return state.checkedValue("Two");
-          }),
-          checked: checkedValue === "Two"
-        }]
+        value: "One",
+        label: "One",
+        events: _defineProperty({}, k.onclick, function () {
+          return state.checkedValue("One");
+        }),
+        checked: checkedValue === "One"
+      }), h(RadioButton$$1, {
+        name: "events",
+        value: "Two",
+        label: "Two",
+        events: _defineProperty({}, k.onclick, function () {
+          return state.checkedValue("Two");
+        }),
+        checked: checkedValue === "Two"
       })]);
     }
   };
@@ -285,6 +284,7 @@ var iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><
 
 var genericTests = (function (_ref) {
   var RadioGroup$$1 = _ref.RadioGroup,
+      RadioButton$$1 = _ref.RadioButton,
       h = _ref.renderer,
       k = _ref.keys;
 
@@ -463,7 +463,7 @@ var genericTests = (function (_ref) {
     name: "Option: events",
     interactive: true,
     exclude: true,
-    component: events({ h: h, k: k, RadioGroup: RadioGroup$$1 })
+    component: events({ h: h, k: k, RadioButton: RadioButton$$1 })
   },
 
   // Dark tone

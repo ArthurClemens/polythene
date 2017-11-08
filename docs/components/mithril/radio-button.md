@@ -68,16 +68,6 @@ See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 
-Before `1.0.0-rc.6`:
-
-~~~javascript
-m(RadioGroup, {
-  onChange: newValue => vnode.state.checkedValue = newValue
-})
-~~~
-
-After `1.0.0-rc.6`:
-
 ~~~javascript
 m(RadioGroup, {
   onChange: state => vnode.state.checkedValue = state.value
