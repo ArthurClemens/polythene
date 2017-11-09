@@ -161,11 +161,11 @@ export const onMount = vnode => {
     };
 
     state.activateDismissTap = () => {
-      document.body.addEventListener("click", state.handleDismissTap);
+      document.addEventListener("click", state.handleDismissTap);
     };
 
     state.deActivateDismissTap = () => {
-      document.body.removeEventListener("click", state.handleDismissTap);
+      document.removeEventListener("click", state.handleDismissTap);
     };
 
     state.handleEscape = e => {
