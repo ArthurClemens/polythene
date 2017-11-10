@@ -10,11 +10,13 @@ export default () => [
     }
   },
   {
-    " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
-      "font-weight": vars.font_weight_normal,
-      "line-height": vars.line_height,
-      "letter-spacing": "-0.02em",
-      "font-size": "0.6em"
+    " h1, h2, h3, h4, h5, h6": {
+      " small": {
+        "font-weight": vars.font_weight_normal,
+        "line-height": vars.line_height,
+        "letter-spacing": "-0.02em",
+        "font-size": "0.6em"
+      }
     }
   },
   {
