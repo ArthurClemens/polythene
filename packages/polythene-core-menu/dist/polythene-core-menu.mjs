@@ -175,11 +175,11 @@ var onMount = function onMount(vnode) {
     };
 
     state.activateDismissTap = function () {
-      document.body.addEventListener("click", state.handleDismissTap);
+      document.addEventListener("click", state.handleDismissTap);
     };
 
     state.deActivateDismissTap = function () {
-      document.body.removeEventListener("click", state.handleDismissTap);
+      document.removeEventListener("click", state.handleDismissTap);
     };
 
     state.handleEscape = function (e) {
