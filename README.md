@@ -66,5 +66,3 @@ Version: `1.0.0-rc.8` (release candidate 8)
 ## Previous versions
 
 * [Polythene 0.3 for Mithril 0.x](https://github.com/ArthurClemens/polythene/tree/0.x)
-
-
