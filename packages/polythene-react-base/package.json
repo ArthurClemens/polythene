@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "mithril": "1.1.5",
-    "react": "16.0.0",
-    "react-dom": "16.0.0",
+    "react": "16.1.0",
+    "react-dom": "16.1.0",
     "react-hyperscript": "3.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
