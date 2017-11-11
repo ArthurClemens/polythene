@@ -56,12 +56,17 @@ export const createProps = (vnode, { keys: k }) => {
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive();
   const onKeyDownHandler = (attrs.events && attrs.events[k.onkeydown]) || onClickHandler;
+  const noink = attrs.ink !== undefined && attrs.ink === false;
 
   const handleInactivate = () => (
-    state.inactive(true),
+    // delay a bit so that the ripple can finish before the hover disappears
+    // the timing is crude and does not take the actual ripple "done" into account
     setTimeout(() => (
-      state.inactive(false)
-    ), attrs.inactivate * 1000)
+      state.inactive(true),
+      setTimeout(() => (
+        state.inactive(false)
+      ), attrs.inactivate * 1000)
+    ), noink ? 0 : 300)
   );
   const onClickHandler = attrs.events && attrs.events[k.onclick];
 
