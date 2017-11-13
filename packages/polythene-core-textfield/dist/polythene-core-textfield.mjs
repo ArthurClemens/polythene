@@ -40,6 +40,8 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
+var MINIMUM_FOCUS_INTERVAL = 150;
+
 var validateCustom = function validateCustom(state, attrs) {
   var validState = attrs.validate(state.inputEl().value);
   return {
@@ -140,9 +142,11 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
   var previousValue = createStream(undefined);
+  var didSetFocusTime = 0;
 
   return {
     defaultValue: defaultValue,
+    didSetFocusTime: didSetFocusTime,
     el: el,
     error: error,
     hasFocus: hasFocus,
@@ -175,12 +179,16 @@ var onMount = function onMount(vnode) {
   });
 
   state.setFocus.map(function (focusState) {
+    // Prevent autocomplete from getting in a loop
+    if (state.didSetFocusTime + MINIMUM_FOCUS_INTERVAL > new Date().getTime()) {
+      return;
+    }
     state.hasFocus(focusState);
     if (focusState && state.inputEl()) {
       // Draw in next tick, to prevent getting an immediate onblur
       // Explicit setting of focus needed for most browsers other than Safari
       setTimeout(function () {
-        return state.inputEl() && state.inputEl().focus && state.inputEl().focus();
+        return state.inputEl() && state.inputEl().focus && state.inputEl().focus(), state.didSetFocusTime = new Date().getTime();
       }, 0);
     }
   });
@@ -268,6 +276,7 @@ var createContent = function createContent(vnode, _ref3) {
     if (inactive) {
       return;
     }
+    state.setFocus(true);
     // set CSS class manually in case field gets focus but is off screen
     // and no redraw is triggered
     // at the next redraw state.hasFocus() will be read and the focus class be set

@@ -4,6 +4,8 @@ import classes from "polythene-css-classes/textfield";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+const MINIMUM_FOCUS_INTERVAL = 150;
+
 const validateCustom = (state, attrs) => {
   const validState = attrs.validate(state.inputEl().value);
   return {
@@ -105,9 +107,11 @@ export const getInitialState = (vnode, createStream) => {
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
   const previousValue = createStream(undefined);
+  const didSetFocusTime = 0;
 
   return {
     defaultValue,
+    didSetFocusTime,
     el,
     error,
     hasFocus,
@@ -145,11 +149,18 @@ export const onMount = vnode => {
   ));
 
   state.setFocus.map(focusState => {
+    // Prevent autocomplete from getting in a loop
+    if ((state.didSetFocusTime + MINIMUM_FOCUS_INTERVAL) > new Date().getTime()) {
+      return;
+    }
     state.hasFocus(focusState);
     if (focusState && state.inputEl()) {
       // Draw in next tick, to prevent getting an immediate onblur
       // Explicit setting of focus needed for most browsers other than Safari
-      setTimeout(() => state.inputEl() && state.inputEl().focus && state.inputEl().focus(), 0);
+      setTimeout(() => (
+        state.inputEl() && state.inputEl().focus && state.inputEl().focus(),
+        state.didSetFocusTime = new Date().getTime()
+      ), 0);
     }
   });
 
@@ -301,6 +312,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 if (inactive) {
                   return;
                 }
+                state.setFocus(true);
                 // set CSS class manually in case field gets focus but is off screen
                 // and no redraw is triggered
                 // at the next redraw state.hasFocus() will be read and the focus class be set
@@ -398,4 +410,3 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
         : null
   ];
 };
-
