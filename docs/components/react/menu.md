@@ -343,12 +343,12 @@ MenuCSS.addStyle(".themed-menu", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-menu/src/classes.js`
+Change CSS using the [Menu CSS classes](../../../packages/polythene-css-classes/menu.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-menu"
+import classes from "polythene-css-classes/menu"
 ~~~
 
 #### Style

@@ -1,7 +1,23 @@
 import { filterSupportedAttributes, hide, isClient, isServer, show } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
-import { notificationClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -42,7 +58,7 @@ var prepareShow = function prepareShow(state, attrs) {
     console.error("No container element found"); // eslint-disable-line no-console
   }
   if (attrs.containerSelector && state.containerEl) {
-    state.containerEl.classList.add(notificationClasses.hasContainer);
+    state.containerEl.classList.add(classes.hasContainer);
   }
 };
 
@@ -104,7 +120,7 @@ var setTitleStyles = function setTitleStyles(titleEl) {
   var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
   var paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
   if (height > lineHeight + paddingTop + paddingBottom) {
-    titleEl.classList.add(notificationClasses.multilineTitle);
+    titleEl.classList.add(classes.multilineTitle);
   }
 };
 
@@ -135,7 +151,7 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   state.el = dom;
-  var titleEl = state.el.querySelector("." + notificationClasses.title);
+  var titleEl = state.el.querySelector("." + classes.title);
   if (titleEl) {
     setTitleStyles(titleEl);
   }
@@ -157,8 +173,8 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), _defineProperty({
-    className: [notificationClasses.component, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
-    attrs.tone === "light" ? "pe-light-tone" : null, attrs.containerSelector ? notificationClasses.hasContainer : null, attrs.layout === "vertical" ? notificationClasses.vertical : notificationClasses.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    attrs.tone === "light" ? "pe-light-tone" : null, attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
     return e.preventDefault();
   }));
@@ -183,9 +199,9 @@ var createContent = function createContent(vnode, _ref2) {
   }
 
   return h("div", {
-    className: notificationClasses.content,
+    className: classes.content,
     style: attrs.style
-  }, attrs.content || [attrs.title ? h("div", { className: notificationClasses.title }, attrs.title) : null, attrs.action ? h("div", { className: notificationClasses.action }, attrs.action) : null]);
+  }, attrs.content || [attrs.title ? h("div", { className: classes.title }, attrs.title) : null, attrs.action ? h("div", { className: classes.action }, attrs.action) : null]);
 };
 
 var notificationInstance = Object.freeze({
@@ -260,4 +276,4 @@ var transitions = {
   hide: hide$1
 };
 
-export { notificationInstance as coreNotificationInstance, notificationClasses as classes, vars$1 as vars, transitions };
+export { notificationInstance as coreNotificationInstance, vars$1 as vars, transitions };

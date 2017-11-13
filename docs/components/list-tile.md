@@ -102,6 +102,5 @@ List Tile is composed from:
 
 ## CSS classes
 
-See: `polythene-core-list-tile/src/classes.js`
-
+* [List Tile classes](../../packages/polythene-css-classes/list-tile.js)
 

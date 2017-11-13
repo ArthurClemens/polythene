@@ -1,6 +1,23 @@
 import { flex, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-notification';
+import { vars } from 'polythene-core-notification';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

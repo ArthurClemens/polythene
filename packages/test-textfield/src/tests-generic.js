@@ -530,7 +530,6 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             { [k["autocomplete"]]: "on" }, 
             h("div",
               {
-                autofill: true,
                 label: "Customer information"
               },
               [

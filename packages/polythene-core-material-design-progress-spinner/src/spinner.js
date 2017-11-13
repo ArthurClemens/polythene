@@ -1,7 +1,7 @@
 import { unpackAttrs } from "polythene-core";
 import { easing } from "polythene-utilities";
 import themeVars from "./vars";
-import classes from "./classes";
+import classes from "polythene-css-classes/material-design-progress-spinner";
 
 const DEFAULT_UPDATE_DURATION = .8;
 

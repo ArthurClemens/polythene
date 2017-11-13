@@ -29,6 +29,4 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 
 ## CSS classes
 
-See: `polythene-core-svg/src/classes.js`
-
-
+* [SVG classes](../../packages/polythene-css-classes/svg.js)

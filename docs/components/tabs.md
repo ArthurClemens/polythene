@@ -96,7 +96,6 @@ Tabs sometimes uses:
 
 ## CSS classes
 
-See: `polythene-core-tabs/src/classes.js`
-
+* [Tabs classes](../../packages/polythene-css-classes/tabs.js)
 
 

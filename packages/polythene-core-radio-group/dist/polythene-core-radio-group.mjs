@@ -1,5 +1,8 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { radioGroupClasses } from 'polythene-css-classes';
+
+var classes = {
+  component: "pe-radio-group"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -20,7 +23,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [radioGroupClasses.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -67,4 +70,4 @@ var radioGroup = Object.freeze({
 	createContent: createContent
 });
 
-export { radioGroup as coreRadioGroup, radioGroupClasses as classes };
+export { radioGroup as coreRadioGroup };

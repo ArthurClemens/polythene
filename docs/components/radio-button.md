@@ -67,6 +67,6 @@ Radio Button is composed from:
 
 ## CSS classes
 
-See: `polythene-core-radio-button/src/classes.js`
+* [Radio Button classes](../../packages/polythene-css-classes/radio-button.js)
 
 

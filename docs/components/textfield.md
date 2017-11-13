@@ -98,6 +98,6 @@ These options also have effect on the generated HTML input field.
 
 ## CSS classes
 
-See: `polythene-core-textfield/src/classes.js`
+* [Text Field classes](../../packages/polythene-css-classes/textfield.js)
 
 

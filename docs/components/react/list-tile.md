@@ -279,12 +279,12 @@ ListTileCSS.addStyle(".themed-list-tile", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-list-tile/src/classes.js`
+Change CSS using the [List Tile CSS classes](../../../packages/polythene-css-classes/list-tile.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-list-tile";
+import classes from "polythene-css-classes/list-tile"
 ~~~
 
 #### Style

@@ -20,9 +20,9 @@ const dialogOptions = {
   menu: <List
     hoverable
     tiles={[
-      <Tile title="Item one" selected={true} disabled={false} />,
-      <Tile title="Item two" selected={false} disabled={false} />,
-      <Tile title="Item three" selected={false} disabled={true} />
+      <Tile key="one" title="Item one" selected={true} disabled={false} />,
+      <Tile key="two" title="Item two" selected={false} disabled={false} />,
+      <Tile key="three" title="Item three" selected={false} disabled={true} />
     ]}
   />,
   hideDelay: .240

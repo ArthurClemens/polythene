@@ -16,6 +16,7 @@
   "dependencies": {
     "polythene-core": "^1.0.0-rc.8",
     "polythene-core-base-spinner": "^1.0.0-rc.8",
+    "polythene-css-classes": "^1.0.0-rc.8",
     "polythene-mithril-base": "^1.0.0-rc.8",
     "polythene-mithril-shadow": "^1.0.0-rc.8"
   },

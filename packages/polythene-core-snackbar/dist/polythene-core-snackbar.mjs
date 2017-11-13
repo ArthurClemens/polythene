@@ -1,5 +1,4 @@
 import { coreNotificationInstance, vars } from 'polythene-core-notification';
-import { snackbarClasses } from 'polythene-css-classes';
 import { vars as vars$1 } from 'polythene-theme';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -73,4 +72,4 @@ var transitions = {
   hide: hide
 };
 
-export { coreSnackbarInstance, snackbarClasses as classes, vars$2 as vars, transitions };
+export { coreSnackbarInstance, vars$2 as vars, transitions };

@@ -1,12 +1,19 @@
-import { iOSSpinnerClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-ios-spinner",
+
+  // elements
+  blades: "pe-ios-spinner__blades",
+  blade: "pe-ios-spinner__blade"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var blade = function blade(num, h) {
   return h("div", {
     key: "blade-" + num,
-    className: iOSSpinnerClasses.blade
+    className: classes.blade
   });
 };
 
@@ -17,12 +24,12 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   state.content = state.content || h("div", {
     key: "content",
-    className: iOSSpinnerClasses.blades
+    className: classes.blades
   }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (num) {
     return blade(num, h);
   }));
   return _extends({}, attrs, {
-    className: [iOSSpinnerClasses.component, attrs.className].join(" "),
+    className: [classes.component, attrs.className].join(" "),
     content: state.content
   });
 };
@@ -43,4 +50,4 @@ var vars$1 = {
   color_dark: rgba(vars.color_dark_foreground)
 };
 
-export { spinner as coreIOSSpinner, iOSSpinnerClasses as classes, vars$1 as vars };
+export { spinner as coreIOSSpinner, vars$1 as vars };

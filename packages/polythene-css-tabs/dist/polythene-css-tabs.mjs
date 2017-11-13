@@ -1,6 +1,53 @@
 import { flex, mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-tabs';
+import { vars } from 'polythene-core-tabs';
 import { vars as vars$1 } from 'polythene-theme';
+
+var buttonClasses = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
+
+var classes = {
+  component: "pe-tabs",
+
+  // elements
+  indicator: "pe-tabs__indicator",
+  scrollButton: "pe-tabs__scroll-button",
+  scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
+  scrollButtonOffset: "pe-tabs__scroll-button-offset",
+  tab: "pe-tabs__tab",
+  tabContent: "pe-tabs__tab-content",
+  tabRow: "pe-tabs__row",
+
+  // states
+  activeSelectable: "pe-tabs__active--selectable",
+  isAtEnd: "pe-tabs--end",
+  isAtStart: "pe-tabs--start",
+  isAutofit: "pe-tabs--autofit",
+  isMenu: "pe-tabs--menu",
+  scrollable: "pe-tabs--scrollable",
+  compactTabs: "pe-tabs--compact",
+  tabHasIcon: "pe-tabs__tab---icon",
+  tabRowCentered: "pe-tabs__row--centered",
+  tabRowIndent: "pe-tabs__row--indent",
+
+  // lookup
+  label: buttonClasses.label
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

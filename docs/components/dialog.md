@@ -103,6 +103,7 @@ Dialog is composed from:
 
 ## CSS classes
 
-See: `polythene-core-dialog/src/classes.js`
+* [Dialog classes](../../packages/polythene-css-classes/dialog.js)
+* [Dialog Pane classes](../../packages/polythene-css-classes/dialog-pane.js)
 
 

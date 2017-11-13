@@ -60,9 +60,11 @@ var simple = (function (_ref) {
         hoverable: true
       }
     }, [{
-      title: "Yes"
+      title: "Yes",
+      key: "yes" // for React
     }, {
-      title: "No"
+      title: "No",
+      key: "no" // for React
     }])
   });
 });
@@ -428,7 +430,8 @@ var createPositionContainer = function createPositionContainer(_ref) {
               title: title,
               positionSelected: false,
               ink: true,
-              hoverable: true
+              hoverable: true,
+              key: title
             });
           })
         })
@@ -523,6 +526,7 @@ var settings = (function (_ref) {
           tiles: menuOptions.map(function (setting, index) {
             return h(ListTile$$1, {
               title: setting,
+              key: setting, // for React
               selected: index === selectedIndex,
               ink: true,
               hoverable: true,
@@ -540,6 +544,7 @@ var settings = (function (_ref) {
         tiles: [h(ListTile$$1, {
           id: id,
           title: "When device is locked",
+          key: "one", // for React
           subtitle: menuOptions[selectedIndex],
           events: _defineProperty$2({}, k.onclick, function () {
             return state.show(true);
@@ -548,10 +553,12 @@ var settings = (function (_ref) {
           selected: show
         }), h(ListTile$$1, {
           title: "Item 2",
+          key: "two", // for React
           disabled: true,
           hoverable: true
         }), h(ListTile$$1, {
           title: "Item 3",
+          key: "three", // for React
           disabled: true,
           hoverable: true
         })]
@@ -581,12 +588,14 @@ var themed = (function (_ref) {
     title: "Yes",
     ink: true,
     className: "menu-tests-blue-menu-list-tile",
-    hoverable: true
+    hoverable: true,
+    key: "yes" // for React
   }), h(ListTile$$1, {
     title: "No",
     ink: true,
     className: "menu-tests-blue-menu-list-tile",
-    hoverable: true
+    hoverable: true,
+    key: "no" // for React
   })]);
 
   var styledList = h(List$$1, [h(ListTile$$1, {
@@ -595,14 +604,16 @@ var themed = (function (_ref) {
     style: {
       backgroundColor: themeColor,
       color: "#fff"
-    }
+    },
+    key: "yes" // for React
   }), h(ListTile$$1, {
     title: "No",
     ink: true,
     style: {
       backgroundColor: themeColor,
       color: "#fff"
-    }
+    },
+    key: "no" // for React
   })]);
 
   return { themeColor: themeColor, themedList: themedList, styledList: styledList };
@@ -631,12 +642,14 @@ var transitions = (function (_ref) {
       element: "a",
       title: "Yes",
       ink: true,
-      hoverable: true
+      hoverable: true,
+      key: "yes" // for React
     }), h(ListTile$$1, {
       element: "a",
       title: "No",
       ink: true,
-      hoverable: true
+      hoverable: true,
+      key: "no" // for React
     })])
   }));
 });
@@ -8191,7 +8204,7 @@ var _class = function (_Component) {
         didHide: function didHide() {
           return _this2.setState({ isOpen: false });
         }
-      }, renderer$1(List$1, [renderer$1(ListTile$1, { title: "Yes", ink: true, hoverable: true }), renderer$1(ListTile$1, { title: "No", ink: true, hoverable: true })]))]);
+      }, renderer$1(List$1, [renderer$1(ListTile$1, { title: "Yes", key: "yes", ink: true, hoverable: true }), renderer$1(ListTile$1, { title: "No", key: "no", ink: true, hoverable: true })]))]);
     }
   }]);
 
@@ -8285,7 +8298,7 @@ var Tile = function Tile(_ref) {
 var dialogOptions = {
   menu: react.createElement(List$1, {
     hoverable: true,
-    tiles: [react.createElement(Tile, { title: "Item one", selected: true, disabled: false }), react.createElement(Tile, { title: "Item two", selected: false, disabled: false }), react.createElement(Tile, { title: "Item three", selected: false, disabled: true })]
+    tiles: [react.createElement(Tile, { key: "one", title: "Item one", selected: true, disabled: false }), react.createElement(Tile, { key: "two", title: "Item two", selected: false, disabled: false }), react.createElement(Tile, { key: "three", title: "Item three", selected: false, disabled: true })]
   }),
   hideDelay: .240
 };
@@ -8352,12 +8365,14 @@ var _class$2 = function (_Component) {
           title: "Link to Shadow",
           url: {
             to: "/shadow"
-          }
+          },
+          key: "shadow"
         }, {
           title: "Link to Button",
           url: {
             to: "/button"
-          }
+          },
+          key: "button"
         }])
       })]);
     }

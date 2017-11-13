@@ -2,7 +2,6 @@ exports[`test Autocomplete form 1`] = `
 <form
   autoComplete="on">
   <div
-    autofill={true}
     label="Customer information">
     <TextField
       floatingLabel={true}

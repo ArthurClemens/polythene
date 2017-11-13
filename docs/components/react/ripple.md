@@ -104,14 +104,13 @@ h(Ripple, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-ripple/src/classes.js`
+Change CSS using the [Ripple CSS classes](../../../packages/polythene-css-classes/ripple.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-ripple";
+import classes from "polythene-css-classes/ripple"
 ~~~
-
 By default the inherited `color` from the parent element is used. It can be changed with CSS:
 
 ~~~css

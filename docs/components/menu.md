@@ -81,7 +81,7 @@ Menu also contains:
 
 ## CSS classes
 
-See: `polythene-core-menu/src/classes.js`
+* [Menu classes](../../packages/polythene-css-classes/menu.js)
 
 
 ## Future

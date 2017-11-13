@@ -1,5 +1,14 @@
-import { iconButtonClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-button pe-icon-button",
+
+  // elements
+  content: "pe-icon-button__content",
+
+  // states
+  compact: "pe-icon-button--compact"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -14,8 +23,8 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
-    content: h("div", { className: iconButtonClasses.content }, content),
-    parentClassName: [attrs.parentClassName || iconButtonClasses.component, attrs.compact ? iconButtonClasses.compact : null].join(" "),
+    content: h("div", { className: classes.content }, content),
+    parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
     animateOnTap: false
@@ -63,4 +72,4 @@ var vars$1 = {
   color_dark_focus_opacity: vars.blend_dark_background_hover_medium
 };
 
-export { iconButton as coreIconButton, iconButtonClasses as classes, vars$1 as vars };
+export { iconButton as coreIconButton, vars$1 as vars };

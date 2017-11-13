@@ -1,7 +1,9 @@
 import { StateComponent, renderer as h } from "polythene-react-base";
 import { Conditional } from "polythene-core";
-import { coreMaterialDesignSpinner as core, classes } from "polythene-core-material-design-spinner";
+import { coreMaterialDesignSpinner as core } from "polythene-core-material-design-spinner";
+import classes from "polythene-css-classes/material-design-spinner";
 import { BaseSpinner } from "polythene-react-base-spinner";
+import baseSpinnerClasses from "polythene-css-classes/base-spinner";
 
 const SpinnerInstance = StateComponent(Object.assign(
   {},
@@ -17,7 +19,7 @@ export const MaterialDesignSpinner = props => (
     {},
     props,
     {
-      placeholderClassName: BaseSpinner.classes.placeholder,
+      placeholderClassName: baseSpinnerClasses.placeholder,
       instance: SpinnerInstance
     }
   ))

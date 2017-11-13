@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/tabs";
 
 // Don't export 'element': it will be the wrapped IconButton component (set in polythene-xxx-tabs/scroll-button)
 

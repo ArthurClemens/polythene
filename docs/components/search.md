@@ -60,7 +60,7 @@ Search usually contains:
 
 ## CSS classes
 
-See: `polythene-core-search/src/classes.js`
+* [Search classes](../../packages/polythene-css-classes/search.js)
 
 
 ## Future

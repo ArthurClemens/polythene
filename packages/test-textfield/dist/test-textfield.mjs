@@ -777,7 +777,6 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return h("form", _defineProperty({}, k["autocomplete"], "on"), h("div", {
-          autofill: true,
           label: "Customer information"
         }, [h(TextField$$1, {
           type: "email",
@@ -4961,61 +4960,49 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-var React_1 = React$1;
-
 'use strict';
 
-var react = React_1;
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var reactTests = function reactTests(_ref) {
-  var TextField$$1 = _ref.TextField;
-  // eslint-disable-line no-unused-vars
-
-  var block = function block(test) {
-    var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return react.createElement(
-      "div",
-      {
-        style: _extends$2({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
-      },
-      test
-    );
-  };
-
-  return [{
-    section: "React JSX tests"
-  }, {
-    name: "Option: value (JSX)",
-    component: function component() {
-      return block([react.createElement(TextField$$1, {
-        type: "password",
-        defaultValue: "123456",
-        key: "a"
-      }), react.createElement(TextField$$1, {
-        type: "number",
-        defaultValue: "123456",
-        key: "b"
-      }), react.createElement(TextField$$1, {
-        type: "email",
-        defaultValue: "a@b.com",
-        key: "c"
-      })]);
-    }
-  }, {
-    name: "Option: counter, floatingLabel (JSX)",
-    interactive: true,
-    component: function component() {
-      return block([react.createElement(TextField$$1, {
-        label: "Description",
-        floatingLabel: true,
-        counter: 15,
-        error: "You have exceeded the maximum number of characters.",
-        key: "x"
-      })]);
-    }
-  }];
+  return [
+    // {
+    //   section: "React JSX tests",
+    // },
+    // {
+    //   name: "Option: value (JSX)",
+    //   component: () =>
+    //     block([
+    //       <TextField
+    //         type="password"
+    //         defaultValue="123456"
+    //         key="a"
+    //       />,
+    //       <TextField
+    //         type="number"
+    //         defaultValue="123456"
+    //         key="b"
+    //       />,
+    //       <TextField
+    //         type="email"
+    //         defaultValue="a@b.com"
+    //         key="c"
+    //       />
+    //     ])
+    // },
+    // {
+    //   name: "Option: counter, floatingLabel (JSX)",
+    //   interactive: true,
+    //   component: () =>
+    //     block([
+    //       <TextField
+    //         label="Description"
+    //         floatingLabel
+    //         counter={15}
+    //         error="You have exceeded the maximum number of characters."
+    //         key="x"
+    //       />
+    //     ])
+    // },
+  ];
 };
 
 var testsReact = [].concat(genericTests({ TextField: TextField$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ TextField: TextField$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));

@@ -141,18 +141,19 @@ m(Spinner, {
 
 #### CSS
 
-Change CSS using the CSS classes in:
+Change CSS using the CSS classes:
 
-* `polythene-core-ios-spinner/src/classes.js`
-* `polythene-core-material-design-spinner/src/classes.js`
-* `polythene-core-material-design-progress-spinner/src/classes.js`
+* [Base Spinner CSS classes](../../../packages/polythene-css-classes/base-spinner.js)
+* [iOS Spinner CSS classes](../../../packages/polythene-css-classes/ios-spinner.js)
+* [Material Design Spinner CSS classes](../../../packages/polythene-css-classes/material-design-spinner.js)
+* [Material Design Progress Spinner CSS classes](../../../packages/polythene-css-classes/material-design-progress-spinner.js)
 
-Class names can be accessed by calling the `classes` property on the imported spinner:
+Class names can be imported with:
 
 ~~~javascript
-import { MaterialDesignProgressSpinner as Spinner } from "polythene-mithril"
+import classes from "polythene-css-classes/ios-spinner"
 
-// MaterialDesignProgressSpinner.classes
+// etcetera
 ~~~
 
 #### Style

@@ -42,6 +42,6 @@ Raised button is composed from:
 
 ## CSS classes
 
-See: `polythene-core-raised-button/src/classes.js`
+* [Raised Button classes](../../packages/polythene-css-classes/raised-button.js)
 
 

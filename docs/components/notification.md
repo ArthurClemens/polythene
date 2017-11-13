@@ -87,4 +87,6 @@ Notification is composed from:
 
 ## CSS classes
 
-See: `polythene-core-notification/src/classes.js`
+* [Notification classes](../../packages/polythene-css-classes/notification.js)
+* [Snackbar classes](../../packages/polythene-css-classes/snackbar.js)
+

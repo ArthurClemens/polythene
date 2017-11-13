@@ -86,8 +86,8 @@ Spinner sometimes uses:
 
 ## CSS classes
 
-See:
+* [Base Spinner classes](../../packages/polythene-css-classes/base-spinner.js)
+* [iOS Spinner classes](../../packages/polythene-css-classes/ios-spinner.js)
+* [Material Design Spinner classes](../../packages/polythene-css-classes/material-design-spinner.js)
+* [Material Design Progress Spinner classes](../../packages/polythene-css-classes/material-design-progress-spinner.js)
 
-* `polythene-core-ios-spinner/src/classes.js`
-* `polythene-core-material-design-spinner/src/classes.js`
-* `polythene-core-material-design-progress-spinner/src/classes.js`

@@ -2,7 +2,6 @@ import m from 'mithril';
 
 var keys = {
   autocomplete: "autocomplete",
-  autofill: "autofill",
   autofocus: "autofocus",
   class: "class",
   className: "class",

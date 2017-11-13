@@ -50,6 +50,5 @@ Icon is composed from:
 
 ## CSS classes
 
-See: `polythene-core-icon/src/classes.js`
-
+* [Icon classes](../../packages/polythene-css-classes/icon.js)
 

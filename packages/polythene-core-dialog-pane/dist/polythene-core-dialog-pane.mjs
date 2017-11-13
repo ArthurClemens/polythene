@@ -1,6 +1,27 @@
 import { filterSupportedAttributes, subscribe, unpackAttrs, unsubscribe } from 'polythene-core';
-import { dialogPaneClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-dialog-pane",
+
+  // elements
+  actions: "pe-dialog-pane__actions",
+  body: "pe-dialog-pane__body",
+  content: "pe-dialog-pane__content",
+  footer: "pe-dialog-pane__footer",
+  header: "pe-dialog-pane__header",
+  title: "pe-dialog-pane__title",
+
+  // states
+  withHeader: "pe-dialog-pane--header",
+  withFooter: "pe-dialog-pane--footer",
+  headerWithTitle: "pe-dialog-pane__header--title",
+  footerWithButtons: "pe-dialog-pane__footer--buttons",
+  footerHigh: "pe-dialog-pane__footer--high",
+  borderBottom: "pe-dialog-pane--border-bottom",
+  borderTop: "pe-dialog-pane--border-top",
+  fullBleed: "pe-dialog-pane--body-full-bleed"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -32,9 +53,9 @@ var updateFooterState = function updateFooterState(vnode) {
   var height = footerEl.getBoundingClientRect().height;
   var minHeight = parseInt(style.minHeight, 10);
   if (height > minHeight) {
-    footerEl.classList.add(dialogPaneClasses.footerHigh);
+    footerEl.classList.add(classes.footerHigh);
   } else {
-    footerEl.classList.remove(dialogPaneClasses.footerHigh);
+    footerEl.classList.remove(classes.footerHigh);
   }
 };
 
@@ -69,9 +90,9 @@ var onMount = function onMount(vnode) {
   var state = vnode.state;
   state.el(dom);
 
-  state.scrollEl(dom.querySelector("." + dialogPaneClasses.body));
-  state.footerEl(dom.querySelector("." + dialogPaneClasses.footer));
-  state.headerEl(dom.querySelector("." + dialogPaneClasses.title));
+  state.scrollEl(dom.querySelector("." + classes.body));
+  state.footerEl(dom.querySelector("." + classes.footer));
+  state.headerEl(dom.querySelector("." + classes.title));
 
   state.isScrolling.map(function () {
     return updateScrollOverflowState(vnode);
@@ -108,7 +129,7 @@ var createProps = function createProps(vnode, _ref) {
   var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
-    className: [dialogPaneClasses.component, attrs.fullBleed ? dialogPaneClasses.fullBleed : null, showTopBorder ? dialogPaneClasses.borderTop : null, showBottomBorder ? dialogPaneClasses.borderBottom : null, withHeader ? dialogPaneClasses.withHeader : null, withFooter ? dialogPaneClasses.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.formOptions);
 };
 
@@ -120,13 +141,13 @@ var createContent = function createContent(vnode, _ref2) {
   var attrs = unpackAttrs(vnode.attrs);
 
   return h("div", {
-    className: [dialogPaneClasses.content, attrs.menu ? dialogPaneClasses.menuContent : null].join(" "),
+    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
     style: attrs.style
   }, [attrs.header ? attrs.header : attrs.title ? h("div", {
-    className: [dialogPaneClasses.header, dialogPaneClasses.headerWithTitle].join(" "),
+    className: [classes.header, classes.headerWithTitle].join(" "),
     key: "title"
-  }, h("div", { className: dialogPaneClasses.title }, attrs.title)) : null, h("div", _defineProperty({
-    className: dialogPaneClasses.body,
+  }, h("div", { className: classes.title }, attrs.title)) : null, h("div", _defineProperty({
+    className: classes.body,
     key: "body"
   }, k.onscroll, function () {
     state.isScrolling(true);
@@ -135,12 +156,12 @@ var createContent = function createContent(vnode, _ref2) {
       state.isScrolling(false);
     }, SCROLL_WATCH_END_TIMER);
   }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
-    className: dialogPaneClasses.footer,
+    className: classes.footer,
     key: "footer"
   }, attrs.footer) : attrs.footerButtons ? h("div", {
-    className: [dialogPaneClasses.footer, dialogPaneClasses.footerWithButtons].join(" "),
+    className: [classes.footer, classes.footerWithButtons].join(" "),
     key: "footer"
-  }, h("div", { className: dialogPaneClasses.actions }, attrs.footerButtons)) : null]);
+  }, h("div", { className: classes.actions }, attrs.footerButtons)) : null]);
 };
 
 var dialogPane = Object.freeze({
@@ -176,4 +197,4 @@ var vars$1 = {
   color_dark_background: "inherit"
 };
 
-export { dialogPane as coreDialogPane, dialogPaneClasses as classes, vars$1 as vars };
+export { dialogPane as coreDialogPane, vars$1 as vars };

@@ -108,12 +108,12 @@ h(SVG, { className: "themed-svg" })
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-svg/src/classes.js`
+Change CSS using the [SVG CSS classes](../../../packages/polythene-css-classes/svg.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-svg";
+import classes from "polythene-css-classes/svg"
 ~~~
 
 #### Style option

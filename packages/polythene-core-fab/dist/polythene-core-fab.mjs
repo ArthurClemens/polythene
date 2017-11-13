@@ -1,5 +1,14 @@
-import { fabClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-fab",
+
+  // elements
+  content: "pe-fab__content",
+
+  // states
+  mini: "pe-fab--mini"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -14,8 +23,8 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
-    content: h("div", { className: fabClasses.content }, content),
-    parentClassName: [fabClasses.component, attrs.mini ? fabClasses.mini : null, attrs.className || attrs[k.class]].join(" "),
+    content: h("div", { className: classes.content }, content),
+    parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
     // defaults
     ripple: {
       center: true,
@@ -58,4 +67,4 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_primary)
 };
 
-export { fab as coreFAB, fabClasses as classes, vars$1 as vars };
+export { fab as coreFAB, vars$1 as vars };

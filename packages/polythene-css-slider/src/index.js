@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-slider";
+import { vars } from "polythene-core-slider";
+import classes from "polythene-css-classes/slider";
 import layout from "./layout";
 import color from "./color";
 

@@ -162,13 +162,16 @@ var genericTests = (function (_ref) {
         hoverable: true,
         tiles: [h(ListTile$$1, {
           title: listTitle,
-          subtitle: listSubtitle
+          subtitle: listSubtitle,
+          key: "one" // for React
         }), h(ListTile$$1, {
           title: listTitle,
-          subtitle: listSubtitle
+          subtitle: listSubtitle,
+          key: "two" // for React
         }), h(ListTile$$1, {
           title: listTitle,
-          subtitle: listSubtitle
+          subtitle: listSubtitle,
+          key: "three" // for React
         })]
       })
     }
@@ -320,7 +323,9 @@ var genericTests = (function (_ref) {
           layout: "vertical",
           bordered: true,
           tight: true,
-          content: h(List$$1, { borders: true }, [h(ListTile$$1, { hoverable: true }, "Action 1"), h(ListTile$$1, { hoverable: true }, "Action 2"), h(ListTile$$1, { hoverable: true }, "Action 3")])
+          content: h(List$$1, { borders: true }, [
+          // keys for React
+          h(ListTile$$1, { hoverable: true, key: "one" }, "Action 1"), h(ListTile$$1, { hoverable: true, key: "two" }, "Action 2"), h(ListTile$$1, { hoverable: true, key: "three" }, "Action 3")])
         }
       }]
     }

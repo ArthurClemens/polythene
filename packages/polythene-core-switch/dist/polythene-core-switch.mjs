@@ -1,7 +1,15 @@
-import { switchClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-selection-control';
 import { vars as vars$2 } from 'polythene-core-icon-button';
+
+var classes = {
+  component: "pe-switch-control",
+
+  // elements
+  knob: "pe-switch-control__knob",
+  thumb: "pe-switch-control__thumb",
+  track: "pe-switch-control__track"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -15,7 +23,7 @@ var createProps = function createProps(vnode) {
     selectable: attrs.selectable || function () {
       return true;
     }, // default: always selectable, regardless the checked state
-    instanceClass: switchClasses.component,
+    instanceClass: classes.component,
     type: "checkbox"
   });
 };
@@ -42,12 +50,12 @@ var createContent = function createContent(vnode, _ref) {
   var z = attrs.checked ? zOn : zOff;
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
   return [h("div", {
-    className: switchClasses.track,
+    className: classes.track,
     key: "track"
   }), h(IconButton, _extends$1({}, {
-    className: switchClasses.thumb,
+    className: classes.thumb,
     key: "button",
-    content: h("div", { className: switchClasses.knob }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
+    content: h("div", { className: classes.knob }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
       z: z,
       animated: true
     }) : null]),
@@ -122,4 +130,4 @@ var vars$3 = _extends$2({}, vars$1, {
   // color_dark_focus_on and so on taken from selectionControlVars
 });
 
-export { _switch as coreSwitch, viewControl, switchClasses as classes, vars$3 as vars };
+export { _switch as coreSwitch, viewControl, vars$3 as vars };

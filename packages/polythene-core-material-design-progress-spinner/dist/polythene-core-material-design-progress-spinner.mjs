@@ -2,7 +2,6 @@ import { unpackAttrs } from 'polythene-core';
 import { easing } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-base-spinner';
-import { materialDesignProgressSpinnerClasses } from 'polythene-css-classes';
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -22,6 +21,16 @@ var themeVars = _extends$1({}, vars$1, {
   color_light: rgba(vars.color_primary),
   color_dark: rgba(vars.color_primary)
 });
+
+var classes = {
+  component: "pe-md-progress-spinner",
+
+  // elements
+  animation: "pe-md-progress-spinner__animation",
+  circle: "pe-md-progress-spinner__circle",
+  circleRight: "pe-md-progress-spinner__circle-right",
+  circleLeft: "pe-md-progress-spinner__circle-left"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -43,15 +52,15 @@ var rotateCircle = function rotateCircle(el, min, max, percentage) {
 };
 
 var animate = function animate(stateEl, size, percentage) {
-  var animationEl = stateEl.querySelector("." + materialDesignProgressSpinnerClasses.animation);
+  var animationEl = stateEl.querySelector("." + classes.animation);
   var animationElStyle = animationEl.style;
   if (percentage < 0.5) {
     animationElStyle.clip = "rect(0px, " + size + "px, " + size + "px, " + size / 2 + "px)";
   } else {
     animationElStyle.clip = "rect(auto, auto, auto, auto)";
   }
-  var leftCircle = stateEl.querySelector("." + materialDesignProgressSpinnerClasses.circleLeft);
-  var rightCircle = stateEl.querySelector("." + materialDesignProgressSpinnerClasses.circleRight);
+  var leftCircle = stateEl.querySelector("." + classes.circleLeft);
+  var rightCircle = stateEl.querySelector("." + classes.circleRight);
   leftCircle.style.clip = rightCircle.style.clip = "rect(0px, " + size / 2 + "px, " + size + "px, " + "0px)";
   rotateCircle(rightCircle, 0, 180, Math.min(1, percentage * 2));
   rotateCircle(leftCircle, 0, 360, percentage);
@@ -140,21 +149,21 @@ var createProps = function createProps(vnode, _ref) {
 
   var content = h("div", {
     key: "content",
-    className: materialDesignProgressSpinnerClasses.animation,
+    className: classes.animation,
     style: {
       width: size + "px",
       height: size + "px"
     }
   }, [h("div", {
     key: "left",
-    className: [materialDesignProgressSpinnerClasses.circle, materialDesignProgressSpinnerClasses.circleLeft].join(" ")
+    className: [classes.circle, classes.circleLeft].join(" ")
   }), h("div", {
     key: "right",
-    className: [materialDesignProgressSpinnerClasses.circle, materialDesignProgressSpinnerClasses.circleRight].join(" ")
+    className: [classes.circle, classes.circleRight].join(" ")
   })]);
 
   return _extends({}, attrs, {
-    className: [materialDesignProgressSpinnerClasses.component, attrs.className].join(" "),
+    className: [classes.component, attrs.className].join(" "),
     content: content
   });
 };
@@ -165,4 +174,4 @@ var spinner = Object.freeze({
 	createProps: createProps
 });
 
-export { spinner as coreMaterialDesignProgressSpinner, materialDesignProgressSpinnerClasses as classes, themeVars as vars };
+export { spinner as coreMaterialDesignProgressSpinner, themeVars as vars };

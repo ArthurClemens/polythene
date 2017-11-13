@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/fab";
 
 // Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 

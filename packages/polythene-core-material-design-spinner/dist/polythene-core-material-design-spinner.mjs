@@ -1,26 +1,39 @@
-import { materialDesignSpinnerClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-base-spinner';
+
+var classes = {
+  component: "pe-md-spinner",
+
+  // elements
+  animation: "pe-md-spinner__animation",
+  circle: "pe-md-spinner__circle",
+  circleClipper: "pe-md-spinner__circle-clipper",
+  circleClipperLeft: "pe-md-spinner__circle-clipper-left",
+  circleClipperRight: "pe-md-spinner__circle-clipper-right",
+  gapPatch: "pe-md-spinner__gap-patch",
+  layer: "pe-md-spinner__layer",
+  layerN: "pe-md-spinner__layer-"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var layer = function layer(num, h) {
   return h("div", {
     key: num,
-    className: [materialDesignSpinnerClasses.layer, materialDesignSpinnerClasses.layerN + num].join(" ")
+    className: [classes.layer, classes.layerN + num].join(" ")
   }, [h("div", {
     key: "clipper-left",
-    className: [materialDesignSpinnerClasses.circleClipper, materialDesignSpinnerClasses.circleClipperLeft].join(" ")
+    className: [classes.circleClipper, classes.circleClipperLeft].join(" ")
   }, h("div", {
     key: "circle",
-    className: materialDesignSpinnerClasses.circle
+    className: classes.circle
   })), h("div", {
     key: "gap-patch",
-    className: materialDesignSpinnerClasses.gapPatch
-  }, h("div", { className: materialDesignSpinnerClasses.circle })), h("div", {
+    className: classes.gapPatch
+  }, h("div", { className: classes.circle })), h("div", {
     key: "clipper-right",
-    className: [materialDesignSpinnerClasses.circleClipper, materialDesignSpinnerClasses.circleClipperRight].join(" ")
-  }, h("div", { className: materialDesignSpinnerClasses.circle }))]);
+    className: [classes.circleClipper, classes.circleClipperRight].join(" ")
+  }, h("div", { className: classes.circle }))]);
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -30,12 +43,12 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   state.content = state.content || h("div", {
     key: "content",
-    className: materialDesignSpinnerClasses.animation
+    className: classes.animation
   }, [1, 2, 3, 4].map(function (num) {
     return layer(num, h);
   }));
   return _extends({}, attrs, {
-    className: [materialDesignSpinnerClasses.component, attrs.className].join(" "),
+    className: [classes.component, attrs.className].join(" "),
     content: state.content
   });
 };
@@ -95,4 +108,4 @@ var vars$2 = {
   color_dark_4: green500
 };
 
-export { spinner as coreMaterialDesignSpinner, materialDesignSpinnerClasses as classes, vars$2 as vars };
+export { spinner as coreMaterialDesignSpinner, vars$2 as vars };

@@ -1,6 +1,32 @@
 import { filterSupportedAttributes, isClient } from 'polythene-core';
-import { listTileClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+  component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -13,17 +39,17 @@ var getElement = function getElement() {
 var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
   var url = attrs.keyboardControl ? null : attrs.url;
   var element = attrs.element ? attrs.element : url ? "a" : "div";
-  var contentFrontClass = [listTileClasses.content, listTileClasses.contentFront, attrs.compactFront ? listTileClasses.compactFront : null].join(" ");
+  var contentFrontClass = [classes.content, classes.contentFront, attrs.compactFront ? classes.compactFront : null].join(" ");
   var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? { key: "front" } : null, { className: contentFrontClass })) : null;
   var hasTabIndex = !attrs.header && attrs.url;
   var props = _extends({}, filterSupportedAttributes(attrs), attrs.events, {
-    className: listTileClasses.primary,
+    className: classes.primary,
     style: null
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
   var content = attrs.content ? attrs.content : [frontComp, h("div", {
-    className: listTileClasses.content,
+    className: classes.content,
     style: attrs.style
-  }, [attrs.content ? _extends({}, requiresKeys ? { key: "content" } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? { key: "title" } : null, { className: listTileClasses.title }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? { key: "subtitle" } : null, { className: listTileClasses.subtitle }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? { key: "highSubtitle" } : null, { className: listTileClasses.subtitle + " " + listTileClasses.highSubtitle }), attrs.highSubtitle) : null, attrs.subContent ? h("div", _extends({}, requiresKeys ? { key: "subContent" } : null, { className: listTileClasses.subContent }), attrs.subContent) : null])];
+  }, [attrs.content ? _extends({}, requiresKeys ? { key: "content" } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? { key: "title" } : null, { className: classes.title }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? { key: "subtitle" } : null, { className: classes.subtitle }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? { key: "highSubtitle" } : null, { className: classes.subtitle + " " + classes.highSubtitle }), attrs.highSubtitle) : null, attrs.subContent ? h("div", _extends({}, requiresKeys ? { key: "subContent" } : null, { className: classes.subContent }), attrs.subContent) : null])];
   return h(element, props, content);
 };
 
@@ -34,8 +60,8 @@ var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
   var element = attrs.element ? attrs.element : url ? "a" : "div";
   var hasTabIndex = attrs.url;
   return h(element, _extends({}, url, {
-    className: listTileClasses.secondary
-  }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", { className: listTileClasses.content }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
+    className: classes.secondary
+  }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", { className: classes.content }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
@@ -97,10 +123,10 @@ var createProps = function createProps(vnode, _ref3) {
   var attrs = vnode.attrs;
   var highlight = state.highlight();
   var hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
-  var heightClass = attrs.subtitle ? listTileClasses.hasSubtitle : attrs.highSubtitle ? listTileClasses.hasHighSubtitle : attrs.front || attrs.indent ? listTileClasses.hasFront : null;
+  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
   {
-    className: [listTileClasses.component, attrs.selected ? listTileClasses.selected : null, attrs.disabled ? listTileClasses.disabled : null, attrs.sticky ? listTileClasses.sticky : null, attrs.compact ? listTileClasses.compact : null, attrs.hoverable ? listTileClasses.hoverable : null, attrs.selectable ? listTileClasses.selectable : null, highlight ? listTileClasses.highlight : null, attrs.header ? listTileClasses.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)
   // events and url are attached to primary content to not interfere with controls
   );
@@ -199,4 +225,4 @@ var vars$1 = {
   // color_dark_background:           "inherit",
 };
 
-export { listTile as coreListTile, listTileClasses as classes, vars$1 as vars };
+export { listTile as coreListTile, vars$1 as vars };

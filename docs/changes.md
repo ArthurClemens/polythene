@@ -4,11 +4,17 @@
 
 ### 1.0.0-rc.9
 
+CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
+
+~~~javascript
+import classes from "polythene-css-classes/component-name"
+~~~
+
 Changes to components:
 
 * Toolbar now has a default background color
 
-Bug fixes.
+Bug fixes (thanks sjungwirth!).
 
 
 ### 1.0.0-rc.8

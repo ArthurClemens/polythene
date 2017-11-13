@@ -1,6 +1,7 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreDialogInstance as core, classes, transitions } from "polythene-core-dialog";
+import { coreDialogInstance as core, transitions } from "polythene-core-dialog";
+import classes from "polythene-css-classes/dialog";
 import { DialogPane } from "polythene-react-dialog-pane";
 import { Shadow } from "polythene-react-shadow";
 

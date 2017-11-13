@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/material-design-spinner";
 
 const layer = (num, h) =>
   h("div",

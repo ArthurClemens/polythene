@@ -84,6 +84,5 @@ List is composed from:
 
 ## CSS classes
 
-See: `polythene-core-list/src/classes.js`
-
+* [List classes](../../packages/polythene-css-classes/list.js)
 

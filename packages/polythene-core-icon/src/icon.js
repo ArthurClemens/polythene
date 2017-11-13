@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/icon";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";

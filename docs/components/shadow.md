@@ -38,6 +38,4 @@ Adds a configurable shadow to an element.
 
 ## CSS classes
 
-See: `polythene-core-shadow/src/classes.js`
-
-
+* [Shadow classes](../../packages/polythene-css-classes/shadow.js)

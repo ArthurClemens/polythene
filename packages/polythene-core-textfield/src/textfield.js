@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, pointerStartEvent } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/textfield";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -108,14 +108,14 @@ export const getInitialState = (vnode, createStream) => {
 
   return {
     defaultValue,
-    previousValue,
     el,
     error,
     hasFocus,
     inputEl,
+    isDirty,
     isInvalid,
     isTouched,
-    isDirty,
+    previousValue,
     setFocus,
     setValue,
     redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])

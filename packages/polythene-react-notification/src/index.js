@@ -1,6 +1,7 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreNotificationInstance as core, transitions, classes } from "polythene-core-notification";
+import { coreNotificationInstance as core, transitions } from "polythene-core-notification";
+import classes from "polythene-css-classes/notification";
 
 export const NotificationInstance = StateComponent(core);
 

@@ -1,6 +1,6 @@
 exports[`test Autocomplete form 1`] = `
 "<form autocomplete=\"on\">
-  <div autofill=\"\" label=\"Customer information\">
+  <div label=\"Customer information\">
     <div class=\"pe-textfield pe-textfield--floating-label\">
       <div class=\"pe-textfield__input-area\">
         <label class=

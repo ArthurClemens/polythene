@@ -1,5 +1,19 @@
 import { mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-material-design-spinner';
+import { vars } from 'polythene-core-material-design-spinner';
+
+var classes = {
+  component: "pe-md-spinner",
+
+  // elements
+  animation: "pe-md-spinner__animation",
+  circle: "pe-md-spinner__circle",
+  circleClipper: "pe-md-spinner__circle-clipper",
+  circleClipperLeft: "pe-md-spinner__circle-clipper-left",
+  circleClipperRight: "pe-md-spinner__circle-clipper-right",
+  gapPatch: "pe-md-spinner__gap-patch",
+  layer: "pe-md-spinner__layer",
+  layerN: "pe-md-spinner__layer-"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

@@ -75,5 +75,4 @@ Button is optionally composed from:
 
 ## CSS classes
 
-* [Button classes](../../packages/polythene-css-classes/src/button.js)
-
+* [Button classes](../../packages/polythene-css-classes/button.js)

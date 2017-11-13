@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, show, hide } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/base-spinner";
 
 const sizeClasses = {
   small:   classes.small,

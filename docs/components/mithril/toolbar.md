@@ -131,12 +131,12 @@ m(Toolbar, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-toolbar/src/classes.js`
+Change CSS using the [Toolbar CSS classes](../../../packages/polythene-css-classes/toolbar.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-toolbar";
+import classes from "polythene-css-classes/toolbar"
 ~~~
 
 #### Style

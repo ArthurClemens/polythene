@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-tabs";
+import { vars } from "polythene-core-tabs";
+import classes from "polythene-css-classes/tabs";
 import layout from "./layout";
 import color from "./color";
 

@@ -190,12 +190,14 @@ ListCSS.addStyle(".themed-list", {
 <List className="themed-list" />
 ~~~
 
-Change CSS using the CSS classes in `polythene-core-list/src/classes.js`
+#### CSS
+
+Change CSS using the [List CSS classes](../../../packages/polythene-css-classes/list.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-list";
+import classes from "polythene-css-classes/list"
 ~~~
 
 #### Style

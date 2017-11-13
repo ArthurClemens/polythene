@@ -1,6 +1,36 @@
 import { flex, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-snackbar';
+import { vars } from 'polythene-core-snackbar';
 import { vars as vars$1 } from 'polythene-theme';
+
+var notificationClasses = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var classes = _extends$1({}, notificationClasses, {
+  component: "pe-notification pe-snackbar",
+
+  // elements
+  holder: "pe-snackbar__holder",
+  placeholder: "pe-snackbar__placeholder",
+
+  // states
+  open: "pe-snackbar--open"
+});
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

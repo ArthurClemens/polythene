@@ -1,5 +1,9 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-svg';
+import { vars } from 'polythene-core-svg';
+
+var classes = {
+  component: "pe-svg"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

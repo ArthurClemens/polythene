@@ -4,12 +4,12 @@ html, body {
   height: 100%;
 }
 
-/*body {
+body {
   opacity: 0
 }
 html.wf-active body {
   opacity: 1
-}*/
+}
 
 .ma3 {
   margin: 16px 24px;

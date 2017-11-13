@@ -53,6 +53,6 @@ Icon Button is composed from:
 
 ## CSS classes
 
-See: `polythene-core-icon-button/src/classes.js`
+* [Icon Button classes](../../packages/polythene-css-classes/icon-button.js)
 
 

@@ -1,5 +1,23 @@
 import { mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-button';
+import { vars } from 'polythene-core-button';
+
+var classes = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

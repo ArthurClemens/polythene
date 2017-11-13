@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/dialog-pane";
 
 export const getElement = vnode =>
   vnode.attrs.element || "form";

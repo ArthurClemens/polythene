@@ -63,7 +63,7 @@ FAB is composed from:
 
 ## CSS classes
 
-See: `polythene-core-fab/src/classes.js`
+* [FAB classes](../../packages/polythene-css-classes/fab.js)
 
 
 ## Future

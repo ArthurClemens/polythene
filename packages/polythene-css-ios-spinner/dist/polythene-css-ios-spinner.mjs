@@ -1,5 +1,13 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-ios-spinner';
+import { vars } from 'polythene-core-ios-spinner';
+
+var classes = {
+  component: "pe-ios-spinner",
+
+  // elements
+  blades: "pe-ios-spinner__blades",
+  blade: "pe-ios-spinner__blade"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

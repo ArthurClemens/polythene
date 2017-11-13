@@ -75,6 +75,6 @@ Checkbox is composed from:
 
 ## CSS classes
 
-See: `polythene-core-checkbox/src/classes.js`
+* [Checkbox classes](../../packages/polythene-css-classes/checkbox.js)
 
 

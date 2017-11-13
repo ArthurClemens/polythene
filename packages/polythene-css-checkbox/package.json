@@ -17,6 +17,7 @@
   "dependencies": {
     "polythene-core-checkbox": "^1.0.0-rc.8",
     "polythene-core-css": "^1.0.0-rc.8",
+    "polythene-css-classes": "^1.0.0-rc.8",
     "polythene-css-selection-control": "^1.0.0-rc.8",
     "polythene-theme": "^1.0.0-rc.8"
   },

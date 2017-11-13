@@ -1,6 +1,6 @@
 import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes } from "polythene-core";
 import themeVars from "./vars";
-import classes from "./classes";
+import classes from "polythene-css-classes/slider";
 
 const MAX_TICKS = 100;
 let focusElement;

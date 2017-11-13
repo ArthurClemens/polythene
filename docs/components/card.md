@@ -124,6 +124,6 @@ Card is optionally composed from:
 
 ## CSS classes
 
-See: `polythene-core-card/src/classes.js`
+* [Card classes](../../packages/polythene-css-classes/card.js)
 
 

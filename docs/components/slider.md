@@ -89,7 +89,7 @@ Slider is optionally composed from:
 
 ## CSS classes
 
-See: `polythene-core-slider/src/classes.js`
+* [Slider classes](../../packages/polythene-css-classes/slider.js)
 
 
 ## Design considerations

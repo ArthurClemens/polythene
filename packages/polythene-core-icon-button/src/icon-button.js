@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/icon-button";
 
 // Don't export 'element': it will be the wrapped button component (set in polythene-xxx-icon-button)
 

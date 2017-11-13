@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/switch";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";

@@ -108,12 +108,12 @@ m(IconButton, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-icon-button/src/classes.js`
+Change CSS using the [Icon Button CSS classes](../../../packages/polythene-css-classes/icon-button.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-icon-button";
+import classes from "polythene-css-classes/icon-button"
 ~~~
 
 The icon color is set with the CSS (text) `color` attribute of the parent element. For example:

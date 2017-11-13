@@ -19,6 +19,7 @@
   "dependencies": {
     "polythene-core-toolbar": "^1.0.0-rc.8",
     "polythene-css": "^1.0.0-rc.8",
+    "polythene-css-classes": "^1.0.0-rc.8",
     "polythene-mithril": "^1.0.0-rc.8",
     "polythene-react": "^1.0.0-rc.8"
   },

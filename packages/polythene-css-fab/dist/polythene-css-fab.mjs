@@ -1,6 +1,16 @@
 import { mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-fab';
+import { vars } from 'polythene-core-fab';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+  component: "pe-fab",
+
+  // elements
+  content: "pe-fab__content",
+
+  // states
+  mini: "pe-fab--mini"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

@@ -1,6 +1,24 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { toolbarClasses } from 'polythene-css-classes';
 import { vars } from 'polythene-theme';
+
+var classes = {
+
+  // Toolbar
+
+  component: "pe-toolbar",
+
+  // states
+  compact: "pe-toolbar--compact",
+
+  // Toolbar title
+
+  // elements
+  title: "pe-toolbar__title",
+
+  // states
+  centeredTitle: "pe-toolbar__title--center",
+  indentedTitle: "pe-toolbar__title--indent"
+};
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -13,7 +31,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [toolbarClasses.component, attrs.compact ? toolbarClasses.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -39,7 +57,7 @@ var createProps$1 = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends$1({}, filterSupportedAttributes(attrs), {
-    className: [toolbarClasses.title, attrs.indent ? toolbarClasses.indentedTitle : null, attrs.center ? toolbarClasses.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -84,4 +102,4 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
-export { toolbar as coreToolbar, toolbarTitle as coreToolbarTitle, toolbarClasses as classes, vars$1 as vars };
+export { toolbar as coreToolbar, toolbarTitle as coreToolbarTitle, vars$1 as vars };

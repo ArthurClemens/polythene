@@ -1,6 +1,6 @@
 import { pointerEndEvent, filterSupportedAttributes, isServer } from "polythene-core";
 import animation from "./animation";
-import classes from "./classes";
+import classes from "polythene-css-classes/ripple";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";

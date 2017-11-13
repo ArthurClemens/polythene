@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-raised-button";
+import { vars } from "polythene-core-raised-button";
+import classes from "polythene-css-classes/raised-button";
 import color from "./color";
 
 const fns = [color];

@@ -72,6 +72,5 @@ Adds a touch ripple effect to an element.
 
 ## CSS classes
 
-See: `polythene-core-ripple/src/classes.js`
-
+* [Ripple classes](../../packages/polythene-css-classes/ripple.js)
 

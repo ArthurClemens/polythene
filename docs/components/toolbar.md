@@ -59,6 +59,5 @@ Toolbar is often composed from:
 
 ## CSS classes
 
-See: `polythene-core-toolbar/src/classes.js`
-
+* [Toolbar classes](../../packages/polythene-css-classes/toolbar.js)
 
