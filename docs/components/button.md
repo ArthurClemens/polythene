@@ -29,21 +29,6 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 
 ## Options
 
-### Common component options
-
-| **Parameter** | **Required** | **Type** | **Default** | **Description** |
-| --- | --- | --- | --- | --- |
-| **element** | optional | String | "a" | HTML element tag; may also be "button" |
-| **className** | optional | String |  | Extra CSS class appended to `pe-text-button` |
-| **style** | optional | Object |  | For setting simple style attributes |
-| **id** | optional | String |  | HTML element id |
-| **content** | use `label` or `content` | String, hyperscript or component |  | Alternative content; replaces children and ignores `label` |
-| **before** | optional | String, hyperscript or component |  | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after** | optional | String, hyperscript or component |  | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **events** | optional | Object |  | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **tabindex** (React: **tabIndex**) | optional | Integer | 0 | Tab index |
-| **tone** | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Button specific options
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
@@ -64,6 +49,21 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
+
+### Common component options
+
+| **Parameter** | **Required** | **Type** | **Default** | **Description** |
+| --- | --- | --- | --- | --- |
+| **element** | optional | String | "a" | HTML element tag; may also be "button" |
+| **className** | optional | String |  | Extra CSS class appended to `pe-text-button` |
+| **style** | optional | Object |  | For setting simple style attributes |
+| **id** | optional | String |  | HTML element id |
+| **content** | use `label` or `content` | String, hyperscript or component |  | Alternative content; replaces children and ignores `label` |
+| **before** | optional | String, hyperscript or component |  | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after** | optional | String, hyperscript or component |  | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **events** | optional | Object |  | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **tabindex** (React: **tabIndex**) | optional | Integer | 0 | Tab index |
+| **tone** | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
 ## Composition

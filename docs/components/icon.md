@@ -18,6 +18,15 @@ Displays an icon (image or [SVG](svg.md)).
 
 ## Options
 
+### Icon options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **svg**       | either `src` or `svg` must be passed | Object |  | [SVG](SVG.md) options object |
+| **src**       | either `src` or `svg` must be passed | String |  | Icon URL (for `img` only) |
+| **size**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
+| **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round portrait image |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -30,15 +39,6 @@ Displays an icon (image or [SVG](svg.md)).
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
-### Icon options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **svg**       | either `src` or `svg` must be passed | Object |  | [SVG](SVG.md) options object |
-| **src**       | either `src` or `svg` must be passed | String |  | Icon URL (for `img` only) |
-| **size**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
-| **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round portrait image |
 
 
 ## Composition

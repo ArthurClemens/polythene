@@ -25,6 +25,17 @@ Differences from [Raised Button](raised-button.md) behaviour:
 
 ## Options
 
+### Button options
+
+See: [Button options](Button.md#options)
+
+### FAB specific options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
+| **mini**      | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -39,17 +50,6 @@ Differences from [Raised Button](raised-button.md) behaviour:
 | **tabindex** (React: **tabIndex**)  | optional | Integer | | Tab index |
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
-### Button options
-
-See: [Button options](Button.md#options)
-
-### FAB specific options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
-| **mini**      | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
 
 
 ## Composition

@@ -45,19 +45,6 @@ The amount of change depends on the step size. This can be set with option `step
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
-| **id**        | optional       | String   |             | HTML element id |
-| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tabindex** (React: **tabIndex**)  | optional       | Integer  | 0           | Tab index |
-| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Slider specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -78,6 +65,19 @@ The amount of change depends on the step size. This can be set with option `step
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
+
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional       | String   | "div"       | HTML element tag |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
+| **id**        | optional       | String   |             | HTML element id |
+| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tabindex** (React: **tabIndex**)  | optional       | Integer  | 0           | Tab index |
+| **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
 ## Composition

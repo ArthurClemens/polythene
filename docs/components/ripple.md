@@ -26,16 +26,6 @@ Adds a touch ripple effect to an element.
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
-| **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id** | optional | String | | HTML element id |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Ripple specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -60,6 +50,16 @@ Adds a touch ripple effect to an element.
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation to make a persistent color fill |
 | **target**                  | optional | HTML Element | the ripple's parent node element | The target defines which element responds to tap |
+
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional | String | "div" | HTML element tag |
+| **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
+| **style**     | optional | Object |       | For setting simple style attributes |
+| **id** | optional | String | | HTML element id |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
 ## Callback functions

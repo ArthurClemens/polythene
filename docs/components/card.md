@@ -26,18 +26,6 @@ This implementation closely follows the [design specification](https://material.
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "a" | HTML element tag |
-| **className**     | optional | String |  | Extra CSS class appended to `pe-card` |
-| **id** | optional | String | | HTML element id |
-| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Card specific options
 
 ### Options for card
@@ -113,6 +101,17 @@ Next to the card itself, each content parts has a set of options:
 | **layout**    | optional | String: "horizontal", "vertical" or "justified" | "horizontal" | Set to "vertical" for a vertical list of actions; use "justified" for a horizontally evenly spread of icons |
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional | String | "a" | HTML element tag |
+| **className**     | optional | String |  | Extra CSS class appended to `pe-card` |
+| **id** | optional | String | | HTML element id |
+| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 ## Composition
 
