@@ -11,7 +11,7 @@ var getElement = function getElement(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var checkedValue = createStream();
+  var checkedValue = createStream(null);
   return {
     checkedValue: checkedValue,
     redrawOnUpdate: createStream.merge([checkedValue])
@@ -42,7 +42,7 @@ var createContent = function createContent(vnode, _ref2) {
       return null;
     }
     // Only set defaultChecked the first time when no value has been stored yet
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
+    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
