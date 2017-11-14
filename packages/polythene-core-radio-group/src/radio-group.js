@@ -5,7 +5,7 @@ export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 export const getInitialState = (vnode, createStream) => {
-  const checkedValue = createStream();
+  const checkedValue = createStream(null);
   return {
     checkedValue,
     redrawOnUpdate: createStream.merge([checkedValue])

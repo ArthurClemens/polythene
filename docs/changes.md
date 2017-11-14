@@ -14,7 +14,7 @@ Changes to components:
 
 * Toolbar now has a default background color
 
-Bug fixes (thanks sjungwirth!).
+Bug fixes (thanks sjungwirth and ItsLeeOwen!).
 
 
 ### 1.0.0-rc.8
