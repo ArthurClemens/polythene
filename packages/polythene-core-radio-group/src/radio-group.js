@@ -45,7 +45,7 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
         return null;
       }
       // Only set defaultChecked the first time when no value has been stored yet
-      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
+      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
       if (buttonOpts.value === undefined) {
         console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
       }
