@@ -1,4 +1,4 @@
-import { classes as buttonClasses } from "polythene-core-button";
+import buttonClasses from "./button";
 
 export default {
   component:            "pe-tabs",

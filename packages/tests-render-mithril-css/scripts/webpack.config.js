@@ -23,14 +23,8 @@ module.exports = {
     rules: [
       {
         test: /\.js$/, // Check for all js files
-        exclude: /node_modules/,
         use: [{
           loader: "babel-loader",
-          options: {  
-            presets: [ 
-              [ "es2015", { modules: false } ] 
-            ]         
-          }
         }]
       },
       {

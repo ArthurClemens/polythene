@@ -1,4 +1,4 @@
-import { classes as notificationClasses } from "polythene-core-notification";
+import notificationClasses from "./notification";
 
 export default Object.assign(
   {},

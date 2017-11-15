@@ -242,12 +242,12 @@ m(TextField, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-textfield/src/classes.js`
+Change CSS using the [Text Field CSS classes](../../../packages/polythene-css-classes/textfield.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-textfield"
+import classes from "polythene-css-classes/textfield"
 ~~~
 
 #### Style

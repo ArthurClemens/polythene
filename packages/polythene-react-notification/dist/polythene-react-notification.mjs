@@ -1,6 +1,23 @@
 import { StateComponent, renderer } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
-import { classes, coreNotificationInstance, transitions } from 'polythene-core-notification';
+import { coreNotificationInstance, transitions } from 'polythene-core-notification';
+
+var classes = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
 
 var NotificationInstance = StateComponent(coreNotificationInstance);
 

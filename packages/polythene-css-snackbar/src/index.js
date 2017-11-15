@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-snackbar";
+import { vars } from "polythene-core-snackbar";
+import classes from "polythene-css-classes/snackbar";
 import layout from "./layout";
 import color from "./color";
 import holderLayout from "./layout-holder";

@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/ios-spinner";
 
 const blade = (num, h) =>
   h("div", {

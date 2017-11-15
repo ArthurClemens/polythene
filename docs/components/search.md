@@ -18,6 +18,19 @@ Search field with optional icons and buttons that respond to the input state.
 
 ## Options
 
+### Search specific options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **textfield** | required | Options object for [Text Field](textfield.md) | | Options for the text field, for instance to specify the label |
+| **fullWidth** | optional | Boolean | false | A fullwidth search box is visually extended to the sides (with a height of 56px); inset search box has side (page) padding and is less tall (48px) |
+
+### Search appearance options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a String, hyperscript or component (or Array) to each |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -31,19 +44,6 @@ Search field with optional icons and buttons that respond to the input state.
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **tabindex** (React: **tabIndex**) | optional       | Integer | 0 | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
-### Search specific options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **textfield** | required | Options object for [Text Field](textfield.md) | | Options for the text field, for instance to specify the label |
-| **fullWidth** | optional | Boolean | false | A fullwidth search box is visually extended to the sides (with a height of 56px); inset search box has side (page) padding and is less tall (48px) |
-
-### Search appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a String, hyperscript or component (or Array) to each |
 
 
 ## Composition
@@ -60,7 +60,7 @@ Search usually contains:
 
 ## CSS classes
 
-See: `polythene-core-search/src/classes.js`
+* [Search classes](../../packages/polythene-css-classes/search.js)
 
 
 ## Future

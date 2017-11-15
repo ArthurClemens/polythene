@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-button";
+import { vars } from "polythene-core-button";
+import classes from "polythene-css-classes/button";
 import baseLayout from "./base";
 import layout from "./layout";
 import color from "./color";

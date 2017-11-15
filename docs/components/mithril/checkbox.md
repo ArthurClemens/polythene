@@ -94,7 +94,7 @@ const SimpleForm = {
 
 Below are examples how to change the Checkbox appearance, either with a theme or with CSS.
 
-You can find more information about theming in  [Theming](../../theming.md).
+You can find more information about theming in [Theming](../../theming.md).
 
 #### Themed component
 
@@ -114,12 +114,12 @@ m(Checkbox, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-checkbox/src/classes.js`
+Change CSS using the [Checkbox CSS classes](../../../packages/polythene-css-classes/checkbox.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-checkbox";
+import classes from "polythene-css-classes/checkbox"
 ~~~
 
 #### Style

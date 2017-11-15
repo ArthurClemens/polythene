@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/svg";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -9,7 +9,10 @@ export const onMount = vnode => {
     return;
   }
   // Prevent that SVG gets keyboard focus
-  vnode.dom.querySelector("svg").setAttribute("focusable", "false");
+  const elem = vnode.dom.querySelector("svg");
+  if (elem) {
+    elem.setAttribute("focusable", "false");
+  }
 };
 
 export const createProps = (vnode, { keys: k }) => {

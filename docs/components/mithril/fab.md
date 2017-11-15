@@ -61,12 +61,12 @@ m(FAB, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-fab/src/classes.js`
+Change CSS using the [FAB CSS classes](../../../packages/polythene-css-classes/fab.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-fab";
+import classes from "polythene-css-classes/fab"
 ~~~
 
 #### Style option

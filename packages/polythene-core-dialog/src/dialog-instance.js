@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/dialog";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -132,7 +132,8 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
         footer: attrs.footer,
         footerButtons: attrs.footerButtons,
         className: attrs.className,
-        style: attrs.style
+        style: attrs.style,
+        fullBleed: attrs.fullBleed
       }
     );
   return h("div",

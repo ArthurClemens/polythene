@@ -4,12 +4,14 @@ exports[`test Child node 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -19,23 +21,27 @@ exports[`test Child node 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -47,12 +53,14 @@ exports[`test Child node, option compact (JSX) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -62,23 +70,27 @@ exports[`test Child node, option compact (JSX) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </Toolbar>
@@ -90,12 +102,14 @@ exports[`test Dark tone class + light tone 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -105,23 +119,27 @@ exports[`test Dark tone class + light tone 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -133,12 +151,14 @@ exports[`test Dark tone class + light tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -148,23 +168,27 @@ exports[`test Dark tone class + light tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -174,38 +198,59 @@ exports[`test JSX toolbar row (JSX) 1`] = `
 <Toolbar>
   <ToolbarButton
     svg={
-      <svg
-        height="24"
-        viewBox="0 0 24 24"
-        width="24">
-        <path
-          d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>,
+      }
     } />
   <span>
     Title
   </span>
   <ToolbarButton
     svg={
-      <svg
-        height="24"
-        viewBox="0 0 24 24"
-        width="24">
-        <path
-          d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-      </svg>
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+      </svg>,
+      }
     } />
   <ToolbarButton
     svg={
-      <svg
-        height="24"
-        viewBox="0 0 24 24"
-        width="24">
-        <path
-          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      </svg>,
+      }
     } />
 </Toolbar>
+`;
+
+exports[`test No options 1`] = `
+<div
+  className="pe-toolbar    " />
+`;
+
+exports[`test Option: class 1`] = `
+<div
+  className="pe-toolbar    class-x" />
+`;
+
+exports[`test Option: className 1`] = `
+<div
+  className="pe-toolbar    className-x" />
 `;
 
 exports[`test Option: compact 1`] = `
@@ -214,12 +259,14 @@ exports[`test Option: compact 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -229,23 +276,27 @@ exports[`test Option: compact 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -257,12 +308,14 @@ exports[`test Option: content -- dark tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -272,23 +325,27 @@ exports[`test Option: content -- dark tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -300,12 +357,14 @@ exports[`test Option: content 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -315,26 +374,41 @@ exports[`test Option: content 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
+`;
+
+exports[`test Option: element 1`] = `
+<a
+  className="pe-toolbar    " />
+`;
+
+exports[`test Option: id 1`] = `
+<div
+  className="pe-toolbar    "
+  id="id-x" />
 `;
 
 exports[`test Option: shadow (JSX) 1`] = `
@@ -347,36 +421,42 @@ exports[`test Option: shadow (JSX) 1`] = `
   <Toolbar>
     <ToolbarButton
       svg={
-        <svg
-          height="24"
-          viewBox="0 0 24 24"
-          width="24">
-          <path
-            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
+        Object {
+          "content": <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24">
+            <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>,
+        }
       } />
     <span>
       Title
     </span>
     <ToolbarButton
       svg={
-        <svg
-          height="24"
-          viewBox="0 0 24 24"
-          width="24">
-          <path
-            d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-        </svg>
+        Object {
+          "content": <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24">
+            <path
+                d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+        </svg>,
+        }
       } />
     <ToolbarButton
       svg={
-        <svg
-          height="24"
-          viewBox="0 0 24 24"
-          width="24">
-          <path
-            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-        </svg>
+        Object {
+          "content": <svg
+            height="24"
+            viewBox="0 0 24 24"
+            width="24">
+            <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        </svg>,
+        }
       } />
   </Toolbar>
   <Shadow />
@@ -394,12 +474,14 @@ exports[`test Option: shadow 1`] = `
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
     <div
@@ -409,23 +491,27 @@ exports[`test Option: shadow 1`] = `
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
   </Toolbar>
@@ -440,12 +526,14 @@ exports[`test Option: style (colors and height) (JSX) 1`] = `
       <IconButton
         icon={
             Object {
-                "svg": <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                            }
-                  } />,
+                "svg": Object {
+                  "content": <div
+                    dangerouslySetInnerHTML={
+                            Object {
+                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                                  }
+                    } />,
+                },
               }
         } />,
       <div
@@ -455,23 +543,27 @@ exports[`test Option: style (colors and height) (JSX) 1`] = `
       <IconButton
         icon={
             Object {
-                "svg": <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                            }
-                  } />,
+                "svg": Object {
+                  "content": <div
+                    dangerouslySetInnerHTML={
+                            Object {
+                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                                  }
+                    } />,
+                },
               }
         } />,
       <IconButton
         icon={
             Object {
-                "svg": <div
-                  dangerouslySetInnerHTML={
-                        Object {
-                              "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                            }
-                  } />,
+                "svg": Object {
+                  "content": <div
+                    dangerouslySetInnerHTML={
+                            Object {
+                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                                  }
+                    } />,
+                },
               }
         } />,
     ]
@@ -498,12 +590,14 @@ exports[`test Option: style (colors and height) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -513,23 +607,27 @@ exports[`test Option: style (colors and height) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -546,12 +644,14 @@ exports[`test Shadow 1`] = `
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
     <div
@@ -561,23 +661,27 @@ exports[`test Shadow 1`] = `
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
     <IconButton
       icon={
         Object {
-          "svg": <div
-            dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                  }
-            } />,
+          "svg": Object {
+            "content": <div
+              dangerouslySetInnerHTML={
+                    Object {
+                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                        }
+              } />,
+          },
         }
       } />
   </Toolbar>
@@ -591,12 +695,14 @@ exports[`test Themed (dark tone) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -606,23 +712,27 @@ exports[`test Themed (dark tone) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -634,12 +744,14 @@ exports[`test Themed -- dark tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <div
@@ -649,23 +761,27 @@ exports[`test Themed -- dark tone class 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -677,12 +793,14 @@ exports[`test Title as span 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <span>
@@ -691,12 +809,14 @@ exports[`test Title as span 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -712,12 +832,14 @@ exports[`test Title as span, indented (without left icon) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -729,12 +851,14 @@ exports[`test ToolbarTitle 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <ToolbarTitle
@@ -742,12 +866,14 @@ exports[`test ToolbarTitle 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -761,12 +887,14 @@ exports[`test ToolbarTitle, at start 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>
@@ -787,12 +915,14 @@ exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
   <ToolbarTitle
@@ -817,12 +947,14 @@ exports[`test ToolbarTitle, indented (without left icon) 1`] = `
   <IconButton
     icon={
       Object {
-        "svg": <div
-          dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                }
-          } />,
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
       }
     } />
 </div>

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-core.js",
   "module": "dist/polythene-core.mjs",
@@ -13,6 +13,6 @@
     "dist",
     "README.md"
   ],
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

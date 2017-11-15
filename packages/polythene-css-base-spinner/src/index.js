@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-base-spinner";
+import { vars } from "polythene-core-base-spinner";
+import classes from "polythene-css-classes/base-spinner";
 import layout from "./layout";
 import color from "./color";
 

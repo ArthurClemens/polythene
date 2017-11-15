@@ -62,4 +62,4 @@ var vars$1 = {
   color_dark: "currentcolor"
 };
 
-export { icon as coreIcon, classes, vars$1 as vars };
+export { icon as coreIcon, vars$1 as vars };

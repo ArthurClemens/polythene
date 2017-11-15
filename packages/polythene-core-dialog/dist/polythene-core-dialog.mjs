@@ -1,8 +1,53 @@
 import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
-import { classes } from 'polythene-core-menu';
 import { vars } from 'polythene-theme';
 
-var classes$1 = {
+var listTileClasses = {
+  component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
+
+var menuClasses = {
+  component: "pe-menu",
+
+  // elements
+  content: "pe-menu__content",
+  placeholder: "pe-menu__placeholder",
+  target: "pe-menu__target",
+
+  // states
+  permanent: "pe-menu--permanent",
+  visible: "pe-menu--visible",
+  width_auto: "pe-menu--width-auto",
+  width_n: "pe-menu--width-",
+
+  // lookup
+  listTile: listTileClasses.component,
+  selectedListTile: listTileClasses.selected
+};
+
+var classes = {
   component: "pe-dialog",
 
   // elements
@@ -16,7 +61,7 @@ var classes$1 = {
   open: "pe-dialog--open",
 
   // lookup
-  menuContent: classes.content
+  menuContent: menuClasses.content
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -107,7 +152,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes$1.component, attrs.fullScreen ? classes$1.fullScreen : null, attrs.backdrop ? classes$1.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.fullScreen ? classes.fullScreen : null, attrs.backdrop ? classes.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
     if (e.target !== state.el) {
       return;
@@ -139,10 +184,11 @@ var createContent = function createContent(vnode, _ref2) {
     footer: attrs.footer,
     footerButtons: attrs.footerButtons,
     className: attrs.className,
-    style: attrs.style
+    style: attrs.style,
+    fullBleed: attrs.fullBleed
   });
   return h("div", {
-    className: [classes$1.content, attrs.menu ? classes$1.menuContent : null].join(" "),
+    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
     style: attrs.style
   }, [attrs.fullScreen ? null : h(Shadow, {
     z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
@@ -216,4 +262,4 @@ var transitions = {
   hide: hide$1
 };
 
-export { dialogInstance as coreDialogInstance, classes$1 as classes, vars$1 as vars, transitions };
+export { dialogInstance as coreDialogInstance, vars$1 as vars, transitions };

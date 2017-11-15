@@ -355,12 +355,19 @@ NotificationCSS.addStyle(".themed-notification", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-notification/src/classes.js`
+Change CSS using the CSS classes:
+
+* [Notification CSS classes](../../../packages/polythene-css-classes/notification.js)
+* [Snackbar CSS classes](../../../packages/polythene-css-classes/snackbar.js)
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-notification"
+import classes from "polythene-css-classes/notification"
+~~~
+
+~~~javascript
+import classes from "polythene-css-classes/snackbar"
 ~~~
 
 #### Style

@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-checkbox";
+import { vars } from "polythene-core-checkbox";
+import classes from "polythene-css-classes/checkbox";
 import layout from "./layout";
 import color from "./color";
 

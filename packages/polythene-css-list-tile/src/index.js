@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-list-tile";
+import { vars } from "polythene-core-list-tile";
+import classes from "polythene-css-classes/list-tile";
 import layout from "./layout";
 import color from "./color";
 

@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -161,11 +161,11 @@ export const onMount = vnode => {
     };
 
     state.activateDismissTap = () => {
-      document.body.addEventListener("click", state.handleDismissTap);
+      document.addEventListener("click", state.handleDismissTap);
     };
 
     state.deActivateDismissTap = () => {
-      document.body.removeEventListener("click", state.handleDismissTap);
+      document.removeEventListener("click", state.handleDismissTap);
     };
 
     state.handleEscape = e => {

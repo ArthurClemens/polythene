@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-card",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-mithril-card.js",
   "module": "dist/polythene-mithril-card.mjs",
@@ -14,12 +14,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-card": "^1.0.0-rc.8",
-    "polythene-mithril-base": "^1.0.0-rc.8",
-    "polythene-mithril-icon": "^1.0.0-rc.8",
-    "polythene-mithril-list-tile": "^1.0.0-rc.8",
-    "polythene-mithril-shadow": "^1.0.0-rc.8"
+    "polythene-core-card": "^1.0.0-rc.9",
+    "polythene-mithril-base": "^1.0.0-rc.9",
+    "polythene-mithril-icon": "^1.0.0-rc.9",
+    "polythene-mithril-list-tile": "^1.0.0-rc.9",
+    "polythene-mithril-shadow": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

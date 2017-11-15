@@ -17,9 +17,11 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
       [
         {
           title: "Yes",
+          key: "yes" // for React
         },
         {
           title: "No",
+          key: "no" // for React
         }
       ]
     )

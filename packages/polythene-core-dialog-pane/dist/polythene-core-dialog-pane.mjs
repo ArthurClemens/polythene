@@ -197,4 +197,4 @@ var vars$1 = {
   color_dark_background: "inherit"
 };
 
-export { dialogPane as coreDialogPane, classes, vars$1 as vars };
+export { dialogPane as coreDialogPane, vars$1 as vars };

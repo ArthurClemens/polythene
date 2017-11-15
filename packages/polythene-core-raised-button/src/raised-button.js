@@ -1,5 +1,5 @@
 import { isServer, pointerStartMoveEvent, pointerEndEvent, subscribe } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/raised-button";
 
 // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
 

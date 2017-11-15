@@ -50,4 +50,4 @@ var vars$1 = {
   color_dark: rgba(vars.color_dark_foreground)
 };
 
-export { spinner as coreIOSSpinner, classes, vars$1 as vars };
+export { spinner as coreIOSSpinner, vars$1 as vars };

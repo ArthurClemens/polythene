@@ -71,4 +71,4 @@ var vars$1 = {
   "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
 };
 
-export { shadow as coreShadow, classes, vars$1 as vars };
+export { shadow as coreShadow, vars$1 as vars };

@@ -522,6 +522,35 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           })
       }
     },
+    {
+      name: "Autocomplete form",
+      component: {
+        view: () => 
+          h("form",
+            { [k["autocomplete"]]: "on" }, 
+            h("div",
+              {
+                label: "Customer information"
+              },
+              [
+                h(TextField, {
+                  type:               "email",
+                  label:              "Email",
+                  floatingLabel:      true,
+                }),
+                h(TextField, {
+                  label:               "First name",
+                  floatingLabel:      true,
+                }),
+                h(TextField, {
+                  label:               "Last name",
+                  floatingLabel:      true,
+                }),
+              ]
+            )
+          )
+      }
+    },
 
     /* Dark tone */
 

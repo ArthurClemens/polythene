@@ -32,5 +32,5 @@ var checkbox = Object.freeze({
 	createProps: createProps
 });
 
-export { checkbox as coreCheckbox, classes };
+export { checkbox as coreCheckbox };
 export { vars } from 'polythene-core-selection-control';

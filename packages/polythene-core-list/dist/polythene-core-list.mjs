@@ -1,19 +1,45 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { classes } from 'polythene-core-list-tile';
 import { vars } from 'polythene-theme';
 
-var classes$1 = {
-  component: "pe-list",
+var listTileClasses = {
+  component: "pe-list-tile",
 
   // elements
-  header: classes.header,
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
+
+var classes = {
+  component: "pe-list",
 
   // states
   borders: "pe-list--borders",
   compact: "pe-list--compact",
   hasHeader: "pe-list--header",
   indentedBorders: "pe-list--indented-borders",
-  padding: "pe-list--padding"
+  padding: "pe-list--padding",
+
+  // lookup
+  header: listTileClasses.header
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -73,7 +99,7 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes$1.component, attrs.borders ? classes$1.borders : null, attrs.indentedBorders ? classes$1.indentedBorders : null, attrs.header ? classes$1.hasHeader : null, attrs.compact ? classes$1.compact : null, attrs.padding !== false ? classes$1.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.padding !== false ? classes.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.keyboardControl && _defineProperty({}, k.onkeydown, function (e) {
     var highlightIndex = state.highlightIndex();
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -104,7 +130,7 @@ var createContent = function createContent(vnode, _ref3) {
   var headerOpts = void 0;
   if (attrs.header) {
     headerOpts = _extends({}, attrs.header);
-    headerOpts[k.class] = [classes$1.header, headerOpts[k.class] || null].join(" ");
+    headerOpts[k.class] = [classes.header, headerOpts[k.class] || null].join(" ");
   }
   var highlightIndex = state.highlightIndex();
   var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
@@ -157,4 +183,4 @@ var vars$1 = {
   // color_dark_background:  "inherit"
 };
 
-export { list as coreList, classes$1 as classes, vars$1 as vars };
+export { list as coreList, vars$1 as vars };

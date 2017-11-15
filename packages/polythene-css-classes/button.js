@@ -1,9 +1,7 @@
 
-const baseClass = "pe-button";
-
 export default {
-  base:       baseClass,
-  component:  `${baseClass} pe-text-button`,
+  base:       "pe-button",
+  component:  "pe-button pe-text-button",
 
   // elements
   content:    "pe-button__content",

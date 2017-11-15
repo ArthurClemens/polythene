@@ -1,6 +1,17 @@
 import { flex, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-search';
+import { vars } from 'polythene-core-search';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+  component: "pe-search",
+
+  // elements
+  content: "pe-search__content",
+
+  // states
+  searchFullWidth: "pe-search--full-width",
+  searchInset: "pe-search--inset"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

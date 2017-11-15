@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/toolbar";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -26,5 +26,5 @@ export const createContent = vnode => {
   const attrs = vnode.attrs;
   return attrs.content
     ? attrs.content
-    : attrs.children || vnode.children || attrs;
+    : attrs.children || vnode.children;
 };

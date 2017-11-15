@@ -95,16 +95,6 @@ To read the checked state, use `onChange`:
 
 #### With JSX
 
-Before `1.0.0-rc.6`:
-
-~~~jsx
-<RadioGroup
-  onChange={newValue => this.setState({ checkedValue: newValue })}
-/>
-~~~
-
-After `1.0.0-rc.6`:
-
 ~~~jsx
 <RadioGroup
   onChange={state => this.setState({ checkedValue: state.value })}
@@ -112,16 +102,6 @@ After `1.0.0-rc.6`:
 ~~~
 
 #### With hyperscript
-
-Before `1.0.0-rc.6`:
-
-~~~javascript
-h(RadioGroup, {
-  onChange: newValue => this.setState({ checkedValue: newValue })
-})
-~~~
-
-After `1.0.0-rc.6`:
 
 ~~~javascript
 h(RadioGroup, {
@@ -213,12 +193,15 @@ RadioButtonCSS.addStyle(".themed-radio-button", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-radio-button/src/classes.js`
+Change CSS using the CSS classes:
+
+* [Radio Button CSS classes](../../../packages/polythene-css-classes/radio-button.js)
+* [Radio Group CSS classes](../../../packages/polythene-css-classes/radio-group.js)
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-radio-button"
+import classes from "polythene-css-classes/radio-button"
 ~~~
 
 #### Style

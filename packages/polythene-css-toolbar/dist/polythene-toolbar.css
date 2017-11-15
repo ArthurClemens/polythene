@@ -62,10 +62,12 @@
 }
 
 .pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar {
-  color: #fff
+  color: #fff;
+  background-color: #222
 }
 
 .pe-light-tone.pe-toolbar,.pe-light-tone .pe-toolbar,.pe-toolbar {
-  color: rgba(0,0,0,.87)
+  color: rgba(0,0,0,.87);
+  background-color: #fff
 }
 /*# sourceMappingURL=polythene-toolbar.css.map */

@@ -176,15 +176,18 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           tiles: [
             h(ListTile, {
               title: listTitle,
-              subtitle: listSubtitle
+              subtitle: listSubtitle,
+              key: "one" // for React
             }),
             h(ListTile, {
               title: listTitle,
-              subtitle: listSubtitle
+              subtitle: listSubtitle,
+              key: "two" // for React
             }),
             h(ListTile, {
               title: listTitle,
-              subtitle: listSubtitle
+              subtitle: listSubtitle,
+              key: "three" // for React
             })
           ]
         })
@@ -365,9 +368,10 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               bordered: true,
               tight: true,
               content: h(List, { borders: true }, [
-                h(ListTile, { hoverable: true }, "Action 1"),
-                h(ListTile, { hoverable: true }, "Action 2"),
-                h(ListTile, { hoverable: true }, "Action 3"),
+                // keys for React
+                h(ListTile, { hoverable: true, key: "one" }, "Action 1"),
+                h(ListTile, { hoverable: true, key: "two" }, "Action 2"),
+                h(ListTile, { hoverable: true, key: "three" }, "Action 3"),
               ])
             }
           }

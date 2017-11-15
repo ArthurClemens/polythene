@@ -12,4 +12,4 @@ Identical to [Notification](notification.md). See Notification usage instruction
 
 ## CSS classes
 
-See: `polythene-core-snackbar/src/classes.js`
+* [Snackbar classes](../../packages/polythene-css-classes/snackbar.js)

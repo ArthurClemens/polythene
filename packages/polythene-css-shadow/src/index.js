@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-shadow";
+import { vars } from "polythene-core-shadow";
+import classes from "polythene-css-classes/shadow";
 import layout from "./layout";
 
 const fns = [layout];

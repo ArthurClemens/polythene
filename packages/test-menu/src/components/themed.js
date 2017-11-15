@@ -18,13 +18,15 @@ export default ({ renderer: h, List, ListTile }) => {
       title: "Yes",
       ink: true,
       className: "menu-tests-blue-menu-list-tile",
-      hoverable: true
+      hoverable: true,
+      key: "yes" // for React
     }),
     h(ListTile, {
       title: "No",
       ink: true,
       className: "menu-tests-blue-menu-list-tile",
-      hoverable: true
+      hoverable: true,
+      key: "no" // for React
     })
   ]);
 
@@ -36,6 +38,7 @@ export default ({ renderer: h, List, ListTile }) => {
         backgroundColor: themeColor,
         color: "#fff"
       },
+      key: "yes" // for React
     }),
     h(ListTile, {
       title: "No",
@@ -44,6 +47,7 @@ export default ({ renderer: h, List, ListTile }) => {
         backgroundColor: themeColor,
         color: "#fff"
       },
+      key: "no" // for React
     })
   ]);
 

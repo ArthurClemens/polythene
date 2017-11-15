@@ -137,4 +137,4 @@ var vars$1 = {
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-export { raisedButton as coreRaisedButton, classes, vars$1 as vars };
+export { raisedButton as coreRaisedButton, vars$1 as vars };

@@ -1,10 +1,7 @@
-import { classes as coreListTileClasses } from "polythene-core-list-tile";
+import listTileClasses from "./list-tile";
 
 export default {
   component:       "pe-list",
-
-  // elements
-  header:          coreListTileClasses.header,
 
   // states
   borders:         "pe-list--borders",
@@ -12,4 +9,7 @@ export default {
   hasHeader:       "pe-list--header",
   indentedBorders: "pe-list--indented-borders",
   padding:         "pe-list--padding",
+
+  // lookup
+  header:          listTileClasses.header
 };

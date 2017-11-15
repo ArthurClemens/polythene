@@ -106,13 +106,14 @@ m(Icon, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-icon/src/classes.js`
+Change CSS using the [Icon CSS classes](../../../packages/polythene-css-classes/icon.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-icon";
+import classes from "polythene-css-classes/icon"
 ~~~
+
 
 #### Style
 

@@ -1,5 +1,5 @@
 import { filterSupportedAttributes } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/radio-group";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -45,11 +45,11 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
         return null;
       }
       // Only set defaultChecked the first time when no value has been stored yet
-      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
+      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
       if (buttonOpts.value === undefined) {
         console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
       }
-      const isChecked = isDefaultChecked || attrs.checked || checkedValue === buttonOpts.value;
+      const isChecked = isDefaultChecked || buttonOpts.checked || checkedValue === buttonOpts.value;
       return h(RadioButton, Object.assign(
         {},
         {

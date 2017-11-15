@@ -18,6 +18,15 @@ Described in:
 
 ## Options
 
+### Radio Group specific
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
+| **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
+| **name**      | required | String | | Name for all radio button elements |
+| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -30,18 +39,9 @@ Described in:
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
-### Radio Group specific
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
-| **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
-| **name**      | required | String | | Name for all radio button elements |
-| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
-
 
 ## CSS classes
 
-See: `polythene-core-radio-group/src/classes.js`
+* [Radio Group classes](../../packages/polythene-css-classes/radio-group.js)
 
 

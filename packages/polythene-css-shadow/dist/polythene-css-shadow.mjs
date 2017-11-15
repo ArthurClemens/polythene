@@ -1,5 +1,17 @@
 import { mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-shadow';
+import { vars } from 'polythene-core-shadow';
+
+var classes = {
+  component: "pe-shadow",
+
+  // elements
+  bottomShadow: "pe-shadow__bottom",
+  topShadow: "pe-shadow__top",
+
+  // states
+  animated: "pe-shadow--animated",
+  depth_n: "pe-shadow--z-"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

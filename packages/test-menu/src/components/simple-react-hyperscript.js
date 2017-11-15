@@ -33,8 +33,8 @@ export default class extends Component {
             didHide: () => this.setState({ isOpen: false })
           },
           h(List, [
-            h(ListTile, { title: "Yes", ink: true, hoverable: true }),
-            h(ListTile, { title: "No", ink: true, hoverable: true })
+            h(ListTile, { title: "Yes", key: "yes", ink: true, hoverable: true }),
+            h(ListTile, { title: "No", key: "no", ink: true, hoverable: true })
           ])
         )
       ]

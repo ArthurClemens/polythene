@@ -378,12 +378,19 @@ m(Dialog, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-dialog/src/classes.js`
+Change CSS using:
+
+* [Dialog CSS classes](../../../packages/polythene-css-classes/dialog.js)
+* [Dialog Pane CSS classes](../../../packages/polythene-css-classes/dialog-pane.js)
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-dialog"
+import classes from "polythene-css-classes/dialog"
+~~~
+
+~~~javascript
+import classes from "polythene-css-classes/dialog-pane"
 ~~~
 
 #### Style

@@ -30,19 +30,6 @@ Available themed spinners:
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
-| **className** | optional | String |       | Extra CSS class appended to `pe-spinner` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id**        | optional | String |       | HTML element id |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **tone**      | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Spinner options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -76,6 +63,19 @@ For `MaterialDesignProgressSpinner`:
 | **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
 | **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional | String | "div" | HTML element tag |
+| **className** | optional | String |       | Extra CSS class appended to `pe-spinner` |
+| **style**     | optional | Object |       | For setting simple style attributes |
+| **id**        | optional | String |       | HTML element id |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **tone**      | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+
 
 ## Composition
 
@@ -86,8 +86,8 @@ Spinner sometimes uses:
 
 ## CSS classes
 
-See:
+* [Base Spinner classes](../../packages/polythene-css-classes/base-spinner.js)
+* [iOS Spinner classes](../../packages/polythene-css-classes/ios-spinner.js)
+* [Material Design Spinner classes](../../packages/polythene-css-classes/material-design-spinner.js)
+* [Material Design Progress Spinner classes](../../packages/polythene-css-classes/material-design-progress-spinner.js)
 
-* `polythene-core-ios-spinner/src/classes.js`
-* `polythene-core-material-design-spinner/src/classes.js`
-* `polythene-core-material-design-progress-spinner/src/classes.js`

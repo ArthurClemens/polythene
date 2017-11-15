@@ -400,4 +400,4 @@ var vars$1 = {
   color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
 
-export { card as coreCard, cardActions as coreCardActions, cardMedia as coreCardMedia, cardPrimary as coreCardPrimary, classes, vars$1 as vars };
+export { card as coreCard, cardActions as coreCardActions, cardMedia as coreCardMedia, cardPrimary as coreCardPrimary, vars$1 as vars };

@@ -23,7 +23,8 @@ exports[`test Dark tone class + light theme class 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -35,7 +36,8 @@ exports[`test Dark tone class + light theme class 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -71,7 +73,8 @@ exports[`test Dark tone class + light theme class 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -83,7 +86,8 @@ exports[`test Dark tone class + light theme class 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -127,7 +131,8 @@ exports[`test Dark tone class + light tone 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -139,7 +144,8 @@ exports[`test Dark tone class + light tone 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -175,7 +181,8 @@ exports[`test Dark tone class + light tone 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -187,7 +194,8 @@ exports[`test Dark tone class + light tone 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -229,7 +237,8 @@ exports[`test No options - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -241,7 +250,8 @@ exports[`test No options - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -288,7 +298,8 @@ exports[`test Option: Radio Group onChange 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -300,7 +311,8 @@ exports[`test Option: Radio Group onChange 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -336,7 +348,8 @@ exports[`test Option: Radio Group onChange 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -348,7 +361,8 @@ exports[`test Option: Radio Group onChange 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <div class=\"pe-svg\">
                 <label class=\"pe-control__form-label\"></label>
-                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+                <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+                focusable=\"false\">
                   <label class=\"pe-control__form-label\"><path d=
                   \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                   </path></label>
@@ -391,7 +405,8 @@ exports[`test Option: after - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -403,7 +418,8 @@ exports[`test Option: after - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -439,7 +455,8 @@ exports[`test Option: after - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -451,7 +468,8 @@ exports[`test Option: after - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -496,7 +514,8 @@ exports[`test Option: before - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -508,7 +527,8 @@ exports[`test Option: before - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -544,7 +564,8 @@ exports[`test Option: before - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -556,7 +577,8 @@ exports[`test Option: before - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -601,7 +623,8 @@ exports[`test Option: buttons - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -613,7 +636,8 @@ exports[`test Option: buttons - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -649,7 +673,8 @@ exports[`test Option: buttons - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -661,7 +686,8 @@ exports[`test Option: buttons - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -702,7 +728,8 @@ exports[`test Option: class - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -714,7 +741,8 @@ exports[`test Option: class - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -752,7 +780,8 @@ exports[`test Option: class - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -764,7 +793,8 @@ exports[`test Option: class - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -800,7 +830,8 @@ exports[`test Option: class - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -812,7 +843,8 @@ exports[`test Option: class - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -853,7 +885,8 @@ exports[`test Option: className - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -865,7 +898,8 @@ exports[`test Option: className - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -903,7 +937,8 @@ exports[`test Option: className - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -915,7 +950,8 @@ exports[`test Option: className - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -951,7 +987,8 @@ exports[`test Option: className - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -963,7 +1000,8 @@ exports[`test Option: className - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1005,7 +1043,8 @@ exports[`test Option: defaultChecked 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1017,7 +1056,8 @@ exports[`test Option: defaultChecked 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1053,7 +1093,8 @@ exports[`test Option: defaultChecked 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1065,7 +1106,8 @@ exports[`test Option: defaultChecked 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1102,7 +1144,8 @@ exports[`test Option: disabled -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1114,7 +1157,8 @@ exports[`test Option: disabled -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1145,7 +1189,8 @@ exports[`test Option: disabled -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1157,7 +1202,8 @@ exports[`test Option: disabled -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1194,7 +1240,8 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1206,7 +1253,8 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1237,7 +1285,8 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1249,7 +1298,8 @@ exports[`test Option: disabled 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1287,7 +1337,8 @@ exports[`test Option: element - RadioButton 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-svg\">
         <label class=\"pe-control__form-label\"></label>
-        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+        \"false\">
           <label class=\"pe-control__form-label\"><path d=
           \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
           </path></label>
@@ -1298,7 +1349,8 @@ exports[`test Option: element - RadioButton 1`] = `
       <label class=\"pe-control__form-label\"></label>
       <div class=\"pe-svg\">
         <label class=\"pe-control__form-label\"></label>
-        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+        <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
+        \"false\">
           <label class=\"pe-control__form-label\"><path d=
           \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
           </path></label>
@@ -1336,7 +1388,8 @@ exports[`test Option: element - RadioGroup 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1348,7 +1401,8 @@ exports[`test Option: element - RadioGroup 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1384,7 +1438,8 @@ exports[`test Option: element - RadioGroup 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1396,7 +1451,8 @@ exports[`test Option: element - RadioGroup 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1437,7 +1493,8 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1449,7 +1506,8 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1485,7 +1543,8 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1497,7 +1556,8 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1539,7 +1599,8 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1553,7 +1614,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1588,7 +1649,8 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1602,7 +1664,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1637,7 +1699,8 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1651,7 +1714,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1686,7 +1749,8 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\">
                 </path></label>
@@ -1700,7 +1764,7 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\"
                 stroke-linejoin=\"round\" d=
@@ -1740,7 +1804,8 @@ exports[`test Option: id - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1752,7 +1817,8 @@ exports[`test Option: id - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -1790,7 +1856,8 @@ exports[`test Option: id - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1802,7 +1869,8 @@ exports[`test Option: id - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1838,7 +1906,8 @@ exports[`test Option: id - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1850,7 +1919,8 @@ exports[`test Option: id - RadioGroup 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1892,7 +1962,8 @@ exports[`test Option: label -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1904,7 +1975,8 @@ exports[`test Option: label -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1940,7 +2012,8 @@ exports[`test Option: label -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1952,7 +2025,8 @@ exports[`test Option: label -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -1994,7 +2068,8 @@ exports[`test Option: label 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2006,7 +2081,8 @@ exports[`test Option: label 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2042,7 +2118,8 @@ exports[`test Option: label 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2054,7 +2131,8 @@ exports[`test Option: label 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2096,7 +2174,8 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2108,7 +2187,8 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2144,7 +2224,8 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2156,7 +2237,8 @@ exports[`test Option: selectable 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2199,7 +2281,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2211,7 +2294,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2247,7 +2331,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2259,7 +2344,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2295,7 +2381,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2307,7 +2394,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2343,7 +2431,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2355,7 +2444,8 @@ exports[`test Option: size 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2397,7 +2487,8 @@ exports[`test Option: style (colors) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2409,7 +2500,8 @@ exports[`test Option: style (colors) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2445,7 +2537,8 @@ exports[`test Option: style (colors) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2457,7 +2550,8 @@ exports[`test Option: style (colors) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2503,7 +2597,8 @@ exports[`test Option: tabindex - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -2515,7 +2610,8 @@ exports[`test Option: tabindex - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -2552,7 +2648,8 @@ exports[`test Option: value - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -2564,7 +2661,8 @@ exports[`test Option: value - RadioButton 1`] = `
           <label class=\"pe-control__form-label\"></label>
           <div class=\"pe-svg\">
             <label class=\"pe-control__form-label\"></label>
-            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
               <label class=\"pe-control__form-label\"><path d=
               \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
               </path></label>
@@ -2602,7 +2700,8 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2614,7 +2713,8 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2650,7 +2750,8 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2662,7 +2763,8 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2704,7 +2806,8 @@ exports[`test Themed radio button (color and font size) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2716,7 +2819,8 @@ exports[`test Themed radio button (color and font size) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2752,7 +2856,8 @@ exports[`test Themed radio button (color and font size) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>
@@ -2764,7 +2869,8 @@ exports[`test Themed radio button (color and font size) 1`] = `
             <label class=\"pe-control__form-label\"></label>
             <div class=\"pe-svg\">
               <label class=\"pe-control__form-label\"></label>
-              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">
+              <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+              focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path d=
                 \"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\">
                 </path></label>

@@ -174,4 +174,4 @@ var spinner = Object.freeze({
 	createProps: createProps
 });
 
-export { spinner as coreMaterialDesignProgressSpinner, classes, themeVars as vars };
+export { spinner as coreMaterialDesignProgressSpinner, themeVars as vars };

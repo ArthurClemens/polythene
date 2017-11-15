@@ -1,19 +1,18 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
+    ["env", { "modules": false }]
   ],
   "plugins": [
-    "transform-async-to-generator",
-    "transform-object-assign",
     "transform-object-rest-spread",
-    "transform-react-jsx"
+    "transform-react-jsx",
+    "transform-object-assign"
   ],
   "env": {
-    "test": {
-      "presets": [
-        "es2015"
-      ],
-      "plugins": ["transform-runtime"]
+      "test": {
+        "presets": [
+          "env"
+        ],
+        "plugins": ["transform-runtime"]
+      }
     }
-  }
 }

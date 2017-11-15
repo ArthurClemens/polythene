@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-dialog-pane",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-css-dialog-pane.js",
   "module": "dist/polythene-css-dialog-pane.mjs",
@@ -15,10 +15,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.8",
-    "polythene-core-dialog-pane": "^1.0.0-rc.8",
-    "polythene-theme": "^1.0.0-rc.8"
+    "polythene-core-css": "^1.0.0-rc.9",
+    "polythene-core-dialog-pane": "^1.0.0-rc.9",
+    "polythene-css-classes": "^1.0.0-rc.9",
+    "polythene-theme": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

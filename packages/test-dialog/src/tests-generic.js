@@ -300,7 +300,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Option: Toolbar as custom header and footer",
+      name: "Option: Toolbar as custom header and footer, fullBleed body",
       interactive: true,
       exclude: true,
       component: {
@@ -313,6 +313,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
             className: "tests-dialog-themed-toolbar"
           }),
           body: "Body", 
+          fullBleed: true,
           footer: h(Toolbar, {
             content: [
               h(ToolbarTitle, { key: "footer", text: "Footer" })

@@ -1,8 +1,10 @@
 import { filterSupportedAttributes, pointerStartEvent } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/textfield";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
+
+const MINIMUM_FOCUS_INTERVAL = 150;
 
 const validateCustom = (state, attrs) => {
   const validState = attrs.validate(state.inputEl().value);
@@ -100,22 +102,24 @@ export const getInitialState = (vnode, createStream) => {
   const setValue = createStream({});
   const error = createStream(attrs.error);
   const hasFocus = createStream(attrs.focus || false);
-  const setFocus = createStream(null);
+  const setFocus = createStream(false);
   const isTouched = createStream(false); // true when any change is made
   const isDirty = createStream(defaultValue !== ""); // true for any input
   const isInvalid = createStream(false);
   const previousValue = createStream(undefined);
+  const didSetFocusTime = 0;
 
   return {
     defaultValue,
-    previousValue,
+    didSetFocusTime,
     el,
     error,
     hasFocus,
     inputEl,
+    isDirty,
     isInvalid,
     isTouched,
-    isDirty,
+    previousValue,
     setFocus,
     setValue,
     redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
@@ -145,11 +149,18 @@ export const onMount = vnode => {
   ));
 
   state.setFocus.map(focusState => {
+    // Prevent autocomplete from getting in a loop
+    if ((state.didSetFocusTime + MINIMUM_FOCUS_INTERVAL) > new Date().getTime()) {
+      return;
+    }
     state.hasFocus(focusState);
     if (focusState && state.inputEl()) {
       // Draw in next tick, to prevent getting an immediate onblur
       // Explicit setting of focus needed for most browsers other than Safari
-      setTimeout(() => state.inputEl() && state.inputEl().focus && state.inputEl().focus(), 0);
+      setTimeout(() => (
+        state.inputEl() && state.inputEl().focus && state.inputEl().focus(),
+        state.didSetFocusTime = new Date().getTime()
+      ), 0);
     }
   });
 
@@ -177,8 +188,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.required              ? classes.isRequired : "",
         attrs.fullWidth             ? classes.hasFullWidth : "",
         attrs.counter               ? classes.hasCounter : "",
-        attrs.hideSpinner !== false ? classes.hideSpinner : "",
-        attrs.hideClear !== false   ? classes.hideClear : "",
+        attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "",
+        attrs.hideClear !== false   && attrs.hideClear !== undefined ? classes.hideClear : "",
         attrs.hideValidation        ? classes.hideValidation : "",
         attrs.tone === "dark"       ? "pe-dark-tone" : null,
         attrs.tone === "light"      ? "pe-light-tone" : null,
@@ -208,12 +219,12 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     state.setFocus(true);
   }
 
-  const value = attrs.value !== undefined
+  const value = (attrs.value !== undefined && attrs.value !== null)
     ? attrs.value 
     : inputEl
       ? inputEl.value
       : state.previousValue();
-  const valueStr = value === undefined
+  const valueStr = (value === undefined || value === null)
     ? ""
     : value.toString();
 
@@ -347,16 +358,16 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             : null,
 
           attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-          attrs[k.readonly] !== undefined ?  { [k.readonly]: true } : null,
-          attrs.pattern !== undefined ?      { pattern: attrs.pattern } : null,
-          attrs[k.maxlength] !== undefined ? { [k.maxlength]: attrs[k.maxlength] } : null,
-          attrs[k.minlength] !== undefined ? { [k.minlength]: attrs[k.minlength] } : null,
-          attrs.max !== undefined ?          { max: attrs.max } : null,
-          attrs.min !== undefined ?          { min: attrs.min } : null,
-          attrs[k.autofocus] !== undefined ? { [k.autofocus]: attrs[k.autofocus] } : null,
-          attrs.required !== undefined ?     { required: attrs.required } : null,
-          attrs[k.tabindex] !== undefined ?  { [k.tabindex]: attrs[k.tabindex] } : null,
-          attrs.rows !== undefined ?         { rows: attrs.rows } : null
+          attrs.required !== undefined && !!attrs.required ?       { required: true } : null,
+          attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? { [k.readonly]: true } : null,
+          attrs.pattern !== undefined ?                            { pattern: attrs.pattern } : null,
+          attrs[k.maxlength] !== undefined ?                       { [k.maxlength]: attrs[k.maxlength] } : null,
+          attrs[k.minlength] !== undefined ?                       { [k.minlength]: attrs[k.minlength] } : null,
+          attrs.max !== undefined ?                                { max: attrs.max } : null,
+          attrs.min !== undefined ?                                { min: attrs.min } : null,
+          attrs[k.autofocus] !== undefined ?                       { [k.autofocus]: attrs[k.autofocus] } : null,
+          attrs[k.tabindex] !== undefined ?                        { [k.tabindex]: attrs[k.tabindex] } : null,
+          attrs.rows !== undefined ?                               { rows: attrs.rows } : null
         ))
       ]
     ),
@@ -399,4 +410,3 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
         : null
   ];
 };
-

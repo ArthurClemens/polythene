@@ -23,19 +23,6 @@ Displays a single dialog, or a stack of dialogs.
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "form"      | HTML element tag |
-| **className**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
-| **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
-| **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Dialog specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -91,6 +78,19 @@ Displays a single dialog, or a stack of dialogs.
 | **footer**       | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional       | String   | "form"      | HTML element tag |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
+| **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
+| **id**        | optional       | String   |             | HTML element id |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+
 
 ## Composition
 
@@ -103,6 +103,7 @@ Dialog is composed from:
 
 ## CSS classes
 
-See: `polythene-core-dialog/src/classes.js`
+* [Dialog classes](../../packages/polythene-css-classes/dialog.js)
+* [Dialog Pane classes](../../packages/polythene-css-classes/dialog-pane.js)
 
 

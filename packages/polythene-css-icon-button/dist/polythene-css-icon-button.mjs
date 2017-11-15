@@ -1,5 +1,15 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-icon-button';
+import { vars } from 'polythene-core-icon-button';
+
+var classes = {
+  component: "pe-button pe-icon-button",
+
+  // elements
+  content: "pe-icon-button__content",
+
+  // states
+  compact: "pe-icon-button--compact"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

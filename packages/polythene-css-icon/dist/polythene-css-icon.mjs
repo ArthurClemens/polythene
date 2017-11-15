@@ -1,6 +1,17 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-icon';
+import { vars } from 'polythene-core-icon';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+  component: "pe-icon",
+
+  // states
+  avatar: "pe-icon--avatar",
+  large: "pe-icon--large",
+  medium: "pe-icon--medium",
+  regular: "pe-icon--regular",
+  small: "pe-icon--small"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

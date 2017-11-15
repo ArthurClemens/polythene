@@ -2,7 +2,7 @@ import { filterSupportedAttributes } from "polythene-core";
 import { isTouch, subscribe, unsubscribe } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import vars from "./vars";
-import classes from "./classes";
+import classes from "polythene-css-classes/tabs";
 
 const whenCreateDone = () => Promise.resolve();
 

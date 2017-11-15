@@ -1,6 +1,6 @@
 import { filterSupportedAttributes, show, hide, isClient, isServer } from "polythene-core";
 import { Timer } from "polythene-utilities";
-import classes from "./classes";
+import classes from "polythene-css-classes/notification";
 
 const DEFAULT_TIME_OUT = 3;
 

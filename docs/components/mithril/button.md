@@ -97,12 +97,12 @@ m(Button, {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-button/src/classes.js`
+Change CSS using the [Button CSS classes](../../../packages/polythene-css-classes/button.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-button";
+import classes from "polythene-css-classes/button"
 ~~~
 
 #### Style

@@ -1,5 +1,15 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-material-design-progress-spinner';
+import { vars } from 'polythene-core-material-design-progress-spinner';
+
+var classes = {
+  component: "pe-md-progress-spinner",
+
+  // elements
+  animation: "pe-md-progress-spinner__animation",
+  circle: "pe-md-progress-spinner__circle",
+  circleRight: "pe-md-progress-spinner__circle-right",
+  circleLeft: "pe-md-progress-spinner__circle-left"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

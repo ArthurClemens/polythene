@@ -1,7 +1,16 @@
 import { mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-switch';
+import { vars } from 'polythene-core-switch';
 import { layout } from 'polythene-css-selection-control';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+  component: "pe-switch-control",
+
+  // elements
+  knob: "pe-switch-control__knob",
+  thumb: "pe-switch-control__thumb",
+  track: "pe-switch-control__track"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

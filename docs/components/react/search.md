@@ -371,12 +371,12 @@ SearchCSS.addStyle(".themed-search", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-search/src/classes.js`
+Change CSS using the [Search CSS classes](../../../packages/polythene-css-classes/search.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-search"
+import classes from "polythene-css-classes/search"
 ~~~
 
 #### Style

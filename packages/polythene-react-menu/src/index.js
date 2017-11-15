@@ -1,6 +1,7 @@
 import { StateComponent, renderer as h } from "polythene-react-base";
 import { Conditional } from "polythene-core";
-import { coreMenu as core, classes } from "polythene-core-menu";
+import { coreMenu as core } from "polythene-core-menu";
+import classes from "polythene-css-classes/menu";
 import { Shadow } from "polythene-react-shadow";
 
 const MenuInstance = StateComponent(Object.assign(

@@ -37,4 +37,4 @@ See: [Checkbox](checkbox.md#options)
 
 ## CSS classes
 
-See: `polythene-core-switch/src/classes.js`
+* [Switch classes](../../packages/polythene-css-classes/switch.js)

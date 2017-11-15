@@ -72,4 +72,4 @@ var vars$1 = {
   color_dark_focus_opacity: vars.blend_dark_background_hover_medium
 };
 
-export { iconButton as coreIconButton, classes, vars$1 as vars };
+export { iconButton as coreIconButton, vars$1 as vars };

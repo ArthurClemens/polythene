@@ -292,12 +292,12 @@ TabsCSS.addStyle(".themed-tabs", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-tabs/src/classes.js`
+Change CSS using the [Tabs CSS classes](../../../packages/polythene-css-classes/tabs.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-tabs"
+import classes from "polythene-css-classes/tabs"
 ~~~
 
 #### Style

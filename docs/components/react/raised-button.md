@@ -61,12 +61,12 @@ RaisedButtonCSS.addStyle(".themed-raised-button", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-raised-button/src/classes.js`
+Change CSS using the [Raised Button CSS classes](../../../packages/polythene-css-classes/raised-button.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-raised-button";
+import classes from "polythene-css-classes/raised-button"
 ~~~
 
 #### Style

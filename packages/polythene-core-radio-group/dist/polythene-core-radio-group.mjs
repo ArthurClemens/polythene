@@ -42,11 +42,11 @@ var createContent = function createContent(vnode, _ref2) {
       return null;
     }
     // Only set defaultChecked the first time when no value has been stored yet
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === undefined;
+    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
-    var isChecked = isDefaultChecked || attrs.checked || checkedValue === buttonOpts.value;
+    var isChecked = isDefaultChecked || buttonOpts.checked || checkedValue === buttonOpts.value;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,
@@ -70,4 +70,4 @@ var radioGroup = Object.freeze({
 	createContent: createContent
 });
 
-export { radioGroup as coreRadioGroup, classes };
+export { radioGroup as coreRadioGroup };

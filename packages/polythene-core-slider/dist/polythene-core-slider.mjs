@@ -443,4 +443,4 @@ var slider = Object.freeze({
 	createContent: createContent
 });
 
-export { slider as coreSlider, classes, themeVars as vars };
+export { slider as coreSlider, themeVars as vars };

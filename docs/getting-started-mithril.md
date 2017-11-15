@@ -3,6 +3,7 @@
 
 <!-- MarkdownTOC bracket="round" autolink="true" depth="4" -->
 
+- [Example setup](#example-setup)
 - [Usage in JavaScript modules](#usage-in-javascript-modules)
   - [Which packages do you need?](#which-packages-do-you-need)
   - [Installation](#installation)
@@ -14,6 +15,11 @@
   - [Example script](#example-script)
 
 <!-- /MarkdownTOC -->
+
+
+## Example setup
+
+* [polythene-mithril-setup](https://github.com/ArthurClemens/polythene-mithril-setup)
 
 
 ## Usage in JavaScript modules

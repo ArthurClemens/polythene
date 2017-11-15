@@ -1,6 +1,25 @@
 import { flex, mixin, styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-toolbar';
+import { vars } from 'polythene-core-toolbar';
 import { vars as vars$1 } from 'polythene-theme';
+
+var classes = {
+
+  // Toolbar
+
+  component: "pe-toolbar",
+
+  // states
+  compact: "pe-toolbar--compact",
+
+  // Toolbar title
+
+  // elements
+  title: "pe-toolbar__title",
+
+  // states
+  centeredTitle: "pe-toolbar__title--center",
+  indentedTitle: "pe-toolbar__title--indent"
+};
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 

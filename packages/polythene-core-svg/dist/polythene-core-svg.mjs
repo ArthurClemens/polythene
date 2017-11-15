@@ -15,7 +15,10 @@ var onMount = function onMount(vnode) {
     return;
   }
   // Prevent that SVG gets keyboard focus
-  vnode.dom.querySelector("svg").setAttribute("focusable", "false");
+  var elem = vnode.dom.querySelector("svg");
+  if (elem) {
+    elem.setAttribute("focusable", "false");
+  }
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -44,4 +47,4 @@ var vars = {
   color_dark: "currentcolor"
 };
 
-export { svg as coreSVG, classes, vars };
+export { svg as coreSVG, vars };

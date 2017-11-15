@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-card";
+import { vars } from "polythene-core-card";
+import classes from "polythene-css-classes/card";
 import layout from "./layout";
 import color from "./color";
 import contentColor from "./color-content";

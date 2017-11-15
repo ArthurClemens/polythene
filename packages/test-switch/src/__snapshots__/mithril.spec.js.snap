@@ -446,7 +446,7 @@ exports[`test Option: icon 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -495,7 +495,7 @@ exports[`test Option: icon 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -544,7 +544,7 @@ exports[`test Option: icon 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=
@@ -593,7 +593,7 @@ exports[`test Option: icon 1`] = `
               <label class=\"pe-control__form-label\"></label>
               <svg width=\"24\" height=\"24\" viewbox=\"0 0 24.00 24.00\"
               enable-background=\"new 0 0 24.00 24.00\" xml:space=
-              \"preserve\">
+              \"preserve\" focusable=\"false\">
                 <label class=\"pe-control__form-label\"><path fill=
                 \"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\"
                 stroke-linejoin=\"miter\" d=

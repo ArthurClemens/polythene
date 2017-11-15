@@ -1,4 +1,4 @@
-import * as coreRipple from "./ripple"; export { coreRipple };
+import * as coreRipple from "./ripple";
+export { coreRipple };
 
-export { default as classes } from "./classes";
 export { default as vars } from "./vars";

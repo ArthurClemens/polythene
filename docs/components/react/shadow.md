@@ -80,3 +80,17 @@ class InteractiveShadow extends Component {
 ~~~
 
 
+## Appearance
+
+### Styling
+
+#### CSS
+
+Change CSS using the [Shadow CSS classes](../../../packages/polythene-css-classes/shadow.js).
+
+Class names can be imported with:
+
+~~~javascript
+import classes from "polythene-css-classes/shadow"
+~~~
+

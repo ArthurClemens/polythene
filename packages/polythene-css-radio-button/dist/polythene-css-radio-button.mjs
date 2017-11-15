@@ -1,6 +1,10 @@
 import { styler } from 'polythene-core-css';
-import { classes, vars } from 'polythene-core-radio-button';
+import { vars } from 'polythene-core-radio-button';
 import { color, layout } from 'polythene-css-selection-control';
+
+var classes = {
+  component: "pe-radio-control"
+};
 
 var layout$1 = (function (selector, componentVars) {
   return layout(selector, componentVars, "radio");

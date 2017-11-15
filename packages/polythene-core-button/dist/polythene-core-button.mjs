@@ -1,11 +1,9 @@
 import { filterSupportedAttributes, isClient } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
-var baseClass = "pe-button";
-
 var classes = {
-  base: baseClass,
-  component: baseClass + " pe-text-button",
+  base: "pe-button",
+  component: "pe-button pe-text-button",
 
   // elements
   content: "pe-button__content",
@@ -93,11 +91,18 @@ var createProps = function createProps(vnode, _ref) {
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive();
   var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
+  var noink = attrs.ink !== undefined && attrs.ink === false;
 
   var handleInactivate = function handleInactivate() {
-    return state.inactive(true), setTimeout(function () {
-      return state.inactive(false);
-    }, attrs.inactivate * 1000);
+    return (
+      // delay a bit so that the ripple can finish before the hover disappears
+      // the timing is crude and does not take the actual ripple "done" into account
+      setTimeout(function () {
+        return state.inactive(true), setTimeout(function () {
+          return state.inactive(false);
+        }, attrs.inactivate * 1000);
+      }, noink ? 0 : 300)
+    );
   };
   var onClickHandler = attrs.events && attrs.events[k.onclick];
 
@@ -133,7 +138,9 @@ var createContent = function createContent(vnode, _ref3) {
   return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
-  disabled || noink || !Ripple || !state.dom() ? null : h(Ripple, _extends({}, {
+  disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
+  // somehow Mithril does not update when the dom stream is updated
+  ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()
   }, attrs.ripple)),
@@ -202,4 +209,4 @@ var vars$1 = {
   // color_dark_disabled_border:      "transparent"
 };
 
-export { button as coreButton, classes, vars$1 as vars };
+export { button as coreButton, vars$1 as vars };

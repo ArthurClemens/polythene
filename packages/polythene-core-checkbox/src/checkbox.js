@@ -1,4 +1,4 @@
-import classes from "./classes";
+import classes from "polythene-css-classes/checkbox";
 
 // Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
 

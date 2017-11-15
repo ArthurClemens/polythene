@@ -1,6 +1,6 @@
 {
   "name": "test-layout-styles",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "private": true,
   "description": "",
   "main": "dist/test-layout-styles.js",
@@ -17,11 +17,16 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.8",
-    "polythene-css": "^1.0.0-rc.8",
-    "polythene-mithril": "^1.0.0-rc.8",
-    "polythene-react": "^1.0.0-rc.8"
+    "polythene-core-css": "^1.0.0-rc.9",
+    "polythene-css": "^1.0.0-rc.9",
+    "polythene-mithril": "^1.0.0-rc.9",
+    "polythene-react": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "jest": {
+    "setupFiles": [
+      "../../scripts/jest-shim.js"
+    ]
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

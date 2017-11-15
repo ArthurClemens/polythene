@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-switch",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-react-switch.js",
   "module": "dist/polythene-react-switch.mjs",
@@ -14,12 +14,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-selection-control": "^1.0.0-rc.8",
-    "polythene-core-switch": "^1.0.0-rc.8",
-    "polythene-react-base": "^1.0.0-rc.8",
-    "polythene-react-icon-button": "^1.0.0-rc.8",
-    "polythene-react-shadow": "^1.0.0-rc.8"
+    "polythene-core-selection-control": "^1.0.0-rc.9",
+    "polythene-core-switch": "^1.0.0-rc.9",
+    "polythene-react-base": "^1.0.0-rc.9",
+    "polythene-react-icon-button": "^1.0.0-rc.9",
+    "polythene-react-shadow": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

@@ -1,4 +1,4 @@
-import * as coreFAB from "./fab"; export { coreFAB };
+import * as coreFAB from "./fab";
+export { coreFAB };
 
-export { default as classes } from "./classes";
 export { default as vars } from "./vars";

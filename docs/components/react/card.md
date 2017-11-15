@@ -477,12 +477,12 @@ CardCSS.addStyle(".themed-card", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-card/src/classes.js`
+Change CSS using the [Card CSS classes](../../../packages/polythene-css-classes/card.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-card";
+import classes from "polythene-css-classes/card"
 ~~~
 
 #### Style

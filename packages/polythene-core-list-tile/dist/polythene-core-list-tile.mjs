@@ -225,4 +225,4 @@ var vars$1 = {
   // color_dark_background:           "inherit",
 };
 
-export { listTile as coreListTile, classes, vars$1 as vars };
+export { listTile as coreListTile, vars$1 as vars };

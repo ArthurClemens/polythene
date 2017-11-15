@@ -1,4 +1,4 @@
-# Selection control
+# Selection Control
 
 Base functionality for:
 
@@ -9,10 +9,10 @@ Base functionality for:
 
 ## CSS classes
 
-See: `polythene-core-selection-control/src/classes.js`
+* [Selection Control classes](../../packages/polythene-css-classes/selection-control.js)
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-selection-control";
+import classes from "polythene-css-classes/selection-control";
 ~~~

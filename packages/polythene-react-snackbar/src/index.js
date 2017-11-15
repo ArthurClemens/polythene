@@ -1,6 +1,7 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreSnackbarInstance as core, transitions, classes } from "polythene-core-snackbar";
+import { coreSnackbarInstance as core, transitions } from "polythene-core-snackbar";
+import classes from "polythene-css-classes/snackbar";
 
 export const SnackbarInstance = StateComponent(core);
 

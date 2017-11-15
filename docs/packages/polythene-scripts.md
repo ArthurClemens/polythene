@@ -36,10 +36,11 @@ writeCSS({
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **styles**    | required       | Array of `themeStyles` |  | Similar to [Styling components with variables](../theming/configuration-variables.md), now passed as an arry  |
+| **styles**    | required       | Array of `themeStyles` |  | Similar to [Styling components with variables](../theming/configuration-variables.md), now passed as an array  |
 | **path**      | required       | String   |             |  Where to save the output CSS file |
 | **autoPrefix** | optional      | Boolean  | false       | Set to `true` to add vendor prefixes; not needed if your bundler writes prefixes |
 | **beautify**  | optional       | Boolean  | false       | Set to `true` to beautify the output (by default the output is minified) |
+| **gzip**      | optional       | Boolean  | false       | Set to `true` to export a `.gz` file (next to the regular output file)  |
 
 
 

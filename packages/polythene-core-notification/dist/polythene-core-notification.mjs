@@ -276,4 +276,4 @@ var transitions = {
   hide: hide$1
 };
 
-export { notificationInstance as coreNotificationInstance, classes, vars$1 as vars, transitions };
+export { notificationInstance as coreNotificationInstance, vars$1 as vars, transitions };

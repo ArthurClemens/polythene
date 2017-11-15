@@ -150,4 +150,4 @@ var vars$1 = {
   color_dark_raised_background: rgba(vars.color_light_background)
 };
 
-export { spinner as coreBaseSpinner, classes, vars$1 as vars };
+export { spinner as coreBaseSpinner, vars$1 as vars };

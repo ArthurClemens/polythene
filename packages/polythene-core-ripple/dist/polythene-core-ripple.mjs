@@ -179,4 +179,4 @@ var vars$1 = {
   // color_dark:    "inherit"
 };
 
-export { ripple as coreRipple, classes, vars$1 as vars };
+export { ripple as coreRipple, vars$1 as vars };

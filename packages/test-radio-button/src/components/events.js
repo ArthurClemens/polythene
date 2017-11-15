@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ h, k, RadioGroup }) => ({
+export default ({ h, k, RadioButton }) => ({
   oninit: vnode => {
     const checkedValue = stream();
     vnode.state = {
@@ -20,26 +20,23 @@ export default ({ h, k, RadioGroup }) => ({
         },
         `Value: ${checkedValue === undefined ? "Not set" : checkedValue}`
       ),
-      h(RadioGroup, {
+      h(RadioButton, {
         name: "events",
-        content: [
-          {
-            value: "One",
-            label: "One",
-            events: {
-              [k.onclick]: () => state.checkedValue("One")
-            },
-            checked: checkedValue === "One"
-          },
-          {
-            value: "Two",
-            label: "Two",
-            events: {
-              [k.onclick]: () => state.checkedValue("Two")
-            },
-            checked: checkedValue === "Two"
-          }
-        ]
+        value: "One",
+        label: "One",
+        events: {
+          [k.onclick]: () => state.checkedValue("One")
+        },
+        checked: checkedValue === "One"
+      }),
+      h(RadioButton, {
+        name: "events",
+        value: "Two",
+        label: "Two",
+        events: {
+          [k.onclick]: () => state.checkedValue("Two")
+        },
+        checked: checkedValue === "Two"
       })
     ]);
   }

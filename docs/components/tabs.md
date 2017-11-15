@@ -26,19 +26,6 @@ Displays a tab row of navigation buttons.
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String | "div" | HTML element tag |
-| **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id**        | optional       | String | | HTML element id |
-| **content**   | use `content` or `tabs` | Array of option objects | | Button row content |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Tabs options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -81,6 +68,19 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional       | String | "div" | HTML element tag |
+| **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
+| **style**     | optional | Object |       | For setting simple style attributes |
+| **id**        | optional       | String | | HTML element id |
+| **content**   | use `content` or `tabs` | Array of option objects | | Button row content |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+
 
 ## Composition
 
@@ -96,7 +96,6 @@ Tabs sometimes uses:
 
 ## CSS classes
 
-See: `polythene-core-tabs/src/classes.js`
-
+* [Tabs classes](../../packages/polythene-css-classes/tabs.js)
 
 

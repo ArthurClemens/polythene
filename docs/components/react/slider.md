@@ -141,12 +141,12 @@ SliderCSS.addStyle(".themed-slider", {
 
 #### CSS
 
-Change CSS using the CSS classes in `polythene-core-slider/src/classes.js`
+Change CSS using the [Slider CSS classes](../../../packages/polythene-css-classes/slider.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import { classes } from "polythene-core-slider"
+import classes from "polythene-css-classes/slider"
 ~~~
 
 #### Style

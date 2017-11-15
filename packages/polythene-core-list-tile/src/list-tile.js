@@ -1,5 +1,5 @@
 import { filterSupportedAttributes, isClient } from "polythene-core";
-import classes from "./classes";
+import classes from "polythene-css-classes/list-tile";
 
 export const getElement = () => "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
 

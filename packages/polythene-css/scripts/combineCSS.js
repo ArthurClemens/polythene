@@ -19,7 +19,8 @@ if (combinedFiles) {
   writeCSS({
     css: combinedFiles,
     path: outPath,
-    autoPrefix: true
+    autoPrefix: true,
+    gzip: true,
   });
 }
 

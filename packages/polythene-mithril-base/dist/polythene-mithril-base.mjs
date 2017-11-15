@@ -1,6 +1,7 @@
 import m from 'mithril';
 
 var keys = {
+  autocomplete: "autocomplete",
   autofocus: "autofocus",
   class: "class",
   className: "class",
@@ -29,6 +30,7 @@ var keys = {
 };
 
 var renderer = m;
+renderer.displayName = "mithril";
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -37,9 +39,6 @@ function createCommonjsModule(fn, module) {
 var stream$2 = createCommonjsModule(function (module) {
 	/* eslint-disable */
 	(function () {
-		"use strict";
-		/* eslint-enable */
-
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -223,8 +222,6 @@ var stream$2 = createCommonjsModule(function (module) {
 		module["exports"] = createStream;
 	})();
 });
-
-"use strict";
 
 var stream = stream$2;
 

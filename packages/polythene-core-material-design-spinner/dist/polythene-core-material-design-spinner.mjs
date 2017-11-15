@@ -108,4 +108,4 @@ var vars$2 = {
   color_dark_4: green500
 };
 
-export { spinner as coreMaterialDesignSpinner, classes, vars$2 as vars };
+export { spinner as coreMaterialDesignSpinner, vars$2 as vars };

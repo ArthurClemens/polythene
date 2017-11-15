@@ -1,5 +1,6 @@
 import { styler } from "polythene-core-css";
-import { classes, vars } from "polythene-core-textfield";
+import { vars } from "polythene-core-textfield";
+import classes from "polythene-css-classes/textfield";
 import layout from "./layout";
 import color from "./color";
 

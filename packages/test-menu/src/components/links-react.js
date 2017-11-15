@@ -43,13 +43,15 @@ export default class extends Component {
                 title: "Link to Shadow",
                 url: {
                   to: "/shadow",
-                }
+                },
+                key: "shadow"
               },
               {
                 title: "Link to Button",
                 url: {
                   to: "/button",
-                }
+                },
+                key: "button"
               },
             ]
           )

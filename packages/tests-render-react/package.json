@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-react",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "private": true,
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
@@ -11,21 +11,21 @@
     "build": "webpack -p --config scripts/webpack.config.js"
   },
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.8",
-    "polythene-core-css": "^1.0.0-rc.8",
-    "polythene-css": "^1.0.0-rc.8",
-    "polythene-fastclick": "^1.0.0-rc.8",
-    "polythene-react": "^1.0.0-rc.8",
-    "polythene-style": "^1.0.0-rc.8",
-    "polythene-tests": "^1.0.0-rc.8",
-    "polythene-utilities": "^1.0.0-rc.8",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "polythene-core": "^1.0.0-rc.9",
+    "polythene-core-css": "^1.0.0-rc.9",
+    "polythene-css": "^1.0.0-rc.9",
+    "polythene-fastclick": "^1.0.0-rc.9",
+    "polythene-react": "^1.0.0-rc.9",
+    "polythene-style": "^1.0.0-rc.9",
+    "polythene-tests": "^1.0.0-rc.9",
+    "polythene-utilities": "^1.0.0-rc.9",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.1",
+    "npm-run-all": "^4.1.2",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.2"
+    "webpack-dev-server": "^2.9.4"
   }
 }

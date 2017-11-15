@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-base-spinner",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-css-base-spinner.js",
   "module": "dist/polythene-css-base-spinner.mjs",
@@ -15,10 +15,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-base-spinner": "^1.0.0-rc.8",
-    "polythene-core-css": "^1.0.0-rc.8",
-    "polythene-theme": "^1.0.0-rc.8"
+    "polythene-core-base-spinner": "^1.0.0-rc.9",
+    "polythene-core-css": "^1.0.0-rc.9",
+    "polythene-css-classes": "^1.0.0-rc.9",
+    "polythene-theme": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

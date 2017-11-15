@@ -109,4 +109,4 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
-export { search as coreSearch, classes, vars$1 as vars };
+export { search as coreSearch, vars$1 as vars };

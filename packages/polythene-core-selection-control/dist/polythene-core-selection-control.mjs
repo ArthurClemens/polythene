@@ -253,4 +253,4 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
-export { selectionControl as coreSelectionControl, viewControl, classes, vars$1 as vars };
+export { selectionControl as coreSelectionControl, viewControl, vars$1 as vars };

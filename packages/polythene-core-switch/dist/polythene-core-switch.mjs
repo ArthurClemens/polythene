@@ -130,4 +130,4 @@ var vars$3 = _extends$2({}, vars$1, {
   // color_dark_focus_on and so on taken from selectionControlVars
 });
 
-export { _switch as coreSwitch, viewControl, classes, vars$3 as vars };
+export { _switch as coreSwitch, viewControl, vars$3 as vars };

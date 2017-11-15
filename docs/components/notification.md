@@ -26,19 +26,6 @@ The information on this page refers to the **Notification** component, but it al
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
-| **style**     | optional       | Object   |             | For setting simple style attributes |
-| **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Notification specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -77,6 +64,19 @@ The information on this page refers to the **Notification** component, but it al
 | **id**         | optional       | String   | "default_notification" | Notification instance id |
 | **position**   | optional       | String   | "screen" | Set to "container" to give the Notification holder `position: absolute`, so it will be positioned relative to its container |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional       | String   | "div"       | HTML element tag |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
+| **style**     | optional       | Object   |             | For setting simple style attributes |
+| **id**        | optional       | String   |             | HTML element id |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+
 
 ## Composition
 
@@ -87,4 +87,6 @@ Notification is composed from:
 
 ## CSS classes
 
-See: `polythene-core-notification/src/classes.js`
+* [Notification classes](../../packages/polythene-css-classes/notification.js)
+* [Snackbar classes](../../packages/polythene-css-classes/snackbar.js)
+

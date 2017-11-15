@@ -67,4 +67,4 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_primary)
 };
 
-export { fab as coreFAB, classes, vars$1 as vars };
+export { fab as coreFAB, vars$1 as vars };

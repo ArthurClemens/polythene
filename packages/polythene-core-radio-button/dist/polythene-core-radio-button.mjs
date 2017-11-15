@@ -32,5 +32,5 @@ var radioButton = Object.freeze({
 	createProps: createProps
 });
 
-export { radioButton as coreRadioButton, classes };
+export { radioButton as coreRadioButton };
 export { vars } from 'polythene-core-selection-control';

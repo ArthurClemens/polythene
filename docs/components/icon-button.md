@@ -19,6 +19,14 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 
 ## Options
 
+### Icon button specific options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **icon**      | either icon or child nodes must be passed | Object |  | [Icon](icon.md) options object; also used to show an round "avatar" portrait image |
+| **compact**   | optional | Boolean | | Set to `true` to use less padding |
+| **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -34,14 +42,6 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | **tabindex** (React: **tabIndex**)  | optional | Integer | | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
-### Icon button specific options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **icon**      | either icon or child nodes must be passed | Object |  | [Icon](icon.md) options object; also used to show an round "avatar" portrait image |
-| **compact**   | optional | Boolean | | Set to `true` to use less padding |
-| **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
-
 
 ## Composition
 
@@ -53,6 +53,6 @@ Icon Button is composed from:
 
 ## CSS classes
 
-See: `polythene-core-icon-button/src/classes.js`
+* [Icon Button classes](../../packages/polythene-css-classes/icon-button.js)
 
 

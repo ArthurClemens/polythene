@@ -1,4 +1,4 @@
-import { classes, coreNotificationInstance, vars } from 'polythene-core-notification';
+import { coreNotificationInstance, vars } from 'polythene-core-notification';
 import { vars as vars$1 } from 'polythene-theme';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -7,25 +7,12 @@ var coreSnackbarInstance = _extends({}, coreNotificationInstance);
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var classes$1 = _extends$1({}, classes, {
-  component: "pe-notification pe-snackbar",
-
-  // elements
-  holder: "pe-snackbar__holder",
-  placeholder: "pe-snackbar__placeholder",
-
-  // states
-  open: "pe-snackbar--open"
-});
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
-var vars$2 = _extends$2({}, vars, {
+var vars$2 = _extends$1({}, vars, {
   border_radius: 0,
   tablet_min_width: 288,
   tablet_max_width: 568,
@@ -72,10 +59,7 @@ var hide = function hide(_ref2) {
     afterHide: function afterHide() {
       return (
         // prevent a "bounce back"
-        containerEl.style.transitionDuration = "0ms",
-        // prevent flickering when snackbar instance is not yet removed (in case a next snackbars is shown)
-        el.style.visibility = "hidden", containerEl.style.transform = "translate3d(0, 0px, 0)"
-      );
+        containerEl.style.transitionDuration = "0ms", el.style.visibility = "hidden", containerEl.style.transform = "translate3d(0, 0px, 0)");
     }
   };
 };
@@ -85,4 +69,4 @@ var transitions = {
   hide: hide
 };
 
-export { coreSnackbarInstance, classes$1 as classes, vars$2 as vars, transitions };
+export { coreSnackbarInstance, vars$2 as vars, transitions };

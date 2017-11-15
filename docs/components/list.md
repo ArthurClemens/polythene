@@ -29,6 +29,33 @@ See also: [List Tile](list-tile.md#keyboard-control)
 
 ## Options
 
+### List specific options
+
+| **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
+| ----------------- | -------------- | -------- | ----------- | --------------- |
+| **header**        | optional | Object | | Options object for a [List Tile](list-tile.md); any list tile option can be used; in addition the options `title` and `sticky` |
+| **header.title**  | optional | String | | Title text label |
+| **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
+| **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](list-tile.md) |
+| **all**  | optional       | Options Object | | [List Tiles](list-tile.md) options that will be applied to all tiles; only works when List children are passed as options (instead of passing a list of ListTile components) |
+
+### List appearance options
+
+| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
+| ------------------- | -------------- | -------- | ----------- | --------------- |
+| **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
+| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
+| **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
+| **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
+
+### List keyboard control options
+
+| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
+| ------------------- | -------------- | -------- | ----------- | --------------- |
+| **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
+| **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
+| **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
+
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -43,37 +70,6 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
-### List specific options
-
-| **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
-| ----------------- | -------------- | -------- | ----------- | --------------- |
-| **header**        | optional | Object | | Options object for a [List Tile](list-tile.md); any list tile option can be used; in addition the options `title` and `sticky` |
-| **header.title**  | optional | String | | Title text label |
-| **header.sticky** | optional | Boolean | | Make header sticky when scrolling; [does not work in Edge](http://caniuse.com/#feat=css-sticky) |
-| **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](list-tile.md) |
-| **all**  | optional       | Options Object | | [List Tiles](list-tile.md) options that will be applied to all tiles; only works when List children are passed as options (instead of passing a list of ListTile components) |
-
-
-### List appearance options
-
-| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
-| ------------------- | -------------- | -------- | ----------- | --------------- |
-| **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
-| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
-| **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
-| **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
-
-
-### List keyboard control options
-
-| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
-| ------------------- | -------------- | -------- | ----------- | --------------- |
-| **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
-| **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
-| **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
-
-
-
 
 ## Composition
 
@@ -84,6 +80,5 @@ List is composed from:
 
 ## CSS classes
 
-See: `polythene-core-list/src/classes.js`
-
+* [List classes](../../packages/polythene-css-classes/list.js)
 

@@ -12,3 +12,5 @@ renderer.trust = (html, element = "div") => {
     dangerouslySetInnerHTML: { __html: html }
   });
 };
+
+renderer.displayName = "react";

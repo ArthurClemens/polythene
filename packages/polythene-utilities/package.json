@@ -1,6 +1,6 @@
 {
   "name": "polythene-utilities",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-utilities.js",
   "module": "dist/polythene-utilities.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.8",
-    "polythene-core-css": "^1.0.0-rc.8",
+    "polythene-core": "^1.0.0-rc.9",
+    "polythene-core-css": "^1.0.0-rc.9",
     "webfontloader": "^1.6.27"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-group",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-react-radio-group.js",
   "module": "dist/polythene-react-radio-group.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-group": "^1.0.0-rc.8",
-    "polythene-react-base": "^1.0.0-rc.8",
-    "polythene-react-radio-button": "^1.0.0-rc.8"
+    "polythene-core-radio-group": "^1.0.0-rc.9",
+    "polythene-react-base": "^1.0.0-rc.9",
+    "polythene-react-radio-button": "^1.0.0-rc.9"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://visiblearea.com)",
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
 }

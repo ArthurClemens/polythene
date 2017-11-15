@@ -40,6 +40,8 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
+var MINIMUM_FOCUS_INTERVAL = 150;
+
 var validateCustom = function validateCustom(state, attrs) {
   var validState = attrs.validate(state.inputEl().value);
   return {
@@ -135,22 +137,24 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var setValue = createStream({});
   var error = createStream(attrs.error);
   var hasFocus = createStream(attrs.focus || false);
-  var setFocus = createStream(null);
+  var setFocus = createStream(false);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
   var previousValue = createStream(undefined);
+  var didSetFocusTime = 0;
 
   return {
     defaultValue: defaultValue,
-    previousValue: previousValue,
+    didSetFocusTime: didSetFocusTime,
     el: el,
     error: error,
     hasFocus: hasFocus,
     inputEl: inputEl,
+    isDirty: isDirty,
     isInvalid: isInvalid,
     isTouched: isTouched,
-    isDirty: isDirty,
+    previousValue: previousValue,
     setFocus: setFocus,
     setValue: setValue,
     redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
@@ -175,12 +179,16 @@ var onMount = function onMount(vnode) {
   });
 
   state.setFocus.map(function (focusState) {
+    // Prevent autocomplete from getting in a loop
+    if (state.didSetFocusTime + MINIMUM_FOCUS_INTERVAL > new Date().getTime()) {
+      return;
+    }
     state.hasFocus(focusState);
     if (focusState && state.inputEl()) {
       // Draw in next tick, to prevent getting an immediate onblur
       // Explicit setting of focus needed for most browsers other than Safari
       setTimeout(function () {
-        return state.inputEl() && state.inputEl().focus && state.inputEl().focus();
+        return state.inputEl() && state.inputEl().focus && state.inputEl().focus(), state.didSetFocusTime = new Date().getTime();
       }, 0);
     }
   });
@@ -196,7 +204,7 @@ var createProps = function createProps(vnode, _ref2) {
   var isInvalid = state.isInvalid();
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false ? classes.hideSpinner : "", attrs.hideClear !== false ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -219,8 +227,8 @@ var createContent = function createContent(vnode, _ref3) {
     state.setFocus(true);
   }
 
-  var value = attrs.value !== undefined ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined ? "" : value.toString();
+  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+  var valueStr = value === undefined || value === null ? "" : value.toString();
 
   if (inputEl && state.previousValue() !== valueStr) {
     inputEl.value = valueStr;
@@ -292,7 +300,7 @@ var createContent = function createContent(vnode, _ref3) {
       inputEl.blur(e);
     }
   }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-  attrs[k.readonly] !== undefined ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs.required !== undefined ? { required: attrs.required } : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
+  attrs.required !== undefined && !!attrs.required ? { required: true } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
     key: "counter",
     className: classes.counter
   }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {
@@ -388,4 +396,4 @@ var vars$1 = {
   color_dark_counter_ok_border: rgba(vars.color_primary)
 };
 
-export { textfield as coreTextField, classes, vars$1 as vars };
+export { textfield as coreTextField, vars$1 as vars };

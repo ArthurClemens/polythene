@@ -2,6 +2,23 @@
 
 ## Pre release
 
+### 1.0.0-rc.9
+
+To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
+
+~~~javascript
+import buttonClasses from "polythene-css-classes/button"
+~~~
+
+All references to React 15 have been replaced with React 16.
+
+Changes to components:
+
+* Toolbar now has a default background color
+
+Bug fixes (thanks sjungwirth and ItsLeeOwen!).
+
+
 ### 1.0.0-rc.8
 
 Updated for React 16.
@@ -13,7 +30,7 @@ Changes to components:
 * Icon
   * Option `svg` must now use option `content` as well 
 
-Various bug fixes (thanks sjungwirth!)
+Various bug fixes (thanks sjungwirth!).
 
 
 ### 1.0.0-rc.7

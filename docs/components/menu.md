@@ -21,20 +21,6 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 ## Options
 
-### Common component options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-menu` |
-| **style**     | optional       | Object   |             | For setting simple style attributes |
-| **id**        | optional       | String   |             | HTML element id |
-| **content**   | use `content` or children | String, hyperscript or component | | Expects a [List](list.md), or an array of lists; replaces children |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
-| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
-
 ### Menu specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -66,6 +52,20 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **didShow** | optional | Function |  | Callback function that is called when the show transition is done; receives param `id` |
 | **didHide** | optional | Function |  | Callback function that is called when the hide transition is done; receives param `id` |
 
+### Common component options
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional       | String   | "div"       | HTML element tag |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-menu` |
+| **style**     | optional       | Object   |             | For setting simple style attributes |
+| **id**        | optional       | String   |             | HTML element id |
+| **content**   | use `content` or children | String, hyperscript or component | | Expects a [List](list.md), or an array of lists; replaces children |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **events**    | optional       | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+
 
 ## Composition
 
@@ -81,7 +81,7 @@ Menu also contains:
 
 ## CSS classes
 
-See: `polythene-core-menu/src/classes.js`
+* [Menu classes](../../packages/polythene-css-classes/menu.js)
 
 
 ## Future

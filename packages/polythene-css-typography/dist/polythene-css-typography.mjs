@@ -40,11 +40,13 @@ var typography = (function () {
       padding: 0
     }
   }, {
-    " h1 small, h2 small, h3 small, h4 small, h5 small, h6 small": {
-      "font-weight": vars.font_weight_normal,
-      "line-height": vars.line_height,
-      "letter-spacing": "-0.02em",
-      "font-size": "0.6em"
+    " h1, h2, h3, h4, h5, h6": {
+      " small": {
+        "font-weight": vars.font_weight_normal,
+        "line-height": vars.line_height,
+        "letter-spacing": "-0.02em",
+        "font-size": "0.6em"
+      }
     }
   }, {
     " h1": {
@@ -140,6 +142,12 @@ var roboto = (function () {
   }];
 });
 
+var loadRoboto = function loadRoboto() {
+  return [{
+    "@import": "url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700')"
+  }];
+};
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [roboto, reset, typography];
@@ -150,7 +158,9 @@ var addStyle = function addStyle(customSelector, customVars) {
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  // add font import for written CSS
+  var fns1 = [loadRoboto].concat(fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns1) : styler.createStyleSheets([selector], vars, fns1);
 };
 
 var addRoboto = function addRoboto() {
