@@ -42,6 +42,6 @@ Described in:
 
 ## CSS classes
 
-* [Radio Group classes](../../packages/polythene-css-classes/src/radio-group.js)
+* [Radio Group classes](../../packages/polythene-css-classes/radio-group.js)
 
 
