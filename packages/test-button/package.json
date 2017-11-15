@@ -1,6 +1,6 @@
 {
   "name": "test-button",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "private": true,
   "description": "",
   "main": "dist/test-button.js",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.0.0-rc.8",
-    "polythene-mithril": "^1.0.0-rc.8",
-    "polythene-react": "^1.0.0-rc.8"
+    "polythene-css": "^1.0.0-rc.9",
+    "polythene-mithril": "^1.0.0-rc.9",
+    "polythene-react": "^1.0.0-rc.9"
   },
   "devDependencies": {
     "react": "^16.1.1",
@@ -28,9 +28,9 @@
     "recompose": "^0.24.0"
   },
   "jest": {
-      "setupFiles": [
-        "../../scripts/jest-shim.js"
-      ]
+    "setupFiles": [
+      "../../scripts/jest-shim.js"
+    ]
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

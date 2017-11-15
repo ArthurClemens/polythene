@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-shadow",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-mithril-shadow.js",
   "module": "dist/polythene-mithril-shadow.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.0.0-rc.8",
-    "polythene-mithril-base": "^1.0.0-rc.8"
+    "polythene-core-shadow": "^1.0.0-rc.9",
+    "polythene-mithril-base": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-toolbar",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-mithril-toolbar.js",
   "module": "dist/polythene-mithril-toolbar.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.0.0-rc.8",
-    "polythene-mithril-base": "^1.0.0-rc.8"
+    "polythene-core-toolbar": "^1.0.0-rc.9",
+    "polythene-mithril-base": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

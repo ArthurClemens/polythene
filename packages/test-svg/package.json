@@ -1,6 +1,6 @@
 {
   "name": "test-svg",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "private": true,
   "description": "",
   "main": "dist/test-svg.js",
@@ -17,18 +17,18 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.0.0-rc.8",
-    "polythene-css-svg": "^1.0.0-rc.8",
-    "polythene-mithril": "^1.0.0-rc.8",
-    "polythene-react": "^1.0.0-rc.8"
+    "polythene-css": "^1.0.0-rc.9",
+    "polythene-css-svg": "^1.0.0-rc.9",
+    "polythene-mithril": "^1.0.0-rc.9",
+    "polythene-react": "^1.0.0-rc.9"
   },
   "devDependencies": {
     "react": "^16.1.1"
   },
   "jest": {
-      "setupFiles": [
-        "../../scripts/jest-shim.js"
-      ]
+    "setupFiles": [
+      "../../scripts/jest-shim.js"
+    ]
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-notification",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-react-notification.js",
   "module": "dist/polythene-react-notification.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.8",
-    "polythene-core-notification": "^1.0.0-rc.8",
-    "polythene-css-classes": "^1.0.0-rc.8",
-    "polythene-react-base": "^1.0.0-rc.8"
+    "polythene-core": "^1.0.0-rc.9",
+    "polythene-core-notification": "^1.0.0-rc.9",
+    "polythene-css-classes": "^1.0.0-rc.9",
+    "polythene-react-base": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

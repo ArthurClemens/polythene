@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-dialog-pane",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-react-dialog-pane.js",
   "module": "dist/polythene-react-dialog-pane.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-dialog-pane": "^1.0.0-rc.8",
-    "polythene-react-base": "^1.0.0-rc.8"
+    "polythene-core-dialog-pane": "^1.0.0-rc.9",
+    "polythene-react-base": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

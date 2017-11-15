@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-search",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-mithril-search.js",
   "module": "dist/polythene-mithril-search.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-search": "^1.0.0-rc.8",
-    "polythene-mithril-base": "^1.0.0-rc.8",
-    "polythene-mithril-textfield": "^1.0.0-rc.8"
+    "polythene-core-search": "^1.0.0-rc.9",
+    "polythene-mithril-base": "^1.0.0-rc.9",
+    "polythene-mithril-textfield": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

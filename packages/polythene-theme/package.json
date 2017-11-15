@@ -1,6 +1,6 @@
 {
   "name": "polythene-theme",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.9",
   "description": "",
   "main": "dist/polythene-theme.js",
   "module": "dist/polythene-theme.mjs",
@@ -14,7 +14,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-style": "^1.0.0-rc.8"
+    "polythene-style": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
