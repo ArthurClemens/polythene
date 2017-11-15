@@ -39,9 +39,6 @@ function createCommonjsModule(fn, module) {
 var stream$2 = createCommonjsModule(function (module) {
 	/* eslint-disable */
 	(function () {
-		"use strict";
-		/* eslint-enable */
-
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -225,8 +222,6 @@ var stream$2 = createCommonjsModule(function (module) {
 		module["exports"] = createStream;
 	})();
 });
-
-"use strict";
 
 var stream = stream$2;
 

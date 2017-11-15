@@ -59,10 +59,7 @@ var hide = function hide(_ref2) {
     afterHide: function afterHide() {
       return (
         // prevent a "bounce back"
-        containerEl.style.transitionDuration = "0ms",
-        // prevent flickering when snackbar instance is not yet removed (in case a next snackbars is shown)
-        el.style.visibility = "hidden", containerEl.style.transform = "translate3d(0, 0px, 0)"
-      );
+        containerEl.style.transitionDuration = "0ms", el.style.visibility = "hidden", containerEl.style.transform = "translate3d(0, 0px, 0)");
     }
   };
 };

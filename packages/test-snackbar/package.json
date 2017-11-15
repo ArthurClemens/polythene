@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "mithril": "1.1.5",
-    "react": "^15.6.1"
+    "react": "^16.1.1"
   },
   "jest": {
       "setupFiles": [

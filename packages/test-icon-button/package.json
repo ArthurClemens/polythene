@@ -22,7 +22,7 @@
     "polythene-react": "^1.0.0-rc.8"
   },
   "devDependencies": {
-    "react": "^15.6.1",
+    "react": "^16.1.1",
     "react-router-dom": "^4.1.2"
   },
   "jest": {

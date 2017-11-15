@@ -19,8 +19,8 @@
     "polythene-style": "^1.0.0-rc.8",
     "polythene-tests": "^1.0.0-rc.8",
     "polythene-utilities": "^1.0.0-rc.8",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
