@@ -9,7 +9,7 @@ Can also be used as general-purpose component library that includes dialogs, car
 
 ## Status
 
-Version: `1.0.0-rc.8` (release candidate 8)
+Version: `1.0.0-rc.9` (release candidate 9)
 
 
 ## Main features
@@ -63,6 +63,6 @@ Version: `1.0.0-rc.8` (release candidate 8)
 * Safari: 9+
 
 
-## Previous versions
+## Older versions
 
 * [Polythene 0.3 for Mithril 0.x](https://github.com/ArthurClemens/polythene/tree/0.x)

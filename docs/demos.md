@@ -3,9 +3,9 @@
 ## Mithril
 
 * [Mithril demo site](https://arthurclemens.github.io/polythene-demos/mithril/)
-* [Online examples](online-examples-mithril.md)
+* [Online examples / JSFiddles](online-examples-mithril.md)
 
 ## React
 
 * [React demo site](https://arthurclemens.github.io/polythene-demos/react/)
-* [Online examples](online-examples-react.md)
+* [Online examples / JSFiddles](online-examples-react.md)

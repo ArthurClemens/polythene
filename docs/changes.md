@@ -4,11 +4,13 @@
 
 ### 1.0.0-rc.9
 
-CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
+To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
 
 ~~~javascript
-import classes from "polythene-css-classes/component-name"
+import buttonClasses from "polythene-css-classes/button"
 ~~~
+
+All references to React 15 have been replaced with React 16.
 
 Changes to components:
 
