@@ -9,9 +9,19 @@ Wrapper around FT Lab's [FastClick](https://github.com/ftlabs/fastclick).
 Because FastClick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided by this component. This temporarily removes the FastClick event when an element is being scrolled.
 
 
-## Usage
+## Installation
 
-To simply add FastClick to your app:
+~~~bash
+yarn add polythene-fastclick
+~~~
+
+or
+
+~~~bash
+npm install --save polythene-fastclick
+~~~
+
+## Usage
 
 ~~~javascript
 import { addFastClick } from "polythene-fastclick"

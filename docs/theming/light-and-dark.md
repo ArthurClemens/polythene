@@ -2,12 +2,20 @@
 
 # Light and dark tone
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Mithril example](#mithril-example)
+- [React JSX example](#react-jsx-example)
+
+<!-- /MarkdownTOC -->
+
 A component is rendered light or dark with option `tone`.
 
 * When not set, the component is rendered normally, assuming a light background.
 * `dark`: the component is displayed inverse, with light details on a dark background; this sets CSS class `pe-dark-tone`.
 * `light`: dark tone is overridden so that the component is rendered normally; this sets CSS class `pe-light-tone`.
 
+<a name="mithril-example"></a>
 ## Mithril example
 
 To render a button on a dark background:
@@ -42,6 +50,7 @@ m(".pe-dark-tone",
 )
 ~~~
 
+<a name="react-jsx-example"></a>
 ## React JSX example
 
 To render a button on a dark background:

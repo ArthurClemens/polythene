@@ -30,7 +30,11 @@ Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https:/
 
 Essential:
 
+* `mithril`
 * `polythene-mithril`
+
+Recommended:
+
 * `polythene-css` Provides component CSS files and Material Design styles (typography and font); optionally activates CSS-in-JS [more info](css.md)
 
 Optional:

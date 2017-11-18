@@ -2,7 +2,24 @@
 
 # Configuration variables
 
-Polythene components are styled with variables that specify the measurements and colors for that component.
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Introduction](#introduction)
+- [Styling components with variables](#styling-components-with-variables)
+  - [`addStyle` options](#addstyle-options)
+  - [Dynamic styles with CSS-in-JS](#dynamic-styles-with-css-in-js)
+  - [Writing styles to CSS files](#writing-styles-to-css-files)
+- [Examples](#examples)
+  - [Mithril example](#mithril-example)
+  - [React JSX example](#react-jsx-example)
+- [List of all variables](#list-of-all-variables)
+
+<!-- /MarkdownTOC -->
+
+<a name="introduction"></a>
+## Introduction
+
+Polythene components are styled with variables that specify the sizes and colors for that component.
 
 These variables are located in each `src/vars.js` file. For example, for Icon:
 
@@ -20,9 +37,12 @@ export default {
 }
 ~~~
 
-"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme`. To override these base variables, see [Global theme file](global-theme-file.md).
+"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme` (which gets them from `polythene-style`). To override these base variables, see [Global theme file](global-theme-file.md).
+
+See the [list of all variables](#list-of-all-variables) below.
 
 
+<a name="styling-components-with-variables"></a>
 ## Styling components with variables 
 
 Component variables are passed on to "layout" and "colors", modules that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
@@ -43,6 +63,7 @@ Alternatively import directly from the component's css package:
 import { addStyle } from "polythene-css-button"
 ~~~
 
+<a name="addstyle-options"></a>
 ### `addStyle` options
 
 | **Option**   | **Required** | **Type** | **Description** |
@@ -51,11 +72,13 @@ import { addStyle } from "polythene-css-button"
 | **vars**     | required     | Object   | The component's theme variables, or a subset thereof |
 
 
+<a name="dynamic-styles-with-css-in-js"></a>
 ### Dynamic styles with CSS-in-JS 
 
 The styles are automatically added to `<head>`. This is triggered by having `import "polythene-css"` is the code.
 
 
+<a name="writing-styles-to-css-files"></a>
 ### Writing styles to CSS files
 
 It is also possible to generate static files.
@@ -66,8 +89,10 @@ Steps:
 1. Place the CSS file in your build directory, or import the css file using bundler tooling
 
 
+<a name="examples"></a>
 ## Examples
 
+<a name="mithril-example"></a>
 ### Mithril example
 
 If we want to create large icons:
@@ -111,6 +136,7 @@ m(".pe-dark-tone",
 )
 ~~~
 
+<a name="react-jsx-example"></a>
 ### React JSX example
 
 If we want to create large icons:
@@ -150,3 +176,43 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
   />
 </div>
 ~~~
+
+
+<a name="list-of-all-variables"></a>
+## List of all variables
+
+Global variables:
+
+* [polythene-style](../../packages/polythene-style/src/variables.js)
+
+Component variables:
+
+* [polythene-core-base-spinner](../../packages/polythene-core-base-spinner/src/vars.js)
+* [polythene-core-button](../../packages/polythene-core-button/src/vars.js)
+* [polythene-core-card](../../packages/polythene-core-card/src/vars.js)
+* [polythene-core-checkbox](../../packages/polythene-core-checkbox/src/vars.js)
+* [polythene-core-dialog-pane](../../packages/polythene-core-dialog-pane/src/vars.js)
+* [polythene-core-dialog](../../packages/polythene-core-dialog/src/vars.js)
+* [polythene-core-fab](../../packages/polythene-core-fab/src/vars.js)
+* [polythene-core-icon-button](../../packages/polythene-core-icon-button/src/vars.js)
+* [polythene-core-icon](../../packages/polythene-core-icon/src/vars.js)
+* [polythene-core-ios-spinner](../../packages/polythene-core-ios-spinner/src/vars.js)
+* [polythene-core-list-tile](../../packages/polythene-core-list-tile/src/vars.js)
+* [polythene-core-list](../../packages/polythene-core-list/src/vars.js)
+* [polythene-core-material-design-progress-spinner](../../packages/polythene-core-material-design-progress-spinner/src/vars.js)
+* [polythene-core-material-design-spinner](../../packages/polythene-core-material-design-spinner/src/vars.js)
+* [polythene-core-menu](../../packages/polythene-core-menu/src/vars.js)
+* [polythene-core-notification](../../packages/polythene-core-notification/src/vars.js)
+* [polythene-core-raised-button](../../packages/polythene-core-raised-button/src/vars.js)
+* [polythene-core-ripple](../../packages/polythene-core-ripple/src/vars.js)
+* [polythene-core-search](../../packages/polythene-core-search/src/vars.js)
+* [polythene-core-selection-control](../../packages/polythene-core-selection-control/src/vars.js)
+* [polythene-core-shadow](../../packages/polythene-core-shadow/src/vars.js)
+* [polythene-core-slider](../../packages/polythene-core-slider/src/vars.js)
+* [polythene-core-snackbar](../../packages/polythene-core-snackbar/src/vars.js)
+* [polythene-core-svg](../../packages/polythene-core-svg/src/vars.js)
+* [polythene-core-switch](../../packages/polythene-core-switch/src/vars.js)
+* [polythene-core-tabs](../../packages/polythene-core-tabs/src/vars.js)
+* [polythene-core-textfield](../../packages/polythene-core-textfield/src/vars.js)
+* [polythene-core-toolbar](../../packages/polythene-core-toolbar/src/vars.js)
+

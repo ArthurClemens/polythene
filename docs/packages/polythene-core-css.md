@@ -56,6 +56,8 @@ const styles = [{
 
 ## Flexbox mixins
 
+### Using CSS-in-JS
+
 ~~~javascript
 import { flex } from "polythene-core-css"
 
@@ -65,6 +67,13 @@ const styles = [{
   ]
 }]
 ~~~
+
+### CSS files
+
+~~~javascript
+import { flex } from "polythene-core-css"
+~~~
+
 
 ### Flexbox mixin functions
 
