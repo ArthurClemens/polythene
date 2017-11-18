@@ -3150,11 +3150,9 @@ var propTypes = createCommonjsModule(function (module) {
  * same logic and follow the same code paths.
  */
 
-var __DEV__ = process.env.NODE_ENV !== 'production';
-
 var warning$4 = function warning() {};
 
-if (__DEV__) {
+if (process.env.NODE_ENV !== 'production') {
   warning$4 = function warning(condition, format, args) {
     var len = arguments.length;
     args = new Array(len > 2 ? len - 2 : 0);
@@ -3186,7 +3184,7 @@ if (__DEV__) {
   };
 }
 
-var warning_1$4 = warning$4;
+var browser = warning$4;
 
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -3208,10 +3206,8 @@ var warning_1$4 = warning$4;
  * will remain to ensure logic does not differ in production.
  */
 
-var NODE_ENV = process.env.NODE_ENV;
-
 var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
-  if (NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -3235,7 +3231,7 @@ var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var invariant_1$4 = invariant$5;
+var browser$1 = invariant$5;
 
 var isAbsolute = function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -3497,7 +3493,7 @@ var LocationUtils_2 = LocationUtils.createLocation;
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
   exports.__esModule = true;
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -3669,9 +3665,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -3981,7 +3977,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -4219,7 +4215,7 @@ var Router = function (_React$Component) {
         children = _props.children,
         history = _props.history;
 
-    invariant_1$4(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
+    browser$1(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
 
     // Do this here so we can setState when a <Redirect> changes the
     // location in componentWillMount. This happens e.g. when doing
@@ -4232,7 +4228,7 @@ var Router = function (_React$Component) {
   };
 
   Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$4(this.props.history === nextProps.history, 'You cannot change <Router history>');
+    browser(this.props.history === nextProps.history, 'You cannot change <Router history>');
   };
 
   Router.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -5064,17 +5060,17 @@ var Route = function (_React$Component) {
         render = _props.render,
         children = _props.children;
 
-    warning_1$4(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+    browser(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
 
-    warning_1$4(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
 
-    warning_1$4(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   };
 
   Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
-    warning_1$4(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$4(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
 
     this.setState({
       match: this.computeMatch(nextProps, nextContext.router)
@@ -5207,7 +5203,7 @@ var createURL = function createURL(location) {
 
 var staticHandler = function staticHandler(methodName) {
   return function () {
-    invariant_1$4(false, 'You cannot %s with <StaticRouter>', methodName);
+    browser$1(false, 'You cannot %s with <StaticRouter>', methodName);
   };
 };
 
@@ -5338,9 +5334,9 @@ var Switch = function (_React$Component) {
   }
 
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$4(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$4(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
   };
 
   Switch.prototype.render = function render() {
@@ -5537,9 +5533,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 

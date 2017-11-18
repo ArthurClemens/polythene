@@ -2649,11 +2649,9 @@ var react_4 = react.createElement;
  * same logic and follow the same code paths.
  */
 
-var __DEV__ = process.env.NODE_ENV !== 'production';
-
 var warning$2 = function warning() {};
 
-if (__DEV__) {
+if (process.env.NODE_ENV !== 'production') {
   warning$2 = function warning(condition, format, args) {
     var len = arguments.length;
     args = new Array(len > 2 ? len - 2 : 0);
@@ -2685,7 +2683,7 @@ if (__DEV__) {
   };
 }
 
-var warning_1$2 = warning$2;
+var browser = warning$2;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2829,7 +2827,7 @@ if (process.env.NODE_ENV !== 'production') {
   })();
 }
 
-var warning_1$3 = warning$4;
+var warning_1$2 = warning$4;
 
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -2848,7 +2846,7 @@ var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symb
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$3 = invariant_1$2;
-  var warning$5 = warning_1$3;
+  var warning$5 = warning_1$2;
   var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$2;
   var loggedTypeFailures$1 = {};
 }
@@ -3047,7 +3045,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
           if (!manualPropTypeCallCache[cacheKey] &&
           // Avoid spamming the console because they are often not actionable except for lib authors
           manualPropTypeWarningCount < 3) {
-            warning_1$3(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
+            warning_1$2(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
           }
@@ -3140,7 +3138,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$3(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
       return emptyFunction_1$2.thatReturnsNull;
     }
 
@@ -3183,14 +3181,14 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$3(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunction_1$2.thatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning_1$3(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
+        warning_1$2(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
         return emptyFunction_1$2.thatReturnsNull;
       }
     }
@@ -3462,10 +3460,8 @@ var propTypes = createCommonjsModule(function (module) {
  * will remain to ensure logic does not differ in production.
  */
 
-var NODE_ENV = process.env.NODE_ENV;
-
 var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
-  if (NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -3489,7 +3485,7 @@ var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var invariant_1$4 = invariant$5;
+var browser$1 = invariant$5;
 
 function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -3779,7 +3775,7 @@ var LocationUtils_2 = LocationUtils.createLocation;
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
   exports.__esModule = true;
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(browser);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -3951,9 +3947,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -4320,7 +4316,7 @@ var Router$1 = function (_React$Component) {
         children = _props.children,
         history = _props.history;
 
-    invariant_1$4(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
+    browser$1(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
 
     // Do this here so we can setState when a <Redirect> changes the
     // location in componentWillMount. This happens e.g. when doing
@@ -4333,7 +4329,7 @@ var Router$1 = function (_React$Component) {
   };
 
   Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$2(this.props.history === nextProps.history, 'You cannot change <Router history>');
+    browser(this.props.history === nextProps.history, 'You cannot change <Router history>');
   };
 
   Router.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -4402,7 +4398,7 @@ var BrowserRouter = function (_React$Component) {
   }
 
   BrowserRouter.prototype.componentWillMount = function componentWillMount() {
-    warning_1$2(!this.props.history, '<BrowserRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { BrowserRouter as Router }`.');
+    browser(!this.props.history, '<BrowserRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { BrowserRouter as Router }`.');
   };
 
   BrowserRouter.prototype.render = function render() {
@@ -4433,9 +4429,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -4784,7 +4780,7 @@ var HashRouter = function (_React$Component) {
   }
 
   HashRouter.prototype.componentWillMount = function componentWillMount() {
-    warning_1$2(!this.props.history, '<HashRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { HashRouter as Router }`.');
+    browser(!this.props.history, '<HashRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { HashRouter as Router }`.');
   };
 
   HashRouter.prototype.render = function render() {
@@ -4888,7 +4884,7 @@ var Link = function (_React$Component) {
         innerRef = _props.innerRef,
         props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
 
-    invariant_1$4(this.context.router, 'You should not use <Link> outside a <Router>');
+    browser$1(this.context.router, 'You should not use <Link> outside a <Router>');
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
@@ -4939,7 +4935,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$2);
+  var _warning2 = _interopRequireDefault(browser);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -5138,7 +5134,7 @@ var MemoryRouter$1 = function (_React$Component) {
   }
 
   MemoryRouter.prototype.componentWillMount = function componentWillMount() {
-    warning_1$2(!this.props.history, '<MemoryRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { MemoryRouter as Router }`.');
+    browser(!this.props.history, '<MemoryRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { MemoryRouter as Router }`.');
   };
 
   MemoryRouter.prototype.render = function render() {
@@ -5735,7 +5731,7 @@ var Route$1 = function (_React$Component) {
 
     if (computedMatch) return computedMatch; // <Switch> already computed the match for us
 
-    invariant_1$4(router, 'You should not use <Route> or withRouter() outside a <Router>');
+    browser$1(router, 'You should not use <Route> or withRouter() outside a <Router>');
 
     var route = router.route;
 
@@ -5745,17 +5741,17 @@ var Route$1 = function (_React$Component) {
   };
 
   Route.prototype.componentWillMount = function componentWillMount() {
-    warning_1$2(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+    browser(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
 
-    warning_1$2(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
 
-    warning_1$2(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   };
 
   Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
-    warning_1$2(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$2(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
 
     this.setState({
       match: this.computeMatch(nextProps, nextContext.router)
@@ -5938,7 +5934,7 @@ var Prompt$1 = function (_React$Component) {
   };
 
   Prompt.prototype.componentWillMount = function componentWillMount() {
-    invariant_1$4(this.context.router, 'You should not use <Prompt> outside a <Router>');
+    browser$1(this.context.router, 'You should not use <Prompt> outside a <Router>');
 
     if (this.props.when) this.enable(this.props.message);
   };
@@ -6162,7 +6158,7 @@ var Redirect$1 = function (_React$Component) {
   };
 
   Redirect.prototype.componentWillMount = function componentWillMount() {
-    invariant_1$4(this.context.router, 'You should not use <Redirect> outside a <Router>');
+    browser$1(this.context.router, 'You should not use <Redirect> outside a <Router>');
 
     if (this.isStatic()) this.perform();
   };
@@ -6176,7 +6172,7 @@ var Redirect$1 = function (_React$Component) {
     var nextTo = createLocation(this.props.to);
 
     if (locationsAreEqual(prevTo, nextTo)) {
-      warning_1$2(false, 'You tried to redirect to the same route you\'re currently on: ' + ('"' + nextTo.pathname + nextTo.search + '"'));
+      browser(false, 'You tried to redirect to the same route you\'re currently on: ' + ('"' + nextTo.pathname + nextTo.search + '"'));
       return;
     }
 
@@ -6304,7 +6300,7 @@ var createURL = function createURL(location) {
 
 var staticHandler = function staticHandler(methodName) {
   return function () {
-    invariant_1$4(false, 'You cannot %s with <StaticRouter>', methodName);
+    browser$1(false, 'You cannot %s with <StaticRouter>', methodName);
   };
 };
 
@@ -6363,7 +6359,7 @@ var StaticRouter$1 = function (_React$Component) {
   };
 
   StaticRouter.prototype.componentWillMount = function componentWillMount() {
-    warning_1$2(!this.props.history, '<StaticRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { StaticRouter as Router }`.');
+    browser(!this.props.history, '<StaticRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { StaticRouter as Router }`.');
   };
 
   StaticRouter.prototype.render = function render() {
@@ -6441,13 +6437,13 @@ var Switch$1 = function (_React$Component) {
   }
 
   Switch.prototype.componentWillMount = function componentWillMount() {
-    invariant_1$4(this.context.router, 'You should not use <Switch> outside a <Router>');
+    browser$1(this.context.router, 'You should not use <Switch> outside a <Router>');
   };
 
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$2(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$2(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
   };
 
   Switch.prototype.render = function render() {
