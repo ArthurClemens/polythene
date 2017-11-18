@@ -20,7 +20,7 @@ m(List, {
   header: {
     title: "Friends"
   },
-  [
+  tiles: [
     m(ListTile, {title: "Jennifer Barker"}),
     m(ListTile, {title: "Ali Connors"}),
   ]
@@ -39,7 +39,7 @@ m(List, {
   header: {
     title: "Friends"
   },
-  [
+  tiles: [
     m(ListTile, {
       title: "Jennifer Barker",
       subtitle: "Starting post doc",

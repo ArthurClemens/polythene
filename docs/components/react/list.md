@@ -37,7 +37,7 @@ h(List, {
   header: {
     title: "Friends"
   },
-  [
+  tiles: [
     h(ListTile, {title: "Jennifer Barker"}),
     h(ListTile, {title: "Ali Connors"}),
   ]
