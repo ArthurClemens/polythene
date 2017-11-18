@@ -120,6 +120,7 @@
 
 ## And also
 
+* [Extending other libraries](extending.md)
 * [Developing](developing.md)
 * [Additional Polythene packages](packages.md)
 * [Migrating from 0.2](migrating-from-02.md)
