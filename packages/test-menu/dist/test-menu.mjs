@@ -3711,7 +3711,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
     var location = void 0;
     if (typeof path === 'string') {
       // Two-arg form: push(path, state)
-      location = (PathUtils.parsePath)(path);
+      location = (0, PathUtils.parsePath)(path);
       location.state = state;
     } else {
       // One-arg form: push(location)
@@ -3751,7 +3751,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
       if (!location.pathname) {
         location.pathname = currentLocation.pathname;
       } else if (location.pathname.charAt(0) !== '/') {
-        location.pathname = (_resolvePathname2.default)(location.pathname, currentLocation.pathname);
+        location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
       }
     } else {
       // When there is no prior location and pathname is empty, set it to /
@@ -3764,7 +3764,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
   };
 
   var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a, b) {
-    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (_valueEqual2.default)(a.state, b.state);
+    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
   };
 });
 
@@ -3785,7 +3785,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
     var prompt = null;
 
     var setPrompt = function setPrompt(nextPrompt) {
-      (_warning2.default)(prompt == null, 'A history supports only one prompt at a time');
+      (0, _warning2.default)(prompt == null, 'A history supports only one prompt at a time');
 
       prompt = nextPrompt;
 
@@ -3805,7 +3805,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
           if (typeof getUserConfirmation === 'function') {
             getUserConfirmation(result, callback);
           } else {
-            (_warning2.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+            (0, _warning2.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
 
             callback(true);
           }
@@ -3977,11 +3977,11 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
   var createBrowserHistory = function createBrowserHistory() {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    (_invariant2.default)(DOMUtils.canUseDOM, 'Browser history needs a DOM');
+    (0, _invariant2.default)(DOMUtils.canUseDOM, 'Browser history needs a DOM');
 
     var globalHistory = window.history;
-    var canUseHistory = (DOMUtils.supportsHistory)();
-    var needsHashChangeListener = !(DOMUtils.supportsPopStateOnHashChange)();
+    var canUseHistory = (0, DOMUtils.supportsHistory)();
+    var needsHashChangeListener = !(0, DOMUtils.supportsPopStateOnHashChange)();
 
     var _props$forceRefresh = props.forceRefresh,
         forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
@@ -3990,7 +3990,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
         _props$keyLength = props.keyLength,
         keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-    var basename = props.basename ? (PathUtils.stripTrailingSlash)((PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
 
     var getDOMLocation = function getDOMLocation(historyState) {
       var _ref = historyState || {},
@@ -4004,18 +4004,18 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
       var path = pathname + search + hash;
 
-      (_warning2.default)(!basename || (PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+      (0, _warning2.default)(!basename || (0, PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-      if (basename) path = (PathUtils.stripBasename)(path, basename);
+      if (basename) path = (0, PathUtils.stripBasename)(path, basename);
 
-      return (LocationUtils.createLocation)(path, state, key);
+      return (0, LocationUtils.createLocation)(path, state, key);
     };
 
     var createKey = function createKey() {
       return Math.random().toString(36).substr(2, keyLength);
     };
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -4027,7 +4027,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
     var handlePopState = function handlePopState(event) {
       // Ignore extraneous popstate events in WebKit.
-      if ((DOMUtils.isExtraneousPopstateEvent)(event)) return;
+      if ((0, DOMUtils.isExtraneousPopstateEvent)(event)) return;
 
       handlePop(getDOMLocation(event.state));
     };
@@ -4084,14 +4084,14 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     // Public interface
 
     var createHref = function createHref(location) {
-      return basename + (PathUtils.createPath)(location);
+      return basename + (0, PathUtils.createPath)(location);
     };
 
     var push = function push(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -4115,7 +4115,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
             setState({ action: action, location: location });
           }
         } else {
-          (_warning2.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+          (0, _warning2.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
 
           window.location.href = href;
         }
@@ -4123,10 +4123,10 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -4148,7 +4148,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
             setState({ action: action, location: location });
           }
         } else {
-          (_warning2.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+          (0, _warning2.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
 
           window.location.replace(href);
         }
@@ -4173,13 +4173,13 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
       listenerCount += delta;
 
       if (listenerCount === 1) {
-        (DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
+        (0, DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
 
-        if (needsHashChangeListener) (DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+        if (needsHashChangeListener) (0, DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
       } else if (listenerCount === 0) {
-        (DOMUtils.removeEventListener)(window, PopStateEvent, handlePopState);
+        (0, DOMUtils.removeEventListener)(window, PopStateEvent, handlePopState);
 
-        if (needsHashChangeListener) (DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+        if (needsHashChangeListener) (0, DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
       }
     };
 
@@ -4444,7 +4444,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
   var HashPathCoders = {
     hashbang: {
       encodePath: function encodePath(path) {
-        return path.charAt(0) === '!' ? path : '!/' + (PathUtils.stripLeadingSlash)(path);
+        return path.charAt(0) === '!' ? path : '!/' + (0, PathUtils.stripLeadingSlash)(path);
       },
       decodePath: function decodePath(path) {
         return path.charAt(0) === '!' ? path.substr(1) : path;
@@ -4481,17 +4481,17 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
   var createHashHistory = function createHashHistory() {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    (_invariant2.default)(DOMUtils.canUseDOM, 'Hash history needs a DOM');
+    (0, _invariant2.default)(DOMUtils.canUseDOM, 'Hash history needs a DOM');
 
     var globalHistory = window.history;
-    var canGoWithoutReload = (DOMUtils.supportsGoWithoutReloadUsingHash)();
+    var canGoWithoutReload = (0, DOMUtils.supportsGoWithoutReloadUsingHash)();
 
     var _props$getUserConfirm = props.getUserConfirmation,
         getUserConfirmation = _props$getUserConfirm === undefined ? DOMUtils.getConfirmation : _props$getUserConfirm,
         _props$hashType = props.hashType,
         hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
 
-    var basename = props.basename ? (PathUtils.stripTrailingSlash)((PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
 
     var _HashPathCoders$hashT = HashPathCoders[hashType],
         encodePath = _HashPathCoders$hashT.encodePath,
@@ -4500,14 +4500,14 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     var getDOMLocation = function getDOMLocation() {
       var path = decodePath(getHashPath());
 
-      (_warning2.default)(!basename || (PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+      (0, _warning2.default)(!basename || (0, PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
 
-      if (basename) path = (PathUtils.stripBasename)(path, basename);
+      if (basename) path = (0, PathUtils.stripBasename)(path, basename);
 
-      return (LocationUtils.createLocation)(path);
+      return (0, LocationUtils.createLocation)(path);
     };
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -4531,9 +4531,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
         var location = getDOMLocation();
         var prevLocation = history.location;
 
-        if (!forceNextPop && (LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
+        if (!forceNextPop && (0, LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
 
-        if (ignorePath === (PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
+        if (ignorePath === (0, PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
 
         ignorePath = null;
 
@@ -4565,11 +4565,11 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       // keeping a list of paths we've seen in sessionStorage.
       // Instead, we just default to 0 for paths we don't know.
 
-      var toIndex = allPaths.lastIndexOf((PathUtils.createPath)(toLocation));
+      var toIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(toLocation));
 
       if (toIndex === -1) toIndex = 0;
 
-      var fromIndex = allPaths.lastIndexOf((PathUtils.createPath)(fromLocation));
+      var fromIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(fromLocation));
 
       if (fromIndex === -1) fromIndex = 0;
 
@@ -4588,24 +4588,24 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     if (path !== encodedPath) replaceHashPath(encodedPath);
 
     var initialLocation = getDOMLocation();
-    var allPaths = [(PathUtils.createPath)(initialLocation)];
+    var allPaths = [(0, PathUtils.createPath)(initialLocation)];
 
     // Public interface
 
     var createHref = function createHref(location) {
-      return '#' + encodePath(basename + (PathUtils.createPath)(location));
+      return '#' + encodePath(basename + (0, PathUtils.createPath)(location));
     };
 
     var push = function push(path, state) {
-      (_warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
+      (0, _warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, undefined, undefined, history.location);
+      var location = (0, LocationUtils.createLocation)(path, undefined, undefined, history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (PathUtils.createPath)(location);
+        var path = (0, PathUtils.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -4616,7 +4616,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           ignorePath = path;
           pushHashPath(encodedPath);
 
-          var prevIndex = allPaths.lastIndexOf((PathUtils.createPath)(history.location));
+          var prevIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(history.location));
           var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
 
           nextPaths.push(path);
@@ -4624,7 +4624,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
 
           setState({ action: action, location: location });
         } else {
-          (_warning2.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+          (0, _warning2.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
 
           setState();
         }
@@ -4632,15 +4632,15 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(state === undefined, 'Hash history cannot replace state; it is ignored');
+      (0, _warning2.default)(state === undefined, 'Hash history cannot replace state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, undefined, undefined, history.location);
+      var location = (0, LocationUtils.createLocation)(path, undefined, undefined, history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (PathUtils.createPath)(location);
+        var path = (0, PathUtils.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -4652,7 +4652,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           replaceHashPath(encodedPath);
         }
 
-        var prevIndex = allPaths.indexOf((PathUtils.createPath)(history.location));
+        var prevIndex = allPaths.indexOf((0, PathUtils.createPath)(history.location));
 
         if (prevIndex !== -1) allPaths[prevIndex] = path;
 
@@ -4661,7 +4661,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var go = function go(n) {
-      (_warning2.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+      (0, _warning2.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
 
       globalHistory.go(n);
     };
@@ -4680,9 +4680,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       listenerCount += delta;
 
       if (listenerCount === 1) {
-        (DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+        (0, DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
       } else if (listenerCount === 0) {
-        (DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+        (0, DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
       }
     };
 
@@ -4960,7 +4960,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
         _props$keyLength = props.keyLength,
         keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -4976,7 +4976,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
 
     var index = clamp(initialIndex, 0, initialEntries.length - 1);
     var entries = initialEntries.map(function (entry) {
-      return typeof entry === 'string' ? (LocationUtils.createLocation)(entry, undefined, createKey()) : (LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
+      return typeof entry === 'string' ? (0, LocationUtils.createLocation)(entry, undefined, createKey()) : (0, LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
     });
 
     // Public interface
@@ -4984,10 +4984,10 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     var createHref = PathUtils.createPath;
 
     var push = function push(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -5012,10 +5012,10 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;

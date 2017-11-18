@@ -46,7 +46,7 @@
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.1.1",
     "react-test-renderer": "^16.1.1",
-    "rollup": "^0.51.5",
+    "rollup": "^0.51.7",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-livereload": "^0.6.0",
