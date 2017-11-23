@@ -1,6 +1,5 @@
 # Getting started with Polythene for Mithril
 
-
 <!-- MarkdownTOC bracket="round" autolink="true" depth="4" -->
 
 - [Example setup](#example-setup)

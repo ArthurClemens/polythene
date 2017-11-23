@@ -2,7 +2,23 @@
 
 Displays a list element as part of a [List](list.md).
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Keyboard control](#keyboard-control)
+- [Options](#options)
+  - [List tile content options](#list-tile-content-options)
+  - [List tile appearance options](#list-tile-appearance-options)
+  - [List tile primary content options](#list-tile-primary-content-options)
+  - [List tile secondary content options](#list-tile-secondary-content-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Separately set primary, secondary and front content
@@ -15,6 +31,7 @@ Displays a list element as part of a [List](list.md).
 * Keyboard control
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/list-tile.md)
@@ -22,6 +39,7 @@ Displays a list element as part of a [List](list.md).
 
 
 
+<a name="keyboard-control"></a>
 ## Keyboard control
 
 Read first: [Turning on keyboard control](../keyboard-control.md)
@@ -32,8 +50,10 @@ This works for list tiles that are defined as link (when either option `element`
 1. Press Enter to simulate a click.
 
 
+<a name="options"></a>
 ## Options
 
+<a name="list-tile-content-options"></a>
 ### List tile content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -41,6 +61,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **content**   | -              | -        |             | See below |
 | **secondary** | optional       | Object   |             | Options for secondary content, see below |
 
+<a name="list-tile-appearance-options"></a>
 ### List tile appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -56,6 +77,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [List](list.md) component as `header.sticky`; [does not work in IE/Edge](http://caniuse.com/#feat=css-sticky); adds class `pe-list-tile--sticky` |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 
+<a name="list-tile-primary-content-options"></a>
 ### List tile primary content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -69,6 +91,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **compactFront** | optional | Boolean | | Set to `true` to reduce horizontal width of `front` content |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
+<a name="list-tile-secondary-content-options"></a>
 ### List tile secondary content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -78,6 +101,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for secondary content; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -92,6 +116,7 @@ This works for list tiles that are defined as link (when either option `element`
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 List Tile is composed from:
@@ -100,6 +125,7 @@ List Tile is composed from:
 * [Icon](icon.md) (when option `secondary.icon` is used)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [List Tile classes](../../packages/polythene-css-classes/list-tile.js)

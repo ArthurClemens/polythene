@@ -2,12 +2,25 @@
 
 # Radio Button component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+  - [Shared options](#shared-options)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Radio Button options](../radio-button.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 Radio buttons always come in groups. To simply show 2 radio buttons, without handling their state, does not make much sense:
@@ -31,6 +44,7 @@ import { RadioButton } from "polythene-react"
 </div>
 ~~~
 
+<a name="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 Radio Buttons will generally be used with a [Radio Group](radio-group.md) that manages the buttons' (singular) selected state.
@@ -134,6 +148,7 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 
 
 
+<a name="shared-options"></a>
 ### Shared options
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons.
@@ -167,10 +182,12 @@ h(RadioGroup, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
 Both Radio Button and Radio Group can be styled using `theme`, `style` and CSS.
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Radio Button appearance, either with a theme or with CSS.
@@ -216,6 +233,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

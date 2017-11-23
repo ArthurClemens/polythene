@@ -1,6 +1,5 @@
 # Getting started with Polythene for React
 
-
 <!-- MarkdownTOC bracket="round" autolink="true" depth="3" -->
 
 - [Example setup](#example-setup)

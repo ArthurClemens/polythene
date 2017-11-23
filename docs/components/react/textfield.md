@@ -2,12 +2,29 @@
 
 # Text Field component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Help texts](#help-texts)
+  - [Front-end validation](#front-end-validation)
+  - [Custom validation](#custom-validation)
+  - [Character counter](#character-counter)
+  - [Reading and setting the value](#reading-and-setting-the-value)
+  - [Programmatically giving focus](#programmatically-giving-focus)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Text Field options](../textfield.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -114,6 +131,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="help-texts"></a>
 ### Help texts
 
 Pass `help` to create a help text below the field:
@@ -156,6 +174,7 @@ h(TextField, {
 
 A help text also function as error message when the field input is invalid.
 
+<a name="front-end-validation"></a>
 ### Front-end validation
 
 Passing `required` adds a mark `*` to the label, and uses HTML5 field validation to test for a non-empty value:
@@ -200,6 +219,7 @@ Variations:
 * To validate on key press before "onBlur", use option `validateOnInput`
 * To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
+<a name="custom-validation"></a>
 ### Custom validation
 
 Option `validate` is a function that accepts the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
@@ -234,6 +254,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="character-counter"></a>
 ### Character counter
 
 Adding `counter` with a value adds a live counter below the field:
@@ -278,6 +299,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="reading-and-setting-the-value"></a>
 ### Reading and setting the value
 
 See also [Handling state](../../handling-state.md).
@@ -316,6 +338,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="programmatically-giving-focus"></a>
 ### Programmatically giving focus
 
 Reading and setting the focus state is similar to handling the input value:
@@ -351,8 +374,10 @@ h(Button, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the TextField appearance, either with a theme or with CSS.
@@ -396,6 +421,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

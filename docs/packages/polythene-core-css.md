@@ -5,7 +5,20 @@
 * **flex**: CSS flex mixins
 * **Layout classes**: Provides common and flexbox classes
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Styler](#styler)
+  - [Styler functions](#styler-functions)
+- [Mixins](#mixins)
+  - [Mixin functions](#mixin-functions)
+- [Flexbox mixins](#flexbox-mixins)
+  - [Using CSS-in-JS](#using-css-in-js)
+  - [CSS files](#css-files)
+  - [Flexbox mixin functions](#flexbox-mixin-functions)
+
+<!-- /MarkdownTOC -->
+
+<a name="styler"></a>
 ## Styler
 
 ~~~javascript
@@ -22,6 +35,7 @@ const styles = [
 styler.add("app", styles)
 ~~~
 
+<a name="styler-functions"></a>
 ### Styler functions
 
 * add
@@ -30,6 +44,7 @@ styler.add("app", styles)
 * styleComponent
 
 
+<a name="mixins"></a>
 ## Mixins
 
 ~~~javascript
@@ -42,6 +57,7 @@ const styles = [{
 }]
 ~~~
 
+<a name="mixin-functions"></a>
 ### Mixin functions
 
 * clearfix
@@ -54,8 +70,10 @@ const styles = [{
 * vendorize
 
 
+<a name="flexbox-mixins"></a>
 ## Flexbox mixins
 
+<a name="using-css-in-js"></a>
 ### Using CSS-in-JS
 
 ~~~javascript
@@ -68,6 +86,7 @@ const styles = [{
 }]
 ~~~
 
+<a name="css-files"></a>
 ### CSS files
 
 ~~~javascript
@@ -75,6 +94,7 @@ import { flex } from "polythene-core-css"
 ~~~
 
 
+<a name="flexbox-mixin-functions"></a>
 ### Flexbox mixin functions
 
 * flex

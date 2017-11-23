@@ -2,7 +2,21 @@
 
 Displays a tab row of navigation buttons.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Tabs options](#tabs-options)
+  - [Tabs appearance options](#tabs-appearance-options)
+  - [Tab button options](#tab-button-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Use text, icon, or combination
@@ -18,14 +32,17 @@ Displays a tab row of navigation buttons.
 * Display tabs as mobile navigation menu
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/tabs.md)
 * [Usage with React](react/tabs.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="tabs-options"></a>
 ### Tabs options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -34,6 +51,7 @@ Displays a tab row of navigation buttons.
 | **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
 | **onChange**  | optional       | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `options` {Object}, `el` {HTMLElement}) |
 
+<a name="tabs-appearance-options"></a>
 ### Tabs appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -51,6 +69,7 @@ Displays a tab row of navigation buttons.
 | **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
 | **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
 
+<a name="tab-button-options"></a>
 ### Tab button options
 
 Tab buttons use the same parameters as [button](button.md), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
@@ -68,6 +87,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **disabled** | optional | Boolean | false | Disables the button |
 | **selected** | optional | Boolean | false | Set to true to show the button as selected |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -82,6 +102,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Tabs is composed from:
@@ -94,6 +115,7 @@ Tabs sometimes uses:
 * [Icon](icon.md) (when `icon` is passed instead of `label`)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Tabs classes](../../packages/polythene-css-classes/tabs.js)

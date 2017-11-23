@@ -2,12 +2,26 @@
 
 # List component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Variations](#variations)
+  - [Sticky headers](#sticky-headers)
+  - [Keyboard control](#keyboard-control)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [List options](list.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/8k7gg3va/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -58,6 +72,7 @@ m(List, {
 ~~~
 
 
+<a name="variations"></a>
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
@@ -81,6 +96,7 @@ m(List, {
 })
 ~~~
 
+<a name="sticky-headers"></a>
 ### Sticky headers
 
 To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not work in IE or Edge](http://caniuse.com/#feat=css-sticky), so its use is a bit limited.
@@ -98,6 +114,7 @@ If you do choose to use it, add some styles to the container that holds the list
 }
 ~~~
 
+<a name="keyboard-control"></a>
 ### Keyboard control
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
@@ -162,8 +179,10 @@ h(List, {
 
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the list appearance, either with a theme or with CSS.
@@ -211,6 +230,7 @@ m(List, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

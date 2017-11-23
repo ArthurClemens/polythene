@@ -2,16 +2,33 @@
 
 # Icon component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [With trusted SVG text](#with-trusted-svg-text)
+  - [With SVG source files](#with-svg-source-files)
+  - [With image source files](#with-image-source-files)
+  - [With Javascript modules](#with-javascript-modules)
+- [Appearance](#appearance)
+  - [Sizes](#sizes)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Icon options](../icon.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/ubzhapwy/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+<a name="with-trusted-svg-text"></a>
 ### With trusted SVG text
 
 ~~~javascript
@@ -36,6 +53,7 @@ m(Icon,
 )
 ~~~
 
+<a name="with-svg-source-files"></a>
 ### With SVG source files
 
 ~~~javascript
@@ -44,6 +62,7 @@ m(Icon, {
 })
 ~~~
 
+<a name="with-image-source-files"></a>
 ### With image source files
 
 ~~~javascript
@@ -52,6 +71,7 @@ m(Icon, {
 })
 ~~~
 
+<a name="with-javascript-modules"></a>
 ### With Javascript modules
 
 To facilitate importing (and reuse) of SVG strings, you may put them in Javascript modules:
@@ -75,13 +95,16 @@ m(Icon, { svg: { content: starsSVG } })
 A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="sizes"></a>
 ### Sizes
 
 The size is set with option `size` (4 sizes). Use CSS for more finegrained control.
 
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the icon appearance, either with a theme or with CSS.
@@ -127,6 +150,7 @@ m(Icon, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

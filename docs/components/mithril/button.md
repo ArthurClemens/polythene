@@ -2,12 +2,27 @@
 
 # Button component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Links](#links)
+  - [Events](#events)
+  - [Variations](#variations)
+  - [Mobile and tap delay](#mobile-and-tap-delay)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Button options](../button.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/5d5xfoxs/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -21,6 +36,7 @@ m(Button, {
 })
 ~~~
 
+<a name="links"></a>
 ### Links
 
 Add a route URL:
@@ -38,6 +54,7 @@ m(Button, {
 See also: [URLs and router links](../../handling-urls.md)
 
 
+<a name="events"></a>
 ### Events
 
 Add an onclick event:
@@ -51,12 +68,14 @@ m(Button, {
 })
 ~~~
 
+<a name="variations"></a>
 ### Variations
 
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
 * Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead.
 
+<a name="mobile-and-tap-delay"></a>
 ### Mobile and tap delay
 
 To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in "polythene-utilities". This temporarily removes the Fastclick event when an element is being scrolled.
@@ -68,8 +87,10 @@ addFastClick()
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Button appearance, either with a theme or with CSS.
@@ -118,6 +139,7 @@ m(Button, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

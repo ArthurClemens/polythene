@@ -2,17 +2,33 @@
 
 # SVG component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [With trusted SVG text](#with-trusted-svg-text)
+  - [With source files](#with-source-files)
+  - [With Javascript modules](#with-javascript-modules)
+  - [Usage with Icon component](#usage-with-icon-component)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [SVG options](../svg.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/wu1v74yk/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 
+<a name="with-trusted-svg-text"></a>
 ### With trusted SVG text
 
 ~~~javascript
@@ -27,6 +43,7 @@ m(SVG, m.trust(starsSVG))
 m(SVG, { content: m.trust(starsSVG) })
 ~~~
 
+<a name="with-source-files"></a>
 ### With source files
 
 ~~~javascript
@@ -35,6 +52,7 @@ m(SVG, {
 })
 ~~~
 
+<a name="with-javascript-modules"></a>
 ### With Javascript modules
 
 To facilitate importing (and reuse) of SVG strings, you may put them in a JavaScript module:
@@ -58,6 +76,7 @@ m(SVG, starsSVG)
 A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
 
 
+<a name="usage-with-icon-component"></a>
 ### Usage with Icon component
 
 SVG options can be passed to [icon](../icon.md):
@@ -69,8 +88,10 @@ m(Icon, { svg: { content: m.trust(svgString) } })
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the SVG appearance, either with a theme or with CSS.
@@ -110,6 +131,7 @@ m(SVG, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

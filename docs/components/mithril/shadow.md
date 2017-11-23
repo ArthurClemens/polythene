@@ -2,12 +2,22 @@
 
 # Shadow component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Shadow options](../shadow.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/87wjreeu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -44,8 +54,10 @@ m(Shadow, {
 })
 ~~~
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 #### CSS

@@ -2,18 +2,35 @@
 
 # Notification component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Notification spawner](#notification-spawner)
+  - [Notification functions](#notification-functions)
+  - [Callbacks](#callbacks)
+  - [Example with action, dialog, pausing](#example-with-action-dialog-pausing)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Transitions](#transitions)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Notification options](../notification.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 Other than most other components, `Notification` is not rendered directly but invoked through function calls `show` and `hide`.
 
 The Notification component itself does not accept any appearance options. Instead, you pass options when calling `show` - allowing to show custom notifications from anywhere in the app.
 
+<a name="notification-spawner"></a>
 ### Notification spawner
 
 Notifications will be spawned from `<Notification />` (hyperscript: `h(Notification)`). To show notification messages, use `Notification.show()` - more on that later.
@@ -90,6 +107,7 @@ Notification.show(messageOptions, { spawn: "notifs", position: "container" })
 
 This will render the holder with `position: absolute`. The containing element needs to have `position: relative`.
 
+<a name="notification-functions"></a>
 ### Notification functions
 
 ~~~javascript
@@ -210,10 +228,12 @@ Example:
 let messageCount = Notification.count()
 ~~~
 
+<a name="callbacks"></a>
 ### Callbacks
 
 Callback functions that are called after the transition: `didShow` and `didHide`.
 
+<a name="example-with-action-dialog-pausing"></a>
 ### Example with action, dialog, pausing
 
 Let's say the notification has an Undo button. Clicking it shows a dialog is on screen with OK/Cancel buttons. During the time the dialog is on screen, the notification is paused, so it will still there after the dialog Cancel button is clicked.
@@ -332,8 +352,10 @@ export default () =>
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Notification appearance, either with a theme or with CSS.
@@ -383,6 +405,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="transitions"></a>
 ### Transitions
 
 The transitions for showing and hiding of notifications can be customized with transition options - see "Transition options" in [Notification options](../notification.md). For example:
@@ -476,6 +499,7 @@ Snackbar.show({
 });
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

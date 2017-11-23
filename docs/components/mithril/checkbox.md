@@ -2,12 +2,25 @@
 
 # Checkbox component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Icons](#icons)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Checkbox options](../checkbox.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/gcuc9mch/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -24,6 +37,7 @@ m(Checkbox, {
 ~~~
 
 
+<a name="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 See also [Handling state](../../handling-state.md).
@@ -88,8 +102,10 @@ const SimpleForm = {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Checkbox appearance, either with a theme or with CSS.
@@ -132,6 +148,7 @@ m(Checkbox, {
 })
 ~~~
 
+<a name="icons"></a>
 ### Icons
 
 To use alternative icons, use options `iconOn` and `iconOff`:
@@ -153,6 +170,7 @@ m(Checkbox, {
 });
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

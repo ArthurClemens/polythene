@@ -2,6 +2,21 @@
 
 Displays a text button with a [Ripple](ripple.md) effect.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Keyboard control](#keyboard-control)
+- [Options](#options)
+  - [Button specific options](#button-specific-options)
+  - [Button appearance options](#button-appearance-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Ripple effect, optionally disable
@@ -13,12 +28,14 @@ Displays a text button with a [Ripple](ripple.md) effect.
 * Keyboard control
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/button.md)
 * [Usage with React](react/button.md)
 
 
+<a name="keyboard-control"></a>
 ## Keyboard control
 
 Read first: [Turning on keyboard control](../keyboard-control.md)
@@ -27,8 +44,10 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 1. Press Enter to simulate a click.
 
 
+<a name="options"></a>
 ## Options
 
+<a name="button-specific-options"></a>
 ### Button specific options
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
@@ -41,6 +60,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **inactive** | optional | Boolean |  | Set to `true` to disable button events and ripple/wash effects |
 | **inactivate** | optional | Number |  | The number of seconds after tap/click when the button is inactive; useful to prevent double clicks |
 
+<a name="button-appearance-options"></a>
 ### Button appearance options
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
@@ -50,6 +70,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **borders** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
@@ -66,6 +87,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **tone** | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Button is optionally composed from:
@@ -73,6 +95,7 @@ Button is optionally composed from:
 * [Ripple](ripple.md) (when option `ink` is not `false`)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Button classes](../../packages/polythene-css-classes/button.js)

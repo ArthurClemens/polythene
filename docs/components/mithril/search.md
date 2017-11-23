@@ -2,12 +2,28 @@
 
 # Search component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Search box type](#search-box-type)
+  - [Icons and buttons](#icons-and-buttons)
+  - [Logic: storing and clearing the value](#logic-storing-and-clearing-the-value)
+  - [Complete example](#complete-example)
+- [Appearance](#appearance)
+  - [Shadow](#shadow)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Search options](../search.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/4zmtfd5u/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -24,6 +40,7 @@ m(Search, {
 
 This creates a search field without any icons, with label "Search", and is little more than a [Text Field](../textfield.md) with a drop shadow. The field also needs search icons and buttons. More on that below.
 
+<a name="search-box-type"></a>
 ### Search box type
 
 The search box can be "inset" (default) or "full width".
@@ -40,6 +57,7 @@ m(Search, {
 })
 ~~~
 
+<a name="icons-and-buttons"></a>
 ### Icons and buttons
 
 The search component does not include any icons by itself - providing those is the responsibility of your application. 
@@ -76,6 +94,7 @@ buttons: {
 
 Not all button states need to be defined.
 
+<a name="logic-storing-and-clearing-the-value"></a>
 ### Logic: storing and clearing the value
 
 See also [Handling state](../../handling-state.md).
@@ -106,6 +125,7 @@ To clear the field:
 
 The back button clears the field and removes the focus, setting the search field to the initial state. Remove the ripple (`ink: false`) to prevent a ripple after the click (it would seem like the returned search button received the click).
 
+<a name="complete-example"></a>
 ### Complete example
 
 ~~~javascript
@@ -216,12 +236,15 @@ const MySearch = {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="shadow"></a>
 ### Shadow
 
 Add `before: m(Shadow)` to add a drop shadow to the search field.
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Search appearance, either with a theme or with CSS.
@@ -267,6 +290,7 @@ m(Search, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

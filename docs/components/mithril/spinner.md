@@ -2,12 +2,26 @@
 
 # Spinner component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Show](#show)
+  - [Progress spinner](#progress-spinner)
+- [Appearance](#appearance)
+  - [Single color](#single-color)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Spinner options](../spinner.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/hnzvnhxa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -36,6 +50,7 @@ Display the Spinner:
 m(Spinner, { show: true })
 ~~~
 
+<a name="show"></a>
 ### Show
 
 By default the Spinner is hidden. To show the spinner, either:
@@ -43,6 +58,7 @@ By default the Spinner is hidden. To show the spinner, either:
 * Set option `show` to true
 * Set option `permanent` to true (for testing and demos)
 
+<a name="progress-spinner"></a>
 ### Progress spinner
 
 To show a spinner "filling" a progress circle:
@@ -110,14 +126,17 @@ const Test = {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="single-color"></a>
 ### Single color
 
 For MaterialDesignSpinner and MaterialDesignProgressSpinner.
 
 Use option `singleColor` to use only one color (by default the primary color).
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Spinner appearance, either with a theme or with CSS.
@@ -168,6 +187,7 @@ m(MaterialDesignProgressSpinner, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

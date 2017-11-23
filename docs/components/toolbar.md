@@ -4,27 +4,44 @@ Displays a horizontal bar containing a label and action items.
 
 See [Material Design Toolbars](https://material.io/guidelines/layout/structure.html#structure-Toolbars) for examples of different usages.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Toolbar appearance options](#toolbar-appearance-options)
+  - [ToolbarTitle options](#toolbartitle-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Flexibly composable with labels and icon buttons
 * Compact display
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/toolbar.md)
 * [Usage with React](react/toolbar.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="toolbar-appearance-options"></a>
 ### Toolbar appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **compact** | optional | Boolean | false | Set to `true` to create a more compact Toolbar |
 
+<a name="toolbartitle-options"></a>
 ### ToolbarTitle options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -33,6 +50,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **center**    | optional | Boolean | false | Set to `true` to center the text |
 | **indent**    | optional | Boolean | false | Set to `true` to indent the text as if it would be next to an icon |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -48,6 +66,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Toolbar is often composed from:
@@ -56,6 +75,7 @@ Toolbar is often composed from:
 * ToolbarTitle (see usage examples)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Toolbar classes](../../packages/polythene-css-classes/toolbar.js)

@@ -2,12 +2,25 @@
 
 # Checkbox component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Icons](#icons)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Checkbox options](../checkbox.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -39,6 +52,7 @@ h(Checkbox, {
 })
 ~~~
 
+<a name="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 See also [Handling state](../../handling-state.md).
@@ -119,8 +133,10 @@ export default SimpleForm
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Checkbox appearance, either with a theme or with CSS.
@@ -163,6 +179,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="icons"></a>
 ### Icons
 
 To use alternative icons, use options `iconOn` and `iconOff`:
@@ -178,6 +195,7 @@ const iconStarFilledSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path 
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

@@ -2,7 +2,19 @@
 
 Displays an [Icon](icon.md) as a button. Also called toggle button.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Icon button specific options](#icon-button-specific-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * All [Button](button.md) main features
@@ -11,14 +23,17 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 * Inactive display
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/icon-button.md)
 * [Usage with React](react/icon-button.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="icon-button-specific-options"></a>
 ### Icon button specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -27,6 +42,7 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -43,6 +59,7 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Icon Button is composed from:
@@ -51,6 +68,7 @@ Icon Button is composed from:
 * [Icon](icon.md) (when using option `icon`)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Icon Button classes](../../packages/polythene-css-classes/icon-button.js)

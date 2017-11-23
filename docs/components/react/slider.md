@@ -2,12 +2,26 @@
 
 # Slider component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Ranges, steps and ticks](#ranges-steps-and-ticks)
+  - [Reading and setting the slider value](#reading-and-setting-the-slider-value)
+- [Appearance](#appearance)
+  - [Icons](#icons)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Slider options](../slider.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 A Slider with default settings (a range of 0 to 100, default value 0, step size 1):
@@ -33,6 +47,7 @@ import { renderer as h, Slider } from "polythene-react"
 h(Slider)
 ~~~
 
+<a name="ranges-steps-and-ticks"></a>
 ### Ranges, steps and ticks
 
 Options to create a Slider with a range of 0 to 50 and a step size of 10 (step count of 6 including min and max), and a default value of 10:
@@ -59,6 +74,7 @@ To add tick marks and pins:
 }
 ~~~
 
+<a name="reading-and-setting-the-slider-value"></a>
 ### Reading and setting the slider value
 
 See also [Handling state](../../handling-state.md).
@@ -83,8 +99,10 @@ To set the Slider value, use option `value`:
 
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="icons"></a>
 ### Icons
 
 To place an icon next to the Slider, use the option `before`:
@@ -118,6 +136,7 @@ h(Slider, {
 })
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Slider appearance, either with a theme or with CSS.
@@ -161,6 +180,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

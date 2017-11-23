@@ -1,7 +1,22 @@
 # Change log
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Pre release](#pre-release)
+  - [1.0.0-rc.9](#100-rc9)
+  - [1.0.0-rc.8](#100-rc8)
+  - [1.0.0-rc.7](#100-rc7)
+  - [1.0.0-rc.6](#100-rc6)
+  - [1.0.0-rc.5](#100-rc5)
+  - [1.0.0-rc.4](#100-rc4)
+  - [1.0.0-rc.1 to 1.0.0-rc.3](#100-rc1-to-100-rc3)
+
+<!-- /MarkdownTOC -->
+
+<a name="pre-release"></a>
 ## Pre release
 
+<a name="100-rc9"></a>
 ### 1.0.0-rc.9
 
 To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
@@ -19,6 +34,7 @@ Changes to components:
 Bug fixes (thanks sjungwirth and ItsLeeOwen!).
 
 
+<a name="100-rc8"></a>
 ### 1.0.0-rc.8
 
 Updated for React 16.
@@ -33,11 +49,13 @@ Changes to components:
 Various bug fixes (thanks sjungwirth!).
 
 
+<a name="100-rc7"></a>
 ### 1.0.0-rc.7
 
 Fix for newly introduced bug in button onclick handling.
 
 
+<a name="100-rc6"></a>
 ### 1.0.0-rc.6
 
 * CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
@@ -55,6 +73,7 @@ Changes to components:
 Various bug fixes.
 
 
+<a name="100-rc5"></a>
 ### 1.0.0-rc.5
 
 Contains fixes for server-side rendering.
@@ -80,6 +99,7 @@ Changes to components:
 Various bug fixes. 
 
 
+<a name="100-rc4"></a>
 ### 1.0.0-rc.4
 
 Changes to components:
@@ -98,6 +118,7 @@ Changes to components:
 Various bug fixes.
 
 
+<a name="100-rc1-to-100-rc3"></a>
 ### 1.0.0-rc.1 to 1.0.0-rc.3
 
 Me learning to publish with Lerna.

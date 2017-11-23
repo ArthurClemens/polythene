@@ -2,16 +2,31 @@
 
 # Dialog component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Calling a Dialog](#calling-a-dialog)
+  - [Drawing a Dialog](#drawing-a-dialog)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Dialog options](../dialog.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/t4uy26Lb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+<a name="calling-a-dialog"></a>
 ### Calling a Dialog
 
 Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
@@ -154,6 +169,7 @@ const dialogOptions = {
 }
 ~~~
 
+<a name="drawing-a-dialog"></a>
 ### Drawing a Dialog
 
 A dialog pane consist of the elements:
@@ -352,8 +368,10 @@ Dialog.show(() =>
 
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Dialog appearance, either with a theme or with CSS.
@@ -406,6 +424,7 @@ Dialog.show({
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
@@ -414,6 +433,7 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 * Use `tone: "light"` to locally render normally when dark tone is set
 
 
+<a name="transitions"></a>
 ### Transitions
 
 The transitions for showing and hiding of dialogs can be customized with transition options - see "Transition options" in the Options table below. For example:

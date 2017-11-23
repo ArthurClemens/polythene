@@ -2,12 +2,25 @@
 
 # Toolbar component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Appearance](#appearance)
+  - [Title](#title)
+  - [Shadow](#shadow)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Toolbar options](../toolbar.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/t5hhcuxn/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -55,8 +68,10 @@ m(Toolbar, [
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="title"></a>
 ### Title
 
 A ToolbarTitle can be inserted as Toolbar element as shown above.
@@ -91,6 +106,7 @@ m(Toolbar, [
 ])
 ~~~
 
+<a name="shadow"></a>
 ### Shadow
 
 ~~~javascript
@@ -109,6 +125,7 @@ m("div",
 })
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Toolbar appearance, either with a theme or with CSS.
@@ -153,6 +170,7 @@ m(Toolbar, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
