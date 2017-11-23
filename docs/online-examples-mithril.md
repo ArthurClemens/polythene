@@ -17,7 +17,8 @@ Try out Polythene in JSFiddles.
 * Dialog
   * [Dialog layout, styling and opening](https://jsfiddle.net/ArthurClemens/t4uy26Lb/)
   * [Full screen dialog](https://jsfiddle.net/ArthurClemens/v4uhjnyx/)
-  * [Dynamic content](https://jsfiddle.net/ArthurClemens/0g6010eu/)
+  * [Dynamic content (Passing dialog options as a function)](https://jsfiddle.net/ArthurClemens/0g6010eu/)
+  * [Dynamic content (Continuously calling Dialog.show)](https://jsfiddle.net/ArthurClemens/pwLLjtL0/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ubzhapwy/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/gcuc9mch/)

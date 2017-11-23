@@ -8,6 +8,7 @@
 - [Usage](#usage)
   - [Calling a Dialog](#calling-a-dialog)
   - [Drawing a Dialog](#drawing-a-dialog)
+  - [Dynamic content](#dynamic-content)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -121,22 +122,6 @@ Dialog.show(
   { id: "login" }
 )
 ~~~
-
-###### Dynamic content
-
-When passing a POJO object to `Dialog.show`, the object contents is rendered statically and changes will not get reflected properly. Passing the options as a function ensures that the options are read afresh with the new state:
-
-~~~javascript
-const optionsFn = () => {
-  return {
-    body: "some text"
-  }
-}
-
-Dialog.show(optionsFn)
-~~~
-
-See a more complete example below at "Conditional footer buttons".
 
 
 ##### hide
@@ -309,11 +294,33 @@ Dialog.show({
 })
 ~~~
 
-#### Dynamic content: conditional footer buttons
+<a name="dynamic-content"></a>
+### Dynamic content
 
-To create dynamic dialog content, pass the dialog options as function.
+There are 2 ways to keep the dialog contents up to date:
 
-The example dialog shows a file upload form, where the submit button is disabled until a file has been selected.
+1. By passing dialog options as a function.
+1. By continuously calling `Dialog.show(attrs)` with possibly changed attrs.
+
+Examples of both are shown below.
+
+
+#### Passing dialog options as a function
+
+When using static dialog content, passing a POJO as dialog options to `Dialog.show` works just fine. This falls short when the content needs to be updated with outside state changes. By passing the options as a function, you ensure that the options are read afresh with the new state:
+
+~~~javascript
+const optionsFn = () => {
+  return {
+    body: "some text"
+  }
+}
+
+Dialog.show(optionsFn)
+~~~
+
+
+The more elaborate example below shows a file upload form, where the submit button is disabled until a file has been selected.
 
 <a href="https://jsfiddle.net/ArthurClemens/0g6010eu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -366,6 +373,52 @@ Dialog.show(() =>
 )
 ~~~
 
+##### Continuously calling Dialog.show
+
+The example shows a counter that is reflected in the dialog.
+
+<a href="https://jsfiddle.net/ArthurClemens/pwLLjtL0/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+~~~javascript
+import stream from "mithril/stream"
+import { renderer as h, Dialog, RaisedButton } from "polythene-mithril"
+
+const longText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+
+const Updating = {
+  oninit: vnode => {
+    const dialogVisible = stream(false)
+    dialogVisible.map(h.redraw) // redraw whenever this changes
+    const count = stream(0)
+    count.map(h.redraw) // redraw whenever this changes
+    vnode.state = {
+      dialogVisible,
+      count
+    }
+    setInterval(() => count(count() + 1), 1000)
+  },
+  view: ({ state }) => {
+    const dialogVisible = state.dialogVisible()
+    if (dialogVisible) {
+      const dialogProps = {
+        title: state.count(),
+        body: h.trust(longText),
+        didHide: () => state.dialogVisible(false)
+      }
+      Dialog.show(dialogProps)
+    }
+    return h("div", [
+      h("span", state.count()),
+      h(RaisedButton, {
+        label: "Show Dialog",
+        events: {
+          onclick: () => state.dialogVisible(!dialogVisible)
+        }
+      })
+    ])
+  }
+}
+~~~
 
 
 <a name="appearance"></a>

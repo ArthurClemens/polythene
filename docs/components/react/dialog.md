@@ -8,6 +8,7 @@
 - [Usage](#usage)
   - [Calling a Dialog](#calling-a-dialog)
   - [Drawing a Dialog](#drawing-a-dialog)
+  - [Dynamic content](#dynamic-content)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -141,22 +142,6 @@ Dialog.show(
   { title: "Log in again" },
   { id: "login" }
 )
-~~~
-
-###### Dynamic content
-
-**NOTE: the following only applies to passing options as a POJO. For React, the better alternative is to manage state in a DialogPane wrapper component. See a more complete example below at "Conditional footer buttons".**
-
-When passing a POJO object to `Dialog.show`, the object contents is rendered statically and changes will not get reflected properly. Passing the options as a function ensures that the options are read afresh with the new state:
-
-~~~javascript
-const optionsFn = () => {
-  return {
-    body: "some text"
-  }
-}
-
-Dialog.show(optionsFn)
 ~~~
 
 
@@ -410,13 +395,35 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
-#### Dynamic content: conditional footer buttons
 
-To create dynamic dialog content, create a DialogPane wrapper component.
+<a name="dynamic-content"></a>
+### Dynamic content
 
-The example dialog shows a file upload form, where the submit button is disabled until a file has been selected.
+There are 2 ways to keep the dialog contents up to date:
 
-#### With JSX
+1. By passing dialog options as a function.
+1. By continuously calling `Dialog.show(attrs)` with possibly changed attrs.
+
+Examples of both are shown below.
+
+#### Passing dialog options as a function
+
+When using static dialog content, passing a POJO as dialog options to `Dialog.show` works just fine. This falls short when the content needs to be updated with outside state changes. By passing the options as a function, you ensure that the options are read afresh with the new state:
+
+~~~javascript
+const optionsFn = () => {
+  return {
+    body: "some text"
+  }
+}
+
+Dialog.show(optionsFn)
+~~~
+
+
+The more elaborate example below shows a file upload form, where the submit button is disabled until a file has been selected.
+
+##### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/1fgh0bgt/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -479,6 +486,56 @@ class ConditionalDialogPane extends Component {
 Dialog.show({
   panes: [<ConditionalDialogPane />]  
 })
+~~~
+
+#### Continuously calling Dialog.show
+
+The example shows a counter that is reflected in the dialog.
+
+<a href="https://jsfiddle.net/ArthurClemens/oe91vy6f/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+
+##### With JSX
+
+~~~jsx
+import React, { Component } from "react"
+import { Dialog, RaisedButton } from "polythene-react"
+
+const longText = <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+class Updating extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+      dialogVisible: false
+    }
+    setInterval(() => this.setState({ count: this.state.count + 1 }), 1000)
+  }
+
+  componentDidUpdate() {
+    if (this.state.dialogVisible) {
+      const dialogProps = {
+        title: this.state.count,
+        body: longText,
+        didHide: () => this.setState({ dialogVisible: false })
+      }
+      Dialog.show(dialogProps)
+    }
+  }
+
+  render () {
+    return <div>
+      {this.state.count}
+      <RaisedButton
+        label="Show Dialog"
+        events={{
+          onClick: () => this.setState({ dialogVisible: !this.state.dialogVisible })
+        }}
+      />
+    </div>
+  }
+}
 ~~~
 
 

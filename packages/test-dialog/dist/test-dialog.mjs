@@ -806,6 +806,53 @@ var form = (function () {
   };
 });
 
+var shortText$1 = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
+
+var longText$1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function () {
+  return shortText$1;
+}).join("");
+
+var Updating = {
+  oninit: function oninit(vnode) {
+    var dialogVisible = stream(false);
+    dialogVisible.map(renderer.redraw); // redraw whenever this changes
+    var count = stream(0);
+    count.map(renderer.redraw); // redraw whenever this changes
+    vnode.state = {
+      dialogVisible: dialogVisible,
+      count: count
+    };
+    // Show updates by means of a simple counter.
+    // This could also be a different component state or Redux state.
+    setInterval(function () {
+      return count(count() + 1);
+    }, 1000);
+  },
+  view: function view(_ref) {
+    var state = _ref.state;
+
+    var dialogVisible = state.dialogVisible();
+    if (dialogVisible) {
+      var dialogProps = {
+        title: state.count(),
+        body: renderer.trust(longText$1),
+        didHide: function didHide() {
+          return state.dialogVisible(false);
+        }
+      };
+      Dialog.show(dialogProps);
+    }
+    return renderer("div", [renderer("span", state.count()), renderer(RaisedButton, {
+      label: "Show Dialog",
+      events: {
+        onclick: function onclick() {
+          return state.dialogVisible(!dialogVisible);
+        }
+      }
+    })]);
+  }
+};
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var mithrilTests = function mithrilTests(_ref) {
@@ -836,6 +883,11 @@ var mithrilTests = function mithrilTests(_ref) {
         return Opener(form);
       }
     }
+  }, {
+    name: "Updating dialog",
+    interactive: true,
+    exclude: true,
+    component: Updating
   }];
 };
 
@@ -2736,7 +2788,7 @@ var iconClose$1 = react.createElement(
   { width: "24", height: "24", viewBox: "0 0 24 24" },
   react.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" })
 );
-var shortText$1 = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+var shortText$2 = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 var BodyText = function BodyText() {
   return react.createElement(
@@ -2746,7 +2798,7 @@ var BodyText = function BodyText() {
       return react.createElement(
         "p",
         { key: num },
-        shortText$1
+        shortText$2
       );
     })
   );
@@ -2815,6 +2867,90 @@ var fullScreenJsxOptions = {
   }),
   body: react.createElement(BodyText, null)
 };
+
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var shortText$3 = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+var LongText = function LongText() {
+  return react.createElement(
+    "div",
+    null,
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function (num) {
+      return react.createElement(
+        "p",
+        { key: num },
+        shortText$3
+      );
+    })
+  );
+};
+
+var Updating$2 = function (_Component) {
+  _inherits$1(Updating, _Component);
+
+  function Updating(props) {
+    _classCallCheck$1(this, Updating);
+
+    var _this = _possibleConstructorReturn$1(this, (Updating.__proto__ || Object.getPrototypeOf(Updating)).call(this, props));
+
+    _this.state = {
+      count: 0,
+      dialogVisible: false
+    };
+    // Show updates by means of a simple counter.
+    // This could also be a different component state or Redux state.
+    setInterval(function () {
+      return _this.setState({ count: _this.state.count + 1 });
+    }, 1000);
+    return _this;
+  }
+
+  _createClass$1(Updating, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      if (this.state.dialogVisible) {
+        var dialogProps = {
+          title: this.state.count,
+          body: react.createElement(LongText, null),
+          didHide: function didHide() {
+            return _this2.setState({ dialogVisible: false });
+          }
+        };
+        Dialog$1.show(dialogProps);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react.createElement(
+        "div",
+        null,
+        this.state.count,
+        react.createElement(RaisedButton$1, {
+          label: "Show Dialog",
+          events: {
+            onClick: function onClick() {
+              return _this3.setState({ dialogVisible: !_this3.state.dialogVisible });
+            }
+          }
+        })
+      );
+    }
+  }]);
+
+  return Updating;
+}(react_2);
 
 var reactTests = function reactTests(_ref) {
   var Dialog$$1 = _ref.Dialog,
@@ -2908,6 +3044,13 @@ var reactTests = function reactTests(_ref) {
       return react.createElement(Opener, { dialogAttrs: {
           panes: [react.createElement(Pane, null)]
         } });
+    }
+  }, {
+    name: "Updating dialog",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Updating$2, null);
     }
   }];
 };

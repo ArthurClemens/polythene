@@ -4,6 +4,7 @@ import genericTests from "./tests-generic";
 import ConditionalDialogPane from "./components/form-react";
 import fullScreenOptions from "./components/full-screen-react";
 import fullScreenJsxOptions from "./components/full-screen-react-jsx";
+import Updating from "./components/updating-react-jsx";
 
 const reactTests = ({ Dialog, RaisedButton }) => {
 
@@ -37,6 +38,8 @@ const reactTests = ({ Dialog, RaisedButton }) => {
       {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(num => <p key={num}>{shortText}</p>)}
     </div>
   );
+
+  
 
   return [
     {
@@ -89,6 +92,12 @@ const reactTests = ({ Dialog, RaisedButton }) => {
         <Opener dialogAttrs={{
           panes: [<ConditionalDialogPane />]
         }} />
+    },
+    {
+      name: "Updating dialog",
+      interactive: true,
+      exclude: true,
+      component: () => <Updating />
     },
   ];
     

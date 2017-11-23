@@ -19,7 +19,8 @@ Try out Polythene in JSFiddles.
 * Dialog
   * [Dialog layout, styling and opening](https://jsfiddle.net/ArthurClemens/m08o291L/)
   * [Full screen dialog](https://jsfiddle.net/ArthurClemens/npq4phf3/)
-  * [Dynamic content](https://jsfiddle.net/ArthurClemens/1fgh0bgt/)
+  * [Dynamic content (Passing dialog options as a function)](https://jsfiddle.net/ArthurClemens/1fgh0bgt/)
+  * [Dynamic content (Continuously calling Dialog.show)](https://jsfiddle.net/ArthurClemens/oe91vy6f/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ep9pf5wp/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/hp6ksg2m/)
@@ -58,6 +59,7 @@ Try out Polythene in JSFiddles.
   * [Icon Button](https://jsfiddle.net/ArthurClemens/xh7jgutu/)
   * [Raised Button](https://jsfiddle.net/ArthurClemens/hL8wmrpL/)
 * [Card](https://jsfiddle.net/ArthurClemens/h6n5jzgd/)
+* Dialog: no hyperscript examples yet
 * [Icon](https://jsfiddle.net/ArthurClemens/qhh725aa/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/g07snvox/)
