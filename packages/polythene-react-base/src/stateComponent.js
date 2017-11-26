@@ -15,6 +15,7 @@ export const StateComponent = ({
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
+  onUpdate = () => {},
   view = null
 }) => {
   
@@ -43,6 +44,10 @@ export const StateComponent = ({
         this._mounted && this.setState({ redrawValues: values })
       ));
       onMount(this.createVirtualNode(), { keys });
+    }
+
+    componentDidUpdate() {
+      onUpdate(this.createVirtualNode());
     }
 
     componentWillUnmount() {

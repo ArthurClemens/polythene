@@ -6,11 +6,20 @@ export const getElement = vnode =>
 
 const MINIMUM_FOCUS_INTERVAL = 150;
 
+const DEFAULT_VALID_STATE = {
+  invalid: false,
+  message: undefined
+};
+
 const validateCustom = (state, attrs) => {
+  const el = state.inputEl();
+  if (!el) {
+    return DEFAULT_VALID_STATE;
+  }
   const validState = attrs.validate(state.inputEl().value);
   return {
-    invalid: (validState && !validState.valid),
-    message: (validState && validState.error)
+    invalid: validState && !validState.valid,
+    message: validState && validState.error
   };
 };
 
@@ -25,10 +34,7 @@ const validateHTML = (state, attrs) => ({
 });
 
 const getValidStatus = (state, attrs) => {
-  let status = {
-    invalid: false,
-    message: undefined
-  };
+  let status = DEFAULT_VALID_STATE;
 
   // attrs.validateResetOnClear: reset validation when field is cleared
   if (state.isTouched() && state.isInvalid() && state.inputEl().value.length === 0 && attrs.validateResetOnClear) {
@@ -52,12 +58,15 @@ const checkValidity = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   // default
-  const status = (!state.isTouched() && !attrs.validateAtStart)
+  
+  const status = attrs.valid !== undefined
     ? {
-      invalid: false,
-      message: undefined
+      invalid: !attrs.valid,
+      message: attrs.error
     }
-    : getValidStatus(state, attrs);
+    : (!state.isTouched() && !attrs.validateAtStart)
+      ? DEFAULT_VALID_STATE
+      : getValidStatus(state, attrs);
   const previousInvalid = state.isInvalid();
   state.error(status.message);
 
@@ -91,10 +100,10 @@ const ignoreEvent = (attrs, name) =>
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
 
-  const defaultValue = attrs.defaultValue !== undefined
-    ? attrs.defaultValue
-    : attrs.value !== undefined
-      ? attrs.value
+  const defaultValue = attrs.defaultValue !== undefined && attrs.defaultValue !== null
+    ? attrs.defaultValue.toString()
+    : attrs.value !== undefined && attrs.value !== null
+      ? attrs.value.toString()
       : "";
 
   const el = createStream(null);
@@ -139,8 +148,8 @@ export const onMount = vnode => {
 
   state.setValue.map(({ type, focus }) => (
     focus !== undefined && state.setFocus(focus),
-    type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""),
-    type !== "input" && state.isTouched(state.inputEl().value !== ""),
+    type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue),
+    type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue),
     type === "onblur" && state.isTouched(true),
     state.isDirty(state.inputEl().value !== ""),
     checkValidity(vnode),
@@ -165,6 +174,10 @@ export const onMount = vnode => {
   });
 
   notifyState(vnode);
+};
+
+export const onUpdate = vnode => {
+  checkValidity(vnode);
 };
 
 export const createProps = (vnode, { keys: k }) => {
@@ -204,6 +217,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
   const attrs = vnode.attrs;
 
   const inputEl = state.inputEl();
+  let error = attrs.error || state.error();
   const isInvalid = state.isInvalid();
   const inputType = attrs.multiLine ? "textarea" : "input";
   const type = attrs.multiLine
@@ -211,8 +225,9 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
     : !attrs.type || attrs.type === "submit" || attrs.type === "search"
       ? "text"
       : attrs.type;
-  const showError = isInvalid && state.error() !== undefined;
-  const validates = attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern;
+  const showError = isInvalid && error !== undefined;
+  
+  const validates = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
   const inactive = attrs.disabled || attrs[k.readonly];
 
   if (attrs.focus && !state.hasFocus() && !inactive) {
@@ -220,7 +235,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
   }
 
   const value = (attrs.value !== undefined && attrs.value !== null)
-    ? attrs.value 
+    ? attrs.value
     : inputEl
       ? inputEl.value
       : state.previousValue();
@@ -398,7 +413,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           key: "error",
           className: classes.error
         },
-        state.error()
+        error
       )
       : validates && !attrs.help
         ? h("div",

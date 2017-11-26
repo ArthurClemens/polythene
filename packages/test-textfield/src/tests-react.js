@@ -1,6 +1,7 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, TextField, RaisedButton } from "polythene-react";
 import genericTests from "./tests-generic";
+import FormValidation from "./components/form-validation-react";
 
 const reactTests = ({ TextField, RaisedButton, renderer: h }) => { // eslint-disable-line no-unused-vars
 
@@ -53,6 +54,13 @@ const reactTests = ({ TextField, RaisedButton, renderer: h }) => { // eslint-dis
             key="x"
           />
         ])
+    },
+    {
+      name: "Form validation with github.com/ludbek/powerform",
+      interactive: true,
+      component: {
+        view: () => block(<FormValidation />)
+      }
     },
   ];
 };

@@ -1,5 +1,7 @@
 import { RaisedButton, TextField, keys, renderer } from 'polythene-mithril';
 import { TextFieldCSS } from 'polythene-css';
+import powerform from 'powerform';
+import { equalsTo, required } from 'validatex';
 import { RaisedButton as RaisedButton$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
@@ -355,14 +357,17 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: type (password, number, email)",
+    name: "Option: type (password (not shown), number, email)",
     component: {
       view: function view() {
-        return block([h(TextField$$1, {
-          type: "password",
-          defaultValue: "123456",
-          key: "a" // for React
-        }), h(TextField$$1, {
+        return block([
+        // Don't show password in this test to prevent that the browser kicks in form autocomplete
+        // h(TextField, {
+        //   type: "password",
+        //   defaultValue: "123456",
+        //   key: "a" // for React
+        // }),
+        h(TextField$$1, {
           type: "number",
           defaultValue: "123456",
           key: "b" // for React
@@ -606,7 +611,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: min, max",
+    name: "Option: min, max, validateAtStart",
     interactive: true,
     component: {
       view: function view() {
@@ -616,12 +621,13 @@ var genericTests = (function (_ref) {
           max: 8,
           defaultValue: 10,
           error: "Enter a value between 3 and 8",
-          required: true
+          required: true,
+          validateAtStart: true
         })]);
       }
     }
   }, {
-    name: "Option: type email, required",
+    name: "Option: type email, required, validateAtStart",
     interactive: true,
     component: {
       view: function view() {
@@ -630,7 +636,8 @@ var genericTests = (function (_ref) {
           type: "email",
           defaultValue: "a@",
           required: true,
-          error: "Enter a valid email address"
+          error: "Enter a valid email address",
+          validateAtStart: true
         })]);
       }
     }
@@ -922,6 +929,130 @@ var setValue$1 = (function (_ref) {
   };
 });
 
+var TEST_USER_NAME = "ABC";
+
+var formValidation = (function (_ref) {
+  var h = _ref.h,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      vnode.state = {
+        form: powerform({
+          username: {
+            default: "",
+            validator: required(true)
+          },
+          password: {
+            default: "",
+            validator: required(true)
+          },
+          confirmPassword: {
+            default: "",
+            validator: [required(true), equalsTo("password")]
+          }
+        }),
+        submit: function submit() {
+          vnode.state.submitFailed = false; // reset
+
+          // Immediate frontend validation
+          if (!vnode.state.form.isValid()) {
+            vnode.state.submitFailed = true;
+            return false;
+          }
+
+          // Server side validation
+          // Send form data to API... but instead we will just show user feedback
+          vnode.state.formErrors = []; // reset
+          if (vnode.state.form.username() === TEST_USER_NAME) {
+            vnode.state.formErrors = ["This username already exists. Please choose a different username."];
+            vnode.state.form.error({ username: "Choose a different username" });
+            vnode.state.submitFailed = true;
+            return false;
+          } else {
+            vnode.state.submitted = true;
+            vnode.state.submitFailed = false;
+            return false;
+          }
+        },
+        formErrors: null,
+        submitFailed: false,
+        submitted: false
+      };
+    },
+    view: function view(_ref2) {
+      var state = _ref2.state;
+
+      var form = state.form;
+      var errors = form.error();
+      var submitFailed = state.submitFailed;
+      var formErrors = state.formErrors;
+
+      return state.submitted ? h("h3", "You're done!") : h("form", {
+        onsubmit: state.submit,
+        novalidate: "novalidate",
+        autocomplete: "off"
+      }, [h("h3", "Sign up"), h(TextField$$1, {
+        name: "username",
+        floatingLabel: true,
+        value: form.username(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.username !== undefined),
+        error: errors.username,
+        onChange: function onChange(_ref3) {
+          var value = _ref3.value;
+          return form.username(value);
+        },
+        label: "Your name",
+        help: "Use '" + TEST_USER_NAME + "' to test form validation"
+      }), h(TextField$$1, {
+        name: "password",
+        floatingLabel: true,
+        value: form.password(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.password !== undefined),
+        error: errors.password,
+        onChange: function onChange(_ref4) {
+          var value = _ref4.value;
+          return form.password(value);
+        },
+        label: "Your password",
+        type: "password"
+      }), h(TextField$$1, {
+        name: "confirmPassword",
+        floatingLabel: true,
+        value: form.confirmPassword(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.confirmPassword !== undefined),
+        error: errors.confirmPassword,
+        onChange: function onChange(_ref5) {
+          var value = _ref5.value;
+          return form.confirmPassword(value);
+        },
+        label: "Confirm your password",
+        type: "password"
+      }),
+      // Form submit error message
+      formErrors ? h("div", {
+        style: {
+          margin: "1rem 0",
+          padding: "1rem",
+          background: "#ffcdd2"
+        }
+      }, h("div", formErrors.map(function (err) {
+        return h("div", err);
+      }))) : null, h(RaisedButton$$1, {
+        element: "button",
+        type: "submit",
+        label: "Send"
+      })]);
+    }
+  };
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var mithrilTests = function mithrilTests(_ref) {
@@ -938,15 +1069,24 @@ var mithrilTests = function mithrilTests(_ref) {
   };
 
   var SetValue = setValue$1({ h: h, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var FormValidation = formValidation({ h: h, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
 
   return [{
-    section: "Mithril specific tests (variation with withAttr)"
+    section: "Mithril specific tests"
   }, {
-    name: "Set value",
+    name: "Set value (variation with withAttr)",
     interactive: true,
     component: {
       view: function view() {
         return block(h(SetValue));
+      }
+    }
+  }, {
+    name: "Form validation with github.com/ludbek/powerform",
+    interactive: true,
+    component: {
+      view: function view() {
+        return block(h(FormValidation));
       }
     }
   }];
@@ -2720,6 +2860,175 @@ var react_2 = react.Component;
 var react_3 = react.PropTypes;
 var react_4 = react.createElement;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TEST_USER_NAME$1 = "ABC";
+
+var _class = function (_Component) {
+  _inherits(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      form: powerform({
+        username: {
+          default: "",
+          validator: required(true)
+        },
+        password: {
+          default: "",
+          validator: required(true)
+        },
+        confirmPassword: {
+          default: "",
+          validator: [required(true), equalsTo("password")]
+        }
+      }),
+      submit: function submit(e) {
+        e.preventDefault();
+        // Immediate frontend validation
+        var isValid = _this.state.form.isValid();
+        if (!isValid) {
+          _this.setState({ submitFailed: !isValid });
+          return false;
+        }
+
+        // Server side validation
+        // Send form data to API... but instead we will just show user feedback
+        if (_this.state.form.username() === TEST_USER_NAME$1) {
+          _this.state.form.error({ username: "Choose a different username" });
+          _this.setState({
+            formErrors: ["This username already exists. Please choose a different username."],
+            submitFailed: true
+          });
+          return false;
+        } else {
+          _this.setState({
+            submitted: true,
+            submitFailed: false,
+            formErrors: []
+          });
+          return false;
+        }
+      },
+      formErrors: null,
+      submitFailed: false,
+      submitted: false
+    };
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "render",
+    value: function render() {
+      var form = this.state.form;
+      var errors = form.error();
+      var submitFailed = this.state.submitFailed;
+      var formErrors = this.state.formErrors;
+
+      return this.state.submitted ? react.createElement(
+        "h3",
+        null,
+        "You're done!"
+      ) : react.createElement(
+        "form",
+        {
+          onSubmit: this.state.submit,
+          noValidate: true,
+          autoComplete: "off"
+        },
+        react.createElement(
+          "h3",
+          null,
+          "Sign up"
+        ),
+        react.createElement(TextField$1, {
+          name: "username",
+          defaultValue: form.username(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.username !== undefined),
+          error: errors.username,
+          onChange: function onChange(_ref) {
+            var value = _ref.value;
+            return form.username(value);
+          },
+          label: "Your name",
+          help: "Use '" + TEST_USER_NAME$1 + "' to test form validation"
+        }),
+        react.createElement(TextField$1, {
+          name: "password",
+          defaultValue: form.password(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.password !== undefined),
+          error: errors.password,
+          onChange: function onChange(_ref2) {
+            var value = _ref2.value;
+            return form.password(value);
+          },
+          label: "Your password",
+          type: "password"
+        }),
+        react.createElement(TextField$1, {
+          name: "confirmPassword",
+          defaultValue: form.confirmPassword(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.confirmPassword !== undefined),
+          error: errors.confirmPassword,
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value;
+            return form.confirmPassword(value);
+          },
+          label: "Confirm your password",
+          type: "password"
+        }),
+        formErrors ? react.createElement(
+          "div",
+          {
+            style: {
+              margin: "1rem 0",
+              padding: "1rem",
+              background: "#ffcdd2"
+            }
+          },
+          react.createElement(
+            "div",
+            null,
+            formErrors.map(function (err, index) {
+              return react.createElement(
+                "div",
+                { key: index },
+                err
+              );
+            })
+          )
+        ) : null,
+        react.createElement(RaisedButton$1, {
+          element: "button",
+          type: "submit",
+          label: "Send"
+        })
+      );
+    }
+  }]);
+
+  return _class;
+}(react_2);
+
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var reactTests = function reactTests(_ref) {
@@ -2769,6 +3078,14 @@ var reactTests = function reactTests(_ref) {
         error: "You have exceeded the maximum number of characters.",
         key: "x"
       })]);
+    }
+  }, {
+    name: "Form validation with github.com/ludbek/powerform",
+    interactive: true,
+    component: {
+      view: function view() {
+        return block(react.createElement(_class, null));
+      }
     }
   }];
 };

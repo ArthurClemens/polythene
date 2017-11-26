@@ -138,12 +138,20 @@ By default the component will validate only when a user action has been done (tr
 Variations:
 
 * To do validate immediately, use option `validateAtStart`
+* Use option `valid` to bypass defaults - see "Custom validation" below
 * To validate on key press before "onblur", use option `validateOnInput`
 * To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
 
 <a name="custom-validation"></a>
 ### Custom validation
+
+There are 2 ways to validate a field:
+
+1. By checking the field value with callback function `validate` - use this when you want to simply check the validity on input (but note that it does not get triggered on form submit)
+1. By setting the "valid" state directly - use this when you need to validate the entire form, so you keep the value in local state
+
+#### Checking the field value with callback function "validate"
 
 Option `validate` is a function that accepts the current field value and is called on every `oninput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
 
@@ -157,6 +165,24 @@ m(TextField, {
       }
     }
   }
+})
+~~~
+
+#### Setting the "valid" state directly
+
+This assumes that you store the form state so you are able to check the valid state of each field.
+
+Example using [ludbek/powerform](https://github.com/ludbek/powerform):
+
+~~~javascript
+const errors = state.form.error();
+const submitFailed = state.submitFailed;
+// ...
+
+m(TextField, {
+  name: "fullName",
+  valid: !(submitFailed && errors.fullName !== undefined),
+  error: errors.fullName,
 })
 ~~~
 

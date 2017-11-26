@@ -31,7 +31,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
   const Focus = focus({ h, k, TextField, RaisedButton });
   const OnChange = onChange({ h, k, TextField, RaisedButton });
   const SetValue = setValue({ h, k, TextField, RaisedButton });
-
+  
   return [
     {
       name: "Option: defaultValue",
@@ -59,14 +59,15 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: type (password, number, email)",
+      name: "Option: type (password (not shown), number, email)",
       component: {
         view: () => block([
-          h(TextField, {
-            type: "password",
-            defaultValue: "123456",
-            key: "a" // for React
-          }),
+          // Don't show password in this test to prevent that the browser kicks in form autocomplete
+          // h(TextField, {
+          //   type: "password",
+          //   defaultValue: "123456",
+          //   key: "a" // for React
+          // }),
           h(TextField, {
             type: "number",
             defaultValue: "123456",
@@ -346,7 +347,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: min, max",
+      name: "Option: min, max, validateAtStart",
       interactive: true,
       component: {
         view: () => block([
@@ -356,13 +357,14 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             max: 8,
             defaultValue: 10,
             error: "Enter a value between 3 and 8",
-            required: true
+            required: true,
+            validateAtStart: true
           })
         ])
       }
     },
     {
-      name: "Option: type email, required",
+      name: "Option: type email, required, validateAtStart",
       interactive: true,
       component: {
         view: () => block([
@@ -371,7 +373,8 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             type: "email",
             defaultValue: "a@",
             required: true,
-            error: "Enter a valid email address"
+            error: "Enter a valid email address",
+            validateAtStart: true
           })
         ])
       }

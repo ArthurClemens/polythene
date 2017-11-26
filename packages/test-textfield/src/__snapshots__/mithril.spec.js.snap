@@ -61,6 +61,60 @@ exports[`test Dark tone class + light tone 1`] = `
 "
 `;
 
+exports[`test Form validation with github.com/ludbek/powerform 1`] = `
+"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+  <form novalidate=\"novalidate\" autocomplete=\"off\">
+    <h3>
+      Sign up
+    </h3>
+    <div class=
+    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
+    <div class=\"pe-textfield__input-area\">
+        <label class=\"pe-textfield__label\">Your name<span class=
+        \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
+        type=\"text\" name=\"username\" required=\"\">
+      </div>
+      <div class=\"pe-textfield__help\">
+        Use \'ABC\' to test form validation
+      </div>
+    </div>
+    <div class=
+    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
+    <div class=\"pe-textfield__input-area\">
+        <label class=\"pe-textfield__label\">Your
+        password<span class=\"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
+        type=\"password\" name=\"password\" required=\"\">
+      </div>
+      <div class=\"pe-textfield__error-placeholder\"></div>
+    </div>
+    <div class=
+    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
+    <div class=\"pe-textfield__input-area\">
+        <label class=\"pe-textfield__label\">Confirm your
+        password<span class=
+        \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
+        type=\"password\" name=\"confirmPassword\" required=\"\">
+      </div>
+      <div class=\"pe-textfield__error-placeholder\"></div>
+    </div><button type=\"submit\" class=
+    \"pe-button pe-text-button pe-raised-button\" tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-shadow pe-shadow--animated\">
+        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      </div>
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__wash\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-button__label\">
+        Send
+      </div>
+    </div></button>
+  </form>
+</div>
+"
+`;
+
 exports[`test Give focus 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div>
@@ -409,7 +463,7 @@ exports[`test Option: maxlength 1`] = `
 "
 `;
 
-exports[`test Option: min, max 1`] = `
+exports[`test Option: min, max, validateAtStart 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
   \"pe-textfield pe-textfield--dirty pe-textfield--required\">
@@ -666,13 +720,8 @@ exports[`test Option: style 1`] = `
 "
 `;
 
-exports[`test Option: type (password, number, email) 1`] = `
+exports[`test Option: type (password (not shown), number, email) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"password\">
-    </div>
-  </div>
   <div class=\"pe-textfield pe-textfield--dirty\">
     <div class=\"pe-textfield__input-area\">
       <input class=\"pe-textfield__input\" type=\"number\">
@@ -702,7 +751,7 @@ exports[`test Option: type email, required -- dark theme class 1`] = `
 "
 `;
 
-exports[`test Option: type email, required 1`] = `
+exports[`test Option: type email, required, validateAtStart 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=
   \"pe-textfield pe-textfield--dirty pe-textfield--required\">
@@ -735,7 +784,7 @@ exports[`test Option: value is null 1`] = `
 "
 `;
 
-exports[`test Set value 1`] = `
+exports[`test Set value (variation with withAttr) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div>
     <div class=\"pe-textfield\">
@@ -765,7 +814,7 @@ exports[`test Set value 1`] = `
 "
 `;
 
-exports[`test Set value 2`] = `
+exports[`test Set value 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div>
     <div class=\"pe-textfield\">

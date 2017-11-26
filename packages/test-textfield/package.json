@@ -19,7 +19,9 @@
   "dependencies": {
     "polythene-css": "^1.0.0-rc.9",
     "polythene-mithril": "^1.0.0-rc.9",
-    "polythene-react": "^1.0.0-rc.9"
+    "polythene-react": "^1.0.0-rc.9",
+    "powerform": "^2.8.0",
+    "validatex": "^0.3.1"
   },
   "devDependencies": {
     "mithril": "1.1.5",

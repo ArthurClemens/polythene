@@ -823,7 +823,7 @@ var Updating = {
       count: count
     };
     // Show updates by means of a simple counter.
-    // This could also be a different component state or Redux state.
+    // This could also be a different component state or global/Redux state.
     setInterval(function () {
       return count(count() + 1);
     }, 1000);

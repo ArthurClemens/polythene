@@ -372,6 +372,8 @@ var StateComponent = function StateComponent(_ref) {
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
       onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$onUpdate = _ref.onUpdate,
+      onUpdate = _ref$onUpdate === undefined ? function () {} : _ref$onUpdate,
       _ref$view = _ref.view,
       view = _ref$view === undefined ? null : _ref$view;
 
@@ -405,6 +407,11 @@ var StateComponent = function StateComponent(_ref) {
           return _this2._mounted && _this2.setState({ redrawValues: values });
         });
         onMount(this.createVirtualNode(), { keys: keys });
+      }
+    }, {
+      key: "componentDidUpdate",
+      value: function componentDidUpdate() {
+        onUpdate(this.createVirtualNode());
       }
     }, {
       key: "componentWillUnmount",

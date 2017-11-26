@@ -12,6 +12,7 @@ export const StateComponent = ({
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
+  onUpdate = () => {},
   view = null
 }) => {
 
@@ -52,6 +53,7 @@ export const StateComponent = ({
       : vnode => render(vnode),
     oninit,
     oncreate,
-    onremove: onUnMount
+    onremove: onUnMount,
+    onupdate: onUpdate,
   };
 };
