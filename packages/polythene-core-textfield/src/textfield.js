@@ -177,7 +177,25 @@ export const onMount = vnode => {
 };
 
 export const onUpdate = vnode => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
   checkValidity(vnode);
+
+  const inputEl = state.inputEl();
+  const value = (attrs.value !== undefined && attrs.value !== null)
+    ? attrs.value
+    : inputEl
+      ? inputEl.value
+      : state.previousValue();
+  const valueStr = (value === undefined || value === null)
+    ? ""
+    : value.toString();
+
+  if (inputEl && state.previousValue() !== valueStr) {
+    inputEl.value = valueStr;
+    state.previousValue(valueStr);
+    state.setValue({ type: "input" });
+  }
 };
 
 export const createProps = (vnode, { keys: k }) => {
@@ -232,21 +250,6 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
 
   if (attrs.focus && !state.hasFocus() && !inactive) {
     state.setFocus(true);
-  }
-
-  const value = (attrs.value !== undefined && attrs.value !== null)
-    ? attrs.value
-    : inputEl
-      ? inputEl.value
-      : state.previousValue();
-  const valueStr = (value === undefined || value === null)
-    ? ""
-    : value.toString();
-
-  if (inputEl && state.previousValue() !== valueStr) {
-    inputEl.value = valueStr;
-    state.previousValue(valueStr);
-    setTimeout(() => state.setValue({ type: "input" }), 0); // perform in next tick to play nice with React
   }
 
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""

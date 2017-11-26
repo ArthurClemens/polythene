@@ -204,7 +204,19 @@ var onMount = function onMount(vnode) {
 };
 
 var onUpdate = function onUpdate(vnode) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   checkValidity(vnode);
+
+  var inputEl = state.inputEl();
+  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+  var valueStr = value === undefined || value === null ? "" : value.toString();
+
+  if (inputEl && state.previousValue() !== valueStr) {
+    inputEl.value = valueStr;
+    state.previousValue(valueStr);
+    state.setValue({ type: "input" });
+  }
 };
 
 var createProps = function createProps(vnode, _ref2) {
@@ -238,17 +250,6 @@ var createContent = function createContent(vnode, _ref3) {
 
   if (attrs.focus && !state.hasFocus() && !inactive) {
     state.setFocus(true);
-  }
-
-  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined || value === null ? "" : value.toString();
-
-  if (inputEl && state.previousValue() !== valueStr) {
-    inputEl.value = valueStr;
-    state.previousValue(valueStr);
-    setTimeout(function () {
-      return state.setValue({ type: "input" });
-    }, 0); // perform in next tick to play nice with React
   }
 
   var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
