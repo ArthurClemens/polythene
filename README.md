@@ -40,7 +40,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 
 ## Guides
 
-* [Documentation](docs/README.md)
+* [Documentation: components, examples, CSS, theming](docs/README.md)
 * [Extending other libraries](extending.md)
 * [Developing](docs/developing.md)
 * [Migrating from 0.2](docs/migrating-from-02.md)
