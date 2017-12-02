@@ -4,8 +4,9 @@ const iconArrowSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><pat
 export default ({ renderer: h, keys: k, Icon, List, ListTile, Dialog }) => ({
   title: "Set backup account",
   menu: h(List, {
-    tiles: [1, 2, 3].map(() =>
+    tiles: [1, 2, 3].map(num =>
       h(ListTile, {
+        key: num,
         front: h(Icon, {
           svg: { content: h.trust(iconArrowSVG) }
         }),

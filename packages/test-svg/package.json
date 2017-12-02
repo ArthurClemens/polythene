@@ -23,7 +23,7 @@
     "polythene-react": "^1.0.0-rc.9"
   },
   "devDependencies": {
-    "react": "^16.1.1"
+    "react": "^16.2.0"
   },
   "jest": {
     "setupFiles": [

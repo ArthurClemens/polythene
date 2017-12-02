@@ -390,8 +390,7 @@ var StateComponent = function StateComponent(_ref) {
       var protoState = _extends$1({}, component, _this.createVirtualNode(), {
         redrawValues: undefined
       });
-      var initialState = getInitialState(protoState, stream);
-      _this.state = initialState;
+      _this.state = getInitialState(protoState, stream);
       _this.registerDOM = _this.registerDOM.bind(_this);
       _this._render = _this._render.bind(_this);
       return _this;
@@ -411,7 +410,9 @@ var StateComponent = function StateComponent(_ref) {
     }, {
       key: "componentDidUpdate",
       value: function componentDidUpdate() {
-        onUpdate(this.createVirtualNode());
+        if (this._mounted) {
+          onUpdate(this.createVirtualNode());
+        }
       }
     }, {
       key: "componentWillUnmount",
@@ -422,11 +423,10 @@ var StateComponent = function StateComponent(_ref) {
     }, {
       key: "createVirtualNode",
       value: function createVirtualNode() {
-        var props = _extends$1({}, this.props);
         return {
           state: this.state,
-          attrs: props,
-          children: props.children,
+          attrs: this.props,
+          children: this.props.children,
           dom: this.dom
         };
       }

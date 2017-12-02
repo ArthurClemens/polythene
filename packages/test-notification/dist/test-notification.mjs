@@ -439,107 +439,105 @@ var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function q(a) {
-  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, d = 0; d < b; d++) {
-    e += "\x26args[]\x3d" + encodeURIComponent(arguments[d + 1]);
+var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+function y(a) {
+  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
+    e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
   }b = Error(e + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name = "Invariant Violation";b.framesToPop = 1;throw b;
 }
-var r = { isMounted: function isMounted() {
+var z = { isMounted: function isMounted() {
     return !1;
-  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function t(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}t.prototype.isReactComponent = {};t.prototype.setState = function (a, b) {
-  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? q("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
-};t.prototype.forceUpdate = function (a) {
+  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function A(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}A.prototype.isReactComponent = {};A.prototype.setState = function (a, b) {
+  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? y("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
+};A.prototype.forceUpdate = function (a) {
   this.updater.enqueueForceUpdate(this, a, "forceUpdate");
 };
-function u(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}function v() {}v.prototype = t.prototype;var w = u.prototype = new v();w.constructor = u;objectAssign(w, t.prototype);w.isPureReactComponent = !0;function x(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}var y = x.prototype = new v();y.constructor = x;objectAssign(y, t.prototype);y.unstable_isAsyncReactComponent = !0;y.render = function () {
+function B(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}function C() {}C.prototype = A.prototype;var D = B.prototype = new C();D.constructor = B;objectAssign(D, A.prototype);D.isPureReactComponent = !0;function E(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};
-var z = { current: null };
-var A = Object.prototype.hasOwnProperty;
-var B = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var C = { key: !0, ref: !0, __self: !0, __source: !0 };
-function D(a, b, e) {
-  var d,
-      c = {},
-      h = null,
-      k = null;if (null != b) for (d in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (h = "" + b.key), b) {
-    A.call(b, d) && !C.hasOwnProperty(d) && (c[d] = b[d]);
-  }var f = arguments.length - 2;if (1 === f) c.children = e;else if (1 < f) {
-    for (var g = Array(f), l = 0; l < f; l++) {
-      g[l] = arguments[l + 2];
-    }c.children = g;
-  }if (a && a.defaultProps) for (d in f = a.defaultProps, f) {
-    void 0 === c[d] && (c[d] = f[d]);
-  }return { $$typeof: B, type: a, key: h, ref: k, props: c, _owner: z.current };
-}function E(a) {
-  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === B;
+};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+function J(a, b, e) {
+  var c,
+      d = {},
+      g = null,
+      k = null;if (null != b) for (c in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (g = "" + b.key), b) {
+    H.call(b, c) && !I.hasOwnProperty(c) && (d[c] = b[c]);
+  }var f = arguments.length - 2;if (1 === f) d.children = e;else if (1 < f) {
+    for (var h = Array(f), l = 0; l < f; l++) {
+      h[l] = arguments[l + 2];
+    }d.children = h;
+  }if (a && a.defaultProps) for (c in f = a.defaultProps, f) {
+    void 0 === d[c] && (d[c] = f[c]);
+  }return { $$typeof: r, type: a, key: g, ref: k, props: d, _owner: G.current };
+}function K(a) {
+  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === r;
 }
-var F = "function" === typeof Symbol && Symbol.iterator;
-var G = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var H = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.portal") || 60106;function escape(a) {
+function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var I = /\/+/g;
-var J = [];
-function K(a, b, e, d) {
-  if (J.length) {
-    var c = J.pop();c.result = a;c.keyPrefix = b;c.func = e;c.context = d;c.count = 0;return c;
-  }return { result: a, keyPrefix: b, func: e, context: d, count: 0 };
-}function L(a) {
-  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > J.length && J.push(a);
+}var L = /\/+/g;
+var M = [];function N(a, b, e, c) {
+  if (M.length) {
+    var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
+  }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
+}function O(a) {
+  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > M.length && M.push(a);
 }
-function M(a, b, e, d) {
-  var c = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === c || "boolean" === c) a = null;if (null === a || "string" === c || "number" === c || "object" === c && a.$$typeof === G || "object" === c && a.$$typeof === H) return e(d, a, "" === b ? "." + N(a, 0) : b), 1;var h = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
-    c = a[k];var f = b + N(c, k);h += M(c, f, e, d);
-  } else if (f = F && a[F] || a["@@iterator"], "function" === typeof f) for (a = f.call(a), k = 0; !(c = a.next()).done;) {
-    c = c.value, f = b + N(c, k++), h += M(c, f, e, d);
-  } else "object" === c && (e = "" + a, q("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return h;
-}function N(a, b) {
+function P(a, b, e, c) {
+  var d = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === d || "boolean" === d) a = null;var g = !1;if (null === a) g = !0;else switch (d) {case "string":case "number":
+      g = !0;break;case "object":
+      switch (a.$$typeof) {case r:case t:case u:case v:
+          g = !0;}}if (g) return e(c, a, "" === b ? "." + Q(a, 0) : b), 1;g = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
+    d = a[k];var f = b + Q(d, k);g += P(d, f, e, c);
+  } else if (null === a || "undefined" === typeof a ? f = null : (f = x && a[x] || a["@@iterator"], f = "function" === typeof f ? f : null), "function" === typeof f) for (a = f.call(a), k = 0; !(d = a.next()).done;) {
+    d = d.value, f = b + Q(d, k++), g += P(d, f, e, c);
+  } else "object" === d && (e = "" + a, y("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return g;
+}function Q(a, b) {
   return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && null != a.key ? escape(a.key) : b.toString(36);
-}function O(a, b) {
+}function R(a, b) {
   a.func.call(a.context, b, a.count++);
 }
-function P(a, b, e) {
-  var d = a.result,
-      c = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? Q(a, d, e, emptyFunction_1.thatReturnsArgument) : null != a && (E(a) && (b = c + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(I, "$\x26/") + "/") + e, a = { $$typeof: B, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), d.push(a));
-}function Q(a, b, e, d, c) {
-  var h = "";null != e && (h = ("" + e).replace(I, "$\x26/") + "/");b = K(b, h, d, c);null == a || M(a, "", P, b);L(b);
-}var R = { Children: { map: function map(a, b, e) {
-      if (null == a) return a;var d = [];Q(a, d, null, b, e);return d;
+function S(a, b, e) {
+  var c = a.result,
+      d = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? T(a, c, e, emptyFunction_1.thatReturnsArgument) : null != a && (K(a) && (b = d + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(L, "$\x26/") + "/") + e, a = { $$typeof: r, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), c.push(a));
+}function T(a, b, e, c, d) {
+  var g = "";null != e && (g = ("" + e).replace(L, "$\x26/") + "/");b = N(b, g, c, d);null == a || P(a, "", S, b);O(b);
+}
+var U = { Children: { map: function map(a, b, e) {
+      if (null == a) return a;var c = [];T(a, c, null, b, e);return c;
     }, forEach: function forEach(a, b, e) {
-      if (null == a) return a;b = K(null, null, b, e);null == a || M(a, "", O, b);L(b);
+      if (null == a) return a;b = N(null, null, b, e);null == a || P(a, "", R, b);O(b);
     }, count: function count(a) {
-      return null == a ? 0 : M(a, "", emptyFunction_1.thatReturnsNull, null);
+      return null == a ? 0 : P(a, "", emptyFunction_1.thatReturnsNull, null);
     }, toArray: function toArray(a) {
-      var b = [];Q(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
+      var b = [];T(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
     }, only: function only(a) {
-      E(a) ? void 0 : q("143");return a;
-    } }, Component: t, PureComponent: u, unstable_AsyncComponent: x, createElement: D, cloneElement: function cloneElement(a, b, e) {
-    var d = objectAssign({}, a.props),
-        c = a.key,
-        h = a.ref,
+      K(a) ? void 0 : y("143");return a;
+    } }, Component: A, PureComponent: B, unstable_AsyncComponent: E, Fragment: w, createElement: J, cloneElement: function cloneElement(a, b, e) {
+    var c = objectAssign({}, a.props),
+        d = a.key,
+        g = a.ref,
         k = a._owner;if (null != b) {
-      void 0 !== b.ref && (h = b.ref, k = z.current);void 0 !== b.key && (c = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (g in b) {
-        A.call(b, g) && !C.hasOwnProperty(g) && (d[g] = void 0 === b[g] && void 0 !== f ? f[g] : b[g]);
+      void 0 !== b.ref && (g = b.ref, k = G.current);void 0 !== b.key && (d = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (h in b) {
+        H.call(b, h) && !I.hasOwnProperty(h) && (c[h] = void 0 === b[h] && void 0 !== f ? f[h] : b[h]);
       }
-    }var g = arguments.length - 2;if (1 === g) d.children = e;else if (1 < g) {
-      f = Array(g);for (var l = 0; l < g; l++) {
+    }var h = arguments.length - 2;if (1 === h) c.children = e;else if (1 < h) {
+      f = Array(h);for (var l = 0; l < h; l++) {
         f[l] = arguments[l + 2];
-      }d.children = f;
-    }return { $$typeof: B, type: a.type, key: c, ref: h, props: d, _owner: k };
+      }c.children = f;
+    }return { $$typeof: r, type: a.type, key: d, ref: g, props: c, _owner: k };
   }, createFactory: function createFactory(a) {
-    var b = D.bind(null, a);b.type = a;return b;
-  }, isValidElement: E,
-  version: "16.1.1", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: z, assign: objectAssign } };
-var S = Object.freeze({ default: R });
-var T = S && R || S;var react_production_min = T["default"] ? T["default"] : T;
+    var b = J.bind(null, a);b.type = a;return b;
+  },
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
+var V = Object.freeze({ default: U });
+var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -711,7 +709,7 @@ var checkPropTypes_1 = checkPropTypes;
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.1.1
+  /** @license React v16.2.0
    * react.development.js
    *
    * Copyright (c) 2013-present, Facebook, Inc.
@@ -723,15 +721,39 @@ var react_development = createCommonjsModule(function (module) {
   if (process.env.NODE_ENV !== "production") {
     (function () {
       var _assign = objectAssign;
-      var invariant = invariant_1;
       var emptyObject = emptyObject_1;
+      var invariant = invariant_1;
       var warning = warning_1;
       var emptyFunction = emptyFunction_1;
       var checkPropTypes = checkPropTypes_1;
 
       // TODO: this is special because it gets imported during build.
 
-      var ReactVersion = '16.1.1';
+      var ReactVersion = '16.2.0';
+
+      // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+      // nor polyfill, then a plain number is used for performance.
+      var hasSymbol = typeof Symbol === 'function' && Symbol['for'];
+
+      var REACT_ELEMENT_TYPE = hasSymbol ? Symbol['for']('react.element') : 0xeac7;
+      var REACT_CALL_TYPE = hasSymbol ? Symbol['for']('react.call') : 0xeac8;
+      var REACT_RETURN_TYPE = hasSymbol ? Symbol['for']('react.return') : 0xeac9;
+      var REACT_PORTAL_TYPE = hasSymbol ? Symbol['for']('react.portal') : 0xeaca;
+      var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
+
+      var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+      var FAUX_ITERATOR_SYMBOL = '@@iterator';
+
+      function getIteratorFn(maybeIterable) {
+        if (maybeIterable === null || typeof maybeIterable === 'undefined') {
+          return null;
+        }
+        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+        if (typeof maybeIterator === 'function') {
+          return maybeIterator;
+        }
+        return null;
+      }
 
       /**
        * WARNING: DO NOT manually require this module.
@@ -739,20 +761,6 @@ var react_development = createCommonjsModule(function (module) {
        * and will _only_ be required by the corresponding babel pass.
        * It always throws.
        */
-
-      // Exports React.Fragment
-      var enableReactFragment = false;
-      // Exports ReactDOM.createRoot
-
-
-      // Mutating mode (React DOM, React ART, React Native):
-
-      // Experimental noop mode (currently unused):
-
-      // Experimental persistent mode (CS):
-
-
-      // Only used in www builds.
 
       /**
        * Forked from fbjs/warning:
@@ -1033,10 +1041,6 @@ var react_development = createCommonjsModule(function (module) {
 
       var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-
       var RESERVED_PROPS = {
         key: true,
         ref: true,
@@ -1122,7 +1126,7 @@ var react_development = createCommonjsModule(function (module) {
       var ReactElement = function ReactElement(type, key, ref, self, source, owner, props) {
         var element = {
           // This tag allow us to uniquely identify this as a React Element
-          $$typeof: REACT_ELEMENT_TYPE$1,
+          $$typeof: REACT_ELEMENT_TYPE,
 
           // Built-in properties that belong on the element
           type: type,
@@ -1237,7 +1241,7 @@ var react_development = createCommonjsModule(function (module) {
         }
         {
           if (key || ref) {
-            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE$1) {
+            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
               var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
               if (key) {
                 defineKeyPropWarningGetter(props, displayName);
@@ -1336,7 +1340,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE$1;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -1354,12 +1358,6 @@ var react_development = createCommonjsModule(function (module) {
         };
       }
 
-      var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-      var REACT_PORTAL_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.portal') || 0xeaca;
       var SEPARATOR = '.';
       var SUBSEPARATOR = ':';
 
@@ -1443,10 +1441,28 @@ var react_development = createCommonjsModule(function (module) {
           children = null;
         }
 
-        if (children === null || type === 'string' || type === 'number' ||
-        // The following is inlined from ReactElement. This means we can optimize
-        // some checks. React Fiber also inlines this logic for similar purposes.
-        type === 'object' && children.$$typeof === REACT_ELEMENT_TYPE || type === 'object' && children.$$typeof === REACT_PORTAL_TYPE) {
+        var invokeCallback = false;
+
+        if (children === null) {
+          invokeCallback = true;
+        } else {
+          switch (type) {
+            case 'string':
+            case 'number':
+              invokeCallback = true;
+              break;
+            case 'object':
+              switch (children.$$typeof) {
+                case REACT_ELEMENT_TYPE:
+                case REACT_CALL_TYPE:
+                case REACT_RETURN_TYPE:
+                case REACT_PORTAL_TYPE:
+                  invokeCallback = true;
+              }
+          }
+        }
+
+        if (invokeCallback) {
           callback(traverseContext, children,
           // If it's the only child, treat the name as if it was wrapped in an array
           // so that it's consistent if the number of children grows.
@@ -1466,7 +1482,7 @@ var react_development = createCommonjsModule(function (module) {
             subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
           }
         } else {
-          var iteratorFn = ITERATOR_SYMBOL && children[ITERATOR_SYMBOL] || children[FAUX_ITERATOR_SYMBOL];
+          var iteratorFn = getIteratorFn(children);
           if (typeof iteratorFn === 'function') {
             {
               // Warn about using Maps as children
@@ -1689,6 +1705,8 @@ var react_development = createCommonjsModule(function (module) {
       {
         var currentlyValidatingElement = null;
 
+        var propTypesMisspellWarningShown = false;
+
         var getDisplayName = function getDisplayName(element) {
           if (element == null) {
             return '#empty';
@@ -1696,7 +1714,7 @@ var react_development = createCommonjsModule(function (module) {
             return '#text';
           } else if (typeof element.type === 'string') {
             return element.type;
-          } else if (element.type === REACT_FRAGMENT_TYPE$1) {
+          } else if (element.type === REACT_FRAGMENT_TYPE) {
             return 'React.Fragment';
           } else {
             return element.type.displayName || element.type.name || 'Unknown';
@@ -1714,13 +1732,8 @@ var react_development = createCommonjsModule(function (module) {
           return stack;
         };
 
-        var REACT_FRAGMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
         var VALID_FRAGMENT_PROPS = new Map([['children', true], ['key', true]]);
       }
-
-      var ITERATOR_SYMBOL$1 = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL$1 = '@@iterator'; // Before Symbol spec.
 
       function getDeclarationErrorAddendum() {
         if (ReactCurrentOwner.current) {
@@ -1826,7 +1839,7 @@ var react_development = createCommonjsModule(function (module) {
             node._store.validated = true;
           }
         } else if (node) {
-          var iteratorFn = ITERATOR_SYMBOL$1 && node[ITERATOR_SYMBOL$1] || node[FAUX_ITERATOR_SYMBOL$1];
+          var iteratorFn = getIteratorFn(node);
           if (typeof iteratorFn === 'function') {
             // Entry iterators used to provide implicit keys,
             // but now we print a separate warning for them later.
@@ -1856,11 +1869,13 @@ var react_development = createCommonjsModule(function (module) {
         }
         var name = componentClass.displayName || componentClass.name;
         var propTypes = componentClass.propTypes;
-
         if (propTypes) {
           currentlyValidatingElement = element;
           checkPropTypes(propTypes, element.props, 'prop', name, getStackAddendum);
           currentlyValidatingElement = null;
+        } else if (componentClass.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+          propTypesMisspellWarningShown = true;
+          warning(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
         }
         if (typeof componentClass.getDefaultProps === 'function') {
           warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
@@ -1950,7 +1965,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE$1) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -1989,8 +2004,6 @@ var react_development = createCommonjsModule(function (module) {
         return newElement;
       }
 
-      var REACT_FRAGMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
       var React = {
         Children: {
           map: mapChildren,
@@ -2003,6 +2016,8 @@ var react_development = createCommonjsModule(function (module) {
         Component: Component,
         PureComponent: PureComponent,
         unstable_AsyncComponent: AsyncComponent,
+
+        Fragment: REACT_FRAGMENT_TYPE,
 
         createElement: createElementWithValidation,
         cloneElement: cloneElementWithValidation,
@@ -2017,10 +2032,6 @@ var react_development = createCommonjsModule(function (module) {
           assign: _assign
         }
       };
-
-      if (enableReactFragment) {
-        React.Fragment = REACT_FRAGMENT_TYPE;
-      }
 
       {
         _assign(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
