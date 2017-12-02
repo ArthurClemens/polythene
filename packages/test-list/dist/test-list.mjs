@@ -6104,12 +6104,11 @@ var reactTests = function reactTests(_ref) {
       h = _ref.renderer;
 
 
-  var createUserListTile = function createUserListTile(title, subtitle, filename) {
+  var createUserListTile = function createUserListTile(key, title, subtitle, filename) {
     return h(withRouter(function (_ref2) {
       var history = _ref2.history;
       return h(ListTile$$1, {
         title: title,
-        key: title,
         subtitle: subtitle,
         front: h(Icon$$1, {
           src: "http://arthurclemens.github.io/assets/polythene/examples/" + filename + ".png",
@@ -6123,20 +6122,26 @@ var reactTests = function reactTests(_ref) {
           }
         }
       });
-    }));
+    }), { key: key });
   };
 
-  var listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
-  var listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
-  var listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
+  var listTileJennifer = function listTileJennifer(key) {
+    return createUserListTile(key, "Jennifer Barker", "Starting post doc", "avatar-1");
+  };
+  var listTileAli = function listTileAli(key) {
+    return createUserListTile(key, "Ali Connors", "Brunch this weekend?", "avatar-2");
+  };
+  var listTileGrace = function listTileGrace(key) {
+    return createUserListTile(key, "Grace VanDam", "Binge watching...", "avatar-3");
+  };
 
   var selectTile = function selectTile(_ref3) {
     var title = _ref3.title;
-    return { title: title };
+    return { title: title, key: title };
   };
   var headerTile = function headerTile(_ref4) {
     var title = _ref4.title;
-    return { title: title, header: true };
+    return { title: title, header: true, key: title };
   };
 
   return [{
@@ -6146,17 +6151,19 @@ var reactTests = function reactTests(_ref) {
     interactive: true,
     component: function component() {
       return h("div", [h(List$$1, {
+        key: "one",
         header: {
           title: "Friends"
         },
         borders: true,
-        tiles: [listTileJennifer, listTileAli, listTileGrace]
+        tiles: [listTileJennifer("urls 1"), listTileAli("urls 2"), listTileGrace("urls 3")]
       }), h(List$$1, {
+        key: "two",
         header: {
           title: "Friends"
         },
         borders: true,
-        tiles: [listTileJennifer, listTileAli, listTileGrace]
+        tiles: [listTileJennifer("urls 4"), listTileAli("urls 5"), listTileGrace("urls 6")]
       })]);
     }
   }, {
@@ -6170,7 +6177,7 @@ var reactTests = function reactTests(_ref) {
             title: "Sub header " + ord,
             sticky: true
           },
-          tiles: [listTileJennifer, listTileAli, listTileGrace, listTileJennifer, listTileAli, listTileGrace]
+          tiles: [listTileJennifer(ord + "1"), listTileAli(ord + "2"), listTileGrace(ord + "3"), listTileJennifer(ord + "4"), listTileAli(ord + "5"), listTileGrace(ord + "6")]
         });
       }));
     }
