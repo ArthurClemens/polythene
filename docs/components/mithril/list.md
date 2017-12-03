@@ -18,7 +18,7 @@
 <a name="options"></a>
 ## Options
 
-[List options](list.md)
+[List options](../list.md)
 
 
 <a name="usage"></a>

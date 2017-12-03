@@ -17,7 +17,7 @@
 <a name="options"></a>
 ## Options
 
-[SVG options](SVG.md)
+[SVG options](../svg.md)
 
 
 <a name="usage"></a>
