@@ -154,8 +154,9 @@ const data = {
 };
 
 const dataList = Object.keys(data);
+const defaultValue = "bl";
 
-export default ({ h, k, List, SearchField }) => {
+export default ({ h, k, KeyboardList, SearchField }) => {
 
   ListCSS.addStyle(".tests-list-keyboard-color-list", {
     color_light_background: "#fff"
@@ -174,7 +175,6 @@ export default ({ h, k, List, SearchField }) => {
       }
     });
 
-
   const colorTile = ({ title, key, colorValues }) => (
     {
       title,
@@ -187,7 +187,7 @@ export default ({ h, k, List, SearchField }) => {
 
   return {
     oninit: vnode => {
-      const searchValue = stream();
+      const searchValue = stream(defaultValue);
       const selectedValue = stream();
       const highlightIndex = stream(-1);
       const hasFocus = stream();
@@ -198,6 +198,7 @@ export default ({ h, k, List, SearchField }) => {
         selectedValue(null)
       ));
 
+      // Remove highlight when a selection has been made
       selectedValue.map(() => (
         hasFocus(true),
         highlightIndex(-1)
@@ -229,6 +230,7 @@ export default ({ h, k, List, SearchField }) => {
               state.searchValue(value),
               state.hasFocus(focus)
             ),
+            defaultValue,
             focus: state.hasFocus(),
             events: {
               [k.onkeydown]: e => {
@@ -245,11 +247,10 @@ export default ({ h, k, List, SearchField }) => {
             : null
         )),
         matches.length
-          ? h(List, {
+          ? h(KeyboardList, {
             key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
             className: "tests-list-keyboard-color-list",
             borders: true,
-            keyboardControl: true,
             highlightIndex,
             onHighlightExit: () => {
               state.highlightIndex(-1);

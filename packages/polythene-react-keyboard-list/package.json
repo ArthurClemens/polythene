@@ -1,0 +1,24 @@
+{
+  "name": "polythene-react-keyboard-list",
+  "version": "1.0.0-rc.9",
+  "description": "",
+  "main": "dist/polythene-react-keyboard-list.js",
+  "module": "dist/polythene-react-keyboard-list.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-keyboard-list": "^1.0.0-rc.9",
+    "polythene-react-base": "^1.0.0-rc.9",
+    "polythene-react-list": "^1.0.0-rc.9",
+    "polythene-react-list-tile": "^1.0.0-rc.9"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "license": "MIT"
+}

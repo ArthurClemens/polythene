@@ -61,14 +61,23 @@ export default class extends Component {
   }
 
   render() {
+    const value = this.props.value !== undefined ? this.props.value : this.state.value;
+    const focus = this.props.focus !== undefined ? this.props.focus : this.state.focus;
     return h(Search, Object.assign(
       {},
       {
         textfield: {
-          label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
-          value: this.state.value,
-          focus: this.state.focus
+          onChange: ({ value, focus }) => (
+            this.setState({ value, focus }),
+            // added for KeyboardList:
+            this.props.onChange && this.props.onChange({ value, focus })
+          ),
+          value,
+          focus,
+          // added for KeyboardList:
+          label: this.props.label || "Search",
+          defaultValue: this.props.defaultValue,
+          events: this.props.events
         },
         buttons: {
           none: {

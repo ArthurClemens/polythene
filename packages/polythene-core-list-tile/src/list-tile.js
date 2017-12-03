@@ -140,32 +140,30 @@ export const onMount = vnode => {
   if (!dom) {
     return;
   }
-  if (isClient) {
-    if (attrs.register) {
-      const primaryDom = dom; //.querySelector(`.${classes.primary}`);
+  if (isClient && attrs.register) {
+    const primaryDom = dom;
 
-      const onFocus = () => state.highlight(true);
-      const onBlur = () => state.highlight(false);
-      
-      primaryDom.addEventListener("focus", onFocus, false);
-      primaryDom.addEventListener("blur", onBlur, false);
+    const onFocus = () => state.highlight(true);
+    const onBlur = () => state.highlight(false);
+    
+    primaryDom.addEventListener("focus", onFocus, false);
+    primaryDom.addEventListener("blur", onBlur, false);
 
-      state.removeEventListeners = () => (
-        primaryDom.removeEventListener("focus", onFocus, false),
-        primaryDom.removeEventListener("blur", onBlur, false)
-      );
+    state.removeEventListeners = () => (
+      primaryDom.removeEventListener("focus", onFocus, false),
+      primaryDom.removeEventListener("blur", onBlur, false)
+    );
 
-      attrs.register(attrs.index, {
-        dom: primaryDom,
-        attrs
-      });
+    attrs.register(attrs.index, {
+      dom: primaryDom,
+      attrs
+    });
 
-      state.highlight.map(hasHighlight => {
-        if (attrs.setHighlightIndex && hasHighlight) {
-          attrs.setHighlightIndex(attrs.index);
-        }
-      });
-    }
+    state.highlight.map(hasHighlight => {
+      if (attrs.setHighlightIndex && hasHighlight) {
+        attrs.setHighlightIndex(attrs.index);
+      }
+    });
   }
 };
 

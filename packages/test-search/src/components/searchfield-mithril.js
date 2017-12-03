@@ -74,20 +74,26 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       };
     },
     view: ({ state, attrs }) => {
+      // added for KeyboardList:
       const value = attrs.value !== undefined ? attrs.value : state.value();
       const focus = attrs.focus !== undefined ? attrs.focus : state.focus();
+
       return h(Search, Object.assign(
         {},
         {
+
           textfield: {
-            label: attrs.label || "Search",
             onChange: ({ value, focus }) => (
               state.value(value),
               state.focus(focus),
+              // added for KeyboardList:
               attrs.onChange && attrs.onChange({ value, focus })
             ),
             value,
             focus,
+            // added for KeyboardList:
+            label: attrs.label || "Search",
+            defaultValue: attrs.defaultValue,
             events: attrs.events
           },
           buttons: {

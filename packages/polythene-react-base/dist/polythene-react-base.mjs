@@ -410,9 +410,7 @@ var StateComponent = function StateComponent(_ref) {
     }, {
       key: "componentDidUpdate",
       value: function componentDidUpdate() {
-        if (this._mounted) {
-          onUpdate(this.createVirtualNode());
-        }
+        onUpdate(this.createVirtualNode());
       }
     }, {
       key: "componentWillUnmount",

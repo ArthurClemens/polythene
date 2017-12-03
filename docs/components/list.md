@@ -12,7 +12,6 @@ Lists are also the base component of [Menus](menu.md).
 - [Options](#options)
   - [List specific options](#list-specific-options)
   - [List appearance options](#list-appearance-options)
-  - [List keyboard control options](#list-keyboard-control-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -32,16 +31,14 @@ Lists are also the base component of [Menus](menu.md).
 <a name="usage"></a>
 ## Usage
 
-* [Usage with Mithril](mithril/list.md)
-* [Usage with React](react/list.md)
+* [Usage with Mithril](mithril/keyboard-list.md)
+* [Usage with React](react/keyboard-list.md)
 
 
 <a name="keyboard-control"></a>
 ## Keyboard control
 
-Besides the regular accessibility keyboard control, List offers additional keyboard control for use in selectable lists (for instance when displaying search results). See option `keyboardControl` and usage examples.
-
-See also: [List Tile](list-tile.md#keyboard-control)
+See [Keyboard List](keyboard-list.md).
 
 
 <a name="options"></a>
@@ -68,16 +65,6 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 | **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
 
-<a name="list-keyboard-control-options"></a>
-### List keyboard control options
-
-| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
-| ------------------- | -------------- | -------- | ----------- | --------------- |
-| **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
-| **highlightIndex**  | optional | Number | | Sets the highlighted index when the list does not have a highlight yet; after user interaction the index will be updated internally |
-| **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
-| **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
-| **onHighlightExit** | optional | Function({ index }) | | Callback function called when the highlight index is less than 0; higher than the last item's index; or when ESCAPE is pressed |
 
 <a name="common-component-options"></a>
 ### Common component options

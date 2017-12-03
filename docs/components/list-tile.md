@@ -106,7 +106,8 @@ This works for list tiles that are defined as link (when either option `element`
 <a name="internally-used-options"></a>
 ### Internally used options
 
-* `setHighlightIndex`
+* `register`
+
 
 <a name="common-component-options"></a>
 ### Common component options

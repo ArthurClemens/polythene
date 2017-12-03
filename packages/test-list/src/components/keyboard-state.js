@@ -38,7 +38,6 @@ export default ({ h, List }) => {
       const selectedTitle = state.selected();
       return h(List, {
         borders: true,
-        keyboardControl: true,
         defaultHighlightIndex: 0,
         onSelect: data => 
           state.selected(data.attrs.title),
