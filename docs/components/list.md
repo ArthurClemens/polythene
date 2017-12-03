@@ -74,8 +74,10 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
 | ------------------- | -------------- | -------- | ----------- | --------------- |
 | **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
+| **highlightIndex**  | optional | Number | | Sets the highlighted index when the list does not have a highlight yet; after user interaction the index will be updated internally |
 | **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
 | **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
+| **onHighlightExit** | optional | Function({ index }) | | Callback function called when the highlight index is less than 0; higher than the last item's index; or when ESCAPE is pressed |
 
 <a name="common-component-options"></a>
 ### Common component options

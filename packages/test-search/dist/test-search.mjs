@@ -1,117 +1,6 @@
-import { Button, IconButton, Search, Shadow, keys, renderer } from 'polythene-mithril';
-import { SearchCSS } from 'polythene-css';
-import { Button as Button$1, IconButton as IconButton$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var genericTests = (function (_ref) {
-  var h = _ref.renderer,
-      Search$$1 = _ref.Search,
-      SearchField = _ref.SearchField,
-      Shadow$$1 = _ref.Shadow;
-
-
-  SearchCSS.addStyle(".tests-search-themed-search", {
-    color_dark_input_text: "#fff",
-    color_dark_background: "#43a047"
-  });
-
-  var Block = {
-    view: function view(_ref2) {
-      var attrs = _ref2.attrs;
-      return h("form", {
-        style: _extends({}, {
-          minHeight: "130px",
-          overflow: "hidden" // hides top and side shadow with full width search field
-        }, attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" }, attrs.fullWidth ? null : { padding: "8px" })
-      }, h(SearchField, attrs));
-    }
-  };
-
-  return [{
-    name: "Option: textfield",
-    component: {
-      view: function view() {
-        return h(Search$$1, {
-          textfield: {
-            label: "Search"
-          },
-          after: h(Shadow$$1)
-        });
-      }
-    }
-  }, {
-    name: "Option: textfield, buttons",
-    component: {
-      view: function view() {
-        return h(Block);
-      }
-    }
-  }, {
-    name: "Option: textfield, buttons, fullWidth",
-    component: {
-      view: function view() {
-        return h(Block, { fullWidth: true });
-      }
-    }
-  }, {
-    name: "Colored field",
-    component: {
-      view: function view() {
-        return h(Block, {
-          style: { background: "#BBDEFB" }
-        });
-      }
-    }
-  }, {
-    name: "Theme",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "tests-search-themed-search",
-          tone: "dark"
-        });
-      }
-    }
-  },
-
-  // Dark tone
-
-  {
-    name: "Theme -- dark tone class",
-    className: "pe-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "tests-search-themed-search",
-          dark: true
-        });
-      }
-    }
-  }, {
-    name: "Dark tone class + light tone class",
-    className: "pe-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          className: "pe-light-tone",
-          dark: true
-        });
-      }
-    }
-  }, {
-    name: "Dark tone class + light tone",
-    className: "test-dark-tone",
-    component: {
-      view: function view() {
-        return h(Block, {
-          tone: "light",
-          dark: true
-        });
-      }
-    }
-  }];
-});
+import { Button, IconButton, List, ListTile, Search, Shadow, keys, renderer } from 'polythene-mithril';
+import { ListCSS, ListTileCSS, SearchCSS } from 'polythene-css';
+import { Button as Button$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -310,6 +199,412 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var data = {
+  "aliceblue": [240, 248, 255, 1],
+  "antiquewhite": [250, 235, 215, 1],
+  "aqua": [0, 255, 255, 1],
+  "aquamarine": [127, 255, 212, 1],
+  "azure": [240, 255, 255, 1],
+  "beige": [245, 245, 220, 1],
+  "bisque": [255, 228, 196, 1],
+  "black": [0, 0, 0, 1],
+  "blanchedalmond": [255, 235, 205, 1],
+  "blue": [0, 0, 255, 1],
+  "blueviolet": [138, 43, 226, 1],
+  "brown": [165, 42, 42, 1],
+  "burlywood": [222, 184, 135, 1],
+  "cadetblue": [95, 158, 160, 1],
+  "chartreuse": [127, 255, 0, 1],
+  "chocolate": [210, 105, 30, 1],
+  "coral": [255, 127, 80, 1],
+  "cornflowerblue": [100, 149, 237, 1],
+  "cornsilk": [255, 248, 220, 1],
+  "crimson": [220, 20, 60, 1],
+  "cyan": [0, 255, 255, 1],
+  "darkblue": [0, 0, 139, 1],
+  "darkcyan": [0, 139, 139, 1],
+  "darkgoldenrod": [184, 134, 11, 1],
+  "darkgray": [169, 169, 169, 1],
+  "darkgreen": [0, 100, 0, 1],
+  "darkgrey": [169, 169, 169, 1],
+  "darkkhaki": [189, 183, 107, 1],
+  "darkmagenta": [139, 0, 139, 1],
+  "darkolivegreen": [85, 107, 47, 1],
+  "darkorange": [255, 140, 0, 1],
+  "darkorchid": [153, 50, 204, 1],
+  "darkred": [139, 0, 0, 1],
+  "darksalmon": [233, 150, 122, 1],
+  "darkseagreen": [143, 188, 143, 1],
+  "darkslateblue": [72, 61, 139, 1],
+  "darkslategray": [47, 79, 79, 1],
+  "darkslategrey": [47, 79, 79, 1],
+  "darkturquoise": [0, 206, 209, 1],
+  "darkviolet": [148, 0, 211, 1],
+  "deeppink": [255, 20, 147, 1],
+  "deepskyblue": [0, 191, 255, 1],
+  "dimgray": [105, 105, 105, 1],
+  "dimgrey": [105, 105, 105, 1],
+  "dodgerblue": [30, 144, 255, 1],
+  "firebrick": [178, 34, 34, 1],
+  "floralwhite": [255, 250, 240, 1],
+  "forestgreen": [34, 139, 34, 1],
+  "fuchsia": [255, 0, 255, 1],
+  "gainsboro": [220, 220, 220, 1],
+  "ghostwhite": [248, 248, 255, 1],
+  "gold": [255, 215, 0, 1],
+  "goldenrod": [218, 165, 32, 1],
+  "gray": [128, 128, 128, 1],
+  "green": [0, 128, 0, 1],
+  "greenyellow": [173, 255, 47, 1],
+  "grey": [128, 128, 128, 1],
+  "honeydew": [240, 255, 240, 1],
+  "hotpink": [255, 105, 180, 1],
+  "indianred": [205, 92, 92, 1],
+  "indigo": [75, 0, 130, 1],
+  "ivory": [255, 255, 240, 1],
+  "khaki": [240, 230, 140, 1],
+  "lavender": [230, 230, 250, 1],
+  "lavenderblush": [255, 240, 245, 1],
+  "lawngreen": [124, 252, 0, 1],
+  "lemonchiffon": [255, 250, 205, 1],
+  "lightblue": [173, 216, 230, 1],
+  "lightcoral": [240, 128, 128, 1],
+  "lightcyan": [224, 255, 255, 1],
+  "lightgoldenrodyellow": [250, 250, 210, 1],
+  "lightgray": [211, 211, 211, 1],
+  "lightgreen": [144, 238, 144, 1],
+  "lightgrey": [211, 211, 211, 1],
+  "lightpink": [255, 182, 193, 1],
+  "lightsalmon": [255, 160, 122, 1],
+  "lightseagreen": [32, 178, 170, 1],
+  "lightskyblue": [135, 206, 250, 1],
+  "lightslategray": [119, 136, 153, 1],
+  "lightslategrey": [119, 136, 153, 1],
+  "lightsteelblue": [176, 196, 222, 1],
+  "lightyellow": [255, 255, 224, 1],
+  "lime": [0, 255, 0, 1],
+  "limegreen": [50, 205, 50, 1],
+  "linen": [250, 240, 230, 1],
+  "magenta": [255, 0, 255, 1],
+  "maroon": [128, 0, 0, 1],
+  "mediumaquamarine": [102, 205, 170, 1],
+  "mediumblue": [0, 0, 205, 1],
+  "mediumorchid": [186, 85, 211, 1],
+  "mediumpurple": [147, 112, 219, 1],
+  "mediumseagreen": [60, 179, 113, 1],
+  "mediumslateblue": [123, 104, 238, 1],
+  "mediumspringgreen": [0, 250, 154, 1],
+  "mediumturquoise": [72, 209, 204, 1],
+  "mediumvioletred": [199, 21, 133, 1],
+  "midnightblue": [25, 25, 112, 1],
+  "mintcream": [245, 255, 250, 1],
+  "mistyrose": [255, 228, 225, 1],
+  "moccasin": [255, 228, 181, 1],
+  "navajowhite": [255, 222, 173, 1],
+  "navy": [0, 0, 128, 1],
+  "oldlace": [253, 245, 230, 1],
+  "olive": [128, 128, 0, 1],
+  "olivedrab": [107, 142, 35, 1],
+  "orange": [255, 165, 0, 1],
+  "orangered": [255, 69, 0, 1],
+  "orchid": [218, 112, 214, 1],
+  "palegoldenrod": [238, 232, 170, 1],
+  "palegreen": [152, 251, 152, 1],
+  "paleturquoise": [175, 238, 238, 1],
+  "palevioletred": [219, 112, 147, 1],
+  "papayawhip": [255, 239, 213, 1],
+  "peachpuff": [255, 218, 185, 1],
+  "peru": [205, 133, 63, 1],
+  "pink": [255, 192, 203, 1],
+  "plum": [221, 160, 221, 1],
+  "powderblue": [176, 224, 230, 1],
+  "purple": [128, 0, 128, 1],
+  "red": [255, 0, 0, 1],
+  "rosybrown": [188, 143, 143, 1],
+  "royalblue": [65, 105, 225, 1],
+  "saddlebrown": [139, 69, 19, 1],
+  "salmon": [250, 128, 114, 1],
+  "sandybrown": [244, 164, 96, 1],
+  "seagreen": [46, 139, 87, 1],
+  "seashell": [255, 245, 238, 1],
+  "sienna": [160, 82, 45, 1],
+  "silver": [192, 192, 192, 1],
+  "skyblue": [135, 206, 235, 1],
+  "slateblue": [106, 90, 205, 1],
+  "slategray": [112, 128, 144, 1],
+  "slategrey": [112, 128, 144, 1],
+  "snow": [255, 250, 250, 1],
+  "springgreen": [0, 255, 127, 1],
+  "steelblue": [70, 130, 180, 1],
+  "tan": [210, 180, 140, 1],
+  "teal": [0, 128, 128, 1],
+  "thistle": [216, 191, 216, 1],
+  "tomato": [255, 99, 71, 1],
+  "transparent": [0, 0, 0, 0],
+  "turquoise": [64, 224, 208, 1],
+  "violet": [238, 130, 238, 1],
+  "wheat": [245, 222, 179, 1],
+  "white": [255, 255, 255, 1],
+  "whitesmoke": [245, 245, 245, 1],
+  "yellow": [255, 255, 0, 1],
+  "yellowgreen": [154, 205, 50, 1],
+  "rebeccapurple": [102, 51, 153, 1]
+};
+
+var dataList = Object.keys(data);
+
+var results = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      List$$1 = _ref.List,
+      SearchField = _ref.SearchField;
+
+
+  ListCSS.addStyle(".tests-list-keyboard-color-list", {
+    color_light_background: "#fff"
+  });
+  ListTileCSS.addStyle(".tests-list-keyboard-color-list-tile", {
+    color_light_selected_background: "#80d8ff"
+  });
+
+  var colorDot = function colorDot(colorValues) {
+    return h("div", {
+      style: {
+        backgroundColor: "rgba(" + colorValues.join(",") + ")",
+        width: "24px",
+        height: "24px",
+        borderRadius: "50%"
+      }
+    });
+  };
+
+  var colorTile = function colorTile(_ref2) {
+    var title = _ref2.title,
+        key = _ref2.key,
+        colorValues = _ref2.colorValues;
+    return {
+      title: title,
+      key: key,
+      className: "tests-list-keyboard-color-list-tile",
+      front: colorDot(colorValues),
+      compactFront: true
+    };
+  };
+
+  return {
+    oninit: function oninit(vnode) {
+      var searchValue = stream();
+      var selectedValue = stream();
+      var highlightIndex = stream(-1);
+      var hasFocus = stream();
+
+      // Erase when a new value is received:
+      searchValue.map(function () {
+        return highlightIndex(-1), selectedValue(null);
+      });
+
+      selectedValue.map(function () {
+        return hasFocus(true), highlightIndex(-1);
+      });
+
+      vnode.state = {
+        searchValue: searchValue,
+        selectedValue: selectedValue,
+        highlightIndex: highlightIndex,
+        hasFocus: hasFocus,
+        redrawOnUpdate: stream.merge([searchValue, highlightIndex, hasFocus]) // for React
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var searchValue = state.searchValue();
+      var highlightIndex = state.highlightIndex();
+      var matches = searchValue ? dataList.map(function (key) {
+        return key.match(new RegExp("^" + searchValue, "i")) ? key : null;
+      }).filter(function (v) {
+        return v !== null;
+      }) : [];
+      return [h(SearchField, _extends$1({}, {
+        key: "search",
+        label: "Type color name",
+        onChange: function onChange(_ref3) {
+          var value = _ref3.value,
+              focus = _ref3.focus;
+          return state.searchValue(value), state.hasFocus(focus);
+        },
+        focus: state.hasFocus(),
+        events: _defineProperty({}, k.onkeydown, function (e) {
+          if (e.key === "ArrowDown") {
+            e.preventDefault(); // prevent scrolling the page
+            // Start at the top of the list
+            state.highlightIndex(0);
+          }
+        })
+      }, state.selectedValue() ? { value: state.selectedValue() } : null)), matches.length ? h(List$$1, {
+        key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
+        className: "tests-list-keyboard-color-list",
+        borders: true,
+        keyboardControl: true,
+        highlightIndex: highlightIndex,
+        onHighlightExit: function onHighlightExit() {
+          state.highlightIndex(-1);
+          state.hasFocus(true);
+        },
+        onSelect: function onSelect(data) {
+          return state.selectedValue(data.attrs.title);
+        },
+        tiles: matches.map(function (title) {
+          return colorTile({
+            title: title,
+            // Use a unique key to make sure that the list tiles get registered again
+            // This to ensure that the ListTile dom corresponds to the highlightIndex
+            key: title + searchValue,
+            colorValues: data[title]
+          });
+        })
+      }) : null];
+    }
+  };
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var genericTests = (function (_ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Search$$1 = _ref.Search,
+      SearchField = _ref.SearchField,
+      Shadow$$1 = _ref.Shadow,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile;
+
+
+  SearchCSS.addStyle(".tests-search-themed-search", {
+    color_dark_input_text: "#fff",
+    color_dark_background: "#43a047"
+  });
+
+  var Results = results({ h: h, k: k, List: List$$1, ListTile: ListTile$$1, SearchField: SearchField });
+
+  var blockAttrs = function blockAttrs(attrs) {
+    return {
+      style: _extends({}, {
+        minHeight: "130px",
+        overflow: "hidden" // hides top and side shadow with full width search field
+      }, attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" }, attrs.fullWidth ? null : { padding: "8px" })
+    };
+  };
+
+  var Block = {
+    view: function view(_ref2) {
+      var attrs = _ref2.attrs;
+      return h("form", blockAttrs(attrs), h(SearchField, attrs));
+    }
+  };
+
+  var ResultsBlock = {
+    view: function view(_ref3) {
+      var attrs = _ref3.attrs;
+      return h("form", blockAttrs(attrs), h(Results));
+    }
+  };
+
+  return [{
+    name: "Option: textfield",
+    component: {
+      view: function view() {
+        return h(Search$$1, {
+          textfield: {
+            label: "Search"
+          },
+          after: h(Shadow$$1)
+        });
+      }
+    }
+  }, {
+    name: "Option: textfield, buttons",
+    component: {
+      view: function view() {
+        return h(Block);
+      }
+    }
+  }, {
+    name: "Option: textfield, buttons, fullWidth",
+    component: {
+      view: function view() {
+        return h(Block, { fullWidth: true });
+      }
+    }
+  }, {
+    name: "Colored field",
+    component: {
+      view: function view() {
+        return h(Block, {
+          style: { background: "#BBDEFB" }
+        });
+      }
+    }
+  }, {
+    name: "Theme",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search",
+          tone: "dark"
+        });
+      }
+    }
+  }, {
+    name: "With search results",
+    component: {
+      view: function view() {
+        return h(ResultsBlock);
+      }
+    }
+  },
+
+  // Dark tone
+
+  {
+    name: "Theme -- dark tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "pe-light-tone",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          tone: "light",
+          dark: true
+        });
+      }
+    }
+  }];
+});
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var iconSearchSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\"/></svg>";
 var iconBackSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>";
 var iconClearSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>";
@@ -334,7 +629,7 @@ var searchField = (function (_ref) {
       return h(IconButton$$1, {
         icon: { svg: { content: iconBack } },
         ink: false,
-        events: _defineProperty({}, k.onclick, attrs.leave)
+        events: _defineProperty$1({}, k.onclick, attrs.leave)
       });
     }
   };
@@ -345,7 +640,7 @@ var searchField = (function (_ref) {
       return h(IconButton$$1, {
         icon: { svg: { content: iconClear } },
         ink: false,
-        events: _defineProperty({}, k.onclick, attrs.clear)
+        events: _defineProperty$1({}, k.onclick, attrs.clear)
       });
     }
   };
@@ -370,7 +665,18 @@ var searchField = (function (_ref) {
 
   return {
     oninit: function oninit(vnode) {
+      var attrs = vnode.attrs;
       var value = stream("");
+      if (attrs.listenForValue) {
+        value.map(function (v) {
+          return attrs.listenForValue(v);
+        });
+      }
+      if (attrs.setValue) {
+        value.map(function (v) {
+          return attrs.getValue(v);
+        });
+      }
       var focus = stream(false);
 
       var clear = function clear() {
@@ -392,18 +698,19 @@ var searchField = (function (_ref) {
       var state = _ref4.state,
           attrs = _ref4.attrs;
 
-      var value = state.value();
-      var focus = state.focus();
-      return h(Search$$1, _extends$1({}, {
+      var value = attrs.value !== undefined ? attrs.value : state.value();
+      var focus = attrs.focus !== undefined ? attrs.focus : state.focus();
+      return h(Search$$1, _extends$2({}, {
         textfield: {
-          label: "Search",
+          label: attrs.label || "Search",
           onChange: function onChange(_ref5) {
             var value = _ref5.value,
                 focus = _ref5.focus;
-            return state.value(value), state.focus(focus);
+            return state.value(value), state.focus(focus), attrs.onChange && attrs.onChange({ value: value, focus: focus });
           },
           value: value,
-          focus: focus
+          focus: focus,
+          events: attrs.events
         },
         buttons: {
           none: {
@@ -436,7 +743,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -446,7 +753,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -492,7 +799,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -2215,7 +2522,7 @@ var react_2 = react.Component;
 var react_3 = react.PropTypes;
 var react_4 = react.createElement;
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -2302,7 +2609,7 @@ var _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return renderer$1(Search$1, _extends$3({}, {
+      return renderer$1(Search$1, _extends$4({}, {
         textfield: {
           label: "Search",
           onChange: function onChange(_ref3) {
@@ -2339,7 +2646,7 @@ var _class = function (_Component) {
   return _class;
 }(react_2);
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -2439,7 +2746,7 @@ var _class$1 = function (_Component) {
 
       var value = this.state.value;
       var focus = this.state.focus;
-      return react.createElement(Search$1, _extends$4({
+      return react.createElement(Search$1, _extends$5({
         textfield: {
           label: "Search",
           onChange: function onChange(_ref3) {
@@ -2500,6 +2807,6 @@ var reactTests = function reactTests() {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

@@ -198,7 +198,7 @@ var keyboardState = (function (_ref) {
       return h(List$$1, {
         borders: true,
         keyboardControl: true,
-        defaultHighlightIndex: 0,
+        // defaultHighlightIndex: 0,
         onSelect: function onSelect(data) {
           return state.selected(data.attrs.title);
         },

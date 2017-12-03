@@ -12,6 +12,7 @@ Displays a list element as part of a [List](list.md).
   - [List tile appearance options](#list-tile-appearance-options)
   - [List tile primary content options](#list-tile-primary-content-options)
   - [List tile secondary content options](#list-tile-secondary-content-options)
+  - [Internally used options](#internally-used-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -100,6 +101,12 @@ This works for list tiles that are defined as link (when either option `element`
 | **secondary.icon** | optional | Object |  | [Icon](Icon.md) options object for icon in secondary content; will be placed above secondary.content |
 | **secondary.url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for secondary content; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
+
+
+<a name="internally-used-options"></a>
+### Internally used options
+
+* `setHighlightIndex`
 
 <a name="common-component-options"></a>
 ### Common component options

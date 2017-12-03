@@ -48,7 +48,14 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
 
   return {
     oninit: vnode => {
+      const attrs = vnode.attrs;
       const value = stream("");
+      if (attrs.listenForValue) {
+        value.map(v => attrs.listenForValue(v));
+      }
+      if (attrs.setValue) {
+        value.map(v => attrs.getValue(v));
+      }
       const focus = stream(false);
 
       const clear = () => (
@@ -67,16 +74,21 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       };
     },
     view: ({ state, attrs }) => {
-      const value = state.value();
-      const focus = state.focus();
+      const value = attrs.value !== undefined ? attrs.value : state.value();
+      const focus = attrs.focus !== undefined ? attrs.focus : state.focus();
       return h(Search, Object.assign(
         {},
         {
           textfield: {
-            label: "Search",
-            onChange: ({ value, focus }) => (state.value(value), state.focus(focus)),
+            label: attrs.label || "Search",
+            onChange: ({ value, focus }) => (
+              state.value(value),
+              state.focus(focus),
+              attrs.onChange && attrs.onChange({ value, focus })
+            ),
             value,
-            focus
+            focus,
+            events: attrs.events
           },
           buttons: {
             none: {
