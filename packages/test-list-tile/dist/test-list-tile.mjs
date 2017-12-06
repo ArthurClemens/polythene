@@ -23,6 +23,10 @@ var genericTests = (function (_ref) {
     font_size_title: 21
   });
 
+  ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
+    color_light_highlight_background: "#FFECB3"
+  });
+
   return [{
     name: "Option: title",
     component: ListTile$$1,
@@ -159,6 +163,14 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       selected: true
+    }
+  }, {
+    name: "Option: highlight (themed color)",
+    component: ListTile$$1,
+    attrs: {
+      title: "Ancillary Justice",
+      highlight: true,
+      className: "tests-list-tile-themed-highlight-list-tile"
     }
   }, {
     name: "Option: ink",

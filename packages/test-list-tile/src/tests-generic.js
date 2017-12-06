@@ -14,6 +14,10 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     font_size_title:        21
   });
 
+  ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
+    color_light_highlight_background: "#FFECB3",
+  });
+
   return [
     {
       name: "Option: title",
@@ -170,6 +174,15 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         selected: true
+      }
+    },
+    {
+      name: "Option: highlight (themed color)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        highlight: true,
+        className: "tests-list-tile-themed-highlight-list-tile",
       }
     },
     {

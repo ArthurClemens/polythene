@@ -6,7 +6,6 @@ Displays a list element as part of a [List](list.md).
 
 - [Main features](#main-features)
 - [Usage](#usage)
-- [Keyboard control](#keyboard-control)
 - [Options](#options)
   - [List tile content options](#list-tile-content-options)
   - [List tile appearance options](#list-tile-appearance-options)
@@ -29,7 +28,6 @@ Displays a list element as part of a [List](list.md).
 * Compact display
 * Set as sticky header
 * Indent content
-* Keyboard control
 
 
 <a name="usage"></a>
@@ -38,17 +36,6 @@ Displays a list element as part of a [List](list.md).
 * [Usage with Mithril](mithril/list-tile.md)
 * [Usage with React](react/list-tile.md)
 
-
-
-<a name="keyboard-control"></a>
-## Keyboard control
-
-Read first: [Turning on keyboard control](../keyboard-control.md)
-
-This works for list tiles that are defined as link (when either option `element` is "a" or `url` is set).
-
-1. Start keyboard control by tabbing to the list tile. It will show a focus state.
-1. Press Enter to simulate a click.
 
 
 <a name="options"></a>
