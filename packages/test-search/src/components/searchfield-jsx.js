@@ -56,15 +56,22 @@ export default class extends Component {
   }
 
   render() {
-    const value = this.state.value;
-    const focus = this.state.focus;
+    // incoming value and focus added for result list example:
+    const value = this.props.value !== undefined ? this.props.value : this.state.value;
+    const focus = this.props.focus || this.state.focus; // keep focus where possible
     return (
       <Search
         textfield={{
-          label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
+          onChange: ({ value, focus }) => (
+            this.setState({ value, focus }),
+            // onChange callback added for result list example:
+            this.props.onChange && this.props.onChange({ value, focus })
+          ),
           value,
-          focus
+          focus,
+          // incoming label and defaultValue added for result list example:
+          label: this.props.label || "Search",
+          defaultValue: this.props.defaultValue
         }}
         buttons={{
           none: {

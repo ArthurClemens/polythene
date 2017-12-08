@@ -8,7 +8,6 @@ Lists are also the base component of [Menus](menu.md).
 
 - [Main features](#main-features)
 - [Usage](#usage)
-- [Keyboard control](#keyboard-control)
 - [Options](#options)
   - [List specific options](#list-specific-options)
   - [List appearance options](#list-appearance-options)
@@ -31,14 +30,8 @@ Lists are also the base component of [Menus](menu.md).
 <a name="usage"></a>
 ## Usage
 
-* [Usage with Mithril](mithril/keyboard-list.md)
-* [Usage with React](react/keyboard-list.md)
-
-
-<a name="keyboard-control"></a>
-## Keyboard control
-
-See [Keyboard List](keyboard-list.md).
+* [Usage with Mithril](mithril/list.md)
+* [Usage with React](react/list.md)
 
 
 <a name="options"></a>

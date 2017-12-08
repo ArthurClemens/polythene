@@ -2,16 +2,281 @@ import { Icon, List, ListTile, Notification, keys, renderer } from 'polythene-mi
 import { ListCSS, ListTileCSS } from 'polythene-css';
 import { Icon as Icon$1, List as List$1, ListTile as ListTile$1, Notification as Notification$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
-// import keyboardState from "./components/keyboard-state";
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	var guid = 0,
+	    HALT = {};
+	function createStream() {
+		function stream() {
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+			return stream._state.value;
+		}
+		initStream(stream);
+
+		if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+		return stream;
+	}
+	function initStream(stream) {
+		stream.constructor = createStream;
+		stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined };
+		stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+		stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+		Object.defineProperties(stream, {
+			end: { get: function get() {
+					if (!stream._state.endStream) {
+						var endStream = createStream();
+						endStream.map(function (value) {
+							if (value === true) unregisterStream(stream), unregisterStream(endStream);
+							return value;
+						});
+						stream._state.endStream = endStream;
+					}
+					return stream._state.endStream;
+				} }
+		});
+	}
+	function updateStream(stream, value) {
+		updateState(stream, value);
+		for (var id in stream._state.deps) {
+			updateDependency(stream._state.deps[id], false);
+		}finalize(stream);
+	}
+	function updateState(stream, value) {
+		stream._state.value = value;
+		stream._state.changed = true;
+		if (stream._state.state !== 2) stream._state.state = 1;
+	}
+	function updateDependency(stream, mustSync) {
+		var state = stream._state,
+		    parents = state.parents;
+		if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+			var value = stream._state.derive();
+			if (value === HALT) return false;
+			updateState(stream, value);
+		}
+	}
+	function finalize(stream) {
+		stream._state.changed = false;
+		for (var id in stream._state.deps) {
+			stream._state.deps[id]._state.changed = false;
+		}
+	}
+
+	function combine(fn, streams) {
+		if (!streams.every(valid)) throw new Error("Ensure that each item passed to m.prop.combine/m.prop.merge is a stream");
+		return initDependency(createStream(), streams, function () {
+			return fn.apply(this, streams.concat([streams.filter(changed)]));
+		});
+	}
+
+	function initDependency(dep, streams, derive) {
+		var state = dep._state;
+		state.derive = derive;
+		state.parents = streams.filter(notEnded);
+
+		registerDependency(dep, state.parents);
+		updateDependency(dep, true);
+
+		return dep;
+	}
+	function registerDependency(stream, parents) {
+		for (var i = 0; i < parents.length; i++) {
+			parents[i]._state.deps[stream._state.id] = stream;
+			registerDependency(stream, parents[i]._state.parents);
+		}
+	}
+	function unregisterStream(stream) {
+		for (var i = 0; i < stream._state.parents.length; i++) {
+			var parent = stream._state.parents[i];
+			delete parent._state.deps[stream._state.id];
+		}
+		for (var id in stream._state.deps) {
+			var dependent = stream._state.deps[id];
+			var index = dependent._state.parents.indexOf(stream);
+			if (index > -1) dependent._state.parents.splice(index, 1);
+		}
+		stream._state.state = 2; //ended
+		stream._state.deps = {};
+	}
+
+	function map(fn) {
+		return combine(function (stream) {
+			return fn(stream());
+		}, [this]);
+	}
+	function ap(stream) {
+		return combine(function (s1, s2) {
+			return s1()(s2());
+		}, [stream, this]);
+	}
+	function valueOf() {
+		return this._state.value;
+	}
+	function toJSON() {
+		return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+	}
+
+	function valid(stream) {
+		return stream._state;
+	}
+	function active(stream) {
+		return stream._state.state === 1;
+	}
+	function changed(stream) {
+		return stream._state.changed;
+	}
+	function notEnded(stream) {
+		return stream._state.state !== 2;
+	}
+
+	function merge(streams) {
+		return combine(function () {
+			return streams.map(function (s) {
+				return s();
+			});
+		}, streams);
+	}
+	createStream["fantasy-land/of"] = createStream;
+	createStream.merge = merge;
+	createStream.combine = combine;
+	createStream.HALT = HALT;
+
+	module["exports"] = createStream;
+});
+
+var stream = stream$2;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var rawData = [{
+  group: "A",
+  cities: ["Amman", "Amsterdam", "Athens"]
+}, {
+  group: "B",
+  cities: ["Bangkok", "Beijing", "Brussels"]
+}, {
+  group: "C",
+  cities: ["Canberra", "Cardiff", "Copenhagen"]
+}];
+
+// Create a flat list of tile rawData
+var tileData = rawData.reduce(function (acc, current) {
+  acc.push({
+    header: true,
+    title: current.group
+  });
+  current.cities.forEach(function (city) {
+    return acc.push({
+      title: city
+    });
+  });
+  return acc;
+}, []);
+
+// Create a list of all valid indices (headers excluded)
+var validIndices = tileData.map(function (item, index) {
+  return item.header ? null : index;
+}).filter(function (item) {
+  return item !== null;
+});
+
+var keyboardState = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile;
+
+
+  ListTileCSS.addStyle(".tests-list-keyboard-list-tile", {
+    color_light_selected_background: "#90caf9"
+  });
+
+  var createTile = function createTile(_ref2) {
+    var title = _ref2.title,
+        header = _ref2.header,
+        selected = _ref2.selected,
+        hoverable = _ref2.hoverable,
+        onSelect = _ref2.onSelect;
+    return h(ListTile$$1, {
+      title: title,
+      key: title,
+      header: header,
+      selected: selected,
+      hoverable: hoverable,
+      className: header ? "" : "tests-list-keyboard-list-tile",
+      events: _defineProperty({}, k.onclick, onSelect)
+    });
+  };
+
+  return {
+    oninit: function oninit(vnode) {
+      var cityIndex = stream();
+
+      var handleKey = function handleKey(e) {
+        var index = cityIndex();
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          var newIndex = Math.min(index + 1, validIndices.length - 1);
+          cityIndex(newIndex);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          var _newIndex = Math.max(0, index - 1);
+          cityIndex(_newIndex);
+        } else if (e.key === "Escape") {
+          cityIndex(-1);
+        }
+      };
+
+      vnode.state = {
+        cityIndex: cityIndex,
+        handleKey: handleKey,
+        redrawOnUpdate: stream.merge([cityIndex]) // for React
+      };
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var higlightIndex = validIndices[state.cityIndex()];
+      return h("div",
+      // The container catches all keyboard events
+      _defineProperty({}, k.onkeydown, state.handleKey), h(List$$1, {
+        borders: true,
+        tiles: tileData.map(function (item, index) {
+          return createTile(_extends({}, item, {
+            selected: index === higlightIndex,
+            hoverable: !item.header,
+            onSelect: item.header ? null : function () {
+              var cityIndex = validIndices.findIndex(function (item) {
+                return item === index;
+              });
+              state.cityIndex(cityIndex);
+            }
+          }));
+        })
+      }));
+    }
+  };
+});
 
 var genericTests = (function (_ref) {
   var List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
       Icon$$1 = _ref.Icon,
-      h = _ref.renderer;
+      h = _ref.renderer,
+      k = _ref.keys;
 
 
-  // const KeyboardState = keyboardState({ h, List, ListTile });
+  var KeyboardState = keyboardState({ h: h, k: k, List: List$$1, ListTile: ListTile$$1 });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -179,12 +444,11 @@ var genericTests = (function (_ref) {
         color: "#fff"
       }
     }
+  }, {
+    name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
+    interactive: true,
+    component: KeyboardState
   },
-  // {
-  //   name: "Keyboard control",
-  //   interactive: true,
-  //   component: KeyboardState
-  // },
 
   // Dark tone
 
@@ -410,14 +674,6 @@ var mithrilTests = function mithrilTests(_ref) {
 
 var testsMithril = [].concat(genericTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys })).concat(mithrilTests({ List: List, Icon: Icon, ListTile: ListTile, Notification: Notification, renderer: renderer, keys: keys }));
 
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
 /*
 object-assign
 (c) Sindre Sorhus
@@ -426,7 +682,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -472,7 +728,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -3954,7 +4210,7 @@ var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
 var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$1 = Object.assign || function (target) {
+var _extends$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -4005,7 +4261,7 @@ var Router = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$1({}, this.context.router, {
+      router: _extends$2({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -4795,7 +5051,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$11 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$2 = Object.assign || function (target) {
+var _extends$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -4846,7 +5102,7 @@ var Route = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$2({}, this.context.router, {
+      router: _extends$3({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -4940,7 +5196,7 @@ Route.childContextTypes = {
 
 var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$3 = Object.assign || function (target) {
+var _extends$4 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -4992,7 +5248,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$3({}, location, {
+  return _extends$4({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -5004,7 +5260,7 @@ var stripBasename = function stripBasename(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$3({}, location, {
+  return _extends$4({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -5097,7 +5353,7 @@ var StaticRouter = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router, _extends$3({}, props, { history: history }));
+    return react.createElement(Router, _extends$4({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -5244,7 +5500,7 @@ var hoistNonReactStatics = function hoistNonReactStatics(targetComponent, source
     return targetComponent;
 };
 
-var _extends$4 = Object.assign || function (target) {
+var _extends$5 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5269,7 +5525,7 @@ var withRouter = function withRouter(Component) {
         remainingProps = _objectWithoutProperties$1(props, ['wrappedComponentRef']);
 
     return react.createElement(Route, { render: function render(routeComponentProps) {
-        return react.createElement(Component, _extends$4({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component, _extends$5({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 
@@ -5713,7 +5969,7 @@ HashRouter.propTypes = {
 
 var _typeof$16 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$5 = Object.assign || function (target) {
+var _extends$6 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5799,7 +6055,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$5({}, props, { onClick: this.handleClick, href: href }));
+    return react.createElement('a', _extends$6({}, props, { onClick: this.handleClick, href: href }));
   };
 
   return Link;
@@ -5826,7 +6082,7 @@ Link.contextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$6 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5874,12 +6130,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$6({
+      return react.createElement(Link, _extends$7({
         to: to,
         className: isActive ? [activeClassName, className].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$6({}, style, activeStyle) : style
+        style: isActive ? _extends$7({}, style, activeStyle) : style
       }, rest));
     }
   });
@@ -5938,15 +6194,6 @@ var reactTests = function reactTests(_ref) {
   };
   var listTileGrace = function listTileGrace(key) {
     return createUserListTile(key, "Grace VanDam", "Binge watching...", "avatar-3");
-  };
-
-  var selectTile = function selectTile(_ref3) {
-    var title = _ref3.title;
-    return { title: title, key: title };
-  };
-  var headerTile = function headerTile(_ref4) {
-    var title = _ref4.title;
-    return { title: title, header: true, key: title };
   };
 
   return [{
@@ -6020,24 +6267,6 @@ var reactTests = function reactTests(_ref) {
         })
       );
     }
-  }, {
-    name: "Keyboard control (JSX) (demo without state)",
-    component: function component() {
-      return react.createElement(List$$1, {
-        keyboardControl: true,
-        highlightIndex: 0,
-        onSelect: function onSelect(data) {
-          return Notification$$1.hide(), Notification$$1.show({
-            title: data.attrs.title,
-            showDuration: .1,
-            hideDuration: .2,
-            timeout: .8
-          });
-        },
-        tiles: [headerTile({ title: "A" }), selectTile({ title: "Amman" }), selectTile({ title: "Amsterdam" }), selectTile({ title: "Athens" }), headerTile({ title: "B" }), selectTile({ title: "Bangkok" }), selectTile({ title: "Beijing" }), selectTile({ title: "Brussels" }), headerTile({ title: "C" }), selectTile({ title: "Canberra" }), selectTile({ title: "Cardiff" }), selectTile({ title: "Copenhagen" })]
-      });
-    }
-
   }];
 };
 

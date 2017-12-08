@@ -128,60 +128,7 @@ If you do choose to use it, add some styles to the container that holds the list
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
 
-* `keyboardControl` enables keyboard control.
-* The list can be navigated using TAB, the arrow keys.
-* List items can be selected with ENTER and clicking.
-* List Tiles with option `header` will be skipped.
-* The current item is highlighted; the initial highlighted item is set with `defaultHighlightIndex`.
-* Callback function `onSelect` allows to interpret the selected item; passed parameters are: 
-  * `event`
-  * `index`
-  * `dom`
-  * `attrs`
-
-**Note:**
-
-* When using stacked lists, the one list does not know the state of the other list. Instead use one single list and set headers with ListTile option `header`.
-* Option `onclick` is ignored because this is internally implemented by List. Use `onSelect` instead.
-
-
-~~~jsx
-import { List, Notification } from "polythene-react"
-
-const selectTile = ({ title }) => (
-  { title }
-);
-const headerTile = ({ title }) => (
-  { title, header: true }
-);
-
-<List
-  keyboardControl
-  highlightIndex={0}
-  onSelect={({ attrs }) => (
-    Notification.show({
-      title: attrs.title,
-      showDuration: .1,
-      hideDuration: .2,
-      timeout: .8
-    })
-  )}
-  tiles={[
-    headerTile({ title: "A"}),
-    selectTile({ title: "Amman" }),
-    selectTile({ title: "Amsterdam" }),
-    selectTile({ title: "Athens" }),
-    headerTile({ title: "B" }),
-    selectTile({ title: "Bangkok" }),
-    selectTile({ title: "Beijing" }),
-    selectTile({ title: "Brussels" }),
-    headerTile({ title: "C" }),
-    selectTile({ title: "Canberra" }),
-    selectTile({ title: "Cardiff" }),
-    selectTile({ title: "Copenhagen" }),
-  ]}
-/>
-~~~
+TO UPDATE
 
 
 

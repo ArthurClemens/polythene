@@ -1,6 +1,6 @@
-import { Button, IconButton, KeyboardList, List, ListTile, Search, Shadow, keys, renderer } from 'polythene-mithril';
+import { Button, IconButton, List, ListTile, Search, Shadow, keys, renderer } from 'polythene-mithril';
 import { ListCSS, ListTileCSS, SearchCSS } from 'polythene-css';
-import { Button as Button$1, IconButton as IconButton$1, KeyboardList as KeyboardList$1, List as List$1, ListTile as ListTile$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Button as Button$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Search as Search$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -357,15 +357,16 @@ var defaultValue = "bl";
 var results = (function (_ref) {
   var h = _ref.h,
       k = _ref.k,
-      KeyboardList$$1 = _ref.KeyboardList,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
       SearchField = _ref.SearchField;
 
 
-  ListCSS.addStyle(".tests-list-keyboard-color-list", {
+  ListCSS.addStyle(".tests-search-keyboard-color-list", {
     color_light_background: "#fff"
   });
-  ListTileCSS.addStyle(".tests-list-keyboard-color-list-tile", {
-    color_light_selected_background: "#80d8ff"
+  ListTileCSS.addStyle(".tests-search-keyboard-color-list-tile", {
+    color_light_selected_background: "#eee"
   });
 
   var colorDot = function colorDot(colorValues) {
@@ -379,54 +380,77 @@ var results = (function (_ref) {
     });
   };
 
-  var colorTile = function colorTile(_ref2) {
+  var createColorTile = function createColorTile(_ref2) {
     var title = _ref2.title,
         key = _ref2.key,
-        colorValues = _ref2.colorValues;
-    return {
+        colorValues = _ref2.colorValues,
+        selected = _ref2.selected;
+    return h(ListTile$$1, {
       title: title,
       key: key,
-      className: "tests-list-keyboard-color-list-tile",
+      className: "tests-search-keyboard-color-list-tile",
       front: colorDot(colorValues),
-      compactFront: true
-    };
+      compactFront: true,
+      selected: selected
+    });
   };
 
   return {
     oninit: function oninit(vnode) {
       var searchValue = stream(defaultValue);
       var selectedValue = stream();
-      var highlightIndex = stream(-1);
+      var matches = stream();
+      var selectedListIndex = stream(-1);
       var hasFocus = stream();
 
-      // Erase when a new value is received:
       searchValue.map(function (v) {
-        return highlightIndex(-1), selectedValue(null);
+        return selectedListIndex(-1), selectedValue(null), matches(v ? dataList.map(function (key) {
+          return key.match(new RegExp("^" + v, "i")) ? key : null;
+        }).filter(function (x) {
+          return x !== null;
+        }) : []);
       });
 
-      // Remove highlight when a selection has been made
-      selectedValue.map(function (v) {
-        return hasFocus(true), highlightIndex(-1);
+      selectedValue.map(function () {
+        return selectedListIndex(-1), hasFocus(true);
       });
+
+      var handleKey = function handleKey(e) {
+        var index = selectedListIndex();
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          var newIndex = index + 1 > matches().length - 1 ? -1 : index + 1;
+          selectedListIndex(newIndex);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          var _newIndex = index - 1 < -1 ? -1 : index - 1;
+          selectedListIndex(_newIndex);
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          selectedValue(matches()[index]);
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          selectedListIndex(-1);
+          hasFocus(true);
+        }
+      };
 
       vnode.state = {
+        handleKey: handleKey,
+        hasFocus: hasFocus,
+        selectedListIndex: selectedListIndex,
+        matches: matches,
         searchValue: searchValue,
         selectedValue: selectedValue,
-        highlightIndex: highlightIndex,
-        hasFocus: hasFocus,
-        redrawOnUpdate: stream.merge([searchValue, highlightIndex, hasFocus]) // for React
+        redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
       };
     },
     view: function view(vnode) {
       var state = vnode.state;
+      var attrs = vnode.attrs;
       var searchValue = state.searchValue();
-      var highlightIndex = state.highlightIndex();
-      var matches = searchValue ? dataList.map(function (key) {
-        return key.match(new RegExp("^" + searchValue, "i")) ? key : null;
-      }).filter(function (v) {
-        return v !== null;
-      }) : [];
-      return [h(SearchField, _extends$1({}, {
+      var matches = state.matches();
+      return h(".container", _defineProperty({}, k.onkeydown, state.handleKey), [h(SearchField, _extends$1({}, {
         key: "search",
         label: "Type color name",
         onChange: function onChange(_ref3) {
@@ -435,36 +459,21 @@ var results = (function (_ref) {
           return state.searchValue(value), state.hasFocus(focus);
         },
         defaultValue: defaultValue,
-        focus: state.hasFocus(),
-        events: _defineProperty({}, k.onkeydown, function (e) {
-          if (e.key === "ArrowDown") {
-            e.preventDefault(); // prevent scrolling the page
-            // Start at the top of the list
-            state.highlightIndex(0);
-          }
-        })
-      }, state.selectedValue() ? { value: state.selectedValue() } : null)), matches.length ? h(KeyboardList$$1, {
+        focus: attrs.focus || state.hasFocus()
+      }, state.selectedValue() ? { value: state.selectedValue() } : null)), matches.length ? h(List$$1, {
         key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
-        className: "tests-list-keyboard-color-list",
+        className: "tests-search-keyboard-color-list",
         borders: true,
-        highlightIndex: highlightIndex,
-        onHighlightExit: function onHighlightExit() {
-          state.highlightIndex(-1);
-          state.hasFocus(true);
-        },
-        onSelect: function onSelect(data) {
-          return state.selectedValue(data.attrs.title);
-        },
-        tiles: matches.map(function (title) {
-          return colorTile({
+        tiles: matches.map(function (title, index) {
+          return createColorTile({
             title: title,
             // Use a unique key to make sure that the list tiles get registered again
-            // This to ensure that the ListTile dom corresponds to the highlightIndex
             key: title + searchValue,
-            colorValues: data[title]
+            colorValues: data[title],
+            selected: index === state.selectedListIndex()
           });
         })
-      }) : null];
+      }) : null]);
     }
   };
 });
@@ -477,7 +486,8 @@ var genericTests = (function (_ref) {
       Search$$1 = _ref.Search,
       SearchField = _ref.SearchField,
       Shadow$$1 = _ref.Shadow,
-      KeyboardList$$1 = _ref.KeyboardList;
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile;
 
 
   SearchCSS.addStyle(".tests-search-themed-search", {
@@ -485,7 +495,7 @@ var genericTests = (function (_ref) {
     color_dark_background: "#43a047"
   });
 
-  var Results = results({ h: h, k: k, KeyboardList: KeyboardList$$1, SearchField: SearchField });
+  var Results = results({ h: h, k: k, List: List$$1, ListTile: ListTile$$1, SearchField: SearchField });
 
   var blockAttrs = function blockAttrs(attrs) {
     return {
@@ -496,6 +506,13 @@ var genericTests = (function (_ref) {
     };
   };
 
+  var Block = {
+    view: function view(_ref2) {
+      var attrs = _ref2.attrs;
+      return h("form", blockAttrs(attrs), h(SearchField, attrs));
+    }
+  };
+
   var ResultsBlock = {
     view: function view(_ref3) {
       var attrs = _ref3.attrs;
@@ -503,57 +520,93 @@ var genericTests = (function (_ref) {
     }
   };
 
-  return [
-  // {
-  //   name: "Option: textfield",
-  //   component: {
-  //     view: () =>
-  //       h(Search, {
-  //         textfield: {
-  //           label: "Search"
-  //         },
-  //         after: h(Shadow)
-  //       })
-  //   }
-  // },
-  // {
-  //   name: "Option: textfield, buttons",
-  //   component: {
-  //     view: () =>
-  //       h(Block)
-  //   }
-  // },
-  // {
-  //   name: "Option: textfield, buttons, fullWidth",
-  //   component: {
-  //     view: () =>
-  //       h(Block, { fullWidth: true })
-  //   }
-  // },
-  // {
-  //   name: "Colored field",
-  //   component: {
-  //     view: () =>
-  //       h(Block, {
-  //         style: { background: "#BBDEFB" }
-  //       })
-  //   }
-  // },
-  // {
-  //   name: "Theme",
-  //   component: {
-  //     view: () =>
-  //       h(Block, {
-  //         className: "tests-search-themed-search",
-  //         tone: "dark"
-  //       })
-  //   }
-  // },
-  {
+  return [{
+    name: "Option: textfield",
+    component: {
+      view: function view() {
+        return h(Search$$1, {
+          textfield: {
+            label: "Search"
+          },
+          after: h(Shadow$$1)
+        });
+      }
+    }
+  }, {
+    name: "Option: textfield, buttons",
+    component: {
+      view: function view() {
+        return h(Block);
+      }
+    }
+  }, {
+    name: "Option: textfield, buttons, fullWidth",
+    component: {
+      view: function view() {
+        return h(Block, { fullWidth: true });
+      }
+    }
+  }, {
+    name: "Colored field",
+    component: {
+      view: function view() {
+        return h(Block, {
+          style: { background: "#BBDEFB" }
+        });
+      }
+    }
+  }, {
+    name: "Theme",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search",
+          tone: "dark"
+        });
+      }
+    }
+  }, {
     name: "With search results",
     component: {
       view: function view() {
         return h(ResultsBlock, {});
+      }
+    }
+  },
+
+  // Dark tone
+
+  {
+    name: "Theme -- dark tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "tests-search-themed-search",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone class",
+    className: "pe-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          className: "pe-light-tone",
+          dark: true
+        });
+      }
+    }
+  }, {
+    name: "Dark tone class + light tone",
+    className: "test-dark-tone",
+    component: {
+      view: function view() {
+        return h(Block, {
+          tone: "light",
+          dark: true
+        });
       }
     }
   }];
@@ -656,12 +709,11 @@ var searchField = (function (_ref) {
       var state = _ref4.state,
           attrs = _ref4.attrs;
 
-      // added for KeyboardList:
+      // incoming value and focus added for result list example:
       var value = attrs.value !== undefined ? attrs.value : state.value();
-      var focus = attrs.focus !== undefined ? attrs.focus : state.focus();
-
+      var focus = attrs.focus || state.focus(); // keep focus where possible
+      //
       return h(Search$$1, _extends$2({}, {
-
         textfield: {
           onChange: function onChange(_ref5) {
             var value = _ref5.value,
@@ -670,10 +722,9 @@ var searchField = (function (_ref) {
           },
           value: value,
           focus: focus,
-          // added for KeyboardList:
+          // incoming label and defaultValue added for result list example:
           label: attrs.label || "Search",
-          defaultValue: attrs.defaultValue,
-          events: attrs.events
+          defaultValue: attrs.defaultValue
         },
         buttons: {
           none: {
@@ -706,7 +757,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, KeyboardList: KeyboardList, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, KeyboardList: KeyboardList, renderer: renderer, keys: keys }));
+var testsMithril = [].concat(genericTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, renderer: renderer, keys: keys })).concat(mithrilTests({ Search: Search, IconButton: IconButton, Button: Button, Shadow: Shadow, SearchField: SearchField, List: List, ListTile: ListTile, renderer: renderer, keys: keys }));
 
 /*
 object-assign
@@ -2572,8 +2623,9 @@ var _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      // incoming value and focus added for result list example:
       var value = this.props.value !== undefined ? this.props.value : this.state.value;
-      var focus = this.props.focus !== undefined ? this.props.focus : this.state.focus;
+      var focus = this.props.focus || this.state.focus; // keep focus where possible
       return renderer$1(Search$1, _extends$4({}, {
         textfield: {
           onChange: function onChange(_ref3) {
@@ -2583,10 +2635,9 @@ var _class = function (_Component) {
           },
           value: value,
           focus: focus,
-          // added for KeyboardList:
+          // incoming label and defaultValue added for result list example:
           label: this.props.label || "Search",
-          defaultValue: this.props.defaultValue,
-          events: this.props.events
+          defaultValue: this.props.defaultValue
         },
         buttons: {
           none: {
@@ -2712,18 +2763,21 @@ var _class$1 = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var value = this.state.value;
-      var focus = this.state.focus;
+      // incoming value and focus added for result list example:
+      var value = this.props.value !== undefined ? this.props.value : this.state.value;
+      var focus = this.props.focus || this.state.focus; // keep focus where possible
       return react.createElement(Search$1, _extends$5({
         textfield: {
-          label: "Search",
           onChange: function onChange(_ref3) {
             var value = _ref3.value,
                 focus = _ref3.focus;
-            return _this2.setState({ value: value, focus: focus });
+            return _this2.setState({ value: value, focus: focus }), _this2.props.onChange && _this2.props.onChange({ value: value, focus: focus });
           },
           value: value,
-          focus: focus
+          focus: focus,
+          // incoming label and defaultValue added for result list example:
+          label: this.props.label || "Search",
+          defaultValue: this.props.defaultValue
         },
         buttons: {
           none: {
@@ -2775,6 +2829,6 @@ var reactTests = function reactTests() {
   }];
 };
 
-var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, KeyboardList: KeyboardList$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, KeyboardList: KeyboardList$1, renderer: renderer$1, keys: keys$1 }));
+var testsReact = [].concat(genericTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ Search: Search$1, IconButton: IconButton$1, Button: Button$1, Shadow: Shadow$1, SearchField: _class, List: List$1, ListTile: ListTile$1, renderer: renderer$1, keys: keys$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

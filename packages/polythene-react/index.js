@@ -8,7 +8,6 @@ export * from "polythene-react-fab";
 export * from "polythene-react-icon";
 export * from "polythene-react-icon-button";
 export * from "polythene-react-ios-spinner";
-export * from "polythene-react-keyboard-list";
 export * from "polythene-react-list";
 export * from "polythene-react-list-tile";
 export * from "polythene-react-material-design-progress-spinner";

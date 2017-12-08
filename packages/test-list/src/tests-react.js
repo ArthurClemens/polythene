@@ -124,38 +124,6 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
             />}
           />
         </List>
-    },
-    {
-      name: "Keyboard control (JSX) (demo without state)",
-      component: () =>
-        <List
-          keyboardControl
-          highlightIndex={0}
-          onSelect={data => (
-            Notification.hide(),
-            Notification.show({
-              title: data.attrs.title,
-              showDuration: .1,
-              hideDuration: .2,
-              timeout: .8
-            })
-          )}
-          tiles={[
-            headerTile({ title: "A"}),
-            selectTile({ title: "Amman" }),
-            selectTile({ title: "Amsterdam" }),
-            selectTile({ title: "Athens" }),
-            headerTile({ title: "B" }),
-            selectTile({ title: "Bangkok" }),
-            selectTile({ title: "Beijing" }),
-            selectTile({ title: "Brussels" }),
-            headerTile({ title: "C" }),
-            selectTile({ title: "Canberra" }),
-            selectTile({ title: "Cardiff" }),
-            selectTile({ title: "Copenhagen" }),
-          ]}
-        />
-        
     }
   ];
     

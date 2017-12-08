@@ -112,3 +112,5 @@ exports[`test Theme 1`] = `
   className="tests-search-themed-search"
   tone="dark" />
 `;
+
+exports[`test With search results 1`] = `<n />`;

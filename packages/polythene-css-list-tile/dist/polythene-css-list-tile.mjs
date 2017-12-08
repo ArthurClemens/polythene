@@ -244,7 +244,7 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(","), {
-    ":not(.pe-list-tile--header):not(.pe-list-tile--disabled)": {
+    ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
       }

@@ -158,122 +158,132 @@ exports[`test Dark tone class + light tone class 1`] = `
 "
 `;
 
-exports[`test Keyboard control 1`] = `
-"<div class=\"pe-list pe-list--borders pe-list--padding\">
-  <div class=\"pe-list-tile pe-list-tile--header\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          A
+exports[`test Keyboard control: click to select, then use the arrow keys (Escape to deselect) 1`] = `
+"<div>
+  <div class=\"pe-list pe-list--borders pe-list--padding\">
+    <div class=\"pe-list-tile pe-list-tile--header\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            A
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=
-  \"pe-list-tile pe-list-tile--highlight tests-list-keyboard-list-tile\"
-  tabindex=\"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Amman
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Amman
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Amsterdam
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Amsterdam
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Athens
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Athens
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--header\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          B
+    <div class=\"pe-list-tile pe-list-tile--header\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            B
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Bangkok
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Bangkok
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Beijing
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Beijing
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Brussels
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Brussels
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile pe-list-tile--header\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          C
+    <div class=\"pe-list-tile pe-list-tile--header\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            C
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Canberra
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Canberra
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Cardiff
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Cardiff
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class=\"pe-list-tile tests-list-keyboard-list-tile\" tabindex=
-  \"0\">
-    <div class=\"pe-list-tile__primary\" style=\"\">
-      <div class=\"pe-list-tile__content\">
-        <div class=\"pe-list-tile__title\">
-          Copenhagen
+    <div class=
+    \"pe-list-tile pe-list-tile--hoverable tests-list-keyboard-list-tile\"
+    tabindex=\"0\">
+      <div class=\"pe-list-tile__primary\" style=\"\">
+        <div class=\"pe-list-tile__content\">
+          <div class=\"pe-list-tile__title\">
+            Copenhagen
+          </div>
         </div>
       </div>
     </div>

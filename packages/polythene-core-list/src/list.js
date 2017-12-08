@@ -54,7 +54,7 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
       }
     )) : null,
     attrs.all
-      ? tiles.map(tileOpts =>
+      ? tiles.map(tileOpts => 
         h(ListTile, Object.assign(
           {},
           attrs.all,

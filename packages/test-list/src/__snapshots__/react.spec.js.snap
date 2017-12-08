@@ -67,135 +67,139 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
-exports[`test Keyboard control (JSX) (demo without state) 1`] = `
-<List
-  highlightIndex={0}
-  keyboardControl={true}
-  onSelect={[Function]}
-  tiles={
-    Array [
-      Object {
-        "header": true,
-        "title": "A",
-      },
-      Object {
-        "title": "Amman",
-      },
-      Object {
-        "title": "Amsterdam",
-      },
-      Object {
-        "title": "Athens",
-      },
-      Object {
-        "header": true,
-        "title": "B",
-      },
-      Object {
-        "title": "Bangkok",
-      },
-      Object {
-        "title": "Beijing",
-      },
-      Object {
-        "title": "Brussels",
-      },
-      Object {
-        "header": true,
-        "title": "C",
-      },
-      Object {
-        "title": "Canberra",
-      },
-      Object {
-        "title": "Cardiff",
-      },
-      Object {
-        "title": "Copenhagen",
-      },
-    ]
-  } />
-`;
-
-exports[`test Keyboard control 1`] = `
-<List
-  borders={true}
-  defaultHighlightIndex={0}
-  keyboardControl={true}
-  onSelect={[Function]}
-  tiles={
-    Array [
-      Object {
-        "header": true,
-        "key": "A",
-        "title": "A",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Amman",
-        "selected": false,
-        "title": "Amman",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Amsterdam",
-        "selected": false,
-        "title": "Amsterdam",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Athens",
-        "selected": false,
-        "title": "Athens",
-      },
-      Object {
-        "header": true,
-        "key": "B",
-        "title": "B",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Bangkok",
-        "selected": false,
-        "title": "Bangkok",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Beijing",
-        "selected": false,
-        "title": "Beijing",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Brussels",
-        "selected": false,
-        "title": "Brussels",
-      },
-      Object {
-        "header": true,
-        "key": "C",
-        "title": "C",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Canberra",
-        "selected": false,
-        "title": "Canberra",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Cardiff",
-        "selected": false,
-        "title": "Cardiff",
-      },
-      Object {
-        "className": "tests-list-keyboard-list-tile",
-        "key": "Copenhagen",
-        "selected": false,
-        "title": "Copenhagen",
-      },
-    ]
-  } />
+exports[`test Keyboard control: click to select, then use the arrow keys (Escape to deselect) 1`] = `
+<div
+  onKeyDown={[Function]}>
+  <List
+    borders={true}
+    tiles={
+      Array [
+        <ListTile
+          className=""
+          events={
+              Object {
+                  "onClick": null,
+                }
+          }
+          header={true}
+          hoverable={false}
+          selected={false}
+          title="A" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Amman" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Amsterdam" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Athens" />,
+        <ListTile
+          className=""
+          events={
+              Object {
+                  "onClick": null,
+                }
+          }
+          header={true}
+          hoverable={false}
+          selected={false}
+          title="B" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Bangkok" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Beijing" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Brussels" />,
+        <ListTile
+          className=""
+          events={
+              Object {
+                  "onClick": null,
+                }
+          }
+          header={true}
+          hoverable={false}
+          selected={false}
+          title="C" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Canberra" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Cardiff" />,
+        <ListTile
+          className="tests-list-keyboard-list-tile"
+          events={
+              Object {
+                  "onClick": [Function],
+                }
+          }
+          hoverable={true}
+          selected={false}
+          title="Copenhagen" />,
+      ]
+    } />
+</div>
 `;
 
 exports[`test No options 1`] = `

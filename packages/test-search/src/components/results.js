@@ -156,13 +156,13 @@ const data = {
 const dataList = Object.keys(data);
 const defaultValue = "bl";
 
-export default ({ h, k, KeyboardList, SearchField }) => {
+export default ({ h, k, List, ListTile, SearchField }) => {
 
-  ListCSS.addStyle(".tests-list-keyboard-color-list", {
+  ListCSS.addStyle(".tests-search-keyboard-color-list", {
     color_light_background: "#fff"
   });
-  ListTileCSS.addStyle(".tests-list-keyboard-color-list-tile", {
-    color_light_selected_background: "#80d8ff"
+  ListTileCSS.addStyle(".tests-search-keyboard-color-list-tile", {
+    color_light_selected_background: "#eee"
   });
 
   const colorDot = colorValues =>
@@ -175,101 +175,117 @@ export default ({ h, k, KeyboardList, SearchField }) => {
       }
     });
 
-  const colorTile = ({ title, key, colorValues }) => (
-    {
+  const createColorTile = ({ title, key, colorValues, selected }) =>
+    h(ListTile, {
       title,
       key,
-      className: "tests-list-keyboard-color-list-tile",
+      className: "tests-search-keyboard-color-list-tile",
       front: colorDot(colorValues),
       compactFront: true,
-    }
-  );
+      selected,
+    });
 
   return {
     oninit: vnode => {
       const searchValue = stream(defaultValue);
       const selectedValue = stream();
-      const highlightIndex = stream(-1);
+      const matches = stream();
+      const selectedListIndex = stream(-1);
       const hasFocus = stream();
 
-      // Erase when a new value is received:
-      searchValue.map(() => (
-        highlightIndex(-1),
-        selectedValue(null)
+      searchValue.map(v => (
+        selectedListIndex(-1),
+        selectedValue(null),
+        matches(v
+          ? dataList
+            .map(key => key.match(new RegExp(`^${v}`, "i")) ? key : null)
+            .filter(x => x !== null)
+          : [])
       ));
 
-      // Remove highlight when a selection has been made
       selectedValue.map(() => (
-        hasFocus(true),
-        highlightIndex(-1)
+        selectedListIndex(-1),
+        hasFocus(true)
       ));
       
+      const handleKey = e => {
+        const index = selectedListIndex();
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          const newIndex = index + 1 > matches().length - 1
+            ? -1
+            : index + 1;
+          selectedListIndex(newIndex);
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          const newIndex = index - 1 < -1
+            ? -1
+            : index - 1;
+          selectedListIndex(newIndex);
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          selectedValue(matches()[index]);
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          selectedListIndex(-1);
+          hasFocus(true);
+        }
+      };
+
       vnode.state = {
+        handleKey,
+        hasFocus,
+        selectedListIndex,
+        matches,
         searchValue,
         selectedValue,
-        highlightIndex,
-        hasFocus,
-        redrawOnUpdate: stream.merge([searchValue, highlightIndex, hasFocus]) // for React
+        redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
       };
     },
     view: vnode => {
       const state = vnode.state;
+      const attrs = vnode.attrs;
       const searchValue = state.searchValue();
-      const highlightIndex = state.highlightIndex();
-      const matches = searchValue
-        ? dataList
-          .map(key => key.match(new RegExp(`^${searchValue}`, "i")) ? key : null)
-          .filter(v => v !== null)
-        : [];
-      return [
-        h(SearchField, Object.assign({},
-          {
-            key: "search",
-            label: "Type color name",
-            onChange: ({ value, focus }) => (
-              state.searchValue(value),
-              state.hasFocus(focus)
-            ),
-            defaultValue,
-            focus: state.hasFocus(),
-            events: {
-              [k.onkeydown]: e => {
-                if (e.key === "ArrowDown") {
-                  e.preventDefault(); // prevent scrolling the page
-                  // Start at the top of the list
-                  state.highlightIndex(0);
-                }
-              }
-            }
-          },
-          state.selectedValue()
-            ? { value: state.selectedValue() }
-            : null
-        )),
-        matches.length
-          ? h(KeyboardList, {
-            key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
-            className: "tests-list-keyboard-color-list",
-            borders: true,
-            highlightIndex,
-            onHighlightExit: () => {
-              state.highlightIndex(-1);
-              state.hasFocus(true);
+      const matches = state.matches();
+      return h(".container",
+        {
+          // The container catches all keyboard events for both search field and result list
+          [k.onkeydown]: state.handleKey
+        },
+        [
+          h(SearchField, Object.assign({},
+            {
+              key: "search",
+              label: "Type color name",
+              onChange: ({ value, focus }) => (
+                state.searchValue(value),
+                state.hasFocus(focus)
+              ),
+              defaultValue,
+              focus: attrs.focus || state.hasFocus(),
             },
-            onSelect: data => 
-              state.selectedValue(data.attrs.title),
-            tiles: matches.map(title => 
-              colorTile({
-                title,
-                // Use a unique key to make sure that the list tiles get registered again
-                // This to ensure that the ListTile dom corresponds to the highlightIndex
-                key: title + searchValue,
-                colorValues: data[title]
-              })
-            )
-          })
-          : null
-      ];
+            state.selectedValue()
+              ? { value: state.selectedValue() }
+              : null
+          )),
+          matches.length
+            ? h(List, {
+              key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
+              className: "tests-search-keyboard-color-list",
+              borders: true,
+              tiles: matches.map((title, index) => 
+                createColorTile({
+                  title,
+                  // Use a unique key to make sure that the list tiles get registered again
+                  key: title + searchValue,
+                  colorValues: data[title],
+                  selected: index === state.selectedListIndex()
+                })
+              )
+            })
+            : null
+        ]
+      );
     }
   };
 };

@@ -74,27 +74,25 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       };
     },
     view: ({ state, attrs }) => {
-      // added for KeyboardList:
+      // incoming value and focus added for result list example:
       const value = attrs.value !== undefined ? attrs.value : state.value();
-      const focus = attrs.focus !== undefined ? attrs.focus : state.focus();
-
+      const focus = attrs.focus || state.focus(); // keep focus where possible
+      //
       return h(Search, Object.assign(
         {},
         {
-
           textfield: {
             onChange: ({ value, focus }) => (
               state.value(value),
               state.focus(focus),
-              // added for KeyboardList:
+              // onChange callback added for result list example:
               attrs.onChange && attrs.onChange({ value, focus })
             ),
             value,
             focus,
-            // added for KeyboardList:
+            // incoming label and defaultValue added for result list example:
             label: attrs.label || "Search",
             defaultValue: attrs.defaultValue,
-            events: attrs.events
           },
           buttons: {
             none: {

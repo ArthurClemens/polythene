@@ -1,10 +1,10 @@
 import { ListCSS, ListTileCSS } from "polythene-css";
 
-// import keyboardState from "./components/keyboard-state";
+import keyboardState from "./components/keyboard-state";
 
-export default ({ List, ListTile, Icon, renderer: h }) => {
+export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
 
-  // const KeyboardState = keyboardState({ h, List, ListTile });
+  const KeyboardState = keyboardState({ h, k, List, ListTile });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -208,11 +208,11 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
         }
       }
     },
-    // {
-    //   name: "Keyboard control",
-    //   interactive: true,
-    //   component: KeyboardState
-    // },
+    {
+      name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
+      interactive: true,
+      component: KeyboardState
+    },
 
     // Dark tone
 

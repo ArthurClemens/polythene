@@ -43,10 +43,8 @@
   * [Slider](components/slider.md)
   * [Switch](components/switch.md)
   * [Text Field](components/textfield.md)
-* Lists
-  * [List](components/list.md)
-  * [Keyboard List](components/keyboard-list.md)
-  * [List Tile](components/list-tile.md)
+* [List](components/list.md)
+* [List Tile](components/list-tile.md)
 * [Menu](components/menu.md)
 * [Notifications](components/notifications.md)
   * [Notification](components/notification.md)
