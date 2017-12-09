@@ -80,7 +80,7 @@ For `MaterialDesignProgressSpinner`:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **percentage** | optional | Number (0..1) or Function | | (Determinate spinner) Sets the progress percentage value |
+| **percentage** | optional | Number (0..1) or Function `() -> Number` | | (Determinate spinner) Sets the progress percentage value |
 | **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
 | **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
 

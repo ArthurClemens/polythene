@@ -47,7 +47,7 @@ Options:
  * `to`: (Number) Position in pixels
  * `duration`: (Number) Scroll animation duration in seconds
  * `direction`: (String) "vertical" or "horizontal"
- * `easing`: (Function) Easing function (default: `easing.easeInOutCubic`)
+ * `easing`: (Function) Name of easing function (default: `easing.easeInOutCubic`)
 
 Example:
 

@@ -54,8 +54,8 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **label**     | optional | String | | Text label |
 | **defaultChecked** | optional | Boolean | false | Initially checked state |
 | **checked**   | optional | Boolean | false | Managed checked state (see: [Handling state](../handling-state.md)) |
-| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
-| **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the checkbox state; function that accepts the field checked value (Boolean) |
+| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
+| **selectable** | optional | Function `(selected::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **value**     | optional | String |  | Input element value |
 | **disabled**  | optional | Boolean |  | Set to true to disable the Checkbox |
 

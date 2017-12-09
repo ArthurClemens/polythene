@@ -79,8 +79,8 @@ Displays a single dialog, or a stack of dialogs.
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
 | **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the dialog is dismissed, for instance by tapping outside of the dialog (when not a modal) |
-| **didShow**      | optional | Function |  | Callback function that is called when the show transition is done; receives param `id` |
-| **didHide**      | optional | Function |  | Callback function that is called when the hide transition is done; receives param `id` |
+| **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
+| **didHide**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
 
 <a name="spawn-options"></a>
 ### Spawn options
@@ -93,12 +93,12 @@ Displays a single dialog, or a stack of dialogs.
 <a name="dialogpane-options"></a>
 ### DialogPane options
 
-| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
-| ---------------- | -------------- | -------- | ----------- | --------------- |
-| **header**       | optional | String, hyperscript or component | | Header row |
-| **title**        | optional | String                           |  | Header title |
-| **body**         | optional | String, hyperscript or component | | Body section |
-| **footer**       | optional | String, hyperscript or component | | Footer row |
+| **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
+| ----------------- | -------------- | -------- | ----------- | --------------- |
+| **header**        | optional | String, hyperscript or component | | Header row |
+| **title**         | optional | String                           |  | Header title |
+| **body**          | optional | String, hyperscript or component | | Body section |
+| **footer**        | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
 
 <a name="common-component-options"></a>
@@ -107,7 +107,7 @@ Displays a single dialog, or a stack of dialogs.
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "form"      | HTML element tag |
-| **className**     | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
 | **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
 | **id**        | optional       | String   |             | HTML element id |
 | **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |

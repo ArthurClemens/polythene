@@ -70,8 +70,8 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay** | optional | Number | 0 | The show delay duration in milliseconds |
 | **hideDelay** | optional | Number | 0 | The hide delay duration in milliseconds; no delay is used when the menu is dismissed, for instance by tapping outside of the menu |
-| **didShow** | optional | Function |  | Callback function that is called when the show transition is done; receives param `id` |
-| **didHide** | optional | Function |  | Callback function that is called when the hide transition is done; receives param `id` |
+| **didShow** | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
+| **didHide** | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
 
 <a name="common-component-options"></a>
 ### Common component options

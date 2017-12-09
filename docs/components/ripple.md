@@ -63,7 +63,7 @@ Adds a touch ripple effect to an element.
 | **endOpacity**              | optional | Number | 0.0 | Opacity at the end of the ripple animation |
 | **startScale**              | optional | Number | 0.1 | Scale at the start of the ripple animation |
 | **endScale**                | optional | Number | 2.0 | Scale at the end of the ripple animation |
-| **animationTimingFunction** | optional | String | "ease-out" | Animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)" |
+| **animationTimingFunction** | optional | String | "ease-out" | Name of animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)" |
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation to make a persistent color fill |
 | **target**                  | optional | HTML Element | the ripple's parent node element | The target defines which element responds to tap |
@@ -83,10 +83,10 @@ Adds a touch ripple effect to an element.
 <a name="callback-functions"></a>
 ## Callback functions
 
-| **Function**     |  **Types**              |
-| ---------------- | ----------------------- |
-| **start(Event)** | Event :: MouseEvent     |
-| **end(Event)**   | Event :: AnimationEvent |
+| **Function**     |  **Types**               |
+| ---------------- | ------------------------ |
+| **start** | `(MouseEvent) -> undefined`     |
+| **end**   | `(AnimationEvent) -> undefined` |
 
 
 <a name="css-classes"></a>

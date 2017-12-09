@@ -230,7 +230,7 @@ There are 2 ways to validate a field:
 
 #### Checking the field value with callback function "validate"
 
-Option `validate` is a function that accepts the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
+Option `validate` is a function that receives the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
 
 ##### With JSX
 

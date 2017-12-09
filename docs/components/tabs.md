@@ -49,7 +49,7 @@ Displays a tab row of navigation buttons.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **tabs**   | use `content` or `tabs` | Array of option objects | | Button row content |
 | **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
-| **onChange**  | optional       | Function(state {Object}) | | Callback function that accepts the tabs state (Object with properties `index` {Boolean}, `options` {Object}, `el` {HTMLElement}) |
+| **onChange**  | optional       | Function `({index::Number, options::Object, el::HTMLElement}) -> undefined` | | Callback function that receives the tabs state |
 
 <a name="tabs-appearance-options"></a>
 ### Tabs appearance options
