@@ -57,7 +57,7 @@ export default class extends Component {
 
   render() {
     // incoming value and focus added for result list example:
-    const value = this.props.value !== undefined ? this.props.value : this.state.value;
+    const value = this.props.value !== null ? this.props.value : this.state.value;
     const focus = this.props.focus || this.state.focus; // keep focus where possible
     return (
       <Search

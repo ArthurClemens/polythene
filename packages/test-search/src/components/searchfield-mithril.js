@@ -77,7 +77,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       // incoming value and focus added for result list example:
       const value = attrs.value !== undefined ? attrs.value : state.value();
       const focus = attrs.focus || state.focus(); // keep focus where possible
-      //
+      
       return h(Search, Object.assign(
         {},
         {

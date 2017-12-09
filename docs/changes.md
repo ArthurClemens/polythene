@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
 - [Pre release](#pre-release)
+  - [1.0.0-rc.10](#100-rc10)
   - [1.0.0-rc.9](#100-rc9)
   - [1.0.0-rc.8](#100-rc8)
   - [1.0.0-rc.7](#100-rc7)
@@ -15,6 +16,21 @@
 
 <a name="pre-release"></a>
 ## Pre release
+
+<a name="100-rc10"></a>
+### 1.0.0-rc.10
+
+
+Changes to components:
+
+* List: removed keyboard control in favor of (more flexible) example code; see:
+  * Mithril
+    * [List](components/mithril/list.md#keyboard-control)
+    * [Search](components/mithril/search.md#result-list)
+  * React
+    * [List](components/react/list.md#keyboard-control)
+    * [Search](components/react/search.md#result-list)
+
 
 <a name="100-rc9"></a>
 ### 1.0.0-rc.9

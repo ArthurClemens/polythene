@@ -56,13 +56,14 @@ Displays a list element as part of a [List](list.md).
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **header**    | optional       | Boolean  | false       | Set to `true` to make this a header tile |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
-| **selected** | optional | Boolean | false | Set to `true` to show a selected state; adds class "selected" |
-| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state; adds class "disabled" |
+| **selected** | optional | Boolean | false | Set to `true` to show a selected state |
+| **highlight** | optional | Boolean | false | Set to `true` to show a highlight state; a selected state always has precedence over a highlight state |
+| **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state |
 | **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [Ripple](ripple.md) options to define ripple behavior |
 | **hoverable** | optional | Boolean | false | Set to true to show a hover effect (non-touch devices) |
 | **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
-| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [List](list.md) component as `header.sticky`; [does not work in IE/Edge](http://caniuse.com/#feat=css-sticky); adds class `pe-list-tile--sticky` |
+| **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [List](list.md) component as `header.sticky`; [does not work in IE/Edge](http://caniuse.com/#feat=css-sticky) |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 
 <a name="list-tile-primary-content-options"></a>

@@ -3,7 +3,7 @@ import { keys, renderer, List, Icon, ListTile, Notification } from "polythene-re
 import genericTests from "./tests-generic";
 import { withRouter } from "react-router-dom";
 
-const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
+const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
 
   const createUserListTile = (key, title, subtitle, filename) =>
     h(withRouter(({ history }) => 
@@ -25,9 +25,6 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
   const listTileJennifer = key => createUserListTile(key, "Jennifer Barker", "Starting post doc", "avatar-1");
   const listTileAli = key => createUserListTile(key, "Ali Connors", "Brunch this weekend?", "avatar-2");
   const listTileGrace = key => createUserListTile(key, "Grace VanDam", "Binge watching...", "avatar-3");
-
-  const selectTile = ({ title }) => ({ title, key: title });
-  const headerTile = ({ title }) => ({ title, header: true, key: title });
 
   return [
     {

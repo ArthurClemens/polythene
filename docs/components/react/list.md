@@ -128,7 +128,75 @@ If you do choose to use it, add some styles to the container that holds the list
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
 
-TO UPDATE
+Visually, tiles can be visually marked using List's `hoverable` and [List Tile's](../list-tile.md) `highlight` and `selected`.
+
+To give a list keyboard control, it must first receive focus, either with a click or from a parent element that has focus. List Tile elements can receive focus because they have attribute `tabindex=0` by default.
+
+To keep track of the selected element, wrap the list in a stateful component. The component will also handle key input.
+
+In this example we are creating a list that accepts a click to create the first selection, then accepts arrow keys to move the selection up and down, and the Escape key to remove the selection.
+
+A more elaborate example is given in [Search - Results list](search.md#result-list).
+
+<a href="https://jsfiddle.net/ArthurClemens/hv8kcfs1/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+#### With JSX
+
+~~~jsx
+import React from "react"
+import { List, ListTile } from "polythene-react"
+
+const listData = ["A", "B", "C", "D", "E"]
+
+class KeyboardList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedIndex: -1
+    }
+    this.handleKey = this.handleKey.bind(this)
+  }
+  
+  handleKey(e) {
+    const index = this.state.selectedIndex
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      const newIndex = Math.min(index + 1, listData.length - 1)
+      this.setState({ selectedIndex: newIndex })
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault()
+      const newIndex = Math.max(0, index - 1)
+      this.setState({ selectedIndex: newIndex })
+    } else if (e.key === "Escape") {
+      this.setState({ selectedIndex: -1 })
+    }
+  }
+  
+  render() {
+    const selectedIndex = this.state.selectedIndex
+    return (
+      <div onKeyDown={this.handleKey}>
+        <List
+          borders
+          tiles={listData.map((title, index) =>
+            <ListTile
+              title={title}
+              key={title}
+              hoverable
+              selected={index === selectedIndex}
+              className="themed-list-tile"
+              events={{
+                onClick: () => this.setState({ selectedIndex: index })
+              }}
+            />
+          )}
+        />
+      </div>
+    )
+  }
+}
+~~~
 
 
 

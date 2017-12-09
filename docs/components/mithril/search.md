@@ -10,6 +10,7 @@
   - [Icons and buttons](#icons-and-buttons)
   - [Logic: storing and clearing the value](#logic-storing-and-clearing-the-value)
   - [Complete example](#complete-example)
+  - [Result list](#result-list)
 - [Appearance](#appearance)
   - [Shadow](#shadow)
   - [Styling](#styling)
@@ -234,6 +235,42 @@ const MySearch = {
   }
 }
 ~~~
+
+<a name="result-list"></a>
+### Result list
+
+A search field is almost always combined with a list of search results.
+
+This can be created by combining both search field and result list in a stateful wrapper component, where the wrapper keeps track of the current search string and generates corresponding results.
+
+To add keyboard control - allowing to move from the search field into the results list and back - can be done by reusing the [keyboard list example](list.md#keyboard-control).
+
+The basic setup is:
+
+~~~javascript
+{
+  oninit: vnode => {
+    // ... logic
+  },
+  view: ({ state, attrs }) => {
+    return m(".container",
+      {
+        // The container catches all keyboard events for both search field and result list
+        onkeydown: state.handleKey
+      },
+      [
+        m(SearchField),
+        m(ResultList)
+      ]
+    )
+  }
+}
+~~~
+
+An elaborate example is available as fiddle:
+
+<a href="https://jsfiddle.net/ArthurClemens/wf63ftfj/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 
 
 <a name="appearance"></a>
