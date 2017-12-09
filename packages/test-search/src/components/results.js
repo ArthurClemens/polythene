@@ -175,7 +175,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
       }
     });
 
-  const createColorTile = ({ title, key, colorValues, selected }) =>
+  const createColorTile = ({ title, key, colorValues, selected, onSelect }) =>
     h(ListTile, {
       title,
       key,
@@ -183,6 +183,10 @@ export default ({ h, k, List, ListTile, SearchField }) => {
       front: colorDot(colorValues),
       compactFront: true,
       selected,
+      hoverable: true,
+      events: {
+        [k.onclick]: onSelect
+      }
     });
 
   return {
@@ -279,7 +283,8 @@ export default ({ h, k, List, ListTile, SearchField }) => {
                   // Use a unique key to make sure that the list tiles get registered again
                   key: title + searchValue,
                   colorValues: data[title],
-                  selected: index === state.selectedListIndex()
+                  selected: index === state.selectedListIndex(),
+                  onSelect: () => state.selectedValue(title)
                 })
               )
             })

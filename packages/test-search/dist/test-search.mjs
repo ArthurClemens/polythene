@@ -384,14 +384,17 @@ var results = (function (_ref) {
     var title = _ref2.title,
         key = _ref2.key,
         colorValues = _ref2.colorValues,
-        selected = _ref2.selected;
+        selected = _ref2.selected,
+        onSelect = _ref2.onSelect;
     return h(ListTile$$1, {
       title: title,
       key: key,
       className: "tests-search-keyboard-color-list-tile",
       front: colorDot(colorValues),
       compactFront: true,
-      selected: selected
+      selected: selected,
+      hoverable: true,
+      events: _defineProperty({}, k.onclick, onSelect)
     });
   };
 
@@ -470,7 +473,10 @@ var results = (function (_ref) {
             // Use a unique key to make sure that the list tiles get registered again
             key: title + searchValue,
             colorValues: data[title],
-            selected: index === state.selectedListIndex()
+            selected: index === state.selectedListIndex(),
+            onSelect: function onSelect() {
+              return state.selectedValue(title);
+            }
           });
         })
       }) : null]);
