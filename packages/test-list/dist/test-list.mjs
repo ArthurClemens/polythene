@@ -6161,7 +6161,6 @@ var reactTests = function reactTests(_ref) {
   var List$$1 = _ref.List,
       Icon$$1 = _ref.Icon,
       ListTile$$1 = _ref.ListTile,
-      Notification$$1 = _ref.Notification,
       h = _ref.renderer;
 
 

@@ -718,7 +718,7 @@ var searchField = (function (_ref) {
       // incoming value and focus added for result list example:
       var value = attrs.value !== undefined ? attrs.value : state.value();
       var focus = attrs.focus || state.focus(); // keep focus where possible
-      //
+
       return h(Search$$1, _extends$2({}, {
         textfield: {
           onChange: function onChange(_ref5) {
@@ -2770,7 +2770,7 @@ var _class$1 = function (_Component) {
       var _this2 = this;
 
       // incoming value and focus added for result list example:
-      var value = this.props.value !== undefined ? this.props.value : this.state.value;
+      var value = this.props.value !== null ? this.props.value : this.state.value;
       var focus = this.props.focus || this.state.focus; // keep focus where possible
       return react.createElement(Search$1, _extends$5({
         textfield: {
