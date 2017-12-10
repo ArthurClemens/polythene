@@ -2452,9 +2452,11 @@ var ColorSlider = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ColorSlider.__proto__ || Object.getPrototypeOf(ColorSlider)).call(this, props));
 
     _this.state = {
-      value: _this.props.defaultValue || 0
+      value: _this.props.defaultValue || 0,
+      inputValue: (_this.props.defaultValue || 0).toString()
     };
-    _this.update = _this.update.bind(_this);
+    _this.updateValue = _this.updateValue.bind(_this);
+    _this.updateInputValue = _this.updateInputValue.bind(_this);
     return _this;
   }
 
@@ -2469,26 +2471,49 @@ var ColorSlider = function (_Component) {
       this._mounted = false;
     }
   }, {
-    key: "update",
-    value: function update(_ref) {
+    key: "updateValue",
+    value: function updateValue(_ref) {
+      var _this2 = this;
+
       var value = _ref.value;
 
-      if (this._mounted) {
-        this.setState({ value: value });
-        this.props.onChange({ value: value });
-      }
+      this.setState({
+        value: value,
+        inputValue: value.toString()
+      }, function () {
+        return setTimeout(function () {
+          return _this2.props.onChange({ value: value });
+        }, 0);
+      });
+    }
+  }, {
+    key: "updateInputValue",
+    value: function updateInputValue(_ref2) {
+      var _this3 = this;
+
+      var inputValue = _ref2.inputValue;
+
+      var value = inputValue !== "" ? Math.min(255, parseInt(inputValue, 10) || 0) : 0;
+      this.setState({
+        value: value,
+        inputValue: inputValue
+      }, function () {
+        return setTimeout(function () {
+          return _this3.props.onChange({ value: value });
+        }, 0);
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this4 = this;
 
       var value = this.state.value;
       return react.createElement(Slider$1, {
         min: 0,
         max: 255,
         value: value,
-        onChange: this.update,
+        onChange: this.updateValue,
         before: react.createElement(
           "div",
           { className: ".pe-slider__label" },
@@ -2497,10 +2522,10 @@ var ColorSlider = function (_Component) {
         after: react.createElement(TextField$1, {
           type: "number",
           hideSpinner: true,
-          value: value,
-          onChange: function onChange(_ref2) {
-            var value = _ref2.value;
-            return _this2.setState({ value: value });
+          value: this.state.inputValue,
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value;
+            return _this4.updateInputValue({ inputValue: value });
           },
           maxLength: 3,
           min: 0,
@@ -2520,15 +2545,15 @@ var RGBSlider = function (_Component2) {
   function RGBSlider(props) {
     _classCallCheck(this, RGBSlider);
 
-    var _this3 = _possibleConstructorReturn(this, (RGBSlider.__proto__ || Object.getPrototypeOf(RGBSlider)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (RGBSlider.__proto__ || Object.getPrototypeOf(RGBSlider)).call(this, props));
 
-    _this3.state = {
+    _this5.state = {
       red: 127,
       green: 127,
       blue: 127
     };
-    _this3.update = _this3.update.bind(_this3);
-    return _this3;
+    _this5.update = _this5.update.bind(_this5);
+    return _this5;
   }
 
   _createClass(RGBSlider, [{
@@ -2543,9 +2568,9 @@ var RGBSlider = function (_Component2) {
     }
   }, {
     key: "update",
-    value: function update(_ref3) {
-      var key = _ref3.key,
-          value = _ref3.value;
+    value: function update(_ref4) {
+      var key = _ref4.key,
+          value = _ref4.value;
 
       if (this._mounted) {
         this.setState(_defineProperty$1({}, key, value));
@@ -2554,35 +2579,22 @@ var RGBSlider = function (_Component2) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this6 = this;
 
       return react.createElement(
         "div",
         { className: "rgb-slider" },
         react.createElement("div", { className: "result", style: { backgroundColor: "rgb(" + this.state.red + "," + this.state.green + "," + this.state.blue + ")" } }),
-        react.createElement(ColorSlider, {
-          defaultValue: this.state.red,
-          onChange: function onChange(_ref4) {
-            var value = _ref4.value;
-            return _this4.update({ key: "red", value: value });
-          },
-          label: "R"
-        }),
-        react.createElement(ColorSlider, {
-          defaultValue: this.state.green,
-          onChange: function onChange(_ref5) {
-            var value = _ref5.value;
-            return _this4.update({ key: "green", value: value });
-          },
-          label: "G"
-        }),
-        react.createElement(ColorSlider, {
-          defaultValue: this.state.blue,
-          onChange: function onChange(_ref6) {
-            var value = _ref6.value;
-            return _this4.update({ key: "blue", value: value });
-          },
-          label: "B"
+        ["red", "green", "blue"].map(function (color) {
+          return react.createElement(ColorSlider, {
+            key: color,
+            defaultValue: _this6.state[color],
+            onChange: function onChange(_ref5) {
+              var value = _ref5.value;
+              return _this6.update({ key: color, value: value });
+            },
+            label: color.substring(0, 1).toUpperCase()
+          });
         })
       );
     }
