@@ -3,7 +3,7 @@ export default selector => [{
   [selector]: {
     lineHeight: 1,
 
-    " svg": {
+    " > div, svg": {
       width: "inherit",
       height: "inherit"
     }

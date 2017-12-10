@@ -16,7 +16,8 @@
 }
 
 .pe-notification__holder.pe-multiple--screen {
-  position: fixed
+  position: fixed;
+  justify-content: flex-start
 }
 
 :not(.pe-notification--container) .pe-multiple--container {
@@ -36,7 +37,8 @@
   padding: 0 16px;
   margin: 0 auto;
   border-radius: 2px;
-  pointer-events: all
+  pointer-events: all;
+  align-content: center
 }
 
 .pe-notification .pe-notification__content {
@@ -66,7 +68,8 @@
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  flex-basis: 0.000000001px
+  flex-basis: 0.000000001px;
+  align-self: center
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__title--multi-line {

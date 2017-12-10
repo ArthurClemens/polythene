@@ -45,7 +45,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * [Developing](docs/developing.md)
 * [Migrating from 0.2](docs/migrating-from-02.md)
 * [Change log](docs/changes.md)
-
+* [Known issues](docs/known-issues.md)
 
 ## Compatibility
 
@@ -58,8 +58,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * Chrome: 54+
 * Edge: 13+
 * Firefox: 49+
-* Internet Explorer: 11
-  * When using React, IE 11 needs a Promise polyfill. Example: `<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise" type="text/javascript" />`
+* Internet Explorer: 11 - see [Known issues](docs/known-issues.md)
 * Mobile Safari: 9+
 * Safari: 9+
 

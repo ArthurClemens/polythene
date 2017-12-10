@@ -21,6 +21,10 @@
   padding: 0
 }
 
+.pe-dialog.pe-dialog--full-screen .pe-dialog__content {
+  width: 100%
+}
+
 .pe-dialog .pe-dialog__content {
   position: relative;
   border-radius: 2px

@@ -52,6 +52,16 @@ var genericTests = (function (_ref) {
       title: "A one line message"
     })
   }, {
+    name: "Option: title (1 line) (IE 11 height fix)",
+    interactive: true,
+    exclude: true,
+    component: buttonGroup({
+      title: "A one line message",
+      style: {
+        height: "80px"
+      }
+    })
+  }, {
     name: "Option: title (2 lines)",
     interactive: true,
     exclude: true,

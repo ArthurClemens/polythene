@@ -63,53 +63,77 @@ const customSize = (componentVars, size) => {
 };
 
 export default (selector, componentVars) =>
-  selectionControlLayout(selector, componentVars, "checkbox").concat(
-    [{
-      [selector]: {
-        " .pe-switch-control__track": [
-          transition(componentVars, "background, opacity"),
-          {
-            position: "absolute",
-            left: 0
-          }
-        ],
-
-        " .pe-switch-control__thumb": [
-          transition(componentVars, "left, color"),
-          {
-            position: "absolute",
-            zIndex: 1, // Prevents flickering of text label when toggling
-            color: "inherit",
-
-            ":focus": {
-              outline: 0
+  selectionControlLayout(selector, componentVars, "checkbox")
+    .concat(
+      [{
+        [selector]: {
+          " .pe-switch-control__track": [
+            transition(componentVars, "background, opacity"),
+            {
+              position: "absolute",
+              left: 0
             }
-          }
-        ],
+          ],
 
-        " .pe-switch-control__knob": {
-          position: "relative",
-          borderRadius: "50%"
-        },
+          " .pe-switch-control__thumb": [
+            transition(componentVars, "left, color"),
+            {
+              position: "absolute",
+              zIndex: 1, // Prevents flickering of text label when toggling
+              color: "inherit",
 
-        " .pe-button__content .pe-switch-control__knob .pe-icon": [
-          mixin.fit(),
-          transition(componentVars, "color"),
-          {
+              ":focus": {
+                outline: 0
+              }
+            }
+          ],
+
+          " .pe-switch-control__knob": {
+            position: "relative",
+            borderRadius: "50%"
+          },
+
+          " .pe-button__content .pe-switch-control__knob .pe-icon": [
+            mixin.fit(),
+            transition(componentVars, "color"),
+            {
+              width: "100%",
+              height: "100%"
+            }
+          ],
+
+          " .pe-button__focus": [
+            transition(componentVars, "all")
+          ],
+
+          ".pe-control--small":   customSize(componentVars, vars.unit_icon_size_small),
+          ".pe-control--regular": customSize(componentVars, vars.unit_icon_size),
+          ".pe-control--medium":  customSize(componentVars, vars.unit_icon_size_medium),
+          ".pe-control--large":   customSize(componentVars, vars.unit_icon_size_large)
+        }
+      },
+      {
+        // For IE 11, to catch mouse events place checkbox element on top stretching to all sides
+        [`_:-ms-fullscreen, :root ${selector}`]: {
+          " input": {
+            position: "absolute",
+            zIndex: 1,
             width: "100%",
-            height: "100%"
+            height: "100%",
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            display: "block",
+            opacity: 0,
+            cursor: "pointer"
+          },
+          " label": {
+            cursor: "auto"
           }
-        ],
+        }
+      }]
+    );
 
-        " .pe-button__focus": [
-          transition(componentVars, "all")
-        ],
-
-        ".pe-control--small":   customSize(componentVars, vars.unit_icon_size_small),
-        ".pe-control--regular": customSize(componentVars, vars.unit_icon_size),
-        ".pe-control--medium":  customSize(componentVars, vars.unit_icon_size_medium),
-        ".pe-control--large":   customSize(componentVars, vars.unit_icon_size_large)
-      }
-    }]
-  );
+    
 

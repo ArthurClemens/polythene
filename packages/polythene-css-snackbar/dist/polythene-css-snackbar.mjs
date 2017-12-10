@@ -88,7 +88,8 @@ var holderLayout = (function (selector) {
     bottom: 0,
     left: 0,
     zIndex: vars$1.z_notification,
-    pointerEvents: "none"
+    pointerEvents: "none",
+    justifyContent: "flex-start" // For IE 11
   }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
     position: "relative"
   }), _ref)];

@@ -22,7 +22,7 @@ var createProps = function createProps(vnode) {
   return _extends({}, attrs, {
     selectable: attrs.selectable || function () {
       return true;
-    }, // default: always selectable, regardless the checked state
+    }, // default: always selectable, regardless of the checked state
     instanceClass: classes.component,
     type: "checkbox"
   });
@@ -49,6 +49,7 @@ var createContent = function createContent(vnode, _ref) {
   var zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
   var z = attrs.checked ? zOn : zOff;
   var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
+
   return [h("div", {
     className: classes.track,
     key: "track"

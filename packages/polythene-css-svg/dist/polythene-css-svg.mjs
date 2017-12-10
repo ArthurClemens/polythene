@@ -11,7 +11,7 @@ var layout = (function (selector) {
   return [_defineProperty({}, selector, {
     lineHeight: 1,
 
-    " svg": {
+    " > div, svg": {
       width: "inherit",
       height: "inherit"
     }

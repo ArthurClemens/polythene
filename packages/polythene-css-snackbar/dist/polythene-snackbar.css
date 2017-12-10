@@ -13,7 +13,8 @@
   bottom: 0;
   left: 0;
   z-index: 4000;
-  pointer-events: none
+  pointer-events: none;
+  justify-content: flex-start
 }
 
 .pe-notification--container .pe-snackbar__holder {

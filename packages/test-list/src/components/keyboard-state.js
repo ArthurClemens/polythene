@@ -109,7 +109,7 @@ export default ({ h, k, List, ListTile }) => {
               onSelect: item.header
                 ? null
                 : () => {
-                  const cityIndex = validIndices.findIndex(item => item === index);
+                  const cityIndex = validIndices.indexOf(index);
                   state.cityIndex(cityIndex);
                 }
             }

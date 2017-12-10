@@ -17,6 +17,10 @@ export default (selector, componentVars) => [{
       ".pe-dialog--full-screen": {
         padding: 0,
 
+        " .pe-dialog__content": {
+          width: "100%", // for IE 11
+        }
+
         // dialog-content styles: see dialog pane
       },
 

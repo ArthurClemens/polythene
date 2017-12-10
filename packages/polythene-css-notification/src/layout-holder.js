@@ -14,6 +14,7 @@ export default (selector) => [{
 
       ".pe-multiple--screen": {
         position: "fixed",
+        justifyContent: "flex-start", // For IE 11
       }
     }
   ],

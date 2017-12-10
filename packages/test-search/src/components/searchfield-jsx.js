@@ -71,7 +71,7 @@ export default class extends Component {
           focus,
           // incoming label and defaultValue added for result list example:
           label: this.props.label || "Search",
-          defaultValue: this.props.defaultValue
+          defaultValue: this.props.defaultValue,
         }}
         buttons={{
           none: {

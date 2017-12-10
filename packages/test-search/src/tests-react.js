@@ -26,7 +26,7 @@ const reactTests = () => {
     {
       name: "Theme (JSX)",
       component: () =>
-        <SearchFieldJSX className="tests-search-themed-search" />
+        <SearchFieldJSX className="tests-search-themed-search" tone="dark" />
     },
   ];
     

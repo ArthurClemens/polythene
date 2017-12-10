@@ -30,6 +30,7 @@ var layout = (function (selector, componentVars) {
     margin: "0 auto",
     borderRadius: componentVars.border_radius + "px",
     pointerEvents: "all",
+    alignContent: "center",
 
     " .pe-notification__content": {
       width: "100%"
@@ -49,7 +50,9 @@ var layout = (function (selector, componentVars) {
 
     "&.pe-notification--horizontal": {
       " .pe-notification__content": flex.layoutHorizontal,
-      " .pe-notification__title": flex.flex(),
+      " .pe-notification__title": [flex.flex(), {
+        alignSelf: "center"
+      }],
       " .pe-notification__title--multi-line": {
         paddingTop: componentVars.title_multi_padding_v + "px",
         paddingBottom: componentVars.title_multi_padding_v + "px"
@@ -99,7 +102,8 @@ var holderLayout = (function (selector) {
     pointerEvents: "none",
 
     ".pe-multiple--screen": {
-      position: "fixed"
+      position: "fixed",
+      justifyContent: "flex-start" // For IE 11
     }
   }]), _defineProperty$2(_ref, ":not(.pe-notification--container) .pe-multiple--container", {
     position: "absolute"

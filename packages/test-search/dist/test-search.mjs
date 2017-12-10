@@ -2830,7 +2830,7 @@ var reactTests = function reactTests() {
   }, {
     name: "Theme (JSX)",
     component: function component() {
-      return react.createElement(_class$1, { className: "tests-search-themed-search" });
+      return react.createElement(_class$1, { className: "tests-search-themed-search", tone: "dark" });
     }
   }];
 };

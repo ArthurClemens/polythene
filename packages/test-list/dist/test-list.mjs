@@ -256,9 +256,7 @@ var keyboardState = (function (_ref) {
             selected: index === higlightIndex,
             hoverable: !item.header,
             onSelect: item.header ? null : function () {
-              var cityIndex = validIndices.findIndex(function (item) {
-                return item === index;
-              });
+              var cityIndex = validIndices.indexOf(index);
               state.cityIndex(cityIndex);
             }
           }));
