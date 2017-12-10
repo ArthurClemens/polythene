@@ -194,7 +194,8 @@ var layout = (function (selector, componentVars) {
         " .pe-button__label": [mixin.defaultTransition("opacity", componentVars.animation_duration), {
           margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
           padding: 0,
-          opacity: componentVars.label_opacity
+          opacity: componentVars.label_opacity,
+          width: "100%" // for IE 11
         }],
         " .pe-icon": {
           marginLeft: "auto",

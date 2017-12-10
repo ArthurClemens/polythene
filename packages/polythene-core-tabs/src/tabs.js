@@ -69,7 +69,7 @@ const scrollToTab = (state, tabIndex) => {
         to: left,
         duration: Math.max(vars.tabs_scroll_min_duration, duration),
         direction: "horizontal"
-      });
+      }).then(() => updateScrollButtons(state));
     }, delaySeconds * 1000);
   }
 };
@@ -83,8 +83,8 @@ const updateScrollButtons = state => {
   const maxTabIndex = state.tabs.length - 1;
   const isAtStart = (scrollerEl.scrollLeft === 0) && (currentTabIndex === minTabIndex);
   const isAtEnd = (scrollLeft >= (scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1)) && (currentTabIndex === maxTabIndex);
-  state.scrollButtonStates.start = !isAtStart;
-  state.scrollButtonStates.end = !isAtEnd;
+  state.scrollButtonAtStart(isAtStart);
+  state.scrollButtonAtEnd(isAtEnd);
 };
 
 const animateIndicator = (selectedTabEl, animate, state) => {
@@ -130,6 +130,8 @@ const sortByLargestWidth = (a, b) =>
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
   const selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  const scrollButtonAtStart = createStream(true);
+  const scrollButtonAtEnd = createStream(true);
   const registerTabButton = state => (index, data) => state.tabs[index] = data;
   const registerScrollButton = state => (position, dom) => state.scrollButtons[position] = dom;
   return {
@@ -141,10 +143,8 @@ export const getInitialState = (vnode, createStream) => {
     selectedTabIndex,
     previousSelectedTab: undefined,
     managesScroll:       attrs.scrollable && !isTouch,
-    scrollButtonStates: {
-      start: false,
-      end: false
-    },
+    scrollButtonAtStart,
+    scrollButtonAtEnd,
     scrollButtons: {
       start: undefined,
       end: undefined
@@ -152,7 +152,7 @@ export const getInitialState = (vnode, createStream) => {
     registerTabButton,
     registerScrollButton,
     cleanUp: undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([selectedTabIndex])
+    redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
   };
 };
 
@@ -221,8 +221,8 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.scrollable ? classes.scrollable : null,
-        state.selectedTabIndex === 0 ? classes.isAtStart : null,
-        state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null,
+        state.scrollButtonAtStart() ? classes.isAtStart : null,
+        state.scrollButtonAtEnd() ? classes.isAtEnd : null,
         attrs.activeSelected ? classes.activeSelectable : null,
         autofit ? classes.isAutofit : null,
         attrs.compact ? classes.compactTabs : null,

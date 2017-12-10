@@ -29,7 +29,7 @@ var vars$3 = {
   tabs_scroll_delay: .15,
   tabs_scroll_min_duration: .5,
   scroll_button_fade_duration: .2,
-  scroll_button_fade_delay: .5,
+  scroll_button_fade_delay: .18,
   tab_content_padding_v: 12,
   tab_menu_content_padding_v: 6,
   tab_indicator_height: 2,
@@ -173,6 +173,8 @@ var scrollToTab = function scrollToTab(state, tabIndex) {
         to: left,
         duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
         direction: "horizontal"
+      }).then(function () {
+        return updateScrollButtons(state);
       });
     }, delaySeconds * 1000);
   }
@@ -187,8 +189,8 @@ var updateScrollButtons = function updateScrollButtons(state) {
   var maxTabIndex = state.tabs.length - 1;
   var isAtStart = scrollerEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
   var isAtEnd = scrollLeft >= scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
-  state.scrollButtonStates.start = !isAtStart;
-  state.scrollButtonStates.end = !isAtEnd;
+  state.scrollButtonAtStart(isAtStart);
+  state.scrollButtonAtEnd(isAtEnd);
 };
 
 var animateIndicator = function animateIndicator(selectedTabEl, animate, state) {
@@ -231,6 +233,8 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
   var selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  var scrollButtonAtStart = createStream(true);
+  var scrollButtonAtEnd = createStream(true);
   var registerTabButton = function registerTabButton(state) {
     return function (index, data) {
       return state.tabs[index] = data;
@@ -250,10 +254,8 @@ var getInitialState = function getInitialState(vnode, createStream) {
     selectedTabIndex: selectedTabIndex,
     previousSelectedTab: undefined,
     managesScroll: attrs.scrollable && !isTouch,
-    scrollButtonStates: {
-      start: false,
-      end: false
-    },
+    scrollButtonAtStart: scrollButtonAtStart,
+    scrollButtonAtEnd: scrollButtonAtEnd,
     scrollButtons: {
       start: undefined,
       end: undefined
@@ -261,7 +263,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
     registerTabButton: registerTabButton,
     registerScrollButton: registerScrollButton,
     cleanUp: undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([selectedTabIndex])
+    redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
   };
 };
 
@@ -327,7 +329,7 @@ var createProps = function createProps(vnode, _ref2) {
   state.previousSelectedTab = attrs.selectedTab;
 
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.selectedTabIndex === 0 ? classes.isAtStart : null, state.selectedTabIndex === state.tabs.length - 1 ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.scrollButtonAtStart() ? classes.isAtStart : null, state.scrollButtonAtEnd() ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

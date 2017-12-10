@@ -25,7 +25,7 @@ export default {
   tabs_scroll_delay:                .15,
   tabs_scroll_min_duration:         .5,
   scroll_button_fade_duration:      .2,
-  scroll_button_fade_delay:         .5,
+  scroll_button_fade_delay:         .18,
   tab_content_padding_v:            12,
   tab_menu_content_padding_v:       6,
   tab_indicator_height:             2,

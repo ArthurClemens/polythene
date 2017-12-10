@@ -64,7 +64,7 @@
   transition-property: opacity,color,backgroundColor;
   transition-duration: .2s;
   transition-timing-function: ease-out;
-  transition-delay: .5s;
+  transition-delay: .18s;
   opacity: .7
 }
 
@@ -167,7 +167,8 @@
   transition-property: opacity;
   margin: 1.4000000000000021px 0 0;
   padding: 0;
-  opacity: .7
+  opacity: .7;
+  width: 100%
 }
 
 .pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {

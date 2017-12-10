@@ -95,7 +95,7 @@ export default (selector, componentVars) => [{
       },
 
       " .pe-tabs__scroll-button-start": {
-        left: 0
+        left: 0,
       },
       " .pe-tabs__scroll-button-end": {
         right: 0
@@ -156,7 +156,8 @@ export default (selector, componentVars) => [{
             {
               margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
               padding: 0,
-              opacity: componentVars.label_opacity
+              opacity: componentVars.label_opacity,
+              width: "100%" // for IE 11
             }
           ],
           " .pe-icon": {
