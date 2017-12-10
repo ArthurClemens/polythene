@@ -10,7 +10,7 @@ IE 11 needs polyfills for `Promise` and `Object.assign`. If you use polyfill.io,
 
 ### Notification
 
-Content is not centered vertically, because IE 11 needs a specific height. But hardcoding the height would prohibit the content from growing. To mitigate, add a style with specific height to the content:
+Content is not centered vertically, because IE 11 needs a specific height for the HTML element. But hardcoding the height would prohibit the content from growing, which is undesirable in most other cases. To mitigate this, add a style with specific height to the content:
 
 ~~~javascript
 Notification.show({

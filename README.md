@@ -18,7 +18,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * Closely follows the Material Design specification
 * Versatile theming options
 * Supports touch, mouse and keyboard
-* Extensive documentation
+* Extensive documentation with example code
 
 
 ## Demos
@@ -43,9 +43,10 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * [Documentation: components, examples, CSS, theming](docs/README.md)
 * [Extending other libraries](docs/extending.md)
 * [Developing](docs/developing.md)
-* [Migrating from 0.2](docs/migrating-from-02.md)
 * [Change log](docs/changes.md)
 * [Known issues](docs/known-issues.md)
+* [Migrating from 0.2](docs/migrating-from-02.md)
+
 
 ## Compatibility
 

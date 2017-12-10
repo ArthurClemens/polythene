@@ -16,12 +16,11 @@ Install Lerna:
 npm install -g lerna
 ```
 
-Get the rewrite branch:
+Get the Polythene repo and prepare:
 
 ```
 git clone https://github.com/ArthurClemens/polythene.git
 cd polythene
-git checkout git checkout origin/rewrite-universal
 yarn
 ```
 
