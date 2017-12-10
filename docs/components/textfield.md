@@ -84,18 +84,18 @@ These options also have effect on the generated HTML input field.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **error** | optional | String | | Message that is displayed when the field is invalid |
-| **max** | optional | Number | | Maximum value (for type: number) |
+| **error**     | optional | String | | Message that is displayed when the field is invalid |
+| **max**       | optional | Number | | Maximum value (for type: number) |
 | **maxlength** (React: **maxLength**) | optional | Integer | | Maximum number of characters (for type: text, email, search, password, tel, or url; browsers do not support this for type "number") |
-| **min** | optional | Number | | Minimum value (for type: number) |
+| **min**       | optional | Number | | Minimum value (for type: number) |
 | **minlength** (React: **minLength**) | optional | Integer | | Minimum number of characters (for type: text, email, search, password, tel, or url) |
 | **optionalIndicator** | optional | String |   | String to indicate that the field is optional; added to the label string |
-| **pattern** | optional | String | | Validation regex pattern for fields of `type` text, search, url, tel, email, password | 
-| **required** | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
+| **pattern**   | optional | String | | Validation regex pattern for fields of `type` text, search, url, tel, email, password | 
+| **required**  | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
 | **requiredIndicator** | optional | String | "*"  | String to indicate that the field is required; added to the label string |
-| **valid** | optional | Boolean | | Use for per field validation when the field value is kept in local state, for instance when using a form validator |
-| **error** | optional | String | | Error message when `valid` is `false` |
-| **validate** | optional | Function `(value::String) -> {valid::Boolean, error::String}` | | Use for custom per field validation when you don't keep the field value in a local state (in that case, use `valid`) |
+| **valid**     | optional | Boolean | | Use for per field validation when the field value is kept in local state, for instance when using a form validator |
+| **error**     | optional | String | | Error message when `valid` is `false` |
+| **validate**  | optional | Function `(value::String) -> {valid::Boolean, error::String}` | | Use for custom per field validation when you don't keep the field value in a local state (in that case, use `valid`) |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
 | **validateOnInput** | optional | Boolean | | Set to `true` to validate the field at the first keypress |
 | **validateResetOnClear** | optional | Boolean | | Set to `true` to re-initiate validation state when the field is cleared |

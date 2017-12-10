@@ -264,7 +264,7 @@ h(TextField, {
 
 #### Setting the "valid" state directly
 
-This assumes that you store the form state so you are able to check the valid state of each field.
+This assumes that you store the form state (for example in a stateful component) so you are able to check the valid state of each field.
 
 ~~~jsx
 const errors = state.form.error();
