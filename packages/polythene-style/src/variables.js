@@ -1,10 +1,5 @@
 // Global style variables
 
-import { isClient } from "polythene-core";
-
-//const isTablet = window.innerWidth >= 600;
-const isDesktop = isClient ? window.innerWidth >= 1024 : true;
-
 const grid_unit = 4;
 const grid_unit_component = 8;
 
@@ -23,7 +18,7 @@ export const vars = {
   unit_block_border_radius: 2,
   unit_item_border_radius: 2,
   unit_indent: 72,
-  unit_side_padding: isDesktop ? 24 : 16,
+  unit_side_padding: 16,
 
   // buttons
   unit_touch_height: 48,
@@ -90,16 +85,6 @@ export const vars = {
   blend_dark_background_disabled: .12,
   blend_dark_overlay_background: .3,
 
-  // css vendor prefixes
-  prefixes_animation: ["o", "moz", "webkit"],
-  prefixes_appearance: ["o", "moz", "ms", "webkit"],
-  prefixes_background_size: ["o", "moz", "webkit"],
-  prefixes_box_shadow: ["moz", "webkit"],
-  prefixes_keyframes: ["o", "moz", "webkit"],
-  prefixes_transform: ["o", "moz", "ms", "webkit"],
-  prefixes_transition: ["o", "moz", "webkit"],
-  prefixes_user_select: ["moz", "ms", "webkit"],
-
   // breakpoints
   breakpoint_small_handset_portrait: 0,
   breakpoint_medium_handset_portrait: 360,
@@ -110,10 +95,6 @@ export const vars = {
   breakpoint_small_handset_landscape: 480,
   breakpoint_medium_handset_landscape: 600,
   breakpoint_large_handset_landscape: 720,
-
-  // environment
-  env_tablet: isClient ? window.innerWidth >= 600 : false,
-  env_desktop: isClient ? window.innerWidth >= 1024 : true,
 
   // z-index
   z_menu: 1000,
