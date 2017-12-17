@@ -808,6 +808,8 @@ var form = (function () {
   };
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var shortText$1 = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
 
 var longText$1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(function () {
@@ -817,17 +819,15 @@ var longText$1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(functio
 var Updating = {
   oninit: function oninit(vnode) {
     var dialogVisible = stream(false);
-    dialogVisible.map(renderer.redraw); // redraw whenever this changes
     var count = stream(0);
-    count.map(renderer.redraw); // redraw whenever this changes
-    vnode.state = {
+    _extends(vnode.state, {
       dialogVisible: dialogVisible,
       count: count
-    };
+    });
     // Show updates by means of a simple counter.
     // This could also be a different component state or global/Redux state.
     setInterval(function () {
-      return count(count() + 1);
+      return count(count() + 1), renderer.redraw();
     }, 1000);
   },
   view: function view(_ref) {
@@ -844,7 +844,7 @@ var Updating = {
       };
       Dialog.show(dialogProps);
     }
-    return renderer("div", [renderer("span", state.count()), renderer(RaisedButton, {
+    return renderer("div", null, [renderer("span", state.count()), renderer(RaisedButton, {
       label: "Show Dialog",
       events: {
         onclick: function onclick() {
@@ -889,7 +889,11 @@ var mithrilTests = function mithrilTests(_ref) {
     name: "Updating dialog",
     interactive: true,
     exclude: true,
-    component: Updating
+    component: {
+      view: function view() {
+        return renderer$$1(Updating);
+      }
+    }
   }];
 };
 
@@ -903,7 +907,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -949,7 +953,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

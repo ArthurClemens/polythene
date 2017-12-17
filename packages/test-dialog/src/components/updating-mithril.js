@@ -8,16 +8,17 @@ const longText = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(() => shortText).join
 const Updating = {
   oninit: vnode => {
     const dialogVisible = stream(false);
-    dialogVisible.map(h.redraw); // redraw whenever this changes
     const count = stream(0);
-    count.map(h.redraw); // redraw whenever this changes
-    vnode.state = {
+    Object.assign(vnode.state, {
       dialogVisible,
       count
-    };
+    });
     // Show updates by means of a simple counter.
     // This could also be a different component state or global/Redux state.
-    setInterval(() => count(count() + 1), 1000);
+    setInterval(() => (
+      count(count() + 1),
+      h.redraw()
+    ), 1000);
   },
   view: ({ state }) => {
     const dialogVisible = state.dialogVisible();
@@ -29,7 +30,7 @@ const Updating = {
       };
       Dialog.show(dialogProps);
     }
-    return h("div", [
+    return h("div", null, [
       h("span", state.count()),
       h(RaisedButton, {
         label: "Show Dialog",

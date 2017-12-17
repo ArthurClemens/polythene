@@ -29,7 +29,10 @@ const mithrilTests = ({ renderer, keys, Dialog, RaisedButton }) => {
       name: "Updating dialog",
       interactive: true,
       exclude: true,
-      component: Updating
+      component: {
+        view: () =>
+          renderer(Updating)
+      }
     },
   ];
 };
