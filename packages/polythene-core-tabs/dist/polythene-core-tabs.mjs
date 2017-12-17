@@ -14,9 +14,9 @@ var tab_label_line_height = 1.1 * fontSize;
 
 var vars$3 = {
   tab_min_width: 72,
+  tab_min_width_tablet: 160,
   tab_max_width: "initial",
   tab_height: 48,
-  // tab_min_width_tablet:             160,
   label_max_width: 264,
   menu_tab_height: 44,
   menu_tab_icon_label_height: 44,
@@ -29,7 +29,7 @@ var vars$3 = {
   tabs_scroll_delay: .15,
   tabs_scroll_min_duration: .5,
   scroll_button_fade_duration: .2,
-  scroll_button_fade_delay: .18,
+  scroll_button_fade_delay: .25,
   tab_content_padding_v: 12,
   tab_menu_content_padding_v: 6,
   tab_indicator_height: 2,
@@ -198,10 +198,9 @@ var animateIndicator = function animateIndicator(selectedTabEl, animate, state) 
   var rect = selectedTabEl.getBoundingClientRect();
   var style = state.tabIndicatorEl.style;
   var translateX = rect.left - parentRect.left + state.scrollerEl.scrollLeft;
-  var transformCmd = "translate(" + translateX + "px, 0)";
+  var scaleX = 1 / parentRect.width * rect.width;
+  var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
   var duration = animate ? vars$3.indicator_slide_min_duration : 0;
-  // use width instead of scale to please IE10
-  style.width = rect.width + "px";
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;
 };
@@ -215,8 +214,8 @@ var setSelectedTab = function setSelectedTab(state, attrs, index, animate) {
   }
   if (state.managesScroll) {
     updateScrollButtons(state);
-    scrollToTab(state, index);
   }
+  scrollToTab(state, index);
   if (attrs.onChange) {
     attrs.onChange({
       index: index,

@@ -1,2 +1,512 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-core"),require("polythene-utilities"),require("polythene-theme"),require("polythene-core-button"),require("polythene-core-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-utilities","polythene-theme","polythene-core-button","polythene-core-icon-button"],e):e(t.polythene={},t["polythene-core"],t["polythene-utilities"],t["polythene-theme"],t["polythene-core-button"],t["polythene-core-icon-button"])}(this,function(t,e,n,o,r,l){"use strict";function a(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function c(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}var i=function(t){return"rgba("+t+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},s=r.vars.font_size,u=1.1*s,d={tab_min_width:72,tab_max_width:"initial",tab_height:48,label_max_width:264,menu_tab_height:44,menu_tab_icon_label_height:44,tab_icon_label_height:72,tab_icon_label_icon_spacing:7,indicator_slide_speed:600,indicator_slide_min_duration:.25,tabs_indent:o.vars.unit_indent,tabs_scroll_speed:600,tabs_scroll_delay:.15,tabs_scroll_min_duration:.5,scroll_button_fade_duration:.2,scroll_button_fade_delay:.18,tab_content_padding_v:12,tab_menu_content_padding_v:6,tab_indicator_height:2,scrollbar_offset:20,scroll_button_opacity:.7,label_opacity:.7,tab_label_line_height:u,tab_label_vertical_offset:u-s,tab_label_transition_property:"opacity, color, backgroundColor",color_light:"inherit",color_light_selected:i(o.vars.color_primary),color_light_selected_background:"transparent",color_light_tab_indicator:i(o.vars.color_primary),color_light_icon:l.vars.color_light,color_dark:"inherit",color_dark_selected:i(o.vars.color_primary),color_dark_selected_background:"transparent",color_dark_tab_indicator:i(o.vars.color_primary),color_dark_icon:l.vars.color_dark},b={component:"pe-tabs",indicator:"pe-tabs__indicator",scrollButton:"pe-tabs__scroll-button",scrollButtonAtEnd:"pe-tabs__scroll-button-end",scrollButtonAtStart:"pe-tabs__scroll-button-start",scrollButtonOffset:"pe-tabs__scroll-button-offset",tab:"pe-tabs__tab",tabContent:"pe-tabs__tab-content",tabRow:"pe-tabs__row",activeSelectable:"pe-tabs__active--selectable",isAtEnd:"pe-tabs--end",isAtStart:"pe-tabs--start",isAutofit:"pe-tabs--autofit",isMenu:"pe-tabs--menu",scrollable:"pe-tabs--scrollable",compactTabs:"pe-tabs--compact",tabHasIcon:"pe-tabs__tab---icon",tabRowCentered:"pe-tabs__row--centered",tabRowIndent:"pe-tabs__row--indent",label:{base:"pe-button",component:"pe-button pe-text-button",content:"pe-button__content",focus:"pe-button__focus",label:"pe-button__label",wash:"pe-button__wash",borders:"pe-button--borders",disabled:"pe-button--disabled",focused:"pe-button--focus",inactive:"pe-button--inactive",selected:"pe-button--selected"}.label},_=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},p=function(){return Promise.resolve()},f=function(t,e){var n=e.length-1;return{backward:Math.max(t-1,0),forward:Math.min(t+1,n)}},h=function(t,e,n,o){n.stopPropagation(),n.preventDefault();var r=t.selectedTabIndex(),l=f(r,t.tabs)[o];l!==r?B(t,e,l,!0):m(t,l)},v=function(t){var e=t.tabs[0].dom,n=e.querySelector("."+b.label+" span"),o=(e.getBoundingClientRect().width-n.getBoundingClientRect().width)/2;e.style.marginLeft=-o+"px"},g=function(t){var e=t.scrollButtons.end.getBoundingClientRect().width;t.tabsEl.querySelector("."+b.scrollButtonOffset).style.width=e+"px"},m=function(t,e){var o=t.tabs,r=t.scrollerEl,l=o.slice(0,e).reduce(function(t,e){return t+e.dom.getBoundingClientRect().width},0),a=r.getBoundingClientRect().width,c=r.scrollWidth-a,i=Math.min(l,c),s=r.scrollLeft;if(s!==i){var u=Math.abs(s-i)/d.tabs_scroll_speed,b=d.tabs_scroll_delay||0;setTimeout(function(){n.scrollTo({element:r,to:i,duration:Math.max(d.tabs_scroll_min_duration,u),direction:"horizontal"}).then(function(){return y(t)})},1e3*b)}},y=function(t){var e=t.scrollerEl,n=e.scrollLeft,o=t.selectedTabIndex(),r=t.tabsEl,l=t.tabs.length-1,a=0===e.scrollLeft&&0===o,c=n>=e.scrollWidth-r.getBoundingClientRect().width-1&&o===l;t.scrollButtonAtStart(a),t.scrollButtonAtEnd(c)},w=function(t,e,n){var o=n.tabsEl.getBoundingClientRect(),r=t.getBoundingClientRect(),l=n.tabIndicatorEl.style,a="translate("+(r.left-o.left+n.scrollerEl.scrollLeft)+"px, 0)",c=e?d.indicator_slide_min_duration:0;l.width=r.width+"px",l["transition-duration"]=c+"s",l.transform=a},B=function(t,e,n,o){if(t.selectedTabIndex(n),t.tabs.length){var r=t.tabs[n].dom;r&&t.tabIndicatorEl&&t.tabsEl&&w(r,o,t),t.managesScroll&&(y(t),m(t,n)),e.onChange&&e.onChange({index:n,options:t.tabs[n].attrs,el:r})}},k=function(t,e){return t<e?1:t>e?-1:0},S=function(t,n){var o=t.attrs,r=n(t.attrs.selectedTab||0),l=n(!0),a=n(!0),c=function(t){return function(e,n){return t.tabs[e]=n}},i=function(t){return function(e,n){return t.scrollButtons[e]=n}};return{tabsEl:void 0,scrollerEl:void 0,tabs:[],tabRow:void 0,tabIndicatorEl:void 0,selectedTabIndex:r,previousSelectedTab:void 0,managesScroll:o.scrollable&&!e.isTouch,scrollButtonAtStart:l,scrollButtonAtEnd:a,scrollButtons:{start:void 0,end:void 0},registerTabButton:c,registerScrollButton:i,cleanUp:void 0,redrawOnUpdate:n.merge([r,l,a])}},T=function(t){var n=t.dom,o=t.state,r=t.attrs;o.tabsEl=n,r.hideIndicator||(o.tabIndicatorEl=n.querySelector("."+b.indicator)),o.scrollerEl=n.querySelector("."+b.tabRow),p().then(function(){if(o.tabs&&r.largestWidth){var t=o.tabs.map(function(t){return t.dom.getBoundingClientRect().width}).sort(k)[0];o.tabs.forEach(function(e){return e.dom.style.width=t+"px"})}r.scrollable&&v(o),o.managesScroll&&g(o),B(o,r,o.selectedTabIndex(),!1)});var l=function(){return B(o,r,o.selectedTabIndex(),!1)};e.subscribe("resize",l),o.cleanUp=function(){return e.unsubscribe("resize",l)}},x=function(t){return t.state.cleanUp()},E=function(t,n){var o=n.keys,r=t.state,l=t.attrs,a=!l.scrollable&&!l.centered&&!!l.autofit;return void 0!==l.selectedTab&&r.previousSelectedTab!==l.selectedTab&&B(r,l,l.selectedTab,!0),r.previousSelectedTab=l.selectedTab,_({},e.filterSupportedAttributes(l),{className:[b.component,l.scrollable?b.scrollable:null,r.scrollButtonAtStart()?b.isAtStart:null,r.scrollButtonAtEnd()?b.isAtEnd:null,l.activeSelected?b.activeSelectable:null,a?b.isAutofit:null,l.compact?b.compactTabs:null,l.menu?b.isMenu:null,"dark"===l.tone?"pe-dark-tone":null,"light"===l.tone?"pe-light-tone":null,l.className||l[o.class]].join(" ")})},I=function(t,e){var n=e.renderer,o=e.keys,r=e.Tab,l=e.ScrollButton,c=t.state,i=t.attrs,s=i.content?i.content:i.tabs?i.tabs:i.children||t.children||[];0===s.length&&console.error("No tabs specified");var u=s.map(function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments[1],o=_({},t,{selected:e===c.selectedTabIndex(),animateOnTap:!1!==i.animateOnTap},i.all,{index:e,key:"tab-"+e,register:c.registerTabButton(c),onSelect:function(){return B(c,i,e,!i.noIndicatorSlide)}});return n(r,o)}),d=i.scrollable?u.concat([n("div",{key:"offset",className:b.scrollButtonOffset})]):u,p=void 0,f=void 0;i.scrollable&&(p=n(l,_({},{key:"backward",icon:i.scrollIconBackward,className:b.scrollButtonAtStart,position:"start",register:c.registerScrollButton(c),events:a({},o.onclick,function(t){return h(c,i,t,"backward")})})),f=n(l,_({},{key:"forward",icon:i.scrollIconForward,className:b.scrollButtonAtEnd,position:"end",register:c.registerScrollButton(c),events:a({},o.onclick,function(t){return h(c,i,t,"forward")})})));var v=i.hideIndicator?null:n("div",{key:"indicator",className:b.indicator});return[i.scrollable?p:null,n("div",{key:"tabrow",className:[b.tabRow,i.centered?b.tabRowCentered:null,i.scrollable?b.tabRowIndent:null].join(" ")},[d,v]),i.scrollable?f:null]},C=Object.freeze({getInitialState:S,onMount:T,onUnMount:x,createProps:E,createContent:I}),O=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])}return t},A=function(t){var e=t.dom;if(e){var n=t.attrs;n.register(n.index,{attrs:n,dom:e})}},R=function(t,e){var n=e.renderer,o=e.keys,r=e.Icon,l=t.attrs;return l.events=l.events||{},l.events[o.onclick]=l.events[o.onclick]||function(){},O({},l,{content:n("div",{className:b.tabContent},[l.icon?n(r,l.icon):null,l.label?n("div",{className:b.label},n("span",l.label)):null]),className:[b.tab,l.icon&&l.label?b.tabHasIcon:null,l.className||l[o.class]].join(" "),selected:l.selected,wash:!1,ripple:!0,events:O({},l.events,c({},o.onclick,function(t){l.onSelect(),l.events[o.onclick](t)}))})},j=function(){return null},M=Object.freeze({onMount:A,createProps:R,createContent:j}),N=function(t){var e=t.dom;if(e){var n=t.attrs;n.register(n.position,e)}},P=function(t,e){var n=e.renderer,o=e.keys,r=t.attrs,l="start"===r.position?r.icon||{svg:{content:n.trust('<svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>')}}:r.icon||{svg:{content:n.trust('<svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>')}};return{className:[b.scrollButton,r.className||r[o.class]].join(" "),icon:l,ripple:{center:!0},events:r.events}},q=Object.freeze({onMount:N,createProps:P});t.coreTabs=C,t.coreTab=M,t.coreScrollButton=q,t.vars=d,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities'), require('polythene-theme'), require('polythene-core-button'), require('polythene-core-icon-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities', 'polythene-theme', 'polythene-core-button', 'polythene-core-icon-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities'],global['polythene-theme'],global['polythene-core-button'],global['polythene-core-icon-button']));
+}(this, (function (exports,polytheneCore,polytheneUtilities,polytheneTheme,polytheneCoreButton,polytheneCoreIconButton) { 'use strict';
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var fontSize = polytheneCoreButton.vars.font_size;
+var tab_label_line_height = 1.1 * fontSize;
+
+var vars$3 = {
+  tab_min_width: 72,
+  tab_min_width_tablet: 160,
+  tab_max_width: "initial",
+  tab_height: 48,
+  label_max_width: 264,
+  menu_tab_height: 44,
+  menu_tab_icon_label_height: 44,
+  tab_icon_label_height: 72,
+  tab_icon_label_icon_spacing: 7,
+  indicator_slide_speed: 600, // px per second
+  indicator_slide_min_duration: .250,
+  tabs_indent: polytheneTheme.vars.unit_indent,
+  tabs_scroll_speed: 600, // px per second
+  tabs_scroll_delay: .15,
+  tabs_scroll_min_duration: .5,
+  scroll_button_fade_duration: .2,
+  scroll_button_fade_delay: .25,
+  tab_content_padding_v: 12,
+  tab_menu_content_padding_v: 6,
+  tab_indicator_height: 2,
+  scrollbar_offset: 20,
+  scroll_button_opacity: .7,
+  label_opacity: .7,
+
+  tab_label_line_height: tab_label_line_height,
+  tab_label_vertical_offset: tab_label_line_height - fontSize,
+  tab_label_transition_property: "opacity, color, backgroundColor",
+
+  color_light: "inherit",
+  color_light_selected: rgba(polytheneTheme.vars.color_primary),
+  color_light_selected_background: "transparent",
+  color_light_tab_indicator: rgba(polytheneTheme.vars.color_primary),
+  color_light_icon: polytheneCoreIconButton.vars.color_light,
+
+  color_dark: "inherit",
+  color_dark_selected: rgba(polytheneTheme.vars.color_primary),
+  color_dark_selected_background: "transparent",
+  color_dark_tab_indicator: rgba(polytheneTheme.vars.color_primary),
+  color_dark_icon: polytheneCoreIconButton.vars.color_dark
+};
+
+var buttonClasses = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
+
+var classes = {
+  component: "pe-tabs",
+
+  // elements
+  indicator: "pe-tabs__indicator",
+  scrollButton: "pe-tabs__scroll-button",
+  scrollButtonAtEnd: "pe-tabs__scroll-button-end",
+  scrollButtonAtStart: "pe-tabs__scroll-button-start",
+  scrollButtonOffset: "pe-tabs__scroll-button-offset",
+  tab: "pe-tabs__tab",
+  tabContent: "pe-tabs__tab-content",
+  tabRow: "pe-tabs__row",
+
+  // states
+  activeSelectable: "pe-tabs__active--selectable",
+  isAtEnd: "pe-tabs--end",
+  isAtStart: "pe-tabs--start",
+  isAutofit: "pe-tabs--autofit",
+  isMenu: "pe-tabs--menu",
+  scrollable: "pe-tabs--scrollable",
+  compactTabs: "pe-tabs--compact",
+  tabHasIcon: "pe-tabs__tab---icon",
+  tabRowCentered: "pe-tabs__row--centered",
+  tabRowIndent: "pe-tabs__row--indent",
+
+  // lookup
+  label: buttonClasses.label
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var whenCreateDone = function whenCreateDone() {
+  return Promise.resolve();
+};
+
+var getNewIndex = function getNewIndex(index, tabs) {
+  var minTabIndex = 0;
+  var maxTabIndex = tabs.length - 1;
+  return {
+    backward: Math.max(index - 1, minTabIndex),
+    forward: Math.min(index + 1, maxTabIndex)
+  };
+};
+
+var handleScrollButtonClick = function handleScrollButtonClick(state, attrs, e, direction) {
+  e.stopPropagation();
+  e.preventDefault();
+  var currentTabIndex = state.selectedTabIndex();
+  var newIndex = getNewIndex(currentTabIndex, state.tabs)[direction];
+  if (newIndex !== currentTabIndex) {
+    setSelectedTab(state, attrs, newIndex, true);
+  } else {
+    scrollToTab(state, newIndex);
+  }
+};
+
+/*
+Moves the first tab to the left so that the text label is as position 0. 
+*/
+var alignToTitle = function alignToTitle(state) {
+  var firstTab = state.tabs[0].dom;
+  var firstInnerLabel = firstTab.querySelector("." + classes.label + " span");
+  var firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
+  var firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
+  var firstTabOffset = (firstOuterLabelWidth - firstInnerLabelWidth) / 2;
+  firstTab.style.marginLeft = -firstTabOffset + "px";
+};
+
+var createRightButtonOffset = function createRightButtonOffset(state) {
+  // add padding to right so that last item is not hidden behind scroll button
+  var scrollButtonAtEndWidth = state.scrollButtons["end"].getBoundingClientRect().width;
+  var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes.scrollButtonOffset);
+  scrollButtonOffsetEl.style.width = scrollButtonAtEndWidth + "px";
+};
+
+var scrollToTab = function scrollToTab(state, tabIndex) {
+  var tabs = state.tabs;
+  var scroller = state.scrollerEl;
+  // Scroll to position of selected tab
+  var tabLeft = tabs.slice(0, tabIndex).reduce(function (totalWidth, tabData) {
+    return totalWidth + tabData.dom.getBoundingClientRect().width;
+  }, 0);
+  // Tabs at the far right will not fully move to the left
+  // because the scrollable row will stick to the right 
+  // to get the max scroll left, we subtract the visible viewport from the scroll width
+  var scrollerWidth = scroller.getBoundingClientRect().width; // frame width
+  var scrollingWidth = scroller.scrollWidth;
+  var maxScroll = scrollingWidth - scrollerWidth;
+  var left = Math.min(tabLeft, maxScroll);
+  var currentLeft = scroller.scrollLeft;
+  if (currentLeft !== left) {
+    var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
+    var delaySeconds = vars$3.tabs_scroll_delay || 0;
+    setTimeout(function () {
+      polytheneUtilities.scrollTo({
+        element: scroller,
+        to: left,
+        duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
+        direction: "horizontal"
+      }).then(function () {
+        return updateScrollButtons(state);
+      });
+    }, delaySeconds * 1000);
+  }
+};
+
+var updateScrollButtons = function updateScrollButtons(state) {
+  var scrollerEl = state.scrollerEl;
+  var scrollLeft = scrollerEl.scrollLeft;
+  var currentTabIndex = state.selectedTabIndex();
+  var tabsEl = state.tabsEl;
+  var minTabIndex = 0;
+  var maxTabIndex = state.tabs.length - 1;
+  var isAtStart = scrollerEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
+  var isAtEnd = scrollLeft >= scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
+  state.scrollButtonAtStart(isAtStart);
+  state.scrollButtonAtEnd(isAtEnd);
+};
+
+var animateIndicator = function animateIndicator(selectedTabEl, animate, state) {
+  var parentRect = state.tabsEl.getBoundingClientRect();
+  var rect = selectedTabEl.getBoundingClientRect();
+  var style = state.tabIndicatorEl.style;
+  var translateX = rect.left - parentRect.left + state.scrollerEl.scrollLeft;
+  var scaleX = 1 / parentRect.width * rect.width;
+  var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
+  var duration = animate ? vars$3.indicator_slide_min_duration : 0;
+  style["transition-duration"] = duration + "s";
+  style.transform = transformCmd;
+};
+
+var setSelectedTab = function setSelectedTab(state, attrs, index, animate) {
+  state.selectedTabIndex(index);
+  if (!state.tabs.length) return;
+  var selectedTabEl = state.tabs[index].dom;
+  if (selectedTabEl && state.tabIndicatorEl && state.tabsEl) {
+    animateIndicator(selectedTabEl, animate, state);
+  }
+  if (state.managesScroll) {
+    updateScrollButtons(state);
+  }
+  scrollToTab(state, index);
+  if (attrs.onChange) {
+    attrs.onChange({
+      index: index,
+      options: state.tabs[index].attrs,
+      el: selectedTabEl
+    });
+  }
+};
+
+var sortByLargestWidth = function sortByLargestWidth(a, b) {
+  return a < b ? 1 : a > b ? -1 : 0;
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  var scrollButtonAtStart = createStream(true);
+  var scrollButtonAtEnd = createStream(true);
+  var registerTabButton = function registerTabButton(state) {
+    return function (index, data) {
+      return state.tabs[index] = data;
+    };
+  };
+  var registerScrollButton = function registerScrollButton(state) {
+    return function (position, dom) {
+      return state.scrollButtons[position] = dom;
+    };
+  };
+  return {
+    tabsEl: undefined,
+    scrollerEl: undefined,
+    tabs: [], // {data, el}
+    tabRow: undefined,
+    tabIndicatorEl: undefined,
+    selectedTabIndex: selectedTabIndex,
+    previousSelectedTab: undefined,
+    managesScroll: attrs.scrollable && !polytheneCore.isTouch,
+    scrollButtonAtStart: scrollButtonAtStart,
+    scrollButtonAtEnd: scrollButtonAtEnd,
+    scrollButtons: {
+      start: undefined,
+      end: undefined
+    },
+    registerTabButton: registerTabButton,
+    registerScrollButton: registerScrollButton,
+    cleanUp: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  var dom = vnode.dom;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  state.tabsEl = dom;
+  if (!attrs.hideIndicator) {
+    state.tabIndicatorEl = dom.querySelector("." + classes.indicator);
+  }
+  state.scrollerEl = dom.querySelector("." + classes.tabRow);
+
+  // A promise can't resolve during the oncreate loop
+  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
+  whenCreateDone().then(function () {
+    if (state.tabs && attrs.largestWidth) {
+      var widths = state.tabs.map(function (tabData) {
+        return tabData.dom.getBoundingClientRect().width;
+      });
+      var largest = widths.sort(sortByLargestWidth)[0];
+      state.tabs.forEach(function (tabData) {
+        return tabData.dom.style.width = largest + "px";
+      });
+    }
+    // Align first scrollable tab to title
+    if (attrs.scrollable) {
+      alignToTitle(state);
+    }
+    // Handle scroll
+    if (state.managesScroll) {
+      createRightButtonOffset(state);
+    }
+    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  });
+
+  var onResize = function onResize() {
+    return setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  };
+
+  polytheneCore.subscribe("resize", onResize), state.cleanUp = function () {
+    return polytheneCore.unsubscribe("resize", onResize);
+  };
+};
+
+var onUnMount = function onUnMount(_ref) {
+  var state = _ref.state;
+  return state.cleanUp();
+};
+
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var autofit = attrs.scrollable || attrs.centered ? false : attrs.autofit ? true : false;
+
+  // Keep selected tab up to date
+  if (attrs.selectedTab !== undefined && state.previousSelectedTab !== attrs.selectedTab) {
+    setSelectedTab(state, attrs, attrs.selectedTab, true);
+  }
+  state.previousSelectedTab = attrs.selectedTab;
+
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.scrollButtonAtStart() ? classes.isAtStart : null, state.scrollButtonAtEnd() ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer,
+      k = _ref3.keys,
+      Tab = _ref3.Tab,
+      ScrollButton = _ref3.ScrollButton;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  var buttons = attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
+
+  if (buttons.length === 0) {
+    console.error("No tabs specified"); // eslint-disable-line no-console
+  }
+
+  var tabRowButtons = buttons.map(function () {
+    var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var index = arguments[1];
+
+    var buttonOptsCombined = _extends({}, buttonOpts, {
+      // These options can be overridden by `all`
+      selected: index === state.selectedTabIndex(),
+      animateOnTap: attrs.animateOnTap !== false ? true : false
+    }, attrs.all, {
+      // Internal options, should not get overridden
+      index: index,
+      key: "tab-" + index,
+      register: state.registerTabButton(state),
+      onSelect: function onSelect() {
+        return setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true);
+      }
+    });
+    return h(Tab, buttonOptsCombined);
+  });
+
+  var tabRow = attrs.scrollable ? tabRowButtons.concat([
+  // offset for right scroll button
+  h("div", {
+    key: "offset",
+    className: classes.scrollButtonOffset
+  })]) : tabRowButtons;
+
+  var scrollButtonAtStart = void 0,
+      scrollButtonAtEnd = void 0;
+  if (attrs.scrollable) {
+    scrollButtonAtStart = h(ScrollButton, _extends({}, {
+      key: "backward",
+      icon: attrs.scrollIconBackward,
+      className: classes.scrollButtonAtStart,
+      position: "start",
+      register: state.registerScrollButton(state),
+      events: _defineProperty({}, k.onclick, function (e) {
+        return handleScrollButtonClick(state, attrs, e, "backward");
+      })
+    }));
+    scrollButtonAtEnd = h(ScrollButton, _extends({}, {
+      key: "forward",
+      icon: attrs.scrollIconForward,
+      className: classes.scrollButtonAtEnd,
+      position: "end",
+      register: state.registerScrollButton(state),
+      events: _defineProperty({}, k.onclick, function (e) {
+        return handleScrollButtonClick(state, attrs, e, "forward");
+      })
+    }));
+  }
+
+  var tabIndicator = attrs.hideIndicator ? null : h("div", {
+    key: "indicator",
+    className: classes.indicator
+  });
+
+  return [attrs.scrollable ? scrollButtonAtStart : null, h("div", {
+    key: "tabrow",
+    className: [classes.tabRow, attrs.centered ? classes.tabRowCentered : null, attrs.scrollable ? classes.tabRowIndent : null].join(" ")
+  }, [tabRow, tabIndicator]), attrs.scrollable ? scrollButtonAtEnd : null];
+};
+
+var tabs = Object.freeze({
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// Don't export 'element': it will be the wrapped Button component (set in polythene-xxx-tabs/tab)
+
+var onMount$1 = function onMount(vnode) {
+  var dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  var attrs = vnode.attrs;
+  attrs.register(attrs.index, {
+    attrs: attrs,
+    dom: dom
+  });
+};
+
+var createProps$1 = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Icon = _ref.Icon;
+
+  var attrs = vnode.attrs;
+  // Let internal onclick function co-exist with passed button option
+  attrs.events = attrs.events || {};
+  attrs.events[k.onclick] = attrs.events[k.onclick] || function () {};
+  return _extends$1({}, attrs, {
+    content: h("div", { className: classes.tabContent }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.label ? h("div", { className: classes.label }, h("span", attrs.label)) : null]),
+    className: [classes.tab, attrs.icon && attrs.label ? classes.tabHasIcon : null, attrs.className || attrs[k.class]].join(" "),
+    selected: attrs.selected,
+    wash: false,
+    ripple: true,
+    events: _extends$1({}, attrs.events, _defineProperty$1({}, k.onclick, function (e) {
+      attrs.onSelect();
+      attrs.events[k.onclick](e);
+    }))
+  });
+};
+
+var createContent$1 = function createContent() {
+  return null;
+};
+
+var tab = Object.freeze({
+	onMount: onMount$1,
+	createProps: createProps$1,
+	createContent: createContent$1
+});
+
+// Don't export 'element': it will be the wrapped IconButton component (set in polythene-xxx-tabs/scroll-button)
+
+var arrowBackward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>";
+var arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
+
+var onMount$2 = function onMount(vnode) {
+  var dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  var attrs = vnode.attrs;
+  attrs.register(attrs.position, dom);
+};
+
+var createProps$2 = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  var icon = attrs.position === "start" ? attrs.icon || { svg: { content: h.trust(arrowBackward) } } : attrs.icon || { svg: { content: h.trust(arrowForward) } };
+  return {
+    className: [classes.scrollButton, attrs.className || attrs[k.class]].join(" "),
+    icon: icon,
+    ripple: { center: true },
+    events: attrs.events
+  };
+};
+
+var scrollButton = Object.freeze({
+	onMount: onMount$2,
+	createProps: createProps$2
+});
+
+exports.coreTabs = tabs;
+exports.coreTab = tab;
+exports.coreScrollButton = scrollButton;
+exports.vars = vars$3;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-tabs.js.map

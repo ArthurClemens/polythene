@@ -92,10 +92,9 @@ const animateIndicator = (selectedTabEl, animate, state) => {
   const rect = selectedTabEl.getBoundingClientRect();
   const style = state.tabIndicatorEl.style;
   const translateX = rect.left - parentRect.left + state.scrollerEl.scrollLeft;
-  const transformCmd = `translate(${translateX}px, 0)`;
+  const scaleX = 1 / parentRect.width * rect.width;
+  const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
   const duration = animate ? vars.indicator_slide_min_duration : 0;
-  // use width instead of scale to please IE10
-  style.width = rect.width + "px";
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;
 };
@@ -109,8 +108,8 @@ const setSelectedTab = (state, attrs, index, animate) => {
   }
   if (state.managesScroll) {
     updateScrollButtons(state);
-    scrollToTab(state, index);
   }
+  scrollToTab(state, index);
   if (attrs.onChange) {
     attrs.onChange({
       index,
