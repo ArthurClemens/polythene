@@ -7,8 +7,7 @@ var layout = [{
 }, {
   "display": "-moz-box"
 }, {
-  "display": "-ms-flexbox",
-  "-ms-flex-preferred-size": "initial" // IE10
+  "display": "-ms-flexbox"
 }, {
   "display": "-webkit-flex"
 }, {
@@ -78,14 +77,12 @@ var layoutEnd = [layout, {
 }];
 
 var layoutJustified = [layout, {
-  "-ms-flex-line-pack": "stretch", // IE10
   "-ms-flex-pack": "justify",
   "-webkit-justify-content": "space-between",
   "justify-content": "space-between"
 }];
 
 var layoutStartJustified = [layout, {
-  "-ms-flex-align": "start", // IE10
   "-ms-flex-pack": "start",
   "-webkit-justify-content": "flex-start",
   "justify-content": "flex-start"
@@ -158,28 +155,24 @@ var flexGrow = function flexGrow(value) {
 };
 
 var selfStart = {
-  "-ms-flex-item-align": "start", // IE10
   "-ms-align-self": "flex-start",
   "-webkit-align-self": "flex-start",
   "align-self": "flex-start"
 };
 
 var selfCenter = {
-  "-ms-flex-item-align": "center", // IE10
   "-ms-align-self": "center",
   "-webkit-align-self": "center",
   "align-self": "center"
 };
 
 var selfEnd = {
-  "-ms-flex-item-align": "end", // IE10
   "-ms-align-self": "flex-end",
   "-webkit-align-self": "flex-end",
   "align-self": "flex-end"
 };
 
 var selfStretch = {
-  "-ms-flex-item-align": "stretch", // IE10
   "-ms-align-self": "stretch",
   "-webkit-align-self": "stretch",
   "align-self": "stretch"

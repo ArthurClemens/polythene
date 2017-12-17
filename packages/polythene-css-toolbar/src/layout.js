@@ -18,7 +18,7 @@ export default (selector, componentVars) => [{
 
       ".pe-toolbar--compact": compactStyle(componentVars),
 
-      " > span, .pe-toolbar__title": {
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
         width: "100%",
         display: "block",
         wordBreak: "break-all",

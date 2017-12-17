@@ -3,41 +3,26 @@
   flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  height: 64px;
+  height: 56px;
   font-size: 18px;
   line-height: 1.3em;
   padding: 0 4px
 }
 
 .pe-toolbar.pe-toolbar--compact {
-  height: 56px
+  height: 48px
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
-  display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
-  display: flex;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  flex-basis: 0.000000001px;
+  width: 100%;
+  display: block;
+  word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-rendering: auto;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  max-height: 1.3em;
-  transform-origin: left 50%;
-  line-height: 1.3em;
-  word-break: break-all
-}
-
-.pe-toolbar .pe-toolbar__title,.pe-toolbar>span {
+  white-space: nowrap;
   margin-left: 20px
 }
 
@@ -59,6 +44,19 @@
   bottom: 0;
   left: 0;
   margin: 0
+}
+
+@media (min-width:599px) and (orientation:landscape) {
+  .pe-toolbar {
+    height: 48px
+  }
+}
+
+@media (min-width:600px) {
+  .pe-toolbar {
+    height: 64px;
+    padding: 0 12px
+  }
 }
 
 .pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar {

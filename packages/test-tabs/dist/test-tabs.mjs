@@ -195,6 +195,8 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
 
 var onChange = (function (_ref) {
@@ -203,10 +205,10 @@ var onChange = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var tab = stream({});
-      vnode.state = {
+      _extends(vnode.state, {
         tab: tab,
         redrawOnUpdate: stream.merge([tab])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -373,7 +375,6 @@ var genericTests = (function (_ref) {
       view: function view() {
         return h("div", {
           style: {
-            maxWidth: "400px",
             color: "#fff",
             backgroundColor: "#444",
             overflowX: "hidden",
@@ -391,7 +392,6 @@ var genericTests = (function (_ref) {
       view: function view() {
         return h("div", {
           style: {
-            maxWidth: "400px",
             color: "#fff",
             backgroundColor: "#444",
             overflowX: "hidden",
@@ -605,7 +605,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -651,7 +651,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

@@ -1,2 +1,125 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css"),require("polythene-core-snackbar"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-core-snackbar","polythene-theme"],t):t(e.polythene={},e["polythene-core-css"],e["polythene-core-snackbar"],e["polythene-theme"])}(this,function(e,t,n,o){"use strict";function r(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function a(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var c={component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multiline",vertical:"pe-notification--vertical"},l=(Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e})({},c,{component:"pe-notification pe-snackbar",holder:"pe-snackbar__holder",placeholder:"pe-snackbar__placeholder",open:"pe-snackbar--open"}),p=function(e){return{width:"100%",minWidth:e.tablet_min_width+"px",maxWidth:e.tablet_max_width+"px",borderBottomLeftRadius:0,borderBottomRightRadius:0,borderTopLeftRadius:o.vars.unit_block_border_radius+"px",borderTopRightRadius:o.vars.unit_block_border_radius+"px",".pe-notification--horizontal":{" .pe-notification__title":{paddingRight:"30px"}}}},s=function(e,t){var n;return[(n={},r(n,e,{minHeight:t.min_height}),r(n,"@media (min-width: "+o.vars.breakpoint_small_handset_landscape+"px)",r({},e,p(t))),n)]},u=function(e,t,n,o){return[i({},e.map(function(e){return e+t}).join(","),{color:n["color_"+o+"_text"],background:n["color_"+o+"_background"]})]},f=function(e,t){return[u([".pe-dark-tone",".pe-dark-tone "],e,t,"dark"),u(["",".pe-light-tone",".pe-light-tone "],e,t,"light")]},d=function(e){var n;return[(n={},a(n,e,[t.flex.layoutCenterCenter,{position:"fixed",top:"auto",right:0,bottom:0,left:0,zIndex:o.vars.z_notification,pointerEvents:"none",justifyContent:"flex-start"}]),a(n,".pe-notification--container "+e,{position:"relative"}),n)]},h=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},b=[s,f],_="."+l.component.replace(/ /g,"."),y=[d],v="."+l.holder.replace(/ /g,"."),m=function(e,o){return t.styler.generateStyles([e,_],h({},n.vars,o),b)},g=function(e,o){return e?t.styler.createStyleSheets([e,_],h({},n.vars,o),b):t.styler.createStyleSheets([v],n.vars,y).concat(t.styler.createStyleSheets([_],n.vars,b))};t.styler.generateStyles([v],n.vars,y),t.styler.generateStyles([_],n.vars,b),e.addStyle=m,e.getStyle=g,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-snackbar'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-snackbar', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-snackbar'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreSnackbar,polytheneTheme) { 'use strict';
+
+var notificationClasses = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var classes = _extends$1({}, notificationClasses, {
+  component: "pe-notification pe-snackbar",
+
+  // elements
+  holder: "pe-snackbar__holder",
+  placeholder: "pe-snackbar__placeholder",
+
+  // states
+  open: "pe-snackbar--open"
+});
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var tabletStyle = function tabletStyle(componentVars) {
+  return {
+    width: "100%",
+    minWidth: componentVars.min_width + "px",
+    maxWidth: componentVars.max_width + "px",
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    borderTopLeftRadius: polytheneTheme.vars.unit_block_border_radius + "px",
+    borderTopRightRadius: polytheneTheme.vars.unit_block_border_radius + "px",
+
+    ".pe-notification--horizontal": {
+      " .pe-notification__title": {
+        paddingRight: "30px"
+      }
+    }
+  };
+};
+
+var layout = (function (selector, componentVars) {
+  var _ref2;
+
+  return [(_ref2 = {}, _defineProperty(_ref2, selector, {
+    minHeight: componentVars.min_height
+  }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint + "_text"],
+    background: componentVars["color_" + tint + "_background"]
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var holderLayout = (function (selector) {
+  var _ref;
+
+  return [(_ref = {}, _defineProperty$2(_ref, selector, [polytheneCoreCss.flex.layoutCenterCenter, {
+    position: "fixed",
+    top: "auto",
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: polytheneTheme.vars.z_notification,
+    pointerEvents: "none",
+    justifyContent: "flex-start" // For IE 11
+  }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
+    position: "relative"
+  }), _ref)];
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = "." + classes.component.replace(/ /g, ".");
+
+var holderFns = [holderLayout];
+var holderSelector = "." + classes.holder.replace(/ /g, ".");
+
+var addStyle = function addStyle(customSelector, customVars) {
+  return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreSnackbar.vars, customVars), fns);
+};
+
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreSnackbar.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([holderSelector], polytheneCoreSnackbar.vars, holderFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSnackbar.vars, fns));
+};
+
+polytheneCoreCss.styler.generateStyles([holderSelector], polytheneCoreSnackbar.vars, holderFns);
+polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSnackbar.vars, fns);
+
+exports.addStyle = addStyle;
+exports.getStyle = getStyle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-css-snackbar.js.map

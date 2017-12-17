@@ -626,14 +626,14 @@ var genericTests = (function (_ref) {
       content: titleImage("medium", "Title image medium")
     }
   }, {
-    name: "Title image, sizse large, square",
+    name: "Title image, size large, square",
     component: Card$$1,
     attrs: {
       style: { maxWidth: "360px" },
       content: titleImageExtraLarge("square")
     }
   }, {
-    name: "Title image, sizse large, landscape",
+    name: "Title image, size large, landscape",
     component: Card$$1,
     attrs: {
       style: { maxWidth: "360px" },

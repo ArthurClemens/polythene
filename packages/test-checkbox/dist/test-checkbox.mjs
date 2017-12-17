@@ -195,16 +195,18 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var onChange = (function (_ref) {
   var h = _ref.h,
       Checkbox$$1 = _ref.Checkbox;
   return {
     oninit: function oninit(vnode) {
       var checked = stream(false);
-      vnode.state = {
+      _extends$1(vnode.state, {
         checked: checked,
         redrawOnUpdate: stream.merge([checked]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -223,6 +225,8 @@ var onChange = (function (_ref) {
   };
 });
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var events = (function (_ref) {
@@ -232,10 +236,10 @@ var events = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var checked = stream(false);
-      vnode.state = {
+      _extends$2(vnode.state, {
         checked: checked,
         redrawOnUpdate: stream.merge([checked]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -254,6 +258,8 @@ var events = (function (_ref) {
   };
 });
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var toggleButton = (function (_ref) {
@@ -264,10 +270,10 @@ var toggleButton = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var checked = stream(false);
-      vnode.state = {
+      _extends$3(vnode.state, {
         checked: checked,
         redrawOnUpdate: stream.merge([checked])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -363,7 +369,7 @@ var genericTests = (function (_ref) {
       label: "Label",
       defaultChecked: true,
       style: {
-        color: "#ff9800"
+        color: "#ff0000"
       }
     }
   }, {
@@ -534,7 +540,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -580,7 +586,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$4({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

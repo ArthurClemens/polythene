@@ -4,10 +4,10 @@ import stream from "mithril/stream";
 export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menuFn, transitionOptions, id }) => ({
   oninit: vnode => {
     const show = stream(false);
-    vnode.state = {
+    Object.assign(vnode.state, {
       show,
       redrawOnUpdate: stream.merge([show])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

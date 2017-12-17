@@ -248,6 +248,8 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var genericTests = (function (_ref) {
   var renderer$$1 = _ref.renderer,
       keys$$1 = _ref.keys,
@@ -389,10 +391,10 @@ var genericTests = (function (_ref) {
     component: {
       oninit: function oninit(vnode) {
         var file = stream();
-        vnode.state = {
+        _extends(vnode.state, {
           file: file,
           redrawOnUpdate: stream.merge([file])
-        };
+        });
       },
       view: function view(vnode) {
         return h(DialogPane$$1, form({ renderer: renderer$$1, keys: keys$$1, Button: Button$$1, file: vnode.state.file }));
@@ -415,7 +417,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -461,7 +463,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

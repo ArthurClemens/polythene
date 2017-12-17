@@ -1,2 +1,551 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n(e.polythene={})}(this,function(e){"use strict";var n="undefined"!=typeof document,t=!n,o={animation:"animationend",OAnimation:"oAnimationEnd",MozAnimation:"animationend",WebkitAnimation:"webkitAnimationEnd"},i=function(){if(n){var e=document.createElement("fakeelement");for(var t in o)if(void 0!==e.style[t])return o[t]}},r={view:function(e,n){var t=n.renderer,o=e.attrs;return o.permanent||o.show?t(o.instance,o):t("span",{className:o.placeholderClassName})}};r.displayName="Conditional";var u=function(e,n){return e[n]=1,e},a=["key","style","href","id","tabIndex","tabindex","oninit","oncreate","onupdate","onbeforeremove","onremove","onbeforeupdate"],d=function(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=n.add,o=void 0===t?[]:t,i=n.remove,r=(void 0===i?[]:i).reduce(u,{}),d=a.concat(o).filter(function(e){return!r[e]}).reduce(u,{});return Object.keys(e).reduce(function(n,t){return d[t]&&(n[t]=e[t]),n},{})},s=function(e){return"function"==typeof e?e():e},c=!t&&"ontouchstart"in document.documentElement,l=c?"click":"mousedown",f=c?"click":"mouseup",h=c?"touchstart":"mousedown",m=c?"touchmove":"mousemove",v=c?"touchend":"mouseup";n&&document.querySelector("html").classList.add(c?"pe-touch":"pe-no-touch");var p={},w=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:.05,o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:n?window:{},i=!1;return function(){for(var n=arguments.length,r=Array(n),u=0;u<n;u++)r[u]=arguments[u];i||(!function(){e.apply(o,r)}(),i=!0,setTimeout(function(){return i=!1},t))}},y=function(e,n,t){p[e]=p[e]||[],p[e].push(t?w(n,t):n)},g=function(e,n){if(p[e]){var t=p[e].indexOf(n);t>-1&&p[e].splice(t,1)}},b=function(e,n){p[e]&&p[e].forEach(function(e){return e(n)})};n&&(window.addEventListener("resize",function(e){return b("resize",e)}),window.addEventListener("scroll",function(e){return b("scroll",e)}),window.addEventListener("keydown",function(e){return b("keydown",e)}),window.addEventListener(f,function(e){return b(f,e)}));var I=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},S=function(e){var t=e.options,o=e.renderer,i=[],r=void 0,u=function(e){r||console.error("Cannot set state. Did you set a root element like Dialog to show instances?"),r(e.id),b(t.name,e)},a=function(e){var n=l(e);return i.indexOf(n)},d=function(e){var n=a(e);-1!==n&&(i.splice(n,1),u({id:e,name:"removeItem"}))},c=function(e,n){var t=a(e);-1!==t&&(i[t]=n)},l=function(e){for(var n=0;n<i.length;n++)if(i[n].instanceId===e)return i[n]},f=function(){i.length&&(i[0].show=!0),u({id:i.length?i[0].instanceId:null,name:"next"})},h=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:t.defaultId;t.queue?(i.shift(),f()):d(e)},m=function(e,n){var t=l(n);t&&(t.pause=e,t.unpause=!e,u({id:n,name:e?"pause":"unpause"}))},v=function(e,n,o){var i=void 0,r=void 0,a=s(e),d=function(){return a.didShow&&a.didShow(n),u({id:n,name:"didShow"}),i(n)},c=new Promise(function(e){return i=e}),l=function(){return a.didHide&&a.didHide(n),u({id:n,name:"didHide"}),h(n),r(n)},f=new Promise(function(e){return r=e});return I({},t,{instanceId:n,spawn:o,attrs:e,show:!t.queue,showPromise:c,hidePromise:f,didShow:d,didHide:l})},p=function(){i.length=0,u({id:null,name:"removeAll"})};return{clear:p,count:function(){return i.length},getInitialState:function(e,n){return r=n(null),{current:r,redrawOnUpdate:n.merge([r])}},hide:function(){var e=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).id||t.defaultId,n=t.queue&&i.length?i[0]:l(e);return n&&(n.hide=!0),u({id:e,name:"hide"}),n?n.hidePromise:Promise.resolve(e)},pause:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:t.defaultId;return m(!0,e)},remove:h,show:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},o=n.id||t.defaultId,r=n.spawn||t.defaultId,a=v(e,o,r);return u({id:o,name:"show"}),t.queue?(i.push(a),1===i.length&&f()):l(o)?c(o,a):i.push(a),a.showPromise},unpause:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:t.defaultId;return m(!1,e)},view:function(e){var r=e.attrs,u=r.spawn||t.defaultId,a=i.filter(function(e){return e.show&&e.spawn===u});return t.bodyShowClass&&n&&document.body.classList[a.length?"add":"remove"](t.bodyShowClass),a.length?o(t.holderSelector,{className:"container"===r.position?"pe-multiple--container":"pe-multiple--screen"},a.map(function(e){return o(t.instance,I({},{key:e.key,instanceId:e.instanceId,transitions:t.transitions,holderSelector:t.holderSelector,className:t.className,showInstance:e.show,hideInstance:e.hide,pauseInstance:e.pause,unpauseInstance:e.unpause,multipleDidShow:e.didShow,multipleDidHide:e.didHide,multipleClear:p},s(e.attrs)))})):o(t.placeholder)}}};S.displayName="Multi";var E=function(e){return C(e,"show")},k=function(e){return C(e,"hide")},D=function(e,n,t,o,i,r){var u=e.transition||"both";return"none"===u?0:"show"===u&&"hide"===n?0:"hide"===u&&"show"===n?0:"show"===n?void 0!==e[t]?e[t]:i:void 0!==e[o]?e[o]:r},P=function(e,n){return D(e,n,"showDuration","hideDuration",.22,.2)},A=function(e,n){return D(e,n,"showDelay","hideDelay",0,0)},C=function(e,n){var t=e.el;return t?new Promise(function(o){var i=1e3*P(e,n),r=1e3*A(e,n),u=t.style,a=e.beforeShow&&"show"===n?function(){u.transitionDuration="0ms",u.transitionDelay="0ms",e.beforeShow()}:null,d=e.afterHide&&"hide"===n?function(){return e.afterHide()}:null,s=function(){u.transitionDuration=i+"ms",u.transitionDelay=r+"ms",e.showClass&&t.classList["show"===n?"add":"remove"](e.showClass),e.show&&"function"==typeof e.show&&"show"===n&&e.show(),e.hide&&"function"==typeof e.hide&&"hide"===n&&e.hide()},c=function(){s(),setTimeout(function(){d&&d(),o()},i+r)},l=function(){0===i?c():setTimeout(c,0)};a?(a(),t.offsetHeight,setTimeout(function(){l()},0)):l()}):Promise.resolve()};e.getAnimationEndEvent=i,e.Conditional=r,e.filterSupportedAttributes=d,e.unpackAttrs=s,e.isClient=n,e.isServer=t,e.isTouch=c,e.pointerStartEvent=l,e.pointerEndEvent=f,e.pointerStartMoveEvent=h,e.pointerMoveEvent=m,e.pointerEndMoveEvent=v,e.Multi=S,e.show=E,e.hide=k,e.throttle=w,e.subscribe=y,e.unsubscribe=g,e.emit=b,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
+
+var isClient = typeof document !== "undefined";
+var isServer = !isClient;
+
+var evts = {
+  "animation": "animationend",
+  "OAnimation": "oAnimationEnd",
+  "MozAnimation": "animationend",
+  "WebkitAnimation": "webkitAnimationEnd"
+};
+
+var getAnimationEndEvent = function getAnimationEndEvent() {
+  if (isClient) {
+    var el = document.createElement("fakeelement");
+    for (var a in evts) {
+      if (el.style[a] !== undefined) {
+        return evts[a];
+      }
+    }
+  }
+};
+
+var Conditional = {
+  view: function view(vnode, _ref) {
+    var h = _ref.renderer;
+
+    var attrs = vnode.attrs;
+    return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
+  }
+};
+
+Conditional.displayName = "Conditional";
+
+var r = function r(acc, p) {
+  return acc[p] = 1, acc;
+};
+
+/* 
+Separately handled props:
+- class
+- element
+*/
+
+var defaultAttrs = [
+// Universal
+"key", "style", "href", "id",
+
+// React
+"tabIndex",
+
+// Mithril
+"tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+
+var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$add = _ref.add,
+      addAttrs = _ref$add === undefined ? [] : _ref$add,
+      _ref$remove = _ref.remove,
+      removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
+
+  var removeLookup = removeAttrs.reduce(r, {});
+  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+    return !removeLookup[item];
+  }).reduce(r, {});
+  return Object.keys(attrs).reduce(function (acc, key) {
+    return supported[key] ? acc[key] = attrs[key] : null, acc;
+  }, {});
+};
+
+var unpackAttrs = function unpackAttrs(attrs) {
+  return typeof attrs === "function" ? attrs() : attrs;
+};
+
+var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
+
+var pointerStartEvent = isTouch ? "click" : "mousedown";
+
+var pointerEndEvent = isTouch ? "click" : "mouseup";
+
+var pointerStartMoveEvent = isTouch ? "touchstart" : "mousedown";
+
+var pointerMoveEvent = isTouch ? "touchmove" : "mousemove";
+
+var pointerEndMoveEvent = isTouch ? "touchend" : "mouseup";
+
+if (isClient) {
+  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+}
+
+var listeners = {};
+
+// https://gist.github.com/Eartz/fe651f2fadcc11444549
+var throttle = function throttle(func) {
+  var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
+  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
+
+  var wait = false;
+  return function () {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var later = function later() {
+      return func.apply(context, args);
+    };
+    if (!wait) {
+      later();
+      wait = true;
+      setTimeout(function () {
+        return wait = false;
+      }, s);
+    }
+  };
+};
+
+var subscribe = function subscribe(eventName, listener, delay) {
+  listeners[eventName] = listeners[eventName] || [];
+  listeners[eventName].push(delay ? throttle(listener, delay) : listener);
+};
+
+var unsubscribe = function unsubscribe(eventName, listener) {
+  if (!listeners[eventName]) {
+    return;
+  }
+  var index = listeners[eventName].indexOf(listener);
+  if (index > -1) {
+    listeners[eventName].splice(index, 1);
+  }
+};
+
+var emit = function emit(eventName, event) {
+  if (!listeners[eventName]) {
+    return;
+  }
+  listeners[eventName].forEach(function (listener) {
+    return listener(event);
+  });
+};
+
+if (isClient) {
+  window.addEventListener("resize", function (e) {
+    return emit("resize", e);
+  });
+  window.addEventListener("scroll", function (e) {
+    return emit("scroll", e);
+  });
+  window.addEventListener("keydown", function (e) {
+    return emit("keydown", e);
+  });
+  window.addEventListener(pointerEndEvent, function (e) {
+    return emit(pointerEndEvent, e);
+  });
+}
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+/*
+Helper module to manage multiple items of the same component type.
+*/
+
+var Multi = function Multi(_ref) {
+  var mOptions = _ref.options,
+      renderer = _ref.renderer;
+
+
+  var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
+  var current = void 0;
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    current = createStream(null);
+    return {
+      current: current,
+      redrawOnUpdate: createStream.merge([current])
+    };
+  };
+
+  /*
+  @param e: { id, eventName }
+  */
+  var onChange = function onChange(e) {
+    if (!current) {
+      console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
+    }
+    current(e.id);
+    emit(mOptions.name, e);
+  };
+
+  var itemIndex = function itemIndex(id) {
+    var item = findItem(id);
+    return items.indexOf(item);
+  };
+
+  var removeItem = function removeItem(id) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items.splice(index, 1);
+      onChange({ id: id, name: "removeItem" });
+    }
+  };
+
+  var replaceItem = function replaceItem(id, newItem) {
+    var index = itemIndex(id);
+    if (index !== -1) {
+      items[index] = newItem;
+    }
+  };
+
+  var findItem = function findItem(id) {
+    // traditional for loop for IE10
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].instanceId === id) {
+        return items[i];
+      }
+    }
+  };
+
+  var next = function next() {
+    if (items.length) {
+      items[0].show = true;
+    }
+    onChange({ id: items.length ? items[0].instanceId : null, name: "next" });
+  };
+
+  var remove = function remove() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+
+    if (mOptions.queue) {
+      items.shift();
+      next();
+    } else {
+      removeItem(instanceId);
+    }
+  };
+
+  var removeAll = function removeAll() {
+    items.length = 0;
+    onChange({ id: null, name: "removeAll" });
+  };
+
+  var setPauseState = function setPauseState(pause, instanceId) {
+    var item = findItem(instanceId);
+    if (item) {
+      item.pause = pause;
+      item.unpause = !pause;
+      onChange({ id: instanceId, name: pause ? "pause" : "unpause" });
+    }
+  };
+
+  var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
+    var resolveShow = void 0;
+    var resolveHide = void 0;
+    var attrs = unpackAttrs(itemAttrs);
+
+    var didShow = function didShow() {
+      if (attrs.didShow) {
+        attrs.didShow(instanceId);
+      }
+      onChange({ id: instanceId, name: "didShow" });
+      return resolveShow(instanceId);
+    };
+    var showPromise = new Promise(function (resolve) {
+      return resolveShow = resolve;
+    });
+
+    var didHide = function didHide() {
+      if (attrs.didHide) {
+        attrs.didHide(instanceId);
+      }
+      onChange({ id: instanceId, name: "didHide" });
+      remove(instanceId);
+      return resolveHide(instanceId);
+    };
+
+    var hidePromise = new Promise(function (resolve) {
+      return resolveHide = resolve;
+    });
+
+    return _extends({}, mOptions, {
+      instanceId: instanceId,
+      spawn: spawn,
+      attrs: itemAttrs,
+      show: mOptions.queue ? false : true,
+      showPromise: showPromise,
+      hidePromise: hidePromise,
+      didShow: didShow,
+      didHide: didHide
+    });
+  };
+
+  var count = function count() {
+    return items.length;
+  };
+  var pause = function pause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(true, instanceId);
+  };
+  var unpause = function unpause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(false, instanceId);
+  };
+
+  var show = function show() {
+    var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var spawn = spawnOpts.spawn || mOptions.defaultId;
+    var item = makeItem(attrs, instanceId, spawn);
+    onChange({ id: instanceId, name: "show" });
+    if (mOptions.queue) {
+      items.push(item);
+      if (items.length === 1) {
+        next();
+      }
+    } else {
+      var storedItem = findItem(instanceId);
+      if (!storedItem) {
+        items.push(item);
+      } else {
+        replaceItem(instanceId, item);
+      }
+    }
+    return item.showPromise;
+  };
+
+  var hide = function hide() {
+    var spawnOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
+    if (item) {
+      item.hide = true;
+    }
+    onChange({ id: instanceId, name: "hide" });
+    return item ? item.hidePromise : Promise.resolve(instanceId);
+  };
+
+  var clear = removeAll;
+
+  var view = function view(_ref2) {
+    var attrs = _ref2.attrs;
+
+    var spawn = attrs.spawn || mOptions.defaultId;
+    var candidates = items.filter(function (item) {
+      return item.show && item.spawn === spawn;
+    });
+    if (mOptions.bodyShowClass && isClient) {
+      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    }
+    return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
+    : renderer(mOptions.holderSelector, {
+      className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
+    }, candidates.map(function (itemData) {
+      return renderer(mOptions.instance, _extends({}, {
+        key: itemData.key,
+        instanceId: itemData.instanceId,
+        transitions: mOptions.transitions,
+        holderSelector: mOptions.holderSelector,
+        className: mOptions.className,
+        showInstance: itemData.show,
+        hideInstance: itemData.hide,
+        pauseInstance: itemData.pause,
+        unpauseInstance: itemData.unpause,
+        multipleDidShow: itemData.didShow,
+        multipleDidHide: itemData.didHide,
+        multipleClear: clear
+      }, unpackAttrs(itemData.attrs)));
+    }));
+  };
+
+  return {
+    clear: clear,
+    count: count,
+    getInitialState: getInitialState,
+    hide: hide,
+    pause: pause,
+    remove: remove,
+    show: show,
+    unpause: unpause,
+    view: view
+  };
+};
+
+Multi.displayName = "Multi";
+
+/*
+Generic show/hide transition module
+*/
+
+// defaults
+var SHOW_DURATION = .220; // default dialog timing
+var HIDE_DURATION = .200; // default dialog timing
+var SHOW_DELAY = 0;
+var HIDE_DELAY = 0;
+var TRANSITION = "both";
+
+// See: transition
+var show = function show(opts) {
+  return transition(opts, "show");
+};
+
+var hide = function hide(opts) {
+  return transition(opts, "hide");
+};
+
+var getTiming = function getTiming(opts, state, showAttr, hideAttr, defaultShowTiming, defaultHideTiming) {
+  var transition = opts.transition || TRANSITION;
+  if (transition === "none") {
+    return 0;
+  } else if (transition === "show" && state === "hide") {
+    return 0;
+  } else if (transition === "hide" && state === "show") {
+    return 0;
+  } else {
+    // both
+    return state === "show" ? opts[showAttr] !== undefined ? opts[showAttr] : defaultShowTiming : opts[hideAttr] !== undefined ? opts[hideAttr] : defaultHideTiming;
+  }
+};
+
+/*
+opts:
+- transition
+- showDuration
+- hideDuration
+
+- state (show, hide)
+*/
+var getDuration = function getDuration(opts, state) {
+  return getTiming(opts, state, "showDuration", "hideDuration", SHOW_DURATION, HIDE_DURATION);
+};
+
+/*
+opts:
+- transition (show, hide, both)
+- showDelay
+- hideDelay
+
+- state (show, hide)
+*/
+var getDelay = function getDelay(opts, state) {
+  return getTiming(opts, state, "showDelay", "hideDelay", SHOW_DELAY, HIDE_DELAY);
+};
+
+/*
+opts:
+- el
+- duration
+- delay
+- showClass
+- beforeShow
+- show
+- hide
+- afterHide
+- showDelay
+- hideDelay
+
+- state (show, hide)
+*/
+var transition = function transition(opts, state) {
+  var el = opts.el;
+  if (!el) {
+    return Promise.resolve();
+  } else {
+    return new Promise(function (resolve) {
+      var transitionDuration = getDuration(opts, state) * 1000;
+      var delay = getDelay(opts, state) * 1000;
+      var style = el.style;
+      var beforeTransition = opts.beforeShow && state === "show" ? function () {
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+        opts.beforeShow();
+      } : null;
+
+      var afterTransition = opts.afterHide && state === "hide" ? function () {
+        return opts.afterHide();
+      } : null;
+
+      var applyTransition = function applyTransition() {
+        style.transitionDuration = transitionDuration + "ms";
+        style.transitionDelay = delay + "ms";
+        if (opts.showClass) {
+          el.classList[state === "show" ? "add" : "remove"](opts.showClass);
+        }
+        if (opts.show && typeof opts.show === "function" && state === "show") {
+          opts.show();
+        }
+        if (opts.hide && typeof opts.hide === "function" && state === "hide") {
+          opts.hide();
+        }
+      };
+
+      var doTransition = function doTransition() {
+        applyTransition();
+        setTimeout(function () {
+          if (afterTransition) {
+            afterTransition();
+          }
+          resolve();
+        }, transitionDuration + delay);
+      };
+
+      var maybeDelayTransition = function maybeDelayTransition() {
+        if (transitionDuration === 0) {
+          doTransition();
+        } else {
+          setTimeout(doTransition, 0);
+        }
+      };
+
+      if (beforeTransition) {
+        beforeTransition();
+        el.offsetHeight; // force reflow
+        setTimeout(function () {
+          maybeDelayTransition();
+        }, 0);
+      } else {
+        maybeDelayTransition();
+      }
+    });
+  }
+};
+
+exports.getAnimationEndEvent = getAnimationEndEvent;
+exports.Conditional = Conditional;
+exports.filterSupportedAttributes = filterSupportedAttributes;
+exports.unpackAttrs = unpackAttrs;
+exports.isClient = isClient;
+exports.isServer = isServer;
+exports.isTouch = isTouch;
+exports.pointerStartEvent = pointerStartEvent;
+exports.pointerEndEvent = pointerEndEvent;
+exports.pointerStartMoveEvent = pointerStartMoveEvent;
+exports.pointerMoveEvent = pointerMoveEvent;
+exports.pointerEndMoveEvent = pointerEndMoveEvent;
+exports.Multi = Multi;
+exports.show = show;
+exports.hide = hide;
+exports.throttle = throttle;
+exports.subscribe = subscribe;
+exports.unsubscribe = unsubscribe;
+exports.emit = emit;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core.js.map

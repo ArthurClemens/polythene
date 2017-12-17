@@ -1,2 +1,559 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("react"),require("react-hyperscript"),require("react-dom"),require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","react","react-hyperscript","react-dom","polythene-core"],t):t(e.polythene={},e.react,e["react-hyperscript"],e["react-dom"],e["polythene-core"])}(this,function(e,t,n,r,o){"use strict";function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function s(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}function c(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function f(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function p(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function d(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function h(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}t=t&&t.hasOwnProperty("default")?t.default:t,n=n&&n.hasOwnProperty("default")?n.default:n,r=r&&r.hasOwnProperty("default")?r.default:r;var y={autocomplete:"autoComplete",autofocus:"autoFocus",class:"className",className:"className",enctype:"encType",formaction:"formAction",maxlength:"maxLength",minlength:"minLength",onblur:"onBlur",onchange:"onChange",onclick:"onClick",onfocus:"onFocus",oninput:"onInput",onkeydown:"onKeyDown",onkeyup:"onKeyUp",onmousedown:"onMouseDown",onmouseout:"onMouseOut",onmouseover:"onMouseOver",onmouseup:"onMouseUp",onscroll:"onScroll",onsubmit:"onSubmit",ontouchend:"onTouchEnd",ontouchmove:"onTouchMove",ontouchstart:"onTouchStart",readonly:"readOnly",tabindex:"tabIndex"},v=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},m=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),_=function(e){return function(t){function n(t){a(this,n);var r=i(this,(n.__proto__||Object.getPrototypeOf(n)).call(this,t)),o=v({},e,{state:{},attrs:r.props,redrawValues:void 0});return e.oninit&&e.oninit(o),r.state=o,r}return u(n,t),m(n,[{key:"componentDidMount",value:function(){var e=this;this._mounted=!0,this.state.state.redrawOnUpdate&&this.state.state.redrawOnUpdate.map(function(t){e._mounted&&e.setState({redrawValues:t})})}},{key:"componentWillUnmount",value:function(){this._mounted=!1}},{key:"render",value:function(){return e.view({state:this.state.state,attrs:this.props},this.props.children)}}]),n}(t.Component)},b="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},O=function(){for(var e=arguments.length,t=Array(e),r=0;r<e;r++)t[r]=arguments[r];return"object"===b(t[0])?n.call.apply(n,[null,_(t[0])].concat(s(t.slice(1)))):n.call.apply(n,[null].concat(t))};O.trust=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"div";return null==e&&(e=""),n(t,{dangerouslySetInnerHTML:{__html:e}})},O.displayName="react";var g=function(e,t){return t={exports:{}},e(t,t.exports),t.exports}(function(e){!function(){function t(){function e(){return arguments.length>0&&arguments[0]!==k&&r(e,arguments[0]),e._state.value}return n(e),arguments.length>0&&arguments[0]!==k&&r(e,arguments[0]),e}function n(e){e.constructor=t,e._state={id:w++,value:void 0,state:0,derive:void 0,recover:void 0,deps:{},parents:[],endStream:void 0,unregister:void 0},e.map=e["fantasy-land/map"]=l,e["fantasy-land/ap"]=p,e["fantasy-land/of"]=t,e.valueOf=d,e.toJSON=h,e.toString=d,Object.defineProperties(e,{end:{get:function(){if(!e._state.endStream){var n=t();n.map(function(t){return!0===t&&(f(e),n._state.unregister=function(){f(n)}),t}),e._state.endStream=n}return e._state.endStream}}})}function r(e,t){o(e,t);for(var n in e._state.deps)a(e._state.deps[n],!1);null!=e._state.unregister&&e._state.unregister(),i(e)}function o(e,t){e._state.value=t,e._state.changed=!0,2!==e._state.state&&(e._state.state=1)}function a(e,t){var n=e._state.parents;if(n.length>0&&n.every(v)&&(t||n.some(m))){var r=e._state.derive();if(r===k)return!1;o(e,r)}}function i(e){e._state.changed=!1;for(var t in e._state.deps)e._state.deps[t]._state.changed=!1}function u(e,n){if(!n.every(y))throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");return s(t(),n,function(){return e.apply(this,n.concat([n.filter(m)]))})}function s(e,t,n){var r=e._state;return r.derive=n,r.parents=t.filter(_),c(e,r.parents),a(e,!0),e}function c(e,t){for(var n=0;n<t.length;n++)t[n]._state.deps[e._state.id]=e,c(e,t[n]._state.parents)}function f(e){for(var t=0;t<e._state.parents.length;t++)delete e._state.parents[t]._state.deps[e._state.id];for(var n in e._state.deps){var r=e._state.deps[n],o=r._state.parents.indexOf(e);o>-1&&r._state.parents.splice(o,1)}e._state.state=2,e._state.deps={}}function l(e){return u(function(t){return e(t())},[this])}function p(e){return u(function(e,t){return e()(t())},[e,this])}function d(){return this._state.value}function h(){return null!=this._state.value&&"function"==typeof this._state.value.toJSON?this._state.value.toJSON():this._state.value}function y(e){return e._state}function v(e){return 1===e._state.state}function m(e){return e._state.changed}function _(e){return 2!==e._state.state}function b(e){return u(function(){return e.map(function(e){return e()})},e)}function O(e,t,n){var r=u(function(n){return t=e(t,n._state.value)},[n]);return 0===r._state.state&&r(t),r}function g(e,t){var n=e.map(function(e){var t=e[0];return 0===t._state.state&&t(void 0),t});return u(function(){var r=arguments[arguments.length-1];return n.forEach(function(n,o){r.indexOf(n)>-1&&(t=e[o][1](t,n._state.value))}),t},n)}var w=0,k={};t["fantasy-land/of"]=t,t.merge=b,t.combine=u,t.scan=O,t.scanMerge=g,t.HALT=k,e.exports=t}()}),w=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},k=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),j=function(e){var n=e.createContent,a=void 0===n?function(){}:n,i=e.createProps,u=void 0===i?function(){return{}}:i,s=e.getElement,p=void 0===s?function(){return"div"}:s,d=e.component,h=e.getInitialState,v=void 0===h?function(){return{}}:h,m=e.onMount,_=void 0===m?function(){}:m,b=e.onUnMount,j=void 0===b?function(){}:b,M=e.onUpdate,S=void 0===M?function(){}:M,P=e.view,N=void 0===P?null:P;return function(e){function t(e){c(this,t);var n=f(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));n.dom=null;var r=w({},d,n.createVirtualNode(),{redrawValues:void 0});return n.state=v(r,g),n.registerDOM=n.registerDOM.bind(n),n._render=n._render.bind(n),n}return l(t,e),k(t,[{key:"componentDidMount",value:function(){var e=this;this._mounted=!0,this.state.redrawOnUpdate&&this.state.redrawOnUpdate.map(function(t){return e._mounted&&e.setState({redrawValues:t})}),_(this.createVirtualNode(),{keys:y})}},{key:"componentDidUpdate",value:function(){S(this.createVirtualNode())}},{key:"componentWillUnmount",value:function(){this._mounted=!1,j(this.createVirtualNode())}},{key:"createVirtualNode",value:function(){return{state:this.state,attrs:this.props,children:this.props.children,dom:this.dom}}},{key:"registerDOM",value:function(e){o.isClient&&!this.dom&&e&&(this.dom=e instanceof HTMLElement?e:r.findDOMNode(e))}},{key:"_render",value:function(){var e=this.createVirtualNode();return O(d||p(e),w({},u(e,{renderer:O,requiresKeys:!0,keys:y}),{ref:this.registerDOM}),[e.attrs.before,a(e,{renderer:O,requiresKeys:!0,keys:y}),e.attrs.after])}},{key:"render",value:function(){return N?N(this.createVirtualNode(),{renderer:O,render:this._render}):this._render(this.props)}}]),t}(t.Component)},M=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},S=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),P=function(e){var n=e.createContent,a=void 0===n?function(){}:n,i=e.createProps,u=void 0===i?function(){return{}}:i,s=e.getElement,c=void 0===s?function(){return"div"}:s,f=e.onMount,l=void 0===f?function(){}:f,v=e.onUnMount,m=void 0===v?function(){}:v,_=e.component,b=e.view,g=void 0===b?null:b;return function(e){function t(e){p(this,t);var n=d(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.dom=null,n.registerDOM=n.registerDOM.bind(n),n._render=n._render.bind(n),n}return h(t,e),S(t,[{key:"componentDidMount",value:function(){l(this.createVirtualNode(),{keys:y})}},{key:"componentWillUnmount",value:function(){m(this.createVirtualNode())}},{key:"createVirtualNode",value:function(){var e=M({},this.props);return{attrs:e,children:e.children,dom:this.dom}}},{key:"registerDOM",value:function(e){o.isClient&&!this.dom&&e&&(this.dom=e instanceof HTMLElement?e:r.findDOMNode(e))}},{key:"_render",value:function(){var e=this.createVirtualNode();return O(_||c(e),M({},u(e,{renderer:O,requiresKeys:!0,keys:y}),{ref:this.registerDOM}),[e.attrs.before,a(e,{renderer:O,requiresKeys:!0,keys:y}),e.attrs.after])}},{key:"render",value:function(){return g?g(this.createVirtualNode(),{renderer:O,render:this._render}):this._render(this.props)}}]),t}(t.Component)};e.keys=y,e.MithrilToReact=_,e.renderer=O,e.StateComponent=j,e.ViewComponent=P,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-hyperscript'), require('react-dom'), require('polythene-core')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-hyperscript', 'react-dom', 'polythene-core'], factory) :
+	(factory((global.polythene = {}),global.react,global['react-hyperscript'],global['react-dom'],global['polythene-core']));
+}(this, (function (exports,React,h,ReactDOM,polytheneCore) { 'use strict';
+
+React = React && React.hasOwnProperty('default') ? React['default'] : React;
+h = h && h.hasOwnProperty('default') ? h['default'] : h;
+ReactDOM = ReactDOM && ReactDOM.hasOwnProperty('default') ? ReactDOM['default'] : ReactDOM;
+
+var keys = {
+  autocomplete: "autoComplete",
+  autofocus: "autoFocus",
+  class: "className",
+  className: "className",
+  enctype: "encType",
+  formaction: "formAction",
+  maxlength: "maxLength",
+  minlength: "minLength",
+  onblur: "onBlur",
+  onchange: "onChange",
+  onclick: "onClick",
+  onfocus: "onFocus",
+  oninput: "onInput",
+  onkeydown: "onKeyDown",
+  onkeyup: "onKeyUp",
+  onmousedown: "onMouseDown",
+  onmouseout: "onMouseOut",
+  onmouseover: "onMouseOver",
+  onmouseup: "onMouseUp",
+  onscroll: "onScroll",
+  onsubmit: "onSubmit",
+  ontouchend: "onTouchEnd",
+  ontouchmove: "onTouchMove",
+  ontouchstart: "onTouchStart",
+  readonly: "readOnly",
+  tabindex: "tabIndex"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/*
+Takes a Mithril component object and returns a React component (for keys oninit and view).
+Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
+
+Example: 
+
+import stream from "mithril/stream";
+import { renderer as h, RaisedButton } from "polythene-react";
+
+const StateComponent = {
+  oninit: vnode => {
+    const checked = stream(false);
+    Object.assign(vnode.state, {
+      checked,
+      redrawOnUpdate: stream.merge([checked])
+    });
+  },
+  view: vnode => {
+    const state = vnode.state;
+    const attrs = vnode.attrs;
+    const checked = state.checked();
+    return h(RaisedButton, {
+      label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
+      events: {
+        [keys.onclick]: () => state.checked(!checked)
+      }
+    });
+  }
+};
+
+h(StateComponent, { subject: "airco"});
+*/
+
+var MithrilToReact = function MithrilToReact(component) {
+  return function (_React$Component) {
+    _inherits(_class, _React$Component);
+
+    function _class(props) {
+      _classCallCheck(this, _class);
+
+      var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      var vnode = _extends({}, component, {
+        state: {},
+        attrs: _this.props,
+        redrawValues: undefined
+      });
+      if (component.oninit) {
+        component.oninit(vnode);
+      }
+      _this.state = vnode;
+      return _this;
+    }
+
+    _createClass(_class, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _this2 = this;
+
+        this._mounted = true;
+        this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(function (values) {
+          if (_this2._mounted) {
+            _this2.setState({ redrawValues: values });
+          }
+        });
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this._mounted = false;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return component.view({ state: this.state.state, attrs: this.props }, this.props.children);
+      }
+    }]);
+
+    return _class;
+  }(React.Component);
+};
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var renderer = function renderer() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return _typeof(args[0]) === "object" ? h.call.apply(h, [null, MithrilToReact(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [null].concat(args));
+};
+
+renderer.trust = function (html) {
+  var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "div";
+
+  if (html == null) html = "";
+  return h(element, {
+    dangerouslySetInnerHTML: { __html: html }
+  });
+};
+
+renderer.displayName = "react";
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	/* eslint-disable */
+	(function () {
+		var guid = 0,
+		    HALT = {};
+		function createStream() {
+			function stream() {
+				if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+				return stream._state.value;
+			}
+			initStream(stream);
+
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+			return stream;
+		}
+		function initStream(stream) {
+			stream.constructor = createStream;
+			stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined, unregister: undefined };
+			stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+			stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+			Object.defineProperties(stream, {
+				end: { get: function get() {
+						if (!stream._state.endStream) {
+							var endStream = createStream();
+							endStream.map(function (value) {
+								if (value === true) {
+									unregisterStream(stream);
+									endStream._state.unregister = function () {
+										unregisterStream(endStream);
+									};
+								}
+								return value;
+							});
+							stream._state.endStream = endStream;
+						}
+						return stream._state.endStream;
+					} }
+			});
+		}
+		function updateStream(stream, value) {
+			updateState(stream, value);
+			for (var id in stream._state.deps) {
+				updateDependency(stream._state.deps[id], false);
+			}if (stream._state.unregister != null) stream._state.unregister();
+			finalize(stream);
+		}
+		function updateState(stream, value) {
+			stream._state.value = value;
+			stream._state.changed = true;
+			if (stream._state.state !== 2) stream._state.state = 1;
+		}
+		function updateDependency(stream, mustSync) {
+			var state = stream._state,
+			    parents = state.parents;
+			if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+				var value = stream._state.derive();
+				if (value === HALT) return false;
+				updateState(stream, value);
+			}
+		}
+		function finalize(stream) {
+			stream._state.changed = false;
+			for (var id in stream._state.deps) {
+				stream._state.deps[id]._state.changed = false;
+			}
+		}
+
+		function combine(fn, streams) {
+			if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+			return initDependency(createStream(), streams, function () {
+				return fn.apply(this, streams.concat([streams.filter(changed)]));
+			});
+		}
+
+		function initDependency(dep, streams, derive) {
+			var state = dep._state;
+			state.derive = derive;
+			state.parents = streams.filter(notEnded);
+
+			registerDependency(dep, state.parents);
+			updateDependency(dep, true);
+
+			return dep;
+		}
+		function registerDependency(stream, parents) {
+			for (var i = 0; i < parents.length; i++) {
+				parents[i]._state.deps[stream._state.id] = stream;
+				registerDependency(stream, parents[i]._state.parents);
+			}
+		}
+		function unregisterStream(stream) {
+			for (var i = 0; i < stream._state.parents.length; i++) {
+				var parent = stream._state.parents[i];
+				delete parent._state.deps[stream._state.id];
+			}
+			for (var id in stream._state.deps) {
+				var dependent = stream._state.deps[id];
+				var index = dependent._state.parents.indexOf(stream);
+				if (index > -1) dependent._state.parents.splice(index, 1);
+			}
+			stream._state.state = 2; //ended
+			stream._state.deps = {};
+		}
+
+		function map(fn) {
+			return combine(function (stream) {
+				return fn(stream());
+			}, [this]);
+		}
+		function ap(stream) {
+			return combine(function (s1, s2) {
+				return s1()(s2());
+			}, [stream, this]);
+		}
+		function valueOf() {
+			return this._state.value;
+		}
+		function toJSON() {
+			return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+		}
+
+		function valid(stream) {
+			return stream._state;
+		}
+		function active(stream) {
+			return stream._state.state === 1;
+		}
+		function changed(stream) {
+			return stream._state.changed;
+		}
+		function notEnded(stream) {
+			return stream._state.state !== 2;
+		}
+
+		function merge(streams) {
+			return combine(function () {
+				return streams.map(function (s) {
+					return s();
+				});
+			}, streams);
+		}
+
+		function scan(reducer, seed, stream) {
+			var newStream = combine(function (s) {
+				return seed = reducer(seed, s._state.value);
+			}, [stream]);
+
+			if (newStream._state.state === 0) newStream(seed);
+
+			return newStream;
+		}
+
+		function scanMerge(tuples, seed) {
+			var streams = tuples.map(function (tuple) {
+				var stream = tuple[0];
+				if (stream._state.state === 0) stream(undefined);
+				return stream;
+			});
+
+			var newStream = combine(function () {
+				var changed = arguments[arguments.length - 1];
+
+				streams.forEach(function (stream, idx) {
+					if (changed.indexOf(stream) > -1) {
+						seed = tuples[idx][1](seed, stream._state.value);
+					}
+				});
+
+				return seed;
+			}, streams);
+
+			return newStream;
+		}
+
+		createStream["fantasy-land/of"] = createStream;
+		createStream.merge = merge;
+		createStream.combine = combine;
+		createStream.scan = scan;
+		createStream.scanMerge = scanMerge;
+		createStream.HALT = HALT;
+
+		module["exports"] = createStream;
+	})();
+});
+
+var stream = stream$2;
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass$1 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$1(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$1(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$1(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var requiresKeys = true;
+
+var StateComponent = function StateComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {
+    return {};
+  } : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      component = _ref.component,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === undefined ? function () {
+    return {};
+  } : _ref$getInitialState,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$onUpdate = _ref.onUpdate,
+      onUpdate = _ref$onUpdate === undefined ? function () {} : _ref$onUpdate,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
+
+
+  return function (_React$Component) {
+    _inherits$1(_class, _React$Component);
+
+    function _class(props) {
+      _classCallCheck$1(this, _class);
+
+      var _this = _possibleConstructorReturn$1(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      _this.dom = null;
+      var protoState = _extends$1({}, component, _this.createVirtualNode(), {
+        redrawValues: undefined
+      });
+      _this.state = getInitialState(protoState, stream);
+      _this.registerDOM = _this.registerDOM.bind(_this);
+      _this._render = _this._render.bind(_this);
+      return _this;
+    }
+
+    _createClass$1(_class, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _this2 = this;
+
+        this._mounted = true;
+        this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
+          return _this2._mounted && _this2.setState({ redrawValues: values });
+        });
+        onMount(this.createVirtualNode(), { keys: keys });
+      }
+    }, {
+      key: "componentDidUpdate",
+      value: function componentDidUpdate() {
+        onUpdate(this.createVirtualNode());
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this._mounted = false;
+        onUnMount(this.createVirtualNode());
+      }
+    }, {
+      key: "createVirtualNode",
+      value: function createVirtualNode() {
+        return {
+          state: this.state,
+          attrs: this.props,
+          children: this.props.children,
+          dom: this.dom
+        };
+      }
+    }, {
+      key: "registerDOM",
+      value: function registerDOM(el) {
+        if (polytheneCore.isClient && !this.dom && el) {
+          this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+        }
+      }
+    }, {
+      key: "_render",
+      value: function _render() {
+        var vnode = this.createVirtualNode();
+        return renderer(component || getElement(vnode), _extends$1({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), { ref: this.registerDOM }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return view ? view(this.createVirtualNode(), { renderer: renderer, render: this._render }) : this._render(this.props);
+      }
+    }]);
+
+    return _class;
+  }(React.Component);
+};
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass$2 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$2(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var requiresKeys$1 = true;
+
+var ViewComponent = function ViewComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {
+    return {};
+  } : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      component = _ref.component,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
+
+
+  return function (_React$Component) {
+    _inherits$2(_class, _React$Component);
+
+    function _class(props) {
+      _classCallCheck$2(this, _class);
+
+      var _this = _possibleConstructorReturn$2(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+      _this.dom = null;
+      _this.registerDOM = _this.registerDOM.bind(_this);
+      _this._render = _this._render.bind(_this);
+      return _this;
+    }
+
+    _createClass$2(_class, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        onMount(this.createVirtualNode(), { keys: keys });
+      }
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        onUnMount(this.createVirtualNode());
+      }
+    }, {
+      key: "createVirtualNode",
+      value: function createVirtualNode() {
+        var props = _extends$2({}, this.props);
+        return {
+          attrs: props,
+          children: props.children,
+          dom: this.dom
+        };
+      }
+    }, {
+      key: "registerDOM",
+      value: function registerDOM(el) {
+        if (polytheneCore.isClient && !this.dom && el) {
+          this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+        }
+      }
+    }, {
+      key: "_render",
+      value: function _render() {
+        var vnode = this.createVirtualNode();
+        return renderer(component || getElement(vnode), _extends$2({}, createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), { ref: this.registerDOM }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return view ? view(this.createVirtualNode(), { renderer: renderer, render: this._render }) : this._render(this.props);
+      }
+    }]);
+
+    return _class;
+  }(React.Component);
+};
+
+exports.keys = keys;
+exports.MithrilToReact = MithrilToReact;
+exports.renderer = renderer;
+exports.StateComponent = StateComponent;
+exports.ViewComponent = ViewComponent;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-base.js.map

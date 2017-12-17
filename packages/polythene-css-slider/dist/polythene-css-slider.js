@@ -1,2 +1,381 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-core-css"),require("polythene-core-slider"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-core-slider","polythene-theme"],r):r(e.polythene={},e["polythene-core-css"],e["polythene-core-slider"],e["polythene-theme"])}(this,function(e,r,t,i){"use strict";function o(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}function l(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}var n={component:"pe-slider",control:"pe-slider__control",label:"pe-slider__label",pin:"pe-slider__pin",thumb:"pe-slider__thumb",tick:"pe-slider__ticks-tick",ticks:"pe-slider__ticks",track:"pe-slider__track",trackBar:"pe-slider__track-bar",trackBarValue:"pe-slider__track-bar-value",trackPart:"pe-slider__track-part",trackPartRest:"pe-slider__track-rest",trackPartValue:"pe-slider__track-value",hasFocus:"pe-slider--focus",hasPin:"pe-slider--pin",hasTicks:"pe-slider--ticks",hasTrack:"pe-slider--track",isActive:"pe-slider--active",isAtMin:"pe-slider--min",isDisabled:"pe-slider--disabled"},a=function(e,r,t){var i=t?e-2*r:e;return{borderWidth:r+"px",width:i+"px",height:i+"px",left:e-i+"px",top:e-i+"px"}},s=function(e,t){var l=Math.max(t.thumb_size,2*t.thumb_border_width),n=(t.active_thumb_scale-1)*l/2,s=l/2,c=Math.max(1,t.thumb_border_width/t.active_thumb_scale),_=t.thumb_touch_size,p=s-1;return[o({},e,[r.flex.layoutHorizontal,r.flex.flexGrow(1),{userSelect:"none",height:t.height+"px",marginTop:(t.height-t.track_height)/2+"px ",alignItems:"center"," > .pe-icon":[r.flex.layoutCenter,{height:t.height+"px"}]," .pe-slider__track":[r.flex.layoutHorizontal,r.flex.flexGrow(1),r.mixin.defaultTransition("transform",t.animation_duration),{userSelect:"none",position:"relative",height:t.track_height+"px",margin:"0 "+t.side_spacing+"px",outline:0}]," div + .pe-slider__track":{margin:"0 "+t.horizontal_layout_side_spacing+"px"}," .pe-slider__control":[r.flex.selfCenter,r.mixin.defaultTransition("transform, background",".200s"),{transform:"scale(1)",userSelect:"none",width:l+"px",height:l+"px",lineHeight:0,borderRadius:"50%",outline:0,zIndex:1,position:"relative",":before":[r.mixin.defaultTransition("background-color",t.animation_duration),{content:'""',position:"absolute",borderRadius:"50%",left:-_/2+l/2+"px",top:-_/2+l/2+"px",width:_+"px",height:_+"px"}],":after":[r.mixin.defaultTransition("border",t.animation_duration),a(l,t.thumb_border_width,!1),{content:'""',position:"absolute",borderRadius:"50%",borderStyle:"solid"}]}]," .pe-slider__thumb":[r.mixin.defaultTransition("opacity",t.animation_duration),r.mixin.fit(),{"&, .pe-icon":{width:"inherit",height:"inherit"}}]," .pe-slider__label":{height:t.height+"px",lineHeight:t.height+"px",minWidth:i.vars.unit_icon_size+"px",textAlign:"center",fontSize:"16px",fontWeight:i.vars.font_weight_medium}," .pe-slider__track-part":[r.flex.flex(),{userSelect:"none",height:t.bar_height+"px",margin:(t.track_height-t.bar_height)/2+"px 0",overflow:"hidden"}]," .pe-slider__track-value, .pe-slider__track-rest":r.flex.layoutHorizontal," .pe-slider__track-bar":[r.flex.flex(),{position:"relative",overflow:"hidden"}]," .pe-slider__track-bar-value":[r.flex.flex(),r.mixin.defaultTransition("transform, background-color",t.animation_duration),{height:t.bar_height+"px"}]," .pe-slider__track-value .pe-slider__track-bar":{marginLeft:s+"px"}," .pe-slider__track-rest .pe-slider__track-bar":{marginRight:s+"px"}," .pe-slider__ticks":[r.flex.layoutJustified,{userSelect:"none",position:"absolute",width:"calc(100% - "+2*p+"px)",height:t.bar_height+"px",left:0,top:t.height/2-1+"px",margin:"0 "+p+"px",pointerEvents:"none"}]," .pe-slider__ticks-tick":{width:t.step_width+"px",height:t.bar_height+"px"}," .pe-slider__pin":[r.mixin.defaultTransition("transform",".11s"),{transform:"translateZ(0) scale(0) translate(0, 0)",transformOrigin:"bottom",position:"absolute",zIndex:1,width:t.pin_width+"px",height:0,left:0,top:0,margin:"0 "+p+"px 0 "+(p-t.pin_width/2+1)+"px",pointerEvents:"none","::before":{transform:"rotate(-45deg)",content:'""',position:"absolute",top:0,left:0,width:t.pin_width+"px",height:t.pin_width+"px",borderRadius:"50% 50% 50% 0",backgroundColor:"inherit"},"::after":{content:"attr(value)",position:"absolute",top:0,left:0,width:t.pin_width+"px",height:t.pin_height+"px",textAlign:"center",color:"#fff",fontSize:t.pin_font_size+"px",lineHeight:t.pin_width+"px"}}],".pe-slider--active:not(.pe-slider--ticks)":{" .pe-slider__control":{transform:"scale("+t.active_thumb_scale+")",borderWidth:c+"px"}," .pe-slider__track-value .pe-slider__track-bar-value":{transform:"translateX("+-n+"px)"}," .pe-slider__track-rest .pe-slider__track-bar-value":{transform:"translateX("+n+"px)"}},".pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus":{" .pe-slider__pin":{transform:"translateZ(0) scale(1) translate(0, -24px)"}," .pe-slider__control":{transform:"scale("+t.active_pin_thumb_scale+")"}},":not(.pe-slider--disabled)":{" .pe-slider__control":{cursor:"pointer"},".pe-slider--track":{" .pe-slider__track":{cursor:"pointer"}}},".pe-slider--disabled":{" .pe-slider__control":{transform:"scale("+t.disabled_thumb_scale+")",borderWidth:0}," .pe-slider__control:after":[a(l,1/t.disabled_thumb_scale*t.thumb_border_width,!0)]}}])]},c=function(e,r,t,i){return[l({},e.map(function(e){return e+r}).join(","),{color:t["color_"+i+"_thumb_on"]," .pe-slider__control":{"&:after":{borderColor:"transparent"}}," .pe-slider__track-bar-value":{background:t["color_"+i+"_track_inactive"]}," .pe-slider__ticks-tick":{background:t["color_"+i+"_tick"]}," .pe-slider__pin":{backgroundColor:"currentcolor"}," .pe-icon":{color:t["color_"+i+"_disabled_icon"]}," .pe-slider__label":{color:t["color_"+i+"_disabled_label"]},"&.pe-slider--active":{" .pe-slider__track-bar-value":{background:t["color_"+i+"_track_active"]}},".pe-slider--disabled":{" .pe-slider__control":{background:t["color_"+i+"_thumb_inactive"]}},"&:not(.pe-slider--disabled)":{" .pe-slider__control":{backgroundColor:t["color_"+i+"_thumb_background"]||"currentcolor","&:before":{opacity:t["color_"+i+"_thumb_off_focus_opacity"]}}," .pe-slider__track-value .pe-slider__track-bar-value":{background:"currentcolor"},"&.pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,      &.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before":{backgroundColor:t["color_"+i+"_thumb_off_focus"]},"&.pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,      &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before":{backgroundColor:"currentcolor",opacity:t["color_"+i+"_thumb_on_focus_opacity"]}," .pe-icon":{color:t["color_"+i+"_icon"]}," .pe-slider__label":{color:t["color_"+i+"_label"]}},"&.pe-slider--min:not(.pe-slider--disabled)":{" .pe-slider__control":{backgroundColor:"transparent"}," .pe-slider__thumb":{opacity:0}," .pe-slider__control:after":{borderColor:t["color_"+i+"_track_inactive"]},"&.pe-slider--active .pe-slider__control:after":{borderColor:t["color_"+i+"_track_active"]},"&.pe-slider--ticks":{" .pe-slider__control":{backgroundColor:t["color_"+i+"_tick"]}," .pe-slider__control:after":{borderColor:"transparent"}}," .pe-slider__pin":{backgroundColor:t["color_"+i+"_track_inactive"]}}})]},_=function(e,r){return[c([".pe-dark-tone",".pe-dark-tone "],e,r,"dark"),c(["",".pe-light-tone",".pe-light-tone "],e,r,"light")]},p=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},d=[s,_],h="."+n.component,u=function(e,i){return r.styler.generateStyles([e,h],p({},t.vars,i),d)},b=function(e,i){return e?r.styler.createStyleSheets([e,h],p({},t.vars,i),d):r.styler.createStyleSheets([h],t.vars,d)};r.styler.generateStyles([h],t.vars,d),e.addStyle=u,e.getStyle=b,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-slider'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-slider', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-slider'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreSlider,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-slider",
+
+  // elements
+  control: "pe-slider__control",
+  label: "pe-slider__label",
+  pin: "pe-slider__pin",
+  thumb: "pe-slider__thumb",
+  tick: "pe-slider__ticks-tick",
+  ticks: "pe-slider__ticks",
+  track: "pe-slider__track",
+  trackBar: "pe-slider__track-bar",
+  trackBarValue: "pe-slider__track-bar-value",
+  trackPart: "pe-slider__track-part",
+  trackPartRest: "pe-slider__track-rest",
+  trackPartValue: "pe-slider__track-value",
+
+  // states
+  hasFocus: "pe-slider--focus",
+  hasPin: "pe-slider--pin",
+  hasTicks: "pe-slider--ticks",
+  hasTrack: "pe-slider--track",
+  isActive: "pe-slider--active",
+  isAtMin: "pe-slider--min",
+  isDisabled: "pe-slider--disabled"
+};
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// const positionBorder = (thumbSize, borderWidth) => ({
+//   borderWidth: borderWidth + "px",
+//   width: (thumbSize - 2 * borderWidth) + "px",
+//   height: (thumbSize - 2 * borderWidth) + "px",
+//   left: "2px",
+//   top: "2px"
+// });
+
+var positionBorder = function positionBorder(size, borderWidth, isDisabled) {
+  var thumbSize = isDisabled ? size - 2 * borderWidth : size;
+  return {
+    borderWidth: borderWidth + "px",
+    width: thumbSize + "px",
+    height: thumbSize + "px",
+    left: size - thumbSize + "px",
+    top: size - thumbSize + "px"
+  };
+};
+
+var layout = (function (selector, componentVars) {
+  var thumbSize = Math.max(componentVars.thumb_size, 2 * componentVars.thumb_border_width);
+  var scaledThumbDiff = (componentVars.active_thumb_scale - 1) * thumbSize / 2;
+  var barOffset = thumbSize / 2;
+  var scaledBorderWidth = Math.max(1, componentVars.thumb_border_width / componentVars.active_thumb_scale);
+  var thumbTouchSize = componentVars.thumb_touch_size;
+  var stepsOffset = barOffset - 1;
+
+  return [_defineProperty({}, selector, [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.flexGrow(1), {
+    userSelect: "none",
+    height: componentVars.height + "px",
+    marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
+    alignItems: "center",
+
+    " > .pe-icon": [polytheneCoreCss.flex.layoutCenter, {
+      height: componentVars.height + "px"
+    }],
+
+    " .pe-slider__track": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.flexGrow(1), polytheneCoreCss.mixin.defaultTransition("transform", componentVars.animation_duration), {
+      userSelect: "none",
+      position: "relative",
+      height: componentVars.track_height + "px",
+      margin: "0 " + componentVars.side_spacing + "px",
+      outline: 0
+    }],
+    " div + .pe-slider__track": {
+      margin: "0 " + componentVars.horizontal_layout_side_spacing + "px"
+    },
+
+    " .pe-slider__control": [polytheneCoreCss.flex.selfCenter, polytheneCoreCss.mixin.defaultTransition("transform, background", ".200s"), {
+      transform: "scale(1)",
+      userSelect: "none",
+      width: thumbSize + "px",
+      height: thumbSize + "px",
+      lineHeight: 0,
+      borderRadius: "50%",
+      outline: 0,
+      zIndex: 1,
+      position: "relative",
+
+      // touch area
+      ":before": [polytheneCoreCss.mixin.defaultTransition("background-color", componentVars.animation_duration), {
+        content: "\"\"",
+        position: "absolute",
+        borderRadius: "50%",
+        left: -thumbTouchSize / 2 + thumbSize / 2 + "px",
+        top: -thumbTouchSize / 2 + thumbSize / 2 + "px",
+        width: thumbTouchSize + "px",
+        height: thumbTouchSize + "px"
+      }],
+
+      // border
+      ":after": [polytheneCoreCss.mixin.defaultTransition("border", componentVars.animation_duration), positionBorder(thumbSize, componentVars.thumb_border_width, false), {
+        content: "\"\"",
+        position: "absolute",
+        borderRadius: "50%",
+        borderStyle: "solid"
+      }]
+    }],
+
+    " .pe-slider__thumb": [polytheneCoreCss.mixin.defaultTransition("opacity", componentVars.animation_duration), polytheneCoreCss.mixin.fit(), {
+      "&, .pe-icon": {
+        width: "inherit",
+        height: "inherit"
+      }
+    }],
+
+    " .pe-slider__label": {
+      height: componentVars.height + "px",
+      lineHeight: componentVars.height + "px",
+      minWidth: polytheneTheme.vars.unit_icon_size + "px",
+      textAlign: "center",
+      fontSize: "16px",
+      fontWeight: polytheneTheme.vars.font_weight_medium
+    },
+
+    " .pe-slider__track-part": [polytheneCoreCss.flex.flex(), {
+      userSelect: "none",
+      height: componentVars.bar_height + "px",
+      margin: (componentVars.track_height - componentVars.bar_height) / 2 + "px 0",
+      overflow: "hidden" // Firefox otherwise uses 6x at 0%
+    }],
+
+    " .pe-slider__track-value, .pe-slider__track-rest": polytheneCoreCss.flex.layoutHorizontal,
+
+    " .pe-slider__track-bar": [polytheneCoreCss.flex.flex(), {
+      position: "relative",
+      overflow: "hidden"
+    }],
+    " .pe-slider__track-bar-value": [polytheneCoreCss.flex.flex(), polytheneCoreCss.mixin.defaultTransition("transform, background-color", componentVars.animation_duration), {
+      height: componentVars.bar_height + "px"
+    }],
+    " .pe-slider__track-value .pe-slider__track-bar": {
+      marginLeft: barOffset + "px"
+    },
+    " .pe-slider__track-rest .pe-slider__track-bar": {
+      marginRight: barOffset + "px"
+    },
+
+    " .pe-slider__ticks": [polytheneCoreCss.flex.layoutJustified, {
+      userSelect: "none",
+      position: "absolute",
+      width: "calc(100% - " + 2 * stepsOffset + "px)",
+      height: componentVars.bar_height + "px",
+      left: 0,
+      top: componentVars.height / 2 - 1 + "px",
+      margin: "0 " + stepsOffset + "px",
+      pointerEvents: "none"
+    }],
+
+    " .pe-slider__ticks-tick": {
+      width: componentVars.step_width + "px",
+      height: componentVars.bar_height + "px"
+    },
+
+    " .pe-slider__pin": [polytheneCoreCss.mixin.defaultTransition("transform", ".11s"), {
+      transform: "translateZ(0) scale(0) translate(0, 0)",
+      transformOrigin: "bottom",
+      position: "absolute",
+      zIndex: 1,
+      width: componentVars.pin_width + "px",
+      height: 0,
+      left: 0, // set in js
+      top: 0,
+      margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
+      pointerEvents: "none",
+
+      "::before": {
+        transform: "rotate(-45deg)",
+        content: "\"\"",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: componentVars.pin_width + "px",
+        height: componentVars.pin_width + "px",
+        borderRadius: "50% 50% 50% 0",
+        backgroundColor: "inherit"
+      },
+      "::after": {
+        content: "attr(value)",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: componentVars.pin_width + "px",
+        height: componentVars.pin_height + "px",
+        textAlign: "center",
+        color: "#fff",
+        fontSize: componentVars.pin_font_size + "px",
+        lineHeight: componentVars.pin_width + "px"
+      }
+    }],
+
+    ".pe-slider--active:not(.pe-slider--ticks)": {
+      " .pe-slider__control": {
+        transform: "scale(" + componentVars.active_thumb_scale + ")",
+        borderWidth: scaledBorderWidth + "px"
+      },
+      // left side
+      " .pe-slider__track-value .pe-slider__track-bar-value": {
+        transform: "translateX(" + -scaledThumbDiff + "px)"
+      },
+      // right side
+      " .pe-slider__track-rest .pe-slider__track-bar-value": {
+        transform: "translateX(" + scaledThumbDiff + "px)"
+      }
+    },
+
+    ".pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
+      " .pe-slider__pin": {
+        transform: "translateZ(0) scale(1) translate(0, -24px)"
+      },
+      " .pe-slider__control": {
+        transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
+      }
+    },
+
+    ":not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        cursor: "pointer"
+      },
+      ".pe-slider--track": {
+        " .pe-slider__track": {
+          cursor: "pointer"
+        }
+      }
+    },
+
+    ".pe-slider--disabled": {
+      " .pe-slider__control": {
+        transform: "scale(" + componentVars.disabled_thumb_scale + ")",
+        borderWidth: 0
+      },
+      " .pe-slider__control:after": [positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width, true)]
+    }
+  }])];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint + "_thumb_on"], // override by specifying "color"
+
+    " .pe-slider__control": {
+      "&:after": {
+        borderColor: "transparent"
+      }
+    },
+    " .pe-slider__track-bar-value": {
+      background: componentVars["color_" + tint + "_track_inactive"]
+    },
+
+    " .pe-slider__ticks-tick": {
+      background: componentVars["color_" + tint + "_tick"]
+    },
+
+    " .pe-slider__pin": {
+      backgroundColor: "currentcolor"
+    },
+
+    " .pe-icon": {
+      color: componentVars["color_" + tint + "_disabled_icon"]
+    },
+
+    " .pe-slider__label": {
+      color: componentVars["color_" + tint + "_disabled_label"]
+    },
+
+    // states
+
+    "&.pe-slider--active": {
+      " .pe-slider__track-bar-value": {
+        background: componentVars["color_" + tint + "_track_active"]
+      }
+    },
+
+    ".pe-slider--disabled": {
+      " .pe-slider__control": {
+        background: componentVars["color_" + tint + "_thumb_inactive"]
+      }
+    },
+
+    "&:not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        backgroundColor: componentVars["color_" + tint + "_thumb_background"] || "currentcolor",
+
+        "&:before": {
+          opacity: componentVars["color_" + tint + "_thumb_off_focus_opacity"]
+        }
+      },
+      " .pe-slider__track-value .pe-slider__track-bar-value": {
+        background: "currentcolor"
+      },
+      "&.pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
+      &.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before": {
+        backgroundColor: componentVars["color_" + tint + "_thumb_off_focus"]
+      },
+      "&.pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
+      &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
+        backgroundColor: "currentcolor",
+        opacity: componentVars["color_" + tint + "_thumb_on_focus_opacity"]
+      },
+      " .pe-icon": {
+        color: componentVars["color_" + tint + "_icon"]
+      },
+      " .pe-slider__label": {
+        color: componentVars["color_" + tint + "_label"]
+      }
+    },
+
+    "&.pe-slider--min:not(.pe-slider--disabled)": {
+      " .pe-slider__control": {
+        backgroundColor: "transparent"
+      },
+      " .pe-slider__thumb": {
+        opacity: 0
+      },
+      " .pe-slider__control:after": {
+        borderColor: componentVars["color_" + tint + "_track_inactive"]
+      },
+      "&.pe-slider--active .pe-slider__control:after": {
+        borderColor: componentVars["color_" + tint + "_track_active"]
+      },
+      "&.pe-slider--ticks": {
+        " .pe-slider__control": {
+          backgroundColor: componentVars["color_" + tint + "_tick"]
+        },
+        " .pe-slider__control:after": {
+          borderColor: "transparent"
+        }
+      },
+      " .pe-slider__pin": {
+        backgroundColor: componentVars["color_" + tint + "_track_inactive"]
+      }
+    }
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = "." + classes.component;
+
+var addStyle = function addStyle(customSelector, customVars) {
+  return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreSlider.vars, customVars), fns);
+};
+
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreSlider.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSlider.vars, fns);
+};
+
+polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSlider.vars, fns);
+
+exports.addStyle = addStyle;
+exports.getStyle = getStyle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-css-slider.js.map

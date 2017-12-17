@@ -29,10 +29,10 @@ styler.add("test-menu-position", styles);
 const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButton }) => ({
   oninit: vnode => {
     const show = stream(false);
-    vnode.state = {
+    Object.assign(vnode.state, {
       show,
       redrawOnUpdate: stream.merge([show])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

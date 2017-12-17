@@ -236,7 +236,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
         }
       };
 
-      vnode.state = {
+      Object.assign(vnode.state, {
         handleKey,
         hasFocus,
         selectedListIndex,
@@ -244,7 +244,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
         searchValue,
         selectedValue,
         redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
-      };
+      });
     },
     view: vnode => {
       const state = vnode.state;

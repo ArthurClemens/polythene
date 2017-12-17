@@ -51,9 +51,9 @@ const colorSlider = ({ h, k, Slider, TextField }) => {
       value.map(newValue => (
         attrs.onUpdateValue(newValue)
       ));
-      vnode.state = {
+      Object.assign(vnode.state, {
         value
-      };
+      });
     },
     view: vnode => {
       const state = vnode.state;
@@ -92,12 +92,12 @@ export default ({ h, k, Slider, TextField }) => {
       const rgb = stream.merge([red, green, blue]).map(values =>
         values.join(",")
       );
-      vnode.state = {
+      Object.assign(vnode.state, {
         red, 
         green,
         blue,
         rgb
-      };
+      });
     },
     view: vnode => {
       const state = vnode.state;

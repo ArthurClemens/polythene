@@ -3,7 +3,6 @@
   justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -25,7 +24,7 @@
   min-height: 0
 }
 
-@media (min-width:480px) {
+@media (min-width:840px) {
   .pe-notification.pe-snackbar {
     width: 100%;
     min-width: 288px;

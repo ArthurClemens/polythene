@@ -1,2 +1,114 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,r){"use strict";var l={component:"pe-list",borders:"pe-list--borders",compact:"pe-list--compact",hasHeader:"pe-list--header",indentedBorders:"pe-list--indented-borders",padding:"pe-list--padding",header:{component:"pe-list-tile",content:"pe-list-tile__content",highSubtitle:"pe-list-tile__high-subtitle",primary:"pe-list-tile__primary",secondary:"pe-list-tile__secondary",subtitle:"pe-list-tile__subtitle",title:"pe-list-tile__title",contentFront:"pe-list-tile__content-front",compact:"pe-list-tile--compact",compactFront:"pe-list-tile--compact-front",disabled:"pe-list-tile--disabled",hasFront:"pe-list-tile--front",hasHighSubtitle:"pe-list-tile--high-subtitle",hasSubtitle:"pe-list-tile--subtitle",header:"pe-list-tile--header",hoverable:"pe-list-tile--hoverable",selectable:"pe-list-tile--selectable",selected:"pe-list-tile--selected",highlight:"pe-list-tile--highlight",sticky:"pe-list-tile--sticky"}.header},i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var l in r)Object.prototype.hasOwnProperty.call(r,l)&&(e[l]=r[l])}return e},n=function(e){return e.attrs.element||"div"},o=function(e,r){var n=r.keys,o=e.attrs;return i({},t.filterSupportedAttributes(o),{className:[l.component,o.borders?l.borders:null,o.indentedBorders?l.indentedBorders:null,o.header?l.hasHeader:null,o.compact?l.compact:null,!1!==o.padding?l.padding:null,"dark"===o.tone?"pe-dark-tone":null,"light"===o.tone?"pe-light-tone":null,o.className||o[n.class]].join(" ")})},s=function(e,t){var r=t.renderer,n=t.requiresKeys,o=t.keys,s=t.ListTile,d=e.attrs,a=void 0;d.header&&((a=i({},d.header))[o.class]=[l.header,a[o.class]||null].join(" "));var c=d.tiles?d.tiles:d.content?d.content:d.children||e.children;return[a?r(s,i({},n?{key:"header"}:null,d.all,a,{header:!0})):null,d.all?c.map(function(e){return r(s,i({},d.all,e))}):c]},d=Object.freeze({getElement:n,createProps:o,createContent:s}),a=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},c={padding:r.vars.grid_unit_component,padding_compact:3*r.vars.grid_unit_component/4,border_width_stacked:1,border_width_bordered:1,color_light_border:a(r.vars.color_light_foreground,r.vars.blend_light_border_light),color_dark_border:a(r.vars.color_dark_foreground,r.vars.blend_dark_border_light)};e.coreList=d,e.vars=c,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var listTileClasses = {
+  component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
+
+var classes = {
+  component: "pe-list",
+
+  // states
+  borders: "pe-list--borders",
+  compact: "pe-list--compact",
+  hasHeader: "pe-list--header",
+  indentedBorders: "pe-list--indented-borders",
+  padding: "pe-list--padding",
+
+  // lookup
+  header: listTileClasses.header
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.padding !== false ? classes.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      requiresKeys = _ref2.requiresKeys,
+      k = _ref2.keys,
+      ListTile = _ref2.ListTile;
+
+  var attrs = vnode.attrs;
+  var headerOpts = void 0;
+  if (attrs.header) {
+    headerOpts = _extends({}, attrs.header);
+    headerOpts[k.class] = [classes.header, headerOpts[k.class] || null].join(" ");
+  }
+  var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
+  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, attrs.all, headerOpts, {
+    header: true
+  })) : null, attrs.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _extends({}, attrs.all, tileOpts));
+  }) : tiles];
+};
+
+var list = Object.freeze({
+	getElement: getElement,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  padding: polytheneTheme.vars.grid_unit_component, // vertical padding
+  padding_compact: polytheneTheme.vars.grid_unit_component * 3 / 4,
+  border_width_stacked: 1,
+  border_width_bordered: 1,
+
+  color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
+
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
+};
+
+exports.coreList = list;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-list.js.map

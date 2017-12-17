@@ -4,11 +4,11 @@ export default ({ h, k, TextField, RaisedButton }) => ({
   oninit: vnode => {
     const value = stream("");
     const focus = stream(false);
-    vnode.state = {
+    Object.assign(vnode.state, {
       value,
       focus,
       redrawOnUpdate: stream.merge([value]) // for React
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

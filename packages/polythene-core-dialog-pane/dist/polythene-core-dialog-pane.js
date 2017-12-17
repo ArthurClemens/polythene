@@ -1,2 +1,209 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],o):o(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,o,t){"use strict";function r(e,o,t){return o in e?Object.defineProperty(e,o,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[o]=t,e}var l={component:"pe-dialog-pane",actions:"pe-dialog-pane__actions",body:"pe-dialog-pane__body",content:"pe-dialog-pane__content",footer:"pe-dialog-pane__footer",header:"pe-dialog-pane__header",title:"pe-dialog-pane__title",withHeader:"pe-dialog-pane--header",withFooter:"pe-dialog-pane--footer",headerWithTitle:"pe-dialog-pane__header--title",footerWithButtons:"pe-dialog-pane__footer--buttons",footerHigh:"pe-dialog-pane__footer--high",borderBottom:"pe-dialog-pane--border-bottom",borderTop:"pe-dialog-pane--border-top",fullBleed:"pe-dialog-pane--body-full-bleed"},n=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e},i=function(e){return e.attrs.element||"form"},a=function(e){var o=e.state,t=o.scrollEl();t&&(o.topOverflow(t.scrollTop>0),o.bottomOverflow(t.scrollHeight-(t.scrollTop+t.getBoundingClientRect().height)>0))},d=function(e){var o=e.state.footerEl();if(o){var t=window.getComputedStyle(o);o.getBoundingClientRect().height>parseInt(t.minHeight,10)?o.classList.add(l.footerHigh):o.classList.remove(l.footerHigh)}},c=function(e,o){var t=o(!1),r=o(null),l=o(null),n=o(!1),i=o(null),a=o(!1);return{cleanUp:void 0,bottomOverflow:t,el:o(null),footerEl:r,headerEl:l,isScrolling:n,scrollEl:i,scrollWatchId:void 0,topOverflow:a,redrawOnUpdate:o.merge([a,t,n])}},s=function(e){var t=e.dom;if(t){var r=e.state;r.el(t),r.scrollEl(t.querySelector("."+l.body)),r.footerEl(t.querySelector("."+l.footer)),r.headerEl(t.querySelector("."+l.title)),r.isScrolling.map(function(){return a(e)});var n=function(){a(e),d(e)};r.cleanUp=function(){return o.unsubscribe("resize",n)},o.subscribe("resize",n),a(e)}},u=function(e){return e.state.cleanUp()},f=function(e,t){var r=t.keys,i=e.state,a=o.unpackAttrs(e.attrs),d=a.borders||"overflow",c="always"===d||"overflow"===d&&i.topOverflow(),s="always"===d||"overflow"===d&&i.bottomOverflow(),u=void 0!==a.header||void 0!==a.title,f=void 0!==a.footer||void 0!==a.footerButtons;return n({},o.filterSupportedAttributes(a,{remove:["style"]}),{className:[l.component,a.fullBleed?l.fullBleed:null,c?l.borderTop:null,s?l.borderBottom:null,u?l.withHeader:null,f?l.withFooter:null,"dark"===a.tone?"pe-dark-tone":null,"light"===a.tone?"pe-light-tone":null,a.className||a[r.class]].join(" ")},a.formOptions)},p=function(e,t){var n=t.renderer,i=t.keys,a=e.state,d=o.unpackAttrs(e.attrs);return n("div",{className:[l.content,d.menu?l.menuContent:null].join(" "),style:d.style},[d.header?d.header:d.title?n("div",{className:[l.header,l.headerWithTitle].join(" "),key:"title"},n("div",{className:l.title},d.title)):null,n("div",r({className:l.body,key:"body"},i.onscroll,function(){a.isScrolling(!0),clearTimeout(a.scrollWatchId),a.scrollWatchId=setTimeout(function(){a.isScrolling(!1)},150)}),d.content||d.body||d.menu),d.footer?n("div",{className:l.footer,key:"footer"},d.footer):d.footerButtons?n("div",{className:[l.footer,l.footerWithButtons].join(" "),key:"footer"},n("div",{className:l.actions},d.footerButtons)):null])},h=Object.freeze({getElement:i,getInitialState:c,onMount:s,onUnMount:u,createProps:f,createContent:p}),g=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},_={padding:3*t.vars.grid_unit_component,header_bottom:20,header_height:60,footer_height:52,border_width:1,color_light_title_text:"inherit",color_light_body_text:"inherit",color_light_body_border:g(t.vars.color_light_foreground,t.vars.blend_light_border_light),color_light_background:"inherit",color_dark_title_text:"inherit",color_dark_body_text:"inherit",color_dark_body_border:g(t.vars.color_dark_foreground,t.vars.blend_dark_border_light),color_dark_background:"inherit"};e.coreDialogPane=h,e.vars=_,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-dialog-pane",
+
+  // elements
+  actions: "pe-dialog-pane__actions",
+  body: "pe-dialog-pane__body",
+  content: "pe-dialog-pane__content",
+  footer: "pe-dialog-pane__footer",
+  header: "pe-dialog-pane__header",
+  title: "pe-dialog-pane__title",
+
+  // states
+  withHeader: "pe-dialog-pane--header",
+  withFooter: "pe-dialog-pane--footer",
+  headerWithTitle: "pe-dialog-pane__header--title",
+  footerWithButtons: "pe-dialog-pane__footer--buttons",
+  footerHigh: "pe-dialog-pane__footer--high",
+  borderBottom: "pe-dialog-pane--border-bottom",
+  borderTop: "pe-dialog-pane--border-top",
+  fullBleed: "pe-dialog-pane--body-full-bleed"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "form";
+};
+
+var SCROLL_WATCH_END_TIMER = 150;
+
+var updateScrollOverflowState = function updateScrollOverflowState(vnode) {
+  var state = vnode.state;
+  var scroller = state.scrollEl();
+  if (!scroller) {
+    return;
+  }
+  state.topOverflow(scroller.scrollTop > 0);
+  state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
+};
+
+var updateFooterState = function updateFooterState(vnode) {
+  var state = vnode.state;
+  var footerEl = state.footerEl();
+  if (!footerEl) {
+    return;
+  }
+  var style = window.getComputedStyle(footerEl);
+  var height = footerEl.getBoundingClientRect().height;
+  var minHeight = parseInt(style.minHeight, 10);
+  if (height > minHeight) {
+    footerEl.classList.add(classes.footerHigh);
+  } else {
+    footerEl.classList.remove(classes.footerHigh);
+  }
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var bottomOverflow = createStream(false);
+  var footerEl = createStream(null);
+  var headerEl = createStream(null);
+  var isScrolling = createStream(false);
+  var scrollEl = createStream(null);
+  var topOverflow = createStream(false);
+  var el = createStream(null);
+
+  return {
+    cleanUp: undefined,
+    bottomOverflow: bottomOverflow,
+    el: el,
+    footerEl: footerEl,
+    headerEl: headerEl,
+    isScrolling: isScrolling,
+    scrollEl: scrollEl,
+    scrollWatchId: undefined,
+    topOverflow: topOverflow,
+    redrawOnUpdate: createStream.merge([topOverflow, bottomOverflow, isScrolling])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  var dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  var state = vnode.state;
+  state.el(dom);
+
+  state.scrollEl(dom.querySelector("." + classes.body));
+  state.footerEl(dom.querySelector("." + classes.footer));
+  state.headerEl(dom.querySelector("." + classes.title));
+
+  state.isScrolling.map(function () {
+    return updateScrollOverflowState(vnode);
+  });
+
+  var update = function update() {
+    updateScrollOverflowState(vnode);
+    updateFooterState(vnode);
+  };
+
+  state.cleanUp = function () {
+    return polytheneCore.unsubscribe("resize", update);
+  };
+
+  // resize: update scroll state ("overflow" borders)
+  polytheneCore.subscribe("resize", update);
+
+  updateScrollOverflowState(vnode);
+};
+
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.cleanUp();
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var state = vnode.state;
+  var attrs = polytheneCore.unpackAttrs(vnode.attrs);
+  var borders = attrs.borders || "overflow";
+  var showTopBorder = borders === "always" || borders === "overflow" && state.topOverflow();
+  var showBottomBorder = borders === "always" || borders === "overflow" && state.bottomOverflow();
+  var withHeader = attrs.header !== undefined || attrs.title !== undefined;
+  var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
+  {
+    className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.formOptions);
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      k = _ref2.keys;
+
+  var state = vnode.state;
+  var attrs = polytheneCore.unpackAttrs(vnode.attrs);
+
+  return h("div", {
+    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
+    style: attrs.style
+  }, [attrs.header ? attrs.header : attrs.title ? h("div", {
+    className: [classes.header, classes.headerWithTitle].join(" "),
+    key: "title"
+  }, h("div", { className: classes.title }, attrs.title)) : null, h("div", _defineProperty({
+    className: classes.body,
+    key: "body"
+  }, k.onscroll, function () {
+    state.isScrolling(true);
+    clearTimeout(state.scrollWatchId);
+    state.scrollWatchId = setTimeout(function () {
+      state.isScrolling(false);
+    }, SCROLL_WATCH_END_TIMER);
+  }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
+    className: classes.footer,
+    key: "footer"
+  }, attrs.footer) : attrs.footerButtons ? h("div", {
+    className: [classes.footer, classes.footerWithButtons].join(" "),
+    key: "footer"
+  }, h("div", { className: classes.actions }, attrs.footerButtons)) : null]);
+};
+
+var dialogPane = Object.freeze({
+	getElement: getElement,
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  padding: 3 * polytheneTheme.vars.grid_unit_component,
+  header_bottom: 20,
+  header_height: 60,
+  footer_height: 52,
+
+  border_width: 1,
+
+  color_light_title_text: "inherit",
+  color_light_body_text: "inherit",
+  color_light_body_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+  color_light_background: "inherit",
+
+  color_dark_title_text: "inherit",
+  color_dark_body_text: "inherit",
+  color_dark_body_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+  color_dark_background: "inherit"
+};
+
+exports.coreDialogPane = dialogPane;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-dialog-pane.js.map

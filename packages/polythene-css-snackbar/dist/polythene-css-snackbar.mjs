@@ -37,8 +37,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var tabletStyle = function tabletStyle(componentVars) {
   return {
     width: "100%",
-    minWidth: componentVars.tablet_min_width + "px",
-    maxWidth: componentVars.tablet_max_width + "px",
+    minWidth: componentVars.min_width + "px",
+    maxWidth: componentVars.max_width + "px",
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     borderTopLeftRadius: vars$1.unit_block_border_radius + "px",
@@ -57,7 +57,7 @@ var layout = (function (selector, componentVars) {
 
   return [(_ref2 = {}, _defineProperty(_ref2, selector, {
     minHeight: componentVars.min_height
-  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_small_handset_landscape + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

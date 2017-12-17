@@ -195,16 +195,18 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var onChange = (function (_ref) {
   var h = _ref.h,
       RadioGroup$$1 = _ref.RadioGroup;
   return {
     oninit: function oninit(vnode) {
       var checkedValue = stream();
-      vnode.state = {
+      _extends(vnode.state, {
         checkedValue: checkedValue,
         redrawOnUpdate: stream.merge([checkedValue])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -231,6 +233,8 @@ var onChange = (function (_ref) {
   };
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var events = (function (_ref) {
@@ -240,10 +244,10 @@ var events = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var checkedValue = stream();
-      vnode.state = {
+      _extends$1(vnode.state, {
         checkedValue: checkedValue,
         redrawOnUpdate: stream.merge([checkedValue])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -577,7 +581,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -623,7 +627,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

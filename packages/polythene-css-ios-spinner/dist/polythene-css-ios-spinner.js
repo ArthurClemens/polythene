@@ -1,2 +1,106 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-core-css"),require("polythene-core-ios-spinner")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-core-ios-spinner"],n):n(e.polythene={},e["polythene-core-css"],e["polythene-core-ios-spinner"])}(this,function(e,n,t){"use strict";function r(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}function o(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}var i={component:"pe-ios-spinner",blades:"pe-ios-spinner__blades",blade:"pe-ios-spinner__blade"},a=function(e){return[0,1,2,3,4,5,6,7,8,9,10,11].map(function(n){var t=-1/12*n*e.animation_duration;return r({}," .pe-ios-spinner__blade:nth-of-type("+(n+1)+")",{transform:"rotate("+(360-30*n)+"deg) translate3d(0,-140%,0)",animation:"iosSpinnerFade "+e.animation_duration+"s "+t+"s linear infinite"})})},s=function(e,n){return[r({},e,{" .pe-ios-spinner__blades":[a(n),{transform:"translate3d(0,0,0)",position:"relative",width:"100%",height:"100%"}]," .pe-ios-spinner__blade":{position:"absolute",width:"9%",height:"28%",left:"45.5%",top:"36%",opacity:0,borderRadius:"50px"},"@keyframes iosSpinnerFade":{" 0%":{opacity:.64}," 100%":{opacity:.035}}})]},p=function(e,n,t,r){return[o({},e.map(function(e){return e+n}).join(","),{color:t["color_"+r]," .pe-ios-spinner__blade":{background:"currentcolor"}})]},l=function(e,n){return[p([".pe-dark-tone",".pe-dark-tone "],e,n,"dark"),p(["",".pe-light-tone",".pe-light-tone "],e,n,"light")]},c=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e},u=[s,l],d="."+i.component,f=function(e,r){return n.styler.generateStyles([e,d],c({},t.vars,r),u)},y=function(e,r){return e?n.styler.createStyleSheets([e,d],c({},t.vars,r),u):n.styler.createStyleSheets([d],t.vars,u)};n.styler.generateStyles([d],t.vars,u),e.addStyle=f,e.getStyle=y,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-ios-spinner')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-ios-spinner'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-ios-spinner']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreIosSpinner) { 'use strict';
+
+var classes = {
+  component: "pe-ios-spinner",
+
+  // elements
+  blades: "pe-ios-spinner__blades",
+  blade: "pe-ios-spinner__blade"
+};
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var bladeWidth = 9; // percent
+var bladeHeight = 28; // percent
+
+var kfFade = function kfFade() {
+  return {
+    " 0%": {
+      opacity: .640
+    },
+    " 100%": {
+      opacity: .035
+    }
+  };
+};
+
+var positionBlades = function positionBlades(componentVars) {
+  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
+    // reverse to improve performance on iOS
+    var delay = -1 / 12 * i * componentVars.animation_duration;
+    var rotation = 360 - 360 / 12 * i;
+    return _defineProperty({}, " .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")", {
+      transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
+      animation: "iosSpinnerFade " + componentVars.animation_duration + "s " + delay + "s linear infinite"
+    });
+  });
+};
+
+var layout = (function (selector, componentVars) {
+  return [_defineProperty({}, selector, {
+    " .pe-ios-spinner__blades": [positionBlades(componentVars), {
+      transform: "translate3d(0,0,0)",
+      position: "relative",
+      width: "100%",
+      height: "100%"
+    }],
+
+    " .pe-ios-spinner__blade": {
+      position: "absolute",
+      width: bladeWidth + "%",
+      height: bladeHeight + "%",
+      left: (100 - bladeWidth) / 2 + "%",
+      top: (100 - bladeHeight) / 2 + "%",
+      opacity: 0,
+      borderRadius: "50px"
+    },
+
+    "@keyframes iosSpinnerFade": kfFade()
+  })];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint],
+
+    " .pe-ios-spinner__blade": {
+      background: "currentcolor"
+    }
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = "." + classes.component;
+
+var addStyle = function addStyle(customSelector, customVars) {
+  return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreIosSpinner.vars, customVars), fns);
+};
+
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreIosSpinner.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIosSpinner.vars, fns);
+};
+
+polytheneCoreCss.styler.generateStyles([selector], polytheneCoreIosSpinner.vars, fns);
+
+exports.addStyle = addStyle;
+exports.getStyle = getStyle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-css-ios-spinner.js.map

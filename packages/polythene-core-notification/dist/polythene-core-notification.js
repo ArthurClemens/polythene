@@ -1,2 +1,288 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-utilities"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-utilities","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-utilities"],e["polythene-theme"])}(this,function(e,t,n,i){"use strict";function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var r={component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multiline",vertical:"pe-notification--vertical"},a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i])}return e},l=function(e){return e.attrs.element||"div"},c=function(e){e.paused(!0),e.timer&&e.timer.pause()},s=function(e){e.paused(!1),e.timer&&e.timer.resume()},u=function(e){e.timer&&e.timer.stop()},d=function(e,n){!e.containerEl&&t.isClient&&(e.containerEl=document.querySelector(n.containerSelector||n.holderSelector)),!e.containerEl&&t.isClient&&console.error("No container element found"),n.containerSelector&&e.containerEl&&e.containerEl.classList.add(r.hasContainer)},p=function(e,n){if(e.transitioning())return Promise.resolve();e.transitioning(!0),u(e),d(e,n);var i=n.instanceId,o=n.transitions;return t.show(a({},n,o.show(a({},n,{containerEl:e.containerEl,el:e.el})))).then(function(){n.multipleDidShow&&n.multipleDidShow(i);var t=n.timeout;if(0===t);else{var o=void 0!==t?t:3;e.timer.start(function(){h(e,n)},o)}e.visible(!0),e.transitioning(!1)})},h=function(e,n){if(e.transitioning())return Promise.resolve();e.transitioning(!0),u(e);var i=n.instanceId,o=n.transitions;return t.hide(a({},n,o.hide(a({},n,{containerEl:e.containerEl,el:e.el})))).then(function(){n.multipleDidHide&&n.multipleDidHide(i),e.visible(!1),e.transitioning(!1)})},f=function(e){t.isServer||e.getBoundingClientRect().height>parseInt(window.getComputedStyle(e).lineHeight,10)+parseInt(window.getComputedStyle(e).paddingTop,10)+parseInt(window.getComputedStyle(e).paddingBottom,10)&&e.classList.add(r.multilineTitle)},m=function(e,t){var i=t(!1),o=t(!1),r=t(!1),a=t(!1);return{cleanUp:void 0,containerEl:void 0,dismissEl:void 0,el:void 0,timer:new n.Timer,paused:o,transitioning:i,visible:a,mounted:r,redrawOnUpdate:t.merge([a])}},v=function(e){var t=e.dom;if(t){var n=e.state,i=e.attrs;n.el=t;var o=n.el.querySelector("."+r.title);o&&f(o),i.showInstance&&!n.visible()&&p(n,i),n.mounted(!0)}},_=function(e){return e.state.mounted(!1)},g=function(e,n){var i=n.keys,l=e.attrs;return a({},t.filterSupportedAttributes(l),o({className:[r.component,"light"===l.tone?null:"pe-dark-tone","light"===l.tone?"pe-light-tone":null,l.containerSelector?r.hasContainer:null,"vertical"===l.layout?r.vertical:r.horizontal,"dark"===l.tone?"pe-dark-tone":null,"light"===l.tone?"pe-light-tone":null,l.className||l[i.class]].join(" ")},i.onclick,function(e){return e.preventDefault()}))},y=function(e,t){var n=t.renderer,i=e.state,o=e.attrs;return i.mounted()&&!i.transitioning()&&(o.hideInstance&&i.visible()?h(i,o):o.showInstance&&!i.visible()&&p(i,o)),o.pauseInstance&&!i.paused()?c(i):o.unpauseInstance&&i.paused()&&s(i),n("div",{className:r.content,style:o.style},o.content||[o.title?n("div",{className:r.title},o.title):null,o.action?n("div",{className:r.action},o.action):null])},b=Object.freeze({getElement:l,getInitialState:m,onMount:v,onUnMount:_,createProps:g,createContent:y}),w=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},k={width:274,min_height:80,border_radius:i.vars.unit_block_border_radius,title_padding_h:8,title_single_padding_v:14,title_multi_padding_v:20,side_padding:16,font_size:14,line_height:20,color_light_background:w(i.vars.color_light_background),color_light_text:w(i.vars.color_light_foreground,i.vars.blend_light_dark_primary),color_dark_background:w(i.vars.color_dark_background),color_dark_text:w(i.vars.color_dark_foreground,i.vars.blend_light_text_primary)},S={show:function(e){var t=e.el,n=e.showDuration,i=e.showDelay;return{el:t,showDuration:n||.5,showDelay:i||0,beforeShow:function(){return t.style.opacity=0},show:function(){return t.style.opacity=1}}},hide:function(e){var t=e.el,n=e.hideDuration,i=e.hideDelay;return{el:t,hideDuration:n||.5,hideDelay:i||0,hide:function(){return t.style.opacity=0}}}};e.coreNotificationInstance=b,e.vars=k,e.transitions=S,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneUtilities,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multiline",
+  vertical: "pe-notification--vertical"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var DEFAULT_TIME_OUT = 3;
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var pauseInstance = function pauseInstance(state) {
+  state.paused(true);
+  if (state.timer) {
+    state.timer.pause();
+  }
+};
+
+var unpauseInstance = function unpauseInstance(state) {
+  state.paused(false);
+  if (state.timer) {
+    state.timer.resume();
+  }
+};
+
+var stopTimer = function stopTimer(state) {
+  if (state.timer) {
+    state.timer.stop();
+  }
+};
+
+var prepareShow = function prepareShow(state, attrs) {
+  if (!state.containerEl && polytheneCore.isClient) {
+    // attrs.holderSelector is passed as option to Multiple
+    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
+  }
+  if (!state.containerEl && polytheneCore.isClient) {
+    console.error("No container element found"); // eslint-disable-line no-console
+  }
+  if (attrs.containerSelector && state.containerEl) {
+    state.containerEl.classList.add(classes.hasContainer);
+  }
+};
+
+var showInstance = function showInstance(state, attrs) {
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  stopTimer(state);
+  prepareShow(state, attrs);
+  var id = attrs.instanceId;
+  var transitions = attrs.transitions;
+  return polytheneCore.show(_extends({}, attrs, transitions.show(_extends({}, attrs, {
+    containerEl: state.containerEl,
+    el: state.el
+  })))).then(function () {
+    if (attrs.multipleDidShow) {
+      attrs.multipleDidShow(id); // this will call attrs.didShow
+    }
+    // set timer to hide in a few seconds
+    var timeout = attrs.timeout;
+    if (timeout === 0) {
+      // do not time out
+    } else {
+      var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+      state.timer.start(function () {
+        hideInstance(state, attrs);
+      }, timeoutSeconds);
+    }
+    state.visible(true);
+    state.transitioning(false);
+  });
+};
+
+var hideInstance = function hideInstance(state, attrs) {
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  stopTimer(state);
+  var id = attrs.instanceId;
+  var transitions = attrs.transitions;
+  return polytheneCore.hide(_extends({}, attrs, transitions.hide(_extends({}, attrs, {
+    containerEl: state.containerEl,
+    el: state.el
+  })))).then(function () {
+    if (attrs.multipleDidHide) {
+      attrs.multipleDidHide(id); // this will call attrs.didHide
+    }
+    state.visible(false);
+    state.transitioning(false);
+  });
+};
+
+var setTitleStyles = function setTitleStyles(titleEl) {
+  if (polytheneCore.isServer) return;
+  var height = titleEl.getBoundingClientRect().height;
+  var lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
+  var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
+  var paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+  if (height > lineHeight + paddingTop + paddingBottom) {
+    titleEl.classList.add(classes.multilineTitle);
+  }
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var transitioning = createStream(false);
+  var paused = createStream(false);
+  var mounted = createStream(false);
+  var visible = createStream(false);
+  return {
+    cleanUp: undefined,
+    containerEl: undefined,
+    dismissEl: undefined,
+    el: undefined,
+    timer: new polytheneUtilities.Timer(),
+    paused: paused,
+    transitioning: transitioning,
+    visible: visible,
+    mounted: mounted,
+    redrawOnUpdate: createStream.merge([visible])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  var dom = vnode.dom;
+  if (!dom) {
+    return;
+  }
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  state.el = dom;
+  var titleEl = state.el.querySelector("." + classes.title);
+  if (titleEl) {
+    setTitleStyles(titleEl);
+  }
+  if (attrs.showInstance && !state.visible()) {
+    showInstance(state, attrs);
+  }
+  state.mounted(true);
+};
+
+var onUnMount = function onUnMount(vnode) {
+  return (
+    // vnode.attrs.multipleClear(),
+    vnode.state.mounted(false)
+  );
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), _defineProperty({
+    className: [classes.component, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    attrs.tone === "light" ? "pe-light-tone" : null, attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, k.onclick, function (e) {
+    return e.preventDefault();
+  }));
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  if (state.mounted() && !state.transitioning()) {
+    if (attrs.hideInstance && state.visible()) {
+      hideInstance(state, attrs);
+    } else if (attrs.showInstance && !state.visible()) {
+      showInstance(state, attrs);
+    }
+  }
+  if (attrs.pauseInstance && !state.paused()) {
+    pauseInstance(state, attrs);
+  } else if (attrs.unpauseInstance && state.paused()) {
+    unpauseInstance(state, attrs);
+  }
+
+  return h("div", {
+    className: classes.content,
+    style: attrs.style
+  }, attrs.content || [attrs.title ? h("div", { className: classes.title }, attrs.title) : null, attrs.action ? h("div", { className: classes.action }, attrs.action) : null]);
+};
+
+var notificationInstance = Object.freeze({
+	getElement: getElement,
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var buttonPaddingH = 8; // padding, inner text space
+
+var vars$1 = {
+  width: 274,
+  min_height: 80,
+  border_radius: polytheneTheme.vars.unit_block_border_radius,
+  title_padding_h: buttonPaddingH,
+  title_single_padding_v: 14,
+  title_multi_padding_v: 20,
+  side_padding: 24 - buttonPaddingH,
+  font_size: 14,
+  line_height: 20,
+
+  color_light_background: rgba(polytheneTheme.vars.color_light_background),
+  color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_dark_primary),
+
+  color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_light_text_primary)
+};
+
+var ANIMATION_DURATION = .5;
+
+var show$1 = function show$$1(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
+  return {
+    el: el,
+    showDuration: showDuration || ANIMATION_DURATION,
+    showDelay: showDelay || 0,
+    beforeShow: function beforeShow() {
+      return el.style.opacity = 0;
+    },
+    show: function show$$1() {
+      return el.style.opacity = 1;
+    }
+  };
+};
+
+var hide$1 = function hide$$1(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
+  return {
+    el: el,
+    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDelay: hideDelay || 0,
+    hide: function hide$$1() {
+      return el.style.opacity = 0;
+    }
+  };
+};
+
+var transitions = {
+  show: show$1,
+  hide: hide$1
+};
+
+exports.coreNotificationInstance = notificationInstance;
+exports.vars = vars$1;
+exports.transitions = transitions;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-notification.js.map

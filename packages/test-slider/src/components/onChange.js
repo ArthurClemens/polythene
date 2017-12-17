@@ -11,10 +11,10 @@ export default ({
 }) => ({
   oninit: vnode => {
     const value = stream(attrs.defaultValue || attrs.value || 0);
-    vnode.state = {
+    Object.assign(vnode.state, {
       value,
       redrawOnUpdate: stream.merge([value])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

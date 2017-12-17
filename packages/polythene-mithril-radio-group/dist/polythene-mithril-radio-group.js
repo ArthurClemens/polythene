@@ -1,2 +1,22 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-radio-group"),require("polythene-mithril-radio-button")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-radio-group","polythene-mithril-radio-button"],o):o(e.polythene={},e["polythene-mithril-base"],e["polythene-core-radio-group"],e["polythene-mithril-radio-button"])}(this,function(e,o,t,r){"use strict";var n=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e},i=o.StateComponent(n({},t.coreRadioGroup,{createContent:function(e,o){return t.coreRadioGroup.createContent(e,n(o,{RadioButton:r.RadioButton}))}}));i.displayName="RadioGroup",e.RadioGroup=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-radio-group'), require('polythene-mithril-radio-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-radio-group', 'polythene-mithril-radio-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-radio-group'],global['polythene-mithril-radio-button']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreRadioGroup,polytheneMithrilRadioButton) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var RadioGroup = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreRadioGroup.coreRadioGroup, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreRadioGroup.coreRadioGroup.createContent(vnode, _extends(args, { RadioButton: polytheneMithrilRadioButton.RadioButton }));
+  }
+}));
+
+RadioGroup.displayName = "RadioGroup";
+
+exports.RadioGroup = RadioGroup;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-radio-group.js.map

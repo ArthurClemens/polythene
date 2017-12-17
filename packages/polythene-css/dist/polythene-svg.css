@@ -2,7 +2,7 @@
   line-height: 1
 }
 
-.pe-svg svg {
+.pe-svg>div,.pe-svg svg {
   width: inherit;
   height: inherit
 }

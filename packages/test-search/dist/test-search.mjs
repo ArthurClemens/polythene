@@ -438,7 +438,7 @@ var results = (function (_ref) {
         }
       };
 
-      vnode.state = {
+      _extends$1(vnode.state, {
         handleKey: handleKey,
         hasFocus: hasFocus,
         selectedListIndex: selectedListIndex,
@@ -446,7 +446,7 @@ var results = (function (_ref) {
         searchValue: searchValue,
         selectedValue: selectedValue,
         redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -703,13 +703,13 @@ var searchField = (function (_ref) {
         return value("");
       };
 
-      vnode.state = {
+      _extends$2(vnode.state, {
         value: value,
         focus: focus,
         clear: clear,
         leave: leave,
         redrawOnUpdate: stream.merge([value]) // for React
-      };
+      });
     },
     view: function view(_ref4) {
       var state = _ref4.state,

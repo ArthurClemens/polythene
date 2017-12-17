@@ -5,7 +5,7 @@ const TEST_USER_NAME = "ABC";
 
 export default ({ h, TextField, RaisedButton }) => ({
   oninit: vnode => {
-    vnode.state = {
+    Object.assign(vnode.state, {
       form: powerform({
         username: {
           default: "",
@@ -51,7 +51,7 @@ export default ({ h, TextField, RaisedButton }) => ({
       formErrors: null,
       submitFailed: false,
       submitted: false
-    };
+    });
   },
   view: ({ state }) => {
     const form = state.form;

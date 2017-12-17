@@ -125,7 +125,7 @@ html {
 .tests-list .pe-dark-tone .result .pe-light-tone.pe-list,
 .tests-list-tile .result .pe-light-tone.pe-list-tile,
 .tests-list-tile .pe-dark-tone .result .pe-light-tone.pe-list-tile,
-.tests-tabs .pe-tabs,
+.tests-tabs .pe-tabs:not(.pe-tabs--scrollable),
 .tests-tabs .pe-dark-tone .result .pe-light-tone .pe-tabs {
   background-color: #fff;
 }

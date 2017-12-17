@@ -238,11 +238,11 @@ var keyboardState = (function (_ref) {
         }
       };
 
-      vnode.state = {
+      _extends(vnode.state, {
         cityIndex: cityIndex,
         handleKey: handleKey,
         redrawOnUpdate: stream.merge([cityIndex]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;

@@ -1,2 +1,60 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","polythene-core"],t):t(e.polythene={},e["polythene-core"])}(this,function(e,t){"use strict";var n={component:"pe-svg"},o=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},r=function(e){return e.attrs.element||"div"},c=function(e){if(e.dom){var t=e.dom.querySelector("svg");t&&t.setAttribute("focusable","false")}},l=function(e,r){var c=r.keys,l=e.attrs;return o({},t.filterSupportedAttributes(l),{className:[n.component,"dark"===l.tone?"pe-dark-tone":null,"light"===l.tone?"pe-light-tone":null,l.className||l[c.class]].join(" ")})},i=function(e){var t=e.attrs;return t.content?t.content:t.children||e.children||t},a=Object.freeze({getElement:r,onMount:c,createProps:l,createContent:i}),s={color_light:"currentcolor",color_dark:"currentcolor"};e.coreSVG=a,e.vars=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+	(factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
+
+var classes = {
+  component: "pe-svg"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
+  // Prevent that SVG gets keyboard focus
+  var elem = vnode.dom.querySelector("svg");
+  if (elem) {
+    elem.setAttribute("focusable", "false");
+  }
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+};
+
+var svg = Object.freeze({
+	getElement: getElement,
+	onMount: onMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var vars = {
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+exports.coreSVG = svg;
+exports.vars = vars;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-svg.js.map

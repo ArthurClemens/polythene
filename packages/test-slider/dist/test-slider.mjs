@@ -210,10 +210,10 @@ var onChange = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var value = stream(attrs.defaultValue || attrs.value || 0);
-      vnode.state = {
+      _extends(vnode.state, {
         value: value,
         redrawOnUpdate: stream.merge([value])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -466,6 +466,8 @@ var genericTests = (function (_ref) {
   }];
 });
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var labelWidth = 24;
@@ -522,9 +524,9 @@ var colorSlider = function colorSlider(_ref) {
       value.map(function (newValue) {
         return attrs.onUpdateValue(newValue);
       });
-      vnode.state = {
+      _extends$2(vnode.state, {
         value: value
-      };
+      });
     },
     view: function view(vnode) {
       var _h;
@@ -572,12 +574,12 @@ var rgbSlider = (function (_ref4) {
       var rgb = stream.merge([red, green, blue]).map(function (values) {
         return values.join(",");
       });
-      vnode.state = {
+      _extends$2(vnode.state, {
         red: red,
         green: green,
         blue: blue,
         rgb: rgb
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -623,7 +625,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -669,7 +671,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

@@ -1,2 +1,25 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-list-tile"),require("polythene-mithril-icon"),require("polythene-mithril-ripple")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-list-tile","polythene-mithril-icon","polythene-mithril-ripple"],t):t(e.polythene={},e["polythene-mithril-base"],e["polythene-core-list-tile"],e["polythene-mithril-icon"],e["polythene-mithril-ripple"])}(this,function(e,t,i,o,r){"use strict";var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var o in i)Object.prototype.hasOwnProperty.call(i,o)&&(e[o]=i[o])}return e},l=t.ViewComponent(n({},i.coreListTile,{createProps:function(e,t){return i.coreListTile.createProps(e,n(t,{Icon:o.Icon,Ripple:r.Ripple}))},createContent:function(e,t){return i.coreListTile.createContent(e,n(t,{Icon:o.Icon,Ripple:r.Ripple}))}}));l.displayName="ListTile",e.ListTile=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-list-tile'), require('polythene-mithril-icon'), require('polythene-mithril-ripple')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-list-tile', 'polythene-mithril-icon', 'polythene-mithril-ripple'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-list-tile'],global['polythene-mithril-icon'],global['polythene-mithril-ripple']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreListTile,polytheneMithrilIcon,polytheneMithrilRipple) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ListTile = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreListTile.coreListTile, {
+  createProps: function createProps(vnode, args) {
+    return polytheneCoreListTile.coreListTile.createProps(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon, Ripple: polytheneMithrilRipple.Ripple }));
+  },
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreListTile.coreListTile.createContent(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon, Ripple: polytheneMithrilRipple.Ripple }));
+  }
+}));
+
+ListTile.displayName = "ListTile";
+
+exports.ListTile = ListTile;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-list-tile.js.map

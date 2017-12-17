@@ -16,12 +16,12 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
         window.requestAnimationFrame(step);
       }
     };
-    vnode.state = {
+    Object.assign(vnode.state, {
       start,
       step,
       percentage,
       redrawOnUpdate: stream.merge([start, percentage]) // update React
-    };
+    });
   },
   view: ({ state }) => {
     const percentage = state.percentage();

@@ -65,13 +65,13 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       const leave = () =>
         value("");
 
-      vnode.state = {
+      Object.assign(vnode.state, {
         value,
         focus,
         clear,
         leave,
         redrawOnUpdate: stream.merge([value]) // for React
-      };
+      });
     },
     view: ({ state, attrs }) => {
       // incoming value and focus added for result list example:

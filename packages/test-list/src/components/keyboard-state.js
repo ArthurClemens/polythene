@@ -86,11 +86,11 @@ export default ({ h, k, List, ListTile }) => {
         }
       };
 
-      vnode.state = {
+      Object.assign(vnode.state, {
         cityIndex,
         handleKey,
         redrawOnUpdate: stream.merge([cityIndex]) // for React
-      };
+      });
     },
     view: vnode => {
       const state = vnode.state;

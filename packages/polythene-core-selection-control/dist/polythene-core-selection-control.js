@@ -1,2 +1,269 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],o):o(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,o,t){"use strict";function n(e,o,t){return o in e?Object.defineProperty(e,o,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[o]=t,e}var r={component:"pe-control",formLabel:"pe-control__form-label",input:"pe-control__input",label:"pe-control__label",disabled:"pe-control--disabled",inactive:"pe-control--inactive",large:"pe-control--large",medium:"pe-control--medium",off:"pe-control--off",on:"pe-control--on",regular:"pe-control--regular",small:"pe-control--small",box:"pe-control__box",button:"pe-control__button",buttonOff:"pe-control__button--off",buttonOn:"pe-control__button--on"},l=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},a=function(e){return e.attrs.element||"div"},c={small:r.small,regular:r.regular,medium:r.medium,large:r.large},i=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"regular";return c[e]},_=function(e,o){var t=void 0!==e.checked?e.checked:o.checked(),n=void 0!==e.selectable&&e.selectable(t);return{checked:t,inactive:e.disabled||!n}},s=function(e,o){var t=e.attrs,n=o(void 0!==t.defaultChecked?t.defaultChecked:t.checked||!1),r=function(e,o){t.onChange&&t.onChange({event:e,checked:o,value:t.value})};return{checked:n,toggle:function(e){var o=!n();n(o),r(e,o)},onChange:function(e){var o=e.currentTarget.checked;"radio"===t.type||n(o),r(e,o)},redrawOnUpdate:o.merge([n])}},d=function(e,t){var n=t.keys,a=e.attrs,c=e.state,s=_(a,c),d=s.checked,u=s.inactive;return l({},o.filterSupportedAttributes(a),{className:[r.component,a.instanceClass,d?r.on:r.off,a.disabled?r.disabled:null,u?r.inactive:null,i(a.size),"dark"===a.tone?"pe-dark-tone":null,"light"===a.tone?"pe-light-tone":null,a.className||a[n.class]].join(" ")})},u=function(e,o){var t=o.renderer,a=o.keys,c=o.ViewControl,i=e.state,s=e.attrs,d=_(s,i),u=d.checked,f=d.inactive,p=s.events&&s.events[a.onclick],v=s.events&&s.events[a.onkeydown]?s.events[a.onkeydown]:function(e){"Enter"===e.key&&(p?p(e):i.toggle(e))};return t("label",l({},{className:r.formLabel}),[t(c,l({},s,{inactive:f,checked:u,key:"control",events:n({},a.onkeydown,v)})),s.label?t("."+r.label,{key:"label"},s.label):null,t("input",l({},s.events,{name:s.name,type:s.type,value:s.value,checked:u},s.disabled||f?{disabled:"disabled"}:n({},a.onchange,i.onChange)))])},f=Object.freeze({getElement:a,getInitialState:s,createProps:d,createContent:u}),p=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},v=[{iconType:"iconOn",className:r.buttonOn},{iconType:"iconOff",className:r.buttonOff}],b=function(e){return e.attrs.element||"."+r.box},g=function(e,o,t,n){return p({},{className:n,key:o},t[o]?t[o]:{svg:{content:e.trust(t.icons[o])}},t.icon,t.size?{size:t.size}:null)},h=function(e,o){var t=o.renderer,n=o.Icon,l=o.IconButton,a=e.attrs;return t(l,p({},{element:"div",key:a.key,className:r.button,content:v.map(function(e){return t(n,g(t,e.iconType,a,e.className))}),ripple:{center:!0},disabled:a.disabled,events:a.events,inactive:a.inactive},a.iconButton))},m=Object.freeze({getElement:b,createContent:h}),y=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},k={label_font_size:2*t.vars.grid_unit_component,label_height:3*t.vars.grid_unit_component,label_padding_before:4*t.vars.grid_unit,label_padding_after:0,button_size:6*t.vars.grid_unit_component,icon_size:3*t.vars.grid_unit_component,animation_duration:t.vars.animation_duration,color_light_on:y(t.vars.color_primary),color_light_off:y(t.vars.color_light_foreground,t.vars.blend_light_text_secondary),color_light_label:y(t.vars.color_light_foreground,t.vars.blend_light_text_secondary),color_light_disabled:y(t.vars.color_light_foreground,t.vars.blend_light_text_disabled),color_light_thumb_off_focus_opacity:.08,color_light_thumb_on_focus_opacity:.11,color_light_focus_on:y(t.vars.color_primary),color_light_focus_on_opacity:.11,color_light_focus_off:y(t.vars.color_light_foreground),color_light_focus_off_opacity:.07,color_dark_on:y(t.vars.color_primary),color_dark_off:y(t.vars.color_dark_foreground,t.vars.blend_dark_text_secondary),color_dark_label:y(t.vars.color_dark_foreground,t.vars.blend_dark_text_secondary),color_dark_disabled:y(t.vars.color_dark_foreground,t.vars.blend_dark_text_disabled),color_dark_thumb_off_focus_opacity:.08,color_dark_thumb_on_focus_opacity:.11,color_dark_focus_on:y(t.vars.color_primary),color_dark_focus_on_opacity:.14,color_dark_focus_off:y(t.vars.color_dark_foreground),color_dark_focus_off_opacity:.09};e.coreSelectionControl=f,e.viewControl=m,e.vars=k,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-control",
+
+  // elements
+  formLabel: "pe-control__form-label",
+  input: "pe-control__input",
+  label: "pe-control__label",
+
+  // states
+  disabled: "pe-control--disabled",
+  inactive: "pe-control--inactive",
+  large: "pe-control--large",
+  medium: "pe-control--medium",
+  off: "pe-control--off",
+  on: "pe-control--on",
+  regular: "pe-control--regular",
+  small: "pe-control--small",
+
+  // control view elements
+  box: "pe-control__box",
+  button: "pe-control__button",
+
+  // control view states
+  buttonOff: "pe-control__button--off",
+  buttonOn: "pe-control__button--on"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var sizeClasses = {
+  small: classes.small,
+  regular: classes.regular,
+  medium: classes.medium,
+  large: classes.large
+};
+
+var classForSize = function classForSize() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return sizeClasses[size];
+};
+
+var currentState = function currentState(attrs, state) {
+  var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
+  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
+  var inactive = attrs.disabled || !selectable;
+  return { checked: checked, inactive: inactive };
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked || false;
+  var checked = createStream(isChecked);
+
+  var notifyChange = function notifyChange(e, isChecked) {
+    if (attrs.onChange) {
+      attrs.onChange({
+        event: e,
+        checked: isChecked,
+        value: attrs.value
+      });
+    }
+  };
+
+  var onChange = function onChange(e) {
+    var isChecked = e.currentTarget.checked;
+    if (attrs.type === "radio") {
+      // do not set directly
+    } else {
+      checked(isChecked);
+    }
+    notifyChange(e, isChecked);
+  };
+
+  var toggle = function toggle(e) {
+    var newChecked = !checked();
+    checked(newChecked);
+    notifyChange(e, newChecked);
+  };
+
+  return {
+    checked: checked,
+    toggle: toggle,
+    onChange: onChange,
+    redrawOnUpdate: createStream.merge([checked])
+  };
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  var state = vnode.state;
+
+  var _currentState = currentState(attrs, state),
+      checked = _currentState.checked,
+      inactive = _currentState.inactive;
+
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
+    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      k = _ref2.keys,
+      ViewControl = _ref2.ViewControl;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  var _currentState2 = currentState(attrs, state),
+      checked = _currentState2.checked,
+      inactive = _currentState2.inactive;
+
+  var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
+  var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
+    if (e.key === "Enter") {
+      if (viewControlClickHandler) {
+        viewControlClickHandler(e);
+      } else {
+        state.toggle(e);
+      }
+    }
+  };
+
+  return h("label", _extends({}, {
+    className: classes.formLabel,
+    onclick: viewControlClickHandler
+  }), [h(ViewControl, _extends({}, attrs, {
+    inactive: inactive,
+    checked: checked,
+    key: "control",
+    events: _defineProperty({}, k.onkeydown, viewControlKeyDownHandler)
+  })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
+    name: attrs.name,
+    type: attrs.type,
+    value: attrs.value,
+    checked: checked
+  }, attrs.disabled || inactive ? { disabled: "disabled" } : _defineProperty({}, k.onchange, state.onChange)))]);
+};
+
+var selectionControl = Object.freeze({
+	getElement: getElement,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var CONTENT = [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }];
+
+var getElement$1 = function getElement(vnode) {
+  return vnode.attrs.element || "." + classes.box;
+};
+
+var createIcon = function createIcon(h, iconType, attrs, className) {
+  return (
+    // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
+    // otherwise create a new object
+    _extends$1({}, {
+      className: className,
+      key: iconType
+    }, attrs[iconType] ? attrs[iconType] : { svg: { content: h.trust(attrs.icons[iconType]) } }, attrs.icon, attrs.size ? { size: attrs.size } : null)
+  );
+};
+
+var createContent$1 = function createContent(vnode, _ref) {
+  var h = _ref.renderer,
+      Icon = _ref.Icon,
+      IconButton = _ref.IconButton;
+
+  var attrs = vnode.attrs;
+  return h(IconButton, _extends$1({}, {
+    element: "div",
+    key: attrs.key,
+    className: classes.button,
+    content: CONTENT.map(function (o) {
+      return h(Icon, createIcon(h, o.iconType, attrs, o.className));
+    }),
+    ripple: { center: true },
+    disabled: attrs.disabled,
+    events: attrs.events,
+    inactive: attrs.inactive
+  }, attrs.iconButton // for example for hover behaviour
+  ));
+};
+
+var viewControl = Object.freeze({
+	getElement: getElement$1,
+	createContent: createContent$1
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  label_font_size: 2 * polytheneTheme.vars.grid_unit_component, // 16
+  label_height: 3 * polytheneTheme.vars.grid_unit_component, // 24
+  label_padding_before: polytheneTheme.vars.grid_unit * 4, // 16
+  label_padding_after: 0,
+  button_size: 6 * polytheneTheme.vars.grid_unit_component,
+  icon_size: 3 * polytheneTheme.vars.grid_unit_component,
+  animation_duration: polytheneTheme.vars.animation_duration,
+
+  color_light_on: rgba(polytheneTheme.vars.color_primary),
+  color_light_off: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+  color_light_label: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+  color_light_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+  color_light_thumb_off_focus_opacity: .08,
+  color_light_thumb_on_focus_opacity: .11,
+
+  // icon colors may be set in theme; set to "inherit" by default
+  // color_light_on_icon
+  // color_light_off_icon
+
+  // label on/off colors may be set in theme; set to color_light_label by default
+  // color_light_on_label
+  // color_light_off_label
+
+  color_light_focus_on: rgba(polytheneTheme.vars.color_primary),
+  color_light_focus_on_opacity: .11,
+  color_light_focus_off: rgba(polytheneTheme.vars.color_light_foreground),
+  color_light_focus_off_opacity: .07,
+
+  color_dark_on: rgba(polytheneTheme.vars.color_primary),
+  color_dark_off: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+  color_dark_label: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+  color_dark_disabled: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+  color_dark_thumb_off_focus_opacity: .08,
+  color_dark_thumb_on_focus_opacity: .11,
+
+  // icon color may be set in theme; set to "inherit" by default
+  // color_dark_on_icon
+  // color_dark_off_icon
+
+  // label on/off colors may be set in theme; set to color_dark_label by default
+  // color_dark_on_label
+  // color_dark_off_label
+
+  color_dark_focus_on: rgba(polytheneTheme.vars.color_primary), // or '#80cbc4'
+  color_dark_focus_on_opacity: .14,
+  color_dark_focus_off: rgba(polytheneTheme.vars.color_dark_foreground),
+  color_dark_focus_off_opacity: .09
+};
+
+exports.coreSelectionControl = selectionControl;
+exports.viewControl = viewControl;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-selection-control.js.map

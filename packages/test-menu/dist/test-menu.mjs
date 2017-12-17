@@ -266,6 +266,8 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var opener = (function (_ref) {
@@ -281,10 +283,10 @@ var opener = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
-      vnode.state = {
+      _extends(vnode.state, {
         show: show,
         redrawOnUpdate: stream.merge([show])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -363,6 +365,8 @@ var sizes = (function (_ref2) {
   };
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconMoreVertSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\"/></svg>";
@@ -399,10 +403,10 @@ var createPositionContainer = function createPositionContainer(_ref) {
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
-      vnode.state = {
+      _extends$1(vnode.state, {
         show: show,
         redrawOnUpdate: stream.merge([show])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -478,6 +482,8 @@ var position = (function (_ref2) {
   };
 });
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var menuOptions = ["Show all notification content", "Hide sensitive notification content", "Hide all notification content"];
@@ -492,12 +498,12 @@ var settings = (function (_ref) {
     oninit: function oninit(vnode) {
       var show = stream(false);
       var selectedIndex = stream(0);
-      vnode.state = {
+      _extends$2(vnode.state, {
         show: show,
         selectedIndex: selectedIndex,
         redrawOnUpdate: stream.merge([show]),
         id: "id-" + Math.floor(Math.random() * 1000)
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -614,7 +620,7 @@ var themed = (function (_ref) {
   return { themeColor: themeColor, themedList: themedList, styledList: styledList };
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var transitions = (function (_ref) {
   var show = _ref.show,
@@ -626,7 +632,7 @@ var transitions = (function (_ref) {
       didHide = _ref.didHide,
       getState = _ref.getState,
       transitionOptions = _ref.transitionOptions;
-  return h(Menu$$1, _extends({}, transitionOptions, {
+  return h(Menu$$1, _extends$3({}, transitionOptions, {
     target: target,
     show: show,
     didHide: didHide,
@@ -875,7 +881,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -921,7 +927,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$4({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -4250,7 +4256,7 @@ var createHistory = unwrapExports(createBrowserHistory_1);
 
 var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$2 = Object.assign || function (target) {
+var _extends$5 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -4301,7 +4307,7 @@ var Router$1 = function (_React$Component) {
 
   Router.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$2({}, this.context.router, {
+      router: _extends$5({}, this.context.router, {
         history: this.props.history,
         route: {
           location: this.props.history.location,
@@ -4810,7 +4816,7 @@ HashRouter.propTypes = {
 
 var _typeof$10 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$3 = Object.assign || function (target) {
+var _extends$6 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -4899,7 +4905,7 @@ var Link = function (_React$Component) {
 
     var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 
-    return react.createElement('a', _extends$3({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
+    return react.createElement('a', _extends$6({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
   };
 
   return Link;
@@ -5668,7 +5674,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$5 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5723,7 +5729,7 @@ var Route$1 = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$5({}, this.context.router, {
+      router: _extends$8({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -5818,7 +5824,7 @@ Route$1.childContextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$4 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5867,12 +5873,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$4({
+      return react.createElement(Link, _extends$7({
         to: to,
         className: isActive ? [className, activeClassName].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$4({}, style, activeStyle) : style,
+        style: isActive ? _extends$7({}, style, activeStyle) : style,
         'aria-current': isActive && ariaCurrent
       }, rest));
     }
@@ -6010,7 +6016,7 @@ var parsePath = function parsePath(path) {
   };
 };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$10 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6028,7 +6034,7 @@ var createLocation = function createLocation(path, state, key, currentLocation) 
     location.state = state;
   } else {
     // One-arg form: push(location)
-    location = _extends$7({}, path);
+    location = _extends$10({}, path);
 
     if (location.pathname === undefined) location.pathname = '';
 
@@ -6232,7 +6238,7 @@ Redirect$1.contextTypes = {
 
 var _typeof$19 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$10 = Object.assign || function (target) {
+var _extends$13 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6284,7 +6290,7 @@ var normalizeLocation = function normalizeLocation(object) {
 var addBasename = function addBasename(basename, location) {
   if (!basename) return location;
 
-  return _extends$10({}, location, {
+  return _extends$13({}, location, {
     pathname: PathUtils_1(basename) + location.pathname
   });
 };
@@ -6296,7 +6302,7 @@ var stripBasename$1 = function stripBasename(basename, location) {
 
   if (location.pathname.indexOf(base) !== 0) return location;
 
-  return _extends$10({}, location, {
+  return _extends$13({}, location, {
     pathname: location.pathname.substr(base.length)
   });
 };
@@ -6393,7 +6399,7 @@ var StaticRouter$1 = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router$1, _extends$10({}, props, { history: history }));
+    return react.createElement(Router$1, _extends$13({}, props, { history: history }));
   };
 
   return StaticRouter;
@@ -6569,7 +6575,7 @@ var hoistNonReactStatics = function hoistNonReactStatics(targetComponent, source
     return targetComponent;
 };
 
-var _extends$11 = Object.assign || function (target) {
+var _extends$14 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6594,7 +6600,7 @@ var withRouter$1 = function withRouter(Component) {
         remainingProps = _objectWithoutProperties$3(props, ['wrappedComponentRef']);
 
     return react.createElement(Route$1, { render: function render(routeComponentProps) {
-        return react.createElement(Component, _extends$11({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+        return react.createElement(Component, _extends$14({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
 

@@ -134,7 +134,6 @@
 .pe-card .pe-card__primary {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -183,7 +182,6 @@
   flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center
@@ -204,9 +202,7 @@
 .pe-card .pe-card__actions.pe-card__actions--justified {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
-  -ms-flex-line-pack: stretch;
   -ms-flex-pack: justify;
   justify-content: space-between
 }
@@ -214,7 +210,6 @@
 .pe-card .pe-card__actions.pe-card__actions--vertical {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column

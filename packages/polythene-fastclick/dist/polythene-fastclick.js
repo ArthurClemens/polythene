@@ -1,2 +1,22 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("fastclick"),require("polythene-core")):"function"==typeof define&&define.amd?define(["exports","fastclick","polythene-core"],t):t(e.polythene={},e.fastclick,e["polythene-core"])}(this,function(e,t,o){"use strict";t=t&&t.hasOwnProperty("default")?t.default:t;var i=o.isClient?document.body:{body:{}},n=void 0,c=void 0,u=void 0,d=function(){u||(n=new t(i),u=!0)},f=function(){u&&(n.destroy(),u=!1)},r=function(){f(),c&&clearTimeout(c),c=setTimeout(d,150)},s=function(){o.isTouch&&o.isClient&&(o.subscribe("scroll",r,100),d())};e.addFastClick=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('fastclick'), require('polythene-core')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'fastclick', 'polythene-core'], factory) :
+	(factory((global.polythene = {}),global.fastclick,global['polythene-core']));
+}(this, (function (exports,FastClick,polytheneCore) { 'use strict';
+
+FastClick = FastClick && FastClick.hasOwnProperty('default') ? FastClick['default'] : FastClick;
+
+var layer = polytheneCore.isClient ? document.scrollingElement : { body: {} };
+
+var addFastClick = function addFastClick() {
+  if (polytheneCore.isTouch && polytheneCore.isClient) {
+    new FastClick(layer);
+  }
+};
+
+exports.addFastClick = addFastClick;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-fastclick.js.map

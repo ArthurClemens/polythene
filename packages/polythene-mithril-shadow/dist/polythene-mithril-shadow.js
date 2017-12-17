@@ -1,2 +1,18 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-shadow"],o):o(e.polythene={},e["polythene-mithril-base"],e["polythene-core-shadow"])}(this,function(e,o,t){"use strict";var n=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},r=o.ViewComponent(n({},t.coreShadow));r.displayName="Shadow",e.Shadow=r,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-shadow')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-shadow'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-shadow']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreShadow) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Shadow = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreShadow.coreShadow));
+
+Shadow.displayName = "Shadow";
+
+exports.Shadow = Shadow;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-shadow.js.map

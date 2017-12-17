@@ -14,7 +14,6 @@
   flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -373,6 +372,24 @@
 
 .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
   left: 12px
+}
+
+:root .pe-switch-control input,_:-ms-fullscreen input {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  opacity: 0;
+  cursor: pointer
+}
+
+:root .pe-switch-control label,_:-ms-fullscreen label {
+  cursor: auto
 }
 
 .pe-dark-tone.pe-switch-control .pe-control__label,.pe-dark-tone .pe-switch-control .pe-control__label {

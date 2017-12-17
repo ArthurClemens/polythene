@@ -1,2 +1,85 @@
-!function(o,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-theme"],e):e(o.polythene={},o["polythene-theme"])}(this,function(o,e){"use strict";var t={component:"pe-button pe-icon-button",content:"pe-icon-button__content",compact:"pe-icon-button--compact"},n=Object.assign||function(o){for(var e=1;e<arguments.length;e++){var t=arguments[e];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(o[n]=t[n])}return o},r=function(o,e){var r=e.renderer,a=e.Icon,c=o.attrs,_=c.content?c.content:c.icon?r(a,c.icon):c.children||o.children;return n({},{content:r("div",{className:t.content},_),parentClassName:[c.parentClassName||t.component,c.compact?t.compact:null].join(" "),wash:!1,animateOnTap:!1},c)},a=function(){return null},c=Object.freeze({createProps:r,createContent:a}),_=function(o){return"rgba("+o+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},i=(e.vars.grid_unit_icon_button-e.vars.unit_icon_size)/2,d=(e.vars.grid_unit_icon_button-e.vars.unit_icon_size)/3,l=_(e.vars.color_light_foreground,e.vars.blend_light_text_secondary),s=_(e.vars.color_dark_foreground,e.vars.blend_dark_text_secondary),u={padding:i,padding_compact:d,color_background:"transparent",color_light:l,color_light_disabled:_(e.vars.color_light_foreground,e.vars.blend_light_text_disabled),color_light_wash:l,color_light_wash_opacity:e.vars.blend_light_background_hover_medium,color_light_focus_opacity:e.vars.blend_light_background_hover_medium,color_dark:s,color_dark_disabled:_(e.vars.color_dark_foreground,e.vars.blend_dark_text_disabled),color_dark_wash:s,color_dark_wash_opacity:e.vars.blend_dark_background_hover_medium,color_dark_focus_opacity:e.vars.blend_dark_background_hover_medium};o.coreIconButton=c,o.vars=u,Object.defineProperty(o,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-theme']));
+}(this, (function (exports,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-button pe-icon-button",
+
+  // elements
+  content: "pe-icon-button__content",
+
+  // states
+  compact: "pe-icon-button--compact"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Don't export 'element': it will be the wrapped button component (set in polythene-xxx-icon-button)
+
+// Props to be passed to a button, including 'content'
+
+var createProps = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      Icon = _ref.Icon;
+
+  var attrs = vnode.attrs;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+  return _extends({}, {
+    content: h("div", { className: classes.content }, content),
+    parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
+    // defaults
+    wash: false,
+    animateOnTap: false
+  }, attrs);
+};
+
+var createContent = function createContent() {
+  return null;
+};
+
+var iconButton = Object.freeze({
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var padding = (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2; // 12
+var padding_compact = (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 3; // 8
+var color_light = rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary);
+var color_dark = rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary);
+
+var vars$1 = {
+  padding: padding,
+  padding_compact: padding_compact,
+
+  color_background: "transparent", // only specify this variable to get all 2 states
+  // theme specific background colors may be set in theme; disabled by default
+  // color_light_background:    "none",
+  // color_dark_background:     "none",
+
+  color_light: color_light,
+  color_light_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+  color_light_wash: color_light,
+  color_light_wash_opacity: polytheneTheme.vars.blend_light_background_hover_medium,
+  color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium,
+
+  color_dark: color_dark,
+  color_dark_disabled: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+  color_dark_wash: color_dark,
+  color_dark_wash_opacity: polytheneTheme.vars.blend_dark_background_hover_medium,
+  color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium
+};
+
+exports.coreIconButton = iconButton;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-icon-button.js.map

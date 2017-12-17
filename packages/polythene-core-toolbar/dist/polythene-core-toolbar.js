@@ -1,2 +1,119 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,n){"use strict";var r={component:"pe-toolbar",compact:"pe-toolbar--compact",title:"pe-toolbar__title",centeredTitle:"pe-toolbar__title--center",indentedTitle:"pe-toolbar__title--indent"},o=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},i=function(e){return e.attrs.element||"div"},a=function(e,n){var i=n.keys,a=e.attrs;return o({},t.filterSupportedAttributes(a),{className:[r.component,a.compact?r.compact:null,"dark"===a.tone?"pe-dark-tone":null,"light"===a.tone?"pe-light-tone":null,a.className||a[i.class]].join(" ")},a.events)},l=function(e){var t=e.attrs;return t.content?t.content:t.children||e.children},c=Object.freeze({getElement:i,createProps:a,createContent:l}),d=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},s=function(e){return e.attrs.element||"div"},u=function(e,n){var o=n.keys,i=e.attrs;return d({},t.filterSupportedAttributes(i),{className:[r.title,i.indent?r.indentedTitle:null,i.center?r.centeredTitle:null,"dark"===i.tone?"pe-dark-tone":null,"light"===i.tone?"pe-light-tone":null,i.className||i[o.class]].join(" ")},i.events)},p=function(e){var t=e.attrs;return t.text?t.text:t.content?t.content:t.children||e.children||t},_=Object.freeze({getElement:s,createProps:u,createContent:p}),h=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},g=2*n.vars.grid_unit_component-12,v=9*n.vars.grid_unit_component-6*n.vars.grid_unit_component-g,f=7*n.vars.grid_unit_component,m={padding_side:g,height:8*n.vars.grid_unit_component,height_compact:f,title_padding:v,indent:n.vars.unit_indent,transition_duration:n.vars.animation_duration,font_size:18,line_height:n.vars.line_height,color_light_text:h(n.vars.color_light_foreground,n.vars.blend_light_text_primary),color_dark_text:h(n.vars.color_dark_foreground,n.vars.blend_dark_text_primary),color_light_background:h(n.vars.color_light_background),color_dark_background:h(n.vars.color_dark_background)};e.coreToolbar=c,e.coreToolbarTitle=_,e.vars=m,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+
+  // Toolbar
+
+  component: "pe-toolbar",
+
+  // states
+  compact: "pe-toolbar--compact",
+
+  // Toolbar title
+
+  // elements
+  title: "pe-toolbar__title",
+
+  // states
+  centeredTitle: "pe-toolbar__title--center",
+  indentedTitle: "pe-toolbar__title--indent"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events);
+};
+
+var createContent = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.children || vnode.children;
+};
+
+var toolbar = Object.freeze({
+	getElement: getElement,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement$1 = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var createProps$1 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends$1({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events);
+};
+
+var createContent$1 = function createContent(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.text ? attrs.text : attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+};
+
+var toolbarTitle = Object.freeze({
+	getElement: getElement$1,
+	createProps: createProps$1,
+	createContent: createContent$1
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var padding_side = polytheneTheme.vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+var padding_side_large = polytheneTheme.vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
+var title_padding = polytheneTheme.vars.grid_unit_component * 9 - polytheneTheme.vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
+var height = polytheneTheme.vars.grid_unit_component * 7; // 56
+var height_compact = polytheneTheme.vars.grid_unit_component * 6; // 48
+var height_large = polytheneTheme.vars.grid_unit_component * 8; // 64
+
+var vars$1 = {
+  padding_side: padding_side,
+  padding_side_large: padding_side_large,
+  height: height,
+  height_compact: height_compact,
+  height_large: height_large,
+
+  // title vars
+  title_padding: title_padding,
+  indent: polytheneTheme.vars.unit_indent,
+  transition_duration: polytheneTheme.vars.animation_duration,
+  font_size: 18,
+  line_height: polytheneTheme.vars.line_height,
+
+  // color vars
+  color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+
+  color_light_background: rgba(polytheneTheme.vars.color_light_background),
+  color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
+};
+
+exports.coreToolbar = toolbar;
+exports.coreToolbarTitle = toolbarTitle;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-toolbar.js.map

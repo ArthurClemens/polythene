@@ -1,7 +1,6 @@
 .pe-dialog-pane {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -51,7 +50,6 @@
 }
 
 .pe-dialog-pane .pe-dialog-pane__body {
-  -ms-flex-item-align: stretch;
   -ms-align-self: stretch;
   -webkit-align-self: stretch;
   align-self: stretch;
@@ -105,7 +103,6 @@
   justify-content: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;

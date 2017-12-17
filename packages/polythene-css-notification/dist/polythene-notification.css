@@ -3,7 +3,6 @@
   justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -27,7 +26,6 @@
 .pe-notification {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -58,7 +56,6 @@
 .pe-notification.pe-notification--horizontal .pe-notification__content {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row
@@ -80,7 +77,6 @@
 .pe-notification.pe-notification--horizontal .pe-notification__action {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center
@@ -89,7 +85,6 @@
 .pe-notification.pe-notification--vertical .pe-notification__content {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column
@@ -106,7 +101,6 @@
 .pe-notification.pe-notification--vertical .pe-notification__action {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-pack: end;
   justify-content: flex-end

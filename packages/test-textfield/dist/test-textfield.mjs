@@ -197,6 +197,8 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var focus = (function (_ref) {
@@ -207,10 +209,10 @@ var focus = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var hasFocus = stream(false);
-      vnode.state = {
+      _extends$2(vnode.state, {
         hasFocus: hasFocus,
         redrawOnUpdate: stream.merge([hasFocus])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -231,6 +233,8 @@ var focus = (function (_ref) {
   };
 });
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var onChange = (function (_ref) {
   var h = _ref.h,
       TextField$$1 = _ref.TextField;
@@ -243,11 +247,11 @@ var onChange = (function (_ref) {
           textfieldState().el.value = v;
         }
       });
-      vnode.state = {
+      _extends$3(vnode.state, {
         textfieldState: textfieldState,
         value: value,
         redrawOnUpdate: stream.merge([textfieldState, value])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -260,6 +264,8 @@ var onChange = (function (_ref) {
   };
 });
 
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var setValue = (function (_ref) {
@@ -271,11 +277,11 @@ var setValue = (function (_ref) {
     oninit: function oninit(vnode) {
       var value = stream("");
       var focus = stream(false);
-      vnode.state = {
+      _extends$4(vnode.state, {
         value: value,
         focus: focus,
         redrawOnUpdate: stream.merge([value]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -890,6 +896,8 @@ var genericTests = (function (_ref) {
   }];
 });
 
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var setValue$1 = (function (_ref) {
   var h = _ref.h,
       TextField$$1 = _ref.TextField,
@@ -897,9 +905,9 @@ var setValue$1 = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
-      vnode.state = {
+      _extends$5(vnode.state, {
         value: value
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -929,6 +937,8 @@ var setValue$1 = (function (_ref) {
   };
 });
 
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var TEST_USER_NAME = "ABC";
 
 var formValidation = (function (_ref) {
@@ -937,7 +947,7 @@ var formValidation = (function (_ref) {
       RaisedButton$$1 = _ref.RaisedButton;
   return {
     oninit: function oninit(vnode) {
-      vnode.state = {
+      _extends$6(vnode.state, {
         form: powerform({
           username: {
             default: "",
@@ -978,7 +988,7 @@ var formValidation = (function (_ref) {
         formErrors: null,
         submitFailed: false,
         submitted: false
-      };
+      });
     },
     view: function view(_ref2) {
       var state = _ref2.state;
@@ -1102,7 +1112,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -1148,7 +1158,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$8({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -3040,7 +3050,7 @@ var _class = function (_Component) {
   return _class;
 }(react_2);
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var reactTests = function reactTests(_ref) {
   var TextField$$1 = _ref.TextField,
@@ -3053,7 +3063,7 @@ var reactTests = function reactTests(_ref) {
     return react.createElement(
       "div",
       {
-        style: _extends$2({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
+        style: _extends$7({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
       },
       test
     );

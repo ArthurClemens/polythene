@@ -1,2 +1,21 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-toolbar")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-toolbar"],o):o(e.polythene={},e["polythene-mithril-base"],e["polythene-core-toolbar"])}(this,function(e,o,t){"use strict";var r=o.ViewComponent(t.coreToolbar);r.displayName="Toolbar";var l=o.ViewComponent(t.coreToolbarTitle);l.displayName="ToolbarTitle",e.Toolbar=r,e.ToolbarTitle=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-toolbar')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-toolbar'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-toolbar']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreToolbar) { 'use strict';
+
+var Toolbar = polytheneMithrilBase.ViewComponent(polytheneCoreToolbar.coreToolbar);
+
+Toolbar.displayName = "Toolbar";
+
+var ToolbarTitle = polytheneMithrilBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
+
+ToolbarTitle.displayName = "ToolbarTitle";
+
+exports.Toolbar = Toolbar;
+exports.ToolbarTitle = ToolbarTitle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-toolbar.js.map

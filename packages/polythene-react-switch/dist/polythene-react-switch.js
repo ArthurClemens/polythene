@@ -1,2 +1,40 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-switch"),require("polythene-core-selection-control"),require("polythene-react-shadow"),require("polythene-react-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-switch","polythene-core-selection-control","polythene-react-shadow","polythene-react-icon-button"],t):t(e.polythene={},e["polythene-react-base"],e["polythene-core-switch"],e["polythene-core-selection-control"],e["polythene-react-shadow"],e["polythene-react-icon-button"])}(this,function(e,t,o,n,r,c){"use strict";var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},i=t.ViewComponent(a({},o.viewControl,{createContent:function(e,t){return o.viewControl.createContent(e,a(t,{Shadow:r.Shadow,IconButton:c.IconButton}))}}));i.displayName="ViewControl";var l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},p=t.StateComponent(l({},n.coreSelectionControl,{createContent:function(e,t){return n.coreSelectionControl.createContent(e,l(t,{ViewControl:i}))}}));p.displayName="SelectionControl";var h=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},s=t.StateComponent(h({},o.coreSwitch,{component:p}));s.displayName="Switch",e.Switch=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-switch'), require('polythene-core-selection-control'), require('polythene-react-shadow'), require('polythene-react-icon-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-switch', 'polythene-core-selection-control', 'polythene-react-shadow', 'polythene-react-icon-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-switch'],global['polythene-core-selection-control'],global['polythene-react-shadow'],global['polythene-react-icon-button']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreSwitch,polytheneCoreSelectionControl,polytheneReactShadow,polytheneReactIconButton) { 'use strict';
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ViewControl = polytheneReactBase.ViewComponent(_extends$2({}, polytheneCoreSwitch.viewControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSwitch.viewControl.createContent(vnode, _extends$2(args, { Shadow: polytheneReactShadow.Shadow, IconButton: polytheneReactIconButton.IconButton }));
+  }
+}));
+
+ViewControl.displayName = "ViewControl";
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var SelectionControl = polytheneReactBase.StateComponent(_extends$1({}, polytheneCoreSelectionControl.coreSelectionControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+  }
+}));
+
+SelectionControl.displayName = "SelectionControl";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Switch = polytheneReactBase.StateComponent(_extends({}, polytheneCoreSwitch.coreSwitch, {
+  component: SelectionControl
+}));
+
+Switch.displayName = "Switch";
+
+exports.Switch = Switch;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-switch.js.map

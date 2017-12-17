@@ -1,2 +1,25 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-list"),require("polythene-mithril-list-tile")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-list","polythene-mithril-list-tile"],t):t(e.polythene={},e["polythene-mithril-base"],e["polythene-core-list"],e["polythene-mithril-list-tile"])}(this,function(e,t,i,r){"use strict";var o=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var r in i)Object.prototype.hasOwnProperty.call(i,r)&&(e[r]=i[r])}return e},n=t.ViewComponent(o({},i.coreList,{createProps:function(e,t){return i.coreList.createProps(e,o(t,{ListTile:r.ListTile}))},createContent:function(e,t){return i.coreList.createContent(e,o(t,{ListTile:r.ListTile}))}}));n.displayName="List",e.List=n,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-list'), require('polythene-mithril-list-tile')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-list', 'polythene-mithril-list-tile'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-list'],global['polythene-mithril-list-tile']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreList,polytheneMithrilListTile) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var List = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreList.coreList, {
+  createProps: function createProps(vnode, args) {
+    return polytheneCoreList.coreList.createProps(vnode, _extends(args, { ListTile: polytheneMithrilListTile.ListTile }));
+  },
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreList.coreList.createContent(vnode, _extends(args, { ListTile: polytheneMithrilListTile.ListTile }));
+  }
+}));
+
+List.displayName = "List";
+
+exports.List = List;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-list.js.map

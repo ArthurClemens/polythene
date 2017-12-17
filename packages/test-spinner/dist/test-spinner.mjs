@@ -209,10 +209,10 @@ var opener = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
-      vnode.state = {
+      _extends(vnode.state, {
         show: show,
         redrawOnUpdate: stream.merge([show])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -262,12 +262,12 @@ var progressOpener = (function (_ref) {
           window.requestAnimationFrame(step);
         }
       };
-      vnode.state = {
+      _extends$1(vnode.state, {
         start: start,
         step: step,
         percentage: percentage,
         redrawOnUpdate: stream.merge([start, percentage]) // update React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -329,12 +329,12 @@ var progressSlider = (function (_ref) {
           window.requestAnimationFrame(step);
         }
       };
-      vnode.state = {
+      _extends$2(vnode.state, {
         start: start,
         step: step,
         percentage: percentage,
         redrawOnUpdate: stream.merge([start, percentage]) // update React
-      };
+      });
     },
     view: function view(_ref2) {
       var state = _ref2.state;

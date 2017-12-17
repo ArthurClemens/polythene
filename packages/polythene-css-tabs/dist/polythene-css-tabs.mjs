@@ -52,7 +52,7 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
+  return [_defineProperty({}, selector, _defineProperty({
     userSelect: "none",
     transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
@@ -130,18 +130,12 @@ var layout = (function (selector, componentVars) {
       ".pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0
       },
       ".pe-tabs--end .pe-tabs__scroll-button-end": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0
       },
 
       " .pe-tabs__scroll-button-start": {
@@ -266,12 +260,11 @@ var layout = (function (selector, componentVars) {
       top: "auto"
     }]
 
-    // ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
-    //   ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-    //     minWidth: componentVars.tab_min_width_tablet + "px"
-    //   }
-    // }
-  })];
+  }, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
+    ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+      minWidth: componentVars.tab_min_width_tablet + "px"
+    }
+  })))];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

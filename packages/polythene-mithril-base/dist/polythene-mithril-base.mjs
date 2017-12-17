@@ -257,7 +257,7 @@ var StateComponent = function StateComponent(_ref) {
   var oninit = function oninit(vnode) {
     var protoState = _extends({}, vnode);
     var initialState = getInitialState(protoState, stream);
-    vnode.state = initialState;
+    _extends(vnode.state, initialState);
     vnode._mounted = false;
 
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {

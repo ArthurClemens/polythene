@@ -23,25 +23,33 @@ var classes = {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var compactStyle = function compactStyle(componentVars) {
+  return {
+    height: componentVars.height_compact + "px"
+  };
+};
+
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
+  var _ref3;
+
+  return [(_ref3 = {}, _defineProperty(_ref3, selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
     height: componentVars.height + "px",
     fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
 
-    ".pe-toolbar--compact": {
-      height: componentVars.height_compact + "px"
-    },
+    ".pe-toolbar--compact": compactStyle(componentVars),
 
-    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [flex.layout, flex.flex(1), mixin.ellipsis(1, vars$1.line_height, "em"), {
-      transformOrigin: "left 50%",
-      lineHeight: vars$1.line_height + "em",
-      wordBreak: "break-all"
-    }],
-    " > span, .pe-toolbar__title": {
+    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+      width: "100%",
+      display: "block",
+      wordBreak: "break-all",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
       marginLeft: componentVars.title_padding + "px"
     },
+
     " .pe-toolbar__title--indent": {
       marginLeft: componentVars.indent - componentVars.padding_side + "px"
     },
@@ -54,7 +62,10 @@ var layout = (function (selector, componentVars) {
     " .pe-fit": [mixin.fit(), {
       margin: 0
     }]
-  }])];
+  }]), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+    height: componentVars.height_large + "px",
+    padding: "0 " + componentVars.padding_side_large + "px"
+  })), _ref3)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

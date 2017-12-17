@@ -3,9 +3,9 @@ import stream from "mithril/stream";
 export default ({ h, TextField, RaisedButton }) => ({
   oninit: vnode => {
     const value = stream("");
-    vnode.state = {
+    Object.assign(vnode.state, {
       value
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

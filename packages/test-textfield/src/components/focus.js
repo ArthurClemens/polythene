@@ -3,10 +3,10 @@ import stream from "mithril/stream";
 export default ({ h, k, TextField, RaisedButton }) => ({
   oninit: vnode => {
     const hasFocus = stream(false);
-    vnode.state = {
+    Object.assign(vnode.state, {
       hasFocus,
       redrawOnUpdate: stream.merge([hasFocus])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

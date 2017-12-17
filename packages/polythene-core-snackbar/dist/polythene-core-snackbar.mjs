@@ -14,8 +14,8 @@ var rgba = function rgba(colorStr) {
 
 var vars$2 = _extends$1({}, vars, {
   border_radius: 0,
-  tablet_min_width: 288,
-  tablet_max_width: 568,
+  min_width: 288,
+  max_width: 568,
   min_height: 0,
 
   color_dark_background: rgba(vars$1.color_dark_background)

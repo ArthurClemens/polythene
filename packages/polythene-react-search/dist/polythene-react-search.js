@@ -1,2 +1,22 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-search"),require("polythene-react-textfield")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-search","polythene-react-textfield"],t):t(e.polythene={},e["polythene-react-base"],e["polythene-core-search"],e["polythene-react-textfield"])}(this,function(e,t,r,o){"use strict";var n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var o in r)Object.prototype.hasOwnProperty.call(r,o)&&(e[o]=r[o])}return e},c=t.StateComponent(n({},r.coreSearch,{createContent:function(e,t){return r.coreSearch.createContent(e,n(t,{TextField:o.TextField}))}}));c.displayName="Search",e.Search=c,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-search'), require('polythene-react-textfield')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-search', 'polythene-react-textfield'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-search'],global['polythene-react-textfield']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreSearch,polytheneReactTextfield) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Search = polytheneReactBase.StateComponent(_extends({}, polytheneCoreSearch.coreSearch, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSearch.coreSearch.createContent(vnode, _extends(args, { TextField: polytheneReactTextfield.TextField }));
+  }
+}));
+
+Search.displayName = "Search";
+
+exports.Search = Search;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-search.js.map
