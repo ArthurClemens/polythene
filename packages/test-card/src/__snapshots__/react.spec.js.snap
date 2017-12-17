@@ -818,7 +818,7 @@ exports[`test Any content (list) 1`] = `
 
 exports[`test Any content (tabs) 1`] = `
 <Card
-  content={<n />} />
+  content={<_class />} />
 `;
 
 exports[`test Bottom action row, bordered 1`] = `
@@ -2269,7 +2269,7 @@ exports[`test Title image, regular 1`] = `
 </div>
 `;
 
-exports[`test Title image, sizse large, landscape 1`] = `
+exports[`test Title image, size large, landscape 1`] = `
 <div
   className="pe-card   "
   style={
@@ -2348,7 +2348,7 @@ exports[`test Title image, sizse large, landscape 1`] = `
 </div>
 `;
 
-exports[`test Title image, sizse large, square 1`] = `
+exports[`test Title image, size large, square 1`] = `
 <div
   className="pe-card   "
   style={

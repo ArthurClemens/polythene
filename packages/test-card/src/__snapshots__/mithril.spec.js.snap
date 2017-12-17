@@ -1006,7 +1006,8 @@ exports[`test Any content (tabs) 1`] = `
     <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
   </div>
   <div class=\"pe-card__content\">
-    <div class=\"pe-tabs pe-tabs--autofit\">
+    <div class=
+    \"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
       <div class=\"pe-tabs__row\">
         <a class=
         \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -2626,7 +2627,7 @@ exports[`test Title image, regular 1`] = `
 "
 `;
 
-exports[`test Title image, sizse large, landscape 1`] = `
+exports[`test Title image, size large, landscape 1`] = `
 "<div style=\"max-width: 360px;\" class=\"pe-card\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -2709,7 +2710,7 @@ exports[`test Title image, sizse large, landscape 1`] = `
 "
 `;
 
-exports[`test Title image, sizse large, square 1`] = `
+exports[`test Title image, size large, square 1`] = `
 "<div style=\"max-width: 360px;\" class=\"pe-card\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
