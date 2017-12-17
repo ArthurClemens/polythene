@@ -114,6 +114,10 @@ html {
   background-color: #444;
 }
 
+.tests-tabs .result {
+  overflow-x: hidden;
+}
+
 .tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-list-tile .pe-list-tile,
 .tests-list .pe-dark-tone .result .pe-light-tone.pe-list,

@@ -112,6 +112,10 @@ html {
   background-color: #fff;
 }
 
+.tests-tabs .result {
+  overflow-x: hidden;
+}
+
 .tests-ripple .pe-dark-tone .pe-ripple {
   background-color: #444;
 }
