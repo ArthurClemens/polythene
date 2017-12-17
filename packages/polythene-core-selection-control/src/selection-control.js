@@ -108,7 +108,10 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   return h("label",
     Object.assign(
       {},
-      { className: classes.formLabel }
+      {
+        className: classes.formLabel,
+        onclick: viewControlClickHandler
+      }
     ),
     [
       h(ViewControl, Object.assign(
