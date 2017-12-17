@@ -1825,6 +1825,19 @@ exports[`test Option: id 1`] = `
 "
 `;
 
+exports[`test Option: primary className 1`] = `
+"<div class=\"pe-card\">
+  <div class=\"pe-shadow pe-shadow--animated\">
+    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  </div>
+  <div class=\"pe-card__content\">
+    <div class=\"pe-card__primary className-primary\"></div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: tabindex 1`] = `
 "<div tabindex=\"3\" class=\"pe-card\">
   <div class=\"pe-shadow pe-shadow--animated\">

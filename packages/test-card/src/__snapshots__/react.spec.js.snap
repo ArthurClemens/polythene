@@ -818,7 +818,7 @@ exports[`test Any content (list) 1`] = `
 
 exports[`test Any content (tabs) 1`] = `
 <Card
-  content={<_class />} />
+  content={<n />} />
 `;
 
 exports[`test Bottom action row, bordered 1`] = `
@@ -1552,6 +1552,21 @@ exports[`test Option: id 1`] = `
     z={1} />
   <div
     className="pe-card__content" />
+</div>
+`;
+
+exports[`test Option: primary className 1`] = `
+<div
+  className="pe-card   ">
+  <Shadow
+    animated={true}
+    z={1} />
+  <div
+    className="pe-card__content">
+    <CardPrimary
+      className="className-primary"
+      dispatcher={[Function]} />
+  </div>
 </div>
 `;
 

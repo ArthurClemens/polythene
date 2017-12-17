@@ -297,19 +297,21 @@ var cardMedia = Object.freeze({
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var createProps$3 = function createProps(vnode) {
+var createProps$3 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
   var attrs = vnode.attrs;
   var primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce(function (total, current) {
     return Object.keys(current)[0] === "media" ? true : total;
   }, false) : attrs.media || false;
   return _extends$3({}, filterSupportedAttributes(attrs), {
     key: "card-primary",
-    className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null].join(" ")
+    className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
-var createContent$3 = function createContent(vnode, _ref) {
-  var h = _ref.renderer;
+var createContent$3 = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
 
   var attrs = vnode.attrs;
   var dispatcher = attrs.dispatcher;
