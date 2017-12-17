@@ -4,6 +4,9 @@ const iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path
 const iconRefreshSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
 const iconAddSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>";
 
+const longTitle = "Toolbar with a very very very very very very very very very long title";
+const shortTitle = "Toolbar title";
+
 export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const trustedIconMenu = h.trust(iconMenuSVG);
@@ -17,14 +20,14 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const toolbarRow = [
     toolbarButton("menu", trustedIconMenu),
-    h("div", { key: "title", className: toolbarClasses.title }, "Toolbar with a very very very very very very very very very long title"),
+    h("div", { key: "title", className: toolbarClasses.title }, longTitle),
     toolbarButton("refresh", trustedIconRefresh),
     toolbarButton("add", trustedIconAddSVG)
   ];
 
   const toolbarTitleAsSpan = [
     toolbarButton("menu", trustedIconMenu),
-    h("span", { key: "title" }, "Toolbar with a very very very long title"),
+    h("span", { key: "title" }, longTitle),
     toolbarButton("add", trustedIconAddSVG)
   ];
 
@@ -32,7 +35,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
     toolbarButton("menu", trustedIconMenu),
     h(ToolbarTitle, {
       key: "title",
-      text: "Toolbar with a very very very long title"
+      text: longTitle
     }),
     toolbarButton("add", trustedIconAddSVG)
   ];
@@ -40,7 +43,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
   const toolbarTitleComponentCentered = [
     h(ToolbarTitle, {
       key: "title",
-      text: "Toolbar with a very very very long title",
+      text: shortTitle,
       center: true,
     }),
   ];
@@ -49,7 +52,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
     toolbarButton("menu", trustedIconMenu),
     h(ToolbarTitle, {
       key: "title",
-      text: "Toolbar with a very very very long title",
+      text: shortTitle,
       center: true,
     }),
     h(IconButton, {
@@ -62,7 +65,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
   const toolbarTitleComponentIndented = [
     h(ToolbarTitle, {
       key: "title",
-      text: "Toolbar with a very very very long title",
+      text: longTitle,
       indent: true,
     }),
     toolbarButton("add", trustedIconAddSVG)
@@ -71,7 +74,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
   const toolbarTitleComponentAtStart = [
     h(ToolbarTitle, {
       key: "title",
-      text: "Toolbar with a very very very long title",
+      text: longTitle,
     }),
     toolbarButton("add", trustedIconAddSVG)
   ];

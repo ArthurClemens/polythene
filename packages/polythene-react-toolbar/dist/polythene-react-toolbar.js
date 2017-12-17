@@ -1,2 +1,21 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-toolbar")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-toolbar"],o):o(e.polythene={},e["polythene-react-base"],e["polythene-core-toolbar"])}(this,function(e,o,t){"use strict";var r=o.ViewComponent(t.coreToolbar);r.displayName="Toolbar";var l=o.ViewComponent(t.coreToolbarTitle);l.displayName="ToolbarTitle",e.Toolbar=r,e.ToolbarTitle=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-toolbar')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-toolbar'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-toolbar']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreToolbar) { 'use strict';
+
+var Toolbar = polytheneReactBase.ViewComponent(polytheneCoreToolbar.coreToolbar);
+
+Toolbar.displayName = "Toolbar";
+
+var ToolbarTitle = polytheneReactBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
+
+ToolbarTitle.displayName = "ToolbarTitle";
+
+exports.Toolbar = Toolbar;
+exports.ToolbarTitle = ToolbarTitle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-toolbar.js.map

@@ -7,16 +7,14 @@ export const getElement = vnode =>
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream(null);
   const focus = createStream(false);
-  const click = createStream(null); // Force redraw for IE 11
   const inactive = createStream(false);
   const mouseover = createStream(false);
   return {
     dom,
-    click,
     focus,
     inactive,
     mouseover,
-    redrawOnUpdate: createStream.merge([dom, click, focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
   };
 };
 
@@ -25,24 +23,40 @@ export const onMount = vnode => {
     return;
   }
   const state = vnode.state;
+  const attrs = vnode.attrs;
   state.dom(vnode.dom);
   
   if (isClient) {
+    const noink = attrs.ink !== undefined && attrs.ink === false;
+    const handleInactivate = () => (
+      // delay a bit so that the ripple can finish before the hover disappears
+      // the timing is crude and does not take the actual ripple "done" into account
+      setTimeout(() => (
+        state.inactive(true),
+        setTimeout(() => (
+          state.inactive(false)
+        ), attrs.inactivate * 1000)
+      ), noink ? 0 : 300)
+    );
+
     const onFocus = () => state.focus(!state.mouseover());
     const onBlur = () => state.focus(false);
     const onMouseOver = () => state.mouseover(true);
     const onMouseOut = () => state.mouseover(false);
+    const onClick = handleInactivate;
 
     vnode.dom.addEventListener("focus", onFocus, false);
     vnode.dom.addEventListener("blur", onBlur, false);
     vnode.dom.addEventListener("mouseover", onMouseOver, false);
     vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("click", onClick, false);
 
     state.removeEventListeners = () => (
       vnode.dom.removeEventListener("focus", onFocus, false),
       vnode.dom.removeEventListener("blur", onBlur, false),
       vnode.dom.removeEventListener("mouseover", onBlur, false),
-      vnode.dom.removeEventListener("mouseout", onMouseOut, false)
+      vnode.dom.removeEventListener("mouseout", onMouseOut, false),
+      vnode.dom.removeEventListener("click", onClick, false)
     );
   }
 };
@@ -56,18 +70,6 @@ export const createProps = (vnode, { keys: k }) => {
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive();
   const onKeyDownHandler = (attrs.events && attrs.events[k.onkeydown]) || onClickHandler;
-  const noink = attrs.ink !== undefined && attrs.ink === false;
-
-  const handleInactivate = () => (
-    // delay a bit so that the ripple can finish before the hover disappears
-    // the timing is crude and does not take the actual ripple "done" into account
-    setTimeout(() => (
-      state.inactive(true),
-      setTimeout(() => (
-        state.inactive(false)
-      ), attrs.inactivate * 1000)
-    ), noink ? 0 : 300)
-  );
   const onClickHandler = attrs.events && attrs.events[k.onclick];
 
   return Object.assign(
@@ -91,12 +93,7 @@ export const createProps = (vnode, { keys: k }) => {
       [k.tabindex]: disabled || inactive
         ? -1
         : attrs[k.tabindex] || 0,
-      [k.onclick]: e => (
-        state.click(e),
-        attrs.inactivate !== undefined && handleInactivate(),
-        onClickHandler && onClickHandler(e),
-        true
-      ),
+      [k.onclick]: onClickHandler,
       [k.onkeydown]: e => {
         if (e.key === "Enter" && state.focus()) {
           state.focus(false);
