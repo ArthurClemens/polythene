@@ -181,7 +181,6 @@ export default ({ renderer: h, Tabs }) => {
         view: () => 
           h("div", {
             style: {
-              maxWidth: "400px",
               color: "#fff",
               backgroundColor: "#444",
               overflowX: "hidden",
@@ -199,7 +198,6 @@ export default ({ renderer: h, Tabs }) => {
         view: () => 
           h("div", {
             style: {
-              maxWidth: "400px",
               color: "#fff",
               backgroundColor: "#444",
               overflowX: "hidden",

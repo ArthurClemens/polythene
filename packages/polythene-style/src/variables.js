@@ -85,7 +85,20 @@ export const vars = {
   blend_dark_background_disabled: .12,
   blend_dark_overlay_background: .3,
 
-  // breakpoints
+  /*
+  Breakpoints
+  Specs: https://material.io/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+  Breakbpoint naming: inspiration from
+  https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
+  */
+  breakpoint_for_phone_only:          599,  // set max-width  cols: 4,  gutter: 16
+  breakpoint_for_tablet_portrait_up:  600,  // set min-width  cols: 8,  gutter: 24
+  breakpoint_for_tablet_landscape_up: 840,  // etc.           cols: 12, gutter: 24
+  breakpoint_for_desktop_up:          1280, 
+  breakpoint_for_big_desktop_up:      1600, 
+  breakpoint_for_tv_up:               1920, 
+
+
   breakpoint_small_handset_portrait: 0,
   breakpoint_medium_handset_portrait: 360,
   breakpoint_large_handset_portrait: 400,

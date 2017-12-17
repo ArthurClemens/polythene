@@ -80,18 +80,12 @@ export default (selector, componentVars) => [{
       ".pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0,
       },
       ".pe-tabs--end .pe-tabs__scroll-button-end": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0,
       },
 
       " .pe-tabs__scroll-button-start": {
@@ -241,12 +235,14 @@ export default (selector, componentVars) => [{
         margin: 0,
         top: "auto"
       }
-    ]
+    ],
 
-    // ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
-    //   ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-    //     minWidth: componentVars.tab_min_width_tablet + "px"
-    //   }
-    // }
+    ["@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)"]: {
+      [selector]: {
+        ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+          minWidth: componentVars.tab_min_width_tablet + "px"
+        }
+      }
+    }
   }
 }];

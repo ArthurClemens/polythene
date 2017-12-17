@@ -4,14 +4,18 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
   
 const padding_side =            vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+const padding_side_large =      vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
 const title_padding =           vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
-const height_mobile_portrait =  vars.grid_unit_component * 7; // 56
-const height_desktop =          vars.grid_unit_component * 8; // 64
+const height =                  vars.grid_unit_component * 7; // 56
+const height_compact =          vars.grid_unit_component * 6; // 48
+const height_large =            vars.grid_unit_component * 8; // 64
 
 export default {
   padding_side,
-  height:                    height_desktop,
-  height_compact:            height_mobile_portrait,
+  padding_side_large,
+  height,
+  height_compact,
+  height_large,
 
   // title vars
   title_padding,

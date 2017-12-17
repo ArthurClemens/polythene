@@ -1,6 +1,10 @@
 import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
+const compactStyle = componentVars => ({
+  height: componentVars.height_compact + "px"
+});
+
 export default (selector, componentVars) => [{
   [selector]: [
     flex.layout,
@@ -12,23 +16,18 @@ export default (selector, componentVars) => [{
       lineHeight: componentVars.line_height + "em",
       padding: "0 " + componentVars.padding_side + "px",
 
-      ".pe-toolbar--compact": {
-        height: componentVars.height_compact + "px"
-      },
+      ".pe-toolbar--compact": compactStyle(componentVars),
 
-      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": [
-        flex.layout,
-        flex.flex(1),
-        mixin.ellipsis(1, vars.line_height, "em"),
-        {
-          transformOrigin: "left 50%",
-          lineHeight: vars.line_height + "em",
-          wordBreak: "break-all"
-        }
-      ],
       " > span, .pe-toolbar__title": {
+        width: "100%",
+        display: "block",
+        wordBreak: "break-all",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
         marginLeft: componentVars.title_padding + "px"
       },
+
       " .pe-toolbar__title--indent": {
         marginLeft: (componentVars.indent - componentVars.padding_side) + "px"
       },
@@ -44,5 +43,14 @@ export default (selector, componentVars) => [{
         }
       ]
     }
-  ]
+  ],
+  ["@media (min-width: " + vars.breakpoint_for_phone_only + "px) and (orientation: landscape)"]: {
+    [selector]: compactStyle(componentVars)
+  },
+  ["@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)"]: {
+    [selector]: {
+      height: componentVars.height_large + "px",
+      padding: "0 " + componentVars.padding_side_large + "px",
+    }
+  }
 }];

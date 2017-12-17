@@ -2,8 +2,8 @@ import { vars } from "polythene-theme";
 
 const tabletStyle = componentVars => ({
   width: "100%",
-  minWidth: componentVars.tablet_min_width + "px",
-  maxWidth: componentVars.tablet_max_width + "px",
+  minWidth: componentVars.min_width + "px",
+  maxWidth: componentVars.max_width + "px",
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
   borderTopLeftRadius: vars.unit_block_border_radius + "px",
@@ -21,7 +21,7 @@ export default (selector, componentVars) => [{
     minHeight: componentVars.min_height
   },
 
-  ["@media (min-width: " + vars.breakpoint_small_handset_landscape + "px)"]: {
+  ["@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)"]: {
     [selector]: tabletStyle(componentVars)
   }
 }];

@@ -10,9 +10,9 @@ const tab_label_line_height = 1.1 * fontSize;
 
 export default {
   tab_min_width:                    72,
+  tab_min_width_tablet:             160,
   tab_max_width:                    "initial",
   tab_height:                       48,
-  // tab_min_width_tablet:             160,
   label_max_width:                  264,
   menu_tab_height:                  44,
   menu_tab_icon_label_height:       44,
@@ -25,7 +25,7 @@ export default {
   tabs_scroll_delay:                .15,
   tabs_scroll_min_duration:         .5,
   scroll_button_fade_duration:      .2,
-  scroll_button_fade_delay:         .18,
+  scroll_button_fade_delay:         .25,
   tab_content_padding_v:            12,
   tab_menu_content_padding_v:       6,
   tab_indicator_height:             2,
