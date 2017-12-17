@@ -426,7 +426,7 @@ exports[`test Styled Checkbox 1`] = `
   selectable={[Function]}
   style={
     Object {
-      "color": "#ff9800",
+      "color": "#ff0000",
     }
   }
   type="checkbox" />

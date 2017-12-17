@@ -1395,7 +1395,7 @@ exports[`test Option: value 1`] = `
 `;
 
 exports[`test Styled Checkbox 1`] = `
-"<div style=\"color: rgb(255, 152, 0);\" class=
+"<div style=\"color: rgb(255, 0, 0);\" class=
 \"pe-control pe-checkbox-control pe-control--on pe-control--regular\">
 <label class=\"pe-control__form-label\"></label>
   <div class=\"pe-control__box\">

@@ -74,7 +74,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
         label: "Label",
         defaultChecked: true,
         style: {
-          color: "#ff9800"
+          color: "#ff0000"
         }
       }
     },
