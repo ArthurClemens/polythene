@@ -12,7 +12,7 @@ html.wf-active body {
 }
 
 .ma3 {
-  margin: 16px 24px;
+  margin: 16px 20px;
 }
 .mv3 {
   margin-top: 16px;
@@ -31,7 +31,6 @@ html {
   background-color: #fff;
   margin: 0 auto;
 }
-
 .results {
   margin: 0 auto;
   padding-top: 80px;
