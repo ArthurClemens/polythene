@@ -25,14 +25,13 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var baseLayout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), {
+  return [_defineProperty({}, selector, [{
     userSelect: "none",
     outline: "none",
     padding: 0,
     textDecoration: "none",
     textAlign: "center",
     cursor: "pointer",
-    transition: "all " + componentVars.animation_duration + " ease-in-out",
 
     ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
       cursor: "default",
@@ -45,10 +44,10 @@ var baseLayout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-button__content": {
+    " .pe-button__content": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), {
       position: "relative",
       borderRadius: "inherit"
-    },
+    }],
 
     " .pe-button__label": [polytheneCoreCss.mixin.fontSmoothing(), {
       position: "relative",

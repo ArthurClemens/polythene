@@ -1,15 +1,10 @@
 .pe-button {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all;
   user-select: none;
   outline: none;
   padding: 0;
   text-decoration: none;
   text-align: center;
-  cursor: pointer;
-  transition: all .18s ease-in-out
+  cursor: pointer
 }
 
 .pe-button.pe-button--disabled,.pe-button.pe-button--inactive,.pe-button.pe-button--selected {
@@ -21,7 +16,11 @@
   opacity: 1
 }
 
-.pe-button .pe-button__content,.pe-button .pe-button__label {
+.pe-button .pe-button__content {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all;
   position: relative;
   border-radius: inherit
 }
@@ -29,7 +28,9 @@
 .pe-button .pe-button__label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
   display: block;
+  border-radius: inherit;
   pointer-events: none
 }
 

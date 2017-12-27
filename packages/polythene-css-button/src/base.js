@@ -2,7 +2,6 @@ import { mixin } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
   [selector]: [
-    mixin.defaultTransition("all", componentVars.animation_duration),
     {
       userSelect: "none",
       outline: "none",
@@ -10,7 +9,6 @@ export default (selector, componentVars) => [{
       textDecoration: "none",
       textAlign: "center",
       cursor: "pointer",
-      transition: "all " + componentVars.animation_duration + " ease-in-out",
 
       ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
         cursor: "default",
@@ -23,10 +21,13 @@ export default (selector, componentVars) => [{
         }
       },
 
-      " .pe-button__content": {
-        position: "relative",
-        borderRadius: "inherit"
-      },
+      " .pe-button__content": [
+        mixin.defaultTransition("all", componentVars.animation_duration),
+        {
+          position: "relative",
+          borderRadius: "inherit"
+        }
+      ],
 
       " .pe-button__label": [
         mixin.fontSmoothing(),
