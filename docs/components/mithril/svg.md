@@ -73,7 +73,12 @@ import starsSVG from "assets/svg/stars"
 m(SVG, starsSVG)
 ~~~
 
-A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg).
+A large collection of such ready to use SVG modules is available at [mmsvg](https://github.com/ArthurClemens/mmsvg). It includes icons sets from:
+
+* [google/material-design-icons](https://github.com/google/material-design-icons)
+* [zavoloklom/material-design-iconic-font](https://github.com/zavoloklom/material-design-iconic-font)
+* [Templarian/MaterialDesign](https://github.com/Templarian/MaterialDesign)
+* [Zondicons](http://www.zondicons.com)
 
 
 <a name="usage-with-icon-component"></a>
