@@ -16,6 +16,7 @@ This implementation closely follows the [design specification](https://material.
   - [Options for header](#options-for-header)
   - [Options for media](#options-for-media)
   - [Options for actions](#options-for-actions)
+  - [Options for any](#options-for-any)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -79,6 +80,7 @@ Next to the card itself, each content parts has a set of options:
 | **media**     | optional | Options object, equal to media part below |  | Media that is shown in this part |
 | **actions**   | optional | Options object, equal to actions part below |  | Actions that are shown in this part |
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **style**     | optional | String |  | Style object |
 
 <a name="options-for-text"></a>
 ### Options for text
@@ -89,6 +91,7 @@ Next to the card itself, each content parts has a set of options:
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__text` |
 | **content**   | required | String, hyperscript or component |  | Text contents |
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **style**     | optional | String |  | Style object |
 
 <a name="options-for-header"></a>
 ### Options for header
@@ -102,6 +105,7 @@ Next to the card itself, each content parts has a set of options:
 | **info**      | optional | String | | The subtitle (1 line high) |
 | **title**     | required | String | | The title content |
 | **url**       | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for the header; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
+| **style**     | optional | String |  | Style object |
 
 <a name="options-for-media"></a>
 ### Options for media
@@ -116,6 +120,7 @@ Next to the card itself, each content parts has a set of options:
 | **ratio**     | optional | String: "landscape" or "square" | "landscape" | Image ratio; "landscape" translates to `16:9` ratio |
 | **sheet**     | optional | Boolean | | Set to `true` to show the overlay as a partly covering sheet |
 | **size**      | optional | String: "small", "medium", "large", "extra-large" | | For primary media only; defines the image size |
+| **style**     | optional | String |  | Style object |
 
 <a name="options-for-actions"></a>
 ### Options for actions
@@ -128,6 +133,17 @@ Next to the card itself, each content parts has a set of options:
 | **element**   | optional | String | "div" | HTML tag |
 | **layout**    | optional | String: "horizontal", "vertical" or "justified" | "horizontal" | Set to "vertical" for a vertical list of actions; use "justified" for a horizontally evenly spread of icons |
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **style**     | optional | String |  | Style object |
+
+<a name="options-for-any"></a>
+### Options for any
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **element**   | optional | String | "div" | HTML tag |
+| **className** | optional | String |  | Extra CSS class appended to `pe-card__any` |
+| **content**   | required | String, hyperscript or component |  | Contents |
+| **style**     | optional | String |  | Style object |
 
 <a name="common-component-options"></a>
 ### Common component options
@@ -141,6 +157,7 @@ Next to the card itself, each content parts has a set of options:
 | **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+| **style**     | optional | String |  | Style object |
 
 <a name="composition"></a>
 ## Composition

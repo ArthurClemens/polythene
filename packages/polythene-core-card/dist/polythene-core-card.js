@@ -9,6 +9,7 @@ var classes = {
 
   // elements
   actions: "pe-card__actions",
+  any: "pe-card__any",
   content: "pe-card__content",
   header: "pe-card__header",
   headerTitle: "pe-card__header-title",
@@ -54,6 +55,7 @@ var createOverlay = function createOverlay(_ref) {
   var content = attrs.content.map(dispatcher);
   return h("div", {
     key: attrs.key || "card-overlay",
+    style: attrs.style,
     className: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [h(element, {
@@ -65,24 +67,36 @@ var createOverlay = function createOverlay(_ref) {
   })]);
 };
 
-var createText = function createText(_ref2) {
+var createAny = function createAny(_ref2) {
   var attrs = _ref2.attrs,
       h = _ref2.h,
       k = _ref2.k;
 
   var element = attrs.element || "div";
-  return h(element, {
-    key: attrs.key || "card-text",
-    className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.content);
+  return h(element, _extends({}, attrs, {
+    key: attrs.key || "card-any",
+    className: [classes.any, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
+  }), attrs.content);
 };
 
-var createHeader = function createHeader(_ref3) {
+var createText = function createText(_ref3) {
   var attrs = _ref3.attrs,
       h = _ref3.h,
-      k = _ref3.k,
-      Icon = _ref3.Icon,
-      ListTile = _ref3.ListTile;
+      k = _ref3.k;
+
+  var element = attrs.element || "div";
+  return h(element, _extends({}, attrs, {
+    key: attrs.key || "card-text",
+    className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
+  }), attrs.content);
+};
+
+var createHeader = function createHeader(_ref4) {
+  var attrs = _ref4.attrs,
+      h = _ref4.h,
+      k = _ref4.k,
+      Icon = _ref4.Icon,
+      ListTile = _ref4.ListTile;
 
   return h(ListTile, _extends({}, attrs, {
     key: attrs.key || "card-header",
@@ -94,8 +108,8 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || vnode.attrs.url ? "a" : "div";
 };
 
-var createProps = function createProps(vnode, _ref4) {
-  var k = _ref4.keys;
+var createProps = function createProps(vnode, _ref5) {
+  var k = _ref5.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
@@ -103,15 +117,15 @@ var createProps = function createProps(vnode, _ref4) {
   }, attrs.url, attrs.events);
 };
 
-var createContent = function createContent(vnode, _ref5) {
-  var h = _ref5.renderer,
-      k = _ref5.keys,
-      CardActions = _ref5.CardActions,
-      CardMedia = _ref5.CardMedia,
-      CardPrimary = _ref5.CardPrimary,
-      Icon = _ref5.Icon,
-      Shadow = _ref5.Shadow,
-      ListTile = _ref5.ListTile;
+var createContent = function createContent(vnode, _ref6) {
+  var h = _ref6.renderer,
+      k = _ref6.keys,
+      CardActions = _ref6.CardActions,
+      CardMedia = _ref6.CardMedia,
+      CardPrimary = _ref6.CardPrimary,
+      Icon = _ref6.Icon,
+      Shadow = _ref6.Shadow,
+      ListTile = _ref6.ListTile;
 
 
   var dispatcher = function dispatcher(block) {
@@ -133,6 +147,8 @@ var createContent = function createContent(vnode, _ref5) {
         return h(CardPrimary, attrs);
       case "text":
         return createText({ dispatcher: dispatcher, attrs: attrs, h: h, k: k });
+      case "any":
+        return createAny({ dispatcher: dispatcher, attrs: attrs, h: h, k: k });
       default:
         throw "Content type \"" + key + "\" does not exist";
     }

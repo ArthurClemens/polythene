@@ -871,6 +871,30 @@ var genericTests = (function (_ref) {
       }],
       z: 2
     }
+  }, {
+    name: "Header + any",
+    component: Card$$1,
+    attrs: {
+      style: { maxWidth: "400px" },
+      content: [{
+        header: {
+          title: titleLineText,
+          subtitle: infoLineText,
+          icon: {
+            size: "large",
+            avatar: true,
+            src: avatarImageUrl("1.png")
+          }
+        }
+      }, {
+        any: {
+          style: {
+            background: "#eee"
+          },
+          content: h.trust(ipsum)
+        }
+      }]
+    }
   },
 
   // Separate elements

@@ -1048,6 +1048,35 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
 
+    {
+      name: "Header + any",
+      component: Card,
+      attrs: {
+        style: { maxWidth: "400px" },
+        content: [
+          {
+            header: {
+              title: titleLineText,
+              subtitle: infoLineText,
+              icon: {
+                size: "large",
+                avatar: true,
+                src: avatarImageUrl("1.png")
+              }
+            }
+          },
+          {
+            any: {
+              style: {
+                background: "#eee"
+              },
+              content: h.trust(ipsum)
+            }
+          }
+        ]
+      }
+    },
+
     // Separate elements
 
     {

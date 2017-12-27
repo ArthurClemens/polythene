@@ -49,7 +49,7 @@ To generated Material Design elements, pass an array of element options, where e
 * media
 * header
 * actions
-
+* any (for any other content)
 
 Element `primary` contains the sub-options `title` and `subtitle`:
 

@@ -7,6 +7,7 @@ const createOverlay = ({ dispatcher, attrs, h, k }) => {
   return h("div",
     {
       key: attrs.key || "card-overlay",
+      style: attrs.style,
       className: [
         classes.overlay,
         attrs.sheet ? classes.overlaySheet : null,
@@ -32,16 +33,36 @@ const createOverlay = ({ dispatcher, attrs, h, k }) => {
   );
 };
 
+const createAny = ({ attrs, h, k }) => {
+  const element = attrs.element || "div";
+  return h(element, Object.assign(
+    {},
+    attrs,
+    {
+      key: attrs.key || "card-any",
+      className: [
+        classes.any,
+        attrs.tight ? classes.textTight : null,
+        attrs.className || attrs[k.class]
+      ].join(" ")
+    }
+  ), attrs.content);
+};
+
 const createText = ({ attrs, h, k }) => {
   const element = attrs.element || "div";
-  return h(element, {
-    key: attrs.key || "card-text",
-    className: [
-      classes.text,
-      attrs.tight ? classes.textTight : null,
-      attrs.className || attrs[k.class]
-    ].join(" ")
-  }, attrs.content);
+  return h(element, Object.assign(
+    {},
+    attrs,
+    {
+      key: attrs.key || "card-text",
+      className: [
+        classes.text,
+        attrs.tight ? classes.textTight : null,
+        attrs.className || attrs[k.class]
+      ].join(" ")
+    }
+  ), attrs.content);
 };
 
 const createHeader = ({ attrs, h, k, Icon, ListTile }) => {
@@ -109,6 +130,8 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
       return h(CardPrimary, attrs);
     case "text": 
       return createText({ dispatcher, attrs, h, k });
+    case "any": 
+      return createAny({ dispatcher, attrs, h, k });
     default:
       throw(`Content type "${key}" does not exist`);
     }
