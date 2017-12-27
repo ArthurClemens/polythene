@@ -1,30 +1,3 @@
-exports[`test Autocomplete form 1`] = `
-"<form autocomplete=\"on\">
-  <div label=\"Customer information\">
-    <div class=\"pe-textfield pe-textfield--floating-label\">
-      <div class=\"pe-textfield__input-area\">
-        <label class=
-        \"pe-textfield__label\">Email</label><input class=
-        \"pe-textfield__input\" type=\"email\">
-      </div>
-    </div>
-    <div class=\"pe-textfield pe-textfield--floating-label\">
-      <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">First
-        name</label><input class=\"pe-textfield__input\" type=\"text\">
-      </div>
-    </div>
-    <div class=\"pe-textfield pe-textfield--floating-label\">
-      <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">Last
-        name</label><input class=\"pe-textfield__input\" type=\"text\">
-      </div>
-    </div>
-  </div>
-</form>
-"
-`;
-
 exports[`test Custom validation (only use lowercase characters) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=\"pe-textfield pe-textfield--dirty\">
@@ -724,6 +697,11 @@ exports[`test Option: type (password (not shown), number, email) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=\"pe-textfield pe-textfield--dirty\">
     <div class=\"pe-textfield__input-area\">
+      <input class=\"pe-textfield__input\" type=\"password\">
+    </div>
+  </div>
+  <div class=\"pe-textfield pe-textfield--dirty\">
+    <div class=\"pe-textfield__input-area\">
       <input class=\"pe-textfield__input\" type=\"number\">
     </div>
   </div>
@@ -776,7 +754,7 @@ exports[`test Option: value 1`] = `
 `;
 
 exports[`test Option: value is null 1`] = `
-"<div class=\"pe-textfield pe-textfield--dirty\">
+"<div class=\"pe-textfield\">
   <div class=\"pe-textfield__input-area\">
     <input class=\"pe-textfield__input\" type=\"text\">
   </div>

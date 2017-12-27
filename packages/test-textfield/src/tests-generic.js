@@ -62,12 +62,12 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       name: "Option: type (password (not shown), number, email)",
       component: {
         view: () => block([
-          // Don't show password in this test to prevent that the browser kicks in form autocomplete
-          // h(TextField, {
-          //   type: "password",
-          //   defaultValue: "123456",
-          //   key: "a" // for React
-          // }),
+          // Note that having a password field in a form will kick in form autocomplete
+          h(TextField, {
+            type: "password",
+            defaultValue: "123456",
+            key: "a" // for React
+          }),
           h(TextField, {
             type: "number",
             defaultValue: "123456",
@@ -525,35 +525,35 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           })
       }
     },
-    {
-      name: "Autocomplete form",
-      component: {
-        view: () => 
-          h("form",
-            { [k["autocomplete"]]: "on" }, 
-            h("div",
-              {
-                label: "Customer information"
-              },
-              [
-                h(TextField, {
-                  type:               "email",
-                  label:              "Email",
-                  floatingLabel:      true,
-                }),
-                h(TextField, {
-                  label:               "First name",
-                  floatingLabel:      true,
-                }),
-                h(TextField, {
-                  label:               "Last name",
-                  floatingLabel:      true,
-                }),
-              ]
-            )
-          )
-      }
-    },
+    // {
+    //   name: "Autocomplete form",
+    //   component: {
+    //     view: () => 
+    //       h("form",
+    //         { [k["autocomplete"]]: "on" }, 
+    //         h("div",
+    //           {
+    //             label: "Customer information"
+    //           },
+    //           [
+    //             h(TextField, {
+    //               type:               "email",
+    //               label:              "Email",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "First name",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "Last name",
+    //               floatingLabel:      true,
+    //             }),
+    //           ]
+    //         )
+    //       )
+    //   }
+    // },
 
     /* Dark tone */
 

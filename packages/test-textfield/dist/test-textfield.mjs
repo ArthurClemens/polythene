@@ -367,13 +367,12 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return block([
-        // Don't show password in this test to prevent that the browser kicks in form autocomplete
-        // h(TextField, {
-        //   type: "password",
-        //   defaultValue: "123456",
-        //   key: "a" // for React
-        // }),
+        // Note that having a password field in a form will kick in form autocomplete
         h(TextField$$1, {
+          type: "password",
+          defaultValue: "123456",
+          key: "a" // for React
+        }), h(TextField$$1, {
           type: "number",
           defaultValue: "123456",
           key: "b" // for React
@@ -780,26 +779,36 @@ var genericTests = (function (_ref) {
         });
       }
     }
-  }, {
-    name: "Autocomplete form",
-    component: {
-      view: function view() {
-        return h("form", _defineProperty({}, k["autocomplete"], "on"), h("div", {
-          label: "Customer information"
-        }, [h(TextField$$1, {
-          type: "email",
-          label: "Email",
-          floatingLabel: true
-        }), h(TextField$$1, {
-          label: "First name",
-          floatingLabel: true
-        }), h(TextField$$1, {
-          label: "Last name",
-          floatingLabel: true
-        })]));
-      }
-    }
   },
+  // {
+  //   name: "Autocomplete form",
+  //   component: {
+  //     view: () => 
+  //       h("form",
+  //         { [k["autocomplete"]]: "on" }, 
+  //         h("div",
+  //           {
+  //             label: "Customer information"
+  //           },
+  //           [
+  //             h(TextField, {
+  //               type:               "email",
+  //               label:              "Email",
+  //               floatingLabel:      true,
+  //             }),
+  //             h(TextField, {
+  //               label:               "First name",
+  //               floatingLabel:      true,
+  //             }),
+  //             h(TextField, {
+  //               label:               "Last name",
+  //               floatingLabel:      true,
+  //             }),
+  //           ]
+  //         )
+  //       )
+  //   }
+  // },
 
   /* Dark tone */
 
