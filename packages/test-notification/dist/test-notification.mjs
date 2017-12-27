@@ -52,16 +52,6 @@ var genericTests = (function (_ref) {
       title: "A one line message"
     })
   }, {
-    name: "Option: title (1 line) (IE 11 height fix)",
-    interactive: true,
-    exclude: true,
-    component: buttonGroup({
-      title: "A one line message",
-      style: {
-        height: "80px"
-      }
-    })
-  }, {
     name: "Option: title (2 lines)",
     interactive: true,
     exclude: true,
@@ -125,6 +115,20 @@ var genericTests = (function (_ref) {
       tone: "light",
       action: h(Button$$1, {
         label: "Undo",
+        events: _defineProperty({}, k.onclick, function () {
+          Notification$$1.pause();
+          Dialog$$1.show(dialogOptions);
+        })
+      })
+    })
+  }, {
+    name: "Option: title (2 lines), action, layout horizontal",
+    interactive: true,
+    exclude: true,
+    component: buttonGroup({
+      title: "Connection timed out. Showing limited messages.",
+      action: h(Button$$1, {
+        label: "Retry",
         events: _defineProperty({}, k.onclick, function () {
           Notification$$1.pause();
           Dialog$$1.show(dialogOptions);

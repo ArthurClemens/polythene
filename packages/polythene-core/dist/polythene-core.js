@@ -251,7 +251,7 @@ var Multi = function Multi(_ref) {
     }
   };
 
-  var makeItem = function makeItem(itemAttrs, instanceId, spawn) {
+  var createItem = function createItem(itemAttrs, instanceId, spawn) {
     var resolveShow = void 0;
     var resolveHide = void 0;
     var attrs = unpackAttrs(itemAttrs);
@@ -310,7 +310,7 @@ var Multi = function Multi(_ref) {
 
     var instanceId = spawnOpts.id || mOptions.defaultId;
     var spawn = spawnOpts.spawn || mOptions.defaultId;
-    var item = makeItem(attrs, instanceId, spawn);
+    var item = createItem(attrs, instanceId, spawn);
     onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);
@@ -483,6 +483,7 @@ var transition = function transition(opts, state) {
       var applyTransition = function applyTransition() {
         style.transitionDuration = transitionDuration + "ms";
         style.transitionDelay = delay + "ms";
+
         if (opts.showClass) {
           el.classList[state === "show" ? "add" : "remove"](opts.showClass);
         }

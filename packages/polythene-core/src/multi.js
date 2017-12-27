@@ -89,7 +89,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     }
   };
 
-  const makeItem = (itemAttrs, instanceId, spawn) => {
+  const createItem = (itemAttrs, instanceId, spawn) => {
     let resolveShow;
     let resolveHide;
     const attrs = unpackAttrs(itemAttrs);
@@ -139,7 +139,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
   const show = (attrs = {}, spawnOpts = {}) => {
     const instanceId = spawnOpts.id || mOptions.defaultId;
     const spawn = spawnOpts.spawn || mOptions.defaultId;
-    const item = makeItem(attrs, instanceId, spawn);
+    const item = createItem(attrs, instanceId, spawn);
     onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);

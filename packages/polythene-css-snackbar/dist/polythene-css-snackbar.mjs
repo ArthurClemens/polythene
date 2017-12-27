@@ -15,7 +15,7 @@ var notificationClasses = {
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  multilineTitle: "pe-notification__title--multiline",
+  multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical"
 };
 
@@ -36,14 +36,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var tabletStyle = function tabletStyle(componentVars) {
   return {
-    width: "100%",
-    minWidth: componentVars.min_width + "px",
-    maxWidth: componentVars.max_width + "px",
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-    borderTopLeftRadius: vars$1.unit_block_border_radius + "px",
-    borderTopRightRadius: vars$1.unit_block_border_radius + "px",
-
+    " .pe-notification__content": {
+      borderTopLeftRadius: vars$1.unit_block_border_radius + "px",
+      borderTopRightRadius: vars$1.unit_block_border_radius + "px",
+      minWidth: componentVars.min_width + "px",
+      maxWidth: componentVars.max_width + "px"
+    },
     ".pe-notification--horizontal": {
       " .pe-notification__title": {
         paddingRight: "30px"
@@ -56,8 +54,14 @@ var layout = (function (selector, componentVars) {
   var _ref2;
 
   return [(_ref2 = {}, _defineProperty(_ref2, selector, {
-    minHeight: componentVars.min_height
-  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+    width: "100%",
+
+    " .pe-notification__content": {
+      width: "100%",
+      margin: "0 auto",
+      borderRadius: 0
+    }
+  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -66,8 +70,10 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
-    color: componentVars["color_" + tint + "_text"],
-    background: componentVars["color_" + tint + "_background"]
+    " .pe-notification__content": {
+      color: componentVars["color_" + tint + "_text"],
+      background: componentVars["color_" + tint + "_background"]
+    }
   })];
 };
 
@@ -89,7 +95,8 @@ var holderLayout = (function (selector) {
     left: 0,
     zIndex: vars$1.z_notification,
     pointerEvents: "none",
-    justifyContent: "flex-start" // For IE 11
+    justifyContent: "flex-start", // For IE 11
+    width: "100%"
   }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
     position: "relative"
   }), _ref)];

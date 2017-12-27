@@ -4,21 +4,19 @@ import { flex } from "polythene-core-css";
 export default (selector, componentVars) => [{
   [selector]: [
     flex.layoutCenter,
-    {
-      width: componentVars.width + "px",
-      minHeight: componentVars.min_height + "px",
-      position: "relative",
-      padding: "0 " + componentVars.side_padding + "px",
-      margin: "0 auto",
-      borderRadius: componentVars.border_radius + "px",
+    {      
       pointerEvents: "all",
-      alignContent: "center",
+      justifyContent: "center",
+      margin: "0 auto",
 
       " .pe-notification__content": {
-        width: "100%",
+        width: componentVars.width + "px",
+        padding: "0 " + componentVars.side_padding + "px",
+        borderRadius: componentVars.border_radius + "px",
       },
 
       " .pe-notification__title": {
+        flex: "1 0 auto",
         padding: componentVars.title_single_padding_v + "px " + componentVars.title_padding_h + "px",
         fontSize: componentVars.font_size + "px",
         lineHeight: componentVars.line_height + "px",
@@ -45,16 +43,24 @@ export default (selector, componentVars) => [{
         " .pe-notification__action": flex.layoutCenter
       },
       "&.pe-notification--vertical": {
-        " .pe-notification__content": flex.layoutVertical,
+        " .pe-notification__content": [
+          flex.layoutVertical
+        ],
+
         " .pe-notification__title": {
-          paddingBottom: "4px"
+          paddingBottom: "6px"
         },
         " .pe-notification__title--multi-line": {
-          paddingTop: componentVars.title_multi_padding_v + "px"
+          paddingTop: componentVars.title_multi_padding_v + "px",
         },
-        " .pe-notification__action": flex.layoutEndJustified
+        " .pe-notification__action": [
+          flex.layoutEndJustified,
+          {
+            width: "100%"
+          }
+        ]
       }
-    }
+    },
   ]
 }];
 

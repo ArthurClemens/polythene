@@ -16,7 +16,7 @@
   height: 48px
 }
 
-.pe-toolbar .pe-toolbar__title,.pe-toolbar>span {
+.pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
   width: 100%;
   display: block;
   word-break: break-all;

@@ -54,17 +54,6 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       })
     },
     {
-      name: "Option: title (1 line) (IE 11 height fix)",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "A one line message",
-        style: {
-          height: "80px"
-        }
-      })
-    },
-    {
       name: "Option: title (2 lines)",
       interactive: true,
       exclude: true,
@@ -98,7 +87,7 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
           color: "white",
           backgroundColor: "#2196F3",
           padding: "1.5rem",
-        }
+        },
       })
     },
     {
@@ -136,6 +125,23 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
         tone: "light",
         action: h(Button, {
           label: "Undo",
+          events: {
+            [k.onclick]: () => {
+              Notification.pause();
+              Dialog.show(dialogOptions);
+            }
+          }
+        })
+      })
+    },
+    {
+      name: "Option: title (2 lines), action, layout horizontal",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Connection timed out. Showing limited messages.",
+        action: h(Button, {
+          label: "Retry",
           events: {
             [k.onclick]: () => {
               Notification.pause();

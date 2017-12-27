@@ -156,7 +156,6 @@ export const onMount = vnode => {
 };
 
 export const onUnMount = vnode => (
-  // vnode.attrs.multipleClear(),
   vnode.state.mounted(false)
 );
 
@@ -164,7 +163,7 @@ export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
     {},
-    filterSupportedAttributes(attrs),
+    filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     {
       className: [
         classes.component,
@@ -200,7 +199,7 @@ export const createContent = (vnode, { renderer: h }) => {
   return h("div",
     {
       className: classes.content,
-      style: attrs.style
+      style: attrs.style,
     },
     attrs.content || [
       attrs.title
