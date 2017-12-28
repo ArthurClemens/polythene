@@ -9,7 +9,11 @@ var classes = {
 };
 
 var layout$1 = (function (selector, componentVars) {
-  return polytheneCssSelectionControl.layout(selector, componentVars, "radio");
+  return [polytheneCssSelectionControl.layout(selector, componentVars, "radio"), {
+    " .pe-radio-group": {
+      display: "flex"
+    }
+  }];
 });
 
 var color$1 = (function (selector, componentVars) {

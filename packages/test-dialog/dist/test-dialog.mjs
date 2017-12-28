@@ -844,7 +844,11 @@ var Updating = {
       };
       Dialog.show(dialogProps);
     }
-    return renderer("div", null, [renderer("span", state.count()), renderer(RaisedButton, {
+    return renderer("div", null, [renderer("span", {
+      style: {
+        paddingRight: "10px"
+      }
+    }, state.count()), renderer(RaisedButton, {
       label: "Show Dialog",
       events: {
         onclick: function onclick() {

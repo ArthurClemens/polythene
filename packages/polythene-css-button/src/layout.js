@@ -5,7 +5,6 @@ export default (selector, componentVars) => [{
     {
       display: "inline-block",
       minWidth: componentVars.min_width + "px",
-      margin: "0 " + componentVars.margin_h + "px",
       padding: componentVars.outer_padding_v + "px 0",
       background: "transparent",
       border: "none",

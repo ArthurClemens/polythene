@@ -18,6 +18,8 @@
 
 Changes to components:
 
+* Button: the default side margin is removed
+  * Add parent element with class `.pe-button-row` to re-add the margins
 * List: removed keyboard control in favor of (more flexible) example code; see:
   * Mithril
     * [List](components/mithril/list.md#keyboard-control)

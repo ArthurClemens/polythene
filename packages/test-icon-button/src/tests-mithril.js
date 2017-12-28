@@ -27,8 +27,8 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
       name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: {
-        view: () => h(".pe-light-tone", {
-          style: { background: "#fff", padding: "10px" }
+        view: () => h(".pe-button-row.pe-light-tone", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [
           h(IconButton, {
             icon: {
@@ -48,8 +48,8 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
       name: "Dark tone class + light tone",
       className: "test-dark-tone",
       component: {
-        view: () => h("div", {
-          style: { background: "#fff", padding: "10px" }
+        view: () => h(".pe-button-row", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [
           h(IconButton, {
             icon: {

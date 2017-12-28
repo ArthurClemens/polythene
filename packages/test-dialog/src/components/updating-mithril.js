@@ -31,7 +31,11 @@ const Updating = {
       Dialog.show(dialogProps);
     }
     return h("div", null, [
-      h("span", state.count()),
+      h("span", {
+        style: {
+          paddingRight: "10px"
+        }
+      }, state.count()),
       h(RaisedButton, {
         label: "Show Dialog",
         events: {

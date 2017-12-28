@@ -35,7 +35,7 @@ export default (messageOptions, spawnOptions) => {
 
     render() {
       const count = this.state.count;
-      return <div>
+      return <div className="pe-button-row">
         <RaisedButton
           label="Show"
           events={{

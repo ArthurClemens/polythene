@@ -7,6 +7,7 @@
 var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
+  row: "pe-button-row",
 
   // elements
   content: "pe-button__content",
@@ -25,7 +26,9 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var baseLayout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [{
+  var _ref;
+
+  return [(_ref = {}, _defineProperty(_ref, selector, [{
     userSelect: "none",
     outline: "none",
     padding: 0,
@@ -68,7 +71,12 @@ var baseLayout = (function (selector, componentVars) {
     " .pe-button__wash": {
       zIndex: 0
     }
-  }])];
+  }]), _defineProperty(_ref, " .pe-button-row", _defineProperty({
+    margin: "0 -" + componentVars.margin_h + "px"
+
+  }, " " + selector, {
+    margin: "0 " + componentVars.margin_h + "px"
+  })), _ref)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -77,7 +85,6 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty$1({}, selector, [{
     display: "inline-block",
     minWidth: componentVars.min_width + "px",
-    margin: "0 " + componentVars.margin_h + "px",
     padding: componentVars.outer_padding_v + "px 0",
     background: "transparent",
     border: "none",

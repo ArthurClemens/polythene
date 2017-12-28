@@ -1,6 +1,6 @@
 
 export default {
-  component: "pe-fab",
+  component: "pe-button pe-fab",
 
   // elements
   content:   "pe-fab__content",

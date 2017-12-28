@@ -124,7 +124,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var buttonGroup = {
   view: function view(_ref) {
     var attrs = _ref.attrs;
-    return renderer("div", [attrs.variations.map(function (opts) {
+    return renderer(".pe-button-row", [attrs.variations.map(function (opts) {
       return renderer(RaisedButton, {
         label: opts.label,
         events: { onclick: function onclick() {
@@ -2061,7 +2061,7 @@ var _class = function (_Component) {
       var count = this.state.count;
       return react.createElement(
         "div",
-        null,
+        { className: "pe-button-row" },
         variations.map(function (opts) {
           return react.createElement(RaisedButton$1, {
             key: opts.label,

@@ -9,6 +9,7 @@ var classes = {
 
   // elements
   actions: "pe-card__actions",
+  any: "pe-card__any",
   content: "pe-card__content",
   header: "pe-card__header",
   headerTitle: "pe-card__header-title",
@@ -69,10 +70,10 @@ var layout = (function (selector, componentVars) {
       borderTopRightRadius: "inherit",
       zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
 
-      "&.pe-card__media--landscape": {
+      ".pe-card__media--landscape": {
         paddingBottom: 100 / 16 * 9 + "%"
       },
-      "&.pe-card__media--square": {
+      ".pe-card__media--square": {
         paddingBottom: "100%"
       },
       "&:last-child": {
@@ -86,12 +87,12 @@ var layout = (function (selector, componentVars) {
         width: "100%",
         maxWidth: "none",
 
-        "&.pe-card__media--crop-x": {
+        ".pe-card__media--crop-x": {
           width: "100%",
           height: "auto",
           display: "block"
         },
-        "&.pe-card__media--crop-y": {
+        ".pe-card__media--crop-y": {
           height: "100%",
           width: "auto",
           display: "block"
@@ -167,16 +168,16 @@ var layout = (function (selector, componentVars) {
     " .pe-card__primary": [polytheneCoreCss.flex.layoutHorizontal, {
       position: "relative",
 
-      "&.pe-card__primary--media:not(:last-child)": {
+      ".pe-card__primary--media:not(:last-child)": {
         paddingBottom: "16px"
       },
-      "&.pe-card__primary--media + .pe-card__actions": {
+      ".pe-card__primary--media + .pe-card__actions": {
         marginTop: "-16px"
       },
       "& + .pe-card__text": {
         marginTop: "-16px"
       },
-      "&.pe-card__primary--tight": {
+      ".pe-card__primary--tight": {
         " .pe-card__title": {
           paddingBottom: componentVars.tight_title_padding_bottom - componentVars.subtitle_line_height_padding_bottom + "px"
         }
@@ -198,25 +199,25 @@ var layout = (function (selector, componentVars) {
       minHeight: 36 + 2 * 8 + "px",
       padding: componentVars.actions_padding_v + "px" + " " + componentVars.padding_actions_h + "px",
 
-      "&.pe-card__actions--tight": {
+      ".pe-card__actions--tight": {
         minHeight: 0,
-        padding: 0
+        paddingTop: 0,
+        paddingBottom: 0,
+
+        ".pe-card__actions--vertical": {
+          paddingLeft: 0,
+          paddingRight: 0
+        }
       },
-      "&.pe-card__actions--horizontal:not(.pe-card__actions--justified)": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
-        " :first-child": {
-          marginLeft: 0
-        },
+      ".pe-card__actions--horizontal:not(.pe-card__actions--justified)": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
         " .pe-button": {
           minWidth: 0
-        },
-        " .pe-button--icon": {
-          marginRight: "8px"
         }
       }],
 
-      "&.pe-card__actions--justified": [polytheneCoreCss.flex.layoutJustified],
+      ".pe-card__actions--justified": [polytheneCoreCss.flex.layoutJustified],
 
-      "&.pe-card__actions--vertical": [polytheneCoreCss.flex.layoutVertical, {
+      ".pe-card__actions--vertical": [polytheneCoreCss.flex.layoutVertical, {
         ":not(.pe-card__actions--tight)": {
           // vertical flex layout
           paddingTop: componentVars.actions_vertical_padding_v + "px",
@@ -260,7 +261,7 @@ var layout = (function (selector, componentVars) {
       "&:last-child": {
         paddingBottom: componentVars.text_padding_bottom - componentVars.text_line_height_padding_bottom + "px"
       },
-      "&.pe-card__text--tight, &.pe-card__text--tight:last-child": {
+      ".pe-card__text--tight, &.pe-card__text--tight:last-child": {
         paddingBottom: componentVars.tight_text_padding_bottom - componentVars.text_line_height_padding_bottom + "px"
       },
       " .pe-card__actions + &": {

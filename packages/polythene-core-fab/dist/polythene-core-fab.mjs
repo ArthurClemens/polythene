@@ -1,7 +1,7 @@
 import { vars } from 'polythene-theme';
 
 var classes = {
-  component: "pe-fab",
+  component: "pe-button pe-fab",
 
   // elements
   content: "pe-fab__content",

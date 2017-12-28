@@ -7,7 +7,11 @@ var classes = {
 };
 
 var layout$1 = (function (selector, componentVars) {
-  return layout(selector, componentVars, "radio");
+  return [layout(selector, componentVars, "radio"), {
+    " .pe-radio-group": {
+      display: "flex"
+    }
+  }];
 });
 
 var color$1 = (function (selector, componentVars) {

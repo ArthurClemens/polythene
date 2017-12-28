@@ -56,6 +56,13 @@ export default (selector, componentVars) => [{
         zIndex: 0
       }
     }
-  ]
+  ],
+  " .pe-button-row": {
+    margin: `0 -${componentVars.margin_h}px`,
+
+    [` ${selector}`]: {
+      margin: `0 ${componentVars.margin_h}px`,
+    }
+  }
 }];
 

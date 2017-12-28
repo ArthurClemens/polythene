@@ -5,7 +5,7 @@
 }(this, (function (exports,polytheneTheme) { 'use strict';
 
 var classes = {
-  component: "pe-fab",
+  component: "pe-button pe-fab",
 
   // elements
   content: "pe-fab__content",

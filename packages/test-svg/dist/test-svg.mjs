@@ -82,7 +82,7 @@ var mithrilTests = function mithrilTests(_ref) {
         return h("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "8px"
           },
           className: "pe-light-tone"
         }, h(SVG$$1, { content: trustedIconStars }));
@@ -96,7 +96,7 @@ var mithrilTests = function mithrilTests(_ref) {
         return h("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "8px"
           }
         }, h(SVG$$1, {
           content: trustedIconStars,
@@ -1911,7 +1911,7 @@ var reactTests = function reactTests(_ref) {
       return h("div", {
         style: {
           background: "#fff",
-          padding: "10px"
+          padding: "8px"
         },
         className: "pe-light-tone"
       }, h(SVG$$1, { content: h.trust(iconStars$2) }));
@@ -1923,7 +1923,7 @@ var reactTests = function reactTests(_ref) {
       return h("div", {
         style: {
           background: "#fff",
-          padding: "10px"
+          padding: "8px"
         }
       }, h(SVG$$1, {
         content: h.trust(iconStars$2),

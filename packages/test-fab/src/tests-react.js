@@ -32,8 +32,8 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
       name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: () =>
-        h(".pe-light-tone", {
-          style: { background: "#fff", padding: "10px" }
+        h(".pe-button-row.pe-light-tone", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [
           h(FAB, {
             icon: {
@@ -52,8 +52,8 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
       name: "Dark tone class + light tone",
       className: "test-dark-tone",
       component: () =>
-        h("div", {
-          style: { background: "#fff", padding: "10px" }
+        h(".pe-button-row", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [
           h(FAB, {
             icon: {

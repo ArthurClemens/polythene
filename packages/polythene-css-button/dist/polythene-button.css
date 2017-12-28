@@ -56,10 +56,17 @@
   z-index: 0
 }
 
+.pe-button-row {
+  margin: 0 -4px
+}
+
+.pe-button-row .pe-button {
+  margin: 0 4px
+}
+
 .pe-button.pe-text-button {
   display: inline-block;
   min-width: 64px;
-  margin: 0 4px;
   padding: 6px 0;
   background: transparent;
   border: none

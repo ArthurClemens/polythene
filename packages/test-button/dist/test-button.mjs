@@ -3,7 +3,8 @@ import { ButtonCSS } from 'polythene-css';
 import { Button as Button$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
-  var Button$$1 = _ref.Button;
+  var h = _ref.renderer,
+      Button$$1 = _ref.Button;
 
 
   ButtonCSS.addStyle(".tests-button-themed-button", {
@@ -28,6 +29,22 @@ var genericTests = (function (_ref) {
     component: Button$$1,
     attrs: {
       label: "Label"
+    }
+  }, {
+    name: "Button row",
+    component: {
+      view: function view() {
+        return h(".pe-button-row", [h(Button$$1, {
+          key: "one", // for React
+          label: "One"
+        }), h(Button$$1, {
+          key: "two", // for React
+          label: "Two"
+        }), h(Button$$1, {
+          key: "three", // for React
+          label: "Three"
+        })]);
+      }
     }
   }, {
     name: "Themed Button: (option: borders)",
@@ -256,7 +273,7 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h(".pe-light-tone", {
+        return h(".pe-button-row.pe-light-tone", {
           style: { background: "#fff" }
         }, [h(Button$$1, {
           label: "Normal"
@@ -274,7 +291,7 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "test-dark-tone",
     component: {
       view: function view() {
-        return h("div", {
+        return h(".pe-button-row", {
           style: { background: "#fff" }
         }, [h(Button$$1, {
           label: "Normal",
@@ -6182,7 +6199,7 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone class",
     className: "pe-dark-tone",
     component: function component() {
-      return h(".pe-light-tone", {
+      return h(".pe-button-row.pe-light-tone", {
         style: { background: "#fff" }
       }, [h(Button$$1, {
         label: "Normal"
@@ -6198,7 +6215,7 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone",
     className: "pe-dark-tone",
     component: function component() {
-      return h("div", {
+      return h(".pe-button-row", {
         style: { background: "#fff" }
       }, [h(Button$$1, {
         label: "Normal",

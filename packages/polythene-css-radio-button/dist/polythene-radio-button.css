@@ -181,6 +181,10 @@
   left: 12px
 }
 
+.pe-radio-group {
+  display: flex
+}
+
 .pe-dark-tone.pe-radio-control,.pe-dark-tone .pe-radio-control {
   color: #2196f3
 }

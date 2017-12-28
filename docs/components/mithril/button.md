@@ -9,6 +9,7 @@
   - [Links](#links)
   - [Events](#events)
   - [Variations](#variations)
+  - [A row of buttons](#a-row-of-buttons)
   - [Mobile and tap delay](#mobile-and-tap-delay)
 - [Appearance](#appearance)
   - [Styling](#styling)
@@ -75,10 +76,15 @@ m(Button, {
 * The ripple effect on click can be hidden with `ink: false`.
 * Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead.
 
+<a name="a-row-of-buttons"></a>
+### A row of buttons
+
+When placed inside an element with classname `pe-button-row`, buttons will get a side margin to set them apart. The row element itself will have an negative side margin so that the first button still lines up properly.
+
 <a name="mobile-and-tap-delay"></a>
 ### Mobile and tap delay
 
-To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in "polythene-utilities". This temporarily removes the Fastclick event when an element is being scrolled.
+To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). `polythene-fastclick` is a simple wrapper around the Fastclick library.
 
 ~~~javascript
 import { addFastClick } from "polythene-fastclick"

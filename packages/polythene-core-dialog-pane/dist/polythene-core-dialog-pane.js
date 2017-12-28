@@ -26,6 +26,25 @@ var classes = {
   fullBleed: "pe-dialog-pane--body-full-bleed"
 };
 
+var buttonClasses = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+  row: "pe-button-row",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -162,7 +181,7 @@ var createContent = function createContent(vnode, _ref2) {
     className: classes.footer,
     key: "footer"
   }, attrs.footer) : attrs.footerButtons ? h("div", {
-    className: [classes.footer, classes.footerWithButtons].join(" "),
+    className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" "),
     key: "footer"
   }, h("div", { className: classes.actions }, attrs.footerButtons)) : null]);
 };

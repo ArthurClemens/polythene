@@ -124,16 +124,7 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap, {
-      margin: "0 -4px",
-
-      " .pe-button": {
-        height: "36px",
-        marginTop: "6px",
-        marginBottom: "6px",
-        padding: 0
-      }
-    }]
+    " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap]
   }]), _defineProperty(_ref, ".pe-menu__content", {
     " .pe-dialog-pane__body": {
       padding: 0,

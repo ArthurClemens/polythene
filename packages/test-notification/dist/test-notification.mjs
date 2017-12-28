@@ -236,7 +236,7 @@ var genericTests = (function (_ref) {
 var buttonGroup = (function (messageOptions, spawnOptions) {
   return {
     view: function view() {
-      return renderer("div", [renderer(RaisedButton, {
+      return renderer(".pe-button-row", [renderer(RaisedButton, {
         label: "Show",
         events: { onclick: function onclick() {
             return Notification.show(messageOptions, spawnOptions);
@@ -2142,7 +2142,7 @@ var buttonGroup$1 = (function (messageOptions, spawnOptions) {
         var count = this.state.count;
         return react.createElement(
           "div",
-          null,
+          { className: "pe-button-row" },
           react.createElement(RaisedButton$1, {
             label: "Show",
             events: {

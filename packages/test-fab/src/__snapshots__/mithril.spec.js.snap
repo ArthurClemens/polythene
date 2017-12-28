@@ -1,5 +1,5 @@
 exports[`test Child node 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -25,8 +25,9 @@ exports[`test Child node 1`] = `
 `;
 
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
-  <a class=\"pe-fab\" tabindex=\"0\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row\">
+  <a class=\"pe-button pe-fab\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -48,7 +49,8 @@ exports[`test Dark tone class + light tone 1`] = `
       </div>
     </div>
   </div></a><a class=
-  \"pe-fab tests-fab-themed-fab tests-fab-themed-fab\" tabindex=\"0\">
+  \"pe-button pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
+  tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -75,9 +77,9 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-tone\">
-  <a class=\"pe-fab\" tabindex=\"0\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row pe-light-tone\">
+  <a class=\"pe-button pe-fab\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -99,7 +101,8 @@ exports[`test Dark tone class + light tone class 1`] = `
       </div>
     </div>
   </div></a><a class=
-  \"pe-fab tests-fab-themed-fab tests-fab-themed-fab\" tabindex=\"0\">
+  \"pe-button pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
+  tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -126,7 +129,7 @@ exports[`test Dark tone class + light tone class 1`] = `
 `;
 
 exports[`test No options 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -141,7 +144,7 @@ exports[`test No options 1`] = `
 `;
 
 exports[`test Option: class 1`] = `
-"<a class=\"pe-fab class-x class-x\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab class-x class-x\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -156,7 +159,7 @@ exports[`test Option: class 1`] = `
 `;
 
 exports[`test Option: className 1`] = `
-"<a class=\"pe-fab className-x className-x\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab className-x className-x\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -171,7 +174,7 @@ exports[`test Option: className 1`] = `
 `;
 
 exports[`test Option: content 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -195,7 +198,7 @@ exports[`test Option: content 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -210,7 +213,7 @@ exports[`test Option: element 1`] = `
 `;
 
 exports[`test Option: icon -- dark tone class 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -236,7 +239,7 @@ exports[`test Option: icon -- dark tone class 1`] = `
 `;
 
 exports[`test Option: icon 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -262,7 +265,7 @@ exports[`test Option: icon 1`] = `
 `;
 
 exports[`test Option: id 1`] = `
-"<a id=\"id-x\" class=\"pe-fab\" tabindex=\"0\">
+"<a id=\"id-x\" class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -277,7 +280,7 @@ exports[`test Option: id 1`] = `
 `;
 
 exports[`test Option: mini 1`] = `
-"<a class=\"pe-fab pe-fab--mini\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab pe-fab--mini\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -303,7 +306,7 @@ exports[`test Option: mini 1`] = `
 `;
 
 exports[`test Option: style (colors) 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div style=
 \"color: rgb(255, 204, 188); background-color: rgb(78, 52, 46);\"
 class=\"pe-button__content\">
@@ -331,7 +334,7 @@ class=\"pe-button__content\">
 `;
 
 exports[`test Option: tabindex 1`] = `
-"<a tabindex=\"3\" class=\"pe-fab\">
+"<a tabindex=\"3\" class=\"pe-button pe-fab\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -346,7 +349,7 @@ exports[`test Option: tabindex 1`] = `
 `;
 
 exports[`test Option: url 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\" href=\"#!/shadow\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\" href=\"#!/shadow\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -372,7 +375,7 @@ exports[`test Option: url 1`] = `
 `;
 
 exports[`test Option: z (0) 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
@@ -398,7 +401,7 @@ exports[`test Option: z (0) 1`] = `
 `;
 
 exports[`test Option: z (5) 1`] = `
-"<a class=\"pe-fab\" tabindex=\"0\">
+"<a class=\"pe-button pe-fab\" tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
@@ -424,7 +427,8 @@ exports[`test Option: z (5) 1`] = `
 `;
 
 exports[`test Themed FAB (colors) 1`] = `
-"<a class=\"pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
+"<a class=
+\"pe-button pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
@@ -451,7 +455,8 @@ tabindex=\"0\">
 `;
 
 exports[`test Themed FAB -- dark tone class 1`] = `
-"<a class=\"pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
+"<a class=
+\"pe-button pe-fab tests-fab-themed-fab tests-fab-themed-fab\"
 tabindex=\"0\">
 <div class=\"pe-button__content\">
   <div class=\"pe-shadow pe-shadow--animated\">

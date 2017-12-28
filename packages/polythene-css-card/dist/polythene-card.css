@@ -169,12 +169,18 @@
 
 .pe-card .pe-card__actions {
   min-height: 52px;
-  padding: 2px 8px
+  padding: 0 8px
 }
 
 .pe-card .pe-card__actions.pe-card__actions--tight {
   min-height: 0;
-  padding: 0
+  padding-top: 0;
+  padding-bottom: 0
+}
+
+.pe-card .pe-card__actions.pe-card__actions--tight.pe-card__actions--vertical {
+  padding-left: 0;
+  padding-right: 0
 }
 
 .pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) {
@@ -187,16 +193,8 @@
   align-items: center
 }
 
-.pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) :first-child {
-  margin-left: 0
-}
-
 .pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) .pe-button {
   min-width: 0
-}
-
-.pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) .pe-button--icon {
-  margin-right: 8px
 }
 
 .pe-card .pe-card__actions.pe-card__actions--justified {

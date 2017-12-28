@@ -172,8 +172,8 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h(".pe-light-tone", {
-          style: { background: "#fff", padding: "10px" }
+        return h(".pe-button-row.pe-light-tone", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [h(IconButton$$1, {
           icon: {
             svg: { content: trustedIconFavorite }
@@ -191,8 +191,8 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "test-dark-tone",
     component: {
       view: function view() {
-        return h("div", {
-          style: { background: "#fff", padding: "10px" }
+        return h(".pe-button-row", {
+          style: { background: "#fff", padding: "8px 4px" }
         }, [h(IconButton$$1, {
           icon: {
             svg: { content: trustedIconFavorite }
@@ -5741,8 +5741,8 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone class",
     className: "pe-dark-tone",
     component: function component() {
-      return h(".pe-light-tone", {
-        style: { background: "#fff", padding: "10px" }
+      return h(".pe-button-row.pe-light-tone", {
+        style: { background: "#fff", padding: "8px 4px" }
       }, [h(IconButton$$1, {
         icon: {
           svg: { content: trustedIconFavorite }
@@ -5758,8 +5758,8 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone",
     className: "test-dark-tone",
     component: function component() {
-      return h("div", {
-        style: { background: "#fff", padding: "10px" }
+      return h(".pe-button-row", {
+        style: { background: "#fff", padding: "8px 4px" }
       }, [h(IconButton$$1, {
         icon: {
           svg: { content: trustedIconFavorite }

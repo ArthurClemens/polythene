@@ -105,15 +105,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin: 0 -4px
-}
-
-.pe-dialog-pane .pe-dialog-pane__actions .pe-button {
-  height: 36px;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding: 0
+  flex-wrap: wrap
 }
 
 .pe-menu__content .pe-dialog-pane__body {

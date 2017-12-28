@@ -173,6 +173,25 @@ var card = Object.freeze({
 	createContent: createContent
 });
 
+var buttonClasses = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+  row: "pe-button-row",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
+
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var actionLayoutClasses = {
@@ -192,7 +211,7 @@ var createProps$1 = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends$1({}, polytheneCore.filterSupportedAttributes(attrs), {
     key: "card-actions",
-    className: [classes.actions, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -402,7 +421,7 @@ var vars$1 = {
   one_line_height_with_icon: 72,
   icon_element_width: 72 - 4,
   one_line_padding_v: 8,
-  actions_padding_v: padding_actions_v - 6,
+  actions_padding_v: 0,
   actions_button_margin_v: actions_button_margin_v,
   actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
 

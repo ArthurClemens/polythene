@@ -1,5 +1,6 @@
 import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "polythene-core";
 import classes from "polythene-css-classes/dialog-pane";
+import buttonClasses from "polythene-css-classes/button";
 
 export const getElement = vnode =>
   vnode.attrs.element || "form";
@@ -175,7 +176,8 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             {
               className: [
                 classes.footer,
-                classes.footerWithButtons
+                classes.footerWithButtons,
+                buttonClasses.row
               ].join(" "),
               key: "footer"
             },

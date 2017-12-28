@@ -106,16 +106,7 @@ export default (selector, componentVars) => [{
       " .pe-dialog-pane__actions": [
         flex.layoutHorizontal,
         flex.layoutEndJustified,
-        flex.layoutWrap, {
-          margin: "0 -4px",
-
-          " .pe-button": {
-            height: "36px",
-            marginTop: "6px",
-            marginBottom: "6px",
-            padding: 0
-          }
-        }
+        flex.layoutWrap
       ]
     },
   ],

@@ -3,7 +3,8 @@ import { RaisedButtonCSS } from 'polythene-css';
 import { RaisedButton as RaisedButton$1, renderer as renderer$1 } from 'polythene-react';
 
 var genericTests = (function (_ref) {
-  var RaisedButton$$1 = _ref.RaisedButton;
+  var h = _ref.renderer,
+      RaisedButton$$1 = _ref.RaisedButton;
 
 
   RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
@@ -16,6 +17,22 @@ var genericTests = (function (_ref) {
     component: RaisedButton$$1,
     attrs: {
       label: "Label"
+    }
+  }, {
+    name: "Button row",
+    component: {
+      view: function view() {
+        return h(".pe-button-row", [h(RaisedButton$$1, {
+          key: "one", // for React
+          label: "One"
+        }), h(RaisedButton$$1, {
+          key: "two", // for React
+          label: "Two"
+        }), h(RaisedButton$$1, {
+          key: "three", // for React
+          label: "Three"
+        })]);
+      }
     }
   }, {
     name: "Option: raised (with option z: 2)",
@@ -191,7 +208,7 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h(".pe-light-tone", {
+        return h(".pe-button-row.pe-light-tone", {
           style: { background: "#fff" }
         }, [h(RaisedButton$$1, {
           label: "Normal"
@@ -209,7 +226,7 @@ var mithrilTests = function mithrilTests(_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h("div", {
+        return h(".pe-button-row", {
           style: { background: "#fff" }
         }, [h(RaisedButton$$1, {
           label: "Normal",
@@ -6145,7 +6162,7 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone class",
     className: "pe-dark-tone",
     component: function component() {
-      return h(".pe-light-tone", {
+      return h(".pe-button-row.pe-light-tone", {
         style: { background: "#fff" }
       }, [h(RaisedButton$$1, {
         label: "Normal"
@@ -6161,7 +6178,7 @@ var reactTests = function reactTests(_ref) {
     name: "Dark tone class + light tone",
     className: "pe-dark-tone",
     component: function component() {
-      return h("div", {
+      return h(".pe-button-row", {
         style: { background: "#fff" }
       }, [h(RaisedButton$$1, {
         label: "Normal",

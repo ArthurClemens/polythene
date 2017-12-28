@@ -18,7 +18,7 @@ exports[`test Child node 1`] = `
     </div>
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -35,10 +35,11 @@ exports[`test Child node 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 <div
+  className="pe-button-row"
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px 4px",
     }
   }>
   <FAB
@@ -75,11 +76,11 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-light-tone"
+  className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px 4px",
     }
   }>
   <FAB
@@ -120,7 +121,7 @@ exports[`test No options 1`] = `
       className="pe-fab__content" />
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -144,7 +145,7 @@ exports[`test Option: class 1`] = `
       className="pe-fab__content" />
   }
   ink={true}
-  parentClassName="pe-fab  class-x"
+  parentClassName="pe-button pe-fab  class-x"
   ripple={
     Object {
       "center": true,
@@ -168,7 +169,7 @@ exports[`test Option: className 1`] = `
       className="pe-fab__content" />
   }
   ink={true}
-  parentClassName="pe-fab  className-x"
+  parentClassName="pe-button pe-fab  className-x"
   ripple={
     Object {
       "center": true,
@@ -200,7 +201,7 @@ exports[`test Option: content 1`] = `
       } />
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -224,7 +225,7 @@ exports[`test Option: element 1`] = `
   }
   element="a"
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -271,7 +272,7 @@ exports[`test Option: icon -- dark tone class 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -318,7 +319,7 @@ exports[`test Option: icon 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -379,7 +380,7 @@ exports[`test Option: id 1`] = `
   }
   id="id-x"
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -427,7 +428,7 @@ exports[`test Option: mini 1`] = `
   }
   ink={true}
   mini={true}
-  parentClassName="pe-fab pe-fab--mini "
+  parentClassName="pe-button pe-fab pe-fab--mini "
   ripple={
     Object {
       "center": true,
@@ -498,7 +499,7 @@ exports[`test Option: style (colors) 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -527,7 +528,7 @@ exports[`test Option: tabindex 1`] = `
       className="pe-fab__content" />
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -575,7 +576,7 @@ exports[`test Option: z (0) 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -643,7 +644,7 @@ exports[`test Option: z (5) 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  "
+  parentClassName="pe-button pe-fab  "
   ripple={
     Object {
       "center": true,
@@ -692,7 +693,7 @@ exports[`test Themed FAB (colors) 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  tests-fab-themed-fab"
+  parentClassName="pe-button pe-fab  tests-fab-themed-fab"
   ripple={
     Object {
       "center": true,
@@ -740,7 +741,7 @@ exports[`test Themed FAB -- dark tone class 1`] = `
     }
   }
   ink={true}
-  parentClassName="pe-fab  tests-fab-themed-fab"
+  parentClassName="pe-button pe-fab  tests-fab-themed-fab"
   ripple={
     Object {
       "center": true,

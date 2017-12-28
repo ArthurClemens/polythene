@@ -135,7 +135,7 @@ var mithrilTests = function mithrilTests(_ref) {
     component: {
       view: function view() {
         return h(".pe-light-tone", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [h(Icon$$1, {
           svg: { content: trustedIconStars }
         }), h(Icon$$1, {
@@ -150,7 +150,7 @@ var mithrilTests = function mithrilTests(_ref) {
     component: {
       view: function view() {
         return h("div", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [h(Icon$$1, {
           svg: { content: trustedIconStars },
           tone: "light"
@@ -1967,7 +1967,7 @@ var reactTests = function reactTests(_ref) {
     className: "pe-dark-tone",
     component: function component() {
       return h(".pe-light-tone", {
-        style: { background: "#fff" }
+        style: { background: "#fff", padding: "8px" }
       }, [h(Icon$$1, {
         svg: { content: h.trust(iconStars$2) }
       }), h(Icon$$1, {
@@ -1980,7 +1980,7 @@ var reactTests = function reactTests(_ref) {
     className: "pe-dark-tone",
     component: function component() {
       return h("div", {
-        style: { background: "#fff" }
+        style: { background: "#fff", padding: "8px" }
       }, [h(Icon$$1, {
         svg: { content: h.trust(iconStars$2) },
         tone: "light"

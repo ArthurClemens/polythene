@@ -39,7 +39,7 @@ export default class extends Component {
   render() {
     const { id, variations, spawn, position, snackbarOptions, needsDisplay } = this.props;
     const count = this.state.count;
-    return (<div>
+    return (<div className="pe-button-row">
       {variations.map(opts =>
         <RaisedButton
           key={opts.label}

@@ -29,7 +29,7 @@ export default {
   one_line_height_with_icon:           72,
   icon_element_width:                  72 - 4,
   one_line_padding_v:                  8,
-  actions_padding_v:                   padding_actions_v - 6,
+  actions_padding_v:                   0,
   actions_button_margin_v,    
   actions_vertical_padding_v:          padding_actions_v - actions_button_margin_v,
 
