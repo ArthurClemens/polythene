@@ -37,7 +37,7 @@ const createAny = ({ attrs, h, k }) => {
   const element = attrs.element || "div";
   return h(element, Object.assign(
     {},
-    attrs,
+    filterSupportedAttributes(attrs),
     {
       key: attrs.key || "card-any",
       className: [
@@ -53,7 +53,7 @@ const createText = ({ attrs, h, k }) => {
   const element = attrs.element || "div";
   return h(element, Object.assign(
     {},
-    attrs,
+    filterSupportedAttributes(attrs),
     {
       key: attrs.key || "card-text",
       className: [
@@ -121,7 +121,7 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
     case "actions": 
       return h(CardActions, attrs);
     case "header": 
-      return createHeader({ dispatcher, attrs, h, k, Icon, ListTile });
+      return createHeader({ attrs, h, k, Icon, ListTile });
     case "media": 
       return h(CardMedia, attrs);
     case "overlay": 
@@ -129,9 +129,9 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
     case "primary": 
       return h(CardPrimary, attrs);
     case "text": 
-      return createText({ dispatcher, attrs, h, k });
+      return createText({ attrs, h, k });
     case "any": 
-      return createAny({ dispatcher, attrs, h, k });
+      return createAny({ attrs, h, k });
     default:
       throw(`Content type "${key}" does not exist`);
     }

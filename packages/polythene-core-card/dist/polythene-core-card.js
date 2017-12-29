@@ -73,7 +73,7 @@ var createAny = function createAny(_ref2) {
       k = _ref2.k;
 
   var element = attrs.element || "div";
-  return h(element, _extends({}, attrs, {
+  return h(element, _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
     key: attrs.key || "card-any",
     className: [classes.any, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
   }), attrs.content);
@@ -85,7 +85,7 @@ var createText = function createText(_ref3) {
       k = _ref3.k;
 
   var element = attrs.element || "div";
-  return h(element, _extends({}, attrs, {
+  return h(element, _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
     key: attrs.key || "card-text",
     className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
   }), attrs.content);
@@ -138,7 +138,7 @@ var createContent = function createContent(vnode, _ref6) {
       case "actions":
         return h(CardActions, attrs);
       case "header":
-        return createHeader({ dispatcher: dispatcher, attrs: attrs, h: h, k: k, Icon: Icon, ListTile: ListTile });
+        return createHeader({ attrs: attrs, h: h, k: k, Icon: Icon, ListTile: ListTile });
       case "media":
         return h(CardMedia, attrs);
       case "overlay":
@@ -146,9 +146,9 @@ var createContent = function createContent(vnode, _ref6) {
       case "primary":
         return h(CardPrimary, attrs);
       case "text":
-        return createText({ dispatcher: dispatcher, attrs: attrs, h: h, k: k });
+        return createText({ attrs: attrs, h: h, k: k });
       case "any":
-        return createAny({ dispatcher: dispatcher, attrs: attrs, h: h, k: k });
+        return createAny({ attrs: attrs, h: h, k: k });
       default:
         throw "Content type \"" + key + "\" does not exist";
     }
