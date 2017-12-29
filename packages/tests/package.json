@@ -36,7 +36,6 @@
     "test-switch": "^1.0.0-rc.9",
     "test-tabs": "^1.0.0-rc.9",
     "test-textfield": "^1.0.0-rc.9",
-    "test-theme": "^1.0.0-rc.9",
     "test-toolbar": "^1.0.0-rc.9"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

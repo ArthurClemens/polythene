@@ -23,6 +23,5 @@ export { reactTests as spinner }      from "test-spinner";
 export { reactTests as svg }          from "test-svg";
 export { reactTests as switchButton } from "test-switch";
 export { reactTests as tabs }         from "test-tabs";
-export { reactTests as theme }        from "test-theme";
 export { reactTests as textfield }    from "test-textfield";
 export { reactTests as toolbar }      from "test-toolbar";
