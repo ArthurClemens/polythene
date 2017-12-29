@@ -10,7 +10,7 @@ export const rules = {
   page: ".pa4.lh-title-m.mid-gray",
   pageTitle: "h1.ma0.normal.f3.pv3",
   headerRow: `.header-row${bottomBorder}.fixed.w-100.z-3`,
-  interactive: ".interactive.bg-washed-blue",
+  interactive: ".interactive",
   separator: "span.ph2.light-silver",
   link: "a.link.underline-hover.blue",
   list: "ul.list.pa0",
