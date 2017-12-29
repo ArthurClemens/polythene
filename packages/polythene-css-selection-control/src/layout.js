@@ -53,7 +53,6 @@ export default (selector, componentVars, type) => [{
         position: "relative",
         cursor: "pointer",
         fontSize: componentVars.label_font_size + "px",
-        lineHeight: componentVars.label_height + "px",
         margin: 0,
         color: "inherit",
 
@@ -76,6 +75,7 @@ export default (selector, componentVars, type) => [{
       width: componentVars.label_height + "px",
       height: componentVars.label_height + "px",
       color: "inherit",
+      flexShrink: 0,
 
       ":focus": {
         outline: 0,
@@ -106,7 +106,8 @@ export default (selector, componentVars, type) => [{
       mixin.defaultTransition("all", componentVars.animation_duration),
       {
         paddingLeft: componentVars.label_padding_before + "px",
-        paddingRight: componentVars.label_padding_after + "px"
+        paddingRight: componentVars.label_padding_after + "px",
+        alignSelf: "center"
       }
     ],
 

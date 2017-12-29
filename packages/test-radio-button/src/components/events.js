@@ -20,24 +20,28 @@ export default ({ h, k, RadioButton }) => ({
         },
         `Value: ${checkedValue === undefined ? "Not set" : checkedValue}`
       ),
-      h(RadioButton, {
-        name: "events",
-        value: "One",
-        label: "One",
-        events: {
-          [k.onclick]: () => state.checkedValue("One")
-        },
-        checked: checkedValue === "One"
-      }),
-      h(RadioButton, {
-        name: "events",
-        value: "Two",
-        label: "Two",
-        events: {
-          [k.onclick]: () => state.checkedValue("Two")
-        },
-        checked: checkedValue === "Two"
-      })
+      h(".multiple", [
+        h(RadioButton, {
+          key: "one", // for React
+          name: "events",
+          value: "One",
+          label: "One",
+          events: {
+            [k.onclick]: () => state.checkedValue("One")
+          },
+          checked: checkedValue === "One"
+        }),
+        h(RadioButton, {
+          key: "two", // for React
+          name: "events",
+          value: "Two",
+          label: "Two",
+          events: {
+            [k.onclick]: () => state.checkedValue("Two")
+          },
+          checked: checkedValue === "Two"
+        })
+      ])
     ]);
   }
 });

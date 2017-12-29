@@ -54,13 +54,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Option: size",
       component: {
-        view: () => h("div",
-          {
-            style: {
-              display: "flex",
-              alignItems: "center"
-            }
-          },
+        view: () => h(".multiple",
           sizes(sizeNames, {
             label: "Label"
           })
@@ -89,13 +83,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Option: iconOn, iconOff (custom icon)",
       component: {
-        view: () => h("div", 
-          {
-            style: {
-              display: "flex",
-              alignItems: "center"
-            }
-          }, 
+        view: () => h(".multiple", 
           sizes(sizeNames, {
             label: "Label",
             iconOn: {
@@ -113,7 +101,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       interactive: true,
       component: {
         view: () =>
-          h("div", [
+          h(".multiple", [
             h(Checkbox, {
               disabled: true,
               label: "Off"
@@ -131,7 +119,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       interactive: true,
       component: {
         view: () =>
-          h("div", [
+          h(".multiple", [
             h(Checkbox, {
               selectable: () => false,
               label: "Never"
@@ -197,7 +185,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: {
         view: () =>
-          h("div", [
+          h(".multiple", [
             h(Checkbox, {
               disabled: true,
               label: "Off"

@@ -352,12 +352,7 @@ var genericTests = (function (_ref) {
     name: "Option: size",
     component: {
       view: function view() {
-        return h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        }, sizes(sizeNames, {
+        return h(".multiple", sizes(sizeNames, {
           label: "Label"
         }));
       }
@@ -383,12 +378,7 @@ var genericTests = (function (_ref) {
     name: "Option: iconOn, iconOff (custom icon)",
     component: {
       view: function view() {
-        return h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        }, sizes(sizeNames, {
+        return h(".multiple", sizes(sizeNames, {
           label: "Label",
           iconOn: {
             svg: { content: trustedIconStarFilled }
@@ -404,7 +394,7 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return h("div", [h(Checkbox$$1, {
+        return h(".multiple", [h(Checkbox$$1, {
           disabled: true,
           label: "Off"
         }), h(Checkbox$$1, {
@@ -419,7 +409,7 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return h("div", [h(Checkbox$$1, {
+        return h(".multiple", [h(Checkbox$$1, {
           selectable: function selectable() {
             return false;
           },
@@ -481,7 +471,7 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h("div", [h(Checkbox$$1, {
+        return h(".multiple", [h(Checkbox$$1, {
           disabled: true,
           label: "Off"
         }), h(Checkbox$$1, {

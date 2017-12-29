@@ -59,7 +59,6 @@ var layout = (function (selector, componentVars, type) {
     position: "relative",
     cursor: "pointer",
     fontSize: componentVars.label_font_size + "px",
-    lineHeight: componentVars.label_height + "px",
     margin: 0,
     color: "inherit",
 
@@ -77,6 +76,7 @@ var layout = (function (selector, componentVars, type) {
     width: componentVars.label_height + "px",
     height: componentVars.label_height + "px",
     color: "inherit",
+    flexShrink: 0,
 
     ":focus": {
       outline: 0
@@ -94,7 +94,8 @@ var layout = (function (selector, componentVars, type) {
     " .pe-control__button--off": inactiveButton()
   }), _defineProperty(_selector, " .pe-control__label", [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), {
     paddingLeft: componentVars.label_padding_before + "px",
-    paddingRight: componentVars.label_padding_after + "px"
+    paddingRight: componentVars.label_padding_after + "px",
+    alignSelf: "center"
   }]), _defineProperty(_selector, ".pe-control--disabled", {
     " .pe-control__form-label": {
       cursor: "auto"

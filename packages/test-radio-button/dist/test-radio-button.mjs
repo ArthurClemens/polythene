@@ -195,7 +195,7 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var onChange = (function (_ref) {
   var h = _ref.h,
@@ -203,7 +203,7 @@ var onChange = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var checkedValue = stream();
-      _extends(vnode.state, {
+      _extends$1(vnode.state, {
         checkedValue: checkedValue,
         redrawOnUpdate: stream.merge([checkedValue])
       });
@@ -233,7 +233,7 @@ var onChange = (function (_ref) {
   };
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -244,7 +244,7 @@ var events = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var checkedValue = stream();
-      _extends$1(vnode.state, {
+      _extends$2(vnode.state, {
         checkedValue: checkedValue,
         redrawOnUpdate: stream.merge([checkedValue])
       });
@@ -256,7 +256,8 @@ var events = (function (_ref) {
         style: {
           margin: "0 0 1rem 0"
         }
-      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(RadioButton$$1, {
+      }, "Value: " + (checkedValue === undefined ? "Not set" : checkedValue)), h(".multiple", [h(RadioButton$$1, {
+        key: "one", // for React
         name: "events",
         value: "One",
         label: "One",
@@ -265,6 +266,7 @@ var events = (function (_ref) {
         }),
         checked: checkedValue === "One"
       }), h(RadioButton$$1, {
+        key: "two", // for React
         name: "events",
         value: "Two",
         label: "Two",
@@ -272,17 +274,19 @@ var events = (function (_ref) {
           return state.checkedValue("Two");
         }),
         checked: checkedValue === "Two"
-      })]);
+      })])]);
     }
   };
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>";
 
 var iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
 var genericTests = (function (_ref) {
-  var RadioGroup$$1 = _ref.RadioGroup,
+  var PeRadioGroup = _ref.RadioGroup,
       RadioButton$$1 = _ref.RadioButton,
       h = _ref.renderer,
       k = _ref.keys;
@@ -302,6 +306,13 @@ var genericTests = (function (_ref) {
   });
 
   var sizeNames = ["small", "regular", "medium", "large"];
+
+  var RadioGroup$$1 = {
+    view: function view(_ref2) {
+      var attrs = _ref2.attrs;
+      return h(PeRadioGroup, _extends({}, { className: "multiple" }, attrs));
+    }
+  };
 
   return [{
     name: "Option: label",
@@ -371,10 +382,6 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "size",
-      style: {
-        display: "flex",
-        alignItems: "center"
-      },
       content: sizeNames.map(function (size) {
         return {
           size: size,
@@ -388,10 +395,6 @@ var genericTests = (function (_ref) {
     component: RadioGroup$$1,
     attrs: {
       name: "icon",
-      style: {
-        display: "flex",
-        alignItems: "center"
-      },
       content: sizeNames.map(function (size) {
         return {
           size: size,
@@ -581,7 +584,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -627,7 +630,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

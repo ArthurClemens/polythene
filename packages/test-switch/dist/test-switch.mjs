@@ -367,12 +367,7 @@ var genericTests = (function (_ref) {
     name: "Option: size",
     component: {
       view: function view() {
-        return h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        }, sizes(sizeNames, {
+        return h(".multiple", sizes(sizeNames, {
           label: "Label"
         }));
       }
@@ -397,7 +392,7 @@ var genericTests = (function (_ref) {
     name: "Option: icon",
     component: {
       view: function view() {
-        return h("div", sizes(sizeNames, {
+        return h(".multiple", sizes(sizeNames, {
           label: "Label",
           className: "tests-switch-themed-icon",
           icon: h(Icon$$1, {
@@ -411,7 +406,7 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return h("div", [h(Switch$$1, {
+        return h(".multiple", [h(Switch$$1, {
           disabled: true,
           label: "Off"
         }), h(Switch$$1, {
@@ -426,7 +421,7 @@ var genericTests = (function (_ref) {
     interactive: true,
     component: {
       view: function view() {
-        return h("div", [h(Switch$$1, {
+        return h(".multiple", [h(Switch$$1, {
           selectable: function selectable() {
             return false;
           },
@@ -497,7 +492,7 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: {
       view: function view() {
-        return h("div", [h(Switch$$1, {
+        return h(".multiple", [h(Switch$$1, {
           disabled: true,
           label: "Off"
         }), h(Switch$$1, {

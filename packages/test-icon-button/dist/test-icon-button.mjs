@@ -102,12 +102,7 @@ var genericTests = (function (_ref) {
     name: "Option: size",
     component: {
       view: function view() {
-        return h("div", {
-          style: {
-            display: "flex",
-            alignItems: "center"
-          }
-        }, sizes(sizeNames, {
+        return h(".multiple", sizes(sizeNames, {
           svg: { content: trustedIconFavorite }
         }));
       }

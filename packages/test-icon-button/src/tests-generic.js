@@ -105,13 +105,7 @@ export default ({ IconButton, Icon, SVG, renderer: h }) => {
       name: "Option: size",
       component: {
         view: () =>
-          h("div",
-            {
-              style: {
-                display: "flex",
-                alignItems: "center"
-              }
-            },
+          h(".multiple",
             sizes(sizeNames, {
               svg: { content: trustedIconFavorite }
             })

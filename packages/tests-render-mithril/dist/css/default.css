@@ -162,14 +162,17 @@ html {
   /*z-index: 1;*/
 }
 
-.pe-control.pe-checkbox-control + .pe-control.pe-checkbox-control {
-  margin-left: 40px;
+.multiple {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
-.pe-control.pe-radio-control + .pe-control.pe-radio-control {
-  margin-left: 40px;
-}
-.pe-control.pe-switch-control + .pe-control.pe-switch-control {
-  margin-left: 40px;
+
+.multiple .pe-control.pe-checkbox-control,
+.multiple .pe-control.pe-radio-control,
+.multiple .pe-control.pe-switch-control,
+.multiple .pe-icon-button {
+  margin: 0 30px 20px 0;
 }
 
 .pe-card.on .pe-card__media__dimmer {
