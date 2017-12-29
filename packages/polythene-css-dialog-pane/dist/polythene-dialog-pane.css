@@ -54,6 +54,7 @@
   padding: 24px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  min-height: 50px;
   max-height: calc(100vh - 48px - 112px)
 }
 

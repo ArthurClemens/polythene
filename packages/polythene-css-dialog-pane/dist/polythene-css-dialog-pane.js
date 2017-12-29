@@ -83,6 +83,7 @@ var layout = (function (selector, componentVars) {
       padding: componentVars.padding + "px",
       overflowY: "auto",
       "-webkit-overflow-scrolling": "touch",
+      minHeight: "50px",
 
       // initially set max-height; will be overridden by dialog core with actual heights
       maxHeight: "calc(100vh - " + 2 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
