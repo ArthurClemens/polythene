@@ -2,7 +2,7 @@
 
 # Global theme file
 
-Use this method to set global theme variables, such as the app's primary action color. 
+Global theme variables such as `unit_icon_size_small` or the app's primary action color can be overridden by creating an additional theme file.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
