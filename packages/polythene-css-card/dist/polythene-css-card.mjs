@@ -269,8 +269,10 @@ var layout = (function (selector, componentVars) {
 
     " .pe-card__text, .pe-card__primary": {
       "& + .pe-card__actions:not(:last-child)": {
-        marginTop: -(componentVars.offset_small_padding_v + 1) + "px",
-        marginBottom: -(componentVars.offset_small_padding_v - 1) + "px"
+        marginTop: -(componentVars.offset_small_padding_v + 3) + "px",
+        // Lift up so that full button area is usable
+        position: "relative",
+        zIndex: 1
       }
     }
   })];

@@ -262,8 +262,9 @@
 }
 
 .pe-card .pe-card__primary+.pe-card__actions:not(:last-child),.pe-card .pe-card__text+.pe-card__actions:not(:last-child) {
-  margin-top: -9px;
-  margin-bottom: -7px
+  margin-top: -11px;
+  position: relative;
+  z-index: 1
 }
 
 .pe-dark-tone.pe-card,.pe-dark-tone .pe-card {
