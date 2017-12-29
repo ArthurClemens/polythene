@@ -2957,7 +2957,13 @@ var Updating$2 = function (_Component) {
       return react.createElement(
         "div",
         null,
-        this.state.count,
+        react.createElement(
+          "span",
+          { style: {
+              paddingRight: "10px"
+            } },
+          this.state.count
+        ),
         react.createElement(RaisedButton$1, {
           label: "Show Dialog",
           events: {

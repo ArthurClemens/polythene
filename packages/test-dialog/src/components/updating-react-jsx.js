@@ -34,7 +34,11 @@ class Updating extends Component {
 
   render () {
     return <div>
-      {this.state.count}
+      <span style={{
+        paddingRight: "10px"
+      }}>
+        {this.state.count}
+      </span>
       <RaisedButton
         label="Show Dialog"
         events={{
