@@ -56,7 +56,7 @@ var baseLayout = (function (selector, componentVars) {
       pointerEvents: "none"
     }],
 
-    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color", "opacity"), mixin.fit(), {
+    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("all", componentVars.animation_duration), mixin.fit(), {
       borderRadius: "inherit",
       pointerEvents: "none"
     }],

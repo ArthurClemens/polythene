@@ -36,9 +36,9 @@
 
 .pe-button .pe-button__focus,.pe-button .pe-button__wash {
   transition-delay: 0ms;
-  transition-duration: opacity;
+  transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: background-color;
+  transition-property: all;
   position: absolute;
   top: 0;
   right: 0;

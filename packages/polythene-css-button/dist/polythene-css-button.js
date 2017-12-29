@@ -59,7 +59,7 @@ var baseLayout = (function (selector, componentVars) {
       pointerEvents: "none"
     }],
 
-    " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("background-color", "opacity"), polytheneCoreCss.mixin.fit(), {
+    " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), polytheneCoreCss.mixin.fit(), {
       borderRadius: "inherit",
       pointerEvents: "none"
     }],

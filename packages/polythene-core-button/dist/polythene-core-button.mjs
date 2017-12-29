@@ -4,6 +4,7 @@ import { vars } from 'polythene-theme';
 var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
+  row: "pe-button-row",
 
   // elements
   content: "pe-button__content",
