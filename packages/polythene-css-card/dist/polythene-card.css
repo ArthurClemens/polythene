@@ -13,7 +13,9 @@
   border-radius: inherit;
   overflow: hidden;
   width: inherit;
-  height: inherit
+  height: inherit;
+  display: flex;
+  flex-direction: column
 }
 
 .pe-card .pe-card__media {

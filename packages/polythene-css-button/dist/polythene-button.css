@@ -57,7 +57,9 @@
 }
 
 .pe-button-row {
-  margin: 0 -4px
+  margin: 0 -4px;
+  font-size: 0;
+  line-height: 0
 }
 
 .pe-button-row .pe-button {

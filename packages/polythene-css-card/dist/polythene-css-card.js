@@ -60,7 +60,10 @@ var layout = (function (selector, componentVars) {
       borderRadius: "inherit",
       overflow: "hidden",
       width: "inherit",
-      height: "inherit"
+      height: "inherit",
+      // behave nicely on IE11:
+      display: "flex",
+      flexDirection: "column"
     },
 
     " .pe-card__media": {

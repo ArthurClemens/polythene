@@ -59,6 +59,9 @@ export default (selector, componentVars) => [{
   ],
   " .pe-button-row": {
     margin: `0 -${componentVars.margin_h}px`,
+    // prevent inline block style to add extra space:
+    fontSize: 0, 
+    lineHeight: 0,
 
     [` ${selector}`]: {
       margin: `0 ${componentVars.margin_h}px`,

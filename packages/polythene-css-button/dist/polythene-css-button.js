@@ -72,7 +72,10 @@ var baseLayout = (function (selector, componentVars) {
       zIndex: 0
     }
   }]), _defineProperty(_ref, " .pe-button-row", _defineProperty({
-    margin: "0 -" + componentVars.margin_h + "px"
+    margin: "0 -" + componentVars.margin_h + "px",
+    // prevent inline block style to add extra space:
+    fontSize: 0,
+    lineHeight: 0
 
   }, " " + selector, {
     margin: "0 " + componentVars.margin_h + "px"
