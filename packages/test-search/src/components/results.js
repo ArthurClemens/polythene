@@ -214,13 +214,13 @@ export default ({ h, k, List, ListTile, SearchField }) => {
       
       const handleKey = e => {
         const index = selectedListIndex();
-        if (e.key === "ArrowDown") {
+        if (e.key === "ArrowDown" || e.key === "Down") { // "Down" for IE11
           e.preventDefault();
           const newIndex = index + 1 > matches().length - 1
             ? -1
             : index + 1;
           selectedListIndex(newIndex);
-        } else if (e.key === "ArrowUp") {
+        } else if (e.key === "ArrowUp" || e.key === "Up") { // "Up" for IE11
           e.preventDefault();
           const newIndex = index - 1 < -1
             ? -1
@@ -229,7 +229,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
         } else if (e.key === "Enter") {
           e.preventDefault();
           selectedValue(matches()[index]);
-        } else if (e.key === "Escape") {
+        } else if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           e.preventDefault();
           selectedListIndex(-1);
           hasFocus(true);

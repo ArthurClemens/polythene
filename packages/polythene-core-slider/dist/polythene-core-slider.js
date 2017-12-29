@@ -283,11 +283,11 @@ var createSlider = function createSlider(vnode, _ref) {
     if (e.key !== "Tab") {
       e.preventDefault();
     }
-    if (e.key === "Escape") {
+    if (e.key === "Escape" || e.key === "Esc") {
       state.controlEl.blur(e);
-    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
       state.decrement(state, e.shiftKey);
-    } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+    } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
       state.increment(state, e.shiftKey);
     } else if (e.key === "Home") {
       updateValue(state, state.min);
