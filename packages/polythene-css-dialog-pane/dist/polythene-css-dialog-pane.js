@@ -64,9 +64,13 @@ var layout = (function (selector, componentVars) {
     " .pe-dialog-pane__header": {
       minHeight: componentVars.header_height + "px",
 
-      " .pe-dialog-pane__title": [polytheneCoreCss.mixin.ellipsis(1), {
-        width: "100%"
-      }]
+      " .pe-dialog-pane__title": {
+        width: "100%",
+        wordBreak: "break-all",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+      }
     },
 
     " .pe-dialog-pane__header--title": {

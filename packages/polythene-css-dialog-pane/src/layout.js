@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { mixin, flex } from "polythene-core-css";
+import { flex } from "polythene-core-css";
 
 const lineHeightTitle = 24;
 
@@ -37,12 +37,13 @@ export default (selector, componentVars) => [{
       " .pe-dialog-pane__header": {
         minHeight: componentVars.header_height + "px",
 
-        " .pe-dialog-pane__title": [
-          mixin.ellipsis(1),
-          {
-            width: "100%"
-          }
-        ]
+        " .pe-dialog-pane__title": {
+          width: "100%",
+          wordBreak: "break-all",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }
       },
 
       " .pe-dialog-pane__header--title": {

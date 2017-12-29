@@ -36,13 +36,11 @@
 }
 
 .pe-dialog-pane .pe-dialog-pane__header .pe-dialog-pane__title {
+  width: 100%;
+  word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-rendering: auto;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  width: 100%
+  white-space: nowrap
 }
 
 .pe-dialog-pane .pe-dialog-pane__header--title {
