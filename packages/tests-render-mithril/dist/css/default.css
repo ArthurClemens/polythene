@@ -76,7 +76,7 @@ html {
   display: flex;
   flex-grow: 1;
   flex-shrink: 0;
-  flex-basis: none;
+  flex-basis: auto;
 }
 .minh4 {
   min-height: 4rem;
@@ -204,8 +204,7 @@ html {
     width: 480px;
   }
   .result {
-    width: auto;
-    max-width: 100%;
+    width: calc(100% - 2 * 20px);
   }
 }
 

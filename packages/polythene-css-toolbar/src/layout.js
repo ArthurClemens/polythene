@@ -28,6 +28,10 @@ export default (selector, componentVars) => [{
         marginLeft: componentVars.title_padding + "px"
       },
 
+      " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
+        marginLeft: componentVars.title_after_icon_padding + "px"
+      },
+
       " .pe-toolbar__title--indent": {
         marginLeft: (componentVars.indent - componentVars.padding_side) + "px"
       },

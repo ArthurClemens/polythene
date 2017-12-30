@@ -79,7 +79,8 @@ var rgba = function rgba(colorStr) {
 
 var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 var padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
-var title_padding = vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4
+var title_padding = 12; // icon padding
+var title_after_icon_padding = vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4 = 20
 var height = vars.grid_unit_component * 7; // 56
 var height_compact = vars.grid_unit_component * 6; // 48
 var height_large = vars.grid_unit_component * 8; // 64
@@ -93,6 +94,7 @@ var vars$1 = {
 
   // title vars
   title_padding: title_padding,
+  title_after_icon_padding: title_after_icon_padding,
   indent: vars.unit_indent,
   transition_duration: vars.animation_duration,
   font_size: 18,

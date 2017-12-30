@@ -145,6 +145,18 @@ var genericTests = (function (_ref) {
       content: toolbarTitleComponent
     }
   }, {
+    name: "ToolbarTitle, at start",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentAtStart
+    }
+  }, {
+    name: "ToolbarTitle, indented (without left icon)",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentIndented
+    }
+  }, {
     name: "ToolbarTitle, centered",
     component: Toolbar$$1,
     attrs: {
@@ -155,18 +167,6 @@ var genericTests = (function (_ref) {
     component: Toolbar$$1,
     attrs: {
       content: toolbarTitleComponentCenteredBalanced
-    }
-  }, {
-    name: "ToolbarTitle, indented (without left icon)",
-    component: Toolbar$$1,
-    attrs: {
-      content: toolbarTitleComponentIndented
-    }
-  }, {
-    name: "ToolbarTitle, at start",
-    component: Toolbar$$1,
-    attrs: {
-      content: toolbarTitleComponentAtStart
     }
   }, {
     name: "Title as span",
@@ -182,7 +182,6 @@ var genericTests = (function (_ref) {
     }
   }, {
     name: "Option: style (colors and height)",
-    className: "small-result",
     component: Toolbar$$1,
     attrs: {
       content: toolbarRow,
