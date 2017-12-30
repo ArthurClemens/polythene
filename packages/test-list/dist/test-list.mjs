@@ -331,9 +331,6 @@ var genericTests = (function (_ref) {
   return [{
     name: "Child nodes",
     component: List$$1,
-    attrs: {
-      borders: true
-    },
     children: [h(ListTile$$1, {
       title: "Jennifer Barker",
       key: "Jennifer Barker",
@@ -351,7 +348,6 @@ var genericTests = (function (_ref) {
     name: "Option: tiles",
     component: List$$1,
     attrs: {
-      borders: true,
       tiles: [h(ListTile$$1, {
         title: "Jennifer Barker",
         key: "Jennifer Barker",
@@ -397,25 +393,22 @@ var genericTests = (function (_ref) {
     component: List$$1,
     attrs: {
       compact: true,
-      borders: true,
       header: {
         title: "Friends"
       },
       tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
     }
   }, {
-    name: "No padding",
+    name: "No list padding",
     component: List$$1,
     attrs: {
       padding: false,
-      borders: true,
       tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
     }
   }, {
     name: "Themed list (colors and padding)",
     component: List$$1,
     attrs: {
-      borders: true,
       className: "tests-lists-themed-list"
     },
     children: [h(ListTile$$1, {
@@ -459,7 +452,6 @@ var genericTests = (function (_ref) {
     className: "pe-dark-tone",
     component: List$$1,
     attrs: {
-      borders: true,
       header: {
         title: "Friends"
       },
@@ -485,7 +477,6 @@ var genericTests = (function (_ref) {
     component: List$$1,
     className: "pe-dark-tone",
     attrs: {
-      borders: true,
       className: "tests-lists-themed-list"
     },
     children: [h(ListTile$$1, {
@@ -512,7 +503,6 @@ var genericTests = (function (_ref) {
     attrs: {
       className: "pe-light-tone",
       style: { background: "#fff" },
-      borders: true,
       header: {
         title: "Friends"
       },
@@ -540,7 +530,6 @@ var genericTests = (function (_ref) {
     component: List$$1,
     attrs: {
       style: { background: "#fff" },
-      borders: true,
       header: {
         title: "Friends"
       },

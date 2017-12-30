@@ -59,9 +59,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
     {
       name: "Child nodes",
       component: List,
-      attrs: {
-        borders: true
-      },
       children: [
         h(ListTile, {
           title: "Jennifer Barker",
@@ -84,7 +81,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       name: "Option: tiles",
       component: List,
       attrs: {
-        borders: true,
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
@@ -140,7 +136,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       component: List,
       attrs: {
         compact: true,
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -152,11 +147,10 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "No padding",
+      name: "No list padding",
       component: List,
       attrs: {
         padding: false,
-        borders: true,
         tiles: [
           ListTileJennifer,
           ListTileAli,
@@ -168,7 +162,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       name: "Themed list (colors and padding)",
       component: List,
       attrs: {
-        borders: true,
         className: "tests-lists-themed-list"
       },
       children: [
@@ -222,7 +215,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: List,
       attrs: {
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -253,7 +245,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       component: List,
       className: "pe-dark-tone",
       attrs: {
-        borders: true,
         className: "tests-lists-themed-list"
       },
       children: [
@@ -285,7 +276,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       attrs: {
         className: "pe-light-tone",
         style: { background: "#fff" },
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -318,7 +308,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       component: List,
       attrs: {
         style: { background: "#fff" },
-        borders: true,
         header: {
           title: "Friends"
         },
