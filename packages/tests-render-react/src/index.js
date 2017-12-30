@@ -4,7 +4,6 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import { addFastClick } from "polythene-fastclick";
 import { addTypography, addLayoutStyles } from "polythene-css";
 import "polythene-css";
 import { rules as css } from "./styles";
@@ -15,7 +14,6 @@ import ScrollToTop from "./ScrollToTop";
 
 addTypography();
 addLayoutStyles();
-addFastClick();
 
 const NavBar = () =>
   h(css.headerRow, null,

@@ -39,7 +39,6 @@ Recommended:
 Optional:
 
 * `polythene-utilities` Layout helper classes [more info](packages/polythene-utilities.md)
-* `polythene-fastclick` Eliminating the 300ms delay on mobile [more info](packages/polythene-fastclick.md)
 * `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
 
 ### Installation

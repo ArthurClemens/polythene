@@ -49,7 +49,6 @@
   "devDependencies": {
     "polythene-core": "^1.0.0-rc.9",
     "polythene-core-css": "^1.0.0-rc.9",
-    "polythene-fastclick": "^1.0.0-rc.9",
     "react": "^16.2.0",
     "react-hyperscript": "^3.0.0"
   },

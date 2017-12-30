@@ -10,7 +10,6 @@
   - [Supporting styles](#supporting-styles)
   - [Roboto font](#roboto-font)
   - [Layout classes](#layout-classes)
-  - [See also: eliminating the 300ms delay on mobile](#see-also-eliminating-the-300ms-delay-on-mobile)
 
 <!-- /MarkdownTOC -->
 
@@ -291,9 +290,3 @@ Flex classes:
 .self-stretch
 ~~~
 
-
-
-<a name="see-also-eliminating-the-300ms-delay-on-mobile"></a>
-### See also: eliminating the 300ms delay on mobile
-
-See: [Package polythene-fastclick](packages/polythene-fastclick.md)

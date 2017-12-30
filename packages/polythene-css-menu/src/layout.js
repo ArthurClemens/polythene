@@ -12,7 +12,8 @@ const widthStyle = (componentVars, size) => {
   const s = unifySize(componentVars, size);
   return {
     ["&." + widthClass(s)]: {
-      width: componentVars.size_factor * s + "px"
+      width: componentVars.size_factor * s + "px",
+      // We can't set maxWidth because we don't know the size of the container
     }
   };
 };

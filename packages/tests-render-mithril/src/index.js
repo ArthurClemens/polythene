@@ -1,5 +1,4 @@
 import m from "mithril";
-import { addFastClick } from "polythene-fastclick";
 import { addLayoutStyles, addTypography } from "polythene-css";
 import { rules as css } from "./styles";
 import page from "./page";
@@ -8,7 +7,6 @@ import routes from "./routes";
 
 addTypography();
 addLayoutStyles();
-addFastClick();
 
 const TITLE = "Polythene Components for Mithril";
 

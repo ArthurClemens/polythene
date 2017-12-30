@@ -223,15 +223,23 @@ var onMount = function onMount(vnode) {
     };
 
     state.activateDismissTap = function () {
-      document.addEventListener("click", state.handleDismissTap);
+      if (polytheneCore.isTouch) {
+        document.addEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.addEventListener("click", state.handleDismissTap);
+      }
     };
 
     state.deActivateDismissTap = function () {
-      document.removeEventListener("click", state.handleDismissTap);
+      if (polytheneCore.isTouch) {
+        document.removeEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.removeEventListener("click", state.handleDismissTap);
+      }
     };
 
     state.handleEscape = function (e) {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "Esc") {
         hideMenu(state, _extends({}, attrs, { hideDelay: 0 }));
       }
     };

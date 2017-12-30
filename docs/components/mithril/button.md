@@ -10,7 +10,6 @@
   - [Events](#events)
   - [Variations](#variations)
   - [A row of buttons](#a-row-of-buttons)
-  - [Mobile and tap delay](#mobile-and-tap-delay)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -80,18 +79,6 @@ m(Button, {
 ### A row of buttons
 
 When placed inside an element with classname `pe-button-row`, buttons will get a side margin to set them apart. The row element itself will have an negative side margin so that the first button still lines up properly.
-
-<a name="mobile-and-tap-delay"></a>
-### Mobile and tap delay
-
-To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). `polythene-fastclick` is a simple wrapper around the Fastclick library.
-
-~~~javascript
-import { addFastClick } from "polythene-fastclick"
-
-addFastClick()
-~~~
-
 
 <a name="appearance"></a>
 ## Appearance

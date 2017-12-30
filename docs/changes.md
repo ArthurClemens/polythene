@@ -16,6 +16,8 @@
 <a name="100-rc10"></a>
 #### 1.0.0-rc.10
 
+Removed `polythene-fastclick` as it is no longer needed - the tap response on mobile is now sufficiently fast.
+
 Changes to components:
 
 * Button: the default side margin has been removed
