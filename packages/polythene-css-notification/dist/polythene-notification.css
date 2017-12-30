@@ -10,13 +10,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 4000;
   pointer-events: none;
   justify-content: flex-start
 }
 
 .pe-notification__holder.pe-multiple--screen {
-  position: fixed
+  position: fixed;
+  z-index: 4000
 }
 
 :not(.pe-notification--container) .pe-multiple--container {
