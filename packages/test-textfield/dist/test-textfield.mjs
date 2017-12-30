@@ -295,7 +295,7 @@ var setValue = (function (_ref) {
           return state.value(value), state.focus(focus);
         },
         events: _defineProperty$2({}, k.onkeydown, function (e) {
-          if (e.key === "ArrowRight") {
+          if (e.key === "ArrowRight" || e.key === "Right") {
             state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
           }
         }),
@@ -928,7 +928,7 @@ var setValue$1 = (function (_ref) {
             return state.value(value);
           }),
           onkeydown: function onkeydown(e) {
-            if (e.key === "ArrowRight") {
+            if (e.key === "ArrowRight" || e.key === "Right") {
               state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
             }
           }
