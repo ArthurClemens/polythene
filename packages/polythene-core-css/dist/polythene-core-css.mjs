@@ -257,7 +257,8 @@ var ellipsis = function ellipsis(lines, lineHeight) {
       overflow: "initial",
       display: "block",
       height: "auto",
-      maxHeight: "none"
+      maxHeight: "none",
+      whiteSpace: "normal"
     };
   }
   return _extends({}, {

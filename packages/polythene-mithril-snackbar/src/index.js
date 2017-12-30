@@ -10,7 +10,7 @@ SnackbarInstance.displayName = "SnackbarInstance";
 const options = {
   name:           "snackbar",
   className:      classes.component,
-  bodyShowClass:  classes.open,
+  htmlShowClass:  classes.open,
   defaultId:      "default_snackbar",
   holderSelector: `.${classes.holder}`,
   instance:       SnackbarInstance,

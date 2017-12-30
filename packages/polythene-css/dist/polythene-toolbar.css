@@ -23,6 +23,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 12px
+}
+
+.pe-toolbar *+.pe-toolbar__title,.pe-toolbar *+.pe-toolbar__title--indent,.pe-toolbar>*+span {
   margin-left: 20px
 }
 
@@ -33,8 +37,8 @@
 .pe-toolbar .pe-toolbar__title--center {
   text-align: center;
   justify-content: center;
-  margin-left: 20px;
-  margin-right: 20px
+  margin-left: 12px;
+  margin-right: 12px
 }
 
 .pe-toolbar .pe-fit {

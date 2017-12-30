@@ -191,8 +191,7 @@ var createContent = function createContent(vnode, _ref2) {
     fullBleed: attrs.fullBleed
   });
   return h("div", {
-    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
-    style: attrs.style
+    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" ")
   }, [attrs.fullScreen ? null : h(Shadow, {
     z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
     animated: true

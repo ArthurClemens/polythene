@@ -420,7 +420,6 @@ var results = (function (_ref) {
 
       var handleKey = function handleKey(e) {
         var index = selectedListIndex();
-        console.log("e.key", e.key);
         if (e.key === "ArrowDown" || e.key === "Down") {
           // "Down" for IE11
           e.preventDefault();

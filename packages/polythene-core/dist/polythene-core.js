@@ -349,8 +349,8 @@ var Multi = function Multi(_ref) {
     var candidates = items.filter(function (item) {
       return item.show && item.spawn === spawn;
     });
-    if (mOptions.bodyShowClass && isClient) {
-      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    if (mOptions.htmlShowClass && isClient && document.documentElement) {
+      document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
     }
     return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
     : renderer(mOptions.holderSelector, {

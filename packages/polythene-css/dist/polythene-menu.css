@@ -54,14 +54,6 @@
   border-radius: 2px
 }
 
-.pe-menu__content .pe-list-tile__title {
-  text-overflow: clip;
-  overflow: initial;
-  display: block;
-  height: auto;
-  max-height: none
-}
-
 .pe-dark-tone.pe-menu .pe-menu__content,.pe-dark-tone .pe-menu .pe-menu__content {
   background-color: #222
 }

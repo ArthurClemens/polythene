@@ -198,7 +198,9 @@ var rgba = function rgba(colorStr) {
 };
 
 var vars$1 = {
-  padding: 3 * vars.grid_unit_component,
+  max_width: 7 * vars.grid_unit_menu, // 56   
+  side_padding_mobile: 6 * vars.grid_unit, // 48
+  padding: 3 * vars.grid_unit_component, // 24
   header_bottom: 20,
   header_height: 60,
   footer_height: 52,

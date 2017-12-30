@@ -3,7 +3,7 @@ import { vars } from 'polythene-core-fab';
 import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
-  component: "pe-fab",
+  component: "pe-button pe-fab",
 
   // elements
   content: "pe-fab__content",

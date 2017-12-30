@@ -97,7 +97,7 @@ var holderLayout = (function (selector) {
     left: 0,
     zIndex: polytheneTheme.vars.z_notification,
     pointerEvents: "none",
-    justifyContent: "flex-start", // For IE 11
+    justifyContent: "flex-start", // For IE11
     width: "100%"
   }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
     position: "relative"

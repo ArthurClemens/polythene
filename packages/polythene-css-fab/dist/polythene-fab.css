@@ -1,4 +1,4 @@
-.pe-fab {
+.pe-button pe-fab {
   user-select: none;
   display: inline-block;
   position: relative;
@@ -8,7 +8,7 @@
   border: none
 }
 
-.pe-fab .pe-button__content {
+.pe-button pe-fab .pe-button__content {
   position: relative;
   width: 56px;
   height: 56px;
@@ -16,7 +16,7 @@
   padding: 16px
 }
 
-.pe-fab .pe-button__focus,.pe-fab .pe-button__wash {
+.pe-button pe-fab .pe-button__focus,.pe-button pe-fab .pe-button__wash {
   position: absolute;
   top: 0;
   right: 0;
@@ -25,39 +25,39 @@
   border-radius: inherit
 }
 
-.pe-fab.pe-fab--mini .pe-button__content {
+.pe-button pe-fab.pe-fab--mini .pe-button__content {
   width: 40px;
   height: 40px;
   padding: 8px
 }
 
-.pe-fab .pe-ripple {
+.pe-button pe-fab .pe-ripple {
   border-radius: inherit
 }
 
-.pe-fab .pe-button__wash {
+.pe-button pe-fab .pe-button__wash {
   transition: background-color .18s ease-in-out;
   border-radius: inherit;
   pointer-events: none;
   background-color: transparent
 }
 
-.pe-dark-tone.pe-fab .pe-button__content,.pe-dark-tone .pe-fab .pe-button__content {
+.pe-dark-tone.pe-button pe-fab .pe-button__content,.pe-dark-tone .pe-button pe-fab .pe-button__content {
   background-color: #2196f3;
   color: #fff
 }
 
-.pe-dark-tone.pe-fab.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-fab.pe-button--focus .pe-button__focus {
+.pe-dark-tone.pe-button pe-fab.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-button pe-fab.pe-button--focus .pe-button__focus {
   opacity: 1;
   background-color: hsla(0,0%,100%,.08)
 }
 
-.pe-fab .pe-button__content,.pe-light-tone.pe-fab .pe-button__content,.pe-light-tone .pe-fab .pe-button__content {
+.pe-button pe-fab .pe-button__content,.pe-light-tone.pe-button pe-fab .pe-button__content,.pe-light-tone .pe-button pe-fab .pe-button__content {
   background-color: #2196f3;
   color: #fff
 }
 
-.pe-fab.pe-button--focus .pe-button__focus,.pe-light-tone.pe-fab.pe-button--focus .pe-button__focus,.pe-light-tone .pe-fab.pe-button--focus .pe-button__focus {
+.pe-button pe-fab.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button pe-fab.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button pe-fab.pe-button--focus .pe-button__focus {
   opacity: 1;
   background-color: rgba(0,0,0,.06)
 }

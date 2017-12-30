@@ -20,7 +20,6 @@
   position: relative;
   cursor: pointer;
   font-size: 16px;
-  line-height: 24px;
   margin: 0;
   color: inherit
 }
@@ -39,7 +38,8 @@
   box-sizing: border-box;
   width: 24px;
   height: 24px;
-  color: inherit
+  color: inherit;
+  flex-shrink: 0
 }
 
 .pe-radio-control .pe-control__box:focus {
@@ -78,7 +78,8 @@
   transition-timing-function: ease-out;
   transition-property: all;
   padding-left: 16px;
-  padding-right: 0
+  padding-right: 0;
+  align-self: center
 }
 
 .pe-radio-control.pe-control--disabled .pe-control__form-label {

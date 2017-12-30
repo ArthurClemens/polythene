@@ -98,16 +98,6 @@ var vars = {
   breakpoint_for_big_desktop_up: 1600,
   breakpoint_for_tv_up: 1920,
 
-  breakpoint_small_handset_portrait: 0,
-  breakpoint_medium_handset_portrait: 360,
-  breakpoint_large_handset_portrait: 400,
-  breakpoint_small_tablet_portrait: 600,
-  breakpoint_large_tablet_portrait: 720,
-  // landscape
-  breakpoint_small_handset_landscape: 480,
-  breakpoint_medium_handset_landscape: 600,
-  breakpoint_large_handset_landscape: 720,
-
   // z-index
   z_menu: 1000,
   z_header_container: 2000,

@@ -10,7 +10,7 @@ NotificationInstance.displayName = "NotificationInstance";
 const options = {
   name:           "notification",
   className:      classes.component,
-  bodyShowClass:  classes.open,
+  htmlShowClass:  classes.open,
   defaultId:      "default_notification",
   holderSelector: `.${classes.holder}`,
   instance:       NotificationInstance,

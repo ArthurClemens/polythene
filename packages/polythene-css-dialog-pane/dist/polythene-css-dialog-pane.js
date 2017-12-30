@@ -31,13 +31,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var lineHeightTitle = 24;
 
 var layout = (function (selector, componentVars) {
-  var _ref;
+  var _ref3;
 
-  return [(_ref = {}, _defineProperty(_ref, selector, [polytheneCoreCss.flex.layoutVertical, {
+  var maxWidthBreakpointMobile = componentVars.max_width + 2 * componentVars.side_padding_mobile;
+
+  return [(_ref3 = {}, _defineProperty(_ref3, selector, [polytheneCoreCss.flex.layoutVertical, {
     position: "relative",
     maxHeight: "100%",
     minWidth: 56 * 5 + "px",
-    maxWidth: 7 * polytheneTheme.vars.grid_unit_menu + "px",
     borderRadius: "inherit",
     margin: 0,
 
@@ -86,7 +87,7 @@ var layout = (function (selector, componentVars) {
       minHeight: "50px",
 
       // initially set max-height; will be overridden by dialog core with actual heights
-      maxHeight: "calc(100vh - " + 2 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
+      maxHeight: "calc(100vh - " + 4 * componentVars.padding + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
 
       " p": {
         margin: 0
@@ -103,10 +104,16 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+    ".pe-dialog-pane--footer": {
       " .pe-dialog-pane__body": {
-        borderBottomStyle: "solid",
-        borderWidth: componentVars.border_width + "px"
+        paddingBottom: componentVars.padding - 10 + "px"
+      },
+
+      ".pe-dialog-pane--border-bottom": {
+        " .pe-dialog-pane__body": {
+          borderBottomStyle: "solid",
+          borderWidth: componentVars.border_width + "px"
+        }
       }
     },
 
@@ -132,12 +139,12 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-dialog-pane__actions": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutEndJustified, polytheneCoreCss.flex.layoutWrap]
-  }]), _defineProperty(_ref, ".pe-menu__content", {
+  }]), _defineProperty(_ref3, ".pe-menu__content", {
     " .pe-dialog-pane__body": {
       padding: 0,
       border: "none"
     }
-  }), _defineProperty(_ref, " .pe-dialog--full-screen", {
+  }), _defineProperty(_ref3, " .pe-dialog--full-screen", {
     " .pe-dialog-pane__content": {
       borderRadius: 0,
       maxWidth: "none",
@@ -150,7 +157,11 @@ var layout = (function (selector, componentVars) {
       border: "none",
       maxWidth: "initial"
     }
-  }), _ref)];
+  }), _defineProperty(_ref3, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty({}, selector, {
+    maxWidth: "calc(100vw - " + 2 * componentVars.side_padding_mobile + "px)"
+  })), _defineProperty(_ref3, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty({}, selector, {
+    maxWidth: componentVars.max_width + "px"
+  })), _ref3)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

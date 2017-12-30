@@ -194,7 +194,8 @@
   overflow: initial;
   display: block;
   height: auto;
-  max-height: none
+  max-height: none;
+  white-space: normal
 }
 
 .pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) {

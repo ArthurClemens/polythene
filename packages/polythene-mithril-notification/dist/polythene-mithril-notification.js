@@ -17,7 +17,7 @@ var classes = {
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  multilineTitle: "pe-notification__title--multiline",
+  multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical"
 };
 
@@ -28,7 +28,7 @@ NotificationInstance.displayName = "NotificationInstance";
 var options = {
   name: "notification",
   className: classes.component,
-  bodyShowClass: classes.open,
+  htmlShowClass: classes.open,
   defaultId: "default_notification",
   holderSelector: "." + classes.holder,
   instance: NotificationInstance,

@@ -30,6 +30,12 @@ export default (selector, componentVars) => [{
       }
     }
   ],
+  
+  // The idea is to prevent scrolling of the background, but
+  // Mobile Safari won't let that,
+  // and Windows browsers will show a jump to the right because the scrollbar disappears.
+  // So in all *something* gets broken when trying this.
+
   // " body.pe-dialog--open": {
   //   overflow: "hidden",
   //   left: 0,

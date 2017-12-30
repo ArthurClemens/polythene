@@ -178,8 +178,8 @@ export const Multi = ({ options: mOptions, renderer }) => {
     const candidates = items.filter(item => 
       item.show && item.spawn === spawn
     );
-    if (mOptions.bodyShowClass && isClient) {
-      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    if (mOptions.htmlShowClass && isClient && document.documentElement) {
+      document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
     }
     return !candidates.length
       ? renderer(mOptions.placeholder) // placeholder because we cannot return null

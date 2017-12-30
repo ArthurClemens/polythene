@@ -7,7 +7,6 @@
   position: relative;
   max-height: 100%;
   min-width: 280px;
-  max-width: 392px;
   border-radius: inherit;
   margin: 0
 }
@@ -36,13 +35,11 @@
 }
 
 .pe-dialog-pane .pe-dialog-pane__header .pe-dialog-pane__title {
+  width: 100%;
+  word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-rendering: auto;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  width: 100%
+  white-space: nowrap
 }
 
 .pe-dialog-pane .pe-dialog-pane__header--title {
@@ -56,7 +53,8 @@
   padding: 24px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  max-height: calc(100vh - 48px - 112px)
+  min-height: 50px;
+  max-height: calc(100vh - 96px - 112px)
 }
 
 .pe-dialog-pane .pe-dialog-pane__body p {
@@ -70,6 +68,10 @@
 .pe-dialog-pane.pe-dialog-pane--header.pe-dialog-pane--border-top .pe-dialog-pane__body {
   border-top-style: solid;
   border-width: 1px
+}
+
+.pe-dialog-pane.pe-dialog-pane--footer .pe-dialog-pane__body {
+  padding-bottom: 14px
 }
 
 .pe-dialog-pane.pe-dialog-pane--footer.pe-dialog-pane--border-bottom .pe-dialog-pane__body {
@@ -105,15 +107,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin: 0 -4px
-}
-
-.pe-dialog-pane .pe-dialog-pane__actions .pe-button {
-  height: 36px;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding: 0
+  flex-wrap: wrap
 }
 
 .pe-menu__content .pe-dialog-pane__body {
@@ -133,6 +127,18 @@
   max-height: 100vh;
   border: none;
   max-width: none
+}
+
+@media (max-width:440px) {
+  .pe-dialog-pane {
+    max-width: calc(100vw - 48px)
+  }
+}
+
+@media (min-width:441px) {
+  .pe-dialog-pane {
+    max-width: 392px
+  }
 }
 
 .pe-dark-tone.pe-dialog-pane,.pe-dark-tone .pe-dialog-pane {

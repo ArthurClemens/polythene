@@ -1,4 +1,4 @@
-import { mixin, styler } from 'polythene-core-css';
+import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-menu';
 import { vars as vars$1 } from 'polythene-theme';
 
@@ -67,9 +67,7 @@ var widthStyle = function widthStyle(componentVars, size) {
 };
 
 var layout = (function (selector, componentVars) {
-  var _ref2;
-
-  return [(_ref2 = {}, _defineProperty(_ref2, selector, [componentVars.sizes.map(function (size) {
+  return [_defineProperty({}, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
   }), {
     transitionTimingFunction: "ease-out",
@@ -97,9 +95,7 @@ var layout = (function (selector, componentVars) {
       width: "100%",
       borderRadius: componentVars.border_radius + "px"
     }
-  }]), _defineProperty(_ref2, " .pe-menu__content", {
-    " .pe-list-tile__title": [mixin.ellipsis("none")]
-  }), _ref2)];
+  }])];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

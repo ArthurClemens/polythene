@@ -82,7 +82,7 @@ DialogInstance.displayName = "DialogInstance";
 
 var options = {
   name: "dialog",
-  bodyShowClass: classes.open,
+  htmlShowClass: classes.open,
   defaultId: "default_dialog",
   holderSelector: "div." + classes.holder,
   instance: DialogInstance,
