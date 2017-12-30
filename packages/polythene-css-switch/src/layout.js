@@ -113,7 +113,7 @@ export default (selector, componentVars) =>
         }
       },
       {
-        // For IE 11, to catch mouse events place checkbox element on top stretching to all sides
+        // For IE11, to catch mouse events place checkbox element on top stretching to all sides
         [`_:-ms-fullscreen, :root ${selector}`]: {
           " input": {
             position: "absolute",

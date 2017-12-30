@@ -73,7 +73,10 @@ html {
   display: none;
 }
 .flex-one {
-  flex: 1 0;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: none;
 }
 .minh4 {
   min-height: 4rem;
@@ -202,15 +205,6 @@ html {
 @media (min-width: 480px) {
   .results {
     width: 480px;
-  }
-  .result {
-    width: auto;
-  }
-}
-
-@media (min-width: 640px) {
-  .results {
-    width: 640px;
   }
   .result {
     width: auto;

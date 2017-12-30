@@ -18,12 +18,14 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     color_light_highlight_background: "#FFECB3",
   });
 
+  const longTitle = "ListTile with a very very very very very very very very very long title";
+
   return [
     {
       name: "Option: title",
       component: ListTile,
       attrs: {
-        title: "Ancillary Justice"
+        title: longTitle
       }
     },
     {

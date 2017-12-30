@@ -27,11 +27,13 @@ var genericTests = (function (_ref) {
     color_light_highlight_background: "#FFECB3"
   });
 
+  var longTitle = "ListTile with a very very very very very very very very very long title";
+
   return [{
     name: "Option: title",
     component: ListTile$$1,
     attrs: {
-      title: "Ancillary Justice"
+      title: longTitle
     }
   }, {
     name: "Option: subtitle",

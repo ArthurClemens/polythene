@@ -48,9 +48,12 @@ var paddingV = function paddingV(top, bottom) {
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [flex.layout, {
     position: "relative",
-    overflow: "hidden",
 
     ".pe-list-tile--sticky": [mixin.sticky(2)],
+
+    " .pe-list-tile__primary": {
+      width: "100%"
+    },
 
     " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
       textDecoration: "none",
@@ -75,7 +78,11 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
+      width: "100%",
+
       ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5), {
+        flexShrink: 0,
+
         ".pe-list-tile--compact-front": {
           width: componentVars.compact_front_item_width + "px"
         },
@@ -93,11 +100,15 @@ var layout = (function (selector, componentVars) {
       paddingLeft: 0
     },
 
-    " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_line_height, "px"), {
+    " .pe-list-tile__title": {
+      wordBreak: "break-word",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
       fontSize: componentVars.font_size_title + "px",
       fontWeight: vars$1.font_weight_normal,
       lineHeight: componentVars.single_line_height + "px"
-    }],
+    },
 
     " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
       fontSize: componentVars.font_size_subtitle + "px",
@@ -183,7 +194,7 @@ var layout = (function (selector, componentVars) {
     // Non-touch
 
     "html.pe-no-touch &.pe-list-tile--hoverable, \
-      html.pe-no-touch &.pe-list-tile--selectable": {
+        html.pe-no-touch &.pe-list-tile--selectable": {
       ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
       }
