@@ -357,7 +357,8 @@ var createContent$3 = function createContent(vnode, _ref2) {
     title: function title(pAttrs) {
       return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
         className: classes.title,
-        key: "title"
+        key: "title",
+        style: pAttrs.style
       }, [pAttrs.title, pAttrs.subtitle ? h("div", {
         className: classes.subtitle,
         key: "subtitle"
@@ -366,7 +367,8 @@ var createContent$3 = function createContent(vnode, _ref2) {
     media: function media(pAttrs) {
       return h("div", {
         className: classes.primaryMedia,
-        key: "media"
+        key: "media",
+        style: pAttrs.style
       }, dispatcher({ media: pAttrs }));
     },
     actions: function actions(pAttrs) {

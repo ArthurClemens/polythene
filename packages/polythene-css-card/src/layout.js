@@ -69,7 +69,8 @@ export default (selector, componentVars) => [{
 
     " .pe-card__primary-media": {
       margin: "16px 16px 0 16px",
-
+      overflow: "hidden",
+      
       " .pe-card__media--small": {
         width: componentVars.image_size_small + "px"
       },
