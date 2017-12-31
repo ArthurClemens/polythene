@@ -57,7 +57,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **offset** | optional | Number | 16 | Horizontal offset  |
 | **origin** | optional | String: "top-left", "top-right", "bottom-left", "bottom-right" | "top-left" (if `target` is specified) | Positioned menu corner |
-| **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element |
+| **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that a large size can be displayed off screen on smaller devices |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 
 <a name="transition-options"></a>
