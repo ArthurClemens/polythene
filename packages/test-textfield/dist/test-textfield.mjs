@@ -4,6 +4,39 @@ import powerform from 'powerform';
 import { equalsTo, required } from 'validatex';
 import { RaisedButton as RaisedButton$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var focus = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      _extends$2(vnode.state, {
+        setInputState: undefined
+      });
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      return h("div", [h(TextField$$1, {
+        label: "Your name",
+        onChange: function onChange(_ref2) {
+          var setInputState = _ref2.setInputState;
+          return state.setInputState = setInputState;
+        }
+      }), h(RaisedButton$$1, {
+        label: "Give focus",
+        events: _defineProperty$1({}, k.onclick, function () {
+          return state.setInputState({ focus: true });
+        })
+      })]);
+    }
+  };
+});
+
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -197,42 +230,6 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var focus = (function (_ref) {
-  var h = _ref.h,
-      k = _ref.k,
-      TextField$$1 = _ref.TextField,
-      RaisedButton$$1 = _ref.RaisedButton;
-  return {
-    oninit: function oninit(vnode) {
-      var hasFocus = stream(false);
-      _extends$2(vnode.state, {
-        hasFocus: hasFocus,
-        redrawOnUpdate: stream.merge([hasFocus])
-      });
-    },
-    view: function view(vnode) {
-      var state = vnode.state;
-      var hasFocus = state.hasFocus();
-      return h("div", [h(TextField$$1, {
-        label: "Your name",
-        focus: hasFocus,
-        onChange: function onChange(newState) {
-          return state.hasFocus(newState.focus);
-        }
-      }), h(RaisedButton$$1, {
-        label: "Give focus",
-        events: _defineProperty$1({}, k.onclick, function () {
-          return state.hasFocus(true);
-        })
-      })]);
-    }
-  };
-});
-
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var onChange = (function (_ref) {
@@ -276,35 +273,35 @@ var setValue = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
-      var focus = stream(false);
+      var setInputState = stream();
       _extends$4(vnode.state, {
         value: value,
-        focus: focus,
+        setInputState: setInputState,
         redrawOnUpdate: stream.merge([value]) // for React
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
       var value = state.value();
-      var focus = state.focus();
+      var setInputState = state.setInputState();
       return h("div", [h(TextField$$1, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
         onChange: function onChange(_ref2) {
           var value = _ref2.value,
-              focus = _ref2.focus;
-          return state.value(value), state.focus(focus);
+              setInputState = _ref2.setInputState;
+          return state.value(value), state.setInputState(setInputState);
         },
         events: _defineProperty$2({}, k.onkeydown, function (e) {
           if (e.key === "ArrowRight" || e.key === "Right") {
-            state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
+            var newValue = value + String.fromCharCode(97 + Math.floor(Math.random() * 26));
+            setInputState({ value: newValue });
           }
         }),
-        value: value,
-        focus: focus
+        value: value
       }), h(RaisedButton$$1, {
         label: "Clear",
         events: _defineProperty$2({}, k.onclick, function () {
-          return state.value(""), state.focus(true);
+          return setInputState({ focus: true, value: "" });
         })
       })]);
     }
@@ -356,7 +353,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: autofocus",
+    name: "Option: autofocus (does not work on iOS)",
     component: {
       view: function view() {
         return block([h(TextField$$1, _defineProperty({}, k.autofocus, true))]);
@@ -909,8 +906,7 @@ var _extends$5 = Object.assign || function (target) { for (var i = 1; i < argume
 
 var setValue$1 = (function (_ref) {
   var h = _ref.h,
-      TextField$$1 = _ref.TextField,
-      RaisedButton$$1 = _ref.RaisedButton;
+      TextField$$1 = _ref.TextField;
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
@@ -934,13 +930,6 @@ var setValue$1 = (function (_ref) {
           }
         },
         value: value
-      }), h(RaisedButton$$1, {
-        label: "Clear",
-        events: {
-          onclick: function onclick() {
-            return state.value("");
-          }
-        }
       })]);
     }
   };

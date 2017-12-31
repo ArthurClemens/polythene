@@ -21,7 +21,7 @@ Removed `polythene-fastclick` as it is no longer needed - the tap response on mo
 Changes to components:
 
 * Button: the default side margin has been removed
-  * Add parent element with class `.pe-button-row` to re-add the margins
+  * Add parent element with class `.pe-button-row` to re-add the margins, or add margins where needed
 * List: removed keyboard control in favor of (more flexible) example code; see:
   * Mithril
     * [List](components/mithril/list.md#keyboard-control)
@@ -29,6 +29,8 @@ Changes to components:
   * React
     * [List](components/react/list.md#keyboard-control)
     * [Search](components/react/search.md#result-list)
+* TextField and Search: option `focus` has been removed (because setting the focus state outside of an event does not work on iOS)
+  * Use the `onChange` callback that returns the function `setInputState` - see [documentation for Mithril](components/mithril/textfield.md#programmatically-setting-focus-and-value), [documentation for React](components/react/textfield.md#programmatically-setting-focus-and-value)
 
 Bug fixes.
 

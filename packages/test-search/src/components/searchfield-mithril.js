@@ -56,40 +56,37 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       if (attrs.setValue) {
         value.map(v => attrs.getValue(v));
       }
-      const focus = stream(false);
+      const setInputState = stream();
 
-      const clear = () => (
-        value(""),
-        focus(true)
-      );
+      const clear = () =>
+        setInputState()({ value: "", focus: true });
+
       const leave = () =>
         value("");
 
       Object.assign(vnode.state, {
         value,
-        focus,
+        setInputState,
         clear,
         leave,
         redrawOnUpdate: stream.merge([value]) // for React
       });
     },
     view: ({ state, attrs }) => {
-      // incoming value and focus added for result list example:
+      // incoming value added for result list example:
       const value = attrs.value !== undefined ? attrs.value : state.value();
-      const focus = attrs.focus || state.focus(); // keep focus where possible
       
       return h(Search, Object.assign(
         {},
         {
           textfield: {
-            onChange: ({ value, focus }) => (
+            onChange: ({ value, setInputState }) => (
               state.value(value),
-              state.focus(focus),
+              state.setInputState(setInputState),
               // onChange callback added for result list example:
-              attrs.onChange && attrs.onChange({ value, focus })
+              attrs.onChange && attrs.onChange({ value, setInputState })
             ),
             value,
-            focus,
             // incoming label and defaultValue added for result list example:
             label: attrs.label || "Search",
             defaultValue: attrs.defaultValue,

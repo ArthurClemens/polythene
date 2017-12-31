@@ -49,7 +49,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: autofocus",
+      name: "Option: autofocus (does not work on iOS)",
       component: {
         view: () => block([
           h(TextField, {

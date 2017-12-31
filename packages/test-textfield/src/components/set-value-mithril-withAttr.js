@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ h, TextField, RaisedButton }) => ({
+export default ({ h, TextField }) => ({
   oninit: vnode => {
     const value = stream("");
     Object.assign(vnode.state, {
@@ -22,12 +22,6 @@ export default ({ h, TextField, RaisedButton }) => ({
           }
         },
         value
-      }),
-      h(RaisedButton, {
-        label: "Clear",
-        events: {
-          onclick: () => state.value("")
-        },
       })
     ]);
   }

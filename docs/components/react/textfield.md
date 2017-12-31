@@ -11,7 +11,7 @@
   - [Custom validation](#custom-validation)
   - [Character counter](#character-counter)
   - [Reading and setting the value](#reading-and-setting-the-value)
-  - [Programmatically giving focus](#programmatically-giving-focus)
+  - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -345,7 +345,7 @@ h(TextField, {
 })
 ~~~
 
-To programmatically set the input value, pass `value`:
+To use the received input value, pass `value`:
 
 ~~~jsx
 <TextField
@@ -363,23 +363,28 @@ h(TextField, {
 })
 ~~~
 
-<a name="programmatically-giving-focus"></a>
-### Programmatically giving focus
+<a name="programmatically-setting-focus-and-value"></a>
+### Programmatically setting focus and value
 
-Reading and setting the focus state is similar to handling the input value:
+The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
 
 ~~~jsx
 <TextField
   label: "Your name",
-  onChange={newState => this.setState({ hasFocus: newState.focus })} 
-  focus={this.state.hasFocus}
+  onChange={({ setInputState }) => this.setState({ setInputState })} 
 />,
 <Button
   label="Set focus"
   events={{
-    onClick={() => this.setState({ value: true })}
+    onClick={() => this.state.setInputState({ focus: true })}
   }}
-})
+/>
+<Button
+  label="Clear"
+  events={{
+    onClick={() => this.state.setInputState({ focus: true, value: "" })}
+  }}
+/>
 ~~~
 
 or with hyperscript:
@@ -387,13 +392,18 @@ or with hyperscript:
 ~~~javascript
 h(TextField, {
   label: "Your name",
-  onChange: newState => this.setState({ hasFocus: newState.focus }),
-  focus: this.state.hasFocus
+  onChange: ({ setInputState }) => this.setState({ setInputState })
 }),
 h(Button, {
   label: "Set focus",
   events: {
-    onClick: () => this.setState({ hasFocus: true })
+    onClick: () => this.state.setInputState({ focus: true })}
+  }
+}),
+h(Button, {
+  label: "Clear",
+  events: {
+    onClick: () => this.state.setInputState({ focus: true, value: "" })}
   }
 })
 ~~~

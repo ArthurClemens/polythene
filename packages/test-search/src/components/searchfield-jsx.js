@@ -38,14 +38,14 @@ export default class extends Component {
     super(props);
     this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     };
     this.clear = this.clear.bind(this);
     this.leave = this.leave.bind(this);
   }
 
   clear() {
-    this.setState({
+    this.state.setInputState({
       value: "",
       focus: true
     });
@@ -56,19 +56,17 @@ export default class extends Component {
   }
 
   render() {
-    // incoming value and focus added for result list example:
+    // incoming value added for result list example:
     const value = this.props.value !== undefined ? this.props.value : this.state.value;
-    const focus = this.props.focus || this.state.focus; // keep focus where possible
     return (
       <Search
         textfield={{
-          onChange: ({ value, focus }) => (
-            this.setState({ value, focus }),
+          onChange: ({ value, setInputState }) => (
+            this.setState({ value, setInputState }),
             // onChange callback added for result list example:
-            this.props.onChange && this.props.onChange({ value, focus })
+            this.props.onChange && this.props.onChange({ value, setInputState })
           ),
           value,
-          focus,
           // incoming label and defaultValue added for result list example:
           label: this.props.label || "Search",
           defaultValue: this.props.defaultValue,

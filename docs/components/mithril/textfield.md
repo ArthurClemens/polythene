@@ -11,7 +11,7 @@
   - [Custom validation](#custom-validation)
   - [Character counter](#character-counter)
   - [Reading and setting the value](#reading-and-setting-the-value)
-  - [Programmatically giving focus](#programmatically-giving-focus)
+  - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -224,7 +224,7 @@ m(TextField, {
 })
 ~~~
 
-To programmatically set the input value, pass `value`:
+To use the received input value, pass `value`:
 
 ~~~javascript
 m(TextField, {
@@ -244,21 +244,26 @@ m(TextField, {
 })
 ~~~
 
-<a name="programmatically-giving-focus"></a>
-### Programmatically giving focus
+<a name="programmatically-setting-focus-and-value"></a>
+### Programmatically setting focus and value
 
-Reading and setting the focus state is similar to handling the input value:
+The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
 
 ~~~javascript
 m(TextField, {
   label: "Your name",
-  onChange: newState => vnode.state.hasFocus = newState.focus,
-  focus: vnode.state.hasFocus
+  onChange: ({ setInputState }) => vnode.state.setInputState = setInputState
 }),
 m(Button, {
   label: "Set focus",
   events: {
-    onclick: () => vnode.state.hasFocus = true
+    onclick: () => vnode.state.setInputState({ focus: true })
+  }
+}),
+m(Button, {
+  label: "Clear",
+  events: {
+    onclick: () => vnode.state.setInputState({ focus: true, value: "" })
   }
 })
 ~~~

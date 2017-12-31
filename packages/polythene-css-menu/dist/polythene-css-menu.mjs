@@ -63,6 +63,7 @@ var widthStyle = function widthStyle(componentVars, size) {
   var s = unifySize(componentVars, size);
   return _defineProperty({}, "&." + widthClass(s), {
     width: componentVars.size_factor * s + "px"
+    // We can't set maxWidth because we don't know the size of the container
   });
 };
 

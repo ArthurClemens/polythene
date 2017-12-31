@@ -195,7 +195,6 @@ export default ({ h, k, List, ListTile, SearchField }) => {
       const selectedValue = stream();
       const matches = stream();
       const selectedListIndex = stream(-1);
-      const hasFocus = stream();
 
       searchValue.map(v => (
         selectedListIndex(-1),
@@ -208,8 +207,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
       ));
 
       selectedValue.map(() => (
-        selectedListIndex(-1),
-        hasFocus(true)
+        selectedListIndex(-1)
       ));
       
       const handleKey = e => {
@@ -232,23 +230,20 @@ export default ({ h, k, List, ListTile, SearchField }) => {
         } else if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           e.preventDefault();
           selectedListIndex(-1);
-          hasFocus(true);
         }
       };
 
       Object.assign(vnode.state, {
         handleKey,
-        hasFocus,
         selectedListIndex,
         matches,
         searchValue,
         selectedValue,
-        redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
+        redrawOnUpdate: stream.merge([searchValue, selectedListIndex]) // for React
       });
     },
     view: vnode => {
       const state = vnode.state;
-      const attrs = vnode.attrs;
       const searchValue = state.searchValue();
       const matches = state.matches();
       return h(".container",
@@ -261,12 +256,10 @@ export default ({ h, k, List, ListTile, SearchField }) => {
             {
               key: "search",
               label: "Type color name",
-              onChange: ({ value, focus }) => (
-                state.searchValue(value),
-                state.hasFocus(focus)
+              onChange: ({ value }) => (
+                state.searchValue(value)
               ),
               defaultValue,
-              focus: attrs.focus || state.hasFocus(),
             },
             state.selectedValue()
               ? { value: state.selectedValue() }

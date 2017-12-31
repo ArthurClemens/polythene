@@ -404,7 +404,6 @@ var results = (function (_ref) {
       var selectedValue = stream();
       var matches = stream();
       var selectedListIndex = stream(-1);
-      var hasFocus = stream();
 
       searchValue.map(function (v) {
         return selectedListIndex(-1), selectedValue(null), matches(v ? dataList.map(function (key) {
@@ -415,7 +414,7 @@ var results = (function (_ref) {
       });
 
       selectedValue.map(function () {
-        return selectedListIndex(-1), hasFocus(true);
+        return selectedListIndex(-1);
       });
 
       var handleKey = function handleKey(e) {
@@ -437,35 +436,30 @@ var results = (function (_ref) {
           // "Esc" for IE11
           e.preventDefault();
           selectedListIndex(-1);
-          hasFocus(true);
         }
       };
 
       _extends$1(vnode.state, {
         handleKey: handleKey,
-        hasFocus: hasFocus,
         selectedListIndex: selectedListIndex,
         matches: matches,
         searchValue: searchValue,
         selectedValue: selectedValue,
-        redrawOnUpdate: stream.merge([searchValue, selectedListIndex, hasFocus]) // for React
+        redrawOnUpdate: stream.merge([searchValue, selectedListIndex]) // for React
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
-      var attrs = vnode.attrs;
       var searchValue = state.searchValue();
       var matches = state.matches();
       return h(".container", _defineProperty({}, k.onkeydown, state.handleKey), [h(SearchField, _extends$1({}, {
         key: "search",
         label: "Type color name",
         onChange: function onChange(_ref3) {
-          var value = _ref3.value,
-              focus = _ref3.focus;
-          return state.searchValue(value), state.hasFocus(focus);
+          var value = _ref3.value;
+          return state.searchValue(value);
         },
-        defaultValue: defaultValue,
-        focus: attrs.focus || state.hasFocus()
+        defaultValue: defaultValue
       }, state.selectedValue() ? { value: state.selectedValue() } : null)), matches.length ? h(List$$1, {
         key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
         className: "tests-search-keyboard-color-list",
@@ -697,18 +691,19 @@ var searchField = (function (_ref) {
           return attrs.getValue(v);
         });
       }
-      var focus = stream(false);
+      var setInputState = stream();
 
       var clear = function clear() {
-        return value(""), focus(true);
+        return setInputState()({ value: "", focus: true });
       };
+
       var leave = function leave() {
         return value("");
       };
 
       _extends$2(vnode.state, {
         value: value,
-        focus: focus,
+        setInputState: setInputState,
         clear: clear,
         leave: leave,
         redrawOnUpdate: stream.merge([value]) // for React
@@ -718,19 +713,17 @@ var searchField = (function (_ref) {
       var state = _ref4.state,
           attrs = _ref4.attrs;
 
-      // incoming value and focus added for result list example:
+      // incoming value added for result list example:
       var value = attrs.value !== undefined ? attrs.value : state.value();
-      var focus = attrs.focus || state.focus(); // keep focus where possible
 
       return h(Search$$1, _extends$2({}, {
         textfield: {
           onChange: function onChange(_ref5) {
             var value = _ref5.value,
-                focus = _ref5.focus;
-            return state.value(value), state.focus(focus), attrs.onChange && attrs.onChange({ value: value, focus: focus });
+                setInputState = _ref5.setInputState;
+            return state.value(value), state.setInputState(setInputState), attrs.onChange && attrs.onChange({ value: value, setInputState: setInputState });
           },
           value: value,
-          focus: focus,
           // incoming label and defaultValue added for result list example:
           label: attrs.label || "Search",
           defaultValue: attrs.defaultValue
@@ -2607,7 +2600,7 @@ var _class = function (_Component) {
 
     _this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     };
     _this.clear = _this.clear.bind(_this);
     _this.leave = _this.leave.bind(_this);
@@ -2617,7 +2610,7 @@ var _class = function (_Component) {
   _createClass(_class, [{
     key: "clear",
     value: function clear() {
-      this.setState({
+      this.state.setInputState({
         value: "",
         focus: true
       });
@@ -2632,18 +2625,16 @@ var _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      // incoming value and focus added for result list example:
+      // incoming value added for result list example:
       var value = this.props.value !== undefined ? this.props.value : this.state.value;
-      var focus = this.props.focus || this.state.focus; // keep focus where possible
       return renderer$1(Search$1, _extends$4({}, {
         textfield: {
           onChange: function onChange(_ref3) {
             var value = _ref3.value,
-                focus = _ref3.focus;
-            return _this2.setState({ value: value, focus: focus }), _this2.props.onChange && _this2.props.onChange({ value: value, focus: focus });
+                setInputState = _ref3.setInputState;
+            return _this2.setState({ value: value, setInputState: setInputState }), _this2.props.onChange && _this2.props.onChange({ value: value, setInputState: setInputState });
           },
           value: value,
-          focus: focus,
           // incoming label and defaultValue added for result list example:
           label: this.props.label || "Search",
           defaultValue: this.props.defaultValue
@@ -2747,7 +2738,7 @@ var _class$1 = function (_Component) {
 
     _this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     };
     _this.clear = _this.clear.bind(_this);
     _this.leave = _this.leave.bind(_this);
@@ -2757,7 +2748,7 @@ var _class$1 = function (_Component) {
   _createClass$1(_class, [{
     key: "clear",
     value: function clear() {
-      this.setState({
+      this.state.setInputState({
         value: "",
         focus: true
       });
@@ -2772,18 +2763,16 @@ var _class$1 = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      // incoming value and focus added for result list example:
+      // incoming value added for result list example:
       var value = this.props.value !== undefined ? this.props.value : this.state.value;
-      var focus = this.props.focus || this.state.focus; // keep focus where possible
       return react.createElement(Search$1, _extends$5({
         textfield: {
           onChange: function onChange(_ref3) {
             var value = _ref3.value,
-                focus = _ref3.focus;
-            return _this2.setState({ value: value, focus: focus }), _this2.props.onChange && _this2.props.onChange({ value: value, focus: focus });
+                setInputState = _ref3.setInputState;
+            return _this2.setState({ value: value, setInputState: setInputState }), _this2.props.onChange && _this2.props.onChange({ value: value, setInputState: setInputState });
           },
           value: value,
-          focus: focus,
           // incoming label and defaultValue added for result list example:
           label: this.props.label || "Search",
           defaultValue: this.props.defaultValue

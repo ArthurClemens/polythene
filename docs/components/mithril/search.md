@@ -100,21 +100,20 @@ Not all button states need to be defined.
 
 See also [Handling state](../../handling-state.md).
 
-To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value`, `focus` and `onChange`:
+To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value` and `onChange`:
 
 * `value` - sets the text input value
-* `focus` - sets the text input focus state
-* `onChange => ({ value, focus })` - receives the latest state
+* `onChange => ({ value, focus, setFocus })` - receives the latest state
 
 Text Field attributes are passed with option `textfield`:
 
 ~~~javascript
 textfield: {
   value: state.value,
-  focus: state.focus,
-  onChange: ({ value, focus }) => (
+  onChange: ({ value, focus, setFocus }) => (
     state.value = value,
-    state.focus = focus
+    state.focus = focus,
+    state.setFocus = setFocus
   )
 }
 ~~~
@@ -122,7 +121,7 @@ textfield: {
 To clear the field:
 
 * Set the value to empty string
-* Set the focus to true (to refocus after clicking the button, leaving the input field)
+* Call `setFocus` (to refocus after clicking the button, leaving the input field)
 
 The back button clears the field and removes the focus, setting the search field to the initial state. Remove the ripple (`ink: false`) to prevent a ripple after the click (it would seem like the returned search button received the click).
 
@@ -183,33 +182,29 @@ const MicIcon = {
 const MySearch = {
   oninit: vnode => {
     const value = stream("")
-    const focus = stream(false)
+    const setInputState = stream()
     
-    const clear = () => (
-      value(""),
-      focus(true)
-    )
+    const clear = () =>
+      setInputState()({ value: "", focus: true })
 
     const leave = () => value("")
 
     vnode.state = {
       value,
-      focus,
+      setInputState,
       clear,
       leave,
     }
   },
   view: ({ state, attrs }) => {
     const value = state.value()
-    const focus = state.focus()
     return m(Search, Object.assign(
       {},
       {
         textfield: {
           label: "Search",
-          onChange: ({ value, focus }) => (state.value(value), state.focus(focus)),
+          onChange: ({ value, setInputState }) => (state.value(value), state.setInputState(setInputState)),
           value,
-          focus
         },
         buttons: {
           none: {

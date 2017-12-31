@@ -132,10 +132,9 @@ Not all button states need to be defined.
 
 See also [Handling state](../../handling-state.md).
 
-To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value`, `focus` and `onChange`:
+To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value` and `onChange`:
 
 * `value` - sets the text input value
-* `focus` - sets the text input focus state
 * `onChange => ({ value, focus })` - receives the latest state
 
 Text Field attributes are passed with option `textfield`:
@@ -143,8 +142,7 @@ Text Field attributes are passed with option `textfield`:
 ~~~javascript
 textfield: {
   value: this.state.value,
-  focus: this.state.focus,
-  onChange: ({ value, focus }) => this.setState({ value, focus }),
+  onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
 }
 ~~~
 
@@ -199,14 +197,14 @@ export default class extends Component {
     super(props)
     this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     }
     this.clear = this.clear.bind(this)
     this.leave = this.leave.bind(this)
   }
 
   clear() {
-    this.setState({
+    this.state.setInputState({
       value: "",
       focus: true
     })
@@ -218,14 +216,12 @@ export default class extends Component {
 
   render() {
     const value = this.state.value
-    const focus = this.state.focus
     return (
       <Search
         textfield={{
           label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
-          value,
-          focus
+          onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
+          value
         }}
         buttons={{
           none: {
@@ -300,14 +296,14 @@ export default class extends Component {
     super(props)
     this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     }
     this.clear = this.clear.bind(this)
     this.leave = this.leave.bind(this)
   }
 
   clear() {
-    this.setState({
+    this.state.setInputState({
       value: "",
       focus: true
     })
@@ -323,9 +319,8 @@ export default class extends Component {
       {
         textfield: {
           label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
+          onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
           value: this.state.value,
-          focus: this.state.focus
         },
         buttons: {
           none: {

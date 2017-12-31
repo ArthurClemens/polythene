@@ -28,7 +28,7 @@ Form input field. Generates a styled text input element.
 * Postpone validation until after input
 * Character counter
 * Programmatically set value
-* Programmatically give focus
+* Programmatically set focus
 
 
 <a name="usage"></a>
@@ -66,10 +66,9 @@ These options also have effect on the generated HTML input field.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to `true` to give the input field autofocus |
+| **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to `true` to give the input field autofocus; NOTE: does not work on iOS, set focus explicitly when an event is fired |
 | **disabled** | optional | Boolean | | Creates a disabled input field |
 | **ignoreEvents** | optional | Array | | List of input event names to ignore, for instance `["onblur"]` |
-| **focus** | optional | Boolean | | Set to `true` to give focus to the field; WARNING: make sure that the value is also reset to `false` (using a variable) or the field will always have focus |
 | **multiLine** | optional | Boolean | | Set to `true` to create a textarea instead of an text input field |
 | **name** | optional | String | | Input element name |
 | **readonly** (React: **readOnly**) | optional | Boolean | | Creates a readonly input field |
@@ -77,7 +76,7 @@ These options also have effect on the generated HTML input field.
 | **type** | optional | String: "text", "password", "email", "number", ... | "text" | Type of input element |
 | **value** | optional | String | | Input value |
 | **defaultValue** | optional | String | | Initial input value |
-| **onChange**  | optional | Function `({focus::Boolean, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
+| **onChange**  | optional | Function `({focus::Boolean, setInputState({ focus, value }) -> undefined, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
 
 <a name="validation-options"></a>
 ### Validation options
