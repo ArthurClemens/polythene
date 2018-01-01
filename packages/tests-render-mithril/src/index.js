@@ -42,11 +42,22 @@ const index = {
     ]
 };
 
+let scrollTop = document.scrollingElement.scrollTop;
 m.route.prefix("#");
 const mountNode = document.querySelector("#app");
 const routeData = {
-  "/": index
+  "/": {
+    onmatch: () => {
+      document.scrollingElement.scrollTop = scrollTop;
+      return index;
+    }
+  }
 };
-routes.forEach(route => routeData[route.path] = page(route.name, route.tests, "/"));
+routes.forEach(route => routeData[route.path] = {
+  onmatch: () => {
+    scrollTop = document.scrollingElement.scrollTop;
+    return page(route.name, route.tests, "/");
+  }
+});
 m.route(mountNode, "/", routeData);
 

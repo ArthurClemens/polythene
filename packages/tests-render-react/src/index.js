@@ -10,7 +10,7 @@ import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
-import ScrollToTop from "./ScrollToTop";
+import OnMatch from "./OnMatch";
 
 addTypography();
 addLayoutStyles();
@@ -67,7 +67,7 @@ const routerMap = routes.map(route =>
 
 const App = () => (
   h(Router, null, 
-    h(ScrollToTop, null,
+    h(OnMatch, null,
       h("div", routerMap)
     )
   )
