@@ -2923,36 +2923,48 @@ var Updating$2 = function (_Component) {
 
     _this.state = {
       count: 0,
-      dialogVisible: false
+      dialogVisible: false,
+      intervalId: undefined
     };
-    // Show updates by means of a simple counter.
-    // This could also be a different component state or Redux state.
-    setInterval(function () {
-      return _this.setState({ count: _this.state.count + 1 });
-    }, 1000);
     return _this;
   }
 
   _createClass$1(Updating, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      // Show updates by means of a simple counter.
+      // This could also be a different component state or Redux state.
+      this.setState({ intervalId: setInterval(function () {
+          return _this2.setState({ count: _this2.state.count + 1 });
+        }, 1000) });
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.state.dialogVisible) {
         var dialogProps = {
           title: this.state.count,
           body: react.createElement(LongText, null),
           didHide: function didHide() {
-            return _this2.setState({ dialogVisible: false });
+            return _this3.setState({ dialogVisible: false });
           }
         };
         Dialog$1.show(dialogProps);
       }
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.state.intervalId);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return react.createElement(
         "div",
@@ -2968,7 +2980,7 @@ var Updating$2 = function (_Component) {
           label: "Show Dialog",
           events: {
             onClick: function onClick() {
-              return _this3.setState({ dialogVisible: !_this3.state.dialogVisible });
+              return _this4.setState({ dialogVisible: !_this4.state.dialogVisible });
             }
           }
         })

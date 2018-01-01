@@ -14,11 +14,15 @@ class Updating extends Component {
     super(props);
     this.state = {
       count: 0,
-      dialogVisible: false
+      dialogVisible: false,
+      intervalId: undefined
     };
+  }
+
+  componentDidMount() {
     // Show updates by means of a simple counter.
     // This could also be a different component state or Redux state.
-    setInterval(() => this.setState({ count: this.state.count + 1 }), 1000);
+    this.setState({ intervalId: setInterval(() => this.setState({ count: this.state.count + 1 }), 1000) });
   }
 
   componentDidUpdate() {
@@ -30,6 +34,10 @@ class Updating extends Component {
       };
       Dialog.show(dialogProps);
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
   }
 
   render () {

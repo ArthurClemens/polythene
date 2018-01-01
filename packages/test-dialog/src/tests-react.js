@@ -39,8 +39,6 @@ const reactTests = ({ Dialog, RaisedButton }) => {
     </div>
   );
 
-  
-
   return [
     {
       section: "React specific tests",
