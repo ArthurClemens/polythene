@@ -1,5 +1,18 @@
+exports[`test Button row 1`] = `
+<div
+  className="pe-button-row">
+  <Button
+    label="One" />
+  <Button
+    label="Two" />
+  <Button
+    label="Three" />
+</div>
+`;
+
 exports[`test Dark tone class + light tone 1`] = `
 <div
+  className="pe-button-row"
   style={
     Object {
       "background": "#fff",
@@ -21,7 +34,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-light-tone"
+  className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",
@@ -46,7 +59,6 @@ exports[`test HOC (JSX) 1`] = `
 exports[`test No options 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0} />
 `;
@@ -54,7 +66,6 @@ exports[`test No options 1`] = `
 exports[`test Option: after 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <span>
@@ -66,7 +77,6 @@ exports[`test Option: after 1`] = `
 exports[`test Option: before 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <span>
@@ -78,7 +88,6 @@ exports[`test Option: before 1`] = `
 exports[`test Option: children 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -97,7 +106,6 @@ exports[`test Option: children 1`] = `
 exports[`test Option: class 1`] = `
 <a
   className="pe-button pe-text-button        class-x"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0} />
 `;
@@ -105,7 +113,6 @@ exports[`test Option: class 1`] = `
 exports[`test Option: className 1`] = `
 <a
   className="pe-button pe-text-button        className-x"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0} />
 `;
@@ -113,7 +120,6 @@ exports[`test Option: className 1`] = `
 exports[`test Option: content 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -132,7 +138,6 @@ exports[`test Option: content 1`] = `
 exports[`test Option: element 1`] = `
 <button
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0} />
 `;
@@ -140,7 +145,6 @@ exports[`test Option: element 1`] = `
 exports[`test Option: formaction 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -161,7 +165,6 @@ exports[`test Option: id 1`] = `
 <a
   className="pe-button pe-text-button        "
   id="id-x"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0} />
 `;
@@ -169,7 +172,6 @@ exports[`test Option: id 1`] = `
 exports[`test Option: inactivate (2) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -195,7 +197,6 @@ exports[`test Option: inactivate (2s) (JSX) 1`] = `
 exports[`test Option: inactive (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -232,7 +233,6 @@ exports[`test Option: inactive (true) 1`] = `
 exports[`test Option: ink (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -252,7 +252,6 @@ exports[`test Option: ink (false) 1`] = `
 exports[`test Option: label -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -272,7 +271,6 @@ exports[`test Option: label -- dark tone class 1`] = `
 exports[`test Option: label 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -292,7 +290,6 @@ exports[`test Option: label 1`] = `
 exports[`test Option: ripple 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -322,7 +319,6 @@ exports[`test Option: router url (with hash) 1`] = `
 exports[`test Option: selected 1`] = `
 <a
   className="pe-button pe-text-button pe-button--selected       "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -342,7 +338,6 @@ exports[`test Option: selected 1`] = `
 exports[`test Option: style (colors) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -368,7 +363,6 @@ exports[`test Option: style (colors) 1`] = `
 exports[`test Option: tabindex 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={3} />
 `;
@@ -376,7 +370,6 @@ exports[`test Option: tabindex 1`] = `
 exports[`test Option: tone "dark" -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button      pe-dark-tone  "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -396,7 +389,6 @@ exports[`test Option: tone "dark" -- dark tone class 1`] = `
 exports[`test Option: wash (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -414,7 +406,6 @@ exports[`test Option: wash (false) 1`] = `
 exports[`test Themed Button (colors) 1`] = `
 <a
   className="pe-button pe-text-button        tests-button-themed-button"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -434,7 +425,6 @@ exports[`test Themed Button (colors) 1`] = `
 exports[`test Themed Button -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        tests-button-themed-button"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -454,7 +444,6 @@ exports[`test Themed Button -- dark tone class 1`] = `
 exports[`test Themed Button blue on dark -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        blue-on-dark-Button"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -481,7 +470,6 @@ exports[`test Themed Button: (option: borders) (JSX) 1`] = `
 exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -501,7 +489,6 @@ exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
 exports[`test Themed Button: (option: borders) 1`] = `
 <a
   className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
-  onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}>
   <div

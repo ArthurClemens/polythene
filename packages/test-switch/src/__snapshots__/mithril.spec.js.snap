@@ -293,7 +293,7 @@ exports[`test Option: defaultChecked -- dark tone class 1`] = `
 `;
 
 exports[`test Option: disabled -- dark tone class 1`] = `
-"<div>
+"<div class=\"multiple\">
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -343,7 +343,7 @@ exports[`test Option: disabled -- dark tone class 1`] = `
 `;
 
 exports[`test Option: disabled 1`] = `
-"<div>
+"<div class=\"multiple\">
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -422,7 +422,7 @@ exports[`test Option: element 1`] = `
 `;
 
 exports[`test Option: icon 1`] = `
-"<div>
+"<div class=\"multiple\">
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--small tests-switch-themed-icon\">
   <label class=\"pe-control__form-label\"></label>
@@ -735,7 +735,7 @@ exports[`test Option: label 1`] = `
 `;
 
 exports[`test Option: selectable 1`] = `
-"<div>
+"<div class=\"multiple\">
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -809,7 +809,7 @@ exports[`test Option: selectable 1`] = `
 `;
 
 exports[`test Option: size 1`] = `
-"<div style=\"display: flex;\">
+"<div class=\"multiple\">
   <div class=
   \"pe-control pe-switch-control pe-control--off pe-control--small\">
     <label class=\"pe-control__form-label\"></label>

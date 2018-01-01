@@ -292,7 +292,7 @@ exports[`test Option: title and body (long text) - spec 2`] = `
       Hello
     </div>
     <div
-      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons">
+      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row">
       <div
         className="pe-dialog-pane__actions">
         <Button
@@ -349,7 +349,7 @@ exports[`test Option: title, body, footer 1`] = `
         } />
     </div>
     <div
-      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons">
+      className="pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row">
       <div
         className="pe-dialog-pane__actions">
         <Button

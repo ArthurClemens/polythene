@@ -58,6 +58,7 @@ const reactTests = ({ TextField, RaisedButton, renderer: h }) => { // eslint-dis
     {
       name: "Form validation with github.com/ludbek/powerform",
       interactive: true,
+      excluded: true,
       component: {
         view: () => block(<FormValidation />)
       }

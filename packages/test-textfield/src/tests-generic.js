@@ -464,6 +464,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Set value",
       interactive: true,
+      excluded: true,
       component: {
         view: () => block(
           h(SetValue)

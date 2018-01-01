@@ -15,7 +15,7 @@ exports[`test Dark tone class + light tone 1`] = `
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px",
     }
   }>
   <SVG
@@ -37,7 +37,7 @@ exports[`test Dark tone class + light tone class 1`] = `
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px",
     }
   }>
   <SVG

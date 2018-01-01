@@ -82,7 +82,7 @@ exports[`test No options 1`] = `
 </div>
 `;
 
-exports[`test Option: autofocus 1`] = `
+exports[`test Option: autofocus (does not work on iOS) 1`] = `
 <div
   style={
     Object {

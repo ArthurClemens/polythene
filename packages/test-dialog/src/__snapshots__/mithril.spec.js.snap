@@ -286,8 +286,8 @@ exports[`test Option: modal with backdrop - spec 1`] = `
           </p>
         </div>
         <div class=
-        \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
-          <div class=\"pe-dialog-pane__actions\">
+        \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row\">
+        <div class=\"pe-dialog-pane__actions\">
             <a class=\"pe-button pe-text-button\" tabindex=\"0\">
             <div class=\"pe-button__content\">
               <div class=\"pe-ripple\"></div>

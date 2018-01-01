@@ -1,7 +1,7 @@
 exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
 \"pe-light-tone\">
-  <div class=\"pe-radio-group\">
+  <div class=\"pe-radio-group multiple\">
     <div class=
     \"pe-control pe-radio-control pe-control--off pe-control--regular\">
     <label class=\"pe-control__form-label\"></label>
@@ -109,7 +109,7 @@ exports[`test Dark tone class + light theme class 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
-  <div class=\"pe-radio-group\">
+  <div class=\"pe-radio-group multiple\">
     <div class=
     \"pe-control pe-radio-control pe-control--off pe-control--regular\">
     <label class=\"pe-control__form-label\"></label>
@@ -276,7 +276,7 @@ exports[`test Option: Radio Group onChange 1`] = `
   <div>
     Value: Not set
   </div>
-  <div class=\"pe-radio-group\">
+  <div class=\"pe-radio-group multiple\">
     <div class=
     \"pe-control pe-radio-control pe-control--off pe-control--regular\">
     <label class=\"pe-control__form-label\"></label>
@@ -1021,7 +1021,7 @@ exports[`test Option: className - RadioGroup 1`] = `
 `;
 
 exports[`test Option: defaultChecked 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -1127,7 +1127,7 @@ exports[`test Option: defaultChecked 1`] = `
 `;
 
 exports[`test Option: disabled -- dark tone 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -1223,7 +1223,7 @@ exports[`test Option: disabled -- dark tone 1`] = `
 `;
 
 exports[`test Option: disabled 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--disabled pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -1471,7 +1471,7 @@ exports[`test Option: element - RadioGroup 1`] = `
 `;
 
 exports[`test Option: iconButton (custom hover behaviour) 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -1577,7 +1577,7 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
 `;
 
 exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
-"<div style=\"display: flex;\" class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--small\">
     <label class=\"pe-control__form-label\"></label>
@@ -1940,7 +1940,7 @@ exports[`test Option: id - RadioGroup 1`] = `
 `;
 
 exports[`test Option: label -- dark tone 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -2046,7 +2046,7 @@ exports[`test Option: label -- dark tone 1`] = `
 `;
 
 exports[`test Option: label 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -2152,7 +2152,7 @@ exports[`test Option: label 1`] = `
 `;
 
 exports[`test Option: selectable 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--inactive pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -2259,7 +2259,7 @@ exports[`test Option: selectable 1`] = `
 `;
 
 exports[`test Option: size 1`] = `
-"<div style=\"display: flex;\" class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--small\">
     <label class=\"pe-control__form-label\"></label>
@@ -2465,7 +2465,7 @@ exports[`test Option: size 1`] = `
 `;
 
 exports[`test Option: style (colors) 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div style=\"color: rgb(239, 108, 0);\" class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular\">
   <label class=\"pe-control__form-label\"></label>
@@ -2678,7 +2678,7 @@ exports[`test Option: value - RadioButton 1`] = `
 `;
 
 exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
   <label class=\"pe-control__form-label\"></label>
@@ -2784,7 +2784,7 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
 `;
 
 exports[`test Themed radio button (color and font size) 1`] = `
-"<div class=\"pe-radio-group\">
+"<div class=\"pe-radio-group multiple\">
   <div class=
   \"pe-control pe-radio-control pe-control--off pe-control--regular tests-radio-button-themed-radio\">
   <label class=\"pe-control__form-label\"></label>

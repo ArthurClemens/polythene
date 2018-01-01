@@ -36,6 +36,7 @@ exports[`test Dark tone class + light tone 1`] = `
   style={
     Object {
       "background": "#fff",
+      "padding": "8px",
     }
   }>
   <Icon
@@ -72,6 +73,7 @@ exports[`test Dark tone class + light tone class 1`] = `
   style={
     Object {
       "background": "#fff",
+      "padding": "8px",
     }
   }>
   <Icon

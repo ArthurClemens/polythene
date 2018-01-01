@@ -1,5 +1,51 @@
+exports[`test Button row 1`] = `
+"<div class=\"pe-button-row\">
+  <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
+  \"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      One
+    </div>
+  </div></a><a class=\"pe-button pe-text-button pe-raised-button\"
+  tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Two
+    </div>
+  </div></a><a class=\"pe-button pe-text-button pe-raised-button\"
+  tabindex=\"0\">
+  <div class=\"pe-button__content\">
+    <div class=\"pe-shadow pe-shadow--animated\">
+      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
+      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div>
+    <div class=\"pe-ripple\"></div>
+    <div class=\"pe-button__wash\"></div>
+    <div class=\"pe-button__focus\"></div>
+    <div class=\"pe-button__label\">
+      Three
+    </div>
+  </div></a>
+</div>
+"
+`;
+
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\">
+"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-button-row\">
   <a class=
   \"pe-button pe-text-button pe-raised-button pe-light-tone\"
   tabindex=\"0\">
@@ -45,7 +91,8 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
+"<div style=\"background: rgb(255, 255, 255);\" class=
+\"pe-button-row pe-light-tone\">
   <a class=\"pe-button pe-text-button pe-raised-button\" tabindex=
   \"0\">
   <div class=\"pe-button__content\">

@@ -102,7 +102,8 @@ exports[`test Option: defaultChecked 1`] = `
 `;
 
 exports[`test Option: disabled -- dark tone class 1`] = `
-<div>
+<div
+  className="multiple">
   <Checkbox
     disabled={true}
     label="Off" />
@@ -114,7 +115,8 @@ exports[`test Option: disabled -- dark tone class 1`] = `
 `;
 
 exports[`test Option: disabled 1`] = `
-<div>
+<div
+  className="multiple">
   <Checkbox
     disabled={true}
     label="Off" />
@@ -204,12 +206,7 @@ exports[`test Option: iconOn, iconOff (custom icon) (JSX) 1`] = `
 
 exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
 <div
-  style={
-    Object {
-      "alignItems": "center",
-      "display": "flex",
-    }
-  }>
+  className="multiple">
   <Checkbox
     iconOff={
       Object {
@@ -350,7 +347,8 @@ exports[`test Option: label 1`] = `
 `;
 
 exports[`test Option: selectable 1`] = `
-<div>
+<div
+  className="multiple">
   <Checkbox
     label="Never"
     selectable={[Function]} />
@@ -362,12 +360,7 @@ exports[`test Option: selectable 1`] = `
 
 exports[`test Option: size 1`] = `
 <div
-  style={
-    Object {
-      "alignItems": "center",
-      "display": "flex",
-    }
-  }>
+  className="multiple">
   <Checkbox
     label="small"
     size="small" />

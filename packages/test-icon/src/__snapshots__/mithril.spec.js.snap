@@ -28,7 +28,7 @@ exports[`test Child node (trusted svg children) 1`] = `
 `;
 
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px;\">
   <div class=\"pe-icon pe-icon--regular pe-light-tone\">
     <div class=\"pe-svg\">
       <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
@@ -55,7 +55,8 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\" class=\"pe-light-tone\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px;\" class=
+\"pe-light-tone\">
   <div class=\"pe-icon pe-icon--regular\">
     <div class=\"pe-svg\">
       <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=

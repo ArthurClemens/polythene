@@ -1,5 +1,5 @@
 exports[`test Child nodes 1`] = `
-"<div class=\"pe-list pe-list--borders pe-list--padding\">
+"<div class=\"pe-list pe-list--padding\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\" tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
@@ -42,9 +42,9 @@ exports[`test Child nodes 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding pe-light-tone\">
-<div class=
-\"pe-list-tile pe-list-tile--header pe-list-tile--header\">
+\"pe-list pe-list--header pe-list--padding pe-light-tone\">
+  <div class=
+  \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -101,9 +101,9 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 "<div style=\"background: rgb(255, 255, 255);\" class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding pe-light-tone\">
-<div class=
-\"pe-list-tile pe-list-tile--header pe-list-tile--header\">
+\"pe-list pe-list--header pe-list--padding pe-light-tone\">
+  <div class=
+  \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -292,13 +292,8 @@ exports[`test Keyboard control: click to select, then use the arrow keys (Escape
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-list pe-list--padding\"></div>
-"
-`;
-
-exports[`test No padding 1`] = `
-"<div class=\"pe-list pe-list--borders\">
+exports[`test No list padding 1`] = `
+"<div class=\"pe-list\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\" tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=
@@ -360,9 +355,13 @@ exports[`test No padding 1`] = `
 "
 `;
 
+exports[`test No options 1`] = `
+"<div class=\"pe-list pe-list--padding\"></div>
+"
+`;
+
 exports[`test Option: class -- dark tone class 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding\">
+"<div class=\"pe-list pe-list--header pe-list--padding\">
   <div class=
   \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
@@ -431,9 +430,9 @@ exports[`test Option: className 1`] = `
 
 exports[`test Option: compact 1`] = `
 "<div class=
-\"pe-list pe-list--borders pe-list--header pe-list--compact pe-list--padding\">
-<div class=
-\"pe-list-tile pe-list-tile--header pe-list-tile--header\">
+\"pe-list pe-list--header pe-list--compact pe-list--padding\">
+  <div class=
+  \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
         <div class=\"pe-list-tile__title\">
@@ -566,7 +565,7 @@ class=\"pe-list pe-list--header pe-list--padding\">
 `;
 
 exports[`test Option: tiles 1`] = `
-"<div class=\"pe-list pe-list--borders pe-list--padding\">
+"<div class=\"pe-list pe-list--padding\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\" tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
@@ -1701,10 +1700,9 @@ exports[`test Options: header.sticky 1`] = `
 `;
 
 exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--padding tests-lists-themed-list\">
-<div class=
-\"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\"
+"<div class=\"pe-list pe-list--padding tests-lists-themed-list\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\"
   tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
@@ -1750,10 +1748,9 @@ exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 `;
 
 exports[`test Themed list (colors and padding) 1`] = `
-"<div class=
-\"pe-list pe-list--borders pe-list--padding tests-lists-themed-list\">
-<div class=
-\"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\"
+"<div class=\"pe-list pe-list--padding tests-lists-themed-list\">
+  <div class=
+  \"pe-list-tile pe-list-tile--subtitle tests-lists-themed-list-tile\"
   tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">

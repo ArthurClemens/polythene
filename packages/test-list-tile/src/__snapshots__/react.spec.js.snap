@@ -387,6 +387,24 @@ exports[`test Option: highSubtitle and front 1`] = `
   render={[Function]} />
 `;
 
+exports[`test Option: highlight (themed color) 1`] = `
+<div
+  className="pe-list-tile       pe-list-tile--highlight     tests-list-tile-themed-highlight-list-tile"
+  tabIndex={0}>
+  <div
+    className="pe-list-tile__primary"
+    style={null}>
+    <div
+      className="pe-list-tile__content">
+      <div
+        className="pe-list-tile__title">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test Option: hoverable 1`] = `
 <div
   className="pe-list-tile     pe-list-tile--hoverable       "
@@ -697,7 +715,7 @@ exports[`test Option: title 1`] = `
       className="pe-list-tile__content">
       <div
         className="pe-list-tile__title">
-        Ancillary Justice
+        ListTile with a very very very very very very very very very long title
       </div>
     </div>
   </div>

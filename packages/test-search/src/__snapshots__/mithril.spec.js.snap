@@ -502,8 +502,7 @@ exports[`test With search results 1`] = `
             </div>
           </div>
         </div></a>
-        <div class=
-        \"pe-textfield pe-textfield--focused pe-textfield--dirty\">
+        <div class=\"pe-textfield pe-textfield--dirty\">
           <div class=\"pe-textfield__input-area\">
             <label class=\"pe-textfield__label\">Type color
             name</label><input class=\"pe-textfield__input\" type=
@@ -532,7 +531,7 @@ exports[`test With search results 1`] = `
     <div class=
     \"pe-list pe-list--borders pe-list--padding tests-search-keyboard-color-list\">
     <div class=
-    \"pe-list-tile pe-list-tile--front tests-search-keyboard-color-list-tile\"
+    \"pe-list-tile pe-list-tile--hoverable pe-list-tile--front tests-search-keyboard-color-list-tile\"
       tabindex=\"0\">
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=
@@ -549,7 +548,7 @@ exports[`test With search results 1`] = `
         </div>
       </div>
       <div class=
-      \"pe-list-tile pe-list-tile--front tests-search-keyboard-color-list-tile\"
+      \"pe-list-tile pe-list-tile--hoverable pe-list-tile--front tests-search-keyboard-color-list-tile\"
       tabindex=\"0\">
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=
@@ -566,7 +565,7 @@ exports[`test With search results 1`] = `
         </div>
       </div>
       <div class=
-      \"pe-list-tile pe-list-tile--front tests-search-keyboard-color-list-tile\"
+      \"pe-list-tile pe-list-tile--hoverable pe-list-tile--front tests-search-keyboard-color-list-tile\"
       tabindex=\"0\">
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=
@@ -583,7 +582,7 @@ exports[`test With search results 1`] = `
         </div>
       </div>
       <div class=
-      \"pe-list-tile pe-list-tile--front tests-search-keyboard-color-list-tile\"
+      \"pe-list-tile pe-list-tile--hoverable pe-list-tile--front tests-search-keyboard-color-list-tile\"
       tabindex=\"0\">
         <div class=\"pe-list-tile__primary\" style=\"\">
           <div class=

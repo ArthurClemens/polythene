@@ -1,6 +1,6 @@
 exports[`test Child nodes 1`] = `
 <div
-  className="pe-list pe-list--borders    pe-list--padding   ">
+  className="pe-list     pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -15,7 +15,7 @@ exports[`test Child nodes 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header  pe-list--padding  pe-light-tone "
+  className="pe-list   pe-list--header  pe-list--padding  pe-light-tone "
   style={
     Object {
       "background": "#fff",
@@ -42,7 +42,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   pe-light-tone"
+  className="pe-list   pe-list--header  pe-list--padding   pe-light-tone"
   style={
     Object {
       "background": "#fff",
@@ -202,14 +202,9 @@ exports[`test Keyboard control: click to select, then use the arrow keys (Escape
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`test No list padding 1`] = `
 <div
-  className="pe-list     pe-list--padding   " />
-`;
-
-exports[`test No padding 1`] = `
-<div
-  className="pe-list pe-list--borders       ">
+  className="pe-list        ">
   <ListTile
     front={
       <Icon
@@ -240,9 +235,14 @@ exports[`test No padding 1`] = `
 </div>
 `;
 
+exports[`test No options 1`] = `
+<div
+  className="pe-list     pe-list--padding   " />
+`;
+
 exports[`test Option: class -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header  pe-list--padding   ">
+  className="pe-list   pe-list--header  pe-list--padding   ">
   <ListTile
     className="pe-list-tile--header "
     header={true}
@@ -274,7 +274,7 @@ exports[`test Option: className 1`] = `
 
 exports[`test Option: compact 1`] = `
 <div
-  className="pe-list pe-list--borders  pe-list--header pe-list--compact pe-list--padding   ">
+  className="pe-list   pe-list--header pe-list--compact pe-list--padding   ">
   <ListTile
     className="pe-list-tile--header "
     header={true}
@@ -364,7 +364,7 @@ exports[`test Option: style (colors) 1`] = `
 
 exports[`test Option: tiles 1`] = `
 <div
-  className="pe-list pe-list--borders    pe-list--padding   ">
+  className="pe-list     pe-list--padding   ">
   <ListTile
     subtitle="Starting post doc"
     title="Jennifer Barker" />
@@ -477,7 +477,7 @@ exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
 
 exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 <div
-  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
+  className="pe-list     pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"
@@ -495,7 +495,7 @@ exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
 
 exports[`test Themed list (colors and padding) 1`] = `
 <div
-  className="pe-list pe-list--borders    pe-list--padding   tests-lists-themed-list">
+  className="pe-list     pe-list--padding   tests-lists-themed-list">
   <ListTile
     className="tests-lists-themed-list-tile"
     subtitle="Starting post doc"

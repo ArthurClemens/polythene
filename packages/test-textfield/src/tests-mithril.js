@@ -29,6 +29,7 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
     {
       name: "Set value (variation with withAttr)",
       interactive: true,
+      excluded: true,
       component: {
         view: () => block(
           h(SetValue)
@@ -38,6 +39,7 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
     {
       name: "Form validation with github.com/ludbek/powerform",
       interactive: true,
+      excluded: true,
       component: {
         view: () => block(
           h(FormValidation)

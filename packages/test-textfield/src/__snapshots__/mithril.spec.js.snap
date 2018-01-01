@@ -124,7 +124,7 @@ exports[`test No options 1`] = `
 "
 `;
 
-exports[`test Option: autofocus 1`] = `
+exports[`test Option: autofocus (does not work on iOS) 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
   <div class=\"pe-textfield\">
     <div class=\"pe-textfield__input-area\">
@@ -773,20 +773,7 @@ exports[`test Set value (variation with withAttr) 1`] = `
         Type text, or press ARROW RIGHT to insert a character
         programmaticaly
       </div>
-    </div><a class=\"pe-button pe-text-button pe-raised-button\"
-    tabindex=\"0\">
-    <div class=\"pe-button__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
-      </div>
-      <div class=\"pe-ripple\"></div>
-      <div class=\"pe-button__wash\"></div>
-      <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button__label\">
-        Clear
-      </div>
-    </div></a>
+    </div>
   </div>
 </div>
 "

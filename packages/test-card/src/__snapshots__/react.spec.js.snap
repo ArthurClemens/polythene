@@ -818,7 +818,7 @@ exports[`test Any content (list) 1`] = `
 
 exports[`test Any content (tabs) 1`] = `
 <Card
-  content={<n />} />
+  content={<_class />} />
 `;
 
 exports[`test Bottom action row, bordered 1`] = `
@@ -1423,6 +1423,55 @@ exports[`test Depth normal, tight text 1`] = `
     <div
       className="pe-card__text pe-card__text--tight ">
       Normal
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Header + any 1`] = `
+<div
+  className="pe-card   "
+  style={
+    Object {
+      "maxWidth": "400px",
+    }
+  }>
+  <Shadow
+    animated={true}
+    z={1} />
+  <div
+    className="pe-card__content">
+    <ListTile
+      className="pe-card__header "
+      dispatcher={[Function]}
+      front={
+        <Icon
+          avatar={true}
+          size="large"
+          src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+      }
+      icon={
+        Object {
+          "avatar": true,
+          "size": "large",
+          "src": "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        }
+      }
+      subtitle="Subhead"
+      title="Title" />
+    <div
+      className="pe-card__any  "
+      style={
+        Object {
+          "background": "#eee",
+        }
+      }>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.",
+          }
+        } />
     </div>
   </div>
 </div>
