@@ -46,7 +46,6 @@ const results = (name, tests) => (
   
 export default (name, tests, previous) => ({
   oncreate: () => ( 
-    document.title = name,
     scrollTo(0, 0)
   ),
   view: () => [

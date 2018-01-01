@@ -49,6 +49,7 @@ const routeData = {
   "/": {
     onmatch: () => {
       document.scrollingElement.scrollTop = scrollTop;
+      document.title = "Polythene Components for Mithril";
       return index;
     }
   }
@@ -56,6 +57,7 @@ const routeData = {
 routes.forEach(route => routeData[route.path] = {
   onmatch: () => {
     scrollTop = document.scrollingElement.scrollTop;
+    document.title = `Polythene: ${route.name}`;
     return page(route.name, route.tests, "/");
   }
 });

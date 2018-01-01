@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
+import routes from "./routes";
 
 class OnMatch extends Component {
   componentDidUpdate(prevProps) {
@@ -8,8 +9,11 @@ class OnMatch extends Component {
     }
     if (this.props.location.pathname === "/") {
       document.scrollingElement.scrollTop = this.scrollTop;
+      document.title = "Polythene Components for React";
     } else {
       window.scrollTo(0, 0);
+      const routeData = routes.find(o => o.path === this.props.location.pathname);
+      document.title = `Polythene: ${routeData.name}`;
     }
   }
   render() {
