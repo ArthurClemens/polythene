@@ -68,7 +68,8 @@
 }
 
 .pe-card .pe-card__primary-media {
-  margin: 16px 16px 0
+  margin: 16px 16px 0;
+  overflow: hidden
 }
 
 .pe-card .pe-card__primary-media .pe-card__media--small {

@@ -2,6 +2,14 @@
   padding: 8px 0
 }
 
+.pe-list.pe-list--padding-top {
+  padding-top: 8px
+}
+
+.pe-list.pe-list--padding-bottom {
+  padding-bottom: 8px
+}
+
 .pe-list.pe-list--header {
   padding-top: 0
 }

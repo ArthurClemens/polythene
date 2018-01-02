@@ -720,6 +720,7 @@ var genericTests = (function (_ref) {
   }, {
     name: "Set value",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(h(SetValue));
@@ -1084,6 +1085,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }, {
     name: "Set value (variation with withAttr)",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(h(SetValue));
@@ -1092,6 +1094,7 @@ var mithrilTests = function mithrilTests(_ref) {
   }, {
     name: "Form validation with github.com/ludbek/powerform",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(h(FormValidation));
@@ -3101,6 +3104,7 @@ var reactTests = function reactTests(_ref) {
   }, {
     name: "Form validation with github.com/ludbek/powerform",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(react.createElement(_class, null));
