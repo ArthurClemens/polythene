@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-checkbox",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-react-checkbox.js",
   "module": "dist/polythene-react-checkbox.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-checkbox": "^1.0.0-rc.9",
-    "polythene-core-selection-control": "^1.0.0-rc.9",
-    "polythene-react-base": "^1.0.0-rc.9",
-    "polythene-react-icon": "^1.0.0-rc.9",
-    "polythene-react-icon-button": "^1.0.0-rc.9"
+    "polythene-core-checkbox": "^1.0.0-rc.10",
+    "polythene-core-selection-control": "^1.0.0-rc.10",
+    "polythene-react-base": "^1.0.0-rc.10",
+    "polythene-react-icon": "^1.0.0-rc.10",
+    "polythene-react-icon-button": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

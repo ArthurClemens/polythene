@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-icon",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-css-icon.js",
   "module": "dist/polythene-css-icon.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.9",
-    "polythene-core-icon": "^1.0.0-rc.9",
-    "polythene-css-classes": "^1.0.0-rc.9",
-    "polythene-theme": "^1.0.0-rc.9"
+    "polythene-core-css": "^1.0.0-rc.10",
+    "polythene-core-icon": "^1.0.0-rc.10",
+    "polythene-css-classes": "^1.0.0-rc.10",
+    "polythene-theme": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

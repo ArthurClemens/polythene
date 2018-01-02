@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-shadow",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-react-shadow.js",
   "module": "dist/polythene-react-shadow.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.0.0-rc.9",
-    "polythene-react-base": "^1.0.0-rc.9"
+    "polythene-core-shadow": "^1.0.0-rc.10",
+    "polythene-react-base": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

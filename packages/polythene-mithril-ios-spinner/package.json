@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-ios-spinner",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-mithril-ios-spinner.js",
   "module": "dist/polythene-mithril-ios-spinner.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.9",
-    "polythene-core-ios-spinner": "^1.0.0-rc.9",
-    "polythene-css-classes": "^1.0.0-rc.9",
-    "polythene-mithril-base": "^1.0.0-rc.9",
-    "polythene-mithril-base-spinner": "^1.0.0-rc.9"
+    "polythene-core": "^1.0.0-rc.10",
+    "polythene-core-ios-spinner": "^1.0.0-rc.10",
+    "polythene-css-classes": "^1.0.0-rc.10",
+    "polythene-mithril-base": "^1.0.0-rc.10",
+    "polythene-mithril-base-spinner": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
