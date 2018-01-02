@@ -86,7 +86,8 @@ Try out Polythene in JSFiddles.
   * [Notification](https://jsfiddle.net/ArthurClemens/08g6aqpd/)
   * [Snackbar](https://jsfiddle.net/ArthurClemens/opx44Lhq/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
-* [Search field](https://jsfiddle.net/ArthurClemens/hruxczph/)
+* Search
+  * [Search field](https://jsfiddle.net/ArthurClemens/hruxczph/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/j74x8b9w/)
 * [SVG](https://jsfiddle.net/ArthurClemens/3v5v5kdb/)
