@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-notification",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.11",
   "description": "",
   "main": "dist/polythene-mithril-notification.js",
   "module": "dist/polythene-mithril-notification.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.10",
-    "polythene-core-notification": "^1.0.0-rc.10",
-    "polythene-css-classes": "^1.0.0-rc.10",
-    "polythene-mithril-base": "^1.0.0-rc.10"
+    "polythene-core": "^1.0.0-rc.11",
+    "polythene-core-notification": "^1.0.0-rc.11",
+    "polythene-css-classes": "^1.0.0-rc.11",
+    "polythene-mithril-base": "^1.0.0-rc.11"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

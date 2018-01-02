@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-tabs",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.11",
   "description": "",
   "main": "dist/polythene-react-tabs.js",
   "module": "dist/polythene-react-tabs.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-tabs": "^1.0.0-rc.10",
-    "polythene-react-base": "^1.0.0-rc.10",
-    "polythene-react-button": "^1.0.0-rc.10",
-    "polythene-react-icon": "^1.0.0-rc.10",
-    "polythene-react-icon-button": "^1.0.0-rc.10"
+    "polythene-core-tabs": "^1.0.0-rc.11",
+    "polythene-react-base": "^1.0.0-rc.11",
+    "polythene-react-button": "^1.0.0-rc.11",
+    "polythene-react-icon": "^1.0.0-rc.11",
+    "polythene-react-icon-button": "^1.0.0-rc.11"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

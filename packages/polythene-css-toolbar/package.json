@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-toolbar",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.11",
   "description": "",
   "main": "dist/polythene-css-toolbar.js",
   "module": "dist/polythene-css-toolbar.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.10",
-    "polythene-core-toolbar": "^1.0.0-rc.10",
-    "polythene-css-classes": "^1.0.0-rc.10",
-    "polythene-theme": "^1.0.0-rc.10"
+    "polythene-core-css": "^1.0.0-rc.11",
+    "polythene-core-toolbar": "^1.0.0-rc.11",
+    "polythene-css-classes": "^1.0.0-rc.11",
+    "polythene-theme": "^1.0.0-rc.11"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
