@@ -37,6 +37,8 @@ var classes = {
   hasHeader: "pe-list--header",
   indentedBorders: "pe-list--indented-borders",
   padding: "pe-list--padding",
+  paddingTop: "pe-list--padding-top",
+  paddingBottom: "pe-list--padding-bottom",
 
   // lookup
   header: listTileClasses.header
@@ -52,8 +54,10 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
+  var paddingClass = attrs.padding === "bottom" ? classes.paddingBottom : attrs.padding === "top" ? classes.paddingTop : attrs.padding !== false ? classes.padding : null;
+
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, attrs.padding !== false ? classes.padding : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

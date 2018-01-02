@@ -1,14 +1,21 @@
 
-const iconArrowSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"/></svg>";
+const iconAccountSVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\"/></svg>";
 
 export default ({ renderer: h, keys: k, Icon, List, ListTile, Dialog }) => ({
   title: "Set backup account",
   menu: h(List, {
+    padding: "bottom",
     tiles: [1, 2, 3].map(num =>
       h(ListTile, {
         key: num,
         front: h(Icon, {
-          svg: { content: h.trust(iconArrowSVG) }
+          size: "large",
+          style: {
+            color: "#5e97f6",
+            backgroundColor: "#c6dafc",
+            borderRadius: "50%"
+          },
+          svg: { content: h.trust(iconAccountSVG) }
         }),
         hoverable: true,
         title: "Account",

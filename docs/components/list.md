@@ -56,7 +56,7 @@ Lists are also the base component of [Menus](menu.md).
 | **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
-| **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
+| **padding**         | optional | Boolean or String | true | Set to `false` to remove top and bottom padding; use "top" to set a top padding only; use "bottom" for a bottom padding |
 
 
 <a name="common-component-options"></a>

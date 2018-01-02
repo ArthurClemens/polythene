@@ -37,6 +37,8 @@ var classes = {
   hasHeader: "pe-list--header",
   indentedBorders: "pe-list--indented-borders",
   padding: "pe-list--padding",
+  paddingTop: "pe-list--padding-top",
+  paddingBottom: "pe-list--padding-bottom",
 
   // lookup
   header: listTileClasses.header
@@ -56,6 +58,12 @@ var layout = (function (selector, componentVars) {
 
     ".pe-list--padding": {
       padding: componentVars.padding + "px 0"
+    },
+    ".pe-list--padding-top": {
+      paddingTop: componentVars.padding + "px"
+    },
+    ".pe-list--padding-bottom": {
+      paddingBottom: componentVars.padding + "px"
     },
 
     ".pe-list--header": {

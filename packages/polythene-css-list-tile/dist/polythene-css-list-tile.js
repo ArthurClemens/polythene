@@ -178,6 +178,15 @@ var layout = (function (selector, componentVars) {
     // Menu
 
     ".pe-dialog .pe-menu__content &": {
+      " .pe-list-tile__content": {
+        paddingLeft: "24px"
+      },
+      " .pe-list-tile__content-front": {
+        paddingRight: 0,
+        width: "64px",
+        marginRight: "-7px"
+      },
+
       " .pe-list-tile__title": polytheneCoreCss.mixin.ellipsis("none")
     },
 
