@@ -53,8 +53,8 @@ h2 {
 }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.development.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script src="js/polythene-react-standalone.js"></script>
 <script src="js/polythene-css-standalone.js"></script>
@@ -106,8 +106,7 @@ const App = () => (
       <div className="component">
         <SVG
           className="themed-svg"
-          content={linkIconSVG}
-        />
+        >{linkIconSVG}</SVG>
       </div>
     </div>
     <div className="row">
