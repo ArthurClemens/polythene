@@ -487,7 +487,8 @@ exports[`test Option: label (JSX) 1`] = `
         "value": "Two",
       },
     ]
-  } />
+  }
+  className="multiple" />
 `;
 
 exports[`test Option: label -- dark tone 1`] = `
@@ -536,16 +537,19 @@ exports[`test Option: onChange (JSX) 1`] = `
     }>
     Value: undefined
   </div>
-  <RadioButton
-    checked={false}
-    label="One"
-    onChange={[Function]}
-    value="one" />
-  <RadioButton
-    checked={false}
-    label="Two"
-    onChange={[Function]}
-    value="two" />
+  <div
+    className="multiple">
+    <RadioButton
+      checked={false}
+      label="One"
+      onChange={[Function]}
+      value="one" />
+    <RadioButton
+      checked={false}
+      label="Two"
+      onChange={[Function]}
+      value="two" />
+  </div>
 </form>
 `;
 

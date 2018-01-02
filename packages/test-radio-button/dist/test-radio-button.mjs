@@ -2400,18 +2400,22 @@ var reactTests = function reactTests(_ref) {
             { style: { margin: "0 0 1rem 0" } },
             "Value: " + this.state.value
           ),
-          react.createElement(RadioButton$$1, {
-            label: "One",
-            value: "one",
-            checked: this.state.value === "one",
-            onChange: this.handleChange
-          }),
-          react.createElement(RadioButton$$1, {
-            label: "Two",
-            value: "two",
-            checked: this.state.value === "two",
-            onChange: this.handleChange
-          })
+          react.createElement(
+            "div",
+            { className: "multiple" },
+            react.createElement(RadioButton$$1, {
+              label: "One",
+              value: "one",
+              checked: this.state.value === "one",
+              onChange: this.handleChange
+            }),
+            react.createElement(RadioButton$$1, {
+              label: "Two",
+              value: "two",
+              checked: this.state.value === "two",
+              onChange: this.handleChange
+            })
+          )
         );
       }
     }]);
@@ -2430,7 +2434,7 @@ var reactTests = function reactTests(_ref) {
         }, {
           value: "Two",
           label: "Two"
-        }] });
+        }], className: "multiple" });
     }
   }, {
     name: "Option: onChange (JSX)",

@@ -26,18 +26,20 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
           <div style={{ margin: "0 0 1rem 0" }}>
             {`Value: ${this.state.value}`}
           </div>
-          <RadioButton
-            label="One"
-            value="one"
-            checked={this.state.value === "one"}
-            onChange={this.handleChange}
-          />
-          <RadioButton
-            label="Two"
-            value="two"
-            checked={this.state.value === "two"}
-            onChange={this.handleChange}
-          />
+          <div className="multiple">
+            <RadioButton
+              label="One"
+              value="one"
+              checked={this.state.value === "one"}
+              onChange={this.handleChange}
+            />
+            <RadioButton
+              label="Two"
+              value="two"
+              checked={this.state.value === "two"}
+              onChange={this.handleChange}
+            />
+          </div>
         </form>
       );
     }
@@ -59,7 +61,7 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
             value: "Two",
             label: "Two",
           }
-        ]}/>
+        ]} className="multiple" />
     },
     {
       name: "Option: onChange (JSX)",
