@@ -1,9 +1,9 @@
-import m from "mithril";
 import { addLayoutStyles, addTypography } from "polythene-css";
 import { rules as css } from "./styles";
-import page from "./page";
+import Page from "./Page";
 import { renderer as h, List, ListTile, Toolbar } from "polythene-mithril";
 import routes from "./routes";
+import Footer from "./Footer";
 
 addTypography();
 addLayoutStyles();
@@ -15,7 +15,7 @@ const navBar = () =>
     {
       style: { backgroundColor: "rgba(255,255,255,.93)" }
     },
-    m("span", TITLE)
+    h("span", TITLE)
   ));
 
 const index = {
@@ -34,16 +34,17 @@ const index = {
             hoverable: true,
             url: {
               href: route.path,
-              oncreate: m.route.link
+              oncreate: h.route.link
             }
           })
         ))
-      )
+      ),
+      h(Footer)
     ]
 };
 
 let scrollTop = document.scrollingElement.scrollTop;
-m.route.prefix("#");
+h.route.prefix("#");
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
@@ -58,8 +59,8 @@ routes.forEach(route => routeData[route.path] = {
   onmatch: () => {
     scrollTop = document.scrollingElement.scrollTop;
     document.title = `Polythene: ${route.name}`;
-    return page(route.name, route.tests, "/");
+    return Page(route.name, route.tests, "/");
   }
 });
-m.route(mountNode, "/", routeData);
+h.route(mountNode, "/", routeData);
 

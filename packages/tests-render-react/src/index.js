@@ -11,6 +11,7 @@ import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "
 import Page from "./Page";
 import routes from "./routes";
 import OnMatch from "./OnMatch";
+import Footer from "./Footer";
 
 addTypography();
 addLayoutStyles();
@@ -47,6 +48,7 @@ const Index = () =>
         ))
       ))
     ),
+    h(Footer),
     h(Snackbar),
     h(Notification)
   ]);
