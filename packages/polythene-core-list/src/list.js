@@ -4,16 +4,18 @@ import classes from "polythene-css-classes/list";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+const paddingClasses = {
+  both: classes.padding,
+  bottom: classes.paddingBottom,
+  top: classes.paddingTop,
+  none: null
+};
+
+const paddingClass = (attr = "both") =>
+  paddingClasses[attr];
+
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
-  const paddingClass = attrs.padding === "bottom"
-    ? classes.paddingBottom
-    : attrs.padding === "top"
-      ? classes.paddingTop
-      : attrs.padding !== false
-        ? classes.padding
-        : null;
-
   return Object.assign(
     {},
     filterSupportedAttributes(attrs),
@@ -24,7 +26,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.indentedBorders ? classes.indentedBorders : null,
         attrs.header ? classes.hasHeader : null,
         attrs.compact ? classes.compact : null,
-        paddingClass,
+        paddingClass(attrs.padding),
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],

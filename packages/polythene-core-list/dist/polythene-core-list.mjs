@@ -50,14 +50,24 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
+var paddingClasses = {
+  both: classes.padding,
+  bottom: classes.paddingBottom,
+  top: classes.paddingTop,
+  none: null
+};
+
+var paddingClass = function paddingClass() {
+  var attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "both";
+  return paddingClasses[attr];
+};
+
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  var paddingClass = attrs.padding === "bottom" ? classes.paddingBottom : attrs.padding === "top" ? classes.paddingTop : attrs.padding !== false ? classes.padding : null;
-
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

@@ -30,7 +30,7 @@ Changes to components:
     * React
       * [List](components/react/list.md#keyboard-control)
       * [Search](components/react/search.md#result-list)
-  * For option `padding` added values "top" and "bottom"
+  * Option `padding` has new possible values "top", "bottom", "none" and "both", replacing `false`
 * TextField and Search: option `focus` has been removed (because setting the focus state outside of an event does not work on iOS)
   * Use the `onChange` callback that returns the function `setInputState` - see [documentation for Mithril](components/mithril/textfield.md#programmatically-setting-focus-and-value), [documentation for React](components/react/textfield.md#programmatically-setting-focus-and-value)
 
