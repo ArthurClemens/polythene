@@ -1,10 +1,10 @@
-import m from "mithril";
 import { rules as css } from "./styles";
 import { renderer as h, Dialog, IconButton, Toolbar, Notification, Snackbar } from "polythene-mithril";
+import Footer from "./Footer";
 
-const iconBack = m.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>");
+const iconBack = h.trust("<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>");
 
-const navBar = (name, previous) =>
+const navBar = (name, previous, doc) =>
   h(css.headerRow, h(Toolbar, {
     style: { backgroundColor: "rgba(255,255,255,.93)" }
   }, [
@@ -12,22 +12,23 @@ const navBar = (name, previous) =>
       icon: { svg: { content: iconBack } },
       url: {
         href: "/",
-        oncreate: m.route.link
+        oncreate: h.route.link
       },
       style: { color: "#0091EA" }
     }),
-    m("span", name)
+    h("span", name),
+    doc && h(`a[href=${doc}][target=_blank][rel="noopener noreferrer"].pe-action`, "doc")
   ]));
 
-const results = (name, tests) => (
-  m([css.results].join(" "), {
+const results = ({ name, tests }) => (
+  h([css.results].join(" "), {
     className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`
   }, tests.map(test => {
     if (test.section) {
       return h(css.sectionTitle, test.section);
     }
     const testName = `test-${(test.name)}`;
-    return m([css.resultRow, test.interactive ? css.interactive : null].join(""), {
+    return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
       key: testName,
       className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
     }, [
@@ -44,13 +45,14 @@ const results = (name, tests) => (
   }))
 );
   
-export default (name, tests, previous) => ({
+export default (route, previous) => ({
   oncreate: () => ( 
     scrollTo(0, 0)
   ),
   view: () => [
-    navBar(name, previous),
-    results(name, tests),
+    navBar(route.name, previous, route.doc),
+    results(route),
+    h(Footer),
     h(Dialog),
     h(Snackbar),
     h(Notification)

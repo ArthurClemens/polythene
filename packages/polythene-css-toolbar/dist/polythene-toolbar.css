@@ -7,7 +7,6 @@
   -ms-flex-align: center;
   align-items: center;
   height: 56px;
-  font-size: 18px;
   line-height: 1.3em;
   padding: 0 4px
 }
@@ -17,6 +16,7 @@
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
+  font-size: 18px;
   width: 100%;
   display: block;
   word-break: break-all;
@@ -39,6 +39,11 @@
   justify-content: center;
   margin-left: 12px;
   margin-right: 12px
+}
+
+.pe-toolbar>.pe-action {
+  padding-left: 12px;
+  padding-right: 12px
 }
 
 .pe-toolbar .pe-fit {

@@ -4,7 +4,7 @@
 
 Material Design component library for [Mithril](http://mithril.js.org) and [React](https://facebook.github.io/react/).
 
-Can also be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
+Can be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
 
 <a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink-thumb.jpg" height="500" /></a>
 
@@ -13,7 +13,7 @@ Can also be used as general-purpose component library that includes dialogs, car
 
 ## Status
 
-Version: `1.0.0-rc.10` (release candidate 10)
+Version: `1.0.0-rc.11` (release candidate 11)
 
 
 ## Main features

@@ -1,3 +1,16 @@
+exports[`test Action 1`] = `
+<div
+  className="pe-toolbar    ">
+  <ToolbarTitle
+    text="Toolbar with a very very very very very very very very very long title" />
+  <a
+    className="pe-action"
+    href="#">
+    Action
+  </a>
+</div>
+`;
+
 exports[`test Child node 1`] = `
 <div
   className="pe-toolbar    ">

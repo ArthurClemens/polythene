@@ -11,6 +11,11 @@ html.wf-active body {
   opacity: 1
 }
 
+a:link, a:visited {
+  color: #2196f3;
+  text-decoration: none;
+}
+
 .ma3 {
   margin: 16px;
 }
@@ -196,8 +201,16 @@ html {
   font-weight: 400;
 }
 
+.footer {
+  margin: 6rem auto 1rem auto;
+  padding: 0 15px;
+  font-size: 14px;
+  color: #90A4AE;
+  opacity: .85;
+}
+
 @media (min-width: 320px) {
-  .index-list {
+  .index-list, .results, .footer {
     width: 320px;
   }
 }
@@ -206,7 +219,13 @@ html {
   .results {
     width: 480px;
   }
+  .results + .footer {
+    width: 480px;
+  }
   .result {
     width: calc(100% - 2 * 20px);
   }
 }
+
+
+

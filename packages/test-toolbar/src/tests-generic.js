@@ -8,6 +8,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
     toolbarRowIndentedTitle,
     toolbarTitleAsSpan,
     toolbarTitleComponent,
+    toolbarTitleComponentAction,
     toolbarTitleComponentAtStart,
     toolbarTitleComponentCentered,
     toolbarTitleComponentCenteredBalanced,
@@ -88,6 +89,13 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
       component: Toolbar,
       attrs: {
         content: toolbarRowIndentedTitle
+      }
+    },
+    {
+      name: "Action",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentAction
       }
     },
     {

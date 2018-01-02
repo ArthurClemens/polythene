@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-raised-button",
-  "version": "1.0.0-rc.10",
+  "version": "1.0.0-rc.11",
   "description": "",
   "main": "dist/polythene-mithril-raised-button.js",
   "module": "dist/polythene-mithril-raised-button.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-raised-button": "^1.0.0-rc.10",
-    "polythene-mithril-base": "^1.0.0-rc.10",
-    "polythene-mithril-button": "^1.0.0-rc.10",
-    "polythene-mithril-shadow": "^1.0.0-rc.10"
+    "polythene-core-raised-button": "^1.0.0-rc.11",
+    "polythene-mithril-base": "^1.0.0-rc.11",
+    "polythene-mithril-button": "^1.0.0-rc.11",
+    "polythene-mithril-shadow": "^1.0.0-rc.11"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

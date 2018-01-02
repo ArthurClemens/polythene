@@ -4,131 +4,157 @@ export default [
   {
     path: "/button",
     name: "Button",
-    tests: tests.button
+    tests: tests.button,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/button.md"
   },
   {
     path: "/raised-button",
     name: "Raised Button",
-    tests: tests.raisedButton
+    tests: tests.raisedButton,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/raised-button.md"
   },
   {
     path: "/card",
     name: "Card",
-    tests: tests.card
+    tests: tests.card,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/card.md"
   },
   {
     path: "/checkbox",
     name: "Checkbox",
-    tests: tests.checkbox
+    tests: tests.checkbox,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/checkbox.md"
   },
   {
     path: "/dialog",
     name: "Dialog",
-    tests: tests.dialog
+    tests: tests.dialog,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/dialog.md"
   },
   {
     path: "/dialog-pane",
     name: "Dialog Pane",
-    tests: tests.dialogPane
+    tests: tests.dialogPane,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/dialog-pane.md"
   },
   {
     path: "/fab",
     name: "FAB",
-    tests: tests.fab
+    tests: tests.fab,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/fab.md"
   },
   {
     path: "/icon",
     name: "Icon",
-    tests: tests.icon
+    tests: tests.icon,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/icon.md"
   },
   {
     path: "/icon-button",
     name: "Icon Button",
-    tests: tests.iconButton
+    tests: tests.iconButton,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/icon-button.md"
   },
   {
     path: "/list",
     name: "List",
-    tests: tests.list
+    tests: tests.list,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/list.md"
   },
   {
     path: "/list-tile",
     name: "List Tile",
-    tests: tests.listTile
+    tests: tests.listTile,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/list-tile.md"
   },
   {
     path: "/menu",
     name: "Menu",
-    tests: tests.menu
+    tests: tests.menu,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/menu.md"
   },
   {
     path: "/notification",
     name: "Notification",
-    tests: tests.notification
+    tests: tests.notification,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/notification.md"
   },
   {
     path: "/snackbar",
     name: "Notification - Snackbar",
-    tests: tests.snackbar
+    tests: tests.snackbar,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/snackbar.md"
   },
   {
     path: "/radio-button",
     name: "Radio Button",
-    tests: tests.radioButton
+    tests: tests.radioButton,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/radio-button.md"
   },
   {
     path: "/ripple",
     name: "Ripple",
-    tests: tests.ripple
+    tests: tests.ripple,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/ripple.md"
   },
   {
     path: "/search",
     name: "Search",
-    tests: tests.search
+    tests: tests.search,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/search.md"
   },
   {
     path: "/shadow",
     name: "Shadow",
-    tests: tests.shadow
+    tests: tests.shadow,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/shadow.md"
   },
   {
     path: "/slider",
     name: "Slider",
-    tests: tests.slider
+    tests: tests.slider,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/slider.md"
   },
   {
     path: "/spinner",
     name: "Spinner",
-    tests: tests.spinner
+    tests: tests.spinner,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/spinner.md"
   },
   {
     path: "/svg",
     name: "SVG",
-    tests: tests.svg
+    tests: tests.svg,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/svg.md"
   },
   {
     path: "/switch",
     name: "Switch",
-    tests: tests.switchButton
+    tests: tests.switchButton,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/switch.md"
   },
   {
     path: "/tabs",
     name: "Tabs",
-    tests: tests.tabs
+    tests: tests.tabs,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/tabs.md"
   },
   {
     path: "/textfield",
     name: "Text Field",
-    tests: tests.textfield
+    tests: tests.textfield,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/textfield.md"
   },
   {
     path: "/toolbar",
     name: "Toolbar",
-    tests: tests.toolbar
+    tests: tests.toolbar,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/toolbar.md"
   },
   {
     path: "/layout-styles",
     name: "Layout styles",
-    tests: tests.layoutStyles
+    tests: tests.layoutStyles,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/css.md#layout-classes"
   }
 ];

@@ -59,6 +59,11 @@ var shared = (function (_ref) {
     indent: true
   }), toolbarButton("add", trustedIconAddSVG)];
 
+  var toolbarTitleComponentAction = [h(ToolbarTitle$$1, {
+    key: "title",
+    text: longTitle
+  }), h("a", { className: "pe-action", href: "#" }, "Action")];
+
   var toolbarTitleComponentAtStart = [h(ToolbarTitle$$1, {
     key: "title",
     text: longTitle
@@ -72,12 +77,13 @@ var shared = (function (_ref) {
   return {
     toolbarRow: toolbarRow,
     toolbarRowIndentedTitle: toolbarRowIndentedTitle,
+    toolbarTitleAsSpan: toolbarTitleAsSpan,
     toolbarTitleComponent: toolbarTitleComponent,
+    toolbarTitleComponentAction: toolbarTitleComponentAction,
+    toolbarTitleComponentAtStart: toolbarTitleComponentAtStart,
     toolbarTitleComponentCentered: toolbarTitleComponentCentered,
     toolbarTitleComponentCenteredBalanced: toolbarTitleComponentCenteredBalanced,
-    toolbarTitleComponentIndented: toolbarTitleComponentIndented,
-    toolbarTitleAsSpan: toolbarTitleAsSpan,
-    toolbarTitleComponentAtStart: toolbarTitleComponentAtStart
+    toolbarTitleComponentIndented: toolbarTitleComponentIndented
   };
 });
 
@@ -93,6 +99,7 @@ var genericTests = (function (_ref) {
       toolbarRowIndentedTitle = _shared.toolbarRowIndentedTitle,
       toolbarTitleAsSpan = _shared.toolbarTitleAsSpan,
       toolbarTitleComponent = _shared.toolbarTitleComponent,
+      toolbarTitleComponentAction = _shared.toolbarTitleComponentAction,
       toolbarTitleComponentAtStart = _shared.toolbarTitleComponentAtStart,
       toolbarTitleComponentCentered = _shared.toolbarTitleComponentCentered,
       toolbarTitleComponentCenteredBalanced = _shared.toolbarTitleComponentCenteredBalanced,
@@ -162,6 +169,12 @@ var genericTests = (function (_ref) {
     component: Toolbar$$1,
     attrs: {
       content: toolbarRowIndentedTitle
+    }
+  }, {
+    name: "Action",
+    component: Toolbar$$1,
+    attrs: {
+      content: toolbarTitleComponentAction
     }
   }, {
     name: "Option: style (colors and height)",

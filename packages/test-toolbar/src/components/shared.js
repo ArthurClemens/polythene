@@ -72,6 +72,14 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
     toolbarButton("add", trustedIconAddSVG)
   ];
 
+  const toolbarTitleComponentAction = [
+    h(ToolbarTitle, {
+      key: "title",
+      text: longTitle,
+    }),
+    h("a", { className: "pe-action", href: "#" }, "Action")
+  ];
+
   const toolbarTitleComponentAtStart = [
     h(ToolbarTitle, {
       key: "title",
@@ -91,12 +99,13 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
   return {
     toolbarRow,
     toolbarRowIndentedTitle,
+    toolbarTitleAsSpan,
     toolbarTitleComponent,
+    toolbarTitleComponentAction,
+    toolbarTitleComponentAtStart,
     toolbarTitleComponentCentered,
     toolbarTitleComponentCenteredBalanced,
     toolbarTitleComponentIndented,
-    toolbarTitleAsSpan,
-    toolbarTitleComponentAtStart,
   };
 };
 
