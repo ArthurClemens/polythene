@@ -8,6 +8,7 @@
 - [Usage](#usage)
 - [Appearance](#appearance)
   - [Title](#title)
+  - [Action links](#action-links)
   - [Shadow](#shadow)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -40,6 +41,7 @@ A Toolbar content consists of a list of elements. Some possibilities:
 [title, icon]
 [icon, title]
 [icon, title + space, icon, icon]
+[icon, title + space, action link]
 ~~~
 
 To show a Toolbar with a label and 3 icon buttons:
@@ -152,6 +154,30 @@ h(Toolbar, [
     inactive: true,
     icon: { content: "" }
   })
+])
+~~~
+
+<a name="action-links"></a>
+### Action links
+
+Use class `pe-action`:
+
+~~~jsx
+<Toolbar>
+  <ToolbarTitle center>Title</ToolbarTitle>
+  <a className="pe-action" href="...">Save</a>
+</Toolbar>
+~~~
+
+With hyperscript:
+
+~~~javascript
+h(Toolbar, [
+  h(ToolbarTitle, { text: "Title" }),
+  h(".pe-action",
+    { href: "..." },
+    "Save"
+  )
 ])
 ~~~
 

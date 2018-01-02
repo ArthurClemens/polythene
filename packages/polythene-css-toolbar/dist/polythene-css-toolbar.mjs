@@ -34,13 +34,13 @@ var layout = (function (selector, componentVars) {
 
   return [(_ref3 = {}, _defineProperty(_ref3, selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
     height: componentVars.height + "px",
-    fontSize: componentVars.font_size + "px",
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
 
     ".pe-toolbar--compact": compactStyle(componentVars),
 
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+      fontSize: componentVars.font_size + "px",
       width: "100%",
       display: "block",
       wordBreak: "break-all",
@@ -63,6 +63,12 @@ var layout = (function (selector, componentVars) {
       marginLeft: componentVars.title_padding + "px",
       marginRight: componentVars.title_padding + "px"
     },
+
+    " > .pe-action": {
+      paddingLeft: "12px",
+      paddingRight: "12px"
+    },
+
     " .pe-fit": [mixin.fit(), {
       margin: 0
     }]

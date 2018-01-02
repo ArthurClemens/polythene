@@ -57,7 +57,7 @@ const routerMap = routes.map(route =>
   h(Route,
     {
       path: route.path,
-      render: props => Page(Object.assign({}, props, { name: route.name, tests: route.tests, previous: "/" })),
+      render: props => Page(Object.assign({}, props, { name: route.name, tests: route.tests, doc: route.doc, previous: "/" })),
     }
   )).concat([
   h(Route, {

@@ -25,7 +25,9 @@
 <a name="100-rc11"></a>
 #### 1.0.0-rc.11
 
-Small cleanup.
+Changes to components:
+
+* Toolbar: Added support for action links. Use class `pe-action`.
 
 <a name="100-rc10"></a>
 #### 1.0.0-rc.10

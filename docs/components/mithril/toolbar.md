@@ -8,6 +8,7 @@
 - [Usage](#usage)
 - [Appearance](#appearance)
   - [Title](#title)
+  - [Action links](#action-links)
   - [Shadow](#shadow)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
@@ -40,6 +41,7 @@ A Toolbar content consists of a list of elements. Some possibilities:
 [title, icon]
 [icon, title]
 [icon, title + space, icon, icon]
+[icon, title + space, action link]
 ~~~
 
 To show a Toolbar with a label and 3 icon buttons:
@@ -103,6 +105,21 @@ m(Toolbar, [
     inactive: true,
     icon: { content: "" }
   })
+])
+~~~
+
+<a name="action-links"></a>
+### Action links
+
+Use class `pe-action`:
+
+~~~javascript
+m(Toolbar, [
+  m(ToolbarTitle, { text: "Title" }),
+  m(".pe-action",
+    { href: "..." },
+    "Save"
+  )
 ])
 ~~~
 

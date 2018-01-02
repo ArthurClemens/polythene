@@ -59,7 +59,7 @@ routes.forEach(route => routeData[route.path] = {
   onmatch: () => {
     scrollTop = document.scrollingElement.scrollTop;
     document.title = `Polythene: ${route.name}`;
-    return Page(route.name, route.tests, "/");
+    return Page(route, "/");
   }
 });
 h.route(mountNode, "/", routeData);
