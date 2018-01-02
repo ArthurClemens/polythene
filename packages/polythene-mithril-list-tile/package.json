@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-list-tile",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/polythene-mithril-list-tile.js",
   "module": "dist/polythene-mithril-list-tile.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-list-tile": "^1.0.0-rc.11",
-    "polythene-mithril-base": "^1.0.0-rc.11",
-    "polythene-mithril-icon": "^1.0.0-rc.11",
-    "polythene-mithril-ripple": "^1.0.0-rc.11"
+    "polythene-core-list-tile": "^1.0.0",
+    "polythene-mithril-base": "^1.0.0",
+    "polythene-mithril-icon": "^1.0.0",
+    "polythene-mithril-ripple": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

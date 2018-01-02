@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-radio-group",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/polythene-core-radio-group.js",
   "module": "dist/polythene-core-radio-group.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0-rc.11",
-    "polythene-css-classes": "^1.0.0-rc.11",
-    "polythene-theme": "^1.0.0-rc.11"
+    "polythene-core": "^1.0.0",
+    "polythene-css-classes": "^1.0.0",
+    "polythene-theme": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-mithril",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "private": true,
   "main": "dist/js/test.js",
@@ -13,13 +13,13 @@
   },
   "dependencies": {
     "mithril": "1.1.5",
-    "polythene-core": "^1.0.0-rc.11",
-    "polythene-core-css": "^1.0.0-rc.11",
-    "polythene-css": "^1.0.0-rc.11",
-    "polythene-mithril": "^1.0.0-rc.11",
-    "polythene-style": "^1.0.0-rc.11",
-    "polythene-tests": "^1.0.0-rc.11",
-    "polythene-utilities": "^1.0.0-rc.11"
+    "polythene-core": "^1.0.0",
+    "polythene-core-css": "^1.0.0",
+    "polythene-css": "^1.0.0",
+    "polythene-mithril": "^1.0.0",
+    "polythene-style": "^1.0.0",
+    "polythene-tests": "^1.0.0",
+    "polythene-utilities": "^1.0.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.1",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-selection-control",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/polythene-css-selection-control.js",
   "module": "dist/polythene-css-selection-control.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.11",
-    "polythene-core-selection-control": "^1.0.0-rc.11",
-    "polythene-css-classes": "^1.0.0-rc.11",
-    "polythene-theme": "^1.0.0-rc.11"
+    "polythene-core-css": "^1.0.0",
+    "polythene-core-selection-control": "^1.0.0",
+    "polythene-css-classes": "^1.0.0",
+    "polythene-theme": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

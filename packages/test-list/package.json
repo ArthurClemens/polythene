@@ -1,6 +1,6 @@
 {
   "name": "test-list",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "private": true,
   "description": "",
   "main": "dist/test-list.js",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.0.0-rc.11",
-    "polythene-mithril": "^1.0.0-rc.11",
-    "polythene-react": "^1.0.0-rc.11"
+    "polythene-css": "^1.0.0",
+    "polythene-mithril": "^1.0.0",
+    "polythene-react": "^1.0.0"
   },
   "devDependencies": {
     "react": "^16.2.0",

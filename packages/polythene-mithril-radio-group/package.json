@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-group",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/polythene-mithril-radio-group.js",
   "module": "dist/polythene-mithril-radio-group.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-group": "^1.0.0-rc.11",
-    "polythene-mithril-base": "^1.0.0-rc.11",
-    "polythene-mithril-radio-button": "^1.0.0-rc.11"
+    "polythene-core-radio-group": "^1.0.0",
+    "polythene-mithril-base": "^1.0.0",
+    "polythene-mithril-radio-button": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

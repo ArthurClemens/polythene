@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-switch",
-  "version": "1.0.0-rc.11",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/polythene-react-switch.js",
   "module": "dist/polythene-react-switch.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-selection-control": "^1.0.0-rc.11",
-    "polythene-core-switch": "^1.0.0-rc.11",
-    "polythene-react-base": "^1.0.0-rc.11",
-    "polythene-react-icon-button": "^1.0.0-rc.11",
-    "polythene-react-shadow": "^1.0.0-rc.11"
+    "polythene-core-selection-control": "^1.0.0",
+    "polythene-core-switch": "^1.0.0",
+    "polythene-react-base": "^1.0.0",
+    "polythene-react-icon-button": "^1.0.0",
+    "polythene-react-shadow": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
