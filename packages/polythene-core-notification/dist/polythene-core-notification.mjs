@@ -15,7 +15,7 @@ var classes = {
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  multilineTitle: "pe-notification__title--multiline",
+  multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical"
 };
 
@@ -162,17 +162,15 @@ var onMount = function onMount(vnode) {
 };
 
 var onUnMount = function onUnMount(vnode) {
-  return (
-    // vnode.attrs.multipleClear(),
-    vnode.state.mounted(false)
-  );
+  return vnode.state.mounted(false);
 };
 
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), _defineProperty({
+  return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
+  _defineProperty({
     className: [classes.component, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.tone === "light" ? "pe-light-tone" : null, attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, k.onclick, function (e) {
@@ -221,12 +219,12 @@ var rgba = function rgba(colorStr) {
 var buttonPaddingH = 8; // padding, inner text space
 
 var vars$1 = {
-  width: 274,
+  width: 288,
   min_height: 80,
   border_radius: vars.unit_block_border_radius,
   title_padding_h: buttonPaddingH,
   title_single_padding_v: 14,
-  title_multi_padding_v: 20,
+  title_multi_padding_v: 20, // 24 - natural line height
   side_padding: 24 - buttonPaddingH,
   font_size: 14,
   line_height: 20,

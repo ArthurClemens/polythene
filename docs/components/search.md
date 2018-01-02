@@ -2,7 +2,21 @@
 
 Search field with optional icons and buttons that respond to the input state.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Search specific options](#search-specific-options)
+  - [Search appearance options](#search-appearance-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+- [Future](#future)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Custom icons and buttons for states "focus", "focus and dirty", "dirty" and "none"
@@ -10,14 +24,17 @@ Search field with optional icons and buttons that respond to the input state.
 * Full width display
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/search.md)
 * [Usage with React](react/search.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="search-specific-options"></a>
 ### Search specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -25,12 +42,14 @@ Search field with optional icons and buttons that respond to the input state.
 | **textfield** | required | Options object for [Text Field](textfield.md) | | Options for the text field, for instance to specify the label |
 | **fullWidth** | optional | Boolean | false | A fullwidth search box is visually extended to the sides (with a height of 56px); inset search box has side (page) padding and is less tall (48px) |
 
+<a name="search-appearance-options"></a>
 ### Search appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a String, hyperscript or component (or Array) to each |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -46,6 +65,7 @@ Search field with optional icons and buttons that respond to the input state.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Search is composed from:
@@ -58,11 +78,13 @@ Search usually contains:
 * [Shadow](shadow.md)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Search classes](../../packages/polythene-css-classes/search.js)
 
 
+<a name="future"></a>
 ## Future
 
 * History pane

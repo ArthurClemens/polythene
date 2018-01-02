@@ -41,7 +41,8 @@ exports[`test Child node (icon component) 1`] = `
 `;
 
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row\">
   <a class=\"pe-button pe-icon-button pe-light-tone\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
@@ -82,8 +83,8 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-tone\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row pe-light-tone\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
@@ -238,7 +239,7 @@ exports[`test Option: ripple (center) 1`] = `
 `;
 
 exports[`test Option: size 1`] = `
-"<div style=\"display: flex;\">
+"<div class=\"multiple\">
   <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>

@@ -9,11 +9,11 @@ export default ({ h, TextField }) => ({
         textfieldState().el.value = v;
       }
     });
-    vnode.state = {
+    Object.assign(vnode.state, {
       textfieldState,
       value,
       redrawOnUpdate: stream.merge([textfieldState, value])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

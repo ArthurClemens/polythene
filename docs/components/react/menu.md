@@ -2,12 +2,29 @@
 
 # Menu component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Hiding](#hiding)
+  - [Positioning](#positioning)
+  - [Callbacks](#callbacks)
+  - [Dialog as simple menu](#dialog-as-simple-menu)
+  - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Transitions](#transitions)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Menu options](../menu.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 A simple, permanently visible menu:
@@ -151,10 +168,12 @@ export default class extends Component {
 }
 ~~~
 
+<a name="hiding"></a>
 ### Hiding
 
 A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
 
+<a name="positioning"></a>
 ### Positioning
 
 To position a menu to another element, pass parameters `target` (set to the selector of the element) and optionally `origin` to relatively position the menu.
@@ -162,6 +181,7 @@ To position a menu to another element, pass parameters `target` (set to the sele
 To shift the menu vertically to a selected menu item, the menu item must have the class "selected".
 To override this behavior, pass `reposition: false`.
 
+<a name="callbacks"></a>
 ### Callbacks
 
 Two optional callbacks are used after the transition: `didShow` and `didHide`. As shown in the example above, `didHide` is used to  update the Menu state.
@@ -172,6 +192,7 @@ didHide: id => (this.setState({ isOpen: false }), history.push("/"))
 
 
 
+<a name="dialog-as-simple-menu"></a>
 ### Dialog as simple menu
 
 When a menu contains elements that don't fit on single lines, Material Design guidelines suggest to use a [Dialog](dialog.md) instead.
@@ -262,6 +283,7 @@ const Page = () =>
   })
 ~~~
 
+<a name="settings-menu-position-to-selected-value"></a>
 ### Settings menu (position to selected value)
 
 A settings menu shows the selected value, and when opening the menu, highlights the selected value in the menu.
@@ -320,8 +342,10 @@ h(Menu,
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Menu appearance, either with a theme or with CSS.
@@ -371,6 +395,7 @@ const style = {
 </Menu>
 ~~~
 
+<a name="transitions"></a>
 ### Transitions
 
 Transition settings in the options:
@@ -395,6 +420,7 @@ Alternatively set transition properties in CSS:
 }
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

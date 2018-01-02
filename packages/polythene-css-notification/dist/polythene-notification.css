@@ -3,7 +3,6 @@
   justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -11,12 +10,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 4000;
-  pointer-events: none
+  pointer-events: none;
+  justify-content: flex-start
 }
 
 .pe-notification__holder.pe-multiple--screen {
-  position: fixed
+  position: fixed;
+  z-index: 4000
 }
 
 :not(.pe-notification--container) .pe-multiple--container {
@@ -26,24 +26,22 @@
 .pe-notification {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  width: 274px;
-  min-height: 80px;
-  position: relative;
-  padding: 0 16px;
-  margin: 0 auto;
-  border-radius: 2px;
-  pointer-events: all
+  pointer-events: all;
+  justify-content: center;
+  margin: 0 auto
 }
 
 .pe-notification .pe-notification__content {
-  width: 100%
+  width: 288px;
+  padding: 0 16px;
+  border-radius: 2px
 }
 
 .pe-notification .pe-notification__title {
+  flex: 1 0 auto;
   padding: 14px 8px;
   font-size: 14px;
   line-height: 20px
@@ -56,7 +54,6 @@
 .pe-notification.pe-notification--horizontal .pe-notification__content {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row
@@ -66,7 +63,8 @@
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  flex-basis: 0.000000001px
+  flex-basis: 0.000000001px;
+  align-self: center
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__title--multi-line {
@@ -77,7 +75,6 @@
 .pe-notification.pe-notification--horizontal .pe-notification__action {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center
@@ -86,14 +83,13 @@
 .pe-notification.pe-notification--vertical .pe-notification__content {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__title {
-  padding-bottom: 4px
+  padding-bottom: 6px
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__title--multi-line {
@@ -103,18 +99,18 @@
 .pe-notification.pe-notification--vertical .pe-notification__action {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-pack: end;
-  justify-content: flex-end
+  justify-content: flex-end;
+  width: 100%
 }
 
-.pe-dark-tone.pe-notification,.pe-dark-tone .pe-notification {
+.pe-dark-tone.pe-notification .pe-notification__content,.pe-dark-tone .pe-notification .pe-notification__content {
   color: hsla(0,0%,100%,.87);
   background: #222
 }
 
-.pe-light-tone.pe-notification,.pe-light-tone .pe-notification,.pe-notification {
+.pe-light-tone.pe-notification .pe-notification__content,.pe-light-tone .pe-notification .pe-notification__content,.pe-notification .pe-notification__content {
   color: #000;
   background: #fff
 }

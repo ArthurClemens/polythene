@@ -1,8 +1,44 @@
 # Change log
 
-## Pre release
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" depth="2" -->
 
-### 1.0.0-rc.9
+- [Releases](#releases)
+  - [Pre releases](#pre-releases)
+
+<!-- /MarkdownTOC -->
+
+<a name="releases"></a>
+## Releases
+
+<a name="pre-releases"></a>
+### Pre releases
+
+<a name="100-rc10"></a>
+#### 1.0.0-rc.10
+
+Removed `polythene-fastclick` as it is no longer needed - the tap response on mobile is now sufficiently fast.
+
+Changes to components:
+
+* Button: the default side margin has been removed
+  * Add parent element with class `.pe-button-row` to re-add the margins, or add margins where needed
+* List:
+  * Removed keyboard control in favor of (more flexible) example code; see:
+    * Mithril
+      * [List](components/mithril/list.md#keyboard-control)
+      * [Search](components/mithril/search.md#result-list)
+    * React
+      * [List](components/react/list.md#keyboard-control)
+      * [Search](components/react/search.md#result-list)
+  * Option `padding` has new possible values "top", "bottom", "none" and "both", replacing `false`
+* TextField and Search: option `focus` has been removed (because setting the focus state outside of an event does not work on iOS)
+  * Use the `onChange` callback that returns the function `setInputState` - see [documentation for Mithril](components/mithril/textfield.md#programmatically-setting-focus-and-value), [documentation for React](components/react/textfield.md#programmatically-setting-focus-and-value)
+
+Bug fixes.
+
+
+<a name="100-rc9"></a>
+#### 1.0.0-rc.9
 
 To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
 
@@ -19,7 +55,8 @@ Changes to components:
 Bug fixes (thanks sjungwirth and ItsLeeOwen!).
 
 
-### 1.0.0-rc.8
+<a name="100-rc8"></a>
+#### 1.0.0-rc.8
 
 Updated for React 16.
 
@@ -33,12 +70,14 @@ Changes to components:
 Various bug fixes (thanks sjungwirth!).
 
 
-### 1.0.0-rc.7
+<a name="100-rc7"></a>
+#### 1.0.0-rc.7
 
 Fix for newly introduced bug in button onclick handling.
 
 
-### 1.0.0-rc.6
+<a name="100-rc6"></a>
+#### 1.0.0-rc.6
 
 * CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
 * `addLayoutStyles` and `addTypography` are now both imported from `polythene-css`; see [CSS](css.md).
@@ -55,7 +94,8 @@ Changes to components:
 Various bug fixes.
 
 
-### 1.0.0-rc.5
+<a name="100-rc5"></a>
+#### 1.0.0-rc.5
 
 Contains fixes for server-side rendering.
 
@@ -80,7 +120,8 @@ Changes to components:
 Various bug fixes. 
 
 
-### 1.0.0-rc.4
+<a name="100-rc4"></a>
+#### 1.0.0-rc.4
 
 Changes to components:
 
@@ -98,6 +139,7 @@ Changes to components:
 Various bug fixes.
 
 
-### 1.0.0-rc.1 to 1.0.0-rc.3
+<a name="100-rc1-to-100-rc3"></a>
+#### 1.0.0-rc.1 to 1.0.0-rc.3
 
 Me learning to publish with Lerna.

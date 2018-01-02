@@ -1,2 +1,342 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("mithril")):"function"==typeof define&&define.amd?define(["exports","mithril"],e):e(t.polythene={},t.m)}(this,function(t,e){"use strict";var n={autocomplete:"autocomplete",autofocus:"autofocus",class:"class",className:"class",enctype:"enctype",formaction:"formaction",maxlength:"maxlength",minlength:"minlength",onblur:"onblur",onchange:"onchange",onclick:"onclick",onfocus:"onfocus",oninput:"oninput",onkeydown:"onkeydown",onkeyup:"onkeyup",onmousedown:"onmousedown",onmouseout:"onmouseout",onmouseover:"onmouseover",onmouseup:"onmouseup",onscroll:"onscroll",onsubmit:"onsubmit",ontouchend:"ontouchend",ontouchmove:"ontouchmove",ontouchstart:"ontouchstart",readonly:"readonly",tabindex:"tabindex"},r=e=e&&e.hasOwnProperty("default")?e.default:e;r.displayName="mithril";var o=function(t,e){return e={exports:{}},t(e,e.exports),e.exports}(function(t){!function(){function e(){function t(){return arguments.length>0&&arguments[0]!==k&&r(t,arguments[0]),t._state.value}return n(t),arguments.length>0&&arguments[0]!==k&&r(t,arguments[0]),t}function n(t){t.constructor=e,t._state={id:O++,value:void 0,state:0,derive:void 0,recover:void 0,deps:{},parents:[],endStream:void 0,unregister:void 0},t.map=t["fantasy-land/map"]=d,t["fantasy-land/ap"]=l,t["fantasy-land/of"]=e,t.valueOf=v,t.toJSON=p,t.toString=v,Object.defineProperties(t,{end:{get:function(){if(!t._state.endStream){var n=e();n.map(function(e){return!0===e&&(f(t),n._state.unregister=function(){f(n)}),e}),t._state.endStream=n}return t._state.endStream}}})}function r(t,e){o(t,e);for(var n in t._state.deps)a(t._state.deps[n],!1);null!=t._state.unregister&&t._state.unregister(),u(t)}function o(t,e){t._state.value=e,t._state.changed=!0,2!==t._state.state&&(t._state.state=1)}function a(t,e){var n=t._state.parents;if(n.length>0&&n.every(_)&&(e||n.some(h))){var r=t._state.derive();if(r===k)return!1;o(t,r)}}function u(t){t._state.changed=!1;for(var e in t._state.deps)t._state.deps[e]._state.changed=!1}function s(t,n){if(!n.every(m))throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");return i(e(),n,function(){return t.apply(this,n.concat([n.filter(h)]))})}function i(t,e,n){var r=t._state;return r.derive=n,r.parents=e.filter(y),c(t,r.parents),a(t,!0),t}function c(t,e){for(var n=0;n<e.length;n++)e[n]._state.deps[t._state.id]=t,c(t,e[n]._state.parents)}function f(t){for(var e=0;e<t._state.parents.length;e++)delete t._state.parents[e]._state.deps[t._state.id];for(var n in t._state.deps){var r=t._state.deps[n],o=r._state.parents.indexOf(t);o>-1&&r._state.parents.splice(o,1)}t._state.state=2,t._state.deps={}}function d(t){return s(function(e){return t(e())},[this])}function l(t){return s(function(t,e){return t()(e())},[t,this])}function v(){return this._state.value}function p(){return null!=this._state.value&&"function"==typeof this._state.value.toJSON?this._state.value.toJSON():this._state.value}function m(t){return t._state}function _(t){return 1===t._state.state}function h(t){return t._state.changed}function y(t){return 2!==t._state.state}function g(t){return s(function(){return t.map(function(t){return t()})},t)}function w(t,e,n){var r=s(function(n){return e=t(e,n._state.value)},[n]);return 0===r._state.state&&r(e),r}function b(t,e){var n=t.map(function(t){var e=t[0];return 0===e._state.state&&e(void 0),e});return s(function(){var r=arguments[arguments.length-1];return n.forEach(function(n,o){r.indexOf(n)>-1&&(e=t[o][1](e,n._state.value))}),e},n)}var O=0,k={};e["fantasy-land/of"]=e,e.merge=g,e.combine=s,e.scan=w,e.scanMerge=b,e.HALT=k,t.exports=e}()}),a=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},u=function(t){var e=t.createContent,u=void 0===e?function(){}:e,s=t.createProps,i=void 0===s?function(){}:s,c=t.component,f=void 0===c?null:c,d=t.getElement,l=void 0===d?function(){return"div"}:d,v=t.getInitialState,p=void 0===v?function(){return{}}:v,m=t.onMount,_=void 0===m?function(){}:m,h=t.onUnMount,y=void 0===h?function(){}:h,g=t.view,w=void 0===g?null:g,b=function(t){var e=a({},t),n=p(e,o);t.state=n,t._mounted=!1,t.state.redrawOnUpdate&&t.state.redrawOnUpdate.map(function(){return t._mounted&&setTimeout(r.redraw)})},O=function(t){t._mounted=!0,_(t,{keys:n})},k=function(t){return r(f||l(t),i(t,{renderer:r,requiresKeys:!1,keys:n}),[t.attrs.before,u(t,{renderer:r,requiresKeys:!1,keys:n}),t.attrs.after])};return{view:w?function(t){return w(t,{render:k,renderer:r})}:function(t){return k(t)},oninit:b,oncreate:O,onremove:y}},s=function(t){var e=t.createContent,o=void 0===e?function(){}:e,a=t.createProps,u=void 0===a?function(){}:a,s=t.getElement,i=void 0===s?function(){return"div"}:s,c=t.component,f=void 0===c?null:c,d=t.view,l=void 0===d?null:d,v=t.onMount,p=void 0===v?function(){}:v,m=t.onUnMount,_=void 0===m?function(){}:m,h=function(t){return r(f||i(t),u(t,{renderer:r,requiresKeys:!1,keys:n}),[t.attrs.before,o(t,{renderer:r,requiresKeys:!1,keys:n}),t.attrs.after])};return{view:l?function(t){return l(t,{render:h,renderer:r})}:function(t){return h(t)},oncreate:function(t){return p(t,{keys:n})},onremove:_}};t.keys=n,t.renderer=r,t.StateComponent=u,t.ViewComponent=s,Object.defineProperty(t,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('mithril')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'mithril'], factory) :
+	(factory((global.polythene = {}),global.m));
+}(this, (function (exports,m) { 'use strict';
+
+m = m && m.hasOwnProperty('default') ? m['default'] : m;
+
+var keys = {
+  autocomplete: "autocomplete",
+  autofocus: "autofocus",
+  class: "class",
+  className: "class",
+  enctype: "enctype",
+  formaction: "formaction",
+  maxlength: "maxlength",
+  minlength: "minlength",
+  onblur: "onblur",
+  onchange: "onchange",
+  onclick: "onclick",
+  onfocus: "onfocus",
+  oninput: "oninput",
+  onkeydown: "onkeydown",
+  onkeyup: "onkeyup",
+  onmousedown: "onmousedown",
+  onmouseout: "onmouseout",
+  onmouseover: "onmouseover",
+  onmouseup: "onmouseup",
+  onscroll: "onscroll",
+  onsubmit: "onsubmit",
+  ontouchend: "ontouchend",
+  ontouchmove: "ontouchmove",
+  ontouchstart: "ontouchstart",
+  readonly: "readonly",
+  tabindex: "tabindex"
+};
+
+var renderer = m;
+renderer.displayName = "mithril";
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var stream$2 = createCommonjsModule(function (module) {
+	/* eslint-disable */
+	(function () {
+		var guid = 0,
+		    HALT = {};
+		function createStream() {
+			function stream() {
+				if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+				return stream._state.value;
+			}
+			initStream(stream);
+
+			if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+
+			return stream;
+		}
+		function initStream(stream) {
+			stream.constructor = createStream;
+			stream._state = { id: guid++, value: undefined, state: 0, derive: undefined, recover: undefined, deps: {}, parents: [], endStream: undefined, unregister: undefined };
+			stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+			stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+
+			Object.defineProperties(stream, {
+				end: { get: function get() {
+						if (!stream._state.endStream) {
+							var endStream = createStream();
+							endStream.map(function (value) {
+								if (value === true) {
+									unregisterStream(stream);
+									endStream._state.unregister = function () {
+										unregisterStream(endStream);
+									};
+								}
+								return value;
+							});
+							stream._state.endStream = endStream;
+						}
+						return stream._state.endStream;
+					} }
+			});
+		}
+		function updateStream(stream, value) {
+			updateState(stream, value);
+			for (var id in stream._state.deps) {
+				updateDependency(stream._state.deps[id], false);
+			}if (stream._state.unregister != null) stream._state.unregister();
+			finalize(stream);
+		}
+		function updateState(stream, value) {
+			stream._state.value = value;
+			stream._state.changed = true;
+			if (stream._state.state !== 2) stream._state.state = 1;
+		}
+		function updateDependency(stream, mustSync) {
+			var state = stream._state,
+			    parents = state.parents;
+			if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+				var value = stream._state.derive();
+				if (value === HALT) return false;
+				updateState(stream, value);
+			}
+		}
+		function finalize(stream) {
+			stream._state.changed = false;
+			for (var id in stream._state.deps) {
+				stream._state.deps[id]._state.changed = false;
+			}
+		}
+
+		function combine(fn, streams) {
+			if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+			return initDependency(createStream(), streams, function () {
+				return fn.apply(this, streams.concat([streams.filter(changed)]));
+			});
+		}
+
+		function initDependency(dep, streams, derive) {
+			var state = dep._state;
+			state.derive = derive;
+			state.parents = streams.filter(notEnded);
+
+			registerDependency(dep, state.parents);
+			updateDependency(dep, true);
+
+			return dep;
+		}
+		function registerDependency(stream, parents) {
+			for (var i = 0; i < parents.length; i++) {
+				parents[i]._state.deps[stream._state.id] = stream;
+				registerDependency(stream, parents[i]._state.parents);
+			}
+		}
+		function unregisterStream(stream) {
+			for (var i = 0; i < stream._state.parents.length; i++) {
+				var parent = stream._state.parents[i];
+				delete parent._state.deps[stream._state.id];
+			}
+			for (var id in stream._state.deps) {
+				var dependent = stream._state.deps[id];
+				var index = dependent._state.parents.indexOf(stream);
+				if (index > -1) dependent._state.parents.splice(index, 1);
+			}
+			stream._state.state = 2; //ended
+			stream._state.deps = {};
+		}
+
+		function map(fn) {
+			return combine(function (stream) {
+				return fn(stream());
+			}, [this]);
+		}
+		function ap(stream) {
+			return combine(function (s1, s2) {
+				return s1()(s2());
+			}, [stream, this]);
+		}
+		function valueOf() {
+			return this._state.value;
+		}
+		function toJSON() {
+			return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+		}
+
+		function valid(stream) {
+			return stream._state;
+		}
+		function active(stream) {
+			return stream._state.state === 1;
+		}
+		function changed(stream) {
+			return stream._state.changed;
+		}
+		function notEnded(stream) {
+			return stream._state.state !== 2;
+		}
+
+		function merge(streams) {
+			return combine(function () {
+				return streams.map(function (s) {
+					return s();
+				});
+			}, streams);
+		}
+
+		function scan(reducer, seed, stream) {
+			var newStream = combine(function (s) {
+				return seed = reducer(seed, s._state.value);
+			}, [stream]);
+
+			if (newStream._state.state === 0) newStream(seed);
+
+			return newStream;
+		}
+
+		function scanMerge(tuples, seed) {
+			var streams = tuples.map(function (tuple) {
+				var stream = tuple[0];
+				if (stream._state.state === 0) stream(undefined);
+				return stream;
+			});
+
+			var newStream = combine(function () {
+				var changed = arguments[arguments.length - 1];
+
+				streams.forEach(function (stream, idx) {
+					if (changed.indexOf(stream) > -1) {
+						seed = tuples[idx][1](seed, stream._state.value);
+					}
+				});
+
+				return seed;
+			}, streams);
+
+			return newStream;
+		}
+
+		createStream["fantasy-land/of"] = createStream;
+		createStream.merge = merge;
+		createStream.combine = combine;
+		createStream.scan = scan;
+		createStream.scanMerge = scanMerge;
+		createStream.HALT = HALT;
+
+		module["exports"] = createStream;
+	})();
+});
+
+var stream = stream$2;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var requiresKeys = false;
+
+var StateComponent = function StateComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === undefined ? function () {
+    return {};
+  } : _ref$getInitialState,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$onUpdate = _ref.onUpdate,
+      onUpdate = _ref$onUpdate === undefined ? function () {} : _ref$onUpdate,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view;
+
+
+  var oninit = function oninit(vnode) {
+    var protoState = _extends({}, vnode);
+    var initialState = getInitialState(protoState, stream);
+    _extends(vnode.state, initialState);
+    vnode._mounted = false;
+
+    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
+      return vnode._mounted && setTimeout(renderer.redraw);
+    });
+  };
+
+  var oncreate = function oncreate(vnode) {
+    vnode._mounted = true;
+    onMount(vnode, { keys: keys });
+  };
+
+  var render = function render(vnode) {
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys, keys: keys }), vnode.attrs.after]);
+  };
+
+  return {
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
+    oninit: oninit,
+    oncreate: oncreate,
+    onremove: onUnMount,
+    onupdate: onUpdate
+  };
+};
+
+var requiresKeys$1 = false;
+
+var ViewComponent = function ViewComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === undefined ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === undefined ? function () {} : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === undefined ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$component = _ref.component,
+      component = _ref$component === undefined ? null : _ref$component,
+      _ref$view = _ref.view,
+      view = _ref$view === undefined ? null : _ref$view,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount;
+
+
+  var render = function render(vnode) {
+    return renderer(component || getElement(vnode), createProps(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), [vnode.attrs.before, createContent(vnode, { renderer: renderer, requiresKeys: requiresKeys$1, keys: keys }), vnode.attrs.after]);
+  };
+
+  return {
+    view: view ? function (vnode) {
+      return view(vnode, { render: render, renderer: renderer });
+    } : function (vnode) {
+      return render(vnode);
+    },
+    oncreate: function oncreate(vnode) {
+      return onMount(vnode, { keys: keys });
+    },
+    onremove: onUnMount
+  };
+};
+
+exports.keys = keys;
+exports.renderer = renderer;
+exports.StateComponent = StateComponent;
+exports.ViewComponent = ViewComponent;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-base.js.map

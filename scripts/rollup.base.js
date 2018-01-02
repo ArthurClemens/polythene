@@ -31,7 +31,8 @@ export const createConfig = ({ includeDepencies, lint }) => {
   };
   config.plugins.push(resolve({
     jsnext: true,
-    main: true
+    main: true,
+    browser: true,
   }));
   lint && config.plugins.push(eslint({
     cache: true
@@ -42,6 +43,9 @@ export const createConfig = ({ includeDepencies, lint }) => {
       "node_modules/react-dom/index.js": ["render"]
     }
   }));
-  config.plugins.push(babel());
+  config.plugins.push(babel({
+    comments: true,
+    runtimeHelpers: true,
+  }));
   return config;
 };

@@ -79,10 +79,14 @@ var layout = (function (selector, componentVars) {
     padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
 
     ".pe-dialog--full-screen": {
-      padding: 0
+      padding: 0,
 
-      // dialog-content styles: see dialog pane
-    },
+      " .pe-dialog__content": {
+        width: "100%" // for IE11
+
+
+        // dialog-content styles: see dialog pane
+      } },
 
     " .pe-dialog__content": {
       position: "relative",

@@ -2,12 +2,25 @@
 
 # Toolbar component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Appearance](#appearance)
+  - [Title](#title)
+  - [Shadow](#shadow)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Toolbar options](../toolbar.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -92,8 +105,10 @@ h(Toolbar, toolbarRow)
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="title"></a>
 ### Title
 
 A ToolbarTitle can be inserted as Toolbar element as shown above.
@@ -140,6 +155,7 @@ h(Toolbar, [
 ])
 ~~~
 
+<a name="shadow"></a>
 ### Shadow
 
 ~~~jsx
@@ -153,6 +169,7 @@ import { Toolbar, Shadow } from "polythene-react"
 </div>
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Toolbar appearance, either with a theme or with CSS.
@@ -195,6 +212,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

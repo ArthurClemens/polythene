@@ -2,12 +2,26 @@
 
 # Icon Button component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Links](#links)
+- [Appearance](#appearance)
+  - [Interactivity](#interactivity)
+  - [Size](#size)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Icon Button options](../icon-button.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 Icon Button takes an icon options object:
@@ -41,16 +55,19 @@ m(IconButton, StarIcon)
 ~~~
 
 
+<a name="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
+<a name="appearance"></a>
 ## Appearance
 
 Pass [Button](../button.md) options to change the behaviour and appearance - see some examples below.
 
 
+<a name="interactivity"></a>
 ### Interactivity
 
 Disable hover and ripple effects:
@@ -72,6 +89,7 @@ m(IconButton, {
 })
 ~~~
 
+<a name="size"></a>
 ### Size
 
 `compact` creates reduced padding:
@@ -83,6 +101,7 @@ m(IconButton, {
 })
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the icon button appearance, either with a theme or with CSS.
@@ -137,6 +156,7 @@ m(IconButton, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

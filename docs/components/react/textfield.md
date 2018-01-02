@@ -2,12 +2,29 @@
 
 # Text Field component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Help texts](#help-texts)
+  - [Front-end validation](#front-end-validation)
+  - [Custom validation](#custom-validation)
+  - [Character counter](#character-counter)
+  - [Reading and setting the value](#reading-and-setting-the-value)
+  - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Text Field options](../textfield.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -114,6 +131,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="help-texts"></a>
 ### Help texts
 
 Pass `help` to create a help text below the field:
@@ -156,6 +174,7 @@ h(TextField, {
 
 A help text also function as error message when the field input is invalid.
 
+<a name="front-end-validation"></a>
 ### Front-end validation
 
 Passing `required` adds a mark `*` to the label, and uses HTML5 field validation to test for a non-empty value:
@@ -165,7 +184,7 @@ Passing `required` adds a mark `*` to the label, and uses HTML5 field validation
   label="Your Name"
   required
   floatingLabel
-  help=""Enter the name as written on the credit card"
+  help="Enter the name as written on the credit card"
 />
 ~~~
 
@@ -197,14 +216,23 @@ By default the component will validate only when a user action has been done (tr
 Variations:
 
 * To do validate immediately, use option `validateAtStart`
+* Use option `valid` to bypass defaults - see "Custom validation" below
 * To validate on key press before "onBlur", use option `validateOnInput`
 * To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
+<a name="custom-validation"></a>
 ### Custom validation
 
-Option `validate` is a function that accepts the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
+There are 2 ways to validate a field:
 
-#### With JSX
+1. By checking the field value with callback function `validate` - use this when you want to simply check the validity on input (but note that it does not get triggered on form submit)
+1. By setting the "valid" state directly - use this when you need to validate the entire form, so you keep the value in local state
+
+#### Checking the field value with callback function "validate"
+
+Option `validate` is a function that receives the current field value and is called on every `onInput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
+
+##### With JSX
 
 ~~~jsx
 <TextField
@@ -219,7 +247,7 @@ Option `validate` is a function that accepts the current field value and is call
 />
 ~~~
 
-#### With hyperscript
+##### With hyperscript
 
 ~~~javascript
 h(TextField, {
@@ -234,6 +262,24 @@ h(TextField, {
 })
 ~~~
 
+#### Setting the "valid" state directly
+
+This assumes that you store the form state (for example in a stateful component) so you are able to check the valid state of each field.
+
+~~~jsx
+const errors = state.form.error();
+const submitFailed = state.submitFailed;
+// ...
+
+<TextField
+  name="fullName"
+  valid={!(submitFailed && errors.fullName !== undefined)}
+  error={errors.fullName}
+/>
+~~~
+
+
+<a name="character-counter"></a>
 ### Character counter
 
 Adding `counter` with a value adds a live counter below the field:
@@ -278,6 +324,7 @@ h(TextField, {
 })
 ~~~
 
+<a name="reading-and-setting-the-value"></a>
 ### Reading and setting the value
 
 See also [Handling state](../../handling-state.md).
@@ -298,7 +345,7 @@ h(TextField, {
 })
 ~~~
 
-To programmatically set the input value, pass `value`:
+To use the received input value, pass `value`:
 
 ~~~jsx
 <TextField
@@ -316,22 +363,28 @@ h(TextField, {
 })
 ~~~
 
-### Programmatically giving focus
+<a name="programmatically-setting-focus-and-value"></a>
+### Programmatically setting focus and value
 
-Reading and setting the focus state is similar to handling the input value:
+The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
 
 ~~~jsx
 <TextField
   label: "Your name",
-  onChange={newState => this.setState({ hasFocus: newState.focus })} 
-  focus={this.state.hasFocus}
+  onChange={({ setInputState }) => this.setState({ setInputState })} 
 />,
 <Button
   label="Set focus"
   events={{
-    onClick={() => this.setState({ value: true })}
+    onClick={() => this.state.setInputState({ focus: true })}
   }}
-})
+/>
+<Button
+  label="Clear"
+  events={{
+    onClick={() => this.state.setInputState({ focus: true, value: "" })}
+  }}
+/>
 ~~~
 
 or with hyperscript:
@@ -339,20 +392,27 @@ or with hyperscript:
 ~~~javascript
 h(TextField, {
   label: "Your name",
-  onChange: newState => this.setState({ hasFocus: newState.focus }),
-  focus: this.state.hasFocus
+  onChange: ({ setInputState }) => this.setState({ setInputState })
 }),
 h(Button, {
   label: "Set focus",
   events: {
-    onClick: () => this.setState({ hasFocus: true })
+    onClick: () => this.state.setInputState({ focus: true })}
+  }
+}),
+h(Button, {
+  label: "Clear",
+  events: {
+    onClick: () => this.state.setInputState({ focus: true, value: "" })}
   }
 })
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the TextField appearance, either with a theme or with CSS.
@@ -396,6 +456,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

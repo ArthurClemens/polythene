@@ -1,7 +1,7 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/card";
 
-export const createProps = vnode => {
+export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   const primaryHasMedia = Array.isArray(attrs.content)
     ? attrs.content.reduce((total, current) =>
@@ -17,8 +17,9 @@ export const createProps = vnode => {
       className: [
         classes.primary,
         attrs.tight ? classes.primaryTight : null,
-        primaryHasMedia ? classes.primaryHasMedia : null
-      ].join(" ")
+        primaryHasMedia ? classes.primaryHasMedia : null,
+        attrs.className || attrs[k.class]
+      ].join(" "),
     }
   );
 };
@@ -33,7 +34,8 @@ export const createContent = (vnode, { renderer: h })  => {
         : h("div",
           {
             className: classes.title,
-            key: "title"
+            key: "title",
+            style: pAttrs.style
           },
           [
             pAttrs.title,
@@ -53,12 +55,13 @@ export const createContent = (vnode, { renderer: h })  => {
       return h("div",
         {
           className: classes.primaryMedia,
-          key: "media"
+          key: "media",
+          style: pAttrs.style
         },
         dispatcher({ media: pAttrs })
       );
     },
-    actions: pAttrs => dispatcher({ actions: pAttrs })
+    actions: pAttrs => dispatcher({ actions: pAttrs }),
   };
 
   return Array.isArray(attrs.content)

@@ -20,6 +20,19 @@ export default ({ Card, keys }) => {
       }
     },
     {
+      name: "Option: primary className",
+      component: Card,
+      attrs: {
+        content: [
+          {
+            primary: {
+              className: "className-primary"
+            }
+          }
+        ]
+      }
+    },
+    {
       name: "Option: class",
       component: Card,
       attrs: {

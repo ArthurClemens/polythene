@@ -1,14 +1,17 @@
 const layout = [
   {
     "display": "-webkit-box"
-  }, {
+  },
+  {
     "display": "-moz-box"
-  }, {
+  },
+  {
     "display": "-ms-flexbox",
-    "-ms-flex-preferred-size": "initial" // IE10
-  }, {
+  },
+  {
     "display": "-webkit-flex"
-  }, {
+  },
+  {
     "display": "flex"
   }
 ];
@@ -97,7 +100,6 @@ const layoutEnd = [
 
 const layoutJustified = [
   layout, {
-    "-ms-flex-line-pack": "stretch", // IE10
     "-ms-flex-pack": "justify",
     "-webkit-justify-content": "space-between",
     "justify-content": "space-between"
@@ -106,7 +108,6 @@ const layoutJustified = [
 
 const layoutStartJustified = [
   layout, {
-    "-ms-flex-align": "start", // IE10
     "-ms-flex-pack": "start",
     "-webkit-justify-content": "flex-start",
     "justify-content": "flex-start"
@@ -184,28 +185,24 @@ const flexGrow = value => ({
 });
 
 const selfStart = {
-  "-ms-flex-item-align": "start", // IE10
   "-ms-align-self": "flex-start",
   "-webkit-align-self": "flex-start",
   "align-self": "flex-start"
 };
 
 const selfCenter = {
-  "-ms-flex-item-align": "center", // IE10
   "-ms-align-self": "center",
   "-webkit-align-self": "center",
   "align-self": "center"
 };
 
 const selfEnd = {
-  "-ms-flex-item-align": "end", // IE10
   "-ms-align-self": "flex-end",
   "-webkit-align-self": "flex-end",
   "align-self": "flex-end"
 };
 
 const selfStretch = {
-  "-ms-flex-item-align": "stretch", // IE10
   "-ms-align-self": "stretch",
   "-webkit-align-self": "stretch",
   "align-self": "stretch"

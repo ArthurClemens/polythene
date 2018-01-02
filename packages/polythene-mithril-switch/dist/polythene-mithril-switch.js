@@ -1,2 +1,40 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-switch"),require("polythene-core-selection-control"),require("polythene-mithril-shadow"),require("polythene-mithril-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-switch","polythene-core-selection-control","polythene-mithril-shadow","polythene-mithril-icon-button"],t):t(e.polythene={},e["polythene-mithril-base"],e["polythene-core-switch"],e["polythene-core-selection-control"],e["polythene-mithril-shadow"],e["polythene-mithril-icon-button"])}(this,function(e,t,o,n,r,i){"use strict";var l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},c=t.ViewComponent(l({},o.viewControl,{createContent:function(e,t){return o.viewControl.createContent(e,l(t,{Shadow:r.Shadow,IconButton:i.IconButton}))}}));c.displayName="ViewControl";var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},h=t.StateComponent(a({},n.coreSelectionControl,{createContent:function(e,t){return n.coreSelectionControl.createContent(e,a(t,{ViewControl:c}))}}));h.displayName="SelectionControl";var p=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},s=t.StateComponent(p({},o.coreSwitch,{component:h}));s.displayName="Switch",e.Switch=s,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-switch'), require('polythene-core-selection-control'), require('polythene-mithril-shadow'), require('polythene-mithril-icon-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-switch', 'polythene-core-selection-control', 'polythene-mithril-shadow', 'polythene-mithril-icon-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-switch'],global['polythene-core-selection-control'],global['polythene-mithril-shadow'],global['polythene-mithril-icon-button']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreSwitch,polytheneCoreSelectionControl,polytheneMithrilShadow,polytheneMithrilIconButton) { 'use strict';
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ViewControl = polytheneMithrilBase.ViewComponent(_extends$2({}, polytheneCoreSwitch.viewControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSwitch.viewControl.createContent(vnode, _extends$2(args, { Shadow: polytheneMithrilShadow.Shadow, IconButton: polytheneMithrilIconButton.IconButton }));
+  }
+}));
+
+ViewControl.displayName = "ViewControl";
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var SelectionControl = polytheneMithrilBase.StateComponent(_extends$1({}, polytheneCoreSelectionControl.coreSelectionControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+  }
+}));
+
+SelectionControl.displayName = "SelectionControl";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Switch = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreSwitch.coreSwitch, {
+  component: SelectionControl
+}));
+
+Switch.displayName = "Switch";
+
+exports.Switch = Switch;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-switch.js.map

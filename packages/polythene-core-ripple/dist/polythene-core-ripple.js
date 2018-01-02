@@ -1,2 +1,191 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,n){"use strict";var i=t.getAnimationEndEvent(),a=function(e,n){if(!t.isServer){var i=window.document,a=i.createElement("style");a.setAttribute("id",e),a.appendChild(i.createTextNode(n)),i.head.appendChild(a)}},o=function(e){if(!t.isServer){var n=document.getElementById(e);n&&n.parentNode&&n.parentNode.removeChild(n)}},r=function(e){var r=e.e,s=e.id,c=e.el,l=e.attrs,d=e.classes;return new Promise(function(e){var p=document.createElement("div");p.setAttribute("class",d.mask),c.appendChild(p);var u=document.createElement("div");u.setAttribute("class",d.waves),p.appendChild(u);var m=c.getBoundingClientRect(),v=t.isTouch&&r.touches?r.touches[0].pageX:r.clientX,f=t.isTouch&&r.touches?r.touches[0].pageY:r.clientY,h=c.offsetWidth,y=c.offsetHeight,g=Math.sqrt(h*h+y*y),w=l.center?m.left+m.width/2:v,E=l.center?m.top+m.height/2:f,b=w-m.left-g/2,_=E-m.top-g/2,k=void 0!==l.startOpacity?l.startOpacity:.2,C=void 0!==l.opacityDecayVelocity?l.opacityDecayVelocity:.35,O=l.endOpacity||0,A=l.startScale||.1,S=l.endScale||2,j=l.duration?l.duration:1/C*.2,x=window.getComputedStyle(c).color,L=u.style;L.width=L.height=g+"px",L.top=_+"px",L.left=b+"px",L["animation-duration"]=L["-webkit-animation-duration"]=L["-moz-animation-duration"]=L["-o-animation-duration"]=j+"s",L.backgroundColor=x,L.opacity=k,L.animationName=s,L.animationTimingFunction=l.animationTimingFunction||n.vars.animation_curve_default,a(s,"@keyframes "+s+" {\n      0% {\n        transform:scale("+A+");\n        opacity: "+k+"\n      }\n      100% {\n        transform:scale("+S+");\n        opacity: "+O+";\n      }\n    }");var N=function t(n){o(s),u.removeEventListener(i,t,!1),l.persistent?(L.opacity=O,L.transform="scale("+S+")"):(u.classList.remove(d.wavesAnimating),p.removeChild(u),c.removeChild(p)),e(n)};u.addEventListener(i,N,!1),u.classList.add(d.wavesAnimating)})},s={component:"pe-ripple",mask:"pe-ripple__mask",waves:"pe-ripple__waves",unconstrained:"pe-ripple--unconstrained",wavesAnimating:"pe-ripple__waves--animating"},c=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i])}return e},l=function(e){return e.attrs.element||"div"},d=function(){return{animations:{},animating:!1,cleanUp:void 0}},p=function(e,n){var i=n.keys,a=e.attrs;return c({},t.filterSupportedAttributes(a),{className:[s.component,a.unconstrained?s.unconstrained:null,"dark"===a.tone?"pe-dark-tone":null,"light"===a.tone?"pe-light-tone":null,a.className||a[i.class]].join(" ")})},u=function(e){return e.animating=Object.keys(e.animations).length>0},m=function(e){if(e.dom||!t.isServer){var n=e.state,i=e.attrs,a=function(t){if(!(i.disabled||!i.multi&&n.animating)){i.start&&i.start(t);var a="ripple_animation_"+(new Date).getTime();n.animations[a]=r({e:t,id:a,el:e.dom,attrs:i,classes:s}).then(function(e){i.end&&i.end(e),delete n.animations[a],u(n)}),u(n)}},o=i.target?i.target:e.dom&&e.dom.parentElement;o.addEventListener(t.pointerEndEvent,a,!1),n.cleanUp=function(){return o.removeEventListener(t.pointerEndEvent,a,!1)}}},v=function(e){var t=e.state;return t.cleanUp&&t.cleanUp()},f=Object.freeze({getElement:l,getInitialState:d,createProps:p,onMount:m,onUnMount:v}),h={color:"inherit"};e.coreRipple=f,e.vars=h,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var ANIMATION_END_EVENT = polytheneCore.getAnimationEndEvent();
+var DEFAULT_START_OPACITY = 0.2;
+var DEFAULT_END_OPACITY = 0.0;
+var DEFAULT_START_SCALE = 0.1;
+var DEFAULT_END_SCALE = 2.0;
+var OPACITY_DECAY_VELOCITY = 0.35;
+
+var addStyleToHead = function addStyleToHead(id, stylesheet) {
+  if (polytheneCore.isServer) return;
+  var documentRef = window.document;
+  var styleEl = documentRef.createElement("style");
+  styleEl.setAttribute("id", id);
+  styleEl.appendChild(documentRef.createTextNode(stylesheet));
+  documentRef.head.appendChild(styleEl);
+};
+
+var removeStyleFromHead = function removeStyleFromHead(id) {
+  if (polytheneCore.isServer) return;
+  var el = document.getElementById(id);
+  if (el && el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+};
+
+var animation = (function (_ref) {
+  var e = _ref.e,
+      id = _ref.id,
+      el = _ref.el,
+      attrs = _ref.attrs,
+      classes = _ref.classes;
+
+  return new Promise(function (resolve) {
+    var container = document.createElement("div");
+    container.setAttribute("class", classes.mask);
+    el.appendChild(container);
+    var waves = document.createElement("div");
+    waves.setAttribute("class", classes.waves);
+    container.appendChild(waves);
+    var rect = el.getBoundingClientRect();
+    var x = polytheneCore.isTouch && e.touches ? e.touches[0].pageX : e.clientX;
+    var y = polytheneCore.isTouch && e.touches ? e.touches[0].pageY : e.clientY;
+    var w = el.offsetWidth;
+    var h = el.offsetHeight;
+    var waveRadius = Math.sqrt(w * w + h * h);
+    var mx = attrs.center ? rect.left + rect.width / 2 : x;
+    var my = attrs.center ? rect.top + rect.height / 2 : y;
+    var rx = mx - rect.left - waveRadius / 2;
+    var ry = my - rect.top - waveRadius / 2;
+    var startOpacity = attrs.startOpacity !== undefined ? attrs.startOpacity : DEFAULT_START_OPACITY;
+    var opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined ? attrs.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+    var endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
+    var startScale = attrs.startScale || DEFAULT_START_SCALE;
+    var endScale = attrs.endScale || DEFAULT_END_SCALE;
+    var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
+    var color = window.getComputedStyle(el).color;
+
+    var style = waves.style;
+    style.width = style.height = waveRadius + "px";
+    style.top = ry + "px";
+    style.left = rx + "px";
+    style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
+    style.backgroundColor = color;
+    style.opacity = startOpacity;
+    style.animationName = id;
+    style.animationTimingFunction = attrs.animationTimingFunction || polytheneTheme.vars.animation_curve_default;
+
+    var rippleStyleSheet = "@keyframes " + id + " {\n      0% {\n        transform:scale(" + startScale + ");\n        opacity: " + startOpacity + "\n      }\n      100% {\n        transform:scale(" + endScale + ");\n        opacity: " + endOpacity + ";\n      }\n    }";
+    addStyleToHead(id, rippleStyleSheet);
+
+    var animationDone = function animationDone(evt) {
+      removeStyleFromHead(id);
+      waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+      if (attrs.persistent) {
+        style.opacity = endOpacity;
+        style.transform = "scale(" + endScale + ")";
+      } else {
+        waves.classList.remove(classes.wavesAnimating);
+        container.removeChild(waves);
+        el.removeChild(container);
+      }
+      resolve(evt);
+    };
+
+    waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
+    waves.classList.add(classes.wavesAnimating);
+  });
+});
+
+var classes = {
+  component: "pe-ripple",
+
+  // elements
+  mask: "pe-ripple__mask",
+  waves: "pe-ripple__waves",
+
+  // states
+  unconstrained: "pe-ripple--unconstrained",
+  wavesAnimating: "pe-ripple__waves--animating"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var getInitialState = function getInitialState() {
+  return {
+    animations: {},
+    animating: false,
+    cleanUp: undefined
+  };
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var updateAnimationState = function updateAnimationState(state) {
+  return state.animating = Object.keys(state.animations).length > 0;
+};
+
+var onMount = function onMount(vnode) {
+  if (!vnode.dom && polytheneCore.isServer) {
+    return;
+  }
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  var tap = function tap(e) {
+    if (attrs.disabled || !attrs.multi && state.animating) {
+      return;
+    }
+    if (attrs.start) {
+      attrs.start(e);
+    }
+    var id = "ripple_animation_" + new Date().getTime();
+    state.animations[id] = animation({ e: e, id: id, el: vnode.dom, attrs: attrs, classes: classes }).then(function (evt) {
+      if (attrs.end) {
+        attrs.end(evt);
+      }
+      delete state.animations[id];
+      updateAnimationState(state);
+    });
+    updateAnimationState(state);
+  };
+  var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
+
+  triggerEl.addEventListener(polytheneCore.pointerEndEvent, tap, false);
+  state.cleanUp = function () {
+    return triggerEl.removeEventListener(polytheneCore.pointerEndEvent, tap, false);
+  };
+};
+
+var onUnMount = function onUnMount(_ref2) {
+  var state = _ref2.state;
+  return state.cleanUp && state.cleanUp();
+};
+
+var ripple = Object.freeze({
+	getElement: getElement,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	onMount: onMount,
+	onUnMount: onUnMount
+});
+
+var vars$1 = {
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
+};
+
+exports.coreRipple = ripple;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-ripple.js.map

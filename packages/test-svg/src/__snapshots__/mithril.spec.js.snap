@@ -11,7 +11,7 @@ exports[`test Child node (trusted) 1`] = `
 `;
 
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px;\">
   <div class=\"pe-svg pe-light-tone\">
     <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
     \"false\">
@@ -25,7 +25,7 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
+"<div style=\"background: rgb(255, 255, 255); padding: 8px;\" class=
 \"pe-light-tone\">
   <div class=\"pe-svg\">
     <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" focusable=
@@ -40,17 +40,17 @@ exports[`test Dark tone class + light tone class 1`] = `
 `;
 
 exports[`test No options 1`] = `
-"<div class="pe-svg"></div>
+"<div class=\"pe-svg\"></div>
 "
 `;
 
 exports[`test Option: class 1`] = `
-"<div class="pe-svg class-x"></div>
+"<div class=\"pe-svg class-x\"></div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<div class="pe-svg className-x"></div>
+"<div class=\"pe-svg className-x\"></div>
 "
 `;
 
@@ -79,12 +79,12 @@ exports[`test Option: content -- dark tone class 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-"<a class="pe-svg"></a>
+"<a class=\"pe-svg\"></a>
 "
 `;
 
 exports[`test Option: id 1`] = `
-"<div id="id-x" class="pe-svg"></div>
+"<div id=\"id-x\" class=\"pe-svg\"></div>
 "
 `;
 

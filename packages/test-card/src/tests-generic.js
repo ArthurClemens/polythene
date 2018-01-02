@@ -740,7 +740,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
     {
-      name: "Title image, sizse large, square",
+      name: "Title image, size large, square",
       component: Card,
       attrs: {
         style: { maxWidth: "360px" },
@@ -748,7 +748,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
     {
-      name: "Title image, sizse large, landscape",
+      name: "Title image, size large, landscape",
       component: Card,
       attrs: {
         style: { maxWidth: "360px" },
@@ -1045,6 +1045,35 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           }
         }],
         z: 2
+      }
+    },
+
+    {
+      name: "Header + any",
+      component: Card,
+      attrs: {
+        style: { maxWidth: "400px" },
+        content: [
+          {
+            header: {
+              title: titleLineText,
+              subtitle: infoLineText,
+              icon: {
+                size: "large",
+                avatar: true,
+                src: avatarImageUrl("1.png")
+              }
+            }
+          },
+          {
+            any: {
+              style: {
+                background: "#eee"
+              },
+              content: h.trust(ipsum)
+            }
+          }
+        ]
       }
     },
 

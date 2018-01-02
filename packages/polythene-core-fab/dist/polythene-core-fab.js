@@ -1,2 +1,80 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-theme"],r):r(e.polythene={},e["polythene-theme"])}(this,function(e,r){"use strict";var o={component:"pe-fab",content:"pe-fab__content",mini:"pe-fab--mini"},n=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var o=arguments[r];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},t=function(e,r){var t=r.keys,a=r.renderer,c=r.Icon,i=e.attrs,l=i.content?i.content:i.icon?a(c,i.icon):i.children||e.children;return n({},{content:a("div",{className:o.content},l),parentClassName:[o.component,i.mini?o.mini:null,i.className||i[t.class]].join(" "),ripple:{center:!0,opacityDecayVelocity:.24},shadow:{increase:5},ink:!0,wash:!0,animateOnTap:void 0===i.animateOnTap||i.animateOnTap},i)},a=function(){return null},c=Object.freeze({createProps:t,createContent:a}),i=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},l={size_regular:7*r.vars.grid_unit_component,size_mini:5*r.vars.grid_unit_component,padding_regular:2*r.vars.grid_unit_component,color_light:i(r.vars.color_primary_foreground),color_light_focus_background:i(r.vars.color_light_foreground,r.vars.blend_light_background_hover),color_light_focus_opacity:r.vars.blend_light_background_hover_medium,color_light_background:i(r.vars.color_primary),color_dark:i(r.vars.color_primary_foreground),color_dark_focus_background:i(r.vars.color_dark_foreground,r.vars.blend_dark_background_hover),color_dark_background:i(r.vars.color_primary)};e.coreFAB=c,e.vars=l,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-theme']));
+}(this, (function (exports,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-fab",
+
+  // elements
+  content: "pe-fab__content",
+
+  // states
+  mini: "pe-fab--mini"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
+
+// Props to be passed to a raised button, including 'content'
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys,
+      h = _ref.renderer,
+      Icon = _ref.Icon;
+
+  var attrs = vnode.attrs;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+  return _extends({}, {
+    content: h("div", { className: classes.content }, content),
+    parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
+    // defaults
+    ripple: {
+      center: true,
+      opacityDecayVelocity: 0.24
+    },
+    shadow: { increase: 5 },
+    ink: true,
+    wash: true,
+    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
+  }, attrs);
+};
+
+var createContent = function createContent() {
+  return null;
+};
+
+var fab = Object.freeze({
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  size_regular: 7 * polytheneTheme.vars.grid_unit_component,
+  size_mini: 5 * polytheneTheme.vars.grid_unit_component,
+  padding_regular: 2 * polytheneTheme.vars.grid_unit_component,
+
+  color_light: rgba(polytheneTheme.vars.color_primary_foreground),
+  color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+
+  color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium, // same as button
+  color_light_background: rgba(polytheneTheme.vars.color_primary),
+
+  color_dark: rgba(polytheneTheme.vars.color_primary_foreground),
+  color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
+  color_dark_background: rgba(polytheneTheme.vars.color_primary)
+};
+
+exports.coreFAB = fab;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-fab.js.map

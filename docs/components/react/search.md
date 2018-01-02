@@ -2,12 +2,29 @@
 
 # Search component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Search box type](#search-box-type)
+  - [Icons and buttons](#icons-and-buttons)
+  - [Logic: storing and clearing the value](#logic-storing-and-clearing-the-value)
+  - [Complete example](#complete-example)
+  - [Result list](#result-list)
+- [Appearance](#appearance)
+  - [Shadow](#shadow)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Search options](../search.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -39,6 +56,7 @@ h(Search, {
 
 This creates a search field without any icons, with label "Search", and is little more than a [Text Field](../textfield.md) with a drop shadow. The field also needs search icons and buttons. More on that below.
 
+<a name="search-box-type"></a>
 ### Search box type
 
 The search box can be "inset" (default) or "full width".
@@ -72,6 +90,7 @@ h(Search, {
 })
 ~~~
 
+<a name="icons-and-buttons"></a>
 ### Icons and buttons
 
 The search component does not include any icons by itself - providing those is the responsibility of your application. 
@@ -108,14 +127,14 @@ buttons: {
 
 Not all button states need to be defined.
 
+<a name="logic-storing-and-clearing-the-value"></a>
 ### Logic: storing and clearing the value
 
 See also [Handling state](../../handling-state.md).
 
-To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value`, `focus` and `onChange`:
+To add logic to the search field, we will wrap the search field in a component. We will store the Text Field state in our component state, and set the input value programmatically. For this we will use the Text Field's `value` and `onChange`:
 
 * `value` - sets the text input value
-* `focus` - sets the text input focus state
 * `onChange => ({ value, focus })` - receives the latest state
 
 Text Field attributes are passed with option `textfield`:
@@ -123,8 +142,7 @@ Text Field attributes are passed with option `textfield`:
 ~~~javascript
 textfield: {
   value: this.state.value,
-  focus: this.state.focus,
-  onChange: ({ value, focus }) => this.setState({ value, focus }),
+  onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
 }
 ~~~
 
@@ -135,6 +153,7 @@ To clear the field:
 
 The back button clears the field and removes the focus, setting the search field to the initial state. Remove the ripple (`ink: false`) to prevent a ripple after the click (it would seem like the returned search button received the click).
 
+<a name="complete-example"></a>
 ### Complete example
 
 ~~~jsx
@@ -178,14 +197,14 @@ export default class extends Component {
     super(props)
     this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     }
     this.clear = this.clear.bind(this)
     this.leave = this.leave.bind(this)
   }
 
   clear() {
-    this.setState({
+    this.state.setInputState({
       value: "",
       focus: true
     })
@@ -197,14 +216,12 @@ export default class extends Component {
 
   render() {
     const value = this.state.value
-    const focus = this.state.focus
     return (
       <Search
         textfield={{
           label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
-          value,
-          focus
+          onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
+          value
         }}
         buttons={{
           none: {
@@ -279,14 +296,14 @@ export default class extends Component {
     super(props)
     this.state = {
       value: "",
-      focus: false
+      setInputState: undefined
     }
     this.clear = this.clear.bind(this)
     this.leave = this.leave.bind(this)
   }
 
   clear() {
-    this.setState({
+    this.state.setInputState({
       value: "",
       focus: true
     })
@@ -302,9 +319,8 @@ export default class extends Component {
       {
         textfield: {
           label: "Search",
-          onChange: ({ value, focus }) => this.setState({ value, focus }),
+          onChange: ({ value, setInputState }) => this.setState({ value, setInputState }),
           value: this.state.value,
-          focus: this.state.focus
         },
         buttons: {
           none: {
@@ -331,9 +347,43 @@ export default class extends Component {
 }
 ~~~
 
+<a name="result-list"></a>
+### Result list
 
+A search field is almost always combined with a list of search results.
+
+This can be created by combining both search field and result list in a stateful wrapper component, where the wrapper keeps track of the current search string and generates corresponding results.
+
+To add keyboard control - allowing to move from the search field into the results list and back - can be done by reusing the [keyboard list example](list.md#keyboard-control).
+
+The basic setup is:
+
+~~~javascript
+class SearchWithResults extends React.Component {
+  constructor(props) {
+    // ... logic
+  }
+  render() {
+    return (
+      {/* The container catches all keyboard events for both search field and result list */}
+      <div onKeyDown={this.handleKey}>
+        <SearchField />
+        <ResultList />
+      </div>
+    )
+  }
+}
+~~~
+
+An elaborate example is available as fiddle:
+
+<a href="https://jsfiddle.net/ArthurClemens/48oay6Lj/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+
+<a name="appearance"></a>
 ## Appearance
 
+<a name="shadow"></a>
 ### Shadow
 
 To add a drop shadow to the search field:
@@ -348,6 +398,7 @@ or with hyperscript:
 before: h(Shadow)
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Search appearance, either with a theme or with CSS.
@@ -391,6 +442,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

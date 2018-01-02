@@ -3,10 +3,10 @@ import stream from "mithril/stream";
 export default ({ h, RadioGroup }) => ({
   oninit: vnode => {
     const checkedValue = stream();
-    vnode.state = {
+    Object.assign(vnode.state, {
       checkedValue,
       redrawOnUpdate: stream.merge([checkedValue])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

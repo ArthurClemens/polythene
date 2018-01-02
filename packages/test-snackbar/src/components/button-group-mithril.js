@@ -2,7 +2,7 @@ import { renderer as h, RaisedButton, Snackbar } from "polythene-mithril";
 
 export default {
   view: ({ attrs }) =>
-    h("div", [
+    h(".pe-button-row", [
       attrs.variations.map(opts =>
         h(RaisedButton, {
           label: opts.label,

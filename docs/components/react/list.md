@@ -2,12 +2,27 @@
 
 # List component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [List content variations](#list-content-variations)
+- [Variations](#variations)
+  - [Sticky headers](#sticky-headers)
+  - [Keyboard control](#keyboard-control)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
-[List options](list.md)
+[List options](../list.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -37,18 +52,20 @@ h(List, {
   header: {
     title: "Friends"
   },
-  [
+  tiles: [
     h(ListTile, {title: "Jennifer Barker"}),
     h(ListTile, {title: "Ali Connors"}),
   ]
 })
 ~~~
 
+<a name="list-content-variations"></a>
 ## List content variations
 
 See [List Tile](list-tile.md) for layout variations, for example to add links, icons and images. 
 
 
+<a name="variations"></a>
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
@@ -87,6 +104,7 @@ h(List, {
 })
 ~~~
 
+<a name="sticky-headers"></a>
 ### Sticky headers
 
 To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not work in IE or Edge](http://caniuse.com/#feat=css-sticky), so its use is a bit limited.
@@ -105,69 +123,87 @@ If you do choose to use it, add some styles to the container that holds the list
 ~~~
 
 
+<a name="keyboard-control"></a>
 ### Keyboard control
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
 
-* `keyboardControl` enables keyboard control.
-* The list can be navigated using TAB, the arrow keys.
-* List items can be selected with ENTER and clicking.
-* List Tiles with option `header` will be skipped.
-* The current item is highlighted; the initial highlighted item is set with `defaultHighlightIndex`.
-* Callback function `onSelect` allows to interpret the selected item; passed parameters are: 
-  * `event`
-  * `index`
-  * `dom`
-  * `attrs`
+Visually, tiles can be visually marked using List's `hoverable` and [List Tile's](../list-tile.md) `highlight` and `selected`.
 
-**Note:**
+To give a list keyboard control, it must first receive focus, either with a click or from a parent element that has focus. List Tile elements can receive focus because they have attribute `tabindex=0` by default.
 
-* When using stacked lists, the one list does not know the state of the other list. Instead use one single list and set headers with ListTile option `header`.
-* Option `onclick` is ignored because this is internally implemented by List. Use `onSelect` instead.
+To keep track of the selected element, wrap the list in a stateful component. The component will also handle key input.
 
+In this example we are creating a list that accepts a click to create the first selection, then accepts arrow keys to move the selection up and down, and the Escape key to remove the selection.
+
+A more elaborate example is given in [Search - Results list](search.md#result-list).
+
+<a href="https://jsfiddle.net/ArthurClemens/hv8kcfs1/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+#### With JSX
 
 ~~~jsx
-import { List, Notification } from "polythene-react"
+import React from "react"
+import { List, ListTile } from "polythene-react"
 
-const selectTile = ({ title }) => (
-  { title }
-);
-const headerTile = ({ title }) => (
-  { title, header: true }
-);
+const listData = ["A", "B", "C", "D", "E"]
 
-<List
-  keyboardControl
-  highlightIndex={0}
-  onSelect={({ attrs }) => (
-    Notification.show({
-      title: attrs.title,
-      showDuration: .1,
-      hideDuration: .2,
-      timeout: .8
-    })
-  )}
-  tiles={[
-    headerTile({ title: "A"}),
-    selectTile({ title: "Amman" }),
-    selectTile({ title: "Amsterdam" }),
-    selectTile({ title: "Athens" }),
-    headerTile({ title: "B" }),
-    selectTile({ title: "Bangkok" }),
-    selectTile({ title: "Beijing" }),
-    selectTile({ title: "Brussels" }),
-    headerTile({ title: "C" }),
-    selectTile({ title: "Canberra" }),
-    selectTile({ title: "Cardiff" }),
-    selectTile({ title: "Copenhagen" }),
-  ]}
-/>
+class KeyboardList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedIndex: -1
+    }
+    this.handleKey = this.handleKey.bind(this)
+  }
+  
+  handleKey(e) {
+    const index = this.state.selectedIndex
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      const newIndex = Math.min(index + 1, listData.length - 1)
+      this.setState({ selectedIndex: newIndex })
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault()
+      const newIndex = Math.max(0, index - 1)
+      this.setState({ selectedIndex: newIndex })
+    } else if (e.key === "Escape") {
+      this.setState({ selectedIndex: -1 })
+    }
+  }
+  
+  render() {
+    const selectedIndex = this.state.selectedIndex
+    return (
+      <div onKeyDown={this.handleKey}>
+        <List
+          borders
+          tiles={listData.map((title, index) =>
+            <ListTile
+              title={title}
+              key={title}
+              hoverable
+              selected={index === selectedIndex}
+              className="themed-list-tile"
+              events={{
+                onClick: () => this.setState({ selectedIndex: index })
+              }}
+            />
+          )}
+        />
+      </div>
+    )
+  }
+}
 ~~~
 
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the list appearance, either with a theme or with CSS.
@@ -213,6 +249,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

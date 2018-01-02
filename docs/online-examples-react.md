@@ -1,5 +1,11 @@
 # List of online Polythene examples for React
 
+## Demo site
+
+* [React demo site](https://arthurclemens.github.io/polythene-demos/react/)
+
+## Live examples
+
 Try out Polythene in JSFiddles.
 
 ## JSX
@@ -19,17 +25,19 @@ Try out Polythene in JSFiddles.
 * Dialog
   * [Dialog layout, styling and opening](https://jsfiddle.net/ArthurClemens/m08o291L/)
   * [Full screen dialog](https://jsfiddle.net/ArthurClemens/npq4phf3/)
-  * [Dynamic content](https://jsfiddle.net/ArthurClemens/1fgh0bgt/)
+  * [Dynamic content (Passing dialog options as a function)](https://jsfiddle.net/ArthurClemens/1fgh0bgt/)
+  * [Dynamic content (Continuously calling Dialog.show)](https://jsfiddle.net/ArthurClemens/oe91vy6f/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ep9pf5wp/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/hp6ksg2m/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/b1vbbLgw/)
-  * [Search](https://jsfiddle.net/ArthurClemens/qm85uyd9/)
   * [Slider](https://jsfiddle.net/ArthurClemens/6crka9hy/)
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
   * [Text Field](https://jsfiddle.net/ArthurClemens/dz21hu8c/)
-* [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)  
-* [List Tile](https://jsfiddle.net/ArthurClemens/gmdcvjeL/)
+* Lists  
+  * [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)
+  * [List with keyboard control](https://jsfiddle.net/ArthurClemens/hv8kcfs1/)
+  * [List Tile](https://jsfiddle.net/ArthurClemens/gmdcvjeL/)
 * Menu
   * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/gta0c3te/)
   * [Menu opening variations](https://jsfiddle.net/ArthurClemens/Lm1o6f9y/)
@@ -37,6 +45,9 @@ Try out Polythene in JSFiddles.
   * [Notification](https://jsfiddle.net/ArthurClemens/c3wsbhj0/)
   * [Snackbar](https://jsfiddle.net/ArthurClemens/4edrmz42/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/brx9wdhv/)
+* Search
+  * [Search field](https://jsfiddle.net/ArthurClemens/qm85uyd9/)
+  * [Search with result list](https://jsfiddle.net/ArthurClemens/48oay6Lj/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/uej4sw3q/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/ykshk90g/)
 * [SVG](https://jsfiddle.net/ArthurClemens/qm31tx7b/)
@@ -58,11 +69,11 @@ Try out Polythene in JSFiddles.
   * [Icon Button](https://jsfiddle.net/ArthurClemens/xh7jgutu/)
   * [Raised Button](https://jsfiddle.net/ArthurClemens/hL8wmrpL/)
 * [Card](https://jsfiddle.net/ArthurClemens/h6n5jzgd/)
+* Dialog: no hyperscript examples yet
 * [Icon](https://jsfiddle.net/ArthurClemens/qhh725aa/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/g07snvox/)
   * [Radio Button](https://jsfiddle.net/ArthurClemens/fhqrcuL9/)
-  * [Search](https://jsfiddle.net/ArthurClemens/hruxczph/)
   * [Slider](https://jsfiddle.net/ArthurClemens/ekht8sef/)
   * [Switch](https://jsfiddle.net/ArthurClemens/0eaeadbm/)
   * [Text Field](https://jsfiddle.net/ArthurClemens/yug5s0ha/)
@@ -75,6 +86,7 @@ Try out Polythene in JSFiddles.
   * [Notification](https://jsfiddle.net/ArthurClemens/08g6aqpd/)
   * [Snackbar](https://jsfiddle.net/ArthurClemens/opx44Lhq/)
 * [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
+* [Search field](https://jsfiddle.net/ArthurClemens/hruxczph/)
 * [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/j74x8b9w/)
 * [SVG](https://jsfiddle.net/ArthurClemens/3v5v5kdb/)

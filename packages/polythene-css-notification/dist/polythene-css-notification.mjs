@@ -15,7 +15,7 @@ var classes = {
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  multilineTitle: "pe-notification__title--multiline",
+  multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical"
 };
 
@@ -23,19 +23,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [flex.layoutCenter, {
-    width: componentVars.width + "px",
-    minHeight: componentVars.min_height + "px",
-    position: "relative",
-    padding: "0 " + componentVars.side_padding + "px",
-    margin: "0 auto",
-    borderRadius: componentVars.border_radius + "px",
     pointerEvents: "all",
+    justifyContent: "center",
+    margin: "0 auto",
 
     " .pe-notification__content": {
-      width: "100%"
+      width: componentVars.width + "px",
+      padding: "0 " + componentVars.side_padding + "px",
+      borderRadius: componentVars.border_radius + "px"
     },
 
     " .pe-notification__title": {
+      flex: "1 0 auto",
       padding: componentVars.title_single_padding_v + "px " + componentVars.title_padding_h + "px",
       fontSize: componentVars.font_size + "px",
       lineHeight: componentVars.line_height + "px"
@@ -49,7 +48,9 @@ var layout = (function (selector, componentVars) {
 
     "&.pe-notification--horizontal": {
       " .pe-notification__content": flex.layoutHorizontal,
-      " .pe-notification__title": flex.flex(),
+      " .pe-notification__title": [flex.flex(), {
+        alignSelf: "center"
+      }],
       " .pe-notification__title--multi-line": {
         paddingTop: componentVars.title_multi_padding_v + "px",
         paddingBottom: componentVars.title_multi_padding_v + "px"
@@ -57,14 +58,17 @@ var layout = (function (selector, componentVars) {
       " .pe-notification__action": flex.layoutCenter
     },
     "&.pe-notification--vertical": {
-      " .pe-notification__content": flex.layoutVertical,
+      " .pe-notification__content": [flex.layoutVertical],
+
       " .pe-notification__title": {
-        paddingBottom: "4px"
+        paddingBottom: "6px"
       },
       " .pe-notification__title--multi-line": {
         paddingTop: componentVars.title_multi_padding_v + "px"
       },
-      " .pe-notification__action": flex.layoutEndJustified
+      " .pe-notification__action": [flex.layoutEndJustified, {
+        width: "100%"
+      }]
     }
   }])];
 });
@@ -75,8 +79,10 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
-    color: componentVars["color_" + tint + "_text"],
-    background: componentVars["color_" + tint + "_background"]
+    " .pe-notification__content": {
+      color: componentVars["color_" + tint + "_text"],
+      background: componentVars["color_" + tint + "_background"]
+    }
   })];
 };
 
@@ -91,15 +97,17 @@ var holderLayout = (function (selector) {
   var _ref;
 
   return [(_ref = {}, _defineProperty$2(_ref, selector, [flex.layoutCenterCenter, {
+    // assumes position relative
     top: 0,
     right: 0,
     bottom: 0,
     left: 0,
-    zIndex: vars$1.z_notification,
     pointerEvents: "none",
+    justifyContent: "flex-start", // For IE11
 
     ".pe-multiple--screen": {
-      position: "fixed"
+      position: "fixed",
+      zIndex: vars$1.z_notification
     }
   }]), _defineProperty$2(_ref, ":not(.pe-notification--container) .pe-multiple--container", {
     position: "absolute"

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -64,69 +64,15 @@ var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
   }, requiresKeys ? { key: "secondary" } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", { className: classes.content }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
 };
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
-  var highlight = createStream(attrs.defaultHighlight);
-  return {
-    highlight: highlight,
-    redrawOnUpdate: createStream.merge([highlight])
-  };
-};
-
-var onMount = function onMount(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
-  if (isClient) {
-    if (attrs.register) {
-      var primaryDom = dom; //.querySelector(`.${classes.primary}`);
-
-      var onFocus = function onFocus() {
-        return state.highlight(true);
-      };
-      var onBlur = function onBlur() {
-        return state.highlight(false);
-      };
-
-      primaryDom.addEventListener("focus", onFocus, false);
-      primaryDom.addEventListener("blur", onBlur, false);
-
-      state.removeEventListeners = function () {
-        return primaryDom.removeEventListener("focus", onFocus, false), primaryDom.removeEventListener("blur", onBlur, false);
-      };
-
-      attrs.register(attrs.index, {
-        dom: primaryDom,
-        attrs: attrs
-      });
-
-      state.highlight.map(function (hasHighlight) {
-        if (attrs.setHighlightIndex && hasHighlight) {
-          attrs.setHighlightIndex(attrs.index);
-        }
-      });
-    }
-  }
-};
-
-var onUnMount = function onUnMount(vnode) {
-  return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
-};
-
 var createProps = function createProps(vnode, _ref3) {
   var k = _ref3.keys;
 
-  var state = vnode.state;
   var attrs = vnode.attrs;
-  var highlight = state.highlight();
   var hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
   var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
   {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)
   // events and url are attached to primary content to not interfere with controls
   );
@@ -148,9 +94,6 @@ var createContent = function createContent(vnode, _ref5) {
 
 var listTile = Object.freeze({
 	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
 	createProps: createProps,
 	createContent: createContent
 });

@@ -2,12 +2,27 @@
 
 # Spinner component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Displaying the Spinner](#displaying-the-spinner)
+  - [Show](#show)
+  - [Progress spinner](#progress-spinner)
+- [Appearance](#appearance)
+  - [Single color](#single-color)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Spinner options](../spinner.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 A typical Material Design (indeterminate) spinner:
@@ -28,6 +43,7 @@ A Material Design determinate spinner:
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-react"
 ~~~
 
+<a name="displaying-the-spinner"></a>
 ### Displaying the Spinner
 
 #### With JSX
@@ -49,6 +65,7 @@ import { renderer as h, MaterialDesignSpinner as Spinner } from "polythene-react
 h(Spinner, { show: true })
 ~~~
 
+<a name="show"></a>
 ### Show
 
 By default the Spinner is hidden. To show the spinner, either:
@@ -56,6 +73,7 @@ By default the Spinner is hidden. To show the spinner, either:
 * Set option `show` to true
 * Set option `permanent` to true (for testing and demos)
 
+<a name="progress-spinner"></a>
 ### Progress spinner
 
 To show a spinner "filling" a progress circle:
@@ -179,14 +197,17 @@ export default class extends Component {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="single-color"></a>
 ### Single color
 
 For MaterialDesignSpinner and MaterialDesignProgressSpinner.
 
 Use option `singleColor` to use only one color (by default the primary color).
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Spinner appearance, either with a theme or with CSS.
@@ -235,6 +256,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

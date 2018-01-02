@@ -2,12 +2,24 @@
 
 # FAB: Floating Action Button component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Links](#links)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [FAB options](../fab.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -55,11 +67,13 @@ h(FAB, {
 })
 ~~~
 
+<a name="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
+<a name="appearance"></a>
 ## Appearance
 
 FAB's default colors are:
@@ -67,6 +81,7 @@ FAB's default colors are:
 * Background: the app's primary color; change this by setting the `background-color` style
 * Icon color: white; change this by setting the `color` style
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the FAB appearance, either with a theme or with CSS.
@@ -118,6 +133,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

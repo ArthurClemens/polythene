@@ -1,6 +1,5 @@
 # Getting started with Polythene for React
 
-
 <!-- MarkdownTOC bracket="round" autolink="true" depth="3" -->
 
 - [Example setup](#example-setup)
@@ -29,13 +28,17 @@ Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https:/
 
 Essential:
 
+* `react`
+* `react-dom`
 * `polythene-react`
+
+Recommended:
+
 * `polythene-css` Provides component CSS files and Material Design styles (typography and font); optionally activates CSS-in-JS [more info](css.md)
 
 Optional:
 
 * `polythene-utilities` Layout helper classes [more info](packages/polythene-utilities.md)
-* `polythene-fastclick` Eliminating the 300ms delay on mobile [more info](packages/polythene-fastclick.md)
 * `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
 
 

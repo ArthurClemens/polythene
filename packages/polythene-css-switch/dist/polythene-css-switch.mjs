@@ -105,6 +105,23 @@ var layout$1 = (function (selector, componentVars) {
     ".pe-control--regular": customSize(componentVars, vars$1.unit_icon_size),
     ".pe-control--medium": customSize(componentVars, vars$1.unit_icon_size_medium),
     ".pe-control--large": customSize(componentVars, vars$1.unit_icon_size_large)
+  }), _defineProperty({}, "_:-ms-fullscreen, :root " + selector, {
+    " input": {
+      position: "absolute",
+      zIndex: 1,
+      width: "100%",
+      height: "100%",
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      display: "block",
+      opacity: 0,
+      cursor: "pointer"
+    },
+    " label": {
+      cursor: "auto"
+    }
   })]);
 });
 

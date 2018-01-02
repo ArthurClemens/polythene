@@ -2,7 +2,21 @@
 
 Form control to select one or more options from a set. Generates a styled checkbox input element.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Keyboard control](#keyboard-control)
+- [Options](#options)
+  - [Checkbox specific](#checkbox-specific)
+  - [Appearance options](#appearance-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Custom icons
@@ -12,12 +26,14 @@ Form control to select one or more options from a set. Generates a styled checkb
 * Keyboard control
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/checkbox.md)
 * [Usage with React](react/checkbox.md)
 
 
+<a name="keyboard-control"></a>
 ## Keyboard control
 
 Read first: [Turning on keyboard control](../keyboard-control.md)
@@ -26,8 +42,10 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 1. Press Enter to simulate a click.
 
 
+<a name="options"></a>
 ## Options
 
+<a name="checkbox-specific"></a>
 ### Checkbox specific
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -36,11 +54,12 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **label**     | optional | String | | Text label |
 | **defaultChecked** | optional | Boolean | false | Initially checked state |
 | **checked**   | optional | Boolean | false | Managed checked state (see: [Handling state](../handling-state.md)) |
-| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
-| **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the checkbox state; function that accepts the field checked value (Boolean) |
+| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
+| **selectable** | optional | Function `(selected::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **value**     | optional | String |  | Input element value |
 | **disabled**  | optional | Boolean |  | Set to true to disable the Checkbox |
 
+<a name="appearance-options"></a>
 ### Appearance options
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
@@ -50,6 +69,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **iconButton** | optional | Options object for the [Icon Button](icon-button.md) | | Add attributes like `wash` and `ink` |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -64,6 +84,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Checkbox is composed from:
@@ -73,6 +94,7 @@ Checkbox is composed from:
   * [Icon](icon.md)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Checkbox classes](../../packages/polythene-css-classes/checkbox.js)

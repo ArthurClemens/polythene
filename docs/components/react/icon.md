@@ -2,12 +2,24 @@
 
 # Icon component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Appearance](#appearance)
+  - [Sizes](#sizes)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Icon options](../icon.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -89,12 +101,15 @@ h(Icon, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="sizes"></a>
 ### Sizes
 
 The size is set with option `size` (4 sizes). Use CSS for more finegrained control.
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the icon appearance, either with a theme or with CSS.
@@ -133,6 +148,7 @@ Some style attributes can be set using option `style`. For example:
 <Icon svg={{ content: starsSVG }} style={{ color: "#EF6C00" }} />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

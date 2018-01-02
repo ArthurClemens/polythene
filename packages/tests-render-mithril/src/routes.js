@@ -127,16 +127,6 @@ export default [
     tests: tests.toolbar
   },
   {
-    path: "/theme",
-    name: "Custom theme",
-    tests: tests.theme
-  },
-  // {
-  //   path: "/css",
-  //   name: "CSS tools",
-  //   tests: cssTests
-  // },
-  {
     path: "/layout-styles",
     name: "Layout styles",
     tests: tests.layoutStyles

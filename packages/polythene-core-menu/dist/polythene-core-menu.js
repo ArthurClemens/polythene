@@ -1,2 +1,333 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,n){"use strict";function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var o={component:"pe-list-tile",content:"pe-list-tile__content",highSubtitle:"pe-list-tile__high-subtitle",primary:"pe-list-tile__primary",secondary:"pe-list-tile__secondary",subtitle:"pe-list-tile__subtitle",title:"pe-list-tile__title",contentFront:"pe-list-tile__content-front",compact:"pe-list-tile--compact",compactFront:"pe-list-tile--compact-front",disabled:"pe-list-tile--disabled",hasFront:"pe-list-tile--front",hasHighSubtitle:"pe-list-tile--high-subtitle",hasSubtitle:"pe-list-tile--subtitle",header:"pe-list-tile--header",hoverable:"pe-list-tile--hoverable",selectable:"pe-list-tile--selectable",selected:"pe-list-tile--selected",highlight:"pe-list-tile--highlight",sticky:"pe-list-tile--sticky"},r={component:"pe-menu",content:"pe-menu__content",placeholder:"pe-menu__placeholder",target:"pe-menu__target",permanent:"pe-menu--permanent",visible:"pe-menu--visible",width_auto:"pe-menu--width-auto",width_n:"pe-menu--width-",listTile:o.component,selectedListTile:o.selected},l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i])}return e},s=function(e){return e.attrs.element||"div"},a=function(e,n){if(!t.isServer){var i=document.querySelector(n.target);if(i){var o=void 0!==n.offset?n.offset:0,l=e.dom();if(l){var s=e.dom().querySelector("."+r.content),a=n.origin||"top-left",c=0;if(n.reposition){var u=s.querySelectorAll("."+r.listTile)[0],d=s.querySelector("."+r.selectedListTile);if(u&&d){var p=u.getBoundingClientRect(),h=d.getBoundingClientRect();c=h.top-p.top}var m=(d||u).getBoundingClientRect(),f=i.getBoundingClientRect(),g=m.height-f.height;c+=g/2}var v=i.getBoundingClientRect();if(l.parentNode){var b=l.parentNode.getBoundingClientRect(),_=function(){return l.style.left=v.left-b.left+o+"px"},y=function(){return l.style.right=v.right-b.right+o+"px"},k=function(){return l.style.top=v.top-b.top-c-8+"px"},w=function(){return l.style.bottom=v.bottom-b.bottom-c+"px"};({"top-left":function(){return k()&&_()},"top-right":function(){return k()&&y()},"bottom-left":function(){return w()&&_()},"bottom-right":function(){return w()&&y()}})[a].call()}}}}},c=function(e,n){n.onChange&&n.onChange({visible:!1,transitioning:!0}),a(e,n);var i=n.transitions,o=e.dom();return t.show(l({},n,i?i.show(o,n):{el:o,showClass:r.visible})).then(function(){n.onChange&&n.onChange({visible:!0,transitioning:!1}),n.didShow&&n.didShow(n.id),e.visible(!1)})},u=function(e,n){n.onChange&&n.onChange({visible:!0,transitioning:!0});var i=n.transitions,o=e.dom();return t.hide(l({},n,i?i.hide(o,n):{el:o,showClass:r.visible})).then(function(){n.onChange&&n.onChange({visible:!1,transitioning:!1}),n.didHide&&n.didHide(n.id),e.visible(!1)})},d=function(e){return e<1.5?1.5:e},p=function(e){return r.width_n+e.toString().replace(".","-")},h=function(e,n){var i=e.state,o=e.attrs;"mount"===n?(t.subscribe("resize",i.update),t.subscribe("keydown",i.handleEscape),setTimeout(function(){i.activateDismissTap(),c(i,o)},0)):(t.unsubscribe("resize",i.update),t.unsubscribe("keydown",i.handleEscape),i.deActivateDismissTap())},m=function(e){if(e.dom){var t=e.state,n=e.attrs;t.dom(e.dom),n.permanent||(t.handleDismissTap=function(e){e.target!==t.dom()&&(e.defaultPrevented?u(t,n):u(t,l({},n,{hideDelay:0})))},t.update=function(){a(t,n)},t.activateDismissTap=function(){document.addEventListener("click",t.handleDismissTap)},t.deActivateDismissTap=function(){document.removeEventListener("click",t.handleDismissTap)},t.handleEscape=function(e){"Escape"===e.key&&u(t,l({},n,{hideDelay:0}))},h(e,"mount"))}},f=function(e){e.attrs.permanent||h(e,"unmount")},g=function(e,t){var n=t(null),i=t(!1);return{dom:n,visible:i,activateDismissTap:void 0,deActivateDismissTap:void 0,handleDismissTap:void 0,handleEscape:void 0,update:void 0,redrawOnUpdate:t.merge([i])}},v=function(e,n){var i=n.keys,o=e.attrs;return l({},t.filterSupportedAttributes(o),{className:[r.component,o.permanent?r.permanent:null,o.target?r.target:null,o.size?p(d(o.size)):null,"dark"===o.tone?"pe-dark-tone":null,"light"===o.tone?"pe-light-tone":null,o.className||o[i.class]].join(" ")})},b=function(e,t){var n,o=t.renderer,l=t.keys,s=t.Shadow,a=e.attrs,c=void 0!==a.z?a.z:1;return o("div",(n={className:r.content},i(n,l.onclick,function(e){return e.preventDefault()}),i(n,"style",a.style),n),[c>0&&o(s,{z:c,animated:!0}),a.content?a.content:e.children])},_=Object.freeze({getElement:s,onMount:m,onUnMount:f,getInitialState:g,createProps:v,createContent:b}),y=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},k={sizes:[1,1.5,2,3,4,5,6,7],min_size:1.5,max_size_small_screen:5,size_factor:n.vars.grid_unit_menu,border_radius:n.vars.unit_block_border_radius,color_light_background:y(n.vars.color_light_background),color_dark_background:y(n.vars.color_dark_background)};e.coreMenu=_,e.vars=k,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var listTileClasses = {
+  component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
+
+var classes = {
+  component: "pe-menu",
+
+  // elements
+  content: "pe-menu__content",
+  placeholder: "pe-menu__placeholder",
+  target: "pe-menu__target",
+
+  // states
+  permanent: "pe-menu--permanent",
+  visible: "pe-menu--visible",
+  width_auto: "pe-menu--width-auto",
+  width_n: "pe-menu--width-",
+
+  // lookup
+  listTile: listTileClasses.component,
+  selectedListTile: listTileClasses.selected
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var SHADOW_Z = 1;
+var OFFSET_V = -8;
+var DEFAULT_OFFSET_H = 0;
+var MIN_SIZE = 1.5;
+
+var positionMenu = function positionMenu(state, attrs) {
+  if (polytheneCore.isServer) {
+    return;
+  }
+  var targetEl = document.querySelector(attrs.target);
+  if (!targetEl) {
+    return;
+  }
+  var offsetH = attrs.offset !== undefined ? attrs.offset : DEFAULT_OFFSET_H;
+  var menuEl = state.dom();
+  if (!menuEl) {
+    return;
+  }
+  var contentEl = state.dom().querySelector("." + classes.content);
+  var origin = attrs.origin || "top-left";
+  var positionOffset = 0;
+  if (attrs.reposition) {
+    var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+    var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
+    if (firstItem && selectedItem) {
+      // calculate v position: menu should shift upward relative to the first item
+      var firstItemRect = firstItem.getBoundingClientRect();
+      var selectedItemRect = selectedItem.getBoundingClientRect();
+      positionOffset = selectedItemRect.top - firstItemRect.top;
+    }
+    // align to middle of target
+    var alignEl = selectedItem || firstItem;
+    var alignRect = alignEl.getBoundingClientRect();
+    var _targetRect = targetEl.getBoundingClientRect();
+    var heightDiff = alignRect.height - _targetRect.height;
+    positionOffset += heightDiff / 2;
+  }
+  var targetRect = targetEl.getBoundingClientRect();
+  if (menuEl.parentNode) {
+    var parentRect = menuEl.parentNode.getBoundingClientRect();
+    var alignLeft = function alignLeft() {
+      return menuEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
+    };
+    var alignRight = function alignRight() {
+      return menuEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
+    };
+    var alignTop = function alignTop() {
+      return menuEl.style.top = targetRect.top - parentRect.top - positionOffset + OFFSET_V + "px";
+    };
+    var alignBottom = function alignBottom() {
+      return menuEl.style.bottom = targetRect.bottom - parentRect.bottom - positionOffset + "px";
+    };
+    var alignFn = {
+      "top-left": function topLeft() {
+        return alignTop() && alignLeft();
+      },
+      "top-right": function topRight() {
+        return alignTop() && alignRight();
+      },
+      "bottom-left": function bottomLeft() {
+        return alignBottom() && alignLeft();
+      },
+      "bottom-right": function bottomRight() {
+        return alignBottom() && alignRight();
+      }
+    };
+    alignFn[origin].call();
+  }
+};
+
+var showMenu = function showMenu(state, attrs) {
+  if (attrs.onChange) {
+    attrs.onChange({ visible: false, transitioning: true });
+  }
+  positionMenu(state, attrs);
+  var transitions = attrs.transitions;
+  var el = state.dom();
+  return polytheneCore.show(_extends({}, attrs, transitions ? transitions.show(el, attrs) : {
+    el: el,
+    showClass: classes.visible
+  })).then(function () {
+    if (attrs.onChange) {
+      attrs.onChange({ visible: true, transitioning: false });
+    }
+    if (attrs.didShow) {
+      attrs.didShow(attrs.id);
+    }
+    state.visible(false);
+  });
+};
+
+var hideMenu = function hideMenu(state, attrs) {
+  if (attrs.onChange) {
+    attrs.onChange({ visible: true, transitioning: true });
+  }
+  var transitions = attrs.transitions;
+  var el = state.dom();
+  return polytheneCore.hide(_extends({}, attrs, transitions ? transitions.hide(el, attrs) : {
+    el: el,
+    showClass: classes.visible
+  })).then(function () {
+    if (attrs.onChange) {
+      attrs.onChange({ visible: false, transitioning: false });
+    }
+    if (attrs.didHide) {
+      attrs.didHide(attrs.id);
+    }
+    state.visible(false);
+  });
+};
+
+var unifySize = function unifySize(size) {
+  return size < MIN_SIZE ? MIN_SIZE : size;
+};
+
+var widthClass = function widthClass(size) {
+  return classes.width_n + size.toString().replace(".", "-");
+};
+
+var handleSubscriptions = function handleSubscriptions(vnode, which) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+
+  if (which === "mount") {
+    polytheneCore.subscribe("resize", state.update);
+    polytheneCore.subscribe("keydown", state.handleEscape);
+    setTimeout(function () {
+      state.activateDismissTap();
+      showMenu(state, attrs);
+    }, 0);
+  } else {
+    polytheneCore.unsubscribe("resize", state.update);
+    polytheneCore.unsubscribe("keydown", state.handleEscape);
+    state.deActivateDismissTap();
+  }
+};
+
+var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  state.dom(vnode.dom);
+
+  if (!attrs.permanent) {
+    state.handleDismissTap = function (e) {
+      if (e.target === state.dom()) {
+        return;
+      }
+      if (e.defaultPrevented) {
+        // clicked on .pe-menu__content
+        hideMenu(state, attrs);
+      } else {
+        hideMenu(state, _extends({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.update = function () {
+      positionMenu(state, attrs);
+    };
+
+    state.activateDismissTap = function () {
+      if (polytheneCore.isTouch) {
+        document.addEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.addEventListener("click", state.handleDismissTap);
+      }
+    };
+
+    state.deActivateDismissTap = function () {
+      if (polytheneCore.isTouch) {
+        document.removeEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.removeEventListener("click", state.handleDismissTap);
+      }
+    };
+
+    state.handleEscape = function (e) {
+      if (e.key === "Escape" || e.key === "Esc") {
+        hideMenu(state, _extends({}, attrs, { hideDelay: 0 }));
+      }
+    };
+
+    handleSubscriptions(vnode, "mount");
+  }
+};
+
+var onUnMount = function onUnMount(vnode) {
+  var attrs = vnode.attrs;
+  if (!attrs.permanent) {
+    handleSubscriptions(vnode, "unmount");
+  }
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream(null);
+  var visible = createStream(false);
+  return {
+    dom: dom,
+    visible: visible,
+    activateDismissTap: undefined, // set in onMount
+    deActivateDismissTap: undefined, // set in onMount
+    handleDismissTap: undefined, // set in onMount
+    handleEscape: undefined, // set in onMount
+    update: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([visible])
+  };
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var _h;
+
+  var h = _ref2.renderer,
+      k = _ref2.keys,
+      Shadow = _ref2.Shadow;
+
+  var attrs = vnode.attrs;
+  var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
+  return h("div", (_h = {
+    className: classes.content
+  }, _defineProperty(_h, k.onclick, function (e) {
+    return e.preventDefault();
+  }), _defineProperty(_h, "style", attrs.style), _h), [z > 0 && h(Shadow, {
+    z: z,
+    animated: true
+  }), attrs.content ? attrs.content : vnode.children]);
+};
+
+var menu = Object.freeze({
+	getElement: getElement,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	getInitialState: getInitialState,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
+  min_size: 1.5,
+  max_size_small_screen: 5,
+  size_factor: polytheneTheme.vars.grid_unit_menu,
+  border_radius: polytheneTheme.vars.unit_block_border_radius,
+
+  color_light_background: rgba(polytheneTheme.vars.color_light_background),
+  color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
+  // text colors are set by content, usually list tiles
+};
+
+exports.coreMenu = menu;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-menu.js.map

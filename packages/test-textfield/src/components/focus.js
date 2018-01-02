@@ -1,26 +1,21 @@
-import stream from "mithril/stream";
 
 export default ({ h, k, TextField, RaisedButton }) => ({
   oninit: vnode => {
-    const hasFocus = stream(false);
-    vnode.state = {
-      hasFocus,
-      redrawOnUpdate: stream.merge([hasFocus])
-    };
+    Object.assign(vnode.state, {
+      setInputState: undefined
+    });
   },
   view: vnode => {
     const state = vnode.state;
-    const hasFocus = state.hasFocus();
     return h("div", [
       h(TextField, {
         label: "Your name",
-        focus: hasFocus,
-        onChange: newState => state.hasFocus(newState.focus)
+        onChange: ({ setInputState }) => state.setInputState = setInputState
       }),
       h(RaisedButton, {
         label: "Give focus",
         events: {
-          [k.onclick]: () => state.hasFocus(true)
+          [k.onclick]: () => state.setInputState({ focus: true })
         }
       })
     ]);

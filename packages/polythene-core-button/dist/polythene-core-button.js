@@ -1,2 +1,221 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,o){"use strict";function r(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}var n={base:"pe-button",component:"pe-button pe-text-button",content:"pe-button__content",focus:"pe-button__focus",label:"pe-button__label",wash:"pe-button__wash",borders:"pe-button--borders",disabled:"pe-button--disabled",focused:"pe-button--focus",inactive:"pe-button--inactive",selected:"pe-button--selected"},a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var r in o)Object.prototype.hasOwnProperty.call(o,r)&&(e[r]=o[r])}return e},l=function(e){return e.attrs.element||"a"},d=function(e,t){var o=t(null),r=t(!1),n=t(null),a=t(!1),i=t(!1);return{dom:o,click:n,focus:r,inactive:a,mouseover:i,redrawOnUpdate:t.merge([o,n,r,a,i])}},u=function(e){if(e.dom){var o=e.state;if(o.dom(e.dom),t.isClient){var r=function(){return o.focus(!o.mouseover())},n=function(){return o.focus(!1)},a=function(){return o.mouseover(!0)},i=function(){return o.mouseover(!1)};e.dom.addEventListener("focus",r,!1),e.dom.addEventListener("blur",n,!1),e.dom.addEventListener("mouseover",a,!1),e.dom.addEventListener("mouseout",i,!1),o.removeEventListeners=function(){return e.dom.removeEventListener("focus",r,!1),e.dom.removeEventListener("blur",n,!1),e.dom.removeEventListener("mouseover",n,!1),e.dom.removeEventListener("mouseout",i,!1)}}}},s=function(e){return e.state.removeEventListeners&&e.state.removeEventListeners()},c=function(e,o){var a,l=o.keys,d=e.state,u=e.attrs,s=u.disabled,c=u.inactive||d.inactive(),_=u.events&&u.events[l.onkeydown]||f,v=void 0!==u.ink&&!1===u.ink,b=function(){return setTimeout(function(){return d.inactive(!0),setTimeout(function(){return d.inactive(!1)},1e3*u.inactivate)},v?0:300)},f=u.events&&u.events[l.onclick];return i({},t.filterSupportedAttributes(u,{add:[l.formaction,"type"],remove:["style"]}),{className:[u.parentClassName||n.component,u.selected?n.selected:null,s?n.disabled:null,c?n.inactive:null,u.borders?n.borders:null,d.focus()?n.focused:null,"dark"===u.tone?"pe-dark-tone":null,"light"===u.tone?"pe-light-tone":null,u.className||u[l.class]].join(" ")},u.events,c?null:(a={},r(a,l.tabindex,s||c?-1:u[l.tabindex]||0),r(a,l.onclick,function(e){return d.click(e),void 0!==u.inactivate&&b(),f&&f(e),!0}),r(a,l.onkeydown,function(e){"Enter"===e.key&&d.focus()&&(d.focus(!1),_&&_(e))}),a),u.url,s?{disabled:!0}:null)},_=function(e,t){var o,l=t.renderer,d=t.keys,u=t.Ripple,s=e.state,c=e.attrs,_=void 0!==c.ink&&!1===c.ink,v=c.disabled,b=c.children||e.children,f=c.content?c.content:c.label?"object"===a(c.label)?c.label:l("div",{className:n.label},c.label):b||null,m=v||void 0!==c.wash&&!c.wash;return f?l("div",(o={},r(o,d.class,n.content),r(o,"style",c.style),o),[c.shadowComponent?c.shadowComponent:null,v||_||!u||"react"===l.displayName&&!s.dom()?null:l(u,i({},{key:"ripple",target:s.dom()},c.ripple)),m?null:l("div",{key:"wash",className:n.wash}),v?null:l("div",{key:"focus",className:n.focus}),f]):null},v=Object.freeze({getElement:l,getInitialState:d,onMount:u,onUnMount:s,createProps:c,createContent:_}),b=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},f=o.vars.unit_touch_height,m={margin_h:o.vars.grid_unit,border_radius:o.vars.unit_item_border_radius,font_size:14,font_weight:500,outer_padding_v:(f-36)/2,padding_h:2*o.vars.grid_unit,padding_v:11,min_width:8*o.vars.grid_unit_component,text_transform:"uppercase",border_width:0,animation_duration:o.vars.animation_duration,color_light_background:"transparent",color_light_text:b(o.vars.color_light_foreground,o.vars.blend_light_text_primary),color_light_hover_background:b(o.vars.color_light_foreground,o.vars.blend_light_background_hover),color_light_focus_background:b(o.vars.color_light_foreground,o.vars.blend_light_background_hover),color_light_active_background:b(o.vars.color_light_foreground,o.vars.blend_light_background_active),color_light_disabled_background:"transparent",color_light_disabled_text:b(o.vars.color_light_foreground,o.vars.blend_light_text_disabled),color_dark_background:"transparent",color_dark_text:b(o.vars.color_dark_foreground,o.vars.blend_dark_text_primary),color_dark_hover_background:b(o.vars.color_dark_foreground,o.vars.blend_dark_background_hover),color_dark_focus_background:b(o.vars.color_dark_foreground,o.vars.blend_dark_background_hover),color_dark_active_background:b(o.vars.color_dark_foreground,o.vars.blend_dark_background_active),color_dark_disabled_background:"transparent",color_dark_disabled_text:b(o.vars.color_dark_foreground,o.vars.blend_dark_text_disabled)};e.coreButton=v,e.vars=m,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+  base: "pe-button",
+  component: "pe-button pe-text-button",
+  row: "pe-button-row",
+
+  // elements
+  content: "pe-button__content",
+  focus: "pe-button__focus",
+  label: "pe-button__label",
+  wash: "pe-button__wash",
+
+  // states
+  borders: "pe-button--borders",
+  disabled: "pe-button--disabled",
+  focused: "pe-button--focus",
+  inactive: "pe-button--inactive",
+  selected: "pe-button--selected"
+};
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "a";
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream(null);
+  var focus = createStream(false);
+  var inactive = createStream(false);
+  var mouseover = createStream(false);
+  return {
+    dom: dom,
+    focus: focus,
+    inactive: inactive,
+    mouseover: mouseover,
+    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  state.dom(vnode.dom);
+
+  if (polytheneCore.isClient) {
+    var noink = attrs.ink !== undefined && attrs.ink === false;
+    var handleInactivate = function handleInactivate() {
+      return (
+        // delay a bit so that the ripple can finish before the hover disappears
+        // the timing is crude and does not take the actual ripple "done" into account
+        setTimeout(function () {
+          return state.inactive(true), setTimeout(function () {
+            return state.inactive(false);
+          }, attrs.inactivate * 1000);
+        }, noink ? 0 : 300)
+      );
+    };
+
+    var onFocus = function onFocus() {
+      return state.focus(!state.mouseover());
+    };
+    var onBlur = function onBlur() {
+      return state.focus(false);
+    };
+    var onMouseOver = function onMouseOver() {
+      return state.mouseover(true);
+    };
+    var onMouseOut = function onMouseOut() {
+      return state.mouseover(false);
+    };
+    var onClick = handleInactivate;
+
+    vnode.dom.addEventListener("focus", onFocus, false);
+    vnode.dom.addEventListener("blur", onBlur, false);
+    vnode.dom.addEventListener("mouseover", onMouseOver, false);
+    vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("click", onClick, false);
+
+    state.removeEventListeners = function () {
+      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false), vnode.dom.removeEventListener("click", onClick, false);
+    };
+  }
+};
+
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var _ref2;
+
+  var k = _ref.keys;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var disabled = attrs.disabled;
+  var inactive = attrs.inactive || state.inactive();
+  var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
+  var onClickHandler = attrs.events && attrs.events[k.onclick];
+
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
+  {
+    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeydown, function (e) {
+    if (e.key === "Enter" && state.focus()) {
+      state.focus(false);
+      if (onKeyDownHandler) {
+        onKeyDownHandler(e);
+      }
+    }
+  }), _ref2), attrs.url, disabled ? { disabled: true } : null);
+};
+
+var createContent = function createContent(vnode, _ref3) {
+  var _h;
+
+  var h = _ref3.renderer,
+      k = _ref3.keys,
+      Ripple = _ref3.Ripple;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var noink = attrs.ink !== undefined && attrs.ink === false;
+  var disabled = attrs.disabled;
+  var children = attrs.children || vnode.children;
+  var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
+  var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
+  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
+  ? attrs.shadowComponent : null,
+  // Ripple
+  disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
+  // somehow Mithril does not update when the dom stream is updated
+  ? null : h(Ripple, _extends({}, {
+    key: "ripple",
+    target: state.dom()
+  }, attrs.ripple)),
+  // hover
+  noWash ? null : h("div", { key: "wash", className: classes.wash }),
+  // focus
+  disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
+};
+
+var button = Object.freeze({
+	getElement: getElement,
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var touch_height = polytheneTheme.vars.unit_touch_height;
+var height = 36;
+
+var vars$1 = {
+  margin_h: polytheneTheme.vars.grid_unit,
+  border_radius: polytheneTheme.vars.unit_item_border_radius,
+  font_size: 14,
+  font_weight: 500,
+  outer_padding_v: (touch_height - height) / 2,
+  padding_h: 2 * polytheneTheme.vars.grid_unit,
+  padding_v: 11,
+  min_width: 8 * polytheneTheme.vars.grid_unit_component,
+  text_transform: "uppercase",
+  border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+  animation_duration: polytheneTheme.vars.animation_duration,
+
+  color_light_background: "transparent",
+  color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+  color_light_hover_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+  color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+  color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
+  color_light_disabled_background: "transparent",
+  color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+
+  // border colors may be set in theme; disabled by default
+  // color_light_border:              "transparent", // only specify this variable to get all 4 states
+  // color_light_hover_border:        "transparent",
+  // color_light_active_border:       "transparent",
+  // color_light_disabled_border:     "transparent",
+
+  color_dark_background: "transparent",
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+  color_dark_hover_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+  color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+  color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
+  color_dark_disabled_background: "transparent",
+  color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
+
+  // border colors may be set in theme; disabled by default
+  // color_dark_border:               "transparent", // only specify this variable to get all 4 states
+  // color_dark_hover_border:         "transparent",
+  // color_dark_active_border:        "transparent",
+  // color_dark_disabled_border:      "transparent"
+};
+
+exports.coreButton = button;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-button.js.map

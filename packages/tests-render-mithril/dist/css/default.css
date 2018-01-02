@@ -12,7 +12,7 @@ html.wf-active body {
 }
 
 .ma3 {
-  margin: 16px 24px;
+  margin: 16px;
 }
 .mv3 {
   margin-top: 16px;
@@ -31,7 +31,6 @@ html {
   background-color: #fff;
   margin: 0 auto;
 }
-
 .results {
   margin: 0 auto;
   padding-top: 80px;
@@ -74,7 +73,10 @@ html {
   display: none;
 }
 .flex-one {
-  flex: 1 0;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
 }
 .minh4 {
   min-height: 4rem;
@@ -92,8 +94,8 @@ html {
 .height-100px {
   height: 100px;
 }
-.interactive:not(.pe-dark-tone):not(.test-dark-tone) {
-  background-color: #E1F5FE;
+.interactive:not(.pe-dark-tone) {
+  border-left: 5px solid #2196f3;
 }
 .header-row,
 .result-row {
@@ -114,12 +116,16 @@ html {
   background-color: #444;
 }
 
+.tests-tabs .result {
+  overflow-x: hidden;
+}
+
 .tests-list .pe-list:not(.tests-lists-themed-list),
 .tests-list-tile .pe-list-tile,
 .tests-list .pe-dark-tone .result .pe-light-tone.pe-list,
 .tests-list-tile .result .pe-light-tone.pe-list-tile,
 .tests-list-tile .pe-dark-tone .result .pe-light-tone.pe-list-tile,
-.tests-tabs .pe-tabs,
+.tests-tabs .pe-tabs:not(.pe-tabs--scrollable),
 .tests-tabs .pe-dark-tone .result .pe-light-tone .pe-tabs {
   background-color: #fff;
 }
@@ -159,14 +165,17 @@ html {
   /*z-index: 1;*/
 }
 
-.pe-control.pe-checkbox-control + .pe-control.pe-checkbox-control {
-  margin-left: 40px;
+.multiple {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
-.pe-control.pe-radio-control + .pe-control.pe-radio-control {
-  margin-left: 40px;
-}
-.pe-control.pe-switch-control + .pe-control.pe-switch-control {
-  margin-left: 40px;
+
+.multiple .pe-control.pe-checkbox-control,
+.multiple .pe-control.pe-radio-control,
+.multiple .pe-control.pe-switch-control,
+.multiple .pe-icon-button {
+  margin: 0 30px 20px 0;
 }
 
 .pe-card.on .pe-card__media__dimmer {
@@ -195,15 +204,8 @@ html {
     width: 480px;
   }
   .result {
-    width: auto;
+    width: calc(100% - 2 * 20px);
   }
 }
 
-@media (min-width: 640px) {
-  .results {
-    width: 640px;
-  }
-  .result {
-    width: auto;
-  }
-}
+

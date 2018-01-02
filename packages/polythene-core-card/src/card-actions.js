@@ -1,5 +1,6 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/card";
+import buttonClasses from "polythene-css-classes/button";
 
 const actionLayoutClasses = {
   horizontal: classes.actionsHorizontal,
@@ -18,6 +19,7 @@ export const createProps = (vnode, { keys: k }) => {
       key: "card-actions",
       className: [
         classes.actions,
+        attrs.layout !== "vertical" ? buttonClasses.row : null,
         actionClassForLayout(attrs.layout),
         attrs.bordered ? classes.actionsBordered : null,
         attrs.tight ? classes.actionsTight : null,

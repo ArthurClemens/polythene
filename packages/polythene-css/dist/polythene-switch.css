@@ -14,14 +14,12 @@
   flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
   position: relative;
   cursor: pointer;
   font-size: 16px;
-  line-height: 24px;
   margin: 0;
   color: inherit
 }
@@ -40,7 +38,8 @@
   box-sizing: border-box;
   width: 24px;
   height: 24px;
-  color: inherit
+  color: inherit;
+  flex-shrink: 0
 }
 
 .pe-switch-control .pe-control__box:focus {
@@ -79,7 +78,8 @@
   transition-timing-function: ease-out;
   transition-property: all;
   padding-left: 16px;
-  padding-right: 0
+  padding-right: 0;
+  align-self: center
 }
 
 .pe-switch-control.pe-control--disabled .pe-control__form-label {
@@ -373,6 +373,24 @@
 
 .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
   left: 12px
+}
+
+:root .pe-switch-control input,_:-ms-fullscreen input {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  opacity: 0;
+  cursor: pointer
+}
+
+:root .pe-switch-control label,_:-ms-fullscreen label {
+  cursor: auto
 }
 
 .pe-dark-tone.pe-switch-control .pe-control__label,.pe-dark-tone .pe-switch-control .pe-control__label {

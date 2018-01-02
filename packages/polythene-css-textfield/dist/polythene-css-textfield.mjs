@@ -85,6 +85,11 @@ var layout = (function (selector, componentVars) {
       },
       ":invalid": {
         boxShadow: "none"
+      },
+      // Remove clear cross icon from IE
+      "::-ms-clear": {
+        width: 0,
+        height: 0
       }
     },
     " textarea.pe-textfield__input": {

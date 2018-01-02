@@ -15,6 +15,7 @@ export const StateComponent = ({
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
+  onUpdate = () => {},
   view = null
 }) => {
   
@@ -31,8 +32,7 @@ export const StateComponent = ({
           redrawValues: undefined
         }
       );
-      const initialState = getInitialState(protoState, stream);
-      this.state = initialState;
+      this.state = getInitialState(protoState, stream);
       this.registerDOM = this.registerDOM.bind(this);
       this._render = this._render.bind(this);      
     }
@@ -45,17 +45,20 @@ export const StateComponent = ({
       onMount(this.createVirtualNode(), { keys });
     }
 
+    componentDidUpdate() {
+      onUpdate(this.createVirtualNode());
+    }
+
     componentWillUnmount() {
       this._mounted = false;
       onUnMount(this.createVirtualNode());
     }
 
     createVirtualNode() {
-      const props = Object.assign({}, this.props);
       return {
         state: this.state,
-        attrs: props,
-        children: props.children,
+        attrs: this.props,
+        children: this.props.children,
         dom: this.dom,
       };
     }

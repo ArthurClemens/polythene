@@ -12,6 +12,7 @@ export const StateComponent = ({
   getInitialState = () => ({}),
   onMount = () => {},
   onUnMount = () => {},
+  onUpdate = () => {},
   view = null
 }) => {
 
@@ -21,7 +22,7 @@ export const StateComponent = ({
       vnode
     );
     const initialState = getInitialState(protoState, stream);
-    vnode.state = initialState;
+    Object.assign(vnode.state, initialState);
     vnode._mounted = false;
 
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
@@ -52,6 +53,7 @@ export const StateComponent = ({
       : vnode => render(vnode),
     oninit,
     oncreate,
-    onremove: onUnMount
+    onremove: onUnMount,
+    onupdate: onUpdate,
   };
 };

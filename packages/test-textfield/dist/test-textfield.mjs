@@ -1,6 +1,41 @@
 import { RaisedButton, TextField, keys, renderer } from 'polythene-mithril';
 import { TextFieldCSS } from 'polythene-css';
+import powerform from 'powerform';
+import { equalsTo, required } from 'validatex';
 import { RaisedButton as RaisedButton$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var focus = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      _extends$2(vnode.state, {
+        setInputState: undefined
+      });
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      return h("div", [h(TextField$$1, {
+        label: "Your name",
+        onChange: function onChange(_ref2) {
+          var setInputState = _ref2.setInputState;
+          return state.setInputState = setInputState;
+        }
+      }), h(RaisedButton$$1, {
+        label: "Give focus",
+        events: _defineProperty$1({}, k.onclick, function () {
+          return state.setInputState({ focus: true });
+        })
+      })]);
+    }
+  };
+});
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -195,39 +230,7 @@ var stream$2 = createCommonjsModule(function (module) {
 
 var stream = stream$2;
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var focus = (function (_ref) {
-  var h = _ref.h,
-      k = _ref.k,
-      TextField$$1 = _ref.TextField,
-      RaisedButton$$1 = _ref.RaisedButton;
-  return {
-    oninit: function oninit(vnode) {
-      var hasFocus = stream(false);
-      vnode.state = {
-        hasFocus: hasFocus,
-        redrawOnUpdate: stream.merge([hasFocus])
-      };
-    },
-    view: function view(vnode) {
-      var state = vnode.state;
-      var hasFocus = state.hasFocus();
-      return h("div", [h(TextField$$1, {
-        label: "Your name",
-        focus: hasFocus,
-        onChange: function onChange(newState) {
-          return state.hasFocus(newState.focus);
-        }
-      }), h(RaisedButton$$1, {
-        label: "Give focus",
-        events: _defineProperty$1({}, k.onclick, function () {
-          return state.hasFocus(true);
-        })
-      })]);
-    }
-  };
-});
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var onChange = (function (_ref) {
   var h = _ref.h,
@@ -241,11 +244,11 @@ var onChange = (function (_ref) {
           textfieldState().el.value = v;
         }
       });
-      vnode.state = {
+      _extends$3(vnode.state, {
         textfieldState: textfieldState,
         value: value,
         redrawOnUpdate: stream.merge([textfieldState, value])
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -258,6 +261,8 @@ var onChange = (function (_ref) {
   };
 });
 
+var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var setValue = (function (_ref) {
@@ -268,35 +273,35 @@ var setValue = (function (_ref) {
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
-      var focus = stream(false);
-      vnode.state = {
+      var setInputState = stream();
+      _extends$4(vnode.state, {
         value: value,
-        focus: focus,
+        setInputState: setInputState,
         redrawOnUpdate: stream.merge([value]) // for React
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
       var value = state.value();
-      var focus = state.focus();
+      var setInputState = state.setInputState();
       return h("div", [h(TextField$$1, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
         onChange: function onChange(_ref2) {
           var value = _ref2.value,
-              focus = _ref2.focus;
-          return state.value(value), state.focus(focus);
+              setInputState = _ref2.setInputState;
+          return state.value(value), state.setInputState(setInputState);
         },
         events: _defineProperty$2({}, k.onkeydown, function (e) {
-          if (e.key === "ArrowRight") {
-            state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
+          if (e.key === "ArrowRight" || e.key === "Right") {
+            var newValue = value + String.fromCharCode(97 + Math.floor(Math.random() * 26));
+            setInputState({ value: newValue });
           }
         }),
-        value: value,
-        focus: focus
+        value: value
       }), h(RaisedButton$$1, {
         label: "Clear",
         events: _defineProperty$2({}, k.onclick, function () {
-          return state.value(""), state.focus(true);
+          return setInputState({ focus: true, value: "" });
         })
       })]);
     }
@@ -348,17 +353,19 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: autofocus",
+    name: "Option: autofocus (does not work on iOS)",
     component: {
       view: function view() {
         return block([h(TextField$$1, _defineProperty({}, k.autofocus, true))]);
       }
     }
   }, {
-    name: "Option: type (password, number, email)",
+    name: "Option: type (password (not shown), number, email)",
     component: {
       view: function view() {
-        return block([h(TextField$$1, {
+        return block([
+        // Note that having a password field in a form will kick in form autocomplete
+        h(TextField$$1, {
           type: "password",
           defaultValue: "123456",
           key: "a" // for React
@@ -606,7 +613,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Option: min, max",
+    name: "Option: min, max, validateAtStart",
     interactive: true,
     component: {
       view: function view() {
@@ -616,12 +623,13 @@ var genericTests = (function (_ref) {
           max: 8,
           defaultValue: 10,
           error: "Enter a value between 3 and 8",
-          required: true
+          required: true,
+          validateAtStart: true
         })]);
       }
     }
   }, {
-    name: "Option: type email, required",
+    name: "Option: type email, required, validateAtStart",
     interactive: true,
     component: {
       view: function view() {
@@ -630,7 +638,8 @@ var genericTests = (function (_ref) {
           type: "email",
           defaultValue: "a@",
           required: true,
-          error: "Enter a valid email address"
+          error: "Enter a valid email address",
+          validateAtStart: true
         })]);
       }
     }
@@ -711,6 +720,7 @@ var genericTests = (function (_ref) {
   }, {
     name: "Set value",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(h(SetValue));
@@ -767,26 +777,36 @@ var genericTests = (function (_ref) {
         });
       }
     }
-  }, {
-    name: "Autocomplete form",
-    component: {
-      view: function view() {
-        return h("form", _defineProperty({}, k["autocomplete"], "on"), h("div", {
-          label: "Customer information"
-        }, [h(TextField$$1, {
-          type: "email",
-          label: "Email",
-          floatingLabel: true
-        }), h(TextField$$1, {
-          label: "First name",
-          floatingLabel: true
-        }), h(TextField$$1, {
-          label: "Last name",
-          floatingLabel: true
-        })]));
-      }
-    }
   },
+  // {
+  //   name: "Autocomplete form",
+  //   component: {
+  //     view: () => 
+  //       h("form",
+  //         { [k["autocomplete"]]: "on" }, 
+  //         h("div",
+  //           {
+  //             label: "Customer information"
+  //           },
+  //           [
+  //             h(TextField, {
+  //               type:               "email",
+  //               label:              "Email",
+  //               floatingLabel:      true,
+  //             }),
+  //             h(TextField, {
+  //               label:               "First name",
+  //               floatingLabel:      true,
+  //             }),
+  //             h(TextField, {
+  //               label:               "Last name",
+  //               floatingLabel:      true,
+  //             }),
+  //           ]
+  //         )
+  //       )
+  //   }
+  // },
 
   /* Dark tone */
 
@@ -883,16 +903,17 @@ var genericTests = (function (_ref) {
   }];
 });
 
+var _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var setValue$1 = (function (_ref) {
   var h = _ref.h,
-      TextField$$1 = _ref.TextField,
-      RaisedButton$$1 = _ref.RaisedButton;
+      TextField$$1 = _ref.TextField;
   return {
     oninit: function oninit(vnode) {
       var value = stream("");
-      vnode.state = {
+      _extends$5(vnode.state, {
         value: value
-      };
+      });
     },
     view: function view(vnode) {
       var state = vnode.state;
@@ -904,19 +925,138 @@ var setValue$1 = (function (_ref) {
             return state.value(value);
           }),
           onkeydown: function onkeydown(e) {
-            if (e.key === "ArrowRight") {
+            if (e.key === "ArrowRight" || e.key === "Right") {
               state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
             }
           }
         },
         value: value
-      }), h(RaisedButton$$1, {
-        label: "Clear",
-        events: {
-          onclick: function onclick() {
-            return state.value("");
+      })]);
+    }
+  };
+});
+
+var _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var TEST_USER_NAME = "ABC";
+
+var formValidation = (function (_ref) {
+  var h = _ref.h,
+      TextField$$1 = _ref.TextField,
+      RaisedButton$$1 = _ref.RaisedButton;
+  return {
+    oninit: function oninit(vnode) {
+      _extends$6(vnode.state, {
+        form: powerform({
+          username: {
+            default: "",
+            validator: required(true)
+          },
+          password: {
+            default: "",
+            validator: required(true)
+          },
+          confirmPassword: {
+            default: "",
+            validator: [required(true), equalsTo("password")]
           }
+        }),
+        submit: function submit() {
+          vnode.state.submitFailed = false; // reset
+
+          // Immediate frontend validation
+          if (!vnode.state.form.isValid()) {
+            vnode.state.submitFailed = true;
+            return false;
+          }
+
+          // Server side validation
+          // Send form data to API... but instead we will just show user feedback
+          vnode.state.formErrors = []; // reset
+          if (vnode.state.form.username() === TEST_USER_NAME) {
+            vnode.state.formErrors = ["This username already exists. Please choose a different username."];
+            vnode.state.form.error({ username: "Choose a different username" });
+            vnode.state.submitFailed = true;
+            return false;
+          } else {
+            vnode.state.submitted = true;
+            vnode.state.submitFailed = false;
+            return false;
+          }
+        },
+        formErrors: null,
+        submitFailed: false,
+        submitted: false
+      });
+    },
+    view: function view(_ref2) {
+      var state = _ref2.state;
+
+      var form = state.form;
+      var errors = form.error();
+      var submitFailed = state.submitFailed;
+      var formErrors = state.formErrors;
+
+      return state.submitted ? h("h3", "You're done!") : h("form", {
+        onsubmit: state.submit,
+        novalidate: "novalidate",
+        autocomplete: "off"
+      }, [h("h3", "Sign up"), h(TextField$$1, {
+        name: "username",
+        floatingLabel: true,
+        value: form.username(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.username !== undefined),
+        error: errors.username,
+        onChange: function onChange(_ref3) {
+          var value = _ref3.value;
+          return form.username(value);
+        },
+        label: "Your name",
+        help: "Use '" + TEST_USER_NAME + "' to test form validation"
+      }), h(TextField$$1, {
+        name: "password",
+        floatingLabel: true,
+        value: form.password(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.password !== undefined),
+        error: errors.password,
+        onChange: function onChange(_ref4) {
+          var value = _ref4.value;
+          return form.password(value);
+        },
+        label: "Your password",
+        type: "password"
+      }), h(TextField$$1, {
+        name: "confirmPassword",
+        floatingLabel: true,
+        value: form.confirmPassword(),
+        validateOnInput: true,
+        required: true,
+        valid: !(submitFailed && errors.confirmPassword !== undefined),
+        error: errors.confirmPassword,
+        onChange: function onChange(_ref5) {
+          var value = _ref5.value;
+          return form.confirmPassword(value);
+        },
+        label: "Confirm your password",
+        type: "password"
+      }),
+      // Form submit error message
+      formErrors ? h("div", {
+        style: {
+          margin: "1rem 0",
+          padding: "1rem",
+          background: "#ffcdd2"
         }
+      }, h("div", formErrors.map(function (err) {
+        return h("div", err);
+      }))) : null, h(RaisedButton$$1, {
+        element: "button",
+        type: "submit",
+        label: "Send"
       })]);
     }
   };
@@ -938,15 +1078,26 @@ var mithrilTests = function mithrilTests(_ref) {
   };
 
   var SetValue = setValue$1({ h: h, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
+  var FormValidation = formValidation({ h: h, TextField: TextField$$1, RaisedButton: RaisedButton$$1 });
 
   return [{
-    section: "Mithril specific tests (variation with withAttr)"
+    section: "Mithril specific tests"
   }, {
-    name: "Set value",
+    name: "Set value (variation with withAttr)",
     interactive: true,
+    excluded: true,
     component: {
       view: function view() {
         return block(h(SetValue));
+      }
+    }
+  }, {
+    name: "Form validation with github.com/ludbek/powerform",
+    interactive: true,
+    excluded: true,
+    component: {
+      view: function view() {
+        return block(h(FormValidation));
       }
     }
   }];
@@ -962,7 +1113,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -1008,7 +1159,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$8({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -1099,107 +1250,105 @@ var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function q(a) {
-  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, d = 0; d < b; d++) {
-    e += "\x26args[]\x3d" + encodeURIComponent(arguments[d + 1]);
+var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+function y(a) {
+  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
+    e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
   }b = Error(e + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name = "Invariant Violation";b.framesToPop = 1;throw b;
 }
-var r = { isMounted: function isMounted() {
+var z = { isMounted: function isMounted() {
     return !1;
-  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function t(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}t.prototype.isReactComponent = {};t.prototype.setState = function (a, b) {
-  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? q("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
-};t.prototype.forceUpdate = function (a) {
+  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function A(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}A.prototype.isReactComponent = {};A.prototype.setState = function (a, b) {
+  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? y("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
+};A.prototype.forceUpdate = function (a) {
   this.updater.enqueueForceUpdate(this, a, "forceUpdate");
 };
-function u(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}function v() {}v.prototype = t.prototype;var w = u.prototype = new v();w.constructor = u;objectAssign(w, t.prototype);w.isPureReactComponent = !0;function x(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}var y = x.prototype = new v();y.constructor = x;objectAssign(y, t.prototype);y.unstable_isAsyncReactComponent = !0;y.render = function () {
+function B(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}function C() {}C.prototype = A.prototype;var D = B.prototype = new C();D.constructor = B;objectAssign(D, A.prototype);D.isPureReactComponent = !0;function E(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};
-var z = { current: null };
-var A = Object.prototype.hasOwnProperty;
-var B = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var C = { key: !0, ref: !0, __self: !0, __source: !0 };
-function D(a, b, e) {
-  var d,
-      c = {},
-      h = null,
-      k = null;if (null != b) for (d in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (h = "" + b.key), b) {
-    A.call(b, d) && !C.hasOwnProperty(d) && (c[d] = b[d]);
-  }var f = arguments.length - 2;if (1 === f) c.children = e;else if (1 < f) {
-    for (var g = Array(f), l = 0; l < f; l++) {
-      g[l] = arguments[l + 2];
-    }c.children = g;
-  }if (a && a.defaultProps) for (d in f = a.defaultProps, f) {
-    void 0 === c[d] && (c[d] = f[d]);
-  }return { $$typeof: B, type: a, key: h, ref: k, props: c, _owner: z.current };
-}function E(a) {
-  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === B;
+};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+function J(a, b, e) {
+  var c,
+      d = {},
+      g = null,
+      k = null;if (null != b) for (c in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (g = "" + b.key), b) {
+    H.call(b, c) && !I.hasOwnProperty(c) && (d[c] = b[c]);
+  }var f = arguments.length - 2;if (1 === f) d.children = e;else if (1 < f) {
+    for (var h = Array(f), l = 0; l < f; l++) {
+      h[l] = arguments[l + 2];
+    }d.children = h;
+  }if (a && a.defaultProps) for (c in f = a.defaultProps, f) {
+    void 0 === d[c] && (d[c] = f[c]);
+  }return { $$typeof: r, type: a, key: g, ref: k, props: d, _owner: G.current };
+}function K(a) {
+  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === r;
 }
-var F = "function" === typeof Symbol && Symbol.iterator;
-var G = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var H = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.portal") || 60106;function escape(a) {
+function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var I = /\/+/g;
-var J = [];
-function K(a, b, e, d) {
-  if (J.length) {
-    var c = J.pop();c.result = a;c.keyPrefix = b;c.func = e;c.context = d;c.count = 0;return c;
-  }return { result: a, keyPrefix: b, func: e, context: d, count: 0 };
-}function L(a) {
-  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > J.length && J.push(a);
+}var L = /\/+/g;
+var M = [];function N(a, b, e, c) {
+  if (M.length) {
+    var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
+  }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
+}function O(a) {
+  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > M.length && M.push(a);
 }
-function M(a, b, e, d) {
-  var c = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === c || "boolean" === c) a = null;if (null === a || "string" === c || "number" === c || "object" === c && a.$$typeof === G || "object" === c && a.$$typeof === H) return e(d, a, "" === b ? "." + N(a, 0) : b), 1;var h = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
-    c = a[k];var f = b + N(c, k);h += M(c, f, e, d);
-  } else if (f = F && a[F] || a["@@iterator"], "function" === typeof f) for (a = f.call(a), k = 0; !(c = a.next()).done;) {
-    c = c.value, f = b + N(c, k++), h += M(c, f, e, d);
-  } else "object" === c && (e = "" + a, q("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return h;
-}function N(a, b) {
+function P(a, b, e, c) {
+  var d = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === d || "boolean" === d) a = null;var g = !1;if (null === a) g = !0;else switch (d) {case "string":case "number":
+      g = !0;break;case "object":
+      switch (a.$$typeof) {case r:case t:case u:case v:
+          g = !0;}}if (g) return e(c, a, "" === b ? "." + Q(a, 0) : b), 1;g = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
+    d = a[k];var f = b + Q(d, k);g += P(d, f, e, c);
+  } else if (null === a || "undefined" === typeof a ? f = null : (f = x && a[x] || a["@@iterator"], f = "function" === typeof f ? f : null), "function" === typeof f) for (a = f.call(a), k = 0; !(d = a.next()).done;) {
+    d = d.value, f = b + Q(d, k++), g += P(d, f, e, c);
+  } else "object" === d && (e = "" + a, y("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return g;
+}function Q(a, b) {
   return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && null != a.key ? escape(a.key) : b.toString(36);
-}function O(a, b) {
+}function R(a, b) {
   a.func.call(a.context, b, a.count++);
 }
-function P(a, b, e) {
-  var d = a.result,
-      c = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? Q(a, d, e, emptyFunction_1.thatReturnsArgument) : null != a && (E(a) && (b = c + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(I, "$\x26/") + "/") + e, a = { $$typeof: B, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), d.push(a));
-}function Q(a, b, e, d, c) {
-  var h = "";null != e && (h = ("" + e).replace(I, "$\x26/") + "/");b = K(b, h, d, c);null == a || M(a, "", P, b);L(b);
-}var R = { Children: { map: function map(a, b, e) {
-      if (null == a) return a;var d = [];Q(a, d, null, b, e);return d;
+function S(a, b, e) {
+  var c = a.result,
+      d = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? T(a, c, e, emptyFunction_1.thatReturnsArgument) : null != a && (K(a) && (b = d + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(L, "$\x26/") + "/") + e, a = { $$typeof: r, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), c.push(a));
+}function T(a, b, e, c, d) {
+  var g = "";null != e && (g = ("" + e).replace(L, "$\x26/") + "/");b = N(b, g, c, d);null == a || P(a, "", S, b);O(b);
+}
+var U = { Children: { map: function map(a, b, e) {
+      if (null == a) return a;var c = [];T(a, c, null, b, e);return c;
     }, forEach: function forEach(a, b, e) {
-      if (null == a) return a;b = K(null, null, b, e);null == a || M(a, "", O, b);L(b);
+      if (null == a) return a;b = N(null, null, b, e);null == a || P(a, "", R, b);O(b);
     }, count: function count(a) {
-      return null == a ? 0 : M(a, "", emptyFunction_1.thatReturnsNull, null);
+      return null == a ? 0 : P(a, "", emptyFunction_1.thatReturnsNull, null);
     }, toArray: function toArray(a) {
-      var b = [];Q(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
+      var b = [];T(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
     }, only: function only(a) {
-      E(a) ? void 0 : q("143");return a;
-    } }, Component: t, PureComponent: u, unstable_AsyncComponent: x, createElement: D, cloneElement: function cloneElement(a, b, e) {
-    var d = objectAssign({}, a.props),
-        c = a.key,
-        h = a.ref,
+      K(a) ? void 0 : y("143");return a;
+    } }, Component: A, PureComponent: B, unstable_AsyncComponent: E, Fragment: w, createElement: J, cloneElement: function cloneElement(a, b, e) {
+    var c = objectAssign({}, a.props),
+        d = a.key,
+        g = a.ref,
         k = a._owner;if (null != b) {
-      void 0 !== b.ref && (h = b.ref, k = z.current);void 0 !== b.key && (c = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (g in b) {
-        A.call(b, g) && !C.hasOwnProperty(g) && (d[g] = void 0 === b[g] && void 0 !== f ? f[g] : b[g]);
+      void 0 !== b.ref && (g = b.ref, k = G.current);void 0 !== b.key && (d = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (h in b) {
+        H.call(b, h) && !I.hasOwnProperty(h) && (c[h] = void 0 === b[h] && void 0 !== f ? f[h] : b[h]);
       }
-    }var g = arguments.length - 2;if (1 === g) d.children = e;else if (1 < g) {
-      f = Array(g);for (var l = 0; l < g; l++) {
+    }var h = arguments.length - 2;if (1 === h) c.children = e;else if (1 < h) {
+      f = Array(h);for (var l = 0; l < h; l++) {
         f[l] = arguments[l + 2];
-      }d.children = f;
-    }return { $$typeof: B, type: a.type, key: c, ref: h, props: d, _owner: k };
+      }c.children = f;
+    }return { $$typeof: r, type: a.type, key: d, ref: g, props: c, _owner: k };
   }, createFactory: function createFactory(a) {
-    var b = D.bind(null, a);b.type = a;return b;
-  }, isValidElement: E,
-  version: "16.1.1", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: z, assign: objectAssign } };
-var S = Object.freeze({ default: R });
-var T = S && R || S;var react_production_min = T["default"] ? T["default"] : T;
+    var b = J.bind(null, a);b.type = a;return b;
+  },
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
+var V = Object.freeze({ default: U });
+var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1371,7 +1520,7 @@ var checkPropTypes_1 = checkPropTypes;
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.1.1
+  /** @license React v16.2.0
    * react.development.js
    *
    * Copyright (c) 2013-present, Facebook, Inc.
@@ -1383,15 +1532,39 @@ var react_development = createCommonjsModule(function (module) {
   if (process.env.NODE_ENV !== "production") {
     (function () {
       var _assign = objectAssign;
-      var invariant = invariant_1;
       var emptyObject = emptyObject_1;
+      var invariant = invariant_1;
       var warning = warning_1;
       var emptyFunction = emptyFunction_1;
       var checkPropTypes = checkPropTypes_1;
 
       // TODO: this is special because it gets imported during build.
 
-      var ReactVersion = '16.1.1';
+      var ReactVersion = '16.2.0';
+
+      // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+      // nor polyfill, then a plain number is used for performance.
+      var hasSymbol = typeof Symbol === 'function' && Symbol['for'];
+
+      var REACT_ELEMENT_TYPE = hasSymbol ? Symbol['for']('react.element') : 0xeac7;
+      var REACT_CALL_TYPE = hasSymbol ? Symbol['for']('react.call') : 0xeac8;
+      var REACT_RETURN_TYPE = hasSymbol ? Symbol['for']('react.return') : 0xeac9;
+      var REACT_PORTAL_TYPE = hasSymbol ? Symbol['for']('react.portal') : 0xeaca;
+      var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
+
+      var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+      var FAUX_ITERATOR_SYMBOL = '@@iterator';
+
+      function getIteratorFn(maybeIterable) {
+        if (maybeIterable === null || typeof maybeIterable === 'undefined') {
+          return null;
+        }
+        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+        if (typeof maybeIterator === 'function') {
+          return maybeIterator;
+        }
+        return null;
+      }
 
       /**
        * WARNING: DO NOT manually require this module.
@@ -1399,20 +1572,6 @@ var react_development = createCommonjsModule(function (module) {
        * and will _only_ be required by the corresponding babel pass.
        * It always throws.
        */
-
-      // Exports React.Fragment
-      var enableReactFragment = false;
-      // Exports ReactDOM.createRoot
-
-
-      // Mutating mode (React DOM, React ART, React Native):
-
-      // Experimental noop mode (currently unused):
-
-      // Experimental persistent mode (CS):
-
-
-      // Only used in www builds.
 
       /**
        * Forked from fbjs/warning:
@@ -1693,10 +1852,6 @@ var react_development = createCommonjsModule(function (module) {
 
       var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-
       var RESERVED_PROPS = {
         key: true,
         ref: true,
@@ -1782,7 +1937,7 @@ var react_development = createCommonjsModule(function (module) {
       var ReactElement = function ReactElement(type, key, ref, self, source, owner, props) {
         var element = {
           // This tag allow us to uniquely identify this as a React Element
-          $$typeof: REACT_ELEMENT_TYPE$1,
+          $$typeof: REACT_ELEMENT_TYPE,
 
           // Built-in properties that belong on the element
           type: type,
@@ -1897,7 +2052,7 @@ var react_development = createCommonjsModule(function (module) {
         }
         {
           if (key || ref) {
-            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE$1) {
+            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
               var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
               if (key) {
                 defineKeyPropWarningGetter(props, displayName);
@@ -1996,7 +2151,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE$1;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -2014,12 +2169,6 @@ var react_development = createCommonjsModule(function (module) {
         };
       }
 
-      var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-      var REACT_PORTAL_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.portal') || 0xeaca;
       var SEPARATOR = '.';
       var SUBSEPARATOR = ':';
 
@@ -2103,10 +2252,28 @@ var react_development = createCommonjsModule(function (module) {
           children = null;
         }
 
-        if (children === null || type === 'string' || type === 'number' ||
-        // The following is inlined from ReactElement. This means we can optimize
-        // some checks. React Fiber also inlines this logic for similar purposes.
-        type === 'object' && children.$$typeof === REACT_ELEMENT_TYPE || type === 'object' && children.$$typeof === REACT_PORTAL_TYPE) {
+        var invokeCallback = false;
+
+        if (children === null) {
+          invokeCallback = true;
+        } else {
+          switch (type) {
+            case 'string':
+            case 'number':
+              invokeCallback = true;
+              break;
+            case 'object':
+              switch (children.$$typeof) {
+                case REACT_ELEMENT_TYPE:
+                case REACT_CALL_TYPE:
+                case REACT_RETURN_TYPE:
+                case REACT_PORTAL_TYPE:
+                  invokeCallback = true;
+              }
+          }
+        }
+
+        if (invokeCallback) {
           callback(traverseContext, children,
           // If it's the only child, treat the name as if it was wrapped in an array
           // so that it's consistent if the number of children grows.
@@ -2126,7 +2293,7 @@ var react_development = createCommonjsModule(function (module) {
             subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
           }
         } else {
-          var iteratorFn = ITERATOR_SYMBOL && children[ITERATOR_SYMBOL] || children[FAUX_ITERATOR_SYMBOL];
+          var iteratorFn = getIteratorFn(children);
           if (typeof iteratorFn === 'function') {
             {
               // Warn about using Maps as children
@@ -2349,6 +2516,8 @@ var react_development = createCommonjsModule(function (module) {
       {
         var currentlyValidatingElement = null;
 
+        var propTypesMisspellWarningShown = false;
+
         var getDisplayName = function getDisplayName(element) {
           if (element == null) {
             return '#empty';
@@ -2356,7 +2525,7 @@ var react_development = createCommonjsModule(function (module) {
             return '#text';
           } else if (typeof element.type === 'string') {
             return element.type;
-          } else if (element.type === REACT_FRAGMENT_TYPE$1) {
+          } else if (element.type === REACT_FRAGMENT_TYPE) {
             return 'React.Fragment';
           } else {
             return element.type.displayName || element.type.name || 'Unknown';
@@ -2374,13 +2543,8 @@ var react_development = createCommonjsModule(function (module) {
           return stack;
         };
 
-        var REACT_FRAGMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
         var VALID_FRAGMENT_PROPS = new Map([['children', true], ['key', true]]);
       }
-
-      var ITERATOR_SYMBOL$1 = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL$1 = '@@iterator'; // Before Symbol spec.
 
       function getDeclarationErrorAddendum() {
         if (ReactCurrentOwner.current) {
@@ -2486,7 +2650,7 @@ var react_development = createCommonjsModule(function (module) {
             node._store.validated = true;
           }
         } else if (node) {
-          var iteratorFn = ITERATOR_SYMBOL$1 && node[ITERATOR_SYMBOL$1] || node[FAUX_ITERATOR_SYMBOL$1];
+          var iteratorFn = getIteratorFn(node);
           if (typeof iteratorFn === 'function') {
             // Entry iterators used to provide implicit keys,
             // but now we print a separate warning for them later.
@@ -2516,11 +2680,13 @@ var react_development = createCommonjsModule(function (module) {
         }
         var name = componentClass.displayName || componentClass.name;
         var propTypes = componentClass.propTypes;
-
         if (propTypes) {
           currentlyValidatingElement = element;
           checkPropTypes(propTypes, element.props, 'prop', name, getStackAddendum);
           currentlyValidatingElement = null;
+        } else if (componentClass.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+          propTypesMisspellWarningShown = true;
+          warning(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
         }
         if (typeof componentClass.getDefaultProps === 'function') {
           warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
@@ -2610,7 +2776,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE$1) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -2649,8 +2815,6 @@ var react_development = createCommonjsModule(function (module) {
         return newElement;
       }
 
-      var REACT_FRAGMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
       var React = {
         Children: {
           map: mapChildren,
@@ -2663,6 +2827,8 @@ var react_development = createCommonjsModule(function (module) {
         Component: Component,
         PureComponent: PureComponent,
         unstable_AsyncComponent: AsyncComponent,
+
+        Fragment: REACT_FRAGMENT_TYPE,
 
         createElement: createElementWithValidation,
         cloneElement: cloneElementWithValidation,
@@ -2677,10 +2843,6 @@ var react_development = createCommonjsModule(function (module) {
           assign: _assign
         }
       };
-
-      if (enableReactFragment) {
-        React.Fragment = REACT_FRAGMENT_TYPE;
-      }
 
       {
         _assign(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
@@ -2720,52 +2882,235 @@ var react_2 = react.Component;
 var react_3 = react.PropTypes;
 var react_4 = react.createElement;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TEST_USER_NAME$1 = "ABC";
+
+var _class = function (_Component) {
+  _inherits(_class, _Component);
+
+  function _class(props) {
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+
+    _this.state = {
+      form: powerform({
+        username: {
+          default: "",
+          validator: required(true)
+        },
+        password: {
+          default: "",
+          validator: required(true)
+        },
+        confirmPassword: {
+          default: "",
+          validator: [required(true), equalsTo("password")]
+        }
+      }),
+      submit: function submit(e) {
+        e.preventDefault();
+        // Immediate frontend validation
+        var isValid = _this.state.form.isValid();
+        if (!isValid) {
+          _this.setState({ submitFailed: !isValid });
+          return false;
+        }
+
+        // Server side validation
+        // Send form data to API... but instead we will just show user feedback
+        if (_this.state.form.username() === TEST_USER_NAME$1) {
+          _this.state.form.error({ username: "Choose a different username" });
+          _this.setState({
+            formErrors: ["This username already exists. Please choose a different username."],
+            submitFailed: true
+          });
+          return false;
+        } else {
+          _this.setState({
+            submitted: true,
+            submitFailed: false,
+            formErrors: []
+          });
+          return false;
+        }
+      },
+      formErrors: null,
+      submitFailed: false,
+      submitted: false
+    };
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "render",
+    value: function render() {
+      var form = this.state.form;
+      var errors = form.error();
+      var submitFailed = this.state.submitFailed;
+      var formErrors = this.state.formErrors;
+
+      return this.state.submitted ? react.createElement(
+        "h3",
+        null,
+        "You're done!"
+      ) : react.createElement(
+        "form",
+        {
+          onSubmit: this.state.submit,
+          noValidate: true,
+          autoComplete: "off"
+        },
+        react.createElement(
+          "h3",
+          null,
+          "Sign up"
+        ),
+        react.createElement(TextField$1, {
+          name: "username",
+          defaultValue: form.username(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.username !== undefined),
+          error: errors.username,
+          onChange: function onChange(_ref) {
+            var value = _ref.value;
+            return form.username(value);
+          },
+          label: "Your name",
+          help: "Use '" + TEST_USER_NAME$1 + "' to test form validation"
+        }),
+        react.createElement(TextField$1, {
+          name: "password",
+          defaultValue: form.password(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.password !== undefined),
+          error: errors.password,
+          onChange: function onChange(_ref2) {
+            var value = _ref2.value;
+            return form.password(value);
+          },
+          label: "Your password",
+          type: "password"
+        }),
+        react.createElement(TextField$1, {
+          name: "confirmPassword",
+          defaultValue: form.confirmPassword(),
+          floatingLabel: true,
+          validateOnInput: true,
+          required: true,
+          valid: !(submitFailed && errors.confirmPassword !== undefined),
+          error: errors.confirmPassword,
+          onChange: function onChange(_ref3) {
+            var value = _ref3.value;
+            return form.confirmPassword(value);
+          },
+          label: "Confirm your password",
+          type: "password"
+        }),
+        formErrors ? react.createElement(
+          "div",
+          {
+            style: {
+              margin: "1rem 0",
+              padding: "1rem",
+              background: "#ffcdd2"
+            }
+          },
+          react.createElement(
+            "div",
+            null,
+            formErrors.map(function (err, index) {
+              return react.createElement(
+                "div",
+                { key: index },
+                err
+              );
+            })
+          )
+        ) : null,
+        react.createElement(RaisedButton$1, {
+          element: "button",
+          type: "submit",
+          label: "Send"
+        })
+      );
+    }
+  }]);
+
+  return _class;
+}(react_2);
+
+var _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var reactTests = function reactTests(_ref) {
   var TextField$$1 = _ref.TextField,
       RaisedButton$$1 = _ref.RaisedButton,
       h = _ref.renderer;
   // eslint-disable-line no-unused-vars
 
-  return [
-    // {
-    //   section: "React JSX tests",
-    // },
-    // {
-    //   name: "Option: value (JSX)",
-    //   component: () =>
-    //     block([
-    //       <TextField
-    //         type="password"
-    //         defaultValue="123456"
-    //         key="a"
-    //       />,
-    //       <TextField
-    //         type="number"
-    //         defaultValue="123456"
-    //         key="b"
-    //       />,
-    //       <TextField
-    //         type="email"
-    //         defaultValue="a@b.com"
-    //         key="c"
-    //       />
-    //     ])
-    // },
-    // {
-    //   name: "Option: counter, floatingLabel (JSX)",
-    //   interactive: true,
-    //   component: () =>
-    //     block([
-    //       <TextField
-    //         label="Description"
-    //         floatingLabel
-    //         counter={15}
-    //         error="You have exceeded the maximum number of characters."
-    //         key="x"
-    //       />
-    //     ])
-    // },
-  ];
+  var block = function block(test) {
+    var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    return react.createElement(
+      "div",
+      {
+        style: _extends$7({}, attrs.dark ? null : { background: "#fff" }, attrs.fullWidth ? null : { padding: "10px 15px" })
+      },
+      test
+    );
+  };
+
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "Option: value (JSX)",
+    component: function component() {
+      return block([react.createElement(TextField$$1, {
+        type: "password",
+        defaultValue: "123456",
+        key: "a"
+      }), react.createElement(TextField$$1, {
+        type: "number",
+        defaultValue: "123456",
+        key: "b"
+      }), react.createElement(TextField$$1, {
+        type: "email",
+        defaultValue: "a@b.com",
+        key: "c"
+      })]);
+    }
+  }, {
+    name: "Option: counter, floatingLabel (JSX)",
+    interactive: true,
+    component: function component() {
+      return block([react.createElement(TextField$$1, {
+        label: "Description",
+        floatingLabel: true,
+        counter: 15,
+        error: "You have exceeded the maximum number of characters.",
+        key: "x"
+      })]);
+    }
+  }, {
+    name: "Form validation with github.com/ludbek/powerform",
+    interactive: true,
+    excluded: true,
+    component: {
+      view: function view() {
+        return block(react.createElement(_class, null));
+      }
+    }
+  }];
 };
 
 var testsReact = [].concat(genericTests({ TextField: TextField$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 })).concat(reactTests({ TextField: TextField$1, RaisedButton: RaisedButton$1, renderer: renderer$1, keys: keys$1 }));

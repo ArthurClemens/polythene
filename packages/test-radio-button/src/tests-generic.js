@@ -6,7 +6,7 @@ const iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 
 
 const iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
-export default ({ RadioGroup, RadioButton, renderer: h, keys: k }) => {
+export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k }) => {
 
   const trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   const trustedIconStarFilled = h.trust(iconStarFilledSVG);
@@ -22,6 +22,15 @@ export default ({ RadioGroup, RadioButton, renderer: h, keys: k }) => {
   });
 
   const sizeNames = ["small", "regular", "medium", "large"];
+
+  const RadioGroup = {
+    view: ({ attrs }) => 
+      h(PeRadioGroup, Object.assign(
+        {},
+        { className: "multiple" },
+        attrs
+      ))
+  };
 
   return [
     {
@@ -104,10 +113,6 @@ export default ({ RadioGroup, RadioButton, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "size",
-        style: {
-          display: "flex",
-          alignItems: "center"
-        },
         content: sizeNames.map(size => ({
           size,
           value: size,
@@ -120,10 +125,6 @@ export default ({ RadioGroup, RadioButton, renderer: h, keys: k }) => {
       component: RadioGroup,
       attrs: {
         name: "icon",
-        style: {
-          display: "flex",
-          alignItems: "center"
-        },
         content: sizeNames.map(size => ({
           size,
           value: size,

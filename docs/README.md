@@ -38,7 +38,6 @@
   * [Checkbox](components/checkbox.md)
   * [Radio Button](components/radio-button.md)
   * [Radio Group](components/radio-group.md)
-  * [Search](components/search.md)
   * [Selection Control](components/selection-control.md)
   * [Slider](components/slider.md)
   * [Switch](components/switch.md)
@@ -50,6 +49,7 @@
   * [Notification](components/notification.md)
   * [Snackbar](components/snackbar.md)
 * [Ripple](components/ripple.md)
+* [Search](components/search.md)
 * [Shadow](components/shadow.md)
 * [Spinner](components/spinner.md)
 * [SVG](components/svg.md)
@@ -70,7 +70,6 @@
   * [Checkbox](components/mithril/checkbox.md)
   * [Radio Button](components/mithril/radio-button.md)
   * [Radio Group](components/mithril/radio-group.md)
-  * [Search](components/mithril/search.md)
   * [Slider](components/mithril/slider.md)
   * [Switch](components/mithril/switch.md)
   * [Text Field](components/mithril/textfield.md)
@@ -81,6 +80,7 @@
   * [Notification](components/mithril/notification.md)
   * [Snackbar](components/mithril/snackbar.md)
 * [Ripple](components/mithril/ripple.md)
+* [Search](components/mithril/search.md)
 * [Shadow](components/mithril/shadow.md)
 * [Spinner](components/mithril/spinner.md)
 * [SVG](components/mithril/svg.md)
@@ -101,7 +101,6 @@
   * [Checkbox](components/react/checkbox.md)
   * [Radio Button](components/react/radio-button.md)
   * [Radio Group](components/react/radio-group.md)
-  * [Search](components/react/search.md)
   * [Slider](components/react/slider.md)
   * [Switch](components/react/switch.md)
   * [Text Field](components/react/textfield.md)
@@ -112,6 +111,7 @@
   * [Notification](components/react/notification.md)
   * [Snackbar](components/react/snackbar.md)
 * [Ripple](components/react/ripple.md)
+* [Search](components/react/search.md)
 * [Shadow](components/react/shadow.md)
 * [Spinner](components/react/spinner.md)
 * [SVG](components/react/svg.md)
@@ -120,7 +120,9 @@
 
 ## And also
 
+* [Extending other libraries](extending.md)
 * [Developing](developing.md)
 * [Additional Polythene packages](packages.md)
 * [Migrating from 0.2](migrating-from-02.md)
+* [Known issues](known-issues.md)
 

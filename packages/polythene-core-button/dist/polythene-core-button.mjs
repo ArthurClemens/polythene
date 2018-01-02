@@ -4,6 +4,7 @@ import { vars } from 'polythene-theme';
 var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
+  row: "pe-button-row",
 
   // elements
   content: "pe-button__content",
@@ -32,16 +33,14 @@ var getElement = function getElement(vnode) {
 var getInitialState = function getInitialState(vnode, createStream) {
   var dom = createStream(null);
   var focus = createStream(false);
-  var click = createStream(null); // Force redraw for IE 11
   var inactive = createStream(false);
   var mouseover = createStream(false);
   return {
     dom: dom,
-    click: click,
     focus: focus,
     inactive: inactive,
     mouseover: mouseover,
-    redrawOnUpdate: createStream.merge([dom, click, focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
   };
 };
 
@@ -50,9 +49,23 @@ var onMount = function onMount(vnode) {
     return;
   }
   var state = vnode.state;
+  var attrs = vnode.attrs;
   state.dom(vnode.dom);
 
   if (isClient) {
+    var noink = attrs.ink !== undefined && attrs.ink === false;
+    var handleInactivate = function handleInactivate() {
+      return (
+        // delay a bit so that the ripple can finish before the hover disappears
+        // the timing is crude and does not take the actual ripple "done" into account
+        setTimeout(function () {
+          return state.inactive(true), setTimeout(function () {
+            return state.inactive(false);
+          }, attrs.inactivate * 1000);
+        }, noink ? 0 : 300)
+      );
+    };
+
     var onFocus = function onFocus() {
       return state.focus(!state.mouseover());
     };
@@ -65,14 +78,16 @@ var onMount = function onMount(vnode) {
     var onMouseOut = function onMouseOut() {
       return state.mouseover(false);
     };
+    var onClick = handleInactivate;
 
     vnode.dom.addEventListener("focus", onFocus, false);
     vnode.dom.addEventListener("blur", onBlur, false);
     vnode.dom.addEventListener("mouseover", onMouseOver, false);
     vnode.dom.addEventListener("mouseout", onMouseOut, false);
+    vnode.dom.addEventListener("click", onClick, false);
 
     state.removeEventListeners = function () {
-      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false);
+      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false), vnode.dom.removeEventListener("click", onClick, false);
     };
   }
 };
@@ -91,27 +106,12 @@ var createProps = function createProps(vnode, _ref) {
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive();
   var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
-  var noink = attrs.ink !== undefined && attrs.ink === false;
-
-  var handleInactivate = function handleInactivate() {
-    return (
-      // delay a bit so that the ripple can finish before the hover disappears
-      // the timing is crude and does not take the actual ripple "done" into account
-      setTimeout(function () {
-        return state.inactive(true), setTimeout(function () {
-          return state.inactive(false);
-        }, attrs.inactivate * 1000);
-      }, noink ? 0 : 300)
-    );
-  };
   var onClickHandler = attrs.events && attrs.events[k.onclick];
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, function (e) {
-    return state.click(e), attrs.inactivate !== undefined && handleInactivate(), onClickHandler && onClickHandler(e), true;
-  }), _defineProperty(_ref2, k.onkeydown, function (e) {
+  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeydown, function (e) {
     if (e.key === "Enter" && state.focus()) {
       state.focus(false);
       if (onKeyDownHandler) {

@@ -12,6 +12,8 @@ export default (selector) => [{
       left: 0,
       zIndex: vars.z_notification,
       pointerEvents: "none",
+      justifyContent: "flex-start", // For IE11
+      width: "100%",
     }
   ],
 

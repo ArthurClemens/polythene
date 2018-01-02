@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Search, IconButton, Button, Shadow } from "polythene-react";
+import { renderer, keys, Search, IconButton, Button, Shadow, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
 import SearchField from "./components/searchfield-hyperscript";
 import SearchFieldJSX from "./components/searchfield-jsx";
@@ -26,12 +26,12 @@ const reactTests = () => {
     {
       name: "Theme (JSX)",
       component: () =>
-        <SearchFieldJSX className="tests-search-themed-search" />
+        <SearchFieldJSX className="tests-search-themed-search" tone="dark" />
     },
   ];
     
 };
 
 export default []
-  .concat(genericTests({ Search, IconButton, Button, Shadow, SearchField, renderer, keys }))
-  .concat(reactTests({ Search, IconButton, Button, Shadow, SearchField, renderer, keys }));
+  .concat(genericTests({ Search, IconButton, Button, Shadow, SearchField, List, ListTile, renderer, keys }))
+  .concat(reactTests({ Search, IconButton, Button, Shadow, SearchField, List, ListTile, renderer, keys }));

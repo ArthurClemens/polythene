@@ -1,2 +1,103 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports):"function"==typeof define&&define.amd?define(["exports"],r):r(e.polythene={})}(this,function(e){"use strict";var r=require("autoprefixer"),n=require("cssbeautify"),t=require("fs"),i=require("j2c"),u=require("postcss"),o=require("cssnano"),c=require("tar"),s=new i,f=function(){for(var e=arguments.length,r=Array(e),n=0;n<e;n++)r[n]=arguments[n];return r.reduce(function(e,r){return Object.keys(r).length?(r.forEach(function(r){var n={"@global":r},t=s.sheet(n);e+=t}),e):e},"")},a=function(e){return n(e,{indent:"  "})},p=function(e,r){return t.writeFileSync(e,r,"ascii",function(e){if(e)throw e})},d=function(e){var n=e.css,i=e.styles,s=e.path,d=e.autoPrefix,l=e.beautify,h=e.sourceMap,y=void 0===h||h,g=e.gzip,m=n||(i?i.reduce(function(e,r){return e+f(r)},""):""),q=s+".map",v=[];d&&v.push(r()),v.push(o({preset:"default",reduceIdents:!1,zindex:!1}));var b=y?{to:s,map:{inline:!1}}:{};u(v).process(m,b).then(function(e){e.warnings().forEach(function(e){console.warn("[31m","Warning","[37m",e.toString())}),p(s,l?a(e.css):e.css),g&&c.c({gzip:!0},[s]).pipe(t.createWriteStream(s+".gz")),y&&p(q,e.map)})};e.writeCSS=d,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
+
+var autoprefixer = require("autoprefixer");
+var cssbeautify = require("cssbeautify");
+var fs = require("fs");
+var J2c = require("j2c");
+var postcss = require("postcss");
+var cssnano = require("cssnano");
+var tar = require("tar");
+
+var j2c = new J2c();
+var COLOR_RED = "\x1b[31m";
+var COLOR_WHITE = "\x1b[37m";
+
+var makeStyleSheet = function makeStyleSheet() {
+  for (var _len = arguments.length, styles = Array(_len), _key = 0; _key < _len; _key++) {
+    styles[_key] = arguments[_key];
+  }
+
+  return styles.reduce(function (acc, styleList) {
+    return (
+      // each style returns a list
+      Object.keys(styleList).length ? (styleList.forEach(function (style) {
+        var scoped = {
+          "@global": style
+        };
+        var sheet = j2c.sheet(scoped);
+        acc += sheet;
+      }), acc) : acc
+    );
+  }, "");
+};
+
+var beautifyCSS = function beautifyCSS(cssString) {
+  return cssbeautify(cssString, {
+    indent: "  "
+  });
+};
+
+var saveToFile = function saveToFile(path, cssString) {
+  return fs.writeFileSync(path, cssString, "ascii", function (err) {
+    // throws an error, you could also catch it here
+    if (err) throw err;
+  });
+};
+
+
+
+var writeCSS = function writeCSS(_ref2) {
+  var css = _ref2.css,
+      styles = _ref2.styles,
+      path = _ref2.path,
+      autoPrefix = _ref2.autoPrefix,
+      beautify = _ref2.beautify,
+      _ref2$sourceMap = _ref2.sourceMap,
+      sourceMap = _ref2$sourceMap === undefined ? true : _ref2$sourceMap,
+      gzip = _ref2.gzip;
+
+  var cssString = css ? css : styles ? styles.reduce(function (acc, current) {
+    return acc + makeStyleSheet(current);
+  }, "") : "";
+
+  var mapPath = path + ".map";
+
+  var plugins = [];
+  if (autoPrefix) {
+    plugins.push(autoprefixer());
+  }
+  plugins.push(cssnano({
+    preset: "default",
+    reduceIdents: false,
+    zindex: false
+  }));
+
+  var options = sourceMap ? {
+    to: path,
+    map: { inline: false }
+  } : {};
+
+  postcss(plugins).process(cssString, options).then(function (result) {
+    result.warnings().forEach(function (warn) {
+      console.warn(COLOR_RED, "Warning", COLOR_WHITE, warn.toString()); // eslint-disable-line no-console
+    });
+    saveToFile(path, beautify ? beautifyCSS(result.css) : result.css);
+    if (gzip) {
+      tar.c({ gzip: true }, [path]).pipe(fs.createWriteStream(path + ".gz"));
+    }
+    if (sourceMap) {
+      saveToFile(mapPath, result.map);
+    }
+  });
+};
+
+exports.writeCSS = writeCSS;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-scripts.js.map

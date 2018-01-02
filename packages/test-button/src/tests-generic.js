@@ -1,6 +1,6 @@
 import { ButtonCSS } from "polythene-css";
 
-export default ({ Button }) => {
+export default ({ renderer: h, Button }) => {
   
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
@@ -25,6 +25,28 @@ export default ({ Button }) => {
       component: Button,
       attrs: {
         label: "Label"
+      }
+    },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(Button, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(Button, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(Button, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
       }
     },
     {

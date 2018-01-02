@@ -1,2 +1,16 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-slider")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-slider"],t):t(e.polythene={},e["polythene-mithril-base"],e["polythene-core-slider"])}(this,function(e,t,o){"use strict";var i=t.StateComponent(o.coreSlider);i.displayName="Slider",e.Slider=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-slider')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-slider'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-slider']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreSlider) { 'use strict';
+
+var Slider = polytheneMithrilBase.StateComponent(polytheneCoreSlider.coreSlider);
+
+Slider.displayName = "Slider";
+
+exports.Slider = Slider;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-slider.js.map

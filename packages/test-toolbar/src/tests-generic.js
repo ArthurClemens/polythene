@@ -49,6 +49,20 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
       }
     },
     {
+      name: "ToolbarTitle, at start",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentAtStart
+      }
+    },
+    {
+      name: "ToolbarTitle, indented (without left icon)",
+      component: Toolbar,
+      attrs: {
+        content: toolbarTitleComponentIndented
+      }
+    },
+    {
       name: "ToolbarTitle, centered",
       component: Toolbar,
       attrs: {
@@ -60,20 +74,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
       component: Toolbar,
       attrs: {
         content: toolbarTitleComponentCenteredBalanced
-      }
-    },
-    {
-      name: "ToolbarTitle, indented (without left icon)",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentIndented
-      }
-    },
-    {
-      name: "ToolbarTitle, at start",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentAtStart
       }
     },
     {
@@ -92,7 +92,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
     },
     {
       name: "Option: style (colors and height)",
-      className: "small-result",
       component: Toolbar,
       attrs: {
         content: toolbarRow,

@@ -2,12 +2,27 @@
 
 # Card component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Images](#images)
+  - [Cropping / origin](#cropping--origin)
+  - [Overlay](#overlay)
+  - [Title image](#title-image)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Card options](../card.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/47uy6e1w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -34,7 +49,7 @@ To generated Material Design elements, pass an array of element options, where e
 * media
 * header
 * actions
-
+* any (for any other content)
 
 Element `primary` contains the sub-options `title` and `subtitle`:
 
@@ -152,11 +167,13 @@ m(Card, {
 
 
 
+<a name="images"></a>
 ## Images
 
 By specification, the `media` element has an image ratio of `16:9`, but `1:1` images can be used too, as well as "title images" (an image placed next to the title). Images can additionally have with overlay text. Both `ratio` ("square" or "landscape") and `size` ("small", "medium", "large", "extra-large") can be set.
 
 
+<a name="cropping--origin"></a>
 ### Cropping / origin
 
 An image that does not fit the ratio is cropped by CSS. An additional parameter `origin` can be passed to determine from which side cropping should be done. Default value is "center", optional values are "start" and "end". The end result depends if the image is landscape or portrait format.
@@ -175,6 +192,7 @@ content: [{
 ~~~
 
 
+<a name="overlay"></a>
 ### Overlay
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
@@ -226,6 +244,7 @@ An additional HTML element to control the image is "card__media__dimmer". To cre
 ~~~
 
 
+<a name="title-image"></a>
 ### Title image
 
 To create a square image at the right side of the title, use `primary.media`:
@@ -247,8 +266,10 @@ content: [{
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Card appearance, either with a theme or with CSS.
@@ -294,6 +315,7 @@ m(Card, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

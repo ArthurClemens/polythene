@@ -4,6 +4,7 @@ import { vars } from 'polythene-core-button';
 var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
+  row: "pe-button-row",
 
   // elements
   content: "pe-button__content",
@@ -22,14 +23,15 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var baseLayout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [mixin.defaultTransition("all", componentVars.animation_duration), {
+  var _ref;
+
+  return [(_ref = {}, _defineProperty(_ref, selector, [{
     userSelect: "none",
     outline: "none",
     padding: 0,
     textDecoration: "none",
     textAlign: "center",
     cursor: "pointer",
-    transition: "all " + componentVars.animation_duration + " ease-in-out",
 
     ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
       cursor: "default",
@@ -42,10 +44,10 @@ var baseLayout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-button__content": {
+    " .pe-button__content": [mixin.defaultTransition("all", componentVars.animation_duration), {
       position: "relative",
       borderRadius: "inherit"
-    },
+    }],
 
     " .pe-button__label": [mixin.fontSmoothing(), {
       position: "relative",
@@ -54,7 +56,7 @@ var baseLayout = (function (selector, componentVars) {
       pointerEvents: "none"
     }],
 
-    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("background-color", "opacity"), mixin.fit(), {
+    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("all", componentVars.animation_duration), mixin.fit(), {
       borderRadius: "inherit",
       pointerEvents: "none"
     }],
@@ -66,7 +68,15 @@ var baseLayout = (function (selector, componentVars) {
     " .pe-button__wash": {
       zIndex: 0
     }
-  }])];
+  }]), _defineProperty(_ref, " .pe-button-row", _defineProperty({
+    margin: "0 -" + componentVars.margin_h + "px",
+    // prevent inline block style to add extra space:
+    fontSize: 0,
+    lineHeight: 0
+
+  }, " " + selector, {
+    margin: "0 " + componentVars.margin_h + "px"
+  })), _ref)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -75,7 +85,6 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty$1({}, selector, [{
     display: "inline-block",
     minWidth: componentVars.min_width + "px",
-    margin: "0 " + componentVars.margin_h + "px",
     padding: componentVars.outer_padding_v + "px 0",
     background: "transparent",
     border: "none",

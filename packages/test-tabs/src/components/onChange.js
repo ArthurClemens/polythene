@@ -9,10 +9,10 @@ const threeButtons = [
 export default ({ h, Tabs }) => ({
   oninit: vnode => {
     const tab = stream({});
-    vnode.state = {
+    Object.assign(vnode.state, {
       tab,
       redrawOnUpdate: stream.merge([tab])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

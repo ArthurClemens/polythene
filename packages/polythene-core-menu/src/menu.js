@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer, isTouch } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
@@ -161,15 +161,23 @@ export const onMount = vnode => {
     };
 
     state.activateDismissTap = () => {
-      document.addEventListener("click", state.handleDismissTap);
+      if (isTouch) {
+        document.addEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.addEventListener("click", state.handleDismissTap);
+      }
     };
 
     state.deActivateDismissTap = () => {
-      document.removeEventListener("click", state.handleDismissTap);
+      if (isTouch) {
+        document.removeEventListener("touchstart", state.handleDismissTap);
+      } else {
+        document.removeEventListener("click", state.handleDismissTap);
+      }
     };
 
     state.handleEscape = e => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "Esc") {
         hideMenu(state, Object.assign(
           {},
           attrs,

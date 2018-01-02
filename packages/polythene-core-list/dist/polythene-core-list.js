@@ -1,2 +1,128 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],t):t(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,t,r){"use strict";function i(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var l={component:"pe-list",borders:"pe-list--borders",compact:"pe-list--compact",hasHeader:"pe-list--header",indentedBorders:"pe-list--indented-borders",padding:"pe-list--padding",header:{component:"pe-list-tile",content:"pe-list-tile__content",highSubtitle:"pe-list-tile__high-subtitle",primary:"pe-list-tile__primary",secondary:"pe-list-tile__secondary",subtitle:"pe-list-tile__subtitle",title:"pe-list-tile__title",contentFront:"pe-list-tile__content-front",compact:"pe-list-tile--compact",compactFront:"pe-list-tile--compact-front",disabled:"pe-list-tile--disabled",hasFront:"pe-list-tile--front",hasHighSubtitle:"pe-list-tile--high-subtitle",hasSubtitle:"pe-list-tile--subtitle",header:"pe-list-tile--header",hoverable:"pe-list-tile--hoverable",selectable:"pe-list-tile--selectable",selected:"pe-list-tile--selected",highlight:"pe-list-tile--highlight",sticky:"pe-list-tile--sticky"}.header},n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var i in r)Object.prototype.hasOwnProperty.call(r,i)&&(e[i]=r[i])}return e},o=function(e){return e.attrs.element||"div"},a=function(e,t){var r=t.state,i=t.attrs;if(i.onSelect){var l=r.highlightIndex(),n={event:e,index:l,dom:r.tiles[l].dom,attrs:r.tiles[l].attrs};i.onSelect(n)}},s=function(e,t){var r=e.attrs,i=t(void 0!==r.defaultHighlightIndex?r.defaultHighlightIndex:-1);return{tiles:[],highlightIndex:i,registerTile:function(e){return function(t,r){return e.tiles[t]=r}},redrawOnUpdate:t.merge([i])}},d=function(e){var t=e.state;e.attrs.keyboardControl&&t.highlightIndex.map(function(e){t.tiles[e]&&t.tiles[e].dom.focus()})},c=function(e,r){var o=r.keys,s=e.state,d=e.attrs;return n({},t.filterSupportedAttributes(d),{className:[l.component,d.borders?l.borders:null,d.indentedBorders?l.indentedBorders:null,d.header?l.hasHeader:null,d.compact?l.compact:null,!1!==d.padding?l.padding:null,"dark"===d.tone?"pe-dark-tone":null,"light"===d.tone?"pe-light-tone":null,d.className||d[o.class]].join(" ")},d.keyboardControl&&i({},o.onkeydown,function(t){var r=s.highlightIndex();if("ArrowDown"===t.key||"ArrowRight"===t.key){t.preventDefault();var i=Math.min(s.tiles.length-1,r+1);s.tiles[i].dom.focus()}else if("ArrowUp"===t.key||"ArrowLeft"===t.key){t.preventDefault();var l=Math.max(0,r-1);s.tiles[l].dom.focus()}else"Enter"===t.key?a(t,e):"Escape"===t.key&&(s.tiles[r].dom.blur(),s.highlightIndex(-1))}))},h=function(e,t){var r=t.renderer,o=t.requiresKeys,s=t.keys,d=t.ListTile,c=e.state,h=e.attrs,p=void 0;h.header&&((p=n({},h.header))[s.class]=[l.header,p[s.class]||null].join(" "));var u=c.highlightIndex(),g=h.tiles?h.tiles:h.content?h.content:h.children||e.children,f=-1;return[p?r(d,n({},o?{key:"header"}:null,h.all,p,{header:!0})):null,h.keyboardControl?g.map(function(t){return t.header||f++,void 0!==t.tag?t:r(d,n({},h.all,t,!t.header&&{keyboardControl:!0,register:c.registerTile(c),setHighlightIndex:c.highlightIndex,index:f,defaultHighlight:u===f,events:n({},t.events,i({},s.onclick,function(t){return a(t,e)}))}))}):h.all?g.map(function(e){return r(d,n({},h.all,e))}):g]},p=Object.freeze({getElement:o,getInitialState:s,onMount:d,createProps:c,createContent:h}),u=function(e){return"rgba("+e+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},g={padding:r.vars.grid_unit_component,padding_compact:3*r.vars.grid_unit_component/4,border_width_stacked:1,border_width_bordered:1,color_light_border:u(r.vars.color_light_foreground,r.vars.blend_light_border_light),color_dark_border:u(r.vars.color_dark_foreground,r.vars.blend_dark_border_light)};e.coreList=p,e.vars=g,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var listTileClasses = {
+  component: "pe-list-tile",
+
+  // elements
+  content: "pe-list-tile__content",
+  highSubtitle: "pe-list-tile__high-subtitle",
+  primary: "pe-list-tile__primary",
+  secondary: "pe-list-tile__secondary",
+  subtitle: "pe-list-tile__subtitle",
+  title: "pe-list-tile__title",
+  contentFront: "pe-list-tile__content-front",
+
+  // states
+  compact: "pe-list-tile--compact",
+  compactFront: "pe-list-tile--compact-front",
+  disabled: "pe-list-tile--disabled",
+  hasFront: "pe-list-tile--front",
+  hasHighSubtitle: "pe-list-tile--high-subtitle",
+  hasSubtitle: "pe-list-tile--subtitle",
+  header: "pe-list-tile--header",
+  hoverable: "pe-list-tile--hoverable",
+  selectable: "pe-list-tile--selectable",
+  selected: "pe-list-tile--selected",
+  highlight: "pe-list-tile--highlight",
+  sticky: "pe-list-tile--sticky"
+};
+
+var classes = {
+  component: "pe-list",
+
+  // states
+  borders: "pe-list--borders",
+  compact: "pe-list--compact",
+  hasHeader: "pe-list--header",
+  indentedBorders: "pe-list--indented-borders",
+  padding: "pe-list--padding",
+  paddingTop: "pe-list--padding-top",
+  paddingBottom: "pe-list--padding-bottom",
+
+  // lookup
+  header: listTileClasses.header
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var paddingClasses = {
+  both: classes.padding,
+  bottom: classes.paddingBottom,
+  top: classes.paddingTop,
+  none: null
+};
+
+var paddingClass = function paddingClass() {
+  var attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "both";
+  return paddingClasses[attr];
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  });
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      requiresKeys = _ref2.requiresKeys,
+      k = _ref2.keys,
+      ListTile = _ref2.ListTile;
+
+  var attrs = vnode.attrs;
+  var headerOpts = void 0;
+  if (attrs.header) {
+    headerOpts = _extends({}, attrs.header);
+    headerOpts[k.class] = [classes.header, headerOpts[k.class] || null].join(" ");
+  }
+  var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
+  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? { key: "header" } : null, attrs.all, headerOpts, {
+    header: true
+  })) : null, attrs.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _extends({}, attrs.all, tileOpts));
+  }) : tiles];
+};
+
+var list = Object.freeze({
+	getElement: getElement,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  padding: polytheneTheme.vars.grid_unit_component, // vertical padding
+  padding_compact: polytheneTheme.vars.grid_unit_component * 3 / 4,
+  border_width_stacked: 1,
+  border_width_bordered: 1,
+
+  color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
+
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
+};
+
+exports.coreList = list;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-list.js.map

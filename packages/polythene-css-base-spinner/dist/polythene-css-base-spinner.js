@@ -1,2 +1,115 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-core-css"),require("polythene-core-base-spinner")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-core-base-spinner"],n):n(e.polythene={},e["polythene-core-css"],e["polythene-core-base-spinner"])}(this,function(e,n,r){"use strict";function i(e,n,r){return n in e?Object.defineProperty(e,n,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[n]=r,e}function t(e,n,r){return n in e?Object.defineProperty(e,n,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[n]=r,e}var p={component:"pe-spinner",animation:"pe-spinner__animation",placeholder:"pe-spinner__placeholder",animated:"pe-spinner--animated",fab:"pe-spinner--fab",large:"pe-spinner--large",medium:"pe-spinner--medium",permanent:"pe-spinner--permanent",raised:"pe-spinner--raised",regular:"pe-spinner--regular",singleColor:"pe-spinner--single-color",small:"pe-spinner--small",visible:"pe-spinner--visible"},s=function(e){return{width:e+"px",height:e+"px"}},a=function(e,n){var r=n.raisedSize(e),i=r.padding,t=r.paddedSize;return{width:t+"px",height:t+"px",padding:i+"px"}},o=function(e,n){return[i({},e,{transitionTimingFunction:"ease-out",transitionProperty:"opacity",opacity:0,".pe-spinner--visible, &.pe-spinner--permanent":{opacity:1},".pe-spinner--small":s(n.size_small),".pe-spinner--regular":s(n.size_regular),".pe-spinner--medium":s(n.size_medium),".pe-spinner--large":s(n.size_large),".pe-spinner--fab":s(n.size_fab),".pe-spinner--raised":{position:"relative",borderRadius:"50%",".pe-spinner--small":a(n.size_small,n),".pe-spinner--regular":a(n.size_regular,n),".pe-spinner--medium":a(n.size_medium,n),".pe-spinner--large":a(n.size_large,n),".pe-spinner--fab":a(n.size_fab,n)}})]},l=function(e,n,r,i){return[t({},e.map(function(e){return e+n}).join(","),{".pe-spinner--raised":{backgroundColor:r["color_"+i+"_raised_background"]}})]},u=function(e,n){return[l([".pe-dark-tone",".pe-dark-tone "],e,n,"dark"),l(["",".pe-light-tone",".pe-light-tone "],e,n,"light")]},c=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var r=arguments[n];for(var i in r)Object.prototype.hasOwnProperty.call(r,i)&&(e[i]=r[i])}return e},d=[o,u],f="."+p.component,m=function(e,i){return n.styler.generateStyles([e,f],c({},r.vars,i),d)},g=function(e,i){return e?n.styler.createStyleSheets([e,f],c({},r.vars,i),d):n.styler.createStyleSheets([f],r.vars,d)};n.styler.generateStyles([f],r.vars,d),e.addStyle=m,e.getStyle=g,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-base-spinner')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-base-spinner'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-base-spinner']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreBaseSpinner) { 'use strict';
+
+var classes = {
+  component: "pe-spinner",
+
+  // elements
+  animation: "pe-spinner__animation",
+  placeholder: "pe-spinner__placeholder",
+
+  // states
+  animated: "pe-spinner--animated",
+  fab: "pe-spinner--fab",
+  large: "pe-spinner--large",
+  medium: "pe-spinner--medium",
+  permanent: "pe-spinner--permanent",
+  raised: "pe-spinner--raised",
+  regular: "pe-spinner--regular",
+  singleColor: "pe-spinner--single-color",
+  small: "pe-spinner--small",
+  visible: "pe-spinner--visible"
+};
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var sizes = function sizes(size) {
+  return {
+    width: size + "px",
+    height: size + "px"
+  };
+};
+
+var raisedSize = function raisedSize(size, componentVars) {
+  var _componentVars$raised = componentVars.raisedSize(size),
+      padding = _componentVars$raised.padding,
+      paddedSize = _componentVars$raised.paddedSize;
+
+  return {
+    width: paddedSize + "px",
+    height: paddedSize + "px",
+    padding: padding + "px"
+  };
+};
+
+var layout = (function (selector, componentVars) {
+  return [_defineProperty({}, selector, {
+    transitionTimingFunction: "ease-out",
+    transitionProperty: "opacity",
+    opacity: 0,
+
+    ".pe-spinner--visible, &.pe-spinner--permanent": {
+      opacity: 1
+    },
+
+    ".pe-spinner--small": sizes(componentVars.size_small),
+    ".pe-spinner--regular": sizes(componentVars.size_regular),
+    ".pe-spinner--medium": sizes(componentVars.size_medium),
+    ".pe-spinner--large": sizes(componentVars.size_large),
+    ".pe-spinner--fab": sizes(componentVars.size_fab),
+
+    ".pe-spinner--raised": {
+      position: "relative",
+      borderRadius: "50%",
+
+      ".pe-spinner--small": raisedSize(componentVars.size_small, componentVars),
+      ".pe-spinner--regular": raisedSize(componentVars.size_regular, componentVars),
+      ".pe-spinner--medium": raisedSize(componentVars.size_medium, componentVars),
+      ".pe-spinner--large": raisedSize(componentVars.size_large, componentVars),
+      ".pe-spinner--fab": raisedSize(componentVars.size_fab, componentVars)
+    }
+  })];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    ".pe-spinner--raised": {
+      backgroundColor: componentVars["color_" + tint + "_raised_background"]
+    }
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = "." + classes.component;
+
+var addStyle = function addStyle(customSelector, customVars) {
+  return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreBaseSpinner.vars, customVars), fns);
+};
+
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreBaseSpinner.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreBaseSpinner.vars, fns);
+};
+
+polytheneCoreCss.styler.generateStyles([selector], polytheneCoreBaseSpinner.vars, fns);
+
+exports.addStyle = addStyle;
+exports.getStyle = getStyle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-css-base-spinner.js.map

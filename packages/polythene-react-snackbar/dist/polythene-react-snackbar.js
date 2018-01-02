@@ -1,2 +1,67 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-react-base"),require("polythene-core"),require("polythene-core-snackbar")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core","polythene-core-snackbar"],n):n(e.polythene={},e["polythene-react-base"],e["polythene-core"],e["polythene-core-snackbar"])}(this,function(e,n,t,o){"use strict";var a={component:"pe-notification",action:"pe-notification__action",content:"pe-notification__content",holder:"pe-notification__holder",placeholder:"pe-notification__placeholder",title:"pe-notification__title",hasContainer:"pe-notification--container",horizontal:"pe-notification--horizontal",multilineTitle:"pe-notification__title--multiline",vertical:"pe-notification--vertical"},r=(Object.assign||function(e){for(var n=1;n<arguments.length;n++){var t=arguments[n];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e})({},a,{component:"pe-notification pe-snackbar",holder:"pe-snackbar__holder",placeholder:"pe-snackbar__placeholder",open:"pe-snackbar--open"}),i=n.StateComponent(o.coreSnackbarInstance);i.displayName="SnackbarInstance";var c={name:"snackbar",className:r.component,bodyShowClass:r.open,defaultId:"default_snackbar",holderSelector:"."+r.holder,instance:i,placeholder:"span."+r.placeholder,queue:!0,transitions:o.transitions},l=t.Multi({options:c,renderer:n.renderer}),p=n.StateComponent(l);Object.getOwnPropertyNames(l).forEach(function(e){return p[e]=l[e]}),p.displayName="Snackbar",e.SnackbarInstance=i,e.Snackbar=p,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core'), require('polythene-core-snackbar')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core', 'polythene-core-snackbar'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core'],global['polythene-core-snackbar']));
+}(this, (function (exports,polytheneReactBase,polytheneCore,polytheneCoreSnackbar) { 'use strict';
+
+var notificationClasses = {
+  component: "pe-notification",
+
+  // elements
+  action: "pe-notification__action",
+  content: "pe-notification__content",
+  holder: "pe-notification__holder",
+  placeholder: "pe-notification__placeholder",
+  title: "pe-notification__title",
+
+  // states
+  hasContainer: "pe-notification--container",
+  horizontal: "pe-notification--horizontal",
+  multilineTitle: "pe-notification__title--multi-line",
+  vertical: "pe-notification--vertical"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var classes = _extends({}, notificationClasses, {
+  component: "pe-notification pe-snackbar",
+
+  // elements
+  holder: "pe-snackbar__holder",
+  placeholder: "pe-snackbar__placeholder",
+
+  // states
+  open: "pe-snackbar--open"
+});
+
+var SnackbarInstance = polytheneReactBase.StateComponent(polytheneCoreSnackbar.coreSnackbarInstance);
+
+SnackbarInstance.displayName = "SnackbarInstance";
+
+var options = {
+  name: "snackbar",
+  className: classes.component,
+  htmlShowClass: classes.open,
+  defaultId: "default_snackbar",
+  holderSelector: "." + classes.holder,
+  instance: SnackbarInstance,
+  placeholder: "span." + classes.placeholder,
+  queue: true,
+  transitions: polytheneCoreSnackbar.transitions
+};
+
+var Multiple = polytheneCore.Multi({ options: options, renderer: polytheneReactBase.renderer });
+var Snackbar = polytheneReactBase.StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+  return Snackbar[p] = Multiple[p];
+});
+
+Snackbar.displayName = "Snackbar";
+
+exports.SnackbarInstance = SnackbarInstance;
+exports.Snackbar = Snackbar;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-snackbar.js.map

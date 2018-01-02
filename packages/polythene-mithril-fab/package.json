@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-fab",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-mithril-fab.js",
   "module": "dist/polythene-mithril-fab.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-fab": "^1.0.0-rc.9",
-    "polythene-mithril-base": "^1.0.0-rc.9",
-    "polythene-mithril-icon": "^1.0.0-rc.9",
-    "polythene-mithril-raised-button": "^1.0.0-rc.9"
+    "polythene-core-fab": "^1.0.0-rc.10",
+    "polythene-mithril-base": "^1.0.0-rc.10",
+    "polythene-mithril-icon": "^1.0.0-rc.10",
+    "polythene-mithril-raised-button": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

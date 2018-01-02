@@ -1,11 +1,22 @@
 [Back to Theme main page](../theming.md)
 
+<a name="custom-css"></a>
 # Custom CSS
+
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Using CSS styles](#using-css-styles)
+- [Using CSS-in-JS](#using-css-in-js)
+- [Writing CSS for wrapper components](#writing-css-for-wrapper-components)
+
+<!-- /MarkdownTOC -->
+
 
 Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure. When a component structure would change in the future, the CSS style may no longer work, so use this method with caution.
 
 
-## 1. Using CSS styles
+<a name="using-css-styles"></a>
+## Using CSS styles
 
 You can load extra styles as a CSS file and attach that to the head, or use your bundler / module loader's preferred method.
 
@@ -36,7 +47,8 @@ Note: to change a style of the component's base class, you must add the base cla
 ~~~
 
 
-## 2. Using Javascript-to-CSS
+<a name="using-css-in-js"></a>
+## Using CSS-in-JS
 
 Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of the page. A Polythene j2c style object looks like this:
 
@@ -99,24 +111,18 @@ styler.add("app-buttons", buttonStyles)
 ~~~
 
 
+<a name="writing-css-for-wrapper-components"></a>
 ## Writing CSS for wrapper components
 
-Also wrapper components can be styled with CSS.
-
-We only need to take care of the CSS specificity level; using the same "secondary-button" example, the generated component class list becomes:
+When we add a class name to a wrapper component, we are adding that to the list of class names of the original component. For example with our example from [Wrapper components](wrapper-components.md), adding class "secondary-button" generates:
 
 ~~~html
 class="pe-button pe-text-button pe-button--borders secondary-button"
 ~~~
 
-So simply writing `.secondary-button {...}` won't work - we need to include base class `pe-button` in the new style to get the proper specificity level.
+So simply writing `.secondary-button {...}` won't work - we need to include base class `pe-button` to get the proper CSS specificity.
 
 ~~~javascript
-// secondary-button.js
-import m from "mithril"
-import { Button } from "polythene-mithril"
-import { styler } from "polythene-core-css"
-
 const styles = [{
   ".pe-button.secondary-button .pe-button__content": {
     "background-color": "#fff",
@@ -124,24 +130,4 @@ const styles = [{
   }
 }]
 styler.add("secondary-button", styles)
-
-export const SecondaryButton = {
-  view: vnode => m(Button, Object.assign(
-    {},
-    vnode.attrs,
-    {
-      className: "secondary-button",
-      borders: true,
-    }
-  ))
-}
-
-// app.js
-import { SecondaryButton } from "./secondary-button"
-
-m(SecondaryButton, {
-  label: "Help"
-})
 ~~~
-
-

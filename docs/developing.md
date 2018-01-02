@@ -1,5 +1,13 @@
 # Developing Polythene
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Setting up the development repo](#setting-up-the-development-repo)
+- [Testing](#testing)
+
+<!-- /MarkdownTOC -->
+
+<a name="setting-up-the-development-repo"></a>
 ## Setting up the development repo
 
 Install Lerna:
@@ -8,12 +16,11 @@ Install Lerna:
 npm install -g lerna
 ```
 
-Get the rewrite branch:
+Get the Polythene repo and prepare:
 
 ```
 git clone https://github.com/ArthurClemens/polythene.git
 cd polythene
-git checkout git checkout origin/rewrite-universal
 yarn
 ```
 
@@ -30,6 +37,7 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 
 
 
+<a name="testing"></a>
 ## Testing
 
 Includes Jest snapshots and a viewer to verify the output.

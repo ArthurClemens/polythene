@@ -10,12 +10,12 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
   oninit: vnode => {
     const show = stream(false);
     const selectedIndex = stream(0);
-    vnode.state = {
+    Object.assign(vnode.state, {
       show,
       selectedIndex,
       redrawOnUpdate: stream.merge([show]),
       id: "id-" + Math.floor(Math.random() * 1000)
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

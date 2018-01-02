@@ -1,2 +1,40 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-radio-button"),require("polythene-core-selection-control"),require("polythene-react-icon"),require("polythene-react-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-radio-button","polythene-core-selection-control","polythene-react-icon","polythene-react-icon-button"],t):t(e.polythene={},e["polythene-react-base"],e["polythene-core-radio-button"],e["polythene-core-selection-control"],e["polythene-react-icon"],e["polythene-react-icon-button"])}(this,function(e,t,o,n,r,c){"use strict";var a=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},i=t.ViewComponent(a({},n.viewControl,{createContent:function(e,t){return n.viewControl.createContent(e,a(t,{Icon:r.Icon,IconButton:c.IconButton}))}}));i.displayName="ViewControl";var l=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},p=t.StateComponent(l({},n.coreSelectionControl,{createContent:function(e,t){return n.coreSelectionControl.createContent(e,l(t,{ViewControl:i}))}}));p.displayName="SelectionControl";var u=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},y=t.StateComponent(u({},o.coreRadioButton,{component:p}));y.displayName="RadioButton",e.RadioButton=y,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-radio-button'), require('polythene-core-selection-control'), require('polythene-react-icon'), require('polythene-react-icon-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-radio-button', 'polythene-core-selection-control', 'polythene-react-icon', 'polythene-react-icon-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-radio-button'],global['polythene-core-selection-control'],global['polythene-react-icon'],global['polythene-react-icon-button']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreRadioButton,polytheneCoreSelectionControl,polytheneReactIcon,polytheneReactIconButton) { 'use strict';
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var ViewControl = polytheneReactBase.ViewComponent(_extends$2({}, polytheneCoreSelectionControl.viewControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSelectionControl.viewControl.createContent(vnode, _extends$2(args, { Icon: polytheneReactIcon.Icon, IconButton: polytheneReactIconButton.IconButton }));
+  }
+}));
+
+ViewControl.displayName = "ViewControl";
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var SelectionControl = polytheneReactBase.StateComponent(_extends$1({}, polytheneCoreSelectionControl.coreSelectionControl, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
+  }
+}));
+
+SelectionControl.displayName = "SelectionControl";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var RadioButton = polytheneReactBase.StateComponent(_extends({}, polytheneCoreRadioButton.coreRadioButton, {
+  component: SelectionControl
+}));
+
+RadioButton.displayName = "RadioButton";
+
+exports.RadioButton = RadioButton;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-radio-button.js.map

@@ -15,12 +15,12 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton }) 
         window.requestAnimationFrame(step);
       }
     };
-    vnode.state = {
+    Object.assign(vnode.state, {
       start,
       step,
       percentage,
       redrawOnUpdate: stream.merge([start, percentage]) // update React
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

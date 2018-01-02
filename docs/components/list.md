@@ -4,7 +4,20 @@ Displays a list of [List Tiles](list-tile.md), with an optional header.
 
 Lists are also the base component of [Menus](menu.md).
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [List specific options](#list-specific-options)
+  - [List appearance options](#list-appearance-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * All [List Tile](list-tile.md) main features
@@ -14,21 +27,17 @@ Lists are also the base component of [Menus](menu.md).
 * Compact display
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/list.md)
 * [Usage with React](react/list.md)
 
 
-## Keyboard control
-
-Besides the regular accessibility keyboard control, List offers additional keyboard control for use in selectable lists (for instance when displaying search results). See option `keyboardControl` and usage examples.
-
-See also: [List Tile](list-tile.md#keyboard-control)
-
-
+<a name="options"></a>
 ## Options
 
+<a name="list-specific-options"></a>
 ### List specific options
 
 | **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
@@ -39,6 +48,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](list-tile.md) |
 | **all**  | optional       | Options Object | | [List Tiles](list-tile.md) options that will be applied to all tiles; only works when List children are passed as options (instead of passing a list of ListTile components) |
 
+<a name="list-appearance-options"></a>
 ### List appearance options
 
 | **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
@@ -46,16 +56,10 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
 | **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
-| **padding**         | optional | Boolean | true | Set to `false` to remove top and bottom padding |
+| **padding**         | optional | String | "both" | Vertical padding; possible values: "top", "bottom", "none", "both" |
 
-### List keyboard control options
 
-| **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
-| ------------------- | -------------- | -------- | ----------- | --------------- |
-| **keyboardControl** | optional | Boolean | | Set to `true` to enable keyboard control |
-| **defaultHighlightIndex** | optional | Number | | Sets the initally highlighted index; after user interaction the index will be updated internally |
-| **onSelect**  | optional | Function(state {Object}) | | Callback function that accepts the list selected state (Object with properties `event`, `index` {Number}, `dom` {HTMLElement}, `attrs` {Object}) |
-
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -71,6 +75,7 @@ See also: [List Tile](list-tile.md#keyboard-control)
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 List is composed from:
@@ -78,6 +83,7 @@ List is composed from:
 * [List Tile](list-tile.md)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [List classes](../../packages/polythene-css-classes/list.js)

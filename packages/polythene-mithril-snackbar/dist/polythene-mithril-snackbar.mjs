@@ -15,7 +15,7 @@ var notificationClasses = {
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
-  multilineTitle: "pe-notification__title--multiline",
+  multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical"
 };
 
@@ -39,7 +39,7 @@ SnackbarInstance.displayName = "SnackbarInstance";
 var options = {
   name: "snackbar",
   className: classes.component,
-  bodyShowClass: classes.open,
+  htmlShowClass: classes.open,
   defaultId: "default_snackbar",
   holderSelector: "." + classes.holder,
   instance: SnackbarInstance,

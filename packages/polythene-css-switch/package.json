@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-switch",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "description": "",
   "main": "dist/polythene-css-switch.js",
   "module": "dist/polythene-css-switch.mjs",
@@ -15,11 +15,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0-rc.9",
-    "polythene-core-switch": "^1.0.0-rc.9",
-    "polythene-css-classes": "^1.0.0-rc.9",
-    "polythene-css-selection-control": "^1.0.0-rc.9",
-    "polythene-theme": "^1.0.0-rc.9"
+    "polythene-core-css": "^1.0.0-rc.10",
+    "polythene-core-switch": "^1.0.0-rc.10",
+    "polythene-css-classes": "^1.0.0-rc.10",
+    "polythene-css-selection-control": "^1.0.0-rc.10",
+    "polythene-theme": "^1.0.0-rc.10"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -48,35 +48,48 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
 
   return {
     oninit: vnode => {
+      const attrs = vnode.attrs;
       const value = stream("");
-      const focus = stream(false);
+      if (attrs.listenForValue) {
+        value.map(v => attrs.listenForValue(v));
+      }
+      if (attrs.setValue) {
+        value.map(v => attrs.getValue(v));
+      }
+      const setInputState = stream();
 
-      const clear = () => (
-        value(""),
-        focus(true)
-      );
+      const clear = () =>
+        setInputState()({ value: "", focus: true });
+
       const leave = () =>
         value("");
 
-      vnode.state = {
+      Object.assign(vnode.state, {
         value,
-        focus,
+        setInputState,
         clear,
         leave,
         redrawOnUpdate: stream.merge([value]) // for React
-      };
+      });
     },
     view: ({ state, attrs }) => {
-      const value = state.value();
-      const focus = state.focus();
+      // incoming value added for result list example:
+      const value = attrs.value !== undefined ? attrs.value : state.value();
+      
       return h(Search, Object.assign(
         {},
         {
           textfield: {
-            label: "Search",
-            onChange: ({ value, focus }) => (state.value(value), state.focus(focus)),
+            onChange: ({ value, setInputState }) => (
+              state.value(value),
+              state.setInputState(setInputState),
+              // onChange callback added for result list example:
+              attrs.onChange && attrs.onChange({ value, setInputState })
+            ),
             value,
-            focus
+            // incoming label and defaultValue added for result list example:
+            label: attrs.label || "Search",
+            defaultValue: attrs.defaultValue,
           },
           buttons: {
             none: {

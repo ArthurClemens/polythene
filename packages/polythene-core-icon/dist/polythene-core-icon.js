@@ -1,2 +1,74 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],r):r(e.polythene={},e["polythene-core"],e["polythene-theme"])}(this,function(e,r,t){"use strict";var n={component:"pe-icon",avatar:"pe-icon--avatar",large:"pe-icon--large",medium:"pe-icon--medium",regular:"pe-icon--regular",small:"pe-icon--small"},o=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},a=function(e){return e.attrs.element||"div"},i={small:n.small,regular:n.regular,medium:n.medium,large:n.large},l=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"regular";return i[e]},c=function(e,t){var a=t.keys,i=e.attrs;return o({},r.filterSupportedAttributes(i),{className:[n.component,l(i.size),i.avatar?n.avatar:null,"dark"===i.tone?"pe-dark-tone":null,"light"===i.tone?"pe-light-tone":null,i.className||i[a.class]].join(" ")},i.events)},s=function(e,r){var t=r.renderer,n=r.SVG,o=e.attrs;return o.content?o.content:o.svg?t(n,o.svg):o.src?t("img",{src:o.src}):o.children||e.children},u=Object.freeze({getElement:a,createProps:c,createContent:s}),m={size_small:t.vars.unit_icon_size_small,size_regular:t.vars.unit_icon_size,size_medium:t.vars.unit_icon_size_medium,size_large:t.vars.unit_icon_size_large,color_light:"currentcolor",color_dark:"currentcolor"};e.coreIcon=u,e.vars=m,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-icon",
+
+  // states
+  avatar: "pe-icon--avatar",
+  large: "pe-icon--large",
+  medium: "pe-icon--medium",
+  regular: "pe-icon--regular",
+  small: "pe-icon--small"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var sizeClasses = {
+  small: classes.small,
+  regular: classes.regular,
+  medium: classes.medium,
+  large: classes.large
+};
+
+var classForSize = function classForSize() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return sizeClasses[size];
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+
+  var attrs = vnode.attrs;
+  return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
+    className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, attrs.events);
+};
+
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      SVG = _ref2.SVG;
+
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
+};
+
+var icon = Object.freeze({
+	getElement: getElement,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var vars$1 = {
+  size_small: polytheneTheme.vars.unit_icon_size_small,
+  size_regular: polytheneTheme.vars.unit_icon_size,
+  size_medium: polytheneTheme.vars.unit_icon_size_medium,
+  size_large: polytheneTheme.vars.unit_icon_size_large,
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
+
+exports.coreIcon = icon;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-icon.js.map

@@ -16,7 +16,7 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
       className: "pe-dark-tone",
       component: () =>
         h(".pe-light-tone", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [
           h(Icon, {
             svg: { content: h.trust(iconStars) },
@@ -32,7 +32,7 @@ const reactTests = ({ Icon, SVG, renderer: h }) => { // eslint-disable-line no-u
       className: "pe-dark-tone",
       component: () =>
         h("div", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [
           h(Icon, {
             svg: { content: h.trust(iconStars) },

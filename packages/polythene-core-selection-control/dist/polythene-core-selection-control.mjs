@@ -133,7 +133,9 @@ var createContent = function createContent(vnode, _ref2) {
     }
   };
 
-  return h("label", _extends({}, { className: classes.formLabel }), [h(ViewControl, _extends({}, attrs, {
+  return h("label", _extends({}, _defineProperty({
+    className: classes.formLabel
+  }, k.onclick, viewControlClickHandler)), [h(ViewControl, _extends({}, attrs, {
     inactive: inactive,
     checked: checked,
     key: "control",

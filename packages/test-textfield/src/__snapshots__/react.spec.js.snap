@@ -1,22 +1,3 @@
-exports[`test Autocomplete form 1`] = `
-<form
-  autoComplete="on">
-  <div
-    label="Customer information">
-    <TextField
-      floatingLabel={true}
-      label="Email"
-      type="email" />
-    <TextField
-      floatingLabel={true}
-      label="First name" />
-    <TextField
-      floatingLabel={true}
-      label="Last name" />
-  </div>
-</form>
-`;
-
 exports[`test Custom validation (only use lowercase characters) 1`] = `
 <div
   style={
@@ -60,6 +41,18 @@ exports[`test Dark tone class + light tone 1`] = `
 </div>
 `;
 
+exports[`test Form validation with github.com/ludbek/powerform 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+      "padding": "10px 15px",
+    }
+  }>
+  <_class />
+</div>
+`;
+
 exports[`test Give focus 1`] = `
 <div
   style={
@@ -68,7 +61,7 @@ exports[`test Give focus 1`] = `
       "padding": "10px 15px",
     }
   }>
-  <n />
+  <_class />
 </div>
 `;
 
@@ -89,7 +82,7 @@ exports[`test No options 1`] = `
 </div>
 `;
 
-exports[`test Option: autofocus 1`] = `
+exports[`test Option: autofocus (does not work on iOS) 1`] = `
 <div
   style={
     Object {
@@ -444,7 +437,7 @@ exports[`test Option: maxLength 1`] = `
 </div>
 `;
 
-exports[`test Option: min, max 1`] = `
+exports[`test Option: min, max, validateAtStart 1`] = `
 <div
   style={
     Object {
@@ -458,7 +451,8 @@ exports[`test Option: min, max 1`] = `
     max={8}
     min={3}
     required={true}
-    type="number" />
+    type="number"
+    validateAtStart={true} />
 </div>
 `;
 
@@ -494,7 +488,7 @@ exports[`test Option: onChange 1`] = `
       "padding": "10px 15px",
     }
   }>
-  <n />
+  <_class />
 </div>
 `;
 
@@ -717,7 +711,7 @@ exports[`test Option: style 1`] = `
   } />
 `;
 
-exports[`test Option: type (password, number, email) 1`] = `
+exports[`test Option: type (password (not shown), number, email) 1`] = `
 <div
   style={
     Object {
@@ -753,7 +747,7 @@ exports[`test Option: type email, required -- dark theme class 1`] = `
 </div>
 `;
 
-exports[`test Option: type email, required 1`] = `
+exports[`test Option: type email, required, validateAtStart 1`] = `
 <div
   style={
     Object {
@@ -766,7 +760,8 @@ exports[`test Option: type email, required 1`] = `
     error="Enter a valid email address"
     label="Email"
     required={true}
-    type="email" />
+    type="email"
+    validateAtStart={true} />
 </div>
 `;
 
@@ -809,7 +804,7 @@ exports[`test Option: value 1`] = `
 
 exports[`test Option: value is null 1`] = `
 <div
-  className="pe-textfield   pe-textfield--dirty             ">
+  className="pe-textfield                ">
   <div
     className="pe-textfield__input-area">
     <input
@@ -832,7 +827,7 @@ exports[`test Set value 1`] = `
       "padding": "10px 15px",
     }
   }>
-  <n />
+  <_class />
 </div>
 `;
 

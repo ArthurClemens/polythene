@@ -4,6 +4,7 @@ export default {
   
   // elements
   actions:             "pe-card__actions",
+  any:                 "pe-card__any",
   content:             "pe-card__content",
   header:              "pe-card__header",
   headerTitle:         "pe-card__header-title",

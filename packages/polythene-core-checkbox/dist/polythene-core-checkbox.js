@@ -1,2 +1,47 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-selection-control")):"function"==typeof define&&define.amd?define(["exports","polythene-core-selection-control"],t):t(e.polythene={},e["polythene-core-selection-control"])}(this,function(e,t){"use strict";var o={component:"pe-checkbox-control"},c=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var c in o)Object.prototype.hasOwnProperty.call(o,c)&&(e[c]=o[c])}return e},n={iconOff:'<svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>',iconOn:'<svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>'},r=function(e){var t=e.attrs;return c({},t,{icons:n,selectable:t.selectable||function(){return!0},instanceClass:o.component,type:"checkbox"})},i=Object.freeze({createProps:r});e.coreCheckbox=i,e.vars=t.vars,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-selection-control')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-selection-control'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-selection-control']));
+}(this, (function (exports,polytheneCoreSelectionControl) { 'use strict';
+
+var classes = {
+  component: "pe-checkbox-control"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
+
+var iconOn = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>";
+var iconOff = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z\"/></svg>";
+
+var icons = {
+  iconOff: iconOff,
+  iconOn: iconOn
+};
+
+// Props to be passed to a selection control
+
+var createProps = function createProps(vnode) {
+  var attrs = vnode.attrs;
+  return _extends({}, attrs, {
+    icons: icons,
+    selectable: attrs.selectable || function () {
+      return true;
+    }, // default: always selectable, regardless the checked state
+    instanceClass: classes.component,
+    type: "checkbox"
+  });
+};
+
+var checkbox = Object.freeze({
+	createProps: createProps
+});
+
+exports.coreCheckbox = checkbox;
+exports.vars = polytheneCoreSelectionControl.vars;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-checkbox.js.map

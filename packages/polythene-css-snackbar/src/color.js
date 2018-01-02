@@ -1,8 +1,10 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    color: componentVars["color_" + tint + "_text"],
-    background: componentVars["color_" + tint + "_background"]
+    " .pe-notification__content": {
+      color: componentVars["color_" + tint + "_text"],
+      background: componentVars["color_" + tint + "_background"]
+    }
   }
 }];
 

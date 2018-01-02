@@ -41,7 +41,7 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
       name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: {
-        view: () => h(".pe-light-tone", {
+        view: () => h(".pe-button-row.pe-light-tone", {
           style: { background: "#fff" }
         }, [
           h(RaisedButton, {
@@ -62,7 +62,7 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
       name: "Dark tone class + light tone",
       className: "pe-dark-tone",
       component: {
-        view: () => h("div", {
+        view: () => h(".pe-button-row", {
           style: { background: "#fff" }
         }, [
           h(RaisedButton, {

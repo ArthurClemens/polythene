@@ -3,13 +3,12 @@ import { keys, renderer, List, Icon, ListTile, Notification } from "polythene-re
 import genericTests from "./tests-generic";
 import { withRouter } from "react-router-dom";
 
-const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
+const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
 
-  const createUserListTile = (title, subtitle, filename) =>
+  const createUserListTile = (key, title, subtitle, filename) =>
     h(withRouter(({ history }) => 
       h(ListTile, {
         title,
-        key: title,
         subtitle,
         front: h(Icon, {
           src: `http://arthurclemens.github.io/assets/polythene/examples/${filename}.png`,
@@ -21,14 +20,11 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
           onClick: e => (e.preventDefault(), history.push("/shadow"))
         }
       })
-    ));
+    ), { key });
 
-  const listTileJennifer = createUserListTile("Jennifer Barker", "Starting post doc", "avatar-1");
-  const listTileAli = createUserListTile("Ali Connors", "Brunch this weekend?", "avatar-2");
-  const listTileGrace = createUserListTile("Grace VanDam", "Binge watching...", "avatar-3");
-
-  const selectTile = ({ title }) => ({ title });
-  const headerTile = ({ title }) => ({ title, header: true });
+  const listTileJennifer = key => createUserListTile(key, "Jennifer Barker", "Starting post doc", "avatar-1");
+  const listTileAli = key => createUserListTile(key, "Ali Connors", "Brunch this weekend?", "avatar-2");
+  const listTileGrace = key => createUserListTile(key, "Grace VanDam", "Binge watching...", "avatar-3");
 
   return [
     {
@@ -40,25 +36,27 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
       component: () =>
         h("div", [
           h(List, {
+            key: "one",
             header: {
               title: "Friends"
             },
             borders: true,
             tiles: [
-              listTileJennifer,
-              listTileAli,
-              listTileGrace
+              listTileJennifer("urls 1"),
+              listTileAli("urls 2"),
+              listTileGrace("urls 3")
             ]
           }),
           h(List, {
+            key: "two",
             header: {
               title: "Friends"
             },
             borders: true,
             tiles: [
-              listTileJennifer,
-              listTileAli,
-              listTileGrace
+              listTileJennifer("urls 4"),
+              listTileAli("urls 5"),
+              listTileGrace("urls 6")
             ]
           })
         ])
@@ -76,12 +74,12 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
                 sticky: true
               },
               tiles: [
-                listTileJennifer,
-                listTileAli,
-                listTileGrace,
-                listTileJennifer,
-                listTileAli,
-                listTileGrace
+                listTileJennifer(ord + "1"),
+                listTileAli(ord + "2"),
+                listTileGrace(ord + "3"),
+                listTileJennifer(ord + "4"),
+                listTileAli(ord + "5"),
+                listTileGrace(ord + "6")
               ]
             }
           );
@@ -123,38 +121,6 @@ const reactTests = ({ List, Icon, ListTile, Notification, renderer: h }) => {
             />}
           />
         </List>
-    },
-    {
-      name: "Keyboard control (JSX) (demo without state)",
-      component: () =>
-        <List
-          keyboardControl
-          highlightIndex={0}
-          onSelect={data => (
-            Notification.hide(),
-            Notification.show({
-              title: data.attrs.title,
-              showDuration: .1,
-              hideDuration: .2,
-              timeout: .8
-            })
-          )}
-          tiles={[
-            headerTile({ title: "A"}),
-            selectTile({ title: "Amman" }),
-            selectTile({ title: "Amsterdam" }),
-            selectTile({ title: "Athens" }),
-            headerTile({ title: "B" }),
-            selectTile({ title: "Bangkok" }),
-            selectTile({ title: "Beijing" }),
-            selectTile({ title: "Brussels" }),
-            headerTile({ title: "C" }),
-            selectTile({ title: "Canberra" }),
-            selectTile({ title: "Cardiff" }),
-            selectTile({ title: "Copenhagen" }),
-          ]}
-        />
-        
     }
   ];
     

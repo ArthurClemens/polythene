@@ -1,5 +1,18 @@
+exports[`test Button row 1`] = `
+<div
+  className="pe-button-row">
+  <RaisedButton
+    label="One" />
+  <RaisedButton
+    label="Two" />
+  <RaisedButton
+    label="Three" />
+</div>
+`;
+
 exports[`test Dark tone class + light tone 1`] = `
 <div
+  className="pe-button-row"
   style={
     Object {
       "background": "#fff",
@@ -21,7 +34,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-light-tone"
+  className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",

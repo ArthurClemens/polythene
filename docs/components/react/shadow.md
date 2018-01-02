@@ -2,12 +2,22 @@
 
 # Shadow component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Shadow options](../shadow.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 Shadow has 5 depth levels, configured with option `z`.
@@ -80,8 +90,10 @@ class InteractiveShadow extends Component {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 #### CSS

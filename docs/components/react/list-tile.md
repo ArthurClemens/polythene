@@ -2,12 +2,24 @@
 
 # List Tile component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Links](#links)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [List Tile options](../list-tile.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -122,6 +134,7 @@ front: h(Icon, {
 })
 ~~~
 
+<a name="links"></a>
 ### Links
 
 Both primary and secondary content can be set as link. For a general principle, see: [URLs and router links](../../handling-urls.md).
@@ -242,6 +255,7 @@ h(ListTile, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
 * Following Material Design specs, a list tile can have 1 to 3 lines (except when using `subContent`):
@@ -255,6 +269,7 @@ h(ListTile, {
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
 * Front content can be reduced in width with `compactFront`. Following the Material Design specs, this setting should be used for displaying a list of search results.
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the list tile appearance, either with a theme or with CSS.
@@ -300,6 +315,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

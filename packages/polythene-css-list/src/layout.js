@@ -10,6 +10,12 @@ export default (selector, componentVars) => [{
     ".pe-list--padding": {
       padding: componentVars.padding + "px 0",
     },
+    ".pe-list--padding-top": {
+      paddingTop: componentVars.padding + "px",
+    },
+    ".pe-list--padding-bottom": {
+      paddingBottom: componentVars.padding + "px",
+    },
 
     ".pe-list--header": {
       paddingTop: 0

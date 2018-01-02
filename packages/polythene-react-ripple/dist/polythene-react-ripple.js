@@ -1,2 +1,16 @@
-!function(e,p){"object"==typeof exports&&"undefined"!=typeof module?p(exports,require("polythene-react-base"),require("polythene-core-ripple")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-ripple"],p):p(e.polythene={},e["polythene-react-base"],e["polythene-core-ripple"])}(this,function(e,p,t){"use strict";var o=p.StateComponent(t.coreRipple);o.displayName="Ripple",e.Ripple=o,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-ripple')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-ripple'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-ripple']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreRipple) { 'use strict';
+
+var Ripple = polytheneReactBase.StateComponent(polytheneCoreRipple.coreRipple);
+
+Ripple.displayName = "Ripple";
+
+exports.Ripple = Ripple;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-ripple.js.map

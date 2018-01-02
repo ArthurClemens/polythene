@@ -1,5 +1,5 @@
 exports[`test Child node 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -42,7 +42,8 @@ exports[`test Child node 1`] = `
 exports[`test Dark tone class + light theme class 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\" class=
 \"pe-light-tone\">
-  <div class=\"pe-tabs pe-tabs--scrollable\">
+  <div class=
+  \"pe-tabs pe-tabs--scrollable pe-tabs--start pe-tabs--end\">
     <a class=
     \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
     tabindex=\"0\">
@@ -151,9 +152,10 @@ exports[`test Dark tone class + light theme class 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 "<div style=\"background: rgb(255, 255, 255); padding: 20px;\">
-  <div class=\"pe-tabs pe-tabs--scrollable pe-light-tone\">
-    <a class=
-    \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
+  <div class=
+  \"pe-tabs pe-tabs--scrollable pe-tabs--start pe-tabs--end pe-light-tone\">
+  <a class=
+  \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
     tabindex=\"0\">
     <div class=\"pe-button__content\">
       <div class=\"pe-ripple\"></div>
@@ -259,8 +261,9 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Long labels: wrap to second line 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit tests-tabs-fixed-width\">
-  <div class=\"pe-tabs__row\">
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit tests-tabs-fixed-width\">
+<div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
     tabindex=\"0\">
@@ -300,8 +303,9 @@ exports[`test Long labels: wrap to second line 1`] = `
 `;
 
 exports[`test Option: activeSelected 1`] = `
-"<div class=\"pe-tabs pe-tabs__active--selectable pe-tabs--autofit\">
-  <div class=\"pe-tabs__row\">
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs__active--selectable pe-tabs--autofit\">
+<div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
     tabindex=\"0\">
@@ -341,7 +345,7 @@ exports[`test Option: activeSelected 1`] = `
 `;
 
 exports[`test Option: all (className) 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab className-x\"
@@ -384,7 +388,7 @@ exports[`test Option: all (className) 1`] = `
 `;
 
 exports[`test Option: all (ink: false) 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -422,7 +426,7 @@ exports[`test Option: all (ink: false) 1`] = `
 `;
 
 exports[`test Option: all (style - colors) 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -469,7 +473,7 @@ exports[`test Option: all (style - colors) 1`] = `
 `;
 
 exports[`test Option: autofit 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -510,7 +514,7 @@ exports[`test Option: autofit 1`] = `
 `;
 
 exports[`test Option: centered (no autofit) 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row pe-tabs__row--centered\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -551,7 +555,7 @@ exports[`test Option: centered (no autofit) 1`] = `
 `;
 
 exports[`test Option: class 1`] = `
-"<div class=\"pe-tabs class-x\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end class-x\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -592,7 +596,7 @@ exports[`test Option: class 1`] = `
 `;
 
 exports[`test Option: className 1`] = `
-"<div class=\"pe-tabs className-x\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end className-x\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -633,7 +637,7 @@ exports[`test Option: className 1`] = `
 `;
 
 exports[`test Option: compact 1`] = `
-"<div class=\"pe-tabs pe-tabs--compact\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--compact\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -674,7 +678,7 @@ exports[`test Option: compact 1`] = `
 `;
 
 exports[`test Option: content 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -715,7 +719,7 @@ exports[`test Option: content 1`] = `
 `;
 
 exports[`test Option: hideIndicator 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -755,7 +759,7 @@ exports[`test Option: hideIndicator 1`] = `
 `;
 
 exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-tabs\">
+"<div id=\"id-x\" class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -796,7 +800,7 @@ exports[`test Option: id 1`] = `
 `;
 
 exports[`test Option: largestWidth (no autofit) 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -893,8 +897,8 @@ exports[`test Option: menu 1`] = `
     </p>
   </div>
   <div style=\"border-top: 1px solid #eee;\" class=
-  \"pe-tabs pe-tabs--autofit pe-tabs--menu\">
-    <div class=\"pe-tabs__row\">
+  \"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit pe-tabs--menu\">
+  <div class=\"pe-tabs__row\">
       <a class=
       \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
       tabindex=\"0\">
@@ -934,7 +938,7 @@ exports[`test Option: menu 1`] = `
 `;
 
 exports[`test Option: noIndicatorSlide 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -977,7 +981,8 @@ exports[`test Option: noIndicatorSlide 1`] = `
 exports[`test Option: scrollable -- dark theme class 1`] = `
 "<div style=
 \"max-width: 400px; overflow-x: hidden; height: 48px; color: rgb(255, 255, 255);\">
-<div class=\"pe-tabs pe-tabs--scrollable\">
+<div class=
+\"pe-tabs pe-tabs--scrollable pe-tabs--start pe-tabs--end\">
     <a class=
     \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
     tabindex=\"0\">
@@ -1086,8 +1091,9 @@ exports[`test Option: scrollable -- dark theme class 1`] = `
 
 exports[`test Option: scrollable 1`] = `
 "<div style=
-\"max-width: 400px; color: rgb(255, 255, 255); background-color: rgb(68, 68, 68); overflow-x: hidden; height: 48px;\">
-<div class=\"pe-tabs pe-tabs--scrollable\">
+\"color: rgb(255, 255, 255); background-color: rgb(68, 68, 68); overflow-x: hidden; height: 48px;\">
+<div class=
+\"pe-tabs pe-tabs--scrollable pe-tabs--start pe-tabs--end\">
     <a class=
     \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
     tabindex=\"0\">
@@ -1196,8 +1202,9 @@ exports[`test Option: scrollable 1`] = `
 
 exports[`test Option: scrollable with custom icons 1`] = `
 "<div style=
-\"max-width: 400px; color: rgb(255, 255, 255); background-color: rgb(68, 68, 68); overflow-x: hidden; height: 48px;\">
-<div class=\"pe-tabs pe-tabs--scrollable\">
+\"color: rgb(255, 255, 255); background-color: rgb(68, 68, 68); overflow-x: hidden; height: 48px;\">
+<div class=
+\"pe-tabs pe-tabs--scrollable pe-tabs--start pe-tabs--end\">
     <a class=
     \"pe-button pe-icon-button pe-tabs__scroll-button pe-tabs__scroll-button-start\"
     tabindex=\"0\">
@@ -1307,7 +1314,7 @@ exports[`test Option: scrollable with custom icons 1`] = `
 `;
 
 exports[`test Option: selectedTab (1) 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=\"pe-button pe-text-button pe-tabs__tab\" tabindex=\"0\">
     <div class=\"pe-button__content\">
@@ -1347,7 +1354,7 @@ exports[`test Option: selectedTab (1) 1`] = `
 `;
 
 exports[`test Option: tabs (text buttons) -- dark theme class 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -1388,7 +1395,7 @@ exports[`test Option: tabs (text buttons) -- dark theme class 1`] = `
 `;
 
 exports[`test Option: tabs (text buttons) 1`] = `
-"<div class=\"pe-tabs\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -1429,7 +1436,7 @@ exports[`test Option: tabs (text buttons) 1`] = `
 `;
 
 exports[`test Tabs with icons -- dark theme class 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -1497,7 +1504,7 @@ exports[`test Tabs with icons -- dark theme class 1`] = `
 `;
 
 exports[`test Tabs with icons 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
@@ -1565,7 +1572,7 @@ exports[`test Tabs with icons 1`] = `
 `;
 
 exports[`test Tabs with icons and text 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit\">
+"<div class=\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit\">
   <div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab pe-tabs__tab---icon\"
@@ -1644,8 +1651,9 @@ exports[`test Tabs with icons and text 1`] = `
 `;
 
 exports[`test Theme: custom colors -- dark theme class 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit tests-tabs-custom_color\">
-  <div class=\"pe-tabs__row\">
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit tests-tabs-custom_color\">
+<div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
     tabindex=\"0\">
@@ -1685,8 +1693,9 @@ exports[`test Theme: custom colors -- dark theme class 1`] = `
 `;
 
 exports[`test Theme: custom colors 1`] = `
-"<div class=\"pe-tabs pe-tabs--autofit tests-tabs-custom_color\">
-  <div class=\"pe-tabs__row\">
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit tests-tabs-custom_color\">
+<div class=\"pe-tabs__row\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
     tabindex=\"0\">
@@ -1726,7 +1735,8 @@ exports[`test Theme: custom colors 1`] = `
 `;
 
 exports[`test Theme: small fixed width 1`] = `
-"<div class=\"pe-tabs tests-tabs-fixed-width\">
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end tests-tabs-fixed-width\">
   <div class=\"pe-tabs__row pe-tabs__row--centered\">
     <a class=
     \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"

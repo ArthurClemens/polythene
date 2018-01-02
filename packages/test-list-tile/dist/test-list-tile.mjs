@@ -23,11 +23,17 @@ var genericTests = (function (_ref) {
     font_size_title: 21
   });
 
+  ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
+    color_light_highlight_background: "#FFECB3"
+  });
+
+  var longTitle = "ListTile with a very very very very very very very very very long title";
+
   return [{
     name: "Option: title",
     component: ListTile$$1,
     attrs: {
-      title: "Ancillary Justice"
+      title: longTitle
     }
   }, {
     name: "Option: subtitle",
@@ -159,6 +165,14 @@ var genericTests = (function (_ref) {
     attrs: {
       title: "Ancillary Justice",
       selected: true
+    }
+  }, {
+    name: "Option: highlight (themed color)",
+    component: ListTile$$1,
+    attrs: {
+      title: "Ancillary Justice",
+      highlight: true,
+      className: "tests-list-tile-themed-highlight-list-tile"
     }
   }, {
     name: "Option: ink",
@@ -518,107 +532,105 @@ var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function q(a) {
-  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, d = 0; d < b; d++) {
-    e += "\x26args[]\x3d" + encodeURIComponent(arguments[d + 1]);
+var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+function y(a) {
+  for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
+    e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
   }b = Error(e + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name = "Invariant Violation";b.framesToPop = 1;throw b;
 }
-var r = { isMounted: function isMounted() {
+var z = { isMounted: function isMounted() {
     return !1;
-  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function t(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}t.prototype.isReactComponent = {};t.prototype.setState = function (a, b) {
-  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? q("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
-};t.prototype.forceUpdate = function (a) {
+  }, enqueueForceUpdate: function enqueueForceUpdate() {}, enqueueReplaceState: function enqueueReplaceState() {}, enqueueSetState: function enqueueSetState() {} };function A(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}A.prototype.isReactComponent = {};A.prototype.setState = function (a, b) {
+  "object" !== (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && "function" !== typeof a && null != a ? y("85") : void 0;this.updater.enqueueSetState(this, a, b, "setState");
+};A.prototype.forceUpdate = function (a) {
   this.updater.enqueueForceUpdate(this, a, "forceUpdate");
 };
-function u(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}function v() {}v.prototype = t.prototype;var w = u.prototype = new v();w.constructor = u;objectAssign(w, t.prototype);w.isPureReactComponent = !0;function x(a, b, e) {
-  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || r;
-}var y = x.prototype = new v();y.constructor = x;objectAssign(y, t.prototype);y.unstable_isAsyncReactComponent = !0;y.render = function () {
+function B(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}function C() {}C.prototype = A.prototype;var D = B.prototype = new C();D.constructor = B;objectAssign(D, A.prototype);D.isPureReactComponent = !0;function E(a, b, e) {
+  this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
+}var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};
-var z = { current: null };
-var A = Object.prototype.hasOwnProperty;
-var B = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var C = { key: !0, ref: !0, __self: !0, __source: !0 };
-function D(a, b, e) {
-  var d,
-      c = {},
-      h = null,
-      k = null;if (null != b) for (d in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (h = "" + b.key), b) {
-    A.call(b, d) && !C.hasOwnProperty(d) && (c[d] = b[d]);
-  }var f = arguments.length - 2;if (1 === f) c.children = e;else if (1 < f) {
-    for (var g = Array(f), l = 0; l < f; l++) {
-      g[l] = arguments[l + 2];
-    }c.children = g;
-  }if (a && a.defaultProps) for (d in f = a.defaultProps, f) {
-    void 0 === c[d] && (c[d] = f[d]);
-  }return { $$typeof: B, type: a, key: h, ref: k, props: c, _owner: z.current };
-}function E(a) {
-  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === B;
+};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+function J(a, b, e) {
+  var c,
+      d = {},
+      g = null,
+      k = null;if (null != b) for (c in void 0 !== b.ref && (k = b.ref), void 0 !== b.key && (g = "" + b.key), b) {
+    H.call(b, c) && !I.hasOwnProperty(c) && (d[c] = b[c]);
+  }var f = arguments.length - 2;if (1 === f) d.children = e;else if (1 < f) {
+    for (var h = Array(f), l = 0; l < f; l++) {
+      h[l] = arguments[l + 2];
+    }d.children = h;
+  }if (a && a.defaultProps) for (c in f = a.defaultProps, f) {
+    void 0 === d[c] && (d[c] = f[c]);
+  }return { $$typeof: r, type: a, key: g, ref: k, props: d, _owner: G.current };
+}function K(a) {
+  return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && a.$$typeof === r;
 }
-var F = "function" === typeof Symbol && Symbol.iterator;
-var G = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.element") || 60103;
-var H = "function" === typeof Symbol && Symbol["for"] && Symbol["for"]("react.portal") || 60106;function escape(a) {
+function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var I = /\/+/g;
-var J = [];
-function K(a, b, e, d) {
-  if (J.length) {
-    var c = J.pop();c.result = a;c.keyPrefix = b;c.func = e;c.context = d;c.count = 0;return c;
-  }return { result: a, keyPrefix: b, func: e, context: d, count: 0 };
-}function L(a) {
-  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > J.length && J.push(a);
+}var L = /\/+/g;
+var M = [];function N(a, b, e, c) {
+  if (M.length) {
+    var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
+  }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
+}function O(a) {
+  a.result = null;a.keyPrefix = null;a.func = null;a.context = null;a.count = 0;10 > M.length && M.push(a);
 }
-function M(a, b, e, d) {
-  var c = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === c || "boolean" === c) a = null;if (null === a || "string" === c || "number" === c || "object" === c && a.$$typeof === G || "object" === c && a.$$typeof === H) return e(d, a, "" === b ? "." + N(a, 0) : b), 1;var h = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
-    c = a[k];var f = b + N(c, k);h += M(c, f, e, d);
-  } else if (f = F && a[F] || a["@@iterator"], "function" === typeof f) for (a = f.call(a), k = 0; !(c = a.next()).done;) {
-    c = c.value, f = b + N(c, k++), h += M(c, f, e, d);
-  } else "object" === c && (e = "" + a, q("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return h;
-}function N(a, b) {
+function P(a, b, e, c) {
+  var d = typeof a === 'undefined' ? 'undefined' : _typeof(a);if ("undefined" === d || "boolean" === d) a = null;var g = !1;if (null === a) g = !0;else switch (d) {case "string":case "number":
+      g = !0;break;case "object":
+      switch (a.$$typeof) {case r:case t:case u:case v:
+          g = !0;}}if (g) return e(c, a, "" === b ? "." + Q(a, 0) : b), 1;g = 0;b = "" === b ? "." : b + ":";if (Array.isArray(a)) for (var k = 0; k < a.length; k++) {
+    d = a[k];var f = b + Q(d, k);g += P(d, f, e, c);
+  } else if (null === a || "undefined" === typeof a ? f = null : (f = x && a[x] || a["@@iterator"], f = "function" === typeof f ? f : null), "function" === typeof f) for (a = f.call(a), k = 0; !(d = a.next()).done;) {
+    d = d.value, f = b + Q(d, k++), g += P(d, f, e, c);
+  } else "object" === d && (e = "" + a, y("31", "[object Object]" === e ? "object with keys {" + Object.keys(a).join(", ") + "}" : e, ""));return g;
+}function Q(a, b) {
   return "object" === (typeof a === 'undefined' ? 'undefined' : _typeof(a)) && null !== a && null != a.key ? escape(a.key) : b.toString(36);
-}function O(a, b) {
+}function R(a, b) {
   a.func.call(a.context, b, a.count++);
 }
-function P(a, b, e) {
-  var d = a.result,
-      c = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? Q(a, d, e, emptyFunction_1.thatReturnsArgument) : null != a && (E(a) && (b = c + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(I, "$\x26/") + "/") + e, a = { $$typeof: B, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), d.push(a));
-}function Q(a, b, e, d, c) {
-  var h = "";null != e && (h = ("" + e).replace(I, "$\x26/") + "/");b = K(b, h, d, c);null == a || M(a, "", P, b);L(b);
-}var R = { Children: { map: function map(a, b, e) {
-      if (null == a) return a;var d = [];Q(a, d, null, b, e);return d;
+function S(a, b, e) {
+  var c = a.result,
+      d = a.keyPrefix;a = a.func.call(a.context, b, a.count++);Array.isArray(a) ? T(a, c, e, emptyFunction_1.thatReturnsArgument) : null != a && (K(a) && (b = d + (!a.key || b && b.key === a.key ? "" : ("" + a.key).replace(L, "$\x26/") + "/") + e, a = { $$typeof: r, type: a.type, key: b, ref: a.ref, props: a.props, _owner: a._owner }), c.push(a));
+}function T(a, b, e, c, d) {
+  var g = "";null != e && (g = ("" + e).replace(L, "$\x26/") + "/");b = N(b, g, c, d);null == a || P(a, "", S, b);O(b);
+}
+var U = { Children: { map: function map(a, b, e) {
+      if (null == a) return a;var c = [];T(a, c, null, b, e);return c;
     }, forEach: function forEach(a, b, e) {
-      if (null == a) return a;b = K(null, null, b, e);null == a || M(a, "", O, b);L(b);
+      if (null == a) return a;b = N(null, null, b, e);null == a || P(a, "", R, b);O(b);
     }, count: function count(a) {
-      return null == a ? 0 : M(a, "", emptyFunction_1.thatReturnsNull, null);
+      return null == a ? 0 : P(a, "", emptyFunction_1.thatReturnsNull, null);
     }, toArray: function toArray(a) {
-      var b = [];Q(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
+      var b = [];T(a, b, null, emptyFunction_1.thatReturnsArgument);return b;
     }, only: function only(a) {
-      E(a) ? void 0 : q("143");return a;
-    } }, Component: t, PureComponent: u, unstable_AsyncComponent: x, createElement: D, cloneElement: function cloneElement(a, b, e) {
-    var d = objectAssign({}, a.props),
-        c = a.key,
-        h = a.ref,
+      K(a) ? void 0 : y("143");return a;
+    } }, Component: A, PureComponent: B, unstable_AsyncComponent: E, Fragment: w, createElement: J, cloneElement: function cloneElement(a, b, e) {
+    var c = objectAssign({}, a.props),
+        d = a.key,
+        g = a.ref,
         k = a._owner;if (null != b) {
-      void 0 !== b.ref && (h = b.ref, k = z.current);void 0 !== b.key && (c = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (g in b) {
-        A.call(b, g) && !C.hasOwnProperty(g) && (d[g] = void 0 === b[g] && void 0 !== f ? f[g] : b[g]);
+      void 0 !== b.ref && (g = b.ref, k = G.current);void 0 !== b.key && (d = "" + b.key);if (a.type && a.type.defaultProps) var f = a.type.defaultProps;for (h in b) {
+        H.call(b, h) && !I.hasOwnProperty(h) && (c[h] = void 0 === b[h] && void 0 !== f ? f[h] : b[h]);
       }
-    }var g = arguments.length - 2;if (1 === g) d.children = e;else if (1 < g) {
-      f = Array(g);for (var l = 0; l < g; l++) {
+    }var h = arguments.length - 2;if (1 === h) c.children = e;else if (1 < h) {
+      f = Array(h);for (var l = 0; l < h; l++) {
         f[l] = arguments[l + 2];
-      }d.children = f;
-    }return { $$typeof: B, type: a.type, key: c, ref: h, props: d, _owner: k };
+      }c.children = f;
+    }return { $$typeof: r, type: a.type, key: d, ref: g, props: c, _owner: k };
   }, createFactory: function createFactory(a) {
-    var b = D.bind(null, a);b.type = a;return b;
-  }, isValidElement: E,
-  version: "16.1.1", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: z, assign: objectAssign } };
-var S = Object.freeze({ default: R });
-var T = S && R || S;var react_production_min = T["default"] ? T["default"] : T;
+    var b = J.bind(null, a);b.type = a;return b;
+  },
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
+var V = Object.freeze({ default: U });
+var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -790,7 +802,7 @@ var checkPropTypes_1 = checkPropTypes;
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.1.1
+  /** @license React v16.2.0
    * react.development.js
    *
    * Copyright (c) 2013-present, Facebook, Inc.
@@ -802,15 +814,39 @@ var react_development = createCommonjsModule(function (module) {
   if (process.env.NODE_ENV !== "production") {
     (function () {
       var _assign = objectAssign;
-      var invariant = invariant_1;
       var emptyObject = emptyObject_1;
+      var invariant = invariant_1;
       var warning = warning_1;
       var emptyFunction = emptyFunction_1;
       var checkPropTypes = checkPropTypes_1;
 
       // TODO: this is special because it gets imported during build.
 
-      var ReactVersion = '16.1.1';
+      var ReactVersion = '16.2.0';
+
+      // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+      // nor polyfill, then a plain number is used for performance.
+      var hasSymbol = typeof Symbol === 'function' && Symbol['for'];
+
+      var REACT_ELEMENT_TYPE = hasSymbol ? Symbol['for']('react.element') : 0xeac7;
+      var REACT_CALL_TYPE = hasSymbol ? Symbol['for']('react.call') : 0xeac8;
+      var REACT_RETURN_TYPE = hasSymbol ? Symbol['for']('react.return') : 0xeac9;
+      var REACT_PORTAL_TYPE = hasSymbol ? Symbol['for']('react.portal') : 0xeaca;
+      var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol['for']('react.fragment') : 0xeacb;
+
+      var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+      var FAUX_ITERATOR_SYMBOL = '@@iterator';
+
+      function getIteratorFn(maybeIterable) {
+        if (maybeIterable === null || typeof maybeIterable === 'undefined') {
+          return null;
+        }
+        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+        if (typeof maybeIterator === 'function') {
+          return maybeIterator;
+        }
+        return null;
+      }
 
       /**
        * WARNING: DO NOT manually require this module.
@@ -818,20 +854,6 @@ var react_development = createCommonjsModule(function (module) {
        * and will _only_ be required by the corresponding babel pass.
        * It always throws.
        */
-
-      // Exports React.Fragment
-      var enableReactFragment = false;
-      // Exports ReactDOM.createRoot
-
-
-      // Mutating mode (React DOM, React ART, React Native):
-
-      // Experimental noop mode (currently unused):
-
-      // Experimental persistent mode (CS):
-
-
-      // Only used in www builds.
 
       /**
        * Forked from fbjs/warning:
@@ -1112,10 +1134,6 @@ var react_development = createCommonjsModule(function (module) {
 
       var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-
       var RESERVED_PROPS = {
         key: true,
         ref: true,
@@ -1201,7 +1219,7 @@ var react_development = createCommonjsModule(function (module) {
       var ReactElement = function ReactElement(type, key, ref, self, source, owner, props) {
         var element = {
           // This tag allow us to uniquely identify this as a React Element
-          $$typeof: REACT_ELEMENT_TYPE$1,
+          $$typeof: REACT_ELEMENT_TYPE,
 
           // Built-in properties that belong on the element
           type: type,
@@ -1316,7 +1334,7 @@ var react_development = createCommonjsModule(function (module) {
         }
         {
           if (key || ref) {
-            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE$1) {
+            if (typeof props.$$typeof === 'undefined' || props.$$typeof !== REACT_ELEMENT_TYPE) {
               var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
               if (key) {
                 defineKeyPropWarningGetter(props, displayName);
@@ -1415,7 +1433,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE$1;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -1433,12 +1451,6 @@ var react_development = createCommonjsModule(function (module) {
         };
       }
 
-      var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-      // The Symbol used to tag the ReactElement type. If there is no native Symbol
-      // nor polyfill, then a plain number is used for performance.
-      var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
-      var REACT_PORTAL_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.portal') || 0xeaca;
       var SEPARATOR = '.';
       var SUBSEPARATOR = ':';
 
@@ -1522,10 +1534,28 @@ var react_development = createCommonjsModule(function (module) {
           children = null;
         }
 
-        if (children === null || type === 'string' || type === 'number' ||
-        // The following is inlined from ReactElement. This means we can optimize
-        // some checks. React Fiber also inlines this logic for similar purposes.
-        type === 'object' && children.$$typeof === REACT_ELEMENT_TYPE || type === 'object' && children.$$typeof === REACT_PORTAL_TYPE) {
+        var invokeCallback = false;
+
+        if (children === null) {
+          invokeCallback = true;
+        } else {
+          switch (type) {
+            case 'string':
+            case 'number':
+              invokeCallback = true;
+              break;
+            case 'object':
+              switch (children.$$typeof) {
+                case REACT_ELEMENT_TYPE:
+                case REACT_CALL_TYPE:
+                case REACT_RETURN_TYPE:
+                case REACT_PORTAL_TYPE:
+                  invokeCallback = true;
+              }
+          }
+        }
+
+        if (invokeCallback) {
           callback(traverseContext, children,
           // If it's the only child, treat the name as if it was wrapped in an array
           // so that it's consistent if the number of children grows.
@@ -1545,7 +1575,7 @@ var react_development = createCommonjsModule(function (module) {
             subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
           }
         } else {
-          var iteratorFn = ITERATOR_SYMBOL && children[ITERATOR_SYMBOL] || children[FAUX_ITERATOR_SYMBOL];
+          var iteratorFn = getIteratorFn(children);
           if (typeof iteratorFn === 'function') {
             {
               // Warn about using Maps as children
@@ -1768,6 +1798,8 @@ var react_development = createCommonjsModule(function (module) {
       {
         var currentlyValidatingElement = null;
 
+        var propTypesMisspellWarningShown = false;
+
         var getDisplayName = function getDisplayName(element) {
           if (element == null) {
             return '#empty';
@@ -1775,7 +1807,7 @@ var react_development = createCommonjsModule(function (module) {
             return '#text';
           } else if (typeof element.type === 'string') {
             return element.type;
-          } else if (element.type === REACT_FRAGMENT_TYPE$1) {
+          } else if (element.type === REACT_FRAGMENT_TYPE) {
             return 'React.Fragment';
           } else {
             return element.type.displayName || element.type.name || 'Unknown';
@@ -1793,13 +1825,8 @@ var react_development = createCommonjsModule(function (module) {
           return stack;
         };
 
-        var REACT_FRAGMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
         var VALID_FRAGMENT_PROPS = new Map([['children', true], ['key', true]]);
       }
-
-      var ITERATOR_SYMBOL$1 = typeof Symbol === 'function' && Symbol.iterator;
-      var FAUX_ITERATOR_SYMBOL$1 = '@@iterator'; // Before Symbol spec.
 
       function getDeclarationErrorAddendum() {
         if (ReactCurrentOwner.current) {
@@ -1905,7 +1932,7 @@ var react_development = createCommonjsModule(function (module) {
             node._store.validated = true;
           }
         } else if (node) {
-          var iteratorFn = ITERATOR_SYMBOL$1 && node[ITERATOR_SYMBOL$1] || node[FAUX_ITERATOR_SYMBOL$1];
+          var iteratorFn = getIteratorFn(node);
           if (typeof iteratorFn === 'function') {
             // Entry iterators used to provide implicit keys,
             // but now we print a separate warning for them later.
@@ -1935,11 +1962,13 @@ var react_development = createCommonjsModule(function (module) {
         }
         var name = componentClass.displayName || componentClass.name;
         var propTypes = componentClass.propTypes;
-
         if (propTypes) {
           currentlyValidatingElement = element;
           checkPropTypes(propTypes, element.props, 'prop', name, getStackAddendum);
           currentlyValidatingElement = null;
+        } else if (componentClass.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+          propTypesMisspellWarningShown = true;
+          warning(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
         }
         if (typeof componentClass.getDefaultProps === 'function') {
           warning(componentClass.getDefaultProps.isReactClassApproved, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
@@ -2029,7 +2058,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE$1) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -2068,8 +2097,6 @@ var react_development = createCommonjsModule(function (module) {
         return newElement;
       }
 
-      var REACT_FRAGMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.fragment') || 0xeacb;
-
       var React = {
         Children: {
           map: mapChildren,
@@ -2082,6 +2109,8 @@ var react_development = createCommonjsModule(function (module) {
         Component: Component,
         PureComponent: PureComponent,
         unstable_AsyncComponent: AsyncComponent,
+
+        Fragment: REACT_FRAGMENT_TYPE,
 
         createElement: createElementWithValidation,
         cloneElement: cloneElementWithValidation,
@@ -2096,10 +2125,6 @@ var react_development = createCommonjsModule(function (module) {
           assign: _assign
         }
       };
-
-      if (enableReactFragment) {
-        React.Fragment = REACT_FRAGMENT_TYPE;
-      }
 
       {
         _assign(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
@@ -2910,11 +2935,9 @@ var propTypes = createCommonjsModule(function (module) {
  * same logic and follow the same code paths.
  */
 
-var __DEV__ = process.env.NODE_ENV !== 'production';
-
 var warning$4 = function warning() {};
 
-if (__DEV__) {
+if (process.env.NODE_ENV !== 'production') {
   warning$4 = function warning(condition, format, args) {
     var len = arguments.length;
     args = new Array(len > 2 ? len - 2 : 0);
@@ -2946,7 +2969,7 @@ if (__DEV__) {
   };
 }
 
-var warning_1$4 = warning$4;
+var browser = warning$4;
 
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -2968,10 +2991,8 @@ var warning_1$4 = warning$4;
  * will remain to ensure logic does not differ in production.
  */
 
-var NODE_ENV = process.env.NODE_ENV;
-
 var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
-  if (NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
     }
@@ -2995,7 +3016,7 @@ var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var invariant_1$4 = invariant$5;
+var browser$1 = invariant$5;
 
 var isAbsolute = function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -3208,7 +3229,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
     var location = void 0;
     if (typeof path === 'string') {
       // Two-arg form: push(path, state)
-      location = (PathUtils.parsePath)(path);
+      location = (0, PathUtils.parsePath)(path);
       location.state = state;
     } else {
       // One-arg form: push(location)
@@ -3238,7 +3259,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
       if (!location.pathname) {
         location.pathname = currentLocation.pathname;
       } else if (location.pathname.charAt(0) !== '/') {
-        location.pathname = (_resolvePathname2.default)(location.pathname, currentLocation.pathname);
+        location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
       }
     }
 
@@ -3246,7 +3267,7 @@ var LocationUtils = createCommonjsModule(function (module, exports) {
   };
 
   var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a, b) {
-    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (_valueEqual2.default)(a.state, b.state);
+    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
   };
 });
 
@@ -3257,7 +3278,7 @@ var LocationUtils_2 = LocationUtils.createLocation;
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
   exports.__esModule = true;
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -3267,7 +3288,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
     var prompt = null;
 
     var setPrompt = function setPrompt(nextPrompt) {
-      (_warning2.default)(prompt == null, 'A history supports only one prompt at a time');
+      (0, _warning2.default)(prompt == null, 'A history supports only one prompt at a time');
 
       prompt = nextPrompt;
 
@@ -3287,7 +3308,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
           if (typeof getUserConfirmation === 'function') {
             getUserConfirmation(result, callback);
           } else {
-            (_warning2.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+            (0, _warning2.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
 
             callback(true);
           }
@@ -3429,9 +3450,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -3459,11 +3480,11 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
   var createBrowserHistory = function createBrowserHistory() {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    (_invariant2.default)(DOMUtils.canUseDOM, 'Browser history needs a DOM');
+    (0, _invariant2.default)(DOMUtils.canUseDOM, 'Browser history needs a DOM');
 
     var globalHistory = window.history;
-    var canUseHistory = (DOMUtils.supportsHistory)();
-    var needsHashChangeListener = !(DOMUtils.supportsPopStateOnHashChange)();
+    var canUseHistory = (0, DOMUtils.supportsHistory)();
+    var needsHashChangeListener = !(0, DOMUtils.supportsPopStateOnHashChange)();
 
     var _props$forceRefresh = props.forceRefresh,
         forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
@@ -3472,7 +3493,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
         _props$keyLength = props.keyLength,
         keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-    var basename = props.basename ? (PathUtils.stripTrailingSlash)((PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
 
     var getDOMLocation = function getDOMLocation(historyState) {
       var _ref = historyState || {},
@@ -3486,9 +3507,9 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
       var path = pathname + search + hash;
 
-      if (basename) path = (PathUtils.stripPrefix)(path, basename);
+      if (basename) path = (0, PathUtils.stripPrefix)(path, basename);
 
-      return _extends({}, (PathUtils.parsePath)(path), {
+      return _extends({}, (0, PathUtils.parsePath)(path), {
         state: state,
         key: key
       });
@@ -3498,7 +3519,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
       return Math.random().toString(36).substr(2, keyLength);
     };
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -3510,7 +3531,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
     var handlePopState = function handlePopState(event) {
       // Ignore extraneous popstate events in WebKit.
-      if ((DOMUtils.isExtraneousPopstateEvent)(event)) return;
+      if ((0, DOMUtils.isExtraneousPopstateEvent)(event)) return;
 
       handlePop(getDOMLocation(event.state));
     };
@@ -3567,14 +3588,14 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     // Public interface
 
     var createHref = function createHref(location) {
-      return basename + (PathUtils.createPath)(location);
+      return basename + (0, PathUtils.createPath)(location);
     };
 
     var push = function push(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -3598,7 +3619,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
             setState({ action: action, location: location });
           }
         } else {
-          (_warning2.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+          (0, _warning2.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
 
           window.location.href = href;
         }
@@ -3606,10 +3627,10 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -3631,7 +3652,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
             setState({ action: action, location: location });
           }
         } else {
-          (_warning2.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+          (0, _warning2.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
 
           window.location.replace(href);
         }
@@ -3656,13 +3677,13 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
       listenerCount += delta;
 
       if (listenerCount === 1) {
-        (DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
+        (0, DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
 
-        if (needsHashChangeListener) (DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+        if (needsHashChangeListener) (0, DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
       } else if (listenerCount === 0) {
-        (DOMUtils.removeEventListener)(window, PopStateEvent, handlePopState);
+        (0, DOMUtils.removeEventListener)(window, PopStateEvent, handlePopState);
 
-        if (needsHashChangeListener) (DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+        if (needsHashChangeListener) (0, DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
       }
     };
 
@@ -3741,7 +3762,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -3766,7 +3787,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
         _props$keyLength = props.keyLength,
         keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -3782,7 +3803,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
 
     var index = clamp(initialIndex, 0, initialEntries.length - 1);
     var entries = initialEntries.map(function (entry) {
-      return typeof entry === 'string' ? (LocationUtils.createLocation)(entry, undefined, createKey()) : (LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
+      return typeof entry === 'string' ? (0, LocationUtils.createLocation)(entry, undefined, createKey()) : (0, LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
     });
 
     // Public interface
@@ -3790,10 +3811,10 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     var createHref = PathUtils.createPath;
 
     var push = function push(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -3818,10 +3839,10 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+      (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, state, createKey(), history.location);
+      var location = (0, LocationUtils.createLocation)(path, state, createKey(), history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
@@ -3979,7 +4000,7 @@ var Router = function (_React$Component) {
         children = _props.children,
         history = _props.history;
 
-    invariant_1$4(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
+    browser$1(children == null || react.Children.count(children) === 1, 'A <Router> may have only one child element');
 
     // Do this here so we can setState when a <Redirect> changes the
     // location in componentWillMount. This happens e.g. when doing
@@ -3992,7 +4013,7 @@ var Router = function (_React$Component) {
   };
 
   Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$4(this.props.history === nextProps.history, 'You cannot change <Router history>');
+    browser(this.props.history === nextProps.history, 'You cannot change <Router history>');
   };
 
   Router.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -4824,17 +4845,17 @@ var Route = function (_React$Component) {
         render = _props.render,
         children = _props.children;
 
-    warning_1$4(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+    browser(!(component && render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
 
-    warning_1$4(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(component && children), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
 
-    warning_1$4(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+    browser(!(render && children), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
   };
 
   Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
-    warning_1$4(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$4(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
 
     this.setState({
       match: this.computeMatch(nextProps, nextContext.router)
@@ -4967,7 +4988,7 @@ var createURL = function createURL(location) {
 
 var staticHandler = function staticHandler(methodName) {
   return function () {
-    invariant_1$4(false, 'You cannot %s with <StaticRouter>', methodName);
+    browser$1(false, 'You cannot %s with <StaticRouter>', methodName);
   };
 };
 
@@ -5098,9 +5119,9 @@ var Switch = function (_React$Component) {
   }
 
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    warning_1$4(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+    browser(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
 
-    warning_1$4(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+    browser(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
   };
 
   Switch.prototype.render = function render() {
@@ -5297,9 +5318,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     }return target;
   };
 
-  var _warning2 = _interopRequireDefault(warning_1$4);
+  var _warning2 = _interopRequireDefault(browser);
 
-  var _invariant2 = _interopRequireDefault(invariant_1$4);
+  var _invariant2 = _interopRequireDefault(browser$1);
 
   var _createTransitionManager2 = _interopRequireDefault(createTransitionManager_1);
 
@@ -5312,7 +5333,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
   var HashPathCoders = {
     hashbang: {
       encodePath: function encodePath(path) {
-        return path.charAt(0) === '!' ? path : '!/' + (PathUtils.stripLeadingSlash)(path);
+        return path.charAt(0) === '!' ? path : '!/' + (0, PathUtils.stripLeadingSlash)(path);
       },
       decodePath: function decodePath(path) {
         return path.charAt(0) === '!' ? path.substr(1) : path;
@@ -5349,17 +5370,17 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
   var createHashHistory = function createHashHistory() {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    (_invariant2.default)(DOMUtils.canUseDOM, 'Hash history needs a DOM');
+    (0, _invariant2.default)(DOMUtils.canUseDOM, 'Hash history needs a DOM');
 
     var globalHistory = window.history;
-    var canGoWithoutReload = (DOMUtils.supportsGoWithoutReloadUsingHash)();
+    var canGoWithoutReload = (0, DOMUtils.supportsGoWithoutReloadUsingHash)();
 
     var _props$getUserConfirm = props.getUserConfirmation,
         getUserConfirmation = _props$getUserConfirm === undefined ? DOMUtils.getConfirmation : _props$getUserConfirm,
         _props$hashType = props.hashType,
         hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
 
-    var basename = props.basename ? (PathUtils.stripTrailingSlash)((PathUtils.addLeadingSlash)(props.basename)) : '';
+    var basename = props.basename ? (0, PathUtils.stripTrailingSlash)((0, PathUtils.addLeadingSlash)(props.basename)) : '';
 
     var _HashPathCoders$hashT = HashPathCoders[hashType],
         encodePath = _HashPathCoders$hashT.encodePath,
@@ -5368,12 +5389,12 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     var getDOMLocation = function getDOMLocation() {
       var path = decodePath(getHashPath());
 
-      if (basename) path = (PathUtils.stripPrefix)(path, basename);
+      if (basename) path = (0, PathUtils.stripPrefix)(path, basename);
 
-      return (PathUtils.parsePath)(path);
+      return (0, PathUtils.parsePath)(path);
     };
 
-    var transitionManager = (_createTransitionManager2.default)();
+    var transitionManager = (0, _createTransitionManager2.default)();
 
     var setState = function setState(nextState) {
       _extends(history, nextState);
@@ -5397,9 +5418,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
         var location = getDOMLocation();
         var prevLocation = history.location;
 
-        if (!forceNextPop && (LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
+        if (!forceNextPop && (0, LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
 
-        if (ignorePath === (PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
+        if (ignorePath === (0, PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
 
         ignorePath = null;
 
@@ -5431,11 +5452,11 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       // keeping a list of paths we've seen in sessionStorage.
       // Instead, we just default to 0 for paths we don't know.
 
-      var toIndex = allPaths.lastIndexOf((PathUtils.createPath)(toLocation));
+      var toIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(toLocation));
 
       if (toIndex === -1) toIndex = 0;
 
-      var fromIndex = allPaths.lastIndexOf((PathUtils.createPath)(fromLocation));
+      var fromIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(fromLocation));
 
       if (fromIndex === -1) fromIndex = 0;
 
@@ -5454,24 +5475,24 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     if (path !== encodedPath) replaceHashPath(encodedPath);
 
     var initialLocation = getDOMLocation();
-    var allPaths = [(PathUtils.createPath)(initialLocation)];
+    var allPaths = [(0, PathUtils.createPath)(initialLocation)];
 
     // Public interface
 
     var createHref = function createHref(location) {
-      return '#' + encodePath(basename + (PathUtils.createPath)(location));
+      return '#' + encodePath(basename + (0, PathUtils.createPath)(location));
     };
 
     var push = function push(path, state) {
-      (_warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
+      (0, _warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
 
       var action = 'PUSH';
-      var location = (LocationUtils.createLocation)(path, undefined, undefined, history.location);
+      var location = (0, LocationUtils.createLocation)(path, undefined, undefined, history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (PathUtils.createPath)(location);
+        var path = (0, PathUtils.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -5482,7 +5503,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           ignorePath = path;
           pushHashPath(encodedPath);
 
-          var prevIndex = allPaths.lastIndexOf((PathUtils.createPath)(history.location));
+          var prevIndex = allPaths.lastIndexOf((0, PathUtils.createPath)(history.location));
           var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
 
           nextPaths.push(path);
@@ -5490,7 +5511,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
 
           setState({ action: action, location: location });
         } else {
-          (_warning2.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+          (0, _warning2.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
 
           setState();
         }
@@ -5498,15 +5519,15 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var replace = function replace(path, state) {
-      (_warning2.default)(state === undefined, 'Hash history cannot replace state; it is ignored');
+      (0, _warning2.default)(state === undefined, 'Hash history cannot replace state; it is ignored');
 
       var action = 'REPLACE';
-      var location = (LocationUtils.createLocation)(path, undefined, undefined, history.location);
+      var location = (0, LocationUtils.createLocation)(path, undefined, undefined, history.location);
 
       transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
         if (!ok) return;
 
-        var path = (PathUtils.createPath)(location);
+        var path = (0, PathUtils.createPath)(location);
         var encodedPath = encodePath(basename + path);
         var hashChanged = getHashPath() !== encodedPath;
 
@@ -5518,7 +5539,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
           replaceHashPath(encodedPath);
         }
 
-        var prevIndex = allPaths.indexOf((PathUtils.createPath)(history.location));
+        var prevIndex = allPaths.indexOf((0, PathUtils.createPath)(history.location));
 
         if (prevIndex !== -1) allPaths[prevIndex] = path;
 
@@ -5527,7 +5548,7 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
     };
 
     var go = function go(n) {
-      (_warning2.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+      (0, _warning2.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
 
       globalHistory.go(n);
     };
@@ -5546,9 +5567,9 @@ var createHashHistory_1 = createCommonjsModule(function (module, exports) {
       listenerCount += delta;
 
       if (listenerCount === 1) {
-        (DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+        (0, DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
       } else if (listenerCount === 0) {
-        (DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+        (0, DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
       }
     };
 

@@ -89,7 +89,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     }
   };
 
-  const makeItem = (itemAttrs, instanceId, spawn) => {
+  const createItem = (itemAttrs, instanceId, spawn) => {
     let resolveShow;
     let resolveHide;
     const attrs = unpackAttrs(itemAttrs);
@@ -139,7 +139,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
   const show = (attrs = {}, spawnOpts = {}) => {
     const instanceId = spawnOpts.id || mOptions.defaultId;
     const spawn = spawnOpts.spawn || mOptions.defaultId;
-    const item = makeItem(attrs, instanceId, spawn);
+    const item = createItem(attrs, instanceId, spawn);
     onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);
@@ -178,8 +178,8 @@ export const Multi = ({ options: mOptions, renderer }) => {
     const candidates = items.filter(item => 
       item.show && item.spawn === spawn
     );
-    if (mOptions.bodyShowClass && isClient) {
-      document.body.classList[candidates.length ? "add" : "remove"](mOptions.bodyShowClass);
+    if (mOptions.htmlShowClass && isClient && document.documentElement) {
+      document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
     }
     return !candidates.length
       ? renderer(mOptions.placeholder) // placeholder because we cannot return null

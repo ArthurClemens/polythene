@@ -1,2 +1,40 @@
-!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-react-base"),require("polythene-core-card"),require("polythene-react-icon"),require("polythene-react-list-tile"),require("polythene-react-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-card","polythene-react-icon","polythene-react-list-tile","polythene-react-shadow"],r):r(e.polythene={},e["polythene-react-base"],e["polythene-core-card"],e["polythene-react-icon"],e["polythene-react-list-tile"],e["polythene-react-shadow"])}(this,function(e,r,t,o,a,n){"use strict";var i=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},c=r.ViewComponent(i({},t.coreCardActions));c.displayName="CardActions";var l=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},p=r.StateComponent(l({},t.coreCardMedia));p.displayName="CardMedia";var d=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},s=r.ViewComponent(d({},t.coreCardPrimary));s.displayName="CardPrimary";var y=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(e[o]=t[o])}return e},h=r.ViewComponent(y({},t.coreCard,{createContent:function(e,r){return t.coreCard.createContent(e,y(r,{CardActions:c,CardMedia:p,CardPrimary:s,Icon:o.Icon,ListTile:a.ListTile,Shadow:n.Shadow}))}}));h.displayName="Card",e.Card=h,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-card'), require('polythene-react-icon'), require('polythene-react-list-tile'), require('polythene-react-shadow')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-card', 'polythene-react-icon', 'polythene-react-list-tile', 'polythene-react-shadow'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-card'],global['polythene-react-icon'],global['polythene-react-list-tile'],global['polythene-react-shadow']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreCard,polytheneReactIcon,polytheneReactListTile,polytheneReactShadow) { 'use strict';
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var CardActions = polytheneReactBase.ViewComponent(_extends$1({}, polytheneCoreCard.coreCardActions));
+
+CardActions.displayName = "CardActions";
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var CardMedia = polytheneReactBase.StateComponent(_extends$2({}, polytheneCoreCard.coreCardMedia));
+
+CardMedia.displayName = "CardMedia";
+
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var CardPrimary = polytheneReactBase.ViewComponent(_extends$3({}, polytheneCoreCard.coreCardPrimary));
+
+CardPrimary.displayName = "CardPrimary";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Card = polytheneReactBase.ViewComponent(_extends({}, polytheneCoreCard.coreCard, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreCard.coreCard.createContent(vnode, _extends(args, { CardActions: CardActions, CardMedia: CardMedia, CardPrimary: CardPrimary, Icon: polytheneReactIcon.Icon, ListTile: polytheneReactListTile.ListTile, Shadow: polytheneReactShadow.Shadow }));
+  }
+}));
+
+Card.displayName = "Card";
+
+exports.Card = Card;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-card.js.map

@@ -2,7 +2,7 @@ import { renderer as h, RaisedButton, Notification } from "polythene-mithril";
 
 export default (messageOptions, spawnOptions) => ({
   view: () =>
-    h("div", [
+    h(".pe-button-row", [
       h(RaisedButton, {
         label: "Show",
         events: { onclick: () => Notification.show(messageOptions, spawnOptions) }

@@ -2,7 +2,20 @@
 
 Form control to select a single option from a set. Generates a styled radio button input element.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Radio button specific](#radio-button-specific)
+  - [Appearance options](#appearance-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * Custom icons
@@ -12,14 +25,17 @@ Form control to select a single option from a set. Generates a styled radio butt
 * Keyboard control
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/radio-button.md)
 * [Usage with React](react/radio-button.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="radio-button-specific"></a>
 ### Radio button specific
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -28,11 +44,12 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **label**     | optional | String | | Text label |
 | **defaultChecked** | optional | Boolean | false | Initially checked state |
 | **checked**   | optional | Boolean | false | Managed checked state (see: [Handling state](../handling-state.md)) |
-| **onChange**  | optional | Function(state {Object}) | | Callback function that accepts the input state (Object with properties `event`, `checked` {Boolean}, `value` {String}) (see: [Handling state](../handling-state.md)) |
-| **selectable** | optional | Function(checked {Boolean}) | | Use to set the active state based on the Radio Button state; function that accepts the field checked value (Boolean) |
+| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
+| **selectable** | optional | Function `(checked::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **value**     | optional | String |  | Input element value |
 | **disabled**  | optional | Boolean |  | Set to true to disable the Radio Button |
 
+<a name="appearance-options"></a>
 ### Appearance options
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
@@ -42,6 +59,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **iconButton** | optional | Options object for the [Icon Button](icon-button.md) | | Add attributes like `wash` and `ink` |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -56,6 +74,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Radio Button is composed from:
@@ -65,6 +84,7 @@ Radio Button is composed from:
   * [Icon](icon.md)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Radio Button classes](../../packages/polythene-css-classes/radio-button.js)

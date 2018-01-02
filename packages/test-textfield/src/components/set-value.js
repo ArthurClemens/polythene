@@ -3,40 +3,39 @@ import stream from "mithril/stream";
 export default ({ h, k, TextField, RaisedButton }) => ({
   oninit: vnode => {
     const value = stream("");
-    const focus = stream(false);
-    vnode.state = {
+    const setInputState = stream();
+    Object.assign(vnode.state, {
       value,
-      focus,
+      setInputState,
       redrawOnUpdate: stream.merge([value]) // for React
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;
     const value = state.value();
-    const focus = state.focus();
+    const setInputState = state.setInputState();
     return h("div", [
       h(TextField, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
-        onChange: ({ value, focus }) => (
+        onChange: ({ value, setInputState }) => (
           state.value(value),
-          state.focus(focus)
+          state.setInputState(setInputState)
         ),
         events: {
           [k.onkeydown]: e => {
-            if (e.key === "ArrowRight") {
-              state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));
+            if (e.key === "ArrowRight" || e.key === "Right") {
+              const newValue = value + String.fromCharCode(97 + Math.floor(Math.random() * 26));
+              setInputState({ value: newValue });
             }
           }
         },
         value,
-        focus
       }),
       h(RaisedButton, {
         label: "Clear",
         events: {
           [k.onclick]: () => (
-            state.value(""),
-            state.focus(true)
+            setInputState({ focus: true, value: "" })
           )
         },
       })

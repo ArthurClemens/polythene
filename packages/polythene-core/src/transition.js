@@ -97,6 +97,7 @@ const transition = (opts, state) => {
       const applyTransition = () => {
         style.transitionDuration = transitionDuration + "ms";
         style.transitionDelay = delay + "ms";
+        
         if (opts.showClass) {
           el.classList[(state === "show") ? "add" : "remove"](opts.showClass);
         }

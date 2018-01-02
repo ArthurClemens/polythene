@@ -14,8 +14,8 @@ var rgba = function rgba(colorStr) {
 
 var vars$2 = _extends$1({}, vars, {
   border_radius: 0,
-  tablet_min_width: 288,
-  tablet_max_width: 568,
+  min_width: 288,
+  max_width: 568,
   min_height: 0,
 
   color_dark_background: rgba(vars$1.color_dark_background)
@@ -27,13 +27,14 @@ var show = function show(_ref) {
       showDuration = _ref.showDuration,
       showDelay = _ref.showDelay;
 
-  var height = el.getBoundingClientRect().height;
   return {
     el: containerEl,
     showDuration: showDuration || .4,
     showDelay: showDelay || 0,
     beforeShow: function beforeShow() {
-      return el.style.visibility = "initial", containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
+      el.style.display = "block";
+      var height = el.getBoundingClientRect().height;
+      containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
     },
     show: function show() {
       return containerEl.style.transform = "translate3d(0, 0px, 0)";
@@ -47,19 +48,20 @@ var hide = function hide(_ref2) {
       hideDuration = _ref2.hideDuration,
       hideDelay = _ref2.hideDelay;
 
-  var height = el.getBoundingClientRect().height;
   return {
     el: containerEl,
     hideDuration: hideDuration || .4,
     hideDelay: hideDelay || 0,
     hide: function hide() {
-      return containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
+      var height = el.getBoundingClientRect().height;
+      containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
     },
     // reset to original position to counter the removal of the snackbar instance
     afterHide: function afterHide() {
-      return (
-        // prevent a "bounce back"
-        containerEl.style.transitionDuration = "0ms", el.style.visibility = "hidden", containerEl.style.transform = "translate3d(0, 0px, 0)");
+      // prevent a "bounce back"
+      el.style.display = "none";
+      containerEl.style.transitionDuration = "0ms";
+      containerEl.style.transform = "translate3d(0, 0px, 0)";
     }
   };
 };

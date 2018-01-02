@@ -49,9 +49,11 @@ class ColorSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.defaultValue || 0
+      value: this.props.defaultValue || 0,
+      inputValue: (this.props.defaultValue || 0).toString(),
     };
-    this.update = this.update.bind(this);
+    this.updateValue = this.updateValue.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   }
 
   componentDidMount() {
@@ -62,11 +64,25 @@ class ColorSlider extends Component {
     this._mounted = false;
   }
 
-  update({ value }) {
-    if (this._mounted) {
-      this.setState({ value });
-      this.props.onChange({ value });
-    }
+  updateValue({ value }) {
+    this.setState({
+      value,
+      inputValue: value.toString()
+    }, () => 
+      setTimeout(() => this.props.onChange({ value }), 0)
+    );
+  }
+
+  updateInputValue({ inputValue }) {
+    const value = inputValue !== ""
+      ? Math.min(255, parseInt(inputValue, 10) || 0)
+      : 0;
+    this.setState({
+      value,
+      inputValue
+    }, () => 
+      setTimeout(() => this.props.onChange({ value }), 0)
+    );
   }
 
   render() {
@@ -75,13 +91,13 @@ class ColorSlider extends Component {
       min={0}
       max={255}
       value={value}
-      onChange={this.update}
+      onChange={this.updateValue}
       before={<div className=".pe-slider__label">{this.props.label}</div>}
       after={<TextField
         type="number"
         hideSpinner
-        value={value}
-        onChange={({ value }) => this.setState({ value })}
+        value={this.state.inputValue}
+        onChange={({ value }) => this.updateInputValue({ inputValue: value })}
         maxLength={3}
         min={0}
         max={255}
@@ -119,21 +135,14 @@ class RGBSlider extends Component {
   render() {
     return <div className="rgb-slider">
       <div className="result" style={{ backgroundColor: `rgb(${this.state.red},${this.state.green},${this.state.blue})` }} />
-      <ColorSlider
-        defaultValue={this.state.red}
-        onChange={({ value }) => this.update({ key: "red", value })}
-        label="R"
-      />
-      <ColorSlider
-        defaultValue={this.state.green}
-        onChange={({ value }) => this.update({ key: "green", value })}
-        label="G"
-      />
-      <ColorSlider
-        defaultValue={this.state.blue}
-        onChange={({ value }) => this.update({ key: "blue", value })}
-        label="B"
-      />
+      {["red", "green", "blue"].map(color =>
+        <ColorSlider
+          key={color}
+          defaultValue={this.state[color]}
+          onChange={({ value }) => this.update({ key: color, value })}
+          label={color.substring(0,1).toUpperCase()}
+        />
+      )}      
     </div>;
   }
 }

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient } from "polythene-core";
+import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/list-tile";
 
 export const getElement = () => "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
@@ -124,58 +124,8 @@ const secondaryContent = (h, k, requiresKeys, Icon, attrs = {}) => {
   );
 };
 
-export const getInitialState = (vnode, createStream) => {
-  const attrs = vnode.attrs;
-  const highlight = createStream(attrs.defaultHighlight);
-  return {
-    highlight,
-    redrawOnUpdate: createStream.merge([highlight])
-  };
-};
-
-export const onMount = vnode => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  const dom = vnode.dom;
-  if (!dom) {
-    return;
-  }
-  if (isClient) {
-    if (attrs.register) {
-      const primaryDom = dom; //.querySelector(`.${classes.primary}`);
-
-      const onFocus = () => state.highlight(true);
-      const onBlur = () => state.highlight(false);
-      
-      primaryDom.addEventListener("focus", onFocus, false);
-      primaryDom.addEventListener("blur", onBlur, false);
-
-      state.removeEventListeners = () => (
-        primaryDom.removeEventListener("focus", onFocus, false),
-        primaryDom.removeEventListener("blur", onBlur, false)
-      );
-
-      attrs.register(attrs.index, {
-        dom: primaryDom,
-        attrs
-      });
-
-      state.highlight.map(hasHighlight => {
-        if (attrs.setHighlightIndex && hasHighlight) {
-          attrs.setHighlightIndex(attrs.index);
-        }
-      });
-    }
-  }
-};
-
-export const onUnMount = vnode =>
-  vnode.state.removeEventListeners && vnode.state.removeEventListeners();
-
 export const createProps = (vnode, { keys: k }) => {
-  const state = vnode.state;
   const attrs = vnode.attrs;
-  const highlight = state.highlight();
   const hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
   const heightClass = attrs.subtitle
     ? classes.hasSubtitle
@@ -196,7 +146,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.compact      ? classes.compact : null,
         attrs.hoverable    ? classes.hoverable : null,
         attrs.selectable   ? classes.selectable : null,
-        highlight          ? classes.highlight : null,
+        attrs.highlight    ? classes.highlight : null,
         attrs.header       ? classes.header : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,

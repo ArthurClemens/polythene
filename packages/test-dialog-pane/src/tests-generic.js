@@ -152,10 +152,10 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       component: {
         oninit: vnode => {
           const file = stream();
-          vnode.state = {
+          Object.assign(vnode.state, {
             file,
             redrawOnUpdate: stream.merge([file])
-          };
+          });
         },
         view: vnode => (
           h(DialogPane, form({ renderer, keys, Button, file: vnode.state.file }))

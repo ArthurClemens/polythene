@@ -1,2 +1,22 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-radio-group"),require("polythene-react-radio-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-radio-group","polythene-react-radio-button"],o):o(e.polythene={},e["polythene-react-base"],e["polythene-core-radio-group"],e["polythene-react-radio-button"])}(this,function(e,o,t,r){"use strict";var n=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var t=arguments[o];for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])}return e},a=o.StateComponent(n({},t.coreRadioGroup,{createContent:function(e,o){return t.coreRadioGroup.createContent(e,n(o,{RadioButton:r.RadioButton}))}}));a.displayName="RadioGroup",e.RadioGroup=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-radio-group'), require('polythene-react-radio-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-radio-group', 'polythene-react-radio-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-radio-group'],global['polythene-react-radio-button']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreRadioGroup,polytheneReactRadioButton) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var RadioGroup = polytheneReactBase.StateComponent(_extends({}, polytheneCoreRadioGroup.coreRadioGroup, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreRadioGroup.coreRadioGroup.createContent(vnode, _extends(args, { RadioButton: polytheneReactRadioButton.RadioButton }));
+  }
+}));
+
+RadioGroup.displayName = "RadioGroup";
+
+exports.RadioGroup = RadioGroup;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-radio-group.js.map

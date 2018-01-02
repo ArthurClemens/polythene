@@ -2,12 +2,29 @@
 
 # Tabs component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Tab options](#tab-options)
+  - [Scrollable tabs](#scrollable-tabs)
+  - [Getting the tabs state](#getting-the-tabs-state)
+- [Appearance](#appearance)
+  - [Mobile bottom menu](#mobile-bottom-menu)
+  - [Scrollable tabs with custom arrow icons](#scrollable-tabs-with-custom-arrow-icons)
+  - [Styling](#styling)
+  - [Tab widths](#tab-widths)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Tabs options](../tabs.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 Tabs can show a text label, an icon, or the combination of the two. 
@@ -44,6 +61,7 @@ h(Tabs, {
 })
 ~~~
 
+<a name="tab-options"></a>
 ### Tab options
 
 Text labels:
@@ -111,6 +129,7 @@ To set shared options all at once, use option `all`:
 }
 ~~~
 
+<a name="scrollable-tabs"></a>
 ### Scrollable tabs
 
 To display more tabs than fit in the viewport, set `scrollable` to true. On no-touch devices 2 scroll buttons will automatically be added to navigate the tabs. The scroll buttons can be customized - see under Appearance below.
@@ -163,6 +182,7 @@ h("div",
 )
 ~~~
 
+<a name="getting-the-tabs-state"></a>
 ### Getting the tabs state
 
 To read the currently selected tab, for instance to write the selected tab to a controller variable, use `onChange`:
@@ -180,8 +200,10 @@ The `state` object contains data on the current tab:
 * `el`: the tab button HTML Element
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="mobile-bottom-menu"></a>
 ### Mobile bottom menu
 
 Use option `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
@@ -194,6 +216,7 @@ Use option `menu` to remove the minimum width settings from the tab buttons and 
 }
 ~~~
 
+<a name="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
 #### With JSX
@@ -270,6 +293,7 @@ h("div",
 )
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Tabs appearance, either with a theme or with CSS.
@@ -328,6 +352,7 @@ h(Tabs, {
 })
 ~~~
 
+<a name="tab-widths"></a>
 ### Tab widths
 
 * The minimum tab width is 72px. For larger screens (> 480px, as defined in the default theme) the minimum tabs width is 160px.
@@ -358,6 +383,7 @@ or:
 }
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

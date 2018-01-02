@@ -86,7 +86,7 @@ const reactTests = ({ Button, renderer: h }) => {
       name: "Dark tone class + light tone class",
       className: "pe-dark-tone",
       component: () =>
-        h(".pe-light-tone",
+        h(".pe-button-row.pe-light-tone",
           {
             style: { background: "#fff" }
           },
@@ -109,7 +109,7 @@ const reactTests = ({ Button, renderer: h }) => {
       name: "Dark tone class + light tone",
       className: "pe-dark-tone",
       component: () =>
-        h("div",
+        h(".pe-button-row",
           {
             style: { background: "#fff" }
           },

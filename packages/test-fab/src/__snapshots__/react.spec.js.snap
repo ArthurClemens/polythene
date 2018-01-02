@@ -35,10 +35,11 @@ exports[`test Child node 1`] = `
 
 exports[`test Dark tone class + light tone 1`] = `
 <div
+  className="pe-button-row"
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px 4px",
     }
   }>
   <FAB
@@ -75,11 +76,11 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Dark tone class + light tone class 1`] = `
 <div
-  className="pe-light-tone"
+  className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",
-      "padding": "10px",
+      "padding": "8px 4px",
     }
   }>
   <FAB

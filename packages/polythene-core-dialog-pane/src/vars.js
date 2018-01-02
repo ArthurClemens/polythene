@@ -4,12 +4,14 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
 
 export default {
-  padding:       3 * vars.grid_unit_component,
-  header_bottom: 20,
-  header_height: 60,
-  footer_height: 52,
+  max_width:           7 * vars.grid_unit_menu,      // 56   
+  side_padding_mobile: 6 * vars.grid_unit,           // 48
+  padding:             3 * vars.grid_unit_component, // 24
+  header_bottom:       20,
+  header_height:       60,
+  footer_height:       52,
 
-  border_width: 1,
+  border_width:        1,
 
   color_light_title_text:          "inherit",
   color_light_body_text:           "inherit",

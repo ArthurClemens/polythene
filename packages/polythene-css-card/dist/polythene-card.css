@@ -13,7 +13,9 @@
   border-radius: inherit;
   overflow: hidden;
   width: inherit;
-  height: inherit
+  height: inherit;
+  display: flex;
+  flex-direction: column
 }
 
 .pe-card .pe-card__media {
@@ -66,7 +68,8 @@
 }
 
 .pe-card .pe-card__primary-media {
-  margin: 16px 16px 0
+  margin: 16px 16px 0;
+  overflow: hidden
 }
 
 .pe-card .pe-card__primary-media .pe-card__media--small {
@@ -134,7 +137,6 @@
 .pe-card .pe-card__primary {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -170,12 +172,18 @@
 
 .pe-card .pe-card__actions {
   min-height: 52px;
-  padding: 2px 8px
+  padding: 0 8px
 }
 
 .pe-card .pe-card__actions.pe-card__actions--tight {
   min-height: 0;
-  padding: 0
+  padding-top: 0;
+  padding-bottom: 0
+}
+
+.pe-card .pe-card__actions.pe-card__actions--tight.pe-card__actions--vertical {
+  padding-left: 0;
+  padding-right: 0
 }
 
 .pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) {
@@ -183,30 +191,19 @@
   flex-direction: row;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center
-}
-
-.pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) :first-child {
-  margin-left: 0
 }
 
 .pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) .pe-button {
   min-width: 0
 }
 
-.pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) .pe-button--icon {
-  margin-right: 8px
-}
-
 .pe-card .pe-card__actions.pe-card__actions--justified {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
-  -ms-flex-line-pack: stretch;
   -ms-flex-pack: justify;
   justify-content: space-between
 }
@@ -214,7 +211,6 @@
 .pe-card .pe-card__actions.pe-card__actions--vertical {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column
@@ -269,8 +265,9 @@
 }
 
 .pe-card .pe-card__primary+.pe-card__actions:not(:last-child),.pe-card .pe-card__text+.pe-card__actions:not(:last-child) {
-  margin-top: -9px;
-  margin-bottom: -7px
+  margin-top: -11px;
+  position: relative;
+  z-index: 1
 }
 
 .pe-dark-tone.pe-card,.pe-dark-tone .pe-card {

@@ -6,10 +6,14 @@ Material Design component library for [Mithril](http://mithril.js.org) and [Reac
 
 Can also be used as general-purpose component library that includes dialogs, cards, notifications, lists, buttons, form elements, and more.
 
+<a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink-thumb.jpg" height="500" /></a>
+
+<a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank">Kitchen sink - click to enlarge</a>
+
 
 ## Status
 
-Version: `1.0.0-rc.9` (release candidate 9)
+Version: `1.0.0-rc.10` (release candidate 10)
 
 
 ## Main features
@@ -18,7 +22,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * Closely follows the Material Design specification
 * Versatile theming options
 * Supports touch, mouse and keyboard
-* Extensive documentation
+* Extensive documentation with example code
 
 
 ## Demos
@@ -40,10 +44,12 @@ Version: `1.0.0-rc.9` (release candidate 9)
 
 ## Guides
 
-* [Documentation](docs/README.md)
+* [Documentation: components, examples, CSS, theming](docs/README.md)
+* [Extending other libraries](docs/extending.md)
 * [Developing](docs/developing.md)
-* [Migrating from 0.2](docs/migrating-from-02.md)
 * [Change log](docs/changes.md)
+* [Known issues](docs/known-issues.md)
+* [Migrating from 0.2](docs/migrating-from-02.md)
 
 
 ## Compatibility
@@ -57,8 +63,7 @@ Version: `1.0.0-rc.9` (release candidate 9)
 * Chrome: 54+
 * Edge: 13+
 * Firefox: 49+
-* Internet Explorer: 11
-  * When using React, IE 11 needs a Promise polyfill. Example: `<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise" type="text/javascript" />`
+* Internet Explorer: 11 - see [Known issues](docs/known-issues.md)
 * Mobile Safari: 9+
 * Safari: 9+
 

@@ -6,12 +6,12 @@ const rgba = (colorStr, opacity = 1) =>
 const buttonPaddingH = 8; // padding, inner text space
 
 export default {
-  width:                  274,
+  width:                  288,
   min_height:             80,
   border_radius:          vars.unit_block_border_radius,
   title_padding_h:        buttonPaddingH,
   title_single_padding_v: 14,
-  title_multi_padding_v:  20,
+  title_multi_padding_v:  20, // 24 - natural line height
   side_padding:           24 - buttonPaddingH,
   font_size:              14,
   line_height:            20,

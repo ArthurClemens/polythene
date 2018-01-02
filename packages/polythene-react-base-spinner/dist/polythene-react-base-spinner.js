@@ -1,2 +1,43 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("polythene-react-base"),require("polythene-core-base-spinner"),require("polythene-react-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-base-spinner","polythene-react-shadow"],n):n(e.polythene={},e["polythene-react-base"],e["polythene-core-base-spinner"],e["polythene-react-shadow"])}(this,function(e,n,r,p){"use strict";var a={component:"pe-spinner",animation:"pe-spinner__animation",placeholder:"pe-spinner__placeholder",animated:"pe-spinner--animated",fab:"pe-spinner--fab",large:"pe-spinner--large",medium:"pe-spinner--medium",permanent:"pe-spinner--permanent",raised:"pe-spinner--raised",regular:"pe-spinner--regular",singleColor:"pe-spinner--single-color",small:"pe-spinner--small",visible:"pe-spinner--visible"},t=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var r=arguments[n];for(var p in r)Object.prototype.hasOwnProperty.call(r,p)&&(e[p]=r[p])}return e},i=n.StateComponent(t({},r.coreBaseSpinner,{createContent:function(e,n){return r.coreBaseSpinner.createContent(e,t(n,{Shadow:p.Shadow}))}}));i.classes=a,i.displayName="BaseSpinner",e.BaseSpinner=i,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-base-spinner'), require('polythene-react-shadow')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-base-spinner', 'polythene-react-shadow'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-base-spinner'],global['polythene-react-shadow']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreBaseSpinner,polytheneReactShadow) { 'use strict';
+
+var classes = {
+  component: "pe-spinner",
+
+  // elements
+  animation: "pe-spinner__animation",
+  placeholder: "pe-spinner__placeholder",
+
+  // states
+  animated: "pe-spinner--animated",
+  fab: "pe-spinner--fab",
+  large: "pe-spinner--large",
+  medium: "pe-spinner--medium",
+  permanent: "pe-spinner--permanent",
+  raised: "pe-spinner--raised",
+  regular: "pe-spinner--regular",
+  singleColor: "pe-spinner--single-color",
+  small: "pe-spinner--small",
+  visible: "pe-spinner--visible"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var BaseSpinner = polytheneReactBase.StateComponent(_extends({}, polytheneCoreBaseSpinner.coreBaseSpinner, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreBaseSpinner.coreBaseSpinner.createContent(vnode, _extends(args, { Shadow: polytheneReactShadow.Shadow }));
+  }
+}));
+
+BaseSpinner.classes = classes;
+BaseSpinner.displayName = "BaseSpinner";
+
+exports.BaseSpinner = BaseSpinner;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-base-spinner.js.map

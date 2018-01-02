@@ -17,7 +17,7 @@ const mithrilTests = ({ SVG, renderer: h }) => {
           h("div", {
             style: {
               background: "#fff",
-              padding: "10px"
+              padding: "8px"
             },
             className: "pe-light-tone"
           }, h(SVG, {content: trustedIconStars}))
@@ -31,7 +31,7 @@ const mithrilTests = ({ SVG, renderer: h }) => {
           h("div", {
             style: {
               background: "#fff",
-              padding: "10px"
+              padding: "8px"
             },
           }, h(SVG, {
             content: trustedIconStars,

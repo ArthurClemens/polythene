@@ -1,6 +1,6 @@
 import { RaisedButtonCSS } from "polythene-css";
 
-export default ({ RaisedButton }) => {
+export default ({ renderer: h, RaisedButton }) => {
 
   RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
@@ -13,6 +13,28 @@ export default ({ RaisedButton }) => {
       component: RaisedButton,
       attrs: {
         label: "Label"
+      }
+    },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(RaisedButton, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(RaisedButton, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(RaisedButton, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
       }
     },
     {

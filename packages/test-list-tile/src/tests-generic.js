@@ -14,12 +14,18 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     font_size_title:        21
   });
 
+  ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
+    color_light_highlight_background: "#FFECB3",
+  });
+
+  const longTitle = "ListTile with a very very very very very very very very very long title";
+
   return [
     {
       name: "Option: title",
       component: ListTile,
       attrs: {
-        title: "Ancillary Justice"
+        title: longTitle
       }
     },
     {
@@ -170,6 +176,15 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         selected: true
+      }
+    },
+    {
+      name: "Option: highlight (themed color)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        highlight: true,
+        className: "tests-list-tile-themed-highlight-list-tile",
       }
     },
     {

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, pointerStartEvent } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -40,9 +40,16 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var MINIMUM_FOCUS_INTERVAL = 150;
+var DEFAULT_VALID_STATE = {
+  invalid: false,
+  message: undefined
+};
 
 var validateCustom = function validateCustom(state, attrs) {
+  var el = state.inputEl();
+  if (!el) {
+    return DEFAULT_VALID_STATE;
+  }
   var validState = attrs.validate(state.inputEl().value);
   return {
     invalid: validState && !validState.valid,
@@ -65,10 +72,7 @@ var validateHTML = function validateHTML(state, attrs) {
 };
 
 var getValidStatus = function getValidStatus(state, attrs) {
-  var status = {
-    invalid: false,
-    message: undefined
-  };
+  var status = DEFAULT_VALID_STATE;
 
   // attrs.validateResetOnClear: reset validation when field is cleared
   if (state.isTouched() && state.isInvalid() && state.inputEl().value.length === 0 && attrs.validateResetOnClear) {
@@ -92,10 +96,11 @@ var checkValidity = function checkValidity(vnode) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   // default
-  var status = !state.isTouched() && !attrs.validateAtStart ? {
-    invalid: false,
-    message: undefined
-  } : getValidStatus(state, attrs);
+
+  var status = attrs.valid !== undefined ? {
+    invalid: !attrs.valid,
+    message: attrs.error
+  } : !state.isTouched() && !attrs.validateAtStart ? DEFAULT_VALID_STATE : getValidStatus(state, attrs);
   var previousInvalid = state.isInvalid();
   state.error(status.message);
 
@@ -118,7 +123,10 @@ var notifyState = function notifyState(vnode) {
       el: state.inputEl(),
       invalid: status.invalid,
       error: status.error,
-      value: state.inputEl().value
+      value: state.inputEl().value,
+      setInputState: function setInputState(newState) {
+        return state.setInputState(newState);
+      }
     });
   }
 };
@@ -130,14 +138,13 @@ var ignoreEvent = function ignoreEvent(attrs, name) {
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
 
-  var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : "";
+  var defaultValue = attrs.defaultValue !== undefined && attrs.defaultValue !== null ? attrs.defaultValue.toString() : attrs.value !== undefined && attrs.value !== null ? attrs.value.toString() : "";
 
   var el = createStream(null);
   var inputEl = createStream(null);
-  var setValue = createStream({});
+  var setInputState = createStream({});
   var error = createStream(attrs.error);
-  var hasFocus = createStream(attrs.focus || false);
-  var setFocus = createStream(false);
+  var hasFocus = createStream(false);
   var isTouched = createStream(false); // true when any change is made
   var isDirty = createStream(defaultValue !== ""); // true for any input
   var isInvalid = createStream(false);
@@ -155,8 +162,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
     isInvalid: isInvalid,
     isTouched: isTouched,
     previousValue: previousValue,
-    setFocus: setFocus,
-    setValue: setValue,
+    setInputState: setInputState,
     redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
   };
 };
@@ -172,28 +178,30 @@ var onMount = function onMount(vnode) {
   vnode.state.inputEl(inputEl);
   state.inputEl().value = state.defaultValue;
 
-  state.setValue.map(function (_ref) {
+  state.setInputState.map(function (_ref) {
     var type = _ref.type,
-        focus = _ref.focus;
-    return focus !== undefined && state.setFocus(focus), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== ""), type !== "input" && state.isTouched(state.inputEl().value !== ""), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
-  });
-
-  state.setFocus.map(function (focusState) {
-    // Prevent autocomplete from getting in a loop
-    if (state.didSetFocusTime + MINIMUM_FOCUS_INTERVAL > new Date().getTime()) {
-      return;
-    }
-    state.hasFocus(focusState);
-    if (focusState && state.inputEl()) {
-      // Draw in next tick, to prevent getting an immediate onblur
-      // Explicit setting of focus needed for most browsers other than Safari
-      setTimeout(function () {
-        return state.inputEl() && state.inputEl().focus && state.inputEl().focus(), state.didSetFocusTime = new Date().getTime();
-      }, 0);
-    }
+        focus = _ref.focus,
+        value = _ref.value;
+    return value !== undefined ? state.inputEl().value = value : null, focus !== undefined && (state.hasFocus(focus), focus ? state.inputEl().focus() : state.inputEl().blur()), type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue), type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue), type === "onblur" && state.isTouched(true), state.isDirty(state.inputEl().value !== ""), checkValidity(vnode), notifyState(vnode), state.previousValue(state.inputEl().value);
   });
 
   notifyState(vnode);
+};
+
+var onUpdate = function onUpdate(vnode) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  checkValidity(vnode);
+
+  var inputEl = state.inputEl();
+  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
+  var valueStr = value === undefined || value === null ? "" : value.toString();
+
+  if (inputEl && state.previousValue() !== valueStr) {
+    inputEl.value = valueStr;
+    state.previousValue(valueStr);
+    state.setInputState({ type: "input" });
+  }
 };
 
 var createProps = function createProps(vnode, _ref2) {
@@ -216,27 +224,14 @@ var createContent = function createContent(vnode, _ref3) {
   var attrs = vnode.attrs;
 
   var inputEl = state.inputEl();
+  var error = attrs.error || state.error();
   var isInvalid = state.isInvalid();
   var inputType = attrs.multiLine ? "textarea" : "input";
   var type = attrs.multiLine ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
-  var showError = isInvalid && state.error() !== undefined;
-  var validates = attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern;
+  var showError = isInvalid && error !== undefined;
+
+  var validates = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
   var inactive = attrs.disabled || attrs[k.readonly];
-
-  if (attrs.focus && !state.hasFocus() && !inactive) {
-    state.setFocus(true);
-  }
-
-  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined || value === null ? "" : value.toString();
-
-  if (inputEl && state.previousValue() !== valueStr) {
-    inputEl.value = valueStr;
-    state.previousValue(valueStr);
-    setTimeout(function () {
-      return state.setValue({ type: "input" });
-    }, 0); // perform in next tick to play nice with React
-  }
 
   var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
     key: "required",
@@ -251,16 +246,10 @@ var createContent = function createContent(vnode, _ref3) {
   return [h("div", {
     className: classes.inputArea,
     key: "input-area"
-  }, [label ? h("label", _defineProperty({
+  }, [label ? h("label", {
     key: "label",
     className: classes.label
-  }, k["on" + pointerStartEvent], function () {
-    if (!inactive) {
-      setTimeout(function () {
-        state.inputEl.focus();
-      }, 0);
-    }
-  }), label) : null, h(inputType, _extends({}, {
+  }, label) : null, h(inputType, _extends({}, {
     key: "input",
     className: classes.input,
     disabled: attrs.disabled
@@ -270,13 +259,14 @@ var createContent = function createContent(vnode, _ref3) {
     }
     // in case the browser does not give the field focus,
     // for instance when the user tapped to the current field off screen
-    state.setFocus(true);
+    state.setInputState({ focus: true });
     notifyState(vnode);
   }) : null, !ignoreEvent(attrs, k.onfocus) ? _defineProperty({}, k.onfocus, function () {
     if (inactive) {
       return;
     }
-    state.setFocus(true);
+    state.setInputState({ focus: true });
+
     // set CSS class manually in case field gets focus but is off screen
     // and no redraw is triggered
     // at the next redraw state.hasFocus() will be read and the focus class be set
@@ -286,18 +276,18 @@ var createContent = function createContent(vnode, _ref3) {
     }
     notifyState(vnode);
   }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
-    state.setValue({ type: "onblur", focus: false });
+    state.setInputState({ type: "onblur", focus: false });
     // same principle as onfocus
     state.el().classList.remove(classes.stateFocused);
   }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
     // default input event
     // may be overwritten by attrs.events
-    state.setValue({ type: "input" });
+    state.setInputState({ type: "input" });
   }) : null, !ignoreEvent(attrs, k.onkeydown) ? _defineProperty({}, k.onkeydown, function (e) {
     if (e.key === "Enter") {
       state.isTouched(true);
-    } else if (e.key === "Escape") {
-      inputEl.blur(e);
+    } else if (e.key === "Escape" || e.key === "Esc") {
+      state.setInputState({ focus: false });
     }
   }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
   attrs.required !== undefined && !!attrs.required ? { required: true } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? { pattern: attrs.pattern } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? { max: attrs.max } : null, attrs.min !== undefined ? { min: attrs.min } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? { rows: attrs.rows } : null))]), attrs.counter ? h("div", {
@@ -309,7 +299,7 @@ var createContent = function createContent(vnode, _ref3) {
   }, attrs.help) : null, showError ? h("div", {
     key: "error",
     className: classes.error
-  }, state.error()) : validates && !attrs.help ? h("div", {
+  }, error) : validates && !attrs.help ? h("div", {
     key: "error-placeholder",
     className: classes.errorPlaceholder
   }) : null];
@@ -319,6 +309,7 @@ var textfield = Object.freeze({
 	getElement: getElement,
 	getInitialState: getInitialState,
 	onMount: onMount,
+	onUpdate: onUpdate,
 	createProps: createProps,
 	createContent: createContent
 });

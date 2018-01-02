@@ -1,2 +1,26 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-mithril-base"),require("polythene-core-fab"),require("polythene-mithril-icon"),require("polythene-mithril-raised-button")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-fab","polythene-mithril-icon","polythene-mithril-raised-button"],t):t(e.polythene={},e["polythene-mithril-base"],e["polythene-core-fab"],e["polythene-mithril-icon"],e["polythene-mithril-raised-button"])}(this,function(e,t,o,n,r){"use strict";var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},c=t.ViewComponent(i({},o.coreFAB,{createProps:function(e,t){return o.coreFAB.createProps(e,i(t,{Icon:n.Icon}))},createContent:function(e,t){return o.coreFAB.createContent(e,i(t,{Icon:n.Icon}))},component:r.RaisedButton}));c.displayName="FAB",e.FAB=c,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-fab'), require('polythene-mithril-icon'), require('polythene-mithril-raised-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-fab', 'polythene-mithril-icon', 'polythene-mithril-raised-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-fab'],global['polythene-mithril-icon'],global['polythene-mithril-raised-button']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreFab,polytheneMithrilIcon,polytheneMithrilRaisedButton) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var FAB = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreFab.coreFAB, {
+  createProps: function createProps(vnode, args) {
+    return polytheneCoreFab.coreFAB.createProps(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon }));
+  },
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreFab.coreFAB.createContent(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon }));
+  },
+  component: polytheneMithrilRaisedButton.RaisedButton
+}));
+
+FAB.displayName = "FAB";
+
+exports.FAB = FAB;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-fab.js.map

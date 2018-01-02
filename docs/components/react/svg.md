@@ -2,12 +2,25 @@
 
 # SVG component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [With source files](#with-source-files)
+  - [Usage with Icon](#usage-with-icon)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
-[SVG options](SVG.md)
+[SVG options](../svg.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -42,6 +55,7 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 h(SVG, { content: h.trust(starsSVG) })
 ~~~
 
+<a name="with-source-files"></a>
 ### With source files
 
 ~~~jsx
@@ -54,6 +68,7 @@ or with hyperscript:
 h(SVG, { src: "app/assets/stars.svg" })
 ~~~
 
+<a name="usage-with-icon"></a>
 ### Usage with Icon
 
 SVG options can be passed to [Icon](../icon.md):
@@ -79,8 +94,10 @@ h(Icon, { svg: { content: h.trust(starsSVG) }) }
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the SVG appearance, either with a theme or with CSS.
@@ -124,6 +141,7 @@ Some style attributes can be set using option `style`. For example:
 <SVG style={{ color: "#ef6c00" }}>{starsSVG}</SVG>
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

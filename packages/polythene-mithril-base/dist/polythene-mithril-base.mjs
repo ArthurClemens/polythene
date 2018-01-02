@@ -248,6 +248,8 @@ var StateComponent = function StateComponent(_ref) {
       onMount = _ref$onMount === undefined ? function () {} : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
       onUnMount = _ref$onUnMount === undefined ? function () {} : _ref$onUnMount,
+      _ref$onUpdate = _ref.onUpdate,
+      onUpdate = _ref$onUpdate === undefined ? function () {} : _ref$onUpdate,
       _ref$view = _ref.view,
       view = _ref$view === undefined ? null : _ref$view;
 
@@ -255,7 +257,7 @@ var StateComponent = function StateComponent(_ref) {
   var oninit = function oninit(vnode) {
     var protoState = _extends({}, vnode);
     var initialState = getInitialState(protoState, stream);
-    vnode.state = initialState;
+    _extends(vnode.state, initialState);
     vnode._mounted = false;
 
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
@@ -280,7 +282,8 @@ var StateComponent = function StateComponent(_ref) {
     },
     oninit: oninit,
     oncreate: oncreate,
-    onremove: onUnMount
+    onremove: onUnMount,
+    onupdate: onUpdate
   };
 };
 

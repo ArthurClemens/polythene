@@ -1,5 +1,4 @@
 import m from "mithril";
-import { addFastClick } from "polythene-fastclick";
 import { addLayoutStyles, addTypography } from "polythene-css";
 import { rules as css } from "./styles";
 import page from "./page";
@@ -8,7 +7,6 @@ import routes from "./routes";
 
 addTypography();
 addLayoutStyles();
-addFastClick();
 
 const TITLE = "Polythene Components for Mithril";
 
@@ -44,11 +42,24 @@ const index = {
     ]
 };
 
+let scrollTop = document.scrollingElement.scrollTop;
 m.route.prefix("#");
 const mountNode = document.querySelector("#app");
 const routeData = {
-  "/": index
+  "/": {
+    onmatch: () => {
+      document.scrollingElement.scrollTop = scrollTop;
+      document.title = "Polythene Components for Mithril";
+      return index;
+    }
+  }
 };
-routes.forEach(route => routeData[route.path] = page(route.name, route.tests, "/"));
+routes.forEach(route => routeData[route.path] = {
+  onmatch: () => {
+    scrollTop = document.scrollingElement.scrollTop;
+    document.title = `Polythene: ${route.name}`;
+    return page(route.name, route.tests, "/");
+  }
+});
 m.route(mountNode, "/", routeData);
 

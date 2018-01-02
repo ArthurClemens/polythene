@@ -359,6 +359,21 @@ exports[`test Option: highSubtitle and front 1`] = `
 "
 `;
 
+exports[`test Option: highlight (themed color) 1`] = `
+"<div class=
+\"pe-list-tile pe-list-tile--highlight tests-list-tile-themed-highlight-list-tile\"
+tabindex=\"0\">
+  <div class=\"pe-list-tile__primary\" style=\"\">
+    <div class=\"pe-list-tile__content\">
+      <div class=\"pe-list-tile__title\">
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;
+
 exports[`test Option: hoverable 1`] = `
 "<div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=\"0\">
   <div class=\"pe-list-tile__primary\" style=\"\">
@@ -602,7 +617,8 @@ exports[`test Option: title 1`] = `
   <div class=\"pe-list-tile__primary\" style=\"\">
     <div class=\"pe-list-tile__content\">
       <div class=\"pe-list-tile__title\">
-        Ancillary Justice
+        ListTile with a very very very very very very very very
+        very long title
       </div>
     </div>
   </div>

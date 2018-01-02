@@ -2,12 +2,27 @@
 
 # Button component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Links](#links)
+  - [Events](#events)
+  - [Variations](#variations)
+  - [A row of buttons](#a-row-of-buttons)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Button options](../button.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -33,11 +48,13 @@ h(Button, {
 })
 ~~~
 
+<a name="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
+<a name="events"></a>
 ### Events
 
 Add an onClick event:
@@ -62,6 +79,7 @@ h(Button, {
 })
 ~~~
 
+<a name="variations"></a>
 ### Variations
 
 * The hover effect can be hidden with `wash: false`.
@@ -69,19 +87,16 @@ h(Button, {
 * Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead.
 
 
-### Mobile and tap delay
+<a name="a-row-of-buttons"></a>
+### A row of buttons
 
-To remove the tap delay on mobile devices it is advisable to use a library like [Fastclick](https://github.com/ftlabs/fastclick). But because Fastclick has an unresolved issue with tap events while scrolling on iOS, it is better to use the convenience wrapper provided in "polythene-utilities". This temporarily removes the Fastclick event when an element is being scrolled.
-
-~~~javascript
-import { addFastClick } from "polythene-fastclick"
-
-addFastClick()
-~~~
+When placed inside an element with classname `pe-button-row`, buttons will get a side margin to set them apart. The row element itself will have an negative side margin so that the first button still lines up properly.
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Button appearance, either with a theme or with CSS.
@@ -130,6 +145,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

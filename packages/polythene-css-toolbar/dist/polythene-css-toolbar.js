@@ -1,2 +1,114 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-core-css"),require("polythene-core-toolbar"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core-css","polythene-core-toolbar","polythene-theme"],t):t(e.polythene={},e["polythene-core-css"],e["polythene-core-toolbar"],e["polythene-theme"])}(this,function(e,t,n,r){"use strict";function o(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var l={component:"pe-toolbar",compact:"pe-toolbar--compact",title:"pe-toolbar__title",centeredTitle:"pe-toolbar__title--center",indentedTitle:"pe-toolbar__title--indent"},a=function(e,n){return[o({},e,[t.flex.layout,t.flex.layoutHorizontal,t.flex.layoutCenter,{height:n.height+"px",fontSize:n.font_size+"px",lineHeight:n.line_height+"em",padding:"0 "+n.padding_side+"px",".pe-toolbar--compact":{height:n.height_compact+"px"}," > span, .pe-toolbar__title, .pe-toolbar__title--indent":[t.flex.layout,t.flex.flex(1),t.mixin.ellipsis(1,r.vars.line_height,"em"),{transformOrigin:"left 50%",lineHeight:r.vars.line_height+"em",wordBreak:"break-all"}]," > span, .pe-toolbar__title":{marginLeft:n.title_padding+"px"}," .pe-toolbar__title--indent":{marginLeft:n.indent-n.padding_side+"px"}," .pe-toolbar__title--center":{textAlign:"center",justifyContent:"center",marginLeft:n.title_padding+"px",marginRight:n.title_padding+"px"}," .pe-fit":[t.mixin.fit(),{margin:0}]}])]},p=function(e,t,n,r){return[i({},e.map(function(e){return e+t}).join(","),{color:n["color_"+r+"_text"],backgroundColor:n["color_"+r+"_background"]})]},c=function(e,t){return[p([".pe-dark-tone",".pe-dark-tone "],e,t,"dark"),p(["",".pe-light-tone",".pe-light-tone "],e,t,"light")]},f=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},u=[a,c],d="."+l.component,s=function(e,r){return t.styler.generateStyles([e,d],f({},n.vars,r),u)},h=function(e,r){return e?t.styler.createStyleSheets([e,d],f({},n.vars,r),u):t.styler.createStyleSheets([d],n.vars,u)};t.styler.generateStyles([d],n.vars,u),e.addStyle=s,e.getStyle=h,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-toolbar'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-toolbar', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-toolbar'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreToolbar,polytheneTheme) { 'use strict';
+
+var classes = {
+
+  // Toolbar
+
+  component: "pe-toolbar",
+
+  // states
+  compact: "pe-toolbar--compact",
+
+  // Toolbar title
+
+  // elements
+  title: "pe-toolbar__title",
+
+  // states
+  centeredTitle: "pe-toolbar__title--center",
+  indentedTitle: "pe-toolbar__title--indent"
+};
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var compactStyle = function compactStyle(componentVars) {
+  return {
+    height: componentVars.height_compact + "px"
+  };
+};
+
+var layout = (function (selector, componentVars) {
+  var _ref3;
+
+  return [(_ref3 = {}, _defineProperty(_ref3, selector, [polytheneCoreCss.flex.layout, polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
+    height: componentVars.height + "px",
+    fontSize: componentVars.font_size + "px",
+    lineHeight: componentVars.line_height + "em",
+    padding: "0 " + componentVars.padding_side + "px",
+
+    ".pe-toolbar--compact": compactStyle(componentVars),
+
+    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+      width: "100%",
+      display: "block",
+      wordBreak: "break-all",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      marginLeft: componentVars.title_padding + "px"
+    },
+
+    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
+      marginLeft: componentVars.title_after_icon_padding + "px"
+    },
+
+    " .pe-toolbar__title--indent": {
+      marginLeft: componentVars.indent - componentVars.padding_side + "px"
+    },
+    " .pe-toolbar__title--center": {
+      textAlign: "center",
+      justifyContent: "center",
+      marginLeft: componentVars.title_padding + "px",
+      marginRight: componentVars.title_padding + "px"
+    },
+    " .pe-fit": [polytheneCoreCss.mixin.fit(), {
+      margin: 0
+    }]
+  }]), _defineProperty(_ref3, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+    height: componentVars.height_large + "px",
+    padding: "0 " + componentVars.padding_side_large + "px"
+  })), _ref3)];
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var style = function style(scopes, selector, componentVars, tint) {
+  return [_defineProperty$1({}, scopes.map(function (s) {
+    return s + selector;
+  }).join(","), {
+    color: componentVars["color_" + tint + "_text"],
+    backgroundColor: componentVars["color_" + tint + "_background"]
+  })];
+};
+
+var color = (function (selector, componentVars) {
+  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var fns = [layout, color];
+var selector = "." + classes.component;
+
+var addStyle = function addStyle(customSelector, customVars) {
+  return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreToolbar.vars, customVars), fns);
+};
+
+var getStyle = function getStyle(customSelector, customVars) {
+  return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreToolbar.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreToolbar.vars, fns);
+};
+
+polytheneCoreCss.styler.generateStyles([selector], polytheneCoreToolbar.vars, fns);
+
+exports.addStyle = addStyle;
+exports.getStyle = getStyle;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-css-toolbar.js.map

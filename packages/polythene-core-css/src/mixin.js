@@ -40,7 +40,8 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
       overflow: "initial",
       display: "block",
       height: "auto",
-      maxHeight: "none"
+      maxHeight: "none",
+      whiteSpace: "normal",
     };
   }
   return Object.assign(

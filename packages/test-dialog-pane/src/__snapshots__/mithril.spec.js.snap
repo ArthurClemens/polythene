@@ -13,8 +13,8 @@ name=\"demo\" type=\"post\" enctype=\"multipart/form-data\" id=\"demo\">
       <input type=\"file\" id=\"file\" name=\"file\">
     </div>
     <div class=
-    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
-      <div class=\"pe-dialog-pane__actions\">
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row\">
+    <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
           <div class=\"pe-ripple\"></div>
@@ -820,8 +820,8 @@ exports[`test Option: title and body (long text) - spec 2`] = `
       Hello
     </div>
     <div class=
-    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
-      <div class=\"pe-dialog-pane__actions\">
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row\">
+    <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
           <div class=\"pe-ripple\"></div>
@@ -1010,8 +1010,8 @@ exports[`test Option: title, body, footer 1`] = `
       </p>
     </div>
     <div class=
-    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons\">
-      <div class=\"pe-dialog-pane__actions\">
+    \"pe-dialog-pane__footer pe-dialog-pane__footer--buttons pe-button-row\">
+    <div class=\"pe-dialog-pane__actions\">
         <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
           <div class=\"pe-ripple\"></div>

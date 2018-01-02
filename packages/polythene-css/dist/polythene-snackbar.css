@@ -3,7 +3,6 @@
   justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -13,7 +12,9 @@
   bottom: 0;
   left: 0;
   z-index: 4000;
-  pointer-events: none
+  pointer-events: none;
+  justify-content: flex-start;
+  width: 100%
 }
 
 .pe-notification--container .pe-snackbar__holder {
@@ -21,18 +22,21 @@
 }
 
 .pe-notification.pe-snackbar {
-  min-height: 0
+  width: 100%
 }
 
-@media (min-width:480px) {
-  .pe-notification.pe-snackbar {
-    width: 100%;
-    min-width: 288px;
-    max-width: 568px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+.pe-notification.pe-snackbar .pe-notification__content {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0
+}
+
+@media (min-width:600px) {
+  .pe-notification.pe-snackbar .pe-notification__content {
     border-top-left-radius: 2px;
-    border-top-right-radius: 2px
+    border-top-right-radius: 2px;
+    min-width: 288px;
+    max-width: 568px
   }
 
   .pe-notification.pe-snackbar.pe-notification--horizontal .pe-notification__title {
@@ -40,12 +44,12 @@
   }
 }
 
-.pe-dark-tone.pe-notification.pe-snackbar,.pe-dark-tone .pe-notification.pe-snackbar {
+.pe-dark-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-dark-tone .pe-notification.pe-snackbar .pe-notification__content {
   color: hsla(0,0%,100%,.87);
   background: #222
 }
 
-.pe-light-tone.pe-notification.pe-snackbar,.pe-light-tone .pe-notification.pe-snackbar,.pe-notification.pe-snackbar {
+.pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,.pe-notification.pe-snackbar .pe-notification__content {
   color: #000;
   background: #fff
 }

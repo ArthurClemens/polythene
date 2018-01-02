@@ -167,17 +167,17 @@ exports[`test Dark tone class + light tone class 1`] = `
 `;
 
 exports[`test No options 1`] = `
-"<div class="pe-toolbar"></div>
+"<div class=\"pe-toolbar\"></div>
 "
 `;
 
 exports[`test Option: class 1`] = `
-"<div class="pe-toolbar class-x"></div>
+"<div class=\"pe-toolbar class-x\"></div>
 "
 `;
 
 exports[`test Option: className 1`] = `
-"<div class="pe-toolbar className-x"></div>
+"<div class=\"pe-toolbar className-x\"></div>
 "
 `;
 
@@ -350,12 +350,12 @@ exports[`test Option: content 1`] = `
 `;
 
 exports[`test Option: element 1`] = `
-"<a class="pe-toolbar"></a>
+"<a class=\"pe-toolbar\"></a>
 "
 `;
 
 exports[`test Option: id 1`] = `
-"<div id="id-x" class="pe-toolbar"></div>
+"<div id=\"id-x\" class=\"pe-toolbar\"></div>
 "
 `;
 
@@ -608,8 +608,9 @@ exports[`test Title as span 1`] = `
         </div>
       </div>
     </div>
-  </div></a><span>Toolbar with a very very very long
-  title</span><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
+  </div></a><span>Toolbar with a very very very very very very very
+  very very long title</span><a class=\"pe-button pe-icon-button\"
+  tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
     <div class=\"pe-button__focus\"></div>
@@ -670,7 +671,8 @@ exports[`test ToolbarTitle 1`] = `
     </div>
   </div></a>
   <div class=\"pe-toolbar__title\">
-    Toolbar with a very very very long title
+    Toolbar with a very very very very very very very very very
+    long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
@@ -693,7 +695,8 @@ exports[`test ToolbarTitle 1`] = `
 exports[`test ToolbarTitle, at start 1`] = `
 "<div class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title\">
-    Toolbar with a very very very long title
+    Toolbar with a very very very very very very very very very
+    long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
@@ -716,7 +719,7 @@ exports[`test ToolbarTitle, at start 1`] = `
 exports[`test ToolbarTitle, centered 1`] = `
 "<div class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title pe-toolbar__title--center\">
-    Toolbar with a very very very long title
+    Toolbar title
   </div>
 </div>
 "
@@ -741,7 +744,7 @@ exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
     </div>
   </div></a>
   <div class=\"pe-toolbar__title pe-toolbar__title--center\">
-    Toolbar with a very very very long title
+    Toolbar title
   </div><a class=\"pe-button pe-icon-button pe-button--inactive\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>
@@ -757,7 +760,8 @@ exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
 exports[`test ToolbarTitle, indented (without left icon) 1`] = `
 "<div class=\"pe-toolbar\">
   <div class=\"pe-toolbar__title pe-toolbar__title--indent\">
-    Toolbar with a very very very long title
+    Toolbar with a very very very very very very very very very
+    long title
   </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-ripple\"></div>

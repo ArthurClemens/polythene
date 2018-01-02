@@ -1,2 +1,16 @@
-!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-dialog-pane")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-dialog-pane"],o):o(e.polythene={},e["polythene-mithril-base"],e["polythene-core-dialog-pane"])}(this,function(e,o,t){"use strict";var n=o.StateComponent(t.coreDialogPane);n.displayName="DialogPane",e.DialogPane=n,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-dialog-pane')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-dialog-pane'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-dialog-pane']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreDialogPane) { 'use strict';
+
+var DialogPane = polytheneMithrilBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
+
+DialogPane.displayName = "DialogPane";
+
+exports.DialogPane = DialogPane;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-mithril-dialog-pane.js.map

@@ -71,13 +71,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       name: "Option: size",
       component: {
         view: () =>
-          h("div",
-            {
-              style: {
-                display: "flex",
-                alignItems: "center"
-              }
-            },
+          h(".multiple",
             sizes(sizeNames, {
               label: "Label"
             })
@@ -106,7 +100,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       name: "Option: icon",
       component: {
         view: () =>
-          h("div", sizes(sizeNames, {
+          h(".multiple", sizes(sizeNames, {
             label: "Label",
             className: "tests-switch-themed-icon",
             icon: h(Icon, {
@@ -120,7 +114,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       interactive: true,
       component: {
         view: () =>
-          h("div", [
+          h(".multiple", [
             h(Switch, {
               disabled: true,
               label: "Off"
@@ -138,7 +132,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       interactive: true,
       component: {
         view: () => 
-          h("div", [
+          h(".multiple", [
             h(Switch, {
               selectable: () => false,
               label: "Never"
@@ -214,7 +208,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       className: "pe-dark-tone",
       component: {
         view: () =>
-          h("div", [
+          h(".multiple", [
             h(Switch, {
               disabled: true,
               label: "Off"

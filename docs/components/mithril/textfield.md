@@ -2,12 +2,29 @@
 
 # Text Field component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Help texts](#help-texts)
+  - [Front-end validation](#front-end-validation)
+  - [Custom validation](#custom-validation)
+  - [Character counter](#character-counter)
+  - [Reading and setting the value](#reading-and-setting-the-value)
+  - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Text Field options](../textfield.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/m396q0hh/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -65,6 +82,7 @@ m(TextField, {
 })
 ~~~
 
+<a name="help-texts"></a>
 ### Help texts
 
 Pass `help` to create a help text below the field:
@@ -89,6 +107,7 @@ m(TextField, {
 A help text also function as error message when the field input is invalid.
 
 
+<a name="front-end-validation"></a>
 ### Front-end validation
 
 Passing `required` adds a mark `*` to the label, and uses HTML5 field validation to test for a non-empty value:
@@ -119,11 +138,20 @@ By default the component will validate only when a user action has been done (tr
 Variations:
 
 * To do validate immediately, use option `validateAtStart`
+* Use option `valid` to bypass defaults - see "Custom validation" below
 * To validate on key press before "onblur", use option `validateOnInput`
 * To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
 
+<a name="custom-validation"></a>
 ### Custom validation
+
+There are 2 ways to validate a field:
+
+1. By checking the field value with callback function `validate` - use this when you want to simply check the validity on input (but note that it does not get triggered on form submit)
+1. By setting the "valid" state directly - use this when you need to validate the entire form, so you keep the value in local state
+
+#### Checking the field value with callback function "validate"
 
 Option `validate` is a function that accepts the current field value and is called on every `oninput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
 
@@ -140,6 +168,25 @@ m(TextField, {
 })
 ~~~
 
+#### Setting the "valid" state directly
+
+This assumes that you store the form state (for example in a stateful component) so you are able to check the valid state of each field.
+
+Example using [ludbek/powerform](https://github.com/ludbek/powerform):
+
+~~~javascript
+const errors = state.form.error();
+const submitFailed = state.submitFailed;
+// ...
+
+m(TextField, {
+  name: "fullName",
+  valid: !(submitFailed && errors.fullName !== undefined),
+  error: errors.fullName,
+})
+~~~
+
+<a name="character-counter"></a>
 ### Character counter
 
 Adding `counter` with a value adds a live counter below the field:
@@ -164,6 +211,7 @@ m(TextField, {
 })
 ~~~
 
+<a name="reading-and-setting-the-value"></a>
 ### Reading and setting the value
 
 See also [Handling state](../../handling-state.md).
@@ -176,7 +224,7 @@ m(TextField, {
 })
 ~~~
 
-To programmatically set the input value, pass `value`:
+To use the received input value, pass `value`:
 
 ~~~javascript
 m(TextField, {
@@ -196,27 +244,35 @@ m(TextField, {
 })
 ~~~
 
-### Programmatically giving focus
+<a name="programmatically-setting-focus-and-value"></a>
+### Programmatically setting focus and value
 
-Reading and setting the focus state is similar to handling the input value:
+The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
 
 ~~~javascript
 m(TextField, {
   label: "Your name",
-  onChange: newState => vnode.state.hasFocus = newState.focus,
-  focus: vnode.state.hasFocus
+  onChange: ({ setInputState }) => vnode.state.setInputState = setInputState
 }),
 m(Button, {
   label: "Set focus",
   events: {
-    onclick: () => vnode.state.hasFocus = true
+    onclick: () => vnode.state.setInputState({ focus: true })
+  }
+}),
+m(Button, {
+  label: "Clear",
+  events: {
+    onclick: () => vnode.state.setInputState({ focus: true, value: "" })
   }
 })
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the TextField appearance, either with a theme or with CSS.
@@ -262,6 +318,7 @@ m(TextField, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

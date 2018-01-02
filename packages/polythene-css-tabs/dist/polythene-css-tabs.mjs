@@ -5,6 +5,7 @@ import { vars as vars$1 } from 'polythene-theme';
 var buttonClasses = {
   base: "pe-button",
   component: "pe-button pe-text-button",
+  row: "pe-button-row",
 
   // elements
   content: "pe-button__content",
@@ -52,7 +53,7 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
+  return [_defineProperty({}, selector, _defineProperty({
     userSelect: "none",
     transform: "translate3d(0,0,0)",
     "-webkit-overflow-scrolling": "touch",
@@ -130,18 +131,12 @@ var layout = (function (selector, componentVars) {
       ".pe-tabs--start .pe-tabs__scroll-button-start": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0
       },
       ".pe-tabs--end .pe-tabs__scroll-button-end": {
         pointerEvents: "none",
         cursor: "default",
-
-        " .pe-button__content": {
-          opacity: 0
-        }
+        opacity: 0
       },
 
       " .pe-tabs__scroll-button-start": {
@@ -194,7 +189,8 @@ var layout = (function (selector, componentVars) {
         " .pe-button__label": [mixin.defaultTransition("opacity", componentVars.animation_duration), {
           margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
           padding: 0,
-          opacity: componentVars.label_opacity
+          opacity: componentVars.label_opacity,
+          width: "100%" // for IE 11
         }],
         " .pe-icon": {
           marginLeft: "auto",
@@ -265,12 +261,11 @@ var layout = (function (selector, componentVars) {
       top: "auto"
     }]
 
-    // ["@media (min-width: " + vars.breakpoint_small_tablet_portrait + "px)"]: {
-    //   ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
-    //     minWidth: componentVars.tab_min_width_tablet + "px"
-    //   }
-    // }
-  })];
+  }, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
+    ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+      minWidth: componentVars.tab_min_width_tablet + "px"
+    }
+  })))];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

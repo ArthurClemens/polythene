@@ -141,8 +141,7 @@ export const createContent = (vnode, { renderer: h, Shadow, DialogPane }) => {
       className: [
         classes.content,
         attrs.menu ? classes.menuContent : null
-      ].join(" "),
-      style: attrs.style
+      ].join(" ")
     },
     [
       attrs.fullScreen

@@ -31,7 +31,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
   const Focus = focus({ h, k, TextField, RaisedButton });
   const OnChange = onChange({ h, k, TextField, RaisedButton });
   const SetValue = setValue({ h, k, TextField, RaisedButton });
-
+  
   return [
     {
       name: "Option: defaultValue",
@@ -49,7 +49,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: autofocus",
+      name: "Option: autofocus (does not work on iOS)",
       component: {
         view: () => block([
           h(TextField, {
@@ -59,9 +59,10 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: type (password, number, email)",
+      name: "Option: type (password (not shown), number, email)",
       component: {
         view: () => block([
+          // Note that having a password field in a form will kick in form autocomplete
           h(TextField, {
             type: "password",
             defaultValue: "123456",
@@ -346,7 +347,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: min, max",
+      name: "Option: min, max, validateAtStart",
       interactive: true,
       component: {
         view: () => block([
@@ -356,13 +357,14 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             max: 8,
             defaultValue: 10,
             error: "Enter a value between 3 and 8",
-            required: true
+            required: true,
+            validateAtStart: true
           })
         ])
       }
     },
     {
-      name: "Option: type email, required",
+      name: "Option: type email, required, validateAtStart",
       interactive: true,
       component: {
         view: () => block([
@@ -371,7 +373,8 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
             type: "email",
             defaultValue: "a@",
             required: true,
-            error: "Enter a valid email address"
+            error: "Enter a valid email address",
+            validateAtStart: true
           })
         ])
       }
@@ -461,6 +464,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
     {
       name: "Set value",
       interactive: true,
+      excluded: true,
       component: {
         view: () => block(
           h(SetValue)
@@ -522,35 +526,35 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           })
       }
     },
-    {
-      name: "Autocomplete form",
-      component: {
-        view: () => 
-          h("form",
-            { [k["autocomplete"]]: "on" }, 
-            h("div",
-              {
-                label: "Customer information"
-              },
-              [
-                h(TextField, {
-                  type:               "email",
-                  label:              "Email",
-                  floatingLabel:      true,
-                }),
-                h(TextField, {
-                  label:               "First name",
-                  floatingLabel:      true,
-                }),
-                h(TextField, {
-                  label:               "Last name",
-                  floatingLabel:      true,
-                }),
-              ]
-            )
-          )
-      }
-    },
+    // {
+    //   name: "Autocomplete form",
+    //   component: {
+    //     view: () => 
+    //       h("form",
+    //         { [k["autocomplete"]]: "on" }, 
+    //         h("div",
+    //           {
+    //             label: "Customer information"
+    //           },
+    //           [
+    //             h(TextField, {
+    //               type:               "email",
+    //               label:              "Email",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "First name",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "Last name",
+    //               floatingLabel:      true,
+    //             }),
+    //           ]
+    //         )
+    //       )
+    //   }
+    // },
 
     /* Dark tone */
 

@@ -1,30 +1,37 @@
 import { SearchCSS } from "polythene-css";
+import results from "./components/results";
 
-export default ({ renderer: h, Search, SearchField, Shadow }) => {
+export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListTile }) => {
 
   SearchCSS.addStyle(".tests-search-themed-search", {
     color_dark_input_text: "#fff",
     color_dark_background: "#43a047"
   });
 
+  const Results = results({ h, k, List, ListTile, SearchField });
+
+  const blockAttrs = attrs => ({
+    style: Object.assign(
+      {},
+      {
+        minHeight: "130px",
+        overflow: "hidden" // hides top and side shadow with full width search field
+      },
+      attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
+      attrs.fullWidth
+        ? null
+        : { padding: "8px" }
+    )
+  });
+
   const Block = {
     view: ({ attrs }) =>
-      h("form",
-        {
-          style: Object.assign(
-            {},
-            {
-              minHeight: "130px",
-              overflow: "hidden" // hides top and side shadow with full width search field
-            },
-            attrs.dark ? { backgroundColor: "transparent" } : { backgroundColor: "#e4e4e4" },
-            attrs.fullWidth
-              ? null
-              : { padding: "8px" }
-          )
-        },
-        h(SearchField, attrs)
-      )
+      h("form", blockAttrs(attrs), h(SearchField, attrs))
+  };
+
+  const ResultsBlock = {
+    view: ({ attrs }) =>
+      h("form", blockAttrs(attrs), h(Results, attrs))
   };
 
   return [
@@ -71,6 +78,13 @@ export default ({ renderer: h, Search, SearchField, Shadow }) => {
             className: "tests-search-themed-search",
             tone: "dark"
           })
+      }
+    },
+    {
+      name: "With search results",
+      component: {
+        view: () =>
+          h(ResultsBlock, {})
       }
     },
 

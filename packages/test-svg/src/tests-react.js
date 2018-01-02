@@ -18,7 +18,7 @@ const reactTests = ({ SVG, renderer: h }) => {
         h("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "8px"
           },
           className: "pe-light-tone"
         }, h(SVG, { content: h.trust(iconStars) }))
@@ -30,7 +30,7 @@ const reactTests = ({ SVG, renderer: h }) => {
         h("div", {
           style: {
             background: "#fff",
-            padding: "10px"
+            padding: "8px"
           },
         }, h(SVG, {
           content: h.trust(iconStars),

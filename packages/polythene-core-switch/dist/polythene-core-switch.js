@@ -1,2 +1,143 @@
-!function(o,r){"object"==typeof exports&&"undefined"!=typeof module?r(exports,require("polythene-theme"),require("polythene-core-selection-control"),require("polythene-core-icon-button")):"function"==typeof define&&define.amd?define(["exports","polythene-theme","polythene-core-selection-control","polythene-core-icon-button"],r):r(o.polythene={},o["polythene-theme"],o["polythene-core-selection-control"],o["polythene-core-icon-button"])}(this,function(o,r,t,e){"use strict";var n={component:"pe-switch-control",knob:"pe-switch-control__knob",thumb:"pe-switch-control__thumb",track:"pe-switch-control__track"},a=Object.assign||function(o){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var e in t)Object.prototype.hasOwnProperty.call(t,e)&&(o[e]=t[e])}return o},c=function(o){var r=o.attrs;return a({},r,{selectable:r.selectable||function(){return!0},instanceClass:n.component,type:"checkbox"})},_=Object.freeze({createProps:c}),i=Object.assign||function(o){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var e in t)Object.prototype.hasOwnProperty.call(t,e)&&(o[e]=t[e])}return o},l=function(o){return o.attrs.element||"div"},d=function(o,r){var t=r.renderer,e=r.Shadow,a=r.IconButton,c=o.attrs,_=void 0!==c.zOff?c.zOff:1,l=void 0!==c.zOn?c.zOn:2,d=c.checked?l:_,s=!c.disabled&&(void 0===c.raised||c.raised);return[t("div",{className:n.track,key:"track"}),t(a,i({},{className:n.thumb,key:"button",content:t("div",{className:n.knob},[c.icon?c.icon:null,s?t(e,{z:d,animated:!0}):null]),style:c.style,disabled:c.disabled,events:c.events,ink:c.ink||!1,inactive:c.inactive},c.iconButton))]},s=Object.freeze({getElement:l,createContent:d}),h=Object.assign||function(o){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var e in t)Object.prototype.hasOwnProperty.call(t,e)&&(o[e]=t[e])}return o},u=function(o){return"rgba("+o+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},f=(r.vars.grid_unit_icon_button-r.vars.unit_icon_size)/2,b=h({},t.vars,{track_height:14,track_length:36,thumb_size:20,padding:r.vars.grid_unit_component,icon_button_padding:e.vars.padding,hit_area_padding:f,animation_duration:r.vars.animation_duration,color_light_thumb_on:u(r.vars.color_primary),color_light_thumb_off:"#f1f1f1",color_light_thumb_disabled:"#bdbdbd",color_light_wash_on:u(r.vars.color_primary),color_light_wash_off:e.vars.color_light_wash,color_light_track_on:u(r.vars.color_primary_faded),color_light_track_on_opacity:.55,color_light_track_off:u(r.vars.color_light_foreground,r.vars.blend_light_text_regular),color_light_track_off_opacity:.55,color_light_track_disabled:u(r.vars.color_light_foreground,r.vars.blend_light_background_disabled),color_light_track_disabled_opacity:1,color_dark_thumb_on:u(r.vars.color_primary),color_dark_thumb_off:"#bdbdbd",color_dark_thumb_disabled:"#555",color_dark_wash_on:u(r.vars.color_primary),color_dark_wash_off:e.vars.color_dark_wash,color_dark_track_on:u(r.vars.color_primary_faded,r.vars.blend_dark_text_tertiary),color_dark_track_on_opacity:9,color_dark_track_off:"#717171",color_dark_track_off_opacity:.55,color_dark_track_disabled:"#717171",color_dark_track_disabled_opacity:.3});o.coreSwitch=_,o.viewControl=s,o.vars=b,Object.defineProperty(o,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-selection-control'), require('polythene-core-icon-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-selection-control', 'polythene-core-icon-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-selection-control'],global['polythene-core-icon-button']));
+}(this, (function (exports,polytheneTheme,polytheneCoreSelectionControl,polytheneCoreIconButton) { 'use strict';
+
+var classes = {
+  component: "pe-switch-control",
+
+  // elements
+  knob: "pe-switch-control__knob",
+  thumb: "pe-switch-control__thumb",
+  track: "pe-switch-control__track"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Don't export 'element': it will be the wrapped selection control component (set in polythene-xxx-checkbox)
+
+// Props to be passed to a selection control
+
+var createProps = function createProps(vnode) {
+  var attrs = vnode.attrs;
+  return _extends({}, attrs, {
+    selectable: attrs.selectable || function () {
+      return true;
+    }, // default: always selectable, regardless of the checked state
+    instanceClass: classes.component,
+    type: "checkbox"
+  });
+};
+
+var _switch = Object.freeze({
+	createProps: createProps
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+
+var createContent = function createContent(vnode, _ref) {
+  var h = _ref.renderer,
+      Shadow = _ref.Shadow,
+      IconButton = _ref.IconButton;
+
+  var attrs = vnode.attrs;
+
+  var zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
+  var zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
+  var z = attrs.checked ? zOn : zOff;
+  var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
+
+  return [h("div", {
+    className: classes.track,
+    key: "track"
+  }), h(IconButton, _extends$1({}, {
+    className: classes.thumb,
+    key: "button",
+    content: h("div", { className: classes.knob }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
+      z: z,
+      animated: true
+    }) : null]),
+    style: attrs.style,
+    disabled: attrs.disabled,
+    events: attrs.events,
+    ink: attrs.ink || false,
+    inactive: attrs.inactive
+  }, attrs.iconButton))];
+};
+
+var viewControl = Object.freeze({
+	getElement: getElement,
+	createContent: createContent
+});
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var hit_area_padding = (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2; // 12
+
+var vars$3 = _extends$2({}, polytheneCoreSelectionControl.vars, {
+  track_height: 14,
+  track_length: 36,
+  thumb_size: 20,
+  padding: polytheneTheme.vars.grid_unit_component,
+  icon_button_padding: polytheneCoreIconButton.vars.padding,
+  hit_area_padding: hit_area_padding,
+
+  animation_duration: polytheneTheme.vars.animation_duration,
+
+  color_light_thumb_on: rgba(polytheneTheme.vars.color_primary),
+  color_light_thumb_off: "#f1f1f1",
+  color_light_thumb_disabled: "#bdbdbd",
+  color_light_wash_on: rgba(polytheneTheme.vars.color_primary),
+  color_light_wash_off: polytheneCoreIconButton.vars.color_light_wash,
+
+  color_light_track_on: rgba(polytheneTheme.vars.color_primary_faded),
+  color_light_track_on_opacity: .55,
+  color_light_track_off: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+  color_light_track_off_opacity: .55,
+  color_light_track_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+  color_light_track_disabled_opacity: 1,
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_light_icon_on:                   "currentcolor",
+  // color_light_icon_off:                  "currentcolor",
+
+  // color_light_focus_on and so on taken from selectionControlVars
+
+  color_dark_thumb_on: rgba(polytheneTheme.vars.color_primary),
+  color_dark_thumb_off: "#bdbdbd",
+  color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: rgba(polytheneTheme.vars.color_primary),
+  color_dark_wash_off: polytheneCoreIconButton.vars.color_dark_wash,
+
+  color_dark_track_on: rgba(polytheneTheme.vars.color_primary_faded, polytheneTheme.vars.blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on_opacity: 9,
+  color_dark_track_off: "#717171",
+  color_dark_track_off_opacity: .55,
+  color_dark_track_disabled: "#717171",
+  color_dark_track_disabled_opacity: .3
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_dark_icon_on:                    "currentcolor"
+  // color_dark_icon_off:                   "currentcolor"
+
+  // color_dark_focus_on and so on taken from selectionControlVars
+});
+
+exports.coreSwitch = _switch;
+exports.viewControl = viewControl;
+exports.vars = vars$3;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-switch.js.map

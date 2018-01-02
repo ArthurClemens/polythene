@@ -2,12 +2,25 @@
 
 # Slider component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Reading and setting the slider value](#reading-and-setting-the-slider-value)
+- [Appearance](#appearance)
+  - [Icons](#icons)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Slider options](../slider.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/nL12sq4x/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -45,6 +58,7 @@ To add tick marks and pins:
 }
 ~~~
 
+<a name="reading-and-setting-the-slider-value"></a>
 ### Reading and setting the slider value
 
 See also [Handling state](../../handling-state.md).
@@ -67,8 +81,10 @@ m(Slider, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="icons"></a>
 ### Icons
 
 To place an icon next to the Slider, use the option `before`:
@@ -85,6 +101,7 @@ m(Slider, {
 })
 ~~~
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Slider appearance, either with a theme or with CSS.
@@ -130,6 +147,7 @@ m(Slider, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

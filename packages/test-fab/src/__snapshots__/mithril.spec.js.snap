@@ -25,7 +25,8 @@ exports[`test Child node 1`] = `
 `;
 
 exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row\">
   <a class=\"pe-fab\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
@@ -75,8 +76,8 @@ exports[`test Dark tone class + light tone 1`] = `
 `;
 
 exports[`test Dark tone class + light tone class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px;\" class=
-\"pe-light-tone\">
+"<div style=\"background: rgb(255, 255, 255); padding: 8px 4px;\"
+class=\"pe-button-row pe-light-tone\">
   <a class=\"pe-fab\" tabindex=\"0\">
   <div class=\"pe-button__content\">
     <div class=\"pe-shadow pe-shadow--animated\">

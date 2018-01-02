@@ -14,7 +14,7 @@ const mithrilTests = ({ Icon, renderer: h }) => {
       className: "pe-dark-tone",
       component: {
         view: () => h(".pe-light-tone", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [
           h(Icon, {
             svg: { content: trustedIconStars }
@@ -31,7 +31,7 @@ const mithrilTests = ({ Icon, renderer: h }) => {
       className: "test-dark-tone",
       component: {
         view: () => h("div", {
-          style: { background: "#fff" }
+          style: { background: "#fff", padding: "8px" }
         }, [
           h(Icon, {
             svg: { content: trustedIconStars },

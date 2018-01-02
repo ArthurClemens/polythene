@@ -3,10 +3,10 @@ import stream from "mithril/stream";
 export default ({ h, k, Shadow }) => ({
   oninit: vnode => {
     const z = stream(1);
-    vnode.state = {
+    Object.assign(vnode.state, {
       z,
       redrawOnUpdate: stream.merge([z])
-    };
+    });
   },
   view: vnode => {
     const state = vnode.state;

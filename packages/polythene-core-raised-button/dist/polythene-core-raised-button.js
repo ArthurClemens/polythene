@@ -1,2 +1,149 @@
-!function(r,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("polythene-core"),require("polythene-theme")):"function"==typeof define&&define.amd?define(["exports","polythene-core","polythene-theme"],e):e(r.polythene={},r["polythene-core"],r["polythene-theme"])}(this,function(r,e,t){"use strict";var o={component:"pe-button pe-text-button pe-raised-button"},n=Object.assign||function(r){for(var e=1;e<arguments.length;e++){var t=arguments[e];for(var o in t)Object.prototype.hasOwnProperty.call(t,o)&&(r[o]=t[o])}return r},a=void 0,d=function(){},i=[];e.subscribe(e.pointerEndEvent,function(){return d()});var _=function(r,e){var t=e.state.zBase,o=e.attrs.increase||1,n=e.state.z(),a="down"===r&&t<5?Math.min(t+o,5):"up"===r?Math.max(n-o,t):n;a!==n&&e.state.z(a)},c=function(r,e){"down"===r&&i.push(n({},e)),!1!==e.attrs.animateOnTap&&_(r,e)},l=function(r){e.isServer||(a=function(){return c("down",r)},d=function(){i.map(function(r){return c("up",r)}),i=[]},r.dom.addEventListener(e.pointerStartMoveEvent,a))},s=function(r){return r.dom.removeEventListener(e.pointerStartMoveEvent,a)},u=function(r,e){var t=r.attrs,o=void 0!==t.z?t.z:1,n=e(o);return{zBase:o,z:n,tapEventsInited:e(!1),redrawOnUpdate:e.merge([n])}},v=function(r){var e=r.state;r.dom&&!e.tapEventsInited()&&(l(r),e.tapEventsInited(!0))},p=function(r){r.state.tapEventsInited()&&s(r)},g=function(r,e){var t=e.renderer,a=e.Shadow,d=r.attrs,i=r.state,_=d.children||r.children||[];return n({},{parentClassName:[d.parentClassName||o.component].join(" "),animateOnTap:!1,shadowComponent:t(a,{z:d.disabled?0:i.z,animated:!0}),children:_},d)},f=function(){return null},h=Object.freeze({getInitialState:u,onMount:v,onUnMount:p,createProps:g,createContent:f}),b=function(r){return"rgba("+r+", "+(arguments.length>1&&void 0!==arguments[1]?arguments[1]:1)+")"},k={color_light_background:"#fff",color_light_text:b(t.vars.color_light_foreground,t.vars.blend_light_text_primary),color_light_hover_background:"transparent",color_light_focus_background:b(t.vars.color_light_foreground,t.vars.blend_light_background_hover),color_light_active_background:b(t.vars.color_light_foreground,t.vars.blend_light_background_hover),color_light_disabled_background:b(t.vars.color_light_foreground,t.vars.blend_light_background_disabled),color_light_disabled_text:b(t.vars.color_light_foreground,t.vars.blend_light_text_disabled),color_dark_background:b(t.vars.color_primary),color_dark_text:b(t.vars.color_dark_foreground,t.vars.blend_dark_text_primary),color_dark_hover_background:t.vars.color_primary_active,color_dark_focus_background:t.vars.color_primary_active,color_dark_active_background:t.vars.color_primary_dark,color_dark_disabled_background:b(t.vars.color_dark_foreground,t.vars.blend_dark_background_disabled),color_dark_disabled_text:b(t.vars.color_dark_foreground,t.vars.blend_dark_text_disabled)};r.coreRaisedButton=h,r.vars=k,Object.defineProperty(r,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
+	(factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
+}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+
+var classes = {
+  component: "pe-button pe-text-button pe-raised-button"
+};
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+// Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
+
+var MAX_Z = 5;
+
+var tapStart = void 0;
+var tapEndAll = function tapEndAll() {};
+var downButtons = [];
+
+polytheneCore.subscribe(polytheneCore.pointerEndEvent, function () {
+  return tapEndAll();
+});
+
+var animateZ = function animateZ(which, vnode) {
+  var zBase = vnode.state.zBase;
+  var increase = vnode.attrs.increase || 1;
+  var z = vnode.state.z();
+  var newZ = which === "down" && zBase < MAX_Z ? Math.min(zBase + increase, MAX_Z) : which === "up" ? Math.max(z - increase, zBase) : z;
+  if (newZ !== z) {
+    vnode.state.z(newZ);
+  }
+};
+
+var tapHandler = function tapHandler(which, vnode) {
+  if (which === "down") {
+    downButtons.push(_extends({}, vnode));
+  }
+  var animateOnTap = vnode.attrs.animateOnTap !== false ? true : false;
+  if (animateOnTap) {
+    animateZ(which, vnode);
+  }
+};
+
+var initTapEvents = function initTapEvents(vnode) {
+  if (polytheneCore.isServer) return;
+  tapStart = function tapStart() {
+    return tapHandler("down", vnode);
+  };
+  tapEndAll = function tapEndAll() {
+    downButtons.map(function (buttonVnode) {
+      return tapHandler("up", buttonVnode);
+    });
+    downButtons = [];
+  };
+  vnode.dom.addEventListener(polytheneCore.pointerStartMoveEvent, tapStart);
+};
+
+var clearTapEvents = function clearTapEvents(vnode) {
+  return vnode.dom.removeEventListener(polytheneCore.pointerStartMoveEvent, tapStart);
+};
+
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var zBase = attrs.z !== undefined ? attrs.z : 1;
+  var z = createStream(zBase);
+  var tapEventsInited = createStream(false);
+  return {
+    zBase: zBase,
+    z: z,
+    tapEventsInited: tapEventsInited,
+    redrawOnUpdate: createStream.merge([z])
+  };
+};
+
+var onMount = function onMount(vnode) {
+  var state = vnode.state;
+  if (vnode.dom && !state.tapEventsInited()) {
+    initTapEvents(vnode);
+    state.tapEventsInited(true);
+  }
+};
+
+var onUnMount = function onUnMount(vnode) {
+  if (vnode.state.tapEventsInited()) {
+    clearTapEvents(vnode);
+  }
+};
+
+var createProps = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      Shadow = _ref.Shadow;
+
+  var attrs = vnode.attrs;
+  var state = vnode.state;
+  var children = attrs.children || vnode.children || [];
+  return _extends({}, {
+    parentClassName: [attrs.parentClassName || classes.component].join(" "),
+    animateOnTap: false,
+    shadowComponent: h(Shadow, {
+      z: attrs.disabled ? 0 : state.z,
+      animated: true
+    }),
+    children: children
+  }, attrs);
+};
+
+var createContent = function createContent() {
+  return null;
+};
+
+var raisedButton = Object.freeze({
+	getInitialState: getInitialState,
+	onMount: onMount,
+	onUnMount: onUnMount,
+	createProps: createProps,
+	createContent: createContent
+});
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  color_light_background: "#fff",
+  color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+  color_light_hover_background: "transparent",
+  color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+  color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover), // same as hover
+  color_light_disabled_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+  color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+
+  color_dark_background: rgba(polytheneTheme.vars.color_primary),
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+  color_dark_hover_background: polytheneTheme.vars.color_primary_active,
+  color_dark_focus_background: polytheneTheme.vars.color_primary_active,
+  color_dark_active_background: polytheneTheme.vars.color_primary_dark,
+  color_dark_disabled_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+  color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
+};
+
+exports.coreRaisedButton = raisedButton;
+exports.vars = vars$1;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-core-raised-button.js.map

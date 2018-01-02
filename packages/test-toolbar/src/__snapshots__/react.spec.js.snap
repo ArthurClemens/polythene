@@ -804,7 +804,7 @@ exports[`test Title as span 1`] = `
       }
     } />
   <span>
-    Toolbar with a very very very long title
+    Toolbar with a very very very very very very very very very long title
   </span>
   <IconButton
     icon={
@@ -862,7 +862,7 @@ exports[`test ToolbarTitle 1`] = `
       }
     } />
   <ToolbarTitle
-    text="Toolbar with a very very very long title" />
+    text="Toolbar with a very very very very very very very very very long title" />
   <IconButton
     icon={
       Object {
@@ -883,7 +883,7 @@ exports[`test ToolbarTitle, at start 1`] = `
 <div
   className="pe-toolbar    ">
   <ToolbarTitle
-    text="Toolbar with a very very very long title" />
+    text="Toolbar with a very very very very very very very very very long title" />
   <IconButton
     icon={
       Object {
@@ -905,7 +905,7 @@ exports[`test ToolbarTitle, centered 1`] = `
   className="pe-toolbar    ">
   <ToolbarTitle
     center={true}
-    text="Toolbar with a very very very long title" />
+    text="Toolbar title" />
 </div>
 `;
 
@@ -927,7 +927,7 @@ exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
     } />
   <ToolbarTitle
     center={true}
-    text="Toolbar with a very very very long title" />
+    text="Toolbar title" />
   <IconButton
     icon={
       Object {
@@ -943,7 +943,7 @@ exports[`test ToolbarTitle, indented (without left icon) 1`] = `
   className="pe-toolbar    ">
   <ToolbarTitle
     indent={true}
-    text="Toolbar with a very very very long title" />
+    text="Toolbar with a very very very very very very very very very long title" />
   <IconButton
     icon={
       Object {

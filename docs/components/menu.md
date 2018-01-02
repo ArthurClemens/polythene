@@ -2,6 +2,22 @@
 
 A local popup menu with a list of choices. A menu contains one or more [Lists](list.md) with [List Tiles](list-tile.md) as menu elements.
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+
+- [Main features](#main-features)
+- [Usage](#usage)
+- [Options](#options)
+  - [Menu specific options](#menu-specific-options)
+  - [Menu appearance options](#menu-appearance-options)
+  - [Transition options](#transition-options)
+  - [Common component options](#common-component-options)
+- [Composition](#composition)
+- [CSS classes](#css-classes)
+- [Future](#future)
+
+<!-- /MarkdownTOC -->
+
+<a name="main-features"></a>
 ## Main features
 
 * All [List](list.md) main features
@@ -13,14 +29,17 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 * Pass menu options to dialog to show as a menu-dialog
 
 
+<a name="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/menu.md)
 * [Usage with React](react/menu.md)
 
 
+<a name="options"></a>
 ## Options
 
+<a name="menu-specific-options"></a>
 ### Menu specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -31,15 +50,17 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **reposition** | optional | Boolean | false | Set to `true` to position the menu to the menu item ([List Tile](list-tile.md)) that has class "selected" |
 | **show** | optional | Boolean | | Set to true to show the menu |
 
+<a name="menu-appearance-options"></a>
 ### Menu appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **offset** | optional | Number | 16 | Horizontal offset  |
 | **origin** | optional | String: "top-left", "top-right", "bottom-left", "bottom-right" | "top-left" (if `target` is specified) | Positioned menu corner |
-| **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element |
+| **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that a large size can be displayed off screen on smaller devices |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 
+<a name="transition-options"></a>
 ### Transition options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -49,9 +70,10 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
 | **showDelay** | optional | Number | 0 | The show delay duration in milliseconds |
 | **hideDelay** | optional | Number | 0 | The hide delay duration in milliseconds; no delay is used when the menu is dismissed, for instance by tapping outside of the menu |
-| **didShow** | optional | Function |  | Callback function that is called when the show transition is done; receives param `id` |
-| **didHide** | optional | Function |  | Callback function that is called when the hide transition is done; receives param `id` |
+| **didShow** | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
+| **didHide** | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
 
+<a name="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -67,6 +89,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
+<a name="composition"></a>
 ## Composition
 
 Menu is usually composed from:
@@ -79,11 +102,13 @@ Menu also contains:
 * [Shadow](shadow.md) (when option `z` is not `0`)
 
 
+<a name="css-classes"></a>
 ## CSS classes
 
 * [Menu classes](../../packages/polythene-css-classes/menu.js)
 
 
+<a name="future"></a>
 ## Future
 
 * Take the browser window into account to make sure that the menu is always in view

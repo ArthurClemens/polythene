@@ -1,2 +1,26 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-fab"),require("polythene-react-icon"),require("polythene-react-raised-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-fab","polythene-react-icon","polythene-react-raised-button"],t):t(e.polythene={},e["polythene-react-base"],e["polythene-core-fab"],e["polythene-react-icon"],e["polythene-react-raised-button"])}(this,function(e,t,o,n,r){"use strict";var c=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},a=t.StateComponent(c({},o.coreFAB,{createProps:function(e,t){return o.coreFAB.createProps(e,c(t,{Icon:n.Icon}))},createContent:function(e,t){return o.coreFAB.createContent(e,c(t,{Icon:n.Icon}))},component:r.RaisedButton}));a.displayName="FAB",e.FAB=a,Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-fab'), require('polythene-react-icon'), require('polythene-react-raised-button')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-fab', 'polythene-react-icon', 'polythene-react-raised-button'], factory) :
+	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-fab'],global['polythene-react-icon'],global['polythene-react-raised-button']));
+}(this, (function (exports,polytheneReactBase,polytheneCoreFab,polytheneReactIcon,polytheneReactRaisedButton) { 'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var FAB = polytheneReactBase.StateComponent(_extends({}, polytheneCoreFab.coreFAB, {
+  createProps: function createProps(vnode, args) {
+    return polytheneCoreFab.coreFAB.createProps(vnode, _extends(args, { Icon: polytheneReactIcon.Icon }));
+  },
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreFab.coreFAB.createContent(vnode, _extends(args, { Icon: polytheneReactIcon.Icon }));
+  },
+  component: polytheneReactRaisedButton.RaisedButton
+}));
+
+FAB.displayName = "FAB";
+
+exports.FAB = FAB;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=polythene-react-fab.js.map

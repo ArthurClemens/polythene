@@ -1,6 +1,6 @@
 {
   "name": "test-dialog",
-  "version": "1.0.0-rc.9",
+  "version": "1.0.0-rc.10",
   "private": true,
   "description": "",
   "main": "dist/test-dialog.js",
@@ -17,13 +17,13 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.0.0-rc.9",
-    "polythene-mithril": "^1.0.0-rc.9",
-    "polythene-react": "^1.0.0-rc.9"
+    "polythene-css": "^1.0.0-rc.10",
+    "polythene-mithril": "^1.0.0-rc.10",
+    "polythene-react": "^1.0.0-rc.10"
   },
   "devDependencies": {
     "mithril": "1.1.5",
-    "react": "^16.1.1"
+    "react": "^16.2.0"
   },
   "jest": {
     "setupFiles": [

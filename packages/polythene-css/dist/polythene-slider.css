@@ -1,5 +1,4 @@
 .pe-slider {
-  -ms-flex-preferred-size: initial;
   -ms-flex-direction: row;
   flex-direction: row;
   flex-grow: 1;
@@ -16,14 +15,12 @@
 }
 
 .pe-slider>.pe-icon {
-  -ms-flex-preferred-size: initial;
   -ms-flex-align: center
 }
 
 .pe-slider .pe-slider__track {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -44,7 +41,6 @@
 }
 
 .pe-slider .pe-slider__control {
-  -ms-flex-item-align: center;
   -ms-align-self: center;
   -webkit-align-self: center;
   align-self: center;
@@ -133,7 +129,6 @@
 .pe-slider .pe-slider__track-rest,.pe-slider .pe-slider__track-value {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row
@@ -171,9 +166,7 @@
 .pe-slider .pe-slider__ticks {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
-  -ms-flex-line-pack: stretch;
   -ms-flex-pack: justify;
   justify-content: space-between;
   user-select: none;

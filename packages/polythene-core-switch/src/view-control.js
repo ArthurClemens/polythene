@@ -12,6 +12,7 @@ export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
   const raised = attrs.disabled
     ? false
     : attrs.raised !== undefined ? attrs.raised : true;
+
   return [
     h("div",
       {

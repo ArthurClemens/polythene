@@ -58,6 +58,11 @@
   box-shadow: none
 }
 
+.pe-textfield .pe-textfield__input::-ms-clear {
+  width: 0;
+  height: 0
+}
+
 .pe-textfield textarea.pe-textfield__input {
   margin: 7px 0;
   padding: 0;

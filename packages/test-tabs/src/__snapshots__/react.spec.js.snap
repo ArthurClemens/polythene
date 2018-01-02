@@ -1,6 +1,6 @@
 exports[`test Child node 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -104,7 +104,7 @@ exports[`test Dark tone class + light tone 1`] = `
 
 exports[`test Long labels: wrap to second line 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     tests-tabs-fixed-width">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     tests-tabs-fixed-width">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -136,7 +136,7 @@ exports[`test Long labels: wrap to second line 1`] = `
 
 exports[`test Option: activeSelected 1`] = `
 <div
-  className="pe-tabs    pe-tabs__active--selectable pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end pe-tabs__active--selectable pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -168,7 +168,7 @@ exports[`test Option: activeSelected 1`] = `
 
 exports[`test Option: all (className) 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -203,7 +203,7 @@ exports[`test Option: all (className) 1`] = `
 
 exports[`test Option: all (ink: false) 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -238,7 +238,7 @@ exports[`test Option: all (ink: false) 1`] = `
 
 exports[`test Option: all (style - colors) 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -288,7 +288,7 @@ exports[`test Option: all (style - colors) 1`] = `
 
 exports[`test Option: autofit 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -320,7 +320,7 @@ exports[`test Option: autofit 1`] = `
 
 exports[`test Option: centered (no autofit) 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row pe-tabs__row--centered ">
     <Tab
@@ -352,7 +352,7 @@ exports[`test Option: centered (no autofit) 1`] = `
 
 exports[`test Option: class 1`] = `
 <div
-  className="pe-tabs          class-x">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       class-x">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -384,7 +384,7 @@ exports[`test Option: class 1`] = `
 
 exports[`test Option: className 1`] = `
 <div
-  className="pe-tabs          className-x">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       className-x">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -416,7 +416,7 @@ exports[`test Option: className 1`] = `
 
 exports[`test Option: compact 1`] = `
 <div
-  className="pe-tabs      pe-tabs--compact    ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end   pe-tabs--compact    ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -448,7 +448,7 @@ exports[`test Option: compact 1`] = `
 
 exports[`test Option: content 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -480,7 +480,7 @@ exports[`test Option: content 1`] = `
 
 exports[`test Option: hideIndicator 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -510,7 +510,7 @@ exports[`test Option: hideIndicator 1`] = `
 
 exports[`test Option: id 1`] = `
 <div
-  className="pe-tabs          "
+  className="pe-tabs  pe-tabs--start pe-tabs--end       "
   id="id-x">
   <div
     className="pe-tabs__row  ">
@@ -543,7 +543,7 @@ exports[`test Option: id 1`] = `
 
 exports[`test Option: largestWidth (no autofit) 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -595,19 +595,44 @@ exports[`test Option: menu 1`] = `
         "padding": "20px",
       }
     }>
-    <p>
+    <p
+      style={
+        Object {
+          "flex": "none",
+        }
+      }>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
-    <p>
+    <p
+      style={
+        Object {
+          "flex": "none",
+        }
+      }>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
-    <p>
+    <p
+      style={
+        Object {
+          "flex": "none",
+        }
+      }>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
-    <p>
+    <p
+      style={
+        Object {
+          "flex": "none",
+        }
+      }>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
-    <p>
+    <p
+      style={
+        Object {
+          "flex": "none",
+        }
+      }>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </div>
@@ -638,7 +663,7 @@ exports[`test Option: menu 1`] = `
 
 exports[`test Option: noIndicatorSlide 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -712,7 +737,6 @@ exports[`test Option: scrollable 1`] = `
       "backgroundColor": "#444",
       "color": "#fff",
       "height": "48px",
-      "maxWidth": "400px",
       "overflowX": "hidden",
     }
   }>
@@ -752,7 +776,6 @@ exports[`test Option: scrollable with custom icons 1`] = `
       "backgroundColor": "#444",
       "color": "#fff",
       "height": "48px",
-      "maxWidth": "400px",
       "overflowX": "hidden",
     }
   }>
@@ -828,7 +851,7 @@ exports[`test Option: selectedTab (1) (JSX) 1`] = `
 
 exports[`test Option: selectedTab (1) 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -860,7 +883,7 @@ exports[`test Option: selectedTab (1) 1`] = `
 
 exports[`test Option: tabs (text buttons) -- dark theme class 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -892,7 +915,7 @@ exports[`test Option: tabs (text buttons) -- dark theme class 1`] = `
 
 exports[`test Option: tabs (text buttons) 1`] = `
 <div
-  className="pe-tabs          ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -924,7 +947,7 @@ exports[`test Option: tabs (text buttons) 1`] = `
 
 exports[`test Tabs with icons -- dark theme class 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -989,7 +1012,7 @@ exports[`test Tabs with icons -- dark theme class 1`] = `
 
 exports[`test Tabs with icons 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -1054,7 +1077,7 @@ exports[`test Tabs with icons 1`] = `
 
 exports[`test Tabs with icons and text 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     ">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     ">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -1122,7 +1145,7 @@ exports[`test Tabs with icons and text 1`] = `
 
 exports[`test Theme: custom colors -- dark theme class 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     tests-tabs-custom_color">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     tests-tabs-custom_color">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -1154,7 +1177,7 @@ exports[`test Theme: custom colors -- dark theme class 1`] = `
 
 exports[`test Theme: custom colors 1`] = `
 <div
-  className="pe-tabs     pe-tabs--autofit     tests-tabs-custom_color">
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     tests-tabs-custom_color">
   <div
     className="pe-tabs__row  ">
     <Tab
@@ -1186,7 +1209,7 @@ exports[`test Theme: custom colors 1`] = `
 
 exports[`test Theme: small fixed width 1`] = `
 <div
-  className="pe-tabs          tests-tabs-fixed-width">
+  className="pe-tabs  pe-tabs--start pe-tabs--end       tests-tabs-fixed-width">
   <div
     className="pe-tabs__row pe-tabs__row--centered ">
     <Tab

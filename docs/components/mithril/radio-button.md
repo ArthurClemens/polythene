@@ -2,13 +2,26 @@
 
 # Radio Button component for Mithril
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+  - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+  - [Shared options](#shared-options)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 * [Radio Button options](../radio-button.md)
 * [Radio Group options](../radio-group.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/ct0ear8h/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -34,6 +47,7 @@ m("div", [
 ])
 ~~~
 
+<a name="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 Radio Buttons will generally be used with a [Radio Group](radio-group.md) that manages the buttons' (singular) selected state.
@@ -96,6 +110,7 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 
 
 
+<a name="shared-options"></a>
 ### Shared options
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons:
@@ -113,11 +128,13 @@ m(RadioGroup, {
 ~~~
 
 
+<a name="appearance"></a>
 ## Appearance
 
 Both Radio Button and Radio Group can be styled. 
 
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Radio Button appearance, either with a theme or with CSS.
@@ -163,6 +180,7 @@ m(RadioButton, {
 })
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

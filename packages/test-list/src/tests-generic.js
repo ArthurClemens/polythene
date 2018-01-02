@@ -2,9 +2,9 @@ import { ListCSS, ListTileCSS } from "polythene-css";
 
 import keyboardState from "./components/keyboard-state";
 
-export default ({ List, ListTile, Icon, renderer: h }) => {
+export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
 
-  const KeyboardState = keyboardState({ h, List, ListTile });
+  const KeyboardState = keyboardState({ h, k, List, ListTile });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -59,9 +59,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
     {
       name: "Child nodes",
       component: List,
-      attrs: {
-        borders: true
-      },
       children: [
         h(ListTile, {
           title: "Jennifer Barker",
@@ -84,7 +81,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       name: "Option: tiles",
       component: List,
       attrs: {
-        borders: true,
         tiles: [
           h(ListTile, {
             title: "Jennifer Barker",
@@ -140,7 +136,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       component: List,
       attrs: {
         compact: true,
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -152,11 +147,10 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       }
     },
     {
-      name: "No padding",
+      name: "No list padding",
       component: List,
       attrs: {
         padding: false,
-        borders: true,
         tiles: [
           ListTileJennifer,
           ListTileAli,
@@ -168,7 +162,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       name: "Themed list (colors and padding)",
       component: List,
       attrs: {
-        borders: true,
         className: "tests-lists-themed-list"
       },
       children: [
@@ -209,7 +202,7 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Keyboard control",
+      name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
       interactive: true,
       component: KeyboardState
     },
@@ -222,7 +215,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       className: "pe-dark-tone",
       component: List,
       attrs: {
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -253,7 +245,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       component: List,
       className: "pe-dark-tone",
       attrs: {
-        borders: true,
         className: "tests-lists-themed-list"
       },
       children: [
@@ -285,7 +276,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       attrs: {
         className: "pe-light-tone",
         style: { background: "#fff" },
-        borders: true,
         header: {
           title: "Friends"
         },
@@ -318,7 +308,6 @@ export default ({ List, ListTile, Icon, renderer: h }) => {
       component: List,
       attrs: {
         style: { background: "#fff" },
-        borders: true,
         header: {
           title: "Friends"
         },

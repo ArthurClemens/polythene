@@ -4,18 +4,16 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import { addFastClick } from "polythene-fastclick";
 import { addTypography, addLayoutStyles } from "polythene-css";
 import "polythene-css";
 import { rules as css } from "./styles";
 import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
-import ScrollToTop from "./ScrollToTop";
+import OnMatch from "./OnMatch";
 
 addTypography();
 addLayoutStyles();
-addFastClick();
 
 const NavBar = () =>
   h(css.headerRow, null,
@@ -69,7 +67,7 @@ const routerMap = routes.map(route =>
 
 const App = () => (
   h(Router, null, 
-    h(ScrollToTop, null,
+    h(OnMatch, null,
       h("div", routerMap)
     )
   )

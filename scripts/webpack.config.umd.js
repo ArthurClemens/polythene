@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const BabiliPlugin = require("babili-webpack-plugin");
 const config = require("./webpack.config.base.js");
 const webpack = require("webpack");
 
@@ -21,8 +20,6 @@ config.module = {
     }
   ]
 };
-
-config.plugins.push(new BabiliPlugin());
 
 config.plugins.push(new webpack.DefinePlugin({
   "process.env": { NODE_ENV: JSON.stringify("production") }

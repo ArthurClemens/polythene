@@ -2,12 +2,24 @@
 
 # Ripple component for React
 
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
 
+- [Options](#options)
+- [Usage](#usage)
+- [Variations](#variations)
+- [Appearance](#appearance)
+  - [Styling](#styling)
+  - [Dark or light tone](#dark-or-light-tone)
+
+<!-- /MarkdownTOC -->
+
+<a name="options"></a>
 ## Options
 
 [Ripple options](../ripple.md)
 
 
+<a name="usage"></a>
 ## Usage
 
 #### With JSX
@@ -75,13 +87,16 @@ h(ListTile, {
 ~~~
 
 
+<a name="variations"></a>
 ## Variations
 
 Create multiple simultaneous ripples with option `multi`.
 
 
+<a name="appearance"></a>
 ## Appearance
 
+<a name="styling"></a>
 ### Styling
 
 Below are examples how to change the Ripple appearance, either with a theme or with CSS.
@@ -131,6 +146,7 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
+<a name="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

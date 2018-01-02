@@ -10,7 +10,7 @@ export const createProps = vnode => {
     {},
     attrs,
     {
-      selectable: attrs.selectable || (() => true), // default: always selectable, regardless the checked state
+      selectable: attrs.selectable || (() => true), // default: always selectable, regardless of the checked state
       instanceClass: classes.component,
       type: "checkbox"
     }

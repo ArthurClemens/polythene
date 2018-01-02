@@ -37,7 +37,6 @@
 .pe-search .pe-search__content,.pe-search .pe-search__content .pe-textfield {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row
@@ -50,11 +49,9 @@
 .pe-search .pe-search__content>* {
   display: -webkit-box;
   display: -ms-flexbox;
-  -ms-flex-preferred-size: initial;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-item-align: center;
   -ms-align-self: center;
   -webkit-align-self: center;
   align-self: center
