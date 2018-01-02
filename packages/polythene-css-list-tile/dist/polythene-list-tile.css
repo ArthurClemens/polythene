@@ -190,7 +190,8 @@
 }
 
 .pe-dialog .pe-menu__content .pe-list-tile .pe-list-tile__content {
-  padding-left: 24px
+  padding-left: 24px;
+  padding-right: 24px
 }
 
 .pe-dialog .pe-menu__content .pe-list-tile .pe-list-tile__content-front {
