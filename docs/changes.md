@@ -1,26 +1,23 @@
 # Change log
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" depth="3" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" depth="2" -->
 
 - [Releases](#releases)
-  - [Pre releases](#pre-releases)
-    - [1.0.0-rc.11](#100-rc11)
-    - [1.0.0-rc.10](#100-rc10)
-    - [1.0.0-rc.9](#100-rc9)
-    - [1.0.0-rc.8](#100-rc8)
-    - [1.0.0-rc.7](#100-rc7)
-    - [1.0.0-rc.6](#100-rc6)
-    - [1.0.0-rc.5](#100-rc5)
-    - [1.0.0-rc.4](#100-rc4)
-    - [1.0.0-rc.1 to 1.0.0-rc.3](#100-rc1-to-100-rc3)
+  - [1.0.0](#100)
+- [Pre releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
 
 <a name="releases"></a>
 ## Releases
 
+<a name="100"></a>
+### 1.0.0
+
+Equal to rc.11.
+
 <a name="pre-releases"></a>
-### Pre releases
+## Pre releases
 
 <a name="100-rc11"></a>
 #### 1.0.0-rc.11

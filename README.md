@@ -13,7 +13,7 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 
 ## Status
 
-Version: `1.0.0-rc.11` (release candidate 11)
+Version: `1.0.0`
 
 
 ## Main features
