@@ -48,6 +48,9 @@ var paddingV = function paddingV(top, bottom) {
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [flex.layout, {
     position: "relative",
+    fontSize: componentVars.font_size_title + "px",
+    fontWeight: vars$1.font_weight_normal,
+    lineHeight: componentVars.single_line_height + "px",
 
     ".pe-list-tile--sticky": [mixin.sticky(2)],
 
@@ -104,10 +107,7 @@ var layout = (function (selector, componentVars) {
       wordBreak: "break-word",
       overflow: "hidden",
       textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-      fontSize: componentVars.font_size_title + "px",
-      fontWeight: vars$1.font_weight_normal,
-      lineHeight: componentVars.single_line_height + "px"
+      whiteSpace: "nowrap"
     },
 
     " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {

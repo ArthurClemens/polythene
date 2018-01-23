@@ -17,6 +17,9 @@ export default (selector, componentVars) => [
       flex.layout,
       {
         position: "relative",
+        fontSize: componentVars.font_size_title + "px",
+        fontWeight: vars.font_weight_normal,
+        lineHeight: componentVars.single_line_height + "px",
 
         ".pe-list-tile--sticky": [
           mixin.sticky(2)
@@ -92,9 +95,6 @@ export default (selector, componentVars) => [
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
-          fontSize: componentVars.font_size_title + "px",
-          fontWeight: vars.font_weight_normal,
-          lineHeight: componentVars.single_line_height + "px"
         },
 
         " .pe-list-tile__subtitle": [

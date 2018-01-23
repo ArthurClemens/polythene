@@ -2,7 +2,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px
 }
 
 .pe-list-tile.pe-list-tile--sticky {
@@ -93,10 +96,7 @@
   word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 21px
+  white-space: nowrap
 }
 
 .pe-list-tile .pe-list-tile__subtitle {
