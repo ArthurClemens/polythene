@@ -1,6 +1,5 @@
 import { flex, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-list-tile';
-import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-list-tile",
@@ -49,7 +48,7 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [flex.layout, {
     position: "relative",
     fontSize: componentVars.font_size_title + "px",
-    fontWeight: vars$1.font_weight_normal,
+    fontWeight: componentVars.font_weight_title,
     lineHeight: componentVars.single_line_height + "px",
 
     ".pe-list-tile--sticky": [mixin.sticky(2)],
@@ -112,6 +111,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
       fontSize: componentVars.font_size_subtitle + "px",
+      fontWeight: componentVars.font_weight_subtitle,
       lineHeight: componentVars.line_height_subtitle + "px",
 
       ".pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle, "px"), {
@@ -152,7 +152,7 @@ var layout = (function (selector, componentVars) {
       },
       " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height, "px"), {
         fontSize: componentVars.font_size_list_header + "px",
-        fontWeight: vars$1.font_weight_medium,
+        fontWeight: componentVars.font_weight_list_header,
         lineHeight: componentVars.single_height + "px",
         padding: 0
       }]
@@ -234,6 +234,9 @@ var style = function style(scopes, selector, componentVars, tint) {
     " .pe-list-tile__secondary": {
       color: componentVars["color_" + tint + "_secondary"]
     },
+    " .pe-list-tile__content-front": {
+      color: componentVars["color_" + tint + "_front"]
+    },
     ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
@@ -266,8 +269,13 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
     return s + selector + ":hover";
   }).join(","), {
     ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
+      color: componentVars["color_" + tint + "_hover_text"],
+
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
+      },
+      " .pe-list-tile__primary .pe-list-tile__content-front": {
+        color: componentVars["color_" + tint + "_hover_front"]
       }
     }
   })];

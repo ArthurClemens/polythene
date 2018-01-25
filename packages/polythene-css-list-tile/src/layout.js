@@ -1,5 +1,4 @@
 import { mixin, flex } from "polythene-core-css";
-import { vars } from "polythene-theme";
 
 const paddingH = h => ({
   "padding-left": h + "px",
@@ -18,7 +17,7 @@ export default (selector, componentVars) => [
       {
         position: "relative",
         fontSize: componentVars.font_size_title + "px",
-        fontWeight: vars.font_weight_normal,
+        fontWeight: componentVars.font_weight_title,
         lineHeight: componentVars.single_line_height + "px",
 
         ".pe-list-tile--sticky": [
@@ -101,6 +100,7 @@ export default (selector, componentVars) => [
           mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"),
           {
             fontSize: componentVars.font_size_subtitle + "px",
+            fontWeight: componentVars.font_weight_subtitle,
             lineHeight: componentVars.line_height_subtitle + "px",
 
             ".pe-list-tile__high-subtitle": [
@@ -157,7 +157,7 @@ export default (selector, componentVars) => [
             mixin.ellipsis(1, componentVars.single_height, "px"),
             {
               fontSize: componentVars.font_size_list_header + "px",
-              fontWeight: vars.font_weight_medium,
+              fontWeight: componentVars.font_weight_list_header,
               lineHeight: componentVars.single_height + "px",
               padding: 0
             }

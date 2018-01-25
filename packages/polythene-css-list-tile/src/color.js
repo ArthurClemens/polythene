@@ -16,6 +16,9 @@ const style = (scopes, selector, componentVars, tint) => [{
     " .pe-list-tile__secondary": {
       color: componentVars["color_" + tint + "_secondary"]
     },
+    " .pe-list-tile__content-front": {
+      color: componentVars["color_" + tint + "_front"]
+    },
     ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
@@ -46,9 +49,14 @@ const style = (scopes, selector, componentVars, tint) => [{
 const noTouchStyle = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector + ":hover").join(",")]: {
     ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
+      color: componentVars["color_" + tint + "_hover_text"],
+
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
-      }
+      },
+      " .pe-list-tile__primary .pe-list-tile__content-front": {
+        color: componentVars["color_" + tint + "_hover_front"]
+      },
     }
   }
 }];

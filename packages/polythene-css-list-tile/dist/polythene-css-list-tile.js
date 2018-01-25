@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-list-tile'), require('polythene-theme')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-list-tile', 'polythene-theme'], factory) :
-	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-list-tile'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreListTile,polytheneTheme) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-list-tile')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-list-tile'], factory) :
+	(factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-list-tile']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreListTile) { 'use strict';
 
 var classes = {
   component: "pe-list-tile",
@@ -51,7 +51,7 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [polytheneCoreCss.flex.layout, {
     position: "relative",
     fontSize: componentVars.font_size_title + "px",
-    fontWeight: polytheneTheme.vars.font_weight_normal,
+    fontWeight: componentVars.font_weight_title,
     lineHeight: componentVars.single_line_height + "px",
 
     ".pe-list-tile--sticky": [polytheneCoreCss.mixin.sticky(2)],
@@ -114,6 +114,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-list-tile__subtitle": [polytheneCoreCss.mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
       fontSize: componentVars.font_size_subtitle + "px",
+      fontWeight: componentVars.font_weight_subtitle,
       lineHeight: componentVars.line_height_subtitle + "px",
 
       ".pe-list-tile__high-subtitle": [polytheneCoreCss.mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle, "px"), {
@@ -154,7 +155,7 @@ var layout = (function (selector, componentVars) {
       },
       " .pe-list-tile__title": [polytheneCoreCss.mixin.ellipsis(1, componentVars.single_height, "px"), {
         fontSize: componentVars.font_size_list_header + "px",
-        fontWeight: polytheneTheme.vars.font_weight_medium,
+        fontWeight: componentVars.font_weight_list_header,
         lineHeight: componentVars.single_height + "px",
         padding: 0
       }]
@@ -236,6 +237,9 @@ var style = function style(scopes, selector, componentVars, tint) {
     " .pe-list-tile__secondary": {
       color: componentVars["color_" + tint + "_secondary"]
     },
+    " .pe-list-tile__content-front": {
+      color: componentVars["color_" + tint + "_front"]
+    },
     ".pe-list-tile--disabled": {
       "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
         color: componentVars["color_" + tint + "_text_disabled"]
@@ -268,8 +272,13 @@ var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) 
     return s + selector + ":hover";
   }).join(","), {
     ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
+      color: componentVars["color_" + tint + "_hover_text"],
+
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]
+      },
+      " .pe-list-tile__primary .pe-list-tile__content-front": {
+        color: componentVars["color_" + tint + "_hover_front"]
       }
     }
   })];

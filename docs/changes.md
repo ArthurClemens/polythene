@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" depth="2" -->
 
 - [Releases](#releases)
+  - [Next](#next)
   - [1.0.0](#100)
 - [Pre releases](#pre-releases)
 
@@ -10,6 +11,16 @@
 
 <a name="releases"></a>
 ## Releases
+
+
+<a name="next"></a>
+### Next
+
+(in development)
+
+Changes to components:
+
+* List Tile: added configuration vars for for titles and front: font size, weight and color 
 
 <a name="100"></a>
 ### 1.0.0
