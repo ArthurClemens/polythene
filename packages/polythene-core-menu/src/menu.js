@@ -10,6 +10,9 @@ const DEFAULT_OFFSET_H = 0;
 const MIN_SIZE         = 1.5;
 
 const positionMenu = (state, attrs) => {
+  if (!attrs.target) {
+    return;
+  }
   if (isServer) {
     return;
   }
@@ -219,7 +222,7 @@ export const createProps = (vnode, { keys: k }) => {
     filterSupportedAttributes(attrs),
     {
       className: [
-        classes.component,
+        attrs.parentClassName || classes.component,
         attrs.permanent ? classes.permanent : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,

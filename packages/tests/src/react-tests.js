@@ -4,6 +4,7 @@ export { reactTests as card }         from "test-card";
 export { reactTests as checkbox }     from "test-checkbox";
 export { reactTests as dialog }       from "test-dialog";
 export { reactTests as dialogPane }   from "test-dialog-pane";
+export { reactTests as drawer }       from "test-drawer";
 export { reactTests as fab }          from "test-fab";
 export { reactTests as icon }         from "test-icon";
 export { reactTests as iconButton }   from "test-icon-button";

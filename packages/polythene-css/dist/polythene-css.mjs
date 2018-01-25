@@ -4,6 +4,7 @@ import * as polytheneCssCard from 'polythene-css-card';
 import * as polytheneCssCheckbox from 'polythene-css-checkbox';
 import * as polytheneCssDialog from 'polythene-css-dialog';
 import * as polytheneCssDialogPane from 'polythene-css-dialog-pane';
+import * as polytheneCssDrawer from 'polythene-css-drawer';
 import * as polytheneCssFab from 'polythene-css-fab';
 import * as polytheneCssIcon from 'polythene-css-icon';
 import * as polytheneCssIconButton from 'polythene-css-icon-button';
@@ -32,6 +33,6 @@ import * as polytheneCssTypography from 'polythene-css-typography';
 
 
 
-export { polytheneCssBaseSpinner as BaseSpinnerCSS, polytheneCssButton as ButtonCSS, polytheneCssCard as CardCSS, polytheneCssCheckbox as CheckboxCSS, polytheneCssDialog as DialogCSS, polytheneCssDialogPane as DialogPaneCSS, polytheneCssFab as FABCSS, polytheneCssIcon as IconCSS, polytheneCssIconButton as IconButtonCSS, polytheneCssIosSpinner as IOSSpinnerCSS, polytheneCssList as ListCSS, polytheneCssListTile as ListTileCSS, polytheneCssMaterialDesignProgressSpinner as MaterialDesignProgressSpinnerCSS, polytheneCssMaterialDesignSpinner as MaterialDesignSpinnerCSS, polytheneCssMenu as MenuCSS, polytheneCssNotification as NotificationCSS, polytheneCssRadioButton as RadioButtonCSS, polytheneCssRaisedButton as RaisedButtonCSS, polytheneCssRipple as RippleCSS, polytheneCssSearch as SearchCSS, polytheneCssSelectionControl as SelectionControlCSS, polytheneCssShadow as ShadowCSS, polytheneCssSlider as SliderCSS, polytheneCssSnackbar as SnackbarCSS, polytheneCssSvg as SVGCSS, polytheneCssSwitch as SwitchCSS, polytheneCssTabs as TabsCSS, polytheneCssTextfield as TextFieldCSS, polytheneCssToolbar as ToolbarCSS, polytheneCssTypography as TypographyCSS };
+export { polytheneCssBaseSpinner as BaseSpinnerCSS, polytheneCssButton as ButtonCSS, polytheneCssCard as CardCSS, polytheneCssCheckbox as CheckboxCSS, polytheneCssDialog as DialogCSS, polytheneCssDialogPane as DialogPaneCSS, polytheneCssDrawer as DrawerCSS, polytheneCssFab as FABCSS, polytheneCssIcon as IconCSS, polytheneCssIconButton as IconButtonCSS, polytheneCssIosSpinner as IOSSpinnerCSS, polytheneCssList as ListCSS, polytheneCssListTile as ListTileCSS, polytheneCssMaterialDesignProgressSpinner as MaterialDesignProgressSpinnerCSS, polytheneCssMaterialDesignSpinner as MaterialDesignSpinnerCSS, polytheneCssMenu as MenuCSS, polytheneCssNotification as NotificationCSS, polytheneCssRadioButton as RadioButtonCSS, polytheneCssRaisedButton as RaisedButtonCSS, polytheneCssRipple as RippleCSS, polytheneCssSearch as SearchCSS, polytheneCssSelectionControl as SelectionControlCSS, polytheneCssShadow as ShadowCSS, polytheneCssSlider as SliderCSS, polytheneCssSnackbar as SnackbarCSS, polytheneCssSvg as SVGCSS, polytheneCssSwitch as SwitchCSS, polytheneCssTabs as TabsCSS, polytheneCssTextfield as TextFieldCSS, polytheneCssToolbar as ToolbarCSS, polytheneCssTypography as TypographyCSS };
 export { addTypography, addRoboto } from 'polythene-css-typography';
 export { addLayoutStyles } from 'polythene-core-css';

@@ -61,6 +61,9 @@ var DEFAULT_OFFSET_H = 0;
 var MIN_SIZE = 1.5;
 
 var positionMenu = function positionMenu(state, attrs) {
+  if (!attrs.target) {
+    return;
+  }
   if (isServer) {
     return;
   }
@@ -272,7 +275,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

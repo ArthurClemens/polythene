@@ -4,6 +4,7 @@ import * as CardCSS                          from "polythene-css-card";         
 import * as CheckboxCSS                      from "polythene-css-checkbox";                         export { CheckboxCSS };
 import * as DialogCSS                        from "polythene-css-dialog";                           export { DialogCSS };
 import * as DialogPaneCSS                    from "polythene-css-dialog-pane";                      export { DialogPaneCSS };
+import * as DrawerCSS                        from "polythene-css-drawer";                           export { DrawerCSS };
 import * as FABCSS                           from "polythene-css-fab";                              export { FABCSS };
 import * as IconCSS                          from "polythene-css-icon";                             export { IconCSS };
 import * as IconButtonCSS                    from "polythene-css-icon-button";                      export { IconButtonCSS };

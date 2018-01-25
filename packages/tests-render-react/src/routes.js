@@ -32,6 +32,12 @@ export default [
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/dialog.md"
   },
   {
+    path: "/drawer",
+    name: "Drawer",
+    tests: tests.drawer,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/drawer.md"
+  },
+  {
     path: "/dialog-pane",
     name: "Dialog Pane",
     tests: tests.dialogPane,
