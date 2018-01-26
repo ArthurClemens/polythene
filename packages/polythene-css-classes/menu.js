@@ -13,6 +13,7 @@ export default {
   visible:     "pe-menu--visible",
   width_auto:  "pe-menu--width-auto",
   width_n:     "pe-menu--width-",
+  floating:    "pe-menu--floating",
 
   // lookup
   listTile:         listTileClasses.component,

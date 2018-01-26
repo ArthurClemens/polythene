@@ -1,5 +1,6 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer, isTouch } from "polythene-core";
 import classes from "polythene-css-classes/menu";
+import defaultTransitions from "./transitions";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -66,12 +67,12 @@ const showMenu = (state, attrs) => {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
-  const transitions = attrs.transitions;
+  const transitions = attrs.transitions || defaultTransitions;
   const el = state.dom();
   return show(Object.assign({},
     attrs,
     transitions
-      ? transitions.show(el, attrs)
+      ? transitions.show({ el, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
       : {
         el,
         showClass: classes.visible
@@ -91,12 +92,12 @@ const hideMenu = (state, attrs) => {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
-  const transitions = attrs.transitions;
+  const transitions = attrs.transitions || defaultTransitions;
   const el = state.dom();
   return hide(Object.assign({},
     attrs,
     transitions
-      ? transitions.hide(el, attrs)
+      ? transitions.hide({ el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
       : {
         el,
         showClass: classes.visible
@@ -217,6 +218,7 @@ export const getInitialState = (vnode, createStream) => {
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
+  const type = attrs.type || "floating";
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs),
@@ -224,6 +226,7 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         attrs.parentClassName || classes.component,
         attrs.permanent ? classes.permanent : null,
+        type === "floating" ? classes.floating : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,

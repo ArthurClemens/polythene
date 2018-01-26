@@ -16,7 +16,7 @@ export default ({ renderer: h, keys: k, target, Drawer, RaisedButton, content, d
       [
         h(RaisedButton,
           {
-            label: "Open drawer",
+            label: "Toggle drawer",
             id,
             events: {
               [k.onclick]: () => state.show(true)

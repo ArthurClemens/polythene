@@ -44,6 +44,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **type** | required | Strnig | "floating" | Floating menu |
 | **visible** | required | Boolean | false | Set to true to show the menu |
 | **permanent** | optional | Boolean |  | Set to true to always show the menu (mostly used for demonstration purposes) |
 | **target** | optional | String |  | HTML element selector to position to, for instance `"#my-button"` |

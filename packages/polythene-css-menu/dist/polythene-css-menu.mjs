@@ -42,6 +42,7 @@ var classes = {
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
+  floating: "pe-menu--floating",
 
   // lookup
   listTile: listTileClasses.component,
@@ -78,23 +79,28 @@ var layout = (function (selector, componentVars) {
     position: "absolute",
     minWidth: vars$1.grid_unit_menu * componentVars.min_size + "px",
 
-    "&.pe-menu--width-auto": {
+    ".pe-menu--width-auto": {
       width: "auto"
     },
 
-    "&.pe-menu--visible": {
+    ".pe-menu--visible": { /* only used when option 'transitions' is not defined */
       opacity: 1
     },
 
-    "&.pe-menu--permanent": {
+    ".pe-menu--permanent": {
       position: "relative",
       opacity: 1,
       zIndex: 0
     },
 
+    ".pe-menu--floating": {
+      " .pe-menu__content": {
+        borderRadius: componentVars.border_radius + "px"
+      }
+    },
+
     " .pe-menu__content": {
-      width: "100%",
-      borderRadius: componentVars.border_radius + "px"
+      width: "100%"
     }
   }])];
 });

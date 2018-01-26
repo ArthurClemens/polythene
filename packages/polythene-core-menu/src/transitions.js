@@ -1,4 +1,4 @@
-const ANIMATION_DURATION = .5;
+const ANIMATION_DURATION = .220;
 
 const show = ({ el, showDuration, showDelay }) => ({
   el,
@@ -12,7 +12,7 @@ const hide = ({ el, hideDuration, hideDelay }) => ({
   el,
   hideDuration: hideDuration || ANIMATION_DURATION,
   hideDelay:    hideDelay || 0,
-  hide:         () => el.style.opacity = 0,
+  hide:         () => el.style.opacity = 0
 });
 
 export default {

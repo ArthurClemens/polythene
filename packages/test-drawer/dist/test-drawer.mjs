@@ -179,7 +179,7 @@ var opener = (function (_ref) {
       var show = state.show();
 
       return h("div", null, [h(RaisedButton$$1, {
-        label: "Open drawer",
+        label: "Toggle drawer",
         id: id,
         events: _defineProperty({}, k.onclick, function () {
           return state.show(true);
@@ -218,7 +218,6 @@ var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
 
 var sliding = (function (_ref) {
   var show = _ref.show,
-      target = _ref.target,
       h = _ref.h,
       Drawer$$1 = _ref.Drawer,
       didHide = _ref.didHide,
@@ -230,11 +229,11 @@ var sliding = (function (_ref) {
       overflow: "hidden"
     }
   }, [h("nav", null, h(Drawer$$1, {
-    target: target,
     show: show,
     didHide: didHide,
     getState: getState,
     size: 4,
+    type: "pushing",
     content: content
   })), h("main", {
     style: {

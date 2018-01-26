@@ -41,10 +41,49 @@ var classes = {
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
+  floating: "pe-menu--floating",
 
   // lookup
   listTile: listTileClasses.component,
   selectedListTile: listTileClasses.selected
+};
+
+var ANIMATION_DURATION = .220;
+
+var show$1 = function show$$1(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
+  return {
+    el: el,
+    showDuration: showDuration || ANIMATION_DURATION,
+    showDelay: showDelay || 0,
+    beforeShow: function beforeShow() {
+      return el.style.opacity = 0;
+    },
+    show: function show$$1() {
+      return el.style.opacity = 1;
+    }
+  };
+};
+
+var hide$1 = function hide$$1(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
+  return {
+    el: el,
+    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDelay: hideDelay || 0,
+    hide: function hide$$1() {
+      return el.style.opacity = 0;
+    }
+  };
+};
+
+var defaultTransitions = {
+  show: show$1,
+  hide: hide$1
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -133,9 +172,9 @@ var showMenu = function showMenu(state, attrs) {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
-  var transitions = attrs.transitions;
+  var transitions = attrs.transitions || defaultTransitions;
   var el = state.dom();
-  return show(_extends({}, attrs, transitions ? transitions.show(el, attrs) : {
+  return show(_extends({}, attrs, transitions ? transitions.show({ el: el, showDuration: attrs.showDuration, showDelay: attrs.showDelay }) : {
     el: el,
     showClass: classes.visible
   })).then(function () {
@@ -153,9 +192,9 @@ var hideMenu = function hideMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
-  var transitions = attrs.transitions;
+  var transitions = attrs.transitions || defaultTransitions;
   var el = state.dom();
-  return hide(_extends({}, attrs, transitions ? transitions.hide(el, attrs) : {
+  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }) : {
     el: el,
     showClass: classes.visible
   })).then(function () {
@@ -274,8 +313,9 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
+  var type = attrs.type || "floating";
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [attrs.parentClassName || classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.permanent ? classes.permanent : null, type === "floating" ? classes.floating : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
