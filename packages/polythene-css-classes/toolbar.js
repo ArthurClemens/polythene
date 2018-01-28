@@ -7,6 +7,7 @@ export default {
 
   // states
   compact:          "pe-toolbar--compact",
+  appBar:           "pe-toolbar--app-bar",
 
   // Toolbar title
 

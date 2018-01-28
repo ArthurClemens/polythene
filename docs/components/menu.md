@@ -56,6 +56,8 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
+| **backdropTarget** | optional | String |  | HTML element selector to attach backdrop to, for instance `"#app-container"` |
 | **offset** | optional | Number | 16 | Horizontal offset  |
 | **origin** | optional | String: "top-left", "top-right", "bottom-left", "bottom-right" | "top-left" (if `target` is specified) | Positioned menu corner |
 | **size** | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that a large size can be displayed off screen on smaller devices |

@@ -1,4 +1,5 @@
 import classes from "polythene-css-classes/drawer";
+import transitionFromLeft from "./transition-from-left";
 
 // Don't export 'element': it will be the wrapped menu component (set in polythene-xxx-menu)
 
@@ -19,6 +20,7 @@ export const createProps = (vnode, { keys: k, renderer: h }) => {
         classes.component,
         attrs.className || attrs[k.class],
       ].join(" "),
+      transitions: {...transitionFromLeft}
     },
     attrs
   );

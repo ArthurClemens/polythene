@@ -100,8 +100,7 @@ var vars = {
 
   // z-index
   z_menu: 1000,
-  z_header_container: 2000,
-  z_fixed_header_container: 3000,
+  z_app_bar: 2000,
   z_notification: 4000,
   z_dialog: 5000
 };

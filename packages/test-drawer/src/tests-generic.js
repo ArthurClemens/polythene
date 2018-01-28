@@ -13,10 +13,16 @@ export default ({ keys, renderer, Drawer, RaisedButton, List, ListTile, Icon }) 
       component: permanent({ renderer, Drawer, content: NavigationList })
     },
     {
-      name: "Sliding drawer",
+      name: "Sliding drawer (push from left)",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Drawer, RaisedButton, content: NavigationList, drawerFn: sliding })
+      component: opener({ renderer, keys, Drawer, RaisedButton, content: NavigationList, drawerFn: sliding, backdrop: false })
+    },
+    {
+      name: "Sliding drawer (push from left, with backdrop)",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, RaisedButton, content: NavigationList, drawerFn: sliding, backdrop: true })
     },
     
   ];

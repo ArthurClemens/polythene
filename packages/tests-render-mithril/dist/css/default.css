@@ -106,6 +106,9 @@ html {
 .result-row {
   border-color: #ddd;
 }
+.header-row {
+  z-index: 2000;
+}
 .pe-button.bordered-button .pe-button__content {
   border-color: #ddd;
 }

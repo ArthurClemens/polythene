@@ -35,10 +35,10 @@ var classes = {
   content: "pe-menu__content",
   placeholder: "pe-menu__placeholder",
   target: "pe-menu__target",
+  backdrop: "pe-menu__backdrop",
 
   // states
   permanent: "pe-menu--permanent",
-  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
   floating: "pe-menu--floating",
@@ -48,15 +48,13 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-var ANIMATION_DURATION = .220;
-
 var show$1 = function show$$1(_ref) {
   var el = _ref.el,
       showDuration = _ref.showDuration,
       showDelay = _ref.showDelay;
   return {
     el: el,
-    showDuration: showDuration || ANIMATION_DURATION,
+    showDuration: showDuration,
     showDelay: showDelay || 0,
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
@@ -73,7 +71,7 @@ var hide$1 = function hide$$1(_ref2) {
       hideDelay = _ref2.hideDelay;
   return {
     el: el,
-    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDuration: hideDuration,
     hideDelay: hideDelay || 0,
     hide: function hide$$1() {
       return el.style.opacity = 0;
@@ -84,6 +82,42 @@ var hide$1 = function hide$$1(_ref2) {
 var defaultTransitions = {
   show: show$1,
   hide: hide$1
+};
+
+var show$2 = function show$$1(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
+  return {
+    el: el,
+    showDuration: showDuration,
+    showDelay: showDelay || 0,
+    beforeShow: function beforeShow() {
+      return el.style.opacity = 0;
+    },
+    show: function show$$1() {
+      return el.style.opacity = 1;
+    }
+  };
+};
+
+var hide$2 = function hide$$1(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
+  return {
+    el: el,
+    hideDuration: hideDuration,
+    hideDelay: hideDelay || 0,
+    hide: function hide$$1() {
+      return el.style.opacity = 0;
+    }
+  };
+};
+
+var backdropTransitions = {
+  show: show$2,
+  hide: hide$2
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -98,12 +132,10 @@ var SHADOW_Z = 1;
 var OFFSET_V = -8;
 var DEFAULT_OFFSET_H = 0;
 var MIN_SIZE = 1.5;
+var ANIMATION_DURATION = .220;
 
 var positionMenu = function positionMenu(state, attrs) {
-  if (!attrs.target) {
-    return;
-  }
-  if (isServer) {
+  if (!attrs.target || isServer) {
     return;
   }
   var targetEl = document.querySelector(attrs.target);
@@ -167,17 +199,43 @@ var positionMenu = function positionMenu(state, attrs) {
   }
 };
 
+var showBackdrop = function showBackdrop(state, attrs) {
+  if (!attrs.backdrop || isServer) {
+    return;
+  }
+  var targetEl = document.querySelector(attrs.backdropTarget);
+  if (!targetEl) {
+    return;
+  }
+  var el = document.createElement("div");
+  el.setAttribute("class", classes.backdrop);
+  targetEl.appendChild(el);
+  state.backdropEl = el;
+  show(_extends({}, attrs, backdropTransitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })));
+};
+
+var hideBackdrop = function hideBackdrop(state, attrs) {
+  if (!state.backdropEl) {
+    return;
+  }
+  var el = state.backdropEl;
+  hide(_extends({}, attrs, backdropTransitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }))).then(function () {
+    if (el.parentNode) {
+      el.parentNode.removeChild(el);
+    }
+  });
+};
+
 var showMenu = function showMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
+  showBackdrop(state, attrs);
   var transitions = attrs.transitions || defaultTransitions;
+  console.log("attrs.transitions", attrs.transitions);
   var el = state.dom();
-  return show(_extends({}, attrs, transitions ? transitions.show({ el: el, showDuration: attrs.showDuration, showDelay: attrs.showDelay }) : {
-    el: el,
-    showClass: classes.visible
-  })).then(function () {
+  return show(_extends({}, attrs, transitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay }))).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
     }
@@ -192,12 +250,10 @@ var hideMenu = function hideMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
+  hideBackdrop(state, attrs);
   var transitions = attrs.transitions || defaultTransitions;
   var el = state.dom();
-  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }) : {
-    el: el,
-    showClass: classes.visible
-  })).then(function () {
+  return hide(_extends({}, attrs, transitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }))).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
     }
@@ -300,6 +356,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   return {
     dom: dom,
     visible: visible,
+    backdropEl: undefined,
     activateDismissTap: undefined, // set in onMount
     deActivateDismissTap: undefined, // set in onMount
     handleDismissTap: undefined, // set in onMount
@@ -360,7 +417,11 @@ var vars$1 = {
   border_radius: vars.unit_block_border_radius,
 
   color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background)
+  color_dark_background: rgba(vars.color_dark_background),
+
+  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
+
   // text colors are set by content, usually list tiles
 };
 

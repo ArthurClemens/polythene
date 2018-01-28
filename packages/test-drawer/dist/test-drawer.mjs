@@ -165,7 +165,8 @@ var opener = (function (_ref) {
       content = _ref.content,
       drawerFn = _ref.drawerFn,
       transitionOptions = _ref.transitionOptions,
-      id = _ref.id;
+      id = _ref.id,
+      backdrop = _ref.backdrop;
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
@@ -191,6 +192,7 @@ var opener = (function (_ref) {
         Drawer: Drawer$$1,
         content: content,
         transitionOptions: transitionOptions,
+        backdrop: backdrop,
         didHide: function didHide() {
           return state.show(false);
         }
@@ -214,7 +216,7 @@ var permanent = (function (_ref) {
   };
 });
 
-var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.";
+var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat. ";
 
 var sliding = (function (_ref) {
   var show = _ref.show,
@@ -222,24 +224,34 @@ var sliding = (function (_ref) {
       Drawer$$1 = _ref.Drawer,
       didHide = _ref.didHide,
       getState = _ref.getState,
-      content = _ref.content;
+      content = _ref.content,
+      backdrop = _ref.backdrop;
   return h("div", {
     style: {
       display: "flex",
-      overflow: "hidden"
-    }
+      overflow: "hidden",
+      position: "relative",
+      marginTop: "20px"
+    },
+    "data-drawer": backdrop ? "sliding" : ""
   }, [h("nav", null, h(Drawer$$1, {
     show: show,
     didHide: didHide,
     getState: getState,
     size: 4,
     type: "pushing",
+    backdrop: backdrop,
+    backdropTarget: "[data-drawer=sliding]",
     content: content
   })), h("main", {
     style: {
-      background: "#ffeb3b"
+      background: "#ffeb3b",
+      padding: "1rem",
+      flexShrink: 0,
+      flexGrow: 0,
+      width: "100%"
     }
-  }, ipsum)]);
+  }, ipsum + ipsum)]);
 });
 
 var icons = {
@@ -318,10 +330,15 @@ var genericTests = (function (_ref) {
     name: "Permanent, floating",
     component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, content: NavigationList })
   }, {
-    name: "Sliding drawer",
+    name: "Sliding drawer (push from left)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, content: NavigationList, drawerFn: sliding })
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, content: NavigationList, drawerFn: sliding, backdrop: false })
+  }, {
+    name: "Sliding drawer (push from left, with backdrop)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, content: NavigationList, drawerFn: sliding, backdrop: true })
   }];
 });
 
