@@ -1,19 +1,18 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer, isTouch } from "polythene-core";
 import classes from "polythene-css-classes/menu";
-import defaultTransitions from "./transitions";
-import backdropTransitions from "./backdrop-transitions";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const SHADOW_Z           = 1;
-const OFFSET_V           = -8;
-const DEFAULT_OFFSET_H   = 0;
-const MIN_SIZE           = 1.5;
 const ANIMATION_DURATION = .220;
+const DEFAULT_OFFSET_H   = 0;
+const DEFAULT_TYPE       = "floating";
+const MIN_SIZE           = 1.5;
+const OFFSET_V           = -8;
+const SHADOW_Z           = 1;
 
 const positionMenu = (state, attrs) => {
-  if (!attrs.target || isServer) {
+  if (isServer) {
     return;
   }
   const targetEl = document.querySelector(attrs.target);
@@ -61,51 +60,21 @@ const positionMenu = (state, attrs) => {
   }
 };
 
-const showBackdrop = (state, attrs) => {
-  if (!attrs.backdrop || isServer) {
-    return;
-  }
-  const targetEl = document.querySelector(attrs.backdropTarget);
-  if (!targetEl) {
-    return;
-  }
-  const el = document.createElement("div");
-  el.setAttribute("class", classes.backdrop);
-  targetEl.appendChild(el);
-  state.backdropEl = el;
-  show(Object.assign({},
-    attrs,
-    backdropTransitions.show({ el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })
-  ));
-};
-
-const hideBackdrop = (state, attrs) => {
-  if (!state.backdropEl) {
-    return;
-  }
-  const el = state.backdropEl;
-  hide(Object.assign({},
-    attrs,
-    backdropTransitions.hide({ el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay })
-  )).then(() => {
-    if (el.parentNode) {
-      el.parentNode.removeChild(el);
-    }
-  });
-};
-
 const showMenu = (state, attrs) => {
   if (attrs.onChange) {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
-  showBackdrop(state, attrs);
-  const transitions = attrs.transitions || defaultTransitions;
-  console.log("attrs.transitions", attrs.transitions);
+  const transitions = attrs.transitions;
   const el = state.dom();
   return show(Object.assign({},
     attrs,
-    transitions.show({ el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })
+    transitions
+      ? transitions.show({ el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })
+      : {
+        el,
+        showClass: classes.visible
+      }
   )).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
@@ -113,7 +82,7 @@ const showMenu = (state, attrs) => {
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
-    state.visible(false);
+    state.visible(true);
   });
 };
 
@@ -121,12 +90,16 @@ const hideMenu = (state, attrs) => {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
-  hideBackdrop(state, attrs);
-  const transitions = attrs.transitions || defaultTransitions;
+  const transitions = attrs.transitions;
   const el = state.dom();
   return hide(Object.assign({},
     attrs,
-    transitions.hide({ el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay })
+    transitions
+      ? transitions.hide({ el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay })
+      : {
+        el,
+        showClass: classes.visible
+      }
   )).then(() => {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
@@ -232,7 +205,6 @@ export const getInitialState = (vnode, createStream) => {
   return {
     dom,
     visible,
-    backdropEl: undefined,
     activateDismissTap: undefined, // set in onMount
     deActivateDismissTap: undefined, // set in onMount
     handleDismissTap: undefined, // set in onMount
@@ -244,14 +216,15 @@ export const getInitialState = (vnode, createStream) => {
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
-  const type = attrs.type || "floating";
+  const type = attrs.type || DEFAULT_TYPE;
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs),
     {
       className: [
-        attrs.parentClassName || classes.component,
+        classes.component,
         attrs.permanent ? classes.permanent : null,
+        attrs.fullHeight ? classes.fullHeight : null,
         type === "floating" ? classes.floating : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,

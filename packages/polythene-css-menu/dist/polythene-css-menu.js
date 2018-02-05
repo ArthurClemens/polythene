@@ -38,13 +38,14 @@ var classes = {
   content: "pe-menu__content",
   placeholder: "pe-menu__placeholder",
   target: "pe-menu__target",
-  backdrop: "pe-menu__backdrop",
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
+  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
-  floating: "pe-menu--floating",
 
   // lookup
   listTile: listTileClasses.component,
@@ -81,14 +82,22 @@ var layout = (function (selector, componentVars) {
     position: "absolute",
     minWidth: polytheneTheme.vars.grid_unit_menu * componentVars.min_size + "px",
 
-    ".pe-menu--width-auto": {
+    "&.pe-menu--width-auto": {
       width: "auto"
     },
 
-    ".pe-menu--permanent": {
+    "&.pe-menu--visible": {
+      opacity: 1
+    },
+
+    "&.pe-menu--permanent": {
       position: "relative",
       opacity: 1,
       zIndex: 0
+    },
+
+    " .pe-menu__content": {
+      width: "100%"
     },
 
     ".pe-menu--floating": {
@@ -97,21 +106,14 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-menu__content": {
-      width: "100%"
-    }
-  }]), {
-    ".pe-menu__backdrop": {
-      transitionTimingFunction: "ease-out",
-      transitionProperty: "opacity",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%", /* performs better (without glitching) than right: 0, bottom: 0 */
+    ".pe-menu--full-height": {
       height: "100%",
-      opacity: 0
+
+      " .pe-menu__content": {
+        height: "100%"
+      }
     }
-  }];
+  }])];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -123,11 +125,7 @@ var style = function style(scopes, selector, componentVars, tint) {
     " .pe-menu__content": {
       "background-color": componentVars["color_" + tint + "_background"]
     }
-  }), {
-    ".pe-menu__backdrop": {
-      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
-    }
-  }];
+  })];
 };
 
 var color = (function (selector, componentVars) {

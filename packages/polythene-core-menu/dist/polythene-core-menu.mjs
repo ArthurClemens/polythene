@@ -35,89 +35,18 @@ var classes = {
   content: "pe-menu__content",
   placeholder: "pe-menu__placeholder",
   target: "pe-menu__target",
-  backdrop: "pe-menu__backdrop",
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
+  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
-  floating: "pe-menu--floating",
 
   // lookup
   listTile: listTileClasses.component,
   selectedListTile: listTileClasses.selected
-};
-
-var show$1 = function show$$1(_ref) {
-  var el = _ref.el,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
-  return {
-    el: el,
-    showDuration: showDuration,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
-      return el.style.opacity = 0;
-    },
-    show: function show$$1() {
-      return el.style.opacity = 1;
-    }
-  };
-};
-
-var hide$1 = function hide$$1(_ref2) {
-  var el = _ref2.el,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
-  return {
-    el: el,
-    hideDuration: hideDuration,
-    hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
-      return el.style.opacity = 0;
-    }
-  };
-};
-
-var defaultTransitions = {
-  show: show$1,
-  hide: hide$1
-};
-
-var show$2 = function show$$1(_ref) {
-  var el = _ref.el,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
-  return {
-    el: el,
-    showDuration: showDuration,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
-      return el.style.opacity = 0;
-    },
-    show: function show$$1() {
-      return el.style.opacity = 1;
-    }
-  };
-};
-
-var hide$2 = function hide$$1(_ref2) {
-  var el = _ref2.el,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
-  return {
-    el: el,
-    hideDuration: hideDuration,
-    hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
-      return el.style.opacity = 0;
-    }
-  };
-};
-
-var backdropTransitions = {
-  show: show$2,
-  hide: hide$2
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -128,14 +57,15 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var SHADOW_Z = 1;
-var OFFSET_V = -8;
-var DEFAULT_OFFSET_H = 0;
-var MIN_SIZE = 1.5;
 var ANIMATION_DURATION = .220;
+var DEFAULT_OFFSET_H = 0;
+var DEFAULT_TYPE = "floating";
+var MIN_SIZE = 1.5;
+var OFFSET_V = -8;
+var SHADOW_Z = 1;
 
 var positionMenu = function positionMenu(state, attrs) {
-  if (!attrs.target || isServer) {
+  if (isServer) {
     return;
   }
   var targetEl = document.querySelector(attrs.target);
@@ -199,50 +129,24 @@ var positionMenu = function positionMenu(state, attrs) {
   }
 };
 
-var showBackdrop = function showBackdrop(state, attrs) {
-  if (!attrs.backdrop || isServer) {
-    return;
-  }
-  var targetEl = document.querySelector(attrs.backdropTarget);
-  if (!targetEl) {
-    return;
-  }
-  var el = document.createElement("div");
-  el.setAttribute("class", classes.backdrop);
-  targetEl.appendChild(el);
-  state.backdropEl = el;
-  show(_extends({}, attrs, backdropTransitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })));
-};
-
-var hideBackdrop = function hideBackdrop(state, attrs) {
-  if (!state.backdropEl) {
-    return;
-  }
-  var el = state.backdropEl;
-  hide(_extends({}, attrs, backdropTransitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }))).then(function () {
-    if (el.parentNode) {
-      el.parentNode.removeChild(el);
-    }
-  });
-};
-
 var showMenu = function showMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: false, transitioning: true });
   }
   positionMenu(state, attrs);
-  showBackdrop(state, attrs);
-  var transitions = attrs.transitions || defaultTransitions;
-  console.log("attrs.transitions", attrs.transitions);
+  var transitions = attrs.transitions;
   var el = state.dom();
-  return show(_extends({}, attrs, transitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay }))).then(function () {
+  return show(_extends({}, attrs, transitions ? transitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay }) : {
+    el: el,
+    showClass: classes.visible
+  })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: true, transitioning: false });
     }
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
-    state.visible(false);
+    state.visible(true);
   });
 };
 
@@ -250,10 +154,12 @@ var hideMenu = function hideMenu(state, attrs) {
   if (attrs.onChange) {
     attrs.onChange({ visible: true, transitioning: true });
   }
-  hideBackdrop(state, attrs);
-  var transitions = attrs.transitions || defaultTransitions;
+  var transitions = attrs.transitions;
   var el = state.dom();
-  return hide(_extends({}, attrs, transitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }))).then(function () {
+  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }) : {
+    el: el,
+    showClass: classes.visible
+  })).then(function () {
     if (attrs.onChange) {
       attrs.onChange({ visible: false, transitioning: false });
     }
@@ -356,7 +262,6 @@ var getInitialState = function getInitialState(vnode, createStream) {
   return {
     dom: dom,
     visible: visible,
-    backdropEl: undefined,
     activateDismissTap: undefined, // set in onMount
     deActivateDismissTap: undefined, // set in onMount
     handleDismissTap: undefined, // set in onMount
@@ -370,9 +275,9 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  var type = attrs.type || "floating";
+  var type = attrs.type || DEFAULT_TYPE;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [attrs.parentClassName || classes.component, attrs.permanent ? classes.permanent : null, type === "floating" ? classes.floating : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.fullHeight ? classes.fullHeight : null, type === "floating" ? classes.floating : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -417,11 +322,7 @@ var vars$1 = {
   border_radius: vars.unit_block_border_radius,
 
   color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background),
-
-  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
-
+  color_dark_background: rgba(vars.color_dark_background)
   // text colors are set by content, usually list tiles
 };
 

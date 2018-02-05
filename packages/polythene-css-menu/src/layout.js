@@ -18,52 +18,50 @@ const widthStyle = (componentVars, size) => {
   };
 };
 
-export default (selector, componentVars) => [
-  {
-    [selector]: [
-      componentVars.sizes.map((size) =>
-        widthStyle(componentVars, size)
-      ),
-      {
-        transitionTimingFunction: "ease-out",
-        transitionProperty: "all",
-        zIndex: vars.z_menu,
-        opacity: 0,
-        position: "absolute",
-        minWidth: vars.grid_unit_menu * componentVars.min_size + "px",
+export default (selector, componentVars) => [{
+  [selector]: [
+    componentVars.sizes.map((size) =>
+      widthStyle(componentVars, size)
+    ),
+    {
+      transitionTimingFunction: "ease-out",
+      transitionProperty: "all",
+      zIndex: vars.z_menu,
+      opacity: 0,
+      position: "absolute",
+      minWidth: vars.grid_unit_menu * componentVars.min_size + "px",
 
-        ".pe-menu--width-auto": {
-          width: "auto"
-        },
+      "&.pe-menu--width-auto": {
+        width: "auto"
+      },
 
-        ".pe-menu--permanent": {
-          position: "relative",
-          opacity: 1,
-          zIndex: 0
-        },
+      "&.pe-menu--visible": {
+        opacity: 1
+      },
 
-        ".pe-menu--floating": {
-          " .pe-menu__content": {
-            borderRadius: componentVars.border_radius + "px"
-          }
-        },
+      "&.pe-menu--permanent": {
+        position: "relative",
+        opacity: 1,
+        zIndex: 0
+      },
+
+      " .pe-menu__content": {
+        width: "100%",
+      },
+
+      ".pe-menu--floating": {
+        " .pe-menu__content": {
+          borderRadius: componentVars.border_radius + "px"
+        }
+      },
+
+      ".pe-menu--full-height": {
+        height: "100%",
 
         " .pe-menu__content": {
-          width: "100%"
-        },
+          height: "100%"
+        }
       }
-    ],
-  },
-  {
-    ".pe-menu__backdrop": {
-      transitionTimingFunction: "ease-out",
-      transitionProperty: "opacity",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%", /* performs better (without glitching) than right: 0, bottom: 0 */
-      height: "100%",
-      opacity: 0,
-    },
-  }
-];
+    }
+  ],
+}];

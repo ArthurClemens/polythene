@@ -49,6 +49,10 @@
   border-radius: 2px
 }
 
+.pe-menu.pe-menu--full-height,.pe-menu.pe-menu--full-height .pe-menu__content {
+  height: 100%
+}
+
 .pe-menu .pe-menu__content {
   width: 100%
 }
@@ -59,8 +63,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0
 }
 
