@@ -1,20 +1,18 @@
 
+const SHADOW_WIDTH = 10;
+
 const show = ({ el, showDuration, showDelay }) => ({
   el,
   showDuration,
   showDelay:    showDelay || 0,
   beforeShow:   () => {
     const rect = el.getBoundingClientRect();
-    const width = rect.width;
-    el.style.position = "absolute";
+    const width = rect.width + SHADOW_WIDTH;
     el.style.top = 0;
-    el.style.left = 0;
-    el.style.transform = `translate(-${width}px, 0px)`;
-    el.style.opacity = 1;
+    el.style.left = `-${width}px`;
   },
   show:         () => {
-    el.style.transform = "translate(0px, 0px)";
-    // el.style.opacity = 1;
+    el.style.left = 0;
   }
 });
 
@@ -24,11 +22,8 @@ const hide = ({ el, hideDuration, hideDelay }) => ({
   hideDelay:    hideDelay || 0,
   hide:         () => {
     const rect = el.getBoundingClientRect();
-    const width = rect.width;
-    el.style.transform = `translate(-${width}px, 0px)`;
-    
-    // el.style.left = `-${width}px`;
-    // el.style.opacity = 0;
+    const width = rect.width + SHADOW_WIDTH;
+    el.style.left = `-${width}px`;
   },
 });
 

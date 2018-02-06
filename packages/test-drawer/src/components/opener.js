@@ -11,7 +11,6 @@ export default ({ renderer: h, keys: k, target, Drawer, RaisedButton, content, d
   view: vnode => {
     const state = vnode.state;
     const show = state.show();
-
     return h("div", null,
       [
         h(RaisedButton,
@@ -19,13 +18,13 @@ export default ({ renderer: h, keys: k, target, Drawer, RaisedButton, content, d
             label: "Toggle drawer",
             id,
             events: {
-              [k.onclick]: () => state.show(true)
+              [k.onclick]: () => state.show(!show)
             }
           }
         ),
         drawerFn({
           show,
-          target: target || id ? `#${id}` : null,
+          target: target || (id ? `#${id}` : null),
           h,
           Drawer,
           content,

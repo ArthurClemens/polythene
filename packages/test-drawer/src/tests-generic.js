@@ -5,7 +5,7 @@ import navigationList from "./components/navigation-list";
 
 export default ({ keys, renderer, Drawer, RaisedButton, List, ListTile, Icon }) => {
 
-  const NavigationList = navigationList({ renderer, Icon, List, ListTile });
+  const NavigationList = navigationList({ renderer, keys, Icon, List, ListTile });
 
   return [
     {

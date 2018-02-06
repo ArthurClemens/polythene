@@ -1,12 +1,12 @@
-import { ViewComponent } from "polythene-mithril-base";
+import { StateComponent } from "polythene-mithril-base";
 import { coreDrawer as core } from "polythene-core-drawer";
 import { Menu } from "polythene-mithril-menu";
 
-export const Drawer = ViewComponent(Object.assign(
+export const Drawer = StateComponent(Object.assign(
   {},
   core,
   {
-    component: Menu,
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Menu }))
   }
 ));
 

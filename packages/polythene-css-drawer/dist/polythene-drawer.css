@@ -1,4 +1,48 @@
-.pe-menu.pe-drawer {
-  position: relative
+.pe-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none
+}
+
+.pe-drawer.pe-drawer--full-height {
+  height: 100%
+}
+
+.pe-drawer.pe-drawer--cover-from-left .pe-drawer__panel {
+  position: absolute;
+  top: 0;
+  left: -99999px
+}
+
+.pe-drawer .pe-drawer__panel {
+  height: 100%;
+  pointer-events: all
+}
+
+.pe-drawer .pe-drawer__backdrop {
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: -99999px;
+  opacity: 0;
+  pointer-events: none
+}
+
+.pe-drawer.pe-drawer--visible .pe-drawer__backdrop {
+  left: 0;
+  right: 0;
+  pointer-events: all
+}
+
+.pe-dark-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-dark-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
+  background-color: rgba(0,0,0,.5)
+}
+
+.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
+  background-color: rgba(0,0,0,.4)
 }
 /*# sourceMappingURL=polythene-drawer.css.map */

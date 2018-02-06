@@ -1,7 +1,9 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    
+    ".pe-drawer--backdrop-visible .pe-drawer__backdrop": {
+      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
+    },
   }
 }];
 

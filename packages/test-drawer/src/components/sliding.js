@@ -5,38 +5,45 @@ export default ({ show, h, Drawer, didHide, getState, content, backdrop }) =>
   h("div",
     {
       style: {
-        display: "flex",
-        overflow: "hidden",
         position: "relative",
         marginTop: "20px",
+        overflow: "hidden",
       },
-      "data-drawer": backdrop ? "sliding" : ""
     },
-    [
-      h("nav",
-        null,
-        h(Drawer, {
-          show,
-          didHide,
-          getState,
-          size: 4,
-          type: "pushing",
-          backdrop,
-          backdropTarget: "[data-drawer=sliding]",
-          content
-        })
-      ),
-      h("main",
-        {
-          style: {
-            background: "#ffeb3b",
-            padding: "1rem",
-            flexShrink: 0,
-            flexGrow: 0,
-            width: "100%",
-          }
-        },
-        ipsum + ipsum
-      )
-    ]
+    h("div",
+      {
+        style: {
+          display: "flex",
+        }
+      },
+      [
+        h("nav",
+          null,
+          h(Drawer, {
+            show,
+            didHide,
+            getState,
+            backdrop,
+            closeOnEscape: true,
+            menu: {
+              size: 4,
+              content,
+              fullHeight: true,
+            },
+          })
+        ),
+        h("main",
+          {
+            style: {
+              background: "#ffeb3b",
+              padding: "1rem",
+              flexShrink: 0,
+              flexGrow: 0,
+              width: "100%",
+            }
+          },
+          ipsum + ipsum
+        )
+      ]
+    )
   );

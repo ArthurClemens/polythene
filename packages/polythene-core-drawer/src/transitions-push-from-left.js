@@ -6,12 +6,10 @@ const show = ({ el, showDuration, showDelay }) => ({
   beforeShow:   () => {
     const rect = el.getBoundingClientRect();
     const width = rect.width;
-    el.style.marginLeft = `-${width}px`;
-    el.style.opacity = 0;
+    el.style.left = `-${width}px`;
   },
   show:         () => {
-    el.style.marginLeft = 0;
-    el.style.opacity = 1;
+    el.style.left = 0;
   }
 });
 
@@ -23,8 +21,7 @@ const hide = ({ el, hideDuration, hideDelay }) => ({
     const rect = el.getBoundingClientRect();
     const width = rect.width;
     el.style.marginLeft = `-${width}px`;
-    el.style.opacity = 0;
-  }
+  },
 });
 
 export default {

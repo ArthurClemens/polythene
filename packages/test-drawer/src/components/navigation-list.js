@@ -19,7 +19,7 @@ ListTileCSS.addStyle(".tests-drawer-navigation-list", {
   color_light_hover_front: "#e01d5f" 
 });
 
-export default ({ renderer: h, Icon, List, ListTile }) => {
+export default ({ renderer: h, keys: k, Icon, List, ListTile }) => {
 
   const tile = ({ title, icon }) =>
     h(ListTile, {
@@ -30,6 +30,9 @@ export default ({ renderer: h, Icon, List, ListTile }) => {
         svg: { content: h.trust(icon) }
       }),
       hoverable: true,
+      events: {
+        [k.onclick]: () => console.log("click")
+      }
     });
 
   return h(List, {

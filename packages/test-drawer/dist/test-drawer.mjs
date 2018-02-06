@@ -178,16 +178,15 @@ var opener = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       var show = state.show();
-
       return h("div", null, [h(RaisedButton$$1, {
         label: "Toggle drawer",
         id: id,
         events: _defineProperty({}, k.onclick, function () {
-          return state.show(true);
+          return state.show(!show);
         })
       }), drawerFn({
         show: show,
-        target: target || id ? "#" + id : null,
+        target: target || (id ? "#" + id : null),
         h: h,
         Drawer: Drawer$$1,
         content: content,
@@ -228,21 +227,25 @@ var sliding = (function (_ref) {
       backdrop = _ref.backdrop;
   return h("div", {
     style: {
-      display: "flex",
-      overflow: "hidden",
       position: "relative",
-      marginTop: "20px"
-    },
-    "data-drawer": backdrop ? "sliding" : ""
+      marginTop: "20px",
+      overflow: "hidden"
+    }
+  }, h("div", {
+    style: {
+      display: "flex"
+    }
   }, [h("nav", null, h(Drawer$$1, {
     show: show,
     didHide: didHide,
     getState: getState,
-    size: 4,
-    type: "pushing",
     backdrop: backdrop,
-    backdropTarget: "[data-drawer=sliding]",
-    content: content
+    closeOnEscape: true,
+    menu: {
+      size: 4,
+      content: content,
+      fullHeight: true
+    }
   })), h("main", {
     style: {
       background: "#ffeb3b",
@@ -251,7 +254,7 @@ var sliding = (function (_ref) {
       flexGrow: 0,
       width: "100%"
     }
-  }, ipsum + ipsum)]);
+  }, ipsum + ipsum)]));
 });
 
 var icons = {
