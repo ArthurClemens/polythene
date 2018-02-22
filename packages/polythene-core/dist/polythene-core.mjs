@@ -352,6 +352,7 @@ var Multi = function Multi(_ref) {
     }, candidates.map(function (itemData) {
       return renderer(mOptions.instance, _extends({}, {
         key: itemData.key,
+        spawnId: spawn,
         instanceId: itemData.instanceId,
         transitions: mOptions.transitions,
         holderSelector: mOptions.holderSelector,

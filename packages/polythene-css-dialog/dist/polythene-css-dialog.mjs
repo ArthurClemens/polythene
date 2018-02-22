@@ -39,6 +39,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -55,10 +57,10 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
   open: "pe-dialog--open",
 
   // lookup
@@ -68,8 +70,12 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [flex.layoutCenterCenter, {
-    position: "fixed",
+  return [_defineProperty({
+    ".pe-dialog__holder": {
+      height: "100%"
+    }
+  }, selector, [flex.layoutCenterCenter, {
+    position: componentVars.position,
     top: 0,
     left: 0,
     right: 0,
@@ -91,6 +97,14 @@ var layout = (function (selector, componentVars) {
     " .pe-dialog__content": {
       position: "relative",
       borderRadius: componentVars.border_radius + "px"
+    },
+
+    " .pe-dialog__backdrop": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
     }
   }])];
 });
@@ -105,7 +119,7 @@ var style = function style(scopes, selector, componentVars, tint) {
       backgroundColor: componentVars["color_" + tint + "_background"],
       color: componentVars["color_" + tint + "_text"]
     },
-    "&.pe-dialog--backdrop": {
+    " .pe-dialog__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     }
   })];

@@ -41,6 +41,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -70,11 +72,8 @@ var classes = {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var DialogInstance = polytheneReactBase.StateComponent(_extends({}, polytheneCoreDialog.coreDialogInstance, {
-  createProps: function createProps(vnode, args) {
-    return polytheneCoreDialog.coreDialogInstance.createProps(vnode, _extends(args, { Shadow: polytheneReactShadow.Shadow, DialogPane: polytheneReactDialogPane.DialogPane }));
-  },
   createContent: function createContent(vnode, args) {
-    return polytheneCoreDialog.coreDialogInstance.createContent(vnode, _extends(args, { Shadow: polytheneReactShadow.Shadow, DialogPane: polytheneReactDialogPane.DialogPane }));
+    return polytheneCoreDialog.coreDialogInstance.createContent(vnode, _extends(args, { Shadow: polytheneReactShadow.Shadow, Pane: polytheneReactDialogPane.DialogPane, createPane: polytheneCoreDialog.coreDialogInstance.createPane }));
   }
 }));
 

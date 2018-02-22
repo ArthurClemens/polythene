@@ -1,33 +1,34 @@
 
 const SHADOW_WIDTH = 10;
 
-const show = ({ el, showDuration, showDelay }) => ({
-  el,
+const show = ({ contentEl, showDuration, showDelay }) => ({
+  el: contentEl,
   showDuration,
   showDelay:    showDelay || 0,
   beforeShow:   () => {
-    const rect = el.getBoundingClientRect();
+    const rect = contentEl.getBoundingClientRect();
     const width = rect.width + SHADOW_WIDTH;
-    el.style.top = 0;
-    el.style.left = `-${width}px`;
+    contentEl.style.top = 0;
+    contentEl.style.left = `-${width}px`;
   },
   show:         () => {
-    el.style.left = 0;
+    contentEl.style.left = 0;
   }
 });
 
-const hide = ({ el, hideDuration, hideDelay }) => ({
-  el,
+const hide = ({ contentEl, hideDuration, hideDelay }) => ({
+  el: contentEl,
   hideDuration,
   hideDelay:    hideDelay || 0,
   hide:         () => {
-    const rect = el.getBoundingClientRect();
+    const rect = contentEl.getBoundingClientRect();
     const width = rect.width + SHADOW_WIDTH;
-    el.style.left = `-${width}px`;
+    contentEl.style.left = `-${width}px`;
   },
 });
 
 export default {
   show,
-  hide
+  hide,
+  name: "over-from-left"
 };

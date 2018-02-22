@@ -94,6 +94,10 @@ Calls to show the that particular dialog will then also need to pass the same sp
 Dialog.show(dialogOptions, { spawn: "special" })
 ~~~
 
+#### Multiple dialogs
+
+Multiple dialogs can co-exist for the same spawn. Add a unique `id` to each dialog. When using an array of dialogs, differentiate with unique `key`s.
+
 #### Showing and hiding dialogs
 
 Dialog functions:

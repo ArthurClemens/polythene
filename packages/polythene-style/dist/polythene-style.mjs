@@ -2,6 +2,8 @@
 
 var grid_unit = 4;
 var grid_unit_component = 8;
+var increment = 7 * grid_unit_component;
+var increment_large = 8 * grid_unit_component;
 
 var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
 var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
@@ -11,6 +13,8 @@ var vars = {
   // grid
   grid_unit: grid_unit,
   grid_unit_component: grid_unit_component,
+  increment: increment,
+  increment_large: increment_large,
   grid_unit_menu: 56,
   grid_unit_icon_button: 6 * grid_unit_component, // 48
 

@@ -5,6 +5,7 @@ import ConditionalDialogPane from "./components/form-react";
 import fullScreenOptions from "./components/full-screen-react";
 import fullScreenJsxOptions from "./components/full-screen-react-jsx";
 import Updating from "./components/updating-react-jsx";
+import Spawns from "./components/spawns-react-jsx";
 
 const reactTests = ({ Dialog, RaisedButton }) => {
 
@@ -96,6 +97,12 @@ const reactTests = ({ Dialog, RaisedButton }) => {
       interactive: true,
       exclude: true,
       component: () => <Updating />
+    },
+    {
+      name: "Spawns and ids",
+      interactive: true,
+      exclude: true,
+      component: () => <Spawns />
     },
   ];
     

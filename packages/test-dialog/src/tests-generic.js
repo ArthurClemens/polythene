@@ -27,7 +27,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
   DialogCSS.addStyle(".dialog-tests-rounded-blue", {
     border_radius:          5,
     color_light_background: "#2196F3",
-    color_light_text:  "#fff",
+    color_light_text:       "#fff",
   });
 
   ToolbarCSS.addStyle(".tests-dialog-themed-toolbar", {

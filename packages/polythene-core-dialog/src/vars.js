@@ -4,6 +4,7 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
 
 export default {
+  position:                        "fixed",
   border_radius:                   vars.unit_block_border_radius,
   padding_vertical:                3 * vars.grid_unit_component,
   padding_horizontal:              5 * vars.grid_unit_component,

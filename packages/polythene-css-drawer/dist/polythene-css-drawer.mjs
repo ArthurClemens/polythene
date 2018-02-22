@@ -1,67 +1,68 @@
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-drawer';
+import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
-  component: "pe-drawer",
-
-  // elements
-  panel: "pe-drawer__panel",
-  backdrop: "pe-drawer__backdrop",
+  component: "pe-dialog pe-drawer",
 
   // states
-  visible: "pe-drawer--visible",
-  backdropVisible: "pe-drawer--backdrop-visible",
-  fullHeight: "pe-drawer--full-height",
-  coverFromLeft: "pe-drawer--cover-from-left"
+  push: "pe-drawer--push"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [{
-    // position: "relative",
+  var _ref2;
+
+  return [(_ref2 = {}, _defineProperty(_ref2, selector, {
+    justifyContent: "flex-start",
     position: "absolute",
     top: 0,
+    left: 0,
     right: 0,
     bottom: 0,
-    left: 0,
-    pointerEvents: "none",
+    zIndex: 1,
+    height: "100%",
+    padding: 0,
 
-    ".pe-drawer--full-height": {
-      height: "100%"
-    },
-
-    ".pe-drawer--cover-from-left": {
-      " .pe-drawer__panel": {
-        position: "absolute",
-        top: 0,
-        left: "-99999px"
-      }
-    },
-
-    " .pe-drawer__panel": {
+    " .pe-dialog__content": {
+      position: "relative",
       height: "100%",
-      pointerEvents: "all"
+      borderRadius: 0,
+      width: "calc(100% - " + componentVars.content_side_offset + "px)",
+      maxWidth: componentVars.content_max_width + "px"
     },
 
-    " .pe-drawer__backdrop": {
+    " .pe-dialog-pane": {
+      minWidth: "initial"
+    },
+
+    " .pe-dialog__backdrop": {
       position: "absolute",
       top: 0,
-      right: "auto",
-      bottom: 0,
-      left: "-99999px",
-      opacity: 0,
-      pointerEvents: "none"
+      left: 0,
+      right: 0,
+      bottom: 0
     },
 
-    ".pe-drawer--visible": {
-      " .pe-drawer__backdrop": {
-        left: 0,
-        right: 0,
-        pointerEvents: "all"
+    ".pe-drawer--push": {
+      position: "static",
+
+      " .pe-dialog__content": {
+        width: componentVars.content_max_width + "px"
       }
     }
-  }])];
+  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+    " .pe-dialog__content": {
+      width: "calc(100% - " + componentVars.content_side_offset_large + "px)",
+      maxWidth: componentVars.content_max_width_large + "px"
+    },
+    ".pe-drawer--push": {
+      " .pe-dialog__content": {
+        width: componentVars.content_max_width_large + "px"
+      }
+    }
+  })), _ref2)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -84,7 +85,7 @@ var color = (function (selector, componentVars) {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
-var selector = "." + classes.component;
+var selector = "." + classes.component.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
   return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);

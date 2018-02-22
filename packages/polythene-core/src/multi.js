@@ -194,6 +194,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
             {},
             {
               key: itemData.key,
+              spawnId: spawn,
               instanceId: itemData.instanceId,
               transitions: mOptions.transitions,
               holderSelector: mOptions.holderSelector,
@@ -226,5 +227,3 @@ export const Multi = ({ options: mOptions, renderer }) => {
 };
 
 Multi.displayName = "Multi";
-
-

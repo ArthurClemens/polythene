@@ -156,17 +156,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat. ";
+
 var opener = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
-      target = _ref.target,
+      name = _ref.name,
       Drawer$$1 = _ref.Drawer,
       RaisedButton$$1 = _ref.RaisedButton,
-      content = _ref.content,
-      drawerFn = _ref.drawerFn,
-      transitionOptions = _ref.transitionOptions,
-      id = _ref.id,
-      backdrop = _ref.backdrop;
+      drawerOpts = _ref.drawerOpts;
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
@@ -178,84 +176,41 @@ var opener = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       var show = state.show();
+      console.log("show", show);
       return h("div", null, [h(RaisedButton$$1, {
+        key: "button", // for React
         label: "Toggle drawer",
-        id: id,
         events: _defineProperty({}, k.onclick, function () {
-          return state.show(!show);
+          return console.log("name", name, "onclick", show), show ? Drawer$$1.hide({ id: name, spawn: name }) : Drawer$$1.show(drawerOpts, { id: name, spawn: name });
         })
-      }), drawerFn({
-        show: show,
-        target: target || (id ? "#" + id : null),
-        h: h,
-        Drawer: Drawer$$1,
-        content: content,
-        transitionOptions: transitionOptions,
-        backdrop: backdrop,
-        didHide: function didHide() {
-          return state.show(false);
+      }), h("div", {
+        key: "content", // for React
+        style: {
+          position: "relative",
+          marginTop: "24px",
+          overflow: "hidden"
         }
-      })]);
+      }, h("div", {
+        style: {
+          display: "flex"
+        }
+      }, [h("nav", {
+        key: "drawer" // for React
+      }, h(Drawer$$1, { spawn: name })), h("main", {
+        key: "main", // for React
+        style: {
+          background: "#ffeb3b",
+          padding: "1rem",
+          flexShrink: 0,
+          flexGrow: 0,
+          width: "100%"
+        }
+      }, ipsum + ipsum)]))]);
     }
   };
 });
 
-var permanent = (function (_ref) {
-  var h = _ref.renderer,
-      Drawer$$1 = _ref.Drawer,
-      content = _ref.content;
-  return {
-    view: function view() {
-      return h(Drawer$$1, {
-        size: 5,
-        permanent: true,
-        content: content
-      });
-    }
-  };
-});
-
-var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat. ";
-
-var sliding = (function (_ref) {
-  var show = _ref.show,
-      h = _ref.h,
-      Drawer$$1 = _ref.Drawer,
-      didHide = _ref.didHide,
-      getState = _ref.getState,
-      content = _ref.content,
-      backdrop = _ref.backdrop;
-  return h("div", {
-    style: {
-      position: "relative",
-      marginTop: "20px",
-      overflow: "hidden"
-    }
-  }, h("div", {
-    style: {
-      display: "flex"
-    }
-  }, [h("nav", null, h(Drawer$$1, {
-    show: show,
-    didHide: didHide,
-    getState: getState,
-    backdrop: backdrop,
-    closeOnEscape: true,
-    menu: {
-      size: 4,
-      content: content,
-      fullHeight: true
-    }
-  })), h("main", {
-    style: {
-      background: "#ffeb3b",
-      padding: "1rem",
-      flexShrink: 0,
-      flexGrow: 0,
-      width: "100%"
-    }
-  }, ipsum + ipsum)]));
-});
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var icons = {
   drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
@@ -279,6 +234,7 @@ ListTileCSS.addStyle(".tests-drawer-navigation-list", {
 
 var navigationList = (function (_ref) {
   var h = _ref.renderer,
+      k = _ref.keys,
       Icon$$1 = _ref.Icon,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile;
@@ -294,7 +250,10 @@ var navigationList = (function (_ref) {
       front: h(Icon$$1, {
         svg: { content: h.trust(icon) }
       }),
-      hoverable: true
+      hoverable: true,
+      events: _defineProperty$1({}, k.onclick, function () {
+        return console.log("click");
+      })
     });
   };
 
@@ -327,21 +286,30 @@ var genericTests = (function (_ref) {
       Icon$$1 = _ref.Icon;
 
 
-  var NavigationList = navigationList({ renderer: renderer$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1 });
+  var NavigationList = navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1 });
 
-  return [{
-    name: "Permanent, floating",
-    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, content: NavigationList })
-  }, {
-    name: "Sliding drawer (push from left)",
+  return [
+  // {
+  //   name: "Permanent, floating",
+  //   component: permanent({ renderer, Drawer, content: NavigationList })
+  // },
+  {
+    name: "Sliding drawer (slide over from left, with backdrop)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, content: NavigationList, drawerFn: sliding, backdrop: false })
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, name: "over", drawerOpts: {
+        content: NavigationList,
+        backdrop: true
+      } })
   }, {
-    name: "Sliding drawer (push from left, with backdrop)",
+    name: "Pushing drawer (push from left, without shadow)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, content: NavigationList, drawerFn: sliding, backdrop: true })
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, name: "push", drawerOpts: {
+        content: NavigationList,
+        push: true,
+        z: 0
+      } })
   }];
 });
 

@@ -39,10 +39,18 @@
   width: auto
 }
 
+.pe-menu.pe-menu--visible {
+  opacity: 1
+}
+
 .pe-menu.pe-menu--permanent {
   position: relative;
   opacity: 1;
   z-index: 0
+}
+
+.pe-menu .pe-menu__content {
+  width: 100%
 }
 
 .pe-menu.pe-menu--floating .pe-menu__content {
@@ -53,34 +61,11 @@
   height: 100%
 }
 
-.pe-menu .pe-menu__content {
-  width: 100%
-}
-
-.pe-menu__backdrop {
-  transition-timing-function: ease-out;
-  transition-property: opacity;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0
-}
-
 .pe-dark-tone.pe-menu .pe-menu__content,.pe-dark-tone .pe-menu .pe-menu__content {
   background-color: #222
 }
 
-.pe-menu__backdrop {
-  background-color: rgba(0,0,0,.5)
-}
-
 .pe-light-tone.pe-menu .pe-menu__content,.pe-light-tone .pe-menu .pe-menu__content,.pe-menu .pe-menu__content {
   background-color: #fff
-}
-
-.pe-menu__backdrop {
-  background-color: rgba(0,0,0,.4)
 }
 /*# sourceMappingURL=polythene-menu.css.map */

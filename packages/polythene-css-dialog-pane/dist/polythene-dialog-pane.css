@@ -20,6 +20,10 @@
   z-index: 1
 }
 
+.pe-dialog-pane .pe-dialog-pane__content {
+  width: 100%
+}
+
 .pe-dialog-pane .pe-dialog-pane__title {
   font-size: 20px;
   line-height: 24px;

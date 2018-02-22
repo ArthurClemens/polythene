@@ -5,7 +5,7 @@ import layout from "./layout";
 import color from "./color";
 
 const fns = [layout, color];
-const selector = `.${classes.component}`;
+const selector = `.${classes.component.replace(/ /g, ".")}`;
 
 export const addStyle = (customSelector, customVars) => 
   styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);  

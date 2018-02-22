@@ -2,10 +2,13 @@ import { vars } from "polythene-theme";
 import { flex } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
+  ".pe-dialog__holder": {
+    height: "100%"
+  },
   [selector]: [
     flex.layoutCenterCenter,
     {
-      position: "fixed",
+      position: componentVars.position,
       top: 0,
       left: 0,
       right: 0,
@@ -27,6 +30,14 @@ export default (selector, componentVars) => [{
       " .pe-dialog__content": {
         position: "relative",
         borderRadius: componentVars.border_radius + "px",
+      },
+
+      " .pe-dialog__backdrop": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
       }
     }
   ],

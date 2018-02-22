@@ -1,12 +1,13 @@
 import { vars } from "polythene-theme";
 
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
-  
-export default {
-  color_light_background:          rgba(vars.color_light_background),
-  color_dark_background:           rgba(vars.color_dark_background),
+const content_side_offset =       vars.grid_unit_component * 7; // 56
+const content_side_offset_large = vars.grid_unit_component * 8; // 64
+const content_max_width =         5 * vars.increment;
+const content_max_width_large =   5 * vars.increment_large;
 
-  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-  color_dark_backdrop_background:  "rgba(0, 0, 0, .5)",
+export default {
+  content_side_offset,
+  content_side_offset_large,
+  content_max_width,
+  content_max_width_large
 };

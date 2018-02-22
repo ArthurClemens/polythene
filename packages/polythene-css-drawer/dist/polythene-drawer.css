@@ -1,48 +1,51 @@
-.pe-drawer {
+.pe-dialog.pe-drawer {
+  justify-content: flex-start;
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  pointer-events: none
-}
-
-.pe-drawer.pe-drawer--full-height {
-  height: 100%
-}
-
-.pe-drawer.pe-drawer--cover-from-left .pe-drawer__panel {
-  position: absolute;
-  top: 0;
-  left: -99999px
-}
-
-.pe-drawer .pe-drawer__panel {
+  z-index: 1;
   height: 100%;
-  pointer-events: all
+  padding: 0
 }
 
-.pe-drawer .pe-drawer__backdrop {
+.pe-dialog.pe-drawer .pe-dialog__content {
+  position: relative;
+  height: 100%;
+  border-radius: 0;
+  width: calc(1 - undefinedpx);
+  max-width: undefinedpx
+}
+
+.pe-dialog.pe-drawer .pe-dialog-pane {
+  min-width: 0
+}
+
+.pe-dialog.pe-drawer .pe-dialog__backdrop {
   position: absolute;
   top: 0;
-  right: auto;
-  bottom: 0;
-  left: -99999px;
-  opacity: 0;
-  pointer-events: none
-}
-
-.pe-drawer.pe-drawer--visible .pe-drawer__backdrop {
   left: 0;
   right: 0;
-  pointer-events: all
+  bottom: 0
 }
 
-.pe-dark-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-dark-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
-  background-color: rgba(0,0,0,.5)
+.pe-dialog.pe-drawer.pe-drawer--push {
+  position: static
 }
 
-.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
-  background-color: rgba(0,0,0,.4)
+.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  width: undefinedpx
+}
+
+@media (min-width:600px) {
+  .pe-dialog.pe-drawer .pe-dialog__content {
+    width: calc(1 - undefinedpx);
+    max-width: undefinedpx
+  }
+
+  .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+    width: undefinedpx
+  }
 }
 /*# sourceMappingURL=polythene-drawer.css.map */

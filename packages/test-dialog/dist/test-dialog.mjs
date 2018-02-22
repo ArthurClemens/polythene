@@ -1,6 +1,7 @@
 import { Button, Dialog, DialogPane, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, ToolbarTitle, keys, renderer } from 'polythene-mithril';
 import { DialogCSS, ToolbarCSS } from 'polythene-css';
 import { Button as Button$1, Dialog as Dialog$1, DialogPane as DialogPane$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { subscribe, unsubscribe } from 'polythene-core';
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -866,6 +867,70 @@ var Updating = {
   }
 };
 
+function _defineProperty$8(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+DialogCSS.addStyle(".dialog-tests-static", {
+  position: "static"
+});
+
+var spawnBlock = function spawnBlock(spawnId) {
+  return renderer("div", {
+    className: "dialog-row",
+    style: {
+      background: "#ddd",
+      display: "flex",
+      margin: "10px 0 20px 0",
+      width: "100%",
+      height: "200px"
+    }
+  }, renderer(Dialog, { spawn: spawnId }));
+};
+
+var createOpener = function createOpener(_ref) {
+  var title = _ref.title,
+      spawn = _ref.spawn,
+      id = _ref.id;
+  return renderer(RaisedButton, {
+    key: title,
+    label: title,
+    events: _defineProperty$8({}, keys.onclick, function () {
+      return Dialog.show({
+        key: title,
+        title: title,
+        body: renderer(RaisedButton, {
+          label: "Close",
+          events: _defineProperty$8({}, keys.onclick, function () {
+            return Dialog.hide({ spawn: spawn, id: id });
+          })
+        }),
+        className: "dialog-tests-static"
+      }, { spawn: spawn, id: id });
+    })
+  });
+};
+
+var Spawns = {
+  view: function view() {
+    return [renderer(".pe-button-row", [createOpener({
+      title: "spawn 1, id 1",
+      spawn: "spawn-1",
+      id: "id-1"
+    }), createOpener({
+      title: "spawn 1, id 2",
+      spawn: "spawn-1",
+      id: "id-2"
+    })]), spawnBlock("spawn-1"), renderer(".pe-button-row", [createOpener({
+      title: "spawn 2, id 3",
+      spawn: "spawn-2",
+      id: "id-3"
+    }), createOpener({
+      title: "spawn 2, id 4",
+      spawn: "spawn-2",
+      id: "id-4"
+    })]), spawnBlock("spawn-2")];
+  }
+};
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var mithrilTests = function mithrilTests(_ref) {
@@ -903,6 +968,15 @@ var mithrilTests = function mithrilTests(_ref) {
     component: {
       view: function view() {
         return renderer$$1(Updating);
+      }
+    }
+  }, {
+    name: "Spawns and ids",
+    interactive: true,
+    exclude: true,
+    component: {
+      view: function view() {
+        return renderer$$1(Spawns);
       }
     }
   }];
@@ -2998,6 +3072,135 @@ var Updating$2 = function (_Component) {
   return Updating;
 }(react_2);
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass$2 = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty$9(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck$2(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn$2(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits$2(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+DialogCSS.addStyle(".dialog-tests-static", {
+  position: "static"
+});
+
+var Opener = function Opener(_ref) {
+  var title = _ref.title,
+      spawn = _ref.spawn,
+      id = _ref.id;
+  return react.createElement(RaisedButton$1, {
+    key: title,
+    label: title,
+    events: {
+      onClick: function onClick() {
+        return Dialog$1.show({
+          key: title,
+          title: title,
+          body: react.createElement(RaisedButton$1, {
+            label: "Close",
+            events: {
+              onClick: function onClick() {
+                return Dialog$1.hide({ spawn: spawn, id: id });
+              }
+            }
+          }),
+          className: "dialog-tests-static"
+        }, { spawn: spawn, id: id });
+      }
+    }
+  });
+};
+
+var SpawnArea = function (_Component) {
+  _inherits$2(SpawnArea, _Component);
+
+  function SpawnArea(props) {
+    _classCallCheck$2(this, SpawnArea);
+
+    var _this = _possibleConstructorReturn$2(this, (SpawnArea.__proto__ || Object.getPrototypeOf(SpawnArea)).call(this, props));
+
+    _this.state = {}; // local state to force a render on update
+    _this.dialogChange = _this.dialogChange.bind(_this);
+    subscribe("dialog", _this.dialogChange);
+    return _this;
+  }
+
+  _createClass$2(SpawnArea, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._mounted = true;
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._mounted = false;
+      unsubscribe("dialog", this.dialogChange);
+    }
+  }, {
+    key: "dialogChange",
+    value: function dialogChange(_ref2) {
+      var id = _ref2.id,
+          name = _ref2.name;
+
+      if (this._mounted) {
+        this.setState(_extends$2({}, this.state, _defineProperty$9({}, id, name)));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var spawnId = this.props.spawnId;
+
+      return react.createElement(
+        "div",
+        null,
+        react.createElement(
+          "div",
+          { className: "pe-button-row" },
+          react.createElement(Opener, {
+            title: "spawn " + spawnId + ", id 1",
+            spawn: spawnId,
+            id: spawnId + "-id-1"
+          }),
+          react.createElement(Opener, {
+            title: "spawn " + spawnId + ", id 2",
+            spawn: spawnId,
+            id: spawnId + "-id-2"
+          })
+        ),
+        react.createElement(
+          "div",
+          {
+            className: "dialog-row",
+            style: {
+              background: "#ddd",
+              display: "flex",
+              margin: "10px 0 20px 0",
+              width: "100%",
+              height: "200px"
+            } },
+          react.createElement(Dialog$1, { spawn: spawnId })
+        )
+      );
+    }
+  }]);
+
+  return SpawnArea;
+}(react_2);
+
+var Spawns$1 = function Spawns() {
+  return react.createElement(
+    "div",
+    null,
+    react.createElement(SpawnArea, { spawnId: "1" }),
+    react.createElement(SpawnArea, { spawnId: "2" })
+  );
+};
+
 var reactTests = function reactTests(_ref) {
   var Dialog$$1 = _ref.Dialog,
       RaisedButton$$1 = _ref.RaisedButton;
@@ -3097,6 +3300,13 @@ var reactTests = function reactTests(_ref) {
     exclude: true,
     component: function component() {
       return react.createElement(Updating$2, null);
+    }
+  }, {
+    name: "Spawns and ids",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(Spawns$1, null);
     }
   }];
 };

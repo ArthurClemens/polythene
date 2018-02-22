@@ -1,14 +1,7 @@
 
 export default {
-  component:       "pe-drawer",
-
-  // elements
-  panel:           "pe-drawer__panel",
-  backdrop:        "pe-drawer__backdrop",
+  component:       "pe-dialog pe-drawer",
 
   // states
-  visible:         "pe-drawer--visible",
-  backdropVisible: "pe-drawer--backdrop-visible",
-  fullHeight:      "pe-drawer--full-height",
-  coverFromLeft:   "pe-drawer--cover-from-left"
+  push:            "pe-drawer--push",
 };

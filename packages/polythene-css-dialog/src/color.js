@@ -5,7 +5,7 @@ const style = (scopes, selector, componentVars, tint) => [{
       backgroundColor: componentVars["color_" + tint + "_background"],
       color: componentVars["color_" + tint + "_text"],
     },
-    "&.pe-dialog--backdrop": {
+    " .pe-dialog__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     }
   }

@@ -6,10 +6,10 @@ const show = ({ el, showDuration, showDelay }) => ({
   beforeShow:   () => {
     const rect = el.getBoundingClientRect();
     const width = rect.width;
-    el.style.left = `-${width}px`;
+    el.style.marginLeft = `-${width}px`;
   },
   show:         () => {
-    el.style.left = 0;
+    el.style.marginLeft = 0;
   }
 });
 
@@ -26,5 +26,6 @@ const hide = ({ el, hideDuration, hideDelay }) => ({
 
 export default {
   show,
-  hide
+  hide,
+  name: "push-from-left"
 };

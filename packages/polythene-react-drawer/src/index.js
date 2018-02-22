@@ -1,13 +1,30 @@
-import { StateComponent } from "polythene-react-base";
+import { StateComponent, renderer } from "polythene-react-base";
+import { Multi } from "polythene-core";
 import { coreDrawer as core } from "polythene-core-drawer";
-import { Menu } from "polythene-react-menu";
+import classes from "polythene-css-classes/dialog";
+import { DialogInstance } from "polythene-react-dialog";
 
-export const Drawer = StateComponent(Object.assign(
+export const DrawerInstance = StateComponent(Object.assign(
   {},
   core,
   {
-    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Menu }))
+    component: DialogInstance
   }
 ));
+
+DrawerInstance.displayName = "DrawerInstance";
+
+const options = {
+  name:           "drawer",
+  htmlShowClass:  classes.open,
+  defaultId:      "default_drawer",
+  holderSelector: `div.${classes.holder}`,
+  instance:       DrawerInstance,
+  placeholder:    `span.${classes.placeholder}`
+};
+
+const Multiple = Multi({ options, renderer });
+export const Drawer = StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(p => Drawer[p] = Multiple[p]);
 
 Drawer.displayName = "Drawer";

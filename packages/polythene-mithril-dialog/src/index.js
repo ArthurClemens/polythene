@@ -9,8 +9,7 @@ export const DialogInstance = StateComponent(Object.assign(
   {},
   core,
   {
-    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow, DialogPane })),
-    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow, DialogPane }))
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow, Pane: DialogPane, createPane: core.createPane }))
   }
 ));
 

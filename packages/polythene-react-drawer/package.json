@@ -18,7 +18,7 @@
     "polythene-core-drawer": "^1.0.0",
     "polythene-css-classes": "^1.0.0",
     "polythene-react-base": "^1.0.0",
-    "polythene-react-menu": "^1.0.0"
+    "polythene-react-dialog": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

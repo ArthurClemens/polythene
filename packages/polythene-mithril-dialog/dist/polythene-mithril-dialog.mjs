@@ -41,6 +41,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -62,6 +64,8 @@ var classes = {
   fullScreen: "pe-dialog--full-screen",
   backdrop: "pe-dialog--backdrop",
   open: "pe-dialog--open",
+  anchored: "pe-dialog--anchored",
+  floating: "pe-dialog--floating",
 
   // lookup
   menuContent: menuClasses.content
@@ -70,11 +74,8 @@ var classes = {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var DialogInstance = StateComponent(_extends({}, coreDialogInstance, {
-  createProps: function createProps(vnode, args) {
-    return coreDialogInstance.createProps(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
-  },
   createContent: function createContent(vnode, args) {
-    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
+    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow, Pane: DialogPane, createPane: coreDialogInstance.createPane }));
   }
 }));
 
