@@ -19,6 +19,7 @@ export default (selector, componentVars) => [{
 
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
         fontSize: componentVars.font_size + "px",
+        lineHeight: componentVars.line_height,
         width: "100%",
         display: "block",
         wordBreak: "break-all",

@@ -10,6 +10,7 @@ var classes = {
 
   // states
   compact: "pe-toolbar--compact",
+  appBar: "pe-toolbar--app-bar",
 
   // Toolbar title
 
@@ -41,6 +42,7 @@ var layout = (function (selector, componentVars) {
 
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
       fontSize: componentVars.font_size + "px",
+      lineHeight: componentVars.line_height,
       width: "100%",
       display: "block",
       wordBreak: "break-all",
