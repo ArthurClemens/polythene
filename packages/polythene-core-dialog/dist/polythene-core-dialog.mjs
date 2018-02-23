@@ -57,6 +57,7 @@ var classes = {
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
   backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
@@ -120,7 +121,6 @@ var showDialog = function showDialog(state, attrs) {
   }
   var id = state.instanceId;
   state.transitioning(true);
-
   // Show backdrop
   if (attrs.backdrop) {
     var backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
@@ -168,6 +168,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var transitioning = createStream(false);
   return {
     backdropEl: undefined,
+    touchEl: undefined,
     cleanUp: undefined,
     el: undefined,
     contentEl: undefined,
@@ -184,6 +185,7 @@ var onMount = function onMount(vnode) {
   var dom = vnode.dom;
   state.el = dom;
   state.backdropEl = dom.querySelector("." + classes.backdrop);
+  state.touchEl = dom.querySelector("." + classes.touch);
   state.contentEl = dom.querySelector("." + classes.content);
 
   var handleEscape = function handleEscape(e) {
@@ -201,7 +203,7 @@ var onMount = function onMount(vnode) {
 
   subscribe("keydown", handleEscape);
 
-  if (attrs.showInstance) {
+  if (attrs.show) {
     showDialog(state, attrs);
   }
 };
@@ -222,7 +224,7 @@ var createProps = function createProps(vnode, _ref) {
     "data-spawn-id": attrs.spawnId,
     "data-instance-id": attrs.instanceId
   }, k.onclick, function (e) {
-    if (e.target !== state.el && e.target !== state.backdropEl) {
+    if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
       return;
     }
     if (attrs.modal) {
@@ -261,13 +263,17 @@ var createContent = function createContent(vnode, _ref3) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   var h = renderer;
-  if (attrs.hideInstance) {
+
+  if (attrs.hide) {
     hideDialog(state, attrs);
   }
   var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
   return [attrs.backdrop && h("div", {
     key: "backdrop",
     className: classes.backdrop
+  }), h("div", {
+    key: "touch",
+    className: classes.touch
   }), h("div", {
     className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
     key: "content"

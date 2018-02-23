@@ -8,7 +8,8 @@ var classes = {
   component: "pe-dialog pe-drawer",
 
   // states
-  push: "pe-drawer--push"
+  push: "pe-drawer--push",
+  permanent: "pe-drawer--permanent"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -26,6 +27,7 @@ var layout = (function (selector, componentVars) {
     zIndex: 1,
     height: "100%",
     padding: 0,
+    overflowY: "auto",
 
     " .pe-dialog__content": {
       position: "relative",
@@ -39,7 +41,11 @@ var layout = (function (selector, componentVars) {
       minWidth: "initial"
     },
 
-    " .pe-dialog__backdrop": {
+    " .pe-dialog-pane__body": {
+      overflow: "visible"
+    },
+
+    " .pe-dialog__backdrop, .pe-dialog__touch": {
       position: "absolute",
       top: 0,
       left: 0,
@@ -53,16 +59,29 @@ var layout = (function (selector, componentVars) {
       " .pe-dialog__content": {
         width: componentVars.content_max_width + "px"
       }
+    },
+
+    ".pe-drawer--permanent": {
+      position: "static",
+      height: "auto",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+
+      " .pe-dialog-pane__body": {
+        overflow: "visible",
+        maxHeight: "initial"
+      }
     }
   }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+    ".pe-drawer--push": {
+      " .pe-dialog__content": {
+        maxWidth: componentVars.content_max_width_large + "px"
+      }
+    },
     " .pe-dialog__content": {
       width: "calc(100% - " + componentVars.content_side_offset_large + "px)",
       maxWidth: componentVars.content_max_width_large + "px"
-    },
-    ".pe-drawer--push": {
-      " .pe-dialog__content": {
-        width: componentVars.content_max_width_large + "px"
-      }
     }
   })), _ref2)];
 });

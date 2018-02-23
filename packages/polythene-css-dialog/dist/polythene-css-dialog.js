@@ -60,6 +60,7 @@ var classes = {
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
   backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",

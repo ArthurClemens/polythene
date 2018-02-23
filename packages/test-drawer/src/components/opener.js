@@ -2,24 +2,31 @@ import stream from "mithril/stream";
 
 const ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat. ";
 
-export default ({ renderer: h, keys: k, Drawer, RaisedButton, drawerOpts }) => ({
+export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, drawerOpts }) => ({
   oninit: vnode => {
     const show = stream(false);
+    const hide = stream(false);
     Object.assign(vnode.state, {
       show,
-      redrawOnUpdate: stream.merge([show])
+      hide,
+      redrawOnUpdate: stream.merge([show, hide])
     });
   },
   view: vnode => {
     const state = vnode.state;
     const show = state.show();
+    const hide = state.hide();
+    const onClick = () => state.hide(true);
+    const content = createContent({ isLong: true, onClick });
     return h("div", null, [
       h(RaisedButton,
         {
           key: "button", // for React
-          label: "Show drawer",
+          label: "Toggle drawer",
           events: {
-            [k.onclick]: () => state.show(true)
+            [k.onclick]: () => show
+              ? state.hide(true)
+              : state.show(true)
           }
         }
       ),
@@ -36,6 +43,7 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, drawerOpts }) => (
           {
             style: {
               display: "flex",
+              height: "350px",
             }
           },
           [
@@ -47,8 +55,17 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, drawerOpts }) => (
                 {},
                 drawerOpts,
                 {
+                  content,
                   show,
-                  didHide: () => state.show(false)
+                  hide,
+                  didShow: () => (
+                    state.show(true),
+                    state.hide(false)
+                  ),
+                  didHide: () => (
+                    state.show(false),
+                    state.hide(false)
+                  )
                 }
               ))
             ),

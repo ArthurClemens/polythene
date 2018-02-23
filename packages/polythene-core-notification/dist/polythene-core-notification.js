@@ -31,14 +31,14 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var pauseInstance = function pauseInstance(state) {
+var pause = function pause(state) {
   state.paused(true);
   if (state.timer) {
     state.timer.pause();
   }
 };
 
-var unpauseInstance = function unpauseInstance(state) {
+var unpause = function unpause(state) {
   state.paused(false);
   if (state.timer) {
     state.timer.resume();
@@ -64,7 +64,7 @@ var prepareShow = function prepareShow(state, attrs) {
   }
 };
 
-var showInstance = function showInstance(state, attrs) {
+var showNotification = function showNotification(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -87,7 +87,7 @@ var showInstance = function showInstance(state, attrs) {
     } else {
       var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
       state.timer.start(function () {
-        hideInstance(state, attrs);
+        hideNotification(state, attrs);
       }, timeoutSeconds);
     }
     state.visible(true);
@@ -95,7 +95,7 @@ var showInstance = function showInstance(state, attrs) {
   });
 };
 
-var hideInstance = function hideInstance(state, attrs) {
+var hideNotification = function hideNotification(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -157,8 +157,8 @@ var onMount = function onMount(vnode) {
   if (titleEl) {
     setTitleStyles(titleEl);
   }
-  if (attrs.showInstance && !state.visible()) {
-    showInstance(state, attrs);
+  if (attrs.show && !state.visible()) {
+    showNotification(state, attrs);
   }
   state.mounted(true);
 };
@@ -186,16 +186,16 @@ var createContent = function createContent(vnode, _ref2) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance && state.visible()) {
-      hideInstance(state, attrs);
-    } else if (attrs.showInstance && !state.visible()) {
-      showInstance(state, attrs);
+    if (attrs.hide && state.visible()) {
+      hideNotification(state, attrs);
+    } else if (attrs.show && !state.visible()) {
+      showNotification(state, attrs);
     }
   }
-  if (attrs.pauseInstance && !state.paused()) {
-    pauseInstance(state, attrs);
-  } else if (attrs.unpauseInstance && state.paused()) {
-    unpauseInstance(state, attrs);
+  if (attrs.pause && !state.paused()) {
+    pause(state, attrs);
+  } else if (attrs.unpause && state.paused()) {
+    unpause(state, attrs);
   }
 
   return h("div", {

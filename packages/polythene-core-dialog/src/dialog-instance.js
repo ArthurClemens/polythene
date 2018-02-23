@@ -13,7 +13,6 @@ const showDialog = (state, attrs) => {
   }
   const id = state.instanceId;
   state.transitioning(true);
-
   // Show backdrop
   if (attrs.backdrop) {
     const backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
@@ -73,6 +72,7 @@ export const getInitialState = (vnode, createStream) => {
   const transitioning = createStream(false);
   return {
     backdropEl: undefined,
+    touchEl:    undefined,
     cleanUp:    undefined,
     el:         undefined,
     contentEl:  undefined,
@@ -89,6 +89,7 @@ export const onMount = vnode => {
   const dom = vnode.dom;
   state.el = dom;
   state.backdropEl = dom.querySelector(`.${classes.backdrop}`);
+  state.touchEl = dom.querySelector(`.${classes.touch}`);
   state.contentEl = dom.querySelector(`.${classes.content}`);
 
   const handleEscape = e => {
@@ -106,7 +107,7 @@ export const onMount = vnode => {
 
   subscribe("keydown", handleEscape);
 
-  if (attrs.showInstance) {
+  if (attrs.show) {
     showDialog(state, attrs);
   }
 };
@@ -134,7 +135,7 @@ export const createProps = (vnode, { keys: k }) => {
       "data-instance-id": attrs.instanceId,
       // click backdrop: close dialog
       [k.onclick]: e => {
-        if (e.target !== state.el && e.target !== state.backdropEl) {
+        if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
           return;
         }
         if (attrs.modal) {
@@ -170,7 +171,8 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
   const state = vnode.state;
   const attrs = vnode.attrs;
   const h = renderer;
-  if (attrs.hideInstance) {
+
+  if (attrs.hide) {
     hideDialog(state, attrs);
   }
   const pane = attrs.panes && attrs.panes.length
@@ -181,6 +183,12 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
       {
         key: "backdrop",
         className: classes.backdrop
+      }
+    ),
+    h("div",
+      {
+        key: "touch",
+        className: classes.touch
       }
     ),
     h("div",

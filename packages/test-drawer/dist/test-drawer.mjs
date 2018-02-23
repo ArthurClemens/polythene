@@ -1,5 +1,5 @@
 import { Drawer, Icon, List, ListTile, RaisedButton, keys, renderer } from 'polythene-mithril';
-import { ListTileCSS } from 'polythene-css';
+import { DrawerCSS, ListTileCSS } from 'polythene-css';
 import { vars } from 'polythene-theme';
 import { Drawer as Drawer$1, Icon as Icon$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
@@ -163,23 +163,31 @@ var opener = (function (_ref) {
       k = _ref.keys,
       Drawer$$1 = _ref.Drawer,
       RaisedButton$$1 = _ref.RaisedButton,
+      createContent = _ref.createContent,
       drawerOpts = _ref.drawerOpts;
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
+      var hide = stream(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        hide: hide,
+        redrawOnUpdate: stream.merge([show, hide])
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
       var show = state.show();
+      var hide = state.hide();
+      var onClick = function onClick() {
+        return state.hide(true);
+      };
+      var content = createContent({ isLong: true, onClick: onClick });
       return h("div", null, [h(RaisedButton$$1, {
         key: "button", // for React
-        label: "Show drawer",
+        label: "Toggle drawer",
         events: _defineProperty({}, k.onclick, function () {
-          return state.show(true);
+          return show ? state.hide(true) : state.show(true);
         })
       }), h("div", {
         key: "content", // for React
@@ -190,14 +198,20 @@ var opener = (function (_ref) {
         }
       }, h("div", {
         style: {
-          display: "flex"
+          display: "flex",
+          height: "350px"
         }
       }, [h("nav", {
         key: "drawer" // for React
       }, h(Drawer$$1, _extends({}, drawerOpts, {
+        content: content,
         show: show,
+        hide: hide,
+        didShow: function didShow() {
+          return state.show(true), state.hide(false);
+        },
         didHide: function didHide() {
-          return state.show(false);
+          return state.show(false), state.hide(false);
         }
       }))), h("main", {
         key: "main", // for React
@@ -240,43 +254,69 @@ var navigationList = (function (_ref) {
       k = _ref.keys,
       Icon$$1 = _ref.Icon,
       List$$1 = _ref.List,
-      ListTile$$1 = _ref.ListTile;
+      ListTile$$1 = _ref.ListTile,
+      isLong = _ref.isLong,
+      onClick = _ref.onClick;
 
 
   var tile = function tile(_ref2) {
     var title = _ref2.title,
-        icon = _ref2.icon;
+        icon = _ref2.icon,
+        order = _ref2.order;
     return h(ListTile$$1, {
       title: title,
-      key: title, // for React
+      key: order,
       className: "tests-drawer-navigation-list",
       front: h(Icon$$1, {
         svg: { content: h.trust(icon) }
       }),
       hoverable: true,
-      events: _defineProperty$1({}, k.onclick, function () {
-        return console.log("click");
-      })
+      events: _defineProperty$1({}, k.onclick, onClick)
     });
   };
+
+  var setList = isLong ? [1, 2, 3] : [1, 2];
 
   return h(List$$1, {
     compact: true,
     hoverable: true,
-    tiles: [{
-      title: "Inbox",
-      icon: icons.inbox
-    }, {
-      title: "Starred",
-      icon: icons.star
-    }, {
-      title: "Sent mail",
-      icon: icons.send
-    }, {
-      title: "Drafts",
-      icon: icons.drafts
-    }].map(tile)
+    tiles: [].concat.apply([], setList.map(function (num, index, arr) {
+      return [{
+        order: arr.length,
+        title: "Inbox",
+        icon: icons.inbox
+      }, {
+        order: arr.length,
+        title: "Starred",
+        icon: icons.star
+      }, {
+        order: arr.length,
+        title: "Sent mail",
+        icon: icons.send
+      }, {
+        order: arr.length,
+        title: "Drafts",
+        icon: icons.drafts
+      }];
+    })).map(tile)
   });
+});
+
+var permanent = (function (_ref) {
+  var h = _ref.renderer,
+      Drawer$$1 = _ref.Drawer,
+      createContent = _ref.createContent;
+
+  var content = createContent({ isLong: false });
+  return {
+    view: function view() {
+      return h(Drawer$$1, {
+        size: 5,
+        permanent: true,
+        content: content
+      });
+    }
+  };
 });
 
 var genericTests = (function (_ref) {
@@ -289,29 +329,42 @@ var genericTests = (function (_ref) {
       Icon$$1 = _ref.Icon;
 
 
-  var NavigationList = navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1 });
+  var createContent = function createContent(_ref2) {
+    var isLong = _ref2.isLong,
+        onClick = _ref2.onClick;
+    return navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1, isLong: isLong, onClick: onClick });
+  };
 
-  return [
-  // {
-  //   name: "Permanent, floating",
-  //   component: permanent({ renderer, Drawer, content: NavigationList })
-  // },
-  {
-    name: "Sliding drawer (slide over from left, with backdrop)",
+  DrawerCSS.addStyle(".drawer-tests-small", {
+    content_max_width: 220
+  });
+
+  return [{
+    name: "Permanent, floating",
+    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent })
+  }, {
+    name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, name: "over", drawerOpts: {
-        content: NavigationList,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true
       } })
   }, {
-    name: "Pushing drawer (push from left, without shadow)",
+    name: "Sliding drawer (modal, cannot be closed with ESCAPE)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, name: "push", drawerOpts: {
-        content: NavigationList,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
+        backdrop: true,
+        modal: true
+      } })
+  }, {
+    name: "Pushing drawer (push from left, without shadow, themed small width)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
         push: true,
-        z: 0
+        z: 0,
+        className: "drawer-tests-small"
       } })
   }];
 });

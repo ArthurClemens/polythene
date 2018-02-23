@@ -8,7 +8,8 @@ var classes = {
   component: "pe-dialog pe-drawer",
 
   // states
-  push: "pe-drawer--push"
+  push: "pe-drawer--push",
+  permanent: "pe-drawer--permanent"
 };
 
 var SHADOW_WIDTH = 10;
@@ -104,7 +105,7 @@ var createProps = function createProps(vnode) {
   return _extends({}, attrs, {
     anchored: true,
     fullBleed: true,
-    className: [attrs.className, classes.component, attrs.push ? classes.push : null].join(" "),
+    className: [attrs.className, classes.component, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null].join(" "),
     transitions: attrs.push ? transitionsPushFromLeft : transitionsOverFromLeft
   });
 };

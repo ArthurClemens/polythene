@@ -7,22 +7,27 @@
   bottom: 0;
   z-index: 1;
   height: 100%;
-  padding: 0
+  padding: 0;
+  overflow-y: auto
 }
 
 .pe-dialog.pe-drawer .pe-dialog__content {
   position: relative;
   height: 100%;
   border-radius: 0;
-  width: calc(1 - undefinedpx);
-  max-width: undefinedpx
+  width: calc(100% - 56px);
+  max-width: 280px
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane {
   min-width: 0
 }
 
-.pe-dialog.pe-drawer .pe-dialog__backdrop {
+.pe-dialog.pe-drawer .pe-dialog-pane__body {
+  overflow: visible
+}
+
+.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__touch {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,17 +40,30 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: undefinedpx
+  width: 280px
+}
+
+.pe-dialog.pe-drawer.pe-drawer--permanent {
+  position: static;
+  height: auto;
+  display: block;
+  padding: 0;
+  overflow: initial
+}
+
+.pe-dialog.pe-drawer.pe-drawer--permanent .pe-dialog-pane__body {
+  overflow: visible;
+  max-height: none
 }
 
 @media (min-width:600px) {
-  .pe-dialog.pe-drawer .pe-dialog__content {
-    width: calc(1 - undefinedpx);
-    max-width: undefinedpx
+  .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+    max-width: 320px
   }
 
-  .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-    width: undefinedpx
+  .pe-dialog.pe-drawer .pe-dialog__content {
+    width: calc(100% - 64px);
+    max-width: 320px
   }
 }
 /*# sourceMappingURL=polythene-drawer.css.map */

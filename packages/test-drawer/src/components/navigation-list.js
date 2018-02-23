@@ -19,42 +19,50 @@ ListTileCSS.addStyle(".tests-drawer-navigation-list", {
   color_light_hover_front: "#e01d5f" 
 });
 
-export default ({ renderer: h, keys: k, Icon, List, ListTile }) => {
+export default ({ renderer: h, keys: k, Icon, List, ListTile, isLong, onClick }) => {
 
-  const tile = ({ title, icon }) =>
+  const tile = ({ title, icon, order }) =>
     h(ListTile, {
       title,
-      key: title, // for React
+      key: order,
       className: "tests-drawer-navigation-list",
       front: h(Icon, {
         svg: { content: h.trust(icon) }
       }),
       hoverable: true,
       events: {
-        [k.onclick]: () => console.log("click")
+        [k.onclick]: onClick
       }
     });
+
+  const setList = isLong
+    ? [1, 2, 3]
+    : [1, 2];
 
   return h(List, {
     compact: true,
     hoverable: true,
-    tiles: [
+    tiles: [].concat.apply([], setList.map((num, index, arr) => ([
       {
+        order: arr.length,
         title: "Inbox",
         icon: icons.inbox,
       },
       {
+        order: arr.length,
         title: "Starred",
         icon: icons.star,
       },
       {
+        order: arr.length,
         title: "Sent mail",
         icon: icons.send,
       },
       {
+        order: arr.length,
         title: "Drafts",
         icon: icons.drafts,
       }
-    ].map(tile)
+    ]))).map(tile)
   });
 };
