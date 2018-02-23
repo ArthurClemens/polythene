@@ -131,7 +131,9 @@ var showDialog = function showDialog(state, attrs) {
   var transitions = attrs.transitions;
   return show(_extends({}, attrs, transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay }))).then(function () {
     if (attrs.multipleDidShow) {
-      attrs.multipleDidShow(id); // this will call attrs.didShow
+      attrs.multipleDidShow(id); // when used with Multiple; this will call attrs.didShow
+    } else if (attrs.didShow) {
+      attrs.didShow(id); // when used directly
     }
     state.transitioning(false);
   });
@@ -154,7 +156,9 @@ var hideDialog = function hideDialog(state, attrs) {
   var transitions = attrs.transitions;
   return hide(_extends({}, attrs, transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }))).then(function () {
     if (attrs.multipleDidHide) {
-      attrs.multipleDidHide(id); // this will call attrs.didHide
+      attrs.multipleDidHide(id); // when used with Multiple; this will call attrs.didHide
+    } else if (attrs.didHide) {
+      attrs.didHide(id); // when used directly
     }
     state.transitioning(false);
   });

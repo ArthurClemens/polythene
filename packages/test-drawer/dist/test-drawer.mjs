@@ -161,7 +161,6 @@ var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
 var opener = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
-      name = _ref.name,
       Drawer$$1 = _ref.Drawer,
       RaisedButton$$1 = _ref.RaisedButton,
       drawerOpts = _ref.drawerOpts;
@@ -176,12 +175,11 @@ var opener = (function (_ref) {
     view: function view(vnode) {
       var state = vnode.state;
       var show = state.show();
-      console.log("show", show);
       return h("div", null, [h(RaisedButton$$1, {
         key: "button", // for React
-        label: "Toggle drawer",
+        label: "Show drawer",
         events: _defineProperty({}, k.onclick, function () {
-          return console.log("name", name, "onclick", show), show ? Drawer$$1.hide({ id: name, spawn: name }) : Drawer$$1.show(drawerOpts, { id: name, spawn: name });
+          return state.show(true);
         })
       }), h("div", {
         key: "content", // for React
@@ -196,7 +194,12 @@ var opener = (function (_ref) {
         }
       }, [h("nav", {
         key: "drawer" // for React
-      }, h(Drawer$$1, { spawn: name })), h("main", {
+      }, h(Drawer$$1, _extends({}, drawerOpts, {
+        show: show,
+        didHide: function didHide() {
+          return state.show(false);
+        }
+      }))), h("main", {
         key: "main", // for React
         style: {
           background: "#ffeb3b",
