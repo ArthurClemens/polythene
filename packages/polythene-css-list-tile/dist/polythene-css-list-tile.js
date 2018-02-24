@@ -28,7 +28,8 @@ var classes = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -53,6 +54,11 @@ var layout = (function (selector, componentVars) {
     fontSize: componentVars.font_size_title + "px",
     fontWeight: componentVars.font_weight_title,
     lineHeight: componentVars.single_line_height + "px",
+
+    ".pe-list-tile--navigation": {
+      fontSize: componentVars.font_size_navigation_title + "px",
+      fontWeight: componentVars.font_weight_navigation_title
+    },
 
     ".pe-list-tile--sticky": [polytheneCoreCss.mixin.sticky(2)],
 
@@ -231,6 +237,7 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: "inherit"
       }
     },
+
     " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },

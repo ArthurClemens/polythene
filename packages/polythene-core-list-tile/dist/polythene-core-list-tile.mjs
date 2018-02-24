@@ -25,7 +25,8 @@ var classes = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -72,7 +73,7 @@ var createProps = function createProps(vnode, _ref3) {
   var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
   {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)
   // events and url are attached to primary content to not interfere with controls
   );
@@ -138,6 +139,8 @@ var vars$1 = {
   compact_side_padding: 1 * vars.grid_unit_component,
   font_size_title: 16,
   font_weight_title: vars.font_weight_normal,
+  font_size_navigation_title: 14,
+  font_weight_navigation_title: vars.font_weight_medium,
   font_size_subtitle: 14,
   font_weight_subtitle: vars.font_weight_normal,
   line_height_subtitle: 20,

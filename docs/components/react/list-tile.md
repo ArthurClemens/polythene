@@ -268,6 +268,7 @@ h(ListTile, {
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
 * Front content can be reduced in width with `compactFront`. Following the Material Design specs, this setting should be used for displaying a list of search results.
+* Use option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html).
 
 <a name="styling"></a>
 ### Styling

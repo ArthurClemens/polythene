@@ -269,6 +269,83 @@ var keyboardState = (function (_ref) {
   };
 });
 
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var icons = {
+  drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
+  inbox: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z\"/></svg>",
+  star: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
+  send: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z\"/></svg>"
+};
+
+ListTileCSS.addStyle(".tests-list-navigation-list", {
+  color_light_hover_text: "#e01d5f",
+  color_light_hover_front: "#e01d5f"
+});
+
+var navigation = (function (_ref) {
+  var h = _ref.h,
+      k = _ref.k,
+      Icon$$1 = _ref.Icon,
+      List$$1 = _ref.List,
+      ListTile$$1 = _ref.ListTile,
+      _ref$repeats = _ref.repeats,
+      repeats = _ref$repeats === undefined ? 1 : _ref$repeats,
+      _ref$onClick = _ref.onClick,
+      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick;
+
+
+  var tile = function tile(_ref2) {
+    var title = _ref2.title,
+        icon = _ref2.icon,
+        index = _ref2.index;
+    return h(ListTile$$1, {
+      title: title,
+      key: title + "-" + index, // for React
+      className: "tests-list-navigation-list",
+      front: h(Icon$$1, {
+        svg: { content: h.trust(icon) }
+      }),
+      hoverable: true,
+      navigation: true,
+      events: _defineProperty$1({}, k.onclick, onClick)
+    });
+  };
+
+  var nums = [];
+  for (var i = 0; i < repeats; i = i + 1) {
+    nums.push(i);
+  }
+
+  return {
+    view: function view() {
+      return h(List$$1, {
+        compact: true,
+        hoverable: true,
+        tiles: [].concat.apply([], nums.map(function (num, index) {
+          return [{
+            index: index,
+            title: "Inbox",
+            icon: icons.inbox
+          }, {
+            index: index,
+            title: "Starred",
+            icon: icons.star
+          }, {
+            index: index,
+            title: "Sent mail",
+            icon: icons.send
+          }, {
+            index: index,
+            title: "Drafts",
+            icon: icons.drafts
+          }];
+        })).map(tile)
+      });
+    }
+  };
+});
+
 var genericTests = (function (_ref) {
   var List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
@@ -278,6 +355,7 @@ var genericTests = (function (_ref) {
 
 
   var KeyboardState = keyboardState({ h: h, k: k, List: List$$1, ListTile: ListTile$$1 });
+  var Navigation = navigation({ h: h, k: k, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1 });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -404,6 +482,13 @@ var genericTests = (function (_ref) {
     attrs: {
       padding: false,
       tiles: [ListTileJennifer, ListTileAli, ListTileGrace]
+    }
+  }, {
+    name: "Option: navigation",
+    component: {
+      view: function view() {
+        return h(Navigation);
+      }
     }
   }, {
     name: "Themed list (colors and padding)",

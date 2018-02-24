@@ -1,6 +1,6 @@
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    color:           componentVars["color_" + tint + "_title"],
+    color: componentVars["color_" + tint + "_title"],
     backgroundColor: componentVars["color_" + tint + "_background"],
 
     ".pe-list-tile--header": {
@@ -10,6 +10,7 @@ const style = (scopes, selector, componentVars, tint) => [{
         backgroundColor: "inherit"
       }
     },
+
     " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },

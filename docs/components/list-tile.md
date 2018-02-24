@@ -65,6 +65,7 @@ Displays a list element as part of a [List](list.md).
 | **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
 | **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [List](list.md) component as `header.sticky`; [does not work in IE/Edge](http://caniuse.com/#feat=css-sticky) |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
+| **navigation** | optional | Boolean | | Set to `true` to use a Material Design navigation style |
 
 <a name="list-tile-primary-content-options"></a>
 ### List tile primary content options

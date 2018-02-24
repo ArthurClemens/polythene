@@ -20,6 +20,11 @@ export default (selector, componentVars) => [
         fontWeight: componentVars.font_weight_title,
         lineHeight: componentVars.single_line_height + "px",
 
+        ".pe-list-tile--navigation": {
+          fontSize: componentVars.font_size_navigation_title + "px",
+          fontWeight: componentVars.font_weight_navigation_title,
+        },
+
         ".pe-list-tile--sticky": [
           mixin.sticky(2)
         ],

@@ -8,6 +8,11 @@
   line-height: 21px
 }
 
+.pe-list-tile.pe-list-tile--navigation {
+  font-size: 14px;
+  font-weight: 500
+}
+
 .pe-list-tile.pe-list-tile--sticky {
   position: sticky;
   top: 0;
