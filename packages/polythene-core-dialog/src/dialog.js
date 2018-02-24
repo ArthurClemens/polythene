@@ -92,28 +92,31 @@ export const onMount = vnode => {
   state.touchEl = dom.querySelector(`.${classes.touch}`);
   state.contentEl = dom.querySelector(`.${classes.content}`);
 
-  const handleEscape = e => {
-    if (attrs.fullScreen || attrs.modal) return;
-    if (e.key === "Escape") {
-      hideDialog(state, Object.assign({}, attrs, {
-        hideDelay: 0
-      }));
+  if (!attrs.permanent) {
+
+    const handleEscape = e => {
+      if (attrs.fullScreen || attrs.modal) return;
+      if (e.key === "Escape") {
+        hideDialog(state, Object.assign({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.cleanUp = () => (
+      unsubscribe("keydown", handleEscape)
+    );
+
+    subscribe("keydown", handleEscape);
+
+    if (attrs.show) {
+      showDialog(state, attrs);
     }
-  };
-  
-  state.cleanUp = () => (
-    unsubscribe("keydown", handleEscape)
-  );
-
-  subscribe("keydown", handleEscape);
-
-  if (attrs.show) {
-    showDialog(state, attrs);
   }
 };
 
 export const onUnMount = vnode => (
-  vnode.state.cleanUp()
+  vnode.state.cleanUp && vnode.state.cleanUp()
 );
 
 export const createProps = (vnode, { keys: k }) => {

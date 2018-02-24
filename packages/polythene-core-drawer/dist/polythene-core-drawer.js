@@ -51,7 +51,7 @@ var hide = function hide(_ref2) {
   };
 };
 
-var transitionsOverFromLeft = {
+var defaultTransitionsOverFromLeft = {
   show: show,
   hide: hide,
   name: "over-from-left"
@@ -92,10 +92,49 @@ var hide$1 = function hide(_ref2) {
   };
 };
 
-var transitionsPushFromLeft = {
+var defaultTransitionsPushFromLeft = {
   show: show$1,
   hide: hide$1,
   name: "push-from-left"
+};
+
+var SHOW_DELAY = .110; // add a little time so to start after the sliding
+var ANIMATION_DURATION = .320; // longer than slide transition
+
+var show$2 = function show(_ref) {
+  var el = _ref.el,
+      showDuration = _ref.showDuration,
+      showDelay = _ref.showDelay;
+  return {
+    el: el,
+    showDuration: showDuration || ANIMATION_DURATION,
+    showDelay: showDelay || SHOW_DELAY,
+    beforeShow: function beforeShow() {
+      return el.style.opacity = 0;
+    },
+    show: function show() {
+      return el.style.opacity = 1;
+    }
+  };
+};
+
+var hide$2 = function hide(_ref2) {
+  var el = _ref2.el,
+      hideDuration = _ref2.hideDuration,
+      hideDelay = _ref2.hideDelay;
+  return {
+    el: el,
+    hideDuration: hideDuration || ANIMATION_DURATION,
+    hideDelay: hideDelay || 0,
+    hide: function hide() {
+      return el.style.opacity = 0;
+    }
+  };
+};
+
+var defaultBackdropTransitions = {
+  show: show$2,
+  hide: hide$2
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -107,7 +146,8 @@ var createProps = function createProps(vnode) {
     anchored: true,
     fullBleed: true,
     className: [attrs.className, classes.component, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null].join(" "),
-    transitions: attrs.push ? transitionsPushFromLeft : transitionsOverFromLeft
+    transitions: attrs.transitions ? attrs.transitions : attrs.push ? defaultTransitionsPushFromLeft : defaultTransitionsOverFromLeft,
+    backdropTransitions: attrs.backdropTransitions || defaultBackdropTransitions
   });
 };
 

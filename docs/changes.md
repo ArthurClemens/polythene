@@ -18,9 +18,15 @@
 
 (in development)
 
+* Added a Drawer component
+
 Changes to components:
 
-* List Tile: added configuration vars for for titles and front: font size, weight and color 
+* List Tile:
+  * Added configuration vars for for titles and front: font size, weight and color 
+  * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
+* Toolbar:
+  * Added option `z` to add a shadow
 
 <a name="100"></a>
 ### 1.0.0

@@ -1,7 +1,6 @@
-import { Drawer, Icon, List, ListTile, RaisedButton, keys, renderer } from 'polythene-mithril';
-import { DrawerCSS, ListTileCSS } from 'polythene-css';
-import { vars } from 'polythene-theme';
-import { Drawer as Drawer$1, Icon as Icon$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Drawer, Icon, IconButton, List, ListTile, Toolbar, keys, renderer } from 'polythene-mithril';
+import { DrawerCSS, ListTileCSS, ToolbarCSS } from 'polythene-css';
+import { Drawer as Drawer$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -156,15 +155,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat. ";
+var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
+
+var ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
+var longText = ipsum + ipsum;
+
+ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
+  color_light_background: "#e01d5f",
+  color_dark_background: "#e01d5f"
+});
 
 var opener = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
       Drawer$$1 = _ref.Drawer,
-      RaisedButton$$1 = _ref.RaisedButton,
+      Toolbar$$1 = _ref.Toolbar,
+      IconButton$$1 = _ref.IconButton,
       createContent = _ref.createContent,
+      pushToolbar = _ref.pushToolbar,
+      repeats = _ref.repeats,
       drawerOpts = _ref.drawerOpts;
+
+
   return {
     oninit: function oninit(vnode) {
       var show = stream(false);
@@ -182,18 +194,30 @@ var opener = (function (_ref) {
       var onClick = function onClick() {
         return state.hide(true);
       };
-      var content = createContent({ isLong: true, onClick: onClick });
-      return h("div", null, [h(RaisedButton$$1, {
-        key: "button", // for React
-        label: "Toggle drawer",
+      var navList = createContent({ repeats: repeats, onClick: onClick });
+      var content = pushToolbar ? [h(Toolbar$$1), navList] : navList;
+
+      var toolbarRow = [h(IconButton$$1, {
+        key: "icon",
+        icon: { svg: { content: h.trust(iconMenuSVG) } },
         events: _defineProperty({}, k.onclick, function () {
           return show ? state.hide(true) : state.show(true);
         })
       }), h("div", {
+        key: "title",
+        className: "pe-toolbar__title"
+      }, "Title")];
+
+      var ToolbarInstance = h(Toolbar$$1, {
+        className: "tests-drawer-themed-toolbar",
+        tone: "dark",
+        z: 1
+      }, toolbarRow);
+
+      return h("div", null, [!pushToolbar && ToolbarInstance, h("div", {
         key: "content", // for React
         style: {
           position: "relative",
-          marginTop: "24px",
           overflow: "hidden"
         }
       }, h("div", {
@@ -201,9 +225,8 @@ var opener = (function (_ref) {
           display: "flex",
           height: "350px"
         }
-      }, [h("nav", {
-        key: "drawer" // for React
-      }, h(Drawer$$1, _extends({}, drawerOpts, {
+      }, [h("nav", { key: "drawer" }, // for React
+      h(Drawer$$1, _extends({}, drawerOpts, {
         content: content,
         show: show,
         hide: hide,
@@ -214,15 +237,18 @@ var opener = (function (_ref) {
           return state.show(false), state.hide(false);
         }
       }))), h("main", {
-        key: "main", // for React
         style: {
+          overflow: "hidden",
           background: "#fff",
-          padding: "1rem",
           flexShrink: 0,
           flexGrow: 0,
           width: "100%"
         }
-      }, ipsum + ipsum)]))]);
+      }, [pushToolbar && ToolbarInstance, h("div", {
+        style: {
+          padding: "20px"
+        }
+      }, h.trust(longText))])]))]);
     }
   };
 });
@@ -236,15 +262,7 @@ var icons = {
   send: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z\"/></svg>"
 };
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
 ListTileCSS.addStyle(".tests-drawer-navigation-list", {
-  font_size_title: 14,
-  font_weight_title: 500,
-  color_light_title: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_hover_text: "#e01d5f",
   color_light_hover_front: "#e01d5f"
 });
@@ -255,8 +273,10 @@ var navigationList = (function (_ref) {
       Icon$$1 = _ref.Icon,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
-      isLong = _ref.isLong,
-      onClick = _ref.onClick;
+      _ref$repeats = _ref.repeats,
+      repeats = _ref$repeats === undefined ? 1 : _ref$repeats,
+      _ref$onClick = _ref.onClick,
+      onClick = _ref$onClick === undefined ? function () {} : _ref$onClick;
 
 
   var tile = function tile(_ref2) {
@@ -271,16 +291,20 @@ var navigationList = (function (_ref) {
         svg: { content: h.trust(icon) }
       }),
       hoverable: true,
+      navigation: true,
       events: _defineProperty$1({}, k.onclick, onClick)
     });
   };
 
-  var setList = isLong ? [1, 2, 3] : [1];
+  var nums = [];
+  for (var i = 0; i < repeats; i = i + 1) {
+    nums.push(i);
+  }
 
   return h(List$$1, {
     compact: true,
     hoverable: true,
-    tiles: [].concat.apply([], setList.map(function (num, index) {
+    tiles: [].concat.apply([], nums.map(function (num, index) {
       return [{
         index: index,
         title: "Inbox",
@@ -310,7 +334,7 @@ var permanent = (function (_ref) {
       createContent = _ref.createContent,
       drawerOpts = _ref.drawerOpts;
 
-  var content = createContent({ isLong: false });
+  var content = createContent({});
   return {
     view: function view() {
       return h(Drawer$$1, _extends$1({}, {
@@ -325,16 +349,17 @@ var genericTests = (function (_ref) {
   var keys$$1 = _ref.keys,
       renderer$$1 = _ref.renderer,
       Drawer$$1 = _ref.Drawer,
-      RaisedButton$$1 = _ref.RaisedButton,
       List$$1 = _ref.List,
       ListTile$$1 = _ref.ListTile,
-      Icon$$1 = _ref.Icon;
+      Icon$$1 = _ref.Icon,
+      Toolbar$$1 = _ref.Toolbar,
+      IconButton$$1 = _ref.IconButton;
 
 
   var createContent = function createContent(_ref2) {
-    var isLong = _ref2.isLong,
+    var repeats = _ref2.repeats,
         onClick = _ref2.onClick;
-    return navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1, isLong: isLong, onClick: onClick });
+    return navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1, repeats: repeats, onClick: onClick });
   };
 
   DrawerCSS.addStyle(".drawer-tests-small", {
@@ -342,12 +367,12 @@ var genericTests = (function (_ref) {
   });
 
   return [{
-    name: "Permanent, floating, no shadow",
+    name: "Permanent, floating (no shadow)",
     component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
         z: 0
       } })
   }, {
-    name: "Permanent, floating, with shadow depth 1",
+    name: "Permanent, floating (shadow depth 1)",
     component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
         z: 1
       } })
@@ -355,26 +380,43 @@ var genericTests = (function (_ref) {
     name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true
       } })
   }, {
     name: "Sliding drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         modal: true
       } })
   }, {
-    name: "Pushing drawer (push from left, without shadow, bordered, themed small width)",
+    name: "Pushing drawer (push from left, without shadow, bordered) (themed small width)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         push: true,
         z: 0,
         className: "drawer-tests-small",
         bordered: true
+      } })
+  }, {
+    name: "Pushing drawer including toolbar",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, drawerOpts: {
+        push: true,
+        z: 0,
+        className: "drawer-tests-small",
+        bordered: true
+      } })
+  }, {
+    name: "Long content (scrolling list)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
+        backdrop: true
       } })
   }];
 });
@@ -384,7 +426,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ renderer: renderer, keys: keys, Drawer: Drawer, RaisedButton: RaisedButton, List: List, ListTile: ListTile, Icon: Icon })).concat(mithrilTests({ renderer: renderer, keys: keys, Drawer: Drawer, RaisedButton: RaisedButton, List: List, ListTile: ListTile, Icon: Icon }));
+var testsMithril = [].concat(genericTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton })).concat(mithrilTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton }));
 
 /*
 object-assign
@@ -2168,6 +2210,6 @@ var reactTests = function reactTests() {
   return [];
 };
 
-var testsReact = [].concat(genericTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, RaisedButton: RaisedButton$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1 })).concat(reactTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, RaisedButton: RaisedButton$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1 }));
+var testsReact = [].concat(genericTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1 })).concat(reactTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -191,28 +192,31 @@ var onMount = function onMount(vnode) {
   state.touchEl = dom.querySelector("." + classes.touch);
   state.contentEl = dom.querySelector("." + classes.content);
 
-  var handleEscape = function handleEscape(e) {
-    if (attrs.fullScreen || attrs.modal) return;
-    if (e.key === "Escape") {
-      hideDialog(state, _extends({}, attrs, {
-        hideDelay: 0
-      }));
+  if (!attrs.permanent) {
+
+    var handleEscape = function handleEscape(e) {
+      if (attrs.fullScreen || attrs.modal) return;
+      if (e.key === "Escape") {
+        hideDialog(state, _extends({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.cleanUp = function () {
+      return polytheneCore.unsubscribe("keydown", handleEscape);
+    };
+
+    polytheneCore.subscribe("keydown", handleEscape);
+
+    if (attrs.show) {
+      showDialog(state, attrs);
     }
-  };
-
-  state.cleanUp = function () {
-    return polytheneCore.unsubscribe("keydown", handleEscape);
-  };
-
-  polytheneCore.subscribe("keydown", handleEscape);
-
-  if (attrs.show) {
-    showDialog(state, attrs);
   }
 };
 
 var onUnMount = function onUnMount(vnode) {
-  return vnode.state.cleanUp();
+  return vnode.state.cleanUp && vnode.state.cleanUp();
 };
 
 var createProps = function createProps(vnode, _ref) {
