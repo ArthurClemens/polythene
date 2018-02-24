@@ -103,6 +103,7 @@ export const vars = {
   breakpoint_for_tv_up:               1920, 
 
   // z-index
+  z_toolbar: 100,
   z_menu: 1000,
   z_app_bar: 2000,
   z_notification: 4000,

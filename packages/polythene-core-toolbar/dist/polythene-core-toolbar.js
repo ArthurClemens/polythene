@@ -12,6 +12,7 @@ var classes = {
 
   // states
   compact: "pe-toolbar--compact",
+  appBar: "pe-toolbar--app-bar",
 
   // Toolbar title
 
@@ -38,9 +39,18 @@ var createProps = function createProps(vnode, _ref) {
   }, attrs.events);
 };
 
-var createContent = function createContent(vnode) {
+var createContent = function createContent(vnode, _ref2) {
+  var renderer = _ref2.renderer,
+      Shadow = _ref2.Shadow;
+
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.children || vnode.children;
+  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
+  var shadow = attrs.z !== undefined ? renderer(Shadow, {
+    z: attrs.z,
+    animated: true,
+    key: "shadow"
+  }) : null;
+  return [content, shadow];
 };
 
 var toolbar = Object.freeze({

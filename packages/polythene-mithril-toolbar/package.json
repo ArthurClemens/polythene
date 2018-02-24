@@ -15,7 +15,8 @@
   ],
   "dependencies": {
     "polythene-core-toolbar": "^1.0.0",
-    "polythene-mithril-base": "^1.0.0"
+    "polythene-mithril-base": "^1.0.0",
+    "polythene-mithril-shadow": "^1.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

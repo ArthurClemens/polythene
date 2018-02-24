@@ -425,111 +425,48 @@ exports[`test Option: id 1`] = `
 `;
 
 exports[`test Option: shadow (JSX) 1`] = `
-<div
-  style={
-    Object {
-      "position": "relative",
-    }
-  }>
-  <Toolbar>
-    <ToolbarButton
-      svg={
-        Object {
-          "content": <svg
-            height="24"
-            viewBox="0 0 24 24"
-            width="24">
-            <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>,
-        }
-      } />
-    <span>
-      Title
-    </span>
-    <ToolbarButton
-      svg={
-        Object {
-          "content": <svg
-            height="24"
-            viewBox="0 0 24 24"
-            width="24">
-            <path
-                d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-        </svg>,
-        }
-      } />
-    <ToolbarButton
-      svg={
-        Object {
-          "content": <svg
-            height="24"
-            viewBox="0 0 24 24"
-            width="24">
-            <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-        </svg>,
-        }
-      } />
-  </Toolbar>
-  <Shadow />
-</div>
-`;
-
-exports[`test Option: shadow 1`] = `
-<div
-  style={
-    Object {
-      "position": "relative",
-    }
-  }>
-  <Toolbar>
-    <IconButton
-      icon={
-        Object {
-          "svg": Object {
-            "content": <div
-              dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                        }
-              } />,
-          },
-        }
-      } />
-    <div
-      className="pe-toolbar__title">
-      Toolbar with a very very very very very very very very very long title
-    </div>
-    <IconButton
-      icon={
-        Object {
-          "svg": Object {
-            "content": <div
-              dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                        }
-              } />,
-          },
-        }
-      } />
-    <IconButton
-      icon={
-        Object {
-          "svg": Object {
-            "content": <div
-              dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                        }
-              } />,
-          },
-        }
-      } />
-  </Toolbar>
-  <Shadow />
-</div>
+<Toolbar
+  z={1}>
+  <ToolbarButton
+    svg={
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>,
+      }
+    } />
+  <span>
+    Title
+  </span>
+  <ToolbarButton
+    svg={
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+      </svg>,
+      }
+    } />
+  <ToolbarButton
+    svg={
+      Object {
+        "content": <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24">
+          <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+      </svg>,
+      }
+    } />
+</Toolbar>
 `;
 
 exports[`test Option: style (colors and height) (JSX) 1`] = `
@@ -646,14 +583,15 @@ exports[`test Option: style (colors and height) 1`] = `
 </div>
 `;
 
-exports[`test Shadow 1`] = `
+exports[`test Scrolling pane 1`] = `
 <div
   style={
     Object {
-      "position": "relative",
+      "overflow": "hidden",
     }
   }>
-  <Toolbar>
+  <Toolbar
+    z={1}>
     <IconButton
       icon={
         Object {
@@ -698,8 +636,72 @@ exports[`test Shadow 1`] = `
         }
       } />
   </Toolbar>
-  <Shadow />
+  <div
+    style={
+      Object {
+        "background": "#fff",
+        "height": "300px",
+        "overflowY": "auto",
+        "padding": "20px",
+      }
+    }>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>",
+        }
+      } />
+  </div>
 </div>
+`;
+
+exports[`test Shadow 1`] = `
+<Toolbar
+  z={1}>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
+                      }
+            } />,
+        },
+      }
+    } />
+  <div
+    className="pe-toolbar__title">
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
+                      }
+            } />,
+        },
+      }
+    } />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+                  Object {
+                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
+                      }
+            } />,
+        },
+      }
+    } />
+</Toolbar>
 `;
 
 exports[`test Themed (dark tone) 1`] = `

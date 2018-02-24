@@ -87,7 +87,8 @@ var fullScreen = (function (_ref) {
     header: h(Toolbar$$1, {
       className: "tests-dialog-full-screen-themed-toolbar",
       tone: "dark",
-      content: fullScreenToolbarRow("New event")
+      content: fullScreenToolbarRow("New event"),
+      z: 1
     }),
     body: h.trust(longText)
   };
@@ -2879,7 +2880,8 @@ var fullScreenOptions = {
   header: renderer$1(Toolbar$1, {
     className: "tests-dialog-react-themed-toolbar",
     tone: "dark",
-    content: toolbarRow("New event")
+    content: toolbarRow("New event"),
+    z: 1
   }),
   body: renderer$1.trust(content)
 };
@@ -2965,7 +2967,8 @@ var fullScreenJsxOptions = {
   header: react.createElement(Toolbar$1, {
     content: toolbarRow$1("New event"),
     className: "tests-dialog-react-jsx-themed-toolbar",
-    tone: "dark"
+    tone: "dark",
+    z: 1
   }),
   body: react.createElement(BodyText, null)
 };

@@ -1,6 +1,6 @@
-import { IconButton, Shadow, Toolbar, ToolbarTitle, renderer } from 'polythene-mithril';
+import { IconButton, Toolbar, ToolbarTitle, renderer } from 'polythene-mithril';
 import { ToolbarCSS } from 'polythene-css';
-import { IconButton as IconButton$1, Shadow as Shadow$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, renderer as renderer$1 } from 'polythene-react';
+import { IconButton as IconButton$1, Toolbar as Toolbar$1, ToolbarTitle as ToolbarTitle$1, renderer as renderer$1 } from 'polythene-react';
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 var iconRefreshSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>";
@@ -87,11 +87,13 @@ var shared = (function (_ref) {
   };
 });
 
+var ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
+var longText = ipsum + ipsum + ipsum + ipsum + ipsum;
+
 var genericTests = (function (_ref) {
   var Toolbar$$1 = _ref.Toolbar,
       ToolbarTitle$$1 = _ref.ToolbarTitle,
       IconButton$$1 = _ref.IconButton,
-      Shadow$$1 = _ref.Shadow,
       h = _ref.renderer;
 
   var _shared = shared({ IconButton: IconButton$$1, ToolbarTitle: ToolbarTitle$$1, renderer: h }),
@@ -199,11 +201,25 @@ var genericTests = (function (_ref) {
     name: "Shadow",
     component: {
       view: function view() {
+        return h(Toolbar$$1, { z: 1 }, toolbarRow);
+      }
+    }
+  }, {
+    name: "Scrolling pane",
+    component: {
+      view: function view() {
         return h("div", {
           style: {
-            position: "relative"
+            overflow: "hidden"
           }
-        }, [h(Toolbar$$1, toolbarRow), h(Shadow$$1)]);
+        }, [h(Toolbar$$1, { z: 1 }, toolbarRow), h("div", {
+          style: {
+            padding: "20px",
+            background: "#fff",
+            height: "300px",
+            overflowY: "auto"
+          }
+        }, h.trust(longText))]);
       }
     }
   },
@@ -249,7 +265,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Shadow: Shadow, renderer: renderer })).concat(mithrilTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, Shadow: Shadow, renderer: renderer }));
+var testsMithril = [].concat(genericTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, renderer: renderer })).concat(mithrilTests({ Toolbar: Toolbar, ToolbarTitle: ToolbarTitle, IconButton: IconButton, renderer: renderer }));
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -2063,14 +2079,6 @@ var reactTests = function reactTests(_ref) {
   };
 
   return [{
-    section: "React specific tests"
-  }, {
-    name: "Option: shadow",
-    className: "small-result",
-    component: function component() {
-      return h("div", { style: { position: "relative" } }, [h(Toolbar$$1, toolbarRow), h(Shadow$1)]);
-    }
-  }, {
     section: "React JSX tests"
   }, {
     name: "Child node, option compact (JSX)",
@@ -2114,26 +2122,21 @@ var reactTests = function reactTests(_ref) {
     name: "Option: shadow (JSX)",
     component: function component() {
       return react.createElement(
-        "div",
-        { style: { position: "relative" } },
+        Toolbar$$1,
+        { z: 1 },
+        react.createElement(ToolbarButton, { svg: { content: iconMenuSVG$1 } }),
         react.createElement(
-          Toolbar$$1,
+          "span",
           null,
-          react.createElement(ToolbarButton, { svg: { content: iconMenuSVG$1 } }),
-          react.createElement(
-            "span",
-            null,
-            "Title"
-          ),
-          react.createElement(ToolbarButton, { svg: { content: iconRefreshSVG$1 } }),
-          react.createElement(ToolbarButton, { svg: { content: iconAddSVG$1 } })
+          "Title"
         ),
-        react.createElement(Shadow$1, null)
+        react.createElement(ToolbarButton, { svg: { content: iconRefreshSVG$1 } }),
+        react.createElement(ToolbarButton, { svg: { content: iconAddSVG$1 } })
       );
     }
   }];
 };
 
-var testsReact = [].concat(genericTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 })).concat(reactTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, Shadow: Shadow$1, renderer: renderer$1 }));
+var testsReact = [].concat(genericTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, renderer: renderer$1 })).concat(reactTests({ Toolbar: Toolbar$1, ToolbarTitle: ToolbarTitle$1, IconButton: IconButton$1, renderer: renderer$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

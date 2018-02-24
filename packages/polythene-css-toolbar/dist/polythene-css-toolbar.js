@@ -39,6 +39,8 @@ var layout = (function (selector, componentVars) {
     height: componentVars.height + "px",
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
+    position: "relative",
+    zIndex: polytheneTheme.vars.z_toolbar,
 
     ".pe-toolbar--compact": compactStyle(componentVars),
 

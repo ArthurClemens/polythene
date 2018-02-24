@@ -14,6 +14,8 @@ export default (selector, componentVars) => [{
       height: componentVars.height + "px",
       lineHeight: componentVars.line_height + "em",
       padding: "0 " + componentVars.padding_side + "px",
+      position: "relative", 
+      zIndex: vars.z_toolbar,
 
       ".pe-toolbar--compact": compactStyle(componentVars),
 

@@ -8,7 +8,8 @@
   align-items: center;
   height: 56px;
   line-height: 1.3em;
-  padding: 0 4px
+  padding: 0 4px;
+  position: relative
 }
 
 .pe-toolbar.pe-toolbar--compact {

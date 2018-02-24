@@ -127,19 +127,16 @@ m(Toolbar, [
 ### Shadow
 
 ~~~javascript
-import { Toolbar, Shadow } from "polythene-mithril"
+import { Toolbar } from "polythene-mithril"
 
 const toolbarRow = [
   // buttons and title
 ]
 
-m("div",
-  { style: { position: "relative" } }, // because Shadow is positioned absolute
-  [
-    m(Toolbar, toolbarRow),
-    m(Shadow)
-  ])
-})
+m(Toolbar,
+  { z: 1 },
+  toolbarRow
+)
 ~~~
 
 <a name="styling"></a>

@@ -185,14 +185,11 @@ h(Toolbar, [
 ### Shadow
 
 ~~~jsx
-import { Toolbar, Shadow } from "polythene-react"
+import { Toolbar } from "polythene-react"
 
-<div style={{ position: "relative" }}>
-  <Toolbar>
-    ...
-  </Toolbar>
-  <Shadow />
-</div>
+<Toolbar z={1}>
+  ...
+</Toolbar>
 ~~~
 
 <a name="styling"></a>

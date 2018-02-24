@@ -1,4 +1,4 @@
-import { renderer, Toolbar, ToolbarTitle, IconButton, Shadow } from "polythene-mithril";
+import { renderer, Toolbar, ToolbarTitle, IconButton } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = () => {
@@ -8,5 +8,5 @@ const mithrilTests = () => {
 };
 
 export default []
-  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer }))
-  .concat(mithrilTests({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer }));
+  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, renderer }))
+  .concat(mithrilTests({ Toolbar, ToolbarTitle, IconButton, renderer }));

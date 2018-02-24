@@ -1,5 +1,6 @@
 exports[`test No options - spec 1`] = `
 "<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -17,6 +18,7 @@ exports[`test No options - spec 1`] = `
 
 exports[`test Option: body - spec 1`] = `
 "<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -36,6 +38,7 @@ exports[`test Option: body - spec 1`] = `
 
 exports[`test Option: class - spec 1`] = `
 "<div class=\"pe-dialog class-x\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -53,6 +56,7 @@ exports[`test Option: class - spec 1`] = `
 
 exports[`test Option: className - spec 1`] = `
 "<div class=\"pe-dialog className-x\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -70,6 +74,7 @@ exports[`test Option: className - spec 1`] = `
 
 exports[`test Option: element - spec 1`] = `
 "<a class=\"pe-dialog\">
+<div class=\"pe-dialog__touch\"></div>
 <div class=\"pe-dialog__content\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -86,6 +91,7 @@ exports[`test Option: element - spec 1`] = `
 
 exports[`test Option: id - spec 1`] = `
 "<div id=\"id-x\" class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -102,7 +108,9 @@ exports[`test Option: id - spec 1`] = `
 `;
 
 exports[`test Option: modal with backdrop - spec 1`] = `
-"<div class=\"pe-dialog pe-dialog--backdrop\">
+"<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__backdrop\"></div>
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -317,6 +325,7 @@ exports[`test Option: modal with backdrop - spec 1`] = `
 
 exports[`test Option: title and body (long text) - spec 1`] = `
 "<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
@@ -507,6 +516,7 @@ exports[`test Option: title and body (long text) - spec 1`] = `
 
 exports[`test Option: z (0) - spec 1`] = `
 "<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
@@ -536,6 +546,7 @@ exports[`test Option: z (0) - spec 1`] = `
 
 exports[`test Option: z (5) - spec 1`] = `
 "<div class=\"pe-dialog\">
+  <div class=\"pe-dialog__touch\"></div>
   <div class=\"pe-dialog__content\">
     <div class=\"pe-shadow pe-shadow--animated\">
       <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
