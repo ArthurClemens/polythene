@@ -16,6 +16,7 @@ export const createProps = vnode => {
         classes.component,
         attrs.push ? classes.push : null,
         attrs.permanent ? classes.permanent : null,
+        attrs.bordered ? classes.bordered : null,
       ].join(" "),
       transitions: attrs.push
         ? transitionsPushFromLeft

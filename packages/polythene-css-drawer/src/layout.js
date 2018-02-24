@@ -13,6 +13,34 @@ export default (selector, componentVars) => [{
     padding: 0,
     overflowY: "auto",
 
+    ".pe-drawer--push": {
+      position: "static",
+
+      " .pe-dialog__content": {
+        width: `${componentVars.content_max_width}px`,
+      }
+    },
+
+    ".pe-drawer--permanent": {
+      position: "static",
+      height: "auto",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+
+      " .pe-dialog-pane__body": {
+        overflow: "visible",
+        maxHeight: "initial",
+      }
+    },
+
+    ".pe-drawer--bordered": {
+      " .pe-dialog__content": {
+        borderRightWidth: "1px",
+        borderRightStyle: "solid",
+      }
+    },
+
     " .pe-dialog__content": {
       position: "relative",
       height: "100%",
@@ -36,27 +64,6 @@ export default (selector, componentVars) => [{
       right: 0,
       bottom: 0,
     },
-
-    ".pe-drawer--push": {
-      position: "static",
-
-      " .pe-dialog__content": {
-        width: `${componentVars.content_max_width}px`,
-      }
-    },
-
-    ".pe-drawer--permanent": {
-      position: "static",
-      height: "auto",
-      display: "block",
-      padding: 0,
-      overflow: "initial",
-
-      " .pe-dialog-pane__body": {
-        overflow: "visible",
-        maxHeight: "initial",
-      }
-    }
   },
   ["@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)"]: {
     [selector]: {

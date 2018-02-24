@@ -1,12 +1,15 @@
 
-export default ({ renderer: h, Drawer, createContent }) => {
+export default ({ renderer: h, Drawer, createContent, drawerOpts }) => {
   const content = createContent({ isLong: false });
   return {
     view: () =>
-      h(Drawer, {
-        size: 5,
-        permanent: true,
-        content
-      })
+      h(Drawer, Object.assign(
+        {},
+        {
+          permanent: true,
+          content
+        },
+        drawerOpts
+      ))
   };
 };

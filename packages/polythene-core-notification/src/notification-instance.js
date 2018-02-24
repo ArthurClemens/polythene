@@ -60,8 +60,8 @@ const showNotification = (state, attrs) => {
       }
     ))
   )).then(() => {
-    if (attrs.multipleDidShow) {
-      attrs.multipleDidShow(id); // when used with Multiple; this will call attrs.didShow
+    if (attrs.fromMultipleDidShow) {
+      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
     } else if (attrs.didShow) {
       attrs.didShow(id); // when used directly
     }
@@ -101,8 +101,8 @@ const hideNotification = (state, attrs) => {
       }
     ))
   )).then(() => {
-    if (attrs.multipleDidHide) {
-      attrs.multipleDidHide(id); // when used with Multiple; this will call attrs.didHide
+    if (attrs.fromMultipleDidHide) {
+      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
     } else if (attrs.didHide) {
       attrs.didHide(id); // when used directly
     }

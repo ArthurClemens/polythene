@@ -13,8 +13,16 @@ export default ({ keys, renderer, Drawer, RaisedButton, List, ListTile, Icon }) 
 
   return [
     {
-      name: "Permanent, floating",
-      component: permanent({ renderer, Drawer, createContent })
+      name: "Permanent, floating, no shadow",
+      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
+        z: 0
+      } })
+    },
+    {
+      name: "Permanent, floating, with shadow depth 1",
+      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
+        z: 1
+      } })
     },
     {
       name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
@@ -25,7 +33,7 @@ export default ({ keys, renderer, Drawer, RaisedButton, List, ListTile, Icon }) 
       }})
     },
     {
-      name: "Sliding drawer (modal, cannot be closed with ESCAPE)",
+      name: "Sliding drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, RaisedButton, createContent, drawerOpts: {
@@ -34,13 +42,14 @@ export default ({ keys, renderer, Drawer, RaisedButton, List, ListTile, Icon }) 
       }})
     },
     {
-      name: "Pushing drawer (push from left, without shadow, themed small width)",
+      name: "Pushing drawer (push from left, without shadow, bordered, themed small width)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, RaisedButton, createContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small"
+        className: "drawer-tests-small",
+        bordered: true,
       }})
     },
     

@@ -216,7 +216,7 @@ var opener = (function (_ref) {
       }))), h("main", {
         key: "main", // for React
         style: {
-          background: "#ffeb3b",
+          background: "#fff",
           padding: "1rem",
           flexShrink: 0,
           flexGrow: 0,
@@ -262,10 +262,10 @@ var navigationList = (function (_ref) {
   var tile = function tile(_ref2) {
     var title = _ref2.title,
         icon = _ref2.icon,
-        order = _ref2.order;
+        index = _ref2.index;
     return h(ListTile$$1, {
       title: title,
-      key: order,
+      key: title + "-" + index, // for React
       className: "tests-drawer-navigation-list",
       front: h(Icon$$1, {
         svg: { content: h.trust(icon) }
@@ -275,26 +275,26 @@ var navigationList = (function (_ref) {
     });
   };
 
-  var setList = isLong ? [1, 2, 3] : [1, 2];
+  var setList = isLong ? [1, 2, 3] : [1];
 
   return h(List$$1, {
     compact: true,
     hoverable: true,
-    tiles: [].concat.apply([], setList.map(function (num, index, arr) {
+    tiles: [].concat.apply([], setList.map(function (num, index) {
       return [{
-        order: arr.length,
+        index: index,
         title: "Inbox",
         icon: icons.inbox
       }, {
-        order: arr.length,
+        index: index,
         title: "Starred",
         icon: icons.star
       }, {
-        order: arr.length,
+        index: index,
         title: "Sent mail",
         icon: icons.send
       }, {
-        order: arr.length,
+        index: index,
         title: "Drafts",
         icon: icons.drafts
       }];
@@ -302,19 +302,21 @@ var navigationList = (function (_ref) {
   });
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var permanent = (function (_ref) {
   var h = _ref.renderer,
       Drawer$$1 = _ref.Drawer,
-      createContent = _ref.createContent;
+      createContent = _ref.createContent,
+      drawerOpts = _ref.drawerOpts;
 
   var content = createContent({ isLong: false });
   return {
     view: function view() {
-      return h(Drawer$$1, {
-        size: 5,
+      return h(Drawer$$1, _extends$1({}, {
         permanent: true,
         content: content
-      });
+      }, drawerOpts));
     }
   };
 });
@@ -340,8 +342,15 @@ var genericTests = (function (_ref) {
   });
 
   return [{
-    name: "Permanent, floating",
-    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent })
+    name: "Permanent, floating, no shadow",
+    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
+        z: 0
+      } })
+  }, {
+    name: "Permanent, floating, with shadow depth 1",
+    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
+        z: 1
+      } })
   }, {
     name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
     interactive: true,
@@ -350,7 +359,7 @@ var genericTests = (function (_ref) {
         backdrop: true
       } })
   }, {
-    name: "Sliding drawer (modal, cannot be closed with ESCAPE)",
+    name: "Sliding drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
@@ -358,13 +367,14 @@ var genericTests = (function (_ref) {
         modal: true
       } })
   }, {
-    name: "Pushing drawer (push from left, without shadow, themed small width)",
+    name: "Pushing drawer (push from left, without shadow, bordered, themed small width)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small"
+        className: "drawer-tests-small",
+        bordered: true
       } })
   }];
 });
@@ -384,7 +394,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -430,7 +440,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$1({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 

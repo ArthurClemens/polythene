@@ -1,11 +1,12 @@
 import { vars } from 'polythene-theme';
 
 var classes = {
-  component: "pe-dialog pe-drawer",
+  component: "pe-drawer",
 
   // states
   push: "pe-drawer--push",
-  permanent: "pe-drawer--permanent"
+  permanent: "pe-drawer--permanent",
+  bordered: "pe-drawer--bordered"
 };
 
 var SHADOW_WIDTH = 10;
@@ -101,7 +102,7 @@ var createProps = function createProps(vnode) {
   return _extends({}, attrs, {
     anchored: true,
     fullBleed: true,
-    className: [attrs.className, classes.component, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null].join(" "),
+    className: [attrs.className, classes.component, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null].join(" "),
     transitions: attrs.push ? transitionsPushFromLeft : transitionsOverFromLeft
   });
 };
@@ -115,6 +116,11 @@ var drawer = Object.freeze({
 	createContent: createContent
 });
 
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
 var content_side_offset = vars.grid_unit_component * 7; // 56
 var content_side_offset_large = vars.grid_unit_component * 8; // 64
 var content_max_width = 5 * vars.increment;
@@ -124,7 +130,10 @@ var vars$1 = {
   content_side_offset: content_side_offset,
   content_side_offset_large: content_side_offset_large,
   content_max_width: content_max_width,
-  content_max_width_large: content_max_width_large
+  content_max_width_large: content_max_width_large,
+
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
 };
 
 export { drawer as coreDrawer, vars$1 as vars };

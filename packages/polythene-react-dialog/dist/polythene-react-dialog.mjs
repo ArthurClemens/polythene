@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
-import { coreDialogInstance, transitions } from 'polythene-core-dialog';
+import { coreDialog, transitions } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
 import { Shadow } from 'polythene-react-shadow';
 
@@ -59,10 +59,11 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
   open: "pe-dialog--open",
 
   // lookup
@@ -71,9 +72,9 @@ var classes = {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var DialogInstance = StateComponent(_extends({}, coreDialogInstance, {
+var DialogInstance = StateComponent(_extends({}, coreDialog, {
   createContent: function createContent(vnode, args) {
-    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow, Pane: DialogPane, createPane: coreDialogInstance.createPane }));
+    return coreDialog.createContent(vnode, _extends(args, { Shadow: Shadow, Pane: DialogPane, createPane: coreDialog.createPane }));
   }
 }));
 

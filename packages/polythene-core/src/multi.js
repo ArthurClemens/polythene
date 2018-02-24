@@ -203,9 +203,9 @@ export const Multi = ({ options: mOptions, renderer }) => {
               hide: itemData.hide,
               pause: itemData.pause,
               unpause: itemData.unpause,
-              multipleDidShow: itemData.didShow,
-              multipleDidHide: itemData.didHide,
-              multipleClear: clear
+              fromMultipleDidShow: itemData.didShow,
+              fromMultipleDidHide: itemData.didHide,
+              fromMultipleClear: clear
             },
             unpackAttrs(itemData.attrs)
           ));

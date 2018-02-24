@@ -8,6 +8,8 @@ Navigation panel.
 - [Usage](#usage)
 - [Options](#options)
   - [Drawer specific options](#drawer-specific-options)
+  - [Options from Dialog](#options-from-dialog)
+  - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
 
@@ -36,8 +38,6 @@ Navigation panel.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
-| **closeOnEscape** | optional | Boolean | false | Set to `true` to close the panel when the Escape key is pressed; NOTE: will close all drawer panels on the page |
 
 * onChange
 * transitions
@@ -45,9 +45,16 @@ Navigation panel.
 * didShow
 * didHide
 * permanent
-* type
-* menu
+* bordered
 * show, hide
+
+<a name="options-from-dialog"></a>
+### Options from Dialog
+
+See: [Dialog](dialog.md)
+
+<a name="common-component-options"></a>
+### Common component options
 
 
 <a name="composition"></a>
@@ -55,8 +62,7 @@ Navigation panel.
 
 Drawer is composed from:
 
-* [Menu](menu.md)
-* [Shadow](shadow.md)
+* [Dialog](dialog.md)
 
 
 <a name="css-classes"></a>

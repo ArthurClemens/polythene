@@ -367,9 +367,9 @@ var Multi = function Multi(_ref) {
         hide: itemData.hide,
         pause: itemData.pause,
         unpause: itemData.unpause,
-        multipleDidShow: itemData.didShow,
-        multipleDidHide: itemData.didHide,
-        multipleClear: clear
+        fromMultipleDidShow: itemData.didShow,
+        fromMultipleDidHide: itemData.didHide,
+        fromMultipleClear: clear
       }, unpackAttrs(itemData.attrs)));
     }));
   };

@@ -17,6 +17,7 @@
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
   font-size: 18px;
+  line-height: 1.3;
   width: 100%;
   display: block;
   word-break: break-all;

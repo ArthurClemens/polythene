@@ -5,11 +5,12 @@
 }(this, (function (exports,polytheneCoreCss,polytheneCoreDrawer,polytheneTheme) { 'use strict';
 
 var classes = {
-  component: "pe-dialog pe-drawer",
+  component: "pe-drawer",
 
   // states
   push: "pe-drawer--push",
-  permanent: "pe-drawer--permanent"
+  permanent: "pe-drawer--permanent",
+  bordered: "pe-drawer--bordered"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -28,6 +29,34 @@ var layout = (function (selector, componentVars) {
     height: "100%",
     padding: 0,
     overflowY: "auto",
+
+    ".pe-drawer--push": {
+      position: "static",
+
+      " .pe-dialog__content": {
+        width: componentVars.content_max_width + "px"
+      }
+    },
+
+    ".pe-drawer--permanent": {
+      position: "static",
+      height: "auto",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+
+      " .pe-dialog-pane__body": {
+        overflow: "visible",
+        maxHeight: "initial"
+      }
+    },
+
+    ".pe-drawer--bordered": {
+      " .pe-dialog__content": {
+        borderRightWidth: "1px",
+        borderRightStyle: "solid"
+      }
+    },
 
     " .pe-dialog__content": {
       position: "relative",
@@ -51,27 +80,6 @@ var layout = (function (selector, componentVars) {
       left: 0,
       right: 0,
       bottom: 0
-    },
-
-    ".pe-drawer--push": {
-      position: "static",
-
-      " .pe-dialog__content": {
-        width: componentVars.content_max_width + "px"
-      }
-    },
-
-    ".pe-drawer--permanent": {
-      position: "static",
-      height: "auto",
-      display: "block",
-      padding: 0,
-      overflow: "initial",
-
-      " .pe-dialog-pane__body": {
-        overflow: "visible",
-        maxHeight: "initial"
-      }
     }
   }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
@@ -94,6 +102,9 @@ var style = function style(scopes, selector, componentVars, tint) {
   }).join(","), {
     ".pe-drawer--backdrop-visible .pe-drawer__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
+    },
+    " .pe-dialog__content": {
+      borderColor: componentVars["color_" + tint + "_border"]
     }
   })];
 };

@@ -59,13 +59,12 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
   open: "pe-dialog--open",
-  anchored: "pe-dialog--anchored",
-  floating: "pe-dialog--floating",
 
   // lookup
   menuContent: menuClasses.content
@@ -73,9 +72,9 @@ var classes = {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var DialogInstance = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreDialog.coreDialogInstance, {
+var DialogInstance = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreDialog.coreDialog, {
   createContent: function createContent(vnode, args) {
-    return polytheneCoreDialog.coreDialogInstance.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow, Pane: polytheneMithrilDialogPane.DialogPane, createPane: polytheneCoreDialog.coreDialogInstance.createPane }));
+    return polytheneCoreDialog.coreDialog.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow, Pane: polytheneMithrilDialogPane.DialogPane, createPane: polytheneCoreDialog.coreDialog.createPane }));
   }
 }));
 

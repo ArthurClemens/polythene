@@ -4,6 +4,9 @@ const style = (scopes, selector, componentVars, tint) => [{
     ".pe-drawer--backdrop-visible .pe-drawer__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     },
+    " .pe-dialog__content": {
+      borderColor: componentVars["color_" + tint + "_border"]
+    },
   }
 }];
 

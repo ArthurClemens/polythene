@@ -73,7 +73,7 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, dra
               {
                 key: "main", // for React
                 style: {
-                  background: "#ffeb3b",
+                  background: "#fff",
                   padding: "1rem",
                   flexShrink: 0,
                   flexGrow: 0,

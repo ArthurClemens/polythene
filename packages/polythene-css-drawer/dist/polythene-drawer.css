@@ -1,4 +1,4 @@
-.pe-dialog.pe-drawer {
+.pe-drawer {
   justify-content: flex-start;
   position: absolute;
   top: 0;
@@ -11,39 +11,15 @@
   overflow-y: auto
 }
 
-.pe-dialog.pe-drawer .pe-dialog__content {
-  position: relative;
-  height: 100%;
-  border-radius: 0;
-  width: calc(100% - 56px);
-  max-width: 280px
-}
-
-.pe-dialog.pe-drawer .pe-dialog-pane {
-  min-width: 0
-}
-
-.pe-dialog.pe-drawer .pe-dialog-pane__body {
-  overflow: visible
-}
-
-.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__touch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push {
+.pe-drawer.pe-drawer--push {
   position: static
 }
 
-.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+.pe-drawer.pe-drawer--push .pe-dialog__content {
   width: 280px
 }
 
-.pe-dialog.pe-drawer.pe-drawer--permanent {
+.pe-drawer.pe-drawer--permanent {
   position: static;
   height: auto;
   display: block;
@@ -51,19 +27,56 @@
   overflow: initial
 }
 
-.pe-dialog.pe-drawer.pe-drawer--permanent .pe-dialog-pane__body {
+.pe-drawer.pe-drawer--permanent .pe-dialog-pane__body {
   overflow: visible;
   max-height: none
 }
 
+.pe-drawer.pe-drawer--bordered .pe-dialog__content {
+  border-right-width: 1px;
+  border-right-style: solid
+}
+
+.pe-drawer .pe-dialog__content {
+  position: relative;
+  height: 100%;
+  border-radius: 0;
+  width: calc(100% - 56px);
+  max-width: 280px
+}
+
+.pe-drawer .pe-dialog-pane {
+  min-width: 0
+}
+
+.pe-drawer .pe-dialog-pane__body {
+  overflow: visible
+}
+
+.pe-drawer .pe-dialog__backdrop,.pe-drawer .pe-dialog__touch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0
+}
+
 @media (min-width:600px) {
-  .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  .pe-drawer.pe-drawer--push .pe-dialog__content {
     max-width: 320px
   }
 
-  .pe-dialog.pe-drawer .pe-dialog__content {
+  .pe-drawer .pe-dialog__content {
     width: calc(100% - 64px);
     max-width: 320px
   }
+}
+
+.pe-dark-tone.pe-drawer .pe-dialog__content,.pe-dark-tone .pe-drawer .pe-dialog__content {
+  border-color: hsla(0,0%,100%,.1)
+}
+
+.pe-drawer .pe-dialog__content,.pe-light-tone.pe-drawer .pe-dialog__content,.pe-light-tone .pe-drawer .pe-dialog__content {
+  border-color: rgba(0,0,0,.11)
 }
 /*# sourceMappingURL=polythene-drawer.css.map */

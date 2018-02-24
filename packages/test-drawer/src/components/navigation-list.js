@@ -21,10 +21,10 @@ ListTileCSS.addStyle(".tests-drawer-navigation-list", {
 
 export default ({ renderer: h, keys: k, Icon, List, ListTile, isLong, onClick }) => {
 
-  const tile = ({ title, icon, order }) =>
+  const tile = ({ title, icon, index }) =>
     h(ListTile, {
       title,
-      key: order,
+      key: `${title}-${index}`, // for React
       className: "tests-drawer-navigation-list",
       front: h(Icon, {
         svg: { content: h.trust(icon) }
@@ -37,29 +37,29 @@ export default ({ renderer: h, keys: k, Icon, List, ListTile, isLong, onClick })
 
   const setList = isLong
     ? [1, 2, 3]
-    : [1, 2];
+    : [1];
 
   return h(List, {
     compact: true,
     hoverable: true,
-    tiles: [].concat.apply([], setList.map((num, index, arr) => ([
+    tiles: [].concat.apply([], setList.map((num, index) => ([
       {
-        order: arr.length,
+        index,
         title: "Inbox",
         icon: icons.inbox,
       },
       {
-        order: arr.length,
+        index,
         title: "Starred",
         icon: icons.star,
       },
       {
-        order: arr.length,
+        index,
         title: "Sent mail",
         icon: icons.send,
       },
       {
-        order: arr.length,
+        index,
         title: "Drafts",
         icon: icons.drafts,
       }

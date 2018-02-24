@@ -1,48 +1,82 @@
 .pe-drawer {
+  justify-content: flex-start;
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  pointer-events: none
-}
-
-.pe-drawer.pe-drawer--full-height {
-  height: 100%
-}
-
-.pe-drawer.pe-drawer--cover-from-left .pe-drawer__panel {
-  position: absolute;
-  top: 0;
-  left: -99999px
-}
-
-.pe-drawer .pe-drawer__panel {
+  z-index: 1;
   height: 100%;
-  pointer-events: all
+  padding: 0;
+  overflow-y: auto
 }
 
-.pe-drawer .pe-drawer__backdrop {
+.pe-drawer.pe-drawer--push {
+  position: static
+}
+
+.pe-drawer.pe-drawer--push .pe-dialog__content {
+  width: 280px
+}
+
+.pe-drawer.pe-drawer--permanent {
+  position: static;
+  height: auto;
+  display: block;
+  padding: 0;
+  overflow: initial
+}
+
+.pe-drawer.pe-drawer--permanent .pe-dialog-pane__body {
+  overflow: visible;
+  max-height: none
+}
+
+.pe-drawer.pe-drawer--bordered .pe-dialog__content {
+  border-right-width: 1px;
+  border-right-style: solid
+}
+
+.pe-drawer .pe-dialog__content {
+  position: relative;
+  height: 100%;
+  border-radius: 0;
+  width: calc(100% - 56px);
+  max-width: 280px
+}
+
+.pe-drawer .pe-dialog-pane {
+  min-width: 0
+}
+
+.pe-drawer .pe-dialog-pane__body {
+  overflow: visible
+}
+
+.pe-drawer .pe-dialog__backdrop,.pe-drawer .pe-dialog__touch {
   position: absolute;
   top: 0;
-  right: auto;
-  bottom: 0;
-  left: -99999px;
-  opacity: 0;
-  pointer-events: none
-}
-
-.pe-drawer.pe-drawer--visible .pe-drawer__backdrop {
   left: 0;
   right: 0;
-  pointer-events: all
+  bottom: 0
 }
 
-.pe-dark-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-dark-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
-  background-color: rgba(0,0,0,.5)
+@media (min-width:600px) {
+  .pe-drawer.pe-drawer--push .pe-dialog__content {
+    max-width: 320px
+  }
+
+  .pe-drawer .pe-dialog__content {
+    width: calc(100% - 64px);
+    max-width: 320px
+  }
 }
 
-.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone.pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop,.pe-light-tone .pe-drawer.pe-drawer--backdrop-visible .pe-drawer__backdrop {
-  background-color: rgba(0,0,0,.4)
+.pe-dark-tone.pe-drawer .pe-dialog__content,.pe-dark-tone .pe-drawer .pe-dialog__content {
+  border-color: hsla(0,0%,100%,.1)
+}
+
+.pe-drawer .pe-dialog__content,.pe-light-tone.pe-drawer .pe-dialog__content,.pe-light-tone .pe-drawer .pe-dialog__content {
+  border-color: rgba(0,0,0,.11)
 }
 /*# sourceMappingURL=polythene-drawer.css.map */
