@@ -521,4 +521,21 @@ var transition = function transition(opts, state) {
   }
 };
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit };
+var getStyle = function getStyle(_ref) {
+  var _ref$element = _ref.element,
+      element = _ref$element === undefined ? document : _ref$element,
+      selector = _ref.selector,
+      prop = _ref.prop;
+
+  var el = selector ? element.querySelector(selector) : element;
+  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
+};
+
+var isRTL = function isRTL(_ref2) {
+  var _ref2$element = _ref2.element,
+      element = _ref2$element === undefined ? document : _ref2$element,
+      selector = _ref2.selector;
+  return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
+};
+
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit, getStyle, isRTL };

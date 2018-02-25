@@ -527,6 +527,23 @@ var transition = function transition(opts, state) {
   }
 };
 
+var getStyle = function getStyle(_ref) {
+  var _ref$element = _ref.element,
+      element = _ref$element === undefined ? document : _ref$element,
+      selector = _ref.selector,
+      prop = _ref.prop;
+
+  var el = selector ? element.querySelector(selector) : element;
+  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
+};
+
+var isRTL = function isRTL(_ref2) {
+  var _ref2$element = _ref2.element,
+      element = _ref2$element === undefined ? document : _ref2$element,
+      selector = _ref2.selector;
+  return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
+};
+
 exports.getAnimationEndEvent = getAnimationEndEvent;
 exports.Conditional = Conditional;
 exports.filterSupportedAttributes = filterSupportedAttributes;
@@ -546,6 +563,8 @@ exports.throttle = throttle;
 exports.subscribe = subscribe;
 exports.unsubscribe = unsubscribe;
 exports.emit = emit;
+exports.getStyle = getStyle;
+exports.isRTL = isRTL;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
