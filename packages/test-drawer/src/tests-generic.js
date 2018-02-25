@@ -10,6 +10,24 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
   DrawerCSS.addStyle(".drawer-tests-small", {
     content_max_width: 220,
   });
+  
+  const h = renderer;
+
+  const topContent = h(List,
+    {
+      tiles: [
+        h(ListTile, {
+          title: "Jennifer Barker",
+          key: "Jennifer Barker",
+          front: h(Icon, {
+            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+            avatar: true,
+          }),
+          navigation: true,
+        })
+      ]
+    }
+  );
 
   return [
     {
@@ -56,7 +74,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Pushing drawer including toolbar",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, drawerOpts: {
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, topContent, drawerOpts: {
         push: true,
         z: 0,
         className: "drawer-tests-small",
@@ -71,6 +89,24 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         backdrop: true,
       }})
     },
-    
+    {
+      name: "Sliding drawer (RTL)",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+        backdrop: true,
+      }})
+    },
+    {
+      name: "Pushing drawer (RTL)",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+        push: true,
+        z: 0,
+        className: "drawer-tests-small",
+        bordered: true,
+      }})
+    },
   ];
 };

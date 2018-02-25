@@ -11,7 +11,7 @@ ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
   color_dark_background:  "#e01d5f"
 });
 
-export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, drawerOpts }) => {
+export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, topContent, drawerOpts }) => {
 
   return {
     oninit: vnode => {
@@ -31,7 +31,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
       const navList = createContent({ repeats, onClick });
       const content = pushToolbar
         ? [
-          h(Toolbar),
+          h(Toolbar, { fullbleed: true, border: true }, topContent),
           navList
         ]
         : navList;
@@ -66,70 +66,75 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
         toolbarRow
       );
 
-      return h("div", null, [
-        !pushToolbar && ToolbarInstance,
-        h("div",
-          {
-            key: "content", // for React
-            style: {
-              position: "relative",
-              overflow: "hidden",
-            },
-          },
+      return h("div",
+        {
+          dir: rtl ? "rtl" : "auto"
+        },
+        [
+          !pushToolbar && ToolbarInstance,
           h("div",
             {
+              key: "content", // for React
               style: {
-                display: "flex",
-                height: "350px",
-              }
+                position: "relative",
+                overflow: "hidden",
+              },
             },
-            [
-              h("nav",
-                { key: "drawer" }, // for React
-                h(Drawer, Object.assign(
-                  {},
-                  drawerOpts,
-                  {
-                    content,
-                    show,
-                    hide,
-                    didShow: () => (
-                      state.show(true),
-                      state.hide(false)
-                    ),
-                    didHide: () => (
-                      state.show(false),
-                      state.hide(false)
-                    )
-                  }
-                ))
-              ),
-              h("main",
-                {
-                  style: {
-                    overflow: "hidden",
-                    background: "#fff",
-                    flexShrink: 0,
-                    flexGrow: 0,
-                    width: "100%",
-                  }
-                },
-                [
-                  pushToolbar && ToolbarInstance,
-                  h("div",
+            h("div",
+              {
+                style: {
+                  display: "flex",
+                  height: "350px",
+                }
+              },
+              [
+                h("nav",
+                  { key: "drawer" }, // for React
+                  h(Drawer, Object.assign(
+                    {},
+                    drawerOpts,
                     {
-                      style: {
-                        padding: "20px"
-                      }
-                    },
-                    h.trust(longText)
-                  )
-                ]
-              )
-            ]
+                      content,
+                      show,
+                      hide,
+                      didShow: () => (
+                        state.show(true),
+                        state.hide(false)
+                      ),
+                      didHide: () => (
+                        state.show(false),
+                        state.hide(false)
+                      )
+                    }
+                  ))
+                ),
+                h("main",
+                  {
+                    style: {
+                      overflow: "hidden",
+                      background: "#fff",
+                      flexShrink: 0,
+                      flexGrow: 0,
+                      width: "100%",
+                    }
+                  },
+                  [
+                    pushToolbar && ToolbarInstance,
+                    h("div",
+                      {
+                        style: {
+                          padding: "20px"
+                        }
+                      },
+                      h.trust(longText)
+                    )
+                  ]
+                )
+              ]
+            )
           )
-        )
-      ]);
+        ]
+      );
     }
   };
 };

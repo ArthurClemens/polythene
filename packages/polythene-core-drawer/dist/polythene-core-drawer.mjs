@@ -1,3 +1,4 @@
+import { isRTL } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -15,6 +16,10 @@ var show = function show(_ref) {
   var contentEl = _ref.contentEl,
       showDuration = _ref.showDuration,
       showDelay = _ref.showDelay;
+
+  var rtl = isRTL({ element: contentEl });
+  var side = rtl ? "right" : "left";
+
   return {
     el: contentEl,
     showDuration: showDuration,
@@ -23,10 +28,10 @@ var show = function show(_ref) {
       var rect = contentEl.getBoundingClientRect();
       var width = rect.width + SHADOW_WIDTH;
       contentEl.style.top = 0;
-      contentEl.style.left = "-" + width + "px";
+      contentEl.style[side] = "-" + width + "px";
     },
     show: function show() {
-      contentEl.style.left = 0;
+      contentEl.style[side] = 0;
     }
   };
 };
@@ -35,6 +40,10 @@ var hide = function hide(_ref2) {
   var contentEl = _ref2.contentEl,
       hideDuration = _ref2.hideDuration,
       hideDelay = _ref2.hideDelay;
+
+  var rtl = isRTL({ element: contentEl });
+  var side = rtl ? "right" : "left";
+
   return {
     el: contentEl,
     hideDuration: hideDuration,
@@ -42,12 +51,12 @@ var hide = function hide(_ref2) {
     hide: function hide() {
       var rect = contentEl.getBoundingClientRect();
       var width = rect.width + SHADOW_WIDTH;
-      contentEl.style.left = "-" + width + "px";
+      contentEl.style[side] = "-" + width + "px";
     }
   };
 };
 
-var defaultTransitionsOverFromLeft = {
+var defaultCoverTransitions = {
   show: show,
   hide: hide,
   name: "over-from-left"
@@ -57,6 +66,10 @@ var show$1 = function show(_ref) {
   var el = _ref.el,
       showDuration = _ref.showDuration,
       showDelay = _ref.showDelay;
+
+  var rtl = isRTL({ element: el });
+  var side = rtl ? "marginRight" : "marginLeft";
+
   return {
     el: el,
     showDuration: showDuration,
@@ -64,10 +77,10 @@ var show$1 = function show(_ref) {
     beforeShow: function beforeShow() {
       var rect = el.getBoundingClientRect();
       var width = rect.width;
-      el.style.marginLeft = "-" + width + "px";
+      el.style[side] = "-" + width + "px";
     },
     show: function show() {
-      el.style.marginLeft = 0;
+      el.style[side] = 0;
     }
   };
 };
@@ -76,6 +89,10 @@ var hide$1 = function hide(_ref2) {
   var el = _ref2.el,
       hideDuration = _ref2.hideDuration,
       hideDelay = _ref2.hideDelay;
+
+  var rtl = isRTL({ element: el });
+  var side = rtl ? "marginRight" : "marginLeft";
+
   return {
     el: el,
     hideDuration: hideDuration,
@@ -83,18 +100,18 @@ var hide$1 = function hide(_ref2) {
     hide: function hide() {
       var rect = el.getBoundingClientRect();
       var width = rect.width;
-      el.style.marginLeft = "-" + width + "px";
+      el.style[side] = "-" + width + "px";
     }
   };
 };
 
-var defaultTransitionsPushFromLeft = {
+var defaultPushTransitions = {
   show: show$1,
   hide: hide$1,
   name: "push-from-left"
 };
 
-var SHOW_DELAY = .110; // add a little time so to start after the sliding
+var SHOW_DELAY = .050; // add a little time so to start after the sliding
 var ANIMATION_DURATION = .320; // longer than slide transition
 
 var show$2 = function show(_ref) {
@@ -142,7 +159,7 @@ var createProps = function createProps(vnode) {
     anchored: true,
     fullBleed: true,
     className: [attrs.className, classes.component, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null].join(" "),
-    transitions: attrs.transitions ? attrs.transitions : attrs.push ? defaultTransitionsPushFromLeft : defaultTransitionsOverFromLeft,
+    transitions: attrs.transitions ? attrs.transitions : attrs.push ? defaultPushTransitions : defaultCoverTransitions,
     backdropTransitions: attrs.backdropTransitions || defaultBackdropTransitions
   });
 };

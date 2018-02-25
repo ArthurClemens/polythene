@@ -174,6 +174,8 @@ var opener = (function (_ref) {
       createContent = _ref.createContent,
       pushToolbar = _ref.pushToolbar,
       repeats = _ref.repeats,
+      rtl = _ref.rtl,
+      topContent = _ref.topContent,
       drawerOpts = _ref.drawerOpts;
 
 
@@ -195,7 +197,7 @@ var opener = (function (_ref) {
         return state.hide(true);
       };
       var navList = createContent({ repeats: repeats, onClick: onClick });
-      var content = pushToolbar ? [h(Toolbar$$1), navList] : navList;
+      var content = pushToolbar ? [h(Toolbar$$1, { fullbleed: true, border: true }, topContent), navList] : navList;
 
       var toolbarRow = [h(IconButton$$1, {
         key: "icon",
@@ -214,7 +216,9 @@ var opener = (function (_ref) {
         z: 1
       }, toolbarRow);
 
-      return h("div", null, [!pushToolbar && ToolbarInstance, h("div", {
+      return h("div", {
+        dir: rtl ? "rtl" : "auto"
+      }, [!pushToolbar && ToolbarInstance, h("div", {
         key: "content", // for React
         style: {
           position: "relative",
@@ -366,6 +370,20 @@ var genericTests = (function (_ref) {
     content_max_width: 220
   });
 
+  var h = renderer$$1;
+
+  var topContent = h(List$$1, {
+    tiles: [h(ListTile$$1, {
+      title: "Jennifer Barker",
+      key: "Jennifer Barker",
+      front: h(Icon$$1, {
+        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+        avatar: true
+      }),
+      navigation: true
+    })]
+  });
+
   return [{
     name: "Permanent, floating (no shadow)",
     component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
@@ -405,7 +423,7 @@ var genericTests = (function (_ref) {
     name: "Pushing drawer including toolbar",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, drawerOpts: {
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, topContent: topContent, drawerOpts: {
         push: true,
         z: 0,
         className: "drawer-tests-small",
@@ -417,6 +435,23 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
         backdrop: true
+      } })
+  }, {
+    name: "Sliding drawer (RTL)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
+        backdrop: true
+      } })
+  }, {
+    name: "Pushing drawer (RTL)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
+        push: true,
+        z: 0,
+        className: "drawer-tests-small",
+        bordered: true
       } })
   }];
 });

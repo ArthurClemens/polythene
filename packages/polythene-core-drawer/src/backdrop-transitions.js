@@ -1,4 +1,4 @@
-const SHOW_DELAY = .110; // add a little time so to start after the sliding
+const SHOW_DELAY         = .050; // add a little time so to start after the sliding
 const ANIMATION_DURATION = .320; // longer than slide transition
 
 const show = ({ el, showDuration, showDelay }) => ({

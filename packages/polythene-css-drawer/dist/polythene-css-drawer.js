@@ -53,8 +53,8 @@ var layout = (function (selector, componentVars) {
 
     ".pe-drawer--bordered": {
       " .pe-dialog__content": {
-        borderRightWidth: "1px",
-        borderRightStyle: "solid"
+        borderWidth: "1px",
+        borderStyle: "none solid none none"
       }
     },
 
@@ -81,7 +81,11 @@ var layout = (function (selector, componentVars) {
       right: 0,
       bottom: 0
     }
-  }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+  }), _defineProperty(_ref2, "*[dir=rtl] ", _defineProperty({}, selector, {
+    ".pe-drawer--bordered .pe-dialog__content": {
+      borderStyle: "none none none solid"
+    }
+  })), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
       " .pe-dialog__content": {
         maxWidth: componentVars.content_max_width_large + "px"

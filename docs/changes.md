@@ -27,6 +27,8 @@ Changes to components:
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
 * Toolbar:
   * Added option `z` to add a shadow
+  * Added option `fullbleed` to remove side padding
+  * Added option `border` to set a bottom border
 
 <a name="100"></a>
 ### 1.0.0

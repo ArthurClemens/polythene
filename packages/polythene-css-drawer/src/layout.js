@@ -36,9 +36,9 @@ export default (selector, componentVars) => [{
 
     ".pe-drawer--bordered": {
       " .pe-dialog__content": {
-        borderRightWidth: "1px",
-        borderRightStyle: "solid",
-      }
+        borderWidth: "1px",
+        borderStyle: "none solid none none" // reverse for RTL - see below
+      },
     },
 
     " .pe-dialog__content": {
@@ -64,6 +64,13 @@ export default (selector, componentVars) => [{
       right: 0,
       bottom: 0,
     },
+  },
+  "*[dir=rtl] ": {
+    [selector]: {
+      ".pe-drawer--bordered .pe-dialog__content": {
+        borderStyle: "none none none solid"
+      },
+    }
   },
   ["@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)"]: {
     [selector]: {

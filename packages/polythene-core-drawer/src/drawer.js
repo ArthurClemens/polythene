@@ -1,6 +1,6 @@
 import classes from "polythene-css-classes/drawer";
-import defaultTransitionsOverFromLeft from "./transitions-over-from-left";
-import defaultTransitionsPushFromLeft from "./transitions-push-from-left";
+import defaultCoverTransitions from "./transitions-cover";
+import defaultPushTransitions from "./transitions-push";
 import defaultBackdropTransitions from "./backdrop-transitions";
 
 // Props to be passed to a dialog
@@ -22,8 +22,8 @@ export const createProps = vnode => {
       transitions: attrs.transitions
         ? attrs.transitions
         : attrs.push
-          ? defaultTransitionsPushFromLeft
-          : defaultTransitionsOverFromLeft,
+          ? defaultPushTransitions
+          : defaultCoverTransitions,
       backdropTransitions: attrs.backdropTransitions || defaultBackdropTransitions
     }
   );
