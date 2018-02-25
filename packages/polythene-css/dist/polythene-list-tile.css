@@ -227,6 +227,12 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   cursor: pointer
 }
 
+[dir=rtl] .pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-right: 0
+}
+
 .pe-dark-tone.pe-list-tile,.pe-dark-tone .pe-list-tile {
   color: #fff
 }

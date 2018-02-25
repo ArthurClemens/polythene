@@ -46,7 +46,9 @@ var paddingV = function paddingV(top, bottom) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [flex.layout, {
+  var _ref;
+
+  return [(_ref = {}, _defineProperty(_ref, selector, [flex.layout, {
     position: "relative",
     fontSize: componentVars.font_size_title + "px",
     fontWeight: componentVars.font_weight_title,
@@ -210,12 +212,16 @@ var layout = (function (selector, componentVars) {
     // Non-touch
 
     "html.pe-no-touch &.pe-list-tile--hoverable, \
-        html.pe-no-touch &.pe-list-tile--selectable": {
+      html.pe-no-touch &.pe-list-tile--selectable": {
       ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
       }
     }
-  }])];
+  }]), _defineProperty(_ref, "*[dir=rtl] ", _defineProperty({}, selector, {
+    " .pe-list-tile__content-front + .pe-list-tile__content": [paddingH(componentVars.side_padding), {
+      paddingRight: 0
+    }]
+  })), _ref)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

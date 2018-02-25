@@ -225,6 +225,22 @@ var genericTests = (function (_ref) {
         }
       }
     }
+  }, {
+    name: "Option: secondary (Icon) (RTL)",
+    component: {
+      view: function view() {
+        return h("div", { dir: "rtl" }, h(ListTile$$1, {
+          title: "Ancillary Justice",
+          subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+          secondary: {
+            icon: {
+              svg: { content: trustedIconStars },
+              size: "medium"
+            }
+          }
+        }));
+      }
+    }
   },
 
   // Dark tone
