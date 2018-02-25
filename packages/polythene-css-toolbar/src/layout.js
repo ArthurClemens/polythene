@@ -17,7 +17,20 @@ export default (selector, componentVars) => [{
       position: "relative", 
       zIndex: vars.z_toolbar,
 
+      ".pe-toolbar--fullbleed": {
+        padding: 0
+      },
+
+      ".pe-toolbar--border": {
+        borderWidth: "1px",
+        borderStyle: "none none solid none",
+      },
+
       ".pe-toolbar--compact": compactStyle(componentVars),
+
+      " > div": {
+        width: "100%"
+      },
 
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
         fontSize: componentVars.font_size + "px",
@@ -28,16 +41,17 @@ export default (selector, componentVars) => [{
         overflow: "hidden",
         textOverflow: "ellipsis",
         whiteSpace: "nowrap",
-        marginLeft: componentVars.title_padding + "px"
+        marginLeft: componentVars.title_padding + "px" // reverse for RTL - see below
       },
 
       " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
-        marginLeft: componentVars.title_after_icon_padding + "px"
+        marginLeft: componentVars.title_after_icon_padding + "px" // reverse for RTL - see below
       },
 
       " .pe-toolbar__title--indent": {
-        marginLeft: (componentVars.indent - componentVars.padding_side) + "px"
+        marginLeft: (componentVars.indent - componentVars.padding_side) + "px" // reverse for RTL - see below
       },
+
       " .pe-toolbar__title--center": {
         textAlign: "center",
         justifyContent: "center",
@@ -65,5 +79,21 @@ export default (selector, componentVars) => [{
       height: componentVars.height_large + "px",
       padding: "0 " + componentVars.padding_side_large + "px",
     }
-  }
+  },
+  "*[dir=rtl] ": {
+    [selector]: {
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+        marginLeft: 0,
+        marginRight: componentVars.title_padding + "px"
+      },
+      " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
+        marginLeft: 0,
+        marginRight: componentVars.title_after_icon_padding + "px"
+      },
+      " .pe-toolbar__title--indent": {
+        marginLeft: 0,
+        marginRight: (componentVars.indent - componentVars.padding_side) + "px"
+      },
+    }
+  },
 }];

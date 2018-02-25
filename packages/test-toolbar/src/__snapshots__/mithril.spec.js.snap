@@ -427,8 +427,8 @@ class=\"pe-toolbar\">
 "
 `;
 
-exports[`test Scrolling pane 1`] = `
-"<div style=\"overflow: hidden;\">
+exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
+"<div dir=\"rtl\" style=\"overflow: hidden;\">
   <div class=\"pe-toolbar\">
     <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
     <div class=\"pe-button__content\">
@@ -487,6 +487,332 @@ exports[`test Scrolling pane 1`] = `
   </div>
   <div style=
   \"padding: 20px; background: rgb(255, 255, 255); height: 300px; overflow-y: auto;\">
+  <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+  </div>
+</div>
+"
+`;
+
+exports[`test Scrolling pane (RTL) 1`] = `
+"<div dir="rtl" style="overflow: hidden;">
+  <div class="pe-toolbar">
+    <a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d=
+              "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class="pe-toolbar__title">
+      Toolbar with a very very very very very very very very very
+      long title
+    </div><a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d=
+              "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a><a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-1"></div>
+      <div class="pe-shadow__top pe-shadow--z-1"></div>
+    </div>
+  </div>
+  <div style=
+  "padding: 20px; background: rgb(255, 255, 255); height: 300px; overflow-y: auto;">
+  <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+  </div>
+</div>
+"
+`;
+
+exports[`test Scrolling pane (with border) 1`] = `
+"<div style=\"overflow: hidden;\">
+  <div class=\"pe-toolbar pe-toolbar--border\">
+    <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
+              <path d=
+              \"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class=\"pe-toolbar__title\">
+      Toolbar with a very very very very very very very very very
+      long title
+    </div><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
+              <path d=
+              \"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a><a class=\"pe-button pe-icon-button\" tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-icon-button__content\">
+        <div class=\"pe-icon pe-icon--regular\">
+          <div class=\"pe-svg\">
+            <svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"
+            focusable=\"false\">
+              <path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+  </div>
+  <div style=
+  \"padding: 20px; background: rgb(255, 255, 255); height: 300px; overflow-y: auto;\">
+  <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+      do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat.
+    </p>
+  </div>
+</div>
+"
+`;
+
+exports[`test Scrolling pane 1`] = `
+"<div style="overflow: hidden;">
+  <div class="pe-toolbar">
+    <a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d=
+              "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class="pe-toolbar__title">
+      Toolbar with a very very very very very very very very very
+      long title
+    </div><a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d=
+              "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a><a class="pe-button pe-icon-button" tabindex="0">
+    <div class="pe-button__content">
+      <div class="pe-ripple"></div>
+      <div class="pe-button__focus"></div>
+      <div class="pe-icon-button__content">
+        <div class="pe-icon pe-icon--regular">
+          <div class="pe-svg">
+            <svg width="24" height="24" viewbox="0 0 24 24"
+            focusable="false">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div></a>
+    <div class="pe-shadow pe-shadow--animated">
+      <div class="pe-shadow__bottom pe-shadow--z-1"></div>
+      <div class="pe-shadow__top pe-shadow--z-1"></div>
+    </div>
+  </div>
+  <div style=
+  "padding: 20px; background: rgb(255, 255, 255); height: 300px; overflow-y: auto;">
   <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
       do eiusmod tempor incididunt ut labore et dolore magna

@@ -17,4 +17,6 @@ export default {
   // states
   centeredTitle:    "pe-toolbar__title--center",
   indentedTitle:    "pe-toolbar__title--indent",
+  fullbleed:        "pe-toolbar--fullbleed",
+  border:           "pe-toolbar--border",
 };

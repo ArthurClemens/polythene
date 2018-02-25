@@ -8,11 +8,26 @@
   align-items: center;
   height: 56px;
   line-height: 1.3em;
-  padding: 0 4px
+  padding: 0 4px;
+  position: relative;
+  z-index: 100
+}
+
+.pe-toolbar.pe-toolbar--fullbleed {
+  padding: 0
+}
+
+.pe-toolbar.pe-toolbar--border {
+  border-width: 1px;
+  border-style: none none solid
 }
 
 .pe-toolbar.pe-toolbar--compact {
   height: 48px
+}
+
+.pe-toolbar>div {
+  width: 100%
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
@@ -69,13 +84,36 @@
   }
 }
 
+[dir=rtl] .pe-toolbar .pe-toolbar__title,[dir=rtl] .pe-toolbar .pe-toolbar__title--indent,[dir=rtl] .pe-toolbar>span {
+  margin-left: 0;
+  margin-right: 12px
+}
+
+[dir=rtl] .pe-toolbar *+.pe-toolbar__title,[dir=rtl] .pe-toolbar *+.pe-toolbar__title--indent,[dir=rtl] .pe-toolbar>*+span {
+  margin-left: 0;
+  margin-right: 20px
+}
+
+[dir=rtl] .pe-toolbar .pe-toolbar__title--indent {
+  margin-left: 0;
+  margin-right: 68px
+}
+
 .pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar {
   color: #fff;
   background-color: #222
 }
 
+.pe-dark-tone.pe-toolbar.pe-toolbar--border,.pe-dark-tone .pe-toolbar.pe-toolbar--border {
+  border-color: hsla(0,0%,100%,.1)
+}
+
 .pe-light-tone.pe-toolbar,.pe-light-tone .pe-toolbar,.pe-toolbar {
   color: rgba(0,0,0,.87);
   background-color: #fff
+}
+
+.pe-light-tone.pe-toolbar.pe-toolbar--border,.pe-light-tone .pe-toolbar.pe-toolbar--border,.pe-toolbar.pe-toolbar--border {
+  border-color: rgba(0,0,0,.11)
 }
 /*# sourceMappingURL=polythene-toolbar.css.map */

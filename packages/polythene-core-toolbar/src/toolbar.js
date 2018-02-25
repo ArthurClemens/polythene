@@ -13,6 +13,8 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.compact ? classes.compact : null,
+        attrs.fullbleed ? classes.fullbleed : null,
+        attrs.border ? classes.border : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],

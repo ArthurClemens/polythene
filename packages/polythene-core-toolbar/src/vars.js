@@ -29,7 +29,9 @@ export default {
   // color vars
   color_light_text:          rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_dark_text:           rgba(vars.color_dark_foreground,  vars.blend_dark_text_primary),
+  color_light_border:        rgba(vars.color_light_foreground, vars.blend_light_border_light),
 
   color_light_background:    rgba(vars.color_light_background),
-  color_dark_background:     rgba(vars.color_dark_background)
+  color_dark_background:     rgba(vars.color_dark_background),
+  color_dark_border:         rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
 };

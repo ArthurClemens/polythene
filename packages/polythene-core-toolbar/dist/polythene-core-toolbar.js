@@ -21,7 +21,9 @@ var classes = {
 
   // states
   centeredTitle: "pe-toolbar__title--center",
-  indentedTitle: "pe-toolbar__title--indent"
+  indentedTitle: "pe-toolbar__title--indent",
+  fullbleed: "pe-toolbar--fullbleed",
+  border: "pe-toolbar--border"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -35,7 +37,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.compact ? classes.compact : null, attrs.fullbleed ? classes.fullbleed : null, attrs.border ? classes.border : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
@@ -116,9 +118,11 @@ var vars$1 = {
   // color vars
   color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
   color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+  color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
 
   color_light_background: rgba(polytheneTheme.vars.color_light_background),
-  color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
+  color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
+  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
 };
 
 exports.coreToolbar = toolbar;

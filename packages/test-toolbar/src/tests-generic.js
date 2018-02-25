@@ -129,11 +129,41 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
       }
     },
     {
-      name: "Scrolling pane",
+      name: "Scrolling pane (with border)",
+      interactive: true,
       component: {
         view: () =>
           h("div",
             {
+              style: {
+                overflow: "hidden"
+              }
+            },
+            [
+              h(Toolbar, { border: true }, toolbarRow),
+              h("div",
+                {
+                  style: {
+                    padding: "20px",
+                    background: "#fff",
+                    height: "300px",
+                    overflowY: "auto"
+                  }
+                },
+                h.trust(longText)
+              )
+            ]
+          )
+      }
+    },
+
+    {
+      name: "Scrolling pane (RTL) (with shadow)",
+      component: {
+        view: () =>
+          h("div",
+            {
+              dir: "rtl",
               style: {
                 overflow: "hidden"
               }
@@ -155,6 +185,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
           )
       }
     },
+
 
     // Dark tone
 

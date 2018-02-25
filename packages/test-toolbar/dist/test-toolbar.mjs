@@ -205,10 +205,30 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Scrolling pane",
+    name: "Scrolling pane (with border)",
+    interactive: true,
     component: {
       view: function view() {
         return h("div", {
+          style: {
+            overflow: "hidden"
+          }
+        }, [h(Toolbar$$1, { border: true }, toolbarRow), h("div", {
+          style: {
+            padding: "20px",
+            background: "#fff",
+            height: "300px",
+            overflowY: "auto"
+          }
+        }, h.trust(longText))]);
+      }
+    }
+  }, {
+    name: "Scrolling pane (RTL)",
+    component: {
+      view: function view() {
+        return h("div", {
+          dir: "rtl",
           style: {
             overflow: "hidden"
           }
