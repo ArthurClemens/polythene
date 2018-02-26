@@ -7,13 +7,14 @@ const show = ({ el, showDuration, showDelay }) => {
   return {
     el,
     showDuration,
-    showDelay:    showDelay || 0,
-    beforeShow:   () => {
+    showDelay:          showDelay || 0,
+    showTimingFunction: "ease-out",
+    beforeShow:         () => {
       const rect = el.getBoundingClientRect();
       const width = rect.width;
       el.style[side] = `-${width}px`;
     },
-    show:         () => {
+    show:               () => {
       el.style[side] = 0;
     }
   };
@@ -26,8 +27,9 @@ const hide = ({ el, hideDuration, hideDelay }) => {
   return {
     el,
     hideDuration,
-    hideDelay:    hideDelay || 0,
-    hide:         () => {
+    hideDelay:          hideDelay || 0,
+    hideTimingFunction: "ease-out",
+    hide:               () => {
       const rect = el.getBoundingClientRect();
       const width = rect.width;
       el.style[side] = `-${width}px`;

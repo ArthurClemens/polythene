@@ -9,14 +9,15 @@ const show = ({ contentEl, showDuration, showDelay }) => {
   return {
     el: contentEl,
     showDuration,
-    showDelay:    showDelay || 0,
-    beforeShow:   () => {
+    showDelay:          showDelay || 0,
+    showTimingFunction: "ease-out",
+    beforeShow:         () => {
       const rect = contentEl.getBoundingClientRect();
       const width = rect.width + SHADOW_WIDTH;
       contentEl.style.top = 0;
       contentEl.style[side] = `-${width}px`;
     },
-    show:         () => {
+    show:                () => {
       contentEl.style[side] = 0;
     }
   };
@@ -29,8 +30,9 @@ const hide = ({ contentEl, hideDuration, hideDelay }) => {
   return {
     el: contentEl,
     hideDuration,
-    hideDelay:    hideDelay || 0,
-    hide:         () => {
+    hideDelay:          hideDelay || 0,
+    hideTimingFunction: "ease-out",
+    hide:               () => {
       const rect = contentEl.getBoundingClientRect();
       const width = rect.width + SHADOW_WIDTH;
       contentEl.style[side] = `-${width}px`;

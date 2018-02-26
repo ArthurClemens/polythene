@@ -410,6 +410,48 @@ var genericTests = (function (_ref) {
         modal: true
       } })
   }, {
+    name: "Transitions",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        backdrop: true,
+        transitions: {
+          show: function show(_ref3) {
+            var contentEl = _ref3.contentEl;
+            return {
+              el: contentEl,
+              showDuration: .5,
+              beforeShow: function beforeShow() {
+                var scale = 1.3;
+                var rect = contentEl.getBoundingClientRect();
+                var width = rect.width * scale;
+                contentEl.style.top = 0;
+                contentEl.style.left = "-" + width + "px";
+                contentEl.style.transform = "scale(" + scale + ") translate3d(0, -40px, 0)";
+              },
+              show: function show() {
+                contentEl.style.left = 0;
+                contentEl.style.transform = "scale(1) translate3d(0, 0, 0)";
+              }
+            };
+          },
+          hide: function hide(_ref4) {
+            var contentEl = _ref4.contentEl;
+            return {
+              el: contentEl,
+              hideDuration: .5,
+              hide: function hide() {
+                var scale = 1.3;
+                var rect = contentEl.getBoundingClientRect();
+                var width = rect.width * scale;
+                contentEl.style.left = "-" + width + "px";
+                contentEl.style.transform = "scale(" + scale + ") translate3d(0, -40px, 0)";
+              }
+            };
+          }
+        }
+      } })
+  }, {
     name: "Pushing drawer (push from left, without shadow, bordered) (themed small width)",
     interactive: true,
     exclude: true,

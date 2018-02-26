@@ -59,6 +59,45 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         modal: true,
       }})
     },
+
+    {
+      name: "Transitions",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        backdrop: true,
+        transitions: {
+          show: ({ contentEl }) => ({
+            el: contentEl,
+            showDuration: .5,
+            beforeShow:   () => {
+              const scale = 1.3;
+              const rect = contentEl.getBoundingClientRect();
+              const width = rect.width * scale;
+              contentEl.style.top = 0;
+              contentEl.style.left = `-${width}px`;
+              contentEl.style.transform = `scale(${scale}) translate3d(0, -40px, 0)`;
+            },
+            show:         () => {
+              contentEl.style.left = 0;
+              contentEl.style.transform = "scale(1) translate3d(0, 0, 0)";
+            }
+          }),
+          hide: ({ contentEl }) => ({
+            el: contentEl,
+            hideDuration: .5,
+            hide:         () => {
+              const scale = 1.3;
+              const rect = contentEl.getBoundingClientRect();
+              const width = rect.width * scale;
+              contentEl.style.left = `-${width}px`;
+              contentEl.style.transform = `scale(${scale}) translate3d(0, -40px, 0)`;
+            }
+          })
+        }
+      }})
+    },
+
     {
       name: "Pushing drawer (push from left, without shadow, bordered) (themed small width)",
       interactive: true,

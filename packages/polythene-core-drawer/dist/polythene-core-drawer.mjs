@@ -24,6 +24,7 @@ var show = function show(_ref) {
     el: contentEl,
     showDuration: showDuration,
     showDelay: showDelay || 0,
+    showTimingFunction: "ease-out",
     beforeShow: function beforeShow() {
       var rect = contentEl.getBoundingClientRect();
       var width = rect.width + SHADOW_WIDTH;
@@ -48,6 +49,7 @@ var hide = function hide(_ref2) {
     el: contentEl,
     hideDuration: hideDuration,
     hideDelay: hideDelay || 0,
+    hideTimingFunction: "ease-out",
     hide: function hide() {
       var rect = contentEl.getBoundingClientRect();
       var width = rect.width + SHADOW_WIDTH;
@@ -74,6 +76,7 @@ var show$1 = function show(_ref) {
     el: el,
     showDuration: showDuration,
     showDelay: showDelay || 0,
+    showTimingFunction: "ease-out",
     beforeShow: function beforeShow() {
       var rect = el.getBoundingClientRect();
       var width = rect.width;
@@ -97,6 +100,7 @@ var hide$1 = function hide(_ref2) {
     el: el,
     hideDuration: hideDuration,
     hideDelay: hideDelay || 0,
+    hideTimingFunction: "ease-out",
     hide: function hide() {
       var rect = el.getBoundingClientRect();
       var width = rect.width;
@@ -122,6 +126,7 @@ var show$2 = function show(_ref) {
     el: el,
     showDuration: showDuration || ANIMATION_DURATION,
     showDelay: showDelay || SHOW_DELAY,
+    showTimingFunction: "ease-out",
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
     },
@@ -139,6 +144,7 @@ var hide$2 = function hide(_ref2) {
     el: el,
     hideDuration: hideDuration || ANIMATION_DURATION,
     hideDelay: hideDelay || 0,
+    hideTimingFunction: "ease-out",
     hide: function hide() {
       return el.style.opacity = 0;
     }
