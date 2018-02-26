@@ -3,6 +3,9 @@ export const getStyle = ({ element = document, selector, prop }) => {
   const el = selector
     ? element.querySelector(selector)
     : element;
+  if (!el) {
+    return;
+  }
   return el.currentStyle
     ? el.currentStyle[prop]
     : window.getComputedStyle

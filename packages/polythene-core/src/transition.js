@@ -16,23 +16,23 @@ export const show = opts =>
 export const hide = opts =>
   transition(opts, "hide");
 
-const getTiming = (opts, state, showAttr, hideAttr, defaultShowTiming, defaultHideTiming) => {
+const getValue = ({ opts, state, showAttr, hideAttr, defaultShowValue, defaultHideValue, nullValue }) => {
   const transition = opts.transition || TRANSITION;
   if (transition === "none") {
-    return 0;
+    return nullValue;
   } else if (transition === "show" && state === "hide") {
-    return 0;
+    return nullValue;
   } else if (transition === "hide" && state === "show") {
-    return 0;
+    return nullValue;
   } else {
     // both
     return state === "show"
       ? opts[showAttr] !== undefined
         ? opts[showAttr]
-        : defaultShowTiming
+        : defaultShowValue
       : opts[hideAttr] !== undefined
         ? opts[hideAttr]
-        : defaultHideTiming;
+        : defaultHideValue;
   }
 };
 
@@ -45,7 +45,7 @@ opts:
 - state (show, hide)
 */
 const getDuration = (opts, state) => 
-  getTiming(opts, state, "showDuration", "hideDuration", SHOW_DURATION, HIDE_DURATION);
+  getValue({ opts, state, showAttr: "showDuration", hideAttr: "hideDuration", defaultShowValue: SHOW_DURATION, defaultHideValue: HIDE_DURATION, nullValue: 0 });
 
 /*
 opts:
@@ -56,7 +56,11 @@ opts:
 - state (show, hide)
 */
 const getDelay = (opts, state) =>
-  getTiming(opts, state, "showDelay", "hideDelay", SHOW_DELAY, HIDE_DELAY);
+  getValue({ opts, state, showAttr: "showDelay", hideAttr: "hideDelay", defaultShowValue: SHOW_DELAY, defaultHideValue: HIDE_DELAY, nullValue: 0 });
+
+const getTimingFunction = (opts, state) =>
+  getValue({ opts, state, showAttr: "showTimingFunction", hideAttr: "hideTimingFunction" });
+
 
 /*
 opts:
@@ -70,6 +74,7 @@ opts:
 - afterHide
 - showDelay
 - hideDelay
+- timingFunction
 
 - state (show, hide)
 */
@@ -80,6 +85,7 @@ const transition = (opts, state) => {
   } else {
     return new Promise(resolve => {
       const transitionDuration = getDuration(opts, state) * 1000;
+      const timingFunction = getTimingFunction(opts, state);
       const delay = getDelay(opts, state) * 1000;
       const style = el.style;
       const beforeTransition = (opts.beforeShow && state === "show")
@@ -97,7 +103,10 @@ const transition = (opts, state) => {
       const applyTransition = () => {
         style.transitionDuration = transitionDuration + "ms";
         style.transitionDelay = delay + "ms";
-        
+
+        if (timingFunction) {
+          style.transitionTimingFunction = timingFunction;
+        }
         if (opts.showClass) {
           el.classList[(state === "show") ? "add" : "remove"](opts.showClass);
         }

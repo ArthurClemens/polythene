@@ -409,17 +409,25 @@ var hide = function hide(opts) {
   return transition(opts, "hide");
 };
 
-var getTiming = function getTiming(opts, state, showAttr, hideAttr, defaultShowTiming, defaultHideTiming) {
+var getValue = function getValue(_ref) {
+  var opts = _ref.opts,
+      state = _ref.state,
+      showAttr = _ref.showAttr,
+      hideAttr = _ref.hideAttr,
+      defaultShowValue = _ref.defaultShowValue,
+      defaultHideValue = _ref.defaultHideValue,
+      nullValue = _ref.nullValue;
+
   var transition = opts.transition || TRANSITION;
   if (transition === "none") {
-    return 0;
+    return nullValue;
   } else if (transition === "show" && state === "hide") {
-    return 0;
+    return nullValue;
   } else if (transition === "hide" && state === "show") {
-    return 0;
+    return nullValue;
   } else {
     // both
-    return state === "show" ? opts[showAttr] !== undefined ? opts[showAttr] : defaultShowTiming : opts[hideAttr] !== undefined ? opts[hideAttr] : defaultHideTiming;
+    return state === "show" ? opts[showAttr] !== undefined ? opts[showAttr] : defaultShowValue : opts[hideAttr] !== undefined ? opts[hideAttr] : defaultHideValue;
   }
 };
 
@@ -432,7 +440,7 @@ opts:
 - state (show, hide)
 */
 var getDuration = function getDuration(opts, state) {
-  return getTiming(opts, state, "showDuration", "hideDuration", SHOW_DURATION, HIDE_DURATION);
+  return getValue({ opts: opts, state: state, showAttr: "showDuration", hideAttr: "hideDuration", defaultShowValue: SHOW_DURATION, defaultHideValue: HIDE_DURATION, nullValue: 0 });
 };
 
 /*
@@ -444,7 +452,11 @@ opts:
 - state (show, hide)
 */
 var getDelay = function getDelay(opts, state) {
-  return getTiming(opts, state, "showDelay", "hideDelay", SHOW_DELAY, HIDE_DELAY);
+  return getValue({ opts: opts, state: state, showAttr: "showDelay", hideAttr: "hideDelay", defaultShowValue: SHOW_DELAY, defaultHideValue: HIDE_DELAY, nullValue: 0 });
+};
+
+var getTimingFunction = function getTimingFunction(opts, state) {
+  return getValue({ opts: opts, state: state, showAttr: "showTimingFunction", hideAttr: "hideTimingFunction" });
 };
 
 /*
@@ -459,6 +471,7 @@ opts:
 - afterHide
 - showDelay
 - hideDelay
+- timingFunction
 
 - state (show, hide)
 */
@@ -469,6 +482,7 @@ var transition = function transition(opts, state) {
   } else {
     return new Promise(function (resolve) {
       var transitionDuration = getDuration(opts, state) * 1000;
+      var timingFunction = getTimingFunction(opts, state);
       var delay = getDelay(opts, state) * 1000;
       var style = el.style;
       var beforeTransition = opts.beforeShow && state === "show" ? function () {
@@ -485,6 +499,9 @@ var transition = function transition(opts, state) {
         style.transitionDuration = transitionDuration + "ms";
         style.transitionDelay = delay + "ms";
 
+        if (timingFunction) {
+          style.transitionTimingFunction = timingFunction;
+        }
         if (opts.showClass) {
           el.classList[state === "show" ? "add" : "remove"](opts.showClass);
         }
@@ -534,6 +551,9 @@ var getStyle = function getStyle(_ref) {
       prop = _ref.prop;
 
   var el = selector ? element.querySelector(selector) : element;
+  if (!el) {
+    return;
+  }
   return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
 };
 
