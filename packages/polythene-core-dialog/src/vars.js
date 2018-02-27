@@ -9,6 +9,8 @@ export default {
   padding_vertical:                3 * vars.grid_unit_component,
   padding_horizontal:              5 * vars.grid_unit_component,
   
+  animation_duration:              ".220s",
+
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background:  "rgba(0, 0, 0, .5)",
 

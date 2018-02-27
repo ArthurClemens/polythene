@@ -62,48 +62,11 @@ var classes = {
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
-};
-
-var ANIMATION_DURATION = .220;
-
-var show$1 = function show$$1(_ref) {
-  var el = _ref.el,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
-  return {
-    el: el,
-    showDuration: showDuration || ANIMATION_DURATION,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
-      return el.style.opacity = 0;
-    },
-    show: function show$$1() {
-      return el.style.opacity = 1;
-    }
-  };
-};
-
-var hide$1 = function hide$$1(_ref2) {
-  var el = _ref2.el,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
-  return {
-    el: el,
-    hideDuration: hideDuration || ANIMATION_DURATION,
-    hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
-      return el.style.opacity = 0;
-    }
-  };
-};
-
-var defaultBackdropTransitions = {
-  show: show$1,
-  hide: hide$1
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -120,17 +83,12 @@ var showDialog = function showDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  var id = state.instanceId;
   state.transitioning(true);
-  // Show backdrop
-  if (attrs.backdrop) {
-    var backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
-    show(_extends({}, attrs, backdropTransitions.show({ el: state.backdropEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay })));
-  }
+  state.visible(true);
+  var id = state.instanceId;
 
-  // Show pane
   var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay }))).then(function () {
+  return show(_extends({}, attrs, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay }) : { el: state.el, showClass: classes.visible, showDuration: attrs.showDuration, showDelay: attrs.showDelay })).then(function () {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
     } else if (attrs.didShow) {
@@ -144,18 +102,13 @@ var hideDialog = function hideDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  var id = state.instanceId;
   state.transitioning(true);
+  state.visible(false);
+  var id = state.instanceId;
 
-  // Hide backdrop
-  if (attrs.backdrop) {
-    var backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
-    hide(_extends({}, attrs, backdropTransitions.hide({ el: state.backdropEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })));
-  }
-
-  // Hide pane
+  // Hide dialog
   var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }))).then(function () {
+  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, showClass: classes.visible, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })).then(function () {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
     } else if (attrs.didHide) {
@@ -167,13 +120,15 @@ var hideDialog = function hideDialog(state, attrs) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var transitioning = createStream(false);
+  var visible = createStream(false);
   return {
     backdropEl: undefined,
     touchEl: undefined,
     cleanUp: undefined,
     el: undefined,
     contentEl: undefined,
-    transitioning: transitioning
+    transitioning: transitioning,
+    visible: visible
   };
 };
 
@@ -189,7 +144,7 @@ var onMount = function onMount(vnode) {
   state.touchEl = dom.querySelector("." + classes.touch);
   state.contentEl = dom.querySelector("." + classes.content);
 
-  if (!attrs.permanent) {
+  if (!attrs.inactive) {
 
     var handleEscape = function handleEscape(e) {
       if (attrs.fullScreen || attrs.modal) return;
@@ -224,7 +179,9 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes.component, attrs.fullScreen ? classes.fullScreen : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
+    className: [attrs.parentClassName || classes.component, attrs.fullScreen ? classes.fullScreen : null,
+    // classes.visible is set in showDialog though transition
+    attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
     "data-spawn-id": attrs.spawnId,
     "data-instance-id": attrs.instanceId
   }, k.onclick, function (e) {
@@ -268,9 +225,15 @@ var createContent = function createContent(vnode, _ref3) {
   var attrs = vnode.attrs;
   var h = renderer;
 
-  if (attrs.hide) {
-    hideDialog(state, attrs);
+  if (state.el) {
+    var visible = state.visible();
+    if (attrs.hide && visible) {
+      hideDialog(state, attrs);
+    } else if (attrs.show && !visible) {
+      showDialog(state, attrs);
+    }
   }
+
   var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
   return [attrs.backdrop && h("div", {
     key: "backdrop",
@@ -309,6 +272,8 @@ var vars$1 = {
   padding_vertical: 3 * vars.grid_unit_component,
   padding_horizontal: 5 * vars.grid_unit_component,
 
+  animation_duration: ".220s",
+
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
 
@@ -319,42 +284,4 @@ var vars$1 = {
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
 };
 
-var ANIMATION_DURATION$1 = .220;
-
-var show$2 = function show$$1(_ref) {
-  var contentEl = _ref.contentEl,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
-  return {
-    el: contentEl,
-    showDuration: showDuration || ANIMATION_DURATION$1,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
-      return contentEl.style.opacity = 0;
-    },
-    show: function show$$1() {
-      return contentEl.style.opacity = 1;
-    }
-  };
-};
-
-var hide$2 = function hide$$1(_ref2) {
-  var contentEl = _ref2.contentEl,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
-  return {
-    el: contentEl,
-    hideDuration: hideDuration || ANIMATION_DURATION$1,
-    hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
-      return contentEl.style.opacity = 0;
-    }
-  };
-};
-
-var transitions = {
-  show: show$2,
-  hide: hide$2
-};
-
-export { dialog as coreDialog, vars$1 as vars, transitions };
+export { dialog as coreDialog, vars$1 as vars };

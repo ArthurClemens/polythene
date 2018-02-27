@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -64,7 +65,8 @@ var classes = {
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -77,7 +79,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog__holder": {
       height: "100%"
     }
-  }, selector, [polytheneCoreCss.flex.layoutCenterCenter, {
+  }, selector, [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.mixin.defaultTransition("opacity", componentVars.animation_duration), {
     position: componentVars.position,
     top: 0,
     left: 0,
@@ -86,6 +88,11 @@ var layout = (function (selector, componentVars) {
     zIndex: polytheneTheme.vars.z_dialog,
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
+    opacity: 0,
+
+    ".pe-dialog--visible": {
+      opacity: 1
+    },
 
     ".pe-dialog--full-screen": {
       padding: 0,
@@ -102,13 +109,13 @@ var layout = (function (selector, componentVars) {
       borderRadius: componentVars.border_radius + "px"
     },
 
-    " .pe-dialog__backdrop": {
+    " .pe-dialog__backdrop": [{
       position: "absolute",
       top: 0,
       left: 0,
       right: 0,
       bottom: 0
-    }
+    }]
   }])];
 });
 

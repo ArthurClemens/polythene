@@ -110,7 +110,7 @@ var layout = (function (selector, componentVars) {
     }],
 
     " .pe-list-tile__content-front + .pe-list-tile__content": {
-      paddingLeft: 0
+      paddingLeft: 0 // reverse for RTL - see below
     },
 
     " .pe-list-tile__title": {

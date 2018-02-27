@@ -5,15 +5,20 @@
 }(this, (function (exports,polytheneCoreCss,polytheneCoreDrawer,polytheneTheme) { 'use strict';
 
 var classes = {
-  component: "pe-drawer",
+  component: "pe-dialog pe-drawer",
 
   // states
+  cover: "pe-drawer--cover",
   push: "pe-drawer--push",
+  mini: "pe-drawer--mini",
   permanent: "pe-drawer--permanent",
-  bordered: "pe-drawer--bordered"
+  bordered: "pe-drawer--bordered",
+  floating: "pe-drawer--floating"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SHADOW_WIDTH = 15;
 
 var layout = (function (selector, componentVars) {
   var _ref2;
@@ -28,42 +33,19 @@ var layout = (function (selector, componentVars) {
     zIndex: 1,
     height: "100%",
     padding: 0,
-    overflowY: "auto",
+    opacity: 1,
 
-    ".pe-drawer--push": {
-      position: "static",
-
-      " .pe-dialog__content": {
-        width: componentVars.content_max_width + "px"
-      }
-    },
-
-    ".pe-drawer--permanent": {
-      position: "static",
-      height: "auto",
-      display: "block",
-      padding: 0,
-      overflow: "initial",
-
-      " .pe-dialog-pane__body": {
-        overflow: "visible",
-        maxHeight: "initial"
-      }
-    },
-
-    ".pe-drawer--bordered": {
-      " .pe-dialog__content": {
-        borderWidth: "1px",
-        borderStyle: "none solid none none"
-      }
-    },
-
-    " .pe-dialog__content": {
+    " .pe-dialog__content": [polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
+    {
       position: "relative",
-      height: "100%",
       borderRadius: 0,
-      width: "calc(100% - " + componentVars.content_side_offset + "px)",
-      maxWidth: componentVars.content_max_width + "px"
+      height: "100%",
+      overflow: "visible"
+    }],
+
+    " .pe-dialog-pane__content": {
+      height: "100%",
+      overflowY: "auto"
     },
 
     " .pe-dialog-pane": {
@@ -74,17 +56,108 @@ var layout = (function (selector, componentVars) {
       overflow: "visible"
     },
 
+    // Permanent
+    ".pe-drawer--permanent:not(.pe-drawer--mini)": {
+      position: "static",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+
+      " .pe-dialog__content": {
+        width: componentVars.permanent_content_width + "px",
+        overflow: "visible",
+        maxHeight: "initial"
+      }
+    },
+
+    // Floating
+    ".pe-drawer--floating": {
+      height: "auto"
+    },
+
+    // Bordered
+    ".pe-drawer--bordered": {
+      " .pe-dialog__content": {
+        borderWidth: "1px",
+        borderStyle: "none solid none none" // reverse for RTL - see below
+      }
+    },
+
+    // Cover (default)
+    ".pe-drawer--cover": {
+      " .pe-dialog__content": {
+        width: "calc(100% - " + componentVars.content_side_offset + "px)",
+        maxWidth: componentVars.content_max_width + "px",
+        left: "calc(-" + componentVars.content_max_width + "px - " + SHADOW_WIDTH + "px)", // reverse for RTL - see below
+        right: "auto"
+      }
+    },
+    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+      left: 0, // reverse for RTL - see below
+      right: "auto"
+    },
+
+    // Push
+    ".pe-drawer--push": {
+      position: "static",
+
+      " .pe-dialog__content": {
+        width: componentVars.permanent_content_width + "px",
+        marginLeft: "calc(-" + componentVars.permanent_content_width + "px - " + SHADOW_WIDTH + "px)", // reverse for RTL - see below
+        marginRight: "auto"
+      }
+    },
+    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+      marginLeft: 0, // reverse for RTL - see below
+      marginRight: "auto"
+    },
+
+    // Mini
+    ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+      width: componentVars.content_width_mini_collapsed + "px"
+    },
+
+    // Backdrop
     " .pe-dialog__backdrop, .pe-dialog__touch": {
       position: "absolute",
       top: 0,
       left: 0,
       right: 0,
       bottom: 0
+    },
+    " .pe-dialog__backdrop": [polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
+    {
+      opacity: 0
+    }],
+    ".pe-dialog--visible .pe-dialog__backdrop": {
+      opacity: 1
     }
   }), _defineProperty(_ref2, "*[dir=rtl] ", _defineProperty({}, selector, {
     ".pe-drawer--bordered .pe-dialog__content": {
       borderStyle: "none none none solid"
+    },
+    ".pe-drawer--cover": {
+      " .pe-dialog__content": {
+        right: "calc(-" + componentVars.content_max_width + "px - " + SHADOW_WIDTH + "px)",
+        left: "auto"
+      }
+    },
+    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+      right: 0,
+      left: "auto"
+    },
+
+    ".pe-drawer--push": {
+      " .pe-dialog__content": {
+        marginRight: "calc(-" + componentVars.permanent_content_width + "px - " + SHADOW_WIDTH + "px)",
+        marginLeft: "auto"
+      }
+    },
+    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+      marginRight: 0,
+      marginLeft: "auto"
     }
+
   })), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
       " .pe-dialog__content": {
@@ -104,11 +177,12 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
-    ".pe-drawer--backdrop-visible .pe-drawer__backdrop": {
-      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
-    },
     " .pe-dialog__content": {
+      backgroundColor: componentVars["color_" + tint + "_background"],
       borderColor: componentVars["color_" + tint + "_border"]
+    },
+    " .pe-dialog__backdrop": {
+      backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     }
   })];
 };

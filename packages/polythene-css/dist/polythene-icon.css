@@ -52,7 +52,7 @@
 }
 
 .pe-dark-tone.pe-icon.pe-icon--avatar,.pe-dark-tone .pe-icon.pe-icon--avatar {
-  background-color: 34,34,34
+  background-color: hsla(0,0%,100%,.12)
 }
 
 .pe-icon,.pe-light-tone.pe-icon,.pe-light-tone .pe-icon {
@@ -60,6 +60,6 @@
 }
 
 .pe-icon.pe-icon--avatar,.pe-light-tone.pe-icon.pe-icon--avatar,.pe-light-tone .pe-icon.pe-icon--avatar {
-  background-color: 255,255,255
+  background-color: rgba(0,0,0,.09)
 }
 /*# sourceMappingURL=polythene-icon.css.map */

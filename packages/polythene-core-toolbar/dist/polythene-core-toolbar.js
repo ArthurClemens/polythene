@@ -111,18 +111,17 @@ var vars$1 = {
   title_padding: title_padding,
   title_after_icon_padding: title_after_icon_padding,
   indent: polytheneTheme.vars.unit_indent,
-  transition_duration: polytheneTheme.vars.animation_duration,
   font_size: 18,
   line_height: polytheneTheme.vars.line_height,
 
   // color vars
   color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
   color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-
   color_light_background: rgba(polytheneTheme.vars.color_light_background),
-  color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
-  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
+
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+  color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
 };
 
 exports.coreToolbar = toolbar;

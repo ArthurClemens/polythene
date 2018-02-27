@@ -19,7 +19,8 @@ export const Drawer = props => (
     props,
     {
       placeholderClassName: classes.placeholder,
-      instance: DrawerInstance
+      instance: DrawerInstance,
+      permanent: props.permanent || props.mini,
     }
   ))
 );

@@ -77,8 +77,10 @@ var showNotification = function showNotification(state, attrs) {
     containerEl: state.containerEl,
     el: state.el
   })))).then(function () {
-    if (attrs.multipleDidShow) {
-      attrs.multipleDidShow(id); // this will call attrs.didShow
+    if (attrs.fromMultipleDidShow) {
+      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
+    } else if (attrs.didShow) {
+      attrs.didShow(id); // when used directly
     }
     // set timer to hide in a few seconds
     var timeout = attrs.timeout;
@@ -107,8 +109,10 @@ var hideNotification = function hideNotification(state, attrs) {
     containerEl: state.containerEl,
     el: state.el
   })))).then(function () {
-    if (attrs.multipleDidHide) {
-      attrs.multipleDidHide(id); // this will call attrs.didHide
+    if (attrs.fromMultipleDidHide) {
+      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
+    } else if (attrs.didHide) {
+      attrs.didHide(id); // when used directly
     }
     state.visible(false);
     state.transitioning(false);

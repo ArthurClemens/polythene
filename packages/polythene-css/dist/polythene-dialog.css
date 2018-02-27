@@ -10,13 +10,22 @@
   display: flex;
   -ms-flex-align: center;
   align-items: center;
+  transition-delay: 0ms;
+  transition-duration: .22s;
+  transition-timing-function: ease-out;
+  transition-property: opacity;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 5000;
-  padding: 24px 40px
+  padding: 24px 40px;
+  opacity: 0
+}
+
+.pe-dialog.pe-dialog--visible {
+  opacity: 1
 }
 
 .pe-dialog.pe-dialog--full-screen {

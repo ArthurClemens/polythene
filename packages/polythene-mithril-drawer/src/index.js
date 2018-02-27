@@ -19,7 +19,8 @@ export const Drawer = {
       vnode.attrs,
       {
         placeholderClassName: classes.placeholder,
-        instance: DrawerInstance
+        instance: DrawerInstance,
+        permanent: vnode.attrs.permanent || vnode.attrs.mini,
       }
     ))
 };

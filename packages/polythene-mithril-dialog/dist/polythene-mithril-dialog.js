@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -64,7 +65,8 @@ var classes = {
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -86,8 +88,7 @@ var options = {
   defaultId: "default_dialog",
   holderSelector: "div." + classes.holder,
   instance: DialogInstance,
-  placeholder: "span." + classes.placeholder,
-  transitions: polytheneCoreDialog.transitions
+  placeholder: "span." + classes.placeholder
 };
 
 var Multiple = polytheneCore.Multi({ options: options, renderer: polytheneMithrilBase.renderer });

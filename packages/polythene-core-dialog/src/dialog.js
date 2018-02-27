@@ -1,6 +1,5 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
-import defaultBackdropTransitions from "./backdrop-transitions";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -11,22 +10,16 @@ const showDialog = (state, attrs) => {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  const id = state.instanceId;
   state.transitioning(true);
-  // Show backdrop
-  if (attrs.backdrop) {
-    const backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
-    show(Object.assign({},
-      attrs,
-      backdropTransitions.show({ el: state.backdropEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
-    ));
-  }
-
-  // Show pane
+  state.visible(true);
+  const id = state.instanceId;
+  
   const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
-    transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
+    transitions 
+      ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
+      : { el: state.el, showClass: classes.visible, showDuration: attrs.showDuration, showDelay: attrs.showDelay }
   )).then(() => {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
@@ -41,23 +34,17 @@ const hideDialog = (state, attrs) => {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  const id = state.instanceId;
   state.transitioning(true);
+  state.visible(false);
+  const id = state.instanceId;
 
-  // Hide backdrop
-  if (attrs.backdrop) {
-    const backdropTransitions = attrs.backdropTransitions || defaultBackdropTransitions;
-    hide(Object.assign({},
-      attrs,
-      backdropTransitions.hide({ el: state.backdropEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
-    ));
-  }
-
-  // Hide pane
+  // Hide dialog
   const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
-    transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
+    transitions
+      ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
+      : { el: state.el, showClass: classes.visible, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }
   )).then(() => {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
@@ -70,6 +57,7 @@ const hideDialog = (state, attrs) => {
 
 export const getInitialState = (vnode, createStream) => {
   const transitioning = createStream(false);
+  const visible = createStream(false);
   return {
     backdropEl: undefined,
     touchEl:    undefined,
@@ -77,6 +65,7 @@ export const getInitialState = (vnode, createStream) => {
     el:         undefined,
     contentEl:  undefined,
     transitioning,
+    visible,
   };
 };
 
@@ -92,7 +81,7 @@ export const onMount = vnode => {
   state.touchEl = dom.querySelector(`.${classes.touch}`);
   state.contentEl = dom.querySelector(`.${classes.content}`);
 
-  if (!attrs.permanent) {
+  if (!attrs.inactive) {
 
     const handleEscape = e => {
       if (attrs.fullScreen || attrs.modal) return;
@@ -122,14 +111,15 @@ export const onUnMount = vnode => (
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  
+
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     {
       className: [
-        classes.component,
+        attrs.parentClassName || classes.component,
         attrs.fullScreen ? classes.fullScreen : null,
+        // classes.visible is set in showDialog though transition
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -175,12 +165,18 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
   const attrs = vnode.attrs;
   const h = renderer;
 
-  if (attrs.hide) {
-    hideDialog(state, attrs);
+  if (state.el) {
+    const visible = state.visible();
+    if (attrs.hide && visible) {
+      hideDialog(state, attrs);
+    } else if (attrs.show && !visible) {
+      showDialog(state, attrs);
+    }
   }
+
   const pane = attrs.panes && attrs.panes.length
     ? attrs.panes[0]
-    : createPane(vnode, { renderer, Pane} );
+    : createPane(vnode, { renderer, Pane } );
   return [
     attrs.backdrop && h("div",
       {

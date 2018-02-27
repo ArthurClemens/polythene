@@ -1,19 +1,26 @@
 import opener from "./components/opener";
 import navigationList from "./components/navigation-list";
 import permanent from "./components/permanent";
-import { DrawerCSS } from "polythene-css";
+import { DrawerCSS, ToolbarCSS } from "polythene-css";
 
 export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconButton }) => {
 
   const createContent = ({ repeats, onClick }) => navigationList({ renderer, keys, Icon, List, ListTile, repeats, onClick });
 
-  DrawerCSS.addStyle(".drawer-tests-small", {
-    content_max_width: 220,
+  DrawerCSS.addStyle(".drawer-tests-themed", {
+    color_dark_background:          "rgba(69, 45, 157, 1)",
+    color_dark_text:                "#fff",
+    color_dark_backdrop_background: "rgba(69, 45, 157, .5)"
   });
   
+  ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
+    color_light_background: "#e01d5f",
+    color_dark_background:  "#e01d5f"
+  });
+
   const h = renderer;
 
-  const topContent = h(List,
+  const createTopContent = ({ onClick }) => h(List,
     {
       tiles: [
         h(ListTile, {
@@ -23,7 +30,11 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
             src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
             avatar: true,
           }),
+          hoverable: true,
           navigation: true,
+          events: {
+            [keys.onclick]: onClick
+          }
         })
       ]
     }
@@ -31,19 +42,22 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
 
   return [
     {
-      name: "Permanent, floating (no shadow)",
-      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
+      name: "Permanent (no shadow)",
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        permanent: true,
+        bordered: true,
         z: 0
-      } })
+      }})
     },
     {
-      name: "Permanent, floating (shadow depth 1)",
-      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
-        z: 1
-      } })
+      name: "Permanent, floating (with shadow)",
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        permanent: true,
+        floating: true,
+      }})
     },
     {
-      name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
+      name: "Default drawer (type cover) (with backdrop, can be closed with ESCAPE)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
@@ -51,12 +65,22 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Sliding drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
+      name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         backdrop: true,
         modal: true,
+      }})
+    },
+    {
+      name: "Default drawer (themed)",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        backdrop: true,
+        className: "drawer-tests-themed",
+        tone: "dark"
       }})
     },
 
@@ -69,29 +93,27 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         transitions: {
           show: ({ contentEl }) => ({
             el: contentEl,
-            showDuration: .5,
-            beforeShow:   () => {
-              const scale = 1.3;
+            showDuration: .24,
+            showTimingFunction: "ease-out",
+            beforeShow: () => {
               const rect = contentEl.getBoundingClientRect();
-              const width = rect.width * scale;
-              contentEl.style.top = 0;
-              contentEl.style.left = `-${width}px`;
-              contentEl.style.transform = `scale(${scale}) translate3d(0, -40px, 0)`;
-            },
-            show:         () => {
+              const height = rect.height + 15; // add shadow
               contentEl.style.left = 0;
-              contentEl.style.transform = "scale(1) translate3d(0, 0, 0)";
+              contentEl.style.transform = `translate3d(0, -${height}px, 0)`;
+            },
+            show: () => {
+              contentEl.style.transform = "translate3d(0, 0, 0)";
             }
           }),
           hide: ({ contentEl }) => ({
             el: contentEl,
-            hideDuration: .5,
-            hide:         () => {
-              const scale = 1.3;
+            hideDuration: .24,
+            hideTimingFunction: "ease-out",
+            hide: () => {
               const rect = contentEl.getBoundingClientRect();
-              const width = rect.width * scale;
-              contentEl.style.left = `-${width}px`;
-              contentEl.style.transform = `scale(${scale}) translate3d(0, -40px, 0)`;
+              const height = rect.height + 15; // add shadow
+              contentEl.style.left = 0;
+              contentEl.style.transform = `translate3d(0, -${height}px, 0)`;
             }
           })
         }
@@ -99,13 +121,12 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
     },
 
     {
-      name: "Pushing drawer (push from left, without shadow, bordered) (themed small width)",
+      name: "Pushing drawer (push from left, without shadow, bordered)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true,
       }})
     },
@@ -113,13 +134,27 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Pushing drawer including toolbar",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, topContent, drawerOpts: {
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, createTopContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true,
       }})
     },
+
+    {
+      name: "Mini (expanding) drawer",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, createTopContent, drawerOpts: {
+        push: true,
+        z: 0,
+        bordered: true,
+        mini: true,
+        miniWidthCollapsed: 56,
+        miniWidthExpanded: 220,
+      }})
+    },
+
     {
       name: "Long content (scrolling list)",
       interactive: true,
@@ -129,7 +164,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Sliding drawer (RTL)",
+      name: "Default drawer (RTL)",
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
@@ -143,9 +178,19 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: opener({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true,
       }})
     },
+
+    // Dark tone
+
+    {
+      name: "Permanent, floating (no shadow) -- dark tone class",
+      className: "pe-dark-tone",
+      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
+        z: 0
+      } })
+    },
+
   ];
 };

@@ -153,17 +153,12 @@ var stream = stream$2;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 
 var ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 var longText = ipsum + ipsum;
-
-ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
-  color_light_background: "#e01d5f",
-  color_dark_background: "#e01d5f"
-});
 
 var opener = (function (_ref) {
   var h = _ref.renderer,
@@ -175,7 +170,7 @@ var opener = (function (_ref) {
       pushToolbar = _ref.pushToolbar,
       repeats = _ref.repeats,
       rtl = _ref.rtl,
-      topContent = _ref.topContent,
+      createTopContent = _ref.createTopContent,
       drawerOpts = _ref.drawerOpts;
 
 
@@ -197,12 +192,12 @@ var opener = (function (_ref) {
         return state.hide(true);
       };
       var navList = createContent({ repeats: repeats, onClick: onClick });
-      var content = pushToolbar ? [h(Toolbar$$1, { fullbleed: true, border: true }, topContent), navList] : navList;
+      var content = pushToolbar ? [h(Toolbar$$1, { fullbleed: true, border: true }, createTopContent({ onClick: onClick })), navList] : navList;
 
-      var toolbarRow = [h(IconButton$$1, {
+      var toolbarRow = [!drawerOpts.permanent && h(IconButton$$1, {
         key: "icon",
         icon: { svg: { content: h.trust(iconMenuSVG) } },
-        events: _defineProperty({}, k.onclick, function () {
+        events: _defineProperty$1({}, k.onclick, function () {
           return show ? state.hide(true) : state.show(true);
         })
       }), h("div", {
@@ -211,7 +206,7 @@ var opener = (function (_ref) {
       }, "Title")];
 
       var ToolbarInstance = h(Toolbar$$1, {
-        className: "tests-drawer-themed-toolbar",
+        className: "tests-drawer-themed-toolbar", // style set in tests-generic.js
         tone: "dark",
         z: 1
       }, toolbarRow);
@@ -227,11 +222,15 @@ var opener = (function (_ref) {
       }, h("div", {
         style: {
           display: "flex",
-          height: "350px"
+          height: "350px",
+          background: "#fff"
         }
-      }, [h("nav", { key: "drawer" }, // for React
-      h(Drawer$$1, _extends({}, drawerOpts, {
-        content: content,
+      }, [h("nav", {
+        key: "drawer", // for React
+        style: {
+          padding: drawerOpts.floating ? "20px" : 0
+        }
+      }, h(Drawer$$1, _extends({}, drawerOpts, { content: content }, !drawerOpts.permanent && {
         show: show,
         hide: hide,
         didShow: function didShow() {
@@ -244,7 +243,7 @@ var opener = (function (_ref) {
         style: {
           overflow: "hidden",
           background: "#fff",
-          flexShrink: 0,
+          flexShrink: drawerOpts.permanent ? 1 : 0,
           flexGrow: 0,
           width: "100%"
         }
@@ -257,7 +256,7 @@ var opener = (function (_ref) {
   };
 });
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var icons = {
   drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
@@ -296,7 +295,7 @@ var navigationList = (function (_ref) {
       }),
       hoverable: true,
       navigation: true,
-      events: _defineProperty$1({}, k.onclick, onClick)
+      events: _defineProperty$2({}, k.onclick, onClick)
     });
   };
 
@@ -349,6 +348,8 @@ var permanent = (function (_ref) {
   };
 });
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var genericTests = (function (_ref) {
   var keys$$1 = _ref.keys,
       renderer$$1 = _ref.renderer,
@@ -366,48 +367,72 @@ var genericTests = (function (_ref) {
     return navigationList({ renderer: renderer$$1, keys: keys$$1, Icon: Icon$$1, List: List$$1, ListTile: ListTile$$1, repeats: repeats, onClick: onClick });
   };
 
-  DrawerCSS.addStyle(".drawer-tests-small", {
-    content_max_width: 220
+  DrawerCSS.addStyle(".drawer-tests-themed", {
+    color_dark_background: "rgba(69, 45, 157, 1)",
+    color_dark_text: "#fff",
+    color_dark_backdrop_background: "rgba(69, 45, 157, .5)"
+  });
+
+  ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
+    color_light_background: "#e01d5f",
+    color_dark_background: "#e01d5f"
   });
 
   var h = renderer$$1;
 
-  var topContent = h(List$$1, {
-    tiles: [h(ListTile$$1, {
-      title: "Jennifer Barker",
-      key: "Jennifer Barker",
-      front: h(Icon$$1, {
-        src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-        avatar: true
-      }),
-      navigation: true
-    })]
-  });
+  var createTopContent = function createTopContent(_ref3) {
+    var onClick = _ref3.onClick;
+    return h(List$$1, {
+      tiles: [h(ListTile$$1, {
+        title: "Jennifer Barker",
+        key: "Jennifer Barker",
+        front: h(Icon$$1, {
+          src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+          avatar: true
+        }),
+        hoverable: true,
+        navigation: true,
+        events: _defineProperty({}, keys$$1.onclick, onClick)
+      })]
+    });
+  };
 
   return [{
-    name: "Permanent, floating (no shadow)",
-    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
+    name: "Permanent (no shadow)",
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        permanent: true,
+        bordered: true,
         z: 0
       } })
   }, {
-    name: "Permanent, floating (shadow depth 1)",
-    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
-        z: 1
+    name: "Permanent, floating (with shadow)",
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        permanent: true,
+        floating: true
       } })
   }, {
-    name: "Sliding drawer (slide over from left, with backdrop, can be closed with ESCAPE)",
+    name: "Default drawer (type cover) (with backdrop, can be closed with ESCAPE)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true
       } })
   }, {
-    name: "Sliding drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
+    name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         modal: true
+      } })
+  }, {
+    name: "Default drawer (themed)",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        backdrop: true,
+        className: "drawer-tests-themed",
+        tone: "dark"
       } })
   }, {
     name: "Transitions",
@@ -416,60 +441,68 @@ var genericTests = (function (_ref) {
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         transitions: {
-          show: function show(_ref3) {
-            var contentEl = _ref3.contentEl;
-            return {
-              el: contentEl,
-              showDuration: .5,
-              beforeShow: function beforeShow() {
-                var scale = 1.3;
-                var rect = contentEl.getBoundingClientRect();
-                var width = rect.width * scale;
-                contentEl.style.top = 0;
-                contentEl.style.left = "-" + width + "px";
-                contentEl.style.transform = "scale(" + scale + ") translate3d(0, -40px, 0)";
-              },
-              show: function show() {
-                contentEl.style.left = 0;
-                contentEl.style.transform = "scale(1) translate3d(0, 0, 0)";
-              }
-            };
-          },
-          hide: function hide(_ref4) {
+          show: function show(_ref4) {
             var contentEl = _ref4.contentEl;
             return {
               el: contentEl,
-              hideDuration: .5,
-              hide: function hide() {
-                var scale = 1.3;
+              showDuration: .24,
+              showTimingFunction: "ease-out",
+              beforeShow: function beforeShow() {
                 var rect = contentEl.getBoundingClientRect();
-                var width = rect.width * scale;
-                contentEl.style.left = "-" + width + "px";
-                contentEl.style.transform = "scale(" + scale + ") translate3d(0, -40px, 0)";
+                var height = rect.height + 15; // add shadow
+                contentEl.style.left = 0;
+                contentEl.style.transform = "translate3d(0, -" + height + "px, 0)";
+              },
+              show: function show() {
+                contentEl.style.transform = "translate3d(0, 0, 0)";
+              }
+            };
+          },
+          hide: function hide(_ref5) {
+            var contentEl = _ref5.contentEl;
+            return {
+              el: contentEl,
+              hideDuration: .24,
+              hideTimingFunction: "ease-out",
+              hide: function hide() {
+                var rect = contentEl.getBoundingClientRect();
+                var height = rect.height + 15; // add shadow
+                contentEl.style.left = 0;
+                contentEl.style.transform = "translate3d(0, -" + height + "px, 0)";
               }
             };
           }
         }
       } })
   }, {
-    name: "Pushing drawer (push from left, without shadow, bordered) (themed small width)",
+    name: "Pushing drawer (push from left, without shadow, bordered)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true
       } })
   }, {
     name: "Pushing drawer including toolbar",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, topContent: topContent, drawerOpts: {
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true
+      } })
+  }, {
+    name: "Mini (expanding) drawer",
+    interactive: true,
+    exclude: true,
+    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
+        push: true,
+        z: 0,
+        bordered: true,
+        mini: true,
+        miniWidthCollapsed: 56,
+        miniWidthExpanded: 220
       } })
   }, {
     name: "Long content (scrolling list)",
@@ -479,7 +512,7 @@ var genericTests = (function (_ref) {
         backdrop: true
       } })
   }, {
-    name: "Sliding drawer (RTL)",
+    name: "Default drawer (RTL)",
     interactive: true,
     exclude: true,
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
@@ -492,8 +525,17 @@ var genericTests = (function (_ref) {
     component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         push: true,
         z: 0,
-        className: "drawer-tests-small",
         bordered: true
+      } })
+  },
+
+  // Dark tone
+
+  {
+    name: "Permanent, floating (no shadow) -- dark tone class",
+    className: "pe-dark-tone",
+    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
+        z: 0
       } })
   }];
 });

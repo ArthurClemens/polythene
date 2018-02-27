@@ -24,7 +24,7 @@ var Conditional = {
     var h = _ref.renderer;
 
     var attrs = vnode.attrs;
-    return attrs.permanent || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
+    return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
   }
 };
 

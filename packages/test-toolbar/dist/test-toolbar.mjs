@@ -28,41 +28,50 @@ var shared = (function (_ref) {
     });
   };
 
-  var toolbarRow = [toolbarButton("menu", trustedIconMenu), h("div", { key: "title", className: titleClass }, longTitle), toolbarButton("refresh", trustedIconRefresh), toolbarButton("add", trustedIconAddSVG)];
+  var toolbarRow = [toolbarButton("menu", trustedIconMenu), h("div", {
+    key: "title", // for React
+    className: titleClass
+  }, longTitle), toolbarButton("refresh", trustedIconRefresh), toolbarButton("add", trustedIconAddSVG)];
 
-  var toolbarTitleAsSpan = [toolbarButton("menu", trustedIconMenu), h("span", { key: "title" }, longTitle), toolbarButton("add", trustedIconAddSVG)];
+  var toolbarTitleAsSpan = [toolbarButton("menu", trustedIconMenu), h("span", {
+    key: "title" // for React
+  }, longTitle), toolbarButton("add", trustedIconAddSVG)];
 
   var toolbarTitleComponent = [toolbarButton("menu", trustedIconMenu), h(ToolbarTitle$$1, {
-    key: "title",
+    key: "title", // for React
     text: longTitle
   }), toolbarButton("add", trustedIconAddSVG)];
 
   var toolbarTitleComponentCentered = [h(ToolbarTitle$$1, {
-    key: "title",
+    key: "title", // for React
     text: shortTitle,
     center: true
   })];
 
   var toolbarTitleComponentCenteredBalanced = [toolbarButton("menu", trustedIconMenu), h(ToolbarTitle$$1, {
-    key: "title",
+    key: "title", // for React
     text: shortTitle,
     center: true
   }), h(IconButton$$1, {
     inactive: true,
-    key: "placeholder",
+    key: "placeholder", // for React
     icon: { content: "" }
   })];
 
   var toolbarTitleComponentIndented = [h(ToolbarTitle$$1, {
-    key: "title",
+    key: "title", // for React
     text: longTitle,
     indent: true
   }), toolbarButton("add", trustedIconAddSVG)];
 
   var toolbarTitleComponentAction = [h(ToolbarTitle$$1, {
-    key: "title",
+    key: "title", // for React
     text: longTitle
-  }), h("a", { className: "pe-action", href: "#" }, "Action")];
+  }), h("a", {
+    key: "action", // for React
+    className: "pe-action",
+    href: "#"
+  }, "Action")];
 
   var toolbarTitleComponentAtStart = [h(ToolbarTitle$$1, {
     key: "title",
@@ -213,7 +222,11 @@ var genericTests = (function (_ref) {
           style: {
             overflow: "hidden"
           }
-        }, [h(Toolbar$$1, { border: true }, toolbarRow), h("div", {
+        }, [h(Toolbar$$1, {
+          border: true,
+          key: "toolbar" // for React
+        }, toolbarRow), h("div", {
+          key: "content", // for React
           style: {
             padding: "20px",
             background: "#fff",
@@ -224,7 +237,7 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Scrolling pane (RTL)",
+    name: "Scrolling pane (RTL) (with shadow)",
     component: {
       view: function view() {
         return h("div", {
@@ -232,7 +245,11 @@ var genericTests = (function (_ref) {
           style: {
             overflow: "hidden"
           }
-        }, [h(Toolbar$$1, { z: 1 }, toolbarRow), h("div", {
+        }, [h(Toolbar$$1, {
+          z: 1,
+          key: "toolbar" // for React
+        }, toolbarRow), h("div", {
+          key: "content", // for React
           style: {
             padding: "20px",
             background: "#fff",

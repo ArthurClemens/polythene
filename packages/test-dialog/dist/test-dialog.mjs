@@ -484,25 +484,27 @@ var genericTests = (function (_ref) {
           body: "Hello",
           transitions: {
             show: function show(_ref2) {
-              var el = _ref2.el;
+              var el = _ref2.el,
+                  contentEl = _ref2.contentEl;
               return {
-                el: el,
-                showDuration: .5,
+                el: contentEl,
+                showDuration: .35,
                 beforeShow: function beforeShow() {
-                  return el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)";
+                  return el.style.opacity = 0, contentEl.style.transform = "translate3d(0, 20px, 0)";
                 },
                 show: function show() {
-                  return el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)";
+                  return el.style.opacity = 1, contentEl.style.transform = "translate3d(0, 0px,  0)";
                 }
               };
             },
             hide: function hide(_ref3) {
-              var el = _ref3.el;
+              var el = _ref3.el,
+                  contentEl = _ref3.contentEl;
               return {
-                el: el,
-                hideDuration: .5,
+                el: contentEl,
+                hideDuration: .35,
                 hide: function hide() {
-                  return el.style.opacity = 0;
+                  return el.style.opacity = 0, contentEl.style.transform = "translate3d(0, 20px, 0)";
                 }
               };
             }

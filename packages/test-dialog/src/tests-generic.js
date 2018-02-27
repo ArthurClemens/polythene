@@ -238,22 +238,25 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
         view: () => Opener({
           body: "Hello",
           transitions: {
-            show: ({ el }) => ({
-              el,
-              showDuration: .5,
+            show: ({ el, contentEl }) => ({
+              el: contentEl,
+              showDuration: .35,
               beforeShow:   () => (
                 el.style.opacity = 0,
-                el.style.transform = "translate3d(0, 20px, 0)"
+                contentEl.style.transform = "translate3d(0, 20px, 0)"
               ),
               show:         () => (
                 el.style.opacity = 1,
-                el.style.transform = "translate3d(0, 0px,  0)"
+                contentEl.style.transform = "translate3d(0, 0px,  0)"
               )
             }),
-            hide: ({ el }) => ({
-              el,
-              hideDuration: .5,
-              hide:         () => el.style.opacity = 0
+            hide: ({ el, contentEl }) => ({
+              el: contentEl,
+              hideDuration: .35,
+              hide:         () => (
+                el.style.opacity = 0,
+                contentEl.style.transform = "translate3d(0, 20px, 0)"
+              )
             })
           }
         })

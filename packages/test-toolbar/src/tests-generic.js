@@ -140,9 +140,13 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
               }
             },
             [
-              h(Toolbar, { border: true }, toolbarRow),
+              h(Toolbar, {
+                border: true,
+                key: "toolbar", // for React
+              }, toolbarRow),
               h("div",
                 {
+                  key: "content", // for React
                   style: {
                     padding: "20px",
                     background: "#fff",
@@ -169,9 +173,13 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
               }
             },
             [
-              h(Toolbar, { z: 1 }, toolbarRow),
+              h(Toolbar, {
+                z: 1,
+                key: "toolbar", // for React
+              }, toolbarRow),
               h("div",
                 {
+                  key: "content", // for React
                   style: {
                     padding: "20px",
                     background: "#fff",
@@ -185,7 +193,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
           )
       }
     },
-
 
     // Dark tone
 
