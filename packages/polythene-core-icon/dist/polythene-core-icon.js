@@ -56,11 +56,21 @@ var icon = Object.freeze({
 	createContent: createContent
 });
 
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
 var vars$1 = {
   size_small: polytheneTheme.vars.unit_icon_size_small,
   size_regular: polytheneTheme.vars.unit_icon_size,
   size_medium: polytheneTheme.vars.unit_icon_size_medium,
   size_large: polytheneTheme.vars.unit_icon_size_large,
+
+  // avatar background is visible when image is not yet loaded
+  color_light_avatar_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+  color_dark_avatar_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+
   color_light: "currentcolor",
   color_dark: "currentcolor"
 };

@@ -14,6 +14,10 @@ export default (selector, componentVars) => [{
     fontSize: 0,
     lineHeight: 0,
 
+    ".pe-icon--avatar": {
+      borderRadius: "50%",
+    },
+    
     ".pe-icon--avatar img": {
       border: "none",
       borderRadius: "50%",

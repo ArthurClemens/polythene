@@ -53,11 +53,21 @@ var icon = Object.freeze({
 	createContent: createContent
 });
 
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
 var vars$1 = {
   size_small: vars.unit_icon_size_small,
   size_regular: vars.unit_icon_size,
   size_medium: vars.unit_icon_size_medium,
   size_large: vars.unit_icon_size_large,
+
+  // avatar background is visible when image is not yet loaded
+  color_light_avatar_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_dark_avatar_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+
   color_light: "currentcolor",
   color_dark: "currentcolor"
 };
