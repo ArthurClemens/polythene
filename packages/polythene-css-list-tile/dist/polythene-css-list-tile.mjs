@@ -217,7 +217,7 @@ var layout = (function (selector, componentVars) {
         cursor: "pointer"
       }
     }
-  }]), _defineProperty(_ref, "*[dir=rtl] ", _defineProperty({}, selector, {
+  }]), _defineProperty(_ref, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
     " .pe-list-tile__content-front + .pe-list-tile__content": [paddingH(componentVars.side_padding), {
       paddingRight: 0
     }]

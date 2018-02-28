@@ -247,7 +247,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       name: "Option: secondary (Icon) (RTL)",
       component: {
         view: () =>
-          h("div", { dir: "rtl" }, h(ListTile, {
+          h("div", { className: "pe-rtl" }, h(ListTile, {
             title: "Ancillary Justice",
             subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
             secondary: {

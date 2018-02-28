@@ -80,7 +80,7 @@ export default (selector, componentVars) => [{
       padding: "0 " + componentVars.padding_side_large + "px",
     }
   },
-  "*[dir=rtl] ": {
+  "*[dir=rtl], .pe-rtl ": {
     [selector]: {
       " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
         marginLeft: 0,

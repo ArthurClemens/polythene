@@ -20,6 +20,7 @@ export const createProps = vnode => {
         attrs.bordered ? classes.bordered : null,
         attrs.mini ? classes.mini : null,
         attrs.floating ? classes.floating : null,
+        attrs.fixed ? classes.fixed : null,
       ].join(" "),
       // transitions: attrs.transitions
       //   ? attrs.transitions

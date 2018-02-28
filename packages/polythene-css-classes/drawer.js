@@ -9,4 +9,5 @@ export default {
   permanent:       "pe-drawer--permanent",
   bordered:        "pe-drawer--bordered",
   floating:        "pe-drawer--floating",
+  fixed:           "pe-drawer--fixed",
 };

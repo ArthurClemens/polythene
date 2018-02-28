@@ -43,13 +43,19 @@ const index = {
     ]
 };
 
-let scrollTop = document.scrollingElement.scrollTop;
+let scrollTop = document.scrollingElement
+  ? document.scrollingElement.scrollTop
+  : document.scrollTop;
 h.route.prefix("#");
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
     onmatch: () => {
-      document.scrollingElement.scrollTop = scrollTop;
+      if (document.scrollingElement) {
+        document.scrollingElement.scrollTop = scrollTop;
+      } else {
+        document.scrollTop = scrollTop || 0;
+      }
       document.title = "Polythene Components for Mithril";
       return index;
     }
@@ -57,7 +63,9 @@ const routeData = {
 };
 routes.forEach(route => routeData[route.path] = {
   onmatch: () => {
-    scrollTop = document.scrollingElement.scrollTop;
+    scrollTop = document.scrollingElement
+      ? document.scrollingElement.scrollTop
+      : document.scrollTop;
     document.title = `Polythene: ${route.name}`;
     return Page(route, "/");
   }

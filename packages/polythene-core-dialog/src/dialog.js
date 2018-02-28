@@ -66,6 +66,7 @@ export const getInitialState = (vnode, createStream) => {
     contentEl:  undefined,
     transitioning,
     visible,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 

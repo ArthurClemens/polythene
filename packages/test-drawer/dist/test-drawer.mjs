@@ -1,6 +1,6 @@
-import { Drawer, Icon, IconButton, List, ListTile, Toolbar, keys, renderer } from 'polythene-mithril';
+import { Drawer, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, keys, renderer } from 'polythene-mithril';
 import { DrawerCSS, ListTileCSS, ToolbarCSS } from 'polythene-css';
-import { Drawer as Drawer$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { Drawer as Drawer$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -160,7 +160,7 @@ var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d
 var ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 var longText = ipsum + ipsum;
 
-var opener = (function (_ref) {
+var navigation = (function (_ref) {
   var h = _ref.renderer,
       k = _ref.keys,
       Drawer$$1 = _ref.Drawer,
@@ -211,9 +211,9 @@ var opener = (function (_ref) {
         z: 1
       }, toolbarRow);
 
-      return h("div", {
-        dir: rtl ? "rtl" : "auto"
-      }, [!pushToolbar && ToolbarInstance, h("div", {
+      var dirOpts = rtl ? { className: "pe-rtl" } : null;
+
+      return h("div", dirOpts, [!pushToolbar && ToolbarInstance, h("div", {
         key: "content", // for React
         style: {
           position: "relative",
@@ -225,7 +225,7 @@ var opener = (function (_ref) {
           height: "350px",
           background: "#fff"
         }
-      }, [h("nav", {
+      }, [h("div", {
         key: "drawer", // for React
         style: {
           padding: drawerOpts.floating ? "20px" : 0
@@ -239,7 +239,7 @@ var opener = (function (_ref) {
         didHide: function didHide() {
           return state.show(false), state.hide(false);
         }
-      }))), h("main", {
+      }))), h("div", {
         style: {
           overflow: "hidden",
           background: "#fff",
@@ -256,7 +256,61 @@ var opener = (function (_ref) {
   };
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var appDrawer = (function (_ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Drawer$$1 = _ref.Drawer,
+      RaisedButton$$1 = _ref.RaisedButton,
+      createContent = _ref.createContent,
+      repeats = _ref.repeats,
+      drawerOpts = _ref.drawerOpts;
+
+
+  return {
+    oninit: function oninit(vnode) {
+      var show = stream(false);
+      var hide = stream(false);
+      _extends$1(vnode.state, {
+        show: show,
+        hide: hide,
+        redrawOnUpdate: stream.merge([show, hide])
+      });
+    },
+    view: function view(vnode) {
+      var state = vnode.state;
+      var show = state.show();
+      var hide = state.hide();
+      var onClick = function onClick() {
+        return state.hide(true);
+      };
+      var content = createContent({ repeats: repeats, onClick: onClick });
+      return [h(RaisedButton$$1, {
+        label: "Show",
+        events: _defineProperty$2({}, k.onclick, function () {
+          return state.show(true)
+          // state.hide(!hide)
+          ;
+        })
+      }), h(Drawer$$1, _extends$1({}, drawerOpts, {
+        content: content,
+        show: show,
+        hide: hide,
+        didShow: function didShow() {
+          return state.show(true), state.hide(false);
+        },
+        didHide: function didHide() {
+          return state.show(false), state.hide(false);
+        }
+      }))];
+    }
+  };
+});
+
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var icons = {
   drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
@@ -295,7 +349,7 @@ var navigationList = (function (_ref) {
       }),
       hoverable: true,
       navigation: true,
-      events: _defineProperty$2({}, k.onclick, onClick)
+      events: _defineProperty$3({}, k.onclick, onClick)
     });
   };
 
@@ -329,7 +383,7 @@ var navigationList = (function (_ref) {
   });
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var permanent = (function (_ref) {
   var h = _ref.renderer,
@@ -340,7 +394,7 @@ var permanent = (function (_ref) {
   var content = createContent({});
   return {
     view: function view() {
-      return h(Drawer$$1, _extends$1({}, {
+      return h(Drawer$$1, _extends$2({}, {
         permanent: true,
         content: content
       }, drawerOpts));
@@ -358,7 +412,8 @@ var genericTests = (function (_ref) {
       ListTile$$1 = _ref.ListTile,
       Icon$$1 = _ref.Icon,
       Toolbar$$1 = _ref.Toolbar,
-      IconButton$$1 = _ref.IconButton;
+      IconButton$$1 = _ref.IconButton,
+      RaisedButton$$1 = _ref.RaisedButton;
 
 
   var createContent = function createContent(_ref2) {
@@ -398,30 +453,38 @@ var genericTests = (function (_ref) {
   };
 
   return [{
+    name: "App drawer",
+    interactive: true,
+    exclude: true,
+    component: appDrawer({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
+        fixed: true,
+        backdrop: true
+      } })
+  }, {
     name: "Permanent (no shadow)",
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         permanent: true,
         bordered: true,
         z: 0
       } })
   }, {
     name: "Permanent, floating (with shadow)",
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         permanent: true,
         floating: true
       } })
   }, {
-    name: "Default drawer (type cover) (with backdrop, can be closed with ESCAPE)",
+    name: "Default drawer (type cover) (can be closed with ESCAPE) (with backdrop)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true
       } })
   }, {
     name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         modal: true
       } })
@@ -429,7 +492,7 @@ var genericTests = (function (_ref) {
     name: "Default drawer (themed)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         className: "drawer-tests-themed",
         tone: "dark"
@@ -438,7 +501,7 @@ var genericTests = (function (_ref) {
     name: "Transitions",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         transitions: {
           show: function show(_ref4) {
@@ -478,7 +541,7 @@ var genericTests = (function (_ref) {
     name: "Pushing drawer (push from left, without shadow, bordered)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         push: true,
         z: 0,
         bordered: true
@@ -487,7 +550,7 @@ var genericTests = (function (_ref) {
     name: "Pushing drawer including toolbar",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
         push: true,
         z: 0,
         bordered: true
@@ -496,7 +559,7 @@ var genericTests = (function (_ref) {
     name: "Mini (expanding) drawer",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
         push: true,
         z: 0,
         bordered: true,
@@ -508,22 +571,23 @@ var genericTests = (function (_ref) {
     name: "Long content (scrolling list)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
         backdrop: true
       } })
   }, {
     name: "Default drawer (RTL)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         backdrop: true
       } })
   }, {
-    name: "Pushing drawer (RTL)",
+    name: "Mini drawer (RTL)",
     interactive: true,
     exclude: true,
-    component: opener({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         push: true,
+        mini: true,
         z: 0,
         bordered: true
       } })
@@ -545,7 +609,7 @@ var mithrilTests = function mithrilTests() {
   return [];
 };
 
-var testsMithril = [].concat(genericTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton })).concat(mithrilTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton }));
+var testsMithril = [].concat(genericTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton, RaisedButton: RaisedButton })).concat(mithrilTests({ renderer: renderer, keys: keys, Drawer: Drawer, List: List, ListTile: ListTile, Icon: Icon, Toolbar: Toolbar, IconButton: IconButton, RaisedButton: RaisedButton }));
 
 /*
 object-assign
@@ -555,7 +619,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -601,7 +665,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -2329,6 +2393,6 @@ var reactTests = function reactTests() {
   return [];
 };
 
-var testsReact = [].concat(genericTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1 })).concat(reactTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1 }));
+var testsReact = [].concat(genericTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1, RaisedButton: RaisedButton$1 })).concat(reactTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1, RaisedButton: RaisedButton$1 }));
 
 export { testsMithril as mithrilTests, testsReact as reactTests };

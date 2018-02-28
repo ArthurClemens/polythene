@@ -241,7 +241,7 @@ var genericTests = (function (_ref) {
     component: {
       view: function view() {
         return h("div", {
-          dir: "rtl",
+          className: "pe-rtl",
           style: {
             overflow: "hidden"
           }

@@ -128,7 +128,8 @@ var getInitialState = function getInitialState(vnode, createStream) {
     el: undefined,
     contentEl: undefined,
     transitioning: transitioning,
-    visible: visible
+    visible: visible,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 

@@ -29,14 +29,26 @@ export default (selector, componentVars) => [{
     " .pe-dialog-pane__content": {
       height: "100%",
       overflowY: "auto", 
+      overflowX: "hidden", 
     },
     
     " .pe-dialog-pane": {
-      minWidth: "initial"
+      height: "100%",
+      minWidth: 0 // IE 11 does not accept "none" or "inital" here
     },
 
     " .pe-dialog-pane__body": {
       overflow: "visible"
+    },
+
+    // Fixed
+    ".pe-drawer--fixed": {
+      position: "fixed",
+      top: 0,
+      left: 0, // reverse for RTL - see below
+      right: "auto",
+      width: "100%",
+      zIndex: vars.z_app_bar,
     },
 
     // Permanent
@@ -86,7 +98,7 @@ export default (selector, componentVars) => [{
 
       " .pe-dialog__content": {
         width: `${componentVars.permanent_content_width}px`,
-        marginLeft: `calc(-${componentVars.permanent_content_width}px - ${SHADOW_WIDTH}px)`, // reverse for RTL - see below
+        marginLeft: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`, // reverse for RTL - see below
         marginRight: "auto",
       }
     },
@@ -97,7 +109,9 @@ export default (selector, componentVars) => [{
     
     // Mini
     ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-      width: `${componentVars.content_width_mini_collapsed}px`
+      width: `${componentVars.content_width_mini_collapsed}px`,
+      marginLeft: 0,
+      marginRight: 0,
     },
 
     // Backdrop
@@ -118,11 +132,22 @@ export default (selector, componentVars) => [{
       opacity: 1
     }
   },
-  "*[dir=rtl] ": {
+
+  // RTL
+
+  "*[dir=rtl], .pe-rtl ": {
     [selector]: {
       ".pe-drawer--bordered .pe-dialog__content": {
         borderStyle: "none none none solid"
       },
+
+      // Fixed
+      ".pe-drawer--fixed": {
+        left: "auto",
+        right: 0,
+      },
+
+      // Cover
       ".pe-drawer--cover": {
         " .pe-dialog__content": {
           right: `calc(-${componentVars.content_max_width}px - ${SHADOW_WIDTH}px)`,
@@ -134,9 +159,10 @@ export default (selector, componentVars) => [{
         left: "auto"
       },
 
+      // Push
       ".pe-drawer--push": {
         " .pe-dialog__content": {
-          marginRight: `calc(-${componentVars.permanent_content_width}px - ${SHADOW_WIDTH}px)`,
+          marginRight: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`,
           marginLeft: "auto",
         }
       },
@@ -145,8 +171,17 @@ export default (selector, componentVars) => [{
         marginLeft: "auto"
       },
 
+      // Mini
+      ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+        marginLeft: 0,
+        marginRight: 0,
+      },
+
     }
   },
+
+  // Media queries
+
   ["@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)"]: {
     [selector]: {
       ".pe-drawer--push": {

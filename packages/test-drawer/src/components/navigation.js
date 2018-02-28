@@ -60,10 +60,12 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
         toolbarRow
       );
 
+      const dirOpts = rtl
+        ? { className: "pe-rtl" }
+        : null;
+
       return h("div",
-        {
-          dir: rtl ? "rtl" : "auto"
-        },
+        dirOpts,
         [
           !pushToolbar && ToolbarInstance,
           h("div",
@@ -83,7 +85,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                 }
               },
               [
-                h("nav",
+                h("div",
                   {
                     key: "drawer", // for React
                     style: {
@@ -108,7 +110,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                     }
                   ))
                 ),
-                h("main",
+                h("div",
                   {
                     style: {
                       overflow: "hidden",

@@ -95,7 +95,7 @@ var layout = (function (selector, componentVars) {
   }]), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     height: componentVars.height_large + "px",
     padding: "0 " + componentVars.padding_side_large + "px"
-  })), _defineProperty(_ref3, "*[dir=rtl] ", _defineProperty({}, selector, {
+  })), _defineProperty(_ref3, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
       marginLeft: 0,
       marginRight: componentVars.title_padding + "px"

@@ -11,7 +11,7 @@
   -ms-flex-align: center;
   align-items: center;
   transition-delay: 0ms;
-  transition-duration: .22s;
+  transition-duration: 2.22s;
   transition-timing-function: ease-out;
   transition-property: opacity;
   position: fixed;

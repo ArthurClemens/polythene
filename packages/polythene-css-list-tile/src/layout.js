@@ -221,7 +221,7 @@ export default (selector, componentVars) => [{
       }
     },
   ],
-  "*[dir=rtl] ": {
+  "*[dir=rtl], .pe-rtl ": {
     [selector]: {
       " .pe-list-tile__content-front + .pe-list-tile__content": [
         paddingH(componentVars.side_padding),

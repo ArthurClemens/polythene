@@ -31,5 +31,9 @@ export default [{
   ".pe-fullbleed": {
     margin: 0,
     height: "100vh"
+  },
+
+  ".pe-rtl": {
+    direction: "rtl"
   }
 }];

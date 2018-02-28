@@ -167,7 +167,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
         view: () =>
           h("div",
             {
-              dir: "rtl",
+              className: "pe-rtl",
               style: {
                 overflow: "hidden"
               }

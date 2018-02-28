@@ -13,22 +13,23 @@
 
 .pe-dialog.pe-drawer .pe-dialog__content {
   transition-delay: 0ms;
-  transition-duration: .22s;
+  transition-duration: .18s;
   transition-timing-function: ease-out;
   transition-property: all;
   position: relative;
   border-radius: 0;
-  width: calc(100% - 56px);
-  max-width: 280px;
-  height: 100%
+  height: 100%;
+  overflow: visible
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane__content {
   height: 100%;
-  overflow-y: auto
+  overflow-y: auto;
+  overflow-x: hidden
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane {
+  height: 100%;
   min-width: 0
 }
 
@@ -36,17 +37,28 @@
   overflow: visible
 }
 
+.pe-dialog.pe-drawer.pe-drawer--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: auto
+}
+
 .pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) {
   position: static;
-  height: auto;
   display: block;
   padding: 0;
   overflow: initial
 }
 
-.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) .pe-dialog-pane__body {
+.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) .pe-dialog__content {
+  width: 240px;
   overflow: visible;
   max-height: none
+}
+
+.pe-dialog.pe-drawer.pe-drawer--floating {
+  height: auto
 }
 
 .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
@@ -55,7 +67,8 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
-  width: 280px;
+  width: calc(100% - 56px);
+  max-width: 280px;
   left: -295px;
   right: auto
 }
@@ -70,11 +83,20 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: 280px
+  width: 240px;
+  margin-left: -255px;
+  margin-right: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  margin-left: 0;
+  margin-right: auto
 }
 
 .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
-  width: 56px
+  width: 56px;
+  margin-left: 0;
+  margin-right: 0
 }
 
 .pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__touch {
@@ -87,7 +109,7 @@
 
 .pe-dialog.pe-drawer .pe-dialog__backdrop {
   transition-delay: 0ms;
-  transition-duration: .22s;
+  transition-duration: .18s;
   transition-timing-function: ease-out;
   transition-property: all;
   opacity: 0
@@ -97,18 +119,38 @@
   opacity: 1
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
   border-style: none none none solid
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--fixed {
+  left: auto;
+  right: 0
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
   right: -295px;
   left: auto
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   right: 0;
   left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  margin-right: -255px;
+  margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  margin-right: 0;
+  margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  margin-left: 0;
+  margin-right: 0
 }
 
 @media (min-width:600px) {

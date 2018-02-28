@@ -24,15 +24,26 @@
 
 .pe-dialog.pe-drawer .pe-dialog-pane__content {
   height: 100%;
-  overflow-y: auto
+  overflow-y: auto;
+  overflow-x: hidden
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane {
+  height: 100%;
   min-width: 0
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane__body {
   overflow: visible
+}
+
+.pe-dialog.pe-drawer.pe-drawer--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: auto;
+  width: 100%;
+  z-index: 2000
 }
 
 .pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) {
@@ -85,7 +96,9 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
-  width: 56px
+  width: 56px;
+  margin-left: 0;
+  margin-right: 0
 }
 
 .pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__touch {
@@ -108,28 +121,38 @@
   opacity: 1
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
   border-style: none none none solid
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--fixed {
+  left: auto;
+  right: 0
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
   right: -295px;
   left: auto
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   right: 0;
   left: auto
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
   margin-right: -255px;
   margin-left: auto
 }
 
-[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
   margin-right: 0;
   margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  margin-left: 0;
+  margin-right: 0
 }
 
 @media (min-width:600px) {
