@@ -81,9 +81,11 @@ export default (selector, componentVars) => [{
     // Cover (default)
     ".pe-drawer--cover": {
       " .pe-dialog__content": {
+        position: "absolute",
         width: `calc(100% - ${componentVars.content_side_offset}px)`,
         maxWidth: `${componentVars.content_max_width}px`,
-        left: `calc(-${componentVars.content_max_width}px - ${SHADOW_WIDTH}px)`, // reverse for RTL - see below
+        top: 0,
+        left: `${-componentVars.content_max_width - SHADOW_WIDTH}px`, // reverse for RTL - see below
         right: "auto",
       }
     },
@@ -135,49 +137,46 @@ export default (selector, componentVars) => [{
 
   // RTL
 
-  "*[dir=rtl], .pe-rtl ": {
-    [selector]: {
-      ".pe-drawer--bordered .pe-dialog__content": {
-        borderStyle: "none none none solid"
-      },
+  [`*[dir=rtl] ${selector}, .pe-rtl ${selector}, ${selector}.pe-drawer--anchor-right`]: {
+    ".pe-drawer--bordered .pe-dialog__content": {
+      borderStyle: "none none none solid"
+    },
 
-      // Fixed
-      ".pe-drawer--fixed": {
+    // Fixed
+    ".pe-drawer--fixed": {
+      left: "auto",
+      right: 0,
+    },
+
+    // Cover
+    ".pe-drawer--cover": {
+      " .pe-dialog__content": {
+        right: `${-componentVars.content_max_width - SHADOW_WIDTH}px`,
         left: "auto",
-        right: 0,
-      },
+      }
+    },
+    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+      right: 0,
+      left: "auto"
+    },
 
-      // Cover
-      ".pe-drawer--cover": {
-        " .pe-dialog__content": {
-          right: `calc(-${componentVars.content_max_width}px - ${SHADOW_WIDTH}px)`,
-          left: "auto",
-        }
-      },
-      ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-        right: 0,
-        left: "auto"
-      },
+    // Push
+    ".pe-drawer--push": {
+      " .pe-dialog__content": {
+        marginRight: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`,
+        marginLeft: "auto",
+      }
+    },
+    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+      marginRight: 0,
+      marginLeft: "auto"
+    },
 
-      // Push
-      ".pe-drawer--push": {
-        " .pe-dialog__content": {
-          marginRight: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`,
-          marginLeft: "auto",
-        }
-      },
-      ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-        marginRight: 0,
-        marginLeft: "auto"
-      },
-
-      // Mini
-      ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-        marginLeft: 0,
-        marginRight: 0,
-      },
-
-    }
+    // Mini
+    ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+      marginLeft: 0,
+      marginRight: 0,
+    },
   },
 
   // Media queries

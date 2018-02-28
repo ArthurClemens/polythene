@@ -5,7 +5,7 @@ export default ({ h, RadioGroup }) => ({
     const checkedValue = stream();
     Object.assign(vnode.state, {
       checkedValue,
-      redrawOnUpdate: stream.merge([checkedValue])
+      redrawOnUpdate: stream.merge([checkedValue]) // for React
     });
   },
   view: vnode => {

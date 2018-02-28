@@ -1,5 +1,4 @@
 import classes from "polythene-css-classes/drawer";
-// import defaultPushTransitions from "./transitions-push";
 
 // Props to be passed to a dialog
 export const createProps = vnode => {
@@ -21,14 +20,8 @@ export const createProps = vnode => {
         attrs.mini ? classes.mini : null,
         attrs.floating ? classes.floating : null,
         attrs.fixed ? classes.fixed : null,
+        attrs.anchor === "right" ? classes.anchorRight : null,
       ].join(" "),
-      // transitions: attrs.transitions
-      //   ? attrs.transitions
-      //   : attrs.mini
-      //     ? null // no default transition; uses CSS
-      //     : attrs.push
-      //       ? defaultPushTransitions
-      //       : null,
       inactive: attrs.permanent && !attrs.mini,
       z: attrs.z !== undefined
         ? attrs.z

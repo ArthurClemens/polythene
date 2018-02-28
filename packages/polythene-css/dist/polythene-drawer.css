@@ -41,7 +41,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: auto
+  right: auto;
+  width: 100%;
+  z-index: 2000
 }
 
 .pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) {
@@ -119,36 +121,36 @@
   opacity: 1
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--bordered .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--bordered .pe-dialog__content {
   border-style: none none none solid
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--fixed {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--fixed,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--fixed {
   left: auto;
   right: 0
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--cover .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
   right: -295px;
   left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   right: 0;
   left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--push .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
   margin-right: -255px;
   margin-left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--push.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
   margin-right: 0;
   margin-left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl].pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-right.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
   margin-left: 0;
   margin-right: 0
 }

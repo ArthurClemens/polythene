@@ -14,7 +14,8 @@ var classes = {
   permanent: "pe-drawer--permanent",
   bordered: "pe-drawer--bordered",
   floating: "pe-drawer--floating",
-  fixed: "pe-drawer--fixed"
+  fixed: "pe-drawer--fixed",
+  anchorRight: "pe-drawer--anchor-right"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -99,9 +100,11 @@ var layout = (function (selector, componentVars) {
     // Cover (default)
     ".pe-drawer--cover": {
       " .pe-dialog__content": {
+        position: "absolute",
         width: "calc(100% - " + componentVars.content_side_offset + "px)",
         maxWidth: componentVars.content_max_width + "px",
-        left: "calc(-" + componentVars.content_max_width + "px - " + SHADOW_WIDTH + "px)", // reverse for RTL - see below
+        top: 0,
+        left: -componentVars.content_max_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
         right: "auto"
       }
     },
@@ -147,7 +150,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog--visible .pe-dialog__backdrop": {
       opacity: 1
     }
-  }), _defineProperty(_ref2, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
+  }), _defineProperty(_ref2, "*[dir=rtl] " + selector + ", .pe-rtl " + selector + ", " + selector + ".pe-drawer--anchor-right", {
     ".pe-drawer--bordered .pe-dialog__content": {
       borderStyle: "none none none solid"
     },
@@ -161,7 +164,7 @@ var layout = (function (selector, componentVars) {
     // Cover
     ".pe-drawer--cover": {
       " .pe-dialog__content": {
-        right: "calc(-" + componentVars.content_max_width + "px - " + SHADOW_WIDTH + "px)",
+        right: -componentVars.content_max_width - SHADOW_WIDTH + "px",
         left: "auto"
       }
     },
@@ -187,8 +190,7 @@ var layout = (function (selector, componentVars) {
       marginLeft: 0,
       marginRight: 0
     }
-
-  })), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+  }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
       " .pe-dialog__content": {
         maxWidth: componentVars.content_max_width_large + "px"

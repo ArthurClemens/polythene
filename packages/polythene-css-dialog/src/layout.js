@@ -7,7 +7,7 @@ export default (selector, componentVars) => [{
   },
   [selector]: [
     flex.layoutCenterCenter,
-    mixin.defaultTransition("opacity", componentVars.animation_duration),
+    mixin.defaultTransition("all"), // animation duration is set in component options
     {
       position: componentVars.position,
       top: 0,

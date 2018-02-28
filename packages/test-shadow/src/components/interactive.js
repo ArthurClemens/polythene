@@ -5,7 +5,7 @@ export default ({ h, k, Shadow }) => ({
     const z = stream(1);
     Object.assign(vnode.state, {
       z,
-      redrawOnUpdate: stream.merge([z])
+      redrawOnUpdate: stream.merge([z]) // for React
     });
   },
   view: vnode => {

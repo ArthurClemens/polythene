@@ -5,6 +5,7 @@ export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 const DEFAULT_Z    = 3;
+const DEFAULT_ANIMATION_DURATION = .220;
 
 const showDialog = (state, attrs) => {
   if (state.transitioning()) {
@@ -14,12 +15,13 @@ const showDialog = (state, attrs) => {
   state.visible(true);
   const id = state.instanceId;
   
+  const showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
   const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
     transitions 
-      ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay })
-      : { el: state.el, showClass: classes.visible, showDuration: attrs.showDuration, showDelay: attrs.showDelay }
+      ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration, showDelay: attrs.showDelay })
+      : { el: state.el, showClass: classes.visible, showDuration, showDelay: attrs.showDelay }
   )).then(() => {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
@@ -39,12 +41,13 @@ const hideDialog = (state, attrs) => {
   const id = state.instanceId;
 
   // Hide dialog
+  const hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
   const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
     transitions
-      ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })
-      : { el: state.el, showClass: classes.visible, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }
+      ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration, hideDelay: attrs.hideDelay })
+      : { el: state.el, showClass: classes.visible, hideDuration, hideDelay: attrs.hideDelay }
   )).then(() => {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
@@ -66,7 +69,6 @@ export const getInitialState = (vnode, createStream) => {
     contentEl:  undefined,
     transitioning,
     visible,
-    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 

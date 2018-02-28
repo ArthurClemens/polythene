@@ -78,6 +78,7 @@ var getElement = function getElement(vnode) {
 };
 
 var DEFAULT_Z = 3;
+var DEFAULT_ANIMATION_DURATION = .220;
 
 var showDialog = function showDialog(state, attrs) {
   if (state.transitioning()) {
@@ -87,12 +88,15 @@ var showDialog = function showDialog(state, attrs) {
   state.visible(true);
   var id = state.instanceId;
 
+  var showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: attrs.showDuration, showDelay: attrs.showDelay }) : { el: state.el, showClass: classes.visible, showDuration: attrs.showDuration, showDelay: attrs.showDelay })).then(function () {
+  return show(_extends({}, attrs, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: showDuration, showDelay: attrs.showDelay }) : { el: state.el, showClass: classes.visible, showDuration: showDuration, showDelay: attrs.showDelay })).then(function () {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
     } else if (attrs.didShow) {
-      attrs.didShow(id); // when used directly
+      setTimeout(function () {
+        return attrs.didShow(id);
+      }, 0); // when used directly
     }
     state.transitioning(false);
   });
@@ -107,12 +111,15 @@ var hideDialog = function hideDialog(state, attrs) {
   var id = state.instanceId;
 
   // Hide dialog
+  var hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, showClass: classes.visible, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay })).then(function () {
+  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, showClass: classes.visible, hideDuration: hideDuration, hideDelay: attrs.hideDelay })).then(function () {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
     } else if (attrs.didHide) {
-      attrs.didHide(id); // when used directly
+      setTimeout(function () {
+        return attrs.didHide(id);
+      }, 0); // when used directly
     }
     state.transitioning(false);
   });
@@ -128,8 +135,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
     el: undefined,
     contentEl: undefined,
     transitioning: transitioning,
-    visible: visible,
-    redrawOnUpdate: createStream.merge([transitioning])
+    visible: visible
   };
 };
 
@@ -272,8 +278,6 @@ var vars$1 = {
   border_radius: vars.unit_block_border_radius,
   padding_vertical: 3 * vars.grid_unit_component,
   padding_horizontal: 5 * vars.grid_unit_component,
-
-  animation_duration: ".220s",
 
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)",

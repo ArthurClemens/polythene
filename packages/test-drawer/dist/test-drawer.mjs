@@ -170,26 +170,28 @@ var navigation = (function (_ref) {
       pushToolbar = _ref.pushToolbar,
       repeats = _ref.repeats,
       rtl = _ref.rtl,
+      dark = _ref.dark,
       createTopContent = _ref.createTopContent,
       drawerOpts = _ref.drawerOpts;
 
 
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
-      var hide = stream(false);
+      var drawerState = stream({ show: false, hide: false });
       _extends(vnode.state, {
-        show: show,
-        hide: hide,
-        redrawOnUpdate: stream.merge([show, hide])
+        drawerState: drawerState,
+        redrawOnUpdate: stream.merge([drawerState]) // for React
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
-      var show = state.show();
-      var hide = state.hide();
+
+      var _state$drawerState = state.drawerState(),
+          show = _state$drawerState.show,
+          hide = _state$drawerState.hide;
+
       var onClick = function onClick() {
-        return state.hide(true);
+        return state.drawerState({ show: show, hide: true });
       };
       var navList = createContent({ repeats: repeats, onClick: onClick });
       var content = pushToolbar ? [h(Toolbar$$1, { fullbleed: true, border: true }, createTopContent({ onClick: onClick })), navList] : navList;
@@ -198,7 +200,7 @@ var navigation = (function (_ref) {
         key: "icon",
         icon: { svg: { content: h.trust(iconMenuSVG) } },
         events: _defineProperty$1({}, k.onclick, function () {
-          return show ? state.hide(true) : state.show(true);
+          return show ? state.drawerState({ show: show, hide: true }) : state.drawerState({ show: true, hide: hide });
         })
       }), h("div", {
         key: "title",
@@ -223,7 +225,8 @@ var navigation = (function (_ref) {
         style: {
           display: "flex",
           height: "350px",
-          background: "#fff"
+          background: dark ? "inherit" : "#fff",
+          color: dark ? "#ccc" : "#333"
         }
       }, [h("div", {
         key: "drawer", // for React
@@ -234,15 +237,14 @@ var navigation = (function (_ref) {
         show: show,
         hide: hide,
         didShow: function didShow() {
-          return state.show(true), state.hide(false);
+          return state.drawerState({ show: true, hide: false });
         },
         didHide: function didHide() {
-          return state.show(false), state.hide(false);
+          return state.drawerState({ show: false, hide: false });
         }
       }))), h("div", {
         style: {
           overflow: "hidden",
-          background: "#fff",
           flexShrink: drawerOpts.permanent ? 1 : 0,
           flexGrow: 0,
           width: "100%"
@@ -272,38 +274,45 @@ var appDrawer = (function (_ref) {
 
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
-      var hide = stream(false);
+      var drawerState = stream({ show: false, hide: false });
+      if (h.redraw) {
+        // Mithril: redraw whenever drawerState changes value
+        drawerState.map(function () {
+          return setTimeout(h.redraw);
+        });
+      }
       _extends$1(vnode.state, {
-        show: show,
-        hide: hide,
-        redrawOnUpdate: stream.merge([show, hide])
+        drawerState: drawerState,
+        redrawOnUpdate: stream.merge([drawerState]) // React: redraw whenever variables change
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
-      var show = state.show();
-      var hide = state.hide();
+
+      var _state$drawerState = state.drawerState(),
+          show = _state$drawerState.show,
+          hide = _state$drawerState.hide;
+
       var onClick = function onClick() {
-        return state.hide(true);
+        return state.drawerState({ show: show, hide: true });
       };
       var content = createContent({ repeats: repeats, onClick: onClick });
       return [h(RaisedButton$$1, {
+        key: "button", // for React
         label: "Show",
         events: _defineProperty$2({}, k.onclick, function () {
-          return state.show(true)
-          // state.hide(!hide)
-          ;
+          return state.drawerState({ show: true, hide: hide });
         })
       }), h(Drawer$$1, _extends$1({}, drawerOpts, {
+        key: "drawer", // for React
         content: content,
         show: show,
         hide: hide,
         didShow: function didShow() {
-          return state.show(true), state.hide(false);
+          return state.drawerState({ show: true, hide: false });
         },
         didHide: function didHide() {
-          return state.show(false), state.hide(false);
+          return state.drawerState({ show: false, hide: null });
         }
       }))];
     }
@@ -381,25 +390,6 @@ var navigationList = (function (_ref) {
       }];
     })).map(tile)
   });
-});
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var permanent = (function (_ref) {
-  var h = _ref.renderer,
-      Drawer$$1 = _ref.Drawer,
-      createContent = _ref.createContent,
-      drawerOpts = _ref.drawerOpts;
-
-  var content = createContent({});
-  return {
-    view: function view() {
-      return h(Drawer$$1, _extends$2({}, {
-        permanent: true,
-        content: content
-      }, drawerOpts));
-    }
-  };
 });
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -489,13 +479,21 @@ var genericTests = (function (_ref) {
         modal: true
       } })
   }, {
-    name: "Default drawer (themed)",
+    name: "Themed drawer",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         className: "drawer-tests-themed",
         tone: "dark"
+      } })
+  }, {
+    name: "Anchor right",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        backdrop: true,
+        anchor: "right"
       } })
   }, {
     name: "Transitions",
@@ -596,10 +594,12 @@ var genericTests = (function (_ref) {
   // Dark tone
 
   {
-    name: "Permanent, floating (no shadow) -- dark tone class",
+    name: "Default drawer -- dark tone class",
+    interactive: true,
+    exclude: true,
     className: "pe-dark-tone",
-    component: permanent({ renderer: renderer$$1, Drawer: Drawer$$1, createContent: createContent, drawerOpts: {
-        z: 0
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, dark: true, drawerOpts: {
+        backdrop: true
       } })
   }];
 });
@@ -619,7 +619,7 @@ object-assign
 
 /* eslint-disable no-unused-vars */
 
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -665,7 +665,7 @@ function shouldUseNative() {
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
-		if (Object.keys(_extends$3({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+		if (Object.keys(_extends$2({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 			return false;
 		}
 
@@ -2388,9 +2388,93 @@ var react_2 = react.Component;
 var react_3 = react.PropTypes;
 var react_4 = react.createElement;
 
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _objectWithoutProperties(obj, keys$$1) { var target = {}; for (var i in obj) { if (keys$$1.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AppDrawer = function (_Component) {
+  _inherits(AppDrawer, _Component);
+
+  function AppDrawer(props) {
+    _classCallCheck(this, AppDrawer);
+
+    var _this = _possibleConstructorReturn(this, (AppDrawer.__proto__ || Object.getPrototypeOf(AppDrawer)).call(this, props));
+
+    _this.state = {
+      show: false,
+      hide: false
+    };
+    return _this;
+  }
+
+  _createClass(AppDrawer, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          createContent = _props.createContent,
+          drawerOpts = _objectWithoutProperties(_props, ["createContent"]);
+
+      var onClick = function onClick() {
+        return _this2.setState({ hide: true });
+      };
+      var content = createContent({ onClick: onClick });
+      return react.createElement(
+        "div",
+        null,
+        react.createElement(RaisedButton$1, {
+          label: "Show",
+          events: {
+            onClick: function onClick() {
+              return _this2.setState({ show: true });
+            }
+          }
+        }),
+        react.createElement(Drawer$1, _extends$3({}, drawerOpts, {
+          content: content,
+          show: this.state.show,
+          hide: this.state.hide,
+          didShow: function didShow() {
+            return _this2.setState({ show: true, hide: false });
+          },
+          didHide: function didHide() {
+            return _this2.setState({ show: false, hide: false });
+          }
+        }))
+      );
+    }
+  }]);
+
+  return AppDrawer;
+}(react_2);
+
 var reactTests = function reactTests() {
 
-  return [];
+  var createContent = function createContent(_ref) {
+    var repeats = _ref.repeats,
+        onClick = _ref.onClick;
+    return navigationList({ renderer: renderer$1, keys: keys$1, Icon: Icon$1, List: List$1, ListTile: ListTile$1, repeats: repeats, onClick: onClick });
+  };
+
+  return [{
+    section: "React JSX tests"
+  }, {
+    name: "App drawer (JSX)",
+    interactive: true,
+    exclude: true,
+    component: function component() {
+      return react.createElement(AppDrawer, { fixed: true, backdrop: true, createContent: createContent });
+    }
+  }];
 };
 
 var testsReact = [].concat(genericTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1, RaisedButton: RaisedButton$1 })).concat(reactTests({ renderer: renderer$1, keys: keys$1, Drawer: Drawer$1, List: List$1, ListTile: ListTile$1, Icon: Icon$1, Toolbar: Toolbar$1, IconButton: IconButton$1, RaisedButton: RaisedButton$1 }));

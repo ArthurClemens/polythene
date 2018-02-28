@@ -5,23 +5,20 @@ const iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path
 const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 const longText = ipsum + ipsum;
 
-export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, createTopContent, drawerOpts }) => {
+export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, dark, createTopContent, drawerOpts }) => {
 
   return {
     oninit: vnode => {
-      const show = stream(false);
-      const hide = stream(false);
+      const drawerState = stream({ show: false, hide: false });
       Object.assign(vnode.state, {
-        show,
-        hide,
-        redrawOnUpdate: stream.merge([show, hide])
+        drawerState,
+        redrawOnUpdate: stream.merge([drawerState]) // for React
       });
     },
     view: vnode => {
       const state = vnode.state;
-      const show = state.show();
-      const hide = state.hide();
-      const onClick = () => state.hide(true);
+      const { show, hide } = state.drawerState();
+      const onClick = () => state.drawerState({ show, hide: true });
       const navList = createContent({ repeats, onClick });
       const content = pushToolbar
         ? [
@@ -37,8 +34,8 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
             icon: { svg: { content: h.trust(iconMenuSVG) } },
             events: {
               [k.onclick]: () => show
-                ? state.hide(true)
-                : state.show(true)
+                ? state.drawerState({ show, hide: true })
+                : state.drawerState({ show: true, hide })
             } 
           }
         ),
@@ -81,7 +78,8 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                 style: {
                   display: "flex",
                   height: "350px",
-                  background: "#fff",
+                  background: dark ? "inherit" : "#fff",
+                  color: dark ? "#ccc" : "#333"
                 }
               },
               [
@@ -99,14 +97,8 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                     !drawerOpts.permanent && {
                       show,
                       hide,
-                      didShow: () => (
-                        state.show(true),
-                        state.hide(false)
-                      ),
-                      didHide: () => (
-                        state.show(false),
-                        state.hide(false)
-                      )
+                      didShow: () => state.drawerState({ show: true, hide: false }),
+                      didHide: () => state.drawerState({ show: false, hide: false })
                     }
                   ))
                 ),
@@ -114,7 +106,6 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                   {
                     style: {
                       overflow: "hidden",
-                      background: "#fff",
                       flexShrink: drawerOpts.permanent ? 1 : 0,
                       flexGrow: 0,
                       width: "100%",

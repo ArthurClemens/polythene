@@ -77,7 +77,8 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog__holder": {
       height: "100%"
     }
-  }, selector, [flex.layoutCenterCenter, mixin.defaultTransition("opacity", componentVars.animation_duration), {
+  }, selector, [flex.layoutCenterCenter, mixin.defaultTransition("all"), // animation duration is set in component options
+  {
     position: componentVars.position,
     top: 0,
     left: 0,

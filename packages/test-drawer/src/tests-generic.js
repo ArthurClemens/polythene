@@ -1,7 +1,6 @@
 import navigation from "./components/navigation";
 import appDrawer from "./components/app-drawer";
 import navigationList from "./components/navigation-list";
-import permanent from "./components/permanent";
 import { DrawerCSS, ToolbarCSS } from "polythene-css";
 
 export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconButton, RaisedButton }) => {
@@ -84,7 +83,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Default drawer (themed)",
+      name: "Themed drawer",
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
@@ -93,7 +92,15 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         tone: "dark"
       }})
     },
-
+    {
+      name: "Anchor right",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        backdrop: true,
+        anchor: "right"
+      }})
+    },
     {
       name: "Transitions",
       interactive: true,
@@ -196,11 +203,13 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
     // Dark tone
 
     {
-      name: "Permanent, floating (no shadow) -- dark tone class",
+      name: "Default drawer -- dark tone class",
+      interactive: true,
+      exclude: true,
       className: "pe-dark-tone",
-      component: permanent({ renderer, Drawer, createContent, drawerOpts: {
-        z: 0
-      } })
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, dark: true, drawerOpts: {
+        backdrop: true,
+      }})
     },
 
   ];

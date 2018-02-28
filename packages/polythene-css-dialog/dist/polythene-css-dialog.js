@@ -79,7 +79,8 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog__holder": {
       height: "100%"
     }
-  }, selector, [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.mixin.defaultTransition("opacity", componentVars.animation_duration), {
+  }, selector, [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
+  {
     position: componentVars.position,
     top: 0,
     left: 0,
