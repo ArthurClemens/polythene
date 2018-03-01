@@ -94,9 +94,7 @@ var showDialog = function showDialog(state, attrs) {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
     } else if (attrs.didShow) {
-      setTimeout(function () {
-        return attrs.didShow(id);
-      }, 0); // when used directly
+      attrs.didShow(id); // when used directly
     }
     state.transitioning(false);
   });
@@ -117,9 +115,7 @@ var hideDialog = function hideDialog(state, attrs) {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
     } else if (attrs.didHide) {
-      setTimeout(function () {
-        return attrs.didHide(id);
-      }, 0); // when used directly
+      attrs.didHide(id); // when used directly
     }
     state.transitioning(false);
   });
