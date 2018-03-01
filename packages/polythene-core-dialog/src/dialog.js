@@ -74,6 +74,7 @@ export const getInitialState = (vnode, createStream) => {
     contentEl:  undefined,
     transitioning,
     visible,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 
@@ -175,10 +176,14 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
 
   if (state.el) {
     const visible = state.visible();
-    if (attrs.hide && visible) {
-      hideDialog(state, attrs);
-    } else if (attrs.show && !visible) {
-      showDialog(state, attrs);
+    const transitioning = state.transitioning();
+    if (!transitioning) {
+      if (attrs.hide && visible) {
+        // Use setTimeout to play nice with React's lifecycle functions
+        setTimeout(() => hideDialog(state, attrs), 0);
+      } else if (attrs.show && !visible) {
+        setTimeout(() => showDialog(state, attrs), 0);
+      }
     }
   }
 

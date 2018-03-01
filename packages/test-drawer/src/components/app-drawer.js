@@ -5,10 +5,6 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
   return {
     oninit: vnode => {
       const drawerState = stream({ show: false, hide: false });
-      if (h.redraw) {
-        // Mithril: redraw whenever drawerState changes value
-        drawerState.map(() => setTimeout(h.redraw));
-      }
       Object.assign(vnode.state, {
         drawerState,
         redrawOnUpdate: stream.merge([drawerState]) // React: redraw whenever variables change
@@ -17,8 +13,6 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
     view: vnode => {
       const state = vnode.state;
       const { show, hide } = state.drawerState();
-      const onClick = () => state.drawerState({ show, hide: true });
-      const content = createContent({ repeats, onClick });
       return [
         h(RaisedButton, {
           key: "button", // for React
@@ -32,11 +26,13 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
           drawerOpts,
           {
             key: "drawer", // for React
-            content,
+            content: createContent({
+              repeats,
+              onClick: () => state.drawerState({ show, hide: true })
+            }),
             show,
             hide,
-            didShow: () => state.drawerState({ show: true, hide: false }),
-            didHide: () => state.drawerState({ show: false, hide: null })
+            didHide: () => state.drawerState({ show: false, hide: false })
           }
         ))
       ];

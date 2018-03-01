@@ -28,7 +28,6 @@ class AppDrawer extends Component {
           content={content}
           show={this.state.show}
           hide={this.state.hide}
-          didShow={() => this.setState({ show: true, hide: false })}
           didHide={() => this.setState({ show: false, hide: false })}
         />
       </div>

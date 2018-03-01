@@ -137,7 +137,8 @@ var getInitialState = function getInitialState(vnode, createStream) {
     el: undefined,
     contentEl: undefined,
     transitioning: transitioning,
-    visible: visible
+    visible: visible,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 
@@ -236,10 +237,18 @@ var createContent = function createContent(vnode, _ref3) {
 
   if (state.el) {
     var visible = state.visible();
-    if (attrs.hide && visible) {
-      hideDialog(state, attrs);
-    } else if (attrs.show && !visible) {
-      showDialog(state, attrs);
+    var transitioning = state.transitioning();
+    if (!transitioning) {
+      if (attrs.hide && visible) {
+        // Use setTimeout to play nice with React's lifecycle functions
+        setTimeout(function () {
+          return hideDialog(state, attrs);
+        }, 0);
+      } else if (attrs.show && !visible) {
+        setTimeout(function () {
+          return showDialog(state, attrs);
+        }, 0);
+      }
     }
   }
 

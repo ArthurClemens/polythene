@@ -42,6 +42,8 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 
 | **Parameter** |  **Required** | **Type**   | **Default**     | **Description** |
 | ------------- | ------------- | ---------- | --------------- | --------------- |
+| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer; note that `show: false` is not the same as `hide: true`; to show an out transition, `show` still needs to be `true` until the transition has completed |
+| **hide**      | optional      | Boolean    |                 | Set to `true` to hide the drawer |      
 | **permanent** | optional      | Boolean    |                 | Set to `true` to display the drawer as a permanent side menu |
 | **push**      | optional      | Boolean    | `false` (cover) | Set to `true` to animate the drawer with a push animation, pushing away the content next to the drawer | 
 | **mini**      | optional      | Boolean    |                 | Set to `true` to display a fraction of the drawer (typically to show the icons only), and to reveal the full menu when expanding |
@@ -51,7 +53,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
 | **z**         | optional      | Number 0-5 | 1 | Depth of the shadow; set to 0 to hide the shadow |
 | **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |
-| **modal**     | optional      | Boolean    | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the drawer |
+| **modal**     | optional      | Boolean    | false | Set to true to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
 
 
 <a name="transition-options"></a>
@@ -64,7 +66,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **showDuration** | optional | Number | .220 | The show transition duration in seconds |
 | **hideDuration** | optional | Number | .220 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
-| **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the dialog is dismissed, for instance by tapping outside of the dialog (when not a modal) |
+| **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the drawer is dismissed, for instance by tapping outside of the drawer (when not a modal) |
 | **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
 | **didHide**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
 
