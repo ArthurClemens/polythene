@@ -15,7 +15,7 @@ var classes = {
   bordered: "pe-drawer--bordered",
   floating: "pe-drawer--floating",
   fixed: "pe-drawer--fixed",
-  anchorRight: "pe-drawer--anchor-right"
+  anchorEnd: "pe-drawer--anchor-end"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27,7 +27,7 @@ var createProps = function createProps(vnode) {
   return _extends({}, attrs, {
     anchored: true,
     fullBleed: true,
-    parentClassName: [attrs.className, classes.component, isCover ? classes.cover : null, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null, attrs.mini ? classes.mini : null, attrs.floating ? classes.floating : null, attrs.fixed ? classes.fixed : null, attrs.anchor === "right" ? classes.anchorRight : null].join(" "),
+    parentClassName: [attrs.className, classes.component, isCover ? classes.cover : null, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null, attrs.mini ? classes.mini : null, attrs.floating ? classes.floating : null, attrs.fixed ? classes.fixed : null, attrs.anchor === "end" ? classes.anchorEnd : null].join(" "),
     inactive: attrs.permanent && !attrs.mini,
     z: attrs.z !== undefined ? attrs.z : 1
   });

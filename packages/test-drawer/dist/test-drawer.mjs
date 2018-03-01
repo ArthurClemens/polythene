@@ -488,12 +488,12 @@ var genericTests = (function (_ref) {
         tone: "dark"
       } })
   }, {
-    name: "Anchor right",
+    name: "Anchor end",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
-        anchor: "right"
+        anchor: "end"
       } })
   }, {
     name: "Transitions",
@@ -561,9 +561,7 @@ var genericTests = (function (_ref) {
         push: true,
         z: 0,
         bordered: true,
-        mini: true,
-        miniWidthCollapsed: 56,
-        miniWidthExpanded: 220
+        mini: true
       } })
   }, {
     name: "Long content (scrolling list)",
@@ -588,6 +586,14 @@ var genericTests = (function (_ref) {
         mini: true,
         z: 0,
         bordered: true
+      } })
+  }, {
+    name: "Anchor end (RTL)",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
+        backdrop: true,
+        anchor: "end"
       } })
   },
 

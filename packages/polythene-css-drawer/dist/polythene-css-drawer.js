@@ -15,12 +15,95 @@ var classes = {
   bordered: "pe-drawer--bordered",
   floating: "pe-drawer--floating",
   fixed: "pe-drawer--fixed",
-  anchorRight: "pe-drawer--anchor-right"
+  anchorEnd: "pe-drawer--anchor-end"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var SHADOW_WIDTH = 15;
+
+var alignLeft = function alignLeft(componentVars) {
+  return {
+    // Bordered
+    ".pe-drawer--bordered .pe-dialog__content": {
+      borderStyle: "none solid none none"
+    },
+
+    // Fixed
+    ".pe-drawer--fixed": {
+      left: 0,
+      right: "auto"
+    },
+
+    // Cover
+    ".pe-drawer--cover .pe-dialog__content": {
+      left: -componentVars.content_max_width - SHADOW_WIDTH + "px",
+      right: "auto"
+    },
+    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+      left: 0,
+      right: "auto"
+    },
+
+    // Push
+    ".pe-drawer--push .pe-dialog__content": {
+      marginLeft: -componentVars.permanent_content_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
+      marginRight: "auto"
+    },
+    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+      marginLeft: 0,
+      marginRight: "auto"
+    },
+
+    // Mini
+    ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+      marginLeft: 0,
+      marginRight: 0
+    }
+
+  };
+};
+
+var alignRight = function alignRight(componentVars) {
+  return {
+    // Bordered
+    ".pe-drawer--bordered .pe-dialog__content": {
+      borderStyle: "none none none solid"
+    },
+
+    // Fixed
+    ".pe-drawer--fixed": {
+      left: "auto",
+      right: 0
+    },
+
+    // Cover
+    ".pe-drawer--cover .pe-dialog__content": {
+      right: -componentVars.content_max_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
+      left: "auto"
+    },
+    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+      right: 0,
+      left: "auto"
+    },
+
+    // Push
+    ".pe-drawer--push .pe-dialog__content": {
+      marginRight: -componentVars.permanent_content_width - SHADOW_WIDTH + "px",
+      marginLeft: "auto"
+    },
+    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+      marginRight: 0,
+      marginLeft: "auto"
+    },
+
+    // Mini
+    ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+      marginLeft: 0,
+      marginRight: 0
+    }
+  };
+};
 
 var layout = (function (selector, componentVars) {
   var _ref2;
@@ -64,8 +147,6 @@ var layout = (function (selector, componentVars) {
     ".pe-drawer--fixed": {
       position: "fixed",
       top: 0,
-      left: 0, // reverse for RTL - see below
-      right: "auto",
       width: "100%",
       zIndex: polytheneTheme.vars.z_app_bar
     },
@@ -92,8 +173,7 @@ var layout = (function (selector, componentVars) {
     // Bordered
     ".pe-drawer--bordered": {
       " .pe-dialog__content": {
-        borderWidth: "1px",
-        borderStyle: "none solid none none" // reverse for RTL - see below
+        borderWidth: "1px"
       }
     },
 
@@ -103,14 +183,8 @@ var layout = (function (selector, componentVars) {
         position: "absolute",
         width: "calc(100% - " + componentVars.content_side_offset + "px)",
         maxWidth: componentVars.content_max_width + "px",
-        top: 0,
-        left: -componentVars.content_max_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
-        right: "auto"
+        top: 0
       }
-    },
-    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-      left: 0, // reverse for RTL - see below
-      right: "auto"
     },
 
     // Push
@@ -118,21 +192,13 @@ var layout = (function (selector, componentVars) {
       position: "static",
 
       " .pe-dialog__content": {
-        width: componentVars.permanent_content_width + "px",
-        marginLeft: -componentVars.permanent_content_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
-        marginRight: "auto"
+        width: componentVars.permanent_content_width + "px"
       }
-    },
-    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-      marginLeft: 0, // reverse for RTL - see below
-      marginRight: "auto"
     },
 
     // Mini
     ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-      width: componentVars.content_width_mini_collapsed + "px",
-      marginLeft: 0,
-      marginRight: 0
+      width: componentVars.content_width_mini_collapsed + "px"
     },
 
     // Backdrop
@@ -150,47 +216,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog--visible .pe-dialog__backdrop": {
       opacity: 1
     }
-  }), _defineProperty(_ref2, "*[dir=rtl] " + selector + ", .pe-rtl " + selector + ", " + selector + ".pe-drawer--anchor-right", {
-    ".pe-drawer--bordered .pe-dialog__content": {
-      borderStyle: "none none none solid"
-    },
-
-    // Fixed
-    ".pe-drawer--fixed": {
-      left: "auto",
-      right: 0
-    },
-
-    // Cover
-    ".pe-drawer--cover": {
-      " .pe-dialog__content": {
-        right: -componentVars.content_max_width - SHADOW_WIDTH + "px",
-        left: "auto"
-      }
-    },
-    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-      right: 0,
-      left: "auto"
-    },
-
-    // Push
-    ".pe-drawer--push": {
-      " .pe-dialog__content": {
-        marginRight: -componentVars.permanent_content_width - SHADOW_WIDTH + "px",
-        marginLeft: "auto"
-      }
-    },
-    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-      marginRight: 0,
-      marginLeft: "auto"
-    },
-
-    // Mini
-    ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-      marginLeft: 0,
-      marginRight: 0
-    }
-  }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+  }), _defineProperty(_ref2, "*[dir=rtl] " + selector + ".pe-drawer--anchor-end, .pe-rtl " + selector + ".pe-drawer--anchor-end, " + selector + ":not(.pe-drawer--anchor-end)", alignLeft(componentVars)), _defineProperty(_ref2, "*[dir=rtl] " + selector + ", .pe-rtl " + selector + ", " + selector + ".pe-drawer--anchor-end", [alignRight(componentVars)]), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
       " .pe-dialog__content": {
         maxWidth: componentVars.content_max_width_large + "px"

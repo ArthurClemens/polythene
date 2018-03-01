@@ -20,7 +20,7 @@ export const createProps = vnode => {
         attrs.mini ? classes.mini : null,
         attrs.floating ? classes.floating : null,
         attrs.fixed ? classes.fixed : null,
-        attrs.anchor === "right" ? classes.anchorRight : null,
+        attrs.anchor === "end" ? classes.anchorEnd : null,
       ].join(" "),
       inactive: attrs.permanent && !attrs.mini,
       z: attrs.z !== undefined

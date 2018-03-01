@@ -10,5 +10,5 @@ export default {
   bordered:        "pe-drawer--bordered",
   floating:        "pe-drawer--floating",
   fixed:           "pe-drawer--fixed",
-  anchorRight:     "pe-drawer--anchor-right",
+  anchorEnd:       "pe-drawer--anchor-end",
 };

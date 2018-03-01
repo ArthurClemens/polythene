@@ -93,12 +93,12 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Anchor right",
+      name: "Anchor end",
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         backdrop: true,
-        anchor: "right"
+        anchor: "end"
       }})
     },
     {
@@ -167,8 +167,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         z: 0,
         bordered: true,
         mini: true,
-        miniWidthCollapsed: 56,
-        miniWidthExpanded: 220,
       }})
     },
 
@@ -197,6 +195,15 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         mini: true,
         z: 0,
         bordered: true,
+      }})
+    },
+    {
+      name: "Anchor end (RTL)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+        backdrop: true,
+        anchor: "end"
       }})
     },
 
