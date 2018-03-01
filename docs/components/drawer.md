@@ -61,8 +61,8 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
 | **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
-| **showDuration** | optional | Number | .150 | The show transition duration in seconds |
-| **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
+| **showDuration** | optional | Number | .220 | The show transition duration in seconds |
+| **hideDuration** | optional | Number | .220 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
 | **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the dialog is dismissed, for instance by tapping outside of the dialog (when not a modal) |
 | **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
@@ -74,7 +74,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **element**   | optional       | String   | "form"      | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-drawer` |
 | **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
 | **id**        | optional       | String   |             | HTML element id |
 | **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |

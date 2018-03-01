@@ -101,41 +101,45 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         anchor: "end"
       }})
     },
-    {
-      name: "Transitions",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
-        backdrop: true,
-        transitions: {
-          show: ({ contentEl }) => ({
-            el: contentEl,
-            showDuration: .24,
-            showTimingFunction: "ease-out",
-            beforeShow: () => {
-              const rect = contentEl.getBoundingClientRect();
-              const height = rect.height + 15; // add shadow
-              contentEl.style.left = 0;
-              contentEl.style.transform = `translate3d(0, -${height}px, 0)`;
-            },
-            show: () => {
-              contentEl.style.transform = "translate3d(0, 0, 0)";
-            }
-          }),
-          hide: ({ contentEl }) => ({
-            el: contentEl,
-            hideDuration: .24,
-            hideTimingFunction: "ease-out",
-            hide: () => {
-              const rect = contentEl.getBoundingClientRect();
-              const height = rect.height + 15; // add shadow
-              contentEl.style.left = 0;
-              contentEl.style.transform = `translate3d(0, -${height}px, 0)`;
-            }
-          })
-        }
-      }})
-    },
+    // {
+    //   name: "Transitions",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+    //     backdrop: true,
+    //     transitions: {
+    //       show: ({ el, contentEl }) => ({
+    //         el,
+    //         showDuration: .500,
+    //         showTimingFunction: "ease-out",
+    //         beforeShow: () => {
+    //           const rect = contentEl.getBoundingClientRect();
+    //           const height = rect.height + 15; // add shadow
+    //           contentEl.style.transitionProperty = "none";
+    //           contentEl.style.left = 0;
+    //           contentEl.style.opacity = 0;
+    //           contentEl.style.top = `${-height}px`;
+    //         },
+    //         show: () => {
+    //           contentEl.style.transitionProperty = "top, opacity";
+    //           contentEl.style.opacity = 1;
+    //           contentEl.style.top = 0;
+    //         }
+    //       }),
+    //       hide: ({ el, contentEl }) => ({
+    //         el,
+    //         hideDuration: .400,
+    //         hideTimingFunction: "ease-out",
+    //         hide: () => {
+    //           const rect = contentEl.getBoundingClientRect();
+    //           const height = rect.height + 15; // add shadow
+    //           contentEl.style.left = 0;
+    //           contentEl.style.top = `${-height}px`;
+    //         }
+    //       })
+    //     }
+    //   }})
+    // },
 
     {
       name: "Pushing drawer (push from left, without shadow, bordered)",

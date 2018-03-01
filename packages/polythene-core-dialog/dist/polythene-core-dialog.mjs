@@ -87,10 +87,11 @@ var showDialog = function showDialog(state, attrs) {
   state.transitioning(true);
   state.visible(true);
   var id = state.instanceId;
-
   var showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: showDuration, showDelay: attrs.showDelay }) : { el: state.el, showClass: classes.visible, showDuration: showDuration, showDelay: attrs.showDelay })).then(function () {
+  return show(_extends({}, attrs, {
+    showClass: classes.visible
+  }, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: showDuration, showDelay: attrs.showDelay }) : { el: state.el, showDuration: showDuration, showDelay: attrs.showDelay })).then(function () {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
     } else if (attrs.didShow) {
@@ -111,7 +112,9 @@ var hideDialog = function hideDialog(state, attrs) {
   // Hide dialog
   var hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, showClass: classes.visible, hideDuration: hideDuration, hideDelay: attrs.hideDelay })).then(function () {
+  return hide(_extends({}, attrs, {
+    showClass: classes.visible
+  }, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, hideDuration: hideDuration, hideDelay: attrs.hideDelay })).then(function () {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
     } else if (attrs.didHide) {

@@ -207,7 +207,7 @@ var onChange = (function (_ref) {
       var tab = stream({});
       _extends(vnode.state, {
         tab: tab,
-        redrawOnUpdate: stream.merge([tab])
+        redrawOnUpdate: stream.merge([tab]) // for React
       });
     },
     view: function view(vnode) {

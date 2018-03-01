@@ -211,7 +211,7 @@ var opener = (function (_ref) {
       var show = stream(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {

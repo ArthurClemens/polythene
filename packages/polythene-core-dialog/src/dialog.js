@@ -14,14 +14,16 @@ const showDialog = (state, attrs) => {
   state.transitioning(true);
   state.visible(true);
   const id = state.instanceId;
-  
   const showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
   const transitions = attrs.transitions;
   return show(Object.assign({},
     attrs,
+    {
+      showClass: classes.visible
+    },
     transitions 
       ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration, showDelay: attrs.showDelay })
-      : { el: state.el, showClass: classes.visible, showDuration, showDelay: attrs.showDelay }
+      : { el: state.el, showDuration, showDelay: attrs.showDelay }
   )).then(() => {
     if (attrs.fromMultipleDidShow) {
       attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
@@ -45,9 +47,12 @@ const hideDialog = (state, attrs) => {
   const transitions = attrs.transitions;
   return hide(Object.assign({},
     attrs,
+    {
+      showClass: classes.visible
+    },
     transitions
       ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration, hideDelay: attrs.hideDelay })
-      : { el: state.el, showClass: classes.visible, hideDuration, hideDelay: attrs.hideDelay }
+      : { el: state.el, hideDuration, hideDelay: attrs.hideDelay }
   )).then(() => {
     if (attrs.fromMultipleDidHide) {
       attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide

@@ -285,7 +285,7 @@ var opener = (function (_ref) {
       var show = stream(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -405,7 +405,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
       var show = stream(false);
       _extends$1(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -501,7 +501,7 @@ var settings = (function (_ref) {
       _extends$2(vnode.state, {
         show: show,
         selectedIndex: selectedIndex,
-        redrawOnUpdate: stream.merge([show]),
+        redrawOnUpdate: stream.merge([show]), // for React
         id: "id-" + Math.floor(Math.random() * 1000)
       });
     },

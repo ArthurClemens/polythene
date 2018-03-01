@@ -212,7 +212,7 @@ var onChange = (function (_ref) {
       var value = stream(attrs.defaultValue || attrs.value || 0);
       _extends(vnode.state, {
         value: value,
-        redrawOnUpdate: stream.merge([value])
+        redrawOnUpdate: stream.merge([value]) // for React
       });
     },
     view: function view(vnode) {
