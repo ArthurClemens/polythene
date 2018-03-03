@@ -42,6 +42,11 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 
 Test files for each component are located in `packages/test-COMPONENT`. These include Jest snapshots to verify the output.
 
+Start by installing all dependencies in the root:
+
+* `yarn install`
+* `lerna bootstrap`
+
 ### Editing tests
 
 * Modify and build files:
@@ -56,10 +61,6 @@ Test files can be viewed by the "test renderers":
 
 * With Mithril: `cd packages/tests-render-mithril`
 * With React: `cd packages/tests-render-react`
-
-Install dependencies:
-
-* `yarn install`
 
 Run in the browser:
 
