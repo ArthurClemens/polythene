@@ -54,10 +54,8 @@ Test files for each component are located in `packages/test-COMPONENT`. These in
 
 Test files can be viewed by the "test renderers":
 
-* With Mithril:
-  * `cd packages/tests-render-mithril`
-* With React:
-  * `cd packages/tests-render-react`
+* With Mithril: `cd packages/tests-render-mithril`
+* With React: `cd packages/tests-render-react`
 
 Install dependencies:
 
@@ -67,8 +65,6 @@ Run in the browser:
 
 * `yarn run dev` - uses Webpack's dev server
 
-* With Mithril:
-  * http://localhost:3000
-* With React:
-  * http://localhost:3100
+* With Mithril: http://localhost:3000
+* With React: http://localhost:3100
   
