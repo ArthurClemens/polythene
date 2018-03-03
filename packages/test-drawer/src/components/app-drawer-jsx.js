@@ -6,15 +6,12 @@ class AppDrawer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
-      hide: false,
+      show: false
     };
   }
 
   render() {
     const { createContent, ...drawerOpts } = this.props;
-    const onClick = () => this.setState({ hide: true });
-    const content = createContent({ onClick });
     return (
       <div>
         <RaisedButton
@@ -25,11 +22,13 @@ class AppDrawer extends Component {
         />
         <Drawer
           {...drawerOpts}
-          content={content}
           show={this.state.show}
-          hide={this.state.hide}
-          didHide={() => this.setState({ show: false, hide: false })}
-        />
+          didHide={() => this.setState({ show: false })}
+        >
+          {createContent({
+            onClick: () => this.setState({ show: false })
+          })}
+        </Drawer>
       </div>
     );
   }

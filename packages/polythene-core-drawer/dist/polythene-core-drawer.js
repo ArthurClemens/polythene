@@ -25,16 +25,15 @@ var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   var isCover = !(attrs.push || attrs.permanent || attrs.mini);
   return _extends({}, attrs, {
-    anchored: true,
     fullBleed: true,
     parentClassName: [attrs.className, classes.component, isCover ? classes.cover : null, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.bordered ? classes.bordered : null, attrs.mini ? classes.mini : null, attrs.floating ? classes.floating : null, attrs.fixed ? classes.fixed : null, attrs.anchor === "end" ? classes.anchorEnd : null].join(" "),
     inactive: attrs.permanent && !attrs.mini,
-    z: attrs.z !== undefined ? attrs.z : 1
+    z: attrs.z !== undefined ? attrs.z : 0
   });
 };
 
-var createContent = function createContent() {
-  return null;
+var createContent = function createContent(vnode) {
+  return vnode.children;
 };
 
 var drawer = Object.freeze({

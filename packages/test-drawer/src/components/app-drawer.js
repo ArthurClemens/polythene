@@ -4,21 +4,20 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
 
   return {
     oninit: vnode => {
-      const drawerState = stream({ show: false, hide: false });
+      const show = stream(false);
       Object.assign(vnode.state, {
-        drawerState,
-        redrawOnUpdate: stream.merge([drawerState]) // React: redraw whenever variables change
+        show,
+        redrawOnUpdate: stream.merge([show]) // React: redraw whenever variables change
       });
     },
-    view: vnode => {
-      const state = vnode.state;
-      const { show, hide } = state.drawerState();
+    view: ({ state }) => {
+      const show = state.show();
       return [
         h(RaisedButton, {
           key: "button", // for React
           label: "Show",
           events: {
-            [k.onclick]: () => state.drawerState({ show: true, hide })
+            [k.onclick]: () => state.show(true)
           }
         }),
         h(Drawer, Object.assign(
@@ -28,11 +27,10 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
             key: "drawer", // for React
             content: createContent({
               repeats,
-              onClick: () => state.drawerState({ show, hide: true })
+              onClick: () => state.show(false)
             }),
             show,
-            hide,
-            didHide: () => state.drawerState({ show: false, hide: false })
+            didHide: () => state.show(false) // sync state with component
           }
         ))
       ];

@@ -164,7 +164,6 @@ function _defineProperty$1(obj, key, value) { if (key in obj) { Object.definePro
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 
 var ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
-var longText = ipsum + ipsum;
 
 var navigation = (function (_ref) {
   var h = _ref.renderer,
@@ -181,23 +180,20 @@ var navigation = (function (_ref) {
       drawerOpts = _ref.drawerOpts;
 
 
+  var longText = h.trust(ipsum + ipsum);
+
   return {
     oninit: function oninit(vnode) {
-      var drawerState = stream({ show: false, hide: false });
+      var show = stream(false);
       _extends(vnode.state, {
-        drawerState: drawerState,
-        redrawOnUpdate: stream.merge([drawerState]) // for React
+        show: show,
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {
       var state = vnode.state;
-
-      var _state$drawerState = state.drawerState(),
-          show = _state$drawerState.show,
-          hide = _state$drawerState.hide;
-
       var onClick = function onClick() {
-        return state.drawerState({ show: show, hide: true });
+        return state.show(false);
       };
       var navList = createContent({ repeats: repeats, onClick: onClick });
       var content = pushToolbar ? [h(Toolbar$$1, { fullbleed: true, border: true }, createTopContent({ onClick: onClick })), navList] : navList;
@@ -206,7 +202,7 @@ var navigation = (function (_ref) {
         key: "icon",
         icon: { svg: { content: h.trust(iconMenuSVG) } },
         events: _defineProperty$1({}, k.onclick, function () {
-          return show ? state.drawerState({ show: show, hide: true }) : state.drawerState({ show: true, hide: hide });
+          return state.show() ? state.show(false) : state.show(true);
         })
       }), h("div", {
         key: "title",
@@ -240,13 +236,9 @@ var navigation = (function (_ref) {
           padding: drawerOpts.floating ? "20px" : 0
         }
       }, h(Drawer$$1, _extends({}, drawerOpts, { content: content }, !drawerOpts.permanent && {
-        show: show,
-        hide: hide,
-        didShow: function didShow() {
-          return state.drawerState({ show: true, hide: false });
-        },
+        show: state.show(),
         didHide: function didHide() {
-          return state.drawerState({ show: false, hide: false });
+          return state.show(false);
         }
       }))), h("div", {
         style: {
@@ -259,7 +251,7 @@ var navigation = (function (_ref) {
         style: {
           padding: "20px"
         }
-      }, h.trust(longText))])]))]);
+      }, longText)])]))]);
     }
   };
 });
@@ -280,38 +272,34 @@ var appDrawer = (function (_ref) {
 
   return {
     oninit: function oninit(vnode) {
-      var drawerState = stream({ show: false, hide: false });
+      var show = stream(false);
       _extends$1(vnode.state, {
-        drawerState: drawerState,
-        redrawOnUpdate: stream.merge([drawerState]) // React: redraw whenever variables change
+        show: show,
+        redrawOnUpdate: stream.merge([show]) // React: redraw whenever variables change
       });
     },
-    view: function view(vnode) {
-      var state = vnode.state;
+    view: function view(_ref2) {
+      var state = _ref2.state;
 
-      var _state$drawerState = state.drawerState(),
-          show = _state$drawerState.show,
-          hide = _state$drawerState.hide;
-
+      var show = state.show();
       return [h(RaisedButton$$1, {
         key: "button", // for React
         label: "Show",
         events: _defineProperty$2({}, k.onclick, function () {
-          return state.drawerState({ show: true, hide: hide });
+          return state.show(true);
         })
       }), h(Drawer$$1, _extends$1({}, drawerOpts, {
         key: "drawer", // for React
         content: createContent({
           repeats: repeats,
           onClick: function onClick() {
-            return state.drawerState({ show: show, hide: true });
+            return state.show(false);
           }
         }),
         show: show,
-        hide: hide,
         didHide: function didHide() {
-          return state.drawerState({ show: false, hide: false });
-        }
+          return state.show(false);
+        } // sync state with component
       }))];
     }
   };
@@ -446,10 +434,11 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: appDrawer({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, RaisedButton: RaisedButton$$1, createContent: createContent, drawerOpts: {
         fixed: true,
-        backdrop: true
+        backdrop: true,
+        z: 1
       } })
   }, {
-    name: "Permanent (no shadow)",
+    name: "Permanent (no shadow, with border)",
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         permanent: true,
         bordered: true,
@@ -459,22 +448,66 @@ var genericTests = (function (_ref) {
     name: "Permanent, floating (with shadow)",
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         permanent: true,
-        floating: true
+        floating: true,
+        z: 1
       } })
   }, {
     name: "Default drawer (type cover) (can be closed with ESCAPE) (with backdrop)",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
-        backdrop: true
+        backdrop: true,
+        z: 1
       } })
   }, {
     name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        modal: true,
+        z: 1
+      } })
+  }, {
+    name: "Anchor end",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
-        modal: true
+        anchor: "end",
+        z: 1
+      } })
+  }, {
+    name: "Pushing drawer (push from left, without shadow, bordered)",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
+        push: true,
+        bordered: true
+      } })
+  }, {
+    name: "Pushing drawer including toolbar",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
+        push: true,
+        bordered: true
+      } })
+  }, {
+    name: "Mini (expanding) drawer",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
+        push: true,
+        bordered: true,
+        mini: true
+      } })
+  }, {
+    name: "Long content (scrolling list)",
+    interactive: true,
+    exclude: true,
+    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
+        backdrop: true,
+        z: 1
       } })
   }, {
     name: "Themed drawer",
@@ -483,15 +516,20 @@ var genericTests = (function (_ref) {
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
         className: "drawer-tests-themed",
-        tone: "dark"
+        tone: "dark",
+        z: 1
       } })
   }, {
-    name: "Anchor end",
+    name: "Styled drawer",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         backdrop: true,
-        anchor: "end"
+        style: {
+          background: "#fff59d",
+          padding: "1.5rem"
+        },
+        z: 1
       } })
   },
   // {
@@ -500,6 +538,7 @@ var genericTests = (function (_ref) {
   //   exclude: true,
   //   component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
   //     backdrop: true,
+  //     z: 1,
   //     transitions: {
   //       show: ({ el, contentEl }) => ({
   //         el,
@@ -535,46 +574,12 @@ var genericTests = (function (_ref) {
   // },
 
   {
-    name: "Pushing drawer (push from left, without shadow, bordered)",
-    interactive: true,
-    exclude: true,
-    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
-        push: true,
-        z: 0,
-        bordered: true
-      } })
-  }, {
-    name: "Pushing drawer including toolbar",
-    interactive: true,
-    exclude: true,
-    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
-        push: true,
-        z: 0,
-        bordered: true
-      } })
-  }, {
-    name: "Mini (expanding) drawer",
-    interactive: true,
-    exclude: true,
-    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
-        push: true,
-        z: 0,
-        bordered: true,
-        mini: true
-      } })
-  }, {
-    name: "Long content (scrolling list)",
-    interactive: true,
-    exclude: true,
-    component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, repeats: 4, drawerOpts: {
-        backdrop: true
-      } })
-  }, {
     name: "Default drawer (RTL)",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
-        backdrop: true
+        backdrop: true,
+        z: 1
       } })
   }, {
     name: "Mini drawer (RTL)",
@@ -583,7 +588,6 @@ var genericTests = (function (_ref) {
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         push: true,
         mini: true,
-        z: 0,
         bordered: true
       } })
   }, {
@@ -592,7 +596,8 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         backdrop: true,
-        anchor: "end"
+        anchor: "end",
+        z: 1
       } })
   },
 
@@ -604,7 +609,8 @@ var genericTests = (function (_ref) {
     exclude: true,
     className: "pe-dark-tone",
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, dark: true, drawerOpts: {
-        backdrop: true
+        backdrop: true,
+        z: 1
       } })
   }];
 });
@@ -1798,10 +1804,7 @@ function _objectWithoutProperties(obj, keys$$1) { var target = {}; for (var i in
 
 var AppDrawer = {
   oninit: function oninit(vnode) {
-    var drawerState = stream({ show: false, hide: false });
-    _extends$2(vnode.state, {
-      drawerState: drawerState
-    });
+    vnode.state.show = false;
   },
   view: function view(_ref) {
     var state = _ref.state,
@@ -1810,28 +1813,24 @@ var AppDrawer = {
     var createContent = attrs.createContent,
         drawerOpts = _objectWithoutProperties(attrs, ["createContent"]);
 
-    var _state$drawerState = state.drawerState(),
-        show = _state$drawerState.show,
-        hide = _state$drawerState.hide;
-
-    var onClick = function onClick() {
-      return state.drawerState({ show: show, hide: true });
+    var listTileClick = function listTileClick() {
+      return state.show = false;
     };
-    var content = createContent({ onClick: onClick });
     return [mithril(RaisedButton, {
       label: "Show",
       events: {
         onclick: function onclick() {
-          return state.drawerState({ show: true, hide: hide });
+          return state.show = true;
         }
       }
     }), mithril(Drawer, _extends$2({}, drawerOpts, {
-      content: content,
-      show: show,
-      hide: hide,
+      content: createContent({
+        onClick: listTileClick
+      }),
+      show: state.show,
       didHide: function didHide() {
-        return state.drawerState({ show: false, hide: false });
-      }
+        return state.show = false;
+      } // sync state with component
     }))];
   }
 };
@@ -3663,8 +3662,7 @@ var AppDrawer$2 = function (_Component) {
     var _this = _possibleConstructorReturn(this, (AppDrawer.__proto__ || Object.getPrototypeOf(AppDrawer)).call(this, props));
 
     _this.state = {
-      show: false,
-      hide: false
+      show: false
     };
     return _this;
   }
@@ -3678,10 +3676,6 @@ var AppDrawer$2 = function (_Component) {
           createContent = _props.createContent,
           drawerOpts = _objectWithoutProperties$1(_props, ["createContent"]);
 
-      var onClick = function onClick() {
-        return _this2.setState({ hide: true });
-      };
-      var content = createContent({ onClick: onClick });
       return react.createElement(
         "div",
         null,
@@ -3693,14 +3687,20 @@ var AppDrawer$2 = function (_Component) {
             }
           }
         }),
-        react.createElement(Drawer$1, _extends$4({}, drawerOpts, {
-          content: content,
-          show: this.state.show,
-          hide: this.state.hide,
-          didHide: function didHide() {
-            return _this2.setState({ show: false, hide: false });
-          }
-        }))
+        react.createElement(
+          Drawer$1,
+          _extends$4({}, drawerOpts, {
+            show: this.state.show,
+            didHide: function didHide() {
+              return _this2.setState({ show: false });
+            }
+          }),
+          createContent({
+            onClick: function onClick() {
+              return _this2.setState({ show: false });
+            }
+          })
+        )
       );
     }
   }]);

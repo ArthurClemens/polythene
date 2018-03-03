@@ -76,12 +76,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var DEFAULT_Z = 3;
+var DEFAULT_ANIMATION_DURATION = .220;
+
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var DEFAULT_Z = 3;
-var DEFAULT_ANIMATION_DURATION = .220;
 
 var showDialog = function showDialog(state, attrs) {
   if (state.transitioning()) {
@@ -216,7 +216,7 @@ var createPane = function createPane(vnode, _ref2) {
   return h(Pane, {
     title: attrs.title,
     header: attrs.header,
-    body: attrs.content || attrs.body || attrs.menu,
+    body: attrs.content || attrs.body || attrs.menu || vnode.children,
     footer: attrs.footer,
     footerButtons: attrs.footerButtons,
     className: attrs.className,

@@ -29,7 +29,7 @@ var Drawer = {
     return renderer(DrawerToggle, _extends({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
-      permanent: vnode.attrs.permanent || vnode.attrs.mini
+      exposing: vnode.attrs.mini // passed to Conditional
     }));
   }
 };

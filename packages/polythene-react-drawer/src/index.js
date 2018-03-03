@@ -20,7 +20,7 @@ export const Drawer = props => (
     {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
-      permanent: props.permanent || props.mini,
+      exposing: props.mini, // passed to Conditional
     }
   ))
 );

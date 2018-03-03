@@ -42,8 +42,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 
 | **Parameter** |  **Required** | **Type**   | **Default**     | **Description** |
 | ------------- | ------------- | ---------- | --------------- | --------------- |
-| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer; note that `show: false` is not the same as `hide: true`; to show an out transition, `show` still needs to be `true` until the transition has completed |
-| **hide**      | optional      | Boolean    |                 | Set to `true` to hide the drawer |      
+| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer, `hide` to hide a displayed drawer |
 | **permanent** | optional      | Boolean    |                 | Set to `true` to display the drawer as a permanent side menu |
 | **push**      | optional      | Boolean    | `false` (cover) | Set to `true` to animate the drawer with a push animation, pushing away the content next to the drawer | 
 | **mini**      | optional      | Boolean    |                 | Set to `true` to display a fraction of the drawer (typically to show the icons only), and to reveal the full menu when expanding |
@@ -51,7 +50,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **anchor**    | optional      | String     | "start"         | Set to "end" to reveal the drawer from the far (right) side; with RTL "end" becomes the left side |
 | **bordered**  | optional      | Boolean    |                 | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
 | **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
-| **z**         | optional      | Number 0-5 | 1 | Depth of the shadow; set to 0 to hide the shadow |
+| **z**         | optional      | Number 0-5 | 0 | Depth of the shadow; 0 will show no shadow |
 | **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |
 | **modal**     | optional      | Boolean    | false | Set to true to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
 
@@ -68,7 +67,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
 | **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the drawer is dismissed, for instance by tapping outside of the drawer (when not a modal) |
 | **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
-| **didHide**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
+| **didHide**      | mostly required | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
 
 <a name="common-component-options"></a>
 ### Common component options

@@ -8,7 +8,6 @@ export const createProps = vnode => {
     {},
     attrs,
     {
-      anchored: true,
       fullBleed: true,
       parentClassName: [
         attrs.className,
@@ -25,9 +24,9 @@ export const createProps = vnode => {
       inactive: attrs.permanent && !attrs.mini,
       z: attrs.z !== undefined
         ? attrs.z
-        : 1
+        : 0
     }
   );
 };
 
-export const createContent = () => null;
+export const createContent = vnode => vnode.children;

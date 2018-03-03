@@ -1,11 +1,11 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
-
 const DEFAULT_Z    = 3;
 const DEFAULT_ANIMATION_DURATION = .220;
+
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
 
 const showDialog = (state, attrs) => {
   if (state.transitioning()) {
@@ -159,7 +159,7 @@ export const createPane = (vnode, { renderer: h, Pane }) => {
     {
       title: attrs.title,
       header: attrs.header,
-      body: attrs.content || attrs.body || attrs.menu,
+      body: attrs.content || attrs.body || attrs.menu || vnode.children,
       footer: attrs.footer,
       footerButtons: attrs.footerButtons,
       className: attrs.className,

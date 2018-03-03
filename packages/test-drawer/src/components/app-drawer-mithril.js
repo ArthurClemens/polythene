@@ -1,34 +1,29 @@
 import m from "mithril";
-import stream from "mithril/stream";
 import { Drawer, RaisedButton } from "polythene-mithril";
 
 const AppDrawer = {
   oninit: vnode => {
-    const drawerState = stream({ show: false, hide: false });
-    Object.assign(vnode.state, {
-      drawerState,
-    });
+    vnode.state.show = false;
   },
   view: ({ state, attrs }) => {
     const { createContent, ...drawerOpts } = attrs;
-    const { show, hide } = state.drawerState();
-    const onClick = () => state.drawerState({ show, hide: true });
-    const content = createContent({ onClick });
+    const listTileClick = () => state.show = false;
     return [
       m(RaisedButton, {
         label: "Show",
         events: {
-          onclick: () => state.drawerState({ show: true, hide })
+          onclick: () => state.show = true
         }
       }),
       m(Drawer, Object.assign(
         {},
         drawerOpts,
         {
-          content,
-          show,
-          hide,
-          didHide: () => state.drawerState({ show: false, hide: false })
+          content: createContent({
+            onClick: listTileClick
+          }),
+          show: state.show,
+          didHide: () => state.show = false // sync state with component
         }
       ))
     ];

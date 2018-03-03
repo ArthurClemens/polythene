@@ -3,22 +3,22 @@ import stream from "mithril/stream";
 const iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 
 const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
-const longText = ipsum + ipsum;
 
 export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, dark, createTopContent, drawerOpts }) => {
 
+  const longText = h.trust(ipsum + ipsum);
+
   return {
     oninit: vnode => {
-      const drawerState = stream({ show: false, hide: false });
+      const show = stream(false);
       Object.assign(vnode.state, {
-        drawerState,
-        redrawOnUpdate: stream.merge([drawerState]) // for React
+        show,
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: vnode => {
       const state = vnode.state;
-      const { show, hide } = state.drawerState();
-      const onClick = () => state.drawerState({ show, hide: true });
+      const onClick = () => state.show(false);
       const navList = createContent({ repeats, onClick });
       const content = pushToolbar
         ? [
@@ -33,9 +33,9 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
             key: "icon",
             icon: { svg: { content: h.trust(iconMenuSVG) } },
             events: {
-              [k.onclick]: () => show
-                ? state.drawerState({ show, hide: true })
-                : state.drawerState({ show: true, hide })
+              [k.onclick]: () => state.show()
+                ? state.show(false)
+                : state.show(true)
             } 
           }
         ),
@@ -95,10 +95,8 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                     drawerOpts,
                     { content },
                     !drawerOpts.permanent && {
-                      show,
-                      hide,
-                      didShow: () => state.drawerState({ show: true, hide: false }),
-                      didHide: () => state.drawerState({ show: false, hide: false })
+                      show: state.show(),
+                      didHide: () => state.show(false)
                     }
                   ))
                 ),
@@ -119,7 +117,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                           padding: "20px"
                         }
                       },
-                      h.trust(longText)
+                      longText
                     )
                   ]
                 )

@@ -19,12 +19,79 @@ var getAnimationEndEvent = function getAnimationEndEvent() {
   }
 };
 
-var Conditional = {
-  view: function view(vnode, _ref) {
-    var h = _ref.renderer;
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var modes = {
+  hidden: "hidden",
+  visible: "visible",
+  exposing: "exposing",
+  hiding: "hiding"
+};
+
+var Conditional = {
+  getInitialState: function getInitialState(vnode, createStream) {
     var attrs = vnode.attrs;
-    return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : h("span", { className: attrs.placeholderClassName });
+    if (attrs.permanent || !attrs.didHide) {
+      return {};
+    }
+    var visible = attrs.inactive || attrs.show;
+    var mode = createStream(attrs.exposing ? modes.visible : visible ? modes.visible : modes.hidden);
+    return {
+      mode: mode,
+      redrawOnUpdate: createStream.merge([mode])
+    };
+  },
+  onUpdate: function onUpdate(_ref) {
+    var state = _ref.state,
+        attrs = _ref.attrs;
+
+    if (attrs.permanent || !attrs.didHide) {
+      return;
+    }
+    var mode = state.mode();
+    if (attrs.exposing) {
+      if (mode === modes.visible && attrs.show) {
+        state.mode(modes.exposing);
+      } else if (mode === modes.exposing && !attrs.show) {
+        state.mode(modes.hiding);
+      }
+    } else {
+      // "normal" type
+      if (mode === modes.hidden && attrs.show) {
+        state.mode(modes.visible);
+      } else if (mode === modes.visible && !attrs.show) {
+        state.mode(modes.hiding);
+      }
+    }
+  },
+  view: function view(_ref2, _ref3) {
+    var state = _ref2.state,
+        attrs = _ref2.attrs;
+    var h = _ref3.renderer;
+
+    // type:permanent: always show
+    if (attrs.permanent) {
+      return h(attrs.instance, attrs);
+    }
+
+    var placeholder = h("span", { className: attrs.placeholderClassName });
+
+    // No didHide callback passed: use normal visibility evaulation
+    if (!attrs.didHide) {
+      return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : placeholder;
+    }
+
+    // else: use didHide to reset the state after hiding
+    var mode = state.mode();
+    var visible = mode !== modes.hidden;
+    return visible ? h(attrs.instance, _extends({}, attrs, {
+      didHide: function didHide(args) {
+        return attrs.didHide(args), state.mode(attrs.exposing ? modes.visible : modes.hidden);
+      }
+    }, mode === modes.hiding && {
+      show: true,
+      hide: true
+    })) : placeholder;
   }
 };
 
@@ -151,7 +218,7 @@ if (isClient) {
   });
 }
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /*
 Helper module to manage multiple items of the same component type.
@@ -274,7 +341,7 @@ var Multi = function Multi(_ref) {
       return resolveHide = resolve;
     });
 
-    return _extends({}, mOptions, {
+    return _extends$1({}, mOptions, {
       instanceId: instanceId,
       spawn: spawn,
       attrs: itemAttrs,
@@ -350,7 +417,7 @@ var Multi = function Multi(_ref) {
     : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _extends({}, {
+      return renderer(mOptions.instance, _extends$1({}, {
         key: itemData.key,
         spawnId: spawn,
         instanceId: itemData.instanceId,
