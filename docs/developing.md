@@ -40,21 +40,35 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 <a name="testing"></a>
 ## Testing
 
-Includes Jest snapshots and a viewer to verify the output.
+Test files for each component are located in `packages/test-COMPONENT`. These include Jest snapshots to verify the output.
 
-* `cd packages/test`
+### Editing tests
+
+* Modify and build files:
+  * `yarn run build` - builds files in `dist`
+* Update snapshots:
+  * `yarn run test`
+  * `yarn run test:watch`
+
+### Viewing tests
+
+Test files can be viewed by the "test renderers":
+
+* With Mithril:
+  * `cd packages/tests-render-mithril`
+* With React:
+  * `cd packages/tests-render-react`
+
+Install dependencies:
+
 * `yarn install`
 
-Run in browser:
+Run in the browser:
 
 * `yarn run dev` - uses Webpack's dev server
 
-Build files:
-
-* `yarn run build` - builds files in `dist`
-
-Update snapshots:
-
-* `yarn run test`
-* `yarn run test:watch`
-
+* With Mithril:
+  * http://localhost:3000
+* With React:
+  * http://localhost:3100
+  
