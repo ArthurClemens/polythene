@@ -24,7 +24,7 @@ cd polythene
 yarn
 ```
 
-This will run `lerna init` and `lerna bootstrap`.
+This will install all dependencies and run `lerna bootstrap`.
 
 Commands:
 
@@ -42,10 +42,9 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 
 Test files for each component are located in `packages/test-COMPONENT`. These include Jest snapshots to verify the output.
 
-Start by installing all dependencies in the root:
+If you haven't done so, start by installing all dependencies in the root:
 
-* `yarn install`
-* `lerna bootstrap`
+* `yarn` - this will install all dependencies and run `lerna bootstrap`
 
 ### Editing tests
 
