@@ -32,6 +32,12 @@ export default ({ renderer: h, Tabs }) => {
     color_dark_tab_indicator: "#F44336"
   });
 
+  TabsCSS.addStyle(".tests-tabs-no-indicators", {
+    color_light:          "#333",
+    color_light_selected: "#333",
+    label_opacity:        1
+  });
+
   const threeButtons = [
     { label: "New" },
     { label: "My Favorites" },
@@ -290,6 +296,17 @@ export default ({ renderer: h, Tabs }) => {
         tabs: threeButtons,
         autofit: true,
         activeSelected: true
+      }
+    },
+    {
+      name: "Hide all selection indicators",
+      interactive: true,
+      component: Tabs,
+      attrs: {
+        tabs: threeButtons,
+        autofit: true,
+        hideIndicator: true,
+        className: "tests-tabs-no-indicators"
       }
     },
     {

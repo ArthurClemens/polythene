@@ -102,6 +102,36 @@ exports[`test Dark tone class + light tone 1`] = `
 </div>
 `;
 
+exports[`test Hide all selection indicators 1`] = `
+<div
+  className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     tests-tabs-no-indicators">
+  <div
+    className="pe-tabs__row  ">
+    <Tab
+      animateOnTap={true}
+      index={0}
+      label="New"
+      onSelect={[Function]}
+      register={[Function]}
+      selected={true} />
+    <Tab
+      animateOnTap={true}
+      index={1}
+      label="My Favorites"
+      onSelect={[Function]}
+      register={[Function]}
+      selected={false} />
+    <Tab
+      animateOnTap={true}
+      index={2}
+      label="Saved"
+      onSelect={[Function]}
+      register={[Function]}
+      selected={false} />
+  </div>
+</div>
+`;
+
 exports[`test Long labels: wrap to second line 1`] = `
 <div
   className="pe-tabs  pe-tabs--start pe-tabs--end  pe-tabs--autofit     tests-tabs-fixed-width">

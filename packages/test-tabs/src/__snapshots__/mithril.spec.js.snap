@@ -260,6 +260,47 @@ exports[`test Dark tone class + light tone 1`] = `
 "
 `;
 
+exports[`test Hide all selection indicators 1`] = `
+"<div class=
+\"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit tests-tabs-no-indicators\">
+<div class=\"pe-tabs__row\">
+    <a class=
+    \"pe-button pe-text-button pe-button--selected pe-tabs__tab\"
+    tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>New</span>
+        </div>
+      </div>
+    </div></a><a class=\"pe-button pe-text-button pe-tabs__tab\"
+    tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>My Favorites</span>
+        </div>
+      </div>
+    </div></a><a class=\"pe-button pe-text-button pe-tabs__tab\"
+    tabindex=\"0\">
+    <div class=\"pe-button__content\">
+      <div class=\"pe-ripple\"></div>
+      <div class=\"pe-button__focus\"></div>
+      <div class=\"pe-tabs__tab-content\">
+        <div class=\"pe-button__label\">
+          <span>Saved</span>
+        </div>
+      </div>
+    </div></a>
+  </div>
+</div>
+"
+`;
+
 exports[`test Long labels: wrap to second line 1`] = `
 "<div class=
 \"pe-tabs pe-tabs--start pe-tabs--end pe-tabs--autofit tests-tabs-fixed-width\">

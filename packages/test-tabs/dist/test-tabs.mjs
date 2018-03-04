@@ -265,6 +265,12 @@ var genericTests = (function (_ref) {
     color_dark_tab_indicator: "#F44336"
   });
 
+  TabsCSS.addStyle(".tests-tabs-no-indicators", {
+    color_light: "#333",
+    color_light_selected: "#333",
+    label_opacity: 1
+  });
+
   var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
 
   var menuButtons = [{ label: "New" }, { label: "Favs" }, { label: "Saved" }];
@@ -472,6 +478,16 @@ var genericTests = (function (_ref) {
       tabs: threeButtons,
       autofit: true,
       activeSelected: true
+    }
+  }, {
+    name: "Hide all selection indicators",
+    interactive: true,
+    component: Tabs$$1,
+    attrs: {
+      tabs: threeButtons,
+      autofit: true,
+      hideIndicator: true,
+      className: "tests-tabs-no-indicators"
     }
   }, {
     name: "Option: all (style - colors)",
