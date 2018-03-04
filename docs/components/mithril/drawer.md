@@ -26,7 +26,6 @@
 
 <a href="https://jsfiddle.net/ArthurClemens/srtye3sm/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-
 To show a Drawer as permanent side menu:
 
 ~~~javascript
@@ -67,7 +66,7 @@ const AppDrawer = {
   oninit: vnode => {
     vnode.state.show = false
   },
-  view: ({ state, attrs }) => {
+  view: ({ state }) => {
     const navItemClick = () => state.show = false
     return [
       // For simplicity use a regular button to show the drawer

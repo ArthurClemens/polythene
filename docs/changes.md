@@ -18,7 +18,7 @@
 
 (in development)
 
-* Added a Drawer component
+* New Drawer component
 
 Changes to components:
 

@@ -25,6 +25,7 @@ Try out Polythene in JSFiddles.
   * [Full screen dialog](https://jsfiddle.net/ArthurClemens/v4uhjnyx/)
   * [Dynamic content (Passing dialog options as a function)](https://jsfiddle.net/ArthurClemens/0g6010eu/)
   * [Dynamic content (Continuously calling Dialog.show)](https://jsfiddle.net/ArthurClemens/pwLLjtL0/)
+* [Drawer](https://jsfiddle.net/ArthurClemens/srtye3sm/)
 * [Icon](https://jsfiddle.net/ArthurClemens/ubzhapwy/)
 * Inputs and Controls
   * [Checkbox](https://jsfiddle.net/ArthurClemens/gcuc9mch/)
