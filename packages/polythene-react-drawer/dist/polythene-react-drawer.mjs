@@ -28,7 +28,7 @@ var Drawer = function Drawer(props) {
   return renderer(DrawerToggle, _extends({}, props, {
     placeholderClassName: classes.placeholder,
     instance: DrawerInstance,
-    exposing: props.mini // passed to Conditional
+    permanent: props.permanent || props.mini // passed to Conditional
   }));
 };
 

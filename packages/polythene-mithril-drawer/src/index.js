@@ -20,7 +20,7 @@ export const Drawer = {
       {
         placeholderClassName: classes.placeholder,
         instance: DrawerInstance,
-        exposing: vnode.attrs.mini, // passed to Conditional
+        permanent: vnode.attrs.permanent || vnode.attrs.mini, // passed to Conditional
       }
     ))
 };

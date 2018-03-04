@@ -9,11 +9,11 @@ const modes = {
 export const Conditional = {
   getInitialState: (vnode, createStream) => {
     const attrs = vnode.attrs;
-    if (attrs.permanent || !attrs.didHide) {
+    if (!attrs.didHide) {
       return {};
     }
-    const visible = attrs.inactive || attrs.show;
-    const mode = createStream(attrs.exposing
+    const visible = attrs.permanent || attrs.show;
+    const mode = createStream(attrs.permanent
       ? modes.visible
       : visible
         ? modes.visible
@@ -24,11 +24,11 @@ export const Conditional = {
     };
   },
   onUpdate: ({ state, attrs }) => {
-    if (attrs.permanent || !attrs.didHide) {
+    if (!attrs.didHide) {
       return;
     }
     const mode = state.mode();
-    if (attrs.exposing) {
+    if (attrs.permanent) {
       if (mode === modes.visible && attrs.show) {
         state.mode(modes.exposing);
       } else if (mode === modes.exposing && !attrs.show) {
@@ -44,14 +44,9 @@ export const Conditional = {
     }
   },
   view: ({ state, attrs }, { renderer: h }) => {
-    // type:permanent: always show
-    if (attrs.permanent) {
-      return h(attrs.instance, attrs);
-    }
-
     const placeholder = h("span", { className: attrs.placeholderClassName });
 
-    // No didHide callback passed: use normal visibility evaulation
+    // No didHide callback passed: use normal visibility evaluation
     if (!attrs.didHide) {
       return attrs.permanent || attrs.inactive || attrs.show
         ? h(attrs.instance, attrs)
@@ -68,7 +63,7 @@ export const Conditional = {
         {
           didHide: args => (
             attrs.didHide(args),
-            state.mode(attrs.exposing
+            state.mode(attrs.permanent
               ? modes.visible
               : modes.hidden
             )

@@ -30,7 +30,7 @@ var Drawer = {
     return polytheneMithrilBase.renderer(DrawerToggle, _extends({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
-      exposing: vnode.attrs.mini // passed to Conditional
+      permanent: vnode.attrs.permanent || vnode.attrs.mini // passed to Conditional
     }));
   }
 };

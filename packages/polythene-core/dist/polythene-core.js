@@ -37,11 +37,11 @@ var modes = {
 var Conditional = {
   getInitialState: function getInitialState(vnode, createStream) {
     var attrs = vnode.attrs;
-    if (attrs.permanent || !attrs.didHide) {
+    if (!attrs.didHide) {
       return {};
     }
-    var visible = attrs.inactive || attrs.show;
-    var mode = createStream(attrs.exposing ? modes.visible : visible ? modes.visible : modes.hidden);
+    var visible = attrs.permanent || attrs.show;
+    var mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
     return {
       mode: mode,
       redrawOnUpdate: createStream.merge([mode])
@@ -51,11 +51,11 @@ var Conditional = {
     var state = _ref.state,
         attrs = _ref.attrs;
 
-    if (attrs.permanent || !attrs.didHide) {
+    if (!attrs.didHide) {
       return;
     }
     var mode = state.mode();
-    if (attrs.exposing) {
+    if (attrs.permanent) {
       if (mode === modes.visible && attrs.show) {
         state.mode(modes.exposing);
       } else if (mode === modes.exposing && !attrs.show) {
@@ -75,14 +75,9 @@ var Conditional = {
         attrs = _ref2.attrs;
     var h = _ref3.renderer;
 
-    // type:permanent: always show
-    if (attrs.permanent) {
-      return h(attrs.instance, attrs);
-    }
-
     var placeholder = h("span", { className: attrs.placeholderClassName });
 
-    // No didHide callback passed: use normal visibility evaulation
+    // No didHide callback passed: use normal visibility evaluation
     if (!attrs.didHide) {
       return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : placeholder;
     }
@@ -92,7 +87,7 @@ var Conditional = {
     var visible = mode !== modes.hidden;
     return visible ? h(attrs.instance, _extends({}, attrs, {
       didHide: function didHide(args) {
-        return attrs.didHide(args), state.mode(attrs.exposing ? modes.visible : modes.hidden);
+        return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
       }
     }, mode === modes.hiding && {
       show: true,
