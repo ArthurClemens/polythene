@@ -61,6 +61,9 @@ var vars$1 = {
 
   content_width_mini_collapsed: 56,
 
+  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
+
   color_light_background: rgba(polytheneTheme.vars.color_light_background),
   color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
 
