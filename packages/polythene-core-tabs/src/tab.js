@@ -56,4 +56,5 @@ export const createProps = (vnode, { renderer: h, keys: k, Icon }) => {
   );
 };
 
-export const createContent = () => null;
+export const createContent = vnode =>
+  vnode.children;

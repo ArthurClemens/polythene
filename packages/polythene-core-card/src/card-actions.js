@@ -30,4 +30,4 @@ export const createProps = (vnode, { keys: k }) => {
 };
 
 export const createContent = vnode =>
-  vnode.attrs.content;
+  vnode.attrs.content || vnode.children;

@@ -216,7 +216,7 @@ var createProps$1 = function createProps(vnode, _ref) {
 };
 
 var createContent$1 = function createContent(vnode) {
-  return vnode.attrs.content;
+  return vnode.attrs.content || vnode.children;
 };
 
 var cardActions = Object.freeze({

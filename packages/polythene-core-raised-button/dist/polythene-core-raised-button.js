@@ -105,8 +105,8 @@ var createProps = function createProps(vnode, _ref) {
   }, attrs);
 };
 
-var createContent = function createContent() {
-  return null;
+var createContent = function createContent(vnode) {
+  return vnode.children;
 };
 
 var raisedButton = Object.freeze({

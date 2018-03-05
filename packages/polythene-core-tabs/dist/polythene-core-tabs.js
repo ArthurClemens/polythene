@@ -459,8 +459,8 @@ var createProps$1 = function createProps(vnode, _ref) {
   });
 };
 
-var createContent$1 = function createContent() {
-  return null;
+var createContent$1 = function createContent(vnode) {
+  return vnode.children;
 };
 
 var tab = Object.freeze({

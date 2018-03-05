@@ -97,4 +97,5 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
   );
 };
 
-export const createContent = () => null;
+export const createContent = vnode =>
+  vnode.children;
