@@ -94,7 +94,7 @@ export const onMount = vnode => {
 
     const handleEscape = e => {
       if (attrs.fullScreen || attrs.modal) return;
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
         hideDialog(state, Object.assign({}, attrs, {
           hideDelay: 0
         }));

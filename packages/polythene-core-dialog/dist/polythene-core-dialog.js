@@ -158,7 +158,8 @@ var onMount = function onMount(vnode) {
 
     var handleEscape = function handleEscape(e) {
       if (attrs.fullScreen || attrs.modal) return;
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "Esc") {
+        // "Esc" for IE11
         hideDialog(state, _extends({}, attrs, {
           hideDelay: 0
         }));
