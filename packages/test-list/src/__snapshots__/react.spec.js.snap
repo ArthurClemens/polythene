@@ -320,6 +320,8 @@ exports[`test Option: id 1`] = `
   id="id-x" />
 `;
 
+exports[`test Option: navigation 1`] = `<_class />`;
+
 exports[`test Option: style (colors) 1`] = `
 <div
   className="pe-list   pe-list--header  pe-list--padding   "

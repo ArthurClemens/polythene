@@ -498,7 +498,7 @@ exports[`test Option: ink with ripple options 1`] = `
 
 exports[`test Option: secondary (Icon) (RTL) 1`] = `
 <div
-  dir="rtl">
+  className="pe-rtl">
   <ListTile
     secondary={
       Object {

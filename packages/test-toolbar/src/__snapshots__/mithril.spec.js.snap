@@ -428,7 +428,7 @@ class=\"pe-toolbar\">
 `;
 
 exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
-"<div dir=\"rtl\" style=\"overflow: hidden;\">
+"<div class=\"pe-rtl\" style=\"overflow: hidden;\">
   <div class=\"pe-toolbar\">
     <a class=\"pe-button pe-icon-button\" tabindex=\"0\">
     <div class=\"pe-button__content\">

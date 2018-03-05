@@ -585,7 +585,7 @@ exports[`test Option: style (colors and height) 1`] = `
 
 exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
 <div
-  dir="rtl"
+  className="pe-rtl"
   style={
     Object {
       "overflow": "hidden",

@@ -440,7 +440,7 @@ exports[`test Option: ink with ripple options 1`] = `
 `;
 
 exports[`test Option: secondary (Icon) (RTL) 1`] = `
-"<div dir=\"rtl\">
+"<div class=\"pe-rtl\">
   <div class=\"pe-list-tile pe-list-tile--subtitle\" tabindex=\"0\">
     <div class=\"pe-list-tile__primary\" style=\"\">
       <div class=\"pe-list-tile__content\">
