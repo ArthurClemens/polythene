@@ -172,7 +172,6 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
-        attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.containerSelector ? classes.hasContainer : null,
         attrs.layout === "vertical" ? classes.vertical : classes.horizontal,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
