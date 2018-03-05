@@ -188,8 +188,16 @@
   border-color: hsla(0,0%,100%,.1)
 }
 
+.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
+  background-color: rgba(0,0,0,.5)
+}
+
 .pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__content {
   background-color: #fff;
   border-color: rgba(0,0,0,.11)
+}
+
+.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
+  background-color: rgba(0,0,0,.4)
 }
 /*# sourceMappingURL=polythene-drawer.css.map */
