@@ -57,6 +57,7 @@ Style side notes:
 * Writing the dialog at the bottom makes for less surprises (instead of using CSS only for positioning); Mobile Safari sometimes has surprises with `position: fixed`, so placing it here will most likely work as intended.
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than other content.
 
+
 #### Multiple dialog spawners
 
 Usually you'll use only one location for dialogs - on top of all content and centered on screen - but it is possible to have a dialog instance spawned from a different location.
@@ -72,6 +73,10 @@ Calls to show the that particular dialog will then also need to pass the same sp
 ~~~javascript
 Dialog.show(dialogOptions, { spawn: "special" })
 ~~~
+
+#### Multiple dialogs
+
+Multiple dialogs can co-exist for the same spawn. Add a unique `id` to each dialog. When using an array of dialogs, differentiate with unique `key`s.
 
 #### Showing and hiding dialogs
 

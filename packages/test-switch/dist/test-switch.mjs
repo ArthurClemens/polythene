@@ -205,7 +205,7 @@ var onChange = (function (_ref) {
       var checked = stream(false);
       _extends$1(vnode.state, {
         checked: checked,
-        redrawOnUpdate: stream.merge([checked])
+        redrawOnUpdate: stream.merge([checked]) // for React
       });
     },
     view: function view(vnode) {
@@ -272,7 +272,7 @@ var toggleButton = (function (_ref) {
       var checked = stream(false);
       _extends$3(vnode.state, {
         checked: checked,
-        redrawOnUpdate: stream.merge([checked])
+        redrawOnUpdate: stream.merge([checked]) // for React
       });
     },
     view: function view(vnode) {

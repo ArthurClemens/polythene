@@ -1,0 +1,356 @@
+exports[`test No options 1`] = `
+<DrawerToggle
+  instance={[Function]} />
+`;
+
+exports[`test Option: class 1`] = `
+<DrawerToggle
+  className="class-x"
+  instance={[Function]} />
+`;
+
+exports[`test Option: className 1`] = `
+<DrawerToggle
+  className="className-x"
+  instance={[Function]} />
+`;
+
+exports[`test Option: id 1`] = `
+<DrawerToggle
+  id="id-x"
+  instance={[Function]} />
+`;
+
+exports[`test Permanent (no shadow, with border) 1`] = `
+<div>
+  <Toolbar
+    className="tests-drawer-themed-toolbar"
+    tone="dark"
+    z={1}>
+    <div
+      className="pe-toolbar__title">
+      Title
+    </div>
+  </Toolbar>
+  <div
+    style={
+      Object {
+        "overflow": "hidden",
+        "position": "relative",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "background": "#fff",
+          "color": "#333",
+          "display": "flex",
+          "height": "350px",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "padding": 0,
+          }
+        }>
+        <Drawer
+          bordered={true}
+          content={
+            <List
+              compact={true}
+              hoverable={true}
+              tiles={
+                Array [
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Inbox" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Starred" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Sent mail" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Drafts" />,
+                ]
+              } />
+          }
+          permanent={true}
+          z={0} />
+      </div>
+      <div
+        style={
+          Object {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "overflow": "hidden",
+            "width": "100%",
+          }
+        }>
+        <div
+          style={
+            Object {
+              "padding": "20px",
+            }
+          }>
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>",
+              }
+            } />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Permanent, floating (with shadow) 1`] = `
+<div>
+  <Toolbar
+    className="tests-drawer-themed-toolbar"
+    tone="dark"
+    z={1}>
+    <div
+      className="pe-toolbar__title">
+      Title
+    </div>
+  </Toolbar>
+  <div
+    style={
+      Object {
+        "overflow": "hidden",
+        "position": "relative",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "background": "#fff",
+          "color": "#333",
+          "display": "flex",
+          "height": "350px",
+        }
+      }>
+      <div
+        style={
+          Object {
+            "padding": "20px",
+          }
+        }>
+        <Drawer
+          content={
+            <List
+              compact={true}
+              hoverable={true}
+              tiles={
+                Array [
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Inbox" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Starred" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Sent mail" />,
+                  <ListTile
+                    className="tests-drawer-navigation-list"
+                    events={
+                        Object {
+                            "onClick": [Function],
+                          }
+                    }
+                    front={
+                        <Icon
+                            svg={
+                                Object {
+                                    "content": <div
+                                      dangerouslySetInnerHTML={
+                                            Object {
+                                                  "__html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
+                                                }
+                                      } />,
+                                  }
+                            } />
+                    }
+                    hoverable={true}
+                    navigation={true}
+                    title="Drafts" />,
+                ]
+              } />
+          }
+          floating={true}
+          permanent={true}
+          z={1} />
+      </div>
+      <div
+        style={
+          Object {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "overflow": "hidden",
+            "width": "100%",
+          }
+        }>
+        <div
+          style={
+            Object {
+              "padding": "20px",
+            }
+          }>
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>",
+              }
+            } />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -205,7 +205,7 @@ var onChange = (function (_ref) {
       var checkedValue = stream();
       _extends$1(vnode.state, {
         checkedValue: checkedValue,
-        redrawOnUpdate: stream.merge([checkedValue])
+        redrawOnUpdate: stream.merge([checkedValue]) // for React
       });
     },
     view: function view(vnode) {
@@ -246,7 +246,7 @@ var events = (function (_ref) {
       var checkedValue = stream();
       _extends$2(vnode.state, {
         checkedValue: checkedValue,
-        redrawOnUpdate: stream.merge([checkedValue])
+        redrawOnUpdate: stream.merge([checkedValue]) // for React
       });
     },
     view: function view(vnode) {

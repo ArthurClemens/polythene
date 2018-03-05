@@ -40,6 +40,9 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **compact** | optional | Boolean | false | Set to `true` to create a more compact Toolbar |
+| **z** | optional | Number 0-5 | No shadow | Depth of the shadow |
+| **border** | optional | Boolean | false | Set to `true` to add a bottom border |
+| **fullbleed** | optional | Boolean | false | Set to `true` to remove side padding |
 
 <a name="toolbartitle-options"></a>
 ### ToolbarTitle options

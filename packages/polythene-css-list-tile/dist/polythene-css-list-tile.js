@@ -28,7 +28,8 @@ var classes = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -48,11 +49,18 @@ var paddingV = function paddingV(top, bottom) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [polytheneCoreCss.flex.layout, {
+  var _ref;
+
+  return [(_ref = {}, _defineProperty(_ref, selector, [polytheneCoreCss.flex.layout, {
     position: "relative",
     fontSize: componentVars.font_size_title + "px",
     fontWeight: componentVars.font_weight_title,
     lineHeight: componentVars.single_line_height + "px",
+
+    ".pe-list-tile--navigation": {
+      fontSize: componentVars.font_size_navigation_title + "px",
+      fontWeight: componentVars.font_weight_navigation_title
+    },
 
     ".pe-list-tile--sticky": [polytheneCoreCss.mixin.sticky(2)],
 
@@ -102,7 +110,7 @@ var layout = (function (selector, componentVars) {
     }],
 
     " .pe-list-tile__content-front + .pe-list-tile__content": {
-      paddingLeft: 0
+      paddingLeft: 0 // reverse for RTL - see below
     },
 
     " .pe-list-tile__title": {
@@ -207,12 +215,16 @@ var layout = (function (selector, componentVars) {
     // Non-touch
 
     "html.pe-no-touch &.pe-list-tile--hoverable, \
-        html.pe-no-touch &.pe-list-tile--selectable": {
+      html.pe-no-touch &.pe-list-tile--selectable": {
       ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
         cursor: "pointer"
       }
     }
-  }])];
+  }]), _defineProperty(_ref, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
+    " .pe-list-tile__content-front + .pe-list-tile__content": [paddingH(componentVars.side_padding), {
+      paddingRight: 0
+    }]
+  })), _ref)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -231,6 +243,7 @@ var style = function style(scopes, selector, componentVars, tint) {
         backgroundColor: "inherit"
       }
     },
+
     " .pe-list-tile__subtitle": {
       color: componentVars["color_" + tint + "_subtitle"]
     },

@@ -26,6 +26,10 @@ export default (selector, componentVars) => {
           zIndex: 1
         },
 
+        " .pe-dialog-pane__content": {
+          width: "100%"
+        },
+
         " .pe-dialog-pane__title": {
           fontSize: vars.font_size_title + "px",
           lineHeight: lineHeightTitle + "px",

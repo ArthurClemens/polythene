@@ -1,10 +1,16 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-toolbar')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-toolbar'], factory) :
-	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-toolbar']));
-}(this, (function (exports,polytheneMithrilBase,polytheneCoreToolbar) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-toolbar'), require('polythene-mithril-shadow')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-toolbar', 'polythene-mithril-shadow'], factory) :
+	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-toolbar'],global['polythene-mithril-shadow']));
+}(this, (function (exports,polytheneMithrilBase,polytheneCoreToolbar,polytheneMithrilShadow) { 'use strict';
 
-var Toolbar = polytheneMithrilBase.ViewComponent(polytheneCoreToolbar.coreToolbar);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var Toolbar = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreToolbar.coreToolbar, {
+  createContent: function createContent(vnode, args) {
+    return polytheneCoreToolbar.coreToolbar.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow }));
+  }
+}));
 
 Toolbar.displayName = "Toolbar";
 

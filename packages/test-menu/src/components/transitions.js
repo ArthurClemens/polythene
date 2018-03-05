@@ -10,7 +10,7 @@ export default ({ show, target, h, Menu, List, ListTile, didHide, getState, tran
         didHide,
         getState,
         offset: -4,
-        size: 2, 
+        size: 2,
         content: h(List, [
           h(ListTile, {
             element: "a",

@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -41,6 +42,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -57,11 +60,13 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -70,8 +75,13 @@ var classes = {
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [polytheneCoreCss.flex.layoutCenterCenter, {
-    position: "fixed",
+  return [_defineProperty({
+    ".pe-dialog__holder": {
+      height: "100%"
+    }
+  }, selector, [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
+  {
+    position: componentVars.position,
     top: 0,
     left: 0,
     right: 0,
@@ -79,6 +89,11 @@ var layout = (function (selector, componentVars) {
     zIndex: polytheneTheme.vars.z_dialog,
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
+    opacity: 0,
+
+    ".pe-dialog--visible": {
+      opacity: 1
+    },
 
     ".pe-dialog--full-screen": {
       padding: 0,
@@ -93,7 +108,15 @@ var layout = (function (selector, componentVars) {
     " .pe-dialog__content": {
       position: "relative",
       borderRadius: componentVars.border_radius + "px"
-    }
+    },
+
+    " .pe-dialog__backdrop": [{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
+    }]
   }])];
 });
 
@@ -107,7 +130,7 @@ var style = function style(scopes, selector, componentVars, tint) {
       backgroundColor: componentVars["color_" + tint + "_background"],
       color: componentVars["color_" + tint + "_text"]
     },
-    "&.pe-dialog--backdrop": {
+    " .pe-dialog__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
     }
   })];

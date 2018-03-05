@@ -4,10 +4,12 @@ import classes from "polythene-css-classes/menu";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const SHADOW_Z         = 1;
-const OFFSET_V         = -8;
-const DEFAULT_OFFSET_H = 0;
-const MIN_SIZE         = 1.5;
+const ANIMATION_DURATION = .220;
+const DEFAULT_OFFSET_H   = 0;
+const DEFAULT_TYPE       = "floating";
+const MIN_SIZE           = 1.5;
+const OFFSET_V           = -8;
+const SHADOW_Z           = 1;
 
 const positionMenu = (state, attrs) => {
   if (isServer) {
@@ -68,7 +70,7 @@ const showMenu = (state, attrs) => {
   return show(Object.assign({},
     attrs,
     transitions
-      ? transitions.show(el, attrs)
+      ? transitions.show({ el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })
       : {
         el,
         showClass: classes.visible
@@ -80,7 +82,7 @@ const showMenu = (state, attrs) => {
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
-    state.visible(false);
+    state.visible(true);
   });
 };
 
@@ -93,7 +95,7 @@ const hideMenu = (state, attrs) => {
   return hide(Object.assign({},
     attrs,
     transitions
-      ? transitions.hide(el, attrs)
+      ? transitions.hide({ el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay })
       : {
         el,
         showClass: classes.visible
@@ -214,6 +216,7 @@ export const getInitialState = (vnode, createStream) => {
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
+  const type = attrs.type || DEFAULT_TYPE;
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs),
@@ -221,6 +224,8 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.permanent ? classes.permanent : null,
+        attrs.fullHeight ? classes.fullHeight : null,
+        type === "floating" ? classes.floating : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,

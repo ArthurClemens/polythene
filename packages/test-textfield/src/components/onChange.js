@@ -12,7 +12,7 @@ export default ({ h, TextField }) => ({
     Object.assign(vnode.state, {
       textfieldState,
       value,
-      redrawOnUpdate: stream.merge([textfieldState, value])
+      redrawOnUpdate: stream.merge([textfieldState, value]) // for React
     });
   },
   view: vnode => {

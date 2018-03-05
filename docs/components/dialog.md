@@ -44,18 +44,18 @@ Displays a single dialog, or a stack of dialogs.
 <a name="dialog-specific-options"></a>
 ### Dialog specific options
 
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **formOptions** | optional | Options Object | | Form attribute options such as `type` or `enctype` |
-| **header**      | optional | String, hyperscript or component | | Header row |
-| **title**       | optional | String |  | Header title; if omitted, no header will be shown |
-| **body**        | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
-| **menu**        | optional | [Menu](menu.md) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
-| **footer**       | optional | String, hyperscript or component | | Footer row |
+| **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
+| ----------------- | -------------- | -------- | ----------- | --------------- |
+| **formOptions**   | optional | Options Object | | Form attribute options such as `type` or `enctype` |
+| **header**        | optional | String, hyperscript or component | | Header row |
+| **title**         | optional | String |  | Header title; if omitted, no header will be shown |
+| **body**          | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
+| **menu**          | optional | [Menu](menu.md) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
+| **footer**        | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
-| **panes**       | optional | Array of type `DialogPane` | | Used internally |
-| **modal**       | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
-| **fullScreen** | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
+| **panes**         | optional | Array of type `DialogPane` | | Used internally |
+| **modal**         | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
+| **fullScreen**    | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
 | **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
 <a name="dialog-appearance-options"></a>
@@ -75,8 +75,8 @@ Displays a single dialog, or a stack of dialogs.
 | ---------------- | -------------- | -------- | ----------- | --------------- |
 | **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
 | **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
-| **showDuration** | optional | Number | .150 | The show transition duration in seconds |
-| **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
+| **showDuration** | optional | Number | .220 | The show transition duration in seconds |
+| **hideDuration** | optional | Number | .220 | The hide transition duration in seconds |
 | **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
 | **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the dialog is dismissed, for instance by tapping outside of the dialog (when not a modal) |
 | **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |

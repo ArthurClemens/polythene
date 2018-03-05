@@ -194,17 +194,18 @@ export const Multi = ({ options: mOptions, renderer }) => {
             {},
             {
               key: itemData.key,
+              spawnId: spawn,
               instanceId: itemData.instanceId,
               transitions: mOptions.transitions,
               holderSelector: mOptions.holderSelector,
               className: mOptions.className,
-              showInstance: itemData.show,
-              hideInstance: itemData.hide,
-              pauseInstance: itemData.pause,
-              unpauseInstance: itemData.unpause,
-              multipleDidShow: itemData.didShow,
-              multipleDidHide: itemData.didHide,
-              multipleClear: clear
+              show: itemData.show,
+              hide: itemData.hide,
+              pause: itemData.pause,
+              unpause: itemData.unpause,
+              fromMultipleDidShow: itemData.didShow,
+              fromMultipleDidHide: itemData.didHide,
+              fromMultipleClear: clear
             },
             unpackAttrs(itemData.attrs)
           ));
@@ -226,5 +227,3 @@ export const Multi = ({ options: mOptions, renderer }) => {
 };
 
 Multi.displayName = "Multi";
-
-

@@ -207,7 +207,7 @@ var onChange = (function (_ref) {
       var tab = stream({});
       _extends(vnode.state, {
         tab: tab,
-        redrawOnUpdate: stream.merge([tab])
+        redrawOnUpdate: stream.merge([tab]) // for React
       });
     },
     view: function view(vnode) {
@@ -263,6 +263,12 @@ var genericTests = (function (_ref) {
     color_dark: "#00BCD4",
     color_dark_selected: "#F44336",
     color_dark_tab_indicator: "#F44336"
+  });
+
+  TabsCSS.addStyle(".tests-tabs-no-indicators", {
+    color_light: "#333",
+    color_light_selected: "#333",
+    label_opacity: 1
   });
 
   var threeButtons = [{ label: "New" }, { label: "My Favorites" }, { label: "Saved" }];
@@ -472,6 +478,16 @@ var genericTests = (function (_ref) {
       tabs: threeButtons,
       autofit: true,
       activeSelected: true
+    }
+  }, {
+    name: "Hide all selection indicators",
+    interactive: true,
+    component: Tabs$$1,
+    attrs: {
+      tabs: threeButtons,
+      autofit: true,
+      hideIndicator: true,
+      className: "tests-tabs-no-indicators"
     }
   }, {
     name: "Option: all (style - colors)",

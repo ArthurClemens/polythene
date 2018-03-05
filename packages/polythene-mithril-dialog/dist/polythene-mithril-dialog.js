@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -41,6 +42,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -57,11 +60,13 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -69,12 +74,9 @@ var classes = {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var DialogInstance = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreDialog.coreDialogInstance, {
-  createProps: function createProps(vnode, args) {
-    return polytheneCoreDialog.coreDialogInstance.createProps(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow, DialogPane: polytheneMithrilDialogPane.DialogPane }));
-  },
+var DialogInstance = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreDialog.coreDialog, {
   createContent: function createContent(vnode, args) {
-    return polytheneCoreDialog.coreDialogInstance.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow, DialogPane: polytheneMithrilDialogPane.DialogPane }));
+    return polytheneCoreDialog.coreDialog.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow, Pane: polytheneMithrilDialogPane.DialogPane, createPane: polytheneCoreDialog.coreDialog.createPane }));
   }
 }));
 
@@ -86,8 +88,7 @@ var options = {
   defaultId: "default_dialog",
   holderSelector: "div." + classes.holder,
   instance: DialogInstance,
-  placeholder: "span." + classes.placeholder,
-  transitions: polytheneCoreDialog.transitions
+  placeholder: "span." + classes.placeholder
 };
 
 var Multiple = polytheneCore.Multi({ options: options, renderer: polytheneMithrilBase.renderer });

@@ -7,14 +7,14 @@ const DEFAULT_TIME_OUT = 3;
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const pauseInstance = state => {
+const pause = state => {
   state.paused(true);
   if (state.timer) {
     state.timer.pause();
   }
 };
 
-const unpauseInstance = state => {
+const unpause = state => {
   state.paused(false);
   if (state.timer) {
     state.timer.resume();
@@ -40,7 +40,7 @@ const prepareShow = (state, attrs) => {
   }
 };
 
-const showInstance = (state, attrs) => {
+const showNotification = (state, attrs) => {
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -60,8 +60,10 @@ const showInstance = (state, attrs) => {
       }
     ))
   )).then(() => {
-    if (attrs.multipleDidShow) {
-      attrs.multipleDidShow(id); // this will call attrs.didShow
+    if (attrs.fromMultipleDidShow) {
+      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
+    } else if (attrs.didShow) {
+      attrs.didShow(id); // when used directly
     }
     // set timer to hide in a few seconds
     const timeout = attrs.timeout;
@@ -72,7 +74,7 @@ const showInstance = (state, attrs) => {
         ? timeout
         : DEFAULT_TIME_OUT;
       state.timer.start(() => {
-        hideInstance(state, attrs);
+        hideNotification(state, attrs);
       }, timeoutSeconds);
     }
     state.visible(true);
@@ -80,7 +82,7 @@ const showInstance = (state, attrs) => {
   });
 };
 
-const hideInstance = (state, attrs) => {
+const hideNotification = (state, attrs) => {
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -99,8 +101,10 @@ const hideInstance = (state, attrs) => {
       }
     ))
   )).then(() => {
-    if (attrs.multipleDidHide) {
-      attrs.multipleDidHide(id); // this will call attrs.didHide
+    if (attrs.fromMultipleDidHide) {
+      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
+    } else if (attrs.didHide) {
+      attrs.didHide(id); // when used directly
     }
     state.visible(false);
     state.transitioning(false);
@@ -149,8 +153,8 @@ export const onMount = vnode => {
   if (titleEl) {
     setTitleStyles(titleEl);
   }
-  if (attrs.showInstance && !state.visible()) {
-    showInstance(state, attrs);
+  if (attrs.show && !state.visible()) {
+    showNotification(state, attrs);
   }
   state.mounted(true);
 };
@@ -184,16 +188,16 @@ export const createContent = (vnode, { renderer: h }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (state.mounted() && !state.transitioning()) {
-    if (attrs.hideInstance && state.visible()) {
-      hideInstance(state, attrs);
-    } else if (attrs.showInstance && !state.visible()) {
-      showInstance(state, attrs);
+    if (attrs.hide && state.visible()) {
+      hideNotification(state, attrs);
+    } else if (attrs.show && !state.visible()) {
+      showNotification(state, attrs);
     }
   }
-  if (attrs.pauseInstance && !state.paused()) {
-    pauseInstance(state, attrs);
-  } else if (attrs.unpauseInstance && state.paused()) {
-    unpauseInstance(state, attrs);
+  if (attrs.pause && !state.paused()) {
+    pause(state, attrs);
+  } else if (attrs.unpause && state.paused()) {
+    unpause(state, attrs);
   }
 
   return h("div",

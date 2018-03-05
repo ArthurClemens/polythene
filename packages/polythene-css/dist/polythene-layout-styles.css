@@ -260,4 +260,8 @@
   margin: 0;
   height: 100vh
 }
+
+.pe-rtl {
+  direction: rtl
+}
 /*# sourceMappingURL=polythene-layout-styles.css.map */

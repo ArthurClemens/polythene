@@ -13,7 +13,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
     Object.assign(vnode.state, {
       show,
       selectedIndex,
-      redrawOnUpdate: stream.merge([show]),
+      redrawOnUpdate: stream.merge([show]), // for React
       id: "id-" + Math.floor(Math.random() * 1000)
     });
   },

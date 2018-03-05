@@ -2,6 +2,7 @@ import { renderer, keys, Button, RaisedButton, Dialog, DialogPane, Toolbar, Tool
 import genericTests from "./tests-generic";
 import form from "./components/form-mithril";
 import Updating from "./components/updating-mithril";
+import Spawns from "./components/spawns-mithril";
 
 const mithrilTests = ({ renderer, keys, Dialog, RaisedButton }) => {
 
@@ -32,6 +33,15 @@ const mithrilTests = ({ renderer, keys, Dialog, RaisedButton }) => {
       component: {
         view: () =>
           renderer(Updating)
+      }
+    },
+    {
+      name: "Spawns and ids",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          renderer(Spawns)
       }
     },
   ];

@@ -11,7 +11,7 @@ export default ({ h, Tabs }) => ({
     const tab = stream({});
     Object.assign(vnode.state, {
       tab,
-      redrawOnUpdate: stream.merge([tab])
+      redrawOnUpdate: stream.merge([tab]) // for React
     });
   },
   view: vnode => {

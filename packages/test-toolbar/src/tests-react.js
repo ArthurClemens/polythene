@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, Toolbar, ToolbarTitle, IconButton, Shadow } from "polythene-react";
+import { renderer, Toolbar, ToolbarTitle, IconButton } from "polythene-react";
 import genericTests from "./tests-generic";
 import shared from "./components/shared";
 
@@ -17,21 +17,6 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
     <IconButton icon={{svg}} />;
 
   return [
-    {
-      section: "React specific tests",
-    },
-    {
-      name: "Option: shadow",
-      className: "small-result",
-      component: () =>
-        h("div",
-          { style: { position: "relative" } },
-          [
-            h(Toolbar, toolbarRow),
-            h(Shadow)
-          ]
-        )
-    },
     {
       section: "React JSX tests",
     },
@@ -65,20 +50,17 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
     {
       name: "Option: shadow (JSX)",
       component: () =>
-        <div style={{position: "relative"}}>
-          <Toolbar>
-            <ToolbarButton svg={{ content: iconMenuSVG }} />
-            <span>Title</span>
-            <ToolbarButton svg={{ content: iconRefreshSVG }} />
-            <ToolbarButton svg={{ content: iconAddSVG }} />
-          </Toolbar>
-          <Shadow />
-        </div>
+        <Toolbar z={1}>
+          <ToolbarButton svg={{ content: iconMenuSVG }} />
+          <span>Title</span>
+          <ToolbarButton svg={{ content: iconRefreshSVG }} />
+          <ToolbarButton svg={{ content: iconAddSVG }} />
+        </Toolbar>
     },
   ];
     
 };
 
 export default []
-  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer }))
-  .concat(reactTests({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer }));
+  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, renderer }))
+  .concat(reactTests({ Toolbar, ToolbarTitle, IconButton, renderer }));

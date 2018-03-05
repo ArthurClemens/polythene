@@ -148,6 +148,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.selectable   ? classes.selectable : null,
         attrs.highlight    ? classes.highlight : null,
         attrs.header       ? classes.header : null,
+        attrs.navigation   ? classes.navigation : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         heightClass,

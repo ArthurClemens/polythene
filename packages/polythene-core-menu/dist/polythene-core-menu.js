@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var classes = {
@@ -41,6 +42,8 @@ var classes = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -58,10 +61,12 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var SHADOW_Z = 1;
-var OFFSET_V = -8;
+var ANIMATION_DURATION = .220;
 var DEFAULT_OFFSET_H = 0;
+var DEFAULT_TYPE = "floating";
 var MIN_SIZE = 1.5;
+var OFFSET_V = -8;
+var SHADOW_Z = 1;
 
 var positionMenu = function positionMenu(state, attrs) {
   if (polytheneCore.isServer) {
@@ -135,7 +140,7 @@ var showMenu = function showMenu(state, attrs) {
   positionMenu(state, attrs);
   var transitions = attrs.transitions;
   var el = state.dom();
-  return polytheneCore.show(_extends({}, attrs, transitions ? transitions.show(el, attrs) : {
+  return polytheneCore.show(_extends({}, attrs, transitions ? transitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay }) : {
     el: el,
     showClass: classes.visible
   })).then(function () {
@@ -145,7 +150,7 @@ var showMenu = function showMenu(state, attrs) {
     if (attrs.didShow) {
       attrs.didShow(attrs.id);
     }
-    state.visible(false);
+    state.visible(true);
   });
 };
 
@@ -155,7 +160,7 @@ var hideMenu = function hideMenu(state, attrs) {
   }
   var transitions = attrs.transitions;
   var el = state.dom();
-  return polytheneCore.hide(_extends({}, attrs, transitions ? transitions.hide(el, attrs) : {
+  return polytheneCore.hide(_extends({}, attrs, transitions ? transitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }) : {
     el: el,
     showClass: classes.visible
   })).then(function () {
@@ -274,8 +279,9 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
+  var type = attrs.type || DEFAULT_TYPE;
   return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.fullHeight ? classes.fullHeight : null, type === "floating" ? classes.floating : null, attrs.target ? classes.target : null, attrs.size ? widthClass(unifySize(attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

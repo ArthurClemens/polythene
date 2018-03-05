@@ -2,6 +2,8 @@
 
 const grid_unit = 4;
 const grid_unit_component = 8;
+const increment = 7 * grid_unit_component;
+const increment_large = 8 * grid_unit_component;
 
 const animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
 const animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
@@ -11,6 +13,8 @@ export const vars = {
   // grid
   grid_unit,
   grid_unit_component,
+  increment,
+  increment_large,
   grid_unit_menu: 56,
   grid_unit_icon_button: 6 * grid_unit_component, // 48
 
@@ -99,9 +103,9 @@ export const vars = {
   breakpoint_for_tv_up:               1920, 
 
   // z-index
+  z_toolbar: 100,
   z_menu: 1000,
-  z_header_container: 2000,
-  z_fixed_header_container: 3000,
+  z_app_bar: 2000,
   z_notification: 4000,
-  z_dialog: 5000
+  z_dialog: 5000,
 };

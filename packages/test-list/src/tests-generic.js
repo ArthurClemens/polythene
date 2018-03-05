@@ -1,10 +1,11 @@
 import { ListCSS, ListTileCSS } from "polythene-css";
-
 import keyboardState from "./components/keyboard-state";
+import navigation from "./components/navigation";
 
 export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
 
   const KeyboardState = keyboardState({ h, k, List, ListTile });
+  const Navigation = navigation({ h, k, Icon, List, ListTile });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
     color_light_background: "#F57C00",
@@ -156,6 +157,12 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
           ListTileAli,
           ListTileGrace
         ]
+      }
+    },
+    {
+      name: "Option: navigation",
+      component: {
+        view: () => h(Navigation)
       }
     },
     {

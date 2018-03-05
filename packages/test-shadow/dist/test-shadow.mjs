@@ -207,7 +207,7 @@ var interactive = (function (_ref) {
       var z = stream(1);
       _extends(vnode.state, {
         z: z,
-        redrawOnUpdate: stream.merge([z])
+        redrawOnUpdate: stream.merge([z]) // for React
       });
     },
     view: function view(vnode) {

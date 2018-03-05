@@ -38,6 +38,8 @@ export default {
   compact_side_padding:               1 * vars.grid_unit_component,
   font_size_title:                    16,
   font_weight_title:                  vars.font_weight_normal,
+  font_size_navigation_title:         14,
+  font_weight_navigation_title:       vars.font_weight_medium,
   font_size_subtitle:                 14,
   font_weight_subtitle:               vars.font_weight_normal,
   line_height_subtitle:               20,

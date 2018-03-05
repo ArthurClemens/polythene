@@ -106,6 +106,9 @@ html {
 .result-row {
   border-color: #ddd;
 }
+.header-row {
+  z-index: 2000;
+}
 .pe-button.bordered-button .pe-button__content {
   border-color: #ddd;
 }
@@ -207,6 +210,19 @@ html {
   font-size: 14px;
   color: #90A4AE;
   opacity: .85;
+}
+
+.dialog-row .pe-dialog__holder {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.dialog-row .dialog-tests-static.pe-dialog {
+  min-width: initial;
+  padding: 0;
+}
+.dialog-row .dialog-tests-static .pe-dialog-pane {
+  min-width: 180px;
 }
 
 @media (min-width: 320px) {

@@ -154,7 +154,7 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
           const file = stream();
           Object.assign(vnode.state, {
             file,
-            redrawOnUpdate: stream.merge([file])
+            redrawOnUpdate: stream.merge([file]) // for React
           });
         },
         view: vnode => (

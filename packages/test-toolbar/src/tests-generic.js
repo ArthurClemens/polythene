@@ -1,7 +1,10 @@
 import shared from "./components/shared";
 import { ToolbarCSS } from "polythene-css";
 
-export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
+const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
+const longText = ipsum + ipsum + ipsum + ipsum + ipsum;
+
+export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
 
   const {
     toolbarRow,
@@ -122,14 +125,72 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Shadow, renderer: h }) => {
     {
       name: "Shadow",
       component: {
-        view: () => h("div", {
-          style: {
-            position: "relative"
-          }
-        }, [
-          h(Toolbar, toolbarRow),
-          h(Shadow)
-        ])
+        view: () => h(Toolbar, { z: 1 }, toolbarRow),
+      }
+    },
+    {
+      name: "Scrolling pane (with border)",
+      interactive: true,
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                overflow: "hidden"
+              }
+            },
+            [
+              h(Toolbar, {
+                border: true,
+                key: "toolbar", // for React
+              }, toolbarRow),
+              h("div",
+                {
+                  key: "content", // for React
+                  style: {
+                    padding: "20px",
+                    background: "#fff",
+                    height: "300px",
+                    overflowY: "auto"
+                  }
+                },
+                h.trust(longText)
+              )
+            ]
+          )
+      }
+    },
+
+    {
+      name: "Scrolling pane (RTL) (with shadow)",
+      component: {
+        view: () =>
+          h("div",
+            {
+              className: "pe-rtl",
+              style: {
+                overflow: "hidden"
+              }
+            },
+            [
+              h(Toolbar, {
+                z: 1,
+                key: "toolbar", // for React
+              }, toolbarRow),
+              h("div",
+                {
+                  key: "content", // for React
+                  style: {
+                    padding: "20px",
+                    background: "#fff",
+                    height: "300px",
+                    overflowY: "auto"
+                  }
+                },
+                h.trust(longText)
+              )
+            ]
+          )
       }
     },
 

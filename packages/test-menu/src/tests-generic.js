@@ -73,7 +73,7 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
       component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "transitions",
         transitionOptions: {
           transitions: {
-            show: el => ({
+            show: ({ el }) => ({
               el,
               beforeShow:   () => (
                 el.style.opacity = 0,
@@ -84,7 +84,7 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
                 el.style.transform = "translate3d(0, 0px,  0)"
               )
             }),
-            hide: el => ({
+            hide: ({ el }) => ({
               el,
               hide:         () => (
                 el.style.opacity = 0,

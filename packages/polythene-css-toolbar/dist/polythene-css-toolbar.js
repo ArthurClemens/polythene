@@ -12,6 +12,7 @@ var classes = {
 
   // states
   compact: "pe-toolbar--compact",
+  appBar: "pe-toolbar--app-bar",
 
   // Toolbar title
 
@@ -20,7 +21,9 @@ var classes = {
 
   // states
   centeredTitle: "pe-toolbar__title--center",
-  indentedTitle: "pe-toolbar__title--indent"
+  indentedTitle: "pe-toolbar__title--indent",
+  fullbleed: "pe-toolbar--fullbleed",
+  border: "pe-toolbar--border"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -38,27 +41,44 @@ var layout = (function (selector, componentVars) {
     height: componentVars.height + "px",
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
+    position: "relative",
+    zIndex: polytheneTheme.vars.z_toolbar,
+
+    ".pe-toolbar--fullbleed": {
+      padding: 0
+    },
+
+    ".pe-toolbar--border": {
+      borderWidth: "1px",
+      borderStyle: "none none solid none"
+    },
 
     ".pe-toolbar--compact": compactStyle(componentVars),
 
+    " > div": {
+      width: "100%"
+    },
+
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
       fontSize: componentVars.font_size + "px",
+      lineHeight: componentVars.line_height,
       width: "100%",
       display: "block",
       wordBreak: "break-all",
       overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "nowrap",
-      marginLeft: componentVars.title_padding + "px"
+      marginLeft: componentVars.title_padding + "px" // reverse for RTL - see below
     },
 
     " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
-      marginLeft: componentVars.title_after_icon_padding + "px"
+      marginLeft: componentVars.title_after_icon_padding + "px" // reverse for RTL - see below
     },
 
     " .pe-toolbar__title--indent": {
-      marginLeft: componentVars.indent - componentVars.padding_side + "px"
+      marginLeft: componentVars.indent - componentVars.padding_side + "px" // reverse for RTL - see below
     },
+
     " .pe-toolbar__title--center": {
       textAlign: "center",
       justifyContent: "center",
@@ -77,6 +97,19 @@ var layout = (function (selector, componentVars) {
   }]), _defineProperty(_ref3, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     height: componentVars.height_large + "px",
     padding: "0 " + componentVars.padding_side_large + "px"
+  })), _defineProperty(_ref3, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
+    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+      marginLeft: 0,
+      marginRight: componentVars.title_padding + "px"
+    },
+    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent": {
+      marginLeft: 0,
+      marginRight: componentVars.title_after_icon_padding + "px"
+    },
+    " .pe-toolbar__title--indent": {
+      marginLeft: 0,
+      marginRight: componentVars.indent - componentVars.padding_side + "px"
+    }
   })), _ref3)];
 });
 
@@ -87,7 +120,11 @@ var style = function style(scopes, selector, componentVars, tint) {
     return s + selector;
   }).join(","), {
     color: componentVars["color_" + tint + "_text"],
-    backgroundColor: componentVars["color_" + tint + "_background"]
+    backgroundColor: componentVars["color_" + tint + "_background"],
+
+    ".pe-toolbar--border": {
+      borderColor: componentVars["color_" + tint + "_border"]
+    }
   })];
 };
 

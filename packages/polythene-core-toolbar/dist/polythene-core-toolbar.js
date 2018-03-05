@@ -12,6 +12,7 @@ var classes = {
 
   // states
   compact: "pe-toolbar--compact",
+  appBar: "pe-toolbar--app-bar",
 
   // Toolbar title
 
@@ -20,7 +21,9 @@ var classes = {
 
   // states
   centeredTitle: "pe-toolbar__title--center",
-  indentedTitle: "pe-toolbar__title--indent"
+  indentedTitle: "pe-toolbar__title--indent",
+  fullbleed: "pe-toolbar--fullbleed",
+  border: "pe-toolbar--border"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -34,13 +37,22 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.compact ? classes.compact : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.compact ? classes.compact : null, attrs.fullbleed ? classes.fullbleed : null, attrs.border ? classes.border : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 
-var createContent = function createContent(vnode) {
+var createContent = function createContent(vnode, _ref2) {
+  var renderer = _ref2.renderer,
+      Shadow = _ref2.Shadow;
+
   var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.children || vnode.children;
+  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
+  var shadow = attrs.z !== undefined ? renderer(Shadow, {
+    z: attrs.z,
+    animated: true,
+    key: "shadow"
+  }) : null;
+  return [content, shadow];
 };
 
 var toolbar = Object.freeze({
@@ -99,15 +111,16 @@ var vars$1 = {
   title_padding: title_padding,
   title_after_icon_padding: title_after_icon_padding,
   indent: polytheneTheme.vars.unit_indent,
-  transition_duration: polytheneTheme.vars.animation_duration,
   font_size: 18,
   line_height: polytheneTheme.vars.line_height,
 
   // color vars
   color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-
+  color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
   color_light_background: rgba(polytheneTheme.vars.color_light_background),
+
+  color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+  color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
   color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
 };
 

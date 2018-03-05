@@ -4,6 +4,7 @@ export { mithrilTests as card }         from "test-card";
 export { mithrilTests as checkbox }     from "test-checkbox";
 export { mithrilTests as dialog }       from "test-dialog";
 export { mithrilTests as dialogPane }   from "test-dialog-pane";
+export { mithrilTests as drawer }       from "test-drawer";
 export { mithrilTests as fab }          from "test-fab";
 export { mithrilTests as icon }         from "test-icon";
 export { mithrilTests as iconButton }   from "test-icon-button";

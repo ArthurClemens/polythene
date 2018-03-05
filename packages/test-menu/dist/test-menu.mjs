@@ -285,7 +285,7 @@ var opener = (function (_ref) {
       var show = stream(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -405,7 +405,7 @@ var createPositionContainer = function createPositionContainer(_ref) {
       var show = stream(false);
       _extends$1(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show])
+        redrawOnUpdate: stream.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -501,7 +501,7 @@ var settings = (function (_ref) {
       _extends$2(vnode.state, {
         show: show,
         selectedIndex: selectedIndex,
-        redrawOnUpdate: stream.merge([show]),
+        redrawOnUpdate: stream.merge([show]), // for React
         id: "id-" + Math.floor(Math.random() * 1000)
       });
     },
@@ -726,7 +726,8 @@ var genericTests = (function (_ref) {
     component: opener({ renderer: renderer$$1, keys: keys$$1, Menu: Menu$$1, RaisedButton: RaisedButton$$1, List: List$$1, ListTile: ListTile$$1, menuFn: transitions, id: "transitions",
       transitionOptions: {
         transitions: {
-          show: function show(el) {
+          show: function show(_ref2) {
+            var el = _ref2.el;
             return {
               el: el,
               beforeShow: function beforeShow() {
@@ -737,7 +738,8 @@ var genericTests = (function (_ref) {
               }
             };
           },
-          hide: function hide(el) {
+          hide: function hide(_ref3) {
+            var el = _ref3.el;
             return {
               el: el,
               hide: function hide() {

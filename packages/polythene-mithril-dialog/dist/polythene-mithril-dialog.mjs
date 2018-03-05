@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
-import { coreDialogInstance, transitions } from 'polythene-core-dialog';
+import { coreDialog } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-mithril-dialog-pane';
 import { Shadow } from 'polythene-mithril-shadow';
 
@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -41,6 +42,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -57,11 +60,13 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -69,12 +74,9 @@ var classes = {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var DialogInstance = StateComponent(_extends({}, coreDialogInstance, {
-  createProps: function createProps(vnode, args) {
-    return coreDialogInstance.createProps(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
-  },
+var DialogInstance = StateComponent(_extends({}, coreDialog, {
   createContent: function createContent(vnode, args) {
-    return coreDialogInstance.createContent(vnode, _extends(args, { Shadow: Shadow, DialogPane: DialogPane }));
+    return coreDialog.createContent(vnode, _extends(args, { Shadow: Shadow, Pane: DialogPane, createPane: coreDialog.createPane }));
   }
 }));
 
@@ -86,8 +88,7 @@ var options = {
   defaultId: "default_dialog",
   holderSelector: "div." + classes.holder,
   instance: DialogInstance,
-  placeholder: "span." + classes.placeholder,
-  transitions: transitions
+  placeholder: "span." + classes.placeholder
 };
 
 var Multiple = Multi({ options: options, renderer: renderer });

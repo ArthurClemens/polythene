@@ -21,21 +21,26 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const toolbarRow = [
     toolbarButton("menu", trustedIconMenu),
-    h("div", { key: "title", className: titleClass }, longTitle),
+    h("div", {
+      key: "title", // for React
+      className: titleClass
+    }, longTitle),
     toolbarButton("refresh", trustedIconRefresh),
     toolbarButton("add", trustedIconAddSVG)
   ];
 
   const toolbarTitleAsSpan = [
     toolbarButton("menu", trustedIconMenu),
-    h("span", { key: "title" }, longTitle),
+    h("span", {
+      key: "title" // for React
+    }, longTitle),
     toolbarButton("add", trustedIconAddSVG)
   ];
 
   const toolbarTitleComponent = [
     toolbarButton("menu", trustedIconMenu),
     h(ToolbarTitle, {
-      key: "title",
+      key: "title", // for React
       text: longTitle
     }),
     toolbarButton("add", trustedIconAddSVG)
@@ -43,7 +48,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const toolbarTitleComponentCentered = [
     h(ToolbarTitle, {
-      key: "title",
+      key: "title", // for React
       text: shortTitle,
       center: true,
     }),
@@ -52,20 +57,20 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
   const toolbarTitleComponentCenteredBalanced = [
     toolbarButton("menu", trustedIconMenu),
     h(ToolbarTitle, {
-      key: "title",
+      key: "title", // for React
       text: shortTitle,
       center: true,
     }),
     h(IconButton, {
       inactive: true,
-      key: "placeholder",
+      key: "placeholder", // for React
       icon: { content: "" }
     })
   ];
 
   const toolbarTitleComponentIndented = [
     h(ToolbarTitle, {
-      key: "title",
+      key: "title", // for React
       text: longTitle,
       indent: true,
     }),
@@ -74,10 +79,14 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
 
   const toolbarTitleComponentAction = [
     h(ToolbarTitle, {
-      key: "title",
+      key: "title", // for React
       text: longTitle,
     }),
-    h("a", { className: "pe-action", href: "#" }, "Action")
+    h("a", {
+      key: "action",  // for React
+      className: "pe-action",
+      href: "#"
+    }, "Action")
   ];
 
   const toolbarTitleComponentAtStart = [

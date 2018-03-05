@@ -9,7 +9,7 @@ const resultHeight = ".minh8";
 export const rules = {
   page: ".pa4.lh-title-m.mid-gray",
   pageTitle: "h1.ma0.normal.f3.pv3",
-  headerRow: `.header-row${bottomBorder}.fixed.w-100.z-3`,
+  headerRow: `.header-row${bottomBorder}.fixed.w-100`,
   interactive: ".interactive",
   separator: "span.ph2.light-silver",
   link: "a.link.underline-hover.blue",

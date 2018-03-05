@@ -1,7 +1,11 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
-    color: componentVars["color_" + tint] || "currentcolor"
+    color: componentVars["color_" + tint] || "currentcolor",
+
+    ".pe-icon--avatar": {
+      backgroundColor: componentVars["color_" + tint + "_avatar_background"],
+    } 
   }
 }];
 

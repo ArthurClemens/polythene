@@ -1,0 +1,25 @@
+{
+  "name": "polythene-react-drawer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/polythene-react-drawer.js",
+  "module": "dist/polythene-react-drawer.mjs",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core": "^1.0.0",
+    "polythene-core-drawer": "^1.0.0",
+    "polythene-css-classes": "^1.0.0",
+    "polythene-react-base": "^1.0.0",
+    "polythene-react-dialog": "^1.0.0"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "license": "MIT"
+}

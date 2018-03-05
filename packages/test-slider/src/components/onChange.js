@@ -13,7 +13,7 @@ export default ({
     const value = stream(attrs.defaultValue || attrs.value || 0);
     Object.assign(vnode.state, {
       value,
-      redrawOnUpdate: stream.merge([value])
+      redrawOnUpdate: stream.merge([value]) // for React
     });
   },
   view: vnode => {

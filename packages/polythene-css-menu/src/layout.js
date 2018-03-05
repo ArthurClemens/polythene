@@ -47,7 +47,20 @@ export default (selector, componentVars) => [{
 
       " .pe-menu__content": {
         width: "100%",
-        borderRadius: componentVars.border_radius + "px"
+      },
+
+      ".pe-menu--floating": {
+        " .pe-menu__content": {
+          borderRadius: componentVars.border_radius + "px"
+        }
+      },
+
+      ".pe-menu--full-height": {
+        height: "100%",
+
+        " .pe-menu__content": {
+          height: "100%"
+        }
       }
     }
   ],

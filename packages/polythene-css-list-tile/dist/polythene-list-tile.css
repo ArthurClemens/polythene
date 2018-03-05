@@ -8,6 +8,11 @@
   line-height: 21px
 }
 
+.pe-list-tile.pe-list-tile--navigation {
+  font-size: 14px;
+  font-weight: 500
+}
+
 .pe-list-tile.pe-list-tile--sticky {
   position: sticky;
   top: 0;
@@ -220,6 +225,12 @@
 
 html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover,html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover {
   cursor: pointer
+}
+
+.pe-rtl .pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content,[dir=rtl].pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-right: 0
 }
 
 .pe-dark-tone.pe-list-tile,.pe-dark-tone .pe-list-tile {

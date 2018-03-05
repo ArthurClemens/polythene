@@ -7,6 +7,10 @@
   line-height: 0
 }
 
+.pe-icon.pe-icon--avatar {
+  border-radius: 50%
+}
+
 .pe-icon.pe-icon--avatar img {
   border: none;
   border-radius: 50%;
@@ -43,7 +47,19 @@
   height: 40px
 }
 
-.pe-dark-tone.pe-icon,.pe-dark-tone .pe-icon,.pe-icon,.pe-light-tone.pe-icon,.pe-light-tone .pe-icon {
+.pe-dark-tone.pe-icon,.pe-dark-tone .pe-icon {
   color: currentcolor
+}
+
+.pe-dark-tone.pe-icon.pe-icon--avatar,.pe-dark-tone .pe-icon.pe-icon--avatar {
+  background-color: hsla(0,0%,100%,.12)
+}
+
+.pe-icon,.pe-light-tone.pe-icon,.pe-light-tone .pe-icon {
+  color: currentcolor
+}
+
+.pe-icon.pe-icon--avatar,.pe-light-tone.pe-icon.pe-icon--avatar,.pe-light-tone .pe-icon.pe-icon--avatar {
+  background-color: rgba(0,0,0,.09)
 }
 /*# sourceMappingURL=polythene-icon.css.map */

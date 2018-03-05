@@ -393,7 +393,7 @@ var genericTests = (function (_ref) {
         var file = stream();
         _extends(vnode.state, {
           file: file,
-          redrawOnUpdate: stream.merge([file])
+          redrawOnUpdate: stream.merge([file]) // for React
         });
       },
       view: function view(vnode) {

@@ -1,3 +1,7 @@
+.pe-dialog,.pe-dialog__holder {
+  height: 100%
+}
+
 .pe-dialog {
   -ms-flex-pack: center;
   justify-content: center;
@@ -6,14 +10,22 @@
   display: flex;
   -ms-flex-align: center;
   align-items: center;
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 5000;
-  height: 100%;
-  padding: 24px 40px
+  padding: 24px 40px;
+  opacity: 0
+}
+
+.pe-dialog.pe-dialog--visible {
+  opacity: 1
 }
 
 .pe-dialog.pe-dialog--full-screen {
@@ -29,12 +41,20 @@
   border-radius: 2px
 }
 
+.pe-dialog .pe-dialog__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0
+}
+
 .pe-dark-tone.pe-dialog .pe-dialog__content,.pe-dark-tone .pe-dialog .pe-dialog__content {
   background-color: #222;
   color: hsla(0,0%,100%,.87)
 }
 
-.pe-dark-tone.pe-dialog.pe-dialog--backdrop,.pe-dark-tone .pe-dialog.pe-dialog--backdrop {
+.pe-dark-tone.pe-dialog .pe-dialog__backdrop,.pe-dark-tone .pe-dialog .pe-dialog__backdrop {
   background-color: rgba(0,0,0,.5)
 }
 
@@ -43,7 +63,7 @@
   color: rgba(0,0,0,.73)
 }
 
-.pe-dialog.pe-dialog--backdrop,.pe-light-tone.pe-dialog.pe-dialog--backdrop,.pe-light-tone .pe-dialog.pe-dialog--backdrop {
+.pe-dialog .pe-dialog__backdrop,.pe-light-tone.pe-dialog .pe-dialog__backdrop,.pe-light-tone .pe-dialog .pe-dialog__backdrop {
   background-color: rgba(0,0,0,.4)
 }
 /*# sourceMappingURL=polythene-dialog.css.map */

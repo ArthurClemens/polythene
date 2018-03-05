@@ -1,7 +1,9 @@
 exports[`test No options - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -14,8 +16,10 @@ exports[`test No options - spec 1`] = `
 
 exports[`test Option: body - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -29,8 +33,10 @@ exports[`test Option: body - spec 1`] = `
 
 exports[`test Option: class - spec 1`] = `
 <div
-  className="pe-dialog     class-x"
+  className="pe-dialog    class-x"
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -44,8 +50,10 @@ exports[`test Option: class - spec 1`] = `
 
 exports[`test Option: className - spec 1`] = `
 <div
-  className="pe-dialog     className-x"
+  className="pe-dialog    className-x"
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -59,8 +67,10 @@ exports[`test Option: className - spec 1`] = `
 
 exports[`test Option: element - spec 1`] = `
 <a
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -73,9 +83,11 @@ exports[`test Option: element - spec 1`] = `
 
 exports[`test Option: id - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   id="id-x"
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -88,8 +100,12 @@ exports[`test Option: id - spec 1`] = `
 
 exports[`test Option: modal with backdrop - spec 1`] = `
 <div
-  className="pe-dialog  pe-dialog--backdrop   "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__backdrop" />
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -129,8 +145,10 @@ exports[`test Option: modal with backdrop - spec 1`] = `
 
 exports[`test Option: title and body (long text) - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -152,8 +170,10 @@ exports[`test Option: title and body (long text) - spec 1`] = `
 
 exports[`test Option: z (0) - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow
@@ -174,8 +194,10 @@ exports[`test Option: z (0) - spec 1`] = `
 
 exports[`test Option: z (5) - spec 1`] = `
 <div
-  className="pe-dialog     "
+  className="pe-dialog    "
   onClick={[Function]}>
+  <div
+    className="pe-dialog__touch" />
   <div
     className="pe-dialog__content ">
     <Shadow

@@ -13,6 +13,8 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.compact ? classes.compact : null,
+        attrs.fullbleed ? classes.fullbleed : null,
+        attrs.border ? classes.border : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -22,9 +24,20 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = vnode => {
+export const createContent = (vnode, { renderer, Shadow }) => {
   const attrs = vnode.attrs;
-  return attrs.content
+  const content = attrs.content
     ? attrs.content
     : attrs.children || vnode.children;
+  const shadow = attrs.z !== undefined
+    ? renderer(Shadow, {
+      z: attrs.z,
+      animated: true,
+      key: "shadow"
+    })
+    : null;
+  return [
+    content,
+    shadow
+  ];
 };

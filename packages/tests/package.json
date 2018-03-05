@@ -16,6 +16,7 @@
     "test-checkbox": "^1.0.0",
     "test-dialog": "^1.0.0",
     "test-dialog-pane": "^1.0.0",
+    "test-drawer": "^1.0.0",
     "test-fab": "^1.0.0",
     "test-icon": "^1.0.0",
     "test-icon-button": "^1.0.0",

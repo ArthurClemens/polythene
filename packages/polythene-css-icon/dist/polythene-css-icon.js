@@ -34,6 +34,10 @@ var layout = (function (selector, componentVars) {
     fontSize: 0,
     lineHeight: 0,
 
+    ".pe-icon--avatar": {
+      borderRadius: "50%"
+    },
+
     ".pe-icon--avatar img": {
       border: "none",
       borderRadius: "50%",
@@ -63,7 +67,11 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
-    color: componentVars["color_" + tint] || "currentcolor"
+    color: componentVars["color_" + tint] || "currentcolor",
+
+    ".pe-icon--avatar": {
+      backgroundColor: componentVars["color_" + tint + "_avatar_background"]
+    }
   })];
 };
 

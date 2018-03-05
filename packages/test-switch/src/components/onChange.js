@@ -5,7 +5,7 @@ export default ({ h, Switch }) => ({
     const checked = stream(false);
     Object.assign(vnode.state, {
       checked,
-      redrawOnUpdate: stream.merge([checked])
+      redrawOnUpdate: stream.merge([checked]) // for React
     });
   },
   view: vnode => {

@@ -50,8 +50,15 @@
 }
 
 .pe-menu .pe-menu__content {
-  width: 100%;
+  width: 100%
+}
+
+.pe-menu.pe-menu--floating .pe-menu__content {
   border-radius: 2px
+}
+
+.pe-menu.pe-menu--full-height,.pe-menu.pe-menu--full-height .pe-menu__content {
+  height: 100%
 }
 
 .pe-dark-tone.pe-menu .pe-menu__content,.pe-dark-tone .pe-menu .pe-menu__content {

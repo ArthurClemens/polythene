@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreDialogInstance as core, transitions } from "polythene-core-dialog";
+import { coreDialog as core } from "polythene-core-dialog";
 import classes from "polythene-css-classes/dialog";
 import { DialogPane } from "polythene-react-dialog-pane";
 import { Shadow } from "polythene-react-shadow";
@@ -9,8 +9,7 @@ export const DialogInstance = StateComponent(Object.assign(
   {},
   core,
   {
-    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow, DialogPane })),
-    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow, DialogPane }))
+    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow, Pane: DialogPane, createPane: core.createPane }))
   }
 ));
 
@@ -23,7 +22,6 @@ const options = {
   holderSelector: `div.${classes.holder}`,
   instance:       DialogInstance,
   placeholder:    `span.${classes.placeholder}`,
-  transitions
 };
 
 const Multiple = Multi({ options, renderer });

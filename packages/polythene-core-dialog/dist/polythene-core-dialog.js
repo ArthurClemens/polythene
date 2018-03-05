@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var menuClasses = {
@@ -41,6 +42,8 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -57,11 +60,13 @@ var classes = {
   placeholder: "pe-dialog__placeholder",
   holder: "pe-dialog__holder",
   content: "pe-dialog__content",
+  backdrop: "pe-dialog__backdrop",
+  touch: "pe-dialog__touch",
 
   // states
   fullScreen: "pe-dialog--full-screen",
-  backdrop: "pe-dialog--backdrop",
-  open: "pe-dialog--open",
+  open: "pe-dialog--open", // class set to html element
+  visible: "pe-dialog--visible", // class set to dialog element
 
   // lookup
   menuContent: menuClasses.content
@@ -71,22 +76,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var DEFAULT_Z = 3;
+var DEFAULT_ANIMATION_DURATION = .220;
+
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
-
-var DEFAULT_Z = 3;
 
 var showDialog = function showDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  var id = state.instanceId;
   state.transitioning(true);
+  state.visible(true);
+  var id = state.instanceId;
+  var showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return polytheneCore.show(_extends({}, attrs, transitions.show({ el: state.el, showDuration: attrs.showDuration, showDelay: attrs.showDelay }))).then(function () {
-    if (attrs.multipleDidShow) {
-      attrs.multipleDidShow(id); // this will call attrs.didShow
+  return polytheneCore.show(_extends({}, attrs, {
+    showClass: classes.visible
+  }, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: showDuration, showDelay: attrs.showDelay }) : { el: state.el, showDuration: showDuration, showDelay: attrs.showDelay })).then(function () {
+    if (attrs.fromMultipleDidShow) {
+      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
+    } else if (attrs.didShow) {
+      attrs.didShow(id); // when used directly
     }
     state.transitioning(false);
   });
@@ -96,12 +108,20 @@ var hideDialog = function hideDialog(state, attrs) {
   if (state.transitioning()) {
     return Promise.resolve();
   }
-  var id = state.instanceId;
   state.transitioning(true);
+  state.visible(false);
+  var id = state.instanceId;
+
+  // Hide dialog
+  var hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
   var transitions = attrs.transitions;
-  return polytheneCore.hide(_extends({}, attrs, transitions.hide({ el: state.el, hideDuration: attrs.hideDuration, hideDelay: attrs.hideDelay }))).then(function () {
-    if (attrs.multipleDidHide) {
-      attrs.multipleDidHide(id); // this will call attrs.didHide
+  return polytheneCore.hide(_extends({}, attrs, {
+    showClass: classes.visible
+  }, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, hideDuration: hideDuration, hideDelay: attrs.hideDelay })).then(function () {
+    if (attrs.fromMultipleDidHide) {
+      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
+    } else if (attrs.didHide) {
+      attrs.didHide(id); // when used directly
     }
     state.transitioning(false);
   });
@@ -109,10 +129,16 @@ var hideDialog = function hideDialog(state, attrs) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var transitioning = createStream(false);
+  var visible = createStream(false);
   return {
+    backdropEl: undefined,
+    touchEl: undefined,
     cleanUp: undefined,
     el: undefined,
-    transitioning: transitioning
+    contentEl: undefined,
+    transitioning: transitioning,
+    visible: visible,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 
@@ -122,30 +148,37 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  state.el = vnode.dom;
+  var dom = vnode.dom;
+  state.el = dom;
+  state.backdropEl = dom.querySelector("." + classes.backdrop);
+  state.touchEl = dom.querySelector("." + classes.touch);
+  state.contentEl = dom.querySelector("." + classes.content);
 
-  var handleEscape = function handleEscape(e) {
-    if (attrs.fullScreen || attrs.modal) return;
-    if (e.key === "Escape") {
-      hideDialog(state, _extends({}, attrs, {
-        hideDelay: 0
-      }));
+  if (!attrs.inactive) {
+
+    var handleEscape = function handleEscape(e) {
+      if (attrs.fullScreen || attrs.modal) return;
+      if (e.key === "Escape") {
+        hideDialog(state, _extends({}, attrs, {
+          hideDelay: 0
+        }));
+      }
+    };
+
+    state.cleanUp = function () {
+      return polytheneCore.unsubscribe("keydown", handleEscape);
+    };
+
+    polytheneCore.subscribe("keydown", handleEscape);
+
+    if (attrs.show) {
+      showDialog(state, attrs);
     }
-  };
-
-  state.cleanUp = function () {
-    return polytheneCore.unsubscribe("keydown", handleEscape);
-  };
-
-  polytheneCore.subscribe("keydown", handleEscape);
-
-  if (attrs.showInstance) {
-    showDialog(state, attrs);
   }
 };
 
 var onUnMount = function onUnMount(vnode) {
-  return vnode.state.cleanUp();
+  return vnode.state.cleanUp && vnode.state.cleanUp();
 };
 
 var createProps = function createProps(vnode, _ref) {
@@ -153,11 +186,16 @@ var createProps = function createProps(vnode, _ref) {
 
   var state = vnode.state;
   var attrs = vnode.attrs;
+
   return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes.component, attrs.fullScreen ? classes.fullScreen : null, attrs.backdrop ? classes.backdrop : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.fullScreen ? classes.fullScreen : null,
+    // classes.visible is set in showDialog though transition
+    attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
+    "data-spawn-id": attrs.spawnId,
+    "data-instance-id": attrs.instanceId
   }, k.onclick, function (e) {
-    if (e.target !== state.el) {
+    if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
       return;
     }
     if (attrs.modal) {
@@ -170,40 +208,74 @@ var createProps = function createProps(vnode, _ref) {
   }), attrs.formOptions ? attrs.formOptions : null);
 };
 
-var createContent = function createContent(vnode, _ref2) {
+var createPane = function createPane(vnode, _ref2) {
   var h = _ref2.renderer,
-      Shadow = _ref2.Shadow,
-      DialogPane = _ref2.DialogPane;
+      Pane = _ref2.Pane;
 
-  var state = vnode.state;
   var attrs = vnode.attrs;
-  if (attrs.hideInstance) {
-    hideDialog(state, attrs);
-  }
-  var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : h(DialogPane, {
+  return h(Pane, {
     title: attrs.title,
     header: attrs.header,
-    body: attrs.content || attrs.body || attrs.menu,
+    body: attrs.content || attrs.body || attrs.menu || vnode.children,
     footer: attrs.footer,
     footerButtons: attrs.footerButtons,
     className: attrs.className,
     style: attrs.style,
     fullBleed: attrs.fullBleed
   });
-  return h("div", {
-    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" ")
-  }, [attrs.fullScreen ? null : h(Shadow, {
-    z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
-    animated: true
-  }), pane]);
 };
 
-var dialogInstance = Object.freeze({
+var createContent = function createContent(vnode, _ref3) {
+  var renderer = _ref3.renderer,
+      Shadow = _ref3.Shadow,
+      createPane = _ref3.createPane,
+      Pane = _ref3.Pane;
+
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var h = renderer;
+
+  if (state.el) {
+    var visible = state.visible();
+    var transitioning = state.transitioning();
+    if (!transitioning) {
+      if (attrs.hide && visible) {
+        // Use setTimeout to play nice with React's lifecycle functions
+        setTimeout(function () {
+          return hideDialog(state, attrs);
+        }, 0);
+      } else if (attrs.show && !visible) {
+        setTimeout(function () {
+          return showDialog(state, attrs);
+        }, 0);
+      }
+    }
+  }
+
+  var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
+  return [attrs.backdrop && h("div", {
+    key: "backdrop",
+    className: classes.backdrop
+  }), h("div", {
+    key: "touch",
+    className: classes.touch
+  }), h("div", {
+    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
+    key: "content"
+  }, [attrs.fullScreen ? null : h(Shadow, {
+    z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
+    animated: true,
+    key: "shadow"
+  }), pane])];
+};
+
+var dialog = Object.freeze({
 	getElement: getElement,
 	getInitialState: getInitialState,
 	onMount: onMount,
 	onUnMount: onUnMount,
 	createProps: createProps,
+	createPane: createPane,
 	createContent: createContent
 });
 
@@ -213,9 +285,11 @@ var rgba = function rgba(colorStr) {
 };
 
 var vars$1 = {
+  position: "fixed",
   border_radius: polytheneTheme.vars.unit_block_border_radius,
   padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
   padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
+
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
 
@@ -226,47 +300,8 @@ var vars$1 = {
   color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
 };
 
-var ANIMATION_DURATION = .220;
-
-var show$1 = function show$$1(_ref) {
-  var el = _ref.el,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
-  return {
-    el: el,
-    showDuration: showDuration || ANIMATION_DURATION,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
-      return el.style.opacity = 0;
-    },
-    show: function show$$1() {
-      return el.style.opacity = 1;
-    }
-  };
-};
-
-var hide$1 = function hide$$1(_ref2) {
-  var el = _ref2.el,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
-  return {
-    el: el,
-    hideDuration: hideDuration || ANIMATION_DURATION,
-    hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
-      return el.style.opacity = 0;
-    }
-  };
-};
-
-var transitions = {
-  show: show$1,
-  hide: hide$1
-};
-
-exports.coreDialogInstance = dialogInstance;
+exports.coreDialog = dialog;
 exports.vars = vars$1;
-exports.transitions = transitions;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -247,7 +247,7 @@ var onChange = (function (_ref) {
       _extends$3(vnode.state, {
         textfieldState: textfieldState,
         value: value,
-        redrawOnUpdate: stream.merge([textfieldState, value])
+        redrawOnUpdate: stream.merge([textfieldState, value]) // for React
       });
     },
     view: function view(vnode) {

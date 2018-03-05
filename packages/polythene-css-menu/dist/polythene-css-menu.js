@@ -28,7 +28,8 @@ var listTileClasses = {
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   highlight: "pe-list-tile--highlight",
-  sticky: "pe-list-tile--sticky"
+  sticky: "pe-list-tile--sticky",
+  navigation: "pe-list-tile--navigation"
 };
 
 var classes = {
@@ -41,6 +42,8 @@ var classes = {
 
   // states
   permanent: "pe-menu--permanent",
+  fullHeight: "pe-menu--full-height",
+  floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
@@ -95,8 +98,21 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-menu__content": {
-      width: "100%",
-      borderRadius: componentVars.border_radius + "px"
+      width: "100%"
+    },
+
+    ".pe-menu--floating": {
+      " .pe-menu__content": {
+        borderRadius: componentVars.border_radius + "px"
+      }
+    },
+
+    ".pe-menu--full-height": {
+      height: "100%",
+
+      " .pe-menu__content": {
+        height: "100%"
+      }
     }
   }])];
 });
