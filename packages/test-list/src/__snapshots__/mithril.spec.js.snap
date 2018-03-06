@@ -160,7 +160,7 @@ exports[`test Dark tone class + light tone class 1`] = `
 
 exports[`test Keyboard control: click to select, then use the arrow keys (Escape to deselect) 1`] = `
 "<div>
-  <div class=\"pe-list pe-list--borders pe-list--padding\">
+  <div class=\"pe-list pe-list--border pe-list--padding\">
     <div class=\"pe-list-tile pe-list-tile--header\">
       <div class=\"pe-list-tile__primary\" style=\"\">
         <div class=\"pe-list-tile__content\">
@@ -709,7 +709,7 @@ exports[`test Option: tiles 1`] = `
 
 exports[`test Options: header, tiles with urls 1`] = `
 "<div class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding\">
+\"pe-list pe-list--border pe-list--header pe-list--padding\">
   <div class=
   \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
@@ -779,7 +779,7 @@ exports[`test Options: header, tiles with urls 1`] = `
   </div>
 </div>
 <div class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding\">
+\"pe-list pe-list--border pe-list--header pe-list--padding\">
   <div class=
   \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
@@ -853,7 +853,7 @@ exports[`test Options: header, tiles with urls 1`] = `
 
 exports[`test Options: header, tiles with urls, secondary 1`] = `
 "<div class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding\">
+\"pe-list pe-list--border pe-list--header pe-list--padding\">
   <div class=
   \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
@@ -962,7 +962,7 @@ exports[`test Options: header, tiles with urls, secondary 1`] = `
   </div>
 </div>
 <div class=
-\"pe-list pe-list--borders pe-list--header pe-list--padding\">
+\"pe-list pe-list--border pe-list--header pe-list--padding\">
   <div class=
   \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
     <div class=\"pe-list-tile__primary\" style=\"\">
@@ -1073,9 +1073,9 @@ exports[`test Options: header, tiles with urls, secondary 1`] = `
 "
 `;
 
-exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
+exports[`test Options: header, tiles, indent, indentedBorder 1`] = `
 "<div class=
-\"pe-list pe-list--indented-borders pe-list--header pe-list--padding\">
+\"pe-list pe-list--indented-border pe-list--header pe-list--padding\">
 <div class=
 \"pe-list-tile pe-list-tile--header pe-list-tile--front pe-list-tile--header\">
   <div class=\"pe-list-tile__primary\" style=\"\">

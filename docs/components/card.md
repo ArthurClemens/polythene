@@ -127,7 +127,7 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **bordered**  | optional | Boolean | | Set to `true` to add a top border |
+| **border**    | optional | Boolean | | Set to `true` to add a top border |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__actions` |
 | **content**   | required | String, hyperscript or component |  | Action contents, for instance a list of buttons |
 | **element**   | optional | String | "div" | HTML tag |

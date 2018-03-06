@@ -463,7 +463,7 @@ var results = (function (_ref) {
       }, state.selectedValue() ? { value: state.selectedValue() } : null)), matches.length ? h(List$$1, {
         key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
         className: "tests-search-keyboard-color-list",
-        borders: true,
+        border: true,
         tiles: matches.map(function (title, index) {
           return createColorTile({
             title: title,

@@ -22,7 +22,7 @@ var classes = {
   title: "pe-card__title",
 
   // states
-  actionsBordered: "pe-card__actions--borders",
+  actionsBorder: "pe-card__actions--border",
   actionsHorizontal: "pe-card__actions--horizontal",
   actionsJustified: "pe-card__actions--justified",
   actionsTight: "pe-card__actions--tight",

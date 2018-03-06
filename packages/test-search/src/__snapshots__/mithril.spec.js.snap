@@ -529,7 +529,7 @@ exports[`test With search results 1`] = `
       </div>
     </div>
     <div class=
-    \"pe-list pe-list--borders pe-list--padding tests-search-keyboard-color-list\">
+    \"pe-list pe-list--border pe-list--padding tests-search-keyboard-color-list\">
     <div class=
     \"pe-list-tile pe-list-tile--hoverable pe-list-tile--front tests-search-keyboard-color-list-tile\"
       tabindex=\"0\">

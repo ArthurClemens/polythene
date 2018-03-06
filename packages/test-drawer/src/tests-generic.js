@@ -55,7 +55,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Permanent (no shadow, with border)",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         permanent: true,
-        bordered: true,
+        border: true,
         z: 0
       }})
     },
@@ -96,12 +96,12 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Pushing drawer (push from left, without shadow, bordered)",
+      name: "Pushing drawer (push from left, without shadow, with border)",
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         push: true,
-        bordered: true,
+        border: true,
       }})
     },
     {
@@ -110,7 +110,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, createTopContent, drawerOpts: {
         push: true,
-        bordered: true,
+        border: true,
       }})
     },
     {
@@ -119,7 +119,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, createTopContent, drawerOpts: {
         push: true,
-        bordered: true,
+        border: true,
         mini: true,
       }})
     },
@@ -213,7 +213,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
         push: true,
         mini: true,
-        bordered: true,
+        border: true,
       }})
     },
     {

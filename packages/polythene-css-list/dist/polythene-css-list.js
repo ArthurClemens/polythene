@@ -36,10 +36,10 @@ var classes = {
   component: "pe-list",
 
   // states
-  borders: "pe-list--borders",
+  border: "pe-list--border",
   compact: "pe-list--compact",
   hasHeader: "pe-list--header",
-  indentedBorders: "pe-list--indented-borders",
+  indentedBorder: "pe-list--indented-border",
   padding: "pe-list--padding",
   paddingTop: "pe-list--padding-top",
   paddingBottom: "pe-list--padding-bottom",
@@ -83,7 +83,7 @@ var layout = (function (selector, componentVars) {
       borderWidth: componentVars.border_width_stacked + "px"
     },
 
-    ".pe-list--borders": {
+    ".pe-list--border": {
       " .pe-list-tile": {
         ":not(.pe-list-tile--header):not(:last-child)": {
           "&": borderStyle(componentVars)
@@ -91,7 +91,7 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    ".pe-list--indented-borders": {
+    ".pe-list--indented-border": {
       borderTop: "none",
 
       " .pe-list-tile": {
@@ -115,13 +115,13 @@ var style = function style(scopes, selector, componentVars, tint) {
 
   }, _defineProperty$1(_scopes$map$join, "& + .pe-list", {
     borderTopColor: componentVars["color_" + tint + "_border"]
-  }), _defineProperty$1(_scopes$map$join, ".pe-list--borders", {
+  }), _defineProperty$1(_scopes$map$join, ".pe-list--border", {
     " .pe-list-tile": {
       ":not(:last-child)": {
         borderColor: componentVars["color_" + tint + "_border"]
       }
     }
-  }), _defineProperty$1(_scopes$map$join, ".pe-list--indented-borders", {
+  }), _defineProperty$1(_scopes$map$join, ".pe-list--indented-border", {
     " .pe-list-tile": {
       " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
         borderColor: componentVars["color_" + tint + "_border"]

@@ -253,7 +253,7 @@ var keyboardState = (function (_ref) {
       return h("div",
       // The container catches all keyboard events
       _defineProperty({}, k.onkeydown, state.handleKey), h(List$$1, {
-        borders: true,
+        border: true,
         tiles: tileData.map(function (item, index) {
           return createTile(_extends({}, item, {
             selected: index === higlightIndex,
@@ -441,10 +441,10 @@ var genericTests = (function (_ref) {
       })]
     }
   }, {
-    name: "Options: header, tiles, indent, indentedBorders",
+    name: "Options: header, tiles, indent, indentedBorder",
     component: List$$1,
     attrs: {
-      indentedBorders: true,
+      indentedBorder: true,
       header: {
         title: "Friends",
         indent: true
@@ -697,13 +697,13 @@ var mithrilTests = function mithrilTests(_ref) {
           header: {
             title: "Friends"
           },
-          borders: true,
+          border: true,
           tiles: [listTileJennifer, listTileAli, listTileGrace]
         }), h(List$$1, {
           header: {
             title: "Friends"
           },
-          borders: true,
+          border: true,
           tiles: [listTileJennifer, listTileAli, listTileGrace]
         })];
       }
@@ -717,13 +717,13 @@ var mithrilTests = function mithrilTests(_ref) {
           header: {
             title: "Friends"
           },
-          borders: true,
+          border: true,
           tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
         }), h(List$$1, {
           header: {
             title: "Friends"
           },
-          borders: true,
+          border: true,
           tiles: [listTileWithSecondaryJennifer, listTileWithSecondaryAli, listTileWithSecondaryGrace]
         })];
       }
@@ -6281,14 +6281,14 @@ var reactTests = function reactTests(_ref) {
         header: {
           title: "Friends"
         },
-        borders: true,
+        border: true,
         tiles: [listTileJennifer("urls 1"), listTileAli("urls 2"), listTileGrace("urls 3")]
       }), h(List$$1, {
         key: "two",
         header: {
           title: "Friends"
         },
-        borders: true,
+        border: true,
         tiles: [listTileJennifer("urls 4"), listTileAli("urls 5"), listTileGrace("urls 6")]
       })]);
     }
@@ -6310,12 +6310,12 @@ var reactTests = function reactTests(_ref) {
   }, {
     section: "React JSX tests"
   }, {
-    name: "Options: header, tiles, indent, indentedBorders (JSX)",
+    name: "Options: header, tiles, indent, indentedBorder (JSX)",
     component: function component() {
       return react.createElement(
         List$$1,
         {
-          indentedBorders: true,
+          indentedBorder: true,
           header: {
             title: "Friends",
             indent: true

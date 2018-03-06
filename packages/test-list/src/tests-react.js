@@ -40,7 +40,7 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileJennifer("urls 1"),
               listTileAli("urls 2"),
@@ -52,7 +52,7 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileJennifer("urls 4"),
               listTileAli("urls 5"),
@@ -90,10 +90,10 @@ const reactTests = ({ List, Icon, ListTile, renderer: h }) => {
       section: "React JSX tests",
     },
     {
-      name: "Options: header, tiles, indent, indentedBorders (JSX)",
+      name: "Options: header, tiles, indent, indentedBorder (JSX)",
       component: () =>
         <List
-          indentedBorders
+          indentedBorder
           header={{
             title: "Friends",
             indent: true

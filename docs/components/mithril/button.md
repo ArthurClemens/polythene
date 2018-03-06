@@ -105,7 +105,7 @@ ButtonCSS.addStyle(".bordered-button", {
 m(Button, {
   label: "Borders",
   className: "bordered-button",
-  borders: true
+  border: true
 })
 ~~~
 

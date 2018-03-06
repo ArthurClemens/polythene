@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient } from "polythene-core";
+import { filterSupportedAttributes, isClient, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/button";
 
 export const getElement = vnode =>
@@ -19,11 +19,14 @@ export const getInitialState = (vnode, createStream) => {
 };
 
 export const onMount = vnode => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  if (attrs.borders) {
+    deprecation("Button", "borders", "border");
+  }
   if (!vnode.dom) {
     return;
   }
-  const state = vnode.state;
-  const attrs = vnode.attrs;
   state.dom(vnode.dom);
   
   if (isClient) {
@@ -81,7 +84,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.selected ? classes.selected : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
-        attrs.borders ? classes.borders : null,
+        (attrs.border || attrs.borders) ? classes.border : null,
         state.focus() ? classes.focused : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,

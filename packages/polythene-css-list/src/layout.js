@@ -30,7 +30,7 @@ export default (selector, componentVars) => [{
       borderWidth: componentVars.border_width_stacked + "px"
     },
 
-    ".pe-list--borders": {
+    ".pe-list--border": {
       " .pe-list-tile": {
         ":not(.pe-list-tile--header):not(:last-child)": {
           "&": borderStyle(componentVars)
@@ -38,7 +38,7 @@ export default (selector, componentVars) => [{
       }
     },
 
-    ".pe-list--indented-borders": {
+    ".pe-list--indented-border": {
       borderTop: "none",
 
       " .pe-list-tile": {

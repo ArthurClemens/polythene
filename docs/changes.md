@@ -22,6 +22,10 @@
 
 Changes to components:
 
+* Harmonisation of border options:
+  * Button, Card and List: options `borders` and `bordered` are deprecated; use `border` instead
+  * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
+  * Dialog: option `borders` is unchanged
 * List Tile:
   * Added configuration vars for for titles and front: font size, weight and color 
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)

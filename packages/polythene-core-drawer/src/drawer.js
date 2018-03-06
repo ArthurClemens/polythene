@@ -15,7 +15,7 @@ export const createProps = vnode => {
         isCover ? classes.cover : null,
         attrs.push ? classes.push : null,
         attrs.permanent ? classes.permanent : null,
-        attrs.bordered ? classes.bordered : null,
+        attrs.border ? classes.border : null,
         attrs.mini ? classes.mini : null,
         attrs.floating ? classes.floating : null,
         attrs.fixed ? classes.fixed : null,

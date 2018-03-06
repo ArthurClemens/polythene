@@ -5,7 +5,7 @@ const SHADOW_WIDTH = 15;
 
 const alignLeft = componentVars => ({
   // Bordered
-  ".pe-drawer--bordered .pe-dialog__content": {
+  ".pe-drawer--border .pe-dialog__content": {
     borderStyle: "none solid none none"
   },
 
@@ -45,7 +45,7 @@ const alignLeft = componentVars => ({
 
 const alignRight = componentVars => ({
   // Bordered
-  ".pe-drawer--bordered .pe-dialog__content": {
+  ".pe-drawer--border .pe-dialog__content": {
     borderStyle: "none none none solid"
   },
 
@@ -149,7 +149,7 @@ export default (selector, componentVars) => [
       },
 
       // Bordered
-      ".pe-drawer--bordered": {
+      ".pe-drawer--border": {
         " .pe-dialog__content": {
           borderWidth: "1px",
         },

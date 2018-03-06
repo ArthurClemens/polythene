@@ -441,7 +441,7 @@ var genericTests = (function (_ref) {
     name: "Permanent (no shadow, with border)",
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         permanent: true,
-        bordered: true,
+        border: true,
         z: 0
       } })
   }, {
@@ -477,12 +477,12 @@ var genericTests = (function (_ref) {
         z: 1
       } })
   }, {
-    name: "Pushing drawer (push from left, without shadow, bordered)",
+    name: "Pushing drawer (push from left, without shadow, with border)",
     interactive: true,
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, drawerOpts: {
         push: true,
-        bordered: true
+        border: true
       } })
   }, {
     name: "Pushing drawer including toolbar",
@@ -490,7 +490,7 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, pushToolbar: true, createTopContent: createTopContent, drawerOpts: {
         push: true,
-        bordered: true
+        border: true
       } })
   }, {
     name: "Mini (expanding) drawer",
@@ -498,7 +498,7 @@ var genericTests = (function (_ref) {
     exclude: true,
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, createTopContent: createTopContent, drawerOpts: {
         push: true,
-        bordered: true,
+        border: true,
         mini: true
       } })
   }, {
@@ -588,7 +588,7 @@ var genericTests = (function (_ref) {
     component: navigation({ renderer: renderer$$1, keys: keys$$1, Drawer: Drawer$$1, Toolbar: Toolbar$$1, IconButton: IconButton$$1, createContent: createContent, rtl: true, drawerOpts: {
         push: true,
         mini: true,
-        bordered: true
+        border: true
       } })
   }, {
     name: "Anchor end (RTL)",

@@ -55,7 +55,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileJennifer,
               listTileAli,
@@ -66,7 +66,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileJennifer,
               listTileAli,
@@ -85,7 +85,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileWithSecondaryJennifer,
               listTileWithSecondaryAli,
@@ -96,7 +96,7 @@ const mithrilTests = ({ List, Icon, ListTile, renderer: h }) => {
             header: {
               title: "Friends"
             },
-            borders: true,
+            border: true,
             tiles: [
               listTileWithSecondaryJennifer,
               listTileWithSecondaryAli,

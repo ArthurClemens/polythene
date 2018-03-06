@@ -8,7 +8,7 @@ import { ButtonCSS } from "polythene-css";
 const reactTests = ({ Button, renderer: h }) => {
 
   const SecondaryButton = props =>
-    <Button className="react-secondary-button" borders {...props} />;
+    <Button className="react-secondary-button" border {...props} />;
 
   ButtonCSS.addStyle(".react-secondary-button", {
     color_light_text: "#673ab7",
@@ -135,8 +135,8 @@ const reactTests = ({ Button, renderer: h }) => {
       section: "React JSX tests",
     },
     {
-      name: "Themed Button: (option: borders) (JSX)",
-      component: () => <Button label="Button" className="react-secondary-button" borders />
+      name: "Themed Button: (option: border) (JSX)",
+      component: () => <Button label="Button" className="react-secondary-button" border />
     },
     {
       name: "Option: inactivate (2s) (JSX)",

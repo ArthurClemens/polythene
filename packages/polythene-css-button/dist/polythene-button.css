@@ -90,7 +90,7 @@
   white-space: pre
 }
 
-.pe-button.pe-text-button.pe-button--borders .pe-button__focus,.pe-button.pe-text-button.pe-button--borders .pe-button__wash,.pe-button.pe-text-button.pe-button--borders .pe-ripple {
+.pe-button.pe-text-button.pe-button--border .pe-button__focus,.pe-button.pe-text-button.pe-button--border .pe-button__wash,.pe-button.pe-text-button.pe-button--border .pe-ripple {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -98,12 +98,12 @@
   left: -1px
 }
 
-.pe-button.pe-text-button.pe-button--borders .pe-button__content {
+.pe-button.pe-text-button.pe-button--border .pe-button__content {
   border-style: solid;
   border-width: 1px
 }
 
-.pe-button.pe-text-button.pe-button--borders .pe-button__label {
+.pe-button.pe-text-button.pe-button--border .pe-button__label {
   padding: 10px 0
 }
 

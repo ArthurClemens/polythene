@@ -71,7 +71,7 @@ exports[`test Keyboard control: click to select, then use the arrow keys (Escape
 <div
   onKeyDown={[Function]}>
   <List
-    borders={true}
+    border={true}
     tiles={
       Array [
         <ListTile
@@ -382,7 +382,7 @@ exports[`test Option: tiles 1`] = `
 exports[`test Options: header, tiles with urls 1`] = `
 <div>
   <List
-    borders={true}
+    border={true}
     header={
       Object {
         "title": "Friends",
@@ -396,7 +396,7 @@ exports[`test Options: header, tiles with urls 1`] = `
       ]
     } />
   <List
-    borders={true}
+    border={true}
     header={
       Object {
         "title": "Friends",
@@ -412,7 +412,7 @@ exports[`test Options: header, tiles with urls 1`] = `
 </div>
 `;
 
-exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
+exports[`test Options: header, tiles, indent, indentedBorder (JSX) 1`] = `
 <List
   header={
     Object {
@@ -420,7 +420,7 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
       "title": "Friends",
     }
   }
-  indentedBorders={true}>
+  indentedBorder={true}>
   <ListTile
     front={
       <Icon
@@ -454,9 +454,9 @@ exports[`test Options: header, tiles, indent, indentedBorders (JSX) 1`] = `
 </List>
 `;
 
-exports[`test Options: header, tiles, indent, indentedBorders 1`] = `
+exports[`test Options: header, tiles, indent, indentedBorder 1`] = `
 <div
-  className="pe-list  pe-list--indented-borders pe-list--header  pe-list--padding   ">
+  className="pe-list  pe-list--indented-border pe-list--header  pe-list--padding   ">
   <ListTile
     className="pe-list-tile--header "
     header={true}

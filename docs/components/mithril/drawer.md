@@ -118,7 +118,7 @@ To make the drawer actually push the content, the drawer must be placed next to 
 Push options:
 
 * `push: true`
-* `bordered: true` - to demarcate the drawer from the content
+* `border: true` - to demarcate the drawer from the content
 
 
 #### Mini variant
@@ -141,7 +141,7 @@ Use the drawer as a permanent (not animating) menu with:
 By default this creates a side menu with a height of 100%. Either use:
 
 * `floating: true` - to display the drawer as a "floating" block (instead of full height)
-* `bordered: true` - to demarcate the drawer from the content
+* `border: true` - to demarcate the drawer from the content
 
 
 #### Place the drawer at the right/opposite side

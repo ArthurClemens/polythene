@@ -47,12 +47,12 @@ var genericTests = (function (_ref) {
       }
     }
   }, {
-    name: "Themed Button: (option: borders)",
+    name: "Themed Button: (option: border)",
     component: Button$$1,
     attrs: {
-      label: "Borders",
+      label: "Border",
       className: "tests-button-bordered-button",
-      borders: true
+      border: true
     }
   }, {
     name: "Themed Button (colors)",
@@ -175,13 +175,13 @@ var genericTests = (function (_ref) {
       className: "blue-on-dark-Button"
     }
   }, {
-    name: "Themed Button: (option: borders) -- dark tone class",
+    name: "Themed Button: (option: border) -- dark tone class",
     className: "pe-dark-tone",
     component: Button$$1,
     attrs: {
-      label: "Borders dark tone",
+      label: "Border dark tone",
       className: "tests-button-bordered-button",
-      borders: true
+      border: true
     }
   }];
 });
@@ -6122,7 +6122,7 @@ var reactTests = function reactTests(_ref) {
 
 
   var SecondaryButton = function SecondaryButton(props) {
-    return react.createElement(Button$$1, _extends({ className: "react-secondary-button", borders: true }, props));
+    return react.createElement(Button$$1, _extends({ className: "react-secondary-button", border: true }, props));
   };
 
   ButtonCSS.addStyle(".react-secondary-button", {
@@ -6233,9 +6233,9 @@ var reactTests = function reactTests(_ref) {
   }, {
     section: "React JSX tests"
   }, {
-    name: "Themed Button: (option: borders) (JSX)",
+    name: "Themed Button: (option: border) (JSX)",
     component: function component() {
-      return react.createElement(Button$$1, { label: "Button", className: "react-secondary-button", borders: true });
+      return react.createElement(Button$$1, { label: "Button", className: "react-secondary-button", border: true });
     }
   }, {
     name: "Option: inactivate (2s) (JSX)",

@@ -118,7 +118,7 @@ ButtonCSS.addStyle(".bordered-button", {
 <Button
   label="Borders"
   className="bordered-button"
-  borders
+  border
 />
 ~~~
 

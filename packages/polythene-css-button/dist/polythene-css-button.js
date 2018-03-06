@@ -16,7 +16,7 @@ var classes = {
   wash: "pe-button__wash",
 
   // states
-  borders: "pe-button--borders",
+  border: "pe-button--border",
   disabled: "pe-button--disabled",
   focused: "pe-button--focus",
   inactive: "pe-button--inactive",
@@ -108,7 +108,7 @@ var layout = (function (selector, componentVars) {
       whiteSpace: "pre"
     },
 
-    ".pe-button--borders": {
+    ".pe-button--border": {
       " .pe-button__wash, .pe-button__focus, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
 
       " .pe-button__content": {

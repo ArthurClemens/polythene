@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient } from 'polythene-core';
+import { deprecation, filterSupportedAttributes, isClient } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -13,7 +13,7 @@ var classes = {
   wash: "pe-button__wash",
 
   // states
-  borders: "pe-button--borders",
+  border: "pe-button--border",
   disabled: "pe-button--disabled",
   focused: "pe-button--focus",
   inactive: "pe-button--inactive",
@@ -45,11 +45,14 @@ var getInitialState = function getInitialState(vnode, createStream) {
 };
 
 var onMount = function onMount(vnode) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  if (attrs.borders) {
+    deprecation("Button", "borders", "border");
+  }
   if (!vnode.dom) {
     return;
   }
-  var state = vnode.state;
-  var attrs = vnode.attrs;
   state.dom(vnode.dom);
 
   if (isClient) {
@@ -110,7 +113,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
-    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.borders ? classes.borders : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeydown, function (e) {
     if (e.key === "Enter" && state.focus()) {
       state.focus(false);

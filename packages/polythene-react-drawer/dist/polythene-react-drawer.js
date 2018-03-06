@@ -12,7 +12,7 @@ var classes = {
   push: "pe-drawer--push",
   mini: "pe-drawer--mini",
   permanent: "pe-drawer--permanent",
-  bordered: "pe-drawer--bordered",
+  border: "pe-drawer--border",
   floating: "pe-drawer--floating",
   fixed: "pe-drawer--fixed",
   anchorEnd: "pe-drawer--anchor-end"

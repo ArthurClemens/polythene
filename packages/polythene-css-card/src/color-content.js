@@ -10,7 +10,7 @@ const style = (scopes, selector, componentVars, tint) => [{
     " .pe-card__text": {
       color: componentVars["color_" + tint + "_text"]
     },
-    " .pe-card__actions--borders": {
+    " .pe-card__actions--border": {
       borderTop: "1px solid " + componentVars["color_" + tint + "_actions_border"]
     }
   }

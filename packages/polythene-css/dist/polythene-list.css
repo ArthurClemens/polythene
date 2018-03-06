@@ -23,16 +23,16 @@
   border-width: 1px
 }
 
-.pe-list.pe-list--borders .pe-list-tile:not(.pe-list-tile--header):not(:last-child) {
+.pe-list.pe-list--border .pe-list-tile:not(.pe-list-tile--header):not(:last-child) {
   border-style: none none solid;
   border-width: 1px
 }
 
-.pe-list.pe-list--indented-borders {
+.pe-list.pe-list--indented-border {
   border-top: none
 }
 
-.pe-list.pe-list--indented-borders .pe-list-tile:not(.pe-list-tile--header):not(:last-child) .pe-list-tile__content:not(.pe-list-tile__content-front) {
+.pe-list.pe-list--indented-border .pe-list-tile:not(.pe-list-tile--header):not(:last-child) .pe-list-tile__content:not(.pe-list-tile__content-front) {
   border-style: none none solid;
   border-width: 1px
 }

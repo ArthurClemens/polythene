@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -21,7 +21,7 @@ var classes = {
   title: "pe-card__title",
 
   // states
-  actionsBordered: "pe-card__actions--borders",
+  actionsBorder: "pe-card__actions--border",
   actionsHorizontal: "pe-card__actions--horizontal",
   actionsJustified: "pe-card__actions--justified",
   actionsTight: "pe-card__actions--tight",
@@ -182,7 +182,7 @@ var buttonClasses = {
   wash: "pe-button__wash",
 
   // states
-  borders: "pe-button--borders",
+  border: "pe-button--border",
   disabled: "pe-button--disabled",
   focused: "pe-button--focus",
   inactive: "pe-button--inactive",
@@ -197,18 +197,26 @@ var actionLayoutClasses = {
   justified: classes.actionsJustified
 };
 
+var onMount = function onMount(_ref) {
+  var attrs = _ref.attrs;
+
+  if (attrs.bordered) {
+    deprecation("Card", "bordered", "border");
+  }
+};
+
 var actionClassForLayout = function actionClassForLayout() {
   var layout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "horizontal";
   return actionLayoutClasses[layout];
 };
 
-var createProps$1 = function createProps(vnode, _ref) {
-  var k = _ref.keys;
+var createProps$1 = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
 
   var attrs = vnode.attrs;
   return _extends$1({}, filterSupportedAttributes(attrs), {
     key: "card-actions",
-    className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.bordered ? classes.actionsBordered : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.border || attrs.bordered ? classes.actionsBorder : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -217,6 +225,7 @@ var createContent$1 = function createContent(vnode) {
 };
 
 var cardActions = Object.freeze({
+	onMount: onMount,
 	createProps: createProps$1,
 	createContent: createContent$1
 });
@@ -290,7 +299,7 @@ var initImage = function initImage(_ref) {
   };
 };
 
-var onMount = function onMount(vnode) {
+var onMount$1 = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
@@ -325,7 +334,7 @@ var createContent$2 = function createContent(vnode, _ref3) {
 };
 
 var cardMedia = Object.freeze({
-	onMount: onMount,
+	onMount: onMount$1,
 	createProps: createProps$2,
 	createContent: createContent$2
 });

@@ -302,7 +302,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
     {
-      name: "Bottom action row, bordered",
+      name: "Bottom action row, border",
       component: Card,
       attrs: {
         content: [
@@ -329,7 +329,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           },
           {
             actions: {
-              bordered: true,
+              border: true,
               content: twoButtonAndLessRow
             }
           }
@@ -365,9 +365,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           {
             actions: {
               layout: "vertical",
-              bordered: true,
+              border: true,
               tight: true,
-              content: h(List, { borders: true }, [
+              content: h(List, { border: true }, [
                 // keys for React
                 h(ListTile, { hoverable: true, key: "one" }, "Action 1"),
                 h(ListTile, { hoverable: true, key: "two" }, "Action 2"),
@@ -1184,7 +1184,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           actions: {
             layout: "vertical",
             tight: true,
-            content: h(List, { borders: true }, [
+            content: h(List, { border: true }, [
               h(ListTile, { hoverable: true, key: "one" }, "Action 1"),
               h(ListTile, { hoverable: true, key: "two" }, "Action 2"),
               h(ListTile, { hoverable: true, key: "three" }, "Action 3"),
@@ -1241,7 +1241,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
             }
           }, {
             actions: {
-              bordered: true,
+              border: true,
               content: twoButtonAndLessRow
             }
           }
@@ -1286,7 +1286,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               }
             }, {
               actions: {
-                bordered: true,
+                border: true,
                 content: twoButtonAndLessRow
               }
             }
@@ -1332,7 +1332,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               }
             }, {
               actions: {
-                bordered: true,
+                border: true,
                 content: twoButtonAndLessRow
               }
             }

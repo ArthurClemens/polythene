@@ -1061,7 +1061,7 @@ exports[`test Any content (tabs) 1`] = `
 "
 `;
 
-exports[`test Bottom action row, bordered 1`] = `
+exports[`test Bottom action row, border 1`] = `
 "<div class=\"pe-card\">
   <div class=\"pe-shadow pe-shadow--animated\">
     <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
@@ -1105,7 +1105,7 @@ exports[`test Bottom action row, bordered 1`] = `
       occaecat.
     </div>
     <div class=
-    \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--borders\">
+    \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--border\">
     <a class=\"pe-button pe-text-button\" tabindex=\"0\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple\"></div>
@@ -1190,8 +1190,8 @@ exports[`test Bottom action row, vertical 1`] = `
       occaecat.
     </div>
     <div class=
-    \"pe-card__actions pe-card__actions--vertical pe-card__actions--borders pe-card__actions--tight\">
-    <div class=\"pe-list pe-list--borders pe-list--padding\">
+    \"pe-card__actions pe-card__actions--vertical pe-card__actions--border pe-card__actions--tight\">
+    <div class=\"pe-list pe-list--border pe-list--padding\">
         <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
         \"0\">
           <div class=\"pe-list-tile__primary\" style=\"\">
@@ -1565,7 +1565,7 @@ exports[`test Dark tone class + light theme class 1`] = `
         occaecat.
       </div>
       <div class=
-      \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--borders\">
+      \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--border\">
       <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
           <div class=\"pe-ripple\"></div>
@@ -1662,7 +1662,7 @@ exports[`test Dark tone class + light tone 1`] = `
         occaecat.
       </div>
       <div class=
-      \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--borders\">
+      \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--border\">
       <a class=\"pe-button pe-text-button\" tabindex=\"0\">
         <div class=\"pe-button__content\">
           <div class=\"pe-ripple\"></div>
@@ -2462,7 +2462,7 @@ exports[`test Separate elements - vertical actions 1`] = `
   <div class=\"pe-card__content\">
     <div class=
     \"pe-card__actions pe-card__actions--vertical pe-card__actions--tight\">
-    <div class=\"pe-list pe-list--borders pe-list--padding\">
+    <div class=\"pe-list pe-list--border pe-list--padding\">
         <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
         \"0\">
           <div class=\"pe-list-tile__primary\" style=\"\">
@@ -2548,7 +2548,7 @@ exports[`test Texts -- dark theme class 1`] = `
       occaecat.
     </div>
     <div class=
-    \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--borders\">
+    \"pe-card__actions pe-button-row pe-card__actions--horizontal pe-card__actions--border\">
     <a class=\"pe-button pe-text-button\" tabindex=\"0\">
       <div class=\"pe-button__content\">
         <div class=\"pe-ripple\"></div>

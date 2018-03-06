@@ -626,6 +626,10 @@ var isRTL = function isRTL(_ref2) {
   return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
 };
 
+var deprecation = function deprecation(component, deprecatedOption, newOption) {
+  return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
+};
+
 exports.getAnimationEndEvent = getAnimationEndEvent;
 exports.Conditional = Conditional;
 exports.filterSupportedAttributes = filterSupportedAttributes;
@@ -647,6 +651,7 @@ exports.unsubscribe = unsubscribe;
 exports.emit = emit;
 exports.getStyle = getStyle;
 exports.isRTL = isRTL;
+exports.deprecation = deprecation;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

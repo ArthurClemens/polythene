@@ -102,10 +102,10 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Options: header, tiles, indent, indentedBorders",
+      name: "Options: header, tiles, indent, indentedBorder",
       component: List,
       attrs: {
-        indentedBorders: true,
+        indentedBorder: true,
         header: {
           title: "Friends",
           indent: true

@@ -53,8 +53,8 @@ Lists are also the base component of [Menus](menu.md).
 
 | **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
 | ------------------- | -------------- | -------- | ----------- | --------------- |
-| **borders**         | optional | Boolean | | Set to `true` to add borders to list tiles |
-| **indentedBorders** | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
+| **border**          | optional | Boolean | | Set to `true` to add borders to list tiles |
+| **indentedBorder**  | optional | Boolean | | Set to `true` to indent the list tile borders; note that list tiles must have option `indent` as well       |
 | **compact**         | optional | Boolean | | Set to `true` to reduce vertical padding of list tiles |
 | **padding**         | optional | String | "both" | Vertical padding; possible values: "top", "bottom", "none", "both" |
 

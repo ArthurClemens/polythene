@@ -99,7 +99,7 @@ export default ({ h, k, List, ListTile }) => {
         // The container catches all keyboard events
         { [k.onkeydown]: state.handleKey },
         h(List, {
-          borders: true,
+          border: true,
           tiles: tileData.map((item, index) => createTile(Object.assign(
             {},
             item,

@@ -25,7 +25,7 @@ export default (selector, componentVars) => [{
         whiteSpace: "pre"
       },
 
-      ".pe-button--borders": {
+      ".pe-button--border": {
         " .pe-button__wash, .pe-button__focus, .pe-ripple": mixin.fit(-1),
 
         " .pe-button__content": {

@@ -10,7 +10,7 @@ var classes = {
   push: "pe-drawer--push",
   mini: "pe-drawer--mini",
   permanent: "pe-drawer--permanent",
-  bordered: "pe-drawer--bordered",
+  border: "pe-drawer--border",
   floating: "pe-drawer--floating",
   fixed: "pe-drawer--fixed",
   anchorEnd: "pe-drawer--anchor-end"
@@ -23,7 +23,7 @@ var SHADOW_WIDTH = 15;
 var alignLeft = function alignLeft(componentVars) {
   return {
     // Bordered
-    ".pe-drawer--bordered .pe-dialog__content": {
+    ".pe-drawer--border .pe-dialog__content": {
       borderStyle: "none solid none none"
     },
 
@@ -65,7 +65,7 @@ var alignLeft = function alignLeft(componentVars) {
 var alignRight = function alignRight(componentVars) {
   return {
     // Bordered
-    ".pe-drawer--bordered .pe-dialog__content": {
+    ".pe-drawer--border .pe-dialog__content": {
       borderStyle: "none none none solid"
     },
 
@@ -169,7 +169,7 @@ var layout = (function (selector, componentVars) {
     },
 
     // Bordered
-    ".pe-drawer--bordered": {
+    ".pe-drawer--border": {
       " .pe-dialog__content": {
         borderWidth: "1px"
       }

@@ -460,16 +460,16 @@ exports[`test Themed Button blue on dark -- dark tone class 1`] = `
 </a>
 `;
 
-exports[`test Themed Button: (option: borders) (JSX) 1`] = `
+exports[`test Themed Button: (option: border) (JSX) 1`] = `
 <Button
-  borders={true}
+  border={true}
   className="react-secondary-button"
   label="Button" />
 `;
 
-exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
+exports[`test Themed Button: (option: border) -- dark tone class 1`] = `
 <a
-  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  className="pe-button pe-text-button    pe-button--border    tests-button-bordered-button"
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -480,15 +480,15 @@ exports[`test Themed Button: (option: borders) -- dark tone class 1`] = `
       className="pe-button__focus" />
     <div
       className="pe-button__label">
-      Borders dark tone
+      Border dark tone
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button: (option: borders) 1`] = `
+exports[`test Themed Button: (option: border) 1`] = `
 <a
-  className="pe-button pe-text-button    pe-button--borders    tests-button-bordered-button"
+  className="pe-button pe-text-button    pe-button--border    tests-button-bordered-button"
   onKeyDown={[Function]}
   tabIndex={0}>
   <div
@@ -499,7 +499,7 @@ exports[`test Themed Button: (option: borders) 1`] = `
       className="pe-button__focus" />
     <div
       className="pe-button__label">
-      Borders
+      Border
     </div>
   </div>
 </a>

@@ -620,4 +620,8 @@ var isRTL = function isRTL(_ref2) {
   return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
 };
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit, getStyle, isRTL };
+var deprecation = function deprecation(component, deprecatedOption, newOption) {
+  return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
+};
+
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };

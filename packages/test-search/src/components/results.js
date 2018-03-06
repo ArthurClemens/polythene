@@ -269,7 +269,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
             ? h(List, {
               key: "results" + searchValue, // Use a unique key to make sure that the list tiles get registered again
               className: "tests-search-keyboard-color-list",
-              borders: true,
+              border: true,
               tiles: matches.map((title, index) => 
                 createColorTile({
                   title,

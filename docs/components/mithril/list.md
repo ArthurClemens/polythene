@@ -79,14 +79,14 @@ m(List, {
 > align the subheader with the text content.
 > [source](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders)
 
-In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorders` to true. For example:
+In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorder` to true. For example:
 
 ~~~javascript
 import m from "mithril"
 import { List, ListTile } from "polythene-mithril"
 
 m(List, {
-  indentedBorders: true,
+  indentedBorder: true,
   tiles: [
     m(ListTile, {
       title: "Jennifer Barker",
@@ -169,7 +169,7 @@ const KeyboardList = {
       { onkeydown: state.handleKey },
       m(List, 
         {
-          borders: true,
+          border: true,
           tiles: listData.map((title, index) =>
             m(ListTile,
               {

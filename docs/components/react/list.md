@@ -72,7 +72,7 @@ See [List Tile](list-tile.md) for layout variations, for example to add links, i
 > align the subheader with the text content.
 > [source](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders)
 
-In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorders` to true. For example:
+In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorder` to true. For example:
 
 #### With JSX
 
@@ -81,7 +81,7 @@ import React from "react"
 import { List, ListTile } from "polythene-react"
 
 <List
-  indentedBorders
+  indentedBorder
   tiles={[
     <ListTile title="Jennifer Barker" indent />
   ]}  
@@ -94,7 +94,7 @@ import { List, ListTile } from "polythene-react"
 import { renderer as h, List, ListTile } from "polythene-react"
 
 h(List, {
-  indentedBorders: true,
+  indentedBorder: true,
   tiles: [
     h(ListTile, {
       title: "Jennifer Barker",
@@ -178,7 +178,7 @@ class KeyboardList extends React.Component {
     return (
       <div onKeyDown={this.handleKey}>
         <List
-          borders
+          border
           tiles={listData.map((title, index) =>
             <ListTile
               title={title}

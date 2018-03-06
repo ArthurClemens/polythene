@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -33,10 +33,10 @@ var classes = {
   component: "pe-list",
 
   // states
-  borders: "pe-list--borders",
+  border: "pe-list--border",
   compact: "pe-list--compact",
   hasHeader: "pe-list--header",
-  indentedBorders: "pe-list--indented-borders",
+  indentedBorder: "pe-list--indented-border",
   padding: "pe-list--padding",
   paddingTop: "pe-list--padding-top",
   paddingBottom: "pe-list--padding-bottom",
@@ -63,20 +63,31 @@ var paddingClass = function paddingClass() {
   return paddingClasses[attr];
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
+var onMount = function onMount(_ref) {
+  var attrs = _ref.attrs;
+
+  if (attrs.borders) {
+    deprecation("List", "borders", "border");
+  }
+  if (attrs.indentedBorders) {
+    deprecation("List", "indentedBorders", "indentedBorder");
+  }
+};
+
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.borders ? classes.borders : null, attrs.indentedBorders ? classes.indentedBorders : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.border || attrs.borders ? classes.border : null, attrs.indentedBorder || attrs.indentedBorders ? classes.indentedBorder : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      requiresKeys = _ref2.requiresKeys,
-      k = _ref2.keys,
-      ListTile = _ref2.ListTile;
+var createContent = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer,
+      requiresKeys = _ref3.requiresKeys,
+      k = _ref3.keys,
+      ListTile = _ref3.ListTile;
 
   var attrs = vnode.attrs;
   var headerOpts = void 0;
@@ -94,6 +105,7 @@ var createContent = function createContent(vnode, _ref2) {
 
 var list = Object.freeze({
 	getElement: getElement,
+	onMount: onMount,
 	createProps: createProps,
 	createContent: createContent
 });

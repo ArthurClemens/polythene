@@ -48,7 +48,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **mini**      | optional      | Boolean    |                 | Set to `true` to display a fraction of the drawer (typically to show the icons only), and to reveal the full menu when expanding |
 | **floating**  | optional      | Boolean    |                 | Variant of `permanent`; additionally set this to `true` to display the drawer as a "floating" block (instead of full height) |
 | **anchor**    | optional      | String     | "start"         | Set to "end" to reveal the drawer from the far (right) side; with RTL "end" becomes the left side |
-| **bordered**  | optional      | Boolean    |                 | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
+| **border**    | optional      | Boolean    |                 | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
 | **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
 | **z**         | optional      | Number 0-5 | 0 | Depth of the shadow; 0 will show no shadow |
 | **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/list";
 
 export const getElement = vnode =>
@@ -14,6 +14,15 @@ const paddingClasses = {
 const paddingClass = (attr = "both") =>
   paddingClasses[attr];
 
+export const onMount = ({ attrs }) => {
+  if (attrs.borders) {
+    deprecation("List", "borders", "border");
+  }
+  if (attrs.indentedBorders) {
+    deprecation("List", "indentedBorders", "indentedBorder");
+  }
+};
+
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
@@ -22,8 +31,8 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
-        attrs.borders ? classes.borders : null,
-        attrs.indentedBorders ? classes.indentedBorders : null,
+        (attrs.border || attrs.borders) ? classes.border : null,
+        (attrs.indentedBorder || attrs.indentedBorders) ? classes.indentedBorder : null,
         attrs.header ? classes.hasHeader : null,
         attrs.compact ? classes.compact : null,
         paddingClass(attrs.padding),

@@ -38,7 +38,7 @@ var buttonClasses = {
   wash: "pe-button__wash",
 
   // states
-  borders: "pe-button--borders",
+  border: "pe-button--border",
   disabled: "pe-button--disabled",
   focused: "pe-button--focus",
   inactive: "pe-button--inactive",

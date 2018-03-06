@@ -268,7 +268,7 @@ var genericTests = (function (_ref) {
       }]
     }
   }, {
-    name: "Bottom action row, bordered",
+    name: "Bottom action row, border",
     component: Card$$1,
     attrs: {
       content: [{
@@ -291,7 +291,7 @@ var genericTests = (function (_ref) {
         text: { content: ipsum }
       }, {
         actions: {
-          bordered: true,
+          border: true,
           content: twoButtonAndLessRow
         }
       }]
@@ -321,9 +321,9 @@ var genericTests = (function (_ref) {
       }, {
         actions: {
           layout: "vertical",
-          bordered: true,
+          border: true,
           tight: true,
-          content: h(List$$1, { borders: true }, [
+          content: h(List$$1, { border: true }, [
           // keys for React
           h(ListTile$$1, { hoverable: true, key: "one" }, "Action 1"), h(ListTile$$1, { hoverable: true, key: "two" }, "Action 2"), h(ListTile$$1, { hoverable: true, key: "three" }, "Action 3")])
         }
@@ -997,7 +997,7 @@ var genericTests = (function (_ref) {
         actions: {
           layout: "vertical",
           tight: true,
-          content: h(List$$1, { borders: true }, [h(ListTile$$1, { hoverable: true, key: "one" }, "Action 1"), h(ListTile$$1, { hoverable: true, key: "two" }, "Action 2"), h(ListTile$$1, { hoverable: true, key: "three" }, "Action 3")])
+          content: h(List$$1, { border: true }, [h(ListTile$$1, { hoverable: true, key: "one" }, "Action 1"), h(ListTile$$1, { hoverable: true, key: "two" }, "Action 2"), h(ListTile$$1, { hoverable: true, key: "three" }, "Action 3")])
         }
       }]
     }
@@ -1048,7 +1048,7 @@ var genericTests = (function (_ref) {
         }
       }, {
         actions: {
-          bordered: true,
+          border: true,
           content: twoButtonAndLessRow
         }
       }]
@@ -1091,7 +1091,7 @@ var genericTests = (function (_ref) {
             }
           }, {
             actions: {
-              bordered: true,
+              border: true,
               content: twoButtonAndLessRow
             }
           }]
@@ -1136,7 +1136,7 @@ var genericTests = (function (_ref) {
             }
           }, {
             actions: {
-              bordered: true,
+              border: true,
               content: twoButtonAndLessRow
             }
           }]

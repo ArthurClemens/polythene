@@ -50,12 +50,12 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button: (option: borders)",
+      name: "Themed Button: (option: border)",
       component: Button,
       attrs: {
-        label: "Borders",
+        label: "Border",
         className: "tests-button-bordered-button",
-        borders: true
+        border: true
       }
     },
     {
@@ -192,13 +192,13 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button: (option: borders) -- dark tone class",
+      name: "Themed Button: (option: border) -- dark tone class",
       className: "pe-dark-tone",
       component: Button,
       attrs: {
-        label: "Borders dark tone",
+        label: "Border dark tone",
         className: "tests-button-bordered-button",
-        borders: true
+        border: true
       }
     },
   ];

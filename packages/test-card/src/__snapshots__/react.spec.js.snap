@@ -821,7 +821,7 @@ exports[`test Any content (tabs) 1`] = `
   content={<_class />} />
 `;
 
-exports[`test Bottom action row, bordered 1`] = `
+exports[`test Bottom action row, border 1`] = `
 <div
   className="pe-card   ">
   <Shadow
@@ -858,7 +858,7 @@ exports[`test Bottom action row, bordered 1`] = `
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
     </div>
     <CardActions
-      bordered={true}
+      border={true}
       content={
         Array [
           <Button
@@ -925,10 +925,10 @@ exports[`test Bottom action row, vertical 1`] = `
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
     </div>
     <CardActions
-      bordered={true}
+      border={true}
       content={
         <List
-          borders={true}>
+          border={true}>
           <ListTile
             hoverable={true}>
             Action 1
@@ -1264,7 +1264,7 @@ exports[`test Dark tone class + light theme class 1`] = `
         },
         Object {
           "actions": Object {
-            "bordered": true,
+            "border": true,
             "content": Array [
               <Button
                 label="Action 1" />,
@@ -1334,7 +1334,7 @@ exports[`test Dark tone class + light tone 1`] = `
         },
         Object {
           "actions": Object {
-            "bordered": true,
+            "border": true,
             "content": Array [
               <Button
                 label="Action 1" />,
@@ -2146,7 +2146,7 @@ exports[`test Separate elements - vertical actions 1`] = `
     <CardActions
       content={
         <List
-          borders={true}>
+          border={true}>
           <ListTile
             hoverable={true}>
             Action 1
@@ -2209,7 +2209,7 @@ exports[`test Texts -- dark theme class 1`] = `
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.
     </div>
     <CardActions
-      bordered={true}
+      border={true}
       content={
         Array [
           <Button
