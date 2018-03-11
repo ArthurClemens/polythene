@@ -1,5 +1,5 @@
 {
-  "name": "polythene-render-webpack-3",
+  "name": "polythene-build-webpack-3",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -22,7 +22,6 @@
     "polythene-scripts": "^1.0.0",
     "rollup-webpack-loader": "1.0.0",
     "webpack": "3.9.1",
-    "webpack-bundle-analyzer": "2.9.0",
     "webpack-dev-server": "2.9.3"
   }
 }
