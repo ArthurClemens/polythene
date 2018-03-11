@@ -1,0 +1,29 @@
+{
+  "name": "polythene-build-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/js/index",
+  "module": "dist/js/index",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "rollup": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "yarn run rollup"
+  },
+  "dependencies": {
+    "mithril": "1.1.6",
+    "polythene-css": "^1.0.0",
+    "polythene-mithril": "^1.0.0"
+  },
+  "devDependencies": {
+    "compression-webpack-plugin": "^1.1.11",
+    "npm-run-all": "^4.1.2",
+    "polythene-scripts": "^1.0.0",
+    "rollup-plugin-commonjs": "9.0.0",
+    "rollup-webpack-loader": "^1.0.0",
+    "rollup-watch": "4.3.1",
+    "webpack": "^4.1.1",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
