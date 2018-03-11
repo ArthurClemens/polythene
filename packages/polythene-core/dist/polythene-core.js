@@ -628,7 +628,7 @@ var isRTL = function isRTL(_ref2) {
 
 var deprecation = function deprecation(component, deprecatedOption, newOption) {
   return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
-};
+}; // eslint-disable-line no-console
 
 exports.getAnimationEndEvent = getAnimationEndEvent;
 exports.Conditional = Conditional;
