@@ -2,7 +2,7 @@
   "name": "polythene-react-toolbar",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-toolbar.js",
+  "main": "dist/polythene-react-toolbar",
   "module": "dist/polythene-react-toolbar.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

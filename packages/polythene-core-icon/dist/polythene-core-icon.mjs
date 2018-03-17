@@ -47,10 +47,10 @@ var createContent = function createContent(vnode, _ref2) {
   return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", { src: attrs.src }) : attrs.children || vnode.children;
 };
 
-var icon = Object.freeze({
-	getElement: getElement,
-	createProps: createProps,
-	createContent: createContent
+var icon = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

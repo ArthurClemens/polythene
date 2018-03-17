@@ -2,7 +2,7 @@
   "name": "polythene-react-dialog",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-dialog.js",
+  "main": "dist/polythene-react-dialog",
   "module": "dist/polythene-react-dialog.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

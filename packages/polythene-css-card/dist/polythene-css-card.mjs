@@ -1,6 +1,6 @@
-import { flex, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-card';
-import { vars as vars$1 } from 'polythene-theme';
+import { mixin, flex, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-card';
 
 var classes = {
   component: "pe-card",
@@ -158,7 +158,7 @@ var layout = (function (selector, componentVars) {
 
       " .pe-list-tile__title": {
         fontSize: "14px",
-        fontWeight: vars$1.font_weight_normal,
+        fontWeight: vars.font_weight_normal,
         lineHeight: "20px",
         marginTop: "2px"
       },
@@ -348,16 +348,16 @@ var overlaySheetSelector = "." + classes.overlaySheet;
 var overlayContentSelector = "." + classes.overlayContent;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), [layout, color]), styler.generateStyles([customSelector, " " + overlaySheetSelector], _extends({}, vars, customVars), [overlayColor]), styler.generateStyles([customSelector, " " + contentSelector], _extends({}, vars, customVars), [contentColor]), styler.generateStyles([customSelector, " " + overlayContentSelector], _extends({}, vars, customVars), [contentColor]);
+  styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), [layout, color]), styler.generateStyles([customSelector, " " + overlaySheetSelector], _extends({}, vars$1, customVars), [overlayColor]), styler.generateStyles([customSelector, " " + contentSelector], _extends({}, vars$1, customVars), [contentColor]), styler.generateStyles([customSelector, " " + overlayContentSelector], _extends({}, vars$1, customVars), [contentColor]);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), [layout, color]).concat(styler.createStyleSheets([customSelector, " " + overlaySheetSelector], _extends({}, vars, customVars), [overlayColor])).concat(styler.createStyleSheets([customSelector, " " + contentSelector], _extends({}, vars, customVars), [contentColor])).concat(styler.createStyleSheets([customSelector, " " + overlayContentSelector], _extends({}, vars, customVars), [contentColor])) : styler.createStyleSheets([selector], vars, [layout, color]).concat(styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor])).concat(styler.createStyleSheets([contentSelector], vars, [contentColor])).concat(styler.createStyleSheets([overlayContentSelector], vars, [contentColor]));
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), [layout, color]).concat(styler.createStyleSheets([customSelector, " " + overlaySheetSelector], _extends({}, vars$1, customVars), [overlayColor])).concat(styler.createStyleSheets([customSelector, " " + contentSelector], _extends({}, vars$1, customVars), [contentColor])).concat(styler.createStyleSheets([customSelector, " " + overlayContentSelector], _extends({}, vars$1, customVars), [contentColor])) : styler.createStyleSheets([selector], vars$1, [layout, color]).concat(styler.createStyleSheets([overlaySheetSelector], vars$1, [overlayColor])).concat(styler.createStyleSheets([contentSelector], vars$1, [contentColor])).concat(styler.createStyleSheets([overlayContentSelector], vars$1, [contentColor]));
 };
 
-styler.generateStyles([selector], vars, [layout, color]);
-styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
-styler.generateStyles([contentSelector], vars, [contentColor]);
-styler.generateStyles([overlayContentSelector], vars, [contentColor]);
+styler.generateStyles([selector], vars$1, [layout, color]);
+styler.generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
+styler.generateStyles([contentSelector], vars$1, [contentColor]);
+styler.generateStyles([overlayContentSelector], vars$1, [contentColor]);
 
 export { addStyle, getStyle };

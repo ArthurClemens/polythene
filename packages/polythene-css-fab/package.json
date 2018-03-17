@@ -2,7 +2,7 @@
   "name": "polythene-css-fab",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-fab.js",
+  "main": "dist/polythene-css-fab",
   "module": "dist/polythene-css-fab.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

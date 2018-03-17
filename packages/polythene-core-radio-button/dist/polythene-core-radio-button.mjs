@@ -1,3 +1,5 @@
+export { vars } from 'polythene-core-selection-control';
+
 var classes = {
   component: "pe-radio-control"
 };
@@ -28,9 +30,8 @@ var createProps = function createProps(vnode) {
   });
 };
 
-var radioButton = Object.freeze({
-	createProps: createProps
+var radioButton = /*#__PURE__*/Object.freeze({
+  createProps: createProps
 });
 
 export { radioButton as coreRadioButton };
-export { vars } from 'polythene-core-selection-control';

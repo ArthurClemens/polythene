@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-menu';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-menu';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -76,10 +76,10 @@ var layout = (function (selector, componentVars) {
   }), {
     transitionTimingFunction: "ease-out",
     transitionProperty: "all",
-    zIndex: vars$1.z_menu,
+    zIndex: vars.z_menu,
     opacity: 0,
     position: "absolute",
-    minWidth: vars$1.grid_unit_menu * componentVars.min_size + "px",
+    minWidth: vars.grid_unit_menu * componentVars.min_size + "px",
 
     "&.pe-menu--width-auto": {
       width: "auto"
@@ -138,13 +138,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

@@ -2,7 +2,7 @@
   "name": "polythene-react-list",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-list.js",
+  "main": "dist/polythene-react-list",
   "module": "dist/polythene-react-list.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

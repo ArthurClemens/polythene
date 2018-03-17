@@ -4,13 +4,13 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-slider']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreSlider) { 'use strict';
 
-var Slider = polytheneMithrilBase.StateComponent(polytheneCoreSlider.coreSlider);
+	var Slider = polytheneMithrilBase.StateComponent(polytheneCoreSlider.coreSlider);
 
-Slider.displayName = "Slider";
+	Slider.displayName = "Slider";
 
-exports.Slider = Slider;
+	exports.Slider = Slider;
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-mithril-slider.js.map

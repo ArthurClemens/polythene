@@ -2,7 +2,7 @@
   "name": "polythene-core-ios-spinner",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-ios-spinner.js",
+  "main": "dist/polythene-core-ios-spinner",
   "module": "dist/polythene-core-ios-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

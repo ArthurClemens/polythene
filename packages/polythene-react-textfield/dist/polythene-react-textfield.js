@@ -4,13 +4,13 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-textfield']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreTextfield) { 'use strict';
 
-var TextField = polytheneReactBase.StateComponent(polytheneCoreTextfield.coreTextField);
+	var TextField = polytheneReactBase.StateComponent(polytheneCoreTextfield.coreTextField);
 
-TextField.displayName = "TextField";
+	TextField.displayName = "TextField";
 
-exports.TextField = TextField;
+	exports.TextField = TextField;
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-react-textfield.js.map

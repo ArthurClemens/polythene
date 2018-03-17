@@ -2,7 +2,7 @@
   "name": "polythene-react-ios-spinner",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-ios-spinner.js",
+  "main": "dist/polythene-react-ios-spinner",
   "module": "dist/polythene-react-ios-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

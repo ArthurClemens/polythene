@@ -52,10 +52,10 @@ var createContent = function createContent(vnode, _ref2) {
   return [content, shadow];
 };
 
-var toolbar = Object.freeze({
-	getElement: getElement,
-	createProps: createProps,
-	createContent: createContent
+var toolbar = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -78,10 +78,10 @@ var createContent$1 = function createContent(vnode) {
   return attrs.text ? attrs.text : attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-var toolbarTitle = Object.freeze({
-	getElement: getElement$1,
-	createProps: createProps$1,
-	createContent: createContent$1
+var toolbarTitle = /*#__PURE__*/Object.freeze({
+  getElement: getElement$1,
+  createProps: createProps$1,
+  createContent: createContent$1
 });
 
 var rgba = function rgba(colorStr) {

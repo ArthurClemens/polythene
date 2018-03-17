@@ -1,14 +1,14 @@
-import { StateComponent, ViewComponent } from 'polythene-mithril-base';
-import { coreCheckbox } from 'polythene-core-checkbox';
-import { coreSelectionControl, viewControl } from 'polythene-core-selection-control';
+import { ViewComponent, StateComponent } from 'polythene-mithril-base';
+import { viewControl, coreSelectionControl } from 'polythene-core-selection-control';
 import { Icon } from 'polythene-mithril-icon';
 import { IconButton } from 'polythene-mithril-icon-button';
+import { coreCheckbox } from 'polythene-core-checkbox';
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var ViewControl = ViewComponent(_extends$2({}, viewControl, {
+var ViewControl = ViewComponent(_extends({}, viewControl, {
   createContent: function createContent(vnode, args) {
-    return viewControl.createContent(vnode, _extends$2(args, { Icon: Icon, IconButton: IconButton }));
+    return viewControl.createContent(vnode, _extends(args, { Icon: Icon, IconButton: IconButton }));
   }
 }));
 
@@ -24,9 +24,9 @@ var SelectionControl = StateComponent(_extends$1({}, coreSelectionControl, {
 
 SelectionControl.displayName = "SelectionControl";
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var Checkbox = StateComponent(_extends({}, coreCheckbox, {
+var Checkbox = StateComponent(_extends$2({}, coreCheckbox, {
   component: SelectionControl
 }));
 

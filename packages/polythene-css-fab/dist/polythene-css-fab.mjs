@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-fab';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-fab';
 
 var classes = {
   component: "pe-fab",
@@ -40,7 +40,7 @@ var layout = (function (selector, componentVars) {
       " .pe-button__content": {
         width: componentVars.size_mini + "px",
         height: componentVars.size_mini + "px",
-        padding: (componentVars.size_mini - vars$1.unit_icon_size) / 2 + "px"
+        padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
       }
     },
 
@@ -49,7 +49,7 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-button__wash": {
-      transition: "background-color " + vars$1.animation_duration + " ease-in-out",
+      transition: "background-color " + vars.animation_duration + " ease-in-out",
       borderRadius: "inherit",
       pointerEvents: "none",
       backgroundColor: "transparent"
@@ -88,13 +88,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

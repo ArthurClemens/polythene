@@ -2,7 +2,7 @@
   "name": "polythene-core-tabs",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-tabs.js",
+  "main": "dist/polythene-core-tabs",
   "module": "dist/polythene-core-tabs.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

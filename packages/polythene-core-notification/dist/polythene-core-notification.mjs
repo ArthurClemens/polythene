@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, hide, isClient, isServer, show } from 'polythene-core';
+import { filterSupportedAttributes, show, hide, isClient, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 
@@ -206,13 +206,13 @@ var createContent = function createContent(vnode, _ref2) {
   }, attrs.content || [attrs.title ? h("div", { className: classes.title }, attrs.title) : null, attrs.action ? h("div", { className: classes.action }, attrs.action) : null]);
 };
 
-var notificationInstance = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createContent: createContent
+var notificationInstance = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

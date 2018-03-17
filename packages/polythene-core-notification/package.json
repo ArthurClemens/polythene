@@ -2,7 +2,7 @@
   "name": "polythene-core-notification",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-notification.js",
+  "main": "dist/polythene-core-notification",
   "module": "dist/polythene-core-notification.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

@@ -2,7 +2,7 @@
   "name": "polythene-core-search",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-search.js",
+  "main": "dist/polythene-core-search",
   "module": "dist/polythene-core-search.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

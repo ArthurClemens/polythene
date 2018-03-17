@@ -2,7 +2,7 @@
   "name": "polythene-css-svg",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-svg.js",
+  "main": "dist/polythene-css-svg",
   "module": "dist/polythene-css-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

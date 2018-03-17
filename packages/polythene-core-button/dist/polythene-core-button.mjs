@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes, isClient } from 'polythene-core';
+import { filterSupportedAttributes, isClient, deprecation } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -153,13 +153,13 @@ var createContent = function createContent(vnode, _ref3) {
   disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
 };
 
-var button = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createContent: createContent
+var button = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

@@ -2,7 +2,7 @@
   "name": "polythene-css-raised-button",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-raised-button.js",
+  "main": "dist/polythene-css-raised-button",
   "module": "dist/polythene-css-raised-button.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

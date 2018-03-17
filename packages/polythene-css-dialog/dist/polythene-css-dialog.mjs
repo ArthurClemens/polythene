@@ -1,6 +1,6 @@
-import { flex, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-dialog';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
+import { mixin, flex, styler } from 'polythene-core-css';
+import { vars as vars$1 } from 'polythene-core-dialog';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -84,7 +84,7 @@ var layout = (function (selector, componentVars) {
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: vars$1.z_dialog,
+    zIndex: vars.z_dialog,
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
     opacity: 0,
@@ -145,13 +145,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

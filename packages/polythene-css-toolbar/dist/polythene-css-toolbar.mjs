@@ -1,6 +1,6 @@
-import { flex, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-toolbar';
-import { vars as vars$1 } from 'polythene-theme';
+import { mixin, flex, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-toolbar';
 
 var classes = {
 
@@ -40,7 +40,7 @@ var layout = (function (selector, componentVars) {
     lineHeight: componentVars.line_height + "em",
     padding: "0 " + componentVars.padding_side + "px",
     position: "relative",
-    zIndex: vars$1.z_toolbar,
+    zIndex: vars.z_toolbar,
 
     ".pe-toolbar--fullbleed": {
       padding: 0
@@ -92,7 +92,7 @@ var layout = (function (selector, componentVars) {
     " .pe-fit": [mixin.fit(), {
       margin: 0
     }]
-  }]), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+  }]), _defineProperty(_ref3, "@media (min-width: " + vars.breakpoint_for_phone_only + "px) and (orientation: landscape)", _defineProperty({}, selector, compactStyle(componentVars))), _defineProperty(_ref3, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     height: componentVars.height_large + "px",
     padding: "0 " + componentVars.padding_side_large + "px"
   })), _defineProperty(_ref3, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
@@ -137,13 +137,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

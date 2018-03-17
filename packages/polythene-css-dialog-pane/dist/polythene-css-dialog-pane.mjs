@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { flex, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-dialog-pane';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-dialog-pane';
 
 var classes = {
   component: "pe-dialog-pane",
@@ -55,9 +55,9 @@ var layout = (function (selector, componentVars) {
     },
 
     " .pe-dialog-pane__title": {
-      fontSize: vars$1.font_size_title + "px",
+      fontSize: vars.font_size_title + "px",
       lineHeight: lineHeightTitle + "px",
-      fontWeight: vars$1.font_weight_medium,
+      fontWeight: vars.font_weight_medium,
 
       "& + div": {
         marginTop: "16px"
@@ -202,13 +202,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

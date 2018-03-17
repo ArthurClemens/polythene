@@ -93,10 +93,10 @@ var createContent = function createContent(vnode, _ref5) {
   return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? { key: "ripple" } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, k, requiresKeys, Icon, attrs.secondary) : null];
 };
 
-var listTile = Object.freeze({
-	getElement: getElement,
-	createProps: createProps,
-	createContent: createContent
+var listTile = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

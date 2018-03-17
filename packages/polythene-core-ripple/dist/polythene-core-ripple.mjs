@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, getAnimationEndEvent, isServer, isTouch, pointerEndEvent } from 'polythene-core';
+import { isTouch, getAnimationEndEvent, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
@@ -165,12 +165,12 @@ var onUnMount = function onUnMount(_ref2) {
   return state.cleanUp && state.cleanUp();
 };
 
-var ripple = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	createProps: createProps,
-	onMount: onMount,
-	onUnMount: onUnMount
+var ripple = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  createProps: createProps,
+  onMount: onMount,
+  onUnMount: onUnMount
 });
 
 var vars$1 = {

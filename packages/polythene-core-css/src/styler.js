@@ -1,4 +1,4 @@
-import { prefixPlugin } from "j2c-plugin-prefix-browser";
+import { prefixPlugin } from "j2c-plugin-prefix-browser/dist/j2c-plugin-prefix-browser.commonjs";
 import { isServer } from "polythene-core";
 import J2c from "j2c";
 

@@ -1,6 +1,6 @@
-import { flex, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-tabs';
-import { vars as vars$1 } from 'polythene-theme';
+import { mixin, flex, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-tabs';
 
 var buttonClasses = {
   base: "pe-button",
@@ -42,7 +42,7 @@ var classes = {
   isMenu: "pe-tabs--menu",
   scrollable: "pe-tabs--scrollable",
   compactTabs: "pe-tabs--compact",
-  tabHasIcon: "pe-tabs__tab---icon",
+  tabHasIcon: "pe-tabs__tab--icon",
   tabRowCentered: "pe-tabs__row--centered",
   tabRowIndent: "pe-tabs__row--indent",
 
@@ -67,10 +67,10 @@ var layout = (function (selector, componentVars) {
       " .pe-tabs__tab": {
         height: componentVars.menu_tab_height + "px"
       },
-      " .pe-tabs__tab---icon": {
+      " .pe-tabs__tab--icon": {
         height: componentVars.menu_tab_icon_label_height + "px"
       },
-      " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon, .pe-tabs__tab.pe-text-button": {
+      " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab--icon, .pe-tabs__tab.pe-text-button": {
         minWidth: 0,
         height: componentVars.menu_tab_icon_label_height + "px",
 
@@ -176,7 +176,7 @@ var layout = (function (selector, componentVars) {
       ".pe-text-button .pe-button__content": {
         padding: "0 " + componentVars.tab_content_padding_v + "px",
         height: componentVars.tab_height + "px",
-        lineHeight: vars$1.line_height + "em",
+        lineHeight: vars.line_height + "em",
         borderRadius: 0,
 
         " .pe-button__label, .pe-icon": {
@@ -205,7 +205,7 @@ var layout = (function (selector, componentVars) {
           opacity: 1
         }
       },
-      ".pe-tabs__tab---icon": {
+      ".pe-tabs__tab--icon": {
         "&, .pe-button__content": [{
           height: componentVars.tab_icon_label_height + "px"
         }, {
@@ -261,7 +261,7 @@ var layout = (function (selector, componentVars) {
       top: "auto"
     }]
 
-  }, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
+  }, "@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
     ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
       minWidth: componentVars.tab_min_width_tablet + "px"
     }
@@ -306,13 +306,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

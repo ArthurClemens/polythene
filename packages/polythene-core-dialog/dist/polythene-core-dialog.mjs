@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, hide, show, subscribe, unsubscribe } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -267,14 +267,14 @@ var createContent = function createContent(vnode, _ref3) {
   }), pane])];
 };
 
-var dialog = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createPane: createPane,
-	createContent: createContent
+var dialog = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createPane: createPane,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

@@ -148,11 +148,11 @@ var createContent = function createContent(vnode, _ref2) {
   }, attrs.disabled || inactive ? { disabled: "disabled" } : _defineProperty({}, k.onchange, state.onChange)))]);
 };
 
-var selectionControl = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	createProps: createProps,
-	createContent: createContent
+var selectionControl = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -195,9 +195,9 @@ var createContent$1 = function createContent(vnode, _ref) {
   ));
 };
 
-var viewControl = Object.freeze({
-	getElement: getElement$1,
-	createContent: createContent$1
+var viewControl = /*#__PURE__*/Object.freeze({
+  getElement: getElement$1,
+  createContent: createContent$1
 });
 
 var rgba = function rgba(colorStr) {

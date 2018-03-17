@@ -2,7 +2,7 @@
   "name": "polythene-mithril-notification",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-notification.js",
+  "main": "dist/polythene-mithril-notification",
   "module": "dist/polythene-mithril-notification.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

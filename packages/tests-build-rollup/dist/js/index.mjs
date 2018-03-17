@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { Button, Card, Checkbox, Dialog, FAB, Icon, IconButton, MaterialDesignSpinner, Notification, RadioGroup, RaisedButton, SVG, Slider, Snackbar, Switch, Tabs, TextField } from 'polythene-mithril';
+import { Button, Card, Checkbox, Dialog, FAB, Icon, IconButton, MaterialDesignSpinner, Notification, RadioGroup, RaisedButton, Slider, Snackbar, SVG, Switch, Tabs, TextField } from 'polythene-mithril';
 import { addTypography } from 'polythene-css';
 
 addTypography();

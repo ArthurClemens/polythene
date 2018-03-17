@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-drawer';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-drawer';
 
 var classes = {
   component: "pe-dialog pe-drawer",
@@ -146,7 +146,7 @@ var layout = (function (selector, componentVars) {
       position: "fixed",
       top: 0,
       width: "100%",
-      zIndex: vars$1.z_app_bar
+      zIndex: vars.z_app_bar
     },
 
     // Permanent
@@ -214,7 +214,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog--visible .pe-dialog__backdrop": {
       opacity: 1
     }
-  }), _defineProperty(_ref2, "*[dir=rtl] " + selector + ".pe-drawer--anchor-end, .pe-rtl " + selector + ".pe-drawer--anchor-end, " + selector + ":not(.pe-drawer--anchor-end)", alignLeft(componentVars)), _defineProperty(_ref2, "*[dir=rtl] " + selector + ", .pe-rtl " + selector + ", " + selector + ".pe-drawer--anchor-end", [alignRight(componentVars)]), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
+  }), _defineProperty(_ref2, "*[dir=rtl] " + selector + ".pe-drawer--anchor-end, .pe-rtl " + selector + ".pe-drawer--anchor-end, " + selector + ":not(.pe-drawer--anchor-end)", alignLeft(componentVars)), _defineProperty(_ref2, "*[dir=rtl] " + selector + ", .pe-rtl " + selector + ", " + selector + ".pe-drawer--anchor-end", [alignRight(componentVars)]), _defineProperty(_ref2, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, {
     ".pe-drawer--push": {
       " .pe-dialog__content": {
         maxWidth: componentVars.content_max_width_large + "px"
@@ -254,13 +254,13 @@ var fns = [layout, color];
 var selector = "." + classes.component.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

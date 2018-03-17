@@ -2,7 +2,7 @@
   "name": "polythene-core-css",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-css.js",
+  "main": "dist/polythene-core-css",
   "module": "dist/polythene-core-css.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

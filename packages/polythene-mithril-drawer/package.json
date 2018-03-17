@@ -2,7 +2,7 @@
   "name": "polythene-mithril-drawer",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-drawer.js",
+  "main": "dist/polythene-mithril-drawer",
   "module": "dist/polythene-mithril-drawer.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

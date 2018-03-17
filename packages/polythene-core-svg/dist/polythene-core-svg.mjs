@@ -35,11 +35,11 @@ var createContent = function createContent(vnode) {
   return attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 
-var svg = Object.freeze({
-	getElement: getElement,
-	onMount: onMount,
-	createProps: createProps,
-	createContent: createContent
+var svg = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  onMount: onMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var vars = {

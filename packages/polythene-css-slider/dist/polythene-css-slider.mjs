@@ -1,6 +1,6 @@
-import { flex, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-slider';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
+import { mixin, flex, styler } from 'polythene-core-css';
+import { vars as vars$1 } from 'polythene-core-slider';
 
 var classes = {
   component: "pe-slider",
@@ -120,10 +120,10 @@ var layout = (function (selector, componentVars) {
     " .pe-slider__label": {
       height: componentVars.height + "px",
       lineHeight: componentVars.height + "px",
-      minWidth: vars$1.unit_icon_size + "px",
+      minWidth: vars.unit_icon_size + "px",
       textAlign: "center",
       fontSize: "16px",
-      fontWeight: vars$1.font_weight_medium
+      fontWeight: vars.font_weight_medium
     },
 
     " .pe-slider__track-part": [flex.flex(), {
@@ -361,13 +361,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

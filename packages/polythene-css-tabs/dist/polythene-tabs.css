@@ -8,25 +8,25 @@
   display: none
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab---icon {
+.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab--icon {
   height: 44px
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab---icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button {
+.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button {
   min-width: 0;
   height: 44px
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content {
+.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content {
   padding: 0 6px;
   height: 44px
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
+.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
   margin-bottom: 0
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__content {
+.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__content {
   font-size: 10px;
   line-height: 12px;
   text-transform: none
@@ -170,15 +170,15 @@
   opacity: 1
 }
 
-.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content {
+.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content {
   height: 72px
 }
 
-.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-icon {
+.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-icon {
   margin: 0 auto
 }
 
-.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab---icon .pe-icon {
+.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-icon {
   margin-bottom: 7px
 }
 

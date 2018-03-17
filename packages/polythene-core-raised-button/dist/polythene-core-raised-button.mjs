@@ -1,4 +1,4 @@
-import { isServer, pointerEndEvent, pointerStartMoveEvent, subscribe } from 'polythene-core';
+import { isServer, pointerStartMoveEvent, pointerEndEvent, subscribe } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -11,9 +11,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var MAX_Z = 5;
 
-var tapStart = void 0;
-var tapEndAll = function tapEndAll() {};
-var downButtons = [];
+var tapStart = void 0,
+    tapEndAll = function tapEndAll() {},
+    downButtons = [];
 
 subscribe(pointerEndEvent, function () {
   return tapEndAll();
@@ -106,12 +106,12 @@ var createContent = function createContent(vnode) {
   return vnode.children;
 };
 
-var raisedButton = Object.freeze({
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createContent: createContent
+var raisedButton = /*#__PURE__*/Object.freeze({
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

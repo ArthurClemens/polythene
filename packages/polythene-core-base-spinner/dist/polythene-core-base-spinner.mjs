@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, hide, show } from 'polythene-core';
+import { filterSupportedAttributes, show, hide } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -120,11 +120,11 @@ var createContent = function createContent(vnode, _ref2) {
   return [attrs.raised && attrs.content ? h(Shadow, { key: "shadow", z: attrs.z }) : null, attrs.content];
 };
 
-var spinner = Object.freeze({
-	getInitialState: getInitialState,
-	onMount: onMount,
-	createProps: createProps,
-	createContent: createContent
+var spinner = /*#__PURE__*/Object.freeze({
+  getInitialState: getInitialState,
+  onMount: onMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

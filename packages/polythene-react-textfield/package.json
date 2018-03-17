@@ -2,7 +2,7 @@
   "name": "polythene-react-textfield",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-textfield.js",
+  "main": "dist/polythene-react-textfield",
   "module": "dist/polythene-react-textfield.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

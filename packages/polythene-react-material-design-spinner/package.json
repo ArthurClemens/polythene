@@ -2,7 +2,7 @@
   "name": "polythene-react-material-design-spinner",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-material-design-spinner.js",
+  "main": "dist/polythene-react-material-design-spinner",
   "module": "dist/polythene-react-material-design-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

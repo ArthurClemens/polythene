@@ -2,7 +2,7 @@
   "name": "polythene-mithril-textfield",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-textfield.js",
+  "main": "dist/polythene-mithril-textfield",
   "module": "dist/polythene-mithril-textfield.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

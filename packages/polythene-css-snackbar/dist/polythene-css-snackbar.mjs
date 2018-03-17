@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { flex, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-snackbar';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-snackbar';
 
 var notificationClasses = {
   component: "pe-notification",
@@ -19,9 +19,9 @@ var notificationClasses = {
   vertical: "pe-notification--vertical"
 };
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var classes = _extends$1({}, notificationClasses, {
+var classes = _extends({}, notificationClasses, {
   component: "pe-notification pe-snackbar",
 
   // elements
@@ -37,8 +37,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var tabletStyle = function tabletStyle(componentVars) {
   return {
     " .pe-notification__content": {
-      borderTopLeftRadius: vars$1.unit_block_border_radius + "px",
-      borderTopRightRadius: vars$1.unit_block_border_radius + "px",
+      borderTopLeftRadius: vars.unit_block_border_radius + "px",
+      borderTopRightRadius: vars.unit_block_border_radius + "px",
       minWidth: componentVars.min_width + "px",
       maxWidth: componentVars.max_width + "px"
     },
@@ -61,7 +61,7 @@ var layout = (function (selector, componentVars) {
       margin: "0 auto",
       borderRadius: 0
     }
-  }), _defineProperty(_ref2, "@media (min-width: " + vars$1.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+  }), _defineProperty(_ref2, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -93,7 +93,7 @@ var holderLayout = (function (selector) {
     right: 0,
     bottom: 0,
     left: 0,
-    zIndex: vars$1.z_notification,
+    zIndex: vars.z_notification,
     pointerEvents: "none",
     justifyContent: "flex-start", // For IE11
     width: "100%"
@@ -102,7 +102,7 @@ var holderLayout = (function (selector) {
   }), _ref)];
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var fns = [layout, color];
 var selector = "." + classes.component.replace(/ /g, ".");
@@ -111,14 +111,14 @@ var holderFns = [holderLayout];
 var holderSelector = "." + classes.holder.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([holderSelector], vars, holderFns).concat(styler.createStyleSheets([selector], vars, fns));
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends$1({}, vars$1, customVars), fns) : styler.createStyleSheets([holderSelector], vars$1, holderFns).concat(styler.createStyleSheets([selector], vars$1, fns));
 };
 
-styler.generateStyles([holderSelector], vars, holderFns);
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([holderSelector], vars$1, holderFns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

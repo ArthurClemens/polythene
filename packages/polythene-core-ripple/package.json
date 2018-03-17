@@ -2,7 +2,7 @@
   "name": "polythene-core-ripple",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-ripple.js",
+  "main": "dist/polythene-core-ripple",
   "module": "dist/polythene-core-ripple.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

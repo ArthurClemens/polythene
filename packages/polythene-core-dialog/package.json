@@ -2,7 +2,7 @@
   "name": "polythene-core-dialog",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-dialog.js",
+  "main": "dist/polythene-core-dialog",
   "module": "dist/polythene-core-dialog.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

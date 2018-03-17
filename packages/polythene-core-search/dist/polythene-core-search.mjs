@@ -58,11 +58,11 @@ var createContent = function createContent(vnode, _ref2) {
   })), buttons.after]);
 };
 
-var search = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	createProps: createProps,
-	createContent: createContent
+var search = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

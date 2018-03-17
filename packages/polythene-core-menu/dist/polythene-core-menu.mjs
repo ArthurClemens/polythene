@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, hide, isServer, isTouch, show, subscribe, unsubscribe } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer, isTouch } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -301,13 +301,13 @@ var createContent = function createContent(vnode, _ref2) {
   }), attrs.content ? attrs.content : vnode.children]);
 };
 
-var menu = Object.freeze({
-	getElement: getElement,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	getInitialState: getInitialState,
-	createProps: createProps,
-	createContent: createContent
+var menu = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  getInitialState: getInitialState,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

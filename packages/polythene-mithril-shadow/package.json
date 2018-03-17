@@ -2,7 +2,7 @@
   "name": "polythene-mithril-shadow",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-shadow.js",
+  "main": "dist/polythene-mithril-shadow",
   "module": "dist/polythene-mithril-shadow.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

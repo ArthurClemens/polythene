@@ -1,6 +1,6 @@
 import { flex, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-notification';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-notification';
 
 var classes = {
   component: "pe-notification",
@@ -107,7 +107,7 @@ var holderLayout = (function (selector) {
 
     ".pe-multiple--screen": {
       position: "fixed",
-      zIndex: vars$1.z_notification
+      zIndex: vars.z_notification
     }
   }]), _defineProperty$2(_ref, ":not(.pe-notification--container) .pe-multiple--container", {
     position: "absolute"
@@ -123,14 +123,14 @@ var holderFns = [holderLayout];
 var holderSelector = "." + classes.holder;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([holderSelector], vars, holderFns).concat(styler.createStyleSheets([selector], vars, fns));
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([holderSelector], vars$1, holderFns).concat(styler.createStyleSheets([selector], vars$1, fns));
 };
 
-styler.generateStyles([holderSelector], vars, holderFns);
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([holderSelector], vars$1, holderFns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

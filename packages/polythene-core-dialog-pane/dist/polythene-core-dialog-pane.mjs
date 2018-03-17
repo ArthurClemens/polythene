@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unpackAttrs, unsubscribe } from 'polythene-core';
+import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -183,13 +183,13 @@ var createContent = function createContent(vnode, _ref2) {
   }, h("div", { className: classes.actions }, attrs.footerButtons)) : null]);
 };
 
-var dialogPane = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createContent: createContent
+var dialogPane = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

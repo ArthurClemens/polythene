@@ -63,11 +63,11 @@ var createContent = function createContent(vnode, _ref2) {
   }) : null;
 };
 
-var radioGroup = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	createProps: createProps,
-	createContent: createContent
+var radioGroup = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  createProps: createProps,
+  createContent: createContent
 });
 
 export { radioGroup as coreRadioGroup };

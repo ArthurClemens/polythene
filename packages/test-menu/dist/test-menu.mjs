@@ -1,7 +1,7 @@
-import { Dialog, IconButton, List, ListTile, Menu, RaisedButton, Shadow, keys, renderer } from 'polythene-mithril';
 import { styler } from 'polythene-core-css';
-import { ListTileCSS, MenuCSS } from 'polythene-css';
-import { Dialog as Dialog$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, Menu as Menu$1, RaisedButton as RaisedButton$1, Shadow as Shadow$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { MenuCSS, ListTileCSS } from 'polythene-css';
+import { renderer, keys, Dialog, RaisedButton, Menu, List, ListTile, Shadow, IconButton } from 'polythene-mithril';
+import { renderer as renderer$1, Menu as Menu$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Dialog as Dialog$1, keys as keys$1, Shadow as Shadow$1, IconButton as IconButton$1 } from 'polythene-react';
 
 var menuItems = (function (_ref) {
   var h = _ref.renderer,
@@ -77,9 +77,10 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var stream$2 = createCommonjsModule(function (module) {
-	/* eslint-disable */
-	(function () {
+var stream = createCommonjsModule(function (module) {
+(function () {
+		/* eslint-enable */
+
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -264,7 +265,7 @@ var stream$2 = createCommonjsModule(function (module) {
 	})();
 });
 
-var stream = stream$2;
+var stream$1 = stream;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -282,10 +283,10 @@ var opener = (function (_ref) {
       id = _ref.id;
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
+      var show = stream$1(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show]) // for React
+        redrawOnUpdate: stream$1.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -402,10 +403,10 @@ var createPositionContainer = function createPositionContainer(_ref) {
       IconButton$$1 = _ref.IconButton;
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
+      var show = stream$1(false);
       _extends$1(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show]) // for React
+        redrawOnUpdate: stream$1.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -496,12 +497,12 @@ var settings = (function (_ref) {
       ListTile$$1 = _ref.ListTile;
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
-      var selectedIndex = stream(0);
+      var show = stream$1(false);
+      var selectedIndex = stream$1(0);
       _extends$2(vnode.state, {
         show: show,
         selectedIndex: selectedIndex,
-        redrawOnUpdate: stream.merge([show]), // for React
+        redrawOnUpdate: stream$1.merge([show]), // for React
         id: "id-" + Math.floor(Math.random() * 1000)
       });
     },
@@ -880,7 +881,6 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-
 /* eslint-disable no-unused-vars */
 
 var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -1019,8 +1019,13 @@ emptyFunction.thatReturnsArgument = function (arg) {
 var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+var q = "function" === typeof Symbol && Symbol["for"],
+    r = q ? Symbol["for"]("react.element") : 60103,
+    t = q ? Symbol["for"]("react.call") : 60104,
+    u = q ? Symbol["for"]("react.return") : 60105,
+    v = q ? Symbol["for"]("react.portal") : 60106,
+    w = q ? Symbol["for"]("react.fragment") : 60107,
+    x = "function" === typeof Symbol && Symbol.iterator;
 function y(a) {
   for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
     e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
@@ -1041,7 +1046,9 @@ function B(a, b, e) {
   this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
 }var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+};var G = { current: null },
+    H = Object.prototype.hasOwnProperty,
+    I = { key: !0, ref: !0, __self: !0, __source: !0 };
 function J(a, b, e) {
   var c,
       d = {},
@@ -1062,8 +1069,8 @@ function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var L = /\/+/g;
-var M = [];function N(a, b, e, c) {
+}var L = /\/+/g,
+    M = [];function N(a, b, e, c) {
   if (M.length) {
     var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
   }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
@@ -1116,9 +1123,9 @@ var U = { Children: { map: function map(a, b, e) {
   }, createFactory: function createFactory(a) {
     var b = J.bind(null, a);b.type = a;return b;
   },
-  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
-var V = Object.freeze({ default: U });
-var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } },
+    V = Object.freeze({ default: U }),
+    W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1230,16 +1237,16 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
-var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$1 = invariant_1;
   var warning$1 = warning_1;
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
 }
 
@@ -1265,12 +1272,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$2(typeSpecs[typeSpecName]));
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$1(typeSpecs[typeSpecName]));
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
         } catch (ex) {
           error = ex;
         }
-        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$2(error));
+        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$1(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -1287,20 +1294,13 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.2.0
-   * react.development.js
-   *
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
 
   if (process.env.NODE_ENV !== "production") {
     (function () {
+
       var _assign = objectAssign;
       var emptyObject = emptyObject_1;
       var invariant = invariant_1;
@@ -1519,7 +1519,7 @@ var react_development = createCommonjsModule(function (module) {
        * @protected
        */
       Component.prototype.setState = function (partialState, callback) {
-        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$1(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$2(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
         this.updater.enqueueSetState(this, partialState, callback, 'setState');
       };
 
@@ -1921,7 +1921,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$2(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -2015,7 +2015,7 @@ var react_development = createCommonjsModule(function (module) {
        * @return {!number} The number of children in this subtree.
        */
       function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-        var type = typeof children === 'undefined' ? 'undefined' : _typeof$1(children);
+        var type = typeof children === 'undefined' ? 'undefined' : _typeof$2(children);
 
         if (type === 'undefined' || type === 'boolean') {
           // All of the above are perceived as null.
@@ -2128,7 +2128,7 @@ var react_development = createCommonjsModule(function (module) {
       function getComponentKey(component, index) {
         // Do some typechecking here since we call this blindly. We want to ensure
         // that we don't block potential future ES APIs.
-        if ((typeof component === 'undefined' ? 'undefined' : _typeof$1(component)) === 'object' && component !== null && component.key != null) {
+        if ((typeof component === 'undefined' ? 'undefined' : _typeof$2(component)) === 'object' && component !== null && component.key != null) {
           // Explicit key
           return escape(component.key);
         }
@@ -2404,7 +2404,7 @@ var react_development = createCommonjsModule(function (module) {
        * @param {*} parentType node's parent's type.
        */
       function validateChildKeys(node, parentType) {
-        if ((typeof node === 'undefined' ? 'undefined' : _typeof$1(node)) !== 'object') {
+        if ((typeof node === 'undefined' ? 'undefined' : _typeof$2(node)) !== 'object') {
           return;
         }
         if (Array.isArray(node)) {
@@ -2506,12 +2506,12 @@ var react_development = createCommonjsModule(function (module) {
       }
 
       function createElementWithValidation(type, props, children) {
-        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' || typeof type === 'number';
+        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' || typeof type === 'number';
         // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
         if (!validType) {
           var info = '';
-          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
+          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
             info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
           }
 
@@ -2524,7 +2524,7 @@ var react_development = createCommonjsModule(function (module) {
 
           info += getStackAddendum() || '';
 
-          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$1(type), info);
+          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$2(type), info);
         }
 
         var element = createElement.apply(this, arguments);
@@ -2546,7 +2546,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -2640,13 +2640,13 @@ var react_development = createCommonjsModule(function (module) {
 });
 
 var react = createCommonjsModule(function (module) {
+
   if (process.env.NODE_ENV === 'production') {
     module.exports = react_production_min;
   } else {
     module.exports = react_development;
   }
 });
-
 var react_1 = react.Children;
 var react_2 = react.Component;
 var react_3 = react.PropTypes;
@@ -2726,20 +2726,20 @@ function makeEmptyFunction$1(arg) {
  * primarily useful idiomatically for overridable function endpoints which
  * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
  */
-var emptyFunction$2 = function emptyFunction() {};
+var emptyFunction$1 = function emptyFunction() {};
 
-emptyFunction$2.thatReturns = makeEmptyFunction$1;
-emptyFunction$2.thatReturnsFalse = makeEmptyFunction$1(false);
-emptyFunction$2.thatReturnsTrue = makeEmptyFunction$1(true);
-emptyFunction$2.thatReturnsNull = makeEmptyFunction$1(null);
-emptyFunction$2.thatReturnsThis = function () {
+emptyFunction$1.thatReturns = makeEmptyFunction$1;
+emptyFunction$1.thatReturnsFalse = makeEmptyFunction$1(false);
+emptyFunction$1.thatReturnsTrue = makeEmptyFunction$1(true);
+emptyFunction$1.thatReturnsNull = makeEmptyFunction$1(null);
+emptyFunction$1.thatReturnsThis = function () {
   return this;
 };
-emptyFunction$2.thatReturnsArgument = function (arg) {
+emptyFunction$1.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1$2 = emptyFunction$2;
+var emptyFunction_1$1 = emptyFunction$1;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2793,7 +2793,7 @@ function invariant$2(condition, format, a, b, c, d, e, f) {
   }
 }
 
-var invariant_1$2 = invariant$2;
+var invariant_1$1 = invariant$2;
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -2802,7 +2802,7 @@ var invariant_1$2 = invariant$2;
  * same logic and follow the same code paths.
  */
 
-var warning$4 = emptyFunction_1$2;
+var warning$3 = emptyFunction_1$1;
 
 if (process.env.NODE_ENV !== 'production') {
   (function () {
@@ -2826,7 +2826,7 @@ if (process.env.NODE_ENV !== 'production') {
       } catch (x) {}
     };
 
-    warning$4 = function warning(condition, format) {
+    warning$3 = function warning(condition, format) {
       if (format === undefined) {
         throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
       }
@@ -2846,7 +2846,7 @@ if (process.env.NODE_ENV !== 'production') {
   })();
 }
 
-var warning_1$2 = warning$4;
+var warning_1$1 = warning$3;
 
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -2859,14 +2859,14 @@ var warning_1$2 = warning$4;
 
 var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1$2 = ReactPropTypesSecret$2;
+var ReactPropTypesSecret_1$1 = ReactPropTypesSecret$2;
 
-var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant$3 = invariant_1$2;
-  var warning$5 = warning_1$2;
-  var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$2;
+  var invariant$3 = invariant_1$1;
+  var warning$4 = warning_1$1;
+  var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$1;
   var loggedTypeFailures$1 = {};
 }
 
@@ -2897,7 +2897,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
         } catch (ex) {
           error = ex;
         }
-        warning$5(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$6(error));
+        warning$4(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$3(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures$1)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -2905,16 +2905,16 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
 
           var stack = getStack ? getStack() : '';
 
-          warning$5(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+          warning$4(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
         }
       }
     }
   }
 }
 
-var checkPropTypes_1$2 = checkPropTypes$1;
+var checkPropTypes_1$1 = checkPropTypes$1;
 
-var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -3054,17 +3054,17 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret_1$2) {
+      if (secret !== ReactPropTypesSecret_1$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
-          invariant_1$2(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (!manualPropTypeCallCache[cacheKey] &&
           // Avoid spamming the console because they are often not actionable except for lib authors
           manualPropTypeWarningCount < 3) {
-            warning_1$2(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
+            warning_1$1(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
           }
@@ -3107,7 +3107,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   }
 
   function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunction_1$2.thatReturnsNull);
+    return createChainableTypeChecker(emptyFunction_1$1.thatReturnsNull);
   }
 
   function createArrayOfTypeChecker(typeChecker) {
@@ -3121,7 +3121,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
       }
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1$2);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1$1);
         if (error instanceof Error) {
           return error;
         }
@@ -3157,8 +3157,8 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-      return emptyFunction_1$2.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction_1$1.thatReturnsNull;
     }
 
     function validate(props, propName, componentName, location, propFullName) {
@@ -3187,7 +3187,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
       for (var key in propValue) {
         if (propValue.hasOwnProperty(key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$2);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
           if (error instanceof Error) {
             return error;
           }
@@ -3200,22 +3200,22 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunction_1$2.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction_1$1.thatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning_1$2(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
-        return emptyFunction_1$2.thatReturnsNull;
+        warning_1$1(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
+        return emptyFunction_1$1.thatReturnsNull;
       }
     }
 
     function validate(props, propName, componentName, location, propFullName) {
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1$2) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1$1) == null) {
           return null;
         }
       }
@@ -3247,7 +3247,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
         if (!checker) {
           continue;
         }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$2);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
         if (error) {
           return error;
         }
@@ -3258,7 +3258,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   }
 
   function isNode(propValue) {
-    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof$5(propValue)) {
+    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof$4(propValue)) {
       case 'number':
       case 'string':
       case 'undefined':
@@ -3325,7 +3325,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   // Equivalent of `typeof` but with special handling for array and regexp.
   function getPropType(propValue) {
-    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof$5(propValue);
+    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof$4(propValue);
     if (Array.isArray(propValue)) {
       return 'array';
     }
@@ -3383,7 +3383,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
     return propValue.constructor.name;
   }
 
-  ReactPropTypes.checkPropTypes = checkPropTypes_1$2;
+  ReactPropTypes.checkPropTypes = checkPropTypes_1$1;
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
@@ -3391,17 +3391,15 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
 var factoryWithThrowingShims = function factoryWithThrowingShims() {
   function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret_1$2) {
+    if (secret === ReactPropTypesSecret_1$1) {
       // It is still safe when called from React.
       return;
     }
-    invariant_1$2(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-  }
-  shim.isRequired = shim;
+    invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+  }  shim.isRequired = shim;
   function getShim() {
     return shim;
-  }
-  // Important!
+  }  // Important!
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
@@ -3423,13 +3421,13 @@ var factoryWithThrowingShims = function factoryWithThrowingShims() {
     shape: getShim
   };
 
-  ReactPropTypes.checkPropTypes = emptyFunction_1$2;
+  ReactPropTypes.checkPropTypes = emptyFunction_1$1;
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
 };
 
-var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var propTypes = createCommonjsModule(function (module) {
   /**
@@ -3445,7 +3443,7 @@ var propTypes = createCommonjsModule(function (module) {
     var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
 
     var isValidElement = function isValidElement(object) {
-      return (typeof object === 'undefined' ? 'undefined' : _typeof$4(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+      return (typeof object === 'undefined' ? 'undefined' : _typeof$5(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
     };
 
     // By explicitly using `prop-types` you are opting into new development behavior.
@@ -3479,7 +3477,7 @@ var propTypes = createCommonjsModule(function (module) {
  * will remain to ensure logic does not differ in production.
  */
 
-var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
+var invariant$4 = function invariant(condition, format, a, b, c, d, e, f) {
   if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -3504,7 +3502,7 @@ var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var browser$1 = invariant$5;
+var browser$1 = invariant$4;
 
 function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -3575,18 +3573,16 @@ function resolvePathname(to) {
   return result;
 }
 
-
-
-var resolvePathname$2 = Object.freeze({
-	default: resolvePathname
+var resolvePathname$1 = /*#__PURE__*/Object.freeze({
+  default: resolvePathname
 });
 
-var _typeof2$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _typeof$7 = typeof Symbol === "function" && _typeof2$1(Symbol.iterator) === "symbol" ? function (obj) {
-  return typeof obj === "undefined" ? "undefined" : _typeof2$1(obj);
+var _typeof$6 = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2$1(obj);
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 };
 
 function valueEqual(a, b) {
@@ -3600,8 +3596,8 @@ function valueEqual(a, b) {
     });
   }
 
-  var aType = typeof a === 'undefined' ? 'undefined' : _typeof$7(a);
-  var bType = typeof b === 'undefined' ? 'undefined' : _typeof$7(b);
+  var aType = typeof a === 'undefined' ? 'undefined' : _typeof$6(a);
+  var bType = typeof b === 'undefined' ? 'undefined' : _typeof$6(b);
 
   if (aType !== bType) return false;
 
@@ -3624,13 +3620,12 @@ function valueEqual(a, b) {
   return false;
 }
 
-
-
-var valueEqual$2 = Object.freeze({
-	default: valueEqual
+var valueEqual$1 = /*#__PURE__*/Object.freeze({
+  default: valueEqual
 });
 
 var PathUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   var addLeadingSlash = exports.addLeadingSlash = function addLeadingSlash(path) {
     return path.charAt(0) === '/' ? path : '/' + path;
@@ -3700,11 +3695,12 @@ var PathUtils_5 = PathUtils.stripTrailingSlash;
 var PathUtils_6 = PathUtils.parsePath;
 var PathUtils_7 = PathUtils.createPath;
 
-var _resolvePathname = ( resolvePathname$2 && resolvePathname ) || resolvePathname$2;
+var _resolvePathname = ( resolvePathname$1 && resolvePathname ) || resolvePathname$1;
 
-var _valueEqual = ( valueEqual$2 && valueEqual ) || valueEqual$2;
+var _valueEqual = ( valueEqual$1 && valueEqual ) || valueEqual$1;
 
 var LocationUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   exports.locationsAreEqual = exports.createLocation = undefined;
 
@@ -3792,6 +3788,7 @@ var LocationUtils_1 = LocationUtils.locationsAreEqual;
 var LocationUtils_2 = LocationUtils.createLocation;
 
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _warning2 = _interopRequireDefault(browser);
@@ -3880,6 +3877,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
 unwrapExports(createTransitionManager_1);
 
 var DOMUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
@@ -3945,15 +3943,16 @@ var DOMUtils_6 = DOMUtils.supportsPopStateOnHashChange;
 var DOMUtils_7 = DOMUtils.supportsGoWithoutReloadUsingHash;
 var DOMUtils_8 = DOMUtils.isExtraneousPopstateEvent;
 
-var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
-  var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+  var _typeof = typeof Symbol === "function" && _typeof2$1(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
   };
 
   var _extends = Object.assign || function (target) {
@@ -4256,7 +4255,7 @@ var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
 
 var createHistory = unwrapExports(createBrowserHistory_1);
 
-var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends$5 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -4268,21 +4267,21 @@ var _extends$5 = Object.assign || function (target) {
   }return target;
 };
 
-function _classCallCheck$1(instance, Constructor) {
+function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$1(self, call) {
+function _possibleConstructorReturn(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$8(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$7(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$1(subClass, superClass) {
+function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$8(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$7(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -4290,21 +4289,21 @@ function _inherits$1(subClass, superClass) {
  * The public API for putting history on context.
  */
 
-var Router$1 = function (_React$Component) {
-  _inherits$1(Router, _React$Component);
+var Router = function (_React$Component) {
+  _inherits(Router, _React$Component);
 
   function Router() {
     var _temp, _this, _ret;
 
-    _classCallCheck$1(this, Router);
+    _classCallCheck(this, Router);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn$1(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
       match: _this.computeMatch(_this.props.history.location.pathname)
-    }, _temp), _possibleConstructorReturn$1(_this, _ret);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   Router.prototype.getChildContext = function getChildContext() {
@@ -4364,36 +4363,36 @@ var Router$1 = function (_React$Component) {
   return Router;
 }(react.Component);
 
-Router$1.propTypes = {
+Router.propTypes = {
   history: propTypes.object.isRequired,
   children: propTypes.node
 };
-Router$1.contextTypes = {
+Router.contextTypes = {
   router: propTypes.object
 };
-Router$1.childContextTypes = {
+Router.childContextTypes = {
   router: propTypes.object.isRequired
 };
 
 // Written in this round about way for babel-transform-imports
 
-var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck(instance, Constructor) {
+function _classCallCheck$1(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn(self, call) {
+function _possibleConstructorReturn$1(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$3(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$8(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits(subClass, superClass) {
+function _inherits$1(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$3(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$8(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -4402,18 +4401,18 @@ function _inherits(subClass, superClass) {
  */
 
 var BrowserRouter = function (_React$Component) {
-  _inherits(BrowserRouter, _React$Component);
+  _inherits$1(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
     var _temp, _this, _ret;
 
-    _classCallCheck(this, BrowserRouter);
+    _classCallCheck$1(this, BrowserRouter);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = createHistory(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn$1(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = createHistory(_this.props), _temp), _possibleConstructorReturn$1(_this, _ret);
   }
 
   BrowserRouter.prototype.componentWillMount = function componentWillMount() {
@@ -4421,7 +4420,7 @@ var BrowserRouter = function (_React$Component) {
   };
 
   BrowserRouter.prototype.render = function render() {
-    return react.createElement(Router$1, { history: this.history, children: this.props.children });
+    return react.createElement(Router, { history: this.history, children: this.props.children });
   };
 
   return BrowserRouter;
@@ -4436,6 +4435,7 @@ BrowserRouter.propTypes = {
 };
 
 var createHashHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _extends = Object.assign || function (target) {
@@ -4803,7 +4803,7 @@ var HashRouter = function (_React$Component) {
   };
 
   HashRouter.prototype.render = function render() {
-    return react.createElement(Router$1, { history: this.history, children: this.props.children });
+    return react.createElement(Router, { history: this.history, children: this.props.children });
   };
 
   return HashRouter;
@@ -4936,6 +4936,7 @@ Link.contextTypes = {
 var _typeof2$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _typeof = typeof Symbol === "function" && _typeof2$2(Symbol.iterator) === "symbol" ? function (obj) {
@@ -5137,7 +5138,7 @@ function _inherits$4(subClass, superClass) {
  * The public API for a <Router> that stores location in memory.
  */
 
-var MemoryRouter$1 = function (_React$Component) {
+var MemoryRouter = function (_React$Component) {
   _inherits$4(MemoryRouter, _React$Component);
 
   function MemoryRouter() {
@@ -5157,13 +5158,13 @@ var MemoryRouter$1 = function (_React$Component) {
   };
 
   MemoryRouter.prototype.render = function render() {
-    return react.createElement(Router$1, { history: this.history, children: this.props.children });
+    return react.createElement(Router, { history: this.history, children: this.props.children });
   };
 
   return MemoryRouter;
 }(react.Component);
 
-MemoryRouter$1.propTypes = {
+MemoryRouter.propTypes = {
   initialEntries: propTypes.array,
   initialIndex: propTypes.number,
   getUserConfirmation: propTypes.func,
@@ -5177,7 +5178,7 @@ var isarray = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-var _typeof$14 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
  * Expose `pathToRegexp`.
@@ -5322,7 +5323,7 @@ function tokensToFunction(tokens) {
 
   // Compile all the patterns before compilation.
   for (var i = 0; i < tokens.length; i++) {
-    if (_typeof$14(tokens[i]) === 'object') {
+    if (_typeof$12(tokens[i]) === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$');
     }
   }
@@ -5602,7 +5603,6 @@ function pathToRegexp(path, keys$$1, options) {
 
   return stringToRegexp( /** @type {string} */path, /** @type {!Array} */keys$$1, options);
 }
-
 pathToRegexp_1.parse = parse_1;
 pathToRegexp_1.compile = compile_1;
 pathToRegexp_1.tokensToFunction = tokensToFunction_1;
@@ -5676,7 +5676,7 @@ var matchPath = function matchPath(pathname) {
 
 var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$8 = Object.assign || function (target) {
+var _extends$7 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5712,7 +5712,7 @@ var isEmptyChildren = function isEmptyChildren(children) {
  * The public API for matching a single path and rendering.
  */
 
-var Route$1 = function (_React$Component) {
+var Route = function (_React$Component) {
   _inherits$5(Route, _React$Component);
 
   function Route() {
@@ -5731,7 +5731,7 @@ var Route$1 = function (_React$Component) {
 
   Route.prototype.getChildContext = function getChildContext() {
     return {
-      router: _extends$8({}, this.context.router, {
+      router: _extends$7({}, this.context.router, {
         route: {
           location: this.props.location || this.context.router.route.location,
           match: this.state.match
@@ -5800,7 +5800,7 @@ var Route$1 = function (_React$Component) {
   return Route;
 }(react.Component);
 
-Route$1.propTypes = {
+Route.propTypes = {
   computedMatch: propTypes.object, // private, from <Switch>
   path: propTypes.string,
   exact: propTypes.bool,
@@ -5811,14 +5811,14 @@ Route$1.propTypes = {
   children: propTypes.oneOfType([propTypes.func, propTypes.node]),
   location: propTypes.object
 };
-Route$1.contextTypes = {
+Route.contextTypes = {
   router: propTypes.shape({
     history: propTypes.object.isRequired,
     route: propTypes.object.isRequired,
     staticContext: propTypes.object
   })
 };
-Route$1.childContextTypes = {
+Route.childContextTypes = {
   router: propTypes.object.isRequired
 };
 
@@ -5826,7 +5826,7 @@ Route$1.childContextTypes = {
 
 var _typeof2$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _extends$7 = Object.assign || function (target) {
+var _extends$8 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -5836,7 +5836,7 @@ var _extends$7 = Object.assign || function (target) {
   }return target;
 };
 
-var _typeof$12 = typeof Symbol === "function" && _typeof2$3(Symbol.iterator) === "symbol" ? function (obj) {
+var _typeof$14 = typeof Symbol === "function" && _typeof2$3(Symbol.iterator) === "symbol" ? function (obj) {
   return typeof obj === "undefined" ? "undefined" : _typeof2$3(obj);
 } : function (obj) {
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2$3(obj);
@@ -5864,8 +5864,8 @@ var NavLink = function NavLink(_ref) {
       ariaCurrent = _ref.ariaCurrent,
       rest = _objectWithoutProperties$1(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive', 'ariaCurrent']);
 
-  return react.createElement(Route$1, {
-    path: (typeof to === 'undefined' ? 'undefined' : _typeof$12(to)) === 'object' ? to.pathname : to,
+  return react.createElement(Route, {
+    path: (typeof to === 'undefined' ? 'undefined' : _typeof$14(to)) === 'object' ? to.pathname : to,
     exact: exact,
     strict: strict,
     location: location,
@@ -5875,12 +5875,12 @@ var NavLink = function NavLink(_ref) {
 
       var isActive = !!(getIsActive ? getIsActive(match, location) : match);
 
-      return react.createElement(Link, _extends$7({
+      return react.createElement(Link, _extends$8({
         to: to,
         className: isActive ? [className, activeClassName].filter(function (i) {
           return i;
         }).join(' ') : className,
-        style: isActive ? _extends$7({}, style, activeStyle) : style,
+        style: isActive ? _extends$8({}, style, activeStyle) : style,
         'aria-current': isActive && ariaCurrent
       }, rest));
     }
@@ -5930,7 +5930,7 @@ function _inherits$6(subClass, superClass) {
  * from a screen with a component.
  */
 
-var Prompt$1 = function (_React$Component) {
+var Prompt = function (_React$Component) {
   _inherits$6(Prompt, _React$Component);
 
   function Prompt() {
@@ -5977,14 +5977,14 @@ var Prompt$1 = function (_React$Component) {
   return Prompt;
 }(react.Component);
 
-Prompt$1.propTypes = {
+Prompt.propTypes = {
   when: propTypes.bool,
   message: propTypes.oneOfType([propTypes.func, propTypes.string]).isRequired
 };
-Prompt$1.defaultProps = {
+Prompt.defaultProps = {
   when: true
 };
-Prompt$1.contextTypes = {
+Prompt.contextTypes = {
   router: propTypes.shape({
     history: propTypes.shape({
       block: propTypes.func.isRequired
@@ -6018,7 +6018,7 @@ var parsePath = function parsePath(path) {
   };
 };
 
-var _extends$10 = Object.assign || function (target) {
+var _extends$9 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
@@ -6036,7 +6036,7 @@ var createLocation = function createLocation(path, state, key, currentLocation) 
     location.state = state;
   } else {
     // One-arg form: push(location)
-    location = _extends$10({}, path);
+    location = _extends$9({}, path);
 
     if (location.pathname === undefined) location.pathname = '';
 
@@ -6090,41 +6090,9 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 
 var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-
-
-
-
- // eslint-disable-line no-alert
-
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-
-
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-
-
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-
-
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-
 var _typeof2$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _typeof$17 = typeof Symbol === "function" && _typeof2$4(Symbol.iterator) === "symbol" ? function (obj) {
+var _typeof$16 = typeof Symbol === "function" && _typeof2$4(Symbol.iterator) === "symbol" ? function (obj) {
   return typeof obj === "undefined" ? "undefined" : _typeof2$4(obj);
 } : function (obj) {
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2$4(obj);
@@ -6132,13 +6100,13 @@ var _typeof$17 = typeof Symbol === "function" && _typeof2$4(Symbol.iterator) ===
 
 var _typeof2$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _typeof$18 = typeof Symbol === "function" && _typeof2$5(Symbol.iterator) === "symbol" ? function (obj) {
+var _typeof$17 = typeof Symbol === "function" && _typeof2$5(Symbol.iterator) === "symbol" ? function (obj) {
   return typeof obj === "undefined" ? "undefined" : _typeof2$5(obj);
 } : function (obj) {
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2$5(obj);
 };
 
-var _typeof$16 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$18 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 function _classCallCheck$7(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -6149,12 +6117,12 @@ function _classCallCheck$7(instance, Constructor) {
 function _possibleConstructorReturn$7(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$16(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$18(call)) === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits$7(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$16(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$18(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -6163,7 +6131,7 @@ function _inherits$7(subClass, superClass) {
  * with a component.
  */
 
-var Redirect$1 = function (_React$Component) {
+var Redirect = function (_React$Component) {
   _inherits$7(Redirect, _React$Component);
 
   function Redirect() {
@@ -6218,15 +6186,15 @@ var Redirect$1 = function (_React$Component) {
   return Redirect;
 }(react.Component);
 
-Redirect$1.propTypes = {
+Redirect.propTypes = {
   push: propTypes.bool,
   from: propTypes.string,
   to: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
 };
-Redirect$1.defaultProps = {
+Redirect.defaultProps = {
   push: false
 };
-Redirect$1.contextTypes = {
+Redirect.contextTypes = {
   router: propTypes.shape({
     history: propTypes.shape({
       push: propTypes.func.isRequired,
@@ -6332,7 +6300,7 @@ var noop = function noop() {};
  * server-rendering scenarios.
  */
 
-var StaticRouter$1 = function (_React$Component) {
+var StaticRouter = function (_React$Component) {
   _inherits$8(StaticRouter, _React$Component);
 
   function StaticRouter() {
@@ -6401,22 +6369,22 @@ var StaticRouter$1 = function (_React$Component) {
       block: this.handleBlock
     };
 
-    return react.createElement(Router$1, _extends$13({}, props, { history: history }));
+    return react.createElement(Router, _extends$13({}, props, { history: history }));
   };
 
   return StaticRouter;
 }(react.Component);
 
-StaticRouter$1.propTypes = {
+StaticRouter.propTypes = {
   basename: propTypes.string,
   context: propTypes.object.isRequired,
   location: propTypes.oneOfType([propTypes.string, propTypes.object])
 };
-StaticRouter$1.defaultProps = {
+StaticRouter.defaultProps = {
   basename: '',
   location: '/'
 };
-StaticRouter$1.childContextTypes = {
+StaticRouter.childContextTypes = {
   router: propTypes.object.isRequired
 };
 
@@ -6446,7 +6414,7 @@ function _inherits$9(subClass, superClass) {
  * The public API for rendering the first <Route> that matches.
  */
 
-var Switch$1 = function (_React$Component) {
+var Switch = function (_React$Component) {
   _inherits$9(Switch, _React$Component);
 
   function Switch() {
@@ -6497,12 +6465,12 @@ var Switch$1 = function (_React$Component) {
   return Switch;
 }(react.Component);
 
-Switch$1.contextTypes = {
+Switch.contextTypes = {
   router: propTypes.shape({
     route: propTypes.object.isRequired
   }).isRequired
 };
-Switch$1.propTypes = {
+Switch.propTypes = {
   children: propTypes.node,
   location: propTypes.object
 };
@@ -6515,6 +6483,7 @@ Switch$1.propTypes = {
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
+
 var REACT_STATICS = {
     childContextTypes: true,
     contextTypes: true,
@@ -6596,12 +6565,12 @@ function _objectWithoutProperties$3(obj, keys$$1) {
 /**
  * A public higher-order component to access the imperative API
  */
-var withRouter$1 = function withRouter(Component) {
+var withRouter = function withRouter(Component) {
   var C = function C(props) {
     var wrappedComponentRef = props.wrappedComponentRef,
         remainingProps = _objectWithoutProperties$3(props, ['wrappedComponentRef']);
 
-    return react.createElement(Route$1, { render: function render(routeComponentProps) {
+    return react.createElement(Route, { render: function render(routeComponentProps) {
         return react.createElement(Component, _extends$14({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
       } });
   };
@@ -6869,7 +6838,7 @@ var reactTests = function reactTests(_ref) {
     name: "Menu with links",
     interactive: true,
     exclude: true,
-    component: withRouter$1(function (_ref2) {
+    component: withRouter(function (_ref2) {
       var history = _ref2.history;
       return h(_class$2, { history: history });
     })

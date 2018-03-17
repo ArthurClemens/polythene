@@ -1,6 +1,6 @@
 import { flex, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-search';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-search';
 
 var classes = {
   component: "pe-search",
@@ -18,7 +18,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var layout = (function (selector, componentVars) {
   var inset_input_padding_v = (componentVars.inset_height - componentVars.line_height_input) / 2;
   var full_width_input_padding_v = (componentVars.full_width_height - componentVars.line_height_input) / 2;
-  var full_width_input_indent = vars$1.unit_indent - componentVars.full_width_side_padding - vars$1.grid_unit_icon_button;
+  var full_width_input_indent = vars.unit_indent - componentVars.full_width_side_padding - vars.grid_unit_icon_button;
 
   return [_defineProperty({}, selector, [flex.flex(), {
     position: "relative", // necessary when a shadow is added
@@ -130,13 +130,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

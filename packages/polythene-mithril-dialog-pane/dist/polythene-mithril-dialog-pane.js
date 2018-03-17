@@ -4,13 +4,13 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-dialog-pane']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreDialogPane) { 'use strict';
 
-var DialogPane = polytheneMithrilBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
+	var DialogPane = polytheneMithrilBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
 
-DialogPane.displayName = "DialogPane";
+	DialogPane.displayName = "DialogPane";
 
-exports.DialogPane = DialogPane;
+	exports.DialogPane = DialogPane;
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-mithril-dialog-pane.js.map

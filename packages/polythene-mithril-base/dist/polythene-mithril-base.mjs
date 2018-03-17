@@ -36,9 +36,10 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var stream$2 = createCommonjsModule(function (module) {
-	/* eslint-disable */
-	(function () {
+var stream = createCommonjsModule(function (module) {
+(function () {
+		/* eslint-enable */
+
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -223,7 +224,7 @@ var stream$2 = createCommonjsModule(function (module) {
 	})();
 });
 
-var stream = stream$2;
+var stream$1 = stream;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -256,7 +257,7 @@ var StateComponent = function StateComponent(_ref) {
 
   var oninit = function oninit(vnode) {
     var protoState = _extends({}, vnode);
-    var initialState = getInitialState(protoState, stream);
+    var initialState = getInitialState(protoState, stream$1);
     _extends(vnode.state, initialState);
     vnode._mounted = false;
 

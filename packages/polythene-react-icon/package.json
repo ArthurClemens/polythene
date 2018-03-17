@@ -2,7 +2,7 @@
   "name": "polythene-react-icon",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-icon.js",
+  "main": "dist/polythene-react-icon",
   "module": "dist/polythene-react-icon.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

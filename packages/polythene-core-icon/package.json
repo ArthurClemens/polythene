@@ -2,7 +2,7 @@
   "name": "polythene-core-icon",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-icon.js",
+  "main": "dist/polythene-core-icon",
   "module": "dist/polythene-core-icon.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

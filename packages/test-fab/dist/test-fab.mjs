@@ -1,8 +1,8 @@
-import { FAB, Icon, renderer } from 'polythene-mithril';
 import { FABCSS } from 'polythene-css';
-import { FAB as FAB$1, Icon as Icon$1, SVG, renderer as renderer$1 } from 'polythene-react';
+import { renderer, FAB, Icon } from 'polythene-mithril';
+import { renderer as renderer$1, FAB as FAB$1, Icon as Icon$1, SVG } from 'polythene-react';
 
-var iconAlarm$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
+var iconAlarm = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/></svg>";
 
 var genericTests = (function (_ref) {
   var FAB$$1 = _ref.FAB,
@@ -10,7 +10,7 @@ var genericTests = (function (_ref) {
       h = _ref.renderer;
 
 
-  var trustedIconAlarm = h.trust(iconAlarm$1);
+  var trustedIconAlarm = h.trust(iconAlarm);
 
   FABCSS.addStyle(".tests-fab-themed-fab", {
     color_light_background: "#fff",
@@ -123,13 +123,13 @@ var genericTests = (function (_ref) {
   }];
 });
 
-var iconAlarm = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
+var iconAlarm$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 
 var mithrilTests = function mithrilTests(_ref) {
   var FAB$$1 = _ref.FAB,
       h = _ref.renderer;
 
-  var trustedIconAlarm = h.trust(iconAlarm);
+  var trustedIconAlarm = h.trust(iconAlarm$1);
 
   return [{
     section: "Mithril specific tests"
@@ -204,7 +204,6 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-
 /* eslint-disable no-unused-vars */
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -343,8 +342,13 @@ emptyFunction.thatReturnsArgument = function (arg) {
 var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+var q = "function" === typeof Symbol && Symbol["for"],
+    r = q ? Symbol["for"]("react.element") : 60103,
+    t = q ? Symbol["for"]("react.call") : 60104,
+    u = q ? Symbol["for"]("react.return") : 60105,
+    v = q ? Symbol["for"]("react.portal") : 60106,
+    w = q ? Symbol["for"]("react.fragment") : 60107,
+    x = "function" === typeof Symbol && Symbol.iterator;
 function y(a) {
   for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
     e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
@@ -365,7 +369,9 @@ function B(a, b, e) {
   this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
 }var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+};var G = { current: null },
+    H = Object.prototype.hasOwnProperty,
+    I = { key: !0, ref: !0, __self: !0, __source: !0 };
 function J(a, b, e) {
   var c,
       d = {},
@@ -386,8 +392,8 @@ function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var L = /\/+/g;
-var M = [];function N(a, b, e, c) {
+}var L = /\/+/g,
+    M = [];function N(a, b, e, c) {
   if (M.length) {
     var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
   }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
@@ -440,9 +446,9 @@ var U = { Children: { map: function map(a, b, e) {
   }, createFactory: function createFactory(a) {
     var b = J.bind(null, a);b.type = a;return b;
   },
-  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
-var V = Object.freeze({ default: U });
-var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } },
+    V = Object.freeze({ default: U }),
+    W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -554,16 +560,16 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
-var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$1 = invariant_1;
   var warning$1 = warning_1;
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
 }
 
@@ -589,12 +595,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$2(typeSpecs[typeSpecName]));
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$1(typeSpecs[typeSpecName]));
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
         } catch (ex) {
           error = ex;
         }
-        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$2(error));
+        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$1(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -611,20 +617,13 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.2.0
-   * react.development.js
-   *
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
 
   if (process.env.NODE_ENV !== "production") {
     (function () {
+
       var _assign = objectAssign;
       var emptyObject = emptyObject_1;
       var invariant = invariant_1;
@@ -843,7 +842,7 @@ var react_development = createCommonjsModule(function (module) {
        * @protected
        */
       Component.prototype.setState = function (partialState, callback) {
-        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$1(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$2(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
         this.updater.enqueueSetState(this, partialState, callback, 'setState');
       };
 
@@ -1245,7 +1244,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$2(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -1339,7 +1338,7 @@ var react_development = createCommonjsModule(function (module) {
        * @return {!number} The number of children in this subtree.
        */
       function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-        var type = typeof children === 'undefined' ? 'undefined' : _typeof$1(children);
+        var type = typeof children === 'undefined' ? 'undefined' : _typeof$2(children);
 
         if (type === 'undefined' || type === 'boolean') {
           // All of the above are perceived as null.
@@ -1452,7 +1451,7 @@ var react_development = createCommonjsModule(function (module) {
       function getComponentKey(component, index) {
         // Do some typechecking here since we call this blindly. We want to ensure
         // that we don't block potential future ES APIs.
-        if ((typeof component === 'undefined' ? 'undefined' : _typeof$1(component)) === 'object' && component !== null && component.key != null) {
+        if ((typeof component === 'undefined' ? 'undefined' : _typeof$2(component)) === 'object' && component !== null && component.key != null) {
           // Explicit key
           return escape(component.key);
         }
@@ -1728,7 +1727,7 @@ var react_development = createCommonjsModule(function (module) {
        * @param {*} parentType node's parent's type.
        */
       function validateChildKeys(node, parentType) {
-        if ((typeof node === 'undefined' ? 'undefined' : _typeof$1(node)) !== 'object') {
+        if ((typeof node === 'undefined' ? 'undefined' : _typeof$2(node)) !== 'object') {
           return;
         }
         if (Array.isArray(node)) {
@@ -1830,12 +1829,12 @@ var react_development = createCommonjsModule(function (module) {
       }
 
       function createElementWithValidation(type, props, children) {
-        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' || typeof type === 'number';
+        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' || typeof type === 'number';
         // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
         if (!validType) {
           var info = '';
-          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
+          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
             info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
           }
 
@@ -1848,7 +1847,7 @@ var react_development = createCommonjsModule(function (module) {
 
           info += getStackAddendum() || '';
 
-          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$1(type), info);
+          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$2(type), info);
         }
 
         var element = createElement.apply(this, arguments);
@@ -1870,7 +1869,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -1964,13 +1963,13 @@ var react_development = createCommonjsModule(function (module) {
 });
 
 var react = createCommonjsModule(function (module) {
+
   if (process.env.NODE_ENV === 'production') {
     module.exports = react_production_min;
   } else {
     module.exports = react_development;
   }
 });
-
 var react_1 = react.Children;
 var react_2 = react.Component;
 var react_3 = react.PropTypes;
@@ -1998,20 +1997,20 @@ function makeEmptyFunction$1(arg) {
  * primarily useful idiomatically for overridable function endpoints which
  * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
  */
-var emptyFunction$2 = function emptyFunction() {};
+var emptyFunction$1 = function emptyFunction() {};
 
-emptyFunction$2.thatReturns = makeEmptyFunction$1;
-emptyFunction$2.thatReturnsFalse = makeEmptyFunction$1(false);
-emptyFunction$2.thatReturnsTrue = makeEmptyFunction$1(true);
-emptyFunction$2.thatReturnsNull = makeEmptyFunction$1(null);
-emptyFunction$2.thatReturnsThis = function () {
+emptyFunction$1.thatReturns = makeEmptyFunction$1;
+emptyFunction$1.thatReturnsFalse = makeEmptyFunction$1(false);
+emptyFunction$1.thatReturnsTrue = makeEmptyFunction$1(true);
+emptyFunction$1.thatReturnsNull = makeEmptyFunction$1(null);
+emptyFunction$1.thatReturnsThis = function () {
   return this;
 };
-emptyFunction$2.thatReturnsArgument = function (arg) {
+emptyFunction$1.thatReturnsArgument = function (arg) {
   return arg;
 };
 
-var emptyFunction_1$2 = emptyFunction$2;
+var emptyFunction_1$1 = emptyFunction$1;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2065,7 +2064,7 @@ function invariant$2(condition, format, a, b, c, d, e, f) {
   }
 }
 
-var invariant_1$2 = invariant$2;
+var invariant_1$1 = invariant$2;
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -2074,7 +2073,7 @@ var invariant_1$2 = invariant$2;
  * same logic and follow the same code paths.
  */
 
-var warning$2 = emptyFunction_1$2;
+var warning$2 = emptyFunction_1$1;
 
 if (process.env.NODE_ENV !== 'production') {
   (function () {
@@ -2118,7 +2117,7 @@ if (process.env.NODE_ENV !== 'production') {
   })();
 }
 
-var warning_1$2 = warning$2;
+var warning_1$1 = warning$2;
 
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -2131,14 +2130,14 @@ var warning_1$2 = warning$2;
 
 var ReactPropTypesSecret$2 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1$2 = ReactPropTypesSecret$2;
+var ReactPropTypesSecret_1$1 = ReactPropTypesSecret$2;
 
-var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant$3 = invariant_1$2;
-  var warning$3 = warning_1$2;
-  var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$2;
+  var invariant$3 = invariant_1$1;
+  var warning$3 = warning_1$1;
+  var ReactPropTypesSecret$3 = ReactPropTypesSecret_1$1;
   var loggedTypeFailures$1 = {};
 }
 
@@ -2169,7 +2168,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
         } catch (ex) {
           error = ex;
         }
-        warning$3(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$6(error));
+        warning$3(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$3(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures$1)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -2184,9 +2183,9 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
   }
 }
 
-var checkPropTypes_1$2 = checkPropTypes$1;
+var checkPropTypes_1$1 = checkPropTypes$1;
 
-var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -2326,17 +2325,17 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
 
-      if (secret !== ReactPropTypesSecret_1$2) {
+      if (secret !== ReactPropTypesSecret_1$1) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
-          invariant_1$2(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+          invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use `PropTypes.checkPropTypes()` to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (!manualPropTypeCallCache[cacheKey] &&
           // Avoid spamming the console because they are often not actionable except for lib authors
           manualPropTypeWarningCount < 3) {
-            warning_1$2(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
+            warning_1$1(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will throw in the standalone `prop-types` package. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName);
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
           }
@@ -2379,7 +2378,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   }
 
   function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunction_1$2.thatReturnsNull);
+    return createChainableTypeChecker(emptyFunction_1$1.thatReturnsNull);
   }
 
   function createArrayOfTypeChecker(typeChecker) {
@@ -2393,7 +2392,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
       }
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1$2);
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1$1);
         if (error instanceof Error) {
           return error;
         }
@@ -2429,8 +2428,8 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-      return emptyFunction_1$2.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction_1$1.thatReturnsNull;
     }
 
     function validate(props, propName, componentName, location, propFullName) {
@@ -2459,7 +2458,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
       }
       for (var key in propValue) {
         if (propValue.hasOwnProperty(key)) {
-          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$2);
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
           if (error instanceof Error) {
             return error;
           }
@@ -2472,22 +2471,22 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? warning_1$2(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-      return emptyFunction_1$2.thatReturnsNull;
+      process.env.NODE_ENV !== 'production' ? warning_1$1(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction_1$1.thatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning_1$2(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
-        return emptyFunction_1$2.thatReturnsNull;
+        warning_1$1(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
+        return emptyFunction_1$1.thatReturnsNull;
       }
     }
 
     function validate(props, propName, componentName, location, propFullName) {
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1$2) == null) {
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1$1) == null) {
           return null;
         }
       }
@@ -2519,7 +2518,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
         if (!checker) {
           continue;
         }
-        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$2);
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1$1);
         if (error) {
           return error;
         }
@@ -2530,7 +2529,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
   }
 
   function isNode(propValue) {
-    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof$5(propValue)) {
+    switch (typeof propValue === 'undefined' ? 'undefined' : _typeof$4(propValue)) {
       case 'number':
       case 'string':
       case 'undefined':
@@ -2597,7 +2596,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
   // Equivalent of `typeof` but with special handling for array and regexp.
   function getPropType(propValue) {
-    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof$5(propValue);
+    var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof$4(propValue);
     if (Array.isArray(propValue)) {
       return 'array';
     }
@@ -2655,7 +2654,7 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
     return propValue.constructor.name;
   }
 
-  ReactPropTypes.checkPropTypes = checkPropTypes_1$2;
+  ReactPropTypes.checkPropTypes = checkPropTypes_1$1;
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
@@ -2663,17 +2662,15 @@ var factoryWithTypeCheckers = function factoryWithTypeCheckers(isValidElement, t
 
 var factoryWithThrowingShims = function factoryWithThrowingShims() {
   function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret_1$2) {
+    if (secret === ReactPropTypesSecret_1$1) {
       // It is still safe when called from React.
       return;
     }
-    invariant_1$2(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-  }
-  shim.isRequired = shim;
+    invariant_1$1(false, 'Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+  }  shim.isRequired = shim;
   function getShim() {
     return shim;
-  }
-  // Important!
+  }  // Important!
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
@@ -2695,13 +2692,13 @@ var factoryWithThrowingShims = function factoryWithThrowingShims() {
     shape: getShim
   };
 
-  ReactPropTypes.checkPropTypes = emptyFunction_1$2;
+  ReactPropTypes.checkPropTypes = emptyFunction_1$1;
   ReactPropTypes.PropTypes = ReactPropTypes;
 
   return ReactPropTypes;
 };
 
-var _typeof$4 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$5 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var propTypes = createCommonjsModule(function (module) {
   /**
@@ -2717,7 +2714,7 @@ var propTypes = createCommonjsModule(function (module) {
     var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
 
     var isValidElement = function isValidElement(object) {
-      return (typeof object === 'undefined' ? 'undefined' : _typeof$4(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+      return (typeof object === 'undefined' ? 'undefined' : _typeof$5(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
     };
 
     // By explicitly using `prop-types` you are opting into new development behavior.
@@ -2803,7 +2800,7 @@ var browser = warning$4;
  * will remain to ensure logic does not differ in production.
  */
 
-var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
+var invariant$4 = function invariant(condition, format, a, b, c, d, e, f) {
   if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -2828,7 +2825,7 @@ var invariant$5 = function invariant(condition, format, a, b, c, d, e, f) {
   }
 };
 
-var browser$1 = invariant$5;
+var browser$1 = invariant$4;
 
 var isAbsolute = function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
@@ -2899,15 +2896,16 @@ var resolvePathname = function resolvePathname(to) {
 
 var resolvePathname_1 = resolvePathname;
 
-var _typeof2$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var valueEqual_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
-  var _typeof = typeof Symbol === "function" && _typeof2$1(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
+  var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
   };
 
   var valueEqual = function valueEqual(a, b) {
@@ -2949,6 +2947,7 @@ var valueEqual_1 = createCommonjsModule(function (module, exports) {
 unwrapExports(valueEqual_1);
 
 var PathUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   var addLeadingSlash = exports.addLeadingSlash = function addLeadingSlash(path) {
     return path.charAt(0) === '/' ? path : '/' + path;
@@ -3016,6 +3015,7 @@ var PathUtils_5 = PathUtils.parsePath;
 var PathUtils_6 = PathUtils.createPath;
 
 var LocationUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   exports.locationsAreEqual = exports.createLocation = undefined;
 
@@ -3088,6 +3088,7 @@ var LocationUtils_1 = LocationUtils.locationsAreEqual;
 var LocationUtils_2 = LocationUtils.createLocation;
 
 var createTransitionManager_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _warning2 = _interopRequireDefault(browser);
@@ -3176,6 +3177,7 @@ var createTransitionManager_1 = createCommonjsModule(function (module, exports) 
 unwrapExports(createTransitionManager_1);
 
 var DOMUtils = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
   var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
@@ -3241,15 +3243,16 @@ var DOMUtils_6 = DOMUtils.supportsPopStateOnHashChange;
 var DOMUtils_7 = DOMUtils.supportsGoWithoutReloadUsingHash;
 var DOMUtils_8 = DOMUtils.isExtraneousPopstateEvent;
 
-var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var createBrowserHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
-  var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+  var _typeof = typeof Symbol === "function" && _typeof2$1(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2(obj);
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === 'undefined' ? 'undefined' : _typeof2$1(obj);
   };
 
   var _extends = Object.assign || function (target) {
@@ -3556,6 +3559,7 @@ var createHistory = unwrapExports(createBrowserHistory_1);
 var _typeof2$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _typeof = typeof Symbol === "function" && _typeof2$2(Symbol.iterator) === "symbol" ? function (obj) {
@@ -3733,7 +3737,7 @@ var createMemoryHistory_1 = createCommonjsModule(function (module, exports) {
 
 var createHistory$1 = unwrapExports(createMemoryHistory_1);
 
-var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$6 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends$1 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -3745,21 +3749,21 @@ var _extends$1 = Object.assign || function (target) {
   }return target;
 };
 
-function _classCallCheck$2(instance, Constructor) {
+function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$2(self, call) {
+function _possibleConstructorReturn(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$8(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$6(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$2(subClass, superClass) {
+function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$8(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$6(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -3768,20 +3772,20 @@ function _inherits$2(subClass, superClass) {
  */
 
 var Router = function (_React$Component) {
-  _inherits$2(Router, _React$Component);
+  _inherits(Router, _React$Component);
 
   function Router() {
     var _temp, _this, _ret;
 
-    _classCallCheck$2(this, Router);
+    _classCallCheck(this, Router);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn$2(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
       match: _this.computeMatch(_this.props.history.location.pathname)
-    }, _temp), _possibleConstructorReturn$2(_this, _ret);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   Router.prototype.getChildContext = function getChildContext() {
@@ -3906,23 +3910,23 @@ MemoryRouter.propTypes = {
   children: propTypes.node
 };
 
-var _typeof$9 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$8 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck$3(instance, Constructor) {
+function _classCallCheck$2(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$3(self, call) {
+function _possibleConstructorReturn$2(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$9(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$8(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$3(subClass, superClass) {
+function _inherits$2(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$9(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$8(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -3932,12 +3936,12 @@ function _inherits$3(subClass, superClass) {
  */
 
 var Prompt = function (_React$Component) {
-  _inherits$3(Prompt, _React$Component);
+  _inherits$2(Prompt, _React$Component);
 
   function Prompt() {
-    _classCallCheck$3(this, Prompt);
+    _classCallCheck$2(this, Prompt);
 
-    return _possibleConstructorReturn$3(this, _React$Component.apply(this, arguments));
+    return _possibleConstructorReturn$2(this, _React$Component.apply(this, arguments));
   }
 
   Prompt.prototype.enable = function enable(message) {
@@ -3991,23 +3995,23 @@ Prompt.contextTypes = {
   }).isRequired
 };
 
-var _typeof$10 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$9 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck$4(instance, Constructor) {
+function _classCallCheck$3(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$4(self, call) {
+function _possibleConstructorReturn$3(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$10(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$9(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$4(subClass, superClass) {
+function _inherits$3(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$10(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$9(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -4017,12 +4021,12 @@ function _inherits$4(subClass, superClass) {
  */
 
 var Redirect = function (_React$Component) {
-  _inherits$4(Redirect, _React$Component);
+  _inherits$3(Redirect, _React$Component);
 
   function Redirect() {
-    _classCallCheck$4(this, Redirect);
+    _classCallCheck$3(this, Redirect);
 
-    return _possibleConstructorReturn$4(this, _React$Component.apply(this, arguments));
+    return _possibleConstructorReturn$3(this, _React$Component.apply(this, arguments));
   }
 
   Redirect.prototype.isStatic = function isStatic() {
@@ -4079,7 +4083,7 @@ var isarray = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$10 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
  * Expose `pathToRegexp`.
@@ -4224,7 +4228,7 @@ function tokensToFunction(tokens) {
 
   // Compile all the patterns before compilation.
   for (var i = 0; i < tokens.length; i++) {
-    if (_typeof$12(tokens[i]) === 'object') {
+    if (_typeof$10(tokens[i]) === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$');
     }
   }
@@ -4504,7 +4508,6 @@ function pathToRegexp(path, keys, options) {
 
   return stringToRegexp( /** @type {string} */path, /** @type {!Array} */keys, options);
 }
-
 pathToRegexp_1.parse = parse_1;
 pathToRegexp_1.compile = compile_1;
 pathToRegexp_1.tokensToFunction = tokensToFunction_1;
@@ -4586,19 +4589,19 @@ var _extends$2 = Object.assign || function (target) {
   }return target;
 };
 
-function _classCallCheck$5(instance, Constructor) {
+function _classCallCheck$4(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$5(self, call) {
+function _possibleConstructorReturn$4(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }return call && ((typeof call === "undefined" ? "undefined" : _typeof$11(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$5(subClass, superClass) {
+function _inherits$4(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$11(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
@@ -4609,20 +4612,20 @@ function _inherits$5(subClass, superClass) {
  */
 
 var Route = function (_React$Component) {
-  _inherits$5(Route, _React$Component);
+  _inherits$4(Route, _React$Component);
 
   function Route() {
     var _temp, _this, _ret;
 
-    _classCallCheck$5(this, Route);
+    _classCallCheck$4(this, Route);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn$5(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn$4(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
       match: _this.computeMatch(_this.props, _this.context.router)
-    }, _temp), _possibleConstructorReturn$5(_this, _ret);
+    }, _temp), _possibleConstructorReturn$4(_this, _ret);
   }
 
   Route.prototype.getChildContext = function getChildContext() {
@@ -4719,7 +4722,7 @@ Route.childContextTypes = {
   router: propTypes.object.isRequired
 };
 
-var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$12 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends$3 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -4737,21 +4740,21 @@ function _objectWithoutProperties(obj, keys) {
   }return target;
 }
 
-function _classCallCheck$6(instance, Constructor) {
+function _classCallCheck$5(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$6(self, call) {
+function _possibleConstructorReturn$5(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$13(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$12(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$6(subClass, superClass) {
+function _inherits$5(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$13(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$12(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -4814,18 +4817,18 @@ var noop = function noop() {};
  */
 
 var StaticRouter = function (_React$Component) {
-  _inherits$6(StaticRouter, _React$Component);
+  _inherits$5(StaticRouter, _React$Component);
 
   function StaticRouter() {
     var _temp, _this, _ret;
 
-    _classCallCheck$6(this, StaticRouter);
+    _classCallCheck$5(this, StaticRouter);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn$6(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.createHref = function (path) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn$5(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.createHref = function (path) {
       return PathUtils_1(_this.props.basename + createURL(path));
     }, _this.handlePush = function (location) {
       var _this$props = _this.props,
@@ -4847,7 +4850,7 @@ var StaticRouter = function (_React$Component) {
       return noop;
     }, _this.handleBlock = function () {
       return noop;
-    }, _temp), _possibleConstructorReturn$6(_this, _ret);
+    }, _temp), _possibleConstructorReturn$5(_this, _ret);
   }
 
   StaticRouter.prototype.getChildContext = function getChildContext() {
@@ -4897,23 +4900,23 @@ StaticRouter.childContextTypes = {
   router: propTypes.object.isRequired
 };
 
-var _typeof$14 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$13 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck$7(instance, Constructor) {
+function _classCallCheck$6(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn$7(self, call) {
+function _possibleConstructorReturn$6(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$14(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$13(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits$7(subClass, superClass) {
+function _inherits$6(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$14(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$13(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -4922,12 +4925,12 @@ function _inherits$7(subClass, superClass) {
  */
 
 var Switch = function (_React$Component) {
-  _inherits$7(Switch, _React$Component);
+  _inherits$6(Switch, _React$Component);
 
   function Switch() {
-    _classCallCheck$7(this, Switch);
+    _classCallCheck$6(this, Switch);
 
-    return _possibleConstructorReturn$7(this, _React$Component.apply(this, arguments));
+    return _possibleConstructorReturn$6(this, _React$Component.apply(this, arguments));
   }
 
   Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
@@ -4981,6 +4984,7 @@ Switch.propTypes = {
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
+
 var REACT_STATICS = {
     childContextTypes: true,
     contextTypes: true,
@@ -5063,23 +5067,23 @@ var withRouter = function withRouter(Component) {
   return hoistNonReactStatics(C, Component);
 };
 
-var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$14 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _classCallCheck(instance, Constructor) {
+function _classCallCheck$7(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _possibleConstructorReturn(self, call) {
+function _possibleConstructorReturn$7(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$3(call)) === "object" || typeof call === "function") ? call : self;
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof$14(call)) === "object" || typeof call === "function") ? call : self;
 }
 
-function _inherits(subClass, superClass) {
+function _inherits$7(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$3(superClass)));
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof$14(superClass)));
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -5088,18 +5092,18 @@ function _inherits(subClass, superClass) {
  */
 
 var BrowserRouter = function (_React$Component) {
-  _inherits(BrowserRouter, _React$Component);
+  _inherits$7(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
     var _temp, _this, _ret;
 
-    _classCallCheck(this, BrowserRouter);
+    _classCallCheck$7(this, BrowserRouter);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = createHistory(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn$7(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = createHistory(_this.props), _temp), _possibleConstructorReturn$7(_this, _ret);
   }
 
   BrowserRouter.prototype.render = function render() {
@@ -5118,6 +5122,7 @@ BrowserRouter.propTypes = {
 };
 
 var createHashHistory_1 = createCommonjsModule(function (module, exports) {
+
   exports.__esModule = true;
 
   var _extends = Object.assign || function (target) {

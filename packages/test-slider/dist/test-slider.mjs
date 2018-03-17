@@ -1,16 +1,17 @@
-import { Icon, Slider, TextField, keys, renderer } from 'polythene-mithril';
-import { SliderCSS } from 'polythene-css';
-import { rgba, styler } from 'polythene-core-css';
+import { styler, rgba } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { Icon as Icon$1, Slider as Slider$1, TextField as TextField$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { SliderCSS } from 'polythene-css';
+import { renderer, keys, Slider, Icon, TextField } from 'polythene-mithril';
+import { Slider as Slider$1, TextField as TextField$1, renderer as renderer$1, keys as keys$1, Icon as Icon$1 } from 'polythene-react';
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var stream$2 = createCommonjsModule(function (module) {
-	/* eslint-disable */
-	(function () {
+var stream = createCommonjsModule(function (module) {
+(function () {
+		/* eslint-enable */
+
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -195,7 +196,7 @@ var stream$2 = createCommonjsModule(function (module) {
 	})();
 });
 
-var stream = stream$2;
+var stream$1 = stream;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -209,10 +210,10 @@ var onChange = (function (_ref) {
       attrs = _ref.attrs;
   return {
     oninit: function oninit(vnode) {
-      var value = stream(attrs.defaultValue || attrs.value || 0);
+      var value = stream$1(attrs.defaultValue || attrs.value || 0);
       _extends(vnode.state, {
         value: value,
-        redrawOnUpdate: stream.merge([value]) // for React
+        redrawOnUpdate: stream$1.merge([value]) // for React
       });
     },
     view: function view(vnode) {
@@ -253,7 +254,7 @@ var styles = [{
 
 styler.add("polythene-test-slider-volume", styles);
 
-var volumeIconSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
+var volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
 var alarmIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z\"/></svg>";
 var headphonesIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,0.998068C 7.02841,0.998068 2.9994,5.02706 2.9994,9.99807L 2.9994,16.9981C 2.9994,18.6551 4.3424,19.9981 5.9994,19.9981L 8.9994,19.9981L 8.9994,11.9981L 4.9994,11.9981L 4.9994,9.99807C 4.9994,6.13207 8.1334,2.99807 11.9994,2.99807C 15.8654,2.99807 18.9994,6.13207 18.9994,9.99807L 18.9994,11.9981L 14.9994,11.9981L 14.9994,19.9981L 17.9994,19.9981C 19.6564,19.9981 20.9994,18.6551 20.9994,16.9981L 20.9994,9.99807C 20.9994,5.02706 16.9704,0.998068 11.9994,0.998068 Z \"/></svg>";
 
@@ -263,7 +264,7 @@ var volumeSlider = (function (_ref) {
       Icon$$1 = _ref.Icon;
 
 
-  var volumeIcon = h.trust(volumeIconSVG$1);
+  var volumeIcon = h.trust(volumeIconSVG);
   var alarmIcon = h.trust(alarmIconSVG);
   var headphonesIcon = h.trust(headphonesIconSVG);
   var defaults = {
@@ -296,7 +297,7 @@ var volumeSlider = (function (_ref) {
 
 var bullsEyeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>";
 
-var volumeIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
+var volumeIconSVG$1 = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/></svg>";
 
 var genericTests = (function (_ref) {
   var Slider$$1 = _ref.Slider,
@@ -305,7 +306,7 @@ var genericTests = (function (_ref) {
 
 
   var bullsEyeIcon = h.trust(bullsEyeIconSVG);
-  var volumeIcon = h.trust(volumeIconSVG);
+  var volumeIcon = h.trust(volumeIconSVG$1);
 
   var VolumeSlider = volumeSlider({ Slider: Slider$$1, Icon: Icon$$1, h: h });
 
@@ -520,7 +521,7 @@ var colorSlider = function colorSlider(_ref) {
   return {
     oninit: function oninit(vnode) {
       var attrs = vnode.attrs;
-      var value = stream(attrs.defaultValue);
+      var value = stream$1(attrs.defaultValue);
       value.map(function (newValue) {
         return attrs.onUpdateValue(newValue);
       });
@@ -567,11 +568,11 @@ var rgbSlider = (function (_ref4) {
 
   return {
     oninit: function oninit(vnode) {
-      var red = stream(127);
-      var green = stream(127);
-      var blue = stream(127);
+      var red = stream$1(127);
+      var green = stream$1(127);
+      var blue = stream$1(127);
 
-      var rgb = stream.merge([red, green, blue]).map(function (values) {
+      var rgb = stream$1.merge([red, green, blue]).map(function (values) {
         return values.join(",");
       });
       _extends$2(vnode.state, {
@@ -622,7 +623,6 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-
 /* eslint-disable no-unused-vars */
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -761,8 +761,13 @@ emptyFunction.thatReturnsArgument = function (arg) {
 var emptyFunction_1 = emptyFunction;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+var q = "function" === typeof Symbol && Symbol["for"],
+    r = q ? Symbol["for"]("react.element") : 60103,
+    t = q ? Symbol["for"]("react.call") : 60104,
+    u = q ? Symbol["for"]("react.return") : 60105,
+    v = q ? Symbol["for"]("react.portal") : 60106,
+    w = q ? Symbol["for"]("react.fragment") : 60107,
+    x = "function" === typeof Symbol && Symbol.iterator;
 function y(a) {
   for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
     e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
@@ -783,7 +788,9 @@ function B(a, b, e) {
   this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
 }var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+};var G = { current: null },
+    H = Object.prototype.hasOwnProperty,
+    I = { key: !0, ref: !0, __self: !0, __source: !0 };
 function J(a, b, e) {
   var c,
       d = {},
@@ -804,8 +811,8 @@ function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var L = /\/+/g;
-var M = [];function N(a, b, e, c) {
+}var L = /\/+/g,
+    M = [];function N(a, b, e, c) {
   if (M.length) {
     var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
   }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
@@ -858,9 +865,9 @@ var U = { Children: { map: function map(a, b, e) {
   }, createFactory: function createFactory(a) {
     var b = J.bind(null, a);b.type = a;return b;
   },
-  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
-var V = Object.freeze({ default: U });
-var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } },
+    V = Object.freeze({ default: U }),
+    W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -972,16 +979,16 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
-var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$1 = invariant_1;
   var warning$1 = warning_1;
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
 }
 
@@ -1007,12 +1014,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$2(typeSpecs[typeSpecName]));
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$1(typeSpecs[typeSpecName]));
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
         } catch (ex) {
           error = ex;
         }
-        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$2(error));
+        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$1(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -1029,20 +1036,13 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.2.0
-   * react.development.js
-   *
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
 
   if (process.env.NODE_ENV !== "production") {
     (function () {
+
       var _assign = objectAssign;
       var emptyObject = emptyObject_1;
       var invariant = invariant_1;
@@ -1261,7 +1261,7 @@ var react_development = createCommonjsModule(function (module) {
        * @protected
        */
       Component.prototype.setState = function (partialState, callback) {
-        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$1(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$2(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
         this.updater.enqueueSetState(this, partialState, callback, 'setState');
       };
 
@@ -1663,7 +1663,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$1(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$2(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -1757,7 +1757,7 @@ var react_development = createCommonjsModule(function (module) {
        * @return {!number} The number of children in this subtree.
        */
       function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-        var type = typeof children === 'undefined' ? 'undefined' : _typeof$1(children);
+        var type = typeof children === 'undefined' ? 'undefined' : _typeof$2(children);
 
         if (type === 'undefined' || type === 'boolean') {
           // All of the above are perceived as null.
@@ -1870,7 +1870,7 @@ var react_development = createCommonjsModule(function (module) {
       function getComponentKey(component, index) {
         // Do some typechecking here since we call this blindly. We want to ensure
         // that we don't block potential future ES APIs.
-        if ((typeof component === 'undefined' ? 'undefined' : _typeof$1(component)) === 'object' && component !== null && component.key != null) {
+        if ((typeof component === 'undefined' ? 'undefined' : _typeof$2(component)) === 'object' && component !== null && component.key != null) {
           // Explicit key
           return escape(component.key);
         }
@@ -2146,7 +2146,7 @@ var react_development = createCommonjsModule(function (module) {
        * @param {*} parentType node's parent's type.
        */
       function validateChildKeys(node, parentType) {
-        if ((typeof node === 'undefined' ? 'undefined' : _typeof$1(node)) !== 'object') {
+        if ((typeof node === 'undefined' ? 'undefined' : _typeof$2(node)) !== 'object') {
           return;
         }
         if (Array.isArray(node)) {
@@ -2248,12 +2248,12 @@ var react_development = createCommonjsModule(function (module) {
       }
 
       function createElementWithValidation(type, props, children) {
-        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' || typeof type === 'number';
+        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' || typeof type === 'number';
         // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
         if (!validType) {
           var info = '';
-          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
+          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
             info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
           }
 
@@ -2266,7 +2266,7 @@ var react_development = createCommonjsModule(function (module) {
 
           info += getStackAddendum() || '';
 
-          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$1(type), info);
+          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$2(type), info);
         }
 
         var element = createElement.apply(this, arguments);
@@ -2288,7 +2288,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$1(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -2382,13 +2382,13 @@ var react_development = createCommonjsModule(function (module) {
 });
 
 var react = createCommonjsModule(function (module) {
+
   if (process.env.NODE_ENV === 'production') {
     module.exports = react_production_min;
   } else {
     module.exports = react_development;
   }
 });
-
 var react_1 = react.Children;
 var react_2 = react.Component;
 var react_3 = react.PropTypes;

@@ -9,10 +9,14 @@ const includeDepencies = !!parseInt(process.env.DEPS, 10) || false; // Use `fals
 
 const baseConfig = createConfig({ includeDepencies });
 const targetConfig = Object.assign({}, baseConfig, {
-  output: {
-    file: pkg["module"],
-    format: "es"
-  }
+  output: Object.assign(
+    {},
+    baseConfig.output,
+    {
+      file: `${pkg["main"]}.mjs`,
+      format: "es"
+    }
+  )
 });
 
 export default targetConfig;

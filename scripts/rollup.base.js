@@ -25,8 +25,10 @@ export const createConfig = ({ includeDepencies, lint }) => {
   const config = {
     input: process.env.ENTRY || "index.js",
     external: includeDepencies ? ["mithril"] : external,
-    name,
-    globals,
+    output: {
+      name,
+      globals,
+    },
     plugins: []
   };
   config.plugins.push(resolve({

@@ -2,7 +2,7 @@
   "name": "polythene-core-menu",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-menu.js",
+  "main": "dist/polythene-core-menu",
   "module": "dist/polythene-core-menu.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

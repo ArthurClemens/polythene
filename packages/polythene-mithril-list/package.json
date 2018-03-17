@@ -2,7 +2,7 @@
   "name": "polythene-mithril-list",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-list.js",
+  "main": "dist/polythene-mithril-list",
   "module": "dist/polythene-mithril-list.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

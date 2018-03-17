@@ -2,7 +2,7 @@
   "name": "polythene-core-textfield",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-textfield.js",
+  "main": "dist/polythene-core-textfield",
   "module": "dist/polythene-core-textfield.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

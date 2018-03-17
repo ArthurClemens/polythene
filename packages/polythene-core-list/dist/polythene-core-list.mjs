@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, deprecation } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -103,11 +103,11 @@ var createContent = function createContent(vnode, _ref3) {
   }) : tiles];
 };
 
-var list = Object.freeze({
-	getElement: getElement,
-	onMount: onMount,
-	createProps: createProps,
-	createContent: createContent
+var list = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  onMount: onMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

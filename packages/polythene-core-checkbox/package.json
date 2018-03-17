@@ -2,7 +2,7 @@
   "name": "polythene-core-checkbox",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-checkbox.js",
+  "main": "dist/polythene-core-checkbox",
   "module": "dist/polythene-core-checkbox.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

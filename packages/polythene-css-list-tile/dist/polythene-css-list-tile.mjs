@@ -1,4 +1,4 @@
-import { flex, mixin, styler } from 'polythene-core-css';
+import { mixin, flex, styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-list-tile';
 
 var classes = {

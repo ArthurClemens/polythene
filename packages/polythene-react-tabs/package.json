@@ -2,7 +2,7 @@
   "name": "polythene-react-tabs",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-tabs.js",
+  "main": "dist/polythene-react-tabs",
   "module": "dist/polythene-react-tabs.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

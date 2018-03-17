@@ -1,9 +1,7 @@
-import { flex, mixin } from 'polythene-core-css';
+import { mixin, flex } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-// Returns a style function to be used by checkbox and radio-button
 
 var makeSize = function makeSize(componentVars, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;

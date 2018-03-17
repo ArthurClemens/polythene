@@ -2,7 +2,7 @@
   "name": "polythene-css-notification",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-notification.js",
+  "main": "dist/polythene-css-notification",
   "module": "dist/polythene-css-notification.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

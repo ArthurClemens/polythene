@@ -2,7 +2,7 @@
   "name": "polythene-react-shadow",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-shadow.js",
+  "main": "dist/polythene-react-shadow",
   "module": "dist/polythene-react-shadow.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

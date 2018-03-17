@@ -4,13 +4,13 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-slider']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreSlider) { 'use strict';
 
-var Slider = polytheneReactBase.StateComponent(polytheneCoreSlider.coreSlider);
+	var Slider = polytheneReactBase.StateComponent(polytheneCoreSlider.coreSlider);
 
-Slider.displayName = "Slider";
+	Slider.displayName = "Slider";
 
-exports.Slider = Slider;
+	exports.Slider = Slider;
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-react-slider.js.map

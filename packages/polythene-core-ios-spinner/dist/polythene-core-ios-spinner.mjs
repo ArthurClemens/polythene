@@ -34,8 +34,8 @@ var createProps = function createProps(vnode, _ref) {
   });
 };
 
-var spinner = Object.freeze({
-	createProps: createProps
+var spinner = /*#__PURE__*/Object.freeze({
+  createProps: createProps
 });
 
 var rgba = function rgba(colorStr) {

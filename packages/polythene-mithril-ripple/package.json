@@ -2,7 +2,7 @@
   "name": "polythene-mithril-ripple",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-ripple.js",
+  "main": "dist/polythene-mithril-ripple",
   "module": "dist/polythene-mithril-ripple.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

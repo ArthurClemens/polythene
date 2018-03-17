@@ -2,7 +2,7 @@
   "name": "polythene-react-slider",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-slider.js",
+  "main": "dist/polythene-react-slider",
   "module": "dist/polythene-react-slider.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

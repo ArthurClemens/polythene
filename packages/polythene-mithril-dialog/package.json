@@ -2,7 +2,7 @@
   "name": "polythene-mithril-dialog",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-dialog.js",
+  "main": "dist/polythene-mithril-dialog",
   "module": "dist/polythene-mithril-dialog.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

@@ -2,7 +2,7 @@
   "name": "polythene-css-dialog-pane",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-dialog-pane.js",
+  "main": "dist/polythene-css-dialog-pane",
   "module": "dist/polythene-css-dialog-pane.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

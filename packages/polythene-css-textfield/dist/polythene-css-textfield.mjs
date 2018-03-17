@@ -1,6 +1,6 @@
+import { vars } from 'polythene-theme';
 import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-textfield';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-core-textfield';
 
 var classes = {
   component: "pe-textfield",
@@ -38,7 +38,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [mixin.clearfix(), {
     position: "relative",
-    lineHeight: vars$1.line_height,
+    lineHeight: vars.line_height,
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
@@ -192,8 +192,8 @@ var layout = (function (selector, componentVars) {
     " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
       marginTop: componentVars.margin_top_error_message + "px",
       fontSize: componentVars.font_size_error + "px",
-      lineHeight: vars$1.line_height,
-      minHeight: componentVars.font_size_error * vars$1.line_height + "px"
+      lineHeight: vars.line_height,
+      minHeight: componentVars.font_size_error * vars.line_height + "px"
     },
 
     " .pe-textfield__counter": {
@@ -370,13 +370,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

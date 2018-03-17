@@ -2,7 +2,7 @@
   "name": "polythene-core-snackbar",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-snackbar.js",
+  "main": "dist/polythene-core-snackbar",
   "module": "dist/polythene-core-snackbar.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

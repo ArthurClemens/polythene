@@ -2,7 +2,7 @@
   "name": "polythene-css-ripple",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-ripple.js",
+  "main": "dist/polythene-css-ripple",
   "module": "dist/polythene-css-ripple.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

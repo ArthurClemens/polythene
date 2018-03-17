@@ -32,9 +32,9 @@ var createContent = function createContent(vnode) {
   return vnode.children;
 };
 
-var drawer = Object.freeze({
-	createProps: createProps,
-	createContent: createContent
+var drawer = /*#__PURE__*/Object.freeze({
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

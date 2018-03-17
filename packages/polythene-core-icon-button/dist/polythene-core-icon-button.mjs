@@ -35,9 +35,9 @@ var createContent = function createContent(vnode) {
   return vnode.children;
 };
 
-var iconButton = Object.freeze({
-	createProps: createProps,
-	createContent: createContent
+var iconButton = /*#__PURE__*/Object.freeze({
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

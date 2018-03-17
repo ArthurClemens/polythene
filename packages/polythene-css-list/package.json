@@ -2,7 +2,7 @@
   "name": "polythene-css-list",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-list.js",
+  "main": "dist/polythene-css-list",
   "module": "dist/polythene-css-list.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

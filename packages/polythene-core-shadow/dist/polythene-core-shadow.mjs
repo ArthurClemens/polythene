@@ -43,10 +43,10 @@ var createContent = function createContent(vnode, _ref2) {
   })];
 };
 
-var shadow = Object.freeze({
-	getElement: getElement,
-	createProps: createProps,
-	createContent: createContent
+var shadow = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var vars$1 = {

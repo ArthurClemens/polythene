@@ -1,6 +1,6 @@
 
-import * as fromMithrilTests from "./src/mithril-tests";
-export const mithrilTests = fromMithrilTests;
+import * as mithrilTests from "./src/mithril-tests";
+export { mithrilTests };
 
-import * as fromReactTests from "./src/react-tests";
-export const reactTests = fromReactTests;
+import * as reactTests from "./src/react-tests";
+export { reactTests };

@@ -2,7 +2,7 @@
   "name": "polythene-mithril-icon",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-icon.js",
+  "main": "dist/polythene-mithril-icon",
   "module": "dist/polythene-mithril-icon.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

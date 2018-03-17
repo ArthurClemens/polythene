@@ -2,7 +2,7 @@
   "name": "polythene-css-icon-button",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-icon-button.js",
+  "main": "dist/polythene-css-icon-button",
   "module": "dist/polythene-css-icon-button.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

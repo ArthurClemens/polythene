@@ -215,10 +215,6 @@ if (isClient) {
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-/*
-Helper module to manage multiple items of the same component type.
-*/
-
 var Multi = function Multi(_ref) {
   var mOptions = _ref.options,
       renderer = _ref.renderer;

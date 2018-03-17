@@ -2,7 +2,7 @@
   "name": "polythene-css-card",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-card.js",
+  "main": "dist/polythene-css-card",
   "module": "dist/polythene-css-card.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

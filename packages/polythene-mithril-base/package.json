@@ -2,7 +2,7 @@
   "name": "polythene-mithril-base",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-base.js",
+  "main": "dist/polythene-mithril-base",
   "module": "dist/polythene-mithril-base.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

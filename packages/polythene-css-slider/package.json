@@ -2,7 +2,7 @@
   "name": "polythene-css-slider",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-slider.js",
+  "main": "dist/polythene-css-slider",
   "module": "dist/polythene-css-slider.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

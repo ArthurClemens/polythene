@@ -1,4 +1,4 @@
-import { isClient, isServer } from 'polythene-core';
+import { isServer, isClient } from 'polythene-core';
 
 var addWebFont = function addWebFont(vendor, family, key) {
   if (isServer) return;

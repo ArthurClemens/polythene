@@ -28,7 +28,7 @@ import { mithrilTests as mithrilTests$26, reactTests as reactTests$26 } from 'te
 
 
 
-var fromMithrilTests = Object.freeze({
+var mithrilTests$27 = /*#__PURE__*/Object.freeze({
 	button: mithrilTests,
 	card: mithrilTests$1,
 	checkbox: mithrilTests$2,
@@ -60,7 +60,7 @@ var fromMithrilTests = Object.freeze({
 
 
 
-var fromReactTests = Object.freeze({
+var reactTests$27 = /*#__PURE__*/Object.freeze({
 	button: reactTests,
 	card: reactTests$1,
 	checkbox: reactTests$2,
@@ -89,9 +89,5 @@ var fromReactTests = Object.freeze({
 	textfield: reactTests$25,
 	toolbar: reactTests$26
 });
-
-var mithrilTests$27 = fromMithrilTests;
-
-var reactTests$27 = fromReactTests;
 
 export { mithrilTests$27 as mithrilTests, reactTests$27 as reactTests };

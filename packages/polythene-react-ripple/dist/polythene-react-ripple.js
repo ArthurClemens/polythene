@@ -4,13 +4,13 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-ripple']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreRipple) { 'use strict';
 
-var Ripple = polytheneReactBase.StateComponent(polytheneCoreRipple.coreRipple);
+	var Ripple = polytheneReactBase.StateComponent(polytheneCoreRipple.coreRipple);
 
-Ripple.displayName = "Ripple";
+	Ripple.displayName = "Ripple";
 
-exports.Ripple = Ripple;
+	exports.Ripple = Ripple;
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-react-ripple.js.map

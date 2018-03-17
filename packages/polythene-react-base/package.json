@@ -2,7 +2,7 @@
   "name": "polythene-react-base",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-react-base.js",
+  "main": "dist/polythene-react-base",
   "module": "dist/polythene-react-base.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

@@ -1,18 +1,15 @@
-import { Drawer, Icon, IconButton, List, ListTile, RaisedButton, Toolbar, keys, renderer } from 'polythene-mithril';
-import { DrawerCSS, ListTileCSS, ToolbarCSS } from 'polythene-css';
-import { Drawer as Drawer$1, Icon as Icon$1, IconButton as IconButton$1, List as List$1, ListTile as ListTile$1, RaisedButton as RaisedButton$1, Toolbar as Toolbar$1, keys as keys$1, renderer as renderer$1 } from 'polythene-react';
+import { ListTileCSS, DrawerCSS, ToolbarCSS } from 'polythene-css';
+import { Drawer, RaisedButton, renderer, keys, List, ListTile, Icon, Toolbar, IconButton } from 'polythene-mithril';
+import { Drawer as Drawer$1, RaisedButton as RaisedButton$1, renderer as renderer$1, keys as keys$1, List as List$1, ListTile as ListTile$1, Icon as Icon$1, Toolbar as Toolbar$1, IconButton as IconButton$1 } from 'polythene-react';
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-
-
-
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var stream$2 = createCommonjsModule(function (module) {
+var stream = createCommonjsModule(function (module) {
+
 	var guid = 0,
 	    HALT = {};
 	function createStream() {
@@ -155,11 +152,11 @@ var stream$2 = createCommonjsModule(function (module) {
 	module["exports"] = createStream;
 });
 
-var stream = stream$2;
+var stream$1 = stream;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>";
 
@@ -184,10 +181,10 @@ var navigation = (function (_ref) {
 
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
+      var show = stream$1(false);
       _extends(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show]) // for React
+        redrawOnUpdate: stream$1.merge([show]) // for React
       });
     },
     view: function view(vnode) {
@@ -201,7 +198,7 @@ var navigation = (function (_ref) {
       var toolbarRow = [!drawerOpts.permanent && h(IconButton$$1, {
         key: "icon",
         icon: { svg: { content: h.trust(iconMenuSVG) } },
-        events: _defineProperty$1({}, k.onclick, function () {
+        events: _defineProperty({}, k.onclick, function () {
           return state.show() ? state.show(false) : state.show(true);
         })
       }), h("div", {
@@ -258,7 +255,7 @@ var navigation = (function (_ref) {
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var appDrawer = (function (_ref) {
   var h = _ref.renderer,
@@ -272,10 +269,10 @@ var appDrawer = (function (_ref) {
 
   return {
     oninit: function oninit(vnode) {
-      var show = stream(false);
+      var show = stream$1(false);
       _extends$1(vnode.state, {
         show: show,
-        redrawOnUpdate: stream.merge([show]) // React: redraw whenever variables change
+        redrawOnUpdate: stream$1.merge([show]) // React: redraw whenever variables change
       });
     },
     view: function view(_ref2) {
@@ -285,7 +282,7 @@ var appDrawer = (function (_ref) {
       return [h(RaisedButton$$1, {
         key: "button", // for React
         label: "Show",
-        events: _defineProperty$2({}, k.onclick, function () {
+        events: _defineProperty$1({}, k.onclick, function () {
           return state.show(true);
         })
       }), h(Drawer$$1, _extends$1({}, drawerOpts, {
@@ -305,7 +302,7 @@ var appDrawer = (function (_ref) {
   };
 });
 
-function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var icons = {
   drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
@@ -344,7 +341,7 @@ var navigationList = (function (_ref) {
       }),
       hoverable: true,
       navigation: true,
-      events: _defineProperty$3({}, k.onclick, onClick)
+      events: _defineProperty$2({}, k.onclick, onClick)
     });
   };
 
@@ -378,7 +375,7 @@ var navigationList = (function (_ref) {
   });
 });
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var genericTests = (function (_ref) {
   var keys$$1 = _ref.keys,
@@ -423,7 +420,7 @@ var genericTests = (function (_ref) {
         }),
         hoverable: true,
         navigation: true,
-        events: _defineProperty({}, keys$$1.onclick, onClick)
+        events: _defineProperty$3({}, keys$$1.onclick, onClick)
       })]
     });
   };
@@ -1869,7 +1866,6 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
-
 /* eslint-disable no-unused-vars */
 
 var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2008,8 +2004,13 @@ emptyFunction.thatReturnsArgument = function (arg) {
 var emptyFunction_1 = emptyFunction;
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var q = "function" === typeof Symbol && Symbol["for"]; var r = q ? Symbol["for"]("react.element") : 60103; var t = q ? Symbol["for"]("react.call") : 60104; var u = q ? Symbol["for"]("react.return") : 60105; var v = q ? Symbol["for"]("react.portal") : 60106; var w = q ? Symbol["for"]("react.fragment") : 60107; var x = "function" === typeof Symbol && Symbol.iterator;
+var q = "function" === typeof Symbol && Symbol["for"],
+    r = q ? Symbol["for"]("react.element") : 60103,
+    t = q ? Symbol["for"]("react.call") : 60104,
+    u = q ? Symbol["for"]("react.return") : 60105,
+    v = q ? Symbol["for"]("react.portal") : 60106,
+    w = q ? Symbol["for"]("react.fragment") : 60107,
+    x = "function" === typeof Symbol && Symbol.iterator;
 function y(a) {
   for (var b = arguments.length - 1, e = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, c = 0; c < b; c++) {
     e += "\x26args[]\x3d" + encodeURIComponent(arguments[c + 1]);
@@ -2030,7 +2031,9 @@ function B(a, b, e) {
   this.props = a;this.context = b;this.refs = emptyObject_1;this.updater = e || z;
 }var F = E.prototype = new C();F.constructor = E;objectAssign(F, A.prototype);F.unstable_isAsyncReactComponent = !0;F.render = function () {
   return this.props.children;
-};var G = { current: null }; var H = Object.prototype.hasOwnProperty; var I = { key: !0, ref: !0, __self: !0, __source: !0 };
+};var G = { current: null },
+    H = Object.prototype.hasOwnProperty,
+    I = { key: !0, ref: !0, __self: !0, __source: !0 };
 function J(a, b, e) {
   var c,
       d = {},
@@ -2051,8 +2054,8 @@ function escape(a) {
   var b = { "\x3d": "\x3d0", ":": "\x3d2" };return "$" + ("" + a).replace(/[=:]/g, function (a) {
     return b[a];
   });
-}var L = /\/+/g;
-var M = [];function N(a, b, e, c) {
+}var L = /\/+/g,
+    M = [];function N(a, b, e, c) {
   if (M.length) {
     var d = M.pop();d.result = a;d.keyPrefix = b;d.func = e;d.context = c;d.count = 0;return d;
   }return { result: a, keyPrefix: b, func: e, context: c, count: 0 };
@@ -2105,9 +2108,9 @@ var U = { Children: { map: function map(a, b, e) {
   }, createFactory: function createFactory(a) {
     var b = J.bind(null, a);b.type = a;return b;
   },
-  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } };
-var V = Object.freeze({ default: U });
-var W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
+  isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: objectAssign } },
+    V = Object.freeze({ default: U }),
+    W = V && U || V;var react_production_min = W["default"] ? W["default"] : W;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2219,16 +2222,16 @@ var warning_1 = warning;
  * LICENSE file in the root directory of this source tree.
  */
 
-var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
-var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
-var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant$1 = invariant_1;
   var warning$1 = warning_1;
-  var ReactPropTypesSecret = ReactPropTypesSecret_1;
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
 }
 
@@ -2254,12 +2257,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$3(typeSpecs[typeSpecName]));
-          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+          invariant$1(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof$2(typeSpecs[typeSpecName]));
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
         } catch (ex) {
           error = ex;
         }
-        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$3(error));
+        warning$1(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error === 'undefined' ? 'undefined' : _typeof$2(error));
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -2276,20 +2279,13 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var react_development = createCommonjsModule(function (module) {
-  /** @license React v16.2.0
-   * react.development.js
-   *
-   * Copyright (c) 2013-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
 
   if (process.env.NODE_ENV !== "production") {
     (function () {
+
       var _assign = objectAssign;
       var emptyObject = emptyObject_1;
       var invariant = invariant_1;
@@ -2508,7 +2504,7 @@ var react_development = createCommonjsModule(function (module) {
        * @protected
        */
       Component.prototype.setState = function (partialState, callback) {
-        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$2(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
+        !((typeof partialState === 'undefined' ? 'undefined' : _typeof$3(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
         this.updater.enqueueSetState(this, partialState, callback, 'setState');
       };
 
@@ -2910,7 +2906,7 @@ var react_development = createCommonjsModule(function (module) {
        * @final
        */
       function isValidElement(object) {
-        return (typeof object === 'undefined' ? 'undefined' : _typeof$2(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+        return (typeof object === 'undefined' ? 'undefined' : _typeof$3(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
       }
 
       var ReactDebugCurrentFrame = {};
@@ -3004,7 +3000,7 @@ var react_development = createCommonjsModule(function (module) {
        * @return {!number} The number of children in this subtree.
        */
       function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-        var type = typeof children === 'undefined' ? 'undefined' : _typeof$2(children);
+        var type = typeof children === 'undefined' ? 'undefined' : _typeof$3(children);
 
         if (type === 'undefined' || type === 'boolean') {
           // All of the above are perceived as null.
@@ -3117,7 +3113,7 @@ var react_development = createCommonjsModule(function (module) {
       function getComponentKey(component, index) {
         // Do some typechecking here since we call this blindly. We want to ensure
         // that we don't block potential future ES APIs.
-        if ((typeof component === 'undefined' ? 'undefined' : _typeof$2(component)) === 'object' && component !== null && component.key != null) {
+        if ((typeof component === 'undefined' ? 'undefined' : _typeof$3(component)) === 'object' && component !== null && component.key != null) {
           // Explicit key
           return escape(component.key);
         }
@@ -3393,7 +3389,7 @@ var react_development = createCommonjsModule(function (module) {
        * @param {*} parentType node's parent's type.
        */
       function validateChildKeys(node, parentType) {
-        if ((typeof node === 'undefined' ? 'undefined' : _typeof$2(node)) !== 'object') {
+        if ((typeof node === 'undefined' ? 'undefined' : _typeof$3(node)) !== 'object') {
           return;
         }
         if (Array.isArray(node)) {
@@ -3495,12 +3491,12 @@ var react_development = createCommonjsModule(function (module) {
       }
 
       function createElementWithValidation(type, props, children) {
-        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' || typeof type === 'number';
+        var validType = typeof type === 'string' || typeof type === 'function' || (typeof type === 'undefined' ? 'undefined' : _typeof$3(type)) === 'symbol' || typeof type === 'number';
         // We warn in this case but don't throw. We expect the element creation to
         // succeed and there will likely be errors in render.
         if (!validType) {
           var info = '';
-          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
+          if (type === undefined || (typeof type === 'undefined' ? 'undefined' : _typeof$3(type)) === 'object' && type !== null && Object.keys(type).length === 0) {
             info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
           }
 
@@ -3513,7 +3509,7 @@ var react_development = createCommonjsModule(function (module) {
 
           info += getStackAddendum() || '';
 
-          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$2(type), info);
+          warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type === 'undefined' ? 'undefined' : _typeof$3(type), info);
         }
 
         var element = createElement.apply(this, arguments);
@@ -3535,7 +3531,7 @@ var react_development = createCommonjsModule(function (module) {
           }
         }
 
-        if ((typeof type === 'undefined' ? 'undefined' : _typeof$2(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
+        if ((typeof type === 'undefined' ? 'undefined' : _typeof$3(type)) === 'symbol' && type === REACT_FRAGMENT_TYPE) {
           validateFragmentProps(element);
         } else {
           validatePropTypes(element);
@@ -3629,13 +3625,13 @@ var react_development = createCommonjsModule(function (module) {
 });
 
 var react = createCommonjsModule(function (module) {
+
   if (process.env.NODE_ENV === 'production') {
     module.exports = react_production_min;
   } else {
     module.exports = react_development;
   }
 });
-
 var react_1 = react.Children;
 var react_2 = react.Component;
 var react_3 = react.PropTypes;
@@ -3653,7 +3649,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AppDrawer$2 = function (_Component) {
+var AppDrawer$1 = function (_Component) {
   _inherits(AppDrawer, _Component);
 
   function AppDrawer(props) {
@@ -3723,7 +3719,7 @@ var reactTests = function reactTests() {
     interactive: true,
     exclude: true,
     component: function component() {
-      return react.createElement(AppDrawer$2, { fixed: true, backdrop: true, createContent: createContent });
+      return react.createElement(AppDrawer$1, { fixed: true, backdrop: true, createContent: createContent });
     }
   }];
 };

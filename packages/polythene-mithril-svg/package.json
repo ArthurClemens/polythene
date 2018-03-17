@@ -2,7 +2,7 @@
   "name": "polythene-mithril-svg",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-svg.js",
+  "main": "dist/polythene-mithril-svg",
   "module": "dist/polythene-mithril-svg.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

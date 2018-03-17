@@ -1,0 +1,30 @@
+{
+  "name": "tests-build-webpack-4",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/js/index",
+  "module": "dist/js/index.mjs",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3900 --host 0.0.0.0",
+    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack-cli --config scripts/webpack.config.prod.js"
+  },
+  "dependencies": {
+    "mithril": "1.1.6",
+    "polythene-css": "^1.0.0",
+    "polythene-mithril": "^1.0.0",
+    "polythene-mithril-button": "^1.0.0"
+  },
+  "devDependencies": {
+    "compression-webpack-plugin": "1.1.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "npm-run-all": "^4.1.2",
+    "polythene-scripts": "^1.0.0",
+    "rollup-webpack-loader": "1.0.0",
+    "webpack": "4.1.1",
+    "webpack-cli": "^2.0.11",
+    "webpack-dev-server": "3.1.1"
+  }
+}

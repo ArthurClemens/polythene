@@ -2,7 +2,7 @@
   "name": "polythene-mithril-fab",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-mithril-fab.js",
+  "main": "dist/polythene-mithril-fab",
   "module": "dist/polythene-mithril-fab.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

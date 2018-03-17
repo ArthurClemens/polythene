@@ -2,7 +2,7 @@
   "name": "polythene-core-toolbar",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-toolbar.js",
+  "main": "dist/polythene-core-toolbar",
   "module": "dist/polythene-core-toolbar.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

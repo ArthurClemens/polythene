@@ -2,7 +2,7 @@
   "name": "polythene-css-typography",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-css-typography.js",
+  "main": "dist/polythene-css-typography",
   "module": "dist/polythene-css-typography.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

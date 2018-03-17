@@ -1,185 +1,185 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
-	(factory((global.polythene = {}),global['polythene-core']));
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
 }(this, (function (exports,polytheneCore) { 'use strict';
 
-var addWebFont = function addWebFont(vendor, family, key) {
-  if (polytheneCore.isServer) return;
-  if (!window.WebFontConfig) {
-    window.WebFontConfig = {};
-    (function () {
-      var wf = document.createElement("script");
-      wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
-      wf.type = "text/javascript";
-      wf.async = "true";
-      var s = document.getElementsByTagName("script")[0];
-      if (s) {
-        s.parentNode.insertBefore(wf, s);
-      }
-    })();
-  }
-  var vendorCfg = window.WebFontConfig[vendor] || {};
-  vendorCfg.families = vendorCfg.families || [];
-  vendorCfg.families.push(family);
-  if (key) {
-    vendorCfg.key = key;
-  }
-  window.WebFontConfig[vendor] = vendorCfg;
-};
+  var addWebFont = function addWebFont(vendor, family, key) {
+    if (polytheneCore.isServer) return;
+    if (!window.WebFontConfig) {
+      window.WebFontConfig = {};
+      (function () {
+        var wf = document.createElement("script");
+        wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+        wf.type = "text/javascript";
+        wf.async = "true";
+        var s = document.getElementsByTagName("script")[0];
+        if (s) {
+          s.parentNode.insertBefore(wf, s);
+        }
+      })();
+    }
+    var vendorCfg = window.WebFontConfig[vendor] || {};
+    vendorCfg.families = vendorCfg.families || [];
+    vendorCfg.families.push(family);
+    if (key) {
+      vendorCfg.key = key;
+    }
+    window.WebFontConfig[vendor] = vendorCfg;
+  };
 
-/*
-https://gist.github.com/gre/1650294
-Easing Functions - inspired from http://gizma.com/easing/
-Only considering the t value for the range [0, 1] => [0, 1]
-*/
+  /*
+  https://gist.github.com/gre/1650294
+  Easing Functions - inspired from http://gizma.com/easing/
+  Only considering the t value for the range [0, 1] => [0, 1]
+  */
 
-var easing = {
-  // no easing, no acceleration
-  linear: function linear(t) {
-    return t;
-  },
-  // accelerating from zero velocity
-  easeInQuad: function easeInQuad(t) {
-    return t * t;
-  },
-  // decelerating to zero velocity
-  easeOutQuad: function easeOutQuad(t) {
-    return t * (2 - t);
-  },
-  // acceleration until halfway, then deceleration
-  easeInOutQuad: function easeInOutQuad(t) {
-    return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-  },
-  // accelerating from zero velocity
-  easeInCubic: function easeInCubic(t) {
-    return t * t * t;
-  },
-  // decelerating to zero velocity
-  easeOutCubic: function easeOutCubic(t) {
-    return --t * t * t + 1;
-  },
-  // acceleration until halfway, then deceleration
-  easeInOutCubic: function easeInOutCubic(t) {
-    return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-  },
-  // accelerating from zero velocity
-  easeInQuart: function easeInQuart(t) {
-    return t * t * t * t;
-  },
-  // decelerating to zero velocity
-  easeOutQuart: function easeOutQuart(t) {
-    return 1 - --t * t * t * t;
-  },
-  // acceleration until halfway, then deceleration
-  easeInOutQuart: function easeInOutQuart(t) {
-    return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
-  },
-  // accelerating from zero velocity
-  easeInQuint: function easeInQuint(t) {
-    return t * t * t * t * t;
-  },
-  // decelerating to zero velocity
-  easeOutQuint: function easeOutQuint(t) {
-    return 1 + --t * t * t * t * t;
-  },
-  // acceleration until halfway, then deceleration
-  easeInOutQuint: function easeInOutQuint(t) {
-    return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
-  }
-};
+  var easing = {
+    // no easing, no acceleration
+    linear: function linear(t) {
+      return t;
+    },
+    // accelerating from zero velocity
+    easeInQuad: function easeInQuad(t) {
+      return t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuad: function easeOutQuad(t) {
+      return t * (2 - t);
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuad: function easeInOutQuad(t) {
+      return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    },
+    // accelerating from zero velocity
+    easeInCubic: function easeInCubic(t) {
+      return t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutCubic: function easeOutCubic(t) {
+      return --t * t * t + 1;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutCubic: function easeInOutCubic(t) {
+      return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    },
+    // accelerating from zero velocity
+    easeInQuart: function easeInQuart(t) {
+      return t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuart: function easeOutQuart(t) {
+      return 1 - --t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuart: function easeInOutQuart(t) {
+      return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+    },
+    // accelerating from zero velocity
+    easeInQuint: function easeInQuint(t) {
+      return t * t * t * t * t;
+    },
+    // decelerating to zero velocity
+    easeOutQuint: function easeOutQuint(t) {
+      return 1 + --t * t * t * t * t;
+    },
+    // acceleration until halfway, then deceleration
+    easeInOutQuint: function easeInOutQuint(t) {
+      return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+    }
+  };
 
-/*
- Animated scroll to a position.
- Derived from https://github.com/madebysource/animated-scrollto
- Adapted to Mithril and rewritten to es6.
-*/
+  /*
+   Animated scroll to a position.
+   Derived from https://github.com/madebysource/animated-scrollto
+   Adapted to Mithril and rewritten to es6.
+  */
 
-var scrollTo = function scrollTo(opts) {
-  if (polytheneCore.isServer) {
-    return;
-  }
-  var element = opts.element;
-  var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
-  var to = opts.to;
-  var duration = opts.duration * 1000;
-  var easingFn = opts.easing || easing.easeInOutCubic;
-  var start = element[which];
-  var change = to - start;
-  var animationStart = new Date().getTime();
-  var animating = true;
-  return new Promise(function (resolve) {
-    var animateScroll = function animateScroll() {
-      if (!animating) {
-        return;
-      }
+  var scrollTo = function scrollTo(opts) {
+    if (polytheneCore.isServer) {
+      return;
+    }
+    var element = opts.element;
+    var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
+    var to = opts.to;
+    var duration = opts.duration * 1000;
+    var easingFn = opts.easing || easing.easeInOutCubic;
+    var start = element[which];
+    var change = to - start;
+    var animationStart = new Date().getTime();
+    var animating = true;
+    return new Promise(function (resolve) {
+      var animateScroll = function animateScroll() {
+        if (!animating) {
+          return;
+        }
+        requestAnimFrame(animateScroll);
+        var now = new Date().getTime();
+        var percentage = (now - animationStart) / duration;
+        var val = start + change * easingFn(percentage);
+        element[which] = val;
+        if (percentage >= 1) {
+          element[which] = to;
+          animating = false;
+          resolve();
+        }
+      };
       requestAnimFrame(animateScroll);
-      var now = new Date().getTime();
-      var percentage = (now - animationStart) / duration;
-      var val = start + change * easingFn(percentage);
-      element[which] = val;
-      if (percentage >= 1) {
-        element[which] = to;
-        animating = false;
-        resolve();
+    });
+  };
+
+  var requestAnimFrame = polytheneCore.isServer ? function () {} : function () {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+      return window.setTimeout(callback, 1000 / 60);
+    };
+  }();
+
+  var Timer = function Timer() {
+    var timerId = void 0,
+        startTime = void 0,
+        remaining = void 0,
+        cb = void 0;
+
+    var stop = function stop() {
+      if (polytheneCore.isClient) {
+        window.clearTimeout(timerId);
       }
     };
-    requestAnimFrame(animateScroll);
-  });
-};
 
-var requestAnimFrame = polytheneCore.isServer ? function () {} : function () {
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
-    return window.setTimeout(callback, 1000 / 60);
-  };
-}();
+    var pause = function pause() {
+      return stop(), remaining -= new Date() - startTime;
+    };
 
-var Timer = function Timer() {
-  var timerId = void 0,
-      startTime = void 0,
-      remaining = void 0,
-      cb = void 0;
+    var startTimer = function startTimer() {
+      if (polytheneCore.isClient) {
+        stop();
+        startTime = new Date();
+        timerId = window.setTimeout(cb, remaining);
+      }
+    };
 
-  var stop = function stop() {
-    if (polytheneCore.isClient) {
-      window.clearTimeout(timerId);
-    }
-  };
+    var start = function start(callback, delaySeconds) {
+      return cb = callback, remaining = delaySeconds * 1000, startTimer();
+    };
 
-  var pause = function pause() {
-    return stop(), remaining -= new Date() - startTime;
-  };
+    var resume = function resume() {
+      return startTimer();
+    };
 
-  var startTimer = function startTimer() {
-    if (polytheneCore.isClient) {
-      stop();
-      startTime = new Date();
-      timerId = window.setTimeout(cb, remaining);
-    }
+    return {
+      start: start,
+      pause: pause,
+      resume: resume,
+      stop: stop
+    };
   };
 
-  var start = function start(callback, delaySeconds) {
-    return cb = callback, remaining = delaySeconds * 1000, startTimer();
-  };
+  exports.addWebFont = addWebFont;
+  exports.easing = easing;
+  exports.scrollTo = scrollTo;
+  exports.Timer = Timer;
 
-  var resume = function resume() {
-    return startTimer();
-  };
-
-  return {
-    start: start,
-    pause: pause,
-    resume: resume,
-    stop: stop
-  };
-};
-
-exports.addWebFont = addWebFont;
-exports.easing = easing;
-exports.scrollTo = scrollTo;
-exports.Timer = Timer;
-
-Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-utilities.js.map

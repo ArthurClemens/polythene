@@ -1,8 +1,8 @@
-import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
-import { scrollTo } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-button';
 import { vars as vars$2 } from 'polythene-core-icon-button';
+import { filterSupportedAttributes, isTouch, subscribe, unsubscribe } from 'polythene-core';
+import { scrollTo } from 'polythene-utilities';
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
@@ -94,7 +94,7 @@ var classes = {
   isMenu: "pe-tabs--menu",
   scrollable: "pe-tabs--scrollable",
   compactTabs: "pe-tabs--compact",
-  tabHasIcon: "pe-tabs__tab---icon",
+  tabHasIcon: "pe-tabs__tab--icon",
   tabRowCentered: "pe-tabs__row--centered",
   tabRowIndent: "pe-tabs__row--indent",
 
@@ -411,12 +411,12 @@ var createContent = function createContent(vnode, _ref3) {
   }, [tabRow, tabIndicator]), attrs.scrollable ? scrollButtonAtEnd : null];
 };
 
-var tabs = Object.freeze({
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUnMount: onUnMount,
-	createProps: createProps,
-	createContent: createContent
+var tabs = /*#__PURE__*/Object.freeze({
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUnMount: onUnMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -463,10 +463,10 @@ var createContent$1 = function createContent(vnode) {
   return vnode.children;
 };
 
-var tab = Object.freeze({
-	onMount: onMount$1,
-	createProps: createProps$1,
-	createContent: createContent$1
+var tab = /*#__PURE__*/Object.freeze({
+  onMount: onMount$1,
+  createProps: createProps$1,
+  createContent: createContent$1
 });
 
 // Don't export 'element': it will be the wrapped IconButton component (set in polythene-xxx-tabs/scroll-button)
@@ -497,9 +497,9 @@ var createProps$2 = function createProps(vnode, _ref) {
   };
 };
 
-var scrollButton = Object.freeze({
-	onMount: onMount$2,
-	createProps: createProps$2
+var scrollButton = /*#__PURE__*/Object.freeze({
+  onMount: onMount$2,
+  createProps: createProps$2
 });
 
 export { tabs as coreTabs, tab as coreTab, scrollButton as coreScrollButton, vars$3 as vars };

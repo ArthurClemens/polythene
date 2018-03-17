@@ -42,39 +42,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*
-Takes a Mithril component object and returns a React component (for keys oninit and view).
-Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
-
-Example: 
-
-import stream from "mithril/stream";
-import { renderer as h, RaisedButton } from "polythene-react";
-
-const StateComponent = {
-  oninit: vnode => {
-    const checked = stream(false);
-    Object.assign(vnode.state, {
-      checked,
-      redrawOnUpdate: stream.merge([checked])
-    });
-  },
-  view: vnode => {
-    const state = vnode.state;
-    const attrs = vnode.attrs;
-    const checked = state.checked();
-    return h(RaisedButton, {
-      label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
-      events: {
-        [keys.onclick]: () => state.checked(!checked)
-      }
-    });
-  }
-};
-
-h(StateComponent, { subject: "airco"});
-*/
-
 var MithrilToReact = function MithrilToReact(component) {
   return function (_React$Component) {
     _inherits(_class, _React$Component);
@@ -151,9 +118,10 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var stream$2 = createCommonjsModule(function (module) {
-	/* eslint-disable */
-	(function () {
+var stream = createCommonjsModule(function (module) {
+(function () {
+		/* eslint-enable */
+
 		var guid = 0,
 		    HALT = {};
 		function createStream() {
@@ -338,7 +306,7 @@ var stream$2 = createCommonjsModule(function (module) {
 	})();
 });
 
-var stream = stream$2;
+var stream$1 = stream;
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -390,7 +358,7 @@ var StateComponent = function StateComponent(_ref) {
       var protoState = _extends$1({}, component, _this.createVirtualNode(), {
         redrawValues: undefined
       });
-      _this.state = getInitialState(protoState, stream);
+      _this.state = getInitialState(protoState, stream$1);
       _this.registerDOM = _this.registerDOM.bind(_this);
       _this._render = _this._render.bind(_this);
       return _this;

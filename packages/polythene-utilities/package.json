@@ -2,7 +2,7 @@
   "name": "polythene-utilities",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-utilities.js",
+  "main": "dist/polythene-utilities",
   "module": "dist/polythene-utilities.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

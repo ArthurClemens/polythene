@@ -1,16 +1,16 @@
-import { unpackAttrs } from 'polythene-core';
-import { easing } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-base-spinner';
+import { unpackAttrs } from 'polythene-core';
+import { easing } from 'polythene-utilities';
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
-var themeVars = _extends$1({}, vars$1, {
+var themeVars = _extends({}, vars$1, {
   border_width_small: vars$1.size_small / vars$1.size_regular * 3,
   border_width_regular: 3,
   border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,
@@ -32,7 +32,7 @@ var classes = {
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var DEFAULT_UPDATE_DURATION = .8;
 
@@ -162,16 +162,16 @@ var createProps = function createProps(vnode, _ref) {
     className: [classes.circle, classes.circleRight].join(" ")
   })]);
 
-  return _extends({}, attrs, {
+  return _extends$1({}, attrs, {
     className: [classes.component, attrs.className].join(" "),
     content: content
   });
 };
 
-var spinner = Object.freeze({
-	getInitialState: getInitialState,
-	onMount: onMount,
-	createProps: createProps
+var spinner = /*#__PURE__*/Object.freeze({
+  getInitialState: getInitialState,
+  onMount: onMount,
+  createProps: createProps
 });
 
 export { spinner as coreMaterialDesignProgressSpinner, themeVars as vars };

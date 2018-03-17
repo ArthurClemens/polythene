@@ -2,7 +2,7 @@
   "name": "polythene-style",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-style.js",
+  "main": "dist/polythene-style",
   "module": "dist/polythene-style.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

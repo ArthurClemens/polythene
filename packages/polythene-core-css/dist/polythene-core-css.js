@@ -1,537 +1,1145 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('j2c-plugin-prefix-browser'), require('polythene-core'), require('j2c')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'j2c-plugin-prefix-browser', 'polythene-core', 'j2c'], factory) :
-	(factory((global.polythene = {}),global['j2c-plugin-prefix-browser'],global['polythene-core'],global.j2c));
-}(this, (function (exports,j2cPluginPrefixBrowser,polytheneCore,J2c) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('j2c')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'j2c'], factory) :
+  (factory((global.polythene = {}),global['polythene-core'],global.j2c));
+}(this, (function (exports,polytheneCore,J2c) { 'use strict';
 
-J2c = J2c && J2c.hasOwnProperty('default') ? J2c['default'] : J2c;
+  J2c = J2c && J2c.hasOwnProperty('default') ? J2c['default'] : J2c;
 
-var layout = [{
-  "display": "-webkit-box"
-}, {
-  "display": "-moz-box"
-}, {
-  "display": "-ms-flexbox"
-}, {
-  "display": "-webkit-flex"
-}, {
-  "display": "flex"
-}];
-
-var layoutInline = [layout, {
-  "display": "-ms-inline-flexbox"
-}, {
-  "display": "-webkit-inline-flex"
-}, {
-  "display": "inline-flex"
-}];
-
-var layoutHorizontal = [layout, {
-  "-ms-flex-direction": "row",
-  "-webkit-flex-direction": "row",
-  "flex-direction": "row"
-}];
-
-var layoutHorizontalReverse = [layout, {
-  "-ms-flex-direction": "row-reverse",
-  "-webkit-flex-direction": "row-reverse",
-  "flex-direction": "row-reverse"
-}];
-
-var layoutVertical = [layout, {
-  "-ms-flex-direction": "column",
-  "-webkit-flex-direction": "column",
-  "flex-direction": "column"
-}];
-
-var layoutVerticalReverse = [layout, {
-  "-ms-flex-direction": "column-reverse",
-  "-webkit-flex-direction": "column-reverse",
-  "flex-direction": "column-reverse"
-}];
-
-var layoutWrap = [layout, {
-  "-ms-flex-wrap": "wrap",
-  "-webkit-flex-wrap": "wrap",
-  "flex-wrap": "wrap"
-}];
-
-var layoutWrapReverse = [layout, {
-  "-ms-flex-wrap": "wrap-reverse",
-  "-webkit-flex-wrap": "wrap-reverse",
-  "flex-wrap": "wrap-reverse"
-}];
-
-var layoutStart = [layout, {
-  "-ms-flex-align": "start",
-  "-webkit-align-items": "flex-start",
-  "align-items": "flex-start"
-}];
-
-var layoutCenter = [layout, {
-  "-ms-flex-align": "center",
-  "-webkit-align-items": "center",
-  "align-items": "center"
-}];
-
-var layoutEnd = [layout, {
-  "-ms-flex-align": "end",
-  "-webkit-align-items": "flex-end",
-  "align-items": "flex-end"
-}];
-
-var layoutJustified = [layout, {
-  "-ms-flex-pack": "justify",
-  "-webkit-justify-content": "space-between",
-  "justify-content": "space-between"
-}];
-
-var layoutStartJustified = [layout, {
-  "-ms-flex-pack": "start",
-  "-webkit-justify-content": "flex-start",
-  "justify-content": "flex-start"
-}];
-
-var layoutCenterJustified = [layout, {
-  "-ms-flex-pack": "center",
-  "-webkit-justify-content": "center",
-  "justify-content": "center"
-}];
-
-var layoutEndJustified = [layout, {
-  "-ms-flex-pack": "end",
-  "-webkit-justify-content": "flex-end",
-  "justify-content": "flex-end"
-}];
-
-var layoutCenterCenter = [layoutCenterJustified, layoutCenter];
-
-var layoutAroundJustified = [layout, {
-  "-ms-flex-pack": "distribute",
-  "-webkit-justify-content": "space-around",
-  "justify-content": "space-around"
-}];
-
-var flex = function flex() {
-  var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  return [{
-    "-webkit-box-flex": num
+  var layout = [{
+    "display": "-webkit-box"
   }, {
-    "-moz-box-flex": num
+    "display": "-moz-box"
   }, {
-    "-webkit-flex": num
+    "display": "-ms-flexbox"
   }, {
-    "-ms-flex": num
+    "display": "-webkit-flex"
   }, {
-    "flex": num
-  }, num === 1 ? {
-    "-webkit-flex-basis": "0.000000001px"
-  } : {}, num === 1 ? {
-    "flex-basis": "0.000000001px"
-  } : {}];
-};
+    "display": "flex"
+  }];
 
-var flexAuto = {
-  "-ms-flex": "1 1 auto",
-  "-webkit-flex-basis": "auto",
-  "flex-basis": "auto"
-};
+  var layoutInline = [layout, {
+    "display": "-ms-inline-flexbox"
+  }, {
+    "display": "-webkit-inline-flex"
+  }, {
+    "display": "inline-flex"
+  }];
 
-var flexAutoVertical = {
-  "-ms-flex": "1 1 auto",
-  "-webkit-flex-basis": "auto",
-  "flex-basis": "auto"
-};
+  var layoutHorizontal = [layout, {
+    "-ms-flex-direction": "row",
+    "-webkit-flex-direction": "row",
+    "flex-direction": "row"
+  }];
 
-var flexIndex = function flexIndex(index) {
-  return {
-    "-ms-flex": index,
-    "-webkit-flex": index,
-    "flex": index
+  var layoutHorizontalReverse = [layout, {
+    "-ms-flex-direction": "row-reverse",
+    "-webkit-flex-direction": "row-reverse",
+    "flex-direction": "row-reverse"
+  }];
+
+  var layoutVertical = [layout, {
+    "-ms-flex-direction": "column",
+    "-webkit-flex-direction": "column",
+    "flex-direction": "column"
+  }];
+
+  var layoutVerticalReverse = [layout, {
+    "-ms-flex-direction": "column-reverse",
+    "-webkit-flex-direction": "column-reverse",
+    "flex-direction": "column-reverse"
+  }];
+
+  var layoutWrap = [layout, {
+    "-ms-flex-wrap": "wrap",
+    "-webkit-flex-wrap": "wrap",
+    "flex-wrap": "wrap"
+  }];
+
+  var layoutWrapReverse = [layout, {
+    "-ms-flex-wrap": "wrap-reverse",
+    "-webkit-flex-wrap": "wrap-reverse",
+    "flex-wrap": "wrap-reverse"
+  }];
+
+  var layoutStart = [layout, {
+    "-ms-flex-align": "start",
+    "-webkit-align-items": "flex-start",
+    "align-items": "flex-start"
+  }];
+
+  var layoutCenter = [layout, {
+    "-ms-flex-align": "center",
+    "-webkit-align-items": "center",
+    "align-items": "center"
+  }];
+
+  var layoutEnd = [layout, {
+    "-ms-flex-align": "end",
+    "-webkit-align-items": "flex-end",
+    "align-items": "flex-end"
+  }];
+
+  var layoutJustified = [layout, {
+    "-ms-flex-pack": "justify",
+    "-webkit-justify-content": "space-between",
+    "justify-content": "space-between"
+  }];
+
+  var layoutStartJustified = [layout, {
+    "-ms-flex-pack": "start",
+    "-webkit-justify-content": "flex-start",
+    "justify-content": "flex-start"
+  }];
+
+  var layoutCenterJustified = [layout, {
+    "-ms-flex-pack": "center",
+    "-webkit-justify-content": "center",
+    "justify-content": "center"
+  }];
+
+  var layoutEndJustified = [layout, {
+    "-ms-flex-pack": "end",
+    "-webkit-justify-content": "flex-end",
+    "justify-content": "flex-end"
+  }];
+
+  var layoutCenterCenter = [layoutCenterJustified, layoutCenter];
+
+  var layoutAroundJustified = [layout, {
+    "-ms-flex-pack": "distribute",
+    "-webkit-justify-content": "space-around",
+    "justify-content": "space-around"
+  }];
+
+  var flex = function flex() {
+    var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return [{
+      "-webkit-box-flex": num
+    }, {
+      "-moz-box-flex": num
+    }, {
+      "-webkit-flex": num
+    }, {
+      "-ms-flex": num
+    }, {
+      "flex": num
+    }, num === 1 ? {
+      "-webkit-flex-basis": "0.000000001px"
+    } : {}, num === 1 ? {
+      "flex-basis": "0.000000001px"
+    } : {}];
   };
-};
 
-var flexGrow = function flexGrow(value) {
-  return {
-    "-webkit-flex-grow": value,
-    "flex-grow": value
+  var flexAuto = {
+    "-ms-flex": "1 1 auto",
+    "-webkit-flex-basis": "auto",
+    "flex-basis": "auto"
   };
-};
 
-var selfStart = {
-  "-ms-align-self": "flex-start",
-  "-webkit-align-self": "flex-start",
-  "align-self": "flex-start"
-};
-
-var selfCenter = {
-  "-ms-align-self": "center",
-  "-webkit-align-self": "center",
-  "align-self": "center"
-};
-
-var selfEnd = {
-  "-ms-align-self": "flex-end",
-  "-webkit-align-self": "flex-end",
-  "align-self": "flex-end"
-};
-
-var selfStretch = {
-  "-ms-align-self": "stretch",
-  "-webkit-align-self": "stretch",
-  "align-self": "stretch"
-};
-
-var flex$1 = {
-  flex: flex,
-  flexAuto: flexAuto,
-  flexAutoVertical: flexAutoVertical,
-  flexIndex: flexIndex,
-  flexGrow: flexGrow,
-  layout: layout,
-  layoutAroundJustified: layoutAroundJustified,
-  layoutCenter: layoutCenter,
-  layoutCenterCenter: layoutCenterCenter,
-  layoutCenterJustified: layoutCenterJustified,
-  layoutEnd: layoutEnd,
-  layoutEndJustified: layoutEndJustified,
-  layoutHorizontal: layoutHorizontal,
-  layoutHorizontalReverse: layoutHorizontalReverse,
-  layoutInline: layoutInline,
-  layoutJustified: layoutJustified,
-  layoutStart: layoutStart,
-  layoutStartJustified: layoutStartJustified,
-  layoutVertical: layoutVertical,
-  layoutVerticalReverse: layoutVerticalReverse,
-  layoutWrap: layoutWrap,
-  layoutWrapReverse: layoutWrapReverse,
-  selfCenter: selfCenter,
-  selfEnd: selfEnd,
-  selfStart: selfStart,
-  selfStretch: selfStretch
-};
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-// Mixins for j2c
-
-// Centers an item absolutely within relative parent
-// mixin.fit()
-var fit = function fit() {
-  var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-  var offsetPx = offset + "px";
-  return {
-    position: "absolute",
-    top: offsetPx,
-    right: offsetPx,
-    bottom: offsetPx,
-    left: offsetPx
+  var flexAutoVertical = {
+    "-ms-flex": "1 1 auto",
+    "-webkit-flex-basis": "auto",
+    "flex-basis": "auto"
   };
-};
 
-// Optional font smoothing
-// mixin.fontSmoothing()
-var fontSmoothing = function fontSmoothing() {
-  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-  if (smoothing) {
+  var flexIndex = function flexIndex(index) {
     return {
-      "-webkit-font-smoothing": "antialiased",
-      "-moz-osx-font-smoothing": "grayscale"
+      "-ms-flex": index,
+      "-webkit-flex": index,
+      "flex": index
     };
-  } else {
+  };
+
+  var flexGrow = function flexGrow(value) {
     return {
-      "-webkit-font-smoothing": "subpixel-antialiased",
-      "-moz-osx-font-smoothing": "auto"
+      "-webkit-flex-grow": value,
+      "flex-grow": value
     };
-  }
-};
+  };
 
-// Breaks off a line with ...
-// unless lines is "none"
-// mixin.ellipsis(1, 16) // max 1 line, 16px high
-// mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
-var ellipsis = function ellipsis(lines, lineHeight) {
-  var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "px";
+  var selfStart = {
+    "-ms-align-self": "flex-start",
+    "-webkit-align-self": "flex-start",
+    "align-self": "flex-start"
+  };
 
-  if (lines === "none") {
+  var selfCenter = {
+    "-ms-align-self": "center",
+    "-webkit-align-self": "center",
+    "align-self": "center"
+  };
+
+  var selfEnd = {
+    "-ms-align-self": "flex-end",
+    "-webkit-align-self": "flex-end",
+    "align-self": "flex-end"
+  };
+
+  var selfStretch = {
+    "-ms-align-self": "stretch",
+    "-webkit-align-self": "stretch",
+    "align-self": "stretch"
+  };
+
+  var flex$1 = {
+    flex: flex,
+    flexAuto: flexAuto,
+    flexAutoVertical: flexAutoVertical,
+    flexIndex: flexIndex,
+    flexGrow: flexGrow,
+    layout: layout,
+    layoutAroundJustified: layoutAroundJustified,
+    layoutCenter: layoutCenter,
+    layoutCenterCenter: layoutCenterCenter,
+    layoutCenterJustified: layoutCenterJustified,
+    layoutEnd: layoutEnd,
+    layoutEndJustified: layoutEndJustified,
+    layoutHorizontal: layoutHorizontal,
+    layoutHorizontalReverse: layoutHorizontalReverse,
+    layoutInline: layoutInline,
+    layoutJustified: layoutJustified,
+    layoutStart: layoutStart,
+    layoutStartJustified: layoutStartJustified,
+    layoutVertical: layoutVertical,
+    layoutVerticalReverse: layoutVerticalReverse,
+    layoutWrap: layoutWrap,
+    layoutWrapReverse: layoutWrapReverse,
+    selfCenter: selfCenter,
+    selfEnd: selfEnd,
+    selfStart: selfStart,
+    selfStretch: selfStretch
+  };
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  // Mixins for j2c
+
+  // Centers an item absolutely within relative parent
+  // mixin.fit()
+  var fit = function fit() {
+    var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    var offsetPx = offset + "px";
     return {
-      textOverflow: "initial",
-      overflow: "initial",
-      display: "block",
-      height: "auto",
-      maxHeight: "none",
-      whiteSpace: "normal"
+      position: "absolute",
+      top: offsetPx,
+      right: offsetPx,
+      bottom: offsetPx,
+      left: offsetPx
     };
-  }
-  return _extends({}, {
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    textRendering: "auto" // Samsung Android
-  }, lines !== undefined ? {
-    "-webkit-line-clamp": lines,
-    "-webkit-box-orient": "vertical",
-    display: "-webkit-box"
-  } : null, lineHeight !== undefined ? {
-    maxHeight: lines * lineHeight + unit
-  } : null);
-};
+  };
 
-// Clears float
-// mixin.clearfix()
-var clearfix = function clearfix() {
-  return {
-    "&:after": {
-      content: "\"\"",
-      display: "table",
-      clear: "both"
+  // Optional font smoothing
+  // mixin.fontSmoothing()
+  var fontSmoothing = function fontSmoothing() {
+    var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+    if (smoothing) {
+      return {
+        "-webkit-font-smoothing": "antialiased",
+        "-moz-osx-font-smoothing": "grayscale"
+      };
+    } else {
+      return {
+        "-webkit-font-smoothing": "subpixel-antialiased",
+        "-moz-osx-font-smoothing": "auto"
+      };
     }
   };
-};
 
-// Creates sticky headers in a scrollable list
-// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
-// mixin.sticky()
-var sticky = function sticky() {
-  var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  return {
-    position: "sticky",
-    top: 0,
-    zIndex: zIndex
-  };
-};
+  // Breaks off a line with ...
+  // unless lines is "none"
+  // mixin.ellipsis(1, 16) // max 1 line, 16px high
+  // mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
+  var ellipsis = function ellipsis(lines, lineHeight) {
+    var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "px";
 
-// Creats a transition with presets
-// mixin.defaultTransition("opacity", vars.animation_duration)
-var defaultTransition = function defaultTransition() {
-  var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
-  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".18s";
-  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "ease-out";
-  return {
-    transitionDelay: "0ms",
-    transitionDuration: duration,
-    transitionTimingFunction: curve,
-    transitionProperty: properties
-  };
-};
-
-var mixin = {
-  clearfix: clearfix,
-  defaultTransition: defaultTransition,
-  ellipsis: ellipsis,
-  fit: fit,
-  fontSmoothing: fontSmoothing,
-  sticky: sticky
-};
-
-var j2c = new J2c(j2cPluginPrefixBrowser.prefixPlugin);
-var ID_REGEX = /[^a-z0-9\\-]/g;
-
-/*
- * @param id: identifier, used as HTMLElement id for the attached <style></style> element
- * @param styles: list of lists style Objects
- */
-var add = function add(id) {
-  for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    styles[_key - 1] = arguments[_key];
-  }
-
-  addToDocument.apply(undefined, [{
-    id: id
-  }].concat(styles));
-};
-
-/*
- * Removes a style from head.
- */
-var remove = function remove(id) {
-  if (polytheneCore.isServer) return;
-  if (id) {
-    var old = document.getElementById(id);
-    if (old && old.parentNode) {
-      old.parentNode.removeChild(old);
+    if (lines === "none") {
+      return {
+        textOverflow: "initial",
+        overflow: "initial",
+        display: "block",
+        height: "auto",
+        maxHeight: "none",
+        whiteSpace: "normal"
+      };
     }
-  }
-};
+    return _extends({}, {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      textRendering: "auto" // Samsung Android
+    }, lines !== undefined ? {
+      "-webkit-line-clamp": lines,
+      "-webkit-box-orient": "vertical",
+      display: "-webkit-box"
+    } : null, lineHeight !== undefined ? {
+      maxHeight: lines * lineHeight + unit
+    } : null);
+  };
 
-/*
- * opts: options object
- * id: identifier, used as HTMLElement id for the attached <style></style> element
- * document: document reference; default window.document
- * styles: list of lists style objects
- */
-var addToDocument = function addToDocument(opts) {
-  for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    styles[_key2 - 1] = arguments[_key2];
+  // Clears float
+  // mixin.clearfix()
+  var clearfix = function clearfix() {
+    return {
+      "&:after": {
+        content: "\"\"",
+        display: "table",
+        clear: "both"
+      }
+    };
+  };
+
+  // Creates sticky headers in a scrollable list
+  // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
+  // mixin.sticky()
+  var sticky = function sticky() {
+    var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return {
+      position: "sticky",
+      top: 0,
+      zIndex: zIndex
+    };
+  };
+
+  // Creats a transition with presets
+  // mixin.defaultTransition("opacity", vars.animation_duration)
+  var defaultTransition = function defaultTransition() {
+    var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".18s";
+    var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "ease-out";
+    return {
+      transitionDelay: "0ms",
+      transitionDuration: duration,
+      transitionTimingFunction: curve,
+      transitionProperty: properties
+    };
+  };
+
+  var mixin = {
+    clearfix: clearfix,
+    defaultTransition: defaultTransition,
+    ellipsis: ellipsis,
+    fit: fit,
+    fontSmoothing: fontSmoothing,
+    sticky: sticky
+  };
+
+  function unwrapExports (x) {
+  	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
   }
 
-  if (polytheneCore.isServer) return;
-  var id = opts.id.replace(ID_REGEX, "_");
-  var documentRef = opts.document || window.document;
-  remove(id);
-  var styleEl = documentRef.createElement("style");
-  if (id) {
-    styleEl.setAttribute("id", id);
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
   }
-  styles.forEach(function (styleList) {
-    // each style returns a list
-    if (Object.keys(styleList).length) {
-      styleList.forEach(function (style) {
-        var scoped = {
-          "@global": style
+
+  var j2cPluginPrefixBrowser_commonjs = createCommonjsModule(function (module, exports) {
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+    // Derived from Lea Verou's PrefixFree
+
+    var allStyles;
+    var styleAttr;
+    var styleElement;
+    var supportedProperty;
+    var supportedDecl;
+
+    function init() {
+      allStyles = getComputedStyle(document.documentElement, null);
+      styleAttr = document.createElement('div').style;
+      styleElement = document.documentElement.appendChild(document.createElement('style'));
+      supportedDecl = _supportedDecl;
+      supportedProperty = _supportedProperty;
+      if ('zIndex' in styleAttr && !('z-index' in styleAttr)) {
+        // Some browsers like it dash-cased, some camelCased, most like both.
+        supportedDecl = function supportedDecl(property, value) {
+          return _supportedDecl(camelCase(property), value);
         };
-        var sheet = j2c.sheet(scoped);
-        styleEl.appendChild(documentRef.createTextNode(sheet));
+        supportedProperty = function supportedProperty(property) {
+          return _supportedProperty(camelCase(property));
+        };
+      }
+    }
+    function finalize() {
+      if (typeof document !== 'undefined') document.documentElement.removeChild(styleElement);
+      // `styleAttr` is used at run time via `supportedProperty()`
+      // `allStyles` and `styleElement` can be displosed of after initialization.
+      allStyles = styleElement = null;
+    }
+    // Helpers, in alphabetic order
+
+    function camelCase(str) {
+      return str.replace(/-([a-z])/g, function ($0, $1) {
+        return $1.toUpperCase();
+      }).replace('-', '');
+    }
+    function deCamelCase(str) {
+      return str.replace(/[A-Z]/g, function ($0) {
+        return '-' + $0.toLowerCase();
       });
     }
+    function _supportedDecl(property, value) {
+      styleAttr[property] = '';
+      styleAttr[property] = value;
+      return !!styleAttr[property];
+    }
+    function supportedMedia(condition) {
+      styleElement.textContent = '@media (' + condition + '){}';
+      // Opera 11 treats unknown conditions as 'all', the rest as 'not all'.
+      // So far tested in modern browsers (01/01/2017), and desktop IE9, FF4,
+      // Opera 11/12, and Safari 6. TY SauceLabs.
+      return !/^@media(?:\s+not)?\s+all/.test(styleElement.sheet.cssRules[0].cssText);
+    }
+    function _supportedProperty(property) {
+      return property in styleAttr;
+    }
+    function supportedRule(selector) {
+      styleElement.textContent = selector + '{}';
+      return !!styleElement.sheet.cssRules.length;
+    }
+
+    // Derived from Lea Verou's PrefixFree
+
+    // TODO: http://caniuse.com/#feat=css-media-resolution
+
+    function detectAtrules(fixers) {
+      if (fixers.prefix === '') return;
+      var atrules = {
+        'keyframes': 'name',
+        'viewport': null,
+        'document': 'regexp(".")'
+      };
+
+      // build a map of {'@ruleX': '@-prefix-ruleX'}
+      for (var atrule in atrules) {
+        var test = atrule + ' ' + (atrules[atrule] || '');
+        if (!supportedRule('@' + test) && supportedRule('@' + fixers.prefix + test)) {
+
+          fixers.hasAtrules = true;
+          fixers.atrules['@' + atrule] = '@' + fixers.prefix + atrule;
+        }
+      }
+
+      // Standard
+      fixers.hasDppx = supportedMedia('resolution:1dppx');
+      // Webkit
+      fixers.hasPixelRatio = supportedMedia(fixers.prefix + 'device-pixel-ratio:1');
+      // Opera
+      fixers.hasPixelRatioFraction = supportedMedia(fixers.prefix + 'device-pixel-ratio:1/1');
+
+      if (fixers.hasPixelRatio || fixers.hasPixelRatioFraction) {
+        fixers.properties['resolution'] = fixers.prefix + 'device-pixel-ratio';
+        fixers.properties['min-resolution'] = fixers.prefix + 'min-device-pixel-ratio';
+        fixers.properties['max-resolution'] = fixers.prefix + 'max-device-pixel-ratio';
+        if (supportedMedia('min-' + fixers.prefix + 'device-pixel-ratio:1')) {
+          // Mozilla/Firefox tunred a vendor prefix into a vendor infix
+          fixers.properties['min-resolution'] = 'min-' + fixers.prefix + 'device-pixel-ratio';
+          fixers.properties['max-resolution'] = 'max-' + fixers.prefix + 'device-pixel-ratio';
+        }
+      }
+    }
+
+    // Derived from Lea Verou's PrefixFree
+
+    function detectFunctions(fixers) {
+      // Values that might need prefixing
+      if (fixers.prefix === '') return;
+      var functions = {
+        'linear-gradient': {
+          property: 'background-image',
+          params: 'red, teal'
+        },
+        'calc': {
+          property: 'width',
+          params: '1px + 5%'
+        },
+        'element': {
+          property: 'background-image',
+          params: '#foo'
+        },
+        'cross-fade': {
+          property: 'backgroundImage',
+          params: 'url(a.png), url(b.png), 50%'
+        }
+      };
+      functions['repeating-linear-gradient'] = functions['repeating-radial-gradient'] = functions['radial-gradient'] = functions['linear-gradient'];
+
+      // build an array of prefixable functions
+      for (var func in functions) {
+        var test = functions[func],
+            property = test.property,
+            value = func + '(' + test.params + ')';
+
+        if (!supportedDecl(property, value) && supportedDecl(property, fixers.prefix + value)) {
+          // It's only supported with a prefix
+          fixers.functions.push(func);
+        }
+      }
+    }
+
+    // Derived from Lea Verou's PrefixFree and Robin Frischmann's Inline Style Prefixer
+
+    // TODO: http://caniuse.com/#feat=css-writing-mode
+
+    // db of prop/value pairs whose values may need treatment.
+
+    var keywords = [
+
+    // `initial` applies to all properties and is thus handled separately.
+    {
+      props: ['cursor'],
+      values: ['grab', 'grabbing', 'zoom-in', 'zoom-out']
+    }, {
+      props: ['display'],
+      values: ['box', 'inline-box', 'flexbox', 'inline-flexbox', 'flex', 'inline-flex', 'grid', 'inline-grid']
+    }, {
+      props: ['position'],
+      values: ['sticky']
+    }, {
+      props: ['width', 'column-width', 'height', 'max-height', 'max-width', 'min-height', 'min-width'],
+      values: ['contain-floats', 'fill-available', 'fit-content', 'max-content', 'min-content']
+    }];
+    // The flexbox zoo
+    //
+    // ## Specs:
+    // - box     (2009/old):  https://www.w3.org/TR/2009/WD-css3-flexbox-20090723/
+    // - flexbox (2012/ie10): https://www.w3.org/TR/2012/WD-css3-flexbox-20120322/
+    // - flex    (final):     https://www.w3.org/TR/css-flexbox-1/
+    var flex2009Props = {
+      // ?align-content =>
+      // ?align-self =>
+      'align-items': 'box-align',
+      'flex': 'box-flex', // https://css-tricks.com/snippets/css/a-guide-to-flexbox/#comment-371025,
+      // ?flex-basis =>
+      // !!flex-direction => box-direction + box-orient, covered in `plugin.js`
+      'box-direction': 'box-direction', // we prepopulate the cache for the above case.
+      'box-orient': 'box-orient',
+      // !!flex-flow => flex-direction and/or flex-wrap, covered in `plugin.js`
+      // ?flex-grow =>
+      // ?flex-shrink =>
+      'flex-wrap': 'box-lines',
+      'justify-content': 'box-pack',
+      'order': 'box-ordinal-group' // https://css-tricks.com/snippets/css/a-guide-to-flexbox/#comment-371025
+    };
+    var flex2009Values = {
+      // flex => box || only for display? handled in the code
+      'flex-end': 'end',
+      'flex-start': 'start',
+      // inline-flex => inline-box || see flex
+      'nowrap': 'single',
+      'space-around': 'justify',
+      'space-between': 'justify',
+      'wrap': 'multiple',
+      'wrap-reverse': 'multiple'
+    };
+    var flex2012Props = {
+      'align-content': '-ms-flex-line-pack',
+      'align-items': '-ms-flex-align',
+      'align-self': '-ms-flex-item-align',
+      // flex => -ms-flex
+      'flex-basis': '-ms-preferred-size',
+      // flex-direction => -ms-flex-direction
+      // flex-flow => -ms-flex-flow
+      'flex-grow': '-ms-flex-positive',
+      'flex-shrink': '-ms-flex-negative',
+      // flex-wrap => -ms-flex-wrap
+      'justify-content': '-ms-flex-pack',
+      'order': '-ms-flex-order'
+    };
+    var flex2012Values = {
+      // flex => flexbox || only for display? handled in the code
+      'flex-end': 'end',
+      'flex-start': 'start',
+      // inline-flex => inline-flexbox || see 'flex'
+      // nowrap => nowrap
+      'space-around': 'distribute',
+      'space-between': 'justify'
+      // wrap => wrap
+      // wrap-reverse => wrap-reverse
+    };
+
+    function detectKeywords(fixers) {
+      if (fixers.prefix === '') return;
+
+      // build a map of {propertyI: {keywordJ: previxedKeywordJ, ...}, ...}
+      for (var i = 0; i < keywords.length; i++) {
+        var map = {},
+            property = keywords[i].props[0];
+        // eslint-disable-next-line
+        for (var j = 0, keyword; keyword = keywords[i].values[j]; j++) {
+
+          if (!supportedDecl(property, keyword) && supportedDecl(property, fixers.prefix + keyword)) {
+            fixers.hasKeywords = true;
+            map[keyword] = fixers.prefix + keyword;
+          }
+        }
+        // eslint-disable-next-line
+        for (j = 0; property = keywords[i].props[j]; j++) {
+          fixers.keywords[property] = map;
+        }
+      }
+      if (fixers.keywords.display && fixers.keywords.display.flexbox && !supportedDecl('display', 'flex')) {
+        // old IE
+        fixers.keywords.display.flex = fixers.keywords.display.flexbox;
+        fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-flexbox'];
+        for (var k in flex2012Props) {
+          fixers.properties[k] = flex2012Props[k];
+          fixers.keywords[k] = flex2012Values;
+        }
+      } else if (fixers.keywords.display && fixers.keywords.display.box && !supportedDecl('display', 'flex')) {
+        // old flexbox spec
+        fixers.keywords.display.flex = fixers.keywords.display.box;
+        fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-box'];
+        fixers.flexbox2009 = true;
+        for (k in flex2009Props) {
+          fixers.properties[k] = fixers.prefix + flex2009Props[k];
+          fixers.keywords[k] = flex2009Values;
+        }
+      }
+      if (!supportedDecl('color', 'initial') && supportedDecl('color', fixers.prefix + 'initial')) {
+        // `initial` does not use the `hasKeywords` branch, no need to set it to true.
+        fixers.initial = fixers.prefix + 'initial';
+      }
+    }
+
+    // Derived from Lea Verou's PrefixFree
+
+    function detectPrefix(fixers) {
+      var prefixCounters = {};
+      // Why are we doing this instead of iterating over properties in a .style object? Because Webkit.
+      // 1. Older Webkit won't iterate over those.
+      // 2. Recent Webkit will, but the 'Webkit'-prefixed properties are not enumerable. The 'webkit'
+      //    (lower case 'w') ones are, but they don't `deCamelCase()` into a prefix that we can detect.
+
+      function iteration(property) {
+        if (property.charAt(0) === '-') {
+          var prefix = property.split('-')[1];
+
+          // Count prefix uses
+          prefixCounters[prefix] = ++prefixCounters[prefix] || 1;
+        }
+      }
+
+      // Some browsers have numerical indices for the properties, some don't
+      if (allStyles && allStyles.length > 0) {
+        for (var i = 0; i < allStyles.length; i++) {
+          iteration(allStyles[i]);
+        }
+      } else {
+        for (var property in allStyles) {
+          iteration(deCamelCase(property));
+        }
+      }
+
+      var highest = 0;
+      for (var prefix in prefixCounters) {
+        if (highest < prefixCounters[prefix]) {
+          highest = prefixCounters[prefix];
+          fixers.prefix = '-' + prefix + '-';
+        }
+      }
+      fixers.Prefix = camelCase(fixers.prefix);
+    }
+
+    // Derived from Lea Verou's PrefixFree
+
+    function detectSelectors(fixers) {
+      var selector, prefixed;
+      function prefixSelector(selector) {
+        return selector.replace(/^::?/, function ($0) {
+          return $0 + fixers.prefix;
+        });
+      }
+
+      if (fixers.prefix === '') return;
+      var selectors = {
+        ':any-link': ':any-link',
+        ':read-only': ':read-only',
+        ':read-write': ':read-write',
+        '::selection': '::selection',
+
+        ':fullscreen': ':fullscreen', //TODO sort out what changed between specs
+        ':full-screen': ':fullscreen',
+        '::backdrop': '::backdrop',
+
+        //sigh
+        ':placeholder': '::placeholder',
+        '::placeholder': '::placeholder',
+        ':input-placeholder': '::placeholder',
+        '::input-placeholder': '::placeholder'
+      };
+
+      // builds an array of selectors that need a prefix.
+      for (selector in selectors) {
+        prefixed = prefixSelector(selector);
+        if (!supportedRule(selector) && supportedRule(prefixed)) {
+          fixers.hasSelectors = true;
+          fixers.selectorList.push(selectors[selector]);
+          fixers.selectorMap[selectors[selector]] = prefixed;
+        }
+      }
+    }
+
+    function blankFixers() {
+      return {
+        atrules: {},
+        hasAtrules: false,
+        hasDppx: null,
+        hasKeywords: false,
+        hasPixelRatio: false,
+        hasPixelRatioFraction: false,
+        hasSelectors: false,
+        hasValues: false,
+        fixAtMediaParams: null,
+        fixAtSupportsParams: null,
+        fixProperty: null,
+        fixSelector: null,
+        fixValue: null,
+        flexbox2009: false,
+        functions: [],
+        initial: null,
+        keywords: {},
+        placeholder: null,
+        prefix: '',
+        Prefix: '',
+        properties: {},
+        selectorList: [],
+        selectorMap: {},
+        valueProperties: {
+          'transition': 1,
+          'transition-property': 1,
+          'will-change': 1
+        }
+      };
+    }
+
+    function browserDetector(fixers) {
+      // add the required data to the fixers object.
+      init();
+      detectPrefix(fixers);
+      detectSelectors(fixers);
+      detectAtrules(fixers);
+      detectKeywords(fixers);
+      detectFunctions(fixers);
+      finalize();
+    }
+
+    var emptySet = {};
+
+    var valueTokenizer = /[(),]|\/\*[\s\S]*?\*\//g;
+
+    /**
+     * For properties whose values are also properties, this will split a coma-separated
+     * value list into individual values, ignoring comas in comments and in
+     * functions(parameter, lists).
+     *
+     * @param {string} selector
+     * @return {string[]}
+     */
+
+    function splitValue(value) {
+      var indices = [],
+          res = [],
+          inParen = 0,
+          o;
+      /*eslint-disable no-cond-assign*/
+      while (o = valueTokenizer.exec(value)) {
+        /*eslint-enable no-cond-assign*/
+        switch (o[0]) {
+          case '(':
+            inParen++;break;
+          case ')':
+            inParen--;break;
+          case ',':
+            if (inParen) break;indices.push(o.index);
+        }
+      }
+      for (o = indices.length; o--;) {
+        res.unshift(value.slice(indices[o] + 1));
+        value = value.slice(0, indices[o]);
+      }
+      res.unshift(value);
+      return res;
+    }
+
+    function makeDetector(before, targets, after) {
+      return new RegExp(before + '(?:' + targets.join('|') + ')' + after);
+    }
+
+    function makeLexer(before, targets, after) {
+      return new RegExp("\"(?:\\\\[\\S\\s]|[^\"])*\"|'(?:\\\\[\\S\\s]|[^'])*'|\\/\\*[\\S\\s]*?\\*\\/|" + before + '((?:' + targets.join('|') + '))' + after, 'gi');
+    }
+
+    function finalizeFixers(fixers) {
+      var prefix = fixers.prefix;
+
+      // properties
+      // ----------
+
+      fixers.fixProperty = fixers.fixProperty || function (prop) {
+        var prefixed;
+        return fixers.properties[prop] = supportedProperty(prop) || !supportedProperty(prefixed = prefix + prop) ? prop : prefixed;
+      };
+
+      // selectors
+      // ----------
+
+      var selectorDetector = makeDetector('', fixers.selectorList, '(?:\\b|$|[^-])');
+      var selectorMatcher = makeLexer('', fixers.selectorList, '(?:\\b|$|[^-])');
+      var selectorReplacer = function selectorReplacer(match, selector) {
+        return selector != null ? fixers.selectorMap[selector] : match;
+      };
+      fixers.fixSelector = function (selector) {
+        return selectorDetector.test(selector) ? selector.replace(selectorMatcher, selectorReplacer) : selector;
+      };
+
+      // values
+      // ------
+
+      // When gradients are supported with a prefix, convert angles to legacy
+      // (from clockwise to trigonometric)
+      var hasGradients = fixers.functions.indexOf('linear-gradient') > -1;
+      var gradientDetector = /\blinear-gradient\(/;
+      var gradientMatcher = /(^|\s|,|\()((?:repeating-)?linear-gradient\()\s*(-?\d*\.?\d*)deg/ig;
+      var gradientReplacer = function gradientReplacer(match, delim, gradient, deg) {
+        return delim + gradient + (90 - deg) + 'deg';
+      };
+
+      // functions
+      var hasFunctions = !!fixers.functions.length;
+      var functionsDetector = makeDetector('(?:^|\\s|,|\\()', fixers.functions, '\\s*\\(');
+      var functionsMatcher = makeLexer('(^|\\s|,|\\()', fixers.functions, '(?=\\s*\\()');
+      function functionReplacer(match, $1, $2) {
+        return $1 + prefix + $2;
+      }
+
+      // properties as values (for transition, ...)
+      // No need to look for strings in these properties. We may insert prefixes in comments. Oh the humanity.
+      var valuePropertiesMatcher = /^\s*([-\w]+)/gi;
+      var valuePropertiesReplacer = function valuePropertiesReplacer(match, prop) {
+        return fixers.properties[prop] || fixers.fixProperty(prop);
+      };
+
+      fixers.fixValue = function (value, property) {
+        var res;
+        if (fixers.initial != null && value === 'initial') return fixers.initial;
+
+        if (fixers.hasKeywords && (res = (fixers.keywords[property] || emptySet)[value])) return res;
+
+        res = value;
+
+        if (fixers.valueProperties.hasOwnProperty(property)) {
+          res = value.indexOf(',') === -1 ? value.replace(valuePropertiesMatcher, valuePropertiesReplacer) : splitValue(value).map(function (v) {
+            return v.replace(valuePropertiesMatcher, valuePropertiesReplacer);
+          }).join(',');
+        }
+
+        if (hasFunctions && functionsDetector.test(value)) {
+          if (hasGradients && gradientDetector.test(value)) {
+            res = res.replace(gradientMatcher, gradientReplacer);
+          }
+          res = res.replace(functionsMatcher, functionReplacer);
+        }
+        return res;
+      };
+
+      // @media (resolution:...) {
+      // -------------------------
+
+      var resolutionMatcher = /((?:min-|max-)?resolution)\s*:\s*((?:\d*.)?\d+)dppx/g;
+      var resolutionReplacer = fixers.hasPixelRatio ? function (_, prop, param) {
+        return fixers.properties[prop] + ':' + param;
+      } : fixers.hasPixelRatioFraction ? function (_, prop, param) {
+        return fixers.properties[prop] + ':' + Math.round(param * 10) + '/10';
+      } : function (_, prop, param) {
+        return prop + ':' + Math.round(param * 96) + 'dpi';
+      };
+
+      fixers.fixAtMediaParams = fixers.hasDppx !== false /*it may be null*/ ? function (p) {
+        return p;
+      } : function (params) {
+        return params.indexOf('reso') !== -1 ? params.replace(resolutionMatcher, resolutionReplacer) : params;
+      };
+
+      // @supports ... {
+      // ---------------
+
+      // regexp built by scripts/regexps.js
+      var atSupportsParamsMatcher = /\(\s*([-\w]+)\s*:\s*((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\([^\)]*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*)/g;
+      function atSupportsParamsReplacer(match, prop, value) {
+        return '(' + (fixers.properties[prop] || fixers.fixProperty(prop)) + ':' + fixers.fixValue(value, prop);
+      }
+      fixers.fixAtSupportsParams = function (params) {
+        return params.replace(atSupportsParamsMatcher, atSupportsParamsReplacer);
+      };
+    }
+
+    var commonFixers;
+
+    function initBrowser() {
+      commonFixers = blankFixers();
+      if (typeof getComputedStyle === 'function') browserDetector(commonFixers);
+      finalizeFixers(commonFixers);
+    }
+    initBrowser();
+
+    function prefixPlugin(j2c) {
+      var fixers = commonFixers;
+      var cache = [];
+
+      if (j2c) j2c.setPrefixDb = function (f) {
+        if (cache.indexOf(f) === -1) {
+          finalizeFixers(f);
+          cache.push(f);
+        }
+        fixers = f;
+        return prefixPlugin;
+      };
+      return {
+        $filter: function $filter(next) {
+          return {
+            atrule: function atrule(rule, kind, params, hasBlock) {
+              next.atrule(fixers.hasAtrules && fixers.atrules[rule] || rule, kind, rule === '@media' ? fixers.fixAtMediaParams(params) : rule === '@supports' ? fixers.fixAtSupportsParams(params) : params, hasBlock);
+            },
+            decl: function decl(property, value) {
+              if (!property || !(typeof value === 'string' || typeof value === 'number')) {
+                return next.decl(fixers.properties[property] || fixers.fixProperty(property), value);
+              }
+              value = value + '';
+              if (property === 'flex-flow' && fixers.flexbox2009) {
+                value.split(' ').forEach(function (v) {
+                  // recurse! The lack of `next.` is intentional.
+                  if (v.indexOf('wrap') > -1) decl('flex-wrap', v);else if (v !== '') decl('flex-direction', v);
+                });
+              } else if (property === 'flex-direction' && fixers.flexbox2009) {
+                next.decl(fixers.properties['box-orient'], value.indexOf('column') > -1 ? 'block-axis' : 'inline-axis');
+                next.decl(fixers.properties['box-direction'], value.indexOf('-reverse') > -1 ? 'reverse' : 'normal');
+              } else {
+                next.decl(fixers.properties[property] || fixers.fixProperty(property), fixers.fixValue(value, property));
+              }
+            },
+            rule: function rule(selector) {
+              next.rule(fixers.hasSelectors ? fixers.fixSelector(selector) : selector);
+            }
+          };
+        }
+      };
+    }
+
+    exports.prefixPlugin = prefixPlugin;
   });
-  documentRef.head.appendChild(styleEl);
-};
 
-/*
- * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
-*/
-var generateStyles = function generateStyles(selectors, vars, styleFns) {
-  var selector = selectors.join("");
-  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  add(id, styleFns.map(function (fn) {
-    return fn(selector, vars);
-  }));
-};
+  unwrapExports(j2cPluginPrefixBrowser_commonjs);
+  var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPlugin;
 
-var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
-  var selector = selectors.join("");
-  return styleFns.map(function (fn) {
-    return fn(selector, vars);
-  });
-};
+  var j2c = new J2c(j2cPluginPrefixBrowser_commonjs_1);
+  var ID_REGEX = /[^a-z0-9\\-]/g;
 
-var styler = {
-  add: add,
-  addToDocument: addToDocument,
-  createStyleSheets: createStyleSheets,
-  generateStyles: generateStyles,
-  remove: remove
-};
+  /*
+   * @param id: identifier, used as HTMLElement id for the attached <style></style> element
+   * @param styles: list of lists style Objects
+   */
+  var add = function add(id) {
+    for (var _len = arguments.length, styles = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      styles[_key - 1] = arguments[_key];
+    }
 
-var hex = function hex(value) {
-  var bigint = parseInt(value.substring(1), 16);
-  var r = bigint >> 16 & 255;
-  var g = bigint >> 8 & 255;
-  var b = bigint & 255;
-  return r + "," + g + "," + b;
-};
+    addToDocument.apply(undefined, [{
+      id: id
+    }].concat(styles));
+  };
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
+  /*
+   * Removes a style from head.
+   */
+  var remove = function remove(id) {
+    if (polytheneCore.isServer) return;
+    if (id) {
+      var old = document.getElementById(id);
+      if (old && old.parentNode) {
+        old.parentNode.removeChild(old);
+      }
+    }
+  };
 
-var flex$2 = [{
-  ".layout, .layout.horizontal": flex$1.layout,
-  ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
-  ".layout.horizontal": flex$1.layoutHorizontal,
-  ".layout.horizontal.reverse": flex$1.layoutHorizontalReverse,
-  ".layout.vertical": flex$1.layoutVertical,
-  ".layout.vertical.reverse": flex$1.layoutVerticalReverse,
-  ".layout.wrap": flex$1.layoutWrap,
-  ".layout.wrap.reverse": flex$1.layoutWrapReverse,
-  ".flex": flex$1.flex(1),
-  ".span.flex": { "display": "block" }, // for IE 10
-  ".flex.auto-vertical": flex$1.flexAutoVertical,
-  ".flex.auto": flex$1.flexAuto,
-  ".flex.none": flex$1.flexIndex("none"),
-  ".flex.one": flex$1.flexIndex(1),
-  ".flex.two": flex$1.flexIndex(2),
-  ".flex.three": flex$1.flexIndex(3),
-  ".flex.four": flex$1.flexIndex(4),
-  ".flex.five": flex$1.flexIndex(5),
-  ".flex.six": flex$1.flexIndex(6),
-  ".flex.seven": flex$1.flexIndex(7),
-  ".flex.eight": flex$1.flexIndex(8),
-  ".flex.nine": flex$1.flexIndex(9),
-  ".flex.ten": flex$1.flexIndex(10),
-  ".flex.eleven": flex$1.flexIndex(11),
-  ".flex.twelve": flex$1.flexIndex(12),
+  /*
+   * opts: options object
+   * id: identifier, used as HTMLElement id for the attached <style></style> element
+   * document: document reference; default window.document
+   * styles: list of lists style objects
+   */
+  var addToDocument = function addToDocument(opts) {
+    for (var _len2 = arguments.length, styles = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      styles[_key2 - 1] = arguments[_key2];
+    }
 
-  // alignment in cross axis
-  ".layout.start": flex$1.layoutStart,
-  ".layout.center, .layout.center-center": flex$1.layoutCenter,
-  ".layout.end": flex$1.layoutEnd,
+    if (polytheneCore.isServer) return;
+    var id = opts.id.replace(ID_REGEX, "_");
+    var documentRef = opts.document || window.document;
+    remove(id);
+    var styleEl = documentRef.createElement("style");
+    if (id) {
+      styleEl.setAttribute("id", id);
+    }
+    styles.forEach(function (styleList) {
+      // each style returns a list
+      if (Object.keys(styleList).length) {
+        styleList.forEach(function (style) {
+          var scoped = {
+            "@global": style
+          };
+          var sheet = j2c.sheet(scoped);
+          styleEl.appendChild(documentRef.createTextNode(sheet));
+        });
+      }
+    });
+    documentRef.head.appendChild(styleEl);
+  };
 
-  // alignment in main axis
-  ".layout.start-justified": flex$1.layoutStartJustified,
-  ".layout.center-justified, .layout.center-center": flex$1.layoutCenterJustified,
-  ".layout.end-justified": flex$1.layoutEndJustified,
-  ".layout.around-justified": flex$1.layoutAroundJustified,
-  ".layout.justified": flex$1.layoutJustified,
+  /*
+   * Adds styles to head for a component.
+   * @param selector: Array of Strings: selectors
+   * @param vars: Object configuration variables
+   * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+  */
+  var generateStyles = function generateStyles(selectors, vars, styleFns) {
+    var selector = selectors.join("");
+    var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+    add(id, styleFns.map(function (fn) {
+      return fn(selector, vars);
+    }));
+  };
 
-  // self alignment
-  ".self-start": flex$1.selfStart,
-  ".self-center": flex$1.selfCenter,
-  ".self-end": flex$1.selfEnd,
-  ".self-stretch": flex$1.selfStretch
-}];
+  var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
+    var selector = selectors.join("");
+    return styleFns.map(function (fn) {
+      return fn(selector, vars);
+    });
+  };
 
-var commonStyle = [{
-  ".pe-block": {
-    display: "block"
-  },
+  var styler = {
+    add: add,
+    addToDocument: addToDocument,
+    createStyleSheets: createStyleSheets,
+    generateStyles: generateStyles,
+    remove: remove
+  };
 
-  ".pe-inline-block": {
-    display: "inline-block"
-  },
+  var hex = function hex(value) {
+    var bigint = parseInt(value.substring(1), 16);
+    var r = bigint >> 16 & 255;
+    var g = bigint >> 8 & 255;
+    var b = bigint & 255;
+    return r + "," + g + "," + b;
+  };
 
-  // ie support for hidden
-  ".pe-hidden": {
-    display: "none !important"
-  },
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
 
-  ".pe-relative": {
-    position: "relative"
-  },
+  var flex$2 = [{
+    ".layout, .layout.horizontal": flex$1.layout,
+    ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
+    ".layout.horizontal": flex$1.layoutHorizontal,
+    ".layout.horizontal.reverse": flex$1.layoutHorizontalReverse,
+    ".layout.vertical": flex$1.layoutVertical,
+    ".layout.vertical.reverse": flex$1.layoutVerticalReverse,
+    ".layout.wrap": flex$1.layoutWrap,
+    ".layout.wrap.reverse": flex$1.layoutWrapReverse,
+    ".flex": flex$1.flex(1),
+    ".span.flex": { "display": "block" }, // for IE 10
+    ".flex.auto-vertical": flex$1.flexAutoVertical,
+    ".flex.auto": flex$1.flexAuto,
+    ".flex.none": flex$1.flexIndex("none"),
+    ".flex.one": flex$1.flexIndex(1),
+    ".flex.two": flex$1.flexIndex(2),
+    ".flex.three": flex$1.flexIndex(3),
+    ".flex.four": flex$1.flexIndex(4),
+    ".flex.five": flex$1.flexIndex(5),
+    ".flex.six": flex$1.flexIndex(6),
+    ".flex.seven": flex$1.flexIndex(7),
+    ".flex.eight": flex$1.flexIndex(8),
+    ".flex.nine": flex$1.flexIndex(9),
+    ".flex.ten": flex$1.flexIndex(10),
+    ".flex.eleven": flex$1.flexIndex(11),
+    ".flex.twelve": flex$1.flexIndex(12),
 
-  ".pe-absolute": {
-    position: "absolute"
-  },
+    // alignment in cross axis
+    ".layout.start": flex$1.layoutStart,
+    ".layout.center, .layout.center-center": flex$1.layoutCenter,
+    ".layout.end": flex$1.layoutEnd,
 
-  ".pe-fit": {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0
-  },
+    // alignment in main axis
+    ".layout.start-justified": flex$1.layoutStartJustified,
+    ".layout.center-justified, .layout.center-center": flex$1.layoutCenterJustified,
+    ".layout.end-justified": flex$1.layoutEndJustified,
+    ".layout.around-justified": flex$1.layoutAroundJustified,
+    ".layout.justified": flex$1.layoutJustified,
 
-  ".pe-fullbleed": {
-    margin: 0,
-    height: "100vh"
-  },
+    // self alignment
+    ".self-start": flex$1.selfStart,
+    ".self-center": flex$1.selfCenter,
+    ".self-end": flex$1.selfEnd,
+    ".self-stretch": flex$1.selfStretch
+  }];
 
-  ".pe-rtl": {
-    direction: "rtl"
-  }
-}];
+  var commonStyle = [{
+    ".pe-block": {
+      display: "block"
+    },
 
-var layoutStyles = [flex$2, commonStyle];
+    ".pe-inline-block": {
+      display: "inline-block"
+    },
 
-var addLayoutStyles = function addLayoutStyles() {
-  return styler.add("pe-layout", flex$2, commonStyle);
-};
+    // ie support for hidden
+    ".pe-hidden": {
+      display: "none !important"
+    },
 
-exports.flex = flex$1;
-exports.mixin = mixin;
-exports.styler = styler;
-exports.hex = hex;
-exports.rgba = rgba;
-exports.layoutStyles = layoutStyles;
-exports.addLayoutStyles = addLayoutStyles;
+    ".pe-relative": {
+      position: "relative"
+    },
 
-Object.defineProperty(exports, '__esModule', { value: true });
+    ".pe-absolute": {
+      position: "absolute"
+    },
+
+    ".pe-fit": {
+      position: "absolute",
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    },
+
+    ".pe-fullbleed": {
+      margin: 0,
+      height: "100vh"
+    },
+
+    ".pe-rtl": {
+      direction: "rtl"
+    }
+  }];
+
+  var layoutStyles = [flex$2, commonStyle];
+
+  var addLayoutStyles = function addLayoutStyles() {
+    return styler.add("pe-layout", flex$2, commonStyle);
+  };
+
+  exports.flex = flex$1;
+  exports.mixin = mixin;
+  exports.styler = styler;
+  exports.hex = hex;
+  exports.rgba = rgba;
+  exports.layoutStyles = layoutStyles;
+  exports.addLayoutStyles = addLayoutStyles;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=polythene-core-css.js.map

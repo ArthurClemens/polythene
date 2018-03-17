@@ -305,13 +305,13 @@ var createContent = function createContent(vnode, _ref3) {
   }) : null];
 };
 
-var textfield = Object.freeze({
-	getElement: getElement,
-	getInitialState: getInitialState,
-	onMount: onMount,
-	onUpdate: onUpdate,
-	createProps: createProps,
-	createContent: createContent
+var textfield = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
+  getInitialState: getInitialState,
+  onMount: onMount,
+  onUpdate: onUpdate,
+  createProps: createProps,
+  createContent: createContent
 });
 
 var rgba = function rgba(colorStr) {

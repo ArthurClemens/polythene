@@ -2,7 +2,7 @@
   "name": "polythene-core-radio-button",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/polythene-core-radio-button.js",
+  "main": "dist/polythene-core-radio-button",
   "module": "dist/polythene-core-radio-button.mjs",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",

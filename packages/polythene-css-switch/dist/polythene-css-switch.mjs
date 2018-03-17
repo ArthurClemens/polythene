@@ -1,7 +1,7 @@
-import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-switch';
 import { layout } from 'polythene-css-selection-control';
-import { vars as vars$1 } from 'polythene-theme';
+import { vars } from 'polythene-theme';
+import { mixin, styler } from 'polythene-core-css';
+import { vars as vars$1 } from 'polythene-core-switch';
 
 var classes = {
   component: "pe-switch-control",
@@ -20,7 +20,7 @@ var transition = function transition(componentVars, properties) {
 };
 
 var customSize = function customSize(componentVars, size) {
-  var factor = size / vars$1.unit_icon_size;
+  var factor = size / vars.unit_icon_size;
   var thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
   var scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
   var scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
@@ -101,10 +101,10 @@ var layout$1 = (function (selector, componentVars) {
 
     " .pe-button__focus": [transition(componentVars, "all")],
 
-    ".pe-control--small": customSize(componentVars, vars$1.unit_icon_size_small),
-    ".pe-control--regular": customSize(componentVars, vars$1.unit_icon_size),
-    ".pe-control--medium": customSize(componentVars, vars$1.unit_icon_size_medium),
-    ".pe-control--large": customSize(componentVars, vars$1.unit_icon_size_large)
+    ".pe-control--small": customSize(componentVars, vars.unit_icon_size_small),
+    ".pe-control--regular": customSize(componentVars, vars.unit_icon_size),
+    ".pe-control--medium": customSize(componentVars, vars.unit_icon_size_medium),
+    ".pe-control--large": customSize(componentVars, vars.unit_icon_size_large)
   }), _defineProperty({}, "_:-ms-fullscreen, :root " + selector, {
     " input": {
       position: "absolute",
@@ -231,13 +231,13 @@ var fns = [layout$1, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
 export { addStyle, getStyle };

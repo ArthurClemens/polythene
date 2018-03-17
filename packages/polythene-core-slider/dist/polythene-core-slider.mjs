@@ -1,5 +1,5 @@
-import { filterSupportedAttributes, isClient, isTouch, pointerEndMoveEvent, pointerMoveEvent, pointerStartMoveEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
+import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes } from 'polythene-core';
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
@@ -436,11 +436,11 @@ var createContent = function createContent(vnode, _ref6) {
   return createSlider(vnode, { h: h, k: k, hasTicks: hasTicks, interactiveTrack: interactiveTrack });
 };
 
-var slider = Object.freeze({
-	getInitialState: getInitialState,
-	onMount: onMount,
-	createProps: createProps,
-	createContent: createContent
+var slider = /*#__PURE__*/Object.freeze({
+  getInitialState: getInitialState,
+  onMount: onMount,
+  createProps: createProps,
+  createContent: createContent
 });
 
 export { slider as coreSlider, themeVars as vars };
