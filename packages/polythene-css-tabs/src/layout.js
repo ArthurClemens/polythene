@@ -16,10 +16,10 @@ export default (selector, componentVars) => [{
       " .pe-tabs__tab": {
         height: componentVars.menu_tab_height + "px",
       },
-      " .pe-tabs__tab---icon": {
+      " .pe-tabs__tab--icon": {
         height: componentVars.menu_tab_icon_label_height + "px",
       },
-      " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab---icon, .pe-tabs__tab.pe-text-button": {
+      " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab--icon, .pe-tabs__tab.pe-text-button": {
         minWidth: 0,
         height: componentVars.menu_tab_icon_label_height + "px",
 
@@ -167,7 +167,7 @@ export default (selector, componentVars) => [{
             opacity: 1
           }
         },
-        ".pe-tabs__tab---icon": {
+        ".pe-tabs__tab--icon": {
           "&, .pe-button__content": [
             {
               height: componentVars.tab_icon_label_height + "px"

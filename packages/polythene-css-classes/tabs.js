@@ -21,7 +21,7 @@ export default {
   isMenu:               "pe-tabs--menu",
   scrollable:           "pe-tabs--scrollable",
   compactTabs:          "pe-tabs--compact",
-  tabHasIcon:           "pe-tabs__tab---icon",
+  tabHasIcon:           "pe-tabs__tab--icon",
   tabRowCentered:       "pe-tabs__row--centered",
   tabRowIndent:         "pe-tabs__row--indent",
 
