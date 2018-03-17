@@ -180,6 +180,7 @@
           height: componentVars.tab_height + "px",
           lineHeight: polytheneTheme.vars.line_height + "em",
           borderRadius: 0,
+          position: "relative",
 
           " .pe-button__label, .pe-icon": {
             maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp

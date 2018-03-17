@@ -135,7 +135,8 @@
   padding: 0 12px;
   height: 48px;
   line-height: 1.3em;
-  border-radius: 0
+  border-radius: 0;
+  position: relative
 }
 
 .pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__label,.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
