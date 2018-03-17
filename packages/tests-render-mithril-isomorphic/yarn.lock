@@ -155,9 +155,9 @@ mithril@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.1.tgz#0c98644c90503eec2187f66a851ba4053c4a5d66"
 
-mithril@1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.5.tgz#a64f19c24f762011f52a07d6a139c2f002d3536d"
+mithril@1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.6.tgz#bd2cc0de3d3c86076a6a7a30367a601a1bd108f3"
 
 mkdirp@0.5.1:
   version "0.5.1"
