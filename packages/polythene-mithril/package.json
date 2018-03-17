@@ -15,7 +15,7 @@
     "README.md"
   ],
   "dependencies": {
-    "mithril": "1.1.5",
+    "mithril": "1.1.6",
     "polythene-css": "^1.0.0",
     "polythene-mithril-base": "^1.0.0",
     "polythene-mithril-button": "^1.0.0",
