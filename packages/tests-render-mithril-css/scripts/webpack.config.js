@@ -7,7 +7,7 @@ module.exports = {
   context: path.resolve(__dirname, "../src"),
 
   entry: {
-    index: "../index.js"
+    index: "../index.js",
   },
 
   externals: {
@@ -23,8 +23,9 @@ module.exports = {
     rules: [
       {
         test: /\.js$/, // Check for all js files
+        exclude: /node_modules/,
         use: [{
-          loader: "babel-loader",
+          loader: "babel-loader"
         }]
       },
       {

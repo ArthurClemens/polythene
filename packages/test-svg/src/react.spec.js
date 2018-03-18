@@ -1,4 +1,4 @@
-import { runSnapshots } from "../../tests/scripts/react-snapshots";
+import { runSnapshots } from "../../../scripts/tests/react-snapshots";
 import reactTests from "./tests-react.js";
 
 // import { renderer, SVG } from "polythene-react";

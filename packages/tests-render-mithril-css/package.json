@@ -19,12 +19,13 @@
     "polythene-mithril": "^1.0.0"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.1",
+    "compression-webpack-plugin": "^1.1.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "npm-run-all": "^4.1.2",
     "polythene-scripts": "^1.0.0",
-    "rollup-webpack-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^3.9.1",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.3"
+    "uglifyjs-webpack-plugin": "1.2.4",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   }
 }

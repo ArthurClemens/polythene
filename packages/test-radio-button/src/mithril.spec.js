@@ -1,4 +1,4 @@
-import { runSnapshots } from "../../tests/scripts/mithril-snapshots";
+import { runSnapshots } from "../../../scripts/tests/mithril-snapshots";
 import { renderer, keys, RadioButton, RadioGroup } from "polythene-mithril";
 import specTestsRadioButton from "./spec-tests-radio-button.js";
 import specTestsRadioGroup from "./spec-tests-radio-group.js";

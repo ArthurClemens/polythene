@@ -1,166 +1,192 @@
-import { mithrilTests as tests } from "polythene-tests";
+import { mithrilTests as buttonTests } from "polythene-test-button";
+import { mithrilTests as cardTests } from "polythene-test-card";
+import { mithrilTests as checkboxTests } from "polythene-test-checkbox";
+import { mithrilTests as dialogTests } from "polythene-test-dialog";
+import { mithrilTests as dialogPaneTests } from "polythene-test-dialog-pane";
+import { mithrilTests as drawerTests } from "polythene-test-drawer";
+import { mithrilTests as fabTests } from "polythene-test-fab";
+import { mithrilTests as iconTests } from "polythene-test-icon";
+import { mithrilTests as iconButtonTests } from "polythene-test-icon-button";
+import { mithrilTests as layoutStylesTests } from "polythene-test-layout-styles";
+import { mithrilTests as listTests } from "polythene-test-list";
+import { mithrilTests as listTileTests } from "polythene-test-list-tile";
+import { mithrilTests as menuTests } from "polythene-test-menu";
+import { mithrilTests as notificationTests } from "polythene-test-notification";
+import { mithrilTests as radioButtonTests } from "polythene-test-radio-button";
+import { mithrilTests as raisedButtonTests } from "polythene-test-raised-button";
+import { mithrilTests as rippleTests } from "polythene-test-ripple";
+import { mithrilTests as searchTests } from "polythene-test-search";
+import { mithrilTests as shadowTests } from "polythene-test-shadow";
+import { mithrilTests as sliderTests } from "polythene-test-slider";
+import { mithrilTests as snackbarTests } from "polythene-test-snackbar";
+import { mithrilTests as spinnerTests } from "polythene-test-spinner";
+import { mithrilTests as svgTests } from "polythene-test-svg";
+import { mithrilTests as switchButtonTests } from "polythene-test-switch";
+import { mithrilTests as tabsTests } from "polythene-test-tabs";
+import { mithrilTests as textfieldTests } from "polythene-test-textfield";
+import { mithrilTests as toolbarTests } from "polythene-test-toolbar";
 
 export default [
   {
     path: "/button",
     name: "Button",
-    tests: tests.button,
+    tests: buttonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/button.md"
   },
   {
     path: "/raised-button",
     name: "Raised Button",
-    tests: tests.raisedButton,
+    tests: raisedButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/raised-button.md"
   },
   {
     path: "/card",
     name: "Card",
-    tests: tests.card,
+    tests: cardTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/card.md"
   },
   {
     path: "/checkbox",
     name: "Checkbox",
-    tests: tests.checkbox,
+    tests: checkboxTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/checkbox.md"
   },
   {
     path: "/dialog",
     name: "Dialog",
-    tests: tests.dialog,
+    tests: dialogTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/dialog.md"
   },
   {
     path: "/dialog-pane",
     name: "Dialog Pane",
-    tests: tests.dialogPane,
+    tests: dialogPaneTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/dialog-pane.md"
   },
   {
     path: "/drawer",
     name: "Drawer",
-    tests: tests.drawer,
+    tests: drawerTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/drawer.md"
   },
   {
     path: "/fab",
     name: "FAB",
-    tests: tests.fab,
+    tests: fabTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/fab.md"
   },
   {
     path: "/icon",
     name: "Icon",
-    tests: tests.icon,
+    tests: iconTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/icon.md"
   },
   {
     path: "/icon-button",
     name: "Icon Button",
-    tests: tests.iconButton,
+    tests: iconButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/icon-button.md"
   },
   {
     path: "/list",
     name: "List",
-    tests: tests.list,
+    tests: listTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/list.md"
   },
   {
     path: "/list-tile",
     name: "List Tile",
-    tests: tests.listTile,
+    tests: listTileTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/list-tile.md"
   },
   {
     path: "/menu",
     name: "Menu",
-    tests: tests.menu,
+    tests: menuTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/menu.md"
   },
   {
     path: "/notification",
     name: "Notification",
-    tests: tests.notification,
+    tests: notificationTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/notification.md"
   },
   {
     path: "/snackbar",
     name: "Notification - Snackbar",
-    tests: tests.snackbar,
+    tests: snackbarTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/snackbar.md"
   },
   {
     path: "/radio-button",
     name: "Radio Button",
-    tests: tests.radioButton,
+    tests: radioButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/radio-button.md"
   },
   {
     path: "/ripple",
     name: "Ripple",
-    tests: tests.ripple,
+    tests: rippleTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/ripple.md"
   },
   {
     path: "/search",
     name: "Search",
-    tests: tests.search,
+    tests: searchTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/search.md"
   },
   {
     path: "/shadow",
     name: "Shadow",
-    tests: tests.shadow,
+    tests: shadowTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/shadow.md"
   },
   {
     path: "/slider",
     name: "Slider",
-    tests: tests.slider,
+    tests: sliderTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/slider.md"
   },
   {
     path: "/spinner",
     name: "Spinner",
-    tests: tests.spinner,
+    tests: spinnerTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/spinner.md"
   },
   {
     path: "/svg",
     name: "SVG",
-    tests: tests.svg,
+    tests: svgTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/svg.md"
   },
   {
     path: "/switch",
     name: "Switch",
-    tests: tests.switchButton,
+    tests: switchButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/switch.md"
   },
   {
     path: "/tabs",
     name: "Tabs",
-    tests: tests.tabs,
+    tests: tabsTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/tabs.md"
   },
   {
     path: "/textfield",
     name: "Text Field",
-    tests: tests.textfield,
+    tests: textfieldTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/textfield.md"
   },
   {
     path: "/toolbar",
     name: "Toolbar",
-    tests: tests.toolbar,
+    tests: toolbarTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/toolbar.md"
   },
   {
     path: "/layout-styles",
     name: "Layout styles",
-    tests: tests.layoutStyles,
+    tests: layoutStylesTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/css.md#layout-classes"
   }
 ];

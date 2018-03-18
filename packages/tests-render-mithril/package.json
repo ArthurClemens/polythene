@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:watch dev:serve",
     "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000 --host 0.0.0.0",
-    "dev:watch": "webpack --watch --config scripts/webpack.config.dev.js",
-    "build": "webpack --config scripts/webpack.config.prod.js"
+    "dev:watch": "webpack-cli --watch --config scripts/webpack.config.dev.js",
+    "build": "webpack-cli --config scripts/webpack.config.prod.js"
   },
   "dependencies": {
     "mithril": "1.1.6",
@@ -18,13 +18,43 @@
     "polythene-css": "^1.0.0",
     "polythene-mithril": "^1.0.0",
     "polythene-style": "^1.0.0",
-    "polythene-tests": "^1.0.0",
+    "polythene-test-button": "1.0.0",
+    "polythene-test-card": "1.0.0",
+    "polythene-test-checkbox": "1.0.0",
+    "polythene-test-dialog": "1.0.0",
+    "polythene-test-dialog-pane": "1.0.0",
+    "polythene-test-drawer": "1.0.0",
+    "polythene-test-fab": "1.0.0",
+    "polythene-test-icon": "1.0.0",
+    "polythene-test-icon-button": "1.0.0",
+    "polythene-test-layout-styles": "1.0.0",
+    "polythene-test-list": "1.0.0",
+    "polythene-test-list-tile": "1.0.0",
+    "polythene-test-menu": "1.0.0",
+    "polythene-test-notification": "1.0.0",
+    "polythene-test-radio-button": "1.0.0",
+    "polythene-test-raised-button": "1.0.0",
+    "polythene-test-ripple": "1.0.0",
+    "polythene-test-search": "1.0.0",
+    "polythene-test-shadow": "1.0.0",
+    "polythene-test-slider": "1.0.0",
+    "polythene-test-snackbar": "1.0.0",
+    "polythene-test-spinner": "1.0.0",
+    "polythene-test-svg": "1.0.0",
+    "polythene-test-switch": "1.0.0",
+    "polythene-test-tabs": "1.0.0",
+    "polythene-test-textfield": "1.0.0",
+    "polythene-test-toolbar": "1.0.0",
+    "polythene-utilities": "^1.0.0",
     "polythene-utilities": "^1.0.0"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.1",
-    "rollup-webpack-loader": "^1.0.0",
-    "webpack": "^3.9.1",
-    "webpack-dev-server": "^2.9.3"
+    "compression-webpack-plugin": "^1.1.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "npm-run-all": "^4.1.2",
+    "uglifyjs-webpack-plugin": "1.2.4",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   }
 }

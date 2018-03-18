@@ -1,4 +1,4 @@
-import { runSnapshots } from "../../tests/scripts/react-snapshots";
+import { runSnapshots } from "../../../scripts/tests/react-snapshots";
 import { renderer, keys, RadioButton, RadioGroup } from "polythene-react";
 import specTestsRadioButton from "./spec-tests-radio-button.js";
 import specTestsRadioGroup from "./spec-tests-radio-group.js";

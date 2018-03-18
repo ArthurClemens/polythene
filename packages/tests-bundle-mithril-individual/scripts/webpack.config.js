@@ -8,7 +8,6 @@ module.exports = {
 
   entry: {
     index: "../index.js",
-    // style: `${path.join(process.cwd(), "node_modules")}/polythene-css/dist/polythene.css`
   },
 
   externals: {
@@ -26,12 +25,7 @@ module.exports = {
         test: /\.js$/, // Check for all js files
         exclude: /node_modules/,
         use: [{
-          loader: "babel-loader",
-          options: {  
-            presets: [ 
-              [ "env", { modules: false } ] 
-            ]         
-          }
+          loader: "babel-loader"
         }]
       },
       {

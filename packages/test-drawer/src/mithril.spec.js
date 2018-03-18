@@ -1,4 +1,4 @@
-import { runSnapshots } from "../../tests/scripts/mithril-snapshots";
+import { runSnapshots } from "../../../scripts/tests/mithril-snapshots";
 import { renderer, keys, Drawer } from "polythene-mithril";
 import specTests from "./spec-tests.js";
 import mithrilTests from "./tests-mithril.js";
