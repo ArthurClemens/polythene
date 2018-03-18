@@ -5,6 +5,7 @@ https://github.com/rollup/rollup/wiki/jsnext:main
 */
 import { pkg, createConfig } from "./rollup.base";
 
+const env = process.env; // eslint-disable-line no-undef
 const includeDepencies = !!parseInt(process.env.DEPS, 10) || false; // Use `false` if you are creating a library, or if you are including external script in html
 
 const baseConfig = createConfig({ includeDepencies });
@@ -13,7 +14,7 @@ const targetConfig = Object.assign({}, baseConfig, {
     {},
     baseConfig.output,
     {
-      file: `${pkg["main"]}.mjs`,
+      file: `${env.DEST || pkg.main}.mjs`,
       format: "es"
     }
   )
