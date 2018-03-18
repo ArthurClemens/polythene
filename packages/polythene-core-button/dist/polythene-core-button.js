@@ -43,7 +43,7 @@
       focus: focus,
       inactive: inactive,
       mouseover: mouseover,
-      redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
+      redrawOnUpdate: createStream.merge([dom, focus, inactive])
     };
   };
 

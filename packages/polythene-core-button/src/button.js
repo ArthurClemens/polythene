@@ -14,7 +14,7 @@ export const getInitialState = (vnode, createStream) => {
     focus,
     inactive,
     mouseover,
-    redrawOnUpdate: createStream.merge([dom, focus, inactive, mouseover])
+    redrawOnUpdate: createStream.merge([dom, focus, inactive])
   };
 };
 
