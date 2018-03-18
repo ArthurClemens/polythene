@@ -18,12 +18,14 @@
 <!-- /MarkdownTOC -->
 
 <a name="options"></a>
+<a id="options"></a>
 ## Options
 
 [Tabs options](../tabs.md)
 
 
 <a name="usage"></a>
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/dos13t3z/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -108,6 +110,7 @@ To set shared options all at once, use option `all`:
 ~~~
 
 <a name="scrollable-tabs"></a>
+<a id="scrollable-tabs"></a>
 ### Scrollable tabs
 
 To display more tabs than fit in the viewport, set `scrollable` to true. On no-touch devices 2 scroll buttons will automatically be added to navigate the tabs.
@@ -144,8 +147,10 @@ m("div",
 )
 ~~~
 
-<a name="getting-the-tabs-state"></a>
+<a id="getting-the-tabs-state"></a>
 ### Getting the tabs state
+
+<a href="https://jsfiddle.net/ArthurClemens/41kyvadm/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 To read the currently selected tab, for instance to write the selected tab to a controller variable, use `onChange`:
 
@@ -166,9 +171,11 @@ The `state` object contains data on the current tab:
 
 
 <a name="appearance"></a>
+<a id="appearance"></a>
 ## Appearance
 
 <a name="mobile-bottom-menu"></a>
+<a id="mobile-bottom-menu"></a>
 ### Mobile bottom menu
 
 Use option `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
@@ -185,6 +192,7 @@ m(Tabs,
 ~~~
 
 <a name="scrollable-tabs-with-custom-arrow-icons"></a>
+<a id="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
 ~~~javascript
@@ -215,6 +223,7 @@ m("div",
 ~~~
 
 <a name="styling"></a>
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Tabs appearance, either with a theme or with CSS.
@@ -263,6 +272,7 @@ m(Tabs, {
 ~~~
 
 <a name="tab-widths"></a>
+<a id="tab-widths"></a>
 ### Tab widths
 
 * The minimum tab width is 72px. For larger screens (> 480px, as defined in the default theme) the minimum tabs width is 160px.
@@ -296,6 +306,7 @@ or
 ~~~
 
 <a name="dark-or-light-tone"></a>
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

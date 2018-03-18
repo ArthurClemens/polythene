@@ -50,5 +50,7 @@ Try out Polythene in JSFiddles.
 * [Shadow](https://jsfiddle.net/ArthurClemens/87wjreeu/)
 * [Spinner](https://jsfiddle.net/ArthurClemens/hnzvnhxa/)
 * [SVG](https://jsfiddle.net/ArthurClemens/wu1v74yk/)
-* [Tabs](https://jsfiddle.net/ArthurClemens/dos13t3z/)
+* Tabs
+  * [Tabs](https://jsfiddle.net/ArthurClemens/dos13t3z/)
+  * [Stateful tabs](https://jsfiddle.net/ArthurClemens/41kyvadm/)
 * [Toolbar](https://jsfiddle.net/ArthurClemens/t5hhcuxn/)
