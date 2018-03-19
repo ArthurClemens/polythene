@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, showComponent, hideComponent } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_Z    = 3;
@@ -7,61 +7,29 @@ const DEFAULT_ANIMATION_DURATION = .220;
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const showDialog = (state, attrs) => {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  state.visible(true);
-  const id = state.instanceId;
-  const showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
-  const transitions = attrs.transitions;
-  return show(Object.assign({},
+const showDialog = (state, attrs) =>
+  showComponent({
+    state,
     attrs,
-    {
-      showClass: classes.visible
+    domElements: {
+      el: state.el,
+      contentEl: state.contentEl
     },
-    transitions 
-      ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration, showDelay: attrs.showDelay })
-      : { el: state.el, showDuration, showDelay: attrs.showDelay }
-  )).then(() => {
-    if (attrs.fromMultipleDidShow) {
-      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
-    } else if (attrs.didShow) {
-      attrs.didShow(id); // when used directly
-    }
-    state.transitioning(false);
+    showClass: classes.visible,
+    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION,
   });
-};
 
-const hideDialog = (state, attrs) => {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  state.visible(false);
-  const id = state.instanceId;
-
-  // Hide dialog
-  const hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
-  const transitions = attrs.transitions;
-  return hide(Object.assign({},
+const hideDialog = (state, attrs) =>
+  hideComponent({
+    state,
     attrs,
-    {
-      showClass: classes.visible
+    domElements: {
+      el: state.el,
+      contentEl: state.contentEl
     },
-    transitions
-      ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration, hideDelay: attrs.hideDelay })
-      : { el: state.el, hideDuration, hideDelay: attrs.hideDelay }
-  )).then(() => {
-    if (attrs.fromMultipleDidHide) {
-      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
-    } else if (attrs.didHide) {
-      attrs.didHide(id); // when used directly
-    }
-    state.transitioning(false);
+    showClass: classes.visible,
+    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION,
   });
-};
 
 export const getInitialState = (vnode, createStream) => {
   const transitioning = createStream(false);

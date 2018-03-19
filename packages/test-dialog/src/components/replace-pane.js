@@ -8,6 +8,9 @@ export default ({ renderer: h, keys: k, Button }) => () => {
   const options = [
     {
       body: "Pane One",
+      style: {
+        background: "yellow"
+      },
       footerButtons: h(Button, {
         label: "Show Two",
         events: {
@@ -17,6 +20,9 @@ export default ({ renderer: h, keys: k, Button }) => () => {
     },
     {
       body: "Pane Two",
+      style: {
+        background: "white"
+      },
       footerButtons: h(Button, {
         label: "Show One",
         events: {

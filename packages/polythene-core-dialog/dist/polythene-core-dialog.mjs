@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, show, hide } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, showComponent, hideComponent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -81,46 +81,28 @@ var getElement = function getElement(vnode) {
 };
 
 var showDialog = function showDialog(state, attrs) {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  state.visible(true);
-  var id = state.instanceId;
-  var showDuration = attrs.showDuration || DEFAULT_ANIMATION_DURATION;
-  var transitions = attrs.transitions;
-  return show(_extends({}, attrs, {
-    showClass: classes.visible
-  }, transitions ? transitions.show({ el: state.el, contentEl: state.contentEl, showDuration: showDuration, showDelay: attrs.showDelay }) : { el: state.el, showDuration: showDuration, showDelay: attrs.showDelay })).then(function () {
-    if (attrs.fromMultipleDidShow) {
-      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
-    } else if (attrs.didShow) {
-      attrs.didShow(id); // when used directly
-    }
-    state.transitioning(false);
+  return showComponent({
+    state: state,
+    attrs: attrs,
+    domElements: {
+      el: state.el,
+      contentEl: state.contentEl
+    },
+    showClass: classes.visible,
+    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
   });
 };
 
 var hideDialog = function hideDialog(state, attrs) {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  state.visible(false);
-  var id = state.instanceId;
-
-  // Hide dialog
-  var hideDuration = attrs.hideDuration || DEFAULT_ANIMATION_DURATION;
-  var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, {
-    showClass: classes.visible
-  }, transitions ? transitions.hide({ el: state.el, contentEl: state.contentEl, hideDuration: hideDuration, hideDelay: attrs.hideDelay }) : { el: state.el, hideDuration: hideDuration, hideDelay: attrs.hideDelay })).then(function () {
-    if (attrs.fromMultipleDidHide) {
-      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
-    } else if (attrs.didHide) {
-      attrs.didHide(id); // when used directly
-    }
-    state.transitioning(false);
+  return hideComponent({
+    state: state,
+    attrs: attrs,
+    domElements: {
+      el: state.el,
+      contentEl: state.contentEl
+    },
+    showClass: classes.visible,
+    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
   });
 };
 

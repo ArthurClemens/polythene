@@ -148,3 +148,46 @@ const transition = (opts, state) => {
     });
   }
 };
+
+export const transitionComponent = ({ isShow, state, attrs, domElements, beforeShow, showClass, defaultAnimationDuration=SHOW_DURATION }) => {
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  state.visible(isShow ? true : false);
+  if (beforeShow) {
+    beforeShow();
+  }
+  const duration = attrs[isShow ? "showDuration" : "hideDuration"] || defaultAnimationDuration;
+  const delay = attrs.showDelay;
+  const transitions = attrs.transitions;
+  const fn = isShow ? show : hide;
+  const transAttrs = Object.assign({},
+    domElements,
+    {
+      [isShow ? "showDuration" : "hideDuration"]: duration,
+      [isShow ? "showDelay" : "hideDelay"]: delay,
+    }
+  );
+  return fn(Object.assign({},
+    attrs,
+    { showClass },
+    transitions 
+      ? transitions[isShow ? "show" : "hide"](transAttrs)
+      : transAttrs
+  )).then(() => {
+    const id = state.instanceId;
+    if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
+      attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
+    } else if (attrs[isShow ? "didShow" : "didHide"]) {
+      attrs[isShow ? "didShow" : "didHide"](id); // when used directly
+    }
+    state.transitioning(false);
+  });
+};
+
+export const showComponent = args =>
+  transitionComponent(Object.assign({}, args, { isShow: true }));
+
+export const hideComponent = args =>
+  transitionComponent(Object.assign({}, args, { isShow: false }));

@@ -4,6 +4,7 @@ import fullwidth from "./components/fullwidth";
 import menu from "./components/menu";
 import settings from "./components/settings";
 import replaceDialog from "./components/replace-dialog";
+// import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
 
 export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
@@ -184,6 +185,8 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
           Opener(replaceDialog({ renderer, keys, Button, Dialog }))
       }
     },
+
+    // replacePane example works with Mithril, but needs an explicit state update with React
     // {
     //   name: "Replace pane",
     //   interactive: true,
@@ -263,16 +266,18 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Option: showDelay, hideDelay, showDuration, hideDuration",
+      name: "Option: showDelay, hideDelay, showDuration, hideDuration, showTimingFunction, hideTimingFunction",
       interactive: true,
       exclude: true,
       component: {
         view: () => Opener({
           body: "Hello",
-          showDelay: .4,
-          hideDelay: .4,
+          showDelay: .1,
+          hideDelay: .1,
           showDuration: 1.0,
-          hideDuration: 1.0
+          hideDuration: 2.0,
+          showTimingFunction: "cubic-bezier(0.20, 1.05, 0.56, 0.78)", // http://greweb.me/bezier-easing-editor/example/
+          hideTimingFunction: "cubic-bezier(0.29, 0.59, 0.87, 0.13)",
         })
       }
     },

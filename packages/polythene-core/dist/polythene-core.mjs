@@ -441,6 +441,10 @@ var Multi = function Multi(_ref) {
 
 Multi.displayName = "Multi";
 
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /*
 Generic show/hide transition module
 */
@@ -596,6 +600,50 @@ var transition = function transition(opts, state) {
   }
 };
 
+var transitionComponent = function transitionComponent(_ref2) {
+  var _extends2;
+
+  var isShow = _ref2.isShow,
+      state = _ref2.state,
+      attrs = _ref2.attrs,
+      domElements = _ref2.domElements,
+      beforeShow = _ref2.beforeShow,
+      showClass = _ref2.showClass,
+      _ref2$defaultAnimatio = _ref2.defaultAnimationDuration,
+      defaultAnimationDuration = _ref2$defaultAnimatio === undefined ? SHOW_DURATION : _ref2$defaultAnimatio;
+
+  if (state.transitioning()) {
+    return Promise.resolve();
+  }
+  state.transitioning(true);
+  state.visible(isShow ? true : false);
+  if (beforeShow) {
+    beforeShow();
+  }
+  var duration = attrs[isShow ? "showDuration" : "hideDuration"] || defaultAnimationDuration;
+  var delay = attrs.showDelay;
+  var transitions = attrs.transitions;
+  var fn = isShow ? show : hide;
+  var transAttrs = _extends$2({}, domElements, (_extends2 = {}, _defineProperty(_extends2, isShow ? "showDuration" : "hideDuration", duration), _defineProperty(_extends2, isShow ? "showDelay" : "hideDelay", delay), _extends2));
+  return fn(_extends$2({}, attrs, { showClass: showClass }, transitions ? transitions[isShow ? "show" : "hide"](transAttrs) : transAttrs)).then(function () {
+    var id = state.instanceId;
+    if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
+      attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
+    } else if (attrs[isShow ? "didShow" : "didHide"]) {
+      attrs[isShow ? "didShow" : "didHide"](id); // when used directly
+    }
+    state.transitioning(false);
+  });
+};
+
+var showComponent = function showComponent(args) {
+  return transitionComponent(_extends$2({}, args, { isShow: true }));
+};
+
+var hideComponent = function hideComponent(args) {
+  return transitionComponent(_extends$2({}, args, { isShow: false }));
+};
+
 var getStyle = function getStyle(_ref) {
   var _ref$element = _ref.element,
       element = _ref$element === undefined ? document : _ref$element,
@@ -620,4 +668,4 @@ var deprecation = function deprecation(component, deprecatedOption, newOption) {
   return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
 }; // eslint-disable-line no-console
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, showComponent, hideComponent, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };
