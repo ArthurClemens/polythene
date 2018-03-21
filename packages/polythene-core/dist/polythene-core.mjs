@@ -445,13 +445,9 @@ var _extends$2 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/*
-Generic show/hide transition module
-*/
-
 // defaults
-var SHOW_DURATION = .220; // default dialog timing
-var HIDE_DURATION = .200; // default dialog timing
+var SHOW_DURATION = .240;
+var HIDE_DURATION = .240;
 var SHOW_DELAY = 0;
 var HIDE_DELAY = 0;
 var TRANSITION = "both";
@@ -487,6 +483,10 @@ var getValue = function getValue(_ref) {
   }
 };
 
+var hasDuration = function hasDuration(opts, state) {
+  return state === "show" ? opts.showDuration !== undefined : opts.hideDuration !== undefined;
+};
+
 /*
 opts:
 - transition
@@ -507,12 +507,21 @@ opts:
 
 - state (show, hide)
 */
+
+var hasDelay = function hasDelay(opts, state) {
+  return state === "show" ? opts.showDelay !== undefined : opts.hideDelay !== undefined;
+};
+
 var getDelay = function getDelay(opts, state) {
   return getValue({ opts: opts, state: state, showAttr: "showDelay", hideAttr: "hideDelay", defaultShowValue: SHOW_DELAY, defaultHideValue: HIDE_DELAY, nullValue: 0 });
 };
 
 var getTimingFunction = function getTimingFunction(opts, state) {
   return getValue({ opts: opts, state: state, showAttr: "showTimingFunction", hideAttr: "hideTimingFunction" });
+};
+
+var computedStyleDurationToMs = function computedStyleDurationToMs(durationStr) {
+  return parseFloat(durationStr) * durationStr.indexOf("ms") === -1 ? 1000 : 1;
 };
 
 /*
@@ -537,14 +546,21 @@ var transition = function transition(opts, state) {
     return Promise.resolve();
   } else {
     return new Promise(function (resolve) {
-      var transitionDuration = getDuration(opts, state) * 1000;
-      var timingFunction = getTimingFunction(opts, state);
-      var delay = getDelay(opts, state) * 1000;
+      var computedStyle = isClient ? window.getComputedStyle(el) : {};
+      var duration = hasDuration(opts, state) ? getDuration(opts, state) * 1000 : computedStyleDurationToMs(computedStyle.transitionDuration);
+      var delay = hasDelay(opts, state) ? getDelay(opts, state) * 1000 : computedStyleDurationToMs(computedStyle.transitionDelay);
+      var timingFunction = getTimingFunction(opts, state) || computedStyle.transitionTimingFunction;
+
       var style = el.style;
+
       var beforeTransition = opts.beforeShow && state === "show" ? function () {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
         opts.beforeShow();
+      } : opts.beforeHide && state === "hide" ? function () {
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+        opts.beforeHide();
       } : null;
 
       var afterTransition = opts.afterHide && state === "hide" ? function () {
@@ -552,7 +568,7 @@ var transition = function transition(opts, state) {
       } : null;
 
       var applyTransition = function applyTransition() {
-        style.transitionDuration = transitionDuration + "ms";
+        style.transitionDuration = duration + "ms";
         style.transitionDelay = delay + "ms";
 
         if (timingFunction) {
@@ -576,11 +592,11 @@ var transition = function transition(opts, state) {
             afterTransition();
           }
           resolve();
-        }, transitionDuration + delay);
+        }, duration + delay);
       };
 
       var maybeDelayTransition = function maybeDelayTransition() {
-        if (transitionDuration === 0) {
+        if (duration === 0) {
           doTransition();
         } else {
           setTimeout(doTransition, 0);
@@ -607,20 +623,20 @@ var transitionComponent = function transitionComponent(_ref2) {
       state = _ref2.state,
       attrs = _ref2.attrs,
       domElements = _ref2.domElements,
-      beforeShow = _ref2.beforeShow,
+      beforeTransition = _ref2.beforeTransition,
+      afterTransition = _ref2.afterTransition,
       showClass = _ref2.showClass,
-      _ref2$defaultAnimatio = _ref2.defaultAnimationDuration,
-      defaultAnimationDuration = _ref2$defaultAnimatio === undefined ? SHOW_DURATION : _ref2$defaultAnimatio;
+      defaultDuration = _ref2.defaultDuration;
 
   if (state.transitioning()) {
     return Promise.resolve();
   }
   state.transitioning(true);
   state.visible(isShow ? true : false);
-  if (beforeShow) {
-    beforeShow();
+  if (beforeTransition) {
+    beforeTransition();
   }
-  var duration = attrs[isShow ? "showDuration" : "hideDuration"] || defaultAnimationDuration;
+  var duration = attrs[isShow ? "showDuration" : "hideDuration"] || defaultDuration || (isShow ? SHOW_DURATION : HIDE_DURATION);
   var delay = attrs.showDelay;
   var transitions = attrs.transitions;
   var fn = isShow ? show : hide;
@@ -632,16 +648,11 @@ var transitionComponent = function transitionComponent(_ref2) {
     } else if (attrs[isShow ? "didShow" : "didHide"]) {
       attrs[isShow ? "didShow" : "didHide"](id); // when used directly
     }
+    if (afterTransition) {
+      afterTransition();
+    }
     state.transitioning(false);
   });
-};
-
-var showComponent = function showComponent(args) {
-  return transitionComponent(_extends$2({}, args, { isShow: true }));
-};
-
-var hideComponent = function hideComponent(args) {
-  return transitionComponent(_extends$2({}, args, { isShow: false }));
 };
 
 var getStyle = function getStyle(_ref) {
@@ -668,4 +679,4 @@ var deprecation = function deprecation(component, deprecatedOption, newOption) {
   return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
 }; // eslint-disable-line no-console
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, showComponent, hideComponent, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, show, hide, isClient, isServer } from 'polythene-core';
+import { filterSupportedAttributes, transitionComponent, isClient, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 
@@ -23,6 +23,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var DEFAULT_ANIMATION_DURATION = .6;
 var DEFAULT_TIME_OUT = 3;
 
 var getElement = function getElement(vnode) {
@@ -62,59 +63,43 @@ var prepareShow = function prepareShow(state, attrs) {
   }
 };
 
+var transitionOptions = function transitionOptions(state, attrs, isShow) {
+  return {
+    state: state,
+    attrs: attrs,
+    isShow: isShow,
+    beforeTransition: isShow ? function () {
+      return stopTimer(state), prepareShow(state, attrs);
+    } : function () {
+      return stopTimer(state);
+    },
+    afterTransition: isShow ? function () {
+      // set timer to hide in a few seconds
+      var timeout = attrs.timeout;
+      if (timeout === 0) {
+        // do not time out
+      } else {
+        var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+        state.timer.start(function () {
+          hideNotification(state, attrs);
+        }, timeoutSeconds);
+      }
+    } : null,
+    domElements: {
+      el: state.el,
+      containerEl: state.containerEl
+    },
+    showClass: classes.visible,
+    defaultDuration: DEFAULT_ANIMATION_DURATION
+  };
+};
+
 var showNotification = function showNotification(state, attrs) {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  stopTimer(state);
-  prepareShow(state, attrs);
-  var id = attrs.instanceId;
-  var transitions = attrs.transitions;
-  return show(_extends({}, attrs, transitions.show(_extends({}, attrs, {
-    containerEl: state.containerEl,
-    el: state.el
-  })))).then(function () {
-    if (attrs.fromMultipleDidShow) {
-      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
-    } else if (attrs.didShow) {
-      attrs.didShow(id); // when used directly
-    }
-    // set timer to hide in a few seconds
-    var timeout = attrs.timeout;
-    if (timeout === 0) {
-      // do not time out
-    } else {
-      var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-      state.timer.start(function () {
-        hideNotification(state, attrs);
-      }, timeoutSeconds);
-    }
-    state.visible(true);
-    state.transitioning(false);
-  });
+  return transitionComponent(transitionOptions(state, attrs, true));
 };
 
 var hideNotification = function hideNotification(state, attrs) {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  stopTimer(state);
-  var id = attrs.instanceId;
-  var transitions = attrs.transitions;
-  return hide(_extends({}, attrs, transitions.hide(_extends({}, attrs, {
-    containerEl: state.containerEl,
-    el: state.el
-  })))).then(function () {
-    if (attrs.fromMultipleDidHide) {
-      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
-    } else if (attrs.didHide) {
-      attrs.didHide(id); // when used directly
-    }
-    state.visible(false);
-    state.transitioning(false);
-  });
+  return transitionComponent(transitionOptions(state, attrs, false));
 };
 
 var setTitleStyles = function setTitleStyles(titleEl) {
@@ -242,7 +227,7 @@ var vars$1 = {
 
 var ANIMATION_DURATION = .5;
 
-var show$1 = function show$$1(_ref) {
+var show = function show(_ref) {
   var el = _ref.el,
       showDuration = _ref.showDuration,
       showDelay = _ref.showDelay;
@@ -253,13 +238,13 @@ var show$1 = function show$$1(_ref) {
     beforeShow: function beforeShow() {
       return el.style.opacity = 0;
     },
-    show: function show$$1() {
+    show: function show() {
       return el.style.opacity = 1;
     }
   };
 };
 
-var hide$1 = function hide$$1(_ref2) {
+var hide = function hide(_ref2) {
   var el = _ref2.el,
       hideDuration = _ref2.hideDuration,
       hideDelay = _ref2.hideDelay;
@@ -267,15 +252,15 @@ var hide$1 = function hide$$1(_ref2) {
     el: el,
     hideDuration: hideDuration || ANIMATION_DURATION,
     hideDelay: hideDelay || 0,
-    hide: function hide$$1() {
+    hide: function hide() {
       return el.style.opacity = 0;
     }
   };
 };
 
 var transitions = {
-  show: show$1,
-  hide: hide$1
+  show: show,
+  hide: hide
 };
 
 export { notificationInstance as coreNotificationInstance, vars$1 as vars, transitions };

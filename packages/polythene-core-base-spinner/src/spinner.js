@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, show, hide } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent } from "polythene-core";
 import classes from "polythene-css-classes/base-spinner";
 
 const sizeClasses = {
@@ -11,53 +11,31 @@ const sizeClasses = {
 
 const classForSize = (size = "regular") => sizeClasses[size];
 
-const showSpinner = (state, attrs) => {
-  if (attrs.onChange) {
-    attrs.onChange({ visible: false, transitioning: true });
-  }
-  return show(Object.assign({},
-    attrs, {
-      el: state.dom(),
-      showClass: classes.visible
-    }
-  )).then(() => {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: true, transitioning: false });
-    }
-    if (attrs.didShow) {
-      attrs.didShow(attrs.id);
-    }
-    state.visible(false);
-  });
-};
+const transitionOptions = (state, attrs, isShow) => ({
+  state,
+  attrs,
+  isShow,
+  domElements: {
+    el: state.dom(),
+  },
+  showClass: classes.visible
+});
 
-const hideSpinner = (state, attrs) => {
-  if (attrs.onChange) {
-    attrs.onChange({ visible: true, transitioning: true });
-  }
-  return hide(Object.assign({},
-    attrs, {
-      el: state.dom(),
-      showClass: classes.visible
-    }
-  )).then(() => {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: false, transitioning: false });
-    }
-    if (attrs.didHide) {
-      attrs.didHide(attrs.id);
-    }
-    state.visible(false);
-  });
-};
+const showSpinner = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, true));
+
+const hideSpinner = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, false));
 
 export const getInitialState = (vnode, createStream) => {
+  const transitioning = createStream(false);
   const visible = createStream(false);
   const dom = createStream(null);
   return {
     dom,
     visible,
-    redrawOnUpdate: createStream.merge([visible])
+    transitioning,
+    redrawOnUpdate: createStream.merge([transitioning])
   };
 };
 

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, showComponent, hideComponent } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -80,30 +80,27 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var showDialog = function showDialog(state, attrs) {
-  return showComponent({
+var transitionOptions = function transitionOptions(state, attrs, isShow) {
+  return {
     state: state,
     attrs: attrs,
+    isShow: isShow,
     domElements: {
       el: state.el,
-      contentEl: state.contentEl
+      contentEl: state.contentEl,
+      backdropEl: state.backdropEl
     },
     showClass: classes.visible,
-    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
-  });
+    defaultDuration: DEFAULT_ANIMATION_DURATION
+  };
+};
+
+var showDialog = function showDialog(state, attrs) {
+  return transitionComponent(transitionOptions(state, attrs, true));
 };
 
 var hideDialog = function hideDialog(state, attrs) {
-  return hideComponent({
-    state: state,
-    attrs: attrs,
-    domElements: {
-      el: state.el,
-      contentEl: state.contentEl
-    },
-    showClass: classes.visible,
-    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
-  });
+  return transitionComponent(transitionOptions(state, attrs, false));
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {

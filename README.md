@@ -56,6 +56,7 @@ Version: `1.0.0`
 
 * Mithril 1.x
 * React 16.x
+* Bundlers: Rollup, Webpack 3 and 4
 
 
 ## Browser support

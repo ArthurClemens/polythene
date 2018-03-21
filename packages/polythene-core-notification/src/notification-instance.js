@@ -1,7 +1,8 @@
-import { filterSupportedAttributes, show, hide, isClient, isServer } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, isClient, isServer } from "polythene-core";
 import { Timer } from "polythene-utilities";
 import classes from "polythene-css-classes/notification";
 
+const DEFAULT_ANIMATION_DURATION = .6;
 const DEFAULT_TIME_OUT = 3;
 
 export const getElement = vnode =>
@@ -40,76 +41,47 @@ const prepareShow = (state, attrs) => {
   }
 };
 
-const showNotification = (state, attrs) => {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  stopTimer(state);
-  prepareShow(state, attrs);
-  const id = attrs.instanceId;
-  const transitions = attrs.transitions;
-  return show(Object.assign({},
-    attrs,
-    transitions.show(Object.assign(
-      {},
-      attrs,
-      {
-        containerEl: state.containerEl,
-        el: state.el,
-      }
-    ))
-  )).then(() => {
-    if (attrs.fromMultipleDidShow) {
-      attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
-    } else if (attrs.didShow) {
-      attrs.didShow(id); // when used directly
+const transitionOptions = (state, attrs, isShow) => ({
+  state,
+  attrs,
+  isShow,
+  beforeTransition: isShow
+    ? () => (
+      stopTimer(state),
+      prepareShow(state, attrs)
+    )
+    : () => (
+      stopTimer(state)
+    ),
+  afterTransition: isShow
+    ? () => {
+      // set timer to hide in a few seconds
+      const timeout = attrs.timeout;
+      if (timeout === 0) {
+        // do not time out
+      } else {
+        const timeoutSeconds = timeout !== undefined
+          ? timeout
+          : DEFAULT_TIME_OUT;
+        state.timer.start(() => {
+          hideNotification(state, attrs);
+        }, timeoutSeconds);
+      }     
     }
-    // set timer to hide in a few seconds
-    const timeout = attrs.timeout;
-    if (timeout === 0) {
-      // do not time out
-    } else {
-      const timeoutSeconds = timeout !== undefined
-        ? timeout
-        : DEFAULT_TIME_OUT;
-      state.timer.start(() => {
-        hideNotification(state, attrs);
-      }, timeoutSeconds);
-    }
-    state.visible(true);
-    state.transitioning(false);
-  });
-};
+    : null,
+  domElements: {
+    el: state.el,
+    containerEl: state.containerEl,
+  },
+  showClass: classes.visible,
+  defaultDuration: DEFAULT_ANIMATION_DURATION
+});
 
-const hideNotification = (state, attrs) => {
-  if (state.transitioning()) {
-    return Promise.resolve();
-  }
-  state.transitioning(true);
-  stopTimer(state);
-  const id = attrs.instanceId;
-  const transitions = attrs.transitions;
-  return hide(Object.assign({},
-    attrs,
-    transitions.hide(Object.assign(
-      {},
-      attrs,
-      {
-        containerEl: state.containerEl,
-        el: state.el,
-      }
-    ))
-  )).then(() => {
-    if (attrs.fromMultipleDidHide) {
-      attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
-    } else if (attrs.didHide) {
-      attrs.didHide(id); // when used directly
-    }
-    state.visible(false);
-    state.transitioning(false);
-  });
-};
+const showNotification = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, true));
+
+const hideNotification = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, false));
 
 const setTitleStyles = titleEl => {
   if (isServer) return;

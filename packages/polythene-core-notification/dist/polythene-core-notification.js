@@ -25,6 +25,7 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var DEFAULT_ANIMATION_DURATION = .6;
   var DEFAULT_TIME_OUT = 3;
 
   var getElement = function getElement(vnode) {
@@ -64,59 +65,43 @@
     }
   };
 
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
+      state: state,
+      attrs: attrs,
+      isShow: isShow,
+      beforeTransition: isShow ? function () {
+        return stopTimer(state), prepareShow(state, attrs);
+      } : function () {
+        return stopTimer(state);
+      },
+      afterTransition: isShow ? function () {
+        // set timer to hide in a few seconds
+        var timeout = attrs.timeout;
+        if (timeout === 0) {
+          // do not time out
+        } else {
+          var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+          state.timer.start(function () {
+            hideNotification(state, attrs);
+          }, timeoutSeconds);
+        }
+      } : null,
+      domElements: {
+        el: state.el,
+        containerEl: state.containerEl
+      },
+      showClass: classes.visible,
+      defaultDuration: DEFAULT_ANIMATION_DURATION
+    };
+  };
+
   var showNotification = function showNotification(state, attrs) {
-    if (state.transitioning()) {
-      return Promise.resolve();
-    }
-    state.transitioning(true);
-    stopTimer(state);
-    prepareShow(state, attrs);
-    var id = attrs.instanceId;
-    var transitions = attrs.transitions;
-    return polytheneCore.show(_extends({}, attrs, transitions.show(_extends({}, attrs, {
-      containerEl: state.containerEl,
-      el: state.el
-    })))).then(function () {
-      if (attrs.fromMultipleDidShow) {
-        attrs.fromMultipleDidShow(id); // when used with Multiple; this will call attrs.didShow
-      } else if (attrs.didShow) {
-        attrs.didShow(id); // when used directly
-      }
-      // set timer to hide in a few seconds
-      var timeout = attrs.timeout;
-      if (timeout === 0) {
-        // do not time out
-      } else {
-        var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-        state.timer.start(function () {
-          hideNotification(state, attrs);
-        }, timeoutSeconds);
-      }
-      state.visible(true);
-      state.transitioning(false);
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
   };
 
   var hideNotification = function hideNotification(state, attrs) {
-    if (state.transitioning()) {
-      return Promise.resolve();
-    }
-    state.transitioning(true);
-    stopTimer(state);
-    var id = attrs.instanceId;
-    var transitions = attrs.transitions;
-    return polytheneCore.hide(_extends({}, attrs, transitions.hide(_extends({}, attrs, {
-      containerEl: state.containerEl,
-      el: state.el
-    })))).then(function () {
-      if (attrs.fromMultipleDidHide) {
-        attrs.fromMultipleDidHide(id); // when used with Multiple; this will call attrs.didHide
-      } else if (attrs.didHide) {
-        attrs.didHide(id); // when used directly
-      }
-      state.visible(false);
-      state.transitioning(false);
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
   };
 
   var setTitleStyles = function setTitleStyles(titleEl) {

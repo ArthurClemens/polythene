@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, showComponent, hideComponent } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_Z    = 3;
@@ -7,29 +7,24 @@ const DEFAULT_ANIMATION_DURATION = .220;
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+const transitionOptions = (state, attrs, isShow) => ({
+  state,
+  attrs,
+  isShow,
+  domElements: {
+    el: state.el,
+    contentEl: state.contentEl,
+    backdropEl: state.backdropEl,
+  },
+  showClass: classes.visible,
+  defaultDuration: DEFAULT_ANIMATION_DURATION,
+});
+
 const showDialog = (state, attrs) =>
-  showComponent({
-    state,
-    attrs,
-    domElements: {
-      el: state.el,
-      contentEl: state.contentEl
-    },
-    showClass: classes.visible,
-    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION,
-  });
+  transitionComponent(transitionOptions(state, attrs, true));
 
 const hideDialog = (state, attrs) =>
-  hideComponent({
-    state,
-    attrs,
-    domElements: {
-      el: state.el,
-      contentEl: state.contentEl
-    },
-    showClass: classes.visible,
-    defaultAnimationDuration: DEFAULT_ANIMATION_DURATION,
-  });
+  transitionComponent(transitionOptions(state, attrs, false));
 
 export const getInitialState = (vnode, createStream) => {
   const transitioning = createStream(false);

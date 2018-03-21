@@ -69,14 +69,14 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
         title: "A one line message",
       })
     },
-    {
-      name: "Option: content",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        content: h("div", "This message tells some things using two lines")
-      })
-    },
+    // {
+    //   name: "Option: content",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: buttonGroup({
+    //     content: h("div", "This message tells some things using two lines")
+    //   })
+    // },
     {
       name: "Option: style",
       interactive: true,
@@ -225,7 +225,7 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       exclude: true,
       component: buttonGroup({
         title: "A one line message",
-        transition: "show"
+        transition: "show",
       })
     },
     {

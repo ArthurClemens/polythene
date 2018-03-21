@@ -156,46 +156,55 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         z: 1
       }})
     },
-    // {
-    //   name: "Transitions",
-    //   interactive: true,
-    //   exclude: true,
-    //   component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
-    //     backdrop: true,
-    //     z: 1,
-    //     transitions: {
-    //       show: ({ el, contentEl }) => ({
-    //         el,
-    //         showDuration: .500,
-    //         showTimingFunction: "ease-out",
-    //         beforeShow: () => {
-    //           const rect = contentEl.getBoundingClientRect();
-    //           const height = rect.height + 15; // add shadow
-    //           contentEl.style.transitionProperty = "none";
-    //           contentEl.style.left = 0;
-    //           contentEl.style.opacity = 0;
-    //           contentEl.style.top = `${-height}px`;
-    //         },
-    //         show: () => {
-    //           contentEl.style.transitionProperty = "top, opacity";
-    //           contentEl.style.opacity = 1;
-    //           contentEl.style.top = 0;
-    //         }
-    //       }),
-    //       hide: ({ el, contentEl }) => ({
-    //         el,
-    //         hideDuration: .400,
-    //         hideTimingFunction: "ease-out",
-    //         hide: () => {
-    //           const rect = contentEl.getBoundingClientRect();
-    //           const height = rect.height + 15; // add shadow
-    //           contentEl.style.left = 0;
-    //           contentEl.style.top = `${-height}px`;
-    //         }
-    //       })
-    //     }
-    //   }})
-    // },
+    {
+      name: "Transitions",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+        backdrop: true,
+        z: 1,
+        transitions: {
+          show: ({ backdropEl, contentEl }) => ({
+            el: contentEl,
+            showDuration: .5,
+            showTimingFunction: "cubic-bezier(.17,.67,.07,1)",
+            beforeShow: () => {
+              const rect = contentEl.getBoundingClientRect();
+              const width = rect.width + 15; // add shadow
+              contentEl.style.transitionProperty = "none";
+              contentEl.style.top = 0;
+              contentEl.style.left = `${-width}px`;
+              contentEl.style.transitionDuration = ".3s";
+              backdropEl.style.opacity = 0;
+              backdropEl.style.transitionDuration = ".5s";
+              backdropEl.style.transitionDelay = 0;
+            },
+            show: () => {
+              contentEl.style.transitionProperty = "left, opacity";
+              contentEl.style.left = 0;
+              backdropEl.style.opacity = 1;
+            }
+          }),
+          hide: ({ backdropEl, contentEl }) => ({
+            el: contentEl,
+            hideDuration: .7,
+            showTimingFunction: "cubic-bezier(.17,.67,.07,1)",
+            beforeHide: () => {
+              contentEl.style.transitionDuration = ".3s";
+              backdropEl.style.transitionDuration = ".4s";
+              backdropEl.style.transitionDelay = ".3s";
+            },
+            hide: () => {
+              const rect = contentEl.getBoundingClientRect();
+              const width = rect.width + 15; // add shadow
+              contentEl.style.top = 0;
+              contentEl.style.left = `${-width}px`;
+              backdropEl.style.opacity = 0;
+            }
+          })
+        }
+      }})
+    },
     
     {
       name: "Default drawer (RTL)",

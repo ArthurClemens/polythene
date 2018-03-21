@@ -39,49 +39,35 @@
     return sizeClasses[size];
   };
 
-  var showSpinner = function showSpinner(state, attrs) {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: false, transitioning: true });
-    }
-    return polytheneCore.show(_extends({}, attrs, {
-      el: state.dom(),
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
+      state: state,
+      attrs: attrs,
+      isShow: isShow,
+      domElements: {
+        el: state.dom()
+      },
       showClass: classes.visible
-    })).then(function () {
-      if (attrs.onChange) {
-        attrs.onChange({ visible: true, transitioning: false });
-      }
-      if (attrs.didShow) {
-        attrs.didShow(attrs.id);
-      }
-      state.visible(false);
-    });
+    };
+  };
+
+  var showSpinner = function showSpinner(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
   };
 
   var hideSpinner = function hideSpinner(state, attrs) {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: true, transitioning: true });
-    }
-    return polytheneCore.hide(_extends({}, attrs, {
-      el: state.dom(),
-      showClass: classes.visible
-    })).then(function () {
-      if (attrs.onChange) {
-        attrs.onChange({ visible: false, transitioning: false });
-      }
-      if (attrs.didHide) {
-        attrs.didHide(attrs.id);
-      }
-      state.visible(false);
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
   };
 
   var getInitialState = function getInitialState(vnode, createStream) {
+    var transitioning = createStream(false);
     var visible = createStream(false);
     var dom = createStream(null);
     return {
       dom: dom,
       visible: visible,
-      redrawOnUpdate: createStream.merge([visible])
+      transitioning: transitioning,
+      redrawOnUpdate: createStream.merge([transitioning])
     };
   };
 

@@ -1,6 +1,6 @@
 exports[`test No options - spec 1`] = `
 <div
-  className="pe-notification pe-dark-tone   pe-notification--horizontal   "
+  className="pe-notification pe-dark-tone  pe-notification--horizontal   "
   onClick={[Function]}>
   <div
     className="pe-notification__content" />
@@ -9,7 +9,7 @@ exports[`test No options - spec 1`] = `
 
 exports[`test Option: class - spec 1`] = `
 <div
-  className="pe-notification pe-dark-tone   pe-notification--horizontal   class-x"
+  className="pe-notification pe-dark-tone  pe-notification--horizontal   class-x"
   onClick={[Function]}>
   <div
     className="pe-notification__content" />
@@ -18,7 +18,7 @@ exports[`test Option: class - spec 1`] = `
 
 exports[`test Option: className - spec 1`] = `
 <div
-  className="pe-notification pe-dark-tone   pe-notification--horizontal   className-x"
+  className="pe-notification pe-dark-tone  pe-notification--horizontal   className-x"
   onClick={[Function]}>
   <div
     className="pe-notification__content" />
@@ -27,7 +27,7 @@ exports[`test Option: className - spec 1`] = `
 
 exports[`test Option: element - spec 1`] = `
 <a
-  className="pe-notification pe-dark-tone   pe-notification--horizontal   "
+  className="pe-notification pe-dark-tone  pe-notification--horizontal   "
   onClick={[Function]}>
   <div
     className="pe-notification__content" />
@@ -36,7 +36,7 @@ exports[`test Option: element - spec 1`] = `
 
 exports[`test Option: id - spec 1`] = `
 <div
-  className="pe-notification pe-dark-tone   pe-notification--horizontal   "
+  className="pe-notification pe-dark-tone  pe-notification--horizontal   "
   id="id-x"
   onClick={[Function]}>
   <div

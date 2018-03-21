@@ -275,7 +275,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
           showDelay: .1,
           hideDelay: .1,
           showDuration: 1.0,
-          hideDuration: 2.0,
+          hideDuration: 1.0,
           showTimingFunction: "cubic-bezier(0.20, 1.05, 0.56, 0.78)", // http://greweb.me/bezier-easing-editor/example/
           hideTimingFunction: "cubic-bezier(0.29, 0.59, 0.87, 0.13)",
         })

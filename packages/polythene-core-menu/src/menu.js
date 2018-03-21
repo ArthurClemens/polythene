@@ -1,15 +1,15 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, show, hide, isServer, isTouch } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, isTouch } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const ANIMATION_DURATION = .220;
-const DEFAULT_OFFSET_H   = 0;
-const DEFAULT_TYPE       = "floating";
-const MIN_SIZE           = 1.5;
-const OFFSET_V           = -8;
-const SHADOW_Z           = 1;
+const DEFAULT_ANIMATION_DURATION = .220;
+const DEFAULT_OFFSET_H           = 0;
+const DEFAULT_TYPE               = "floating";
+const MIN_SIZE                   = 1.5;
+const OFFSET_V                   = -8;
+const SHADOW_Z                   = 1;
 
 const positionMenu = (state, attrs) => {
   if (isServer) {
@@ -60,56 +60,25 @@ const positionMenu = (state, attrs) => {
   }
 };
 
-const showMenu = (state, attrs) => {
-  if (attrs.onChange) {
-    attrs.onChange({ visible: false, transitioning: true });
-  }
-  positionMenu(state, attrs);
-  const transitions = attrs.transitions;
-  const el = state.dom();
-  return show(Object.assign({},
-    attrs,
-    transitions
-      ? transitions.show({ el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay })
-      : {
-        el,
-        showClass: classes.visible
-      }
-  )).then(() => {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: true, transitioning: false });
-    }
-    if (attrs.didShow) {
-      attrs.didShow(attrs.id);
-    }
-    state.visible(true);
-  });
-};
+const transitionOptions = (state, attrs, isShow) => ({
+  state,
+  attrs,
+  isShow,
+  beforeTransition: isShow
+    ? () => positionMenu(state, attrs)
+    : null,
+  domElements: {
+    el: state.dom()
+  },
+  showClass: classes.visible,
+  defaultDuration: DEFAULT_ANIMATION_DURATION,
+});
 
-const hideMenu = (state, attrs) => {
-  if (attrs.onChange) {
-    attrs.onChange({ visible: true, transitioning: true });
-  }
-  const transitions = attrs.transitions;
-  const el = state.dom();
-  return hide(Object.assign({},
-    attrs,
-    transitions
-      ? transitions.hide({ el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay })
-      : {
-        el,
-        showClass: classes.visible
-      }
-  )).then(() => {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: false, transitioning: false });
-    }
-    if (attrs.didHide) {
-      attrs.didHide(attrs.id);
-    }
-    state.visible(false);
-  });
-};
+const showMenu = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, true));
+
+const hideMenu = (state, attrs) =>
+  transitionComponent(transitionOptions(state, attrs, false));
 
 const unifySize = size =>
   size < MIN_SIZE ? MIN_SIZE : size;
@@ -133,6 +102,23 @@ const handleSubscriptions = (vnode, which) => {
     unsubscribe("keydown", state.handleEscape);
     state.deActivateDismissTap();
   }
+};
+
+export const getInitialState = (vnode, createStream) => {
+  const dom = createStream(null);
+  const visible = createStream(false);
+  const transitioning = createStream(false);
+  return {
+    dom,
+    visible,
+    transitioning,
+    activateDismissTap: undefined, // set in onMount
+    deActivateDismissTap: undefined, // set in onMount
+    handleDismissTap: undefined, // set in onMount
+    handleEscape: undefined, // set in onMount
+    update: undefined, // set in onMount
+    redrawOnUpdate: createStream.merge([transitioning])
+  };
 };
 
 export const onMount = vnode => {
@@ -197,21 +183,6 @@ export const onUnMount = vnode => {
   if (!attrs.permanent) {
     handleSubscriptions(vnode, "unmount");
   }
-};
-
-export const getInitialState = (vnode, createStream) => {
-  const dom = createStream(null);
-  const visible = createStream(false);
-  return {
-    dom,
-    visible,
-    activateDismissTap: undefined, // set in onMount
-    deActivateDismissTap: undefined, // set in onMount
-    handleDismissTap: undefined, // set in onMount
-    handleEscape: undefined, // set in onMount
-    update: undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([visible])
-  };
 };
 
 export const createProps = (vnode, { keys: k }) => {

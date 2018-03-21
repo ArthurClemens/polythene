@@ -61,7 +61,7 @@
     return vnode.attrs.element || "div";
   };
 
-  var ANIMATION_DURATION = .220;
+  var DEFAULT_ANIMATION_DURATION = .220;
   var DEFAULT_OFFSET_H = 0;
   var DEFAULT_TYPE = "floating";
   var MIN_SIZE = 1.5;
@@ -133,45 +133,28 @@
     }
   };
 
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
+      state: state,
+      attrs: attrs,
+      isShow: isShow,
+      beforeTransition: isShow ? function () {
+        return positionMenu(state, attrs);
+      } : null,
+      domElements: {
+        el: state.dom()
+      },
+      showClass: classes.visible,
+      defaultDuration: DEFAULT_ANIMATION_DURATION
+    };
+  };
+
   var showMenu = function showMenu(state, attrs) {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: false, transitioning: true });
-    }
-    positionMenu(state, attrs);
-    var transitions = attrs.transitions;
-    var el = state.dom();
-    return polytheneCore.show(_extends({}, attrs, transitions ? transitions.show({ el: el, showDuration: attrs.showDuration || ANIMATION_DURATION, showDelay: attrs.showDelay }) : {
-      el: el,
-      showClass: classes.visible
-    })).then(function () {
-      if (attrs.onChange) {
-        attrs.onChange({ visible: true, transitioning: false });
-      }
-      if (attrs.didShow) {
-        attrs.didShow(attrs.id);
-      }
-      state.visible(true);
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
   };
 
   var hideMenu = function hideMenu(state, attrs) {
-    if (attrs.onChange) {
-      attrs.onChange({ visible: true, transitioning: true });
-    }
-    var transitions = attrs.transitions;
-    var el = state.dom();
-    return polytheneCore.hide(_extends({}, attrs, transitions ? transitions.hide({ el: el, hideDuration: attrs.hideDuration || ANIMATION_DURATION, hideDelay: attrs.hideDelay }) : {
-      el: el,
-      showClass: classes.visible
-    })).then(function () {
-      if (attrs.onChange) {
-        attrs.onChange({ visible: false, transitioning: false });
-      }
-      if (attrs.didHide) {
-        attrs.didHide(attrs.id);
-      }
-      state.visible(false);
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
   };
 
   var unifySize = function unifySize(size) {
@@ -198,6 +181,23 @@
       polytheneCore.unsubscribe("keydown", state.handleEscape);
       state.deActivateDismissTap();
     }
+  };
+
+  var getInitialState = function getInitialState(vnode, createStream) {
+    var dom = createStream(null);
+    var visible = createStream(false);
+    var transitioning = createStream(false);
+    return {
+      dom: dom,
+      visible: visible,
+      transitioning: transitioning,
+      activateDismissTap: undefined, // set in onMount
+      deActivateDismissTap: undefined, // set in onMount
+      handleDismissTap: undefined, // set in onMount
+      handleEscape: undefined, // set in onMount
+      update: undefined, // set in onMount
+      redrawOnUpdate: createStream.merge([transitioning])
+    };
   };
 
   var onMount = function onMount(vnode) {
@@ -260,21 +260,6 @@
     }
   };
 
-  var getInitialState = function getInitialState(vnode, createStream) {
-    var dom = createStream(null);
-    var visible = createStream(false);
-    return {
-      dom: dom,
-      visible: visible,
-      activateDismissTap: undefined, // set in onMount
-      deActivateDismissTap: undefined, // set in onMount
-      handleDismissTap: undefined, // set in onMount
-      handleEscape: undefined, // set in onMount
-      update: undefined, // set in onMount
-      redrawOnUpdate: createStream.merge([visible])
-    };
-  };
-
   var createProps = function createProps(vnode, _ref) {
     var k = _ref.keys;
 
@@ -306,9 +291,9 @@
 
   var menu = /*#__PURE__*/Object.freeze({
     getElement: getElement,
+    getInitialState: getInitialState,
     onMount: onMount,
     onUnMount: onUnMount,
-    getInitialState: getInitialState,
     createProps: createProps,
     createContent: createContent
   });

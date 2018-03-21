@@ -83,30 +83,27 @@
     return vnode.attrs.element || "div";
   };
 
-  var showDialog = function showDialog(state, attrs) {
-    return polytheneCore.showComponent({
+  var transitionOptions = function transitionOptions(state, attrs, isShow) {
+    return {
       state: state,
       attrs: attrs,
+      isShow: isShow,
       domElements: {
         el: state.el,
-        contentEl: state.contentEl
+        contentEl: state.contentEl,
+        backdropEl: state.backdropEl
       },
       showClass: classes.visible,
-      defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
-    });
+      defaultDuration: DEFAULT_ANIMATION_DURATION
+    };
+  };
+
+  var showDialog = function showDialog(state, attrs) {
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
   };
 
   var hideDialog = function hideDialog(state, attrs) {
-    return polytheneCore.hideComponent({
-      state: state,
-      attrs: attrs,
-      domElements: {
-        el: state.el,
-        contentEl: state.contentEl
-      },
-      showClass: classes.visible,
-      defaultAnimationDuration: DEFAULT_ANIMATION_DURATION
-    });
+    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
   };
 
   var getInitialState = function getInitialState(vnode, createStream) {
