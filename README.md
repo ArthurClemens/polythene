@@ -58,6 +58,7 @@ Version: `1.0.0`
 * React 16.x
 * Bundlers: Rollup, Webpack 3 and 4
 
+Note: does not work yet with Webpack 4.
 
 ## Browser support
 
