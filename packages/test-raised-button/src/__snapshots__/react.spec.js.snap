@@ -82,7 +82,11 @@ exports[`test Option: children 1`] = `
     <Shadow
       animated={true}
       z={[Function]} />
-  } />
+  }>
+  <span>
+    Child
+  </span>
+</Button>
 `;
 
 exports[`test Option: class 1`] = `

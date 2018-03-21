@@ -34,7 +34,7 @@ exports[`test Permanent (no shadow, with border) 1`] = `
     \"display: flex; height: 350px; background: rgb(255, 255, 255); color: rgb(51, 51, 51);\">
     <div style=\"padding: 0px;\">
         <div class=
-        \"pe-dialog pe-drawer pe-drawer--permanent pe-drawer--bordered\">
+        \"pe-dialog pe-drawer pe-drawer--permanent pe-drawer--border\">
         <div class=\"pe-dialog__touch\"></div>
           <div class=\"pe-dialog__content\">
             <div class=\"pe-shadow pe-shadow--animated\">

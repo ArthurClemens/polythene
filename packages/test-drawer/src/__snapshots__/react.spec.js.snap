@@ -55,7 +55,7 @@ exports[`test Permanent (no shadow, with border) 1`] = `
           }
         }>
         <Drawer
-          bordered={true}
+          border={true}
           content={
             <List
               compact={true}
