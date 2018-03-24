@@ -22,7 +22,8 @@
 }
 
 .pe-notification.pe-snackbar {
-  width: 100%
+  width: 100%;
+  opacity: 1
 }
 
 .pe-notification.pe-snackbar .pe-notification__content {

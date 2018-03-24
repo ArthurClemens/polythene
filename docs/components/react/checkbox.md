@@ -2,7 +2,7 @@
 
 # Checkbox component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -14,15 +14,18 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Checkbox options](../checkbox.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/hp6ksg2m/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -38,6 +41,7 @@ import { Checkbox } from "polythene-react"
 />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/g07snvox/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -52,13 +56,15 @@ h(Checkbox, {
 })
 ~~~
 
-<a name="reading-and-setting-the-checked-state"></a>
+
+<a id="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -70,6 +76,7 @@ To read the checked state, use `onChange`:
 />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -79,6 +86,7 @@ h(Checkbox, {
 })
 ~~~
 
+<a id="example-managing-mutating-state"></a>
 #### Example managing mutating state
 
 In this example we show a simple form with a checkbox to accept the Terms and Conditions, and some other button (for instance in a details dialog) that also sets that checkbox:
@@ -133,16 +141,19 @@ export default SimpleForm
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Checkbox appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -157,6 +168,7 @@ CheckboxCSS.addStyle(".themed-checkbox", {
 <Checkbox className="themed-checkbox" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Checkbox CSS classes](../../../packages/polythene-css-classes/checkbox.js).
@@ -167,6 +179,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/checkbox"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -179,7 +192,8 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="icons"></a>
+
+<a id="icons"></a>
 ### Icons
 
 To use alternative icons, use options `iconOn` and `iconOff`:
@@ -195,7 +209,8 @@ const iconStarFilledSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path 
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

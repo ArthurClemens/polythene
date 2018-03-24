@@ -5,7 +5,7 @@
 * **Timer**: Simple start/stop/pause/resume timer
 * **Web font loader**: Loads one or more web fonts
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [easing](#easing)
 - [scrollTo](#scrollto)
@@ -15,7 +15,8 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="easing"></a>
+
+<a id="easing"></a>
 ## easing
 
 Simple easing functions - inspired by http://gizma.com/easing/
@@ -30,7 +31,8 @@ const value = start + change * easing.easeInOutCubic(percentage)
 ~~~
 
 
-<a name="scrollto"></a>
+
+<a id="scrollto"></a>
 ## scrollTo
 
 Animated scroll to a position.
@@ -67,7 +69,8 @@ scrollTo({
 
 
 
-<a name="timer"></a>
+
+<a id="timer"></a>
 ## Timer
 
 Simple start/stop/pause/resume timer.
@@ -100,7 +103,8 @@ timer.stop()
 
 
 
-<a name="web-font-loader"></a>
+
+<a id="web-font-loader"></a>
 ## Web font loader
 
 Wrapper around [webfontloader](https://github.com/typekit/webfontloader).
@@ -123,7 +127,8 @@ export const addRoboto = () => (
 )
 ~~~
 
-<a name="how-to-prevent-flash-of-unstyled-text"></a>
+
+<a id="how-to-prevent-flash-of-unstyled-text"></a>
 ### How to prevent Flash of Unstyled Text
 
 To prevent the [Flash of Unstyled Text (FOUT)](https://www.paulirish.com/2009/fighting-the-font-face-fout/), add these styles:

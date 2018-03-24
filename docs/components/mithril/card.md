@@ -2,7 +2,7 @@
 
 # Card component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -16,13 +16,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Card options](../card.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/47uy6e1w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -167,13 +169,15 @@ m(Card, {
 
 
 
-<a name="images"></a>
+
+<a id="images"></a>
 ## Images
 
 By specification, the `media` element has an image ratio of `16:9`, but `1:1` images can be used too, as well as "title images" (an image placed next to the title). Images can additionally have with overlay text. Both `ratio` ("square" or "landscape") and `size` ("small", "medium", "large", "extra-large") can be set.
 
 
-<a name="cropping--origin"></a>
+
+<a id="cropping--origin"></a>
 ### Cropping / origin
 
 An image that does not fit the ratio is cropped by CSS. An additional parameter `origin` can be passed to determine from which side cropping should be done. Default value is "center", optional values are "start" and "end". The end result depends if the image is landscape or portrait format.
@@ -192,7 +196,8 @@ content: [{
 ~~~
 
 
-<a name="overlay"></a>
+
+<a id="overlay"></a>
 ### Overlay
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
@@ -244,7 +249,8 @@ An additional HTML element to control the image is "card__media__dimmer". To cre
 ~~~
 
 
-<a name="title-image"></a>
+
+<a id="title-image"></a>
 ### Title image
 
 To create a square image at the right side of the title, use `primary.media`:
@@ -266,16 +272,19 @@ content: [{
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Card appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -292,6 +301,7 @@ m(Card, {
 });
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Card CSS classes](../../../packages/polythene-css-classes/card.js).
@@ -302,6 +312,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/card"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -315,7 +326,8 @@ m(Card, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

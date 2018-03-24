@@ -16,7 +16,8 @@ var notificationClasses = {
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
   multilineTitle: "pe-notification__title--multi-line",
-  vertical: "pe-notification--vertical"
+  vertical: "pe-notification--vertical",
+  visible: "pe-notification--visible"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -55,6 +56,7 @@ var layout = (function (selector, componentVars) {
 
   return [(_ref2 = {}, _defineProperty(_ref2, selector, {
     width: "100%",
+    opacity: 1,
 
     " .pe-notification__content": {
       width: "100%",

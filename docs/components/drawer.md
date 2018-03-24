@@ -2,7 +2,7 @@
 
 Navigation panel that appears with a cover or push animation, or can be placed permanently.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -16,7 +16,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 <!-- /MarkdownTOC -->
 
 
-<a name="main-features"></a>
+<a id="main-features"></a>
 ## Main features
 
 * Choose between cover or push animation, or create a custom transition
@@ -26,7 +26,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 * Optionally place at the right side
 * RTL (right-to-left) support
 
-<a name="usage"></a>
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/drawer.md)
@@ -34,10 +34,10 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 
 
 
-<a name="options"></a>
+<a id="options"></a>
 ## Options
 
-<a name="drawer-specific-options"></a>
+<a id="drawer-specific-options"></a>
 ### Drawer specific options
 
 | **Parameter** |  **Required** | **Type**   | **Default**     | **Description** |
@@ -54,22 +54,12 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |
 | **modal**     | optional      | Boolean    | false | Set to true to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
 
-
-<a name="transition-options"></a>
+<a id="transition-options"></a>
 ### Transition options
 
-| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
-| ---------------- | -------------- | -------- | ----------- | --------------- |
-| **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
-| **showDuration** | optional | Number | .220 | The show transition duration in seconds |
-| **hideDuration** | optional | Number | .220 | The hide transition duration in seconds |
-| **showDelay**    | optional | Number | 0 | The show delay duration in seconds |
-| **hideDelay**    | optional | Number | 0 | The hide delay duration in seconds; no delay is used when the drawer is dismissed, for instance by tapping outside of the drawer (when not a modal) |
-| **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the show transition is done |
-| **didHide**      | mostly required | Function `(id::String) -> undefined` |  | Callback function that is called when the hide transition is done |
+See: [Transitions](../transitions.md)
 
-<a name="common-component-options"></a>
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -84,7 +74,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+<a id="composition"></a>
 ## Composition
 
 Drawer is composed from:
@@ -92,7 +82,7 @@ Drawer is composed from:
 * [Dialog](dialog.md)
 
 
-<a name="css-classes"></a>
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Drawer classes](../../packages/polythene-css-classes/drawer.js)

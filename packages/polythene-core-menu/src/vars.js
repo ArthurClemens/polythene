@@ -10,6 +10,10 @@ export default {
   size_factor:            vars.grid_unit_menu,
   border_radius:          vars.unit_block_border_radius,
 
+  animation_delay:           "0s",
+  animation_duration:        ".220s",
+  animation_timing_function: "ease-in-out",
+
   color_light_background: rgba(vars.color_light_background),
   color_dark_background:  rgba(vars.color_dark_background)
   // text colors are set by content, usually list tiles

@@ -6,10 +6,17 @@ import position from "./components/position";
 import settings from "./components/settings";
 import themed from "./components/themed";
 import transitions from "./components/transitions";
+import { MenuCSS } from "polythene-css";
 
 export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, IconButton }) => {
 
   const { themeColor, themedList, styledList } = themed({ renderer, Menu, List, ListTile });
+
+  MenuCSS.addStyle(".menu-tests-transitions", {
+    animation_duration:        ".8s",
+    animation_delay:           ".2s",
+    animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+  });
 
   return [
     {
@@ -75,24 +82,25 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
           transitions: {
             show: ({ el }) => ({
               el,
-              beforeShow:   () => (
-                el.style.opacity = 0,
-                el.style.transform = "translate3d(0, 20px, 0)"
-              ),
-              show:         () => (
-                el.style.opacity = 1,
-                el.style.transform = "translate3d(0, 0px,  0)"
-              )
+              duration:   .5,
+              before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+              transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
             }),
             hide: ({ el }) => ({
               el,
-              hide:         () => (
-                el.style.opacity = 0,
-                el.style.transform = "translate3d(0, 20px, 0)"
-              )
+              duration:   .5,
+              transition: () => el.style.opacity = 0,
             })
           }
         }
+      })
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "theme-transitions",
+        className: "menu-tests-transitions"
       })
     },
     {
@@ -101,10 +109,11 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
       exclude: true,
       component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "showDelay",
         transitionOptions: {
-          showDelay: .4,
-          hideDelay: .4,
-          showDuration: 1.0,
-          hideDuration: 1.0
+          showDuration: .9,
+          hideDuration: 1.2,
+          hideDelay: .3,
+          showTimingFunction: "ease-in-out",
+          hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
         }
       })
     },

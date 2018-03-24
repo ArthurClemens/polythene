@@ -4,7 +4,7 @@ Polythene is an implementation of Google's Material Design, but it can also be u
 
 This section describes a number of ways to create customizations - from simple local colors to more radical changes.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Customization options](#customization-options)
 - [The quickest way to create a custom blue button](#the-quickest-way-to-create-a-custom-blue-button)
@@ -14,7 +14,8 @@ This section describes a number of ways to create customizations - from simple l
 
 <!-- /MarkdownTOC -->
 
-<a name="customization-options"></a>
+
+<a id="customization-options"></a>
 ## Customization options
 
 Customization options can be used side by side:
@@ -26,18 +27,20 @@ Customization options can be used side by side:
 1. [Custom CSS](theming/custom-css.md)
 
 
-<a name="the-quickest-way-to-create-a-custom-blue-button"></a>
+
+<a id="the-quickest-way-to-create-a-custom-blue-button"></a>
 ## The quickest way to create a custom blue button
 
 Read this first if you are just looking for a quick way to make a modification to a component.
 
 Create custom CSS by passing a new CSS class and component [configuration variables](theming/configuration-variables.md).
 
-<a name="mithril-example"></a>
+
+<a id="mithril-example"></a>
 ### Mithril example
 
 ~~~javascript
-import mithril from "mithril"
+import m from "mithril"
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
 
@@ -52,7 +55,8 @@ m(Button, {
 })
 ~~~ 
 
-<a name="react-jsx-example"></a>
+
+<a id="react-jsx-example"></a>
 ### React JSX example
 
 ~~~jsx
@@ -68,7 +72,8 @@ ButtonCSS.addStyle(".blue-button", {
 <Button className="blue-button" label="Blue Button" />
 ~~~ 
 
-<a name="react-hyperscript-example"></a>
+
+<a id="react-hyperscript-example"></a>
 ### React hyperscript example
 
 ~~~javascript

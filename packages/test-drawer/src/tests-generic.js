@@ -166,9 +166,9 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         transitions: {
           show: ({ backdropEl, contentEl }) => ({
             el: contentEl,
-            showDuration: .5,
-            showTimingFunction: "cubic-bezier(.17,.67,.07,1)",
-            beforeShow: () => {
+            duration: .5,
+            timingFunction: "ease-out",
+            before: () => {
               const rect = contentEl.getBoundingClientRect();
               const width = rect.width + 15; // add shadow
               contentEl.style.transitionProperty = "none";
@@ -179,7 +179,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
               backdropEl.style.transitionDuration = ".5s";
               backdropEl.style.transitionDelay = 0;
             },
-            show: () => {
+            transition: () => {
               contentEl.style.transitionProperty = "left, opacity";
               contentEl.style.left = 0;
               backdropEl.style.opacity = 1;
@@ -187,14 +187,14 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
           }),
           hide: ({ backdropEl, contentEl }) => ({
             el: contentEl,
-            hideDuration: .7,
-            showTimingFunction: "cubic-bezier(.17,.67,.07,1)",
-            beforeHide: () => {
+            duration: .7,
+            timingFunction: "ease-in-out",
+            before: () => {
               contentEl.style.transitionDuration = ".3s";
               backdropEl.style.transitionDuration = ".4s";
               backdropEl.style.transitionDelay = ".3s";
             },
-            hide: () => {
+            transition: () => {
               const rect = contentEl.getBoundingClientRect();
               const width = rect.width + 15; // add shadow
               contentEl.style.top = 0;

@@ -2,7 +2,7 @@
 
 # Button component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -16,13 +16,14 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Button options](../button.md)
 
 
-<a name="usage"></a>
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/5d5xfoxs/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -36,7 +37,8 @@ m(Button, {
 })
 ~~~
 
-<a name="links"></a>
+
+<a id="links"></a>
 ### Links
 
 Add a route URL:
@@ -54,7 +56,8 @@ m(Button, {
 See also: [URLs and router links](../../handling-urls.md)
 
 
-<a name="events"></a>
+
+<a id="events"></a>
 ### Events
 
 Add an onclick event:
@@ -68,28 +71,33 @@ m(Button, {
 })
 ~~~
 
-<a name="variations"></a>
+
+<a id="variations"></a>
 ### Variations
 
 * The hover effect can be hidden with `wash: false`.
 * The ripple effect on click can be hidden with `ink: false`.
 * Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead.
 
-<a name="a-row-of-buttons"></a>
+
+<a id="a-row-of-buttons"></a>
 ### A row of buttons
 
 When placed inside an element with classname `pe-button-row`, buttons will get a side margin to set them apart. The row element itself will have an negative side margin so that the first button still lines up properly.
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Button appearance, either with a theme or with CSS.
 
 You can find more information about theming in [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -109,6 +117,7 @@ m(Button, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Button CSS classes](../../../packages/polythene-css-classes/button.js).
@@ -119,6 +128,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/button"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -132,7 +142,8 @@ m(Button, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

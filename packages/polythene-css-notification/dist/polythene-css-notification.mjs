@@ -16,7 +16,8 @@ var classes = {
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
   multilineTitle: "pe-notification__title--multi-line",
-  vertical: "pe-notification--vertical"
+  vertical: "pe-notification--vertical",
+  visible: "pe-notification--visible"
 };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -26,6 +27,15 @@ var layout = (function (selector, componentVars) {
     pointerEvents: "all",
     justifyContent: "center",
     margin: "0 auto",
+    transitionDelay: componentVars.animation_delay,
+    transitionDuration: componentVars.animation_duration,
+    transitionTimingFunction: componentVars.animation_timing_function,
+    transitionProperty: "all",
+    opacity: 0,
+
+    ".pe-notification--visible": {
+      opacity: 1
+    },
 
     " .pe-notification__content": {
       width: componentVars.width + "px",
@@ -46,7 +56,7 @@ var layout = (function (selector, componentVars) {
       }
     },
 
-    "&.pe-notification--horizontal": {
+    ".pe-notification--horizontal": {
       " .pe-notification__content": flex.layoutHorizontal,
       " .pe-notification__title": [flex.flex(), {
         alignSelf: "center"
@@ -57,7 +67,7 @@ var layout = (function (selector, componentVars) {
       },
       " .pe-notification__action": flex.layoutCenter
     },
-    "&.pe-notification--vertical": {
+    ".pe-notification--vertical": {
       " .pe-notification__content": [flex.layoutVertical],
 
       " .pe-notification__title": {

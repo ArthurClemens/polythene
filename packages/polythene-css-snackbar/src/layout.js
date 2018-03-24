@@ -17,7 +17,8 @@ const tabletStyle = componentVars => ({
 export default (selector, componentVars) => [{
   [selector]: {
     width: "100%",
-
+    opacity: 1,
+    
     " .pe-notification__content": {
       width: "100%",
       margin: "0 auto",

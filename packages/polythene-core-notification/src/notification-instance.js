@@ -2,7 +2,6 @@ import { filterSupportedAttributes, transitionComponent, isClient, isServer } fr
 import { Timer } from "polythene-utilities";
 import classes from "polythene-css-classes/notification";
 
-const DEFAULT_ANIMATION_DURATION = .6;
 const DEFAULT_TIME_OUT = 3;
 
 export const getElement = vnode =>
@@ -28,31 +27,13 @@ const stopTimer = state => {
   }
 };
 
-const prepareShow = (state, attrs) => {
-  if (!state.containerEl && isClient) {
-    // attrs.holderSelector is passed as option to Multiple
-    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
-  }
-  if (!state.containerEl && isClient) {
-    console.error("No container element found"); // eslint-disable-line no-console
-  }
-  if (attrs.containerSelector && state.containerEl) {
-    state.containerEl.classList.add(classes.hasContainer);
-  }
-};
-
 const transitionOptions = (state, attrs, isShow) => ({
   state,
   attrs,
   isShow,
   beforeTransition: isShow
-    ? () => (
-      stopTimer(state),
-      prepareShow(state, attrs)
-    )
-    : () => (
-      stopTimer(state)
-    ),
+    ? () => stopTimer(state)
+    : () => stopTimer(state),
   afterTransition: isShow
     ? () => {
       // set timer to hide in a few seconds
@@ -74,7 +55,6 @@ const transitionOptions = (state, attrs, isShow) => ({
     containerEl: state.containerEl,
   },
   showClass: classes.visible,
-  defaultDuration: DEFAULT_ANIMATION_DURATION
 });
 
 const showNotification = (state, attrs) =>
@@ -125,6 +105,16 @@ export const onMount = vnode => {
   if (titleEl) {
     setTitleStyles(titleEl);
   }
+  if (!state.containerEl && isClient) {
+    // attrs.holderSelector is passed as option to Multiple
+    state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
+  }
+  if (!state.containerEl && isClient) {
+    console.error("No container element found"); // eslint-disable-line no-console
+  }
+  if (attrs.containerSelector && state.containerEl) {
+    state.containerEl.classList.add(classes.hasContainer);
+  }
   if (attrs.show && !state.visible()) {
     showNotification(state, attrs);
   }
@@ -143,6 +133,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
+        // classes.visible is set in showNotification though transition
         attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
         attrs.containerSelector ? classes.hasContainer : null,
         attrs.layout === "vertical" ? classes.vertical : classes.horizontal,

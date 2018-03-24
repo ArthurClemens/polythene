@@ -7,6 +7,12 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
     border_radius: 5
   });
 
+  NotificationCSS.addStyle(".notification-tests-transitions", {
+    animation_duration:        ".8s",
+    animation_delay:           ".2s",
+    animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+  });
+
   const dialogOptions = {
     body: "You pressed a message action",
     footerButtons: [
@@ -196,16 +202,25 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
         transitions: {
           show: ({ el }) => ({
             el,
-            showDuration: .5,
-            beforeShow:   () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
-            show:         () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
+            duration:   .5,
+            before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+            transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
           }),
           hide: ({ el }) => ({
             el,
-            hideDuration: .5,
-            hide:         () => el.style.opacity = 0,
+            duration:   .5,
+            transition: () => el.style.opacity = 0,
           })
         }
+      })
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Transitions as theme",
+        className: "notification-tests-transitions"
       })
     },
     {
@@ -214,36 +229,11 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       exclude: true,
       component: buttonGroup({
         title: "Custom timing",
-        showDelay: .3,
-        showDuration: 1.1,
-        hideDuration: 1.5
-      })
-    },
-    {
-      name: "Option: transition (show)",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "A one line message",
-        transition: "show",
-      })
-    },
-    {
-      name: "Option: transition (hide)",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "A one line message",
-        transition: "hide"
-      })
-    },
-    {
-      name: "Option: no transition",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "A one line message",
-        transition: "none"
+        showDuration: .9,
+        hideDuration: 1.2,
+        hideDelay: .3,
+        showTimingFunction: "ease-in-out",
+        hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
       })
     },
   ];

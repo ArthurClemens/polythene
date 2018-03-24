@@ -2,7 +2,7 @@
 
 # Spinner component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -12,16 +12,19 @@
   - [Single color](#single-color)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Spinner options](../spinner.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/hnzvnhxa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -50,7 +53,8 @@ Display the Spinner:
 m(Spinner, { show: true })
 ~~~
 
-<a name="show"></a>
+
+<a id="show"></a>
 ### Show
 
 By default the Spinner is hidden. To show the spinner, either:
@@ -58,7 +62,8 @@ By default the Spinner is hidden. To show the spinner, either:
 * Set option `show` to true
 * Set option `permanent` to true (for testing and demos)
 
-<a name="progress-spinner"></a>
+
+<a id="progress-spinner"></a>
 ### Progress spinner
 
 To show a spinner "filling" a progress circle:
@@ -126,23 +131,27 @@ const Test = {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="single-color"></a>
+
+<a id="single-color"></a>
 ### Single color
 
 For MaterialDesignSpinner and MaterialDesignProgressSpinner.
 
 Use option `singleColor` to use only one color (by default the primary color).
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Spinner appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -158,6 +167,7 @@ m(Spinner, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the CSS classes:
@@ -175,6 +185,7 @@ import classes from "polythene-css-classes/ios-spinner"
 // etcetera
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -187,12 +198,19 @@ m(MaterialDesignProgressSpinner, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
+
+
+<a id="transitions"></a>
+### Transitions
+
+See [Transitions](../../transitions.md)
 
 

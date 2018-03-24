@@ -2,7 +2,7 @@
 
 # Checkbox component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -14,13 +14,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Checkbox options](../checkbox.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/gcuc9mch/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -37,7 +39,8 @@ m(Checkbox, {
 ~~~
 
 
-<a name="reading-and-setting-the-checked-state"></a>
+
+<a id="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 See also [Handling state](../../handling-state.md).
@@ -61,6 +64,7 @@ m(Checkbox, {
 
 
 
+<a id="example-managing-mutating-state"></a>
 #### Example managing mutating state
 
 Polythene uses streams internally to manage state - they are a lightweight and versatile tool to store state values.
@@ -102,16 +106,19 @@ const SimpleForm = {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Checkbox appearance, either with a theme or with CSS.
 
 You can find more information about theming in [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -128,6 +135,7 @@ m(Checkbox, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Checkbox CSS classes](../../../packages/polythene-css-classes/checkbox.js).
@@ -138,6 +146,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/checkbox"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -148,7 +157,8 @@ m(Checkbox, {
 })
 ~~~
 
-<a name="icons"></a>
+
+<a id="icons"></a>
 ### Icons
 
 To use alternative icons, use options `iconOn` and `iconOff`:
@@ -170,7 +180,8 @@ m(Checkbox, {
 });
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

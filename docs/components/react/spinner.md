@@ -2,7 +2,7 @@
 
 # Spinner component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,16 +13,19 @@
   - [Single color](#single-color)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Spinner options](../spinner.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 A typical Material Design (indeterminate) spinner:
@@ -43,9 +46,11 @@ A Material Design determinate spinner:
 import { MaterialDesignProgressSpinner as Spinner } from "polythene-react"
 ~~~
 
-<a name="displaying-the-spinner"></a>
+
+<a id="displaying-the-spinner"></a>
 ### Displaying the Spinner
 
+<a id="with-jsx"></a>
 #### With JSX
 
 ~~~jsx
@@ -55,6 +60,7 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 <Spinner show />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/j74x8b9w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -65,7 +71,8 @@ import { renderer as h, MaterialDesignSpinner as Spinner } from "polythene-react
 h(Spinner, { show: true })
 ~~~
 
-<a name="show"></a>
+
+<a id="show"></a>
 ### Show
 
 By default the Spinner is hidden. To show the spinner, either:
@@ -73,11 +80,13 @@ By default the Spinner is hidden. To show the spinner, either:
 * Set option `show` to true
 * Set option `permanent` to true (for testing and demos)
 
-<a name="progress-spinner"></a>
+
+<a id="progress-spinner"></a>
 ### Progress spinner
 
 To show a spinner "filling" a progress circle:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -87,6 +96,7 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 <Spinner show percentage={this.state.percentage} />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -104,6 +114,7 @@ The progress spinner draws a circle between 0 and 360 degrees. The completeness 
 
 For demonstration purposes, this can be emulated with a "step" function that updates the percentage until 1.0 is reached:
 
+<a id="with-hyperscript-2"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -197,23 +208,27 @@ export default class extends Component {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="single-color"></a>
+
+<a id="single-color"></a>
 ### Single color
 
 For MaterialDesignSpinner and MaterialDesignProgressSpinner.
 
 Use option `singleColor` to use only one color (by default the primary color).
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Spinner appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -227,6 +242,7 @@ SpinnerCSS.addStyle(".themed-spinner", {
 <Spinner className="themed-spinner" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the CSS classes:
@@ -244,6 +260,7 @@ import classes from "polythene-css-classes/ios-spinner"
 // etcetera
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -256,12 +273,21 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
+
+
+<a id="transitions"></a>
+### Transitions
+
+See [Transitions](../../transitions.md)
+
+
 
 

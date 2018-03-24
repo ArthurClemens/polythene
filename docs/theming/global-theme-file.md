@@ -4,7 +4,7 @@
 
 Global theme variables such as `unit_icon_size_small` or the app's primary action color can be overridden by creating an additional theme file.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Background: how a theme is found](#background-how-a-theme-is-found)
 - [Creating the custom theme file](#creating-the-custom-theme-file)
@@ -18,7 +18,8 @@ Global theme variables such as `unit_icon_size_small` or the app's primary actio
 <!-- /MarkdownTOC -->
 
 
-<a name="background-how-a-theme-is-found"></a>
+
+<a id="background-how-a-theme-is-found"></a>
 ## Background: how a theme is found
 
 Components read the global variables from the file `variables` located in `polythene-style`. Module `polythene-theme` acts as a gateway - by default everything is passed through:
@@ -54,7 +55,8 @@ export { vars } from "variables"
 
 
 
-<a name="creating-the-custom-theme-file"></a>
+
+<a id="creating-the-custom-theme-file"></a>
 ## Creating the custom theme file
 
 Let's say we want to change the primary color. This is defined by variable  `color_primary`. We change it by overriding this variable:
@@ -73,14 +75,16 @@ export const vars = Object.assign(
 ~~~
 
 
-<a name="pointing-your-app-to-the-theme-file"></a>
+
+<a id="pointing-your-app-to-the-theme-file"></a>
 ## Pointing your app to the theme file
 
 The second step is to let the application read our custom theme file. For this, the path to `polythene-theme` needs to be set to a new file location.
 
 Each bundler has a different method to to this - it is generally called "map" or "alias".
 
-<a name="use-with-webpack"></a>
+
+<a id="use-with-webpack"></a>
 ### Use with Webpack
 
 ~~~javascript
@@ -95,7 +99,8 @@ Each bundler has a different method to to this - it is generally called "map" or
 }
 ~~~
 
-<a name="use-with-rollup"></a>
+
+<a id="use-with-rollup"></a>
 ### Use with Rollup
 
 Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-pathmodify) plugin:
@@ -115,7 +120,8 @@ Use the [rollup-plugin-pathmodify](https://www.npmjs.com/package/rollup-plugin-p
 }
 ~~~
 
-<a name="use-with-browserify"></a>
+
+<a id="use-with-browserify"></a>
 ### Use with Browserify
 
 Use the [pathmodify](https://www.npmjs.com/package/pathmodify) plugin to change the default config path to your custom file:
@@ -128,7 +134,8 @@ browserify().plugin(pathmodify, {
 })
 ~~~
 
-<a name="use-with-systemjs--jspm"></a>
+
+<a id="use-with-systemjs--jspm"></a>
 ### Use with SystemJS / jspm
 
 In `config.js`, change the path in the map variables:
@@ -141,7 +148,8 @@ map: {
 }
 ~~~
 
-<a name="global-theming-with-nextjs"></a>
+
+<a id="global-theming-with-nextjs"></a>
 ## Global theming with Next.js
 
 Although [nextjs](https://github.com/zeit/next.js/) doesn't currently provide a good way to map or alias a component in `node_modules`, we can still achieve global theming by carefully following another approach.

@@ -2,7 +2,7 @@
 
 # Configuration variables
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
@@ -18,12 +18,13 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="introduction"></a>
+
+<a id="introduction"></a>
 ## Introduction
 
-Polythene components are styled with variables that specify the sizes and colors for that component.
+Polythene components are styled with variables that specify the sizes and colors for that component. The variables are used to create a component style, to be written by JavaScript or to a CSS file.
 
-These variables are located in each component's `src/vars.js` file (see the complete [list of all variables](#list-of-all-variables) below).
+Component style variables are located in each component's `vars.js` file (see the complete [list of all variables](#list-of-all-variables) below).
 
 For example, the variables file for Icon is:
 
@@ -41,10 +42,11 @@ export default {
 }
 ~~~
 
-"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme` (which gets them from `polythene-style`). To override these base variables, see [Global theme file](global-theme-file.md).
+"Global" variables such as `unit_icon_size_small` are imported from `polythene-theme` (which gets them from package `polythene-style`). To override these base variables, see [Global theme file](global-theme-file.md).
 
 
-<a name="styling-components-with-variables"></a>
+
+<a id="styling-components-with-variables"></a>
 ## Styling components with variables 
 
 Component variables are passed on to CSS creation modules (usually "layout" and "colors") that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
@@ -65,7 +67,8 @@ You may also choose to import directly from the component's CSS package:
 import { addStyle } from "polythene-css-icon"
 ~~~
 
-<a name="simple-example"></a>
+
+<a id="simple-example"></a>
 ### Simple example
 
 ~~~javascript
@@ -88,7 +91,8 @@ or
 ~~~
 
 
-<a name="function-addstyle"></a>
+
+<a id="function-addstyle"></a>
 ### Function `addStyle`
 
 | **Option**   | **Required** | **Type** | **Description** |
@@ -97,14 +101,16 @@ or
 | **vars**     | required     | Object   | The component's theme variables, or a subset thereof |
 
 
-<a name="dynamic-styles-with-css-in-js"></a>
+
+<a id="dynamic-styles-with-css-in-js"></a>
 ### Dynamic styles with CSS-in-JS 
 
 This mechanism is triggered by having `import "polythene-css"` is the code.
 
 JavaScript is used to create CSS styles that are automatically added to `<head>`. 
 
-<a name="writing-styles-to-css-files"></a>
+
+<a id="writing-styles-to-css-files"></a>
 ### Writing styles to CSS files
 
 It is also possible to generate static files.
@@ -115,10 +121,12 @@ Steps:
 1. Place the CSS file in your build directory, or import the css file using bundler tooling
 
 
-<a name="examples"></a>
+
+<a id="examples"></a>
 ## Examples
 
-<a name="mithril-example"></a>
+
+<a id="mithril-example"></a>
 ### Mithril example
 
 If we want to create large icons:
@@ -162,7 +170,8 @@ m(".pe-dark-tone",
 )
 ~~~
 
-<a name="react-jsx-example"></a>
+
+<a id="react-jsx-example"></a>
 ### React JSX example
 
 If we want to create large icons:
@@ -203,7 +212,8 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
 </div>
 ~~~
 
-<a name="global-styling-by-overriding-polythene-defaults"></a>
+
+<a id="global-styling-by-overriding-polythene-defaults"></a>
 ## Global styling by overriding Polythene defaults
 
 Using the same method it is possible to override the default styling, just by using Polythene classnames:
@@ -216,7 +226,8 @@ IconCSS.addStyle(".pe-icon", {
 
 
 
-<a name="list-of-all-variables"></a>
+
+<a id="list-of-all-variables"></a>
 ## List of all variables
 
 Global variables:

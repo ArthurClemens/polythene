@@ -19,10 +19,9 @@ componentNames.forEach(function(name) {
   const coreDir = `packages/polythene-core-${name}`;
   const mithrilDir = `packages/polythene-mithril-${name}`;
   const reactDir = `packages/polythene-react-${name}`;
-  const testDir = `packages/test-${name}`;
   const cssDir = "packages/polythene-css";
 
-  [componentCssDir, coreDir, cssDir, mithrilBaseDir, reactBaseDir, mithrilDir, reactDir, testDir].forEach(function(dir) {
+  [componentCssDir, coreDir, cssDir, mithrilBaseDir, reactBaseDir, mithrilDir, reactDir].forEach(function(dir) {
     if (shell.test("-d", dir)) {
       console.log(`Building dir ${dir}`); // eslint-disable-line no-console
       build(dir);

@@ -1,14 +1,12 @@
 # Getting started with Polythene for Mithril
 
-<!-- MarkdownTOC bracket="round" autolink="true" depth="4" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Example setup](#example-setup)
 - [Usage in JavaScript modules](#usage-in-javascript-modules)
   - [Which packages do you need?](#which-packages-do-you-need)
   - [Installation](#installation)
   - [Examples](#examples)
-    - [A single component](#a-single-component)
-    - [A simple app](#a-simple-app)
 - [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
   - [Setup](#setup)
   - [Example script](#example-script)
@@ -16,15 +14,18 @@
 <!-- /MarkdownTOC -->
 
 
+<a id="example-setup"></a>
 ## Example setup
 
 * [polythene-mithril-setup](https://github.com/ArthurClemens/polythene-mithril-setup)
 
 
+<a id="usage-in-javascript-modules"></a>
 ## Usage in JavaScript modules
 
 Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com).
 
+<a id="which-packages-do-you-need"></a>
 ### Which packages do you need?
 
 Essential:
@@ -41,6 +42,7 @@ Optional:
 * `polythene-utilities` Layout helper classes [more info](packages/polythene-utilities.md)
 * `polythene-core-css` CSS tools [more info](packages/polythene-core-css.md)
 
+<a id="installation"></a>
 ### Installation
 
 ~~~bash
@@ -54,6 +56,7 @@ npm install --save polythene-mithril polythene-css
 ~~~
 
 
+<a id="examples"></a>
 ### Examples
 
 #### A single component
@@ -98,6 +101,7 @@ m.mount(document.querySelector("#app"), App)
 ~~~
 
 
+<a id="usage-in-a-html-file-or-jsfiddle"></a>
 ## Usage in a HTML file or JSFiddle
 
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
@@ -118,6 +122,7 @@ Not included:
 
 * Mithril
 
+<a id="setup"></a>
 ### Setup
 
 Add to your HTML file:
@@ -135,6 +140,7 @@ To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
 ~~~
 
+<a id="example-script"></a>
 ### Example script
 
 ~~~javascript

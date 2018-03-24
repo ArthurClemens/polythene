@@ -21,22 +21,24 @@ var vars$2 = _extends$1({}, vars, {
   color_dark_background: rgba(vars$1.color_dark_background)
 });
 
+var DEFAULT_DURATION = 0.4;
+
 var show = function show(_ref) {
   var containerEl = _ref.containerEl,
       el = _ref.el,
-      showDuration = _ref.showDuration,
-      showDelay = _ref.showDelay;
+      duration = _ref.duration,
+      delay = _ref.delay;
 
   return {
     el: containerEl,
-    showDuration: showDuration || .4,
-    showDelay: showDelay || 0,
-    beforeShow: function beforeShow() {
+    duration: duration || DEFAULT_DURATION,
+    delay: delay || 0,
+    before: function before() {
       el.style.display = "block";
       var height = el.getBoundingClientRect().height;
       containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
     },
-    show: function show() {
+    transition: function transition() {
       return containerEl.style.transform = "translate3d(0, 0px, 0)";
     }
   };
@@ -45,19 +47,19 @@ var show = function show(_ref) {
 var hide = function hide(_ref2) {
   var containerEl = _ref2.containerEl,
       el = _ref2.el,
-      hideDuration = _ref2.hideDuration,
-      hideDelay = _ref2.hideDelay;
+      duration = _ref2.duration,
+      delay = _ref2.delay;
 
   return {
     el: containerEl,
-    hideDuration: hideDuration || .4,
-    hideDelay: hideDelay || 0,
-    hide: function hide() {
+    duration: duration || DEFAULT_DURATION,
+    delay: delay || 0,
+    transition: function transition() {
       var height = el.getBoundingClientRect().height;
       containerEl.style.transform = "translate3d(0, " + height + "px, 0)";
     },
     // reset to original position to counter the removal of the snackbar instance
-    afterHide: function afterHide() {
+    after: function after() {
       // prevent a "bounce back"
       el.style.display = "none";
       containerEl.style.transitionDuration = "0ms";

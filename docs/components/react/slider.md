@@ -2,7 +2,7 @@
 
 # Slider component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -15,17 +15,20 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Slider options](../slider.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 A Slider with default settings (a range of 0 to 100, default value 0, step size 1):
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/6crka9hy/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -37,6 +40,7 @@ import { Slider } from "polythene-react"
 <Slider />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/ekht8sef/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -47,7 +51,8 @@ import { renderer as h, Slider } from "polythene-react"
 h(Slider)
 ~~~
 
-<a name="ranges-steps-and-ticks"></a>
+
+<a id="ranges-steps-and-ticks"></a>
 ### Ranges, steps and ticks
 
 Options to create a Slider with a range of 0 to 50 and a step size of 10 (step count of 6 including min and max), and a default value of 10:
@@ -74,7 +79,8 @@ To add tick marks and pins:
 }
 ~~~
 
-<a name="reading-and-setting-the-slider-value"></a>
+
+<a id="reading-and-setting-the-slider-value"></a>
 ### Reading and setting the slider value
 
 See also [Handling state](../../handling-state.md).
@@ -99,14 +105,17 @@ To set the Slider value, use option `value`:
 
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="icons"></a>
+
+<a id="icons"></a>
 ### Icons
 
 To place an icon next to the Slider, use the option `before`:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -122,6 +131,7 @@ const volumeIconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M
 />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -136,13 +146,15 @@ h(Slider, {
 })
 ~~~
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Slider appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -158,6 +170,7 @@ SliderCSS.addStyle(".themed-slider", {
 <Slider className="themed-slider" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Slider CSS classes](../../../packages/polythene-css-classes/slider.js).
@@ -168,6 +181,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/slider"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -180,7 +194,8 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

@@ -18,7 +18,8 @@
     hasContainer: "pe-notification--container",
     horizontal: "pe-notification--horizontal",
     multilineTitle: "pe-notification__title--multi-line",
-    vertical: "pe-notification--vertical"
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
   };
 
   var NotificationInstance = polytheneMithrilBase.StateComponent(polytheneCoreNotification.coreNotificationInstance);
@@ -33,8 +34,7 @@
     holderSelector: "." + classes.holder,
     instance: NotificationInstance,
     placeholder: "span." + classes.placeholder,
-    queue: true,
-    transitions: polytheneCoreNotification.transitions
+    queue: true
   };
 
   var Multiple = polytheneCore.Multi({ options: options, renderer: polytheneMithrilBase.renderer });

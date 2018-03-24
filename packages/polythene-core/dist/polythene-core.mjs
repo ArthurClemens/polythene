@@ -443,14 +443,10 @@ Multi.displayName = "Multi";
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 // defaults
-var SHOW_DURATION = .240;
-var HIDE_DURATION = .240;
-var SHOW_DELAY = 0;
-var HIDE_DELAY = 0;
-var TRANSITION = "both";
+var DEFAULT_DURATION = .240;
+var DEFAULT_DELAY = 0;
+// const TRANSITION =    "both";
 
 // See: transition
 var show = function show(opts) {
@@ -461,67 +457,9 @@ var hide = function hide(opts) {
   return transition(opts, "hide");
 };
 
-var getValue = function getValue(_ref) {
-  var opts = _ref.opts,
-      state = _ref.state,
-      showAttr = _ref.showAttr,
-      hideAttr = _ref.hideAttr,
-      defaultShowValue = _ref.defaultShowValue,
-      defaultHideValue = _ref.defaultHideValue,
-      nullValue = _ref.nullValue;
-
-  var transition = opts.transition || TRANSITION;
-  if (transition === "none") {
-    return nullValue;
-  } else if (transition === "show" && state === "hide") {
-    return nullValue;
-  } else if (transition === "hide" && state === "show") {
-    return nullValue;
-  } else {
-    // both
-    return state === "show" ? opts[showAttr] !== undefined ? opts[showAttr] : defaultShowValue : opts[hideAttr] !== undefined ? opts[hideAttr] : defaultHideValue;
-  }
-};
-
-var hasDuration = function hasDuration(opts, state) {
-  return state === "show" ? opts.showDuration !== undefined : opts.hideDuration !== undefined;
-};
-
-/*
-opts:
-- transition
-- showDuration
-- hideDuration
-
-- state (show, hide)
-*/
-var getDuration = function getDuration(opts, state) {
-  return getValue({ opts: opts, state: state, showAttr: "showDuration", hideAttr: "hideDuration", defaultShowValue: SHOW_DURATION, defaultHideValue: HIDE_DURATION, nullValue: 0 });
-};
-
-/*
-opts:
-- transition (show, hide, both)
-- showDelay
-- hideDelay
-
-- state (show, hide)
-*/
-
-var hasDelay = function hasDelay(opts, state) {
-  return state === "show" ? opts.showDelay !== undefined : opts.hideDelay !== undefined;
-};
-
-var getDelay = function getDelay(opts, state) {
-  return getValue({ opts: opts, state: state, showAttr: "showDelay", hideAttr: "hideDelay", defaultShowValue: SHOW_DELAY, defaultHideValue: HIDE_DELAY, nullValue: 0 });
-};
-
-var getTimingFunction = function getTimingFunction(opts, state) {
-  return getValue({ opts: opts, state: state, showAttr: "showTimingFunction", hideAttr: "hideTimingFunction" });
-};
-
 var computedStyleDurationToMs = function computedStyleDurationToMs(durationStr) {
-  return parseFloat(durationStr) * durationStr.indexOf("ms") === -1 ? 1000 : 1;
+  var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
+  return isNaN(parsed) ? 0 : parsed;
 };
 
 /*
@@ -530,12 +468,10 @@ opts:
 - duration
 - delay
 - showClass
-- beforeShow
+- before
 - show
 - hide
-- afterHide
-- showDelay
-- hideDelay
+- after
 - timingFunction
 
 - state (show, hide)
@@ -546,25 +482,24 @@ var transition = function transition(opts, state) {
     return Promise.resolve();
   } else {
     return new Promise(function (resolve) {
-      var computedStyle = isClient ? window.getComputedStyle(el) : {};
-      var duration = hasDuration(opts, state) ? getDuration(opts, state) * 1000 : computedStyleDurationToMs(computedStyle.transitionDuration);
-      var delay = hasDelay(opts, state) ? getDelay(opts, state) * 1000 : computedStyleDurationToMs(computedStyle.transitionDelay);
-      var timingFunction = getTimingFunction(opts, state) || computedStyle.transitionTimingFunction;
-
       var style = el.style;
+      var computedStyle = isClient ? window.getComputedStyle(el) : {};
+      var duration = opts.hasDuration ? opts.duration * 1000.0 : computedStyleDurationToMs(computedStyle.transitionDuration);
+      var delay = opts.hasDelay ? opts.delay * 1000.0 : computedStyleDurationToMs(computedStyle.transitionDelay);
+      var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
-      var beforeTransition = opts.beforeShow && state === "show" ? function () {
+      var before = opts.before && state === "show" ? function () {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
-        opts.beforeShow();
-      } : opts.beforeHide && state === "hide" ? function () {
+        opts.before();
+      } : opts.before && state === "hide" ? function () {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
-        opts.beforeHide();
+        opts.before();
       } : null;
 
-      var afterTransition = opts.afterHide && state === "hide" ? function () {
-        return opts.afterHide();
+      var after = opts.after ? function () {
+        return opts.after();
       } : null;
 
       var applyTransition = function applyTransition() {
@@ -577,19 +512,16 @@ var transition = function transition(opts, state) {
         if (opts.showClass) {
           el.classList[state === "show" ? "add" : "remove"](opts.showClass);
         }
-        if (opts.show && typeof opts.show === "function" && state === "show") {
-          opts.show();
-        }
-        if (opts.hide && typeof opts.hide === "function" && state === "hide") {
-          opts.hide();
+        if (opts.transition) {
+          opts.transition();
         }
       };
 
       var doTransition = function doTransition() {
         applyTransition();
         setTimeout(function () {
-          if (afterTransition) {
-            afterTransition();
+          if (after) {
+            after();
           }
           resolve();
         }, duration + delay);
@@ -603,8 +535,8 @@ var transition = function transition(opts, state) {
         }
       };
 
-      if (beforeTransition) {
-        beforeTransition();
+      if (before) {
+        before();
         el.offsetHeight; // force reflow
         setTimeout(function () {
           maybeDelayTransition();
@@ -616,17 +548,14 @@ var transition = function transition(opts, state) {
   }
 };
 
-var transitionComponent = function transitionComponent(_ref2) {
-  var _extends2;
-
-  var isShow = _ref2.isShow,
-      state = _ref2.state,
-      attrs = _ref2.attrs,
-      domElements = _ref2.domElements,
-      beforeTransition = _ref2.beforeTransition,
-      afterTransition = _ref2.afterTransition,
-      showClass = _ref2.showClass,
-      defaultDuration = _ref2.defaultDuration;
+var transitionComponent = function transitionComponent(_ref) {
+  var isShow = _ref.isShow,
+      state = _ref.state,
+      attrs = _ref.attrs,
+      domElements = _ref.domElements,
+      beforeTransition = _ref.beforeTransition,
+      afterTransition = _ref.afterTransition,
+      showClass = _ref.showClass;
 
   if (state.transitioning()) {
     return Promise.resolve();
@@ -636,12 +565,25 @@ var transitionComponent = function transitionComponent(_ref2) {
   if (beforeTransition) {
     beforeTransition();
   }
-  var duration = attrs[isShow ? "showDuration" : "hideDuration"] || defaultDuration || (isShow ? SHOW_DURATION : HIDE_DURATION);
-  var delay = attrs.showDelay;
+  var duration = attrs[isShow ? "showDuration" : "hideDuration"];
+  var delay = attrs[isShow ? "showDelay" : "hideDelay"];
+  var timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
   var transitions = attrs.transitions;
   var fn = isShow ? show : hide;
-  var transAttrs = _extends$2({}, domElements, (_extends2 = {}, _defineProperty(_extends2, isShow ? "showDuration" : "hideDuration", duration), _defineProperty(_extends2, isShow ? "showDelay" : "hideDelay", delay), _extends2));
-  return fn(_extends$2({}, attrs, { showClass: showClass }, transitions ? transitions[isShow ? "show" : "hide"](transAttrs) : transAttrs)).then(function () {
+  var opts1 = _extends$2({}, attrs, domElements, {
+    showClass: showClass,
+    duration: duration,
+    delay: delay,
+    timingFunction: timingFunction
+  });
+  var opts2 = _extends$2({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+  var opts3 = _extends$2({}, opts2, {
+    duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
+    hasDuration: opts2.duration !== undefined,
+    delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,
+    hasDelay: opts2.delay !== undefined
+  });
+  return fn(opts3).then(function () {
     var id = state.instanceId;
     if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
       attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide

@@ -2,7 +2,7 @@
 
 Form input field. Generates a styled text input element.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -15,7 +15,8 @@ Form input field. Generates a styled text input element.
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Optional label, floating label
@@ -31,17 +32,20 @@ Form input field. Generates a styled text input element.
 * Programmatically set focus
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/textfield.md)
 * [Usage with React](react/textfield.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="text-field-options"></a>
+
+<a id="text-field-options"></a>
 ### Text field options
 
 These options have effect on the overall component (label, input, help, error).
@@ -59,7 +63,8 @@ These options have effect on the overall component (label, input, help, error).
 | **hideClear** | optional | Boolean | true | Set to false to show the default browser clear button |
 | **label** | optional | String | | Text label; unless `floatingLabel` is `true`, the label is functionally equal to a placeholder |
 
-<a name="input-options"></a>
+
+<a id="input-options"></a>
 ### Input options
 
 These options also have effect on the generated HTML input field.
@@ -78,7 +83,8 @@ These options also have effect on the generated HTML input field.
 | **defaultValue** | optional | String | | Initial input value |
 | **onChange**  | optional | Function `({focus::Boolean, setInputState({ focus, value }) -> undefined, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
 
-<a name="validation-options"></a>
+
+<a id="validation-options"></a>
 ### Validation options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -100,7 +106,8 @@ These options also have effect on the generated HTML input field.
 | **validateResetOnClear** | optional | Boolean | | Set to `true` to re-initiate validation state when the field is cleared |
 
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -115,7 +122,8 @@ These options also have effect on the generated HTML input field.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Text Field classes](../../packages/polythene-css-classes/textfield.js)

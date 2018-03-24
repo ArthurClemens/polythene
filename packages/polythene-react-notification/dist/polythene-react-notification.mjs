@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
-import { coreNotificationInstance, transitions } from 'polythene-core-notification';
+import { coreNotificationInstance } from 'polythene-core-notification';
 
 var classes = {
   component: "pe-notification",
@@ -16,7 +16,8 @@ var classes = {
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
   multilineTitle: "pe-notification__title--multi-line",
-  vertical: "pe-notification--vertical"
+  vertical: "pe-notification--vertical",
+  visible: "pe-notification--visible"
 };
 
 var NotificationInstance = StateComponent(coreNotificationInstance);
@@ -31,8 +32,7 @@ var options = {
   holderSelector: "." + classes.holder,
   instance: NotificationInstance,
   placeholder: "span." + classes.placeholder,
-  queue: true,
-  transitions: transitions
+  queue: true
 };
 
 var Multiple = Multi({ options: options, renderer: renderer });

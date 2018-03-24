@@ -1,6 +1,6 @@
 # Extending Polythene using other libraries (or vice versa)
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [material-components-web \(MDC-Web\)](#material-components-web-mdc-web)
   - [HTML](#html)
@@ -10,19 +10,22 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="material-components-web-mdc-web"></a>
+
+<a id="material-components-web-mdc-web"></a>
 ## material-components-web (MDC-Web)
 
 MDC-Web is a toolbox of Material Design components. Writing with MDC-Web is different than with Polythene; how components are shown and which behavior they show depends largely on the HTML you write. It is more HTML+CSS oriented than Polythene, which is more JavaScript-component based, using parameters to specify appearance and behavior.
 
 So most [MDC-Web components](https://github.com/material-components/material-components-web) come in 3 separate parts: HTML, CSS and JavaScript.
 
-<a name="html"></a>
+
+<a id="html"></a>
 ### HTML
 
 When working with Mithril, you can use [Mithril Template Converter](http://arthurclemens.github.io/mithril-template-converter/index.html) to convert HTML example code to Mithril hyperscript.
 
-<a name="css"></a>
+
+<a id="css"></a>
 ### CSS
 
 MDC-Web styles can co-exist with Polythene styles.
@@ -40,7 +43,8 @@ import "@material/button/dist/mdc.button.css"
 import "@material/ripple/dist/mdc.ripple.css"
 ~~~
 
-<a name="javascript"></a>
+
+<a id="javascript"></a>
 ### JavaScript
 
 To get component behavior, the component must be imported along with the base code:
@@ -51,7 +55,8 @@ import "@material/drawer"
 ~~~
 
 
-<a name="combining-mcw-and-polythene"></a>
+
+<a id="combining-mcw-and-polythene"></a>
 ### Combining MCW and Polythene
 
 MCW components and Polythene components can easily be mixed.

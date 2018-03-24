@@ -21,7 +21,9 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
   const OpenerWithPromise = (dialogAttrs, label = "Open") => h(RaisedButton, {
     label,
     events: {
-      [keys.onclick]: () => Dialog.show(dialogAttrs).then(id => alert("dialog shown: " + id))
+      [keys.onclick]: () => Dialog.show(dialogAttrs).then(id => 
+        console.log("dialog shown: " + id) // eslint-disable-line no-console
+      ) 
     }
   });
 
@@ -29,6 +31,12 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
     border_radius:          5,
     color_light_background: "#2196F3",
     color_light_text:       "#fff",
+  });
+
+  DialogCSS.addStyle(".dialog-tests-transitions", {
+    animation_duration:        ".8s",
+    animation_delay:           ".2s",
+    animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
   });
 
   ToolbarCSS.addStyle(".tests-dialog-themed-toolbar", {
@@ -218,7 +226,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       component: {
         view: () => Opener({
           body: "Hello",
-          didShow: id => alert("dialog shown: " + id)
+          didShow: id => console.log("dialog shown: " + id) // eslint-disable-line no-console
         })
       }
     },
@@ -229,7 +237,7 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       component: {
         view: () => Opener({
           body: "Hello",
-          didHide: id => alert("dialog hidden: " + id)
+          didHide: id => console.log("dialog hidden: " + id) // eslint-disable-line no-console
         })
       }
     },
@@ -241,27 +249,27 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
         view: () => Opener({
           body: "Hello",
           transitions: {
-            show: ({ el, contentEl }) => ({
-              el: contentEl,
-              showDuration: .35,
-              beforeShow:   () => (
-                el.style.opacity = 0,
-                contentEl.style.transform = "translate3d(0, 20px, 0)"
-              ),
-              show:         () => (
-                el.style.opacity = 1,
-                contentEl.style.transform = "translate3d(0, 0px,  0)"
-              )
+            show: ({ el }) => ({
+              duration:   .5,
+              before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+              transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
             }),
-            hide: ({ el, contentEl }) => ({
-              el: contentEl,
-              hideDuration: .35,
-              hide:         () => (
-                el.style.opacity = 0,
-                contentEl.style.transform = "translate3d(0, 20px, 0)"
-              )
+            hide: ({ el }) => ({
+              duration:   .5,
+              transition: () => el.style.opacity = 0,
             })
           }
+        })
+      }
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => Opener({
+          body: "Hello",
+          className: "dialog-tests-transitions"
         })
       }
     },
@@ -272,38 +280,11 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       component: {
         view: () => Opener({
           body: "Hello",
-          showDelay: .1,
-          hideDelay: .1,
-          showDuration: 1.0,
-          hideDuration: 1.0,
-          showTimingFunction: "cubic-bezier(0.20, 1.05, 0.56, 0.78)", // http://greweb.me/bezier-easing-editor/example/
-          hideTimingFunction: "cubic-bezier(0.29, 0.59, 0.87, 0.13)",
-        })
-      }
-    },
-    {
-      name: "Option: transition (show)",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => Opener({
-          body: "Hello",
-          showDuration: 1.0,
-          hideDuration: 1.0,
-          transition: "show"
-        })
-      }
-    },
-    {
-      name: "Option: transition (hide)",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => Opener({
-          body: "Hello",
-          showDuration: 1.0,
-          hideDuration: 1.0,
-          transition: "hide"
+          showDuration: .9,
+          hideDuration: 1.2,
+          hideDelay: .3,
+          showTimingFunction: "ease-in-out",
+          hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
         })
       }
     },

@@ -128,6 +128,10 @@
     size_large: 6 * polytheneTheme.vars.grid_unit_component,
     size_fab: 7 * polytheneTheme.vars.grid_unit_component,
 
+    animation_delay: "0s",
+    animation_duration: ".220s",
+    animation_timing_function: "ease-in-out",
+
     raisedSize: function raisedSize(size) {
       var padding = size * 0.25;
       var paddedSize = size + padding * 2;

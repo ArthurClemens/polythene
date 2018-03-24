@@ -1,13 +1,16 @@
 # Developing Polythene
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Setting up the development repo](#setting-up-the-development-repo)
 - [Testing](#testing)
+  - [Editing tests](#editing-tests)
+  - [Viewing tests](#viewing-tests)
 
 <!-- /MarkdownTOC -->
 
-<a name="setting-up-the-development-repo"></a>
+
+<a id="setting-up-the-development-repo"></a>
 ## Setting up the development repo
 
 Install Lerna:
@@ -37,7 +40,8 @@ Packages are built with [Rollup](http://rollupjs.org), both as `es` module and a
 
 
 
-<a name="testing"></a>
+
+<a id="testing"></a>
 ## Testing
 
 Test files for each component are located in `packages/test-COMPONENT`. These include Jest snapshots to verify the output.
@@ -46,6 +50,7 @@ If you haven't done so, start by installing all dependencies in the root:
 
 * `yarn` - this will install all dependencies and run `lerna bootstrap`
 
+<a id="editing-tests"></a>
 ### Editing tests
 
 * Modify and build files:
@@ -54,6 +59,7 @@ If you haven't done so, start by installing all dependencies in the root:
   * `yarn run test`
   * `yarn run test:watch`
 
+<a id="viewing-tests"></a>
 ### Viewing tests
 
 Test files can be viewed by the "test renderers":

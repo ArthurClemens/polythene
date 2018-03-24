@@ -2,7 +2,7 @@
 
 Form control to select one or more options from a set. Generates a styled checkbox input element.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -16,7 +16,8 @@ Form control to select one or more options from a set. Generates a styled checkb
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Custom icons
@@ -26,14 +27,16 @@ Form control to select one or more options from a set. Generates a styled checkb
 * Keyboard control
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/checkbox.md)
 * [Usage with React](react/checkbox.md)
 
 
-<a name="keyboard-control"></a>
+
+<a id="keyboard-control"></a>
 ## Keyboard control
 
 Read first: [Turning on keyboard control](../keyboard-control.md)
@@ -42,10 +45,12 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 1. Press Enter to simulate a click.
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="checkbox-specific"></a>
+
+<a id="checkbox-specific"></a>
 ### Checkbox specific
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -59,7 +64,8 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **value**     | optional | String |  | Input element value |
 | **disabled**  | optional | Boolean |  | Set to true to disable the Checkbox |
 
-<a name="appearance-options"></a>
+
+<a id="appearance-options"></a>
 ### Appearance options
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
@@ -69,7 +75,8 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **iconButton** | optional | Options object for the [Icon Button](icon-button.md) | | Add attributes like `wash` and `ink` |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -84,7 +91,8 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Checkbox is composed from:
@@ -94,7 +102,8 @@ Checkbox is composed from:
   * [Icon](icon.md)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Checkbox classes](../../packages/polythene-css-classes/checkbox.js)

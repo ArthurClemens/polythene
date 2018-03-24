@@ -2,7 +2,7 @@
 
 # FAB: Floating Action Button component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,13 +13,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [FAB options](../fab.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/zzjb2mfu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -35,13 +37,15 @@ m(FAB, {
 })
 ~~~
 
-<a name="links"></a>
+
+<a id="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
 FAB's default colors are:
@@ -50,13 +54,15 @@ FAB's default colors are:
 * Icon color: white; change this by setting the `color` style
 
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the FAB appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -74,6 +80,7 @@ m(FAB, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [FAB CSS classes](../../../packages/polythene-css-classes/fab.js).
@@ -84,6 +91,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/fab"
 ~~~
 
+<a id="style-option"></a>
 #### Style option
 
 Some style attributes can be set using option `style`. For example:
@@ -97,7 +105,8 @@ m(FAB, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

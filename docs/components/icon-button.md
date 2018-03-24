@@ -2,7 +2,7 @@
 
 Displays an [Icon](icon.md) as a button. Also called toggle button.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -14,7 +14,8 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * All [Button](button.md) main features
@@ -23,17 +24,20 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 * Inactive display
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/icon-button.md)
 * [Usage with React](react/icon-button.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="icon-button-specific-options"></a>
+
+<a id="icon-button-specific-options"></a>
 ### Icon button specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -42,7 +46,8 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | **compact**   | optional | Boolean | | Set to `true` to use less padding |
 | **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -59,7 +64,8 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Icon Button is composed from:
@@ -68,7 +74,8 @@ Icon Button is composed from:
 * [Icon](icon.md) (when using option `icon`)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Icon Button classes](../../packages/polythene-css-classes/icon-button.js)

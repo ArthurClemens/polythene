@@ -10,6 +10,10 @@ export default {
   size_large:   6 * vars.grid_unit_component,
   size_fab:     7 * vars.grid_unit_component,
 
+  animation_delay:           "0s",
+  animation_duration:        ".220s",
+  animation_timing_function: "ease-in-out",
+
   raisedSize: size => {
     const padding = size * 0.25;
     const paddedSize = size + padding * 2;

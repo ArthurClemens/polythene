@@ -74,7 +74,9 @@ var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
   }), {
-    transitionTimingFunction: "ease-out",
+    transitionDelay: componentVars.animation_delay,
+    transitionDuration: componentVars.animation_duration,
+    transitionTimingFunction: componentVars.animation_timing_function,
     transitionProperty: "all",
     zIndex: vars.z_menu,
     opacity: 0,

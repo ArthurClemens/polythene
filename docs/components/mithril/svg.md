@@ -2,7 +2,7 @@
 
 # SVG component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -16,19 +16,22 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [SVG options](../svg.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/wu1v74yk/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 
-<a name="with-trusted-svg-text"></a>
+
+<a id="with-trusted-svg-text"></a>
 ### With trusted SVG text
 
 ~~~javascript
@@ -43,7 +46,8 @@ m(SVG, m.trust(starsSVG))
 m(SVG, { content: m.trust(starsSVG) })
 ~~~
 
-<a name="with-source-files"></a>
+
+<a id="with-source-files"></a>
 ### With source files
 
 ~~~javascript
@@ -52,7 +56,8 @@ m(SVG, {
 })
 ~~~
 
-<a name="with-javascript-modules"></a>
+
+<a id="with-javascript-modules"></a>
 ### With Javascript modules
 
 To facilitate importing (and reuse) of SVG strings, you may put them in a JavaScript module:
@@ -81,7 +86,8 @@ A large collection of such ready to use SVG modules is available at [mmsvg](http
 * [Zondicons](http://www.zondicons.com)
 
 
-<a name="usage-with-icon-component"></a>
+
+<a id="usage-with-icon-component"></a>
 ### Usage with Icon component
 
 SVG options can be passed to [icon](../icon.md):
@@ -93,16 +99,19 @@ m(Icon, { svg: { content: m.trust(svgString) } })
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the SVG appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -116,6 +125,7 @@ SVGCSS.addStyle(".themed-svg", {
 m(SVG, { className: "themed-svg" })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [SVG CSS classes](../../../packages/polythene-css-classes/svg.js).
@@ -126,6 +136,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/svg"
 ~~~
 
+<a id="style-option"></a>
 #### Style option
 
 Some style attributes can be set using option `style`. For example:
@@ -136,7 +147,8 @@ m(SVG, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

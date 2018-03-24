@@ -2,7 +2,7 @@
 
 # List component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -16,15 +16,18 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [List options](../list.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/yzba5Lvn/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -41,6 +44,7 @@ import { List, ListTile } from "polythene-react"
 
 The list header will be also rendered using a list tile.
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/3vdfmg8p/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -59,13 +63,15 @@ h(List, {
 })
 ~~~
 
-<a name="list-content-variations"></a>
+
+<a id="list-content-variations"></a>
 ## List content variations
 
 See [List Tile](list-tile.md) for layout variations, for example to add links, icons and images. 
 
 
-<a name="variations"></a>
+
+<a id="variations"></a>
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
@@ -74,6 +80,7 @@ See [List Tile](list-tile.md) for layout variations, for example to add links, i
 
 In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorder` to true. For example:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -88,6 +95,7 @@ import { List, ListTile } from "polythene-react"
 />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -104,7 +112,8 @@ h(List, {
 })
 ~~~
 
-<a name="sticky-headers"></a>
+
+<a id="sticky-headers"></a>
 ### Sticky headers
 
 To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not work in IE or Edge](http://caniuse.com/#feat=css-sticky), so its use is a bit limited.
@@ -123,7 +132,8 @@ If you do choose to use it, add some styles to the container that holds the list
 ~~~
 
 
-<a name="keyboard-control"></a>
+
+<a id="keyboard-control"></a>
 ### Keyboard control
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
@@ -140,6 +150,7 @@ A more elaborate example is given in [Search - Results list](search.md#result-li
 
 <a href="https://jsfiddle.net/ArthurClemens/hv8kcfs1/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+<a id="with-jsx-2"></a>
 #### With JSX
 
 ~~~jsx
@@ -200,16 +211,19 @@ class KeyboardList extends React.Component {
 
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the list appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -226,6 +240,7 @@ ListCSS.addStyle(".themed-list", {
 <List className="themed-list" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [List CSS classes](../../../packages/polythene-css-classes/list.js).
@@ -236,6 +251,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/list"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -249,7 +265,8 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

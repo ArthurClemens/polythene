@@ -2,7 +2,7 @@
 
 # Search component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -18,13 +18,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Search options](../search.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/4zmtfd5u/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -41,7 +43,8 @@ m(Search, {
 
 This creates a search field without any icons, with label "Search", and is little more than a [Text Field](../textfield.md) with a drop shadow. The field also needs search icons and buttons. More on that below.
 
-<a name="search-box-type"></a>
+
+<a id="search-box-type"></a>
 ### Search box type
 
 The search box can be "inset" (default) or "full width".
@@ -58,7 +61,8 @@ m(Search, {
 })
 ~~~
 
-<a name="icons-and-buttons"></a>
+
+<a id="icons-and-buttons"></a>
 ### Icons and buttons
 
 The search component does not include any icons by itself - providing those is the responsibility of your application. 
@@ -95,7 +99,8 @@ buttons: {
 
 Not all button states need to be defined.
 
-<a name="logic-storing-and-clearing-the-value"></a>
+
+<a id="logic-storing-and-clearing-the-value"></a>
 ### Logic: storing and clearing the value
 
 See also [Handling state](../../handling-state.md).
@@ -125,7 +130,8 @@ To clear the field:
 
 The back button clears the field and removes the focus, setting the search field to the initial state. Remove the ripple (`ink: false`) to prevent a ripple after the click (it would seem like the returned search button received the click).
 
-<a name="complete-example"></a>
+
+<a id="complete-example"></a>
 ### Complete example
 
 ~~~javascript
@@ -231,7 +237,8 @@ const MySearch = {
 }
 ~~~
 
-<a name="result-list"></a>
+
+<a id="result-list"></a>
 ### Result list
 
 A search field is almost always combined with a list of search results.
@@ -268,21 +275,25 @@ An elaborate example is available as fiddle:
 
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="shadow"></a>
+
+<a id="shadow"></a>
 ### Shadow
 
 Add `before: m(Shadow)` to add a drop shadow to the search field.
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Search appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -300,6 +311,7 @@ m(Search, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Search CSS classes](../../../packages/polythene-css-classes/search.js).
@@ -310,6 +322,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/search"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -322,7 +335,8 @@ m(Search, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

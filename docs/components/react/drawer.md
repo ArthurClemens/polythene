@@ -2,7 +2,7 @@
 
 # Drawer component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -12,16 +12,19 @@
   - [Navigation style](#navigation-style)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Drawer options](../drawer.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/25tL4aqr/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -43,7 +46,8 @@ const NavigationList = () =>
 </Drawer>
 ~~~
 
-<a name="invoking-a-drawer"></a>
+
+<a id="invoking-a-drawer"></a>
 ### Invoking a Drawer
 
 A Drawer is composed from a Dialog, so it shares many options and behaviors, but invoking a drawer is different from calling a dialog. Because drawers may be used more locally then dialogs, showing and hiding a drawer involves managing a `show` state locally (for example in a component state).
@@ -96,9 +100,11 @@ class AppDrawer extends Component {
 }
 ~~~
 
-<a name="variations"></a>
+
+<a id="variations"></a>
 ### Variations
 
+<a id="cover-animation"></a>
 #### Cover animation
 
 "Cover" is the default animation. It places the drawer on a higher surface elevation.
@@ -109,6 +115,7 @@ A cover is often used together with:
 * `modal` - to prevent clicking on the background (technically: the touch layer, which does not have a color)
 * `z={n}` - a number between 0 and 5 to set the shadow depth; 1 is a good default value
 
+<a id="globalfixed-drawer"></a>
 #### Global/fixed drawer
 
 A cover drawer that should appear on top of all other content (except for dialogs and notifications), can still be created at a deeper level than the root component by giving it a CSS style `position:fixed`:
@@ -116,6 +123,7 @@ A cover drawer that should appear on top of all other content (except for dialog
 * `fixed`
 
 
+<a id="push-animation"></a>
 #### Push animation
 
 A push animation pushes the content next to the drawer away. It places the drawer on the same surface elevation as the content.
@@ -128,6 +136,7 @@ Push options:
 * `border` - to demarcate the drawer from the content
 
 
+<a id="mini-variant"></a>
 #### Mini variant
 
 The mini drawer initially hides most of the navigation except for a strip of icons, then reveals the full menu when expanding.
@@ -139,6 +148,7 @@ Use the same options as push, and add:
 * `mini`
 
 
+<a id="permanent-menu"></a>
 #### Permanent menu
 
 Use the drawer as a permanent (not animating) menu with:
@@ -151,6 +161,7 @@ By default this creates a side menu with a height of 100%. Either use:
 * `border` - to demarcate the drawer from the content
 
 
+<a id="place-the-drawer-at-the-rightopposite-side"></a>
 #### Place the drawer at the right/opposite side
 
 To open the drawer at the opposite side, use:
@@ -158,6 +169,7 @@ To open the drawer at the opposite side, use:
 * `anchor="end"`
 
 
+<a id="rtl-right-to-left-support"></a>
 #### RTL (right-to-left) support
 
 Drawer content and animations are reversed when the drawer is placed in a container that either:
@@ -166,22 +178,26 @@ Drawer content and animations are reversed when the drawer is placed in a contai
 * has className `pe-rtl`
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="navigation-style"></a>
+
+<a id="navigation-style"></a>
 ### Navigation style
 
 To create a "navigation style" list, pass option `navigation` to [List Tile](./list-tile.md) elements.
 
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Drawer appearance, either with a theme or with CSS.
 
 You can find more information about theming in [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -199,6 +215,7 @@ DrawerCSS.addStyle(".themed-drawer", {
 >
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Drawer CSS classes](../../../packages/polythene-css-classes/drawer.js).
@@ -209,6 +226,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/drawer"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -222,11 +240,18 @@ Some style attributes can be set using option `style`. For example:
 >
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
+
+
+<a id="transitions"></a>
+### Transitions
+
+See [Transitions](../../transitions.md)
 

@@ -2,7 +2,7 @@
 
 Displays a text button with a [Shadow](shadow.md) effect.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -13,7 +13,8 @@ Displays a text button with a [Shadow](shadow.md) effect.
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * All [Button](button.md) main features
@@ -22,7 +23,8 @@ Displays a text button with a [Shadow](shadow.md) effect.
 * Disable z-animation
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/raised-button.md)
@@ -30,12 +32,14 @@ Displays a text button with a [Shadow](shadow.md) effect.
 
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 All options for [Button](button.md) also apply to Raised Button, with additionally:
 
-<a name="raised-button-options"></a>
+
+<a id="raised-button-options"></a>
 ### Raised button options
 
 | **Parameter**    |  **Required** | **Type**   | **Default** | **Description** |
@@ -45,7 +49,8 @@ All options for [Button](button.md) also apply to Raised Button, with additional
 | **animateOnTap** | optional       | Boolean    | true        | Set to false to remove z-animation and subsequent redraw |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Raised button is composed from:
@@ -55,7 +60,8 @@ Raised button is composed from:
 * [Shadow](shadow.md) 
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Raised Button classes](../../packages/polythene-css-classes/raised-button.js)

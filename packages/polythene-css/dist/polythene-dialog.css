@@ -10,10 +10,6 @@
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all;
   position: fixed;
   top: 0;
   left: 0;
@@ -21,7 +17,11 @@
   bottom: 0;
   z-index: 5000;
   padding: 24px 40px;
-  opacity: 0
+  opacity: 0;
+  transition-delay: 0s;
+  transition-duration: .22s;
+  transition-timing-function: ease-in-out;
+  transition-property: all
 }
 
 .pe-dialog.pe-dialog--visible {
@@ -38,6 +38,7 @@
 
 .pe-dialog .pe-dialog__content {
   position: relative;
+  transition-property: all;
   border-radius: 2px
 }
 

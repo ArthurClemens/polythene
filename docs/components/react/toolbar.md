@@ -2,7 +2,7 @@
 
 # Toolbar component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -15,15 +15,18 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Toolbar options](../toolbar.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/rgmzx6jr/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -64,6 +67,7 @@ const ToolbarButton = ({ svg }) =>
 </Toolbar>
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/dg9f6day/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -107,10 +111,12 @@ h(Toolbar, toolbarRow)
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="title"></a>
+
+<a id="title"></a>
 ### Title
 
 A ToolbarTitle can be inserted as Toolbar element as shown above.
@@ -127,6 +133,7 @@ With hyperscript:
 h(ToolbarTitle, { text: "Title", indent: true })
 ~~~
 
+<a id="preventing-an-unbalanced-centered-title"></a>
 #### Preventing an unbalanced centered title
 
 When the Toolbar contains one button at the left, and the title is centered, the result will look unbalanced because the title will be centered to the remaining space (at the right to the button).
@@ -157,7 +164,8 @@ h(Toolbar, [
 ])
 ~~~
 
-<a name="action-links"></a>
+
+<a id="action-links"></a>
 ### Action links
 
 Use class `pe-action`:
@@ -181,7 +189,8 @@ h(Toolbar, [
 ])
 ~~~
 
-<a name="shadow"></a>
+
+<a id="shadow"></a>
 ### Shadow
 
 ~~~jsx
@@ -192,13 +201,15 @@ import { Toolbar } from "polythene-react"
 </Toolbar>
 ~~~
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Toolbar appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~jsx
@@ -211,6 +222,7 @@ ToolbarCSS.addStyle(".themed-toolbar", {
 <Toolbar className="themed-toolbar">...</Toolbar>
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Toolbar CSS classes](../../../packages/polythene-css-classes/toolbar.js).
@@ -221,6 +233,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/toolbar"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -235,7 +248,8 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

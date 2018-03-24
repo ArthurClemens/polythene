@@ -21,6 +21,7 @@
   * [Wrapper components](theming/wrapper-components.md)
   * [Global theme file](theming/global-theme-file.md)
   * [Custom CSS](theming/custom-css.md)
+* [Transitions](transitions.md)
 * [Handling state](handling-state.md)
 * [URLs and router links](handling-urls.md)
 

@@ -2,7 +2,7 @@
 
 # List Tile component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,13 +13,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [List Tile options](../list-tile.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/eyksxemo/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -78,7 +80,8 @@ front: m(Icon, {
 })
 ~~~
 
-<a name="links"></a>
+
+<a id="links"></a>
 ### Links
 
 Both primary and secondary content can be set as link. For a general principle, see: [URLs and router links](../../handling-urls.md).
@@ -122,7 +125,8 @@ m(ListTile, {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
 * Following Material Design specs, a list tile can have 1 to 3 lines (except when using `subContent`):
@@ -137,13 +141,15 @@ m(ListTile, {
 * Front content can be reduced in width with `compactFront`. Following the Material Design specs, this setting should be used for displaying a list of search results.
 * Use option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html).
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the list tile appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -162,6 +168,7 @@ m(ListTile, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [List Tile CSS classes](../../../packages/polythene-css-classes/list-tile.js).
@@ -172,6 +179,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/list-tile"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -185,7 +193,8 @@ m(ListTile, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

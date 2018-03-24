@@ -2,7 +2,7 @@
 
 # Icon Button component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -15,17 +15,20 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Icon Button options](../icon-button.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Icon Button takes an icon options object.
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/xuo1gow5/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -55,6 +58,7 @@ import { IconButton, Icon, SVG } from "polythene-react"
 <IconButton><Icon><SVG>{starsSVG}</SVG></Icon></IconButton>
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/xh7jgutu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -87,18 +91,21 @@ h(IconButton, StarIcon)
 ~~~
 
 
-<a name="links"></a>
+
+<a id="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
 Pass [Button](../button.md) options to change the behaviour and appearance - see some examples below.
 
-<a name="interactivity"></a>
+
+<a id="interactivity"></a>
 ### Interactivity
 
 Disable hover and ripple effects:
@@ -123,7 +130,8 @@ Alternatively, use `inactive`:
 <IconButton icon={{ svg: { content: starsSVG } }} inactive />
 ~~~
 
-<a name="size"></a>
+
+<a id="size"></a>
 ### Size
 
 `compact` reduces the button padding:
@@ -132,13 +140,15 @@ Alternatively, use `inactive`:
 <IconButton icon={{ svg: { content: starsSVG } }} compact />
 ~~~
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the icon button appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~jsx
@@ -154,6 +164,7 @@ IconButtonCSS.addStyle(".themed-icon-button", {
 <IconButton icon={{ svg: { content: starsSVG } }} className="themed-icon-button" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Icon Button CSS classes](../../../packages/polythene-css-classes/icon-button.js).
@@ -172,6 +183,7 @@ The icon color is set with the CSS (text) `color` attribute of the parent elemen
 }
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -180,7 +192,8 @@ Some style attributes can be set using option `style`. For example:
 <FAB icon={{ svg: { content: starsSVG } }} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }} />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

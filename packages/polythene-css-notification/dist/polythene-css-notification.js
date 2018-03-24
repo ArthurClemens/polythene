@@ -18,7 +18,8 @@
     hasContainer: "pe-notification--container",
     horizontal: "pe-notification--horizontal",
     multilineTitle: "pe-notification__title--multi-line",
-    vertical: "pe-notification--vertical"
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
   };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -28,6 +29,15 @@
       pointerEvents: "all",
       justifyContent: "center",
       margin: "0 auto",
+      transitionDelay: componentVars.animation_delay,
+      transitionDuration: componentVars.animation_duration,
+      transitionTimingFunction: componentVars.animation_timing_function,
+      transitionProperty: "all",
+      opacity: 0,
+
+      ".pe-notification--visible": {
+        opacity: 1
+      },
 
       " .pe-notification__content": {
         width: componentVars.width + "px",
@@ -48,7 +58,7 @@
         }
       },
 
-      "&.pe-notification--horizontal": {
+      ".pe-notification--horizontal": {
         " .pe-notification__content": polytheneCoreCss.flex.layoutHorizontal,
         " .pe-notification__title": [polytheneCoreCss.flex.flex(), {
           alignSelf: "center"
@@ -59,7 +69,7 @@
         },
         " .pe-notification__action": polytheneCoreCss.flex.layoutCenter
       },
-      "&.pe-notification--vertical": {
+      ".pe-notification--vertical": {
         " .pe-notification__content": [polytheneCoreCss.flex.layoutVertical],
 
         " .pe-notification__title": {

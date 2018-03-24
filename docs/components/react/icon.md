@@ -2,7 +2,7 @@
 
 # Icon component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,19 +13,23 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Icon options](../icon.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/ep9pf5wp/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+<a id="with-svg"></a>
 ##### With SVG
 
 ~~~jsx
@@ -45,22 +49,26 @@ import { Icon, SVG } from "polythene-react"
 <Icon><SVG>{starsSVG}</SVG></Icon>
 ~~~
 
+<a id="with-svg-source-files"></a>
 ##### With SVG source files
 
 ~~~jsx
 <Icon svg={{ src: "app/assets/stars.svg" }} />
 ~~~
 
+<a id="with-image-source-files"></a>
 ##### With image source files
 
 ~~~jsx
 <Icon src={"img/arrow.png" />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/qhh725aa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
+<a id="with-trusted-svg-text"></a>
 ##### With trusted SVG text
 
 ~~~javascript
@@ -84,6 +92,7 @@ h(Icon,
 )
 ~~~
 
+<a id="with-svg-source-files-1"></a>
 ##### With SVG source files
 
 ~~~javascript
@@ -92,6 +101,7 @@ h(Icon, {
 })
 ~~~
 
+<a id="with-image-source-files-1"></a>
 ##### With image source files
 
 ~~~javascript
@@ -101,21 +111,25 @@ h(Icon, {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="sizes"></a>
+
+<a id="sizes"></a>
 ### Sizes
 
 The size is set with option `size` (4 sizes). Use CSS for more finegrained control.
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the icon appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~jsx
@@ -130,6 +144,7 @@ IconCSS.addStyle(".themed-icon", {
 <Icon svg={{ content: starsSVG }} className="themed-icon" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Icon CSS classes](../../../packages/polythene-css-classes/icon.js).
@@ -140,6 +155,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/icon"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -148,7 +164,8 @@ Some style attributes can be set using option `style`. For example:
 <Icon svg={{ content: starsSVG }} style={{ color: "#EF6C00" }} />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

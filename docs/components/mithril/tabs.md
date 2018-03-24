@@ -2,7 +2,7 @@
 
 # Tabs component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -17,14 +17,14 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
 <a id="options"></a>
 ## Options
 
 [Tabs options](../tabs.md)
 
 
-<a name="usage"></a>
+
 <a id="usage"></a>
 ## Usage
 
@@ -109,7 +109,7 @@ To set shared options all at once, use option `all`:
 }
 ~~~
 
-<a name="scrollable-tabs"></a>
+
 <a id="scrollable-tabs"></a>
 ### Scrollable tabs
 
@@ -170,11 +170,11 @@ The `state` object contains data on the current tab:
 * `el`: the tab button HTML Element
 
 
-<a name="appearance"></a>
+
 <a id="appearance"></a>
 ## Appearance
 
-<a name="mobile-bottom-menu"></a>
+
 <a id="mobile-bottom-menu"></a>
 ### Mobile bottom menu
 
@@ -191,7 +191,7 @@ m(Tabs,
 )
 ~~~
 
-<a name="scrollable-tabs-with-custom-arrow-icons"></a>
+
 <a id="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
@@ -222,7 +222,7 @@ m("div",
 )
 ~~~
 
-<a name="styling"></a>
+
 <a id="styling"></a>
 ### Styling
 
@@ -230,6 +230,7 @@ Below are examples how to change the Tabs appearance, either with a theme or wit
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -246,6 +247,7 @@ m(Tabs, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Tabs CSS classes](../../../packages/polythene-css-classes/tabs.js).
@@ -256,6 +258,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/tabs"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. The tab button styles can be passed using `all.style`:
@@ -271,7 +274,7 @@ m(Tabs, {
 })
 ~~~
 
-<a name="tab-widths"></a>
+
 <a id="tab-widths"></a>
 ### Tab widths
 
@@ -305,7 +308,7 @@ or
 }
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone
 

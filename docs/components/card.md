@@ -4,7 +4,7 @@ Displays a small piece of "summary" content - a photo, text, a link - about a si
 
 This implementation closely follows the [design specification](https://material.io/guidelines/components/cards.html). A number of convenience properties have been added to allow different image formats without having to prepare the right image ratio beforehand.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -23,7 +23,8 @@ This implementation closely follows the [design specification](https://material.
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Flexibly composable with card elements in different order
@@ -37,7 +38,8 @@ This implementation closely follows the [design specification](https://material.
 * Image overlay
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/card.md)
@@ -45,13 +47,16 @@ This implementation closely follows the [design specification](https://material.
 
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="card-specific-options"></a>
+
+<a id="card-specific-options"></a>
 ### Card specific options
 
-<a name="options-for-card"></a>
+
+<a id="options-for-card"></a>
 ### Options for card
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -68,7 +73,8 @@ Next to the card itself, each content parts has a set of options:
 * header
 * actions
 
-<a name="options-for-primary"></a>
+
+<a id="options-for-primary"></a>
 ### Options for primary
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -82,7 +88,8 @@ Next to the card itself, each content parts has a set of options:
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
-<a name="options-for-text"></a>
+
+<a id="options-for-text"></a>
 ### Options for text
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -93,7 +100,8 @@ Next to the card itself, each content parts has a set of options:
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
-<a name="options-for-header"></a>
+
+<a id="options-for-header"></a>
 ### Options for header
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -107,7 +115,8 @@ Next to the card itself, each content parts has a set of options:
 | **url**       | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for the header; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **style**     | optional | String |  | Style object |
 
-<a name="options-for-media"></a>
+
+<a id="options-for-media"></a>
 ### Options for media
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -122,7 +131,8 @@ Next to the card itself, each content parts has a set of options:
 | **size**      | optional | String: "small", "medium", "large", "extra-large" | | For primary media only; defines the image size |
 | **style**     | optional | String |  | Style object |
 
-<a name="options-for-actions"></a>
+
+<a id="options-for-actions"></a>
 ### Options for actions
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -135,7 +145,8 @@ Next to the card itself, each content parts has a set of options:
 | **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
-<a name="options-for-any"></a>
+
+<a id="options-for-any"></a>
 ### Options for any
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -145,7 +156,8 @@ Next to the card itself, each content parts has a set of options:
 | **content**   | required | String, hyperscript or component |  | Contents |
 | **style**     | optional | String |  | Style object |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -159,7 +171,8 @@ Next to the card itself, each content parts has a set of options:
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 | **style**     | optional | String |  | Style object |
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Card is optionally composed from:
@@ -168,7 +181,8 @@ Card is optionally composed from:
 * [Shadow](shadow.md)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Card classes](../../packages/polythene-css-classes/card.js)

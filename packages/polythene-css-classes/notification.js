@@ -14,4 +14,5 @@ export default {
   horizontal:     "pe-notification--horizontal",
   multilineTitle: "pe-notification__title--multi-line",
   vertical:       "pe-notification--vertical",
+  visible:        "pe-notification--visible",
 };

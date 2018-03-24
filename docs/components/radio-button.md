@@ -2,7 +2,7 @@
 
 Form control to select a single option from a set. Generates a styled radio button input element.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -15,7 +15,8 @@ Form control to select a single option from a set. Generates a styled radio butt
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Custom icons
@@ -25,17 +26,20 @@ Form control to select a single option from a set. Generates a styled radio butt
 * Keyboard control
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/radio-button.md)
 * [Usage with React](react/radio-button.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="radio-button-specific"></a>
+
+<a id="radio-button-specific"></a>
 ### Radio button specific
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -49,7 +53,8 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **value**     | optional | String |  | Input element value |
 | **disabled**  | optional | Boolean |  | Set to true to disable the Radio Button |
 
-<a name="appearance-options"></a>
+
+<a id="appearance-options"></a>
 ### Appearance options
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
@@ -59,7 +64,8 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **iconButton** | optional | Options object for the [Icon Button](icon-button.md) | | Add attributes like `wash` and `ink` |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -74,7 +80,8 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Radio Button is composed from:
@@ -84,7 +91,8 @@ Radio Button is composed from:
   * [Icon](icon.md)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Radio Button classes](../../packages/polythene-css-classes/radio-button.js)

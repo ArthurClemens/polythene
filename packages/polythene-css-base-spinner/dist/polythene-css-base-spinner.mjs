@@ -44,7 +44,9 @@ var raisedSize = function raisedSize(size, componentVars) {
 
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, {
-    transitionTimingFunction: "ease-out",
+    transitionDelay: componentVars.animation_delay,
+    transitionDuration: componentVars.animation_duration,
+    transitionTimingFunction: componentVars.animation_timing_function,
     transitionProperty: "opacity",
     opacity: 0,
 

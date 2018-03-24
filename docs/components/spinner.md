@@ -11,7 +11,7 @@ Available themed spinners:
   * `MaterialDesignProgressSpinner`
 
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -20,13 +20,14 @@ Available themed spinners:
   - [Spinner appearance options](#spinner-appearance-options)
   - [Indeterminate options](#indeterminate-options)
   - [Determinate options](#determinate-options)
+  - [Transition options](#transition-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+<a id="main-features"></a>
 ## Main features
 
 * Conditionally show spinner
@@ -37,17 +38,17 @@ Available themed spinners:
 * Progress spinner: animate between steps; set update duration
 
 
-<a name="usage"></a>
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/spinner.md)
 * [Usage with React](react/spinner.md)
 
 
-<a name="options"></a>
+<a id="options"></a>
 ## Options
 
-<a name="spinner-options"></a>
+<a id="spinner-options"></a>
 ### Spinner options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -55,7 +56,7 @@ Available themed spinners:
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
 | **show** | optional | Boolean | | Set to true to show the spinner |
 
-<a name="spinner-appearance-options"></a>
+<a id="spinner-appearance-options"></a>
 ### Spinner appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -64,7 +65,7 @@ Available themed spinners:
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
 | **z** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 
-<a name="indeterminate-options"></a>
+<a id="indeterminate-options"></a>
 ### Indeterminate options
 
 For `MaterialDesignSpinner` and `IOSSpinner`:
@@ -73,7 +74,7 @@ For `MaterialDesignSpinner` and `IOSSpinner`:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
 
-<a name="determinate-options"></a>
+<a id="determinate-options"></a>
 ### Determinate options
 
 For `MaterialDesignProgressSpinner`:
@@ -84,7 +85,12 @@ For `MaterialDesignProgressSpinner`:
 | **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
 | **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
 
-<a name="common-component-options"></a>
+<a id="transition-options"></a>
+### Transition options
+
+See: [Transitions](../transitions.md)
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -99,7 +105,7 @@ For `MaterialDesignProgressSpinner`:
 | **tone**      | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+<a id="composition"></a>
 ## Composition
 
 Spinner sometimes uses:
@@ -107,7 +113,7 @@ Spinner sometimes uses:
 * [Shadow](shadow.md) (when `raised` is used)
 
 
-<a name="css-classes"></a>
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Base Spinner classes](../../packages/polythene-css-classes/base-spinner.js)

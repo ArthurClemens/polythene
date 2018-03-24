@@ -2,7 +2,7 @@
 
 # Radio Button component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -14,14 +14,16 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 * [Radio Button options](../radio-button.md)
 * [Radio Group options](../radio-group.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/ct0ear8h/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -47,7 +49,8 @@ m("div", [
 ])
 ~~~
 
-<a name="reading-and-setting-the-checked-state"></a>
+
+<a id="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 Radio Buttons will generally be used with a [Radio Group](radio-group.md) that manages the buttons' (singular) selected state.
@@ -78,6 +81,7 @@ Note that `name` is required when using RadioGroup.
 
 See also [Handling state](../../handling-state.md).
 
+<a id="reading-the-checked-state"></a>
 #### Reading the checked state
 
 To read the checked state, use `onChange`:
@@ -88,6 +92,7 @@ m(RadioGroup, {
 })
 ~~~
 
+<a id="setting-the-checked-state"></a>
 #### Setting the checked state
 
 Unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group.
@@ -110,7 +115,8 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 
 
 
-<a name="shared-options"></a>
+
+<a id="shared-options"></a>
 ### Shared options
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons:
@@ -128,19 +134,22 @@ m(RadioGroup, {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
 Both Radio Button and Radio Group can be styled. 
 
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Radio Button appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -157,6 +166,7 @@ m(RadioButton, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the CSS classes:
@@ -170,6 +180,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/radio-button"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -180,7 +191,8 @@ m(RadioButton, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

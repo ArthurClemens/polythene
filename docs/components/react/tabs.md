@@ -2,7 +2,7 @@
 
 # Tabs component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -18,18 +18,21 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Tabs options](../tabs.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Tabs can show a text label, an icon, or the combination of the two. 
 Because each tab are registered with the parent Tabs component, tabs cannot be passed as children but only as option parameter to Tabs.
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/zoppbr7t/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -45,6 +48,7 @@ const tabOptions = [{
 <Tabs tabs={tabOptions} />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/hd68eu6n/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -61,7 +65,8 @@ h(Tabs, {
 })
 ~~~
 
-<a name="tab-options"></a>
+
+<a id="tab-options"></a>
 ### Tab options
 
 Text labels:
@@ -129,7 +134,8 @@ To set shared options all at once, use option `all`:
 }
 ~~~
 
-<a name="scrollable-tabs"></a>
+
+<a id="scrollable-tabs"></a>
 ### Scrollable tabs
 
 To display more tabs than fit in the viewport, set `scrollable` to true. On no-touch devices 2 scroll buttons will automatically be added to navigate the tabs. The scroll buttons can be customized - see under Appearance below.
@@ -144,6 +150,7 @@ The container's `background-color` will automatically set the scroll button colo
 
 For example:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -160,6 +167,7 @@ For example:
 </div>
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -182,7 +190,8 @@ h("div",
 )
 ~~~
 
-<a name="getting-the-tabs-state"></a>
+
+<a id="getting-the-tabs-state"></a>
 ### Getting the tabs state
 
 To read the currently selected tab, for instance to write the selected tab to a controller variable, use `onChange`:
@@ -200,10 +209,12 @@ The `state` object contains data on the current tab:
 * `el`: the tab button HTML Element
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="mobile-bottom-menu"></a>
+
+<a id="mobile-bottom-menu"></a>
 ### Mobile bottom menu
 
 Use option `menu` to remove the minimum width settings from the tab buttons and compress padding and label font size.
@@ -216,9 +227,11 @@ Use option `menu` to remove the minimum width settings from the tab buttons and 
 }
 ~~~
 
-<a name="scrollable-tabs-with-custom-arrow-icons"></a>
+
+<a id="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
+<a id="with-jsx-2"></a>
 #### With JSX
 
 ~~~jsx
@@ -255,6 +268,7 @@ const tabOptions = [
 </div>
 ~~~
 
+<a id="with-hyperscript-2"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -293,13 +307,15 @@ h("div",
 )
 ~~~
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Tabs appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -314,6 +330,7 @@ TabsCSS.addStyle(".themed-tabs", {
 <Tabs className="themed-tabs" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Tabs CSS classes](../../../packages/polythene-css-classes/tabs.js).
@@ -324,6 +341,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/tabs"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. The tab button styles can be passed using `all.style`:
@@ -352,7 +370,8 @@ h(Tabs, {
 })
 ~~~
 
-<a name="tab-widths"></a>
+
+<a id="tab-widths"></a>
 ### Tab widths
 
 * The minimum tab width is 72px. For larger screens (> 480px, as defined in the default theme) the minimum tabs width is 160px.
@@ -383,7 +402,8 @@ or:
 }
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

@@ -2,7 +2,7 @@
 
 Shows a temporary message.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Notifications and Snackbars](#notifications-and-snackbars)
 - [Main features](#main-features)
@@ -10,15 +10,15 @@ Shows a temporary message.
 - [Options](#options)
   - [Notification specific options](#notification-specific-options)
   - [Notification appearance options](#notification-appearance-options)
-  - [Transition options](#transition-options)
   - [Spawn options](#spawn-options)
+  - [Transition options](#transition-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
 
 <!-- /MarkdownTOC -->
 
-<a name="notifications-and-snackbars"></a>
+<a id="notifications-and-snackbars"></a>
 ## Notifications and Snackbars
 
 The information on this page refers to the **Notification** component, but it also describes the **Snackbar** component - both components use the same code base, and only differ in appearance (style and transitions).
@@ -28,7 +28,7 @@ The information on this page refers to the **Notification** component, but it al
 **Snackbar** is a notification that appears at the bottom of the screen. To use Snackbar, use the example code on this page and substitute `Notification` with `Snackbar`.
 
 
-<a name="main-features"></a>
+<a id="main-features"></a>
 ## Main features
 
 * Set timeout duration
@@ -38,17 +38,17 @@ The information on this page refers to the **Notification** component, but it al
 * Spawn notifications from different locations
 
 
-<a name="usage"></a>
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/notification.md)
 * [Usage with React](react/notification.md)
 
 
-<a name="options"></a>
+<a id="options"></a>
 ## Options
 
-<a name="notification-specific-options"></a>
+<a id="notification-specific-options"></a>
 ### Notification specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -59,29 +59,15 @@ The information on this page refers to the **Notification** component, but it al
 | **timeout** | optional | Number (seconds) | 3 | How long the Notification should be displayed before it hides automatically; use `0` to not hide automatically |
 | **dismissSelector** | optional | String | | Not used yet; will implement "Disappear after user interaction elsewhere" |
 
-<a name="notification-appearance-options"></a>
+<a id="notification-appearance-options"></a>
 ### Notification appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **layout** | optional | String: "horizontal" or "vertical" | "horizontal" | Sets the arrangement of the action; by default the action is placed right to the title, but longer action labels better fit below the title |
 
-<a name="transition-options"></a>
-### Transition options
 
-| **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
-| ---------------- | -------------- | -------- | ----------- | --------------- |
-| **transition**   | optional | String: "both", "show", "hide", "none" | "both" | Sets when a transition is used |
-| **transitions**  | optional | Object | Module `src/transitions.js` | Object with functions for keys `show` and `hide`; see "Usage" for an example |
-| **timeout**      |  |  | | See "Notification specific options" above |
-| **showDuration** | optional | Number | .150 | The show transition duration in seconds |
-| **hideDuration** | optional | Number | .150 | The hide transition duration in seconds |
-| **showDelay**    | optional | Number | 0 | The show delay duration in milliseconds |
-| **hideDelay**    | optional | Number | 0 | The hide delay duration in milliseconds |
-| **didShow**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the `show` transition is done |
-| **didHide**      | optional | Function `(id::String) -> undefined` |  | Callback function that is called when the `hide` transition is done |
-
-<a name="spawn-options"></a>
+<a id="spawn-options"></a>
 ### Spawn options
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
@@ -90,7 +76,12 @@ The information on this page refers to the **Notification** component, but it al
 | **id**         | optional       | String   | "default_notification" | Notification instance id |
 | **position**   | optional       | String   | "screen" | Set to "container" to give the Notification holder `position: absolute`, so it will be positioned relative to its container |
 
-<a name="common-component-options"></a>
+<a id="transition-options"></a>
+### Transition options
+
+See: [Transitions](../transitions.md)
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -105,15 +96,14 @@ The information on this page refers to the **Notification** component, but it al
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+<a id="composition"></a>
 ## Composition
 
 Notification is composed from:
 
 * Multi (`polythene-core`)
 
-
-<a name="css-classes"></a>
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Notification classes](../../packages/polythene-css-classes/notification.js)

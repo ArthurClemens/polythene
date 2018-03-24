@@ -18,14 +18,14 @@
     hasContainer: "pe-notification--container",
     horizontal: "pe-notification--horizontal",
     multilineTitle: "pe-notification__title--multi-line",
-    vertical: "pe-notification--vertical"
+    vertical: "pe-notification--vertical",
+    visible: "pe-notification--visible"
   };
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var DEFAULT_ANIMATION_DURATION = .6;
   var DEFAULT_TIME_OUT = 3;
 
   var getElement = function getElement(vnode) {
@@ -52,26 +52,13 @@
     }
   };
 
-  var prepareShow = function prepareShow(state, attrs) {
-    if (!state.containerEl && polytheneCore.isClient) {
-      // attrs.holderSelector is passed as option to Multiple
-      state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
-    }
-    if (!state.containerEl && polytheneCore.isClient) {
-      console.error("No container element found"); // eslint-disable-line no-console
-    }
-    if (attrs.containerSelector && state.containerEl) {
-      state.containerEl.classList.add(classes.hasContainer);
-    }
-  };
-
   var transitionOptions = function transitionOptions(state, attrs, isShow) {
     return {
       state: state,
       attrs: attrs,
       isShow: isShow,
       beforeTransition: isShow ? function () {
-        return stopTimer(state), prepareShow(state, attrs);
+        return stopTimer(state);
       } : function () {
         return stopTimer(state);
       },
@@ -91,8 +78,7 @@
         el: state.el,
         containerEl: state.containerEl
       },
-      showClass: classes.visible,
-      defaultDuration: DEFAULT_ANIMATION_DURATION
+      showClass: classes.visible
     };
   };
 
@@ -146,6 +132,16 @@
     if (titleEl) {
       setTitleStyles(titleEl);
     }
+    if (!state.containerEl && polytheneCore.isClient) {
+      // attrs.holderSelector is passed as option to Multiple
+      state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
+    }
+    if (!state.containerEl && polytheneCore.isClient) {
+      console.error("No container element found"); // eslint-disable-line no-console
+    }
+    if (attrs.containerSelector && state.containerEl) {
+      state.containerEl.classList.add(classes.hasContainer);
+    }
     if (attrs.show && !state.visible()) {
       showNotification(state, attrs);
     }
@@ -162,7 +158,9 @@
     var attrs = vnode.attrs;
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     _defineProperty({
-      className: [classes.component, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
+      className: [classes.component,
+      // classes.visible is set in showNotification though transition
+      attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
       attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, k.onclick, function (e) {
       return e.preventDefault();
@@ -220,6 +218,10 @@
     font_size: 14,
     line_height: 20,
 
+    animation_delay: "0s",
+    animation_duration: ".3s",
+    animation_timing_function: "ease-in-out",
+
     color_light_background: rgba(polytheneTheme.vars.color_light_background),
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_dark_primary),
 
@@ -227,47 +229,8 @@
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_light_text_primary)
   };
 
-  var ANIMATION_DURATION = .5;
-
-  var show = function show(_ref) {
-    var el = _ref.el,
-        showDuration = _ref.showDuration,
-        showDelay = _ref.showDelay;
-    return {
-      el: el,
-      showDuration: showDuration || ANIMATION_DURATION,
-      showDelay: showDelay || 0,
-      beforeShow: function beforeShow() {
-        return el.style.opacity = 0;
-      },
-      show: function show() {
-        return el.style.opacity = 1;
-      }
-    };
-  };
-
-  var hide = function hide(_ref2) {
-    var el = _ref2.el,
-        hideDuration = _ref2.hideDuration,
-        hideDelay = _ref2.hideDelay;
-    return {
-      el: el,
-      hideDuration: hideDuration || ANIMATION_DURATION,
-      hideDelay: hideDelay || 0,
-      hide: function hide() {
-        return el.style.opacity = 0;
-      }
-    };
-  };
-
-  var transitions = {
-    show: show,
-    hide: hide
-  };
-
   exports.coreNotificationInstance = notificationInstance;
   exports.vars = vars;
-  exports.transitions = transitions;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

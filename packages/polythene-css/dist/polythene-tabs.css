@@ -63,7 +63,7 @@
   background-color: inherit;
   transition-property: opacity,color,backgroundColor;
   transition-duration: .2s;
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
   transition-delay: .25s;
   opacity: .7
 }
@@ -218,7 +218,7 @@
   transform: translateZ(0);
   transform-origin: left 50%;
   transition-property: all;
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
   position: absolute;
   height: 2px;
   bottom: 0;

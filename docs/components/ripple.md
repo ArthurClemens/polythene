@@ -4,7 +4,7 @@ Adds a touch ripple effect to an element.
 
 [Buttons](button.md) contain a ripple element by default. This component lets you add a ripple to other components.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -17,7 +17,8 @@ Adds a touch ripple effect to an element.
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Set duration
@@ -31,17 +32,20 @@ Adds a touch ripple effect to an element.
 * Callback function when ripple has started and finished
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/ripple.md)
 * [Usage with React](react/ripple.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="ripple-specific-options"></a>
+
+<a id="ripple-specific-options"></a>
 ### Ripple specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -51,7 +55,8 @@ Adds a touch ripple effect to an element.
 | **disabled**  | optional | Boolean | false | Set to `true` to disable ripples |
 | **multi**     | optional | Boolean | false | Set to `true` to enable multiple simultaneous ripples, instead of one after the other |
 
-<a name="ripple-appearance-options"></a>
+
+<a id="ripple-appearance-options"></a>
 ### Ripple appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -68,7 +73,8 @@ Adds a touch ripple effect to an element.
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation to make a persistent color fill |
 | **target**                  | optional | HTML Element | the ripple's parent node element | The target defines which element responds to tap |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -80,7 +86,8 @@ Adds a touch ripple effect to an element.
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="callback-functions"></a>
+
+<a id="callback-functions"></a>
 ## Callback functions
 
 | **Function**     |  **Types**               |
@@ -89,7 +96,8 @@ Adds a touch ripple effect to an element.
 | **end**   | `(AnimationEvent) -> undefined` |
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Ripple classes](../../packages/polythene-css-classes/ripple.js)

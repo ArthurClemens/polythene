@@ -16,10 +16,6 @@ module.exports = {
     }
   },
 
-  externals: {
-    mithril: "m"
-  },
-
   output: {
     path: path.resolve(__dirname, "../dist/"),
     filename: "js/[name].js"

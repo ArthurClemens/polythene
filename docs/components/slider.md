@@ -2,7 +2,7 @@
 
 Select a value from a continuous or discrete range of values by moving the slider thumb. Optimized for mobile.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -18,7 +18,8 @@ Select a value from a continuous or discrete range of values by moving the slide
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Touch support
@@ -30,14 +31,16 @@ Select a value from a continuous or discrete range of values by moving the slide
 * Keyboard control
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/slider.md)
 * [Usage with React](react/slider.md)
 
 
-<a name="keyboard-control"></a>
+
+<a id="keyboard-control"></a>
 ## Keyboard control
 
 Read first: [Turning on keyboard control](../keyboard-control.md)
@@ -61,10 +64,12 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 The amount of change depends on the step size. This can be set with option `step` (default: `1`). Also the values for first allowed value (`min`) and last allowed value (`max`) can be set.
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="slider-specific-options"></a>
+
+<a id="slider-specific-options"></a>
 ### Slider specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -80,14 +85,16 @@ The amount of change depends on the step size. This can be set with option `step
 | **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
 | **disabled** | optional | Boolean |  | Set to true to make the slider read only |
 
-<a name="appearance-options"></a>
+
+<a id="appearance-options"></a>
 ### Appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -102,7 +109,8 @@ The amount of change depends on the step size. This can be set with option `step
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Slider is optionally composed from:
@@ -110,20 +118,23 @@ Slider is optionally composed from:
 * [Icon](icon.md) (with option `icon`)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Slider classes](../../packages/polythene-css-classes/slider.js)
 
 
-<a name="design-considerations"></a>
+
+<a id="design-considerations"></a>
 ## Design considerations
 
 * With both usability and theming in mind, no range input element is created (other than for instance [Material Design Lite](http://www.getmdl.io)). The range input has limited styling options, for instance it is not possible to create a large enough click area for the slider thumb (without making the thumb itself enormous). Using a different image for the thumb is out of the question. This Slider component is composed from DIV elements instead.
 * Vertical orientation is not supported because it is not part of the design specification. The same goes for multi-thumb support.
 
 
-<a name="future"></a>
+
+<a id="future"></a>
 ## Future
 
 * Right to left support

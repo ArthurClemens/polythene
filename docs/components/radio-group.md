@@ -2,7 +2,7 @@
 
 Manages a set of [Radio Buttons](radio-button.md).
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -13,13 +13,15 @@ Manages a set of [Radio Buttons](radio-button.md).
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Facilitates managing radio buttons
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Described in:
@@ -28,10 +30,12 @@ Described in:
 * [Radio Buttons with React](react/radio-button.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="radio-group-specific"></a>
+
+<a id="radio-group-specific"></a>
 ### Radio Group specific
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -41,7 +45,8 @@ Described in:
 | **name**      | required | String | | Name for all radio button elements |
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -55,7 +60,8 @@ Described in:
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Radio Group classes](../../packages/polythene-css-classes/radio-group.js)

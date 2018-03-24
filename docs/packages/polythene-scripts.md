@@ -1,6 +1,6 @@
 # Polythene helper scripts
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Write CSS](#write-css)
   - [Usage](#usage)
@@ -9,17 +9,20 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="write-css"></a>
+
+<a id="write-css"></a>
 ## Write CSS
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ### Usage
 
 ~~~javascript
 writeCSS(options)
 ~~~
 
-<a name="example"></a>
+
+<a id="example"></a>
 ### Example
 
 ~~~javascript
@@ -43,7 +46,8 @@ writeCSS({
 })
 ~~~
 
-<a name="writecss-options"></a>
+
+<a id="writecss-options"></a>
 ### `writeCSS` options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |

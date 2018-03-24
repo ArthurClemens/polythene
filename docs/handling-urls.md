@@ -5,7 +5,7 @@ Polythene uniformly uses a `url` object to handle both external URLs and interna
 
 Requirements for the `url` object differ per renderer.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Mithril](#mithril)
   - [Router links](#router-links)
@@ -17,7 +17,8 @@ Requirements for the `url` object differ per renderer.
 <!-- /MarkdownTOC -->
 
 
-<a name="mithril"></a>
+
+<a id="mithril"></a>
 ## Mithril
 
 Mithril includes [a build-in router](https://mithril.js.org/#routing).
@@ -28,7 +29,8 @@ To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it
 * have attribute `oncreate: m.route.link`
   * and if the href attribute is not static, the onupdate hook must also be set: `onupdate: m.route.link`
 
-<a name="router-links"></a>
+
+<a id="router-links"></a>
 ### Router links
 
 <a href="https://jsfiddle.net/ArthurClemens/7vurv0c3/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -52,7 +54,8 @@ m(Button, {
 })
 ~~~
 
-<a name="external-links"></a>
+
+<a id="external-links"></a>
 ### External links
 
 ~~~javascript
@@ -63,10 +66,12 @@ m(Button, {
 ~~~
 
 
-<a name="react"></a>
+
+<a id="react"></a>
 ## React
 
-<a name="router-links-1"></a>
+
+<a id="router-links-1"></a>
 ### Router links
 
 React does not include a router itself, but [React Router](https://github.com/ReactTraining/react-router) is a well known external router library. 
@@ -168,7 +173,8 @@ ReactDOM.render(
 )
 ~~~
 
-<a name="external-links-1"></a>
+
+<a id="external-links-1"></a>
 ### External links
 
 #### With JSX

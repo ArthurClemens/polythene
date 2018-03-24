@@ -2,7 +2,7 @@
 
 # Menu component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,22 +13,25 @@
   - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [Transitions](#transitions)
   - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Menu options](../menu.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 A simple, permanently visible menu:
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/gta0c3te/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -45,6 +48,7 @@ import { Menu, List, ListTile } from "polythene-react"
 </Menu>
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/umrnvm13/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -74,6 +78,7 @@ A number of elements must play together:
 
 Because we are using state, this is best created with a custom component where we can store the "menu open" state.
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/Lm1o6f9y/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -119,6 +124,7 @@ export default class extends Component {
 }
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/fzcys56b/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -168,12 +174,14 @@ export default class extends Component {
 }
 ~~~
 
-<a name="hiding"></a>
+
+<a id="hiding"></a>
 ### Hiding
 
 A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
 
-<a name="positioning"></a>
+
+<a id="positioning"></a>
 ### Positioning
 
 To position a menu to another element, pass parameters `target` (set to the selector of the element) and optionally `origin` to relatively position the menu.
@@ -181,7 +189,8 @@ To position a menu to another element, pass parameters `target` (set to the sele
 To shift the menu vertically to a selected menu item, the menu item must have the class "selected".
 To override this behavior, pass `reposition: false`.
 
-<a name="callbacks"></a>
+
+<a id="callbacks"></a>
 ### Callbacks
 
 Two optional callbacks are used after the transition: `didShow` and `didHide`. As shown in the example above, `didHide` is used to  update the Menu state.
@@ -192,13 +201,15 @@ didHide: id => (this.setState({ isOpen: false }), history.push("/"))
 
 
 
-<a name="dialog-as-simple-menu"></a>
+
+<a id="dialog-as-simple-menu"></a>
 ### Dialog as simple menu
 
 When a menu contains elements that don't fit on single lines, Material Design guidelines suggest to use a [Dialog](dialog.md) instead.
 
 A dialog can be used as menu by passing param `menu` to the dialog component. This will show a dialog with menu contents, centered on the screen:
 
+<a id="with-jsx-2"></a>
 #### With JSX
 
 ~~~jsx
@@ -242,6 +253,7 @@ export default () =>
 ~~~
 
 
+<a id="with-hyperscript-2"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -283,13 +295,15 @@ const Page = () =>
   })
 ~~~
 
-<a name="settings-menu-position-to-selected-value"></a>
+
+<a id="settings-menu-position-to-selected-value"></a>
 ### Settings menu (position to selected value)
 
 A settings menu shows the selected value, and when opening the menu, highlights the selected value in the menu.
 
 Similar to the simple menu, we keep track of the "open" state. Here we're adding the state for the selected index.
 
+<a id="with-jsx-3"></a>
 #### With JSX
 
 ~~~jsx
@@ -315,6 +329,7 @@ Similar to the simple menu, we keep track of the "open" state. Here we're adding
 </Menu>
 ~~~
 
+<a id="with-hyperscript-3"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -342,16 +357,19 @@ h(Menu,
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Menu appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -365,6 +383,7 @@ MenuCSS.addStyle(".themed-menu", {
 <Menu className="themed-menu" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Menu CSS classes](../../../packages/polythene-css-classes/menu.js).
@@ -375,6 +394,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/menu"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. Because a Menu is created with a List, the style must also be passed to its List Tiles:
@@ -395,37 +415,17 @@ const style = {
 </Menu>
 ~~~
 
-<a name="transitions"></a>
-### Transitions
-
-Transition settings in the options:
-
-~~~javascript
-showDuration: 100,
-hideDuration: 300
-~~~
-
-See also "Transition options" in the [Menu options](../menu.md).
-
-Alternatively set transition properties in CSS:
-
-~~~css
-.pe-menu {
-  transition-timing-function: ease-out;
-  transition-property: opacity;
-  opacity: 0;
-}
-.pe-menu--visible {
-  opacity: 1;
-}
-~~~
-
-<a name="dark-or-light-tone"></a>
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
 
 * Use `tone: "dark"` to render light on dark
 * Use `tone: "light"` to locally render normally when dark tone is set
+
+<a id="transitions"></a>
+### Transitions
+
+See [Transitions](../../transitions.md)
 
 

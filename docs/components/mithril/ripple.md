@@ -2,7 +2,7 @@
 
 # Ripple component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,13 +13,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Ripple options](../ripple.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/rcyn8f64/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -48,22 +50,26 @@ m(ListTile, {
 ~~~
 
 
-<a name="variations"></a>
+
+<a id="variations"></a>
 ## Variations
 
 Create multiple simultaneous ripples with option `multi`.
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Ripple appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -78,6 +84,7 @@ m(Ripple, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Ripple CSS classes](../../../packages/polythene-css-classes/ripple.js).
@@ -96,6 +103,7 @@ By default the inherited `color` from the parent element is used. It can be chan
 }
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -108,7 +116,8 @@ m(Ripple, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

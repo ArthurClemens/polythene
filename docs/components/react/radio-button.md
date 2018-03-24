@@ -2,7 +2,7 @@
 
 # Radio Button component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -14,13 +14,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Radio Button options](../radio-button.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Radio buttons always come in groups. To simply show 2 radio buttons, without handling their state, does not make much sense:
@@ -44,13 +46,15 @@ import { RadioButton } from "polythene-react"
 </div>
 ~~~
 
-<a name="reading-and-setting-the-checked-state"></a>
+
+<a id="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
 
 Radio Buttons will generally be used with a [Radio Group](radio-group.md) that manages the buttons' (singular) selected state.
 
 Equivalent to the example above, now including state handling:
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/b1vbbLgw/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -75,6 +79,7 @@ import { RadioGroup } from "polythene-react"
 />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/fhqrcuL9/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -103,10 +108,12 @@ Note that `name` is required when using RadioGroup.
 See also [Handling state](../../handling-state.md).
 
 
+<a id="reading-the-checked-state"></a>
 #### Reading the checked state
 
 To read the checked state, use `onChange`:
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -115,6 +122,7 @@ To read the checked state, use `onChange`:
 />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -126,6 +134,7 @@ h(RadioGroup, {
 But unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group:
 
 
+<a id="setting-the-checked-state"></a>
 #### Setting the checked state
 
 Unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group.
@@ -148,11 +157,13 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 
 
 
-<a name="shared-options"></a>
+
+<a id="shared-options"></a>
 ### Shared options
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons.
 
+<a id="with-jsx-2"></a>
 #### With JSX
 
 ~~~jsx
@@ -167,6 +178,7 @@ Use RadioGroup's option `all` to pass options that should be applied to all Radi
 />
 ~~~
 
+<a id="with-hyperscript-2"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -182,18 +194,21 @@ h(RadioGroup, {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
 Both Radio Button and Radio Group can be styled using `theme`, `style` and CSS.
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Radio Button appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -208,6 +223,7 @@ RadioButtonCSS.addStyle(".themed-radio-button", {
 <RadioButton className="themed-radio-button" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the CSS classes:
@@ -221,6 +237,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/radio-button"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -233,7 +250,8 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

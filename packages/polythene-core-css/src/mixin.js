@@ -85,7 +85,7 @@ const sticky = (zIndex = 1) => ({
   zIndex: zIndex
 });
 
-// Creats a transition with presets
+// Creates a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
 const defaultTransition = (properties = "all", duration = ".18s", curve = "ease-out") => ({
   transitionDelay: "0ms",

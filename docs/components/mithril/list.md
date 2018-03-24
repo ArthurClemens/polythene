@@ -2,7 +2,7 @@
 
 # List component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -15,13 +15,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [List options](../list.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/8k7gg3va/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -72,7 +74,8 @@ m(List, {
 ~~~
 
 
-<a name="variations"></a>
+
+<a id="variations"></a>
 ## Variations
 
 > If there is a floating action button left-aligned with the avatar/icon in a list,
@@ -96,7 +99,8 @@ m(List, {
 })
 ~~~
 
-<a name="sticky-headers"></a>
+
+<a id="sticky-headers"></a>
 ### Sticky headers
 
 To create alternating sticky headers, the list header gets CSS property `position: sticky`. However this property [does not work in IE or Edge](http://caniuse.com/#feat=css-sticky), so its use is a bit limited.
@@ -114,7 +118,8 @@ If you do choose to use it, add some styles to the container that holds the list
 }
 ~~~
 
-<a name="keyboard-control"></a>
+
+<a id="keyboard-control"></a>
 ### Keyboard control
 
 Sometimes it is useful to enable selecting list values with the keyboard, for instance with autocomplete search suggestions.
@@ -190,16 +195,19 @@ const KeyboardList = {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the list appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -218,6 +226,7 @@ m(List, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [List CSS classes](../../../packages/polythene-css-classes/list.js).
@@ -228,6 +237,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/list"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -241,7 +251,8 @@ m(List, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

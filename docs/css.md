@@ -1,6 +1,6 @@
 # Polythene CSS
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Basic principles](#basic-principles)
   - [Getting started](#getting-started)
@@ -14,9 +14,8 @@
 <!-- /MarkdownTOC -->
 
 
-<a name="basic-principles"></a>
+<a id="basic-principles"></a>
 ## Basic principles
-
 
 Polythene styles can be included in 2 ways:
 
@@ -26,13 +25,15 @@ Polythene styles can be included in 2 ways:
 
 Which option you choose may depend on how (and if) you want to use theming - more on that below.
 
-<a name="getting-started"></a>
+
+<a id="getting-started"></a>
 ### Getting started
 
 With either option, `polythene-css` should be installed - see [Getting started with Mithril](getting-started-mithril.md) or [Getting started with React](getting-started-react.md).
 
 
-<a name="using-css-in-js"></a>
+
+<a id="using-css-in-js"></a>
 ### Using CSS-in-JS
 
 Using CSS-in-JS has minimal setup costs and gives the possibility to add themed component styles on the fly.
@@ -40,12 +41,12 @@ Using CSS-in-JS has minimal setup costs and gives the possibility to add themed 
 Component styles are automatically added to `<head>` using [j2c](http://j2c.py.gy).
 
 
-<a name="theming-options"></a>
+
 #### Theming options
 
 This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`; more details at: [Theming Configuration variables](theming/configuration-variables.md).
 
-<a name="usage"></a>
+
 #### Usage
 
 Importing `polythene-css` activates CSS-in-JS:
@@ -55,7 +56,8 @@ import "polythene-css"
 ~~~
 
 
-<a name="using-css-files"></a>
+
+<a id="using-css-files"></a>
 ### Using CSS files
 
 Choose this:
@@ -63,7 +65,7 @@ Choose this:
 * If you are already using a bundler that grabs and bundles all CSS files.
 * or if you don't want to be reliant on the client rendering, for example when doing server-side rendering or when using a static site generator.
 
-<a name="theming"></a>
+
 #### Theming
 
 Theming options are more limited than using CSS-in-JS as styles will not be added on the fly. But it is still possible to use the same tools as CSS-in-JS, only with an extra build step that results in a CSS file. This step can be automated of course.
@@ -72,7 +74,7 @@ Theming options are more limited than using CSS-in-JS as styles will not be adde
 
 The alternative way is to add handwritten CSS. This does not involve a build step, but this may not be future proof; when a component structure would change later on, your custom CSS may no longer work.
 
-<a name="usage-1"></a>
+
 #### Usage
 
 Package `polythene-css` contains all combined component CSS files. Its existence in `node_modules` makes it possible to import CSS files **without** having to use `import` in JavaScript (which would enable CSS-in-JS, not what we want here).
@@ -103,15 +105,17 @@ Copy the Polythene CSS file (or files) to your project and link to there.
 Note that it is far too easy to forget to update these files, so this can only be recommended if you automate the copying.
 
 
-<a name="extras"></a>
+
+<a id="extras"></a>
 ## Extras
 
-<a name="supporting-styles"></a>
+
+<a id="supporting-styles"></a>
 ### Supporting styles
 
 Supporting styles (typography and Roboto web font styles) are optional.
 
-<a name="using-css-in-js-1"></a>
+
 #### Using CSS-in-JS
 
 ~~~javascript
@@ -125,17 +129,18 @@ See also:
 * [Loading web fonts](packages/polythene-utilities.md#web-font-loader)
 * [Writing custom CSS](theming/custom-css.md)
 
-<a name="using-css-files-1"></a>
+
 #### Using CSS files
 
 ~~~
 import "polythene-css/dist/polythene-typography.css"
 ~~~
 
-<a name="roboto-font"></a>
+
+<a id="roboto-font"></a>
 ### Roboto font
 
-<a name="using-css-in-js-2"></a>
+
 #### Roboto using CSS-in-JS
 
 The Material Design Roboto font is automatically loaded when `addTypography` is used, but it can also be loaded independent of typography styles:
@@ -177,7 +182,7 @@ const foutStyles = [{
 styler.add("fout", foutStyles)
 ~~~
 
-<a name="roboto-using-css-files"></a>
+
 #### Roboto using CSS files
 
 Roboto will be loaded automatically when `polythene-typography` is imported:
@@ -188,7 +193,8 @@ import "polythene-css/dist/polythene-typography.css"
 
 
 
-<a name="layout-classes"></a>
+
+<a id="layout-classes"></a>
 ### Layout classes
 
 Package `polythene-css` also includes helper classes that are useful to quickly add layout styles to hyperscript / JSX (see the complete list of layout classes below). 
@@ -205,7 +211,7 @@ m(".layout.vertical", "Vertical content")
 <div className="layout vertical">Vertical content</div>
 ~~~
 
-<a name="usage-2"></a>
+
 #### Layout classes using CSS-in-JS
 
 ~~~javascript
@@ -221,7 +227,7 @@ import "polythene-css/dist/polythene-layout-styles.css"
 ~~~
 
 
-<a name="list-of-layout-classes"></a>
+
 #### List of layout classes 
 
 Common helper classes:

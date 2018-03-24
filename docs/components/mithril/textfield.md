@@ -2,7 +2,7 @@
 
 # Text Field component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -18,13 +18,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Text Field options](../textfield.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/m396q0hh/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -82,7 +84,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="help-texts"></a>
+
+<a id="help-texts"></a>
 ### Help texts
 
 Pass `help` to create a help text below the field:
@@ -107,7 +110,8 @@ m(TextField, {
 A help text also function as error message when the field input is invalid.
 
 
-<a name="front-end-validation"></a>
+
+<a id="front-end-validation"></a>
 ### Front-end validation
 
 Passing `required` adds a mark `*` to the label, and uses HTML5 field validation to test for a non-empty value:
@@ -131,6 +135,7 @@ Other supported validation checks:
 * `max`
 * `pattern`
 
+<a id="when-to-validate"></a>
 #### When to validate
 
 By default the component will validate only when a user action has been done (triggered by "onblur"). This to make sure that required fields don't scream INVALID at initial page load.
@@ -143,7 +148,8 @@ Variations:
 * To reset all error messages when the field is cleared, use option `validateResetOnClear`
 
 
-<a name="custom-validation"></a>
+
+<a id="custom-validation"></a>
 ### Custom validation
 
 There are 2 ways to validate a field:
@@ -151,6 +157,7 @@ There are 2 ways to validate a field:
 1. By checking the field value with callback function `validate` - use this when you want to simply check the validity on input (but note that it does not get triggered on form submit)
 1. By setting the "valid" state directly - use this when you need to validate the entire form, so you keep the value in local state
 
+<a id="checking-the-field-value-with-callback-function-validate"></a>
 #### Checking the field value with callback function "validate"
 
 Option `validate` is a function that accepts the current field value and is called on every `oninput`. Return an object with attributes `valid` (Boolean) and `error` (message string):
@@ -168,6 +175,7 @@ m(TextField, {
 })
 ~~~
 
+<a id="setting-the-valid-state-directly"></a>
 #### Setting the "valid" state directly
 
 This assumes that you store the form state (for example in a stateful component) so you are able to check the valid state of each field.
@@ -186,7 +194,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="character-counter"></a>
+
+<a id="character-counter"></a>
 ### Character counter
 
 Adding `counter` with a value adds a live counter below the field:
@@ -211,7 +220,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="reading-and-setting-the-value"></a>
+
+<a id="reading-and-setting-the-value"></a>
 ### Reading and setting the value
 
 See also [Handling state](../../handling-state.md).
@@ -244,7 +254,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="programmatically-setting-focus-and-value"></a>
+
+<a id="programmatically-setting-focus-and-value"></a>
 ### Programmatically setting focus and value
 
 The `onChange` callback returns the function `setInputState` to set the focus and value of the input element.
@@ -269,16 +280,19 @@ m(Button, {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the TextField appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -296,6 +310,7 @@ m(TextField, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Text Field CSS classes](../../../packages/polythene-css-classes/textfield.js).
@@ -306,6 +321,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/textfield"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -318,7 +334,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

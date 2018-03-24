@@ -1,29 +1,31 @@
 
-const show = ({ containerEl, el, showDuration, showDelay }) => {
+const DEFAULT_DURATION = 0.4;
+
+const show = ({ containerEl, el, duration, delay }) => {
   return {
     el: containerEl,
-    showDuration: showDuration || .4,
-    showDelay:    showDelay || 0,
-    beforeShow:   () => {
+    duration: duration || DEFAULT_DURATION,
+    delay: delay || 0,
+    before: () => {
       el.style.display = "block";
       const height = el.getBoundingClientRect().height;
       containerEl.style.transform = `translate3d(0, ${height}px, 0)`;
     },
-    show:         () => containerEl.style.transform = "translate3d(0, 0px, 0)"
+    transition: () => containerEl.style.transform = "translate3d(0, 0px, 0)"
   };
 };
 
-const hide = ({ containerEl, el, hideDuration, hideDelay }) => {
+const hide = ({ containerEl, el, duration, delay }) => {
   return {
     el: containerEl,
-    hideDuration: hideDuration || .4,
-    hideDelay:    hideDelay || 0,
-    hide:         () => {
+    duration: duration || DEFAULT_DURATION,
+    delay: delay || 0,
+    transition: () => {
       const height = el.getBoundingClientRect().height;
       containerEl.style.transform = `translate3d(0, ${height}px, 0)`;
     },
     // reset to original position to counter the removal of the snackbar instance
-    afterHide:    () => {
+    after: () => {
       // prevent a "bounce back"
       el.style.display = "none";
       containerEl.style.transitionDuration = "0ms";

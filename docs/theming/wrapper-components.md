@@ -2,7 +2,7 @@
 
 # Wrapper components
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Mithril example](#mithril-example)
 - [React JSX example](#react-jsx-example)
@@ -11,7 +11,8 @@
 
 A wrapper component - also Higher Order Component - takes a regular component and returns a modified version, one that sets predefined behavior or styles. For example, we can create a SecondaryButton component by taking a Button and adding typical "secondary button" styles.
 
-<a name="mithril-example"></a>
+
+<a id="mithril-example"></a>
 ## Mithril example
 
 ~~~javascript
@@ -49,7 +50,8 @@ m(SecondaryButton, {
 ~~~
 
 
-<a name="react-jsx-example"></a>
+
+<a id="react-jsx-example"></a>
 ## React JSX example
 
 ~~~jsx

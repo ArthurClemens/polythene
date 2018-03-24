@@ -1,5 +1,5 @@
 import { vars } from 'polythene-theme';
-import { mixin, flex, styler } from 'polythene-core-css';
+import { flex, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-core-dialog';
 
 var listTileClasses = {
@@ -77,8 +77,7 @@ var layout = (function (selector, componentVars) {
     ".pe-dialog__holder": {
       height: "100%"
     }
-  }, selector, [flex.layoutCenterCenter, mixin.defaultTransition("all"), // animation duration is set in component options
-  {
+  }, selector, [flex.layoutCenterCenter, {
     position: componentVars.position,
     top: 0,
     left: 0,
@@ -88,6 +87,11 @@ var layout = (function (selector, componentVars) {
     height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
     padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
     opacity: 0,
+
+    transitionDelay: componentVars.animation_delay,
+    transitionDuration: componentVars.animation_duration,
+    transitionTimingFunction: componentVars.animation_timing_function,
+    transitionProperty: "all",
 
     ".pe-dialog--visible": {
       opacity: 1
@@ -105,6 +109,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-dialog__content": {
       position: "relative",
+      transitionProperty: "all",
       borderRadius: componentVars.border_radius + "px"
     },
 

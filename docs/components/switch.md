@@ -2,7 +2,7 @@
 
 Form control to toggle the state of a single option. Generates a styled checkbox input element.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -12,7 +12,8 @@ Form control to toggle the state of a single option. Generates a styled checkbox
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * All [Checkbox](checkbox.md) main features
@@ -22,7 +23,8 @@ Form control to toggle the state of a single option. Generates a styled checkbox
 
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Identical to [Checkbox](checkbox.md). See Checkbox usage instructions and replace "Checkbox" with "Switch".
@@ -31,12 +33,14 @@ Identical to [Checkbox](checkbox.md). See Checkbox usage instructions and replac
 * [Checkbox usage with React](react/checkbox.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 See: [Checkbox](checkbox.md#options)
 
-<a name="switch-specific-options"></a>
+
+<a id="switch-specific-options"></a>
 ### Switch specific options
 
 | **Parameter** |  **Required** | **Type**   | **Default** | **Description** |
@@ -48,7 +52,8 @@ See: [Checkbox](checkbox.md#options)
 
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Switch classes](../../packages/polythene-css-classes/switch.js)

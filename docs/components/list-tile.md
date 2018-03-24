@@ -2,7 +2,7 @@
 
 Displays a list element as part of a [List](list.md).
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -18,7 +18,8 @@ Displays a list element as part of a [List](list.md).
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Separately set primary, secondary and front content
@@ -30,7 +31,8 @@ Displays a list element as part of a [List](list.md).
 * Indent content
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/list-tile.md)
@@ -38,10 +40,12 @@ Displays a list element as part of a [List](list.md).
 
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="list-tile-content-options"></a>
+
+<a id="list-tile-content-options"></a>
 ### List tile content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -49,7 +53,8 @@ Displays a list element as part of a [List](list.md).
 | **content**   | -              | -        |             | See below |
 | **secondary** | optional       | Object   |             | Options for secondary content, see below |
 
-<a name="list-tile-appearance-options"></a>
+
+<a id="list-tile-appearance-options"></a>
 ### List tile appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -67,7 +72,8 @@ Displays a list element as part of a [List](list.md).
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 | **navigation** | optional | Boolean | | Set to `true` to use a Material Design navigation style |
 
-<a name="list-tile-primary-content-options"></a>
+
+<a id="list-tile-primary-content-options"></a>
 ### List tile primary content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -81,7 +87,8 @@ Displays a list element as part of a [List](list.md).
 | **compactFront** | optional | Boolean | | Set to `true` to reduce horizontal width of `front` content |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
-<a name="list-tile-secondary-content-options"></a>
+
+<a id="list-tile-secondary-content-options"></a>
 ### List tile secondary content options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -92,13 +99,15 @@ Displays a list element as part of a [List](list.md).
 | **secondary.content** | optional | String, hyperscript or component | | Secondary content |
 
 
-<a name="internally-used-options"></a>
+
+<a id="internally-used-options"></a>
 ### Internally used options
 
 * `register`
 
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -113,7 +122,8 @@ Displays a list element as part of a [List](list.md).
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 List Tile is composed from:
@@ -122,7 +132,8 @@ List Tile is composed from:
 * [Icon](icon.md) (when option `secondary.icon` is used)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [List Tile classes](../../packages/polythene-css-classes/list-tile.js)

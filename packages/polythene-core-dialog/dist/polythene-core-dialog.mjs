@@ -74,7 +74,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var DEFAULT_Z = 3;
-var DEFAULT_ANIMATION_DURATION = .220;
 
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
@@ -90,8 +89,7 @@ var transitionOptions = function transitionOptions(state, attrs, isShow) {
       contentEl: state.contentEl,
       backdropEl: state.backdropEl
     },
-    showClass: classes.visible,
-    defaultDuration: DEFAULT_ANIMATION_DURATION
+    showClass: classes.visible
   };
 };
 
@@ -179,9 +177,7 @@ var createProps = function createProps(vnode, _ref) {
       // not allowed
       return;
     }
-    hideDialog(state, _extends({}, attrs, {
-      hideDelay: 0
-    }));
+    hideDialog(state, attrs);
   }), attrs.formOptions ? attrs.formOptions : null);
 };
 
@@ -266,6 +262,10 @@ var vars$1 = {
   border_radius: vars.unit_block_border_radius,
   padding_vertical: 3 * vars.grid_unit_component,
   padding_horizontal: 5 * vars.grid_unit_component,
+
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_timing_function: "ease-in-out",
 
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)",

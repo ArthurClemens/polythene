@@ -4,7 +4,6 @@ import classes from "polythene-css-classes/menu";
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
-const DEFAULT_ANIMATION_DURATION = .220;
 const DEFAULT_OFFSET_H           = 0;
 const DEFAULT_TYPE               = "floating";
 const MIN_SIZE                   = 1.5;
@@ -71,7 +70,6 @@ const transitionOptions = (state, attrs, isShow) => ({
     el: state.dom()
   },
   showClass: classes.visible,
-  defaultDuration: DEFAULT_ANIMATION_DURATION,
 });
 
 const showMenu = (state, attrs) =>

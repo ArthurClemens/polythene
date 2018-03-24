@@ -31,7 +31,16 @@
   align-items: center;
   pointer-events: all;
   justify-content: center;
-  margin: 0 auto
+  margin: 0 auto;
+  transition-delay: 0s;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  opacity: 0
+}
+
+.pe-notification.pe-notification--visible {
+  opacity: 1
 }
 
 .pe-notification .pe-notification__content {

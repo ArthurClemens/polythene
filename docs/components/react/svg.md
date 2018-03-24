@@ -2,7 +2,7 @@
 
 # SVG component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -14,15 +14,18 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [SVG options](../svg.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/qm31tx7b/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -42,6 +45,7 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
 
 Note that JSX needs SVG attributes to be camelCased; see [React: All Supported SVG Attributes](https://facebook.github.io/react/docs/dom-elements.html#all-supported-svg-attributes).
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/3v5v5kdb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -55,7 +59,8 @@ const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=
 h(SVG, { content: h.trust(starsSVG) })
 ~~~
 
-<a name="with-source-files"></a>
+
+<a id="with-source-files"></a>
 ### With source files
 
 ~~~jsx
@@ -68,7 +73,8 @@ or with hyperscript:
 h(SVG, { src: "app/assets/stars.svg" })
 ~~~
 
-<a name="usage-with-icon"></a>
+
+<a id="usage-with-icon"></a>
 ### Usage with Icon
 
 SVG options can be passed to [Icon](../icon.md):
@@ -94,16 +100,19 @@ h(Icon, { svg: { content: h.trust(starsSVG) }) }
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the SVG appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~jsx
@@ -123,6 +132,7 @@ or with hyperscript:
 h(SVG, { className: "themed-svg" })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [SVG CSS classes](../../../packages/polythene-css-classes/svg.js).
@@ -133,6 +143,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/svg"
 ~~~
 
+<a id="style-option"></a>
 #### Style option
 
 Some style attributes can be set using option `style`. For example:
@@ -141,7 +152,8 @@ Some style attributes can be set using option `style`. For example:
 <SVG style={{ color: "#ef6c00" }}>{starsSVG}</SVG>
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

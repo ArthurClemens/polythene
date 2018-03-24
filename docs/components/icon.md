@@ -2,7 +2,7 @@
 
 Displays an icon (image or [SVG](svg.md)).
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -14,7 +14,8 @@ Displays an icon (image or [SVG](svg.md)).
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Set SVG or image
@@ -22,17 +23,20 @@ Displays an icon (image or [SVG](svg.md)).
 * Create round avatar portrait image
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/icon.md)
 * [Usage with React](react/icon.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="icon-options"></a>
+
+<a id="icon-options"></a>
 ### Icon options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -42,7 +46,8 @@ Displays an icon (image or [SVG](svg.md)).
 | **size**      | optional | String | "regular" | Sets the size: either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px). Adds CSS class `pe-icon--small`, etcetera |
 | **avatar**    | optional | Boolean | | Set to `true` to add class `pe-icon--avatar` which creates a round portrait image |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -57,7 +62,8 @@ Displays an icon (image or [SVG](svg.md)).
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Icon is composed from:
@@ -65,7 +71,8 @@ Icon is composed from:
 * [SVG](svg.md) (when using option `svg`)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Icon classes](../../packages/polythene-css-classes/icon.js)

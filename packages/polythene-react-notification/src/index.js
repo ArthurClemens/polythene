@@ -1,6 +1,6 @@
 import { StateComponent, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreNotificationInstance as core, transitions } from "polythene-core-notification";
+import { coreNotificationInstance as core } from "polythene-core-notification";
 import classes from "polythene-css-classes/notification";
 
 export const NotificationInstance = StateComponent(core);
@@ -16,7 +16,6 @@ const options = {
   instance:       NotificationInstance,
   placeholder:    `span.${classes.placeholder}`,
   queue:          true,
-  transitions
 };
 
 const Multiple = Multi({ options, renderer });

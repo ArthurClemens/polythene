@@ -1,6 +1,6 @@
 # Change log
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" depth="2" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
   - [Next](#next)
@@ -9,19 +9,26 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="releases"></a>
+
+<a id="releases"></a>
 ## Releases
 
 
-<a name="next"></a>
+
+<a id="next"></a>
 ### Next
 
 (in development)
 
-* New Drawer component
+* Refactoring of transition code
+  * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
+  * Transitions now read existing CSS styles
+  * It is now possible to set duration and delay in a component theme
+  * Added options `showTimingFunction` and `hideTimingFunction`
 
 Changes to components:
 
+* New [Drawer](components/drawer.md) component
 * Harmonisation of border options:
   * Button, Card and List: options `borders` and `bordered` are deprecated; use `border` instead
   * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
@@ -34,22 +41,24 @@ Changes to components:
   * Added option `fullbleed` to remove side padding
   * Added option `border` to set a bottom border
 
-<a name="100"></a>
+
+<a id="100"></a>
 ### 1.0.0
 
 Equal to rc.11.
 
-<a name="pre-releases"></a>
+
+<a id="pre-releases"></a>
 ## Pre releases
 
-<a name="100-rc11"></a>
+
 #### 1.0.0-rc.11
 
 Changes to components:
 
 * Toolbar: Added support for action links. Use class `pe-action`.
 
-<a name="100-rc10"></a>
+
 #### 1.0.0-rc.10
 
 Removed `polythene-fastclick` as it is no longer needed - the tap response on mobile is now sufficiently fast.
@@ -73,7 +82,7 @@ Changes to components:
 Bug fixes.
 
 
-<a name="100-rc9"></a>
+
 #### 1.0.0-rc.9
 
 To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
@@ -91,7 +100,7 @@ Changes to components:
 Bug fixes (thanks sjungwirth and ItsLeeOwen!).
 
 
-<a name="100-rc8"></a>
+
 #### 1.0.0-rc.8
 
 Updated for React 16.
@@ -106,13 +115,13 @@ Changes to components:
 Various bug fixes (thanks sjungwirth!).
 
 
-<a name="100-rc7"></a>
+
 #### 1.0.0-rc.7
 
 Fix for newly introduced bug in button onclick handling.
 
 
-<a name="100-rc6"></a>
+
 #### 1.0.0-rc.6
 
 * CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
@@ -130,7 +139,7 @@ Changes to components:
 Various bug fixes.
 
 
-<a name="100-rc5"></a>
+
 #### 1.0.0-rc.5
 
 Contains fixes for server-side rendering.
@@ -156,7 +165,7 @@ Changes to components:
 Various bug fixes. 
 
 
-<a name="100-rc4"></a>
+
 #### 1.0.0-rc.4
 
 Changes to components:
@@ -175,7 +184,7 @@ Changes to components:
 Various bug fixes.
 
 
-<a name="100-rc1-to-100-rc3"></a>
+
 #### 1.0.0-rc.1 to 1.0.0-rc.3
 
 Me learning to publish with Lerna.

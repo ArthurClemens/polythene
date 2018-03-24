@@ -1,9 +1,9 @@
 [Back to Theme main page](../theming.md)
 
-<a name="custom-css"></a>
+
 # Custom CSS
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Using CSS styles](#using-css-styles)
 - [Using CSS-in-JS](#using-css-in-js)
@@ -15,7 +15,8 @@
 Writing CSS gives you more options for styling, but requires some knowledge about the component's generated HTML structure. When a component structure would change in the future, the CSS style may no longer work, so use this method with caution.
 
 
-<a name="using-css-styles"></a>
+
+<a id="using-css-styles"></a>
 ## Using CSS styles
 
 You can load extra styles as a CSS file and attach that to the head, or use your bundler / module loader's preferred method.
@@ -47,7 +48,8 @@ Note: to change a style of the component's base class, you must add the base cla
 ~~~
 
 
-<a name="using-css-in-js"></a>
+
+<a id="using-css-in-js"></a>
 ## Using CSS-in-JS
 
 Polythene uses [j2c](http://j2c.py.gy) to write styles directly to the head of the page. A Polythene j2c style object looks like this:
@@ -111,7 +113,8 @@ styler.add("app-buttons", buttonStyles)
 ~~~
 
 
-<a name="writing-css-for-wrapper-components"></a>
+
+<a id="writing-css-for-wrapper-components"></a>
 ## Writing CSS for wrapper components
 
 When we add a class name to a wrapper component, we are adding that to the list of class names of the original component. For example with our example from [Wrapper components](wrapper-components.md), adding class "secondary-button" generates:

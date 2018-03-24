@@ -1,11 +1,12 @@
 
-export default ({ show, target, h, Menu, List, ListTile, didHide, getState, transitionOptions }) =>
+export default ({ show, target, h, Menu, List, ListTile, didHide, getState, transitionOptions, className }) =>
   h(Menu,
     Object.assign(
       {}, 
       transitionOptions,
       {
         target,
+        className,
         show,
         didHide,
         getState,

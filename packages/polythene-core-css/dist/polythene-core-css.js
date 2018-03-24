@@ -302,7 +302,7 @@
     };
   };
 
-  // Creats a transition with presets
+  // Creates a transition with presets
   // mixin.defaultTransition("opacity", vars.animation_duration)
   var defaultTransition = function defaultTransition() {
     var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
@@ -367,6 +367,7 @@
       // `allStyles` and `styleElement` can be displosed of after initialization.
       allStyles = styleElement = null;
     }
+
     // Helpers, in alphabetic order
 
     function camelCase(str) {
@@ -384,12 +385,10 @@
       styleAttr[property] = value;
       return !!styleAttr[property];
     }
-    function supportedMedia(condition) {
-      styleElement.textContent = '@media (' + condition + '){}';
-      // Opera 11 treats unknown conditions as 'all', the rest as 'not all'.
-      // So far tested in modern browsers (01/01/2017), and desktop IE9, FF4,
-      // Opera 11/12, and Safari 6. TY SauceLabs.
-      return !/^@media(?:\s+not)?\s+all/.test(styleElement.sheet.cssRules[0].cssText);
+    function supportedMedia(property, value) {
+      styleElement.textContent = '@media (' + property + ':' + value + '){}';
+      // The !!~indexOf trick. False for -1, true otherwise.
+      return !!~styleElement.sheet.cssRules[0].cssText.indexOf(value);
     }
     function _supportedProperty(property) {
       return property in styleAttr;
@@ -414,25 +413,27 @@
       // build a map of {'@ruleX': '@-prefix-ruleX'}
       for (var atrule in atrules) {
         var test = atrule + ' ' + (atrules[atrule] || '');
-        if (!supportedRule('@' + test) && supportedRule('@' + fixers.prefix + test)) {
+        for (var i = fixers.prefixes.length; i--;) {
+          if (!supportedRule('@' + test) && supportedRule('@' + fixers.prefixes[i] + test)) {
 
-          fixers.hasAtrules = true;
-          fixers.atrules['@' + atrule] = '@' + fixers.prefix + atrule;
+            fixers.hasAtrules = true;
+            fixers.atrules['@' + atrule] = '@' + fixers.prefixes[i] + atrule;
+          }
         }
       }
 
       // Standard
-      fixers.hasDppx = supportedMedia('resolution:1dppx');
+      fixers.hasDppx = supportedMedia('resolution', '1dppx');
       // Webkit
-      fixers.hasPixelRatio = supportedMedia(fixers.prefix + 'device-pixel-ratio:1');
+      fixers.hasPixelRatio = supportedMedia(fixers.prefix + 'device-pixel-ratio', '1');
       // Opera
-      fixers.hasPixelRatioFraction = supportedMedia(fixers.prefix + 'device-pixel-ratio:1/1');
+      fixers.hasPixelRatioFraction = supportedMedia(fixers.prefix + 'device-pixel-ratio', '1/1');
 
       if (fixers.hasPixelRatio || fixers.hasPixelRatioFraction) {
         fixers.properties['resolution'] = fixers.prefix + 'device-pixel-ratio';
         fixers.properties['min-resolution'] = fixers.prefix + 'min-device-pixel-ratio';
         fixers.properties['max-resolution'] = fixers.prefix + 'max-device-pixel-ratio';
-        if (supportedMedia('min-' + fixers.prefix + 'device-pixel-ratio:1')) {
+        if (supportedMedia('min-' + fixers.prefix + 'device-pixel-ratio', '1')) {
           // Mozilla/Firefox tunred a vendor prefix into a vendor infix
           fixers.properties['min-resolution'] = 'min-' + fixers.prefix + 'device-pixel-ratio';
           fixers.properties['max-resolution'] = 'max-' + fixers.prefix + 'device-pixel-ratio';
@@ -516,7 +517,7 @@
       'box-direction': 'box-direction', // we prepopulate the cache for the above case.
       'box-orient': 'box-orient',
       // !!flex-flow => flex-direction and/or flex-wrap, covered in `plugin.js`
-      // ?flex-grow =>
+      'flex-grow': 'box-flex', // https://compat.spec.whatwg.org/#propdef--webkit-box-flex
       // ?flex-shrink =>
       'flex-wrap': 'box-lines',
       'justify-content': 'box-pack',
@@ -560,7 +561,7 @@
     };
 
     function detectKeywords(fixers) {
-      if (fixers.prefix === '') return;
+      if (fixers.prefixes.length === 0) return;
 
       // build a map of {propertyI: {keywordJ: previxedKeywordJ, ...}, ...}
       for (var i = 0; i < keywords.length; i++) {
@@ -568,10 +569,11 @@
             property = keywords[i].props[0];
         // eslint-disable-next-line
         for (var j = 0, keyword; keyword = keywords[i].values[j]; j++) {
-
-          if (!supportedDecl(property, keyword) && supportedDecl(property, fixers.prefix + keyword)) {
-            fixers.hasKeywords = true;
-            map[keyword] = fixers.prefix + keyword;
+          for (var k = fixers.prefixes.length; k--;) {
+            if (!supportedDecl(property, keyword) && supportedDecl(property, fixers.prefixes[k] + keyword)) {
+              fixers.hasKeywords = true;
+              map[keyword] = fixers.prefixes[k] + keyword;
+            }
           }
         }
         // eslint-disable-next-line
@@ -580,14 +582,15 @@
         }
       }
       if (fixers.keywords.display && fixers.keywords.display.flexbox && !supportedDecl('display', 'flex')) {
-        // old IE
+        // IE 10, Flexbox 2012
         fixers.keywords.display.flex = fixers.keywords.display.flexbox;
         fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-flexbox'];
-        for (var k in flex2012Props) {
+        fixers.flexbox2012 = true;
+        for (k in flex2012Props) {
           fixers.properties[k] = flex2012Props[k];
           fixers.keywords[k] = flex2012Values;
         }
-      } else if (fixers.keywords.display && fixers.keywords.display.box && !supportedDecl('display', 'flex')) {
+      } else if (fixers.keywords.display && fixers.keywords.display.box && !supportedDecl('display', 'flex') && !supportedDecl('display', fixers.prefix + 'flex')) {
         // old flexbox spec
         fixers.keywords.display.flex = fixers.keywords.display.box;
         fixers.keywords.display['inline-flex'] = fixers.keywords.display['inline-box'];
@@ -596,6 +599,8 @@
           fixers.properties[k] = fixers.prefix + flex2009Props[k];
           fixers.keywords[k] = flex2009Values;
         }
+      } else if (fixers.keywords.display && !fixers.keywords.display.box && !fixers.keywords.display.flex && !fixers.keywords.display.flexbox && !supportedDecl('display', 'flex')) {
+        fixers.jsFlex = true;
       }
       if (!supportedDecl('color', 'initial') && supportedDecl('color', fixers.prefix + 'initial')) {
         // `initial` does not use the `hasKeywords` branch, no need to set it to true.
@@ -632,13 +637,20 @@
         }
       }
 
-      var highest = 0;
-      for (var prefix in prefixCounters) {
-        if (highest < prefixCounters[prefix]) {
-          highest = prefixCounters[prefix];
-          fixers.prefix = '-' + prefix + '-';
-        }
-      }
+      var prefixes = [];
+      for (var p in prefixCounters) {
+        prefixes.push(p);
+      }prefixes.sort(function (a, b) {
+        return prefixCounters[b] - prefixCounters[a];
+      });
+
+      fixers.prefixes = prefixes.map(function (p) {
+        return '-' + p + '-';
+      });
+      fixers.prefix = fixers.prefixes[0] || '';
+      // Edge supports both `webkit` and `ms` prefixes, but `ms` isn't detected with the method above.
+      // the selector comes from http://browserstrangeness.com/css_hacks.html
+      if (supportedRule('_:-ms-lang(x), _:-webkit-full-screen')) fixers.prefixes.push('-ms-');
       fixers.Prefix = camelCase(fixers.prefix);
     }
 
@@ -654,31 +666,35 @@
 
       if (fixers.prefix === '') return;
       var selectors = {
-        ':any-link': ':any-link',
-        ':read-only': ':read-only',
-        ':read-write': ':read-write',
-        '::selection': '::selection',
-
-        ':fullscreen': ':fullscreen', //TODO sort out what changed between specs
+        ':any-link': null,
+        '::backdrop': null,
+        ':fullscreen': null, //TODO sort out what changed between specs
         ':full-screen': ':fullscreen',
-        '::backdrop': '::backdrop',
-
         //sigh
+        '::placeholder': null,
         ':placeholder': '::placeholder',
-        '::placeholder': '::placeholder',
+        '::input-placeholder': '::placeholder',
         ':input-placeholder': '::placeholder',
-        '::input-placeholder': '::placeholder'
+        ':read-only': null,
+        ':read-write': null,
+        '::selection': null
       };
 
       // builds an array of selectors that need a prefix.
       for (selector in selectors) {
         prefixed = prefixSelector(selector);
-        if (!supportedRule(selector) && supportedRule(prefixed)) {
+        if (!supportedRule(selectors[selector] || selector) && supportedRule(prefixed)) {
           fixers.hasSelectors = true;
-          fixers.selectorList.push(selectors[selector]);
-          fixers.selectorMap[selectors[selector]] = prefixed;
+          fixers.selectorList.push(selectors[selector] || selector);
+          fixers.selectorMap[selectors[selector] || selector] = prefixed;
         }
       }
+    }
+
+    function detectWebkitCompat(fixers) {
+      if (!supportedDecl('background-clip', 'text') && supportedDecl('-webkit-background-clip', 'text')) fixers.WkBCTxt = true;['background-clip', 'text-fill-color', 'text-stroke-color', 'text-stroke-width', 'text-stroke'].forEach(function (prop) {
+        if (!supportedProperty(prop) && supportedProperty('-webkit-' + prop)) fixers.properties[prop] = '-webkit-' + prop;
+      });
     }
 
     function blankFixers() {
@@ -697,11 +713,14 @@
         fixSelector: null,
         fixValue: null,
         flexbox2009: false,
+        flexbox2012: false,
         functions: [],
         initial: null,
+        jsFlex: false,
         keywords: {},
         placeholder: null,
         prefix: '',
+        prefixes: [],
         Prefix: '',
         properties: {},
         selectorList: [],
@@ -710,7 +729,8 @@
           'transition': 1,
           'transition-property': 1,
           'will-change': 1
-        }
+        },
+        WkBCTxt: false // -webkit-background-clip: text
       };
     }
 
@@ -722,6 +742,7 @@
       detectAtrules(fixers);
       detectKeywords(fixers);
       detectFunctions(fixers);
+      detectWebkitCompat(fixers);
       finalize();
     }
 
@@ -769,6 +790,58 @@
 
     function makeLexer(before, targets, after) {
       return new RegExp("\"(?:\\\\[\\S\\s]|[^\"])*\"|'(?:\\\\[\\S\\s]|[^'])*'|\\/\\*[\\S\\s]*?\\*\\/|" + before + '((?:' + targets.join('|') + '))' + after, 'gi');
+    }
+
+    // declarations
+    // ------------
+    // function trim(s) {
+    //   return s.replace(/^\s*(.*?)\s*$/, '$1')
+    // }
+
+    function fixDecl(fixers, emit, property, value) {
+      if (typeof property !== 'string' || property.charAt(0) === '-') return emit(property, value);
+
+      if (!(typeof value === 'string' || typeof value === 'number')) {
+        return emit(fixers.properties[property] || fixers.fixProperty(property), value);
+      }
+
+      value = value + '';
+      if (fixers.jsFlex) {
+        if (property === 'display' && (value === 'flex' || value === 'inline-flex')) {
+          emit('-js-display', value);
+          return;
+        }
+      } else if (fixers.flexbox2009) {
+        // TODO: flex only takes one value in the 2009 spec
+        // if (property === 'flex') {
+        //   value = trim(value)
+        //   if (value === 'none' || value === 'initial') emit(property, '0')
+        //   else if (value === 'auto') emit(property, '1')
+        //   else emit(property, value.replace(/^(\d+)(?=\W|$).*/, '$1'))
+        //   return
+        // } else
+        if (property === 'flex-flow') {
+          value.split(/\s+/).forEach(function (v) {
+            // recurse! The lack of `next.` is intentional.
+            if (v.indexOf('wrap') > -1) fixDecl(fixers, emit, 'flex-wrap', v);else if (v !== '') fixDecl(fixers, emit, 'flex-direction', v);
+          });
+          return;
+        } else if (property === 'flex-direction') {
+          emit(fixers.properties['box-orient'], value.indexOf('column') > -1 ? 'block-axis' : 'inline-axis');
+          emit(fixers.properties['box-direction'], value.indexOf('-reverse') > -1 ? 'reverse' : 'normal');
+          return;
+        }
+      }
+      // else if (fixers.flexbox2012) {
+      //   // if (property === 'flex' && value.indexOf('calc(') !== -1) {
+      //   //   var parsed =
+      //   // }
+      // }
+      if (fixers.WkBCTxt && property === 'background-clip' && value === 'text') {
+        emit('-webkit-background-clip', value);
+      } else {
+        emit(fixers.properties[property] || fixers.fixProperty(property), fixers.fixValue(value, property));
+      }
     }
 
     function finalizeFixers(fixers) {
@@ -847,7 +920,7 @@
       // @media (resolution:...) {
       // -------------------------
 
-      var resolutionMatcher = /((?:min-|max-)?resolution)\s*:\s*((?:\d*.)?\d+)dppx/g;
+      var resolutionMatcher = /((?:min-|max-)?resolution)\s*:\s*((?:\d*\.)?\d+)dppx/g;
       var resolutionReplacer = fixers.hasPixelRatio ? function (_, prop, param) {
         return fixers.properties[prop] + ':' + param;
       } : fixers.hasPixelRatioFraction ? function (_, prop, param) {
@@ -865,10 +938,16 @@
       // @supports ... {
       // ---------------
 
+      var supportsProp, supportsValue;
+      var atSupportsParamsFixer = function atSupportsParamsFixer(property, value) {
+        supportsProp = property;
+        supportsValue = value;
+      };
       // regexp built by scripts/regexps.js
-      var atSupportsParamsMatcher = /\(\s*([-\w]+)\s*:\s*((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\((?:"(?:\\[\S\s]|[^"])*"|'(?:\\[\S\s]|[^'])*'|\/\*[\S\s]*?\*\/|\([^\)]*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*)/g;
+      var atSupportsParamsMatcher = /\(\s*([-\w]+)\s*:\s*((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|\((?:'(?:\\[\S\s]|[^'])*'|"(?:\\[\S\s]|[^"])*"|\/\*[\S\s]*?\*\/|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*\)|[^\)])*)/g;
       function atSupportsParamsReplacer(match, prop, value) {
-        return '(' + (fixers.properties[prop] || fixers.fixProperty(prop)) + ':' + fixers.fixValue(value, prop);
+        fixDecl(fixers, atSupportsParamsFixer, prop, value);
+        return '(' + supportsProp + ':' + supportsValue;
       }
       fixers.fixAtSupportsParams = function (params) {
         return params.replace(atSupportsParamsMatcher, atSupportsParamsReplacer);
@@ -878,46 +957,34 @@
     var commonFixers;
 
     function initBrowser() {
+      // exported for the test suite
       commonFixers = blankFixers();
       if (typeof getComputedStyle === 'function') browserDetector(commonFixers);
       finalizeFixers(commonFixers);
     }
     initBrowser();
 
-    function prefixPlugin(j2c) {
+    function prefixPlugin() {
       var fixers = commonFixers;
       var cache = [];
-
-      if (j2c) j2c.setPrefixDb = function (f) {
-        if (cache.indexOf(f) === -1) {
-          finalizeFixers(f);
-          cache.push(f);
-        }
-        fixers = f;
-        return prefixPlugin;
-      };
       return {
-        $filter: function $filter(next) {
+        set: {
+          setPrefixDb: function setPrefixDb(f) {
+            if (cache.indexOf(f) === -1) {
+              finalizeFixers(f);
+              cache.push(f);
+            }
+            fixers = f;
+            return prefixPlugin;
+          }
+        },
+        filter: function filter(next) {
           return {
             atrule: function atrule(rule, kind, params, hasBlock) {
               next.atrule(fixers.hasAtrules && fixers.atrules[rule] || rule, kind, rule === '@media' ? fixers.fixAtMediaParams(params) : rule === '@supports' ? fixers.fixAtSupportsParams(params) : params, hasBlock);
             },
             decl: function decl(property, value) {
-              if (!property || !(typeof value === 'string' || typeof value === 'number')) {
-                return next.decl(fixers.properties[property] || fixers.fixProperty(property), value);
-              }
-              value = value + '';
-              if (property === 'flex-flow' && fixers.flexbox2009) {
-                value.split(' ').forEach(function (v) {
-                  // recurse! The lack of `next.` is intentional.
-                  if (v.indexOf('wrap') > -1) decl('flex-wrap', v);else if (v !== '') decl('flex-direction', v);
-                });
-              } else if (property === 'flex-direction' && fixers.flexbox2009) {
-                next.decl(fixers.properties['box-orient'], value.indexOf('column') > -1 ? 'block-axis' : 'inline-axis');
-                next.decl(fixers.properties['box-direction'], value.indexOf('-reverse') > -1 ? 'reverse' : 'normal');
-              } else {
-                next.decl(fixers.properties[property] || fixers.fixProperty(property), fixers.fixValue(value, property));
-              }
+              fixDecl(fixers, next.decl, property, value);
             },
             rule: function rule(selector) {
               next.rule(fixers.hasSelectors ? fixers.fixSelector(selector) : selector);

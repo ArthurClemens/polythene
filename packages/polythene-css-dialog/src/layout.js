@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { mixin, flex } from "polythene-core-css";
+import { flex } from "polythene-core-css";
 
 export default (selector, componentVars) => [{
   ".pe-dialog__holder": {
@@ -7,7 +7,6 @@ export default (selector, componentVars) => [{
   },
   [selector]: [
     flex.layoutCenterCenter,
-    mixin.defaultTransition("all"), // animation duration is set in component options
     {
       position: componentVars.position,
       top: 0,
@@ -18,6 +17,11 @@ export default (selector, componentVars) => [{
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
       padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
       opacity: 0,
+
+      transitionDelay: componentVars.animation_delay,
+      transitionDuration: componentVars.animation_duration,
+      transitionTimingFunction: componentVars.animation_timing_function,
+      transitionProperty: "all",
 
       ".pe-dialog--visible": {
         opacity: 1
@@ -35,6 +39,7 @@ export default (selector, componentVars) => [{
 
       " .pe-dialog__content": {
         position: "relative",
+        transitionProperty: "all",
         borderRadius: componentVars.border_radius + "px",
       },
 

@@ -2,7 +2,7 @@
 
 # Raised Button component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -13,13 +13,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Raised Button options](../raised-button.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/e6werwgv/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -33,22 +35,26 @@ m(RaisedButton, {
 })
 ~~~
 
-<a name="links"></a>
+
+<a id="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the raised button appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -64,6 +70,7 @@ m(RaisedButton, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Raised Button CSS classes](../../../packages/polythene-css-classes/raised-button.js).
@@ -74,6 +81,7 @@ Class names can be imported with:
 import classes from "polythene-css-classes/raised-button"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -87,7 +95,8 @@ m(RaisedButton, {
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 

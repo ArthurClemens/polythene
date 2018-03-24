@@ -2,7 +2,7 @@
 
 # Shadow component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -11,17 +11,20 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Shadow options](../shadow.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Shadow has 5 depth levels, configured with option `z`.
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/uej4sw3q/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -33,6 +36,7 @@ import { Shadow } from "polythene-react"
 <Shadow z={2} />
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/ohuxgfef/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -90,12 +94,15 @@ class InteractiveShadow extends Component {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the [Shadow CSS classes](../../../packages/polythene-css-classes/shadow.js).

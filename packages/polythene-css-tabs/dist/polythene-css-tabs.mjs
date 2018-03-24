@@ -123,7 +123,7 @@ var layout = (function (selector, componentVars) {
           backgroundColor: "inherit",
           transitionProperty: componentVars.tab_label_transition_property,
           transitionDuration: componentVars.scroll_button_fade_duration + "s",
-          transitionTimingFunction: "ease-out",
+          transitionTimingFunction: "ease-in-out",
           transitionDelay: componentVars.scroll_button_fade_delay + "s",
           opacity: componentVars.scroll_button_opacity
         }
@@ -247,7 +247,7 @@ var layout = (function (selector, componentVars) {
       transform: "translate3d(0,0,0)",
       transformOrigin: "left 50%",
       transitionProperty: "all",
-      transitionTimingFunction: "ease-out",
+      transitionTimingFunction: "ease-in-out",
       position: "absolute",
       height: componentVars.tab_indicator_height + "px",
       bottom: 0,

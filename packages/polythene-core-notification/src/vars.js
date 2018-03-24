@@ -16,6 +16,10 @@ export default {
   font_size:              14,
   line_height:            20,
 
+  animation_delay:           "0s",
+  animation_duration:        ".3s",
+  animation_timing_function: "ease-in-out",
+
   color_light_background: rgba(vars.color_light_background),
   color_light_text:       rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
 

@@ -4,7 +4,7 @@ Simple wrapper for SVG XML.
 
 This is a low-level and simple module for handling SVGs. If you want to use SVG for icons, the best method is to use [Icon](icon.md) directly.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Usage](#usage)
 - [Options](#options)
@@ -13,17 +13,20 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 
 <!-- /MarkdownTOC -->
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/svg.md)
 * [Usage with React](react/svg.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -38,7 +41,8 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [SVG classes](../../packages/polythene-css-classes/svg.js)

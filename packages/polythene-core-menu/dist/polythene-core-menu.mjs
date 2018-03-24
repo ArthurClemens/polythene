@@ -58,7 +58,6 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var DEFAULT_ANIMATION_DURATION = .220;
 var DEFAULT_OFFSET_H = 0;
 var DEFAULT_TYPE = "floating";
 var MIN_SIZE = 1.5;
@@ -141,8 +140,7 @@ var transitionOptions = function transitionOptions(state, attrs, isShow) {
     domElements: {
       el: state.dom()
     },
-    showClass: classes.visible,
-    defaultDuration: DEFAULT_ANIMATION_DURATION
+    showClass: classes.visible
   };
 };
 
@@ -306,6 +304,10 @@ var vars$1 = {
   max_size_small_screen: 5,
   size_factor: vars.grid_unit_menu,
   border_radius: vars.unit_block_border_radius,
+
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_timing_function: "ease-in-out",
 
   color_light_background: rgba(vars.color_light_background),
   color_dark_background: rgba(vars.color_dark_background)

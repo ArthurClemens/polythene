@@ -4,7 +4,7 @@ Displays a list of [List Tiles](list-tile.md), with an optional header.
 
 Lists are also the base component of [Menus](menu.md).
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -17,7 +17,8 @@ Lists are also the base component of [Menus](menu.md).
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * All [List Tile](list-tile.md) main features
@@ -27,17 +28,20 @@ Lists are also the base component of [Menus](menu.md).
 * Compact display
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/list.md)
 * [Usage with React](react/list.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="list-specific-options"></a>
+
+<a id="list-specific-options"></a>
 ### List specific options
 
 | **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
@@ -48,7 +52,8 @@ Lists are also the base component of [Menus](menu.md).
 | **tiles**         | use `tiles` or `content` | Array of type String, hyperscript or component | | List of [List Tiles](list-tile.md) |
 | **all**  | optional       | Options Object | | [List Tiles](list-tile.md) options that will be applied to all tiles; only works when List children are passed as options (instead of passing a list of List Tile components) |
 
-<a name="list-appearance-options"></a>
+
+<a id="list-appearance-options"></a>
 ### List appearance options
 
 | **Parameter**       |  **Required** | **Type** | **Default** | **Description** |
@@ -59,7 +64,8 @@ Lists are also the base component of [Menus](menu.md).
 | **padding**         | optional | String | "both" | Vertical padding; possible values: "top", "bottom", "none", "both" |
 
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -75,7 +81,8 @@ Lists are also the base component of [Menus](menu.md).
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 List is composed from:
@@ -83,7 +90,8 @@ List is composed from:
 * [List Tile](list-tile.md)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [List classes](../../packages/polythene-css-classes/list.js)

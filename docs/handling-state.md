@@ -4,7 +4,7 @@ The state of form elements is controlled by your app. In React parlance, these f
 
 That means that your app sets the initial state and subsequent mutated states of the form component.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [State flow](#state-flow)
 - [Receiving component state](#receiving-component-state)
@@ -16,7 +16,8 @@ That means that your app sets the initial state and subsequent mutated states of
 <!-- /MarkdownTOC -->
 
 
-<a name="state-flow"></a>
+
+<a id="state-flow"></a>
 ## State flow
 
 A state change for Checkbox follows these steps:
@@ -31,12 +32,14 @@ A state change for Checkbox follows these steps:
 | 6. | Component is rendered | checked | |
 
 
-<a name="receiving-component-state"></a>
+
+<a id="receiving-component-state"></a>
 ## Receiving component state
 
 Option `onChange` is called after user input, and receives an object with the current component state. The shape of the returned object differs slightly per component. 
 
-<a name="mithril-example"></a>
+
+<a id="mithril-example"></a>
 ## Mithril example
 
 Checkbox:
@@ -61,7 +64,8 @@ m(TextField, {
 })
 ~~~
 
-<a name="using-streams"></a>
+
+<a id="using-streams"></a>
 ### Using streams
 
 Polythene uses streams internally to manage state - they are a lightweight and versatile tool to store state values.
@@ -91,7 +95,8 @@ const SimpleForm = {
 ~~~
 
 
-<a name="react-example"></a>
+
+<a id="react-example"></a>
 ## React example
 
 #### With JSX
@@ -143,7 +148,8 @@ m(TextField, {
 ~~~
 
 
-<a name="components-supporting-onchange"></a>
+
+<a id="components-supporting-onchange"></a>
 ## Components supporting onChange
 
 * [Menu](components/menu.md)

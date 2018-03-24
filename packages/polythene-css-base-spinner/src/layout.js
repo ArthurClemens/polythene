@@ -15,7 +15,9 @@ const raisedSize = (size, componentVars) => {
 
 export default (selector, componentVars) => [{
   [selector]: {
-    transitionTimingFunction: "ease-out",
+    transitionDelay: componentVars.animation_delay,
+    transitionDuration: componentVars.animation_duration,
+    transitionTimingFunction: componentVars.animation_timing_function,
     transitionProperty: "opacity",
     opacity: 0,
 

@@ -2,7 +2,7 @@
 
 # Notification component for React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -12,31 +12,35 @@
   - [Example with action, dialog, pausing](#example-with-action-dialog-pausing)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [Transitions](#transitions)
   - [Dark or light tone](#dark-or-light-tone)
+  - [Transitions](#transitions)
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Notification options](../notification.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 Other than most other components, `Notification` is not rendered directly but invoked through function calls `show` and `hide`.
 
 The Notification component itself does not accept any appearance options. Instead, you pass options when calling `show` - allowing to show custom notifications from anywhere in the app.
 
-<a name="notification-spawner"></a>
+
+<a id="notification-spawner"></a>
 ### Notification spawner
 
 Notifications will be spawned from `<Notification />` (hyperscript: `h(Notification)`). To show notification messages, use `Notification.show()` - more on that later.
 
 Because a notification should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
+<a id="with-jsx"></a>
 #### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/c3wsbhj0/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -55,6 +59,7 @@ render() {
 }
 ~~~
 
+<a id="with-hyperscript"></a>
 #### With hyperscript
 
 <a href="https://jsfiddle.net/ArthurClemens/08g6aqpd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
@@ -75,6 +80,7 @@ Side notes:
 * Writing the notification at the bottom makes for less surprises. Mobile Safari sometimes has surprises with `position: fixed`, so placing it here will most likely work as intended.
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than all other content.
 
+<a id="multiple-notification-spawners"></a>
 #### Multiple notification spawners
 
 Usually you'll use only one location for notifications - on top of all content and centered on screen - but it is possible to have notifications spawned from a different location.
@@ -97,6 +103,7 @@ Calls to show the message will then also need to pass that spawn:
 Notification.show(messageOptions, { spawn: "notifs" })
 ~~~
 
+<a id="spawner-position"></a>
 #### Spawner position
 
 The notifications holder has by default CSS property `position: fixed`. This will float the messages on top of the content below. In order to show notifications inside a container, use option `position: "container"`:
@@ -107,7 +114,8 @@ Notification.show(messageOptions, { spawn: "notifs", position: "container" })
 
 This will render the holder with `position: absolute`. The containing element needs to have `position: relative`.
 
-<a name="notification-functions"></a>
+
+<a id="notification-functions"></a>
 ### Notification functions
 
 ~~~javascript
@@ -119,6 +127,7 @@ Notification.count()
 Notification.clear()
 ~~~
 
+<a id="show"></a>
 #### show
 
 Shows a new message.
@@ -163,6 +172,7 @@ Notification.show(optionsFn)
 
 Using a function ensures that the options are read afresh with the new state.
 
+<a id="hide"></a>
 #### hide
 
 Hides the current message.
@@ -182,6 +192,7 @@ Notification.hide({ spawn: "notifs" })
 Notification.hide().then(() => console.log("Notification hidden"))
 ~~~
 
+<a id="pause"></a>
 #### pause
 
 Pauses the timer of the current message.
@@ -193,6 +204,7 @@ Pauses the timer of the current message.
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Returns nothing |
 
+<a id="unpause"></a>
 #### unpause
 
 Unpauses the timer of the current message.
@@ -202,6 +214,7 @@ Unpauses the timer of the current message.
 | **spawnOptions** | optional | Options object | | Pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
 | **Returns** |||| Returns nothing |
 
+<a id="clear"></a>
 #### clear
 
 Clears the lists of messages.
@@ -216,6 +229,7 @@ Notification.hide(spawnOptions).then(() =>
 )
 ~~~
 
+<a id="count"></a>
 #### count
 
 Returns the number of messages.
@@ -228,16 +242,19 @@ Example:
 let messageCount = Notification.count()
 ~~~
 
-<a name="callbacks"></a>
+
+<a id="callbacks"></a>
 ### Callbacks
 
 Callback functions that are called after the transition: `didShow` and `didHide`.
 
-<a name="example-with-action-dialog-pausing"></a>
+
+<a id="example-with-action-dialog-pausing"></a>
 ### Example with action, dialog, pausing
 
 Let's say the notification has an Undo button. Clicking it shows a dialog is on screen with OK/Cancel buttons. During the time the dialog is on screen, the notification is paused, so it will still there after the dialog Cancel button is clicked.
 
+<a id="with-jsx-1"></a>
 #### With JSX
 
 ~~~jsx
@@ -294,6 +311,7 @@ export default () =>
   />
 ~~~
 
+<a id="with-hyperscript-1"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -352,16 +370,19 @@ export default () =>
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Notification appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -375,6 +396,7 @@ NotificationCSS.addStyle(".themed-notification", {
 <Notification className="themed-notification" />
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using the CSS classes:
@@ -392,6 +414,7 @@ import classes from "polythene-css-classes/notification"
 import classes from "polythene-css-classes/snackbar"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -405,50 +428,24 @@ Some style attributes can be set using option `style`. For example:
 />
 ~~~
 
-<a name="transitions"></a>
+
+<a id="dark-or-light-tone"></a>
+### Dark or light tone
+
+If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
+
+* Use `tone: "dark"` to render light on dark
+* Use `tone: "light"` to locally render normally when dark tone is set
+
+
+<a id="transitions"></a>
 ### Transitions
 
-The transitions for showing and hiding of notifications can be customized with transition options - see "Transition options" in [Notification options](../notification.md). For example:
+See [Transitions](../../transitions.md)
 
-~~~javascript
-{
-  showDelay:    .1,
-  hideDelay:    .1,
-  showDuration: .1,
-  hideDuration: .3
-}
-~~~
 
-#### Custom transition
 
-Use option `transitions` to define custom transition behaviour. See `src/transitions.js` for the default behavior.
-
-To create a fade-in while moving up:
-
-~~~javascript
-const messageOptions = {
-  transitions: {
-    show: ({ el }) => ({
-      el,
-      showDuration: .5,
-      beforeShow:   () => (
-        el.style.opacity = 0,
-        el.style.transform = "translate3d(0, 20px, 0)"
-      ),
-      show:         () => (
-        el.style.opacity = 1,
-        el.style.transform = "translate3d(0, 0px,  0)"
-      )
-    }),
-    hide: ({ el }) => ({
-      el,
-      hideDuration: .5,
-      hide:         () => el.style.opacity = 0
-    })
-  }
-}
-~~~
-
+<a id="transitioning-a-container"></a>
 #### Transitioning a container
 
 **Instructions for Snackbar**
@@ -459,6 +456,7 @@ For this, specify option `containerSelector`.
 
 Note that the container has `position: relative`. The messages will have `position: absolute`.
 
+<a id="with-jsx-2"></a>
 #### With JSX
 
 ~~~jsx
@@ -479,6 +477,7 @@ Snackbar.show({
 });
 ~~~
 
+<a id="with-hyperscript-2"></a>
 #### With hyperscript
 
 ~~~javascript
@@ -498,13 +497,4 @@ Snackbar.show({
   // more message options
 });
 ~~~
-
-<a name="dark-or-light-tone"></a>
-### Dark or light tone
-
-If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
-
-* Use `tone: "dark"` to render light on dark
-* Use `tone: "light"` to locally render normally when dark tone is set
-
 

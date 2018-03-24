@@ -8,7 +8,7 @@ Differences from [Raised Button](raised-button.md) behaviour:
 * The ripple has a 2/3 decay speed
 * No selected state
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -22,7 +22,8 @@ Differences from [Raised Button](raised-button.md) behaviour:
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * All [Button](button.md) and [Raised Button](raised-button.md) main features
@@ -30,7 +31,8 @@ Differences from [Raised Button](raised-button.md) behaviour:
 * Display mini size
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/fab.md)
@@ -38,15 +40,18 @@ Differences from [Raised Button](raised-button.md) behaviour:
 
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="button-options"></a>
+
+<a id="button-options"></a>
 ### Button options
 
 See: [Button options](Button.md#options)
 
-<a name="fab-specific-options"></a>
+
+<a id="fab-specific-options"></a>
 ### FAB specific options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -54,7 +59,8 @@ See: [Button options](Button.md#options)
 | **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
 | **mini**      | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -71,7 +77,8 @@ See: [Button options](Button.md#options)
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 FAB is composed from:
@@ -81,13 +88,15 @@ FAB is composed from:
 * [Icon](icon.md) (when using option `icon`)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [FAB classes](../../packages/polythene-css-classes/fab.js)
 
 
-<a name="future"></a>
+
+<a id="future"></a>
 ## Future
 
 > "The floating action button animates onto the screen as an expanding piece of material, by default. The icon within it may be animated."

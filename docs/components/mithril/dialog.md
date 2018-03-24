@@ -2,7 +2,7 @@
 
 # Dialog component for Mithril
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
 - [Usage](#usage)
@@ -16,22 +16,26 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
 [Dialog options](../dialog.md)
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 <a href="https://jsfiddle.net/ArthurClemens/t4uy26Lb/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-<a name="calling-a-dialog"></a>
+
+<a id="calling-a-dialog"></a>
 ### Calling a Dialog
 
 Other than most other components, `Dialog` is not rendered directly but invoked through function calls `show` and `hide`.
 
+<a id="dialog-spawner"></a>
 #### Dialog spawner
 
 Dialogs will be spawned from the component invocation: `m(Dialog)`. To show a dialog instance, use `Dialog.show()` - more on that later.
@@ -58,6 +62,7 @@ Style side notes:
 * The order of elements in the root view may differ - CSS attribute `z-index` is set higher than other content.
 
 
+<a id="multiple-dialog-spawners"></a>
 #### Multiple dialog spawners
 
 Usually you'll use only one location for dialogs - on top of all content and centered on screen - but it is possible to have a dialog instance spawned from a different location.
@@ -74,10 +79,12 @@ Calls to show the that particular dialog will then also need to pass the same sp
 Dialog.show(dialogOptions, { spawn: "special" })
 ~~~
 
+<a id="multiple-dialogs"></a>
 #### Multiple dialogs
 
 Multiple dialogs can co-exist for the same spawn. Add a unique `id` to each dialog. When using an array of dialogs, differentiate with unique `key`s.
 
+<a id="showing-and-hiding-dialogs"></a>
 #### Showing and hiding dialogs
 
 Dialog functions:
@@ -87,6 +94,7 @@ Dialog.show(options)
 Dialog.hide(options)
 ~~~
 
+<a id="show"></a>
 ##### show
 
 Shows a new dialog instance.
@@ -129,6 +137,7 @@ Dialog.show(
 ~~~
 
 
+<a id="hide"></a>
 ##### hide
 
 Hides the current dialog instance.
@@ -149,6 +158,7 @@ Dialog.hide({ spawn: "special" })
 Dialog.hide().then(() => console.log("dialog hidden"))
 ~~~
 
+<a id="callbacks"></a>
 #### Callbacks
 
 Two optional callback options can be used after the transition: `didShow` and `didHide`. Useful when a route change is needed after the dialog is displayed or hidden:
@@ -159,7 +169,8 @@ const dialogOptions = {
 }
 ~~~
 
-<a name="drawing-a-dialog"></a>
+
+<a id="drawing-a-dialog"></a>
 ### Drawing a Dialog
 
 A dialog pane consist of the elements:
@@ -176,6 +187,7 @@ Variations:
 * Use `borders` to conditionally add a top and bottom border to the body
 
 
+<a id="example-with-a-toolbar-as-custom-header-and-footer"></a>
 #### Example with a Toolbar as custom header and footer
 
 A dialog header can contain any content, but using a [Toolbar](../toolbar.md) is convenient to display action buttons (not according to Material Design specs, but nonetheless used in many interfaces).
@@ -202,6 +214,7 @@ Dialog.show(dialogOptions)
 ~~~
 
 
+<a id="example-with-modal-and-backdrop"></a>
 #### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
@@ -231,6 +244,7 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
+<a id="full-screen-dialog"></a>
 #### Full screen dialog
 
 A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used).
@@ -299,7 +313,8 @@ Dialog.show({
 })
 ~~~
 
-<a name="dynamic-content"></a>
+
+<a id="dynamic-content"></a>
 ### Dynamic content
 
 There are 2 ways to keep the dialog contents up to date:
@@ -310,6 +325,7 @@ There are 2 ways to keep the dialog contents up to date:
 Examples of both are shown below.
 
 
+<a id="passing-dialog-options-as-a-function"></a>
 #### Passing dialog options as a function
 
 When using static dialog content, passing a POJO as dialog options to `Dialog.show` works just fine. This falls short when the content needs to be updated with outside state changes. By passing the options as a function, you ensure that the options are read afresh with the new state:
@@ -378,6 +394,7 @@ Dialog.show(() =>
 )
 ~~~
 
+<a id="continuously-calling-dialogshow"></a>
 ##### Continuously calling Dialog.show
 
 The example shows a counter that is reflected in the dialog.
@@ -426,16 +443,19 @@ const Updating = {
 ~~~
 
 
-<a name="appearance"></a>
+
+<a id="appearance"></a>
 ## Appearance
 
-<a name="styling"></a>
+
+<a id="styling"></a>
 ### Styling
 
 Below are examples how to change the Dialog appearance, either with a theme or with CSS.
 
 You can find more information about theming in  [Theming](../../theming.md).
 
+<a id="themed-component"></a>
 #### Themed component
 
 ~~~javascript
@@ -452,6 +472,7 @@ m(Dialog, {
 })
 ~~~
 
+<a id="css"></a>
 #### CSS
 
 Change CSS using:
@@ -469,6 +490,7 @@ import classes from "polythene-css-classes/dialog"
 import classes from "polythene-css-classes/dialog-pane"
 ~~~
 
+<a id="style"></a>
 #### Style
 
 Some style attributes can be set using option `style`. For example:
@@ -482,7 +504,7 @@ Dialog.show({
 })
 ~~~
 
-<a name="dark-or-light-tone"></a>
+<a id="dark-or-light-tone"></a>
 ### Dark or light tone
 
 If the component - or a component's parent - has option `tone` set to "dark", the component will be rendered with light colors on dark. 
@@ -491,47 +513,8 @@ If the component - or a component's parent - has option `tone` set to "dark", th
 * Use `tone: "light"` to locally render normally when dark tone is set
 
 
-<a name="transitions"></a>
+<a id="transitions"></a>
 ### Transitions
 
-The transitions for showing and hiding of dialogs can be customized with transition options - see "Transition options" in the Options table below. For example:
-
-~~~javascript
-const messageOptions = {
-  showDelay:    .1,
-  hideDelay:    .1,
-  showDuration: .1,
-  hideDuration: .3
-}
-~~~
-
-#### Custom transition
-
-Use option `transitions` to define custom transition behaviour. See `src/transitions.js` for the default behavior.
-
-To create a fade in while moving up:
-
-~~~javascript
-const dialogOptions = {
-  transitions: {
-    show: ({ el }) => ({
-      el,
-      showDuration: .5,
-      beforeShow:   () => (
-        el.style.opacity = 0,
-        el.style.transform = "translate3d(0, 20px, 0)"
-      ),
-      show:         () => (
-        el.style.opacity = 1,
-        el.style.transform = "translate3d(0, 0px,  0)"
-      )
-    }),
-    hide: ({ el }) => ({
-      el,
-      hideDuration: .5,
-      hide:         () => el.style.opacity = 0
-    })
-}
-~~~
-
+See [Transitions](../../transitions.md)
 

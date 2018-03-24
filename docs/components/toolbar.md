@@ -4,7 +4,7 @@ Displays a horizontal bar containing a label and action items.
 
 See [Material Design Toolbars](https://material.io/guidelines/layout/structure.html#structure-Toolbars) for examples of different usages.
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Main features](#main-features)
 - [Usage](#usage)
@@ -17,24 +17,28 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 
 <!-- /MarkdownTOC -->
 
-<a name="main-features"></a>
+
+<a id="main-features"></a>
 ## Main features
 
 * Flexibly composable with labels and icon buttons
 * Compact display
 
 
-<a name="usage"></a>
+
+<a id="usage"></a>
 ## Usage
 
 * [Usage with Mithril](mithril/toolbar.md)
 * [Usage with React](react/toolbar.md)
 
 
-<a name="options"></a>
+
+<a id="options"></a>
 ## Options
 
-<a name="toolbar-appearance-options"></a>
+
+<a id="toolbar-appearance-options"></a>
 ### Toolbar appearance options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -44,7 +48,8 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **border** | optional | Boolean | false | Set to `true` to add a bottom border |
 | **fullbleed** | optional | Boolean | false | Set to `true` to remove side padding |
 
-<a name="toolbartitle-options"></a>
+
+<a id="toolbartitle-options"></a>
 ### ToolbarTitle options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -53,7 +58,8 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **center**    | optional | Boolean | false | Set to `true` to center the text |
 | **indent**    | optional | Boolean | false | Set to `true` to indent the text as if it would be next to an icon |
 
-<a name="common-component-options"></a>
+
+<a id="common-component-options"></a>
 ### Common component options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
@@ -69,7 +75,8 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
 Toolbar is often composed from:
@@ -78,7 +85,8 @@ Toolbar is often composed from:
 * ToolbarTitle (see usage examples)
 
 
-<a name="css-classes"></a>
+
+<a id="css-classes"></a>
 ## CSS classes
 
 * [Toolbar classes](../../packages/polythene-css-classes/toolbar.js)

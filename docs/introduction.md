@@ -1,6 +1,6 @@
 # Polythene: Material Design component library for Mithril and React
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" -->
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Material Design / custom design](#material-design--custom-design)
 - [No architecture](#no-architecture)
@@ -12,13 +12,15 @@
 
 <!-- /MarkdownTOC -->
 
-<a name="material-design--custom-design"></a>
+
+<a id="material-design--custom-design"></a>
 ## Material Design / custom design
 
 Polythene components closely follow the [Material Design specification](https://material.io/guidelines/material-design/introduction.html). But styling is set up in a flexible way - it is easy to [create a theme or change the style entirely](theming.md).
 
 
-<a name="no-architecture"></a>
+
+<a id="no-architecture"></a>
 ## No architecture
 
 Polythene components are a loose collection of UI components that can be used standalone or optionally combined into larger components. There is no overarching architecture - it is all quite simple.
@@ -26,10 +28,12 @@ Polythene components are a loose collection of UI components that can be used st
 State is handled by your app. That means that your app sets the initial state and subsequent mutated states of the form component. More details and examples in [Handling state](handling-state.md).
 
 
-<a name="composition"></a>
+
+<a id="composition"></a>
 ## Composition
 
-<a name="example-svg"></a>
+
+<a id="example-svg"></a>
 ### Example: SVG 
 
 [SVG](components/svg.md) is a component that illustrates how small components can be combined into larger ones. SVG is most often used as parameter to [Icon](components/icon.md).
@@ -72,7 +76,8 @@ h(Icon,
 )
 ~~~
 
-<a name="example-icon-button"></a>
+
+<a id="example-icon-button"></a>
 ### Example: Icon Button
 
 And the Icon component can also be used to create a somewhat larger component, for example [Icon Button](components/icon-button.md).
@@ -176,7 +181,8 @@ h(IconButton,
 ~~~
 
 
-<a name="example-functions-to-write-sub-components"></a>
+
+<a id="example-functions-to-write-sub-components"></a>
 ### Example: functions to write sub-components
 
 JavaScript is extremely well-suited to compose components. For example, you can just use `map` over an array to create custom components.
@@ -249,7 +255,8 @@ h(Menu, {
 })
 ~~~
 
-<a name="next"></a>
+
+<a id="next"></a>
 ## Next
 
 * [Getting started with Mithril](getting-started-mithril.md)
