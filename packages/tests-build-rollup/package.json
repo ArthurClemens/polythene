@@ -6,9 +6,9 @@
   "main": "dist/js/index",
   "module": "dist/js/index",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "node ../../node_modules/rimraf dist/*",
     "rollup": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "yarn run rollup",
+    "build": "yarn run clean && yarn run rollup",
     "dev": "http-server -p 5000 dist"
   },
   "dependencies": {

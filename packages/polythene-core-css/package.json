@@ -5,10 +5,10 @@
   "main": "dist/polythene-core-css",
   "module": "dist/polythene-core-css.mjs",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "node ../../node_modules/rimraf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "write-css": "node ./scripts/writeCSS.js",
-    "build": "yarn run rollup && yarn run write-css"
+    "build": "yarn run clean && yarn run rollup && yarn run write-css"
   },
   "files": [
     "dist",

@@ -5,7 +5,7 @@
   "main": "dist/polythene-css",
   "module": "dist/polythene-css.mjs",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "node ../../node_modules/rimraf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build-standalone": "DEPS=1 MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-css-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
     "copy-css": "node ./scripts/copyCSS.js",

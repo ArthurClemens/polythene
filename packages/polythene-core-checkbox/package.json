@@ -5,9 +5,9 @@
   "main": "dist/polythene-core-checkbox",
   "module": "dist/polythene-core-checkbox.mjs",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "node ../../node_modules/rimraf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "yarn run rollup"
+    "build": "yarn run clean && yarn run rollup"
   },
   "files": [
     "dist",

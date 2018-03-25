@@ -5,10 +5,10 @@
   "main": "dist/polythene-css-drawer",
   "module": "dist/polythene-css-drawer.mjs",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "node ../../node_modules/rimraf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build:css": "node ../../scripts/writeComponentCSS.js",
-    "build": "yarn run rollup && yarn run build:css"
+    "build": "yarn run clean && yarn run rollup && yarn run build:css"
   },
   "files": [
     "dist",
