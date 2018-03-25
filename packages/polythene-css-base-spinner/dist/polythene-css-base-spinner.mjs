@@ -43,16 +43,13 @@ var raisedSize = function raisedSize(size, componentVars) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
+  return [_defineProperty({}, selector, [componentVars.animation_hide_css, {
     transitionDelay: componentVars.animation_delay,
     transitionDuration: componentVars.animation_duration,
     transitionTimingFunction: componentVars.animation_timing_function,
-    transitionProperty: "opacity",
-    opacity: 0,
+    transitionProperty: "all",
 
-    ".pe-spinner--visible, &.pe-spinner--permanent": {
-      opacity: 1
-    },
+    ".pe-spinner--visible, &.pe-spinner--permanent": [componentVars.animation_show_css],
 
     ".pe-spinner--small": sizes(componentVars.size_small),
     ".pe-spinner--regular": sizes(componentVars.size_regular),
@@ -70,7 +67,7 @@ var layout = (function (selector, componentVars) {
       ".pe-spinner--large": raisedSize(componentVars.size_large, componentVars),
       ".pe-spinner--fab": raisedSize(componentVars.size_fab, componentVars)
     }
-  })];
+  }])];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

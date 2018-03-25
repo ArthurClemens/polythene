@@ -11,6 +11,8 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
     animation_duration:        ".8s",
     animation_delay:           ".2s",
     animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+    animation_hide_css:        "opacity: 0; transform: scale(0.8);",
+    animation_show_css:        "opacity: 1; transform: scale(1.0);"
   });
 
   const dialogOptions = {
@@ -106,6 +108,49 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       })
     },
     {
+      name: "Option: transitions",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Custom transitions",
+        transitions: {
+          show: ({ el }) => ({
+            el,
+            duration:   .5,
+            before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+            transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
+          }),
+          hide: ({ el }) => ({
+            el,
+            duration:   .5,
+            transition: () => el.style.opacity = 0,
+          })
+        }
+      })
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Transitions as theme",
+        className: "notification-tests-transitions"
+      })
+    },
+    {
+      name: "Option: showDelay, showDuration, hideDuration",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Custom timing",
+        showDuration: .9,
+        hideDuration: 1.2,
+        hideDelay: .3,
+        showTimingFunction: "ease-in-out",
+        hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+      })
+    },
+    {
       name: "Option: title (1 line), action",
       interactive: true,
       exclude: true,
@@ -192,49 +237,6 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       interactive: true,
       exclude: true,
       component: containerSelector(buttonGroup)
-    },
-    {
-      name: "Option: transitions",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "Custom transitions",
-        transitions: {
-          show: ({ el }) => ({
-            el,
-            duration:   .5,
-            before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
-            transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
-          }),
-          hide: ({ el }) => ({
-            el,
-            duration:   .5,
-            transition: () => el.style.opacity = 0,
-          })
-        }
-      })
-    },
-    {
-      name: "Transitions as theme",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "Transitions as theme",
-        className: "notification-tests-transitions"
-      })
-    },
-    {
-      name: "Option: showDelay, showDuration, hideDuration",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "Custom timing",
-        showDuration: .9,
-        hideDuration: 1.2,
-        hideDelay: .3,
-        showTimingFunction: "ease-in-out",
-        hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
-      })
     },
   ];
 };

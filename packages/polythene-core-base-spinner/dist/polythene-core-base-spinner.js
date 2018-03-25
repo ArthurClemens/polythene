@@ -131,6 +131,8 @@
     animation_delay: "0s",
     animation_duration: ".220s",
     animation_timing_function: "ease-in-out",
+    animation_hide_css: "opacity: 0;",
+    animation_show_css: "opacity: 1;",
 
     raisedSize: function raisedSize(size) {
       var padding = size * 0.25;

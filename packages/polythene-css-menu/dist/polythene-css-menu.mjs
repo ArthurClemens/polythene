@@ -73,7 +73,7 @@ var widthStyle = function widthStyle(componentVars, size) {
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
-  }), {
+  }), componentVars.animation_hide_css, {
     transitionDelay: componentVars.animation_delay,
     transitionDuration: componentVars.animation_duration,
     transitionTimingFunction: componentVars.animation_timing_function,
@@ -87,9 +87,7 @@ var layout = (function (selector, componentVars) {
       width: "auto"
     },
 
-    "&.pe-menu--visible": {
-      opacity: 1
-    },
+    "&.pe-menu--visible": [componentVars.animation_show_css],
 
     "&.pe-menu--permanent": {
       position: "relative",

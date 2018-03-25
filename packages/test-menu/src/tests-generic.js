@@ -16,6 +16,8 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
     animation_duration:        ".8s",
     animation_delay:           ".2s",
     animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+    animation_hide_css:        "opacity: 0; transform: translateY(20px);",
+    animation_show_css:        "opacity: 1; transform: translateY(0);",
   });
 
   return [

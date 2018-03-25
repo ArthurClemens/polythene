@@ -221,6 +221,8 @@
     animation_delay: "0s",
     animation_duration: ".3s",
     animation_timing_function: "ease-in-out",
+    animation_hide_css: "opacity: 0;",
+    animation_show_css: "opacity: 1;",
 
     color_light_background: rgba(polytheneTheme.vars.color_light_background),
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_dark_primary),

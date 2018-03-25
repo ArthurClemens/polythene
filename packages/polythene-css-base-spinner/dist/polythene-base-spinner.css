@@ -1,9 +1,9 @@
 .pe-spinner {
+  opacity: 0;
   transition-delay: 0s;
   transition-duration: .22s;
   transition-timing-function: ease-in-out;
-  transition-property: opacity;
-  opacity: 0
+  transition-property: all
 }
 
 .pe-spinner.pe-spinner--permanent,.pe-spinner.pe-spinner--visible {

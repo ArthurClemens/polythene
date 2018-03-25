@@ -1,7 +1,7 @@
 import opener from "./components/opener";
 import progressOpener from "./components/progress-opener";
 import progressSlider from "./components/progress-slider";
-import { MaterialDesignSpinnerCSS, IOSSpinnerCSS } from "polythene-css";
+import { BaseSpinnerCSS, MaterialDesignSpinnerCSS, IOSSpinnerCSS } from "polythene-css";
 
 export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinner, RaisedButton, Slider, renderer, keys }) => {
 
@@ -10,6 +10,14 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
     color_light_2: "red",
     color_light_3: "orange",
     color_light_4: "red",
+  });
+
+  BaseSpinnerCSS.addStyle(".tests-spinner-transitions", {
+    animation_duration:        ".8s",
+    animation_delay:           ".2s",
+    animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+    animation_hide_css:        "opacity: 0; transform: scale(0.1);",
+    animation_show_css:        "opacity: 1; transform: scale(1.0);"
   });
 
   IOSSpinnerCSS.addStyle(".tests-spinner-themed-ios-spinner", {
@@ -72,6 +80,19 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
         Spinner: MaterialDesignSpinner,
         spinners: [
           { className: "tests-spinner-themed-md-spinner" }
+        ]
+      })
+    },
+    {
+      name: "Transition as theme",
+      interactive: true,
+      component: opener({
+        renderer,
+        keys,
+        RaisedButton,
+        Spinner: MaterialDesignSpinner,
+        spinners: [
+          { className: "tests-spinner-transitions" }
         ]
       })
     },

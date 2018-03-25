@@ -10,6 +10,7 @@
   display: flex;
   -ms-flex-align: center;
   align-items: center;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +18,6 @@
   bottom: 0;
   z-index: 5000;
   padding: 24px 40px;
-  opacity: 0;
   transition-delay: 0s;
   transition-duration: .22s;
   transition-timing-function: ease-in-out;

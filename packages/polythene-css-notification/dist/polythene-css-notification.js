@@ -25,7 +25,7 @@
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, [polytheneCoreCss.flex.layoutCenter, {
+    return [_defineProperty({}, selector, [polytheneCoreCss.flex.layoutCenter, componentVars.animation_hide_css, {
       pointerEvents: "all",
       justifyContent: "center",
       margin: "0 auto",
@@ -35,9 +35,7 @@
       transitionProperty: "all",
       opacity: 0,
 
-      ".pe-notification--visible": {
-        opacity: 1
-      },
+      ".pe-notification--visible": [componentVars.animation_show_css],
 
       " .pe-notification__content": {
         width: componentVars.width + "px",

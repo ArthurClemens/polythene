@@ -654,6 +654,41 @@ exports[`test Theme (color) -- iOS Spinner 1`] = `
 </div>
 `;
 
+exports[`test Transition as theme 1`] = `
+<div
+  style={
+    Object {
+      "position": "relative",
+    }
+  }>
+  <RaisedButton
+    events={
+      Object {
+        "onClick": [Function],
+      }
+    }
+    label="Toggle" />
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "margin": "20px 0 0 0",
+      }
+    }>
+    <div
+      style={
+        Object {
+          "marginRight": "20px",
+        }
+      }>
+      <MaterialDesignSpinner
+        className="tests-spinner-transitions"
+        show={false} />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test iOS Spinner -- dark tone class -- Material Design Spinner 1`] = `
 <div
   style={

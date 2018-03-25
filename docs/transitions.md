@@ -41,6 +41,9 @@ CSS is created from component style variables, located in each component's `vars
 // polythene-core-dialog/src/vars.js
 animation_delay:                 "0s",
 animation_duration:              ".220s",
+animation_timing_function:       "ease-in-out",
+animation_hide_css:              "opacity: 0;",
+animation_show_css:              "opacity: 1;",
 ~~~
 
 Any method listed above will override these defaults.
@@ -94,7 +97,7 @@ Option `transitions` is an Object that contains the functions `show` and `hide`.
 * `after`
 * `timingFunction`
 
-`show` and `hide` receive all previously passed options, with references to DOM elements added (usually `el` but sometimes other elements too - see list of transient components below).
+Functions `show` and `hide` receive all previously passed options, combined with references to DOM elements (usually `el` but sometimes other elements too - see list of transient components below).
 
 [Dialog](components/dialog.md) uses a simple fade in / fade out transition. This is a good starting point to demonstrate scripted transitions. The equivalent in JavaScript using `transitions` would be:
 
@@ -189,9 +192,9 @@ The default component style variables can be overridden in a custom theme style:
 import { DialogCSS } from "polythene-css"
 
 DialogCSS.addStyle(".dialog-transitions", {
-  animation_duration:     ".8s",
-  animation_delay:        ".2s"
-});
+  animation_duration: ".8s",
+  animation_delay:    ".2s"
+})
 
 //...
 Dialog({
@@ -201,6 +204,34 @@ Dialog({
 ~~~
 
 Note that CSS variables should contain a unit: "s" or "ms".
+
+<a id="effects"></a>
+#### Effects
+
+You can create extra effects by passing custom CSS declarations:
+
+* `animation_hide_css` - CSS declaration at rest / when hidden
+* `animation_show_css` - CSS declaration when shown
+
+For example:
+
+~~~javascript
+DialogCSS.addStyle(".dialog-transitions", {
+  // ...
+  animation_hide_css: "opacity: 0; transform: translate3d(0, 20px, 0);",
+  animation_show_css: "opacity: 1; transform: translate3d(0, 0, 0);"
+})
+~~~
+
+or:
+
+~~~javascript
+BaseSpinnerCSS.addStyle(".spinner-transitions", {
+  // ...
+  animation_hide_css: "opacity: 0; transform: scale(0.1);",
+  animation_show_css: "opacity: 1; transform: scale(1.0);"
+})
+~~~
 
 
 <a id="custom-css"></a>
@@ -224,14 +255,14 @@ For example:
 <a id="transient-components"></a>
 ## Transient components
 
-| **Component**                              |  **DOM elements**  |
-| ------------------------------------------ | ------------------ |
-| [Dialog](components/dialog.md)             | `el`, `contentEl`, `backdropEl` |
-| [Drawer](components/drawer.md)             | `el`, `contentEl`, `backdropEl` |
-| [Menu](components/menu.md)                 | `el` |
-| [Notification](components/notification.md) | `el`, `containerEl` |
-| [Snackbar](components/snackbar.md)         | `el`, `containerEl` |
-| [Spinner](components/spinner.md)           | `el` |
+| **Component**                              | **CSS module**    |  **transition DOM elements**  |
+| ------------------------------------------ | ----------------- | ------------------ |
+| [Dialog](components/dialog.md)             | `DialogCSS`       | `el`, `contentEl`, `backdropEl` |
+| [Drawer](components/drawer.md)             | `DrawerCSS`       | `el`, `contentEl`, `backdropEl` |
+| [Menu](components/menu.md)                 | `MenuCSS`         | `el` |
+| [Notification](components/notification.md) | `NotificationCSS` | `el`, `containerEl` |
+| [Snackbar](components/snackbar.md)         | `SnackbarCSS`     | `el`, `containerEl` |
+| [BaseSpinner](components/spinner.md)       | `BaseSpinnerCSS`  | `el` |
 
 
 <a id="changes"></a>

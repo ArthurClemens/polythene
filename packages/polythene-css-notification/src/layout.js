@@ -4,6 +4,7 @@ import { flex } from "polythene-core-css";
 export default (selector, componentVars) => [{
   [selector]: [
     flex.layoutCenter,
+    componentVars.animation_hide_css,
     {      
       pointerEvents: "all",
       justifyContent: "center",
@@ -14,9 +15,9 @@ export default (selector, componentVars) => [{
       transitionProperty: "all",
       opacity: 0,
 
-      ".pe-notification--visible": {
-        opacity: 1
-      },
+      ".pe-notification--visible": [
+        componentVars.animation_show_css
+      ],
 
       " .pe-notification__content": {
         width: componentVars.width + "px",

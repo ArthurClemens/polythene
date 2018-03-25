@@ -20,9 +20,8 @@ const widthStyle = (componentVars, size) => {
 
 export default (selector, componentVars) => [{
   [selector]: [
-    componentVars.sizes.map((size) =>
-      widthStyle(componentVars, size)
-    ),
+    componentVars.sizes.map(size => widthStyle(componentVars, size)),
+    componentVars.animation_hide_css,
     {
       transitionDelay: componentVars.animation_delay,
       transitionDuration: componentVars.animation_duration,
@@ -37,9 +36,9 @@ export default (selector, componentVars) => [{
         width: "auto"
       },
 
-      "&.pe-menu--visible": {
-        opacity: 1
-      },
+      "&.pe-menu--visible": [
+        componentVars.animation_show_css
+      ],
 
       "&.pe-menu--permanent": {
         position: "relative",
@@ -65,5 +64,5 @@ export default (selector, componentVars) => [{
         }
       }
     }
-  ],
+  ]
 }];

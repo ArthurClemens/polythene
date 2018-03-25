@@ -79,7 +79,7 @@
       ".pe-dialog__holder": {
         height: "100%"
       }
-    }, selector, [polytheneCoreCss.flex.layoutCenterCenter, {
+    }, selector, [polytheneCoreCss.flex.layoutCenterCenter, componentVars.animation_hide_css, {
       position: componentVars.position,
       top: 0,
       left: 0,
@@ -88,16 +88,13 @@
       zIndex: polytheneTheme.vars.z_dialog,
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
       padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
-      opacity: 0,
 
       transitionDelay: componentVars.animation_delay,
       transitionDuration: componentVars.animation_duration,
       transitionTimingFunction: componentVars.animation_timing_function,
       transitionProperty: "all",
 
-      ".pe-dialog--visible": {
-        opacity: 1
-      },
+      ".pe-dialog--visible": [componentVars.animation_show_css],
 
       ".pe-dialog--full-screen": {
         padding: 0,
