@@ -1,4 +1,36 @@
 import stream from "mithril/stream";
+import { styler } from "polythene-core-css";
+
+const styles = [{
+  " .tests-nested-tabs-main": {
+    padding: "20px",
+    background: "#fff",
+
+    " h3": {
+      margin: 0
+    },
+    " .text": {
+      margin: "1rem 0 0 0"
+    },
+    " .sub-tabs": {
+      marginTop: "20px",
+
+      " .content": {
+        padding: "20px",
+        color: "#666",
+        background: "#f0f0f0"
+      },
+      " h5": {
+        margin: 0
+      },
+      " .text": {
+        margin: "1rem 0 0 0"
+      }
+    }
+  },
+}];
+
+styler.add("polythene-test-tabs-nested", styles);
 
 const mainButtons = [
   { id: "new", label: "New" },
@@ -26,41 +58,19 @@ const subTabsNew = ({ h, Tabs }) => {
       const state = vnode.state;
       const tab = state.tab();
 
-      return h("div",
-        {
-          style: {
-            marginTop: "20px"
-          }
-        },
+      return h(".sub-tabs",
         [
           h(Tabs, {
             tabs: subButtonsNew,
             autofit: true,
             onChange: newTab => state.tab(newTab)
           }),
-          h("div",
-            {
-              style: {
-                padding: "20px",
-                color: "#666",
-                background: "#f0f0f0"
-              }
-            },
+          h(".content",
             [
               h("h5",
-                {
-                  style: {
-                    margin: 0
-                  }
-                },
                 tab.options.label
               ),
-              h("div",
-                {
-                  style: {
-                    margin: "1rem 0 0 0"
-                  }
-                },
+              h(".text",
                 `${tab.options.label} ${lorem}`
               ),
             ]
@@ -92,28 +102,12 @@ export default ({ h, Tabs }) => {
           autofit: true,
           onChange: newTab => state.tab(newTab)
         }),
-        h("div",
-          {
-            style: {
-              padding: "20px",
-              background: "#fff"
-            }
-          },
+        h(".tests-nested-tabs-main",
           [
             h("h3",
-              {
-                style: {
-                  margin: 0
-                }
-              },
               tab.options.label
             ),
-            h("div",
-              { style:
-                {
-                  margin: "1rem 0 0 0"
-                }
-              },
+            h(".text",
               `${tab.options.label} ${lorem}`
             ),
             tab.options.id === "new" && h(SubTabsNew)
@@ -123,4 +117,3 @@ export default ({ h, Tabs }) => {
     }
   };
 };
-
