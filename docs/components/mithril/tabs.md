@@ -8,6 +8,7 @@
 - [Usage](#usage)
   - [Scrollable tabs](#scrollable-tabs)
   - [Getting the tabs state](#getting-the-tabs-state)
+  - [Nested tabs](#nested-tabs)
 - [Appearance](#appearance)
   - [Mobile bottom menu](#mobile-bottom-menu)
   - [Scrollable tabs with custom arrow icons](#scrollable-tabs-with-custom-arrow-icons)
@@ -168,6 +169,15 @@ The `state` object contains data on the current tab:
 * `index`: Array index of the selected tab
 * `options`: the options that were passed to the tab button
 * `el`: the tab button HTML Element
+
+
+<a id="nested-tabs"></a>
+### Nested tabs
+
+See example:
+
+<a href="https://jsfiddle.net/ArthurClemens/x4dzdydf/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 
 
 

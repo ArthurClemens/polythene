@@ -53,4 +53,5 @@ Try out Polythene in JSFiddles.
 * Tabs
   * [Tabs](https://jsfiddle.net/ArthurClemens/dos13t3z/)
   * [Stateful tabs](https://jsfiddle.net/ArthurClemens/41kyvadm/)
+  * [Nested tabs](https://jsfiddle.net/ArthurClemens/x4dzdydf/)
 * [Toolbar](https://jsfiddle.net/ArthurClemens/t5hhcuxn/)
