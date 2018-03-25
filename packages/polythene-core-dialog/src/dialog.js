@@ -145,10 +145,11 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
       }
     }
   }
-
-  const pane = attrs.panes && attrs.panes.length
-    ? attrs.panes[0]
-    : createPane(vnode, { renderer, Pane } );
+  const pane = attrs.panesOptions && attrs.panesOptions.length
+    ? h(Pane, attrs.panesOptions[0])
+    : attrs.panes && attrs.panes.length
+      ? attrs.panes[0]
+      : createPane(vnode, { renderer, Pane } );
   return [
     attrs.backdrop && h("div",
       {

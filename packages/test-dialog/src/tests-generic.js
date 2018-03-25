@@ -168,17 +168,17 @@ export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Tool
       }
     },
     {
-      name: "Option: panes attrs",
+      name: "Option: panesOptions",
       interactive: true,
       exclude: true,
       component: {
         view: () => 
           Opener({
-            panes: [h(DialogPane, {
+            panesOptions: [{
               title: "Long dialog with a very long title that surely won't fit here",
               body: renderer.trust(longText),
               footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog })
-            })]
+            }]
           })
       }
     },

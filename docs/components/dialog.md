@@ -54,7 +54,8 @@ Displays a single dialog, or a stack of dialogs.
 | **menu**          | optional | [Menu](menu.md) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
 | **footer**        | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
-| **panes**         | optional | Array of type `DialogPane` | | Used internally |
+| **panes**         | optional | Array of `DialogPane` components (React) | | Used internally |
+| **panesOptions**  | optional | Array of `DialogPane` component options (Mithril)  | | Used internally |
 | **modal**         | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
 | **fullScreen**    | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
 | **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |

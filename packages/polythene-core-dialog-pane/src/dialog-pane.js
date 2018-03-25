@@ -99,6 +99,7 @@ export const createProps = (vnode, { keys: k }) => {
   const showBottomBorder = borders === "always" || (borders === "overflow" && state.bottomOverflow());
   const withHeader = attrs.header !== undefined || attrs.title !== undefined;
   const withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+  
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition

@@ -146,6 +146,7 @@ var createProps = function createProps(vnode, _ref) {
   var showBottomBorder = borders === "always" || borders === "overflow" && state.bottomOverflow();
   var withHeader = attrs.header !== undefined || attrs.title !== undefined;
   var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {
     className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")

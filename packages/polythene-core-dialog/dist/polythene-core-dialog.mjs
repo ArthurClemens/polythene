@@ -224,8 +224,7 @@ var createContent = function createContent(vnode, _ref3) {
       }
     }
   }
-
-  var pane = attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
+  var pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
   return [attrs.backdrop && h("div", {
     key: "backdrop",
     className: classes.backdrop
