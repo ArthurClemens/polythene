@@ -5,7 +5,7 @@
   "main": "dist/polythene-core-css",
   "module": "dist/polythene-core-css.mjs",
   "scripts": {
-    "clean": "node ../../node_modules/rimraf dist/*",
+    "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "write-css": "node ./scripts/writeCSS.js",
     "build": "yarn run clean && yarn run rollup && yarn run write-css"

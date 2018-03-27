@@ -5,7 +5,7 @@
   "main": "dist/polythene-scripts",
   "module": "dist/polythene-scripts.mjs",
   "scripts": {
-    "clean": "node ../../node_modules/rimraf dist/*",
+    "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
     "build": "yarn run clean && yarn run rollup",
     "test": "node test"

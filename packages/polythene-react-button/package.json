@@ -5,7 +5,7 @@
   "main": "dist/polythene-react-button",
   "module": "dist/polythene-react-button.mjs",
   "scripts": {
-    "clean": "node ../../node_modules/rimraf dist/*",
+    "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build": "yarn run clean && yarn run rollup"
   },

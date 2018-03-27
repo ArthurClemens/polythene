@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "main": "dist/js/test.js",
+  "main": "dist/js/test",
   "module": "dist/js/test.mjs",
   "scripts": {
+    "clean": "rm -rf dist/js/*",
     "dev": "npm-run-all --parallel dev:watch dev:serve",
     "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000 --host 0.0.0.0",
     "dev:watch": "webpack-cli --watch --config scripts/webpack.config.dev.js",
-    "build": "webpack-cli --config scripts/webpack.config.prod.js"
+    "webpack": "webpack-cli --config scripts/webpack.config.prod.js",
+    "build": "yarn run clean && yarn run webpack"
   },
   "dependencies": {
     "mithril": "1.1.6",
@@ -49,12 +51,13 @@
     "polythene-utilities": "^1.0.0"
   },
   "devDependencies": {
+    "babili-webpack-plugin": "^0.1.2",
     "compression-webpack-plugin": "^1.1.11",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "npm-run-all": "^4.1.2",
     "uglifyjs-webpack-plugin": "1.2.4",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
   }
 }
