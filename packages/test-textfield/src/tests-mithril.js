@@ -1,7 +1,7 @@
 import { renderer, keys, TextField, RaisedButton } from "polythene-mithril";
 import genericTests from "./tests-generic";
 import setValue from "./components/set-value-mithril-withAttr";
-import formValidation from "./components/form-validation-mithril";
+// import formValidation from "./components/form-validation-mithril";
 
 const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
 
@@ -20,7 +20,7 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
     );
   
   const SetValue = setValue({ h, TextField, RaisedButton });
-  const FormValidation = formValidation({ h, TextField, RaisedButton });
+  // const FormValidation = formValidation({ h, TextField, RaisedButton });
 
   return [
     {
@@ -36,16 +36,16 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
         )
       }
     },
-    {
-      name: "Form validation with github.com/ludbek/powerform",
-      interactive: true,
-      excluded: true,
-      component: {
-        view: () => block(
-          h(FormValidation)
-        )
-      }
-    },
+    // {
+    //   name: "Form validation with github.com/ludbek/powerform",
+    //   interactive: true,
+    //   excluded: true,
+    //   component: {
+    //     view: () => block(
+    //       h(FormValidation)
+    //     )
+    //   }
+    // },
   ];
 };
 
