@@ -19,7 +19,7 @@ export default ({ h, k, Switch }) => ({
       },`Checked: ${checked}`),
       h(Switch, {
         events: {
-          [k.onclick]: () => state.checked(!checked)
+          [k.onclick]: () => (console.log("click"), state.checked(!checked))
         },
         checked
       })

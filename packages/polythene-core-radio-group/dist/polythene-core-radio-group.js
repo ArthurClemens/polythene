@@ -60,7 +60,7 @@
       buttonOpts, {
         /* this component's options */
         onChange: function onChange(newState) {
-          return console.log("radio group onchange"), state.checkedValue(newState.value), attrs.onChange && attrs.onChange({ value: newState.value });
+          return state.checkedValue(newState.value), attrs.onChange && attrs.onChange({ value: newState.value });
         },
         checked: isChecked
       }));

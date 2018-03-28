@@ -1,6 +1,7 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { renderer, RadioButton, RadioGroup, keys } from "polythene-react";
 import genericTests from "./tests-generic";
+import RadioGroupOnChange from "./components/radio-group-onchange-jsx";
 
 const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no-unused-vars
 
@@ -64,8 +65,12 @@ const reactTests = ({ RadioButton, renderer: h }) => { // eslint-disable-line no
         ]} className="multiple" />
     },
     {
-      name: "Option: onChange (JSX)",
+      name: "RadioButtons onChange (JSX)",
       component: Form
+    },
+    {
+      name: "RadioGroup onChange (JSX)",
+      component: RadioGroupOnChange
     },
   ];
 

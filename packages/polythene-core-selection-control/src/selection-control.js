@@ -110,7 +110,9 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
       {},
       {
         className: classes.formLabel,
-        [k.onclick]: viewControlClickHandler
+      },
+      viewControlClickHandler && {
+        [k.onclick]: e => viewControlClickHandler(e)
       }
     ),
     [

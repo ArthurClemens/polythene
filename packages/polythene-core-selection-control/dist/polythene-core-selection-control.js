@@ -136,9 +136,11 @@
       }
     };
 
-    return h("label", _extends({}, _defineProperty({
+    return h("label", _extends({}, {
       className: classes.formLabel
-    }, k.onclick, viewControlClickHandler)), [h(ViewControl, _extends({}, attrs, {
+    }, viewControlClickHandler && _defineProperty({}, k.onclick, function (e) {
+      return viewControlClickHandler(e);
+    })), [h(ViewControl, _extends({}, attrs, {
       inactive: inactive,
       checked: checked,
       key: "control",

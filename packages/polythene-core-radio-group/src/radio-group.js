@@ -63,7 +63,6 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
         {
           /* this component's options */
           onChange: newState => (
-            console.log("radio group onchange"),
             state.checkedValue(newState.value),
             attrs.onChange && attrs.onChange({ value: newState.value })
           ),
