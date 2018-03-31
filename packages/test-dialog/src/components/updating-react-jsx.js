@@ -5,7 +5,7 @@ const shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
 
 const LongText = () => (
   <div>
-    {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(num => <p key={num}>{shortText}</p>)}
+    {[1,2,3].map(num => <p key={num}>{shortText}</p>)}
   </div>
 );
 
@@ -19,25 +19,28 @@ class Updating extends Component {
     };
   }
 
-  componentDidMount() {
-    // Show updates by means of a simple counter.
-    // This could also be a different component state or Redux state.
-    this.setState({ intervalId: setInterval(() => this.setState({ count: this.state.count + 1 }), 1000) });
-  }
-
   componentDidUpdate() {
     if (this.state.dialogVisible) {
       const dialogProps = {
-        title: this.state.count,
+        title: this.state.count.toString(),
         body: <LongText />,
-        didHide: () => this.setState({ dialogVisible: false })
+        didShow: () => {
+          this.setState({ intervalId: setInterval(() => 
+            this.setState({ count: this.state.count + 1 }),
+          1000) });
+        },
+        didHide: () => {
+          // Clean up
+          clearInterval(this.state.intervalId);
+          this.setState({
+            intervalId: undefined,
+            dialogVisible: false,
+            count: 0,
+          });
+        }
       };
       Dialog.show(dialogProps);
     }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
   }
 
   render () {
@@ -45,7 +48,10 @@ class Updating extends Component {
       <span style={{
         paddingRight: "10px"
       }}>
-        {this.state.count}
+        {this.state.intervalId !== undefined
+          ? this.state.count
+          : 0
+        }
       </span>
       <RaisedButton
         label="Show Dialog"

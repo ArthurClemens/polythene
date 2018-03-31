@@ -7,7 +7,7 @@ import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
 
-export default ({ renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
+export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
 
   const h = renderer;
 
