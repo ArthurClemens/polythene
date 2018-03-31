@@ -56,7 +56,6 @@ const checkValidity = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   // default
-  
   const status = attrs.valid !== undefined
     ? {
       invalid: !attrs.valid,
@@ -67,7 +66,6 @@ const checkValidity = vnode => {
       : getValidStatus(state, attrs);
   const previousInvalid = state.isInvalid();
   state.error(status.message);
-
   if (status.invalid !== previousInvalid) {
     state.isInvalid(status.invalid);
   }
@@ -88,7 +86,7 @@ const notifyState = vnode => {
       invalid:       status.invalid,
       error:         status.error,
       value:         state.inputEl().value,
-      setInputState: newState => state.setInputState(newState),
+      setInputState: newState => state.setInputState(Object.assign({}, newState, { vnode })),
     });
   }
 };
@@ -96,7 +94,7 @@ const notifyState = vnode => {
 const ignoreEvent = (attrs, name) =>
   attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
 
-export const getInitialState = (vnode, createStream) => {
+export const getInitialState = (vnode, createStream, { keys: k }) => {
   const attrs = vnode.attrs;
 
   const defaultValue = attrs.defaultValue !== undefined && attrs.defaultValue !== null
@@ -115,7 +113,8 @@ export const getInitialState = (vnode, createStream) => {
   const isInvalid = createStream(false);
   const previousValue = createStream(undefined);
   const didSetFocusTime = 0;
-
+  const showErrorPlaceholder = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
+  
   return {
     defaultValue,
     didSetFocusTime,
@@ -128,6 +127,7 @@ export const getInitialState = (vnode, createStream) => {
     isTouched,
     previousValue,
     setInputState,
+    showErrorPlaceholder,
     redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
   };
 };
@@ -142,18 +142,20 @@ export const onMount = vnode => {
   const inputEl = dom.querySelector(inputType);
   vnode.state.inputEl(inputEl);
   state.inputEl().value = state.defaultValue;
-
-  state.setInputState.map(({ type, focus, value }) => (
-    value !== undefined ? state.inputEl().value = value : null,
-    focus !== undefined && (state.hasFocus(focus), focus ? state.inputEl().focus() : state.inputEl().blur()),
-    type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue),
-    type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue),
-    type === "onblur" && state.isTouched(true),
-    state.isDirty(state.inputEl().value !== ""),
-    checkValidity(vnode),
-    notifyState(vnode),
-    state.previousValue(state.inputEl().value)
-  ));
+  
+  state.setInputState.map(({ vnode, type, focus, value }) => {
+    if (vnode) {
+      value !== undefined ? state.inputEl().value = value : null;
+      focus !== undefined && (state.hasFocus(focus), focus ? state.inputEl().focus() : state.inputEl().blur());
+      type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue);
+      type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue);
+      type === "onblur" && state.isTouched(true);
+      state.isDirty(state.inputEl().value !== "");
+      checkValidity(vnode);
+      notifyState(vnode);
+      state.previousValue(state.inputEl().value);
+    }
+  });
 
   notifyState(vnode);
 };
@@ -176,7 +178,7 @@ export const onUpdate = vnode => {
   if (inputEl && state.previousValue() !== valueStr) {
     inputEl.value = valueStr;
     state.previousValue(valueStr);
-    state.setInputState({ type: "input" });
+    state.setInputState({ vnode, type: "input" });
   }
 };
 
@@ -227,7 +229,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
       : attrs.type;
   const showError = isInvalid && error !== undefined;
   
-  const validates = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
+  
   const inactive = attrs.disabled || attrs[k.readonly];
 
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
@@ -287,7 +289,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 }
                 // in case the browser does not give the field focus,
                 // for instance when the user tapped to the current field off screen
-                state.setInputState({ focus: true });
+                state.setInputState({ vnode, focus: true });
                 notifyState(vnode);
               }
             }
@@ -299,7 +301,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 if (inactive) {
                   return;
                 }
-                state.setInputState({ focus: true });
+                state.setInputState({ vnode, focus: true });
 
                 // set CSS class manually in case field gets focus but is off screen
                 // and no redraw is triggered
@@ -316,7 +318,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           !ignoreEvent(attrs, k.onblur)
             ? {
               [k.onblur]: () => {
-                state.setInputState({ type: "onblur", focus: false });
+                state.setInputState({ vnode, type: "onblur", focus: false });
                 // same principle as onfocus
                 state.el().classList.remove(classes.stateFocused);
               }
@@ -328,7 +330,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
               [k.oninput]: () => {
                 // default input event
                 // may be overwritten by attrs.events
-                state.setInputState({ type: "input" });
+                state.setInputState({ vnode, type: "input" });
               }
             }
             : null,
@@ -339,7 +341,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
                 if (e.key === "Enter") {
                   state.isTouched(true);
                 } else if (e.key === "Escape" || e.key === "Esc") {
-                  state.setInputState({ focus: false });
+                  state.setInputState({ vnode, focus: false });
                 }
               }
             }
@@ -388,7 +390,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
         },
         error
       )
-      : validates && !attrs.help
+      : state.showErrorPlaceholder && !attrs.help
         ? h("div",
           {
             key: "error-placeholder",

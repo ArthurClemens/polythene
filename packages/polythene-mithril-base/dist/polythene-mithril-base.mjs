@@ -257,7 +257,7 @@ var StateComponent = function StateComponent(_ref) {
 
   var oninit = function oninit(vnode) {
     var protoState = _extends({}, vnode);
-    var initialState = getInitialState(protoState, stream$1);
+    var initialState = getInitialState(protoState, stream$1, { keys: keys });
     _extends(vnode.state, initialState);
     vnode._mounted = false;
 

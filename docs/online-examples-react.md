@@ -35,6 +35,7 @@ Try out Polythene in JSFiddles.
   * [Slider](https://jsfiddle.net/ArthurClemens/6crka9hy/)
   * [Switch](https://jsfiddle.net/ArthurClemens/orqdxd4a/)
   * [Text Field](https://jsfiddle.net/ArthurClemens/dz21hu8c/)
+    * [Text Field form validation](https://jsfiddle.net/ArthurClemens/h2uyf1zh/)
 * Lists  
   * [List](https://jsfiddle.net/ArthurClemens/yzba5Lvn/)
   * [List with keyboard control](https://jsfiddle.net/ArthurClemens/hv8kcfs1/)

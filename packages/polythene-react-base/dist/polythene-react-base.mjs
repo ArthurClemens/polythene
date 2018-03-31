@@ -358,7 +358,7 @@ var StateComponent = function StateComponent(_ref) {
       var protoState = _extends$1({}, component, _this.createVirtualNode(), {
         redrawValues: undefined
       });
-      _this.state = getInitialState(protoState, stream$1);
+      _this.state = getInitialState(protoState, stream$1, { keys: keys });
       _this.registerDOM = _this.registerDOM.bind(_this);
       _this._render = _this._render.bind(_this);
       return _this;

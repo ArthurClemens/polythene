@@ -98,8 +98,7 @@ These options also have effect on the generated HTML input field.
 | **pattern**   | optional | String | | Validation regex pattern for fields of `type` text, search, url, tel, email, password | 
 | **required**  | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
 | **requiredIndicator** | optional | String | "*"  | String to indicate that the field is required; added to the label string |
-| **valid**     | optional | Boolean | | Use for per field validation when the field value is kept in local state, for instance when using a form validator |
-| **error**     | optional | String | | Error message when `valid` is `false` |
+| **valid**     | optional | Boolean | | Use for per field validation when the field value is kept in local state, for instance when using a form validator; overrides built-in form validation |
 | **validate**  | optional | Function `(value::String) -> {valid::Boolean, error::String}` | | Use for custom per field validation when you don't keep the field value in a local state (in that case, use `valid`) |
 | **validateAtStart** | optional | Boolean | | Set to `true` to validate the field before any user action |
 | **validateOnInput** | optional | Boolean | | Set to `true` to validate the field at the first keypress |

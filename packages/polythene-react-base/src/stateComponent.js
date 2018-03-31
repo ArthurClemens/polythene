@@ -32,7 +32,7 @@ export const StateComponent = ({
           redrawValues: undefined
         }
       );
-      this.state = getInitialState(protoState, stream);
+      this.state = getInitialState(protoState, stream, { keys });
       this.registerDOM = this.registerDOM.bind(this);
       this._render = this._render.bind(this);      
     }

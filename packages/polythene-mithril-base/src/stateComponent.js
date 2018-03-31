@@ -21,7 +21,7 @@ export const StateComponent = ({
       {},
       vnode
     );
-    const initialState = getInitialState(protoState, stream);
+    const initialState = getInitialState(protoState, stream, { keys });
     Object.assign(vnode.state, initialState);
     vnode._mounted = false;
 

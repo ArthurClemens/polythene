@@ -68,11 +68,9 @@ object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
-powerform@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/powerform/-/powerform-2.8.0.tgz#f7c1db50d5db1c1be68f9136e656c7931efabffe"
-  dependencies:
-    validatex "^0.3.1"
+powerform@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/powerform/-/powerform-3.1.4.tgz#ec0ac6bc904090c9ee849ad8c7cbd3ba14103a35"
 
 promise@^7.1.1:
   version "7.1.1"

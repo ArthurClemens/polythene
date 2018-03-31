@@ -9,6 +9,7 @@
   - [Help texts](#help-texts)
   - [Front-end validation](#front-end-validation)
   - [Custom validation](#custom-validation)
+  - [Using a validation library / setting the "valid" state directly](#using-a-validation-library--setting-the-valid-state-directly)
   - [Character counter](#character-counter)
   - [Reading and setting the value](#reading-and-setting-the-value)
   - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
@@ -273,20 +274,25 @@ h(TextField, {
 })
 ~~~
 
-<a id="setting-the-valid-state-directly"></a>
-#### Setting the "valid" state directly
+<a id="using-a-validation-library--setting-the-valid-state-directly"></a>
+### Using a validation library / setting the "valid" state directly
 
-This assumes that you store the form state (for example in a stateful component) so you are able to check the valid state of each field.
+<a href="https://jsfiddle.net/ArthurClemens/h2uyf1zh/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+An external form validation library (or component/app state) can be used to manage the form state.
+
+* Use `valid` to mark the valid state of the form field
+* Use `error` to display an error message
 
 ~~~jsx
-const errors = state.form.error();
-const submitFailed = state.submitFailed;
+const errors = this.form.getError()
 // ...
 
 <TextField
-  name="fullName"
-  valid={!(submitFailed && errors.fullName !== undefined)}
-  error={errors.fullName}
+  name="username"
+  required
+  valid={!errors.username}
+  error={errors.username}
 />
 ~~~
 
