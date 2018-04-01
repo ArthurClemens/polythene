@@ -28,7 +28,7 @@ This implementation closely follows the [design specification](https://material.
 ## Main features
 
 * Flexibly composable with card elements in different order
-* Set z-depth
+* Set shadow depth
 * Set avatar portrait image
 * Tight display
 * Horizontal or vertical orientation of actions
@@ -36,7 +36,7 @@ This implementation closely follows the [design specification](https://material.
 * Set image ratio
 * Set image size
 * Image overlay
-
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

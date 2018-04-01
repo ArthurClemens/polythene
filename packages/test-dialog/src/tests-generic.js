@@ -216,6 +216,15 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       }
     },
     {
+      name: "Vertically stacked buttons (RTL)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener(fullwidth({ renderer, keys, Dialog, Button, className: "pe-rtl" }))
+      }
+    },
+    {
       name: "Option: menu",
       interactive: true,
       exclude: true,

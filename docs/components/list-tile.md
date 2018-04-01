@@ -29,7 +29,7 @@ Displays a list element as part of a [List](list.md).
 * Compact display
 * Set as sticky header
 * Indent content
-
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

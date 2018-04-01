@@ -25,7 +25,7 @@ Form control to select one or more options from a set. Generates a styled checkb
 * Set size
 * Set the active state based on the checked state
 * Keyboard control
-
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

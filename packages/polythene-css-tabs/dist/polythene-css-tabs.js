@@ -54,8 +54,30 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var alignDir = function alignDir(isRTL) {
+    return function (componentVars) {
+      var _peTabs__scrollBu, _peTabs__scrollBu2;
+
+      return {
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button-start": (_peTabs__scrollBu = {}, _defineProperty(_peTabs__scrollBu, isRTL ? "right" : "left", 0), _defineProperty(_peTabs__scrollBu, isRTL ? "left" : "right", "auto"), _peTabs__scrollBu),
+          " .pe-tabs__scroll-button-end": (_peTabs__scrollBu2 = {}, _defineProperty(_peTabs__scrollBu2, isRTL ? "right" : "left", "auto"), _defineProperty(_peTabs__scrollBu2, isRTL ? "left" : "right", 0), _peTabs__scrollBu2)
+        },
+        " .pe-tabs__row": {
+          ".pe-tabs__row--indent": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", componentVars.tabs_indent + "px")
+        },
+        " .pe-tabs__indicator": _defineProperty({
+          transformOrigin: isRTL ? "right 50%" : "left 50%"
+        }, isRTL ? "right" : "left", 0)
+      };
+    };
+  };
+
+  var alignLeft = alignDir(false);
+  var alignRight = alignDir(true);
+
   var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, _defineProperty({
+    return [_defineProperty({}, selector, [alignLeft(componentVars), _defineProperty({
       userSelect: "none",
       transform: "translate3d(0,0,0)",
       "-webkit-overflow-scrolling": "touch",
@@ -139,13 +161,6 @@
           pointerEvents: "none",
           cursor: "default",
           opacity: 0
-        },
-
-        " .pe-tabs__scroll-button-start": {
-          left: 0
-        },
-        " .pe-tabs__scroll-button-end": {
-          right: 0
         }
       },
 
@@ -156,7 +171,6 @@
 
         ".pe-tabs__row--indent": {
           margin: 0,
-          paddingLeft: componentVars.tabs_indent + "px",
           overflow: "auto"
         },
 
@@ -247,13 +261,13 @@
 
       " .pe-tabs__indicator": {
         transform: "translate3d(0,0,0)",
-        transformOrigin: "left 50%",
+        // transformOrigin set in alignDir
         transitionProperty: "all",
         transitionTimingFunction: "ease-in-out",
         position: "absolute",
         height: componentVars.tab_indicator_height + "px",
         bottom: 0,
-        left: 0,
+        // left/right set in alignDir
         width: "100%" // and transformed with js
         // background-color defined in implementation/theme css
       },
@@ -268,7 +282,7 @@
       ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
         minWidth: componentVars.tab_min_width_tablet + "px"
       }
-    })))];
+    }))]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];
   });
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

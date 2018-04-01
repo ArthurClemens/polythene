@@ -29,6 +29,7 @@ Displays a single dialog, or a stack of dialogs.
 * Custom transitions
 * Create multiple stacked dialogs
 * Spawn dialogs from different locations
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

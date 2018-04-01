@@ -11,6 +11,7 @@
   - [Dynamic content](#dynamic-content)
 - [Appearance](#appearance)
   - [Styling](#styling)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -503,6 +504,15 @@ Dialog.show({
   }
 })
 ~~~
+
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of Dialog content is reversed when the dialog element either:
+
+* has attribute `dir="rtl"`
+* has className `pe-rtl`
+
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone

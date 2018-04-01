@@ -356,6 +356,35 @@ export default ({ renderer: h, Tabs }) => {
       component: OnChange
     },
 
+    {
+      name: "Option: content (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl",
+            h(Tabs,
+              { content: threeButtons }
+            )
+          )
+      }
+    },
+    {
+      name: "Option: scrollable (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", {
+            style: {
+              color: "#fff",
+              backgroundColor: "#444",
+              overflowX: "hidden",
+              height: "48px"
+            }
+          }, h(Tabs, {
+            tabs: longList,
+            scrollable: true
+          }))
+      }
+    },
+
     // Dark tone
 
     {

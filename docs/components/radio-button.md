@@ -24,7 +24,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 * Set size
 * Set the active state based on the checked state
 * Keyboard control
-
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

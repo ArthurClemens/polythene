@@ -25,8 +25,8 @@ Lists are also the base component of [Menus](menu.md).
 * Stack lists vertically
 * Set borders
 * Indent borders
-* Compact display
-
+* Optional compact display
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>

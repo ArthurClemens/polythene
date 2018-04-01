@@ -22,7 +22,8 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 ## Main features
 
 * Flexibly composable with labels and icon buttons
-* Compact display
+* Optional compact display
+* RTL (right-to-left) support
 
 
 

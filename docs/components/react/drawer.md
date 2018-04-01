@@ -11,6 +11,7 @@
 - [Appearance](#appearance)
   - [Navigation style](#navigation-style)
   - [Styling](#styling)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -169,16 +170,6 @@ To open the drawer at the opposite side, use:
 * `anchor="end"`
 
 
-<a id="rtl-right-to-left-support"></a>
-#### RTL (right-to-left) support
-
-Drawer content and animations are reversed when the drawer is placed in a container that either:
-
-* has attribute `dir="rtl"`
-* has className `pe-rtl`
-
-
-
 <a id="appearance"></a>
 ## Appearance
 
@@ -239,6 +230,16 @@ Some style attributes can be set using option `style`. For example:
   }}
 >
 ~~~
+
+
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of Drawer content and animations are reversed when the Drawer is contained within an element that either:
+
+* has attribute `dir="rtl"`
+* has className `pe-rtl`
+
 
 
 <a id="dark-or-light-tone"></a>

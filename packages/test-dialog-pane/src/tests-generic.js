@@ -147,6 +147,17 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       }
     },
     {
+      name: "Option: title, body, footer (RTL)",
+      interactive: true,
+      component: DialogPane,
+      attrs: {
+        className: "pe-rtl",
+        title: "Long dialog with a very long title that surely won't fit here",
+        body: renderer.trust(longText),
+        footerButtons: cancelOkButtons({ renderer, Button })
+      }
+    },
+    {
       name: "Conditional button states",
       interactive: true,
       component: {

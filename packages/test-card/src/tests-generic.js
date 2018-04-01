@@ -921,7 +921,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                 ratio: "square",
                 size: "medium",
                 content: h("img", {
-                  src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757"
+                  src: "http://arthurclemens.github.io/assets/polythene/examples/2-unlimited.jpg"
                 })
               }
             }
@@ -1203,6 +1203,48 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
             content: iconButtonRow
           }
         }]
+      }
+    },
+
+    {
+      name: "Bottom action row, border (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", 
+            h(Card,
+              {
+                content: [
+                  {
+                    header: {
+                      title: titleLineText,
+                      subtitle: infoLineText,
+                      icon: {
+                        size: "large",
+                        avatar: true,
+                        src: avatarImageUrl("1.png")
+                      }
+                    }
+                  },
+                  {
+                    media: {
+                      content: h("img", {
+                        src: greyImage
+                      })
+                    }
+                  },
+                  {
+                    text: { content: ipsum }
+                  },
+                  {
+                    actions: {
+                      border: true,
+                      content: twoButtonAndLessRow
+                    }
+                  }
+                ]
+              }
+            )
+          )
       }
     },
 

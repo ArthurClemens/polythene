@@ -10,6 +10,7 @@
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [Icons](#icons)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -180,6 +181,14 @@ m(Checkbox, {
 });
 ~~~
 
+
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of the checkbox icon and label is reversed when the Checkbox is contained within an element that either:
+
+* has attribute `dir="rtl"`
+* has className `pe-rtl`
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone

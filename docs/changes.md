@@ -40,6 +40,7 @@ Changes to components:
   * Added option `z` to add a shadow
   * Added option `fullbleed` to remove side padding
   * Added option `border` to set a bottom border
+* RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
 
 
 <a id="100"></a>

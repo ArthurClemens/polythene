@@ -209,6 +209,27 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Option: compact (RTL)",
+      component: {
+        view: () =>
+          h(".pe-rtl",
+            h(List,
+              {
+                compact: true,
+                header: {
+                  title: "Friends"
+                },
+                tiles: [
+                  ListTileJennifer,
+                  ListTileAli,
+                  ListTileGrace
+                ]
+              }
+            )
+          )
+      }
+    },
+    {
       name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
       interactive: true,
       component: KeyboardState

@@ -10,6 +10,7 @@
   - [Shared options](#shared-options)
 - [Appearance](#appearance)
   - [Styling](#styling)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -191,6 +192,13 @@ m(RadioButton, {
 })
 ~~~
 
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of the radio button icon and label is reversed when the Radio Button is contained within an element that either:
+
+* has attribute `dir="rtl"`
+* has className `pe-rtl`
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone

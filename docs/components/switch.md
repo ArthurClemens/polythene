@@ -20,8 +20,7 @@ Form control to toggle the state of a single option. Generates a styled checkbox
 * Custom icon
 * Custom z-depths
 * Disable shadow
-
-
+* RTL (right-to-left) support
 
 
 <a id="usage"></a>
