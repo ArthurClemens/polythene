@@ -160,6 +160,17 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       exclude: true,
       component: toggleButton({ h, k, RaisedButton, Checkbox })
     },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () => h("div",
+          { className: "pe-rtl" },
+          h(Checkbox,
+            { label: "Label" }
+          )
+        )
+      }
+    },
 
     // Dark tone
 

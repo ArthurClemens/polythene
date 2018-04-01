@@ -3,6 +3,32 @@ import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var alignRight = function alignRight(componentVars) {
+  return {
+    " .pe-button.pe-control__button": {
+      right: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+      left: "auto"
+    },
+    " .pe-control__label": {
+      paddingLeft: componentVars.label_padding_after + "px",
+      paddingRight: componentVars.label_padding_before + "px"
+    }
+  };
+};
+
+var alignLeft = function alignLeft(componentVars) {
+  return {
+    " .pe-button.pe-control__button": {
+      right: "auto",
+      left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px"
+    },
+    " .pe-control__label": {
+      paddingLeft: componentVars.label_padding_before + "px",
+      paddingRight: componentVars.label_padding_after + "px"
+    }
+  };
+};
+
 var makeSize = function makeSize(componentVars, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
 
@@ -40,17 +66,17 @@ var inactiveButton = function inactiveButton() {
 };
 
 var layout = (function (selector, componentVars, type) {
-  var _selector;
+  var _ref;
 
-  return [_defineProperty({}, selector, (_selector = {
+  return [_defineProperty({}, selector, [alignLeft(componentVars), (_ref = {
     display: "inline-block",
     boxSizing: "border-box",
     margin: 0,
     padding: 0
 
-  }, _defineProperty(_selector, " input[type=" + type + "]", {
+  }, _defineProperty(_ref, " input[type=" + type + "]", {
     display: "none"
-  }), _defineProperty(_selector, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
+  }), _defineProperty(_ref, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
     position: "relative",
     cursor: "pointer",
     fontSize: componentVars.label_font_size + "px",
@@ -60,11 +86,11 @@ var layout = (function (selector, componentVars, type) {
     ":focus": {
       outline: 0
     }
-  }]), _defineProperty(_selector, ".pe-control--inactive", {
+  }]), _defineProperty(_ref, ".pe-control--inactive", {
     " .pe-control__form-label": {
       cursor: "default"
     }
-  }), _defineProperty(_selector, " .pe-control__box", {
+  }), _defineProperty(_ref, " .pe-control__box", {
     position: "relative",
     display: "inline-block",
     boxSizing: "border-box",
@@ -76,33 +102,31 @@ var layout = (function (selector, componentVars, type) {
     ":focus": {
       outline: 0
     }
-  }), _defineProperty(_selector, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
+  }), _defineProperty(_ref, " .pe-button.pe-control__button", [mixin.defaultTransition("opacity", componentVars.animation_duration), {
     position: "absolute",
-    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
     zIndex: 1
-  }]), _defineProperty(_selector, ".pe-control--off", {
+  }]), _defineProperty(_ref, ".pe-control--off", {
     " .pe-control__button--on": inactiveButton(),
     " .pe-control__button--off": activeButton()
-  }), _defineProperty(_selector, ".pe-control--on", {
+  }), _defineProperty(_ref, ".pe-control--on", {
     " .pe-control__button--on": activeButton(),
     " .pe-control__button--off": inactiveButton()
-  }), _defineProperty(_selector, " .pe-control__label", [mixin.defaultTransition("all", componentVars.animation_duration), {
-    paddingLeft: componentVars.label_padding_before + "px",
-    paddingRight: componentVars.label_padding_after + "px",
+  }), _defineProperty(_ref, " .pe-control__label", [mixin.defaultTransition("all", componentVars.animation_duration), {
+    // padding: RTL
     alignSelf: "center"
-  }]), _defineProperty(_selector, ".pe-control--disabled", {
+  }]), _defineProperty(_ref, ".pe-control--disabled", {
     " .pe-control__form-label": {
       cursor: "auto"
     },
     " .pe-control__button": {
       pointerEvents: "none"
     }
-  }), _defineProperty(_selector, " .pe-button__content", {
+  }), _defineProperty(_ref, " .pe-button__content", {
     " .pe-icon": {
       position: "absolute"
     }
-  }), _defineProperty(_selector, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty(_selector, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty(_selector, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty(_selector, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _selector))];
+  }), _defineProperty(_ref, ".pe-control--small", makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small)), _defineProperty(_ref, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, vars.unit_icon_size)), _defineProperty(_ref, ".pe-control--medium", makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium)), _defineProperty(_ref, ".pe-control--large", makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)), _ref)]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

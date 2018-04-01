@@ -182,6 +182,30 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       exclude: true,
       component: toggleButton({ h, k, RaisedButton, Switch })
     },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () =>
+          h(".pe-rtl",
+            h(Switch,
+              { label: "Label" }
+            )
+          )
+      }
+    },
+    {
+      name: "Option: size (RTL)",
+      component: {
+        view: () =>
+          h(".pe-rtl",
+            h(".multiple",
+              sizes(sizeNames, {
+                label: "Label"
+              })
+            )
+          )
+      }
+    },
 
     // Dark tone
 

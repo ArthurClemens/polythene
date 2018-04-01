@@ -203,6 +203,29 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       exclude: true,
       component: events({ h, k, RadioButton })
     },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () => h("div",
+          { className: "pe-rtl" },
+          h(RadioGroup,
+            {
+              name: "label",
+              content: [
+                {
+                  value: "One",
+                  label: "One",
+                },
+                {
+                  value: "Two",
+                  label: "Two",
+                }
+              ]
+            }
+          )
+        )
+      }
+    },
 
     // Dark tone
 

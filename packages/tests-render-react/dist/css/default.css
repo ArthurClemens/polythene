@@ -189,6 +189,13 @@ html {
   margin: 0 30px 20px 0;
 }
 
+.pe-rtl .multiple .pe-control.pe-checkbox-control,
+.pe-rtl .multiple .pe-control.pe-radio-control,
+.pe-rtl .multiple .pe-control.pe-switch-control,
+.pe-rtl .multiple .pe-icon-button {
+  margin: 0 0 20px 30px;
+}
+
 .pe-card.on .pe-card__media__dimmer {
   box-shadow: inset 0px 0px 40px rgba(0,0,0,.6);
 }

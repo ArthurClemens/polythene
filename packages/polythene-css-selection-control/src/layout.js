@@ -3,6 +3,28 @@
 import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
+const alignRight = componentVars => ({
+  " .pe-button.pe-control__button": {
+    right: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+    left: "auto",
+  },
+  " .pe-control__label": {
+    paddingLeft: componentVars.label_padding_after + "px",
+    paddingRight: componentVars.label_padding_before + "px",
+  }
+});
+
+const alignLeft = componentVars => ({
+  " .pe-button.pe-control__button": {
+    right: "auto",
+    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+  },
+  " .pe-control__label": {
+    paddingLeft: componentVars.label_padding_before + "px",
+    paddingRight: componentVars.label_padding_after + "px",
+  }
+});
+
 const makeSize = (componentVars, height, iconSize = vars.unit_icon_size) => {
   const labelSize = iconSize + componentVars.label_height;
   const iconOffset = (labelSize - iconSize) / 2;
@@ -35,100 +57,109 @@ const inactiveButton = () => ({
   zIndex: 0
 });
 
-export default (selector, componentVars, type) => [{
-  [selector]: {
-    display: "inline-block",
-    boxSizing: "border-box",
-    margin: 0,
-    padding: 0,
-
-    [` input[type=${type}]`]: {
-      display: "none"
-    },
-
-    " .pe-control__form-label": [
-      flex.layoutHorizontal,
-      flex.layoutCenter,
+export default (selector, componentVars, type) => [
+  {
+    [selector]: [
+      alignLeft(componentVars),
       {
-        position: "relative",
-        cursor: "pointer",
-        fontSize: componentVars.label_font_size + "px",
+        display: "inline-block",
+        boxSizing: "border-box",
         margin: 0,
-        color: "inherit",
+        padding: 0,
 
-        ":focus": {
-          outline: 0
+        [` input[type=${type}]`]: {
+          display: "none"
         },
-      }
-    ],
 
-    ".pe-control--inactive": {
-      " .pe-control__form-label": {
-        cursor: "default"
-      }
-    },
+        " .pe-control__form-label": [
+          flex.layoutHorizontal,
+          flex.layoutCenter,
+          {
+            position: "relative",
+            cursor: "pointer",
+            fontSize: componentVars.label_font_size + "px",
+            margin: 0,
+            color: "inherit",
 
-    " .pe-control__box": {
-      position: "relative",
-      display: "inline-block",
-      boxSizing: "border-box",
-      width: componentVars.label_height + "px",
-      height: componentVars.label_height + "px",
-      color: "inherit",
-      flexShrink: 0,
+            ":focus": {
+              outline: 0
+            },
+          }
+        ],
 
-      ":focus": {
-        outline: 0,
-      }
-    },
+        ".pe-control--inactive": {
+          " .pe-control__form-label": {
+            cursor: "default"
+          }
+        },
 
-    " .pe-button.pe-control__button": [
-      mixin.defaultTransition("opacity", componentVars.animation_duration),
-      {
-        position: "absolute",
-        left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-        top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-        zIndex: 1
-      }
-    ],
+        " .pe-control__box": {
+          position: "relative",
+          display: "inline-block",
+          boxSizing: "border-box",
+          width: componentVars.label_height + "px",
+          height: componentVars.label_height + "px",
+          color: "inherit",
+          flexShrink: 0,
 
-    ".pe-control--off": {
-      " .pe-control__button--on": inactiveButton(),
-      " .pe-control__button--off": activeButton()
-    },
+          ":focus": {
+            outline: 0,
+          }
+        },
 
-    ".pe-control--on": {
-      " .pe-control__button--on": activeButton(),
-      " .pe-control__button--off": inactiveButton()
-    },
+        " .pe-button.pe-control__button": [
+          mixin.defaultTransition("opacity", componentVars.animation_duration),
+          {
+            position: "absolute",
+            top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+            zIndex: 1
+          }
+        ],
 
-    " .pe-control__label": [
-      mixin.defaultTransition("all", componentVars.animation_duration),
-      {
-        paddingLeft: componentVars.label_padding_before + "px",
-        paddingRight: componentVars.label_padding_after + "px",
-        alignSelf: "center"
-      }
-    ],
+        ".pe-control--off": {
+          " .pe-control__button--on": inactiveButton(),
+          " .pe-control__button--off": activeButton()
+        },
 
-    ".pe-control--disabled": {
-      " .pe-control__form-label": {
-        cursor: "auto"
+        ".pe-control--on": {
+          " .pe-control__button--on": activeButton(),
+          " .pe-control__button--off": inactiveButton()
+        },
+
+        " .pe-control__label": [
+          mixin.defaultTransition("all", componentVars.animation_duration),
+          {
+            // padding: RTL
+            alignSelf: "center"
+          }
+        ],
+
+        ".pe-control--disabled": {
+          " .pe-control__form-label": {
+            cursor: "auto"
+          },
+          " .pe-control__button": {
+            pointerEvents: "none"
+          }
+        },
+
+        " .pe-button__content": {
+          " .pe-icon": {
+            position: "absolute"
+          }
+        },
+
+        ".pe-control--small":   makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
+        ".pe-control--regular": makeSize(componentVars, componentVars.label_height, vars.unit_icon_size),
+        ".pe-control--medium":  makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
+        ".pe-control--large":   makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large),
       },
-      " .pe-control__button": {
-        pointerEvents: "none"
-      }
-    },
-
-    " .pe-button__content": {
-      " .pe-icon": {
-        position: "absolute"
-      }
-    },
-
-    ".pe-control--small":   makeSize(componentVars, vars.unit_icon_size_small, vars.unit_icon_size_small),
-    ".pe-control--regular": makeSize(componentVars, componentVars.label_height, vars.unit_icon_size),
-    ".pe-control--medium":  makeSize(componentVars, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-    ".pe-control--large":   makeSize(componentVars, vars.unit_icon_size_large, vars.unit_icon_size_large)
+    ]
+  },
+  {
+    // RTL
+    [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
+      alignRight(componentVars)
+    ],
   }
-}];
+];

@@ -205,7 +205,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         }
       }})
     },
-    
     {
       name: "Default drawer (RTL)",
       interactive: true,
