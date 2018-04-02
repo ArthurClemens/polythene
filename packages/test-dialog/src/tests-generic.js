@@ -203,7 +203,16 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       exclude: true,
       component: {
         view: () =>
-          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog }))
+          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: true }))
+      }
+    },
+    {
+      name: "Closing dialogs with ESCAPE (one by one)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false }))
       }
     },
     {

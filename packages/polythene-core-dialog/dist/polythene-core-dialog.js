@@ -137,9 +137,12 @@
         if (attrs.fullScreen || attrs.modal) return;
         if (e.key === "Escape" || e.key === "Esc") {
           // "Esc" for IE11
-          hideDialog(state, _extends({}, attrs, {
-            hideDelay: 0
-          }));
+          var openDialogs = document.querySelectorAll("." + classes.component);
+          if (openDialogs[openDialogs.length - 1] === state.el) {
+            hideDialog(state, _extends({}, attrs, {
+              hideDelay: 0
+            }));
+          }
         }
       };
 
