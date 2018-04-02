@@ -1,7 +1,7 @@
 import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-const alignDir = isRTL => componentVars => ({
+const alignSide = isRTL => componentVars => ({
   " .pe-no-touch &": {
     " .pe-tabs__scroll-button-start": {
       [isRTL ? "right" : "left"]: 0,
@@ -23,8 +23,8 @@ const alignDir = isRTL => componentVars => ({
   }
 }); 
 
-const alignLeft = alignDir(false);
-const alignRight = alignDir(true);
+const alignLeft = alignSide(false);
+const alignRight = alignSide(true);
 
 export default (selector, componentVars) => [
   {
@@ -238,13 +238,13 @@ export default (selector, componentVars) => [
 
         " .pe-tabs__indicator": {
           transform: "translate3d(0,0,0)",
-          // transformOrigin set in alignDir
+          // transformOrigin set in alignSide
           transitionProperty: "all",
           transitionTimingFunction: "ease-in-out",
           position: "absolute",
           height: componentVars.tab_indicator_height + "px",
           bottom: 0,
-          // left/right set in alignDir
+          // left/right set in alignSide
           width: "100%" // and transformed with js
           // background-color defined in implementation/theme css
         },
