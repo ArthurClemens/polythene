@@ -3,27 +3,20 @@
 import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-const alignRight = componentVars => ({
+const alignSide = isRTL => componentVars => ({
   " .pe-button.pe-control__button": {
-    right: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-    left: "auto",
+    [isRTL ? "right" : "left"]: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
+    [isRTL ? "left" : "right"]: "auto",
   },
   " .pe-control__label": {
-    paddingLeft: componentVars.label_padding_after + "px",
-    paddingRight: componentVars.label_padding_before + "px",
+    [isRTL ? "paddingLeft" : "paddingRight"]: componentVars.label_padding_after + "px",
+    [isRTL ? "paddingRight" : "paddingLeft"]: componentVars.label_padding_before + "px",
   }
 });
 
-const alignLeft = componentVars => ({
-  " .pe-button.pe-control__button": {
-    right: "auto",
-    left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-  },
-  " .pe-control__label": {
-    paddingLeft: componentVars.label_padding_before + "px",
-    paddingRight: componentVars.label_padding_after + "px",
-  }
-});
+const alignLeft = alignSide(false);
+
+const alignRight = alignSide(true);
 
 const makeSize = (componentVars, height, iconSize = vars.unit_icon_size) => {
   const labelSize = iconSize + componentVars.label_height;

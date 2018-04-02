@@ -3,31 +3,20 @@ import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var alignRight = function alignRight(componentVars) {
-  return {
-    " .pe-button.pe-control__button": {
-      right: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-      left: "auto"
-    },
-    " .pe-control__label": {
-      paddingLeft: componentVars.label_padding_after + "px",
-      paddingRight: componentVars.label_padding_before + "px"
-    }
+var alignSide = function alignSide(isRTL) {
+  return function (componentVars) {
+    var _peButtonPeContr, _peControl__label;
+
+    return {
+      " .pe-button.pe-control__button": (_peButtonPeContr = {}, _defineProperty(_peButtonPeContr, isRTL ? "right" : "left", -((componentVars.button_size - componentVars.icon_size) / 2) + "px"), _defineProperty(_peButtonPeContr, isRTL ? "left" : "right", "auto"), _peButtonPeContr),
+      " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", componentVars.label_padding_after + "px"), _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", componentVars.label_padding_before + "px"), _peControl__label)
+    };
   };
 };
 
-var alignLeft = function alignLeft(componentVars) {
-  return {
-    " .pe-button.pe-control__button": {
-      right: "auto",
-      left: -((componentVars.button_size - componentVars.icon_size) / 2) + "px"
-    },
-    " .pe-control__label": {
-      paddingLeft: componentVars.label_padding_before + "px",
-      paddingRight: componentVars.label_padding_after + "px"
-    }
-  };
-};
+var alignLeft = alignSide(false);
+
+var alignRight = alignSide(true);
 
 var makeSize = function makeSize(componentVars, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;

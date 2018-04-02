@@ -1,11 +1,11 @@
 .pe-switch-control .pe-button.pe-control__button {
-  right: auto;
-  left: -12px
+  left: -12px;
+  right: auto
 }
 
 .pe-switch-control .pe-control__label {
-  padding-left: 16px;
-  padding-right: 0
+  padding-right: 0;
+  padding-left: 16px
 }
 
 .pe-switch-control {

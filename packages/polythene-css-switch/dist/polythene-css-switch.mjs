@@ -104,23 +104,19 @@ var customSpacing = function customSpacing(componentVars, _ref2, isRTL) {
   };
 };
 
-var alignRight = function alignRight() {
-  return {
-    " .pe-switch-control__track": {
-      right: 0,
-      left: "auto"
-    }
+var alignSide = function alignSide(isRTL) {
+  return function () {
+    var _peSwitchControl_4;
+
+    return {
+      " .pe-switch-control__track": (_peSwitchControl_4 = {}, _defineProperty(_peSwitchControl_4, isRTL ? "right" : "left", 0), _defineProperty(_peSwitchControl_4, isRTL ? "left" : "right", "auto"), _peSwitchControl_4)
+    };
   };
 };
 
-var alignLeft = function alignLeft() {
-  return {
-    " .pe-switch-control__track": {
-      left: 0,
-      right: "auto"
-    }
-  };
-};
+var alignLeft = alignSide(false);
+
+var alignRight = alignSide(true);
 
 var layout$1 = (function (selector, componentVars) {
   var sizeData = {

@@ -72,9 +72,7 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       component: {
         view: () =>
           h(".multiple",
-            sizes(sizeNames, {
-              label: "Label"
-            })
+            sizes(sizeNames)
           )
       }
     },
@@ -186,9 +184,9 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       name: "Option: label (RTL)",
       component: {
         view: () =>
-          h(".pe-rtl",
+          h(".pe-rtl", null,
             h(Switch,
-              { label: "Label" }
+              { label: "ضع الكلمة المناسبة" }
             )
           )
       }
@@ -197,11 +195,9 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       name: "Option: size (RTL)",
       component: {
         view: () =>
-          h(".pe-rtl",
-            h(".multiple",
-              sizes(sizeNames, {
-                label: "Label"
-              })
+          h(".pe-rtl", null,
+            h(".multiple", null,
+              sizes(sizeNames)
             )
           )
       }

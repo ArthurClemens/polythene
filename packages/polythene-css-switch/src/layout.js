@@ -106,19 +106,16 @@ const customSpacing = (
   };
 };
 
-const alignRight = () => ({
+const alignSide = isRTL => () => ({
   " .pe-switch-control__track": {
-    right: 0,
-    left: "auto"
+    [isRTL ? "right" : "left"]: 0,
+    [isRTL ? "left" : "right"]: "auto"
   }
 });
 
-const alignLeft = () => ({
-  " .pe-switch-control__track": {
-    left: 0,
-    right: "auto"
-  }
-});
+const alignLeft = alignSide(false);
+
+const alignRight = alignSide(true);
 
 export default (selector, componentVars) => {
   const sizeData = {

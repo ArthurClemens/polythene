@@ -166,7 +166,7 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
         view: () => h("div",
           { className: "pe-rtl" },
           h(Checkbox,
-            { label: "Label" }
+            { label: "ضع الكلمة المناسبة" }
           )
         )
       }

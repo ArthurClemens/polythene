@@ -214,11 +214,11 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
               content: [
                 {
                   value: "One",
-                  label: "One",
+                  label: "واحد",
                 },
                 {
                   value: "Two",
-                  label: "Two",
+                  label: "اثنان",
                 }
               ]
             }
