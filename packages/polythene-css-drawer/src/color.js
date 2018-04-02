@@ -2,8 +2,11 @@
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
     " .pe-dialog__content": {
+      borderColor: componentVars["color_" + tint + "_border"],
+      background: "none",
+    },
+    " .pe-dialog-pane": {
       backgroundColor: componentVars["color_" + tint + "_background"],
-      borderColor: componentVars["color_" + tint + "_border"]
     },
     " .pe-dialog__backdrop": {
       backgroundColor: componentVars["color_" + tint + "_backdrop_background"]

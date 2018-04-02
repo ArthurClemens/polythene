@@ -143,8 +143,8 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--fixed,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--fixed {
-  left: auto;
-  right: 0
+  right: 0;
+  left: auto
 }
 
 .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
@@ -184,8 +184,12 @@
 }
 
 .pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__content {
-  background-color: #222;
-  border-color: hsla(0,0%,100%,.1)
+  border-color: hsla(0,0%,100%,.1);
+  background: none
+}
+
+.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog-pane,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog-pane {
+  background-color: #222
 }
 
 .pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
@@ -193,8 +197,12 @@
 }
 
 .pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__content {
-  background-color: #fff;
-  border-color: rgba(0,0,0,.11)
+  border-color: rgba(0,0,0,.11);
+  background: none
+}
+
+.pe-dialog.pe-drawer .pe-dialog-pane,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog-pane,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog-pane {
+  background-color: #fff
 }
 
 .pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {

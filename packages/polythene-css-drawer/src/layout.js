@@ -3,36 +3,36 @@ import { mixin } from "polythene-core-css";
 
 const SHADOW_WIDTH = 15;
 
-const alignLeft = componentVars => ({
+const alignSide = isRTL => componentVars => ({
   // Bordered
   ".pe-drawer--border .pe-dialog__content": {
-    borderStyle: "none solid none none"
+    borderStyle: isRTL ? "none none none solid" : "none solid none none"
   },
 
   // Fixed
   ".pe-drawer--fixed": {
-    left: 0,
-    right: "auto",
+    [isRTL ? "right" : "left"]: 0,
+    [isRTL ? "left" : "right"]: "auto",
   },
 
   // Cover
   ".pe-drawer--cover .pe-dialog__content": {
-    left: `${-componentVars.content_max_width - SHADOW_WIDTH}px`,
-    right: "auto",
+    [isRTL ? "right" : "left"]: `${-componentVars.content_max_width - SHADOW_WIDTH}px`,
+    [isRTL ? "left" : "right"]: "auto",
   },
   ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-    left: 0,
-    right: "auto"
+    [isRTL ? "right" : "left"]: 0,
+    [isRTL ? "left" : "right"]: "auto"
   },
 
   // Push
   ".pe-drawer--push .pe-dialog__content": {
-    marginLeft: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`, // reverse for RTL - see below
-    marginRight: "auto",
+    [isRTL ? "marginRight" : "marginLeft"]: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`,
+    [isRTL ? "marginLeft" : "marginRight"]: "auto",
   },
   ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-    marginLeft: 0,
-    marginRight: "auto"
+    [isRTL ? "marginRight" : "marginLeft"]: 0,
+    [isRTL ? "marginLeft" : "marginRight"]: "auto"
   },
 
   // Mini
@@ -43,44 +43,9 @@ const alignLeft = componentVars => ({
 
 });
 
-const alignRight = componentVars => ({
-  // Bordered
-  ".pe-drawer--border .pe-dialog__content": {
-    borderStyle: "none none none solid"
-  },
+const alignLeft = alignSide(false);
 
-  // Fixed
-  ".pe-drawer--fixed": {
-    left: "auto",
-    right: 0,
-  },
-
-  // Cover
-  ".pe-drawer--cover .pe-dialog__content": {
-    right: `${-componentVars.content_max_width - SHADOW_WIDTH}px`, // reverse for RTL - see below
-    left: "auto",
-  },
-  ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-    right: 0,
-    left: "auto"
-  },
-
-  // Push
-  ".pe-drawer--push .pe-dialog__content": {
-    marginRight: `${-componentVars.permanent_content_width - SHADOW_WIDTH}px`,
-    marginLeft: "auto",
-  },
-  ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-    marginRight: 0,
-    marginLeft: "auto"
-  },
-
-  // Mini
-  ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-    marginLeft: 0,
-    marginRight: 0,
-  },
-});
+const alignRight = alignSide(true);
 
 export default (selector, componentVars) => [
   {

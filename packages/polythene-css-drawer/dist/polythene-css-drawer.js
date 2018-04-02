@@ -22,88 +22,40 @@
 
   var SHADOW_WIDTH = 15;
 
-  var alignLeft = function alignLeft(componentVars) {
-    return {
-      // Bordered
-      ".pe-drawer--border .pe-dialog__content": {
-        borderStyle: "none solid none none"
-      },
+  var alignSide = function alignSide(isRTL) {
+    return function (componentVars) {
+      var _peDrawerFixed, _peDrawerCoverP, _peDrawerCoverPe, _peDrawerPushPe, _peDrawerPushPe2;
 
-      // Fixed
-      ".pe-drawer--fixed": {
-        left: 0,
-        right: "auto"
-      },
+      return {
+        // Bordered
+        ".pe-drawer--border .pe-dialog__content": {
+          borderStyle: isRTL ? "none none none solid" : "none solid none none"
+        },
 
-      // Cover
-      ".pe-drawer--cover .pe-dialog__content": {
-        left: -componentVars.content_max_width - SHADOW_WIDTH + "px",
-        right: "auto"
-      },
-      ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-        left: 0,
-        right: "auto"
-      },
+        // Fixed
+        ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed),
 
-      // Push
-      ".pe-drawer--push .pe-dialog__content": {
-        marginLeft: -componentVars.permanent_content_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
-        marginRight: "auto"
-      },
-      ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-        marginLeft: 0,
-        marginRight: "auto"
-      },
+        // Cover
+        ".pe-drawer--cover .pe-dialog__content": (_peDrawerCoverP = {}, _defineProperty(_peDrawerCoverP, isRTL ? "right" : "left", -componentVars.content_max_width - SHADOW_WIDTH + "px"), _defineProperty(_peDrawerCoverP, isRTL ? "left" : "right", "auto"), _peDrawerCoverP),
+        ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": (_peDrawerCoverPe = {}, _defineProperty(_peDrawerCoverPe, isRTL ? "right" : "left", 0), _defineProperty(_peDrawerCoverPe, isRTL ? "left" : "right", "auto"), _peDrawerCoverPe),
 
-      // Mini
-      ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-        marginLeft: 0,
-        marginRight: 0
-      }
+        // Push
+        ".pe-drawer--push .pe-dialog__content": (_peDrawerPushPe = {}, _defineProperty(_peDrawerPushPe, isRTL ? "marginRight" : "marginLeft", -componentVars.permanent_content_width - SHADOW_WIDTH + "px"), _defineProperty(_peDrawerPushPe, isRTL ? "marginLeft" : "marginRight", "auto"), _peDrawerPushPe),
+        ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": (_peDrawerPushPe2 = {}, _defineProperty(_peDrawerPushPe2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty(_peDrawerPushPe2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDrawerPushPe2),
 
+        // Mini
+        ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
+          marginLeft: 0,
+          marginRight: 0
+        }
+
+      };
     };
   };
 
-  var alignRight = function alignRight(componentVars) {
-    return {
-      // Bordered
-      ".pe-drawer--border .pe-dialog__content": {
-        borderStyle: "none none none solid"
-      },
+  var alignLeft = alignSide(false);
 
-      // Fixed
-      ".pe-drawer--fixed": {
-        left: "auto",
-        right: 0
-      },
-
-      // Cover
-      ".pe-drawer--cover .pe-dialog__content": {
-        right: -componentVars.content_max_width - SHADOW_WIDTH + "px", // reverse for RTL - see below
-        left: "auto"
-      },
-      ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
-        right: 0,
-        left: "auto"
-      },
-
-      // Push
-      ".pe-drawer--push .pe-dialog__content": {
-        marginRight: -componentVars.permanent_content_width - SHADOW_WIDTH + "px",
-        marginLeft: "auto"
-      },
-      ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
-        marginRight: 0,
-        marginLeft: "auto"
-      },
-
-      // Mini
-      ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-        marginLeft: 0,
-        marginRight: 0
-      }
-    };
-  };
+  var alignRight = alignSide(true);
 
   var layout = (function (selector, componentVars) {
     var _ref2;
@@ -236,8 +188,11 @@
       return s + selector;
     }).join(","), {
       " .pe-dialog__content": {
-        backgroundColor: componentVars["color_" + tint + "_background"],
-        borderColor: componentVars["color_" + tint + "_border"]
+        borderColor: componentVars["color_" + tint + "_border"],
+        background: "none"
+      },
+      " .pe-dialog-pane": {
+        backgroundColor: componentVars["color_" + tint + "_background"]
       },
       " .pe-dialog__backdrop": {
         backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
