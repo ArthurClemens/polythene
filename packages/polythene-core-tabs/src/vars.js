@@ -7,12 +7,14 @@ const rgba = (colorStr, opacity = 1) =>
 
 const fontSize = buttonVars.font_size;
 const tab_label_line_height = 1.1 * fontSize;
+const tab_height = 48;
+const scroll_button_size = tab_height;
 
 export default {
   tab_min_width:                    72,
   tab_min_width_tablet:             160,
   tab_max_width:                    "initial",
-  tab_height:                       48,
+  tab_height,
   label_max_width:                  264,
   menu_tab_height:                  44,
   menu_tab_icon_label_height:       44,
@@ -20,10 +22,11 @@ export default {
   tab_icon_label_icon_spacing:      7,
   indicator_slide_speed:            600, // px per second
   indicator_slide_min_duration:     .250,
-  tabs_indent:                      vars.unit_indent,
+  tabs_indent:                      0,
   tabs_scroll_speed:                600, // px per second
   tabs_scroll_delay:                .15,
   tabs_scroll_min_duration:         .5,
+  scroll_button_size,
   scroll_button_fade_duration:      .2,
   scroll_button_fade_delay:         .25,
   tab_content_padding_v:            12,

@@ -2,16 +2,6 @@ import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 const alignSide = isRTL => componentVars => ({
-  " .pe-no-touch &": {
-    " .pe-tabs__scroll-button-start": {
-      [isRTL ? "right" : "left"]: 0,
-      [isRTL ? "left" : "right"]: "auto",
-    },
-    " .pe-tabs__scroll-button-end": {
-      [isRTL ? "right" : "left"]: "auto",
-      [isRTL ? "left" : "right"]: 0,
-    }
-  },
   " .pe-tabs__row": {
     ".pe-tabs__row--indent": {
       [isRTL ? "paddingRight" : "paddingLeft"]: componentVars.tabs_indent + "px",
@@ -68,17 +58,21 @@ export default (selector, componentVars) => [
         },
 
         ".pe-tabs--scrollable": {
+          display: "flex",
           // hide scrollbar (this approach is required for Firefox)
           "max-height": componentVars.tab_height + "px",
           "-ms-overflow-style": "none",
 
           " .pe-tabs__scroll-button": {
             // default hide, show with html.pe-no-touch
-            display: "none"
+            display: "none",
           },
 
           " .pe-tabs__row": {
             marginBottom: -componentVars.scrollbar_offset + "px"
+          },
+          " .pe-tabs__tab": {
+            minWidth: 0
           }
         },
 
@@ -88,12 +82,13 @@ export default (selector, componentVars) => [
           },
 
           " .pe-tabs__scroll-button": {
-            position: "absolute",
+            position: "relative",
             display: "block",
-            top: 0,
             backgroundColor: "inherit",
             zIndex: 1,
             borderRadius: 0,
+            width: componentVars.scroll_button_size + "px",
+            height: componentVars.scroll_button_size + "px",
 
             " .pe-button__content": {
               borderRadius: 0,
@@ -242,6 +237,7 @@ export default (selector, componentVars) => [
           transitionProperty: "all",
           transitionTimingFunction: "ease-in-out",
           position: "absolute",
+          zIndex: 1,
           height: componentVars.tab_indicator_height + "px",
           bottom: 0,
           // left/right set in alignSide
@@ -260,7 +256,7 @@ export default (selector, componentVars) => [
 
         ["@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)"]: {
           [selector]: {
-            ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+            ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tabs__tab": {
               minWidth: componentVars.tab_min_width_tablet + "px"
             }
           }

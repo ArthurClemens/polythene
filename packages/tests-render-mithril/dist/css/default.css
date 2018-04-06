@@ -235,12 +235,24 @@ html {
   }
 }
 
-@media (min-width: 480px) {
+@media (min-width: 460px) {
   .results {
-    width: 480px;
+    width: 420px;
   }
   .results + .footer {
-    width: 480px;
+    width: 420px;
+  }
+  .result {
+    width: calc(100% - 2 * 20px);
+  }
+}
+
+@media (min-width: 560px) {
+  .results {
+    width: 520px;
+  }
+  .results + .footer {
+    width: 520px;
   }
   .result {
     width: calc(100% - 2 * 20px);

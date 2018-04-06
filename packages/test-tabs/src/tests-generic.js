@@ -42,7 +42,7 @@ export default ({ renderer: h, Tabs }) => {
 
   const threeButtons = [
     { label: "New" },
-    { label: "My Favorites" },
+    { label: "Favorites" },
     { label: "Saved" }
   ];
 
@@ -360,30 +360,30 @@ export default ({ renderer: h, Tabs }) => {
       name: "Option: content (RTL)",
       component: {
         view: () => 
-          h(".pe-rtl",
+          h(".pe-rtl", null,
             h(Tabs,
               { content: threeButtons }
             )
           )
       }
     },
-    {
-      name: "Option: scrollable (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", {
-            style: {
-              color: "#fff",
-              backgroundColor: "#444",
-              overflowX: "hidden",
-              height: "48px"
-            }
-          }, h(Tabs, {
-            tabs: longList,
-            scrollable: true
-          }))
-      }
-    },
+    // {
+    //   name: "Option: scrollable (RTL) (does not work with Chrome)",
+    //   component: {
+    //     view: () => 
+    //       h(".pe-rtl", {
+    //         style: {
+    //           color: "#fff",
+    //           backgroundColor: "#444",
+    //           overflowX: "hidden",
+    //           height: "48px"
+    //         }
+    //       }, h(Tabs, {
+    //         tabs: longList,
+    //         scrollable: true
+    //       }))
+    //   }
+    // },
 
     // Dark tone
 

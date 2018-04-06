@@ -1,5 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
-import { isTouch, subscribe, unsubscribe } from "polythene-core";
+import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import vars from "./vars";
 import classes from "polythene-css-classes/tabs";
@@ -27,25 +26,6 @@ const handleScrollButtonClick = (state, attrs, e, direction) => {
   }
 };
 
-/*
-Moves the first tab to the left so that the text label is as position 0. 
-*/
-const alignToTitle = (state) => {
-  const firstTab = state.tabs[0].dom;
-  const firstInnerLabel = firstTab.querySelector(`.${classes.label} span`);
-  const firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
-  const firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
-  const firstTabOffset = (firstOuterLabelWidth - firstInnerLabelWidth) / 2;
-  firstTab.style.marginLeft = `${-firstTabOffset}px`;
-};
-
-const createRightButtonOffset = (state) => {
-  // add padding to right so that last item is not hidden behind scroll button
-  const scrollButtonAtEndWidth = state.scrollButtons["end"].getBoundingClientRect().width;
-  const scrollButtonOffsetEl = state.tabsEl.querySelector(`.${classes.scrollButtonOffset}`);
-  scrollButtonOffsetEl.style.width = `${scrollButtonAtEndWidth}px`;
-};
-
 const scrollToTab = (state, tabIndex) => {
   const tabs = state.tabs;
   const scroller = state.scrollerEl;
@@ -58,7 +38,9 @@ const scrollToTab = (state, tabIndex) => {
   const scrollerWidth = scroller.getBoundingClientRect().width; // frame width
   const scrollingWidth = scroller.scrollWidth;
   const maxScroll = scrollingWidth - scrollerWidth;
-  const left = Math.min(tabLeft, maxScroll);
+  const left = state.isRTL
+    ? -1 * Math.min(tabLeft, maxScroll)
+    : Math.min(tabLeft, maxScroll);
   const currentLeft = scroller.scrollLeft;
   if (currentLeft !== left) {
     const duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
@@ -90,11 +72,14 @@ const updateScrollButtons = state => {
 const animateIndicator = (selectedTabEl, animate, state) => {
   const parentRect = state.tabsEl.getBoundingClientRect();
   const rect = selectedTabEl.getBoundingClientRect();
-  const style = state.tabIndicatorEl.style;
-  const translateX = rect.left - parentRect.left + state.scrollerEl.scrollLeft;
-  const scaleX = 1 / parentRect.width * rect.width;
+  const buttonSize = state.managesScroll ? rect.height : 0;
+  const translateX = state.isRTL
+    ? rect.right - parentRect.right + state.scrollerEl.scrollLeft + buttonSize
+    : rect.left - parentRect.left + state.scrollerEl.scrollLeft - buttonSize;
+  const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
   const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
   const duration = animate ? vars.indicator_slide_min_duration : 0;
+  const style = state.tabIndicatorEl.style;
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;
 };
@@ -150,7 +135,8 @@ export const getInitialState = (vnode, createStream) => {
     },
     registerTabButton,
     registerScrollButton,
-    cleanUp: undefined, // set in onMount
+    isRTL:               false,
+    cleanUp:             undefined, // set in onMount
     redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
   };
 };
@@ -161,6 +147,7 @@ export const onMount = vnode => {
   const attrs = vnode.attrs;
 
   state.tabsEl = dom;
+  state.isRTL = isRTL({ element: dom });
   if (!attrs.hideIndicator) {
     state.tabIndicatorEl = dom.querySelector(`.${classes.indicator}`);
   }
@@ -173,14 +160,6 @@ export const onMount = vnode => {
       const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
       const largest = widths.sort(sortByLargestWidth)[0];
       state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");
-    }
-    // Align first scrollable tab to title
-    if (attrs.scrollable) {
-      alignToTitle(state);
-    }
-    // Handle scroll
-    if (state.managesScroll) {
-      createRightButtonOffset(state);
     }
     setSelectedTab(state, attrs, state.selectedTabIndex(), false);
   });
@@ -270,17 +249,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
     return h(Tab, buttonOptsCombined);
   });
 
-  const tabRow = attrs.scrollable
-    ? tabRowButtons.concat([
-      // offset for right scroll button
-      h("div",
-        {
-          key: "offset",
-          className: classes.scrollButtonOffset
-        }
-      )
-    ])
-    : tabRowButtons;
+  const tabRow = tabRowButtons;
 
   let scrollButtonAtStart, scrollButtonAtEnd;
   if (attrs.scrollable) {
@@ -292,7 +261,8 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
         className: classes.scrollButtonAtStart,
         position: "start",
         register: state.registerScrollButton(state),
-        events: { [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "backward") }
+        events: { [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "backward") },
+        isRTL: state.isRTL
       }
     ));
     scrollButtonAtEnd = h(ScrollButton, Object.assign(
@@ -303,7 +273,8 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
         className: classes.scrollButtonAtEnd,
         position: "end",
         register: state.registerScrollButton(state),
-        events: { [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "forward") }
+        events: { [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "forward") },
+        isRTL: state.isRTL
       }
     ));
   }

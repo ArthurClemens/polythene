@@ -29,7 +29,6 @@ var classes = {
   scrollButton: "pe-tabs__scroll-button",
   scrollButtonAtEnd: "pe-tabs__scroll-button-end",
   scrollButtonAtStart: "pe-tabs__scroll-button-start",
-  scrollButtonOffset: "pe-tabs__scroll-button-offset",
   tab: "pe-tabs__tab",
   tabContent: "pe-tabs__tab-content",
   tabRow: "pe-tabs__row",
@@ -52,15 +51,9 @@ var classes = {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var alignDir = function alignDir(isRTL) {
+var alignSide = function alignSide(isRTL) {
   return function (componentVars) {
-    var _peTabs__scrollBu, _peTabs__scrollBu2;
-
     return {
-      " .pe-no-touch &": {
-        " .pe-tabs__scroll-button-start": (_peTabs__scrollBu = {}, _defineProperty(_peTabs__scrollBu, isRTL ? "right" : "left", 0), _defineProperty(_peTabs__scrollBu, isRTL ? "left" : "right", "auto"), _peTabs__scrollBu),
-        " .pe-tabs__scroll-button-end": (_peTabs__scrollBu2 = {}, _defineProperty(_peTabs__scrollBu2, isRTL ? "right" : "left", "auto"), _defineProperty(_peTabs__scrollBu2, isRTL ? "left" : "right", 0), _peTabs__scrollBu2)
-      },
       " .pe-tabs__row": {
         ".pe-tabs__row--indent": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", componentVars.tabs_indent + "px")
       },
@@ -71,8 +64,8 @@ var alignDir = function alignDir(isRTL) {
   };
 };
 
-var alignLeft = alignDir(false);
-var alignRight = alignDir(true);
+var alignLeft = alignSide(false);
+var alignRight = alignSide(true);
 
 var layout = (function (selector, componentVars) {
   return [_defineProperty({}, selector, [alignLeft(componentVars), _defineProperty({
@@ -113,6 +106,7 @@ var layout = (function (selector, componentVars) {
     },
 
     ".pe-tabs--scrollable": {
+      display: "flex",
       // hide scrollbar (this approach is required for Firefox)
       "max-height": componentVars.tab_height + "px",
       "-ms-overflow-style": "none",
@@ -124,6 +118,9 @@ var layout = (function (selector, componentVars) {
 
       " .pe-tabs__row": {
         marginBottom: -componentVars.scrollbar_offset + "px"
+      },
+      " .pe-tabs__tab": {
+        minWidth: 0
       }
     },
 
@@ -133,12 +130,13 @@ var layout = (function (selector, componentVars) {
       },
 
       " .pe-tabs__scroll-button": {
-        position: "absolute",
+        position: "relative",
         display: "block",
-        top: 0,
         backgroundColor: "inherit",
         zIndex: 1,
         borderRadius: 0,
+        width: componentVars.scroll_button_size + "px",
+        height: componentVars.scroll_button_size + "px",
 
         " .pe-button__content": {
           borderRadius: 0,
@@ -259,13 +257,14 @@ var layout = (function (selector, componentVars) {
 
     " .pe-tabs__indicator": {
       transform: "translate3d(0,0,0)",
-      // transformOrigin set in alignDir
+      // transformOrigin set in alignSide
       transitionProperty: "all",
       transitionTimingFunction: "ease-in-out",
       position: "absolute",
+      zIndex: 1,
       height: componentVars.tab_indicator_height + "px",
       bottom: 0,
-      // left/right set in alignDir
+      // left/right set in alignSide
       width: "100%" // and transformed with js
       // background-color defined in implementation/theme css
     },
@@ -277,7 +276,7 @@ var layout = (function (selector, componentVars) {
     }]
 
   }, "@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
-    ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit) .pe-tabs__tab": {
+    ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tabs__tab": {
       minWidth: componentVars.tab_min_width_tablet + "px"
     }
   }))]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];

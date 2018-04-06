@@ -8,7 +8,6 @@ export default {
   scrollButton:         "pe-tabs__scroll-button",
   scrollButtonAtEnd:    "pe-tabs__scroll-button-end",
   scrollButtonAtStart:  "pe-tabs__scroll-button-start",
-  scrollButtonOffset:   "pe-tabs__scroll-button-offset",
   tab:                  "pe-tabs__tab",
   tabContent:           "pe-tabs__tab-content",
   tabRow:               "pe-tabs__row",

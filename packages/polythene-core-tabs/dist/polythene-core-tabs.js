@@ -11,12 +11,14 @@
 
   var fontSize = polytheneCoreButton.vars.font_size;
   var tab_label_line_height = 1.1 * fontSize;
+  var tab_height = 48;
+  var scroll_button_size = tab_height;
 
   var vars = {
     tab_min_width: 72,
     tab_min_width_tablet: 160,
     tab_max_width: "initial",
-    tab_height: 48,
+    tab_height: tab_height,
     label_max_width: 264,
     menu_tab_height: 44,
     menu_tab_icon_label_height: 44,
@@ -24,10 +26,11 @@
     tab_icon_label_icon_spacing: 7,
     indicator_slide_speed: 600, // px per second
     indicator_slide_min_duration: .250,
-    tabs_indent: polytheneTheme.vars.unit_indent,
+    tabs_indent: 0,
     tabs_scroll_speed: 600, // px per second
     tabs_scroll_delay: .15,
     tabs_scroll_min_duration: .5,
+    scroll_button_size: scroll_button_size,
     scroll_button_fade_duration: .2,
     scroll_button_fade_delay: .25,
     tab_content_padding_v: 12,
@@ -81,7 +84,6 @@
     scrollButton: "pe-tabs__scroll-button",
     scrollButtonAtEnd: "pe-tabs__scroll-button-end",
     scrollButtonAtStart: "pe-tabs__scroll-button-start",
-    scrollButtonOffset: "pe-tabs__scroll-button-offset",
     tab: "pe-tabs__tab",
     tabContent: "pe-tabs__tab-content",
     tabRow: "pe-tabs__row",
@@ -131,25 +133,6 @@
     }
   };
 
-  /*
-  Moves the first tab to the left so that the text label is as position 0. 
-  */
-  var alignToTitle = function alignToTitle(state) {
-    var firstTab = state.tabs[0].dom;
-    var firstInnerLabel = firstTab.querySelector("." + classes.label + " span");
-    var firstOuterLabelWidth = firstTab.getBoundingClientRect().width;
-    var firstInnerLabelWidth = firstInnerLabel.getBoundingClientRect().width;
-    var firstTabOffset = (firstOuterLabelWidth - firstInnerLabelWidth) / 2;
-    firstTab.style.marginLeft = -firstTabOffset + "px";
-  };
-
-  var createRightButtonOffset = function createRightButtonOffset(state) {
-    // add padding to right so that last item is not hidden behind scroll button
-    var scrollButtonAtEndWidth = state.scrollButtons["end"].getBoundingClientRect().width;
-    var scrollButtonOffsetEl = state.tabsEl.querySelector("." + classes.scrollButtonOffset);
-    scrollButtonOffsetEl.style.width = scrollButtonAtEndWidth + "px";
-  };
-
   var scrollToTab = function scrollToTab(state, tabIndex) {
     var tabs = state.tabs;
     var scroller = state.scrollerEl;
@@ -163,8 +146,9 @@
     var scrollerWidth = scroller.getBoundingClientRect().width; // frame width
     var scrollingWidth = scroller.scrollWidth;
     var maxScroll = scrollingWidth - scrollerWidth;
-    var left = Math.min(tabLeft, maxScroll);
+    var left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
     var currentLeft = scroller.scrollLeft;
+    console.log("scrollerWidth", scrollerWidth, "scrollingWidth", scrollingWidth, "maxScroll", maxScroll, "tabLeft", tabLeft, "left", left);
     if (currentLeft !== left) {
       var duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
       var delaySeconds = vars.tabs_scroll_delay || 0;
@@ -197,11 +181,12 @@
   var animateIndicator = function animateIndicator(selectedTabEl, animate, state) {
     var parentRect = state.tabsEl.getBoundingClientRect();
     var rect = selectedTabEl.getBoundingClientRect();
-    var style = state.tabIndicatorEl.style;
-    var translateX = rect.left - parentRect.left + state.scrollerEl.scrollLeft;
-    var scaleX = 1 / parentRect.width * rect.width;
+    var buttonSize = state.managesScroll ? rect.height : 0;
+    var translateX = state.isRTL ? rect.right - parentRect.right + state.scrollerEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.scrollerEl.scrollLeft - buttonSize;
+    var scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
     var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
     var duration = animate ? vars.indicator_slide_min_duration : 0;
+    var style = state.tabIndicatorEl.style;
     style["transition-duration"] = duration + "s";
     style.transform = transformCmd;
   };
@@ -262,6 +247,7 @@
       },
       registerTabButton: registerTabButton,
       registerScrollButton: registerScrollButton,
+      isRTL: false,
       cleanUp: undefined, // set in onMount
       redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
     };
@@ -273,6 +259,7 @@
     var attrs = vnode.attrs;
 
     state.tabsEl = dom;
+    state.isRTL = polytheneCore.isRTL({ element: dom });
     if (!attrs.hideIndicator) {
       state.tabIndicatorEl = dom.querySelector("." + classes.indicator);
     }
@@ -289,14 +276,6 @@
         state.tabs.forEach(function (tabData) {
           return tabData.dom.style.width = largest + "px";
         });
-      }
-      // Align first scrollable tab to title
-      if (attrs.scrollable) {
-        alignToTitle(state);
-      }
-      // Handle scroll
-      if (state.managesScroll) {
-        createRightButtonOffset(state);
       }
       setSelectedTab(state, attrs, state.selectedTabIndex(), false);
     });
@@ -368,12 +347,7 @@
       return h(Tab, buttonOptsCombined);
     });
 
-    var tabRow = attrs.scrollable ? tabRowButtons.concat([
-    // offset for right scroll button
-    h("div", {
-      key: "offset",
-      className: classes.scrollButtonOffset
-    })]) : tabRowButtons;
+    var tabRow = tabRowButtons;
 
     var scrollButtonAtStart = void 0,
         scrollButtonAtEnd = void 0;
@@ -386,7 +360,8 @@
         register: state.registerScrollButton(state),
         events: _defineProperty({}, k.onclick, function (e) {
           return handleScrollButtonClick(state, attrs, e, "backward");
-        })
+        }),
+        isRTL: state.isRTL
       }));
       scrollButtonAtEnd = h(ScrollButton, _extends({}, {
         key: "forward",
@@ -396,7 +371,8 @@
         register: state.registerScrollButton(state),
         events: _defineProperty({}, k.onclick, function (e) {
           return handleScrollButtonClick(state, attrs, e, "forward");
-        })
+        }),
+        isRTL: state.isRTL
       }));
     }
 
@@ -488,7 +464,7 @@
         k = _ref.keys;
 
     var attrs = vnode.attrs;
-    var icon = attrs.position === "start" ? attrs.icon || { svg: { content: h.trust(arrowBackward) } } : attrs.icon || { svg: { content: h.trust(arrowForward) } };
+    var icon = attrs.position === "start" ? attrs.icon || { svg: { content: h.trust(attrs.isRTL ? arrowForward : arrowBackward) } } : attrs.icon || { svg: { content: h.trust(attrs.isRTL ? arrowBackward : arrowForward) } };
     return {
       className: [classes.scrollButton, attrs.className || attrs[k.class]].join(" "),
       icon: icon,
