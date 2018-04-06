@@ -3,7 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
-  - [Next](#next)
+  - [1.1.0](#110)
   - [1.0.0](#100)
 - [Pre releases](#pre-releases)
 
@@ -15,33 +15,48 @@
 
 
 
-<a id="next"></a>
-### Next
+<a id="110"></a>
+### 1.1.0
 
-(in development)
+#### Core
 
-* Refactoring of transition code
+* Updates to transition code:
   * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
-  * Transitions now read existing CSS styles
-  * It is now possible to set duration and delay in a component theme
+  * Transitions now read existing CSS styles (so you can define some or all transition properties in CSS too)
+  * It is now possible to set transition duration and delay in a component theme (using component configuration vars)
   * Added options `showTimingFunction` and `hideTimingFunction`
 
-Changes to components:
+#### Components
 
 * New [Drawer](components/drawer.md) component
 * Harmonisation of border options:
   * Button, Card and List: options `borders` and `bordered` are deprecated; use `border` instead
   * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
-  * Dialog: option `borders` is unchanged
+  * Dialog: option `borders` is unchanged (the option refers to top and bottom border)
 * List Tile:
-  * Added configuration vars for for titles and front: font size, weight and color 
+  * Added configuration vars for for titles and the front element: font size, weight and color 
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
 * Toolbar:
   * Added option `z` to add a shadow
   * Added option `fullbleed` to remove side padding
   * Added option `border` to set a bottom border
-* RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
+* Added RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
+* Button: removed `onmouseover` listener
 
+#### Example code
+
+* Updated Text Field form validation to match Powerform v3
+* Tabs:
+  * Added nested Tabs example
+  * Added "hide all selection indicators"
+
+#### Tooling
+
+* Webpack 4 support
+
+#### Other
+
+* Various bug fixes
 
 <a id="100"></a>
 ### 1.0.0
