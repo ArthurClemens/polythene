@@ -30,16 +30,11 @@ export const onMount = vnode => {
   state.dom(vnode.dom);
   
   if (isClient) {
-    const noink = attrs.ink !== undefined && attrs.ink === false;
     const handleInactivate = () => (
-      // delay a bit so that the ripple can finish before the hover disappears
-      // the timing is crude and does not take the actual ripple "done" into account
+      state.inactive(true),
       setTimeout(() => (
-        state.inactive(true),
-        setTimeout(() => (
-          state.inactive(false)
-        ), attrs.inactivate * 1000)
-      ), noink ? 0 : 300)
+        state.inactive(false)
+      ), attrs.inactivate * 1000)
     );
 
     const onFocus = () => state.focus(!state.mouseover());
@@ -72,8 +67,8 @@ export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   const disabled = attrs.disabled;
   const inactive = attrs.inactive || state.inactive();
-  const onKeyDownHandler = (attrs.events && attrs.events[k.onkeydown]) || onClickHandler;
   const onClickHandler = attrs.events && attrs.events[k.onclick];
+  const onKeyUpHandler = (attrs.events && attrs.events[k.onkeyup]) || onClickHandler;
 
   return Object.assign(
     {}, 
@@ -97,11 +92,11 @@ export const createProps = (vnode, { keys: k }) => {
         ? -1
         : attrs[k.tabindex] || 0,
       [k.onclick]: onClickHandler,
-      [k.onkeydown]: e => {
-        if (e.key === "Enter" && state.focus()) {
+      [k.onkeyup]: e => {
+        if (e.keyCode === 13 && state.focus()) {
           state.focus(false);
-          if (onKeyDownHandler) {
-            onKeyDownHandler(e);
+          if (onKeyUpHandler) {
+            onKeyUpHandler(e);
           }
         }
       }

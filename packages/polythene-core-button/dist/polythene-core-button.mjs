@@ -56,17 +56,10 @@ var onMount = function onMount(vnode) {
   state.dom(vnode.dom);
 
   if (isClient) {
-    var noink = attrs.ink !== undefined && attrs.ink === false;
     var handleInactivate = function handleInactivate() {
-      return (
-        // delay a bit so that the ripple can finish before the hover disappears
-        // the timing is crude and does not take the actual ripple "done" into account
-        setTimeout(function () {
-          return state.inactive(true), setTimeout(function () {
-            return state.inactive(false);
-          }, attrs.inactivate * 1000);
-        }, noink ? 0 : 300)
-      );
+      return state.inactive(true), setTimeout(function () {
+        return state.inactive(false);
+      }, attrs.inactivate * 1000);
     };
 
     var onFocus = function onFocus() {
@@ -108,17 +101,17 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var disabled = attrs.disabled;
   var inactive = attrs.inactive || state.inactive();
-  var onKeyDownHandler = attrs.events && attrs.events[k.onkeydown] || onClickHandler;
   var onClickHandler = attrs.events && attrs.events[k.onclick];
+  var onKeyUpHandler = attrs.events && attrs.events[k.onkeyup] || onClickHandler;
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
     className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeydown, function (e) {
-    if (e.key === "Enter" && state.focus()) {
+  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
+    if (e.keyCode === 13 && state.focus()) {
       state.focus(false);
-      if (onKeyDownHandler) {
-        onKeyDownHandler(e);
+      if (onKeyUpHandler) {
+        onKeyUpHandler(e);
       }
     }
   }), _ref2), attrs.url, disabled ? { disabled: true } : null);
