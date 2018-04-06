@@ -148,7 +148,6 @@ var scrollToTab = function scrollToTab(state, tabIndex) {
   var maxScroll = scrollingWidth - scrollerWidth;
   var left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
   var currentLeft = scroller.scrollLeft;
-  console.log("scrollerWidth", scrollerWidth, "scrollingWidth", scrollingWidth, "maxScroll", maxScroll, "tabLeft", tabLeft, "left", left);
   if (currentLeft !== left) {
     var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
     var delaySeconds = vars$3.tabs_scroll_delay || 0;

@@ -1210,7 +1210,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       name: "Bottom action row, border (RTL)",
       component: {
         view: () => 
-          h(".pe-rtl", 
+          h(".pe-rtl", null,
             h(Card,
               {
                 content: [

@@ -212,7 +212,7 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       name: "Option: compact (RTL)",
       component: {
         view: () =>
-          h(".pe-rtl",
+          h(".pe-rtl", null,
             h(List,
               {
                 compact: true,

@@ -11,8 +11,7 @@
     "polythene-css": "^1.0.0",
     "polythene-mithril": "^1.0.0",
     "polythene-react": "^1.0.0",
-    "powerform": "^3.1.4",
-    "validatex": "^0.3.1"
+    "powerform": "^3.1.4"
   },
   "devDependencies": {
     "mithril": "1.1.6",

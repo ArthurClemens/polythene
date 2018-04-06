@@ -103,10 +103,6 @@ ua-parser-js@^0.7.9:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
-validatex@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/validatex/-/validatex-0.3.1.tgz#99965253f0bf2186f51d43bfafb4d620540fb9ef"
-
 whatwg-fetch@>=0.10.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
