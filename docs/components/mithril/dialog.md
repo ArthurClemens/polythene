@@ -366,7 +366,7 @@ Dialog.show(() =>
     }),
     formOptions: {
       name: "demo",
-      type: "post",
+      method: "post",
       enctype: "multipart/form-data",
       onsubmit: e => {
         e.preventDefault()

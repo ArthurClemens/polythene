@@ -48,7 +48,7 @@ Displays a single dialog, or a stack of dialogs.
 
 | **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
-| **formOptions**   | optional | Options Object | | Form attribute options such as `type` or `enctype` |
+| **formOptions**   | optional | Options Object | | Form attribute options such as `method` or `enctype` (React: `encType`) |
 | **header**        | optional | String, hyperscript or component | | Header row |
 | **title**         | optional | String |  | Header title; if omitted, no header will be shown |
 | **body**          | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |

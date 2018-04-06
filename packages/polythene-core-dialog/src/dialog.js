@@ -110,25 +110,23 @@ export const createProps = (vnode, { keys: k }) => {
         }
         hideDialog(state, attrs);
       }
-    },
-    attrs.formOptions ? attrs.formOptions : null
+    }
   );
 };
 
 export const createPane = (vnode, { renderer: h, Pane }) => {
   const attrs = vnode.attrs;
-  return h(Pane,
-    {
-      title: attrs.title,
-      header: attrs.header,
-      body: attrs.content || attrs.body || attrs.menu || vnode.children,
-      footer: attrs.footer,
-      footerButtons: attrs.footerButtons,
-      className: attrs.className,
-      style: attrs.style,
-      fullBleed: attrs.fullBleed
-    }
-  );
+  return h(Pane, {
+    title: attrs.title,
+    header: attrs.header,
+    body: attrs.content || attrs.body || attrs.menu || vnode.children,
+    footer: attrs.footer,
+    footerButtons: attrs.footerButtons,
+    className: attrs.className,
+    style: attrs.style,
+    fullBleed: attrs.fullBleed,
+    formOptions: attrs.formOptions
+  });
 };
 
 export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => {

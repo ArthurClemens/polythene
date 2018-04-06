@@ -181,7 +181,7 @@ var createProps = function createProps(vnode, _ref) {
       return;
     }
     hideDialog(state, attrs);
-  }), attrs.formOptions ? attrs.formOptions : null);
+  }));
 };
 
 var createPane = function createPane(vnode, _ref2) {
@@ -197,7 +197,8 @@ var createPane = function createPane(vnode, _ref2) {
     footerButtons: attrs.footerButtons,
     className: attrs.className,
     style: attrs.style,
-    fullBleed: attrs.fullBleed
+    fullBleed: attrs.fullBleed,
+    formOptions: attrs.formOptions
   });
 };
 

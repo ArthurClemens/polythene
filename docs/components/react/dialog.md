@@ -481,7 +481,7 @@ class ConditionalDialogPane extends Component {
         />}
         formOptions={{
           name: "demo",
-          type: "post",
+          method: "post",
           encType: "multipart/form-data",
           onSubmit: e => {
             e.preventDefault()
