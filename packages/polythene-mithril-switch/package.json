@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-switch",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/polythene-mithril-switch",
   "module": "dist/polythene-mithril-switch.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-selection-control": "^1.0.0",
-    "polythene-core-switch": "^1.0.0",
-    "polythene-mithril-base": "^1.0.0",
-    "polythene-mithril-icon-button": "^1.0.0",
-    "polythene-mithril-shadow": "^1.0.0"
+    "polythene-core-selection-control": "^1.1.0",
+    "polythene-core-switch": "^1.1.0",
+    "polythene-mithril-base": "^1.1.0",
+    "polythene-mithril-icon-button": "^1.1.0",
+    "polythene-mithril-shadow": "^1.1.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-search",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/polythene-core-search",
   "module": "dist/polythene-core-search.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.0.0",
-    "polythene-css-classes": "^1.0.0",
-    "polythene-theme": "^1.0.0"
+    "polythene-core": "^1.1.0",
+    "polythene-css-classes": "^1.1.0",
+    "polythene-theme": "^1.1.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

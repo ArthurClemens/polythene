@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-radio-button",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/polythene-css-radio-button",
   "module": "dist/polythene-css-radio-button.mjs",
@@ -15,11 +15,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.0.0",
-    "polythene-core-radio-button": "^1.0.0",
-    "polythene-css-classes": "^1.0.0",
-    "polythene-css-selection-control": "^1.0.0",
-    "polythene-theme": "^1.0.0"
+    "polythene-core-css": "^1.1.0",
+    "polythene-core-radio-button": "^1.1.0",
+    "polythene-css-classes": "^1.1.0",
+    "polythene-css-selection-control": "^1.1.0",
+    "polythene-theme": "^1.1.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
