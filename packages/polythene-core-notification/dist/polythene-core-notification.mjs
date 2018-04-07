@@ -154,19 +154,6 @@ var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
-  var state = vnode.state;
-  if (state.mounted() && !state.transitioning()) {
-    if (attrs.hide && state.visible()) {
-      hideNotification(state, attrs);
-    } else if (attrs.show && !state.visible()) {
-      showNotification(state, attrs);
-    }
-  }
-  if (attrs.pause && !state.paused()) {
-    pause(state, attrs);
-  } else if (attrs.unpause && state.paused()) {
-    unpause(state, attrs);
-  }
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
     className: [classes.component,
@@ -181,7 +168,20 @@ var createProps = function createProps(vnode, _ref) {
 var createContent = function createContent(vnode, _ref2) {
   var h = _ref2.renderer;
 
+  var state = vnode.state;
   var attrs = vnode.attrs;
+  if (state.mounted() && !state.transitioning()) {
+    if (attrs.hide && state.visible()) {
+      hideNotification(state, attrs);
+    } else if (attrs.show && !state.visible()) {
+      showNotification(state, attrs);
+    }
+  }
+  if (attrs.pause && !state.paused()) {
+    pause(state, attrs);
+  } else if (attrs.unpause && state.paused()) {
+    unpause(state, attrs);
+  }
 
   return h("div", {
     className: classes.content,
