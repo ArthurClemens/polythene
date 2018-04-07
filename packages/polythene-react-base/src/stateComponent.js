@@ -40,7 +40,7 @@ export const StateComponent = ({
     componentDidMount() {
       this._mounted = true;
       this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => (
-        this._mounted && this.setState({ redrawValues: values })
+        setTimeout(() => this._mounted && this.setState({ redrawValues: values }), 0)
       ));
       onMount(this.createVirtualNode(), { keys });
     }

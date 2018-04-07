@@ -371,7 +371,9 @@ var StateComponent = function StateComponent(_ref) {
 
         this._mounted = true;
         this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
-          return _this2._mounted && _this2.setState({ redrawValues: values });
+          return setTimeout(function () {
+            return _this2._mounted && _this2.setState({ redrawValues: values });
+          }, 0);
         });
         onMount(this.createVirtualNode(), { keys: keys });
       }
