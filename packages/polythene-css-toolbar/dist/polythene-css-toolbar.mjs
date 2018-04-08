@@ -53,10 +53,6 @@ var layout = (function (selector, componentVars) {
 
     ".pe-toolbar--compact": compactStyle(componentVars),
 
-    " > div": {
-      width: "100%"
-    },
-
     " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
       fontSize: componentVars.font_size + "px",
       lineHeight: componentVars.line_height,

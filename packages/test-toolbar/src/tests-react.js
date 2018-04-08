@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, Toolbar, ToolbarTitle, IconButton } from "polythene-react";
+import { renderer, Toolbar, ToolbarTitle, IconButton, Checkbox } from "polythene-react";
 import genericTests from "./tests-generic";
 import shared from "./components/shared";
 
@@ -36,7 +36,6 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
     },
     {
       name: "Option: style (colors and height) (JSX)",
-      className: "small-result",
       component: () =>
         <Toolbar
           content={toolbarRow}
@@ -62,5 +61,5 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, renderer }))
-  .concat(reactTests({ Toolbar, ToolbarTitle, IconButton, renderer }));
+  .concat(genericTests({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer }))
+  .concat(reactTests({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer }));

@@ -1,6 +1,7 @@
 .pe-toolbar {
   -ms-flex-direction: row;
   flex-direction: row;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -23,10 +24,6 @@
 
 .pe-toolbar.pe-toolbar--compact {
   height: 48px
-}
-
-.pe-toolbar>div {
-  width: 100%
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {

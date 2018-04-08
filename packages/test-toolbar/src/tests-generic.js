@@ -1,10 +1,11 @@
 import shared from "./components/shared";
 import { ToolbarCSS } from "polythene-css";
+import toolbarTitleComponentCheckbox from "./components/toolbarTitleComponentCheckbox";
 
 const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 const longText = ipsum + ipsum + ipsum + ipsum + ipsum;
 
-export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
+export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) => {
 
   const {
     toolbarRow,
@@ -17,6 +18,8 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
     toolbarTitleComponentCenteredBalanced,
     toolbarTitleComponentIndented,
   } = shared({ IconButton, ToolbarTitle, renderer: h });
+
+  const ToolbarTitleComponentCheckbox = toolbarTitleComponentCheckbox({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h });
 
   ToolbarCSS.addStyle(".tests-toolbar-themed-toolbar", {
     color_light_background: "#00c853",
@@ -100,6 +103,10 @@ export default ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
       attrs: {
         content: toolbarTitleComponentAction
       }
+    },
+    {
+      name: "Checkbox",
+      component: ToolbarTitleComponentCheckbox,
     },
     {
       name: "Option: style (colors and height)",
