@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-svg",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-react-svg",
   "module": "dist/polythene-react-svg.mjs",

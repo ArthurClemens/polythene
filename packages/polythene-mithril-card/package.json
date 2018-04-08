@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-card",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-mithril-card",
   "module": "dist/polythene-mithril-card.mjs",
