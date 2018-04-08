@@ -13,12 +13,12 @@ const PACKAGE_FILE_PATTERN = "./packages/**/package.json";
 const maybePublish = (filename, name) => {
   shell.exec(`npm view ${name} version`, (code, npmVersion) => {
     console.log(`npm for ${name} is at ${npmVersion}`); // eslint-disable-line no-console
-    if (npmVersion !== NEW_VERSION) {
+    if (npmVersion.trim() !== NEW_VERSION) {
       shell.exec(`npm view ${name} version`);
       shell.cd(path.dirname(filename));
       shell.exec("npm publish");
       shell.cd(baseDir);
-      child_process.execSync("sleep 2"); 
+      child_process.execSync("sleep 1"); 
     }
   });
 };
