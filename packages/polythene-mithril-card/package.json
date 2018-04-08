@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-card",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "dist/polythene-mithril-card",
   "module": "dist/polythene-mithril-card.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-card": "^1.1.0",
-    "polythene-mithril-base": "^1.1.0",
-    "polythene-mithril-icon": "^1.1.0",
-    "polythene-mithril-list-tile": "^1.1.0",
-    "polythene-mithril-shadow": "^1.1.0"
+    "polythene-core-card": "^1.1.2",
+    "polythene-mithril-base": "^1.1.2",
+    "polythene-mithril-icon": "^1.1.2",
+    "polythene-mithril-list-tile": "^1.1.2",
+    "polythene-mithril-shadow": "^1.1.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

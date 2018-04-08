@@ -6,15 +6,21 @@ const fs = require("fs");
 const glob = require("glob");
 const baseDir = process.cwd();
 
-const CURRENT_VERSION      = "1.1.0";
-const NEW_VERSION          = "1.1.1";
+const CURRENT_VERSION      = "1.1.1";
+const NEW_VERSION          = "1.1.2";
 const PACKAGE_FILE_PATTERN = "./packages/**/package.json";
 
-const publish = filename => {
-  shell.cd(path.dirname(filename));
-  shell.exec("npm publish");
-  shell.cd(baseDir);
-  child_process.execSync("sleep 2");     
+const maybePublish = (filename, name) => {
+  shell.exec(`npm view ${name} version`, (code, npmVersion) => {
+    console.log(`npm for ${name} is at ${npmVersion}`); // eslint-disable-line no-console
+    if (npmVersion !== NEW_VERSION) {
+      shell.exec(`npm view ${name} version`);
+      shell.cd(path.dirname(filename));
+      shell.exec("npm publish");
+      shell.cd(baseDir);
+      child_process.execSync("sleep 2"); 
+    }
+  });
 };
 
 glob.sync(PACKAGE_FILE_PATTERN)
@@ -24,8 +30,10 @@ glob.sync(PACKAGE_FILE_PATTERN)
     const data = JSON.parse(fileContents);
     if (data.version === CURRENT_VERSION) {
       shell.sed("-i", `"version": "${CURRENT_VERSION}"`, `"version": "${NEW_VERSION}"`, filename);
-      publish(filename);
     } else {
       console.log(`${data.name} is already at ${NEW_VERSION}`); // eslint-disable-line no-console
+    }
+    if (!data.private) {
+      maybePublish(filename, data.name);
     }
   });

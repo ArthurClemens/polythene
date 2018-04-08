@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-list",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "dist/polythene-core-list",
   "module": "dist/polythene-core-list.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.1.0",
-    "polythene-css-classes": "^1.1.0",
-    "polythene-theme": "^1.1.0"
+    "polythene-core": "^1.1.2",
+    "polythene-css-classes": "^1.1.2",
+    "polythene-theme": "^1.1.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-raised-button",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "dist/polythene-react-raised-button",
   "module": "dist/polythene-react-raised-button.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-raised-button": "^1.1.0",
-    "polythene-react-base": "^1.1.0",
-    "polythene-react-button": "^1.1.0",
-    "polythene-react-shadow": "^1.1.0"
+    "polythene-core-raised-button": "^1.1.2",
+    "polythene-react-base": "^1.1.2",
+    "polythene-react-button": "^1.1.2",
+    "polythene-react-shadow": "^1.1.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"

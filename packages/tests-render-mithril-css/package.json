@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-mithril-css",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "private": true,
   "main": "dist/js/test.js",
@@ -15,14 +15,14 @@
   },
   "dependencies": {
     "mithril": "1.1.6",
-    "polythene-css": "^1.1.1",
-    "polythene-mithril": "^1.1.1"
+    "polythene-css": "^1.1.2",
+    "polythene-mithril": "^1.1.2"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^1.1.11",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "npm-run-all": "^4.1.2",
-    "polythene-scripts": "^1.1.0",
+    "polythene-scripts": "^1.1.2",
     "uglifyjs-webpack-plugin": "1.2.4",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.13",

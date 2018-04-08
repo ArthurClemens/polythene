@@ -1,6 +1,6 @@
 {
   "name": "polythene-utilities",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "dist/polythene-utilities",
   "module": "dist/polythene-utilities.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.1.0",
-    "polythene-core-css": "^1.1.1",
+    "polythene-core": "^1.1.2",
+    "polythene-core-css": "^1.1.2",
     "webfontloader": "^1.6.27"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
