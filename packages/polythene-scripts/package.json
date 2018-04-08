@@ -23,6 +23,7 @@
     "tar": "^4.0.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT",
   "devDependencies": {
     "command-line-args": "^4.0.7"

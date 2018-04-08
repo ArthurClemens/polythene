@@ -22,5 +22,6 @@
     "polythene-utilities": "^1.1.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT"
 }

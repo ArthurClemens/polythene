@@ -54,5 +54,6 @@
     "react-hyperscript": "^3.0.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT"
 }
