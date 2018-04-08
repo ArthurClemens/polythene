@@ -1,4 +1,5 @@
 .pe-list-tile {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
@@ -23,6 +24,7 @@
 }
 
 .pe-list-tile .pe-list-tile__primary,.pe-list-tile .pe-list-tile__secondary {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -33,6 +35,7 @@
 }
 
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary {
+  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px;
@@ -40,6 +43,7 @@
 }
 
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary .pe-list-tile__content:not(.pe-list-tile__content-front) {
+  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px;
@@ -58,11 +62,13 @@
 }
 
 .pe-list-tile .pe-list-tile__content {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   -ms-align-self: center;
+  -webkit-align-self: center;
   align-self: center;
   padding-left: 16px;
   padding-right: 16px;
@@ -99,23 +105,23 @@
 }
 
 .pe-list-tile .pe-list-tile__subtitle {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-rendering: auto;
   -webkit-line-clamp: 1;
-  display: -webkit-box;
   max-height: 20px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px
 }
 
-.pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
+.pe-list-tile .pe-list-tile__subtitle,.pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
+  -webkit-box-orient: vertical;
+  display: -webkit-box
+}
+
+.pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
   -webkit-line-clamp: 2;
-  display: -webkit-box;
   max-height: 40px;
   white-space: normal
 }
@@ -136,6 +142,7 @@
 .pe-list-tile.pe-list-tile--high-subtitle .pe-list-tile--high-subtitle .pe-list-tile__secondary {
   -ms-flex-direction: row;
   flex-direction: row;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: start;
@@ -144,6 +151,7 @@
 
 .pe-list-tile.pe-list-tile--high-subtitle .pe-list-tile__content {
   -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
   align-self: flex-start;
   padding-top: 13px;
   padding-bottom: 14px
@@ -167,6 +175,7 @@
   text-overflow: ellipsis;
   text-rendering: auto;
   -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   display: -webkit-box;
   max-height: 48px;
   font-size: 14px;

@@ -90,6 +90,7 @@
 }
 
 .pe-tabs .pe-tabs__row {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -105,6 +106,7 @@
 }
 
 .pe-tabs .pe-tabs__row.pe-tabs__row--centered {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -112,6 +114,7 @@
 }
 
 .pe-tabs .pe-tabs__scroll-button-offset,.pe-tabs .pe-tabs__tab {
+  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px;
@@ -195,6 +198,7 @@
   justify-content: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -203,6 +207,7 @@
 }
 
 .pe-tabs.pe-tabs--autofit .pe-tabs__tab {
+  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px;

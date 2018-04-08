@@ -22,6 +22,7 @@
 .pe-checkbox-control .pe-control__form-label {
   -ms-flex-direction: row;
   flex-direction: row;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;

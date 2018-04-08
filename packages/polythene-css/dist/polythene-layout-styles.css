@@ -1,9 +1,11 @@
 .layout,.layout.horizontal {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex
 }
 
 .layout.horizontal.inline,.layout.vertical.inline {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   display: -ms-inline-flexbox;
@@ -11,48 +13,55 @@
 }
 
 .layout.horizontal {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-direction: row;
   flex-direction: row
 }
 
-.layout.horizontal.reverse {
+.layout.horizontal,.layout.horizontal.reverse {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.horizontal.reverse {
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse
 }
 
 .layout.vertical {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-direction: column;
   flex-direction: column
 }
 
-.layout.vertical.reverse {
+.layout.vertical,.layout.vertical.reverse {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.vertical.reverse {
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse
 }
 
 .layout.wrap {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap
 }
 
-.layout.wrap.reverse {
+.layout.wrap,.layout.wrap.reverse {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.wrap.reverse {
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse
 }
 
 .flex {
+  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px
@@ -133,34 +142,39 @@
 }
 
 .layout.start {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-align: start;
   align-items: flex-start
 }
 
-.layout.center,.layout.center-center {
+.layout.center,.layout.center-center,.layout.start {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.center,.layout.center-center {
   -ms-flex-align: center;
   align-items: center
 }
 
 .layout.end {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-align: end;
   align-items: flex-end
 }
 
-.layout.start-justified {
+.layout.end,.layout.start-justified {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.start-justified {
   -ms-flex-pack: start;
   justify-content: flex-start
 }
 
 .layout.center-center,.layout.center-justified {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -168,20 +182,23 @@
 }
 
 .layout.end-justified {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-pack: end;
   justify-content: flex-end
 }
 
-.layout.around-justified {
+.layout.around-justified,.layout.end-justified {
+  display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex
+}
+
+.layout.around-justified {
   -ms-flex-pack: distribute;
   justify-content: space-around
 }
 
 .layout.justified {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -190,21 +207,25 @@
 
 .self-start {
   -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
   align-self: flex-start
 }
 
 .self-center {
   -ms-align-self: center;
+  -webkit-align-self: center;
   align-self: center
 }
 
 .self-end {
   -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
   align-self: flex-end
 }
 
 .self-stretch {
   -ms-align-self: stretch;
+  -webkit-align-self: stretch;
   align-self: stretch
 }
 

@@ -11,11 +11,6 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 <a href="https://arthurclemens.github.io/assets/polythene/docs/polythene-kitchen-sink.png" target="_blank">Kitchen sink - click to enlarge</a>
 
 
-## Status
-
-Version: `1.1.0`
-
-
 ## Main features
 
 * Allows creating dynamic and interactive interfaces with ease
