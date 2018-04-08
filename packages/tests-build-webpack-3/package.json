@@ -1,6 +1,6 @@
 {
   "name": "polythene-build-webpack-3",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "private": true,
   "main": "dist/js/test",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "mithril": "1.1.6",
-    "polythene-css": "^1.1.0",
-    "polythene-mithril": "^1.1.0"
+    "polythene-css": "^1.1.1",
+    "polythene-mithril": "^1.1.1"
   },
   "devDependencies": {
     "compression-webpack-plugin": "1.0.1",

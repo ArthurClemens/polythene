@@ -1,6 +1,6 @@
 {
   "name": "polythene-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-react",
   "module": "dist/polythene-react.mjs",
@@ -15,7 +15,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-css": "^1.1.0",
+    "polythene-css": "^1.1.1",
     "polythene-react-base": "^1.1.0",
     "polythene-react-button": "^1.1.0",
     "polythene-react-card": "^1.1.0",
@@ -29,10 +29,10 @@
     "polythene-react-ios-spinner": "^1.1.0",
     "polythene-react-list": "^1.1.0",
     "polythene-react-list-tile": "^1.1.0",
-    "polythene-react-material-design-progress-spinner": "^1.1.0",
+    "polythene-react-material-design-progress-spinner": "^1.1.1",
     "polythene-react-material-design-spinner": "^1.1.0",
     "polythene-react-menu": "^1.1.0",
-    "polythene-react-notification": "^1.1.0",
+    "polythene-react-notification": "^1.1.1",
     "polythene-react-radio-button": "^1.1.0",
     "polythene-react-radio-group": "^1.1.0",
     "polythene-react-raised-button": "^1.1.0",
@@ -40,16 +40,16 @@
     "polythene-react-search": "^1.1.0",
     "polythene-react-shadow": "^1.1.0",
     "polythene-react-slider": "^1.1.0",
-    "polythene-react-snackbar": "^1.1.0",
+    "polythene-react-snackbar": "^1.1.1",
     "polythene-react-svg": "^1.1.0",
     "polythene-react-switch": "^1.1.0",
-    "polythene-react-tabs": "^1.1.0",
+    "polythene-react-tabs": "^1.1.1",
     "polythene-react-textfield": "^1.1.0",
     "polythene-react-toolbar": "^1.1.0"
   },
   "devDependencies": {
     "polythene-core": "^1.1.0",
-    "polythene-core-css": "^1.1.0",
+    "polythene-core-css": "^1.1.1",
     "react": "^16.2.0",
     "react-hyperscript": "^3.0.0"
   },

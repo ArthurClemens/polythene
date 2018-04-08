@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-material-design-progress-spinner",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-react-material-design-progress-spinner",
   "module": "dist/polythene-react-material-design-progress-spinner.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core": "^1.1.0",
-    "polythene-core-material-design-progress-spinner": "^1.1.0",
+    "polythene-core-material-design-progress-spinner": "^1.1.1",
     "polythene-css-classes": "^1.1.0",
     "polythene-react-base": "^1.1.0",
     "polythene-react-base-spinner": "^1.1.0"

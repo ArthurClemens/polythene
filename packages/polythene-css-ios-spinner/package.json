@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-ios-spinner",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-css-ios-spinner",
   "module": "dist/polythene-css-ios-spinner.mjs",
@@ -15,7 +15,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.1.0",
+    "polythene-core-css": "^1.1.1",
     "polythene-core-ios-spinner": "^1.1.0",
     "polythene-css-classes": "^1.1.0",
     "polythene-theme": "^1.1.0"

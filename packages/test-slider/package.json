@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-slider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "",
   "scripts": {
@@ -8,10 +8,10 @@
     "test:watch": "yarn run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-core-css": "^1.1.0",
-    "polythene-css": "^1.1.0",
-    "polythene-mithril": "^1.1.0",
-    "polythene-react": "^1.1.0",
+    "polythene-core-css": "^1.1.1",
+    "polythene-css": "^1.1.1",
+    "polythene-mithril": "^1.1.1",
+    "polythene-react": "^1.1.1",
     "polythene-theme": "^1.1.0"
   },
   "devDependencies": {

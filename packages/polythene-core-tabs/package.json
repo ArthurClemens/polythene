@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-tabs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/polythene-core-tabs",
   "module": "dist/polythene-core-tabs.mjs",
@@ -19,7 +19,7 @@
     "polythene-core-icon-button": "^1.1.0",
     "polythene-css-classes": "^1.1.0",
     "polythene-theme": "^1.1.0",
-    "polythene-utilities": "^1.1.0"
+    "polythene-utilities": "^1.1.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "license": "MIT"
