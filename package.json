@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "postinstall": "lerna bootstrap",
     "lint": "eslint ./packages/polythene-*",
-    "clean": "lerna clean --yes && lerna bootstrap",
+    "clean": "lerna clean --yes",
     "build": "lerna run build && npm run build:css",
     "build:component": "node ./scripts/buildComponent",
     "build:css": "cd packages/polythene-css && npm run build",
