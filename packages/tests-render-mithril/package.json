@@ -11,7 +11,7 @@
     "dev:serve": "webpack-dev-server --config scripts/webpack.config.dev.js --port 3000 --host 0.0.0.0",
     "dev:watch": "webpack-cli --watch --config scripts/webpack.config.dev.js",
     "webpack": "webpack-cli --config scripts/webpack.config.prod.js",
-    "build": "yarn run clean && yarn run webpack"
+    "build": "npm run clean && npm run webpack"
   },
   "dependencies": {
     "mithril": "1.1.6",

@@ -8,7 +8,7 @@
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
     "build-standalone": "DEPS=1 ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-mithril-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
-    "build": "yarn run clean && yarn run rollup && yarn run build-standalone"
+    "build": "npm run clean && npm run rollup && npm run build-standalone"
   },
   "files": [
     "dist",
