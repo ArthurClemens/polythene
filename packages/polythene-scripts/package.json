@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
-    "build": "yarn run clean && yarn run rollup",
+    "build": "npm run clean && npm run rollup",
     "test": "node test"
   },
   "files": [

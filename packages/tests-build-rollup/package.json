@@ -9,7 +9,7 @@
     "clean": "rm -rf dist/js/*",
     "dev": "http-server -p 5000 dist",
     "rollup": "DEPS=1 ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build": "yarn run clean && yarn run rollup"
+    "build": "npm run clean && npm run rollup"
   },
   "dependencies": {
     "mithril": "1.1.6",

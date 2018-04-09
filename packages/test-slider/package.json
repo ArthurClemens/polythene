@@ -5,7 +5,7 @@
   "description": "",
   "scripts": {
     "test": "../../node_modules/jest/bin/jest.js src/**",
-    "test:watch": "yarn run test -- --watch --no-watchman"
+    "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
     "polythene-core-css": "^1.1.2",
