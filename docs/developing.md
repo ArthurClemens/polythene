@@ -24,7 +24,7 @@ Get the Polythene repo and prepare:
 ```
 git clone https://github.com/ArthurClemens/polythene.git
 cd polythene
-yarn
+npm
 ```
 
 This will install all dependencies and run `lerna bootstrap`.
@@ -48,16 +48,16 @@ Test files for each component are located in `packages/test-COMPONENT`. These in
 
 If you haven't done so, start by installing all dependencies in the root:
 
-* `yarn` - this will install all dependencies and run `lerna bootstrap`
+* `npm install` - this will install all dependencies and run `lerna bootstrap`
 
 <a id="editing-tests"></a>
 ### Editing tests
 
 * Modify and build files:
-  * `yarn run build` - builds files in `dist`
+  * `npm run build` - builds files in `dist`
 * Update snapshots:
-  * `yarn run test`
-  * `yarn run test:watch`
+  * `npm run test`
+  * `npm run test:watch`
 
 <a id="viewing-tests"></a>
 ### Viewing tests
@@ -69,7 +69,7 @@ Test files can be viewed by the "test renderers":
 
 Run in the browser:
 
-* `yarn run dev` - uses Webpack's dev server
+* `npm run dev` - uses Webpack's dev server
 
 * With Mithril: http://localhost:3000
 * With React: http://localhost:3100

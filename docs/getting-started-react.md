@@ -22,7 +22,7 @@
 <a id="usage-in-javascript-modules"></a>
 ## Usage in JavaScript modules
 
-Add Polythene to your project with [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com).
+Add Polythene to your project with [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com/).
 
 <a id="which-packages-do-you-need"></a>
 ### Which packages do you need?
@@ -45,12 +45,6 @@ Optional:
 
 <a id="installation"></a>
 ### Installation
-
-~~~bash
-yarn add polythene-react polythene-css
-~~~
-
-or
 
 ~~~bash
 npm install --save polythene-react polythene-css

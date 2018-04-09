@@ -4,7 +4,7 @@ https://github.com/phenomic/phenomic/blob/master/packages/plugin-bundler-webpack
 
 Debug with:
 
-DEBUG=phenomic:plugin:webpack yarn run start
+DEBUG=phenomic:plugin:webpack npm run start
 */
 
 /* globals process */

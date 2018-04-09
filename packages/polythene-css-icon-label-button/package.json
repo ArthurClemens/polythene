@@ -1,0 +1,26 @@
+{
+  "name": "polythene-css-icon-label-button",
+  "version": "1.1.2",
+  "description": "",
+  "main": "dist/polythene-css-icon-label-button",
+  "module": "dist/polythene-css-icon-label-button.mjs",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build:css": "node ../../scripts/writeComponentCSS.js",
+    "build": "npm run clean && npm run rollup && npm run build:css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-icon-label-button": "^1.1.2",
+    "polythene-core-css": "^1.1.2",
+    "polythene-css-classes": "^1.1.2",
+    "polythene-css-selection-control": "^1.1.2",
+    "polythene-theme": "^1.1.2"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "license": "MIT"
+}

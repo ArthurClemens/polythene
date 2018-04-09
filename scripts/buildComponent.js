@@ -8,7 +8,7 @@ const componentNames = process.argv.slice(2);
 
 const build = function(dir) {
   shell.cd(dir);
-  shell.exec("yarn run build");
+  shell.exec("npm run build");
   shell.cd(baseDir);
 };
 
