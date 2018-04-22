@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
+  - [Next](#next)
   - [1.1.0](#110)
   - [1.0.0](#100)
 - [Pre releases](#pre-releases)
@@ -13,6 +14,13 @@
 <a id="releases"></a>
 ## Releases
 
+
+<a id="next"></a>
+### Next
+
+#### Components
+
+* Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 
 
 <a id="110"></a>

@@ -47,10 +47,10 @@
         }
       },
 
-      " .pe-button__content": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), {
+      " .pe-button__content": {
         position: "relative",
         borderRadius: "inherit"
-      }],
+      },
 
       " .pe-button__label": [polytheneCoreCss.mixin.fontSmoothing(), {
         position: "relative",
@@ -59,7 +59,7 @@
         pointerEvents: "none"
       }],
 
-      " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), polytheneCoreCss.mixin.fit(), {
+      " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.fit(), {
         borderRadius: "inherit",
         pointerEvents: "none"
       }],
@@ -91,6 +91,8 @@
       padding: componentVars.outer_padding_v + "px 0",
       background: "transparent",
       border: "none",
+
+      " .pe-button__content, .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration)],
 
       " .pe-button__content": {
         position: "relative",
@@ -175,12 +177,22 @@
   var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
     var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
     var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-    return [_defineProperty$2({}, scopes.map(function (s) {
+    return [_defineProperty$2({}, [].concat(scopes.map(function (s) {
       return s + selector + ":hover";
-    }).join(","), {
-      ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_hover_background"],
-        borderColor: hoverBorder
+    }).join(",")).concat(scopes.map(function (s) {
+      return s + selector + ":active";
+    }).join(",")), {
+      ":not(.pe-button--selected):not(.pe-button--inactive)": {
+        color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+        borderColor: hoverBorder,
+
+        " .pe-button__content": {
+          backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+        },
+
+        " .pe-button__wash": {
+          backgroundColor: componentVars["color_" + tint + "_wash_background"]
+        }
       }
     })];
   };
@@ -210,6 +222,8 @@
   polytheneCoreCss.styler.generateStyles([baseSelector], polytheneCoreButton.vars, baseFns);
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreButton.vars, fns);
 
+  exports.layout = layout;
+  exports.noTouchStyle = noTouchStyle;
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
 

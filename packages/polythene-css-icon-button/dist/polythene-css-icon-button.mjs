@@ -1,4 +1,5 @@
-import { styler } from 'polythene-core-css';
+import { mixin, styler } from 'polythene-core-css';
+import { noTouchStyle } from 'polythene-css-button';
 import { vars } from 'polythene-core-icon-button';
 
 var classes = {
@@ -47,8 +48,11 @@ var layout = (function (selector, componentVars) {
     " .pe-icon-button__content": {
       lineHeight: 1,
       padding: componentVars.padding + "px",
-      borderRadius: "50%"
+      borderRadius: "50%",
+      pointerEvents: "none"
     },
+
+    " .pe-button__content, .pe-button__wash": [mixin.defaultTransition("all", componentVars.animation_duration)],
 
     ".pe-icon-button--compact": {
       " .pe-icon-button__content": {
@@ -72,7 +76,9 @@ var style = function style(scopes, selector, componentVars, tint) {
     return s + selector;
   }).join(","), {
 
-    color: componentVars["color_" + tint],
+    "&, .pe-icon-button__label": {
+      color: componentVars["color_" + tint]
+    },
 
     " .pe-icon-button__content": {
       backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"]
@@ -97,21 +103,25 @@ var style = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
+var noTouchStyle$1 = function noTouchStyle$$1(scopes, selector, componentVars, tint) {
+  return noTouchStyle(scopes, selector, componentVars, tint).concat([_defineProperty$1({}, [].concat(scopes.map(function (s) {
     return s + selector + ":hover";
-  }).join(","), {
-    " .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_wash"]
+  }).join(",")).concat(scopes.map(function (s) {
+    return s + selector + ":active";
+  }).join(",")), {
+    ":not(.pe-button--selected):not(.pe-button--inactive)": {
+      " .pe-icon-button__label": {
+        color: componentVars["color_" + tint + "_label_hover"]
+      }
     }
-  })];
+  })]);
 };
 
 var color = (function (selector, componentVars) {
   return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
+  noTouchStyle$1(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
+  noTouchStyle$1(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

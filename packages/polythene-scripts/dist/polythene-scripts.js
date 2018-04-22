@@ -75,6 +75,7 @@
     }));
 
     var options = sourceMap ? {
+      from: undefined,
       to: path,
       map: { inline: false }
     } : {};

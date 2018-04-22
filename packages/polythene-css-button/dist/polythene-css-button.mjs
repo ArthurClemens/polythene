@@ -44,10 +44,10 @@ var baseLayout = (function (selector, componentVars) {
       }
     },
 
-    " .pe-button__content": [mixin.defaultTransition("all", componentVars.animation_duration), {
+    " .pe-button__content": {
       position: "relative",
       borderRadius: "inherit"
-    }],
+    },
 
     " .pe-button__label": [mixin.fontSmoothing(), {
       position: "relative",
@@ -56,7 +56,7 @@ var baseLayout = (function (selector, componentVars) {
       pointerEvents: "none"
     }],
 
-    " .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("all", componentVars.animation_duration), mixin.fit(), {
+    " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
       borderRadius: "inherit",
       pointerEvents: "none"
     }],
@@ -88,6 +88,8 @@ var layout = (function (selector, componentVars) {
     padding: componentVars.outer_padding_v + "px 0",
     background: "transparent",
     border: "none",
+
+    " .pe-button__content, .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("all", componentVars.animation_duration)],
 
     " .pe-button__content": {
       position: "relative",
@@ -172,12 +174,22 @@ var style = function style(scopes, selector, componentVars, tint) {
 var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
   var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [_defineProperty$2({}, scopes.map(function (s) {
+  return [_defineProperty$2({}, [].concat(scopes.map(function (s) {
     return s + selector + ":hover";
-  }).join(","), {
-    ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_hover_background"],
-      borderColor: hoverBorder
+  }).join(",")).concat(scopes.map(function (s) {
+    return s + selector + ":active";
+  }).join(",")), {
+    ":not(.pe-button--selected):not(.pe-button--inactive)": {
+      color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+      borderColor: hoverBorder,
+
+      " .pe-button__content": {
+        backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+      },
+
+      " .pe-button__wash": {
+        backgroundColor: componentVars["color_" + tint + "_wash_background"]
+      }
     }
   })];
 };
@@ -207,4 +219,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 styler.generateStyles([baseSelector], vars, baseFns);
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { layout, noTouchStyle, addStyle, getStyle };

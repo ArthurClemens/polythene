@@ -181,31 +181,41 @@
 
     color_light_background: "transparent",
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_hover_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
     color_light_disabled_background: "transparent",
     color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
 
-    // border colors may be set in theme; disabled by default
-    // color_light_border:              "transparent", // only specify this variable to get all 4 states
-    // color_light_hover_border:        "transparent",
-    // color_light_active_border:       "transparent",
-    // color_light_disabled_border:     "transparent",
-
     color_dark_background: "transparent",
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_hover_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
     color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
     color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
     color_dark_disabled_background: "transparent",
     color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
 
     // border colors may be set in theme; disabled by default
-    // color_dark_border:               "transparent", // only specify this variable to get all 4 states
-    // color_dark_hover_border:         "transparent",
-    // color_dark_active_border:        "transparent",
-    // color_dark_disabled_border:      "transparent"
+
+    // color_light_border:                   "transparent", // only specify this variable to get all 4 states
+    // color_light_hover_border:             "transparent",
+    // color_light_active_border:            "transparent",
+    // color_light_disabled_border:          "transparent",
+    //
+    // color_dark_border:                    "transparent", // only specify this variable to get all 4 states
+    // color_dark_hover_border:              "transparent",
+    // color_dark_active_border:             "transparent",
+    // color_dark_disabled_border:           "transparent"
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+    // color_light_hover_background:         "transparent",
+    //
+    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+    // color_dark_hover_background:          "transparent",
+
+
   };
 
   exports.coreButton = button;

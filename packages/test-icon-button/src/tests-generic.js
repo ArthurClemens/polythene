@@ -13,6 +13,13 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
     color_light: "white"
   });
 
+  IconButtonCSS.addStyle(".tests-icon-button-themed-hover", {
+    color_light_hover:            "#fff",
+    color_light_label_hover:      "#673ab7",
+    color_light_hover_background: "#673ab7",
+    animation_duration:           "100ms",
+  });
+
   const sizeNames = ["small", "regular", "medium", "large"];
 
   const FavIcon = h(Icon, null,
@@ -48,7 +55,18 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Option: icon, label",
+      component: IconButton,
+      attrs: {
+        label: "Label",
+        icon: {
+          svg: { content: trustedIconLock }
+        }
+      }
+    },
+    {
       name: "Option: compact",
+      interactive: true,
       component: IconButton,
       attrs: {
         icon: {
@@ -59,6 +77,7 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
     },
     {
       name: "Option: wash (true)",
+      interactive: true,
       component: IconButton,
       attrs: {
         icon: {
@@ -91,6 +110,19 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Themed (hover color)",
+      component: IconButton,
+      interactive: true,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconLock }
+        },
+        label: "Hover",
+        wash: true,
+        className: "tests-icon-button-themed-hover"
+      }
+    },
+    {
       name: "Option: ripple (center)",
       interactive: true,
       component: IconButton,
@@ -100,16 +132,6 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
         },
         ripple: {
           center: true
-        }
-      }
-    },
-    {
-      name: "Option: icon, label",
-      component: IconButton,
-      attrs: {
-        label: "Label",
-        icon: {
-          svg: { content: trustedIconLock }
         }
       }
     },

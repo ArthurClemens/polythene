@@ -21,13 +21,10 @@ export default (selector, componentVars) => [{
         }
       },
 
-      " .pe-button__content": [
-        mixin.defaultTransition("all", componentVars.animation_duration),
-        {
-          position: "relative",
-          borderRadius: "inherit"
-        }
-      ],
+      " .pe-button__content": {
+        position: "relative",
+        borderRadius: "inherit",
+      },
 
       " .pe-button__label": [
         mixin.fontSmoothing(),
@@ -40,7 +37,6 @@ export default (selector, componentVars) => [{
       ],
 
       " .pe-button__wash, .pe-button__focus": [
-        mixin.defaultTransition("all", componentVars.animation_duration),
         mixin.fit(),
         {
           borderRadius: "inherit",

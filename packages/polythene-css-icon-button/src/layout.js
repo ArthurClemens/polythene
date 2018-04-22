@@ -1,3 +1,4 @@
+import { mixin } from "polythene-core-css";
 
 const alignSide = isRTL => componentVars => ({
   " .pe-icon-button__label": {
@@ -33,7 +34,12 @@ export default (selector, componentVars) => [
           lineHeight: 1,
           padding: componentVars.padding + "px",
           borderRadius: "50%",
+          pointerEvents: "none"
         },
+
+        " .pe-button__content, .pe-button__wash": [
+          mixin.defaultTransition("all", componentVars.animation_duration)
+        ],
 
         ".pe-icon-button--compact": {
           " .pe-icon-button__content": {

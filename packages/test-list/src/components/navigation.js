@@ -8,7 +8,7 @@ const icons = {
 };
 
 ListTileCSS.addStyle(".tests-list-navigation-list", {
-  color_light_hover_text: "#e01d5f",
+  color_light_hover:       "#e01d5f",
   color_light_hover_front: "#e01d5f" 
 });
 

@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-icon-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-icon-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-icon-button']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreIconButton) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-button'), require('polythene-core-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-button', 'polythene-core-icon-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-button'],global['polythene-core-icon-button']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssButton,polytheneCoreIconButton) { 'use strict';
 
   var classes = {
     component: "pe-button pe-icon-button",
@@ -50,8 +50,11 @@
       " .pe-icon-button__content": {
         lineHeight: 1,
         padding: componentVars.padding + "px",
-        borderRadius: "50%"
+        borderRadius: "50%",
+        pointerEvents: "none"
       },
+
+      " .pe-button__content, .pe-button__wash": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration)],
 
       ".pe-icon-button--compact": {
         " .pe-icon-button__content": {
@@ -75,7 +78,9 @@
       return s + selector;
     }).join(","), {
 
-      color: componentVars["color_" + tint],
+      "&, .pe-icon-button__label": {
+        color: componentVars["color_" + tint]
+      },
 
       " .pe-icon-button__content": {
         backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"]
@@ -101,13 +106,17 @@
   };
 
   var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
+    return polytheneCssButton.noTouchStyle(scopes, selector, componentVars, tint).concat([_defineProperty$1({}, [].concat(scopes.map(function (s) {
       return s + selector + ":hover";
-    }).join(","), {
-      " .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_wash"]
+    }).join(",")).concat(scopes.map(function (s) {
+      return s + selector + ":active";
+    }).join(",")), {
+      ":not(.pe-button--selected):not(.pe-button--inactive)": {
+        " .pe-icon-button__label": {
+          color: componentVars["color_" + tint + "_label_hover"]
+        }
       }
-    })];
+    })]);
   };
 
   var color = (function (selector, componentVars) {

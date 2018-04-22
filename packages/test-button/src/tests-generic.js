@@ -4,8 +4,8 @@ export default ({ renderer: h, Button }) => {
   
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
-    color_dark_background: "#2196F3",
-    color_light_text: "#fff"
+    color_dark_background:  "#2196F3",
+    color_light_text:       "#fff"
   });
 
   ButtonCSS.addStyle(".blue-on-dark-Button", {
@@ -13,10 +13,16 @@ export default ({ renderer: h, Button }) => {
   });
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
-    color_light_text: "#673ab7",
+    color_light_text:   "#673ab7",
     color_light_border: "#673ab7",
-    color_dark_text: "yellow",
-    color_dark_border: "yellow"
+    color_dark_text:    "yellow",
+    color_dark_border:  "yellow"
+  });
+
+  ButtonCSS.addStyle(".tests-button-hover-button", {
+    color_light_hover:            "#fff",
+    color_light_hover_background: "#673ab7",
+    animation_duration:           "100ms",
   });
   
   return [
@@ -50,6 +56,14 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Themed Button (colors)",
+      component: Button,
+      attrs: {
+        label: "Themed Button",
+        className: "tests-button-themed-button"
+      }
+    },
+    {
       name: "Themed Button: (option: border)",
       component: Button,
       attrs: {
@@ -59,11 +73,12 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button (colors)",
+      name: "Themed Button (hover)",
       component: Button,
+      interactive: true,
       attrs: {
-        label: "Themed Button",
-        className: "tests-button-themed-button"
+        label: "Hover Button",
+        className: "tests-button-hover-button"
       }
     },
     {

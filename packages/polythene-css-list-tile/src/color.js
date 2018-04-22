@@ -50,7 +50,7 @@ const style = (scopes, selector, componentVars, tint) => [{
 const noTouchStyle = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector + ":hover").join(",")]: {
     ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
-      color: componentVars["color_" + tint + "_hover_text"],
+      color: componentVars["color_" + tint + "_hover"],
 
       " .pe-list-tile__primary, .pe-list-tile__secondary": {
         backgroundColor: componentVars["color_" + tint + "_hover_background"]

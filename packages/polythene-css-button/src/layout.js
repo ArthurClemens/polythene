@@ -9,6 +9,10 @@ export default (selector, componentVars) => [{
       background: "transparent",
       border: "none",
 
+      " .pe-button__content, .pe-button__wash, .pe-button__focus": [
+        mixin.defaultTransition("all", componentVars.animation_duration)
+      ],
+
       " .pe-button__content": {
         position: "relative",
         borderWidth: 0,

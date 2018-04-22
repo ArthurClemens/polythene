@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent } from 'polythene-core';
+import { filterSupportedAttributes, transitionComponent, classForSize } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -22,19 +22,6 @@ var classes = {
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large,
-  fab: classes.fab
-};
-
-var classForSize = function classForSize() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return sizeClasses[size];
-};
 
 var transitionOptions = function transitionOptions(state, attrs, isShow) {
   return {
@@ -86,7 +73,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.instanceClass, classForSize(attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.instanceClass, classForSize(classes, attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 

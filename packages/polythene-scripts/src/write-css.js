@@ -65,6 +65,7 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=tr
 
   const options = sourceMap
     ? {
+      from: undefined,
       to:  path,
       map: { inline: false }
     }

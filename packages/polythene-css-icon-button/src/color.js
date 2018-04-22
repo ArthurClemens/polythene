@@ -1,10 +1,13 @@
+import { noTouchStyle as buttonNoTouchStyle } from "polythene-css-button";
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
 
-    color: componentVars["color_" + tint],
+    "&, .pe-icon-button__label": {
+      color: componentVars["color_" + tint],
+    },
 
-    " .pe-icon-button__content": {  
+    " .pe-icon-button__content": { 
       backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
     },
     
@@ -27,13 +30,18 @@ const style = (scopes, selector, componentVars, tint) => [{
   }
 }];
 
-const noTouchStyle = (scopes, selector, componentVars, tint) => [{
-  [scopes.map(s => s + selector + ":hover").join(",")]: {
-    " .pe-button__wash": {
-      backgroundColor: componentVars["color_" + tint + "_wash"]
-    }
-  }
-}];
+export const noTouchStyle = (scopes, selector, componentVars, tint) => {
+  return buttonNoTouchStyle(scopes, selector, componentVars, tint)
+    .concat([{
+      [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
+        ":not(.pe-button--selected):not(.pe-button--inactive)": {
+          " .pe-icon-button__label": {
+            color: componentVars["color_" + tint + "_label_hover"]
+          },
+        }
+      }
+    }]);
+};
 
 export default (selector, componentVars) => [
   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone

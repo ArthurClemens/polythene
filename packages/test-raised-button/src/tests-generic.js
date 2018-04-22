@@ -4,7 +4,13 @@ export default ({ renderer: h, RaisedButton }) => {
 
   RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
-    color_light_text: "#fff"
+    color_light_text:       "#fff"
+  });
+
+  RaisedButtonCSS.addStyle(".tests-raised-button-hover-button", {
+    color_light_hover:            "#fff",
+    color_light_hover_background: "#673ab7",
+    animation_duration:           "100ms",
   });
 
   return [
@@ -68,6 +74,14 @@ export default ({ renderer: h, RaisedButton }) => {
         label: "Disabled themed button",
         className: "tests-raised-button-themed-button",
         disabled: true
+      }
+    },
+    {
+      name: "Themed button (hover color)",
+      component: RaisedButton,
+      attrs: {
+        label: "Hover button",
+        className: "tests-raised-button-hover-button",
       }
     },
     {

@@ -46,14 +46,22 @@ const style = (scopes, selector, componentVars, tint) => {
   }];
 };
 
-const noTouchStyle = (scopes, selector, componentVars, tint) => {
+export const noTouchStyle = (scopes, selector, componentVars, tint) => {
   const normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
   const hoverBorder  = componentVars["color_" + tint + "_border"] || normalBorder;
   return [{
-    [scopes.map(s => s + selector + ":hover").join(",")]: {
-      ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_hover_background"],
-        borderColor: hoverBorder
+    [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
+      ":not(.pe-button--selected):not(.pe-button--inactive)": {
+        color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+        borderColor: hoverBorder,
+
+        " .pe-button__content": {
+          backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+        },
+
+        " .pe-button__wash": {
+          backgroundColor: componentVars["color_" + tint + "_wash_background"],
+        }
       }
     }
   }];

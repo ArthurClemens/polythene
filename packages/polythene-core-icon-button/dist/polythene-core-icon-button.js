@@ -67,24 +67,33 @@
     label_text_transform: "initial",
     label_top_margin_factor: 1 / 12, // align with icon
 
+    animation_duration: polytheneTheme.vars.animation_duration,
+
     color_background: "transparent", // only specify this variable to get all 2 states
     // theme specific background colors may be set in theme; disabled by default
     // color_light_background:    "none",
     // color_dark_background:     "none",
+    // color_light_hover:         "inherit",
+    // color_dark_hover:          "inherit",
+    // color_light_label_hover:   "inherit",
+    // color_dark_label_hover:    "inherit",
 
     color_light: color_light,
     color_light_label: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
     color_light_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_wash: color_light,
-    color_light_wash_opacity: polytheneTheme.vars.blend_light_background_hover_medium,
     color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium,
+    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
 
     color_dark: color_dark,
     color_dark_label: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
     color_dark_disabled: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_wash: color_dark,
-    color_dark_wash_opacity: polytheneTheme.vars.blend_dark_background_hover_medium,
-    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium
+    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium,
+    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover_background:         "currentColor",
+    // color_dark_hover_background:          "currentColor",
   };
 
   exports.coreIconButton = iconButton;

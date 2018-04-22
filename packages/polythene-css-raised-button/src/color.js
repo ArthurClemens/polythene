@@ -1,3 +1,4 @@
+import { noTouchStyle } from "polythene-css-button";
 
 const style = (scopes, selector, componentVars, tint) => {
   const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
@@ -23,6 +24,13 @@ const style = (scopes, selector, componentVars, tint) => {
         }
       },
 
+      ".pe-button--focus": {
+        " .pe-button__focus": {
+          opacity: 1,
+          backgroundColor: componentVars["color_" + tint + "_focus_background"]
+        }
+      },
+
       ".pe-button--selected": {
         " .pe-button__content": {
           backgroundColor: componentVars["color_" + tint + "_active_background"],
@@ -33,26 +41,6 @@ const style = (scopes, selector, componentVars, tint) => {
           backgroundColor: componentVars["color_" + tint + "_focus_background"]
         }
       },
-
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1,
-          backgroundColor: componentVars["color_" + tint + "_focus_background"]
-        }
-      }
-    }
-  }];
-};
-
-const noTouchStyle = (scopes, selector, componentVars, tint) => {
-  const normalBorder = componentVars["color_" + tint + "_border"];
-  const hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [{
-    [scopes.map(s => s + selector + ":hover").join(",")]: {
-      ":not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash": {
-        backgroundColor: componentVars["color_" + tint + "_hover_background"],
-        borderColor: hoverBorder
-      }
     }
   }];
 };

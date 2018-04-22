@@ -22,7 +22,6 @@
 .pe-switch-control .pe-control__form-label {
   -ms-flex-direction: row;
   flex-direction: row;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -647,15 +646,7 @@ html.pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--on .pe-butto
   background-color: #2196f3
 }
 
-html.pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--off .pe-button__wash {
-  background-color: hsla(0,0%,100%,.7)
-}
-
 html.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,html.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
   background-color: #2196f3
-}
-
-html.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--off .pe-button__wash,html.pe-no-touch .pe-switch-control:hover.pe-control--off .pe-button__wash {
-  background-color: rgba(0,0,0,.54)
 }
 /*# sourceMappingURL=polythene-switch.css.map */

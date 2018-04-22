@@ -5,7 +5,6 @@
 .pe-dialog {
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
