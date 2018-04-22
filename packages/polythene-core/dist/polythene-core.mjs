@@ -132,6 +132,21 @@ var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
 
+var sizeClasses = function sizeClasses(classes) {
+  return {
+    small: classes.small,
+    regular: classes.regular,
+    medium: classes.medium,
+    large: classes.large,
+    fab: classes.fab
+  };
+};
+
+var classForSize = function classForSize(classes) {
+  var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
+  return sizeClasses(classes)[size];
+};
+
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 
 var pointerStartEvent = isTouch ? "click" : "mousedown";
@@ -621,4 +636,4 @@ var deprecation = function deprecation(component, deprecatedOption, newOption) {
   return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
 }; // eslint-disable-line no-console
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, classForSize, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, isRTL, deprecation };

@@ -21,24 +21,12 @@
     return vnode.attrs.element || "div";
   };
 
-  var sizeClasses = {
-    small: classes.small,
-    regular: classes.regular,
-    medium: classes.medium,
-    large: classes.large
-  };
-
-  var classForSize = function classForSize() {
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-    return sizeClasses[size];
-  };
-
   var createProps = function createProps(vnode, _ref) {
     var k = _ref.keys;
 
     var attrs = vnode.attrs;
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
-      className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [classes.component, polytheneCore.classForSize(classes, attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events);
   };
 

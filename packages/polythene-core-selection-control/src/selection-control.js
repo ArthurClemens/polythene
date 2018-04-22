@@ -1,17 +1,8 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, classForSize } from "polythene-core";
 import classes from "polythene-css-classes/selection-control";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
-
-const sizeClasses = {
-  small:   classes.small,
-  regular: classes.regular,
-  medium:  classes.medium,
-  large:   classes.large
-};
-
-const classForSize = (size = "regular") => sizeClasses[size];
 
 const currentState = (attrs, state) => {
   const checked = attrs.checked !== undefined
@@ -79,7 +70,7 @@ export const createProps = (vnode, { keys: k }) => {
         checked ? classes.on : classes.off,
         attrs.disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
-        classForSize(attrs.size),
+        classForSize(classes, attrs.size),
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],

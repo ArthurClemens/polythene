@@ -1,6 +1,6 @@
 export { getAnimationEndEvent } from "./animation-event";
 export { Conditional } from "./Conditional";
-export { filterSupportedAttributes, unpackAttrs } from "./attrs";
+export { filterSupportedAttributes, unpackAttrs, classForSize } from "./attrs";
 export { isClient, isServer } from "./iso";
 export { isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent } from "./pointer";
 export { Multi } from "./multi";

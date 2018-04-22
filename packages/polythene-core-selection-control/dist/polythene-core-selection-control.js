@@ -39,18 +39,6 @@
     return vnode.attrs.element || "div";
   };
 
-  var sizeClasses = {
-    small: classes.small,
-    regular: classes.regular,
-    medium: classes.medium,
-    large: classes.large
-  };
-
-  var classForSize = function classForSize() {
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-    return sizeClasses[size];
-  };
-
   var currentState = function currentState(attrs, state) {
     var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
     var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
@@ -109,7 +97,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
       className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
-      checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, polytheneCore.classForSize(classes, attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     });
   };
 

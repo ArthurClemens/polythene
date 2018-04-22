@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, classForSize } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -34,18 +34,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
-};
-
-var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large
-};
-
-var classForSize = function classForSize() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return sizeClasses[size];
 };
 
 var currentState = function currentState(attrs, state) {
@@ -106,7 +94,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
-    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 

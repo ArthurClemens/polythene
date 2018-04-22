@@ -1,15 +1,5 @@
-import { filterSupportedAttributes, transitionComponent } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, classForSize } from "polythene-core";
 import classes from "polythene-css-classes/base-spinner";
-
-const sizeClasses = {
-  small:   classes.small,
-  regular: classes.regular,
-  medium:  classes.medium,
-  large:   classes.large,
-  fab:     classes.fab
-};
-
-const classForSize = (size = "regular") => sizeClasses[size];
 
 const transitionOptions = (state, attrs, isShow) => ({
   state,
@@ -61,7 +51,7 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.instanceClass,
-        classForSize(attrs.size),
+        classForSize(classes, attrs.size),
         attrs.singleColor ? classes.singleColor: null,
         attrs.raised ? classes.raised : null,
         attrs.animated ? classes.animated : null,

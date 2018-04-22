@@ -1,24 +1,50 @@
+.pe-button.pe-icon-button .pe-icon-button__label {
+  padding-right: 0;
+  padding-left: 4px
+}
+
 .pe-button.pe-icon-button {
-  display: inline-block;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
-  position: relative;
+  border: none
+}
+
+.pe-button.pe-icon-button .pe-button__content {
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   border-radius: 50%;
-  border: none
+  position: relative
 }
 
 .pe-button.pe-icon-button .pe-icon-button__content {
   line-height: 1;
-  padding: 12px
+  padding: 12px;
+  border-radius: 50%
 }
 
 .pe-button.pe-icon-button.pe-icon-button--compact .pe-icon-button__content {
   padding: 8px
 }
 
+.pe-button.pe-icon-button .pe-icon-button__label {
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  text-transform: none
+}
+
+.pe-rtl .pe-button.pe-icon-button .pe-icon-button__label,[dir=rtl] .pe-button.pe-icon-button .pe-icon-button__label {
+  padding-left: 0;
+  padding-right: 4px
+}
+
 .pe-dark-tone.pe-button.pe-icon-button,.pe-dark-tone .pe-button.pe-icon-button {
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0,0%,100%,.7)
+}
+
+.pe-dark-tone.pe-button.pe-icon-button .pe-icon-button__content,.pe-dark-tone .pe-button.pe-icon-button .pe-icon-button__content {
   background-color: transparent
 }
 
@@ -26,12 +52,15 @@
   background-color: currentcolor
 }
 
-.pe-dark-tone.pe-button.pe-icon-button.pe-button--disabled,.pe-dark-tone .pe-button.pe-icon-button.pe-button--disabled {
+.pe-dark-tone.pe-button.pe-icon-button.pe-button--disabled .pe-button__content,.pe-dark-tone .pe-button.pe-icon-button.pe-button--disabled .pe-button__content,.pe-dark-tone.pe-button.pe-icon-button.pe-button--disabled .pe-icon-button__label,.pe-dark-tone .pe-button.pe-icon-button.pe-button--disabled .pe-icon-button__label {
   color: hsla(0,0%,100%,.26)
 }
 
 .pe-button.pe-icon-button,.pe-light-tone.pe-button.pe-icon-button,.pe-light-tone .pe-button.pe-icon-button {
-  color: rgba(0,0,0,.54);
+  color: rgba(0,0,0,.54)
+}
+
+.pe-button.pe-icon-button .pe-icon-button__content,.pe-light-tone.pe-button.pe-icon-button .pe-icon-button__content,.pe-light-tone .pe-button.pe-icon-button .pe-icon-button__content {
   background-color: transparent
 }
 
@@ -44,7 +73,7 @@
   background-color: currentcolor
 }
 
-.pe-button.pe-icon-button.pe-button--disabled,.pe-light-tone.pe-button.pe-icon-button.pe-button--disabled,.pe-light-tone .pe-button.pe-icon-button.pe-button--disabled {
+.pe-button.pe-icon-button.pe-button--disabled .pe-button__content,.pe-button.pe-icon-button.pe-button--disabled .pe-icon-button__label,.pe-light-tone.pe-button.pe-icon-button.pe-button--disabled .pe-button__content,.pe-light-tone .pe-button.pe-icon-button.pe-button--disabled .pe-button__content,.pe-light-tone.pe-button.pe-icon-button.pe-button--disabled .pe-icon-button__label,.pe-light-tone .pe-button.pe-icon-button.pe-button--disabled .pe-icon-button__label {
   color: rgba(0,0,0,.26)
 }
 

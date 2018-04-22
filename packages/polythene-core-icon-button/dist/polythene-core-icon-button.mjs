@@ -5,6 +5,7 @@ var classes = {
 
   // elements
   content: "pe-icon-button__content",
+  label: "pe-icon-button__label",
 
   // states
   compact: "pe-icon-button--compact"
@@ -24,6 +25,7 @@ var createProps = function createProps(vnode, _ref) {
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
   return _extends({}, {
     content: h("div", { className: classes.content }, content),
+    after: attrs.label && h("div", { className: classes.label }, attrs.label),
     parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
@@ -54,18 +56,27 @@ var vars$1 = {
   padding: padding,
   padding_compact: padding_compact,
 
+  label_font_size: 16,
+  label_padding_before: vars.grid_unit * 1, // 4
+  label_padding_after: 0,
+  label_font_weight: 400,
+  label_text_transform: "initial",
+  label_top_margin_factor: 1 / 12, // align with icon
+
   color_background: "transparent", // only specify this variable to get all 2 states
   // theme specific background colors may be set in theme; disabled by default
   // color_light_background:    "none",
   // color_dark_background:     "none",
 
   color_light: color_light,
+  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_wash: color_light,
   color_light_wash_opacity: vars.blend_light_background_hover_medium,
   color_light_focus_opacity: vars.blend_light_background_hover_medium,
 
   color_dark: color_dark,
+  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_wash: color_dark,
   color_dark_wash_opacity: vars.blend_dark_background_hover_medium,

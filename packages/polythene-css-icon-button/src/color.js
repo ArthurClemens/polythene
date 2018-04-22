@@ -1,8 +1,13 @@
 
 const style = (scopes, selector, componentVars, tint) => [{
   [scopes.map(s => s + selector).join(",")]: {
+
     color: componentVars["color_" + tint],
-    backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
+
+    " .pe-icon-button__content": {  
+      backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
+    },
+    
     " .pe-button__wash": {
       opacity: componentVars["color_" + tint + "_wash_opacity"]
     },
@@ -15,7 +20,9 @@ const style = (scopes, selector, componentVars, tint) => [{
     },
 
     ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled"]
+      " .pe-button__content, .pe-icon-button__label": {
+        color: componentVars["color_" + tint + "_disabled"]
+      }
     }
   }
 }];

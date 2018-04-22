@@ -138,6 +138,21 @@
     return typeof attrs === "function" ? attrs() : attrs;
   };
 
+  var sizeClasses = function sizeClasses(classes) {
+    return {
+      small: classes.small,
+      regular: classes.regular,
+      medium: classes.medium,
+      large: classes.large,
+      fab: classes.fab
+    };
+  };
+
+  var classForSize = function classForSize(classes) {
+    var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
+    return sizeClasses(classes)[size];
+  };
+
   var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 
   var pointerStartEvent = isTouch ? "click" : "mousedown";
@@ -631,6 +646,7 @@
   exports.Conditional = Conditional;
   exports.filterSupportedAttributes = filterSupportedAttributes;
   exports.unpackAttrs = unpackAttrs;
+  exports.classForSize = classForSize;
   exports.isClient = isClient;
   exports.isServer = isServer;
   exports.isTouch = isTouch;

@@ -13,7 +13,7 @@ export default (selector, componentVars) => [{
         position: "relative",
         borderWidth: 0,
         padding: "0 " + componentVars.padding_h + "px",
-        borderRadius: componentVars.border_radius + "px"
+        borderRadius: componentVars.border_radius + "px",
       },
 
       " .pe-button__label": {

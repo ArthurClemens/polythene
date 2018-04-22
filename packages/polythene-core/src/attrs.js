@@ -42,3 +42,15 @@ export const unpackAttrs = attrs =>
   typeof attrs === "function"
     ? attrs()
     : attrs;
+
+const sizeClasses = classes => ({
+  small:   classes.small,
+  regular: classes.regular,
+  medium:  classes.medium,
+  large:   classes.large,
+  fab:     classes.fab,
+});
+
+export const classForSize = (classes, size = "regular") =>
+  sizeClasses(classes)[size];
+

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, classForSize } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -18,24 +18,12 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var sizeClasses = {
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large
-};
-
-var classForSize = function classForSize() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return sizeClasses[size];
-};
-
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, classForSize(attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, classForSize(classes, attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
 

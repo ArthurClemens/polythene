@@ -17,6 +17,7 @@ const mithrilTests = ({ IconButton, renderer: h }) => {
         icon: {
           svg: { content: trustedIconFavorite }
         },
+        label: "Go to Shadow",
         url: {
           href: "/shadow",
           oncreate: h.route.link
