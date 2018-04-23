@@ -49,7 +49,7 @@ export default (selector, componentVars) => [
 
         " .pe-icon-button__label": {
           fontSize: componentVars.label_font_size + "px",
-          lineHeight: componentVars.label_font_size + "px",
+          lineHeight: componentVars.label_line_height + "px",
           fontWeight: componentVars.label_font_weight,
           textTransform: componentVars.label_text_transform,
         }

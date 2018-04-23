@@ -13,6 +13,7 @@ export default {
   padding_compact,
 
   label_font_size:           16,
+  label_line_height:         20,
   label_padding_before:      vars.grid_unit * 1, // 4
   label_padding_after:       0,
   label_font_weight:         400,
