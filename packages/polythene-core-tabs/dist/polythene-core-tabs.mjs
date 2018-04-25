@@ -216,7 +216,10 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
-  var selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  var tabIndex = attrs.selectedTab !== undefined ? attrs.selectedTab : Array.isArray(attrs.tabs) ? attrs.tabs.reduce(function (acc, tab, index) {
+    return acc === undefined && !tab.disabled ? index : acc;
+  }, undefined) : 0;
+  var selectedTabIndex = createStream(tabIndex);
   var scrollButtonAtStart = createStream(true);
   var scrollButtonAtEnd = createStream(true);
   var registerTabButton = function registerTabButton(state) {

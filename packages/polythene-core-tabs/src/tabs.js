@@ -113,7 +113,16 @@ const sortByLargestWidth = (a, b) =>
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
-  const selectedTabIndex = createStream(vnode.attrs.selectedTab || 0);
+  const tabIndex = attrs.selectedTab !== undefined
+    ? attrs.selectedTab
+    : Array.isArray(attrs.tabs)
+      ? attrs.tabs.reduce((acc, tab, index) => (
+        acc === undefined && !tab.disabled
+          ? index
+          : acc
+      ), undefined)
+      : 0;
+  const selectedTabIndex = createStream(tabIndex);
   const scrollButtonAtStart = createStream(true);
   const scrollButtonAtEnd = createStream(true);
   const registerTabButton = state => (index, data) => state.tabs[index] = data;

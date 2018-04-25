@@ -22,6 +22,9 @@
 
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 
+#### Other
+
+* Various bug fixes
 
 <a id="110"></a>
 ### 1.1.0
