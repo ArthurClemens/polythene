@@ -1,11 +1,28 @@
-import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL } from "polythene-core";
+import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL, deprecation } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
 import vars from "./vars";
 import classes from "polythene-css-classes/tabs";
 
 const whenCreateDone = () => Promise.resolve();
 
-const getNewIndex = (index, tabs) => {
+const getIndex = (state, attrs) => {
+  const attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined
+    ? attrs.selectedTabIndex
+    : attrs.selectedTab !== undefined // deprecated
+      ? attrs.selectedTab
+      : undefined;
+  return attrsSelectedTabIndex !== undefined
+    ? attrsSelectedTabIndex
+    : Array.isArray(attrs.tabs)
+      ? attrs.tabs.reduce((acc, tab, index) => (
+        acc === undefined && !tab.disabled
+          ? index
+          : acc
+      ), undefined)
+      : undefined;
+};
+
+const scrollButtonGetNewIndex = (index, tabs) => {
   const minTabIndex = 0;
   const maxTabIndex = tabs.length - 1;
   return {
@@ -18,7 +35,7 @@ const handleScrollButtonClick = (state, attrs, e, direction) => {
   e.stopPropagation();
   e.preventDefault();
   const currentTabIndex = state.selectedTabIndex();
-  const newIndex = getNewIndex(currentTabIndex, state.tabs)[direction];
+  const newIndex = scrollButtonGetNewIndex(currentTabIndex, state.tabs)[direction];
   if (newIndex !== currentTabIndex) {
     setSelectedTab(state, attrs, newIndex, true);
   } else {
@@ -28,7 +45,7 @@ const handleScrollButtonClick = (state, attrs, e, direction) => {
 
 const scrollToTab = (state, tabIndex) => {
   const tabs = state.tabs;
-  const scroller = state.scrollerEl;
+  const scroller = state.tabRowEl;
   // Scroll to position of selected tab
   const tabLeft = tabs.slice(0, tabIndex).reduce((totalWidth, tabData) =>
     totalWidth + tabData.dom.getBoundingClientRect().width, 0);
@@ -57,14 +74,14 @@ const scrollToTab = (state, tabIndex) => {
 };
 
 const updateScrollButtons = state => {
-  const scrollerEl = state.scrollerEl;
-  const scrollLeft = scrollerEl.scrollLeft;
+  const tabRowEl = state.tabRowEl;
+  const scrollLeft = tabRowEl.scrollLeft;
   const currentTabIndex = state.selectedTabIndex();
   const tabsEl = state.tabsEl;
   const minTabIndex = 0;
   const maxTabIndex = state.tabs.length - 1;
-  const isAtStart = (scrollerEl.scrollLeft === 0) && (currentTabIndex === minTabIndex);
-  const isAtEnd = (scrollLeft >= (scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1)) && (currentTabIndex === maxTabIndex);
+  const isAtStart = (tabRowEl.scrollLeft === 0) && (currentTabIndex === minTabIndex);
+  const isAtEnd = (scrollLeft >= (tabRowEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1)) && (currentTabIndex === maxTabIndex);
   state.scrollButtonAtStart(isAtStart);
   state.scrollButtonAtEnd(isAtEnd);
 };
@@ -74,8 +91,8 @@ const animateIndicator = (selectedTabEl, animate, state) => {
   const rect = selectedTabEl.getBoundingClientRect();
   const buttonSize = state.managesScroll ? rect.height : 0;
   const translateX = state.isRTL
-    ? rect.right - parentRect.right + state.scrollerEl.scrollLeft + buttonSize
-    : rect.left - parentRect.left + state.scrollerEl.scrollLeft - buttonSize;
+    ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize
+    : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
   const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
   const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
   const duration = animate ? vars.indicator_slide_min_duration : 0;
@@ -112,30 +129,28 @@ const sortByLargestWidth = (a, b) =>
       : 0;
 
 export const getInitialState = (vnode, createStream) => {
+  const state = vnode.state;
   const attrs = vnode.attrs;
-  const tabIndex = attrs.selectedTab !== undefined
-    ? attrs.selectedTab
-    : Array.isArray(attrs.tabs)
-      ? attrs.tabs.reduce((acc, tab, index) => (
-        acc === undefined && !tab.disabled
-          ? index
-          : acc
-      ), undefined)
-      : 0;
+  if (attrs.selectedTab) {
+    deprecation("Tabs", "selectedTab", "selectedTabIndex");
+  }
+  const tabIndex = getIndex(state, attrs) || 0;
   const selectedTabIndex = createStream(tabIndex);
   const scrollButtonAtStart = createStream(true);
   const scrollButtonAtEnd = createStream(true);
-  const registerTabButton = state => (index, data) => state.tabs[index] = data;
-  const registerScrollButton = state => (position, dom) => state.scrollButtons[position] = dom;
+  const registerTabButton = state =>
+    (index, data) => state.tabs[index] = data;
+  const registerScrollButton = state =>
+    (position, dom) => state.scrollButtons[position] = dom;
   return {
-    tabsEl:              undefined,
-    scrollerEl:          undefined,
-    tabs:                [], // {data, el}
-    tabRow:              undefined,
-    tabIndicatorEl:      undefined,
+    tabsEl:                   undefined,
+    tabRowEl:                 undefined,
+    tabs:                     [], // {data, el}
+    tabRow:                   undefined,
+    tabIndicatorEl:           undefined,
     selectedTabIndex,
-    previousSelectedTab: undefined,
-    managesScroll:       attrs.scrollable && !isTouch,
+    previousSelectedTabIndex: undefined,
+    managesScroll:            attrs.scrollable && !isTouch,
     scrollButtonAtStart,
     scrollButtonAtEnd,
     scrollButtons: {
@@ -144,9 +159,9 @@ export const getInitialState = (vnode, createStream) => {
     },
     registerTabButton,
     registerScrollButton,
-    isRTL:               false,
-    cleanUp:             undefined, // set in onMount
-    redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
+    isRTL:                    false,
+    cleanUp:                  undefined, // set in onMount
+    redrawOnUpdate:           createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
   };
 };
 
@@ -160,7 +175,7 @@ export const onMount = vnode => {
   if (!attrs.hideIndicator) {
     state.tabIndicatorEl = dom.querySelector(`.${classes.indicator}`);
   }
-  state.scrollerEl = dom.querySelector(`.${classes.tabRow}`);
+  state.tabRowEl = dom.querySelector(`.${classes.tabRow}`);
 
   // A promise can't resolve during the oncreate loop
   // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
@@ -196,10 +211,11 @@ export const createProps = (vnode, { keys: k }) => {
       : false;
 
   // Keep selected tab up to date
-  if (attrs.selectedTab !== undefined && state.previousSelectedTab !== attrs.selectedTab) {
-    setSelectedTab(state, attrs, attrs.selectedTab, true);
+  const index = getIndex(state, attrs);
+  if (index !== undefined && state.previousSelectedTabIndex !== index) {
+    setSelectedTab(state, attrs, index, true);
   }
-  state.previousSelectedTab = attrs.selectedTab;
+  state.previousSelectedTabIndex = index;
 
   return Object.assign(
     {},
@@ -236,7 +252,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
     console.error("No tabs specified"); // eslint-disable-line no-console
   }
 
-  const tabRowButtons = buttons.map((buttonOpts = {}, index) => {
+  const tabRow = buttons.map((buttonOpts = {}, index) => {
     const buttonOptsCombined = Object.assign(
       {},
       buttonOpts,
@@ -249,7 +265,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
       {
         // Internal options, should not get overridden
         index,
-        key: `tab-${index}`,
+        key: buttonOpts.key || `tab-${index}`,
         register: state.registerTabButton(state),
         onSelect: () =>
           setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true)
@@ -257,8 +273,6 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
     );
     return h(Tab, buttonOptsCombined);
   });
-
-  const tabRow = tabRowButtons;
 
   let scrollButtonAtStart, scrollButtonAtEnd;
   if (attrs.scrollable) {
@@ -316,4 +330,3 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
     attrs.scrollable ? scrollButtonAtEnd : null
   ];
 };
-

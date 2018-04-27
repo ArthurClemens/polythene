@@ -21,6 +21,8 @@
 #### Components
 
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
+* Tabs:
+  * Option `selectedTab` is deprecated in favor of `selectedTabIndex`
 
 #### Other
 

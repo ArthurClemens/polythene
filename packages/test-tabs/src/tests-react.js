@@ -16,11 +16,11 @@ const reactTests = ({ Tabs }) => {
       section: "React JSX tests",
     },
     {
-      name: "Option: selectedTab (1) (JSX)",
+      name: "Option: selectedTabIndex (1) (JSX)",
       component: () =>
         <Tabs
           autofit
-          selectedTab={1}
+          selectedTabIndex={1}
           tabs={threeButtons}
         />
     },

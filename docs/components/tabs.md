@@ -70,7 +70,7 @@ Displays a tab row of navigation buttons.
 | **scrollIconForward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
 | **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets `autofit` to `false` |
 | **largestWidth** | optional | Boolean | false | Set to true to make all tabs the width of the largest tab |
-| **selectedTab** | optional | Number | 0 | The Array index of the selected tab |
+| **selectedTabIndex** | optional | Number | 0 | The Array index of the selected tab |
 | **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
 | **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
 

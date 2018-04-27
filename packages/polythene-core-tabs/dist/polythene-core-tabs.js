@@ -112,7 +112,15 @@
     return Promise.resolve();
   };
 
-  var getNewIndex = function getNewIndex(index, tabs) {
+  var getIndex = function getIndex(state, attrs) {
+    var attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined ? attrs.selectedTabIndex : attrs.selectedTab !== undefined // deprecated
+    ? attrs.selectedTab : undefined;
+    return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : Array.isArray(attrs.tabs) ? attrs.tabs.reduce(function (acc, tab, index) {
+      return acc === undefined && !tab.disabled ? index : acc;
+    }, undefined) : undefined;
+  };
+
+  var scrollButtonGetNewIndex = function scrollButtonGetNewIndex(index, tabs) {
     var minTabIndex = 0;
     var maxTabIndex = tabs.length - 1;
     return {
@@ -125,7 +133,7 @@
     e.stopPropagation();
     e.preventDefault();
     var currentTabIndex = state.selectedTabIndex();
-    var newIndex = getNewIndex(currentTabIndex, state.tabs)[direction];
+    var newIndex = scrollButtonGetNewIndex(currentTabIndex, state.tabs)[direction];
     if (newIndex !== currentTabIndex) {
       setSelectedTab(state, attrs, newIndex, true);
     } else {
@@ -135,7 +143,7 @@
 
   var scrollToTab = function scrollToTab(state, tabIndex) {
     var tabs = state.tabs;
-    var scroller = state.scrollerEl;
+    var scroller = state.tabRowEl;
     // Scroll to position of selected tab
     var tabLeft = tabs.slice(0, tabIndex).reduce(function (totalWidth, tabData) {
       return totalWidth + tabData.dom.getBoundingClientRect().width;
@@ -165,14 +173,14 @@
   };
 
   var updateScrollButtons = function updateScrollButtons(state) {
-    var scrollerEl = state.scrollerEl;
-    var scrollLeft = scrollerEl.scrollLeft;
+    var tabRowEl = state.tabRowEl;
+    var scrollLeft = tabRowEl.scrollLeft;
     var currentTabIndex = state.selectedTabIndex();
     var tabsEl = state.tabsEl;
     var minTabIndex = 0;
     var maxTabIndex = state.tabs.length - 1;
-    var isAtStart = scrollerEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
-    var isAtEnd = scrollLeft >= scrollerEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
+    var isAtStart = tabRowEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
+    var isAtEnd = scrollLeft >= tabRowEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
     state.scrollButtonAtStart(isAtStart);
     state.scrollButtonAtEnd(isAtEnd);
   };
@@ -181,7 +189,7 @@
     var parentRect = state.tabsEl.getBoundingClientRect();
     var rect = selectedTabEl.getBoundingClientRect();
     var buttonSize = state.managesScroll ? rect.height : 0;
-    var translateX = state.isRTL ? rect.right - parentRect.right + state.scrollerEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.scrollerEl.scrollLeft - buttonSize;
+    var translateX = state.isRTL ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
     var scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
     var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
     var duration = animate ? vars.indicator_slide_min_duration : 0;
@@ -215,10 +223,12 @@
   };
 
   var getInitialState = function getInitialState(vnode, createStream) {
+    var state = vnode.state;
     var attrs = vnode.attrs;
-    var tabIndex = attrs.selectedTab !== undefined ? attrs.selectedTab : Array.isArray(attrs.tabs) ? attrs.tabs.reduce(function (acc, tab, index) {
-      return acc === undefined && !tab.disabled ? index : acc;
-    }, undefined) : 0;
+    if (attrs.selectedTab) {
+      polytheneCore.deprecation("Tabs", "selectedTab", "selectedTabIndex");
+    }
+    var tabIndex = getIndex(state, attrs) || 0;
     var selectedTabIndex = createStream(tabIndex);
     var scrollButtonAtStart = createStream(true);
     var scrollButtonAtEnd = createStream(true);
@@ -234,12 +244,12 @@
     };
     return {
       tabsEl: undefined,
-      scrollerEl: undefined,
+      tabRowEl: undefined,
       tabs: [], // {data, el}
       tabRow: undefined,
       tabIndicatorEl: undefined,
       selectedTabIndex: selectedTabIndex,
-      previousSelectedTab: undefined,
+      previousSelectedTabIndex: undefined,
       managesScroll: attrs.scrollable && !polytheneCore.isTouch,
       scrollButtonAtStart: scrollButtonAtStart,
       scrollButtonAtEnd: scrollButtonAtEnd,
@@ -265,7 +275,7 @@
     if (!attrs.hideIndicator) {
       state.tabIndicatorEl = dom.querySelector("." + classes.indicator);
     }
-    state.scrollerEl = dom.querySelector("." + classes.tabRow);
+    state.tabRowEl = dom.querySelector("." + classes.tabRow);
 
     // A promise can't resolve during the oncreate loop
     // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
@@ -304,10 +314,11 @@
     var autofit = attrs.scrollable || attrs.centered ? false : attrs.autofit ? true : false;
 
     // Keep selected tab up to date
-    if (attrs.selectedTab !== undefined && state.previousSelectedTab !== attrs.selectedTab) {
-      setSelectedTab(state, attrs, attrs.selectedTab, true);
+    var index = getIndex(state, attrs);
+    if (index !== undefined && state.previousSelectedTabIndex !== index) {
+      setSelectedTab(state, attrs, index, true);
     }
-    state.previousSelectedTab = attrs.selectedTab;
+    state.previousSelectedTabIndex = index;
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
       className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.scrollButtonAtStart() ? classes.isAtStart : null, state.scrollButtonAtEnd() ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
@@ -329,7 +340,7 @@
       console.error("No tabs specified"); // eslint-disable-line no-console
     }
 
-    var tabRowButtons = buttons.map(function () {
+    var tabRow = buttons.map(function () {
       var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var index = arguments[1];
 
@@ -340,7 +351,7 @@
       }, attrs.all, {
         // Internal options, should not get overridden
         index: index,
-        key: "tab-" + index,
+        key: buttonOpts.key || "tab-" + index,
         register: state.registerTabButton(state),
         onSelect: function onSelect() {
           return setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true);
@@ -348,8 +359,6 @@
       });
       return h(Tab, buttonOptsCombined);
     });
-
-    var tabRow = tabRowButtons;
 
     var scrollButtonAtStart = void 0,
         scrollButtonAtEnd = void 0;
