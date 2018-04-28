@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-core-tabs')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-core-tabs'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-core-tabs']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCoreTabs) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-button'), require('polythene-core-tabs')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-button', 'polythene-core-tabs'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-button'],global['polythene-core-tabs']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssButton,polytheneCoreTabs) { 'use strict';
 
   var buttonClasses = {
     base: "pe-button",
@@ -143,7 +143,7 @@
           " .pe-button__content": {
             borderRadius: 0,
             backgroundColor: "inherit",
-            transitionProperty: componentVars.tab_label_transition_property,
+            transitionProperty: "all",
             transitionDuration: componentVars.scroll_button_fade_duration + "s",
             transitionTimingFunction: "ease-in-out",
             transitionDelay: componentVars.scroll_button_fade_delay + "s",
@@ -177,7 +177,7 @@
 
       " .pe-tabs__scroll-button-offset": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none")],
 
-      " .pe-tabs__tab": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none"), polytheneCoreCss.mixin.defaultTransition("color"), {
+      " .pe-tabs__tab": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none"), {
         userSelect: "none",
         margin: 0,
         borderRadius: 0,
@@ -187,7 +187,7 @@
         minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
         maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-        ".pe-text-button .pe-button__content": {
+        " .pe-button__content": [polytheneCoreCss.mixin.defaultTransition(componentVars.tab_label_transition_property, componentVars.animation_duration), {
           padding: "0 " + componentVars.tab_content_padding_v + "px",
           height: componentVars.tab_height + "px",
           lineHeight: polytheneTheme.vars.line_height + "em",
@@ -201,12 +201,11 @@
             overflow: "hidden",
             whiteSpace: "normal"
           },
-          " .pe-button__label": [polytheneCoreCss.mixin.defaultTransition("opacity", componentVars.animation_duration), {
+          " .pe-button__label": {
             margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
             padding: 0,
-            opacity: componentVars.label_opacity,
             width: "100%" // for IE 11
-          }],
+          },
           " .pe-icon": {
             marginLeft: "auto",
             marginRight: "auto"
@@ -214,12 +213,7 @@
           " .pe-button__focus": {
             display: "none"
           }
-        },
-        ".pe-button--selected .pe-button__content": {
-          " .pe-button__label": {
-            opacity: 1
-          }
-        },
+        }],
         ".pe-tabs__tab--icon": {
           "&, .pe-button__content": [{
             height: componentVars.tab_icon_label_height + "px"
@@ -290,7 +284,9 @@
     return [_defineProperty$1({}, scopes.map(function (s) {
       return s + selector;
     }).join(","), {
-      color: componentVars["color_" + tint],
+      " .pe-tabs__tab": {
+        color: componentVars["color_" + tint]
+      },
 
       " .pe-tabs__tab.pe-button--selected": {
         color: componentVars["color_" + tint + "_selected"],
@@ -311,9 +307,34 @@
     })];
   };
 
+  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
+    return polytheneCssButton.noTouchStyle(scopes, selector + " .pe-text-button.pe-tabs__tab", componentVars, tint);
+  };
+
+  // export const noTouchStyle = (scopes, selector, componentVars, tint) => {
+  //   return [{
+  //     [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
+  //       ":not(.pe-button--selected):not(.pe-button--inactive)": {
+  //         color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+  //         borderColor: hoverBorder,
+
+  //         " .pe-button__content": {
+  //           backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+  //         },
+
+  //         " .pe-button__wash": {
+  //           backgroundColor: componentVars["color_" + tint + "_wash_background"],
+  //         }
+  //       }
+  //     }
+  //   }];
+  // };
+
   var color = (function (selector, componentVars) {
     return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
+    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
+    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
   });
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

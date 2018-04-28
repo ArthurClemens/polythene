@@ -1,5 +1,6 @@
 import { mixin, flex, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { noTouchStyle } from 'polythene-css-button';
 import { vars as vars$1 } from 'polythene-core-tabs';
 
 var buttonClasses = {
@@ -141,7 +142,7 @@ var layout = (function (selector, componentVars) {
         " .pe-button__content": {
           borderRadius: 0,
           backgroundColor: "inherit",
-          transitionProperty: componentVars.tab_label_transition_property,
+          transitionProperty: "all",
           transitionDuration: componentVars.scroll_button_fade_duration + "s",
           transitionTimingFunction: "ease-in-out",
           transitionDelay: componentVars.scroll_button_fade_delay + "s",
@@ -175,7 +176,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-tabs__scroll-button-offset": [flex.flex(), flex.flexIndex("none")],
 
-    " .pe-tabs__tab": [flex.flex(), flex.flexIndex("none"), mixin.defaultTransition("color"), {
+    " .pe-tabs__tab": [flex.flex(), flex.flexIndex("none"), {
       userSelect: "none",
       margin: 0,
       borderRadius: 0,
@@ -185,7 +186,7 @@ var layout = (function (selector, componentVars) {
       minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
       maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-      ".pe-text-button .pe-button__content": {
+      " .pe-button__content": [mixin.defaultTransition(componentVars.tab_label_transition_property, componentVars.animation_duration), {
         padding: "0 " + componentVars.tab_content_padding_v + "px",
         height: componentVars.tab_height + "px",
         lineHeight: vars.line_height + "em",
@@ -199,12 +200,11 @@ var layout = (function (selector, componentVars) {
           overflow: "hidden",
           whiteSpace: "normal"
         },
-        " .pe-button__label": [mixin.defaultTransition("opacity", componentVars.animation_duration), {
+        " .pe-button__label": {
           margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
           padding: 0,
-          opacity: componentVars.label_opacity,
           width: "100%" // for IE 11
-        }],
+        },
         " .pe-icon": {
           marginLeft: "auto",
           marginRight: "auto"
@@ -212,12 +212,7 @@ var layout = (function (selector, componentVars) {
         " .pe-button__focus": {
           display: "none"
         }
-      },
-      ".pe-button--selected .pe-button__content": {
-        " .pe-button__label": {
-          opacity: 1
-        }
-      },
+      }],
       ".pe-tabs__tab--icon": {
         "&, .pe-button__content": [{
           height: componentVars.tab_icon_label_height + "px"
@@ -288,7 +283,9 @@ var style = function style(scopes, selector, componentVars, tint) {
   return [_defineProperty$1({}, scopes.map(function (s) {
     return s + selector;
   }).join(","), {
-    color: componentVars["color_" + tint],
+    " .pe-tabs__tab": {
+      color: componentVars["color_" + tint]
+    },
 
     " .pe-tabs__tab.pe-button--selected": {
       color: componentVars["color_" + tint + "_selected"],
@@ -309,9 +306,34 @@ var style = function style(scopes, selector, componentVars, tint) {
   })];
 };
 
+var noTouchStyle$1 = function noTouchStyle$$1(scopes, selector, componentVars, tint) {
+  return noTouchStyle(scopes, selector + " .pe-text-button.pe-tabs__tab", componentVars, tint);
+};
+
+// export const noTouchStyle = (scopes, selector, componentVars, tint) => {
+//   return [{
+//     [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
+//       ":not(.pe-button--selected):not(.pe-button--inactive)": {
+//         color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+//         borderColor: hoverBorder,
+
+//         " .pe-button__content": {
+//           backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+//         },
+
+//         " .pe-button__wash": {
+//           backgroundColor: componentVars["color_" + tint + "_wash_background"],
+//         }
+//       }
+//     }
+//   }];
+// };
+
 var color = (function (selector, componentVars) {
   return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
+  noTouchStyle$1(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
+  noTouchStyle$1(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };

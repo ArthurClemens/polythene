@@ -76,7 +76,7 @@
 .pe-no-touch .pe-tabs .pe-tabs__scroll-button .pe-button__content {
   border-radius: 0;
   background-color: inherit;
-  transition-property: opacity,color,backgroundColor;
+  transition-property: all;
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
   transition-delay: .25s;
@@ -120,10 +120,6 @@
 }
 
 .pe-tabs .pe-tabs__tab {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: color;
   user-select: none;
   margin: 0;
   border-radius: 0;
@@ -134,7 +130,11 @@
   max-width: none
 }
 
-.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content {
+.pe-tabs .pe-tabs__tab .pe-button__content {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: opacity,color,backgroundColor;
   padding: 0 12px;
   height: 48px;
   line-height: 1.3em;
@@ -142,7 +142,7 @@
   position: relative
 }
 
-.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__label,.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
+.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__label,.pe-tabs .pe-tabs__tab .pe-button__content .pe-icon {
   max-width: 264px;
   line-height: 15.400000000000002px;
   max-height: 30.800000000000004px;
@@ -150,28 +150,19 @@
   white-space: normal
 }
 
-.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__label {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: opacity;
+.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__label {
   margin: 1.4000000000000021px 0 0;
   padding: 0;
-  opacity: .7;
   width: 100%
 }
 
-.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
+.pe-tabs .pe-tabs__tab .pe-button__content .pe-icon {
   margin-left: auto;
   margin-right: auto
 }
 
-.pe-tabs .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__focus {
+.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__focus {
   display: none
-}
-
-.pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content .pe-button__label {
-  opacity: 1
 }
 
 .pe-tabs .pe-tabs__tab.pe-tabs__tab--icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content {
@@ -252,8 +243,8 @@
   right: 0
 }
 
-.pe-dark-tone.pe-tabs,.pe-dark-tone .pe-tabs {
-  color: inherit
+.pe-dark-tone.pe-tabs .pe-tabs__tab,.pe-dark-tone .pe-tabs .pe-tabs__tab {
+  color: hsla(0,0%,100%,.87)
 }
 
 .pe-dark-tone.pe-tabs .pe-tabs__tab.pe-button--selected,.pe-dark-tone .pe-tabs .pe-tabs__tab.pe-button--selected {
@@ -272,8 +263,12 @@
   background-color: #2196f3
 }
 
-.pe-dark-tone.pe-tabs .pe-tabs__scroll-button,.pe-dark-tone .pe-tabs .pe-tabs__scroll-button,.pe-light-tone.pe-tabs,.pe-light-tone .pe-tabs,.pe-tabs {
+.pe-dark-tone.pe-tabs .pe-tabs__scroll-button,.pe-dark-tone .pe-tabs .pe-tabs__scroll-button {
   color: inherit
+}
+
+.pe-light-tone.pe-tabs .pe-tabs__tab,.pe-light-tone .pe-tabs .pe-tabs__tab,.pe-tabs .pe-tabs__tab {
+  color: rgba(0,0,0,.73)
 }
 
 .pe-light-tone.pe-tabs .pe-tabs__tab.pe-button--selected,.pe-light-tone .pe-tabs .pe-tabs__tab.pe-button--selected,.pe-tabs .pe-tabs__tab.pe-button--selected {
@@ -294,5 +289,13 @@
 
 .pe-light-tone.pe-tabs .pe-tabs__scroll-button,.pe-light-tone .pe-tabs .pe-tabs__scroll-button,.pe-tabs .pe-tabs__scroll-button {
   color: inherit
+}
+
+html.pe-no-touch .pe-dark-tone .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-dark-tone .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive) {
+  border-color: transparent
+}
+
+html.pe-no-touch .pe-light-tone .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-light-tone .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive) {
+  border-color: transparent
 }
 /*# sourceMappingURL=polythene-tabs.css.map */

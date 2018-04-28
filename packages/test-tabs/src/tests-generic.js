@@ -26,9 +26,11 @@ export default ({ renderer: h, Tabs }) => {
 
   TabsCSS.addStyle(".tests-tabs-custom_color", {
     color_light: "#00BCD4",
+    color_light_hover: "#F44336",
     color_light_selected: "#F44336",
     color_light_tab_indicator: "#F44336",
     color_dark: "#00BCD4",
+    color_dark_hover: "#F44336",
     color_dark_selected: "#F44336",
     color_dark_tab_indicator: "#F44336"
   });
@@ -193,9 +195,11 @@ export default ({ renderer: h, Tabs }) => {
               overflowX: "hidden",
               height: "48px"
             }
-          }, h(Tabs, {
+          },
+          h(Tabs, {
             tabs: longList,
-            scrollable: true
+            scrollable: true,
+            tone: "dark"
           }))
       }
     },
@@ -214,7 +218,8 @@ export default ({ renderer: h, Tabs }) => {
             tabs: longList,
             scrollable: true,
             scrollIconBackward: { svg: { content: arrowBack } },
-            scrollIconForward: { svg: { content: arrowForward } }
+            scrollIconForward: { svg: { content: arrowForward } },
+            tone: "dark",
           }))
       }
     },
@@ -349,7 +354,6 @@ export default ({ renderer: h, Tabs }) => {
     },
     {
       name: "Tabs with icons",
-      className: "small-result",
       component: Tabs,
       attrs: {
         tabs: iconButtons,
@@ -358,7 +362,6 @@ export default ({ renderer: h, Tabs }) => {
     },
     {
       name: "Tabs with icons and text",
-      className: "small-result",
       component: Tabs,
       attrs: {
         tabs: iconTextButtons,
@@ -407,7 +410,8 @@ export default ({ renderer: h, Tabs }) => {
       className: "pe-dark-tone",
       component: Tabs,
       attrs: {
-        tabs: threeButtons
+        tabs: threeButtons,
+        autofit: true,
       }
     },
 
@@ -423,7 +427,7 @@ export default ({ renderer: h, Tabs }) => {
     },
     {
       name: "Tabs with icons -- dark theme class",
-      className: "small-result pe-dark-tone",
+      className: "pe-dark-tone",
       component: Tabs,
       attrs: {
         tabs: iconButtons,
@@ -437,14 +441,14 @@ export default ({ renderer: h, Tabs }) => {
         view: () => 
           h("div", {
             style: {
-              maxWidth: "400px",
               overflowX: "hidden",
               height: "48px",
               color: "#fff"
             }
           }, h(Tabs, {
             tabs: longList,
-            scrollable: true
+            scrollable: true,
+            autofit: true,
           }))
       }
     },
@@ -461,7 +465,8 @@ export default ({ renderer: h, Tabs }) => {
             className: "pe-light-tone"
           }, h(Tabs, {
             tabs: longList,
-            scrollable: true
+            scrollable: true,
+            autofit: true,
           }))
       }
     },

@@ -5,6 +5,13 @@ body, html {
   padding: 0;
   margin: 0;
 }
+body {
+  opacity: 0
+}
+html.wf-active body {
+  opacity: 1
+}
+
 .row {
   padding: 8px 16px;
   max-width: 480px;

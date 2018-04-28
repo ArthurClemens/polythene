@@ -30,8 +30,8 @@ const style = (scopes, selector, componentVars, tint) => [{
   }
 }];
 
-export const noTouchStyle = (scopes, selector, componentVars, tint) => {
-  return buttonNoTouchStyle(scopes, selector, componentVars, tint)
+export const noTouchStyle = (scopes, selector, componentVars, tint) =>
+  buttonNoTouchStyle(scopes, selector, componentVars, tint)
     .concat([{
       [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
         ":not(.pe-button--selected):not(.pe-button--inactive)": {
@@ -41,7 +41,6 @@ export const noTouchStyle = (scopes, selector, componentVars, tint) => {
         }
       }
     }]);
-};
 
 export default (selector, componentVars) => [
   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone

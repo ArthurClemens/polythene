@@ -93,7 +93,7 @@ export default (selector, componentVars) => [
             " .pe-button__content": {
               borderRadius: 0,
               backgroundColor: "inherit",
-              transitionProperty: componentVars.tab_label_transition_property,
+              transitionProperty: "all",
               transitionDuration: componentVars.scroll_button_fade_duration + "s",
               transitionTimingFunction: "ease-in-out",
               transitionDelay: componentVars.scroll_button_fade_delay + "s",
@@ -136,7 +136,6 @@ export default (selector, componentVars) => [
         " .pe-tabs__tab": [
           flex.flex(),
           flex.flexIndex("none"),
-          mixin.defaultTransition("color"),
           {
             userSelect: "none",
             margin: 0,
@@ -147,42 +146,36 @@ export default (selector, componentVars) => [
             minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
             maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-            ".pe-text-button .pe-button__content": {
-              padding: "0 " + componentVars.tab_content_padding_v + "px",
-              height: componentVars.tab_height + "px",
-              lineHeight: vars.line_height + "em",
-              borderRadius: 0,
-              position: "relative",
+            " .pe-button__content": [
+              mixin.defaultTransition(componentVars.tab_label_transition_property, componentVars.animation_duration),
+              {
+                padding: "0 " + componentVars.tab_content_padding_v + "px",
+                height: componentVars.tab_height + "px",
+                lineHeight: vars.line_height + "em",
+                borderRadius: 0,
+                position: "relative",
 
-              " .pe-button__label, .pe-icon": {
-                maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
-                lineHeight: componentVars.tab_label_line_height + "px",
-                maxHeight: 2 * componentVars.tab_label_line_height + "px",
-                overflow: "hidden",
-                whiteSpace: "normal"
-              },
-              " .pe-button__label": [
-                mixin.defaultTransition("opacity", componentVars.animation_duration),
-                {
+                " .pe-button__label, .pe-icon": {
+                  maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
+                  lineHeight: componentVars.tab_label_line_height + "px",
+                  maxHeight: 2 * componentVars.tab_label_line_height + "px",
+                  overflow: "hidden",
+                  whiteSpace: "normal"
+                },
+                " .pe-button__label": {
                   margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
                   padding: 0,
-                  opacity: componentVars.label_opacity,
                   width: "100%" // for IE 11
+                },
+                " .pe-icon": {
+                  marginLeft: "auto",
+                  marginRight: "auto"
+                },
+                " .pe-button__focus": {
+                  display: "none"
                 }
-              ],
-              " .pe-icon": {
-                marginLeft: "auto",
-                marginRight: "auto"
-              },
-              " .pe-button__focus": {
-                display: "none"
               }
-            },
-            ".pe-button--selected .pe-button__content": {
-              " .pe-button__label": {
-                opacity: 1
-              }
-            },
+            ],
             ".pe-tabs__tab--icon": {
               "&, .pe-button__content": [
                 {
