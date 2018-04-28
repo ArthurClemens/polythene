@@ -21,8 +21,11 @@
 #### Components
 
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
+* List Tile:
+  * Added CSS style variable `title_line_count`
 * Tabs:
   * Option `selectedTab` is deprecated in favor of `selectedTabIndex`
+  * CSS style variable `label_opacity` has been removed in favor of setting the transparency in the label color (using `rgba`)
 
 #### Other
 

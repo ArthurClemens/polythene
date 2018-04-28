@@ -113,12 +113,9 @@
         paddingLeft: 0 // reverse for RTL - see below
       },
 
-      " .pe-list-tile__title": {
-        wordBreak: "break-word",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap"
-      },
+      " .pe-list-tile__title": [polytheneCoreCss.mixin.ellipsis(componentVars.title_line_count, componentVars.single_line_height, "px"), {
+        whiteSpace: "normal"
+      }],
 
       " .pe-list-tile__subtitle": [polytheneCoreCss.mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
         fontSize: componentVars.font_size_subtitle + "px",

@@ -260,17 +260,18 @@ var ellipsis = function ellipsis(lines, lineHeight) {
       whiteSpace: "normal"
     };
   }
-  return _extends({}, {
+  return [{
+    "@supports (-webkit-line-clamp: 2)": _extends({}, lines !== undefined ? {
+      "-webkit-line-clamp": lines,
+      "-webkit-box-orient": "vertical",
+      display: "-webkit-box",
+      wordBreak: "break-word"
+    } : null)
+  }, _extends({}, {
     overflow: "hidden",
     textOverflow: "ellipsis",
     textRendering: "auto" // Samsung Android
-  }, lines !== undefined ? {
-    "-webkit-line-clamp": lines,
-    "-webkit-box-orient": "vertical",
-    display: "-webkit-box"
-  } : null, lineHeight !== undefined ? {
-    maxHeight: lines * lineHeight + unit
-  } : null);
+  }, lineHeight !== undefined ? { maxHeight: lines * lineHeight + unit } : null, lineHeight === 1 ? { wordWrap: "nowrap" } : null)];
 };
 
 // Clears float

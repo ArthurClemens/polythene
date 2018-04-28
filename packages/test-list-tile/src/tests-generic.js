@@ -14,18 +14,23 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     font_size_title:        21
   });
 
+  ListTileCSS.addStyle(".tests-list-tile-themed-two-lines", {
+    title_line_count: 2
+  });
+
   ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
     color_light_highlight_background: "#FFECB3",
   });
 
-  const longTitle = "ListTile with a very very very very very very very very very long title";
+  // const longTitle = "ListTilewithaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongtitle";
+  const longText = "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.";
 
   return [
     {
       name: "Option: title",
       component: ListTile,
       attrs: {
-        title: longTitle
+        title: longText
       }
     },
     {
@@ -142,6 +147,14 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
           size: "medium"
         }),
         className: "tests-list-tile-themed-list-tile"
+      }
+    },
+    {
+      name: "Themed (title running on 2 lines)",
+      component: ListTile,
+      attrs: {
+        title: longText,
+        className: "tests-list-tile-themed-two-lines"
       }
     },
     {

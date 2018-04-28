@@ -129,6 +129,7 @@ var vars$1 = {
   single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
   padding: 13,
   compact_padding: 9,
+  title_line_count: 1,
   subtitle_line_count: 1,
   has_subtitle_padding: 15,
   high_subtitle_line_count: 2,

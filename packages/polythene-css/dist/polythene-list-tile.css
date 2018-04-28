@@ -91,29 +91,51 @@
   padding-left: 0
 }
 
+@supports not (-webkit-line-clamp:2) {
+  .pe-list-tile .pe-list-tile__title {
+    color: red
+  }
+}
+
 .pe-list-tile .pe-list-tile__title {
-  word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap
+  text-rendering: auto;
+  word-break: break-word;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  max-height: 42px;
+  white-space: normal
+}
+
+@supports not (-webkit-line-clamp:2) {
+  .pe-list-tile .pe-list-tile__subtitle {
+    color: red
+  }
 }
 
 .pe-list-tile .pe-list-tile__subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
+  word-break: break-word;
   max-height: 20px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px
 }
 
+@supports not (-webkit-line-clamp:2) {
+  .pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
+    color: red
+  }
+}
+
 .pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
+  word-break: break-word;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   max-height: 40px;
@@ -162,12 +184,17 @@
   padding-bottom: 0
 }
 
+@supports not (-webkit-line-clamp:2) {
+  .pe-list-tile.pe-list-tile--header .pe-list-tile__title {
+    color: red
+  }
+}
+
 .pe-list-tile.pe-list-tile--header .pe-list-tile__title {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
+  word-break: break-word;
   max-height: 48px;
   font-size: 14px;
   font-weight: 500;

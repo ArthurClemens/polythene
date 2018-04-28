@@ -92,30 +92,35 @@
 }
 
 .pe-list-tile .pe-list-tile__title {
-  word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap
+  text-rendering: auto;
+  max-height: 21px;
+  white-space: normal
 }
 
 .pe-list-tile .pe-list-tile__subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
   max-height: 20px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px
 }
 
+@supports (-webkit-line-clamp:2) {
+  .pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    word-break: break-word
+  }
+}
+
 .pe-list-tile .pe-list-tile__subtitle.pe-list-tile__high-subtitle {
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
   max-height: 40px;
   white-space: normal
 }
@@ -166,8 +171,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-rendering: auto;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
   max-height: 48px;
   font-size: 14px;
   font-weight: 500;
