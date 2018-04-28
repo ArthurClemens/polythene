@@ -11,6 +11,7 @@ import { MenuCSS } from "polythene-css";
 export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, IconButton }) => {
 
   const { themeColor, themedList, styledList } = themed({ renderer, Menu, List, ListTile });
+  const h = renderer;
 
   MenuCSS.addStyle(".menu-tests-transitions", {
     animation_duration:        ".8s",
@@ -52,7 +53,7 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
       name: "Themed (color and border radius)",
       component: {
         view: () =>
-          renderer(Menu, {
+          h(Menu, {
             content: themedList,
             permanent: true,
             tone: "dark",
@@ -64,7 +65,7 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
       name: "Option: style",
       component: {
         view: () =>
-          renderer(Menu, {
+          h(Menu, {
             content: styledList,
             permanent: true,
             tone: "dark",
@@ -122,6 +123,15 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
     {
       name: "Option: size",
       component: sizes({ renderer, Menu, List, ListTile })
+    },
+    {
+      name: "Menu items (RTL)",
+      component: {
+        view: () => 
+          h("div", { className: "pe-rtl" },
+            h(menuItems({ renderer, Menu, List, ListTile }))
+          )
+      }
     },
   ];
 };

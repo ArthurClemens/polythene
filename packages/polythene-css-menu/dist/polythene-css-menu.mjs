@@ -53,6 +53,18 @@ var classes = {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var alignSide = function alignSide(isRTL) {
+  return function () {
+    return {
+      textAlign: isRTL ? "right" : "left"
+    };
+  };
+};
+
+var alignLeft = alignSide(false);
+
+var alignRight = alignSide(true);
+
 var unifySize = function unifySize(componentVars, size) {
   return size < componentVars.min_size ? componentVars.min_size : size;
 };
@@ -71,7 +83,7 @@ var widthStyle = function widthStyle(componentVars, size) {
 };
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, [componentVars.sizes.map(function (size) {
+  return [_defineProperty({}, selector, [alignLeft(componentVars), componentVars.sizes.map(function (size) {
     return widthStyle(componentVars, size);
   }), componentVars.animation_hide_css, {
     transitionDelay: componentVars.animation_delay,
@@ -112,7 +124,7 @@ var layout = (function (selector, componentVars) {
         height: "100%"
       }
     }
-  }])];
+  }]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
