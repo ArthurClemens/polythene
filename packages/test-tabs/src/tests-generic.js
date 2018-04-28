@@ -20,8 +20,8 @@ export default ({ renderer: h, Tabs }) => {
   const Nested = nested({ h, Tabs });
 
   TabsCSS.addStyle(".tests-tabs-fixed-width", {
-    tab_max_width: 110,
-    tab_min_width: 110
+    tab_min_width: 84,
+    tab_min_width_tablet: 84
   });
 
   TabsCSS.addStyle(".tests-tabs-custom_color", {
@@ -144,7 +144,7 @@ export default ({ renderer: h, Tabs }) => {
       name: "Option: largestWidth (no autofit)",
       component: Tabs,
       attrs: {
-        tabs: threeButtons,
+        tabs: menuButtons,
         largestWidth: true
       }
     },

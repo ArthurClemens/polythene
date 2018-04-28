@@ -34,7 +34,7 @@ styler.add("polythene-test-tabs-nested", styles);
 
 const mainButtons = [
   { id: "new", label: "New" },
-  { id: "favs", label: "My Favorites" },
+  { id: "favs", label: "Favs" },
   { id: "saved", label: "Saved" }
 ];
 
