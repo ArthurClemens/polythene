@@ -79,7 +79,25 @@ RaisedButtonCSS.addStyle(".themed-raised-button", {
   color_light_text:       "#fff"
 })
 
-<RaisedButton className="themed-raised-button" />
+<RaisedButton
+  label="Button"
+  className="themed-raised-button"
+/>
+~~~
+
+To create a hover effect:
+
+~~~javascript
+RaisedButtonCSS.addStyle(".hover-button", {
+  color_light_hover:            "#fff",
+  color_light_hover_background: "#673ab7",
+  animation_duration:           "100ms",
+})
+
+<Button
+  label="Hover"
+  className="hover-button"
+/>
 ~~~
 
 <a id="css"></a>

@@ -83,6 +83,10 @@ const reactTests = ({ IconButton, Icon, SVG, renderer: h }) => { // eslint-disab
       component: () => <IconButton><Icon><SVG>{iconFavoriteSVG}</SVG></Icon></IconButton>
     },
     {
+      name: "Option: label (JSX)",
+      component: () => <IconButton label="Label"><Icon><SVG>{iconFavoriteSVG}</SVG></Icon></IconButton>
+    },
+    {
       name: "Option: style (JSX)",
       component: () => <IconButton icon={{ svg: { content: iconFavoriteSVG } }} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }}>{iconFavoriteSVG}</IconButton>
     },

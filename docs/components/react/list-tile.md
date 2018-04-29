@@ -268,11 +268,12 @@ h(ListTile, {
 ## Appearance
 
 * Following Material Design specs, a list tile can have 1 to 3 lines (except when using `subContent`):
-  * `title`: titel on a single line
+  * `title`: title on a single line
   * `subtitle`: subtitle on a single line
   * `highSubtitle`: subtitle runs over 2 lines
   * Use option `compact` to reduce the vertical padding
   * Use option `subContent` to show any other content below the title
+* A title line can optionally have more than 1 line of text when using a custom theme, see below.
 * A list tile can optionally have an icon.
 * Text and icon are taken together as primary content. Primary content can optionally have a link.
 * A list tile can optionally have secondary content, displayed to the right. Secondary content can contain any content, and conditionally have a link.
@@ -290,7 +291,7 @@ You can find more information about theming in  [Theming](../../theming.md).
 <a id="themed-component"></a>
 #### Themed component
 
-~~~javascript
+~~~jsx
 import { ListTileCSS } from "polythene-css"
 
 ListTileCSS.addStyle(".themed-list-tile", {
@@ -302,6 +303,19 @@ ListTileCSS.addStyle(".themed-list-tile", {
 })
 
 <ListTile className="themed-list-tile" />
+~~~
+
+To show a title running on maximum of 2 lines:
+
+~~~jsx
+ListTileCSS.addStyle(".list-tile-high-title", {
+  title_line_count: 2
+})
+
+<ListTile
+  className="list-tile-high-title"
+  title="The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
+/>
 ~~~
 
 <a id="css"></a>

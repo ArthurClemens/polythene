@@ -47,6 +47,8 @@ See: [URLs and router links](../../handling-urls.md)
 ## Appearance
 
 
+
+
 <a id="styling"></a>
 ### Styling
 
@@ -66,9 +68,26 @@ RaisedButtonCSS.addStyle(".themed-raised-button", {
 })
 
 m(RaisedButton, {
+  label: "Button",
   className: "themed-raised-button"
 })
 ~~~
+
+To create a hover effect:
+
+~~~javascript
+RaisedButtonCSS.addStyle(".hover-button", {
+  color_light_hover:            "#fff",
+  color_light_hover_background: "#673ab7",
+  animation_duration:           "100ms",
+})
+
+m(RaisedButton, {
+  label: "Hover",
+  className: "hover-button"
+})
+~~~
+
 
 <a id="css"></a>
 #### CSS

@@ -8,9 +8,9 @@
 - [Usage](#usage)
   - [Links](#links)
   - [Events](#events)
-  - [Variations](#variations)
   - [A row of buttons](#a-row-of-buttons)
 - [Appearance](#appearance)
+  - [Variations](#variations)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
 
@@ -86,15 +86,6 @@ h(Button, {
 ~~~
 
 
-<a id="variations"></a>
-### Variations
-
-* The hover effect can be hidden with `wash: false`.
-* The ripple effect on click can be hidden with `ink: false`.
-* Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead.
-
-
-
 <a id="a-row-of-buttons"></a>
 ### A row of buttons
 
@@ -104,6 +95,14 @@ When placed inside an element with classname `pe-button-row`, buttons will get a
 
 <a id="appearance"></a>
 ## Appearance
+
+<a id="variations"></a>
+### Variations
+
+* The hover effect can be hidden with `wash: false`.
+* Special hover effects can be created with a theme, see below.
+* The ripple effect on click can be hidden with `ink: false`.
+* Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead (which can contain a label).
 
 
 <a id="styling"></a>
@@ -132,6 +131,22 @@ ButtonCSS.addStyle(".bordered-button", {
   border
 />
 ~~~
+
+To create a hover effect:
+
+~~~javascript
+ButtonCSS.addStyle(".hover-button", {
+  color_light_hover:            "#fff",
+  color_light_hover_background: "#673ab7",
+  animation_duration:           "100ms",
+})
+
+<Button
+  label="Hover"
+  className="hover-button"
+/>
+~~~
+
 
 <a id="css"></a>
 #### CSS

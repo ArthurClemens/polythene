@@ -7,6 +7,7 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Links](#links)
+  - [Label](#label)
 - [Appearance](#appearance)
   - [Interactivity](#interactivity)
   - [Size](#size)
@@ -57,12 +58,23 @@ m(IconButton, StarIcon)
 ~~~
 
 
-
 <a id="links"></a>
 ### Links
 
 See: [URLs and router links](../../handling-urls.md)
 
+
+<a id="label"></a>
+### Label
+
+The Material Design specs do not specifically show a label with Icon Buttons, but Checkboxes with a custom icon provide the example how they should look like.
+
+~~~javascript
+m(IconButton, {
+  icon: { svg: { content: m.trust(starsSVG) } },
+  label: "Label"
+})
+~~~
 
 
 <a id="appearance"></a>
@@ -132,6 +144,22 @@ m(IconButton, {
   className: "themed-icon-button"
 })
 ~~~
+
+To create a hover effect:
+
+~~~javascript
+IconButtonCSS.addStyle(".hover-icon-button", {
+  color_light_hover:            "#fff",
+  color_light_label_hover:      "#673ab7",
+  color_light_hover_background: "#673ab7",
+  animation_duration:           "100ms",
+})
+
+m(IconButton, {
+  className: "hover-icon-button"
+})
+~~~
+
 
 <a id="css"></a>
 #### CSS
