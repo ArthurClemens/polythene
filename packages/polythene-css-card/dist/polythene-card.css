@@ -13,9 +13,7 @@
   border-radius: inherit;
   overflow: hidden;
   width: inherit;
-  height: inherit;
-  display: flex;
-  flex-direction: column
+  height: inherit
 }
 
 .pe-card .pe-card__media {
@@ -23,7 +21,10 @@
   overflow: hidden;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-  z-index: 1
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%
 }
 
 .pe-card .pe-card__media.pe-card__media--landscape {
@@ -34,32 +35,52 @@
   padding-bottom: 100%
 }
 
-.pe-card .pe-card__media:last-child,.pe-card .pe-card__media:last-child img {
+.pe-card .pe-card__media:last-child {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px
 }
 
-.pe-card .pe-card__media img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  width: 100%;
-  max-width: none
-}
-
-.pe-card .pe-card__media img.pe-card__media--crop-x {
+.pe-card .pe-card__media.pe-card__media--crop-x {
   width: 100%;
   height: auto;
   display: block
 }
 
-.pe-card .pe-card__media img.pe-card__media--crop-y {
+.pe-card .pe-card__media.pe-card__media--crop-x.pe-card__media--origin-start {
+  background-position-y: top
+}
+
+.pe-card .pe-card__media.pe-card__media--crop-x.pe-card__media--origin-end {
+  background-position-y: bottom
+}
+
+.pe-card .pe-card__media.pe-card__media--crop-y {
   height: 100%;
   width: auto;
   display: block
+}
+
+.pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-start {
+  background-position-x: left
+}
+
+.pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-end {
+  background-position-x: right
+}
+
+.pe-card .pe-card__media iframe,.pe-card .pe-card__media img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none
+}
+
+.pe-card .pe-card__media img {
+  opacity: 0
 }
 
 .pe-card .pe-card__header+.pe-card__media {
@@ -68,7 +89,7 @@
 }
 
 .pe-card .pe-card__primary-media {
-  margin: 16px 16px 0;
+  margin: 16px;
   overflow: hidden
 }
 
@@ -85,15 +106,14 @@
 }
 
 .pe-card .pe-card__primary-media .pe-card__media--large {
-  width: 240px;
-  margin-bottom: 16px
+  width: 240px
 }
 
-.pe-card .pe-card__primary-media .pe-card__media,.pe-card .pe-card__primary-media .pe-card__media img {
+.pe-card .pe-card__primary-media .pe-card__media {
   border-radius: 0
 }
 
-.pe-shadow+.pe-card .pe-card__primary-media,.pe-shadow+.pe-card .pe-card__primary-media img {
+.pe-shadow+.pe-card .pe-card__primary-media {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px
 }
@@ -107,7 +127,8 @@
 }
 
 .pe-card .pe-card__media__dimmer {
-  z-index: 1
+  z-index: 1;
+  pointer-events: all
 }
 
 .pe-card .pe-card__overlay__content {
@@ -142,11 +163,7 @@
   position: relative
 }
 
-.pe-card .pe-card__primary.pe-card__primary--media:not(:last-child) {
-  padding-bottom: 16px
-}
-
-.pe-card .pe-card__primary+.pe-card__text,.pe-card .pe-card__primary.pe-card__primary--media+.pe-card__actions {
+.pe-card .pe-card__primary+.pe-card__text {
   margin-top: -16px
 }
 
@@ -169,7 +186,6 @@
 }
 
 .pe-card .pe-card__actions {
-  min-height: 52px;
   padding: 0 8px
 }
 
@@ -182,6 +198,11 @@
 .pe-card .pe-card__actions.pe-card__actions--tight.pe-card__actions--vertical {
   padding-left: 0;
   padding-right: 0
+}
+
+.pe-card .pe-card__actions.pe-card__actions--horizontal {
+  min-height: 52px;
+  height: 52px
 }
 
 .pe-card .pe-card__actions.pe-card__actions--horizontal:not(.pe-card__actions--justified) {
@@ -241,6 +262,10 @@
   padding: 0
 }
 
+.pe-card .pe-card__primary.pe-card__primary--media+.pe-card__actions {
+  margin-top: -16px
+}
+
 .pe-card .pe-card__text {
   padding: 10px 16px 9px;
   font-size: 14px;
@@ -263,6 +288,14 @@
   margin-top: -11px;
   position: relative;
   z-index: 1
+}
+
+.pe-rtl .pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-start,[dir=rtl].pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-start {
+  background-position-x: right
+}
+
+.pe-rtl .pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-end,[dir=rtl].pe-card .pe-card__media.pe-card__media--crop-y.pe-card__media--origin-end {
+  background-position-x: left
 }
 
 .pe-dark-tone.pe-card,.pe-dark-tone .pe-card {

@@ -122,13 +122,14 @@ Next to the card itself, each content parts has a set of options:
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__media` |
-| **content**   | required | String, hyperscript or component |  | The image |
+| **content**   | required | String, hyperscript or component |  | The image or iframe |
 | **element**   | optional | String | "a" or div" | HTML tag |
 | **origin**    | optional | String: "start", "center", "end | "center" | From which side cropping should be done |
 | **overlay**   | optional | Options object, equal to card options | | Content to place on the overlay |
+| **showDimmer** | optional | Boolean | false | Set to `true` to create an image dimmer; the dimmer does not have a default style |
 | **ratio**     | optional | String: "landscape" or "square" | "landscape" | Image ratio; "landscape" translates to `16:9` ratio |
 | **sheet**     | optional | Boolean | | Set to `true` to show the overlay as a partly covering sheet |
-| **size**      | optional | String: "small", "medium", "large", "extra-large" | | For primary media only; defines the image size |
+| **size**      | optional | String: "small", "medium", "large", "extra-large" | | For primary media only; defines the image (or iframe) size |
 | **style**     | optional | String |  | Style object |
 
 

@@ -31,6 +31,9 @@
     actionsVertical: "pe-card__actions--vertical",
     mediaCropX: "pe-card__media--crop-x",
     mediaCropY: "pe-card__media--crop-y",
+    mediaOriginStart: "pe-card__media--origin-start",
+    mediaOriginCenter: "pe-card__media--origin-center",
+    mediaOriginEnd: "pe-card__media--origin-end",
     mediaLarge: "pe-card__media--large",
     mediaMedium: "pe-card__media--medium",
     mediaRatioLandscape: "pe-card__media--landscape",
@@ -45,8 +48,27 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var alignSide = function alignSide(isRTL) {
+    return function () {
+      return {
+        " .pe-card__media.pe-card__media--crop-y": {
+          ".pe-card__media--origin-start": {
+            backgroundPositionX: isRTL ? "right" : "left"
+          },
+          ".pe-card__media--origin-end": {
+            backgroundPositionX: isRTL ? "left" : "right"
+          }
+        }
+      };
+    };
+  };
+
+  var alignLeft = alignSide(false);
+
+  var alignRight = alignSide(true);
+
   var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, {
+    return [_defineProperty({}, selector, [alignLeft(componentVars), {
       display: "block",
       position: "relative",
       borderRadius: componentVars.border_radius + "px",
@@ -60,10 +82,7 @@
         borderRadius: "inherit",
         overflow: "hidden",
         width: "inherit",
-        height: "inherit",
-        // behave nicely on IE11:
-        display: "flex",
-        flexDirection: "column"
+        height: "inherit"
       },
 
       " .pe-card__media": {
@@ -72,6 +91,9 @@
         borderTopLeftRadius: "inherit",
         borderTopRightRadius: "inherit",
         zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
 
         ".pe-card__media--landscape": {
           paddingBottom: 100 / 16 * 9 + "%"
@@ -80,27 +102,41 @@
           paddingBottom: "100%"
         },
         "&:last-child": {
-          "&, img": {
-            borderBottomLeftRadius: componentVars.border_radius + "px",
-            borderBottomRightRadius: componentVars.border_radius + "px"
+          borderBottomLeftRadius: componentVars.border_radius + "px",
+          borderBottomRightRadius: componentVars.border_radius + "px"
+        },
+        ".pe-card__media--crop-x": {
+          width: "100%",
+          height: "auto",
+          display: "block",
+
+          ".pe-card__media--origin-start": {
+            backgroundPositionY: "top"
+          },
+          ".pe-card__media--origin-end": {
+            backgroundPositionY: "bottom"
           }
         },
-        " img": [polytheneCoreCss.mixin.fit(), {
-          display: "none",
-          width: "100%",
-          maxWidth: "none",
+        ".pe-card__media--crop-y": {
+          height: "100%",
+          width: "auto",
+          display: "block",
 
-          ".pe-card__media--crop-x": {
-            width: "100%",
-            height: "auto",
-            display: "block"
+          ".pe-card__media--origin-start": {
+            backgroundPositionX: "left" // RTL
           },
-          ".pe-card__media--crop-y": {
-            height: "100%",
-            width: "auto",
-            display: "block"
+          ".pe-card__media--origin-end": {
+            backgroundPositionX: "right" // RTL
           }
-        }]
+        },
+        " img, iframe": [polytheneCoreCss.mixin.fit(), {
+          width: "100%",
+          height: "100%",
+          maxWidth: "none"
+        }],
+        " img": {
+          opacity: 0 /* allows right-click on image */
+        }
       },
 
       " .pe-card__header + .pe-card__media": {
@@ -109,7 +145,7 @@
       },
 
       " .pe-card__primary-media": {
-        margin: "16px 16px 0 16px",
+        margin: "16px",
         overflow: "hidden",
 
         " .pe-card__media--small": {
@@ -122,28 +158,24 @@
           width: componentVars.image_size_medium + "px"
         },
         " .pe-card__media--large": {
-          width: componentVars.image_size_large + "px",
-          marginBottom: "16px"
+          width: componentVars.image_size_large + "px"
         },
         " .pe-card__media": {
-          "&, img": {
-            borderRadius: 0
-          }
+          borderRadius: 0
         },
 
         " .pe-shadow + &": {
           // first child
-          "&, img": {
-            borderTopLeftRadius: componentVars.border_radius + "px",
-            borderTopRightRadius: componentVars.border_radius + "px"
-          }
+          borderTopLeftRadius: componentVars.border_radius + "px",
+          borderTopRightRadius: componentVars.border_radius + "px"
         }
       },
 
       " .pe-card__overlay": polytheneCoreCss.mixin.fit(),
 
       " .pe-card__media__dimmer": [polytheneCoreCss.mixin.fit(), {
-        zIndex: 1
+        zIndex: 1,
+        pointerEvents: "all"
       }],
 
       " .pe-card__overlay__content": {
@@ -172,12 +204,6 @@
       " .pe-card__primary": [polytheneCoreCss.flex.layoutHorizontal, {
         position: "relative",
 
-        ".pe-card__primary--media:not(:last-child)": {
-          paddingBottom: "16px"
-        },
-        ".pe-card__primary--media + .pe-card__actions": {
-          marginTop: "-16px"
-        },
         "& + .pe-card__text": {
           marginTop: "-16px"
         },
@@ -200,7 +226,6 @@
       },
 
       " .pe-card__actions": [{
-        minHeight: 36 + 2 * 8 + "px",
         padding: componentVars.actions_padding_v + "px" + " " + componentVars.padding_actions_h + "px",
 
         ".pe-card__actions--tight": {
@@ -212,6 +237,10 @@
             paddingLeft: 0,
             paddingRight: 0
           }
+        },
+        ".pe-card__actions--horizontal": {
+          minHeight: 36 + 2 * 8 + "px",
+          height: 36 + 2 * 8 + "px" /* make align-items work on IE 11: https://github.com/philipwalton/flexbugs/issues/231 */
         },
         ".pe-card__actions--horizontal:not(.pe-card__actions--justified)": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
           " .pe-button": {
@@ -254,6 +283,10 @@
         }]
       }],
 
+      " .pe-card__primary.pe-card__primary--media + .pe-card__actions": {
+        marginTop: "-16px"
+      },
+
       " .pe-card__text": {
         paddingTop: componentVars.text_padding_v - componentVars.text_line_height_padding_top + "px",
         paddingRight: componentVars.text_padding_h + "px",
@@ -281,7 +314,10 @@
           zIndex: 1
         }
       }
-    })];
+    }]), {
+      // RTL
+      "*[dir=rtl], .pe-rtl ": _defineProperty({}, selector, alignRight(componentVars))
+    }];
   });
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }

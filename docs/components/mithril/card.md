@@ -6,10 +6,8 @@
 
 - [Options](#options)
 - [Usage](#usage)
-- [Images](#images)
-  - [Cropping / origin](#cropping--origin)
-  - [Overlay](#overlay)
-  - [Title image](#title-image)
+  - [Images](#images)
+  - [Embedded videos](#embedded-videos)
 - [Appearance](#appearance)
   - [Styling](#styling)
   - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
@@ -172,14 +170,14 @@ m(Card, {
 
 
 <a id="images"></a>
-## Images
+### Images
 
 By specification, the `media` element has an image ratio of `16:9`, but `1:1` images can be used too, as well as "title images" (an image placed next to the title). Images can additionally have with overlay text. Both `ratio` ("square" or "landscape") and `size` ("small", "medium", "large", "extra-large") can be set.
 
 
 
 <a id="cropping--origin"></a>
-### Cropping / origin
+#### Cropping / origin
 
 An image that does not fit the ratio is cropped by CSS. An additional parameter `origin` can be passed to determine from which side cropping should be done. Default value is "center", optional values are "start" and "end". The end result depends if the image is landscape or portrait format.
 
@@ -199,7 +197,7 @@ content: [{
 
 
 <a id="overlay"></a>
-### Overlay
+#### Overlay
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
 
@@ -238,7 +236,18 @@ content: [{
 }]
 ~~~
 
-An additional HTML element to control the image is "card__media__dimmer". To create a fuzzy dark border all around use an inset box shadow:
+An additional HTML element to control the image is "card__media__dimmer". First enable the dimmer: 
+
+~~~javascript
+{
+  media: {
+    showDimmer: true,
+    ...
+  }
+},
+~~~
+
+To create a fuzzy dark border all around use an inset box shadow
 
 ~~~css
 .pe-card__media__dimmer {
@@ -252,7 +261,7 @@ An additional HTML element to control the image is "card__media__dimmer". To cre
 
 
 <a id="title-image"></a>
-### Title image
+#### Title image
 
 To create a square image at the right side of the title, use `primary.media`:
 
@@ -272,6 +281,26 @@ content: [{
 }]
 ~~~
 
+
+<a id="embedded-videos"></a>
+### Embedded videos
+
+To show an embedded video, pass an `iframe` element:
+
+~~~javascript
+content: [{
+  media: {
+    content: m("iframe", {
+      id: "ytplayer",
+      type: "text/html",
+      width: "100%",
+      height: "100%",
+      src: "https://www.youtube.com/embed/Fe7lxMJTgZ4",
+      frameborder: "0"
+    })
+  }
+}]
+~~~
 
 
 <a id="appearance"></a>

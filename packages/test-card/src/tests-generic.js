@@ -617,6 +617,29 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         ]
       }
     },
+    {
+      name: "Video media",
+      component: Card,
+      attrs: {
+        content: [
+          {
+            media: {
+              content: h("iframe", {
+                id: "ytplayer",
+                type: "text/html",
+                width: "100%",
+                height: "100%",
+                src: "https://www.youtube.com/embed/Fe7lxMJTgZ4",
+                frameborder: "0"
+              })
+            }
+          },
+          {
+            actions: { content: iconButtonRow }
+          }
+        ]
+      }
+    },
 
     // Overlay
 
@@ -824,6 +847,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           },
           {
             media: {
+              showDimmer: true,
               content: h("img", {
                 src: landscapeImage
               })
@@ -1206,6 +1230,52 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
 
+    {
+      name: "16:9 media with landscape image, anchor origin: start (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", null,
+            h(Card, {
+              content: [
+                {
+                  media: {
+                    origin: "start",
+                    content: h("img", {
+                      src: landscapeImage
+                    })
+                  }
+                },
+                {
+                  actions: { content: iconButtonRow }
+                }
+              ]
+            })
+          )
+      }
+    },
+    {
+      name: "16:9 media with landscape image, anchor origin: end (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", null,
+            h(Card, {
+              content: [
+                {
+                  media: {
+                    origin: "end",
+                    content: h("img", {
+                      src: landscapeImage
+                    })
+                  }
+                },
+                {
+                  actions: { content: iconButtonRow }
+                }
+              ]
+            })
+          )
+      }
+    },
     {
       name: "Bottom action row, border (RTL)",
       component: {

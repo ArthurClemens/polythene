@@ -28,6 +28,9 @@ var classes = {
   actionsVertical: "pe-card__actions--vertical",
   mediaCropX: "pe-card__media--crop-x",
   mediaCropY: "pe-card__media--crop-y",
+  mediaOriginStart: "pe-card__media--origin-start",
+  mediaOriginCenter: "pe-card__media--origin-center",
+  mediaOriginEnd: "pe-card__media--origin-end",
   mediaLarge: "pe-card__media--large",
   mediaMedium: "pe-card__media--medium",
   mediaRatioLandscape: "pe-card__media--landscape",
@@ -256,46 +259,17 @@ var initImage = function initImage(_ref) {
       origin = _ref.origin;
 
   img.onload = function () {
+    // use a background image on the image container
+    if (img.tagName === "IMG") {
+      dom.style.backgroundImage = "url(" + img.src + ")";
+    }
     var naturalRatio = this.naturalWidth / this.naturalHeight;
     // crop-x: crop over x axis
     // crop-y: crop over y axis
     var cropClass = naturalRatio < imageRatios[ratio] ? classes.mediaCropX : classes.mediaCropY;
-    img.className = cropClass;
-
-    var containerWidth = dom.clientWidth;
-    var containerHeight = dom.clientHeight;
-
-    if (naturalRatio < imageRatios[ratio]) {
-      // orient on y axis
-      if (origin === "center") {
-        var imageHeight = containerWidth / naturalRatio;
-        var diff = containerHeight - imageHeight;
-        var offset = diff / 2;
-        this.style.marginTop = offset + "px";
-      } else if (origin === "start") {
-        this.style.top = 0;
-        this.style.bottom = "auto";
-      } else {
-        // end
-        this.style.top = "auto";
-        this.style.bottom = 0;
-      }
-    } else {
-      // orient on x axis
-      if (origin === "center") {
-        var imageWidth = containerHeight * naturalRatio;
-        var _diff = containerWidth - imageWidth;
-        var _offset = _diff / 2;
-        this.style.marginLeft = _offset + "px";
-      } else if (origin === "start") {
-        this.style.left = 0;
-        this.style.right = "auto";
-      } else {
-        // end
-        this.style.left = "auto";
-        this.style.right = 0;
-      }
-    }
+    dom.classList.add(cropClass);
+    var originClass = origin === "start" ? classes.mediaOriginStart : origin === "end" ? classes.mediaOriginEnd : classes.mediaOriginCenter;
+    dom.classList.add(originClass);
   };
 };
 
@@ -307,7 +281,7 @@ var onMount$1 = function onMount(vnode) {
   var ratio = attrs.ratio || "landscape";
   var origin = attrs.origin || "center";
   var dom = vnode.dom;
-  var img = dom.querySelector("img");
+  var img = dom.querySelector("img") || dom.querySelector("iframe");
   initImage({ dom: dom, img: img, ratio: ratio, origin: origin });
 };
 
@@ -327,7 +301,7 @@ var createContent$2 = function createContent(vnode, _ref3) {
 
   var attrs = vnode.attrs;
   var dispatcher = attrs.dispatcher;
-  return [_extends$2({}, attrs.content, { key: "content" }), attrs.overlay ? dispatcher({ overlay: attrs.overlay, key: "overlay" }) : h("div", {
+  return [_extends$2({}, attrs.content, { key: "content" }), attrs.overlay ? dispatcher({ overlay: attrs.overlay, key: "overlay" }) : attrs.showDimmer && h("div", {
     className: classes.mediaDimmer,
     key: "dimmer"
   })];

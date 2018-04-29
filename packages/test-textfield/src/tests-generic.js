@@ -59,7 +59,7 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: type (password (not shown), number, email)",
+      name: "Option: type (password, number, email)",
       component: {
         view: () => block([
           // Note that having a password field in a form will kick in form autocomplete
