@@ -215,7 +215,6 @@
     // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
     // color_dark_hover_background:          "transparent",
 
-
   };
 
   exports.coreButton = button;

@@ -1,3 +1,7 @@
+.pe-menu {
+  text-align: left
+}
+
 .pe-menu.pe-menu--width-1-5 {
   width: 84px
 }
@@ -61,6 +65,10 @@
 
 .pe-menu.pe-menu--full-height,.pe-menu.pe-menu--full-height .pe-menu__content {
   height: 100%
+}
+
+.pe-rtl .pe-menu,[dir=rtl] .pe-menu {
+  text-align: right
 }
 
 .pe-dark-tone.pe-menu .pe-menu__content,.pe-dark-tone .pe-menu .pe-menu__content {

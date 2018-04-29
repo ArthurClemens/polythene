@@ -3,7 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
-  - [Next](#next)
+  - [1.2.0](#120)
   - [1.1.0](#110)
   - [1.0.0](#100)
 - [Pre releases](#pre-releases)
@@ -15,20 +15,21 @@
 ## Releases
 
 
-<a id="next"></a>
-### Next
+<a id="120"></a>
+### 1.2.0
 
 #### Components
 
-* Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 * Card:
   * It is now possible to embed a video using the `media` item
   * The image dimmer element is now only created when option `showDimmer` is passed
+  * RTL support for image alignment using `origin`
 * List Tile:
   * Added CSS style variable `title_line_count` to make the line count of the title configurable
 * Tabs:
   * Option `selectedTab` is deprecated in favor of `selectedTabIndex`
   * CSS style variable `label_opacity` has been removed in favor of setting the transparency in the label color (using `rgba`); this creates a better color transition when selecting the tab
+* Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 
 #### Other
 

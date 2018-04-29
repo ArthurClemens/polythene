@@ -54,6 +54,14 @@
     color_dark_selected_background: "transparent",
     color_dark_tab_indicator: rgba(polytheneTheme.vars.color_primary),
     color_dark_icon: polytheneCoreIconButton.vars.color_dark
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+    // color_light_hover_background:         "transparent",
+    //
+    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+    // color_dark_hover_background:          "transparent",
   };
 
   var buttonClasses = {
