@@ -32,6 +32,6 @@ const createSizedMenu = ({ size, h, Menu, List, ListTile }) => {
 
 export default ({ renderer: h, Menu, List, ListTile }) => ({
   view: () =>
-    h("div", null, [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(size => createSizedMenu({ size, Menu, List, ListTile, h})))
+    h("div", { style: { overflow: "hidden", padding: "10px" }}, [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(size => createSizedMenu({ size, Menu, List, ListTile, h})))
 });
 

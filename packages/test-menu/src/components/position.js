@@ -10,7 +10,7 @@ const styles = [
       width: "47%",
       height: "230px",
       background: "#fff",
-      margin: "10px",
+      margin: "0 0 10px 0",
 
       " .bar": {
         position: "relative",
