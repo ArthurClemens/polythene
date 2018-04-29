@@ -62,9 +62,11 @@ export const onMount = vnode => {
     ? attrs.target
     : vnode.dom && vnode.dom.parentElement;
   
-  triggerEl.addEventListener(pointerEndEvent, tap, false);
+  pointerEndEvent.forEach(evt =>
+    triggerEl.addEventListener(evt, tap, false));
   state.cleanUp = () =>
-    triggerEl.removeEventListener(pointerEndEvent, tap, false);
+    pointerEndEvent.forEach(evt =>
+      triggerEl.removeEventListener(evt, tap, false));
 };
 
 export const onUnMount = ({ state }) =>

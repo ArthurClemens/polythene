@@ -5,24 +5,24 @@ export const isTouch = isServer
   : "ontouchstart" in document.documentElement;
 
 export const pointerStartEvent = isTouch
-  ? "click"
-  : "mousedown";
+  ? ["touchstart", "click"]
+  : ["click"];
 
 export const pointerEndEvent = isTouch
-  ? "click"
-  : "mouseup";
+  ? ["click", "mouseup"]
+  : ["mouseup"];
 
 export const pointerStartMoveEvent = isTouch
-  ? "touchstart"
-  : "mousedown";
+  ? ["touchstart", "mousedown"]
+  : ["mousedown"];
 
 export const pointerMoveEvent = isTouch
-  ? "touchmove"
-  : "mousemove";
+  ? ["touchmove", "mousemove"]
+  : ["mousemove"];
 
 export const pointerEndMoveEvent = isTouch
-  ? "touchend"
-  : "mouseup";
+  ? ["touchend", "mouseup"]
+  : ["mouseup"];
 
 if (isClient) {
   document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");

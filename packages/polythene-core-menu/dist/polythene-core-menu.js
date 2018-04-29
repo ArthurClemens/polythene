@@ -128,7 +128,11 @@
           return alignBottom() && alignRight();
         }
       };
+      var transitionDuration = menuEl.style.transitionDuration;
+      menuEl.style.transitionDuration = "0ms";
       alignFn[origin].call();
+      menuEl.offsetHeight; // force reflow
+      menuEl.style.transitionDuration = transitionDuration;
     }
   };
 
@@ -226,19 +230,15 @@
       };
 
       state.activateDismissTap = function () {
-        if (polytheneCore.isTouch) {
-          document.addEventListener("touchstart", state.handleDismissTap);
-        } else {
-          document.addEventListener("click", state.handleDismissTap);
-        }
+        polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+          return document.addEventListener(evt, state.handleDismissTap);
+        });
       };
 
       state.deActivateDismissTap = function () {
-        if (polytheneCore.isTouch) {
-          document.removeEventListener("touchstart", state.handleDismissTap);
-        } else {
-          document.removeEventListener("click", state.handleDismissTap);
-        }
+        polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+          return document.removeEventListener(evt, state.handleDismissTap);
+        });
       };
 
       state.handleEscape = function (e) {

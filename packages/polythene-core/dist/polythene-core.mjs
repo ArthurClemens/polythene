@@ -149,15 +149,15 @@ var classForSize = function classForSize(classes) {
 
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 
-var pointerStartEvent = isTouch ? "click" : "mousedown";
+var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
 
-var pointerEndEvent = isTouch ? "click" : "mouseup";
+var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
 
-var pointerStartMoveEvent = isTouch ? "touchstart" : "mousedown";
+var pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
 
-var pointerMoveEvent = isTouch ? "touchmove" : "mousemove";
+var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
 
-var pointerEndMoveEvent = isTouch ? "touchend" : "mouseup";
+var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
 if (isClient) {
   document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");

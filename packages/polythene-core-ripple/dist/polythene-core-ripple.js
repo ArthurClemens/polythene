@@ -157,9 +157,13 @@
     };
     var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
-    triggerEl.addEventListener(polytheneCore.pointerEndEvent, tap, false);
+    polytheneCore.pointerEndEvent.forEach(function (evt) {
+      return triggerEl.addEventListener(evt, tap, false);
+    });
     state.cleanUp = function () {
-      return triggerEl.removeEventListener(polytheneCore.pointerEndEvent, tap, false);
+      return polytheneCore.pointerEndEvent.forEach(function (evt) {
+        return triggerEl.removeEventListener(evt, tap, false);
+      });
     };
   };
 

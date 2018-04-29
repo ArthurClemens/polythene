@@ -18,10 +18,6 @@
       tapEndAll = function tapEndAll() {},
       downButtons = [];
 
-  polytheneCore.subscribe(polytheneCore.pointerEndEvent, function () {
-    return tapEndAll();
-  });
-
   var animateZ = function animateZ(which, vnode) {
     var zBase = vnode.state.zBase;
     var increase = vnode.attrs.increase || 1;
@@ -53,11 +49,21 @@
       });
       downButtons = [];
     };
-    vnode.dom.addEventListener(polytheneCore.pointerStartMoveEvent, tapStart);
+    polytheneCore.pointerStartMoveEvent.forEach(function (evt) {
+      return vnode.dom.addEventListener(evt, tapStart);
+    });
+    polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+      return document.addEventListener(evt, tapEndAll);
+    });
   };
 
   var clearTapEvents = function clearTapEvents(vnode) {
-    return vnode.dom.removeEventListener(polytheneCore.pointerStartMoveEvent, tapStart);
+    polytheneCore.pointerStartMoveEvent.forEach(function (evt) {
+      return vnode.dom.removeEventListener(evt, tapStart);
+    });
+    polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+      return document.removeEventListener(evt, tapEndAll);
+    });
   };
 
   var getInitialState = function getInitialState(vnode, createStream) {

@@ -207,16 +207,24 @@
       if (!state.isDragging()) return;
       deFocus(state);
       if (polytheneCore.isClient) {
-        window.removeEventListener(polytheneCore.pointerMoveEvent, drag);
-        window.removeEventListener(polytheneCore.pointerEndMoveEvent, endDrag);
+        polytheneCore.pointerMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, drag);
+        });
+        polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, endDrag);
+        });
       }
       state.isDragging(false);
       state.isActive(false);
     };
 
     if (polytheneCore.isClient) {
-      window.addEventListener(polytheneCore.pointerMoveEvent, drag);
-      window.addEventListener(polytheneCore.pointerEndMoveEvent, endDrag);
+      polytheneCore.pointerMoveEvent.forEach(function (evt) {
+        return window.addEventListener(evt, drag);
+      });
+      polytheneCore.pointerEndMoveEvent.forEach(function (evt) {
+        return window.addEventListener(evt, endDrag);
+      });
     }
     readRangeData(state);
 
@@ -237,7 +245,7 @@
   };
 
   var createSlider = function createSlider(vnode, _ref) {
-    var _ref3;
+    var _ref2;
 
     var h = _ref.h,
         k = _ref.k,
@@ -264,7 +272,9 @@
     var flexRestValue = 1 - fraction;
     var flexRestCss = flexRestValue + " 1 0%";
 
-    return h("div", _extends({}, { className: classes.track }, interactiveTrack && !attrs.disabled && _defineProperty({}, k["on" + polytheneCore.pointerStartMoveEvent], onStartTrack)), [h("div", {
+    return h("div", _extends({}, { className: classes.track }, interactiveTrack && !attrs.disabled && polytheneCore.pointerStartMoveEvent.reduce(function (acc, evt) {
+      return acc[k["on" + evt]] = onStartTrack, acc;
+    }, {})), [h("div", {
       className: classes.trackPart + " " + classes.trackPartValue,
       key: "trackPartValue",
       style: {
@@ -275,11 +285,11 @@
     }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), h("div", _extends({}, {
       className: classes.control,
       key: "control"
-    }, attrs.disabled ? { disabled: true } : (_ref3 = {}, _defineProperty(_ref3, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref3, k.onfocus, function () {
+    }, attrs.disabled ? { disabled: true } : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onfocus, function () {
       return focus(state, state.controlEl);
-    }), _defineProperty(_ref3, k.onblur, function () {
+    }), _defineProperty(_ref2, k.onblur, function () {
       return deFocus(state);
-    }), _defineProperty(_ref3, k.onkeydown, function (e) {
+    }), _defineProperty(_ref2, k.onkeydown, function (e) {
       if (e.key !== "Tab") {
         e.preventDefault();
       }
@@ -300,7 +310,9 @@
       }
       readRangeData(state);
       updatePinPosition(state);
-    }), _ref3), !attrs.disabled && _defineProperty({}, k["on" + polytheneCore.pointerStartMoveEvent], onInitDrag), attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? h("div", {
+    }), _ref2), !attrs.disabled && polytheneCore.pointerStartMoveEvent.reduce(function (acc, evt) {
+      return acc[k["on" + evt]] = onInitDrag, acc;
+    }, {}), attrs.events ? attrs.events : null, hasTicks ? { step: stepCount } : null), attrs.icon ? h("div", {
       className: classes.thumb,
       key: "icon"
     }, attrs.icon) : null), h("div", {
@@ -409,8 +421,8 @@
     }
   };
 
-  var createProps = function createProps(vnode, _ref5) {
-    var k = _ref5.keys;
+  var createProps = function createProps(vnode, _ref3) {
+    var k = _ref3.keys;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
@@ -429,9 +441,9 @@
     });
   };
 
-  var createContent = function createContent(vnode, _ref6) {
-    var h = _ref6.renderer,
-        k = _ref6.keys;
+  var createContent = function createContent(vnode, _ref4) {
+    var h = _ref4.renderer,
+        k = _ref4.keys;
 
     var attrs = vnode.attrs;
     var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;

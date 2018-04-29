@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, isTouch } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
@@ -55,7 +55,11 @@ const positionMenu = (state, attrs) => {
       "bottom-left":    () => alignBottom() && alignLeft(),
       "bottom-right":   () => alignBottom() && alignRight()
     };
+    const transitionDuration = menuEl.style.transitionDuration;
+    menuEl.style.transitionDuration = "0ms";
     alignFn[origin].call();
+    menuEl.offsetHeight; // force reflow
+    menuEl.style.transitionDuration = transitionDuration;
   }
 };
 
@@ -147,19 +151,13 @@ export const onMount = vnode => {
     };
 
     state.activateDismissTap = () => {
-      if (isTouch) {
-        document.addEventListener("touchstart", state.handleDismissTap);
-      } else {
-        document.addEventListener("click", state.handleDismissTap);
-      }
+      pointerEndMoveEvent.forEach(evt =>
+        document.addEventListener(evt, state.handleDismissTap));
     };
 
     state.deActivateDismissTap = () => {
-      if (isTouch) {
-        document.removeEventListener("touchstart", state.handleDismissTap);
-      } else {
-        document.removeEventListener("click", state.handleDismissTap);
-      }
+      pointerEndMoveEvent.forEach(evt =>
+        document.removeEventListener(evt, state.handleDismissTap));
     };
 
     state.handleEscape = e => {

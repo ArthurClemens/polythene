@@ -96,16 +96,20 @@ const startDrag = (state, attrs, e) => {
     if (!state.isDragging()) return;
     deFocus(state);
     if (isClient) {
-      window.removeEventListener(pointerMoveEvent, drag);
-      window.removeEventListener(pointerEndMoveEvent, endDrag);
+      pointerMoveEvent.forEach(evt =>
+        window.removeEventListener(evt, drag));
+      pointerEndMoveEvent.forEach(evt =>
+        window.removeEventListener(evt, endDrag));
     }
     state.isDragging(false);
     state.isActive(false);
   };
 
   if (isClient) {
-    window.addEventListener(pointerMoveEvent, drag);
-    window.addEventListener(pointerEndMoveEvent, endDrag);
+    pointerMoveEvent.forEach(evt =>
+      window.addEventListener(evt, drag));
+    pointerEndMoveEvent.forEach(evt =>
+      window.addEventListener(evt, endDrag));
   }
   readRangeData(state);
 
@@ -150,9 +154,10 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
     Object.assign(
       {},
       { className: classes.track },
-      interactiveTrack && !attrs.disabled && {
-        [k[`on${pointerStartMoveEvent}`]]: onStartTrack
-      }
+      interactiveTrack && !attrs.disabled && pointerStartMoveEvent.reduce((acc, evt) => (
+        acc[k[`on${evt}`]] = onStartTrack,
+        acc
+      ), {})
     ),
     [
       h("div",
@@ -204,9 +209,11 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
               updatePinPosition(state);
             }
           },
-        !attrs.disabled && {
-          [k[`on${pointerStartMoveEvent}`]]: onInitDrag
-        },
+        !attrs.disabled &&
+          pointerStartMoveEvent.reduce((acc, evt) => (
+            acc[k[`on${evt}`]] = onInitDrag,
+            acc
+          ), {}),
         attrs.events
           ? attrs.events
           : null,

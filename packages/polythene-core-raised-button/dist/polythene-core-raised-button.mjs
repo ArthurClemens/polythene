@@ -1,4 +1,4 @@
-import { isServer, pointerStartMoveEvent, pointerEndEvent, subscribe } from 'polythene-core';
+import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var classes = {
@@ -14,10 +14,6 @@ var MAX_Z = 5;
 var tapStart = void 0,
     tapEndAll = function tapEndAll() {},
     downButtons = [];
-
-subscribe(pointerEndEvent, function () {
-  return tapEndAll();
-});
 
 var animateZ = function animateZ(which, vnode) {
   var zBase = vnode.state.zBase;
@@ -50,11 +46,21 @@ var initTapEvents = function initTapEvents(vnode) {
     });
     downButtons = [];
   };
-  vnode.dom.addEventListener(pointerStartMoveEvent, tapStart);
+  pointerStartMoveEvent.forEach(function (evt) {
+    return vnode.dom.addEventListener(evt, tapStart);
+  });
+  pointerEndMoveEvent.forEach(function (evt) {
+    return document.addEventListener(evt, tapEndAll);
+  });
 };
 
 var clearTapEvents = function clearTapEvents(vnode) {
-  return vnode.dom.removeEventListener(pointerStartMoveEvent, tapStart);
+  pointerStartMoveEvent.forEach(function (evt) {
+    return vnode.dom.removeEventListener(evt, tapStart);
+  });
+  pointerEndMoveEvent.forEach(function (evt) {
+    return document.removeEventListener(evt, tapEndAll);
+  });
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {

@@ -107,7 +107,8 @@
         lineHeight: componentVars.font_size + "px",
         fontWeight: componentVars.font_weight,
         textTransform: componentVars.text_transform,
-        whiteSpace: "pre"
+        whiteSpace: "pre",
+        userSelect: "none"
       },
 
       ".pe-button--border": {

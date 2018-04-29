@@ -154,9 +154,13 @@ var onMount = function onMount(vnode) {
   };
   var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
-  triggerEl.addEventListener(pointerEndEvent, tap, false);
+  pointerEndEvent.forEach(function (evt) {
+    return triggerEl.addEventListener(evt, tap, false);
+  });
   state.cleanUp = function () {
-    return triggerEl.removeEventListener(pointerEndEvent, tap, false);
+    return pointerEndEvent.forEach(function (evt) {
+      return triggerEl.removeEventListener(evt, tap, false);
+    });
   };
 };
 

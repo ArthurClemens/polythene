@@ -1,4 +1,4 @@
-import { isServer, pointerStartMoveEvent, pointerEndEvent, subscribe } from "polythene-core";
+import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from "polythene-core";
 import classes from "polythene-css-classes/raised-button";
 
 // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
@@ -8,8 +8,6 @@ const MAX_Z = 5;
 let tapStart,
   tapEndAll = () => {},
   downButtons = [];
-
-subscribe(pointerEndEvent, () => tapEndAll());
 
 const animateZ = (which, vnode) => {
   const zBase = vnode.state.zBase;
@@ -43,11 +41,18 @@ const initTapEvents = vnode => {
       tapHandler("up", buttonVnode));
     downButtons = [];
   };
-  vnode.dom.addEventListener(pointerStartMoveEvent, tapStart);
+  pointerStartMoveEvent.forEach(evt =>
+    vnode.dom.addEventListener(evt, tapStart));
+  pointerEndMoveEvent.forEach(evt =>
+    document.addEventListener(evt, tapEndAll));
 };
 
-const clearTapEvents = vnode =>
-  vnode.dom.removeEventListener(pointerStartMoveEvent, tapStart);
+const clearTapEvents = vnode => {
+  pointerStartMoveEvent.forEach(evt =>
+    vnode.dom.removeEventListener(evt, tapStart));
+  pointerEndMoveEvent.forEach(evt =>
+    document.removeEventListener(evt, tapEndAll));
+};
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;

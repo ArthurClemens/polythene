@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, isTouch } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 var listTileClasses = {
@@ -125,7 +125,11 @@ var positionMenu = function positionMenu(state, attrs) {
         return alignBottom() && alignRight();
       }
     };
+    var transitionDuration = menuEl.style.transitionDuration;
+    menuEl.style.transitionDuration = "0ms";
     alignFn[origin].call();
+    menuEl.offsetHeight; // force reflow
+    menuEl.style.transitionDuration = transitionDuration;
   }
 };
 
@@ -223,19 +227,15 @@ var onMount = function onMount(vnode) {
     };
 
     state.activateDismissTap = function () {
-      if (isTouch) {
-        document.addEventListener("touchstart", state.handleDismissTap);
-      } else {
-        document.addEventListener("click", state.handleDismissTap);
-      }
+      pointerEndMoveEvent.forEach(function (evt) {
+        return document.addEventListener(evt, state.handleDismissTap);
+      });
     };
 
     state.deActivateDismissTap = function () {
-      if (isTouch) {
-        document.removeEventListener("touchstart", state.handleDismissTap);
-      } else {
-        document.removeEventListener("click", state.handleDismissTap);
-      }
+      pointerEndMoveEvent.forEach(function (evt) {
+        return document.removeEventListener(evt, state.handleDismissTap);
+      });
     };
 
     state.handleEscape = function (e) {
