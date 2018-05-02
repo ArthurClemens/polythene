@@ -68,8 +68,11 @@ export const getInitialState = (vnode, createStream) => {
 };
 
 export const onMount = vnode => {
+  if (!vnode.dom) {
+    return;
+  }
   const state = vnode.state;
-  if (vnode.dom && !state.tapEventsInited()) {
+  if (!state.tapEventsInited()) {
     initTapEvents(vnode);
     state.tapEventsInited(true);
   }

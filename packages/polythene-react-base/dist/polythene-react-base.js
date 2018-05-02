@@ -15,6 +15,7 @@
     className: "className",
     enctype: "encType",
     formaction: "formAction",
+    frameborder: "frameBorder",
     maxlength: "maxLength",
     minlength: "minLength",
     onblur: "onBlur",

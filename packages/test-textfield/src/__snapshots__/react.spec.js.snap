@@ -1,450 +1,549 @@
-exports[`test Custom validation (only use lowercase characters) 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom validation (only use lowercase characters) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="abC"
     validate={[Function]}
-    validateAtStart={true} />
+    validateAtStart={true}
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light theme class 1`] = `
+exports[`Dark tone class + light theme class 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     className="pe-light-tone"
-    label="Your Name" />
+    label="Your Name"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     label="Your Name"
-    tone="light" />
+    tone="light"
+  />
 </div>
 `;
 
-exports[`test Form validation with github.com/ludbek/powerform 1`] = `
+exports[`Form validation with github.com/ludbek/powerform 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
-  <_class />
+  }
+>
+  <FormUI />
 </div>
 `;
 
-exports[`test Give focus 1`] = `
+exports[`Give focus 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <_class />
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <div
-  className="pe-textfield                ">
+  className="pe-textfield                "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: autofocus (does not work on iOS) 1`] = `
+exports[`Option: autofocus (does not work on iOS) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
-    autoFocus={true} />
+    autoFocus={true}
+  />
 </div>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <div
-  className="pe-textfield                class-x">
+  className="pe-textfield                class-x"
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <div
-  className="pe-textfield                className-x">
+  className="pe-textfield                className-x"
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: counter 1`] = `
+exports[`Option: counter 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     counter={30}
     defaultValue="Lorem ipsum dolor sit amet,"
     error="You have exceeded the maximum number of characters."
     floatingLabel={true}
-    label="Description" />
+    label="Description"
+  />
 </div>
 `;
 
-exports[`test Option: counter, floatingLabel (JSX) 1`] = `
+exports[`Option: counter, floatingLabel (JSX) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     counter={15}
     error="You have exceeded the maximum number of characters."
     floatingLabel={true}
-    label="Description" />
+    key="x"
+    label="Description"
+  />
 </div>
 `;
 
-exports[`test Option: counter, maxLength 1`] = `
+exports[`Option: counter, maxLength 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     counter={30}
     defaultValue="Lorem ipsum dolor sit amet,"
     floatingLabel={true}
     label="Description"
-    maxLength={30} />
+    maxLength={30}
+  />
 </div>
 `;
 
-exports[`test Option: defaultValue 1`] = `
+exports[`Option: defaultValue 1`] = `
 <div
-  className="pe-textfield   pe-textfield--dirty             ">
+  className="pe-textfield   pe-textfield--dirty             "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: defaultValue 2`] = `
+exports[`Option: defaultValue 2`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
-    defaultValue="Text A" />
+    defaultValue="Text A"
+    key="a"
+  />
   <TextField
-    defaultValue="Text B" />
+    defaultValue="Text B"
+    key="b"
+  />
 </div>
 `;
 
-exports[`test Option: disabled (input) -- dark theme class 1`] = `
+exports[`Option: disabled (input) -- dark theme class 1`] = `
 <div
   style={
     Object {
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="John"
-    disabled={true} />
+    disabled={true}
+  />
 </div>
 `;
 
-exports[`test Option: disabled (input) 1`] = `
+exports[`Option: disabled (input) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="John"
-    disabled={true} />
+    disabled={true}
+  />
 </div>
 `;
 
-exports[`test Option: disabled (label) 1`] = `
+exports[`Option: disabled (label) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     disabled={true}
-    label="Your name" />
+    label="Your name"
+  />
 </div>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <a
-  className="pe-textfield                ">
+  className="pe-textfield                "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </a>
 `;
 
-exports[`test Option: floatingLabel -- dark theme class 1`] = `
+exports[`Option: floatingLabel -- dark theme class 1`] = `
 <div
   style={
     Object {
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
-    label="Your name" />
+    key="a"
+    label="Your name"
+  />
   <TextField
     floatingLabel={true}
-    label="Your email" />
+    key="b"
+    label="Your email"
+  />
   <TextField
     floatingLabel={true}
-    label="Your address" />
+    key="c"
+    label="Your address"
+  />
 </div>
 `;
 
-exports[`test Option: floatingLabel 1`] = `
+exports[`Option: floatingLabel 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
-    label="Your name" />
+    key="a"
+    label="Your name"
+  />
   <TextField
     floatingLabel={true}
-    label="Your email" />
+    key="b"
+    label="Your email"
+  />
   <TextField
     floatingLabel={true}
-    label="Your address" />
+    key="c"
+    label="Your address"
+  />
 </div>
 `;
 
-exports[`test Option: floatingLabel, dense 1`] = `
+exports[`Option: floatingLabel, dense 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     dense={true}
     floatingLabel={true}
-    label="Your name" />
+    key="a"
+    label="Your name"
+  />
   <TextField
     dense={true}
     floatingLabel={true}
-    label="Your email" />
+    key="b"
+    label="Your email"
+  />
   <TextField
     dense={true}
     floatingLabel={true}
-    label="Your address" />
+    key="c"
+    label="Your address"
+  />
 </div>
 `;
 
-exports[`test Option: focusHelp 1`] = `
+exports[`Option: focusHelp 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     focusHelp={true}
     help="Enter the name as written on the credit card"
-    label="Your Name" />
+    label="Your Name"
+  />
 </div>
 `;
 
-exports[`test Option: fullWidth 1`] = `
+exports[`Option: fullWidth 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <TextField
     fullWidth={true}
-    label="Your name" />
+    key="a"
+    label="Your name"
+  />
   <TextField
     fullWidth={true}
-    label="Your email" />
+    key="b"
+    label="Your email"
+  />
   <TextField
     fullWidth={true}
-    label="Your address" />
+    key="c"
+    label="Your address"
+  />
 </div>
 `;
 
-exports[`test Option: help 1`] = `
+exports[`Option: help 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     help="Enter the name as written on the credit card"
-    label="Your Name" />
+    label="Your Name"
+  />
 </div>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <div
   className="pe-textfield                "
-  id="id-x">
+  id="id-x"
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: label -- dark theme class 1`] = `
+exports[`Option: label -- dark theme class 1`] = `
 <div
   style={
     Object {
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
-    label="Your Name" />
+    label="Your Name"
+  />
 </div>
 `;
 
-exports[`test Option: label 1`] = `
+exports[`Option: label 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
-    label="Your Name" />
+    label="Your Name"
+  />
 </div>
 `;
 
-exports[`test Option: maxLength 1`] = `
+exports[`Option: maxLength 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="123"
     error="Enter max 3 characters"
-    maxLength={3} />
+    maxLength={3}
+  />
 </div>
 `;
 
-exports[`test Option: min, max, validateAtStart 1`] = `
+exports[`Option: min, max, validateAtStart 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue={10}
     error="Enter a value between 3 and 8"
@@ -452,54 +551,64 @@ exports[`test Option: min, max, validateAtStart 1`] = `
     min={3}
     required={true}
     type="number"
-    validateAtStart={true} />
+    validateAtStart={true}
+  />
 </div>
 `;
 
-exports[`test Option: multiLine 1`] = `
+exports[`Option: multiLine 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
+    key="a"
     label="Label in multi-line input"
     multiLine={true}
-    rows={2} />
+    rows={2}
+  />
   <TextField
     floatingLabel={true}
+    key="b"
     label="Floating label in multi-line input"
     multiLine={true}
-    rows={2} />
+    rows={2}
+  />
   <TextField
     defaultValue="4 rows: Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat."
+    key="c"
     multiLine={true}
-    rows={4} />
+    rows={4}
+  />
 </div>
 `;
 
-exports[`test Option: onChange 1`] = `
+exports[`Option: onChange 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <_class />
 </div>
 `;
 
-exports[`test Option: optionalIndicator (element) 1`] = `
+exports[`Option: optionalIndicator (element) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
     label="Your name"
@@ -509,128 +618,148 @@ exports[`test Option: optionalIndicator (element) 1`] = `
           Object {
             "color": "#333",
           }
-        }>
+        }
+      >
         this field is optional
       </span>
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: optionalIndicator (string) 1`] = `
+exports[`Option: optionalIndicator (string) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
     label="Your name"
-    optionalIndicator="(optional)" />
+    optionalIndicator="(optional)"
+  />
 </div>
 `;
 
-exports[`test Option: pattern [0-9]+, validateAtStart 1`] = `
+exports[`Option: pattern [0-9]+, validateAtStart 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="abc"
     label="Number"
     pattern="[0-9]+"
     type="text"
-    validateAtStart={true} />
+    validateAtStart={true}
+  />
 </div>
 `;
 
-exports[`test Option: readOnly 1`] = `
+exports[`Option: readOnly 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="John"
-    readOnly={true} />
+    readOnly={true}
+  />
 </div>
 `;
 
-exports[`test Option: readonly -- dark theme class 1`] = `
+exports[`Option: readonly -- dark theme class 1`] = `
 <div
   style={
     Object {
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="John"
-    readonly={true} />
+    readonly={true}
+  />
 </div>
 `;
 
-exports[`test Option: readonly is false 1`] = `
+exports[`Option: readonly is false 1`] = `
 <div
-  className="pe-textfield                ">
+  className="pe-textfield                "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: required 1`] = `
+exports[`Option: required 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     help="Enter the name as written on the credit card"
     label="Your name"
-    required={true} />
+    required={true}
+  />
 </div>
 `;
 
-exports[`test Option: required, floatingLabel 1`] = `
+exports[`Option: required, floatingLabel 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
     help="Enter the name as written on the credit card"
     label="Your name"
-    required={true} />
+    required={true}
+  />
 </div>
 `;
 
-exports[`test Option: required, floatingLabel, empty requiredIndicator 1`] = `
+exports[`Option: required, floatingLabel, empty requiredIndicator 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     error="Please enter your name"
     floatingLabel={true}
@@ -638,18 +767,20 @@ exports[`test Option: required, floatingLabel, empty requiredIndicator 1`] = `
     help="This required field does not show a *"
     label="Floating label"
     required={true}
-    requiredIndicator="" />
+    requiredIndicator=""
+  />
 </div>
 `;
 
-exports[`test Option: required, floatingLabel, requiredIndicator (element) 1`] = `
+exports[`Option: required, floatingLabel, requiredIndicator (element) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
     help="Enter the name as written on the credit card"
@@ -661,178 +792,215 @@ exports[`test Option: required, floatingLabel, requiredIndicator (element) 1`] =
           Object {
             "color": "#333",
           }
-        }>
+        }
+      >
         this field is required
       </span>
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: required, floatingLabel, requiredIndicator (string) 1`] = `
+exports[`Option: required, floatingLabel, requiredIndicator (string) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     floatingLabel={true}
     help="Enter the name as written on the credit card"
     label="Your name"
     required={true}
-    requiredIndicator="(required)" />
+    requiredIndicator="(required)"
+  />
 </div>
 `;
 
-exports[`test Option: required, hideValidation 1`] = `
+exports[`Option: required, hideValidation 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     help="Enter the name as written on the credit card"
     hideValidation={true}
     label="Your name"
-    required={true} />
+    required={true}
+  />
 </div>
 `;
 
-exports[`test Option: style 1`] = `
+exports[`Option: style 1`] = `
 <TextField
   label="Your name"
   style={
     Object {
       "background": "#2196F3",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Option: type (password (not shown), number, email) 1`] = `
+exports[`Option: type (password, number, email) 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <TextField
     defaultValue="123456"
-    type="password" />
+    key="a"
+    type="password"
+  />
   <TextField
     defaultValue="123456"
-    type="number" />
+    key="b"
+    type="number"
+  />
   <TextField
     defaultValue="a@b.com"
-    type="email" />
+    key="c"
+    type="email"
+  />
 </div>
 `;
 
-exports[`test Option: type email, required -- dark theme class 1`] = `
+exports[`Option: type email, required -- dark theme class 1`] = `
 <div
   style={
     Object {
       "padding": "10px 15px",
     }
-  }>
-  <TextField
-    defaultValue="a@"
-    error="Enter a valid email address"
-    label="Email"
-    required={true}
-    type="email" />
-</div>
-`;
-
-exports[`test Option: type email, required, validateAtStart 1`] = `
-<div
-  style={
-    Object {
-      "background": "#fff",
-      "padding": "10px 15px",
-    }
-  }>
+  }
+>
   <TextField
     defaultValue="a@"
     error="Enter a valid email address"
     label="Email"
     required={true}
     type="email"
-    validateAtStart={true} />
+  />
 </div>
 `;
 
-exports[`test Option: value (JSX) 1`] = `
+exports[`Option: type email, required, validateAtStart 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
+  <TextField
+    defaultValue="a@"
+    error="Enter a valid email address"
+    label="Email"
+    required={true}
+    type="email"
+    validateAtStart={true}
+  />
+</div>
+`;
+
+exports[`Option: value (JSX) 1`] = `
+<div
+  style={
+    Object {
+      "background": "#fff",
+      "padding": "10px 15px",
+    }
+  }
+>
   <TextField
     defaultValue="123456"
-    type="password" />
+    key="a"
+    type="password"
+  />
   <TextField
     defaultValue="123456"
-    type="number" />
+    key="b"
+    type="number"
+  />
   <TextField
     defaultValue="a@b.com"
-    type="email" />
+    key="c"
+    type="email"
+  />
 </div>
 `;
 
-exports[`test Option: value 1`] = `
+exports[`Option: value 1`] = `
 <div
-  className="pe-textfield   pe-textfield--dirty             ">
+  className="pe-textfield   pe-textfield--dirty             "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: value is null 1`] = `
+exports[`Option: value is null 1`] = `
 <div
-  className="pe-textfield                ">
+  className="pe-textfield                "
+>
   <div
-    className="pe-textfield__input-area">
+    className="pe-textfield__input-area"
+    key="input-area"
+  >
     <input
       className="pe-textfield__input"
+      key="input"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
-      type="text" />
+      type="text"
+    />
   </div>
 </div>
 `;
 
-exports[`test Set value 1`] = `
+exports[`Set value 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "10px 15px",
     }
-  }>
+  }
+>
   <_class />
 </div>
 `;
 
-exports[`test Themed 1`] = `
+exports[`Themed 1`] = `
 <TextField
   className="tests-textfield-themed-textfield"
-  label="Your name" />
+  label="Your name"
+/>
 `;

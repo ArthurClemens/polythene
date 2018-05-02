@@ -121,10 +121,10 @@
   };
 
   var onMount = function onMount(vnode) {
-    var dom = vnode.dom;
-    if (!dom) {
+    if (!vnode.dom) {
       return;
     }
+    var dom = vnode.dom;
     var state = vnode.state;
     var attrs = vnode.attrs;
     state.el = dom;

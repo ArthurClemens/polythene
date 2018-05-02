@@ -77,8 +77,11 @@ var getInitialState = function getInitialState(vnode, createStream) {
 };
 
 var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
   var state = vnode.state;
-  if (vnode.dom && !state.tapEventsInited()) {
+  if (!state.tapEventsInited()) {
     initTapEvents(vnode);
     state.tapEventsInited(true);
   }

@@ -1,95 +1,118 @@
-exports[`test Button row 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button row 1`] = `
 <div
-  className="pe-button-row">
+  className="pe-button-row"
+>
   <RaisedButton
-    label="One" />
+    key="one"
+    label="One"
+  />
   <RaisedButton
-    label="Two" />
+    key="two"
+    label="Two"
+  />
   <RaisedButton
-    label="Three" />
+    key="three"
+    label="Three"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   className="pe-button-row"
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <RaisedButton
     label="Normal"
-    tone="light" />
+    tone="light"
+  />
   <RaisedButton
     disabled={true}
     label="Disabled"
-    tone="light" />
+    tone="light"
+  />
   <RaisedButton
     className="tests-raised-button-themed-button"
     label="Theme"
-    tone="light" />
+    tone="light"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <RaisedButton
-    label="Normal" />
+    label="Normal"
+  />
   <RaisedButton
     disabled={true}
-    label="Disabled" />
+    label="Disabled"
+  />
   <RaisedButton
     className="tests-raised-button-themed-button"
-    label="Theme" />
+    label="Theme"
+  />
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <Button
   animateOnTap={false}
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: animateOnTap (false) 1`] = `
+exports[`Option: animateOnTap (false) 1`] = `
 <Button
   animateOnTap={false}
-  label="Don\'t animate shadow"
+  label="Don't animate shadow"
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: children 1`] = `
+exports[`Option: children 1`] = `
 <Button
   animateOnTap={false}
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  }>
+      z={[Function]}
+    />
+  }
+>
   <span>
     Child
   </span>
 </Button>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <Button
   animateOnTap={false}
   className="class-x"
@@ -97,11 +120,13 @@ exports[`test Option: class 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <Button
   animateOnTap={false}
   className="className-x"
@@ -109,11 +134,13 @@ exports[`test Option: className 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: content 1`] = `
+exports[`Option: content 1`] = `
 <Button
   animateOnTap={false}
   content={
@@ -125,11 +152,13 @@ exports[`test Option: content 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: disabled (false) 1`] = `
+exports[`Option: disabled (false) 1`] = `
 <Button
   animateOnTap={false}
   disabled={false}
@@ -138,11 +167,13 @@ exports[`test Option: disabled (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: disabled (true) 1`] = `
+exports[`Option: disabled (true) 1`] = `
 <Button
   animateOnTap={false}
   disabled={true}
@@ -151,11 +182,13 @@ exports[`test Option: disabled (true) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={0} />
-  } />
+      z={0}
+    />
+  }
+/>
 `;
 
-exports[`test Option: disabled -- dark tone class 1`] = `
+exports[`Option: disabled -- dark tone class 1`] = `
 <Button
   animateOnTap={false}
   disabled={true}
@@ -164,11 +197,13 @@ exports[`test Option: disabled -- dark tone class 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={0} />
-  } />
+      z={0}
+    />
+  }
+/>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <Button
   animateOnTap={false}
   element="button"
@@ -176,11 +211,13 @@ exports[`test Option: element 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <Button
   animateOnTap={false}
   id="id-x"
@@ -188,17 +225,20 @@ exports[`test Option: id 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: inactivate (2s) (JSX) 1`] = `
+exports[`Option: inactivate (2s) (JSX) 1`] = `
 <RaisedButton
   inactivate={2}
-  label="Inactivated for 2s" />
+  label="Inactivated for 2s"
+/>
 `;
 
-exports[`test Option: inactivate (2s) 1`] = `
+exports[`Option: inactivate (2s) 1`] = `
 <Button
   animateOnTap={false}
   inactivate={2}
@@ -207,11 +247,13 @@ exports[`test Option: inactivate (2s) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: inactive (false) 1`] = `
+exports[`Option: inactive (false) 1`] = `
 <Button
   animateOnTap={false}
   inactive={false}
@@ -220,11 +262,13 @@ exports[`test Option: inactive (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: inactive (true) 1`] = `
+exports[`Option: inactive (true) 1`] = `
 <Button
   animateOnTap={false}
   inactive={true}
@@ -233,11 +277,13 @@ exports[`test Option: inactive (true) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: ink (false) 1`] = `
+exports[`Option: ink (false) 1`] = `
 <Button
   animateOnTap={false}
   ink={false}
@@ -246,11 +292,13 @@ exports[`test Option: ink (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: label -- dark tone class (should be app's primary color) 1`] = `
+exports[`Option: label -- dark tone class (should be app's primary color) 1`] = `
 <Button
   animateOnTap={false}
   label="Label"
@@ -258,11 +306,13 @@ exports[`test Option: label -- dark tone class (should be app's primary color) 1
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: label 1`] = `
+exports[`Option: label 1`] = `
 <Button
   animateOnTap={false}
   label="Label"
@@ -270,17 +320,20 @@ exports[`test Option: label 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: raised (with option z: 2) (JSX) 1`] = `
+exports[`Option: raised (with option z: 2) (JSX) 1`] = `
 <RaisedButton
   label="Button"
-  z={2} />
+  z={2}
+/>
 `;
 
-exports[`test Option: raised (with option z: 2) 1`] = `
+exports[`Option: raised (with option z: 2) 1`] = `
 <Button
   animateOnTap={false}
   label="Raised to 2"
@@ -288,12 +341,14 @@ exports[`test Option: raised (with option z: 2) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={[Function]}
+    />
   }
-  z={2} />
+  z={2}
+/>
 `;
 
-exports[`test Option: raised (with option z: 5) 1`] = `
+exports[`Option: raised (with option z: 5) 1`] = `
 <Button
   animateOnTap={false}
   label="Raised to 5"
@@ -301,12 +356,14 @@ exports[`test Option: raised (with option z: 5) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={[Function]}
+    />
   }
-  z={5} />
+  z={5}
+/>
 `;
 
-exports[`test Option: selected 1`] = `
+exports[`Option: selected 1`] = `
 <Button
   animateOnTap={false}
   label="Selected"
@@ -315,11 +372,13 @@ exports[`test Option: selected 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: style (colors) 1`] = `
 <Button
   animateOnTap={false}
   label="Styled"
@@ -327,29 +386,33 @@ exports[`test Option: style (colors) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={[Function]}
+    />
   }
   style={
     Object {
       "backgroundColor": "#EF6C00",
       "color": "#fff",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Option: tabindex 1`] = `
+exports[`Option: tabindex 1`] = `
 <Button
   animateOnTap={false}
   parentClassName="pe-button pe-text-button pe-raised-button"
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={[Function]}
+    />
   }
-  tabIndex={3} />
+  tabIndex={3}
+/>
 `;
 
-exports[`test Option: wash (false) 1`] = `
+exports[`Option: wash (false) 1`] = `
 <Button
   animateOnTap={false}
   label="No wash"
@@ -357,12 +420,29 @@ exports[`test Option: wash (false) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
+      z={[Function]}
+    />
   }
-  wash={false} />
+  wash={false}
+/>
 `;
 
-exports[`test Themed button (should be red) 1`] = `
+exports[`Themed button (hover color) 1`] = `
+<Button
+  animateOnTap={false}
+  className="tests-raised-button-hover-button"
+  label="Hover button"
+  parentClassName="pe-button pe-text-button pe-raised-button"
+  shadowComponent={
+    <Shadow
+      animated={true}
+      z={[Function]}
+    />
+  }
+/>
+`;
+
+exports[`Themed button (should be red) 1`] = `
 <Button
   animateOnTap={false}
   className="tests-raised-button-themed-button"
@@ -371,11 +451,13 @@ exports[`test Themed button (should be red) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={[Function]} />
-  } />
+      z={[Function]}
+    />
+  }
+/>
 `;
 
-exports[`test Themed button (with option disabled) 1`] = `
+exports[`Themed button (with option disabled) 1`] = `
 <Button
   animateOnTap={false}
   className="tests-raised-button-themed-button"
@@ -385,11 +467,14 @@ exports[`test Themed button (with option disabled) 1`] = `
   shadowComponent={
     <Shadow
       animated={true}
-      z={0} />
-  } />
+      z={0}
+    />
+  }
+/>
 `;
 
-exports[`test With router 1`] = `
+exports[`With router 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;

@@ -1,132 +1,77 @@
-exports[`test Action 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Action 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <ToolbarTitle
-    text="Toolbar with a very very very very very very very very very long title" />
+    key="title"
+    text="Toolbar with a very very very very very very very very very long title"
+  />
   <a
     className="pe-action"
-    href="#">
+    href="#"
+    key="action"
+  >
     Action
   </a>
 </div>
 `;
 
-exports[`test Child node 1`] = `
-<div
-  className="pe-toolbar      ">
+exports[`Checkbox 1`] = `
+<Toolbar>
+  <ToolbarTitle
+    key="title"
+    text="Toolbar title"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
-  <div
-    className="pe-toolbar__title">
-    Toolbar with a very very very very very very very very very long title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-</div>
-`;
-
-exports[`test Child node, option compact (JSX) 1`] = `
-<Toolbar
-  compact={true}>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <div
-    className="pe-toolbar__title">
-    Toolbar with a very very very very very very very very very long title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
+    }
+    key="refresh"
+  />
+  <Checkbox
+    className="pe-action"
+    defaultChecked={true}
+    key="check"
+  />
 </Toolbar>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Child node 1`] = `
 <div
-  className="pe-toolbar     pe-light-tone ">
+  className="pe-toolbar      "
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -135,47 +80,59 @@ exports[`test Dark tone class + light tone 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
-<div
-  className="pe-toolbar      pe-light-tone">
+exports[`Child node, option compact (JSX) 1`] = `
+<Toolbar
+  compact={true}
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -184,30 +141,158 @@ exports[`test Dark tone class + light tone class 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
+</Toolbar>
+`;
+
+exports[`Dark tone class + light tone 1`] = `
+<div
+  className="pe-toolbar     pe-light-tone "
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <div
+    className="pe-toolbar__title"
+    key="title"
+  >
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="refresh"
+  />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test JSX toolbar row (JSX) 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
+<div
+  className="pe-toolbar      pe-light-tone"
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <div
+    className="pe-toolbar__title"
+    key="title"
+  >
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="refresh"
+  />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="add"
+  />
+</div>
+`;
+
+exports[`JSX toolbar row (JSX) 1`] = `
 <Toolbar>
   <ToolbarButton
     svg={
@@ -215,12 +300,15 @@ exports[`test JSX toolbar row (JSX) 1`] = `
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>,
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
   <span>
     Title
   </span>
@@ -230,215 +318,266 @@ exports[`test JSX toolbar row (JSX) 1`] = `
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-      </svg>,
+            d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
   <ToolbarButton
     svg={
       Object {
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>,
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
 </Toolbar>
 `;
 
-exports[`test No options 1`] = `
-<div
-  className="pe-toolbar      " />
-`;
-
-exports[`test Option: class 1`] = `
-<div
-  className="pe-toolbar      class-x" />
-`;
-
-exports[`test Option: className 1`] = `
-<div
-  className="pe-toolbar      className-x" />
-`;
-
-exports[`test Option: compact 1`] = `
-<div
-  className="pe-toolbar pe-toolbar--compact     ">
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <div
-    className="pe-toolbar__title">
-    Toolbar with a very very very very very very very very very long title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-</div>
-`;
-
-exports[`test Option: content -- dark tone class 1`] = `
-<div
-  className="pe-toolbar      ">
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <div
-    className="pe-toolbar__title">
-    Toolbar with a very very very very very very very very very long title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-</div>
-`;
-
-exports[`test Option: content 1`] = `
-<div
-  className="pe-toolbar      ">
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <div
-    className="pe-toolbar__title">
-    Toolbar with a very very very very very very very very very long title
-  </div>
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
-</div>
-`;
-
-exports[`test Option: element 1`] = `
-<a
-  className="pe-toolbar      " />
-`;
-
-exports[`test Option: id 1`] = `
+exports[`No options 1`] = `
 <div
   className="pe-toolbar      "
-  id="id-x" />
+/>
 `;
 
-exports[`test Option: shadow (JSX) 1`] = `
+exports[`Option: class 1`] = `
+<div
+  className="pe-toolbar      class-x"
+/>
+`;
+
+exports[`Option: className 1`] = `
+<div
+  className="pe-toolbar      className-x"
+/>
+`;
+
+exports[`Option: compact 1`] = `
+<div
+  className="pe-toolbar pe-toolbar--compact     "
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <div
+    className="pe-toolbar__title"
+    key="title"
+  >
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="refresh"
+  />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="add"
+  />
+</div>
+`;
+
+exports[`Option: content -- dark tone class 1`] = `
+<div
+  className="pe-toolbar      "
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <div
+    className="pe-toolbar__title"
+    key="title"
+  >
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="refresh"
+  />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="add"
+  />
+</div>
+`;
+
+exports[`Option: content 1`] = `
+<div
+  className="pe-toolbar      "
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <div
+    className="pe-toolbar__title"
+    key="title"
+  >
+    Toolbar with a very very very very very very very very very long title
+  </div>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="refresh"
+  />
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="add"
+  />
+</div>
+`;
+
+exports[`Option: element 1`] = `
+<a
+  className="pe-toolbar      "
+/>
+`;
+
+exports[`Option: id 1`] = `
+<div
+  className="pe-toolbar      "
+  id="id-x"
+/>
+`;
+
+exports[`Option: shadow (JSX) 1`] = `
 <Toolbar
-  z={1}>
+  z={1}
+>
   <ToolbarButton
     svg={
       Object {
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>,
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
   <span>
     Title
   </span>
@@ -448,74 +587,87 @@ exports[`test Option: shadow (JSX) 1`] = `
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-      </svg>,
+            d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
   <ToolbarButton
     svg={
       Object {
         "content": <svg
           height="24"
           viewBox="0 0 24 24"
-          width="24">
+          width="24"
+        >
           <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>,
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>,
       }
-    } />
+    }
+  />
 </Toolbar>
 `;
 
-exports[`test Option: style (colors and height) (JSX) 1`] = `
+exports[`Option: style (colors and height) (JSX) 1`] = `
 <Toolbar
   content={
     Array [
       <IconButton
         icon={
-            Object {
-                "svg": Object {
-                  "content": <div
-                    dangerouslySetInnerHTML={
-                            Object {
-                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                                  }
-                    } />,
-                },
-              }
-        } />,
+          Object {
+            "svg": Object {
+              "content": <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+                  }
+                }
+              />,
+            },
+          }
+        }
+      />,
       <div
-        className="pe-toolbar__title">
+        className="pe-toolbar__title"
+      >
         Toolbar with a very very very very very very very very very long title
-    </div>,
+      </div>,
       <IconButton
         icon={
-            Object {
-                "svg": Object {
-                  "content": <div
-                    dangerouslySetInnerHTML={
-                            Object {
-                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                                  }
-                    } />,
-                },
-              }
-        } />,
+          Object {
+            "svg": Object {
+              "content": <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+                  }
+                }
+              />,
+            },
+          }
+        }
+      />,
       <IconButton
         icon={
-            Object {
-                "svg": Object {
-                  "content": <div
-                    dangerouslySetInnerHTML={
-                            Object {
-                                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                                  }
-                    } />,
-                },
-              }
-        } />,
+          Object {
+            "svg": Object {
+              "content": <div
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+                  }
+                }
+              />,
+            },
+          }
+        }
+      />,
     ]
   }
   style={
@@ -524,10 +676,11 @@ exports[`test Option: style (colors and height) (JSX) 1`] = `
       "color": "#fff",
       "height": "72px",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Option: style (colors and height) 1`] = `
+exports[`Option: style (colors and height) 1`] = `
 <div
   className="pe-toolbar      "
   style={
@@ -536,22 +689,28 @@ exports[`test Option: style (colors and height) 1`] = `
       "color": "#fff",
       "height": "72px",
     }
-  }>
+  }
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -560,54 +719,68 @@ exports[`test Option: style (colors and height) 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
+exports[`Scrolling pane (RTL) (with shadow) 1`] = `
 <div
   className="pe-rtl"
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <Toolbar
-    z={1}>
+    key="toolbar"
+    z={1}
+  >
     <IconButton
       icon={
         Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="menu"
+    />
     <div
-      className="pe-toolbar__title">
+      className="pe-toolbar__title"
+      key="title"
+    >
       Toolbar with a very very very very very very very very very long title
     </div>
     <IconButton
@@ -616,28 +789,35 @@ exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="refresh"
+    />
     <IconButton
       icon={
         Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="add"
+    />
   </Toolbar>
   <div
+    key="content"
     style={
       Object {
         "background": "#fff",
@@ -645,41 +825,51 @@ exports[`test Scrolling pane (RTL) (with shadow) 1`] = `
         "overflowY": "auto",
         "padding": "20px",
       }
-    }>
+    }
+  >
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`test Scrolling pane (with border) 1`] = `
+exports[`Scrolling pane (with border) 1`] = `
 <div
   style={
     Object {
       "overflow": "hidden",
     }
-  }>
+  }
+>
   <Toolbar
-    border={true}>
+    border={true}
+    key="toolbar"
+  >
     <IconButton
       icon={
         Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="menu"
+    />
     <div
-      className="pe-toolbar__title">
+      className="pe-toolbar__title"
+      key="title"
+    >
       Toolbar with a very very very very very very very very very long title
     </div>
     <IconButton
@@ -688,28 +878,35 @@ exports[`test Scrolling pane (with border) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="refresh"
+    />
     <IconButton
       icon={
         Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                    Object {
-                          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                        }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+                }
+              }
+            />,
           },
         }
-      } />
+      }
+      key="add"
+    />
   </Toolbar>
   <div
+    key="content"
     style={
       Object {
         "background": "#fff",
@@ -717,35 +914,43 @@ exports[`test Scrolling pane (with border) 1`] = `
         "overflowY": "auto",
         "padding": "20px",
       }
-    }>
+    }
+  >
     <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`test Shadow 1`] = `
+exports[`Shadow 1`] = `
 <Toolbar
-  z={1}>
+  z={1}
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -754,47 +959,59 @@ exports[`test Shadow 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </Toolbar>
 `;
 
-exports[`test Themed (dark tone) 1`] = `
+exports[`Themed (dark tone) 1`] = `
 <div
-  className="pe-toolbar    pe-dark-tone  tests-toolbar-themed-toolbar">
+  className="pe-toolbar    pe-dark-tone  tests-toolbar-themed-toolbar"
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -803,47 +1020,59 @@ exports[`test Themed (dark tone) 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test Themed -- dark tone class 1`] = `
+exports[`Themed -- dark tone class 1`] = `
 <div
-  className="pe-toolbar      tests-toolbar-themed-toolbar">
+  className="pe-toolbar      tests-toolbar-themed-toolbar"
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <div
-    className="pe-toolbar__title">
+    className="pe-toolbar__title"
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </div>
   <IconButton
@@ -852,46 +1081,58 @@ exports[`test Themed -- dark tone class 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="refresh"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test Title as span 1`] = `
+exports[`Title as span 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
-  <span>
+    }
+    key="menu"
+  />
+  <span
+    key="title"
+  >
     Toolbar with a very very very very very very very very very long title
   </span>
   <IconButton
@@ -900,21 +1141,27 @@ exports[`test Title as span 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test Title as span, indented (without left icon) 1`] = `
+exports[`Title as span, indented (without left icon) 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <div
-    className="pe-toolbar__title--indent">
+    className="pe-toolbar__title--indent"
+    key="title"
+  >
     Indented title
   </div>
   <IconButton
@@ -923,127 +1170,162 @@ exports[`test Title as span, indented (without left icon) 1`] = `
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test ToolbarTitle 1`] = `
+exports[`ToolbarTitle 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="menu"
+  />
   <ToolbarTitle
-    text="Toolbar with a very very very very very very very very very long title" />
+    key="title"
+    text="Toolbar with a very very very very very very very very very long title"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test ToolbarTitle, at start 1`] = `
+exports[`ToolbarTitle, at start 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <ToolbarTitle
-    text="Toolbar with a very very very very very very very very very long title" />
+    key="title"
+    text="Toolbar with a very very very very very very very very very long title"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;
 
-exports[`test ToolbarTitle, centered 1`] = `
+exports[`ToolbarTitle, centered 1`] = `
 <div
-  className="pe-toolbar      ">
-  <ToolbarTitle
-    center={true}
-    text="Toolbar title" />
-</div>
-`;
-
-exports[`test ToolbarTitle, centered, balanced with a placeholder 1`] = `
-<div
-  className="pe-toolbar      ">
-  <IconButton
-    icon={
-      Object {
-        "svg": Object {
-          "content": <div
-            dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"/></svg>",
-                      }
-            } />,
-        },
-      }
-    } />
+  className="pe-toolbar      "
+>
   <ToolbarTitle
     center={true}
-    text="Toolbar title" />
+    key="title"
+    text="Toolbar title"
+  />
+</div>
+`;
+
+exports[`ToolbarTitle, centered, balanced with a placeholder 1`] = `
+<div
+  className="pe-toolbar      "
+>
+  <IconButton
+    icon={
+      Object {
+        "svg": Object {
+          "content": <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\\"/></svg>",
+              }
+            }
+          />,
+        },
+      }
+    }
+    key="menu"
+  />
+  <ToolbarTitle
+    center={true}
+    key="title"
+    text="Toolbar title"
+  />
   <IconButton
     icon={
       Object {
         "content": "",
       }
     }
-    inactive={true} />
+    inactive={true}
+    key="placeholder"
+  />
 </div>
 `;
 
-exports[`test ToolbarTitle, indented (without left icon) 1`] = `
+exports[`ToolbarTitle, indented (without left icon) 1`] = `
 <div
-  className="pe-toolbar      ">
+  className="pe-toolbar      "
+>
   <ToolbarTitle
     indent={true}
-    text="Toolbar with a very very very very very very very very very long title" />
+    key="title"
+    text="Toolbar with a very very very very very very very very very long title"
+  />
   <IconButton
     icon={
       Object {
         "svg": Object {
           "content": <div
             dangerouslySetInnerHTML={
-                  Object {
-                        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\"/></svg>",
-                      }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z\\"/></svg>",
+              }
+            }
+          />,
         },
       }
-    } />
+    }
+    key="add"
+  />
 </div>
 `;

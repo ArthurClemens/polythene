@@ -1,6 +1,9 @@
 /* global it, expect */
-import { shallow } from "enzyme";
+import { configure, shallow } from "enzyme";
 import toJson from "enzyme-to-json";
+import Adapter from "enzyme-adapter-react-16";
+
+configure({ adapter: new Adapter() });
 
 export const runSnapshots = ({ tests, renderer }) => (
   tests.forEach(test =>

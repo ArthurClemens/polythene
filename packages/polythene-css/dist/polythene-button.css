@@ -84,7 +84,8 @@
   line-height: 14px;
   font-weight: 500;
   text-transform: uppercase;
-  white-space: pre
+  white-space: pre;
+  user-select: none
 }
 
 .pe-button.pe-text-button.pe-button--border .pe-button__focus,.pe-button.pe-text-button.pe-button--border .pe-button__wash,.pe-button.pe-text-button.pe-button--border .pe-ripple {

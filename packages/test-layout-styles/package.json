@@ -4,8 +4,8 @@
   "private": true,
   "description": "",
   "scripts": {
-    "test": "../../node_modules/jest/bin/jest.js src/**",
-    "test:watch": "npm run test -- --watch --no-watchman"
+    "test": "true",
+    "test:watch": "true"
   },
   "dependencies": {
     "polythene-core-css": "^1.1.2",

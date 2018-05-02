@@ -1,143 +1,145 @@
-exports[`test Add to an element 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add to an element 1`] = `
 "<div>
   <div>
     Some element
   </div>
-  <div class=\"pe-shadow\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  <div class=\\"pe-shadow\\">
+    <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+    <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Child node 1`] = `
-"<div class=\"pe-shadow\">
+exports[`Child node 1`] = `
+"<div class=\\"pe-shadow\\">
   Child
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Interactive option: animated -- dark tone class 1`] = `
+exports[`Interactive option: animated -- dark tone class 1`] = `
 "<div>
-  <div class=\"absolute absolute--fill\">
+  <div class=\\"absolute absolute--fill\\">
     Click me
   </div>
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  <div class=\\"pe-shadow pe-shadow--animated\\">
+    <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+    <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`No options 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: class 1`] = `
-"<div class=\"pe-shadow class-x\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: class 1`] = `
+"<div class=\\"pe-shadow class-x\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: className 1`] = `
-"<div class=\"pe-shadow className-x\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: className 1`] = `
+"<div class=\\"pe-shadow className-x\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: content 1`] = `
-"<div class=\"pe-shadow\">
+exports[`Option: content 1`] = `
+"<div class=\\"pe-shadow\\">
   <span>Content</span>
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: content 2`] = `
-"<div class=\"pe-shadow\">
+exports[`Option: content 2`] = `
+"<div class=\\"pe-shadow\\">
   Content
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: element 1`] = `
-"<span class=\"pe-shadow\"></span>
-<div class=\"pe-shadow__bottom pe-shadow--z-1\">
-  <span class=\"pe-shadow\"></span>
+exports[`Option: element 1`] = `
+"<span class=\\"pe-shadow\\"></span>
+<div class=\\"pe-shadow__bottom pe-shadow--z-1\\">
+  <span class=\\"pe-shadow\\"></span>
 </div>
-<div class=\"pe-shadow__top pe-shadow--z-1\">
-  <span class=\"pe-shadow\"></span>
-</div>
-"
-`;
-
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+<div class=\\"pe-shadow__top pe-shadow--z-1\\">
+  <span class=\\"pe-shadow\\"></span>
 </div>
 "
 `;
 
-exports[`test Option: z (0) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-0\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-0\"></div>
+exports[`Option: id 1`] = `
+"<div id=\\"id-x\\" class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: z (1) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: z (0) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-0\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-0\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: z (2) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-2\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-2\"></div>
+exports[`Option: z (1) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: z (3) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-3\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-3\"></div>
+exports[`Option: z (2) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-2\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-2\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: z (4) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-4\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-4\"></div>
+exports[`Option: z (3) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-3\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-3\\"></div>
 </div>
 "
 `;
 
-exports[`test Option: z (5) 1`] = `
-"<div class=\"pe-shadow\">
-  <div class=\"pe-shadow__bottom pe-shadow--z-5\"></div>
-  <div class=\"pe-shadow__top pe-shadow--z-5\"></div>
+exports[`Option: z (4) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-4\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-4\\"></div>
+</div>
+"
+`;
+
+exports[`Option: z (5) 1`] = `
+"<div class=\\"pe-shadow\\">
+  <div class=\\"pe-shadow__bottom pe-shadow--z-5\\"></div>
+  <div class=\\"pe-shadow__top pe-shadow--z-5\\"></div>
 </div>
 "
 `;

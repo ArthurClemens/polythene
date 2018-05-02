@@ -132,7 +132,10 @@
   };
 
   var onMount = function onMount(vnode) {
-    if (!vnode.dom && polytheneCore.isServer) {
+    if (!vnode.dom) {
+      return;
+    }
+    if (polytheneCore.isServer) {
       return;
     }
     var state = vnode.state;
@@ -157,13 +160,17 @@
     };
     var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
-    polytheneCore.pointerEndEvent.forEach(function (evt) {
-      return triggerEl.addEventListener(evt, tap, false);
-    });
-    state.cleanUp = function () {
-      return polytheneCore.pointerEndEvent.forEach(function (evt) {
-        return triggerEl.removeEventListener(evt, tap, false);
+    if (triggerEl) {
+      polytheneCore.pointerEndEvent.forEach(function (evt) {
+        return triggerEl.addEventListener(evt, tap, false);
       });
+    }
+    state.cleanUp = function () {
+      if (triggerEl) {
+        polytheneCore.pointerEndEvent.forEach(function (evt) {
+          return triggerEl.removeEventListener(evt, tap, false);
+        });
+      }
     };
   };
 

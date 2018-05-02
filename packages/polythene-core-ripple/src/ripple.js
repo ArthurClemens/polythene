@@ -34,7 +34,10 @@ const updateAnimationState = state =>
   state.animating = Object.keys(state.animations).length > 0;
 
 export const onMount = vnode => {
-  if (!vnode.dom && isServer) {
+  if (!vnode.dom) {
+    return;
+  }
+  if (isServer) {
     return;
   }
   const state = vnode.state;
@@ -61,12 +64,17 @@ export const onMount = vnode => {
   const triggerEl = attrs.target
     ? attrs.target
     : vnode.dom && vnode.dom.parentElement;
-  
-  pointerEndEvent.forEach(evt =>
-    triggerEl.addEventListener(evt, tap, false));
-  state.cleanUp = () =>
+
+  if (triggerEl) {
     pointerEndEvent.forEach(evt =>
-      triggerEl.removeEventListener(evt, tap, false));
+      triggerEl.addEventListener(evt, tap, false));
+  }
+  state.cleanUp = () => {
+    if (triggerEl) {
+      pointerEndEvent.forEach(evt =>
+        triggerEl.removeEventListener(evt, tap, false));
+    }
+  };
 };
 
 export const onUnMount = ({ state }) =>

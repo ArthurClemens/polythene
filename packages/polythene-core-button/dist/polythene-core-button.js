@@ -48,13 +48,13 @@
   };
 
   var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
     var state = vnode.state;
     var attrs = vnode.attrs;
     if (attrs.borders) {
       polytheneCore.deprecation("Button", "borders", "border");
-    }
-    if (!vnode.dom) {
-      return;
     }
     state.dom(vnode.dom);
 

@@ -1,54 +1,72 @@
-exports[`test Child node 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Child node 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <Icon
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   className="pe-list-tile           pe-light-tone pe-list-tile--front "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -56,32 +74,42 @@ exports[`test Dark tone class + light tone 1`] = `
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front pe-light-tone"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -89,20 +117,24 @@ exports[`test Dark tone class + light tone class 1`] = `
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content" />
+      className="pe-list-tile__content"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: child (JSX) 1`] = `
+exports[`Option: child (JSX) 1`] = `
 <ListTile
   front={
     <Icon>
@@ -110,67 +142,88 @@ exports[`test Option: child (JSX) 1`] = `
         height="24"
         viewBox="0 0 24 24"
         width="24"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
+        />
       </svg>
     </Icon>
   }
-  title="Ancillary Justice" />
+  title="Ancillary Justice"
+/>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <div
   className="pe-list-tile             class-x"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content" />
+      className="pe-list-tile__content"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <div
   className="pe-list-tile             className-x"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content" />
+      className="pe-list-tile__content"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: compact front (Icon) 1`] = `
+exports[`Option: compact front (Icon) 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front pe-list-tile--compact-front">
+      className="pe-list-tile__content pe-list-tile__content-front pe-list-tile--compact-front"
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -178,59 +231,74 @@ exports[`test Option: compact front (Icon) 1`] = `
 </div>
 `;
 
-exports[`test Option: content 1`] = `
+exports[`Option: content 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <Icon
       svg={
         Object {
           "content": <div
             dangerouslySetInnerHTML={
-                Object {
-                    "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                  }
-            } />,
+              Object {
+                "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+              }
+            }
+          />,
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: content 2`] = `
+exports[`Option: content 2`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
       style={
         Object {
           "background": "#c5e1a5",
           "padding": "24px",
         }
-      }>
+      }
+    >
       The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
     </div>
   </div>
 </div>
 `;
 
-exports[`test Option: disabled url -- dark tone class 1`] = `
+exports[`Option: disabled url -- dark tone class 1`] = `
 <div
   className="pe-list-tile  pe-list-tile--disabled           "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -238,31 +306,41 @@ exports[`test Option: disabled url -- dark tone class 1`] = `
 </div>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <a
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content" />
+      className="pe-list-tile__content"
+    />
   </a>
 </div>
 `;
 
-exports[`test Option: events 1`] = `
+exports[`Option: events 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
+    key="primary"
     onClick={[Function]}
-    style={null}>
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Click me
       </div>
     </div>
@@ -270,32 +348,42 @@ exports[`test Option: events 1`] = `
 </div>
 `;
 
-exports[`test Option: front (Icon) 1`] = `
+exports[`Option: front (Icon) 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -303,24 +391,33 @@ exports[`test Option: front (Icon) 1`] = `
 </div>
 `;
 
-exports[`test Option: front (avatar) 1`] = `
+exports[`Option: front (avatar) 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -328,21 +425,29 @@ exports[`test Option: front (avatar) 1`] = `
 </div>
 `;
 
-exports[`test Option: highSubtitle 1`] = `
+exports[`Option: highSubtitle 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--high-subtitle "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
       <div
-        className="pe-list-tile__subtitle pe-list-tile__high-subtitle">
+        className="pe-list-tile__subtitle pe-list-tile__high-subtitle"
+        key="highSubtitle"
+      >
         The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
       </div>
     </div>
@@ -350,21 +455,29 @@ exports[`test Option: highSubtitle 1`] = `
 </div>
 `;
 
-exports[`test Option: highSubtitle and compact 1`] = `
+exports[`Option: highSubtitle and compact 1`] = `
 <div
   className="pe-list-tile    pe-list-tile--compact        pe-list-tile--high-subtitle "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
       <div
-        className="pe-list-tile__subtitle pe-list-tile__high-subtitle">
+        className="pe-list-tile__subtitle pe-list-tile__high-subtitle"
+        key="highSubtitle"
+      >
         The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
       </div>
     </div>
@@ -372,32 +485,41 @@ exports[`test Option: highSubtitle and compact 1`] = `
 </div>
 `;
 
-exports[`test Option: highSubtitle and front (JSX) 1`] = `
+exports[`Option: highSubtitle and front (JSX) 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Option: highSubtitle and front -- dark tone class 1`] = `
+exports[`Option: highSubtitle and front -- dark tone class 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Option: highSubtitle and front 1`] = `
+exports[`Option: highSubtitle and front 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Option: highlight (themed color) 1`] = `
+exports[`Option: highlight (themed color) 1`] = `
 <div
   className="pe-list-tile       pe-list-tile--highlight      tests-list-tile-themed-highlight-list-tile"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -405,17 +527,23 @@ exports[`test Option: highlight (themed color) 1`] = `
 </div>
 `;
 
-exports[`test Option: hoverable 1`] = `
+exports[`Option: hoverable 1`] = `
 <div
   className="pe-list-tile     pe-list-tile--hoverable        "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -423,33 +551,45 @@ exports[`test Option: hoverable 1`] = `
 </div>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <div
   className="pe-list-tile             "
   id="id-x"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content" />
+      className="pe-list-tile__content"
+    />
   </div>
 </div>
 `;
 
-exports[`test Option: indent 1`] = `
+exports[`Option: indent 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front " />
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    />
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -457,38 +597,26 @@ exports[`test Option: indent 1`] = `
 </div>
 `;
 
-exports[`test Option: ink 1`] = `
+exports[`Option: ink 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
-  <Ripple />
-  <div
-    className="pe-list-tile__primary"
-    style={null}>
-    <div
-      className="pe-list-tile__content">
-      <div
-        className="pe-list-tile__title">
-        Ancillary Justice
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`test Option: ink with ripple options 1`] = `
-<div
-  className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <Ripple
-    opacityDecayVelocity={0.1} />
+    key="ripple"
+  />
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -496,9 +624,38 @@ exports[`test Option: ink with ripple options 1`] = `
 </div>
 `;
 
-exports[`test Option: secondary (Icon) (RTL) 1`] = `
+exports[`Option: ink with ripple options 1`] = `
 <div
-  className="pe-rtl">
+  className="pe-list-tile             "
+  tabIndex={0}
+>
+  <Ripple
+    key="ripple"
+    opacityDecayVelocity={0.1}
+  />
+  <div
+    className="pe-list-tile__primary"
+    key="primary"
+    style={null}
+  >
+    <div
+      className="pe-list-tile__content"
+    >
+      <div
+        className="pe-list-tile__title"
+        key="title"
+      >
+        Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Option: secondary (Icon) (RTL) 1`] = `
+<div
+  className="pe-rtl"
+>
   <ListTile
     secondary={
       Object {
@@ -507,106 +664,137 @@ exports[`test Option: secondary (Icon) (RTL) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                      Object {
-                              "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                            }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           },
         },
       }
     }
     subtitle="The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
-    title="Ancillary Justice" />
+    title="Ancillary Justice"
+  />
 </div>
 `;
 
-exports[`test Option: secondary (Icon) 1`] = `
+exports[`Option: secondary (Icon) 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
   </div>
   <div
-    className="pe-list-tile__secondary">
+    className="pe-list-tile__secondary"
+    key="secondary"
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test Option: secondary (content) 1`] = `
+exports[`Option: secondary (content) 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
   </div>
   <div
-    className="pe-list-tile__secondary">
+    className="pe-list-tile__secondary"
+    key="secondary"
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <Icon
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
   </div>
 </div>
 `;
 
-exports[`test Option: secondary (url) 1`] = `
+exports[`Option: secondary (url) 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Option: selectable 1`] = `
+exports[`Option: selectable 1`] = `
 <div
   className="pe-list-tile      pe-list-tile--selectable       "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -614,17 +802,23 @@ exports[`test Option: selectable 1`] = `
 </div>
 `;
 
-exports[`test Option: selected 1`] = `
+exports[`Option: selected 1`] = `
 <div
   className="pe-list-tile pe-list-tile--selected            "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -632,7 +826,7 @@ exports[`test Option: selected 1`] = `
 </div>
 `;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: style (colors) 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front "
   style={
@@ -641,24 +835,31 @@ exports[`test Option: style (colors) 1`] = `
       "color": "#fff",
     }
   }
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
       className="pe-list-tile__content"
@@ -667,9 +868,12 @@ exports[`test Option: style (colors) 1`] = `
           "backgroundColor": "#EF6C00",
           "color": "#fff",
         }
-      }>
+      }
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -677,27 +881,36 @@ exports[`test Option: style (colors) 1`] = `
 </div>
 `;
 
-exports[`test Option: subContent 1`] = `
+exports[`Option: subContent 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
-      <div>
+      <div
+        key="subContent"
+      >
         <div
           style={
             Object {
               "background": "#c5e1a5",
               "marginTop": "12px",
             }
-          }>
+          }
+        >
           The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
         </div>
       </div>
@@ -706,21 +919,29 @@ exports[`test Option: subContent 1`] = `
 </div>
 `;
 
-exports[`test Option: subtitle 1`] = `
+exports[`Option: subtitle 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--subtitle "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
       <div
-        className="pe-list-tile__subtitle">
+        className="pe-list-tile__subtitle"
+        key="subtitle"
+      >
         The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
       </div>
     </div>
@@ -728,60 +949,78 @@ exports[`test Option: subtitle 1`] = `
 </div>
 `;
 
-exports[`test Option: title 1`] = `
+exports[`Option: title 1`] = `
 <div
   className="pe-list-tile             "
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
-        ListTile with a very very very very very very very very very long title
+        className="pe-list-tile__title"
+        key="title"
+      >
+        The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`test Option: url (disabled) 1`] = `
+exports[`Option: url (disabled) 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Option: url 1`] = `
+exports[`Option: url 1`] = `
 <Route
-  render={[Function]} />
+  render={[Function]}
+/>
 `;
 
-exports[`test Themed (color and font size) -- dark tone class 1`] = `
+exports[`Themed (color and font size) -- dark tone class 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front tests-list-tile-themed-list-tile"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
       </div>
     </div>
@@ -789,33 +1028,67 @@ exports[`test Themed (color and font size) -- dark tone class 1`] = `
 </div>
 `;
 
-exports[`test Themed (color and font size) 1`] = `
+exports[`Themed (color and font size) 1`] = `
 <div
   className="pe-list-tile            pe-list-tile--front tests-list-tile-themed-list-tile"
-  tabIndex={0}>
+  tabIndex={0}
+>
   <div
     className="pe-list-tile__primary"
-    style={null}>
+    key="primary"
+    style={null}
+  >
     <div
-      className="pe-list-tile__content pe-list-tile__content-front ">
+      className="pe-list-tile__content pe-list-tile__content-front "
+      key="front"
+    >
       <Icon
         size="medium"
         svg={
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     </div>
     <div
-      className="pe-list-tile__content">
+      className="pe-list-tile__content"
+    >
       <div
-        className="pe-list-tile__title">
+        className="pe-list-tile__title"
+        key="title"
+      >
         Ancillary Justice
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Themed (title running on 2 lines) 1`] = `
+<div
+  className="pe-list-tile             tests-list-tile-themed-two-lines"
+  tabIndex={0}
+>
+  <div
+    className="pe-list-tile__primary"
+    key="primary"
+    style={null}
+  >
+    <div
+      className="pe-list-tile__content"
+    >
+      <div
+        className="pe-list-tile__title"
+        key="title"
+      >
+        The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.
       </div>
     </div>
   </div>

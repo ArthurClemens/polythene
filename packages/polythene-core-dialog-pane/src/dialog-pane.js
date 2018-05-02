@@ -57,10 +57,10 @@ export const getInitialState = (vnode, createStream) => {
 };
 
 export const onMount = vnode => {
-  const dom = vnode.dom;
-  if (!dom) {
+  if (!vnode.dom) {
     return;
   }
+  const dom = vnode.dom;
   const state = vnode.state;
   state.el(dom);
 

@@ -3,10 +3,10 @@ import classes from "polythene-css-classes/tabs";
 // Don't export 'element': it will be the wrapped Button component (set in polythene-xxx-tabs/tab)
 
 export const onMount = vnode => {
-  const dom = vnode.dom;
-  if (!dom) {
+  if (!vnode.dom) {
     return;
   }
+  const dom = vnode.dom;
   const attrs = vnode.attrs;
   attrs.register(attrs.index, {
     attrs,

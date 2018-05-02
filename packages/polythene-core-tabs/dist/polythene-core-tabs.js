@@ -273,6 +273,9 @@
   };
 
   var onMount = function onMount(vnode) {
+    if (!vnode.dom) {
+      return;
+    }
     var dom = vnode.dom;
     var state = vnode.state;
     var attrs = vnode.attrs;
@@ -420,10 +423,10 @@
   // Don't export 'element': it will be the wrapped Button component (set in polythene-xxx-tabs/tab)
 
   var onMount$1 = function onMount(vnode) {
-    var dom = vnode.dom;
-    if (!dom) {
+    if (!vnode.dom) {
       return;
     }
+    var dom = vnode.dom;
     var attrs = vnode.attrs;
     attrs.register(attrs.index, {
       attrs: attrs,
@@ -469,10 +472,10 @@
   var arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
 
   var onMount$2 = function onMount(vnode) {
-    var dom = vnode.dom;
-    if (!dom) {
+    if (!vnode.dom) {
       return;
     }
+    var dom = vnode.dom;
     var attrs = vnode.attrs;
     attrs.register(attrs.position, dom);
   };

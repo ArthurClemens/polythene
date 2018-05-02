@@ -129,7 +129,10 @@ var updateAnimationState = function updateAnimationState(state) {
 };
 
 var onMount = function onMount(vnode) {
-  if (!vnode.dom && isServer) {
+  if (!vnode.dom) {
+    return;
+  }
+  if (isServer) {
     return;
   }
   var state = vnode.state;
@@ -154,13 +157,17 @@ var onMount = function onMount(vnode) {
   };
   var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
 
-  pointerEndEvent.forEach(function (evt) {
-    return triggerEl.addEventListener(evt, tap, false);
-  });
-  state.cleanUp = function () {
-    return pointerEndEvent.forEach(function (evt) {
-      return triggerEl.removeEventListener(evt, tap, false);
+  if (triggerEl) {
+    pointerEndEvent.forEach(function (evt) {
+      return triggerEl.addEventListener(evt, tap, false);
     });
+  }
+  state.cleanUp = function () {
+    if (triggerEl) {
+      pointerEndEvent.forEach(function (evt) {
+        return triggerEl.removeEventListener(evt, tap, false);
+      });
+    }
   };
 };
 

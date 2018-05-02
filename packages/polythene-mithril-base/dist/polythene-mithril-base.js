@@ -13,6 +13,7 @@
     className: "class",
     enctype: "enctype",
     formaction: "formaction",
+    frameborder: "frameborder",
     maxlength: "maxlength",
     minlength: "minlength",
     onblur: "onblur",

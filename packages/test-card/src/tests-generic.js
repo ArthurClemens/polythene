@@ -630,7 +630,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                 width: "100%",
                 height: "100%",
                 src: "https://www.youtube.com/embed/Fe7lxMJTgZ4",
-                frameborder: "0"
+                [k.frameborder]: "0"
               })
             }
           },

@@ -1,73 +1,84 @@
-exports[`test Child node (trusted svg children) -- dark tone class (color set with style option) 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Child node (trusted svg children) -- dark tone class (color set with style option) 1`] = `
 <div
   className="pe-icon pe-icon--regular    "
   style={
     Object {
       "color": "#fff",
     }
-  }>
+  }
+>
   <SVG>
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+          "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
         }
-      } />
+      }
+    />
   </SVG>
 </div>
 `;
 
-exports[`test Child node (trusted svg children) 1`] = `
+exports[`Child node (trusted svg children) 1`] = `
 <div
-  className="pe-icon pe-icon--regular    ">
+  className="pe-icon pe-icon--regular    "
+>
   <SVG>
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+          "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
         }
-      } />
+      }
+    />
   </SVG>
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "8px",
     }
-  }>
+  }
+>
   <Icon
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
     }
-    tone="light" />
+    tone="light"
+  />
   <Icon
     className="tests-icon-themed-icon"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
     }
-    tone="light" />
+    tone="light"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-light-tone"
   style={
@@ -75,225 +86,263 @@ exports[`test Dark tone class + light tone class 1`] = `
       "background": "#fff",
       "padding": "8px",
     }
-  }>
+  }
+>
   <Icon
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
   <Icon
     className="tests-icon-themed-icon"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <div
-  className="pe-icon pe-icon--regular    " />
+  className="pe-icon pe-icon--regular    "
+/>
 `;
 
-exports[`test Option: SVG as component (JSX) 1`] = `
+exports[`Option: SVG as component (JSX) 1`] = `
 <Icon>
   <SVG>
     <svg
       height="24"
       viewBox="0 0 24 24"
       width="24"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
+      />
     </svg>
   </SVG>
 </Icon>
 `;
 
-exports[`test Option: avatar (size large) 1`] = `
+exports[`Option: avatar (size large) 1`] = `
 <div
-  className="pe-icon pe-icon--large pe-icon--avatar   ">
+  className="pe-icon pe-icon--large pe-icon--avatar   "
+>
   <img
-    src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+    src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+  />
 </div>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <div
-  className="pe-icon pe-icon--regular    class-x" />
+  className="pe-icon pe-icon--regular    class-x"
+/>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <div
-  className="pe-icon pe-icon--regular    className-x" />
+  className="pe-icon pe-icon--regular    className-x"
+/>
 `;
 
-exports[`test Option: content (trusted svg content) 1`] = `
+exports[`Option: content (trusted svg content) 1`] = `
 <div
-  className="pe-icon pe-icon--regular    ">
+  className="pe-icon pe-icon--regular    "
+>
   <SVG
     content={
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+            "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
           }
-        } />
-    } />
+        }
+      />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: content 1`] = `
+exports[`Option: content 1`] = `
 <div
-  className="pe-icon pe-icon--regular    ">
+  className="pe-icon pe-icon--regular    "
+>
   <div
     dangerouslySetInnerHTML={
       Object {
-        "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+        "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <a
-  className="pe-icon pe-icon--regular    " />
+  className="pe-icon pe-icon--regular    "
+/>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <div
   className="pe-icon pe-icon--regular    "
-  id="id-x" />
+  id="id-x"
+/>
 `;
 
-exports[`test Option: size 1`] = `
+exports[`Option: size 1`] = `
 <div
   style={
     Object {
       "alignItems": "center",
       "display": "flex",
     }
-  }>
+  }
+>
   <Icon
     size="small"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
   <Icon
     size="regular"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
   <Icon
     size="medium"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
   <Icon
     size="large"
     svg={
       Object {
         "content": <div
           dangerouslySetInnerHTML={
-              Object {
-                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
-                }
-          } />,
+            Object {
+              "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
+            }
+          }
+        />,
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: src (image file) 1`] = `
+exports[`Option: src (image file) 1`] = `
 <div
-  className="pe-icon pe-icon--regular    ">
+  className="pe-icon pe-icon--regular    "
+>
   <img
-    src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+    src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+  />
 </div>
 `;
 
-exports[`test Option: src (svg file) 1`] = `
+exports[`Option: src (svg file) 1`] = `
 <div
-  className="pe-icon pe-icon--regular    ">
+  className="pe-icon pe-icon--regular    "
+>
   <img
-    src="http://arthurclemens.github.io/assets/polythene/examples/recycle.svg" />
+    src="http://arthurclemens.github.io/assets/polythene/examples/recycle.svg"
+  />
 </div>
 `;
 
-exports[`test Option: style (JSX) 1`] = `
+exports[`Option: style (JSX) 1`] = `
 <Icon
   style={
     Object {
       "color": "#EF6C00",
     }
-  }>
+  }
+>
   <SVG>
     <svg
       height="24"
       viewBox="0 0 24 24"
       width="24"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
+      />
     </svg>
   </SVG>
 </Icon>
 `;
 
-exports[`test Option: style 1`] = `
+exports[`Option: style 1`] = `
 <div
   className="pe-icon pe-icon--regular    "
   style={
     Object {
       "color": "#EF6C00",
     }
-  }>
+  }
+>
   <SVG
     content={
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+            "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
           }
-        } />
-    } />
+        }
+      />
+    }
+  />
 </div>
 `;
 
-exports[`test Option: svg as attribute (JSX) 1`] = `
+exports[`Option: svg as attribute (JSX) 1`] = `
 <Icon
   svg={
     Object {
@@ -301,40 +350,49 @@ exports[`test Option: svg as attribute (JSX) 1`] = `
         height="24"
         viewBox="0 0 24 24"
         width="24"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
-            d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
-    </svg>,
+          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
+        />
+      </svg>,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Themed (color and size) -- dark tone class 1`] = `
+exports[`Themed (color and size) -- dark tone class 1`] = `
 <div
-  className="pe-icon pe-icon--regular    tests-icon-themed-icon">
+  className="pe-icon pe-icon--regular    tests-icon-themed-icon"
+>
   <SVG
     content={
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+            "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
           }
-        } />
-    } />
+        }
+      />
+    }
+  />
 </div>
 `;
 
-exports[`test Themed (color and size) 1`] = `
+exports[`Themed (color and size) 1`] = `
 <div
-  className="pe-icon pe-icon--regular    tests-icon-themed-icon">
+  className="pe-icon pe-icon--regular    tests-icon-themed-icon"
+>
   <SVG
     content={
       <div
         dangerouslySetInnerHTML={
           Object {
-            "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>",
+            "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\\"/></svg>",
           }
-        } />
-    } />
+        }
+      />
+    }
+  />
 </div>
 `;

@@ -1,18 +1,22 @@
-exports[`test Dark tone class + light tone 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dark tone class + light tone 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "20px",
     }
-  }>
+  }
+>
   <Switch
     label="Label"
-    tone="light" />
+    tone="light"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-light-tone"
   style={
@@ -20,102 +24,119 @@ exports[`test Dark tone class + light tone class 1`] = `
       "background": "#fff",
       "padding": "20px",
     }
-  }>
+  }
+>
   <Switch
-    label="Label" />
+    label="Label"
+  />
 </div>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test No options 2`] = `
+exports[`No options 2`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: checked 1`] = `
+exports[`Option: checked 1`] = `
 <SelectionControl
   defaultChecked={true}
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <SelectionControl
   className="class-x"
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <SelectionControl
   className="className-x"
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: defaultChecked (JSX) 1`] = `
+exports[`Option: defaultChecked (JSX) 1`] = `
 <Switch
   defaultChecked={true}
-  label="Label" />
+  label="Label"
+/>
 `;
 
-exports[`test Option: defaultChecked -- dark tone class 1`] = `
+exports[`Option: defaultChecked -- dark tone class 1`] = `
 <SelectionControl
   defaultChecked={true}
   instanceClass="pe-switch-control"
   label="Label"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: disabled -- dark tone class 1`] = `
+exports[`Option: disabled -- dark tone class 1`] = `
 <div
-  className="multiple">
+  className="multiple"
+>
   <Switch
     disabled={true}
-    label="Off" />
+    label="Off"
+  />
   <Switch
     defaultChecked={true}
     disabled={true}
-    label="On" />
+    label="On"
+  />
 </div>
 `;
 
-exports[`test Option: disabled 1`] = `
+exports[`Option: disabled 1`] = `
 <div
-  className="multiple">
+  className="multiple"
+>
   <Switch
     disabled={true}
-    label="Off" />
+    label="Off"
+  />
   <Switch
     checked={true}
     disabled={true}
-    label="On" />
+    label="On"
+  />
 </div>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <SelectionControl
   element="a"
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: icon 1`] = `
+exports[`Option: icon 1`] = `
 <div
-  className="multiple">
+  className="multiple"
+>
   <Switch
     className="tests-switch-themed-icon"
     icon={
@@ -124,15 +145,18 @@ exports[`test Option: icon 1`] = `
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"1.33333\\" stroke-linejoin=\\"miter\\" d=\\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     }
     label="small"
-    size="small" />
+    size="small"
+  />
   <Switch
     className="tests-switch-themed-icon"
     icon={
@@ -141,15 +165,18 @@ exports[`test Option: icon 1`] = `
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"1.33333\\" stroke-linejoin=\\"miter\\" d=\\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     }
     label="regular"
-    size="regular" />
+    size="regular"
+  />
   <Switch
     className="tests-switch-themed-icon"
     icon={
@@ -158,15 +185,18 @@ exports[`test Option: icon 1`] = `
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"1.33333\\" stroke-linejoin=\\"miter\\" d=\\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     }
     label="medium"
-    size="medium" />
+    size="medium"
+  />
   <Switch
     className="tests-switch-themed-icon"
     icon={
@@ -175,19 +205,22 @@ exports[`test Option: icon 1`] = `
           Object {
             "content": <div
               dangerouslySetInnerHTML={
-                  Object {
-                      "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"1.33333\" stroke-linejoin=\"miter\" d=\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \"/></svg>",
-                    }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"1.33333\\" stroke-linejoin=\\"miter\\" d=\\"M 12,2C 6.47715,2 2,6.4772 2,12C 2,17.5228 6.47715,22 12,22C 17.5228,22 22,17.5228 22,12C 22,6.4772 17.5228,2 12,2 Z M 12,4C 16.4183,4 20,7.5817 20,12C 20,16.4183 16.4183,20 12,20C 7.58172,20 4,16.4183 4,12C 4,7.5817 7.58172,4 12,4 Z M 12,6C 8.68629,6 6,8.6863 6,12C 6,15.3137 8.68629,18 12,18C 15.3137,18 18,15.3137 18,12C 18,8.6863 15.3137,6 12,6 Z M 12,8C 14.2091,8 16,9.7909 16,12C 16,14.2091 14.2091,16 12,16C 9.79086,16 8,14.2091 8,12C 8,9.7909 9.79086,8 12,8 Z M 12,10C 10.8954,10 10,10.8954 10,12C 10,13.1046 10.8954,14 12,14C 13.1046,14 14,13.1046 14,12C 14,10.8954 13.1046,10 12,10 Z \\"/></svg>",
+                }
+              }
+            />,
           }
-        } />
+        }
+      />
     }
     label="large"
-    size="large" />
+    size="large"
+  />
 </div>
 `;
 
-exports[`test Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behaviour) 1`] = `
 <SelectionControl
   iconButton={
     Object {
@@ -197,56 +230,104 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
   }
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <SelectionControl
   id="id-x"
   instanceClass="pe-switch-control"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: label 1`] = `
+exports[`Option: label (RTL) 1`] = `
+<div
+  className="pe-rtl"
+>
+  <Switch
+    label="ضع الكلمة المناسبة"
+  />
+</div>
+`;
+
+exports[`Option: label 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   label="Label"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: selectable 1`] = `
+exports[`Option: selectable 1`] = `
 <div
-  className="multiple">
+  className="multiple"
+>
   <Switch
     label="Never"
-    selectable={[Function]} />
+    selectable={[Function]}
+  />
   <Switch
     label="Only when unchecked"
-    selectable={[Function]} />
+    selectable={[Function]}
+  />
 </div>
 `;
 
-exports[`test Option: size 1`] = `
+exports[`Option: size (RTL) 1`] = `
 <div
-  className="multiple">
+  className="pe-rtl"
+>
+  <div
+    className="multiple"
+  >
+    <Switch
+      label="small"
+      size="small"
+    />
+    <Switch
+      label="regular"
+      size="regular"
+    />
+    <Switch
+      label="medium"
+      size="medium"
+    />
+    <Switch
+      label="large"
+      size="large"
+    />
+  </div>
+</div>
+`;
+
+exports[`Option: size 1`] = `
+<div
+  className="multiple"
+>
   <Switch
     label="small"
-    size="small" />
+    size="small"
+  />
   <Switch
     label="regular"
-    size="regular" />
+    size="regular"
+  />
   <Switch
     label="medium"
-    size="medium" />
+    size="medium"
+  />
   <Switch
     label="large"
-    size="large" />
+    size="large"
+  />
 </div>
 `;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: style (colors) 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   label="Label"
@@ -256,49 +337,55 @@ exports[`test Option: style (colors) 1`] = `
       "color": "#EF6C00",
     }
   }
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: tabindex 1`] = `
+exports[`Option: tabindex 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   selectable={[Function]}
   tabIndex={3}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Option: value 1`] = `
+exports[`Option: value 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   name="worth"
   selectable={[Function]}
   type="checkbox"
-  value="notable" />
+  value="notable"
+/>
 `;
 
-exports[`test Option: zOff (0), zOn (2) 1`] = `
+exports[`Option: zOff (0), zOn (2) 1`] = `
 <SelectionControl
   instanceClass="pe-switch-control"
   selectable={[Function]}
   type="checkbox"
   zOff={0}
-  zOn={2} />
+  zOn={2}
+/>
 `;
 
-exports[`test Themed Switch (color and font size) 1`] = `
+exports[`Themed Switch (color and font size) 1`] = `
 <SelectionControl
   className="tests-switch-themed-switch"
   instanceClass="pe-switch-control"
   label="Label"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;
 
-exports[`test Themed Switch (colors) -- dark tone class 1`] = `
+exports[`Themed Switch (colors) -- dark tone class 1`] = `
 <SelectionControl
   className="tests-switch-themed-switch"
   instanceClass="pe-switch-control"
   label="Label"
   selectable={[Function]}
-  type="checkbox" />
+  type="checkbox"
+/>
 `;

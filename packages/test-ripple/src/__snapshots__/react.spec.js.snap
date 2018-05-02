@@ -1,4 +1,6 @@
-exports[`test Appended to an element (JSX) 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Appended to an element (JSX) 1`] = `
 <div
   style={
     Object {
@@ -6,50 +8,59 @@ exports[`test Appended to an element (JSX) 1`] = `
       "position": "relative",
       "width": "100px",
     }
-  }>
+  }
+>
   <Ripple />
 </div>
 `;
 
-exports[`test No options 1`] = `
-<div
-  className="pe-ripple    " />
-`;
-
-exports[`test No options 2`] = `
-<div
-  className="pe-ripple    " />
-`;
-
-exports[`test Option: center (JSX) 1`] = `
-<Ripple
-  center={true} />
-`;
-
-exports[`test Option: class 1`] = `
-<div
-  className="pe-ripple    class-x" />
-`;
-
-exports[`test Option: className 1`] = `
-<div
-  className="pe-ripple    className-x" />
-`;
-
-exports[`test Option: element 1`] = `
-<a
-  className="pe-ripple    " />
-`;
-
-exports[`test Option: id 1`] = `
+exports[`No options 1`] = `
 <div
   className="pe-ripple    "
-  id="id-x" />
+/>
 `;
 
-exports[`test Themed (should be red and permanent) (JSX) 1`] = `
+exports[`No options 2`] = `
+<div
+  className="pe-ripple    "
+/>
+`;
+
+exports[`Option: center (JSX) 1`] = `
+<Ripple
+  center={true}
+/>
+`;
+
+exports[`Option: class 1`] = `
+<div
+  className="pe-ripple    class-x"
+/>
+`;
+
+exports[`Option: className 1`] = `
+<div
+  className="pe-ripple    className-x"
+/>
+`;
+
+exports[`Option: element 1`] = `
+<a
+  className="pe-ripple    "
+/>
+`;
+
+exports[`Option: id 1`] = `
+<div
+  className="pe-ripple    "
+  id="id-x"
+/>
+`;
+
+exports[`Themed (should be red and permanent) (JSX) 1`] = `
 <Ripple
   className="react-ripple-themed-ripple"
   endOpacity={1}
-  persistent={true} />
+  persistent={true}
+/>
 `;

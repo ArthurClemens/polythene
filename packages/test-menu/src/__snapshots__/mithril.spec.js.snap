@@ -1,131 +1,271 @@
-exports[`test Menu items -- dark tone 1`] = `
-"<div class=
-\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu items (RTL) 1`] = `
+"<div class=\\"pe-rtl\\">
+  <div class=
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
+      </div>
+      <div class=\\"pe-list pe-list--compact pe-list--padding\\">
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Bold
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘B
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Italic
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘I
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Underline
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘U
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Strikethrough
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              Alt+Shift+5
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Superscript
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘.
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Subscript
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘,
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"pe-list pe-list--compact pe-list--padding\\">
+        <div class=
+        \\"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\\"
+        tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Clear formatting
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\">
+              ⌘/
+            </div>
+          </div>
+        </div>
+        <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+        \\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
+                Custom spacing
+              </div>
+            </div>
+          </div>
+          <div class=\\"pe-list-tile__secondary\\">
+            <div class=\\"pe-list-tile__content\\"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class=\"pe-list pe-list--compact pe-list--padding\">
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+  </div>
+</div>
+"
+`;
+
+exports[`Menu items -- dark tone 1`] = `
+"<div class=
+\\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
+    </div>
+    <div class=\\"pe-list pe-list--compact pe-list--padding\\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Bold
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘B
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Italic
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘I
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Underline
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘U
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Strikethrough
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             Alt+Shift+5
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Superscript
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘.
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Subscript
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘,
           </div>
         </div>
       </div>
     </div>
-    <div class=\"pe-list pe-list--compact pe-list--padding\">
+    <div class=\\"pe-list pe-list--compact pe-list--padding\\">
       <div class=
-      \"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\"
-      tabindex=\"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      \\"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\\"
+      tabindex=\\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Clear formatting
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘/
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Custom spacing
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\"></div>
         </div>
       </div>
     </div>
@@ -134,134 +274,134 @@ exports[`test Menu items -- dark tone 1`] = `
 "
 `;
 
-exports[`test Menu items 1`] = `
+exports[`Menu items 1`] = `
 "<div class=
-\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+\\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
-    <div class=\"pe-list pe-list--compact pe-list--padding\">
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+    <div class=\\"pe-list pe-list--compact pe-list--padding\\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Bold
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘B
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Italic
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘I
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Underline
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘U
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Strikethrough
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             Alt+Shift+5
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Superscript
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘.
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Subscript
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘,
           </div>
         </div>
       </div>
     </div>
-    <div class=\"pe-list pe-list--compact pe-list--padding\">
+    <div class=\\"pe-list pe-list--compact pe-list--padding\\">
       <div class=
-      \"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\"
-      tabindex=\"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      \\"pe-list-tile pe-list-tile--disabled pe-list-tile--hoverable\\"
+      tabindex=\\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Clear formatting
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\">
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\">
             ⌘/
           </div>
         </div>
       </div>
-      <div class=\"pe-list-tile pe-list-tile--hoverable\" tabindex=
-      \"0\">
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      <div class=\\"pe-list-tile pe-list-tile--hoverable\\" tabindex=
+      \\"0\\">
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Custom spacing
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile__secondary\">
-          <div class=\"pe-list-tile__content\"></div>
+        <div class=\\"pe-list-tile__secondary\\">
+          <div class=\\"pe-list-tile__content\\"></div>
         </div>
       </div>
     </div>
@@ -270,110 +410,110 @@ exports[`test Menu items 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-menu pe-menu--permanent pe-menu--floating\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`No options 1`] = `
+"<div class=\\"pe-menu pe-menu--permanent pe-menu--floating\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: class 1`] = `
-"<div class=\"pe-menu pe-menu--permanent pe-menu--floating class-x\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: class 1`] = `
+"<div class=\\"pe-menu pe-menu--permanent pe-menu--floating class-x\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 "<div class=
-\"pe-menu pe-menu--permanent pe-menu--floating className-x\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+\\"pe-menu pe-menu--permanent pe-menu--floating className-x\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: element 1`] = `
-"<a class=\"pe-menu pe-menu--permanent pe-menu--floating\">
-<div class=\"pe-menu__content\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-    <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-    <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: element 1`] = `
+"<a class=\\"pe-menu pe-menu--permanent pe-menu--floating\\">
+<div class=\\"pe-menu__content\\">
+  <div class=\\"pe-shadow pe-shadow--animated\\">
+    <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+    <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
   </div>
 </div></a>
 "
 `;
 
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=
-\"pe-menu pe-menu--permanent pe-menu--floating\">
-  <div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+exports[`Option: id 1`] = `
+"<div id=\\"id-x\\" class=
+\\"pe-menu pe-menu--permanent pe-menu--floating\\">
+  <div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: size 1`] = `
-"<div>
+exports[`Option: size 1`] = `
+"<div style=\\"overflow: hidden; padding: 10px;\\">
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-1-5\">
-  <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-1-5\\">
+  <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 1.5
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Yes
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 No
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Maybe
               </div>
             </div>
@@ -383,46 +523,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-2\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-2\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 2
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Copy
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Paste
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Undo
               </div>
             </div>
@@ -432,46 +572,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-3\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-3\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 3
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Home
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Back
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Recently viewed
               </div>
             </div>
@@ -481,46 +621,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-4\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-4\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 4
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Paragraph styles
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Line spacing
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Numbered list
               </div>
             </div>
@@ -530,46 +670,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-5\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 5
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Add space before paragraph
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Add space after paragraph
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Custom spacing
               </div>
             </div>
@@ -579,46 +719,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-6\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-6\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 6
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 The Mind Is Its Own Beautiful Prisoner
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 If I Should Sleep With A Lady Called Death
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 It May Not Always Be So; And I Say
               </div>
             </div>
@@ -628,55 +768,55 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-7\">
-    <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-7\\">
+    <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 7
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Any bar, any cross, any impediment will be
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 medicinable to me: I am sick in displeasure to him
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 and whatsoever comes athwart his affection ranges
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 evenly with mine. How canst thou cross this
                 marriage?
               </div>
@@ -687,46 +827,46 @@ exports[`test Option: size 1`] = `
     </div>
   </div>
   <div class=
-  \"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-auto\">
-  <div class=\"pe-menu__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+  \\"pe-menu pe-menu--permanent pe-menu--floating pe-menu--width-auto\\">
+  <div class=\\"pe-menu__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
       <div class=
-      \"pe-list pe-list--header pe-list--compact pe-list--padding\">
+      \\"pe-list pe-list--header pe-list--compact pe-list--padding\\">
         <div class=
-        \"pe-list-tile pe-list-tile--header pe-list-tile--header\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        \\"pe-list-tile pe-list-tile--header pe-list-tile--header\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 auto
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Paragraph styles
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Line spacing
               </div>
             </div>
           </div>
         </div>
-        <div class=\"pe-list-tile\" tabindex=\"0\">
-          <div class=\"pe-list-tile__primary\" style=\"\">
-            <div class=\"pe-list-tile__content\">
-              <div class=\"pe-list-tile__title\">
+        <div class=\\"pe-list-tile\\" tabindex=\\"0\\">
+          <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+            <div class=\\"pe-list-tile__content\\">
+              <div class=\\"pe-list-tile__title\\">
                 Numbered list
               </div>
             </div>
@@ -739,38 +879,38 @@ exports[`test Option: size 1`] = `
 "
 `;
 
-exports[`test Option: style 1`] = `
+exports[`Option: style 1`] = `
 "<div style=
-\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-class=\"pe-menu pe-menu--permanent pe-menu--floating pe-dark-tone\">
-  <div class=\"pe-menu__content\" style=
-  \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-  <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+\\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\"
+class=\\"pe-menu pe-menu--permanent pe-menu--floating pe-dark-tone\\">
+  <div class=\\"pe-menu__content\\" style=
+  \\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\">
+  <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
-    <div class=\"pe-list pe-list--padding\">
+    <div class=\\"pe-list pe-list--padding\\">
       <div style=
-      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-      class=\"pe-list-tile\" tabindex=\"0\">
-        <div class=\"pe-ripple\"></div>
-        <div style=\"\" class=\"pe-list-tile__primary\">
-          <div class=\"pe-list-tile__content\" style=
-          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-          <div class=\"pe-list-tile__title\">
+      \\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\"
+      class=\\"pe-list-tile\\" tabindex=\\"0\\">
+        <div class=\\"pe-ripple\\"></div>
+        <div style=\\"\\" class=\\"pe-list-tile__primary\\">
+          <div class=\\"pe-list-tile__content\\" style=
+          \\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\">
+          <div class=\\"pe-list-tile__title\\">
               Yes
             </div>
           </div>
         </div>
       </div>
       <div style=
-      \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\"
-      class=\"pe-list-tile\" tabindex=\"0\">
-        <div class=\"pe-ripple\"></div>
-        <div style=\"\" class=\"pe-list-tile__primary\">
-          <div class=\"pe-list-tile__content\" style=
-          \"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\">
-          <div class=\"pe-list-tile__title\">
+      \\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\"
+      class=\\"pe-list-tile\\" tabindex=\\"0\\">
+        <div class=\\"pe-ripple\\"></div>
+        <div style=\\"\\" class=\\"pe-list-tile__primary\\">
+          <div class=\\"pe-list-tile__content\\" style=
+          \\"background-color: rgb(33, 150, 243); color: rgb(255, 255, 255);\\">
+          <div class=\\"pe-list-tile__title\\">
               No
             </div>
           </div>
@@ -782,34 +922,34 @@ class=\"pe-menu pe-menu--permanent pe-menu--floating pe-dark-tone\">
 "
 `;
 
-exports[`test Themed (color and border radius) 1`] = `
+exports[`Themed (color and border radius) 1`] = `
 "<div class=
-\"pe-menu pe-menu--permanent pe-menu--floating pe-dark-tone menu-tests-blue-menu\">
-<div class=\"pe-menu__content\">
-    <div class=\"pe-shadow pe-shadow--animated\">
-      <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-      <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+\\"pe-menu pe-menu--permanent pe-menu--floating pe-dark-tone menu-tests-blue-menu\\">
+<div class=\\"pe-menu__content\\">
+    <div class=\\"pe-shadow pe-shadow--animated\\">
+      <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+      <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
     </div>
-    <div class=\"pe-list pe-list--padding\">
+    <div class=\\"pe-list pe-list--padding\\">
       <div class=
-      \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\"
-      tabindex=\"0\">
-        <div class=\"pe-ripple\"></div>
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      \\"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\\"
+      tabindex=\\"0\\">
+        <div class=\\"pe-ripple\\"></div>
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               Yes
             </div>
           </div>
         </div>
       </div>
       <div class=
-      \"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\"
-      tabindex=\"0\">
-        <div class=\"pe-ripple\"></div>
-        <div class=\"pe-list-tile__primary\" style=\"\">
-          <div class=\"pe-list-tile__content\">
-            <div class=\"pe-list-tile__title\">
+      \\"pe-list-tile pe-list-tile--hoverable menu-tests-blue-menu-list-tile\\"
+      tabindex=\\"0\\">
+        <div class=\\"pe-ripple\\"></div>
+        <div class=\\"pe-list-tile__primary\\" style=\\"\\">
+          <div class=\\"pe-list-tile__content\\">
+            <div class=\\"pe-list-tile__title\\">
               No
             </div>
           </div>

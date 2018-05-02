@@ -170,6 +170,9 @@ var getInitialState = function getInitialState(vnode, createStream, _ref) {
 };
 
 var onMount = function onMount(vnode) {
+  if (!vnode.dom) {
+    return;
+  }
   var dom = vnode.dom;
   var state = vnode.state;
   var attrs = vnode.attrs;

@@ -1,101 +1,128 @@
-exports[`test Button row 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button row 1`] = `
 <div
-  className="pe-button-row">
+  className="pe-button-row"
+>
   <Button
-    label="One" />
+    key="one"
+    label="One"
+  />
   <Button
-    label="Two" />
+    key="two"
+    label="Two"
+  />
   <Button
-    label="Three" />
+    key="three"
+    label="Three"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   className="pe-button-row"
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <Button
     label="Normal"
-    tone="light" />
+    tone="light"
+  />
   <Button
     disabled={true}
     label="Disabled"
-    tone="light" />
+    tone="light"
+  />
   <Button
     className="tests-button-themed-button"
     label="Theme"
-    tone="light" />
+    tone="light"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-button-row pe-light-tone"
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <Button
-    label="Normal" />
+    label="Normal"
+  />
   <Button
     disabled={true}
-    label="Disabled" />
+    label="Disabled"
+  />
   <Button
     className="tests-button-themed-button"
-    label="Theme" />
+    label="Theme"
+  />
 </div>
 `;
 
-exports[`test HOC (JSX) 1`] = `
+exports[`HOC (JSX) 1`] = `
 <SecondaryButton
-  label="Secondary Button" />
+  label="Secondary Button"
+/>
 `;
 
-exports[`test No options 1`] = `
+exports[`No options 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0} />
+  onKeyUp={[Function]}
+  tabIndex={0}
+/>
 `;
 
-exports[`test Option: after 1`] = `
+exports[`Option: after 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <span>
     After
   </span>
 </a>
 `;
 
-exports[`test Option: before 1`] = `
+exports[`Option: before 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <span>
     Before
   </span>
 </a>
 `;
 
-exports[`test Option: children 1`] = `
+exports[`Option: children 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <span>
       Child
     </span>
@@ -103,31 +130,39 @@ exports[`test Option: children 1`] = `
 </a>
 `;
 
-exports[`test Option: class 1`] = `
+exports[`Option: class 1`] = `
 <a
   className="pe-button pe-text-button        class-x"
-  onKeyDown={[Function]}
-  tabIndex={0} />
+  onKeyUp={[Function]}
+  tabIndex={0}
+/>
 `;
 
-exports[`test Option: className 1`] = `
+exports[`Option: className 1`] = `
 <a
   className="pe-button pe-text-button        className-x"
-  onKeyDown={[Function]}
-  tabIndex={0} />
+  onKeyUp={[Function]}
+  tabIndex={0}
+/>
 `;
 
-exports[`test Option: content 1`] = `
+exports[`Option: content 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <span>
       Content
     </span>
@@ -135,211 +170,279 @@ exports[`test Option: content 1`] = `
 </a>
 `;
 
-exports[`test Option: element 1`] = `
+exports[`Option: element 1`] = `
 <button
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0} />
+  onKeyUp={[Function]}
+  tabIndex={0}
+/>
 `;
 
-exports[`test Option: formaction 1`] = `
+exports[`Option: formaction 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Form action
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: id 1`] = `
+exports[`Option: id 1`] = `
 <a
   className="pe-button pe-text-button        "
   id="id-x"
-  onKeyDown={[Function]}
-  tabIndex={0} />
+  onKeyUp={[Function]}
+  tabIndex={0}
+/>
 `;
 
-exports[`test Option: inactivate (2) 1`] = `
+exports[`Option: inactivate (2) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Inactivated for 2s
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: inactivate (2s) (JSX) 1`] = `
+exports[`Option: inactivate (2s) (JSX) 1`] = `
 <Button
   inactivate={2}
-  label="Inactivated for 2s" />
+  label="Inactivated for 2s"
+/>
 `;
 
-exports[`test Option: inactive (false) 1`] = `
+exports[`Option: inactive (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Not inactive
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: inactive (true) 1`] = `
+exports[`Option: inactive (true) 1`] = `
 <a
-  className="pe-button pe-text-button   pe-button--inactive     ">
+  className="pe-button pe-text-button   pe-button--inactive     "
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Inactive
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: ink (false) 1`] = `
+exports[`Option: ink (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       No ink
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: label -- dark tone class 1`] = `
+exports[`Option: label -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Label
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: label 1`] = `
+exports[`Option: label 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Label
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: ripple 1`] = `
+exports[`Option: ripple 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Custom ripple
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: router url (with hash) 1`] = `
+exports[`Option: router url (with hash) 1`] = `
 <Button
   label="Go to #/shadow"
   url={
     Object {
       "href": "#/shadow",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Option: selected 1`] = `
+exports[`Option: selected 1`] = `
 <a
   className="pe-button pe-text-button pe-button--selected       "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Selected
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: style (colors) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
     className="pe-button__content"
     style={
@@ -347,165 +450,246 @@ exports[`test Option: style (colors) 1`] = `
         "backgroundColor": "#EF6C00",
         "color": "#fff",
       }
-    }>
+    }
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Styled
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: tabindex 1`] = `
+exports[`Option: tabindex 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={3} />
+  onKeyUp={[Function]}
+  tabIndex={3}
+/>
 `;
 
-exports[`test Option: tone "dark" -- dark tone class 1`] = `
+exports[`Option: tone "dark" -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button      pe-dark-tone  "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Label
     </div>
   </div>
 </a>
 `;
 
-exports[`test Option: wash (false) 1`] = `
+exports[`Option: wash (false) 1`] = `
 <a
   className="pe-button pe-text-button        "
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       No wash
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button (colors) 1`] = `
+exports[`Themed Button (colors) 1`] = `
 <a
   className="pe-button pe-text-button        tests-button-themed-button"
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Themed Button
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button -- dark tone class 1`] = `
+exports[`Themed Button (hover) 1`] = `
+<a
+  className="pe-button pe-text-button        tests-button-hover-button"
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="pe-button__content"
+  >
+    <div
+      className="pe-button__wash"
+      key="wash"
+    />
+    <div
+      className="pe-button__focus"
+      key="focus"
+    />
+    <div
+      className="pe-button__label"
+    >
+      Hover Button
+    </div>
+  </div>
+</a>
+`;
+
+exports[`Themed Button -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        tests-button-themed-button"
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Themed Button
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button blue on dark -- dark tone class 1`] = `
+exports[`Themed Button blue on dark -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button        blue-on-dark-Button"
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Blue on dark Button
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button: (option: border) (JSX) 1`] = `
+exports[`Themed Button: (option: border) (JSX) 1`] = `
 <Button
   border={true}
   className="react-secondary-button"
-  label="Button" />
+  label="Button"
+/>
 `;
 
-exports[`test Themed Button: (option: border) -- dark tone class 1`] = `
+exports[`Themed Button: (option: border) -- dark tone class 1`] = `
 <a
   className="pe-button pe-text-button    pe-button--border    tests-button-bordered-button"
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Border dark tone
     </div>
   </div>
 </a>
 `;
 
-exports[`test Themed Button: (option: border) 1`] = `
+exports[`Themed Button: (option: border) 1`] = `
 <a
   className="pe-button pe-text-button    pe-button--border    tests-button-bordered-button"
-  onKeyDown={[Function]}
-  tabIndex={0}>
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
   <div
-    className="pe-button__content">
+    className="pe-button__content"
+  >
     <div
-      className="pe-button__wash" />
+      className="pe-button__wash"
+      key="wash"
+    />
     <div
-      className="pe-button__focus" />
+      className="pe-button__focus"
+      key="focus"
+    />
     <div
-      className="pe-button__label">
+      className="pe-button__label"
+    >
       Border
     </div>
   </div>
 </a>
 `;
 
-exports[`test With React Router Link 1`] = `
+exports[`With React Router Link 1`] = `
 <Button
   element={[Function]}
   label="Go to /shadow"
@@ -513,5 +697,6 @@ exports[`test With React Router Link 1`] = `
     Object {
       "to": "/shadow",
     }
-  } />
+  }
+/>
 `;

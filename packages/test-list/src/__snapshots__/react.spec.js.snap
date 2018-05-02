@@ -1,75 +1,103 @@
-exports[`test Child nodes 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Child nodes 1`] = `
 <div
-  className="pe-list     pe-list--padding   ">
+  className="pe-list     pe-list--padding   "
+>
   <ListTile
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   className="pe-list   pe-list--header  pe-list--padding  pe-light-tone "
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <ListTile
     className="pe-list-tile--header "
     header={true}
-    title="Friends" />
+    key="header"
+    title="Friends"
+  />
   <ListTile
     hoverable={true}
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     hoverable={true}
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     hoverable={true}
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone class 1`] = `
+exports[`Dark tone class + light tone class 1`] = `
 <div
   className="pe-list   pe-list--header  pe-list--padding   pe-light-tone"
   style={
     Object {
       "background": "#fff",
     }
-  }>
+  }
+>
   <ListTile
     className="pe-list-tile--header "
     header={true}
-    title="Friends" />
+    key="header"
+    title="Friends"
+  />
   <ListTile
     hoverable={true}
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     hoverable={true}
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     hoverable={true}
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Keyboard control: click to select, then use the arrow keys (Escape to deselect) 1`] = `
+exports[`Keyboard control: click to select, then use the arrow keys (Escape to deselect) 1`] = `
 <div
-  onKeyDown={[Function]}>
+  onKeyDown={[Function]}
+>
   <List
     border={true}
     tiles={
@@ -77,252 +105,362 @@ exports[`test Keyboard control: click to select, then use the arrow keys (Escape
         <ListTile
           className=""
           events={
-              Object {
-                  "onClick": null,
-                }
+            Object {
+              "onClick": null,
+            }
           }
           header={true}
           hoverable={false}
           selected={false}
-          title="A" />,
+          title="A"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Amman" />,
+          title="Amman"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Amsterdam" />,
+          title="Amsterdam"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Athens" />,
+          title="Athens"
+        />,
         <ListTile
           className=""
           events={
-              Object {
-                  "onClick": null,
-                }
+            Object {
+              "onClick": null,
+            }
           }
           header={true}
           hoverable={false}
           selected={false}
-          title="B" />,
+          title="B"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Bangkok" />,
+          title="Bangkok"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Beijing" />,
+          title="Beijing"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Brussels" />,
+          title="Brussels"
+        />,
         <ListTile
           className=""
           events={
-              Object {
-                  "onClick": null,
-                }
+            Object {
+              "onClick": null,
+            }
           }
           header={true}
           hoverable={false}
           selected={false}
-          title="C" />,
+          title="C"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Canberra" />,
+          title="Canberra"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Cardiff" />,
+          title="Cardiff"
+        />,
         <ListTile
           className="tests-list-keyboard-list-tile"
           events={
-              Object {
-                  "onClick": [Function],
-                }
+            Object {
+              "onClick": [Function],
+            }
           }
+          header={undefined}
           hoverable={true}
           selected={false}
-          title="Copenhagen" />,
+          title="Copenhagen"
+        />,
       ]
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test No list padding 1`] = `
+exports[`No list padding 1`] = `
 <div
-  className="pe-list        ">
+  className="pe-list        "
+>
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+      />
     }
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+      />
     }
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+      />
     }
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test No options 1`] = `
-<div
-  className="pe-list     pe-list--padding   " />
-`;
-
-exports[`test Option: class -- dark tone class 1`] = `
-<div
-  className="pe-list   pe-list--header  pe-list--padding   ">
-  <ListTile
-    className="pe-list-tile--header "
-    header={true}
-    title="Friends" />
-  <ListTile
-    hoverable={true}
-    subtitle="Starting post doc"
-    title="Jennifer Barker" />
-  <ListTile
-    hoverable={true}
-    subtitle="Brunch this weekend?"
-    title="Ali Connors" />
-  <ListTile
-    hoverable={true}
-    subtitle="Binge watching..."
-    title="Grace VanDam" />
-</div>
-`;
-
-exports[`test Option: class 1`] = `
-<div
-  className="pe-list     pe-list--padding   class-x" />
-`;
-
-exports[`test Option: className 1`] = `
-<div
-  className="pe-list     pe-list--padding   className-x" />
-`;
-
-exports[`test Option: compact 1`] = `
-<div
-  className="pe-list   pe-list--header pe-list--compact pe-list--padding   ">
-  <ListTile
-    className="pe-list-tile--header "
-    header={true}
-    title="Friends" />
-  <ListTile
-    front={
-      <Icon
-        avatar={true}
-        size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
-    }
-    subtitle="Starting post doc"
-    title="Jennifer Barker" />
-  <ListTile
-    front={
-      <Icon
-        avatar={true}
-        size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
-    }
-    subtitle="Brunch this weekend?"
-    title="Ali Connors" />
-  <ListTile
-    front={
-      <Icon
-        avatar={true}
-        size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
-    }
-    subtitle="Binge watching..."
-    title="Grace VanDam" />
-</div>
-`;
-
-exports[`test Option: element 1`] = `
-<a
-  className="pe-list     pe-list--padding   " />
-`;
-
-exports[`test Option: id 1`] = `
+exports[`No options 1`] = `
 <div
   className="pe-list     pe-list--padding   "
-  id="id-x" />
+/>
 `;
 
-exports[`test Option: navigation 1`] = `<_class />`;
+exports[`Option: class -- dark tone class 1`] = `
+<div
+  className="pe-list   pe-list--header  pe-list--padding   "
+>
+  <ListTile
+    className="pe-list-tile--header "
+    header={true}
+    key="header"
+    title="Friends"
+  />
+  <ListTile
+    hoverable={true}
+    key="Jennifer Barker"
+    subtitle="Starting post doc"
+    title="Jennifer Barker"
+  />
+  <ListTile
+    hoverable={true}
+    key="Ali Connors"
+    subtitle="Brunch this weekend?"
+    title="Ali Connors"
+  />
+  <ListTile
+    hoverable={true}
+    key="Grace VanDam"
+    subtitle="Binge watching..."
+    title="Grace VanDam"
+  />
+</div>
+`;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: class 1`] = `
+<div
+  className="pe-list     pe-list--padding   class-x"
+/>
+`;
+
+exports[`Option: className 1`] = `
+<div
+  className="pe-list     pe-list--padding   className-x"
+/>
+`;
+
+exports[`Option: compact (RTL) 1`] = `
+<div
+  className="pe-rtl"
+>
+  <List
+    compact={true}
+    header={
+      Object {
+        "title": "Friends",
+      }
+    }
+    tiles={
+      Array [
+        <ListTile
+          front={
+            <Icon
+              avatar={true}
+              size="large"
+              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+            />
+          }
+          subtitle="Starting post doc"
+          title="Jennifer Barker"
+        />,
+        <ListTile
+          front={
+            <Icon
+              avatar={true}
+              size="large"
+              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+            />
+          }
+          subtitle="Brunch this weekend?"
+          title="Ali Connors"
+        />,
+        <ListTile
+          front={
+            <Icon
+              avatar={true}
+              size="large"
+              src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+            />
+          }
+          subtitle="Binge watching..."
+          title="Grace VanDam"
+        />,
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`Option: compact 1`] = `
+<div
+  className="pe-list   pe-list--header pe-list--compact pe-list--padding   "
+>
+  <ListTile
+    className="pe-list-tile--header "
+    header={true}
+    key="header"
+    title="Friends"
+  />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+      />
+    }
+    key="Jennifer Barker"
+    subtitle="Starting post doc"
+    title="Jennifer Barker"
+  />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+      />
+    }
+    key="Ali Connors"
+    subtitle="Brunch this weekend?"
+    title="Ali Connors"
+  />
+  <ListTile
+    front={
+      <Icon
+        avatar={true}
+        size="large"
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+      />
+    }
+    key="Grace VanDam"
+    subtitle="Binge watching..."
+    title="Grace VanDam"
+  />
+</div>
+`;
+
+exports[`Option: element 1`] = `
+<a
+  className="pe-list     pe-list--padding   "
+/>
+`;
+
+exports[`Option: id 1`] = `
+<div
+  className="pe-list     pe-list--padding   "
+  id="id-x"
+/>
+`;
+
+exports[`Option: navigation 1`] = `<_class />`;
+
+exports[`Option: style (colors) 1`] = `
 <div
   className="pe-list   pe-list--header  pe-list--padding   "
   style={
@@ -330,56 +468,72 @@ exports[`test Option: style (colors) 1`] = `
       "backgroundColor": "#EF6C00",
       "color": "#fff",
     }
-  }>
+  }
+>
   <ListTile
     className="pe-list-tile--header "
     header={true}
+    key="header"
     style={
       Object {
         "color": "rgba(255,255,255,.8)",
       }
     }
-    title="Friends" />
+    title="Friends"
+  />
   <ListTile
+    key="One"
     style={
       Object {
         "color": "#fff",
       }
     }
-    title="One" />
+    title="One"
+  />
   <ListTile
+    key="Two"
     style={
       Object {
         "color": "#fff",
       }
     }
-    title="Two" />
+    title="Two"
+  />
   <ListTile
+    key="Three"
     style={
       Object {
         "color": "#fff",
       }
     }
-    title="Three" />
+    title="Three"
+  />
 </div>
 `;
 
-exports[`test Option: tiles 1`] = `
+exports[`Option: tiles 1`] = `
 <div
-  className="pe-list     pe-list--padding   ">
+  className="pe-list     pe-list--padding   "
+>
   <ListTile
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Options: header, tiles with urls 1`] = `
+exports[`Options: header, tiles with urls 1`] = `
 <div>
   <List
     border={true}
@@ -388,13 +542,15 @@ exports[`test Options: header, tiles with urls 1`] = `
         "title": "Friends",
       }
     }
+    key="one"
     tiles={
       Array [
         <withRouter() />,
         <withRouter() />,
         <withRouter() />,
       ]
-    } />
+    }
+  />
   <List
     border={true}
     header={
@@ -402,17 +558,19 @@ exports[`test Options: header, tiles with urls 1`] = `
         "title": "Friends",
       }
     }
+    key="two"
     tiles={
       Array [
         <withRouter() />,
         <withRouter() />,
         <withRouter() />,
       ]
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test Options: header, tiles, indent, indentedBorder (JSX) 1`] = `
+exports[`Options: header, tiles, indent, indentedBorder (JSX) 1`] = `
 <List
   header={
     Object {
@@ -420,95 +578,128 @@ exports[`test Options: header, tiles, indent, indentedBorder (JSX) 1`] = `
       "title": "Friends",
     }
   }
-  indentedBorder={true}>
+  indentedBorder={true}
+>
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
+      />
     }
     indent={true}
+    key="one"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-2.png"
+      />
     }
     indent={true}
+    key="two"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     front={
       <Icon
         avatar={true}
         size="large"
-        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png" />
+        src="http://arthurclemens.github.io/assets/polythene/examples/avatar-3.png"
+      />
     }
     indent={true}
+    key="three"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </List>
 `;
 
-exports[`test Options: header, tiles, indent, indentedBorder 1`] = `
+exports[`Options: header, tiles, indent, indentedBorder 1`] = `
 <div
-  className="pe-list  pe-list--indented-border pe-list--header  pe-list--padding   ">
+  className="pe-list  pe-list--indented-border pe-list--header  pe-list--padding   "
+>
   <ListTile
     className="pe-list-tile--header "
     header={true}
     indent={true}
-    title="Friends" />
+    key="header"
+    title="Friends"
+  />
   <ListTile
     indent={true}
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     indent={true}
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     indent={true}
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Themed list (colors and padding) -- dark tone class 1`] = `
+exports[`Themed list (colors and padding) -- dark tone class 1`] = `
 <div
-  className="pe-list     pe-list--padding   tests-lists-themed-list">
+  className="pe-list     pe-list--padding   tests-lists-themed-list"
+>
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;
 
-exports[`test Themed list (colors and padding) 1`] = `
+exports[`Themed list (colors and padding) 1`] = `
 <div
-  className="pe-list     pe-list--padding   tests-lists-themed-list">
+  className="pe-list     pe-list--padding   tests-lists-themed-list"
+>
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Jennifer Barker"
     subtitle="Starting post doc"
-    title="Jennifer Barker" />
+    title="Jennifer Barker"
+  />
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Ali Connors"
     subtitle="Brunch this weekend?"
-    title="Ali Connors" />
+    title="Ali Connors"
+  />
   <ListTile
     className="tests-lists-themed-list-tile"
+    key="Grace VanDam"
     subtitle="Binge watching..."
-    title="Grace VanDam" />
+    title="Grace VanDam"
+  />
 </div>
 `;

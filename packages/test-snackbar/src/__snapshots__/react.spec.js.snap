@@ -1,45 +1,57 @@
-exports[`test No options - spec 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No options - spec 1`] = `
 <div
   className="pe-notification pe-dark-tone  pe-notification--horizontal   "
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pe-notification__content" />
+    className="pe-notification__content"
+  />
 </div>
 `;
 
-exports[`test Option: class - spec 1`] = `
+exports[`Option: class - spec 1`] = `
 <div
   className="pe-notification pe-dark-tone  pe-notification--horizontal   class-x"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pe-notification__content" />
+    className="pe-notification__content"
+  />
 </div>
 `;
 
-exports[`test Option: className - spec 1`] = `
+exports[`Option: className - spec 1`] = `
 <div
   className="pe-notification pe-dark-tone  pe-notification--horizontal   className-x"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pe-notification__content" />
+    className="pe-notification__content"
+  />
 </div>
 `;
 
-exports[`test Option: element - spec 1`] = `
+exports[`Option: element - spec 1`] = `
 <a
   className="pe-notification pe-dark-tone  pe-notification--horizontal   "
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pe-notification__content" />
+    className="pe-notification__content"
+  />
 </a>
 `;
 
-exports[`test Option: id - spec 1`] = `
+exports[`Option: id - spec 1`] = `
 <div
   className="pe-notification pe-dark-tone  pe-notification--horizontal   "
   id="id-x"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
-    className="pe-notification__content" />
+    className="pe-notification__content"
+  />
 </div>
 `;

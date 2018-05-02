@@ -1,85 +1,87 @@
-exports[`test Custom validation (only use lowercase characters) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom validation (only use lowercase characters) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Dark tone class + light theme class 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-light-tone\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Dark tone class + light tone 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-light-tone\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Dark tone class + light theme class 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-light-tone\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Form validation with github.com/ludbek/powerform 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <form novalidate=\"novalidate\" autocomplete=\"off\">
+exports[`Dark tone class + light tone 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-light-tone\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`Form validation with github.com/ludbek/powerform 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <form novalidate=\\"novalidate\\" autocomplete=\\"off\\">
     <h3>
       Sign up
     </h3>
     <div class=
-    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">Your name<span class=
-        \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-        type=\"text\" name=\"username\" required=\"\">
+    \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+        <label class=\\"pe-textfield__label\\">Your name<span class=
+        \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+        type=\\"text\\" name=\\"username\\" required=\\"\\">
       </div>
-      <div class=\"pe-textfield__help\">
-        Use \'ABC\' to test form validation
+      <div class=\\"pe-textfield__help\\">
+        Use 'ABC' to test username check
       </div>
     </div>
     <div class=
-    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">Your
-        password<span class=\"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-        type=\"password\" name=\"password\" required=\"\">
+    \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+        <label class=\\"pe-textfield__label\\">Your
+        password<span class=\\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+        type=\\"password\\" name=\\"password\\" required=\\"\\">
       </div>
-      <div class=\"pe-textfield__error-placeholder\"></div>
+      <div class=\\"pe-textfield__error-placeholder\\"></div>
     </div>
     <div class=
-    \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">Confirm your
+    \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+        <label class=\\"pe-textfield__label\\">Confirm your
         password<span class=
-        \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-        type=\"password\" name=\"confirmPassword\" required=\"\">
+        \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+        type=\\"password\\" name=\\"confirmPassword\\" required=\\"\\">
       </div>
-      <div class=\"pe-textfield__error-placeholder\"></div>
-    </div><button type=\"submit\" class=
-    \"pe-button pe-text-button pe-raised-button\" tabindex=\"0\">
-    <div class=\"pe-button__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+      <div class=\\"pe-textfield__error-placeholder\\"></div>
+    </div><button type=\\"submit\\" class=
+    \\"pe-button pe-text-button pe-raised-button\\" tabindex=\\"0\\">
+    <div class=\\"pe-button__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
-      <div class=\"pe-ripple\"></div>
-      <div class=\"pe-button__wash\"></div>
-      <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button__label\">
+      <div class=\\"pe-ripple\\"></div>
+      <div class=\\"pe-button__wash\\"></div>
+      <div class=\\"pe-button__focus\\"></div>
+      <div class=\\"pe-button__label\\">
         Send
       </div>
     </div></button>
@@ -88,25 +90,25 @@ exports[`test Form validation with github.com/ludbek/powerform 1`] = `
 "
 `;
 
-exports[`test Give focus 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Give focus 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div>
-    <div class=\"pe-textfield\">
-      <div class=\"pe-textfield__input-area\">
-        <label class=\"pe-textfield__label\">Your
-        name</label><input class=\"pe-textfield__input\" type=\"text\">
+    <div class=\\"pe-textfield\\">
+      <div class=\\"pe-textfield__input-area\\">
+        <label class=\\"pe-textfield__label\\">Your
+        name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
       </div>
-    </div><a class=\"pe-button pe-text-button pe-raised-button\"
-    tabindex=\"0\">
-    <div class=\"pe-button__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div><a class=\\"pe-button pe-text-button pe-raised-button\\"
+    tabindex=\\"0\\">
+    <div class=\\"pe-button__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
-      <div class=\"pe-ripple\"></div>
-      <div class=\"pe-button__wash\"></div>
-      <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button__label\">
+      <div class=\\"pe-ripple\\"></div>
+      <div class=\\"pe-button__wash\\"></div>
+      <div class=\\"pe-button__focus\\"></div>
+      <div class=\\"pe-button__label\\">
         Give focus
       </div>
     </div></a>
@@ -115,54 +117,54 @@ exports[`test Give focus 1`] = `
 "
 `;
 
-exports[`test No options 1`] = `
-"<div class=\"pe-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`No options 1`] = `
+"<div class=\\"pe-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: autofocus (does not work on iOS) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\" autofocus=\"\">
+exports[`Option: autofocus (does not work on iOS) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\" autofocus=\\"\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: class 1`] = `
-"<div class=\"pe-textfield class-x\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: class 1`] = `
+"<div class=\\"pe-textfield class-x\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: className 1`] = `
-"<div class=\"pe-textfield className-x\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: className 1`] = `
+"<div class=\\"pe-textfield className-x\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: counter 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: counter 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--floating-label pe-textfield--counter\">
-  <div class=\"pe-textfield__input-area\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--floating-label pe-textfield--counter\\">
+  <div class=\\"pe-textfield__input-area\\">
       <label class=
-      \"pe-textfield__label\">Description</label><input class=
-      \"pe-textfield__input\" type=\"text\">
+      \\"pe-textfield__label\\">Description</label><input class=
+      \\"pe-textfield__input\\" type=\\"text\\">
     </div>
-    <div class=\"pe-textfield__counter\">
+    <div class=\\"pe-textfield__counter\\">
       0 / 30
     </div>
   </div>
@@ -170,180 +172,180 @@ exports[`test Option: counter 1`] = `
 "
 `;
 
-exports[`test Option: counter, maxlength 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: counter, maxlength 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--floating-label pe-textfield--counter\">
-  <div class=\"pe-textfield__input-area\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--floating-label pe-textfield--counter\\">
+  <div class=\\"pe-textfield__input-area\\">
       <label class=
-      \"pe-textfield__label\">Description</label><input class=
-      \"pe-textfield__input\" type=\"text\" maxlength=\"30\">
+      \\"pe-textfield__label\\">Description</label><input class=
+      \\"pe-textfield__input\\" type=\\"text\\" maxlength=\\"30\\">
     </div>
-    <div class=\"pe-textfield__counter\">
+    <div class=\\"pe-textfield__counter\\">
       0 / 30
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: defaultValue 1`] = `
-"<div class=\"pe-textfield pe-textfield--dirty\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: defaultValue 1`] = `
+"<div class=\\"pe-textfield pe-textfield--dirty\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: defaultValue 2`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: defaultValue 2`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: disabled (input) -- dark theme class 1`] = `
-"<div style=\"padding: 10px 15px;\">
+exports[`Option: disabled (input) -- dark theme class 1`] = `
+"<div style=\\"padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--disabled\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" disabled type=\"text\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--disabled\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" disabled type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: disabled (input) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: disabled (input) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--disabled\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" disabled type=\"text\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--disabled\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" disabled type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: disabled (label) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--disabled\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      name</label><input class=\"pe-textfield__input\" disabled type=
-      \"text\">
+exports[`Option: disabled (label) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--disabled\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      name</label><input class=\\"pe-textfield__input\\" disabled type=
+      \\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: element 1`] = `
-"<a class=\"pe-textfield\">
-<div class=\"pe-textfield__input-area\">
-  <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: element 1`] = `
+"<a class=\\"pe-textfield\\">
+<div class=\\"pe-textfield__input-area\\">
+  <input class=\\"pe-textfield__input\\" type=\\"text\\">
 </div></a>
 "
 `;
 
-exports[`test Option: floatingLabel -- dark theme class 1`] = `
-"<div style=\"padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: floatingLabel -- dark theme class 1`] = `
+"<div style=\\"padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      email</label><input class=\"pe-textfield__input\" type=\"text\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      email</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      address</label><input class=\"pe-textfield__input\" type=
-      \"text\">
-    </div>
-  </div>
-</div>
-"
-`;
-
-exports[`test Option: floatingLabel 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      name</label><input class=\"pe-textfield__input\" type=\"text\">
-    </div>
-  </div>
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      email</label><input class=\"pe-textfield__input\" type=\"text\">
-    </div>
-  </div>
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      address</label><input class=\"pe-textfield__input\" type=
-      \"text\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      address</label><input class=\\"pe-textfield__input\\" type=
+      \\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: floatingLabel, dense 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--dense\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: floatingLabel 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--dense\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      email</label><input class=\"pe-textfield__input\" type=\"text\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      email</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--dense\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      address</label><input class=\"pe-textfield__input\" type=
-      \"text\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      address</label><input class=\\"pe-textfield__input\\" type=
+      \\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: focusHelp 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: floatingLabel, dense 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--dense\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
-    <div class=\"pe-textfield__help pe-textfield__help-focus\">
+  </div>
+  <div class=
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--dense\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      email</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
+    </div>
+  </div>
+  <div class=
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--dense\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      address</label><input class=\\"pe-textfield__input\\" type=
+      \\"text\\">
+    </div>
+  </div>
+</div>
+"
+`;
+
+exports[`Option: focusHelp 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
+    </div>
+    <div class=\\"pe-textfield__help pe-textfield__help-focus\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -351,39 +353,39 @@ exports[`test Option: focusHelp 1`] = `
 "
 `;
 
-exports[`test Option: fullWidth 1`] = `
-"<div style=\"background: rgb(255, 255, 255);\">
-  <div class=\"pe-textfield pe-textfield--full-width\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: fullWidth 1`] = `
+"<div style=\\"background: rgb(255, 255, 255);\\">
+  <div class=\\"pe-textfield pe-textfield--full-width\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--full-width\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      email</label><input class=\"pe-textfield__input\" type=\"text\">
+  <div class=\\"pe-textfield pe-textfield--full-width\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      email</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--full-width\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      address</label><input class=\"pe-textfield__input\" type=
-      \"text\">
+  <div class=\\"pe-textfield pe-textfield--full-width\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      address</label><input class=\\"pe-textfield__input\\" type=
+      \\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: help 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: help 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -391,86 +393,86 @@ exports[`test Option: help 1`] = `
 "
 `;
 
-exports[`test Option: id 1`] = `
-"<div id=\"id-x\" class=\"pe-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: id 1`] = `
+"<div id=\\"id-x\\" class=\\"pe-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: label -- dark theme class 1`] = `
-"<div style=\"padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: label -- dark theme class 1`] = `
+"<div style=\\"padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: label 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your
-      Name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: label 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your
+      Name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: maxlength 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\" maxlength=\"3\">
+exports[`Option: maxlength 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\" maxlength=\\"3\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: min, max, validateAtStart 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: min, max, validateAtStart 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"number\" required=\"\"
-      max=\"8\" min=\"3\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"number\\" required=\\"\\"
+      max=\\"8\\" min=\\"3\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: multiLine 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Label in multi-line
+exports[`Option: multiLine 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Label in multi-line
       input</label>
-      <textarea class=\"pe-textfield__input\" rows=\"2\">
+      <textarea class=\\"pe-textfield__input\\" rows=\\"2\\">
 </textarea>
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Floating label in
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Floating label in
       multi-line input</label>
-      <textarea class=\"pe-textfield__input\" rows=\"2\">
+      <textarea class=\\"pe-textfield__input\\" rows=\\"2\\">
 </textarea>
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <textarea class=\"pe-textfield__input\" rows=\"4\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <textarea class=\\"pe-textfield__input\\" rows=\\"4\\">
 </textarea>
     </div>
   </div>
@@ -478,18 +480,18 @@ exports[`test Option: multiLine 1`] = `
 "
 `;
 
-exports[`test Option: onChange 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: onChange 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div>
-    <div class=\"pe-textfield pe-textfield--counter\">
-      <div class=\"pe-textfield__input-area\">
-        <input class=\"pe-textfield__input\" type=\"text\">
+    <div class=\\"pe-textfield pe-textfield--counter\\">
+      <div class=\\"pe-textfield__input-area\\">
+        <input class=\\"pe-textfield__input\\" type=\\"text\\">
       </div>
-      <div class=\"pe-textfield__counter\">
+      <div class=\\"pe-textfield__counter\\">
         0 / 6
       </div>
     </div>
-    <div style=\"margin: 10px 0px;\">
+    <div style=\\"margin: 10px 0px;\\">
       <div>
         focus: undefined
       </div>
@@ -505,90 +507,90 @@ exports[`test Option: onChange 1`] = `
 "
 `;
 
-exports[`test Option: optionalIndicator (element) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__optional-indicator\"><span style=
-      \"color: rgb(51, 51, 51);\">this field is
+exports[`Option: optionalIndicator (element) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__optional-indicator\\"><span style=
+      \\"color: rgb(51, 51, 51);\\">this field is
       optional</span></span></label><input class=
-      \"pe-textfield__input\" type=\"text\">
+      \\"pe-textfield__input\\" type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: optionalIndicator (string) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--floating-label\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__optional-indicator\">(optional)</span></label><input class=\"pe-textfield__input\"
-      type=\"text\">
+exports[`Option: optionalIndicator (string) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--floating-label\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__optional-indicator\\">(optional)</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: pattern [0-9]+, validateAtStart 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
+exports[`Option: pattern [0-9]+, validateAtStart 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
       <label class=
-      \"pe-textfield__label\">Number</label><input class=\"pe-textfield__input\"
-      type=\"text\" pattern=\"[0-9]+\">
+      \\"pe-textfield__label\\">Number</label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\" pattern=\\"[0-9]+\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: readonly -- dark theme class 1`] = `
-"<div style=\"padding: 10px 15px;\">
+exports[`Option: readonly -- dark theme class 1`] = `
+"<div style=\\"padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--readonly\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\" readonly>
+  \\"pe-textfield pe-textfield--dirty pe-textfield--readonly\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\" readonly>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: readonly 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: readonly 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--readonly\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"text\" readonly>
+  \\"pe-textfield pe-textfield--dirty pe-textfield--readonly\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"text\\" readonly>
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: readonly is false 1`] = `
-"<div class=\"pe-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: readonly is false 1`] = `
+"<div class=\\"pe-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: required 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-      type=\"text\" required=\"\">
+exports[`Option: required 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -596,16 +598,16 @@ exports[`test Option: required 1`] = `
 "
 `;
 
-exports[`test Option: required, floatingLabel 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: required, floatingLabel 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-  <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-      type=\"text\" required=\"\">
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+  <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -613,16 +615,16 @@ exports[`test Option: required, floatingLabel 1`] = `
 "
 `;
 
-exports[`test Option: required, floatingLabel, empty requiredIndicator 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: required, floatingLabel, empty requiredIndicator 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-  <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Floating
-      label</label><input class=\"pe-textfield__input\" type=\"text\"
-      required=\"\">
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+  <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Floating
+      label</label><input class=\\"pe-textfield__input\\" type=\\"text\\"
+      required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help pe-textfield__help-focus\">
+    <div class=\\"pe-textfield__help pe-textfield__help-focus\\">
       This required field does not show a *
     </div>
   </div>
@@ -630,18 +632,18 @@ exports[`test Option: required, floatingLabel, empty requiredIndicator 1`] = `
 "
 `;
 
-exports[`test Option: required, floatingLabel, requiredIndicator (element) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: required, floatingLabel, requiredIndicator (element) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-  <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__required-indicator\"><span style=
-      \"color: rgb(51, 51, 51);\">this field is
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+  <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__required-indicator\\"><span style=
+      \\"color: rgb(51, 51, 51);\\">this field is
       required</span></span></label><input class=
-      \"pe-textfield__input\" type=\"text\" required=\"\">
+      \\"pe-textfield__input\\" type=\\"text\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -649,16 +651,16 @@ exports[`test Option: required, floatingLabel, requiredIndicator (element) 1`] =
 "
 `;
 
-exports[`test Option: required, floatingLabel, requiredIndicator (string) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: required, floatingLabel, requiredIndicator (string) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--floating-label pe-textfield--required\">
-  <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__required-indicator\">(required)</span></label><input class=\"pe-textfield__input\"
-      type=\"text\" required=\"\">
+  \\"pe-textfield pe-textfield--floating-label pe-textfield--required\\">
+  <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__required-indicator\\">(required)</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -666,16 +668,16 @@ exports[`test Option: required, floatingLabel, requiredIndicator (string) 1`] = 
 "
 `;
 
-exports[`test Option: required, hideValidation 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: required, hideValidation 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--required pe-textfield--hide-validation\">
-  <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Your name<span class=
-      \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-      type=\"text\" required=\"\">
+  \\"pe-textfield pe-textfield--required pe-textfield--hide-validation\\">
+  <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Your name<span class=
+      \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"text\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__help\">
+    <div class=\\"pe-textfield__help\\">
       Enter the name as written on the credit card
     </div>
   </div>
@@ -683,93 +685,93 @@ exports[`test Option: required, hideValidation 1`] = `
 "
 `;
 
-exports[`test Option: style 1`] = `
-"<div style=\"background: rgb(33, 150, 243);\" class=\"pe-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <label class=\"pe-textfield__label\">Your
-    name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: style 1`] = `
+"<div style=\\"background: rgb(33, 150, 243);\\" class=\\"pe-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <label class=\\"pe-textfield__label\\">Your
+    name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: type (password (not shown), number, email) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"password\">
+exports[`Option: type (password, number, email) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"password\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"number\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"number\\">
     </div>
   </div>
-  <div class=\"pe-textfield pe-textfield--dirty\">
-    <div class=\"pe-textfield__input-area\">
-      <input class=\"pe-textfield__input\" type=\"email\">
+  <div class=\\"pe-textfield pe-textfield--dirty\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <input class=\\"pe-textfield__input\\" type=\\"email\\">
     </div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: type email, required -- dark theme class 1`] = `
-"<div style=\"padding: 10px 15px;\">
+exports[`Option: type email, required -- dark theme class 1`] = `
+"<div style=\\"padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Email<span class=
-      \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-      type=\"email\" required=\"\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Email<span class=
+      \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"email\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: type email, required, validateAtStart 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Option: type email, required, validateAtStart 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div class=
-  \"pe-textfield pe-textfield--dirty pe-textfield--required\">
-    <div class=\"pe-textfield__input-area\">
-      <label class=\"pe-textfield__label\">Email<span class=
-      \"pe-textfield__required-indicator\">*</span></label><input class=\"pe-textfield__input\"
-      type=\"email\" required=\"\">
+  \\"pe-textfield pe-textfield--dirty pe-textfield--required\\">
+    <div class=\\"pe-textfield__input-area\\">
+      <label class=\\"pe-textfield__label\\">Email<span class=
+      \\"pe-textfield__required-indicator\\">*</span></label><input class=\\"pe-textfield__input\\"
+      type=\\"email\\" required=\\"\\">
     </div>
-    <div class=\"pe-textfield__error-placeholder\"></div>
+    <div class=\\"pe-textfield__error-placeholder\\"></div>
   </div>
 </div>
 "
 `;
 
-exports[`test Option: value 1`] = `
-"<div class=\"pe-textfield pe-textfield--dirty\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: value 1`] = `
+"<div class=\\"pe-textfield pe-textfield--dirty\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Option: value is null 1`] = `
-"<div class=\"pe-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <input class=\"pe-textfield__input\" type=\"text\">
+exports[`Option: value is null 1`] = `
+"<div class=\\"pe-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "
 `;
 
-exports[`test Set value (variation with withAttr) 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Set value (variation with withAttr) 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div>
-    <div class=\"pe-textfield\">
-      <div class=\"pe-textfield__input-area\">
-        <input class=\"pe-textfield__input\" type=\"text\">
+    <div class=\\"pe-textfield\\">
+      <div class=\\"pe-textfield__input-area\\">
+        <input class=\\"pe-textfield__input\\" type=\\"text\\">
       </div>
-      <div class=\"pe-textfield__help\">
+      <div class=\\"pe-textfield__help\\">
         Type text, or press ARROW RIGHT to insert a character
         programmaticaly
       </div>
@@ -779,28 +781,28 @@ exports[`test Set value (variation with withAttr) 1`] = `
 "
 `;
 
-exports[`test Set value 1`] = `
-"<div style=\"background: rgb(255, 255, 255); padding: 10px 15px;\">
+exports[`Set value 1`] = `
+"<div style=\\"background: rgb(255, 255, 255); padding: 10px 15px;\\">
   <div>
-    <div class=\"pe-textfield\">
-      <div class=\"pe-textfield__input-area\">
-        <input class=\"pe-textfield__input\" type=\"text\">
+    <div class=\\"pe-textfield\\">
+      <div class=\\"pe-textfield__input-area\\">
+        <input class=\\"pe-textfield__input\\" type=\\"text\\">
       </div>
-      <div class=\"pe-textfield__help\">
+      <div class=\\"pe-textfield__help\\">
         Type text, or press ARROW RIGHT to insert a character
         programmaticaly
       </div>
-    </div><a class=\"pe-button pe-text-button pe-raised-button\"
-    tabindex=\"0\">
-    <div class=\"pe-button__content\">
-      <div class=\"pe-shadow pe-shadow--animated\">
-        <div class=\"pe-shadow__bottom pe-shadow--z-1\"></div>
-        <div class=\"pe-shadow__top pe-shadow--z-1\"></div>
+    </div><a class=\\"pe-button pe-text-button pe-raised-button\\"
+    tabindex=\\"0\\">
+    <div class=\\"pe-button__content\\">
+      <div class=\\"pe-shadow pe-shadow--animated\\">
+        <div class=\\"pe-shadow__bottom pe-shadow--z-1\\"></div>
+        <div class=\\"pe-shadow__top pe-shadow--z-1\\"></div>
       </div>
-      <div class=\"pe-ripple\"></div>
-      <div class=\"pe-button__wash\"></div>
-      <div class=\"pe-button__focus\"></div>
-      <div class=\"pe-button__label\">
+      <div class=\\"pe-ripple\\"></div>
+      <div class=\\"pe-button__wash\\"></div>
+      <div class=\\"pe-button__focus\\"></div>
+      <div class=\\"pe-button__label\\">
         Clear
       </div>
     </div></a>
@@ -809,11 +811,11 @@ exports[`test Set value 1`] = `
 "
 `;
 
-exports[`test Themed 1`] = `
-"<div class=\"pe-textfield tests-textfield-themed-textfield\">
-  <div class=\"pe-textfield__input-area\">
-    <label class=\"pe-textfield__label\">Your
-    name</label><input class=\"pe-textfield__input\" type=\"text\">
+exports[`Themed 1`] = `
+"<div class=\\"pe-textfield tests-textfield-themed-textfield\\">
+  <div class=\\"pe-textfield__input-area\\">
+    <label class=\\"pe-textfield__label\\">Your
+    name</label><input class=\\"pe-textfield__input\\" type=\\"text\\">
   </div>
 </div>
 "

@@ -1,4 +1,6 @@
-exports[`test Dark tone class + light theme class 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dark tone class + light theme class 1`] = `
 <div
   className="pe-light-tone"
   style={
@@ -6,7 +8,8 @@ exports[`test Dark tone class + light theme class 1`] = `
       "background": "#fff",
       "padding": "20px",
     }
-  }>
+  }
+>
   <_class
     content={
       Array [
@@ -21,18 +24,20 @@ exports[`test Dark tone class + light theme class 1`] = `
         },
       ]
     }
-    name="test-dark-tone-light-class" />
+    name="test-dark-tone-light-class"
+  />
 </div>
 `;
 
-exports[`test Dark tone class + light tone 1`] = `
+exports[`Dark tone class + light tone 1`] = `
 <div
   style={
     Object {
       "background": "#fff",
       "padding": "20px",
     }
-  }>
+  }
+>
   <_class
     content={
       Array [
@@ -47,176 +52,178 @@ exports[`test Dark tone class + light tone 1`] = `
         },
       ]
     }
-    name="test-dark-tone-light" />
+    name="test-dark-tone-light"
+  />
 </div>
 `;
 
-exports[`test No options - RadioButton 1`] = `
+exports[`No options - RadioButton 1`] = `
 <SelectionControl
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   selectable={[Function]}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test No options - RadioGroup 1`] = `
+exports[`No options - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   " />
+  className="pe-radio-group   "
+/>
 `;
 
-exports[`test Option: Radio Group onChange 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "margin": "0 0 1rem 0",
-      }
-    }>
-    Value: Not set
-  </div>
-  <_class
-    content={
-      Array [
-        Object {
-          "label": "One",
-          "value": "One",
-        },
-        Object {
-          "label": "Two",
-          "value": "Two",
-        },
-      ]
-    }
-    name="onChange"
-    onChange={[Function]} />
-</div>
-`;
-
-exports[`test Option: after - RadioGroup 1`] = `
+exports[`Option: after - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   ">
+  className="pe-radio-group   "
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
   <div>
     After
   </div>
 </div>
 `;
 
-exports[`test Option: before - RadioGroup 1`] = `
+exports[`Option: before - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   ">
+  className="pe-radio-group   "
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
   <div>
     Before
   </div>
 </div>
 `;
 
-exports[`test Option: buttons - RadioGroup 1`] = `
+exports[`Option: buttons - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   ">
+  className="pe-radio-group   "
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     name="label"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     name="label"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
 </div>
 `;
 
-exports[`test Option: class - RadioButton 1`] = `
+exports[`Option: class - RadioButton 1`] = `
 <SelectionControl
   className="class-x"
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   selectable={[Function]}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test Option: class - RadioGroup 1`] = `
+exports[`Option: class - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   class-x">
+  className="pe-radio-group   class-x"
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
 </div>
 `;
 
-exports[`test Option: className - RadioButton 1`] = `
+exports[`Option: className - RadioButton 1`] = `
 <SelectionControl
   className="className-x"
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   selectable={[Function]}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test Option: className - RadioGroup 1`] = `
+exports[`Option: className - RadioGroup 1`] = `
 <div
-  className="pe-radio-group   className-x">
+  className="pe-radio-group   className-x"
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
 </div>
 `;
 
-exports[`test Option: defaultChecked 1`] = `
+exports[`Option: defaultChecked 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -232,10 +239,11 @@ exports[`test Option: defaultChecked 1`] = `
       },
     ]
   }
-  name="defaultChecked" />
+  name="defaultChecked"
+/>
 `;
 
-exports[`test Option: disabled -- dark tone 1`] = `
+exports[`Option: disabled -- dark tone 1`] = `
 <RadioGroup
   all={
     Object {
@@ -256,10 +264,11 @@ exports[`test Option: disabled -- dark tone 1`] = `
       },
     ]
   }
-  name="disabled-dark" />
+  name="disabled-dark"
+/>
 `;
 
-exports[`test Option: disabled 1`] = `
+exports[`Option: disabled 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -277,41 +286,48 @@ exports[`test Option: disabled 1`] = `
       },
     ]
   }
-  name="disabled" />
+  name="disabled"
+/>
 `;
 
-exports[`test Option: element - RadioButton 1`] = `
+exports[`Option: element - RadioButton 1`] = `
 <SelectionControl
   element="a"
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   selectable={[Function]}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test Option: element - RadioGroup 1`] = `
+exports[`Option: element - RadioGroup 1`] = `
 <a
-  className="pe-radio-group   ">
+  className="pe-radio-group   "
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
 </a>
 `;
 
-exports[`test Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behaviour) 1`] = `
 <RadioGroup
   all={
     Object {
@@ -333,10 +349,11 @@ exports[`test Option: iconButton (custom hover behaviour) 1`] = `
       },
     ]
   }
-  name="iconButton" />
+  name="iconButton"
+/>
 `;
 
-exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
+exports[`Option: iconOn, iconOff (custom icon) 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -346,20 +363,22 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"0.2\\" stroke-linejoin=\\"round\\" d=\\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "iconOn": Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "size": "small",
@@ -370,20 +389,22 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"0.2\\" stroke-linejoin=\\"round\\" d=\\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "iconOn": Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "size": "regular",
@@ -394,20 +415,22 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"0.2\\" stroke-linejoin=\\"round\\" d=\\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "iconOn": Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "size": "medium",
@@ -418,20 +441,22 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 24.00\" enable-background=\"new 0 0 24.00 24.00\" xml:space=\"preserve\"><path fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.2\" stroke-linejoin=\"round\" d=\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24.00 24.00\\" enable-background=\\"new 0 0 24.00 24.00\\" xml:space=\\"preserve\\"><path fill=\\"#000000\\" fill-opacity=\\"1\\" stroke-width=\\"0.2\\" stroke-linejoin=\\"round\\" d=\\"M 11.9994,15.3943L 8.2364,17.6643L 9.2314,13.3833L 5.9094,10.5053L 10.2894,10.1293L 11.9994,6.09327L 13.7094,10.1293L 18.0894,10.5053L 14.7674,13.3833L 15.7624,17.6643M 21.9994,9.24227L 14.8084,8.62526L 11.9994,1.99827L 9.1904,8.62526L 1.9994,9.24227L 7.4544,13.9693L 5.8194,20.9983L 11.9994,17.2703L 18.1794,20.9983L 16.5444,13.9693L 21.9994,9.24227 Z \\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "iconOn": Object {
           "svg": Object {
             "content": <div
               dangerouslySetInnerHTML={
-                        Object {
-                                  "__html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>",
-                                }
-              } />,
+                Object {
+                  "__html": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/></svg>",
+                }
+              }
+            />,
           },
         },
         "size": "large",
@@ -439,42 +464,49 @@ exports[`test Option: iconOn, iconOff (custom icon) 1`] = `
       },
     ]
   }
-  name="icon" />
+  name="icon"
+/>
 `;
 
-exports[`test Option: id - RadioButton 1`] = `
+exports[`Option: id - RadioButton 1`] = `
 <SelectionControl
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   id="id-x"
   instanceClass="pe-radio-control"
   selectable={[Function]}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test Option: id - RadioGroup 1`] = `
+exports[`Option: id - RadioGroup 1`] = `
 <div
   className="pe-radio-group   "
-  id="id-x">
+  id="id-x"
+>
   <RadioButton
     checked={false}
+    key="One"
     label="One"
     onChange={[Function]}
-    value="One" />
+    value="One"
+  />
   <RadioButton
     checked={false}
+    key="Two"
     label="Two"
     onChange={[Function]}
-    value="Two" />
+    value="Two"
+  />
 </div>
 `;
 
-exports[`test Option: label (JSX) 1`] = `
+exports[`Option: label (JSX) 1`] = `
 <RadioGroup
   buttons={
     Array [
@@ -488,10 +520,33 @@ exports[`test Option: label (JSX) 1`] = `
       },
     ]
   }
-  className="multiple" />
+  className="multiple"
+/>
 `;
 
-exports[`test Option: label -- dark tone 1`] = `
+exports[`Option: label (RTL) 1`] = `
+<div
+  className="pe-rtl"
+>
+  <_class
+    content={
+      Array [
+        Object {
+          "label": "واحد",
+          "value": "One",
+        },
+        Object {
+          "label": "اثنان",
+          "value": "Two",
+        },
+      ]
+    }
+    name="label"
+  />
+</div>
+`;
+
+exports[`Option: label -- dark tone 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -506,10 +561,11 @@ exports[`test Option: label -- dark tone 1`] = `
       },
     ]
   }
-  name="label-dark" />
+  name="label-dark"
+/>
 `;
 
-exports[`test Option: label 1`] = `
+exports[`Option: label 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -524,36 +580,11 @@ exports[`test Option: label 1`] = `
       },
     ]
   }
-  name="label" />
+  name="label"
+/>
 `;
 
-exports[`test Option: onChange (JSX) 1`] = `
-<form>
-  <div
-    style={
-      Object {
-        "margin": "0 0 1rem 0",
-      }
-    }>
-    Value: undefined
-  </div>
-  <div
-    className="multiple">
-    <RadioButton
-      checked={false}
-      label="One"
-      onChange={[Function]}
-      value="one" />
-    <RadioButton
-      checked={false}
-      label="Two"
-      onChange={[Function]}
-      value="two" />
-  </div>
-</form>
-`;
-
-exports[`test Option: selectable 1`] = `
+exports[`Option: selectable 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -570,10 +601,11 @@ exports[`test Option: selectable 1`] = `
       },
     ]
   }
-  name="selectable" />
+  name="selectable"
+/>
 `;
 
-exports[`test Option: size 1`] = `
+exports[`Option: size 1`] = `
 <RadioGroup
   className="multiple"
   content={
@@ -600,10 +632,11 @@ exports[`test Option: size 1`] = `
       },
     ]
   }
-  name="size" />
+  name="size"
+/>
 `;
 
-exports[`test Option: style (colors) 1`] = `
+exports[`Option: style (colors) 1`] = `
 <RadioGroup
   all={
     Object {
@@ -626,10 +659,11 @@ exports[`test Option: style (colors) 1`] = `
       },
     ]
   }
-  name="style" />
+  name="style"
+/>
 `;
 
-exports[`test Option: style - RadioGroup 1`] = `
+exports[`Option: style - RadioGroup 1`] = `
 <div
   className="pe-radio-group   "
   style={
@@ -646,40 +680,104 @@ exports[`test Option: style - RadioGroup 1`] = `
       ],
       "color": "red",
     }
-  } />
+  }
+/>
 `;
 
-exports[`test Option: tabindex - RadioButton 1`] = `
+exports[`Option: tabindex - RadioButton 1`] = `
 <SelectionControl
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   selectable={[Function]}
   tabIndex={3}
   type="radio"
-  value="1" />
+  value="1"
+/>
 `;
 
-exports[`test Option: value - RadioButton 1`] = `
+exports[`Option: value - RadioButton 1`] = `
 <SelectionControl
   icons={
     Object {
-      "iconOff": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
-      "iconOn": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\"/></svg>",
+      "iconOff": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
+      "iconOn": "<svg width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/></svg>",
     }
   }
   instanceClass="pe-radio-control"
   name="worth"
   selectable={[Function]}
   type="radio"
-  value="notable" />
+  value="notable"
+/>
 `;
 
-exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
+exports[`RadioButtons onChange (JSX) 1`] = `
+<form>
+  <div
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    }
+  >
+    Value: undefined
+  </div>
+  <div
+    className="multiple"
+  >
+    <RadioButton
+      checked={false}
+      label="One"
+      onChange={[Function]}
+      value="one"
+    />
+    <RadioButton
+      checked={false}
+      label="Two"
+      onChange={[Function]}
+      value="two"
+    />
+  </div>
+</form>
+`;
+
+exports[`RadioGroup onChange (JSX) 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "margin": "0 0 1rem 0",
+      }
+    }
+  >
+    Value: null
+  </div>
+  <RadioGroup
+    className="multiple"
+    content={
+      Array [
+        Object {
+          "label": "One",
+          "value": "One",
+        },
+        Object {
+          "label": "Two",
+          "value": "Two",
+        },
+      ]
+    }
+    name="onChange"
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`Themed radio button (color and font size) -- dark tone 1`] = `
 <RadioGroup
   all={
     Object {
@@ -700,10 +798,11 @@ exports[`test Themed radio button (color and font size) -- dark tone 1`] = `
       },
     ]
   }
-  name="themed-dark" />
+  name="themed-dark"
+/>
 `;
 
-exports[`test Themed radio button (color and font size) 1`] = `
+exports[`Themed radio button (color and font size) 1`] = `
 <RadioGroup
   all={
     Object {
@@ -724,5 +823,6 @@ exports[`test Themed radio button (color and font size) 1`] = `
       },
     ]
   }
-  name="themed" />
+  name="themed"
+/>
 `;
