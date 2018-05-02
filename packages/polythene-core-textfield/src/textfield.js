@@ -86,7 +86,13 @@ const notifyState = vnode => {
       invalid:       status.invalid,
       error:         status.error,
       value:         state.inputEl().value,
-      setInputState: newState => state.setInputState(Object.assign({}, newState, { vnode })),
+      setInputState: newState => {
+        const hasNewValue = newState.value !== undefined && newState.value !== state.inputEl().value;
+        const hasNewFocus = newState.focus !== undefined && newState.focus !== state.hasFocus();
+        if (hasNewValue || hasNewFocus) {
+          state.setInputState(Object.assign({}, newState, { vnode }));
+        }
+      },
     });
   }
 };
@@ -114,7 +120,7 @@ export const getInitialState = (vnode, createStream, { keys: k }) => {
   const previousValue = createStream(undefined);
   const didSetFocusTime = 0;
   const showErrorPlaceholder = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
-  
+
   return {
     defaultValue,
     didSetFocusTime,
@@ -159,7 +165,6 @@ export const onMount = vnode => {
       state.previousValue(state.inputEl().value);
     }
   });
-
   notifyState(vnode);
 };
 

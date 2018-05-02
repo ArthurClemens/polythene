@@ -123,7 +123,11 @@ var notifyState = function notifyState(vnode) {
       error: status.error,
       value: state.inputEl().value,
       setInputState: function setInputState(newState) {
-        return state.setInputState(_extends({}, newState, { vnode: vnode }));
+        var hasNewValue = newState.value !== undefined && newState.value !== state.inputEl().value;
+        var hasNewFocus = newState.focus !== undefined && newState.focus !== state.hasFocus();
+        if (hasNewValue || hasNewFocus) {
+          state.setInputState(_extends({}, newState, { vnode: vnode }));
+        }
       }
     });
   }
@@ -201,7 +205,6 @@ var onMount = function onMount(vnode) {
       state.previousValue(state.inputEl().value);
     }
   });
-
   notifyState(vnode);
 };
 
