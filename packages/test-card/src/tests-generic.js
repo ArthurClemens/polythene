@@ -1254,53 +1254,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         }]
       }
     },
-
-    {
-      name: "16:9 media with landscape image, anchor origin: start (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", null,
-            h(Card, {
-              content: [
-                {
-                  media: {
-                    origin: "start",
-                    content: h("img", {
-                      src: landscapeImage
-                    })
-                  }
-                },
-                {
-                  actions: { content: iconButtonRow }
-                }
-              ]
-            })
-          )
-      }
-    },
-    {
-      name: "16:9 media with landscape image, anchor origin: end (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", null,
-            h(Card, {
-              content: [
-                {
-                  media: {
-                    origin: "end",
-                    content: h("img", {
-                      src: landscapeImage
-                    })
-                  }
-                },
-                {
-                  actions: { content: iconButtonRow }
-                }
-              ]
-            })
-          )
-      }
-    },
     {
       name: "Bottom action row, border (RTL)",
       component: {

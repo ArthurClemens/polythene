@@ -48,18 +48,9 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var alignSide = function alignSide(isRTL) {
+  var alignSide = function alignSide() {
     return function () {
-      return {
-        " .pe-card__media.pe-card__media--crop-y": {
-          ".pe-card__media--origin-start": {
-            backgroundPositionX: isRTL ? "right" : "left"
-          },
-          ".pe-card__media--origin-end": {
-            backgroundPositionX: isRTL ? "left" : "right"
-          }
-        }
-      };
+      return {};
     };
   };
 
@@ -223,6 +214,15 @@
       " .pe-card__subtitle": {
         fontSize: "14px",
         lineHeight: "24px"
+      },
+
+      " .pe-card__media.pe-card__media--crop-y": {
+        ".pe-card__media--origin-start": {
+          backgroundPositionX: "left"
+        },
+        ".pe-card__media--origin-end": {
+          backgroundPositionX: "right"
+        }
       },
 
       " .pe-card__actions": [{

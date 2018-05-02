@@ -1,16 +1,7 @@
 import { mixin, flex } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-const alignSide = isRTL => () => ({
-  " .pe-card__media.pe-card__media--crop-y": {
-    ".pe-card__media--origin-start": {
-      backgroundPositionX: isRTL ? "right" : "left"
-    },
-    ".pe-card__media--origin-end": {
-      backgroundPositionX: isRTL ? "left" : "right"
-    }
-  }
-});
+const alignSide = () => () => ({});
 
 const alignLeft = alignSide(false);
 
@@ -182,6 +173,15 @@ export default (selector, componentVars) => [
         " .pe-card__subtitle": {
           fontSize: "14px",
           lineHeight: "24px"
+        },
+
+        " .pe-card__media.pe-card__media--crop-y": {
+          ".pe-card__media--origin-start": {
+            backgroundPositionX: "left"
+          },
+          ".pe-card__media--origin-end": {
+            backgroundPositionX: "right"
+          }
         },
 
         " .pe-card__actions": [{
