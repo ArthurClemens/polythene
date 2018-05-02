@@ -23,7 +23,6 @@
 * Card:
   * It is now possible to embed a video using the `media` item
   * The image dimmer element is now only created when option `showDimmer` is passed
-  * RTL support for image alignment using `origin`
 * Icon Button:
   * Icon Button can now have an optional label; visually consistent with a Checkbox with a custom icon.
 * List Tile:
