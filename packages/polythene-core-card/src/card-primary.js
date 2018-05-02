@@ -20,7 +20,8 @@ export const createProps = (vnode, { keys: k }) => {
         primaryHasMedia ? classes.primaryHasMedia : null,
         attrs.className || attrs[k.class]
       ].join(" "),
-    }
+    },
+    attrs.events
   );
 };
 

@@ -91,7 +91,7 @@
     return h(element, _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
       key: attrs.key || "card-text",
       className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
-    }), attrs.content);
+    }, attrs.events), attrs.content);
   };
 
   var createHeader = function createHeader(_ref4) {
@@ -223,7 +223,7 @@
     return _extends$1({}, polytheneCore.filterSupportedAttributes(attrs), {
       key: "card-actions",
       className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.border || attrs.bordered ? classes.actionsBorder : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
-    });
+    }, attrs.events);
   };
 
   var createContent$1 = function createContent(vnode) {
@@ -296,7 +296,7 @@
     return _extends$2({}, polytheneCore.filterSupportedAttributes(attrs), {
       key: "card-media",
       className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
-    });
+    }, attrs.events);
   };
 
   var createContent$2 = function createContent(vnode, _ref3) {
@@ -328,7 +328,7 @@
     return _extends$3({}, polytheneCore.filterSupportedAttributes(attrs), {
       key: "card-primary",
       className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, attrs.className || attrs[k.class]].join(" ")
-    });
+    }, attrs.events);
   };
 
   var createContent$3 = function createContent(vnode, _ref2) {

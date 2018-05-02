@@ -61,7 +61,8 @@ const createText = ({ attrs, h, k }) => {
         attrs.tight ? classes.textTight : null,
         attrs.className || attrs[k.class]
       ].join(" ")
-    }
+    },
+    attrs.events
   ), attrs.content);
 };
 

@@ -829,8 +829,8 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               e.target.style.boxShadow = "none";
             }
           },
-          [k.onclick]: function() {
-            window.alert("Card clicked");
+          [k.onclick]: () => {
+            console.log("Card clicked"); // eslint-disable-line no-console
           }
         },
         content: [
@@ -842,6 +842,11 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                 size: "large",
                 avatar: true,
                 src: avatarImageUrl("1.png")
+              },
+              events: {
+                [k.onclick]: () => {
+                  console.log("Header clicked"); // eslint-disable-line no-console
+                }
               }
             }
           },
@@ -850,13 +855,33 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               showDimmer: true,
               content: h("img", {
                 src: landscapeImage
-              })
+              }),
+              events: {
+                [k.onclick]: () => {
+                  console.log("Media clicked"); // eslint-disable-line no-console
+                }
+              }
             }
           },
           {
             primary: {
               title: "Primary title",
-              subtitle: "Subtitle"
+              subtitle: "Subtitle",
+              events: {
+                [k.onclick]: () => {
+                  console.log("Primary clicked"); // eslint-disable-line no-console
+                }
+              }
+            }
+          },
+          {
+            text: {
+              content: ipsum,
+              events: {
+                [k.onclick]: () => {
+                  console.log("Text clicked"); // eslint-disable-line no-console
+                }
+              }
             }
           },
           {
@@ -869,7 +894,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                     [k.onclick]: e => {
                       // prevent Card event
                       e.stopPropagation();
-                      window.alert("Action 1 clicked");
+                      console.log("Action 1 clicked"); // eslint-disable-line no-console
                     }
                   }
                 }),
@@ -880,7 +905,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                     [k.onclick]: e => {
                       // prevent Card event
                       e.stopPropagation();
-                      window.alert("Action 2 clicked");
+                      console.log("Action 2 clicked"); // eslint-disable-line no-console
                     }
                   }
                 })

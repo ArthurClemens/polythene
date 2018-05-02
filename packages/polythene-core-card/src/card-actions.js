@@ -31,7 +31,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.tight ? classes.actionsTight : null,
         attrs.className || attrs[k.class]
       ].join(" "),
-    }
+    },
+    attrs.events
   );
 };
 

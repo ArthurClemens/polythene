@@ -63,7 +63,8 @@ export const createProps = (vnode, { keys: k }) => {
         ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare,
         attrs.className || attrs[k.class]
       ].join(" ")
-    }
+    },
+    attrs.events
   );
 };
 
