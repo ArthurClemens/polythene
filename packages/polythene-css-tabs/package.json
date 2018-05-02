@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-tabs",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/polythene-css-tabs",
   "module": "dist/polythene-css-tabs.mjs",
@@ -15,12 +15,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.1.2",
-    "polythene-core-tabs": "^1.1.2",
-    "polythene-css-button": "^1.1.2",
-    "polythene-css-classes": "^1.1.2",
-    "polythene-css-icon-button": "^1.1.2",
-    "polythene-theme": "^1.1.2"
+    "polythene-core-css": "^1.2.0",
+    "polythene-core-tabs": "^1.2.0",
+    "polythene-css-button": "^1.2.0",
+    "polythene-css-classes": "^1.2.0",
+    "polythene-css-icon-button": "^1.2.0",
+    "polythene-theme": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

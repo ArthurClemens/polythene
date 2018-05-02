@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-fab",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/polythene-mithril-fab",
   "module": "dist/polythene-mithril-fab.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-fab": "^1.1.2",
-    "polythene-mithril-base": "^1.1.2",
-    "polythene-mithril-icon": "^1.1.2",
-    "polythene-mithril-raised-button": "^1.1.2"
+    "polythene-core-fab": "^1.2.0",
+    "polythene-mithril-base": "^1.2.0",
+    "polythene-mithril-icon": "^1.2.0",
+    "polythene-mithril-raised-button": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

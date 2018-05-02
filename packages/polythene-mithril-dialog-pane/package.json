@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-dialog-pane",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/polythene-mithril-dialog-pane",
   "module": "dist/polythene-mithril-dialog-pane.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-dialog-pane": "^1.1.2",
-    "polythene-mithril-base": "^1.1.2"
+    "polythene-core-dialog-pane": "^1.2.0",
+    "polythene-mithril-base": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

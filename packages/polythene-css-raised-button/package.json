@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-raised-button",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/polythene-css-raised-button",
   "module": "dist/polythene-css-raised-button.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.1.2",
-    "polythene-core-raised-button": "^1.1.2",
-    "polythene-css-button": "^1.1.2",
-    "polythene-css-classes": "^1.1.2"
+    "polythene-core-css": "^1.2.0",
+    "polythene-core-raised-button": "^1.2.0",
+    "polythene-css-button": "^1.2.0",
+    "polythene-css-classes": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

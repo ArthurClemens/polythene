@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-textfield",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/polythene-react-textfield",
   "module": "dist/polythene-react-textfield.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-textfield": "^1.1.2",
-    "polythene-react-base": "^1.1.2"
+    "polythene-core-textfield": "^1.2.0",
+    "polythene-react-base": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
