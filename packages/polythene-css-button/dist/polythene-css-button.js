@@ -9,18 +9,20 @@
     component: "pe-button pe-text-button",
     row: "pe-button-row",
 
-    // elements
+    // elements    
     content: "pe-button__content",
     focus: "pe-button__focus",
     label: "pe-button__label",
     wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
 
-    // states
+    // states    
     border: "pe-button--border",
     disabled: "pe-button--disabled",
     focused: "pe-button--focus",
     inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+    selected: "pe-button--selected",
+    hasDropdown: "pe-button--dropdown"
   };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -98,17 +100,23 @@
         position: "relative",
         borderWidth: 0,
         padding: "0 " + componentVars.padding_h + "px",
-        borderRadius: componentVars.border_radius + "px"
+        borderRadius: componentVars.border_radius + "px",
+        display: "flex",
+        alignItems: "center"
+      },
+
+      " .pe-button__label, .pe-button__dropdown": {
+        minHeight: "calc(1em + 2 * " + componentVars.padding_v + "px)",
+        fontSize: componentVars.font_size + "px",
+        lineHeight: componentVars.font_size + "px",
+        whiteSpace: "pre",
+        userSelect: "none"
       },
 
       " .pe-button__label": {
-        padding: componentVars.padding_v + "px 0",
-        fontSize: componentVars.font_size + "px",
-        lineHeight: componentVars.font_size + "px",
         fontWeight: componentVars.font_weight,
         textTransform: componentVars.text_transform,
-        whiteSpace: "pre",
-        userSelect: "none"
+        padding: componentVars.padding_v + "px 0"
       },
 
       ".pe-button--border": {
@@ -120,6 +128,31 @@
         },
         " .pe-button__label": {
           padding: componentVars.padding_v - 1 + "px 0"
+        }
+      },
+
+      ".pe-button--dropdown": {
+        minWidth: "0", // IE 11 does not recognize "initial" here
+
+        " .pe-button__dropdown": {
+          width: componentVars.dropdown_icon_size + "px",
+          minWidth: "calc(36px - 2 * " + componentVars.padding_h + "px)",
+          position: "relative"
+        },
+
+        " .pe-svg": {
+          position: "absolute",
+          width: componentVars.dropdown_icon_size + "px",
+          height: componentVars.dropdown_icon_size + "px",
+          left: 0,
+          top: "50%",
+          marginTop: -componentVars.dropdown_icon_size / 2 + "px"
+        },
+
+        " .pe-button__label + .pe-button__dropdown": {
+          marginLeft: "7px",
+          marginRight: "calc(7px - " + componentVars.padding_h + "px)",
+          minWidth: 0
         }
       }
     }])];
@@ -171,6 +204,10 @@
         " .pe-button__focus": {
           opacity: 1
         }
+      },
+
+      " .pe-button__dropdown": {
+        opacity: componentVars["color_" + tint + "_icon_opacity"]
       }
     })];
   };

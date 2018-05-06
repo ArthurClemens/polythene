@@ -134,6 +134,21 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Option: dropdown with label (not interactive)",
+      component: Button,
+      attrs: {
+        label: "Dropdown",
+        dropdown: true
+      }
+    },
+    {
+      name: "Option: dropdown without label (not interactive)",
+      component: Button,
+      attrs: {
+        dropdown: true
+      }
+    },
+    {
       name: "Option: formaction",
       component: Button,
       attrs: {

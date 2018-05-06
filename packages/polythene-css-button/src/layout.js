@@ -18,16 +18,22 @@ export default (selector, componentVars) => [{
         borderWidth: 0,
         padding: "0 " + componentVars.padding_h + "px",
         borderRadius: componentVars.border_radius + "px",
+        display: "flex",
+        alignItems: "center",
+      },
+
+      " .pe-button__label, .pe-button__dropdown": {
+        minHeight: `calc(1em + 2 * ${componentVars.padding_v}px)`,
+        fontSize: componentVars.font_size + "px",
+        lineHeight: componentVars.font_size + "px",
+        whiteSpace: "pre",
+        userSelect: "none",
       },
 
       " .pe-button__label": {
-        padding: componentVars.padding_v + "px 0",
-        fontSize: componentVars.font_size + "px",
-        lineHeight: componentVars.font_size + "px",
         fontWeight: componentVars.font_weight,
         textTransform: componentVars.text_transform,
-        whiteSpace: "pre",
-        userSelect: "none",
+        padding: componentVars.padding_v + "px 0",
       },
 
       ".pe-button--border": {
@@ -40,6 +46,31 @@ export default (selector, componentVars) => [{
         " .pe-button__label": {
           padding: (componentVars.padding_v - 1) + "px 0"
         }
+      },
+
+      ".pe-button--dropdown": {
+        minWidth: "0", // IE 11 does not recognize "initial" here
+
+        " .pe-button__dropdown": {
+          width: componentVars.dropdown_icon_size + "px",
+          minWidth: `calc(36px - 2 * ${componentVars.padding_h}px)`,
+          position: "relative",
+        },
+
+        " .pe-svg": {
+          position: "absolute",
+          width: componentVars.dropdown_icon_size + "px",
+          height: componentVars.dropdown_icon_size + "px",
+          left: 0,
+          top: "50%",
+          marginTop: -componentVars.dropdown_icon_size / 2 + "px",
+        },
+
+        " .pe-button__label + .pe-button__dropdown": {
+          marginLeft: "7px",
+          marginRight: `calc(7px - ${componentVars.padding_h}px)`,
+          minWidth: 0,
+        },
       }
     }
   ]

@@ -75,17 +75,23 @@
   position: relative;
   border-width: 0;
   padding: 0 8px;
-  border-radius: 2px
+  border-radius: 2px;
+  display: flex;
+  align-items: center
+}
+
+.pe-button.pe-text-button .pe-button__dropdown,.pe-button.pe-text-button .pe-button__label {
+  min-height: calc(1em + 2 * 11px);
+  font-size: 14px;
+  line-height: 14px;
+  white-space: pre;
+  user-select: none
 }
 
 .pe-button.pe-text-button .pe-button__label {
-  padding: 11px 0;
-  font-size: 14px;
-  line-height: 14px;
   font-weight: 500;
   text-transform: uppercase;
-  white-space: pre;
-  user-select: none
+  padding: 11px 0
 }
 
 .pe-button.pe-text-button.pe-button--border .pe-button__focus,.pe-button.pe-text-button.pe-button--border .pe-button__wash,.pe-button.pe-text-button.pe-button--border .pe-ripple {
@@ -103,6 +109,31 @@
 
 .pe-button.pe-text-button.pe-button--border .pe-button__label {
   padding: 10px 0
+}
+
+.pe-button.pe-text-button.pe-button--dropdown {
+  min-width: 0
+}
+
+.pe-button.pe-text-button.pe-button--dropdown .pe-button__dropdown {
+  width: 24px;
+  min-width: 20px;
+  position: relative
+}
+
+.pe-button.pe-text-button.pe-button--dropdown .pe-svg {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 0;
+  top: 50%;
+  margin-top: -12px
+}
+
+.pe-button.pe-text-button.pe-button--dropdown .pe-button__label+.pe-button__dropdown {
+  margin-left: 7px;
+  margin-right: -1px;
+  min-width: 0
 }
 
 .pe-dark-tone.pe-button.pe-text-button,.pe-dark-tone .pe-button.pe-text-button,.pe-dark-tone.pe-button.pe-text-button:link,.pe-dark-tone .pe-button.pe-text-button:link,.pe-dark-tone.pe-button.pe-text-button:visited,.pe-dark-tone .pe-button.pe-text-button:visited {
@@ -141,6 +172,10 @@
   opacity: 1
 }
 
+.pe-dark-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-dark-tone .pe-button.pe-text-button .pe-button__dropdown {
+  opacity: .7
+}
+
 .pe-button.pe-text-button,.pe-button.pe-text-button:link,.pe-button.pe-text-button:visited,.pe-light-tone.pe-button.pe-text-button,.pe-light-tone .pe-button.pe-text-button,.pe-light-tone.pe-button.pe-text-button:link,.pe-light-tone .pe-button.pe-text-button:link,.pe-light-tone.pe-button.pe-text-button:visited,.pe-light-tone .pe-button.pe-text-button:visited {
   color: rgba(0,0,0,.87)
 }
@@ -175,6 +210,10 @@
 
 .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus {
   opacity: 1
+}
+
+.pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone .pe-button.pe-text-button .pe-button__dropdown {
+  opacity: .54
 }
 
 html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) {

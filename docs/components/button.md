@@ -75,6 +75,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
+| **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown triangle; a dropdown button has no minimum width |
 
 
 <a id="common-component-options"></a>

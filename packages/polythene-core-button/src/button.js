@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient, deprecation } from "polythene-core";
+import { filterSupportedAttributes, isClient, deprecation, iconDropdownUp, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
 
 export const getElement = vnode =>
@@ -77,6 +77,7 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
+        attrs.dropdown ? classes.hasDropdown : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         (attrs.border || attrs.borders) ? classes.border : null,
@@ -106,7 +107,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
+export const createContent = (vnode, { renderer: h, keys: k, Ripple, SVG }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
@@ -114,7 +115,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
   const children = attrs.children || vnode.children;
   const label = attrs.content
     ? attrs.content
-    : attrs.label
+    : attrs.label !== undefined
       ? typeof attrs.label === "object"
         ? attrs.label
         : h("div", { className: classes.label }, attrs.label)
@@ -147,7 +148,15 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         noWash ? null : h("div", { key: "wash", className: classes.wash }),
         // focus
         disabled ? null : h("div", { key: "focus", className: classes.focus }),
-        label
+        label,
+        attrs.dropdown
+          ? h("div", { className: classes.dropdown },
+            h(SVG, null, h.trust(attrs.dropdownOpen
+              ? iconDropdownUp
+              : iconDropdownDown
+            ))
+          )
+          : null
       ]
     )
     : null;

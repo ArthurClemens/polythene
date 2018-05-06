@@ -8,3 +8,4 @@ export { show, hide, transitionComponent } from "./transition";
 export { throttle, subscribe, unsubscribe, emit } from "./events";
 export { getStyle, isRTL } from "./style";
 export { deprecation } from "./developer";
+export { iconDropdownUp, iconDropdownDown } from "./icons";

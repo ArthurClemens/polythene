@@ -41,6 +41,10 @@ const style = (scopes, selector, componentVars, tint) => {
         " .pe-button__focus": {
           opacity: 1
         }
+      },
+
+      " .pe-button__dropdown": {
+        opacity: componentVars["color_" + tint + "_icon_opacity"]
       }
     }
   }];

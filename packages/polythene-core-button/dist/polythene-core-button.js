@@ -9,18 +9,20 @@
     component: "pe-button pe-text-button",
     row: "pe-button-row",
 
-    // elements
+    // elements    
     content: "pe-button__content",
     focus: "pe-button__focus",
     label: "pe-button__label",
     wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
 
-    // states
+    // states    
     border: "pe-button--border",
     disabled: "pe-button--disabled",
     focused: "pe-button--focus",
     inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+    selected: "pe-button--selected",
+    hasDropdown: "pe-button--dropdown"
   };
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -109,7 +111,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
-      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
       if (e.keyCode === 13 && state.focus()) {
         state.focus(false);
@@ -125,14 +127,15 @@
 
     var h = _ref3.renderer,
         k = _ref3.keys,
-        Ripple = _ref3.Ripple;
+        Ripple = _ref3.Ripple,
+        SVG = _ref3.SVG;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
     var noink = attrs.ink !== undefined && attrs.ink === false;
     var disabled = attrs.disabled;
     var children = attrs.children || vnode.children;
-    var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
+    var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
     var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
     return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
     ? attrs.shadowComponent : null,
@@ -146,7 +149,7 @@
     // hover
     noWash ? null : h("div", { key: "wash", className: classes.wash }),
     // focus
-    disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
+    disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h("div", { className: classes.dropdown }, h(SVG, null, h.trust(attrs.dropdownOpen ? polytheneCore.iconDropdownUp : polytheneCore.iconDropdownDown))) : null]) : null;
   };
 
   var button = /*#__PURE__*/Object.freeze({
@@ -178,6 +181,7 @@
     text_transform: "uppercase",
     border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
     animation_duration: polytheneTheme.vars.animation_duration,
+    dropdown_icon_size: 24,
 
     color_light_background: "transparent",
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
@@ -186,6 +190,7 @@
     color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
     color_light_disabled_background: "transparent",
     color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_icon_opacity: polytheneTheme.vars.blend_light_text_secondary,
 
     color_dark_background: "transparent",
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
@@ -193,7 +198,8 @@
     color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
     color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
     color_dark_disabled_background: "transparent",
-    color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
+    color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_icon_opacity: polytheneTheme.vars.blend_dark_text_secondary
 
     // border colors may be set in theme; disabled by default
 
