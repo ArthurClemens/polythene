@@ -77,7 +77,8 @@
   padding: 0 8px;
   border-radius: 2px;
   display: flex;
-  align-items: center
+  align-items: center;
+  justify-content: center
 }
 
 .pe-button.pe-text-button .pe-button__dropdown,.pe-button.pe-text-button .pe-button__label {

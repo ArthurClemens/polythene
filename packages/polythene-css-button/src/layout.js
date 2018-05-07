@@ -20,6 +20,7 @@ export default (selector, componentVars) => [{
         borderRadius: componentVars.border_radius + "px",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center"
       },
 
       " .pe-button__label, .pe-button__dropdown": {

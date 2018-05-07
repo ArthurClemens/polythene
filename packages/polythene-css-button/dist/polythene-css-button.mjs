@@ -99,7 +99,8 @@ var layout = (function (selector, componentVars) {
       padding: "0 " + componentVars.padding_h + "px",
       borderRadius: componentVars.border_radius + "px",
       display: "flex",
-      alignItems: "center"
+      alignItems: "center",
+      justifyContent: "center"
     },
 
     " .pe-button__label, .pe-button__dropdown": {
