@@ -44,7 +44,7 @@ const style = (scopes, selector, componentVars, tint) => {
       },
 
       " .pe-button__dropdown": {
-        opacity: componentVars["color_" + tint + "_icon_opacity"]
+        color: componentVars["color_" + tint + "_icon"]
       }
     }
   }];
@@ -65,6 +65,10 @@ export const noTouchStyle = (scopes, selector, componentVars, tint) => {
 
         " .pe-button__wash": {
           backgroundColor: componentVars["color_" + tint + "_wash_background"],
+        },
+
+        " .pe-button__dropdown": {
+          color: componentVars["color_" + tint + "_hover_icon"] || "inherit",
         }
       }
     }

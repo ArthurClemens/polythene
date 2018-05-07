@@ -190,7 +190,7 @@
     color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
     color_light_disabled_background: "transparent",
     color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_icon_opacity: polytheneTheme.vars.blend_light_text_secondary,
+    color_light_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
 
     color_dark_background: "transparent",
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
@@ -199,7 +199,7 @@
     color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
     color_dark_disabled_background: "transparent",
     color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_icon_opacity: polytheneTheme.vars.blend_dark_text_secondary
+    color_dark_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary)
 
     // border colors may be set in theme; disabled by default
 
@@ -217,9 +217,11 @@
 
     // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
     // color_light_hover_background:         "transparent",
+    // color_light_hover_icon:               "inherit",
     //
     // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
     // color_dark_hover_background:          "transparent",
+    // color_dark_hover_icon:                "inherit",
 
   };
 

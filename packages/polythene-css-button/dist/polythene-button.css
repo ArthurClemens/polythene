@@ -173,7 +173,7 @@
 }
 
 .pe-dark-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-dark-tone .pe-button.pe-text-button .pe-button__dropdown {
-  opacity: .7
+  color: rgba(0,0,0,.54)
 }
 
 .pe-button.pe-text-button,.pe-button.pe-text-button:link,.pe-button.pe-text-button:visited,.pe-light-tone.pe-button.pe-text-button,.pe-light-tone .pe-button.pe-text-button,.pe-light-tone.pe-button.pe-text-button:link,.pe-light-tone .pe-button.pe-text-button:link,.pe-light-tone.pe-button.pe-text-button:visited,.pe-light-tone .pe-button.pe-text-button:visited {
@@ -213,7 +213,7 @@
 }
 
 .pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone .pe-button.pe-text-button .pe-button__dropdown {
-  opacity: .54
+  color: rgba(0,0,0,.54)
 }
 
 html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) {
@@ -229,6 +229,10 @@ html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active:not(.pe-button--
   background-color: hsla(0,0%,100%,.08)
 }
 
+html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown,html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown {
+  color: inherit
+}
+
 html.pe-no-touch .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) {
   color: rgba(0,0,0,.87);
   border-color: transparent
@@ -240,5 +244,9 @@ html.pe-no-touch .pe-button.pe-text-button:active:not(.pe-button--selected):not(
 
 html.pe-no-touch .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash,html.pe-no-touch .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash,html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash,html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__wash {
   background-color: rgba(0,0,0,.06)
+}
+
+html.pe-no-touch .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown,html.pe-no-touch .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown,html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown,html.pe-no-touch .pe-light-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) .pe-button__dropdown {
+  color: inherit
 }
 /*# sourceMappingURL=polythene-button.css.map */
