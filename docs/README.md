@@ -124,7 +124,7 @@
 
 ## And also
 
-* [Change log](docs/changes.md)
+* [Change log](changes.md)
 * [Extending other libraries](extending.md)
 * [Developing](developing.md)
 * [Additional Polythene packages](packages.md)
