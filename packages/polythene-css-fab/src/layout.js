@@ -4,6 +4,7 @@ import { mixin } from "polythene-core-css";
 export default (selector, componentVars) => [{
   [selector]: {
     userSelect: "none",
+    "-moz-user-select": "none",
     display: "inline-block",
     position: "relative",
     outline: "none",

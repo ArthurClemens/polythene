@@ -32,6 +32,7 @@
   * [FAB](components/fab.md)
   * [Icon Button](components/icon-button.md)
   * [Raised Button](components/raised-button.md)
+  * [Split Button](components/split-button.md)
 * [Card](components/card.md)
 * [Dialog](components/dialog.md)
 * [Drawer](components/drawer.md)
@@ -65,6 +66,7 @@
   * [FAB](components/mithril/fab.md)
   * [Icon Button](components/mithril/icon-button.md)
   * [Raised Button](components/mithril/raised-button.md)
+  * [Split Button](components/mithril/split-button.md)
 * [Card](components/mithril/card.md)
 * [Dialog](components/mithril/dialog.md)
 * [Drawer](components/mithril/drawer.md)
@@ -97,6 +99,7 @@
   * [FAB](components/react/fab.md)
   * [Icon Button](components/react/icon-button.md)
   * [Raised Button](components/react/raised-button.md)
+  * [Split Button](components/react/split-button.md)
 * [Card](components/react/card.md)
 * [Dialog](components/react/dialog.md)
 * [Drawer](components/react/drawer.md)
@@ -124,7 +127,7 @@
 
 ## And also
 
-* [Change log](docs/changes.md)
+* [Change log](changes.md)
 * [Extending other libraries](extending.md)
 * [Developing](developing.md)
 * [Additional Polythene packages](packages.md)

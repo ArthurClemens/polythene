@@ -3,7 +3,6 @@ export default {
   base:           "pe-button",
   component:      "pe-button pe-text-button",
   row:            "pe-button-row",
-  splitButton:    "pe-split-button",
     
   // elements    
   content:        "pe-button__content",
@@ -19,4 +18,6 @@ export default {
   inactive:       "pe-button--inactive",
   selected:       "pe-button--selected",
   hasDropdown:    "pe-button--dropdown",
+  highLabel:      "pe-button--high-label",
+  extraWide:      "pe-button--extra-wide",
 };

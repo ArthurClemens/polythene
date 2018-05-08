@@ -45,14 +45,6 @@ const style = (scopes, selector, componentVars, tint) => {
 
       " .pe-button__dropdown": {
         color: componentVars["color_" + tint + "_icon"]
-      },
-
-      " .pe-split-button &": {
-        ":last-child": {
-          " .pe-button__content": {
-            borderColor: componentVars["color_" + tint + "_dropdown_border"]
-          }
-        }
       }
     }
   }];
@@ -64,11 +56,11 @@ export const noTouchStyle = (scopes, selector, componentVars, tint) => {
   return [{
     [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
       ":not(.pe-button--selected):not(.pe-button--inactive)": {
-        color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+        color: componentVars["color_" + tint + "_hover"],
         borderColor: hoverBorder,
 
         " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+          backgroundColor: componentVars["color_" + tint + "_hover_background"]
         },
 
         " .pe-button__wash": {

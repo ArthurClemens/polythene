@@ -1,0 +1,19 @@
+.pe-split-button {
+  display: flex
+}
+
+.pe-split-button .pe-button:not(:first-child),.pe-split-button .pe-button:not(:first-child) .pe-button__focus,.pe-split-button .pe-button:not(:first-child) .pe-button__wash {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.pe-split-button .pe-button:not(:last-child),.pe-split-button .pe-button:not(:last-child) .pe-button__focus,.pe-split-button .pe-button:not(:last-child) .pe-button__wash {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.pe-split-button .pe-button:last-child .pe-button__content {
+  border-style: none none none solid;
+  border-width: 1px
+}
+/*# sourceMappingURL=polythene-split-button.css.map */

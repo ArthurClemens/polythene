@@ -205,7 +205,8 @@ export default (selector, componentVars) => [{
 
           "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
             " .pe-list-tile__title, .pe-list-tile__subtitle": {
-              userSelect: "none"
+              userSelect: "none",
+              "-moz-user-select": "none",
             }
           }
         }

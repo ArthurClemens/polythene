@@ -22,6 +22,7 @@ export default (selector, componentVars) => [
       alignLeft(componentVars),
       {
         userSelect: "none",
+        "-moz-user-select": "none",
         transform: "translate3d(0,0,0)",
         "-webkit-overflow-scrolling": "touch",
 
@@ -116,6 +117,7 @@ export default (selector, componentVars) => [
           flex.layoutHorizontal,
           {
             userSelect: "none",
+            "-moz-user-select": "none",
             position: "relative",
             whiteSpace: "nowrap",
 
@@ -138,6 +140,7 @@ export default (selector, componentVars) => [
           flex.flexIndex("none"),
           {
             userSelect: "none",
+            "-moz-user-select": "none",
             margin: 0,
             borderRadius: 0,
             height: componentVars.tab_height + "px",

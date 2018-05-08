@@ -23,6 +23,7 @@ import * as SelectionControlCSS              from "polythene-css-selection-contr
 import * as ShadowCSS                        from "polythene-css-shadow";                           export { ShadowCSS };
 import * as SliderCSS                        from "polythene-css-slider";                           export { SliderCSS };
 import * as SnackbarCSS                      from "polythene-css-snackbar";                         export { SnackbarCSS };
+import * as SplitButtonCSS                   from "polythene-css-split-button";                     export { SplitButtonCSS };
 import * as SVGCSS                           from "polythene-css-svg";                              export { SVGCSS };
 import * as SwitchCSS                        from "polythene-css-switch";                           export { SwitchCSS };
 import * as TabsCSS                          from "polythene-css-tabs";                             export { TabsCSS };

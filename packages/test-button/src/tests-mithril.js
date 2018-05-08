@@ -1,4 +1,4 @@
-import { renderer, Button } from "polythene-mithril";
+import { renderer, Button, SplitButton } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = ({ Button, renderer: h }) => {
@@ -57,11 +57,12 @@ const mithrilTests = ({ Button, renderer: h }) => {
           h(Button, {
             label: "Button",
             events: {
-              onclick: e => {
-                if (!e.detail || e.detail == 1) { // activate on first click only to avoid hiding again on multiple clicks
-                  vnode.state.clicked++;
-                }
-              }
+              onclick: () => vnode.state.clicked++
+              // onclick: e => {
+              //   if (!e.detail || e.detail == 1) { // activate on first click only to avoid hiding again on multiple clicks
+              //     vnode.state.clicked++;
+              //   }
+              // }
             }
           })
         ]
@@ -134,5 +135,5 @@ const mithrilTests = ({ Button, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ Button, renderer }))
-  .concat(mithrilTests({ Button, renderer }));
+  .concat(genericTests({ Button, SplitButton, renderer }))
+  .concat(mithrilTests({ Button, SplitButton, renderer }));

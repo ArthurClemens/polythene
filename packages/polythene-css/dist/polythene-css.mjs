@@ -48,6 +48,8 @@ import * as polytheneCssSlider from 'polythene-css-slider';
 export { polytheneCssSlider as SliderCSS };
 import * as polytheneCssSnackbar from 'polythene-css-snackbar';
 export { polytheneCssSnackbar as SnackbarCSS };
+import * as polytheneCssSplitButton from 'polythene-css-split-button';
+export { polytheneCssSplitButton as SplitButtonCSS };
 import * as polytheneCssSvg from 'polythene-css-svg';
 export { polytheneCssSvg as SVGCSS };
 import * as polytheneCssSwitch from 'polythene-css-switch';

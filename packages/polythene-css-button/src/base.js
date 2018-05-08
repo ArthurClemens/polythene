@@ -4,6 +4,7 @@ export default (selector, componentVars) => [{
   [selector]: [
     {
       userSelect: "none",
+      "-moz-user-select": "none",
       outline: "none",
       padding: 0,
       textDecoration: "none",

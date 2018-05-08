@@ -5,7 +5,6 @@ var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
   row: "pe-button-row",
-  splitButton: "pe-split-button",
 
   // elements    
   content: "pe-button__content",
@@ -20,7 +19,9 @@ var classes = {
   focused: "pe-button--focus",
   inactive: "pe-button--inactive",
   selected: "pe-button--selected",
-  hasDropdown: "pe-button--dropdown"
+  hasDropdown: "pe-button--dropdown",
+  highLabel: "pe-button--high-label",
+  extraWide: "pe-button--extra-wide"
 };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -109,7 +110,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
-    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
     if (e.keyCode === 13 && state.focus()) {
       state.focus(false);
@@ -135,7 +136,7 @@ var createContent = function createContent(vnode, _ref3) {
   var children = attrs.children || vnode.children;
   var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
+  return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
   ? attrs.shadowComponent : null,
   // Ripple
   disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
@@ -147,7 +148,10 @@ var createContent = function createContent(vnode, _ref3) {
   // hover
   noWash ? null : h("div", { key: "wash", className: classes.wash }),
   // focus
-  disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h("div", { className: classes.dropdown }, h(SVG, null, h.trust(attrs.dropdownOpen ? iconDropdownUp : iconDropdownDown))) : null]) : null;
+  disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h("div", {
+    className: classes.dropdown,
+    key: "dropdown"
+  }, h(SVG, null, h.trust(attrs.dropdownOpen ? iconDropdownUp : iconDropdownDown))) : null]);
 };
 
 var button = /*#__PURE__*/Object.freeze({
@@ -168,18 +172,20 @@ var touch_height = vars.unit_touch_height;
 var height = 36;
 
 var vars$1 = {
-  margin_h: vars.grid_unit,
+  animation_duration: vars.animation_duration,
   border_radius: vars.unit_item_border_radius,
+  border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+  dropdown_icon_size: 24,
   font_size: 14,
   font_weight: 500,
-  outer_padding_v: (touch_height - height) / 2,
-  padding_h: 2 * vars.grid_unit,
-  padding_v: 11,
+  line_height: vars.line_height,
+  margin_h: vars.grid_unit,
   min_width: 8 * vars.grid_unit_component,
+  outer_padding_v: (touch_height - height) / 2,
+  padding_h: 2 * vars.grid_unit, // 8
+  padding_h_extra_wide: 6 * vars.grid_unit, // 24
+  padding_v: 9,
   text_transform: "uppercase",
-  border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
-  animation_duration: vars.animation_duration,
-  dropdown_icon_size: 24,
 
   color_light_background: "transparent",
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
@@ -189,7 +195,6 @@ var vars$1 = {
   color_light_disabled_background: "transparent",
   color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_dropdown_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
 
   color_dark_background: "transparent",
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
@@ -198,8 +203,7 @@ var vars$1 = {
   color_dark_active_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_active),
   color_dark_disabled_background: "transparent",
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_dark_dropdown_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+  color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary)
 
   // border colors may be set in theme; disabled by default
 

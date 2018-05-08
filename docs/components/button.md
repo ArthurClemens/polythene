@@ -75,7 +75,9 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
-| **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown triangle; a dropdown button has no minimum width |
+| **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown icon; note that a dropdown button has no minimum width |
+| **extraWide** | optional | Boolean | false | Set to `true` to add more side padding |
+| **highLabel** | optional | Boolean | false | This does not make the button higher in itself; set to `true` to move the vertical "outer" padding to the label, creating a higher hover effect (and higher separator when using [Split Button](split-button.md)) |
 
 
 <a id="common-component-options"></a>

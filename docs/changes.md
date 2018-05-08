@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
+  - [Next](#next)
   - [1.2.0](#120)
   - [1.1.0](#110)
   - [1.0.0](#100)
@@ -14,6 +15,14 @@
 <a id="releases"></a>
 ## Releases
 
+<a id="next"></a>
+### Next
+
+#### Components
+
+* Button:
+  * New options `extraWide` and `highLabel`.
+* New component [Split Button](components/split-button.md)
 
 <a id="120"></a>
 ### 1.2.0

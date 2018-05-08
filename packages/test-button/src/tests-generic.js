@@ -1,6 +1,6 @@
 import { ButtonCSS } from "polythene-css";
 
-export default ({ renderer: h, Button }) => {
+export default ({ renderer: h, Button, SplitButton }) => {
   
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
@@ -31,28 +31,6 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Label"
-      }
-    },
-    {
-      name: "Button row",
-      component: {
-        view: () => 
-          h(".pe-button-row",
-            [
-              h(Button, {
-                key: "one", // for React
-                label: "One"
-              }),
-              h(Button, {
-                key: "two", // for React
-                label: "Two"
-              }),
-              h(Button, {
-                key: "three", // for React
-                label: "Three"
-              })
-            ]
-          )
       }
     },
     {
@@ -142,24 +120,52 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Split button",
-      component: {
-        view: () => 
-          h(".pe-split-button", [
-            h(Button, {
-              label: "Left"
-            }),
-            h(Button, {
-              dropdown: true
-            })
-          ])
-      },
-    },
-    {
       name: "Option: dropdown without label (not interactive)",
       component: Button,
       attrs: {
         dropdown: true
+      }
+    },
+    {
+      name: "Split Button (with options extraWide and highLabel)",
+      component: {
+        view: () => 
+          h(SplitButton,
+            { separator: true },
+            [
+              h(Button, {
+                label: "Left",
+                extraWide: true,
+                highLabel: true,
+              }),
+              h(Button, {
+                dropdown: true,
+                highLabel: true,
+              })
+            ]
+          )
+      },
+    },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(Button, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(Button, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(Button, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
       }
     },
     {
@@ -209,15 +215,6 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Option: tone \"dark\" -- dark tone class",
-      className: "test-dark-tone",
-      component: Button,
-      attrs: {
-        label: "Label",
-        tone: "dark"
-      }
-    },
-    {
       name: "Themed Button -- dark tone class",
       className: "pe-dark-tone",
       component: Button,
@@ -225,6 +222,24 @@ export default ({ renderer: h, Button }) => {
         label: "Themed Button",
         className: "tests-button-themed-button"
       }
+    },
+    {
+      name: "Split button (with options extraWide and extraHigh) -- dark tone class",
+      className: "pe-dark-tone",
+      component: {
+        view: () => 
+          h(SplitButton, [
+            h(Button, {
+              label: "Left",
+              extraWide: true,
+              extraHigh: true,
+            }),
+            h(Button, {
+              dropdown: true,
+              extraHigh: true,
+            })
+          ])
+      },
     },
     {
       name: "Themed Button blue on dark -- dark tone class",

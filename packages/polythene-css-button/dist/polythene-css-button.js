@@ -8,7 +8,6 @@
     base: "pe-button",
     component: "pe-button pe-text-button",
     row: "pe-button-row",
-    splitButton: "pe-split-button",
 
     // elements    
     content: "pe-button__content",
@@ -23,7 +22,9 @@
     focused: "pe-button--focus",
     inactive: "pe-button--inactive",
     selected: "pe-button--selected",
-    hasDropdown: "pe-button--dropdown"
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    extraWide: "pe-button--extra-wide"
   };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -33,6 +34,7 @@
 
     return [(_ref = {}, _defineProperty(_ref, selector, [{
       userSelect: "none",
+      "-moz-user-select": "none",
       outline: "none",
       padding: 0,
       textDecoration: "none",
@@ -88,12 +90,9 @@
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var layout = (function (selector, componentVars) {
-    var _ref;
-
-    return [(_ref = {}, _defineProperty$1(_ref, selector, [{
+    return [_defineProperty$1({}, selector, [{
       display: "inline-block",
       minWidth: componentVars.min_width + "px",
-      padding: componentVars.outer_padding_v + "px 0",
       background: "transparent",
       border: "none",
 
@@ -101,20 +100,12 @@
 
       " .pe-button__content": {
         position: "relative",
-        borderWidth: 0,
         padding: "0 " + componentVars.padding_h + "px",
+        borderWidth: 0,
         borderRadius: componentVars.border_radius + "px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
-      },
-
-      " .pe-button__label, .pe-button__dropdown": {
-        minHeight: "calc(1em + 2 * " + componentVars.padding_v + "px)",
-        fontSize: componentVars.font_size + "px",
-        lineHeight: componentVars.font_size + "px",
-        whiteSpace: "pre",
-        userSelect: "none"
       },
 
       " .pe-button__label": {
@@ -133,6 +124,15 @@
         " .pe-button__label": {
           padding: componentVars.padding_v - 1 + "px 0"
         }
+      },
+
+      " .pe-button__label, .pe-button__dropdown": {
+        minHeight: "calc((1em * " + componentVars.line_height + ") + 2 * " + componentVars.padding_v + "px)",
+        fontSize: componentVars.font_size + "px",
+        lineHeight: componentVars.line_height,
+        whiteSpace: "pre",
+        userSelect: "none",
+        "-moz-user-select": "none"
       },
 
       ".pe-button--dropdown": {
@@ -158,30 +158,27 @@
           marginRight: "calc(7px - " + componentVars.padding_h + "px)",
           minWidth: 0
         }
-      }
-    }]), _defineProperty$1(_ref, ".pe-split-button", _defineProperty$1({
-      display: "flex"
+      },
 
-    }, " " + selector, {
-      ":not(:first-child)": {
-        "&, .pe-button__wash, .pe-button__focus": {
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0
+      // Extra high / wide
+
+      ":not(.pe-button--high-label)": {
+        padding: componentVars.outer_padding_v + "px 0"
+      },
+
+      ".pe-button--high-label": {
+        " .pe-button__label": {
+          padding: componentVars.outer_padding_v + componentVars.padding_v + "px 0"
+        },
+        " .pe-button__label, .pe-button__dropdown": {
+          minHeight: "calc((1em * " + componentVars.line_height + ") + 2 * " + (componentVars.outer_padding_v + componentVars.padding_v) + "px)"
         }
       },
-      ":not(:last-child)": {
-        "&, .pe-button__wash, .pe-button__focus": {
-          borderTopRightRadius: 0,
-          borderBottomRightRadius: 0
-        }
-      },
-      ":last-child": {
-        " .pe-button__content": {
-          borderStyle: "none none none solid",
-          borderWidth: "1px"
-        }
+
+      ".pe-button--extra-wide .pe-button__content": {
+        padding: "0 " + componentVars.padding_h_extra_wide + "px"
       }
-    })), _ref)];
+    }])];
   });
 
   function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -234,14 +231,6 @@
 
       " .pe-button__dropdown": {
         color: componentVars["color_" + tint + "_icon"]
-      },
-
-      " .pe-split-button &": {
-        ":last-child": {
-          " .pe-button__content": {
-            borderColor: componentVars["color_" + tint + "_dropdown_border"]
-          }
-        }
       }
     })];
   };
@@ -255,11 +244,11 @@
       return s + selector + ":active";
     }).join(",")), {
       ":not(.pe-button--selected):not(.pe-button--inactive)": {
-        color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
+        color: componentVars["color_" + tint + "_hover"],
         borderColor: hoverBorder,
 
         " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+          backgroundColor: componentVars["color_" + tint + "_hover_background"]
         },
 
         " .pe-button__wash": {

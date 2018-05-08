@@ -78,6 +78,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
         attrs.dropdown ? classes.hasDropdown : null,
+        attrs.highLabel ? classes.highLabel : null,
+        attrs.extraWide ? classes.extraWide : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         (attrs.border || attrs.borders) ? classes.border : null,
@@ -123,41 +125,43 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, SVG }) => {
         ? children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
-  return label
-    ? h("div",
-      {
-        [k.class]: classes.content,
-        style: attrs.style
-      },
-      [
-        attrs.shadowComponent // "protected" option, used by raised-button
-          ? attrs.shadowComponent
-          : null,
-        // Ripple
-        disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
-          // somehow Mithril does not update when the dom stream is updated
-          ? null
-          : h(Ripple, Object.assign({},
-            {
-              key: "ripple",
-              target: state.dom()
-            },
-            attrs.ripple
-          )),
-        // hover
-        noWash ? null : h("div", { key: "wash", className: classes.wash }),
-        // focus
-        disabled ? null : h("div", { key: "focus", className: classes.focus }),
-        label,
-        attrs.dropdown
-          ? h("div", { className: classes.dropdown },
-            h(SVG, null, h.trust(attrs.dropdownOpen
-              ? iconDropdownUp
-              : iconDropdownDown
-            ))
-          )
-          : null
-      ]
-    )
-    : null;
+  return h("div",
+    {
+      [k.class]: classes.content,
+      style: attrs.style
+    },
+    [
+      attrs.shadowComponent // "protected" option, used by raised-button
+        ? attrs.shadowComponent
+        : null,
+      // Ripple
+      disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
+        // somehow Mithril does not update when the dom stream is updated
+        ? null
+        : h(Ripple, Object.assign({},
+          {
+            key: "ripple",
+            target: state.dom()
+          },
+          attrs.ripple
+        )),
+      // hover
+      noWash ? null : h("div", { key: "wash", className: classes.wash }),
+      // focus
+      disabled ? null : h("div", { key: "focus", className: classes.focus }),
+      label,
+      attrs.dropdown
+        ? h("div",
+          {
+            className: classes.dropdown,
+            key: "dropdown"
+          },
+          h(SVG, null, h.trust(attrs.dropdownOpen
+            ? iconDropdownUp
+            : iconDropdownDown
+          ))
+        )
+        : null
+    ]
+  );
 };
