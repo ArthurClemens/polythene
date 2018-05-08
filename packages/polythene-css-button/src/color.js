@@ -45,6 +45,14 @@ const style = (scopes, selector, componentVars, tint) => {
 
       " .pe-button__dropdown": {
         color: componentVars["color_" + tint + "_icon"]
+      },
+
+      " .pe-split-button &": {
+        ":last-child": {
+          " .pe-button__content": {
+            borderColor: componentVars["color_" + tint + "_dropdown_border"]
+          }
+        }
       }
     }
   }];

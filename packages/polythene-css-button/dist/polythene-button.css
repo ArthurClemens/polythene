@@ -137,6 +137,25 @@
   min-width: 0
 }
 
+.pe-split-button {
+  display: flex
+}
+
+.pe-split-button .pe-button.pe-text-button:not(:first-child),.pe-split-button .pe-button.pe-text-button:not(:first-child) .pe-button__focus,.pe-split-button .pe-button.pe-text-button:not(:first-child) .pe-button__wash {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.pe-split-button .pe-button.pe-text-button:not(:last-child),.pe-split-button .pe-button.pe-text-button:not(:last-child) .pe-button__focus,.pe-split-button .pe-button.pe-text-button:not(:last-child) .pe-button__wash {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.pe-split-button .pe-button.pe-text-button:last-child .pe-button__content {
+  border-style: none none none solid;
+  border-width: 1px
+}
+
 .pe-dark-tone.pe-button.pe-text-button,.pe-dark-tone .pe-button.pe-text-button,.pe-dark-tone.pe-button.pe-text-button:link,.pe-dark-tone .pe-button.pe-text-button:link,.pe-dark-tone.pe-button.pe-text-button:visited,.pe-dark-tone .pe-button.pe-text-button:visited {
   color: #fff
 }
@@ -177,6 +196,10 @@
   color: rgba(0,0,0,.54)
 }
 
+.pe-split-button .pe-dark-tone.pe-button.pe-text-button:last-child .pe-button__content,.pe-split-button .pe-dark-tone .pe-button.pe-text-button:last-child .pe-button__content {
+  border-color: hsla(0,0%,100%,.1)
+}
+
 .pe-button.pe-text-button,.pe-button.pe-text-button:link,.pe-button.pe-text-button:visited,.pe-light-tone.pe-button.pe-text-button,.pe-light-tone .pe-button.pe-text-button,.pe-light-tone.pe-button.pe-text-button:link,.pe-light-tone .pe-button.pe-text-button:link,.pe-light-tone.pe-button.pe-text-button:visited,.pe-light-tone .pe-button.pe-text-button:visited {
   color: rgba(0,0,0,.87)
 }
@@ -215,6 +238,10 @@
 
 .pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone .pe-button.pe-text-button .pe-button__dropdown {
   color: rgba(0,0,0,.54)
+}
+
+.pe-split-button .pe-button.pe-text-button:last-child .pe-button__content,.pe-split-button .pe-light-tone.pe-button.pe-text-button:last-child .pe-button__content,.pe-split-button .pe-light-tone .pe-button.pe-text-button:last-child .pe-button__content {
+  border-color: rgba(0,0,0,.11)
 }
 
 html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover:not(.pe-button--selected):not(.pe-button--inactive) {

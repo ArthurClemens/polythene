@@ -28,6 +28,7 @@ export default {
   color_light_disabled_background:      "transparent",
   color_light_disabled_text:            rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   color_light_icon:                     rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_dropdown_border:          rgba(vars.color_light_foreground, vars.blend_light_border_light),                
 
   color_dark_background:                "transparent",
   color_dark_text:                      rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
@@ -37,6 +38,7 @@ export default {
   color_dark_disabled_background:       "transparent",
   color_dark_disabled_text:             rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_icon:                      rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_dark_dropdown_border:           rgba(vars.color_dark_foreground,  vars.blend_dark_border_light),
 
   // border colors may be set in theme; disabled by default
 

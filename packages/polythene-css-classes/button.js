@@ -3,6 +3,7 @@ export default {
   base:           "pe-button",
   component:      "pe-button pe-text-button",
   row:            "pe-button-row",
+  splitButton:    "pe-split-button",
     
   // elements    
   content:        "pe-button__content",

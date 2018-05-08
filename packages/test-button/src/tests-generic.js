@@ -142,6 +142,20 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Split button",
+      component: {
+        view: () => 
+          h(".pe-split-button", [
+            h(Button, {
+              label: "Left"
+            }),
+            h(Button, {
+              dropdown: true
+            })
+          ])
+      },
+    },
+    {
       name: "Option: dropdown without label (not interactive)",
       component: Button,
       attrs: {

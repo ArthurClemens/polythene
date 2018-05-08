@@ -74,5 +74,29 @@ export default (selector, componentVars) => [{
         },
       }
     }
-  ]
+  ],
+  ".pe-split-button": {
+    display: "flex",
+
+    [` ${selector}`]: {
+      ":not(:first-child)": {
+        "&, .pe-button__wash, .pe-button__focus": {
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+        }
+      },
+      ":not(:last-child)": {
+        "&, .pe-button__wash, .pe-button__focus": {
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+        }
+      },
+      ":last-child": {
+        " .pe-button__content": {
+          borderStyle: "none none none solid",
+          borderWidth: "1px"
+        }
+      }
+    }
+  }
 }];

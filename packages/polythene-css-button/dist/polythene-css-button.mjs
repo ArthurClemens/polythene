@@ -5,6 +5,7 @@ var classes = {
   base: "pe-button",
   component: "pe-button pe-text-button",
   row: "pe-button-row",
+  splitButton: "pe-split-button",
 
   // elements    
   content: "pe-button__content",
@@ -84,7 +85,9 @@ var baseLayout = (function (selector, componentVars) {
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var layout = (function (selector, componentVars) {
-  return [_defineProperty$1({}, selector, [{
+  var _ref;
+
+  return [(_ref = {}, _defineProperty$1(_ref, selector, [{
     display: "inline-block",
     minWidth: componentVars.min_width + "px",
     padding: componentVars.outer_padding_v + "px 0",
@@ -153,7 +156,29 @@ var layout = (function (selector, componentVars) {
         minWidth: 0
       }
     }
-  }])];
+  }]), _defineProperty$1(_ref, ".pe-split-button", _defineProperty$1({
+    display: "flex"
+
+  }, " " + selector, {
+    ":not(:first-child)": {
+      "&, .pe-button__wash, .pe-button__focus": {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0
+      }
+    },
+    ":not(:last-child)": {
+      "&, .pe-button__wash, .pe-button__focus": {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0
+      }
+    },
+    ":last-child": {
+      " .pe-button__content": {
+        borderStyle: "none none none solid",
+        borderWidth: "1px"
+      }
+    }
+  })), _ref)];
 });
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -206,6 +231,14 @@ var style = function style(scopes, selector, componentVars, tint) {
 
     " .pe-button__dropdown": {
       color: componentVars["color_" + tint + "_icon"]
+    },
+
+    " .pe-split-button &": {
+      ":last-child": {
+        " .pe-button__content": {
+          borderColor: componentVars["color_" + tint + "_dropdown_border"]
+        }
+      }
     }
   })];
 };
