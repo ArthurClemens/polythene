@@ -1,0 +1,23 @@
+{
+  "name": "polythene-react-button-group",
+  "version": "1.2.0",
+  "description": "",
+  "main": "dist/polythene-react-button-group",
+  "module": "dist/polythene-react-button-group.mjs",
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "build": "npm run clean && npm run rollup"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core-button-group": "^1.2.0",
+    "polythene-react-base": "^1.2.0"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
+  "license": "MIT"
+}

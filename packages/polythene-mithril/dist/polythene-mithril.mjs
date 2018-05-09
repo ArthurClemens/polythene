@@ -1,5 +1,6 @@
 export * from 'polythene-mithril-base';
 export * from 'polythene-mithril-button';
+export * from 'polythene-mithril-button-group';
 export * from 'polythene-mithril-card';
 export * from 'polythene-mithril-checkbox';
 export * from 'polythene-mithril-dialog';
@@ -23,7 +24,6 @@ export * from 'polythene-mithril-search';
 export * from 'polythene-mithril-shadow';
 export * from 'polythene-mithril-slider';
 export * from 'polythene-mithril-snackbar';
-export * from 'polythene-mithril-split-button';
 export * from 'polythene-mithril-svg';
 export * from 'polythene-mithril-switch';
 export * from 'polythene-mithril-tabs';

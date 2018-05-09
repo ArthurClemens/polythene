@@ -1,4 +1,5 @@
 import { reactTests as buttonTests } from "polythene-test-button";
+import { reactTests as buttonGroupTests } from "polythene-test-button-group";
 import { reactTests as cardTests } from "polythene-test-card";
 import { reactTests as checkboxTests } from "polythene-test-checkbox";
 import { reactTests as dialogTests } from "polythene-test-dialog";
@@ -38,6 +39,12 @@ export default [
     name: "Raised Button",
     tests: raisedButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/raised-button.md"
+  },
+  {
+    path: "/button-group",
+    name: "Button Group",
+    tests: buttonGroupTests,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/react/button-group.md"
   },
   {
     path: "/card",

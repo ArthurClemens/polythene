@@ -1,0 +1,28 @@
+{
+  "name": "polythene-test-button-group",
+  "version": "1.2.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "test": "../../node_modules/jest/bin/jest.js src/** --silent",
+    "test:watch": "npm run test -- --watch --no-watchman"
+  },
+  "dependencies": {
+    "polythene-css": "^1.2.0",
+    "polythene-mithril": "^1.2.0",
+    "polythene-react": "^1.2.0"
+  },
+  "devDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.1.2",
+    "recompose": "^0.24.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "../../scripts/jest-shim.js"
+    ]
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "license": "MIT"
+}

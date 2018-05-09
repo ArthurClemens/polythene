@@ -1,6 +1,6 @@
 import { ButtonCSS } from "polythene-css";
 
-export default ({ renderer: h, Button, SplitButton }) => {
+export default ({ renderer: h, Button }) => {
   
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
@@ -127,26 +127,6 @@ export default ({ renderer: h, Button, SplitButton }) => {
       }
     },
     {
-      name: "Split Button (with options extraWide and highLabel)",
-      component: {
-        view: () => 
-          h(SplitButton,
-            { separator: true },
-            [
-              h(Button, {
-                label: "Left",
-                extraWide: true,
-                highLabel: true,
-              }),
-              h(Button, {
-                dropdown: true,
-                highLabel: true,
-              })
-            ]
-          )
-      },
-    },
-    {
       name: "Button row",
       component: {
         view: () => 
@@ -222,24 +202,6 @@ export default ({ renderer: h, Button, SplitButton }) => {
         label: "Themed Button",
         className: "tests-button-themed-button"
       }
-    },
-    {
-      name: "Split button (with options extraWide and extraHigh) -- dark tone class",
-      className: "pe-dark-tone",
-      component: {
-        view: () => 
-          h(SplitButton, [
-            h(Button, {
-              label: "Left",
-              extraWide: true,
-              extraHigh: true,
-            }),
-            h(Button, {
-              dropdown: true,
-              extraHigh: true,
-            })
-          ])
-      },
     },
     {
       name: "Themed Button blue on dark -- dark tone class",

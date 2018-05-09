@@ -1,5 +1,6 @@
 import * as BaseSpinnerCSS                   from "polythene-css-base-spinner";                     export { BaseSpinnerCSS };
 import * as ButtonCSS                        from "polythene-css-button";                           export { ButtonCSS };
+import * as ButtonGroupCSS                   from "polythene-css-button-group";                     export { ButtonGroupCSS };
 import * as CardCSS                          from "polythene-css-card";                             export { CardCSS };
 import * as CheckboxCSS                      from "polythene-css-checkbox";                         export { CheckboxCSS };
 import * as DialogCSS                        from "polythene-css-dialog";                           export { DialogCSS };
@@ -23,7 +24,6 @@ import * as SelectionControlCSS              from "polythene-css-selection-contr
 import * as ShadowCSS                        from "polythene-css-shadow";                           export { ShadowCSS };
 import * as SliderCSS                        from "polythene-css-slider";                           export { SliderCSS };
 import * as SnackbarCSS                      from "polythene-css-snackbar";                         export { SnackbarCSS };
-import * as SplitButtonCSS                   from "polythene-css-split-button";                     export { SplitButtonCSS };
 import * as SVGCSS                           from "polythene-css-svg";                              export { SVGCSS };
 import * as SwitchCSS                        from "polythene-css-switch";                           export { SwitchCSS };
 import * as TabsCSS                          from "polythene-css-tabs";                             export { TabsCSS };

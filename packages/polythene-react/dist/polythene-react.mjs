@@ -1,5 +1,6 @@
 export * from 'polythene-react-base';
 export * from 'polythene-react-button';
+export * from 'polythene-react-button-group';
 export * from 'polythene-react-card';
 export * from 'polythene-react-checkbox';
 export * from 'polythene-react-dialog';
@@ -23,7 +24,6 @@ export * from 'polythene-react-search';
 export * from 'polythene-react-shadow';
 export * from 'polythene-react-slider';
 export * from 'polythene-react-snackbar';
-export * from 'polythene-react-split-button';
 export * from 'polythene-react-svg';
 export * from 'polythene-react-switch';
 export * from 'polythene-react-tabs';

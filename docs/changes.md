@@ -22,7 +22,7 @@
 
 * Button:
   * New options `extraWide` and `highLabel`.
-* New component [Split Button](components/split-button.md)
+* New component [Button Group](components/button-group.md)
 
 <a id="120"></a>
 ### 1.2.0
