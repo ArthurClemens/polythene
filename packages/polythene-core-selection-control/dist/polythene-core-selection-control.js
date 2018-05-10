@@ -115,7 +115,8 @@
 
     var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
     var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
-      if (e.key === "Enter") {
+      if (e.key === "Enter" || e.keyCode === 32) {
+        e.preventDefault();
         if (viewControlClickHandler) {
           viewControlClickHandler(e);
         } else {

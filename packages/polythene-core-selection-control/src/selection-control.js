@@ -87,7 +87,8 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown]
     ? attrs.events[k.onkeydown]
     : e => {
-      if (e.key === "Enter") {
+      if (e.key === "Enter" || e.keyCode === 32) {
+        e.preventDefault();
         if (viewControlClickHandler) {
           viewControlClickHandler(e);
         } else {
