@@ -5,10 +5,10 @@ export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 export const getInitialState = (vnode, createStream) => {
-  const checkedValue = createStream(null);
+  const checkedIndex = createStream(null);
   return {
-    checkedValue,
-    redrawOnUpdate: createStream.merge([checkedValue])
+    checkedIndex,
+    redrawOnUpdate: createStream.merge([checkedIndex])
   };
 };
 
@@ -31,7 +31,7 @@ export const createProps = (vnode, { keys: k }) => {
 export const createContent = (vnode, { renderer: h, RadioButton }) => {
   const attrs = vnode.attrs;
   const state = vnode.state;
-  const checkedValue = state.checkedValue();
+  const checkedIndex = state.checkedIndex();
 
   const buttons = attrs.content
     ? attrs.content
@@ -40,16 +40,16 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
       : attrs.children || vnode.children || [];
 
   return buttons.length
-    ? buttons.map(buttonOpts => {
+    ? buttons.map((buttonOpts, index) => {
       if (!buttonOpts) {
         return null;
       }
       // Only set defaultChecked the first time when no value has been stored yet
-      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
+      const isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedIndex === null;
       if (buttonOpts.value === undefined) {
         console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
       }
-      const isChecked = isDefaultChecked || buttonOpts.checked || checkedValue === buttonOpts.value;
+      const isChecked = isDefaultChecked || buttonOpts.checked || checkedIndex === index;
       return h(RadioButton, Object.assign(
         {},
         {
@@ -62,9 +62,9 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
         buttonOpts,
         {
           /* this component's options */
-          onChange: newState => (
-            state.checkedValue(newState.value),
-            attrs.onChange && attrs.onChange({ value: newState.value })
+          onChange: ({ value }) => (
+            state.checkedIndex(index),
+            attrs.onChange && attrs.onChange({ value })
           ),
           checked: isChecked
         }

@@ -11,10 +11,10 @@ var getElement = function getElement(vnode) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var checkedValue = createStream(null);
+  var checkedIndex = createStream(null);
   return {
-    checkedValue: checkedValue,
-    redrawOnUpdate: createStream.merge([checkedValue])
+    checkedIndex: checkedIndex,
+    redrawOnUpdate: createStream.merge([checkedIndex])
   };
 };
 
@@ -33,20 +33,20 @@ var createContent = function createContent(vnode, _ref2) {
 
   var attrs = vnode.attrs;
   var state = vnode.state;
-  var checkedValue = state.checkedValue();
+  var checkedIndex = state.checkedIndex();
 
   var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
 
-  return buttons.length ? buttons.map(function (buttonOpts) {
+  return buttons.length ? buttons.map(function (buttonOpts, index) {
     if (!buttonOpts) {
       return null;
     }
     // Only set defaultChecked the first time when no value has been stored yet
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedValue === null;
+    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedIndex === null;
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
-    var isChecked = isDefaultChecked || buttonOpts.checked || checkedValue === buttonOpts.value;
+    var isChecked = isDefaultChecked || buttonOpts.checked || checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,
@@ -55,8 +55,9 @@ var createContent = function createContent(vnode, _ref2) {
     /* individual button options */
     buttonOpts, {
       /* this component's options */
-      onChange: function onChange(newState) {
-        return state.checkedValue(newState.value), attrs.onChange && attrs.onChange({ value: newState.value });
+      onChange: function onChange(_ref3) {
+        var value = _ref3.value;
+        return state.checkedIndex(index), attrs.onChange && attrs.onChange({ value: value });
       },
       checked: isChecked
     }));
