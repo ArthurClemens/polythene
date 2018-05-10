@@ -46,7 +46,9 @@
     return { checked: checked, inactive: inactive };
   };
 
-  var getInitialState = function getInitialState(vnode, createStream) {
+  var getInitialState = function getInitialState(vnode, createStream, _ref) {
+    var k = _ref.keys;
+
     var attrs = vnode.attrs;
     var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked || false;
     var checked = createStream(isChecked);
@@ -77,16 +79,30 @@
       notifyChange(e, newChecked);
     };
 
+    var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
+    var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
+      if (e.key === "Enter" || e.keyCode === 32) {
+        e.preventDefault();
+        if (viewControlClickHandler) {
+          viewControlClickHandler(e);
+        } else {
+          toggle(e);
+        }
+      }
+    };
+
     return {
       checked: checked,
       toggle: toggle,
       onChange: onChange,
+      viewControlClickHandler: viewControlClickHandler,
+      viewControlKeyDownHandler: viewControlKeyDownHandler,
       redrawOnUpdate: createStream.merge([checked])
     };
   };
 
-  var createProps = function createProps(vnode, _ref) {
-    var k = _ref.keys;
+  var createProps = function createProps(vnode, _ref2) {
+    var k = _ref2.keys;
 
     var attrs = vnode.attrs;
     var state = vnode.state;
@@ -101,10 +117,10 @@
     });
   };
 
-  var createContent = function createContent(vnode, _ref2) {
-    var h = _ref2.renderer,
-        k = _ref2.keys,
-        ViewControl = _ref2.ViewControl;
+  var createContent = function createContent(vnode, _ref3) {
+    var h = _ref3.renderer,
+        k = _ref3.keys,
+        ViewControl = _ref3.ViewControl;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
@@ -113,27 +129,15 @@
         checked = _currentState2.checked,
         inactive = _currentState2.inactive;
 
-    var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
-    var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
-      if (e.key === "Enter" || e.keyCode === 32) {
-        e.preventDefault();
-        if (viewControlClickHandler) {
-          viewControlClickHandler(e);
-        } else {
-          state.toggle(e);
-        }
-      }
-    };
-
     return h("label", _extends({}, {
       className: classes.formLabel
-    }, viewControlClickHandler && _defineProperty({}, k.onclick, function (e) {
-      return e.preventDefault(), viewControlClickHandler(e);
+    }, state.viewControlClickHandler && _defineProperty({}, k.onclick, function (e) {
+      return e.preventDefault(), state.viewControlClickHandler(e);
     })), [h(ViewControl, _extends({}, attrs, {
       inactive: inactive,
       checked: checked,
       key: "control",
-      events: _defineProperty({}, k.onkeydown, viewControlKeyDownHandler)
+      events: _defineProperty({}, k.onkeydown, state.viewControlKeyDownHandler)
     })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
       name: attrs.name,
       type: attrs.type,

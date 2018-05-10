@@ -66,6 +66,13 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
             state.checkedIndex(index),
             attrs.onChange && attrs.onChange({ value })
           ),
+          onNext: () => {
+            const newIndex = (checkedIndex + 1) > (attrs.buttons.length - 1)
+              ? 0
+              : checkedIndex + 1;
+            state.checkedIndex(newIndex);
+            attrs.onChange && attrs.onChange({ value: buttonOpts.value });
+          },
           checked: isChecked
         }
       ));
