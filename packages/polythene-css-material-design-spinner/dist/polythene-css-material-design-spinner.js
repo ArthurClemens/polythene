@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-material-design-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-material-design-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-material-design-spinner']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreMaterialDesignSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-base-spinner'), require('polythene-core-material-design-spinner')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-base-spinner', 'polythene-core-material-design-spinner'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-base-spinner'],global['polythene-core-material-design-spinner']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssBaseSpinner,polytheneCoreMaterialDesignSpinner) { 'use strict';
 
   var classes = {
     component: "pe-md-spinner",
@@ -17,6 +17,8 @@
     layer: "pe-md-spinner__layer",
     layerN: "pe-md-spinner__layer-"
   };
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -64,31 +66,31 @@
     };
   };
 
-  var kfFillUnfillRotate = function kfFillUnfillRotate(config) {
+  var kfFillUnfillRotate = function kfFillUnfillRotate(arcSize) {
     return {
       " 12.5%": {
-        transform: "rotate(" + 0.5 * config.arc_size + "deg)"
+        transform: "rotate(" + 0.5 * arcSize + "deg)"
       },
       " 25%": {
-        transform: "rotate(" + 1.0 * config.arc_size + "deg)"
+        transform: "rotate(" + 1.0 * arcSize + "deg)"
       },
       " 37.5%": {
-        transform: "rotate(" + 1.5 * config.arc_size + "deg)"
+        transform: "rotate(" + 1.5 * arcSize + "deg)"
       },
       " 50%": {
-        transform: "rotate(" + 2.0 * config.arc_size + "deg)"
+        transform: "rotate(" + 2.0 * arcSize + "deg)"
       },
       " 62.5%": {
-        transform: "rotate(" + 2.5 * config.arc_size + "deg)"
+        transform: "rotate(" + 2.5 * arcSize + "deg)"
       },
       " 75%": {
-        transform: "rotate(" + 3.0 * config.arc_size + "deg)"
+        transform: "rotate(" + 3.0 * arcSize + "deg)"
       },
       " 87.5%": {
-        transform: "rotate(" + 3.5 * config.arc_size + "deg)"
+        transform: "rotate(" + 3.5 * arcSize + "deg)"
       },
       " to": {
-        transform: "rotate(" + 4.0 * config.arc_size + "deg)"
+        transform: "rotate(" + 4.0 * arcSize + "deg)"
       }
     };
   };
@@ -185,129 +187,204 @@
     };
   };
 
-  var layerAnimation = function layerAnimation(config, num) {
+  var layerAnimation = function layerAnimation(vars, num) {
     return _defineProperty({}, "&.pe-md-spinner__layer-" + num, {
-      animation: "mdSpinnerFillUnfillRotate " + 4 * config.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * config.arc_time + "s " + CURVE_INFINITE
+      animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
     });
   };
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, {
-      " .pe-md-spinner__animation": {
-        animation: "mdSpinnerRotate " + componentVars.rotation_duration + "s linear infinite",
-        position: "relative",
-        width: "100%",
-        height: "100%",
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
 
-        /* The spinner does not have any contents that would have to be
-        * flipped if the direction changes. Always use ltr so that the
-        * style works out correctly in both cases. */
-        direction: "ltr"
-      },
+  var varFns = {
+    general_styles: function general_styles(selector, vars) {
+      return [sel(selector, {
+        "@keyframes mdSpinnerRotate": kfRotate(),
+        "@keyframes mdSpinnerRightSpin": kfRightSpin(),
+        "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
+        "@keyframes mdSpinnerFadeOut": kfFadeOut(),
+        "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
+        "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
+        "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
+        "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut(),
 
-      /**
-      * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
-      * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
-      *
-      * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
-      * but still does on Safari and IE.
-      */
-      " .pe-md-spinner__gap-patch": {
-        position: "absolute",
-        boxSizing: "border-box",
-        top: 0,
-        left: "45%",
-        width: "10%",
-        height: "100%",
-        overflow: "hidden",
-        borderColor: "inherit"
-      },
+        " .pe-md-spinner__animation": {
+          position: "relative",
+          width: "100%",
+          height: "100%",
 
-      " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
-        width: "1000%",
-        left: "-450%"
-      },
+          /* The spinner does not have any contents that would have to be
+          * flipped if the direction changes. Always use ltr so that the
+          * style works out correctly in both cases. */
+          direction: "ltr"
+        },
 
-      " .pe-md-spinner__circle-clipper": {
-        display: "inline-block",
-        fontSize: 0,
-        lineHeight: 0,
-        position: "relative",
-        width: "50%",
-        height: "100%",
-        overflow: "hidden",
-        borderColor: "inherit"
-      },
+        /**
+        * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
+        * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+        *
+        * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
+        * but still does on Safari and IE.
+        */
+        " .pe-md-spinner__gap-patch": {
+          position: "absolute",
+          boxSizing: "border-box",
+          top: 0,
+          left: "45%",
+          width: "10%",
+          height: "100%",
+          overflow: "hidden",
+          borderColor: "inherit"
+        },
 
-      " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
-        width: "200%"
-      },
+        " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
+          width: "1000%",
+          left: "-450%"
+        },
 
-      " .pe-md-spinner__circle": [polytheneCoreCss.mixin.fit(), {
-        animation: "none",
-        boxSizing: "border-box",
-        height: "100%",
-        borderStyle: "solid",
-        borderColor: "inherit",
-        borderRadius: "50%",
-        borderBottomColor: "transparent !important"
-      }],
+        " .pe-md-spinner__circle-clipper": {
+          display: "inline-block",
+          fontSize: 0,
+          lineHeight: 0,
+          position: "relative",
+          width: "50%",
+          height: "100%",
+          overflow: "hidden",
+          borderColor: "inherit"
+        },
 
-      "&": ["small", "regular", "medium", "large", "fab"].map(function (size) {
-        return _defineProperty({}, "&.pe-spinner--" + size, {
+        " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
+          width: "200%"
+        },
+
+        " .pe-md-spinner__circle": [polytheneCoreCss.mixin.fit(), {
+          animation: "none",
+          boxSizing: "border-box",
+          height: "100%",
+          borderStyle: "solid",
+          borderColor: "inherit",
+          borderRadius: "50%",
+          borderBottomColor: "transparent !important"
+        }],
+
+        " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+          transform: "rotate(129deg)",
+          borderRightColor: "transparent !important"
+        },
+
+        " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+          transform: "rotate(-129deg)",
+          left: "-100%",
+          borderLeftColor: "transparent !important"
+        },
+
+        /**
+        * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+        *
+        * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
+        * guarantee that the animation will start _exactly_ after that value. So we avoid using
+        * animation-delay and instead set custom keyframes for each color (as redundant as it
+        * seems).
+        *
+        * We write out each animation in full (instead of separating animation-name,
+        * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+        * specific properties properly, treats them as -webkit-animation, and overrides the
+        * other animation rules. See https://github.com/Polymer/platform/issues/53.
+        */
+        " .pe-md-spinner__layer": [[1, 2, 3, 4].map(function (num) {
+          return layerAnimation(vars, num);
+        }), {
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          whiteSpace: "nowrap"
+        }]
+      })];
+    },
+    rotation_duration: function rotation_duration(selector, vars) {
+      return [sel(selector, {
+        " .pe-md-spinner__animation": {
+          animation: "mdSpinnerRotate " + vars.rotation_duration + "s linear infinite"
+        }
+      })];
+    },
+    border_width_small: function border_width_small(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--small": {
           " .pe-md-spinner__circle": {
-            borderWidth: componentVars["border_width_" + size] + "px"
+            borderWidth: vars.border_width_small + "px"
           }
-        });
-      }),
+        }
+      })];
+    },
+    border_width_regular: function border_width_regular(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--regular": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_regular + "px"
+          }
+        }
+      })];
+    },
+    border_width_medium: function border_width_medium(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--medium": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_medium + "px"
+          }
+        }
+      })];
+    },
+    border_width_large: function border_width_large(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--large": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_large + "px"
+          }
+        }
+      })];
+    },
+    border_width_fab: function border_width_fab(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--fab": {
+          " .pe-md-spinner__circle": {
+            borderWidth: vars.border_width_fab + "px"
+          }
+        }
+      })];
+    },
+    arc_size: function arc_size(selector, vars) {
+      return [sel(selector, {
+        "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars.arc_size)
+      })];
+    },
+    arc_time: function arc_time(selector, vars) {
+      return [sel(selector, {
+        " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+          animation: "mdSpinnerLeftSpin " + vars.arc_time + "s " + CURVE_INFINITE
+        },
+        " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+          animation: "mdSpinnerRightSpin " + vars.arc_time + "s " + CURVE_INFINITE
+        },
+        " .pe-md-spinner__layer": {
+          animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE
+        }
+      })];
+    }
+  };
 
-      " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
-        transform: "rotate(129deg)",
-        animation: "mdSpinnerLeftSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
-        borderRightColor: "transparent !important"
-      },
-
-      " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
-        transform: "rotate(-129deg)",
-        animation: "mdSpinnerRightSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
-        left: "-100%",
-        borderLeftColor: "transparent !important"
-      },
-
-      /**
-      * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
-      *
-      * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
-      * guarantee that the animation will start _exactly_ after that value. So we avoid using
-      * animation-delay and instead set custom keyframes for each color (as redundant as it
-      * seems).
-      *
-      * We write out each animation in full (instead of separating animation-name,
-      * animation-duration, etc.) because under the polyfill, Safari does not recognize those
-      * specific properties properly, treats them as -webkit-animation, and overrides the
-      * other animation rules. See https://github.com/Polymer/platform/issues/53.
-      */
-      " .pe-md-spinner__layer": [[1, 2, 3, 4].map(function (num) {
-        return layerAnimation(componentVars, num);
-      }), {
-        animation: "mdSpinnerFillUnfillRotate " + 4 * componentVars.arc_time + "s " + CURVE_INFINITE,
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        whiteSpace: "nowrap"
-      }],
-
-      "@keyframes mdSpinnerRotate": kfRotate(),
-      "@keyframes mdSpinnerRightSpin": kfRightSpin(),
-      "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
-      "@keyframes mdSpinnerFadeOut": kfFadeOut(),
-      "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(componentVars),
-      "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
-      "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
-      "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
-      "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut()
-    })];
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -323,49 +400,99 @@
   subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
   */
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      color: componentVars["color_" + tint + "_single"],
-
-      " .pe-md-spinner__layer": {
-        borderColor: "currentcolor"
-      },
-
-      ":not(.pe-spinner--single-color)": {
-        " .pe-md-spinner__layer-1": {
-          borderColor: componentVars["color_" + tint + "_1"]
-        },
-        " .pe-md-spinner__layer-2": {
-          borderColor: componentVars["color_" + tint + "_2"]
-        },
-        " .pe-md-spinner__layer-3": {
-          borderColor: componentVars["color_" + tint + "_3"]
-        },
-        " .pe-md-spinner__layer-4": {
-          borderColor: componentVars["color_" + tint + "_4"]
-        }
-      }
-    })];
+  var sel$1 = function sel(selector, o) {
+    return _defineProperty$1({}, selector, o);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-  });
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [sel$1(selector, {
+        " .pe-md-spinner__layer": {
+          borderColor: "currentcolor"
+        }
+      })];
+    }
+  };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var tintFns = function tintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_single", function (selector, vars) {
+      return [sel$1(selector, {
+        color: vars["color_" + tint + "_single"]
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_1", function (selector, vars) {
+      return [sel$1(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-1": {
+            borderColor: vars["color_" + tint + "_1"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_2", function (selector, vars) {
+      return [sel$1(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-2": {
+            borderColor: vars["color_" + tint + "_2"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_3", function (selector, vars) {
+      return [sel$1(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-3": {
+            borderColor: vars["color_" + tint + "_3"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_4", function (selector, vars) {
+      return [sel$1(selector, {
+        ":not(.pe-spinner--single-color)": {
+          " .pe-md-spinner__layer-4": {
+            borderColor: vars["color_" + tint + "_4"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? lightTintFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
+  };
+
+  var color = (function (selector, componentVars, customVars) {
+    return [polytheneCssBaseSpinner.style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    polytheneCssBaseSpinner.style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+    style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreMaterialDesignSpinner.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreMaterialDesignSpinner.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreMaterialDesignSpinner.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreMaterialDesignSpinner.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreMaterialDesignSpinner.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreMaterialDesignSpinner.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreMaterialDesignSpinner.vars, fns);

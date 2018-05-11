@@ -106,6 +106,8 @@ var rgba = function rgba(colorStr) {
 };
 
 var vars$1 = {
+  general_styles: true,
+
   size_small: 3 * vars.grid_unit_component,
   size_regular: 4 * vars.grid_unit_component,
   size_medium: 5 * vars.grid_unit_component,

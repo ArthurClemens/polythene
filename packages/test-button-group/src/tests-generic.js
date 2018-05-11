@@ -1,10 +1,16 @@
-import { ButtonCSS } from "polythene-css";
+import { ButtonCSS, ButtonGroupCSS } from "polythene-css";
 
 export default ({ renderer: h, Button, ButtonGroup }) => {
   
-  ButtonCSS.addStyle(".white-background-button", {
+  ButtonCSS.addStyle(".button-group-white-background", {
     color_light_background: "#fff"
   });
+
+  ButtonGroupCSS.addStyle(".button-group-separator", {
+    color_light_separator: "#42a5f5"
+  });
+
+  
 
   return [
     {
@@ -30,12 +36,35 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
                 label: "Left",
                 extraWide: true,
                 highLabel: true,
-                className: "white-background-button"
+                className: "button-group-white-background"
               }),
               h(Button, {
                 dropdown: true,
                 highLabel: true,
-                className: "white-background-button"
+                className: "button-group-white-background"
+              })
+            ]
+          )
+      },
+    },
+    {
+      name: "Themed (color)",
+      component: {
+        view: () => 
+          h(ButtonGroup,
+            {
+              separator: true,
+              className: "button-group-separator"
+            },
+            [
+              h(Button, {
+                label: "Left",
+                extraWide: true,
+                highLabel: true,
+              }),
+              h(Button, {
+                dropdown: true,
+                highLabel: true,
               })
             ]
           )

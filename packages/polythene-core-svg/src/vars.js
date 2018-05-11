@@ -1,5 +1,7 @@
 
 export default {
-  color_light:  "currentcolor",
-  color_dark:   "currentcolor"
+  general_styles: true,
+  
+  color_light:    "currentcolor",
+  color_dark:     "currentcolor"
 };

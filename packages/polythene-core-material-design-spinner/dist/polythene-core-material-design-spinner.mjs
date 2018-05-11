@@ -85,6 +85,8 @@ var yellow600 = "#fdd835";
 var green500 = "#4caf50";
 
 var vars$2 = {
+  general_styles: true,
+
   border_width_small: vars$1.size_small / vars$1.size_regular * 3,
   border_width_regular: 3,
   border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,

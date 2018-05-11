@@ -40,8 +40,12 @@
   };
 
   var vars = {
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
+    general_styles: true,
+
+    separator_width: 1,
+
+    color_light_separator: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_dark_separator: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
   };
 
   exports.coreButtonGroup = buttonGroup;

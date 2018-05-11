@@ -27,6 +27,8 @@ const yellow600 = "#fdd835";
 const green500 =  "#4caf50";
 
 export default {
+  general_styles:       true,
+  
   border_width_small:   baseVars.size_small / baseVars.size_regular * 3,
   border_width_regular: 3,
   border_width_medium:  baseVars.size_medium / baseVars.size_regular * 3,

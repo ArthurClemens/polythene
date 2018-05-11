@@ -1,7 +1,7 @@
 import opener from "./components/opener";
 import progressOpener from "./components/progress-opener";
 import progressSlider from "./components/progress-slider";
-import { BaseSpinnerCSS, MaterialDesignSpinnerCSS, IOSSpinnerCSS } from "polythene-css";
+import { BaseSpinnerCSS, MaterialDesignSpinnerCSS, MaterialDesignProgressSpinnerCSS, IOSSpinnerCSS } from "polythene-css";
 
 export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinner, RaisedButton, Slider, renderer, keys }) => {
 
@@ -10,6 +10,12 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
     color_light_2: "red",
     color_light_3: "orange",
     color_light_4: "red",
+    color_light_raised_background: "#222",
+    rotation_duration: 3
+  });
+
+  MaterialDesignProgressSpinnerCSS.addStyle(".tests-spinner-themed-md-progress-spinner", {
+    color_light: "red",
   });
 
   BaseSpinnerCSS.addStyle(".tests-spinner-transitions", {
@@ -21,8 +27,9 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
   });
 
   IOSSpinnerCSS.addStyle(".tests-spinner-themed-ios-spinner", {
-    color_light: "green",
-    color_dark:  "yellow"
+    color_light:             "green",
+    color_dark:              "yellow",
+    animation_duration_secs: 3
   });
 
   return [
@@ -71,7 +78,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
       })
     },
     {
-      name: "Theme (color) -- Material Design Spinner",
+      name: "Theme -- Material Design Spinner",
       interactive: true,
       component: opener({
         renderer,
@@ -79,7 +86,10 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
         RaisedButton,
         Spinner: MaterialDesignSpinner,
         spinners: [
-          { className: "tests-spinner-themed-md-spinner" }
+          {
+            className: "tests-spinner-themed-md-spinner",
+            raised: true
+          }
         ]
       })
     },
@@ -136,7 +146,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
       })
     },
     {
-      name: "Theme (color) -- iOS Spinner",
+      name: "Theme (color and animation duration) -- iOS Spinner",
       interactive: true,
       component: opener({
         renderer,
@@ -186,6 +196,17 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
         keys,
         RaisedButton,
         Spinner: MaterialDesignProgressSpinner
+      })
+    },
+    {
+      name: "Theme (color) - Material Design Progress Spinner",
+      interactive: true,
+      component: progressOpener({
+        renderer,
+        keys,
+        RaisedButton,
+        Spinner: MaterialDesignProgressSpinner,
+        className: "tests-spinner-themed-md-progress-spinner"
       })
     },
     {

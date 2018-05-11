@@ -88,6 +88,8 @@
   var green500 = "#4caf50";
 
   var vars = {
+    general_styles: true,
+
     border_width_small: polytheneCoreBaseSpinner.vars.size_small / polytheneCoreBaseSpinner.vars.size_regular * 3,
     border_width_regular: 3,
     border_width_medium: polytheneCoreBaseSpinner.vars.size_medium / polytheneCoreBaseSpinner.vars.size_regular * 3,

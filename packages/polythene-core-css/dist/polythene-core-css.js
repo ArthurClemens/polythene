@@ -1013,7 +1013,7 @@
       styles[_key - 1] = arguments[_key];
     }
 
-    addToDocument.apply(undefined, [{
+    return addToDocument.apply(undefined, [{
       id: id
     }].concat(styles));
   };

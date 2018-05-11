@@ -1,18 +1,18 @@
 import { mixin } from "polythene-core-css";
 
-const selectorFn = (selector, o) => ({
+const sel = (selector, o) => ({
   [selector]: o
 });
 
 const line_height_padding_v = (selector, vars) =>
-  selectorFn(selector, {
+  sel(selector, {
     " .pe-button__dropdown": {
       minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.padding_v}px)`,
     },
   });
 
 const outer_padding_v_padding_v = (selector, vars) => 
-  selectorFn(selector, {
+  sel(selector, {
     ".pe-button--high-label": {
       " .pe-button__label": {
         padding: vars.outer_padding_v + vars.padding_v + "px 0",
@@ -21,7 +21,7 @@ const outer_padding_v_padding_v = (selector, vars) =>
   });
 
 const line_height_outer_padding_v_padding_v = (selector, vars) => 
-  selectorFn(selector, {
+  sel(selector, {
     ".pe-button--high-label": {
       " .pe-button__label, .pe-button__dropdown": {
         minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.outer_padding_v + vars.padding_v}px)`,
@@ -31,7 +31,7 @@ const line_height_outer_padding_v_padding_v = (selector, vars) =>
 
 const varFns = {
   general_styles: selector => [
-    selectorFn(selector, {
+    sel(selector, {
       display: "inline-block",
       background: "transparent",
       border: "none",
@@ -79,14 +79,14 @@ const varFns = {
     })
   ],
   border_radius: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         borderRadius: vars.border_radius + "px",
       }
     })
   ],
   border_width: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--border": {
         " .pe-button__content": {
           borderWidth: vars.border_width + "px"
@@ -95,19 +95,19 @@ const varFns = {
     })
   ],
   min_width: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       minWidth: vars.min_width + "px",
     })
   ],
   animation_duration: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content, .pe-button__wash, .pe-button__focus": [
         mixin.defaultTransition("all", vars.animation_duration)
       ],
     })
   ],
   padding_h: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         padding: "0 " + vars.padding_h + "px",
 
@@ -124,14 +124,14 @@ const varFns = {
     })
   ],
   padding_h_extra_wide: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--extra-wide .pe-button__content": {
         padding: "0 " + vars.padding_h_extra_wide + "px",
       },
     })
   ],
   padding_v: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__label": {
         padding: vars.padding_v + "px 0",
       },
@@ -147,28 +147,28 @@ const varFns = {
     line_height_outer_padding_v_padding_v(selector, vars)
   ],
   font_weight: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__label": {
         fontWeight: vars.font_weight,
       }
     })
   ],
   text_transform: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__label": {
         textTransform: vars.text_transform,
       }
     })
   ],
   font_size: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__label, .pe-button__dropdown": {
         fontSize: vars.font_size + "px",
       },
     })
   ],
   line_height: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__label, .pe-button__dropdown": {
         lineHeight: vars.line_height,
       },
@@ -177,7 +177,7 @@ const varFns = {
     line_height_outer_padding_v_padding_v(selector, vars)
   ],
   dropdown_icon_size: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--dropdown": {
         " .pe-button__dropdown": {
           width: vars.dropdown_icon_size + "px",
@@ -192,7 +192,7 @@ const varFns = {
     })
   ],
   outer_padding_v: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ":not(.pe-button--high-label)": {
         padding: vars.outer_padding_v + "px 0",
       },
@@ -213,4 +213,3 @@ export default (selector, componentVars, customVars) => {
       : null
   )).filter(s => s);
 };
-

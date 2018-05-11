@@ -24,7 +24,13 @@
     visible: "pe-spinner--visible"
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
 
   var sizes = function sizes(size) {
     return {
@@ -33,10 +39,10 @@
     };
   };
 
-  var raisedSize = function raisedSize(size, componentVars) {
-    var _componentVars$raised = componentVars.raisedSize(size),
-        padding = _componentVars$raised.padding,
-        paddedSize = _componentVars$raised.paddedSize;
+  var raisedSize = function raisedSize(size, vars) {
+    var _vars$raisedSize = vars.raisedSize(size),
+        padding = _vars$raisedSize.padding,
+        paddedSize = _vars$raisedSize.paddedSize;
 
     return {
       width: paddedSize + "px",
@@ -45,68 +51,163 @@
     };
   };
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, [componentVars.animation_hide_css, {
-      transitionDelay: componentVars.animation_delay,
-      transitionDuration: componentVars.animation_duration,
-      transitionTimingFunction: componentVars.animation_timing_function,
-      transitionProperty: "all",
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [sel(selector, {
+        transitionProperty: "all",
 
-      ".pe-spinner--visible, &.pe-spinner--permanent": [componentVars.animation_show_css],
+        ".pe-spinner--raised": {
+          position: "relative",
+          borderRadius: "50%"
+        }
+      })];
+    },
+    animation_hide_css: function animation_hide_css(selector, vars) {
+      return _defineProperty({}, selector, [vars.animation_hide_css]);
+    },
+    animation_delay: function animation_delay(selector, vars) {
+      return [sel(selector, {
+        transitionDelay: vars.animation_delay
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [sel(selector, {
+        transitionDuration: vars.animation_duration
+      })];
+    },
+    animation_timing_function: function animation_timing_function(selector, vars) {
+      return [sel(selector, {
+        transitionTimingFunction: vars.animation_timing_function
+      })];
+    },
+    animation_show_css: function animation_show_css(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--visible, &.pe-spinner--permanent": [vars.animation_show_css]
+      })];
+    },
+    size_small: function size_small(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--small": sizes(vars.size_small),
 
-      ".pe-spinner--small": sizes(componentVars.size_small),
-      ".pe-spinner--regular": sizes(componentVars.size_regular),
-      ".pe-spinner--medium": sizes(componentVars.size_medium),
-      ".pe-spinner--large": sizes(componentVars.size_large),
-      ".pe-spinner--fab": sizes(componentVars.size_fab),
+        ".pe-spinner--raised": {
+          ".pe-spinner--small": raisedSize(vars.size_small, vars)
+        }
+      })];
+    },
+    size_regular: function size_regular(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--regular": sizes(vars.size_regular),
 
-      ".pe-spinner--raised": {
-        position: "relative",
-        borderRadius: "50%",
+        ".pe-spinner--raised": {
+          ".pe-spinner--regular": raisedSize(vars.size_regular, vars)
+        }
+      })];
+    },
+    size_medium: function size_medium(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--medium": sizes(vars.size_medium),
 
-        ".pe-spinner--small": raisedSize(componentVars.size_small, componentVars),
-        ".pe-spinner--regular": raisedSize(componentVars.size_regular, componentVars),
-        ".pe-spinner--medium": raisedSize(componentVars.size_medium, componentVars),
-        ".pe-spinner--large": raisedSize(componentVars.size_large, componentVars),
-        ".pe-spinner--fab": raisedSize(componentVars.size_fab, componentVars)
-      }
-    }])];
+        ".pe-spinner--raised": {
+          ".pe-spinner--medium": raisedSize(vars.size_medium, vars)
+        }
+      })];
+    },
+    size_large: function size_large(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--large": sizes(vars.size_large),
+
+        ".pe-spinner--raised": {
+          ".pe-spinner--large": raisedSize(vars.size_large, vars)
+        }
+      })];
+    },
+    size_fab: function size_fab(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--fab": sizes(vars.size_fab),
+
+        ".pe-spinner--raised": {
+          ".pe-spinner--fab": raisedSize(vars.size_fab, vars)
+        }
+      })];
+    }
+  };
+
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      ".pe-spinner--raised": {
-        backgroundColor: componentVars["color_" + tint + "_raised_background"]
-      }
-    })];
+  var sel$1 = function sel(selector, o) {
+    return _defineProperty$1({}, selector, o);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-  });
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [];
+    } // eslint-disable-line no-unused-vars
+  };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var tintFns = function tintFns(tint) {
+    return _defineProperty$1({}, "color_" + tint + "_raised_background", function (selector, vars) {
+      return [sel$1(selector, {
+        "&.pe-spinner--raised": {
+          backgroundColor: vars["color_" + tint + "_raised_background"]
+        }
+      })];
+    });
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? lightTintFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
+  };
+
+  var color = (function (selector, componentVars, customVars) {
+    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreBaseSpinner.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreBaseSpinner.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreBaseSpinner.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreBaseSpinner.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreBaseSpinner.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreBaseSpinner.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreBaseSpinner.vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.style = style;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

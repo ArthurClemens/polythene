@@ -1,12 +1,12 @@
 
-const selectorFn = (selector, o) => ({
+const sel = (selector, o) => ({
   [selector]: o
 });
 
 const generalFns = ({
   general_styles: selector => [
-    selectorFn(selector, {
-      ".pe-button--focus, .pe-button--selected": {
+    sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: 1
         }
@@ -23,14 +23,14 @@ const tintFns = tint => ({
   // Text
 
   ["color_" + tint + "_text"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       "&, &:link, &:visited": {
         color: vars["color_" + tint + "_text"]
       },
     })
   ],
   ["color_" + tint + "_disabled_text"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--disabled": {
         color: vars["color_" + tint + "_disabled_text"],
       },
@@ -40,21 +40,21 @@ const tintFns = tint => ({
   // Background
 
   ["color_" + tint + "_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         backgroundColor: vars["color_" + tint + "_background"],
       },
     })
   ],
   ["color_" + tint + "_focus_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__focus": {
         backgroundColor: vars["color_" + tint + "_focus_background"]
       },
     })
   ],
   ["color_" + tint + "_active_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
           backgroundColor: vars["color_" + tint + "_active_background"]
@@ -63,7 +63,7 @@ const tintFns = tint => ({
     })
   ],
   ["color_" + tint + "_disabled_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--disabled": {
         " .pe-button__content": {
           backgroundColor: vars["color_" + tint + "_disabled_background"],
@@ -75,7 +75,7 @@ const tintFns = tint => ({
   // Borders
 
   ["color_" + tint + "_border"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         borderColor: vars["color_" + tint + "_border"],
       },
@@ -83,7 +83,7 @@ const tintFns = tint => ({
   ],
 
   ["color_" + tint + "_active_border"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_active_border"],
@@ -92,7 +92,7 @@ const tintFns = tint => ({
     })
   ],
   ["color_" + tint + "_disabled_border"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       ".pe-button--disabled": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_disabled_border"],
@@ -104,7 +104,7 @@ const tintFns = tint => ({
   // Icon
 
   ["color_" + tint + "_icon"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__dropdown": {
         color: vars["color_" + tint + "_icon"]
       },
@@ -116,13 +116,13 @@ const tintFns = tint => ({
 const hoverTintFns = tint => ({
 
   ["color_" + tint + "_hover"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       color: vars["color_" + tint + "_hover"],
     })
   ],
 
   ["color_" + tint + "_hover_border"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         borderColor: vars["color_" + tint + "_hover_border"],
       },
@@ -130,7 +130,7 @@ const hoverTintFns = tint => ({
   ],
 
   ["color_" + tint + "_wash_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__wash": {
         backgroundColor: vars["color_" + tint + "_wash_background"]
       },
@@ -138,7 +138,7 @@ const hoverTintFns = tint => ({
   ],
 
   ["color_" + tint + "_hover_background"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__content": {
         backgroundColor: vars["color_" + tint + "_hover_background"]
       },
@@ -146,7 +146,7 @@ const hoverTintFns = tint => ({
   ],
 
   ["color_" + tint + "_hover_icon"]: (selector, vars) => [
-    selectorFn(selector, {
+    sel(selector, {
       " .pe-button__dropdown": {
         color: vars["color_" + tint + "_hover_icon"],
       }
@@ -157,6 +157,7 @@ const hoverTintFns = tint => ({
 
 const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
 const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+
 const lightTintHoverFns = hoverTintFns("light");
 const darkTintHoverFns = hoverTintFns("dark");
 

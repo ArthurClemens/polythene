@@ -109,6 +109,8 @@
   };
 
   var vars = {
+    general_styles: true,
+
     size_small: 3 * polytheneTheme.vars.grid_unit_component,
     size_regular: 4 * polytheneTheme.vars.grid_unit_component,
     size_medium: 5 * polytheneTheme.vars.grid_unit_component,

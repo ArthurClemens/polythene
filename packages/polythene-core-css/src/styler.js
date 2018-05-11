@@ -9,11 +9,10 @@ const ID_REGEX = /[^a-z0-9\\-]/g;
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element
  * @param styles: list of lists style Objects
  */
-const add = (id, ...styles) => {
+const add = (id, ...styles) =>
   addToDocument({
     id
   }, ...styles);
-};
 
 /*
  * Removes a style from head.

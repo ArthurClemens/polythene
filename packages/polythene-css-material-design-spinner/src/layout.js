@@ -46,30 +46,30 @@ const kfFadeOut = () => ({
   }
 });
 
-const kfFillUnfillRotate = (config) => ({
+const kfFillUnfillRotate = arcSize => ({
   " 12.5%": {
-    transform: "rotate(" + (0.5 * config.arc_size) + "deg)"
+    transform: "rotate(" + (0.5 * arcSize) + "deg)"
   },
   " 25%": {
-    transform: "rotate(" + (1.0 * config.arc_size) + "deg)"
+    transform: "rotate(" + (1.0 * arcSize) + "deg)"
   },
   " 37.5%": {
-    transform: "rotate(" + (1.5 * config.arc_size) + "deg)"
+    transform: "rotate(" + (1.5 * arcSize) + "deg)"
   },
   " 50%": {
-    transform: "rotate(" + (2.0 * config.arc_size) + "deg)"
+    transform: "rotate(" + (2.0 * arcSize) + "deg)"
   },
   " 62.5%": {
-    transform: "rotate(" + (2.5 * config.arc_size) + "deg)"
+    transform: "rotate(" + (2.5 * arcSize) + "deg)"
   },
   " 75%": {
-    transform: "rotate(" + (3.0 * config.arc_size) + "deg)"
+    transform: "rotate(" + (3.0 * arcSize) + "deg)"
   },
   " 87.5%": {
-    transform: "rotate(" + (3.5 * config.arc_size) + "deg)"
+    transform: "rotate(" + (3.5 * arcSize) + "deg)"
   },
   " to": {
-    transform: "rotate(" + (4.0 * config.arc_size) + "deg)"
+    transform: "rotate(" + (4.0 * arcSize) + "deg)"
   },
 });
 
@@ -157,130 +157,206 @@ const kfLayer4FadeInOut = () => ({
   }
 });
 
-const layerAnimation = (config, num) => ({
+const layerAnimation = (vars, num) => ({
   ["&.pe-md-spinner__layer-" + num]: {
-    animation: "mdSpinnerFillUnfillRotate " + 4 * config.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * config.arc_time + "s " + CURVE_INFINITE
+    animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
   }
 });
 
-export default (selector, componentVars) => [{
-  [selector]: {
-    " .pe-md-spinner__animation": {
-      animation: "mdSpinnerRotate " + componentVars.rotation_duration + "s linear infinite",
-      position: "relative",
-      width: "100%",
-      height: "100%",
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-      /* The spinner does not have any contents that would have to be
-      * flipped if the direction changes. Always use ltr so that the
-      * style works out correctly in both cases. */
-      direction: "ltr"
-    },
 
-    /**
-    * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
-    * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
-    *
-    * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
-    * but still does on Safari and IE.
-    */
-    " .pe-md-spinner__gap-patch": {
-      position: "absolute",
-      boxSizing: "border-box",
-      top: 0,
-      left: "45%",
-      width: "10%",
-      height: "100%",
-      overflow: "hidden",
-      borderColor: "inherit"
-    },
+const varFns = {
+  general_styles: (selector, vars) => [
+    sel(selector, {
+      "@keyframes mdSpinnerRotate": kfRotate(),
+      "@keyframes mdSpinnerRightSpin": kfRightSpin(),
+      "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
+      "@keyframes mdSpinnerFadeOut": kfFadeOut(),
+      "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
+      "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
+      "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
+      "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut(),
 
-    " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
-      width: "1000%",
-      left: "-450%"
-    },
-
-    " .pe-md-spinner__circle-clipper": {
-      display: "inline-block",
-      fontSize: 0,
-      lineHeight: 0,
-      position: "relative",
-      width: "50%",
-      height: "100%",
-      overflow: "hidden",
-      borderColor: "inherit"
-    },
-
-    " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
-      width: "200%"
-    },
-
-    " .pe-md-spinner__circle": [
-      mixin.fit(),
-      {
-        animation: "none",
-        boxSizing: "border-box",
-        height: "100%",
-        borderStyle: "solid",
-        borderColor: "inherit",
-        borderRadius: "50%",
-        borderBottomColor: "transparent !important"
-      }
-    ],
-
-    "&": ["small", "regular", "medium", "large", "fab"].map(size => ({
-      ["&.pe-spinner--" + size]: {
-        " .pe-md-spinner__circle": {
-          borderWidth: componentVars["border_width_" + size] + "px"
-        }
-      }
-    })),
-
-    " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
-      transform: "rotate(129deg)",
-      animation: "mdSpinnerLeftSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
-      borderRightColor: "transparent !important"
-    },
-
-    " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
-      transform: "rotate(-129deg)",
-      animation: "mdSpinnerRightSpin " + componentVars.arc_time + "s " + CURVE_INFINITE,
-      left: "-100%",
-      borderLeftColor: "transparent !important"
-    },
-
-    /**
-    * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
-    *
-    * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
-    * guarantee that the animation will start _exactly_ after that value. So we avoid using
-    * animation-delay and instead set custom keyframes for each color (as redundant as it
-    * seems).
-    *
-    * We write out each animation in full (instead of separating animation-name,
-    * animation-duration, etc.) because under the polyfill, Safari does not recognize those
-    * specific properties properly, treats them as -webkit-animation, and overrides the
-    * other animation rules. See https://github.com/Polymer/platform/issues/53.
-    */
-    " .pe-md-spinner__layer": [
-      [1,2,3,4].map(num => layerAnimation(componentVars, num)),
-      {
-        animation: "mdSpinnerFillUnfillRotate " + 4 * componentVars.arc_time + "s " + CURVE_INFINITE,
-        position: "absolute",
+      " .pe-md-spinner__animation": {
+        position: "relative",
         width: "100%",
         height: "100%",
-        whiteSpace: "nowrap"
-      }
-    ],
 
-    "@keyframes mdSpinnerRotate": kfRotate(),
-    "@keyframes mdSpinnerRightSpin": kfRightSpin(),
-    "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
-    "@keyframes mdSpinnerFadeOut": kfFadeOut(),
-    "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(componentVars),
-    "@keyframes mdSpinnerLayer1FadeInOut": kfLayer1FadeInOut(),
-    "@keyframes mdSpinnerLayer2FadeInOut": kfLayer2FadeInOut(),
-    "@keyframes mdSpinnerLayer3FadeInOut": kfLayer3FadeInOut(),
-    "@keyframes mdSpinnerLayer4FadeInOut": kfLayer4FadeInOut()
-  }
-}];
+        /* The spinner does not have any contents that would have to be
+        * flipped if the direction changes. Always use ltr so that the
+        * style works out correctly in both cases. */
+        direction: "ltr"
+      },
+
+      /**
+      * Patch the gap that appear between the two adjacent div.pe-md-spinner__circle-clipper while the
+      * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+      *
+      * Update: the gap no longer appears on Chrome when .pe-md-spinner__layer"s opacity is 0.99,
+      * but still does on Safari and IE.
+      */
+      " .pe-md-spinner__gap-patch": {
+        position: "absolute",
+        boxSizing: "border-box",
+        top: 0,
+        left: "45%",
+        width: "10%",
+        height: "100%",
+        overflow: "hidden",
+        borderColor: "inherit"
+      },
+
+      " .pe-md-spinner__gap-patch .pe-md-spinner__circle": {
+        width: "1000%",
+        left: "-450%"
+      },
+
+      " .pe-md-spinner__circle-clipper": {
+        display: "inline-block",
+        fontSize: 0,
+        lineHeight: 0,
+        position: "relative",
+        width: "50%",
+        height: "100%",
+        overflow: "hidden",
+        borderColor: "inherit"
+      },
+
+      " .pe-md-spinner__circle-clipper .pe-md-spinner__circle": {
+        width: "200%"
+      },
+
+      " .pe-md-spinner__circle": [
+        mixin.fit(),
+        {
+          animation: "none",
+          boxSizing: "border-box",
+          height: "100%",
+          borderStyle: "solid",
+          borderColor: "inherit",
+          borderRadius: "50%",
+          borderBottomColor: "transparent !important"
+        }
+      ],
+
+      " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+        transform: "rotate(129deg)",
+        borderRightColor: "transparent !important"
+      },
+
+      " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+        transform: "rotate(-129deg)",
+        left: "-100%",
+        borderLeftColor: "transparent !important"
+      },
+
+      /**
+      * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):
+      *
+      * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn"t
+      * guarantee that the animation will start _exactly_ after that value. So we avoid using
+      * animation-delay and instead set custom keyframes for each color (as redundant as it
+      * seems).
+      *
+      * We write out each animation in full (instead of separating animation-name,
+      * animation-duration, etc.) because under the polyfill, Safari does not recognize those
+      * specific properties properly, treats them as -webkit-animation, and overrides the
+      * other animation rules. See https://github.com/Polymer/platform/issues/53.
+      */
+      " .pe-md-spinner__layer": [
+        [1,2,3,4].map(num => layerAnimation(vars, num)),
+        {
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          whiteSpace: "nowrap"
+        }
+      ],
+    })
+  ],
+  rotation_duration: (selector, vars) => [
+    sel(selector, {
+      " .pe-md-spinner__animation": {
+        animation: "mdSpinnerRotate " + vars.rotation_duration + "s linear infinite",
+      },
+    })
+  ],
+  border_width_small: (selector, vars) => [
+    sel(selector, {
+      ".pe-spinner--small": {
+        " .pe-md-spinner__circle": {
+          borderWidth: vars.border_width_small + "px"
+        }
+      }
+    })
+  ],
+  border_width_regular: (selector, vars) => [
+    sel(selector, {
+      ".pe-spinner--regular": {
+        " .pe-md-spinner__circle": {
+          borderWidth: vars.border_width_regular + "px"
+        }
+      }
+    })
+  ],
+  border_width_medium: (selector, vars) => [
+    sel(selector, {
+      ".pe-spinner--medium": {
+        " .pe-md-spinner__circle": {
+          borderWidth: vars.border_width_medium + "px"
+        }
+      }
+    })
+  ],
+  border_width_large: (selector, vars) => [
+    sel(selector, {
+      ".pe-spinner--large": {
+        " .pe-md-spinner__circle": {
+          borderWidth: vars.border_width_large + "px"
+        }
+      }
+    })
+  ],
+  border_width_fab: (selector, vars) => [
+    sel(selector, {
+      ".pe-spinner--fab": {
+        " .pe-md-spinner__circle": {
+          borderWidth: vars.border_width_fab + "px"
+        }
+      }
+    })
+  ],
+  arc_size: (selector, vars) => [
+    sel(selector, {
+      "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars.arc_size),
+    })
+  ],
+  arc_time: (selector, vars) => [
+    sel(selector, {
+      " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
+        animation: "mdSpinnerLeftSpin " + vars.arc_time + "s " + CURVE_INFINITE,
+      },
+      " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
+        animation: "mdSpinnerRightSpin " + vars.arc_time + "s " + CURVE_INFINITE,
+      },
+      " .pe-md-spinner__layer": {
+        animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE,
+      },
+    })
+  ],
+};
+
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
+};

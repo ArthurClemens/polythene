@@ -2,7 +2,7 @@ import stream from "mithril/stream";
 
 const STEP_DURATION = 2000;
 
-export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton }) => ({
+export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, className }) => ({
   oninit: vnode => {
     const start = stream(null);
     const percentage = stream(0);
@@ -56,7 +56,8 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton }) 
                 {},
                 {
                   show: true,
-                  percentage
+                  percentage,
+                  className
                 },
                 attrs
               ))
