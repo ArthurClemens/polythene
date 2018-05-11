@@ -87,189 +87,385 @@
     })), _ref)];
   });
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty$1({}, selector, [{
-      display: "inline-block",
-      minWidth: componentVars.min_width + "px",
-      background: "transparent",
-      border: "none",
+  var selectorFn = function selectorFn(selector, o) {
+    return _defineProperty$1({}, selector, o);
+  };
 
-      " .pe-button__content, .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration)],
+  var line_height_padding_v = function line_height_padding_v(selector, vars) {
+    return selectorFn(selector, {
+      " .pe-button__dropdown": {
+        minHeight: "calc((1em * " + vars.line_height + ") + 2 * " + vars.padding_v + "px)"
+      }
+    });
+  };
 
-      " .pe-button__content": {
-        position: "relative",
-        padding: "0 " + componentVars.padding_h + "px",
-        borderWidth: 0,
-        borderRadius: componentVars.border_radius + "px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      },
-
-      " .pe-button__label": {
-        fontWeight: componentVars.font_weight,
-        textTransform: componentVars.text_transform,
-        padding: componentVars.padding_v + "px 0"
-      },
-
-      ".pe-button--border": {
-        " .pe-button__wash, .pe-button__focus, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
-
-        " .pe-button__content": {
-          borderStyle: "solid",
-          borderWidth: "1px"
-        },
-        " .pe-button__label": {
-          padding: componentVars.padding_v - 1 + "px 0"
-        }
-      },
-
-      " .pe-button__label, .pe-button__dropdown": {
-        minHeight: "calc((1em * " + componentVars.line_height + ") + 2 * " + componentVars.padding_v + "px)",
-        fontSize: componentVars.font_size + "px",
-        lineHeight: componentVars.line_height,
-        whiteSpace: "pre",
-        userSelect: "none",
-        "-moz-user-select": "none"
-      },
-
-      ".pe-button--dropdown": {
-        minWidth: "0", // IE 11 does not recognize "initial" here
-
-        " .pe-button__dropdown": {
-          width: componentVars.dropdown_icon_size + "px",
-          minWidth: "calc(36px - 2 * " + componentVars.padding_h + "px)",
-          position: "relative"
-        },
-
-        " .pe-svg": {
-          position: "absolute",
-          width: componentVars.dropdown_icon_size + "px",
-          height: componentVars.dropdown_icon_size + "px",
-          left: 0,
-          top: "50%",
-          marginTop: -componentVars.dropdown_icon_size / 2 + "px"
-        },
-
-        " .pe-button__label + .pe-button__dropdown": {
-          marginLeft: "7px",
-          marginRight: "calc(7px - " + componentVars.padding_h + "px)",
-          minWidth: 0
-        }
-      },
-
-      // Extra high / wide
-
-      ":not(.pe-button--high-label)": {
-        padding: componentVars.outer_padding_v + "px 0"
-      },
-
+  var outer_padding_v_padding_v = function outer_padding_v_padding_v(selector, vars) {
+    return selectorFn(selector, {
       ".pe-button--high-label": {
         " .pe-button__label": {
-          padding: componentVars.outer_padding_v + componentVars.padding_v + "px 0"
-        },
-        " .pe-button__label, .pe-button__dropdown": {
-          minHeight: "calc((1em * " + componentVars.line_height + ") + 2 * " + (componentVars.outer_padding_v + componentVars.padding_v) + "px)"
+          padding: vars.outer_padding_v + vars.padding_v + "px 0"
         }
-      },
-
-      ".pe-button--extra-wide .pe-button__content": {
-        padding: "0 " + componentVars.padding_h_extra_wide + "px"
       }
-    }])];
+    });
+  };
+
+  var line_height_outer_padding_v_padding_v = function line_height_outer_padding_v_padding_v(selector, vars) {
+    return selectorFn(selector, {
+      ".pe-button--high-label": {
+        " .pe-button__label, .pe-button__dropdown": {
+          minHeight: "calc((1em * " + vars.line_height + ") + 2 * " + (vars.outer_padding_v + vars.padding_v) + "px)"
+        }
+      }
+    });
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [selectorFn(selector, {
+        display: "inline-block",
+        background: "transparent",
+        border: "none",
+
+        " .pe-button__content": {
+          position: "relative",
+          borderWidth: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+
+        ".pe-button--border": {
+          " .pe-button__wash, .pe-button__focus, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
+
+          " .pe-button__content": {
+            borderStyle: "solid"
+          }
+        },
+
+        " .pe-button__label, .pe-button__dropdown": {
+          whiteSpace: "pre",
+          userSelect: "none",
+          "-moz-user-select": "none"
+        },
+
+        ".pe-button--dropdown": {
+          minWidth: "0", // IE 11 does not recognize "initial" here
+
+          " .pe-button__dropdown": {
+            position: "relative"
+          },
+
+          " .pe-svg": {
+            position: "absolute",
+            left: 0,
+            top: "50%"
+          },
+
+          " .pe-button__label + .pe-button__dropdown": {
+            marginLeft: "7px",
+            minWidth: 0
+          }
+        }
+      })];
+    },
+    border_radius: function border_radius(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__content": {
+          borderRadius: vars.border_radius + "px"
+        }
+      })];
+    },
+    border_width: function border_width(selector, vars) {
+      return [selectorFn(selector, {
+        ".pe-button--border": {
+          " .pe-button__content": {
+            borderWidth: vars.border_width + "px"
+          }
+        }
+      })];
+    },
+    min_width: function min_width(selector, vars) {
+      return [selectorFn(selector, {
+        minWidth: vars.min_width + "px"
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__content, .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", vars.animation_duration)]
+      })];
+    },
+    padding_h: function padding_h(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__content": {
+          padding: "0 " + vars.padding_h + "px",
+
+          " .pe-button__dropdown": {
+            minWidth: "calc(36px - 2 * " + vars.padding_h + "px)"
+          },
+
+          ".pe-button--dropdown": {
+            " .pe-button__label + .pe-button__dropdown": {
+              marginRight: "calc(7px - " + vars.padding_h + "px)"
+            }
+          }
+        }
+      })];
+    },
+    padding_h_extra_wide: function padding_h_extra_wide(selector, vars) {
+      return [selectorFn(selector, {
+        ".pe-button--extra-wide .pe-button__content": {
+          padding: "0 " + vars.padding_h_extra_wide + "px"
+        }
+      })];
+    },
+    padding_v: function padding_v(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__label": {
+          padding: vars.padding_v + "px 0"
+        },
+
+        ".pe-button--border": {
+          " .pe-button__label": {
+            padding: vars.padding_v - 1 + "px 0"
+          }
+        }
+      }), line_height_padding_v(selector, vars), outer_padding_v_padding_v(selector, vars), line_height_outer_padding_v_padding_v(selector, vars)];
+    },
+    font_weight: function font_weight(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__label": {
+          fontWeight: vars.font_weight
+        }
+      })];
+    },
+    text_transform: function text_transform(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__label": {
+          textTransform: vars.text_transform
+        }
+      })];
+    },
+    font_size: function font_size(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__label, .pe-button__dropdown": {
+          fontSize: vars.font_size + "px"
+        }
+      })];
+    },
+    line_height: function line_height(selector, vars) {
+      return [selectorFn(selector, {
+        " .pe-button__label, .pe-button__dropdown": {
+          lineHeight: vars.line_height
+        }
+      }), line_height_padding_v(selector, vars), line_height_outer_padding_v_padding_v(selector, vars)];
+    },
+    dropdown_icon_size: function dropdown_icon_size(selector, vars) {
+      return [selectorFn(selector, {
+        ".pe-button--dropdown": {
+          " .pe-button__dropdown": {
+            width: vars.dropdown_icon_size + "px"
+
+          },
+          " .pe-svg": {
+            width: vars.dropdown_icon_size + "px",
+            height: vars.dropdown_icon_size + "px",
+            marginTop: -vars.dropdown_icon_size / 2 + "px"
+          }
+        }
+      })];
+    },
+    outer_padding_v: function outer_padding_v(selector, vars) {
+      return [selectorFn(selector, {
+        ":not(.pe-button--high-label)": {
+          padding: vars.outer_padding_v + "px 0"
+        }
+      }), outer_padding_v_padding_v(selector, vars), line_height_outer_padding_v_padding_v(selector, vars)];
+    }
+  };
+
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-    var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-    var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-    return [_defineProperty$2({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      "&, &:link, &:visited": {
-        color: componentVars["color_" + tint + "_text"]
-      },
-
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_background"],
-        borderColor: normalBorder
-      },
-
-      ".pe-button--disabled": {
-        color: componentVars["color_" + tint + "_disabled_text"],
-
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-          borderColor: disabledBorder
-        }
-      },
-
-      " .pe-button__focus": {
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      },
-
-      ".pe-button--selected": {
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_active_background"],
-          borderColor: activeBorder
-        },
-        " .pe-button__focus": {
-          opacity: 1,
-          backgroundColor: componentVars["color_" + tint + "_focus_background"]
-        }
-      },
-
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1
-        }
-      },
-
-      " .pe-button__dropdown": {
-        color: componentVars["color_" + tint + "_icon"]
-      }
-    })];
+  var selectorFn$1 = function selectorFn(selector, o) {
+    return _defineProperty$2({}, selector, o);
   };
 
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-    var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-    var hoverBorder = componentVars["color_" + tint + "_border"] || normalBorder;
-    return [_defineProperty$2({}, [].concat(scopes.map(function (s) {
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [selectorFn$1(selector, {
+        ".pe-button--focus, .pe-button--selected": {
+          " .pe-button__focus": {
+            opacity: 1
+          }
+        },
+        " .pe-button__content": {
+          borderColor: "transparent"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty$2(_ref2, "color_" + tint + "_text", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        "&, &:link, &:visited": {
+          color: vars["color_" + tint + "_text"]
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_text", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        ".pe-button--disabled": {
+          color: vars["color_" + tint + "_disabled_text"]
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_background"]
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_focus_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__focus": {
+          backgroundColor: vars["color_" + tint + "_focus_background"]
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_active_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        ".pe-button--selected": {
+          " .pe-button__content": {
+            backgroundColor: vars["color_" + tint + "_active_background"]
+          }
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        ".pe-button--disabled": {
+          " .pe-button__content": {
+            backgroundColor: vars["color_" + tint + "_disabled_background"]
+          }
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_border", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_border"]
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_active_border", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        ".pe-button--selected": {
+          " .pe-button__content": {
+            borderColor: vars["color_" + tint + "_active_border"]
+          }
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_border", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        ".pe-button--disabled": {
+          " .pe-button__content": {
+            borderColor: vars["color_" + tint + "_disabled_border"]
+          }
+        }
+      })];
+    }), _defineProperty$2(_ref2, "color_" + tint + "_icon", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__dropdown": {
+          color: vars["color_" + tint + "_icon"]
+        }
+      })];
+    }), _ref2;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref3;
+
+    return _ref3 = {}, _defineProperty$2(_ref3, "color_" + tint + "_hover", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        color: vars["color_" + tint + "_hover"]
+      })];
+    }), _defineProperty$2(_ref3, "color_" + tint + "_hover_border", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_hover_border"]
+        }
+      })];
+    }), _defineProperty$2(_ref3, "color_" + tint + "_wash_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
+        }
+      })];
+    }), _defineProperty$2(_ref3, "color_" + tint + "_hover_background", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_hover_background"]
+        }
+      })];
+    }), _defineProperty$2(_ref3, "color_" + tint + "_hover_icon", function (selector, vars) {
+      return [selectorFn$1(selector, {
+        " .pe-button__dropdown": {
+          color: vars["color_" + tint + "_hover_icon"]
+        }
+      })];
+    }), _ref3;
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
+  };
+
+  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
+    var selectors = [].concat(scopes.map(function (s) {
       return s + selector + ":hover";
     }).join(",")).concat(scopes.map(function (s) {
       return s + selector + ":active";
-    }).join(",")), {
-      ":not(.pe-button--selected):not(.pe-button--inactive)": {
-        color: componentVars["color_" + tint + "_hover"],
-        borderColor: hoverBorder,
-
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_hover_background"]
-        },
-
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_background"]
-        },
-
-        " .pe-button__dropdown": {
-          color: componentVars["color_" + tint + "_hover_icon"] || "inherit"
-        }
-      }
-    })];
+    }).join(","));
+    return createStyle(selectors, componentVars, customVars, tint, true);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
+  var color = (function (selector, componentVars, customVars) {
+    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
+    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
   });
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var fns = [layout, color];
   var baseFns = [baseLayout];
@@ -277,11 +473,11 @@
   var selector = "." + classes.component.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreButton.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreButton.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreButton.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([baseSelector], polytheneCoreButton.vars, baseFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreButton.vars, fns));
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreButton.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([baseSelector], polytheneCoreButton.vars, baseFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreButton.vars, fns));
   };
 
   polytheneCoreCss.styler.generateStyles([baseSelector], polytheneCoreButton.vars, baseFns);

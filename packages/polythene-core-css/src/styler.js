@@ -62,12 +62,30 @@ const addToDocument = (opts, ...styles) => {
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
  * @param vars: Object configuration variables
+ * @param customVars: Object configuration variables
+ * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+*/
+const generateCustomStyles = (selectors, vars, customVars, styleFns) => {
+  const selector = selectors.join("");
+  const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  add(id, styleFns.map(fn => fn(selector, vars, customVars)));
+};
+
+/*
+ * Adds styles to head for a component.
+ * @param selector: Array of Strings: selectors
+ * @param vars: Object configuration variables
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
 const generateStyles = (selectors, vars, styleFns) => {
   const selector = selectors.join("");
   const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id, styleFns.map(fn => fn(selector, vars)));
+};
+
+const createCustomStyleSheets = (selectors, vars, customVars, styleFns) => {
+  const selector = selectors.join("");
+  return styleFns.map(fn => fn(selector, vars, customVars));
 };
 
 const createStyleSheets = (selectors, vars, styleFns) => {
@@ -78,7 +96,9 @@ const createStyleSheets = (selectors, vars, styleFns) => {
 export default {
   add,
   addToDocument,
+  createCustomStyleSheets,
   createStyleSheets,
+  generateCustomStyles,
   generateStyles,
   remove,
 };

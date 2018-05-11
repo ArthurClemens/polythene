@@ -7,14 +7,15 @@ const touch_height = vars.unit_touch_height;
 const height = 36;
 
 export default {
+  general_styles:         true,
+
   animation_duration:     vars.animation_duration,
   border_radius:          vars.unit_item_border_radius,
-  border_width:           0, // no border in MD, but used to correctly set the height when a theme does set a border
+  border_width:           1, // no border in MD, but used to correctly set the height when a theme does set a border
   dropdown_icon_size:     24,
   font_size:              14,
   font_weight:            500,
   line_height:            vars.line_height,
-  margin_h:               vars.grid_unit,
   min_width:              8 * vars.grid_unit_component,
   outer_padding_v:        (touch_height - height) / 2,
   padding_h:              2 * vars.grid_unit, // 8

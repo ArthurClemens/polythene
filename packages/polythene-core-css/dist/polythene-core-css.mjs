@@ -1064,6 +1064,21 @@ var addToDocument = function addToDocument(opts) {
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
  * @param vars: Object configuration variables
+ * @param customVars: Object configuration variables
+ * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+*/
+var generateCustomStyles = function generateCustomStyles(selectors, vars, customVars, styleFns) {
+  var selector = selectors.join("");
+  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  add(id, styleFns.map(function (fn) {
+    return fn(selector, vars, customVars);
+  }));
+};
+
+/*
+ * Adds styles to head for a component.
+ * @param selector: Array of Strings: selectors
+ * @param vars: Object configuration variables
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
 var generateStyles = function generateStyles(selectors, vars, styleFns) {
@@ -1072,6 +1087,13 @@ var generateStyles = function generateStyles(selectors, vars, styleFns) {
   add(id, styleFns.map(function (fn) {
     return fn(selector, vars);
   }));
+};
+
+var createCustomStyleSheets = function createCustomStyleSheets(selectors, vars, customVars, styleFns) {
+  var selector = selectors.join("");
+  return styleFns.map(function (fn) {
+    return fn(selector, vars, customVars);
+  });
 };
 
 var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
@@ -1084,7 +1106,9 @@ var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
 var styler = {
   add: add,
   addToDocument: addToDocument,
+  createCustomStyleSheets: createCustomStyleSheets,
   createStyleSheets: createStyleSheets,
+  generateCustomStyles: generateCustomStyles,
   generateStyles: generateStyles,
   remove: remove
 };

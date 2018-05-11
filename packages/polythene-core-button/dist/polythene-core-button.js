@@ -175,14 +175,15 @@
   var height = 36;
 
   var vars = {
+    general_styles: true,
+
     animation_duration: polytheneTheme.vars.animation_duration,
     border_radius: polytheneTheme.vars.unit_item_border_radius,
-    border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
+    border_width: 1, // no border in MD, but used to correctly set the height when a theme does set a border
     dropdown_icon_size: 24,
     font_size: 14,
     font_weight: 500,
     line_height: polytheneTheme.vars.line_height,
-    margin_h: polytheneTheme.vars.grid_unit,
     min_width: 8 * polytheneTheme.vars.grid_unit_component,
     outer_padding_v: (touch_height - height) / 2,
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
