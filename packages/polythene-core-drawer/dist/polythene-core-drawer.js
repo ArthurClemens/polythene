@@ -46,20 +46,15 @@
     return "rgba(" + colorStr + ", " + opacity + ")";
   };
 
-  var content_side_offset = polytheneTheme.vars.grid_unit_component * 7; // 56
-  var content_side_offset_large = polytheneTheme.vars.grid_unit_component * 8; // 64
-  var permanent_content_width = 240;
-  var content_max_width = 5 * polytheneTheme.vars.increment;
-  var content_max_width_large = 5 * polytheneTheme.vars.increment_large;
-
   var vars = {
-    content_side_offset: content_side_offset,
-    content_side_offset_large: content_side_offset_large,
-    permanent_content_width: permanent_content_width,
-    content_max_width: content_max_width,
-    content_max_width_large: content_max_width_large,
+    general_styles: true,
 
-    content_width_mini_collapsed: 56,
+    content_max_width: 5 * polytheneTheme.vars.increment, // 5 * 56
+    content_max_width_large: 5 * polytheneTheme.vars.increment_large, // 5 * 64
+    content_side_offset: polytheneTheme.vars.grid_unit_component * 7, // 56
+    content_side_offset_large: polytheneTheme.vars.grid_unit_component * 8, // 64
+    content_width_mini_collapsed: polytheneTheme.vars.increment, // 1 * 56
+    permanent_content_width: 240,
 
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",
     color_dark_backdrop_background: "rgba(0, 0, 0, .5)",

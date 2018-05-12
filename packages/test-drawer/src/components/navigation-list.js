@@ -55,7 +55,7 @@ export default ({ renderer: h, keys: k, Icon, List, ListTile, repeats=1, onClick
       },
       {
         index,
-        title: "Drafts",
+        title: "Drafts with a very very very long title",
         icon: icons.drafts,
       }
     ]))).map(tile)

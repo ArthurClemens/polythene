@@ -184,7 +184,7 @@ var varFns = {
   },
   min_width: function min_width(selector, vars$$1) {
     return [sel(selector, {
-      minWidth: vars$$1.min_width
+      minWidth: vars$$1.min_width + "px"
     })];
   },
   line_height_title: function line_height_title(selector, vars$$1) {

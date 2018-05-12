@@ -75,23 +75,23 @@ var _label_padding_after = function _label_padding_after(selector, vars$$1, isRT
   });
 };
 
-var wrapRTL = function wrapRTL(selector, content) {
-  return _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, content);
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
 };
 
 var varFns = {
   general_styles: function general_styles(selector, vars$$1, type) {
-    var _ref3;
+    var _ref2;
 
-    return [sel(selector, [alignLeft(vars$$1), (_ref3 = {
+    return [sel(selector, [alignLeft(vars$$1), (_ref2 = {
       display: "inline-block",
       boxSizing: "border-box",
       margin: 0,
       padding: 0
 
-    }, _defineProperty(_ref3, " input[type=" + type + "]", {
+    }, _defineProperty(_ref2, " input[type=" + type + "]", {
       display: "none"
-    }), _defineProperty(_ref3, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
+    }), _defineProperty(_ref2, " .pe-control__form-label", [flex.layoutHorizontal, flex.layoutCenter, {
       position: "relative",
       cursor: "pointer",
       margin: 0,
@@ -100,11 +100,11 @@ var varFns = {
       ":focus": {
         outline: 0
       }
-    }]), _defineProperty(_ref3, ".pe-control--inactive", {
+    }]), _defineProperty(_ref2, ".pe-control--inactive", {
       " .pe-control__form-label": {
         cursor: "default"
       }
-    }), _defineProperty(_ref3, " .pe-control__box", {
+    }), _defineProperty(_ref2, " .pe-control__box", {
       position: "relative",
       display: "inline-block",
       boxSizing: "border-box",
@@ -114,30 +114,30 @@ var varFns = {
       ":focus": {
         outline: 0
       }
-    }), _defineProperty(_ref3, " .pe-button.pe-control__button", {
+    }), _defineProperty(_ref2, " .pe-button.pe-control__button", {
       position: "absolute",
       zIndex: 1
-    }), _defineProperty(_ref3, ".pe-control--off", {
+    }), _defineProperty(_ref2, ".pe-control--off", {
       " .pe-control__button--on": inactiveButton(),
       " .pe-control__button--off": activeButton()
-    }), _defineProperty(_ref3, ".pe-control--on", {
+    }), _defineProperty(_ref2, ".pe-control--on", {
       " .pe-control__button--on": activeButton(),
       " .pe-control__button--off": inactiveButton()
-    }), _defineProperty(_ref3, " .pe-control__label", {
+    }), _defineProperty(_ref2, " .pe-control__label", {
       // padding: RTL
       alignSelf: "center"
-    }), _defineProperty(_ref3, ".pe-control--disabled", {
+    }), _defineProperty(_ref2, ".pe-control--disabled", {
       " .pe-control__form-label": {
         cursor: "auto"
       },
       " .pe-control__button": {
         pointerEvents: "none"
       }
-    }), _defineProperty(_ref3, " .pe-button__content", {
+    }), _defineProperty(_ref2, " .pe-button__content", {
       " .pe-icon": {
         position: "absolute"
       }
-    }), _ref3), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars$$1)])])];
+    }), _ref2), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars$$1)])])];
   },
   label_font_size: function label_font_size(selector, vars$$1) {
     return [sel(selector, {
@@ -165,16 +165,16 @@ var varFns = {
     })];
   },
   button_size: function button_size(selector, vars$$1) {
-    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), wrapRTL(selector, button_size_icon_size(selector, vars$$1, true))];
+    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)];
   },
   icon_size: function icon_size(selector, vars$$1) {
-    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), wrapRTL(selector, button_size_icon_size(selector, vars$$1, true))];
+    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)];
   },
   label_padding_after: function label_padding_after(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), wrapRTL(selector, _label_padding_after(selector, vars$$1, true))];
+    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), _label_padding_after(selectorRTL(selector), vars$$1, true)];
   },
   label_padding_before: function label_padding_before(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), wrapRTL(selector, _label_padding_before(selector, vars$$1, true))];
+    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), _label_padding_before(selectorRTL(selector), vars$$1, false)];
   }
 };
 

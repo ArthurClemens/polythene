@@ -43,8 +43,8 @@
     });
   };
 
-  var wrapRTL = function wrapRTL(selector, content) {
-    return _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, content);
+  var selectorRTL = function selectorRTL(selector) {
+    return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
   };
 
   var varFns = {
@@ -121,10 +121,10 @@
       })];
     },
     label_padding_after: function label_padding_after(selector, vars) {
-      return [sel(selector, {}), _label_padding_after(selector, vars, false), wrapRTL(selector, _label_padding_after(selector, vars, true))];
+      return [sel(selector, {}), _label_padding_after(selector, vars, false), _label_padding_after(selectorRTL(selector), vars, true)];
     },
     label_padding_before: function label_padding_before(selector, vars) {
-      return [sel(selector, {}), _label_padding_before(selector, vars, false), wrapRTL(selector, _label_padding_before(selector, vars, true))];
+      return [sel(selector, {}), _label_padding_before(selector, vars, false), _label_padding_before(selectorRTL(selector), vars, true)];
     }
   };
 

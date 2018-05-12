@@ -234,6 +234,15 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         z: 1
       }})
     },
+    {
+      name: "Pushing drawer (RTL)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+        push: true,
+        border: true,
+      }})
+    },
 
     // Dark tone
 

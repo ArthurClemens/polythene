@@ -22,9 +22,8 @@ const label_padding_after = (selector, vars, isRTL) =>
     }
   });
 
-const wrapRTL = (selector, content) => ({
-  [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: content,
-});
+const selectorRTL = selector => 
+  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const varFns = {
   general_styles: (selector, vars) => [
@@ -114,13 +113,13 @@ const varFns = {
     sel(selector, {
     }),
     label_padding_after(selector, vars, false),
-    wrapRTL(selector, label_padding_after(selector, vars, true))
+    label_padding_after(selectorRTL(selector), vars, true),
   ],
   label_padding_before: (selector, vars) => [
     sel(selector, {
     }),
     label_padding_before(selector, vars, false),
-    wrapRTL(selector, label_padding_before(selector, vars, true))
+    label_padding_before(selectorRTL(selector), vars, true),
   ],
 };
 

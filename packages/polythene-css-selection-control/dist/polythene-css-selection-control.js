@@ -78,23 +78,23 @@
     });
   };
 
-  var wrapRTL = function wrapRTL(selector, content) {
-    return _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, content);
+  var selectorRTL = function selectorRTL(selector) {
+    return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
   };
 
   var varFns = {
     general_styles: function general_styles(selector, vars, type) {
-      var _ref3;
+      var _ref2;
 
-      return [sel(selector, [alignLeft(vars), (_ref3 = {
+      return [sel(selector, [alignLeft(vars), (_ref2 = {
         display: "inline-block",
         boxSizing: "border-box",
         margin: 0,
         padding: 0
 
-      }, _defineProperty(_ref3, " input[type=" + type + "]", {
+      }, _defineProperty(_ref2, " input[type=" + type + "]", {
         display: "none"
-      }), _defineProperty(_ref3, " .pe-control__form-label", [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
+      }), _defineProperty(_ref2, " .pe-control__form-label", [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
         position: "relative",
         cursor: "pointer",
         margin: 0,
@@ -103,11 +103,11 @@
         ":focus": {
           outline: 0
         }
-      }]), _defineProperty(_ref3, ".pe-control--inactive", {
+      }]), _defineProperty(_ref2, ".pe-control--inactive", {
         " .pe-control__form-label": {
           cursor: "default"
         }
-      }), _defineProperty(_ref3, " .pe-control__box", {
+      }), _defineProperty(_ref2, " .pe-control__box", {
         position: "relative",
         display: "inline-block",
         boxSizing: "border-box",
@@ -117,30 +117,30 @@
         ":focus": {
           outline: 0
         }
-      }), _defineProperty(_ref3, " .pe-button.pe-control__button", {
+      }), _defineProperty(_ref2, " .pe-button.pe-control__button", {
         position: "absolute",
         zIndex: 1
-      }), _defineProperty(_ref3, ".pe-control--off", {
+      }), _defineProperty(_ref2, ".pe-control--off", {
         " .pe-control__button--on": inactiveButton(),
         " .pe-control__button--off": activeButton()
-      }), _defineProperty(_ref3, ".pe-control--on", {
+      }), _defineProperty(_ref2, ".pe-control--on", {
         " .pe-control__button--on": activeButton(),
         " .pe-control__button--off": inactiveButton()
-      }), _defineProperty(_ref3, " .pe-control__label", {
+      }), _defineProperty(_ref2, " .pe-control__label", {
         // padding: RTL
         alignSelf: "center"
-      }), _defineProperty(_ref3, ".pe-control--disabled", {
+      }), _defineProperty(_ref2, ".pe-control--disabled", {
         " .pe-control__form-label": {
           cursor: "auto"
         },
         " .pe-control__button": {
           pointerEvents: "none"
         }
-      }), _defineProperty(_ref3, " .pe-button__content", {
+      }), _defineProperty(_ref2, " .pe-button__content", {
         " .pe-icon": {
           position: "absolute"
         }
-      }), _ref3), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars)])])];
+      }), _ref2), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars)])])];
     },
     label_font_size: function label_font_size(selector, vars) {
       return [sel(selector, {
@@ -168,16 +168,16 @@
       })];
     },
     button_size: function button_size(selector, vars) {
-      return [sel(selector, {}), button_size_icon_size(selector, vars, false), wrapRTL(selector, button_size_icon_size(selector, vars, true))];
+      return [sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(selectorRTL(selector), vars, true)];
     },
     icon_size: function icon_size(selector, vars) {
-      return [sel(selector, {}), button_size_icon_size(selector, vars, false), wrapRTL(selector, button_size_icon_size(selector, vars, true))];
+      return [sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(selectorRTL(selector), vars, true)];
     },
     label_padding_after: function label_padding_after(selector, vars) {
-      return [sel(selector, {}), _label_padding_after(selector, vars, false), wrapRTL(selector, _label_padding_after(selector, vars, true))];
+      return [sel(selector, {}), _label_padding_after(selector, vars, false), _label_padding_after(selectorRTL(selector), vars, true)];
     },
     label_padding_before: function label_padding_before(selector, vars) {
-      return [sel(selector, {}), _label_padding_before(selector, vars, false), wrapRTL(selector, _label_padding_before(selector, vars, true))];
+      return [sel(selector, {}), _label_padding_before(selector, vars, false), _label_padding_before(selectorRTL(selector), vars, false)];
     }
   };
 

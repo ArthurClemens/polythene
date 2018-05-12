@@ -1,3 +1,17 @@
+.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
+  border-style: none solid none none
+}
+
+.pe-dialog.pe-drawer.pe-drawer--fixed {
+  left: 0;
+  right: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  margin-left: 0;
+  margin-right: 0
+}
+
 .pe-dialog.pe-drawer {
   justify-content: flex-start;
   position: absolute;
@@ -52,7 +66,6 @@
 }
 
 .pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) .pe-dialog__content {
-  width: 240px;
   overflow: visible;
   max-height: none
 }
@@ -67,21 +80,11 @@
 
 .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
   position: absolute;
-  width: calc(100% - 56px);
-  max-width: 280px;
   top: 0
 }
 
 .pe-dialog.pe-drawer.pe-drawer--push {
   position: static
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: 240px
-}
-
-.pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
-  width: 56px
 }
 
 .pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__touch {
@@ -104,108 +107,151 @@
   opacity: 1
 }
 
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--border .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--border .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--border .pe-dialog__content {
-  border-style: none solid none none
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
+  border-style: none none none solid
 }
 
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--fixed,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--fixed {
-  left: 0;
-  right: auto
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--fixed {
+  right: 0;
+  left: auto
 }
 
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--cover .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  margin-left: 0;
+  margin-right: 0
+}
+
+.pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+  max-width: 280px;
   left: -295px;
   right: auto
 }
 
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--cover.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   left: 0;
   right: auto
 }
 
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--push .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content {
-  margin-left: -255px;
-  margin-right: auto
-}
-
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--push.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
-  margin-left: 0;
-  margin-right: auto
-}
-
-.pe-dialog.pe-drawer:not(.pe-drawer--anchor-end).pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
-  margin-left: 0;
-  margin-right: 0
-}
-
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--border .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
-  border-style: none none none solid
-}
-
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--fixed,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--fixed {
-  right: 0;
-  left: auto
-}
-
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
   right: -295px;
   left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   right: 0;
   left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content {
+  right: -295px;
+  left: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+  right: 0;
+  left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+  left: -295px;
+  right: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+  left: 0;
+  right: auto
+}
+
+@media (min-width:600px) {
+  .pe-dialog.pe-drawer .pe-dialog__content,.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+    max-width: 320px
+  }
+}
+
+.pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+  width: calc(100% - 56px)
+}
+
+@media (min-width:600px) {
+  .pe-dialog.pe-drawer .pe-dialog__content {
+    width: calc(100% - 64px)
+  }
+}
+
+.pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  width: 56px
+}
+
+.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) .pe-dialog__content {
+  width: 240px
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  width: 240px;
+  margin-left: -255px;
+  margin-right: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  margin-left: 0;
+  margin-right: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
   margin-right: -255px;
   margin-left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
   margin-right: 0;
   margin-left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,.pe-rtl .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content {
+  margin-right: -255px;
+  margin-left: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  margin-right: 0;
+  margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  margin-left: -255px;
+  margin-right: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
   margin-left: 0;
-  margin-right: 0
-}
-
-@media (min-width:600px) {
-  .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-    max-width: 320px
-  }
-
-  .pe-dialog.pe-drawer .pe-dialog__content {
-    width: calc(100% - 64px);
-    max-width: 320px
-  }
-}
-
-.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__content {
-  border-color: hsla(0,0%,100%,.1);
-  background: none
-}
-
-.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog-pane,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog-pane {
-  background-color: #222
+  margin-right: auto
 }
 
 .pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
   background-color: rgba(0,0,0,.5)
 }
 
-.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__content {
-  border-color: rgba(0,0,0,.11);
+.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog-pane,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog-pane {
+  background-color: #222
+}
+
+.pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__content {
+  border-color: hsla(0,0%,100%,.1)
+}
+
+.pe-dialog__content {
   background: none
+}
+
+.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
+  background-color: rgba(0,0,0,.4)
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog-pane,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog-pane {
   background-color: #fff
 }
 
-.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
-  background-color: rgba(0,0,0,.4)
+.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone.pe-dialog.pe-drawer .pe-dialog__content,.pe-light-tone .pe-dialog.pe-drawer .pe-dialog__content {
+  border-color: rgba(0,0,0,.11)
 }
 /*# sourceMappingURL=polythene-drawer.css.map */

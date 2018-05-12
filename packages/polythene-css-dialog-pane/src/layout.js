@@ -175,7 +175,7 @@ const varFns = {
   ],
   min_width: (selector, vars) => [
     sel(selector, {
-      minWidth: vars.min_width
+      minWidth: vars.min_width + "px"
     }),
   ],
   line_height_title: (selector, vars) => [

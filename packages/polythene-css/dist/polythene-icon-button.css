@@ -33,7 +33,7 @@
   padding-right: 0
 }
 
-.pe-rtl .pe-button.pe-icon-button.pe-button.pe-icon-button .pe-icon-button__label,[dir=rtl] .pe-button.pe-icon-button.pe-button.pe-icon-button .pe-icon-button__label {
+.pe-rtl .pe-button.pe-icon-button .pe-icon-button__label,[dir=rtl] .pe-button.pe-icon-button .pe-icon-button__label {
   padding-left: 0
 }
 
@@ -41,7 +41,7 @@
   padding-left: 4px
 }
 
-.pe-rtl .pe-button.pe-icon-button.pe-button.pe-icon-button .pe-icon-button__label,[dir=rtl] .pe-button.pe-icon-button.pe-button.pe-icon-button .pe-icon-button__label {
+.pe-rtl .pe-button.pe-icon-button .pe-icon-button__label,[dir=rtl] .pe-button.pe-icon-button .pe-icon-button__label {
   padding-right: 4px
 }
 

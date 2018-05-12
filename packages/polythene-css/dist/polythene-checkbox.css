@@ -98,7 +98,7 @@
   right: auto
 }
 
-.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-button.pe-control__button,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-button.pe-control__button {
+.pe-rtl .pe-checkbox-control .pe-button.pe-control__button,[dir=rtl] .pe-checkbox-control .pe-button.pe-control__button {
   top: -12px;
   right: -12px;
   left: auto
@@ -205,16 +205,12 @@
   padding-right: 0
 }
 
-.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-control__label {
+.pe-rtl .pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control .pe-control__label {
   padding-left: 0
 }
 
-.pe-checkbox-control .pe-control__label {
+.pe-checkbox-control .pe-control__label,.pe-rtl .pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control .pe-control__label {
   padding-left: 16px
-}
-
-.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-control__label {
-  padding-right: 16px
 }
 
 .pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button--on,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button--on {

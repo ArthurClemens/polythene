@@ -66,9 +66,8 @@ const label_padding_after = (selector, vars, isRTL) =>
     }
   });
 
-const wrapRTL = (selector, content) => ({
-  [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: content,
-});
+const selectorRTL = selector => 
+  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const varFns = {
   general_styles: (selector, vars, type) => [
@@ -193,25 +192,25 @@ const varFns = {
     sel(selector, {
     }),
     button_size_icon_size(selector, vars, false),
-    wrapRTL(selector, button_size_icon_size(selector, vars, true))
+    button_size_icon_size(selectorRTL(selector), vars, true),
   ],
   icon_size: (selector, vars) => [
     sel(selector, {
     }),
     button_size_icon_size(selector, vars, false),
-    wrapRTL(selector, button_size_icon_size(selector, vars, true))
+    button_size_icon_size(selectorRTL(selector), vars, true),
   ],
   label_padding_after: (selector, vars) => [
     sel(selector, {
     }),
     label_padding_after(selector, vars, false),
-    wrapRTL(selector, label_padding_after(selector, vars, true))
+    label_padding_after(selectorRTL(selector), vars, true),
   ],
   label_padding_before: (selector, vars) => [
     sel(selector, {
     }),
     label_padding_before(selector, vars, false),
-    wrapRTL(selector, label_padding_before(selector, vars, true))
+    label_padding_before(selectorRTL(selector), vars, false),
   ],
 };
 

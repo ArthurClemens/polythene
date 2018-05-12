@@ -41,8 +41,8 @@ var _label_padding_after = function _label_padding_after(selector, vars$$1, isRT
   });
 };
 
-var wrapRTL = function wrapRTL(selector, content) {
-  return _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, content);
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
 };
 
 var varFns = {
@@ -119,10 +119,10 @@ var varFns = {
     })];
   },
   label_padding_after: function label_padding_after(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), wrapRTL(selector, _label_padding_after(selector, vars$$1, true))];
+    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), _label_padding_after(selectorRTL(selector), vars$$1, true)];
   },
   label_padding_before: function label_padding_before(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), wrapRTL(selector, _label_padding_before(selector, vars$$1, true))];
+    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), _label_padding_before(selectorRTL(selector), vars$$1, true)];
   }
 };
 

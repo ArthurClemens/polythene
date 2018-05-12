@@ -186,7 +186,7 @@
     },
     min_width: function min_width(selector, vars) {
       return [sel(selector, {
-        minWidth: vars.min_width
+        minWidth: vars.min_width + "px"
       })];
     },
     line_height_title: function line_height_title(selector, vars) {
