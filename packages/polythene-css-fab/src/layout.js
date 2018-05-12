@@ -1,49 +1,82 @@
-import { vars } from "polythene-theme";
+import { vars as defaultVars } from "polythene-theme";
 import { mixin } from "polythene-core-css";
 
-export default (selector, componentVars) => [{
-  [selector]: {
-    userSelect: "none",
-    "-moz-user-select": "none",
-    display: "inline-block",
-    position: "relative",
-    outline: "none",
-    cursor: "pointer",
-    padding: 0,
-    border: "none",
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-    " .pe-button__content": {
+const varFns = {
+  general_styles: selector => [
+    sel(selector, {
+      userSelect: "none",
+      "-moz-user-select": "none",
+      display: "inline-block",
       position: "relative",
-      width: componentVars.size_regular + "px",
-      height: componentVars.size_regular + "px",
-      borderRadius: "50%",
-      padding: componentVars.padding_regular + "px",
-    },
+      outline: "none",
+      cursor: "pointer",
+      padding: 0,
+      border: "none",
 
-    " .pe-button__wash, .pe-button__focus": [
-      mixin.fit(),
-      {
-        borderRadius: "inherit",
-      }
-    ],
-
-    ".pe-fab--mini": {
       " .pe-button__content": {
-        width: componentVars.size_mini + "px",
-        height: componentVars.size_mini + "px",
-        padding: ((componentVars.size_mini - vars.unit_icon_size) / 2) + "px"
+        position: "relative",
+        borderRadius: "50%",
+      },
+
+      " .pe-button__wash, .pe-button__focus": [
+        mixin.fit(),
+        {
+          borderRadius: "inherit",
+        }
+      ],
+
+      " .pe-ripple": {
+        borderRadius: "inherit"
+      },
+
+      " .pe-button__wash": {
+        transition: "background-color " + defaultVars.animation_duration + " ease-in-out",
+        borderRadius: "inherit",
+        pointerEvents: "none",
+        backgroundColor: "transparent"
       }
-    },
+    })
+  ],
+  padding_regular: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__content": {
+        padding: vars.padding_regular + "px",
+      },
+    })
+  ],
+  size_regular: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__content": {
+        width: vars.size_regular + "px",
+        height: vars.size_regular + "px",
+      },
+    })
+  ],
+  size_mini: (selector, vars) => [
+    sel(selector, {
+      ".pe-fab--mini": {
+        " .pe-button__content": {
+          width: vars.size_mini + "px",
+          height: vars.size_mini + "px",
+          padding: ((vars.size_mini - defaultVars.unit_icon_size) / 2) + "px"
+        }
+      },
+    })
+  ],
+};
 
-    " .pe-ripple": {
-      borderRadius: "inherit"
-    },
-
-    " .pe-button__wash": {
-      transition: "background-color " + vars.animation_duration + " ease-in-out",
-      borderRadius: "inherit",
-      pointerEvents: "none",
-      backgroundColor: "transparent"
-    }
-  }
-}];
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
+};
