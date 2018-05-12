@@ -189,6 +189,7 @@
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
     padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
     padding_v: 9,
+    row_margin_h: polytheneTheme.vars.grid_unit,
     text_transform: "uppercase",
 
     color_light_background: "transparent",

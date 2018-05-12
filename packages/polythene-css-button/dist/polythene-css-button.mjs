@@ -24,76 +24,99 @@ var classes = {
   extraWide: "pe-button--extra-wide"
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var baseLayout = (function (selector, componentVars) {
-  var _ref;
+var sel = function sel(selector, o) {
+  return _defineProperty({}, selector, o);
+};
 
-  return [(_ref = {}, _defineProperty(_ref, selector, [{
-    userSelect: "none",
-    "-moz-user-select": "none",
-    outline: "none",
-    padding: 0,
-    textDecoration: "none",
-    textAlign: "center",
-    cursor: "pointer",
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      userSelect: "none",
+      "-moz-user-select": "none",
+      outline: "none",
+      padding: 0,
+      textDecoration: "none",
+      textAlign: "center",
+      cursor: "pointer",
 
-    ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
-      cursor: "default",
-      pointerEvents: "none"
-    },
+      ".pe-button--selected, &.pe-button--disabled, &.pe-button--inactive": {
+        cursor: "default",
+        pointerEvents: "none"
+      },
 
-    ".pe-button--focus": {
+      ".pe-button--focus": {
+        " .pe-button__focus": {
+          opacity: 1
+        }
+      },
+
+      " .pe-button__content": {
+        position: "relative",
+        borderRadius: "inherit"
+      },
+
+      " .pe-button__label": [mixin.fontSmoothing(), {
+        position: "relative",
+        display: "block",
+        borderRadius: "inherit",
+        pointerEvents: "none"
+      }],
+
+      " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
+        borderRadius: "inherit",
+        pointerEvents: "none"
+      }],
+
       " .pe-button__focus": {
-        opacity: 1
+        opacity: 0
+      },
+
+      " .pe-button__wash": {
+        zIndex: 0
       }
-    },
+    }), {
+      " .pe-button-row": {
+        // prevent inline block style to add extra space:
+        fontSize: 0,
+        lineHeight: 0
+      }
+    }];
+  },
+  row_margin_h: function row_margin_h(selector, vars$$1) {
+    return [sel(selector, _defineProperty({
+      " .pe-button-row": {
+        margin: "0 -" + vars$$1.row_margin_h + "px"
+      }
+    }, " " + selector, {
+      margin: "0 " + vars$$1.row_margin_h + "px"
+    }))];
+  }
+};
 
-    " .pe-button__content": {
-      position: "relative",
-      borderRadius: "inherit"
-    },
-
-    " .pe-button__label": [mixin.fontSmoothing(), {
-      position: "relative",
-      display: "block",
-      borderRadius: "inherit",
-      pointerEvents: "none"
-    }],
-
-    " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
-      borderRadius: "inherit",
-      pointerEvents: "none"
-    }],
-
-    " .pe-button__focus": {
-      opacity: 0
-    },
-
-    " .pe-button__wash": {
-      zIndex: 0
-    }
-  }]), _defineProperty(_ref, " .pe-button-row", _defineProperty({
-    margin: "0 -" + componentVars.margin_h + "px",
-    // prevent inline block style to add extra space:
-    fontSize: 0,
-    lineHeight: 0
-
-  }, " " + selector, {
-    margin: "0 " + componentVars.margin_h + "px"
-  })), _ref)];
+var baseLayout = (function (selector, componentVars, customVars) {
+  var allVars = _extends({}, componentVars, customVars);
+  var currentVars = customVars ? customVars : allVars;
+  return Object.keys(currentVars).map(function (v) {
+    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+  }).filter(function (s) {
+    return s;
+  });
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var selectorFn = function selectorFn(selector, o) {
+var sel$1 = function sel(selector, o) {
   return _defineProperty$1({}, selector, o);
 };
 
 var line_height_padding_v = function line_height_padding_v(selector, vars$$1) {
-  return selectorFn(selector, {
+  return sel$1(selector, {
     " .pe-button__dropdown": {
       minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + vars$$1.padding_v + "px)"
     }
@@ -101,8 +124,10 @@ var line_height_padding_v = function line_height_padding_v(selector, vars$$1) {
 };
 
 var outer_padding_v_padding_v = function outer_padding_v_padding_v(selector, vars$$1) {
-  return selectorFn(selector, {
+  return sel$1(selector, {
     ".pe-button--high-label": {
+      padding: 0,
+
       " .pe-button__label": {
         padding: vars$$1.outer_padding_v + vars$$1.padding_v + "px 0"
       }
@@ -111,7 +136,7 @@ var outer_padding_v_padding_v = function outer_padding_v_padding_v(selector, var
 };
 
 var line_height_outer_padding_v_padding_v = function line_height_outer_padding_v_padding_v(selector, vars$$1) {
-  return selectorFn(selector, {
+  return sel$1(selector, {
     ".pe-button--high-label": {
       " .pe-button__label, .pe-button__dropdown": {
         minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + (vars$$1.outer_padding_v + vars$$1.padding_v) + "px)"
@@ -120,9 +145,9 @@ var line_height_outer_padding_v_padding_v = function line_height_outer_padding_v
   });
 };
 
-var varFns = {
+var varFns$1 = {
   general_styles: function general_styles(selector) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       display: "inline-block",
       background: "transparent",
       border: "none",
@@ -170,14 +195,14 @@ var varFns = {
     })];
   },
   border_radius: function border_radius(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__content": {
         borderRadius: vars$$1.border_radius + "px"
       }
     })];
   },
   border_width: function border_width(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       ".pe-button--border": {
         " .pe-button__content": {
           borderWidth: vars$$1.border_width + "px"
@@ -186,17 +211,17 @@ var varFns = {
     })];
   },
   min_width: function min_width(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       minWidth: vars$$1.min_width + "px"
     })];
   },
   animation_duration: function animation_duration(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__content, .pe-button__wash, .pe-button__focus": [mixin.defaultTransition("all", vars$$1.animation_duration)]
     })];
   },
   padding_h: function padding_h(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__content": {
         padding: "0 " + vars$$1.padding_h + "px",
 
@@ -213,14 +238,14 @@ var varFns = {
     })];
   },
   padding_h_extra_wide: function padding_h_extra_wide(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       ".pe-button--extra-wide .pe-button__content": {
         padding: "0 " + vars$$1.padding_h_extra_wide + "px"
       }
     })];
   },
   padding_v: function padding_v(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__label": {
         padding: vars$$1.padding_v + "px 0"
       },
@@ -233,35 +258,35 @@ var varFns = {
     }), line_height_padding_v(selector, vars$$1), outer_padding_v_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
   },
   font_weight: function font_weight(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__label": {
         fontWeight: vars$$1.font_weight
       }
     })];
   },
   text_transform: function text_transform(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__label": {
         textTransform: vars$$1.text_transform
       }
     })];
   },
   font_size: function font_size(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__label, .pe-button__dropdown": {
         fontSize: vars$$1.font_size + "px"
       }
     })];
   },
   line_height: function line_height(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       " .pe-button__label, .pe-button__dropdown": {
         lineHeight: vars$$1.line_height
       }
     }), line_height_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
   },
   dropdown_icon_size: function dropdown_icon_size(selector, vars$$1) {
-    return [selectorFn(selector, {
+    return [sel$1(selector, {
       ".pe-button--dropdown": {
         " .pe-button__dropdown": {
           width: vars$$1.dropdown_icon_size + "px"
@@ -276,8 +301,8 @@ var varFns = {
     })];
   },
   outer_padding_v: function outer_padding_v(selector, vars$$1) {
-    return [selectorFn(selector, {
-      ":not(.pe-button--high-label)": {
+    return [sel$1(selector, {
+      ".pe-button--high-label": {
         padding: vars$$1.outer_padding_v + "px 0"
       }
     }), outer_padding_v_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
@@ -285,27 +310,27 @@ var varFns = {
 };
 
 var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
+  var allVars = _extends$1({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    return varFns$1[v] !== undefined ? varFns$1[v](selector, allVars) : null;
   }).filter(function (s) {
     return s;
   });
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var selectorFn$1 = function selectorFn(selector, o) {
+var sel$2 = function sel(selector, o) {
   return _defineProperty$2({}, selector, o);
 };
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [selectorFn$1(selector, {
-      ".pe-button--focus, .pe-button--selected": {
+    return [sel$2(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: 1
         }
@@ -321,31 +346,31 @@ var tintFns = function tintFns(tint) {
   var _ref2;
 
   return _ref2 = {}, _defineProperty$2(_ref2, "color_" + tint + "_text", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       "&, &:link, &:visited": {
         color: vars$$1["color_" + tint + "_text"]
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_text", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       ".pe-button--disabled": {
         color: vars$$1["color_" + tint + "_disabled_text"]
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__content": {
         backgroundColor: vars$$1["color_" + tint + "_background"]
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_focus_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__focus": {
         backgroundColor: vars$$1["color_" + tint + "_focus_background"]
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_active_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
           backgroundColor: vars$$1["color_" + tint + "_active_background"]
@@ -353,7 +378,7 @@ var tintFns = function tintFns(tint) {
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       ".pe-button--disabled": {
         " .pe-button__content": {
           backgroundColor: vars$$1["color_" + tint + "_disabled_background"]
@@ -361,13 +386,13 @@ var tintFns = function tintFns(tint) {
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_border", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__content": {
         borderColor: vars$$1["color_" + tint + "_border"]
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_active_border", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
           borderColor: vars$$1["color_" + tint + "_active_border"]
@@ -375,7 +400,7 @@ var tintFns = function tintFns(tint) {
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_disabled_border", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       ".pe-button--disabled": {
         " .pe-button__content": {
           borderColor: vars$$1["color_" + tint + "_disabled_border"]
@@ -383,7 +408,7 @@ var tintFns = function tintFns(tint) {
       }
     })];
   }), _defineProperty$2(_ref2, "color_" + tint + "_icon", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__dropdown": {
         color: vars$$1["color_" + tint + "_icon"]
       }
@@ -395,29 +420,29 @@ var hoverTintFns = function hoverTintFns(tint) {
   var _ref3;
 
   return _ref3 = {}, _defineProperty$2(_ref3, "color_" + tint + "_hover", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       color: vars$$1["color_" + tint + "_hover"]
     })];
   }), _defineProperty$2(_ref3, "color_" + tint + "_hover_border", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__content": {
         borderColor: vars$$1["color_" + tint + "_hover_border"]
       }
     })];
   }), _defineProperty$2(_ref3, "color_" + tint + "_wash_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__wash": {
         backgroundColor: vars$$1["color_" + tint + "_wash_background"]
       }
     })];
   }), _defineProperty$2(_ref3, "color_" + tint + "_hover_background", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__content": {
         backgroundColor: vars$$1["color_" + tint + "_hover_background"]
       }
     })];
   }), _defineProperty$2(_ref3, "color_" + tint + "_hover_icon", function (selector, vars$$1) {
-    return [selectorFn$1(selector, {
+    return [sel$2(selector, {
       " .pe-button__dropdown": {
         color: vars$$1["color_" + tint + "_hover_icon"]
       }
@@ -425,13 +450,14 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref3;
 };
 
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends$2({}, generalFns, tintFns("light"));
+var darkTintFns = _extends$2({}, generalFns, tintFns("dark"));
+
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
 
 var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-  var allVars = _extends$1({}, componentVars, customVars);
+  var allVars = _extends$2({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   return Object.keys(currentVars).map(function (v) {
     var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;

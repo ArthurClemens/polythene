@@ -14,6 +14,8 @@ const line_height_padding_v = (selector, vars) =>
 const outer_padding_v_padding_v = (selector, vars) => 
   sel(selector, {
     ".pe-button--high-label": {
+      padding: 0,
+      
       " .pe-button__label": {
         padding: vars.outer_padding_v + vars.padding_v + "px 0",
       },
@@ -193,7 +195,7 @@ const varFns = {
   ],
   outer_padding_v: (selector, vars) => [
     sel(selector, {
-      ":not(.pe-button--high-label)": {
+      ".pe-button--high-label": {
         padding: vars.outer_padding_v + "px 0",
       },
     }),

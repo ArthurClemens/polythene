@@ -1,8 +1,12 @@
 import { mixin } from "polythene-core-css";
 
-export default (selector, componentVars) => [{
-  [selector]: [
-    {
+const sel = (selector, o) => ({
+  [selector]: o
+});
+
+const varFns = {
+  general_styles: selector => [
+    sel(selector, {
       userSelect: "none",
       "-moz-user-select": "none",
       outline: "none",
@@ -52,17 +56,36 @@ export default (selector, componentVars) => [{
       " .pe-button__wash": {
         zIndex: 0
       }
+    }),
+    {
+      " .pe-button-row": {
+        // prevent inline block style to add extra space:
+        fontSize: 0, 
+        lineHeight: 0,
+      }
     }
   ],
-  " .pe-button-row": {
-    margin: `0 -${componentVars.margin_h}px`,
-    // prevent inline block style to add extra space:
-    fontSize: 0, 
-    lineHeight: 0,
+  row_margin_h: (selector, vars) => [
+    sel(selector, {
+      " .pe-button-row": {
+        margin: `0 -${vars.row_margin_h}px`,
+      },
+      [` ${selector}`]: {
+        margin: `0 ${vars.row_margin_h}px`,
+      }
+    })
+  ],
+};
 
-    [` ${selector}`]: {
-      margin: `0 ${componentVars.margin_h}px`,
-    }
-  }
-}];
 
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
+};

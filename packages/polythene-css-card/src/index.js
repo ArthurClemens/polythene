@@ -12,18 +12,18 @@ const overlaySheetSelector = `.${classes.overlaySheet}`;
 const overlayContentSelector = `.${classes.overlayContent}`;
 
 export const addStyle = (customSelector, customVars) => {
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, [layout, color]),
-  styler.generateStyles([customSelector, " " + overlaySheetSelector], {...vars, ...customVars}, [overlayColor]),
-  styler.generateStyles([customSelector, " " + contentSelector], {...vars, ...customVars}, [contentColor]),
-  styler.generateStyles([customSelector, " " + overlayContentSelector], {...vars, ...customVars}, [contentColor]);
+  styler.generateCustomStyles([customSelector, selector], vars, customVars, [layout, color]),
+  styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]),
+  styler.generateCustomStyles([customSelector, " " + contentSelector], vars, customVars, [contentColor]),
+  styler.generateCustomStyles([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor]);
 };
 
 export const getStyle = (customSelector, customVars) =>
   customSelector
-    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, [layout, color])
-      .concat(styler.createStyleSheets([customSelector, " " + overlaySheetSelector], {...vars, ...customVars}, [overlayColor]))
-      .concat(styler.createStyleSheets([customSelector, " " + contentSelector], {...vars, ...customVars}, [contentColor]))
-      .concat(styler.createStyleSheets([customSelector, " " + overlayContentSelector], {...vars, ...customVars}, [contentColor]))
+    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, [layout, color])
+      .concat(styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]))
+      .concat(styler.createCustomStyleSheets([customSelector, " " + contentSelector], vars, customVars, [contentColor]))
+      .concat(styler.createCustomStyleSheets([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor]))
     : styler.createStyleSheets([selector], vars, [layout, color])
       .concat(styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor]))
       .concat(styler.createStyleSheets([contentSelector], vars, [contentColor]))

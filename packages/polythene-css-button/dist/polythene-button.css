@@ -48,13 +48,16 @@
 }
 
 .pe-button-row {
-  margin: 0 -undefinedpx;
   font-size: 0;
   line-height: 0
 }
 
-.pe-button-row .pe-button {
-  margin: 0 undefinedpx
+.pe-button .pe-button-row {
+  margin: 0 -4px
+}
+
+.pe-button .pe-button {
+  margin: 0 4px
 }
 
 .pe-button.pe-text-button {
@@ -149,7 +152,7 @@
   min-width: 64px
 }
 
-.pe-button.pe-text-button:not(.pe-button--high-label) {
+.pe-button.pe-text-button.pe-button--high-label {
   padding: 6px 0
 }
 
@@ -181,6 +184,10 @@
   min-height: calc(1.3em + 2 * 9px)
 }
 
+.pe-button.pe-text-button.pe-button--high-label {
+  padding: 0
+}
+
 .pe-button.pe-text-button.pe-button--high-label .pe-button__label {
   padding: 15px 0
 }
@@ -193,7 +200,7 @@
   text-transform: uppercase
 }
 
-.pe-dark-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone.pe-button.pe-text-button .pe-button--selected .pe-button__focus,.pe-dark-tone .pe-button.pe-text-button .pe-button--selected .pe-button__focus {
+.pe-dark-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-dark-tone .pe-button.pe-text-button.pe-button--selected .pe-button__focus {
   opacity: 1
 }
 
@@ -226,7 +233,7 @@
   color: hsla(0,0%,100%,.7)
 }
 
-.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-button.pe-text-button .pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-text-button .pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-text-button .pe-button--selected .pe-button__focus {
+.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--selected .pe-button__focus {
   opacity: 1
 }
 
