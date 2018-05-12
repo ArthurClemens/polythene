@@ -58,25 +58,22 @@ const varFns = {
       }
     }),
     {
-      " .pe-button-row": {
+      ".pe-button-row": {
         // prevent inline block style to add extra space:
         fontSize: 0, 
         lineHeight: 0,
       }
     }
   ],
-  row_margin_h: (selector, vars) => [
-    sel(selector, {
-      " .pe-button-row": {
-        margin: `0 -${vars.row_margin_h}px`,
-      },
-    }),
-    {
+  row_margin_h: (selector, vars) => [{
+    ".pe-button-row": {
+      margin: `0 -${vars.row_margin_h}px`,
+
       [` ${selector}`]: {
         margin: `0 ${vars.row_margin_h}px`,
       }
-    }
-  ],
+    },
+  }],
 };
 
 

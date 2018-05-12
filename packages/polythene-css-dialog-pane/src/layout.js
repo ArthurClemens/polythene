@@ -1,18 +1,52 @@
-import { vars } from "polythene-theme";
+import { vars as defaultVars } from "polythene-theme";
 import { flex } from "polythene-core-css";
 
-const lineHeightTitle = 24;
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-export default (selector, componentVars) => {
-  const maxWidthBreakpointMobile = componentVars.max_width + 2 * componentVars.side_padding_mobile;
+const max_width_side_padding_mobile = (selector, vars) => {
+  const maxWidthBreakpointMobile = vars.max_width + 2 * vars.side_padding_mobile;
+  return {
+    ["@media (max-width: " + maxWidthBreakpointMobile + "px)"]: {
+      [selector]: {
+        maxWidth: `calc(100vw - ${2 * vars.side_padding_mobile}px)`
+      }
+    },
+    ["@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)"]: {
+      [selector]: {
+        maxWidth: vars.max_width + "px",
+      }
+    }
+  };
+};
 
-  return [{
-    [selector]: [
+const padding_header_height_footer_height = (selector, vars) =>
+  sel(selector, {
+    " .pe-dialog-pane__body": {
+      // initially set max-height; will be overridden by dialog core with actual heights
+      maxHeight: "calc(100vh - " + (4 * vars.padding) + "px - " + (vars.header_height + vars.footer_height) + "px)",
+    }
+  });
+
+const padding_header_bottom = (selector, vars) =>
+  sel(selector, {
+    " .pe-dialog-pane__header--title": {
+      paddingTop: (vars.padding - 4) + "px",
+      paddingRight: vars.padding + "px",
+      paddingBottom: (vars.header_bottom - 4) + "px",
+      paddingLeft: vars.padding + "px",
+    },
+  });
+
+const varFns = {
+  general_styles: selector => [
+    sel(selector, [
       flex.layoutVertical,
       {
         position: "relative",
         maxHeight: "100%",
-        minWidth: 56 * 5 + "px",
+        
         borderRadius: "inherit",
         margin: 0,
         
@@ -31,9 +65,8 @@ export default (selector, componentVars) => {
         },
 
         " .pe-dialog-pane__title": {
-          fontSize: vars.font_size_title + "px",
-          lineHeight: lineHeightTitle + "px",
-          fontWeight: vars.font_weight_medium,
+          fontSize: defaultVars.font_size_title + "px",
+          fontWeight: defaultVars.font_weight_medium,
 
           "& + div": {
             marginTop: "16px"
@@ -41,8 +74,6 @@ export default (selector, componentVars) => {
         },
 
         " .pe-dialog-pane__header": {
-          minHeight: componentVars.header_height + "px",
-
           " .pe-dialog-pane__title": {
             width: "100%",
             wordBreak: "break-all",
@@ -52,20 +83,12 @@ export default (selector, componentVars) => {
           }
         },
 
-        " .pe-dialog-pane__header--title": {
-          padding: [(componentVars.padding - 4), componentVars.padding, (componentVars.header_bottom - 4), componentVars.padding].map((v) => (v + "px")).join(" ")
-        },
-
         " .pe-dialog-pane__body": [
           flex.selfStretch,
           {
-            padding: componentVars.padding + "px",
             overflowY: "auto",
             "-webkit-overflow-scrolling": "touch",
             minHeight: "50px",
-            
-            // initially set max-height; will be overridden by dialog core with actual heights
-            maxHeight: "calc(100vh - " + (4 * componentVars.padding) + "px - " + (componentVars.header_height + componentVars.footer_height) + "px)",
 
             " p": {
               margin: 0
@@ -79,19 +102,13 @@ export default (selector, componentVars) => {
         ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
           " .pe-dialog-pane__body": {
             borderTopStyle: "solid",
-            borderWidth: componentVars.border_width + "px"
           }
         },
 
         ".pe-dialog-pane--footer": {
-          " .pe-dialog-pane__body": {
-            paddingBottom: (componentVars.padding - 10) + "px",
-          },
-
           ".pe-dialog-pane--border-bottom": {
             " .pe-dialog-pane__body": {
               borderBottomStyle: "solid",
-              borderWidth: componentVars.border_width + "px"
             }
           }
         },
@@ -112,7 +129,6 @@ export default (selector, componentVars) => {
           },
           ".pe-dialog-pane__footer--buttons": {
             padding: "2px 8px",
-            minHeight: componentVars.footer_height + "px",
             fontSize: 0, // remove inline block spacing
           },
         },
@@ -123,36 +139,115 @@ export default (selector, componentVars) => {
           flex.layoutWrap
         ]
       },
-    ],
-    ".pe-menu__content": {
-      " .pe-dialog-pane__body": {
-        padding: 0,
-        border: "none"
-      }
-    },
-    " .pe-dialog--full-screen": {
-      " .pe-dialog-pane__content": {
-        borderRadius: 0,
-        maxWidth: "none",
-        height: "100vh",
-        width: "100vw",
+      {
+        ".pe-menu__content": {
+          " .pe-dialog-pane__body": {
+            padding: 0,
+            border: "none"
+          }
+        },
+        " .pe-dialog--full-screen": {
+          " .pe-dialog-pane__content": {
+            borderRadius: 0,
+            maxWidth: "none",
+            height: "100vh",
+            width: "100vw",
+          },
+          " .pe-dialog-pane, .pe-dialog-pane__body": {
+            height: "100vh",
+            maxHeight: "100vh",
+            border: "none",
+            maxWidth: "initial",
+          }
+        },
       },
-      " .pe-dialog-pane, .pe-dialog-pane__body": {
-        height: "100vh",
-        maxHeight: "100vh",
-        border: "none",
-        maxWidth: "initial",
+    ])
+  ],
+  max_width: (selector, vars) => [
+    sel(selector, [
+    ]),
+    max_width_side_padding_mobile(selector, vars)
+  ],
+  side_padding_mobile: (selector, vars) => [
+    sel(selector, [
+    ]),
+    max_width_side_padding_mobile(selector, vars)
+  ],
+  min_width: (selector, vars) => [
+    sel(selector, {
+      minWidth: vars.min_width
+    }),
+  ],
+  line_height_title: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog-pane__title": {
+        lineHeight: vars.line_height_title + "px",
+      },
+    }),
+  ],
+  header_height: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog-pane__header": {
+        minHeight: vars.header_height + "px",
+      },
+    }),
+    padding_header_height_footer_height(selector, vars),
+  ],
+  padding: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog-pane__body": {
+        padding: vars.padding + "px",
+      },
+      ".pe-dialog-pane--footer": {
+        " .pe-dialog-pane__body": {
+          paddingBottom: (vars.padding - 10) + "px",
+        },
       }
-    },
-    ["@media (max-width: " + maxWidthBreakpointMobile + "px)"]: {
-      [selector]: {
-        maxWidth: `calc(100vw - ${2 * componentVars.side_padding_mobile}px)`
-      }
-    },
-    ["@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)"]: {
-      [selector]: {
-        maxWidth: componentVars.max_width + "px",
-      }
-    }
-  }];
+    }),
+    padding_header_bottom(selector, vars),
+    padding_header_height_footer_height(selector, vars),
+  ],
+  header_bottom: (selector, vars) => [
+    sel(selector, {
+    }),
+    padding_header_bottom(selector, vars)
+  ],
+  footer_height: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog-pane__footer": {
+        ".pe-dialog-pane__footer--buttons": {
+          minHeight: vars.footer_height + "px",
+        },
+      },
+    }),
+    padding_header_height_footer_height(selector, vars),
+  ],
+  border_width: (selector, vars) => [
+    sel(selector, {
+      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+        " .pe-dialog-pane__body": {
+          borderWidth: vars.border_width + "px"
+        },
+      },
+      ".pe-dialog-pane--footer": {
+        ".pe-dialog-pane--border-bottom": {
+          " .pe-dialog-pane__body": {
+            borderWidth: vars.border_width + "px"
+          }
+        }
+      },
+    }),
+  ]
+};
+
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
 };

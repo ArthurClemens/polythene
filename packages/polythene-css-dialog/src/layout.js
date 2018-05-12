@@ -1,70 +1,111 @@
-import { vars } from "polythene-theme";
+import { vars as defaultVars } from "polythene-theme";
 import { flex } from "polythene-core-css";
 
-export default (selector, componentVars) => [{
-  ".pe-dialog__holder": {
-    height: "100%"
-  },
-  [selector]: [
-    flex.layoutCenterCenter,
-    componentVars.animation_hide_css,
-    {
-      position: componentVars.position,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: vars.z_dialog,
-      height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
-      padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-      transitionDelay: componentVars.animation_delay,
-      transitionDuration: componentVars.animation_duration,
-      transitionTimingFunction: componentVars.animation_timing_function,
-      transitionProperty: "all",
+const varFns = {
+  general_styles: selector => [
+    sel(selector, [
+      flex.layoutCenterCenter,
+      {
+        
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: defaultVars.z_dialog,
+        height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
+        transitionProperty: "all",
 
-      ".pe-dialog--visible": [
-        componentVars.animation_show_css,
-      ],
+        ".pe-dialog--full-screen": {
+          padding: 0,
 
-      ".pe-dialog--full-screen": {
-        padding: 0,
+          " .pe-dialog__content": {
+            width: "100%", // for IE11
+          }
+        },
 
         " .pe-dialog__content": {
-          width: "100%", // for IE11
-        }
+          position: "relative",
+          transitionProperty: "all",
+        },
 
-        // dialog-content styles: see dialog pane
-      },
-
-      " .pe-dialog__content": {
-        position: "relative",
-        transitionProperty: "all",
-        borderRadius: componentVars.border_radius + "px",
-      },
-
-      " .pe-dialog__backdrop": [
-        {
+        " .pe-dialog__backdrop": {
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-        }
-      ], 
+        }, 
+      }
+    ]),
+    {
+      ".pe-dialog__holder": {
+        height: "100%"
+      },
     }
   ],
-  
-  // The idea is to prevent scrolling of the background, but
-  // Mobile Safari won't let that,
-  // and Windows browsers will show a jump to the right because the scrollbar disappears.
-  // So in all *something* gets broken when trying this.
+  animation_hide_css: (selector, vars) => [
+    sel(selector, [
+      vars.animation_hide_css
+    ]),
+  ],
+  position: (selector, vars) => [
+    sel(selector, {
+      position: vars.position,
+    }),
+  ],
+  padding_vertical: (selector, vars) => [
+    sel(selector, {
+      paddingTop: vars.padding_vertical + "px",
+      paddingBottom: vars.padding_vertical + "px",
+    }),
+  ],
+  padding_horizontal: (selector, vars) => [
+    sel(selector, {
+      paddingLeft: vars.padding_horizontal + "px",
+      paddingRight: vars.padding_horizontal + "px",
+    }),
+  ],
+  animation_delay: (selector, vars) => [
+    sel(selector, {
+      transitionDelay: vars.animation_delay,
+    }),
+  ],
+  animation_duration: (selector, vars) => [
+    sel(selector, {
+      transitionDuration: vars.animation_duration,
+    }),
+  ],
+  animation_timing_function: (selector, vars) => [
+    sel(selector, {
+      transitionTimingFunction: vars.animation_timing_function,
+    }),
+  ],
+  animation_show_css: (selector, vars) => [
+    sel(selector, {
+      ".pe-dialog--visible": vars.animation_show_css,
+    }),
+  ],
+  border_radius: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog__content": {
+        borderRadius: vars.border_radius + "px",
+      },
+    }),
+  ],
+};
 
-  // " body.pe-dialog--open": {
-  //   overflow: "hidden",
-  //   left: 0,
-  //   "-webkit-overflow-scrolling": "touch",
-  //   top: 0,
-  //   width: "100%"
-  // }
-}];
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
+};

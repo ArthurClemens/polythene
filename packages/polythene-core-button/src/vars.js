@@ -3,7 +3,7 @@ import { vars } from "polythene-theme";
 const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
 
-const touch_height = vars.unit_touch_height;
+const touch_height = vars.unit_touch_height; // 48
 const height = 36;
 
 export default {
@@ -15,12 +15,12 @@ export default {
   dropdown_icon_size:     24,
   font_size:              14,
   font_weight:            500,
+  label_padding_v:        9,
   line_height:            vars.line_height,
   min_width:              8 * vars.grid_unit_component,
-  outer_padding_v:        (touch_height - height) / 2,
+  outer_padding_v:        (touch_height - height) / 2, // (48 - 36) / 2 = 6
   padding_h:              2 * vars.grid_unit, // 8
   padding_h_extra_wide:   6 * vars.grid_unit, // 24
-  padding_v:              9,
   row_margin_h:           vars.grid_unit,
   text_transform:         "uppercase",
 

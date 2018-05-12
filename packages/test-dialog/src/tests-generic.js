@@ -28,9 +28,10 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
   });
 
   DialogCSS.addStyle(".dialog-tests-rounded-blue", {
-    border_radius:          5,
-    color_light_background: "#2196F3",
-    color_light_text:       "#fff",
+    border_radius:                   10,
+    color_light_background:          "#2196F3",
+    color_light_text:                "#fff",
+    color_light_backdrop_background: "rgba(243, 138, 32, 0.35)",
   });
 
   DialogCSS.addStyle(".dialog-tests-transitions", {
@@ -57,14 +58,15 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       }
     },
     {
-      name: "Themed pane (color and border radius)",
+      name: "Themed pane (color, border radius, backdrop color)",
       interactive: true,
       exclude: true,
       component: {
         view: () => 
           Opener({
             content: h("div", "Hello"),
-            className: "dialog-tests-rounded-blue"
+            className: "dialog-tests-rounded-blue",
+            backdrop: true
           })
       }
     },

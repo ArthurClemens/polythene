@@ -135,4 +135,3 @@ export default (selector, componentVars, customVars) => {
       : null
   )).filter(s => s);
 };
-

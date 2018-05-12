@@ -4,14 +4,17 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
 
 export default {
-  max_width:           7 * vars.grid_unit_menu,      // 56   
-  side_padding_mobile: 6 * vars.grid_unit,           // 48
-  padding:             3 * vars.grid_unit_component, // 24
-  header_bottom:       20,
-  header_height:       60,
-  footer_height:       52,
+  general_styles:                  true,
 
-  border_width:        1,
+  border_width:                    1,
+  footer_height:                   52,
+  header_bottom:                   20,
+  header_height:                   60,
+  line_height_title:               24,
+  max_width:                       7 * vars.grid_unit_menu,      // 7 * 56 = 392 
+  min_width:                       5 * vars.grid_unit_menu,      // 5 * 56 = 280
+  padding:                         3 * vars.grid_unit_component, // 3 * 8 = 24
+  side_padding_mobile:             6 * vars.grid_unit,           // 6 * 4 = 48
 
   color_light_title_text:          "inherit",
   color_light_body_text:           "inherit",

@@ -264,16 +264,17 @@
   };
 
   var vars = {
-    position: "fixed",
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
-    padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
+    general_styles: true,
 
     animation_delay: "0s",
     animation_duration: ".220s",
-    animation_timing_function: "ease-in-out",
     animation_hide_css: "opacity: 0;",
     animation_show_css: "opacity: 1;",
+    animation_timing_function: "ease-in-out",
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
+    padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
+    position: "fixed",
 
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",
     color_dark_backdrop_background: "rgba(0, 0, 0, .5)",

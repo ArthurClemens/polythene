@@ -171,7 +171,7 @@
     return "rgba(" + colorStr + ", " + opacity + ")";
   };
 
-  var touch_height = polytheneTheme.vars.unit_touch_height;
+  var touch_height = polytheneTheme.vars.unit_touch_height; // 48
   var height = 36;
 
   var vars = {
@@ -183,12 +183,12 @@
     dropdown_icon_size: 24,
     font_size: 14,
     font_weight: 500,
+    label_padding_v: 9,
     line_height: polytheneTheme.vars.line_height,
     min_width: 8 * polytheneTheme.vars.grid_unit_component,
-    outer_padding_v: (touch_height - height) / 2,
+    outer_padding_v: (touch_height - height) / 2, // (48 - 36) / 2 = 6
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
     padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
-    padding_v: 9,
     row_margin_h: polytheneTheme.vars.grid_unit,
     text_transform: "uppercase",
 

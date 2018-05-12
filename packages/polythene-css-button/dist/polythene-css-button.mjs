@@ -79,7 +79,7 @@ var varFns = {
         zIndex: 0
       }
     }), {
-      " .pe-button-row": {
+      ".pe-button-row": {
         // prevent inline block style to add extra space:
         fontSize: 0,
         lineHeight: 0
@@ -87,13 +87,14 @@ var varFns = {
     }];
   },
   row_margin_h: function row_margin_h(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-button-row": {
+    return [{
+      ".pe-button-row": _defineProperty({
         margin: "0 -" + vars$$1.row_margin_h + "px"
-      }
-    }), _defineProperty({}, " " + selector, {
-      margin: "0 " + vars$$1.row_margin_h + "px"
-    })];
+
+      }, " " + selector, {
+        margin: "0 " + vars$$1.row_margin_h + "px"
+      })
+    }];
   }
 };
 
@@ -115,31 +116,31 @@ var sel$1 = function sel(selector, o) {
   return _defineProperty$1({}, selector, o);
 };
 
-var line_height_padding_v = function line_height_padding_v(selector, vars$$1) {
+var line_height_label_padding_v = function line_height_label_padding_v(selector, vars$$1) {
   return sel$1(selector, {
     " .pe-button__dropdown": {
-      minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + vars$$1.padding_v + "px)"
+      minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + vars$$1.label_padding_v + "px)"
     }
   });
 };
 
-var outer_padding_v_padding_v = function outer_padding_v_padding_v(selector, vars$$1) {
+var outer_padding_v_label_padding_v = function outer_padding_v_label_padding_v(selector, vars$$1) {
   return sel$1(selector, {
     ".pe-button--high-label": {
       padding: 0,
 
       " .pe-button__label": {
-        padding: vars$$1.outer_padding_v + vars$$1.padding_v + "px 0"
+        padding: vars$$1.outer_padding_v + vars$$1.label_padding_v + "px 0"
       }
     }
   });
 };
 
-var line_height_outer_padding_v_padding_v = function line_height_outer_padding_v_padding_v(selector, vars$$1) {
+var line_height_outer_padding_v_label_padding_v = function line_height_outer_padding_v_label_padding_v(selector, vars$$1) {
   return sel$1(selector, {
     ".pe-button--high-label": {
       " .pe-button__label, .pe-button__dropdown": {
-        minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + (vars$$1.outer_padding_v + vars$$1.padding_v) + "px)"
+        minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + (vars$$1.outer_padding_v + vars$$1.label_padding_v) + "px)"
       }
     }
   });
@@ -244,18 +245,18 @@ var varFns$1 = {
       }
     })];
   },
-  padding_v: function padding_v(selector, vars$$1) {
+  label_padding_v: function label_padding_v(selector, vars$$1) {
     return [sel$1(selector, {
       " .pe-button__label": {
-        padding: vars$$1.padding_v + "px 0"
+        padding: vars$$1.label_padding_v + "px 0"
       },
 
       ".pe-button--border": {
         " .pe-button__label": {
-          padding: vars$$1.padding_v - 1 + "px 0"
+          padding: vars$$1.label_padding_v - 1 + "px 0"
         }
       }
-    }), line_height_padding_v(selector, vars$$1), outer_padding_v_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
+    }), line_height_label_padding_v(selector, vars$$1), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   font_weight: function font_weight(selector, vars$$1) {
     return [sel$1(selector, {
@@ -283,7 +284,7 @@ var varFns$1 = {
       " .pe-button__label, .pe-button__dropdown": {
         lineHeight: vars$$1.line_height
       }
-    }), line_height_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
+    }), line_height_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   dropdown_icon_size: function dropdown_icon_size(selector, vars$$1) {
     return [sel$1(selector, {
@@ -302,10 +303,12 @@ var varFns$1 = {
   },
   outer_padding_v: function outer_padding_v(selector, vars$$1) {
     return [sel$1(selector, {
+      padding: vars$$1.outer_padding_v + "px 0",
+
       ".pe-button--high-label": {
-        padding: vars$$1.outer_padding_v + "px 0"
+        padding: 0
       }
-    }), outer_padding_v_padding_v(selector, vars$$1), line_height_outer_padding_v_padding_v(selector, vars$$1)];
+    }), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   }
 };
 

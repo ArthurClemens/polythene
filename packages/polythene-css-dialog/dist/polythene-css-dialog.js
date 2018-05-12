@@ -72,88 +72,184 @@
     menuContent: menuClasses.content
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty({
-      ".pe-dialog__holder": {
-        height: "100%"
-      }
-    }, selector, [polytheneCoreCss.flex.layoutCenterCenter, componentVars.animation_hide_css, {
-      position: componentVars.position,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: polytheneTheme.vars.z_dialog,
-      height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar
-      padding: componentVars.padding_vertical + "px " + componentVars.padding_horizontal + "px",
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
 
-      transitionDelay: componentVars.animation_delay,
-      transitionDuration: componentVars.animation_duration,
-      transitionTimingFunction: componentVars.animation_timing_function,
-      transitionProperty: "all",
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
 
-      ".pe-dialog--visible": [componentVars.animation_show_css],
-
-      ".pe-dialog--full-screen": {
-        padding: 0,
-
-        " .pe-dialog__content": {
-          width: "100%" // for IE11
-
-
-          // dialog-content styles: see dialog pane
-        } },
-
-      " .pe-dialog__content": {
-        position: "relative",
-        transitionProperty: "all",
-        borderRadius: componentVars.border_radius + "px"
-      },
-
-      " .pe-dialog__backdrop": [{
-        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
-      }]
-    }])];
+        bottom: 0,
+        zIndex: polytheneTheme.vars.z_dialog,
+        height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
+        transitionProperty: "all",
+
+        ".pe-dialog--full-screen": {
+          padding: 0,
+
+          " .pe-dialog__content": {
+            width: "100%" // for IE11
+          }
+        },
+
+        " .pe-dialog__content": {
+          position: "relative",
+          transitionProperty: "all"
+        },
+
+        " .pe-dialog__backdrop": {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }
+      }]), {
+        ".pe-dialog__holder": {
+          height: "100%"
+        }
+      }];
+    },
+    animation_hide_css: function animation_hide_css(selector, vars) {
+      return [sel(selector, [vars.animation_hide_css])];
+    },
+    position: function position(selector, vars) {
+      return [sel(selector, {
+        position: vars.position
+      })];
+    },
+    padding_vertical: function padding_vertical(selector, vars) {
+      return [sel(selector, {
+        paddingTop: vars.padding_vertical + "px",
+        paddingBottom: vars.padding_vertical + "px"
+      })];
+    },
+    padding_horizontal: function padding_horizontal(selector, vars) {
+      return [sel(selector, {
+        paddingLeft: vars.padding_horizontal + "px",
+        paddingRight: vars.padding_horizontal + "px"
+      })];
+    },
+    animation_delay: function animation_delay(selector, vars) {
+      return [sel(selector, {
+        transitionDelay: vars.animation_delay
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [sel(selector, {
+        transitionDuration: vars.animation_duration
+      })];
+    },
+    animation_timing_function: function animation_timing_function(selector, vars) {
+      return [sel(selector, {
+        transitionTimingFunction: vars.animation_timing_function
+      })];
+    },
+    animation_show_css: function animation_show_css(selector, vars) {
+      return [sel(selector, {
+        ".pe-dialog--visible": vars.animation_show_css
+      })];
+    },
+    border_radius: function border_radius(selector, vars) {
+      return [sel(selector, {
+        " .pe-dialog__content": {
+          borderRadius: vars.border_radius + "px"
+        }
+      })];
+    }
+  };
+
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      " .pe-dialog__content": {
-        backgroundColor: componentVars["color_" + tint + "_background"],
-        color: componentVars["color_" + tint + "_text"]
-      },
-      " .pe-dialog__backdrop": {
-        backgroundColor: componentVars["color_" + tint + "_backdrop_background"]
-      }
-    })];
+  var sel$1 = function sel(selector, o) {
+    return _defineProperty$1({}, selector, o);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-  });
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [];
+    } // eslint-disable-line no-unused-vars
+  };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var tintFns = function tintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars) {
+      return [sel$1(selector, {
+        " .pe-dialog__content": {
+          backgroundColor: vars["color_" + tint + "_background"]
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_text", function (selector, vars) {
+      return [sel$1(selector, {
+        " .pe-dialog__content": {
+          color: vars["color_" + tint + "_text"]
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_backdrop_background", function (selector, vars) {
+      return [sel$1(selector, {
+        " .pe-dialog__backdrop": {
+          backgroundColor: vars["color_" + tint + "_backdrop_background"]
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? lightTintFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
+  };
+
+  var color = (function (selector, componentVars, customVars) {
+    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreDialog.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreDialog.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreDialog.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreDialog.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreDialog.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreDialog.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreDialog.vars, fns);

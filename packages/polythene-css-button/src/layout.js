@@ -4,29 +4,29 @@ const sel = (selector, o) => ({
   [selector]: o
 });
 
-const line_height_padding_v = (selector, vars) =>
+const line_height_label_padding_v = (selector, vars) =>
   sel(selector, {
     " .pe-button__dropdown": {
-      minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.padding_v}px)`,
+      minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.label_padding_v}px)`,
     },
   });
 
-const outer_padding_v_padding_v = (selector, vars) => 
+const outer_padding_v_label_padding_v = (selector, vars) => 
   sel(selector, {
     ".pe-button--high-label": {
       padding: 0,
       
       " .pe-button__label": {
-        padding: vars.outer_padding_v + vars.padding_v + "px 0",
+        padding: vars.outer_padding_v + vars.label_padding_v + "px 0",
       },
     }
   });
 
-const line_height_outer_padding_v_padding_v = (selector, vars) => 
+const line_height_outer_padding_v_label_padding_v = (selector, vars) => 
   sel(selector, {
     ".pe-button--high-label": {
       " .pe-button__label, .pe-button__dropdown": {
-        minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.outer_padding_v + vars.padding_v}px)`,
+        minHeight: `calc((1em * ${vars.line_height}) + 2 * ${vars.outer_padding_v + vars.label_padding_v}px)`,
       }
     },
   });
@@ -132,21 +132,21 @@ const varFns = {
       },
     })
   ],
-  padding_v: (selector, vars) => [
+  label_padding_v: (selector, vars) => [
     sel(selector, {
       " .pe-button__label": {
-        padding: vars.padding_v + "px 0",
+        padding: vars.label_padding_v + "px 0",
       },
 
       ".pe-button--border": {
         " .pe-button__label": {
-          padding: (vars.padding_v - 1) + "px 0"
+          padding: (vars.label_padding_v - 1) + "px 0"
         }
       },
     }),
-    line_height_padding_v(selector, vars),
-    outer_padding_v_padding_v(selector, vars),
-    line_height_outer_padding_v_padding_v(selector, vars)
+    line_height_label_padding_v(selector, vars),
+    outer_padding_v_label_padding_v(selector, vars),
+    line_height_outer_padding_v_label_padding_v(selector, vars)
   ],
   font_weight: (selector, vars) => [
     sel(selector, {
@@ -175,8 +175,8 @@ const varFns = {
         lineHeight: vars.line_height,
       },
     }),
-    line_height_padding_v(selector, vars),
-    line_height_outer_padding_v_padding_v(selector, vars)
+    line_height_label_padding_v(selector, vars),
+    line_height_outer_padding_v_label_padding_v(selector, vars)
   ],
   dropdown_icon_size: (selector, vars) => [
     sel(selector, {
@@ -195,12 +195,14 @@ const varFns = {
   ],
   outer_padding_v: (selector, vars) => [
     sel(selector, {
+      padding: vars.outer_padding_v + "px 0",
+
       ".pe-button--high-label": {
-        padding: vars.outer_padding_v + "px 0",
+        padding: 0,
       },
     }),
-    outer_padding_v_padding_v(selector, vars),
-    line_height_outer_padding_v_padding_v(selector, vars)
+    outer_padding_v_label_padding_v(selector, vars),
+    line_height_outer_padding_v_label_padding_v(selector, vars)
   ]
 };
 
