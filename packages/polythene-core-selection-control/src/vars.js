@@ -4,13 +4,15 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
 
 export default {
-  label_font_size:                     2 * vars.grid_unit_component, // 16
-  label_height:                        3 * vars.grid_unit_component, // 24
-  label_padding_before:                vars.grid_unit * 4, // 16
-  label_padding_after:                 0,
+  general_styles:                      true,
+  
+  animation_duration:                  vars.animation_duration,
   button_size:                         6 * vars.grid_unit_component,
   icon_size:                           3 * vars.grid_unit_component,
-  animation_duration:                  vars.animation_duration,
+  label_font_size:                     2 * vars.grid_unit_component, // 16
+  label_height:                        3 * vars.grid_unit_component, // 24
+  label_padding_after:                 0,
+  label_padding_before:                vars.grid_unit * 4, // 16
 
   color_light_on:                      rgba(vars.color_primary),
   color_light_off:                     rgba(vars.color_light_foreground, vars.blend_light_text_secondary),

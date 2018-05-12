@@ -8,25 +8,23 @@
     component: "pe-checkbox-control"
   };
 
-  var layout = (function (selector, componentVars) {
-    return polytheneCssSelectionControl.layout(selector, componentVars, "checkbox");
+  var layout = (function (selector, componentVars, customVars) {
+    return polytheneCssSelectionControl.layout(selector, componentVars, customVars, "checkbox");
   });
 
-  var color = (function (selector, componentVars) {
-    return polytheneCssSelectionControl.color(selector, componentVars);
+  var color = (function (selector, componentVars, customVars) {
+    return polytheneCssSelectionControl.color(selector, componentVars, customVars);
   });
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreCheckbox.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreCheckbox.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreCheckbox.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreCheckbox.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreCheckbox.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreCheckbox.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreCheckbox.vars, fns);

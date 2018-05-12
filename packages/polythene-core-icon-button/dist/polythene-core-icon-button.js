@@ -57,18 +57,18 @@
   var color_dark = rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary);
 
   var vars = {
-    padding: padding,
-    padding_compact: padding_compact,
-
-    label_font_size: 16,
-    label_line_height: 20,
-    label_padding_before: polytheneTheme.vars.grid_unit * 1, // 4
-    label_padding_after: 0,
-    label_font_weight: 400,
-    label_text_transform: "initial",
-    label_top_margin_factor: 1 / 12, // align with icon
+    general_styles: true,
 
     animation_duration: polytheneTheme.vars.animation_duration,
+    label_font_size: 16,
+    label_font_weight: 400,
+    label_line_height: 20,
+    label_padding_after: 0,
+    label_padding_before: polytheneTheme.vars.grid_unit * 1, // 4
+    label_text_transform: "initial",
+    label_top_margin_factor: 1 / 12, // align with icon
+    padding: padding,
+    padding_compact: padding_compact,
 
     color_background: "transparent", // only specify this variable to get all 2 states
     // theme specific background colors may be set in theme; disabled by default

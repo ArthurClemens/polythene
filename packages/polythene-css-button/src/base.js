@@ -70,10 +70,12 @@ const varFns = {
       " .pe-button-row": {
         margin: `0 -${vars.row_margin_h}px`,
       },
+    }),
+    {
       [` ${selector}`]: {
         margin: `0 ${vars.row_margin_h}px`,
       }
-    })
+    }
   ],
 };
 

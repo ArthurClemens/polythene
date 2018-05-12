@@ -199,13 +199,15 @@
   };
 
   var vars = {
-    label_font_size: 2 * polytheneTheme.vars.grid_unit_component, // 16
-    label_height: 3 * polytheneTheme.vars.grid_unit_component, // 24
-    label_padding_before: polytheneTheme.vars.grid_unit * 4, // 16
-    label_padding_after: 0,
+    general_styles: true,
+
+    animation_duration: polytheneTheme.vars.animation_duration,
     button_size: 6 * polytheneTheme.vars.grid_unit_component,
     icon_size: 3 * polytheneTheme.vars.grid_unit_component,
-    animation_duration: polytheneTheme.vars.animation_duration,
+    label_font_size: 2 * polytheneTheme.vars.grid_unit_component, // 16
+    label_height: 3 * polytheneTheme.vars.grid_unit_component, // 24
+    label_padding_after: 0,
+    label_padding_before: polytheneTheme.vars.grid_unit * 4, // 16
 
     color_light_on: rgba(polytheneTheme.vars.color_primary),
     color_light_off: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),

@@ -9,18 +9,18 @@ const color_light = rgba(vars.color_light_foreground, vars.blend_light_text_seco
 const color_dark = rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary);
 
 export default {
-  padding,
-  padding_compact,
+  general_styles:            true,
 
+  animation_duration:        vars.animation_duration,
   label_font_size:           16,
-  label_line_height:         20,
-  label_padding_before:      vars.grid_unit * 1, // 4
-  label_padding_after:       0,
   label_font_weight:         400,
+  label_line_height:         20,
+  label_padding_after:       0,
+  label_padding_before:      vars.grid_unit * 1, // 4
   label_text_transform:      "initial",
   label_top_margin_factor:   1/12, // align with icon
-
-  animation_duration: vars.animation_duration,
+  padding,
+  padding_compact,
 
   color_background:          "transparent", // only specify this variable to get all 2 states
   // theme specific background colors may be set in theme; disabled by default

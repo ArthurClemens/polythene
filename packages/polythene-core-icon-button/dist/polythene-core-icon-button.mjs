@@ -53,18 +53,18 @@ var color_light = rgba(vars.color_light_foreground, vars.blend_light_text_second
 var color_dark = rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary);
 
 var vars$1 = {
-  padding: padding,
-  padding_compact: padding_compact,
-
-  label_font_size: 16,
-  label_line_height: 20,
-  label_padding_before: vars.grid_unit * 1, // 4
-  label_padding_after: 0,
-  label_font_weight: 400,
-  label_text_transform: "initial",
-  label_top_margin_factor: 1 / 12, // align with icon
+  general_styles: true,
 
   animation_duration: vars.animation_duration,
+  label_font_size: 16,
+  label_font_weight: 400,
+  label_line_height: 20,
+  label_padding_after: 0,
+  label_padding_before: vars.grid_unit * 1, // 4
+  label_text_transform: "initial",
+  label_top_margin_factor: 1 / 12, // align with icon
+  padding: padding,
+  padding_compact: padding_compact,
 
   color_background: "transparent", // only specify this variable to get all 2 states
   // theme specific background colors may be set in theme; disabled by default

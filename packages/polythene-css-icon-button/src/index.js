@@ -8,11 +8,11 @@ const fns = [layout, color];
 const selector = `.${classes.component.replace(/ /g, ".")}`;
 
 export const addStyle = (customSelector, customVars) => 
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
+  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 
 export const getStyle = (customSelector, customVars) => 
   customSelector
-    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns)
+    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
     : styler.createStyleSheets([selector], vars, fns);
 
 styler.generateStyles([selector], vars, fns);

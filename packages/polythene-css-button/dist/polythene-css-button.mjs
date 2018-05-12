@@ -87,13 +87,13 @@ var varFns = {
     }];
   },
   row_margin_h: function row_margin_h(selector, vars$$1) {
-    return [sel(selector, _defineProperty({
+    return [sel(selector, {
       " .pe-button-row": {
         margin: "0 -" + vars$$1.row_margin_h + "px"
       }
-    }, " " + selector, {
+    }), _defineProperty({}, " " + selector, {
       margin: "0 " + vars$$1.row_margin_h + "px"
-    }))];
+    })];
   }
 };
 

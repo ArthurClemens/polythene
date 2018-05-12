@@ -1,13 +1,3 @@
-.pe-checkbox-control .pe-button.pe-control__button {
-  left: -12px;
-  right: auto
-}
-
-.pe-checkbox-control .pe-control__label {
-  padding-right: 0;
-  padding-left: 16px
-}
-
 .pe-checkbox-control {
   display: inline-block;
   box-sizing: border-box;
@@ -28,7 +18,6 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  font-size: 16px;
   margin: 0;
   color: inherit
 }
@@ -45,8 +34,6 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: 24px;
-  height: 24px;
   color: inherit;
   flex-shrink: 0
 }
@@ -56,12 +43,7 @@
 }
 
 .pe-checkbox-control .pe-button.pe-control__button {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: opacity;
   position: absolute;
-  top: -12px;
   z-index: 1
 }
 
@@ -81,10 +63,6 @@
 }
 
 .pe-checkbox-control .pe-control__label {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all;
   align-self: center
 }
 
@@ -98,6 +76,41 @@
 
 .pe-checkbox-control .pe-button__content .pe-icon {
   position: absolute
+}
+
+.pe-checkbox-control .pe-button.pe-control__button {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: opacity
+}
+
+.pe-checkbox-control .pe-control__label {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all
+}
+
+.pe-checkbox-control .pe-button.pe-control__button {
+  top: -12px;
+  left: -12px;
+  right: auto
+}
+
+.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-button.pe-control__button,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-button.pe-control__button {
+  top: -12px;
+  right: -12px;
+  left: auto
+}
+
+.pe-checkbox-control .pe-control__form-label {
+  font-size: 16px
+}
+
+.pe-checkbox-control .pe-control__box {
+  width: 24px;
+  height: 24px
 }
 
 .pe-checkbox-control.pe-control--small .pe-control__form-label {
@@ -188,47 +201,31 @@
   left: 12px
 }
 
-.pe-rtl .pe-checkbox-control .pe-button.pe-control__button,[dir=rtl] .pe-checkbox-control .pe-button.pe-control__button {
-  right: -12px;
-  left: auto
+.pe-checkbox-control .pe-control__label {
+  padding-right: 0
 }
 
-.pe-rtl .pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control .pe-control__label {
-  padding-left: 0;
+.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-control__label {
+  padding-left: 0
+}
+
+.pe-checkbox-control .pe-control__label {
+  padding-left: 16px
+}
+
+.pe-rtl .pe-checkbox-control.pe-checkbox-control .pe-control__label,[dir=rtl] .pe-checkbox-control.pe-checkbox-control .pe-control__label {
   padding-right: 16px
+}
+
+.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button--on,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button--on {
+  color: inherit
 }
 
 .pe-dark-tone.pe-checkbox-control,.pe-dark-tone .pe-checkbox-control {
   color: #2196f3
 }
 
-.pe-dark-tone.pe-checkbox-control .pe-control__label,.pe-dark-tone .pe-checkbox-control .pe-control__label {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button,.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--on,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--on {
-  color: inherit
-}
-
-.pe-dark-tone.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--off,.pe-dark-tone .pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--off {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus {
-  opacity: .09;
-  background-color: #fff
-}
-
-.pe-dark-tone.pe-checkbox-control.pe-control--off .pe-control__label,.pe-dark-tone .pe-checkbox-control.pe-control--off .pe-control__label {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus {
-  opacity: .14;
-  background-color: #2196f3
-}
-
-.pe-dark-tone.pe-checkbox-control.pe-control--on .pe-control__label,.pe-dark-tone .pe-checkbox-control.pe-control--on .pe-control__label {
+.pe-dark-tone.pe-checkbox-control .pe-control__button--off,.pe-dark-tone .pe-checkbox-control .pe-control__button--off,.pe-dark-tone.pe-checkbox-control .pe-control__label,.pe-dark-tone .pe-checkbox-control .pe-control__label {
   color: hsla(0,0%,100%,.7)
 }
 
@@ -236,41 +233,39 @@
   color: hsla(0,0%,100%,.26)
 }
 
+.pe-dark-tone.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus {
+  background-color: #2196f3;
+  opacity: .14
+}
+
+.pe-dark-tone.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus {
+  background-color: #fff;
+  opacity: .09
+}
+
+.pe-checkbox-control .pe-control__box .pe-control__button,.pe-checkbox-control .pe-control__box .pe-control__button--on,.pe-light-tone.pe-checkbox-control .pe-control__box .pe-control__button,.pe-light-tone .pe-checkbox-control .pe-control__box .pe-control__button,.pe-light-tone.pe-checkbox-control .pe-control__box .pe-control__button--on,.pe-light-tone .pe-checkbox-control .pe-control__box .pe-control__button--on {
+  color: inherit
+}
+
 .pe-checkbox-control,.pe-light-tone.pe-checkbox-control,.pe-light-tone .pe-checkbox-control {
   color: #2196f3
 }
 
-.pe-checkbox-control .pe-control__label,.pe-light-tone.pe-checkbox-control .pe-control__label,.pe-light-tone .pe-checkbox-control .pe-control__label {
-  color: rgba(0,0,0,.54)
-}
-
-.pe-checkbox-control .pe-control__box .pe-control__button,.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--on,.pe-light-tone.pe-checkbox-control .pe-control__box .pe-control__button,.pe-light-tone .pe-checkbox-control .pe-control__box .pe-control__button,.pe-light-tone.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--on,.pe-light-tone .pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--on {
-  color: inherit
-}
-
-.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--off,.pe-light-tone.pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--off,.pe-light-tone .pe-checkbox-control .pe-control__box .pe-control__button .pe-control__button--off {
-  color: rgba(0,0,0,.54)
-}
-
-.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone .pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus {
-  opacity: .07;
-  background-color: #000
-}
-
-.pe-checkbox-control.pe-control--off .pe-control__label,.pe-light-tone.pe-checkbox-control.pe-control--off .pe-control__label,.pe-light-tone .pe-checkbox-control.pe-control--off .pe-control__label {
-  color: rgba(0,0,0,.54)
-}
-
-.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone .pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus {
-  opacity: .11;
-  background-color: #2196f3
-}
-
-.pe-checkbox-control.pe-control--on .pe-control__label,.pe-light-tone.pe-checkbox-control.pe-control--on .pe-control__label,.pe-light-tone .pe-checkbox-control.pe-control--on .pe-control__label {
+.pe-checkbox-control .pe-control__button--off,.pe-checkbox-control .pe-control__label,.pe-light-tone.pe-checkbox-control .pe-control__button--off,.pe-light-tone .pe-checkbox-control .pe-control__button--off,.pe-light-tone.pe-checkbox-control .pe-control__label,.pe-light-tone .pe-checkbox-control .pe-control__label {
   color: rgba(0,0,0,.54)
 }
 
 .pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-checkbox-control.pe-control--disabled .pe-control__label,.pe-light-tone.pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-light-tone .pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-light-tone.pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-light-tone .pe-checkbox-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-light-tone.pe-checkbox-control.pe-control--disabled .pe-control__label,.pe-light-tone .pe-checkbox-control.pe-control--disabled .pe-control__label {
   color: rgba(0,0,0,.26)
+}
+
+.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone.pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone .pe-checkbox-control.pe-control--on .pe-button--focus .pe-button__focus {
+  background-color: #2196f3;
+  opacity: .11
+}
+
+.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone.pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone .pe-checkbox-control.pe-control--off .pe-button--focus .pe-button__focus {
+  background-color: #000;
+  opacity: .07
 }
 /*# sourceMappingURL=polythene-checkbox.css.map */
