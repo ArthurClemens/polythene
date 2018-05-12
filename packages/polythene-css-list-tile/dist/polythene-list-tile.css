@@ -12,6 +12,11 @@
   font-weight: 500
 }
 
+.pe-list-tile.pe-list-tile--navigation .pe-list-tile__title {
+  white-space: pre-wrap;
+  min-height: 21px
+}
+
 .pe-list-tile.pe-list-tile--sticky {
   position: sticky;
   top: 0;
@@ -238,7 +243,8 @@
 }
 
 .pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__primary .pe-list-tile__subtitle,.pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__primary .pe-list-tile__title,.pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__secondary .pe-list-tile__subtitle,.pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__secondary .pe-list-tile__title,.pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__subtitle,.pe-menu__content .pe-list-tile:not(.pe-list-tile--disabled) .pe-list-tile__title {
-  user-select: none
+  user-select: none;
+  -moz-user-select: none
 }
 
 html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover,html.pe-no-touch .pe-list-tile.pe-list-tile--selectable:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover {

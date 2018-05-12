@@ -22,6 +22,11 @@ export default (selector, componentVars) => [{
       ".pe-list-tile--navigation": {
         fontSize: componentVars.font_size_navigation_title + "px",
         fontWeight: componentVars.font_weight_navigation_title,
+
+        " .pe-list-tile__title": {
+          whiteSpace: "pre-wrap",
+          minHeight: componentVars.single_line_height + "px",
+        }
       },
 
       ".pe-list-tile--sticky": [

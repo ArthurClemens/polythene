@@ -56,7 +56,12 @@ var layout = (function (selector, componentVars) {
 
     ".pe-list-tile--navigation": {
       fontSize: componentVars.font_size_navigation_title + "px",
-      fontWeight: componentVars.font_weight_navigation_title
+      fontWeight: componentVars.font_weight_navigation_title,
+
+      " .pe-list-tile__title": {
+        whiteSpace: "pre-wrap",
+        minHeight: componentVars.single_line_height + "px"
+      }
     },
 
     ".pe-list-tile--sticky": [mixin.sticky(2)],
@@ -200,7 +205,8 @@ var layout = (function (selector, componentVars) {
 
         "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
           " .pe-list-tile__title, .pe-list-tile__subtitle": {
-            userSelect: "none"
+            userSelect: "none",
+            "-moz-user-select": "none"
           }
         }
       }
