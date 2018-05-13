@@ -50,6 +50,8 @@
   };
 
   var vars = {
+    general_styles: true,
+
     size_small: polytheneTheme.vars.unit_icon_size_small,
     size_regular: polytheneTheme.vars.unit_icon_size,
     size_medium: polytheneTheme.vars.unit_icon_size_medium,

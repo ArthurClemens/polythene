@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css'), require('polythene-core-icon')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css', 'polythene-core-icon'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css'],global['polythene-core-icon']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss,polytheneCoreIcon) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-icon')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-icon'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-icon']));
+}(this, (function (exports,polytheneCoreCss,polytheneCoreIcon) { 'use strict';
 
   var classes = {
     component: "pe-icon",
@@ -15,82 +15,157 @@
     small: "pe-icon--small"
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var iconSizesPx = function iconSizesPx() {
-    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : polytheneTheme.vars.unit_icon_size;
-    return {
-      width: size + "px",
-      height: size + "px"
+  // import { vars as defaultVars } from "polythene-theme";
+
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
+
+  var sizeDirective = function sizeDirective(size) {
+    return function (selector, vars) {
+      return sel(selector, _defineProperty({}, ".pe-icon--" + size, {
+        width: vars["size_" + size] + "px",
+        height: vars["size_" + size] + "px"
+      }));
     };
   };
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, {
-      display: "inline-block",
-      verticalAlign: "middle",
-      backgroundRepeat: "no-repeat",
-      position: "relative",
-      fontSize: 0,
-      lineHeight: 0,
+  var varFns = _extends({}, {
+    general_styles: function general_styles(selector) {
+      return [sel(selector, {
+        display: "inline-block",
+        verticalAlign: "middle",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        fontSize: 0,
+        lineHeight: 0,
 
-      ".pe-icon--avatar": {
-        borderRadius: "50%"
-      },
+        ".pe-icon--avatar": {
+          borderRadius: "50%"
+        },
 
-      ".pe-icon--avatar img": {
-        border: "none",
-        borderRadius: "50%",
-        width: "inherit",
-        height: "inherit"
-      },
+        ".pe-icon--avatar img": {
+          border: "none",
+          borderRadius: "50%",
+          width: "inherit",
+          height: "inherit"
+        },
 
-      " img": {
-        height: "inherit"
-      },
+        " img": {
+          height: "inherit"
+        },
 
-      " .pe-svg, .pe-svg > div": { /* React creates an additional div when wrapping an SVG */
-        width: "inherit",
-        height: "inherit"
-      },
+        " .pe-svg, .pe-svg > div": { /* React creates an additional div when wrapping an SVG */
+          width: "inherit",
+          height: "inherit"
+        }
+      })];
+    }
+    // size_small: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-icon--small": iconSize(vars.size_small),
+    //   })
+    // ],
+    // size_regular: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-icon--regular": iconSize(vars.size_regular),
+    //   })
+    // ],
+    // size_medium: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-icon--medium": iconSize(vars.size_medium),
+    //   })
+    // ],
+    // size_large: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-icon--large": iconSize(vars.size_large),
+    //   })
+    // ],
+  }, ["small", "regular", "medium", "large"].reduce(function (acc, size) {
+    return acc["size_" + size] = sizeDirective(size), acc;
+  }, {}));
 
-      ".pe-icon--small": iconSizesPx(componentVars.size_small),
-      ".pe-icon--regular": iconSizesPx(componentVars.size_regular),
-      ".pe-icon--medium": iconSizesPx(componentVars.size_medium),
-      ".pe-icon--large": iconSizesPx(componentVars.size_large)
-    })];
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      color: componentVars["color_" + tint] || "currentcolor",
-
-      ".pe-icon--avatar": {
-        backgroundColor: componentVars["color_" + tint + "_avatar_background"]
-      }
-    })];
+  var sel$1 = function sel(selector, o) {
+    return _defineProperty$1({}, selector, o);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-  });
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [sel$1(selector, {
+        color: "currentColor"
+      })];
+    }
+  };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var tintFns = function tintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint, function (selector, vars) {
+      return [sel$1(selector, {
+        color: vars["color_" + tint]
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_avatar_background", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-icon--avatar": {
+          backgroundColor: vars["color_" + tint + "_avatar_background"]
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? lightTintFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
+  };
+
+  var color = (function (selector, componentVars, customVars) {
+    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreIcon.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreIcon.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreIcon.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIcon.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreIcon.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIcon.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreIcon.vars, fns);

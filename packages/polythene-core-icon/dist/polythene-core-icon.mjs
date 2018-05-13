@@ -47,6 +47,8 @@ var rgba = function rgba(colorStr) {
 };
 
 var vars$1 = {
+  general_styles: true,
+
   size_small: vars.unit_icon_size_small,
   size_regular: vars.unit_icon_size,
   size_medium: vars.unit_icon_size_medium,
