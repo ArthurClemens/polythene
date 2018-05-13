@@ -110,6 +110,7 @@
         z: attrs.disabled ? 0 : state.z,
         animated: true
       }),
+      wash: attrs.wash !== undefined ? attrs.wash : false,
       children: children
     }, attrs);
   };
@@ -132,9 +133,11 @@
   };
 
   var vars = {
+    general_styles: true,
+
     color_light_background: "#fff",
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_wash_background: "transparent",
+    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover), // same as hover
     color_light_disabled_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
@@ -142,9 +145,9 @@
 
     color_dark_background: rgba(polytheneTheme.vars.color_primary),
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_wash_background: "transparent",
-    color_dark_focus_background: polytheneTheme.vars.color_primary_active,
-    color_dark_active_background: polytheneTheme.vars.color_primary_dark,
+    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_focus_background: rgba(polytheneTheme.vars.color_primary_active),
+    color_dark_active_background: rgba(polytheneTheme.vars.color_primary_dark),
     color_dark_disabled_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
     color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
 
@@ -152,7 +155,6 @@
 
     // color_light_hover_background:    "transparent",
     // color_dark_hover_background:     vars.color_primary_active,
-
   };
 
   exports.coreRaisedButton = raisedButton;

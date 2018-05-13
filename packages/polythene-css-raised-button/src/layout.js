@@ -2,4 +2,4 @@
 
 import { layout } from "polythene-css-button";
 
-export default (selector, componentVars) => layout(selector, componentVars);
+export default (selector, componentVars, customVars) => layout(selector, componentVars, customVars);

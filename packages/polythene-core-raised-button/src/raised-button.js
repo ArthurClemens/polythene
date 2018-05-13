@@ -99,6 +99,9 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
         z: attrs.disabled ? 0 : state.z,
         animated: true
       }),
+      wash: attrs.wash !== undefined
+        ? attrs.wash
+        : false,
       children
     },
     attrs
