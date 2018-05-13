@@ -12,9 +12,17 @@ export default ({ h, k, Shadow }) => ({
     const state = vnode.state;
     const z = state.z();
     return h("div", null, [
-      h(".absolute.absolute--fill", {
-        [k.onclick]: () => state.z((z + 1) % 6)
-      }, "Click me"),
+      h(".absolute.absolute--fill",
+        {
+          style: {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          },
+          [k.onclick]: () => state.z((z + 1) % 6)
+        },
+        `Current shadow depth: ${z}. Click to change.`
+      ),
       h(Shadow, {
         animated: true,
         z

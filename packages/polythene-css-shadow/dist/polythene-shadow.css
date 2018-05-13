@@ -43,10 +43,6 @@
   box-shadow: 0 14px 12px 0 rgba(0,0,0,.17)
 }
 
-.pe-shadow .pe-shadow__bottom.pe-shadow--z-4 {
-  box-shadow: 0 20px 40px 0 rgba(0,0,0,.3)
-}
-
 .pe-shadow .pe-shadow__top.pe-shadow--z-5 {
   box-shadow: 0 17px 17px 0 rgba(0,0,0,.15)
 }

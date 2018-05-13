@@ -1,6 +1,13 @@
 import interactive from "./components/interactive";
+import { ShadowCSS } from "polythene-css";
 
 export default ({ Shadow, renderer: h, keys: k }) => {
+
+  ShadowCSS.addStyle(".tests-shadow-themed-shadow", {
+    shadow_bottom_z_1: "10px 10px 10px 0px rgba(45,58,112,.5)"
+  });
+
+
   return [
     {
       name: "Child node",
@@ -57,13 +64,30 @@ export default ({ Shadow, renderer: h, keys: k }) => {
         z: 5
       }
     },
+    {
+      name: "Themed",
+      component: Shadow,
+      attrs: {
+        z: 1,
+        className: "tests-shadow-themed-shadow"
+      }
+    },
 
     {
       name: "Add to an element",
       component: {
         view: () => 
           h("div", [
-            h("div", "Some element"),
+            h(".absolute.absolute--fill",
+              {
+                style: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                },
+              },
+              "Some element"
+            ),
             h(Shadow)
           ])
       },
