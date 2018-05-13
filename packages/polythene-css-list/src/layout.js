@@ -1,51 +1,80 @@
 
-const borderStyle = componentVars => ({
+const borderStyle = vars => ({
   borderStyle: "none none solid none",
-  borderWidth: componentVars.border_width_bordered + "px"
+  borderWidth: vars.border_width_bordered + "px"
 });
 
-export default (selector, componentVars) => [{
-  [selector]: {
-    
-    ".pe-list--padding": {
-      padding: componentVars.padding + "px 0",
-    },
-    ".pe-list--padding-top": {
-      paddingTop: componentVars.padding + "px",
-    },
-    ".pe-list--padding-bottom": {
-      paddingBottom: componentVars.padding + "px",
-    },
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-    ".pe-list--header": {
-      paddingTop: 0
-    },
-
-    ".pe-list--compact": {
-      padding: componentVars.padding_compact + "px 0",
-    },
-
-    "& + &": {
-      borderStyle: "solid none none none",
-      borderWidth: componentVars.border_width_stacked + "px"
-    },
-
-    ".pe-list--border": {
-      " .pe-list-tile": {
-        ":not(.pe-list-tile--header):not(:last-child)": {
-          "&": borderStyle(componentVars)
+const varFns = {
+  general_styles: selector => [
+    sel(selector, {
+      ".pe-list--header": {
+        paddingTop: 0
+      },
+      ".pe-list--indented-border": {
+        borderTop: "none",
+      }
+    })
+  ],
+  padding: (selector, vars) => [
+    sel(selector, {
+      ".pe-list--padding": {
+        padding: vars.padding + "px 0",
+      },
+      ".pe-list--padding-top": {
+        paddingTop: vars.padding + "px",
+      },
+      ".pe-list--padding-bottom": {
+        paddingBottom: vars.padding + "px",
+      },
+    })
+  ],
+  padding_compact: (selector, vars) => [
+    sel(selector, {
+      ".pe-list--compact": {
+        padding: vars.padding_compact + "px 0",
+      },
+    })
+  ],
+  border_width_stacked: (selector, vars) => [
+    sel(selector, {
+      "& + &": {
+        borderStyle: "solid none none none",
+        borderWidth: vars.border_width_stacked + "px"
+      },
+    })
+  ],
+  border_width_bordered: (selector, vars) => [
+    sel(selector, {
+      ".pe-list--border": {
+        " .pe-list-tile": {
+          ":not(.pe-list-tile--header):not(:last-child)": {
+            "&": borderStyle(vars)
+          }
+        }
+      },
+      ".pe-list--indented-border": {
+        " .pe-list-tile": {
+          ":not(.pe-list-tile--header):not(:last-child)": {
+            " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(vars)
+          }
         }
       }
-    },
+    })
+  ],
+};
 
-    ".pe-list--indented-border": {
-      borderTop: "none",
-
-      " .pe-list-tile": {
-        ":not(.pe-list-tile--header):not(:last-child)": {
-          " .pe-list-tile__content:not(.pe-list-tile__content-front)": borderStyle(componentVars)
-        }
-      }
-    }
-  }
-}];
+export default (selector, componentVars, customVars) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => (
+    varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null
+  )).filter(s => s);
+};
