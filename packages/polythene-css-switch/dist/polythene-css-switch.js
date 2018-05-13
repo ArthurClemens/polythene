@@ -13,21 +13,23 @@
     track: "pe-switch-control__track"
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var transition = function transition(componentVars, properties) {
-    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : componentVars.animation_duration;
-    return [polytheneCoreCss.mixin.defaultTransition(properties, duration, "ease-out")];
+  var transition = function transition(vars, properties) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.animation_duration;
+    return polytheneCoreCss.mixin.defaultTransition(properties, duration, "ease-out");
   };
 
-  var getSizeData = function getSizeData(componentVars, size) {
+  var getSizeData = function getSizeData(vars, size) {
     var factor = size / polytheneTheme.vars.unit_icon_size;
-    var thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
-    var scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
-    var scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
-    var scaledThumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2;
-    var trackTop = (componentVars.label_height * factor - scaledTrackHeight) / 2;
-    var thumbPadding = componentVars.icon_button_padding;
+    var thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
+    var scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
+    var scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
+    var scaledThumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2;
+    var trackTop = (vars.label_height * factor - scaledTrackHeight) / 2;
+    var thumbPadding = vars.icon_button_padding;
     var thumbMargin = (size - scaledThumbSize) / 2;
     var thumbOuterSize = size + 2 * thumbPadding;
     var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -50,7 +52,7 @@
     };
   };
 
-  var customSize = function customSize(componentVars, _ref) {
+  var customSize = function customSize(vars, _ref) {
     var scaledThumbSize = _ref.scaledThumbSize,
         scaledTrackHeight = _ref.scaledTrackHeight,
         scaledTrackWidth = _ref.scaledTrackWidth,
@@ -86,7 +88,7 @@
     };
   };
 
-  var customSpacing = function customSpacing(componentVars, _ref2, isRTL) {
+  var customSpacing = function customSpacing(vars, _ref2, isRTL) {
     var _peControl__label, _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
 
     var factor = _ref2.factor,
@@ -96,7 +98,7 @@
         trackVisualOffset = _ref2.trackVisualOffset;
 
     return {
-      " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", componentVars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
+      " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
       " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
       " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
       ".pe-control--on": {
@@ -116,189 +118,371 @@
   };
 
   var alignLeft = alignSide(false);
-
   var alignRight = alignSide(true);
 
-  var layout = (function (selector, componentVars) {
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
+
+  var createSize = function createSize(selector, vars) {
     var sizeData = {
-      small: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_small),
-      regular: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size),
-      medium: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_medium),
-      large: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_large)
+      small: getSizeData(vars, polytheneTheme.vars.unit_icon_size_small),
+      regular: getSizeData(vars, polytheneTheme.vars.unit_icon_size),
+      medium: getSizeData(vars, polytheneTheme.vars.unit_icon_size_medium),
+      large: getSizeData(vars, polytheneTheme.vars.unit_icon_size_large)
     };
-    return polytheneCssSelectionControl.layout(selector, componentVars, "checkbox").concat([_defineProperty({}, selector, [alignLeft(), {
-      " .pe-switch-control__track": [transition(componentVars, "all"), {
-        position: "absolute"
-      }],
+    return [sel(selector, {
+      ".pe-control--small": [customSize(vars, sizeData.small), customSpacing(vars, sizeData.small, false)],
+      ".pe-control--regular": [customSize(vars, sizeData.regular), customSpacing(vars, sizeData.regular, false)],
+      ".pe-control--medium": [customSize(vars, sizeData.medium), customSpacing(vars, sizeData.medium, false)],
+      ".pe-control--large": [customSize(vars, sizeData.large), customSpacing(vars, sizeData.large, false)]
+    }), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(), {
+      ".pe-control--small": [customSpacing(vars, sizeData.small, true)],
+      ".pe-control--regular": [customSpacing(vars, sizeData.regular, true)],
+      ".pe-control--medium": [customSpacing(vars, sizeData.medium, true)],
+      ".pe-control--large": [customSpacing(vars, sizeData.large, true)]
+    }])];
+  };
 
-      " .pe-switch-control__thumb": [transition(componentVars, "all"), {
-        position: "absolute",
-        zIndex: 1, // Prevents flickering of text label when toggling
-        color: "inherit",
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [sel(selector, [alignLeft(), {
+        " .pe-switch-control__track": [{
+          position: "absolute"
+        }],
 
-        ":focus": {
-          outline: 0
+        " .pe-switch-control__thumb": {
+          position: "absolute",
+          zIndex: 1, // Prevents flickering of text label when toggling
+          color: "inherit",
+
+          ":focus": {
+            outline: 0
+          }
+        },
+
+        " .pe-switch-control__knob": {
+          position: "relative",
+          borderRadius: "50%"
+        },
+
+        " .pe-icon-button .pe-button__content": {
+          transition: "none",
+
+          " .pe-switch-control__knob .pe-icon": [polytheneCoreCss.mixin.fit(), {
+            width: "100%",
+            height: "100%"
+          }]
         }
-      }],
-
-      " .pe-control__label": [transition(componentVars, "all")],
-
-      " .pe-switch-control__knob": {
-        position: "relative",
-        borderRadius: "50%"
-      },
-
-      " .pe-button__content": {
-        transition: "none",
-
-        " .pe-switch-control__knob .pe-icon": [polytheneCoreCss.mixin.fit(), {
+      }]), _defineProperty({}, "_:-ms-fullscreen, :root " + selector, {
+        " input": {
+          position: "absolute",
+          zIndex: 1,
           width: "100%",
-          height: "100%"
-        }]
-      },
+          height: "100%",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          display: "block",
+          opacity: 0,
+          cursor: "pointer"
+        },
+        " label": {
+          cursor: "auto"
+        }
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [sel(selector, {
+        " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+      })];
+    },
+    createSize: createSize
+  };
 
-      " .pe-button__focus": [transition(componentVars, "all")],
+  var withCreateSizeVar = function withCreateSizeVar(vars) {
+    return vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding ? _extends({}, vars, {
+      createSize: true
+    }) : vars;
+  };
 
-      ".pe-control--small": [customSize(componentVars, sizeData.small), customSpacing(componentVars, sizeData.small, false)],
-      ".pe-control--regular": [customSize(componentVars, sizeData.regular), customSpacing(componentVars, sizeData.regular, false)],
-      ".pe-control--medium": [customSize(componentVars, sizeData.medium), customSpacing(componentVars, sizeData.medium, false)],
-      ".pe-control--large": [customSize(componentVars, sizeData.large), customSpacing(componentVars, sizeData.large, false)]
-    }]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(), {
-      ".pe-control--small": [customSpacing(componentVars, sizeData.small, true)],
-      ".pe-control--regular": [customSpacing(componentVars, sizeData.regular, true)],
-      ".pe-control--medium": [customSpacing(componentVars, sizeData.medium, true)],
-      ".pe-control--large": [customSpacing(componentVars, sizeData.large, true)]
-    }]), _defineProperty({}, "_:-ms-fullscreen, :root " + selector, {
-      " input": {
-        position: "absolute",
-        zIndex: 1,
-        width: "100%",
-        height: "100%",
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        display: "block",
-        opacity: 0,
-        cursor: "pointer"
-      },
-      " label": {
-        cursor: "auto"
-      }
-    })]);
+  var layout = (function (selector, componentVars, customVars) {
+    var allVars = _extends({}, componentVars, customVars);
+    var currentVars = withCreateSizeVar(customVars ? customVars : allVars);
+    return polytheneCssSelectionControl.layout(selector, componentVars, customVars, "checkbox").concat(Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    }));
   });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
+  var sel$1 = function sel(selector, o) {
+    return _defineProperty$1({}, selector, o);
+  };
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        },
+        ".pe-control--on": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_label", function (selector, vars) {
+      return [sel$1(selector, {
+        " .pe-control__label": {
+          color: vars["color_" + tint + "_label"]
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_off", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_off"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_off_opacity", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_off_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_off", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_off"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_off", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_off"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_off_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_icon_off", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_off"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_off_label", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_off_label"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_on", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_on"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_on_opacity", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_on_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_on", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_on"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_on", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_on"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_on_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_icon_on", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_on"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_on_label", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_on_label"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_disabled", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_disabled", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_track_disabled_opacity", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_disabled_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_disabled", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__thumb, .pe-button__content": {
+            color: vars["color_" + tint + "_thumb_disabled"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref3;
+
+    return _ref3 = {}, _defineProperty$1(_ref3, "color_" + tint + "_wash_on", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--on": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_on"]
+          }
+        }
+      })];
+    }), _defineProperty$1(_ref3, "color_" + tint + "_wash_off", function (selector, vars) {
+      return [sel$1(selector, {
+        ".pe-control--off": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_off"]
+          }
+        }
+      })];
+    }), _ref3;
+  };
+
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+
+  var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    return Object.keys(currentVars).map(function (v) {
+      var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
+      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    });
+  };
+
+  var style = function style(scopes, selector, componentVars, customVars, tint) {
+    var selectors = scopes.map(function (s) {
       return s + selector;
-    }).join(","), {
-
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_label"]
-      },
-
-      ".pe-control--off": {
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_off_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_off"]
-        },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_off"]
-        },
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: componentVars["color_" + tint + "_focus_off_opacity"],
-            backgroundColor: componentVars["color_" + tint + "_focus_off"]
-          }
-        },
-        " .pe-icon": {
-          color: componentVars["color_" + tint + "_icon_off"] || "currentcolor"
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_off_label"]
-        }
-      },
-
-      ".pe-control--on": {
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_on_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_on"]
-        },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_on"]
-        },
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: componentVars["color_" + tint + "_focus_on_opacity"],
-            backgroundColor: componentVars["color_" + tint + "_focus_on"]
-          }
-        },
-        " .pe-icon": {
-          color: componentVars["color_" + tint + "_icon_on"] || "currentcolor"
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_on_label"]
-        }
-      },
-
-      ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_disabled"]
-        },
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_disabled_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_disabled"]
-        },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_disabled"]
-        }
-      }
-    })];
+    }).join(",");
+    return createStyle(selectors, componentVars, customVars, tint);
   };
 
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
+  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
+    var selectors = [].concat(scopes.map(function (s) {
       return s + selector + ":hover";
-    }).join(","), {
-      ".pe-control--on": {
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_on"]
-        }
-      },
-      ".pe-control--off": {
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_off"]
-        }
-      }
-    })];
+    }).join(",")).concat(scopes.map(function (s) {
+      return s + selector + ":active";
+    }).join(","));
+    return createStyle(selectors, componentVars, customVars, tint, true);
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
+  var color = (function (selector, componentVars, customVars) {
+    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
+    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
   });
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreSwitch.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreSwitch.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreSwitch.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSwitch.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreSwitch.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSwitch.vars, fns);
   };
 
   polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSwitch.vars, fns);

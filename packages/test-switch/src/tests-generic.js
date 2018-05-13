@@ -12,16 +12,19 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
   const orange = "#ef6c00";
   const blue = "#2196F3";
   
+  SwitchCSS.addStyle(".tests-switch-themed-switch-color", {
+    color_light_thumb_off: blue,
+    color_light_thumb_on:  blue,
+  });
+
   SwitchCSS.addStyle(".tests-switch-themed-switch", {
-    label_font_size: 28,
+    label_font_size:       22,
+    thumb_size:            16,
+    animation_duration:    ".1s",
     color_light_off_label: orange,
     color_light_on_label:  blue,
     color_dark_off_label:  orange,
     color_dark_on_label:   blue,
-    color_light_thumb_off: orange,
-    color_light_thumb_on:  blue,
-    color_dark_thumb_off:  orange,
-    color_dark_thumb_on:   blue
   });
 
   SwitchCSS.addStyle(".tests-switch-themed-icon", {
@@ -77,7 +80,15 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Themed Switch (color and font size)",
+      name: "Themed Switch (color)",
+      component: Switch,
+      attrs: {
+        label: "Label",
+        className: "tests-switch-themed-switch-color"
+      }
+    },
+    {
+      name: "Themed Switch (font size, thumb size, animation duration)",
       component: Switch,
       attrs: {
         label: "Label",

@@ -48,7 +48,7 @@ var createContent = function createContent(vnode, _ref) {
   var zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
   var zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
   var z = attrs.checked ? zOn : zOff;
-  var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
+  var raised = attrs.raised !== undefined ? attrs.raised : true;
 
   return [h("div", {
     className: classes.track,
@@ -80,22 +80,21 @@ var rgba = function rgba(colorStr) {
   return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
-var hit_area_padding = (vars.grid_unit_icon_button - vars.unit_icon_size) / 2; // 12
-
 var vars$3 = _extends$2({}, vars$1, {
-  track_height: 14,
-  track_length: 36,
-  thumb_size: 20,
-  padding: vars.grid_unit_component,
-  icon_button_padding: vars$2.padding,
-  hit_area_padding: hit_area_padding,
+  general_styles: true,
 
   animation_duration: vars.animation_duration,
+  hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2, // 12
+  icon_button_padding: vars$2.padding,
+  padding: vars.grid_unit_component,
+  thumb_size: 20,
+  track_height: 14,
+  track_length: 36,
 
   color_light_thumb_on: rgba(vars.color_primary),
   color_light_thumb_off: "#f1f1f1",
-  color_light_thumb_disabled: "#bdbdbd",
-  color_light_wash_on: rgba(vars.color_primary),
+  color_light_thumb_disabled: "#eee",
+  color_light_wash_on: rgba(vars.color_primary, vars.blend_light_background_active),
   color_light_wash_off: vars$2.color_light_wash,
 
   color_light_track_on: rgba(vars.color_primary_faded),
@@ -114,7 +113,7 @@ var vars$3 = _extends$2({}, vars$1, {
   color_dark_thumb_on: rgba(vars.color_primary),
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
-  color_dark_wash_on: rgba(vars.color_primary),
+  color_dark_wash_on: rgba(vars.color_primary, vars.blend_dark_background_active),
   color_dark_wash_off: vars$2.color_dark_wash,
 
   color_dark_track_on: rgba(vars.color_primary_faded, vars.blend_dark_text_tertiary), // or "#5a7f7c"

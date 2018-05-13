@@ -185,6 +185,7 @@ var ripple = /*#__PURE__*/Object.freeze({
 });
 
 var vars$1 = {
+  general_styles: true,
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",
   // color_dark:    "inherit"

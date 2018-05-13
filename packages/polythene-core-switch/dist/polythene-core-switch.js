@@ -50,7 +50,7 @@
     var zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
     var zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
     var z = attrs.checked ? zOn : zOff;
-    var raised = attrs.disabled ? false : attrs.raised !== undefined ? attrs.raised : true;
+    var raised = attrs.raised !== undefined ? attrs.raised : true;
 
     return [h("div", {
       className: classes.track,
@@ -82,22 +82,21 @@
     return "rgba(" + colorStr + ", " + opacity + ")";
   };
 
-  var hit_area_padding = (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2; // 12
-
   var vars = _extends$2({}, polytheneCoreSelectionControl.vars, {
-    track_height: 14,
-    track_length: 36,
-    thumb_size: 20,
-    padding: polytheneTheme.vars.grid_unit_component,
-    icon_button_padding: polytheneCoreIconButton.vars.padding,
-    hit_area_padding: hit_area_padding,
+    general_styles: true,
 
     animation_duration: polytheneTheme.vars.animation_duration,
+    hit_area_padding: (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2, // 12
+    icon_button_padding: polytheneCoreIconButton.vars.padding,
+    padding: polytheneTheme.vars.grid_unit_component,
+    thumb_size: 20,
+    track_height: 14,
+    track_length: 36,
 
     color_light_thumb_on: rgba(polytheneTheme.vars.color_primary),
     color_light_thumb_off: "#f1f1f1",
-    color_light_thumb_disabled: "#bdbdbd",
-    color_light_wash_on: rgba(polytheneTheme.vars.color_primary),
+    color_light_thumb_disabled: "#eee",
+    color_light_wash_on: rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_light_background_active),
     color_light_wash_off: polytheneCoreIconButton.vars.color_light_wash,
 
     color_light_track_on: rgba(polytheneTheme.vars.color_primary_faded),
@@ -116,7 +115,7 @@
     color_dark_thumb_on: rgba(polytheneTheme.vars.color_primary),
     color_dark_thumb_off: "#bdbdbd",
     color_dark_thumb_disabled: "#555",
-    color_dark_wash_on: rgba(polytheneTheme.vars.color_primary),
+    color_dark_wash_on: rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_dark_background_active),
     color_dark_wash_off: polytheneCoreIconButton.vars.color_dark_wash,
 
     color_dark_track_on: rgba(polytheneTheme.vars.color_primary_faded, polytheneTheme.vars.blend_dark_text_tertiary), // or "#5a7f7c"

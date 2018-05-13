@@ -9,9 +9,9 @@ export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
   const zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
   const zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
   const z = attrs.checked ? zOn : zOff;
-  const raised = attrs.disabled
-    ? false
-    : attrs.raised !== undefined ? attrs.raised : true;
+  const raised = attrs.raised !== undefined
+    ? attrs.raised
+    : true; 
 
   return [
     h("div",
