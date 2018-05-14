@@ -2,9 +2,7 @@ import { mixin, flex } from "polythene-core-css";
 import { vars as defaultVars } from "polythene-theme";
 
 const alignSide = () => () => ({});
-
 const alignLeft = alignSide(false);
-
 const alignRight = alignSide(true);
 
 const sel = (selector, o) => ({

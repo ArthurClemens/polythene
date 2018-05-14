@@ -1,20 +1,15 @@
+.pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
+  padding-left: 0
+}
+
 .pe-list-tile {
   display: -ms-flexbox;
   display: flex;
-  position: relative;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 21px
-}
-
-.pe-list-tile.pe-list-tile--navigation {
-  font-size: 14px;
-  font-weight: 500
+  position: relative
 }
 
 .pe-list-tile.pe-list-tile--navigation .pe-list-tile__title {
-  white-space: pre-wrap;
-  min-height: 21px
+  white-space: pre-wrap
 }
 
 .pe-list-tile.pe-list-tile--sticky {
@@ -47,9 +42,7 @@
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary .pe-list-tile__content:not(.pe-list-tile__content-front) {
   -ms-flex: 1;
   flex: 1;
-  flex-basis: 0.000000001px;
-  padding-top: 13px;
-  padding-bottom: 14px
+  flex-basis: 0.000000001px
 }
 
 .pe-list-tile:not(.pe-list-tile--disabled) {
@@ -58,7 +51,6 @@
 
 .pe-list-tile .pe-list-tile__secondary {
   text-align: right;
-  font-size: 16px;
   position: relative
 }
 
@@ -69,46 +61,14 @@
   flex-direction: column;
   -ms-align-self: center;
   align-self: center;
-  padding-left: 16px;
-  padding-right: 16px;
   width: 100%
 }
 
 .pe-list-tile .pe-list-tile__content.pe-list-tile__content-front {
-  padding-top: 8px;
-  padding-bottom: 8px;
   flex-shrink: 0
 }
 
-.pe-list-tile .pe-list-tile__content.pe-list-tile__content-front.pe-list-tile--compact-front {
-  width: 64px
-}
-
-.pe-list-tile .pe-list-tile__content.pe-list-tile__content-front:not(.pe-list-tile--compact-front) {
-  width: 72px
-}
-
-.pe-list-tile .pe-list-tile__content small {
-  font-size: 12px
-}
-
-.pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
-  padding-left: 0
-}
-
-@supports (-webkit-line-clamp:2) {
-  .pe-list-tile .pe-list-tile__title {
-    -webkit-line-clamp: 1;
-    display: -webkit-box;
-    word-break: break-word
-  }
-}
-
 .pe-list-tile .pe-list-tile__title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-rendering: auto;
-  max-height: 21px;
   white-space: normal
 }
 
@@ -146,13 +106,8 @@
   white-space: normal
 }
 
-.pe-list-tile.pe-list-tile--disabled a,.pe-list-tile.pe-list-tile--selected a {
+.pe-list-tile.pe-list-tile--disabled,.pe-list-tile.pe-list-tile--disabled a,.pe-list-tile.pe-list-tile--selected,.pe-list-tile.pe-list-tile--selected a {
   pointer-events: none
-}
-
-.pe-list-tile.pe-list-tile--subtitle .pe-list-tile__content {
-  padding-top: 15px;
-  padding-bottom: 16px
 }
 
 .pe-list-tile.pe-list-tile--subtitle .pe-list-tile__content .pe-list-tile__title {
@@ -170,9 +125,7 @@
 
 .pe-list-tile.pe-list-tile--high-subtitle .pe-list-tile__content {
   -ms-align-self: flex-start;
-  align-self: flex-start;
-  padding-top: 13px;
-  padding-bottom: 14px
+  align-self: flex-start
 }
 
 .pe-list-tile.pe-list-tile--high-subtitle .pe-list-tile__content .pe-list-tile__title {
@@ -180,36 +133,12 @@
 }
 
 .pe-list-tile.pe-list-tile--header {
-  height: 48px
+  pointer-events: none
 }
 
 .pe-list-tile.pe-list-tile--header .pe-list-tile__content {
   padding-top: 0;
   padding-bottom: 0
-}
-
-@supports (-webkit-line-clamp:2) {
-  .pe-list-tile.pe-list-tile--header .pe-list-tile__title {
-    -webkit-line-clamp: 1;
-    display: -webkit-box;
-    word-break: break-word
-  }
-}
-
-.pe-list-tile.pe-list-tile--header .pe-list-tile__title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-rendering: auto;
-  max-height: 48px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 48px;
-  padding: 0
-}
-
-.pe-list--compact .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__content,.pe-list-tile.pe-list-tile--compact:not(.pe-list-tile--header) .pe-list-tile__content {
-  padding-top: 9px;
-  padding-bottom: 10px
 }
 
 @supports (-moz-appearance:none) and (display:contents) {
@@ -251,37 +180,113 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   cursor: pointer
 }
 
-.pe-rtl .pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content,[dir=rtl].pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
-  padding-left: 16px;
-  padding-right: 16px;
+.pe-rtl .pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content,[dir=rtl] .pe-list-tile .pe-list-tile__content-front+.pe-list-tile__content {
   padding-right: 0
 }
 
-.pe-dark-tone.pe-list-tile,.pe-dark-tone .pe-list-tile {
-  color: #fff
+.pe-list-tile .pe-list-tile__content-front.pe-list-tile--compact-front {
+  width: 64px
 }
 
-.pe-dark-tone.pe-list-tile.pe-list-tile--header,.pe-dark-tone .pe-list-tile.pe-list-tile--header {
-  color: hsla(0,0%,100%,.4)
+.pe-list--compact .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__content,.pe-list-tile.pe-list-tile--compact:not(.pe-list-tile--header) .pe-list-tile__content {
+  padding-top: 9px;
+  padding-bottom: 10px
+}
+
+.pe-list-tile.pe-list-tile--header .pe-list-tile__title,.pe-list-tile.pe-list-tile--navigation {
+  font-size: 14px
+}
+
+.pe-list-tile .pe-list-tile__content small {
+  font-size: 12px
+}
+
+.pe-list-tile,.pe-list-tile .pe-list-tile__secondary {
+  font-size: 16px
+}
+
+.pe-list-tile.pe-list-tile--header .pe-list-tile__title,.pe-list-tile.pe-list-tile--navigation {
+  font-weight: 500
+}
+
+.pe-list-tile {
+  font-weight: 400
+}
+
+.pe-list-tile .pe-list-tile__content-front:not(.pe-list-tile--compact-front) {
+  width: 72px
+}
+
+.pe-list-tile.pe-list-tile--high-subtitle .pe-list-tile__content {
+  padding-top: 13px;
+  padding-bottom: 14px
+}
+
+.pe-list-tile.pe-list-tile--subtitle .pe-list-tile__content {
+  padding-top: 15px;
+  padding-bottom: 16px
+}
+
+.pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__primary .pe-list-tile__content:not(.pe-list-tile__content-front) {
+  padding-top: 13px;
+  padding-bottom: 14px
+}
+
+.pe-list-tile .pe-list-tile__content.pe-list-tile__content-front {
+  padding-top: 8px;
+  padding-bottom: 8px
+}
+
+.pe-list-tile .pe-list-tile__content {
+  padding-left: 16px;
+  padding-right: 16px
+}
+
+.pe-list-tile.pe-list-tile--header {
+  height: 48px
+}
+
+@supports (-webkit-line-clamp:2) {
+  .pe-list-tile.pe-list-tile--header .pe-list-tile__title {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    word-break: break-word
+  }
+}
+
+.pe-list-tile.pe-list-tile--header .pe-list-tile__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-rendering: auto;
+  max-height: 48px;
+  line-height: 48px;
+  padding: 0
+}
+
+.pe-list-tile {
+  line-height: 21px
+}
+
+.pe-list-tile.pe-list-tile--navigation .pe-list-tile__title {
+  min-height: 21px
+}
+
+@supports (-webkit-line-clamp:2) {
+  .pe-list-tile .pe-list-tile__title {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    word-break: break-word
+  }
+}
+
+.pe-list-tile .pe-list-tile__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-rendering: auto;
+  max-height: 21px
 }
 
 .pe-dark-tone.pe-list-tile.pe-list-tile--header .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--header .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--header pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--header pe-list-tile__secondary {
-  background-color: inherit
-}
-
-.pe-dark-tone.pe-list-tile .pe-list-tile__content-front,.pe-dark-tone .pe-list-tile .pe-list-tile__content-front,.pe-dark-tone.pe-list-tile .pe-list-tile__secondary,.pe-dark-tone .pe-list-tile .pe-list-tile__secondary,.pe-dark-tone.pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile .pe-list-tile__subtitle {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-list-tile.pe-list-tile--disabled,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__content,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__content,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__subtitle,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__title,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__title {
-  color: hsla(0,0%,100%,.26)
-}
-
-.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected pe-list-tile__secondary {
-  background-color: hsla(0,0%,100%,.08)
-}
-
-.pe-dark-tone.pe-list-tile.pe-list-tile--sticky,.pe-dark-tone .pe-list-tile.pe-list-tile--sticky {
   background-color: inherit
 }
 
@@ -290,19 +295,52 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   background-color: inherit
 }
 
-.pe-light-tone.pe-list-tile,.pe-light-tone .pe-list-tile,.pe-list-tile {
-  color: rgba(0,0,0,.87)
+.pe-dark-tone.pe-list-tile.pe-list-tile--sticky,.pe-dark-tone .pe-list-tile.pe-list-tile--sticky {
+  background-color: inherit
 }
 
-.pe-light-tone.pe-list-tile.pe-list-tile--header,.pe-light-tone .pe-list-tile.pe-list-tile--header,.pe-list-tile.pe-list-tile--header {
-  color: rgba(0,0,0,.4)
+.pe-dark-tone.pe-list-tile,.pe-dark-tone .pe-list-tile {
+  color: #fff
+}
+
+.pe-dark-tone.pe-list-tile .pe-list-tile__content-front,.pe-dark-tone .pe-list-tile .pe-list-tile__content-front,.pe-dark-tone.pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile .pe-list-tile__subtitle {
+  color: hsla(0,0%,100%,.7)
+}
+
+.pe-dark-tone.pe-list-tile.pe-list-tile--disabled,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__content,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__content,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__subtitle,.pe-dark-tone.pe-list-tile.pe-list-tile--disabled .pe-list-tile__title,.pe-dark-tone .pe-list-tile.pe-list-tile--disabled .pe-list-tile__title {
+  color: hsla(0,0%,100%,.26)
+}
+
+.pe-dark-tone.pe-list-tile.pe-list-tile--header,.pe-dark-tone .pe-list-tile.pe-list-tile--header {
+  color: hsla(0,0%,100%,.4)
+}
+
+.pe-dark-tone.pe-list-tile .pe-list-tile__secondary,.pe-dark-tone .pe-list-tile .pe-list-tile__secondary {
+  color: hsla(0,0%,100%,.7)
+}
+
+.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected pe-list-tile__secondary {
+  background-color: hsla(0,0%,100%,.08)
 }
 
 .pe-light-tone.pe-list-tile.pe-list-tile--header .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--header .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--header pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--header pe-list-tile__secondary,.pe-list-tile.pe-list-tile--header .pe-list-tile__primary,.pe-list-tile.pe-list-tile--header pe-list-tile__secondary {
   background-color: inherit
 }
 
-.pe-light-tone.pe-list-tile .pe-list-tile__content-front,.pe-light-tone .pe-list-tile .pe-list-tile__content-front,.pe-light-tone.pe-list-tile .pe-list-tile__secondary,.pe-light-tone .pe-list-tile .pe-list-tile__secondary,.pe-light-tone.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone .pe-list-tile .pe-list-tile__subtitle,.pe-list-tile .pe-list-tile__content-front,.pe-list-tile .pe-list-tile__secondary,.pe-list-tile .pe-list-tile__subtitle {
+.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus {
+  outline: none;
+  background-color: inherit
+}
+
+.pe-light-tone.pe-list-tile.pe-list-tile--sticky,.pe-light-tone .pe-list-tile.pe-list-tile--sticky,.pe-list-tile.pe-list-tile--sticky {
+  background-color: inherit
+}
+
+.pe-light-tone.pe-list-tile,.pe-light-tone .pe-list-tile,.pe-list-tile {
+  color: rgba(0,0,0,.87)
+}
+
+.pe-light-tone.pe-list-tile .pe-list-tile__content-front,.pe-light-tone .pe-list-tile .pe-list-tile__content-front,.pe-light-tone.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone .pe-list-tile .pe-list-tile__subtitle,.pe-list-tile .pe-list-tile__content-front,.pe-list-tile .pe-list-tile__subtitle {
   color: rgba(0,0,0,.54)
 }
 
@@ -310,40 +348,31 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   color: rgba(0,0,0,.26)
 }
 
-.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary {
+.pe-light-tone.pe-list-tile.pe-list-tile--header,.pe-light-tone .pe-list-tile.pe-list-tile--header,.pe-list-tile.pe-list-tile--header {
+  color: rgba(0,0,0,.4)
+}
+
+.pe-light-tone.pe-list-tile .pe-list-tile__secondary,.pe-light-tone .pe-list-tile .pe-list-tile__secondary,.pe-list-tile .pe-list-tile__secondary {
+  color: rgba(0,0,0,.54)
+}
+
+.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-list-tile.pe-list-tile--highlight:not(.pe-list-tile--selected) pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected pe-list-tile__secondary,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus {
   background-color: rgba(0,0,0,.06)
 }
 
-.pe-light-tone.pe-list-tile.pe-list-tile--sticky,.pe-light-tone .pe-list-tile.pe-list-tile--sticky,.pe-list-tile.pe-list-tile--sticky {
-  background-color: inherit
-}
-
-.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus {
-  outline: none;
-  background-color: rgba(0,0,0,.06)
-}
-
-html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected),html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) {
+html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:active,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:active,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front {
   color: #fff
 }
 
-html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary {
+html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__secondary,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__secondary {
   background-color: hsla(0,0%,100%,.08)
 }
 
-html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
-  color: #fff
-}
-
-html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected),html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected),html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected),html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) {
+html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:active,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:active,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:active,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:active,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary .pe-list-tile__content-front {
   color: rgba(0,0,0,.87)
 }
 
-html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__secondary {
+html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__secondary,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:active .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__primary,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover .pe-list-tile__secondary,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover .pe-list-tile__secondary {
   background-color: rgba(0,0,0,.06)
-}
-
-html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable.pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,html.pe-no-touch .pe-list-tile--hoverable .pe-list-tile:hover:not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
-  color: rgba(0,0,0,.87)
 }
 /*# sourceMappingURL=polythene-list-tile.css.map */

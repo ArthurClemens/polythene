@@ -97,7 +97,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Click me",
         events: {
-          [keys.onclick]: () => alert("clicked")
+          [keys.onclick]: () => console.log("clicked")
         }
       }
     },
@@ -230,6 +230,16 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         hoverable: true
       }
     },
+    // {
+    //   name: "Option: hoverable, disabled",
+    //   interactive: true,
+    //   component: ListTile,
+    //   attrs: {
+    //     title: "Ancillary Justice",
+    //     hoverable: true,
+    //     disabled: true
+    //   }
+    // },
     {
       name: "Option: selectable",
       interactive: true,

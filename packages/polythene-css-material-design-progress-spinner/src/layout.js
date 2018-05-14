@@ -1,3 +1,4 @@
+
 const sel = (selector, o) => ({
   [selector]: o
 });

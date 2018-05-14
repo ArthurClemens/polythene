@@ -123,6 +123,8 @@ var padding = 8;
 var single_with_icon_height = 56;
 
 var vars$1 = {
+  general_styles: true,
+
   compact_front_item_width: 64,
   compact_padding: 9,
   compact_side_padding: 1 * vars.grid_unit_component,
