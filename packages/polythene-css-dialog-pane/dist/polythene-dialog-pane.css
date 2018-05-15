@@ -87,19 +87,19 @@
   flex-wrap: wrap
 }
 
-.pe-dialog-pane.pe-menu__content .pe-dialog-pane__body {
+.pe-dialog__content.pe-menu__content .pe-dialog-pane .pe-dialog-pane__body {
   padding: 0;
   border: none
 }
 
-.pe-dialog-pane .pe-dialog--full-screen .pe-dialog-pane__content {
+.pe-dialog--full-screen .pe-dialog-pane__content {
   border-radius: 0;
   max-width: none;
   height: 100vh;
   width: 100vw
 }
 
-.pe-dialog-pane .pe-dialog--full-screen .pe-dialog-pane,.pe-dialog-pane .pe-dialog--full-screen .pe-dialog-pane__body {
+.pe-dialog--full-screen .pe-dialog-pane,.pe-dialog--full-screen .pe-dialog-pane__body {
   height: 100vh;
   max-height: 100vh;
   border: none;

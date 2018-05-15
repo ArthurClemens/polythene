@@ -57,6 +57,17 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
 
   return [
     {
+      name: "Option: tiles",
+      component: List,
+      attrs: {
+        tiles: [
+          ListTileJennifer,
+          ListTileAli,
+          ListTileGrace
+        ]
+      }
+    },
+    {
       name: "Child nodes",
       component: List,
       children: [
@@ -76,29 +87,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
           subtitle: "Binge watching..."
         })
       ]
-    },
-    {
-      name: "Option: tiles",
-      component: List,
-      attrs: {
-        tiles: [
-          h(ListTile, {
-            title: "Jennifer Barker",
-            key: "Jennifer Barker",
-            subtitle: "Starting post doc"
-          }),
-          h(ListTile, {
-            title: "Ali Connors",
-            key: "Ali Connors",
-            subtitle: "Brunch this weekend?"
-          }),
-          h(ListTile, {
-            title: "Grace VanDam",
-            key: "Grace VanDam",
-            subtitle: "Binge watching..."
-          })
-        ]
-      }
     },
     {
       name: "Options: header, tiles, indent, indentedBorder",

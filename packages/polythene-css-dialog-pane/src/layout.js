@@ -50,12 +50,6 @@ const varFns = {
         borderRadius: "inherit",
         margin: 0,
         
-        ".pe-menu__content": {
-          " .pe-dialog-pane__body": {
-            padding: 0,
-            border: "none"
-          }
-        },
         " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
           zIndex: 1
         },
@@ -137,31 +131,35 @@ const varFns = {
           flex.layoutHorizontal,
           flex.layoutEndJustified,
           flex.layoutWrap
-        ]
+        ],
       },
-      {
-        ".pe-menu__content": {
+    ]),
+    {
+      " .pe-dialog__content.pe-menu__content": {
+        [` ${selector}`]: {
           " .pe-dialog-pane__body": {
             padding: 0,
             border: "none"
           }
-        },
-        " .pe-dialog--full-screen": {
-          " .pe-dialog-pane__content": {
-            borderRadius: 0,
-            maxWidth: "none",
-            height: "100vh",
-            width: "100vw",
-          },
-          " .pe-dialog-pane, .pe-dialog-pane__body": {
-            height: "100vh",
-            maxHeight: "100vh",
-            border: "none",
-            maxWidth: "initial",
-          }
-        },
+        }
       },
-    ])
+    },
+    {
+      " .pe-dialog--full-screen": {
+        " .pe-dialog-pane__content": {
+          borderRadius: 0,
+          maxWidth: "none",
+          height: "100vh",
+          width: "100vw",
+        },
+        " .pe-dialog-pane, .pe-dialog-pane__body": {
+          height: "100vh",
+          maxHeight: "100vh",
+          border: "none",
+          maxWidth: "initial",
+        }
+      },
+    },
   ],
   max_width: (selector, vars) => [
     sel(selector, [

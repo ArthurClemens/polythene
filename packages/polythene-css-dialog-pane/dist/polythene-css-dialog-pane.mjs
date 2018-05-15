@@ -72,12 +72,6 @@ var varFns = {
       borderRadius: "inherit",
       margin: 0,
 
-      ".pe-menu__content": {
-        " .pe-dialog-pane__body": {
-          padding: 0,
-          border: "none"
-        }
-      },
       " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
         zIndex: 1
       },
@@ -153,13 +147,14 @@ var varFns = {
       },
 
       " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap]
-    }, {
-      ".pe-menu__content": {
+    }]), {
+      " .pe-dialog__content.pe-menu__content": _defineProperty({}, " " + selector, {
         " .pe-dialog-pane__body": {
           padding: 0,
           border: "none"
         }
-      },
+      })
+    }, {
       " .pe-dialog--full-screen": {
         " .pe-dialog-pane__content": {
           borderRadius: 0,
@@ -174,7 +169,7 @@ var varFns = {
           maxWidth: "initial"
         }
       }
-    }])];
+    }];
   },
   max_width: function max_width(selector, vars$$1) {
     return [sel(selector, []), max_width_side_padding_mobile(selector, vars$$1)];
