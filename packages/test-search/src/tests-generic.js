@@ -5,7 +5,8 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
 
   SearchCSS.addStyle(".tests-search-themed-search", {
     color_dark_input_text: "#fff",
-    color_dark_background: "#43a047"
+    color_dark_background: "#43a047",
+    font_size_input:       16
   });
 
   const Results = results({ h, k, List, ListTile, SearchField });
