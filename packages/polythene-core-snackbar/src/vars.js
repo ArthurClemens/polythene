@@ -8,11 +8,11 @@ export default Object.assign(
   {},
   notificationVars,
   {
-    border_radius:   0,
-    min_width:       288,
-    max_width:       568,
-    min_height:      0,
-    
+    border_radius:         0,
+    max_width:             568,
+    min_height:            0,
+    min_width:             288,
+          
     color_dark_background: rgba(vars.color_dark_background)
   }
 );

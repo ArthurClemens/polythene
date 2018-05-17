@@ -208,21 +208,22 @@
   var buttonPaddingH = 8; // padding, inner text space
 
   var vars = {
-    width: 288,
-    min_height: 80,
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    title_padding_h: buttonPaddingH,
-    title_single_padding_v: 14,
-    title_multi_padding_v: 20, // 24 - natural line height
-    side_padding: 24 - buttonPaddingH,
-    font_size: 14,
-    line_height: 20,
+    general_styles: true,
 
     animation_delay: "0s",
     animation_duration: ".3s",
-    animation_timing_function: "ease-in-out",
     animation_hide_css: "opacity: 0;",
     animation_show_css: "opacity: 1;",
+    animation_timing_function: "ease-in-out",
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    font_size: 14,
+    line_height: 20,
+    min_height: 80,
+    side_padding: 24 - buttonPaddingH,
+    title_multi_padding_v: 20, // 24 - natural line height
+    title_padding_h: buttonPaddingH,
+    title_single_padding_v: 14,
+    width: 288,
 
     color_light_background: rgba(polytheneTheme.vars.color_light_background),
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_dark_primary),

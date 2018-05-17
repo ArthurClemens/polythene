@@ -17,9 +17,9 @@
 
   var vars = _extends$1({}, polytheneCoreNotification.vars, {
     border_radius: 0,
-    min_width: 288,
     max_width: 568,
     min_height: 0,
+    min_width: 288,
 
     color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
   });
