@@ -93,28 +93,21 @@
   };
 
   var padding_side = polytheneTheme.vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
-  var padding_side_large = polytheneTheme.vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
-  var title_padding = 12; // icon padding
-  var title_after_icon_padding = polytheneTheme.vars.grid_unit_component * 9 - polytheneTheme.vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4 = 20
-  var height = polytheneTheme.vars.grid_unit_component * 7; // 56
-  var height_compact = polytheneTheme.vars.grid_unit_component * 6; // 48
-  var height_large = polytheneTheme.vars.grid_unit_component * 8; // 64
 
   var vars = {
-    padding_side: padding_side,
-    padding_side_large: padding_side_large,
-    height: height,
-    height_compact: height_compact,
-    height_large: height_large,
+    general_styles: true,
 
-    // title vars
-    title_padding: title_padding,
-    title_after_icon_padding: title_after_icon_padding,
-    indent: polytheneTheme.vars.unit_indent,
     font_size: 18,
+    height: polytheneTheme.vars.grid_unit_component * 7, // 56
+    height_compact: polytheneTheme.vars.grid_unit_component * 6, // 48
+    height_large: polytheneTheme.vars.grid_unit_component * 8, // 64
+    indent: polytheneTheme.vars.unit_indent,
     line_height: polytheneTheme.vars.line_height,
+    padding_side: padding_side,
+    padding_side_large: polytheneTheme.vars.grid_unit_component * 3 - 12, // 24 - 12 = 12
+    title_after_icon_padding: polytheneTheme.vars.grid_unit_component * 9 - polytheneTheme.vars.grid_unit_component * 6 - padding_side, // 72 - 48 - 4 = 20
+    title_padding: 12, // icon padding
 
-    // color vars
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
     color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
     color_light_background: rgba(polytheneTheme.vars.color_light_background),

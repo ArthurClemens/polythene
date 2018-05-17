@@ -6,7 +6,7 @@ const sel = (selector, o) => ({
 });
 
 const inset_height_line_height_input = (selector, vars) => {
-  const inset_input_padding_v = ((vars.inset_height - vars.line_height_input) / 2);
+  const inset_input_padding_v = (vars.inset_height - vars.line_height_input) / 2;
   return sel(selector, {
     ".pe-search--inset": {
       " .pe-textfield__input, .pe-textfield__label": {
@@ -18,7 +18,7 @@ const inset_height_line_height_input = (selector, vars) => {
 };
 
 const full_width_height_line_height_input = (selector, vars) => {
-  const full_width_input_padding_v = ((vars.full_width_height - vars.line_height_input) / 2);
+  const full_width_input_padding_v = (vars.full_width_height - vars.line_height_input) / 2;
   return sel(selector, {
     ".pe-search--full-width": {
       " .pe-textfield__input, .pe-textfield__label": {
