@@ -1,5 +1,5 @@
 import { mixin, flex } from "polythene-core-css";
-import { vars as defaultVars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const alignSide = () => () => ({});
 const alignLeft = alignSide(false);
@@ -174,7 +174,7 @@ const varFns = {
         " .pe-card__header": {
           " .pe-list-tile__title": {
             fontSize: "14px",
-            fontWeight: defaultVars.font_weight_normal,
+            fontWeight: themeVars.font_weight_normal,
             lineHeight: "20px",
             marginTop: "2px",
           },

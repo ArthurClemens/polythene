@@ -1,5 +1,5 @@
-import { vars as defaultVars } from "polythene-theme";
 import { mixin } from "polythene-core-css";
+import { vars as themeVars } from "polythene-theme";
 
 const SHADOW_WIDTH = 15;
 
@@ -105,7 +105,7 @@ const varFns = {
           position: "fixed",
           top: 0,
           width: "100%",
-          zIndex: defaultVars.z_app_bar,
+          zIndex: themeVars.z_app_bar,
         },
 
         // Permanent
@@ -217,7 +217,7 @@ const varFns = {
     })
   ],
   content_max_width_large: (selector, vars) => ({
-    ["@media (min-width: " + defaultVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+    ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
       [selector]: {
         ".pe-drawer--push": {
           " .pe-dialog__content": {
@@ -231,7 +231,7 @@ const varFns = {
     }
   }),
   content_side_offset_large: (selector, vars) => ({
-    ["@media (min-width: " + defaultVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+    ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
       [selector]: {
         " .pe-dialog__content": {
           width: `calc(100% - ${vars.content_side_offset_large}px)`,

@@ -1,5 +1,5 @@
 import { mixin, flex } from "polythene-core-css";
-import { vars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const alignSide = isRTL => componentVars => ({
   " .pe-tabs__row": {
@@ -154,7 +154,7 @@ export default (selector, componentVars) => [
               {
                 padding: "0 " + componentVars.tab_content_padding_v + "px",
                 height: componentVars.tab_height + "px",
-                lineHeight: vars.line_height + "em",
+                lineHeight: themeVars.line_height + "em",
                 borderRadius: 0,
                 position: "relative",
 
@@ -250,7 +250,7 @@ export default (selector, componentVars) => [
           }
         ],
 
-        ["@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)"]: {
+        ["@media (min-width: " + themeVars.breakpoint_for_tablet_landscape_up + "px)"]: {
           [selector]: {
             ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tabs__tab": {
               minWidth: componentVars.tab_min_width_tablet + "px"

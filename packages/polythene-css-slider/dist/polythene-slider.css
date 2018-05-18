@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-grow: 1;
   user-select: none;
+  -moz-user-select: none;
   margin-top: 0
 }
 
@@ -28,6 +29,7 @@
   transition-timing-function: ease-out;
   transition-property: transform;
   user-select: none;
+  -moz-user-select: none;
   position: relative;
   height: 52px;
   margin: 0 14px;
@@ -47,6 +49,7 @@
   transition-property: transform,background;
   transform: scale(1);
   user-select: none;
+  -moz-user-select: none;
   width: 12px;
   height: 12px;
   line-height: 0;
@@ -117,6 +120,7 @@
   flex: 1;
   flex-basis: 0.000000001px;
   user-select: none;
+  -moz-user-select: none;
   height: 2px;
   margin: 25px 0;
   overflow: hidden
@@ -162,6 +166,7 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
   user-select: none;
+  -moz-user-select: none;
   position: absolute;
   width: calc(100% - 10px);
   height: 2px;

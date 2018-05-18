@@ -1,5 +1,5 @@
-import { vars as defaultVars } from "polythene-theme";
 import { flex } from "polythene-core-css";
+import { vars as themeVars } from "polythene-theme";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -59,8 +59,8 @@ const varFns = {
         },
 
         " .pe-dialog-pane__title": {
-          fontSize: defaultVars.font_size_title + "px",
-          fontWeight: defaultVars.font_weight_medium,
+          fontSize: themeVars.font_size_title + "px",
+          fontWeight: themeVars.font_weight_medium,
 
           "& + div": {
             marginTop: "16px"

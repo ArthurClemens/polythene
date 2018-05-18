@@ -60,6 +60,7 @@ var layout = (function (selector, componentVars) {
 
   return [_defineProperty({}, selector, [flex.layoutHorizontal, flex.flexGrow(1), {
     userSelect: "none",
+    "-moz-user-select": "none",
     height: componentVars.height + "px",
     marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
     alignItems: "center",
@@ -70,6 +71,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-slider__track": [flex.layoutHorizontal, flex.flexGrow(1), mixin.defaultTransition("transform", componentVars.animation_duration), {
       userSelect: "none",
+      "-moz-user-select": "none",
       position: "relative",
       height: componentVars.track_height + "px",
       margin: "0 " + componentVars.side_spacing + "px",
@@ -82,6 +84,7 @@ var layout = (function (selector, componentVars) {
     " .pe-slider__control": [flex.selfCenter, mixin.defaultTransition("transform, background", ".200s"), {
       transform: "scale(1)",
       userSelect: "none",
+      "-moz-user-select": "none",
       width: thumbSize + "px",
       height: thumbSize + "px",
       lineHeight: 0,
@@ -128,6 +131,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-slider__track-part": [flex.flex(), {
       userSelect: "none",
+      "-moz-user-select": "none",
       height: componentVars.bar_height + "px",
       margin: (componentVars.track_height - componentVars.bar_height) / 2 + "px 0",
       overflow: "hidden" // Firefox otherwise uses 6x at 0%
@@ -151,6 +155,7 @@ var layout = (function (selector, componentVars) {
 
     " .pe-slider__ticks": [flex.layoutJustified, {
       userSelect: "none",
+      "-moz-user-select": "none",
       position: "absolute",
       width: "calc(100% - " + 2 * stepsOffset + "px)",
       height: componentVars.bar_height + "px",

@@ -1,5 +1,5 @@
 import { mixin, flex } from "polythene-core-css";
-import { vars as defaultVars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -38,9 +38,9 @@ const title_padding_title_after_icon_padding = (selector, vars, isRTL) =>
 const selectorRTL = selector => 
   `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
-const breakpointPhoneOnly = breakpoint(`@media (min-width: ${defaultVars.breakpoint_for_phone_only}px) and (orientation: landscape)`);
+const breakpointPhoneOnly = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_phone_only}px) and (orientation: landscape)`);
 
-const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${defaultVars.breakpoint_for_tablet_portrait_up}px)`);
+const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_tablet_portrait_up}px)`);
 
 const varFns = {
   general_styles: selector => [
@@ -50,7 +50,7 @@ const varFns = {
       flex.layoutCenter,
       {
         position: "relative", 
-        zIndex: defaultVars.z_toolbar,
+        zIndex: themeVars.z_toolbar,
 
         ".pe-toolbar--fullbleed": {
           padding: 0

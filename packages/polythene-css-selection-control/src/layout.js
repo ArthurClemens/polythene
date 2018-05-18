@@ -1,13 +1,13 @@
 // Returns a style function to be used by Checkbox and Radio Button
 
 import { mixin, flex } from "polythene-core-css";
-import { vars as defaultVars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 
-const makeSize = (vars, height, iconSize = defaultVars.unit_icon_size) => {
+const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
   const labelSize = iconSize + vars.label_height;
   const iconOffset = (labelSize - iconSize) / 2;
   return {
@@ -172,10 +172,10 @@ const varFns = {
         width: vars.label_height + "px",
         height: vars.label_height + "px",
       },
-      ".pe-control--small": makeSize(vars, defaultVars.unit_icon_size_small, defaultVars.unit_icon_size_small),
-      ".pe-control--regular": makeSize(vars, vars.label_height, defaultVars.unit_icon_size),
-      ".pe-control--medium": makeSize(vars, defaultVars.unit_icon_size_medium, defaultVars.unit_icon_size_medium),
-      ".pe-control--large": makeSize(vars, defaultVars.unit_icon_size_large, defaultVars.unit_icon_size_large),
+      ".pe-control--small": makeSize(vars, themeVars.unit_icon_size_small, themeVars.unit_icon_size_small),
+      ".pe-control--regular": makeSize(vars, vars.label_height, themeVars.unit_icon_size),
+      ".pe-control--medium": makeSize(vars, themeVars.unit_icon_size_medium, themeVars.unit_icon_size_medium),
+      ".pe-control--large": makeSize(vars, themeVars.unit_icon_size_large, themeVars.unit_icon_size_large),
     })
   ],
   animation_duration: (selector, vars) => [

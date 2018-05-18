@@ -62,6 +62,7 @@
 
     return [_defineProperty({}, selector, [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.flexGrow(1), {
       userSelect: "none",
+      "-moz-user-select": "none",
       height: componentVars.height + "px",
       marginTop: (componentVars.height - componentVars.track_height) / 2 + "px ",
       alignItems: "center",
@@ -72,6 +73,7 @@
 
       " .pe-slider__track": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.flexGrow(1), polytheneCoreCss.mixin.defaultTransition("transform", componentVars.animation_duration), {
         userSelect: "none",
+        "-moz-user-select": "none",
         position: "relative",
         height: componentVars.track_height + "px",
         margin: "0 " + componentVars.side_spacing + "px",
@@ -84,6 +86,7 @@
       " .pe-slider__control": [polytheneCoreCss.flex.selfCenter, polytheneCoreCss.mixin.defaultTransition("transform, background", ".200s"), {
         transform: "scale(1)",
         userSelect: "none",
+        "-moz-user-select": "none",
         width: thumbSize + "px",
         height: thumbSize + "px",
         lineHeight: 0,
@@ -130,6 +133,7 @@
 
       " .pe-slider__track-part": [polytheneCoreCss.flex.flex(), {
         userSelect: "none",
+        "-moz-user-select": "none",
         height: componentVars.bar_height + "px",
         margin: (componentVars.track_height - componentVars.bar_height) / 2 + "px 0",
         overflow: "hidden" // Firefox otherwise uses 6x at 0%
@@ -153,6 +157,7 @@
 
       " .pe-slider__ticks": [polytheneCoreCss.flex.layoutJustified, {
         userSelect: "none",
+        "-moz-user-select": "none",
         position: "absolute",
         width: "calc(100% - " + 2 * stepsOffset + "px)",
         height: componentVars.bar_height + "px",

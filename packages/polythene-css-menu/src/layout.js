@@ -1,4 +1,4 @@
-import { vars as defaultVars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
@@ -29,7 +29,7 @@ const sizes_min_size_size_factor = (selector, vars) =>
   sel(selector, [
     vars.sizes.map(size => widthStyle(vars, size)),
     {
-      minWidth: defaultVars.grid_unit_menu * vars.min_size + "px",
+      minWidth: themeVars.grid_unit_menu * vars.min_size + "px",
     }
   ]);
 
@@ -43,7 +43,7 @@ const varFns = {
       alignLeft(vars),
       {
         transitionProperty: "all",
-        zIndex: defaultVars.z_menu,
+        zIndex: themeVars.z_menu,
         opacity: 0,
         position: "absolute",
         

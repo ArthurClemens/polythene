@@ -1,13 +1,5 @@
-import { vars } from "polythene-theme";
 import { mixin, flex } from "polythene-core-css";
-
-// const positionBorder = (thumbSize, borderWidth) => ({
-//   borderWidth: borderWidth + "px",
-//   width: (thumbSize - 2 * borderWidth) + "px",
-//   height: (thumbSize - 2 * borderWidth) + "px",
-//   left: "2px",
-//   top: "2px"
-// });
+import { vars as themeVars } from "polythene-theme";
 
 const positionBorder = (size, borderWidth, isDisabled) => {
   const thumbSize = isDisabled
@@ -22,12 +14,12 @@ const positionBorder = (size, borderWidth, isDisabled) => {
   };
 };
 
-export default (selector, componentVars) => {
-  const thumbSize =         Math.max(componentVars.thumb_size, 2 * componentVars.thumb_border_width);
-  const scaledThumbDiff =   (componentVars.active_thumb_scale - 1) * thumbSize / 2;
+export default (selector, vars) => {
+  const thumbSize =         Math.max(vars.thumb_size, 2 * vars.thumb_border_width);
+  const scaledThumbDiff =   (vars.active_thumb_scale - 1) * thumbSize / 2;
   const barOffset =         thumbSize / 2;
-  const scaledBorderWidth = Math.max(1, componentVars.thumb_border_width / componentVars.active_thumb_scale);
-  const thumbTouchSize =    componentVars.thumb_touch_size;
+  const scaledBorderWidth = Math.max(1, vars.thumb_border_width / vars.active_thumb_scale);
+  const thumbTouchSize =    vars.thumb_touch_size;
   const stepsOffset =       barOffset - 1;
 
   return [{
@@ -37,32 +29,32 @@ export default (selector, componentVars) => {
       {
         userSelect: "none",
         "-moz-user-select": "none",
-        height: componentVars.height + "px",
-        marginTop: ((componentVars.height - componentVars.track_height) / 2) + "px ",
+        height: vars.height + "px",
+        marginTop: ((vars.height - vars.track_height) / 2) + "px ",
         alignItems: "center",
         
         " > .pe-icon": [
           flex.layoutCenter,
           {
-            height: componentVars.height + "px"
+            height: vars.height + "px"
           }
         ],
 
         " .pe-slider__track": [
           flex.layoutHorizontal,
           flex.flexGrow(1),
-          mixin.defaultTransition("transform", componentVars.animation_duration),
+          mixin.defaultTransition("transform", vars.animation_duration),
           {
             userSelect: "none",
             "-moz-user-select": "none",
             position: "relative",
-            height: componentVars.track_height + "px",
-            margin: "0 " + componentVars.side_spacing + "px",
+            height: vars.track_height + "px",
+            margin: "0 " + vars.side_spacing + "px",
             outline: 0
           }
         ],
         " div + .pe-slider__track": {
-          margin: "0 " + componentVars.horizontal_layout_side_spacing + "px"
+          margin: "0 " + vars.horizontal_layout_side_spacing + "px"
         },
 
         " .pe-slider__control": [
@@ -82,7 +74,7 @@ export default (selector, componentVars) => {
 
             // touch area
             ":before": [
-              mixin.defaultTransition("background-color", componentVars.animation_duration), {
+              mixin.defaultTransition("background-color", vars.animation_duration), {
                 content: "\"\"",
                 position: "absolute",
                 borderRadius: "50%",
@@ -95,8 +87,8 @@ export default (selector, componentVars) => {
 
             // border
             ":after": [
-              mixin.defaultTransition("border", componentVars.animation_duration),
-              positionBorder(thumbSize, componentVars.thumb_border_width, false), {
+              mixin.defaultTransition("border", vars.animation_duration),
+              positionBorder(thumbSize, vars.thumb_border_width, false), {
                 content: "\"\"",
                 position: "absolute",
                 borderRadius: "50%",
@@ -107,7 +99,7 @@ export default (selector, componentVars) => {
         ],
 
         " .pe-slider__thumb": [
-          mixin.defaultTransition("opacity", componentVars.animation_duration),
+          mixin.defaultTransition("opacity", vars.animation_duration),
           mixin.fit(), {
             "&, .pe-icon": {
               width: "inherit",
@@ -117,12 +109,12 @@ export default (selector, componentVars) => {
         ],
 
         " .pe-slider__label": {
-          height: componentVars.height + "px",
-          lineHeight: componentVars.height + "px",
-          minWidth: vars.unit_icon_size + "px",
+          height: vars.height + "px",
+          lineHeight: vars.height + "px",
+          minWidth: themeVars.unit_icon_size + "px",
           textAlign: "center",
           fontSize: "16px",
-          fontWeight: vars.font_weight_medium
+          fontWeight: themeVars.font_weight_medium
         },
 
         " .pe-slider__track-part": [
@@ -130,8 +122,8 @@ export default (selector, componentVars) => {
           {
             userSelect: "none",
             "-moz-user-select": "none",
-            height: componentVars.bar_height + "px",
-            margin: ((componentVars.track_height - componentVars.bar_height) / 2) + "px 0",
+            height: vars.bar_height + "px",
+            margin: ((vars.track_height - vars.bar_height) / 2) + "px 0",
             overflow: "hidden" // Firefox otherwise uses 6x at 0%
           }
         ],
@@ -146,8 +138,8 @@ export default (selector, componentVars) => {
         ],
         " .pe-slider__track-bar-value": [
           flex.flex(),
-          mixin.defaultTransition("transform, background-color", componentVars.animation_duration), {
-            height: componentVars.bar_height + "px"
+          mixin.defaultTransition("transform, background-color", vars.animation_duration), {
+            height: vars.bar_height + "px"
           }
         ],
         " .pe-slider__track-value .pe-slider__track-bar": {
@@ -164,17 +156,17 @@ export default (selector, componentVars) => {
             "-moz-user-select": "none",
             position: "absolute",
             width: "calc(100% - " + (2 * stepsOffset) + "px)",
-            height: componentVars.bar_height + "px",
+            height: vars.bar_height + "px",
             left: 0,
-            top: ((componentVars.height / 2) - 1) + "px",
+            top: ((vars.height / 2) - 1) + "px",
             margin: "0 " + stepsOffset + "px",
             pointerEvents: "none"
           }
         ],
 
         " .pe-slider__ticks-tick": {
-          width: componentVars.step_width + "px",
-          height: componentVars.bar_height + "px"
+          width: vars.step_width + "px",
+          height: vars.bar_height + "px"
         },
 
         " .pe-slider__pin": [
@@ -184,11 +176,11 @@ export default (selector, componentVars) => {
             transformOrigin: "bottom",
             position: "absolute",
             zIndex: 1,
-            width: componentVars.pin_width + "px",
+            width: vars.pin_width + "px",
             height: 0,
             left: 0, // set in js
             top: 0,
-            margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - componentVars.pin_width / 2 + 1) + "px",
+            margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - vars.pin_width / 2 + 1) + "px",
             pointerEvents: "none",
 
             "::before": {
@@ -197,8 +189,8 @@ export default (selector, componentVars) => {
               position: "absolute",
               top: 0,
               left: 0,
-              width: componentVars.pin_width + "px",
-              height: componentVars.pin_width + "px",
+              width: vars.pin_width + "px",
+              height: vars.pin_width + "px",
               borderRadius: "50% 50% 50% 0",
               backgroundColor: "inherit"
             },
@@ -207,19 +199,19 @@ export default (selector, componentVars) => {
               position: "absolute",
               top: 0,
               left: 0,
-              width: componentVars.pin_width + "px",
-              height: componentVars.pin_height + "px",
+              width: vars.pin_width + "px",
+              height: vars.pin_height + "px",
               textAlign: "center",
               color: "#fff",
-              fontSize: componentVars.pin_font_size + "px",
-              lineHeight: componentVars.pin_width + "px"
+              fontSize: vars.pin_font_size + "px",
+              lineHeight: vars.pin_width + "px"
             }
           }
         ],
 
         ".pe-slider--active:not(.pe-slider--ticks)": {
           " .pe-slider__control": {
-            transform: "scale(" + componentVars.active_thumb_scale + ")",
+            transform: "scale(" + vars.active_thumb_scale + ")",
             borderWidth: scaledBorderWidth + "px"
           },
           // left side
@@ -237,7 +229,7 @@ export default (selector, componentVars) => {
             transform: "translateZ(0) scale(1) translate(0, -24px)"
           },
           " .pe-slider__control": {
-            transform: "scale(" + componentVars.active_pin_thumb_scale + ")"
+            transform: "scale(" + vars.active_pin_thumb_scale + ")"
           }
         },
 
@@ -254,11 +246,11 @@ export default (selector, componentVars) => {
 
         ".pe-slider--disabled": {
           " .pe-slider__control": {
-            transform: "scale(" + componentVars.disabled_thumb_scale + ")",
+            transform: "scale(" + vars.disabled_thumb_scale + ")",
             borderWidth: 0
           },
           " .pe-slider__control:after": [
-            positionBorder(thumbSize, 1 / componentVars.disabled_thumb_scale * componentVars.thumb_border_width, true)
+            positionBorder(thumbSize, 1 / vars.disabled_thumb_scale * vars.thumb_border_width, true)
           ]
         }
       }

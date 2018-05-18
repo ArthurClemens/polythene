@@ -1,12 +1,12 @@
 import { layout as selectionControlLayout } from "polythene-css-selection-control";
-import { vars as defaultVars } from "polythene-theme";
 import { mixin } from "polythene-core-css";
+import { vars as themeVars } from "polythene-theme";
 
 const transition = (vars, properties, duration = vars.animation_duration) =>
   mixin.defaultTransition(properties, duration, "ease-out");
 
 const getSizeData = (vars, size) => {
-  const factor = size / defaultVars.unit_icon_size;
+  const factor = size / themeVars.unit_icon_size;
   const thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
   const scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
   const scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
@@ -121,10 +121,10 @@ const sel = (selector, o) => ({
 
 const createSize = (selector, vars) => {
   const sizeData = {
-    small: getSizeData(vars, defaultVars.unit_icon_size_small),
-    regular: getSizeData(vars, defaultVars.unit_icon_size),
-    medium: getSizeData(vars, defaultVars.unit_icon_size_medium),
-    large: getSizeData(vars, defaultVars.unit_icon_size_large),
+    small: getSizeData(vars, themeVars.unit_icon_size_small),
+    regular: getSizeData(vars, themeVars.unit_icon_size),
+    medium: getSizeData(vars, themeVars.unit_icon_size_medium),
+    large: getSizeData(vars, themeVars.unit_icon_size_large),
   };
   return [
     sel(selector, {

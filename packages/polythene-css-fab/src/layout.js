@@ -1,5 +1,5 @@
-import { vars as defaultVars } from "polythene-theme";
 import { mixin } from "polythene-core-css";
+import { vars as themeVars } from "polythene-theme";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -34,7 +34,7 @@ const varFns = {
       },
 
       " .pe-button__wash": {
-        transition: "background-color " + defaultVars.animation_duration + " ease-in-out",
+        transition: "background-color " + themeVars.animation_duration + " ease-in-out",
         borderRadius: "inherit",
         pointerEvents: "none",
         backgroundColor: "transparent"
@@ -62,7 +62,7 @@ const varFns = {
         " .pe-button__content": {
           width: vars.size_mini + "px",
           height: vars.size_mini + "px",
-          padding: ((vars.size_mini - defaultVars.unit_icon_size) / 2) + "px"
+          padding: ((vars.size_mini - themeVars.unit_icon_size) / 2) + "px"
         }
       },
     })

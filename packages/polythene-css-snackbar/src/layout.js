@@ -1,5 +1,5 @@
-import { vars as defaultVars } from "polythene-theme";
 import { customLayoutFns as customNotificationLayoutFns } from "polythene-css-notification";
+import { vars as themeVars } from "polythene-theme";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -11,7 +11,7 @@ const breakpoint = breakpointSel => (selector, o) => ({
   }
 });
 
-const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${defaultVars.breakpoint_for_tablet_portrait_up}px)`);
+const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_tablet_portrait_up}px)`);
 
 const createVarFns = isCustom => Object.assign(
   {},

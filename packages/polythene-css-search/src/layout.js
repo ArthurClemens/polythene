@@ -1,5 +1,5 @@
 import { flex } from "polythene-core-css";
-import { vars as defaultVars } from "polythene-theme";
+import { vars as themeVars } from "polythene-theme";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -157,7 +157,7 @@ const varFns = {
     }),
   ],
   full_width_side_padding: (selector, vars) => {
-    const full_width_input_indent = (defaultVars.unit_indent - vars.full_width_side_padding) - defaultVars.grid_unit_icon_button;
+    const full_width_input_indent = (themeVars.unit_indent - vars.full_width_side_padding) - themeVars.grid_unit_icon_button;
     return sel(selector, {
       ".pe-search--full-width": {
         padding: "0 " + vars.full_width_side_padding + "px",
