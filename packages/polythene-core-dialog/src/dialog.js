@@ -91,6 +91,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         attrs.parentClassName || classes.component,
+        attrs.fromMultipleClassName,
         attrs.fullScreen ? classes.fullScreen : null,
         // classes.visible is set in showDialog though transition
         attrs.tone === "dark" ? "pe-dark-tone" : null,

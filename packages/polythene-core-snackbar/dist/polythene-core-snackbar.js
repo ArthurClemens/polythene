@@ -6,16 +6,14 @@
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  var coreSnackbarInstance = _extends({}, polytheneCoreNotification.coreNotificationInstance);
-
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
   var rgba = function rgba(colorStr) {
     var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     return "rgba(" + colorStr + ", " + opacity + ")";
   };
 
-  var vars = _extends$1({}, polytheneCoreNotification.vars, {
+  var vars = _extends({}, polytheneCoreNotification.vars, {
+    animation_hide_css: "",
+    animation_show_css: "",
     border_radius: 0,
     max_width: 568,
     min_height: 0,
@@ -76,7 +74,7 @@
     hide: hide
   };
 
-  exports.coreSnackbarInstance = coreSnackbarInstance;
+  exports.coreSnackbarInstance = polytheneCoreNotification.coreNotificationInstance;
   exports.vars = vars;
   exports.transitions = transitions;
 

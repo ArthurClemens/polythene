@@ -30,8 +30,7 @@
   pointer-events: all;
   justify-content: center;
   margin: 0 auto;
-  transition-property: all;
-  opacity: 0
+  transition-property: all
 }
 
 .pe-notification .pe-notification__title {
@@ -40,6 +39,10 @@
 
 .pe-notification .pe-notification__action .pe-button {
   margin: 0
+}
+
+.pe-notification .pe-notification__content {
+  max-width: 100%
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__content {
@@ -84,7 +87,8 @@
 
 .pe-notification {
   transition-delay: 0s;
-  transition-duration: .3s
+  transition-duration: .3s;
+  opacity: 0
 }
 
 .pe-notification.pe-notification--visible {

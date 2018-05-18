@@ -18,6 +18,7 @@
     "polythene-core-css": "^1.2.0",
     "polythene-core-snackbar": "^1.2.0",
     "polythene-css-classes": "^1.2.0",
+    "polythene-css-notification": "^1.2.0",
     "polythene-theme": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

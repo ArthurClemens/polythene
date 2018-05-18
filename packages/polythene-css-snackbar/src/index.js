@@ -12,11 +12,11 @@ const holderFns = [holderLayout];
 const holderSelector = `.${classes.holder.replace(/ /g, ".")}`;
 
 export const addStyle = (customSelector, customVars) => 
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
+  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 
 export const getStyle = (customSelector, customVars) => 
   customSelector
-    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns)
+    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
     : styler.createStyleSheets([holderSelector], vars, holderFns)
       .concat(styler.createStyleSheets([selector], vars, fns));
 

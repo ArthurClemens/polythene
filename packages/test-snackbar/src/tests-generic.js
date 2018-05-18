@@ -2,9 +2,10 @@ import { SnackbarCSS } from "polythene-css";
 
 export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, containerSelector }) => {
 
-  SnackbarCSS.addStyle(".notification-tests-blue-notification", {
-    color_dark_background: "#2196F3",
-    border_radius: 5
+  SnackbarCSS.addStyle(".snackbar-tests-blue-snackbar", {
+    color_dark_background:  "#2196F3",
+    border_radius:          10,
+    width:                  288,
   });
 
   const dialogOptions = {
@@ -81,6 +82,11 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
       showDelay: .3,
       showDuration: 1.1,
       hideDuration: 1.5
+    },
+    {
+      label: "Themed",
+      title: "Themed (color, width, border radius)",
+      className: "snackbar-tests-blue-snackbar",
     }
   ];
 

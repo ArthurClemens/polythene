@@ -18,10 +18,14 @@
 <a id="next"></a>
 ### Next
 
+
+
 #### Components
 
 * Button:
   * New options `extraWide` and `highLabel`.
+* List:
+  * Style variable `border_width_bordered` has moved to List Tile as `border_width`; the same for `color_light_border` and `color_dark_border`
 * New component [Button Group](components/button-group.md)
 
 <a id="120"></a>

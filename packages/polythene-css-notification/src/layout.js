@@ -11,55 +11,7 @@ const title_single_padding_v_title_padding_h = (selector, vars) =>
     },
   });
 
-const varFns = {
-  general_styles: selector => [
-    sel(selector, [
-      flex.layoutCenter,
-      {      
-        pointerEvents: "all",
-        justifyContent: "center",
-        margin: "0 auto",
-        transitionProperty: "all",
-        opacity: 0,
-        
-        " .pe-notification__title": {
-          flex: "1 0 auto",
-        },
-
-        " .pe-notification__action": {
-          " .pe-button": {
-            margin: 0
-          }
-        },
-
-        ".pe-notification--horizontal": {
-          " .pe-notification__content": flex.layoutHorizontal,
-          " .pe-notification__title": [
-            flex.flex(),
-            {
-              alignSelf: "center",
-            }
-          ],
-          " .pe-notification__action": flex.layoutCenter
-        },
-        ".pe-notification--vertical": {
-          " .pe-notification__content": [
-            flex.layoutVertical
-          ],
-
-          " .pe-notification__title": {
-            paddingBottom: "6px"
-          },
-          " .pe-notification__action": [
-            flex.layoutEndJustified,
-            {
-              width: "100%"
-            }
-          ]
-        }
-      },
-    ])
-  ],
+export const customLayoutFns = {
   animation_hide_css: (selector, vars) => [
     sel(selector, vars.animation_hide_css)
   ],
@@ -143,6 +95,65 @@ const varFns = {
     })
   ],
 };
+
+const varFns = Object.assign(
+  {},
+  {
+    general_styles: selector => [
+      sel(selector, [
+        flex.layoutCenter,
+        {      
+          pointerEvents: "all",
+          justifyContent: "center",
+          margin: "0 auto",
+          transitionProperty: "all",
+          opacity: 0,
+          
+          " .pe-notification__title": {
+            flex: "1 0 auto",
+          },
+
+          " .pe-notification__action": {
+            " .pe-button": {
+              margin: 0
+            }
+          },
+
+          " .pe-notification__content": {
+            maxWidth: "100%"
+          },
+
+          ".pe-notification--horizontal": {
+            " .pe-notification__content": flex.layoutHorizontal,
+            " .pe-notification__title": [
+              flex.flex(),
+              {
+                alignSelf: "center",
+              }
+            ],
+            " .pe-notification__action": flex.layoutCenter
+          },
+          ".pe-notification--vertical": {
+            " .pe-notification__content": [
+              flex.layoutVertical
+            ],
+
+            " .pe-notification__title": {
+              paddingBottom: "6px"
+            },
+            " .pe-notification__action": [
+              flex.layoutEndJustified,
+              {
+                width: "100%"
+              }
+            ]
+          }
+        },
+      ])
+    ],
+  },
+  customLayoutFns
+);
 
 export default (selector, componentVars, customVars) => {
   const allVars = {...componentVars, ...customVars};

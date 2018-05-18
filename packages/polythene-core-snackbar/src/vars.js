@@ -8,6 +8,8 @@ export default Object.assign(
   {},
   notificationVars,
   {
+    animation_hide_css:    "",
+    animation_show_css:    "",
     border_radius:         0,
     max_width:             568,
     min_height:            0,

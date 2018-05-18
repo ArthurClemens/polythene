@@ -156,7 +156,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes.component,
+    className: [classes.component, attrs.fromMultipleClassName,
     // classes.visible is set in showNotification though transition
     attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")

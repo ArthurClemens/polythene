@@ -38,47 +38,10 @@
     });
   };
 
-  var varFns = {
-    general_styles: function general_styles(selector) {
-      return [sel(selector, [polytheneCoreCss.flex.layoutCenter, {
-        pointerEvents: "all",
-        justifyContent: "center",
-        margin: "0 auto",
-        transitionProperty: "all",
-        opacity: 0,
-
-        " .pe-notification__title": {
-          flex: "1 0 auto"
-        },
-
-        " .pe-notification__action": {
-          " .pe-button": {
-            margin: 0
-          }
-        },
-
-        ".pe-notification--horizontal": {
-          " .pe-notification__content": polytheneCoreCss.flex.layoutHorizontal,
-          " .pe-notification__title": [polytheneCoreCss.flex.flex(), {
-            alignSelf: "center"
-          }],
-          " .pe-notification__action": polytheneCoreCss.flex.layoutCenter
-        },
-        ".pe-notification--vertical": {
-          " .pe-notification__content": [polytheneCoreCss.flex.layoutVertical],
-
-          " .pe-notification__title": {
-            paddingBottom: "6px"
-          },
-          " .pe-notification__action": [polytheneCoreCss.flex.layoutEndJustified, {
-            width: "100%"
-          }]
-        }
-      }])];
+  var customLayoutFns = {
+    animation_hide_css: function animation_hide_css(selector, vars) {
+      return [sel(selector, vars.animation_hide_css)];
     },
-    // animation_hide_css: (selector, vars) => [
-    //   vars.animation_hide_css,
-    // ],
     animation_show_css: function animation_show_css(selector, vars) {
       return [sel(selector, {
         ".pe-notification--visible": [vars.animation_show_css]
@@ -157,6 +120,50 @@
       })];
     }
   };
+
+  var varFns = _extends({}, {
+    general_styles: function general_styles(selector) {
+      return [sel(selector, [polytheneCoreCss.flex.layoutCenter, {
+        pointerEvents: "all",
+        justifyContent: "center",
+        margin: "0 auto",
+        transitionProperty: "all",
+        opacity: 0,
+
+        " .pe-notification__title": {
+          flex: "1 0 auto"
+        },
+
+        " .pe-notification__action": {
+          " .pe-button": {
+            margin: 0
+          }
+        },
+
+        " .pe-notification__content": {
+          maxWidth: "100%"
+        },
+
+        ".pe-notification--horizontal": {
+          " .pe-notification__content": polytheneCoreCss.flex.layoutHorizontal,
+          " .pe-notification__title": [polytheneCoreCss.flex.flex(), {
+            alignSelf: "center"
+          }],
+          " .pe-notification__action": polytheneCoreCss.flex.layoutCenter
+        },
+        ".pe-notification--vertical": {
+          " .pe-notification__content": [polytheneCoreCss.flex.layoutVertical],
+
+          " .pe-notification__title": {
+            paddingBottom: "6px"
+          },
+          " .pe-notification__action": [polytheneCoreCss.flex.layoutEndJustified, {
+            width: "100%"
+          }]
+        }
+      }])];
+    }
+  }, customLayoutFns);
 
   var layout = (function (selector, componentVars, customVars) {
     var allVars = _extends({}, componentVars, customVars);
@@ -286,6 +293,8 @@
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.customLayoutFns = customLayoutFns;
+  exports.color = color;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

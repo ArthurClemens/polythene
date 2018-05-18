@@ -8,7 +8,7 @@ export default ({ renderer: h, Button }) => {
     color_light_text:       "#fff"
   });
 
-  ButtonCSS.addStyle(".blue-on-dark-Button", {
+  ButtonCSS.addStyle(".blue-on-dark-button", {
     color_dark_text: "#2196F3"
   });
 
@@ -209,7 +209,7 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Blue on dark Button",
-        className: "blue-on-dark-Button"
+        className: "blue-on-dark-button"
       }
     },
     {

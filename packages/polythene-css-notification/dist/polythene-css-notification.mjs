@@ -36,47 +36,10 @@ var title_single_padding_v_title_padding_h = function title_single_padding_v_tit
   });
 };
 
-var varFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, [flex.layoutCenter, {
-      pointerEvents: "all",
-      justifyContent: "center",
-      margin: "0 auto",
-      transitionProperty: "all",
-      opacity: 0,
-
-      " .pe-notification__title": {
-        flex: "1 0 auto"
-      },
-
-      " .pe-notification__action": {
-        " .pe-button": {
-          margin: 0
-        }
-      },
-
-      ".pe-notification--horizontal": {
-        " .pe-notification__content": flex.layoutHorizontal,
-        " .pe-notification__title": [flex.flex(), {
-          alignSelf: "center"
-        }],
-        " .pe-notification__action": flex.layoutCenter
-      },
-      ".pe-notification--vertical": {
-        " .pe-notification__content": [flex.layoutVertical],
-
-        " .pe-notification__title": {
-          paddingBottom: "6px"
-        },
-        " .pe-notification__action": [flex.layoutEndJustified, {
-          width: "100%"
-        }]
-      }
-    }])];
+var customLayoutFns = {
+  animation_hide_css: function animation_hide_css(selector, vars$$1) {
+    return [sel(selector, vars$$1.animation_hide_css)];
   },
-  // animation_hide_css: (selector, vars) => [
-  //   vars.animation_hide_css,
-  // ],
   animation_show_css: function animation_show_css(selector, vars$$1) {
     return [sel(selector, {
       ".pe-notification--visible": [vars$$1.animation_show_css]
@@ -155,6 +118,50 @@ var varFns = {
     })];
   }
 };
+
+var varFns = _extends({}, {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [flex.layoutCenter, {
+      pointerEvents: "all",
+      justifyContent: "center",
+      margin: "0 auto",
+      transitionProperty: "all",
+      opacity: 0,
+
+      " .pe-notification__title": {
+        flex: "1 0 auto"
+      },
+
+      " .pe-notification__action": {
+        " .pe-button": {
+          margin: 0
+        }
+      },
+
+      " .pe-notification__content": {
+        maxWidth: "100%"
+      },
+
+      ".pe-notification--horizontal": {
+        " .pe-notification__content": flex.layoutHorizontal,
+        " .pe-notification__title": [flex.flex(), {
+          alignSelf: "center"
+        }],
+        " .pe-notification__action": flex.layoutCenter
+      },
+      ".pe-notification--vertical": {
+        " .pe-notification__content": [flex.layoutVertical],
+
+        " .pe-notification__title": {
+          paddingBottom: "6px"
+        },
+        " .pe-notification__action": [flex.layoutEndJustified, {
+          width: "100%"
+        }]
+      }
+    }])];
+  }
+}, customLayoutFns);
 
 var layout = (function (selector, componentVars, customVars) {
   var allVars = _extends({}, componentVars, customVars);
@@ -282,4 +289,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 styler.generateStyles([holderSelector], vars$1, holderFns);
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, customLayoutFns, color };
