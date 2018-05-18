@@ -37,6 +37,9 @@ const sel = (selector, o) => ({
   [selector]: o
 });
 
+const selectorRTL = selector => 
+  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
+
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
@@ -71,10 +74,7 @@ const varFns = {
       }
     ]),
     {
-      // RTL
-      [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
-        alignRight(vars)
-      ],
+      [selectorRTL(selector)]: alignRight(vars)
     }
   ],
   animation_delay: (selector, vars) => [

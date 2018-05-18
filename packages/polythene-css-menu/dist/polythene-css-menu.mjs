@@ -95,6 +95,10 @@ var sel = function sel(selector, o) {
   return _defineProperty({}, selector, o);
 };
 
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
+};
+
 var varFns = {
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(vars$$1), {
@@ -124,7 +128,7 @@ var varFns = {
           height: "100%"
         }
       }
-    }]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars$$1)])];
+    }]), _defineProperty({}, selectorRTL(selector), alignRight(vars$$1))];
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
