@@ -2,8 +2,8 @@
 
 var grid_unit = 4;
 var grid_unit_component = 8;
-var increment = 7 * grid_unit_component;
-var increment_large = 8 * grid_unit_component;
+var increment = 7 * grid_unit_component; // 7 * 8 = 56
+var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
 
 var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
 var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
@@ -70,6 +70,7 @@ var vars = {
   blend_light_text_secondary: .54,
   blend_light_text_tertiary: .40,
   blend_light_text_disabled: .26,
+  blend_light_border_medium: .24,
   blend_light_border_light: .11,
   blend_light_background_active: .14,
   blend_light_background_hover: .06,
@@ -82,6 +83,7 @@ var vars = {
   blend_dark_text_secondary: .70,
   blend_dark_text_tertiary: .40,
   blend_dark_text_disabled: .26,
+  blend_dark_border_medium: .22,
   blend_dark_border_light: .10,
   blend_dark_background_active: .14,
   blend_dark_background_hover: .08,

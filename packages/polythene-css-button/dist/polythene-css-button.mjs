@@ -355,13 +355,18 @@ var varFns$1 = {
       }
     })];
   },
-  padding_h_contained: function padding_h_contained(selector, vars$$1) {
+  padding_h_border: function padding_h_border(selector, vars$$1) {
     return [sel$1(selector, {
-      ".pe-button--contained": {
+      ".pe-button--border": {
         " .pe-button__content": {
-          padding: "0 " + vars$$1.padding_h_contained + "px"
+          padding: "0 " + vars$$1.padding_h_border + "px"
         }
       }
+    })];
+  },
+  letter_spacing: function letter_spacing(selector, vars$$1) {
+    return [sel$1(selector, {
+      letterSpacing: vars$$1.letter_spacing + "px"
     })];
   }
 };

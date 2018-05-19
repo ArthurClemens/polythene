@@ -149,12 +149,11 @@ var color = (function (selector, componentVars, customVars) {
   noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
 });
 
-var fns = [color];
-var themeFns = [layout$1, color];
+var fns = [layout$1, color];
 var selector = "." + classes.component.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars, customVars, themeFns);
+  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {

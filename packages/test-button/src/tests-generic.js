@@ -5,7 +5,8 @@ export default ({ renderer: h, Button }) => {
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
     color_dark_background:  "#2196F3",
-    color_light_text:       "#fff"
+    color_light_text:       "#fff",
+    letter_spacing:         0
   });
 
   ButtonCSS.addStyle(".blue-on-dark-button", {
@@ -14,9 +15,7 @@ export default ({ renderer: h, Button }) => {
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
     color_light_text:   "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text:    "yellow",
-    color_dark_border:  "yellow"
+    color_dark_text:    "#fff",
   });
 
   ButtonCSS.addStyle(".tests-button-hover-button", {
@@ -40,7 +39,7 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button (colors)",
+      name: "Themed Button (colors, letter spacing)",
       component: Button,
       attrs: {
         label: "Themed Button",

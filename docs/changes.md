@@ -26,7 +26,8 @@
 Changes:
 
 * Button:
-  * New options `extraWide` and `highLabel`.
+  * New options `extraWide` and `highLabel`
+  * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
 * Slider:
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * Tabs:

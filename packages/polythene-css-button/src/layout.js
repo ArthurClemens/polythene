@@ -251,13 +251,18 @@ const varFns = {
       }
     })
   ],
-  padding_h_contained: (selector, vars) => [
+  padding_h_border: (selector, vars) => [
     sel(selector, {
-      ".pe-button--contained": {
+      ".pe-button--border": {
         " .pe-button__content": {
-          padding: "0 " + vars.padding_h_contained + "px",
+          padding: "0 " + vars.padding_h_border + "px",
         }
       }
+    })
+  ],
+  letter_spacing: (selector, vars) => [
+    sel(selector, {
+      letterSpacing: vars.letter_spacing + "px"
     })
   ],
 };

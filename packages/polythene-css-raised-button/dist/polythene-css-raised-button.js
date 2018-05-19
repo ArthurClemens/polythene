@@ -151,12 +151,11 @@
     polytheneCssButton.noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
   });
 
-  var fns = [color];
-  var themeFns = [layout, color];
+  var fns = [layout, color];
   var selector = "." + classes.component.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreRaisedButton.vars, customVars, themeFns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreRaisedButton.vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {

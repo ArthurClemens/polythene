@@ -168,6 +168,10 @@
   padding: 8px 0
 }
 
+.pe-button.pe-text-button {
+  letter-spacing: .75px
+}
+
 .pe-button.pe-text-button .pe-button__dropdown,.pe-button.pe-text-button .pe-button__label {
   line-height: 1.3
 }
@@ -203,6 +207,10 @@
 
 .pe-button.pe-text-button .pe-button__content.pe-button--dropdown .pe-button__label+.pe-button__dropdown {
   margin-right: -1px
+}
+
+.pe-button.pe-text-button.pe-button--border .pe-button__content {
+  padding: 0 16px
 }
 
 .pe-button.pe-text-button.pe-button--extra-wide .pe-button__content {
@@ -254,6 +262,10 @@
   border-color: hsla(0,0%,100%,.1)
 }
 
+.pe-dark-tone.pe-button.pe-text-button .pe-button__content,.pe-dark-tone .pe-button.pe-text-button .pe-button__content {
+  border-color: hsla(0,0%,100%,.22)
+}
+
 .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--selected .pe-button__focus {
   opacity: 1
 }
@@ -289,6 +301,10 @@
 
 .pe-button.pe-text-button.pe-button--separator-start .pe-button__content,.pe-light-tone.pe-button.pe-text-button.pe-button--separator-start .pe-button__content,.pe-light-tone .pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
   border-color: rgba(0,0,0,.11)
+}
+
+.pe-button.pe-text-button .pe-button__content,.pe-light-tone.pe-button.pe-text-button .pe-button__content,.pe-light-tone .pe-button.pe-text-button .pe-button__content {
+  border-color: rgba(0,0,0,.24)
 }
 
 html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active .pe-button__wash,html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover .pe-button__wash {
