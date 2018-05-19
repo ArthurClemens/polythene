@@ -9,12 +9,12 @@ const reactTests = ({ Button, ButtonGroup }) => {
       section: "React JSX tests",
     },
     {
-      name: "Group (JSX)",
+      name: "Group (buttons extraWide and highLabel) (JSX)",
       component: () => (
-        <ButtonGroup separator>
-          <Button label="One" />
-          <Button label="Two" />
-          <Button label="Three" />
+        <ButtonGroup>
+          <Button label="One" extraWide highLabel />
+          <Button label="Two" extraWide highLabel separatorAtStart />
+          <Button label="Three" extraWide highLabel separatorAtStart />
         </ButtonGroup>
       )
     },

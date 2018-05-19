@@ -24,6 +24,12 @@ export default ({ renderer: h, Button }) => {
     color_light_hover_background: "#673ab7",
     animation_duration:           "100ms",
   });
+
+  // ButtonCSS.addStyle(".tests-button-sentence-case", {
+  //   color_light_background: "#6200ee",
+  //   color_light_text:       "#fff",
+  //   text_transform:         "none"
+  // });
   
   return [
     {
@@ -41,6 +47,14 @@ export default ({ renderer: h, Button }) => {
         className: "tests-button-themed-button"
       }
     },
+    // {
+    //   name: "Themed Button (colors, sentence case)",
+    //   component: Button,
+    //   attrs: {
+    //     label: "Sentence case",
+    //     className: "tests-button-sentence-case",
+    //   }
+    // },
     {
       name: "Themed Button: (option: border)",
       component: Button,

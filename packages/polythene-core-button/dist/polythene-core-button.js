@@ -5,26 +5,27 @@
 }(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
 
   var classes = {
-    base: "pe-button",
-    component: "pe-button pe-text-button",
-    row: "pe-button-row",
+      base: "pe-button",
+      component: "pe-button pe-text-button",
+      row: "pe-button-row",
 
-    // elements    
-    content: "pe-button__content",
-    focus: "pe-button__focus",
-    label: "pe-button__label",
-    wash: "pe-button__wash",
-    dropdown: "pe-button__dropdown",
+      // elements      
+      content: "pe-button__content",
+      focus: "pe-button__focus",
+      label: "pe-button__label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
 
-    // states    
-    border: "pe-button--border",
-    disabled: "pe-button--disabled",
-    focused: "pe-button--focus",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected",
-    hasDropdown: "pe-button--dropdown",
-    highLabel: "pe-button--high-label",
-    extraWide: "pe-button--extra-wide"
+      // states      
+      border: "pe-button--border",
+      disabled: "pe-button--disabled",
+      focused: "pe-button--focus",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      extraWide: "pe-button--extra-wide",
+      separatorAtStart: "pe-button--separator-start"
   };
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -113,7 +114,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
-      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
       if (e.keyCode === 13 && state.focus()) {
         state.focus(false);
@@ -190,6 +191,7 @@
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
     padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
     row_margin_h: polytheneTheme.vars.grid_unit,
+    separator_width: 1,
     text_transform: "uppercase",
 
     color_light_background: "transparent",
@@ -200,6 +202,7 @@
     color_light_disabled_background: "transparent",
     color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
     color_light_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_separator: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
 
     color_dark_background: "transparent",
     color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
@@ -208,7 +211,8 @@
     color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
     color_dark_disabled_background: "transparent",
     color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_icon: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary)
+    color_dark_icon: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_separator: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
 
     // border colors may be set in theme; disabled by default
 

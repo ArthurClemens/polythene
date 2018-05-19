@@ -111,6 +111,18 @@ const tintFns = tint => ({
     })
   ],
 
+  // Separator
+
+  ["color_" + tint + "_separator"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--separator-start": {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_separator"]
+        }
+      }
+    })
+  ]
+
 });
 
 const hoverTintFns = tint => ({

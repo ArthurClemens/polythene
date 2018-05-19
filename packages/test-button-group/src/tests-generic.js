@@ -1,16 +1,20 @@
-import { ButtonCSS, ButtonGroupCSS } from "polythene-css";
+import { ButtonCSS } from "polythene-css";
 
 export default ({ renderer: h, Button, ButtonGroup }) => {
   
-  ButtonCSS.addStyle(".button-group-white-background", {
-    color_light_background: "#fff"
+  ButtonCSS.addStyle(".button-group-themed-white", {
+    color_light_background: "#fff",
+    color_dark_background:  "#42a5f5",
+    color_dark_separator:   "rgba(255,255,255,.35)",
   });
 
-  ButtonGroupCSS.addStyle(".button-group-separator", {
-    color_light_separator: "#42a5f5"
+  ButtonCSS.addStyle(".button-group-themed-round", {
+    border_radius:          8,
+    color_light_background: "#42a5f5",
+    color_light_text:       "#fff",
+    color_light_icon:       "rgba(255,255,255,.7)",
+    color_light_separator:  "#fff",
   });
-
-  
 
   return [
     {
@@ -29,44 +33,70 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
       name: "Option: separator (with Button options extraWide, highLabel and dropdown)",
       component: {
         view: () => 
+          h(ButtonGroup, [
+            h(Button, {
+              label: "Left",
+              extraWide: true,
+              highLabel: true,
+              className: "button-group-themed-white"
+            }),
+            h(Button, {
+              dropdown: true,
+              highLabel: true,
+              className: "button-group-themed-white",
+              separatorAtStart: true
+            })
+          ])
+      },
+    },
+    {
+      name: "Themed (color, border radius, separators)",
+      component: {
+        view: () => 
           h(ButtonGroup,
-            { separator: true },
             [
               h(Button, {
                 label: "Left",
                 extraWide: true,
                 highLabel: true,
-                className: "button-group-white-background"
+                className: "button-group-themed-round",
+              }),
+              h(Button, {
+                label: "Middle",
+                extraWide: true,
+                highLabel: true,
+                className: "button-group-themed-round",
+                separatorAtStart: true,
               }),
               h(Button, {
                 dropdown: true,
                 highLabel: true,
-                className: "button-group-white-background"
+                className: "button-group-themed-round",
+                separatorAtStart: true,
               })
             ]
           )
       },
     },
     {
-      name: "Themed (color)",
+      name: "Option: separator (with Button options extraWide, highLabel and dropdown) (RTL)",
       component: {
         view: () => 
-          h(ButtonGroup,
-            {
-              separator: true,
-              className: "button-group-separator"
-            },
-            [
+          h(".pe-rtl", null,
+            h(ButtonGroup, [
               h(Button, {
                 label: "Left",
                 extraWide: true,
                 highLabel: true,
+                className: "button-group-themed-white"
               }),
               h(Button, {
                 dropdown: true,
                 highLabel: true,
+                className: "button-group-themed-white",
+                separatorAtStart: true
               })
-            ]
+            ])
           )
       },
     },
@@ -91,20 +121,20 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
       className: "pe-dark-tone",
       component: {
         view: () => 
-          h(ButtonGroup,
-            { separator: true },
-            [
-              h(Button, {
-                label: "Left",
-                extraWide: true,
-                highLabel: true,
-              }),
-              h(Button, {
-                dropdown: true,
-                highLabel: true,
-              })
-            ]
-          )
+          h(ButtonGroup, [
+            h(Button, {
+              label: "Left",
+              extraWide: true,
+              highLabel: true,
+              className: "button-group-themed-white"
+            }),
+            h(Button, {
+              dropdown: true,
+              highLabel: true,
+              className: "button-group-themed-white",
+              separatorAtStart: true
+            })
+          ])
       },
     },
   ];

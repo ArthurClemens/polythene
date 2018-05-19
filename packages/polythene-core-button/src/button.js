@@ -82,6 +82,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.extraWide ? classes.extraWide : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
+        attrs.separatorAtStart ? classes.separatorAtStart : null,
         (attrs.border || attrs.borders) ? classes.border : null,
         state.focus() ? classes.focused : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,

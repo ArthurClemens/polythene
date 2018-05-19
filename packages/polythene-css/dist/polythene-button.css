@@ -57,6 +57,10 @@
   margin: 0 4px
 }
 
+.pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
+  border-style: none none none solid
+}
+
 .pe-button.pe-text-button {
   display: inline-block;
   background: transparent;
@@ -108,6 +112,14 @@
   min-width: 0
 }
 
+.pe-button-group .pe-button.pe-text-button {
+  min-width: 0
+}
+
+.pe-rtl .pe-button.pe-text-button.pe-button--separator-start .pe-button__content,[dir=rtl] .pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
+  border-style: none solid none none
+}
+
 .pe-button.pe-text-button .pe-button__content,.pe-button.pe-text-button .pe-button__focus,.pe-button.pe-text-button .pe-button__wash {
   transition-delay: 0ms;
   transition-duration: .18s;
@@ -117,6 +129,16 @@
 
 .pe-button.pe-text-button .pe-button__content {
   border-radius: 2px
+}
+
+.pe-button-group .pe-button.pe-text-button:not(:first-child) .pe-button__content {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.pe-button-group .pe-button.pe-text-button:not(:last-child) .pe-button__content {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
 }
 
 .pe-button.pe-text-button.pe-button--border .pe-button__content {
@@ -187,6 +209,10 @@
   padding: 0 24px
 }
 
+.pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
+  border-width: 1px
+}
+
 .pe-button.pe-text-button .pe-button__label {
   text-transform: uppercase
 }
@@ -224,6 +250,10 @@
   color: hsla(0,0%,100%,.7)
 }
 
+.pe-dark-tone.pe-button.pe-text-button.pe-button--separator-start .pe-button__content,.pe-dark-tone .pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
+  border-color: hsla(0,0%,100%,.1)
+}
+
 .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-text-button.pe-button--selected .pe-button__focus {
   opacity: 1
 }
@@ -255,6 +285,10 @@
 
 .pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone.pe-button.pe-text-button .pe-button__dropdown,.pe-light-tone .pe-button.pe-text-button .pe-button__dropdown {
   color: rgba(0,0,0,.54)
+}
+
+.pe-button.pe-text-button.pe-button--separator-start .pe-button__content,.pe-light-tone.pe-button.pe-text-button.pe-button--separator-start .pe-button__content,.pe-light-tone .pe-button.pe-text-button.pe-button--separator-start .pe-button__content {
+  border-color: rgba(0,0,0,.11)
 }
 
 html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:active .pe-button__wash,html.pe-no-touch .pe-dark-tone .pe-button.pe-text-button:hover .pe-button__wash {

@@ -2,26 +2,27 @@ import { mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-button';
 
 var classes = {
-  base: "pe-button",
-  component: "pe-button pe-text-button",
-  row: "pe-button-row",
+    base: "pe-button",
+    component: "pe-button pe-text-button",
+    row: "pe-button-row",
 
-  // elements    
-  content: "pe-button__content",
-  focus: "pe-button__focus",
-  label: "pe-button__label",
-  wash: "pe-button__wash",
-  dropdown: "pe-button__dropdown",
+    // elements      
+    content: "pe-button__content",
+    focus: "pe-button__focus",
+    label: "pe-button__label",
+    wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
 
-  // states    
-  border: "pe-button--border",
-  disabled: "pe-button--disabled",
-  focused: "pe-button--focus",
-  inactive: "pe-button--inactive",
-  selected: "pe-button--selected",
-  hasDropdown: "pe-button--dropdown",
-  highLabel: "pe-button--high-label",
-  extraWide: "pe-button--extra-wide"
+    // states      
+    border: "pe-button--border",
+    disabled: "pe-button--disabled",
+    focused: "pe-button--focus",
+    inactive: "pe-button--inactive",
+    selected: "pe-button--selected",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    extraWide: "pe-button--extra-wide",
+    separatorAtStart: "pe-button--separator-start"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -116,6 +117,23 @@ var sel$1 = function sel(selector, o) {
   return _defineProperty$1({}, selector, o);
 };
 
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
+};
+
+var alignSide = function alignSide(isRTL) {
+  return function () {
+    return {
+      ".pe-button--separator-start .pe-button__content": {
+        borderStyle: isRTL ? "none solid none none" : "none none none solid"
+      }
+    };
+  };
+};
+
+var alignLeft = alignSide(false);
+var alignRight = alignSide(true);
+
 var line_height_label_padding_v = function line_height_label_padding_v(selector, vars$$1) {
   return sel$1(selector, {
     " .pe-button__dropdown": {
@@ -148,7 +166,7 @@ var line_height_outer_padding_v_label_padding_v = function line_height_outer_pad
 
 var varFns$1 = {
   general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
+    return [sel$1(selector, [alignLeft(), {
       display: "inline-block",
       background: "transparent",
       border: "none",
@@ -192,13 +210,31 @@ var varFns$1 = {
           marginLeft: "7px",
           minWidth: 0
         }
+      },
+
+      " .pe-button-group &": {
+        minWidth: 0
       }
-    })];
+    }]), [sel$1(selectorRTL(selector), alignRight())]];
   },
   border_radius: function border_radius(selector, vars$$1) {
     return [sel$1(selector, {
       " .pe-button__content": {
         borderRadius: vars$$1.border_radius + "px"
+      },
+      " .pe-button-group &": {
+        ":not(:first-child)": {
+          " .pe-button__content": {
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0
+          }
+        },
+        ":not(:last-child)": {
+          " .pe-button__content": {
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0
+          }
+        }
       }
     })];
   },
@@ -309,6 +345,24 @@ var varFns$1 = {
         padding: 0
       }
     }), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+  },
+  separator_width: function separator_width(selector, vars$$1) {
+    return [sel$1(selector, {
+      ".pe-button--separator-start": {
+        " .pe-button__content": {
+          borderWidth: vars$$1.separator_width + "px"
+        }
+      }
+    })];
+  },
+  padding_h_contained: function padding_h_contained(selector, vars$$1) {
+    return [sel$1(selector, {
+      ".pe-button--contained": {
+        " .pe-button__content": {
+          padding: "0 " + vars$$1.padding_h_contained + "px"
+        }
+      }
+    })];
   }
 };
 
@@ -414,6 +468,14 @@ var tintFns = function tintFns(tint) {
     return [sel$2(selector, {
       " .pe-button__dropdown": {
         color: vars$$1["color_" + tint + "_icon"]
+      }
+    })];
+  }), _defineProperty$2(_ref2, "color_" + tint + "_separator", function (selector, vars$$1) {
+    return [sel$2(selector, {
+      ".pe-button--separator-start": {
+        " .pe-button__content": {
+          borderColor: vars$$1["color_" + tint + "_separator"]
+        }
       }
     })];
   }), _ref2;

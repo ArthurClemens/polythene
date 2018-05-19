@@ -2,9 +2,8 @@ import { styler } from "polythene-core-css";
 import { vars } from "polythene-core-button-group";
 import classes from "polythene-css-classes/button-group";
 import layout from "./layout";
-import color from "./color";
 
-const fns = [layout, color];
+const fns = [layout];
 const selector = `.${classes.component}`;
 
 export const addStyle = (customSelector, customVars) => 

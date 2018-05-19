@@ -4,6 +4,20 @@ const sel = (selector, o) => ({
   [selector]: o
 });
 
+const selectorRTL = selector => 
+  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
+
+const alignSide = isRTL => () => ({
+  ".pe-button--separator-start .pe-button__content": {
+    borderStyle: isRTL
+      ? "none solid none none"
+      : "none none none solid",
+  }
+});
+
+const alignLeft = alignSide(false);
+const alignRight = alignSide(true);
+
 const line_height_label_padding_v = (selector, vars) =>
   sel(selector, {
     " .pe-button__dropdown": {
@@ -33,58 +47,82 @@ const line_height_outer_padding_v_label_padding_v = (selector, vars) =>
 
 const varFns = {
   general_styles: selector => [
-    sel(selector, {
-      display: "inline-block",
-      background: "transparent",
-      border: "none",
-
-      " .pe-button__content": {
-        position: "relative",
-        borderWidth: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      },
-
-      ".pe-button--border": {
-        " .pe-button__wash, .pe-button__focus, .pe-ripple": mixin.fit(-1),
+    sel(selector, [
+      alignLeft(),
+      {
+        display: "inline-block",
+        background: "transparent",
+        border: "none",
 
         " .pe-button__content": {
-          borderStyle: "solid",
-        },
-      },
-
-      " .pe-button__label, .pe-button__dropdown": {
-        whiteSpace: "pre",
-        userSelect: "none",
-        "-moz-user-select": "none"
-      },
-
-      ".pe-button--dropdown": {
-        minWidth: "0", // IE 11 does not recognize "initial" here
-
-        " .pe-button__dropdown": {
           position: "relative",
+          borderWidth: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         },
 
-        " .pe-svg": {
-          position: "absolute",
-          left: 0,
-          top: "50%",
+        ".pe-button--border": {
+          " .pe-button__wash, .pe-button__focus, .pe-ripple": mixin.fit(-1),
+
+          " .pe-button__content": {
+            borderStyle: "solid",
+          },
         },
 
-        " .pe-button__label + .pe-button__dropdown": {
-          marginLeft: "7px",
-          minWidth: 0,
+        " .pe-button__label, .pe-button__dropdown": {
+          whiteSpace: "pre",
+          userSelect: "none",
+          "-moz-user-select": "none"
+        },
+
+        ".pe-button--dropdown": {
+          minWidth: "0", // IE 11 does not recognize "initial" here
+
+          " .pe-button__dropdown": {
+            position: "relative",
+          },
+
+          " .pe-svg": {
+            position: "absolute",
+            left: 0,
+            top: "50%",
+          },
+
+          " .pe-button__label + .pe-button__dropdown": {
+            marginLeft: "7px",
+            minWidth: 0,
+          },
+        },
+
+        " .pe-button-group &": {
+          minWidth: 0
         },
       }
-    })
+    ]),
+    [
+      sel(selectorRTL(selector), alignRight()),
+    ]
   ],
   border_radius: (selector, vars) => [
     sel(selector, {
       " .pe-button__content": {
         borderRadius: vars.border_radius + "px",
-      }
+      },
+      " .pe-button-group &": {
+        ":not(:first-child)": {
+          " .pe-button__content": {
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0,
+          },
+        },
+        ":not(:last-child)": {
+          " .pe-button__content": {
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0,
+          }
+        },
+      },
     })
   ],
   border_width: (selector, vars) => [
@@ -203,7 +241,25 @@ const varFns = {
     }),
     outer_padding_v_label_padding_v(selector, vars),
     line_height_outer_padding_v_label_padding_v(selector, vars)
-  ]
+  ],
+  separator_width: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--separator-start": {
+        " .pe-button__content": {
+          borderWidth: vars.separator_width + "px"
+        }
+      }
+    })
+  ],
+  padding_h_contained: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--contained": {
+        " .pe-button__content": {
+          padding: "0 " + vars.padding_h_contained + "px",
+        }
+      }
+    })
+  ],
 };
 
 export default (selector, componentVars, customVars) => {

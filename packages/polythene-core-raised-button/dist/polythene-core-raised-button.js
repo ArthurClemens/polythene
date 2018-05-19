@@ -135,6 +135,9 @@
   var vars = {
     general_styles: true,
 
+    // Override Button:
+    padding_h: 4 * polytheneTheme.vars.grid_unit, // 16
+
     color_light_background: "#fff",
     color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
     color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),

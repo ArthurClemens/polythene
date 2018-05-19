@@ -1,31 +1,4 @@
 .pe-button-group {
   display: flex
 }
-
-.pe-button-group .pe-button {
-  min-width: 0
-}
-
-.pe-button-group .pe-button:not(:first-child),.pe-button-group .pe-button:not(:first-child) .pe-button__content,.pe-button-group .pe-button:not(:first-child) .pe-button__focus,.pe-button-group .pe-button:not(:first-child) .pe-button__wash {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0
-}
-
-.pe-button-group .pe-button:not(:last-child),.pe-button-group .pe-button:not(:last-child) .pe-button__focus,.pe-button-group .pe-button:not(:last-child) .pe-button__wash {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0
-}
-
-.pe-button-group.pe-button-group--separator .pe-button:not(:first-child) .pe-button__content {
-  border-style: none none none solid;
-  border-width: 1px
-}
-
-.pe-dark-tone.pe-button-group .pe-button .pe-button__content,.pe-dark-tone .pe-button-group .pe-button .pe-button__content {
-  border-color: hsla(0,0%,100%,.1)
-}
-
-.pe-button-group .pe-button .pe-button__content,.pe-light-tone.pe-button-group .pe-button .pe-button__content,.pe-light-tone .pe-button-group .pe-button .pe-button__content {
-  border-color: rgba(0,0,0,.11)
-}
 /*# sourceMappingURL=polythene-button-group.css.map */

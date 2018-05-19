@@ -6,6 +6,9 @@ const rgba = (colorStr, opacity = 1) =>
 export default {
   general_styles:                  true,
 
+  // Override Button:
+  padding_h:                       4 * vars.grid_unit, // 16
+
   color_light_background:          "#fff",
   color_light_text:                rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_wash_background:     rgba(vars.color_light_foreground, vars.blend_light_background_hover),

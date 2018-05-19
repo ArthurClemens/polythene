@@ -1,6 +1,6 @@
 # Raised Button
 
-Displays a text button with a [Shadow](shadow.md) effect.
+Also called Contained Button. Displays a text button with a background and [Shadow](shadow.md) effect.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 

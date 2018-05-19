@@ -76,8 +76,9 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 | **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown icon; note that a dropdown button has no minimum width |
-| **extraWide** | optional | Boolean | false | Set to `true` to add more side padding |
+| **extraWide** | optional | Boolean | false | Set to `true` to add even more side padding |
 | **highLabel** | optional | Boolean | false | This does not make the button higher in itself; set to `true` to move the vertical "outer" padding to the label, creating a higher hover effect (and higher separator when using [Button Group](button-group.md)) |
+| **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
 
 
 <a id="common-component-options"></a>
