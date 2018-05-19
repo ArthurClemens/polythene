@@ -21,7 +21,7 @@ This section describes a number of ways to create customizations - from simple l
 Customization options can be used side by side:
 
 1. [Light and Dark](theming/light-and-dark.md)
-1. [Configuration variables](theming/configuration-variables.md)
+1. [Style variables](theming/style-variables.md)
 1. [Wrapper components](theming/wrapper-components.md)
 1. [Global theme file](theming/global-theme-file.md)
 1. [Custom CSS](theming/custom-css.md)
@@ -33,7 +33,7 @@ Customization options can be used side by side:
 
 Read this first if you are just looking for a quick way to make a modification to a component.
 
-Create custom CSS by passing a new CSS class and component [configuration variables](theming/configuration-variables.md).
+Create custom CSS by passing a new CSS class and component [style variables](theming/style-variables.md).
 
 
 <a id="mithril-example"></a>

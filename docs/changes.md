@@ -18,16 +18,15 @@
 <a id="next"></a>
 ### Next
 
+CSS creation has been optimized, specifically when creating themed CSS. When using [addStyle](theming/style-variables.md), only the passed style variables will be used to create CSS. This results in much smaller CSS code, and it makes the result more predictable (less potentical clashes with default styles).
 
 #### Components
 
 * New component [Button Group](components/button-group.md)
-
-Changes:
-
 * Button:
   * New options `extraWide` and `highLabel`
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
+  * Bordered button has a default medium gray border color
 * Slider:
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * Tabs:
@@ -63,7 +62,7 @@ Changes:
 * Updates to transition code:
   * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
   * Transitions now read existing CSS styles (so you can define some or all transition properties in CSS too)
-  * It is now possible to set transition duration and delay in a component theme (using component configuration vars)
+  * It is now possible to set transition duration and delay in a component theme (using component style variables)
   * Added options `showTimingFunction` and `hideTimingFunction`
 
 #### Components
@@ -74,7 +73,7 @@ Changes:
   * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
   * Dialog: option `borders` is unchanged (the option refers to top and bottom border)
 * List Tile:
-  * Added configuration vars for for titles and the front element: font size, weight and color 
+  * Added style variables for for titles and the front element: font size, weight and color 
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
 * Toolbar:
   * Added option `z` to add a shadow
@@ -186,7 +185,7 @@ Fix for newly introduced bug in button onclick handling.
 Changes to components:
 
 * All
-  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Configuration variables](theming/configuration-variables.md)
+  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Style variables](theming/style-variables.md)
 * RadioGroup
   * `onChange` now returns a state object that contains a variable `value`
 * List

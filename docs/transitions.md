@@ -7,7 +7,7 @@
 - [Setting transitions](#setting-transitions)
   - [Component options](#component-options)
   - [Scripted component options with `transitions`](#scripted-component-options-with-transitions)
-  - [Themed \(using configuration variables\)](#themed-using-configuration-variables)
+  - [Themed \(using style variables\)](#themed-using-style-variables)
   - [Custom CSS](#custom-css)
 - [Transient components](#transient-components)
 - [Changes](#changes)
@@ -22,7 +22,7 @@ Some components (such as Dialogs) are displayed only when needed. The way the co
 
 1. Simple component options
 1. Scripted component options
-1. Themed (using configuration variables) 
+1. Themed (using style variables) 
 1. Writing custom CSS
 
 These different methods can be combined. The order of evaluation follows the listed order above. For instance, if a component option is not set, that setting will be read from the component style (if any).
@@ -181,8 +181,8 @@ Drawer({
 ~~~
 
 
-<a id="themed-using-configuration-variables"></a>
-### Themed (using configuration variables) 
+<a id="themed-using-style-variables"></a>
+### Themed (using style variables) 
 
 For a general introduction to theming, see [Theming](theming.md).
 

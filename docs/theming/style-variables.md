@@ -1,6 +1,6 @@
 [Back to Theme main page](../theming.md)
 
-# Configuration variables
+# Style variables
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
@@ -56,7 +56,9 @@ To create additional styles for a component, use this pattern:
 ~~~javascript
 import { IconCSS } from "polythene-css"
 
-IconCSS.addStyle(selector, vars)
+IconCSS.addStyle(selector, {
+  ...
+})
 ~~~
 
 So each imported component's CSS functions can be accessed with the naming pattern `{ComponentName}CSS`.
