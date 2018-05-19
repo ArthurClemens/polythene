@@ -23,6 +23,8 @@
 
 * Button:
   * New options `extraWide` and `highLabel`.
+* Slider:
+  * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * New component [Button Group](components/button-group.md)
 
 <a id="120"></a>

@@ -19,11 +19,15 @@ export default ({ Slider, Icon, renderer: h }) => {
     thumb_size:           18
   });
 
-  SliderCSS.addStyle(".slider-custom-color", {
-    color_light_track_active:   "#82b1ff",
-    color_light_track_inactive: "#c5cae9",
-    color_light_track_value:    "#f50057",
-    color_light_thumb_on:       "#f50057"
+  SliderCSS.addStyle(".slider-custom-pin-color", {
+    color_light_thumb_on:       "#6200ef",
+    color_light_pin_label:      "#f00",
+    color_light_pin_background: "#fff",
+    color_light_tick:           "#fff",
+    color_light_tick_value:     "#a17af3",
+    color_light_track_active:   "#c6aee7",
+    color_light_track_inactive: "#c6aee7",
+    color_light_track_value:    "#6222eb",
   });
 
   return [
@@ -143,14 +147,17 @@ export default ({ Slider, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Themed slider (colors)",
+      name: "Themed slider (track and pin colors)",
       interactive: true,
       component: Slider,
       attrs: {
         min: 0,
         max: 100,
-        defaultValue: 50,
-        className: "slider-custom-color"
+        stepSize: 10,
+        defaultValue: 2,
+        pin: true,
+        ticks: true,
+        className: "slider-custom-pin-color"
       }
     },
     {

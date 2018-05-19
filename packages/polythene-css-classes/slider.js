@@ -7,7 +7,7 @@ export default {
   label:          "pe-slider__label",
   pin:            "pe-slider__pin",
   thumb:          "pe-slider__thumb",
-  tick:           "pe-slider__ticks-tick",
+  tick:           "pe-slider__tick",
   ticks:          "pe-slider__ticks",
   track:          "pe-slider__track",
   trackBar:       "pe-slider__track-bar",
@@ -24,4 +24,5 @@ export default {
   isActive:       "pe-slider--active",
   isAtMin:        "pe-slider--min",
   isDisabled:     "pe-slider--disabled",
+  tickValue:      "pe-slider__tick--value",
 };

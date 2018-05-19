@@ -37,15 +37,19 @@ const updateValue = (state, value) => {
   updatePinPosition(state);
 };
 
-const generateTickMarks = (h, stepCount) => {
+const generateTickMarks = (h, stepCount, stepSize, value) => {
   const items = [];
-  let s = stepCount + 1;
-  while (s > 0) {
+  const stepWithValue = value / stepSize;
+  console.log("stepSize", stepSize, "value", value, "stepWithValue", stepWithValue);
+  let s = 0;
+  while (s < stepCount + 1) {
     items.push(h("div", {
-      className: classes.tick,
+      className: s <= stepWithValue
+        ? [classes.tick, classes.tickValue].join(" ")
+        : classes.tick,
       key: `tick-${s}`
     }));
-    s--;
+    s++;
   }
   return items;
 };
@@ -136,6 +140,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
   const range = state.max - state.min;
   const stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
+  console.log("value", state.value(), "state.stepSize", state.stepSize);
   const onStartTrack = e => (
     startTrack(state, attrs, e)
   );
@@ -252,7 +257,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             className: classes.ticks,
             key: "ticks"
           },
-          generateTickMarks(h, stepCount)
+          generateTickMarks(h, stepCount, state.stepSize, state.value())
         )
         : null,
       hasTicks && attrs.pin && !attrs.disabled
