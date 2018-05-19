@@ -11,17 +11,19 @@ const tab_height = 48;
 const scroll_button_size = tab_height;
 
 export default {
+  general_styles:                   true,
+
   animation_duration:               buttonVars.animation_duration,
-  indicator_slide_min_duration:     .250,
+  indicator_slide_min_duration:     ".250s",
   indicator_slide_speed:            600, // px per second
   label_max_width:                  264,
   menu_tab_height:                  44,
   menu_tab_icon_label_height:       44,
-  scroll_button_fade_delay:         .25,
-  scroll_button_fade_duration:      .2,
+  scroll_button_fade_delay:         ".25s",
+  scroll_button_fade_duration:      ".2s",
   scroll_button_opacity:            .7,
   scroll_button_size,
-  scrollbar_offset:                 20,
+  scrollbar_offset:                 0,
   tab_content_padding_v:            12,
   tab_height,
   tab_icon_label_height:            72,
@@ -35,8 +37,8 @@ export default {
   tab_min_width:                    72,
   tab_min_width_tablet:             160,
   tabs_indent:                      0,
-  tabs_scroll_delay:                .15,
-  tabs_scroll_min_duration:         .5,
+  tabs_scroll_delay:                ".15s",
+  tabs_scroll_min_duration:         ".5s",
   tabs_scroll_speed:                600, // px per second
  
   color_light:                      rgba(vars.color_light_foreground, vars.blend_light_text_regular),

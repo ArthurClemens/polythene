@@ -1,54 +1,87 @@
 import { noTouchStyle as buttonNoTouchStyle } from "polythene-css-button";
 
-const style = (scopes, selector, componentVars, tint) => [{
-  [scopes.map(s => s + selector).join(",")]: {
-    " .pe-tabs__tab": {
-      color: componentVars["color_" + tint],
-    },
+const sel = (selector, o) => ({
+  [selector]: o
+});
 
-    " .pe-tabs__tab.pe-button--selected": {
-      color: componentVars["color_" + tint + "_selected"],
-
-      " .pe-button__content": {
-        background: componentVars["color_" + tint + "_selected_background"]
+const generalFns = ({
+  general_styles: selector => [
+    sel(selector, {
+      " .pe-tabs__scroll-button": {
+        color: "inherit"
       }
-    },
-    " .pe-tabs__tab:not(.pe-button--selected) .pe-icon": {
-      color: componentVars["color_" + tint + "_icon"]
-    },
-    " .pe-tabs__indicator": {
-      backgroundColor: componentVars["color_" + tint + "_tab_indicator"]
-    },
-    " .pe-tabs__scroll-button": {
-      color: "inherit"
-    }
-  }
-}];
+    })
+  ],
+});
 
-export const noTouchStyle = (scopes, selector, componentVars, tint) => buttonNoTouchStyle(scopes, selector + " .pe-text-button.pe-tabs__tab", componentVars, tint);
+const tintFns = tint => ({
+  ["color_" + tint]: (selector, vars) => [
+    sel(selector, {
+      " .pe-tabs__tab": {
+        color: vars["color_" + tint],
+      },
+    })
+  ],
+  ["color_" + tint + "_selected"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-tabs__tab.pe-button--selected": {
+        color: vars["color_" + tint + "_selected"],
+      },
+    })
+  ],
+  ["color_" + tint + "_selected_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-tabs__tab.pe-button--selected": {
+        " .pe-button__content": {
+          background: vars["color_" + tint + "_selected_background"]
+        }
+      },
+    })
+  ],
+  ["color_" + tint + "_icon"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-tabs__tab:not(.pe-button--selected) .pe-icon": {
+        color: vars["color_" + tint + "_icon"]
+      },
+    })
+  ],
+  ["color_" + tint + "_tab_indicator"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-tabs__indicator": {
+        backgroundColor: vars["color_" + tint + "_tab_indicator"]
+      },
+    })
+  ],
+});
 
-// export const noTouchStyle = (scopes, selector, componentVars, tint) => {
-//   return [{
-//     [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
-//       ":not(.pe-button--selected):not(.pe-button--inactive)": {
-//         color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
-//         borderColor: hoverBorder,
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
 
-//         " .pe-button__content": {
-//           backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
-//         },
+const createStyle = (selector, componentVars, customVars, tint) => {
+  const allVars = {...componentVars, ...customVars};
+  const currentVars = customVars
+    ? customVars
+    : allVars;
+  return Object.keys(currentVars).map(v => {
+    const varFns = tint === "light"
+      ? lightTintFns
+      : darkTintFns;
+    return varFns[v] !== undefined 
+      ? varFns[v](selector, allVars)
+      : null;
+  }).filter(s => s);
+};
 
-//         " .pe-button__wash": {
-//           backgroundColor: componentVars["color_" + tint + "_wash_background"],
-//         }
-//       }
-//     }
-//   }];
-// };
+const style = (scopes, selector, componentVars, customVars, tint) => {
+  const selectors = scopes.map(s => s + selector).join(",");
+  return createStyle(selectors, componentVars, customVars, tint);
+};
 
-export default (selector, componentVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light"),
+export const noTouchStyle = (scopes, selector, componentVars, customVars, tint) => buttonNoTouchStyle(scopes, selector + " .pe-text-button.pe-tabs__tab", componentVars, customVars, tint);
+
+export default (selector, componentVars, customVars) => [
+  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
 ];

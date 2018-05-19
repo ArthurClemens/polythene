@@ -61,12 +61,12 @@ const scrollToTab = (state, tabIndex) => {
   const currentLeft = scroller.scrollLeft;
   if (currentLeft !== left) {
     const duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
-    const delaySeconds = vars.tabs_scroll_delay || 0;
+    const delaySeconds = parseFloat(vars.tabs_scroll_delay || 0);
     setTimeout(() => {
       scrollTo({
         element: scroller,
         to: left,
-        duration: Math.max(vars.tabs_scroll_min_duration, duration),
+        duration: Math.max(parseFloat(vars.tabs_scroll_min_duration || 0), duration),
         direction: "horizontal"
       }).then(() => updateScrollButtons(state));
     }, delaySeconds * 1000);
@@ -95,9 +95,11 @@ const animateIndicator = (selectedTabEl, animate, state) => {
     : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
   const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
   const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
-  const duration = animate ? vars.indicator_slide_min_duration : 0;
+  const duration = animate
+    ? vars.indicator_slide_min_duration
+    : 0;
   const style = state.tabIndicatorEl.style;
-  style["transition-duration"] = duration + "s";
+  style["transition-duration"] = duration;
   style.transform = transformCmd;
 };
 

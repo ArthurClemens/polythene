@@ -15,17 +15,19 @@
   var scroll_button_size = tab_height;
 
   var vars = {
+    general_styles: true,
+
     animation_duration: polytheneCoreButton.vars.animation_duration,
-    indicator_slide_min_duration: .250,
+    indicator_slide_min_duration: ".250s",
     indicator_slide_speed: 600, // px per second
     label_max_width: 264,
     menu_tab_height: 44,
     menu_tab_icon_label_height: 44,
-    scroll_button_fade_delay: .25,
-    scroll_button_fade_duration: .2,
+    scroll_button_fade_delay: ".25s",
+    scroll_button_fade_duration: ".2s",
     scroll_button_opacity: .7,
     scroll_button_size: scroll_button_size,
-    scrollbar_offset: 20,
+    scrollbar_offset: 0,
     tab_content_padding_v: 12,
     tab_height: tab_height,
     tab_icon_label_height: 72,
@@ -39,8 +41,8 @@
     tab_min_width: 72,
     tab_min_width_tablet: 160,
     tabs_indent: 0,
-    tabs_scroll_delay: .15,
-    tabs_scroll_min_duration: .5,
+    tabs_scroll_delay: ".15s",
+    tabs_scroll_min_duration: ".5s",
     tabs_scroll_speed: 600, // px per second
 
     color_light: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
@@ -69,18 +71,22 @@
     component: "pe-button pe-text-button",
     row: "pe-button-row",
 
-    // elements
+    // elements    
     content: "pe-button__content",
     focus: "pe-button__focus",
     label: "pe-button__label",
     wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
 
-    // states
+    // states    
     border: "pe-button--border",
     disabled: "pe-button--disabled",
     focused: "pe-button--focus",
     inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+    selected: "pe-button--selected",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    extraWide: "pe-button--extra-wide"
   };
 
   var classes = {
@@ -165,12 +171,12 @@
     var currentLeft = scroller.scrollLeft;
     if (currentLeft !== left) {
       var duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
-      var delaySeconds = vars.tabs_scroll_delay || 0;
+      var delaySeconds = parseFloat(vars.tabs_scroll_delay || 0);
       setTimeout(function () {
         polytheneUtilities.scrollTo({
           element: scroller,
           to: left,
-          duration: Math.max(vars.tabs_scroll_min_duration, duration),
+          duration: Math.max(parseFloat(vars.tabs_scroll_min_duration || 0), duration),
           direction: "horizontal"
         }).then(function () {
           return updateScrollButtons(state);
@@ -201,7 +207,7 @@
     var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
     var duration = animate ? vars.indicator_slide_min_duration : 0;
     var style = state.tabIndicatorEl.style;
-    style["transition-duration"] = duration + "s";
+    style["transition-duration"] = duration;
     style.transform = transformCmd;
   };
 
