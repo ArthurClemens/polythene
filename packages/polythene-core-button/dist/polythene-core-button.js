@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
       base: "pe-button",
@@ -167,77 +167,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var touch_height = polytheneTheme.vars.unit_touch_height; // 48
-  var height = 36;
-
-  var vars = {
-    general_styles: true,
-
-    animation_duration: polytheneTheme.vars.animation_duration,
-    border_radius: polytheneTheme.vars.unit_item_border_radius,
-    border_width: 1, // no border in MD, but used to correctly set the height when a theme does set a border
-    dropdown_icon_size: 24,
-    font_size: 14,
-    font_weight: 500,
-    label_padding_v: 9,
-    letter_spacing: 0.75,
-    line_height: polytheneTheme.vars.line_height,
-    min_width: 8 * polytheneTheme.vars.grid_unit_component,
-    outer_padding_v: (touch_height - height) / 2, // (48 - 36) / 2 = 6
-    padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
-    padding_h_border: 4 * polytheneTheme.vars.grid_unit, // 16
-    padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
-    row_margin_h: polytheneTheme.vars.grid_unit,
-    separator_width: 1,
-    text_transform: "uppercase",
-
-    color_light_background: "transparent",
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
-    color_light_disabled_background: "transparent",
-    color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_separator: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-
-    color_dark_background: "transparent",
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
-    color_dark_disabled_background: "transparent",
-    color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_icon: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_separator: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_medium), // only specify this variable to get all 4 states
-    // color_light_hover_border:             "transparent",
-    // color_light_active_border:            "transparent",
-    // color_light_disabled_border:          "transparent",
-    //
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_medium) // only specify this variable to get all 4 states
-    // color_dark_hover_border:              "transparent",
-    // color_dark_active_border:             "transparent",
-    // color_dark_disabled_border:           "transparent"
-
-    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-    // color_light_hover_background:         "transparent",
-    // color_light_hover_icon:               "inherit",
-    //
-    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-    // color_dark_hover_background:          "transparent",
-    // color_dark_hover_icon:                "inherit",
-
-  };
-
   exports.coreButton = button;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

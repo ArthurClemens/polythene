@@ -1,7 +1,21 @@
+import { vars } from 'polythene-theme';
 import { layout, color } from 'polythene-css-base-spinner';
 import { styleDurationToMs } from 'polythene-core';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-ios-spinner';
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  general_styles: true,
+
+  rotation_animation_duration: "1s",
+
+  color_light: rgba(vars.color_light_foreground),
+  color_dark: rgba(vars.color_dark_foreground)
+};
 
 var classes = {
   component: "pe-ios-spinner",
@@ -142,13 +156,13 @@ var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars$1 as vars };

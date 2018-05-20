@@ -1,5 +1,5 @@
 import { styler } from "polythene-core-css";
-import { vars } from "polythene-core-card";
+import vars from "./vars";
 import classes from "polythene-css-classes/card";
 import layout from "./layout";
 import color from "./color";
@@ -11,14 +11,14 @@ const contentSelector = `.${classes.content}`;
 const overlaySheetSelector = `.${classes.overlaySheet}`;
 const overlayContentSelector = `.${classes.overlayContent}`;
 
-export const addStyle = (customSelector, customVars) => {
+const addStyle = (customSelector, customVars) => {
   styler.generateCustomStyles([customSelector, selector], vars, customVars, [layout, color]),
   styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]),
   styler.generateCustomStyles([customSelector, " " + contentSelector], vars, customVars, [contentColor]),
   styler.generateCustomStyles([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor]);
 };
 
-export const getStyle = (customSelector, customVars) =>
+const getStyle = (customSelector, customVars) =>
   customSelector
     ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, [layout, color])
       .concat(styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]))
@@ -33,3 +33,5 @@ styler.generateStyles([selector], vars, [layout, color]);
 styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
 styler.generateStyles([contentSelector], vars, [contentColor]);
 styler.generateStyles([overlayContentSelector], vars, [contentColor]);
+
+export { addStyle, getStyle, vars };

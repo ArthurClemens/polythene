@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities'), require('polythene-theme'), require('polythene-core-base-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities', 'polythene-theme', 'polythene-core-base-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities'],global['polythene-theme'],global['polythene-core-base-spinner']));
-}(this, (function (exports,polytheneCore,polytheneUtilities,polytheneTheme,polytheneCoreBaseSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities'], factory) :
+  (factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities']));
+}(this, (function (exports,polytheneCore,polytheneUtilities) { 'use strict';
 
   var classes = {
     component: "pe-md-progress-spinner",
@@ -147,22 +147,7 @@
     createProps: createProps
   });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = _extends$1({}, polytheneCoreBaseSpinner.vars, {
-    progress_animation_duration: ".8s",
-
-    color_light: rgba(polytheneTheme.vars.color_primary),
-    color_dark: rgba(polytheneTheme.vars.color_primary)
-  });
-
   exports.coreMaterialDesignProgressSpinner = spinner;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

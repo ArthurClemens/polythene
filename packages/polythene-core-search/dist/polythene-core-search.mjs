@@ -1,5 +1,4 @@
 import { filterSupportedAttributes } from 'polythene-core';
-import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-search",
@@ -65,34 +64,4 @@ var search = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  font_size_input: 20,
-  full_width_border_radius: 0,
-  full_width_height: 56,
-  full_width_input_right_padding: 0,
-  full_width_side_margin: 0,
-  full_width_side_padding: 8,
-  inset_border_radius: vars.unit_block_border_radius,
-  inset_height: 48,
-  inset_input_indent: 16,
-  inset_input_right_padding: 0,
-  inset_side_padding: 0,
-  line_height_input: 20,
-
-  color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_background: rgba(vars.color_light_background),
-
-  color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_background: rgba(vars.color_dark_background)
-};
-
-export { search as coreSearch, vars$1 as vars };
+export { search as coreSearch };

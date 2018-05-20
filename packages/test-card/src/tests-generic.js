@@ -153,7 +153,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       h(Tabs, {
         tabs: [
           { label: "New" },
-          { label: "My Favorites" },
+          { label: "Favorites" },
           { label: "Saved" }
         ],
         autofit: true

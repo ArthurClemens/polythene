@@ -17,7 +17,6 @@
   "dependencies": {
     "polythene-core": "^1.2.0",
     "polythene-core-css": "^1.2.0",
-    "polythene-core-ios-spinner": "^1.2.0",
     "polythene-css-base-spinner": "^1.2.0",
     "polythene-css-classes": "^1.2.0",
     "polythene-theme": "^1.2.0"

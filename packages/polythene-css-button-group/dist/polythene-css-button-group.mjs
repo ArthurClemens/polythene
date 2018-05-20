@@ -1,5 +1,8 @@
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-button-group';
+
+var vars = {
+  general_styles: true
+};
 
 var classes = {
   component: "pe-button-group"
@@ -44,4 +47,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars };

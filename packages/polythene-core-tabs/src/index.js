@@ -4,5 +4,3 @@ import * as coreTab from "./tab";
 export { coreTab };
 import * as coreScrollButton from "./scroll-button";
 export { coreScrollButton };
-
-export { default as vars } from "./vars";

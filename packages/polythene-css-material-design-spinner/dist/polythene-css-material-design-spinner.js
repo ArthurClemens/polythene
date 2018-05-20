@@ -1,8 +1,61 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-base-spinner'), require('polythene-core-css'), require('polythene-core-material-design-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-base-spinner', 'polythene-core-css', 'polythene-core-material-design-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-base-spinner'],global['polythene-core-css'],global['polythene-core-material-design-spinner']));
-}(this, (function (exports,polytheneCssBaseSpinner,polytheneCoreCss,polytheneCoreMaterialDesignSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-css-base-spinner'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-css-base-spinner', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-css-base-spinner'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCssBaseSpinner,polytheneCoreCss) { 'use strict';
+
+  /*
+  Derived from https://github.com/PolymerElements/paper-spinner
+
+  @license
+  Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+  This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+  The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+  The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+  Code distributed by Google as part of the polymer project is also
+  subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+  */
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var arc_size = 270; // degrees - amount of circle the arc takes up
+  var arc_time = 1.333; // s - time it takes to expand and contract arc
+  var arc_start_degrees = 360 / 5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
+  var rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
+
+  var blue400 = "#42a5f5";
+  var red500 = "#f44336";
+  var yellow600 = "#fdd835";
+  var green500 = "#4caf50";
+
+  var vars = {
+    general_styles: true,
+
+    arc_size: arc_size,
+    arc_start_degrees: arc_start_degrees,
+    arc_time: arc_time,
+    border_width_fab: polytheneCssBaseSpinner.vars.size_fab / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_large: polytheneCssBaseSpinner.vars.size_large / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_medium: polytheneCssBaseSpinner.vars.size_medium / polytheneCssBaseSpinner.vars.size_regular * 3,
+    border_width_regular: 3,
+    border_width_small: polytheneCssBaseSpinner.vars.size_small / polytheneCssBaseSpinner.vars.size_regular * 3,
+    rotation_duration: rotation_duration,
+
+    color_light_single: rgba(polytheneTheme.vars.color_primary),
+    color_light_1: blue400,
+    color_light_2: red500,
+    color_light_3: yellow600,
+    color_light_4: green500,
+
+    color_dark_single: rgba(polytheneTheme.vars.color_primary),
+    color_dark_1: blue400,
+    color_dark_2: red500,
+    color_dark_3: yellow600,
+    color_dark_4: green500
+  };
 
   var classes = {
     component: "pe-md-spinner",
@@ -188,7 +241,7 @@
   };
 
   var layerAnimation = function layerAnimation(vars, num) {
-    return _defineProperty({}, "&.pe-md-spinner__layer-" + num, {
+    return _defineProperty({}, ".pe-md-spinner__layer-" + num, {
       animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
     });
   };
@@ -489,17 +542,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreMaterialDesignSpinner.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreMaterialDesignSpinner.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreMaterialDesignSpinner.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreMaterialDesignSpinner.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
   exports.layout = layout;
   exports.color = color;
 

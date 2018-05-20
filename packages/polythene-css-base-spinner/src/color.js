@@ -10,7 +10,7 @@ const generalFns = ({
 const tintFns = tint => ({
   ["color_" + tint + "_raised_background"]: (selector, vars) => [
     sel(selector, {
-      "&.pe-spinner--raised": {
+      ".pe-spinner--raised": {
         backgroundColor: vars["color_" + tint + "_raised_background"],
       }
     })

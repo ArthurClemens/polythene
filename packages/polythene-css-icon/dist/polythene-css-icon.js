@@ -1,8 +1,29 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-icon')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-icon'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-icon']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreIcon) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = {
+    general_styles: true,
+
+    size_small: polytheneTheme.vars.unit_icon_size_small,
+    size_regular: polytheneTheme.vars.unit_icon_size,
+    size_medium: polytheneTheme.vars.unit_icon_size_medium,
+    size_large: polytheneTheme.vars.unit_icon_size_large,
+
+    // avatar background is visible when image is not yet loaded
+    color_light_avatar_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_dark_avatar_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+
+    color_light: "currentcolor",
+    color_dark: "currentcolor"
+  };
 
   var classes = {
     component: "pe-icon",
@@ -18,8 +39,6 @@
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  // import { vars as defaultVars } from "polythene-theme";
 
   var sel = function sel(selector, o) {
     return _defineProperty({}, selector, o);
@@ -65,26 +84,6 @@
         }
       })];
     }
-    // size_small: (selector, vars) => [
-    //   sel(selector, {
-    //     ".pe-icon--small": iconSize(vars.size_small),
-    //   })
-    // ],
-    // size_regular: (selector, vars) => [
-    //   sel(selector, {
-    //     ".pe-icon--regular": iconSize(vars.size_regular),
-    //   })
-    // ],
-    // size_medium: (selector, vars) => [
-    //   sel(selector, {
-    //     ".pe-icon--medium": iconSize(vars.size_medium),
-    //   })
-    // ],
-    // size_large: (selector, vars) => [
-    //   sel(selector, {
-    //     ".pe-icon--large": iconSize(vars.size_large),
-    //   })
-    // ],
   }, ["small", "regular", "medium", "large"].reduce(function (acc, size) {
     return acc["size_" + size] = sizeDirective(size), acc;
   }, {}));
@@ -161,17 +160,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreIcon.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreIcon.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIcon.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreIcon.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

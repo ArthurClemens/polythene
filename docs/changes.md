@@ -20,6 +20,8 @@
 
 CSS creation has been optimized, specifically when creating themed CSS. When using [addStyle](theming/style-variables.md), only the passed style variables will be used to create CSS. This results in much smaller CSS code, and it makes the result more predictable (less potentical clashes with default styles).
 
+CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
+
 #### Components
 
 * New component [Button Group](components/button-group.md)

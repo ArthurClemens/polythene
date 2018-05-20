@@ -1,5 +1,3 @@
-import { vars } from 'polythene-theme';
-
 var classes = {
   component: "pe-ios-spinner",
 
@@ -38,18 +36,4 @@ var spinner = /*#__PURE__*/Object.freeze({
   createProps: createProps
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  rotation_animation_duration: "1s",
-
-  color_light: rgba(vars.color_light_foreground),
-  color_dark: rgba(vars.color_dark_foreground)
-};
-
-export { spinner as coreIOSSpinner, vars$1 as vars };
+export { spinner as coreIOSSpinner };

@@ -1,8 +1,61 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-core-card')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-core-card'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-core-card']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCoreCard) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var padding_v = 24;
+  var padding_actions_v = 8;
+  var actions_button_margin_v = 2;
+
+  var vars = {
+    general_styles: true,
+
+    actions_button_margin_h: polytheneTheme.vars.grid_unit,
+    actions_button_margin_v: actions_button_margin_v,
+    actions_padding_h: 8,
+    actions_padding_v: 0,
+    actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    icon_element_width: 72 - 4,
+    image_size_large: 3 * 80,
+    image_size_medium: 2 * 80,
+    image_size_regular: 1.4 * 80,
+    image_size_small: 1 * 80,
+    offset_small_padding_v: padding_v - 16,
+    one_line_height_with_icon: 72,
+    one_line_padding_v: 8,
+    padding_h: 16,
+    subtitle_line_height_padding_bottom: 7,
+    text_line_height_padding_bottom: 7,
+    text_line_height_padding_top: 6,
+    text_padding_bottom: 24,
+    text_padding_h: 16,
+    text_padding_v: 16,
+    tight_text_padding_bottom: 16,
+    tight_title_padding_bottom: 16,
+    title_padding_h: 16,
+    title_padding_v: 24,
+
+    color_light_main_background: rgba(polytheneTheme.vars.color_light_background),
+    color_light_title_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_subtitle_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_actions_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_light_overlay_background: rgba(polytheneTheme.vars.color_light_background, polytheneTheme.vars.blend_light_overlay_background),
+
+    color_dark_main_background: rgba(polytheneTheme.vars.color_dark_background),
+    color_dark_title_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_subtitle_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
+    color_dark_actions_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+    color_dark_overlay_background: rgba(polytheneTheme.vars.color_dark_background, polytheneTheme.vars.blend_dark_overlay_background)
+  };
 
   var classes = {
     component: "pe-card",
@@ -55,9 +108,7 @@
       return {};
     };
   };
-
   var alignLeft = alignSide(false);
-
   var alignRight = alignSide(true);
 
   var sel = function sel(selector, o) {
@@ -680,20 +731,21 @@
   var overlayContentSelector = "." + classes.overlayContent;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreCard.vars, customVars, [layout, color]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], polytheneCoreCard.vars, customVars, [overlayColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + contentSelector], polytheneCoreCard.vars, customVars, [contentColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlayContentSelector], polytheneCoreCard.vars, customVars, [contentColor]);
+    polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, [layout, color]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + contentSelector], vars, customVars, [contentColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor]);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreCard.vars, customVars, [layout, color]).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], polytheneCoreCard.vars, customVars, [overlayColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + contentSelector], polytheneCoreCard.vars, customVars, [contentColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlayContentSelector], polytheneCoreCard.vars, customVars, [contentColor])) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreCard.vars, [layout, color]).concat(polytheneCoreCss.styler.createStyleSheets([overlaySheetSelector], polytheneCoreCard.vars, [overlayColor])).concat(polytheneCoreCss.styler.createStyleSheets([contentSelector], polytheneCoreCard.vars, [contentColor])).concat(polytheneCoreCss.styler.createStyleSheets([overlayContentSelector], polytheneCoreCard.vars, [contentColor]));
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, [layout, color]).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + contentSelector], vars, customVars, [contentColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor])) : polytheneCoreCss.styler.createStyleSheets([selector], vars, [layout, color]).concat(polytheneCoreCss.styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor])).concat(polytheneCoreCss.styler.createStyleSheets([contentSelector], vars, [contentColor])).concat(polytheneCoreCss.styler.createStyleSheets([overlayContentSelector], vars, [contentColor]));
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreCard.vars, [layout, color]);
-  polytheneCoreCss.styler.generateStyles([overlaySheetSelector], polytheneCoreCard.vars, [overlayColor]);
-  polytheneCoreCss.styler.generateStyles([contentSelector], polytheneCoreCard.vars, [contentColor]);
-  polytheneCoreCss.styler.generateStyles([overlayContentSelector], polytheneCoreCard.vars, [contentColor]);
+  polytheneCoreCss.styler.generateStyles([selector], vars, [layout, color]);
+  polytheneCoreCss.styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
+  polytheneCoreCss.styler.generateStyles([contentSelector], vars, [contentColor]);
+  polytheneCoreCss.styler.generateStyles([overlayContentSelector], vars, [contentColor]);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

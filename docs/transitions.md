@@ -35,10 +35,11 @@ See the [list of transient components](#transient-components) below.
 
 All transient components use CSS for their transitions (with the exception of Snackbar which uses JavaScript). 
 
-CSS is created from component style variables, located in each component's `vars.js` file. For instance for Dialog:
+CSS is created from component style variables, located in each component's CSS `vars.js` file. For instance for Dialog:
 
 ~~~javascript
-// polythene-core-dialog/src/vars.js
+// polythene-css-dialog/src/vars.js
+
 animation_delay:                 "0s",
 animation_duration:              ".220s",
 animation_timing_function:       "ease-in-out",

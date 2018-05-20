@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme']));
-}(this, (function (exports,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
 
   var classes = {
     component: "pe-ios-spinner",
@@ -42,22 +42,7 @@
     createProps: createProps
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    rotation_animation_duration: "1s",
-
-    color_light: rgba(polytheneTheme.vars.color_light_foreground),
-    color_dark: rgba(polytheneTheme.vars.color_dark_foreground)
-  };
-
   exports.coreIOSSpinner = spinner;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

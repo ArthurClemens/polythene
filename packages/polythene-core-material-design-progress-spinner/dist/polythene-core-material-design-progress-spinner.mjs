@@ -1,7 +1,5 @@
 import { unpackAttrs, getStyle, styleDurationToMs } from 'polythene-core';
 import { easing } from 'polythene-utilities';
-import { vars } from 'polythene-theme';
-import { vars as vars$1 } from 'polythene-core-base-spinner';
 
 var classes = {
   component: "pe-md-progress-spinner",
@@ -146,18 +144,4 @@ var spinner = /*#__PURE__*/Object.freeze({
   createProps: createProps
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$2 = _extends$1({}, vars$1, {
-  progress_animation_duration: ".8s",
-
-  color_light: rgba(vars.color_primary),
-  color_dark: rgba(vars.color_primary)
-});
-
-export { spinner as coreMaterialDesignProgressSpinner, vars$2 as vars };
+export { spinner as coreMaterialDesignProgressSpinner };

@@ -1,8 +1,26 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-css-notification'), require('polythene-core-css'), require('polythene-core-snackbar')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-css-notification', 'polythene-core-css', 'polythene-core-snackbar'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-css-notification'],global['polythene-core-css'],global['polythene-core-snackbar']));
-}(this, (function (exports,polytheneTheme,polytheneCssNotification,polytheneCoreCss,polytheneCoreSnackbar) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-css-notification'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-css-notification', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-css-notification'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCssNotification,polytheneCoreCss) { 'use strict';
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = _extends({}, polytheneCssNotification.vars, {
+    animation_hide_css: "",
+    animation_show_css: "",
+    border_radius: 0,
+    max_width: 568,
+    min_height: 0,
+    min_width: 288,
+
+    color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
+  });
 
   var notificationClasses = {
     component: "pe-notification",
@@ -22,9 +40,9 @@
     visible: "pe-notification--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  var classes = _extends({}, notificationClasses, {
+  var classes = _extends$1({}, notificationClasses, {
     component: "pe-notification pe-snackbar",
 
     // elements
@@ -35,7 +53,7 @@
     open: "pe-snackbar--open"
   });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -52,7 +70,7 @@
   var breakpointTabletPortraitUp = breakpoint("@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)");
 
   var createVarFns = function createVarFns(isCustom) {
-    return _extends$1({}, isCustom && polytheneCssNotification.customLayoutFns, {
+    return _extends$2({}, isCustom && polytheneCssNotification.customLayoutFns, {
       general_styles: function general_styles(selector) {
         return [sel(selector, {
           width: "100%",
@@ -94,7 +112,7 @@
   };
 
   var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends$1({}, componentVars, customVars);
+    var allVars = _extends$2({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
     var isCustom = !!customVars;
     var varFns = createVarFns(isCustom);
@@ -109,60 +127,7 @@
     return polytheneCssNotification.color(selector, componentVars, customVars);
   });
 
-  // const sel = (selector, o) => ({
-  //   [selector]: o
-  // });
-
-  // const generalFns = ({
-  //   general_styles: selector => [], // eslint-disable-line no-unused-vars
-  // });
-
-  // const tintFns = tint => ({
-  //   ["color_" + tint + "_text"]: (selector, vars) => [
-  //     sel(selector, {
-  //       " .pe-notification__content": {
-  //         color: vars["color_" + tint + "_text"],
-  //       }
-  //     })
-  //   ],
-  //   ["color_" + tint + "_background"]: (selector, vars) => [
-  //     sel(selector, {
-  //       " .pe-notification__content": {
-  //         background: vars["color_" + tint + "_background"]
-  //       }
-  //     })
-  //   ]
-  // });
-
-  // const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-  // const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
-
-  // const createStyle = (selector, componentVars, customVars, tint) => {
-  //   const allVars = {...componentVars, ...customVars};
-  //   const currentVars = customVars
-  //     ? customVars
-  //     : allVars;
-  //   return Object.keys(currentVars).map(v => {
-  //     const varFns = tint === "light"
-  //       ? lightTintFns
-  //       : darkTintFns;
-  //     return varFns[v] !== undefined 
-  //       ? varFns[v](selector, allVars)
-  //       : null;
-  //   }).filter(s => s);
-  // };
-
-  // const style = (scopes, selector, componentVars, customVars, tint) => {
-  //   const selectors = scopes.map(s => s + selector).join(",");
-  //   return createStyle(selectors, componentVars, customVars, tint);
-  // };
-
-  // export default (selector, componentVars, customVars) => [
-  //   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  //   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-  // ];
-
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -189,7 +154,7 @@
   };
 
   var holderLayout = (function (selector, componentVars, customVars) {
-    var allVars = _extends$2({}, componentVars, customVars);
+    var allVars = _extends$3({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
     return Object.keys(currentVars).map(function (v) {
       return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
@@ -205,18 +170,19 @@
   var holderSelector = "." + classes.holder.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreSnackbar.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreSnackbar.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([holderSelector], polytheneCoreSnackbar.vars, holderFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSnackbar.vars, fns));
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([holderSelector], vars, holderFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], vars, fns));
   };
 
-  polytheneCoreCss.styler.generateStyles([holderSelector], polytheneCoreSnackbar.vars, holderFns);
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSnackbar.vars, fns);
+  polytheneCoreCss.styler.generateStyles([holderSelector], vars, holderFns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

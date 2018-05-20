@@ -1,8 +1,37 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css'), require('polythene-core-dialog-pane')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css', 'polythene-core-dialog-pane'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css'],global['polythene-core-dialog-pane']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss,polytheneCoreDialogPane) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = {
+    general_styles: true,
+
+    border_width: 1,
+    footer_height: 52,
+    header_bottom: 20,
+    header_height: 60,
+    line_height_title: 24,
+    max_width: 7 * polytheneTheme.vars.grid_unit_menu, // 7 * 56 = 392 
+    min_width: 5 * polytheneTheme.vars.grid_unit_menu, // 5 * 56 = 280
+    padding: 3 * polytheneTheme.vars.grid_unit_component, // 3 * 8 = 24
+    side_padding_mobile: 6 * polytheneTheme.vars.grid_unit, // 6 * 4 = 48
+
+    color_light_title_text: "inherit",
+    color_light_body_text: "inherit",
+    color_light_body_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_light_background: "inherit",
+
+    color_dark_title_text: "inherit",
+    color_dark_body_text: "inherit",
+    color_dark_body_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+    color_dark_background: "inherit"
+  };
 
   var classes = {
     component: "pe-dialog-pane",
@@ -329,17 +358,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreDialogPane.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreDialogPane.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreDialogPane.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreDialogPane.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

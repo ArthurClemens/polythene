@@ -1,5 +1,12 @@
 import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-ripple';
+
+var vars = {
+  general_styles: true,
+
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
+};
 
 var classes = {
   component: "pe-ripple",
@@ -83,13 +90,13 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref2;
 
-  return _ref2 = {}, _defineProperty$1(_ref2, "color", function color(selector, vars$$1) {
+  return _ref2 = {}, _defineProperty$1(_ref2, "color", function color(selector, vars) {
     return [sel$1(selector, {
-      color: vars$$1["color"]
+      color: vars["color"]
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint, function (selector, vars$$1) {
+  }), _defineProperty$1(_ref2, "color_" + tint, function (selector, vars) {
     return [sel$1(selector, {
-      color: vars$$1["color_" + tint]
+      color: vars["color_" + tint]
     })];
   }), _ref2;
 };
@@ -133,4 +140,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars };

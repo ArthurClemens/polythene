@@ -24,12 +24,12 @@
 
 Polythene components are styled with variables that specify the sizes and colors for that component. The variables are used to create a component style, to be written by JavaScript or to a CSS file.
 
-Component style variables are located in each component's `vars.js` file (see the complete [list of all variables](#list-of-all-variables) below).
+Component style variables are located in each component's CSS `vars.js` file (see the complete [list of all variables](#list-of-all-variables) below).
 
 For example, the variables file for Icon is:
 
 ~~~javascript
-// polythene-core-icon/src/vars.js
+// polythene-css-icon/src/vars.js
 import { vars } from "polythene-theme"
 
 export default {
@@ -238,32 +238,32 @@ Global variables:
 
 Component variables:
 
-* [polythene-core-base-spinner](../../packages/polythene-core-base-spinner/src/vars.js)
-* [polythene-core-button](../../packages/polythene-core-button/src/vars.js)
-* [polythene-core-card](../../packages/polythene-core-card/src/vars.js)
-* [polythene-core-checkbox](../../packages/polythene-core-checkbox/src/vars.js)
-* [polythene-core-dialog-pane](../../packages/polythene-core-dialog-pane/src/vars.js)
-* [polythene-core-dialog](../../packages/polythene-core-dialog/src/vars.js)
-* [polythene-core-fab](../../packages/polythene-core-fab/src/vars.js)
-* [polythene-core-icon-button](../../packages/polythene-core-icon-button/src/vars.js)
-* [polythene-core-icon](../../packages/polythene-core-icon/src/vars.js)
-* [polythene-core-ios-spinner](../../packages/polythene-core-ios-spinner/src/vars.js)
-* [polythene-core-list-tile](../../packages/polythene-core-list-tile/src/vars.js)
-* [polythene-core-list](../../packages/polythene-core-list/src/vars.js)
-* [polythene-core-material-design-progress-spinner](../../packages/polythene-core-material-design-progress-spinner/src/vars.js)
-* [polythene-core-material-design-spinner](../../packages/polythene-core-material-design-spinner/src/vars.js)
-* [polythene-core-menu](../../packages/polythene-core-menu/src/vars.js)
-* [polythene-core-notification](../../packages/polythene-core-notification/src/vars.js)
-* [polythene-core-raised-button](../../packages/polythene-core-raised-button/src/vars.js)
-* [polythene-core-ripple](../../packages/polythene-core-ripple/src/vars.js)
-* [polythene-core-search](../../packages/polythene-core-search/src/vars.js)
-* [polythene-core-selection-control](../../packages/polythene-core-selection-control/src/vars.js)
-* [polythene-core-shadow](../../packages/polythene-core-shadow/src/vars.js)
-* [polythene-core-slider](../../packages/polythene-core-slider/src/vars.js)
-* [polythene-core-snackbar](../../packages/polythene-core-snackbar/src/vars.js)
-* [polythene-core-svg](../../packages/polythene-core-svg/src/vars.js)
-* [polythene-core-switch](../../packages/polythene-core-switch/src/vars.js)
-* [polythene-core-tabs](../../packages/polythene-core-tabs/src/vars.js)
-* [polythene-core-textfield](../../packages/polythene-core-textfield/src/vars.js)
-* [polythene-core-toolbar](../../packages/polythene-core-toolbar/src/vars.js)
+* [polythene-css-base-spinner](../../packages/polythene-css-base-spinner/src/vars.js)
+* [polythene-css-button](../../packages/polythene-css-button/src/vars.js)
+* [polythene-css-card](../../packages/polythene-css-card/src/vars.js)
+* [polythene-css-checkbox](../../packages/polythene-css-checkbox/src/vars.js)
+* [polythene-css-dialog-pane](../../packages/polythene-css-dialog-pane/src/vars.js)
+* [polythene-css-dialog](../../packages/polythene-css-dialog/src/vars.js)
+* [polythene-css-fab](../../packages/polythene-css-fab/src/vars.js)
+* [polythene-css-icon-button](../../packages/polythene-css-icon-button/src/vars.js)
+* [polythene-css-icon](../../packages/polythene-css-icon/src/vars.js)
+* [polythene-css-ios-spinner](../../packages/polythene-css-ios-spinner/src/vars.js)
+* [polythene-css-list-tile](../../packages/polythene-css-list-tile/src/vars.js)
+* [polythene-css-list](../../packages/polythene-css-list/src/vars.js)
+* [polythene-css-material-design-progress-spinner](../../packages/polythene-css-material-design-progress-spinner/src/vars.js)
+* [polythene-css-material-design-spinner](../../packages/polythene-css-material-design-spinner/src/vars.js)
+* [polythene-css-menu](../../packages/polythene-css-menu/src/vars.js)
+* [polythene-css-notification](../../packages/polythene-css-notification/src/vars.js)
+* [polythene-css-raised-button](../../packages/polythene-css-raised-button/src/vars.js)
+* [polythene-css-ripple](../../packages/polythene-css-ripple/src/vars.js)
+* [polythene-css-search](../../packages/polythene-css-search/src/vars.js)
+* [polythene-css-selection-control](../../packages/polythene-css-selection-control/src/vars.js)
+* [polythene-css-shadow](../../packages/polythene-css-shadow/src/vars.js)
+* [polythene-css-slider](../../packages/polythene-css-slider/src/vars.js)
+* [polythene-css-snackbar](../../packages/polythene-css-snackbar/src/vars.js)
+* [polythene-css-svg](../../packages/polythene-css-svg/src/vars.js)
+* [polythene-css-switch](../../packages/polythene-css-switch/src/vars.js)
+* [polythene-css-tabs](../../packages/polythene-css-tabs/src/vars.js)
+* [polythene-css-textfield](../../packages/polythene-css-textfield/src/vars.js)
+* [polythene-css-toolbar](../../packages/polythene-css-toolbar/src/vars.js)
 

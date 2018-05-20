@@ -1,8 +1,16 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-ripple')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-ripple'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-ripple']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreRipple) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css']));
+}(this, (function (exports,polytheneCoreCss) { 'use strict';
+
+  var vars = {
+    general_styles: true,
+
+    color: "inherit" // only specify this variable to get both states
+    // color_light:   "inherit",
+    // color_dark:    "inherit"
+  };
 
   var classes = {
     component: "pe-ripple",
@@ -127,17 +135,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreRipple.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreRipple.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreRipple.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreRipple.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

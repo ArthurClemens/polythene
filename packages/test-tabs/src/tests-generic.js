@@ -96,12 +96,12 @@ export default ({ renderer: h, Tabs }) => {
   ];
 
   return [
-    {
-      name: "Child node",
-      component: Tabs,
-      attrs: null,
-      children: threeButtons
-    },
+    // {
+    //   name: "Child node",
+    //   component: Tabs,
+    //   attrs: null,
+    //   children: threeButtons
+    // },
     {
       name: "Option: content",
       component: Tabs,

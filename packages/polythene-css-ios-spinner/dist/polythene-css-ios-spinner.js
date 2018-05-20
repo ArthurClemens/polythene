@@ -1,8 +1,22 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-base-spinner'), require('polythene-core'), require('polythene-core-css'), require('polythene-core-ios-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-base-spinner', 'polythene-core', 'polythene-core-css', 'polythene-core-ios-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-base-spinner'],global['polythene-core'],global['polythene-core-css'],global['polythene-core-ios-spinner']));
-}(this, (function (exports,polytheneCssBaseSpinner,polytheneCore,polytheneCoreCss,polytheneCoreIosSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-css-base-spinner'), require('polythene-core'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-css-base-spinner', 'polythene-core', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-css-base-spinner'],global['polythene-core'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCssBaseSpinner,polytheneCore,polytheneCoreCss) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = {
+    general_styles: true,
+
+    rotation_animation_duration: "1s",
+
+    color_light: rgba(polytheneTheme.vars.color_light_foreground),
+    color_dark: rgba(polytheneTheme.vars.color_dark_foreground)
+  };
 
   var classes = {
     component: "pe-ios-spinner",
@@ -143,17 +157,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreIosSpinner.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreIosSpinner.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIosSpinner.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreIosSpinner.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

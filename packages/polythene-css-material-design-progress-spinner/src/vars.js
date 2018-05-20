@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { vars as baseVars } from "polythene-core-base-spinner";
+import { vars as baseVars } from "polythene-css-base-spinner";
 
 const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;

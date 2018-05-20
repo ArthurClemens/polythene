@@ -1,6 +1,28 @@
 import { vars } from 'polythene-theme';
 import { styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-core-menu';
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  general_styles: true,
+
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_hide_css: "opacity: 0;",
+  animation_show_css: "opacity: 1;",
+  animation_timing_function: "ease-in-out",
+  border_radius: vars.unit_block_border_radius,
+  min_size: 1.5,
+  size_factor: vars.grid_unit_menu,
+  sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
+
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background)
+  // text colors are set by content, usually list tiles
+};
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -77,7 +99,7 @@ var widthClass = function widthClass(size) {
 
 var widthStyle = function widthStyle(vars$$1, size) {
   var s = unifySize(vars$$1, size);
-  return _defineProperty({}, "&." + widthClass(s), {
+  return _defineProperty({}, "." + widthClass(s), {
     width: vars$$1.size_factor * s + "px"
     // We can't set maxWidth because we don't know the size of the container
   });
@@ -246,4 +268,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars$1 as vars };

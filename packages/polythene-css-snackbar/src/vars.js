@@ -1,5 +1,5 @@
 import { vars } from "polythene-theme";
-import { vars as notificationVars } from "polythene-core-notification";
+import { vars as notificationVars } from "polythene-css-notification";
 
 const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;

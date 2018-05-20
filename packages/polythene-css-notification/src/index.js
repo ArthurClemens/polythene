@@ -1,5 +1,5 @@
 import { styler } from "polythene-core-css";
-import { vars } from "polythene-core-notification";
+import vars from "./vars";
 import classes from "polythene-css-classes/notification";
 import layout, { customLayoutFns } from "./layout";
 import color from "./color";
@@ -11,10 +11,10 @@ const selector = `.${classes.component}`;
 const holderFns = [holderLayout];
 const holderSelector = `.${classes.holder}`;
 
-export const addStyle = (customSelector, customVars) => 
+const addStyle = (customSelector, customVars) => 
   styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 
-export const getStyle = (customSelector, customVars) => 
+const getStyle = (customSelector, customVars) => 
   customSelector
     ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
     : styler.createStyleSheets([holderSelector], vars, holderFns)
@@ -23,4 +23,4 @@ export const getStyle = (customSelector, customVars) =>
 styler.generateStyles([holderSelector], vars, holderFns);
 styler.generateStyles([selector], vars, fns);
 
-export { customLayoutFns, color };
+export { customLayoutFns, addStyle, getStyle, vars, color };

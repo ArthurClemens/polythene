@@ -1,8 +1,12 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-button-group')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-button-group'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-button-group']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreButtonGroup) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css']));
+}(this, (function (exports,polytheneCoreCss) { 'use strict';
+
+  var vars = {
+    general_styles: true
+  };
 
   var classes = {
     component: "pe-button-group"
@@ -38,17 +42,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreButtonGroup.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreButtonGroup.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreButtonGroup.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreButtonGroup.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

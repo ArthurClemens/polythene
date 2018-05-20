@@ -1,5 +1,35 @@
+import { vars } from 'polythene-theme';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-base-spinner';
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  general_styles: true,
+
+  size_small: 3 * vars.grid_unit_component,
+  size_regular: 4 * vars.grid_unit_component,
+  size_medium: 5 * vars.grid_unit_component,
+  size_large: 6 * vars.grid_unit_component,
+  size_fab: 7 * vars.grid_unit_component,
+
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_timing_function: "ease-in-out",
+  animation_hide_css: "opacity: 0;",
+  animation_show_css: "opacity: 1;",
+
+  raisedSize: function raisedSize(size) {
+    var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
+    var paddedSize = size + padding * 2;
+    return { padding: padding, paddedSize: paddedSize };
+  },
+
+  color_light_raised_background: rgba(vars.color_light_background),
+  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
+};
 
 var classes = {
   component: "pe-spinner",
@@ -156,7 +186,7 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   return _defineProperty$1({}, "color_" + tint + "_raised_background", function (selector, vars$$1) {
     return [sel$1(selector, {
-      "&.pe-spinner--raised": {
+      ".pe-spinner--raised": {
         backgroundColor: vars$$1["color_" + tint + "_raised_background"]
       }
     })];
@@ -193,13 +223,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, style, layout, color };
+export { addStyle, getStyle, style, layout, color, vars$1 as vars };

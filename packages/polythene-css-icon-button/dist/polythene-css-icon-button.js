@@ -1,8 +1,54 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-button'), require('polythene-core-icon-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-button', 'polythene-core-icon-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-button'],global['polythene-core-icon-button']));
-}(this, (function (exports,polytheneCoreCss,polytheneCssButton,polytheneCoreIconButton) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css'), require('polythene-css-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css', 'polythene-css-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css'],global['polythene-css-button']));
+}(this, (function (exports,polytheneTheme,polytheneCoreCss,polytheneCssButton) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = {
+    general_styles: true,
+
+    animation_duration: polytheneTheme.vars.animation_duration,
+    label_font_size: 16,
+    label_font_weight: 400,
+    label_line_height: 20,
+    label_padding_after: 0,
+    label_padding_before: polytheneTheme.vars.grid_unit * 1, // 4
+    label_text_transform: "initial",
+    label_top_margin_factor: 1 / 12, // align with icon
+    padding: (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2, // 12
+    padding_compact: (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 3, // 8
+
+    color_background: "transparent", // only specify this variable to get all 2 states
+    // theme specific background colors may be set in theme; disabled by default
+    // color_light_background:    "none",
+    // color_dark_background:     "none",
+    // color_light_hover:         "inherit",
+    // color_dark_hover:          "inherit",
+    // color_light_label_hover:   "inherit",
+    // color_dark_label_hover:    "inherit",
+
+    color_light: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_label: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium,
+    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+
+    color_dark: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_label: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_disabled: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium,
+    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover_background:         "currentColor",
+    // color_dark_hover_background:          "currentColor",
+  };
 
   var classes = {
     component: "pe-button pe-icon-button",
@@ -257,17 +303,18 @@
   var selector = "." + classes.component.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreIconButton.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreIconButton.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreIconButton.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreIconButton.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

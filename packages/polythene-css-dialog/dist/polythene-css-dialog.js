@@ -1,8 +1,36 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css'), require('polythene-core-dialog')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css', 'polythene-core-dialog'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css'],global['polythene-core-dialog']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss,polytheneCoreDialog) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
+}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var vars = {
+    general_styles: true,
+
+    animation_delay: "0s",
+    animation_duration: ".220s",
+    animation_hide_css: "opacity: 0;",
+    animation_show_css: "opacity: 1;",
+    animation_timing_function: "ease-in-out",
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
+    padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
+    position: "fixed",
+
+    color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+    color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
+
+    color_light_background: rgba(polytheneTheme.vars.color_light_background),
+    color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
+
+    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
+  };
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -245,17 +273,18 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreDialog.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreDialog.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreDialog.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreDialog.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

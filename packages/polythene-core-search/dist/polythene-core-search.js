@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-search",
@@ -68,38 +68,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    font_size_input: 20,
-    full_width_border_radius: 0,
-    full_width_height: 56,
-    full_width_input_right_padding: 0,
-    full_width_side_margin: 0,
-    full_width_side_padding: 8,
-    inset_border_radius: polytheneTheme.vars.unit_block_border_radius,
-    inset_height: 48,
-    inset_input_indent: 16,
-    inset_input_right_padding: 0,
-    inset_side_padding: 0,
-    line_height_input: 20,
-
-    color_light_label_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_input_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_background: rgba(polytheneTheme.vars.color_light_background),
-
-    color_dark_label_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_input_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
-  };
-
   exports.coreSearch = search;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

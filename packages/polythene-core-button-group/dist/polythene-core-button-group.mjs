@@ -24,8 +24,4 @@ var buttonGroup = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var vars = {
-  general_styles: true
-};
-
-export { buttonGroup as coreButtonGroup, vars };
+export { buttonGroup as coreButtonGroup };

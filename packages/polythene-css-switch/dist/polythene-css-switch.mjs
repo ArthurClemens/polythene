@@ -1,7 +1,64 @@
-import { layout } from 'polythene-css-selection-control';
 import { vars } from 'polythene-theme';
+import { vars as vars$1, layout } from 'polythene-css-selection-control';
+import { vars as vars$2 } from 'polythene-css-icon-button';
 import { mixin, styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-core-switch';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$3 = _extends({}, vars$1, {
+  general_styles: true,
+
+  animation_duration: vars.animation_duration,
+  hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2, // 12
+  icon_button_padding: vars$2.padding,
+  padding: vars.grid_unit_component,
+  thumb_size: 20,
+  track_height: 14,
+  track_length: 36,
+
+  color_light_thumb_on: rgba(vars.color_primary),
+  color_light_thumb_off: "#f1f1f1",
+  color_light_thumb_disabled: "#eee",
+  color_light_wash_on: rgba(vars.color_primary, vars.blend_light_background_active),
+  color_light_wash_off: vars$2.color_light_wash,
+
+  color_light_track_on: rgba(vars.color_primary_faded),
+  color_light_track_on_opacity: .55,
+  color_light_track_off: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_light_track_off_opacity: .55,
+  color_light_track_disabled: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_track_disabled_opacity: 1,
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_light_icon_on:                   "currentcolor",
+  // color_light_icon_off:                  "currentcolor",
+
+  // color_light_focus_on and so on taken from selectionControlVars
+
+  color_dark_thumb_on: rgba(vars.color_primary),
+  color_dark_thumb_off: "#bdbdbd",
+  color_dark_thumb_disabled: "#555",
+  color_dark_wash_on: rgba(vars.color_primary, vars.blend_dark_background_active),
+  color_dark_wash_off: vars$2.color_dark_wash,
+
+  color_dark_track_on: rgba(vars.color_primary_faded, vars.blend_dark_text_tertiary), // or "#5a7f7c"
+  color_dark_track_on_opacity: 9,
+  color_dark_track_off: "#717171",
+  color_dark_track_off_opacity: .55,
+  color_dark_track_disabled: "#717171",
+  color_dark_track_disabled_opacity: .3
+
+  // icon color may be set in theme; default "currentcolor"
+  // color_dark_icon_on:                    "currentcolor"
+  // color_dark_icon_off:                   "currentcolor"
+
+  // color_dark_focus_on and so on taken from selectionControlVars
+});
 
 var classes = {
   component: "pe-switch-control",
@@ -12,7 +69,7 @@ var classes = {
   track: "pe-switch-control__track"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -201,13 +258,13 @@ var varFns = {
 };
 
 var withCreateSizeVar = function withCreateSizeVar(vars$$1) {
-  return vars$$1.thumb_size || vars$$1.track_height || vars$$1.track_length || vars$$1.label_height || vars$$1.icon_button_padding ? _extends({}, vars$$1, {
+  return vars$$1.thumb_size || vars$$1.track_height || vars$$1.track_length || vars$$1.label_height || vars$$1.icon_button_padding ? _extends$1({}, vars$$1, {
     createSize: true
   }) : vars$$1;
 };
 
 var layout$1 = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
+  var allVars = _extends$1({}, componentVars, customVars);
   var currentVars = withCreateSizeVar(customVars ? customVars : allVars);
   return layout(selector, componentVars, customVars, "checkbox").concat(Object.keys(currentVars).map(function (v) {
     return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
@@ -216,7 +273,7 @@ var layout$1 = (function (selector, componentVars, customVars) {
   }));
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -433,14 +490,14 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref3;
 };
 
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends$2({}, generalFns, tintFns("light"));
+var darkTintFns = _extends$2({}, generalFns, tintFns("dark"));
 
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
 
 var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-  var allVars = _extends$1({}, componentVars, customVars);
+  var allVars = _extends$2({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   return Object.keys(currentVars).map(function (v) {
     var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
@@ -477,13 +534,13 @@ var fns = [layout$1, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$3, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$3, customVars, fns) : styler.createStyleSheets([selector], vars$3, fns);
 };
 
-styler.generateStyles([selector], vars$1, fns);
+styler.generateStyles([selector], vars$3, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars$3 as vars };

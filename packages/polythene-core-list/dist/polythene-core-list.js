@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -113,29 +113,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    border_width_bordered: 1,
-    border_width_stacked: 1,
-    padding: polytheneTheme.vars.grid_unit_component, // vertical padding
-    padding_compact: polytheneTheme.vars.grid_unit_component * 3 / 4,
-
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
-
-    // background color may be set in theme; disabled by default
-    // color_light_background: "inherit",
-    // color_dark_background:  "inherit"
-  };
-
   exports.coreList = list;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

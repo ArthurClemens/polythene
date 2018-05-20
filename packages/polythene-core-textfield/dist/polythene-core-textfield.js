@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-textfield",
@@ -336,74 +336,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    dense_floating_label_top: 10,
-    dense_floating_label_vertical_spacing_bottom: 4, // 8 minus natural label height padding (1)
-    dense_floating_label_vertical_spacing_top: 23, // 12 + 8 + 4 minus natural label height padding (1)
-    dense_font_size_floating_label: 13,
-    dense_font_size_input: 13,
-    dense_full_width_font_size_input: 13,
-    dense_full_width_input_padding_h: 16,
-    dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
-    floating_label_animation_duration: ".12s",
-    floating_label_top: 14,
-    floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
-    floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
-    font_size_error: 12,
-    font_size_floating_label: 12,
-    font_size_input: 16,
-    full_width_input_padding_h: 20,
-    full_width_input_padding_v: 18, // 20 minus natural label height padding (2)
-    input_border_width: 1,
-    input_focus_border_animation_duration: polytheneTheme.vars.animation_duration,
-    input_focus_border_width: 2,
-    input_padding_h: 0,
-    input_padding_v: 7,
-    line_height_input: 20,
-    margin_top_error_message: 6,
-    vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
-    vertical_spacing_top: 6, // 8 minus natural label height padding (1)
-
-    color_light_input_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_input_background: "transparent", // only used to "remove" autofill color
-    color_light_highlight_text: rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_light_text_primary),
-    color_light_input_bottom_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_light_input_error_text: rgba("221, 44, 0"),
-    color_light_input_error_border: rgba("221, 44, 0"),
-    color_light_input_placeholder: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_label_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_disabled_label_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_readonly_label_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_help_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_required_symbol: rgba("221, 44, 0"),
-    color_light_focus_border: rgba(polytheneTheme.vars.color_primary),
-    color_light_counter_ok_border: rgba(polytheneTheme.vars.color_primary),
-
-    color_dark_input_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_input_background: "transparent", // only used to "remove" autofill color
-    color_dark_highlight_text: rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_input_bottom_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-    color_dark_input_error_text: rgba("222, 50, 38"),
-    color_dark_input_error_border: rgba("222, 50, 38"),
-    color_dark_input_placeholder: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_label_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_disabled_label_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_readonly_label_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_help_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_required_symbol: rgba("221, 44, 0"),
-    color_dark_focus_border: rgba(polytheneTheme.vars.color_primary),
-    color_dark_counter_ok_border: rgba(polytheneTheme.vars.color_primary)
-  };
-
   exports.coreTextField = textfield;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

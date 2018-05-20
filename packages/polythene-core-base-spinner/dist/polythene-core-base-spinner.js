@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-spinner",
@@ -103,38 +103,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    size_small: 3 * polytheneTheme.vars.grid_unit_component,
-    size_regular: 4 * polytheneTheme.vars.grid_unit_component,
-    size_medium: 5 * polytheneTheme.vars.grid_unit_component,
-    size_large: 6 * polytheneTheme.vars.grid_unit_component,
-    size_fab: 7 * polytheneTheme.vars.grid_unit_component,
-
-    animation_delay: "0s",
-    animation_duration: ".220s",
-    animation_timing_function: "ease-in-out",
-    animation_hide_css: "opacity: 0;",
-    animation_show_css: "opacity: 1;",
-
-    raisedSize: function raisedSize(size) {
-      var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
-      var paddedSize = size + padding * 2;
-      return { padding: padding, paddedSize: paddedSize };
-    },
-
-    color_light_raised_background: rgba(polytheneTheme.vars.color_light_background),
-    color_dark_raised_background: rgba(polytheneTheme.vars.color_light_background) // also use light background with dark tone
-  };
-
   exports.coreBaseSpinner = spinner;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

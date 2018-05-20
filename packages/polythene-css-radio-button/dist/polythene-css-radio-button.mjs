@@ -1,6 +1,6 @@
-import { layout, color } from 'polythene-css-selection-control';
+import { layout, color, vars } from 'polythene-css-selection-control';
+export { vars } from 'polythene-css-selection-control';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-radio-button';
 
 var classes = {
   component: "pe-radio-control"

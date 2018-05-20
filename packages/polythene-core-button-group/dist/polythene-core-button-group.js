@@ -30,12 +30,7 @@
     createContent: createContent
   });
 
-  var vars = {
-    general_styles: true
-  };
-
   exports.coreButtonGroup = buttonGroup;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

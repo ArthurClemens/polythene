@@ -1,5 +1,26 @@
+import { vars } from 'polythene-theme';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-list';
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$1 = {
+  general_styles: true,
+
+  border_width_bordered: 1,
+  border_width_stacked: 1,
+  padding: vars.grid_unit_component, // vertical padding
+  padding_compact: vars.grid_unit_component * 3 / 4,
+
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
+};
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -201,13 +222,13 @@ var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars$1 as vars };

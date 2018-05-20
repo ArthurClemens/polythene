@@ -1,7 +1,24 @@
 import { vars } from 'polythene-theme';
-import { customLayoutFns, color } from 'polythene-css-notification';
+import { vars as vars$1, customLayoutFns, color } from 'polythene-css-notification';
 import { flex, styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-core-snackbar';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$2 = _extends({}, vars$1, {
+  animation_hide_css: "",
+  animation_show_css: "",
+  border_radius: 0,
+  max_width: 568,
+  min_height: 0,
+  min_width: 288,
+
+  color_dark_background: rgba(vars.color_dark_background)
+});
 
 var notificationClasses = {
   component: "pe-notification",
@@ -21,9 +38,9 @@ var notificationClasses = {
   visible: "pe-notification--visible"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var classes = _extends({}, notificationClasses, {
+var classes = _extends$1({}, notificationClasses, {
   component: "pe-notification pe-snackbar",
 
   // elements
@@ -34,7 +51,7 @@ var classes = _extends({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -51,7 +68,7 @@ var breakpoint = function breakpoint(breakpointSel) {
 var breakpointTabletPortraitUp = breakpoint("@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)");
 
 var createVarFns = function createVarFns(isCustom) {
-  return _extends$1({}, isCustom && customLayoutFns, {
+  return _extends$2({}, isCustom && customLayoutFns, {
     general_styles: function general_styles(selector) {
       return [sel(selector, {
         width: "100%",
@@ -93,7 +110,7 @@ var createVarFns = function createVarFns(isCustom) {
 };
 
 var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends$1({}, componentVars, customVars);
+  var allVars = _extends$2({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   var isCustom = !!customVars;
   var varFns = createVarFns(isCustom);
@@ -108,60 +125,7 @@ var color$1 = (function (selector, componentVars, customVars) {
   return color(selector, componentVars, customVars);
 });
 
-// const sel = (selector, o) => ({
-//   [selector]: o
-// });
-
-// const generalFns = ({
-//   general_styles: selector => [], // eslint-disable-line no-unused-vars
-// });
-
-// const tintFns = tint => ({
-//   ["color_" + tint + "_text"]: (selector, vars) => [
-//     sel(selector, {
-//       " .pe-notification__content": {
-//         color: vars["color_" + tint + "_text"],
-//       }
-//     })
-//   ],
-//   ["color_" + tint + "_background"]: (selector, vars) => [
-//     sel(selector, {
-//       " .pe-notification__content": {
-//         background: vars["color_" + tint + "_background"]
-//       }
-//     })
-//   ]
-// });
-
-// const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-// const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
-
-// const createStyle = (selector, componentVars, customVars, tint) => {
-//   const allVars = {...componentVars, ...customVars};
-//   const currentVars = customVars
-//     ? customVars
-//     : allVars;
-//   return Object.keys(currentVars).map(v => {
-//     const varFns = tint === "light"
-//       ? lightTintFns
-//       : darkTintFns;
-//     return varFns[v] !== undefined 
-//       ? varFns[v](selector, allVars)
-//       : null;
-//   }).filter(s => s);
-// };
-
-// const style = (scopes, selector, componentVars, customVars, tint) => {
-//   const selectors = scopes.map(s => s + selector).join(",");
-//   return createStyle(selectors, componentVars, customVars, tint);
-// };
-
-// export default (selector, componentVars, customVars) => [
-//   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-//   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-// ];
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -188,7 +152,7 @@ var varFns = {
 };
 
 var holderLayout = (function (selector, componentVars, customVars) {
-  var allVars = _extends$2({}, componentVars, customVars);
+  var allVars = _extends$3({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   return Object.keys(currentVars).map(function (v) {
     return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
@@ -204,14 +168,14 @@ var holderFns = [holderLayout];
 var holderSelector = "." + classes.holder.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$2, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([holderSelector], vars$1, holderFns).concat(styler.createStyleSheets([selector], vars$1, fns));
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$2, customVars, fns) : styler.createStyleSheets([holderSelector], vars$2, holderFns).concat(styler.createStyleSheets([selector], vars$2, fns));
 };
 
-styler.generateStyles([holderSelector], vars$1, holderFns);
-styler.generateStyles([selector], vars$1, fns);
+styler.generateStyles([holderSelector], vars$2, holderFns);
+styler.generateStyles([selector], vars$2, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, vars$2 as vars };

@@ -1,6 +1,6 @@
 import { vars } from "polythene-theme";
-import { vars as selectionControlVars } from "polythene-core-selection-control";
-import { vars as iconButtonVars } from "polythene-core-icon-button";
+import { vars as selectionControlVars } from "polythene-css-selection-control";
+import { vars as iconButtonVars } from "polythene-css-icon-button";
 
 const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;

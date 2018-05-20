@@ -1,8 +1,5 @@
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL, deprecation } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
-import { vars } from 'polythene-theme';
-import { vars as vars$1 } from 'polythene-core-button';
-import { vars as vars$2 } from 'polythene-core-icon-button';
 
 var buttonClasses = {
     base: "pe-button",
@@ -449,62 +446,4 @@ var scrollButton = /*#__PURE__*/Object.freeze({
   createProps: createProps$2
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var fontSize = vars$1.font_size;
-var tab_label_line_height = 1.1 * fontSize;
-var tab_height = 48;
-var scroll_button_size = tab_height;
-
-var vars$3 = {
-  general_styles: true,
-
-  animation_duration: vars$1.animation_duration,
-  indicator_slide_speed: 600, // px per second
-  label_max_width: 264,
-  menu_tab_height: 44,
-  menu_tab_icon_label_height: 44,
-  scroll_button_fade_delay: ".25s",
-  scroll_button_fade_duration: ".2s",
-  scroll_button_opacity: .7,
-  scroll_button_size: scroll_button_size,
-  scrollbar_offset: 0,
-  tab_content_padding_v: 12,
-  tab_height: tab_height,
-  tab_icon_label_height: 72,
-  tab_icon_label_icon_spacing: 7,
-  tab_indicator_height: 2,
-  tab_label_line_height: tab_label_line_height,
-  tab_label_transition_property: "opacity, color, backgroundColor",
-  tab_label_vertical_offset: tab_label_line_height - fontSize,
-  tab_max_width: "initial",
-  tab_menu_content_padding_v: 6,
-  tab_min_width: 72,
-  tab_min_width_tablet: 160,
-  tabs_indent: 0,
-
-  color_light: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_light_selected: rgba(vars.color_primary),
-  color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba(vars.color_primary),
-  color_light_icon: vars$2.color_light,
-
-  color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
-  color_dark_selected: rgba(vars.color_primary),
-  color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba(vars.color_primary),
-  color_dark_icon: vars$2.color_dark
-
-  // hover colors may be set in theme; disabled by default
-
-  // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  // color_light_hover_background:         "transparent",
-  //
-  // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  // color_dark_hover_background:          "transparent",
-};
-
-export { tabs as coreTabs, tab as coreTab, scrollButton as coreScrollButton, vars$3 as vars };
+export { tabs as coreTabs, tab as coreTab, scrollButton as coreScrollButton };

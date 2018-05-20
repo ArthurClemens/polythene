@@ -1,5 +1,4 @@
 import { filterSupportedAttributes, transitionComponent, classForSize } from 'polythene-core';
-import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-spinner",
@@ -100,34 +99,4 @@ var spinner = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  size_small: 3 * vars.grid_unit_component,
-  size_regular: 4 * vars.grid_unit_component,
-  size_medium: 5 * vars.grid_unit_component,
-  size_large: 6 * vars.grid_unit_component,
-  size_fab: 7 * vars.grid_unit_component,
-
-  animation_delay: "0s",
-  animation_duration: ".220s",
-  animation_timing_function: "ease-in-out",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-
-  raisedSize: function raisedSize(size) {
-    var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
-    var paddedSize = size + padding * 2;
-    return { padding: padding, paddedSize: paddedSize };
-  },
-
-  color_light_raised_background: rgba(vars.color_light_background),
-  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
-};
-
-export { spinner as coreBaseSpinner, vars$1 as vars };
+export { spinner as coreBaseSpinner };

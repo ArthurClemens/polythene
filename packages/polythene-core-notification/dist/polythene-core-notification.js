@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneUtilities,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities'], factory) :
+  (factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities']));
+}(this, (function (exports,polytheneCore,polytheneUtilities) { 'use strict';
 
   var classes = {
     component: "pe-notification",
@@ -200,40 +200,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var buttonPaddingH = 8; // padding, inner text space
-
-  var vars = {
-    general_styles: true,
-
-    animation_delay: "0s",
-    animation_duration: ".3s",
-    animation_hide_css: "opacity: 0;",
-    animation_show_css: "opacity: 1;",
-    animation_timing_function: "ease-in-out",
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    font_size: 14,
-    line_height: 20,
-    min_height: 80,
-    side_padding: 24 - buttonPaddingH,
-    title_multi_padding_v: 20, // 24 - natural line height
-    title_padding_h: buttonPaddingH,
-    title_single_padding_v: 14,
-    width: 288,
-
-    color_light_background: rgba(polytheneTheme.vars.color_light_background),
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_dark_primary),
-
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_light_text_primary)
-  };
-
   exports.coreNotificationInstance = notificationInstance;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
