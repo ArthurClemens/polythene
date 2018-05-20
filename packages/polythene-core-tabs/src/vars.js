@@ -14,7 +14,6 @@ export default {
   general_styles:                   true,
 
   animation_duration:               buttonVars.animation_duration,
-  indicator_slide_min_duration:     ".250s",
   indicator_slide_speed:            600, // px per second
   label_max_width:                  264,
   menu_tab_height:                  44,
@@ -37,9 +36,6 @@ export default {
   tab_min_width:                    72,
   tab_min_width_tablet:             160,
   tabs_indent:                      0,
-  tabs_scroll_delay:                ".15s",
-  tabs_scroll_min_duration:         ".5s",
-  tabs_scroll_speed:                600, // px per second
  
   color_light:                      rgba(vars.color_light_foreground, vars.blend_light_text_regular),
   color_light_selected:             rgba(vars.color_primary),

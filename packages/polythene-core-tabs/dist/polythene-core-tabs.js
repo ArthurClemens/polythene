@@ -1,92 +1,31 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-button'), require('polythene-core-icon-button'), require('polythene-core'), require('polythene-utilities')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-button', 'polythene-core-icon-button', 'polythene-core', 'polythene-utilities'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-button'],global['polythene-core-icon-button'],global['polythene-core'],global['polythene-utilities']));
-}(this, (function (exports,polytheneTheme,polytheneCoreButton,polytheneCoreIconButton,polytheneCore,polytheneUtilities) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var fontSize = polytheneCoreButton.vars.font_size;
-  var tab_label_line_height = 1.1 * fontSize;
-  var tab_height = 48;
-  var scroll_button_size = tab_height;
-
-  var vars = {
-    general_styles: true,
-
-    animation_duration: polytheneCoreButton.vars.animation_duration,
-    indicator_slide_min_duration: ".250s",
-    indicator_slide_speed: 600, // px per second
-    label_max_width: 264,
-    menu_tab_height: 44,
-    menu_tab_icon_label_height: 44,
-    scroll_button_fade_delay: ".25s",
-    scroll_button_fade_duration: ".2s",
-    scroll_button_opacity: .7,
-    scroll_button_size: scroll_button_size,
-    scrollbar_offset: 0,
-    tab_content_padding_v: 12,
-    tab_height: tab_height,
-    tab_icon_label_height: 72,
-    tab_icon_label_icon_spacing: 7,
-    tab_indicator_height: 2,
-    tab_label_line_height: tab_label_line_height,
-    tab_label_transition_property: "opacity, color, backgroundColor",
-    tab_label_vertical_offset: tab_label_line_height - fontSize,
-    tab_max_width: "initial",
-    tab_menu_content_padding_v: 6,
-    tab_min_width: 72,
-    tab_min_width_tablet: 160,
-    tabs_indent: 0,
-    tabs_scroll_delay: ".15s",
-    tabs_scroll_min_duration: ".5s",
-    tabs_scroll_speed: 600, // px per second
-
-    color_light: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
-    color_light_selected: rgba(polytheneTheme.vars.color_primary),
-    color_light_selected_background: "transparent",
-    color_light_tab_indicator: rgba(polytheneTheme.vars.color_primary),
-    color_light_icon: polytheneCoreIconButton.vars.color_light,
-
-    color_dark: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
-    color_dark_selected: rgba(polytheneTheme.vars.color_primary),
-    color_dark_selected_background: "transparent",
-    color_dark_tab_indicator: rgba(polytheneTheme.vars.color_primary),
-    color_dark_icon: polytheneCoreIconButton.vars.color_dark
-
-    // hover colors may be set in theme; disabled by default
-
-    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-    // color_light_hover_background:         "transparent",
-    //
-    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-    // color_dark_hover_background:          "transparent",
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-utilities'), require('polythene-theme'), require('polythene-core-button'), require('polythene-core-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-utilities', 'polythene-theme', 'polythene-core-button', 'polythene-core-icon-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core'],global['polythene-utilities'],global['polythene-theme'],global['polythene-core-button'],global['polythene-core-icon-button']));
+}(this, (function (exports,polytheneCore,polytheneUtilities,polytheneTheme,polytheneCoreButton,polytheneCoreIconButton) { 'use strict';
 
   var buttonClasses = {
-    base: "pe-button",
-    component: "pe-button pe-text-button",
-    row: "pe-button-row",
+      base: "pe-button",
+      component: "pe-button pe-text-button",
+      row: "pe-button-row",
 
-    // elements    
-    content: "pe-button__content",
-    focus: "pe-button__focus",
-    label: "pe-button__label",
-    wash: "pe-button__wash",
-    dropdown: "pe-button__dropdown",
+      // elements      
+      content: "pe-button__content",
+      focus: "pe-button__focus",
+      label: "pe-button__label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
 
-    // states    
-    border: "pe-button--border",
-    disabled: "pe-button--disabled",
-    focused: "pe-button--focus",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected",
-    hasDropdown: "pe-button--dropdown",
-    highLabel: "pe-button--high-label",
-    extraWide: "pe-button--extra-wide"
+      // states      
+      border: "pe-button--border",
+      disabled: "pe-button--disabled",
+      focused: "pe-button--focus",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      extraWide: "pe-button--extra-wide",
+      separatorAtStart: "pe-button--separator-start"
   };
 
   var classes = {
@@ -120,6 +59,11 @@
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var SCROLL_SPEED = 600; // px per second
+  var SCROLL_DELAY = .15; // seconds
+  var SCROLL_MIN_DURATION = .5; // seconds
+  var INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
 
   var whenCreateDone = function whenCreateDone() {
     return Promise.resolve();
@@ -170,13 +114,13 @@
     var left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
     var currentLeft = scroller.scrollLeft;
     if (currentLeft !== left) {
-      var duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
-      var delaySeconds = parseFloat(vars.tabs_scroll_delay || 0);
+      var duration = Math.abs(currentLeft - left) / SCROLL_SPEED;
+      var delaySeconds = SCROLL_DELAY;
       setTimeout(function () {
         polytheneUtilities.scrollTo({
           element: scroller,
           to: left,
-          duration: Math.max(parseFloat(vars.tabs_scroll_min_duration || 0), duration),
+          duration: Math.max(SCROLL_MIN_DURATION, duration),
           direction: "horizontal"
         }).then(function () {
           return updateScrollButtons(state);
@@ -205,9 +149,9 @@
     var translateX = state.isRTL ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
     var scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
     var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
-    var duration = animate ? vars.indicator_slide_min_duration : 0;
+    var duration = animate ? INDICATOR_SLIDE_MIN_DURATION : 0;
     var style = state.tabIndicatorEl.style;
-    style["transition-duration"] = duration;
+    style["transition-duration"] = duration + "s";
     style.transform = transformCmd;
   };
 
@@ -504,6 +448,64 @@
     onMount: onMount$2,
     createProps: createProps$2
   });
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
+  };
+
+  var fontSize = polytheneCoreButton.vars.font_size;
+  var tab_label_line_height = 1.1 * fontSize;
+  var tab_height = 48;
+  var scroll_button_size = tab_height;
+
+  var vars = {
+    general_styles: true,
+
+    animation_duration: polytheneCoreButton.vars.animation_duration,
+    indicator_slide_speed: 600, // px per second
+    label_max_width: 264,
+    menu_tab_height: 44,
+    menu_tab_icon_label_height: 44,
+    scroll_button_fade_delay: ".25s",
+    scroll_button_fade_duration: ".2s",
+    scroll_button_opacity: .7,
+    scroll_button_size: scroll_button_size,
+    scrollbar_offset: 0,
+    tab_content_padding_v: 12,
+    tab_height: tab_height,
+    tab_icon_label_height: 72,
+    tab_icon_label_icon_spacing: 7,
+    tab_indicator_height: 2,
+    tab_label_line_height: tab_label_line_height,
+    tab_label_transition_property: "opacity, color, backgroundColor",
+    tab_label_vertical_offset: tab_label_line_height - fontSize,
+    tab_max_width: "initial",
+    tab_menu_content_padding_v: 6,
+    tab_min_width: 72,
+    tab_min_width_tablet: 160,
+    tabs_indent: 0,
+
+    color_light: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_selected: rgba(polytheneTheme.vars.color_primary),
+    color_light_selected_background: "transparent",
+    color_light_tab_indicator: rgba(polytheneTheme.vars.color_primary),
+    color_light_icon: polytheneCoreIconButton.vars.color_light,
+
+    color_dark: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
+    color_dark_selected: rgba(polytheneTheme.vars.color_primary),
+    color_dark_selected_background: "transparent",
+    color_dark_tab_indicator: rgba(polytheneTheme.vars.color_primary),
+    color_dark_icon: polytheneCoreIconButton.vars.color_dark
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+    // color_light_hover_background:         "transparent",
+    //
+    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+    // color_dark_hover_background:          "transparent",
+  };
 
   exports.coreTabs = tabs;
   exports.coreTab = tab;
