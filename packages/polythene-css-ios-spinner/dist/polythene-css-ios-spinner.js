@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-ios-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-ios-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-ios-spinner']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreIosSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-base-spinner'), require('polythene-core'), require('polythene-core-css'), require('polythene-core-ios-spinner')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-base-spinner', 'polythene-core', 'polythene-core-css', 'polythene-core-ios-spinner'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-base-spinner'],global['polythene-core'],global['polythene-core-css'],global['polythene-core-ios-spinner']));
+}(this, (function (exports,polytheneCssBaseSpinner,polytheneCore,polytheneCoreCss,polytheneCoreIosSpinner) { 'use strict';
 
   var classes = {
     component: "pe-ios-spinner",
@@ -37,11 +37,11 @@
   var positionBlades = function positionBlades(vars) {
     return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
       // reverse to improve performance on iOS
-      var delay = -1 / 12 * i * vars.animation_duration_secs;
+      var delay = -1 / 12 * i * polytheneCore.styleDurationToMs(vars.rotation_animation_duration);
       var rotation = 360 - 360 / 12 * i;
       return _defineProperty({}, " .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")", {
         transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
-        animation: "iosSpinnerFade " + vars.animation_duration_secs + "s " + delay + "s linear infinite"
+        animation: "iosSpinnerFade " + vars.rotation_animation_duration + " " + delay + "ms linear infinite"
       });
     });
   };
@@ -69,7 +69,7 @@
         "@keyframes iosSpinnerFade": kfFade()
       })];
     },
-    animation_duration_secs: function animation_duration_secs(selector, vars) {
+    rotation_animation_duration: function rotation_animation_duration(selector, vars) {
       return [sel(selector, {
         " .pe-ios-spinner__blades": [positionBlades(vars)]
       })];
@@ -79,11 +79,11 @@
   var layout = (function (selector, componentVars, customVars) {
     var allVars = _extends({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
+    return polytheneCssBaseSpinner.layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
       return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
     }).filter(function (s) {
       return s;
-    });
+    }));
   });
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -134,8 +134,9 @@
   };
 
   var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+    return polytheneCssBaseSpinner.color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+    );
   });
 
   var fns = [layout, color];

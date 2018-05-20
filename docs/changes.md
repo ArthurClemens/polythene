@@ -29,7 +29,7 @@ CSS creation has been optimized, specifically when creating themed CSS. When usi
   * Bordered button has a default medium gray border color
 * Slider:
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
-* Tabs:
+* Spinners and Tabs:
   * CSS style variables for animation durations/delays have been changed to strings that include the unit ("ms" or "s")
 
 

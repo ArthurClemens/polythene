@@ -2,8 +2,9 @@ import stream from "mithril/stream";
 
 const STEP_DURATION = 2000;
 
-export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, className }) => ({
+export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, className, permanent=true }) => ({
   oninit: vnode => {
+    const show = stream(false);
     const start = stream(null);
     const percentage = stream(0);
     const step = timestamp => {
@@ -17,13 +18,15 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, cl
     };
     Object.assign(vnode.state, {
       start,
+      show,
       step,
       percentage,
-      redrawOnUpdate: stream.merge([start, percentage]) // update React
+      redrawOnUpdate: stream.merge([show, start, percentage]) // update React
     });
   },
   view: vnode => {
     const state = vnode.state;
+    const show = state.show();
     const percentage = state.percentage();
     return h("div",
       {
@@ -31,9 +34,15 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, cl
       },
       [
         h(RaisedButton, {
-          label: "Run",
+          label: permanent
+            ? "Run"
+            : "Toggle",
           events: {
-            [k.onclick]: () => (state.start(null), window.requestAnimationFrame(state.step))
+            [k.onclick]: () => (
+              state.show(!show),
+              state.start(null),
+              window.requestAnimationFrame(state.step)
+            )
           }
         }),
         h("div",
@@ -55,7 +64,9 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, cl
               h(Spinner, Object.assign(
                 {},
                 {
-                  show: true,
+                  show: permanent
+                    ? true
+                    : show,
                   percentage,
                   className
                 },

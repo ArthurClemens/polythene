@@ -1,3 +1,4 @@
+import { layout, color } from 'polythene-css-material-design-spinner';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-material-design-progress-spinner';
 
@@ -45,68 +46,23 @@ var varFns = {
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  progress_animation_duration: function progress_animation_duration(selector, vars$$1) {
     return [sel(selector, {
       " .pe-md-progress-spinner__animation": {
-        animationDuration: vars$$1.animation_duration
-      }
-    })];
-  },
-  border_width_small: function border_width_small(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--small": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars$$1.border_width_small + "px"
-        }
-      }
-    })];
-  },
-  border_width_regular: function border_width_regular(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--regular": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars$$1.border_width_regular + "px"
-        }
-      }
-    })];
-  },
-  border_width_medium: function border_width_medium(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--medium": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars$$1.border_width_medium + "px"
-        }
-      }
-    })];
-  },
-  border_width_large: function border_width_large(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--large": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars$$1.border_width_large + "px"
-        }
-      }
-    })];
-  },
-  border_width_fab: function border_width_fab(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--fab": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars$$1.border_width_fab + "px"
-        }
+        animationDuration: vars$$1.progress_animation_duration
       }
     })];
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
+var layout$1 = (function (selector, componentVars, customVars) {
   var allVars = _extends({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
+  return layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
     return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
   }).filter(function (s) {
     return s;
-  });
+  }));
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -156,12 +112,13 @@ var style = function style(scopes, selector, componentVars, customVars, tint) {
   return createStyle(selectors, componentVars, customVars, tint);
 };
 
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+var color$1 = (function (selector, componentVars, customVars) {
+  return color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+  );
 });
 
-var fns = [layout, color];
+var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {

@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-material-design-progress-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-material-design-progress-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-material-design-progress-spinner']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreMaterialDesignProgressSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-material-design-spinner'), require('polythene-core-css'), require('polythene-core-material-design-progress-spinner')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-material-design-spinner', 'polythene-core-css', 'polythene-core-material-design-progress-spinner'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-material-design-spinner'],global['polythene-core-css'],global['polythene-core-material-design-progress-spinner']));
+}(this, (function (exports,polytheneCssMaterialDesignSpinner,polytheneCoreCss,polytheneCoreMaterialDesignProgressSpinner) { 'use strict';
 
   var classes = {
     component: "pe-md-progress-spinner",
@@ -48,55 +48,10 @@
         }
       })];
     },
-    animation_duration: function animation_duration(selector, vars) {
+    progress_animation_duration: function progress_animation_duration(selector, vars) {
       return [sel(selector, {
         " .pe-md-progress-spinner__animation": {
-          animationDuration: vars.animation_duration
-        }
-      })];
-    },
-    border_width_small: function border_width_small(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--small": {
-          " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-            borderWidth: vars.border_width_small + "px"
-          }
-        }
-      })];
-    },
-    border_width_regular: function border_width_regular(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--regular": {
-          " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-            borderWidth: vars.border_width_regular + "px"
-          }
-        }
-      })];
-    },
-    border_width_medium: function border_width_medium(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--medium": {
-          " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-            borderWidth: vars.border_width_medium + "px"
-          }
-        }
-      })];
-    },
-    border_width_large: function border_width_large(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--large": {
-          " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-            borderWidth: vars.border_width_large + "px"
-          }
-        }
-      })];
-    },
-    border_width_fab: function border_width_fab(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--fab": {
-          " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-            borderWidth: vars.border_width_fab + "px"
-          }
+          animationDuration: vars.progress_animation_duration
         }
       })];
     }
@@ -105,11 +60,11 @@
   var layout = (function (selector, componentVars, customVars) {
     var allVars = _extends({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
+    return polytheneCssMaterialDesignSpinner.layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
       return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
     }).filter(function (s) {
       return s;
-    });
+    }));
   });
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -160,8 +115,9 @@
   };
 
   var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+    return polytheneCssMaterialDesignSpinner.color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+    );
   });
 
   var fns = [layout, color];

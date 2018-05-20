@@ -17,4 +17,4 @@ export const getStyle = (customSelector, customVars) =>
 
 styler.generateStyles([selector], vars, fns);
 
-export { style };
+export { style, layout, color };

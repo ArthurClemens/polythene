@@ -156,7 +156,6 @@
   var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
     var items = [];
     var stepWithValue = value / stepSize;
-    console.log("stepSize", stepSize, "value", value, "stepWithValue", stepWithValue);
     var s = 0;
     while (s < stepCount + 1) {
       items.push(h("div", {
@@ -268,7 +267,6 @@
     var range = state.max - state.min;
     var stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
-    console.log("value", state.value(), "state.stepSize", state.stepSize);
     var onStartTrack = function onStartTrack(e) {
       return startTrack(state, attrs, e);
     };

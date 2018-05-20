@@ -1,3 +1,5 @@
+import { layout, color } from 'polythene-css-base-spinner';
+import { styleDurationToMs } from 'polythene-core';
 import { styler } from 'polythene-core-css';
 import { vars } from 'polythene-core-ios-spinner';
 
@@ -34,11 +36,11 @@ var kfFade = function kfFade() {
 var positionBlades = function positionBlades(vars$$1) {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
     // reverse to improve performance on iOS
-    var delay = -1 / 12 * i * vars$$1.animation_duration_secs;
+    var delay = -1 / 12 * i * styleDurationToMs(vars$$1.rotation_animation_duration);
     var rotation = 360 - 360 / 12 * i;
     return _defineProperty({}, " .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")", {
       transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
-      animation: "iosSpinnerFade " + vars$$1.animation_duration_secs + "s " + delay + "s linear infinite"
+      animation: "iosSpinnerFade " + vars$$1.rotation_animation_duration + " " + delay + "ms linear infinite"
     });
   });
 };
@@ -66,21 +68,21 @@ var varFns = {
       "@keyframes iosSpinnerFade": kfFade()
     })];
   },
-  animation_duration_secs: function animation_duration_secs(selector, vars$$1) {
+  rotation_animation_duration: function rotation_animation_duration(selector, vars$$1) {
     return [sel(selector, {
       " .pe-ios-spinner__blades": [positionBlades(vars$$1)]
     })];
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
+var layout$1 = (function (selector, componentVars, customVars) {
   var allVars = _extends({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
+  return layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
     return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
   }).filter(function (s) {
     return s;
-  });
+  }));
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -130,12 +132,13 @@ var style = function style(scopes, selector, componentVars, customVars, tint) {
   return createStyle(selectors, componentVars, customVars, tint);
 };
 
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+var color$1 = (function (selector, componentVars, customVars) {
+  return color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+  );
 });
 
-var fns = [layout, color];
+var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {

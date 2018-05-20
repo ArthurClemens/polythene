@@ -19,11 +19,11 @@ export default {
   animation_show_css:        "opacity: 1;",
 
   raisedSize: size => {
-    const padding = size * 0.25;
+    const padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
     const paddedSize = size + padding * 2;
     return { padding, paddedSize };
   },
 
   color_light_raised_background: rgba(vars.color_light_background),
-  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
+  color_dark_raised_background:  rgba(vars.color_light_background) // also use light background with dark tone
 };

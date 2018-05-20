@@ -1,3 +1,12 @@
+.pe-md-spinner {
+  transition-property: all
+}
+
+.pe-md-spinner.pe-spinner--raised {
+  position: relative;
+  border-radius: 50%
+}
+
 @keyframes mdSpinnerRotate {
   to {
     transform: rotate(1turn)
@@ -211,30 +220,6 @@
   white-space: nowrap
 }
 
-.pe-md-spinner.pe-spinner--small .pe-md-spinner__circle {
-  border-width: 2.25px
-}
-
-.pe-md-spinner.pe-spinner--regular .pe-md-spinner__circle {
-  border-width: 3px
-}
-
-.pe-md-spinner.pe-spinner--medium .pe-md-spinner__circle {
-  border-width: 3.75px
-}
-
-.pe-md-spinner.pe-spinner--large .pe-md-spinner__circle {
-  border-width: 4.5px
-}
-
-.pe-md-spinner.pe-spinner--fab .pe-md-spinner__circle {
-  border-width: 5.25px
-}
-
-.pe-md-spinner .pe-md-spinner__animation {
-  animation: mdSpinnerRotate 1.568235294117647s linear infinite
-}
-
 @keyframes mdSpinnerFillUnfillRotate {
   12.5% {
     transform: rotate(135deg)
@@ -279,6 +264,30 @@
 
 .pe-md-spinner .pe-md-spinner__layer {
   animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both
+}
+
+.pe-md-spinner.pe-spinner--fab .pe-md-spinner__circle {
+  border-width: 5.25px
+}
+
+.pe-md-spinner.pe-spinner--large .pe-md-spinner__circle {
+  border-width: 4.5px
+}
+
+.pe-md-spinner.pe-spinner--medium .pe-md-spinner__circle {
+  border-width: 3.75px
+}
+
+.pe-md-spinner.pe-spinner--regular .pe-md-spinner__circle {
+  border-width: 3px
+}
+
+.pe-md-spinner.pe-spinner--small .pe-md-spinner__circle {
+  border-width: 2.25px
+}
+
+.pe-md-spinner .pe-md-spinner__animation {
+  animation: mdSpinnerRotate 1.568235294117647s linear infinite
 }
 
 .pe-dark-tone.pe-md-spinner .pe-md-spinner__layer,.pe-dark-tone .pe-md-spinner .pe-md-spinner__layer {

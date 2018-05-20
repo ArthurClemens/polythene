@@ -59,8 +59,13 @@ var varFns = {
       }
     })];
   },
+  animation_show_css: function animation_show_css(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-spinner--visible, &.pe-spinner--permanent": [vars$$1.animation_show_css]
+    })];
+  },
   animation_hide_css: function animation_hide_css(selector, vars$$1) {
-    return _defineProperty({}, selector, [vars$$1.animation_hide_css]);
+    return _defineProperty({}, selector, vars$$1.animation_hide_css);
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
@@ -75,11 +80,6 @@ var varFns = {
   animation_timing_function: function animation_timing_function(selector, vars$$1) {
     return [sel(selector, {
       transitionTimingFunction: vars$$1.animation_timing_function
-    })];
-  },
-  animation_show_css: function animation_show_css(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--visible, &.pe-spinner--permanent": [vars$$1.animation_show_css]
     })];
   },
   size_small: function size_small(selector, vars$$1) {
@@ -202,4 +202,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle, style };
+export { addStyle, getStyle, style, layout, color };

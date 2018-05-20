@@ -1,3 +1,4 @@
+import { color as baseSpinnerColor } from "polythene-css-base-spinner";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -44,7 +45,9 @@ const style = (scopes, selector, componentVars, customVars, tint) => {
   return createStyle(selectors, componentVars, customVars, tint);
 };
 
-export default (selector, componentVars, customVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-];
+export default (selector, componentVars, customVars) => 
+  baseSpinnerColor(selector, componentVars, customVars)
+    .concat([
+      style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+      style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+    ]);

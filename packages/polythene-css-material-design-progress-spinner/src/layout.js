@@ -1,3 +1,4 @@
+import { layout as materialDesignSpinnerLayout } from "polythene-css-material-design-spinner";
 
 const sel = (selector, o) => ({
   [selector]: o
@@ -29,58 +30,13 @@ const varFns = {
       },
     })
   ],
-  animation_duration: (selector, vars) => [
+  progress_animation_duration: (selector, vars) => [
     sel(selector, {
       " .pe-md-progress-spinner__animation": {
-        animationDuration: vars.animation_duration,
+        animationDuration: vars.progress_animation_duration,
       },
     })
-  ],
-  border_width_small: (selector, vars) => [
-    sel(selector, {
-      ".pe-spinner--small": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars.border_width_small + "px"
-        }
-      }
-    })
-  ],
-  border_width_regular: (selector, vars) => [
-    sel(selector, {
-      ".pe-spinner--regular": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars.border_width_regular + "px"
-        }
-      }
-    })
-  ],
-  border_width_medium: (selector, vars) => [
-    sel(selector, {
-      ".pe-spinner--medium": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars.border_width_medium + "px"
-        }
-      }
-    })
-  ],
-  border_width_large: (selector, vars) => [
-    sel(selector, {
-      ".pe-spinner--large": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars.border_width_large + "px"
-        }
-      }
-    })
-  ],
-  border_width_fab: (selector, vars) => [
-    sel(selector, {
-      ".pe-spinner--fab": {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: vars.border_width_fab + "px"
-        }
-      }
-    })
-  ],
+  ]
 };
 
 export default (selector, componentVars, customVars) => {
@@ -88,9 +44,13 @@ export default (selector, componentVars, customVars) => {
   const currentVars = customVars
     ? customVars
     : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
+  return materialDesignSpinnerLayout(selector, componentVars, customVars)
+    .concat(Object.keys(currentVars)
+      .map(v => (
+        varFns[v] !== undefined 
+          ? varFns[v](selector, allVars)
+          : null
+      ))
+      .filter(s => s)
+    );
 };

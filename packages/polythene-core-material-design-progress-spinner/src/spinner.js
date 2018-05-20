@@ -1,11 +1,6 @@
-import { unpackAttrs } from "polythene-core";
+import { unpackAttrs, getStyle, styleDurationToMs } from "polythene-core";
 import { easing } from "polythene-utilities";
-import themeVars from "./vars";
 import classes from "polythene-css-classes/material-design-progress-spinner";
-
-const DEFAULT_UPDATE_DURATION = .8;
-
-const sizeFromName = (size = "regular") => themeVars["size_" + size];
 
 const percentageValue = (min, max, percentage = 0) => min + ((max - min) * percentage);
 
@@ -33,24 +28,33 @@ const animate = (stateEl, size, percentage) => {
   rotateCircle(leftCircle, 0, 360, percentage);
 };
 
-const handlePercentage = (percentage, state, size, attrs) => {
-  if (!state.dom()) {
+const updateWithPercentage = ({ state, attrs, size }) => {
+  if (!state.dom) {
     return;
   }
   if (state.animating()) {
     return;
   }
+  if (attrs.percentage === undefined) {
+    return;
+  }
+  const percentage = unpackAttrs(attrs.percentage);
   const previousPercentage = state.percentage();
+  const easingFn = attrs.animated
+    ? easing.easeInOutQuad
+    : v => v;
   if (attrs.animated && previousPercentage !== percentage) {
-    const animationDuration = (attrs.updateDuration || DEFAULT_UPDATE_DURATION) * 1000;
-    const el = state.dom();
+    const el = state.dom;
+    const animationDuration = attrs.updateDuration !== undefined
+      ? attrs.updateDuration * 1000
+      : styleDurationToMs(getStyle({ element: el.querySelector(`.${classes.animation}`), prop: "animation-duration" }));
     let start = null;
     const step = timestamp => {
       if (!start) start = timestamp;
       const progress = timestamp - start;
       const stepPercentage = 1.0 / animationDuration * progress;
       const newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
-      animate(el, size, easing.easeInOutQuad(newPercentage));
+      animate(el, size, easingFn(newPercentage));
       if (start && progress < animationDuration) {
         window.requestAnimationFrame(step);
       } else {
@@ -62,34 +66,26 @@ const handlePercentage = (percentage, state, size, attrs) => {
     state.animating(true);
     window.requestAnimationFrame(step);
   } else {
-    animate(state.dom(), size, percentage);
+    animate(state.dom, size, easingFn(percentage));
     state.percentage(percentage);
   }
 };
 
-const notifyState = (state, attrs, size) => {
-  if (attrs.percentage !== undefined) {
-    const percentage = unpackAttrs(attrs.percentage);
-    handlePercentage(percentage, state, size, attrs);
-  }
-};
-
-const getSize = attrs => {
-  const rawSize = sizeFromName(attrs.size);
-  const { padding, paddedSize } = themeVars.raisedSize(rawSize);
-  return attrs.raised
-    ? paddedSize - 2 * padding
-    : rawSize;
-};
+const getSize = element => 
+  Math.round(
+    element
+      ? parseFloat(getStyle({ element, prop: "height" })) - 2 * parseFloat(getStyle({ element, prop: "padding" }))
+      : 0
+  );
 
 export const getInitialState = (vnode, createStream) => {
   const percentage = createStream(0);
-  const dom = createStream(null);
   const animating = createStream(false);
   return {
-    dom,
+    animating,
+    dom: undefined,
     percentage,
-    animating
+    redrawOnUpdate: createStream.merge([animating])
   };
 };
 
@@ -99,16 +95,16 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  state.dom(vnode.dom);
-  const size = getSize(attrs);
-  notifyState(state, attrs, size);
+  state.dom = vnode.dom;
+  const size = getSize(state.dom);
+  updateWithPercentage({ state, attrs, size });
 };
 
 export const createProps = (vnode, { renderer: h }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  const size = getSize(attrs);
-  notifyState(state, attrs, size);
+  const size = getSize(state.dom);
+  updateWithPercentage({ state, attrs, size });
 
   const content = h("div",
     {

@@ -4,10 +4,10 @@ const rgba = (colorStr, opacity = 1) =>
   `rgba(${colorStr}, ${opacity})`;
   
 export default {
-  general_styles:          true,
+  general_styles:              true,
 
-  animation_duration_secs: 1.0, // seconds
+  rotation_animation_duration: "1s",
 
-  color_light:             rgba(vars.color_light_foreground),
-  color_dark:              rgba(vars.color_dark_foreground)
+  color_light:                 rgba(vars.color_light_foreground),
+  color_dark:                  rgba(vars.color_dark_foreground)
 };

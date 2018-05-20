@@ -40,7 +40,6 @@ const updateValue = (state, value) => {
 const generateTickMarks = (h, stepCount, stepSize, value) => {
   const items = [];
   const stepWithValue = value / stepSize;
-  console.log("stepSize", stepSize, "value", value, "stepWithValue", stepWithValue);
   let s = 0;
   while (s < stepCount + 1) {
     items.push(h("div", {
@@ -140,7 +139,6 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
   const range = state.max - state.min;
   const stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
-  console.log("value", state.value(), "state.stepSize", state.stepSize);
   const onStartTrack = e => (
     startTrack(state, attrs, e)
   );

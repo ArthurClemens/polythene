@@ -90,15 +90,15 @@
   var vars = {
     general_styles: true,
 
-    border_width_small: polytheneCoreBaseSpinner.vars.size_small / polytheneCoreBaseSpinner.vars.size_regular * 3,
-    border_width_regular: 3,
-    border_width_medium: polytheneCoreBaseSpinner.vars.size_medium / polytheneCoreBaseSpinner.vars.size_regular * 3,
-    border_width_large: polytheneCoreBaseSpinner.vars.size_large / polytheneCoreBaseSpinner.vars.size_regular * 3,
-    border_width_fab: polytheneCoreBaseSpinner.vars.size_fab / polytheneCoreBaseSpinner.vars.size_regular * 3,
-    rotation_duration: rotation_duration,
     arc_size: arc_size,
-    arc_time: arc_time,
     arc_start_degrees: arc_start_degrees,
+    arc_time: arc_time,
+    border_width_fab: polytheneCoreBaseSpinner.vars.size_fab / polytheneCoreBaseSpinner.vars.size_regular * 3,
+    border_width_large: polytheneCoreBaseSpinner.vars.size_large / polytheneCoreBaseSpinner.vars.size_regular * 3,
+    border_width_medium: polytheneCoreBaseSpinner.vars.size_medium / polytheneCoreBaseSpinner.vars.size_regular * 3,
+    border_width_regular: 3,
+    border_width_small: polytheneCoreBaseSpinner.vars.size_small / polytheneCoreBaseSpinner.vars.size_regular * 3,
+    rotation_duration: rotation_duration,
 
     color_light_single: rgba(polytheneTheme.vars.color_primary),
     color_light_1: blue400,

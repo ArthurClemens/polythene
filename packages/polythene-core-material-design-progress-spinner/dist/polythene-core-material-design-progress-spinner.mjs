@@ -1,26 +1,7 @@
+import { unpackAttrs, getStyle, styleDurationToMs } from 'polythene-core';
+import { easing } from 'polythene-utilities';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-core-base-spinner';
-import { unpackAttrs } from 'polythene-core';
-import { easing } from 'polythene-utilities';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var themeVars = _extends({}, vars$1, {
-  border_width_small: vars$1.size_small / vars$1.size_regular * 3,
-  border_width_regular: 3,
-  border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,
-  border_width_large: vars$1.size_large / vars$1.size_regular * 3,
-  border_width_fab: vars$1.size_fab / vars$1.size_regular * 3,
-  animation_duration: "1.5s",
-
-  color_light: rgba(vars.color_primary),
-  color_dark: rgba(vars.color_primary)
-});
 
 var classes = {
   component: "pe-md-progress-spinner",
@@ -32,14 +13,7 @@ var classes = {
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var DEFAULT_UPDATE_DURATION = .8;
-
-var sizeFromName = function sizeFromName() {
-  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
-  return themeVars["size_" + size];
-};
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var percentageValue = function percentageValue(min, max) {
   var percentage = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
@@ -66,24 +40,35 @@ var animate = function animate(stateEl, size, percentage) {
   rotateCircle(leftCircle, 0, 360, percentage);
 };
 
-var handlePercentage = function handlePercentage(percentage, state, size, attrs) {
-  if (!state.dom()) {
+var updateWithPercentage = function updateWithPercentage(_ref) {
+  var state = _ref.state,
+      attrs = _ref.attrs,
+      size = _ref.size;
+
+  if (!state.dom) {
     return;
   }
   if (state.animating()) {
     return;
   }
+  if (attrs.percentage === undefined) {
+    return;
+  }
+  var percentage = unpackAttrs(attrs.percentage);
   var previousPercentage = state.percentage();
+  var easingFn = attrs.animated ? easing.easeInOutQuad : function (v) {
+    return v;
+  };
   if (attrs.animated && previousPercentage !== percentage) {
-    var animationDuration = (attrs.updateDuration || DEFAULT_UPDATE_DURATION) * 1000;
-    var el = state.dom();
+    var el = state.dom;
+    var animationDuration = attrs.updateDuration !== undefined ? attrs.updateDuration * 1000 : styleDurationToMs(getStyle({ element: el.querySelector("." + classes.animation), prop: "animation-duration" }));
     var start = null;
     var step = function step(timestamp) {
       if (!start) start = timestamp;
       var progress = timestamp - start;
       var stepPercentage = 1.0 / animationDuration * progress;
       var newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
-      animate(el, size, easing.easeInOutQuad(newPercentage));
+      animate(el, size, easingFn(newPercentage));
       if (start && progress < animationDuration) {
         window.requestAnimationFrame(step);
       } else {
@@ -95,36 +80,23 @@ var handlePercentage = function handlePercentage(percentage, state, size, attrs)
     state.animating(true);
     window.requestAnimationFrame(step);
   } else {
-    animate(state.dom(), size, percentage);
+    animate(state.dom, size, easingFn(percentage));
     state.percentage(percentage);
   }
 };
 
-var notifyState = function notifyState(state, attrs, size) {
-  if (attrs.percentage !== undefined) {
-    var percentage = unpackAttrs(attrs.percentage);
-    handlePercentage(percentage, state, size, attrs);
-  }
-};
-
-var getSize = function getSize(attrs) {
-  var rawSize = sizeFromName(attrs.size);
-
-  var _themeVars$raisedSize = themeVars.raisedSize(rawSize),
-      padding = _themeVars$raisedSize.padding,
-      paddedSize = _themeVars$raisedSize.paddedSize;
-
-  return attrs.raised ? paddedSize - 2 * padding : rawSize;
+var getSize = function getSize(element) {
+  return Math.round(element ? parseFloat(getStyle({ element: element, prop: "height" })) - 2 * parseFloat(getStyle({ element: element, prop: "padding" })) : 0);
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
   var percentage = createStream(0);
-  var dom = createStream(null);
   var animating = createStream(false);
   return {
-    dom: dom,
+    animating: animating,
+    dom: undefined,
     percentage: percentage,
-    animating: animating
+    redrawOnUpdate: createStream.merge([animating])
   };
 };
 
@@ -134,18 +106,18 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  state.dom(vnode.dom);
-  var size = getSize(attrs);
-  notifyState(state, attrs, size);
+  state.dom = vnode.dom;
+  var size = getSize(state.dom);
+  updateWithPercentage({ state: state, attrs: attrs, size: size });
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var h = _ref.renderer;
+var createProps = function createProps(vnode, _ref2) {
+  var h = _ref2.renderer;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
-  var size = getSize(attrs);
-  notifyState(state, attrs, size);
+  var size = getSize(state.dom);
+  updateWithPercentage({ state: state, attrs: attrs, size: size });
 
   var content = h("div", {
     key: "content",
@@ -162,7 +134,7 @@ var createProps = function createProps(vnode, _ref) {
     className: [classes.circle, classes.circleRight].join(" ")
   })]);
 
-  return _extends$1({}, attrs, {
+  return _extends({}, attrs, {
     className: [classes.component, attrs.className].join(" "),
     content: content
   });
@@ -174,4 +146,18 @@ var spinner = /*#__PURE__*/Object.freeze({
   createProps: createProps
 });
 
-export { spinner as coreMaterialDesignProgressSpinner, themeVars as vars };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
+var vars$2 = _extends$1({}, vars$1, {
+  progress_animation_duration: ".8s",
+
+  color_light: rgba(vars.color_primary),
+  color_dark: rgba(vars.color_primary)
+});
+
+export { spinner as coreMaterialDesignProgressSpinner, vars$2 as vars };

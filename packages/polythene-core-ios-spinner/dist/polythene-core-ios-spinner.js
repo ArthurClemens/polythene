@@ -50,7 +50,7 @@
   var vars = {
     general_styles: true,
 
-    animation_duration_secs: 1.0, // seconds
+    rotation_animation_duration: "1s",
 
     color_light: rgba(polytheneTheme.vars.color_light_foreground),
     color_dark: rgba(polytheneTheme.vars.color_dark_foreground)

@@ -62,8 +62,13 @@
         }
       })];
     },
+    animation_show_css: function animation_show_css(selector, vars) {
+      return [sel(selector, {
+        ".pe-spinner--visible, &.pe-spinner--permanent": [vars.animation_show_css]
+      })];
+    },
     animation_hide_css: function animation_hide_css(selector, vars) {
-      return _defineProperty({}, selector, [vars.animation_hide_css]);
+      return _defineProperty({}, selector, vars.animation_hide_css);
     },
     animation_delay: function animation_delay(selector, vars) {
       return [sel(selector, {
@@ -78,11 +83,6 @@
     animation_timing_function: function animation_timing_function(selector, vars) {
       return [sel(selector, {
         transitionTimingFunction: vars.animation_timing_function
-      })];
-    },
-    animation_show_css: function animation_show_css(selector, vars) {
-      return [sel(selector, {
-        ".pe-spinner--visible, &.pe-spinner--permanent": [vars.animation_show_css]
       })];
     },
     size_small: function size_small(selector, vars) {
@@ -208,6 +208,8 @@
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
   exports.style = style;
+  exports.layout = layout;
+  exports.color = color;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

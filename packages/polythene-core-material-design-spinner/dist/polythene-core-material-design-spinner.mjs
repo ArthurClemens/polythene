@@ -87,15 +87,15 @@ var green500 = "#4caf50";
 var vars$2 = {
   general_styles: true,
 
-  border_width_small: vars$1.size_small / vars$1.size_regular * 3,
-  border_width_regular: 3,
-  border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,
-  border_width_large: vars$1.size_large / vars$1.size_regular * 3,
-  border_width_fab: vars$1.size_fab / vars$1.size_regular * 3,
-  rotation_duration: rotation_duration,
   arc_size: arc_size,
-  arc_time: arc_time,
   arc_start_degrees: arc_start_degrees,
+  arc_time: arc_time,
+  border_width_fab: vars$1.size_fab / vars$1.size_regular * 3,
+  border_width_large: vars$1.size_large / vars$1.size_regular * 3,
+  border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,
+  border_width_regular: 3,
+  border_width_small: vars$1.size_small / vars$1.size_regular * 3,
+  rotation_duration: rotation_duration,
 
   color_light_single: rgba(vars.color_primary),
   color_light_1: blue400,

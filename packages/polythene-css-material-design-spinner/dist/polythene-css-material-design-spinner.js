@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-base-spinner'), require('polythene-core-material-design-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-base-spinner', 'polythene-core-material-design-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-base-spinner'],global['polythene-core-material-design-spinner']));
-}(this, (function (exports,polytheneCoreCss,polytheneCssBaseSpinner,polytheneCoreMaterialDesignSpinner) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-base-spinner'), require('polythene-core-css'), require('polythene-core-material-design-spinner')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-base-spinner', 'polythene-core-css', 'polythene-core-material-design-spinner'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-base-spinner'],global['polythene-core-css'],global['polythene-core-material-design-spinner']));
+}(this, (function (exports,polytheneCssBaseSpinner,polytheneCoreCss,polytheneCoreMaterialDesignSpinner) { 'use strict';
 
   var classes = {
     component: "pe-md-spinner",
@@ -377,11 +377,11 @@
   var layout = (function (selector, componentVars, customVars) {
     var allVars = _extends({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
+    return polytheneCssBaseSpinner.layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
       return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
     }).filter(function (s) {
       return s;
-    });
+    }));
   });
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -478,10 +478,11 @@
   };
 
   var color = (function (selector, componentVars, customVars) {
-    return [polytheneCssBaseSpinner.style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    return polytheneCssBaseSpinner.color(selector, componentVars, customVars).concat([polytheneCssBaseSpinner.style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
     polytheneCssBaseSpinner.style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
     style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+    );
   });
 
   var fns = [layout, color];
@@ -499,6 +500,8 @@
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.color = color;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

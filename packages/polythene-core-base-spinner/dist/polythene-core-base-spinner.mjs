@@ -121,14 +121,13 @@ var vars$1 = {
   animation_show_css: "opacity: 1;",
 
   raisedSize: function raisedSize(size) {
-    var padding = size * 0.25;
+    var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
     var paddedSize = size + padding * 2;
     return { padding: padding, paddedSize: paddedSize };
   },
 
   color_light_raised_background: rgba(vars.color_light_background),
-  // also use light background with dark tone
-  color_dark_raised_background: rgba(vars.color_light_background)
+  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
 };
 
 export { spinner as coreBaseSpinner, vars$1 as vars };

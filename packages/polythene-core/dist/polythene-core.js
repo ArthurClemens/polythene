@@ -462,6 +462,31 @@
 
   Multi.displayName = "Multi";
 
+  var getStyle = function getStyle(_ref) {
+    var _ref$element = _ref.element,
+        element = _ref$element === undefined ? document : _ref$element,
+        selector = _ref.selector,
+        prop = _ref.prop;
+
+    var el = selector ? element.querySelector(selector) : element;
+    if (!el) {
+      return;
+    }
+    return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
+  };
+
+  var isRTL = function isRTL(_ref2) {
+    var _ref2$element = _ref2.element,
+        element = _ref2$element === undefined ? document : _ref2$element,
+        selector = _ref2.selector;
+    return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
+  };
+
+  var styleDurationToMs = function styleDurationToMs(durationStr) {
+    var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
+    return isNaN(parsed) ? 0 : parsed;
+  };
+
   var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   // defaults
@@ -476,11 +501,6 @@
 
   var hide = function hide(opts) {
     return transition(opts, "hide");
-  };
-
-  var computedStyleDurationToMs = function computedStyleDurationToMs(durationStr) {
-    var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
-    return isNaN(parsed) ? 0 : parsed;
   };
 
   /*
@@ -505,8 +525,8 @@
       return new Promise(function (resolve) {
         var style = el.style;
         var computedStyle = isClient ? window.getComputedStyle(el) : {};
-        var duration = opts.hasDuration ? opts.duration * 1000.0 : computedStyleDurationToMs(computedStyle.transitionDuration);
-        var delay = opts.hasDelay ? opts.delay * 1000.0 : computedStyleDurationToMs(computedStyle.transitionDelay);
+        var duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
+        var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
         var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
         var before = opts.before && state === "show" ? function () {
@@ -618,26 +638,6 @@
     });
   };
 
-  var getStyle = function getStyle(_ref) {
-    var _ref$element = _ref.element,
-        element = _ref$element === undefined ? document : _ref$element,
-        selector = _ref.selector,
-        prop = _ref.prop;
-
-    var el = selector ? element.querySelector(selector) : element;
-    if (!el) {
-      return;
-    }
-    return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
-  };
-
-  var isRTL = function isRTL(_ref2) {
-    var _ref2$element = _ref2.element,
-        element = _ref2$element === undefined ? document : _ref2$element,
-        selector = _ref2.selector;
-    return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
-  };
-
   var deprecation = function deprecation(component, deprecatedOption, newOption) {
     return console.warn(component + ": option '" + deprecatedOption + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead.");
   }; // eslint-disable-line no-console
@@ -668,6 +668,7 @@
   exports.emit = emit;
   exports.getStyle = getStyle;
   exports.isRTL = isRTL;
+  exports.styleDurationToMs = styleDurationToMs;
   exports.deprecation = deprecation;
   exports.iconDropdownUp = iconDropdownUp;
   exports.iconDropdownDown = iconDropdownDown;

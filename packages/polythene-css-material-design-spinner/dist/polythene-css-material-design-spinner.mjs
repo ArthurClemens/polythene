@@ -1,5 +1,5 @@
+import { layout, color, style } from 'polythene-css-base-spinner';
 import { mixin, styler } from 'polythene-core-css';
-import { style } from 'polythene-css-base-spinner';
 import { vars } from 'polythene-core-material-design-spinner';
 
 var classes = {
@@ -372,14 +372,14 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
+var layout$1 = (function (selector, componentVars, customVars) {
   var allVars = _extends({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
+  return layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
     return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
   }).filter(function (s) {
     return s;
-  });
+  }));
 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -475,14 +475,15 @@ var style$1 = function style$$1(scopes, selector, componentVars, customVars, tin
   return createStyle(selectors, componentVars, customVars, tint);
 };
 
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+var color$1 = (function (selector, componentVars, customVars) {
+  return color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
   style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+  );
 });
 
-var fns = [layout, color];
+var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
@@ -495,4 +496,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, layout$1 as layout, color$1 as color };

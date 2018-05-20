@@ -1,3 +1,12 @@
+.pe-ios-spinner {
+  transition-property: all
+}
+
+.pe-ios-spinner.pe-spinner--raised {
+  position: relative;
+  border-radius: 50%
+}
+
 .pe-ios-spinner .pe-ios-spinner__blades {
   transform: translateZ(0);
   position: relative;
@@ -27,12 +36,12 @@
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:first-of-type {
   transform: rotate(1turn) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s 0s linear infinite
+  animation: iosSpinnerFade 1s 0ms linear infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(2) {
   transform: rotate(330deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.08333333333333333s linear infinite
+  animation: iosSpinnerFade 1s -83.33333333333333ms linear infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(3) {

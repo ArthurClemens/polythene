@@ -250,9 +250,12 @@ export default (selector, componentVars, customVars) => {
     ? customVars
     : allVars);
   return selectionControlLayout(selector, componentVars, customVars, "checkbox")
-    .concat(Object.keys(currentVars).map(v => (
-      varFns[v] !== undefined 
-        ? varFns[v](selector, allVars)
-        : null
-    )).filter(s => s));
+    .concat(Object.keys(currentVars)
+      .map(v => (
+        varFns[v] !== undefined 
+          ? varFns[v](selector, allVars)
+          : null
+      ))
+      .filter(s => s)
+    );
 };
