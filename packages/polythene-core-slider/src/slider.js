@@ -1,5 +1,4 @@
-import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes } from "polythene-core";
-import themeVars from "./vars";
+import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes, getStyle } from "polythene-core";
 import classes from "polythene-css-classes/slider";
 
 const MAX_TICKS = 100;
@@ -56,7 +55,7 @@ const generateTickMarks = (h, stepCount, stepSize, value) => {
 const readRangeData = state => {
   if (state.controlEl && isClient) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-    state.controlWidth = themeVars.thumb_size;
+    state.controlWidth = parseFloat(getStyle({ element: state.controlEl, prop: "width" }));
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
     const styles = window.getComputedStyle(state.trackEl);
     state.rangeOffset = parseFloat(styles.marginLeft);

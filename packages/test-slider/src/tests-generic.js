@@ -154,7 +154,7 @@ export default ({ Slider, Icon, renderer: h }) => {
         min: 0,
         max: 100,
         stepSize: 10,
-        defaultValue: 2,
+        defaultValue: 50,
         pin: true,
         ticks: true,
         className: "slider-custom-pin-color"
