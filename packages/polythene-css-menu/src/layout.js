@@ -1,4 +1,5 @@
 import { vars as themeVars } from "polythene-theme";
+import { sel, selectorRTL } from "polythene-core-css";
 
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
@@ -32,13 +33,6 @@ const sizes_min_size_size_factor = (selector, vars) =>
       minWidth: themeVars.grid_unit_menu * vars.min_size + "px",
     }
   ]);
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const varFns = {
   general_styles: (selector, vars) => [

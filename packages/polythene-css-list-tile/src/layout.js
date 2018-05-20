@@ -1,4 +1,4 @@
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({ // eslint-disable-line no-unused-vars
   " .pe-list-tile__content-front + .pe-list-tile__content": {
@@ -17,13 +17,6 @@ const paddingV = (top, bottom) => ({
   "padding-top": top + "px",
   "padding-bottom": (bottom || top) + "px"
 });
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const title_line_count_single_line_height = (selector, vars) =>
   sel(selector, {

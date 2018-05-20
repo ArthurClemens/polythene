@@ -1,9 +1,5 @@
 import { layout as baseSpinnerLayout } from "polythene-css-base-spinner";
-import { styleDurationToMs } from "polythene-core";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { sel, styleDurationToMs } from "polythene-core";
 
 const bladeWidth  = 9; // percent
 const bladeHeight = 28; // percent

@@ -1,5 +1,5 @@
 import { layout as selectionControlLayout } from "polythene-css-selection-control";
-import { mixin } from "polythene-core-css";
+import { mixin, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const transition = (vars, properties, duration = vars.animation_duration) =>
@@ -111,13 +111,8 @@ const alignSide = isRTL => () => ({
     [isRTL ? "left" : "right"]: "auto"
   }
 });
-
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const createSize = (selector, vars) => {
   const sizeData = {

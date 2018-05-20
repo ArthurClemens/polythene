@@ -1,12 +1,5 @@
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const alignSide = isRTL => () => ({
   " .pe-tabs__indicator": {
@@ -14,6 +7,8 @@ const alignSide = isRTL => () => ({
     [isRTL ? "right" : "left"]: 0,
   }
 });
+const alignLeft = alignSide(false);
+const alignRight = alignSide(true);
 
 const tabs_indent = (selector, vars, isRTL) =>
   sel(selector, {
@@ -29,9 +24,6 @@ const tab_label_transition_property_animation_duration = (selector, vars) =>
     " .pe-tabs__tab .pe-button__content":
       mixin.defaultTransition(vars.tab_label_transition_property, vars.animation_duration)
   });
-
-const alignLeft = alignSide(false);
-const alignRight = alignSide(true);
 
 const varFns = {
   general_styles: selector => [

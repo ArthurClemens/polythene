@@ -1,13 +1,9 @@
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const alignSide = () => () => ({});
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const tight_title_padding_bottom_subtitle_line_height_padding_bottom = (selector, vars) =>
   sel(selector, {

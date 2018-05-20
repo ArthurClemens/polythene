@@ -1,7 +1,5 @@
 import { vars } from "polythene-theme";
-
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
+import { rgba } from "polythene-core-css";
 
 const touch_height = vars.unit_touch_height; // 48
 const height = 36;

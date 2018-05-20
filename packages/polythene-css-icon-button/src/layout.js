@@ -1,12 +1,8 @@
-import { mixin } from "polythene-core-css";
+import { mixin, sel, selectorRTL } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const label_padding_before = (selector, vars, isRTL) =>
   sel(selector, {
@@ -21,9 +17,6 @@ const label_padding_after = (selector, vars, isRTL) =>
       [isRTL ? "paddingLeft" : "paddingRight"]: vars.label_padding_after + "px",
     }
   });
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const varFns = {
   general_styles: (selector, vars) => [

@@ -1,9 +1,7 @@
-import { vars } from "polythene-theme";
+import { rgba } from "polythene-core-css";
 import { vars as baseVars } from "polythene-css-base-spinner";
+import { vars } from "polythene-theme";
 
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
-  
 export default Object.assign(
   {},
   baseVars,

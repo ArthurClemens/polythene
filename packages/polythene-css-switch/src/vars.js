@@ -1,9 +1,7 @@
-import { vars } from "polythene-theme";
-import { vars as selectionControlVars } from "polythene-css-selection-control";
+import { rgba } from "polythene-core-css";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
-
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
+import { vars as selectionControlVars } from "polythene-css-selection-control";
+import { vars } from "polythene-theme";
 
 export default Object.assign(
   {},

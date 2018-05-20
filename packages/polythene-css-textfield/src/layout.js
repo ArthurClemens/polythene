@@ -1,9 +1,5 @@
-import { mixin } from "polythene-core-css";
+import { mixin, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const vertical_spacing_top_input_padding_v = (selector, vars) =>
   sel(selector, {

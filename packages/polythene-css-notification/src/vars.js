@@ -1,7 +1,5 @@
+import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
-
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
 
 const buttonPaddingH = 8; // padding, inner text space
 

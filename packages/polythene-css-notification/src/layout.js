@@ -1,8 +1,4 @@
-import { flex } from "polythene-core-css";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { flex, sel } from "polythene-core-css";
 
 const title_single_padding_v_title_padding_h = (selector, vars) =>
   sel(selector, {

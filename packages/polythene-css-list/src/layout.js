@@ -1,11 +1,8 @@
+import { sel } from "polythene-core-css";
 
 const borderStyle = vars => ({
   borderStyle: "none none solid none",
   borderWidth: vars.border_width_bordered + "px"
-});
-
-const sel = (selector, o) => ({
-  [selector]: o
 });
 
 const varFns = {

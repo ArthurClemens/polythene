@@ -1,11 +1,4 @@
-import { mixin } from "polythene-core-css";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
+import { mixin, sel, selectorRTL } from "polythene-core-css";
 
 const alignSide = isRTL => () => ({
   ".pe-button--separator-start .pe-button__content": {
@@ -14,7 +7,6 @@ const alignSide = isRTL => () => ({
       : "none none none solid",
   }
 });
-
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 

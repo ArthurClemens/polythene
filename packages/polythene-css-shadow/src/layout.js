@@ -1,8 +1,4 @@
-import { mixin } from "polythene-core-css";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { mixin, sel } from "polythene-core-css";
 
 const shadowDirective = (which, num) => (selector, vars) =>
   sel(selector, {

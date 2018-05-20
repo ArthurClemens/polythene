@@ -1,8 +1,9 @@
 import { color as baseSpinnerColor } from "polythene-css-base-spinner";
+import { sel } from "polythene-core-css";
 import { style as baseStyle } from "polythene-css-base-spinner";
 
 /*
-Derived from https://github.com/PolymerElements/paper-spinner
+Styling derived from https://github.com/PolymerElements/paper-spinner
 
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -12,10 +13,6 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const generalFns = ({
   general_styles: selector => [

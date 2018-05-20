@@ -1,9 +1,5 @@
-import { flex } from "polythene-core-css";
+import { flex, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const max_width_side_padding_mobile = (selector, vars) => {
   const maxWidthBreakpointMobile = vars.max_width + 2 * vars.side_padding_mobile;

@@ -1,4 +1,4 @@
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const getThumbSize = vars => {
@@ -22,10 +22,6 @@ const getBorderWidth = vars => {
     scaledBorderWidth
   };
 };
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const thumb_size_thumb_border_width_disabled_thumb_scale = (selector, vars) => {
   const { normalThumbSize, disabledThumbSize } = getThumbSize(vars);

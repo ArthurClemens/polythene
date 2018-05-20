@@ -1,7 +1,4 @@
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { sel } from "polythene-core-css";
 
 const sizeDirective = size => (selector, vars) =>
   sel(selector, {

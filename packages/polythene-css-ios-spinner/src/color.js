@@ -1,8 +1,5 @@
 import { color as baseSpinnerColor } from "polythene-css-base-spinner";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { sel } from "polythene-core-css";
 
 const generalFns = ({
   general_styles: selector => [

@@ -1,6 +1,6 @@
 // Returns a style function to be used by Checkbox and Radio Button
 
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
@@ -39,10 +39,6 @@ const inactiveButton = () => ({
   zIndex: 0
 });
 
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
 const button_size_icon_size = (selector, vars, isRTL) =>
   sel(selector, {
     " .pe-button.pe-control__button": {
@@ -65,9 +61,6 @@ const label_padding_after = (selector, vars, isRTL) =>
       [isRTL ? "paddingLeft" : "paddingRight"]: vars.label_padding_after + "px",
     }
   });
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const varFns = {
   general_styles: (selector, vars, type) => [

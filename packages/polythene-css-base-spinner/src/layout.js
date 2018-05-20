@@ -1,7 +1,4 @@
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { sel } from "polythene-core-css";
 
 const sizes = size => ({
   width: size + "px",

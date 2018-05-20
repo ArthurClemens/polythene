@@ -1113,17 +1113,27 @@ var styler = {
   remove: remove
 };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var sel = function sel(selector, o) {
+  return _defineProperty({}, selector, o);
+};
+
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
+};
+
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(" + colorStr + ", " + opacity + ")";
+};
+
 var hex = function hex(value) {
   var bigint = parseInt(value.substring(1), 16);
   var r = bigint >> 16 & 255;
   var g = bigint >> 8 & 255;
   var b = bigint & 255;
   return r + "," + g + "," + b;
-};
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
 };
 
 var flex$2 = [{
@@ -1218,4 +1228,4 @@ var addLayoutStyles = function addLayoutStyles() {
   return styler.add("pe-layout", flex$2, commonStyle);
 };
 
-export { flex$1 as flex, mixin, styler, hex, rgba, layoutStyles, addLayoutStyles };
+export { flex$1 as flex, mixin, styler, hex, rgba, sel, selectorRTL, layoutStyles, addLayoutStyles };

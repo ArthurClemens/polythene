@@ -1,4 +1,4 @@
-import { mixin } from "polythene-core-css";
+import { mixin, sel, selectorRTL } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const SHADOW_WIDTH = 15;
@@ -24,13 +24,6 @@ const alignSide = isRTL => () => ({
 
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const selectorAnchorEnd = selector =>
   `${selector}.pe-drawer--anchor-end`;

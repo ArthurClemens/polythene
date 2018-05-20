@@ -1,9 +1,5 @@
-import { mixin, flex } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const breakpoint = breakpointSel => (selector, o) => ({
   [breakpointSel]: {
@@ -34,9 +30,6 @@ const title_padding_title_after_icon_padding = (selector, vars, isRTL) =>
       marginRight: vars.title_padding + "px"
     },
   });
-
-const selectorRTL = selector => 
-  `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
 
 const breakpointPhoneOnly = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_phone_only}px) and (orientation: landscape)`);
 

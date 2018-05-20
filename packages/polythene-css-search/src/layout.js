@@ -1,9 +1,5 @@
-import { flex } from "polythene-core-css";
+import { flex, sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const inset_height_line_height_input = (selector, vars) => {
   const inset_input_padding_v = (vars.inset_height - vars.line_height_input) / 2;

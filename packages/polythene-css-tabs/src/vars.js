@@ -1,9 +1,7 @@
-import { vars } from "polythene-theme";
+import { rgba } from "polythene-core-css";
 import { vars as buttonVars } from "polythene-css-button";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
-
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
+import { vars } from "polythene-theme";
 
 const fontSize = buttonVars.font_size;
 const tab_label_line_height = 1.1 * fontSize;

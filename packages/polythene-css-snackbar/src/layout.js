@@ -1,9 +1,6 @@
 import { customLayoutFns as customNotificationLayoutFns } from "polythene-css-notification";
+import { sel } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
 
 const breakpoint = breakpointSel => (selector, o) => ({
   [breakpointSel]: {

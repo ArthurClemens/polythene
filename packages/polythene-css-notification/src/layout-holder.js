@@ -1,9 +1,5 @@
 import { vars as defaultVars } from "polythene-theme";
-import { flex } from "polythene-core-css";
-
-const sel = (selector, o) => ({
-  [selector]: o
-});
+import { flex, sel } from "polythene-core-css";
 
 const varFns = {
   general_styles: selector => [

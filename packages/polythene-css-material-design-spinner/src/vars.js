@@ -1,5 +1,5 @@
 /*
-Derived from https://github.com/PolymerElements/paper-spinner
+Styling derived from https://github.com/PolymerElements/paper-spinner
 
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -10,12 +10,10 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { vars } from "polythene-theme";
+import { rgba } from "polythene-core-css";
 import { vars as baseVars } from "polythene-css-base-spinner";
-
-const rgba = (colorStr, opacity = 1) =>
-  `rgba(${colorStr}, ${opacity})`;
-  
+import { vars } from "polythene-theme";
+ 
 const arc_size =          270; // degrees - amount of circle the arc takes up
 const arc_time =          1.333; // s - time it takes to expand and contract arc
 const arc_start_degrees = 360/5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.

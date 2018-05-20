@@ -1,5 +1,5 @@
 /*
-Derived from https://github.com/PolymerElements/paper-spinner
+Styling derived from https://github.com/PolymerElements/paper-spinner
 
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { layout as baseSpinnerLayout } from "polythene-css-base-spinner";
-import { mixin } from "polythene-core-css";
+import { mixin, sel } from "polythene-core-css";
 
 const OPACITY_MIN = 0;
 const OPACITY_MAX = .99;
@@ -162,10 +162,6 @@ const layerAnimation = (vars, num) => ({
   [".pe-md-spinner__layer-" + num]: {
     animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
   }
-});
-
-const sel = (selector, o) => ({
-  [selector]: o
 });
 
 const varFns = {
