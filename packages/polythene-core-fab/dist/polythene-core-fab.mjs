@@ -20,7 +20,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return _extends({}, {
+  return _extends({}, attrs, {
     content: h("div", { className: classes.content }, content),
     parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
     // defaults
@@ -32,7 +32,7 @@ var createProps = function createProps(vnode, _ref) {
     ink: true,
     wash: true,
     animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
-  }, attrs);
+  });
 };
 
 var createContent = function createContent(vnode) {

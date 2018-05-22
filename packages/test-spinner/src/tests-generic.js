@@ -6,12 +6,12 @@ import { MaterialDesignSpinnerCSS, MaterialDesignProgressSpinnerCSS, IOSSpinnerC
 export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinner, RaisedButton, Slider, renderer, keys }) => {
 
   MaterialDesignSpinnerCSS.addStyle(".tests-spinner-themed-md-spinner", {
-    color_light_1: "orange",
-    color_light_2: "red",
-    color_light_3: "orange",
-    color_light_4: "red",
+    color_light_1:                 "orange",
+    color_light_2:                 "red",
+    color_light_3:                 "orange",
+    color_light_4:                 "red",
     color_light_raised_background: "#222",
-    rotation_duration: 3
+    rotation_duration:             3
   });
 
   MaterialDesignProgressSpinnerCSS.addStyle(".tests-spinner-themed-md-progress-spinner", {
@@ -81,7 +81,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
       })
     },
     {
-      name: "Theme -- Material Design Spinner",
+      name: "Theme (color, rotation duration) -- Material Design Spinner",
       interactive: true,
       component: opener({
         renderer,

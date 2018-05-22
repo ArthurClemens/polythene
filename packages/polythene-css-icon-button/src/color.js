@@ -1,4 +1,4 @@
-import { noTouchStyle as buttonNoTouchStyle } from "polythene-css-button";
+// import { noTouchStyle as buttonNoTouchStyle } from "polythene-css-button";
 import { sel } from "polythene-core-css";
 
 const generalFns = ({
@@ -110,8 +110,8 @@ export const noTouchStyle = (scopes, selector, componentVars, customVars, tint) 
 export default (selector, componentVars, customVars) => [
   style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-  buttonNoTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
+  // buttonNoTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
   noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  buttonNoTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
+  // buttonNoTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
   noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
 ];

@@ -1,4 +1,4 @@
-import { mixin, sel, selectorRTL } from "polythene-core-css";
+import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => () => ({
   ".pe-button--separator-start .pe-button__content": {
@@ -59,6 +59,7 @@ const varFns = {
 
           " .pe-button__content": {
             borderStyle: "solid",
+            borderWidth: "1px",
           },
         },
 
@@ -259,14 +260,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

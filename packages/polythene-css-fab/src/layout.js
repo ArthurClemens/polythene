@@ -1,4 +1,5 @@
-import { mixin, sel } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-raised-button";
+import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const varFns = {
@@ -18,6 +19,14 @@ const varFns = {
         borderRadius: "50%",
       },
 
+      " .pe-fab__content": {
+        display: "flex",
+        width: "100%",
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      },
+
       " .pe-button__wash, .pe-button__focus": [
         mixin.fit(),
         {
@@ -35,13 +44,6 @@ const varFns = {
         pointerEvents: "none",
         backgroundColor: "transparent"
       }
-    })
-  ],
-  padding_regular: (selector, vars) => [
-    sel(selector, {
-      " .pe-button__content": {
-        padding: vars.padding_regular + "px",
-      },
     })
   ],
   size_regular: (selector, vars) => [
@@ -65,14 +67,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns, superLayout });

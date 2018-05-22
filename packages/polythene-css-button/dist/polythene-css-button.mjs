@@ -1,5 +1,5 @@
 import { vars } from 'polythene-theme';
-import { rgba, mixin, sel, selectorRTL, styler } from 'polythene-core-css';
+import { rgba, mixin, sel, selectorRTL, createLayout, createColor, styler } from 'polythene-core-css';
 
 var touch_height = vars.unit_touch_height; // 48
 var height = 36;
@@ -169,8 +169,6 @@ var baseLayout = (function (selector, componentVars, customVars) {
   });
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var alignSide = function alignSide(isRTL) {
   return function () {
     return {
@@ -232,7 +230,8 @@ var varFns$1 = {
         " .pe-button__wash, .pe-button__focus, .pe-ripple": mixin.fit(-1),
 
         " .pe-button__content": {
-          borderStyle: "solid"
+          borderStyle: "solid",
+          borderWidth: "1px"
         }
       },
 
@@ -420,17 +419,9 @@ var varFns$1 = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns$1[v] !== undefined ? varFns$1[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns$1 });
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -454,8 +445,10 @@ var tintFns = function tintFns(tint) {
 
   return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
     return [sel(selector, {
-      "&, &:link, &:visited": {
-        color: vars$$1["color_" + tint + "_text"]
+      ":not(.pe-button--disabled)": {
+        "&, &:link, &:visited": {
+          color: vars$$1["color_" + tint + "_text"]
+        }
       }
     })];
   }), _defineProperty$1(_ref, "color_" + tint + "_disabled_text", function (selector, vars$$1) {
@@ -466,8 +459,10 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty$1(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
     return [sel(selector, {
-      " .pe-button__content": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
+      ":not(.pe-button--disabled)": {
+        " .pe-button__content": {
+          backgroundColor: vars$$1["color_" + tint + "_background"]
+        }
       }
     })];
   }), _defineProperty$1(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
@@ -494,8 +489,10 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty$1(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
     return [sel(selector, {
-      " .pe-button__content": {
-        borderColor: vars$$1["color_" + tint + "_border"]
+      ":not(.pe-button--disabled)": {
+        " .pe-button__content": {
+          borderColor: vars$$1["color_" + tint + "_border"]
+        }
       }
     })];
   }), _defineProperty$1(_ref, "color_" + tint + "_active_border", function (selector, vars$$1) {
@@ -565,44 +562,14 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref2;
 };
 
-var lightTintFns = _extends$2({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$2({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
 
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
 
-var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-  var allVars = _extends$2({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
-  var selectors = [].concat(scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(",")).concat(scopes.map(function (s) {
-    return s + selector + ":active";
-  }).join(","));
-  return createStyle(selectors, componentVars, customVars, tint, true);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
 });
 
 var fns = [layout, color];
@@ -621,4 +588,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 styler.generateStyles([baseSelector], vars$1, baseFns);
 styler.generateStyles([selector], vars$1, fns);
 
-export { layout, noTouchStyle, addStyle, getStyle, vars$1 as vars };
+export { addStyle, getStyle, vars$1 as vars, color, layout };

@@ -1,30 +1,24 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-raised-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-raised-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-raised-button']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssRaisedButton) { 'use strict';
 
   var vars = {
     general_styles: true,
 
-    padding_regular: 2 * polytheneTheme.vars.grid_unit_component, // 2 * 8 = 16
     size_mini: 5 * polytheneTheme.vars.grid_unit_component, // 5 * 8 = 40
     size_regular: 7 * polytheneTheme.vars.grid_unit_component, // 7 * 8 = 56
 
-    color_light: rgba(polytheneTheme.vars.color_primary_foreground),
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-
+    color_light: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
+    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium, // same as button
-    color_light_background: rgba(polytheneTheme.vars.color_primary),
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
 
-    color_dark: rgba(polytheneTheme.vars.color_primary_foreground),
-    color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
-    color_dark_background: rgba(polytheneTheme.vars.color_primary)
+    color_dark: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
+    color_dark_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
+    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium, // same as button
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary)
   };
 
   var classes = {
@@ -37,17 +31,9 @@
     mini: "pe-fab--mini"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
   var varFns = {
     general_styles: function general_styles(selector) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         userSelect: "none",
         "-moz-user-select": "none",
         display: "inline-block",
@@ -60,6 +46,14 @@
         " .pe-button__content": {
           position: "relative",
           borderRadius: "50%"
+        },
+
+        " .pe-fab__content": {
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center"
         },
 
         " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.fit(), {
@@ -78,15 +72,8 @@
         }
       })];
     },
-    padding_regular: function padding_regular(selector, vars) {
-      return [sel(selector, {
-        " .pe-button__content": {
-          padding: vars.padding_regular + "px"
-        }
-      })];
-    },
     size_regular: function size_regular(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-button__content": {
           width: vars.size_regular + "px",
           height: vars.size_regular + "px"
@@ -94,7 +81,7 @@
       })];
     },
     size_mini: function size_mini(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-fab--mini": {
           " .pe-button__content": {
             width: vars.size_mini + "px",
@@ -106,27 +93,15 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssRaisedButton.layout });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
-  };
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var generalFns = {
     general_styles: function general_styles(selector) {
-      return [sel$1(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-button--focus": {
           " .pe-button__focus": {
             opacity: 1
@@ -137,55 +112,36 @@
   };
 
   var tintFns = function tintFns(tint) {
-    var _ref2;
+    var _ref;
 
-    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint, function (selector, vars) {
-      return [sel$1(selector, {
+    return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-button__content": {
           color: vars["color_" + tint]
         }
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-button__content": {
           backgroundColor: vars["color_" + tint + "_background"]
         }
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_background", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-button--focus": {
           " .pe-button__focus": {
             backgroundColor: vars["color_" + tint + "_focus_background"]
           }
         }
       })];
-    }), _ref2;
+    }), _ref;
   };
 
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
   var fns = [layout, color];

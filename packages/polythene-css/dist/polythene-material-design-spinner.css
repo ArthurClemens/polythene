@@ -1,12 +1,3 @@
-.pe-md-spinner {
-  transition-property: all
-}
-
-.pe-md-spinner.pe-spinner--raised {
-  position: relative;
-  border-radius: 50%
-}
-
 @keyframes mdSpinnerRotate {
   to {
     transform: rotate(1turn)

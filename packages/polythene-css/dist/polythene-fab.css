@@ -14,6 +14,14 @@
   border-radius: 50%
 }
 
+.pe-fab .pe-fab__content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center
+}
+
 .pe-fab .pe-button__focus,.pe-fab .pe-button__wash {
   position: absolute;
   top: 0;
@@ -32,10 +40,6 @@
   border-radius: inherit;
   pointer-events: none;
   background-color: transparent
-}
-
-.pe-fab .pe-button__content {
-  padding: 16px
 }
 
 .pe-fab.pe-fab--mini .pe-button__content {

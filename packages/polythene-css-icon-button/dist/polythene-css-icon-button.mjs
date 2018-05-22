@@ -1,11 +1,5 @@
+import { rgba, mixin, sel, selectorRTL, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, styler } from 'polythene-core-css';
-import { noTouchStyle } from 'polythene-css-button';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
 
 var vars$1 = {
   general_styles: true,
@@ -71,10 +65,6 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
-};
-
 var _label_padding_before = function _label_padding_before(selector, vars$$1, isRTL) {
   return sel(selector, {
     " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.label_padding_before + "px")
@@ -85,10 +75,6 @@ var _label_padding_after = function _label_padding_after(selector, vars$$1, isRT
   return sel(selector, {
     " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars$$1.label_padding_after + "px")
   });
-};
-
-var selectorRTL = function selectorRTL(selector) {
-  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
 };
 
 var varFns = {
@@ -186,13 +172,9 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
-};
-
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           backgroundColor: "currentcolor"
@@ -203,52 +185,52 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  var _ref2;
+  var _ref;
 
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint, function (selector, vars$$1) {
-    return [sel$1(selector, {
+  return _ref = {}, _defineProperty$1(_ref, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
       "&, .pe-icon-button__label": {
         color: vars$$1["color_" + tint]
       }
     })];
-  }), _defineProperty$1(_ref2, "color_background", function color_background(selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_background", function color_background(selector, vars$$1) {
+    return [sel(selector, {
       " .pe-icon-button__content": {
         backgroundColor: vars$$1["color_background"]
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
       " .pe-icon-button__content": {
         backgroundColor: vars$$1["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_wash_opacity", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_wash_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
       opacity: vars$$1["color_" + tint + "_wash_opacity"]
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_focus_opacity", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_focus_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
       ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: vars$$1["color_" + tint + "_focus_opacity"]
         }
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_disabled", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
+    return [sel(selector, {
       ".pe-button--disabled": {
         " .pe-button__content, .pe-icon-button__label": {
           color: vars$$1["color_" + tint + "_disabled"]
         }
       }
     })];
-  }), _ref2;
+  }), _ref;
 };
 
 var hoverTintFns = function hoverTintFns(tint) {
   return _defineProperty$1({}, "color_" + tint + "_label_hover", function (selector, vars$$1) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       " .pe-icon-button__label": {
         color: vars$$1["color_" + tint + "_label_hover"]
       }
@@ -280,7 +262,7 @@ var style = function style(scopes, selector, componentVars, customVars, tint) {
   return createStyle(selectors, componentVars, customVars, tint);
 };
 
-var noTouchStyle$1 = function noTouchStyle$$1(scopes, selector, componentVars, customVars, tint) {
+var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
   var selectors = [].concat(scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(",")).concat(scopes.map(function (s) {
@@ -292,9 +274,10 @@ var noTouchStyle$1 = function noTouchStyle$$1(scopes, selector, componentVars, c
 var color = (function (selector, componentVars, customVars) {
   return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
   style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
+  // buttonNoTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
   noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  noTouchStyle$1(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"), noTouchStyle$1(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
+  // buttonNoTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
+  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
 });
 
 var fns = [layout, color];

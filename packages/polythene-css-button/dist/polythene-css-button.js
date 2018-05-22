@@ -172,8 +172,6 @@
     });
   });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
   var alignSide = function alignSide(isRTL) {
     return function () {
       return {
@@ -235,7 +233,8 @@
           " .pe-button__wash, .pe-button__focus, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
 
           " .pe-button__content": {
-            borderStyle: "solid"
+            borderStyle: "solid",
+            borderWidth: "1px"
           }
         },
 
@@ -423,17 +422,9 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns$1[v] !== undefined ? varFns$1[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns$1 });
 
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -457,8 +448,10 @@
 
     return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_text", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        "&, &:link, &:visited": {
-          color: vars["color_" + tint + "_text"]
+        ":not(.pe-button--disabled)": {
+          "&, &:link, &:visited": {
+            color: vars["color_" + tint + "_text"]
+          }
         }
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_disabled_text", function (selector, vars) {
@@ -469,8 +462,10 @@
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          backgroundColor: vars["color_" + tint + "_background"]
+        ":not(.pe-button--disabled)": {
+          " .pe-button__content": {
+            backgroundColor: vars["color_" + tint + "_background"]
+          }
         }
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
@@ -497,8 +492,10 @@
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_border", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          borderColor: vars["color_" + tint + "_border"]
+        ":not(.pe-button--disabled)": {
+          " .pe-button__content": {
+            borderColor: vars["color_" + tint + "_border"]
+          }
         }
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_active_border", function (selector, vars) {
@@ -568,44 +565,14 @@
     }), _ref2;
   };
 
-  var lightTintFns = _extends$2({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$2({}, generalFns, tintFns("dark"));
+  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
 
   var lightTintHoverFns = hoverTintFns("light");
   var darkTintHoverFns = hoverTintFns("dark");
 
-  var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-    var allVars = _extends$2({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
-    var selectors = [].concat(scopes.map(function (s) {
-      return s + selector + ":hover";
-    }).join(",")).concat(scopes.map(function (s) {
-      return s + selector + ":active";
-    }).join(","));
-    return createStyle(selectors, componentVars, customVars, tint, true);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
   });
 
   var fns = [layout, color];
@@ -624,11 +591,11 @@
   polytheneCoreCss.styler.generateStyles([baseSelector], vars, baseFns);
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
-  exports.layout = layout;
-  exports.noTouchStyle = noTouchStyle;
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
   exports.vars = vars;
+  exports.color = color;
+  exports.layout = layout;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

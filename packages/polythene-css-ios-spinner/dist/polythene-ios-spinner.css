@@ -1,12 +1,3 @@
-.pe-ios-spinner {
-  transition-property: all
-}
-
-.pe-ios-spinner.pe-spinner--raised {
-  position: relative;
-  border-radius: 50%
-}
-
 .pe-ios-spinner .pe-ios-spinner__blades {
   transform: translateZ(0);
   position: relative;

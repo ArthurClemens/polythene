@@ -1,6 +1,5 @@
-import { color as baseSpinnerColor } from "polythene-css-base-spinner";
-import { sel } from "polythene-core-css";
-import { style as baseStyle } from "polythene-css-base-spinner";
+import { color as superColor } from "polythene-css-base-spinner";
+import { sel, createColor } from "polythene-core-css";
 
 /*
 Styling derived from https://github.com/PolymerElements/paper-spinner
@@ -71,31 +70,8 @@ const tintFns = tint => ({
 const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
 const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
 
-const createStyle = (selector, componentVars, customVars, tint) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => {
-    const varFns = tint === "light"
-      ? lightTintFns
-      : darkTintFns;
-    return varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null;
-  }).filter(s => s);
-};
+export default createColor({
+  varFns: { lightTintFns, darkTintFns },
+  superColor
+});
 
-const style = (scopes, selector, componentVars, customVars, tint) => {
-  const selectors = scopes.map(s => s + selector).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-export default (selector, componentVars, customVars) =>
-  baseSpinnerColor(selector, componentVars, customVars)
-    .concat([
-      baseStyle([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-      baseStyle(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-      style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-      style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-    ]);

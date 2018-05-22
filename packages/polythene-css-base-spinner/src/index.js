@@ -2,7 +2,7 @@ import { styler } from "polythene-core-css";
 import vars from "./vars";
 import classes from "polythene-css-classes/base-spinner";
 import layout from "./layout";
-import color, { style } from "./color";
+import color from "./color";
 
 const fns = [layout, color];
 const selector = `.${classes.component}`;
@@ -17,4 +17,4 @@ const getStyle = (customSelector, customVars) =>
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle, style, layout, color, vars };
+export { addStyle, getStyle, layout, color, vars };

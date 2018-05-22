@@ -12,6 +12,7 @@ export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
       : attrs.children || vnode.children;
   return Object.assign(
     {},
+    attrs,
     {
       content: h("div",
         { className: classes.content },
@@ -33,8 +34,7 @@ export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
       animateOnTap: attrs.animateOnTap !== undefined
         ? attrs.animateOnTap
         : true
-    },
-    attrs
+    }
   );
 };
 

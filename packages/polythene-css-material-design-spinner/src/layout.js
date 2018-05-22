@@ -10,8 +10,8 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { layout as baseSpinnerLayout } from "polythene-css-base-spinner";
-import { mixin, sel } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-base-spinner";
+import { mixin, sel, createLayout } from "polythene-core-css";
 
 const OPACITY_MIN = 0;
 const OPACITY_MAX = .99;
@@ -345,18 +345,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return baseSpinnerLayout(selector, componentVars, customVars)
-    .concat(Object.keys(currentVars)
-      .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](selector, allVars)
-          : null
-      ))
-      .filter(s => s)
-    );
-};
+export default createLayout({ varFns, superLayout });

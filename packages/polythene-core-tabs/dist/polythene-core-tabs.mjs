@@ -33,7 +33,7 @@ var classes = {
   scrollButton: "pe-tabs__scroll-button",
   scrollButtonAtEnd: "pe-tabs__scroll-button-end",
   scrollButtonAtStart: "pe-tabs__scroll-button-start",
-  tab: "pe-tabs__tab",
+  tab: "pe-tab",
   tabContent: "pe-tabs__tab-content",
   tabRow: "pe-tabs__row",
 

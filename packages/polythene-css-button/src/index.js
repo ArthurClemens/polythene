@@ -3,14 +3,12 @@ import vars from "./vars";
 import classes from "polythene-css-classes/button";
 import baseLayout from "./base";
 import layout from "./layout";
-import color, { noTouchStyle } from "./color";
+import color from "./color";
 
 const fns = [layout, color];
 const baseFns = [baseLayout];
 const baseSelector = `.${classes.base}`;
 const selector = `.${classes.component.replace(/ /g, ".")}`;
-
-export { layout, noTouchStyle };
 
 const addStyle = (customSelector, customVars) => 
   styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
@@ -24,4 +22,4 @@ const getStyle = (customSelector, customVars) =>
 styler.generateStyles([baseSelector], vars, baseFns);
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle, vars };
+export { addStyle, getStyle, vars, color, layout };

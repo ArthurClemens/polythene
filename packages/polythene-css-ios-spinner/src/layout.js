@@ -1,5 +1,6 @@
-import { layout as baseSpinnerLayout } from "polythene-css-base-spinner";
-import { sel, styleDurationToMs } from "polythene-core";
+import { layout as superLayout } from "polythene-css-base-spinner";
+import { sel, createLayout } from "polythene-core-css";
+import { styleDurationToMs } from "polythene-core";
 
 const bladeWidth  = 9; // percent
 const bladeHeight = 28; // percent
@@ -58,18 +59,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return baseSpinnerLayout(selector, componentVars, customVars)
-    .concat(Object.keys(currentVars)
-      .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](selector, allVars)
-          : null
-      ))
-      .filter(s => s)
-    );
-};
+export default createLayout({ varFns, superLayout });

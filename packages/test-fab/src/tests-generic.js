@@ -7,19 +7,22 @@ export default ({ FAB, Icon, renderer: h }) => {
   const trustedIconAlarm = h.trust(iconAlarm);
   
   FABCSS.addStyle(".tests-fab-themed-fab", {
-    color_light_background: "#fff",
-    color_dark_background:  "#0097A7",
-    color_light:            "#2196F3",
-    color_dark:             "#B2EBF2"
+    color_light:                 "#0097A7",
+    color_light_background:      "#fff",
+    color_light_wash_background: "rgba(178, 235, 242, .3)",
+    color_dark:                  "#B2EBF2",
+    color_dark_background:       "#0097A7",
+    color_dark_wash_background:  "rgba(178, 235, 242, .2)",
+    size_regular:                66
   });
 
   return [
-    {
-      name: "Child node",
-      component: FAB,
-      attrs: null,
-      children: h(Icon, { svg: { content: trustedIconAlarm } })
-    },
+    // {
+    //   name: "Child node",
+    //   component: FAB,
+    //   attrs: null,
+    //   children: h(Icon, { svg: { content: trustedIconAlarm } })
+    // },
     {
       name: "Option: icon",
       component: FAB,
@@ -37,7 +40,7 @@ export default ({ FAB, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Themed FAB (colors)",
+      name: "Themed FAB (colors, size)",
       component: FAB,
       attrs: {
         icon: {

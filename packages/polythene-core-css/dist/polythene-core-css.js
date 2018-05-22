@@ -1118,6 +1118,8 @@
     remove: remove
   };
 
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var sel = function sel(selector, o) {
@@ -1139,6 +1141,95 @@
     var g = bigint >> 8 & 255;
     var b = bigint & 255;
     return r + "," + g + "," + b;
+  };
+
+  var createLayout = function createLayout(_ref2) {
+    var varFns = _ref2.varFns,
+        superLayout = _ref2.superLayout;
+    return function (selector, componentVars, customVars) {
+      var allVars = _extends$1({}, componentVars, customVars);
+      var currentVars = customVars ? customVars : allVars;
+      var baseLayout = customVars !== undefined && superLayout !== undefined ? superLayout(selector, componentVars, customVars) : [];
+      return baseLayout.concat(Object.keys(currentVars).map(function (v) {
+        return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
+      }).filter(function (s) {
+        return s;
+      }));
+    };
+  };
+
+  var createScopedSelector = function createScopedSelector(_ref3) {
+    var scopes = _ref3.scopes,
+        selector = _ref3.selector,
+        _ref3$isNoTouch = _ref3.isNoTouch,
+        isNoTouch = _ref3$isNoTouch === undefined ? false : _ref3$isNoTouch;
+    return isNoTouch ? [].concat(scopes.map(function (s) {
+      return s + selector + ":hover";
+    }).join(",")).concat(scopes.map(function (s) {
+      return s + selector + ":active";
+    }).join(",")) : scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+  };
+
+  var createColorStyle = function createColorStyle(_ref4) {
+    var scopedSelector = _ref4.scopedSelector,
+        componentVars = _ref4.componentVars,
+        customVars = _ref4.customVars,
+        varFns = _ref4.varFns,
+        superColor = _ref4.superColor;
+
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+    var baseColor = customVars !== undefined && superColor !== undefined ? superColor(scopedSelector, componentVars, customVars) : [];
+    return baseColor.concat(Object.keys(currentVars).map(function (v) {
+      return varFns[v] !== undefined ? varFns[v](scopedSelector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    }));
+  };
+
+  var colorScopes = [{
+    // has/inside dark tone
+    scopes: [".pe-dark-tone", ".pe-dark-tone "],
+    varFnName: "darkTintFns"
+  }, {
+    // normal, has/inside light tone
+    scopes: ["", ".pe-light-tone", ".pe-light-tone "],
+    varFnName: "lightTintFns"
+  }, {
+    // has/inside dark tone
+    scopes: ["html.pe-no-touch .pe-dark-tone "],
+    varFnName: "darkTintHoverFns",
+    isNoTouch: true
+  }, {
+    // normal, has/inside light tone
+    scopes: ["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "],
+    varFnName: "lightTintHoverFns",
+    isNoTouch: true
+  }];
+
+  var createColor = function createColor(_ref5) {
+    var varFns = _ref5.varFns,
+        superColor = _ref5.superColor;
+    return function (selector, componentVars, customVars) {
+      return colorScopes.map(function (_ref6) {
+        var scopes = _ref6.scopes,
+            varFnName = _ref6.varFnName,
+            isNoTouch = _ref6.isNoTouch;
+        return varFns[varFnName] && createColorStyle({
+          scopedSelector: createScopedSelector({
+            scopes: scopes,
+            selector: selector,
+            isNoTouch: isNoTouch
+          }),
+          componentVars: componentVars,
+          customVars: customVars,
+          varFns: varFns[varFnName],
+          superColor: superColor
+        });
+      });
+    };
   };
 
   var flex$2 = [{
@@ -1240,6 +1331,8 @@
   exports.rgba = rgba;
   exports.sel = sel;
   exports.selectorRTL = selectorRTL;
+  exports.createLayout = createLayout;
+  exports.createColor = createColor;
   exports.layoutStyles = layoutStyles;
   exports.addLayoutStyles = addLayoutStyles;
 

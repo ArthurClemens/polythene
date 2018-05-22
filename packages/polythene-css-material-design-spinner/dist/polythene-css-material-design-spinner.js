@@ -1,11 +1,11 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-css-base-spinner'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-css-base-spinner', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-css-base-spinner'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCssBaseSpinner,polytheneCoreCss) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-base-spinner'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-base-spinner', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-base-spinner'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssBaseSpinner,polytheneTheme) { 'use strict';
 
   /*
-  Derived from https://github.com/PolymerElements/paper-spinner
+  Styling derived from https://github.com/PolymerElements/paper-spinner
 
   @license
   Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -15,11 +15,6 @@
   Code distributed by Google as part of the polymer project is also
   subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
   */
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
 
   var arc_size = 270; // degrees - amount of circle the arc takes up
   var arc_time = 1.333; // s - time it takes to expand and contract arc
@@ -44,13 +39,13 @@
     border_width_small: polytheneCssBaseSpinner.vars.size_small / polytheneCssBaseSpinner.vars.size_regular * 3,
     rotation_duration: rotation_duration,
 
-    color_light_single: rgba(polytheneTheme.vars.color_primary),
+    color_light_single: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
     color_light_1: blue400,
     color_light_2: red500,
     color_light_3: yellow600,
     color_light_4: green500,
 
-    color_dark_single: rgba(polytheneTheme.vars.color_primary),
+    color_dark_single: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
     color_dark_1: blue400,
     color_dark_2: red500,
     color_dark_3: yellow600,
@@ -70,8 +65,6 @@
     layer: "pe-md-spinner__layer",
     layerN: "pe-md-spinner__layer-"
   };
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -246,13 +239,9 @@
     });
   };
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
   var varFns = {
     general_styles: function general_styles(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         "@keyframes mdSpinnerRotate": kfRotate(),
         "@keyframes mdSpinnerRightSpin": kfRightSpin(),
         "@keyframes mdSpinnerLeftSpin": kfLeftSpin(),
@@ -356,14 +345,14 @@
       })];
     },
     rotation_duration: function rotation_duration(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-md-spinner__animation": {
           animation: "mdSpinnerRotate " + vars.rotation_duration + "s linear infinite"
         }
       })];
     },
     border_width_small: function border_width_small(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-spinner--small": {
           " .pe-md-spinner__circle": {
             borderWidth: vars.border_width_small + "px"
@@ -372,7 +361,7 @@
       })];
     },
     border_width_regular: function border_width_regular(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-spinner--regular": {
           " .pe-md-spinner__circle": {
             borderWidth: vars.border_width_regular + "px"
@@ -381,7 +370,7 @@
       })];
     },
     border_width_medium: function border_width_medium(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-spinner--medium": {
           " .pe-md-spinner__circle": {
             borderWidth: vars.border_width_medium + "px"
@@ -390,7 +379,7 @@
       })];
     },
     border_width_large: function border_width_large(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-spinner--large": {
           " .pe-md-spinner__circle": {
             borderWidth: vars.border_width_large + "px"
@@ -399,7 +388,7 @@
       })];
     },
     border_width_fab: function border_width_fab(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-spinner--fab": {
           " .pe-md-spinner__circle": {
             borderWidth: vars.border_width_fab + "px"
@@ -408,12 +397,12 @@
       })];
     },
     arc_size: function arc_size(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars.arc_size)
       })];
     },
     arc_time: function arc_time(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
           animation: "mdSpinnerLeftSpin " + vars.arc_time + "s " + CURVE_INFINITE
         },
@@ -427,22 +416,14 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return polytheneCssBaseSpinner.layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    }));
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssBaseSpinner.layout });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   /*
-  Derived from https://github.com/PolymerElements/paper-spinner
+  Styling derived from https://github.com/PolymerElements/paper-spinner
 
   @license
   Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -453,13 +434,9 @@
   subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
   */
 
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
-  };
-
   var generalFns = {
     general_styles: function general_styles(selector) {
-      return [sel$1(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-md-spinner__layer": {
           borderColor: "currentcolor"
         }
@@ -468,52 +445,52 @@
   };
 
   var tintFns = function tintFns(tint) {
-    var _ref2;
+    var _ref;
 
-    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_single", function (selector, vars) {
-      return [sel$1(selector, {
+    return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_single", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         color: vars["color_" + tint + "_single"]
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_1", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty$1(_ref, "color_" + tint + "_1", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         ":not(.pe-spinner--single-color)": {
           " .pe-md-spinner__layer-1": {
             borderColor: vars["color_" + tint + "_1"]
           }
         }
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_2", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty$1(_ref, "color_" + tint + "_2", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         ":not(.pe-spinner--single-color)": {
           " .pe-md-spinner__layer-2": {
             borderColor: vars["color_" + tint + "_2"]
           }
         }
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_3", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty$1(_ref, "color_" + tint + "_3", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         ":not(.pe-spinner--single-color)": {
           " .pe-md-spinner__layer-3": {
             borderColor: vars["color_" + tint + "_3"]
           }
         }
       })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_4", function (selector, vars) {
-      return [sel$1(selector, {
+    }), _defineProperty$1(_ref, "color_" + tint + "_4", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         ":not(.pe-spinner--single-color)": {
           " .pe-md-spinner__layer-4": {
             borderColor: vars["color_" + tint + "_4"]
           }
         }
       })];
-    }), _ref2;
+    }), _ref;
   };
 
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
   var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
+    var allVars = _extends({}, componentVars, customVars);
     var currentVars = customVars ? customVars : allVars;
     return Object.keys(currentVars).map(function (v) {
       var varFns = tint === "light" ? lightTintFns : darkTintFns;
@@ -531,9 +508,8 @@
   };
 
   var color = (function (selector, componentVars, customVars) {
-    return polytheneCssBaseSpinner.color(selector, componentVars, customVars).concat([polytheneCssBaseSpinner.style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    polytheneCssBaseSpinner.style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-    style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+    var baseColor = customVars !== undefined ? polytheneCssBaseSpinner.color(selector, componentVars, customVars) : [];
+    return baseColor.concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
     style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
     );
   });

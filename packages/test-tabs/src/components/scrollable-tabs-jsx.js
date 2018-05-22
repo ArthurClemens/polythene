@@ -28,6 +28,7 @@ export default () => (
       scrollIconBackward={{ svg: { content: arrowBackSVG } }}
       scrollIconForward={{ svg: { content: arrowForwardSVG } }}
       tabs={tabButtons}
+      tone="dark"
     />
   </div>
 );

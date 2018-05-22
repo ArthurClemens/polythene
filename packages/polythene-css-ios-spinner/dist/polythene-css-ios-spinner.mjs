@@ -1,12 +1,7 @@
+import { rgba, sel, createLayout, createColor, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { layout, color } from 'polythene-css-base-spinner';
+import { layout } from 'polythene-css-base-spinner';
 import { styleDurationToMs } from 'polythene-core';
-import { styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
 
 var vars$1 = {
   general_styles: true,
@@ -25,13 +20,7 @@ var classes = {
   blade: "pe-ios-spinner__blade"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
-};
 
 var bladeWidth = 9; // percent
 var bladeHeight = 28; // percent
@@ -89,27 +78,15 @@ var varFns = {
   }
 };
 
-var layout$1 = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  }));
-});
+var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
-};
-
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       " .pe-ios-spinner__blade": {
         background: "currentcolor"
       }
@@ -119,40 +96,20 @@ var generalFns = {
 
 var tintFns = function tintFns(tint) {
   return _defineProperty$1({}, "color_" + tint, function (selector, vars$$1) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       color: vars$$1["color_" + tint]
     })];
   });
 };
 
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color$1 = (function (selector, componentVars, customVars) {
-  return color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
-  );
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
-var fns = [layout$1, color$1];
+var fns = [layout$1, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {

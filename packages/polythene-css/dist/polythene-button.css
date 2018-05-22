@@ -230,11 +230,14 @@
 }
 
 .pe-dark-tone.pe-button.pe-text-button .pe-button__content,.pe-dark-tone .pe-button.pe-text-button .pe-button__content {
-  border-color: transparent;
+  border-color: transparent
+}
+
+.pe-dark-tone.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-dark-tone .pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content {
   background-color: transparent
 }
 
-.pe-dark-tone.pe-button.pe-text-button,.pe-dark-tone .pe-button.pe-text-button,.pe-dark-tone.pe-button.pe-text-button:link,.pe-dark-tone .pe-button.pe-text-button:link,.pe-dark-tone.pe-button.pe-text-button:visited,.pe-dark-tone .pe-button.pe-text-button:visited {
+.pe-dark-tone.pe-button.pe-text-button:not(.pe-button--disabled),.pe-dark-tone .pe-button.pe-text-button:not(.pe-button--disabled),.pe-dark-tone.pe-button.pe-text-button:not(.pe-button--disabled):link,.pe-dark-tone .pe-button.pe-text-button:not(.pe-button--disabled):link,.pe-dark-tone.pe-button.pe-text-button:not(.pe-button--disabled):visited,.pe-dark-tone .pe-button.pe-text-button:not(.pe-button--disabled):visited {
   color: #fff
 }
 
@@ -262,7 +265,7 @@
   border-color: hsla(0,0%,100%,.1)
 }
 
-.pe-dark-tone.pe-button.pe-text-button .pe-button__content,.pe-dark-tone .pe-button.pe-text-button .pe-button__content {
+.pe-dark-tone.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-dark-tone .pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content {
   border-color: hsla(0,0%,100%,.22)
 }
 
@@ -271,11 +274,14 @@
 }
 
 .pe-button.pe-text-button .pe-button__content,.pe-light-tone.pe-button.pe-text-button .pe-button__content,.pe-light-tone .pe-button.pe-text-button .pe-button__content {
-  border-color: transparent;
+  border-color: transparent
+}
+
+.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-light-tone.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-light-tone .pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content {
   background-color: transparent
 }
 
-.pe-button.pe-text-button,.pe-button.pe-text-button:link,.pe-button.pe-text-button:visited,.pe-light-tone.pe-button.pe-text-button,.pe-light-tone .pe-button.pe-text-button,.pe-light-tone.pe-button.pe-text-button:link,.pe-light-tone .pe-button.pe-text-button:link,.pe-light-tone.pe-button.pe-text-button:visited,.pe-light-tone .pe-button.pe-text-button:visited {
+.pe-button.pe-text-button:not(.pe-button--disabled),.pe-button.pe-text-button:not(.pe-button--disabled):link,.pe-button.pe-text-button:not(.pe-button--disabled):visited,.pe-light-tone.pe-button.pe-text-button:not(.pe-button--disabled),.pe-light-tone .pe-button.pe-text-button:not(.pe-button--disabled),.pe-light-tone.pe-button.pe-text-button:not(.pe-button--disabled):link,.pe-light-tone .pe-button.pe-text-button:not(.pe-button--disabled):link,.pe-light-tone.pe-button.pe-text-button:not(.pe-button--disabled):visited,.pe-light-tone .pe-button.pe-text-button:not(.pe-button--disabled):visited {
   color: rgba(0,0,0,.87)
 }
 
@@ -303,7 +309,7 @@
   border-color: rgba(0,0,0,.11)
 }
 
-.pe-button.pe-text-button .pe-button__content,.pe-light-tone.pe-button.pe-text-button .pe-button__content,.pe-light-tone .pe-button.pe-text-button .pe-button__content {
+.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-light-tone.pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-light-tone .pe-button.pe-text-button:not(.pe-button--disabled) .pe-button__content {
   border-color: rgba(0,0,0,.24)
 }
 

@@ -1,9 +1,9 @@
-import { vars } from 'polythene-theme';
-import { vars as vars$1, layout, color, style } from 'polythene-css-base-spinner';
-import { mixin, styler } from 'polythene-core-css';
+import { rgba, mixin, sel, createLayout, styler } from 'polythene-core-css';
+import { vars, layout, color } from 'polythene-css-base-spinner';
+import { vars as vars$1 } from 'polythene-theme';
 
 /*
-Derived from https://github.com/PolymerElements/paper-spinner
+Styling derived from https://github.com/PolymerElements/paper-spinner
 
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -13,11 +13,6 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
 
 var arc_size = 270; // degrees - amount of circle the arc takes up
 var arc_time = 1.333; // s - time it takes to expand and contract arc
@@ -35,20 +30,20 @@ var vars$2 = {
   arc_size: arc_size,
   arc_start_degrees: arc_start_degrees,
   arc_time: arc_time,
-  border_width_fab: vars$1.size_fab / vars$1.size_regular * 3,
-  border_width_large: vars$1.size_large / vars$1.size_regular * 3,
-  border_width_medium: vars$1.size_medium / vars$1.size_regular * 3,
+  border_width_fab: vars.size_fab / vars.size_regular * 3,
+  border_width_large: vars.size_large / vars.size_regular * 3,
+  border_width_medium: vars.size_medium / vars.size_regular * 3,
   border_width_regular: 3,
-  border_width_small: vars$1.size_small / vars$1.size_regular * 3,
+  border_width_small: vars.size_small / vars.size_regular * 3,
   rotation_duration: rotation_duration,
 
-  color_light_single: rgba(vars.color_primary),
+  color_light_single: rgba(vars$1.color_primary),
   color_light_1: blue400,
   color_light_2: red500,
   color_light_3: yellow600,
   color_light_4: green500,
 
-  color_dark_single: rgba(vars.color_primary),
+  color_dark_single: rgba(vars$1.color_primary),
   color_dark_1: blue400,
   color_dark_2: red500,
   color_dark_3: yellow600,
@@ -68,8 +63,6 @@ var classes = {
   layer: "pe-md-spinner__layer",
   layerN: "pe-md-spinner__layer-"
 };
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -242,10 +235,6 @@ var layerAnimation = function layerAnimation(vars$$1, num) {
   return _defineProperty({}, ".pe-md-spinner__layer-" + num, {
     animation: "mdSpinnerFillUnfillRotate " + 4 * vars$$1.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars$$1.arc_time + "s " + CURVE_INFINITE
   });
-};
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
 };
 
 var varFns = {
@@ -425,22 +414,14 @@ var varFns = {
   }
 };
 
-var layout$1 = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return layout(selector, componentVars, customVars).concat(Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  }));
-});
+var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /*
-Derived from https://github.com/PolymerElements/paper-spinner
+Styling derived from https://github.com/PolymerElements/paper-spinner
 
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -451,13 +432,9 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
-};
-
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       " .pe-md-spinner__layer": {
         borderColor: "currentcolor"
       }
@@ -466,52 +443,52 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  var _ref2;
+  var _ref;
 
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_single", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_single", function (selector, vars$$1) {
+    return [sel(selector, {
       color: vars$$1["color_" + tint + "_single"]
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_1", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_1", function (selector, vars$$1) {
+    return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-1": {
           borderColor: vars$$1["color_" + tint + "_1"]
         }
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_2", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_2", function (selector, vars$$1) {
+    return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-2": {
           borderColor: vars$$1["color_" + tint + "_2"]
         }
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_3", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_3", function (selector, vars$$1) {
+    return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-3": {
           borderColor: vars$$1["color_" + tint + "_3"]
         }
       }
     })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_4", function (selector, vars$$1) {
-    return [sel$1(selector, {
+  }), _defineProperty$1(_ref, "color_" + tint + "_4", function (selector, vars$$1) {
+    return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-4": {
           borderColor: vars$$1["color_" + tint + "_4"]
         }
       }
     })];
-  }), _ref2;
+  }), _ref;
 };
 
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
 var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
+  var allVars = _extends({}, componentVars, customVars);
   var currentVars = customVars ? customVars : allVars;
   return Object.keys(currentVars).map(function (v) {
     var varFns = tint === "light" ? lightTintFns : darkTintFns;
@@ -521,7 +498,7 @@ var createStyle = function createStyle(selector, componentVars, customVars, tint
   });
 };
 
-var style$1 = function style$$1(scopes, selector, componentVars, customVars, tint) {
+var style = function style(scopes, selector, componentVars, customVars, tint) {
   var selectors = scopes.map(function (s) {
     return s + selector;
   }).join(",");
@@ -529,10 +506,9 @@ var style$1 = function style$$1(scopes, selector, componentVars, customVars, tin
 };
 
 var color$1 = (function (selector, componentVars, customVars) {
-  return color(selector, componentVars, customVars).concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-  style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
+  var baseColor = customVars !== undefined ? color(selector, componentVars, customVars) : [];
+  return baseColor.concat([style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
+  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")] // normal, has/inside light tone
   );
 });
 

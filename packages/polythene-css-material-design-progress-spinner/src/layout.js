@@ -1,5 +1,5 @@
-import { layout as materialDesignSpinnerLayout } from "polythene-css-material-design-spinner";
-import { sel } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-material-design-spinner";
+import { sel, createLayout } from "polythene-core-css";
 
 const varFns = {
   general_styles: selector => [
@@ -36,18 +36,4 @@ const varFns = {
   ]
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return materialDesignSpinnerLayout(selector, componentVars, customVars)
-    .concat(Object.keys(currentVars)
-      .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](selector, allVars)
-          : null
-      ))
-      .filter(s => s)
-    );
-};
+export default createLayout({ varFns, superLayout });

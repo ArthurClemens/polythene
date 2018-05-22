@@ -5,7 +5,9 @@ export default ({ renderer: h, RaisedButton }) => {
   RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
     color_light_text:       "#fff",
-    letter_spacing:         0
+    letter_spacing:         0,
+    text_transform:         "initial",
+    font_size:              16
   });
 
   RaisedButtonCSS.addStyle(".tests-raised-button-bordered-button", {
@@ -67,7 +69,7 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Themed button (color, letter spacing)",
+      name: "Themed button (color, font size, letter spacing, text transform)",
       component: RaisedButton,
       attrs: {
         label: "Colored button",

@@ -1,8 +1,8 @@
 import { styler } from "polythene-core-css";
 import vars from "./vars";
 import classes from "polythene-css-classes/raised-button";
-import layout from "./layout";
-import color from "./color";
+import { layout } from "./layout";
+import { color } from "./color";
 
 const fns = [layout, color];
 const selector = `.${classes.component.replace(/ /g, ".")}`;
@@ -17,4 +17,4 @@ const getStyle = (customSelector, customVars) =>
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle, vars };
+export { addStyle, getStyle, vars, color, layout };
