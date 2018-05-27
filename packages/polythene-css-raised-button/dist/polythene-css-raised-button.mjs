@@ -1,7 +1,19 @@
-import { rgba, styler } from 'polythene-core-css';
+import { createColor, createLayout, rgba, styler } from 'polythene-core-css';
+import { color, layout } from 'polythene-css-button';
 import { vars } from 'polythene-theme';
-import { layout, color } from 'polythene-css-button';
-export { color, layout } from 'polythene-css-button';
+
+var classes = {
+  component: "pe-raised-button",
+  super: "pe-button pe-text-button"
+};
+
+var color$1 = createColor({
+  superColor: color
+});
+
+var layout$1 = createLayout({
+  superLayout: layout
+});
 
 var vars$1 = {
   general_styles: true,
@@ -30,16 +42,8 @@ var vars$1 = {
   // color_dark_hover_background:     vars.color_primary_active,
 };
 
-var classes = {
-  component: "pe-button pe-text-button pe-raised-button"
-};
-
-// Only used for theme styles
-
-// Only used for theme styles
-
-var fns = [layout, color];
-var selector = "." + classes.component.replace(/ /g, ".");
+var fns = [layout$1, color$1];
+var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
   return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
@@ -51,4 +55,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };

@@ -27,9 +27,7 @@
 
 .pe-notification.pe-snackbar .pe-notification__content {
   width: 100%;
-  margin: 0 auto;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0
+  margin: 0 auto
 }
 
 @media (min-width:600px) {
@@ -40,7 +38,9 @@
 
 .pe-notification.pe-snackbar .pe-notification__content {
   border-top-left-radius: 0;
-  border-top-right-radius: 0
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0
 }
 
 @media (min-width:600px) {
@@ -51,12 +51,10 @@
 }
 
 .pe-dark-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-dark-tone .pe-notification.pe-snackbar .pe-notification__content {
-  background: #222;
-  color: hsla(0,0%,100%,.87)
+  background: #222
 }
 
 .pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,.pe-notification.pe-snackbar .pe-notification__content {
-  background: #fff;
-  color: #000
+  background: #fff
 }
 /*# sourceMappingURL=polythene-snackbar.css.map */

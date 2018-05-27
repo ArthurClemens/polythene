@@ -75,6 +75,7 @@ export const createProps = (vnode, { keys: k }) => {
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
       className: [
+        classes.super,
         attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
         attrs.dropdown ? classes.hasDropdown : null,

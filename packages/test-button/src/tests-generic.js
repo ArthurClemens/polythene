@@ -117,6 +117,24 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Option: disabled",
+      component: Button,
+      attrs: {
+        label: "Disabled",
+        disabled: true
+      }
+    },
+    {
+      name: "Themed Button: (option: border) (disabled)",
+      component: Button,
+      attrs: {
+        label: "Border",
+        className: "tests-button-bordered-button",
+        border: true,
+        disabled: true
+      }
+    },
+    {
       name: "Option: selected",
       component: Button,
       attrs: {

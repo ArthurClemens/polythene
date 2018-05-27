@@ -1,5 +1,26 @@
-export { default as layout } from "./layout";
-export { default as color } from "./color";
-export { default as vars } from "./vars";
+import classes from "polythene-css-classes/selection-control";
+import color from "./color";
+import layout from "./layout";
+import vars from "./vars";
+import { styler } from "polythene-core-css";
 
-export const getStyle = () => null;
+const fns = [layout, color];
+const selector = `.${classes.component}`;
+
+const addStyle = (customSelector, customVars) => 
+  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+
+const getStyle = (customSelector, customVars) => 
+  customSelector
+    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
+    : styler.createStyleSheets([selector], vars, fns);
+
+styler.generateStyles([selector], vars, fns);
+
+export {
+  addStyle,
+  color,
+  getStyle,
+  layout,
+  vars,
+};

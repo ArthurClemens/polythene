@@ -1,46 +1,5 @@
-import { rgba, mixin, sel, selectorRTL, styler } from 'polythene-core-css';
+import { sel, createColor, mixin, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-
-var vars$1 = {
-  general_styles: true,
-
-  animation_duration: vars.animation_duration,
-  label_font_size: 16,
-  label_font_weight: 400,
-  label_line_height: 20,
-  label_padding_after: 0,
-  label_padding_before: vars.grid_unit * 1, // 4
-  label_text_transform: "initial",
-  label_top_margin_factor: 1 / 12, // align with icon
-  padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2, // 12
-  padding_compact: (vars.grid_unit_icon_button - vars.unit_icon_size) / 3, // 8
-
-  color_background: "transparent", // only specify this variable to get all 2 states
-  // theme specific background colors may be set in theme; disabled by default
-  // color_light_background:    "none",
-  // color_dark_background:     "none",
-  // color_light_hover:         "inherit",
-  // color_dark_hover:          "inherit",
-  // color_light_label_hover:   "inherit",
-  // color_dark_label_hover:    "inherit",
-
-  color_light: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_focus_opacity: vars.blend_light_background_hover_medium,
-  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-
-  color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
-  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
-
-  // hover colors may be set in theme; disabled by default
-
-  // color_light_hover_background:         "currentColor",
-  // color_dark_hover_background:          "currentColor",
-};
 
 var classes = {
   component: "pe-button pe-icon-button",
@@ -57,6 +16,92 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
+        " .pe-button__focus": {
+          backgroundColor: "currentcolor"
+        }
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
+      "&, .pe-icon-button__label": {
+        color: vars$$1["color_" + tint]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-icon-button__content": {
+        backgroundColor: vars$$1["color_" + tint + "_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
+      opacity: vars$$1["color_" + tint + "_wash_opacity"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_focus_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
+        " .pe-button__focus": {
+          opacity: vars$$1["color_" + tint + "_focus_opacity"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-button--disabled": {
+        " .pe-button__content, .pe-icon-button__label": {
+          color: vars$$1["color_" + tint + "_disabled"]
+        }
+      }
+    })];
+  }), _ref;
+};
+
+var hoverTintFns = function hoverTintFns(tint) {
+  var _ref2;
+
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-icon-button__content": {
+        color: vars$$1["color_" + tint + "_hover"]
+      }
+    })];
+  }), _defineProperty(_ref2, "color_" + tint + "_label_hover", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-icon-button__label": {
+        color: vars$$1["color_" + tint + "_label_hover"]
+      }
+    })];
+  }), _defineProperty(_ref2, "color_" + tint + "_background_hover", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-icon-button__content": {
+        backgroundColor: vars$$1["color_" + tint + "_background_hover"]
+      }
+    })];
+  }), _ref2;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var lightTintHoverFns = hoverTintFns("light");
+var darkTintHoverFns = hoverTintFns("dark");
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var alignSide = function alignSide(isRTL) {
   return function (vars$$1) {
     return {};
@@ -67,13 +112,13 @@ var alignRight = alignSide(true);
 
 var _label_padding_before = function _label_padding_before(selector, vars$$1, isRTL) {
   return sel(selector, {
-    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.label_padding_before + "px")
+    " .pe-icon-button__label": _defineProperty$1({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.label_padding_before + "px")
   });
 };
 
 var _label_padding_after = function _label_padding_after(selector, vars$$1, isRTL) {
   return sel(selector, {
-    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars$$1.label_padding_after + "px")
+    " .pe-icon-button__label": _defineProperty$1({}, isRTL ? "paddingLeft" : "paddingRight", vars$$1.label_padding_after + "px")
   });
 };
 
@@ -99,7 +144,7 @@ var varFns = {
         borderRadius: "50%",
         pointerEvents: "none"
       }
-    }, _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars$$1)])])];
+    }, _defineProperty$1({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars$$1)])])];
   },
   padding: function padding(selector, vars$$1) {
     return [sel(selector, {
@@ -158,127 +203,48 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  animation_duration: vars.animation_duration,
+  label_font_size: 16,
+  label_font_weight: 400,
+  label_line_height: 20,
+  label_padding_after: 0,
+  label_padding_before: vars.grid_unit * 1, // 4
+  label_text_transform: "initial",
+  label_top_margin_factor: 1 / 12, // align with icon
+  padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2, // 12
+  padding_compact: (vars.grid_unit_icon_button - vars.unit_icon_size) / 3, // 8
 
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          backgroundColor: "currentcolor"
-        }
-      }
-    })];
-  }
+  color_background: "transparent", // only specify this variable to get all 2 states
+  // theme specific background colors may be set in theme; disabled by default
+  // color_light_background:    "none",
+  // color_dark_background:     "none",
+  // color_light_hover:         "inherit",
+  // color_dark_hover:          "inherit",
+  // color_light_label_hover:   "inherit",
+  // color_dark_label_hover:    "inherit",
+
+  color_light: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_focus_opacity: vars.blend_light_background_hover_medium,
+  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+
+  color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
+  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+
+  // hover colors may be set in theme; disabled by default
+
+  // color_light_background_hover:         "currentColor",
+  // color_dark_background_hover:          "currentColor",
 };
-
-var tintFns = function tintFns(tint) {
-  var _ref;
-
-  return _ref = {}, _defineProperty$1(_ref, "color_" + tint, function (selector, vars$$1) {
-    return [sel(selector, {
-      "&, .pe-icon-button__label": {
-        color: vars$$1["color_" + tint]
-      }
-    })];
-  }), _defineProperty$1(_ref, "color_background", function color_background(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-icon-button__content": {
-        backgroundColor: vars$$1["color_background"]
-      }
-    })];
-  }), _defineProperty$1(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-icon-button__content": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
-      }
-    })];
-  }), _defineProperty$1(_ref, "color_" + tint + "_wash_opacity", function (selector, vars$$1) {
-    return [sel(selector, {
-      opacity: vars$$1["color_" + tint + "_wash_opacity"]
-    })];
-  }), _defineProperty$1(_ref, "color_" + tint + "_focus_opacity", function (selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          opacity: vars$$1["color_" + tint + "_focus_opacity"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-button--disabled": {
-        " .pe-button__content, .pe-icon-button__label": {
-          color: vars$$1["color_" + tint + "_disabled"]
-        }
-      }
-    })];
-  }), _ref;
-};
-
-var hoverTintFns = function hoverTintFns(tint) {
-  return _defineProperty$1({}, "color_" + tint + "_label_hover", function (selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-icon-button__label": {
-        color: vars$$1["color_" + tint + "_label_hover"]
-      }
-    })];
-  });
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var lightTintHoverFns = hoverTintFns("light");
-var darkTintHoverFns = hoverTintFns("dark");
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
-  var selectors = [].concat(scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(",")).concat(scopes.map(function (s) {
-    return s + selector + ":active";
-  }).join(","));
-  return createStyle(selectors, componentVars, customVars, tint, true);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-  // buttonNoTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, customVars, "dark"), // inside dark tone
-  // buttonNoTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light"),
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component.replace(/ /g, ".");
@@ -293,4 +259,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

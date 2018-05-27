@@ -5,8 +5,9 @@ const sizes = size => ({
   height: size + "px"
 });
 
-const raisedSize = (size, vars) => {
-  const { padding, paddedSize } = vars.raisedSize(size);
+const raisedSize = size => {
+  const padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
+  const paddedSize = size + padding * 2;
   return {
     width:   paddedSize + "px",
     height:  paddedSize + "px",
@@ -55,7 +56,7 @@ const varFns = {
       ".pe-spinner--small": sizes(vars.size_small),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--small": raisedSize(vars.size_small, vars),
+        ".pe-spinner--small": raisedSize(vars.size_small),
       }
     })
   ],
@@ -64,7 +65,7 @@ const varFns = {
       ".pe-spinner--regular": sizes(vars.size_regular),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--regular": raisedSize(vars.size_regular, vars),
+        ".pe-spinner--regular": raisedSize(vars.size_regular),
       }
     })
   ],
@@ -73,7 +74,7 @@ const varFns = {
       ".pe-spinner--medium": sizes(vars.size_medium),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--medium": raisedSize(vars.size_medium, vars),
+        ".pe-spinner--medium": raisedSize(vars.size_medium),
       }
     })
   ],
@@ -82,7 +83,7 @@ const varFns = {
       ".pe-spinner--large": sizes(vars.size_large),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--large": raisedSize(vars.size_large, vars),
+        ".pe-spinner--large": raisedSize(vars.size_large),
       }
     })
   ],
@@ -91,7 +92,7 @@ const varFns = {
       ".pe-spinner--fab": sizes(vars.size_fab),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--fab": raisedSize(vars.size_fab, vars)
+        ".pe-spinner--fab": raisedSize(vars.size_fab)
       }
     })
   ],

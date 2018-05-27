@@ -1,6 +1,5 @@
-import { mixin, flex, styler } from 'polythene-core-css';
+import { sel, createColor, mixin, flex, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { vars as vars$1 } from 'polythene-core-toolbar';
 
 var classes = {
 
@@ -28,13 +27,44 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
 };
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_text"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-toolbar--border": {
+        borderColor: vars$$1["color_" + tint + "_border"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var breakpoint = function breakpoint(breakpointSel) {
   return function (selector, o) {
-    return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
+    return _defineProperty$1({}, breakpointSel, _defineProperty$1({}, selector, o));
   };
 };
 
@@ -42,7 +72,7 @@ var indent_padding_side = function indent_padding_side(selector, vars$$1, isRTL)
   var _peToolbar__title;
 
   return sel(selector, {
-    " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", vars$$1.indent - vars$$1.padding_side + "px"), _peToolbar__title)
+    " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty$1(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty$1(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", vars$$1.indent - vars$$1.padding_side + "px"), _peToolbar__title)
   });
 };
 
@@ -50,17 +80,13 @@ var title_padding_title_after_icon_padding = function title_padding_title_after_
   var _spanPeToolbar, _spanPe;
 
   return sel(selector, {
-    " > span, .pe-toolbar__title": (_spanPeToolbar = {}, _defineProperty(_spanPeToolbar, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_spanPeToolbar, isRTL ? "marginRight" : "marginLeft", vars$$1.title_padding + "px"), _spanPeToolbar),
-    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent, * + .pe-toolbar__title.pe-toolbar__title--indent": (_spanPe = {}, _defineProperty(_spanPe, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_spanPe, isRTL ? "marginRight" : "marginLeft", vars$$1.title_after_icon_padding + "px"), _spanPe),
+    " > span, .pe-toolbar__title": (_spanPeToolbar = {}, _defineProperty$1(_spanPeToolbar, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty$1(_spanPeToolbar, isRTL ? "marginRight" : "marginLeft", vars$$1.title_padding + "px"), _spanPeToolbar),
+    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent, * + .pe-toolbar__title.pe-toolbar__title--indent": (_spanPe = {}, _defineProperty$1(_spanPe, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty$1(_spanPe, isRTL ? "marginRight" : "marginLeft", vars$$1.title_after_icon_padding + "px"), _spanPe),
     " .pe-toolbar__title--center": {
       marginLeft: vars$$1.title_padding + "px",
       marginRight: vars$$1.title_padding + "px"
     }
   });
-};
-
-var selectorRTL = function selectorRTL(selector) {
-  return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
 };
 
 var breakpointPhoneOnly = breakpoint("@media (min-width: " + vars.breakpoint_for_phone_only + "px) and (orientation: landscape)");
@@ -162,75 +188,32 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var vars$1 = {
+  general_styles: true,
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
+  font_size: 18,
+  height: vars.grid_unit_component * 7, // 56
+  height_compact: vars.grid_unit_component * 6, // 48
+  height_large: vars.grid_unit_component * 8, // 64
+  indent: vars.unit_indent,
+  line_height: vars.line_height,
+  padding_side: padding_side,
+  padding_side_large: vars.grid_unit_component * 3 - 12, // 24 - 12 = 12
+  title_after_icon_padding: vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side, // 72 - 48 - 4 = 20
+  title_padding: 12, // icon padding
+
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_background: rgba(vars.color_light_background),
+
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_background: rgba(vars.color_dark_background)
 };
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [];
-  } // eslint-disable-line no-unused-vars
-};
-
-var tintFns = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      color: vars$$1["color_" + tint + "_text"]
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-toolbar--border": {
-        borderColor: vars$$1["color_" + tint + "_border"]
-      }
-    })];
-  }), _ref2;
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -245,4 +228,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

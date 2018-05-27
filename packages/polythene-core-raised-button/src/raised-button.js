@@ -92,6 +92,7 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
     {},
     {
       parentClassName: [
+        classes.super,
         attrs.parentClassName || classes.component
       ].join(" "),
       animateOnTap: false,

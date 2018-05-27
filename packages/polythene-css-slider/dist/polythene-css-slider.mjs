@@ -1,86 +1,5 @@
+import { sel, createColor, mixin, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, flex, styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var lightForeground = vars.color_light_foreground;
-var darkForeground = vars.color_dark_foreground;
-var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
-var thumb_size = 12;
-var thumb_touch_size = Math.max(40, thumb_size);
-var thumb_border_width = 2;
-var active_thumb_scale = 3 / 2;
-var disabled_thumb_scale = 1 / 2;
-var active_pin_thumb_scale = 2 / 6;
-var largestThumbSize = active_thumb_scale * thumb_size;
-var largestElement = Math.max(thumb_touch_size, largestThumbSize);
-var height = Math.max(52, largestThumbSize);
-var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
-var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
-
-var vars$1 = {
-  general_styles: true,
-
-  active_pin_thumb_scale: active_pin_thumb_scale,
-  active_thumb_scale: active_thumb_scale,
-  animation_duration: vars.animation_duration,
-  bar_height: 2,
-  disabled_thumb_scale: disabled_thumb_scale,
-  height: height,
-  horizontal_layout_side_spacing: horizontal_layout_side_spacing,
-  pin_font_size: 10,
-  pin_height: 32,
-  pin_width: 26,
-  side_spacing: side_spacing,
-  step_width: 2,
-  thumb_border_width: thumb_border_width,
-  thumb_size: thumb_size,
-  thumb_touch_size: thumb_touch_size,
-  track_height: height,
-
-  color_light_track_active: rgba(lightForeground, .38),
-  color_light_track_inactive: rgba(lightForeground, .26),
-  color_light_track_value: "currentColor",
-  // background color may be set in theme; disabled by default
-  // color_light_thumb_background:        undefined,
-  color_light_thumb_off: rgba(lightForeground, .26),
-  color_light_thumb_off_focus: rgba(lightForeground),
-  color_light_thumb_off_focus_opacity: .08,
-  color_light_thumb_on: rgba(activeColor),
-  color_light_thumb_on_focus_opacity: .11,
-  color_light_thumb_inactive: rgba(lightForeground, .26),
-  color_light_tick: rgba(lightForeground, 1),
-  color_light_tick_value: rgba(lightForeground, 1),
-  color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_icon: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_label: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_pin_label: "#fff",
-  color_light_pin_background: "currentColor",
-
-  color_dark_track_active: rgba(darkForeground, .3),
-  color_dark_track_inactive: rgba(darkForeground, .2),
-  color_dark_track_value: "currentColor",
-  // background color may be set in theme; disabled by default
-  // color_dark_thumb_background:         undefined,
-  color_dark_thumb_off: rgba(darkForeground, .2),
-  color_dark_thumb_off_focus: rgba(darkForeground),
-  color_dark_thumb_off_focus_opacity: .08,
-  color_dark_thumb_on: rgba(activeColor),
-  color_dark_thumb_on_focus_opacity: .11,
-  color_dark_thumb_inactive: rgba(darkForeground, .2),
-  color_dark_tick: rgba(darkForeground, 1),
-  color_dark_tick_value: rgba(darkForeground, 1),
-  color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_pin_label: "#fff",
-  color_dark_pin_background: "currentColor"
-};
 
 var classes = {
   component: "pe-slider",
@@ -114,6 +33,205 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-slider__control": {
+        ":after": {
+          borderColor: "transparent"
+        }
+      },
+      " .pe-slider__pin": {
+        backgroundColor: "currentcolor",
+
+        ":before": {
+          backgroundColor: "inherit"
+        }
+      },
+      ":not(.pe-slider--disabled)": {
+        " .pe-slider__control": {
+          backgroundColor: "currentcolor"
+        },
+        " .pe-slider__track-value .pe-slider__track-bar-value": {
+          background: "currentcolor"
+        },
+        ".pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
+        &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
+          backgroundColor: "currentcolor"
+        }
+      },
+      ".pe-slider--min:not(.pe-slider--disabled):not(.pe-slider--ticks)": {
+        " .pe-slider__control": {
+          backgroundColor: "transparent"
+        },
+        " .pe-slider__thumb": {
+          opacity: 0
+        },
+        ".pe-slider--ticks": {
+          " .pe-slider__control:after": {
+            borderColor: "transparent"
+          }
+        }
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        " .pe-icon": {
+          color: vars$$1["color_" + tint + "_icon"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        " .pe-slider__label": {
+          color: vars$$1["color_" + tint + "_label"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_thumb_on"] // override by specifying "color"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_track_inactive", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__track-bar-value": {
+        background: vars$$1["color_" + tint + "_track_inactive"]
+      },
+      ".pe-slider--min:not(.pe-slider--disabled):not(.pe-slider--ticks)": {
+        " .pe-slider__control:after": {
+          borderColor: vars$$1["color_" + tint + "_track_inactive"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_tick", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__tick": {
+        background: vars$$1["color_" + tint + "_tick"]
+      },
+      ".pe-slider--min:not(.pe-slider--disabled)": {
+        ".pe-slider--tick": {
+          backgroundColor: vars$$1["color_" + tint + "_tick"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_tick_value", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__tick--value": {
+        background: vars$$1["color_" + tint + "_tick_value"]
+      },
+      ".pe-slider--min:not(.pe-slider--disabled)": {
+        ".pe-slider--tick--value": {
+          backgroundColor: vars$$1["color_" + tint + "_tick_value"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_icon", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-icon": {
+        color: vars$$1["color_" + tint + "_disabled_icon"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_label", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__label": {
+        color: vars$$1["color_" + tint + "_disabled_label"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_track_active", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-slider--active": {
+        " .pe-slider__track-bar-value": {
+          background: vars$$1["color_" + tint + "_track_active"]
+        }
+      },
+      ".pe-slider--min:not(.pe-slider--disabled)": {
+        ".pe-slider--active .pe-slider__control:after": {
+          borderColor: vars$$1["color_" + tint + "_track_active"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_inactive", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-slider--disabled": {
+        " .pe-slider__control": {
+          background: vars$$1["color_" + tint + "_thumb_inactive"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        " .pe-slider__control": {
+          backgroundColor: vars$$1["color_" + tint + "_thumb_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        " .pe-slider__control": {
+          ":before": {
+            opacity: vars$$1["color_" + tint + "_thumb_off_focus_opacity"]
+          }
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        ".pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
+        .pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before": {
+          backgroundColor: vars$$1["color_" + tint + "_thumb_off_focus"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_on_focus_opacity", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        ".pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
+        &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
+          opacity: vars$$1["color_" + tint + "_thumb_on_focus_opacity"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_pin_label", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__pin:after": {
+        color: vars$$1["color_" + tint + "_pin_label"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_pin_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-slider__pin": {
+        backgroundColor: vars$$1["color_" + tint + "_pin_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_track_value", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-slider--disabled)": {
+        " .pe-slider__track-value .pe-slider__track-bar-value": {
+          backgroundColor: vars$$1["color_" + tint + "_track_value"]
+        }
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
 var getThumbSize = function getThumbSize(vars$$1) {
   var thumbSize = Math.max(vars$$1.thumb_size, 2 * vars$$1.thumb_border_width);
   var barOffset = thumbSize / 2;
@@ -134,10 +252,6 @@ var getBorderWidth = function getBorderWidth(vars$$1) {
     disabledBorderWidth: 1 / vars$$1.disabled_thumb_scale * vars$$1.thumb_border_width,
     scaledBorderWidth: scaledBorderWidth
   };
-};
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
 };
 
 var thumb_size_thumb_border_width_disabled_thumb_scale = function thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars$$1) {
@@ -518,241 +632,85 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, vars$$1, customVars) {
-  var allVars = _extends({}, vars$$1, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
+var layout = createLayout({
+  varFns: varFns
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var lightForeground = vars.color_light_foreground;
+var darkForeground = vars.color_dark_foreground;
+var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+var thumb_size = 12;
+var thumb_touch_size = Math.max(40, thumb_size);
+var thumb_border_width = 2;
+var active_thumb_scale = 3 / 2;
+var disabled_thumb_scale = 1 / 2;
+var active_pin_thumb_scale = 2 / 6;
+var largestThumbSize = active_thumb_scale * thumb_size;
+var largestElement = Math.max(thumb_touch_size, largestThumbSize);
+var height = Math.max(52, largestThumbSize);
+var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
+var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var vars$1 = {
+  general_styles: true,
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
+  active_pin_thumb_scale: active_pin_thumb_scale,
+  active_thumb_scale: active_thumb_scale,
+  animation_duration: vars.animation_duration,
+  bar_height: 2,
+  disabled_thumb_scale: disabled_thumb_scale,
+  height: height,
+  horizontal_layout_side_spacing: horizontal_layout_side_spacing,
+  pin_font_size: 10,
+  pin_height: 32,
+  pin_width: 26,
+  side_spacing: side_spacing,
+  step_width: 2,
+  thumb_border_width: thumb_border_width,
+  thumb_size: thumb_size,
+  thumb_touch_size: thumb_touch_size,
+  track_height: height,
+
+  color_light_track_active: rgba(lightForeground, .38),
+  color_light_track_inactive: rgba(lightForeground, .26),
+  color_light_track_value: "currentColor",
+  // background color may be set in theme; disabled by default
+  // color_light_thumb_background:        undefined,
+  color_light_thumb_off: rgba(lightForeground, .26),
+  color_light_thumb_off_focus: rgba(lightForeground),
+  color_light_thumb_off_focus_opacity: .08,
+  color_light_thumb_on: rgba(activeColor),
+  color_light_thumb_on_focus_opacity: .11,
+  color_light_thumb_inactive: rgba(lightForeground, .26),
+  color_light_tick: rgba(lightForeground, 1),
+  color_light_tick_value: rgba(lightForeground, 1),
+  color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_icon: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_disabled_label: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_pin_label: "#fff",
+  color_light_pin_background: "currentColor",
+
+  color_dark_track_active: rgba(darkForeground, .3),
+  color_dark_track_inactive: rgba(darkForeground, .2),
+  color_dark_track_value: "currentColor",
+  // background color may be set in theme; disabled by default
+  // color_dark_thumb_background:         undefined,
+  color_dark_thumb_off: rgba(darkForeground, .2),
+  color_dark_thumb_off_focus: rgba(darkForeground),
+  color_dark_thumb_off_focus_opacity: .08,
+  color_dark_thumb_on: rgba(activeColor),
+  color_dark_thumb_on_focus_opacity: .11,
+  color_dark_thumb_inactive: rgba(darkForeground, .2),
+  color_dark_tick: rgba(darkForeground, 1),
+  color_dark_tick_value: rgba(darkForeground, 1),
+  color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_pin_label: "#fff",
+  color_dark_pin_background: "currentColor"
 };
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
-      " .pe-slider__control": {
-        ":after": {
-          borderColor: "transparent"
-        }
-      },
-      " .pe-slider__pin": {
-        backgroundColor: "currentcolor",
-
-        ":before": {
-          backgroundColor: "inherit"
-        }
-      },
-      ":not(.pe-slider--disabled)": {
-        " .pe-slider__control": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-slider__track-value .pe-slider__track-bar-value": {
-          background: "currentcolor"
-        },
-        ".pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
-        &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
-          backgroundColor: "currentcolor"
-        }
-      },
-      ".pe-slider--min:not(.pe-slider--disabled):not(.pe-slider--ticks)": {
-        " .pe-slider__control": {
-          backgroundColor: "transparent"
-        },
-        " .pe-slider__thumb": {
-          opacity: 0
-        },
-        ".pe-slider--ticks": {
-          " .pe-slider__control:after": {
-            borderColor: "transparent"
-          }
-        }
-      }
-    })];
-  }
-};
-
-var tintFns = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_icon", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        " .pe-icon": {
-          color: vars$$1["color_" + tint + "_icon"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_label", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        " .pe-slider__label": {
-          color: vars$$1["color_" + tint + "_label"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_on", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      color: vars$$1["color_" + tint + "_thumb_on"] // override by specifying "color"
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_track_inactive", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__track-bar-value": {
-        background: vars$$1["color_" + tint + "_track_inactive"]
-      },
-      ".pe-slider--min:not(.pe-slider--disabled):not(.pe-slider--ticks)": {
-        " .pe-slider__control:after": {
-          borderColor: vars$$1["color_" + tint + "_track_inactive"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_tick", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__tick": {
-        background: vars$$1["color_" + tint + "_tick"]
-      },
-      ".pe-slider--min:not(.pe-slider--disabled)": {
-        ".pe-slider--tick": {
-          backgroundColor: vars$$1["color_" + tint + "_tick"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_tick_value", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__tick--value": {
-        background: vars$$1["color_" + tint + "_tick_value"]
-      },
-      ".pe-slider--min:not(.pe-slider--disabled)": {
-        ".pe-slider--tick--value": {
-          backgroundColor: vars$$1["color_" + tint + "_tick_value"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_disabled_icon", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-icon": {
-        color: vars$$1["color_" + tint + "_disabled_icon"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_disabled_label", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__label": {
-        color: vars$$1["color_" + tint + "_disabled_label"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_track_active", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-slider--active": {
-        " .pe-slider__track-bar-value": {
-          background: vars$$1["color_" + tint + "_track_active"]
-        }
-      },
-      ".pe-slider--min:not(.pe-slider--disabled)": {
-        ".pe-slider--active .pe-slider__control:after": {
-          borderColor: vars$$1["color_" + tint + "_track_active"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_inactive", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-slider--disabled": {
-        " .pe-slider__control": {
-          background: vars$$1["color_" + tint + "_thumb_inactive"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        " .pe-slider__control": {
-          backgroundColor: vars$$1["color_" + tint + "_thumb_background"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_off_focus_opacity", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        " .pe-slider__control": {
-          ":before": {
-            opacity: vars$$1["color_" + tint + "_thumb_off_focus_opacity"]
-          }
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_off_focus", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        ".pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
-        .pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before": {
-          backgroundColor: vars$$1["color_" + tint + "_thumb_off_focus"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_thumb_on_focus_opacity", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        ".pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
-        &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
-          opacity: vars$$1["color_" + tint + "_thumb_on_focus_opacity"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_pin_label", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__pin:after": {
-        color: vars$$1["color_" + tint + "_pin_label"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_pin_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-slider__pin": {
-        backgroundColor: vars$$1["color_" + tint + "_pin_background"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_track_value", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ":not(.pe-slider--disabled)": {
-        " .pe-slider__track-value .pe-slider__track-bar-value": {
-          backgroundColor: vars$$1["color_" + tint + "_track_value"]
-        }
-      }
-    })];
-  }), _ref2;
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -767,4 +725,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

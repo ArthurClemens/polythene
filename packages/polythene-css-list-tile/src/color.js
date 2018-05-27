@@ -1,4 +1,4 @@
-import { sel } from "polythene-core-css";
+import { sel, createColor } from "polythene-core-css";
 
 const generalFns = ({
   general_styles: selector => [
@@ -105,21 +105,27 @@ const tintFns = tint => ({
 const hoverTintFns = tint => ({
   ["color_" + tint + "_hover"]: (selector, vars) => [
     sel(selector, {
-      color: vars["color_" + tint + "_hover"],
+      ".pe-list-tile--hoverable": {
+        color: vars["color_" + tint + "_hover"],
+      }
     })
   ],
   ["color_" + tint + "_hover_background"]: (selector, vars) => [
     sel(selector, {
-      " .pe-list-tile__primary, .pe-list-tile__secondary": {
-        backgroundColor: vars["color_" + tint + "_hover_background"]
-      },
+      ".pe-list-tile--hoverable": {
+        " .pe-list-tile__primary, .pe-list-tile__secondary": {
+          backgroundColor: vars["color_" + tint + "_hover_background"]
+        },
+      }
     })
   ],
   ["color_" + tint + "_hover_front"]: (selector, vars) => [
     sel(selector, {
-      " .pe-list-tile__primary .pe-list-tile__content-front": {
-        color: vars["color_" + tint + "_hover_front"]
-      },
+      ".pe-list-tile--hoverable": {
+        " .pe-list-tile__primary .pe-list-tile__content-front": {
+          color: vars["color_" + tint + "_hover_front"]
+        },
+      }
     })
   ],
 });
@@ -130,50 +136,6 @@ const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
 const lightTintHoverFns = hoverTintFns("light");
 const darkTintHoverFns = hoverTintFns("dark");
 
-const createStyle = (selector, componentVars, customVars, tint, hover) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => {
-    const varFns = tint === "light"
-      ? hover
-        ? lightTintHoverFns
-        : lightTintFns
-      : hover
-        ? darkTintHoverFns
-        : darkTintFns;
-    return varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null;
-  }).filter(s => s);
-};
-
-const style = (scopes, selector, componentVars, customVars, tint) => {
-  const selectors = scopes.map(s => s + selector).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-export const noTouchStyle = (scopes, selector, componentVars, customVars, tint) => {
-  const selectors = []
-    .concat(scopes.map(s => s + selector + ":hover").join(","))
-    .concat(scopes.map(s => s + selector + ":active").join(","));
-  return createStyle(selectors, componentVars, customVars, tint, true);
-};
-
-export default (selector, componentVars, customVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark" ), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-
-  noTouchStyle([
-    "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable",
-    "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable "
-  ], selector, componentVars, customVars, "dark" ), // has/inside dark tone
-
-  noTouchStyle([
-    "html.pe-no-touch .pe-list-tile--hoverable",
-    "html.pe-no-touch .pe-list-tile--hoverable ",
-    "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable",
-    "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable "
-  ], selector, componentVars, customVars, "light" ), // normal, has/inside light tone
-];
+export default createColor({
+  varFns: { lightTintFns, darkTintFns, lightTintHoverFns, darkTintHoverFns }
+});

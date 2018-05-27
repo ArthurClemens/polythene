@@ -1,61 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var padding_v = 24;
-  var padding_actions_v = 8;
-  var actions_button_margin_v = 2;
-
-  var vars = {
-    general_styles: true,
-
-    actions_button_margin_h: polytheneTheme.vars.grid_unit,
-    actions_button_margin_v: actions_button_margin_v,
-    actions_padding_h: 8,
-    actions_padding_v: 0,
-    actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    icon_element_width: 72 - 4,
-    image_size_large: 3 * 80,
-    image_size_medium: 2 * 80,
-    image_size_regular: 1.4 * 80,
-    image_size_small: 1 * 80,
-    offset_small_padding_v: padding_v - 16,
-    one_line_height_with_icon: 72,
-    one_line_padding_v: 8,
-    padding_h: 16,
-    subtitle_line_height_padding_bottom: 7,
-    text_line_height_padding_bottom: 7,
-    text_line_height_padding_top: 6,
-    text_padding_bottom: 24,
-    text_padding_h: 16,
-    text_padding_v: 16,
-    tight_text_padding_bottom: 16,
-    tight_title_padding_bottom: 16,
-    title_padding_h: 16,
-    title_padding_v: 24,
-
-    color_light_main_background: rgba(polytheneTheme.vars.color_light_background),
-    color_light_title_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_subtitle_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
-    color_light_actions_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_light_overlay_background: rgba(polytheneTheme.vars.color_light_background, polytheneTheme.vars.blend_light_overlay_background),
-
-    color_dark_main_background: rgba(polytheneTheme.vars.color_dark_background),
-    color_dark_title_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_subtitle_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
-    color_dark_actions_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-    color_dark_overlay_background: rgba(polytheneTheme.vars.color_dark_background, polytheneTheme.vars.blend_dark_overlay_background)
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-card",
@@ -103,6 +50,76 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [];
+    } // eslint-disable-line no-unused-vars
+  };
+
+  var tintFns = function tintFns(tint) {
+    return _defineProperty({}, "color_" + tint + "_main_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_main_background"]
+      })];
+    });
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+  });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var generalFns$1 = {
+    general_styles: function general_styles(selector) {
+      return [];
+    } // eslint-disable-line no-unused-vars
+  };
+
+  var tintFns$1 = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_title_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-card__title": {
+          color: vars["color_" + tint + "_title_text"]
+        }
+      })];
+    }), _defineProperty$1(_ref, "color_" + tint + "_subtitle_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-card__subtitle": {
+          color: vars["color_" + tint + "_subtitle_text"]
+        }
+      })];
+    }), _defineProperty$1(_ref, "color_" + tint + "_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-card__text": {
+          color: vars["color_" + tint + "_text"]
+        }
+      })];
+    }), _defineProperty$1(_ref, "color_" + tint + "_actions_border", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-card__actions--border": {
+          borderTop: "1px solid " + vars["color_" + tint + "_actions_border"]
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("light"));
+  var darkTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("dark"));
+
+  var contentColor = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns$1, darkTintFns: darkTintFns$1 }
+  });
+
+  function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
   var alignSide = function alignSide() {
     return function () {
       return {};
@@ -111,12 +128,8 @@
   var alignLeft = alignSide(false);
   var alignRight = alignSide(true);
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
   var tight_title_padding_bottom_subtitle_line_height_padding_bottom = function tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-card__primary": {
         ".pe-card__primary--tight": {
           " .pe-card__title": {
@@ -128,7 +141,7 @@
   };
 
   var title_padding_v_title_padding_h_subtitle_line_height_padding_bottom = function title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-card__title": {
         padding: [vars.title_padding_v, vars.title_padding_h, vars.title_padding_v - vars.subtitle_line_height_padding_bottom, vars.title_padding_h].map(function (v) {
           return v + "px";
@@ -138,7 +151,7 @@
   };
 
   var text_padding_v_text_line_height_padding_top = function text_padding_v_text_line_height_padding_top(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-card__text": {
         paddingTop: vars.text_padding_v - vars.text_line_height_padding_top + "px"
       }
@@ -146,7 +159,7 @@
   };
 
   var text_padding_bottom_text_line_height_padding_bottom = function text_padding_bottom_text_line_height_padding_bottom(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-card__text": {
         "&:last-child": {
           paddingBottom: vars.text_padding_bottom - vars.text_line_height_padding_bottom + "px"
@@ -156,7 +169,7 @@
   };
 
   var tight_text_padding_bottom_text_line_height_padding_bottom = function tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-card__text": {
         paddingBottom: vars.tight_text_padding_bottom - vars.text_line_height_padding_bottom + "px",
 
@@ -169,7 +182,7 @@
 
   var varFns = {
     general_styles: function general_styles(selector, vars) {
-      return [sel(selector, [alignLeft(vars), {
+      return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
         display: "block",
         position: "relative",
 
@@ -377,11 +390,11 @@
         }
       }, {
         // RTL
-        "*[dir=rtl], .pe-rtl ": _defineProperty({}, selector, alignRight(vars))
+        "*[dir=rtl], .pe-rtl ": _defineProperty$2({}, selector, alignRight(vars))
       }])];
     },
     border_radius: function border_radius(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         borderRadius: vars.border_radius + "px",
 
         "&:last-child": {
@@ -399,7 +412,7 @@
       })];
     },
     image_size_small: function image_size_small(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__primary-media": {
           " .pe-card__media--small": {
             width: vars.image_size_small + "px"
@@ -408,7 +421,7 @@
       })];
     },
     image_size_regular: function image_size_regular(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__primary-media": {
           " .pe-card__media--regular": {
             width: vars.image_size_regular + "px"
@@ -417,7 +430,7 @@
       })];
     },
     image_size_medium: function image_size_medium(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__primary-media": {
           " .pe-card__media--medium": {
             width: vars.image_size_medium + "px"
@@ -426,7 +439,7 @@
       })];
     },
     image_size_large: function image_size_large(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__primary-media": {
           " .pe-card__media--large": {
             width: vars.image_size_large + "px"
@@ -435,26 +448,26 @@
       })];
     },
     one_line_height_with_icon: function one_line_height_with_icon(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__header": {
           height: vars.one_line_height_with_icon + "px"
         }
       })];
     },
     tight_title_padding_bottom: function tight_title_padding_bottom(selector, vars) {
-      return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars)];
     },
     subtitle_line_height_padding_bottom: function subtitle_line_height_padding_bottom(selector, vars) {
-      return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
     },
     title_padding_v: function title_padding_v(selector, vars) {
-      return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
     },
     title_padding_h: function title_padding_h(selector, vars) {
-      return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
     },
     actions_button_margin_h: function actions_button_margin_h(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__actions.pe-card__actions--horizontal": {
           margin: "0 -" + vars.actions_button_margin_h + "px",
 
@@ -465,7 +478,7 @@
       })];
     },
     actions_padding_v: function actions_padding_v(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__actions": {
           paddingTop: vars.actions_padding_v + "px",
           paddingBottom: vars.actions_padding_v + "px"
@@ -473,7 +486,7 @@
       })];
     },
     actions_padding_h: function actions_padding_h(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__actions": {
           paddingRight: vars.actions_padding_h + "px",
           paddingLeft: vars.actions_padding_h + "px"
@@ -481,7 +494,7 @@
       })];
     },
     actions_button_margin_v: function actions_button_margin_v(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__actions": {
           ".pe-card__actions--vertical": {
             " .pe-button": {
@@ -493,7 +506,7 @@
       })];
     },
     actions_vertical_padding_v: function actions_vertical_padding_v(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__actions": {
           ".pe-card__actions--vertical": {
             ":not(.pe-card__actions--tight)": {
@@ -514,7 +527,7 @@
       })];
     },
     offset_small_padding_v: function offset_small_padding_v(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__text, .pe-card__primary": {
           "& + .pe-card__actions:not(:last-child)": {
             marginTop: -(vars.offset_small_padding_v + 3) + "px"
@@ -523,7 +536,7 @@
       })];
     },
     text_padding_h: function text_padding_h(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__text": {
           paddingRight: vars.text_padding_h + "px",
           paddingLeft: vars.text_padding_h + "px"
@@ -531,157 +544,27 @@
       })];
     },
     text_padding_v: function text_padding_v(selector, vars) {
-      return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
     },
     text_line_height_padding_top: function text_line_height_padding_top(selector, vars) {
-      return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
     },
     text_padding_bottom: function text_padding_bottom(selector, vars) {
-      return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
     },
     tight_text_padding_bottom: function tight_text_padding_bottom(selector, vars) {
-      return [sel(selector, {}), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
     },
     text_line_height_padding_bottom: function text_line_height_padding_bottom(selector, vars) {
-      return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
-
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
-  };
-
-  var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [];
-    } // eslint-disable-line no-unused-vars
-  };
-
-  var tintFns = function tintFns(tint) {
-    return _defineProperty$1({}, "color_" + tint + "_main_background", function (selector, vars) {
-      return [sel$1(selector, {
-        backgroundColor: vars["color_" + tint + "_main_background"]
-      })];
-    });
-  };
-
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
   var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel$2 = function sel(selector, o) {
-    return _defineProperty$2({}, selector, o);
-  };
-
-  var generalFns$1 = {
-    general_styles: function general_styles(selector) {
-      return [];
-    } // eslint-disable-line no-unused-vars
-  };
-
-  var tintFns$1 = function tintFns(tint) {
-    var _ref2;
-
-    return _ref2 = {}, _defineProperty$2(_ref2, "color_" + tint + "_title_text", function (selector, vars) {
-      return [sel$2(selector, {
-        " .pe-card__title": {
-          color: vars["color_" + tint + "_title_text"]
-        }
-      })];
-    }), _defineProperty$2(_ref2, "color_" + tint + "_subtitle_text", function (selector, vars) {
-      return [sel$2(selector, {
-        " .pe-card__subtitle": {
-          color: vars["color_" + tint + "_subtitle_text"]
-        }
-      })];
-    }), _defineProperty$2(_ref2, "color_" + tint + "_text", function (selector, vars) {
-      return [sel$2(selector, {
-        " .pe-card__text": {
-          color: vars["color_" + tint + "_text"]
-        }
-      })];
-    }), _defineProperty$2(_ref2, "color_" + tint + "_actions_border", function (selector, vars) {
-      return [sel$2(selector, {
-        " .pe-card__actions--border": {
-          borderTop: "1px solid " + vars["color_" + tint + "_actions_border"]
-        }
-      })];
-    }), _ref2;
-  };
-
-  var lightTintFns$1 = _extends$2({}, generalFns$1, tintFns$1("light"));
-  var darkTintFns$1 = _extends$2({}, generalFns$1, tintFns$1("dark"));
-
-  var createStyle$1 = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$2({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns$1 : darkTintFns$1;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style$1 = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle$1(selectors, componentVars, customVars, tint);
-  };
-
-  var contentColor = (function (selector, componentVars, customVars) {
-    return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-  });
-
-  var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
   function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel$3 = function sel(selector, o) {
-    return _defineProperty$3({}, selector, o);
-  };
 
   var generalFns$2 = {
     general_styles: function general_styles(selector) {
@@ -691,7 +574,7 @@
 
   var tintFns$2 = function tintFns(tint) {
     return _defineProperty$3({}, "color_" + tint + "_overlay_background", function (selector, vars) {
-      return [sel$3(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-card__overlay__content": {
           backgroundColor: vars["color_" + tint + "_overlay_background"]
         }
@@ -699,31 +582,60 @@
     });
   };
 
-  var lightTintFns$2 = _extends$3({}, generalFns$2, tintFns$2("light"));
-  var darkTintFns$2 = _extends$3({}, generalFns$2, tintFns$2("dark"));
+  var lightTintFns$2 = _extends$2({}, generalFns$2, tintFns$2("light"));
+  var darkTintFns$2 = _extends$2({}, generalFns$2, tintFns$2("dark"));
 
-  var createStyle$2 = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$3({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns$2 : darkTintFns$2;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style$2 = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle$2(selectors, componentVars, customVars, tint);
-  };
-
-  var overlayColor = (function (selector, componentVars, customVars) {
-    return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  var overlayColor = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns$2, darkTintFns: darkTintFns$2 }
   });
+
+  var padding_v = 24;
+  var padding_actions_v = 8;
+  var actions_button_margin_v = 2;
+
+  var vars = {
+    general_styles: true,
+
+    actions_button_margin_h: polytheneTheme.vars.grid_unit,
+    actions_button_margin_v: actions_button_margin_v,
+    actions_padding_h: 8,
+    actions_padding_v: 0,
+    actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    icon_element_width: 72 - 4,
+    image_size_large: 3 * 80,
+    image_size_medium: 2 * 80,
+    image_size_regular: 1.4 * 80,
+    image_size_small: 1 * 80,
+    offset_small_padding_v: padding_v - 16,
+    one_line_height_with_icon: 72,
+    one_line_padding_v: 8,
+    padding_h: 16,
+    subtitle_line_height_padding_bottom: 7,
+    text_line_height_padding_bottom: 7,
+    text_line_height_padding_top: 6,
+    text_padding_bottom: 24,
+    text_padding_h: 16,
+    text_padding_v: 16,
+    tight_text_padding_bottom: 16,
+    tight_title_padding_bottom: 16,
+    title_padding_h: 16,
+    title_padding_v: 24,
+
+    color_light_main_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_light_title_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_subtitle_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_actions_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_light_overlay_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background, polytheneTheme.vars.blend_light_overlay_background),
+
+    color_dark_main_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
+    color_dark_title_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_subtitle_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
+    color_dark_actions_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+    color_dark_overlay_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background, polytheneTheme.vars.blend_dark_overlay_background)
+  };
 
   var selector = "." + classes.component;
   var contentSelector = "." + classes.content;
@@ -744,7 +656,9 @@
   polytheneCoreCss.styler.generateStyles([overlayContentSelector], vars, [contentColor]);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

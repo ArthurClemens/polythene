@@ -1,4 +1,4 @@
-import { flex, sel } from "polythene-core-css";
+import { flex, sel, createLayout } from "polythene-core-css";
 
 const title_single_padding_v_title_padding_h = (selector, vars) =>
   sel(selector, {
@@ -151,14 +151,6 @@ const varFns = Object.assign(
   customLayoutFns
 );
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({
+  varFns,
+});

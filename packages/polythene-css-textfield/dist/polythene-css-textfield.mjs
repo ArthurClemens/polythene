@@ -1,71 +1,5 @@
+import { sel, createColor, mixin, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  dense_floating_label_top: 10,
-  dense_floating_label_vertical_spacing_bottom: 4, // 8 minus natural label height padding (1)
-  dense_floating_label_vertical_spacing_top: 23, // 12 + 8 + 4 minus natural label height padding (1)
-  dense_font_size_floating_label: 13,
-  dense_font_size_input: 13,
-  dense_full_width_font_size_input: 13,
-  dense_full_width_input_padding_h: 16,
-  dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
-  floating_label_animation_duration: ".12s",
-  floating_label_top: 14,
-  floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
-  floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
-  font_size_error: 12,
-  font_size_floating_label: 12,
-  font_size_input: 16,
-  full_width_input_padding_h: 20,
-  full_width_input_padding_v: 18, // 20 minus natural label height padding (2)
-  input_border_width: 1,
-  input_focus_border_animation_duration: vars.animation_duration,
-  input_focus_border_width: 2,
-  input_padding_h: 0,
-  input_padding_v: 7,
-  line_height_input: 20,
-  margin_top_error_message: 6,
-  vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
-  vertical_spacing_top: 6, // 8 minus natural label height padding (1)
-
-  color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_input_background: "transparent", // only used to "remove" autofill color
-  color_light_highlight_text: rgba(vars.color_primary, vars.blend_light_text_primary),
-  color_light_input_bottom_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_input_error_text: rgba("221, 44, 0"),
-  color_light_input_error_border: rgba("221, 44, 0"),
-  color_light_input_placeholder: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-  color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-  color_light_disabled_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_readonly_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-  color_light_help_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
-  color_light_required_symbol: rgba("221, 44, 0"),
-  color_light_focus_border: rgba(vars.color_primary),
-  color_light_counter_ok_border: rgba(vars.color_primary),
-
-  color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_input_background: "transparent", // only used to "remove" autofill color
-  color_dark_highlight_text: rgba(vars.color_primary, vars.blend_dark_text_primary),
-  color_dark_input_bottom_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_input_error_text: rgba("222, 50, 38"),
-  color_dark_input_error_border: rgba("222, 50, 38"),
-  color_dark_input_placeholder: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-  color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-  color_dark_disabled_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_readonly_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-  color_dark_help_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
-  color_dark_required_symbol: rgba("221, 44, 0"),
-  color_dark_focus_border: rgba(vars.color_primary),
-  color_dark_counter_ok_border: rgba(vars.color_primary)
-};
 
 var classes = {
   component: "pe-textfield",
@@ -102,9 +36,157 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-textfield__input-area": {
+        color: "inherit",
+
+        "&:after": {
+          backgroundColor: "currentcolor"
+        }
+      },
+      ".pe-textfield--disabled, &.pe-textfield--readonly": {
+        " .pe-textfield__input-area:after": {
+          backgroundColor: "transparent"
+        }
+      },
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+        " .pe-textfield__input": {
+          boxShadow: "none"
+        }
+      }
+    })];
+  }
 };
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_focus_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_focus_border"] // override by specifying "color"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input-area": {
+        backgroundColor: vars$$1["color_" + tint + "_input_background"]
+      },
+      " .pe-textfield__input:-webkit-autofill": {
+        "-webkit-box-shadow": "0 0 0px 1000px " + vars$$1["color_" + tint + "_input_background"] + " inset"
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input": {
+        color: vars$$1["color_" + tint + "_input_text"]
+      },
+      " .pe-textfield__input:-webkit-autofill": {
+        color: vars$$1["color_" + tint + "_input_text"] + " !important"
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_counter_ok_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--counter ": {
+        " .pe-textfield__input-area:after": {
+          backgroundColor: vars$$1["color_" + tint + "_counter_ok_border"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_bottom_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input": {
+        borderColor: vars$$1["color_" + tint + "_input_bottom_border"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__label": {
+        color: vars$$1["color_" + tint + "_label_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--disabled, &.pe-textfield--readonly": {
+        " .pe-textfield__input-area:after": {
+          backgroundImage: "linear-gradient(to right, " + vars$$1["color_" + tint + "_disabled_label_text"] + " 20%, rgba(255, 255, 255, 0) 0%)"
+        }
+      },
+      ".pe-textfield--disabled": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_disabled_label_text"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_readonly_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--readonly": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_readonly_label_text"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_highlight_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--focused": {
+        // note: not when textfield--dirty and not textfield--focused
+        ".pe-textfield--floating-label .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_highlight_text"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_required_symbol", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--focused": {
+        ".pe-textfield--required.pe-textfield--floating-label": {
+          " .pe-textfield__required-indicator": {
+            color: vars$$1["color_" + tint + "_required_symbol"]
+          }
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_help_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__help, .pe-textfield__counter": {
+        color: vars$$1["color_" + tint + "_help_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_error_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+        " .pe-textfield__input": {
+          borderColor: vars$$1["color_" + tint + "_input_error_border"]
+        },
+        "&, &.pe-textfield--counter": {
+          " .pe-textfield__input-area:after": {
+            backgroundColor: vars$$1["color_" + tint + "_input_error_border"]
+          }
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_error_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+        " .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_input_error_text"]
+        },
+        " .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help": {
+          color: vars$$1["color_" + tint + "_input_error_text"]
+        },
+        ".pe-textfield--required .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_input_error_text"]
+        }
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
 
 var vertical_spacing_top_input_padding_v = function vertical_spacing_top_input_padding_v(selector, vars$$1) {
   return sel(selector, {
@@ -535,194 +617,68 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  dense_floating_label_top: 10,
+  dense_floating_label_vertical_spacing_bottom: 4, // 8 minus natural label height padding (1)
+  dense_floating_label_vertical_spacing_top: 23, // 12 + 8 + 4 minus natural label height padding (1)
+  dense_font_size_floating_label: 13,
+  dense_font_size_input: 13,
+  dense_full_width_font_size_input: 13,
+  dense_full_width_input_padding_h: 16,
+  dense_full_width_input_padding_v: 15, // 16 minus natural label height padding (1)
+  floating_label_animation_duration: ".12s",
+  floating_label_top: 14,
+  floating_label_vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
+  floating_label_vertical_spacing_top: 30, // 16 + 8 + 8 minus natural label height padding (2)
+  font_size_error: 12,
+  font_size_floating_label: 12,
+  font_size_input: 16,
+  full_width_input_padding_h: 20,
+  full_width_input_padding_v: 18, // 20 minus natural label height padding (2)
+  input_border_width: 1,
+  input_focus_border_animation_duration: vars.animation_duration,
+  input_focus_border_width: 2,
+  input_padding_h: 0,
+  input_padding_v: 7,
+  line_height_input: 20,
+  margin_top_error_message: 6,
+  vertical_spacing_bottom: 7, // 8 minus natural label height padding (1)
+  vertical_spacing_top: 6, // 8 minus natural label height padding (1)
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
+  color_light_input_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_input_background: "transparent", // only used to "remove" autofill color
+  color_light_highlight_text: rgba(vars.color_primary, vars.blend_light_text_primary),
+  color_light_input_bottom_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_input_error_text: rgba("221, 44, 0"),
+  color_light_input_error_border: rgba("221, 44, 0"),
+  color_light_input_placeholder: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_disabled_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_readonly_label_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_help_text: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_required_symbol: rgba("221, 44, 0"),
+  color_light_focus_border: rgba(vars.color_primary),
+  color_light_counter_ok_border: rgba(vars.color_primary),
+
+  color_dark_input_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_input_background: "transparent", // only used to "remove" autofill color
+  color_dark_highlight_text: rgba(vars.color_primary, vars.blend_dark_text_primary),
+  color_dark_input_bottom_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_input_error_text: rgba("222, 50, 38"),
+  color_dark_input_error_border: rgba("222, 50, 38"),
+  color_dark_input_placeholder: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_disabled_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_readonly_label_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_help_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_required_symbol: rgba("221, 44, 0"),
+  color_dark_focus_border: rgba(vars.color_primary),
+  color_dark_counter_ok_border: rgba(vars.color_primary)
 };
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
-      " .pe-textfield__input-area": {
-        color: "inherit",
-
-        "&:after": {
-          backgroundColor: "currentcolor"
-        }
-      },
-      ".pe-textfield--disabled, &.pe-textfield--readonly": {
-        " .pe-textfield__input-area:after": {
-          backgroundColor: "transparent"
-        }
-      },
-      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-        " .pe-textfield__input": {
-          boxShadow: "none"
-        }
-      }
-    })];
-  }
-};
-
-var tintFns = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_focus_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      color: vars$$1["color_" + tint + "_focus_border"] // override by specifying "color"
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_input_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-textfield__input-area": {
-        backgroundColor: vars$$1["color_" + tint + "_input_background"]
-      },
-      " .pe-textfield__input:-webkit-autofill": {
-        "-webkit-box-shadow": "0 0 0px 1000px " + vars$$1["color_" + tint + "_input_background"] + " inset"
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_input_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-textfield__input": {
-        color: vars$$1["color_" + tint + "_input_text"]
-      },
-      " .pe-textfield__input:-webkit-autofill": {
-        color: vars$$1["color_" + tint + "_input_text"] + " !important"
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_counter_ok_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--counter ": {
-        " .pe-textfield__input-area:after": {
-          backgroundColor: vars$$1["color_" + tint + "_counter_ok_border"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_input_bottom_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-textfield__input": {
-        borderColor: vars$$1["color_" + tint + "_input_bottom_border"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_label_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_label_text"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_disabled_label_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--disabled, &.pe-textfield--readonly": {
-        " .pe-textfield__input-area:after": {
-          backgroundImage: "linear-gradient(to right, " + vars$$1["color_" + tint + "_disabled_label_text"] + " 20%, rgba(255, 255, 255, 0) 0%)"
-        }
-      },
-      ".pe-textfield--disabled": {
-        " .pe-textfield__input, .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_disabled_label_text"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_readonly_label_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--readonly": {
-        " .pe-textfield__input, .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_readonly_label_text"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_highlight_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--focused": {
-        // note: not when textfield--dirty and not textfield--focused
-        ".pe-textfield--floating-label .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_highlight_text"]
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_required_symbol", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--focused": {
-        ".pe-textfield--required.pe-textfield--floating-label": {
-          " .pe-textfield__required-indicator": {
-            color: vars$$1["color_" + tint + "_required_symbol"]
-          }
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_help_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-textfield__help, .pe-textfield__counter": {
-        color: vars$$1["color_" + tint + "_help_text"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_input_error_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-        " .pe-textfield__input": {
-          borderColor: vars$$1["color_" + tint + "_input_error_border"]
-        },
-        "&, &.pe-textfield--counter": {
-          " .pe-textfield__input-area:after": {
-            backgroundColor: vars$$1["color_" + tint + "_input_error_border"]
-          }
-        }
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_input_error_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-        " .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_input_error_text"]
-        },
-        " .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help": {
-          color: vars$$1["color_" + tint + "_input_error_text"]
-        },
-        ".pe-textfield--required .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_input_error_text"]
-        }
-      }
-    })];
-  }), _ref2;
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -737,4 +693,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

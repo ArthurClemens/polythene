@@ -1,8 +1,8 @@
-import { styler } from "polythene-core-css";
-import vars from "./vars";
 import classes from "polythene-css-classes/svg";
-import layout from "./layout";
 import color from "./color";
+import layout from "./layout";
+import vars from "./vars";
+import { styler } from "polythene-core-css";
 
 const fns = [layout, color];
 const selector = `.${classes.component}`;
@@ -17,4 +17,10 @@ const getStyle = (customSelector, customVars) =>
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle, vars };
+export {
+  addStyle,
+  color,
+  getStyle,
+  layout,
+  vars,
+};

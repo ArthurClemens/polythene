@@ -38,6 +38,6 @@ export default {
 
   // hover colors may be set in theme; disabled by default
 
-  // color_light_hover_background:         "currentColor",
-  // color_dark_hover_background:          "currentColor",
+  // color_light_background_hover:         "currentColor",
+  // color_dark_background_hover:          "currentColor",
 };

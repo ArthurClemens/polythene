@@ -1,29 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    border_width_bordered: 1,
-    border_width_stacked: 1,
-    padding: polytheneTheme.vars.grid_unit_component, // vertical padding
-    padding_compact: polytheneTheme.vars.grid_unit_component * 3 / 4,
-
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
-
-    // background color may be set in theme; disabled by default
-    // color_light_background: "inherit",
-    // color_dark_background:  "inherit"
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -73,6 +52,47 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var generalFns = {
+    general_styles: function general_styles() {
+      return [];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_background"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
+      var _sel;
+
+      return [polytheneCoreCss.sel(selector, (_sel = {}, _defineProperty(_sel, "& + .pe-list", {
+        borderTopColor: vars["color_" + tint + "_border"]
+      }), _defineProperty(_sel, ".pe-list--border", {
+        " .pe-list-tile": {
+          ":not(:last-child)": {
+            borderColor: vars["color_" + tint + "_border"]
+          }
+        }
+      }), _defineProperty(_sel, ".pe-list--indented-border", {
+        " .pe-list-tile": {
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
+            borderColor: vars["color_" + tint + "_border"]
+          }
+        }
+      }), _sel))];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+  });
+
   var borderStyle = function borderStyle(vars) {
     return {
       borderStyle: "none none solid none",
@@ -80,13 +100,9 @@
     };
   };
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
   var varFns = {
     general_styles: function general_styles(selector) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list--header": {
           paddingTop: 0
         },
@@ -96,7 +112,7 @@
       })];
     },
     padding: function padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list--padding": {
           padding: vars.padding + "px 0"
         },
@@ -109,14 +125,14 @@
       })];
     },
     padding_compact: function padding_compact(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list--compact": {
           padding: vars.padding_compact + "px 0"
         }
       })];
     },
     border_width_stacked: function border_width_stacked(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         "& + &": {
           borderStyle: "solid none none none",
           borderWidth: vars.border_width_stacked + "px"
@@ -124,7 +140,7 @@
       })];
     },
     border_width_bordered: function border_width_bordered(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list--border": {
           " .pe-list-tile": {
             ":not(.pe-list-tile--header):not(:last-child)": {
@@ -143,83 +159,23 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var vars = {
+    general_styles: true,
 
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    border_width_bordered: 1,
+    border_width_stacked: 1,
+    padding: polytheneTheme.vars.grid_unit_component, // vertical padding
+    padding_compact: polytheneTheme.vars.grid_unit_component * 3 / 4,
 
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
+    color_light_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_dark_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
+
+    // background color may be set in theme; disabled by default
+    // color_light_background: "inherit",
+    // color_dark_background:  "inherit"
   };
-
-  var generalFns = {
-    general_styles: function general_styles() {
-      return [];
-    }
-  };
-
-  var tintFns = function tintFns(tint) {
-    var _ref2;
-
-    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars) {
-      return [sel$1(selector, {
-        backgroundColor: vars["color_" + tint + "_background"]
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_border", function (selector, vars) {
-      var _sel;
-
-      return [sel$1(selector, (_sel = {}, _defineProperty$1(_sel, "& + .pe-list", {
-        borderTopColor: vars["color_" + tint + "_border"]
-      }), _defineProperty$1(_sel, ".pe-list--border", {
-        " .pe-list-tile": {
-          ":not(:last-child)": {
-            borderColor: vars["color_" + tint + "_border"]
-          }
-        }
-      }), _defineProperty$1(_sel, ".pe-list--indented-border", {
-        " .pe-list-tile": {
-          " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
-            borderColor: vars["color_" + tint + "_border"]
-          }
-        }
-      }), _sel))];
-    }), _ref2;
-  };
-
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
@@ -235,7 +191,9 @@
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

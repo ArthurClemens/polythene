@@ -1,34 +1,5 @@
+import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { flex, styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  border_width: 1,
-  footer_height: 52,
-  header_bottom: 20,
-  header_height: 60,
-  line_height_title: 24,
-  max_width: 7 * vars.grid_unit_menu, // 7 * 56 = 392 
-  min_width: 5 * vars.grid_unit_menu, // 5 * 56 = 280
-  padding: 3 * vars.grid_unit_component, // 3 * 8 = 24
-  side_padding_mobile: 6 * vars.grid_unit, // 6 * 4 = 48
-
-  color_light_title_text: "inherit",
-  color_light_body_text: "inherit",
-  color_light_body_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_background: "inherit",
-
-  color_dark_title_text: "inherit",
-  color_dark_body_text: "inherit",
-  color_dark_body_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_background: "inherit"
-};
 
 var classes = {
   component: "pe-dialog-pane",
@@ -56,19 +27,65 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
+var generalFns = {
+  general_styles: function general_styles() {
+    return [{
+      " .pe-dialog-pane__body": {
+        borderColor: "transparent"
+      }
+    }];
+  }
 };
 
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__header .pe-dialog-pane__title": {
+        color: vars$$1["color_" + tint + "_title_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_body_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__body": {
+        color: vars$$1["color_" + tint + "_body_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
+        borderTopColor: vars$$1["color_" + tint + "_body_border"]
+      },
+      ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
+        borderBottomColor: vars$$1["color_" + tint + "_body_border"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var max_width_side_padding_mobile = function max_width_side_padding_mobile(selector, vars$$1) {
-  var _ref4;
+  var _ref3;
 
   var maxWidthBreakpointMobile = vars$$1.max_width + 2 * vars$$1.side_padding_mobile;
-  return _ref4 = {}, _defineProperty(_ref4, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty({}, selector, {
+  return _ref3 = {}, _defineProperty$1(_ref3, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty$1({}, selector, {
     maxWidth: "calc(100vw - " + 2 * vars$$1.side_padding_mobile + "px)"
-  })), _defineProperty(_ref4, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty({}, selector, {
+  })), _defineProperty$1(_ref3, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty$1({}, selector, {
     maxWidth: vars$$1.max_width + "px"
-  })), _ref4;
+  })), _ref3;
 };
 
 var padding_header_height_footer_height = function padding_header_height_footer_height(selector, vars$$1) {
@@ -176,7 +193,7 @@ var varFns = {
 
       " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap]
     }]), {
-      " .pe-dialog__content.pe-menu__content": _defineProperty({}, " " + selector, {
+      " .pe-dialog__content.pe-menu__content": _defineProperty$1({}, " " + selector, {
         " .pe-dialog-pane__body": {
           padding: 0,
           border: "none"
@@ -266,90 +283,31 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  border_width: 1,
+  footer_height: 52,
+  header_bottom: 20,
+  header_height: 60,
+  line_height_title: 24,
+  max_width: 7 * vars.grid_unit_menu, // 7 * 56 = 392 
+  min_width: 5 * vars.grid_unit_menu, // 5 * 56 = 280
+  padding: 3 * vars.grid_unit_component, // 3 * 8 = 24
+  side_padding_mobile: 6 * vars.grid_unit, // 6 * 4 = 48
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
+  color_light_title_text: "inherit",
+  color_light_body_text: "inherit",
+  color_light_body_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_background: "inherit",
+
+  color_dark_title_text: "inherit",
+  color_dark_body_text: "inherit",
+  color_dark_body_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_background: "inherit"
 };
-
-var generalFns = {
-  general_styles: function general_styles() {
-    return [{
-      " .pe-dialog-pane__body": {
-        borderColor: "transparent"
-      }
-    }];
-  }
-};
-
-var tintFns = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_title_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-dialog-pane__header .pe-dialog-pane__title": {
-        color: vars$$1["color_" + tint + "_title_text"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_body_text", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      " .pe-dialog-pane__body": {
-        color: vars$$1["color_" + tint + "_body_text"]
-      }
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_body_border", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-        borderTopColor: vars$$1["color_" + tint + "_body_border"]
-      },
-      ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
-        borderBottomColor: vars$$1["color_" + tint + "_body_border"]
-      }
-    })];
-  }), _ref2;
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -364,4 +322,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

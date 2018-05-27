@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-core-svg')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-core-svg'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-core-svg']));
-}(this, (function (exports,polytheneCoreCss,polytheneCoreSvg) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css']));
+}(this, (function (exports,polytheneCoreCss) { 'use strict';
 
   var classes = {
     component: "pe-svg"
@@ -12,44 +12,9 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
-  var varFns = {
-    general_styles: function general_styles(selector) {
-      return [sel(selector, {
-        lineHeight: 1,
-
-        " > div, svg": {
-          width: "inherit",
-          height: "inherit"
-        }
-      })];
-    }
-  };
-
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
-
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
-  };
-
   var generalFns = {
     general_styles: function general_styles(selector) {
-      return [sel$1(selector, {
+      return [polytheneCoreCss.sel(selector, {
         color: "inherit",
 
         " svg": {
@@ -66,8 +31,8 @@
   };
 
   var tintFns = function tintFns(tint) {
-    return _defineProperty$1({}, "color_" + tint, function (selector, vars) {
-      return [sel$1(selector, {
+    return _defineProperty({}, "color_" + tint, function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
         " svg": {
           " path, rect, circle, polygon": {
             "&:not([fill=none])": {
@@ -79,47 +44,53 @@
     });
   };
 
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        lineHeight: 1,
+
+        " > div, svg": {
+          width: "inherit",
+          height: "inherit"
+        }
+      })];
+    }
+  };
+
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
+
+  var vars = {
+    general_styles: true,
+
+    color_light: "currentcolor",
+    color_dark: "currentcolor"
+  };
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], polytheneCoreSvg.vars, customVars, fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], polytheneCoreSvg.vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSvg.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSvg.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

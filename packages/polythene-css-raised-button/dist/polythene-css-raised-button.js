@@ -1,8 +1,21 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-button']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssButton) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-button'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-button', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-button'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssButton,polytheneTheme) { 'use strict';
+
+  var classes = {
+    component: "pe-raised-button",
+    super: "pe-button pe-text-button"
+  };
+
+  var color = polytheneCoreCss.createColor({
+    superColor: polytheneCssButton.color
+  });
+
+  var layout = polytheneCoreCss.createLayout({
+    superLayout: polytheneCssButton.layout
+  });
 
   var vars = {
     general_styles: true,
@@ -31,16 +44,8 @@
     // color_dark_hover_background:     vars.color_primary_active,
   };
 
-  var classes = {
-    component: "pe-button pe-text-button pe-raised-button"
-  };
-
-  // Only used for theme styles
-
-  // Only used for theme styles
-
-  var fns = [polytheneCssButton.layout, polytheneCssButton.color];
-  var selector = "." + classes.component.replace(/ /g, ".");
+  var fns = [layout, color];
+  var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
     return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
@@ -52,10 +57,10 @@
 
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
-  exports.color = polytheneCssButton.color;
-  exports.layout = polytheneCssButton.layout;
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

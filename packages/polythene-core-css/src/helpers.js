@@ -17,79 +17,83 @@ export const hex = value => {
   return r + "," + g + "," + b;
 };
 
-export const createLayout = ({ varFns, superLayout }) => (selector, componentVars, customVars) => {
+const createStyle = ({ varFns, customVarFns, superStyle, varMixin, selector, scopedSelector, componentVars, customVars }) => {
   const allVars = {...componentVars, ...customVars};
   const currentVars = customVars
     ? customVars
     : allVars;
-  const baseLayout = customVars !== undefined && superLayout !== undefined
-    ? superLayout(selector, componentVars, customVars)
+  const {
+    general_styles, // eslint-disable-line no-unused-vars
+    ...otherVars
+  } = (componentVars || {});
+  const baseLayout = superStyle !== undefined
+    ? customVars !== undefined
+      ? superStyle(selector, componentVars, customVars)
+      : superStyle(selector, otherVars)
     : [];
+  const fns = Object.assign(
+    {},
+    !!customVars && customVarFns,
+    varFns
+  );
   return baseLayout
-    .concat(Object.keys(currentVars)
+    .concat(Object.keys(varMixin(currentVars))
       .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](selector, allVars)
+        fns && fns[v] !== undefined 
+          ? fns[v](scopedSelector, allVars)
           : null
       ))
       .filter(s => s)
     );
 };
 
-const createScopedSelector = ({ scopes, selector, isNoTouch=false }) =>
+export const createLayout = ({ varFns, customVarFns, superLayout, varMixin = o => o }) => (selector, componentVars, customVars) =>
+  createStyle({ varFns, customVarFns, superStyle: superLayout, varMixin, selector, scopedSelector: selector, componentVars, customVars });
+
+export const createColorStyle = ({ selector, scopedSelector, componentVars, customVars, varFns, superColor, varMixin }) =>
+  createStyle({ varFns, superStyle: superColor, varMixin, selector, scopedSelector, componentVars, customVars });
+
+const appendPseudoClass = ({ scopes, selector, isNoTouch=false }) =>
   isNoTouch
-    ? []
-      .concat(scopes.map(s => s + selector + ":hover").join(","))
-      .concat(scopes.map(s => s + selector + ":active").join(","))
+    ? scopes.map(s => s + selector + ":hover").join(",")
     : scopes.map(s => s + selector).join(",");
 
-const createColorStyle = ({ scopedSelector, componentVars, customVars, varFns, superColor }) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  const baseColor = customVars !== undefined && superColor !== undefined
-    ? superColor(scopedSelector, componentVars, customVars)
-    : [];
-  return baseColor
-    .concat(Object.keys(currentVars)
-      .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](scopedSelector, allVars)
-          : null
-      ))
-      .filter(s => s)
-    );
-};
+const createScopedSelector = ({ scopes, selector, isNoTouch=false }) =>
+  selector.split(/\s*,\s*/).map(s => (
+    appendPseudoClass({ scopes, selector: s, isNoTouch })
+  ));
 
 const colorScopes = [
   {
     // has/inside dark tone
     scopes: [".pe-dark-tone", ".pe-dark-tone "],
-    varFnName: "darkTintFns"
+    varFnName: "darkTintFns",
+    isNoTouch: false
   },
   {
     // normal, has/inside light tone
     scopes: ["", ".pe-light-tone", ".pe-light-tone "],
-    varFnName: "lightTintFns"
+    varFnName: "lightTintFns",
+    isNoTouch: false
   },
   {
     // has/inside dark tone
-    scopes: ["html.pe-no-touch .pe-dark-tone "],
+    scopes: [".pe-no-touch .pe-dark-tone "],
     varFnName: "darkTintHoverFns",
     isNoTouch: true
   },
   {
     // normal, has/inside light tone
-    scopes: ["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "],
+    scopes: [".pe-no-touch ", ".pe-no-touch .pe-light-tone "],
     varFnName: "lightTintHoverFns",
     isNoTouch: true
   },
 ];
 
-export const createColor = ({ varFns, superColor }) => (selector, componentVars, customVars) => 
+export const createColor = ({ varFns={}, superColor, varMixin = o => o }) => (selector, componentVars, customVars) =>
   colorScopes.map(({ scopes, varFnName, isNoTouch }) => 
-    varFns[varFnName] && createColorStyle({
+    createColorStyle({
+      selector,
       scopedSelector: createScopedSelector({
         scopes,
         selector,
@@ -98,6 +102,7 @@ export const createColor = ({ varFns, superColor }) => (selector, componentVars,
       componentVars,
       customVars,
       varFns: varFns[varFnName],
-      superColor
+      superColor,
+      varMixin
     })
   );

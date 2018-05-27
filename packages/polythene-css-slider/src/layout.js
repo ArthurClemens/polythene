@@ -1,4 +1,4 @@
-import { mixin, flex, sel } from "polythene-core-css";
+import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const getThumbSize = vars => {
@@ -427,14 +427,6 @@ const varFns = {
   ],
 };
 
-export default (selector, vars, customVars) => {
-  const allVars = {...vars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({
+  varFns,
+});

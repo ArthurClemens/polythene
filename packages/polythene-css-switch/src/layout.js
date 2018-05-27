@@ -1,5 +1,5 @@
-import { layout as selectionControlLayout } from "polythene-css-selection-control";
-import { mixin, sel } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-selection-control";
+import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const transition = (vars, properties, duration = vars.animation_duration) =>
@@ -239,18 +239,8 @@ const withCreateSizeVar = vars =>
     })
     : vars;
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = withCreateSizeVar(customVars
-    ? customVars
-    : allVars);
-  return selectionControlLayout(selector, componentVars, customVars, "checkbox")
-    .concat(Object.keys(currentVars)
-      .map(v => (
-        varFns[v] !== undefined 
-          ? varFns[v](selector, allVars)
-          : null
-      ))
-      .filter(s => s)
-    );
-};
+export default createLayout({
+  varFns,
+  superLayout,
+  varMixin: withCreateSizeVar
+});

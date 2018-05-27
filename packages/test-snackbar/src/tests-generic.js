@@ -3,7 +3,10 @@ import { SnackbarCSS } from "polythene-css";
 export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, containerSelector }) => {
 
   SnackbarCSS.addStyle(".snackbar-tests-blue-snackbar", {
+    color_light_background: "#b3e5fc",
     color_dark_background:  "#2196F3",
+    color_light_text:       "#222",
+    color_dark_text:        "#fff",
     border_radius:          10,
     width:                  288,
   });
@@ -128,6 +131,5 @@ export default ({ renderer: h, keys: k, Snackbar, Dialog, Button, buttonGroup, c
           h(containerSelector, { id: "Snackbar in container -- dark tone", buttonGroup, variations, spawn: "container2", position: "container", foreground: "#444", background: "#263238", tone: "light" })
       }
     },
-    
   ];
 };

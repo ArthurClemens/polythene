@@ -1,5 +1,5 @@
-import { vars } from "polythene-theme";
 import { rgba } from "polythene-core-css";
+import { vars } from "polythene-theme";
 
 const touch_height = vars.unit_touch_height; // 48
 const height = 36;
@@ -48,12 +48,12 @@ export default {
   color_light_border:                   rgba(vars.color_light_foreground, vars.blend_light_border_medium), // only specify this variable to get all 4 states
   // color_light_hover_border:             "transparent",
   // color_light_active_border:            "transparent",
-  // color_light_disabled_border:          "transparent",
+  color_light_disabled_border:          rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
   //
   color_dark_border:                    rgba(vars.color_dark_foreground, vars.blend_dark_border_medium), // only specify this variable to get all 4 states
   // color_dark_hover_border:              "transparent",
   // color_dark_active_border:             "transparent",
-  // color_dark_disabled_border:           "transparent"
+  color_dark_disabled_border:           rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
 
   // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   // color_light_hover_background:         "transparent",

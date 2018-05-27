@@ -1,5 +1,5 @@
 import { customLayoutFns as customNotificationLayoutFns } from "polythene-css-notification";
-import { sel } from "polythene-core-css";
+import { sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const breakpoint = breakpointSel => (selector, o) => ({
@@ -10,61 +10,50 @@ const breakpoint = breakpointSel => (selector, o) => ({
 
 const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_tablet_portrait_up}px)`);
 
-const createVarFns = isCustom => Object.assign(
-  {},
-  isCustom && customNotificationLayoutFns,
-  {
-    general_styles: selector => [
-      sel(selector, {
+const varFns = {
+  general_styles: selector => [
+    sel(selector, {
+      width: "100%",
+      opacity: 1,
+      
+      " .pe-notification__content": {
         width: "100%",
-        opacity: 1,
-        
-        " .pe-notification__content": {
-          width: "100%",
-          margin: "0 auto",
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,     
+        margin: "0 auto",
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,     
+      }
+    }),
+    breakpointTabletPortraitUp(selector, {
+      ".pe-notification--horizontal": {
+        " .pe-notification__title": {
+          paddingRight: "30px"
         }
-      }),
-      breakpointTabletPortraitUp(selector, {
-        ".pe-notification--horizontal": {
-          " .pe-notification__title": {
-            paddingRight: "30px"
-          }
-        },
-      })
-    ],
-    min_width: (selector, vars) => [
-      breakpointTabletPortraitUp(selector, {
-        minWidth: vars.min_width + "px",
-      }),
-    ],
-    max_width: (selector, vars) => [
-      breakpointTabletPortraitUp(selector, {
-        maxWidth: vars.max_width + "px",
-      }),
-    ],
-    border_radius: (selector, vars) => [
-      sel(selector, {
-        " .pe-notification__content": {
-          borderTopLeftRadius: vars.border_radius + "px",
-          borderTopRightRadius: vars.border_radius + "px",
-        },
-      })
-    ],
-  }
-);
-
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  const isCustom = !!customVars;
-  const varFns = createVarFns(isCustom);
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
+      },
+    })
+  ],
+  min_width: (selector, vars) => [
+    breakpointTabletPortraitUp(selector, {
+      minWidth: vars.min_width + "px",
+    }),
+  ],
+  max_width: (selector, vars) => [
+    breakpointTabletPortraitUp(selector, {
+      maxWidth: vars.max_width + "px",
+    }),
+  ],
+  border_radius: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__content": {
+        borderTopLeftRadius: vars.border_radius + "px",
+        borderTopRightRadius: vars.border_radius + "px",
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+    })
+  ],
 };
+
+export default createLayout({
+  varFns,
+  customVarFns: customNotificationLayoutFns
+});

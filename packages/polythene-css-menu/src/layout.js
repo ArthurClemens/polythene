@@ -1,5 +1,5 @@
 import { vars as themeVars } from "polythene-theme";
-import { sel, selectorRTL } from "polythene-core-css";
+import { sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
@@ -116,14 +116,4 @@ const varFns = {
   ],
 };
 
-export default (selector, vars, customVars) => {
-  const allVars = {...vars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

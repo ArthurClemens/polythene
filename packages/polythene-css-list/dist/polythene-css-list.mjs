@@ -1,26 +1,5 @@
+import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  general_styles: true,
-
-  border_width_bordered: 1,
-  border_width_stacked: 1,
-  padding: vars.grid_unit_component, // vertical padding
-  padding_compact: vars.grid_unit_component * 3 / 4,
-
-  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
-
-  // background color may be set in theme; disabled by default
-  // color_light_background: "inherit",
-  // color_dark_background:  "inherit"
-};
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -70,15 +49,52 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var generalFns = {
+  general_styles: function general_styles() {
+    return [];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
+    var _sel;
+
+    return [sel(selector, (_sel = {}, _defineProperty(_sel, "& + .pe-list", {
+      borderTopColor: vars$$1["color_" + tint + "_border"]
+    }), _defineProperty(_sel, ".pe-list--border", {
+      " .pe-list-tile": {
+        ":not(:last-child)": {
+          borderColor: vars$$1["color_" + tint + "_border"]
+        }
+      }
+    }), _defineProperty(_sel, ".pe-list--indented-border", {
+      " .pe-list-tile": {
+        " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
+          borderColor: vars$$1["color_" + tint + "_border"]
+        }
+      }
+    }), _sel))];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
 var borderStyle = function borderStyle(vars$$1) {
   return {
     borderStyle: "none none solid none",
     borderWidth: vars$$1.border_width_bordered + "px"
   };
-};
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
 };
 
 var varFns = {
@@ -140,83 +156,23 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
+var layout = createLayout({ varFns: varFns });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  border_width_bordered: 1,
+  border_width_stacked: 1,
+  padding: vars.grid_unit_component, // vertical padding
+  padding_compact: vars.grid_unit_component * 3 / 4,
 
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
+  color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
+
+  // background color may be set in theme; disabled by default
+  // color_light_background: "inherit",
+  // color_dark_background:  "inherit"
 };
-
-var generalFns = {
-  general_styles: function general_styles() {
-    return [];
-  }
-};
-
-var tintFns = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
-    })];
-  }), _defineProperty$1(_ref2, "color_" + tint + "_border", function (selector, vars$$1) {
-    var _sel;
-
-    return [sel$1(selector, (_sel = {}, _defineProperty$1(_sel, "& + .pe-list", {
-      borderTopColor: vars$$1["color_" + tint + "_border"]
-    }), _defineProperty$1(_sel, ".pe-list--border", {
-      " .pe-list-tile": {
-        ":not(:last-child)": {
-          borderColor: vars$$1["color_" + tint + "_border"]
-        }
-      }
-    }), _defineProperty$1(_sel, ".pe-list--indented-border", {
-      " .pe-list-tile": {
-        " .pe-list-tile__content:not(.pe-list-tile__content-front)": {
-          borderColor: vars$$1["color_" + tint + "_border"]
-        }
-      }
-    }), _sel))];
-  }), _ref2;
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -231,4 +187,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

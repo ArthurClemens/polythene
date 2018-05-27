@@ -1,1 +1,4 @@
-export { vars } from "polythene-css-selection-control";
+
+export default {
+  general_styles: true,
+};

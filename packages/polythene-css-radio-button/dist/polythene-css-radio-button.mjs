@@ -1,22 +1,29 @@
-import { layout, color, vars } from 'polythene-css-selection-control';
-export { vars } from 'polythene-css-selection-control';
-import { styler } from 'polythene-core-css';
+import { createColor, createLayout, styler } from 'polythene-core-css';
+import { color, layout } from 'polythene-css-selection-control';
 
 var classes = {
   component: "pe-radio-control"
 };
 
-var layout$1 = (function (selector, componentVars, customVars) {
-  return [layout(selector, componentVars, customVars, "radio"), {
-    " .pe-radio-group": {
-      display: "flex"
-    }
-  }];
+var color$1 = createColor({
+  superColor: color
 });
 
-var color$1 = (function (selector, componentVars, customVars) {
-  return color(selector, componentVars, customVars);
-});
+var varFns = {
+  general_styles: function general_styles() {
+    return {
+      " .pe-radio-group": {
+        display: "flex"
+      }
+    };
+  }
+};
+
+var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
+
+var vars = {
+  general_styles: true
+};
 
 var fns = [layout$1, color$1];
 var selector = "." + classes.component;
@@ -31,4 +38,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars };

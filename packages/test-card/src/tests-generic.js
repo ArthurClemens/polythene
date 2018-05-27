@@ -650,9 +650,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         content: [
           {
             media: {
-              ratio: "square",
+              origin: "start",
               content: h("img", {
-                src: landscapeImage
+                src: portraitImage
               }),
               overlay: {
                 sheet: true,
@@ -661,7 +661,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                     primary: {
                       key: "title",
                       title: "Primary title",
-                      subtitle: "Subtitle"
                     }
                   },
                   {
@@ -682,9 +681,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         content: [
           {
             media: {
-              ratio: "square",
+              origin: "start",
               content: h("img", {
-                src: landscapeImage
+                src: portraitImage
               }),
               overlay: {
                 tone: "light",
@@ -694,7 +693,6 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
                     primary: {
                       key: "title",
                       title: "Primary title",
-                      subtitle: "Subtitle"
                     }
                   },
                   {
@@ -715,9 +713,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         content: [
           {
             media: {
-              ratio: "square",
+              origin: "start",
               content: h("img", {
-                src: landscapeImage
+                src: portraitImage
               }),
               overlay: {
                 className: "pe-dark-tone",

@@ -31,28 +31,6 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Button row",
-      component: {
-        view: () => 
-          h(".pe-button-row",
-            [
-              h(RaisedButton, {
-                key: "one", // for React
-                label: "One"
-              }),
-              h(RaisedButton, {
-                key: "two", // for React
-                label: "Two"
-              }),
-              h(RaisedButton, {
-                key: "three", // for React
-                label: "Three"
-              })
-            ]
-          )
-      }
-    },
-    {
       name: "Option: raised (with option z: 2)",
       component: RaisedButton,
       attrs: {
@@ -192,6 +170,28 @@ export default ({ renderer: h, RaisedButton }) => {
       attrs: {
         label: "Inactive",
         inactive: true
+      }
+    },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(RaisedButton, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(RaisedButton, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(RaisedButton, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
       }
     },
 

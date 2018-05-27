@@ -1,4 +1,4 @@
-import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({ // eslint-disable-line no-unused-vars
   " .pe-list-tile__content-front + .pe-list-tile__content": {
@@ -351,14 +351,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

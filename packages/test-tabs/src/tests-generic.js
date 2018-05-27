@@ -20,23 +20,26 @@ export default ({ renderer: h, Tabs }) => {
   const Nested = nested({ h, Tabs });
 
   TabsCSS.addStyle(".tests-tabs-fixed-width", {
-    tab_min_width: 84,
-    tab_min_width_tablet: 84
+    tab_min_width:             84,
+    tab_min_width_tablet:      84,
+    color_light_text:          "#6500ed",
+    color_light_background:    "#e0c9ff",
+    color_light_tab_indicator: "#6500ed",
   });
 
   TabsCSS.addStyle(".tests-tabs-custom_color", {
-    color_light: "#00BCD4",
-    color_light_hover: "#F44336",
-    color_light_selected: "#F44336",
+    color_light_text:          "#00BCD4",
+    color_light_hover:         "#F44336",
+    color_light_selected:      "#F44336",
     color_light_tab_indicator: "#F44336",
-    color_dark: "#00BCD4",
-    color_dark_hover: "#F44336",
-    color_dark_selected: "#F44336",
-    color_dark_tab_indicator: "#F44336"
+    color_dark_text:           "#00BCD4",
+    color_dark_hover:          "#F44336",
+    color_dark_selected:       "#F44336",
+    color_dark_tab_indicator:  "#F44336"
   });
 
   TabsCSS.addStyle(".tests-tabs-no-indicators", {
-    color_light:          "#333",
+    color_light_text:     "#333",
     color_light_selected: "#333",
     label_opacity:        1
   });
@@ -144,12 +147,12 @@ export default ({ renderer: h, Tabs }) => {
       name: "Option: largestWidth (no autofit)",
       component: Tabs,
       attrs: {
-        tabs: menuButtons,
+        tabs: threeButtons,
         largestWidth: true
       }
     },
     {
-      name: "Theme: small fixed width",
+      name: "Theme (small fixed width, color)",
       component: Tabs,
       attrs: {
         tabs: threeButtons,
@@ -181,7 +184,6 @@ export default ({ renderer: h, Tabs }) => {
       attrs: {
         tabs: longLabels,
         autofit: true,
-        className: "tests-tabs-fixed-width"
       }
     },
     {

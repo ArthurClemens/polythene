@@ -1,6 +1,6 @@
 // Returns a style function to be used by Checkbox and Radio Button
 
-import { mixin, flex, sel, selectorRTL } from "polythene-core-css";
+import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
@@ -63,7 +63,7 @@ const label_padding_after = (selector, vars, isRTL) =>
   });
 
 const varFns = {
-  general_styles: (selector, vars, type) => [
+  general_styles: (selector, vars) => [
     sel(selector, [
       alignLeft(vars),
       {
@@ -72,7 +72,7 @@ const varFns = {
         margin: 0,
         padding: 0,
 
-        [` input[type=${type}]`]: {
+        " input[type=checkbox], input[type=radio]": {
           display: "none"
         },
 
@@ -207,14 +207,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars, type) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars, type)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

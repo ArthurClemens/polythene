@@ -1,37 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    general_styles: true,
-
-    border_width: 1,
-    footer_height: 52,
-    header_bottom: 20,
-    header_height: 60,
-    line_height_title: 24,
-    max_width: 7 * polytheneTheme.vars.grid_unit_menu, // 7 * 56 = 392 
-    min_width: 5 * polytheneTheme.vars.grid_unit_menu, // 5 * 56 = 280
-    padding: 3 * polytheneTheme.vars.grid_unit_component, // 3 * 8 = 24
-    side_padding_mobile: 6 * polytheneTheme.vars.grid_unit, // 6 * 4 = 48
-
-    color_light_title_text: "inherit",
-    color_light_body_text: "inherit",
-    color_light_body_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_light_background: "inherit",
-
-    color_dark_title_text: "inherit",
-    color_dark_body_text: "inherit",
-    color_dark_body_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-    color_dark_background: "inherit"
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-dialog-pane",
@@ -59,23 +30,69 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
+  var generalFns = {
+    general_styles: function general_styles() {
+      return [{
+        " .pe-dialog-pane__body": {
+          borderColor: "transparent"
+        }
+      }];
+    }
   };
 
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_background"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-dialog-pane__header .pe-dialog-pane__title": {
+          color: vars["color_" + tint + "_title_text"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_body_text", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-dialog-pane__body": {
+          color: vars["color_" + tint + "_body_text"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
+          borderTopColor: vars["color_" + tint + "_body_border"]
+        },
+        ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
+          borderBottomColor: vars["color_" + tint + "_body_border"]
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+  });
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
   var max_width_side_padding_mobile = function max_width_side_padding_mobile(selector, vars) {
-    var _ref4;
+    var _ref3;
 
     var maxWidthBreakpointMobile = vars.max_width + 2 * vars.side_padding_mobile;
-    return _ref4 = {}, _defineProperty(_ref4, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty({}, selector, {
+    return _ref3 = {}, _defineProperty$1(_ref3, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty$1({}, selector, {
       maxWidth: "calc(100vw - " + 2 * vars.side_padding_mobile + "px)"
-    })), _defineProperty(_ref4, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty({}, selector, {
+    })), _defineProperty$1(_ref3, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty$1({}, selector, {
       maxWidth: vars.max_width + "px"
-    })), _ref4;
+    })), _ref3;
   };
 
   var padding_header_height_footer_height = function padding_header_height_footer_height(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-dialog-pane__body": {
         // initially set max-height; will be overridden by dialog core with actual heights
         maxHeight: "calc(100vh - " + 4 * vars.padding + "px - " + (vars.header_height + vars.footer_height) + "px)"
@@ -84,7 +101,7 @@
   };
 
   var padding_header_bottom = function padding_header_bottom(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       " .pe-dialog-pane__header--title": {
         paddingTop: vars.padding - 4 + "px",
         paddingRight: vars.padding + "px",
@@ -96,7 +113,7 @@
 
   var varFns = {
     general_styles: function general_styles(selector) {
-      return [sel(selector, [polytheneCoreCss.flex.layoutVertical, {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutVertical, {
         position: "relative",
         maxHeight: "100%",
 
@@ -179,7 +196,7 @@
 
         " .pe-dialog-pane__actions": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutEndJustified, polytheneCoreCss.flex.layoutWrap]
       }]), {
-        " .pe-dialog__content.pe-menu__content": _defineProperty({}, " " + selector, {
+        " .pe-dialog__content.pe-menu__content": _defineProperty$1({}, " " + selector, {
           " .pe-dialog-pane__body": {
             padding: 0,
             border: "none"
@@ -203,32 +220,32 @@
       }];
     },
     max_width: function max_width(selector, vars) {
-      return [sel(selector, []), max_width_side_padding_mobile(selector, vars)];
+      return [polytheneCoreCss.sel(selector, []), max_width_side_padding_mobile(selector, vars)];
     },
     side_padding_mobile: function side_padding_mobile(selector, vars) {
-      return [sel(selector, []), max_width_side_padding_mobile(selector, vars)];
+      return [polytheneCoreCss.sel(selector, []), max_width_side_padding_mobile(selector, vars)];
     },
     min_width: function min_width(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         minWidth: vars.min_width + "px"
       })];
     },
     line_height_title: function line_height_title(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-dialog-pane__title": {
           lineHeight: vars.line_height_title + "px"
         }
       })];
     },
     header_height: function header_height(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-dialog-pane__header": {
           minHeight: vars.header_height + "px"
         }
       }), padding_header_height_footer_height(selector, vars)];
     },
     padding: function padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-dialog-pane__body": {
           padding: vars.padding + "px"
         },
@@ -240,10 +257,10 @@
       }), padding_header_bottom(selector, vars), padding_header_height_footer_height(selector, vars)];
     },
     header_bottom: function header_bottom(selector, vars) {
-      return [sel(selector, {}), padding_header_bottom(selector, vars)];
+      return [polytheneCoreCss.sel(selector, {}), padding_header_bottom(selector, vars)];
     },
     footer_height: function footer_height(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-dialog-pane__footer": {
           ".pe-dialog-pane__footer--buttons": {
             minHeight: vars.footer_height + "px"
@@ -252,7 +269,7 @@
       }), padding_header_height_footer_height(selector, vars)];
     },
     border_width: function border_width(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
           " .pe-dialog-pane__body": {
             borderWidth: vars.border_width + "px"
@@ -269,90 +286,31 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var vars = {
+    general_styles: true,
 
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    border_width: 1,
+    footer_height: 52,
+    header_bottom: 20,
+    header_height: 60,
+    line_height_title: 24,
+    max_width: 7 * polytheneTheme.vars.grid_unit_menu, // 7 * 56 = 392 
+    min_width: 5 * polytheneTheme.vars.grid_unit_menu, // 5 * 56 = 280
+    padding: 3 * polytheneTheme.vars.grid_unit_component, // 3 * 8 = 24
+    side_padding_mobile: 6 * polytheneTheme.vars.grid_unit, // 6 * 4 = 48
 
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
+    color_light_title_text: "inherit",
+    color_light_body_text: "inherit",
+    color_light_body_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
+    color_light_background: "inherit",
+
+    color_dark_title_text: "inherit",
+    color_dark_body_text: "inherit",
+    color_dark_body_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
+    color_dark_background: "inherit"
   };
-
-  var generalFns = {
-    general_styles: function general_styles() {
-      return [{
-        " .pe-dialog-pane__body": {
-          borderColor: "transparent"
-        }
-      }];
-    }
-  };
-
-  var tintFns = function tintFns(tint) {
-    var _ref2;
-
-    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars) {
-      return [sel$1(selector, {
-        backgroundColor: vars["color_" + tint + "_background"]
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_title_text", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-dialog-pane__header .pe-dialog-pane__title": {
-          color: vars["color_" + tint + "_title_text"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_body_text", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-dialog-pane__body": {
-          color: vars["color_" + tint + "_body_text"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_body_border", function (selector, vars) {
-      return [sel$1(selector, {
-        ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-          borderTopColor: vars["color_" + tint + "_body_border"]
-        },
-        ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
-          borderBottomColor: vars["color_" + tint + "_body_border"]
-        }
-      })];
-    }), _ref2;
-  };
-
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-  var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? lightTintFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
@@ -368,7 +326,9 @@
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

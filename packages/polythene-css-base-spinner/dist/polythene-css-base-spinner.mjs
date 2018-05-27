@@ -1,30 +1,5 @@
-import { rgba, sel, createLayout, createColor, styler } from 'polythene-core-css';
+import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-
-var vars$1 = {
-  general_styles: true,
-
-  size_small: 3 * vars.grid_unit_component,
-  size_regular: 4 * vars.grid_unit_component,
-  size_medium: 5 * vars.grid_unit_component,
-  size_large: 6 * vars.grid_unit_component,
-  size_fab: 7 * vars.grid_unit_component,
-
-  animation_delay: "0s",
-  animation_duration: ".220s",
-  animation_timing_function: "ease-in-out",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-
-  raisedSize: function raisedSize(size) {
-    var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
-    var paddedSize = size + padding * 2;
-    return { padding: padding, paddedSize: paddedSize };
-  },
-
-  color_light_raised_background: rgba(vars.color_light_background),
-  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
-};
 
 var classes = {
   component: "pe-spinner",
@@ -46,7 +21,34 @@ var classes = {
   visible: "pe-spinner--visible"
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
+};
+
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint + "_raised_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-spinner--raised": {
+        backgroundColor: vars$$1["color_" + tint + "_raised_background"]
+      }
+    })];
+  });
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var sizes = function sizes(size) {
   return {
@@ -55,11 +57,9 @@ var sizes = function sizes(size) {
   };
 };
 
-var raisedSize = function raisedSize(size, vars$$1) {
-  var _vars$raisedSize = vars$$1.raisedSize(size),
-      padding = _vars$raisedSize.padding,
-      paddedSize = _vars$raisedSize.paddedSize;
-
+var raisedSize = function raisedSize(size) {
+  var padding = Math.round(size * 0.25); // only use rounded number to prevent sub-pixel alignment issues
+  var paddedSize = size + padding * 2;
   return {
     width: paddedSize + "px",
     height: paddedSize + "px",
@@ -84,7 +84,7 @@ var varFns = {
     })];
   },
   animation_hide_css: function animation_hide_css(selector, vars$$1) {
-    return _defineProperty({}, selector, vars$$1.animation_hide_css);
+    return _defineProperty$1({}, selector, vars$$1.animation_hide_css);
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
@@ -106,7 +106,7 @@ var varFns = {
       ".pe-spinner--small": sizes(vars$$1.size_small),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--small": raisedSize(vars$$1.size_small, vars$$1)
+        ".pe-spinner--small": raisedSize(vars$$1.size_small)
       }
     })];
   },
@@ -115,7 +115,7 @@ var varFns = {
       ".pe-spinner--regular": sizes(vars$$1.size_regular),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--regular": raisedSize(vars$$1.size_regular, vars$$1)
+        ".pe-spinner--regular": raisedSize(vars$$1.size_regular)
       }
     })];
   },
@@ -124,7 +124,7 @@ var varFns = {
       ".pe-spinner--medium": sizes(vars$$1.size_medium),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--medium": raisedSize(vars$$1.size_medium, vars$$1)
+        ".pe-spinner--medium": raisedSize(vars$$1.size_medium)
       }
     })];
   },
@@ -133,7 +133,7 @@ var varFns = {
       ".pe-spinner--large": sizes(vars$$1.size_large),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--large": raisedSize(vars$$1.size_large, vars$$1)
+        ".pe-spinner--large": raisedSize(vars$$1.size_large)
       }
     })];
   },
@@ -142,7 +142,7 @@ var varFns = {
       ".pe-spinner--fab": sizes(vars$$1.size_fab),
 
       ".pe-spinner--raised": {
-        ".pe-spinner--fab": raisedSize(vars$$1.size_fab, vars$$1)
+        ".pe-spinner--fab": raisedSize(vars$$1.size_fab)
       }
     })];
   }
@@ -150,32 +150,23 @@ var varFns = {
 
 var layout = createLayout({ varFns: varFns });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_hide_css: "opacity: 0;",
+  animation_show_css: "opacity: 1;",
+  animation_timing_function: "ease-in-out",
+  size_fab: 7 * vars.grid_unit_component,
+  size_large: 6 * vars.grid_unit_component,
+  size_medium: 5 * vars.grid_unit_component,
+  size_regular: 4 * vars.grid_unit_component,
+  size_small: 3 * vars.grid_unit_component,
 
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [];
-  } // eslint-disable-line no-unused-vars
+  color_light_raised_background: rgba(vars.color_light_background),
+  color_dark_raised_background: rgba(vars.color_light_background) // also use light background with dark tone
 };
-
-var tintFns = function tintFns(tint) {
-  return _defineProperty$1({}, "color_" + tint + "_raised_background", function (selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-spinner--raised": {
-        backgroundColor: vars$$1["color_" + tint + "_raised_background"]
-      }
-    })];
-  });
-};
-
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
-
-var color = createColor({
-  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
-});
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -190,4 +181,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, layout, color, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

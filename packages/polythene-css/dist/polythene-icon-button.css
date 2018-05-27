@@ -61,10 +61,6 @@
   background-color: currentcolor
 }
 
-.pe-dark-tone.pe-button.pe-icon-button .pe-icon-button__content,.pe-dark-tone .pe-button.pe-icon-button .pe-icon-button__content {
-  background-color: transparent
-}
-
 .pe-dark-tone.pe-button.pe-icon-button,.pe-dark-tone .pe-button.pe-icon-button,.pe-dark-tone.pe-button.pe-icon-button .pe-icon-button__label,.pe-dark-tone .pe-button.pe-icon-button .pe-icon-button__label {
   color: hsla(0,0%,100%,.7)
 }
@@ -77,10 +73,6 @@
   background-color: currentcolor
 }
 
-.pe-button.pe-icon-button .pe-icon-button__content,.pe-light-tone.pe-button.pe-icon-button .pe-icon-button__content,.pe-light-tone .pe-button.pe-icon-button .pe-icon-button__content {
-  background-color: transparent
-}
-
 .pe-button.pe-icon-button,.pe-button.pe-icon-button .pe-icon-button__label,.pe-light-tone.pe-button.pe-icon-button,.pe-light-tone .pe-button.pe-icon-button,.pe-light-tone.pe-button.pe-icon-button .pe-icon-button__label,.pe-light-tone .pe-button.pe-icon-button .pe-icon-button__label {
   color: rgba(0,0,0,.54)
 }
@@ -91,13 +83,5 @@
 
 .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--selected .pe-button__focus {
   opacity: .12
-}
-
-html.pe-no-touch .pe-dark-tone .pe-button.pe-icon-button:active .pe-button__wash,html.pe-no-touch .pe-dark-tone .pe-button.pe-icon-button:hover .pe-button__wash {
-  background-color: hsla(0,0%,100%,.08)
-}
-
-html.pe-no-touch .pe-button.pe-icon-button:active .pe-button__wash,html.pe-no-touch .pe-button.pe-icon-button:hover .pe-button__wash,html.pe-no-touch .pe-light-tone .pe-button.pe-icon-button:active .pe-button__wash,html.pe-no-touch .pe-light-tone .pe-button.pe-icon-button:hover .pe-button__wash {
-  background-color: rgba(0,0,0,.06)
 }
 /*# sourceMappingURL=polythene-icon-button.css.map */

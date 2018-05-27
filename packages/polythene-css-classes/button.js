@@ -1,7 +1,7 @@
 
 export default {
-  base:             "pe-button",
-  component:        "pe-button pe-text-button",
+  component:        "pe-text-button",
+  super:            "pe-button",
   row:              "pe-button-row",
       
   // elements      

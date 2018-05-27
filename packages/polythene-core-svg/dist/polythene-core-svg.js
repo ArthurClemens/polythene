@@ -46,15 +46,7 @@
     createContent: createContent
   });
 
-  var vars = {
-    general_styles: true,
-
-    color_light: "currentcolor",
-    color_dark: "currentcolor"
-  };
-
   exports.coreSVG = svg;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

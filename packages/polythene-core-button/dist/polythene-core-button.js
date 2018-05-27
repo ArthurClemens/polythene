@@ -5,8 +5,8 @@
 }(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
-      base: "pe-button",
-      component: "pe-button pe-text-button",
+      component: "pe-text-button",
+      super: "pe-button",
       row: "pe-button-row",
 
       // elements      
@@ -114,7 +114,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
-      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.dropdown ? classes.hasDropdown : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
       if (e.keyCode === 13 && state.focus()) {
         state.focus(false);

@@ -1,10 +1,10 @@
-import { styler } from "polythene-core-css";
-import vars from "./vars";
 import classes from "polythene-css-classes/card";
-import layout from "./layout";
 import color from "./color";
 import contentColor from "./color-content";
+import layout from "./layout";
 import overlayColor from "./color-overlay";
+import vars from "./vars";
+import { styler } from "polythene-core-css";
 
 const selector = `.${classes.component}`;
 const contentSelector = `.${classes.content}`;
@@ -34,4 +34,10 @@ styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
 styler.generateStyles([contentSelector], vars, [contentColor]);
 styler.generateStyles([overlayContentSelector], vars, [contentColor]);
 
-export { addStyle, getStyle, vars };
+export {
+  addStyle,
+  color,
+  getStyle,
+  layout,
+  vars,
+};

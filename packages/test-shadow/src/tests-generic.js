@@ -9,12 +9,12 @@ export default ({ Shadow, renderer: h, keys: k }) => {
 
 
   return [
-    {
-      name: "Child node",
-      component: Shadow,
-      attrs: {},
-      children: ["Child"]
-    },
+    // {
+    //   name: "Child node",
+    //   component: Shadow,
+    //   attrs: {},
+    //   children: ["Child"]
+    // },
     {
       name: "Option: content",
       component: Shadow,

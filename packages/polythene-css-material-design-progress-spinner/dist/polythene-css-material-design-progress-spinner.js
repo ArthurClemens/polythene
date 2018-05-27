@@ -1,17 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-base-spinner'), require('polythene-theme'), require('polythene-css-material-design-spinner')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-base-spinner', 'polythene-theme', 'polythene-css-material-design-spinner'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-base-spinner'],global['polythene-theme'],global['polythene-css-material-design-spinner']));
-}(this, (function (exports,polytheneCoreCss,polytheneCssBaseSpinner,polytheneTheme,polytheneCssMaterialDesignSpinner) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var vars = _extends({}, polytheneCssBaseSpinner.vars, {
-    progress_animation_duration: ".8s",
-
-    color_light: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
-    color_dark: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary)
-  });
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-material-design-spinner'), require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-material-design-spinner', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-material-design-spinner'],global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCssMaterialDesignSpinner,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-md-progress-spinner",
@@ -22,6 +13,36 @@
     circleRight: "pe-md-progress-spinner__circle-right",
     circleLeft: "pe-md-progress-spinner__circle-left"
   };
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-md-progress-spinner__circle": {
+          borderColor: "currentcolor"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    return _defineProperty({}, "color_" + tint, function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        color: vars["color_" + tint]
+      })];
+    });
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+    superColor: polytheneCssMaterialDesignSpinner.color
+  });
 
   var varFns = {
     general_styles: function general_styles(selector) {
@@ -60,35 +81,14 @@
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssMaterialDesignSpinner.layout });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var vars = {
+    general_styles: true,
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    progress_animation_duration: ".8s",
 
-  var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, {
-        " .pe-md-progress-spinner__circle": {
-          borderColor: "currentcolor"
-        }
-      })];
-    }
+    color_light: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary)
   };
-
-  var tintFns = function tintFns(tint) {
-    return _defineProperty({}, "color_" + tint, function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        color: vars["color_" + tint]
-      })];
-    });
-  };
-
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-  var color = polytheneCoreCss.createColor({
-    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-    superColor: polytheneCssMaterialDesignSpinner.color
-  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
@@ -104,7 +104,9 @@
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

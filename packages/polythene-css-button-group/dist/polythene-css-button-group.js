@@ -4,10 +4,6 @@
   (factory((global.polythene = {}),global['polythene-core-css']));
 }(this, (function (exports,polytheneCoreCss) { 'use strict';
 
-  var vars = {
-    general_styles: true
-  };
-
   var classes = {
     component: "pe-button-group"
   };
@@ -21,6 +17,10 @@
   };
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
+
+  var vars = {
+    general_styles: true
+  };
 
   var fns = [layout];
   var selector = "." + classes.component;
@@ -37,6 +37,7 @@
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

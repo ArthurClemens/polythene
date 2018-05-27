@@ -1,92 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  // SPECS
-  //
-  // heights:
-  // single line: 48
-  // single line, dense: 40
-  // single line, with icon: 48
-  // single line, with icon, dense: 40
-  // single line, with avatar: 56
-  // single line, with avatar, dense: 48
-  // two-line: 72
-  // two-line, dense: 60
-  // three-line: 88
-  // three-line, dense: 76
-
-  var single_height = 48;
-  var padding = 8;
-  var single_with_icon_height = 56;
-
-  var vars = {
-    general_styles: true,
-
-    compact_front_item_width: 64,
-    compact_padding: 9,
-    compact_side_padding: 1 * polytheneTheme.vars.grid_unit_component,
-    font_size_list_header: 14,
-    font_size_navigation_title: 14,
-    font_size_small: 12,
-    font_size_subtitle: 14,
-    font_size_title: 16,
-    font_weight_list_header: polytheneTheme.vars.font_weight_medium,
-    font_weight_navigation_title: polytheneTheme.vars.font_weight_medium,
-    font_weight_subtitle: polytheneTheme.vars.font_weight_normal,
-    font_weight_title: polytheneTheme.vars.font_weight_normal,
-    front_item_width: 72,
-    has_high_subtitle_padding: 13,
-    has_subtitle_padding: 15,
-    high_subtitle_line_count: 2,
-    line_height_subtitle: 20,
-    padding: 13,
-    side_padding: 2 * polytheneTheme.vars.grid_unit_component,
-    single_height: single_height,
-    single_line_height: single_height - 2 * padding - (2 * 5 + 1),
-    single_with_icon_height: single_with_icon_height,
-    single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
-    subtitle_line_count: 1,
-    title_line_count: 1,
-
-    color_light_title: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_subtitle: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_info: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_front: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_text_disabled: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_list_header: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
-    color_light_secondary: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_hover: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_hover_front: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_hover_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_selected_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_highlight_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    // background color may be set in theme; disabled by default
-    // color_light_background:          "inherit",
-
-    color_dark_title: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_subtitle: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_info: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_front: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_text_disabled: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_list_header: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
-    color_dark_secondary: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_hover: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_hover_front: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_hover_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_selected_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_highlight_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
-    // background color may be set in theme; disabled by default
-    // color_dark_background:           "inherit",
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-list-tile",
@@ -120,10 +36,145 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          " .pe-list-tile__primary, pe-list-tile__secondary": {
+            backgroundColor: "inherit"
+          }
+        },
+        ":not(.pe-list-tile--disabled)": {
+          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+            outline: "none",
+            backgroundColor: "inherit"
+          }
+        },
+        "&.pe-list-tile--sticky": {
+          backgroundColor: "inherit"
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        color: vars["color_" + tint + "_title"]
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        backgroundColor: vars["color_" + tint + "_background"],
+
+        "&.pe-list-tile--sticky": {
+          backgroundColor: vars["color_" + tint + "_background"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_list_header", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--header": {
+          color: vars["color_" + tint + "_list_header"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_subtitle", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__subtitle": {
+          color: vars["color_" + tint + "_subtitle"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_secondary", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__secondary": {
+          color: vars["color_" + tint + "_secondary"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_front", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-list-tile__content-front": {
+          color: vars["color_" + tint + "_front"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_text_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--disabled": {
+          "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+            color: vars["color_" + tint + "_text_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--selected": {
+          " .pe-list-tile__primary, pe-list-tile__secondary": {
+            backgroundColor: vars["color_" + tint + "_selected_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
+          " .pe-list-tile__primary, pe-list-tile__secondary": {
+            backgroundColor: vars["color_" + tint + "_highlight_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-list-tile--disabled)": {
+          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+            backgroundColor: vars["color_" + tint + "_focus_background"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable": {
+          color: vars["color_" + tint + "_hover"]
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable": {
+          " .pe-list-tile__primary, .pe-list-tile__secondary": {
+            backgroundColor: vars["color_" + tint + "_hover_background"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-list-tile--hoverable": {
+          " .pe-list-tile__primary .pe-list-tile__content-front": {
+            color: vars["color_" + tint + "_hover_front"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
+  });
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
   var alignSide = function alignSide(isRTL) {
     return function (vars) {
       return { // eslint-disable-line no-unused-vars
-        " .pe-list-tile__content-front + .pe-list-tile__content": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", 0)
+        " .pe-list-tile__content-front + .pe-list-tile__content": _defineProperty$1({}, isRTL ? "paddingRight" : "paddingLeft", 0)
       };
     };
   }; // eslint-disable-line no-unused-vars
@@ -144,16 +195,8 @@
     };
   };
 
-  var sel = function sel(selector, o) {
-    return _defineProperty({}, selector, o);
-  };
-
-  var selectorRTL = function selectorRTL(selector) {
-    return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
-  };
-
   var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars) {
-    return sel(selector, {
+    return polytheneCoreCss.sel(selector, {
       lineHeight: vars.single_line_height + "px",
 
       ".pe-list-tile--navigation": {
@@ -168,7 +211,7 @@
 
   var varFns = {
     general_styles: function general_styles(selector, vars) {
-      return [sel(selector, [alignLeft(vars), polytheneCoreCss.flex.layout, {
+      return [polytheneCoreCss.sel(selector, [alignLeft(vars), polytheneCoreCss.flex.layout, {
         position: "relative",
 
         ".pe-list-tile--navigation": {
@@ -306,7 +349,7 @@
             cursor: "pointer"
           }
         }
-      }]), _defineProperty({}, selectorRTL(selector), alignRight(vars))];
+      }]), _defineProperty$1({}, polytheneCoreCss.selectorRTL(selector), alignRight(vars))];
     },
     title_line_count: function title_line_count(selector, vars) {
       return [title_line_count_single_line_height(selector, vars)];
@@ -315,7 +358,7 @@
       return [title_line_count_single_line_height(selector, vars)];
     },
     font_size_title: function font_size_title(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         fontSize: vars.font_size_title + "px",
 
         " .pe-list-tile__secondary": {
@@ -324,26 +367,26 @@
       })];
     },
     font_weight_title: function font_weight_title(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         fontWeight: vars.font_weight_title
       })];
     },
     font_size_navigation_title: function font_size_navigation_title(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--navigation": {
           fontSize: vars.font_size_navigation_title + "px"
         }
       })];
     },
     font_weight_navigation_title: function font_weight_navigation_title(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--navigation": {
           fontWeight: vars.font_weight_navigation_title
         }
       })];
     },
     padding: function padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ":not(.pe-list-tile--header) .pe-list-tile__primary": {
           " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars.padding, vars.padding + 1)]
         },
@@ -354,12 +397,12 @@
       })];
     },
     side_padding: function side_padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-list-tile__content": [paddingH(vars.side_padding)]
       })];
     },
     compact_front_item_width: function compact_front_item_width(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-list-tile__content-front": {
           ".pe-list-tile--compact-front": {
             width: vars.compact_front_item_width + "px"
@@ -368,7 +411,7 @@
       })];
     },
     front_item_width: function front_item_width(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-list-tile__content-front": {
           ":not(.pe-list-tile--compact-front)": {
             width: vars.front_item_width + "px"
@@ -377,7 +420,7 @@
       })];
     },
     font_size_small: function font_size_small(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-list-tile__content": {
           " small": {
             fontSize: vars.font_size_small + "px"
@@ -386,21 +429,21 @@
       })];
     },
     has_high_subtitle_padding: function has_high_subtitle_padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--high-subtitle": {
           " .pe-list-tile__content": [paddingV(vars.has_high_subtitle_padding, vars.has_high_subtitle_padding + 1)]
         }
       })];
     },
     has_subtitle_padding: function has_subtitle_padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--subtitle": {
           " .pe-list-tile__content": [paddingV(vars.has_subtitle_padding, vars.has_subtitle_padding + 1)]
         }
       })];
     },
     single_height: function single_height(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--header": {
           height: vars.single_height + "px",
 
@@ -412,7 +455,7 @@
       })];
     },
     font_size_list_header: function font_size_list_header(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--header": {
           " .pe-list-tile__title": {
             fontSize: vars.font_size_list_header + "px"
@@ -421,7 +464,7 @@
       })];
     },
     font_weight_list_header: function font_weight_list_header(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         ".pe-list-tile--header": {
           " .pe-list-tile__title": {
             fontWeight: vars.font_weight_list_header
@@ -430,7 +473,7 @@
       })];
     },
     compact_padding: function compact_padding(selector, vars) {
-      return [sel(selector, {
+      return [polytheneCoreCss.sel(selector, {
         " .pe-list--compact &, &.pe-list-tile--compact": {
           ":not(.pe-list-tile--header)": {
             " .pe-list-tile__content": paddingV(vars.compact_padding, vars.compact_padding + 1)
@@ -440,182 +483,86 @@
     }
   };
 
-  var layout = (function (selector, componentVars, customVars) {
-    var allVars = _extends({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  // SPECS
+  //
+  // heights:
+  // single line: 48
+  // single line, dense: 40
+  // single line, with icon: 48
+  // single line, with icon, dense: 40
+  // single line, with avatar: 56
+  // single line, with avatar, dense: 48
+  // two-line: 72
+  // two-line, dense: 60
+  // three-line: 88
+  // three-line, dense: 76
 
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  var single_height = 48;
+  var padding = 8;
+  var single_with_icon_height = 56;
 
-  var sel$1 = function sel(selector, o) {
-    return _defineProperty$1({}, selector, o);
+  var vars = {
+    general_styles: true,
+
+    compact_front_item_width: 64,
+    compact_padding: 9,
+    compact_side_padding: 1 * polytheneTheme.vars.grid_unit_component,
+    font_size_list_header: 14,
+    font_size_navigation_title: 14,
+    font_size_small: 12,
+    font_size_subtitle: 14,
+    font_size_title: 16,
+    font_weight_list_header: polytheneTheme.vars.font_weight_medium,
+    font_weight_navigation_title: polytheneTheme.vars.font_weight_medium,
+    font_weight_subtitle: polytheneTheme.vars.font_weight_normal,
+    font_weight_title: polytheneTheme.vars.font_weight_normal,
+    front_item_width: 72,
+    has_high_subtitle_padding: 13,
+    has_subtitle_padding: 15,
+    high_subtitle_line_count: 2,
+    line_height_subtitle: 20,
+    padding: 13,
+    side_padding: 2 * polytheneTheme.vars.grid_unit_component,
+    single_height: single_height,
+    single_line_height: single_height - 2 * padding - (2 * 5 + 1),
+    single_with_icon_height: single_with_icon_height,
+    single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
+    subtitle_line_count: 1,
+    title_line_count: 1,
+
+    color_light_title: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_subtitle: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_info: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
+    color_light_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_text_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_list_header: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_tertiary),
+    color_light_secondary: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_hover: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_hover_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_hover_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_selected_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_highlight_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    // background color may be set in theme; disabled by default
+    // color_light_background:          "inherit",
+
+    color_dark_title: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_subtitle: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_info: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
+    color_dark_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_text_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_list_header: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_tertiary),
+    color_dark_secondary: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_hover: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_hover_front: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_hover_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_selected_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
+    color_dark_highlight_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
+    // background color may be set in theme; disabled by default
+    // color_dark_background:           "inherit",
   };
-
-  var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [sel$1(selector, {
-        ".pe-list-tile--header": {
-          " .pe-list-tile__primary, pe-list-tile__secondary": {
-            backgroundColor: "inherit"
-          }
-        },
-        ":not(.pe-list-tile--disabled)": {
-          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-            outline: "none",
-            backgroundColor: "inherit"
-          }
-        },
-        "&.pe-list-tile--sticky": {
-          backgroundColor: "inherit"
-        }
-      })];
-    }
-  };
-
-  var tintFns = function tintFns(tint) {
-    var _ref2;
-
-    return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_title", function (selector, vars) {
-      return [sel$1(selector, {
-        color: vars["color_" + tint + "_title"]
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_background", function (selector, vars) {
-      return [sel$1(selector, {
-        backgroundColor: vars["color_" + tint + "_background"],
-
-        "&.pe-list-tile--sticky": {
-          backgroundColor: vars["color_" + tint + "_background"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_list_header", function (selector, vars) {
-      return [sel$1(selector, {
-        ".pe-list-tile--header": {
-          color: vars["color_" + tint + "_list_header"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_subtitle", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-list-tile__subtitle": {
-          color: vars["color_" + tint + "_subtitle"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_secondary", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-list-tile__secondary": {
-          color: vars["color_" + tint + "_secondary"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_front", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-list-tile__content-front": {
-          color: vars["color_" + tint + "_front"]
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_text_disabled", function (selector, vars) {
-      return [sel$1(selector, {
-        ".pe-list-tile--disabled": {
-          "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-            color: vars["color_" + tint + "_text_disabled"]
-          }
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_selected_background", function (selector, vars) {
-      return [sel$1(selector, {
-        ".pe-list-tile--selected": {
-          " .pe-list-tile__primary, pe-list-tile__secondary": {
-            backgroundColor: vars["color_" + tint + "_selected_background"]
-          }
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_highlight_background", function (selector, vars) {
-      return [sel$1(selector, {
-        ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
-          " .pe-list-tile__primary, pe-list-tile__secondary": {
-            backgroundColor: vars["color_" + tint + "_highlight_background"]
-          }
-        }
-      })];
-    }), _defineProperty$1(_ref2, "color_" + tint + "_focus_background", function (selector, vars) {
-      return [sel$1(selector, {
-        ":not(.pe-list-tile--disabled)": {
-          " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-            backgroundColor: vars["color_" + tint + "_focus_background"]
-          }
-        }
-      })];
-    }), _ref2;
-  };
-
-  var hoverTintFns = function hoverTintFns(tint) {
-    var _ref3;
-
-    return _ref3 = {}, _defineProperty$1(_ref3, "color_" + tint + "_hover", function (selector, vars) {
-      return [sel$1(selector, {
-        color: vars["color_" + tint + "_hover"]
-      })];
-    }), _defineProperty$1(_ref3, "color_" + tint + "_hover_background", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-list-tile__primary, .pe-list-tile__secondary": {
-          backgroundColor: vars["color_" + tint + "_hover_background"]
-        }
-      })];
-    }), _defineProperty$1(_ref3, "color_" + tint + "_hover_front", function (selector, vars) {
-      return [sel$1(selector, {
-        " .pe-list-tile__primary .pe-list-tile__content-front": {
-          color: vars["color_" + tint + "_hover_front"]
-        }
-      })];
-    }), _ref3;
-  };
-
-  var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-  var lightTintHoverFns = hoverTintFns("light");
-  var darkTintHoverFns = hoverTintFns("dark");
-
-  var createStyle = function createStyle(selector, componentVars, customVars, tint, hover) {
-    var allVars = _extends$1({}, componentVars, customVars);
-    var currentVars = customVars ? customVars : allVars;
-    return Object.keys(currentVars).map(function (v) {
-      var varFns = tint === "light" ? hover ? lightTintHoverFns : lightTintFns : hover ? darkTintHoverFns : darkTintFns;
-      return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-    }).filter(function (s) {
-      return s;
-    });
-  };
-
-  var style = function style(scopes, selector, componentVars, customVars, tint) {
-    var selectors = scopes.map(function (s) {
-      return s + selector;
-    }).join(",");
-    return createStyle(selectors, componentVars, customVars, tint);
-  };
-
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, customVars, tint) {
-    var selectors = [].concat(scopes.map(function (s) {
-      return s + selector + ":hover";
-    }).join(",")).concat(scopes.map(function (s) {
-      return s + selector + ":active";
-    }).join(","));
-    return createStyle(selectors, componentVars, customVars, tint, true);
-  };
-
-  var color = (function (selector, componentVars, customVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light"), // normal, has/inside light tone
-
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-
-    noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable "], selector, componentVars, customVars, "light")];
-  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
@@ -631,7 +578,9 @@
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

@@ -1,58 +1,5 @@
+import { sel, createColor, mixin, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, flex, styler } from 'polythene-core-css';
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var padding_v = 24;
-var padding_actions_v = 8;
-var actions_button_margin_v = 2;
-
-var vars$1 = {
-  general_styles: true,
-
-  actions_button_margin_h: vars.grid_unit,
-  actions_button_margin_v: actions_button_margin_v,
-  actions_padding_h: 8,
-  actions_padding_v: 0,
-  actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
-  border_radius: vars.unit_block_border_radius,
-  icon_element_width: 72 - 4,
-  image_size_large: 3 * 80,
-  image_size_medium: 2 * 80,
-  image_size_regular: 1.4 * 80,
-  image_size_small: 1 * 80,
-  offset_small_padding_v: padding_v - 16,
-  one_line_height_with_icon: 72,
-  one_line_padding_v: 8,
-  padding_h: 16,
-  subtitle_line_height_padding_bottom: 7,
-  text_line_height_padding_bottom: 7,
-  text_line_height_padding_top: 6,
-  text_padding_bottom: 24,
-  text_padding_h: 16,
-  text_padding_v: 16,
-  tight_text_padding_bottom: 16,
-  tight_title_padding_bottom: 16,
-  title_padding_h: 16,
-  title_padding_v: 24,
-
-  color_light_main_background: rgba(vars.color_light_background),
-  color_light_title_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_subtitle_text: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_light_actions_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
-  color_light_overlay_background: rgba(vars.color_light_background, vars.blend_light_overlay_background),
-
-  color_dark_main_background: rgba(vars.color_dark_background),
-  color_dark_title_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_subtitle_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
-  color_dark_actions_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
-  color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
-};
 
 var classes = {
   component: "pe-card",
@@ -100,6 +47,76 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
+};
+
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint + "_main_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_main_background"]
+    })];
+  });
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+});
+
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns$1 = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
+};
+
+var tintFns$1 = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty$1(_ref, "color_" + tint + "_title_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-card__title": {
+        color: vars$$1["color_" + tint + "_title_text"]
+      }
+    })];
+  }), _defineProperty$1(_ref, "color_" + tint + "_subtitle_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-card__subtitle": {
+        color: vars$$1["color_" + tint + "_subtitle_text"]
+      }
+    })];
+  }), _defineProperty$1(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-card__text": {
+        color: vars$$1["color_" + tint + "_text"]
+      }
+    })];
+  }), _defineProperty$1(_ref, "color_" + tint + "_actions_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-card__actions--border": {
+        borderTop: "1px solid " + vars$$1["color_" + tint + "_actions_border"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("light"));
+var darkTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("dark"));
+
+var contentColor = createColor({
+  varFns: { lightTintFns: lightTintFns$1, darkTintFns: darkTintFns$1 }
+});
+
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var alignSide = function alignSide() {
   return function () {
     return {};
@@ -107,10 +124,6 @@ var alignSide = function alignSide() {
 };
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
-};
 
 var tight_title_padding_bottom_subtitle_line_height_padding_bottom = function tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars$$1) {
   return sel(selector, {
@@ -374,7 +387,7 @@ var varFns = {
       }
     }, {
       // RTL
-      "*[dir=rtl], .pe-rtl ": _defineProperty({}, selector, alignRight(vars$$1))
+      "*[dir=rtl], .pe-rtl ": _defineProperty$2({}, selector, alignRight(vars$$1))
     }])];
   },
   border_radius: function border_radius(selector, vars$$1) {
@@ -544,141 +557,11 @@ var varFns = {
   }
 };
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
-};
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [];
-  } // eslint-disable-line no-unused-vars
-};
-
-var tintFns = function tintFns(tint) {
-  return _defineProperty$1({}, "color_" + tint + "_main_background", function (selector, vars$$1) {
-    return [sel$1(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_main_background"]
-    })];
-  });
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
+var layout = createLayout({ varFns: varFns });
 
 var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel$2 = function sel(selector, o) {
-  return _defineProperty$2({}, selector, o);
-};
-
-var generalFns$1 = {
-  general_styles: function general_styles(selector) {
-    return [];
-  } // eslint-disable-line no-unused-vars
-};
-
-var tintFns$1 = function tintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty$2(_ref2, "color_" + tint + "_title_text", function (selector, vars$$1) {
-    return [sel$2(selector, {
-      " .pe-card__title": {
-        color: vars$$1["color_" + tint + "_title_text"]
-      }
-    })];
-  }), _defineProperty$2(_ref2, "color_" + tint + "_subtitle_text", function (selector, vars$$1) {
-    return [sel$2(selector, {
-      " .pe-card__subtitle": {
-        color: vars$$1["color_" + tint + "_subtitle_text"]
-      }
-    })];
-  }), _defineProperty$2(_ref2, "color_" + tint + "_text", function (selector, vars$$1) {
-    return [sel$2(selector, {
-      " .pe-card__text": {
-        color: vars$$1["color_" + tint + "_text"]
-      }
-    })];
-  }), _defineProperty$2(_ref2, "color_" + tint + "_actions_border", function (selector, vars$$1) {
-    return [sel$2(selector, {
-      " .pe-card__actions--border": {
-        borderTop: "1px solid " + vars$$1["color_" + tint + "_actions_border"]
-      }
-    })];
-  }), _ref2;
-};
-
-var lightTintFns$1 = _extends$2({}, generalFns$1, tintFns$1("light"));
-var darkTintFns$1 = _extends$2({}, generalFns$1, tintFns$1("dark"));
-
-var createStyle$1 = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$2({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns$1 : darkTintFns$1;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style$1 = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle$1(selectors, componentVars, customVars, tint);
-};
-
-var contentColor = (function (selector, componentVars, customVars) {
-  return [style$1([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style$1(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
-});
-
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel$3 = function sel(selector, o) {
-  return _defineProperty$3({}, selector, o);
-};
 
 var generalFns$2 = {
   general_styles: function general_styles(selector) {
@@ -688,7 +571,7 @@ var generalFns$2 = {
 
 var tintFns$2 = function tintFns(tint) {
   return _defineProperty$3({}, "color_" + tint + "_overlay_background", function (selector, vars$$1) {
-    return [sel$3(selector, {
+    return [sel(selector, {
       " .pe-card__overlay__content": {
         backgroundColor: vars$$1["color_" + tint + "_overlay_background"]
       }
@@ -696,31 +579,60 @@ var tintFns$2 = function tintFns(tint) {
   });
 };
 
-var lightTintFns$2 = _extends$3({}, generalFns$2, tintFns$2("light"));
-var darkTintFns$2 = _extends$3({}, generalFns$2, tintFns$2("dark"));
+var lightTintFns$2 = _extends$2({}, generalFns$2, tintFns$2("light"));
+var darkTintFns$2 = _extends$2({}, generalFns$2, tintFns$2("dark"));
 
-var createStyle$2 = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$3({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns$2 : darkTintFns$2;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style$2 = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle$2(selectors, componentVars, customVars, tint);
-};
-
-var overlayColor = (function (selector, componentVars, customVars) {
-  return [style$2([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style$2(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+var overlayColor = createColor({
+  varFns: { lightTintFns: lightTintFns$2, darkTintFns: darkTintFns$2 }
 });
+
+var padding_v = 24;
+var padding_actions_v = 8;
+var actions_button_margin_v = 2;
+
+var vars$1 = {
+  general_styles: true,
+
+  actions_button_margin_h: vars.grid_unit,
+  actions_button_margin_v: actions_button_margin_v,
+  actions_padding_h: 8,
+  actions_padding_v: 0,
+  actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
+  border_radius: vars.unit_block_border_radius,
+  icon_element_width: 72 - 4,
+  image_size_large: 3 * 80,
+  image_size_medium: 2 * 80,
+  image_size_regular: 1.4 * 80,
+  image_size_small: 1 * 80,
+  offset_small_padding_v: padding_v - 16,
+  one_line_height_with_icon: 72,
+  one_line_padding_v: 8,
+  padding_h: 16,
+  subtitle_line_height_padding_bottom: 7,
+  text_line_height_padding_bottom: 7,
+  text_line_height_padding_top: 6,
+  text_padding_bottom: 24,
+  text_padding_h: 16,
+  text_padding_v: 16,
+  tight_text_padding_bottom: 16,
+  tight_title_padding_bottom: 16,
+  title_padding_h: 16,
+  title_padding_v: 24,
+
+  color_light_main_background: rgba(vars.color_light_background),
+  color_light_title_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_subtitle_text: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_light_actions_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
+  color_light_overlay_background: rgba(vars.color_light_background, vars.blend_light_overlay_background),
+
+  color_dark_main_background: rgba(vars.color_dark_background),
+  color_dark_title_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_subtitle_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
+  color_dark_actions_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
+  color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
+};
 
 var selector = "." + classes.component;
 var contentSelector = "." + classes.content;
@@ -740,4 +652,4 @@ styler.generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
 styler.generateStyles([contentSelector], vars$1, [contentColor]);
 styler.generateStyles([overlayContentSelector], vars$1, [contentColor]);
 
-export { addStyle, getStyle, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

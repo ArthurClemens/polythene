@@ -1,5 +1,4 @@
-import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-svg';
+import { sel, createColor, createLayout, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-svg"
@@ -9,44 +8,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
-};
-
-var varFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      lineHeight: 1,
-
-      " > div, svg": {
-        width: "inherit",
-        height: "inherit"
-      }
-    })];
-  }
-};
-
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel$1 = function sel(selector, o) {
-  return _defineProperty$1({}, selector, o);
-};
-
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel$1(selector, {
+    return [sel(selector, {
       color: "inherit",
 
       " svg": {
@@ -63,12 +27,12 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  return _defineProperty$1({}, "color_" + tint, function (selector, vars$$1) {
-    return [sel$1(selector, {
+  return _defineProperty({}, "color_" + tint, function (selector, vars) {
+    return [sel(selector, {
       " svg": {
         " path, rect, circle, polygon": {
           "&:not([fill=none])": {
-            fill: vars$$1["color_" + tint]
+            fill: vars["color_" + tint]
           }
         }
       }
@@ -76,31 +40,34 @@ var tintFns = function tintFns(tint) {
   });
 };
 
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var createStyle = function createStyle(selector, componentVars, customVars, tint) {
-  var allVars = _extends$1({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    var varFns = tint === "light" ? lightTintFns : darkTintFns;
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
-};
-
-var style = function style(scopes, selector, componentVars, customVars, tint) {
-  var selectors = scopes.map(function (s) {
-    return s + selector;
-  }).join(",");
-  return createStyle(selectors, componentVars, customVars, tint);
-};
-
-var color = (function (selector, componentVars, customVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, customVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, customVars, "light")];
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
+
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      lineHeight: 1,
+
+      " > div, svg": {
+        width: "inherit",
+        height: "inherit"
+      }
+    })];
+  }
+};
+
+var layout = createLayout({ varFns: varFns });
+
+var vars = {
+  general_styles: true,
+
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
 
 var fns = [layout, color];
 var selector = "." + classes.component;
@@ -115,4 +82,4 @@ var getStyle = function getStyle(customSelector, customVars) {
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color, getStyle, layout, vars };

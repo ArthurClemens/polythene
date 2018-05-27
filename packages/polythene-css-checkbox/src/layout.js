@@ -1,3 +1,4 @@
-import { layout } from "polythene-css-selection-control";
+import { createLayout } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-selection-control";
 
-export default (selector, componentVars, customVars) => layout(selector, componentVars, customVars, "checkbox");
+export default createLayout({ superLayout });

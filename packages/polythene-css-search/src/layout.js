@@ -1,4 +1,4 @@
-import { flex, sel } from "polythene-core-css";
+import { flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const inset_height_line_height_input = (selector, vars) => {
@@ -182,14 +182,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

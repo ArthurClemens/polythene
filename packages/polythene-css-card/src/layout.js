@@ -1,4 +1,4 @@
-import { mixin, flex, sel } from "polythene-core-css";
+import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const alignSide = () => () => ({});
@@ -477,14 +477,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

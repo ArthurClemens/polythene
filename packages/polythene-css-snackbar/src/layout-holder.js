@@ -1,5 +1,5 @@
 import { vars as defaultVars } from "polythene-theme";
-import { flex, sel } from "polythene-core-css";
+import { flex, sel, createLayout } from "polythene-core-css";
 
 const varFns = {
   general_styles: selector => [
@@ -25,14 +25,6 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({
+  varFns
+});

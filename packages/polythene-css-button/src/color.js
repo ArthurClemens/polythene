@@ -8,9 +8,6 @@ const generalFns = ({
           opacity: 1
         }
       },
-      " .pe-button__content": {
-        borderColor: "transparent"
-      },
     })
   ],
 });
@@ -77,7 +74,7 @@ const tintFns = tint => ({
 
   ["color_" + tint + "_border"]: (selector, vars) => [
     sel(selector, {
-      ":not(.pe-button--disabled)": {
+      ".pe-button--border:not(.pe-button--disabled)": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_border"],
         },
@@ -87,7 +84,7 @@ const tintFns = tint => ({
 
   ["color_" + tint + "_active_border"]: (selector, vars) => [
     sel(selector, {
-      ".pe-button--selected": {
+      ".pe-button--border.pe-button--selected": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_active_border"],
         }
@@ -96,7 +93,7 @@ const tintFns = tint => ({
   ],
   ["color_" + tint + "_disabled_border"]: (selector, vars) => [
     sel(selector, {
-      ".pe-button--disabled": {
+      ".pe-button--border.pe-button--disabled": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_disabled_border"],
         }

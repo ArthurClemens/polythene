@@ -1,4 +1,6 @@
-import { color } from "polythene-css-notification";
+import { createColor } from "polythene-core-css";
+import { color as superColor } from "polythene-css-notification";
 
-export default (selector, componentVars, customVars) => color(selector, componentVars, customVars);
-
+export default createColor({
+  superColor
+});

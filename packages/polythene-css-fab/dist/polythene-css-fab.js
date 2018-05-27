@@ -1,25 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-raised-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-raised-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-raised-button']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssRaisedButton) { 'use strict';
-
-  var vars = {
-    general_styles: true,
-
-    size_mini: 5 * polytheneTheme.vars.grid_unit_component, // 5 * 8 = 40
-    size_regular: 7 * polytheneTheme.vars.grid_unit_component, // 7 * 8 = 56
-
-    color_light: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
-    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium, // same as button
-    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
-
-    color_dark: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
-    color_dark_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
-    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium, // same as button
-    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary)
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-raised-button'), require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-raised-button', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-raised-button'],global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCssRaisedButton,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-fab",
@@ -30,6 +13,56 @@
     // states
     mini: "pe-fab--mini"
   };
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-button--focus": {
+          " .pe-button__focus": {
+            opacity: 1
+          }
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          color: vars["color_" + tint]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_background"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-button--focus": {
+          " .pe-button__focus": {
+            backgroundColor: vars["color_" + tint + "_focus_background"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+    superColor: polytheneCssRaisedButton.color
+  });
 
   var varFns = {
     general_styles: function general_styles(selector) {
@@ -95,54 +128,22 @@
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssRaisedButton.layout });
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var vars = {
+    general_styles: true,
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    size_mini: 5 * polytheneTheme.vars.grid_unit_component, // 5 * 8 = 40
+    size_regular: 7 * polytheneTheme.vars.grid_unit_component, // 7 * 8 = 56
 
-  var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, {
-        ".pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: 1
-          }
-        }
-      })];
-    }
+    color_light: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
+    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium, // same as button
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+
+    color_dark: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_foreground),
+    color_dark_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
+    color_dark_focus_opacity: polytheneTheme.vars.blend_dark_background_hover_medium, // same as button
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary)
   };
-
-  var tintFns = function tintFns(tint) {
-    var _ref;
-
-    return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          color: vars["color_" + tint]
-        }
-      })];
-    }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          backgroundColor: vars["color_" + tint + "_background"]
-        }
-      })];
-    }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        ".pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_background"]
-          }
-        }
-      })];
-    }), _ref;
-  };
-
-  var lightTintFns = _extends({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
-
-  var color = polytheneCoreCss.createColor({
-    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
-  });
 
   var fns = [layout, color];
   var selector = "." + classes.component;
@@ -158,7 +159,9 @@
   polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
   exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });

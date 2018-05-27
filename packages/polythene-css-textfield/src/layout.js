@@ -1,4 +1,4 @@
-import { mixin, sel } from "polythene-core-css";
+import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const vertical_spacing_top_input_padding_v = (selector, vars) =>
@@ -441,14 +441,4 @@ const varFns = {
   ],
 };
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

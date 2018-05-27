@@ -1,4 +1,4 @@
-import { sel } from "polythene-core-css";
+import { sel, createLayout } from "polythene-core-css";
 
 const sizeDirective = size => (selector, vars) =>
   sel(selector, {
@@ -47,14 +47,4 @@ const varFns = Object.assign({},
   ), {})
 );
 
-export default (selector, componentVars, customVars) => {
-  const allVars = {...componentVars, ...customVars};
-  const currentVars = customVars
-    ? customVars
-    : allVars;
-  return Object.keys(currentVars).map(v => (
-    varFns[v] !== undefined 
-      ? varFns[v](selector, allVars)
-      : null
-  )).filter(s => s);
-};
+export default createLayout({ varFns });

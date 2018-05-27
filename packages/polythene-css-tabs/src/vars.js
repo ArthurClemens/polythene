@@ -35,13 +35,13 @@ export default {
   tab_min_width_tablet:             160,
   tabs_indent:                      0,
  
-  color_light:                      rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_light_text:                 rgba(vars.color_light_foreground, vars.blend_light_text_regular),
   color_light_selected:             rgba(vars.color_primary),
   color_light_selected_background:  "transparent",
   color_light_tab_indicator:        rgba(vars.color_primary),
   color_light_icon:                 iconButtonVars.color_light,
  
-  color_dark:                       rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
+  color_dark_text:                  rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
   color_dark_selected:              rgba(vars.color_primary),
   color_dark_selected_background:   "transparent",
   color_dark_tab_indicator:         rgba(vars.color_primary),

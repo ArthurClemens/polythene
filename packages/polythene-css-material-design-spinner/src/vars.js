@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { rgba } from "polythene-core-css";
-import { vars as baseVars } from "polythene-css-base-spinner";
+import { vars as superVars } from "polythene-css-base-spinner";
 import { vars } from "polythene-theme";
  
 const arc_size =          270; // degrees - amount of circle the arc takes up
@@ -30,11 +30,11 @@ export default {
   arc_size,
   arc_start_degrees,
   arc_time,
-  border_width_fab:     baseVars.size_fab / baseVars.size_regular * 3,
-  border_width_large:   baseVars.size_large / baseVars.size_regular * 3,
-  border_width_medium:  baseVars.size_medium / baseVars.size_regular * 3,
+  border_width_fab:     superVars.size_fab / superVars.size_regular * 3,
+  border_width_large:   superVars.size_large / superVars.size_regular * 3,
+  border_width_medium:  superVars.size_medium / superVars.size_regular * 3,
   border_width_regular: 3,
-  border_width_small:   baseVars.size_small / baseVars.size_regular * 3,
+  border_width_small:   superVars.size_small / superVars.size_regular * 3,
   rotation_duration,
 
   color_light_single:   rgba(vars.color_primary),

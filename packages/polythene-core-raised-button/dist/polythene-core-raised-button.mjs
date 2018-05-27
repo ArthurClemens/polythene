@@ -1,7 +1,8 @@
 import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
 
 var classes = {
-  component: "pe-button pe-text-button pe-raised-button"
+  component: "pe-raised-button",
+  super: "pe-button pe-text-button"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -100,7 +101,7 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
   return _extends({}, {
-    parentClassName: [attrs.parentClassName || classes.component].join(" "),
+    parentClassName: [classes.super, attrs.parentClassName || classes.component].join(" "),
     animateOnTap: false,
     shadowComponent: h(Shadow, {
       z: attrs.disabled ? 0 : state.z,

@@ -1,5 +1,5 @@
-import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-shadow';
+import { mixin, sel, createLayout, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-shadow",
@@ -16,10 +16,6 @@ var classes = {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
-};
 
 var shadowDirective = function shadowDirective(which, num) {
   return function (selector, vars$$1) {
@@ -49,43 +45,46 @@ var varFns = _extends({}, {
       }
     })];
   }
-  // shadow_top_z_1: (selector, vars) =>
-  //   sel(selector, {
-  //     " .pe-shadow__top.pe-shadow--z-1": {
-  //       boxShadow: vars.shadow_top_z_1
-  //     }
-  //   }),
-  // shadow_bottom_z_1: (selector, vars) =>
-  //   sel(selector, {
-  //     " .pe-shadow__bottom.pe-shadow--z-1": {
-  //       boxShadow: vars.shadow_bottom_z_1
-  //     }
-  //   })
 }, [1, 2, 3, 4, 5].reduce(function (acc, num) {
   return acc["shadow_top_z_" + num] = shadowDirective("top", num), acc["shadow_bottom_z_" + num] = shadowDirective("bottom", num), acc;
 }, {}));
 
-var layout = (function (selector, componentVars, customVars) {
-  var allVars = _extends({}, componentVars, customVars);
-  var currentVars = customVars ? customVars : allVars;
-  return Object.keys(currentVars).map(function (v) {
-    return varFns[v] !== undefined ? varFns[v](selector, allVars) : null;
-  }).filter(function (s) {
-    return s;
-  });
+var layout = createLayout({
+  varFns: varFns
 });
+
+var vars$1 = {
+  general_styles: true,
+
+  transition: "box-shadow " + vars.animation_duration + " ease-out",
+
+  shadow_top_z_1: "initial",
+  shadow_bottom_z_1: "0 1px 4px 0 rgba(0, 0, 0, 0.37)",
+
+  shadow_top_z_2: "0 2px 2px 0 rgba(0, 0, 0, 0.2)",
+  shadow_bottom_z_2: "0 6px 10px 0 rgba(0, 0, 0, 0.3)",
+
+  shadow_top_z_3: "0 11px 7px 0 rgba(0, 0, 0, 0.19)",
+  shadow_bottom_z_3: "0 13px 25px 0 rgba(0, 0, 0, 0.3)",
+
+  shadow_top_z_4: "0 14px 12px 0 rgba(0, 0, 0, 0.17)",
+  shadow_bottom_z_4: "0 20px 40px 0 rgba(0, 0, 0, 0.3)",
+
+  shadow_top_z_5: "0 17px 17px 0 rgba(0, 0, 0, 0.15)",
+  shadow_bottom_z_5: "0 27px 55px 0 rgba(0, 0, 0, 0.3)"
+};
 
 var fns = [layout];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, getStyle, layout, vars$1 as vars };

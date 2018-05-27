@@ -1,16 +1,6 @@
-import { rgba, sel, createLayout, createColor, styler } from 'polythene-core-css';
-import { vars } from 'polythene-css-base-spinner';
-import { vars as vars$1 } from 'polythene-theme';
-import { layout, color } from 'polythene-css-material-design-spinner';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var vars$2 = _extends({}, vars, {
-  progress_animation_duration: ".8s",
-
-  color_light: rgba(vars$1.color_primary),
-  color_dark: rgba(vars$1.color_primary)
-});
+import { color, layout } from 'polythene-css-material-design-spinner';
+import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-md-progress-spinner",
@@ -21,6 +11,36 @@ var classes = {
   circleRight: "pe-md-progress-spinner__circle-right",
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-md-progress-spinner__circle": {
+        borderColor: "currentcolor"
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint]
+    })];
+  });
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color$1 = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+  superColor: color
+});
 
 var varFns = {
   general_styles: function general_styles(selector) {
@@ -59,47 +79,26 @@ var varFns = {
 
 var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  progress_animation_duration: ".8s",
 
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      " .pe-md-progress-spinner__circle": {
-        borderColor: "currentcolor"
-      }
-    })];
-  }
+  color_light: rgba(vars.color_primary),
+  color_dark: rgba(vars.color_primary)
 };
-
-var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
-    return [sel(selector, {
-      color: vars$$1["color_" + tint]
-    })];
-  });
-};
-
-var lightTintFns = _extends$1({}, generalFns, tintFns("light"));
-var darkTintFns = _extends$1({}, generalFns, tintFns("dark"));
-
-var color$1 = createColor({
-  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-  superColor: color
-});
 
 var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$2, customVars, fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$2, customVars, fns) : styler.createStyleSheets([selector], vars$2, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars$2, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle, vars$2 as vars };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };
