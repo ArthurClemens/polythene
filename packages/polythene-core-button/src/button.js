@@ -111,7 +111,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Ripple, SVG }) => {
+export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
@@ -153,15 +153,17 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, SVG }) => {
       disabled ? null : h("div", { key: "focus", className: classes.focus }),
       label,
       attrs.dropdown
-        ? h("div",
+        ? h(Icon,
           {
             className: classes.dropdown,
-            key: "dropdown"
-          },
-          h(SVG, null, h.trust(attrs.dropdownOpen
-            ? iconDropdownUp
-            : iconDropdownDown
-          ))
+            key: "dropdown",
+            svg: {
+              content: h.trust(attrs.dropdownOpen
+                ? iconDropdownUp
+                : iconDropdownDown
+              )
+            }
+          }
         )
         : null
     ]

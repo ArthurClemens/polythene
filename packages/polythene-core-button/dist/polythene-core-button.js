@@ -131,7 +131,7 @@
     var h = _ref3.renderer,
         k = _ref3.keys,
         Ripple = _ref3.Ripple,
-        SVG = _ref3.SVG;
+        Icon = _ref3.Icon;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
@@ -152,10 +152,13 @@
     // hover
     noWash ? null : h("div", { key: "wash", className: classes.wash }),
     // focus
-    disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h("div", {
+    disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h(Icon, {
       className: classes.dropdown,
-      key: "dropdown"
-    }, h(SVG, null, h.trust(attrs.dropdownOpen ? polytheneCore.iconDropdownUp : polytheneCore.iconDropdownDown))) : null]);
+      key: "dropdown",
+      svg: {
+        content: h.trust(attrs.dropdownOpen ? polytheneCore.iconDropdownUp : polytheneCore.iconDropdownDown)
+      }
+    }) : null]);
   };
 
   var button = /*#__PURE__*/Object.freeze({
