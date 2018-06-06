@@ -44,6 +44,7 @@ var classes = {
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
+  origin: "pe-menu--origin",
 
   // lookup
   listTile: listTileClasses.component,
@@ -134,7 +135,9 @@ var varFns = {
       },
 
       " .pe-menu__content": {
-        width: "100%"
+        width: "100%",
+        height: "100%",
+        overflow: "auto"
       },
 
       ".pe-menu--full-height": {
@@ -169,6 +172,24 @@ var varFns = {
   animation_hide_css: function animation_hide_css(selector, vars$$1) {
     return [sel(selector, [vars$$1.animation_hide_css])];
   },
+  animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-menu--origin.pe-menu--visible": vars$$1.animation_show_origin_effect_css
+    })];
+  },
+  animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-menu--origin:not(.pe-menu--visible)": vars$$1.animation_hide_origin_effect_css
+    })];
+  },
+  // exposed_vertical_offset: (selector, vars) => [
+  //   sel(selector, {
+  //     ".pe-menu--exposed": {
+  //       marginTop: vars.exposed_vertical_offset + "px",
+  //       height: `calc(100% - ${vars.exposed_vertical_offset}px)`,
+  //     }
+  //   })
+  // ],
   sizes: function sizes(selector, vars$$1) {
     return [sizes_min_size_size_factor(selector, vars$$1)];
   },
@@ -192,21 +213,23 @@ var varFns = {
 var layout = createLayout({ varFns: varFns });
 
 var vars$1 = {
-  general_styles: true,
+     general_styles: true,
 
-  animation_delay: "0s",
-  animation_duration: ".220s",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-  animation_timing_function: "ease-in-out",
-  border_radius: vars.unit_block_border_radius,
-  min_size: 1.5,
-  size_factor: vars.grid_unit_menu,
-  sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
+     animation_delay: "0s",
+     animation_duration: ".180s",
+     animation_hide_css: "opacity: 0;",
+     animation_hide_origin_effect_css: "transform: scale(0.75);",
+     animation_show_css: "opacity: 1;",
+     animation_show_origin_effect_css: "transform: scale(1);",
+     animation_timing_function: "ease-in-out",
+     border_radius: vars.unit_block_border_radius,
+     min_size: 1.5,
+     size_factor: vars.grid_unit_menu,
+     sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
 
-  color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background)
-  // text colors are set by content, usually list tiles
+     color_light_background: rgba(vars.color_light_background),
+     color_dark_background: rgba(vars.color_dark_background)
+     // text colors are set by content, usually list tiles
 };
 
 var fns = [layout, color];

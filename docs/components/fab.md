@@ -57,7 +57,7 @@ See: [Button options](Button.md#options)
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon**      | use `icon` or `content` | Object |  | [Icon](Icon.md) options object |
-| **mini**      | optional | Boolean | false | Set to true to display a small button (class name `pe-fab--mini`) |
+| **mini**      | optional | Boolean | false | Set to `true` to display a small button (class name `pe-fab--mini`) |
 
 
 <a id="common-component-options"></a>

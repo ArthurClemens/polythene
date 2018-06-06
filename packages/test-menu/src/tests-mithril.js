@@ -1,4 +1,4 @@
-import { renderer, keys, Dialog, RaisedButton, Menu, List, ListTile, Shadow, IconButton } from "polythene-mithril";
+import { renderer, keys, Dialog, Button, RaisedButton, Menu, List, ListTile, Shadow, IconButton, Icon } from "polythene-mithril";
 import genericTests from "./tests-generic";
 import settingsDialog from "./components/settings-dialog";
 import opener from "./components/opener";
@@ -39,5 +39,5 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ Menu, List, ListTile, RaisedButton, Shadow, IconButton, renderer, keys }))
-  .concat(mithrilTests({ Menu, List, ListTile, RaisedButton, Shadow, IconButton, renderer, keys }));
+  .concat(genericTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }))
+  .concat(mithrilTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }));

@@ -25,12 +25,12 @@ export default class extends Component {
         <Menu
           target={`#${target}`}
           show={isOpen}
-          size={2}
+          size={3}
           didHide={() => this.setState({ isOpen: false })}
         >
           <List>
-            <ListTile title="Yes" ink hoverable />
-            <ListTile title="No" ink hoverable />
+            <ListTile title="Menu item 1" ink hoverable />
+            <ListTile title="Menu item 2" ink hoverable />
           </List>
         </Menu>
       </div>

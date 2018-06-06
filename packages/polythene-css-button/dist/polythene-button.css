@@ -108,12 +108,23 @@
 }
 
 .pe-text-button.pe-button--dropdown .pe-button__label+.pe-button__dropdown {
-  margin-left: 7px;
+  margin-left: 6px;
   min-width: 0
 }
 
 .pe-button-group .pe-text-button {
   min-width: 0
+}
+
+.pe-text-button .pe-button__dropdown .pe-svg {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: transform
+}
+
+.pe-text-button.pe-button--dropdown-open .pe-button__dropdown .pe-svg {
+  transform: rotate(-180deg)
 }
 
 .pe-rtl .pe-text-button.pe-button--separator-start .pe-button__content,[dir=rtl] .pe-text-button.pe-button--separator-start .pe-button__content {
@@ -128,7 +139,7 @@
 }
 
 .pe-text-button .pe-button__content {
-  border-radius: 2px
+  border-radius: 4px
 }
 
 .pe-button-group .pe-text-button:not(:first-child) .pe-button__content {

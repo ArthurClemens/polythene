@@ -19,8 +19,8 @@ var vars = {
   grid_unit_icon_button: 6 * grid_unit_component, // 48
 
   // common sizes
-  unit_block_border_radius: 2,
-  unit_item_border_radius: 2,
+  unit_block_border_radius: 4,
+  unit_item_border_radius: 4,
   unit_indent: 72,
   unit_side_padding: 16,
 

@@ -92,7 +92,9 @@ var classes = {
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
     extraWide: "pe-button--extra-wide",
-    separatorAtStart: "pe-button--separator-start"
+    separatorAtStart: "pe-button--separator-start",
+    dropdownOpen: "pe-button--dropdown-open",
+    dropdownClosed: "pe-button--dropdown-closed"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -329,13 +331,21 @@ var varFns$1 = {
         },
 
         " .pe-button__label + .pe-button__dropdown": {
-          marginLeft: "7px",
+          marginLeft: "6px",
           minWidth: 0
         }
       },
 
       " .pe-button-group &": {
         minWidth: 0
+      },
+
+      " .pe-button__dropdown .pe-svg": mixin.defaultTransition("transform"),
+
+      ".pe-button--dropdown-open": {
+        " .pe-button__dropdown .pe-svg": {
+          transform: "rotate(-180deg)"
+        }
       }
     }]), [sel(selectorRTL(selector), alignRight())]];
   },

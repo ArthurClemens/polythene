@@ -52,7 +52,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
 | **z**         | optional      | Number 0-5 | 0 | Depth of the shadow; 0 will show no shadow |
 | **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |
-| **modal**     | optional      | Boolean    | false | Set to true to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
+| **modal**     | optional      | Boolean    | false | Set to `true` to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
 
 <a id="transition-options"></a>
 ### Transition options

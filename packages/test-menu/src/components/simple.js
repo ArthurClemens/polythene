@@ -5,7 +5,8 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
     show,
     didHide,
     getState,
-    size: 2, 
+    size: 3,
+    exposed: true,
     content: h(List,
       {
         all: {
@@ -14,15 +15,9 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
           hoverable: true,
         },
       },
-      [
-        {
-          title: "Yes",
-          key: "yes" // for React
-        },
-        {
-          title: "No",
-          key: "no" // for React
-        }
-      ]
+      [1,2,3,4].map(n => ({
+        title: `Menu item ${n}`,
+        key: n, // for React
+      }))
     )
   });

@@ -51,7 +51,7 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 | **selectable** | optional | Function `(checked::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **value**     | optional | String |  | Input element value |
-| **disabled**  | optional | Boolean |  | Set to true to disable the Radio Button |
+| **disabled**  | optional | Boolean |  | Set to `true` to disable the Radio Button |
 
 
 <a id="appearance-options"></a>

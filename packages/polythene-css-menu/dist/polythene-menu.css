@@ -16,7 +16,9 @@
 }
 
 .pe-menu .pe-menu__content {
-  width: 100%
+  width: 100%;
+  height: 100%;
+  overflow: auto
 }
 
 .pe-menu.pe-menu--full-height,.pe-menu.pe-menu--full-height .pe-menu__content {
@@ -29,12 +31,20 @@
 
 .pe-menu {
   transition-delay: 0s;
-  transition-duration: .22s;
+  transition-duration: .18s;
   opacity: 0
+}
+
+.pe-menu.pe-menu--origin:not(.pe-menu--visible) {
+  transform: scale(.75)
 }
 
 .pe-menu.pe-menu--visible {
   opacity: 1
+}
+
+.pe-menu.pe-menu--origin.pe-menu--visible {
+  transform: scale(1)
 }
 
 .pe-menu {
@@ -42,7 +52,7 @@
 }
 
 .pe-menu.pe-menu--floating .pe-menu__content {
-  border-radius: 2px
+  border-radius: 4px
 }
 
 .pe-menu.pe-menu--width-1-5 {

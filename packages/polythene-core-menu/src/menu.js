@@ -1,66 +1,134 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 const DEFAULT_OFFSET_H           = 0;
+const DEFAULT_OFFSET_V           = "79%";
 const DEFAULT_TYPE               = "floating";
 const MIN_SIZE                   = 1.5;
-const OFFSET_V                   = -8;
 const SHADOW_Z                   = 1;
 
 const positionMenu = (state, attrs) => {
   if (isServer) {
     return;
   }
+  if (!attrs.target) {
+    return;
+  }
   const targetEl = document.querySelector(attrs.target);
   if (!targetEl) {
     return;
   }
-  const offsetH = (attrs.offset !== undefined) ? attrs.offset : DEFAULT_OFFSET_H;
   const menuEl = state.dom();
   if (!menuEl) {
     return;
   }
+
   const contentEl = state.dom().querySelector("." + classes.content);
-  const origin = attrs.origin || "top-left";
-  let positionOffset = 0;
+  const parentRect = menuEl.parentNode.getBoundingClientRect();
+  const targetRect = targetEl.getBoundingClientRect();
+  const attrsOffsetH = attrs.offsetH !== undefined
+    ? attrs.offsetH
+    : attrs.offset !== undefined
+      ? attrs.offset // deprecated
+      : DEFAULT_OFFSET_H;
+  const attrsOffsetV = attrs.offsetV !== undefined
+    ? attrs.offsetV
+    : DEFAULT_OFFSET_V;
+  const offsetH = attrsOffsetH.toString().indexOf("%") !== -1
+    ? Math.round(parseFloat(attrsOffsetH) * 0.01 * targetRect.width)
+    : Math.round(parseFloat(attrsOffsetH));
+  const offsetV = attrsOffsetV.toString().indexOf("%") !== -1
+    ? Math.round(parseFloat(attrsOffsetV) * 0.01 * targetRect.height)
+    : Math.round(parseFloat(attrsOffsetV));
+  let positionOffsetV = offsetV;
+
+  const attrsOrigin = attrs.origin || "top";
+  const origin = attrsOrigin.split(/\W+/).reduce((acc, curr) => (
+    acc[curr] = true,
+    acc
+  ), {});
+
+  const firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+
   if (attrs.reposition) {
-    const firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+    // get the first List Tile to calculate the top position  
     const selectedItem = contentEl.querySelector("." + classes.selectedListTile);
     if (firstItem && selectedItem) {
       // calculate v position: menu should shift upward relative to the first item
       const firstItemRect = firstItem.getBoundingClientRect();
       const selectedItemRect = selectedItem.getBoundingClientRect();
-      positionOffset = selectedItemRect.top - firstItemRect.top;
+      positionOffsetV = firstItemRect.top - selectedItemRect.top;
     }
     // align to middle of target
     const alignEl = selectedItem || firstItem;
     const alignRect = alignEl.getBoundingClientRect();
     const targetRect = targetEl.getBoundingClientRect();
-    const heightDiff = alignRect.height - targetRect.height;
-    positionOffset += heightDiff / 2;
+    const heightDiff = targetRect.height - alignRect.height;
+    positionOffsetV += Math.abs(heightDiff) / 2;
+  } else if (attrs.origin) {
+    if (origin.top) {
+      positionOffsetV += targetRect.top - parentRect.top;
+    } else if (origin.bottom) {
+      positionOffsetV += parentRect.bottom - targetRect.bottom;
+    }
   }
-  const targetRect = targetEl.getBoundingClientRect();
+
+  if (attrs.height) {
+    const firstItemHeight = firstItem
+      ? firstItem.clientHeight
+      : 48; // default List Tile height
+    if (attrs.height === "max") {
+      const topMargin = positionOffsetV;
+      const bottomMargin = firstItemHeight;
+      menuEl.style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
+    } else {
+      const height = attrs.height.toString().indexOf("%") !== -1
+        ? attrs.height
+        : attrs.height.toString().indexOf("px") !== -1
+          ? attrs.height
+          : `${attrs.height}px`;
+      menuEl.style.height = height;
+    }
+  }
+
+  // prevent animated changes
+  const transitionDuration = menuEl.style.transitionDuration;
+  menuEl.style.transitionDuration = "0ms";
+
   if (menuEl.parentNode) {
-    const parentRect = menuEl.parentNode.getBoundingClientRect();
-    const alignLeft =   () => menuEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
-    const alignRight =  () => menuEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
-    const alignTop =    () => menuEl.style.top = targetRect.top - parentRect.top - positionOffset + OFFSET_V + "px";
-    const alignBottom = () => menuEl.style.bottom = targetRect.bottom - parentRect.bottom - positionOffset + "px";
-    const alignFn = {
-      "top-left":       () => alignTop() && alignLeft(),
-      "top-right":      () => alignTop() && alignRight(),
-      "bottom-left":    () => alignBottom() && alignLeft(),
-      "bottom-right":   () => alignBottom() && alignRight()
-    };
-    const transitionDuration = menuEl.style.transitionDuration;
-    menuEl.style.transitionDuration = "0ms";
-    alignFn[origin].call();
-    menuEl.offsetHeight; // force reflow
-    menuEl.style.transitionDuration = transitionDuration;
+    if (origin.right) {
+      menuEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
+    } else {
+      menuEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
+    }
+    if (origin.bottom) {
+      menuEl.style.bottom = positionOffsetV + "px";
+    } else {
+      menuEl.style.top = positionOffsetV + "px";
+    }
+    menuEl.style.transformOrigin = attrsOrigin.split(/\W+/).join(" ");
   }
+
+  menuEl.offsetHeight; // force reflow
+  menuEl.style.transitionDuration = transitionDuration;
+};
+
+const scrollContent = (state, attrs) => {
+  if (isServer) {
+    return;
+  }
+  if (!attrs.scrollTarget) {
+    return;
+  }
+  const scrollTargetEl = document.querySelector(attrs.scrollTarget);
+  if (!scrollTargetEl) {
+    return;
+  }
+  const contentEl = state.dom().querySelector("." + classes.content);
+  contentEl.scrollTop = scrollTargetEl.offsetTop;
 };
 
 const transitionOptions = (state, attrs, isShow) => ({
@@ -68,7 +136,7 @@ const transitionOptions = (state, attrs, isShow) => ({
   attrs,
   isShow,
   beforeTransition: isShow
-    ? () => positionMenu(state, attrs)
+    ? () => state.update()
     : null,
   domElements: {
     el: state.dom()
@@ -108,6 +176,10 @@ const handleSubscriptions = (vnode, which) => {
 
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream(null);
+  const attrs = vnode.attrs;
+  if (attrs.offset) {
+    deprecation("Menu", "offset", "offsetH");
+  }
   const visible = createStream(false);
   const transitioning = createStream(false);
   return {
@@ -136,18 +208,12 @@ export const onMount = vnode => {
       if (e.target === state.dom()) {
         return;
       }
-      if (e.defaultPrevented) {
-        // clicked on .pe-menu__content
-        hideMenu(state, attrs);
-      } else {
-        hideMenu(state, Object.assign({}, attrs, {
-          hideDelay: 0
-        }));
-      }
+      hideMenu(state, attrs);
     };
 
     state.update = () => {
       positionMenu(state, attrs);
+      scrollContent(state, attrs);
     };
 
     state.activateDismissTap = () => {
@@ -191,7 +257,7 @@ export const createProps = (vnode, { keys: k }) => {
       className: [
         classes.component,
         attrs.permanent ? classes.permanent : null,
-        attrs.fullHeight ? classes.fullHeight : null,
+        attrs.origin ? classes.origin : null,
         type === "floating" ? classes.floating : null,
         attrs.target ? classes.target : null,
         attrs.size ? widthClass(unifySize(attrs.size)) : null,
@@ -203,13 +269,12 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Shadow }) => {
+export const createContent = (vnode, { renderer: h, Shadow }) => {
   const attrs = vnode.attrs;
   const z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
   return h("div",
     {
       className: classes.content,
-      [k.onclick]: e => e.preventDefault(),
       style: attrs.style
     },
     [

@@ -1,8 +1,8 @@
 import { shortText, longText, cancelOkButtons } from "./shared";
 import fullScreen from "./components/full-screen";
 import fullwidth from "./components/fullwidth";
-import menu from "./components/menu";
-import settings from "./components/settings";
+// import menu from "./components/menu";
+import menuDialog from "./components/menu-dialog";
 import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
@@ -235,22 +235,22 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
           Opener(fullwidth({ renderer, keys, Dialog, Button, className: "pe-rtl" }))
       }
     },
-    {
-      name: "Option: menu",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () =>
-          Opener(menu({ renderer, keys, Icon, List, ListTile, Dialog }))
-      }
-    },
+    // {
+    //   name: "Option: menu",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () =>
+    //       Opener(menu({ renderer, keys, Icon, List, ListTile, Dialog }))
+    //   }
+    // },
     {
       name: "Settings dialog",
       interactive: true,
       exclude: true,
       component: {
         view: () =>
-          Opener(settings({ renderer, keys, List, ListTile, Dialog }))
+          Opener(menuDialog({ renderer, keys, List, ListTile, Dialog }))
       }
     },
     {

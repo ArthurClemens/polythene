@@ -1,6 +1,6 @@
 # Button Group
 
-Container for a row of buttons.
+Container for a row of buttons. Use this to create toggle buttons or split buttons.
 
 <a id="usage"></a>
 ## Usage

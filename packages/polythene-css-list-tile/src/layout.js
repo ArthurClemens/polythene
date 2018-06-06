@@ -55,6 +55,7 @@ const varFns = {
 
         " .pe-list-tile__primary, .pe-list-tile__secondary": [
           flex.layoutHorizontal,
+          mixin.defaultTransition("background", ".200s"),
           {
             textDecoration: "none",
             color: "inherit",
@@ -63,7 +64,8 @@ const varFns = {
         ],
 
         ":not(.pe-list-tile--header) .pe-list-tile__primary": [
-          flex.flex(), {
+          flex.flex(),
+          {
             position: "relative",
 
             " .pe-list-tile__content:not(.pe-list-tile__content-front)": [
@@ -242,7 +244,7 @@ const varFns = {
   ],
   padding: (selector, vars) => [
     sel(selector, {
-      ":not(.pe-list-tile--header) .pe-list-tile__primary": {
+      ":not(.pe-list-tile--header)": {
         " .pe-list-tile__content:not(.pe-list-tile__content-front)": [
           paddingV(vars.padding, vars.padding + 1)
         ]
@@ -344,7 +346,7 @@ const varFns = {
     sel(selector, {
       " .pe-list--compact &, &.pe-list-tile--compact": {
         ":not(.pe-list-tile--header)": {
-          " .pe-list-tile__content": paddingV(vars.compact_padding, vars.compact_padding + 1)
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars.compact_padding, vars.compact_padding + 1)
         }
       },
     })

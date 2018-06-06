@@ -223,7 +223,7 @@ var varFns = {
         width: "100%"
       },
 
-      " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
+      " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, mixin.defaultTransition("background", ".200s"), {
         textDecoration: "none",
         color: "inherit",
         border: "none"
@@ -384,7 +384,7 @@ var varFns = {
   },
   padding: function padding(selector, vars$$1) {
     return [sel(selector, {
-      ":not(.pe-list-tile--header) .pe-list-tile__primary": {
+      ":not(.pe-list-tile--header)": {
         " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars$$1.padding, vars$$1.padding + 1)]
       },
 
@@ -473,7 +473,7 @@ var varFns = {
     return [sel(selector, {
       " .pe-list--compact &, &.pe-list-tile--compact": {
         ":not(.pe-list-tile--header)": {
-          " .pe-list-tile__content": paddingV(vars$$1.compact_padding, vars$$1.compact_padding + 1)
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars$$1.compact_padding, vars$$1.compact_padding + 1)
         }
       }
     })];

@@ -56,6 +56,8 @@ const varFns = {
 
         " .pe-menu__content": {
           width: "100%",
+          height: "100%",
+          overflow: "auto",
         },
 
         ".pe-menu--full-height": {
@@ -96,6 +98,24 @@ const varFns = {
       vars.animation_hide_css,
     ])
   ],
+  animation_show_origin_effect_css: (selector, vars) => [
+    sel(selector, {
+      ".pe-menu--origin.pe-menu--visible": vars.animation_show_origin_effect_css
+    })
+  ],
+  animation_hide_origin_effect_css: (selector, vars) => [
+    sel(selector, {
+      ".pe-menu--origin:not(.pe-menu--visible)": vars.animation_hide_origin_effect_css
+    })
+  ],
+  // exposed_vertical_offset: (selector, vars) => [
+  //   sel(selector, {
+  //     ".pe-menu--exposed": {
+  //       marginTop: vars.exposed_vertical_offset + "px",
+  //       height: `calc(100% - ${vars.exposed_vertical_offset}px)`,
+  //     }
+  //   })
+  // ],
   sizes: (selector, vars) => [
     sizes_min_size_size_factor(selector, vars)
   ],

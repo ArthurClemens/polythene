@@ -226,7 +226,7 @@
           width: "100%"
         },
 
-        " .pe-list-tile__primary, .pe-list-tile__secondary": [polytheneCoreCss.flex.layoutHorizontal, {
+        " .pe-list-tile__primary, .pe-list-tile__secondary": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.mixin.defaultTransition("background", ".200s"), {
           textDecoration: "none",
           color: "inherit",
           border: "none"
@@ -387,7 +387,7 @@
     },
     padding: function padding(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ":not(.pe-list-tile--header) .pe-list-tile__primary": {
+        ":not(.pe-list-tile--header)": {
           " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars.padding, vars.padding + 1)]
         },
 
@@ -476,7 +476,7 @@
       return [polytheneCoreCss.sel(selector, {
         " .pe-list--compact &, &.pe-list-tile--compact": {
           ":not(.pe-list-tile--header)": {
-            " .pe-list-tile__content": paddingV(vars.compact_padding, vars.compact_padding + 1)
+            " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars.compact_padding, vars.compact_padding + 1)
           }
         }
       })];

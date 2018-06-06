@@ -10,19 +10,18 @@ export default ({ show, target, h, Menu, List, ListTile, didHide, getState, tran
         show,
         didHide,
         getState,
-        offset: -4,
-        size: 2,
+        size: 3,
         content: h(List, [
           h(ListTile, {
             element: "a",
-            title: "Yes",
+            title: "Menu item 1",
             ink: true,
             hoverable: true,
             key: "yes" // for React
           }),
           h(ListTile, {
             element: "a",
-            title: "No",
+            title: "Menu item 2",
             ink: true,
             hoverable: true,
             key: "no" // for React

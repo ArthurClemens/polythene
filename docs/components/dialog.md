@@ -52,14 +52,14 @@ Displays a single dialog, or a stack of dialogs.
 | **header**        | optional | String, hyperscript or component | | Header row |
 | **title**         | optional | String |  | Header title; if omitted, no header will be shown |
 | **body**          | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
-| **menu**          | optional | [Menu](menu.md) options object |  | Pass a menu to use the dialog as enhanced (higher) menu |
+| **menu**          | optional | [Menu](menu.md) options object |  | Pass menu options to use the dialog as menu |
 | **footer**        | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
 | **panes**         | optional | Array of `DialogPane` components (React) | | Used internally |
 | **panesOptions**  | optional | Array of `DialogPane` component options (Mithril)  | | Used internally |
-| **modal**         | optional | Boolean | false | Set to true to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
-| **fullScreen**    | optional | Boolean | false | Set to true to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
-| **updateContentOnScroll** | optional | Boolean | false | Set to true to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
+| **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
+| **fullScreen**    | optional | Boolean | false | Set to `true` to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
+| **updateContentOnScroll** | optional | Boolean | false | Set to `true` to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
 
 <a id="dialog-appearance-options"></a>
 ### Dialog appearance options

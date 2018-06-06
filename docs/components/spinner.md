@@ -54,7 +54,7 @@ Available themed spinners:
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
-| **show** | optional | Boolean | | Set to true to show the spinner |
+| **show** | optional | Boolean | | Set to `true` to show the spinner |
 
 <a id="spinner-appearance-options"></a>
 ### Spinner appearance options
@@ -72,7 +72,7 @@ For `MaterialDesignSpinner` and `IOSSpinner`:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **singleColor** | optional | Boolean | | Set to true to use only one color (by default the primary color) |
+| **singleColor** | optional | Boolean | | Set to `true` to use only one color (by default the primary color) |
 
 <a id="determinate-options"></a>
 ### Determinate options

@@ -1,6 +1,6 @@
 import { ButtonCSS } from "polythene-css";
 
-export default ({ renderer: h, Button, ButtonGroup }) => {
+export default ({ renderer: h, Button, RaisedButton, ButtonGroup }) => {
   
   ButtonCSS.addStyle(".button-group-themed-white", {
     color_light_background: "#fff",
@@ -35,7 +35,7 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
         view: () => 
           h(ButtonGroup, [
             h(Button, {
-              label: "Left",
+              label: "First",
               extraWide: true,
               highLabel: true,
               className: "button-group-themed-white"
@@ -56,7 +56,7 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
           h(ButtonGroup,
             [
               h(Button, {
-                label: "Left",
+                label: "First",
                 extraWide: true,
                 highLabel: true,
                 className: "button-group-themed-round",
@@ -85,7 +85,7 @@ export default ({ renderer: h, Button, ButtonGroup }) => {
           h(".pe-rtl", null,
             h(ButtonGroup, [
               h(Button, {
-                label: "Left",
+                label: "First",
                 extraWide: true,
                 highLabel: true,
                 className: "button-group-themed-white"

@@ -21,4 +21,6 @@ export default {
   highLabel:        "pe-button--high-label",
   extraWide:        "pe-button--extra-wide",
   separatorAtStart: "pe-button--separator-start",
+  dropdownOpen:     "pe-button--dropdown-open",
+  dropdownClosed:   "pe-button--dropdown-closed",
 };

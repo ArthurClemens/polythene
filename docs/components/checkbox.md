@@ -62,7 +62,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 | **selectable** | optional | Function `(selected::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **value**     | optional | String |  | Input element value |
-| **disabled**  | optional | Boolean |  | Set to true to disable the Checkbox |
+| **disabled**  | optional | Boolean |  | Set to `true` to disable the Checkbox |
 
 
 <a id="appearance-options"></a>

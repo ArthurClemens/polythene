@@ -143,20 +143,24 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Option: dropdown with label (not interactive)",
+      name: "Option: dropdown with label (not interactive) -- see Menu examples",
       component: Button,
       attrs: {
         label: "Dropdown",
-        dropdown: true
+        dropdown: {
+          open: false
+        },
       }
     },
-    {
-      name: "Option: dropdown without label (not interactive)",
-      component: Button,
-      attrs: {
-        dropdown: true
-      }
-    },
+    // {
+    //   name: "Option: dropdown without label (not interactive)",
+    //   component: Button,
+    //   attrs: {
+    //     dropdown: {
+    //       open: false
+    //     },
+    //   }
+    // },
     {
       name: "Button row",
       component: {

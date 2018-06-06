@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient, deprecation, iconDropdownUp, iconDropdownDown } from "polythene-core";
+import { filterSupportedAttributes, isClient, deprecation, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
 
 export const getElement = vnode =>
@@ -78,7 +78,6 @@ export const createProps = (vnode, { keys: k }) => {
         classes.super,
         attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
-        attrs.dropdown ? classes.hasDropdown : null,
         attrs.highLabel ? classes.highLabel : null,
         attrs.extraWide ? classes.extraWide : null,
         disabled ? classes.disabled : null,
@@ -86,6 +85,12 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.separatorAtStart ? classes.separatorAtStart : null,
         (attrs.border || attrs.borders) ? classes.border : null,
         state.focus() ? classes.focused : null,
+        attrs.dropdown ? classes.hasDropdown : null,
+        attrs.dropdown
+          ? attrs.dropdown.open
+            ? classes.dropdownOpen
+            : classes.dropdownClosed
+          : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -157,12 +162,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => 
           {
             className: classes.dropdown,
             key: "dropdown",
-            svg: {
-              content: h.trust(attrs.dropdownOpen
-                ? iconDropdownUp
-                : iconDropdownDown
-              )
-            }
+            svg: { content: h.trust(iconDropdownDown) }
           }
         )
         : null

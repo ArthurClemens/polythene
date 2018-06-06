@@ -29,12 +29,12 @@ export default class extends Component {
           {
             target: `#${target}`,
             show: isOpen,
-            size: 2,
+            size: 3,
             didHide: () => this.setState({ isOpen: false })
           },
           h(List, [
-            h(ListTile, { title: "Yes", key: "yes", ink: true, hoverable: true }),
-            h(ListTile, { title: "No", key: "no", ink: true, hoverable: true })
+            h(ListTile, { title: "Menu item 1", key: "1", ink: true, hoverable: true }),
+            h(ListTile, { title: "Menu item 2", key: "2", ink: true, hoverable: true })
           ])
         )
       ]

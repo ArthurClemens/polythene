@@ -1,14 +1,16 @@
+import exposed from "./components/exposed";
+import menuDialog from "./components/menu-dialog";
 import menuItems from "./components/menu-items";
-import simple from "./components/simple";
 import opener from "./components/opener";
-import sizes from "./components/sizes";
 import position from "./components/position";
 import settings from "./components/settings";
+import simple from "./components/simple";
+import sizes from "./components/sizes";
 import themed from "./components/themed";
 import transitions from "./components/transitions";
 import { MenuCSS } from "polythene-css";
 
-export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, IconButton }) => {
+export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog }) => {
 
   const { themeColor, themedList, styledList } = themed({ renderer, Menu, List, ListTile });
   const h = renderer;
@@ -21,33 +23,76 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
     animation_show_css:        "opacity: 1; transform: translateY(0);",
   });
 
+  const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
+
+  const Opener = (dialogAttrs, label = "Open") => h(RaisedButton, {
+    label,
+    events: {
+      [keys.onclick]: () => Dialog.show(dialogAttrs)
+    }
+  });
+
   return [
     {
       name: "Menu items",
       component: menuItems({ renderer, Menu, List, ListTile })
     },
     {
-      name: "Menu items -- dark tone",
-      className: "pe-dark-tone",
-      component: menuItems({ renderer, Menu, List, ListTile })
-    },
-    {
-      name: "Simple menu (demo without state)",
+      name: "Exposed menu (simple, without state)",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: simple, id: "simple" })
+      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, dropdown: true, menuFn: simple, id: "simple" })
     },
     {
-      name: "Positioning",
+      name: "Exposed menu (options: origin, scrollTarget, compact list, height \"max\")",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                height: "300px",
+                backgroundColor: "#dadada",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { height: "max" })
+          )
+      }
+    },
+    {
+      name: "Exposed menu (option: height 150)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          h("div",
+            null,
+            h(ExposedDropdown, { height: 150 })
+          )
+      }
+    },
+    {
+      name: "Dropdown menu (option: origin)",
       interactive: true,
       exclude: true,
       component: position({ renderer, keys, Menu, List, ListTile, Shadow, IconButton })
     },
     {
-      name: "Change setting and reposition according to selected item",
+      name: "Dropdown menu (option: reposition) (positioned to the selected item)",
       interactive: true,
       exclude: true,
       component: settings({ renderer, keys, Menu, List, ListTile })
+    },
+    {
+      name: "Dialog menu (dialog with option: menu)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener(menuDialog({ renderer, keys, Icon, List, ListTile, Dialog }))
+      }
     },
     {
       name: "Themed (color and border radius)",
@@ -132,6 +177,11 @@ export default ({ renderer, keys, Menu, List, ListTile, RaisedButton, Shadow, Ic
             h(menuItems({ renderer, Menu, List, ListTile }))
           )
       }
+    },
+    {
+      name: "Menu items -- dark tone",
+      className: "pe-dark-tone",
+      component: menuItems({ renderer, Menu, List, ListTile })
     },
   ];
 };

@@ -83,7 +83,7 @@ const varFns = {
           },
 
           " .pe-button__label + .pe-button__dropdown": {
-            marginLeft: "7px",
+            marginLeft: "6px",
             minWidth: 0,
           },
         },
@@ -91,6 +91,14 @@ const varFns = {
         " .pe-button-group &": {
           minWidth: 0
         },
+
+        " .pe-button__dropdown .pe-svg": mixin.defaultTransition("transform"),
+
+        ".pe-button--dropdown-open": {
+          " .pe-button__dropdown .pe-svg": {
+            transform: "rotate(-180deg)"
+          }
+        }
       }
     ]),
     [
