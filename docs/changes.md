@@ -18,7 +18,11 @@
 <a id="next"></a>
 ### Next
 
-Google has updated the Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in upcoming releases.
+#### Material Design version 2 -- first small changes
+
+Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in upcoming releases.
+
+#### CSS
 
 CSS creation has been optimized, specifically when creating themed CSS. When using [addStyle](theming/style-variables.md), only the passed style variables will be used to create CSS. This results in much smaller CSS code, and it makes the result more predictable (less potentical clashes with default styles).
 
@@ -33,10 +37,11 @@ CSS variable files have been moved to each component's CSS package. This makes t
   * New options for varying the width and height: `extraWide` and `highLabel`
   * New option `dropdown` to add a dropdown triangle
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
-  * The border radius is now set to `4`
+  * MD2: the border radius is now set to `4`
   * Bordered button has a default medium gray border color
 * Menu:
-  * Following the latest specs, the menu is now positioned below its target (instead of covering the target), unless explicitly overridden with `offsetV: 0`
+  * Reworked to support dropdown menus - this includes the new Button Group and Button's `dropdown` option
+  * MD2: the menu is now positioned below its target (instead of covering the target), unless explicitly overridden with `offsetV: 0`
   * Added scaling effect for menus with `origin` set (with corresponding CSS vars `animation_show_origin_effect_css` and `animation_hide_origin_effect_css`) 
   * New option `scrollTarget` (to scroll a menu element into view)
   * New option `height` (pixel or percentage value, or `"max"` to use the maximum available height within the parent element)

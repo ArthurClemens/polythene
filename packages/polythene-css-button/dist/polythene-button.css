@@ -138,7 +138,7 @@
   transition-property: all
 }
 
-.pe-text-button .pe-button__content {
+.pe-button-group .pe-text-button .pe-button__content,.pe-text-button .pe-button__content {
   border-radius: 4px
 }
 
@@ -150,6 +150,20 @@
 .pe-button-group .pe-text-button:not(:last-child) .pe-button__content {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0
+}
+
+.pe-rtl .pe-button-group .pe-text-button .pe-button__content,[dir=rtl] .pe-button-group .pe-text-button .pe-button__content {
+  border-radius: 4px
+}
+
+.pe-rtl .pe-button-group .pe-text-button:not(:first-child) .pe-button__content,[dir=rtl] .pe-button-group .pe-text-button:not(:first-child) .pe-button__content {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+.pe-rtl .pe-button-group .pe-text-button:not(:last-child) .pe-button__content,[dir=rtl] .pe-button-group .pe-text-button:not(:last-child) .pe-button__content {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
 }
 
 .pe-text-button.pe-button--border .pe-button__content {

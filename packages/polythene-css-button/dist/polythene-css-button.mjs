@@ -245,6 +245,8 @@ var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
 });
 
+function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var alignSide = function alignSide(isRTL) {
   return function () {
     return {
@@ -283,6 +285,22 @@ var line_height_outer_padding_v_label_padding_v = function line_height_outer_pad
       " .pe-button__label, .pe-button__dropdown": {
         minHeight: "calc((1em * " + vars$$1.line_height + ") + 2 * " + (vars$$1.outer_padding_v + vars$$1.label_padding_v) + "px)"
       }
+    }
+  });
+};
+
+var border_radius_button_group = function border_radius_button_group(selector, vars$$1, isRTL) {
+  var _peButton__content, _peButton__content2;
+
+  return sel(selector, {
+    " .pe-button__content": {
+      borderRadius: vars$$1.border_radius + "px"
+    },
+    ":not(:first-child)": {
+      " .pe-button__content": (_peButton__content = {}, _defineProperty$2(_peButton__content, isRTL ? "borderTopRightRadius" : "borderTopLeftRadius", 0), _defineProperty$2(_peButton__content, isRTL ? "borderBottomRightRadius" : "borderBottomLeftRadius", 0), _peButton__content)
+    },
+    ":not(:last-child)": {
+      " .pe-button__content": (_peButton__content2 = {}, _defineProperty$2(_peButton__content2, isRTL ? "borderTopLeftRadius" : "borderTopRightRadius", 0), _defineProperty$2(_peButton__content2, isRTL ? "borderBottomLeftRadius" : "borderBottomRightRadius", 0), _peButton__content2)
     }
   });
 };
@@ -353,22 +371,8 @@ var varFns$1 = {
     return [sel(selector, {
       " .pe-button__content": {
         borderRadius: vars$$1.border_radius + "px"
-      },
-      " .pe-button-group &": {
-        ":not(:first-child)": {
-          " .pe-button__content": {
-            borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0
-          }
-        },
-        ":not(:last-child)": {
-          " .pe-button__content": {
-            borderTopRightRadius: 0,
-            borderBottomRightRadius: 0
-          }
-        }
       }
-    })];
+    }), border_radius_button_group(".pe-button-group " + selector, vars$$1, false), border_radius_button_group(selectorRTL(".pe-button-group " + selector), vars$$1, true)];
   },
   border_width: function border_width(selector, vars$$1) {
     return [sel(selector, {

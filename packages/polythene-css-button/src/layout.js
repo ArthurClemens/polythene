@@ -37,6 +37,25 @@ const line_height_outer_padding_v_label_padding_v = (selector, vars) =>
     },
   });
 
+const border_radius_button_group = (selector, vars, isRTL) =>
+  sel(selector, {
+    " .pe-button__content": {
+      borderRadius: vars.border_radius + "px",
+    },
+    ":not(:first-child)": {
+      " .pe-button__content": {
+        [isRTL ? "borderTopRightRadius" : "borderTopLeftRadius"]: 0,
+        [isRTL ? "borderBottomRightRadius" : "borderBottomLeftRadius"]: 0,
+      },
+    },
+    ":not(:last-child)": {
+      " .pe-button__content": {
+        [isRTL ? "borderTopLeftRadius" : "borderTopRightRadius"]: 0,
+        [isRTL ? "borderBottomLeftRadius" : "borderBottomRightRadius"]: 0,
+      }
+    },
+  });
+
 const varFns = {
   general_styles: selector => [
     sel(selector, [
@@ -110,21 +129,9 @@ const varFns = {
       " .pe-button__content": {
         borderRadius: vars.border_radius + "px",
       },
-      " .pe-button-group &": {
-        ":not(:first-child)": {
-          " .pe-button__content": {
-            borderTopLeftRadius: 0,
-            borderBottomLeftRadius: 0,
-          },
-        },
-        ":not(:last-child)": {
-          " .pe-button__content": {
-            borderTopRightRadius: 0,
-            borderBottomRightRadius: 0,
-          }
-        },
-      },
-    })
+    }),
+    border_radius_button_group(`.pe-button-group ${selector}`, vars, false),
+    border_radius_button_group(selectorRTL(`.pe-button-group ${selector}`), vars, true),
   ],
   border_width: (selector, vars) => [
     sel(selector, {
