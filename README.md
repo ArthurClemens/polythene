@@ -34,6 +34,7 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 ### Setup examples
 
 * [polythene-mithril-setup](https://github.com/ArthurClemens/polythene-mithril-setup)
+* [polythene-mithril-coffeescript-setup](https://github.com/ArthurClemens/polythene-mithril-coffeescript-setup)
 * [polythene-react-setup](https://github.com/ArthurClemens/polythene-react-setup)
 
 
