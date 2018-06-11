@@ -15,7 +15,6 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-card": "^1.2.0",
     "polythene-core-css": "^1.2.0",
     "polythene-css-classes": "^1.2.0",
     "polythene-theme": "^1.2.0"

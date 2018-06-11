@@ -1,5 +1,6 @@
-// Only used for theme styles
+import { createLayout } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-button";
 
-import { layout } from "polythene-css-button";
-
-export default (selector, componentVars) => layout(selector, componentVars);
+export default createLayout({
+  superLayout
+});

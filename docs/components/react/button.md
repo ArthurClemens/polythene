@@ -103,7 +103,9 @@ When placed inside an element with classname `pe-button-row`, buttons will get a
 * Special hover effects can be created with a theme, see below.
 * The ripple effect on click can be hidden with `ink: false`.
 * Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead (which can contain a label).
-
+* Add a dropdown icon with `dropdown: true`.
+* Create a wide button with `extraWide: true`.
+* Create a high label with `highLabel: true`.
 
 <a id="styling"></a>
 ### Styling

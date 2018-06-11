@@ -1,4 +1,2 @@
 import * as coreNotificationInstance from "./notification-instance";
 export { coreNotificationInstance };
-
-export { default as vars } from "./vars";

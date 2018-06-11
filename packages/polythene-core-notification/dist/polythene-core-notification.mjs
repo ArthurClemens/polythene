@@ -1,6 +1,5 @@
 import { filterSupportedAttributes, transitionComponent, isClient, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
-import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-notification",
@@ -156,7 +155,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [classes.component,
+    className: [classes.component, attrs.fromMultipleClassName,
     // classes.visible is set in showNotification though transition
     attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
     attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
@@ -198,35 +197,4 @@ var notificationInstance = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var buttonPaddingH = 8; // padding, inner text space
-
-var vars$1 = {
-  width: 288,
-  min_height: 80,
-  border_radius: vars.unit_block_border_radius,
-  title_padding_h: buttonPaddingH,
-  title_single_padding_v: 14,
-  title_multi_padding_v: 20, // 24 - natural line height
-  side_padding: 24 - buttonPaddingH,
-  font_size: 14,
-  line_height: 20,
-
-  animation_delay: "0s",
-  animation_duration: ".3s",
-  animation_timing_function: "ease-in-out",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-
-  color_light_background: rgba(vars.color_light_background),
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
-
-  color_dark_background: rgba(vars.color_dark_background),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
-};
-
-export { notificationInstance as coreNotificationInstance, vars$1 as vars };
+export { notificationInstance as coreNotificationInstance };

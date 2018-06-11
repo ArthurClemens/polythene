@@ -30,32 +30,19 @@
   pointer-events: all;
   justify-content: center;
   margin: 0 auto;
-  transition-delay: 0s;
-  transition-duration: .3s;
-  transition-timing-function: ease-in-out;
-  transition-property: all;
-  opacity: 0
-}
-
-.pe-notification.pe-notification--visible {
-  opacity: 1
-}
-
-.pe-notification .pe-notification__content {
-  width: 288px;
-  padding: 0 16px;
-  border-radius: 2px
+  transition-property: all
 }
 
 .pe-notification .pe-notification__title {
-  flex: 1 0 auto;
-  padding: 14px 8px;
-  font-size: 14px;
-  line-height: 20px
+  flex: 1 0 auto
 }
 
 .pe-notification .pe-notification__action .pe-button {
   margin: 0
+}
+
+.pe-notification .pe-notification__content {
+  max-width: 100%
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__content {
@@ -70,11 +57,6 @@
   flex: 1;
   flex-basis: 0.000000001px;
   align-self: center
-}
-
-.pe-notification.pe-notification--horizontal .pe-notification__title--multi-line {
-  padding-top: 20px;
-  padding-bottom: 20px
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__action {
@@ -95,10 +77,6 @@
   padding-bottom: 6px
 }
 
-.pe-notification.pe-notification--vertical .pe-notification__title--multi-line {
-  padding-top: 20px
-}
-
 .pe-notification.pe-notification--vertical .pe-notification__action {
   display: -ms-flexbox;
   display: flex;
@@ -107,13 +85,57 @@
   width: 100%
 }
 
+.pe-notification {
+  transition-delay: 0s;
+  transition-duration: .3s;
+  opacity: 0
+}
+
+.pe-notification.pe-notification--visible {
+  opacity: 1
+}
+
+.pe-notification {
+  transition-timing-function: ease-in-out
+}
+
+.pe-notification .pe-notification__content {
+  border-radius: 4px
+}
+
+.pe-notification .pe-notification__title {
+  font-size: 14px;
+  line-height: 20px
+}
+
+.pe-notification .pe-notification__content {
+  padding: 0 16px
+}
+
+.pe-notification.pe-notification--horizontal .pe-notification__title--multi-line {
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+
+.pe-notification.pe-notification--vertical .pe-notification__title--multi-line {
+  padding-top: 20px
+}
+
+.pe-notification .pe-notification__title {
+  padding: 14px 8px
+}
+
+.pe-notification .pe-notification__content {
+  width: 288px
+}
+
 .pe-dark-tone.pe-notification .pe-notification__content,.pe-dark-tone .pe-notification .pe-notification__content {
-  color: hsla(0,0%,100%,.87);
-  background: #222
+  background: #222;
+  color: hsla(0,0%,100%,.87)
 }
 
 .pe-light-tone.pe-notification .pe-notification__content,.pe-light-tone .pe-notification .pe-notification__content,.pe-notification .pe-notification__content {
-  color: #000;
-  background: #fff
+  background: #fff;
+  color: #000
 }
 /*# sourceMappingURL=polythene-notification.css.map */

@@ -9,11 +9,10 @@ const ID_REGEX = /[^a-z0-9\\-]/g;
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element
  * @param styles: list of lists style Objects
  */
-const add = (id, ...styles) => {
+const add = (id, ...styles) =>
   addToDocument({
     id
   }, ...styles);
-};
 
 /*
  * Removes a style from head.
@@ -62,12 +61,30 @@ const addToDocument = (opts, ...styles) => {
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
  * @param vars: Object configuration variables
+ * @param customVars: Object configuration variables
+ * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+*/
+const generateCustomStyles = (selectors, vars, customVars, styleFns) => {
+  const selector = selectors.join("");
+  const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  add(id, styleFns.map(fn => fn(selector, vars, customVars)));
+};
+
+/*
+ * Adds styles to head for a component.
+ * @param selector: Array of Strings: selectors
+ * @param vars: Object configuration variables
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
 const generateStyles = (selectors, vars, styleFns) => {
   const selector = selectors.join("");
   const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id, styleFns.map(fn => fn(selector, vars)));
+};
+
+const createCustomStyleSheets = (selectors, vars, customVars, styleFns) => {
+  const selector = selectors.join("");
+  return styleFns.map(fn => fn(selector, vars, customVars));
 };
 
 const createStyleSheets = (selectors, vars, styleFns) => {
@@ -78,7 +95,9 @@ const createStyleSheets = (selectors, vars, styleFns) => {
 export default {
   add,
   addToDocument,
+  createCustomStyleSheets,
   createStyleSheets,
+  generateCustomStyles,
   generateStyles,
   remove,
 };

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient, deprecation } from "polythene-core";
+import { filterSupportedAttributes, isClient, deprecation, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
 
 export const getElement = vnode =>
@@ -75,12 +75,22 @@ export const createProps = (vnode, { keys: k }) => {
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
       className: [
+        classes.super,
         attrs.parentClassName || classes.component,
         attrs.selected ? classes.selected : null,
+        attrs.highLabel ? classes.highLabel : null,
+        attrs.extraWide ? classes.extraWide : null,
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
+        attrs.separatorAtStart ? classes.separatorAtStart : null,
         (attrs.border || attrs.borders) ? classes.border : null,
         state.focus() ? classes.focused : null,
+        attrs.dropdown ? classes.hasDropdown : null,
+        attrs.dropdown
+          ? attrs.dropdown.open
+            ? classes.dropdownOpen
+            : classes.dropdownClosed
+          : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
@@ -106,7 +116,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
+export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
@@ -114,7 +124,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
   const children = attrs.children || vnode.children;
   const label = attrs.content
     ? attrs.content
-    : attrs.label
+    : attrs.label !== undefined
       ? typeof attrs.label === "object"
         ? attrs.label
         : h("div", { className: classes.label }, attrs.label)
@@ -122,33 +132,40 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple }) => {
         ? children
         : null;
   const noWash = disabled || (attrs.wash !== undefined && !attrs.wash);
-  return label
-    ? h("div",
-      {
-        [k.class]: classes.content,
-        style: attrs.style
-      },
-      [
-        attrs.shadowComponent // "protected" option, used by raised-button
-          ? attrs.shadowComponent
-          : null,
-        // Ripple
-        disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
-          // somehow Mithril does not update when the dom stream is updated
-          ? null
-          : h(Ripple, Object.assign({},
-            {
-              key: "ripple",
-              target: state.dom()
-            },
-            attrs.ripple
-          )),
-        // hover
-        noWash ? null : h("div", { key: "wash", className: classes.wash }),
-        // focus
-        disabled ? null : h("div", { key: "focus", className: classes.focus }),
-        label
-      ]
-    )
-    : null;
+  return h("div",
+    {
+      [k.class]: classes.content,
+      style: attrs.style
+    },
+    [
+      attrs.shadowComponent // "protected" option, used by raised-button
+        ? attrs.shadowComponent
+        : null,
+      // Ripple
+      disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
+        // somehow Mithril does not update when the dom stream is updated
+        ? null
+        : h(Ripple, Object.assign({},
+          {
+            key: "ripple",
+            target: state.dom()
+          },
+          attrs.ripple
+        )),
+      // hover
+      noWash ? null : h("div", { key: "wash", className: classes.wash }),
+      // focus
+      disabled ? null : h("div", { key: "focus", className: classes.focus }),
+      label,
+      attrs.dropdown
+        ? h(Icon,
+          {
+            className: classes.dropdown,
+            key: "dropdown",
+            svg: { content: h.trust(iconDropdownDown) }
+          }
+        )
+        : null
+    ]
+  );
 };

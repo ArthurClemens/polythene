@@ -1,26 +1,33 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
-    base: "pe-button",
-    component: "pe-button pe-text-button",
-    row: "pe-button-row",
+      component: "pe-text-button",
+      super: "pe-button",
+      row: "pe-button-row",
 
-    // elements
-    content: "pe-button__content",
-    focus: "pe-button__focus",
-    label: "pe-button__label",
-    wash: "pe-button__wash",
+      // elements      
+      content: "pe-button__content",
+      focus: "pe-button__focus",
+      label: "pe-button__label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
 
-    // states
-    border: "pe-button--border",
-    disabled: "pe-button--disabled",
-    focused: "pe-button--focus",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+      // states      
+      border: "pe-button--border",
+      disabled: "pe-button--disabled",
+      focused: "pe-button--focus",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      extraWide: "pe-button--extra-wide",
+      separatorAtStart: "pe-button--separator-start",
+      dropdownOpen: "pe-button--dropdown-open",
+      dropdownClosed: "pe-button--dropdown-closed"
   };
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -109,7 +116,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
-      className: [attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
       if (e.keyCode === 13 && state.focus()) {
         state.focus(false);
@@ -125,16 +132,17 @@
 
     var h = _ref3.renderer,
         k = _ref3.keys,
-        Ripple = _ref3.Ripple;
+        Ripple = _ref3.Ripple,
+        Icon = _ref3.Icon;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
     var noink = attrs.ink !== undefined && attrs.ink === false;
     var disabled = attrs.disabled;
     var children = attrs.children || vnode.children;
-    var label = attrs.content ? attrs.content : attrs.label ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
+    var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
     var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-    return label ? h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
+    return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
     ? attrs.shadowComponent : null,
     // Ripple
     disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
@@ -146,7 +154,11 @@
     // hover
     noWash ? null : h("div", { key: "wash", className: classes.wash }),
     // focus
-    disabled ? null : h("div", { key: "focus", className: classes.focus }), label]) : null;
+    disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h(Icon, {
+      className: classes.dropdown,
+      key: "dropdown",
+      svg: { content: h.trust(polytheneCore.iconDropdownDown) }
+    }) : null]);
   };
 
   var button = /*#__PURE__*/Object.freeze({
@@ -158,67 +170,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var touch_height = polytheneTheme.vars.unit_touch_height;
-  var height = 36;
-
-  var vars = {
-    margin_h: polytheneTheme.vars.grid_unit,
-    border_radius: polytheneTheme.vars.unit_item_border_radius,
-    font_size: 14,
-    font_weight: 500,
-    outer_padding_v: (touch_height - height) / 2,
-    padding_h: 2 * polytheneTheme.vars.grid_unit,
-    padding_v: 11,
-    min_width: 8 * polytheneTheme.vars.grid_unit_component,
-    text_transform: "uppercase",
-    border_width: 0, // no border in MD, but used to correctly set the height when a theme does set a border
-    animation_duration: polytheneTheme.vars.animation_duration,
-
-    color_light_background: "transparent",
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_wash_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
-    color_light_disabled_background: "transparent",
-    color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-
-    color_dark_background: "transparent",
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_wash_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_active_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
-    color_dark_disabled_background: "transparent",
-    color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
-
-    // border colors may be set in theme; disabled by default
-
-    // color_light_border:                   "transparent", // only specify this variable to get all 4 states
-    // color_light_hover_border:             "transparent",
-    // color_light_active_border:            "transparent",
-    // color_light_disabled_border:          "transparent",
-    //
-    // color_dark_border:                    "transparent", // only specify this variable to get all 4 states
-    // color_dark_hover_border:              "transparent",
-    // color_dark_active_border:             "transparent",
-    // color_dark_disabled_border:           "transparent"
-
-    // hover colors may be set in theme; disabled by default
-
-    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-    // color_light_hover_background:         "transparent",
-    //
-    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-    // color_dark_hover_background:          "transparent",
-
-  };
-
   exports.coreButton = button;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

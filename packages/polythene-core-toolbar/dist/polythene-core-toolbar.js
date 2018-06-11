@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
 
@@ -87,46 +87,8 @@
     createContent: createContent$1
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var padding_side = polytheneTheme.vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
-  var padding_side_large = polytheneTheme.vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
-  var title_padding = 12; // icon padding
-  var title_after_icon_padding = polytheneTheme.vars.grid_unit_component * 9 - polytheneTheme.vars.grid_unit_component * 6 - padding_side; // 72 - 48 - 4 = 20
-  var height = polytheneTheme.vars.grid_unit_component * 7; // 56
-  var height_compact = polytheneTheme.vars.grid_unit_component * 6; // 48
-  var height_large = polytheneTheme.vars.grid_unit_component * 8; // 64
-
-  var vars = {
-    padding_side: padding_side,
-    padding_side_large: padding_side_large,
-    height: height,
-    height_compact: height_compact,
-    height_large: height_large,
-
-    // title vars
-    title_padding: title_padding,
-    title_after_icon_padding: title_after_icon_padding,
-    indent: polytheneTheme.vars.unit_indent,
-    font_size: 18,
-    line_height: polytheneTheme.vars.line_height,
-
-    // color vars
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_light_background: rgba(polytheneTheme.vars.color_light_background),
-
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
-  };
-
   exports.coreToolbar = toolbar;
   exports.coreToolbarTitle = toolbarTitle;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

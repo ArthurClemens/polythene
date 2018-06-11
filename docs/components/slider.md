@@ -83,7 +83,7 @@ The amount of change depends on the step size. This can be set with option `step
 | **pin** | optional | Boolean |  | Use with `step`; on click shows a pin shape with the current value |
 | **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
 | **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
-| **disabled** | optional | Boolean |  | Set to true to make the slider read only |
+| **disabled** | optional | Boolean |  | Set to `true` to make the slider read only |
 
 
 <a id="appearance-options"></a>

@@ -27,30 +27,34 @@
 
 .pe-notification.pe-snackbar .pe-notification__content {
   width: 100%;
-  margin: 0 auto;
-  border-radius: 0
+  margin: 0 auto
 }
 
 @media (min-width:600px) {
-  .pe-notification.pe-snackbar .pe-notification__content {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    min-width: 288px;
-    max-width: 568px
-  }
-
   .pe-notification.pe-snackbar.pe-notification--horizontal .pe-notification__title {
     padding-right: 30px
   }
 }
 
+.pe-notification.pe-snackbar .pe-notification__content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0
+}
+
+@media (min-width:600px) {
+  .pe-notification.pe-snackbar {
+    max-width: 568px;
+    min-width: 288px
+  }
+}
+
 .pe-dark-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-dark-tone .pe-notification.pe-snackbar .pe-notification__content {
-  color: hsla(0,0%,100%,.87);
   background: #222
 }
 
 .pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,.pe-notification.pe-snackbar .pe-notification__content {
-  color: #000;
   background: #fff
 }
 /*# sourceMappingURL=polythene-snackbar.css.map */

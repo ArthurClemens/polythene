@@ -1,5 +1,3 @@
-import { vars } from 'polythene-theme';
-
 var classes = {
   component: "pe-fab",
 
@@ -22,7 +20,7 @@ var createProps = function createProps(vnode, _ref) {
 
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return _extends({}, {
+  return _extends({}, attrs, {
     content: h("div", { className: classes.content }, content),
     parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
     // defaults
@@ -34,7 +32,7 @@ var createProps = function createProps(vnode, _ref) {
     ink: true,
     wash: true,
     animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
-  }, attrs);
+  });
 };
 
 var createContent = function createContent(vnode) {
@@ -46,25 +44,4 @@ var fab = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  size_regular: 7 * vars.grid_unit_component,
-  size_mini: 5 * vars.grid_unit_component,
-  padding_regular: 2 * vars.grid_unit_component,
-
-  color_light: rgba(vars.color_primary_foreground),
-  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-
-  color_light_focus_opacity: vars.blend_light_background_hover_medium, // same as button
-  color_light_background: rgba(vars.color_primary),
-
-  color_dark: rgba(vars.color_primary_foreground),
-  color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover), // same as button
-  color_dark_background: rgba(vars.color_primary)
-};
-
-export { fab as coreFAB, vars$1 as vars };
+export { fab as coreFAB };

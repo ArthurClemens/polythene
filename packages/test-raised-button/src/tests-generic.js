@@ -4,7 +4,16 @@ export default ({ renderer: h, RaisedButton }) => {
 
   RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
-    color_light_text:       "#fff"
+    color_light_text:       "#fff",
+    letter_spacing:         0,
+    text_transform:         "initial",
+    font_size:              16
+  });
+
+  RaisedButtonCSS.addStyle(".tests-raised-button-bordered-button", {
+    color_light_background: "#fff",
+    color_light_text:       "#673ab7",
+    color_light_border:     "#673ab7",
   });
 
   RaisedButtonCSS.addStyle(".tests-raised-button-hover-button", {
@@ -19,28 +28,6 @@ export default ({ renderer: h, RaisedButton }) => {
       component: RaisedButton,
       attrs: {
         label: "Label"
-      }
-    },
-    {
-      name: "Button row",
-      component: {
-        view: () => 
-          h(".pe-button-row",
-            [
-              h(RaisedButton, {
-                key: "one", // for React
-                label: "One"
-              }),
-              h(RaisedButton, {
-                key: "two", // for React
-                label: "Two"
-              }),
-              h(RaisedButton, {
-                key: "three", // for React
-                label: "Three"
-              })
-            ]
-          )
       }
     },
     {
@@ -60,11 +47,20 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Themed button (should be red)",
+      name: "Themed button (color, font size, letter spacing, text transform)",
       component: RaisedButton,
       attrs: {
-        label: "Themed button",
+        label: "Colored button",
         className: "tests-raised-button-themed-button"
+      }
+    },
+    {
+      name: "Themed button (border)",
+      component: RaisedButton,
+      attrs: {
+        label: "Bordered button",
+        border: true,
+        className: "tests-raised-button-bordered-button"
       }
     },
     {
@@ -96,12 +92,12 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Option: wash (false)",
+      name: "Option: wash (true)",
       interactive: true,
       component: RaisedButton,
       attrs: {
-        label: "No wash",
-        wash: false
+        label: "Wash",
+        wash: true
       }
     },
     {
@@ -176,6 +172,28 @@ export default ({ renderer: h, RaisedButton }) => {
         inactive: true
       }
     },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(RaisedButton, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(RaisedButton, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(RaisedButton, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
+      }
+    },
 
     // Dark tone
 
@@ -197,7 +215,10 @@ export default ({ renderer: h, RaisedButton }) => {
         disabled: true
       }
     },
+
   ];
 };
+
+
 
 

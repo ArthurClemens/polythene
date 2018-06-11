@@ -1,7 +1,3 @@
-.pe-tabs .pe-tabs__row.pe-tabs__row--indent {
-  padding-left: 0
-}
-
 .pe-tabs .pe-tabs__indicator {
   transform-origin: left 50%;
   left: 0
@@ -9,6 +5,7 @@
 
 .pe-tabs {
   user-select: none;
+  -moz-user-select: none;
   transform: translateZ(0);
   -webkit-overflow-scrolling: touch
 }
@@ -17,33 +14,7 @@
   display: none
 }
 
-.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab--icon {
-  height: 44px
-}
-
-.pe-tabs.pe-tabs--menu .pe-tabs__tab,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button {
-  min-width: 0;
-  height: 44px
-}
-
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content {
-  padding: 0 6px;
-  height: 44px
-}
-
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-icon {
-  margin-bottom: 0
-}
-
-.pe-tabs.pe-tabs--menu .pe-tabs__tab .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tabs.pe-tabs--menu .pe-tabs__tab.pe-text-button .pe-button__content .pe-button__content {
-  font-size: 10px;
-  line-height: 12px;
-  text-transform: none
-}
-
 .pe-tabs.pe-tabs--scrollable {
-  display: flex;
-  max-height: 48px;
   -ms-overflow-style: none
 }
 
@@ -51,36 +22,21 @@
   display: none
 }
 
-.pe-tabs.pe-tabs--scrollable .pe-tabs__row {
-  margin-bottom: -20px
-}
-
 .pe-tabs.pe-tabs--scrollable .pe-tabs__tab {
   min-width: 0
-}
-
-.pe-no-touch .pe-tabs.pe-tabs--scrollable {
-  background-color: inherit
 }
 
 .pe-no-touch .pe-tabs .pe-tabs__scroll-button {
   position: relative;
   display: block;
-  background-color: inherit;
   z-index: 1;
-  border-radius: 0;
-  width: 48px;
-  height: 48px
+  border-radius: 0
 }
 
 .pe-no-touch .pe-tabs .pe-tabs__scroll-button .pe-button__content {
   border-radius: 0;
-  background-color: inherit;
   transition-property: all;
-  transition-duration: .2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: .25s;
-  opacity: .7
+  transition-timing-function: ease-in-out
 }
 
 .pe-no-touch .pe-tabs.pe-tabs--end .pe-tabs__scroll-button-end,.pe-no-touch .pe-tabs.pe-tabs--start .pe-tabs__scroll-button-start {
@@ -95,6 +51,7 @@
   -ms-flex-direction: row;
   flex-direction: row;
   user-select: none;
+  -moz-user-select: none;
   position: relative;
   white-space: nowrap
 }
@@ -111,99 +68,12 @@
   justify-content: center
 }
 
-.pe-tabs .pe-tabs__scroll-button-offset,.pe-tabs .pe-tabs__tab {
+.pe-tabs .pe-tabs__scroll-button-offset {
   -ms-flex: 1;
   flex: 1;
   flex-basis: 0.000000001px;
   -ms-flex: none;
   flex: none
-}
-
-.pe-tabs .pe-tabs__tab {
-  user-select: none;
-  margin: 0;
-  border-radius: 0;
-  height: 48px;
-  padding: 0;
-  color: inherit;
-  min-width: 72px;
-  max-width: none
-}
-
-.pe-tabs .pe-tabs__tab .pe-button__content {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: opacity,color,backgroundColor;
-  padding: 0 12px;
-  height: 48px;
-  line-height: 1.3em;
-  border-radius: 0;
-  position: relative
-}
-
-.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__label,.pe-tabs .pe-tabs__tab .pe-button__content .pe-icon {
-  max-width: 264px;
-  line-height: 15.400000000000002px;
-  max-height: 30.800000000000004px;
-  overflow: hidden;
-  white-space: normal
-}
-
-.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__label {
-  margin: 1.4000000000000021px 0 0;
-  padding: 0;
-  width: 100%
-}
-
-.pe-tabs .pe-tabs__tab .pe-button__content .pe-icon {
-  margin-left: auto;
-  margin-right: auto
-}
-
-.pe-tabs .pe-tabs__tab .pe-button__content .pe-button__focus {
-  display: none
-}
-
-.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content {
-  height: 72px
-}
-
-.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-icon {
-  margin: 0 auto
-}
-
-.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs .pe-tabs__tab.pe-tabs__tab--icon .pe-icon {
-  margin-bottom: 7px
-}
-
-.pe-tabs.pe-tabs--compact .pe-tabs__tab {
-  min-width: 0
-}
-
-.pe-tabs .pe-tabs__tab-content {
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: inherit
-}
-
-.pe-tabs.pe-tabs--autofit .pe-tabs__tab {
-  -ms-flex: 1;
-  flex: 1;
-  flex-basis: 0.000000001px;
-  min-width: 0;
-  max-width: none
-}
-
-.pe-tabs.pe-tabs__active--selectable .pe-tabs__tab.pe-button--selected {
-  cursor: pointer;
-  pointer-events: auto
 }
 
 .pe-tabs .pe-tabs__indicator {
@@ -212,7 +82,6 @@
   transition-timing-function: ease-in-out;
   position: absolute;
   z-index: 1;
-  height: 2px;
   bottom: 0;
   width: 100%
 }
@@ -228,62 +97,52 @@
   top: auto
 }
 
-@media (min-width:840px) {
-  .pe-tabs.pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tabs__tab {
-    min-width: 160px
-  }
+.pe-rtl .pe-tabs .pe-tabs__indicator,[dir=rtl] .pe-tabs .pe-tabs__indicator {
+  transform-origin: right 50%;
+  right: 0
+}
+
+.pe-no-touch .pe-tabs .pe-tabs__scroll-button .pe-button__content {
+  transition-delay: .25s;
+  transition-duration: .2s;
+  opacity: .7
+}
+
+.pe-no-touch .pe-tabs .pe-tabs__scroll-button {
+  width: 48px;
+  height: 48px
+}
+
+.pe-tabs.pe-tabs--scrollable .pe-tabs__row {
+  margin-bottom: 0
+}
+
+.pe-tabs.pe-tabs--scrollable {
+  display: flex;
+  max-height: 48px
+}
+
+.pe-tabs .pe-tabs__indicator {
+  height: 2px
+}
+
+.pe-tabs .pe-tabs__row.pe-tabs__row--indent {
+  padding-left: 0
 }
 
 .pe-rtl .pe-tabs .pe-tabs__row.pe-tabs__row--indent,[dir=rtl] .pe-tabs .pe-tabs__row.pe-tabs__row--indent {
   padding-right: 0
 }
 
-.pe-rtl .pe-tabs .pe-tabs__indicator,[dir=rtl] .pe-tabs .pe-tabs__indicator {
-  transform-origin: right 50%;
-  right: 0
-}
-
-.pe-dark-tone.pe-tabs .pe-tabs__tab,.pe-dark-tone .pe-tabs .pe-tabs__tab {
-  color: hsla(0,0%,100%,.87)
-}
-
-.pe-dark-tone.pe-tabs .pe-tabs__tab.pe-button--selected,.pe-dark-tone .pe-tabs .pe-tabs__tab.pe-button--selected {
-  color: #2196f3
-}
-
-.pe-dark-tone.pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content,.pe-dark-tone .pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content {
-  background: transparent
-}
-
-.pe-dark-tone.pe-tabs .pe-tabs__tab:not(.pe-button--selected) .pe-icon,.pe-dark-tone .pe-tabs .pe-tabs__tab:not(.pe-button--selected) .pe-icon {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-tabs .pe-tabs__indicator,.pe-dark-tone .pe-tabs .pe-tabs__indicator {
-  background-color: #2196f3
-}
-
 .pe-dark-tone.pe-tabs .pe-tabs__scroll-button,.pe-dark-tone .pe-tabs .pe-tabs__scroll-button {
   color: inherit
 }
 
-.pe-light-tone.pe-tabs .pe-tabs__tab,.pe-light-tone .pe-tabs .pe-tabs__tab,.pe-tabs .pe-tabs__tab {
-  color: rgba(0,0,0,.73)
+.pe-no-touch .pe-dark-tone.pe-tabs.pe-tabs--scrollable,.pe-no-touch .pe-dark-tone .pe-tabs.pe-tabs--scrollable,.pe-no-touch .pe-dark-tone.pe-tabs .pe-tabs__scroll-button,.pe-no-touch .pe-dark-tone .pe-tabs .pe-tabs__scroll-button,.pe-no-touch .pe-dark-tone.pe-tabs .pe-tabs__scroll-button .pe-button__content,.pe-no-touch .pe-dark-tone .pe-tabs .pe-tabs__scroll-button .pe-button__content {
+  background-color: inherit
 }
 
-.pe-light-tone.pe-tabs .pe-tabs__tab.pe-button--selected,.pe-light-tone .pe-tabs .pe-tabs__tab.pe-button--selected,.pe-tabs .pe-tabs__tab.pe-button--selected {
-  color: #2196f3
-}
-
-.pe-light-tone.pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content,.pe-light-tone .pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content,.pe-tabs .pe-tabs__tab.pe-button--selected .pe-button__content {
-  background: transparent
-}
-
-.pe-light-tone.pe-tabs .pe-tabs__tab:not(.pe-button--selected) .pe-icon,.pe-light-tone .pe-tabs .pe-tabs__tab:not(.pe-button--selected) .pe-icon,.pe-tabs .pe-tabs__tab:not(.pe-button--selected) .pe-icon {
-  color: rgba(0,0,0,.54)
-}
-
-.pe-light-tone.pe-tabs .pe-tabs__indicator,.pe-light-tone .pe-tabs .pe-tabs__indicator,.pe-tabs .pe-tabs__indicator {
+.pe-dark-tone.pe-tabs .pe-tabs__indicator,.pe-dark-tone .pe-tabs .pe-tabs__indicator {
   background-color: #2196f3
 }
 
@@ -291,11 +150,195 @@
   color: inherit
 }
 
-html.pe-no-touch .pe-dark-tone .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-dark-tone .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive) {
-  border-color: transparent
+.pe-no-touch .pe-light-tone.pe-tabs.pe-tabs--scrollable,.pe-no-touch .pe-light-tone .pe-tabs.pe-tabs--scrollable,.pe-no-touch .pe-light-tone.pe-tabs .pe-tabs__scroll-button,.pe-no-touch .pe-light-tone .pe-tabs .pe-tabs__scroll-button,.pe-no-touch .pe-light-tone.pe-tabs .pe-tabs__scroll-button .pe-button__content,.pe-no-touch .pe-light-tone .pe-tabs .pe-tabs__scroll-button .pe-button__content,.pe-no-touch .pe-tabs.pe-tabs--scrollable,.pe-no-touch .pe-tabs .pe-tabs__scroll-button,.pe-no-touch .pe-tabs .pe-tabs__scroll-button .pe-button__content {
+  background-color: inherit
 }
 
-html.pe-no-touch .pe-light-tone .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-light-tone .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-tabs .pe-text-button.pe-tabs__tab:active:not(.pe-button--selected):not(.pe-button--inactive),html.pe-no-touch .pe-tabs .pe-text-button.pe-tabs__tab:hover:not(.pe-button--selected):not(.pe-button--inactive) {
-  border-color: transparent
+.pe-light-tone.pe-tabs .pe-tabs__indicator,.pe-light-tone .pe-tabs .pe-tabs__indicator,.pe-tabs .pe-tabs__indicator {
+  background-color: #2196f3
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tab.pe-text-button.pe-button .pe-button__focus,.pe-tab.pe-text-button.pe-button .pe-button__wash {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all
+}
+
+.pe-tab.pe-text-button.pe-button {
+  -ms-flex: 1;
+  flex: 1;
+  flex-basis: 0.000000001px;
+  -ms-flex: none;
+  flex: none;
+  user-select: none;
+  -moz-user-select: none;
+  margin: 0;
+  border-radius: 0;
+  padding: 0
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content {
+  line-height: 1.3em;
+  border-radius: 0;
+  position: relative
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__label,.pe-tab.pe-text-button.pe-button .pe-button__content .pe-icon {
+  overflow: hidden;
+  white-space: normal
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__label {
+  padding: 0;
+  width: 100%
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-icon {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__focus {
+  display: none
+}
+
+.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content,.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-icon {
+  margin: 0 auto
+}
+
+.pe-tabs--menu .pe-tab.pe-text-button.pe-button,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-text-button {
+  min-width: 0
+}
+
+.pe-tabs--menu .pe-tab.pe-text-button.pe-button .pe-button__content .pe-icon,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-text-button .pe-button__content .pe-icon {
+  margin-bottom: 0
+}
+
+.pe-tabs--menu .pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-text-button .pe-button__content .pe-button__content {
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: none
+}
+
+.pe-tabs--compact .pe-tab.pe-text-button.pe-button {
+  min-width: 0
+}
+
+.pe-tab.pe-text-button.pe-button .pe-tabs__tab-content {
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: inherit
+}
+
+.pe-tabs--autofit .pe-tab.pe-text-button.pe-button {
+  -ms-flex: 1;
+  flex: 1;
+  flex-basis: 0.000000001px;
+  min-width: 0;
+  max-width: none
+}
+
+.pe-tabs__active--selectable .pe-tab.pe-text-button.pe-button.pe-button--selected {
+  cursor: pointer;
+  pointer-events: auto
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__label,.pe-tab.pe-text-button.pe-button .pe-button__content .pe-icon {
+  max-width: 264px
+}
+
+.pe-tabs--menu .pe-tab.pe-text-button.pe-button,.pe-tabs--menu .pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-text-button .pe-button__content {
+  height: 44px
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content {
+  padding: 0 12px
+}
+
+.pe-tab.pe-text-button.pe-button,.pe-tab.pe-text-button.pe-button .pe-button__content {
+  height: 48px
+}
+
+.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon,.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content {
+  height: 72px
+}
+
+.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-icon,.pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-icon {
+  margin-bottom: 7px
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__label,.pe-tab.pe-text-button.pe-button .pe-button__content .pe-icon {
+  line-height: 15.400000000000002px;
+  max-height: 30.800000000000004px
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: opacity,color,backgroundColor
+}
+
+.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__label {
+  margin: 1.4000000000000021px 0 0
+}
+
+.pe-tab.pe-text-button.pe-button {
+  max-width: none
+}
+
+.pe-tabs--menu .pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content,.pe-tabs--menu .pe-tab.pe-text-button.pe-button.pe-text-button .pe-button__content {
+  padding: 0 6px
+}
+
+.pe-tab.pe-text-button.pe-button {
+  min-width: 72px
+}
+
+@media (min-width:840px) {
+  :not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tab.pe-text-button.pe-button {
+    min-width: 160px
+  }
+}
+
+.pe-dark-tone .pe-tab.pe-text-button.pe-button.pe-button--selected .pe-button__content {
+  color: #2196f3;
+  background: transparent
+}
+
+.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--selected) .pe-icon {
+  color: hsla(0,0%,100%,.7)
+}
+
+.pe-light-tone .pe-tab.pe-text-button.pe-button.pe-button--selected .pe-button__content,.pe-tab.pe-text-button.pe-button.pe-button--selected .pe-button__content {
+  color: #2196f3;
+  background: transparent
+}
+
+.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--selected) .pe-icon,.pe-tab.pe-text-button.pe-button:not(.pe-button--selected) .pe-icon {
+  color: rgba(0,0,0,.54)
+}
+
+.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited {
+  color: hsla(0,0%,100%,.87)
+}
+
+.pe-dark-tone .pe-tab.pe-text-button.pe-button .pe-button__dropdown {
+  color: hsla(0,0%,100%,.7)
+}
+
+.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited,.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited {
+  color: rgba(0,0,0,.73)
+}
+
+.pe-light-tone .pe-tab.pe-text-button.pe-button .pe-button__dropdown,.pe-tab.pe-text-button.pe-button .pe-button__dropdown {
+  color: rgba(0,0,0,.54)
 }
 /*# sourceMappingURL=polythene-tabs.css.map */

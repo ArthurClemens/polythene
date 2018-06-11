@@ -18,7 +18,8 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
   IconButtonCSS.addStyle(".tests-icon-button-themed-hover", {
     color_light_hover:            "#fff",
     color_light_label_hover:      "#673ab7",
-    color_light_hover_background: "#673ab7",
+    color_dark_label_hover:       "#fff",
+    color_light_background_hover: "#673ab7",
     animation_duration:           "100ms",
   });
 
@@ -219,6 +220,20 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
           svg: { content: trustedIconLock }
         },
         className: "tests-icon-button-themed-icon-button"
+      }
+    },
+    {
+      name: "Themed (hover color) -- dark tone class",
+      component: IconButton,
+      interactive: true,
+      className: "pe-dark-tone",
+      attrs: {
+        icon: {
+          svg: { content: trustedIconLock }
+        },
+        label: "Hover",
+        wash: true,
+        className: "tests-icon-button-themed-hover"
       }
     },
   ];

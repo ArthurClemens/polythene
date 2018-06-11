@@ -22,39 +22,23 @@
   clip: rect(0,0,0,0)
 }
 
-.pe-md-progress-spinner.pe-spinner--small .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner.pe-spinner--small .pe-md-progress-spinner__circle-right {
-  border-width: 2.25px
-}
-
-.pe-md-progress-spinner.pe-spinner--regular .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner.pe-spinner--regular .pe-md-progress-spinner__circle-right {
-  border-width: 3px
-}
-
-.pe-md-progress-spinner.pe-spinner--medium .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner.pe-spinner--medium .pe-md-progress-spinner__circle-right {
-  border-width: 3.75px
-}
-
-.pe-md-progress-spinner.pe-spinner--large .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner.pe-spinner--large .pe-md-progress-spinner__circle-right {
-  border-width: 4.5px
-}
-
-.pe-md-progress-spinner.pe-spinner--fab .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner.pe-spinner--fab .pe-md-progress-spinner__circle-right {
-  border-width: 5.25px
-}
-
-.pe-dark-tone.pe-md-progress-spinner,.pe-dark-tone .pe-md-progress-spinner {
-  color: #2196f3
+.pe-md-progress-spinner .pe-md-progress-spinner__animation {
+  animation-duration: .8s
 }
 
 .pe-dark-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-dark-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle {
   border-color: currentcolor
 }
 
-.pe-light-tone.pe-md-progress-spinner,.pe-light-tone .pe-md-progress-spinner,.pe-md-progress-spinner {
+.pe-dark-tone.pe-md-progress-spinner,.pe-dark-tone .pe-md-progress-spinner {
   color: #2196f3
 }
 
 .pe-light-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-light-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-md-progress-spinner .pe-md-progress-spinner__circle {
   border-color: currentcolor
+}
+
+.pe-light-tone.pe-md-progress-spinner,.pe-light-tone .pe-md-progress-spinner,.pe-md-progress-spinner {
+  color: #2196f3
 }
 /*# sourceMappingURL=polythene-material-design-progress-spinner.css.map */

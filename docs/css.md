@@ -44,7 +44,7 @@ Component styles are automatically added to `<head>` using [j2c](http://j2c.py.g
 
 #### Theming options
 
-This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`; more details at: [Theming Configuration variables](theming/configuration-variables.md).
+This requires no build step and is as simple as: `addStyle(".themed-component", { vars })`; more details at: [Theming Style variables](theming/style-variables.md).
 
 
 #### Usage

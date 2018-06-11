@@ -1,5 +1,6 @@
 import * as BaseSpinnerCSS                   from "polythene-css-base-spinner";                     export { BaseSpinnerCSS };
 import * as ButtonCSS                        from "polythene-css-button";                           export { ButtonCSS };
+import * as ButtonGroupCSS                   from "polythene-css-button-group";                     export { ButtonGroupCSS };
 import * as CardCSS                          from "polythene-css-card";                             export { CardCSS };
 import * as CheckboxCSS                      from "polythene-css-checkbox";                         export { CheckboxCSS };
 import * as DialogCSS                        from "polythene-css-dialog";                           export { DialogCSS };

@@ -33,6 +33,20 @@
     }];
   });
 
+  var roboto = (function () {
+    return [{
+      "html, body, button, input, select, textarea": {
+        fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+      }
+    }];
+  });
+
+  var loadRoboto = function loadRoboto() {
+    return [{
+      "@import": "url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700')"
+    }];
+  };
+
   var fontSize = 14;
 
   var typography = (function () {
@@ -136,20 +150,6 @@
     }];
   });
 
-  var roboto = (function () {
-    return [{
-      "html, body, button, input, select, textarea": {
-        fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-      }
-    }];
-  });
-
-  var loadRoboto = function loadRoboto() {
-    return [{
-      "@import": "url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700')"
-    }];
-  };
-
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var fns = [roboto, reset, typography];
@@ -176,10 +176,11 @@
     }));
   };
 
-  exports.addStyle = addStyle;
-  exports.getStyle = getStyle;
+  exports.vars = polytheneStyle.vars;
   exports.addRoboto = addRoboto;
+  exports.addStyle = addStyle;
   exports.addTypography = addTypography;
+  exports.getStyle = getStyle;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

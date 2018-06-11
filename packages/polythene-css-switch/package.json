@@ -16,8 +16,8 @@
   ],
   "dependencies": {
     "polythene-core-css": "^1.2.0",
-    "polythene-core-switch": "^1.2.0",
     "polythene-css-classes": "^1.2.0",
+    "polythene-css-icon-button": "^1.2.0",
     "polythene-css-selection-control": "^1.2.0",
     "polythene-theme": "^1.2.0"
   },

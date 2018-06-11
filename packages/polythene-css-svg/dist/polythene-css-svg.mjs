@@ -1,61 +1,85 @@
-import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-svg';
+import { sel, createColor, createLayout, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-svg"
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var layout = (function (selector) {
-  return [_defineProperty({}, selector, {
-    lineHeight: 1,
-
-    " > div, svg": {
-      width: "inherit",
-      height: "inherit"
-    }
-  })];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: "inherit",
-
-    " svg": {
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
       color: "inherit",
 
-      " path, rect, circle, polygon": {
-        "&:not([fill=none])": {
-          fill: componentVars["color_" + tint] || "currentcolor"
+      " svg": {
+        color: "inherit",
+
+        " path, rect, circle, polygon": {
+          "&:not([fill=none])": {
+            fill: "currentcolor"
+          }
         }
       }
-    }
-  })];
+    })];
+  }
 };
 
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars) {
+    return [sel(selector, {
+      " svg": {
+        " path, rect, circle, polygon": {
+          "&:not([fill=none])": {
+            fill: vars["color_" + tint]
+          }
+        }
+      }
+    })];
+  });
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      lineHeight: 1,
+
+      " > div, svg": {
+        width: "inherit",
+        height: "inherit"
+      }
+    })];
+  }
+};
+
+var layout = createLayout({ varFns: varFns });
+
+var vars = {
+  general_styles: true,
+
+  color_light: "currentcolor",
+  color_dark: "currentcolor"
+};
 
 var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
 };
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color, getStyle, layout, vars };

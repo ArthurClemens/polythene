@@ -133,6 +133,7 @@ export const createProps = (vnode, { keys: k }) => {
     {
       className: [
         classes.component,
+        attrs.fromMultipleClassName,
         // classes.visible is set in showNotification though transition
         attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
         attrs.containerSelector ? classes.hasContainer : null,

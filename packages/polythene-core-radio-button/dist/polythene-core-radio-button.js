@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-selection-control')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-selection-control'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-selection-control']));
-}(this, (function (exports,polytheneCoreSelectionControl) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
 
   var classes = {
     component: "pe-radio-control"
@@ -38,7 +38,6 @@
     createProps: createProps
   });
 
-  exports.vars = polytheneCoreSelectionControl.vars;
   exports.coreRadioButton = radioButton;
 
   Object.defineProperty(exports, '__esModule', { value: true });

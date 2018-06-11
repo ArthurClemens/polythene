@@ -1,5 +1,3 @@
-export { vars } from 'polythene-core-selection-control';
-
 var classes = {
   component: "pe-checkbox-control"
 };

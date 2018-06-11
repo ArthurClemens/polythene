@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core-css'), require('polythene-core-snackbar')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core-css', 'polythene-core-snackbar'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core-css'],global['polythene-core-snackbar']));
-}(this, (function (exports,polytheneTheme,polytheneCoreCss,polytheneCoreSnackbar) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-notification'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-notification', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-notification'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssNotification,polytheneTheme) { 'use strict';
 
   var notificationClasses = {
     component: "pe-notification",
@@ -35,78 +35,104 @@
     open: "pe-snackbar--open"
   });
 
+  var color = polytheneCoreCss.createColor({
+    superColor: polytheneCssNotification.color
+  });
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var tabletStyle = function tabletStyle(componentVars) {
-    return {
-      " .pe-notification__content": {
-        borderTopLeftRadius: polytheneTheme.vars.unit_block_border_radius + "px",
-        borderTopRightRadius: polytheneTheme.vars.unit_block_border_radius + "px",
-        minWidth: componentVars.min_width + "px",
-        maxWidth: componentVars.max_width + "px"
-      },
-      ".pe-notification--horizontal": {
-        " .pe-notification__title": {
-          paddingRight: "30px"
-        }
-      }
-    };
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
+        position: "fixed",
+        top: "auto",
+        right: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: polytheneTheme.vars.z_notification,
+        pointerEvents: "none",
+        justifyContent: "flex-start", // For IE11
+        width: "100%"
+      }]), _defineProperty({}, ".pe-notification--container " + selector, {
+        position: "relative"
+      })];
+    }
   };
 
-  var layout = (function (selector, componentVars) {
-    var _ref2;
-
-    return [(_ref2 = {}, _defineProperty(_ref2, selector, {
-      width: "100%",
-      opacity: 1,
-
-      " .pe-notification__content": {
-        width: "100%",
-        margin: "0 auto",
-        borderRadius: 0
-      }
-    }), _defineProperty(_ref2, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+  var holderLayout = polytheneCoreCss.createLayout({
+    varFns: varFns
   });
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      " .pe-notification__content": {
-        color: componentVars["color_" + tint + "_text"],
-        background: componentVars["color_" + tint + "_background"]
-      }
-    })];
+  var breakpoint = function breakpoint(breakpointSel) {
+    return function (selector, o) {
+      return _defineProperty$1({}, breakpointSel, _defineProperty$1({}, selector, o));
+    };
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+  var breakpointTabletPortraitUp = breakpoint("@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)");
+
+  var varFns$1 = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        width: "100%",
+        opacity: 1,
+
+        " .pe-notification__content": {
+          width: "100%",
+          margin: "0 auto",
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
+        }
+      }), breakpointTabletPortraitUp(selector, {
+        ".pe-notification--horizontal": {
+          " .pe-notification__title": {
+            paddingRight: "30px"
+          }
+        }
+      })];
+    },
+    min_width: function min_width(selector, vars) {
+      return [breakpointTabletPortraitUp(selector, {
+        minWidth: vars.min_width + "px"
+      })];
+    },
+    max_width: function max_width(selector, vars) {
+      return [breakpointTabletPortraitUp(selector, {
+        maxWidth: vars.max_width + "px"
+      })];
+    },
+    border_radius: function border_radius(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-notification__content": {
+          borderTopLeftRadius: vars.border_radius + "px",
+          borderTopRightRadius: vars.border_radius + "px",
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
+        }
+      })];
+    }
+  };
+
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns$1,
+    customVarFns: polytheneCssNotification.customLayoutFns
   });
 
-  function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  var vars = {
+    general_styles: true,
 
-  var holderLayout = (function (selector) {
-    var _ref;
+    animation_hide_css: "",
+    animation_show_css: "",
+    border_radius: 0,
+    max_width: 568,
+    min_height: 0,
+    min_width: 288,
 
-    return [(_ref = {}, _defineProperty$2(_ref, selector, [polytheneCoreCss.flex.layoutCenterCenter, {
-      position: "fixed",
-      top: "auto",
-      right: 0,
-      bottom: 0,
-      left: 0,
-      zIndex: polytheneTheme.vars.z_notification,
-      pointerEvents: "none",
-      justifyContent: "flex-start", // For IE11
-      width: "100%"
-    }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
-      position: "relative"
-    }), _ref)];
-  });
-
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background)
+  };
 
   var fns = [layout, color];
   var selector = "." + classes.component.replace(/ /g, ".");
@@ -115,18 +141,22 @@
   var holderSelector = "." + classes.holder.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends$1({}, polytheneCoreSnackbar.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends$1({}, polytheneCoreSnackbar.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([holderSelector], polytheneCoreSnackbar.vars, holderFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSnackbar.vars, fns));
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([holderSelector], vars, holderFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], vars, fns));
   };
 
-  polytheneCoreCss.styler.generateStyles([holderSelector], polytheneCoreSnackbar.vars, holderFns);
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSnackbar.vars, fns);
+  polytheneCoreCss.styler.generateStyles([holderSelector], vars, holderFns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.holderLayout = holderLayout;
+  exports.layout = layout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

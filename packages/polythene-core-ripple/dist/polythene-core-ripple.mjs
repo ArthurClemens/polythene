@@ -184,10 +184,4 @@ var ripple = /*#__PURE__*/Object.freeze({
   onUnMount: onUnMount
 });
 
-var vars$1 = {
-  color: "inherit" // only specify this variable to get both states
-  // color_light:   "inherit",
-  // color_dark:    "inherit"
-};
-
-export { ripple as coreRipple, vars$1 as vars };
+export { ripple as coreRipple };

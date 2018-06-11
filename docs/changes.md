@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Releases](#releases)
+  - [Next](#next)
   - [1.2.0](#120)
   - [1.1.0](#110)
   - [1.0.0](#100)
@@ -14,6 +15,47 @@
 <a id="releases"></a>
 ## Releases
 
+<a id="next"></a>
+### Next
+
+#### Material Design version 2 -- first small changes
+
+Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in upcoming releases.
+
+#### CSS
+
+CSS creation has been optimized, specifically when creating themed CSS. When using [addStyle](theming/style-variables.md), only the passed style variables will be used to create CSS. This results in much smaller CSS code, and it makes the result more predictable (less potentical clashes with default styles).
+
+CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
+
+
+#### Components
+
+* New component:
+  * [Button Group](components/button-group.md) - container for a row of buttons; use this to create toggle buttons or split buttons
+* Button:
+  * New options for varying the width and height: `extraWide` and `highLabel`
+  * New option `dropdown` to add a dropdown triangle
+  * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
+  * MD2: the border radius is now set to `4`
+  * Bordered button has a default medium gray border color
+* Menu:
+  * Reworked to support dropdown menus - this includes the new Button Group and Button's `dropdown` option
+  * MD2: the menu is now positioned below its target (instead of covering the target), unless explicitly overridden with `offsetV: 0`
+  * Added scaling effect for menus with `origin` set (with corresponding CSS vars `animation_show_origin_effect_css` and `animation_hide_origin_effect_css`) 
+  * New option `scrollTarget` (to scroll a menu element into view)
+  * New option `height` (pixel or percentage value, or `"max"` to use the maximum available height within the parent element)
+  * Long lists are now scrollable
+  * `offset` is deprecated; use `offsetH`
+* Slider:
+  * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
+* Spinners and Tabs:
+  * CSS style variables for animation durations/delays have been changed to strings that include the unit ("ms" or "s")
+
+
+#### Other
+
+* Various bug fixes
 
 <a id="120"></a>
 ### 1.2.0
@@ -44,7 +86,7 @@
 * Updates to transition code:
   * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
   * Transitions now read existing CSS styles (so you can define some or all transition properties in CSS too)
-  * It is now possible to set transition duration and delay in a component theme (using component configuration vars)
+  * It is now possible to set transition duration and delay in a component theme (using component style variables)
   * Added options `showTimingFunction` and `hideTimingFunction`
 
 #### Components
@@ -55,7 +97,7 @@
   * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
   * Dialog: option `borders` is unchanged (the option refers to top and bottom border)
 * List Tile:
-  * Added configuration vars for for titles and the front element: font size, weight and color 
+  * Added style variables for for titles and the front element: font size, weight and color 
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
 * Toolbar:
   * Added option `z` to add a shadow
@@ -167,7 +209,7 @@ Fix for newly introduced bug in button onclick handling.
 Changes to components:
 
 * All
-  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Configuration variables](theming/configuration-variables.md)
+  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Style variables](theming/style-variables.md)
 * RadioGroup
   * `onChange` now returns a state object that contains a variable `value`
 * List

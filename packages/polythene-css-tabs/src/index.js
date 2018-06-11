@@ -1,18 +1,38 @@
-import { styler } from "polythene-core-css";
-import { vars } from "polythene-core-tabs";
 import classes from "polythene-css-classes/tabs";
-import layout from "./layout";
-import color from "./color";
+import tabColor from "./tab/color";
+import tabLayout from "./tab/layout";
+import tabsColor from "./tabs/color";
+import tabsLayout from "./tabs/layout";
+import vars from "./vars";
+import { styler } from "polythene-core-css";
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
+const tabsFns = [tabsLayout, tabsColor];
+const tabFns = [tabLayout, tabColor];
+const tabsSelector = `.${classes.component}`;
+const tabClass = `${classes.tab} pe-text-button pe-button`;
+const tabSelector = ` .${tabClass.replace(/ /g, ".")}`;
 
-export const addStyle = (customSelector, customVars) => 
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
+const addStyle = (customSelector, customVars) => (
+  styler.generateCustomStyles([customSelector, tabsSelector], vars, customVars, tabsFns),
+  styler.generateCustomStyles([customSelector, tabSelector], vars, customVars, tabFns)
+);
 
-export const getStyle = (customSelector, customVars) => 
+const getStyle = (customSelector, customVars) => 
   customSelector
-    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns)
-    : styler.createStyleSheets([selector], vars, fns);
+    ? styler.createCustomStyleSheets([customSelector, tabsSelector], vars, customVars, tabsFns)
+      .concat(styler.createCustomStyleSheets([customSelector, tabSelector], vars, customVars, tabFns))
+    : styler.createStyleSheets([tabsSelector], vars, tabsFns)
+      .concat(styler.createStyleSheets([tabSelector], vars, tabFns));
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([tabsSelector], vars, tabsFns);
+styler.generateStyles([tabSelector], vars, tabFns);
+
+export {
+  addStyle,
+  getStyle,
+  tabColor,
+  tabLayout,
+  tabsColor,
+  tabsLayout,
+  vars,
+};

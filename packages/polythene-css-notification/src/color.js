@@ -1,14 +1,29 @@
+import { sel, createColor } from "polythene-core-css";
 
-const style = (scopes, selector, componentVars, tint) => [{
-  [scopes.map(s => s + selector).join(",")]: {
-    " .pe-notification__content": {
-      color: componentVars["color_" + tint + "_text"],
-      background: componentVars["color_" + tint + "_background"]
-    }
-  }
-}];
+const generalFns = ({
+  general_styles: selector => [], // eslint-disable-line no-unused-vars
+});
 
-export default (selector, componentVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-];
+const tintFns = tint => ({
+  ["color_" + tint + "_text"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__content": {
+        color: vars["color_" + tint + "_text"],
+      }
+    })
+  ],
+  ["color_" + tint + "_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__content": {
+        background: vars["color_" + tint + "_background"]
+      }
+    })
+  ]
+});
+
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+
+export default createColor({
+  varFns: { lightTintFns, darkTintFns }
+});

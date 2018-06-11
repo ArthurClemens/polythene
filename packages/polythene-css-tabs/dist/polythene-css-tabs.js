@@ -1,26 +1,33 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-button'), require('polythene-core-tabs')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-button', 'polythene-core-tabs'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-button'],global['polythene-core-tabs']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssButton,polytheneCoreTabs) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-button'), require('polythene-theme'), require('polythene-css-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-button', 'polythene-theme', 'polythene-css-icon-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-button'],global['polythene-theme'],global['polythene-css-icon-button']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssButton,polytheneTheme,polytheneCssIconButton) { 'use strict';
 
   var buttonClasses = {
-    base: "pe-button",
-    component: "pe-button pe-text-button",
-    row: "pe-button-row",
+      component: "pe-text-button",
+      super: "pe-button",
+      row: "pe-button-row",
 
-    // elements
-    content: "pe-button__content",
-    focus: "pe-button__focus",
-    label: "pe-button__label",
-    wash: "pe-button__wash",
+      // elements      
+      content: "pe-button__content",
+      focus: "pe-button__focus",
+      label: "pe-button__label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
 
-    // states
-    border: "pe-button--border",
-    disabled: "pe-button--disabled",
-    focused: "pe-button--focus",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+      // states      
+      border: "pe-button--border",
+      disabled: "pe-button--disabled",
+      focused: "pe-button--focus",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      extraWide: "pe-button--extra-wide",
+      separatorAtStart: "pe-button--separator-start",
+      dropdownOpen: "pe-button--dropdown-open",
+      dropdownClosed: "pe-button--dropdown-closed"
   };
 
   var classes = {
@@ -31,7 +38,7 @@
     scrollButton: "pe-tabs__scroll-button",
     scrollButtonAtEnd: "pe-tabs__scroll-button-end",
     scrollButtonAtStart: "pe-tabs__scroll-button-start",
-    tab: "pe-tabs__tab",
+    tab: "pe-tab",
     tabContent: "pe-tabs__tab-content",
     tabRow: "pe-tabs__row",
 
@@ -51,158 +58,85 @@
     label: buttonClasses.label
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var alignSide = function alignSide(isRTL) {
-    return function (componentVars) {
-      return {
-        " .pe-tabs__row": {
-          ".pe-tabs__row--indent": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", componentVars.tabs_indent + "px")
-        },
-        " .pe-tabs__indicator": _defineProperty({
-          transformOrigin: isRTL ? "right 50%" : "left 50%"
-        }, isRTL ? "right" : "left", 0)
-      };
-    };
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-button--selected": {
+          " .pe-button__content": {
+            background: "transparent"
+          }
+        }
+      })];
+    }
   };
 
-  var alignLeft = alignSide(false);
-  var alignRight = alignSide(true);
+  var tintFns = function tintFns(tint) {
+    var _ref;
 
-  var layout = (function (selector, componentVars) {
-    return [_defineProperty({}, selector, [alignLeft(componentVars), _defineProperty({
-      userSelect: "none",
-      transform: "translate3d(0,0,0)",
-      "-webkit-overflow-scrolling": "touch",
-
-      "& ::-webkit-scrollbar": {
-        "display": "none"
-      },
-
-      ".pe-tabs--menu": {
-        // reset sizes to fit within a small space
-        " .pe-tabs__tab": {
-          height: componentVars.menu_tab_height + "px"
-        },
-        " .pe-tabs__tab--icon": {
-          height: componentVars.menu_tab_icon_label_height + "px"
-        },
-        " .pe-tabs__tab, .pe-tabs__tab.pe-tabs__tab--icon, .pe-tabs__tab.pe-text-button": {
-          minWidth: 0,
-          height: componentVars.menu_tab_icon_label_height + "px",
-
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_selected", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-button--selected": {
           " .pe-button__content": {
-            padding: "0 " + componentVars.tab_menu_content_padding_v + "px",
-            height: componentVars.menu_tab_height + "px",
-
-            " .pe-icon": {
-              marginBottom: 0
-            },
-            " .pe-button__content": {
-              fontSize: "10px",
-              lineHeight: "12px",
-              textTransform: "none"
-            }
+            color: vars["color_" + tint + "_selected"]
           }
         }
-      },
-
-      ".pe-tabs--scrollable": {
-        display: "flex",
-        // hide scrollbar (this approach is required for Firefox)
-        "max-height": componentVars.tab_height + "px",
-        "-ms-overflow-style": "none",
-
-        " .pe-tabs__scroll-button": {
-          // default hide, show with html.pe-no-touch
-          display: "none"
-        },
-
-        " .pe-tabs__row": {
-          marginBottom: -componentVars.scrollbar_offset + "px"
-        },
-        " .pe-tabs__tab": {
-          minWidth: 0
-        }
-      },
-
-      " .pe-no-touch &": {
-        ".pe-tabs--scrollable": {
-          backgroundColor: "inherit"
-        },
-
-        " .pe-tabs__scroll-button": {
-          position: "relative",
-          display: "block",
-          backgroundColor: "inherit",
-          zIndex: 1,
-          borderRadius: 0,
-          width: componentVars.scroll_button_size + "px",
-          height: componentVars.scroll_button_size + "px",
-
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-button--selected": {
           " .pe-button__content": {
-            borderRadius: 0,
-            backgroundColor: "inherit",
-            transitionProperty: "all",
-            transitionDuration: componentVars.scroll_button_fade_duration + "s",
-            transitionTimingFunction: "ease-in-out",
-            transitionDelay: componentVars.scroll_button_fade_delay + "s",
-            opacity: componentVars.scroll_button_opacity
+            background: vars["color_" + tint + "_selected_background"]
           }
-        },
-        ".pe-tabs--start .pe-tabs__scroll-button-start": {
-          pointerEvents: "none",
-          cursor: "default",
-          opacity: 0
-        },
-        ".pe-tabs--end .pe-tabs__scroll-button-end": {
-          pointerEvents: "none",
-          cursor: "default",
-          opacity: 0
         }
-      },
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ":not(.pe-button--selected) .pe-icon": {
+          color: vars["color_" + tint + "_icon"]
+        }
+      })];
+    }), _ref;
+  };
 
-      " .pe-tabs__row": [polytheneCoreCss.flex.layoutHorizontal, {
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var tabColor = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+    superColor: polytheneCssButton.color
+  });
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var tab_label_transition_property_animation_duration = function tab_label_transition_property_animation_duration(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-button__content": polytheneCoreCss.mixin.defaultTransition(vars.tab_label_transition_property, vars.animation_duration)
+    });
+  };
+
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none"), {
         userSelect: "none",
-        position: "relative",
-        whiteSpace: "nowrap",
-
-        ".pe-tabs__row--indent": {
-          margin: 0,
-          overflow: "auto"
-        },
-
-        ".pe-tabs__row--centered": polytheneCoreCss.flex.layoutCenterJustified
-      }],
-
-      " .pe-tabs__scroll-button-offset": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none")],
-
-      " .pe-tabs__tab": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none"), {
-        userSelect: "none",
+        "-moz-user-select": "none",
         margin: 0,
         borderRadius: 0,
-        height: componentVars.tab_height + "px",
         padding: 0,
-        color: "inherit",
-        minWidth: !isNaN(componentVars.tab_min_width) ? componentVars.tab_min_width + "px" : componentVars.tab_min_width, // for smaller screens, see also media query below
-        maxWidth: !isNaN(componentVars.tab_max_width) ? componentVars.tab_max_width + "px" : componentVars.tab_max_width,
 
-        " .pe-button__content": [polytheneCoreCss.mixin.defaultTransition(componentVars.tab_label_transition_property, componentVars.animation_duration), {
-          padding: "0 " + componentVars.tab_content_padding_v + "px",
-          height: componentVars.tab_height + "px",
+        " .pe-button__content": {
           lineHeight: polytheneTheme.vars.line_height + "em",
           borderRadius: 0,
           position: "relative",
 
           " .pe-button__label, .pe-icon": {
-            maxWidth: componentVars.label_max_width + "px", // or .pe-tabs width minus 56dp
-            lineHeight: componentVars.tab_label_line_height + "px",
-            maxHeight: 2 * componentVars.tab_label_line_height + "px",
             overflow: "hidden",
             whiteSpace: "normal"
           },
           " .pe-button__label": {
-            margin: componentVars.tab_label_vertical_offset + "px 0 0 0",
             padding: 0,
             width: "100%" // for IE 11
           },
@@ -213,147 +147,480 @@
           " .pe-button__focus": {
             display: "none"
           }
-        }],
+        },
         ".pe-tabs__tab--icon": {
-          "&, .pe-button__content": [{
-            height: componentVars.tab_icon_label_height + "px"
-          }, {
+          "&, .pe-button__content": {
             " .pe-button__content, .pe-icon": {
               margin: "0 auto"
             }
-          }, {
-            " .pe-icon": {
-              marginBottom: componentVars.tab_icon_label_icon_spacing + "px"
+          }
+        },
+
+        ".pe-tabs--menu &": {
+          "&, &.pe-tabs__tab--icon, &.pe-text-button": {
+            minWidth: 0,
+
+            " .pe-button__content": {
+              " .pe-icon": {
+                marginBottom: 0
+              },
+              " .pe-button__content": {
+                fontSize: "10px",
+                lineHeight: "12px",
+                textTransform: "none"
+              }
             }
-          }]
-        }
-      }],
+          }
+        },
 
-      ".pe-tabs--compact": {
-        " .pe-tabs__tab": {
+        ".pe-tabs--compact &": {
           minWidth: "initial"
+        },
+
+        " .pe-tabs__tab-content": [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.flex.layoutVertical, {
+          height: "inherit"
+        }],
+
+        ".pe-tabs--autofit &": [polytheneCoreCss.flex.flex(), {
+          minWidth: "initial",
+          maxWidth: "none"
+        }],
+
+        ".pe-tabs__active--selectable &": {
+          ".pe-button--selected": {
+            cursor: "pointer",
+            pointerEvents: "initial"
+          }
         }
-      },
 
-      " .pe-tabs__tab-content": [polytheneCoreCss.flex.layoutCenterCenter, polytheneCoreCss.flex.layoutVertical, {
-        height: "inherit"
-      }],
-
-      ".pe-tabs--autofit .pe-tabs__tab": [polytheneCoreCss.flex.flex(), {
-        minWidth: "initial",
-        maxWidth: "none"
-      }],
-
-      ".pe-tabs__active--selectable": {
-        " .pe-tabs__tab.pe-button--selected": {
-          cursor: "pointer",
-          pointerEvents: "initial"
-        }
-      },
-
-      " .pe-tabs__indicator": {
-        transform: "translate3d(0,0,0)",
-        // transformOrigin set in alignSide
-        transitionProperty: "all",
-        transitionTimingFunction: "ease-in-out",
-        position: "absolute",
-        zIndex: 1,
-        height: componentVars.tab_indicator_height + "px",
-        bottom: 0,
-        // left/right set in alignSide
-        width: "100%" // and transformed with js
-        // background-color defined in implementation/theme css
-      },
-
-      " .pe-toolbar--tabs .pe-toolbar__bar &": [polytheneCoreCss.mixin.fit(), {
-        width: "auto",
-        margin: 0,
-        top: "auto"
-      }]
-
-    }, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, selector, {
-      ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tabs__tab": {
-        minWidth: componentVars.tab_min_width_tablet + "px"
-      }
-    }))]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];
-  });
-
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      " .pe-tabs__tab": {
-        color: componentVars["color_" + tint]
-      },
-
-      " .pe-tabs__tab.pe-button--selected": {
-        color: componentVars["color_" + tint + "_selected"],
+      }])];
+    },
+    tab_height: function tab_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        height: vars.tab_height + "px",
 
         " .pe-button__content": {
-          background: componentVars["color_" + tint + "_selected_background"]
+          height: vars.tab_height + "px"
         }
-      },
-      " .pe-tabs__tab:not(.pe-button--selected) .pe-icon": {
-        color: componentVars["color_" + tint + "_icon"]
-      },
-      " .pe-tabs__indicator": {
-        backgroundColor: componentVars["color_" + tint + "_tab_indicator"]
-      },
-      " .pe-tabs__scroll-button": {
-        color: "inherit"
-      }
-    })];
+      })];
+    },
+    tab_min_width: function tab_min_width(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        minWidth: vars.tab_min_width + "px" // for smaller screens, see also media query below
+      })];
+    },
+    tab_max_width: function tab_max_width(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        maxWidth: isNaN(vars.tab_max_width) ? vars.tab_max_width : vars.tab_max_width + "px"
+      })];
+    },
+    tab_min_width_tablet: function tab_min_width_tablet(selector, vars) {
+      return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) " + selector, {
+        minWidth: vars.tab_min_width_tablet + "px"
+      }));
+    },
+    tab_icon_label_height: function tab_icon_label_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs__tab--icon": {
+          "&, .pe-button__content": {
+            height: vars.tab_icon_label_height + "px"
+          }
+        }
+      })];
+    },
+    tab_label_transition_property: function tab_label_transition_property(selector, vars) {
+      return [tab_label_transition_property_animation_duration(selector, vars)];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [tab_label_transition_property_animation_duration(selector, vars)];
+    },
+    tab_content_padding_v: function tab_content_padding_v(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          padding: "0 " + vars.tab_content_padding_v + "px"
+        }
+      })];
+    },
+    label_max_width: function label_max_width(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          " .pe-button__label, .pe-icon": {
+            maxWidth: vars.label_max_width + "px" // or .pe-tabs width minus 56dp
+          }
+        }
+      })];
+    },
+    tab_label_line_height: function tab_label_line_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          " .pe-button__label, .pe-icon": {
+            lineHeight: vars.tab_label_line_height + "px",
+            maxHeight: 2 * vars.tab_label_line_height + "px"
+          }
+        }
+      })];
+    },
+    tab_label_vertical_offset: function tab_label_vertical_offset(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button__content": {
+          " .pe-button__label": {
+            margin: vars.tab_label_vertical_offset + "px 0 0 0"
+          }
+        }
+      })];
+    },
+    tab_icon_label_icon_spacing: function tab_icon_label_icon_spacing(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs__tab--icon": {
+          "&, .pe-button__content": {
+            " .pe-icon": {
+              marginBottom: vars.tab_icon_label_icon_spacing + "px"
+            }
+          }
+        }
+      })];
+    },
+    menu_tab_height: function menu_tab_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs--menu &": {
+          // reset sizes to fit within a small space
+          height: vars.menu_tab_height + "px",
+
+          "&, &.pe-tabs__tab--icon, &.pe-text-button": {
+            " .pe-button__content": {
+              height: vars.menu_tab_height + "px"
+            }
+          }
+        }
+      })];
+    },
+    menu_tab_icon_label_height: function menu_tab_icon_label_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs--menu &": {
+          "&.pe-tabs__tab--icon": {
+            height: vars.menu_tab_icon_label_height + "px"
+          }
+        }
+      })];
+    },
+    tab_menu_content_padding_v: function tab_menu_content_padding_v(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs--menu &": {
+          "&, &.pe-tabs__tab--icon, &.pe-text-button": {
+            " .pe-button__content": {
+              padding: "0 " + vars.tab_menu_content_padding_v + "px"
+            }
+          }
+        }
+      })];
+    }
   };
 
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-    return polytheneCssButton.noTouchStyle(scopes, selector + " .pe-text-button.pe-tabs__tab", componentVars, tint);
+  var tabLayout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssButton.layout });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var generalFns$1 = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-tabs__scroll-button": {
+          color: "inherit"
+        },
+        " .pe-no-touch &": {
+          ".pe-tabs--scrollable": {
+            backgroundColor: "inherit"
+          },
+          " .pe-tabs__scroll-button": {
+            backgroundColor: "inherit",
+
+            " .pe-button__content": {
+              backgroundColor: "inherit"
+            }
+          }
+        }
+      })];
+    }
   };
 
-  // export const noTouchStyle = (scopes, selector, componentVars, tint) => {
-  //   return [{
-  //     [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
-  //       ":not(.pe-button--selected):not(.pe-button--inactive)": {
-  //         color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
-  //         borderColor: hoverBorder,
+  var tintFns$1 = function tintFns(tint) {
+    return _defineProperty$2({}, "color_" + tint + "_tab_indicator", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-tabs__indicator": {
+          backgroundColor: vars["color_" + tint + "_tab_indicator"]
+        }
+      })];
+    });
+  };
 
-  //         " .pe-button__content": {
-  //           backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
-  //         },
+  var lightTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("light"));
+  var darkTintFns$1 = _extends$1({}, generalFns$1, tintFns$1("dark"));
 
-  //         " .pe-button__wash": {
-  //           backgroundColor: componentVars["color_" + tint + "_wash_background"],
-  //         }
-  //       }
-  //     }
-  //   }];
-  // };
-
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
+  var tabsColor = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns$1, darkTintFns: darkTintFns$1 }
   });
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  function _defineProperty$3(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var fns = [layout, color];
-  var selector = "." + classes.component;
+  var alignSide = function alignSide(isRTL) {
+    return function () {
+      return {
+        " .pe-tabs__indicator": _defineProperty$3({
+          transformOrigin: isRTL ? "right 50%" : "left 50%"
+        }, isRTL ? "right" : "left", 0)
+      };
+    };
+  };
+  var alignLeft = alignSide(false);
+  var alignRight = alignSide(true);
+
+  var _tabs_indent = function _tabs_indent(selector, vars, isRTL) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-tabs__row": {
+        ".pe-tabs__row--indent": _defineProperty$3({}, isRTL ? "paddingRight" : "paddingLeft", vars.tabs_indent + "px")
+      }
+    });
+  };
+
+  var varFns$1 = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(), {
+        userSelect: "none",
+        "-moz-user-select": "none",
+        transform: "translate3d(0,0,0)",
+        "-webkit-overflow-scrolling": "touch",
+
+        "& ::-webkit-scrollbar": {
+          "display": "none"
+        },
+
+        ".pe-tabs--scrollable": {
+          display: "flex",
+          "-ms-overflow-style": "none",
+
+          " .pe-tabs__scroll-button": {
+            // default hide, show with html.pe-no-touch
+            display: "none"
+          },
+          " .pe-tabs__tab": {
+            minWidth: 0
+          }
+        },
+
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button": {
+            position: "relative",
+            display: "block",
+            zIndex: 1,
+            borderRadius: 0,
+
+            " .pe-button__content": {
+              borderRadius: 0,
+              transitionProperty: "all",
+              transitionTimingFunction: "ease-in-out"
+            }
+          },
+          ".pe-tabs--start .pe-tabs__scroll-button-start": {
+            pointerEvents: "none",
+            cursor: "default",
+            opacity: 0
+          },
+          ".pe-tabs--end .pe-tabs__scroll-button-end": {
+            pointerEvents: "none",
+            cursor: "default",
+            opacity: 0
+          }
+        },
+
+        " .pe-tabs__row": [polytheneCoreCss.flex.layoutHorizontal, {
+          userSelect: "none",
+          "-moz-user-select": "none",
+          position: "relative",
+          whiteSpace: "nowrap",
+
+          ".pe-tabs__row--indent": {
+            margin: 0,
+            overflow: "auto"
+          },
+
+          ".pe-tabs__row--centered": polytheneCoreCss.flex.layoutCenterJustified
+        }],
+
+        " .pe-tabs__scroll-button-offset": [polytheneCoreCss.flex.flex(), polytheneCoreCss.flex.flexIndex("none")],
+
+        " .pe-tabs__indicator": {
+          transform: "translate3d(0,0,0)",
+          // transformOrigin set in alignSide
+          transitionProperty: "all",
+          transitionTimingFunction: "ease-in-out",
+          position: "absolute",
+          zIndex: 1,
+          bottom: 0,
+          // left/right set in alignSide
+          width: "100%" // and transformed with js
+          // background-color defined in implementation/theme css
+        },
+
+        " .pe-toolbar--tabs .pe-toolbar__bar &": [polytheneCoreCss.mixin.fit(), {
+          width: "auto",
+          margin: 0,
+          top: "auto"
+        }]
+      }]), _defineProperty$3({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight()])];
+    },
+    tabs_indent: function tabs_indent(selector, vars) {
+      return [_tabs_indent(selector, vars, false), _tabs_indent(polytheneCoreCss.selectorRTL(selector), vars, true)];
+    },
+    tab_height: function tab_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs--scrollable": {
+          display: "flex",
+          // hide scrollbar (this approach is required for Firefox)
+          "max-height": vars.tab_height + "px"
+        }
+      })];
+    },
+    scrollbar_offset: function scrollbar_offset(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-tabs--scrollable": {
+          " .pe-tabs__row": {
+            marginBottom: -vars.scrollbar_offset + "px"
+          }
+        }
+      })];
+    },
+    scroll_button_size: function scroll_button_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button": {
+            width: vars.scroll_button_size + "px",
+            height: vars.scroll_button_size + "px"
+          }
+        }
+      })];
+    },
+    scroll_button_fade_duration: function scroll_button_fade_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button": {
+            " .pe-button__content": {
+              transitionDuration: vars.scroll_button_fade_duration
+            }
+          }
+        }
+      })];
+    },
+    scroll_button_fade_delay: function scroll_button_fade_delay(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button": {
+            " .pe-button__content": {
+              transitionDelay: vars.scroll_button_fade_delay
+            }
+          }
+        }
+      })];
+    },
+    scroll_button_opacity: function scroll_button_opacity(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-no-touch &": {
+          " .pe-tabs__scroll-button": {
+            " .pe-button__content": {
+              opacity: vars.scroll_button_opacity
+            }
+          }
+        }
+      })];
+    },
+    tab_indicator_height: function tab_indicator_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-tabs__indicator": {
+          height: vars.tab_indicator_height + "px"
+        }
+      })];
+    }
+  };
+
+  var tabsLayout = polytheneCoreCss.createLayout({ varFns: varFns$1 });
+
+  var fontSize = polytheneCssButton.vars.font_size;
+  var tab_label_line_height = 1.1 * fontSize;
+  var tab_height = 48;
+  var scroll_button_size = tab_height;
+
+  var vars = {
+    general_styles: true,
+
+    animation_duration: polytheneCssButton.vars.animation_duration,
+    indicator_slide_speed: 600, // px per second
+    label_max_width: 264,
+    menu_tab_height: 44,
+    menu_tab_icon_label_height: 44,
+    scroll_button_fade_delay: ".25s",
+    scroll_button_fade_duration: ".2s",
+    scroll_button_opacity: .7,
+    scroll_button_size: scroll_button_size,
+    scrollbar_offset: 0,
+    tab_content_padding_v: 12,
+    tab_height: tab_height,
+    tab_icon_label_height: 72,
+    tab_icon_label_icon_spacing: 7,
+    tab_indicator_height: 2,
+    tab_label_line_height: tab_label_line_height,
+    tab_label_transition_property: "opacity, color, backgroundColor",
+    tab_label_vertical_offset: tab_label_line_height - fontSize,
+    tab_max_width: "initial",
+    tab_menu_content_padding_v: 6,
+    tab_min_width: 72,
+    tab_min_width_tablet: 160,
+    tabs_indent: 0,
+
+    color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_selected: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_selected_background: "transparent",
+    color_light_tab_indicator: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_icon: polytheneCssIconButton.vars.color_light,
+
+    color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
+    color_dark_selected: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_selected_background: "transparent",
+    color_dark_tab_indicator: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_icon: polytheneCssIconButton.vars.color_dark
+
+    // hover colors may be set in theme; disabled by default
+
+    // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+    // color_light_hover_background:         "transparent",
+    //
+    // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+    // color_dark_hover_background:          "transparent",
+  };
+
+  var tabsFns = [tabsLayout, tabsColor];
+  var tabFns = [tabLayout, tabColor];
+  var tabsSelector = "." + classes.component;
+  var tabClass = classes.tab + " pe-text-button pe-button";
+  var tabSelector = " ." + tabClass.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreTabs.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, tabsSelector], vars, customVars, tabsFns), polytheneCoreCss.styler.generateCustomStyles([customSelector, tabSelector], vars, customVars, tabFns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreTabs.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreTabs.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, tabsSelector], vars, customVars, tabsFns).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, tabSelector], vars, customVars, tabFns)) : polytheneCoreCss.styler.createStyleSheets([tabsSelector], vars, tabsFns).concat(polytheneCoreCss.styler.createStyleSheets([tabSelector], vars, tabFns));
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreTabs.vars, fns);
+  polytheneCoreCss.styler.generateStyles([tabsSelector], vars, tabsFns);
+  polytheneCoreCss.styler.generateStyles([tabSelector], vars, tabFns);
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;
+  exports.tabColor = tabColor;
+  exports.tabLayout = tabLayout;
+  exports.tabsColor = tabsColor;
+  exports.tabsLayout = tabsLayout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

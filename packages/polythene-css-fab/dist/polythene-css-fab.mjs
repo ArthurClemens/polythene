@@ -1,6 +1,6 @@
+import { color, layout } from 'polythene-css-raised-button';
+import { sel, createColor, mixin, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-core-fab';
 
 var classes = {
   component: "pe-fab",
@@ -12,89 +12,148 @@ var classes = {
   mini: "pe-fab--mini"
 };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
-    userSelect: "none",
-    display: "inline-block",
-    position: "relative",
-    outline: "none",
-    cursor: "pointer",
-    padding: 0,
-    border: "none",
-
-    " .pe-button__content": {
-      position: "relative",
-      width: componentVars.size_regular + "px",
-      height: componentVars.size_regular + "px",
-      borderRadius: "50%",
-      padding: componentVars.padding_regular + "px"
-    },
-
-    " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
-      borderRadius: "inherit"
-    }],
-
-    ".pe-fab--mini": {
-      " .pe-button__content": {
-        width: componentVars.size_mini + "px",
-        height: componentVars.size_mini + "px",
-        padding: (componentVars.size_mini - vars.unit_icon_size) / 2 + "px"
-      }
-    },
-
-    " .pe-ripple": {
-      borderRadius: "inherit"
-    },
-
-    " .pe-button__wash": {
-      transition: "background-color " + vars.animation_duration + " ease-in-out",
-      borderRadius: "inherit",
-      pointerEvents: "none",
-      backgroundColor: "transparent"
-    }
-  })];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-button__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      color: componentVars["color_" + tint]
-    },
-
-    "&.pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns = [layout, color];
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__focus": {
+          opacity: 1
+        }
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-button__content": {
+        color: vars$$1["color_" + tint]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-button__content": {
+        backgroundColor: vars$$1["color_" + tint + "_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__focus": {
+          backgroundColor: vars$$1["color_" + tint + "_focus_background"]
+        }
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color$1 = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+  superColor: color
+});
+
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      userSelect: "none",
+      "-moz-user-select": "none",
+      display: "inline-block",
+      position: "relative",
+      outline: "none",
+      cursor: "pointer",
+      padding: 0,
+      border: "none",
+
+      " .pe-button__content": {
+        position: "relative",
+        borderRadius: "50%"
+      },
+
+      " .pe-fab__content": {
+        display: "flex",
+        width: "100%",
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+
+      " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
+        borderRadius: "inherit"
+      }],
+
+      " .pe-ripple": {
+        borderRadius: "inherit"
+      },
+
+      " .pe-button__wash": {
+        transition: "background-color " + vars.animation_duration + " ease-in-out",
+        borderRadius: "inherit",
+        pointerEvents: "none",
+        backgroundColor: "transparent"
+      }
+    })];
+  },
+  size_regular: function size_regular(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-button__content": {
+        width: vars$$1.size_regular + "px",
+        height: vars$$1.size_regular + "px"
+      }
+    })];
+  },
+  size_mini: function size_mini(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-fab--mini": {
+        " .pe-button__content": {
+          width: vars$$1.size_mini + "px",
+          height: vars$$1.size_mini + "px",
+          padding: (vars$$1.size_mini - vars.unit_icon_size) / 2 + "px"
+        }
+      }
+    })];
+  }
+};
+
+var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
+
+var vars$1 = {
+  general_styles: true,
+
+  size_mini: 5 * vars.grid_unit_component, // 5 * 8 = 40
+  size_regular: 7 * vars.grid_unit_component, // 7 * 8 = 56
+
+  color_light: rgba(vars.color_primary_foreground),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_focus_opacity: vars.blend_light_background_hover_medium, // same as button
+  color_light_background: rgba(vars.color_primary),
+
+  color_dark: rgba(vars.color_primary_foreground),
+  color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover), // same as button
+  color_dark_focus_opacity: vars.blend_dark_background_hover_medium, // same as button
+  color_dark_background: rgba(vars.color_primary)
+};
+
+var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars$1, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars$1, customVars), fns) : styler.createStyleSheets([selector], vars$1, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };

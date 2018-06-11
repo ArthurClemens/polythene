@@ -1,6 +1,6 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { withRouter } from "react-router-dom";
-import { renderer, keys, Menu, List, ListTile, Shadow, IconButton, RaisedButton } from "polythene-react";
+import { renderer, keys, Menu, List, ListTile, Shadow, IconButton, Button, RaisedButton, Icon, Dialog } from "polythene-react";
 import genericTests from "./tests-generic";
 import SimpleHyperscript from "./components/simple-react-hyperscript";
 import SimpleJSX from "./components/simple-jsx";
@@ -88,5 +88,5 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
 };
 
 export default []
-  .concat(genericTests({ Menu, List, ListTile, RaisedButton, Shadow, IconButton, renderer, keys }))
-  .concat(reactTests({ Menu, List, ListTile, RaisedButton, Shadow, IconButton, renderer, keys }));
+  .concat(genericTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }))
+  .concat(reactTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }));

@@ -4,27 +4,172 @@
   (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
 }(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  var classes = {
+    component: "pe-control",
 
-  var alignSide = function alignSide(isRTL) {
-    return function (componentVars) {
-      var _peButtonPeContr, _peControl__label;
+    // elements
+    formLabel: "pe-control__form-label",
+    input: "pe-control__input",
+    label: "pe-control__label",
 
-      return {
-        " .pe-button.pe-control__button": (_peButtonPeContr = {}, _defineProperty(_peButtonPeContr, isRTL ? "right" : "left", -((componentVars.button_size - componentVars.icon_size) / 2) + "px"), _defineProperty(_peButtonPeContr, isRTL ? "left" : "right", "auto"), _peButtonPeContr),
-        " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", componentVars.label_padding_after + "px"), _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", componentVars.label_padding_before + "px"), _peControl__label)
-      };
-    };
+    // states
+    disabled: "pe-control--disabled",
+    inactive: "pe-control--inactive",
+    large: "pe-control--large",
+    medium: "pe-control--medium",
+    off: "pe-control--off",
+    on: "pe-control--on",
+    regular: "pe-control--regular",
+    small: "pe-control--small",
+
+    // control view elements
+    box: "pe-control__box",
+    button: "pe-control__button",
+
+    // control view states
+    buttonOff: "pe-control__button--off",
+    buttonOn: "pe-control__button--on"
   };
 
-  var alignLeft = alignSide(false);
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__box": {
+          " .pe-control__button": {
+            color: "inherit"
+          },
+          " .pe-control__button--on": {
+            color: "inherit"
+          }
+        }
+      })];
+    }
+  };
+
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        color: vars["color_" + tint + "_on"] // override by specifying "color"
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__button--off": {
+          color: vars["color_" + tint + "_off"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--disabled": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_disabled"]
+          },
+          " .pe-control__box": {
+            " .pe-control__button--on, .pe-control__button--off": {
+              color: vars["color_" + tint + "_disabled"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__label": {
+          color: vars["color_" + tint + "_label"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_on_icon", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__box": {
+          " .pe-control__button--on": {
+            color: vars["color_" + tint + "_on_icon"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_off_icon", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__box": {
+          " .pe-control__button--off": {
+            color: vars["color_" + tint + "_off_icon"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus .pe-button__focus": {
+            backgroundColor: vars["color_" + tint + "_focus_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus .pe-button__focus": {
+            backgroundColor: vars["color_" + tint + "_focus_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus .pe-button__focus": {
+            opacity: vars["color_" + tint + "_focus_on_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus .pe-button__focus": {
+            opacity: vars["color_" + tint + "_focus_off_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_on_label"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_off_label"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+  });
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var alignSide = function alignSide(isRTL) {
+    return function (vars) {
+      return {};
+    };
+  }; // eslint-disable-line no-unused-vars
+  var alignLeft = alignSide(false);
   var alignRight = alignSide(true);
 
-  var makeSize = function makeSize(componentVars, height) {
+  var makeSize = function makeSize(vars, height) {
     var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : polytheneTheme.vars.unit_icon_size;
 
-    var labelSize = iconSize + componentVars.label_height;
+    var labelSize = iconSize + vars.label_height;
     var iconOffset = (labelSize - iconSize) / 2;
     return {
       " .pe-control__form-label": {
@@ -57,138 +202,216 @@
     };
   };
 
-  var layout = (function (selector, componentVars, type) {
-    var _ref;
+  var button_size_icon_size = function button_size_icon_size(selector, vars, isRTL) {
+    var _peButtonPeContr;
 
-    return [_defineProperty({}, selector, [alignLeft(componentVars), (_ref = {
-      display: "inline-block",
-      boxSizing: "border-box",
-      margin: 0,
-      padding: 0
+    return polytheneCoreCss.sel(selector, {
+      " .pe-button.pe-control__button": (_peButtonPeContr = {
+        top: -((vars.button_size - vars.icon_size) / 2) + "px"
+      }, _defineProperty$1(_peButtonPeContr, isRTL ? "right" : "left", -((vars.button_size - vars.icon_size) / 2) + "px"), _defineProperty$1(_peButtonPeContr, isRTL ? "left" : "right", "auto"), _peButtonPeContr)
+    });
+  };
 
-    }, _defineProperty(_ref, " input[type=" + type + "]", {
-      display: "none"
-    }), _defineProperty(_ref, " .pe-control__form-label", [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
-      position: "relative",
-      cursor: "pointer",
-      fontSize: componentVars.label_font_size + "px",
-      margin: 0,
-      color: "inherit",
+  var _label_padding_before = function _label_padding_before(selector, vars, isRTL) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-control__label": _defineProperty$1({}, isRTL ? "paddingRight" : "paddingLeft", vars.label_padding_before + "px")
+    });
+  };
 
-      ":focus": {
-        outline: 0
-      }
-    }]), _defineProperty(_ref, ".pe-control--inactive", {
-      " .pe-control__form-label": {
-        cursor: "default"
-      }
-    }), _defineProperty(_ref, " .pe-control__box", {
-      position: "relative",
-      display: "inline-block",
-      boxSizing: "border-box",
-      width: componentVars.label_height + "px",
-      height: componentVars.label_height + "px",
-      color: "inherit",
-      flexShrink: 0,
+  var _label_padding_after = function _label_padding_after(selector, vars, isRTL) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-control__label": _defineProperty$1({}, isRTL ? "paddingLeft" : "paddingRight", vars.label_padding_after + "px")
+    });
+  };
 
-      ":focus": {
-        outline: 0
-      }
-    }), _defineProperty(_ref, " .pe-button.pe-control__button", [polytheneCoreCss.mixin.defaultTransition("opacity", componentVars.animation_duration), {
-      position: "absolute",
-      top: -((componentVars.button_size - componentVars.icon_size) / 2) + "px",
-      zIndex: 1
-    }]), _defineProperty(_ref, ".pe-control--off", {
-      " .pe-control__button--on": inactiveButton(),
-      " .pe-control__button--off": activeButton()
-    }), _defineProperty(_ref, ".pe-control--on", {
-      " .pe-control__button--on": activeButton(),
-      " .pe-control__button--off": inactiveButton()
-    }), _defineProperty(_ref, " .pe-control__label", [polytheneCoreCss.mixin.defaultTransition("all", componentVars.animation_duration), {
-      // padding: RTL
-      alignSelf: "center"
-    }]), _defineProperty(_ref, ".pe-control--disabled", {
-      " .pe-control__form-label": {
-        cursor: "auto"
-      },
-      " .pe-control__button": {
-        pointerEvents: "none"
-      }
-    }), _defineProperty(_ref, " .pe-button__content", {
-      " .pe-icon": {
-        position: "absolute"
-      }
-    }), _defineProperty(_ref, ".pe-control--small", makeSize(componentVars, polytheneTheme.vars.unit_icon_size_small, polytheneTheme.vars.unit_icon_size_small)), _defineProperty(_ref, ".pe-control--regular", makeSize(componentVars, componentVars.label_height, polytheneTheme.vars.unit_icon_size)), _defineProperty(_ref, ".pe-control--medium", makeSize(componentVars, polytheneTheme.vars.unit_icon_size_medium, polytheneTheme.vars.unit_icon_size_medium)), _defineProperty(_ref, ".pe-control--large", makeSize(componentVars, polytheneTheme.vars.unit_icon_size_large, polytheneTheme.vars.unit_icon_size_large)), _ref)]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(componentVars)])];
-  });
+  var varFns = {
+    general_styles: function general_styles(selector, vars) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
+        display: "inline-block",
+        boxSizing: "border-box",
+        margin: 0,
+        padding: 0,
 
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+        " input[type=checkbox], input[type=radio]": {
+          display: "none"
+        },
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      color: componentVars["color_" + tint + "_on"], // override by specifying "color"
-
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_label"]
-      },
-      " .pe-control__box": {
-        " .pe-control__button": {
+        " .pe-control__form-label": [polytheneCoreCss.flex.layoutHorizontal, polytheneCoreCss.flex.layoutCenter, {
+          position: "relative",
+          cursor: "pointer",
+          margin: 0,
           color: "inherit",
 
-          " .pe-control__button--on": {
-            color: componentVars["color_" + tint + "_on_icon"] || "inherit"
-          },
-
-          " .pe-control__button--off": {
-            color: componentVars["color_" + tint + "_off_icon"] || componentVars["color_" + tint + "_off"]
+          ":focus": {
+            outline: 0
           }
-        }
-      },
-      ".pe-control--off": {
-        " .pe-button--focus .pe-button__focus": {
-          opacity: componentVars["color_" + tint + "_focus_off_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_focus_off"]
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_off_label"] || componentVars["color_" + tint + "_label"]
-        }
-      },
-      ".pe-control--on": {
-        " .pe-button--focus .pe-button__focus": {
-          opacity: componentVars["color_" + tint + "_focus_on_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_focus_on"]
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_on_label"] || componentVars["color_" + tint + "_label"]
-        }
-      },
+        }],
 
-      ".pe-control--disabled": {
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_disabled"]
+        ".pe-control--inactive": {
+          " .pe-control__form-label": {
+            cursor: "default"
+          }
         },
+
         " .pe-control__box": {
-          " .pe-control__button--on, .pe-control__button--off": {
-            color: componentVars["color_" + tint + "_disabled"]
+          position: "relative",
+          display: "inline-block",
+          boxSizing: "border-box",
+          color: "inherit",
+          flexShrink: 0,
+
+          ":focus": {
+            outline: 0
+          }
+        },
+
+        " .pe-button.pe-control__button": {
+          position: "absolute",
+          zIndex: 1
+        },
+
+        ".pe-control--off": {
+          " .pe-control__button--on": inactiveButton(),
+          " .pe-control__button--off": activeButton()
+        },
+
+        ".pe-control--on": {
+          " .pe-control__button--on": activeButton(),
+          " .pe-control__button--off": inactiveButton()
+        },
+
+        " .pe-control__label": {
+          // padding: RTL
+          alignSelf: "center"
+        },
+
+        ".pe-control--disabled": {
+          " .pe-control__form-label": {
+            cursor: "auto"
+          },
+          " .pe-control__button": {
+            pointerEvents: "none"
+          }
+        },
+
+        " .pe-button__content": {
+          " .pe-icon": {
+            position: "absolute"
           }
         }
-      }
-    })];
+      }, _defineProperty$1({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(vars)])])];
+    },
+    label_font_size: function label_font_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__form-label": {
+          fontSize: vars.label_font_size + "px"
+        }
+      })];
+    },
+    label_height: function label_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__box": {
+          width: vars.label_height + "px",
+          height: vars.label_height + "px"
+        },
+        ".pe-control--small": makeSize(vars, polytheneTheme.vars.unit_icon_size_small, polytheneTheme.vars.unit_icon_size_small),
+        ".pe-control--regular": makeSize(vars, vars.label_height, polytheneTheme.vars.unit_icon_size),
+        ".pe-control--medium": makeSize(vars, polytheneTheme.vars.unit_icon_size_medium, polytheneTheme.vars.unit_icon_size_medium),
+        ".pe-control--large": makeSize(vars, polytheneTheme.vars.unit_icon_size_large, polytheneTheme.vars.unit_icon_size_large)
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-button.pe-control__button": [polytheneCoreCss.mixin.defaultTransition("opacity", vars.animation_duration)],
+        " .pe-control__label": [polytheneCoreCss.mixin.defaultTransition("all", vars.animation_duration)]
+      })];
+    },
+    button_size: function button_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(polytheneCoreCss.selectorRTL(selector), vars, true)];
+    },
+    icon_size: function icon_size(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(polytheneCoreCss.selectorRTL(selector), vars, true)];
+    },
+    label_padding_after: function label_padding_after(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {}), _label_padding_after(selector, vars, false), _label_padding_after(polytheneCoreCss.selectorRTL(selector), vars, true)];
+    },
+    label_padding_before: function label_padding_before(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {}), _label_padding_before(selector, vars, false), _label_padding_before(polytheneCoreCss.selectorRTL(selector), vars, false)];
+    }
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var getStyle = function getStyle() {
-    return null;
+  var vars = {
+    general_styles: true,
+
+    animation_duration: polytheneTheme.vars.animation_duration,
+    button_size: 6 * polytheneTheme.vars.grid_unit_component,
+    icon_size: 3 * polytheneTheme.vars.grid_unit_component,
+    label_font_size: 2 * polytheneTheme.vars.grid_unit_component, // 16
+    label_height: 3 * polytheneTheme.vars.grid_unit_component, // 24
+    label_padding_after: 0,
+    label_padding_before: polytheneTheme.vars.grid_unit * 4, // 16
+
+    color_light_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_label: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
+    color_light_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_thumb_off_focus_opacity: .08,
+    color_light_thumb_on_focus_opacity: .11,
+
+    // icon colors may be set in theme; set to "inherit" by default
+    // color_light_on_icon
+    // color_light_off_icon
+
+    // label on/off colors may be set in theme; set to color_light_label by default
+    // color_light_on_label
+    // color_light_off_label
+
+    color_light_focus_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_focus_on_opacity: .11,
+    color_light_focus_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground),
+    color_light_focus_off_opacity: .07,
+
+    color_dark_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_label: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
+    color_dark_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_thumb_off_focus_opacity: .08,
+    color_dark_thumb_on_focus_opacity: .11,
+
+    // icon color may be set in theme; set to "inherit" by default
+    // color_dark_on_icon
+    // color_dark_off_icon
+
+    // label on/off colors may be set in theme; set to color_dark_label by default
+    // color_dark_on_label
+    // color_dark_off_label
+
+    color_dark_focus_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary), // or '#80cbc4'
+    color_dark_focus_on_opacity: .14,
+    color_dark_focus_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground),
+    color_dark_focus_off_opacity: .09
   };
 
+  var fns = [layout, color];
+  var selector = "." + classes.component;
+
+  var addStyle = function addStyle(customSelector, customVars) {
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+  };
+
+  var getStyle = function getStyle(customSelector, customVars) {
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
+  };
+
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
+
+  exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
   exports.layout = layout;
-  exports.color = color;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

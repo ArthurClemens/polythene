@@ -1,5 +1,6 @@
 export * from 'polythene-react-base';
 export * from 'polythene-react-button';
+export * from 'polythene-react-button-group';
 export * from 'polythene-react-card';
 export * from 'polythene-react-checkbox';
 export * from 'polythene-react-dialog';

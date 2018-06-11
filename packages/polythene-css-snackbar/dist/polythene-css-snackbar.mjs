@@ -1,6 +1,6 @@
+import { createColor, flex, sel, createLayout, rgba, styler } from 'polythene-core-css';
+import { color, customLayoutFns } from 'polythene-css-notification';
 import { vars } from 'polythene-theme';
-import { flex, styler } from 'polythene-core-css';
-import { vars as vars$1 } from 'polythene-core-snackbar';
 
 var notificationClasses = {
   component: "pe-notification",
@@ -33,94 +33,120 @@ var classes = _extends({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
+var color$1 = createColor({
+  superColor: color
+});
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var tabletStyle = function tabletStyle(componentVars) {
-  return {
-    " .pe-notification__content": {
-      borderTopLeftRadius: vars.unit_block_border_radius + "px",
-      borderTopRightRadius: vars.unit_block_border_radius + "px",
-      minWidth: componentVars.min_width + "px",
-      maxWidth: componentVars.max_width + "px"
-    },
-    ".pe-notification--horizontal": {
-      " .pe-notification__title": {
-        paddingRight: "30px"
-      }
-    }
-  };
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [flex.layoutCenterCenter, {
+      position: "fixed",
+      top: "auto",
+      right: 0,
+      bottom: 0,
+      left: 0,
+      zIndex: vars.z_notification,
+      pointerEvents: "none",
+      justifyContent: "flex-start", // For IE11
+      width: "100%"
+    }]), _defineProperty({}, ".pe-notification--container " + selector, {
+      position: "relative"
+    })];
+  }
 };
 
-var layout = (function (selector, componentVars) {
-  var _ref2;
-
-  return [(_ref2 = {}, _defineProperty(_ref2, selector, {
-    width: "100%",
-    opacity: 1,
-
-    " .pe-notification__content": {
-      width: "100%",
-      margin: "0 auto",
-      borderRadius: 0
-    }
-  }), _defineProperty(_ref2, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty({}, selector, tabletStyle(componentVars))), _ref2)];
+var holderLayout = createLayout({
+  varFns: varFns
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    " .pe-notification__content": {
-      color: componentVars["color_" + tint + "_text"],
-      background: componentVars["color_" + tint + "_background"]
-    }
-  })];
+var breakpoint = function breakpoint(breakpointSel) {
+  return function (selector, o) {
+    return _defineProperty$1({}, breakpointSel, _defineProperty$1({}, selector, o));
+  };
 };
 
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var breakpointTabletPortraitUp = breakpoint("@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)");
+
+var varFns$1 = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      width: "100%",
+      opacity: 1,
+
+      " .pe-notification__content": {
+        width: "100%",
+        margin: "0 auto",
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
+      }
+    }), breakpointTabletPortraitUp(selector, {
+      ".pe-notification--horizontal": {
+        " .pe-notification__title": {
+          paddingRight: "30px"
+        }
+      }
+    })];
+  },
+  min_width: function min_width(selector, vars$$1) {
+    return [breakpointTabletPortraitUp(selector, {
+      minWidth: vars$$1.min_width + "px"
+    })];
+  },
+  max_width: function max_width(selector, vars$$1) {
+    return [breakpointTabletPortraitUp(selector, {
+      maxWidth: vars$$1.max_width + "px"
+    })];
+  },
+  border_radius: function border_radius(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-notification__content": {
+        borderTopLeftRadius: vars$$1.border_radius + "px",
+        borderTopRightRadius: vars$$1.border_radius + "px",
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
+      }
+    })];
+  }
+};
+
+var layout = createLayout({
+  varFns: varFns$1,
+  customVarFns: customLayoutFns
 });
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var vars$1 = {
+  general_styles: true,
 
-var holderLayout = (function (selector) {
-  var _ref;
+  animation_hide_css: "",
+  animation_show_css: "",
+  border_radius: 0,
+  max_width: 568,
+  min_height: 0,
+  min_width: 288,
 
-  return [(_ref = {}, _defineProperty$2(_ref, selector, [flex.layoutCenterCenter, {
-    position: "fixed",
-    top: "auto",
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: vars.z_notification,
-    pointerEvents: "none",
-    justifyContent: "flex-start", // For IE11
-    width: "100%"
-  }]), _defineProperty$2(_ref, ".pe-notification--container " + selector, {
-    position: "relative"
-  }), _ref)];
-});
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background)
+};
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [layout, color];
+var fns = [layout, color$1];
 var selector = "." + classes.component.replace(/ /g, ".");
 
 var holderFns = [holderLayout];
 var holderSelector = "." + classes.holder.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends$1({}, vars$1, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends$1({}, vars$1, customVars), fns) : styler.createStyleSheets([holderSelector], vars$1, holderFns).concat(styler.createStyleSheets([selector], vars$1, fns));
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([holderSelector], vars$1, holderFns).concat(styler.createStyleSheets([selector], vars$1, fns));
 };
 
 styler.generateStyles([holderSelector], vars$1, holderFns);
 styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color$1 as color, getStyle, holderLayout, layout, vars$1 as vars };

@@ -1,5 +1,4 @@
 import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent } from 'polythene-core';
-import { vars } from 'polythene-theme';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -39,11 +38,11 @@ var menuClasses = {
 
   // states
   permanent: "pe-menu--permanent",
-  fullHeight: "pe-menu--full-height",
   floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
+  origin: "pe-menu--origin",
 
   // lookup
   listTile: listTileClasses.component,
@@ -167,7 +166,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [attrs.parentClassName || classes.component, attrs.fullScreen ? classes.fullScreen : null,
+    className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null,
     // classes.visible is set in showDialog though transition
     attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
     "data-spawn-id": attrs.spawnId,
@@ -255,31 +254,4 @@ var dialog = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  position: "fixed",
-  border_radius: vars.unit_block_border_radius,
-  padding_vertical: 3 * vars.grid_unit_component,
-  padding_horizontal: 5 * vars.grid_unit_component,
-
-  animation_delay: "0s",
-  animation_duration: ".220s",
-  animation_timing_function: "ease-in-out",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-
-  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-  color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background),
-
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
-};
-
-export { dialog as coreDialog, vars$1 as vars };
+export { dialog as coreDialog };

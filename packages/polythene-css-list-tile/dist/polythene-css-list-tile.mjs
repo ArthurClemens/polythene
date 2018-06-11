@@ -1,5 +1,5 @@
-import { mixin, flex, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-list-tile';
+import { sel, createColor, mixin, flex, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-list-tile",
@@ -29,7 +29,154 @@ var classes = {
   navigation: "pe-list-tile--navigation"
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      ".pe-list-tile--header": {
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          backgroundColor: "inherit"
+        }
+      },
+      ":not(.pe-list-tile--disabled)": {
+        " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+          outline: "none",
+          backgroundColor: "inherit"
+        }
+      },
+      "&.pe-list-tile--sticky": {
+        backgroundColor: "inherit"
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_title"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"],
+
+      "&.pe-list-tile--sticky": {
+        backgroundColor: vars$$1["color_" + tint + "_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_list_header", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--header": {
+        color: vars$$1["color_" + tint + "_list_header"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_subtitle", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__subtitle": {
+        color: vars$$1["color_" + tint + "_subtitle"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_secondary", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__secondary": {
+        color: vars$$1["color_" + tint + "_secondary"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_front", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__content-front": {
+        color: vars$$1["color_" + tint + "_front"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_text_disabled", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--disabled": {
+        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+          color: vars$$1["color_" + tint + "_text_disabled"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--selected": {
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          backgroundColor: vars$$1["color_" + tint + "_selected_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
+        " .pe-list-tile__primary, pe-list-tile__secondary": {
+          backgroundColor: vars$$1["color_" + tint + "_highlight_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-list-tile--disabled)": {
+        " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
+          backgroundColor: vars$$1["color_" + tint + "_focus_background"]
+        }
+      }
+    })];
+  }), _ref;
+};
+
+var hoverTintFns = function hoverTintFns(tint) {
+  var _ref2;
+
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--hoverable": {
+        color: vars$$1["color_" + tint + "_hover"]
+      }
+    })];
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--hoverable": {
+        " .pe-list-tile__primary, .pe-list-tile__secondary": {
+          backgroundColor: vars$$1["color_" + tint + "_hover_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--hoverable": {
+        " .pe-list-tile__primary .pe-list-tile__content-front": {
+          color: vars$$1["color_" + tint + "_hover_front"]
+        }
+      }
+    })];
+  }), _ref2;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var lightTintHoverFns = hoverTintFns("light");
+var darkTintHoverFns = hoverTintFns("dark");
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
+});
+
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var alignSide = function alignSide(isRTL) {
+  return function (vars$$1) {
+    return { // eslint-disable-line no-unused-vars
+      " .pe-list-tile__content-front + .pe-list-tile__content": _defineProperty$1({}, isRTL ? "paddingRight" : "paddingLeft", 0)
+    };
+  };
+}; // eslint-disable-line no-unused-vars
+var alignLeft = alignSide(false);
+var alignRight = alignSide(true);
 
 var paddingH = function paddingH(h) {
   return {
@@ -45,274 +192,386 @@ var paddingV = function paddingV(top, bottom) {
   };
 };
 
-var layout = (function (selector, componentVars) {
-  var _ref;
-
-  return [(_ref = {}, _defineProperty(_ref, selector, [flex.layout, {
-    position: "relative",
-    fontSize: componentVars.font_size_title + "px",
-    fontWeight: componentVars.font_weight_title,
-    lineHeight: componentVars.single_line_height + "px",
+var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars$$1) {
+  return sel(selector, {
+    lineHeight: vars$$1.single_line_height + "px",
 
     ".pe-list-tile--navigation": {
-      fontSize: componentVars.font_size_navigation_title + "px",
-      fontWeight: componentVars.font_weight_navigation_title
+      " .pe-list-tile__title": {
+        minHeight: vars$$1.single_line_height + "px"
+      }
     },
 
-    ".pe-list-tile--sticky": [mixin.sticky(2)],
+    " .pe-list-tile__title": [mixin.ellipsis(vars$$1.title_line_count, vars$$1.single_line_height, "px")]
+  });
+};
 
-    " .pe-list-tile__primary": {
-      width: "100%"
-    },
-
-    " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, {
-      textDecoration: "none",
-      color: "inherit",
-      border: "none"
-    }],
-
-    ":not(.pe-list-tile--header) .pe-list-tile__primary": [flex.flex(), {
+var varFns = {
+  general_styles: function general_styles(selector, vars$$1) {
+    return [sel(selector, [alignLeft(vars$$1), flex.layout, {
       position: "relative",
 
-      " .pe-list-tile__content:not(.pe-list-tile__content-front)": [flex.flex(), paddingV(componentVars.padding, componentVars.padding + 1)]
-    }],
+      ".pe-list-tile--navigation": {
+        " .pe-list-tile__title": {
+          whiteSpace: "pre-wrap"
+        }
+      },
 
-    ":not(.pe-list-tile--disabled)": {
-      outline: "none"
-    },
+      ".pe-list-tile--sticky": mixin.sticky(2),
 
-    " .pe-list-tile__secondary": {
-      textAlign: "right",
-      fontSize: componentVars.font_size_title + "px",
-      position: "relative"
-    },
+      " .pe-list-tile__primary": {
+        width: "100%"
+      },
 
-    " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, paddingH(componentVars.side_padding), {
-      width: "100%",
+      " .pe-list-tile__primary, .pe-list-tile__secondary": [flex.layoutHorizontal, mixin.defaultTransition("background", ".200s"), {
+        textDecoration: "none",
+        color: "inherit",
+        border: "none"
+      }],
 
-      ".pe-list-tile__content-front": [paddingV(componentVars.padding - 5), {
-        flexShrink: 0,
+      ":not(.pe-list-tile--header) .pe-list-tile__primary": [flex.flex(), {
+        position: "relative",
 
-        ".pe-list-tile--compact-front": {
-          width: componentVars.compact_front_item_width + "px"
-        },
-        ":not(.pe-list-tile--compact-front)": {
-          width: componentVars.front_item_width + "px"
+        " .pe-list-tile__content:not(.pe-list-tile__content-front)": [flex.flex()]
+      }],
+
+      ":not(.pe-list-tile--disabled)": {
+        outline: "none"
+      },
+
+      " .pe-list-tile__secondary": {
+        textAlign: "right",
+        position: "relative"
+      },
+
+      " .pe-list-tile__content": [flex.layoutVertical, flex.selfCenter, {
+        width: "100%",
+
+        ".pe-list-tile__content-front": {
+          flexShrink: 0
         }
       }],
 
-      " small": {
-        fontSize: componentVars.font_size_small + "px"
-      }
-    }],
-
-    " .pe-list-tile__content-front + .pe-list-tile__content": {
-      paddingLeft: 0 // reverse for RTL - see below
-    },
-
-    " .pe-list-tile__title": [mixin.ellipsis(componentVars.title_line_count, componentVars.single_line_height, "px"), {
-      whiteSpace: "normal"
-    }],
-
-    " .pe-list-tile__subtitle": [mixin.ellipsis(componentVars.subtitle_line_count, componentVars.line_height_subtitle, "px"), {
-      fontSize: componentVars.font_size_subtitle + "px",
-      fontWeight: componentVars.font_weight_subtitle,
-      lineHeight: componentVars.line_height_subtitle + "px",
-
-      ".pe-list-tile__high-subtitle": [mixin.ellipsis(componentVars.high_subtitle_line_count, componentVars.line_height_subtitle, "px"), {
+      " .pe-list-tile__title": {
         whiteSpace: "normal"
-      }]
-    }],
+      },
 
-    ".pe-list-tile--selected, &.pe-list-tile--disabled": {
-      " a": {
-        pointerEvents: "none"
-      }
-    },
+      " .pe-list-tile__subtitle": [mixin.ellipsis(vars$$1.subtitle_line_count, vars$$1.line_height_subtitle, "px"), {
+        fontSize: vars$$1.font_size_subtitle + "px",
+        fontWeight: vars$$1.font_weight_subtitle,
+        lineHeight: vars$$1.line_height_subtitle + "px",
 
-    ".pe-list-tile--subtitle": {
-      " .pe-list-tile__content": [paddingV(componentVars.has_subtitle_padding, componentVars.has_subtitle_padding + 1), {
-        " .pe-list-tile__title": {
-          padding: 0
+        ".pe-list-tile__high-subtitle": [mixin.ellipsis(vars$$1.high_subtitle_line_count, vars$$1.line_height_subtitle, "px"), {
+          whiteSpace: "normal"
+        }]
+      }],
+
+      ".pe-list-tile--selected, &.pe-list-tile--disabled": {
+        "&, a": {
+          pointerEvents: "none"
         }
-      }]
-    },
-
-    ".pe-list-tile--high-subtitle": {
-      " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [flex.layoutHorizontal, flex.layoutStart],
-      " .pe-list-tile__content": [flex.selfStart, paddingV(componentVars.has_high_subtitle_padding, componentVars.has_high_subtitle_padding + 1), {
-        " .pe-list-tile__title": {
-          padding: 0
-        }
-      }]
-    },
-
-    // List header
-    ".pe-list-tile--header": {
-      height: componentVars.single_height + "px",
-
-      " .pe-list-tile__content": {
-        paddingTop: 0,
-        paddingBottom: 0
-      },
-      " .pe-list-tile__title": [mixin.ellipsis(1, componentVars.single_height, "px"), {
-        fontSize: componentVars.font_size_list_header + "px",
-        fontWeight: componentVars.font_weight_list_header,
-        lineHeight: componentVars.single_height + "px",
-        padding: 0
-      }]
-    },
-
-    // Compact list
-
-    " .pe-list--compact &, &.pe-list-tile--compact": {
-      ":not(.pe-list-tile--header)": {
-        " .pe-list-tile__content": paddingV(componentVars.compact_padding, componentVars.compact_padding + 1)
-      }
-    },
-
-    // Firefox only
-    "@supports (-moz-appearance:none) and (display:contents)": {
-      " .pe-list-tile__primary, .pe-list-tile__content": {
-        overflow: "hidden"
-      }
-    },
-
-    // Menu
-
-    ".pe-dialog .pe-menu__content &": {
-      " .pe-list-tile__content": {
-        paddingLeft: "24px",
-        paddingRight: "24px"
-      },
-      " .pe-list-tile__content-front": {
-        paddingRight: 0,
-        width: "64px",
-        marginRight: "-7px"
       },
 
-      " .pe-list-tile__title": mixin.ellipsis("none")
-    },
-
-    ".pe-menu__content &": {
-      ":not(.pe-list-tile--disabled)": {
-        cursor: "default",
-
-        "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
-          " .pe-list-tile__title, .pe-list-tile__subtitle": {
-            userSelect: "none"
+      ".pe-list-tile--subtitle": {
+        " .pe-list-tile__content": {
+          " .pe-list-tile__title": {
+            padding: 0
           }
         }
-      }
-    },
-
-    // Non-touch
-
-    "html.pe-no-touch &.pe-list-tile--hoverable, \
-      html.pe-no-touch &.pe-list-tile--selectable": {
-      ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
-        cursor: "pointer"
-      }
-    }
-  }]), _defineProperty(_ref, "*[dir=rtl], .pe-rtl ", _defineProperty({}, selector, {
-    " .pe-list-tile__content-front + .pe-list-tile__content": [paddingH(componentVars.side_padding), {
-      paddingRight: 0
-    }]
-  })), _ref)];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint + "_title"],
-    backgroundColor: componentVars["color_" + tint + "_background"],
-
-    ".pe-list-tile--header": {
-      color: componentVars["color_" + tint + "_list_header"],
-
-      " .pe-list-tile__primary, pe-list-tile__secondary": {
-        backgroundColor: "inherit"
-      }
-    },
-
-    " .pe-list-tile__subtitle": {
-      color: componentVars["color_" + tint + "_subtitle"]
-    },
-    " .pe-list-tile__secondary": {
-      color: componentVars["color_" + tint + "_secondary"]
-    },
-    " .pe-list-tile__content-front": {
-      color: componentVars["color_" + tint + "_front"]
-    },
-    ".pe-list-tile--disabled": {
-      "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-        color: componentVars["color_" + tint + "_text_disabled"]
-      }
-    },
-    ".pe-list-tile--selected": {
-      " .pe-list-tile__primary, pe-list-tile__secondary": {
-        backgroundColor: componentVars["color_" + tint + "_selected_background"]
-      }
-    },
-    ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
-      " .pe-list-tile__primary, pe-list-tile__secondary": {
-        backgroundColor: componentVars["color_" + tint + "_highlight_background"]
-      }
-    },
-    "&.pe-list-tile--sticky": {
-      backgroundColor: componentVars["color_" + tint + "_background"] || "inherit"
-    },
-    ":not(.pe-list-tile--disabled)": {
-      " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-        outline: "none",
-        backgroundColor: componentVars["color_" + tint + "_focus_background"] || "inherit"
-      }
-    }
-  })];
-};
-
-var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector + ":hover";
-  }).join(","), {
-    ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
-      color: componentVars["color_" + tint + "_hover"],
-
-      " .pe-list-tile__primary, .pe-list-tile__secondary": {
-        backgroundColor: componentVars["color_" + tint + "_hover_background"]
       },
-      " .pe-list-tile__primary .pe-list-tile__content-front": {
-        color: componentVars["color_" + tint + "_hover_front"]
+
+      ".pe-list-tile--high-subtitle": {
+        " .pe-list-tile--high-subtitle .pe-list-tile__secondary": [flex.layoutHorizontal, flex.layoutStart],
+        " .pe-list-tile__content": [flex.selfStart, {
+          " .pe-list-tile__title": {
+            padding: 0
+          }
+        }]
+      },
+
+      // List header
+      ".pe-list-tile--header": {
+        pointerEvents: "none",
+
+        " .pe-list-tile__content": {
+          paddingTop: 0,
+          paddingBottom: 0
+        },
+        " .pe-list-tile__title": {
+          padding: 0
+        }
+      },
+
+      // Firefox only
+      "@supports (-moz-appearance:none) and (display:contents)": {
+        " .pe-list-tile__primary, .pe-list-tile__content": {
+          overflow: "hidden"
+        }
+      },
+
+      // Menu
+
+      ".pe-dialog .pe-menu__content &": {
+        " .pe-list-tile__content": {
+          paddingLeft: "24px",
+          paddingRight: "24px"
+        },
+        " .pe-list-tile__content-front": {
+          paddingRight: 0,
+          width: "64px",
+          marginRight: "-7px"
+        },
+
+        " .pe-list-tile__title": mixin.ellipsis("none")
+      },
+
+      ".pe-menu__content &": {
+        ":not(.pe-list-tile--disabled)": {
+          cursor: "default",
+
+          "&, .pe-list-tile__primary, .pe-list-tile__secondary": {
+            " .pe-list-tile__title, .pe-list-tile__subtitle": {
+              userSelect: "none",
+              "-moz-user-select": "none"
+            }
+          }
+        }
+      },
+
+      // Non-touch
+
+      "html.pe-no-touch &.pe-list-tile--hoverable, \
+        html.pe-no-touch &.pe-list-tile--selectable": {
+        ":not(.pe-list-tile--header):not(.pe-list-tile--disabled):not(.pe-list-tile--selected):hover": {
+          cursor: "pointer"
+        }
       }
-    }
-  })];
+    }]), _defineProperty$1({}, selectorRTL(selector), alignRight(vars$$1))];
+  },
+  title_line_count: function title_line_count(selector, vars$$1) {
+    return [title_line_count_single_line_height(selector, vars$$1)];
+  },
+  single_line_height: function single_line_height(selector, vars$$1) {
+    return [title_line_count_single_line_height(selector, vars$$1)];
+  },
+  font_size_title: function font_size_title(selector, vars$$1) {
+    return [sel(selector, {
+      fontSize: vars$$1.font_size_title + "px",
+
+      " .pe-list-tile__secondary": {
+        fontSize: vars$$1.font_size_title + "px"
+      }
+    })];
+  },
+  font_weight_title: function font_weight_title(selector, vars$$1) {
+    return [sel(selector, {
+      fontWeight: vars$$1.font_weight_title
+    })];
+  },
+  font_size_navigation_title: function font_size_navigation_title(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--navigation": {
+        fontSize: vars$$1.font_size_navigation_title + "px"
+      }
+    })];
+  },
+  font_weight_navigation_title: function font_weight_navigation_title(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--navigation": {
+        fontWeight: vars$$1.font_weight_navigation_title
+      }
+    })];
+  },
+  padding: function padding(selector, vars$$1) {
+    return [sel(selector, {
+      ":not(.pe-list-tile--header)": {
+        " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars$$1.padding, vars$$1.padding + 1)]
+      },
+
+      " .pe-list-tile__content": {
+        ".pe-list-tile__content-front": [paddingV(vars$$1.padding - 5)]
+      }
+    })];
+  },
+  side_padding: function side_padding(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__content": [paddingH(vars$$1.side_padding)]
+    })];
+  },
+  compact_front_item_width: function compact_front_item_width(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__content-front": {
+        ".pe-list-tile--compact-front": {
+          width: vars$$1.compact_front_item_width + "px"
+        }
+      }
+    })];
+  },
+  front_item_width: function front_item_width(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__content-front": {
+        ":not(.pe-list-tile--compact-front)": {
+          width: vars$$1.front_item_width + "px"
+        }
+      }
+    })];
+  },
+  font_size_small: function font_size_small(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list-tile__content": {
+        " small": {
+          fontSize: vars$$1.font_size_small + "px"
+        }
+      }
+    })];
+  },
+  has_high_subtitle_padding: function has_high_subtitle_padding(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--high-subtitle": {
+        " .pe-list-tile__content": [paddingV(vars$$1.has_high_subtitle_padding, vars$$1.has_high_subtitle_padding + 1)]
+      }
+    })];
+  },
+  has_subtitle_padding: function has_subtitle_padding(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--subtitle": {
+        " .pe-list-tile__content": [paddingV(vars$$1.has_subtitle_padding, vars$$1.has_subtitle_padding + 1)]
+      }
+    })];
+  },
+  single_height: function single_height(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--header": {
+        height: vars$$1.single_height + "px",
+
+        " .pe-list-tile__title": [mixin.ellipsis(1, vars$$1.single_height, "px"), {
+          lineHeight: vars$$1.single_height + "px",
+          padding: 0
+        }]
+      }
+    })];
+  },
+  font_size_list_header: function font_size_list_header(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--header": {
+        " .pe-list-tile__title": {
+          fontSize: vars$$1.font_size_list_header + "px"
+        }
+      }
+    })];
+  },
+  font_weight_list_header: function font_weight_list_header(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--header": {
+        " .pe-list-tile__title": {
+          fontWeight: vars$$1.font_weight_list_header
+        }
+      }
+    })];
+  },
+  compact_padding: function compact_padding(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-list--compact &, &.pe-list-tile--compact": {
+        ":not(.pe-list-tile--header)": {
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars$$1.compact_padding, vars$$1.compact_padding + 1)
+        }
+      }
+    })];
+  }
 };
 
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
+var layout = createLayout({ varFns: varFns });
 
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable", "html.pe-no-touch .pe-dark-tone .pe-list-tile--hoverable "], selector, componentVars, "dark"), // has/inside dark tone
+// SPECS
+//
+// heights:
+// single line: 48
+// single line, dense: 40
+// single line, with icon: 48
+// single line, with icon, dense: 40
+// single line, with avatar: 56
+// single line, with avatar, dense: 48
+// two-line: 72
+// two-line, dense: 60
+// three-line: 88
+// three-line, dense: 76
 
-  noTouchStyle(["html.pe-no-touch .pe-list-tile--hoverable", "html.pe-no-touch .pe-list-tile--hoverable ", "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable", "html.pe-no-touch .pe-light-tone .pe-list-tile--hoverable "], selector, componentVars, "light")];
-});
+var single_height = 48;
+var padding = 8;
+var single_with_icon_height = 56;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var vars$1 = {
+  general_styles: true,
+
+  compact_front_item_width: 64,
+  compact_padding: 9,
+  compact_side_padding: 1 * vars.grid_unit_component,
+  font_size_list_header: 14,
+  font_size_navigation_title: 14,
+  font_size_small: 12,
+  font_size_subtitle: 14,
+  font_size_title: 16,
+  font_weight_list_header: vars.font_weight_medium,
+  font_weight_navigation_title: vars.font_weight_medium,
+  font_weight_subtitle: vars.font_weight_normal,
+  font_weight_title: vars.font_weight_normal,
+  front_item_width: 72,
+  has_high_subtitle_padding: 13,
+  has_subtitle_padding: 15,
+  high_subtitle_line_count: 2,
+  line_height_subtitle: 20,
+  padding: 13,
+  side_padding: 2 * vars.grid_unit_component,
+  single_height: single_height,
+  single_line_height: single_height - 2 * padding - (2 * 5 + 1),
+  single_with_icon_height: single_with_icon_height,
+  single_with_icon_line_height: single_with_icon_height - 2 * padding - (2 * 5 + 1),
+  subtitle_line_count: 1,
+  title_line_count: 1,
+
+  color_light_title: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_subtitle: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_info: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_front: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_text_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_list_header: rgba(vars.color_light_foreground, vars.blend_light_text_tertiary),
+  color_light_secondary: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
+  color_light_hover: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_hover_front: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_highlight_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  // background color may be set in theme; disabled by default
+  // color_light_background:          "inherit",
+
+  color_dark_title: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_subtitle: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_info: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_front: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_text_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_list_header: rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
+  color_dark_secondary: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
+  color_dark_hover: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_hover_front: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+  // background color may be set in theme; disabled by default
+  // color_dark_background:           "inherit",
+};
 
 var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

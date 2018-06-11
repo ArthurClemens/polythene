@@ -1,6 +1,3 @@
-import { coreNotificationInstance } from "polythene-core-notification";
+import { coreNotificationInstance as coreSnackbarInstance } from "polythene-core-notification";
 
-export const coreSnackbarInstance = Object.assign(
-  {},
-  coreNotificationInstance
-);
+export { coreSnackbarInstance };

@@ -33,7 +33,8 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
           didHide: () => state.show(false),
           hideDelay: .240,
           size: 5,
-          offset: 16,
+          offsetH: 16,
+          offsetV: 0,
           reposition: true,
           content: h(List, {
             hoverable: true,

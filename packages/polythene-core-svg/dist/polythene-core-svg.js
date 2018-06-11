@@ -46,13 +46,7 @@
     createContent: createContent
   });
 
-  var vars = {
-    color_light: "currentcolor",
-    color_dark: "currentcolor"
-  };
-
   exports.coreSVG = svg;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

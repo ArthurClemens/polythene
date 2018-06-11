@@ -16,6 +16,7 @@
   "dependencies": {
     "polythene-core-button": "^1.2.0",
     "polythene-react-base": "^1.2.0",
+    "polythene-react-icon": "^1.2.0",
     "polythene-react-ripple": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

@@ -58,7 +58,7 @@ These options have effect on the overall component (label, input, help, error).
 | **focusHelp** | optional | Boolean | false | Makes the help text appear when the field gets focus |
 | **fullWidth** | optional | Boolean | | Set to `true` change the layout of the field better fitted for full width |
 | **help** | optional | String | | Help text below the field |
-| **hideValidation** | optional | Boolean |  | Set to true to hide invalid state indicators |
+| **hideValidation** | optional | Boolean |  | Set to `true` to hide invalid state indicators |
 | **hideSpinner** | optional | Boolean | true | Set to false to show the default browser step indicator on number inputs |
 | **hideClear** | optional | Boolean | true | Set to false to show the default browser clear button |
 | **label** | optional | String | | Text label; unless `floatingLabel` is `true`, the label is functionally equal to a placeholder |

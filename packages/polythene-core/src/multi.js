@@ -193,19 +193,19 @@ export const Multi = ({ options: mOptions, renderer }) => {
           return renderer(mOptions.instance, Object.assign(
             {},
             {
-              key: itemData.key,
-              spawnId: spawn,
-              instanceId: itemData.instanceId,
-              transitions: mOptions.transitions,
-              holderSelector: mOptions.holderSelector,
-              className: mOptions.className,
-              show: itemData.show,
-              hide: itemData.hide,
-              pause: itemData.pause,
-              unpause: itemData.unpause,
-              fromMultipleDidShow: itemData.didShow,
+              fromMultipleClassName: mOptions.className,
+              fromMultipleClear: clear,
               fromMultipleDidHide: itemData.didHide,
-              fromMultipleClear: clear
+              fromMultipleDidShow: itemData.didShow,
+              hide: itemData.hide,
+              holderSelector: mOptions.holderSelector,
+              instanceId: itemData.instanceId,
+              key: itemData.key,
+              pause: itemData.pause,
+              show: itemData.show,
+              spawnId: spawn,
+              transitions: mOptions.transitions,
+              unpause: itemData.unpause,
             },
             unpackAttrs(itemData.attrs)
           ));

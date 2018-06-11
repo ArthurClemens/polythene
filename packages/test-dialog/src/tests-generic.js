@@ -1,8 +1,8 @@
 import { shortText, longText, cancelOkButtons } from "./shared";
 import fullScreen from "./components/full-screen";
 import fullwidth from "./components/fullwidth";
-import menu from "./components/menu";
-import settings from "./components/settings";
+// import menu from "./components/menu";
+import menuDialog from "./components/menu-dialog";
 import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
@@ -28,9 +28,10 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
   });
 
   DialogCSS.addStyle(".dialog-tests-rounded-blue", {
-    border_radius:          5,
-    color_light_background: "#2196F3",
-    color_light_text:       "#fff",
+    border_radius:                   10,
+    color_light_background:          "#2196F3",
+    color_light_text:                "#fff",
+    color_light_backdrop_background: "rgba(243, 138, 32, 0.35)",
   });
 
   DialogCSS.addStyle(".dialog-tests-transitions", {
@@ -57,14 +58,15 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       }
     },
     {
-      name: "Themed pane (color and border radius)",
+      name: "Themed pane (color, border radius, backdrop color)",
       interactive: true,
       exclude: true,
       component: {
         view: () => 
           Opener({
             content: h("div", "Hello"),
-            className: "dialog-tests-rounded-blue"
+            className: "dialog-tests-rounded-blue",
+            backdrop: true
           })
       }
     },
@@ -233,22 +235,22 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
           Opener(fullwidth({ renderer, keys, Dialog, Button, className: "pe-rtl" }))
       }
     },
-    {
-      name: "Option: menu",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () =>
-          Opener(menu({ renderer, keys, Icon, List, ListTile, Dialog }))
-      }
-    },
+    // {
+    //   name: "Option: menu",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () =>
+    //       Opener(menu({ renderer, keys, Icon, List, ListTile, Dialog }))
+    //   }
+    // },
     {
       name: "Settings dialog",
       interactive: true,
       exclude: true,
       component: {
         view: () =>
-          Opener(settings({ renderer, keys, List, ListTile, Dialog }))
+          Opener(menuDialog({ renderer, keys, List, ListTile, Dialog }))
       }
     },
     {

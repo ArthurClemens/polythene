@@ -60,7 +60,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **label** | use `label` or `content` | String |  | The button label |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) |  | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **disabled** | optional | Boolean | false | Disables the button |
-| **selected** | optional | Boolean | false | Set to true to show the button as selected |
+| **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 | **formaction** (React: **formAction**) | optional | String |  | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button"s form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
 | **inactive** | optional | Boolean |  | Set to `true` to disable button events and ripple/wash effects |
 | **inactivate** | optional | Number |  | The number of seconds after tap/click when the button is inactive; useful to prevent double clicks |
@@ -75,6 +75,10 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
+| **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown icon; note that a dropdown button has no minimum width |
+| **extraWide** | optional | Boolean | false | Set to `true` to add even more side padding |
+| **highLabel** | optional | Boolean | false | This does not make the button higher in itself; set to `true` to move the vertical "outer" padding to the label, creating a higher hover effect (and higher separator when using [Button Group](button-group.md)) |
+| **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
 
 
 <a id="common-component-options"></a>

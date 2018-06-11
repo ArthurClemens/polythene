@@ -1,8 +1,8 @@
 import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
-import { vars } from 'polythene-theme';
 
 var classes = {
-  component: "pe-button pe-text-button pe-raised-button"
+  component: "pe-raised-button",
+  super: "pe-button pe-text-button"
 };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -101,12 +101,13 @@ var createProps = function createProps(vnode, _ref) {
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
   return _extends({}, {
-    parentClassName: [attrs.parentClassName || classes.component].join(" "),
+    parentClassName: [classes.super, attrs.parentClassName || classes.component].join(" "),
     animateOnTap: false,
     shadowComponent: h(Shadow, {
       z: attrs.disabled ? 0 : state.z,
       animated: true
     }),
+    wash: attrs.wash !== undefined ? attrs.wash : false,
     children: children
   }, attrs);
 };
@@ -123,33 +124,4 @@ var raisedButton = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$1 = {
-  color_light_background: "#fff",
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_wash_background: "transparent",
-  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
-  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-
-  color_dark_background: rgba(vars.color_primary),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_wash_background: "transparent",
-  color_dark_focus_background: vars.color_primary_active,
-  color_dark_active_background: vars.color_primary_dark,
-  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
-  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
-
-  // hover colors may be set in theme; disabled by default
-
-  // color_light_hover_background:    "transparent",
-  // color_dark_hover_background:     vars.color_primary_active,
-
-};
-
-export { raisedButton as coreRaisedButton, vars$1 as vars };
+export { raisedButton as coreRaisedButton };

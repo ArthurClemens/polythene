@@ -63,16 +63,16 @@ Displays a tab row of navigation buttons.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
 | **small** | optional | Boolean | false | Set to `true` to reduce the tab widths on larger screens |
-| **autofit** | optional | Boolean | false | Set to true to let the buttons fill the button row |
-| **scrollable** | optional | Boolean | false | Set to true to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
+| **autofit** | optional | Boolean | false | Set to `true` to let the buttons fill the button row |
+| **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
 | **activeSelected** | optional | Boolean | | Set to `true` to enabled clicks/taps on the selected tab button |
 | **scrollIconBackward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
 | **scrollIconForward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
-| **centered** | optional | Boolean | false | Set to true to center the button row; this automatically sets `autofit` to `false` |
-| **largestWidth** | optional | Boolean | false | Set to true to make all tabs the width of the largest tab |
+| **centered** | optional | Boolean | false | Set to `true` to center the button row; this automatically sets `autofit` to `false` |
+| **largestWidth** | optional | Boolean | false | Set to `true` to make all tabs the width of the largest tab |
 | **selectedTabIndex** | optional | Number | 0 | The Array index of the selected tab |
-| **hideIndicator** | optional | Boolean | false | Set to true to hide the tab indicator |
-| **noIndicatorSlide** | optional | Boolean | false | Set to true not let the tab indicator slide to the new position |
+| **hideIndicator** | optional | Boolean | false | Set to `true` to hide the tab indicator |
+| **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the tab indicator slide to the new position |
 
 
 <a id="tab-button-options"></a>
@@ -91,7 +91,7 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **disabled** | optional | Boolean | false | Disables the button |
-| **selected** | optional | Boolean | false | Set to true to show the button as selected |
+| **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 
 
 <a id="common-component-options"></a>

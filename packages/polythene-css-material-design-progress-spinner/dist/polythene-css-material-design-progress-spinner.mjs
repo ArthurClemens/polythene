@@ -1,5 +1,6 @@
-import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-material-design-progress-spinner';
+import { color, layout } from 'polythene-css-material-design-spinner';
+import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-md-progress-spinner",
@@ -11,75 +12,93 @@ var classes = {
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var layout = (function (selector, componentVars) {
-  return [_defineProperty({}, selector, {
-    position: "relative",
-
-    " .pe-md-progress-spinner__animation": {
-      animationDuration: componentVars.animationDuration,
-      position: "absolute",
-      width: "100%",
-      height: "100%"
-    },
-
-    " .pe-md-progress-spinner__circle": {
-      position: "absolute",
-      boxSizing: "border-box",
-      width: "100%",
-      height: "100%",
-      borderStyle: "solid",
-      borderRadius: "50%"
-    },
-
-    " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-      transform: "rotate(0)",
-      clip: "rect(0, 0, 0, 0)"
-    },
-
-    "&": ["small", "regular", "medium", "large", "fab"].map(function (size) {
-      return _defineProperty({}, "&.pe-spinner--" + size, {
-        " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-          borderWidth: componentVars["border_width_" + size] + "px"
-        }
-      });
-    })
-  })];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint],
-
-    " .pe-md-progress-spinner__circle": {
-      borderColor: "currentcolor"
-    }
-  })];
-};
-
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
-});
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var fns = [layout, color];
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-md-progress-spinner__circle": {
+        borderColor: "currentcolor"
+      }
+    })];
+  }
+};
+
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint]
+    })];
+  });
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color$1 = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+  superColor: color
+});
+
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      position: "relative",
+
+      " .pe-md-progress-spinner__animation": {
+        position: "absolute",
+        width: "100%",
+        height: "100%"
+      },
+
+      " .pe-md-progress-spinner__circle": {
+        position: "absolute",
+        boxSizing: "border-box",
+        width: "100%",
+        height: "100%",
+        borderStyle: "solid",
+        borderRadius: "50%"
+      },
+
+      " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
+        transform: "rotate(0)",
+        clip: "rect(0, 0, 0, 0)"
+      }
+    })];
+  },
+  progress_animation_duration: function progress_animation_duration(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-md-progress-spinner__animation": {
+        animationDuration: vars$$1.progress_animation_duration
+      }
+    })];
+  }
+};
+
+var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
+
+var vars$1 = {
+  general_styles: true,
+
+  progress_animation_duration: ".8s",
+
+  color_light: rgba(vars.color_primary),
+  color_dark: rgba(vars.color_primary)
+};
+
+var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };

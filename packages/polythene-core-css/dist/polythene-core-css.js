@@ -1013,7 +1013,7 @@
       styles[_key - 1] = arguments[_key];
     }
 
-    addToDocument.apply(undefined, [{
+    return addToDocument.apply(undefined, [{
       id: id
     }].concat(styles));
   };
@@ -1069,6 +1069,21 @@
    * Adds styles to head for a component.
    * @param selector: Array of Strings: selectors
    * @param vars: Object configuration variables
+   * @param customVars: Object configuration variables
+   * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+  */
+  var generateCustomStyles = function generateCustomStyles(selectors, vars, customVars, styleFns) {
+    var selector = selectors.join("");
+    var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+    add(id, styleFns.map(function (fn) {
+      return fn(selector, vars, customVars);
+    }));
+  };
+
+  /*
+   * Adds styles to head for a component.
+   * @param selector: Array of Strings: selectors
+   * @param vars: Object configuration variables
    * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
   */
   var generateStyles = function generateStyles(selectors, vars, styleFns) {
@@ -1077,6 +1092,13 @@
     add(id, styleFns.map(function (fn) {
       return fn(selector, vars);
     }));
+  };
+
+  var createCustomStyleSheets = function createCustomStyleSheets(selectors, vars, customVars, styleFns) {
+    var selector = selectors.join("");
+    return styleFns.map(function (fn) {
+      return fn(selector, vars, customVars);
+    });
   };
 
   var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
@@ -1089,9 +1111,30 @@
   var styler = {
     add: add,
     addToDocument: addToDocument,
+    createCustomStyleSheets: createCustomStyleSheets,
     createStyleSheets: createStyleSheets,
+    generateCustomStyles: generateCustomStyles,
     generateStyles: generateStyles,
     remove: remove
+  };
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var sel = function sel(selector, o) {
+    return _defineProperty({}, selector, o);
+  };
+
+  var selectorRTL = function selectorRTL(selector) {
+    return "*[dir=rtl] " + selector + ", .pe-rtl " + selector;
+  };
+
+  var rgba = function rgba(colorStr) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    return "rgba(" + colorStr + ", " + opacity + ")";
   };
 
   var hex = function hex(value) {
@@ -1102,9 +1145,128 @@
     return r + "," + g + "," + b;
   };
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
+  var createStyle = function createStyle(_ref2) {
+    var varFns = _ref2.varFns,
+        customVarFns = _ref2.customVarFns,
+        superStyle = _ref2.superStyle,
+        varMixin = _ref2.varMixin,
+        selector = _ref2.selector,
+        scopedSelector = _ref2.scopedSelector,
+        componentVars = _ref2.componentVars,
+        customVars = _ref2.customVars;
+
+    var allVars = _extends$1({}, componentVars, customVars);
+    var currentVars = customVars ? customVars : allVars;
+
+    var _ref3 = componentVars || {},
+        general_styles = _ref3.general_styles,
+        otherVars = _objectWithoutProperties(_ref3, ["general_styles"]);
+
+    var baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
+    var fns = _extends$1({}, !!customVars && customVarFns, varFns);
+    return baseLayout.concat(Object.keys(varMixin(currentVars)).map(function (v) {
+      return fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null;
+    }).filter(function (s) {
+      return s;
+    }));
+  };
+
+  var createLayout = function createLayout(_ref4) {
+    var varFns = _ref4.varFns,
+        customVarFns = _ref4.customVarFns,
+        superLayout = _ref4.superLayout,
+        _ref4$varMixin = _ref4.varMixin,
+        varMixin = _ref4$varMixin === undefined ? function (o) {
+      return o;
+    } : _ref4$varMixin;
+    return function (selector, componentVars, customVars) {
+      return createStyle({ varFns: varFns, customVarFns: customVarFns, superStyle: superLayout, varMixin: varMixin, selector: selector, scopedSelector: selector, componentVars: componentVars, customVars: customVars });
+    };
+  };
+
+  var createColorStyle = function createColorStyle(_ref5) {
+    var selector = _ref5.selector,
+        scopedSelector = _ref5.scopedSelector,
+        componentVars = _ref5.componentVars,
+        customVars = _ref5.customVars,
+        varFns = _ref5.varFns,
+        superColor = _ref5.superColor,
+        varMixin = _ref5.varMixin;
+    return createStyle({ varFns: varFns, superStyle: superColor, varMixin: varMixin, selector: selector, scopedSelector: scopedSelector, componentVars: componentVars, customVars: customVars });
+  };
+
+  var appendPseudoClass = function appendPseudoClass(_ref6) {
+    var scopes = _ref6.scopes,
+        selector = _ref6.selector,
+        _ref6$isNoTouch = _ref6.isNoTouch,
+        isNoTouch = _ref6$isNoTouch === undefined ? false : _ref6$isNoTouch;
+    return isNoTouch ? scopes.map(function (s) {
+      return s + selector + ":hover";
+    }).join(",") : scopes.map(function (s) {
+      return s + selector;
+    }).join(",");
+  };
+
+  var createScopedSelector = function createScopedSelector(_ref7) {
+    var scopes = _ref7.scopes,
+        selector = _ref7.selector,
+        _ref7$isNoTouch = _ref7.isNoTouch,
+        isNoTouch = _ref7$isNoTouch === undefined ? false : _ref7$isNoTouch;
+    return selector.split(/\s*,\s*/).map(function (s) {
+      return appendPseudoClass({ scopes: scopes, selector: s, isNoTouch: isNoTouch });
+    });
+  };
+
+  var colorScopes = [{
+    // has/inside dark tone
+    scopes: [".pe-dark-tone", ".pe-dark-tone "],
+    varFnName: "darkTintFns",
+    isNoTouch: false
+  }, {
+    // normal, has/inside light tone
+    scopes: ["", ".pe-light-tone", ".pe-light-tone "],
+    varFnName: "lightTintFns",
+    isNoTouch: false
+  }, {
+    // has/inside dark tone
+    scopes: [".pe-no-touch .pe-dark-tone "],
+    varFnName: "darkTintHoverFns",
+    isNoTouch: true
+  }, {
+    // normal, has/inside light tone
+    scopes: [".pe-no-touch ", ".pe-no-touch .pe-light-tone "],
+    varFnName: "lightTintHoverFns",
+    isNoTouch: true
+  }];
+
+  var createColor = function createColor(_ref8) {
+    var _ref8$varFns = _ref8.varFns,
+        varFns = _ref8$varFns === undefined ? {} : _ref8$varFns,
+        superColor = _ref8.superColor,
+        _ref8$varMixin = _ref8.varMixin,
+        varMixin = _ref8$varMixin === undefined ? function (o) {
+      return o;
+    } : _ref8$varMixin;
+    return function (selector, componentVars, customVars) {
+      return colorScopes.map(function (_ref9) {
+        var scopes = _ref9.scopes,
+            varFnName = _ref9.varFnName,
+            isNoTouch = _ref9.isNoTouch;
+        return createColorStyle({
+          selector: selector,
+          scopedSelector: createScopedSelector({
+            scopes: scopes,
+            selector: selector,
+            isNoTouch: isNoTouch
+          }),
+          componentVars: componentVars,
+          customVars: customVars,
+          varFns: varFns[varFnName],
+          superColor: superColor,
+          varMixin: varMixin
+        });
+      });
+    };
   };
 
   var flex$2 = [{
@@ -1204,6 +1366,10 @@
   exports.styler = styler;
   exports.hex = hex;
   exports.rgba = rgba;
+  exports.sel = sel;
+  exports.selectorRTL = selectorRTL;
+  exports.createLayout = createLayout;
+  exports.createColor = createColor;
   exports.layoutStyles = layoutStyles;
   exports.addLayoutStyles = addLayoutStyles;
 

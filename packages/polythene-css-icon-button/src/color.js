@@ -1,50 +1,87 @@
-import { noTouchStyle as buttonNoTouchStyle } from "polythene-css-button";
+import { sel, createColor } from "polythene-core-css";
 
-const style = (scopes, selector, componentVars, tint) => [{
-  [scopes.map(s => s + selector).join(",")]: {
+const generalFns = ({
+  general_styles: selector => [
+    sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
+        " .pe-button__focus": {
+          backgroundColor: "currentcolor"
+        }
+      },
+    })
+  ],
+});
 
-    "&, .pe-icon-button__label": {
-      color: componentVars["color_" + tint],
-    },
-
-    " .pe-icon-button__content": { 
-      backgroundColor: componentVars["color_" + tint + "_background"] || componentVars["color_background"],
-    },
-    
-    " .pe-button__wash": {
-      opacity: componentVars["color_" + tint + "_wash_opacity"]
-    },
-
-    ".pe-button--focus, &.pe-button--selected": {
-      " .pe-button__focus": {
-        opacity: componentVars["color_" + tint + "_focus_opacity"],
-        backgroundColor: "currentcolor"
-      }
-    },
-
-    ".pe-button--disabled": {
-      " .pe-button__content, .pe-icon-button__label": {
-        color: componentVars["color_" + tint + "_disabled"]
-      }
-    }
-  }
-}];
-
-export const noTouchStyle = (scopes, selector, componentVars, tint) =>
-  buttonNoTouchStyle(scopes, selector, componentVars, tint)
-    .concat([{
-      [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
-        ":not(.pe-button--selected):not(.pe-button--inactive)": {
-          " .pe-icon-button__label": {
-            color: componentVars["color_" + tint + "_label_hover"]
-          },
+const tintFns = tint => ({
+  ["color_" + tint]: (selector, vars) => [
+    sel(selector, {
+      "&, .pe-icon-button__label": {
+        color: vars["color_" + tint],
+      },
+    })
+  ],
+  ["color_" + tint + "_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__content": { 
+        backgroundColor: vars["color_" + tint + "_background"]
+      },
+    })
+  ],
+  ["color_" + tint + "_wash_opacity"]: (selector, vars) => [
+    sel(selector, {
+      opacity: vars["color_" + tint + "_wash_opacity"]
+    })
+  ],
+  ["color_" + tint + "_focus_opacity"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
+        " .pe-button__focus": {
+          opacity: vars["color_" + tint + "_focus_opacity"],
+        }
+      },
+    })
+  ],
+  ["color_" + tint + "_disabled"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--disabled": {
+        " .pe-button__content, .pe-icon-button__label": {
+          color: vars["color_" + tint + "_disabled"]
         }
       }
-    }]);
+    })
+  ],
+});
 
-export default (selector, componentVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light"),
-];
+const hoverTintFns = tint => ({
+  ["color_" + tint + "_hover"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__content": { 
+        color: vars["color_" + tint + "_hover"]
+      },
+    })
+  ],
+  ["color_" + tint + "_label_hover"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__label": {
+        color: vars["color_" + tint + "_label_hover"]
+      },
+    })
+  ],
+  ["color_" + tint + "_background_hover"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__content": { 
+        backgroundColor: vars["color_" + tint + "_background_hover"]
+      },
+    })
+  ],
+});
+
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+
+const lightTintHoverFns = hoverTintFns("light");
+const darkTintHoverFns = hoverTintFns("dark");
+
+export default createColor({
+  varFns: { lightTintFns, darkTintFns, lightTintHoverFns, darkTintHoverFns }
+});

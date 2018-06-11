@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-selection-control'), require('polythene-theme'), require('polythene-core-css'), require('polythene-core-switch')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-selection-control', 'polythene-theme', 'polythene-core-css', 'polythene-core-switch'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-selection-control'],global['polythene-theme'],global['polythene-core-css'],global['polythene-core-switch']));
-}(this, (function (exports,polytheneCssSelectionControl,polytheneTheme,polytheneCoreCss,polytheneCoreSwitch) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-selection-control'), require('polythene-theme'), require('polythene-css-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-selection-control', 'polythene-theme', 'polythene-css-icon-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-selection-control'],global['polythene-theme'],global['polythene-css-icon-button']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssSelectionControl,polytheneTheme,polytheneCssIconButton) { 'use strict';
 
   var classes = {
     component: "pe-switch-control",
@@ -13,21 +13,246 @@
     track: "pe-switch-control__track"
   };
 
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var transition = function transition(componentVars, properties) {
-    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : componentVars.animation_duration;
-    return [polytheneCoreCss.mixin.defaultTransition(properties, duration, "ease-out")];
+  var generalFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        },
+        ".pe-control--on": {
+          " .pe-switch-control__knob": {
+            backgroundColor: "currentcolor"
+          },
+          " .pe-icon": {
+            color: "currentcolor"
+          }
+        }
+      })];
+    }
   };
 
-  var getSizeData = function getSizeData(componentVars, size) {
+  var tintFns = function tintFns(tint) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-control__label": {
+          color: vars["color_" + tint + "_label"]
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_off_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_off_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_off"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_off_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_icon_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_off"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_off_label"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_on_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_on_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-switch-control__thumb": {
+            color: vars["color_" + tint + "_thumb_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              backgroundColor: vars["color_" + tint + "_focus_on"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button--focus": {
+            " .pe-button__focus": {
+              opacity: vars["color_" + tint + "_focus_on_opacity"]
+            }
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_icon_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-icon": {
+            color: vars["color_" + tint + "_icon_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_on_label"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-control__label": {
+            color: vars["color_" + tint + "_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            backgroundColor: vars["color_" + tint + "_track_disabled"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_track_disabled_opacity", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__track": {
+            opacity: vars["color_" + tint + "_track_disabled_opacity"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref, "color_" + tint + "_thumb_disabled", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
+          " .pe-switch-control__thumb, .pe-button__content": {
+            color: vars["color_" + tint + "_thumb_disabled"]
+          }
+        }
+      })];
+    }), _ref;
+  };
+
+  var hoverTintFns = function hoverTintFns(tint) {
+    var _ref2;
+
+    return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_wash_on", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--on": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_on"]
+          }
+        }
+      })];
+    }), _defineProperty(_ref2, "color_" + tint + "_wash_off", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        ".pe-control--off": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_off"]
+          }
+        }
+      })];
+    }), _ref2;
+  };
+
+  var lightTintFns = _extends({}, generalFns, tintFns("light"));
+  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+  var lightTintHoverFns = hoverTintFns("light");
+  var darkTintHoverFns = hoverTintFns("dark");
+
+  var color = polytheneCoreCss.createColor({
+    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
+  });
+
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var transition = function transition(vars, properties) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.animation_duration;
+    return polytheneCoreCss.mixin.defaultTransition(properties, duration, "ease-out");
+  };
+
+  var getSizeData = function getSizeData(vars, size) {
     var factor = size / polytheneTheme.vars.unit_icon_size;
-    var thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
-    var scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
-    var scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
-    var scaledThumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2;
-    var trackTop = (componentVars.label_height * factor - scaledTrackHeight) / 2;
-    var thumbPadding = componentVars.icon_button_padding;
+    var thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
+    var scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
+    var scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
+    var scaledThumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2;
+    var trackTop = (vars.label_height * factor - scaledTrackHeight) / 2;
+    var thumbPadding = vars.icon_button_padding;
     var thumbMargin = (size - scaledThumbSize) / 2;
     var thumbOuterSize = size + 2 * thumbPadding;
     var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -50,7 +275,7 @@
     };
   };
 
-  var customSize = function customSize(componentVars, _ref) {
+  var customSize = function customSize(vars, _ref) {
     var scaledThumbSize = _ref.scaledThumbSize,
         scaledTrackHeight = _ref.scaledTrackHeight,
         scaledTrackWidth = _ref.scaledTrackWidth,
@@ -86,7 +311,7 @@
     };
   };
 
-  var customSpacing = function customSpacing(componentVars, _ref2, isRTL) {
+  var customSpacing = function customSpacing(vars, _ref2, isRTL) {
     var _peControl__label, _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
 
     var factor = _ref2.factor,
@@ -96,11 +321,11 @@
         trackVisualOffset = _ref2.trackVisualOffset;
 
     return {
-      " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", componentVars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
-      " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
-      " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
+      " .pe-control__label": (_peControl__label = {}, _defineProperty$1(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty$1(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
+      " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty$1(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty$1(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
+      " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty$1(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty$1(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
       ".pe-control--on": {
-        " .pe-switch-control__thumb": (_peSwitchControl_3 = {}, _defineProperty(_peSwitchControl_3, isRTL ? "right" : "left", thumbOffsetMax + "px"), _defineProperty(_peSwitchControl_3, isRTL ? "left" : "right", "auto"), _peSwitchControl_3)
+        " .pe-switch-control__thumb": (_peSwitchControl_3 = {}, _defineProperty$1(_peSwitchControl_3, isRTL ? "right" : "left", thumbOffsetMax + "px"), _defineProperty$1(_peSwitchControl_3, isRTL ? "left" : "right", "auto"), _peSwitchControl_3)
       }
     };
   };
@@ -110,201 +335,171 @@
       var _peSwitchControl_4;
 
       return {
-        " .pe-switch-control__track": (_peSwitchControl_4 = {}, _defineProperty(_peSwitchControl_4, isRTL ? "right" : "left", 0), _defineProperty(_peSwitchControl_4, isRTL ? "left" : "right", "auto"), _peSwitchControl_4)
+        " .pe-switch-control__track": (_peSwitchControl_4 = {}, _defineProperty$1(_peSwitchControl_4, isRTL ? "right" : "left", 0), _defineProperty$1(_peSwitchControl_4, isRTL ? "left" : "right", "auto"), _peSwitchControl_4)
       };
     };
   };
-
   var alignLeft = alignSide(false);
-
   var alignRight = alignSide(true);
 
-  var layout = (function (selector, componentVars) {
+  var createSize = function createSize(selector, vars) {
     var sizeData = {
-      small: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_small),
-      regular: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size),
-      medium: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_medium),
-      large: getSizeData(componentVars, polytheneTheme.vars.unit_icon_size_large)
+      small: getSizeData(vars, polytheneTheme.vars.unit_icon_size_small),
+      regular: getSizeData(vars, polytheneTheme.vars.unit_icon_size),
+      medium: getSizeData(vars, polytheneTheme.vars.unit_icon_size_medium),
+      large: getSizeData(vars, polytheneTheme.vars.unit_icon_size_large)
     };
-    return polytheneCssSelectionControl.layout(selector, componentVars, "checkbox").concat([_defineProperty({}, selector, [alignLeft(), {
-      " .pe-switch-control__track": [transition(componentVars, "all"), {
-        position: "absolute"
-      }],
+    return [polytheneCoreCss.sel(selector, {
+      ".pe-control--small": [customSize(vars, sizeData.small), customSpacing(vars, sizeData.small, false)],
+      ".pe-control--regular": [customSize(vars, sizeData.regular), customSpacing(vars, sizeData.regular, false)],
+      ".pe-control--medium": [customSize(vars, sizeData.medium), customSpacing(vars, sizeData.medium, false)],
+      ".pe-control--large": [customSize(vars, sizeData.large), customSpacing(vars, sizeData.large, false)]
+    }), _defineProperty$1({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(), {
+      ".pe-control--small": [customSpacing(vars, sizeData.small, true)],
+      ".pe-control--regular": [customSpacing(vars, sizeData.regular, true)],
+      ".pe-control--medium": [customSpacing(vars, sizeData.medium, true)],
+      ".pe-control--large": [customSpacing(vars, sizeData.large, true)]
+    }])];
+  };
 
-      " .pe-switch-control__thumb": [transition(componentVars, "all"), {
-        position: "absolute",
-        zIndex: 1, // Prevents flickering of text label when toggling
-        color: "inherit",
+  var varFns = {
+    general_styles: function general_styles(selector) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(), {
+        " .pe-switch-control__track": [{
+          position: "absolute"
+        }],
 
-        ":focus": {
-          outline: 0
+        " .pe-switch-control__thumb": {
+          position: "absolute",
+          zIndex: 1, // Prevents flickering of text label when toggling
+          color: "inherit",
+
+          ":focus": {
+            outline: 0
+          }
+        },
+
+        " .pe-switch-control__knob": {
+          position: "relative",
+          borderRadius: "50%"
+        },
+
+        " .pe-icon-button .pe-button__content": {
+          transition: "none",
+
+          " .pe-switch-control__knob .pe-icon": [polytheneCoreCss.mixin.fit(), {
+            width: "100%",
+            height: "100%"
+          }]
         }
-      }],
-
-      " .pe-control__label": [transition(componentVars, "all")],
-
-      " .pe-switch-control__knob": {
-        position: "relative",
-        borderRadius: "50%"
-      },
-
-      " .pe-button__content": {
-        transition: "none",
-
-        " .pe-switch-control__knob .pe-icon": [polytheneCoreCss.mixin.fit(), {
+      }]), _defineProperty$1({}, "_:-ms-fullscreen, :root " + selector, {
+        " input": {
+          position: "absolute",
+          zIndex: 1,
           width: "100%",
-          height: "100%"
-        }]
-      },
-
-      " .pe-button__focus": [transition(componentVars, "all")],
-
-      ".pe-control--small": [customSize(componentVars, sizeData.small), customSpacing(componentVars, sizeData.small, false)],
-      ".pe-control--regular": [customSize(componentVars, sizeData.regular), customSpacing(componentVars, sizeData.regular, false)],
-      ".pe-control--medium": [customSize(componentVars, sizeData.medium), customSpacing(componentVars, sizeData.medium, false)],
-      ".pe-control--large": [customSize(componentVars, sizeData.large), customSpacing(componentVars, sizeData.large, false)]
-    }]), _defineProperty({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight(), {
-      ".pe-control--small": [customSpacing(componentVars, sizeData.small, true)],
-      ".pe-control--regular": [customSpacing(componentVars, sizeData.regular, true)],
-      ".pe-control--medium": [customSpacing(componentVars, sizeData.medium, true)],
-      ".pe-control--large": [customSpacing(componentVars, sizeData.large, true)]
-    }]), _defineProperty({}, "_:-ms-fullscreen, :root " + selector, {
-      " input": {
-        position: "absolute",
-        zIndex: 1,
-        width: "100%",
-        height: "100%",
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        display: "block",
-        opacity: 0,
-        cursor: "pointer"
-      },
-      " label": {
-        cursor: "auto"
-      }
-    })]);
-  });
-
-  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var style = function style(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-
-      " .pe-control__label": {
-        color: componentVars["color_" + tint + "_label"]
-      },
-
-      ".pe-control--off": {
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_off_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_off"]
+          height: "100%",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          display: "block",
+          opacity: 0,
+          cursor: "pointer"
         },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_off"]
-        },
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: componentVars["color_" + tint + "_focus_off_opacity"],
-            backgroundColor: componentVars["color_" + tint + "_focus_off"]
-          }
-        },
-        " .pe-icon": {
-          color: componentVars["color_" + tint + "_icon_off"] || "currentcolor"
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_off_label"]
+        " label": {
+          cursor: "auto"
         }
-      },
-
-      ".pe-control--on": {
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_on_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_on"]
-        },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_on"]
-        },
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: componentVars["color_" + tint + "_focus_on_opacity"],
-            backgroundColor: componentVars["color_" + tint + "_focus_on"]
-          }
-        },
-        " .pe-icon": {
-          color: componentVars["color_" + tint + "_icon_on"] || "currentcolor"
-        },
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_on_label"]
-        }
-      },
-
-      ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
-        " .pe-control__label": {
-          color: componentVars["color_" + tint + "_disabled"]
-        },
-        " .pe-switch-control__track": {
-          opacity: componentVars["color_" + tint + "_track_disabled_opacity"],
-          backgroundColor: componentVars["color_" + tint + "_track_disabled"]
-        },
-        " .pe-switch-control__thumb": {
-          color: componentVars["color_" + tint + "_thumb_disabled"]
-        }
-      }
-    })];
+      })];
+    },
+    animation_duration: function animation_duration(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+      })];
+    },
+    createSize: createSize
   };
 
-  var noTouchStyle = function noTouchStyle(scopes, selector, componentVars, tint) {
-    return [_defineProperty$1({}, scopes.map(function (s) {
-      return s + selector + ":hover";
-    }).join(","), {
-      ".pe-control--on": {
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_on"]
-        }
-      },
-      ".pe-control--off": {
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_off"]
-        }
-      }
-    })];
+  var withCreateSizeVar = function withCreateSizeVar(vars) {
+    return vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding ? _extends$1({}, vars, {
+      createSize: true
+    }) : vars;
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-    noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-    noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns,
+    superLayout: polytheneCssSelectionControl.layout,
+    varMixin: withCreateSizeVar
   });
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var vars = {
+    general_styles: true,
+
+    animation_duration: polytheneTheme.vars.animation_duration,
+    hit_area_padding: (polytheneTheme.vars.grid_unit_icon_button - polytheneTheme.vars.unit_icon_size) / 2, // 12
+    icon_button_padding: polytheneCssIconButton.vars.padding,
+    padding: polytheneTheme.vars.grid_unit_component,
+    thumb_size: 20,
+    track_height: 14,
+    track_length: 36,
+    label_height: polytheneCssSelectionControl.vars.label_height,
+
+    color_light_thumb_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_light_thumb_off: "#f1f1f1",
+    color_light_thumb_disabled: "#eee",
+    color_light_wash_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_light_background_active),
+    color_light_wash_off: polytheneCssIconButton.vars.color_light_wash,
+
+    color_light_track_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_faded),
+    color_light_track_on_opacity: .55,
+    color_light_track_off: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_light_track_off_opacity: .55,
+    color_light_track_disabled: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_light_track_disabled_opacity: 1,
+
+    // icon color may be set in theme; default "currentcolor"
+    // color_light_icon_on:                   "currentcolor",
+    // color_light_icon_off:                  "currentcolor",
+
+    // color_light_focus_on and so on taken from selectionControlVars
+
+    color_dark_thumb_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_thumb_off: "#bdbdbd",
+    color_dark_thumb_disabled: "#555",
+    color_dark_wash_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary, polytheneTheme.vars.blend_dark_background_active),
+    color_dark_wash_off: polytheneCssIconButton.vars.color_dark_wash,
+
+    color_dark_track_on: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_faded, polytheneTheme.vars.blend_dark_text_tertiary), // or "#5a7f7c"
+    color_dark_track_on_opacity: 9,
+    color_dark_track_off: "#717171",
+    color_dark_track_off_opacity: .55,
+    color_dark_track_disabled: "#717171",
+    color_dark_track_disabled_opacity: .3
+
+    // icon color may be set in theme; default "currentcolor"
+    // color_dark_icon_on:                    "currentcolor"
+    // color_dark_icon_off:                   "currentcolor"
+
+    // color_dark_focus_on and so on taken from selectionControlVars
+  };
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreSwitch.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreSwitch.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreSwitch.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreSwitch.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

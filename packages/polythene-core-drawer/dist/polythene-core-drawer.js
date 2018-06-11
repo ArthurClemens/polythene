@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme']));
-}(this, (function (exports,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
 
   var classes = {
     component: "pe-dialog pe-drawer",
@@ -41,38 +41,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var content_side_offset = polytheneTheme.vars.grid_unit_component * 7; // 56
-  var content_side_offset_large = polytheneTheme.vars.grid_unit_component * 8; // 64
-  var permanent_content_width = 240;
-  var content_max_width = 5 * polytheneTheme.vars.increment;
-  var content_max_width_large = 5 * polytheneTheme.vars.increment_large;
-
-  var vars = {
-    content_side_offset: content_side_offset,
-    content_side_offset_large: content_side_offset_large,
-    permanent_content_width: permanent_content_width,
-    content_max_width: content_max_width,
-    content_max_width_large: content_max_width_large,
-
-    content_width_mini_collapsed: 56,
-
-    color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-    color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-    color_light_background: rgba(polytheneTheme.vars.color_light_background),
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
-
-    color_light_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_dark_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
-  };
-
   exports.coreDrawer = drawer;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

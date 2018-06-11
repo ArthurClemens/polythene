@@ -1,25 +1,4 @@
-import { coreNotificationInstance, vars } from 'polythene-core-notification';
-import { vars as vars$1 } from 'polythene-theme';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var coreSnackbarInstance = _extends({}, coreNotificationInstance);
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var vars$2 = _extends$1({}, vars, {
-  border_radius: 0,
-  min_width: 288,
-  max_width: 568,
-  min_height: 0,
-
-  color_dark_background: rgba(vars$1.color_dark_background)
-});
+export { coreNotificationInstance as coreSnackbarInstance } from 'polythene-core-notification';
 
 var DEFAULT_DURATION = 0.4;
 
@@ -73,4 +52,4 @@ var transitions = {
   hide: hide
 };
 
-export { coreSnackbarInstance, vars$2 as vars, transitions };
+export { transitions };

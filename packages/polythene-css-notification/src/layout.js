@@ -1,76 +1,156 @@
+import { flex, sel, createLayout } from "polythene-core-css";
 
-import { flex } from "polythene-core-css";
+const title_single_padding_v_title_padding_h = (selector, vars) =>
+  sel(selector, {
+    " .pe-notification__title": {
+      padding: vars.title_single_padding_v + "px " + vars.title_padding_h + "px",
+    },
+  });
 
-export default (selector, componentVars) => [{
-  [selector]: [
-    flex.layoutCenter,
-    componentVars.animation_hide_css,
-    {      
-      pointerEvents: "all",
-      justifyContent: "center",
-      margin: "0 auto",
-      transitionDelay: componentVars.animation_delay,
-      transitionDuration: componentVars.animation_duration,
-      transitionTimingFunction: componentVars.animation_timing_function,
-      transitionProperty: "all",
-      opacity: 0,
-
+export const customLayoutFns = {
+  animation_hide_css: (selector, vars) => [
+    sel(selector, vars.animation_hide_css)
+  ],
+  animation_show_css: (selector, vars) => [
+    sel(selector, {
       ".pe-notification--visible": [
-        componentVars.animation_show_css
+        vars.animation_show_css
       ],
 
+    })
+  ],
+  width: (selector, vars) => [
+    sel(selector, {
       " .pe-notification__content": {
-        width: componentVars.width + "px",
-        padding: "0 " + componentVars.side_padding + "px",
-        borderRadius: componentVars.border_radius + "px",
+        width: vars.width + "px",
       },
-
+    })
+  ],
+  animation_delay: (selector, vars) => [
+    sel(selector, {
+      transitionDelay: vars.animation_delay,
+    })
+  ],
+  animation_duration: (selector, vars) => [
+    sel(selector, {
+      transitionDuration: vars.animation_duration,
+    })
+  ],
+  animation_timing_function: (selector, vars) => [
+    sel(selector, {
+      transitionTimingFunction: vars.animation_timing_function,
+    })
+  ],
+  side_padding: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__content": {
+        padding: "0 " + vars.side_padding + "px",
+      },
+    })
+  ],
+  border_radius: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__content": {
+        borderRadius: vars.border_radius + "px",
+      },
+    })
+  ],
+  title_single_padding_v: (selector, vars) => [
+    title_single_padding_v_title_padding_h(selector, vars)
+  ],
+  title_padding_h: (selector, vars) => [
+    title_single_padding_v_title_padding_h(selector, vars)
+  ],
+  font_size: (selector, vars) => [
+    sel(selector, {
       " .pe-notification__title": {
-        flex: "1 0 auto",
-        padding: componentVars.title_single_padding_v + "px " + componentVars.title_padding_h + "px",
-        fontSize: componentVars.font_size + "px",
-        lineHeight: componentVars.line_height + "px",
+        fontSize: vars.font_size + "px",
       },
-
-      " .pe-notification__action": {
-        " .pe-button": {
-          margin: 0
-        }
+    })
+  ],
+  line_height: (selector, vars) => [
+    sel(selector, {
+      " .pe-notification__title": {
+        lineHeight: vars.line_height + "px",
       },
-
+    })
+  ],
+  title_multi_padding_v: (selector, vars) => [
+    sel(selector, {
       ".pe-notification--horizontal": {
-        " .pe-notification__content": flex.layoutHorizontal,
-        " .pe-notification__title": [
-          flex.flex(),
-          {
-            alignSelf: "center",
-          }
-        ],
         " .pe-notification__title--multi-line": {
-          paddingTop: componentVars.title_multi_padding_v + "px",
-          paddingBottom: componentVars.title_multi_padding_v + "px"
+          paddingTop: vars.title_multi_padding_v + "px",
+          paddingBottom: vars.title_multi_padding_v + "px"
         },
-        " .pe-notification__action": flex.layoutCenter
       },
       ".pe-notification--vertical": {
-        " .pe-notification__content": [
-          flex.layoutVertical
-        ],
-
-        " .pe-notification__title": {
-          paddingBottom: "6px"
-        },
         " .pe-notification__title--multi-line": {
-          paddingTop: componentVars.title_multi_padding_v + "px",
+          paddingTop: vars.title_multi_padding_v + "px",
         },
-        " .pe-notification__action": [
-          flex.layoutEndJustified,
-          {
-            width: "100%"
-          }
-        ]
       }
-    },
-  ]
-}];
+    })
+  ],
+};
 
+const varFns = Object.assign(
+  {},
+  {
+    general_styles: selector => [
+      sel(selector, [
+        flex.layoutCenter,
+        {      
+          pointerEvents: "all",
+          justifyContent: "center",
+          margin: "0 auto",
+          transitionProperty: "all",
+          opacity: 0,
+          
+          " .pe-notification__title": {
+            flex: "1 0 auto",
+          },
+
+          " .pe-notification__action": {
+            " .pe-button": {
+              margin: 0
+            }
+          },
+
+          " .pe-notification__content": {
+            maxWidth: "100%"
+          },
+
+          ".pe-notification--horizontal": {
+            " .pe-notification__content": flex.layoutHorizontal,
+            " .pe-notification__title": [
+              flex.flex(),
+              {
+                alignSelf: "center",
+              }
+            ],
+            " .pe-notification__action": flex.layoutCenter
+          },
+          ".pe-notification--vertical": {
+            " .pe-notification__content": [
+              flex.layoutVertical
+            ],
+
+            " .pe-notification__title": {
+              paddingBottom: "6px"
+            },
+            " .pe-notification__action": [
+              flex.layoutEndJustified,
+              {
+                width: "100%"
+              }
+            ]
+          }
+        },
+      ])
+    ],
+  },
+  customLayoutFns
+);
+
+export default createLayout({
+  varFns,
+});

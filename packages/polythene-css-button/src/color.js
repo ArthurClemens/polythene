@@ -1,76 +1,178 @@
-const style = (scopes, selector, componentVars, tint) => {
-  const normalBorder   = componentVars["color_" + tint + "_border"]          || "transparent";
-  const activeBorder   = componentVars["color_" + tint + "_active_border"]   || normalBorder;
-  const disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [{
-    [scopes.map(s => s + selector).join(",")]: {
-      "&, &:link, &:visited": {
-        color: componentVars["color_" + tint + "_text"]
-      },
+import { sel, createColor } from "polythene-core-css";
 
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_background"],
-        borderColor: normalBorder
-      },
-
-      ".pe-button--disabled": {
-        color: componentVars["color_" + tint + "_disabled_text"],
-
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-          borderColor: disabledBorder
-        }
-      },
-
-      " .pe-button__focus": {
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      },
-
-      ".pe-button--selected": {
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_active_background"],
-          borderColor: activeBorder
-        },
-        " .pe-button__focus": {
-          opacity: 1,
-          backgroundColor: componentVars["color_" + tint + "_focus_background"]
-        }
-      },
-
-      ".pe-button--focus": {
+const generalFns = ({
+  general_styles: selector => [
+    sel(selector, {
+      ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
           opacity: 1
         }
-      }
-    }
-  }];
-};
+      },
+    })
+  ],
+});
 
-export const noTouchStyle = (scopes, selector, componentVars, tint) => {
-  const normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  const hoverBorder  = componentVars["color_" + tint + "_border"] || normalBorder;
-  return [{
-    [[].concat(scopes.map(s => s + selector + ":hover").join(",")).concat(scopes.map(s => s + selector + ":active").join(","))]: {
-      ":not(.pe-button--selected):not(.pe-button--inactive)": {
-        color: componentVars["color_" + tint + "_hover"] || componentVars["color_" + tint + "_text"],
-        borderColor: hoverBorder,
+const tintFns = tint => ({
 
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_hover_background"] || componentVars["color_" + tint + "_background"]
+  // Text
+
+  ["color_" + tint + "_text"]: (selector, vars) => [
+    sel(selector, {
+      ":not(.pe-button--disabled)": {
+        "&, &:link, &:visited": {
+          color: vars["color_" + tint + "_text"]
         },
+      }
+    })
+  ],
+  ["color_" + tint + "_disabled_text"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--disabled": {
+        color: vars["color_" + tint + "_disabled_text"],
+      },
+    })
+  ],
 
-        " .pe-button__wash": {
-          backgroundColor: componentVars["color_" + tint + "_wash_background"],
+  // Background
+
+  ["color_" + tint + "_background"]: (selector, vars) => [
+    sel(selector, {
+      ":not(.pe-button--disabled)": {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_background"],
+        },
+      }
+    })
+  ],
+  ["color_" + tint + "_focus_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__focus": {
+        backgroundColor: vars["color_" + tint + "_focus_background"]
+      },
+    })
+  ],
+  ["color_" + tint + "_active_background"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--selected": {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_active_background"]
+        }
+      },
+    })
+  ],
+  ["color_" + tint + "_disabled_background"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--disabled": {
+        " .pe-button__content": {
+          backgroundColor: vars["color_" + tint + "_disabled_background"],
+        }
+      },
+    })
+  ],
+
+  // Borders
+
+  ["color_" + tint + "_border"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--border:not(.pe-button--disabled)": {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_border"],
+        },
+      }
+    })
+  ],
+
+  ["color_" + tint + "_active_border"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--border.pe-button--selected": {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_active_border"],
+        }
+      },
+    })
+  ],
+  ["color_" + tint + "_disabled_border"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--border.pe-button--disabled": {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_disabled_border"],
+        }
+      },
+    })
+  ],
+
+  // Icon
+
+  ["color_" + tint + "_icon"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__dropdown": {
+        color: vars["color_" + tint + "_icon"]
+      },
+    })
+  ],
+
+  // Separator
+
+  ["color_" + tint + "_separator"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--separator-start": {
+        " .pe-button__content": {
+          borderColor: vars["color_" + tint + "_separator"]
         }
       }
-    }
-  }];
-};
+    })
+  ]
 
-export default (selector, componentVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light"),
-];
+});
 
+const hoverTintFns = tint => ({
+
+  ["color_" + tint + "_hover"]: (selector, vars) => [
+    sel(selector, {
+      color: vars["color_" + tint + "_hover"],
+    })
+  ],
+
+  ["color_" + tint + "_hover_border"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__content": {
+        borderColor: vars["color_" + tint + "_hover_border"],
+      },
+    })
+  ],
+
+  ["color_" + tint + "_wash_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__wash": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
+      },
+    })
+  ],
+
+  ["color_" + tint + "_hover_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__content": {
+        backgroundColor: vars["color_" + tint + "_hover_background"]
+      },
+    })
+  ],
+
+  ["color_" + tint + "_hover_icon"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__dropdown": {
+        color: vars["color_" + tint + "_hover_icon"],
+      }
+    })
+  ],
+
+});
+
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+
+const lightTintHoverFns = hoverTintFns("light");
+const darkTintHoverFns = hoverTintFns("dark");
+
+export default createColor({
+  varFns: { lightTintFns, darkTintFns, lightTintHoverFns, darkTintHoverFns }
+});

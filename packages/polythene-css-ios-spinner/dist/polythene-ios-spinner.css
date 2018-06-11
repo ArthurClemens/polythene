@@ -1,11 +1,38 @@
+.pe-ios-spinner .pe-ios-spinner__blades {
+  transform: translateZ(0);
+  position: relative;
+  width: 100%;
+  height: 100%
+}
+
+.pe-ios-spinner .pe-ios-spinner__blade {
+  position: absolute;
+  width: 9%;
+  height: 28%;
+  left: 45.5%;
+  top: 36%;
+  opacity: 0;
+  border-radius: 50px
+}
+
+@keyframes iosSpinnerFade {
+  0% {
+    opacity: .64
+  }
+
+  to {
+    opacity: .035
+  }
+}
+
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:first-of-type {
   transform: rotate(1turn) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s 0s linear infinite
+  animation: iosSpinnerFade 1s 0ms linear infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(2) {
   transform: rotate(330deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.08333333333333333s linear infinite
+  animation: iosSpinnerFade 1s -83.33333333333333ms linear infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(3) {
@@ -58,46 +85,19 @@
   animation: iosSpinnerFade 1s -.9166666666666666s linear infinite
 }
 
-.pe-ios-spinner .pe-ios-spinner__blades {
-  transform: translateZ(0);
-  position: relative;
-  width: 100%;
-  height: 100%
-}
-
-.pe-ios-spinner .pe-ios-spinner__blade {
-  position: absolute;
-  width: 9%;
-  height: 28%;
-  left: 45.5%;
-  top: 36%;
-  opacity: 0;
-  border-radius: 50px
-}
-
-@keyframes iosSpinnerFade {
-  0% {
-    opacity: .64
-  }
-
-  to {
-    opacity: .035
-  }
+.pe-dark-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-dark-tone .pe-ios-spinner .pe-ios-spinner__blade {
+  background: currentcolor
 }
 
 .pe-dark-tone.pe-ios-spinner,.pe-dark-tone .pe-ios-spinner {
   color: #fff
 }
 
-.pe-dark-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-dark-tone .pe-ios-spinner .pe-ios-spinner__blade {
+.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone .pe-ios-spinner .pe-ios-spinner__blade {
   background: currentcolor
 }
 
 .pe-ios-spinner,.pe-light-tone.pe-ios-spinner,.pe-light-tone .pe-ios-spinner {
   color: #000
-}
-
-.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone .pe-ios-spinner .pe-ios-spinner__blade {
-  background: currentcolor
 }
 /*# sourceMappingURL=polythene-ios-spinner.css.map */

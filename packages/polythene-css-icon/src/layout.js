@@ -1,42 +1,50 @@
-import { vars } from "polythene-theme";
+import { sel, createLayout } from "polythene-core-css";
 
-const iconSizesPx = (size = vars.unit_icon_size) => ({
-  width:  size + "px",
-  height: size + "px"
-});
+const sizeDirective = size => (selector, vars) =>
+  sel(selector, {
+    [`.pe-icon--${size}`]: {
+      width:  vars[`size_${size}`] + "px",
+      height: vars[`size_${size}`] + "px",
+    }
+  });
 
-export default (selector, componentVars) => [{
-  [selector]: {
-    display: "inline-block",
-    verticalAlign: "middle",
-    backgroundRepeat: "no-repeat",
-    position: "relative",
-    fontSize: 0,
-    lineHeight: 0,
+const varFns = Object.assign({},
+  {
+    general_styles: selector => [
+      sel(selector, {
+        display: "inline-block",
+        verticalAlign: "middle",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        fontSize: 0,
+        lineHeight: 0,
 
-    ".pe-icon--avatar": {
-      borderRadius: "50%",
-    },
-    
-    ".pe-icon--avatar img": {
-      border: "none",
-      borderRadius: "50%",
-      width: "inherit",
-      height: "inherit"
-    },
+        ".pe-icon--avatar": {
+          borderRadius: "50%",
+        },
+        
+        ".pe-icon--avatar img": {
+          border: "none",
+          borderRadius: "50%",
+          width: "inherit",
+          height: "inherit"
+        },
 
-    " img": {
-      height: "inherit"
-    },
+        " img": {
+          height: "inherit"
+        },
 
-    " .pe-svg, .pe-svg > div": { /* React creates an additional div when wrapping an SVG */
-      width: "inherit",
-      height: "inherit"
-    },
+        " .pe-svg, .pe-svg > div": { /* React creates an additional div when wrapping an SVG */
+          width: "inherit",
+          height: "inherit"
+        },
+      })
+    ],
+  },
+  ["small", "regular", "medium", "large"].reduce((acc, size) => (
+    acc[`size_${size}`] = sizeDirective(size),
+    acc
+  ), {})
+);
 
-    ".pe-icon--small":   iconSizesPx(componentVars.size_small),
-    ".pe-icon--regular": iconSizesPx(componentVars.size_regular),
-    ".pe-icon--medium":  iconSizesPx(componentVars.size_medium),
-    ".pe-icon--large":   iconSizesPx(componentVars.size_large)
-  }
-}];
+export default createLayout({ varFns });

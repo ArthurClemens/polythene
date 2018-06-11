@@ -5,11 +5,17 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Options](#options)
+- [Options](#options-1)
+- [Types of menu](#types-of-menu)
 - [Usage](#usage)
-  - [Hiding](#hiding)
+  - [Showing](#showing)
+  - [Hiding the menu](#hiding-the-menu)
   - [Positioning](#positioning)
+  - [Long lists: menu height and scrolling](#long-lists-menu-height-and-scrolling)
   - [Callbacks](#callbacks)
-  - [Dialog as simple menu](#dialog-as-simple-menu)
+  - [Dropdown menu](#dropdown-menu)
+  - [Exposing dropdown menu](#exposing-dropdown-menu)
+  - [Dialog menu](#dialog-menu)
   - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
 - [Appearance](#appearance)
   - [Styling](#styling)
@@ -25,11 +31,31 @@
 [Menu options](../menu.md)
 
 
+<a id="options-1"></a>
+## Options
+
+[Menu options](../menu.md)
+
+
+<a id="types-of-menu"></a>
+## Types of menu
+
+* Dropdown menu
+  * The placement varies with the element that opens it; often the menu covers the clicked item. [Usage](#dropdown-menu)
+* Exposing dropdown menu
+  * The menu is placed below the element, which display the currently selected menu item. [Usage](#exposing-dropdown-menu) 
+* Dialog menu
+  * This variant was introduced in the first version of Material Design specs. When a menu contains elements that don't fit on single lines, the guidelines suggested to use a Dialog instead. This type of menu behaves more global as it doesn't scroll with the page; it could even be made a modal dialog.
+  * Examples:
+    * [Dialog menu](#dialog-menu)
+    * [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
+
+
 
 <a id="usage"></a>
 ## Usage
 
-A simple, permanently visible menu:
+A bare bones menu (made permanently visible to start simple):
 
 <a id="with-jsx"></a>
 #### With JSX
@@ -65,18 +91,23 @@ h(Menu, {
 })
 ~~~
 
-An app will probably never use a permanent menu, but instead show the menu after a user action.
+<a id="showing"></a>
+### Showing
+
+In real life we want to show a menu after user interaction.
 
 A menu floats on top of other things, so it acts a bit similar to a [Dialog](dialog.md). But the behavior of a menu is entirely different - instead of being displayed globally, its context is close to the caller (a button or clickable list item). The local nature of the menu can be seen when scrolling a page: an open menu will scroll along with the page.
 
-A number of elements must play together:
+Four things are involved in creating a menu:
 
-1. A Menu component
-2. A Menu "show" state (`true` or `false`)
+1. The Menu component
+2. The menu visibility state (`show: true` or `show: false`)
 3. A button (or link or clickable list item) to set the menu state; and to act as Menu's target for positioning
-4. A container that holds both menu and button (or list); because the Menu is positioned `absolute`, the container must have style `position: relative`
+4. A container that holds both menu and button (or list)
+    * Because the menu is positioned `absolute`, the container must have style `position: relative`
+    * To use the maximum available space, the container must have a height
 
-Because we are using state, this is best created with a custom component where we can store the "menu open" state.
+Menu state is best stored locally, in the container component:
 
 <a id="with-jsx-1"></a>
 #### With JSX
@@ -175,10 +206,12 @@ export default class extends Component {
 ~~~
 
 
-<a id="hiding"></a>
-### Hiding
+<a id="hiding-the-menu"></a>
+### Hiding the menu
 
 A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
+
+The option `didHide` is used to reset the local visibility variable.
 
 
 <a id="positioning"></a>
@@ -186,26 +219,60 @@ A menu is closed by tapping outside of the menu, or by pressing ESCAPE.
 
 To position a menu to another element, pass parameters `target` (set to the selector of the element) and optionally `origin` to relatively position the menu.
 
-To shift the menu vertically to a selected menu item, the menu item must have the class "selected".
-To override this behavior, pass `reposition: false`.
+To be able to shift the menu vertically to the selected menu item, that menu item (List Tile) must have the class `pe-list-tile--selected` (set with option `selected: true`).
+
+
+<a id="long-lists-menu-height-and-scrolling"></a>
+### Long lists: menu height and scrolling
+
+Menu lists with a small number of items will fit on any screen. Longer lists need to be constrained to a certain size, especially on mobile.
+
+Set the menu height with option `height`:
+
+* Use a Number with or without pixels or percentage, for example: `160`, `"160px"` or `"75%"`
+  * When using percentage the parent element must have a height
+* Use "max" to use the maximum available height within the parent element (the top position and bottom margin will be subtracted automatically)
+
+Content that does not fit the menu frame will be scrollable.
+
+* To scroll a selected item into view when the menu appears, use `scrollTarget` to pass a selector, for example: `scrollTarget: ".list-item-12"` 
 
 
 <a id="callbacks"></a>
 ### Callbacks
 
-Two optional callbacks are used after the transition: `didShow` and `didHide`. As shown in the example above, `didHide` is used to  update the Menu state.
+Two optional callbacks are used after the transition: `didShow` and `didHide`. As shown in the example above, `didHide` is used to update the Menu state.
+
+You can add different behavior, for instance route to another page:
 
 ~~~javascript
-didHide: id => (this.setState({ isOpen: false }), history.push("/"))
+didHide: id => (
+  this.setState({ isOpen: false }),
+  history.push("/")
+)
 ~~~
 
 
+<a id="dropdown-menu"></a>
+### Dropdown menu
+
+The placement varies with the element that opens it; often the menu covers the clicked item.
+
+  * Use option `offsetV` with value `0` to cover the target element. Use `offsetH` to tweak the horizontal position.
+  * The menu appears with a fade-in animation, unless option `origin` is set, in which case it will appear from a corner or a side.
+  * Use `reposition: true` to align the menu to the selected value (when the clicked element is a List Tiles).
 
 
-<a id="dialog-as-simple-menu"></a>
-### Dialog as simple menu
+<a id="exposing-dropdown-menu"></a>
+### Exposing dropdown menu
 
-When a menu contains elements that don't fit on single lines, Material Design guidelines suggest to use a [Dialog](dialog.md) instead.
+The menu is exposes the clicked element above it. This is the default menu behavior: a menu has a top position that takes the clicked element into account.
+
+The appearance will look more natural when `origin` is set to "top" - it will look as if the menu is appearing out of the clicked element.
+
+
+<a id="dialog-menu"></a>
+### Dialog menu
 
 A dialog can be used as menu by passing param `menu` to the dialog component. This will show a dialog with menu contents, centered on the screen:
 
@@ -310,6 +377,10 @@ Similar to the simple menu, we keep track of the "open" state. Here we're adding
 <Menu 
   target={`#${target}`}
   show={isOpen}
+  size={5}
+  offsetH={16}
+  offsetV={0}
+  reposition
   didHide={() => this.setState({ isOpen: false })
 >
   <List>
@@ -337,6 +408,10 @@ h(Menu,
   {
     target: `#${target}`,
     show: isOpen,
+    size: 5,
+    offsetH: 16,
+    offsetV: 0,
+    reposition: true,
     didHide: () => this.setState({ isOpen: false })
   },
   h(List,

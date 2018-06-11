@@ -3,6 +3,7 @@ Generic show/hide transition module
 */
 
 import { isClient } from "./iso";
+import { styleDurationToMs } from "./style";
 
 // defaults
 const DEFAULT_DURATION = .240;
@@ -15,13 +16,6 @@ export const show = opts =>
 
 export const hide = opts =>
   transition(opts, "hide");
-
-const computedStyleDurationToMs = durationStr => {
-  const parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
-  return isNaN(parsed)
-    ? 0
-    : parsed;
-};
 
 /*
 opts:
@@ -49,10 +43,10 @@ const transition = (opts, state) => {
         : {};
       const duration = opts.hasDuration
         ? opts.duration * 1000.0
-        : computedStyleDurationToMs(computedStyle.transitionDuration);
+        : styleDurationToMs(computedStyle.transitionDuration);
       const delay = opts.hasDelay
         ? opts.delay * 1000.0
-        : computedStyleDurationToMs(computedStyle.transitionDelay);
+        : styleDurationToMs(computedStyle.transitionDelay);
       const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       const before = (opts.before && state === "show")

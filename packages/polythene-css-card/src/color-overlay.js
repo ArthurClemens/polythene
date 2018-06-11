@@ -1,13 +1,22 @@
+import { sel, createColor } from "polythene-core-css";
 
-const style = (scopes, selector, componentVars, tint) => [{
-  [scopes.map(s => s + selector).join(",")]: {
-    " .pe-card__overlay__content": {
-      backgroundColor: componentVars["color_" + tint + "_overlay_background"]
-    }
-  }
-}];
+const generalFns = ({
+  general_styles: selector => [], // eslint-disable-line no-unused-vars
+});
 
-export default (selector, componentVars) => [
-  style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-];
+const tintFns = tint => ({
+  ["color_" + tint + "_overlay_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-card__overlay__content": {
+        backgroundColor: vars["color_" + tint + "_overlay_background"]
+      }
+    })
+  ],
+});
+
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+
+export default createColor({
+  varFns: { lightTintFns, darkTintFns }
+});

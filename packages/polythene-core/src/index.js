@@ -6,5 +6,6 @@ export { isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, poi
 export { Multi } from "./multi";
 export { show, hide, transitionComponent } from "./transition";
 export { throttle, subscribe, unsubscribe, emit } from "./events";
-export { getStyle, isRTL } from "./style";
+export { getStyle, isRTL, styleDurationToMs } from "./style";
 export { deprecation } from "./developer";
+export { iconDropdownUp, iconDropdownDown } from "./icons";

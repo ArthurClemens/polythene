@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -42,11 +42,11 @@
 
     // states
     permanent: "pe-menu--permanent",
-    fullHeight: "pe-menu--full-height",
     floating: "pe-menu--floating",
     visible: "pe-menu--visible",
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
+    origin: "pe-menu--origin",
 
     // lookup
     listTile: listTileClasses.component,
@@ -170,7 +170,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     _defineProperty({
-      className: [attrs.parentClassName || classes.component, attrs.fullScreen ? classes.fullScreen : null,
+      className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null,
       // classes.visible is set in showDialog though transition
       attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
       "data-spawn-id": attrs.spawnId,
@@ -258,35 +258,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    position: "fixed",
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
-    padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
-
-    animation_delay: "0s",
-    animation_duration: ".220s",
-    animation_timing_function: "ease-in-out",
-    animation_hide_css: "opacity: 0;",
-    animation_show_css: "opacity: 1;",
-
-    color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-    color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-    color_light_background: rgba(polytheneTheme.vars.color_light_background),
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background),
-
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
-  };
-
   exports.coreDialog = dialog;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -19,11 +19,6 @@
   display: none
 }
 
-.pe-search .pe-textfield .pe-textfield__input,.pe-search .pe-textfield .pe-textfield__label {
-  font-size: 20px;
-  line-height: 20px
-}
-
 .pe-search .pe-textfield .pe-textfield__input {
   border: none
 }
@@ -53,9 +48,34 @@
   align-self: center
 }
 
+.pe-search .pe-textfield .pe-textfield__input,.pe-search .pe-textfield .pe-textfield__label {
+  font-size: 20px
+}
+
+.pe-search.pe-search--full-width {
+  border-radius: 0
+}
+
+.pe-search.pe-search--full-width,.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__input-area,.pe-search.pe-search--full-width .pe-textfield__label {
+  height: 56px
+}
+
+.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__label {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-right: 0
+}
+
+.pe-search.pe-search--full-width {
+  padding: 0 8px
+}
+
+.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__label {
+  padding-left: 16px
+}
+
 .pe-search.pe-search--inset {
-  border-radius: 2px;
-  padding: 0
+  border-radius: 4px
 }
 
 .pe-search.pe-search--inset,.pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__input-area,.pe-search.pe-search--inset .pe-textfield__label {
@@ -64,24 +84,25 @@
 }
 
 .pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__label {
-  padding: 14px 0 14px 16px
+  padding-left: 16px;
+  padding-right: 0
 }
 
-.pe-search.pe-search--full-width {
-  border-radius: 0;
-  padding: 0 8px
+.pe-search.pe-search--inset {
+  padding: 0
 }
 
-.pe-search.pe-search--full-width,.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__input-area,.pe-search.pe-search--full-width .pe-textfield__label {
-  height: 56px
+.pe-search .pe-textfield__input,.pe-search .pe-textfield__label {
+  line-height: 20px
 }
 
-.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__label {
-  padding: 18px 0 18px 16px
+.pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__label {
+  padding-top: 14px;
+  padding-bottom: 14px
 }
 
-.pe-dark-tone.pe-search,.pe-dark-tone .pe-search {
-  background-color: #222
+.pe-dark-tone.pe-search .pe-textfield__input-area,.pe-dark-tone .pe-search .pe-textfield__input-area {
+  background-color: transparent
 }
 
 .pe-dark-tone.pe-search .pe-textfield .pe-textfield__label,.pe-dark-tone .pe-search .pe-textfield .pe-textfield__label {
@@ -92,12 +113,12 @@
   color: #fff
 }
 
-.pe-dark-tone.pe-search .pe-textfield .pe-textfield__input-area,.pe-dark-tone .pe-search .pe-textfield .pe-textfield__input-area {
-  background-color: transparent
+.pe-dark-tone.pe-search,.pe-dark-tone .pe-search {
+  background-color: #222
 }
 
-.pe-light-tone.pe-search,.pe-light-tone .pe-search,.pe-search {
-  background-color: #fff
+.pe-light-tone.pe-search .pe-textfield__input-area,.pe-light-tone .pe-search .pe-textfield__input-area,.pe-search .pe-textfield__input-area {
+  background-color: transparent
 }
 
 .pe-light-tone.pe-search .pe-textfield .pe-textfield__label,.pe-light-tone .pe-search .pe-textfield .pe-textfield__label,.pe-search .pe-textfield .pe-textfield__label {
@@ -108,7 +129,7 @@
   color: rgba(0,0,0,.87)
 }
 
-.pe-light-tone.pe-search .pe-textfield .pe-textfield__input-area,.pe-light-tone .pe-search .pe-textfield .pe-textfield__input-area,.pe-search .pe-textfield .pe-textfield__input-area {
-  background-color: transparent
+.pe-light-tone.pe-search,.pe-light-tone .pe-search,.pe-search {
+  background-color: #fff
 }
 /*# sourceMappingURL=polythene-search.css.map */

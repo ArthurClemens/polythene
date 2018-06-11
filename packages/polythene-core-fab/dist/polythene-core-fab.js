@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme']));
-}(this, (function (exports,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.polythene = {})));
+}(this, (function (exports) { 'use strict';
 
   var classes = {
     component: "pe-fab",
@@ -26,7 +26,7 @@
 
     var attrs = vnode.attrs;
     var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-    return _extends({}, {
+    return _extends({}, attrs, {
       content: h("div", { className: classes.content }, content),
       parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
       // defaults
@@ -38,7 +38,7 @@
       ink: true,
       wash: true,
       animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
-    }, attrs);
+    });
   };
 
   var createContent = function createContent(vnode) {
@@ -50,29 +50,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    size_regular: 7 * polytheneTheme.vars.grid_unit_component,
-    size_mini: 5 * polytheneTheme.vars.grid_unit_component,
-    padding_regular: 2 * polytheneTheme.vars.grid_unit_component,
-
-    color_light: rgba(polytheneTheme.vars.color_primary_foreground),
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-
-    color_light_focus_opacity: polytheneTheme.vars.blend_light_background_hover_medium, // same as button
-    color_light_background: rgba(polytheneTheme.vars.color_primary),
-
-    color_dark: rgba(polytheneTheme.vars.color_primary_foreground),
-    color_dark_focus_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover), // same as button
-    color_dark_background: rgba(polytheneTheme.vars.color_primary)
-  };
-
   exports.coreFAB = fab;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

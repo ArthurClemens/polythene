@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-card",
@@ -177,22 +177,29 @@
   });
 
   var buttonClasses = {
-    base: "pe-button",
-    component: "pe-button pe-text-button",
-    row: "pe-button-row",
+      component: "pe-text-button",
+      super: "pe-button",
+      row: "pe-button-row",
 
-    // elements
-    content: "pe-button__content",
-    focus: "pe-button__focus",
-    label: "pe-button__label",
-    wash: "pe-button__wash",
+      // elements      
+      content: "pe-button__content",
+      focus: "pe-button__focus",
+      label: "pe-button__label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
 
-    // states
-    border: "pe-button--border",
-    disabled: "pe-button--disabled",
-    focused: "pe-button--focus",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected"
+      // states      
+      border: "pe-button--border",
+      disabled: "pe-button--disabled",
+      focused: "pe-button--focus",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      extraWide: "pe-button--extra-wide",
+      separatorAtStart: "pe-button--separator-start",
+      dropdownOpen: "pe-button--dropdown-open",
+      dropdownClosed: "pe-button--dropdown-closed"
   };
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -375,61 +382,10 @@
     createContent: createContent$3
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var padding_v = 24;
-  var padding_actions_v = 8;
-  var actions_button_margin_v = 2;
-
-  var vars = {
-    image_size_small: 1 * 80,
-    image_size_regular: 1.4 * 80,
-    image_size_medium: 2 * 80,
-    image_size_large: 3 * 80,
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    padding_h: 16,
-    offset_small_padding_v: padding_v - 16,
-    padding_actions_h: 8,
-    title_padding_h: 16,
-    title_padding_v: 24,
-    tight_title_padding_bottom: 16,
-    text_padding_h: 16,
-    text_padding_v: 16,
-    text_padding_bottom: 24,
-    tight_text_padding_bottom: 16,
-    subtitle_line_height_padding_bottom: 7,
-    text_line_height_padding_top: 6,
-    text_line_height_padding_bottom: 7,
-    one_line_height_with_icon: 72,
-    icon_element_width: 72 - 4,
-    one_line_padding_v: 8,
-    actions_padding_v: 0,
-    actions_button_margin_v: actions_button_margin_v,
-    actions_vertical_padding_v: padding_actions_v - actions_button_margin_v,
-
-    color_light_main_background: rgba(polytheneTheme.vars.color_light_background),
-    color_light_title_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_subtitle_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
-    color_light_actions_border: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
-    color_light_overlay_background: rgba(polytheneTheme.vars.color_light_background, polytheneTheme.vars.blend_light_overlay_background),
-
-    color_dark_main_background: rgba(polytheneTheme.vars.color_dark_background),
-    color_dark_title_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_subtitle_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular),
-    color_dark_actions_border: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light),
-    color_dark_overlay_background: rgba(polytheneTheme.vars.color_dark_background, polytheneTheme.vars.blend_dark_overlay_background)
-  };
-
   exports.coreCard = card;
   exports.coreCardActions = cardActions;
   exports.coreCardMedia = cardMedia;
   exports.coreCardPrimary = cardPrimary;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

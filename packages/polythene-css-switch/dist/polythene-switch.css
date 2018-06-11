@@ -1,99 +1,20 @@
 .pe-switch-control .pe-button.pe-control__button {
-  left: -12px;
-  right: auto
-}
-
-.pe-switch-control .pe-control__label {
-  padding-right: 0;
-  padding-left: 16px
-}
-
-.pe-switch-control {
-  display: inline-block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
-}
-
-.pe-switch-control input[type=checkbox] {
-  display: none
-}
-
-.pe-switch-control .pe-control__form-label {
-  -ms-flex-direction: row;
-  flex-direction: row;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 0;
-  color: inherit
-}
-
-.pe-switch-control .pe-control__form-label:focus {
-  outline: 0
-}
-
-.pe-switch-control.pe-control--inactive .pe-control__form-label {
-  cursor: default
-}
-
-.pe-switch-control .pe-control__box {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  width: 24px;
-  height: 24px;
-  color: inherit;
-  flex-shrink: 0
-}
-
-.pe-switch-control .pe-control__box:focus {
-  outline: 0
-}
-
-.pe-switch-control .pe-button.pe-control__button {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: opacity;
-  position: absolute;
-  top: -12px;
-  z-index: 1
-}
-
-.pe-switch-control.pe-control--off .pe-control__button--on {
-  opacity: 0;
-  z-index: 0
-}
-
-.pe-switch-control.pe-control--off .pe-control__button--off,.pe-switch-control.pe-control--on .pe-control__button--on {
-  opacity: 1;
-  z-index: 1
-}
-
-.pe-switch-control.pe-control--on .pe-control__button--off {
-  opacity: 0;
-  z-index: 0
+  transition-property: opacity
 }
 
 .pe-switch-control .pe-control__label {
-  align-self: center
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all
 }
 
-.pe-switch-control.pe-control--disabled .pe-control__form-label {
-  cursor: auto
-}
-
-.pe-switch-control.pe-control--disabled .pe-control__button {
-  pointer-events: none
-}
-
-.pe-switch-control .pe-button__content .pe-icon {
-  position: absolute
+.pe-switch-control .pe-control__box {
+  width: 24px;
+  height: 24px
 }
 
 .pe-switch-control.pe-control--small .pe-control__box {
@@ -168,30 +89,14 @@
   left: 12px
 }
 
-.pe-rtl .pe-switch-control .pe-button.pe-control__button,[dir=rtl] .pe-switch-control .pe-button.pe-control__button {
-  right: -12px;
-  left: auto
-}
-
-.pe-rtl .pe-switch-control .pe-control__label,[dir=rtl] .pe-switch-control .pe-control__label {
-  padding-left: 0;
-  padding-right: 16px
-}
-
 .pe-switch-control .pe-switch-control__track {
   left: 0;
-  right: auto
-}
-
-.pe-switch-control .pe-switch-control__thumb,.pe-switch-control .pe-switch-control__track {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all;
+  right: auto;
   position: absolute
 }
 
 .pe-switch-control .pe-switch-control__thumb {
+  position: absolute;
   z-index: 1;
   color: inherit
 }
@@ -200,23 +105,16 @@
   outline: 0
 }
 
-.pe-switch-control .pe-control__label {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all
-}
-
 .pe-switch-control .pe-switch-control__knob {
   position: relative;
   border-radius: 50%
 }
 
-.pe-switch-control .pe-button__content {
+.pe-switch-control .pe-icon-button .pe-button__content {
   transition: none
 }
 
-.pe-switch-control .pe-button__content .pe-switch-control__knob .pe-icon {
+.pe-switch-control .pe-icon-button .pe-button__content .pe-switch-control__knob .pe-icon {
   position: absolute;
   top: 0;
   right: 0;
@@ -226,7 +124,25 @@
   height: 100%
 }
 
-.pe-switch-control .pe-button__focus {
+:root .pe-switch-control input,_:-ms-fullscreen input {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  opacity: 0;
+  cursor: pointer
+}
+
+:root .pe-switch-control label,_:-ms-fullscreen label {
+  cursor: auto
+}
+
+.pe-switch-control .pe-button__focus,.pe-switch-control .pe-control__label,.pe-switch-control .pe-switch-control__thumb,.pe-switch-control .pe-switch-control__track {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
@@ -502,151 +418,97 @@
   left: auto
 }
 
-:root .pe-switch-control input,_:-ms-fullscreen input {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  opacity: 0;
-  cursor: pointer
-}
-
-:root .pe-switch-control label,_:-ms-fullscreen label {
-  cursor: auto
-}
-
-.pe-dark-tone.pe-switch-control .pe-control__label,.pe-dark-tone .pe-switch-control .pe-control__label {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__track {
-  opacity: .55;
-  background-color: #717171
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #bdbdbd
-}
-
 .pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__knob {
   background-color: currentcolor
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-switch-control.pe-control--off .pe-button--focus .pe-button__focus {
-  opacity: .09;
-  background-color: #fff
 }
 
 .pe-dark-tone.pe-switch-control.pe-control--off .pe-icon,.pe-dark-tone .pe-switch-control.pe-control--off .pe-icon {
   color: currentcolor
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__track {
-  opacity: 1;
-  background-color: rgba(100,181,249,.4)
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3
-}
-
 .pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__knob {
   background-color: currentcolor
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-switch-control.pe-control--on .pe-button--focus .pe-button__focus {
-  opacity: .14;
-  background-color: #2196f3
 }
 
 .pe-dark-tone.pe-switch-control.pe-control--on .pe-icon,.pe-dark-tone .pe-switch-control.pe-control--on .pe-icon {
   color: currentcolor
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-control__label,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-control__label,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-control__label,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-control__label {
-  color: hsla(0,0%,100%,.26)
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb {
+  color: #2196f3
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
-  opacity: .3;
-  background-color: #717171
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb {
+  color: #bdbdbd
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
+.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
   color: #555
 }
 
-.pe-light-tone.pe-switch-control .pe-control__label,.pe-light-tone .pe-switch-control .pe-control__label,.pe-switch-control .pe-control__label {
-  color: rgba(0,0,0,.54)
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__track {
+  background-color: rgba(100,181,249,.4);
+  opacity: 1
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__track,.pe-switch-control.pe-control--off .pe-switch-control__track {
-  opacity: .55;
-  background-color: rgba(0,0,0,.73)
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__track {
+  background-color: #717171;
+  opacity: .55
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #f1f1f1
+.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
+  background-color: #717171;
+  opacity: .3
 }
 
 .pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-switch-control.pe-control--off .pe-switch-control__knob {
   background-color: currentcolor
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone .pe-switch-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-switch-control.pe-control--off .pe-button--focus .pe-button__focus {
-  opacity: .07;
-  background-color: #000
-}
-
 .pe-light-tone.pe-switch-control.pe-control--off .pe-icon,.pe-light-tone .pe-switch-control.pe-control--off .pe-icon,.pe-switch-control.pe-control--off .pe-icon {
   color: currentcolor
-}
-
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__track,.pe-switch-control.pe-control--on .pe-switch-control__track {
-  opacity: .55;
-  background-color: #64b5f9
-}
-
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3
 }
 
 .pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-switch-control.pe-control--on .pe-switch-control__knob {
   background-color: currentcolor
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone .pe-switch-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-switch-control.pe-control--on .pe-button--focus .pe-button__focus {
-  opacity: .11;
-  background-color: #2196f3
-}
-
 .pe-light-tone.pe-switch-control.pe-control--on .pe-icon,.pe-light-tone .pe-switch-control.pe-control--on .pe-icon,.pe-switch-control.pe-control--on .pe-icon {
   color: currentcolor
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-control__label,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-control__label,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-control__label,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-control__label,.pe-switch-control.pe-control--off.pe-control--disabled .pe-control__label,.pe-switch-control.pe-control--on.pe-control--disabled .pe-control__label {
-  color: rgba(0,0,0,.26)
+.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-switch-control.pe-control--on .pe-switch-control__thumb {
+  color: #2196f3
+}
+
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-switch-control.pe-control--off .pe-switch-control__thumb {
+  color: #f1f1f1
+}
+
+.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
+  color: #eee
+}
+
+.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__track,.pe-switch-control.pe-control--on .pe-switch-control__track {
+  background-color: #64b5f9;
+  opacity: .55
+}
+
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__track,.pe-switch-control.pe-control--off .pe-switch-control__track {
+  background-color: rgba(0,0,0,.73);
+  opacity: .55
 }
 
 .pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
-  opacity: 1;
-  background-color: rgba(0,0,0,.09)
+  background-color: rgba(0,0,0,.09);
+  opacity: 1
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
-  color: #bdbdbd
+.pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--on .pe-button__wash {
+  background-color: rgba(33,150,243,.14)
 }
 
-html.pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--on .pe-button__wash {
-  background-color: #2196f3
-}
-
-html.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,html.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
-  background-color: #2196f3
+.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
+  background-color: rgba(33,150,243,.14)
 }
 /*# sourceMappingURL=polythene-switch.css.map */

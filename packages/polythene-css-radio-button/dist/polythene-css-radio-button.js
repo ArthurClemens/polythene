@@ -1,42 +1,51 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-selection-control'), require('polythene-core-css'), require('polythene-core-radio-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-selection-control', 'polythene-core-css', 'polythene-core-radio-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-selection-control'],global['polythene-core-css'],global['polythene-core-radio-button']));
-}(this, (function (exports,polytheneCssSelectionControl,polytheneCoreCss,polytheneCoreRadioButton) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-selection-control')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-selection-control'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-selection-control']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssSelectionControl) { 'use strict';
 
   var classes = {
     component: "pe-radio-control"
   };
 
-  var layout = (function (selector, componentVars) {
-    return [polytheneCssSelectionControl.layout(selector, componentVars, "radio"), {
-      " .pe-radio-group": {
-        display: "flex"
-      }
-    }];
+  var color = polytheneCoreCss.createColor({
+    superColor: polytheneCssSelectionControl.color
   });
 
-  var color = (function (selector, componentVars) {
-    return polytheneCssSelectionControl.color(selector, componentVars);
-  });
+  var varFns = {
+    general_styles: function general_styles() {
+      return {
+        " .pe-radio-group": {
+          display: "flex"
+        }
+      };
+    }
+  };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssSelectionControl.layout });
+
+  var vars = {
+    general_styles: true
+  };
 
   var fns = [layout, color];
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreRadioButton.vars, customVars), fns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreRadioButton.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreRadioButton.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreRadioButton.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

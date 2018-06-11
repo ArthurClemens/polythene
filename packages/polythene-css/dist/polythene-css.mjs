@@ -2,6 +2,8 @@ import * as polytheneCssBaseSpinner from 'polythene-css-base-spinner';
 export { polytheneCssBaseSpinner as BaseSpinnerCSS };
 import * as polytheneCssButton from 'polythene-css-button';
 export { polytheneCssButton as ButtonCSS };
+import * as polytheneCssButtonGroup from 'polythene-css-button-group';
+export { polytheneCssButtonGroup as ButtonGroupCSS };
 import * as polytheneCssCard from 'polythene-css-card';
 export { polytheneCssCard as CardCSS };
 import * as polytheneCssCheckbox from 'polythene-css-checkbox';

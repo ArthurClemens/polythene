@@ -104,7 +104,8 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       exclude: true,
       component: buttonGroup({
         title: "This message tells some things using two lines",
-        className: "notification-tests-blue-notification"
+        className: "notification-tests-blue-notification",
+        timeout: 0
       })
     },
     {
@@ -134,7 +135,7 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       exclude: true,
       component: buttonGroup({
         title: "Transitions as theme",
-        className: "notification-tests-transitions"
+        className: "notification-tests-transitions",        
       })
     },
     {

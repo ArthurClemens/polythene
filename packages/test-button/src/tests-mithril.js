@@ -58,6 +58,11 @@ const mithrilTests = ({ Button, renderer: h }) => {
             label: "Button",
             events: {
               onclick: () => vnode.state.clicked++
+              // onclick: e => {
+              //   if (!e.detail || e.detail == 1) { // activate on first click only to avoid hiding again on multiple clicks
+              //     vnode.state.clicked++;
+              //   }
+              // }
             }
           })
         ]

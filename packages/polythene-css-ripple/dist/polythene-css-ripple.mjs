@@ -1,5 +1,4 @@
-import { mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-ripple';
+import { sel, createColor, mixin, createLayout, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-ripple",
@@ -13,67 +12,93 @@ var classes = {
   wavesAnimating: "pe-ripple__waves--animating"
 };
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var layout = (function (selector) {
-  return [_defineProperty({}, selector, [mixin.fit(), {
-    color: "inherit",
-    borderRadius: "inherit",
-    pointerEvents: "none",
-
-    ":not(.pe-ripple--unconstrained)": {
-      borderRadius: "inherit",
-
-      " .pe-ripple__mask": {
-        overflow: "hidden",
-        borderRadius: "inherit"
-      }
-    },
-    " .pe-ripple__mask": [mixin.fit(), {
-      transform: "translate3d(0,0,0)"
-    }],
-
-    " .pe-ripple__waves": {
-      outline: "1px solid transparent", // for IE10
-      position: "absolute",
-      borderRadius: "50%",
-      pointerEvents: "none",
-      display: "none"
-    },
-    " .pe-ripple__waves--animating": {
-      display: "block"
-    }
-  }])];
-});
-
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var style = function style(scopes, selector, componentVars, tint) {
-  return [_defineProperty$1({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    color: componentVars["color_" + tint] || componentVars["color"] || "inherit"
-  })];
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      color: "inherit"
+    })];
+  }
 };
 
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light")];
+var tintFns = function tintFns(tint) {
+  var _ref;
+
+  return _ref = {}, _defineProperty(_ref, "color", function color(selector, vars) {
+    return [sel(selector, {
+      color: vars["color"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint, function (selector, vars) {
+    return [sel(selector, {
+      color: vars["color_" + tint]
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [mixin.fit(), {
+      color: "inherit",
+      borderRadius: "inherit",
+      pointerEvents: "none",
+
+      ":not(.pe-ripple--unconstrained)": {
+        borderRadius: "inherit",
+
+        " .pe-ripple__mask": {
+          overflow: "hidden",
+          borderRadius: "inherit"
+        }
+      },
+      " .pe-ripple__mask": [mixin.fit(), {
+        transform: "translate3d(0,0,0)"
+      }],
+
+      " .pe-ripple__waves": {
+        outline: "1px solid transparent", // for IE10
+        position: "absolute",
+        borderRadius: "50%",
+        pointerEvents: "none",
+        display: "none"
+      },
+      " .pe-ripple__waves--animating": {
+        display: "block"
+      }
+    }])];
+  }
+};
+
+var layout = createLayout({ varFns: varFns });
+
+var vars = {
+  general_styles: true,
+
+  color: "inherit" // only specify this variable to get both states
+  // color_light:   "inherit",
+  // color_dark:    "inherit"
+};
 
 var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), fns);
+  return styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : styler.createStyleSheets([selector], vars, fns);
 };
 
 styler.generateStyles([selector], vars, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color, getStyle, layout, vars };

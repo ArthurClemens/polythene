@@ -39,7 +39,10 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
           max: MAX_VALUE,
           step: 0,
           value: percentage * MAX_VALUE,
-          onChange: ({ value }) => state.percentage(value / MAX_VALUE),
+          onChange: ({ value }) => (
+            // called when clicking on the Slider
+            state.percentage(value / MAX_VALUE)
+          ),
           style: {
             display: "flex",
             alignItems: "center"

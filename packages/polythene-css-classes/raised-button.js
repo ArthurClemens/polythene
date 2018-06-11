@@ -1,4 +1,5 @@
 
 export default {
-  component: "pe-button pe-text-button pe-raised-button"
+  component: "pe-raised-button",
+  super:     "pe-button pe-text-button"
 };

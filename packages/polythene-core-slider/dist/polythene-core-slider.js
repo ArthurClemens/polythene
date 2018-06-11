@@ -1,82 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-theme'), require('polythene-core')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-theme', 'polythene-core'], factory) :
-  (factory((global.polythene = {}),global['polythene-theme'],global['polythene-core']));
-}(this, (function (exports,polytheneTheme,polytheneCore) { 'use strict';
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var lightForeground = polytheneTheme.vars.color_light_foreground;
-  var darkForeground = polytheneTheme.vars.color_dark_foreground;
-  var activeColor = polytheneTheme.vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
-  var thumb_size = 12;
-  var thumb_touch_size = Math.max(40, thumb_size);
-  var thumb_border_width = 2;
-  var active_thumb_scale = 3 / 2;
-  var disabled_thumb_scale = 1 / 2;
-  var active_pin_thumb_scale = 2 / 6;
-  var largestThumbSize = active_thumb_scale * thumb_size;
-  var largestElement = Math.max(thumb_touch_size, largestThumbSize);
-  var height = Math.max(52, largestThumbSize);
-  var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
-  var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
-
-  var themeVars = {
-    height: height,
-    side_spacing: side_spacing,
-    horizontal_layout_side_spacing: horizontal_layout_side_spacing,
-    thumb_size: thumb_size,
-    thumb_touch_size: thumb_touch_size,
-    track_height: height,
-    bar_height: 2,
-    thumb_border_width: thumb_border_width,
-    active_thumb_scale: active_thumb_scale,
-    animation_duration: polytheneTheme.vars.animation_duration,
-    disabled_thumb_scale: disabled_thumb_scale,
-    active_pin_thumb_scale: active_pin_thumb_scale,
-
-    step_width: 2,
-    pin_height: 32,
-    pin_width: 26,
-    pin_font_size: 10,
-
-    color_light_track_active: rgba(lightForeground, .38),
-    color_light_track_inactive: rgba(lightForeground, .26),
-    color_light_track_value: rgba(activeColor),
-    // background color may be set in theme; disabled by default
-    // color_light_thumb_background:        undefined,
-    color_light_thumb_off: rgba(lightForeground, .26),
-    color_light_thumb_off_focus: rgba(lightForeground),
-    color_light_thumb_off_focus_opacity: .08,
-    color_light_thumb_on: rgba(activeColor),
-    color_light_thumb_on_focus_opacity: .11,
-    color_light_thumb_inactive: rgba(lightForeground, .26),
-    color_light_tick: rgba(lightForeground, 1),
-    color_light_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_disabled_icon: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-    color_light_label: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_secondary),
-    color_light_disabled_label: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-
-    color_dark_track_active: rgba(darkForeground, .3),
-    color_dark_track_inactive: rgba(darkForeground, .2),
-    color_dark_track_value: rgba(activeColor),
-    // background color may be set in theme; disabled by default
-    // color_dark_thumb_background:         undefined,
-    color_dark_thumb_off: rgba(darkForeground, .2),
-    color_dark_thumb_off_focus: rgba(darkForeground),
-    color_dark_thumb_off_focus_opacity: .08,
-    color_dark_thumb_on: rgba(activeColor),
-    color_dark_thumb_on_focus_opacity: .11,
-    color_dark_thumb_inactive: rgba(darkForeground, .2),
-    color_dark_tick: rgba(darkForeground, 1),
-    color_dark_icon: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_disabled_icon: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
-    color_dark_label: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_secondary),
-    color_dark_disabled_label: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
-  };
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-slider",
@@ -86,7 +12,7 @@
     label: "pe-slider__label",
     pin: "pe-slider__pin",
     thumb: "pe-slider__thumb",
-    tick: "pe-slider__ticks-tick",
+    tick: "pe-slider__tick",
     ticks: "pe-slider__ticks",
     track: "pe-slider__track",
     trackBar: "pe-slider__track-bar",
@@ -102,7 +28,8 @@
     hasTrack: "pe-slider--track",
     isActive: "pe-slider--active",
     isAtMin: "pe-slider--min",
-    isDisabled: "pe-slider--disabled"
+    isDisabled: "pe-slider--disabled",
+    tickValue: "pe-slider__tick--value"
   };
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -145,15 +72,16 @@
     updatePinPosition(state);
   };
 
-  var generateTickMarks = function generateTickMarks(h, stepCount) {
+  var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
     var items = [];
-    var s = stepCount + 1;
-    while (s > 0) {
+    var stepWithValue = value / stepSize;
+    var s = 0;
+    while (s < stepCount + 1) {
       items.push(h("div", {
-        className: classes.tick,
+        className: s <= stepWithValue ? [classes.tick, classes.tickValue].join(" ") : classes.tick,
         key: "tick-" + s
       }));
-      s--;
+      s++;
     }
     return items;
   };
@@ -161,7 +89,7 @@
   var readRangeData = function readRangeData(state) {
     if (state.controlEl && polytheneCore.isClient) {
       // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-      state.controlWidth = themeVars.thumb_size;
+      state.controlWidth = parseFloat(polytheneCore.getStyle({ element: state.controlEl, prop: "width" }));
       state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
       var styles = window.getComputedStyle(state.trackEl);
       state.rangeOffset = parseFloat(styles.marginLeft);
@@ -327,7 +255,7 @@
     }, h("div", { className: classes.trackBar }, h("div", { className: classes.trackBarValue }))), hasTicks && !attrs.disabled ? h("div", {
       className: classes.ticks,
       key: "ticks"
-    }, generateTickMarks(h, stepCount)) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
+    }, generateTickMarks(h, stepCount, state.stepSize, state.value())) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
       className: classes.pin,
       key: "pin",
       value: state.value()
@@ -462,7 +390,6 @@
   });
 
   exports.coreSlider = slider;
-  exports.vars = themeVars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

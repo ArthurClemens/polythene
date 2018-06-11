@@ -1,20 +1,27 @@
-import { mixin } from "polythene-core-css";
+import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
 
-const alignSide = isRTL => componentVars => ({
-  " .pe-icon-button__label": {
-    [isRTL ? "paddingLeft" : "paddingRight"]: componentVars.label_padding_after + "px",
-    [isRTL ? "paddingRight" : "paddingLeft"]: componentVars.label_padding_before + "px",
-  }
-});
-
+const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
-
 const alignRight = alignSide(true);
 
-export default (selector, componentVars) => [
-  {
-    [selector]: [
-      alignLeft(componentVars),
+const label_padding_before = (selector, vars, isRTL) =>
+  sel(selector, {
+    " .pe-icon-button__label": {
+      [isRTL ? "paddingRight" : "paddingLeft"]: vars.label_padding_before + "px",
+    }
+  });
+
+const label_padding_after = (selector, vars, isRTL) =>
+  sel(selector, {
+    " .pe-icon-button__label": {
+      [isRTL ? "paddingLeft" : "paddingRight"]: vars.label_padding_after + "px",
+    }
+  });
+
+const varFns = {
+  general_styles: (selector, vars) => [
+    sel(selector, [
+      alignLeft(vars),
       {
         // don't set button size to facilitate different icon sizes
         display: "inline-flex",
@@ -32,34 +39,81 @@ export default (selector, componentVars) => [
 
         " .pe-icon-button__content": {
           lineHeight: 1,
-          padding: componentVars.padding + "px",
           borderRadius: "50%",
           pointerEvents: "none"
         },
-
-        " .pe-button__content, .pe-button__wash": [
-          mixin.defaultTransition("all", componentVars.animation_duration)
+      },
+      {
+        // RTL
+        [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
+          alignRight(vars)
         ],
-
-        ".pe-icon-button--compact": {
-          " .pe-icon-button__content": {
-            padding: componentVars.padding_compact + "px"
-          }
-        },
-
-        " .pe-icon-button__label": {
-          fontSize: componentVars.label_font_size + "px",
-          lineHeight: componentVars.label_line_height + "px",
-          fontWeight: componentVars.label_font_weight,
-          textTransform: componentVars.label_text_transform,
-        }
       }
-    ]
-  },
-  {
-    // RTL
-    [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
-      alignRight(componentVars)
-    ],
-  }
-];
+    ])
+  ],
+  padding: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__content": {
+        padding: vars.padding + "px",
+      },
+    }),
+  ],
+  padding_compact: (selector, vars) => [
+    sel(selector, {
+      ".pe-icon-button--compact": {
+        " .pe-icon-button__content": {
+          padding: vars.padding_compact + "px"
+        }
+      },
+    }),
+  ],
+  animation_duration: (selector, vars) => [
+    sel(selector, {
+      " .pe-button__content, .pe-button__wash": [
+        mixin.defaultTransition("all", vars.animation_duration)
+      ],
+    }),
+  ],
+  label_font_size: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__label": {
+        fontSize: vars.label_font_size + "px",
+      }
+    }),
+  ],
+  label_line_height: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__label": {
+        lineHeight: vars.label_line_height + "px",
+      }
+    }),
+  ],
+  label_font_weight: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__label": {
+        fontWeight: vars.label_font_weight,
+      }
+    }),
+  ],
+  label_text_transform: (selector, vars) => [
+    sel(selector, {
+      " .pe-icon-button__label": {
+        textTransform: vars.label_text_transform,
+      }
+    }),
+  ],
+  label_padding_after: (selector, vars) => [
+    sel(selector, {
+    }),
+    label_padding_after(selector, vars, false),
+    label_padding_after(selectorRTL(selector), vars, true),
+  ],
+  label_padding_before: (selector, vars) => [
+    sel(selector, {
+    }),
+    label_padding_before(selector, vars, false),
+    label_padding_before(selectorRTL(selector), vars, true),
+  ],
+};
+
+export default createLayout({ varFns });

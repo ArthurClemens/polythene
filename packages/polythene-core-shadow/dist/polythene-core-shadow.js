@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-shadow",
@@ -52,30 +52,7 @@
     createContent: createContent
   });
 
-  var vars = {
-    transition: "box-shadow " + polytheneTheme.vars.animation_duration + " ease-out",
-
-    "shadow-top-z-1": "initial",
-    "shadow-bottom-z-1": "0 1px 4px 0 rgba(0, 0, 0, 0.37)",
-
-    "shadow-top-z-2": "0 2px 2px 0 rgba(0, 0, 0, 0.2)",
-    "shadow-bottom-z-2": "0 6px 10px 0 rgba(0, 0, 0, 0.3)",
-
-    "shadow-top-z-3": "0 11px 7px 0 rgba(0, 0, 0, 0.19)",
-    "shadow-bottom-z-3": "0 13px 25px 0 rgba(0, 0, 0, 0.3)",
-
-    "shadow-top-z-4": "0 14px 12px 0 rgba(0, 0, 0, 0.17)",
-    "shadow-bottom-z-4": "0 20px 40px 0 rgba(0, 0, 0, 0.3)",
-
-    "shadow-top-z-5": "0 17px 17px 0 rgba(0, 0, 0, 0.15)",
-    "shadow-bottom-z-5": "0 27px 55px 0 rgba(0, 0, 0, 0.3)",
-
-    "shadow-down-z-1": "inset 0px 1px 2px -1px rgba(0, 0, 0, 0.15)",
-    "shadow-down-z-2": "inset 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
-  };
-
   exports.coreShadow = shadow;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

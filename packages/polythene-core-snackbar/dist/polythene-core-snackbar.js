@@ -1,28 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-notification'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-notification', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-notification'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreNotification,polytheneTheme) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var coreSnackbarInstance = _extends({}, polytheneCoreNotification.coreNotificationInstance);
-
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = _extends$1({}, polytheneCoreNotification.vars, {
-    border_radius: 0,
-    min_width: 288,
-    max_width: 568,
-    min_height: 0,
-
-    color_dark_background: rgba(polytheneTheme.vars.color_dark_background)
-  });
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-notification')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-notification'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-notification']));
+}(this, (function (exports,polytheneCoreNotification) { 'use strict';
 
   var DEFAULT_DURATION = 0.4;
 
@@ -76,8 +56,7 @@
     hide: hide
   };
 
-  exports.coreSnackbarInstance = coreSnackbarInstance;
-  exports.vars = vars;
+  exports.coreSnackbarInstance = polytheneCoreNotification.coreNotificationInstance;
   exports.transitions = transitions;
 
   Object.defineProperty(exports, '__esModule', { value: true });

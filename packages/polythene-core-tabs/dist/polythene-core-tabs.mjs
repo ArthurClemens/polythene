@@ -1,86 +1,30 @@
-import { vars } from 'polythene-theme';
-import { vars as vars$1 } from 'polythene-core-button';
-import { vars as vars$2 } from 'polythene-core-icon-button';
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL, deprecation } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 
-var rgba = function rgba(colorStr) {
-  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  return "rgba(" + colorStr + ", " + opacity + ")";
-};
-
-var fontSize = vars$1.font_size;
-var tab_label_line_height = 1.1 * fontSize;
-var tab_height = 48;
-var scroll_button_size = tab_height;
-
-var vars$3 = {
-  animation_duration: vars$1.animation_duration,
-  indicator_slide_min_duration: .250,
-  indicator_slide_speed: 600, // px per second
-  label_max_width: 264,
-  menu_tab_height: 44,
-  menu_tab_icon_label_height: 44,
-  scroll_button_fade_delay: .25,
-  scroll_button_fade_duration: .2,
-  scroll_button_opacity: .7,
-  scroll_button_size: scroll_button_size,
-  scrollbar_offset: 20,
-  tab_content_padding_v: 12,
-  tab_height: tab_height,
-  tab_icon_label_height: 72,
-  tab_icon_label_icon_spacing: 7,
-  tab_indicator_height: 2,
-  tab_label_line_height: tab_label_line_height,
-  tab_label_transition_property: "opacity, color, backgroundColor",
-  tab_label_vertical_offset: tab_label_line_height - fontSize,
-  tab_max_width: "initial",
-  tab_menu_content_padding_v: 6,
-  tab_min_width: 72,
-  tab_min_width_tablet: 160,
-  tabs_indent: 0,
-  tabs_scroll_delay: .15,
-  tabs_scroll_min_duration: .5,
-  tabs_scroll_speed: 600, // px per second
-
-  color_light: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_light_selected: rgba(vars.color_primary),
-  color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba(vars.color_primary),
-  color_light_icon: vars$2.color_light,
-
-  color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
-  color_dark_selected: rgba(vars.color_primary),
-  color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba(vars.color_primary),
-  color_dark_icon: vars$2.color_dark
-
-  // hover colors may be set in theme; disabled by default
-
-  // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  // color_light_hover_background:         "transparent",
-  //
-  // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  // color_dark_hover_background:          "transparent",
-};
-
 var buttonClasses = {
-  base: "pe-button",
-  component: "pe-button pe-text-button",
-  row: "pe-button-row",
+    component: "pe-text-button",
+    super: "pe-button",
+    row: "pe-button-row",
 
-  // elements
-  content: "pe-button__content",
-  focus: "pe-button__focus",
-  label: "pe-button__label",
-  wash: "pe-button__wash",
+    // elements      
+    content: "pe-button__content",
+    focus: "pe-button__focus",
+    label: "pe-button__label",
+    wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
 
-  // states
-  border: "pe-button--border",
-  disabled: "pe-button--disabled",
-  focused: "pe-button--focus",
-  inactive: "pe-button--inactive",
-  selected: "pe-button--selected"
+    // states      
+    border: "pe-button--border",
+    disabled: "pe-button--disabled",
+    focused: "pe-button--focus",
+    inactive: "pe-button--inactive",
+    selected: "pe-button--selected",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    extraWide: "pe-button--extra-wide",
+    separatorAtStart: "pe-button--separator-start",
+    dropdownOpen: "pe-button--dropdown-open",
+    dropdownClosed: "pe-button--dropdown-closed"
 };
 
 var classes = {
@@ -91,7 +35,7 @@ var classes = {
   scrollButton: "pe-tabs__scroll-button",
   scrollButtonAtEnd: "pe-tabs__scroll-button-end",
   scrollButtonAtStart: "pe-tabs__scroll-button-start",
-  tab: "pe-tabs__tab",
+  tab: "pe-tab",
   tabContent: "pe-tabs__tab-content",
   tabRow: "pe-tabs__row",
 
@@ -114,6 +58,11 @@ var classes = {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SCROLL_SPEED = 600; // px per second
+var SCROLL_DELAY = .15; // seconds
+var SCROLL_MIN_DURATION = .5; // seconds
+var INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
 
 var whenCreateDone = function whenCreateDone() {
   return Promise.resolve();
@@ -164,13 +113,13 @@ var scrollToTab = function scrollToTab(state, tabIndex) {
   var left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
   var currentLeft = scroller.scrollLeft;
   if (currentLeft !== left) {
-    var duration = Math.abs(currentLeft - left) / vars$3.tabs_scroll_speed;
-    var delaySeconds = vars$3.tabs_scroll_delay || 0;
+    var duration = Math.abs(currentLeft - left) / SCROLL_SPEED;
+    var delaySeconds = SCROLL_DELAY;
     setTimeout(function () {
       scrollTo({
         element: scroller,
         to: left,
-        duration: Math.max(vars$3.tabs_scroll_min_duration, duration),
+        duration: Math.max(SCROLL_MIN_DURATION, duration),
         direction: "horizontal"
       }).then(function () {
         return updateScrollButtons(state);
@@ -199,7 +148,7 @@ var animateIndicator = function animateIndicator(selectedTabEl, animate, state) 
   var translateX = state.isRTL ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
   var scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
   var transformCmd = "translate(" + translateX + "px, 0) scaleX(" + scaleX + ")";
-  var duration = animate ? vars$3.indicator_slide_min_duration : 0;
+  var duration = animate ? INDICATOR_SLIDE_MIN_DURATION : 0;
   var style = state.tabIndicatorEl.style;
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;
@@ -499,4 +448,4 @@ var scrollButton = /*#__PURE__*/Object.freeze({
   createProps: createProps$2
 });
 
-export { tabs as coreTabs, tab as coreTab, scrollButton as coreScrollButton, vars$3 as vars };
+export { tabs as coreTabs, tab as coreTab, scrollButton as coreScrollButton };

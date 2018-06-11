@@ -1,85 +1,58 @@
-import { layout, noTouchStyle } from 'polythene-css-button';
-import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-core-raised-button';
+import { createColor, createLayout, rgba, styler } from 'polythene-core-css';
+import { color, layout } from 'polythene-css-button';
+import { vars } from 'polythene-theme';
 
 var classes = {
-  component: "pe-button pe-text-button pe-raised-button"
+  component: "pe-raised-button",
+  super: "pe-button pe-text-button"
 };
 
-// Only used for theme styles
-
-var layout$1 = (function (selector, componentVars) {
-  return layout(selector, componentVars);
+var color$1 = createColor({
+  superColor: color
 });
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var layout$1 = createLayout({
+  superLayout: layout
+});
 
-var style = function style(scopes, selector, componentVars, tint) {
-  var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-  var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-  var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-  return [_defineProperty({}, scopes.map(function (s) {
-    return s + selector;
-  }).join(","), {
-    "&, &:link, &:visited": {
-      color: componentVars["color_" + tint + "_text"]
-    },
+var vars$1 = {
+  general_styles: true,
 
-    " .pe-button__content": {
-      backgroundColor: componentVars["color_" + tint + "_background"],
-      borderColor: normalBorder
-    },
+  // Override Button:
+  padding_h: 4 * vars.grid_unit, // 16
+  color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
+  color_light_background: "#fff",
+  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
+  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
 
-    ".pe-button--disabled": {
-      color: componentVars["color_" + tint + "_disabled_text"],
+  color_dark_active_background: rgba(vars.color_primary_dark),
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+  color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_focus_background: rgba(vars.color_primary_active),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
+  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-        borderColor: disabledBorder
-      }
-    },
+  // hover colors may be set in theme; disabled by default
 
-    ".pe-button--focus": {
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    },
-
-    ".pe-button--selected": {
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_active_background"],
-        borderColor: activeBorder
-      },
-      " .pe-button__focus": {
-        opacity: 1,
-        backgroundColor: componentVars["color_" + tint + "_focus_background"]
-      }
-    }
-  })];
+  // color_light_hover_background:    "transparent",
+  // color_dark_hover_background:     vars.color_primary_active,
 };
 
-var color = (function (selector, componentVars) {
-  return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-  style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-  noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-  noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var fns = [color];
-var themeFns = [layout$1, color];
-var selector = "." + classes.component.replace(/ /g, ".");
+var fns = [layout$1, color$1];
+var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateStyles([customSelector, selector], _extends({}, vars, customVars), themeFns);
+  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
 };
 
 var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createStyleSheets([customSelector, selector], _extends({}, vars, customVars), fns) : styler.createStyleSheets([selector], vars, fns);
+  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
 };
 
-styler.generateStyles([selector], vars, fns);
+styler.generateStyles([selector], vars$1, fns);
 
-export { addStyle, getStyle };
+export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };

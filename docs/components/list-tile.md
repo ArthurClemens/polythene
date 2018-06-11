@@ -66,8 +66,8 @@ Displays a list element as part of a [List](list.md).
 | **disabled** | optional | Boolean | false | Set to `true` to deactivate the url and hover state (in case of [List](List.md) with setting `hoverable`) and show a disabled state |
 | **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [Ripple](ripple.md) options to define ripple behavior |
-| **hoverable** | optional | Boolean | false | Set to true to show a hover effect (non-touch devices) |
-| **selectable** | optional | Boolean | false | Set to true to show a mouse pointer (non-touch devices) |
+| **hoverable** | optional | Boolean | false | Set to `true` to show a hover effect (non-touch devices) |
+| **selectable** | optional | Boolean | false | Set to `true` to show a mouse pointer (non-touch devices) |
 | **sticky** | optional | Boolean | | Make list tile sticky when scrolling; this is normally set in the [List](list.md) component as `header.sticky`; [does not work in IE/Edge](http://caniuse.com/#feat=css-sticky) |
 | **compact** | optional | Boolean | | Set to `true` to reduce vertical padding |
 | **navigation** | optional | Boolean | | Set to `true` to use a Material Design navigation style |

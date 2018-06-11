@@ -2,8 +2,8 @@
 
 const grid_unit = 4;
 const grid_unit_component = 8;
-const increment = 7 * grid_unit_component;
-const increment_large = 8 * grid_unit_component;
+const increment = 7 * grid_unit_component;       // 7 * 8 = 56
+const increment_large = 8 * grid_unit_component; // 8 * 8 = 64
 
 const animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
 const animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
@@ -19,17 +19,17 @@ export const vars = {
   grid_unit_icon_button: 6 * grid_unit_component, // 48
 
   // common sizes
-  unit_block_border_radius: 2,
-  unit_item_border_radius: 2,
+  unit_block_border_radius: 4,
+  unit_item_border_radius: 4,
   unit_indent: 72,
   unit_side_padding: 16,
 
   // buttons
   unit_touch_height: 48,
-  unit_icon_size_small: 2 * grid_unit_component, // 16
-  unit_icon_size: 3 * grid_unit_component, // 24
+  unit_icon_size_small: 2 * grid_unit_component,  // 16
+  unit_icon_size: 3 * grid_unit_component,        // 24
   unit_icon_size_medium: 4 * grid_unit_component, // 32
-  unit_icon_size_large: 5 * grid_unit_component, // 40
+  unit_icon_size_large: 5 * grid_unit_component,  // 40
 
   // screen dimensions
   unit_screen_size_extra_large: 1280,
@@ -70,6 +70,7 @@ export const vars = {
   blend_light_text_secondary: .54,
   blend_light_text_tertiary: .40,
   blend_light_text_disabled: .26,
+  blend_light_border_medium: .24,
   blend_light_border_light: .11,
   blend_light_background_active: .14,
   blend_light_background_hover: .06,
@@ -82,6 +83,7 @@ export const vars = {
   blend_dark_text_secondary: .70,
   blend_dark_text_tertiary: .40,
   blend_dark_text_disabled: .26,
+  blend_dark_border_medium: .22,
   blend_dark_border_light: .10,
   blend_dark_background_active: .14,
   blend_dark_background_hover: .08,

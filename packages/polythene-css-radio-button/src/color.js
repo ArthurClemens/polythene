@@ -1,3 +1,6 @@
-import { color } from "polythene-css-selection-control";
+import { createColor } from "polythene-core-css";
+import { color as superColor } from "polythene-css-selection-control";
 
-export default (selector, componentVars) => color(selector, componentVars);
+export default createColor({
+  superColor
+});

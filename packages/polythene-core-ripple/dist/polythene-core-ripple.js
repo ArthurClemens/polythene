@@ -187,14 +187,7 @@
     onUnMount: onUnMount
   });
 
-  var vars = {
-    color: "inherit" // only specify this variable to get both states
-    // color_light:   "inherit",
-    // color_dark:    "inherit"
-  };
-
   exports.coreRipple = ripple;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

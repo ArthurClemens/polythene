@@ -1,19 +1,18 @@
-import { layout as selectionControlLayout } from "polythene-css-selection-control";
-import { vars } from "polythene-theme";
-import { mixin } from "polythene-core-css";
+import { layout as superLayout } from "polythene-css-selection-control";
+import { mixin, sel, createLayout } from "polythene-core-css";
+import { vars as themeVars } from "polythene-theme";
 
-const transition = (componentVars, properties, duration = componentVars.animation_duration) => [
-  mixin.defaultTransition(properties, duration, "ease-out")
-];
+const transition = (vars, properties, duration = vars.animation_duration) =>
+  mixin.defaultTransition(properties, duration, "ease-out");
 
-const getSizeData = (componentVars, size) => {
-  const factor = size / vars.unit_icon_size;
-  const thumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2; // round to even
-  const scaledTrackHeight = Math.floor(0.5 * componentVars.track_height * factor) * 2; // round to even
-  const scaledTrackWidth = Math.floor(0.5 * componentVars.track_length * factor) * 2;
-  const scaledThumbSize = Math.floor(0.5 * componentVars.thumb_size * factor) * 2;
-  const trackTop = ((componentVars.label_height * factor - scaledTrackHeight) / 2);
-  const thumbPadding = componentVars.icon_button_padding;
+const getSizeData = (vars, size) => {
+  const factor = size / themeVars.unit_icon_size;
+  const thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
+  const scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
+  const scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
+  const scaledThumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2;
+  const trackTop = ((vars.label_height * factor - scaledTrackHeight) / 2);
+  const thumbPadding = vars.icon_button_padding;
   const thumbMargin = (size - scaledThumbSize) / 2;
   const thumbOuterSize = size + 2 * thumbPadding;
   const thumbOffsetMin = -(thumbOuterSize / 2) + (thumbSize / 2);
@@ -37,7 +36,7 @@ const getSizeData = (componentVars, size) => {
 };
 
 const customSize = (
-  componentVars,
+  vars,
   {
     scaledThumbSize,
     scaledTrackHeight,
@@ -75,7 +74,7 @@ const customSize = (
 };
 
 const customSpacing = (
-  componentVars,
+  vars,
   {
     factor,
     scaledTrackWidth,
@@ -86,7 +85,7 @@ const customSpacing = (
   isRTL) => {
   return {
     " .pe-control__label": {
-      [isRTL ? "paddingRight" : "paddingLeft"]: (componentVars.padding * factor + 8 + scaledTrackWidth) + "px",
+      [isRTL ? "paddingRight" : "paddingLeft"]: (vars.padding * factor + 8 + scaledTrackWidth) + "px",
       [isRTL ? "paddingLeft" : "paddingRight"]: 0
     },
     " .pe-switch-control__track": {
@@ -112,129 +111,136 @@ const alignSide = isRTL => () => ({
     [isRTL ? "left" : "right"]: "auto"
   }
 });
-
 const alignLeft = alignSide(false);
-
 const alignRight = alignSide(true);
 
-export default (selector, componentVars) => {
+const createSize = (selector, vars) => {
   const sizeData = {
-    small: getSizeData(componentVars, vars.unit_icon_size_small),
-    regular: getSizeData(componentVars, vars.unit_icon_size),
-    medium: getSizeData(componentVars, vars.unit_icon_size_medium),
-    large: getSizeData(componentVars, vars.unit_icon_size_large),
+    small: getSizeData(vars, themeVars.unit_icon_size_small),
+    regular: getSizeData(vars, themeVars.unit_icon_size),
+    medium: getSizeData(vars, themeVars.unit_icon_size_medium),
+    large: getSizeData(vars, themeVars.unit_icon_size_large),
   };
-  return selectionControlLayout(selector, componentVars, "checkbox")
-    .concat(
-      [{
-        [selector]: [
-          alignLeft(),
-          {
-            " .pe-switch-control__track": [
-              transition(componentVars, "all"),
-              {
-                position: "absolute",
-              }
-            ],
-
-            " .pe-switch-control__thumb": [
-              transition(componentVars, "all"),
-              {
-                position: "absolute",
-                zIndex: 1, // Prevents flickering of text label when toggling
-                color: "inherit",
-
-                ":focus": {
-                  outline: 0
-                }
-              }
-            ],
-
-            " .pe-control__label": [
-              transition(componentVars, "all"),
-            ],
-
-            " .pe-switch-control__knob": {
-              position: "relative",
-              borderRadius: "50%"
-            },
-
-            " .pe-button__content": {
-              transition: "none",
-
-              " .pe-switch-control__knob .pe-icon": [
-                mixin.fit(),
-                {
-                  width: "100%",
-                  height: "100%"
-                }
-              ],
-            },
-
-            " .pe-button__focus": [
-              transition(componentVars, "all")
-            ],
-
-            ".pe-control--small":   [
-              customSize(componentVars, sizeData.small),
-              customSpacing(componentVars, sizeData.small, false)
-            ],
-            ".pe-control--regular": [
-              customSize(componentVars, sizeData.regular),
-              customSpacing(componentVars, sizeData.regular, false)
-            ],
-            ".pe-control--medium": [
-              customSize(componentVars, sizeData.medium),
-              customSpacing(componentVars, sizeData.medium, false)
-            ],
-            ".pe-control--large": [
-              customSize(componentVars, sizeData.large),
-              customSpacing(componentVars, sizeData.large, false)
-            ]
-          }
-        ]
-      },
-      {
-        // RTL
-        [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
-          alignRight(),
-          {
-            ".pe-control--small":   [
-              customSpacing(componentVars, sizeData.small, true)
-            ],
-            ".pe-control--regular": [
-              customSpacing(componentVars, sizeData.regular, true)
-            ],
-            ".pe-control--medium": [
-              customSpacing(componentVars, sizeData.medium, true)
-            ],
-            ".pe-control--large": [
-              customSpacing(componentVars, sizeData.large, true)
-            ]
-          }
-        ],
-      },
-      {
-        // For IE11, to catch mouse events place checkbox element on top stretching to all sides
-        [`_:-ms-fullscreen, :root ${selector}`]: {
-          " input": {
-            position: "absolute",
-            zIndex: 1,
-            width: "100%",
-            height: "100%",
-            left: 0,
-            top: 0,
-            right: 0,
-            bottom: 0,
-            display: "block",
-            opacity: 0,
-            cursor: "pointer"
-          },
-          " label": {
-            cursor: "auto"
-          }
+  return [
+    sel(selector, {
+      ".pe-control--small":   [
+        customSize(vars, sizeData.small),
+        customSpacing(vars, sizeData.small, false)
+      ],
+      ".pe-control--regular": [
+        customSize(vars, sizeData.regular),
+        customSpacing(vars, sizeData.regular, false)
+      ],
+      ".pe-control--medium": [
+        customSize(vars, sizeData.medium),
+        customSpacing(vars, sizeData.medium, false)
+      ],
+      ".pe-control--large": [
+        customSize(vars, sizeData.large),
+        customSpacing(vars, sizeData.large, false)
+      ]
+    }),
+    {
+      // RTL
+      [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
+        alignRight(),
+        {
+          ".pe-control--small":   [
+            customSpacing(vars, sizeData.small, true)
+          ],
+          ".pe-control--regular": [
+            customSpacing(vars, sizeData.regular, true)
+          ],
+          ".pe-control--medium": [
+            customSpacing(vars, sizeData.medium, true)
+          ],
+          ".pe-control--large": [
+            customSpacing(vars, sizeData.large, true)
+          ]
         }
-      }]
-    );
+      ],
+    },
+  ];
 };
 
+const varFns = {
+  general_styles: selector => [
+    sel(selector, [
+      alignLeft(),
+      {
+        " .pe-switch-control__track": [
+          {
+            position: "absolute",
+          }
+        ],
+
+        " .pe-switch-control__thumb": {
+          position: "absolute",
+          zIndex: 1, // Prevents flickering of text label when toggling
+          color: "inherit",
+
+          ":focus": {
+            outline: 0
+          }
+        },
+
+        " .pe-switch-control__knob": {
+          position: "relative",
+          borderRadius: "50%"
+        },
+
+        " .pe-icon-button .pe-button__content": {
+          transition: "none",
+
+          " .pe-switch-control__knob .pe-icon": [
+            mixin.fit(),
+            {
+              width: "100%",
+              height: "100%"
+            }
+          ],
+        },
+      },
+    ]),
+    {
+      // For IE 11, to catch mouse events place checkbox element on top stretching to all sides
+      [`_:-ms-fullscreen, :root ${selector}`]: {
+        " input": {
+          position: "absolute",
+          zIndex: 1,
+          width: "100%",
+          height: "100%",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          display: "block",
+          opacity: 0,
+          cursor: "pointer"
+        },
+        " label": {
+          cursor: "auto"
+        }
+      }
+    }
+  ],
+  animation_duration: (selector, vars) => [
+    sel(selector, {
+      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+    })
+  ],
+  createSize
+};
+
+const withCreateSizeVar = vars =>
+  (vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding)
+    ? Object.assign({}, vars, {
+      createSize: true
+    })
+    : vars;
+
+export default createLayout({
+  varFns,
+  superLayout,
+  varMixin: withCreateSizeVar
+});

@@ -1,4 +1,5 @@
 import { mithrilTests as buttonTests } from "polythene-test-button";
+import { mithrilTests as buttonGroupTests } from "polythene-test-button-group";
 import { mithrilTests as cardTests } from "polythene-test-card";
 import { mithrilTests as checkboxTests } from "polythene-test-checkbox";
 import { mithrilTests as dialogTests } from "polythene-test-dialog";
@@ -38,6 +39,12 @@ export default [
     name: "Raised Button",
     tests: raisedButtonTests,
     doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/raised-button.md"
+  },
+  {
+    path: "/button-group",
+    name: "Button Group",
+    tests: buttonGroupTests,
+    doc: "https://github.com/ArthurClemens/polythene/blob/master/docs/components/mithril/button-group.md"
   },
   {
     path: "/card",

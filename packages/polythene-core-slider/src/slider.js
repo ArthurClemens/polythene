@@ -1,5 +1,4 @@
-import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes } from "polythene-core";
-import themeVars from "./vars";
+import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes, getStyle } from "polythene-core";
 import classes from "polythene-css-classes/slider";
 
 const MAX_TICKS = 100;
@@ -37,15 +36,18 @@ const updateValue = (state, value) => {
   updatePinPosition(state);
 };
 
-const generateTickMarks = (h, stepCount) => {
+const generateTickMarks = (h, stepCount, stepSize, value) => {
   const items = [];
-  let s = stepCount + 1;
-  while (s > 0) {
+  const stepWithValue = value / stepSize;
+  let s = 0;
+  while (s < stepCount + 1) {
     items.push(h("div", {
-      className: classes.tick,
+      className: s <= stepWithValue
+        ? [classes.tick, classes.tickValue].join(" ")
+        : classes.tick,
       key: `tick-${s}`
     }));
-    s--;
+    s++;
   }
   return items;
 };
@@ -53,7 +55,7 @@ const generateTickMarks = (h, stepCount) => {
 const readRangeData = state => {
   if (state.controlEl && isClient) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-    state.controlWidth = themeVars.thumb_size;
+    state.controlWidth = parseFloat(getStyle({ element: state.controlEl, prop: "width" }));
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
     const styles = window.getComputedStyle(state.trackEl);
     state.rangeOffset = parseFloat(styles.marginLeft);
@@ -252,7 +254,7 @@ const createSlider = (vnode, { h, k, hasTicks, interactiveTrack }) => {
             className: classes.ticks,
             key: "ticks"
           },
-          generateTickMarks(h, stepCount)
+          generateTickMarks(h, stepCount, state.stepSize, state.value())
         )
         : null,
       hasTicks && attrs.pin && !attrs.disabled

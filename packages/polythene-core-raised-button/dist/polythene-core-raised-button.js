@@ -1,11 +1,12 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core'],global['polythene-theme']));
-}(this, (function (exports,polytheneCore,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
-    component: "pe-button pe-text-button pe-raised-button"
+    component: "pe-raised-button",
+    super: "pe-button pe-text-button"
   };
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -104,12 +105,13 @@
     var state = vnode.state;
     var children = attrs.children || vnode.children || [];
     return _extends({}, {
-      parentClassName: [attrs.parentClassName || classes.component].join(" "),
+      parentClassName: [classes.super, attrs.parentClassName || classes.component].join(" "),
       animateOnTap: false,
       shadowComponent: h(Shadow, {
         z: attrs.disabled ? 0 : state.z,
         animated: true
       }),
+      wash: attrs.wash !== undefined ? attrs.wash : false,
       children: children
     }, attrs);
   };
@@ -126,37 +128,7 @@
     createContent: createContent
   });
 
-  var rgba = function rgba(colorStr) {
-    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-    return "rgba(" + colorStr + ", " + opacity + ")";
-  };
-
-  var vars = {
-    color_light_background: "#fff",
-    color_light_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
-    color_light_wash_background: "transparent",
-    color_light_focus_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_active_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover), // same as hover
-    color_light_disabled_background: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
-    color_light_disabled_text: rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
-
-    color_dark_background: rgba(polytheneTheme.vars.color_primary),
-    color_dark_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
-    color_dark_wash_background: "transparent",
-    color_dark_focus_background: polytheneTheme.vars.color_primary_active,
-    color_dark_active_background: polytheneTheme.vars.color_primary_dark,
-    color_dark_disabled_background: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
-    color_dark_disabled_text: rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
-
-    // hover colors may be set in theme; disabled by default
-
-    // color_light_hover_background:    "transparent",
-    // color_dark_hover_background:     vars.color_primary_active,
-
-  };
-
   exports.coreRaisedButton = raisedButton;
-  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

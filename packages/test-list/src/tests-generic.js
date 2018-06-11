@@ -8,19 +8,18 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
   const Navigation = navigation({ h, k, Icon, List, ListTile });
 
   ListCSS.addStyle(".tests-lists-themed-list", {
-    color_light_background: "#F57C00",
-    color_light_border:     "#F57C00",
-    color_dark_background:  "#5D4037",
-    color_dark_border:      "#5D4037",
+    color_light_background: "#fffbe6",
+    color_dark_background:  "#356859",
+    color_dark_border:      "#275b4c",
     padding: 32
   });
   ListTileCSS.addStyle(".tests-lists-themed-list-tile", {
-    color_light_title:      "#fff",
-    color_light_subtitle:   "rgba(255,255,255,.8)",
-    color_light_background: "#EF6C00",
-    color_dark_title:       "#D7CCC8",
-    color_dark_subtitle:    "#BCAAA4",
-    color_dark_background:  "#4E342E"
+    color_light_title:      "#356859",
+    color_light_subtitle:   "#356859",
+    color_light_background: "#fffbe6",
+    color_dark_title:       "#fff",
+    color_dark_subtitle:    "rgba(255,255,255,0.7)",
+    color_dark_background:  "#356859"
   });
 
   const ListTileJennifer = h(ListTile, {
@@ -58,6 +57,17 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
 
   return [
     {
+      name: "Option: tiles",
+      component: List,
+      attrs: {
+        tiles: [
+          ListTileJennifer,
+          ListTileAli,
+          ListTileGrace
+        ]
+      }
+    },
+    {
       name: "Child nodes",
       component: List,
       children: [
@@ -77,29 +87,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
           subtitle: "Binge watching..."
         })
       ]
-    },
-    {
-      name: "Option: tiles",
-      component: List,
-      attrs: {
-        tiles: [
-          h(ListTile, {
-            title: "Jennifer Barker",
-            key: "Jennifer Barker",
-            subtitle: "Starting post doc"
-          }),
-          h(ListTile, {
-            title: "Ali Connors",
-            key: "Ali Connors",
-            subtitle: "Brunch this weekend?"
-          }),
-          h(ListTile, {
-            title: "Grace VanDam",
-            key: "Grace VanDam",
-            subtitle: "Binge watching..."
-          })
-        ]
-      }
     },
     {
       name: "Options: header, tiles, indent, indentedBorder",
@@ -196,15 +183,15 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       name: "Option: style (colors)",
       component: List,
       attrs: {
-        header: { style: { color: "rgba(255,255,255,.8)"}, title: "Friends" },
+        header: { style: { color: "#356859"}, title: "Friends" },
         tiles: [
-          h(ListTile, { style: { color: "#fff" }, title: "One", key: "One" }),
-          h(ListTile, { style: { color: "#fff" }, title: "Two", key: "Two" }),
-          h(ListTile, { style: { color: "#fff" }, title: "Three", key: "Three" })
+          h(ListTile, { style: { color: "#356859" }, title: "One", key: "One" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Two", key: "Two" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Three", key: "Three" })
         ],
         style: {
-          backgroundColor: "#EF6C00",
-          color: "#fff"
+          backgroundColor: "#fffbe6",
+          color: "#356859"
         }
       }
     },

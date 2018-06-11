@@ -41,11 +41,11 @@ var classes = {
 
   // states
   permanent: "pe-menu--permanent",
-  fullHeight: "pe-menu--full-height",
   floating: "pe-menu--floating",
   visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
+  origin: "pe-menu--origin",
 
   // lookup
   listTile: listTileClasses.component,

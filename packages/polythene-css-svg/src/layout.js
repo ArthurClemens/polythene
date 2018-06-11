@@ -1,11 +1,16 @@
+import { sel, createLayout } from "polythene-core-css";
 
-export default selector => [{
-  [selector]: {
-    lineHeight: 1,
+const varFns = {
+  general_styles: selector => [
+    sel(selector, {
+      lineHeight: 1,
 
-    " > div, svg": {
-      width: "inherit",
-      height: "inherit"
-    }
-  }
-}];
+      " > div, svg": {
+        width: "inherit",
+        height: "inherit"
+      }
+    })
+  ],
+};
+
+export default createLayout({ varFns });

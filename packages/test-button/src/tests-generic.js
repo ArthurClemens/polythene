@@ -5,18 +5,17 @@ export default ({ renderer: h, Button }) => {
   ButtonCSS.addStyle(".tests-button-themed-button", {
     color_light_background: "#2196F3",
     color_dark_background:  "#2196F3",
-    color_light_text:       "#fff"
+    color_light_text:       "#fff",
+    letter_spacing:         0
   });
 
-  ButtonCSS.addStyle(".blue-on-dark-Button", {
+  ButtonCSS.addStyle(".blue-on-dark-button", {
     color_dark_text: "#2196F3"
   });
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
     color_light_text:   "#673ab7",
-    color_light_border: "#673ab7",
-    color_dark_text:    "yellow",
-    color_dark_border:  "yellow"
+    color_dark_text:    "#fff",
   });
 
   ButtonCSS.addStyle(".tests-button-hover-button", {
@@ -24,6 +23,12 @@ export default ({ renderer: h, Button }) => {
     color_light_hover_background: "#673ab7",
     animation_duration:           "100ms",
   });
+
+  // ButtonCSS.addStyle(".tests-button-sentence-case", {
+  //   color_light_background: "#6200ee",
+  //   color_light_text:       "#fff",
+  //   text_transform:         "none"
+  // });
   
   return [
     {
@@ -34,35 +39,21 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Button row",
-      component: {
-        view: () => 
-          h(".pe-button-row",
-            [
-              h(Button, {
-                key: "one", // for React
-                label: "One"
-              }),
-              h(Button, {
-                key: "two", // for React
-                label: "Two"
-              }),
-              h(Button, {
-                key: "three", // for React
-                label: "Three"
-              })
-            ]
-          )
-      }
-    },
-    {
-      name: "Themed Button (colors)",
+      name: "Themed Button (colors, letter spacing)",
       component: Button,
       attrs: {
         label: "Themed Button",
         className: "tests-button-themed-button"
       }
     },
+    // {
+    //   name: "Themed Button (colors, sentence case)",
+    //   component: Button,
+    //   attrs: {
+    //     label: "Sentence case",
+    //     className: "tests-button-sentence-case",
+    //   }
+    // },
     {
       name: "Themed Button: (option: border)",
       component: Button,
@@ -126,11 +117,70 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Option: disabled",
+      component: Button,
+      attrs: {
+        label: "Disabled",
+        disabled: true
+      }
+    },
+    {
+      name: "Themed Button: (option: border) (disabled)",
+      component: Button,
+      attrs: {
+        label: "Border",
+        className: "tests-button-bordered-button",
+        border: true,
+        disabled: true
+      }
+    },
+    {
       name: "Option: selected",
       component: Button,
       attrs: {
         label: "Selected",
         selected: true
+      }
+    },
+    {
+      name: "Option: dropdown with label (not interactive) -- see Menu examples",
+      component: Button,
+      attrs: {
+        label: "Dropdown",
+        dropdown: {
+          open: false
+        },
+      }
+    },
+    // {
+    //   name: "Option: dropdown without label (not interactive)",
+    //   component: Button,
+    //   attrs: {
+    //     dropdown: {
+    //       open: false
+    //     },
+    //   }
+    // },
+    {
+      name: "Button row",
+      component: {
+        view: () => 
+          h(".pe-button-row",
+            [
+              h(Button, {
+                key: "one", // for React
+                label: "One"
+              }),
+              h(Button, {
+                key: "two", // for React
+                label: "Two"
+              }),
+              h(Button, {
+                key: "three", // for React
+                label: "Three"
+              })
+            ]
+          )
       }
     },
     {
@@ -180,15 +230,6 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Option: tone \"dark\" -- dark tone class",
-      className: "test-dark-tone",
-      component: Button,
-      attrs: {
-        label: "Label",
-        tone: "dark"
-      }
-    },
-    {
       name: "Themed Button -- dark tone class",
       className: "pe-dark-tone",
       component: Button,
@@ -203,7 +244,7 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Blue on dark Button",
-        className: "blue-on-dark-Button"
+        className: "blue-on-dark-button"
       }
     },
     {

@@ -1,7 +1,11 @@
 import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL, deprecation } from "polythene-core";
 import { scrollTo } from "polythene-utilities";
-import vars from "./vars";
 import classes from "polythene-css-classes/tabs";
+
+const SCROLL_SPEED                 = 600; // px per second
+const SCROLL_DELAY                 = .15; // seconds
+const SCROLL_MIN_DURATION          = .5; // seconds
+const INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
 
 const whenCreateDone = () => Promise.resolve();
 
@@ -60,13 +64,13 @@ const scrollToTab = (state, tabIndex) => {
     : Math.min(tabLeft, maxScroll);
   const currentLeft = scroller.scrollLeft;
   if (currentLeft !== left) {
-    const duration = Math.abs(currentLeft - left) / vars.tabs_scroll_speed;
-    const delaySeconds = vars.tabs_scroll_delay || 0;
+    const duration = Math.abs(currentLeft - left) / SCROLL_SPEED;
+    const delaySeconds = SCROLL_DELAY;
     setTimeout(() => {
       scrollTo({
         element: scroller,
         to: left,
-        duration: Math.max(vars.tabs_scroll_min_duration, duration),
+        duration: Math.max(SCROLL_MIN_DURATION, duration),
         direction: "horizontal"
       }).then(() => updateScrollButtons(state));
     }, delaySeconds * 1000);
@@ -95,7 +99,9 @@ const animateIndicator = (selectedTabEl, animate, state) => {
     : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
   const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
   const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
-  const duration = animate ? vars.indicator_slide_min_duration : 0;
+  const duration = animate
+    ? INDICATOR_SLIDE_MIN_DURATION
+    : 0;
   const style = state.tabIndicatorEl.style;
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;

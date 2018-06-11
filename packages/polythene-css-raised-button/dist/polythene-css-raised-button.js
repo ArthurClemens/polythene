@@ -1,91 +1,67 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-button'), require('polythene-core-css'), require('polythene-core-raised-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-button', 'polythene-core-css', 'polythene-core-raised-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-button'],global['polythene-core-css'],global['polythene-core-raised-button']));
-}(this, (function (exports,polytheneCssButton,polytheneCoreCss,polytheneCoreRaisedButton) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-button'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-button', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-button'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssButton,polytheneTheme) { 'use strict';
 
   var classes = {
-    component: "pe-button pe-text-button pe-raised-button"
+    component: "pe-raised-button",
+    super: "pe-button pe-text-button"
   };
 
-  // Only used for theme styles
-
-  var layout = (function (selector, componentVars) {
-    return polytheneCssButton.layout(selector, componentVars);
+  var color = polytheneCoreCss.createColor({
+    superColor: polytheneCssButton.color
   });
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  var layout = polytheneCoreCss.createLayout({
+    superLayout: polytheneCssButton.layout
+  });
 
-  var style = function style(scopes, selector, componentVars, tint) {
-    var normalBorder = componentVars["color_" + tint + "_border"] || "transparent";
-    var activeBorder = componentVars["color_" + tint + "_active_border"] || normalBorder;
-    var disabledBorder = componentVars["color_" + tint + "_disabled_border"] || normalBorder;
-    return [_defineProperty({}, scopes.map(function (s) {
-      return s + selector;
-    }).join(","), {
-      "&, &:link, &:visited": {
-        color: componentVars["color_" + tint + "_text"]
-      },
+  var vars = {
+    general_styles: true,
 
-      " .pe-button__content": {
-        backgroundColor: componentVars["color_" + tint + "_background"],
-        borderColor: normalBorder
-      },
+    // Override Button:
+    padding_h: 4 * polytheneTheme.vars.grid_unit, // 16
+    color_light_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover), // same as hover
+    color_light_background: "#fff",
+    color_light_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_light_disabled_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
+    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
+    color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
+    color_light_wash_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
 
-      ".pe-button--disabled": {
-        color: componentVars["color_" + tint + "_disabled_text"],
+    color_dark_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_dark),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+    color_dark_disabled_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),
+    color_dark_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_active),
+    color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
+    color_dark_wash_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover)
 
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_disabled_background"],
-          borderColor: disabledBorder
-        }
-      },
+    // hover colors may be set in theme; disabled by default
 
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1,
-          backgroundColor: componentVars["color_" + tint + "_focus_background"]
-        }
-      },
-
-      ".pe-button--selected": {
-        " .pe-button__content": {
-          backgroundColor: componentVars["color_" + tint + "_active_background"],
-          borderColor: activeBorder
-        },
-        " .pe-button__focus": {
-          opacity: 1,
-          backgroundColor: componentVars["color_" + tint + "_focus_background"]
-        }
-      }
-    })];
+    // color_light_hover_background:    "transparent",
+    // color_dark_hover_background:     vars.color_primary_active,
   };
 
-  var color = (function (selector, componentVars) {
-    return [style([".pe-dark-tone", ".pe-dark-tone "], selector, componentVars, "dark"), // has/inside dark tone
-    style(["", ".pe-light-tone", ".pe-light-tone "], selector, componentVars, "light"), // normal, has/inside light tone
-    polytheneCssButton.noTouchStyle(["html.pe-no-touch .pe-dark-tone "], selector, componentVars, "dark"), // inside dark tone
-    polytheneCssButton.noTouchStyle(["html.pe-no-touch ", "html.pe-no-touch .pe-light-tone "], selector, componentVars, "light")];
-  });
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var fns = [color];
-  var themeFns = [layout, color];
-  var selector = "." + classes.component.replace(/ /g, ".");
+  var fns = [layout, color];
+  var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneCoreRaisedButton.vars, customVars), themeFns);
+    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
   };
 
   var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneCoreRaisedButton.vars, customVars), fns) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneCoreRaisedButton.vars, fns);
+    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], polytheneCoreRaisedButton.vars, fns);
+  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
 
   exports.addStyle = addStyle;
+  exports.color = color;
   exports.getStyle = getStyle;
+  exports.layout = layout;
+  exports.vars = vars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
