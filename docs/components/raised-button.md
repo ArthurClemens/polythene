@@ -44,9 +44,9 @@ All options for [Button](button.md) also apply to Raised Button, with additional
 
 | **Parameter**    |  **Required** | **Type**   | **Default** | **Description** |
 | ---------------- | -------------- | ---------- | ----------- | --------------- |
-| **z**            | optional       | Number 0-5 | 1           | The shadow depth |
-| **increase**     | optional       | Number     | 1           | The z-index increment/decrement on tap; the maximum z value is 5 |
 | **animateOnTap** | optional       | Boolean    | true        | Set to false to remove z-animation and subsequent redraw |
+| **increase**     | optional       | Number     | 1           | The z-index increment/decrement on tap; the maximum z value is 5 |
+| **z**            | optional       | Number 0-5 | 1           | The shadow depth |
 
 
 

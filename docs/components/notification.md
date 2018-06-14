@@ -53,11 +53,11 @@ The information on this page refers to the **Notification** component, but it al
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **containerSelector** | optional | String |  | Selector of container HTML element that will be animated with the Notification (does not need to be the direct parent); for instance if a FAB button needs to move together with the Notification, both the FAB and Notification will be placed in the same container; transitions will then move both simultaneously; if set, the Notification's `position` will be `absolute` (default: `fixed`) |
-| **title** | required | String | | Text |
 | **action** | optional | String, hyperscript or component | | Will likely contain a button |
-| **timeout** | optional | Number (seconds) | 3 | How long the Notification should be displayed before it hides automatically; use `0` to not hide automatically |
+| **containerSelector** | optional | String |  | Selector of container HTML element that will be animated with the Notification (does not need to be the direct parent); for instance if a FAB button needs to move together with the Notification, both the FAB and Notification will be placed in the same container; transitions will then move both simultaneously; if set, the Notification's `position` will be `absolute` (default: `fixed`) |
 | **dismissSelector** | optional | String | | Not used yet; will implement "Disappear after user interaction elsewhere" |
+| **timeout** | optional | Number (seconds) | 3 | How long the Notification should be displayed before it hides automatically; use `0` to not hide automatically |
+| **title** | required | String | | Text |
 
 <a id="notification-appearance-options"></a>
 ### Notification appearance options
@@ -72,9 +72,9 @@ The information on this page refers to the **Notification** component, but it al
 
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
-| **spawn**      | optional       | String   | "default_notification" | Notification spawner id |
 | **id**         | optional       | String   | "default_notification" | Notification instance id |
 | **position**   | optional       | String   | "screen" | Set to "container" to give the Notification holder `position: absolute`, so it will be positioned relative to its container |
+| **spawn**      | optional       | String   | "default_notification" | Notification spawner id |
 
 <a id="transition-options"></a>
 ### Transition options
@@ -86,13 +86,13 @@ See: [Transitions](../transitions.md)
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
-| **style**     | optional       | Object   |             | For setting simple style attributes |
-| **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-notification` |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `title` |
+| **element**   | optional       | String   | "div"       | HTML element tag |
+| **id**        | optional       | String   |             | HTML element id |
+| **style**     | optional       | Object   |             | For setting simple style attributes |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

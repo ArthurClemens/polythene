@@ -10,7 +10,6 @@ Adds a touch ripple effect to an element.
 - [Usage](#usage)
 - [Options](#options)
   - [Ripple specific options](#ripple-specific-options)
-  - [Ripple appearance options](#ripple-appearance-options)
   - [Common component options](#common-component-options)
 - [Callback functions](#callback-functions)
 - [CSS classes](#css-classes)
@@ -50,28 +49,21 @@ Adds a touch ripple effect to an element.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **start**     | optional | Function | | Callback function just before the ripple starts; see Callback functions |
-| **end**       | optional | Function | | Callback function when the ripple has ended; see Callback functions |
-| **disabled**  | optional | Boolean | false | Set to `true` to disable ripples |
-| **multi**     | optional | Boolean | false | Set to `true` to enable multiple simultaneous ripples, instead of one after the other |
-
-
-<a id="ripple-appearance-options"></a>
-### Ripple appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **unconstrained**           | optional | Boolean | false | Set to `true` to make the ripple shape no longer bound to the target element |   
-| **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |
-| **duration**                | optional | Number | `1 / opacityDecayVelocity * 0.2` | The animation duration in seconds |
-| **startOpacity**            | optional | Number | 0.2 | Opacity at the start of the ripple animation |
-| **endOpacity**              | optional | Number | 0.0 | Opacity at the end of the ripple animation |
-| **startScale**              | optional | Number | 0.1 | Scale at the start of the ripple animation |
-| **endScale**                | optional | Number | 2.0 | Scale at the end of the ripple animation |
 | **animationTimingFunction** | optional | String | "ease-out" | Name of animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)" |
+| **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |
+| **disabled**  | optional | Boolean | false | Set to `true` to disable ripples |
+| **duration**                | optional | Number | `1 / opacityDecayVelocity * 0.2` | The animation duration in seconds |
+| **end**       | optional | Function | | Callback function when the ripple has ended; see Callback functions |
+| **endOpacity**              | optional | Number | 0.0 | Opacity at the end of the ripple animation |
+| **endScale**                | optional | Number | 2.0 | Scale at the end of the ripple animation |
+| **multi**     | optional | Boolean | false | Set to `true` to enable multiple simultaneous ripples, instead of one after the other |
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation to make a persistent color fill |
+| **start**     | optional | Function | | Callback function just before the ripple starts; see Callback functions |
+| **startOpacity**            | optional | Number | 0.2 | Opacity at the start of the ripple animation |
+| **startScale**              | optional | Number | 0.1 | Scale at the start of the ripple animation |
 | **target**                  | optional | HTML Element | the ripple's parent node element | The target defines which element responds to tap |
+| **unconstrained**           | optional | Boolean | false | Set to `true` to make the ripple shape no longer bound to the target element |   
 
 
 <a id="common-component-options"></a>
@@ -79,10 +71,10 @@ Adds a touch ripple effect to an element.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-ripple` |
-| **style**     | optional | Object |       | For setting simple style attributes |
+| **element**   | optional | String | "div" | HTML element tag |
 | **id** | optional | String | | HTML element id |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

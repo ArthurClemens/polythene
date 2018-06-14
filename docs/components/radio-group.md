@@ -40,8 +40,8 @@ Described in:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
 | **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
+| **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
 | **name**      | required | String | | Name for all radio button elements |
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 
@@ -51,12 +51,12 @@ Described in:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-radio-group` |
-| **id**        | optional       | String   |             | HTML element id for the radio button container |
-| **content** | use `buttons` or `content` | String, hyperscript or component | | See: `buttons` |
-| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-radio-group` |
+| **content** | use `buttons` or `content` | String, hyperscript or component | | See: `buttons` |
+| **element**   | optional       | String   | "div"       | HTML element tag for the Radio Button container |
+| **id**        | optional       | String   |             | HTML element id for the radio button container |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

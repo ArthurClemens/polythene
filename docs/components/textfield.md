@@ -58,9 +58,9 @@ These options have effect on the overall component (label, input, help, error).
 | **focusHelp** | optional | Boolean | false | Makes the help text appear when the field gets focus |
 | **fullWidth** | optional | Boolean | | Set to `true` change the layout of the field better fitted for full width |
 | **help** | optional | String | | Help text below the field |
-| **hideValidation** | optional | Boolean |  | Set to `true` to hide invalid state indicators |
-| **hideSpinner** | optional | Boolean | true | Set to false to show the default browser step indicator on number inputs |
 | **hideClear** | optional | Boolean | true | Set to false to show the default browser clear button |
+| **hideSpinner** | optional | Boolean | true | Set to false to show the default browser step indicator on number inputs |
+| **hideValidation** | optional | Boolean |  | Set to `true` to hide invalid state indicators |
 | **label** | optional | String | | Text label; unless `floatingLabel` is `true`, the label is functionally equal to a placeholder |
 
 
@@ -72,16 +72,16 @@ These options also have effect on the generated HTML input field.
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **autofocus** (React: **autoFocus**) | optional | Boolean | | Set to `true` to give the input field autofocus; NOTE: does not work on iOS, set focus explicitly when an event is fired |
+| **defaultValue** | optional | String | | Initial input value |
 | **disabled** | optional | Boolean | | Creates a disabled input field |
 | **ignoreEvents** | optional | Array | | List of input event names to ignore, for instance `["onblur"]` |
 | **multiLine** | optional | Boolean | | Set to `true` to create a textarea instead of an text input field |
 | **name** | optional | String | | Input element name |
+| **onChange**  | optional | Function `({focus::Boolean, setInputState({ focus, value }) -> undefined, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
 | **readonly** (React: **readOnly**) | optional | Boolean | | Creates a readonly input field |
 | **rows** | optional (only when `multiLine` is `true`) | Number | | The number of rows for the textarea |
 | **type** | optional | String: "text", "password", "email", "number", ... | "text" | Type of input element |
 | **value** | optional | String | | Input value |
-| **defaultValue** | optional | String | | Initial input value |
-| **onChange**  | optional | Function `({focus::Boolean, setInputState({ focus, value }) -> undefined, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
 
 
 <a id="validation-options"></a>
@@ -111,13 +111,13 @@ These options also have effect on the generated HTML input field.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
-| **id**        | optional       | String   |             | HTML element id |
-| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tabindex** (React: **tabIndex**) | optional       | Integer  | 0           | Tab index |
+| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className**     | optional       | String   |             | Extra CSS class appended to `pe-textfield` |
+| **element**   | optional       | String   | "div"       | HTML element tag |
 | **events** | optional | Object | | Input events; options object containing one or more events; predefined events are (Mithril) `onfocus`, `onblur`, `oninput`, `onfocus`, `onclick`, `onkeydown`, (React) `onFocus`, `onBlur`, `onInput`, `onFocus`, `onClick`, `onKeyDown`; events with the same name that are specified in the `events` option will overwrite the predefined functions; use `ignoreEvents` to ignore specific events  |
+| **id**        | optional       | String   |             | HTML element id |
+| **tabindex** (React: **tabIndex**) | optional       | Integer  | 0           | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

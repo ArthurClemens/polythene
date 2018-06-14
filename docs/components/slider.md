@@ -9,7 +9,6 @@ Select a value from a continuous or discrete range of values by moving the slide
 - [Keyboard control](#keyboard-control)
 - [Options](#options)
   - [Slider specific options](#slider-specific-options)
-  - [Appearance options](#appearance-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -74,24 +73,17 @@ The amount of change depends on the step size. This can be set with option `step
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **min** | optional | Number | 0 | Minimum slider value |
-| **max** | optional | Number | 100 | Maximum slider value |
-| **stepSize** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
-| **value** | optional | Number | 0 | Managed Slider value (see: [Handling state](../handling-state.md)) |
 | **defaultValue** | optional | Number | 0 | Initial slider value |
-| **ticks** | optional | Boolean |  | Show a tick for each step; limited to 100 |
-| **pin** | optional | Boolean |  | Use with `step`; on click shows a pin shape with the current value |
-| **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
-| **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
 | **disabled** | optional | Boolean |  | Set to `true` to make the slider read only |
-
-
-<a id="appearance-options"></a>
-### Appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
+| **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
+| **max** | optional | Number | 100 | Maximum slider value |
+| **min** | optional | Number | 0 | Minimum slider value |
+| **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
+| **pin** | optional | Boolean |  | Use with `step`; on click shows a pin shape with the current value |
+| **stepSize** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
+| **ticks** | optional | Boolean |  | Show a tick for each step; limited to 100 |
+| **value** | optional | Number | 0 | Managed Slider value (see: [Handling state](../handling-state.md)) |
 
 
 <a id="common-component-options"></a>
@@ -99,13 +91,13 @@ The amount of change depends on the step size. This can be set with option `step
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "div"       | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
-| **id**        | optional       | String   |             | HTML element id |
-| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component |      | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tabindex** (React: **tabIndex**)  | optional       | Integer  | 0           | Tab index |
+| **before**    | optional       | String, hyperscript or component |      | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-slider` |
+| **element**   | optional       | String   | "div"       | HTML element tag |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **id**        | optional       | String   |             | HTML element id |
+| **tabindex** (React: **tabIndex**)  | optional       | Integer  | 0           | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

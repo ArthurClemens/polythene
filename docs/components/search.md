@@ -8,7 +8,6 @@ Search field with optional icons and buttons that respond to the input state.
 - [Usage](#usage)
 - [Options](#options)
   - [Search specific options](#search-specific-options)
-  - [Search appearance options](#search-appearance-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -43,16 +42,9 @@ Search field with optional icons and buttons that respond to the input state.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **textfield** | required | Options object for [Text Field](textfield.md) | | Options for the text field, for instance to specify the label |
-| **fullWidth** | optional | Boolean | false | A fullwidth search box is visually extended to the sides (with a height of 56px); inset search box has side (page) padding and is less tall (48px) |
-
-
-<a id="search-appearance-options"></a>
-### Search appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
 | **buttons** | optional | Object | | The Object needs to have (optional) attributes `none`, `focus`, `focus_dirty` and `dirty`, each with (optional) attributes `before` and `after`; pass a String, hyperscript or component (or Array) to each |
+| **fullWidth** | optional | Boolean | false | A fullwidth search box is visually extended to the sides (with a height of 56px); inset search box has side (page) padding and is less tall (48px) |
+| **textfield** | required | Options object for [Text Field](textfield.md) | | Options for the text field, for instance to specify the label |
 
 
 <a id="common-component-options"></a>
@@ -60,13 +52,13 @@ Search field with optional icons and buttons that respond to the input state.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag for the checkbox container |
-| **className** | optional | String |  | Extra CSS class appended to `pe-search` |
-| **style**     | optional       | Object   |             | For setting simple style attributes |
-| **id** | optional | String | | HTML element id for the search field |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional | String |  | Extra CSS class appended to `pe-search` |
+| **element**   | optional | String | "div" | HTML element tag for the checkbox container |
 | **events** | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **id** | optional | String | | HTML element id for the search field |
+| **style**     | optional       | Object   |             | For setting simple style attributes |
 | **tabindex** (React: **tabIndex**) | optional       | Integer | 0 | Tab index |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 

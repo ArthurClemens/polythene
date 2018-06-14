@@ -8,7 +8,6 @@ Displays a tab row of navigation buttons.
 - [Usage](#usage)
 - [Options](#options)
   - [Tabs options](#tabs-options)
-  - [Tabs appearance options](#tabs-appearance-options)
   - [Tab button options](#tab-button-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
@@ -51,28 +50,21 @@ Displays a tab row of navigation buttons.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **tabs**   | use `content` or `tabs` | Array of option objects | | Button row content |
-| **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
-| **onChange**  | optional       | Function `({index::Number, options::Object, el::HTMLElement}) -> undefined` | | Callback function that receives the tabs state |
-
-
-<a id="tabs-appearance-options"></a>
-### Tabs appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
-| **small** | optional | Boolean | false | Set to `true` to reduce the tab widths on larger screens |
-| **autofit** | optional | Boolean | false | Set to `true` to let the buttons fill the button row |
-| **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
 | **activeSelected** | optional | Boolean | | Set to `true` to enabled clicks/taps on the selected tab button |
+| **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
+| **autofit** | optional | Boolean | false | Set to `true` to let the buttons fill the button row |
+| **centered** | optional | Boolean | false | Set to `true` to center the button row; this automatically sets `autofit` to `false` |
+| **hideIndicator** | optional | Boolean | false | Set to `true` to hide the tab indicator |
+| **largestWidth** | optional | Boolean | false | Set to `true` to make all tabs the width of the largest tab |
+| **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
+| **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the tab indicator slide to the new position |
+| **onChange**  | optional       | Function `({index::Number, options::Object, el::HTMLElement}) -> undefined` | | Callback function that receives the tabs state |
+| **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
 | **scrollIconBackward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
 | **scrollIconForward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
-| **centered** | optional | Boolean | false | Set to `true` to center the button row; this automatically sets `autofit` to `false` |
-| **largestWidth** | optional | Boolean | false | Set to `true` to make all tabs the width of the largest tab |
 | **selectedTabIndex** | optional | Number | 0 | The Array index of the selected tab |
-| **hideIndicator** | optional | Boolean | false | Set to `true` to hide the tab indicator |
-| **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the tab indicator slide to the new position |
+| **small** | optional | Boolean | false | Set to `true` to reduce the tab widths on larger screens |
+| **tabs**   | use `content` or `tabs` | Array of option objects | | Button row content |
 
 
 <a id="tab-button-options"></a>
@@ -84,14 +76,14 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
+| **className** | optional | String |  | Extra CSS class appended to "pe-button pe-tabs__tab" |
+| **disabled** | optional | Boolean | false | Disables the button |
 | **element** | optional | String | "a" (if `url` is passed) or "div" | HTML element tag |
 | **events** | optional | Object | | Button events; options object containing one or more events like `onclick` |
-| **className** | optional | String |  | Extra CSS class appended to "pe-button pe-tabs__tab" |
-| **label** | required | String | | The button label |
-| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
-| **disabled** | optional | Boolean | false | Disables the button |
+| **label** | required | String | | The button label |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
 <a id="common-component-options"></a>
@@ -99,13 +91,13 @@ These options can be grouped into `tabsOpts` and applied to all tabs.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String | "div" | HTML element tag |
-| **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id**        | optional       | String | | HTML element id |
-| **content**   | use `content` or `tabs` | Array of option objects | | Button row content |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className**     | optional       | String |  | Extra CSS class appended to `pe-tabs` |
+| **content**   | use `content` or `tabs` | Array of option objects | | Button row content |
+| **element**   | optional       | String | "div" | HTML element tag |
+| **id**        | optional       | String | | HTML element id |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

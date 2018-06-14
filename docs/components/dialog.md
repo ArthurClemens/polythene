@@ -8,7 +8,6 @@ Displays a single dialog, or a stack of dialogs.
 - [Usage](#usage)
 - [Options](#options)
   - [Dialog specific options](#dialog-specific-options)
-  - [Dialog appearance options](#dialog-appearance-options)
   - [Transition options](#transition-options)
   - [Spawn options](#spawn-options)
   - [DialogPane options](#dialogpane-options)
@@ -48,28 +47,22 @@ Displays a single dialog, or a stack of dialogs.
 
 | **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
-| **formOptions**   | optional | Options Object | | Form attribute options such as `method` or `enctype` (React: `encType`) |
-| **header**        | optional | String, hyperscript or component | | Header row |
-| **title**         | optional | String |  | Header title; if omitted, no header will be shown |
+| **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
 | **body**          | optional | String, hyperscript or component |  | Body content; if omitted, no body will be shown |
-| **menu**          | optional | [Menu](menu.md) options object |  | Pass menu options to use the dialog as menu |
+| **borders** | optional | String | "overflow" | Options: "always", "never", "overflow" (when the body overflows the content area); a top border is only shown when a header is present; a bottom border is only shown when a footer is present |
 | **footer**        | optional | String, hyperscript or component | | Footer row |
 | **footerButtons** | optional | String, hyperscript or component | | Footer buttons to show in the footer row |
+| **formOptions**   | optional | Options Object | | Form attribute options such as `method` or `enctype` (React: `encType`) |
+| **fullBleed** | optional | Boolean | false | Set to `true` to remove padding from the body element |
+| **fullScreen**    | optional | Boolean | false | Set to `true` to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
+| **header**        | optional | String, hyperscript or component | | Header row |
+| **menu**          | optional | [Menu](menu.md) options object |  | Pass menu options to use the dialog as menu |
+| **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
 | **panes**         | optional | Array of `DialogPane` components (React) | | Used internally |
 | **panesOptions**  | optional | Array of `DialogPane` component options (Mithril)  | | Used internally |
-| **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
-| **fullScreen**    | optional | Boolean | false | Set to `true` to make the dialog full screen; tapping the backdrop or pressing ESCAPE will not close the dialog; should be done for mobile screens only; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
+| **title**         | optional | String |  | Header title; if omitted, no header will be shown |
 | **updateContentOnScroll** | optional | Boolean | false | Set to `true` to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
-
-<a id="dialog-appearance-options"></a>
-### Dialog appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
 | **z** | optional | Number 0-5 | 3 | Depth of the shadow |
-| **backdrop** | optional | Boolean | false | Set to `true` to show a backdrop background color |
-| **borders** | optional | String | "overflow" | Options: "always", "never", "overflow" (when the body overflows the content area); a top border is only shown when a header is present; a bottom border is only shown when a footer is present |
-| **fullBleed** | optional | Boolean | false | Set to `true` to remove padding from the body element |
 
 <a id="transition-options"></a>
 ### Transition options
@@ -113,13 +106,13 @@ See: [Transitions](../transitions.md)
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional       | String   | "form"      | HTML element tag |
-| **className** | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
-| **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
-| **id**        | optional       | String   |             | HTML element id |
-| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |
-| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional       | String   |             | Extra CSS class appended to `pe-dialog` |
+| **content**   | optional       | String, hyperscript or component | | Alternative content; replaces `body` |
+| **element**   | optional       | String   | "form"      | HTML element tag |
+| **id**        | optional       | String   |             | HTML element id |
+| **style**     | optional       | Object   |             | For setting simple style attributes; will be applied to `pe-dialog__content` |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

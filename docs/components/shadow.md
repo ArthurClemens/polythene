@@ -7,7 +7,7 @@ Adds a configurable shadow to an element.
 - [Main features](#main-features)
 - [Usage](#usage)
 - [Options](#options)
-  - [Shadow appearance options](#shadow-appearance-options)
+  - [Shadow options](#shadow-options)
   - [Common component options](#common-component-options)
 - [CSS classes](#css-classes)
 
@@ -34,13 +34,13 @@ Adds a configurable shadow to an element.
 ## Options
 
 
-<a id="shadow-appearance-options"></a>
-### Shadow appearance options
+<a id="shadow-options"></a>
+### Shadow options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **z** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
 | **animated** | optional | Boolean | false | Set to `true` to animate the shadow when setting a new z value. |
+| **z** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
 
 
 <a id="common-component-options"></a>
@@ -48,12 +48,12 @@ Adds a configurable shadow to an element.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
-| **className** | optional | String |  | Extra CSS class appended to `pe-shadow` |
-| **id** | optional | String | | HTML element id |
-| **content**   | optional | String, hyperscript or component |  | Any content; replaces children  |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional | String |  | Extra CSS class appended to `pe-shadow` |
+| **content**   | optional | String, hyperscript or component |  | Any content; replaces children  |
+| **element**   | optional | String | "div" | HTML element tag |
+| **id** | optional | String | | HTML element id |
 
 
 

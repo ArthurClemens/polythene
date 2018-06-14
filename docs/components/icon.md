@@ -52,13 +52,13 @@ Displays an icon (image or [SVG](svg.md)).
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
-| **className** | optional | String |       | Extra CSS class appended to `pe-icon` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id**        | optional | String |       | HTML element id |
-| **content**   | optional | String, hyperscript or component |  | Any content; replaces children and ignores `svg`  |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional | String |       | Extra CSS class appended to `pe-icon` |
+| **content**   | optional | String, hyperscript or component |  | Any content; replaces children and ignores `svg`  |
+| **element**   | optional | String | "div" | HTML element tag |
+| **id**        | optional | String |       | HTML element id |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 

@@ -163,14 +163,14 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "a" | HTML element tag |
-| **className**     | optional | String |  | Extra CSS class appended to `pe-card` |
-| **id** | optional | String | | HTML element id |
-| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
-| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className**     | optional | String |  | Extra CSS class appended to `pe-card` |
+| **element**   | optional | String | "a" | HTML element tag |
+| **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **id** | optional | String | | HTML element id |
 | **style**     | optional | String |  | Style object |
+| **tone**      | optional       | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
 <a id="composition"></a>

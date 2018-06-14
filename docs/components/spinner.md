@@ -17,7 +17,6 @@ Available themed spinners:
 - [Usage](#usage)
 - [Options](#options)
   - [Spinner options](#spinner-options)
-  - [Spinner appearance options](#spinner-appearance-options)
   - [Indeterminate options](#indeterminate-options)
   - [Determinate options](#determinate-options)
   - [Transition options](#transition-options)
@@ -54,15 +53,9 @@ Available themed spinners:
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
-| **show** | optional | Boolean | | Set to `true` to show the spinner |
-
-<a id="spinner-appearance-options"></a>
-### Spinner appearance options
-
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **size** | optional | String | "regular" | Either "small" (24px), "regular" (32px), "medium" (40px), "large" (48px), "fab" (56px). Adds CSS class "small", "regular", "medium", "large", "fab" |
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
+| **show** | optional | Boolean | | Set to `true` to show the spinner |
+| **size** | optional | String | "regular" | Either "small" (24px), "regular" (32px), "medium" (40px), "large" (48px), "fab" (56px). Adds CSS class "small", "regular", "medium", "large", "fab" |
 | **z** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 
 <a id="indeterminate-options"></a>
@@ -81,8 +74,8 @@ For `MaterialDesignProgressSpinner`:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **percentage** | optional | Number (0..1) or Function `() -> Number` | | (Determinate spinner) Sets the progress percentage value |
 | **animated** | optional | Boolean | false | Set to `true` to animate the progress between subsequent steps |
+| **percentage** | optional | Number (0..1) or Function `() -> Number` | | (Determinate spinner) Sets the progress percentage value |
 | **updateDuration** | optional | Number (seconds) | 0.8 | The duration of the step progress update |
 
 <a id="transition-options"></a>
@@ -95,13 +88,13 @@ See: [Transitions](../transitions.md)
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **element**   | optional | String | "div" | HTML element tag |
-| **className** | optional | String |       | Extra CSS class appended to `pe-spinner` |
-| **style**     | optional | Object |       | For setting simple style attributes |
-| **id**        | optional | String |       | HTML element id |
-| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **after**     | optional | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
+| **before**    | optional | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
+| **className** | optional | String |       | Extra CSS class appended to `pe-spinner` |
+| **element**   | optional | String | "div" | HTML element tag |
 | **events**    | optional | Object | | Options object containing one or more standard events such as `onclick` (React: `onClick`) |
+| **id**        | optional | String |       | HTML element id |
+| **style**     | optional | Object |       | For setting simple style attributes |
 | **tone**      | optional | String: "dark" or "light" |  | Renders the component light on dark (sets class `pe-dark-tone`); use "light" to locally inverse (sets class `pe-light-tone`) |
 
 
