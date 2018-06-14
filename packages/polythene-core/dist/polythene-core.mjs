@@ -545,7 +545,8 @@ var transition = function transition(opts, state) {
           style.transitionTimingFunction = timingFunction;
         }
         if (opts.showClass) {
-          el.classList[state === "show" ? "add" : "remove"](opts.showClass);
+          var showClassElement = opts.showClassElement || el;
+          showClassElement.classList[state === "show" ? "add" : "remove"](opts.showClass);
         }
         if (opts.transition) {
           opts.transition();

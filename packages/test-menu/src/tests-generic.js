@@ -5,7 +5,7 @@ import opener from "./components/opener";
 import position from "./components/position";
 import settings from "./components/settings";
 import simple from "./components/simple";
-import sizes from "./components/sizes";
+import widths from "./components/widths";
 import themed from "./components/themed";
 import transitions from "./components/transitions";
 import { MenuCSS } from "polythene-css";
@@ -70,6 +70,23 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
           h("div",
             null,
             h(ExposedDropdown, { height: 150 })
+          )
+      }
+    },
+    {
+      name: "Exposed menu (options: backdrop)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                height: "300px",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { height: "max", backdrop: true })
           )
       }
     },
@@ -167,7 +184,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
     },
     {
       name: "Option: size",
-      component: sizes({ renderer, Menu, List, ListTile })
+      component: widths({ renderer, Menu, List, ListTile })
     },
     {
       name: "Menu items (RTL)",
@@ -182,6 +199,24 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       name: "Menu items -- dark tone",
       className: "pe-dark-tone",
       component: menuItems({ renderer, Menu, List, ListTile })
+    },
+    {
+      name: "Exposed menu (options: backdrop) -- dark tone",
+      className: "pe-dark-tone",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                height: "300px",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { height: "max", backdrop: true })
+          )
+      }
     },
   ];
 };

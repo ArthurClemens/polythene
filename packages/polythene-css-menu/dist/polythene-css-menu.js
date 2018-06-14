@@ -36,17 +36,18 @@
     component: "pe-menu",
 
     // elements
+    panel: "pe-menu__panel",
     content: "pe-menu__content",
     placeholder: "pe-menu__placeholder",
-    target: "pe-menu__target",
+    backdrop: "pe-menu__backdrop",
 
     // states
     permanent: "pe-menu--permanent",
     floating: "pe-menu--floating",
-    visible: "pe-menu--visible",
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
     origin: "pe-menu--origin",
+    visible: "pe-menu--visible",
 
     // lookup
     listTile: listTileClasses.component,
@@ -64,13 +65,21 @@
   };
 
   var tintFns = function tintFns(tint) {
-    return _defineProperty({}, "color_" + tint + "_background", function (selector, vars) {
+    var _ref;
+
+    return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-menu__content": {
+        " .pe-menu__panel": {
           "background-color": vars["color_" + tint + "_background"]
         }
       })];
-    });
+    }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-menu__backdrop": {
+          "background-color": vars["color_" + tint + "_backdrop_background"]
+        }
+      })];
+    }), _ref;
   };
 
   var lightTintFns = _extends({}, generalFns, tintFns("light"));
@@ -93,59 +102,89 @@
   var alignLeft = alignSide(false);
   var alignRight = alignSide(true);
 
-  var unifySize = function unifySize(vars, size) {
-    return size < vars.min_size ? vars.min_size : size;
+  var unifyWidth = function unifyWidth(vars, width) {
+    return width < vars.min_width ? vars.min_width : width;
   };
 
-  var widthClass = function widthClass(size) {
-    var sizeStr = size.toString().replace(".", "-");
-    return "pe-menu--width-" + sizeStr;
+  var widthClass = function widthClass(width) {
+    var widthStr = width.toString().replace(".", "-");
+    return "pe-menu--width-" + widthStr;
   };
 
-  var widthStyle = function widthStyle(vars, size) {
-    var s = unifySize(vars, size);
+  var widthStyle = function widthStyle(vars, width) {
+    var s = unifyWidth(vars, width);
     return _defineProperty$1({}, "." + widthClass(s), {
-      width: vars.size_factor * s + "px"
-      // We can't set maxWidth because we don't know the size of the container
+      " .pe-menu__panel": {
+        width: vars.width_factor * s + "px"
+        // We can't set maxWidth because we don't know the width of the container
+      }
     });
   };
 
-  var sizes_min_size_size_factor = function sizes_min_size_size_factor(selector, vars) {
-    return polytheneCoreCss.sel(selector, [vars.sizes.map(function (size) {
-      return widthStyle(vars, size);
+  var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars) {
+    return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
+      return widthStyle(vars, width);
     }), {
-      minWidth: polytheneTheme.vars.grid_unit_menu * vars.min_size + "px"
+      " .pe-menu__panel": {
+        minWidth: polytheneTheme.vars.grid_unit_menu * vars.min_width + "px"
+      }
     }]);
   };
 
   var varFns = {
     general_styles: function general_styles(selector, vars) {
       return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
-        transitionProperty: "all",
-        zIndex: polytheneTheme.vars.z_menu,
-        opacity: 0,
-        position: "absolute",
+        position: "static",
 
         ".pe-menu--width-auto": {
           width: "auto"
         },
 
         ".pe-menu--permanent": {
-          position: "relative",
-          opacity: 1,
-          zIndex: 0
+          " .pe-menu__panel": {
+            opacity: 1,
+            position: "relative"
+          }
+        },
+
+        ".pe-menu--floating": {
+          " .pe-menu__panel": {
+            zIndex: polytheneTheme.vars.z_menu,
+            transitionProperty: "all"
+          }
+        },
+
+        " .pe-menu__panel": {
+          transitionProperty: "all",
+          opacity: 0,
+          position: "absolute"
+        },
+
+        " .pe-menu__backdrop": {
+          transitionProperty: "all",
+          position: "fixed",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          opacity: 0,
+          zIndex: polytheneTheme.vars.z_menu
+        },
+
+        ".pe-menu--visible .pe-menu__backdrop": {
+          opacity: 1
         },
 
         " .pe-menu__content": {
+          overflow: "auto",
           width: "100%",
-          height: "100%",
-          overflow: "auto"
+          height: "100%"
         },
 
         ".pe-menu--full-height": {
           height: "100%",
 
-          " .pe-menu__content": {
+          " .pe-menu__panel": {
             height: "100%"
           }
         }
@@ -153,58 +192,64 @@
     },
     animation_delay: function animation_delay(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionDelay: vars.animation_delay
+        " .pe-menu__panel, .pe-menu__backdrop": {
+          transitionDelay: vars.animation_delay
+        }
       })];
     },
     animation_duration: function animation_duration(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionDuration: vars.animation_duration
+        " .pe-menu__panel, .pe-menu__backdrop": {
+          transitionDuration: vars.animation_duration
+        }
       })];
     },
     animation_timing_function: function animation_timing_function(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionTimingFunction: vars.animation_timing_function
+        " .pe-menu__panel, .pe-menu__backdrop": {
+          transitionTimingFunction: vars.animation_timing_function
+        }
       })];
     },
     animation_show_css: function animation_show_css(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-menu--visible": vars.animation_show_css
+        ".pe-menu--visible": {
+          " .pe-menu__panel": vars.animation_show_css
+        }
       })];
     },
     animation_hide_css: function animation_hide_css(selector, vars) {
-      return [polytheneCoreCss.sel(selector, [vars.animation_hide_css])];
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-menu__panel": vars.animation_hide_css
+      })];
     },
     animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-menu--origin.pe-menu--visible": vars.animation_show_origin_effect_css
+        ".pe-menu--origin.pe-menu--visible": {
+          " .pe-menu__panel": vars.animation_show_origin_effect_css
+        }
       })];
     },
     animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-menu--origin:not(.pe-menu--visible)": vars.animation_hide_origin_effect_css
+        ".pe-menu--origin:not(.pe-menu--visible)": {
+          " .pe-menu__panel": vars.animation_hide_origin_effect_css
+        }
       })];
     },
-    // exposed_vertical_offset: (selector, vars) => [
-    //   sel(selector, {
-    //     ".pe-menu--exposed": {
-    //       marginTop: vars.exposed_vertical_offset + "px",
-    //       height: `calc(100% - ${vars.exposed_vertical_offset}px)`,
-    //     }
-    //   })
-    // ],
-    sizes: function sizes(selector, vars) {
-      return [sizes_min_size_size_factor(selector, vars)];
+    widths: function widths(selector, vars) {
+      return [widths_min_width_width_factor(selector, vars)];
     },
-    min_size: function min_size(selector, vars) {
-      return [sizes_min_size_size_factor(selector, vars)];
+    min_width: function min_width(selector, vars) {
+      return [widths_min_width_width_factor(selector, vars)];
     },
-    size_factor: function size_factor(selector, vars) {
-      return [sizes_min_size_size_factor(selector, vars)];
+    width_factor: function width_factor(selector, vars) {
+      return [widths_min_width_width_factor(selector, vars)];
     },
     border_radius: function border_radius(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
         ".pe-menu--floating": {
-          " .pe-menu__content": {
+          " .pe-menu__panel": {
             borderRadius: vars.border_radius + "px"
           }
         }
@@ -225,12 +270,16 @@
        animation_show_origin_effect_css: "transform: scale(1);",
        animation_timing_function: "ease-in-out",
        border_radius: polytheneTheme.vars.unit_block_border_radius,
-       min_size: 1.5,
-       size_factor: polytheneTheme.vars.grid_unit_menu,
-       sizes: [1, 1.5, 2, 3, 4, 5, 6, 7],
+       min_width: 1.5,
+       width_factor: polytheneTheme.vars.grid_unit_menu,
+       widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
 
        color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
-       color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background)
+       color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
+
+       color_light_backdrop_background: "rgba(0, 0, 0, .1)",
+       color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
+
        // text colors are set by content, usually list tiles
   };
 

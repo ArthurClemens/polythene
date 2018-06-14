@@ -8,29 +8,33 @@ const alignSide = isRTL => () => ({
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 
-const unifySize = (vars, size) =>
-  size < vars.min_size ? vars.min_size : size;
+const unifyWidth = (vars, width) =>
+  width < vars.min_width ? vars.min_width : width;
 
-const widthClass = size => {
-  const sizeStr = size.toString().replace(".", "-");
-  return "pe-menu--width-" + sizeStr;
+const widthClass = width => {
+  const widthStr = width.toString().replace(".", "-");
+  return "pe-menu--width-" + widthStr;
 };
 
-const widthStyle = (vars, size) => {
-  const s = unifySize(vars, size);
+const widthStyle = (vars, width) => {
+  const s = unifyWidth(vars, width);
   return {
     ["." + widthClass(s)]: {
-      width: vars.size_factor * s + "px",
-      // We can't set maxWidth because we don't know the size of the container
+      " .pe-menu__panel": {
+        width: vars.width_factor * s + "px",
+        // We can't set maxWidth because we don't know the width of the container
+      }
     }
   };
 };
 
-const sizes_min_size_size_factor = (selector, vars) =>
+const widths_min_width_width_factor = (selector, vars) =>
   sel(selector, [
-    vars.sizes.map(size => widthStyle(vars, size)),
+    vars.widths.map(width => widthStyle(vars, width)),
     {
-      minWidth: themeVars.grid_unit_menu * vars.min_size + "px",
+      " .pe-menu__panel": {
+        minWidth: themeVars.grid_unit_menu * vars.min_width + "px",
+      }
     }
   ]);
 
@@ -39,31 +43,57 @@ const varFns = {
     sel(selector, [
       alignLeft(vars),
       {
-        transitionProperty: "all",
-        zIndex: themeVars.z_menu,
-        opacity: 0,
-        position: "absolute",
-        
+        position: "static",
+
         ".pe-menu--width-auto": {
           width: "auto"
         },
 
         ".pe-menu--permanent": {
-          position: "relative",
-          opacity: 1,
-          zIndex: 0
+          " .pe-menu__panel": {
+            opacity: 1,
+            position: "relative",
+          }
+        },
+
+        ".pe-menu--floating": {
+          " .pe-menu__panel": {
+            zIndex: themeVars.z_menu,
+            transitionProperty: "all",
+          }
+        },
+
+        " .pe-menu__panel": {
+          transitionProperty: "all",
+          opacity: 0,
+          position: "absolute",
+        },
+
+        " .pe-menu__backdrop": {
+          transitionProperty: "all",
+          position: "fixed",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          opacity: 0,
+          zIndex: themeVars.z_menu,
+        },
+
+        ".pe-menu--visible .pe-menu__backdrop": {
+          opacity: 1
         },
 
         " .pe-menu__content": {
+          overflow: "auto",
           width: "100%",
           height: "100%",
-          overflow: "auto",
         },
 
         ".pe-menu--full-height": {
           height: "100%",
 
-          " .pe-menu__content": {
+          " .pe-menu__panel": {
             height: "100%"
           }
         }
@@ -75,60 +105,64 @@ const varFns = {
   ],
   animation_delay: (selector, vars) => [
     sel(selector, {
-      transitionDelay: vars.animation_delay,
+      " .pe-menu__panel, .pe-menu__backdrop": {
+        transitionDelay: vars.animation_delay,
+      }
     })
   ],
   animation_duration: (selector, vars) => [
     sel(selector, {
-      transitionDuration: vars.animation_duration,
+      " .pe-menu__panel, .pe-menu__backdrop": {
+        transitionDuration: vars.animation_duration,
+      }
     })
   ],
   animation_timing_function: (selector, vars) => [
     sel(selector, {
-      transitionTimingFunction: vars.animation_timing_function,
+      " .pe-menu__panel, .pe-menu__backdrop": {
+        transitionTimingFunction: vars.animation_timing_function,
+      }
     })
   ],
   animation_show_css: (selector, vars) => [
     sel(selector, {
-      ".pe-menu--visible": vars.animation_show_css
+      ".pe-menu--visible": {
+        " .pe-menu__panel": vars.animation_show_css
+      }
     })
   ],
   animation_hide_css: (selector, vars) => [
-    sel(selector, [
-      vars.animation_hide_css,
-    ])
+    sel(selector, {
+      " .pe-menu__panel": vars.animation_hide_css,
+    })
   ],
   animation_show_origin_effect_css: (selector, vars) => [
     sel(selector, {
-      ".pe-menu--origin.pe-menu--visible": vars.animation_show_origin_effect_css
+      ".pe-menu--origin.pe-menu--visible": {
+        " .pe-menu__panel": vars.animation_show_origin_effect_css
+      }
     })
   ],
   animation_hide_origin_effect_css: (selector, vars) => [
     sel(selector, {
-      ".pe-menu--origin:not(.pe-menu--visible)": vars.animation_hide_origin_effect_css
+      ".pe-menu--origin:not(.pe-menu--visible)": {
+        " .pe-menu__panel": vars.animation_hide_origin_effect_css
+      }
     })
   ],
-  // exposed_vertical_offset: (selector, vars) => [
-  //   sel(selector, {
-  //     ".pe-menu--exposed": {
-  //       marginTop: vars.exposed_vertical_offset + "px",
-  //       height: `calc(100% - ${vars.exposed_vertical_offset}px)`,
-  //     }
-  //   })
-  // ],
-  sizes: (selector, vars) => [
-    sizes_min_size_size_factor(selector, vars)
+  widths: (selector, vars) => [
+    widths_min_width_width_factor(selector, vars)
   ],
-  min_size: (selector, vars) => [
-    sizes_min_size_size_factor(selector, vars)
+  min_width: (selector, vars) => [
+    widths_min_width_width_factor(selector, vars)
   ],
-  size_factor: (selector, vars) => [
-    sizes_min_size_size_factor(selector, vars)
+  width_factor: (selector, vars) => [
+    widths_min_width_width_factor(selector, vars)
   ],
   border_radius: (selector, vars) => [
     sel(selector, {
       ".pe-menu--floating": {
-        " .pe-menu__content": {
+        " .pe-menu__panel": {
           borderRadius: vars.border_radius + "px"
         }
       },

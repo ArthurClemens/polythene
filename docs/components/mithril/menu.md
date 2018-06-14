@@ -17,6 +17,7 @@
   - [Dialog menu](#dialog-menu)
   - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
 - [Appearance](#appearance)
+  - [Variations](#variations)
   - [Styling](#styling)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
@@ -334,6 +335,14 @@ const Page = {
 
 <a id="appearance"></a>
 ## Appearance
+
+<a id="variations"></a>
+### Variations
+
+* Set the menu width with option `width` (choose 1, 1.5, 2, 3, 4, 5, 6, 7, or "auto")
+* Set the menu height with `height`; use "max" to use the maximum available height within the parent element (the top position and bottom margin will be subtracted automatically)
+* To make the menu stand out more from the surroundings, create a backdrop with `backdrop: true`
+
 
 
 <a id="styling"></a>

@@ -16,8 +16,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
       id: "id-" + Math.floor(Math.random() * 1000)
     });
   },
-  view: vnode => {
-    const state = vnode.state;
+  view: ({ state, attrs }) => {
     const id = state.id;
     const show = state.show();
     const selectedIndex = state.selectedIndex();
@@ -35,9 +34,10 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           didHide: () => state.show(false),
           hideDelay: .180,
           size: 3,
-          height: vnode.attrs.height,
+          height: attrs.height,
           scrollTarget: `#item-${selectedIndex}`,
           origin: "top",
+          backdrop: attrs.backdrop,
           content: h(List, {
             hoverable: true,
             compact: true,

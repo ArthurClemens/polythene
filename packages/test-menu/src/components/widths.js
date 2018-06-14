@@ -1,7 +1,7 @@
 
 
-const createSizedMenu = ({ size, h, Menu, List, ListTile }) => {
-  const sizeTexts = {
+const createSizedMenu = ({ width, h, Menu, List, ListTile }) => {
+  const widthTexts = {
     "1": ["en", "nl", "de"],
     "1.5": ["Yes", "No", "Maybe"],
     "2": ["Copy", "Paste", "Undo"],
@@ -12,14 +12,14 @@ const createSizedMenu = ({ size, h, Menu, List, ListTile }) => {
     "7": ["Any bar, any cross, any impediment will be", "medicinable to me: I am sick in displeasure to him", "and whatsoever comes athwart his affection ranges", "evenly with mine. How canst thou cross this marriage?"],
     "auto": ["Paragraph styles", "Line spacing", "Numbered list"]
   };
-  const sizeStr = size.toString();
+  const widthStr = width.toString();
   return h(Menu, {
-    size: size,
+    width,
     permanent: true,
     content: h(List, {
       compact: true,
-      header: { title: size },
-      tiles: sizeTexts[sizeStr].map((label) =>
+      header: { title: width },
+      tiles: widthTexts[widthStr].map((label) =>
         h(ListTile, {
           title: label,
           key: label
@@ -32,6 +32,6 @@ const createSizedMenu = ({ size, h, Menu, List, ListTile }) => {
 
 export default ({ renderer: h, Menu, List, ListTile }) => ({
   view: () =>
-    h("div", { style: { overflow: "hidden", padding: "10px" }}, [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(size => createSizedMenu({ size, Menu, List, ListTile, h})))
+    h("div", { style: { overflow: "hidden", padding: "10px" }}, [1.5, 2, 3, 4, 5, 6, 7, "auto"].map(width => createSizedMenu({ width, Menu, List, ListTile, h})))
 });
 

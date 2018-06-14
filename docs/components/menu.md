@@ -22,10 +22,10 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 * Choose menu type: dropdown, exposing dropdown, dialog
 * Anchor menu to position "top left", "bottom right", etcetera
 * Tweak positioning with an offset
-* Set z-depth
 * Cover menu: reposition according to selected item
 * Long list: scroll selected item into view
 * Custom transitions
+* Optional backdrop
 * All [List](list.md) main features
 
 
@@ -44,7 +44,8 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 
 | **Parameter**    |  **Required** | **Type** | **Default** | **Description** |
 | ---------------- | -------------- | -------- | ----------- | --------------- |
-| **height**       | optional | String or Number | | Use "max" to use the maximum available height within the parent element (the top position and bottom margin will be subtracted automatically); otherwise use a number with or without pixels or percentage, for example: `160`, `"160px"` or `"75%"` (when using percentage the parent element must have a height) |
+| **backdrop**     | optional       | Boolean | | Set to `true` to add a backdrop below the menu |
+| **height**       | optional       | String or Number | | Use "max" to use the maximum available height within the parent element (the top position and bottom margin will be subtracted automatically); otherwise use a number with or without pixels or percentage, for example: `160`, `"160px"` or `"75%"` (when using percentage the parent element must have a height) |
 | **offsetH**      | optional | Number or String | 0 | Horizontal offset relative to target element; use a number with or without pixels or percentage, for example: `16`, `"16px"` or `"75%"`  |
 | **offsetV**      | optional | Number or String | "79%" | Vertical offset relative to target element; use a number with or without pixels or percentage, for example: `16`, "16px" or "75%" |
 | **origin**       | optional | String | "top" (if `target` is specified)      | Makes the menu appear from a corner or a side; use any combination of `"top"`, `"right"`, `"bottom"`, `"left"`; for example: `"top left"`, `"bottom right"`, `"top"`; but not: `"top bottom"`, `"right left"`  |
@@ -52,9 +53,9 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **reposition**   | optional | Boolean | false | Set to `true` to position the menu to the menu item ([List Tile](list-tile.md)) that has class "selected" |
 | **scrollTarget** | optional | String |  | HTML element selector to scroll to at appearance, for example `".list-item-12"` |
 | **show**         | optional | Boolean | | Set to `true` to show the menu |
-| **size**         | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7; or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that a large size can be displayed off screen on smaller devices |
 | **target**       | recommended | String |  | HTML element selector to position to, for example `"#my-button"` |
 | **transitions**  | optional | Object | | See "Transition options" below  |
+| **width**        | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7, or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that on smaller devices a large size may get clipped by the screen |
 | **z**            | optional | Number 0-5 | 3 | Depth of the shadow |
 
 <a id="transition-options"></a>

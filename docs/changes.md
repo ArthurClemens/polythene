@@ -20,36 +20,38 @@
 
 #### Material Design version 2 -- first small changes
 
-Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in upcoming releases.
+Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in next releases.
 
 #### CSS
 
-CSS creation has been optimized, specifically when creating themed CSS. When using [addStyle](theming/style-variables.md), only the passed style variables will be used to create CSS. This results in much smaller CSS code, and it makes the result more predictable (less potentical clashes with default styles).
+CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [addStyle](theming/style-variables.md) how to use it).
 
-CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
+In terms of internal organisation, CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
 
 
 #### Components
 
-* New component:
+* New component
   * [Button Group](components/button-group.md) - container for a row of buttons; use this to create toggle buttons or split buttons
-* Button:
+* [Button](components/button.md)
   * New options for varying the width and height: `extraWide` and `highLabel`
   * New option `dropdown` to add a dropdown triangle
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
   * MD2: the border radius is now set to `4`
   * Bordered button has a default medium gray border color
-* Menu:
+* [Menu](components/menu.md)
   * Reworked to support dropdown menus - this includes the new Button Group and Button's `dropdown` option
   * MD2: the menu is now positioned below its target (instead of covering the target), unless explicitly overridden with `offsetV: 0`
   * Added scaling effect for menus with `origin` set (with corresponding CSS vars `animation_show_origin_effect_css` and `animation_hide_origin_effect_css`) 
   * New option `scrollTarget` (to scroll a menu element into view)
   * New option `height` (pixel or percentage value, or `"max"` to use the maximum available height within the parent element)
+  * New option `backdrop` to make a menu stand out more
   * Long lists are now scrollable
   * `offset` is deprecated; use `offsetH`
-* Slider:
+  * `size` is deprecated; use `width`
+* [Slider](components/slider.md)
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
-* Spinners and Tabs:
+* [Spinners](components/spinner.md) and [Tabs](components/tabs.md)
   * CSS style variables for animation durations/delays have been changed to strings that include the unit ("ms" or "s")
 
 
@@ -62,14 +64,14 @@ CSS variable files have been moved to each component's CSS package. This makes t
 
 #### Components
 
-* Card:
+* [Card](components/card.md)
   * It is now possible to embed a video using the `media` item
   * The image dimmer element is now only created when option `showDimmer` is passed
-* Icon Button:
+* [Icon Button](components/icon-button.md)
   * Icon Button can now have an optional label; visually consistent with a Checkbox with a custom icon.
-* List Tile:
+* [List Tile](components/list-tile.md)
   * Added CSS style variable `title_line_count` to make the line count of the title configurable
-* Tabs:
+* [Tabs](components/tabs.md)
   * Option `selectedTab` is deprecated in favor of `selectedTabIndex`
   * CSS style variable `label_opacity` has been removed in favor of setting the transparency in the label color (using `rgba`); this creates a better color transition when selecting the tab
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
@@ -91,20 +93,22 @@ CSS variable files have been moved to each component's CSS package. This makes t
 
 #### Components
 
-* New [Drawer](components/drawer.md) component
+* New component
+  * [Drawer](components/drawer.md) to create side navigation
 * Harmonisation of border options:
   * Button, Card and List: options `borders` and `bordered` are deprecated; use `border` instead
   * List: option `indentedBorders` is deprecated; use `indentedBorder` instead
   * Dialog: option `borders` is unchanged (the option refers to top and bottom border)
-* List Tile:
+* [List Tile](components/list-tile.md)
   * Added style variables for for titles and the front element: font size, weight and color 
   * Added option `navigation` to use a Material Design navigation style, as specified in [navigation drawers](https://material.io/guidelines/patterns/navigation-drawer.html)
-* Toolbar:
+* [Toolbar](components/toolbar.md)
   * Added option `z` to add a shadow
   * Added option `fullbleed` to remove side padding
   * Added option `border` to set a bottom border
+* [Button](components/button.md)
+  * Removed `onmouseover` listener
 * Added RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
-* Button: removed `onmouseover` listener
 
 #### Example code
 
@@ -144,9 +148,10 @@ Removed `polythene-fastclick` as it is no longer needed - the tap response on mo
 
 Changes to components:
 
-* Button: the default side margin has been removed
+* [Button](components/button.md)
+  * The default side margin has been removed
   * Add parent element with class `.pe-button-row` to re-add the margins, or add margins where needed
-* List:
+* [List](components/list.md)
   * Removed keyboard control in favor of (more flexible) example code; see:
     * Mithril
       * [List](components/mithril/list.md#keyboard-control)

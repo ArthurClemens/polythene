@@ -7,8 +7,15 @@ const generalFns = ({
 const tintFns = tint => ({
   ["color_" + tint + "_background"]: (selector, vars) => [
     sel(selector, {
-      " .pe-menu__content": {
+      " .pe-menu__panel": {
         "background-color": vars["color_" + tint + "_background"]
+      }
+    })
+  ],
+  ["color_" + tint + "_backdrop_background"]: (selector, vars) => [
+    sel(selector, {
+      " .pe-menu__backdrop": {
+        "background-color": vars["color_" + tint + "_backdrop_background"]
       }
     })
   ]
