@@ -31,7 +31,7 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 * [Getting started with Mithril](docs/getting-started-mithril.md)
 * [Getting started with React](docs/getting-started-react.md)
 
-### Setup examples
+### Setup examples / starter kits
 
 #### Mithril
 
