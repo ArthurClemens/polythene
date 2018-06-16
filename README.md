@@ -31,10 +31,16 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 * [Getting started with Mithril](docs/getting-started-mithril.md)
 * [Getting started with React](docs/getting-started-react.md)
 
-### Setup examples
+### Setup examples / starter kits
+
+#### Mithril
 
 * [polythene-mithril-setup](https://github.com/ArthurClemens/polythene-mithril-setup)
+* [polythene-mithril-typescript-setup](https://github.com/ArthurClemens/polythene-mithril-typescript-setup)
 * [polythene-mithril-coffeescript-setup](https://github.com/ArthurClemens/polythene-mithril-coffeescript-setup)
+
+#### React
+
 * [polythene-react-setup](https://github.com/ArthurClemens/polythene-react-setup)
 
 
