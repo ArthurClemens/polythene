@@ -270,7 +270,7 @@
       mediaQuery: mediaQuery
     });
     polytheneCoreCss.styler.addStyle({
-      selectors: [holderSelector, selector],
+      selectors: [holderSelector],
       fns: holderFns,
       vars: vars,
       customVars: customVars,
@@ -292,7 +292,7 @@
       customVars: customVars,
       mediaQuery: mediaQuery
     }).concat(polytheneCoreCss.styler.getStyle({
-      selectors: [holderSelector, selector],
+      selectors: [holderSelector],
       fns: holderFns,
       vars: vars,
       customVars: customVars,

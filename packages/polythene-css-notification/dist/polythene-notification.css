@@ -115,7 +115,7 @@
   color: #000
 }
 
-.pe-notification__holder.pe-notification {
+.pe-notification__holder {
   -ms-flex-pack: center;
   justify-content: center;
   display: -ms-flexbox;
@@ -130,7 +130,7 @@
   justify-content: flex-start
 }
 
-.pe-notification__holder.pe-notification.pe-multiple--screen {
+.pe-notification__holder.pe-multiple--screen {
   position: fixed;
   z-index: 4000
 }

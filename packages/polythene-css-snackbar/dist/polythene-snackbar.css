@@ -36,7 +36,7 @@
   background: #fff
 }
 
-.pe-snackbar__holder.pe-notification.pe-snackbar {
+.pe-snackbar__holder {
   -ms-flex-pack: center;
   justify-content: center;
   display: -ms-flexbox;
@@ -54,7 +54,7 @@
   width: 100%
 }
 
-.pe-notification--container .pe-snackbar__holder.pe-notification.pe-snackbar {
+.pe-notification--container .pe-snackbar__holder {
   position: relative
 }
 /*# sourceMappingURL=polythene-snackbar.css.map */

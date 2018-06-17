@@ -267,7 +267,7 @@ var addStyle = function addStyle(customSelector, customVars) {
     mediaQuery: mediaQuery
   });
   styler.addStyle({
-    selectors: [holderSelector, selector],
+    selectors: [holderSelector],
     fns: holderFns,
     vars: vars$1,
     customVars: customVars,
@@ -289,7 +289,7 @@ var getStyle = function getStyle() {
     customVars: customVars,
     mediaQuery: mediaQuery
   }).concat(styler.getStyle({
-    selectors: [holderSelector, selector],
+    selectors: [holderSelector],
     fns: holderFns,
     vars: vars$1,
     customVars: customVars,

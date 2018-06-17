@@ -20,7 +20,7 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     mediaQuery,
   });
   styler.addStyle({
-    selectors: [holderSelector, selector],
+    selectors: [holderSelector],
     fns: holderFns,
     vars,
     customVars,
@@ -36,7 +36,7 @@ const getStyle = (customSelector = "", customVars, { mediaQuery }={}) =>
     customVars,
     mediaQuery,
   }).concat(styler.getStyle({
-    selectors: [holderSelector, selector],
+    selectors: [holderSelector],
     fns: holderFns,
     vars,
     customVars,
