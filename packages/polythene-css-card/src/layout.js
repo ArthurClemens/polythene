@@ -135,11 +135,6 @@ const varFns = {
 
         " .pe-card__primary-media": {
           margin: "16px",
-          overflow: "hidden",
-
-          " .pe-card__media": {
-            borderRadius: 0
-          },
         },
         
         // Overlay
@@ -294,17 +289,22 @@ const varFns = {
     sel(selector, {
       borderRadius: vars.border_radius + "px",
 
-      "&:last-child": {
-        borderBottomLeftRadius: vars.border_radius + "px",
-        borderBottomRightRadius: vars.border_radius + "px"
+      " .pe-card__content .pe-card__media": {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
       },
 
-      " .pe-card__primary-media": {
-        " .pe-shadow + &": {
-          // first child
+      " .pe-card__content .pe-card__media:not(.pe-card__media--square):not(.pe-card__media--landscape)": {
+        ":first-child": {
           borderTopLeftRadius: vars.border_radius + "px",
           borderTopRightRadius: vars.border_radius + "px"
         },
+        ":last-child": {
+          borderBottomLeftRadius: vars.border_radius + "px",
+          borderBottomRightRadius: vars.border_radius + "px"
+        }
       }
     })
   ],
@@ -312,7 +312,8 @@ const varFns = {
     sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--small": {
-          width: vars.image_size_small + "px"
+          width: vars.image_size_small + "px",
+          height: vars.image_size_small + "px",
         },
       }
     })
@@ -321,7 +322,7 @@ const varFns = {
     sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--regular": {
-          width: vars.image_size_regular + "px"
+          width: vars.image_size_regular + "px",
         },
       }
     })
@@ -330,7 +331,7 @@ const varFns = {
     sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--medium": {
-          width: vars.image_size_medium + "px"
+          width: vars.image_size_medium + "px",
         },
       }
     })
@@ -339,7 +340,7 @@ const varFns = {
     sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--large": {
-          width: vars.image_size_large + "px"
+          width: vars.image_size_large + "px",
         },
       }
     })
