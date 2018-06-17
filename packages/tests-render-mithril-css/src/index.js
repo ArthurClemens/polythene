@@ -55,7 +55,8 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Button (colored on small screen)"),
+          m("h2", "Themed Media Query Button"),
+          m("h3", "colored on small screen"),
           m(".component", 
             m(Button, {
               label: "Button",
@@ -66,7 +67,8 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Icon (large on small screen)"),
+          m("h2", "Themed Media Query Icon"),
+          m("h3", "large on small screen"),
           m(".component", 
             m(Icon, {
               className: "themed-icon",
@@ -116,7 +118,8 @@ const App = {
       ),
       m(".row",
         [
-          m("h2", "Themed card (larger image on small screen)"),
+          m("h2", "Themed card"),
+          m("h3", "smaller image on small screen"),
           m(".component", 
             m(Card, {
               className: "themed-card small-image-card",

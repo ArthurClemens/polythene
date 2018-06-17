@@ -26,9 +26,14 @@ body, html {
   color: #222;
 }
 .page h2 {
-  font-size: 18px;
+  font-size: 19px;
   margin: 0;
   color: #444;
+}
+.page h3 {
+  font-size: 14px;
+  margin: 0;
+  color: #777;
 }
 .pe-control.pe-radio-control + .pe-control.pe-radio-control {
   margin-left: 40px;
