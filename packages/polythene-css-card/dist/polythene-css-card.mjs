@@ -648,28 +648,28 @@ var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       mediaQuery = _ref.mediaQuery;
 
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
     vars: vars$1,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlaySheetSelector],
     fns: overlayColorFns,
     vars: vars$1,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + contentSelector],
     fns: contentColorFns,
     vars: vars$1,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlayContentSelector],
     fns: contentColorFns,
     vars: vars$1,

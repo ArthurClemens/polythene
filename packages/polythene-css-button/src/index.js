@@ -11,14 +11,14 @@ const superSelector = `.${classes.super}`;
 const selector = `.${classes.component}`;
 
 const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, superSelector],
     fns: baseFns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns,
     vars,

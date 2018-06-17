@@ -651,28 +651,28 @@
     var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
         mediaQuery = _ref.mediaQuery;
 
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, selector],
       fns: baseFns,
       vars: vars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, " " + overlaySheetSelector],
       fns: overlayColorFns,
       vars: vars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, " " + contentSelector],
       fns: contentColorFns,
       vars: vars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, " " + overlayContentSelector],
       fns: contentColorFns,
       vars: vars,

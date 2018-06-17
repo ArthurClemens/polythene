@@ -142,15 +142,15 @@ var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       mediaQuery = _ref.mediaQuery;
 
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: fns,
     vars: vars$1,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
-  styler.addStyle({
-    selectors: [holderSelector],
+  customSelector && styler.addStyle({
+    selectors: [customSelector, holderSelector],
     fns: holderFns,
     vars: vars$1,
     customVars: customVars,

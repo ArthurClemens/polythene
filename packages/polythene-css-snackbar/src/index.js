@@ -12,15 +12,15 @@ const holderFns = [holderLayout];
 const holderSelector = `.${classes.holder.replace(/ /g, ".")}`;
 
 const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
-    selectors: [holderSelector],
+  customSelector && styler.addStyle({
+    selectors: [customSelector, holderSelector],
     fns: holderFns,
     vars,
     customVars,

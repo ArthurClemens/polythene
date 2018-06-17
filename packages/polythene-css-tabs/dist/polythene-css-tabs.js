@@ -607,14 +607,14 @@
     var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
         mediaQuery = _ref.mediaQuery;
 
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, tabsSelector],
       fns: tabsFns,
       vars: vars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
-    polytheneCoreCss.styler.addStyle({
+    customSelector && polytheneCoreCss.styler.addStyle({
       selectors: [customSelector, tabSelector],
       fns: tabFns,
       vars: vars,

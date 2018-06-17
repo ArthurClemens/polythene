@@ -16,28 +16,28 @@ const overlayColorFns = [overlayColor];
 const contentColorFns = [contentColor];
 
 const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlaySheetSelector],
     fns: overlayColorFns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + contentSelector],
     fns: contentColorFns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlayContentSelector],
     fns: contentColorFns,
     vars,

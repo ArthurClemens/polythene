@@ -13,14 +13,14 @@ const tabClass = `${classes.tab} pe-text-button pe-button`;
 const tabSelector = ` .${tabClass.replace(/ /g, ".")}`;
 
 const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
     vars,
     customVars,
     mediaQuery,
   });
-  styler.addStyle({
+  customSelector && styler.addStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
     vars,
