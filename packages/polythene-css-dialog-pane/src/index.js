@@ -1,6 +1,6 @@
 import classes from "polythene-css-classes/dialog-pane";
 import color from "./color";
-import layout from "./layout";
+import layout, { fullScreen } from "./layout";
 import vars from "./vars";
 import { styler } from "polythene-core-css";
 
@@ -23,4 +23,5 @@ export {
   getStyle,
   layout,
   vars,
+  fullScreen,
 };

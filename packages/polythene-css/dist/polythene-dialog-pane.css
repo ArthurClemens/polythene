@@ -6,7 +6,8 @@
   position: relative;
   max-height: 100%;
   border-radius: inherit;
-  margin: 0
+  margin: 0;
+  min-width: 320px
 }
 
 .pe-dialog-pane .pe-dialog-pane__header,.pe-dialog-pane pe-dialog-pane__body,.pe-dialog-pane pe-dialog-pane__header {
@@ -90,6 +91,14 @@
 .pe-dialog__content.pe-menu__content .pe-dialog-pane .pe-dialog-pane__body {
   padding: 0;
   border: none
+}
+
+.pe-dialog--full-screen {
+  padding: 0
+}
+
+.pe-dialog--full-screen .pe-dialog-pane {
+  border-radius: 0
 }
 
 .pe-dialog--full-screen .pe-dialog-pane__content {

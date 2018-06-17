@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-dialog-pane')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-dialog-pane'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-dialog-pane']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssDialogPane) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -114,17 +114,19 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
+  var minWidth = "320px";
+
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
-
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
         zIndex: polytheneTheme.vars.z_dialog,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-        transitionProperty: "all",
+        transitionProperty: "opacity,background-color",
+        minWidth: minWidth,
 
         ".pe-dialog--full-screen": {
           padding: 0,
@@ -136,7 +138,8 @@
 
         " .pe-dialog__content": {
           position: "relative",
-          transitionProperty: "all"
+          transitionProperty: "all",
+          minWidth: minWidth
         },
 
         " .pe-dialog__backdrop": {
@@ -148,7 +151,8 @@
         }
       }]), {
         ".pe-dialog__holder": {
-          height: "100%"
+          height: "100%",
+          minWidth: minWidth
         }
       }];
     },
@@ -161,13 +165,13 @@
       })];
     },
     padding_vertical: function padding_vertical(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
+      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
         paddingTop: vars.padding_vertical + "px",
         paddingBottom: vars.padding_vertical + "px"
       })];
     },
     padding_horizontal: function padding_horizontal(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
+      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
         paddingLeft: vars.padding_horizontal + "px",
         paddingRight: vars.padding_horizontal + "px"
       })];
@@ -193,11 +197,14 @@
       })];
     },
     border_radius: function border_radius(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
+      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
         " .pe-dialog__content": {
           borderRadius: vars.border_radius + "px"
         }
       })];
+    },
+    full_screen: function full_screen(selector, vars) {
+      return [vars.full_screen && polytheneCssDialogPane.fullScreen(selector)];
     }
   };
 
@@ -212,6 +219,7 @@
     animation_show_css: "opacity: 1;",
     animation_timing_function: "ease-in-out",
     border_radius: polytheneTheme.vars.unit_block_border_radius,
+    full_screen: false,
     padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
     padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
     position: "fixed",

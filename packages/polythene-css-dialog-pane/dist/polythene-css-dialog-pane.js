@@ -111,14 +111,36 @@
     });
   };
 
+  var fullScreen = function fullScreen(selector) {
+    return polytheneCoreCss.sel(selector, {
+      padding: 0,
+
+      " .pe-dialog-pane": {
+        borderRadius: 0
+      },
+      " .pe-dialog-pane__content": {
+        borderRadius: 0,
+        maxWidth: "none",
+        height: "100vh",
+        width: "100vw"
+      },
+      " .pe-dialog-pane, .pe-dialog-pane__body": {
+        height: "100vh",
+        maxHeight: "100vh",
+        border: "none",
+        maxWidth: "initial"
+      }
+    });
+  };
+
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutVertical, {
         position: "relative",
         maxHeight: "100%",
-
         borderRadius: "inherit",
         margin: 0,
+        minWidth: "320px",
 
         " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
           zIndex: 1
@@ -202,22 +224,7 @@
             border: "none"
           }
         })
-      }, {
-        " .pe-dialog--full-screen": {
-          " .pe-dialog-pane__content": {
-            borderRadius: 0,
-            maxWidth: "none",
-            height: "100vh",
-            width: "100vw"
-          },
-          " .pe-dialog-pane, .pe-dialog-pane__body": {
-            height: "100vh",
-            maxHeight: "100vh",
-            border: "none",
-            maxWidth: "initial"
-          }
-        }
-      }];
+      }, [fullScreen(" .pe-dialog--full-screen")]];
     },
     max_width: function max_width(selector, vars) {
       return [polytheneCoreCss.sel(selector, []), max_width_side_padding_mobile(selector, vars)];
@@ -330,6 +337,7 @@
   exports.getStyle = getStyle;
   exports.layout = layout;
   exports.vars = vars;
+  exports.fullScreen = fullScreen;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -1,19 +1,22 @@
 import { flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
+import { fullScreen } from "polythene-css-dialog-pane";
+
+const minWidth = "320px";
 
 const varFns = {
   general_styles: selector => [
     sel(selector, [
       flex.layoutCenterCenter,
       {
-        
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
         zIndex: themeVars.z_dialog,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-        transitionProperty: "all",
+        transitionProperty: "opacity,background-color",
+        minWidth,
 
         ".pe-dialog--full-screen": {
           padding: 0,
@@ -26,6 +29,7 @@ const varFns = {
         " .pe-dialog__content": {
           position: "relative",
           transitionProperty: "all",
+          minWidth,
         },
 
         " .pe-dialog__backdrop": {
@@ -39,7 +43,8 @@ const varFns = {
     ]),
     {
       ".pe-dialog__holder": {
-        height: "100%"
+        height: "100%",
+        minWidth,
       },
     }
   ],
@@ -54,13 +59,13 @@ const varFns = {
     }),
   ],
   padding_vertical: (selector, vars) => [
-    sel(selector, {
+    !vars.full_screen && sel(selector, {
       paddingTop: vars.padding_vertical + "px",
       paddingBottom: vars.padding_vertical + "px",
     }),
   ],
   padding_horizontal: (selector, vars) => [
-    sel(selector, {
+    !vars.full_screen && sel(selector, {
       paddingLeft: vars.padding_horizontal + "px",
       paddingRight: vars.padding_horizontal + "px",
     }),
@@ -86,12 +91,15 @@ const varFns = {
     }),
   ],
   border_radius: (selector, vars) => [
-    sel(selector, {
+    !vars.full_screen && sel(selector, {
       " .pe-dialog__content": {
         borderRadius: vars.border_radius + "px",
       },
     }),
   ],
+  full_screen: (selector, vars) => [
+    vars.full_screen && fullScreen(selector)
+  ]
 };
 
 export default createLayout({ varFns });

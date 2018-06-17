@@ -108,14 +108,36 @@ var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
   });
 };
 
+var fullScreen = function fullScreen(selector) {
+  return sel(selector, {
+    padding: 0,
+
+    " .pe-dialog-pane": {
+      borderRadius: 0
+    },
+    " .pe-dialog-pane__content": {
+      borderRadius: 0,
+      maxWidth: "none",
+      height: "100vh",
+      width: "100vw"
+    },
+    " .pe-dialog-pane, .pe-dialog-pane__body": {
+      height: "100vh",
+      maxHeight: "100vh",
+      border: "none",
+      maxWidth: "initial"
+    }
+  });
+};
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutVertical, {
       position: "relative",
       maxHeight: "100%",
-
       borderRadius: "inherit",
       margin: 0,
+      minWidth: "320px",
 
       " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
         zIndex: 1
@@ -199,22 +221,7 @@ var varFns = {
           border: "none"
         }
       })
-    }, {
-      " .pe-dialog--full-screen": {
-        " .pe-dialog-pane__content": {
-          borderRadius: 0,
-          maxWidth: "none",
-          height: "100vh",
-          width: "100vw"
-        },
-        " .pe-dialog-pane, .pe-dialog-pane__body": {
-          height: "100vh",
-          maxHeight: "100vh",
-          border: "none",
-          maxWidth: "initial"
-        }
-      }
-    }];
+    }, [fullScreen(" .pe-dialog--full-screen")]];
   },
   max_width: function max_width(selector, vars$$1) {
     return [sel(selector, []), max_width_side_padding_mobile(selector, vars$$1)];
@@ -322,4 +329,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars, fullScreen };

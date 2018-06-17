@@ -10,6 +10,7 @@ export default {
   animation_show_css:              "opacity: 1;",
   animation_timing_function:       "ease-in-out",
   border_radius:                   vars.unit_block_border_radius,
+  full_screen:                     false,
   padding_horizontal:              5 * vars.grid_unit_component,
   padding_vertical:                3 * vars.grid_unit_component,
   position:                        "fixed",

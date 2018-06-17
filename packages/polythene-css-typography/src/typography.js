@@ -32,7 +32,7 @@ export default () => [
     " h2": {
       "font-size": "45px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "48px",
+      "line-height": vars.line_height,
       "margin-top": "24px",
       "margin-bottom": "24px"
     }
@@ -41,7 +41,7 @@ export default () => [
     " h3": {
       "font-size": "34px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "40px",
+      "line-height": vars.line_height,
       "margin-top": "24px",
       "margin-bottom": "24px"
     }
@@ -50,7 +50,7 @@ export default () => [
     " h4": {
       "font-size": "24px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "32px",
+      "line-height": vars.line_height,
       "-moz-osx-font-smoothing": "grayscale",
       "margin-top": "24px",
       "margin-bottom": "16px"
@@ -60,7 +60,7 @@ export default () => [
     " h5": {
       "font-size": "20px",
       "font-weight": vars.font_weight_medium,
-      "line-height": "1",
+      "line-height": vars.line_height,
       "letter-spacing": "-0.02em",
       "margin-top": "24px",
       "margin-bottom": "16px"
@@ -70,7 +70,7 @@ export default () => [
     " h6": {
       "font-size": "16px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "24px",
+      "line-height": vars.line_height,
       "letter-spacing": "0.04em",
       "margin-top": "24px",
       "margin-bottom": "16px"
@@ -79,13 +79,13 @@ export default () => [
   {
     " html, body": {
       "font-size": fontSize + "px",
-      "line-height": "20px",
+      "line-height": vars.line_height,
       "font-weight": vars.font_weight_normal,
     },
     " p": {
       "font-size": fontSize + "px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "24px",
+      "line-height": vars.line_height,
       "letter-spacing": "0",
       "margin-bottom": "16px"
     },
@@ -102,7 +102,7 @@ export default () => [
     " ul, ol": {
       "font-size": fontSize + "px",
       "font-weight": vars.font_weight_normal,
-      "line-height": "24px",
+      "line-height": vars.line_height,
       "letter-spacing": 0
     },
     " b, strong": {

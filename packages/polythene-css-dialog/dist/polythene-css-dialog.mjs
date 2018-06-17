@@ -1,5 +1,6 @@
 import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { fullScreen } from 'polythene-css-dialog-pane';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -111,17 +112,19 @@ var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
+var minWidth = "320px";
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
-
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
       zIndex: vars.z_dialog,
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-      transitionProperty: "all",
+      transitionProperty: "opacity,background-color",
+      minWidth: minWidth,
 
       ".pe-dialog--full-screen": {
         padding: 0,
@@ -133,7 +136,8 @@ var varFns = {
 
       " .pe-dialog__content": {
         position: "relative",
-        transitionProperty: "all"
+        transitionProperty: "all",
+        minWidth: minWidth
       },
 
       " .pe-dialog__backdrop": {
@@ -145,7 +149,8 @@ var varFns = {
       }
     }]), {
       ".pe-dialog__holder": {
-        height: "100%"
+        height: "100%",
+        minWidth: minWidth
       }
     }];
   },
@@ -158,13 +163,13 @@ var varFns = {
     })];
   },
   padding_vertical: function padding_vertical(selector, vars$$1) {
-    return [sel(selector, {
+    return [!vars$$1.full_screen && sel(selector, {
       paddingTop: vars$$1.padding_vertical + "px",
       paddingBottom: vars$$1.padding_vertical + "px"
     })];
   },
   padding_horizontal: function padding_horizontal(selector, vars$$1) {
-    return [sel(selector, {
+    return [!vars$$1.full_screen && sel(selector, {
       paddingLeft: vars$$1.padding_horizontal + "px",
       paddingRight: vars$$1.padding_horizontal + "px"
     })];
@@ -190,11 +195,14 @@ var varFns = {
     })];
   },
   border_radius: function border_radius(selector, vars$$1) {
-    return [sel(selector, {
+    return [!vars$$1.full_screen && sel(selector, {
       " .pe-dialog__content": {
         borderRadius: vars$$1.border_radius + "px"
       }
     })];
+  },
+  full_screen: function full_screen(selector, vars$$1) {
+    return [vars$$1.full_screen && fullScreen(selector)];
   }
 };
 
@@ -209,6 +217,7 @@ var vars$1 = {
   animation_show_css: "opacity: 1;",
   animation_timing_function: "ease-in-out",
   border_radius: vars.unit_block_border_radius,
+  full_screen: false,
   padding_horizontal: 5 * vars.grid_unit_component,
   padding_vertical: 3 * vars.grid_unit_component,
   position: "fixed",

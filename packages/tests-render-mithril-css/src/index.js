@@ -55,7 +55,7 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Button"),
+          m("h2", "Themed Media Query Button (colored on small screen)"),
           m(".component", 
             m(Button, {
               label: "Button",
@@ -66,7 +66,7 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Icon"),
+          m("h2", "Themed Media Query Icon (large on small screen)"),
           m(".component", 
             m(Icon, {
               className: "themed-icon",
@@ -116,10 +116,10 @@ const App = {
       ),
       m(".row",
         [
-          m("h2", "Themed card"),
+          m("h2", "Themed card (larger image on small screen)"),
           m(".component", 
             m(Card, {
-              className: "themed-card",
+              className: "themed-card small-image-card",
               tone: "dark",
               content: [
                 {
@@ -232,7 +232,7 @@ const App = {
       ),
       m(".row",
         [
-          m("h2", "Dialog"),
+          m("h2", "Media Query Dialog (full screen on small screen)"),
           m(".component", 
             m(RaisedButton, {
               label: "Show dialog",
@@ -240,8 +240,17 @@ const App = {
                 onclick: () => Dialog.show({
                   /* note the Dialog component is below the other elements in the app */
                   title: "Hello",
-                  body: "Click outside to close, or press ESCAPE",
-                  backdrop: true
+                  body: m("div", [
+                    m(RaisedButton, {
+                      events: {
+                        onclick: () => Dialog.hide()
+                      },
+                      label: "Close"
+                    }),
+                  ]),
+                  backdrop: true,
+                  modal: true,
+                  className: "small-screen-full-screen",
                 })
               }
             })
@@ -257,7 +266,7 @@ const App = {
               events: {
                 onclick: () => Notification.show({
                   /* note the Notification component is below the other elements in the app */
-                  title: "Hello"
+                  title: "Hello",
                 })
               }
             })

@@ -35,6 +35,27 @@ const padding_header_bottom = (selector, vars) =>
     },
   });
 
+export const fullScreen = selector =>
+  sel(selector, {
+    padding: 0,
+
+    " .pe-dialog-pane": {
+      borderRadius: 0,
+    },
+    " .pe-dialog-pane__content": {
+      borderRadius: 0,
+      maxWidth: "none",
+      height: "100vh",
+      width: "100vw",
+    },
+    " .pe-dialog-pane, .pe-dialog-pane__body": {
+      height: "100vh",
+      maxHeight: "100vh",
+      border: "none",
+      maxWidth: "initial",
+    }
+  });
+
 const varFns = {
   general_styles: selector => [
     sel(selector, [
@@ -42,9 +63,9 @@ const varFns = {
       {
         position: "relative",
         maxHeight: "100%",
-        
         borderRadius: "inherit",
         margin: 0,
+        minWidth: "320px",
         
         " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
           zIndex: 1
@@ -140,22 +161,9 @@ const varFns = {
         }
       },
     },
-    {
-      " .pe-dialog--full-screen": {
-        " .pe-dialog-pane__content": {
-          borderRadius: 0,
-          maxWidth: "none",
-          height: "100vh",
-          width: "100vw",
-        },
-        " .pe-dialog-pane, .pe-dialog-pane__body": {
-          height: "100vh",
-          maxHeight: "100vh",
-          border: "none",
-          maxWidth: "initial",
-        }
-      },
-    },
+    [
+      fullScreen(" .pe-dialog--full-screen")
+    ]
   ],
   max_width: (selector, vars) => [
     sel(selector, [
@@ -231,7 +239,7 @@ const varFns = {
         }
       },
     }),
-  ]
+  ],
 };
 
 export default createLayout({ varFns });

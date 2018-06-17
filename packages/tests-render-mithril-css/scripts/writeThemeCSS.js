@@ -1,12 +1,26 @@
 const { writeCSS } = require("polythene-scripts");
-const { CardCSS, ButtonCSS, IconCSS } = require("polythene-css");
+const { CardCSS, ButtonCSS, IconCSS, DialogCSS } = require("polythene-css");
+
+const breakPoint = 480;
 
 const styles = [
-  CardCSS.getStyle(".themed-card", {
-    color_dark_main_background: "#B89E58",
-    color_dark_title_text:      "#fff",
-    color_dark_subtitle_text:   "#fff"
-  }),
+  CardCSS.getStyle(
+    ".themed-card",
+    {
+      color_dark_main_background: "#B89E58",
+      color_dark_title_text:      "#fff",
+      color_dark_subtitle_text:   "#fff"
+    }
+  ),
+  CardCSS.getStyle(
+    ".small-image-card",
+    {
+      image_size_medium: 90
+    },
+    {
+      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+    }
+  ),
   ButtonCSS.getStyle(
     ".themed-button",
     {
@@ -15,7 +29,7 @@ const styles = [
       padding_h:              16
     },
     {
-      mediaQuery: "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)"
+      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
     }
   ),
   IconCSS.getStyle(
@@ -25,7 +39,16 @@ const styles = [
       color_light:  "purple",
     },
     {
-      mediaQuery: "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)"
+      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+    }
+  ),
+  DialogCSS.getStyle(
+    ".small-screen-full-screen",
+    {
+      full_screen: true,
+    },
+    {
+      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
     }
   )
 ];

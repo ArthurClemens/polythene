@@ -30,20 +30,17 @@ In terms of internal organisation, CSS variable files have been moved to each co
 
 ##### Themes and media queries
 
-With an additional argument to `addStyle` it is now possible to define a theme style restricted by a media query:
+With an additional argument to `addStyle` it is now possible to define a theme style restricted by a media query.
 
-~~~javascript
-ButtonCSS.addStyle(
-  ".small-screen-button",
-  {
-    color_light_background: "#673ab7",
-    color_light_text:       "#fff",
-  },
-  {
-    mediaQuery: "@media all and (max-width: 380px)"
-  }
-)
-~~~
+Conceptually, this is very close to writing CSS with media queries, but it has the benefit that you don't need to know the internal component structure - you still work with style variables.
+
+Some examples:
+
+* Change a button size or paddings based on screen size
+* Change the image size on a card, without changing the Card options
+* Make a Dialog appear full screen, but only on small screen sizes
+
+See [CSS/Style variables](theming/style-variables.md) how to use this feature.
 
 
 #### Components
@@ -56,6 +53,8 @@ ButtonCSS.addStyle(
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
   * MD2: the border radius is now set to `4`
   * Bordered button has a default medium gray border color
+* [Dialog](components/dialog.md)
+  * Style option `full_screen` can be used to make a Dialog appear full screen, without having to set the component option `fullScreen`. This is useful when the full screen appearance should be limited to specific screen dimensions.
 * [Menu](components/menu.md)
   * Reworked to support dropdown menus - this includes the new Button Group and Button's `dropdown` option
   * MD2: the menu is now positioned below its target (instead of covering the target), unless explicitly overridden with `offsetV: 0`

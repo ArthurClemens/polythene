@@ -6,7 +6,7 @@
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
-  - [Advanced: using media queries](#advanced-using-media-queries)
+  - [Using media queries](#using-media-queries)
   - [Function `addStyle`](#function-addstyle)
   - [Under the hood](#under-the-hood)
 - [Choosing CSS-in-JS or CSS files](#choosing-css-in-js-or-css-files)
@@ -96,22 +96,58 @@ With React JSX:
 ~~~
 
 
-<a id="advanced-using-media-queries"></a>
-### Advanced: using media queries
+<a id="using-media-queries"></a>
+### Using media queries
 
-To restrict a theme style to certain screen conditions, you can pass an additional [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) parameter (as attribute of the 3rd parameter):
+To restrict a theme style to certain screen conditions, you can pass an additional [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) parameter.
+
+
+Conceptually, this is very close to writing CSS with media queries, but it has the benefit that you don't need to know the internal component structure - you still work with style variables.
+
+Pass the media query string as attribute of the "additional options":
 
 ~~~javascript
 IconCSS.addStyle(
   ".small-screen-icon",
+  // Style variables:
   {
     size_regular: 16
   },
+  // Additional options:
   {
-    mediaQuery: "@media all and (max-width: 380px)"
+    mediaQuery: "@media all and (max-width: 420px)"
   }
 )
 ~~~
+
+It is possible to combine styles. This card has a colored background, and at small screen sizes the image is displayed smaller:
+
+~~~javascript
+CardCSS.getStyle(
+  ".themed-card",
+  {
+    color_dark_main_background: "#B89E58",
+    color_dark_title_text:      "#fff",
+    color_dark_subtitle_text:   "#fff"
+  }
+),
+CardCSS.getStyle(
+  ".small-image-card",
+  {
+    image_size_medium: 90
+  },
+  {
+    mediaQuery: "@media all and (max-width: 420px)"
+  }
+)
+~~~
+
+Then can the styles through the classname:
+
+~~~javascript
+m(Card, { className: "themed-card small-image-card" })
+~~~
+
 
 
 <a id="function-addstyle"></a>
