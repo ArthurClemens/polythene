@@ -161,11 +161,9 @@ const varFns = {
   ],
   border_radius: (selector, vars) => [
     sel(selector, {
-      ".pe-menu--floating": {
-        " .pe-menu__panel": {
-          borderRadius: vars.border_radius + "px"
-        }
-      },
+      " .pe-menu__panel": {
+        borderRadius: vars.border_radius + "px"
+      }
     })
   ],
 };

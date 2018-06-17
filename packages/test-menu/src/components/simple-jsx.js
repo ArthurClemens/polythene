@@ -25,7 +25,7 @@ export default class extends Component {
         <Menu
           target={`#${target}`}
           show={isOpen}
-          size={3}
+          width={3}
           didHide={() => this.setState({ isOpen: false })}
         >
           <List>

@@ -205,7 +205,7 @@ var varFns = {
   },
   tab_min_width: function tab_min_width(selector, vars$$1) {
     return [sel(selector, {
-      minWidth: vars$$1.tab_min_width + "px" // for smaller screens, see also media query below
+      minWidth: vars$$1.tab_min_width + "px" // for smaller screens, see also media query
     })];
   },
   tab_max_width: function tab_max_width(selector, vars$$1) {
@@ -214,7 +214,7 @@ var varFns = {
     })];
   },
   tab_min_width_tablet: function tab_min_width_tablet(selector, vars$$1) {
-    return _defineProperty$1({}, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) " + selector, {
+    return _defineProperty$1({}, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) " + selector, {
       minWidth: vars$$1.tab_min_width_tablet + "px"
     }));
   },
@@ -603,14 +603,56 @@ var tabClass = classes.tab + " pe-text-button pe-button";
 var tabSelector = " ." + tabClass.replace(/ /g, ".");
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, tabsSelector], vars$3, customVars, tabsFns), styler.generateCustomStyles([customSelector, tabSelector], vars$3, customVars, tabFns);
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref.mediaQuery;
+
+  styler.addStyle({
+    selectors: [customSelector, tabsSelector],
+    fns: tabsFns,
+    vars: vars$3,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
+  styler.addStyle({
+    selectors: [customSelector, tabSelector],
+    fns: tabFns,
+    vars: vars$3,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
 };
 
-var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, tabsSelector], vars$3, customVars, tabsFns).concat(styler.createCustomStyleSheets([customSelector, tabSelector], vars$3, customVars, tabFns)) : styler.createStyleSheets([tabsSelector], vars$3, tabsFns).concat(styler.createStyleSheets([tabSelector], vars$3, tabFns));
+var getStyle = function getStyle() {
+  var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var customVars = arguments[1];
+
+  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref2.mediaQuery;
+
+  return styler.getStyle({
+    selectors: [customSelector, tabsSelector],
+    fns: tabsFns,
+    vars: vars$3,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }).concat(styler.getStyle({
+    selectors: [customSelector, tabSelector],
+    fns: tabFns,
+    vars: vars$3,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }));
 };
 
-styler.generateStyles([tabsSelector], vars$3, tabsFns);
-styler.generateStyles([tabSelector], vars$3, tabFns);
+styler.addStyle({
+  selectors: [tabsSelector],
+  fns: tabsFns,
+  vars: vars$3
+});
+styler.addStyle({
+  selectors: [tabSelector],
+  fns: tabFns,
+  vars: vars$3
+});
 
 export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, vars$3 as vars };

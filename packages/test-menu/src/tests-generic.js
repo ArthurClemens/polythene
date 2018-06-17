@@ -183,7 +183,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       })
     },
     {
-      name: "Option: size",
+      name: "Option: width",
       component: widths({ renderer, Menu, List, ListTile })
     },
     {

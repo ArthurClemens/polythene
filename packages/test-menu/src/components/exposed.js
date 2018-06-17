@@ -33,7 +33,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           show,
           didHide: () => state.show(false),
           hideDelay: .180,
-          size: 3,
+          width: 3,
           height: attrs.height,
           scrollTarget: `#item-${selectedIndex}`,
           origin: "top",

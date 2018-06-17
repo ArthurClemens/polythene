@@ -100,10 +100,10 @@ var layout = createLayout({ varFns: varFns });
 var vars$1 = {
   general_styles: true,
 
-  size_small: vars.unit_icon_size_small,
-  size_regular: vars.unit_icon_size,
-  size_medium: vars.unit_icon_size_medium,
-  size_large: vars.unit_icon_size_large,
+  size_small: vars.unit_icon_size_small, // 16 
+  size_regular: vars.unit_icon_size, // 24
+  size_medium: vars.unit_icon_size_medium, // 32
+  size_large: vars.unit_icon_size_large, // 40
 
   // avatar background is visible when image is not yet loaded
   color_light_avatar_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
@@ -116,14 +116,14 @@ var vars$1 = {
 var fns = [layout, color];
 var selector = "." + classes.component;
 
-var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
-};
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
 
-var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([selector], vars$1, fns);
-};
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 
-styler.generateStyles([selector], vars$1, fns);
+styler.addStyle({
+  selectors: [selector],
+  fns: fns,
+  vars: vars$1
+});
 
 export { addStyle, color, getStyle, layout, vars$1 as vars };

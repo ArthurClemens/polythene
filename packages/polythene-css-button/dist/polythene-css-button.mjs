@@ -579,14 +579,56 @@ var superSelector = "." + classes.super;
 var selector = "." + classes.component;
 
 var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$1, customVars, fns);
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref.mediaQuery;
+
+  styler.addStyle({
+    selectors: [customSelector, superSelector],
+    fns: baseFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
+  styler.addStyle({
+    selectors: [customSelector, selector],
+    fns: fns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
 };
 
-var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, fns) : styler.createStyleSheets([superSelector], vars$1, baseFns).concat(styler.createStyleSheets([selector], vars$1, fns));
+var getStyle = function getStyle() {
+  var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var customVars = arguments[1];
+
+  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref2.mediaQuery;
+
+  return styler.getStyle({
+    selectors: [customSelector, superSelector],
+    fns: baseFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }).concat(styler.getStyle({
+    selectors: [customSelector, selector],
+    fns: fns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }));
 };
 
-styler.generateStyles([superSelector], vars$1, baseFns);
-styler.generateStyles([selector], vars$1, fns);
+styler.addStyle({
+  selectors: [superSelector],
+  fns: baseFns,
+  vars: vars$1
+});
+styler.addStyle({
+  selectors: [selector],
+  fns: fns,
+  vars: vars$1
+});
 
 export { addStyle, color, getStyle, layout, vars$1 as vars };

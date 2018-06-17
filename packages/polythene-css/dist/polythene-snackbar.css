@@ -1,25 +1,3 @@
-.pe-snackbar__holder {
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  position: fixed;
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 4000;
-  pointer-events: none;
-  justify-content: flex-start;
-  width: 100%
-}
-
-.pe-notification--container .pe-snackbar__holder {
-  position: relative
-}
-
 .pe-notification.pe-snackbar {
   width: 100%;
   opacity: 1
@@ -56,5 +34,27 @@
 
 .pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,.pe-notification.pe-snackbar .pe-notification__content {
   background: #fff
+}
+
+.pe-snackbar__holder.pe-notification.pe-snackbar {
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  position: fixed;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4000;
+  pointer-events: none;
+  justify-content: flex-start;
+  width: 100%
+}
+
+.pe-notification--container .pe-snackbar__holder.pe-notification.pe-snackbar {
+  position: relative
 }
 /*# sourceMappingURL=polythene-snackbar.css.map */

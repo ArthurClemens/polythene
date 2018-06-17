@@ -256,12 +256,7 @@ var varFns = {
       },
 
       " .pe-card__primary-media": {
-        margin: "16px",
-        overflow: "hidden",
-
-        " .pe-card__media": {
-          borderRadius: 0
-        }
+        margin: "16px"
       },
 
       // Overlay
@@ -394,16 +389,21 @@ var varFns = {
     return [sel(selector, {
       borderRadius: vars$$1.border_radius + "px",
 
-      "&:last-child": {
-        borderBottomLeftRadius: vars$$1.border_radius + "px",
-        borderBottomRightRadius: vars$$1.border_radius + "px"
+      " .pe-card__content .pe-card__media": {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
       },
 
-      " .pe-card__primary-media": {
-        " .pe-shadow + &": {
-          // first child
+      " .pe-card__content .pe-card__media:not(.pe-card__media--square):not(.pe-card__media--landscape)": {
+        ":first-child": {
           borderTopLeftRadius: vars$$1.border_radius + "px",
           borderTopRightRadius: vars$$1.border_radius + "px"
+        },
+        ":last-child": {
+          borderBottomLeftRadius: vars$$1.border_radius + "px",
+          borderBottomRightRadius: vars$$1.border_radius + "px"
         }
       }
     })];
@@ -412,7 +412,8 @@ var varFns = {
     return [sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--small": {
-          width: vars$$1.image_size_small + "px"
+          width: vars$$1.image_size_small + "px",
+          height: vars$$1.image_size_small + "px"
         }
       }
     })];
@@ -639,17 +640,97 @@ var contentSelector = "." + classes.content;
 var overlaySheetSelector = "." + classes.overlaySheet;
 var overlayContentSelector = "." + classes.overlayContent;
 
+var baseFns = [layout, color];
+var overlayColorFns = [overlayColor];
+var contentColorFns = [contentColor];
+
 var addStyle = function addStyle(customSelector, customVars) {
-  styler.generateCustomStyles([customSelector, selector], vars$1, customVars, [layout, color]), styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], vars$1, customVars, [overlayColor]), styler.generateCustomStyles([customSelector, " " + contentSelector], vars$1, customVars, [contentColor]), styler.generateCustomStyles([customSelector, " " + overlayContentSelector], vars$1, customVars, [contentColor]);
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref.mediaQuery;
+
+  styler.addStyle({
+    selectors: [customSelector, selector],
+    fns: baseFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
+  styler.addStyle({
+    selectors: [customSelector, " " + overlaySheetSelector],
+    fns: overlayColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
+  styler.addStyle({
+    selectors: [customSelector, " " + contentSelector],
+    fns: contentColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
+  styler.addStyle({
+    selectors: [customSelector, " " + overlayContentSelector],
+    fns: contentColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  });
 };
 
-var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$1, customVars, [layout, color]).concat(styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], vars$1, customVars, [overlayColor])).concat(styler.createCustomStyleSheets([customSelector, " " + contentSelector], vars$1, customVars, [contentColor])).concat(styler.createCustomStyleSheets([customSelector, " " + overlayContentSelector], vars$1, customVars, [contentColor])) : styler.createStyleSheets([selector], vars$1, [layout, color]).concat(styler.createStyleSheets([overlaySheetSelector], vars$1, [overlayColor])).concat(styler.createStyleSheets([contentSelector], vars$1, [contentColor])).concat(styler.createStyleSheets([overlayContentSelector], vars$1, [contentColor]));
+var getStyle = function getStyle() {
+  var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var customVars = arguments[1];
+
+  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref2.mediaQuery;
+
+  return styler.getStyle({
+    selectors: [customSelector, selector],
+    fns: baseFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }).concat(styler.getStyle({
+    selectors: [customSelector, customSelector ? " " : "", overlaySheetSelector],
+    fns: overlayColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  })).concat(styler.getStyle({
+    selectors: [customSelector, customSelector ? " " : "", contentSelector],
+    fns: contentColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  })).concat(styler.getStyle({
+    selectors: [customSelector, customSelector ? " " : "", overlayContentSelector],
+    fns: contentColorFns,
+    vars: vars$1,
+    customVars: customVars,
+    mediaQuery: mediaQuery
+  }));
 };
 
-styler.generateStyles([selector], vars$1, [layout, color]);
-styler.generateStyles([overlaySheetSelector], vars$1, [overlayColor]);
-styler.generateStyles([contentSelector], vars$1, [contentColor]);
-styler.generateStyles([overlayContentSelector], vars$1, [contentColor]);
+styler.addStyle({
+  selectors: [selector],
+  fns: baseFns,
+  vars: vars$1
+});
+styler.addStyle({
+  selectors: [overlaySheetSelector],
+  fns: overlayColorFns,
+  vars: vars$1
+});
+styler.addStyle({
+  selectors: [contentSelector],
+  fns: contentColorFns,
+  vars: vars$1
+});
+styler.addStyle({
+  selectors: [overlayContentSelector],
+  fns: contentColorFns,
+  vars: vars$1
+});
 
 export { addStyle, color, getStyle, layout, vars$1 as vars };

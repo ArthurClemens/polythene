@@ -10,7 +10,7 @@ export default ({ show, target, h, Menu, List, ListTile, didHide, getState, tran
         show,
         didHide,
         getState,
-        size: 3,
+        width: 3,
         content: h(List, [
           h(ListTile, {
             element: "a",

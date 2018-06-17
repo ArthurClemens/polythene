@@ -259,12 +259,7 @@
         },
 
         " .pe-card__primary-media": {
-          margin: "16px",
-          overflow: "hidden",
-
-          " .pe-card__media": {
-            borderRadius: 0
-          }
+          margin: "16px"
         },
 
         // Overlay
@@ -397,16 +392,21 @@
       return [polytheneCoreCss.sel(selector, {
         borderRadius: vars.border_radius + "px",
 
-        "&:last-child": {
-          borderBottomLeftRadius: vars.border_radius + "px",
-          borderBottomRightRadius: vars.border_radius + "px"
+        " .pe-card__content .pe-card__media": {
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
         },
 
-        " .pe-card__primary-media": {
-          " .pe-shadow + &": {
-            // first child
+        " .pe-card__content .pe-card__media:not(.pe-card__media--square):not(.pe-card__media--landscape)": {
+          ":first-child": {
             borderTopLeftRadius: vars.border_radius + "px",
             borderTopRightRadius: vars.border_radius + "px"
+          },
+          ":last-child": {
+            borderBottomLeftRadius: vars.border_radius + "px",
+            borderBottomRightRadius: vars.border_radius + "px"
           }
         }
       })];
@@ -415,7 +415,8 @@
       return [polytheneCoreCss.sel(selector, {
         " .pe-card__primary-media": {
           " .pe-card__media--small": {
-            width: vars.image_size_small + "px"
+            width: vars.image_size_small + "px",
+            height: vars.image_size_small + "px"
           }
         }
       })];
@@ -642,18 +643,98 @@
   var overlaySheetSelector = "." + classes.overlaySheet;
   var overlayContentSelector = "." + classes.overlayContent;
 
+  var baseFns = [layout, color];
+  var overlayColorFns = [overlayColor];
+  var contentColorFns = [contentColor];
+
   var addStyle = function addStyle(customSelector, customVars) {
-    polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, [layout, color]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + contentSelector], vars, customVars, [contentColor]), polytheneCoreCss.styler.generateCustomStyles([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor]);
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref.mediaQuery;
+
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, selector],
+      fns: baseFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, " " + overlaySheetSelector],
+      fns: overlayColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, " " + contentSelector],
+      fns: contentColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, " " + overlayContentSelector],
+      fns: contentColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
   };
 
-  var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, [layout, color]).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlaySheetSelector], vars, customVars, [overlayColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + contentSelector], vars, customVars, [contentColor])).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, " " + overlayContentSelector], vars, customVars, [contentColor])) : polytheneCoreCss.styler.createStyleSheets([selector], vars, [layout, color]).concat(polytheneCoreCss.styler.createStyleSheets([overlaySheetSelector], vars, [overlayColor])).concat(polytheneCoreCss.styler.createStyleSheets([contentSelector], vars, [contentColor])).concat(polytheneCoreCss.styler.createStyleSheets([overlayContentSelector], vars, [contentColor]));
+  var getStyle = function getStyle() {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
+
+    var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref2.mediaQuery;
+
+    return polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, selector],
+      fns: baseFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, customSelector ? " " : "", overlaySheetSelector],
+      fns: overlayColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    })).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, customSelector ? " " : "", contentSelector],
+      fns: contentColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    })).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, customSelector ? " " : "", overlayContentSelector],
+      fns: contentColorFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }));
   };
 
-  polytheneCoreCss.styler.generateStyles([selector], vars, [layout, color]);
-  polytheneCoreCss.styler.generateStyles([overlaySheetSelector], vars, [overlayColor]);
-  polytheneCoreCss.styler.generateStyles([contentSelector], vars, [contentColor]);
-  polytheneCoreCss.styler.generateStyles([overlayContentSelector], vars, [contentColor]);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: baseFns,
+    vars: vars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [overlaySheetSelector],
+    fns: overlayColorFns,
+    vars: vars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [contentSelector],
+    fns: contentColorFns,
+    vars: vars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [overlayContentSelector],
+    fns: contentColorFns,
+    vars: vars
+  });
 
   exports.addStyle = addStyle;
   exports.color = color;

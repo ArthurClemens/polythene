@@ -84,8 +84,7 @@
 }
 
 .pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__label {
-  padding-left: 16px;
-  padding-right: 0
+  padding: 14px 0 14px 16px
 }
 
 .pe-search.pe-search--inset {

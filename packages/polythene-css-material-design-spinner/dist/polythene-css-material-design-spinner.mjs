@@ -495,14 +495,14 @@ var vars$2 = {
 var fns = [layout$1, color$1];
 var selector = "." + classes.component;
 
-var addStyle = function addStyle(customSelector, customVars) {
-  return styler.generateCustomStyles([customSelector, selector], vars$2, customVars, fns);
-};
+var addStyle = styler.createAddStyle(selector, fns, vars$2);
 
-var getStyle = function getStyle(customSelector, customVars) {
-  return customSelector ? styler.createCustomStyleSheets([customSelector, selector], vars$2, customVars, fns) : styler.createStyleSheets([selector], vars$2, fns);
-};
+var getStyle = styler.createGetStyle(selector, fns, vars$2);
 
-styler.generateStyles([selector], vars$2, fns);
+styler.addStyle({
+  selectors: [selector],
+  fns: fns,
+  vars: vars$2
+});
 
 export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$2 as vars };

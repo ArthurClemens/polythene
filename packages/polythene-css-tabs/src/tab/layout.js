@@ -107,7 +107,7 @@ const varFns = {
   ],
   tab_min_width: (selector, vars) => [
     sel(selector, {
-      minWidth: vars.tab_min_width + "px", // for smaller screens, see also media query below
+      minWidth: vars.tab_min_width + "px", // for smaller screens, see also media query
     }),
   ],
   tab_max_width: (selector, vars) => [
@@ -119,7 +119,7 @@ const varFns = {
   ],
   tab_min_width_tablet: (selector, vars) => ({
     ["@media (min-width: " + themeVars.breakpoint_for_tablet_landscape_up + "px)"]: {
-      [`:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) ${selector}`]: {
+      [`.pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ${selector}`]: {
         minWidth: vars.tab_min_width_tablet + "px"
       }
     }

@@ -150,19 +150,22 @@
     }];
   });
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
   var fns = [roboto, reset, typography];
   var selector = "";
 
-  var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateStyles([customSelector, selector], _extends({}, polytheneStyle.vars, customVars), fns);
-  };
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, polytheneStyle.vars);
 
   var getStyle = function getStyle(customSelector, customVars) {
-    // add font import for written CSS
-    var fns1 = [loadRoboto].concat(fns);
-    return customSelector ? polytheneCoreCss.styler.createStyleSheets([customSelector, selector], _extends({}, polytheneStyle.vars, customVars), fns1) : polytheneCoreCss.styler.createStyleSheets([selector], polytheneStyle.vars, fns1);
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref.mediaQuery;
+
+    return polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, selector],
+      fns: [loadRoboto].concat(fns), // add font import for written CSS
+      vars: polytheneStyle.vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
   };
 
   var addRoboto = function addRoboto() {

@@ -11,7 +11,7 @@ export default ({ renderer: h, Menu, List, ListTile }) => {
   return {
     view: () =>
       h(Menu, {
-        size: 5,
+        width: 5,
         permanent: true,
         content: [
           h(List, {

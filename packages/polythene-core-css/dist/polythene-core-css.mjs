@@ -996,6 +996,8 @@ var j2cPluginPrefixBrowser_commonjs = createCommonjsModule(function (module, exp
 unwrapExports(j2cPluginPrefixBrowser_commonjs);
 var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPlugin;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var j2c = new J2c(j2cPluginPrefixBrowser_commonjs_1);
 var ID_REGEX = /[^a-z0-9\\-]/g;
 
@@ -1064,52 +1066,91 @@ var addToDocument = function addToDocument(opts) {
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
  * @param vars: Object configuration variables
- * @param customVars: Object configuration variables
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
-var generateCustomStyles = function generateCustomStyles(selectors, vars, customVars, styleFns) {
+
+var addStyle = function addStyle(_ref) {
+  var selectors = _ref.selectors,
+      styleFns = _ref.fns,
+      vars = _ref.vars,
+      customVars = _ref.customVars,
+      mediaQuery = _ref.mediaQuery;
+
   var selector = selectors.join("");
-  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  add(id, styleFns.map(function (fn) {
+  var styleList = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
-  }));
+  });
+  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  if (mediaQuery) {
+    add(id, [_defineProperty({}, mediaQuery, styleList)]);
+  } else {
+    add(id, styleList);
+  }
+};
+
+var getStyle = function getStyle(_ref3) {
+  var selectors = _ref3.selectors,
+      styleFns = _ref3.fns,
+      vars = _ref3.vars,
+      customVars = _ref3.customVars,
+      mediaQuery = _ref3.mediaQuery;
+
+  var selector = selectors.join("");
+  var styleList = styleFns.map(function (fn) {
+    return fn(selector, vars, customVars);
+  });
+  return mediaQuery ? [_defineProperty({}, mediaQuery, styleList)] : styleList;
 };
 
 /*
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+ * @param fns: Array of Functions: (selector, componentVars) => [j2c style objects]
+ * @param vars: (Object) Style configuration variables
 */
-var generateStyles = function generateStyles(selectors, vars, styleFns) {
-  var selector = selectors.join("");
-  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  add(id, styleFns.map(function (fn) {
-    return fn(selector, vars);
-  }));
+var createAddStyle = function createAddStyle(selector, fns, vars) {
+  return function () {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
+
+    var _ref5 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref5.mediaQuery;
+
+    return addStyle({
+      selectors: [selector, customSelector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+  };
 };
 
-var createCustomStyleSheets = function createCustomStyleSheets(selectors, vars, customVars, styleFns) {
-  var selector = selectors.join("");
-  return styleFns.map(function (fn) {
-    return fn(selector, vars, customVars);
-  });
-};
+var createGetStyle = function createGetStyle(selector, fns, vars) {
+  return function () {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
 
-var createStyleSheets = function createStyleSheets(selectors, vars, styleFns) {
-  var selector = selectors.join("");
-  return styleFns.map(function (fn) {
-    return fn(selector, vars);
-  });
+    var _ref6 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref6.mediaQuery;
+
+    return [getStyle({
+      selectors: [selector, customSelector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    })];
+  };
 };
 
 var styler = {
   add: add,
+  addStyle: addStyle,
   addToDocument: addToDocument,
-  createCustomStyleSheets: createCustomStyleSheets,
-  createStyleSheets: createStyleSheets,
-  generateCustomStyles: generateCustomStyles,
-  generateStyles: generateStyles,
+  createAddStyle: createAddStyle,
+  createGetStyle: createGetStyle,
+  getStyle: getStyle,
   remove: remove
 };
 
@@ -1117,10 +1158,10 @@ var _extends$1 = Object.assign || function (target) { for (var i = 1; i < argume
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var sel = function sel(selector, o) {
-  return _defineProperty({}, selector, o);
+  return _defineProperty$1({}, selector, o);
 };
 
 var selectorRTL = function selectorRTL(selector) {

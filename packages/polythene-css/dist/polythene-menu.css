@@ -76,7 +76,7 @@
   transition-timing-function: ease-in-out
 }
 
-.pe-menu.pe-menu--floating .pe-menu__panel {
+.pe-menu .pe-menu__panel {
   border-radius: 4px
 }
 

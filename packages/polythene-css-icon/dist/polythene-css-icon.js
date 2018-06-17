@@ -103,10 +103,10 @@
   var vars = {
     general_styles: true,
 
-    size_small: polytheneTheme.vars.unit_icon_size_small,
-    size_regular: polytheneTheme.vars.unit_icon_size,
-    size_medium: polytheneTheme.vars.unit_icon_size_medium,
-    size_large: polytheneTheme.vars.unit_icon_size_large,
+    size_small: polytheneTheme.vars.unit_icon_size_small, // 16 
+    size_regular: polytheneTheme.vars.unit_icon_size, // 24
+    size_medium: polytheneTheme.vars.unit_icon_size_medium, // 32
+    size_large: polytheneTheme.vars.unit_icon_size_large, // 40
 
     // avatar background is visible when image is not yet loaded
     color_light_avatar_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
@@ -119,15 +119,15 @@
   var fns = [layout, color];
   var selector = "." + classes.component;
 
-  var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
-  };
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
 
-  var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
-  };
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
 
-  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: vars
+  });
 
   exports.addStyle = addStyle;
   exports.color = color;

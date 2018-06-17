@@ -8,16 +8,16 @@ import { vars } from "polythene-style";
 const fns = [roboto, reset, typography];
 const selector = "";
 
-const addStyle = (customSelector, customVars) => 
-  styler.generateStyles([customSelector, selector], {...vars, ...customVars}, fns);
+const addStyle = styler.createAddStyle(selector, fns, vars);
 
-const getStyle = (customSelector, customVars) => {
-  // add font import for written CSS
-  const fns1 = [loadRoboto].concat(fns);
-  return customSelector
-    ? styler.createStyleSheets([customSelector, selector], {...vars, ...customVars}, fns1)
-    : styler.createStyleSheets([selector], vars, fns1);
-};
+const getStyle = (customSelector, customVars, { mediaQuery }={}) => 
+  styler.getStyle({
+    selectors: [customSelector, selector],
+    fns: [loadRoboto].concat(fns), // add font import for written CSS
+    vars,
+    customVars,
+    mediaQuery,
+  });
 
 const addRoboto = () => {
   addWebFont("google", "Roboto:400,500,700,400italic:latin");

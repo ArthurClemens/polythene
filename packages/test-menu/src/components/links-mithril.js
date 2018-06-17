@@ -5,7 +5,7 @@ export default ({ show, target, h, Menu, List, didHide, getState }) =>
     show,
     didHide,
     getState,
-    size: 5, 
+    width: 5, 
     content: h(List,
       {
         all: {

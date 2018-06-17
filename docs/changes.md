@@ -24,9 +24,26 @@ Google has updated their Material Design specs ("Version 2"). A couple of the ch
 
 #### CSS
 
-CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [addStyle](theming/style-variables.md) how to use it).
+CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [Style variables](theming/style-variables.md) how to use it).
 
 In terms of internal organisation, CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
+
+##### Themes and media queries
+
+With an additional argument to `addStyle` it is now possible to define a theme style restricted by a media query:
+
+~~~javascript
+ButtonCSS.addStyle(
+  ".small-screen-button",
+  {
+    color_light_background: "#673ab7",
+    color_light_text:       "#fff",
+  },
+  {
+    mediaQuery: "@media all and (max-width: 380px)"
+  }
+)
+~~~
 
 
 #### Components

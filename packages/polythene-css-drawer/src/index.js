@@ -7,15 +7,15 @@ import { styler } from "polythene-core-css";
 const fns = [layout, color];
 const selector = `.${classes.component.replace(/ /g, ".")}`;
 
-const addStyle = (customSelector, customVars) => 
-  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);  
+const addStyle = styler.createAddStyle(selector, fns, vars);  
 
-const getStyle = (customSelector, customVars) => 
-  customSelector
-    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
-    : styler.createStyleSheets([selector], vars, fns);
+const getStyle = styler.createGetStyle(selector, fns, vars);
 
-styler.generateStyles([selector], vars, fns);
+styler.addStyle({
+  selectors: [selector],
+  fns,
+  vars
+});
 
 export {
   addStyle,

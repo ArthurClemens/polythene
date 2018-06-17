@@ -29,7 +29,7 @@ export default class extends Component {
         h(Menu, {
           target: `#${target}`,
           show: isOpen,
-          size: 5, 
+          width: 5, 
           content: h(List,
             {
               all: {

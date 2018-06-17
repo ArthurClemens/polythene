@@ -1,27 +1,3 @@
-.pe-notification__holder {
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  pointer-events: none;
-  justify-content: flex-start
-}
-
-.pe-notification__holder.pe-multiple--screen {
-  position: fixed;
-  z-index: 4000
-}
-
-:not(.pe-notification--container) .pe-multiple--container {
-  position: absolute
-}
-
 .pe-notification {
   display: -ms-flexbox;
   display: flex;
@@ -137,5 +113,29 @@
 .pe-light-tone.pe-notification .pe-notification__content,.pe-light-tone .pe-notification .pe-notification__content,.pe-notification .pe-notification__content {
   background: #fff;
   color: #000
+}
+
+.pe-notification__holder.pe-notification {
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  justify-content: flex-start
+}
+
+.pe-notification__holder.pe-notification.pe-multiple--screen {
+  position: fixed;
+  z-index: 4000
+}
+
+:not(.pe-notification--container) .pe-multiple--container {
+  position: absolute
 }
 /*# sourceMappingURL=polythene-notification.css.map */

@@ -248,10 +248,8 @@
     },
     border_radius: function border_radius(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-menu--floating": {
-          " .pe-menu__panel": {
-            borderRadius: vars.border_radius + "px"
-          }
+        " .pe-menu__panel": {
+          borderRadius: vars.border_radius + "px"
         }
       })];
     }
@@ -286,15 +284,15 @@
   var fns = [layout, color];
   var selector = "." + classes.component;
 
-  var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
-  };
+  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
 
-  var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([selector], vars, fns);
-  };
+  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
 
-  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: vars
+  });
 
   exports.addStyle = addStyle;
   exports.color = color;

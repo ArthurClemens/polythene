@@ -55,22 +55,22 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Regular Button"),
+          m("h2", "Themed Media Query Button"),
           m(".component", 
             m(Button, {
-              label: "Button"
+              label: "Button",
+              className: "themed-button"
             })
           )
         ]
       ),
       m(".row", 
         [
-          m("h2", "Icon"),
+          m("h2", "Themed Media Query Icon"),
           m(".component", 
             m(Icon, {
-              size: "large",
-              src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-              avatar: true
+              className: "themed-icon",
+              svg: { content: m.trust(linkIconSVG) },
             })
           )
         ]
@@ -104,19 +104,19 @@ const App = {
           m("h2", "Tabs"),
           m(".component", 
             m(Tabs, {
+              autofit: true,
               tabs: [
                 { label: "New" },
                 { label: "Favorites" },
                 { label: "Saved" }
               ],
-              autofit: true
             })
           )
         ]
       ),
       m(".row",
         [
-          m("h2", "Card"),
+          m("h2", "Themed card"),
           m(".component", 
             m(Card, {
               className: "themed-card",

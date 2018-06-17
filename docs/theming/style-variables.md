@@ -6,10 +6,10 @@
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
-  - [Simple example](#simple-example)
+  - [Advanced: using media queries](#advanced-using-media-queries)
   - [Function `addStyle`](#function-addstyle)
-  - [Dynamic styles with CSS-in-JS](#dynamic-styles-with-css-in-js)
-  - [Writing styles to CSS files](#writing-styles-to-css-files)
+  - [Under the hood](#under-the-hood)
+- [Choosing CSS-in-JS or CSS files](#choosing-css-in-js-or-css-files)
 - [Examples](#examples)
   - [Mithril example](#mithril-example)
   - [React JSX example](#react-jsx-example)
@@ -26,17 +26,17 @@ Polythene components are styled with variables that specify the sizes and colors
 
 Component style variables are located in each component's CSS `vars.js` file (see the complete [list of all variables](#list-of-all-variables) below).
 
-For example, the variables file for Icon is:
+For example, the variables file for Icon contains:
 
 ~~~javascript
 // polythene-css-icon/src/vars.js
 import { vars } from "polythene-theme"
 
 export default {
-  size_small:   vars.unit_icon_size_small,
-  size_regular: vars.unit_icon_size,
-  size_medium:  vars.unit_icon_size_medium,
-  size_large:   vars.unit_icon_size_large,
+  size_small:   vars.unit_icon_size_small,  // 16
+  size_regular: vars.unit_icon_size,        // 24
+  size_medium:  vars.unit_icon_size_medium, // 32
+  size_large:   vars.unit_icon_size_large,  // 40
   color_light:  "currentcolor",
   color_dark:   "currentcolor"
 }
@@ -49,19 +49,11 @@ export default {
 <a id="styling-components-with-variables"></a>
 ## Styling components with variables 
 
-Component variables are passed on to CSS creation modules (usually "layout" and "colors") that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
-
-To create additional styles for a component, use this pattern:
+Each component's CSS functions can be accessed with the naming pattern `{ComponentName}CSS`:
 
 ~~~javascript
 import { IconCSS } from "polythene-css"
-
-IconCSS.addStyle(selector, {
-  ...
-})
 ~~~
-
-So each imported component's CSS functions can be accessed with the naming pattern `{ComponentName}CSS`.
 
 You may also choose to import directly from the component's CSS package:
 
@@ -70,57 +62,82 @@ import { addStyle } from "polythene-css-icon"
 ~~~
 
 
-<a id="simple-example"></a>
-### Simple example
+Call `addStyle` to create a style:
 
 ~~~javascript
-IconCSS.addStyle(".my-icon", {
+IconCSS.addStyle(selector, {
+  // CSS style key value pairs
+})
+~~~
+
+The `selector` is usually the class name.
+
+For example, to change the size and color of an icon:
+
+~~~javascript
+IconCSS.addStyle(".purple-icon", {
   size_regular: 44,
   color_light:  "purple"
 })
 ~~~
 
-and then use that style for a specific component instance:
+Then use that style for a specific component instance by using the same selector.
+
+With Mithril:
 
 ~~~javascript
-m(Icon, { className: "my-icon" })
+m(Icon, { className: "purple-icon" })
 ~~~
 
-or 
+With React JSX:
 
 ~~~jsx
-<Icon className="my-icon" />
+<Icon className="purple-icon" />
 ~~~
 
+
+<a id="advanced-using-media-queries"></a>
+### Advanced: using media queries
+
+To restrict a theme style to certain screen conditions, you can pass an additional [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) parameter (as attribute of the 3rd parameter):
+
+~~~javascript
+IconCSS.addStyle(
+  ".small-screen-icon",
+  {
+    size_regular: 16
+  },
+  {
+    mediaQuery: "@media all and (max-width: 380px)"
+  }
+)
+~~~
 
 
 <a id="function-addstyle"></a>
 ### Function `addStyle`
 
+~~~javascript
+addStyle(selector, vars, options)
+~~~
+
 | **Option**   | **Required** | **Type** | **Description** |
 | ------------ | ------------ | -------- | --------------- |
 | **selector** | required     | String   | CSS selector; using a class selector is the most convenient because of the reuse in component option `className` |
 | **vars**     | required     | Object   | The component's theme variables, or a subset thereof |
+| **options.mediaQuery** | optional | String | Media query that wraps the selector |
 
 
+<a id="under-the-hood"></a>
+### Under the hood
 
-<a id="dynamic-styles-with-css-in-js"></a>
-### Dynamic styles with CSS-in-JS 
-
-This mechanism is triggered by having `import "polythene-css"` is the code.
-
-JavaScript is used to create CSS styles that are automatically added to `<head>`. 
+Component variables are passed on to CSS creation modules (usually "layout" and "colors") that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
 
 
-<a id="writing-styles-to-css-files"></a>
-### Writing styles to CSS files
+<a id="choosing-css-in-js-or-css-files"></a>
+## Choosing CSS-in-JS or CSS files
 
-It is also possible to generate static files.
-
-Steps: 
-
-1. Use [polythene-scripts](../packages/polythene-scripts.md) to generate a CSS file (outside of the app runtime, so for instance in a build script)
-1. Place the CSS file in your build directory, or import the css file using bundler tooling
+See [Polythene CSS](../css.md) for guidelines and instructions.
 
 
 
@@ -172,6 +189,32 @@ m(".pe-dark-tone",
 )
 ~~~
 
+To create a blue button on a dark background, but only on a small screen:
+
+~~~javascript
+// app.js
+import { Button } from "polythene-mithril"
+import { ButtonCSS } from "polythene-css"
+
+ButtonCSS.addStyle(
+  ".small-screen-blue-on-dark-button",
+  {
+    color_dark_text: "#1976D2"
+  },
+  {
+    mediaQuery: "@media all and (max-width: 380px)"
+  }
+)
+
+// Show the blue button on a dark background
+m(".pe-dark-tone", 
+  m(Button, {
+    className: "small-screen-blue-on-dark-button",
+    label: "Blue Button"
+  })
+)
+~~~
+
 
 <a id="react-jsx-example"></a>
 ### React JSX example
@@ -214,6 +257,31 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
 </div>
 ~~~
 
+To create a blue button on a dark background, but only on a small screen:
+
+~~~jsx
+// app.js
+import { Button } from "polythene-react"
+import { ButtonCSS } from "polythene-css"
+
+ButtonCSS.addStyle(
+  ".small-screen-blue-on-dark-button",
+  {
+    color_dark_text: "#1976D2"
+  },
+  {
+    mediaQuery: "@media all and (max-width: 380px)"
+  }
+)
+
+// Show the blue button on a dark background
+<div className="pe-dark-tone">
+  <Button
+    className="small-screen-blue-on-dark-button"
+    label="Blue Button"
+  />
+</div>
+~~~
 
 <a id="global-styling-by-overriding-polythene-defaults"></a>
 ## Global styling by overriding Polythene defaults
@@ -226,6 +294,7 @@ IconCSS.addStyle(".pe-icon", {
 })
 ~~~
 
+To override global variables such as the app's primary action color, see [Global theme file](global-theme-file.md).
 
 
 
@@ -239,6 +308,7 @@ Global variables:
 Component variables:
 
 * [polythene-css-base-spinner](../../packages/polythene-css-base-spinner/src/vars.js)
+* [polythene-css-button-group](../../packages/polythene-css-button-group/src/vars.js)
 * [polythene-css-button](../../packages/polythene-css-button/src/vars.js)
 * [polythene-css-card](../../packages/polythene-css-card/src/vars.js)
 * [polythene-css-checkbox](../../packages/polythene-css-checkbox/src/vars.js)

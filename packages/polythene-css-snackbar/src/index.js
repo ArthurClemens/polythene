@@ -11,17 +11,48 @@ const selector = `.${classes.component.replace(/ /g, ".")}`;
 const holderFns = [holderLayout];
 const holderSelector = `.${classes.holder.replace(/ /g, ".")}`;
 
-const addStyle = (customSelector, customVars) => 
-  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
+  styler.addStyle({
+    selectors: [customSelector, selector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery,
+  });
+  styler.addStyle({
+    selectors: [holderSelector, selector],
+    fns: holderFns,
+    vars,
+    customVars,
+    mediaQuery,
+  });
+};
 
-const getStyle = (customSelector, customVars) => 
-  customSelector
-    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
-    : styler.createStyleSheets([holderSelector], vars, holderFns)
-      .concat(styler.createStyleSheets([selector], vars, fns));
+const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => 
+  styler.getStyle({
+    selectors: [customSelector, selector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery,
+  }).concat(styler.getStyle({
+    selectors: [holderSelector, selector],
+    fns: holderFns,
+    vars,
+    customVars,
+    mediaQuery,
+  }));
 
-styler.generateStyles([holderSelector], vars, holderFns);
-styler.generateStyles([selector], vars, fns);
+styler.addStyle({
+  selectors: [holderSelector],
+  fns: holderFns,
+  vars
+});
+styler.addStyle({
+  selectors: [selector],
+  fns,
+  vars
+});
 
 export {
   addStyle,

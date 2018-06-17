@@ -741,7 +741,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       component: Card,
       attrs: {
         style: { maxWidth: "400px" },
-        content: titleImage("small", "Title image small")
+        content: titleImage("small", "Title")
       }
     },
     {
@@ -749,7 +749,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       component: Card,
       attrs: {
         style: { maxWidth: "400px" },
-        content: titleImage("regular", "Title image regular")
+        content: titleImage("regular", "Title")
       }
     },
     {
@@ -757,7 +757,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       component: Card,
       attrs: {
         style: { maxWidth: "400px" },
-        content: titleImage("medium", "Title image medium")
+        content: titleImage("medium", "Title")
       }
     },
     {
@@ -966,7 +966,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               subtitle: "2 Unlimited",
               media: {
                 ratio: "square",
-                size: "medium",
+                size: "small",
                 content: h("img", {
                   src: "http://arthurclemens.github.io/assets/polythene/examples/2-unlimited.jpg"
                 })
@@ -1000,7 +1000,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
               subtitle: "Foster the People",
               media: {
                 ratio: "square",
-                size: "medium",
+                size: "small",
                 content: h("img", {
                   src: "http://upload.wikimedia.org/wikipedia/en/f/f9/Foster_the_People_-_Supermodel.jpg"
                 })

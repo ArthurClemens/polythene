@@ -32,7 +32,7 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
           show,
           didHide: () => state.show(false),
           hideDelay: .240,
-          size: 5,
+          width: 5,
           offsetH: 16,
           offsetV: 0,
           reposition: true,

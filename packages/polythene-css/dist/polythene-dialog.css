@@ -58,10 +58,7 @@
 }
 
 .pe-dialog {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding: 24px 40px;
   position: fixed
 }
 

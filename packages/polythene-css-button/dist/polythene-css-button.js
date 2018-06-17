@@ -582,15 +582,57 @@
   var selector = "." + classes.component;
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref.mediaQuery;
+
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, superSelector],
+      fns: baseFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, selector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
   };
 
-  var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns) : polytheneCoreCss.styler.createStyleSheets([superSelector], vars, baseFns).concat(polytheneCoreCss.styler.createStyleSheets([selector], vars, fns));
+  var getStyle = function getStyle() {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
+
+    var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref2.mediaQuery;
+
+    return polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, superSelector],
+      fns: baseFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, selector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }));
   };
 
-  polytheneCoreCss.styler.generateStyles([superSelector], vars, baseFns);
-  polytheneCoreCss.styler.generateStyles([selector], vars, fns);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [superSelector],
+    fns: baseFns,
+    vars: vars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: vars
+  });
 
   exports.addStyle = addStyle;
   exports.color = color;

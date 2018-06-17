@@ -206,7 +206,7 @@
     },
     tab_min_width: function tab_min_width(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        minWidth: vars.tab_min_width + "px" // for smaller screens, see also media query below
+        minWidth: vars.tab_min_width + "px" // for smaller screens, see also media query
       })];
     },
     tab_max_width: function tab_max_width(selector, vars) {
@@ -215,7 +215,7 @@
       })];
     },
     tab_min_width_tablet: function tab_min_width_tablet(selector, vars) {
-      return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ":not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) " + selector, {
+      return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) " + selector, {
         minWidth: vars.tab_min_width_tablet + "px"
       }));
     },
@@ -604,15 +604,57 @@
   var tabSelector = " ." + tabClass.replace(/ /g, ".");
 
   var addStyle = function addStyle(customSelector, customVars) {
-    return polytheneCoreCss.styler.generateCustomStyles([customSelector, tabsSelector], vars, customVars, tabsFns), polytheneCoreCss.styler.generateCustomStyles([customSelector, tabSelector], vars, customVars, tabFns);
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref.mediaQuery;
+
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, tabsSelector],
+      fns: tabsFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+    polytheneCoreCss.styler.addStyle({
+      selectors: [customSelector, tabSelector],
+      fns: tabFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
   };
 
-  var getStyle = function getStyle(customSelector, customVars) {
-    return customSelector ? polytheneCoreCss.styler.createCustomStyleSheets([customSelector, tabsSelector], vars, customVars, tabsFns).concat(polytheneCoreCss.styler.createCustomStyleSheets([customSelector, tabSelector], vars, customVars, tabFns)) : polytheneCoreCss.styler.createStyleSheets([tabsSelector], vars, tabsFns).concat(polytheneCoreCss.styler.createStyleSheets([tabSelector], vars, tabFns));
+  var getStyle = function getStyle() {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
+
+    var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref2.mediaQuery;
+
+    return polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, tabsSelector],
+      fns: tabsFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }).concat(polytheneCoreCss.styler.getStyle({
+      selectors: [customSelector, tabSelector],
+      fns: tabFns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    }));
   };
 
-  polytheneCoreCss.styler.generateStyles([tabsSelector], vars, tabsFns);
-  polytheneCoreCss.styler.generateStyles([tabSelector], vars, tabFns);
+  polytheneCoreCss.styler.addStyle({
+    selectors: [tabsSelector],
+    fns: tabsFns,
+    vars: vars
+  });
+  polytheneCoreCss.styler.addStyle({
+    selectors: [tabSelector],
+    fns: tabFns,
+    vars: vars
+  });
 
   exports.addStyle = addStyle;
   exports.getStyle = getStyle;

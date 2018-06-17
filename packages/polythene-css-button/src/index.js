@@ -10,17 +10,48 @@ const baseFns = [baseLayout];
 const superSelector = `.${classes.super}`;
 const selector = `.${classes.component}`;
 
-const addStyle = (customSelector, customVars) => 
-  styler.generateCustomStyles([customSelector, selector], vars, customVars, fns);
+const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
+  styler.addStyle({
+    selectors: [customSelector, superSelector],
+    fns: baseFns,
+    vars,
+    customVars,
+    mediaQuery,
+  });
+  styler.addStyle({
+    selectors: [customSelector, selector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery,
+  });
+};
 
-const getStyle = (customSelector, customVars) => 
-  customSelector
-    ? styler.createCustomStyleSheets([customSelector, selector], vars, customVars, fns)
-    : styler.createStyleSheets([superSelector], vars, baseFns)
-      .concat(styler.createStyleSheets([selector], vars, fns));  
+const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => 
+  styler.getStyle({
+    selectors: [customSelector, superSelector],
+    fns: baseFns,
+    vars,
+    customVars,
+    mediaQuery,
+  }).concat(styler.getStyle({
+    selectors: [customSelector, selector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery,
+  }));
 
-styler.generateStyles([superSelector], vars, baseFns);
-styler.generateStyles([selector], vars, fns);
+styler.addStyle({
+  selectors: [superSelector],
+  fns: baseFns,
+  vars
+});
+styler.addStyle({
+  selectors: [selector],
+  fns,
+  vars
+});
 
 export {
   addStyle,

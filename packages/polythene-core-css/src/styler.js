@@ -61,43 +61,60 @@ const addToDocument = (opts, ...styles) => {
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
  * @param vars: Object configuration variables
- * @param customVars: Object configuration variables
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
-const generateCustomStyles = (selectors, vars, customVars, styleFns) => {
+
+const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) => {
   const selector = selectors.join("");
+  const styleList = styleFns.map(fn => fn(selector, vars, customVars));
   const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  add(id, styleFns.map(fn => fn(selector, vars, customVars)));
+  if (mediaQuery) {
+    add(id, [{
+      [mediaQuery]: styleList
+    }]);
+  } else {
+    add(id, styleList);
+  }
+};
+
+const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) => {
+  const selector = selectors.join("");
+  const styleList = styleFns.map(fn => fn(selector, vars, customVars));
+  return mediaQuery
+    ? [{ [mediaQuery]: styleList }]
+    : styleList;
 };
 
 /*
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
+ * @param fns: Array of Functions: (selector, componentVars) => [j2c style objects]
+ * @param vars: (Object) Style configuration variables
 */
-const generateStyles = (selectors, vars, styleFns) => {
-  const selector = selectors.join("");
-  const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  add(id, styleFns.map(fn => fn(selector, vars)));
-};
+const createAddStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery }={}) => 
+  addStyle({
+    selectors: [selector, customSelector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery
+  });
 
-const createCustomStyleSheets = (selectors, vars, customVars, styleFns) => {
-  const selector = selectors.join("");
-  return styleFns.map(fn => fn(selector, vars, customVars));
-};
-
-const createStyleSheets = (selectors, vars, styleFns) => {
-  const selector = selectors.join("");
-  return styleFns.map(fn => fn(selector, vars));
-};
+const createGetStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery }={}) => 
+  [getStyle({
+    selectors: [selector, customSelector],
+    fns,
+    vars,
+    customVars,
+    mediaQuery
+  })];
 
 export default {
   add,
+  addStyle,
   addToDocument,
-  createCustomStyleSheets,
-  createStyleSheets,
-  generateCustomStyles,
-  generateStyles,
+  createAddStyle,
+  createGetStyle,
+  getStyle,
   remove,
 };

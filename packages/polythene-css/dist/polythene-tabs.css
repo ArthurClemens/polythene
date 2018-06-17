@@ -303,7 +303,7 @@
 }
 
 @media (min-width:840px) {
-  :not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable) .pe-tab.pe-text-button.pe-button {
+  .pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) .pe-tab.pe-text-button.pe-button {
     min-width: 160px
   }
 }

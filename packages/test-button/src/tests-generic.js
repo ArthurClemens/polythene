@@ -24,6 +24,16 @@ export default ({ renderer: h, Button }) => {
     animation_duration:           "100ms",
   });
 
+  ButtonCSS.addStyle(".tests-button-media-query",
+    {
+      color_light_background: "#673ab7",
+      color_light_text:       "#fff",
+    },
+    {
+      mediaQuery: "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)"
+    }
+  );
+
   // ButtonCSS.addStyle(".tests-button-sentence-case", {
   //   color_light_background: "#6200ee",
   //   color_light_text:       "#fff",
@@ -44,6 +54,14 @@ export default ({ renderer: h, Button }) => {
       attrs: {
         label: "Themed Button",
         className: "tests-button-themed-button"
+      }
+    },
+    {
+      name: "Themed Button (media query - resize screen to see toggled style)",
+      component: Button,
+      attrs: {
+        label: "Media Query Button",
+        className: "tests-button-media-query"
       }
     },
     // {
