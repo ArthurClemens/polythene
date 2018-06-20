@@ -1,5 +1,5 @@
 const { writeCSS } = require("polythene-scripts");
-const { CardCSS, ButtonCSS, IconCSS, DialogCSS } = require("polythene-css");
+const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS } = require("polythene-css");
 
 const breakPoint = 480;
 
@@ -46,6 +46,18 @@ const styles = [
     ".small-screen-full-screen",
     {
       full_screen: true,
+    },
+    {
+      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+    }
+  ),
+  MenuCSS.getStyle(
+    ".small-screen-top-menu",
+    {
+      top_menu: true,
+      backdrop: true,
+      animation_hide_origin_effect_css: "transform: scale(1);",
+      height: "50vh !important",
     },
     {
       mediaQuery: `@media all and (max-width: ${breakPoint}px)`

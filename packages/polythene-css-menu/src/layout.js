@@ -38,6 +38,27 @@ const widths_min_width_width_factor = (selector, vars) =>
     }
   ]);
 
+const backdrop = selector =>
+  sel(selector, {
+    " .pe-menu__backdrop": {
+      display: "block"
+    }
+  });
+
+const top_menu = selector =>
+  sel(selector, {
+    " .pe-menu__panel": {
+      position: "fixed",
+      width: "100vw",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: "auto",
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0, 
+    }
+  });
+
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
@@ -59,7 +80,7 @@ const varFns = {
         ".pe-menu--floating": {
           " .pe-menu__panel": {
             zIndex: themeVars.z_menu,
-            transitionProperty: "all",
+            transitionProperty: "opacity, transform",
           }
         },
 
@@ -70,6 +91,7 @@ const varFns = {
         },
 
         " .pe-menu__backdrop": {
+          display: "none",
           transitionProperty: "all",
           position: "fixed",
           top: 0,
@@ -79,6 +101,8 @@ const varFns = {
           opacity: 0,
           zIndex: themeVars.z_menu,
         },
+
+        ".pe-menu--backdrop": backdrop(selector),
 
         ".pe-menu--visible .pe-menu__backdrop": {
           opacity: 1
@@ -150,6 +174,13 @@ const varFns = {
       }
     })
   ],
+  height: (selector, vars) => [
+    vars.height !== undefined && sel(selector, {
+      " .pe-menu__panel": {
+        height: vars.height
+      }
+    })
+  ],
   widths: (selector, vars) => [
     widths_min_width_width_factor(selector, vars)
   ],
@@ -165,6 +196,12 @@ const varFns = {
         borderRadius: vars.border_radius + "px"
       }
     })
+  ],
+  top_menu: (selector, vars) => [
+    vars.top_menu && top_menu(selector)
+  ],
+  backdrop: (selector, vars) => [
+    vars.backdrop && backdrop(selector)
   ],
 };
 

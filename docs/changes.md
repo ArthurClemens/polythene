@@ -36,9 +36,10 @@ Conceptually, this is very close to writing CSS with media queries, but it has t
 
 Some examples:
 
-* Change a button size or paddings based on screen size
+* Make a Dialog appear full screen on small screen sizes
+* Make a Menu appear full width on small screen sizes
+* Change a button size based on screen size
 * Change the image size on a card, without changing the Card options
-* Make a Dialog appear full screen, but only on small screen sizes
 
 See [CSS/Style variables](theming/style-variables.md) how to use this feature.
 

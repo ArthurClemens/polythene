@@ -1,5 +1,4 @@
 import m from "mithril";
-
 import {
   Button,
   Card,
@@ -8,10 +7,15 @@ import {
   FAB,
   Icon,
   IconButton,
+  keys,
+  List,
+  ListTile,
   MaterialDesignSpinner,
+  Menu,
   Notification,
   RadioGroup,
   RaisedButton,
+  renderer,
   Slider,
   Snackbar,
   SVG,
@@ -19,9 +23,11 @@ import {
   Tabs,
   TextField,
 } from "polythene-mithril";
-
 import "polythene-css/dist/polythene.css";
 import "polythene-css/dist/polythene-typography.css";
+import exposed from "./exposed-menu";
+
+const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
 
 const linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
 
@@ -55,8 +61,8 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Button"),
-          m("h3", "colored on small screen"),
+          m("h2", "Themed Button"),
+          m("h3", "Media query: colored on small screen"),
           m(".component", 
             m(Button, {
               label: "Button",
@@ -67,8 +73,8 @@ const App = {
       ),
       m(".row", 
         [
-          m("h2", "Themed Media Query Icon"),
-          m("h3", "large on small screen"),
+          m("h2", "Themed Icon"),
+          m("h3", "Media query: large on small screen"),
           m(".component", 
             m(Icon, {
               className: "themed-icon",
@@ -101,6 +107,14 @@ const App = {
           )
         ]
       ),
+      m(".row",
+        [
+          m("h2", "Menu"),
+          m(".component", 
+            m(ExposedDropdown, { height: 150, className: "small-screen-top-menu" })
+          )
+        ]
+      ),
       m(".row", 
         [
           m("h2", "Tabs"),
@@ -119,7 +133,7 @@ const App = {
       m(".row",
         [
           m("h2", "Themed card"),
-          m("h3", "smaller image on small screen"),
+          m("h3", "Media query: smaller image on small screen"),
           m(".component", 
             m(Card, {
               className: "themed-card small-image-card",
@@ -235,7 +249,8 @@ const App = {
       ),
       m(".row",
         [
-          m("h2", "Media Query Dialog (full screen on small screen)"),
+          m("h2", "Themed Dialog"),
+          m("h3", "Media query: full screen on small screen"),
           m(".component", 
             m(RaisedButton, {
               label: "Show dialog",

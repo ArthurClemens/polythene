@@ -9,7 +9,7 @@ body, html {
   min-width: 320px;
 }
 .row {
-  padding: 8px 16px;
+  padding: 16px;
   max-width: 480px;
   margin: 0 auto;
   background: #fff;
@@ -18,7 +18,7 @@ body, html {
   border-top: 1px solid #eee;
 }
 .component {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 .page h1 {
   font-size: 32px;

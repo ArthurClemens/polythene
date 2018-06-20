@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, getStyle } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
@@ -23,6 +23,15 @@ const positionMenu = (state, attrs) => {
   }
   const panelEl = state.panelEl;
   if (!panelEl) {
+    return;
+  }
+
+  // Don't set the position or top offset if the menu position is fixed
+  const hasStylePositionFixed = getStyle({ element: panelEl, prop: "position" }) === "fixed";
+
+  if (hasStylePositionFixed) {
+    panelEl.style = {};
+    panelEl.offsetHeight; // force reflow
     return;
   }
 
@@ -68,7 +77,7 @@ const positionMenu = (state, attrs) => {
     const targetRect = targetEl.getBoundingClientRect();
     const heightDiff = targetRect.height - alignRect.height;
     positionOffsetV += Math.abs(heightDiff) / 2;
-  } else if (attrs.origin) {
+  } else if (attrs.origin && !hasStylePositionFixed) {
     if (origin.top) {
       positionOffsetV += targetRect.top - parentRect.top;
     } else if (origin.bottom) {
@@ -98,7 +107,7 @@ const positionMenu = (state, attrs) => {
   const transitionDuration = panelEl.style.transitionDuration;
   panelEl.style.transitionDuration = "0ms";
 
-  if (panelEl.parentNode) {
+  if (panelEl.parentNode && !hasStylePositionFixed) {
     if (origin.right) {
       panelEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
     } else {
@@ -265,6 +274,7 @@ export const createProps = (vnode, { keys: k }) => {
         classes.component,
         attrs.permanent ? classes.permanent : null,
         attrs.origin ? classes.origin : null,
+        attrs.backdrop ? classes.showBackdrop : null,
         type === "floating" && !attrs.permanent ? classes.floating : null,
         attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,
@@ -279,7 +289,7 @@ export const createContent = (vnode, { renderer: h, Shadow }) => {
   const attrs = vnode.attrs;
   const z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
   return [
-    attrs.backdrop && h("div",
+    h("div",
       {
         key: "backdrop",
         className: classes.backdrop,

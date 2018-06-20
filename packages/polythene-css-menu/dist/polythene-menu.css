@@ -14,7 +14,7 @@
 
 .pe-menu.pe-menu--floating .pe-menu__panel {
   z-index: 1000;
-  transition-property: all
+  transition-property: opacity,transform
 }
 
 .pe-menu .pe-menu__panel {
@@ -23,6 +23,7 @@
 }
 
 .pe-menu .pe-menu__backdrop {
+  display: none;
   transition-property: all;
   position: fixed;
   top: 0;
@@ -31,6 +32,10 @@
   left: 0;
   opacity: 0;
   z-index: 1000
+}
+
+.pe-menu.pe-menu--backdrop.pe-menu .pe-menu__backdrop {
+  display: block
 }
 
 .pe-menu.pe-menu--visible .pe-menu__backdrop {

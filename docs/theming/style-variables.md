@@ -76,6 +76,7 @@ For example, to change the size and color of an icon:
 
 ~~~javascript
 IconCSS.addStyle(".purple-icon", {
+  // Note that we only need to list the variables that differ
   size_regular: 44,
   color_light:  "purple"
 })
@@ -142,7 +143,7 @@ CardCSS.getStyle(
 )
 ~~~
 
-Then can the styles through the classname:
+Then apply the styles by setting the class name:
 
 ~~~javascript
 m(Card, { className: "themed-card small-image-card" })
@@ -187,7 +188,6 @@ See [Polythene CSS](../css.md) for guidelines and instructions.
 If we want to create large icons:
 
 ~~~javascript
-// app.js
 import { Icon } from "polythene-mithril"
 import { IconCSS } from "polythene-css"
 
@@ -195,7 +195,6 @@ const unitSize = 20
 
 IconCSS.addStyle(".app-icon", {
   size_large: 4 * unitSize
-  // Note that we only need to list the variables that differ
 })
 
 // Show the large icon
@@ -208,7 +207,6 @@ m(Icon, {
 To create a blue button on a dark background:
 
 ~~~javascript
-// app.js
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
 
@@ -225,30 +223,30 @@ m(".pe-dark-tone",
 )
 ~~~
 
-To create a blue button on a dark background, but only on a small screen:
+To make a Menu appear full width on a small screen:
 
 ~~~javascript
-// app.js
-import { Button } from "polythene-mithril"
-import { ButtonCSS } from "polythene-css"
+import { Menu } from "polythene-mithril"
+import { MenuCSS } from "polythene-css"
 
-ButtonCSS.addStyle(
-  ".small-screen-blue-on-dark-button",
+MenuCSS.addStyle(
+  ".small-screen-menu",
   {
-    color_dark_text: "#1976D2"
+    top_menu: true,
+    backdrop: true,                                           // add a backdrop
+    animation_hide_origin_effect_css: "transform: scale(1);", // prevent the menu fron scaling
+    height: "50vh !important",                                // override the component height option
   },
   {
-    mediaQuery: "@media all and (max-width: 380px)"
+    mediaQuery: "@media all and (max-width: 480px)"
   }
 )
 
-// Show the blue button on a dark background
-m(".pe-dark-tone", 
-  m(Button, {
-    className: "small-screen-blue-on-dark-button",
-    label: "Blue Button"
-  })
-)
+// Show the menu
+m(Menu, {
+  className: "small-screen-menu",
+  // ...
+})
 ~~~
 
 
@@ -258,7 +256,6 @@ m(".pe-dark-tone",
 If we want to create large icons:
 
 ~~~jsx
-// app.js
 import { Icon } from "polythene-react"
 import { IconCSS } from "polythene-css"
 
@@ -266,7 +263,6 @@ const unitSize = 20
 
 IconCSS.addStyle(".app-icon", {
   size_large: 4 * unitSize
-  // Note that we only need to list the variables that differ
 })
 
 // Show the large icon
@@ -276,7 +272,6 @@ IconCSS.addStyle(".app-icon", {
 To create a blue button on a dark background:
 
 ~~~jsx
-// app.js
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
 
@@ -293,30 +288,30 @@ ButtonCSS.addStyle(".blue-on-dark-button", {
 </div>
 ~~~
 
-To create a blue button on a dark background, but only on a small screen:
+To make a Menu appear full width on a small screen:
 
 ~~~jsx
-// app.js
-import { Button } from "polythene-react"
-import { ButtonCSS } from "polythene-css"
+import { Menu } from "polythene-react"
+import { MenuCSS } from "polythene-css"
 
-ButtonCSS.addStyle(
-  ".small-screen-blue-on-dark-button",
+MenuCSS.addStyle(
+  ".small-screen-menu",
   {
-    color_dark_text: "#1976D2"
+    top_menu: true,
+    backdrop: true,                                           // add a backdrop
+    animation_hide_origin_effect_css: "transform: scale(1);", // prevent the menu fron scaling
+    height: "50vh !important",                                // override the component height option
   },
   {
-    mediaQuery: "@media all and (max-width: 380px)"
+    mediaQuery: "@media all and (max-width: 480px)"
   }
 )
 
-// Show the blue button on a dark background
-<div className="pe-dark-tone">
-  <Button
-    className="small-screen-blue-on-dark-button"
-    label="Blue Button"
-  />
-</div>
+// Show the menu
+<Menu
+  className="small-screen-menu"
+  {/* ... */}
+/>
 ~~~
 
 <a id="global-styling-by-overriding-polythene-defaults"></a>

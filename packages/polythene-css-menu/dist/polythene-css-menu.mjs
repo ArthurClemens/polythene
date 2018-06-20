@@ -39,12 +39,13 @@ var classes = {
   backdrop: "pe-menu__backdrop",
 
   // states
-  permanent: "pe-menu--permanent",
   floating: "pe-menu--floating",
+  origin: "pe-menu--origin",
+  permanent: "pe-menu--permanent",
+  showBackdrop: "pe-menu--backdrop",
+  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
-  origin: "pe-menu--origin",
-  visible: "pe-menu--visible",
 
   // lookup
   listTile: listTileClasses.component,
@@ -128,6 +129,29 @@ var widths_min_width_width_factor = function widths_min_width_width_factor(selec
   }]);
 };
 
+var _backdrop = function _backdrop(selector) {
+  return sel(selector, {
+    " .pe-menu__backdrop": {
+      display: "block"
+    }
+  });
+};
+
+var _top_menu = function _top_menu(selector) {
+  return sel(selector, {
+    " .pe-menu__panel": {
+      position: "fixed",
+      width: "100vw",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: "auto",
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0
+    }
+  });
+};
+
 var varFns = {
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(vars$$1), {
@@ -147,7 +171,7 @@ var varFns = {
       ".pe-menu--floating": {
         " .pe-menu__panel": {
           zIndex: vars.z_menu,
-          transitionProperty: "all"
+          transitionProperty: "opacity, transform"
         }
       },
 
@@ -158,6 +182,7 @@ var varFns = {
       },
 
       " .pe-menu__backdrop": {
+        display: "none",
         transitionProperty: "all",
         position: "fixed",
         top: 0,
@@ -167,6 +192,8 @@ var varFns = {
         opacity: 0,
         zIndex: vars.z_menu
       },
+
+      ".pe-menu--backdrop": _backdrop(selector),
 
       ".pe-menu--visible .pe-menu__backdrop": {
         opacity: 1
@@ -234,6 +261,13 @@ var varFns = {
       }
     })];
   },
+  height: function height(selector, vars$$1) {
+    return [vars$$1.height !== undefined && sel(selector, {
+      " .pe-menu__panel": {
+        height: vars$$1.height
+      }
+    })];
+  },
   widths: function widths(selector, vars$$1) {
     return [widths_min_width_width_factor(selector, vars$$1)];
   },
@@ -249,33 +283,42 @@ var varFns = {
         borderRadius: vars$$1.border_radius + "px"
       }
     })];
+  },
+  top_menu: function top_menu(selector, vars$$1) {
+    return [vars$$1.top_menu && _top_menu(selector)];
+  },
+  backdrop: function backdrop(selector, vars$$1) {
+    return [vars$$1.backdrop && _backdrop(selector)];
   }
 };
 
 var layout = createLayout({ varFns: varFns });
 
 var vars$1 = {
-     general_styles: true,
+  general_styles: true,
 
-     animation_delay: "0s",
-     animation_duration: ".180s",
-     animation_hide_css: "opacity: 0;",
-     animation_hide_origin_effect_css: "transform: scale(0.75);",
-     animation_show_css: "opacity: 1;",
-     animation_show_origin_effect_css: "transform: scale(1);",
-     animation_timing_function: "ease-in-out",
-     border_radius: vars.unit_block_border_radius,
-     min_width: 1.5,
-     width_factor: vars.grid_unit_menu,
-     widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
+  animation_delay: "0s",
+  animation_duration: ".180s",
+  animation_hide_css: "opacity: 0;",
+  animation_hide_origin_effect_css: "transform: scale(0.75);",
+  animation_show_css: "opacity: 1;",
+  animation_show_origin_effect_css: "transform: scale(1);",
+  animation_timing_function: "ease-in-out",
+  backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
+  border_radius: vars.unit_block_border_radius,
+  height: undefined, // (height value with unit) - if not set, height is set by component option
+  min_width: 1.5,
+  top_menu: false,
+  width_factor: vars.grid_unit_menu,
+  widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
 
-     color_light_background: rgba(vars.color_light_background),
-     color_dark_background: rgba(vars.color_dark_background),
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background),
 
-     color_light_backdrop_background: "rgba(0, 0, 0, .1)",
-     color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
+  color_light_backdrop_background: "rgba(0, 0, 0, .1)",
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 
-     // text colors are set by content, usually list tiles
+  // text colors are set by content, usually list tiles
 };
 
 var fns = [layout, color];

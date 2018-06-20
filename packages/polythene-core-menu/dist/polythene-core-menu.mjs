@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, getStyle } from 'polythene-core';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -38,12 +38,13 @@ var classes = {
   backdrop: "pe-menu__backdrop",
 
   // states
-  permanent: "pe-menu--permanent",
   floating: "pe-menu--floating",
+  origin: "pe-menu--origin",
+  permanent: "pe-menu--permanent",
+  showBackdrop: "pe-menu--backdrop",
+  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
-  origin: "pe-menu--origin",
-  visible: "pe-menu--visible",
 
   // lookup
   listTile: listTileClasses.component,
@@ -75,6 +76,15 @@ var positionMenu = function positionMenu(state, attrs) {
   }
   var panelEl = state.panelEl;
   if (!panelEl) {
+    return;
+  }
+
+  // Don't set the position if the menu position is fixed
+  var hasStylePositionFixed = getStyle({ element: panelEl, prop: "position" }) === "fixed";
+
+  if (hasStylePositionFixed) {
+    panelEl.style = {};
+    panelEl.offsetHeight; // force reflow
     return;
   }
 
@@ -110,7 +120,7 @@ var positionMenu = function positionMenu(state, attrs) {
     var _targetRect = targetEl.getBoundingClientRect();
     var heightDiff = _targetRect.height - alignRect.height;
     positionOffsetV += Math.abs(heightDiff) / 2;
-  } else if (attrs.origin) {
+  } else if (attrs.origin && !hasStylePositionFixed) {
     if (origin.top) {
       positionOffsetV += targetRect.top - parentRect.top;
     } else if (origin.bottom) {
@@ -134,7 +144,7 @@ var positionMenu = function positionMenu(state, attrs) {
   var transitionDuration = panelEl.style.transitionDuration;
   panelEl.style.transitionDuration = "0ms";
 
-  if (panelEl.parentNode) {
+  if (panelEl.parentNode && !hasStylePositionFixed) {
     if (origin.right) {
       panelEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
     } else {
@@ -300,7 +310,7 @@ var createProps = function createProps(vnode, _ref) {
   var attrs = vnode.attrs;
   var type = attrs.type || DEFAULT_TYPE;
   return _extends({}, filterSupportedAttributes(attrs), {
-    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -310,7 +320,7 @@ var createContent = function createContent(vnode, _ref2) {
 
   var attrs = vnode.attrs;
   var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
-  return [attrs.backdrop && h("div", {
+  return [h("div", {
     key: "backdrop",
     className: classes.backdrop
   }), h("div", { className: classes.panel }, [z > 0 && h(Shadow, {
