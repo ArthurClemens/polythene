@@ -17,6 +17,7 @@ export default {
   visible:      "pe-menu--visible",
   width_auto:   "pe-menu--width-auto",
   width_n:      "pe-menu--width-",
+  isTopMenu:    "pe-menu--top-menu",
 
   // lookup
   listTile:         listTileClasses.component,

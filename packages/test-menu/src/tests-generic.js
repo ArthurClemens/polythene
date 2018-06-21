@@ -91,6 +91,12 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       }
     },
     {
+      name: "Option: topMenu",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu", height: "50vh", topMenu: true, exposed: false })
+    },
+    {
       name: "Dropdown menu (option: origin)",
       interactive: true,
       exclude: true,

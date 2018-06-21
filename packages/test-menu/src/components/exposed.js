@@ -38,6 +38,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           scrollTarget: `#item-${selectedIndex}`,
           origin: "top",
           backdrop: attrs.backdrop,
+          topMenu: attrs.topMenu,
           content: h(List, {
             hoverable: true,
             compact: true,

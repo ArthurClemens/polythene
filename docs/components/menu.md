@@ -22,7 +22,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 * Choose menu type: dropdown, exposing dropdown, dialog
 * Anchor menu to position "top left", "bottom right", etcetera
 * Tweak positioning with an offset
-* Cover menu: reposition according to selected item
+* Dropdown menu: optionally reposition according to selected item
 * Long list: scroll selected item into view
 * Custom transitions
 * Optional backdrop
@@ -54,6 +54,7 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **scrollTarget** | optional | String |  | HTML element selector to scroll to at appearance, for example `".list-item-12"` |
 | **show**         | optional | Boolean | | Set to `true` to show the menu |
 | **target**       | recommended | String |  | HTML element selector to position to, for example `"#my-button"` |
+| **topMenu**      | optional | Boolean |  | Set to `true` to make the menu appear full width at the top |
 | **transitions**  | optional | Object | | See "Transition options" below  |
 | **width**        | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7, or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that on smaller devices a large size may get clipped by the screen |
 | **z**            | optional | Number 0-5 | 3 | Depth of the shadow |

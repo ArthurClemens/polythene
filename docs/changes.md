@@ -38,8 +38,8 @@ Some examples:
 
 * Make a Dialog appear full screen on small screen sizes
 * Make a Menu appear full width on small screen sizes
-* Change a button size based on screen size
-* Change the image size on a card, without changing the Card options
+* Change a Button size based on screen size
+* Change the image size on a Card, without changing the component options
 
 See [CSS/Style variables](theming/style-variables.md) how to use this feature.
 

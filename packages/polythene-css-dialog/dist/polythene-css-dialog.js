@@ -42,12 +42,14 @@
     backdrop: "pe-menu__backdrop",
 
     // states
-    permanent: "pe-menu--permanent",
     floating: "pe-menu--floating",
+    origin: "pe-menu--origin",
+    permanent: "pe-menu--permanent",
+    showBackdrop: "pe-menu--backdrop",
+    visible: "pe-menu--visible",
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
-    origin: "pe-menu--origin",
-    visible: "pe-menu--visible",
+    isTopMenu: "pe-menu--top-menu",
 
     // lookup
     listTile: listTileClasses.component,

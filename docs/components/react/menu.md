@@ -262,7 +262,7 @@ The placement varies with the element that opens it; often the menu covers the c
   * Use option `offsetV` with value `0` to cover the target element. Use `offsetH` to tweak the horizontal position.
   * The menu appears with a fade-in animation, unless option `origin` is set, in which case it will appear from a corner or a side.
   * Use `reposition: true` to align the menu to the selected value (when the clicked element is a List Tiles).
-
+  * Use `topMenu: true` to make the menu appear full width and fixed to the top of the page
 
 <a id="exposing-dropdown-menu"></a>
 ### Exposing dropdown menu

@@ -42,6 +42,17 @@
   opacity: 1
 }
 
+.pe-menu.pe-menu--top-menu.pe-menu .pe-menu__panel {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
 .pe-menu .pe-menu__content {
   overflow: auto;
   width: 100%;

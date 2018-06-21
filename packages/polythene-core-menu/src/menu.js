@@ -29,7 +29,7 @@ const positionMenu = (state, attrs) => {
   // Don't set the position or top offset if the menu position is fixed
   const hasStylePositionFixed = getStyle({ element: panelEl, prop: "position" }) === "fixed";
 
-  if (hasStylePositionFixed) {
+  if (hasStylePositionFixed && !attrs.topMenu) {
     panelEl.style = {};
     panelEl.offsetHeight; // force reflow
     return;
@@ -94,11 +94,10 @@ const positionMenu = (state, attrs) => {
       const bottomMargin = firstItemHeight;
       panelEl.style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
     } else {
-      const height = attrs.height.toString().indexOf("%") !== -1
-        ? attrs.height
-        : attrs.height.toString().indexOf("px") !== -1
-          ? attrs.height
-          : `${attrs.height}px`;
+      console.log("attrs.height", attrs.height);
+      const height = /^\d+$/.test(attrs.height.toString())
+        ? `${attrs.height}px`
+        : attrs.height;
       panelEl.style.height = height;
     }
   }
@@ -275,6 +274,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.permanent ? classes.permanent : null,
         attrs.origin ? classes.origin : null,
         attrs.backdrop ? classes.showBackdrop : null,
+        attrs.topMenu ? classes.isTopMenu : null,
         type === "floating" && !attrs.permanent ? classes.floating : null,
         attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null,
         attrs.tone === "dark" ? "pe-dark-tone" : null,

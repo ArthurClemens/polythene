@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ renderer: h, keys: k, Menu, button, RaisedButton, List, ListTile, menuFn, transitionOptions, className, id, dropdown }) => ({
+export default ({ renderer: h, keys: k, Menu, button, RaisedButton, List, ListTile, menuFn, transitionOptions, className, id, dropdown, height, topMenu, exposed, offsetV }) => ({
   oninit: vnode => {
     const show = stream(false);
     Object.assign(vnode.state, {
@@ -42,7 +42,11 @@ export default ({ renderer: h, keys: k, Menu, button, RaisedButton, List, ListTi
           ListTile,
           transitionOptions,
           className,
-          didHide: () => state.show(false)
+          didHide: () => state.show(false),
+          height,
+          topMenu,
+          exposed,
+          offsetV,
         })
       ]
     );

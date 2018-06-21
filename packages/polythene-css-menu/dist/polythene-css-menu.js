@@ -49,6 +49,7 @@
     visible: "pe-menu--visible",
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
+    isTopMenu: "pe-menu--top-menu",
 
     // lookup
     listTile: listTileClasses.component,
@@ -202,6 +203,8 @@
           opacity: 1
         },
 
+        ".pe-menu--top-menu": _top_menu(selector),
+
         " .pe-menu__content": {
           overflow: "auto",
           width: "100%",
@@ -303,7 +306,7 @@
     animation_delay: "0s",
     animation_duration: ".180s",
     animation_hide_css: "opacity: 0;",
-    animation_hide_origin_effect_css: "transform: scale(0.75);",
+    animation_hide_origin_effect_css: "transform: scale(0.75);", // set to "transform: scale(1)" to reset scaling
     animation_show_css: "opacity: 1;",
     animation_show_origin_effect_css: "transform: scale(1);",
     animation_timing_function: "ease-in-out",
@@ -311,7 +314,7 @@
     border_radius: polytheneTheme.vars.unit_block_border_radius,
     height: undefined, // (height value with unit) - if not set, height is set by component option
     min_width: 1.5,
-    top_menu: false,
+    top_menu: false, // set to true to position the menu at the top of the screen, full width
     width_factor: polytheneTheme.vars.grid_unit_menu,
     widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
 

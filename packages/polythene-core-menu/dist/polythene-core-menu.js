@@ -49,6 +49,7 @@
     visible: "pe-menu--visible",
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
+    isTopMenu: "pe-menu--top-menu",
 
     // lookup
     listTile: listTileClasses.component,
@@ -83,10 +84,10 @@
       return;
     }
 
-    // Don't set the position if the menu position is fixed
+    // Don't set the position or top offset if the menu position is fixed
     var hasStylePositionFixed = polytheneCore.getStyle({ element: panelEl, prop: "position" }) === "fixed";
 
-    if (hasStylePositionFixed) {
+    if (hasStylePositionFixed && !attrs.topMenu) {
       panelEl.style = {};
       panelEl.offsetHeight; // force reflow
       return;
@@ -139,7 +140,8 @@
         var bottomMargin = firstItemHeight;
         panelEl.style.height = "calc(100% - " + (topMargin + bottomMargin) + "px)";
       } else {
-        var height = attrs.height.toString().indexOf("%") !== -1 ? attrs.height : attrs.height.toString().indexOf("px") !== -1 ? attrs.height : attrs.height + "px";
+        console.log("attrs.height", attrs.height);
+        var height = /^\d+$/.test(attrs.height.toString()) ? attrs.height + "px" : attrs.height;
         panelEl.style.height = height;
       }
     }
@@ -314,7 +316,7 @@
     var attrs = vnode.attrs;
     var type = attrs.type || DEFAULT_TYPE;
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
-      className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, attrs.topMenu ? classes.isTopMenu : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     });
   };
 

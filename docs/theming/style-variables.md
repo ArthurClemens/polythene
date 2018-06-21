@@ -235,7 +235,7 @@ MenuCSS.addStyle(
     top_menu: true,
     backdrop: true,                                           // add a backdrop
     animation_hide_origin_effect_css: "transform: scale(1);", // prevent the menu fron scaling
-    height: "50vh !important",                                // override the component height option
+    height: "50vh !important",                                // use !important to override the component height option
   },
   {
     mediaQuery: "@media all and (max-width: 480px)"
@@ -245,6 +245,7 @@ MenuCSS.addStyle(
 // Show the menu
 m(Menu, {
   className: "small-screen-menu",
+  height: 150,
   // ...
 })
 ~~~
@@ -300,7 +301,7 @@ MenuCSS.addStyle(
     top_menu: true,
     backdrop: true,                                           // add a backdrop
     animation_hide_origin_effect_css: "transform: scale(1);", // prevent the menu fron scaling
-    height: "50vh !important",                                // override the component height option
+    height: "50vh !important",                                // use !important to override the component height option
   },
   {
     mediaQuery: "@media all and (max-width: 480px)"
@@ -310,6 +311,7 @@ MenuCSS.addStyle(
 // Show the menu
 <Menu
   className="small-screen-menu"
+  height={150}
   {/* ... */}
 />
 ~~~

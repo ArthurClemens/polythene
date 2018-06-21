@@ -108,6 +108,8 @@ const varFns = {
           opacity: 1
         },
 
+        ".pe-menu--top-menu": top_menu(selector),
+
         " .pe-menu__content": {
           overflow: "auto",
           width: "100%",
