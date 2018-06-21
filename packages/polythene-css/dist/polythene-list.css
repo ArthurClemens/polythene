@@ -1,3 +1,7 @@
+.pe-list {
+  width: 100%
+}
+
 .pe-list.pe-list--header {
   padding-top: 0
 }

@@ -94,7 +94,8 @@
 }
 
 .pe-dialog--full-screen {
-  padding: 0
+  padding: 0;
+  transition-property: all
 }
 
 .pe-dialog--full-screen .pe-dialog-pane {

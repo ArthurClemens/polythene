@@ -125,6 +125,7 @@
         bottom: 0,
         zIndex: 1,
         height: "100%",
+        minWidth: 0, // IE 11 does not accept "none" or "inital" here
         padding: 0,
         opacity: 1,
 
@@ -133,7 +134,8 @@
           position: "relative",
           borderRadius: 0,
           height: "100%",
-          overflow: "visible"
+          overflow: "visible",
+          minWidth: 0 // IE 11 does not accept "none" or "inital" here
         }],
 
         " .pe-dialog-pane__content": {

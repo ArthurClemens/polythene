@@ -114,6 +114,7 @@
   var fullScreen = function fullScreen(selector) {
     return polytheneCoreCss.sel(selector, {
       padding: 0,
+      transitionProperty: "initial",
 
       " .pe-dialog-pane": {
         borderRadius: 0

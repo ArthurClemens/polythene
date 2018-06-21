@@ -8,6 +8,8 @@ const borderStyle = vars => ({
 const varFns = {
   general_styles: selector => [
     sel(selector, {
+      width: "100%",
+      
       ".pe-list--header": {
         paddingTop: 0
       },

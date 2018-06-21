@@ -111,6 +111,7 @@ var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
 var fullScreen = function fullScreen(selector) {
   return sel(selector, {
     padding: 0,
+    transitionProperty: "initial",
 
     " .pe-dialog-pane": {
       borderRadius: 0

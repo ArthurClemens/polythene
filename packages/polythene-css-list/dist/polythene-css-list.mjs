@@ -100,6 +100,8 @@ var borderStyle = function borderStyle(vars$$1) {
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
+      width: "100%",
+
       ".pe-list--header": {
         paddingTop: 0
       },
