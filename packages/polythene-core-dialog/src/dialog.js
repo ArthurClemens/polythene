@@ -84,7 +84,6 @@ export const onUnMount = vnode => (
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
@@ -93,6 +92,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.parentClassName || classes.component,
         attrs.fromMultipleClassName,
         attrs.fullScreen ? classes.fullScreen : null,
+        attrs.backdrop ? classes.showBackdrop : null,
         // classes.visible is set in showDialog though transition
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
@@ -153,7 +153,7 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
       ? attrs.panes[0]
       : createPane(vnode, { renderer, Pane } );
   return [
-    attrs.backdrop && h("div",
+    h("div",
       {
         key: "backdrop",
         className: classes.backdrop

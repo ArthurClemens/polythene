@@ -111,7 +111,6 @@ var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
 var fullScreen = function fullScreen(selector) {
   return sel(selector, {
     padding: 0,
-    transitionProperty: "initial",
 
     " .pe-dialog-pane": {
       borderRadius: 0
@@ -120,7 +119,18 @@ var fullScreen = function fullScreen(selector) {
       borderRadius: 0,
       maxWidth: "none",
       height: "100vh",
-      width: "100vw"
+      width: "100vw",
+      display: "flex",
+      flexDirection: "column",
+
+      " > *": {
+        flexShrink: 0
+      },
+
+      " > .pe-dialog-pane__body": {
+        flexShrink: 1,
+        maxHeight: "initial"
+      }
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
@@ -138,7 +148,6 @@ var varFns = {
       maxHeight: "100%",
       borderRadius: "inherit",
       margin: 0,
-      minWidth: "320px",
 
       " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
         zIndex: 1
@@ -225,10 +234,10 @@ var varFns = {
     }, [fullScreen(" .pe-dialog--full-screen")]];
   },
   max_width: function max_width(selector, vars$$1) {
-    return [sel(selector, []), max_width_side_padding_mobile(selector, vars$$1)];
+    return [max_width_side_padding_mobile(selector, vars$$1)];
   },
   side_padding_mobile: function side_padding_mobile(selector, vars$$1) {
-    return [sel(selector, []), max_width_side_padding_mobile(selector, vars$$1)];
+    return [max_width_side_padding_mobile(selector, vars$$1)];
   },
   min_width: function min_width(selector, vars$$1) {
     return [sel(selector, {
@@ -262,7 +271,7 @@ var varFns = {
     }), padding_header_bottom(selector, vars$$1), padding_header_height_footer_height(selector, vars$$1)];
   },
   header_bottom: function header_bottom(selector, vars$$1) {
-    return [sel(selector, {}), padding_header_bottom(selector, vars$$1)];
+    return [padding_header_bottom(selector, vars$$1)];
   },
   footer_height: function footer_height(selector, vars$$1) {
     return [sel(selector, {

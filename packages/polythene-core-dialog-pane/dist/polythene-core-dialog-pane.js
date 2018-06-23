@@ -138,8 +138,6 @@
 
     // resize: update scroll state ("overflow" borders)
     polytheneCore.subscribe("resize", update);
-
-    updateScrollOverflowState(vnode);
   };
 
   var onUnMount = function onUnMount(vnode) {

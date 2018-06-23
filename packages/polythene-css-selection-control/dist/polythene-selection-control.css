@@ -43,23 +43,22 @@
 }
 
 .pe-control .pe-button.pe-control__button {
-  position: absolute;
-  z-index: 1
+  position: absolute
 }
 
 .pe-control.pe-control--off .pe-control__button--on {
   opacity: 0;
-  z-index: 0
+  z-index: -1
 }
 
 .pe-control.pe-control--off .pe-control__button--off,.pe-control.pe-control--on .pe-control__button--on {
   opacity: 1;
-  z-index: 1
+  z-index: 0
 }
 
 .pe-control.pe-control--on .pe-control__button--off {
   opacity: 0;
-  z-index: 0
+  z-index: -1
 }
 
 .pe-control .pe-control__label {

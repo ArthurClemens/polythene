@@ -103,7 +103,7 @@
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, {
-        width: "100%",
+        flexGrow: 1,
 
         ".pe-list--header": {
           paddingTop: 0

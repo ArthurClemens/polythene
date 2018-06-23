@@ -1,5 +1,5 @@
 .pe-list {
-  width: 100%
+  flex-grow: 1
 }
 
 .pe-list.pe-list--header {

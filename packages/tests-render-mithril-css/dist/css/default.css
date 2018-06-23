@@ -7,6 +7,20 @@ body, html {
 }
 .page {
   min-width: 320px;
+  overflow: hidden;
+  position: relative;
+}
+.drawer-content-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: #f0f0f0;
+}
+.components {
+  flex-grow: 1;
+  flex-shrink: 0;
+  overflow: auto;
+  width: 100%;
 }
 .row {
   padding: 16px;
@@ -38,11 +52,20 @@ body, html {
 .pe-control.pe-radio-control + .pe-control.pe-radio-control {
   margin-left: 40px;
 }
+
 @media only screen and (min-width:480px) {
-  .page {
+  .components {
     padding: 16px;
   }
   .row {
     padding: 16px 24px;
+  }
+}
+@media (min-width:777px) {
+  .large-screen-floating-drawer {
+    margin: 16px 0 0 16px;
+  }
+  .components {
+    width: auto;
   }
 }

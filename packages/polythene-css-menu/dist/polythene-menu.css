@@ -42,6 +42,10 @@
   opacity: 1
 }
 
+.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-1-5 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-2 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-3 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-4 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-5 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-6 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-7 .pe-menu__panel {
+  width: 100vw
+}
+
 .pe-menu.pe-menu--top-menu.pe-menu .pe-menu__panel {
   position: fixed;
   width: 100vw;

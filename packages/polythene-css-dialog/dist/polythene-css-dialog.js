@@ -70,6 +70,7 @@
     fullScreen: "pe-dialog--full-screen",
     open: "pe-dialog--open", // class set to html element
     visible: "pe-dialog--visible", // class set to dialog element
+    showBackdrop: "pe-dialog--backdrop",
 
     // lookup
     menuContent: menuClasses.content
@@ -118,6 +119,14 @@
 
   var minWidth = "320px";
 
+  var _backdrop = function _backdrop(selector) {
+    return polytheneCoreCss.sel(selector, {
+      ".pe-dialog--visible .pe-dialog__backdrop": {
+        display: "block",
+        opacity: 1
+      }
+    });
+  };
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
@@ -140,17 +149,21 @@
 
         " .pe-dialog__content": {
           position: "relative",
-          transitionProperty: "all",
-          minWidth: minWidth
+          transitionProperty: "all"
         },
 
-        " .pe-dialog__backdrop": {
+        " .pe-dialog__backdrop": [polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
+        {
           position: "absolute",
+          opacity: 0,
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0
-        }
+          bottom: 0,
+          display: "none"
+        }],
+
+        ".pe-dialog--backdrop": _backdrop(selector)
       }]), {
         ".pe-dialog__holder": {
           height: "100%",
@@ -207,6 +220,9 @@
     },
     full_screen: function full_screen(selector, vars) {
       return [vars.full_screen && polytheneCssDialogPane.fullScreen(selector)];
+    },
+    backdrop: function backdrop(selector, vars) {
+      return [vars.backdrop && _backdrop(selector)];
     }
   };
 
@@ -221,10 +237,15 @@
     animation_show_css: "opacity: 1;",
     animation_timing_function: "ease-in-out",
     border_radius: polytheneTheme.vars.unit_block_border_radius,
-    full_screen: false,
     padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
     padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
     position: "fixed",
+
+    // theme vars
+
+    full_screen: false,
+
+    // color vars
 
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",
     color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
@@ -254,6 +275,7 @@
   exports.getStyle = getStyle;
   exports.layout = layout;
   exports.vars = vars;
+  exports.backdrop = _backdrop;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

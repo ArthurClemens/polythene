@@ -50,7 +50,7 @@ export const vars = {
   font_weight_medium: 500,
   font_weight_bold: 700,
   font_size_title: 20,
-  line_height: 1.3,
+  line_height: 1.5,
 
   // base colors
   color_primary: "33, 150, 243", // blue 500
@@ -105,9 +105,10 @@ export const vars = {
   breakpoint_for_tv_up:               1920, 
 
   // z-index
-  z_toolbar: 100,
-  z_menu: 1000,
-  z_app_bar: 2000,
+  z_toolbar:      100,
+  z_menu:         1000,
+  z_app_bar:      2000,
+  z_drawer:       3000,
   z_notification: 4000,
-  z_dialog: 5000,
+  z_dialog:       5000,
 };

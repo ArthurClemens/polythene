@@ -14,6 +14,7 @@ export default {
   fullScreen:        "pe-dialog--full-screen",
   open:              "pe-dialog--open",    // class set to html element
   visible:           "pe-dialog--visible", // class set to dialog element
+  showBackdrop:      "pe-dialog--backdrop",
 
   // lookup
   menuContent:       menuClasses.content,

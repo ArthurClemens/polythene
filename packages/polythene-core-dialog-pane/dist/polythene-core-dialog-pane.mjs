@@ -134,8 +134,6 @@ var onMount = function onMount(vnode) {
 
   // resize: update scroll state ("overflow" borders)
   subscribe("resize", update);
-
-  updateScrollOverflowState(vnode);
 };
 
 var onUnMount = function onUnMount(vnode) {

@@ -1,7 +1,9 @@
 const { writeCSS } = require("polythene-scripts");
-const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS } = require("polythene-css");
+const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS, DrawerCSS } = require("polythene-css");
 
-const breakPoint = 480;
+const breakPointSmall = 480;
+const breakPointDrawerSmall = breakPointSmall + 56 + 1;
+const breakPointDrawerMedium = breakPointDrawerSmall + 240;
 
 const styles = [
   CardCSS.getStyle(
@@ -18,7 +20,7 @@ const styles = [
       image_size_medium: 90
     },
     {
-      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`
     }
   ),
   ButtonCSS.getStyle(
@@ -29,7 +31,7 @@ const styles = [
       padding_h:              16
     },
     {
-      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`
     }
   ),
   IconCSS.getStyle(
@@ -39,7 +41,7 @@ const styles = [
       color_light:  "purple",
     },
     {
-      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`
     }
   ),
   DialogCSS.getStyle(
@@ -48,7 +50,7 @@ const styles = [
       full_screen: true,
     },
     {
-      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`
     }
   ),
   MenuCSS.getStyle(
@@ -60,9 +62,46 @@ const styles = [
       height: "50vh !important",
     },
     {
-      mediaQuery: `@media all and (max-width: ${breakPoint}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`
     }
-  )
+  ),
+  DrawerCSS.getStyle(
+    ".small-screen-cover-drawer",
+    {
+      cover: true,
+      backdrop: true,
+      z: 1,
+      border: false,
+    },
+    {
+      mediaQuery: `@media all and (max-width: ${breakPointDrawerSmall}px)`
+    }
+  ),
+  DrawerCSS.getStyle(
+    ".medium-screen-mini-drawer",
+    {
+      push: true,
+      mini: true,
+      border: true,
+      permanent: true,
+      backdrop: true,
+    },
+    {
+      mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall}px) and (max-width: ${breakPointDrawerMedium}px)`
+    }
+  ),
+  DrawerCSS.getStyle(
+    ".large-screen-floating-drawer",
+    {
+      permanent: true,
+      floating: true,
+      z: 1,
+      border_radius: 4
+    },
+    {
+      mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium}px)`
+    }
+  ),
 ];
 
 writeCSS({

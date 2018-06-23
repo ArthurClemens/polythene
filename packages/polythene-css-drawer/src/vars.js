@@ -4,6 +4,7 @@ import { vars } from "polythene-theme";
 export default {
   general_styles:                  true,
 
+  border_radius:                   0,
   content_max_width:               5 * vars.increment,           // 5 * 56
   content_max_width_large:         5 * vars.increment_large,     // 5 * 64
   content_side_offset:             vars.grid_unit_component * 7, // 56
@@ -11,6 +12,16 @@ export default {
   content_width_mini_collapsed:    vars.increment,               // 1 * 56
   permanent_content_width:         240,
 
+  // theme vars
+  
+  backdrop:                        false,
+  cover:                           false,
+  floating:                        false,
+  mini:                            false,
+  permanent:                       false,
+
+  // color vars
+  
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background:  "rgba(0, 0, 0, .5)",
   

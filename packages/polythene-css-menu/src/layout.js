@@ -16,12 +16,12 @@ const widthClass = width => {
   return "pe-menu--width-" + widthStr;
 };
 
-const widthStyle = (vars, width) => {
+const widthStyle = ({ vars, width, value }) => {
   const s = unifyWidth(vars, width);
   return {
     ["." + widthClass(s)]: {
       " .pe-menu__panel": {
-        width: vars.width_factor * s + "px",
+        width: value || vars.width_factor * s + "px",
         // We can't set maxWidth because we don't know the width of the container
       }
     }
@@ -30,7 +30,7 @@ const widthStyle = (vars, width) => {
 
 const widths_min_width_width_factor = (selector, vars) =>
   sel(selector, [
-    vars.widths.map(width => widthStyle(vars, width)),
+    vars.widths.map(width => widthStyle({ vars, width })),
     {
       " .pe-menu__panel": {
         minWidth: themeVars.grid_unit_menu * vars.min_width + "px",
@@ -45,19 +45,22 @@ const backdrop = selector =>
     }
   });
 
-const top_menu = selector =>
-  sel(selector, {
-    " .pe-menu__panel": {
-      position: "fixed",
-      width: "100vw",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: "auto",
-      borderTopLeftRadius: 0,
-      borderTopRightRadius: 0, 
+const top_menu = (selector, vars) =>
+  sel(selector, [
+    vars.widths.map(width => widthStyle({ vars, width, value: "100vw" })),
+    {
+      " .pe-menu__panel": {
+        position: "fixed",
+        width: "100vw",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: "auto",
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0, 
+      }
     }
-  });
+  ]);
 
 const varFns = {
   general_styles: (selector, vars) => [
@@ -108,7 +111,7 @@ const varFns = {
           opacity: 1
         },
 
-        ".pe-menu--top-menu": top_menu(selector),
+        ".pe-menu--top-menu": top_menu(selector, vars),
 
         " .pe-menu__content": {
           overflow: "auto",
@@ -200,7 +203,7 @@ const varFns = {
     })
   ],
   top_menu: (selector, vars) => [
-    vars.top_menu && top_menu(selector)
+    vars.top_menu && top_menu(selector, vars)
   ],
   backdrop: (selector, vars) => [
     vars.backdrop && backdrop(selector)

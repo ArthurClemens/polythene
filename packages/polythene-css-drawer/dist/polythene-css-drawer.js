@@ -78,19 +78,21 @@
         },
 
         // Fixed
-        ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed),
-
-        // Mini
-        ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-          marginLeft: 0,
-          marginRight: 0
-        }
+        ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
       };
     };
   };
 
   var alignLeft = alignSide(false);
   var alignRight = alignSide(true);
+
+  var _backdrop = function _backdrop(selector) {
+    return polytheneCoreCss.sel(selector, {
+      ".pe-dialog--visible .pe-dialog__backdrop": {
+        opacity: 1
+      }
+    });
+  };
 
   var selectorAnchorEnd = function selectorAnchorEnd(selector) {
     return selector + ".pe-drawer--anchor-end";
@@ -114,6 +116,65 @@
     });
   };
 
+  var _cover = function _cover(selector) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-dialog__content": {
+        position: "absolute",
+        top: 0,
+        zIndex: polytheneTheme.vars.z_drawer
+      },
+      ".pe-dialog--visible": {
+        " .pe-dialog__touch": {
+          display: "block"
+        }
+      }
+    });
+  };
+
+  var _mini = function _mini(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      ".pe-drawer--push:not(.pe-dialog--visible) .pe-dialog__content": {
+        width: vars.content_width_mini_collapsed + "px",
+        marginLeft: 0,
+        marginRight: 0
+      }
+    });
+  };
+
+  var _permanent = function _permanent(selector) {
+    return polytheneCoreCss.sel(selector, {
+      position: "static",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+
+      " .pe-dialog__content": {
+        overflow: "visible",
+        maxHeight: "initial",
+        marginLeft: 0,
+        marginRight: 0
+      }
+    });
+  };
+
+  var borderRadius = function borderRadius(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-dialog__content": {
+        borderRadius: vars.border_radius + "px"
+      }
+    });
+  };
+
+  var _floating = function _floating(selector) {
+    return polytheneCoreCss.sel(selector, {
+      height: "auto",
+
+      " .pe-dialog__content": {
+        height: "auto"
+      }
+    });
+  };
+
   var varFns = {
     general_styles: function general_styles(selector, vars) {
       return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
@@ -128,14 +189,16 @@
         minWidth: 0, // IE 11 does not accept "none" or "inital" here
         padding: 0,
         opacity: 1,
+        flexShrink: 0,
 
         " .pe-dialog__content": [polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
         {
           position: "relative",
-          borderRadius: 0,
+
           height: "100%",
           overflow: "visible",
-          minWidth: 0 // IE 11 does not accept "none" or "inital" here
+          minWidth: 0, // IE 11 does not accept "none" or "inital" here
+          flexShrink: 0
         }],
 
         " .pe-dialog-pane__content": {
@@ -158,26 +221,15 @@
           position: "fixed",
           top: 0,
           width: "100%",
-          zIndex: polytheneTheme.vars.z_app_bar
+          zIndex: polytheneTheme.vars.z_drawer
         },
 
         // Permanent
-        ".pe-drawer--permanent:not(.pe-drawer--mini)": {
-          position: "static",
-          display: "block",
-          padding: 0,
-          overflow: "initial",
 
-          " .pe-dialog__content": {
-            overflow: "visible",
-            maxHeight: "initial"
-          }
-        },
+        ".pe-drawer--permanent:not(.pe-drawer--mini)": _permanent(selector, vars),
 
         // Floating
-        ".pe-drawer--floating": {
-          height: "auto"
-        },
+        ".pe-drawer--floating": _floating(selector, vars),
 
         // Bordered
         ".pe-drawer--border": {
@@ -187,12 +239,7 @@
         },
 
         // Cover (default)
-        ".pe-drawer--cover": {
-          " .pe-dialog__content": {
-            position: "absolute",
-            top: 0
-          }
-        },
+        ".pe-drawer--cover": _cover(selector),
 
         // Push
         ".pe-drawer--push": {
@@ -200,21 +247,25 @@
         },
 
         // Backdrop
-        " .pe-dialog__backdrop, .pe-dialog__touch": {
+        " .pe-dialog__backdrop": {
+          pointerEvents: "none",
+          opacity: 0,
+          display: "block"
+        },
+        " .pe-dialog__touch": {
+          display: "none",
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0
         },
-        " .pe-dialog__backdrop": [polytheneCoreCss.mixin.defaultTransition("all"), // animation duration is set in component options
-        {
-          opacity: 0
-        }],
-        ".pe-dialog--visible .pe-dialog__backdrop": {
-          opacity: 1
-        }
+
+        ".pe-dialog--backdrop": _backdrop(selector)
       }]), [polytheneCoreCss.sel(polytheneCoreCss.selectorRTL(selector), alignRight(vars))]];
+    },
+    border_radius: function border_radius(selector, vars) {
+      return [borderRadius(selector, vars)];
     },
     content_max_width: function content_max_width(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
@@ -249,11 +300,7 @@
       })];
     },
     content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-          width: vars.content_width_mini_collapsed + "px"
-        }
-      })];
+      return [polytheneCoreCss.sel(selector, [_mini(".pe-drawer--mini", vars)])];
     },
     content_max_width_large: function content_max_width_large(selector, vars) {
       return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty$1({}, selector, {
@@ -273,6 +320,21 @@
           width: "calc(100% - " + vars.content_side_offset_large + "px)"
         }
       }));
+    },
+    cover: function cover(selector, vars) {
+      return [vars.cover && _cover(selector)];
+    },
+    backdrop: function backdrop(selector, vars) {
+      return [vars.backdrop && _backdrop(selector)];
+    },
+    mini: function mini(selector, vars) {
+      return [vars.mini && _mini(selector, vars)];
+    },
+    permanent: function permanent(selector, vars) {
+      return [vars.permanent && _permanent(selector, vars)];
+    },
+    floating: function floating(selector, vars) {
+      return [vars.floating && _floating(selector, vars)];
     }
   };
 
@@ -281,12 +343,23 @@
   var vars = {
     general_styles: true,
 
+    border_radius: 0,
     content_max_width: 5 * polytheneTheme.vars.increment, // 5 * 56
     content_max_width_large: 5 * polytheneTheme.vars.increment_large, // 5 * 64
     content_side_offset: polytheneTheme.vars.grid_unit_component * 7, // 56
     content_side_offset_large: polytheneTheme.vars.grid_unit_component * 8, // 64
     content_width_mini_collapsed: polytheneTheme.vars.increment, // 1 * 56
     permanent_content_width: 240,
+
+    // theme vars
+
+    backdrop: false,
+    cover: false,
+    floating: false,
+    mini: false,
+    permanent: false,
+
+    // color vars
 
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",
     color_dark_backdrop_background: "rgba(0, 0, 0, .5)",

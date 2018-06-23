@@ -113,11 +113,15 @@
     return "pe-menu--width-" + widthStr;
   };
 
-  var widthStyle = function widthStyle(vars, width) {
+  var widthStyle = function widthStyle(_ref) {
+    var vars = _ref.vars,
+        width = _ref.width,
+        value = _ref.value;
+
     var s = unifyWidth(vars, width);
     return _defineProperty$1({}, "." + widthClass(s), {
       " .pe-menu__panel": {
-        width: vars.width_factor * s + "px"
+        width: value || vars.width_factor * s + "px"
         // We can't set maxWidth because we don't know the width of the container
       }
     });
@@ -125,7 +129,7 @@
 
   var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars) {
     return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
-      return widthStyle(vars, width);
+      return widthStyle({ vars: vars, width: width });
     }), {
       " .pe-menu__panel": {
         minWidth: polytheneTheme.vars.grid_unit_menu * vars.min_width + "px"
@@ -141,8 +145,10 @@
     });
   };
 
-  var _top_menu = function _top_menu(selector) {
-    return polytheneCoreCss.sel(selector, {
+  var _top_menu = function _top_menu(selector, vars) {
+    return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
+      return widthStyle({ vars: vars, width: width, value: "100vw" });
+    }), {
       " .pe-menu__panel": {
         position: "fixed",
         width: "100vw",
@@ -153,7 +159,7 @@
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0
       }
-    });
+    }]);
   };
 
   var varFns = {
@@ -203,7 +209,7 @@
           opacity: 1
         },
 
-        ".pe-menu--top-menu": _top_menu(selector),
+        ".pe-menu--top-menu": _top_menu(selector, vars),
 
         " .pe-menu__content": {
           overflow: "auto",
@@ -291,7 +297,7 @@
       })];
     },
     top_menu: function top_menu(selector, vars) {
-      return [vars.top_menu && _top_menu(selector)];
+      return [vars.top_menu && _top_menu(selector, vars)];
     },
     backdrop: function backdrop(selector, vars) {
       return [vars.backdrop && _backdrop(selector)];

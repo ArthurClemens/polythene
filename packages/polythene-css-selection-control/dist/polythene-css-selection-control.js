@@ -191,14 +191,14 @@
   var activeButton = function activeButton() {
     return {
       opacity: 1,
-      zIndex: 1
+      zIndex: 0
     };
   };
 
   var inactiveButton = function inactiveButton() {
     return {
       opacity: 0,
-      zIndex: 0
+      zIndex: -1
     };
   };
 
@@ -266,8 +266,7 @@
         },
 
         " .pe-button.pe-control__button": {
-          position: "absolute",
-          zIndex: 1
+          position: "absolute"
         },
 
         ".pe-control--off": {

@@ -31,12 +31,12 @@ const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
 
 const activeButton = () => ({
   opacity: 1,
-  zIndex: 1
+  zIndex: 0
 });
 
 const inactiveButton = () => ({
   opacity: 0,
-  zIndex: 0
+  zIndex: -1
 });
 
 const button_size_icon_size = (selector, vars, isRTL) =>
@@ -111,7 +111,6 @@ const varFns = {
 
         " .pe-button.pe-control__button": {
           position: "absolute",
-          zIndex: 1
         },
 
         ".pe-control--off": {

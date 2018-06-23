@@ -20,7 +20,6 @@ const max_width_side_padding_mobile = (selector, vars) => {
 const padding_header_height_footer_height = (selector, vars) =>
   sel(selector, {
     " .pe-dialog-pane__body": {
-      // initially set max-height; will be overridden by dialog core with actual heights
       maxHeight: "calc(100vh - " + (4 * vars.padding) + "px - " + (vars.header_height + vars.footer_height) + "px)",
     }
   });
@@ -47,6 +46,17 @@ export const fullScreen = selector =>
       maxWidth: "none",
       height: "100vh",
       width: "100vw",
+      display: "flex",
+      flexDirection: "column",
+
+      " > *": {
+        flexShrink: 0
+      },
+
+      " > .pe-dialog-pane__body": {
+        flexShrink: 1 ,
+        maxHeight: "initial",
+      }
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
@@ -65,7 +75,6 @@ const varFns = {
         maxHeight: "100%",
         borderRadius: "inherit",
         margin: 0,
-        minWidth: "320px",
         
         " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
           zIndex: 1
@@ -166,13 +175,9 @@ const varFns = {
     ]
   ],
   max_width: (selector, vars) => [
-    sel(selector, [
-    ]),
     max_width_side_padding_mobile(selector, vars)
   ],
   side_padding_mobile: (selector, vars) => [
-    sel(selector, [
-    ]),
     max_width_side_padding_mobile(selector, vars)
   ],
   min_width: (selector, vars) => [
@@ -210,8 +215,6 @@ const varFns = {
     padding_header_height_footer_height(selector, vars),
   ],
   header_bottom: (selector, vars) => [
-    sel(selector, {
-    }),
     padding_header_bottom(selector, vars)
   ],
   footer_height: (selector, vars) => [

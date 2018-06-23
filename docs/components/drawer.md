@@ -51,7 +51,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **modal**     | optional      | Boolean    | false | Set to `true` to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
 | **permanent** | optional      | Boolean    |                 | Set to `true` to display the drawer as a permanent side menu |
 | **push**      | optional      | Boolean    | `false` (cover) | Set to `true` to animate the drawer with a push animation, pushing away the content next to the drawer | 
-| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer, `hide` to hide a displayed drawer |
+| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer, `false` to hide a displayed drawer |
 | **z**         | optional      | Number 0-5 | 0 | Depth of the shadow; 0 will show no shadow |
 
 <a id="transition-options"></a>

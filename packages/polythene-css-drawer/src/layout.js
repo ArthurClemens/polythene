@@ -14,16 +14,17 @@ const alignSide = isRTL => () => ({
     [isRTL ? "right" : "left"]: 0,
     [isRTL ? "left" : "right"]: "auto",
   },
-
-  // Mini
-  ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-    marginLeft: 0,
-    marginRight: 0,
-  },
 });
 
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
+
+const backdrop = selector =>
+  sel(selector, {
+    ".pe-dialog--visible .pe-dialog__backdrop": {
+      opacity: 1,
+    }
+  });
 
 const selectorAnchorEnd = selector =>
   `${selector}.pe-drawer--anchor-end`;
@@ -52,6 +53,60 @@ const push_permanent_content_width = (selector, vars, isRTL) =>
     },
   });
 
+const cover = selector =>
+  sel(selector, {
+    " .pe-dialog__content": {
+      position: "absolute",
+      top: 0,
+      zIndex: themeVars.z_drawer,
+    },
+    ".pe-dialog--visible": {
+      " .pe-dialog__touch": {
+        display: "block",
+      }
+    }
+  });
+
+const mini = (selector, vars) =>
+  sel(selector, {
+    ".pe-drawer--push:not(.pe-dialog--visible) .pe-dialog__content": {
+      width: `${vars.content_width_mini_collapsed}px`,
+      marginLeft: 0,
+      marginRight: 0,
+    },
+  });
+
+const permanent = selector =>
+  sel(selector, {
+    position: "static",
+    display: "block",
+    padding: 0,
+    overflow: "initial",
+
+    " .pe-dialog__content": {
+      overflow: "visible",
+      maxHeight: "initial",
+      marginLeft: 0,
+      marginRight: 0,
+    }
+  });
+
+const borderRadius = (selector, vars) =>
+  sel(selector, {
+    " .pe-dialog__content": {
+      borderRadius: vars.border_radius + "px",
+    }
+  });
+
+const floating = selector =>
+  sel(selector, {
+    height: "auto",
+
+    " .pe-dialog__content": {
+      height: "auto",
+    }
+  });
+
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
@@ -68,15 +123,17 @@ const varFns = {
         minWidth: 0, // IE 11 does not accept "none" or "inital" here
         padding: 0,
         opacity: 1,
+        flexShrink: 0,
 
         " .pe-dialog__content": [
           mixin.defaultTransition("all"), // animation duration is set in component options
           {
             position: "relative",
-            borderRadius: 0,
+            
             height: "100%",
             overflow: "visible",
             minWidth: 0, // IE 11 does not accept "none" or "inital" here
+            flexShrink: 0,
           }
         ],
 
@@ -100,26 +157,15 @@ const varFns = {
           position: "fixed",
           top: 0,
           width: "100%",
-          zIndex: themeVars.z_app_bar,
+          zIndex: themeVars.z_drawer,
         },
 
         // Permanent
-        ".pe-drawer--permanent:not(.pe-drawer--mini)": {
-          position: "static",
-          display: "block",
-          padding: 0,
-          overflow: "initial",
 
-          " .pe-dialog__content": {
-            overflow: "visible",
-            maxHeight: "initial",
-          }
-        },
+        ".pe-drawer--permanent:not(.pe-drawer--mini)": permanent(selector, vars),
 
         // Floating
-        ".pe-drawer--floating": {
-          height: "auto"
-        },
+        ".pe-drawer--floating": floating(selector, vars),
 
         // Bordered
         ".pe-drawer--border": {
@@ -129,12 +175,7 @@ const varFns = {
         },
 
         // Cover (default)
-        ".pe-drawer--cover": {
-          " .pe-dialog__content": {
-            position: "absolute",
-            top: 0,
-          }
-        },
+        ".pe-drawer--cover": cover(selector),
 
         // Push
         ".pe-drawer--push": {
@@ -142,27 +183,29 @@ const varFns = {
         },
         
         // Backdrop
-        " .pe-dialog__backdrop, .pe-dialog__touch": {
+        " .pe-dialog__backdrop": {
+          pointerEvents: "none",
+          opacity: 0,
+          display: "block",
+        },
+        " .pe-dialog__touch": {
+          display: "none",
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
         },
-        " .pe-dialog__backdrop": [
-          mixin.defaultTransition("all"), // animation duration is set in component options
-          {
-            opacity: 0 
-          }
-        ],
-        ".pe-dialog--visible .pe-dialog__backdrop": {
-          opacity: 1
-        }
+
+        ".pe-dialog--backdrop": backdrop(selector),
       }
     ]),
     [
       sel(selectorRTL(selector), alignRight(vars)),
     ]
+  ],
+  border_radius: (selector, vars) => [
+    borderRadius(selector, vars)
   ],
   content_max_width: (selector, vars) => [
     sel(selector, {
@@ -205,11 +248,9 @@ const varFns = {
     })
   ],
   content_width_mini_collapsed: (selector, vars) => [
-    sel(selector, {
-      ".pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content": {
-        width: `${vars.content_width_mini_collapsed}px`,
-      },
-    })
+    sel(selector, [
+      mini(".pe-drawer--mini", vars)
+    ])
   ],
   content_max_width_large: (selector, vars) => ({
     ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
@@ -234,6 +275,21 @@ const varFns = {
       }
     }
   }),
+  cover: (selector, vars) => [
+    vars.cover && cover(selector)
+  ],
+  backdrop: (selector, vars) => [
+    vars.backdrop && backdrop(selector)
+  ],
+  mini: (selector, vars) => [
+    vars.mini && mini(selector, vars)
+  ],
+  permanent: (selector, vars) => [
+    vars.permanent && permanent(selector, vars)
+  ],
+  floating: (selector, vars) => [
+    vars.floating && floating(selector, vars)
+  ],
 };
 
 export default createLayout({ varFns });

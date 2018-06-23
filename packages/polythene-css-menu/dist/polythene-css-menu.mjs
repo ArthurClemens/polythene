@@ -110,11 +110,15 @@ var widthClass = function widthClass(width) {
   return "pe-menu--width-" + widthStr;
 };
 
-var widthStyle = function widthStyle(vars$$1, width) {
+var widthStyle = function widthStyle(_ref) {
+  var vars$$1 = _ref.vars,
+      width = _ref.width,
+      value = _ref.value;
+
   var s = unifyWidth(vars$$1, width);
   return _defineProperty$1({}, "." + widthClass(s), {
     " .pe-menu__panel": {
-      width: vars$$1.width_factor * s + "px"
+      width: value || vars$$1.width_factor * s + "px"
       // We can't set maxWidth because we don't know the width of the container
     }
   });
@@ -122,7 +126,7 @@ var widthStyle = function widthStyle(vars$$1, width) {
 
 var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$$1) {
   return sel(selector, [vars$$1.widths.map(function (width) {
-    return widthStyle(vars$$1, width);
+    return widthStyle({ vars: vars$$1, width: width });
   }), {
     " .pe-menu__panel": {
       minWidth: vars.grid_unit_menu * vars$$1.min_width + "px"
@@ -138,8 +142,10 @@ var _backdrop = function _backdrop(selector) {
   });
 };
 
-var _top_menu = function _top_menu(selector) {
-  return sel(selector, {
+var _top_menu = function _top_menu(selector, vars$$1) {
+  return sel(selector, [vars$$1.widths.map(function (width) {
+    return widthStyle({ vars: vars$$1, width: width, value: "100vw" });
+  }), {
     " .pe-menu__panel": {
       position: "fixed",
       width: "100vw",
@@ -150,7 +156,7 @@ var _top_menu = function _top_menu(selector) {
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0
     }
-  });
+  }]);
 };
 
 var varFns = {
@@ -200,7 +206,7 @@ var varFns = {
         opacity: 1
       },
 
-      ".pe-menu--top-menu": _top_menu(selector),
+      ".pe-menu--top-menu": _top_menu(selector, vars$$1),
 
       " .pe-menu__content": {
         overflow: "auto",
@@ -288,7 +294,7 @@ var varFns = {
     })];
   },
   top_menu: function top_menu(selector, vars$$1) {
-    return [vars$$1.top_menu && _top_menu(selector)];
+    return [vars$$1.top_menu && _top_menu(selector, vars$$1)];
   },
   backdrop: function backdrop(selector, vars$$1) {
     return [vars$$1.backdrop && _backdrop(selector)];

@@ -207,7 +207,6 @@
           overflow: "hidden",
           borderTopLeftRadius: "inherit",
           borderTopRightRadius: "inherit",
-          zIndex: 1, // makes rounded corners on absolute images work (without this, no rounded image)
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",

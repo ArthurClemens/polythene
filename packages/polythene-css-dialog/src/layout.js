@@ -1,8 +1,16 @@
-import { flex, sel, createLayout } from "polythene-core-css";
+import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 import { fullScreen } from "polythene-css-dialog-pane";
 
 const minWidth = "320px";
+
+const backdrop = selector =>
+  sel(selector, {
+    ".pe-dialog--visible .pe-dialog__backdrop": {
+      display: "block",
+      opacity: 1,
+    }
+  });
 
 const varFns = {
   general_styles: selector => [
@@ -29,16 +37,22 @@ const varFns = {
         " .pe-dialog__content": {
           position: "relative",
           transitionProperty: "all",
-          minWidth,
         },
 
-        " .pe-dialog__backdrop": {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }, 
+        " .pe-dialog__backdrop": [
+          mixin.defaultTransition("all"), // animation duration is set in component options
+          {
+            position: "absolute",
+            opacity: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: "none",
+          }
+        ],
+
+        ".pe-dialog--backdrop": backdrop(selector),
       }
     ]),
     {
@@ -99,7 +113,10 @@ const varFns = {
   ],
   full_screen: (selector, vars) => [
     vars.full_screen && fullScreen(selector)
-  ]
+  ],
+  backdrop: (selector, vars) => [
+    vars.backdrop && backdrop(selector)
+  ],
 };
 
 export default createLayout({ varFns });

@@ -1,4 +1,4 @@
-import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
+import { sel, createColor, mixin, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { fullScreen } from 'polythene-css-dialog-pane';
 
@@ -68,6 +68,7 @@ var classes = {
   fullScreen: "pe-dialog--full-screen",
   open: "pe-dialog--open", // class set to html element
   visible: "pe-dialog--visible", // class set to dialog element
+  showBackdrop: "pe-dialog--backdrop",
 
   // lookup
   menuContent: menuClasses.content
@@ -116,6 +117,14 @@ var color = createColor({
 
 var minWidth = "320px";
 
+var _backdrop = function _backdrop(selector) {
+  return sel(selector, {
+    ".pe-dialog--visible .pe-dialog__backdrop": {
+      display: "block",
+      opacity: 1
+    }
+  });
+};
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
@@ -138,17 +147,21 @@ var varFns = {
 
       " .pe-dialog__content": {
         position: "relative",
-        transitionProperty: "all",
-        minWidth: minWidth
+        transitionProperty: "all"
       },
 
-      " .pe-dialog__backdrop": {
+      " .pe-dialog__backdrop": [mixin.defaultTransition("all"), // animation duration is set in component options
+      {
         position: "absolute",
+        opacity: 0,
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
-      }
+        bottom: 0,
+        display: "none"
+      }],
+
+      ".pe-dialog--backdrop": _backdrop(selector)
     }]), {
       ".pe-dialog__holder": {
         height: "100%",
@@ -205,6 +218,9 @@ var varFns = {
   },
   full_screen: function full_screen(selector, vars$$1) {
     return [vars$$1.full_screen && fullScreen(selector)];
+  },
+  backdrop: function backdrop(selector, vars$$1) {
+    return [vars$$1.backdrop && _backdrop(selector)];
   }
 };
 
@@ -219,10 +235,15 @@ var vars$1 = {
   animation_show_css: "opacity: 1;",
   animation_timing_function: "ease-in-out",
   border_radius: vars.unit_block_border_radius,
-  full_screen: false,
   padding_horizontal: 5 * vars.grid_unit_component,
   padding_vertical: 3 * vars.grid_unit_component,
   position: "fixed",
+
+  // theme vars
+
+  full_screen: false,
+
+  // color vars
 
   color_light_backdrop_background: "rgba(0, 0, 0, .4)",
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
@@ -247,4 +268,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars, _backdrop as backdrop };

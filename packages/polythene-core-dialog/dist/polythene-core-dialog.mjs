@@ -38,12 +38,14 @@ var menuClasses = {
   backdrop: "pe-menu__backdrop",
 
   // states
-  permanent: "pe-menu--permanent",
   floating: "pe-menu--floating",
+  origin: "pe-menu--origin",
+  permanent: "pe-menu--permanent",
+  showBackdrop: "pe-menu--backdrop",
+  visible: "pe-menu--visible",
   width_auto: "pe-menu--width-auto",
   width_n: "pe-menu--width-",
-  origin: "pe-menu--origin",
-  visible: "pe-menu--visible",
+  isTopMenu: "pe-menu--top-menu",
 
   // lookup
   listTile: listTileClasses.component,
@@ -64,6 +66,7 @@ var classes = {
   fullScreen: "pe-dialog--full-screen",
   open: "pe-dialog--open", // class set to html element
   visible: "pe-dialog--visible", // class set to dialog element
+  showBackdrop: "pe-dialog--backdrop",
 
   // lookup
   menuContent: menuClasses.content
@@ -164,10 +167,9 @@ var createProps = function createProps(vnode, _ref) {
 
   var state = vnode.state;
   var attrs = vnode.attrs;
-
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   _defineProperty({
-    className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null,
+    className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.backdrop ? classes.showBackdrop : null,
     // classes.visible is set in showDialog though transition
     attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
     "data-spawn-id": attrs.spawnId,
@@ -229,7 +231,7 @@ var createContent = function createContent(vnode, _ref3) {
     }
   }
   var pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
-  return [attrs.backdrop && h("div", {
+  return [h("div", {
     key: "backdrop",
     className: classes.backdrop
   }), h("div", {

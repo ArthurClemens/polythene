@@ -83,8 +83,6 @@ export const onMount = vnode => {
 
   // resize: update scroll state ("overflow" borders)
   subscribe("resize", update);
-  
-  updateScrollOverflowState(vnode);
 };
 
 export const onUnMount = vnode => (

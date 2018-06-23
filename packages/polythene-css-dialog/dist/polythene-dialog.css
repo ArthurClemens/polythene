@@ -25,16 +25,26 @@
 
 .pe-dialog .pe-dialog__content {
   position: relative;
-  transition-property: all;
-  min-width: 320px
+  transition-property: all
 }
 
 .pe-dialog .pe-dialog__backdrop {
+  transition-delay: 0ms;
+  transition-duration: .18s;
+  transition-timing-function: ease-out;
+  transition-property: all;
   position: absolute;
+  opacity: 0;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0
+  bottom: 0;
+  display: none
+}
+
+.pe-dialog.pe-dialog--backdrop.pe-dialog.pe-dialog--visible .pe-dialog__backdrop {
+  display: block;
+  opacity: 1
 }
 
 .pe-dialog__holder {
