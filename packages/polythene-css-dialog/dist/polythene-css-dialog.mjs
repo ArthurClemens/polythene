@@ -125,6 +125,7 @@ var _backdrop = function _backdrop(selector) {
     }
   });
 };
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
@@ -135,7 +136,6 @@ var varFns = {
       zIndex: vars.z_dialog,
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
       transitionProperty: "opacity,background-color",
-      minWidth: minWidth,
 
       ".pe-dialog--full-screen": {
         padding: 0,
@@ -191,17 +191,23 @@ var varFns = {
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
-      transitionDelay: vars$$1.animation_delay
+      "&, .pe-dialog__content": {
+        transitionDelay: vars$$1.animation_delay
+      }
     })];
   },
   animation_duration: function animation_duration(selector, vars$$1) {
     return [sel(selector, {
-      transitionDuration: vars$$1.animation_duration
+      "&, .pe-dialog__content": {
+        transitionDuration: vars$$1.animation_duration
+      }
     })];
   },
   animation_timing_function: function animation_timing_function(selector, vars$$1) {
     return [sel(selector, {
-      transitionTimingFunction: vars$$1.animation_timing_function
+      "&, .pe-dialog__content": {
+        transitionTimingFunction: vars$$1.animation_timing_function
+      }
     })];
   },
   animation_show_css: function animation_show_css(selector, vars$$1) {
@@ -268,4 +274,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars, _backdrop as backdrop };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

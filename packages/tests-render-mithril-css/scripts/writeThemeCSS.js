@@ -83,8 +83,6 @@ const styles = [
       push: true,
       mini: true,
       border: true,
-      permanent: true,
-      backdrop: true,
     },
     {
       mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall}px) and (max-width: ${breakPointDrawerMedium}px)`

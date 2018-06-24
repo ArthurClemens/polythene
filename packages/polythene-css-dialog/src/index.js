@@ -1,6 +1,6 @@
 import classes from "polythene-css-classes/dialog";
 import color from "./color";
-import layout, { backdrop } from "./layout";
+import layout from "./layout";
 import vars from "./vars";
 import { styler } from "polythene-core-css";
 
@@ -23,5 +23,4 @@ export {
   getStyle,
   layout,
   vars,
-  backdrop,
 };

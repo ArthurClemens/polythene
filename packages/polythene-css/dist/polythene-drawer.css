@@ -19,15 +19,13 @@
   min-width: 0;
   padding: 0;
   opacity: 1;
-  flex-shrink: 0
+  flex-shrink: 0;
+  transition-property: all
 }
 
 .pe-dialog.pe-drawer .pe-dialog__content {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all;
   position: relative;
+  transition-property: all;
   height: 100%;
   overflow: visible;
   min-width: 0;
@@ -56,14 +54,19 @@
   z-index: 3000
 }
 
-.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini).pe-dialog.pe-drawer {
+.pe-dialog.pe-drawer.pe-drawer--mini.pe-dialog.pe-drawer .pe-dialog__content {
+  margin-left: 0;
+  margin-right: 0
+}
+
+.pe-dialog.pe-drawer.pe-drawer--permanent.pe-dialog.pe-drawer {
   position: static;
   display: block;
   padding: 0;
   overflow: initial
 }
 
-.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini).pe-dialog.pe-drawer .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--permanent.pe-dialog.pe-drawer .pe-dialog__content {
   overflow: visible;
   max-height: none;
   margin-left: 0;
@@ -88,7 +91,7 @@
   display: block
 }
 
-.pe-dialog.pe-drawer.pe-drawer--push {
+.pe-dialog.pe-drawer.pe-drawer--push.pe-dialog.pe-drawer {
   position: static
 }
 
@@ -120,6 +123,12 @@
   left: auto
 }
 
+.pe-dialog.pe-drawer,.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__content {
+  transition-delay: 0s;
+  transition-duration: .26s;
+  transition-timing-function: ease-in-out
+}
+
 .pe-dialog.pe-drawer .pe-dialog__content {
   border-radius: 0
 }
@@ -136,6 +145,7 @@
 }
 
 .pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+  max-width: 280px;
   right: -295px;
   left: auto
 }
@@ -145,22 +155,24 @@
   left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--cover.pe-drawer--anchor-end .pe-dialog__content {
+  max-width: 280px;
   right: -295px;
   left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--cover.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content {
   right: 0;
   left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-drawer--anchor-end .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
+  max-width: 280px;
   left: -295px;
   right: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--cover.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--cover.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog--visible .pe-dialog__content {
   left: 0;
   right: auto
 }
@@ -181,13 +193,7 @@
   }
 }
 
-.pe-dialog.pe-drawer.pe-drawer--mini.pe-drawer--push:not(.pe-dialog--visible) .pe-dialog__content {
-  width: 56px;
-  margin-left: 0;
-  margin-right: 0
-}
-
-.pe-dialog.pe-drawer.pe-drawer--permanent:not(.pe-drawer--mini) .pe-dialog__content {
+.pe-dialog.pe-drawer .pe-dialog__content {
   width: 240px
 }
 
@@ -203,6 +209,7 @@
 }
 
 .pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  width: 240px;
   margin-right: -255px;
   margin-left: auto
 }
@@ -212,24 +219,30 @@
   margin-left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content {
+  width: 240px;
   margin-right: -255px;
   margin-left: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content {
   margin-right: 0;
   margin-left: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  width: 240px;
   margin-left: -255px;
   margin-right: auto
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--anchor-end.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
   margin-left: 0;
   margin-right: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
+  width: 56px
 }
 
 .pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {

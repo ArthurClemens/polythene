@@ -20,7 +20,6 @@ body, html {
   flex-grow: 1;
   flex-shrink: 0;
   overflow: auto;
-  width: 100%;
 }
 .row {
   padding: 16px;

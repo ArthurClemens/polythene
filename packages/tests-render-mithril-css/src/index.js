@@ -49,8 +49,8 @@ const App = {
         m(".drawer-content-wrapper", [
           m(Drawer, {
             className: "small-screen-cover-drawer medium-screen-mini-drawer large-screen-floating-drawer",
-            push: true,
-            border: true,
+            // push: true,
+            // border: true,
             content: createContent({
               onClick: () => state.showDrawer(false)
             }),

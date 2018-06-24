@@ -6,7 +6,7 @@ const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed 
 
 export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, dark, createTopContent, drawerOpts }) => {
 
-  const longText = h.trust(ipsum + ipsum);
+  const longText = h.trust(ipsum + ipsum + ipsum);
 
   return {
     oninit: vnode => {
@@ -103,10 +103,12 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                 h("div",
                   {
                     style: {
-                      overflow: "hidden",
+                      overflow: "auto",
                       flexShrink: drawerOpts.permanent ? 1 : 0,
                       flexGrow: 0,
-                      width: "100%",
+                      width: drawerOpts.mini 
+                        ? `calc(100% - 56px)`
+                        : "100%"
                     }
                   },
                   [

@@ -11,8 +11,7 @@
   bottom: 0;
   z-index: 5000;
   height: 100%;
-  transition-property: opacity,background-color;
-  min-width: 320px
+  transition-property: opacity,background-color
 }
 
 .pe-dialog.pe-dialog--full-screen {
@@ -52,9 +51,12 @@
   min-width: 320px
 }
 
-.pe-dialog {
+.pe-dialog,.pe-dialog .pe-dialog__content {
   transition-delay: 0s;
-  transition-duration: .22s;
+  transition-duration: .22s
+}
+
+.pe-dialog {
   opacity: 0
 }
 
@@ -62,7 +64,7 @@
   opacity: 1
 }
 
-.pe-dialog {
+.pe-dialog,.pe-dialog .pe-dialog__content {
   transition-timing-function: ease-in-out
 }
 

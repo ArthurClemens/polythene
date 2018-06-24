@@ -1,4 +1,4 @@
-import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
+import { sel, selectorRTL, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
 const SHADOW_WIDTH = 15;
@@ -29,28 +29,71 @@ const backdrop = selector =>
 const selectorAnchorEnd = selector =>
   `${selector}.pe-drawer--anchor-end`;
 
-const cover_content_max_width = (selector, vars, isRTL) =>
-  sel(selector, {
-    ".pe-drawer--cover .pe-dialog__content": {
+// fn: miniSelector contains .pe-drawer--mini
+const content_width_mini_collapsed = (miniSelector, vars) => 
+  sel(miniSelector, {
+    ":not(.pe-dialog--visible)": {
+      " .pe-dialog__content": {
+        width: `${vars.content_width_mini_collapsed}px`
+      },
+    }
+  });
+
+// fn: coverSelector contains .pe-drawer--cover
+const _cover_content_max_width = (coverSelector, vars, isRTL) =>
+  sel(coverSelector, {
+    " .pe-dialog__content": {
+      maxWidth: `${vars.content_max_width}px`,
       [isRTL ? "right" : "left"]: `${-vars.content_max_width - SHADOW_WIDTH}px`,
       [isRTL ? "left" : "right"]: "auto",
     },
-    ".pe-drawer--cover.pe-dialog--visible .pe-dialog__content": {
+    ".pe-dialog--visible .pe-dialog__content": {
       [isRTL ? "right" : "left"]: 0,
       [isRTL ? "left" : "right"]: "auto"
     },
   });
 
-const push_permanent_content_width = (selector, vars, isRTL) =>
-  sel(selector, {
-    ".pe-drawer--push .pe-dialog__content": {
-      [isRTL ? "marginRight" : "marginLeft"]: `${-vars.permanent_content_width - SHADOW_WIDTH}px`,
+const cover_content_max_width = (coverSelector, vars) => [
+  _cover_content_max_width(coverSelector, vars, false),
+  _cover_content_max_width(selectorRTL(coverSelector), vars, true),
+  _cover_content_max_width(selectorAnchorEnd(coverSelector), vars, true),
+  _cover_content_max_width(selectorAnchorEnd(selectorRTL(coverSelector)), vars, false)
+];
+
+// fn: permanentSelector contains .pe-drawer--permanent
+const content_width = (permanentSelector, vars) =>
+  sel(permanentSelector, {
+    " .pe-dialog__content": {
+      width: `${vars.content_width}px`,
+    }
+  });
+
+// fn: pushSelector contains .pe-drawer--push
+const _push_content_width = (pushSelector, vars, isRTL) => 
+  sel(pushSelector, {
+    " .pe-dialog__content": {
+      width: `${vars.content_width}px`,
+      [isRTL ? "marginRight" : "marginLeft"]: `${-vars.content_width - SHADOW_WIDTH}px`,
       [isRTL ? "marginLeft" : "marginRight"]: "auto",
     },
-    ".pe-drawer--push.pe-dialog--visible .pe-dialog__content": {
+    ".pe-dialog--visible .pe-dialog__content": {
       [isRTL ? "marginRight" : "marginLeft"]: 0,
       [isRTL ? "marginLeft" : "marginRight"]: "auto"
     },
+  });
+
+const push_content_width = (pushSelector, vars) => [
+  _push_content_width(pushSelector, vars, false),
+  _push_content_width(selectorRTL(pushSelector), vars, true),
+  _push_content_width(selectorAnchorEnd(pushSelector), vars, true),
+  _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars, false),
+];
+
+const content_side_offset = (selector, vars) =>
+  sel(selector, {
+    " .pe-dialog__content": {
+      width: `calc(100% - ${vars.content_side_offset}px)`,
+    }
   });
 
 const cover = selector =>
@@ -67,17 +110,16 @@ const cover = selector =>
     }
   });
 
-const mini = (selector, vars) =>
-  sel(selector, {
-    ".pe-drawer--push:not(.pe-dialog--visible) .pe-dialog__content": {
-      width: `${vars.content_width_mini_collapsed}px`,
+const mini = miniSelector =>
+  sel(miniSelector, {
+    " .pe-dialog__content": {
       marginLeft: 0,
       marginRight: 0,
     },
   });
 
-const permanent = selector =>
-  sel(selector, {
+const permanent = permanentSelector =>
+  sel(permanentSelector, {
     position: "static",
     display: "block",
     padding: 0,
@@ -89,6 +131,12 @@ const permanent = selector =>
       marginLeft: 0,
       marginRight: 0,
     }
+  });
+
+// fn: pushSelector contains .pe-drawer--push
+const push = pushSelector => 
+  sel(pushSelector, {
+    position: "static",
   });
 
 const borderRadius = (selector, vars) =>
@@ -124,18 +172,17 @@ const varFns = {
         padding: 0,
         opacity: 1,
         flexShrink: 0,
+        transitionProperty: "all",
 
-        " .pe-dialog__content": [
-          mixin.defaultTransition("all"), // animation duration is set in component options
-          {
-            position: "relative",
-            
-            height: "100%",
-            overflow: "visible",
-            minWidth: 0, // IE 11 does not accept "none" or "inital" here
-            flexShrink: 0,
-          }
-        ],
+        " .pe-dialog__content": {
+          position: "relative",
+          transitionProperty: "all",
+
+          height: "100%",
+          overflow: "visible",
+          minWidth: 0, // IE 11 does not accept "none" or "inital" here
+          flexShrink: 0,
+        },
 
         " .pe-dialog-pane__content": {
           height: "100%",
@@ -160,9 +207,11 @@ const varFns = {
           zIndex: themeVars.z_drawer,
         },
 
-        // Permanent
+        // Mini
+        ".pe-drawer--mini": mini(selector, vars),
 
-        ".pe-drawer--permanent:not(.pe-drawer--mini)": permanent(selector, vars),
+        // Permanent
+        ".pe-drawer--permanent": permanent(selector, vars),
 
         // Floating
         ".pe-drawer--floating": floating(selector, vars),
@@ -178,9 +227,7 @@ const varFns = {
         ".pe-drawer--cover": cover(selector),
 
         // Push
-        ".pe-drawer--push": {
-          position: "static",
-        },
+        ".pe-drawer--push": push(selector, vars),
         
         // Backdrop
         " .pe-dialog__backdrop": {
@@ -204,53 +251,42 @@ const varFns = {
       sel(selectorRTL(selector), alignRight(vars)),
     ]
   ],
+  animation_delay: (selector, vars) => [
+    sel(selector, {
+      "&, .pe-dialog__content, .pe-dialog__backdrop": {
+        transitionDelay: vars.animation_delay,
+      }
+    }),
+  ],
+  animation_duration: (selector, vars) => [
+    sel(selector, {
+      "&, .pe-dialog__content, .pe-dialog__backdrop": {
+        transitionDuration: vars.animation_duration,
+      }
+    }),
+  ],
+  animation_timing_function: (selector, vars) => [
+    sel(selector, {
+      "&, .pe-dialog__content, .pe-dialog__backdrop": {
+        transitionTimingFunction: vars.animation_timing_function,
+      }
+    }),
+  ],
   border_radius: (selector, vars) => [
     borderRadius(selector, vars)
   ],
   content_max_width: (selector, vars) => [
-    sel(selector, {
-      ".pe-drawer--cover": {
-        " .pe-dialog__content": {
-          maxWidth: `${vars.content_max_width}px`,
-        }
-      },
-    }),
-    cover_content_max_width(selector, vars, false),
-    cover_content_max_width(selectorRTL(selector), vars, true),
-    cover_content_max_width(selectorAnchorEnd(selector), vars, true),
-    cover_content_max_width(selectorAnchorEnd(selectorRTL(selector)), vars, false),
+    cover_content_max_width(`${selector}.pe-drawer--cover`, vars)
   ],
-  permanent_content_width: (selector, vars) => [
-    sel(selector, {
-      ".pe-drawer--permanent:not(.pe-drawer--mini)": {
-        " .pe-dialog__content": {
-          width: `${vars.permanent_content_width}px`,
-        }
-      },
-      ".pe-drawer--push": {
-        " .pe-dialog__content": {
-          width: `${vars.permanent_content_width}px`,
-        }
-      },
-    }),
-    push_permanent_content_width(selector, vars, false),
-    push_permanent_content_width(selectorRTL(selector), vars, true),
-    push_permanent_content_width(selectorAnchorEnd(selector), vars, true),
-    push_permanent_content_width(selectorAnchorEnd(selectorRTL(selector)), vars, false),
-  ],
-  content_side_offset: (selector, vars) => [
-    sel(selector, {
-      ".pe-drawer--cover": {
-        " .pe-dialog__content": {
-          width: `calc(100% - ${vars.content_side_offset}px)`,
-        }
-      },
-    })
+  content_width: (selector, vars) => [
+    content_width(`${selector}`, vars),
+    push_content_width(`${selector}.pe-drawer--push`, vars)
   ],
   content_width_mini_collapsed: (selector, vars) => [
-    sel(selector, [
-      mini(".pe-drawer--mini", vars)
-    ])
+    content_width_mini_collapsed(`${selector}.pe-drawer--mini`, vars)
+  ],
+  content_side_offset: (selector, vars) => [
+    content_side_offset(`${selector}.pe-drawer--cover`, vars)
   ],
   content_max_width_large: (selector, vars) => ({
     ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
@@ -275,21 +311,30 @@ const varFns = {
       }
     }
   }),
-  cover: (selector, vars) => [
-    vars.cover && cover(selector)
-  ],
+  cover: (selector, vars) =>
+    vars.cover && [
+      cover(selector, vars),
+      cover_content_max_width(selector, vars)
+    ],
   backdrop: (selector, vars) => [
     vars.backdrop && backdrop(selector)
   ],
-  mini: (selector, vars) => [
-    vars.mini && mini(selector, vars)
-  ],
+  mini: (selector, vars) =>
+    vars.mini && [
+      mini(selector, vars),
+      content_width_mini_collapsed(selector, vars)
+    ],
   permanent: (selector, vars) => [
     vars.permanent && permanent(selector, vars)
   ],
   floating: (selector, vars) => [
     vars.floating && floating(selector, vars)
   ],
+  push: (selector, vars) =>
+    vars.push && [
+      push(selector, vars),
+      push_content_width(selector, vars)
+    ]
 };
 
 export default createLayout({ varFns });

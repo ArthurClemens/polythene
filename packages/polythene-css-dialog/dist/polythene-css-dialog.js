@@ -127,6 +127,7 @@
       }
     });
   };
+
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
@@ -137,7 +138,6 @@
         zIndex: polytheneTheme.vars.z_dialog,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
         transitionProperty: "opacity,background-color",
-        minWidth: minWidth,
 
         ".pe-dialog--full-screen": {
           padding: 0,
@@ -193,17 +193,23 @@
     },
     animation_delay: function animation_delay(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionDelay: vars.animation_delay
+        "&, .pe-dialog__content": {
+          transitionDelay: vars.animation_delay
+        }
       })];
     },
     animation_duration: function animation_duration(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionDuration: vars.animation_duration
+        "&, .pe-dialog__content": {
+          transitionDuration: vars.animation_duration
+        }
       })];
     },
     animation_timing_function: function animation_timing_function(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        transitionTimingFunction: vars.animation_timing_function
+        "&, .pe-dialog__content": {
+          transitionTimingFunction: vars.animation_timing_function
+        }
       })];
     },
     animation_show_css: function animation_show_css(selector, vars) {
@@ -275,7 +281,6 @@
   exports.getStyle = getStyle;
   exports.layout = layout;
   exports.vars = vars;
-  exports.backdrop = _backdrop;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
