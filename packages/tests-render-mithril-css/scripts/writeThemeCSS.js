@@ -84,7 +84,8 @@ const styles = [
       border: true,
     },
     {
-      mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall + 1}px) and (max-width: ${breakPointDrawerMedium}px)`
+      mediaQuery: `@media all and (max-width: ${breakPointDrawerMedium}px)`
+      // don't set min-width to prevent mini drawer from animating between breakpoints
     }
   ),
   DrawerCSS.getStyle(

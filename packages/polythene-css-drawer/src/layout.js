@@ -3,18 +3,29 @@ import { vars as themeVars } from "polythene-theme";
 
 const SHADOW_WIDTH = 15;
 
-const alignSide = isRTL => () => ({
-  // Bordered
-  ".pe-drawer--border .pe-dialog__content": {
-    borderStyle: isRTL ? "none none none solid" : "none solid none none"
-  },
+const _border = (selector, vars, isRTL) =>
+  sel(selector, {
+    " .pe-dialog__content": {
+      borderWidth: "1px",
+      borderStyle: isRTL ? "none none none solid" : "none solid none none"
+    },
+  });
 
-  // Fixed
-  ".pe-drawer--fixed": {
-    [isRTL ? "right" : "left"]: 0,
-    [isRTL ? "left" : "right"]: "auto",
+const border = (selector, vars) => [
+  _border(selector, vars, false),
+  _border(selectorRTL(selector), vars, true),
+];
+
+const alignSide = isRTL => (selector, vars) => [
+  {
+    // Fixed
+    ".pe-drawer--fixed": {
+      [isRTL ? "right" : "left"]: 0,
+      [isRTL ? "left" : "right"]: "auto",
+    },
   },
-});
+  _border(`${selector}.pe-drawer--border`, vars, isRTL)
+];
 
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
@@ -156,7 +167,7 @@ const floating = selector =>
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
-      alignLeft(vars),
+      alignLeft(selector, vars),
       {
         justifyContent: "flex-start",
         position: "absolute",
@@ -214,13 +225,6 @@ const varFns = {
         // Floating
         ".pe-drawer--floating": floating(selector, vars),
 
-        // Bordered
-        ".pe-drawer--border": {
-          " .pe-dialog__content": {
-            borderWidth: "1px",
-          },
-        },
-
         // Cover (default)
         ".pe-drawer--cover": cover(selector),
 
@@ -246,7 +250,7 @@ const varFns = {
       }
     ]),
     [
-      sel(selectorRTL(selector), alignRight(vars)),
+      sel(selectorRTL(selector), alignRight(selector, vars)),
     ]
   ],
   animation_delay: (selector, vars) => [
@@ -277,8 +281,10 @@ const varFns = {
     cover_content_max_width(`${selector}.pe-drawer--cover`, vars)
   ],
   content_width: (selector, vars) => [
+    content_width(selector, vars),
     content_width(`${selector}.pe-dialog--visible`, vars),
     content_width(`${selector}.pe-drawer--permanent`, vars),
+    push_content_width(`${selector}.pe-drawer--push`, vars)
   ],
   content_width_mini_collapsed: (selector, vars) => [
     content_width_mini_collapsed(`${selector}.pe-drawer--mini`, vars)
@@ -316,6 +322,9 @@ const varFns = {
     ],
   backdrop: (selector, vars) => [
     vars.backdrop && backdrop(selector)
+  ],
+  border: (selector, vars) => [
+    vars.border && border(selector)
   ],
   mini: (selector, vars) =>
     vars.mini && [

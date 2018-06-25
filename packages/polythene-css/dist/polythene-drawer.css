@@ -1,10 +1,11 @@
-.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
-  border-style: none solid none none
-}
-
 .pe-dialog.pe-drawer.pe-drawer--fixed {
   left: 0;
   right: auto
+}
+
+.pe-dialog.pe-drawer.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
+  border-width: 1px;
+  border-style: none solid none none
 }
 
 .pe-dialog.pe-drawer {
@@ -77,10 +78,6 @@
   height: auto
 }
 
-.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
-  border-width: 1px
-}
-
 .pe-dialog.pe-drawer.pe-drawer--cover.pe-dialog.pe-drawer .pe-dialog__content {
   position: absolute;
   top: 0;
@@ -114,13 +111,14 @@
   opacity: 1
 }
 
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
-  border-style: none none none solid
-}
-
 .pe-rtl .pe-dialog.pe-drawer.pe-drawer--fixed,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--fixed {
   right: 0;
   left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-dialog.pe-drawer.pe-drawer--border .pe-dialog__content {
+  border-width: 1px;
+  border-style: none none none solid
 }
 
 .pe-dialog.pe-drawer,.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dialog.pe-drawer .pe-dialog__content {
@@ -177,8 +175,52 @@
   right: auto
 }
 
-.pe-dialog.pe-drawer.pe-dialog--visible .pe-dialog__content,.pe-dialog.pe-drawer.pe-drawer--permanent .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-dialog--visible .pe-dialog__content,.pe-dialog.pe-drawer .pe-dialog__content,.pe-dialog.pe-drawer.pe-drawer--permanent .pe-dialog__content {
   width: 240px
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  margin-left: -255px;
+  margin-right: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  width: 240px;
+  margin-left: 0;
+  margin-right: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  margin-right: -255px;
+  margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  width: 240px;
+  margin-right: 0;
+  margin-left: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content {
+  margin-right: -255px;
+  margin-left: auto
+}
+
+.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content {
+  width: 240px;
+  margin-right: 0;
+  margin-left: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
+  margin-left: -255px;
+  margin-right: auto
+}
+
+.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
+  width: 240px;
+  margin-left: 0;
+  margin-right: auto
 }
 
 .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {

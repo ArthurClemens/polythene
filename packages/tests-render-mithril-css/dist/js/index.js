@@ -10309,19 +10309,27 @@ function _defineProperty$1(obj, key, value) { if (key in obj) { Object.definePro
 
 var SHADOW_WIDTH = 15;
 
+var _border = function _border(selector, vars$$1, isRTL) {
+  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
+    " .pe-dialog__content": {
+      borderWidth: "1px",
+      borderStyle: isRTL ? "none none none solid" : "none solid none none"
+    }
+  });
+};
+
+var _border2 = function _border2(selector, vars$$1) {
+  return [_border(selector, vars$$1, false), _border(Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["selectorRTL"])(selector), vars$$1, true)];
+};
+
 var alignSide = function alignSide(isRTL) {
-  return function () {
+  return function (selector, vars$$1) {
     var _peDrawerFixed;
 
-    return {
-      // Bordered
-      ".pe-drawer--border .pe-dialog__content": {
-        borderStyle: isRTL ? "none none none solid" : "none solid none none"
-      },
-
+    return [{
       // Fixed
       ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
-    };
+    }, _border(selector + ".pe-drawer--border", vars$$1, isRTL)];
   };
 };
 
@@ -10464,7 +10472,7 @@ var _floating = function _floating(selector) {
 
 var varFns = {
   general_styles: function general_styles(selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [alignLeft(vars$$1), {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [alignLeft(selector, vars$$1), {
       justifyContent: "flex-start",
       position: "absolute",
       top: 0,
@@ -10521,13 +10529,6 @@ var varFns = {
       // Floating
       ".pe-drawer--floating": _floating(selector, vars$$1),
 
-      // Bordered
-      ".pe-drawer--border": {
-        " .pe-dialog__content": {
-          borderWidth: "1px"
-        }
-      },
-
       // Cover (default)
       ".pe-drawer--cover": _cover(selector),
 
@@ -10550,7 +10551,7 @@ var varFns = {
       },
 
       ".pe-dialog--backdrop": _backdrop(selector)
-    }]), [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["selectorRTL"])(selector), alignRight(vars$$1))]];
+    }]), [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["selectorRTL"])(selector), alignRight(selector, vars$$1))]];
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
@@ -10580,7 +10581,7 @@ var varFns = {
     return [cover_content_max_width(selector + ".pe-drawer--cover", vars$$1)];
   },
   content_width: function content_width(selector, vars$$1) {
-    return [_content_width(selector + ".pe-dialog--visible", vars$$1), _content_width(selector + ".pe-drawer--permanent", vars$$1)];
+    return [_content_width(selector, vars$$1), _content_width(selector + ".pe-dialog--visible", vars$$1), _content_width(selector + ".pe-drawer--permanent", vars$$1), push_content_width(selector + ".pe-drawer--push", vars$$1)];
   },
   content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars$$1) {
     return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars$$1)];
@@ -10617,6 +10618,9 @@ var varFns = {
   backdrop: function backdrop(selector, vars$$1) {
     return [vars$$1.backdrop && _backdrop(selector)];
   },
+  border: function border(selector, vars$$1) {
+    return [vars$$1.border && _border2(selector)];
+  },
   mini: function mini(selector, vars$$1) {
     return vars$$1.mini && [_mini(selector, vars$$1), _content_width_mini_collapsed(selector, vars$$1)];
   },
@@ -10642,7 +10646,7 @@ var vars$1 = {
   border_radius: 0,
   content_max_width: 5 * polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].increment, // 5 * 56
   // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
-  content_side_offset: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit_component * 7, // 56
+  // content_side_offset:             vars.grid_unit_component * 7, // 56
   // content_side_offset_large:       vars.grid_unit_component * 8, // 64
   content_width: 240,
   content_width_mini_collapsed: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].increment, // 1 * 56
@@ -10650,6 +10654,7 @@ var vars$1 = {
   // theme vars
 
   backdrop: false,
+  border: false,
   cover: false,
   floating: false,
   mini: false,

@@ -67,19 +67,27 @@
 
   var SHADOW_WIDTH = 15;
 
+  var _border = function _border(selector, vars, isRTL) {
+    return polytheneCoreCss.sel(selector, {
+      " .pe-dialog__content": {
+        borderWidth: "1px",
+        borderStyle: isRTL ? "none none none solid" : "none solid none none"
+      }
+    });
+  };
+
+  var _border2 = function _border2(selector, vars) {
+    return [_border(selector, vars, false), _border(polytheneCoreCss.selectorRTL(selector), vars, true)];
+  };
+
   var alignSide = function alignSide(isRTL) {
-    return function () {
+    return function (selector, vars) {
       var _peDrawerFixed;
 
-      return {
-        // Bordered
-        ".pe-drawer--border .pe-dialog__content": {
-          borderStyle: isRTL ? "none none none solid" : "none solid none none"
-        },
-
+      return [{
         // Fixed
         ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
-      };
+      }, _border(selector + ".pe-drawer--border", vars, isRTL)];
     };
   };
 
@@ -222,7 +230,7 @@
 
   var varFns = {
     general_styles: function general_styles(selector, vars) {
-      return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
+      return [polytheneCoreCss.sel(selector, [alignLeft(selector, vars), {
         justifyContent: "flex-start",
         position: "absolute",
         top: 0,
@@ -279,13 +287,6 @@
         // Floating
         ".pe-drawer--floating": _floating(selector, vars),
 
-        // Bordered
-        ".pe-drawer--border": {
-          " .pe-dialog__content": {
-            borderWidth: "1px"
-          }
-        },
-
         // Cover (default)
         ".pe-drawer--cover": _cover(selector),
 
@@ -308,7 +309,7 @@
         },
 
         ".pe-dialog--backdrop": _backdrop(selector)
-      }]), [polytheneCoreCss.sel(polytheneCoreCss.selectorRTL(selector), alignRight(vars))]];
+      }]), [polytheneCoreCss.sel(polytheneCoreCss.selectorRTL(selector), alignRight(selector, vars))]];
     },
     animation_delay: function animation_delay(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
@@ -338,7 +339,7 @@
       return [cover_content_max_width(selector + ".pe-drawer--cover", vars)];
     },
     content_width: function content_width(selector, vars) {
-      return [_content_width(selector + ".pe-dialog--visible", vars), _content_width(selector + ".pe-drawer--permanent", vars)];
+      return [_content_width(selector, vars), _content_width(selector + ".pe-dialog--visible", vars), _content_width(selector + ".pe-drawer--permanent", vars), push_content_width(selector + ".pe-drawer--push", vars)];
     },
     content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars) {
       return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars)];
@@ -375,6 +376,9 @@
     backdrop: function backdrop(selector, vars) {
       return [vars.backdrop && _backdrop(selector)];
     },
+    border: function border(selector, vars) {
+      return [vars.border && _border2(selector)];
+    },
     mini: function mini(selector, vars) {
       return vars.mini && [_mini(selector, vars), _content_width_mini_collapsed(selector, vars)];
     },
@@ -400,7 +404,7 @@
     border_radius: 0,
     content_max_width: 5 * polytheneTheme.vars.increment, // 5 * 56
     // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
-    content_side_offset: polytheneTheme.vars.grid_unit_component * 7, // 56
+    // content_side_offset:             vars.grid_unit_component * 7, // 56
     // content_side_offset_large:       vars.grid_unit_component * 8, // 64
     content_width: 240,
     content_width_mini_collapsed: polytheneTheme.vars.increment, // 1 * 56
@@ -408,6 +412,7 @@
     // theme vars
 
     backdrop: false,
+    border: false,
     cover: false,
     floating: false,
     mini: false,
