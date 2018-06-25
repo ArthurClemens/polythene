@@ -101,10 +101,8 @@
   // fn: miniSelector contains .pe-drawer--mini
   var _content_width_mini_collapsed = function _content_width_mini_collapsed(miniSelector, vars) {
     return polytheneCoreCss.sel(miniSelector, {
-      ":not(.pe-dialog--visible)": {
-        " .pe-dialog__content": {
-          width: vars.content_width_mini_collapsed + "px"
-        }
+      ":not(.pe-dialog--visible) .pe-dialog__content": {
+        width: vars.content_width_mini_collapsed + "px"
       }
     });
   };
@@ -125,9 +123,9 @@
     return [_cover_content_max_width(coverSelector, vars, false), _cover_content_max_width(polytheneCoreCss.selectorRTL(coverSelector), vars, true), _cover_content_max_width(selectorAnchorEnd(coverSelector), vars, true), _cover_content_max_width(selectorAnchorEnd(polytheneCoreCss.selectorRTL(coverSelector)), vars, false)];
   };
 
-  // fn: permanentSelector contains .pe-drawer--permanent
-  var _content_width = function _content_width(permanentSelector, vars) {
-    return polytheneCoreCss.sel(permanentSelector, {
+  // fn: selector contains .pe-drawer--permanent
+  var _content_width = function _content_width(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
       " .pe-dialog__content": {
         width: vars.content_width + "px"
       }
@@ -139,10 +137,10 @@
     var _peDialog__content2, _peDialogVisible2;
 
     return polytheneCoreCss.sel(pushSelector, {
-      " .pe-dialog__content": (_peDialog__content2 = {
+      " .pe-dialog__content": (_peDialog__content2 = {}, _defineProperty$1(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", -vars.content_width - SHADOW_WIDTH + "px"), _defineProperty$1(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
+      ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible2 = {
         width: vars.content_width + "px"
-      }, _defineProperty$1(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", -vars.content_width - SHADOW_WIDTH + "px"), _defineProperty$1(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
-      ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible2 = {}, _defineProperty$1(_peDialogVisible2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty$1(_peDialogVisible2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialogVisible2)
+      }, _defineProperty$1(_peDialogVisible2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty$1(_peDialogVisible2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialogVisible2)
     });
   };
 
@@ -150,13 +148,12 @@
     return [_push_content_width(pushSelector, vars, false), _push_content_width(polytheneCoreCss.selectorRTL(pushSelector), vars, true), _push_content_width(selectorAnchorEnd(pushSelector), vars, true), _push_content_width(selectorAnchorEnd(polytheneCoreCss.selectorRTL(pushSelector)), vars, false)];
   };
 
-  var _content_side_offset = function _content_side_offset(selector, vars) {
-    return polytheneCoreCss.sel(selector, {
-      " .pe-dialog__content": {
-        width: "calc(100% - " + vars.content_side_offset + "px)"
-      }
-    });
-  };
+  // const content_side_offset = (selector, vars) =>
+  //   sel(selector, {
+  //     " .pe-dialog__content": {
+  //       width: `calc(100% - ${vars.content_side_offset}px)`,
+  //     }
+  //   });
 
   var _cover = function _cover(selector) {
     return polytheneCoreCss.sel(selector, {
@@ -341,33 +338,37 @@
       return [cover_content_max_width(selector + ".pe-drawer--cover", vars)];
     },
     content_width: function content_width(selector, vars) {
-      return [_content_width("" + selector, vars), push_content_width(selector + ".pe-drawer--push", vars)];
+      return [_content_width(selector + ".pe-dialog--visible", vars), _content_width(selector + ".pe-drawer--permanent", vars)];
     },
     content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars) {
       return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars)];
     },
-    content_side_offset: function content_side_offset(selector, vars) {
-      return [_content_side_offset(selector + ".pe-drawer--cover", vars)];
-    },
-    content_max_width_large: function content_max_width_large(selector, vars) {
-      return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty$1({}, selector, {
-        ".pe-drawer--push": {
-          " .pe-dialog__content": {
-            maxWidth: vars.content_max_width_large + "px"
-          }
-        },
-        " .pe-dialog__content": {
-          maxWidth: vars.content_max_width_large + "px"
-        }
-      }));
-    },
-    content_side_offset_large: function content_side_offset_large(selector, vars) {
-      return _defineProperty$1({}, "@media (min-width: " + polytheneTheme.vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty$1({}, selector, {
-        " .pe-dialog__content": {
-          width: "calc(100% - " + vars.content_side_offset_large + "px)"
-        }
-      }));
-    },
+    // content_side_offset: (selector, vars) => [
+    //   content_side_offset(`${selector}.pe-drawer--cover`, vars)
+    // ],
+    // content_max_width_large: (selector, vars) => ({
+    //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+    //     [selector]: {
+    //       ".pe-drawer--push": {
+    //         " .pe-dialog__content": {
+    //           maxWidth: `${vars.content_max_width_large}px`,
+    //         }
+    //       },
+    //       " .pe-dialog__content": {
+    //         maxWidth: `${vars.content_max_width_large}px`,
+    //       },
+    //     }
+    //   }
+    // }),
+    // content_side_offset_large: (selector, vars) => ({
+    //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+    //     [selector]: {
+    //       " .pe-dialog__content": {
+    //         width: `calc(100% - ${vars.content_side_offset_large}px)`,
+    //       },
+    //     }
+    //   }
+    // }),
     cover: function cover(selector, vars) {
       return vars.cover && [_cover(selector, vars), cover_content_max_width(selector, vars)];
     },
@@ -398,9 +399,9 @@
     animation_timing_function: "ease-in-out",
     border_radius: 0,
     content_max_width: 5 * polytheneTheme.vars.increment, // 5 * 56
-    content_max_width_large: 5 * polytheneTheme.vars.increment_large, // 5 * 64
+    // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
     content_side_offset: polytheneTheme.vars.grid_unit_component * 7, // 56
-    content_side_offset_large: polytheneTheme.vars.grid_unit_component * 8, // 64
+    // content_side_offset_large:       vars.grid_unit_component * 8, // 64
     content_width: 240,
     content_width_mini_collapsed: polytheneTheme.vars.increment, // 1 * 56
 

@@ -56,7 +56,6 @@ const App = {
             }),
             permanent: true,
             show: showDrawer,
-            z: 1,
             didHide: () => state.showDrawer(false) // sync state with component
           }),
           m(".components", [

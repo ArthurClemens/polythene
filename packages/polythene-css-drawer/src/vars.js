@@ -9,9 +9,9 @@ export default {
   animation_timing_function:       "ease-in-out",
   border_radius:                   0,
   content_max_width:               5 * vars.increment,           // 5 * 56
-  content_max_width_large:         5 * vars.increment_large,     // 5 * 64
+  // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
   content_side_offset:             vars.grid_unit_component * 7, // 56
-  content_side_offset_large:       vars.grid_unit_component * 8, // 64
+  // content_side_offset_large:       vars.grid_unit_component * 8, // 64
   content_width:                   240,
   content_width_mini_collapsed:    vars.increment,               // 1 * 56
 

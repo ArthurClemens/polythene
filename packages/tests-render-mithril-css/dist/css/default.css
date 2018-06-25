@@ -60,11 +60,14 @@ body, html {
     padding: 16px 24px;
   }
 }
-@media (min-width:777px) {
-  .large-screen-floating-drawer {
-    margin: 16px 0 0 16px;
-  }
+@media (min-width:650px) {
   .components {
     width: auto;
+    min-width: 480px;
+  }
+}
+@media (min-width:890px) {
+  .large-screen-floating-drawer {
+    margin: 16px 0 0 16px;
   }
 }

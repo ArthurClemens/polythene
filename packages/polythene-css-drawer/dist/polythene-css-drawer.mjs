@@ -98,10 +98,8 @@ var selectorAnchorEnd = function selectorAnchorEnd(selector) {
 // fn: miniSelector contains .pe-drawer--mini
 var _content_width_mini_collapsed = function _content_width_mini_collapsed(miniSelector, vars$$1) {
   return sel(miniSelector, {
-    ":not(.pe-dialog--visible)": {
-      " .pe-dialog__content": {
-        width: vars$$1.content_width_mini_collapsed + "px"
-      }
+    ":not(.pe-dialog--visible) .pe-dialog__content": {
+      width: vars$$1.content_width_mini_collapsed + "px"
     }
   });
 };
@@ -122,9 +120,9 @@ var cover_content_max_width = function cover_content_max_width(coverSelector, va
   return [_cover_content_max_width(coverSelector, vars$$1, false), _cover_content_max_width(selectorRTL(coverSelector), vars$$1, true), _cover_content_max_width(selectorAnchorEnd(coverSelector), vars$$1, true), _cover_content_max_width(selectorAnchorEnd(selectorRTL(coverSelector)), vars$$1, false)];
 };
 
-// fn: permanentSelector contains .pe-drawer--permanent
-var _content_width = function _content_width(permanentSelector, vars$$1) {
-  return sel(permanentSelector, {
+// fn: selector contains .pe-drawer--permanent
+var _content_width = function _content_width(selector, vars$$1) {
+  return sel(selector, {
     " .pe-dialog__content": {
       width: vars$$1.content_width + "px"
     }
@@ -136,10 +134,10 @@ var _push_content_width = function _push_content_width(pushSelector, vars$$1, is
   var _peDialog__content2, _peDialogVisible2;
 
   return sel(pushSelector, {
-    " .pe-dialog__content": (_peDialog__content2 = {
+    " .pe-dialog__content": (_peDialog__content2 = {}, _defineProperty$1(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", -vars$$1.content_width - SHADOW_WIDTH + "px"), _defineProperty$1(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
+    ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible2 = {
       width: vars$$1.content_width + "px"
-    }, _defineProperty$1(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", -vars$$1.content_width - SHADOW_WIDTH + "px"), _defineProperty$1(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
-    ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible2 = {}, _defineProperty$1(_peDialogVisible2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty$1(_peDialogVisible2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialogVisible2)
+    }, _defineProperty$1(_peDialogVisible2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty$1(_peDialogVisible2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialogVisible2)
   });
 };
 
@@ -147,13 +145,12 @@ var push_content_width = function push_content_width(pushSelector, vars$$1) {
   return [_push_content_width(pushSelector, vars$$1, false), _push_content_width(selectorRTL(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars$$1, false)];
 };
 
-var _content_side_offset = function _content_side_offset(selector, vars$$1) {
-  return sel(selector, {
-    " .pe-dialog__content": {
-      width: "calc(100% - " + vars$$1.content_side_offset + "px)"
-    }
-  });
-};
+// const content_side_offset = (selector, vars) =>
+//   sel(selector, {
+//     " .pe-dialog__content": {
+//       width: `calc(100% - ${vars.content_side_offset}px)`,
+//     }
+//   });
 
 var _cover = function _cover(selector) {
   return sel(selector, {
@@ -338,33 +335,37 @@ var varFns = {
     return [cover_content_max_width(selector + ".pe-drawer--cover", vars$$1)];
   },
   content_width: function content_width(selector, vars$$1) {
-    return [_content_width("" + selector, vars$$1), push_content_width(selector + ".pe-drawer--push", vars$$1)];
+    return [_content_width(selector + ".pe-dialog--visible", vars$$1), _content_width(selector + ".pe-drawer--permanent", vars$$1)];
   },
   content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars$$1) {
     return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars$$1)];
   },
-  content_side_offset: function content_side_offset(selector, vars$$1) {
-    return [_content_side_offset(selector + ".pe-drawer--cover", vars$$1)];
-  },
-  content_max_width_large: function content_max_width_large(selector, vars$$1) {
-    return _defineProperty$1({}, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty$1({}, selector, {
-      ".pe-drawer--push": {
-        " .pe-dialog__content": {
-          maxWidth: vars$$1.content_max_width_large + "px"
-        }
-      },
-      " .pe-dialog__content": {
-        maxWidth: vars$$1.content_max_width_large + "px"
-      }
-    }));
-  },
-  content_side_offset_large: function content_side_offset_large(selector, vars$$1) {
-    return _defineProperty$1({}, "@media (min-width: " + vars.breakpoint_for_tablet_portrait_up + "px)", _defineProperty$1({}, selector, {
-      " .pe-dialog__content": {
-        width: "calc(100% - " + vars$$1.content_side_offset_large + "px)"
-      }
-    }));
-  },
+  // content_side_offset: (selector, vars) => [
+  //   content_side_offset(`${selector}.pe-drawer--cover`, vars)
+  // ],
+  // content_max_width_large: (selector, vars) => ({
+  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+  //     [selector]: {
+  //       ".pe-drawer--push": {
+  //         " .pe-dialog__content": {
+  //           maxWidth: `${vars.content_max_width_large}px`,
+  //         }
+  //       },
+  //       " .pe-dialog__content": {
+  //         maxWidth: `${vars.content_max_width_large}px`,
+  //       },
+  //     }
+  //   }
+  // }),
+  // content_side_offset_large: (selector, vars) => ({
+  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+  //     [selector]: {
+  //       " .pe-dialog__content": {
+  //         width: `calc(100% - ${vars.content_side_offset_large}px)`,
+  //       },
+  //     }
+  //   }
+  // }),
   cover: function cover(selector, vars$$1) {
     return vars$$1.cover && [_cover(selector, vars$$1), cover_content_max_width(selector, vars$$1)];
   },
@@ -395,9 +396,9 @@ var vars$1 = {
   animation_timing_function: "ease-in-out",
   border_radius: 0,
   content_max_width: 5 * vars.increment, // 5 * 56
-  content_max_width_large: 5 * vars.increment_large, // 5 * 64
+  // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
   content_side_offset: vars.grid_unit_component * 7, // 56
-  content_side_offset_large: vars.grid_unit_component * 8, // 64
+  // content_side_offset_large:       vars.grid_unit_component * 8, // 64
   content_width: 240,
   content_width_mini_collapsed: vars.increment, // 1 * 56
 

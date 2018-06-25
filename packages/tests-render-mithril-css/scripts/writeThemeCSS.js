@@ -2,7 +2,7 @@ const { writeCSS } = require("polythene-scripts");
 const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS, DrawerCSS } = require("polythene-css");
 
 const breakPointSmall = 480;
-const breakPointDrawerSmall = breakPointSmall + 56 + 1;
+const breakPointDrawerSmall = 650;
 const breakPointDrawerMedium = breakPointDrawerSmall + 240;
 
 const styles = [
@@ -80,12 +80,11 @@ const styles = [
   DrawerCSS.getStyle(
     ".medium-screen-mini-drawer",
     {
-      push: true,
       mini: true,
       border: true,
     },
     {
-      mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall}px) and (max-width: ${breakPointDrawerMedium}px)`
+      mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall + 1}px) and (max-width: ${breakPointDrawerMedium}px)`
     }
   ),
   DrawerCSS.getStyle(
@@ -97,7 +96,7 @@ const styles = [
       border_radius: 4
     },
     {
-      mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium}px)`
+      mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium + 1}px)`
     }
   ),
 ];
@@ -107,4 +106,5 @@ writeCSS({
   path: "./dist/css/theme.css",
   autoPrefix: true,
   gzip: true,
+  beautify: true,
 });

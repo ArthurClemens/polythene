@@ -137,7 +137,7 @@ The mini drawer initially hides most of the navigation except for a strip of ico
 
 This assumes you have a navigation list with icons as "front".
 
-Use the same options as push, and add:
+Use option:
 
 * `mini: true`
 

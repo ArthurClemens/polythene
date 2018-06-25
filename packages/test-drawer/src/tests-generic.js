@@ -118,7 +118,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, createTopContent, drawerOpts: {
-        push: true,
         border: true,
         mini: true,
       }})
@@ -219,7 +218,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
-        push: true,
         mini: true,
         border: true,
       }})

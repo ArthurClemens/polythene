@@ -32,11 +32,9 @@ const selectorAnchorEnd = selector =>
 // fn: miniSelector contains .pe-drawer--mini
 const content_width_mini_collapsed = (miniSelector, vars) => 
   sel(miniSelector, {
-    ":not(.pe-dialog--visible)": {
-      " .pe-dialog__content": {
-        width: `${vars.content_width_mini_collapsed}px`
-      },
-    }
+    ":not(.pe-dialog--visible) .pe-dialog__content": {
+      width: `${vars.content_width_mini_collapsed}px`
+    },
   });
 
 // fn: coverSelector contains .pe-drawer--cover
@@ -60,23 +58,23 @@ const cover_content_max_width = (coverSelector, vars) => [
   _cover_content_max_width(selectorAnchorEnd(selectorRTL(coverSelector)), vars, false)
 ];
 
-// fn: permanentSelector contains .pe-drawer--permanent
-const content_width = (permanentSelector, vars) =>
-  sel(permanentSelector, {
+// fn: selector contains .pe-drawer--permanent
+const content_width = (selector, vars) =>
+  sel(selector, {
     " .pe-dialog__content": {
-      width: `${vars.content_width}px`,
-    }
+      width: `${vars.content_width}px`
+    },
   });
 
 // fn: pushSelector contains .pe-drawer--push
 const _push_content_width = (pushSelector, vars, isRTL) => 
   sel(pushSelector, {
     " .pe-dialog__content": {
-      width: `${vars.content_width}px`,
       [isRTL ? "marginRight" : "marginLeft"]: `${-vars.content_width - SHADOW_WIDTH}px`,
       [isRTL ? "marginLeft" : "marginRight"]: "auto",
     },
     ".pe-dialog--visible .pe-dialog__content": {
+      width: `${vars.content_width}px`,
       [isRTL ? "marginRight" : "marginLeft"]: 0,
       [isRTL ? "marginLeft" : "marginRight"]: "auto"
     },
@@ -89,12 +87,12 @@ const push_content_width = (pushSelector, vars) => [
   _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars, false),
 ];
 
-const content_side_offset = (selector, vars) =>
-  sel(selector, {
-    " .pe-dialog__content": {
-      width: `calc(100% - ${vars.content_side_offset}px)`,
-    }
-  });
+// const content_side_offset = (selector, vars) =>
+//   sel(selector, {
+//     " .pe-dialog__content": {
+//       width: `calc(100% - ${vars.content_side_offset}px)`,
+//     }
+//   });
 
 const cover = selector =>
   sel(selector, {
@@ -279,38 +277,38 @@ const varFns = {
     cover_content_max_width(`${selector}.pe-drawer--cover`, vars)
   ],
   content_width: (selector, vars) => [
-    content_width(`${selector}`, vars),
-    push_content_width(`${selector}.pe-drawer--push`, vars)
+    content_width(`${selector}.pe-dialog--visible`, vars),
+    content_width(`${selector}.pe-drawer--permanent`, vars),
   ],
   content_width_mini_collapsed: (selector, vars) => [
     content_width_mini_collapsed(`${selector}.pe-drawer--mini`, vars)
   ],
-  content_side_offset: (selector, vars) => [
-    content_side_offset(`${selector}.pe-drawer--cover`, vars)
-  ],
-  content_max_width_large: (selector, vars) => ({
-    ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-      [selector]: {
-        ".pe-drawer--push": {
-          " .pe-dialog__content": {
-            maxWidth: `${vars.content_max_width_large}px`,
-          }
-        },
-        " .pe-dialog__content": {
-          maxWidth: `${vars.content_max_width_large}px`,
-        },
-      }
-    }
-  }),
-  content_side_offset_large: (selector, vars) => ({
-    ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-      [selector]: {
-        " .pe-dialog__content": {
-          width: `calc(100% - ${vars.content_side_offset_large}px)`,
-        },
-      }
-    }
-  }),
+  // content_side_offset: (selector, vars) => [
+  //   content_side_offset(`${selector}.pe-drawer--cover`, vars)
+  // ],
+  // content_max_width_large: (selector, vars) => ({
+  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+  //     [selector]: {
+  //       ".pe-drawer--push": {
+  //         " .pe-dialog__content": {
+  //           maxWidth: `${vars.content_max_width_large}px`,
+  //         }
+  //       },
+  //       " .pe-dialog__content": {
+  //         maxWidth: `${vars.content_max_width_large}px`,
+  //       },
+  //     }
+  //   }
+  // }),
+  // content_side_offset_large: (selector, vars) => ({
+  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
+  //     [selector]: {
+  //       " .pe-dialog__content": {
+  //         width: `calc(100% - ${vars.content_side_offset_large}px)`,
+  //       },
+  //     }
+  //   }
+  // }),
   cover: (selector, vars) =>
     vars.cover && [
       cover(selector, vars),

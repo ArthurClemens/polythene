@@ -177,68 +177,8 @@
   right: auto
 }
 
-@media (min-width:600px) {
-  .pe-dialog.pe-drawer .pe-dialog__content,.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-    max-width: 320px
-  }
-}
-
-.pe-dialog.pe-drawer.pe-drawer--cover .pe-dialog__content {
-  width: calc(100% - 56px)
-}
-
-@media (min-width:600px) {
-  .pe-dialog.pe-drawer .pe-dialog__content {
-    width: calc(100% - 64px)
-  }
-}
-
-.pe-dialog.pe-drawer .pe-dialog__content {
+.pe-dialog.pe-drawer.pe-dialog--visible .pe-dialog__content,.pe-dialog.pe-drawer.pe-drawer--permanent .pe-dialog__content {
   width: 240px
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: 240px;
-  margin-left: -255px;
-  margin-right: auto
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
-  margin-left: 0;
-  margin-right: auto
-}
-
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: 240px;
-  margin-right: -255px;
-  margin-left: auto
-}
-
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
-  margin-right: 0;
-  margin-left: auto
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content {
-  width: 240px;
-  margin-right: -255px;
-  margin-left: auto
-}
-
-.pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content {
-  margin-right: 0;
-  margin-left: auto
-}
-
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push .pe-dialog__content {
-  width: 240px;
-  margin-left: -255px;
-  margin-right: auto
-}
-
-.pe-rtl .pe-dialog.pe-drawer.pe-drawer--push.pe-drawer--anchor-end.pe-dialog--visible .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.pe-drawer--push.pe-dialog--visible .pe-dialog__content {
-  margin-left: 0;
-  margin-right: auto
 }
 
 .pe-dialog.pe-drawer.pe-drawer--mini:not(.pe-dialog--visible) .pe-dialog__content {
