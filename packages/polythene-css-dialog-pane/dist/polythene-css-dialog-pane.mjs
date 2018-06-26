@@ -91,7 +91,6 @@ var max_width_side_padding_mobile = function max_width_side_padding_mobile(selec
 var padding_header_height_footer_height = function padding_header_height_footer_height(selector, vars$$1) {
   return sel(selector, {
     " .pe-dialog-pane__body": {
-      // initially set max-height; will be overridden by dialog core with actual heights
       maxHeight: "calc(100vh - " + 4 * vars$$1.padding + "px - " + (vars$$1.header_height + vars$$1.footer_height) + "px)"
     }
   });

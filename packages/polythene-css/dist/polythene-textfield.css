@@ -5,7 +5,7 @@
 }
 
 .pe-textfield {
-  line-height: 1.3;
+  line-height: 1.5;
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
@@ -96,7 +96,7 @@
 }
 
 .pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__error,.pe-textfield .pe-textfield__error-placeholder,.pe-textfield .pe-textfield__help {
-  line-height: 1.3
+  line-height: 1.5
 }
 
 .pe-textfield .pe-textfield__counter {
@@ -186,7 +186,7 @@
 
 .pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__error,.pe-textfield .pe-textfield__error-placeholder,.pe-textfield .pe-textfield__help {
   font-size: 12px;
-  min-height: 15.600000000000001px
+  min-height: 18px
 }
 
 .pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {

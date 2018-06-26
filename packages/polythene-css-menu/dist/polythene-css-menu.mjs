@@ -313,13 +313,18 @@ var vars$1 = {
   animation_show_css: "opacity: 1;",
   animation_show_origin_effect_css: "transform: scale(1);",
   animation_timing_function: "ease-in-out",
-  backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
   border_radius: vars.unit_block_border_radius,
   height: undefined, // (height value with unit) - if not set, height is set by component option
   min_width: 1.5,
-  top_menu: false, // set to true to position the menu at the top of the screen, full width
   width_factor: vars.grid_unit_menu,
   widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
+
+  // theme vars
+
+  backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
+  top_menu: false, // set to true to position the menu at the top of the screen, full width
+
+  // color vars
 
   color_light_background: rgba(vars.color_light_background),
   color_dark_background: rgba(vars.color_dark_background),

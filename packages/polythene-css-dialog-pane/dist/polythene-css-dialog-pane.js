@@ -94,7 +94,6 @@
   var padding_header_height_footer_height = function padding_header_height_footer_height(selector, vars) {
     return polytheneCoreCss.sel(selector, {
       " .pe-dialog-pane__body": {
-        // initially set max-height; will be overridden by dialog core with actual heights
         maxHeight: "calc(100vh - " + 4 * vars.padding + "px - " + (vars.header_height + vars.footer_height) + "px)"
       }
     });

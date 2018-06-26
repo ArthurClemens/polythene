@@ -198,11 +198,11 @@
 }
 
 .pe-text-button .pe-button__dropdown,.pe-text-button .pe-button__label {
-  line-height: 1.3
+  line-height: 1.5
 }
 
 .pe-text-button .pe-button__dropdown {
-  min-height: calc(1.3em + 2 * 9px)
+  min-height: calc(1.5em + 2 * 9px)
 }
 
 .pe-text-button {
@@ -219,7 +219,7 @@
 }
 
 .pe-text-button.pe-button--high-label .pe-button__dropdown,.pe-text-button.pe-button--high-label .pe-button__label {
-  min-height: calc(1.3em + 2 * 15px)
+  min-height: calc(1.5em + 2 * 15px)
 }
 
 .pe-text-button .pe-button__content {

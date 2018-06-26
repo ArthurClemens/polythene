@@ -96,6 +96,14 @@ const AppDrawer = {
 <a id="types-of-drawer"></a>
 ### Types of drawer
 
+The Material Design specification (version 2) describes 3 types of navigation drawer:
+
+* Standard drawer
+* Modal drawer
+* Bottom drawer
+
+The Polythene Drawer component offers the possibility to deviate from this, for example by combining options to create different drawers - for example a sliding drawer with a backdrop but no modal behavior.
+
 <a id="standard-drawer"></a>
 #### Standard drawer
 

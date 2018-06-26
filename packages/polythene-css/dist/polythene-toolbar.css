@@ -71,11 +71,11 @@
 }
 
 .pe-toolbar {
-  line-height: 1.3em
+  line-height: 1.5em
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
-  line-height: 1.3
+  line-height: 1.5
 }
 
 .pe-toolbar {

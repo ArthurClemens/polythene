@@ -50,7 +50,7 @@ var vars = {
   font_weight_medium: 500,
   font_weight_bold: 700,
   font_size_title: 20,
-  line_height: 1.3,
+  line_height: 1.5,
 
   // base colors
   color_primary: "33, 150, 243", // blue 500
