@@ -19,9 +19,9 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 <a id="main-features"></a>
 ## Main features
 
-* Choose between cover or push animation, or create a custom transition
+* Choose between standard (permanent or dismissible) or cover drawer
+* Choose animation: covering, pushing, or create a custom transition
 * Optional mini behavior (expanding from an icon-only view)
-* Optionally display permanently as side menu
 * Optionally add a backdrop, shadow or border
 * Optionally place at the right side
 * RTL (right-to-left) support
@@ -43,7 +43,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **Parameter** |  **Required** | **Type**   | **Default**     | **Description** |
 | ------------- | ------------- | ---------- | --------------- | --------------- |
 | **anchor**    | optional      | String     | "start"         | Set to "end" to reveal the drawer from the far (right) side; with RTL "end" becomes the left side |
-| **backdrop**  | optional      | Boolean    | false | Set to `true` to show a backdrop background color |
+| **backdrop**  | optional      | Boolean    | false           | Set to `true` to show a backdrop background color |
 | **border**    | optional      | Boolean    |                 | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
 | **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
 | **floating**  | optional      | Boolean    |                 | Variant of `permanent`; additionally set this to `true` to display the drawer as a "floating" block (instead of full height) |
@@ -52,7 +52,7 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | **permanent** | optional      | Boolean    |                 | Set to `true` to display the drawer as a permanent side menu |
 | **push**      | optional      | Boolean    | `false` (cover) | Set to `true` to animate the drawer with a push animation, pushing away the content next to the drawer | 
 | **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer, `false` to hide a displayed drawer |
-| **z**         | optional      | Number 0-5 | 0 | Depth of the shadow; 0 will show no shadow |
+| **z**         | optional      | Number 0-5 | 0               | Depth of the shadow; 0 will show no shadow |
 
 <a id="transition-options"></a>
 ### Transition options

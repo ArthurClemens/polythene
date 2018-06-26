@@ -52,7 +52,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Permanent (no shadow, with border)",
+      name: "Standard (options: permanent, border, z: 0)",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         permanent: true,
         border: true,
@@ -60,7 +60,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Permanent, floating (with shadow)",
+      name: "Standard within box (options: floating, z: 1)",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         permanent: true,
         floating: true,

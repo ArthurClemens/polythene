@@ -7,7 +7,7 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Invoking a Drawer](#invoking-a-drawer)
-  - [Variations](#variations)
+  - [Types of drawer](#types-of-drawer)
 - [Appearance](#appearance)
   - [Navigation style](#navigation-style)
   - [Styling](#styling)
@@ -102,72 +102,47 @@ class AppDrawer extends Component {
 ~~~
 
 
-<a id="variations"></a>
-### Variations
+<a id="types-of-drawer"></a>
+### Types of drawer
 
-<a id="cover-animation"></a>
-#### Cover animation
+<a id="standard-drawer"></a>
+#### Standard drawer
 
-"Cover" is the default animation. It places the drawer on a higher surface elevation.
+Presented on the same plane as the content.
+Can be permanently visible or dismissible. To be used on tablet and desktop only; use a modal drawer on mobile.
 
-A cover is often used together with:
+How to create this:
 
-* `backdrop` - to show a tinted backdrop
-* `modal` - to prevent clicking on the background (technically: the touch layer, which does not have a color)
-* `z={n}` - a number between 0 and 5 to set the shadow depth; 1 is a good default value
+* Use option `permanent: true` to keep the drawer on the page; by default this creates a side menu with a height of 100%
+* Use option `push: true` to make the drawer push the content next to it; structurally the drawer must be placed next to the content - for example in a flex container
+* Optionally use:
+  * `border: true` - to demarcate the drawer from the content
+  * `mini: true` - instead of `push`, that will show a small part of the drawer (a strip of icons), and reveals the full menu when expanding (MD1); this assumes you have a navigation list with icons as "front"
+  * `floating: true` - to display the drawer as a "floating" block (instead of full height) (MD1)
 
-<a id="globalfixed-drawer"></a>
-#### Global/fixed drawer
+<a id="modal-drawer"></a>
+#### Modal drawer
 
-A cover drawer that should appear on top of all other content (except for dialogs and notifications), can still be created at a deeper level than the root component by giving it a CSS style `position:fixed`:
+Presented floating on top of most of the UI. An overlay blocks interaction with the content below.
 
-* `fixed`
+How to create this:
 
+* Use option `cover: true`
+* Use `modal: true` to prevent clicking on the background (technically: the touch layer, which does not have a color)
+* Optionally use:
+  * `fixed: true` - to show the drawer on top of all other content (except for dialogs and notifications); the drawer can be created at a deeper level than the root component by giving it a CSS style `position:fixed`
+  * `backdrop: true` - to show a tinted backdrop
+  * `z` - a number between 0 and 5 to set the shadow depth; 1 is a good default value
 
-<a id="push-animation"></a>
-#### Push animation
+<a id="bottom-drawer"></a>
+#### Bottom drawer
 
-A push animation pushes the content next to the drawer away. It places the drawer on the same surface elevation as the content.
+Not implemented
 
-To make the drawer actually push the content, the drawer must be placed next to the content - for example in a flex container.
+#### Other options
 
-Push options:
+* `anchor: "end"` - places the drawer at the right/opposite side
 
-* `push`
-* `border` - to demarcate the drawer from the content
-
-
-<a id="mini-variant"></a>
-#### Mini variant
-
-The mini drawer initially hides most of the navigation except for a strip of icons, then reveals the full menu when expanding.
-
-This assumes you have a navigation list with icons as "front".
-
-Use option:
-
-* `mini`
-
-
-<a id="permanent-menu"></a>
-#### Permanent menu
-
-Use the drawer as a permanent (not animating) menu with:
-
-* `permanent`
-
-By default this creates a side menu with a height of 100%. Either use:
-
-* `floating` - to display the drawer as a "floating" block (instead of full height)
-* `border` - to demarcate the drawer from the content
-
-
-<a id="place-the-drawer-at-the-rightopposite-side"></a>
-#### Place the drawer at the right/opposite side
-
-To open the drawer at the opposite side, use:
-
-* `anchor="end"`
 
 
 <a id="appearance"></a>
