@@ -98,13 +98,6 @@ const push_content_width = (pushSelector, vars) => [
   _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars, false),
 ];
 
-// const content_side_offset = (selector, vars) =>
-//   sel(selector, {
-//     " .pe-dialog__content": {
-//       width: `calc(100% - ${vars.content_side_offset}px)`,
-//     }
-//   });
-
 const cover = selector =>
   sel(selector, {
     " .pe-dialog__content": {
@@ -289,32 +282,6 @@ const varFns = {
   content_width_mini_collapsed: (selector, vars) => [
     content_width_mini_collapsed(`${selector}.pe-drawer--mini`, vars)
   ],
-  // content_side_offset: (selector, vars) => [
-  //   content_side_offset(`${selector}.pe-drawer--cover`, vars)
-  // ],
-  // content_max_width_large: (selector, vars) => ({
-  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-  //     [selector]: {
-  //       ".pe-drawer--push": {
-  //         " .pe-dialog__content": {
-  //           maxWidth: `${vars.content_max_width_large}px`,
-  //         }
-  //       },
-  //       " .pe-dialog__content": {
-  //         maxWidth: `${vars.content_max_width_large}px`,
-  //       },
-  //     }
-  //   }
-  // }),
-  // content_side_offset_large: (selector, vars) => ({
-  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-  //     [selector]: {
-  //       " .pe-dialog__content": {
-  //         width: `calc(100% - ${vars.content_side_offset_large}px)`,
-  //       },
-  //     }
-  //   }
-  // }),
   cover: (selector, vars) =>
     vars.cover && [
       cover(selector, vars),
