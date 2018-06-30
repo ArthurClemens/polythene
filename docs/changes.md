@@ -38,10 +38,10 @@ Some examples:
 
 * Make a Dialog appear full screen on small screen sizes
 * Make a Menu appear full width on small screen sizes
-* Change a Button size based on screen size
+* Create a Drawer that behaves differently on different screen sizes: [Mithril example](./components/mithril/drawer.md#responsive-drawer), [React example](./components/react/drawer.md#responsive-drawer)
 * Change the image size on a Card, without changing the component options
 
-See [CSS/Style variables](theming/style-variables.md) how to use this feature.
+See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to use this feature.
 
 
 #### Components

@@ -149,6 +149,22 @@ Then apply the styles by setting the class name:
 m(Card, { className: "themed-card small-image-card" })
 ~~~
 
+Some components allow to change their behavior using style variables. For example, Drawer's `vars.js` has a variable named `cover`. By setting this variable to `true`, the Drawer gets a "cover" behavior:
+
+~~~javascript
+import { DrawerCSS } from "polythene-css"
+
+DrawerCSS.addStyle(
+  ".small-screen-cover-drawer",
+  {
+    cover: true
+  },
+  {
+    mediaQuery: `@media all and (max-width: 480px)`
+  }
+)
+~~~
+
 
 
 <a id="function-addstyle"></a>

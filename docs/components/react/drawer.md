@@ -8,6 +8,7 @@
 - [Usage](#usage)
   - [Invoking a Drawer](#invoking-a-drawer)
   - [Types of drawer](#types-of-drawer)
+  - [Responsive drawer](#responsive-drawer)
 - [Appearance](#appearance)
   - [Navigation style](#navigation-style)
   - [Styling](#styling)
@@ -151,6 +152,86 @@ Not implemented
 
 * `anchor: "end"` - places the drawer at the right/opposite side
 
+
+<a id="responsive-drawer"></a>
+### Responsive drawer
+
+Changing drawer type based on screen size
+
+<a href="https://flems.io/#0=N4IgtglgJlA2CmIBcAWAHAOgGxoDQgGd4EBjAF3imRADsBDANwgHM6yIB7GgWlggLIYAVgRD4AZhASikAbVD0wiJCAwALMmFhiQJLhRplqAHgIkAThAAOZAAQFzJALwAdEBrJWCSAPQ-zdADuzBCCemA+AILmZGoAruYAwghKNAQ+VhywAJ6x8DTwPgUAHmQZdCQA1nTM8OmZOXkF3ObwFWVQ-GUNuWr58C1t5NwCdDRQdLBc8MIEbgB8xj5mljbzLjSmFtZ2Ds5uHl6+-kEhYRwR0bEJyfCp9Vm9-UXwpeVVNXUZj00DJATpToCb6NPrNf4EEZkMYTKYFWYLJYrHbrGgbYydBi2aCuEB0KxWRE+THzHREUjsLgyEAARiQWAADCAAL64BR0JTUWY6PSGfJGFR+CBgTIxWzAWwAEQCgXg5lwtgASnR+JQAEJxMhkLgKgCSvIVABkukaugAVKTwWzM2zicwXWxuHq-QbtNwbXkCcVSmVyhXK1VQDVanW2fWh40CU0CC0IBUAZQAagBxa22Jy2Z1g+AAbg2wtFdnoTFYlJokbsdodbgwRUYLDYnB4fAEbjzaJonrs1gIcTA6dsxis80NHFa-Z7fdsUCyY-soVsHPgZAVnvg5GXCUXnSs-AgJAgNGYtmIoQVRCg044J4gcQIYA4l4oIrnh4PnSgcUMtk1tlgdAAIzHK1lyvKZWlsMAanoRc+AARziOgMFsABVOx8mFbdIMPTCGAwjkFQQ-hbBoDgBHMOJL1eOUD2hMsf1gf8wD0P9ALHYiaD3H87EmCAiKsE9ihPOhbHCB8Z1Eql4AQthkMlOJiLoTUrQgCiIJncDsRoWxWisVowSgOUF0PWwGCyOIbDYK08L4dCAStA9GKnDTgJPOJbTiEI2BIuJGJEqw6EsNgEmQgBRYoSHgGx4C3AhDzsDgSBIOh11kpZh3bLs-y4ZgzVeOwMwxCAGHmYBJzAZkyq8PtKvK5klhJdsPX-AFbEiAlBIMKACCVIZBESC5MgKb9gA2DZbEktIyAo8gxwACj0jgvAASnFcaJvsCy5QW+0VvbDbbFifgMFGCgB1G7SDvsNQOECaUgjlJBbUmIh1om5l9utMbLtacZttWi6Dqyggbru31zAHI6CBOuiZhB277tlcxPom1oyASbS5rejaiqxEgWoIAA5JdcQC2oFmxg7cdEgniaUXEoHB7heQMMhuECAICTlCnLqunHEe53m+Y2-G6ABOn4Fxe9JlgEYLHgfJmY4PDzG4RmHohpROj7OXWkVyBOLV8HWPMWpdYVnhxCmRsjyNjX3SF4XMzlKDhrISnhfhwInGAL2BfMZkPb5ln+R94sGzLCs5sBp2rrUGEEGSfdKieubVqceZDrUY6iDIeNYej66EfBp7xBeq1mWWoOrsrwPHeFj8AAloEl4A0-TTOoZO5d86swu-ZL57YCIa1lptPx7GyTt7Fh2xAlCNRJJfN3q4mnxUVjwdMRpsWiZJtwQ8MHnN4m4wAwvYNtQ7E+NpxNwvbtpHuAAzUr4dm+Jv-ADiFxeNQffj+8A8KGAID7GOH9bBcCTlUVO6dO7Z2hrnXuFB+6g39k9aacQK5V3rk7ZkdcIFAkAggKAPsB4awISfdeq8cZqBpPMC0ZAEBLDoRvE+wA4S5XypQp2DVipsL5nwkqHshECNsMtT6dc64eipHYB8X4yCE0fFaDMM4SB9n5BgBCcpsjxmIOubU5gsYgAAMT4kJCACRGxFR9UlAAeQALIYF+oZIxxh2oCXXgqeRhglGGSsTQHkg1LTmGoABQCxAyT6PIE2akKAkBMlZOyTkKhw6libLwLo3J8CHwFLoWR3pww0GjCuWwFZYzwATCmNMGYsz9Cap2Ap+4qTnXWurcQZBvCDgIAwY8xQtBpFxIcY4gRRkYECAAZgwGOZgPgABMDJFnLF6W4Oe0BYi4jmSgVZfQWAaE2dskApkIDwECGqDgxRcQMlsNcrZtgtmIgCrEacuIHFzJpBgAAnJ82waASAMm4BgAA7HMwFEygXcA+RMgArICz5KBIXAsNDSOZtgaT3K+dC2wWAMATMSHM3FaBsXYCxaioFGA5lEtRWgBgNIGT-LRRgD5PzUWsroVgEgHz0W3Lhfc7gczZYYAZDSSFDIABeDiUVoomYaKZQKUC2HJWgBVUqJmwEwHMrAtgUAYGVci1FNIJlircOvJEvT5i4HWoeICxQnqmF6bYfpsBBkHC1FYEZYzJnTNNvMxZDJlnMFWfPKAGy3APKObs5g+yw2HOOac85ly3DXNuQq8NiwnmL1IW4SVPyJmNx1d8kgiKaTcsRZ8zAaBPllqpbKtFnyGVct1VSxl3z7mNxpPWrlNy+VfL5XMxM0L-nFpFV8-lY65lirANclFahuAoAbdgLAiKYW2AmdwCZq7IRrqhQitdeaC2fIHe2z5tLxUmsWAGi161RjmDtT0vpAzQGus8B6wI4ypkzN9Us+9Qb1lqAOTs+AeyyAAaOUweNFyrndruWmocbBM2vKlTSclcygXIswDSKlNJZYfKwAi8lDIZVzNRZ8ilKBZbko7YCrANJ9X3NsKRjtvzsAbpI2R2A0KMAoC1TqoFMrONoFZTSY1IBTWXstZdIg4w70OqdS69wbrX3vu9bMhZ36VlHODaGkA4bbCRujTp2N4GzmQaTdB1Nhz03wZedmglwr7m0bmRuqVdn0WsbRQyWANJSWQtJSJsT97UQfW+q8Qs054Bl18nYQu8dxiJz4FUUeHc1rX0ml6dgCAByF3YEwyp2IDRaUMkJSuHdsbGHKZaD2OWEA+2q-AHhG1KjwGyLV0ICAGsTSrIYH2xgimLCTMmUqzSaD1R8ANi9fWOt6eVnKYh8APZpMbFwD2QD+SgOAOAq6UCEspz0wneA0DKge3wdjahqWso0D7D1DMsgaQAF0Gmo03OYbS5WujYxuirOb2MMt1B9rIO7GBeTJUEOYnIc0AcKku2AaGUErBzTmtDhUh4itwNsBDj2m2Doo9eBJp2dWnpuF1DQG1bg8fC2G09Yb0NrUXPJwdVkmPq44+KPTq6BPHQgF7uYVoUAyfM95FTz0MNAps-emLlLTsWcS4mhztwejvxQSkPz3B+WuBC6pN3cYEvGf1yx7fP6rPq5y5APdDpcwxAC-V2rtIGB2mdJ19jO7y0XcYDh3NX7Y91rr3bMFwJOTgkIFCSocJ39tD4HJAY2J1BPlIDmZ8lkbJaBLmoHkJQ2T8l8kMNQCeBYxx2AlP7RI8Z4xpirP2J0PxszMwBA7LKhfwbF9LzaWpVf+hN4aVlACrQ6CVAAAocHivGKCjEBzoAZJlAp3e2j98H4Yf2w+ZYDiwNCifMipq2Gn73gf8V-YOMoLefsGZPmLIaUXkvGA6AwHztkBAWNLo1mloxc2is9Aq0ftzS3l1Ntv8eodCilS2M4SVQjMS0GCABbOQE5gripc5c5OuuE0m2WsEAdAAAilguYNkE9AAAYAACyBIkS+MI6OUExQ7Mf6T0AAJMAFvrPrvuDIvoxMyFYMUMtNgetHXAEufvGJftfmQLfvAPfhNDWMgTrCsBbNwAbBAB-uYCrogdjFIeAVgpAWODAf-soRweTkgQfmgRgVgbYHgQQbBLAIuOMCQYeOQSGmoFQTQT3nQfPgwSPiYQANRorMGsGmGXhzSkGWGxA2G0E74OEaz77awVQsFsEcEbBcGN4X5X5QA3537rQ1j-imwDDiGKxWwcA2zMAyFyGS4bRWAuxjD8hKGAFCyZHZGlFs5ipPQ0gqHQFygAD6AQ2sXS2yl0CB+RE0BB6BOiOB+BOhxhnh5hPAWm1htg1BARc+ZAe+B+U4rhNI7hERHRUR7YUSFI0eKgKADICSieySygqgEIQSWeeSGAZMVoMcBsvh4xEyCyLBn0M25gmRgQT02cMA+Qn0mQcUZYT0rQ-47AeEvuGwduTMuS7MnMhREMMcQIVg-4+hVsrwn0+mZAtRiyDAagn0YxqJDIDAgQn0wBlQzA9oX4UAT0Ji4gDIFJFJQJNAQO+g-I+RAUMAh4zAT0dxxQn0PhWJ2qaADI9xGwdcAxnQIk3hFh3JJ+fJHhMcZxAw6sSMXRkEgUIQNAbJkpki60JiD8cpcoz8r8XACpMJcJT0pEBQ6pI2Gw6xUeVI1ATmuxzId2+AfANAlQMg8gyeKSIAPe5Aduq2UwVgqQggIgOgCQ2gKghw3gfgX4VghJdJEQXpZQfYUA-gfUPpNkS0AZGe-BhR1AyINgex7pBx8ZasFwqZxA6ZmiQZ+AIZ1A4ZxwUZMZ4QyZ7QxZEQiZTZwwM4YApZfpGZlZIAWZBxuZRg9pzIQAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+If we want to make a drawer that is optimized for 3 breakpoints, we need to pass it 3 behaviors. For example:
+
+* Small screen: cover
+* Medium screen: push or mini
+* Large screen: standard or floating
+
+One way to create this drawer is to create 3 separate Drawer instances and only show them at the appropriate breakpoint, either using CSS with show/hide classes or with a conditional in the JavaScript code that toggles with screen size changes.
+
+A simpler approach is to create a theme CSS for each breakpoint using Polythene's theme functions.
+
+If we focus on the small screen first, we pass the theme options `cover` and `backdrop`, alongside a `mediaQuery` option:
+
+~~~javascript
+import { DrawerCSS } from "polythene-css"
+
+const breakPointSmall = 480
+
+DrawerCSS.addStyle(
+  ".small-screen-cover-drawer",
+  {
+    cover: true,
+    backdrop: true,
+  },
+  {
+    mediaQuery: `@media all and (max-width: ${breakPointDrawerSmall}px)`
+  }
+)
+~~~
+
+We do the same for the other breakpoints:
+
+~~~javascript
+const breakPointDrawerSmall = 650;
+const breakPointDrawerMedium = 900;
+
+DrawerCSS.addStyle(
+  ".medium-screen-mini-drawer",
+  {
+    mini: true,
+    border: true,
+  },
+  {
+    mediaQuery: `@media all and (min-width: ${breakPointDrawerSmall + 1}px) and (max-width: ${breakPointDrawerMedium}px)`
+  }
+)
+DrawerCSS.addStyle(
+  ".large-screen-floating-drawer",
+  {
+    permanent: true,
+    floating: true,
+    z: 1,
+    border_radius: 4
+  },
+  {
+    mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium + 1}px)`
+  }
+)
+~~~
+
+We pass the classnames to the Drawer. And because we need the drawer to be available all the time, we pass `permanent` to the Drawer instance:
+
+~~~jsx
+<Drawer
+  className="small-screen-cover-drawer medium-screen-mini-drawer large-screen-floating-drawer"
+  permanent
+  // ...
+/>
+~~~
+
+For small and medium screen sizes we still need a button to invoke the drawer.
+
+You can find a full working example at the Try Out button.
 
 
 <a id="appearance"></a>
