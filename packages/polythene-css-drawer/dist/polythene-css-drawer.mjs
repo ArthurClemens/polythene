@@ -153,13 +153,6 @@ var push_content_width = function push_content_width(pushSelector, vars$$1) {
   return [_push_content_width(pushSelector, vars$$1, false), _push_content_width(selectorRTL(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars$$1, false)];
 };
 
-// const content_side_offset = (selector, vars) =>
-//   sel(selector, {
-//     " .pe-dialog__content": {
-//       width: `calc(100% - ${vars.content_side_offset}px)`,
-//     }
-//   });
-
 var _cover = function _cover(selector) {
   return sel(selector, {
     " .pe-dialog__content": {
@@ -242,9 +235,15 @@ var varFns = {
       flexShrink: 0,
       transitionProperty: "all",
 
+      ":not(.pe-dialog--transition)": {
+        " .pe-dialog__content": {
+          transitionDuration: "0s"
+        }
+      },
+
       " .pe-dialog__content": {
         position: "relative",
-        transitionProperty: "all",
+        // transitionProperty: "all",
 
         height: "100%",
         overflow: "visible",
@@ -341,32 +340,6 @@ var varFns = {
   content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars$$1) {
     return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars$$1)];
   },
-  // content_side_offset: (selector, vars) => [
-  //   content_side_offset(`${selector}.pe-drawer--cover`, vars)
-  // ],
-  // content_max_width_large: (selector, vars) => ({
-  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-  //     [selector]: {
-  //       ".pe-drawer--push": {
-  //         " .pe-dialog__content": {
-  //           maxWidth: `${vars.content_max_width_large}px`,
-  //         }
-  //       },
-  //       " .pe-dialog__content": {
-  //         maxWidth: `${vars.content_max_width_large}px`,
-  //       },
-  //     }
-  //   }
-  // }),
-  // content_side_offset_large: (selector, vars) => ({
-  //   ["@media (min-width: " + themeVars.breakpoint_for_tablet_portrait_up + "px)"]: {
-  //     [selector]: {
-  //       " .pe-dialog__content": {
-  //         width: `calc(100% - ${vars.content_side_offset_large}px)`,
-  //       },
-  //     }
-  //   }
-  // }),
   cover: function cover(selector, vars$$1) {
     return vars$$1.cover && [_cover(selector, vars$$1), cover_content_max_width(selector, vars$$1)];
   },
@@ -400,9 +373,6 @@ var vars$1 = {
   animation_timing_function: "ease-in-out",
   border_radius: 0,
   content_max_width: 5 * vars.increment, // 5 * 56
-  // content_max_width_large:         5 * vars.increment_large,     // 5 * 64
-  // content_side_offset:             vars.grid_unit_component * 7, // 56
-  // content_side_offset_large:       vars.grid_unit_component * 8, // 64
   content_width: 240,
   content_width_mini_collapsed: vars.increment, // 1 * 56
 

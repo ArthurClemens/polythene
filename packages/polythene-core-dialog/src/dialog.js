@@ -15,7 +15,8 @@ const transitionOptions = (state, attrs, isShow) => ({
     contentEl: state.contentEl,
     backdropEl: state.backdropEl,
   },
-  showClass: classes.visible
+  showClass: classes.visible,
+  transitionClass: classes.transition,
 });
 
 const showDialog = (state, attrs) =>

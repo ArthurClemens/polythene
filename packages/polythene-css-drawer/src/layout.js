@@ -176,9 +176,15 @@ const varFns = {
         flexShrink: 0,
         transitionProperty: "all",
 
+        ":not(.pe-dialog--transition)": {
+          " .pe-dialog__content": {
+            transitionDuration: "0s",
+          }
+        },
+
         " .pe-dialog__content": {
           position: "relative",
-          transitionProperty: "all",
+          // transitionProperty: "all",
 
           height: "100%",
           overflow: "visible",

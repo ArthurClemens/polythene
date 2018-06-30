@@ -509,6 +509,7 @@
   - duration
   - delay
   - showClass
+  - transitionClass
   - before
   - show
   - hide
@@ -529,15 +530,18 @@
         var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
         var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
-        var before = opts.before && state === "show" ? function () {
+        if (opts.transitionClass) {
+          var transitionClassElement = opts.transitionClassElement || el;
+          transitionClassElement.classList.add(opts.transitionClass);
+        }
+
+        var before = function before() {
           style.transitionDuration = "0ms";
           style.transitionDelay = "0ms";
           opts.before();
-        } : opts.before && state === "hide" ? function () {
-          style.transitionDuration = "0ms";
-          style.transitionDelay = "0ms";
-          opts.before();
-        } : null;
+        };
+
+        var maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
 
         var after = opts.after ? function () {
           return opts.after();
@@ -565,6 +569,11 @@
             if (after) {
               after();
             }
+            if (opts.transitionClass) {
+              var _transitionClassElement = opts.transitionClassElement || el;
+              _transitionClassElement.classList.remove(opts.transitionClass);
+              el.offsetHeight; // force reflow
+            }
             resolve();
           }, duration + delay);
         };
@@ -577,8 +586,8 @@
           }
         };
 
-        if (before) {
-          before();
+        if (maybeBefore) {
+          maybeBefore();
           el.offsetHeight; // force reflow
           setTimeout(function () {
             maybeDelayTransition();
@@ -597,7 +606,8 @@
         domElements = _ref.domElements,
         beforeTransition = _ref.beforeTransition,
         afterTransition = _ref.afterTransition,
-        showClass = _ref.showClass;
+        showClass = _ref.showClass,
+        transitionClass = _ref.transitionClass;
 
     if (state.transitioning()) {
       return Promise.resolve();
@@ -614,6 +624,7 @@
     var fn = isShow ? show : hide;
     var opts1 = _extends$2({}, attrs, domElements, {
       showClass: showClass,
+      transitionClass: transitionClass,
       duration: duration,
       delay: delay,
       timingFunction: timingFunction

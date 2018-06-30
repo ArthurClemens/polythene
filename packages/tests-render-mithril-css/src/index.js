@@ -49,8 +49,6 @@ const App = {
         m(".drawer-content-wrapper", [
           m(Drawer, {
             className: "small-screen-cover-drawer medium-screen-mini-drawer large-screen-floating-drawer",
-            // push: true,
-            // border: true,
             content: createContent({
               onClick: () => state.showDrawer(false)
             }),
@@ -59,99 +57,100 @@ const App = {
             didHide: () => state.showDrawer(false) // sync state with component
           }),
           m(".components", [
-            // m(".row", [
-            //   m("h1", "Polythene for Mithril"),
-            //   m("h2", "CSS Test")
-            // ]),
-            // m(".row",
-            //   [
-            //     m("h2", "SVG"),
-            //     m(".component", 
-            //       m(SVG, {
-            //         content: m.trust(linkIconSVG),
-            //         className: "themed-svg"
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row",
-            //   [
-            //     m("h2", "Raised Button"),
-            //     m(".component", 
-            //       m(RaisedButton, {
-            //         label: "Button"
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row", 
-            //   [
-            //     m("h2", "Themed Button"),
-            //     m("h3", "Media query: colored on small screen"),
-            //     m(".component", 
-            //       m(Button, {
-            //         label: "Button",
-            //         className: "themed-button"
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row", 
-            //   [
-            //     m("h2", "Themed Icon"),
-            //     m("h3", "Media query: large on small screen"),
-            //     m(".component", 
-            //       m(Icon, {
-            //         className: "themed-icon",
-            //         svg: { content: m.trust(linkIconSVG) },
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row", 
-            //   [
-            //     m("h2", "Icon Button"),
-            //     m(".component", 
-            //       m(IconButton, {
-            //         icon: {
-            //           svg: { content: m.trust(linkIconSVG) }
-            //         }
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row",
-            //   [
-            //     m("h2", "FAB"),
-            //     m(".component", 
-            //       m(FAB, {
-            //         icon: {
-            //           svg: { content: m.trust(linkIconSVG) }
-            //         }
-            //       })
-            //     )
-            //   ]
-            // ),
-            // m(".row",
-            //   [
-            //     m("h2", "Menu"),
-            //     m(".component", 
-            //       m(ExposedDropdown, { height: 150, className: "small-screen-top-menu" })
-            //     )
-            //   ]
-            // ),
+            m(".row", [
+              m("h1", "Polythene for Mithril"),
+              m("h2", "CSS Test")
+            ]),
             m(".row",
               [
                 m("h2", "Drawer"),
                 m("h3", "Media query: cover drawer on small screen"),
                 m(".component", 
                   m(RaisedButton, {
+                    id: "show-drawer-button",
                     label: "Show",
                     events: {
                       onclick: () => state.showDrawer(true)
                     },
                     disabled: showDrawer
-                  }),
+                  })
+                )
+              ]
+            ),
+            m(".row",
+              [
+                m("h2", "SVG"),
+                m(".component", 
+                  m(SVG, {
+                    content: m.trust(linkIconSVG),
+                    className: "themed-svg"
+                  })
+                )
+              ]
+            ),
+            m(".row",
+              [
+                m("h2", "Raised Button"),
+                m(".component", 
+                  m(RaisedButton, {
+                    label: "Button"
+                  })
+                )
+              ]
+            ),
+            m(".row", 
+              [
+                m("h2", "Themed Button"),
+                m("h3", "Media query: colored on small screen"),
+                m(".component", 
+                  m(Button, {
+                    label: "Button",
+                    className: "themed-button"
+                  })
+                )
+              ]
+            ),
+            m(".row", 
+              [
+                m("h2", "Themed Icon"),
+                m("h3", "Media query: large on small screen"),
+                m(".component", 
+                  m(Icon, {
+                    className: "themed-icon",
+                    svg: { content: m.trust(linkIconSVG) },
+                  })
+                )
+              ]
+            ),
+            m(".row", 
+              [
+                m("h2", "Icon Button"),
+                m(".component", 
+                  m(IconButton, {
+                    icon: {
+                      svg: { content: m.trust(linkIconSVG) }
+                    }
+                  })
+                )
+              ]
+            ),
+            m(".row",
+              [
+                m("h2", "FAB"),
+                m(".component", 
+                  m(FAB, {
+                    icon: {
+                      svg: { content: m.trust(linkIconSVG) }
+                    }
+                  })
+                )
+              ]
+            ),
+            m(".row",
+              [
+                m("h2", "Menu"),
+                m(".component", 
+                  m(ExposedDropdown, { height: 150, className: "small-screen-top-menu" })
                 )
               ]
             ),

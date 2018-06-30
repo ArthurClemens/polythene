@@ -71,6 +71,7 @@
     open: "pe-dialog--open", // class set to html element
     visible: "pe-dialog--visible", // class set to dialog element
     showBackdrop: "pe-dialog--backdrop",
+    transition: "pe-dialog--transition",
 
     // lookup
     menuContent: menuClasses.content

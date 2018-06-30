@@ -23,6 +23,7 @@ opts:
 - duration
 - delay
 - showClass
+- transitionClass
 - before
 - show
 - hide
@@ -49,18 +50,21 @@ const transition = (opts, state) => {
         : styleDurationToMs(computedStyle.transitionDelay);
       const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
-      const before = (opts.before && state === "show")
-        ? () => {
-          style.transitionDuration = "0ms";
-          style.transitionDelay = "0ms";
-          opts.before();
-        }
+      if (opts.transitionClass) {
+        const transitionClassElement = opts.transitionClassElement || el;
+        transitionClassElement.classList.add(opts.transitionClass);
+      }
+
+      const before = () => {
+        style.transitionDuration = "0ms";
+        style.transitionDelay = "0ms";
+        opts.before();
+      };
+
+      const maybeBefore = (opts.before && state === "show")
+        ? before
         : (opts.before && state === "hide")
-          ? () => {
-            style.transitionDuration = "0ms";
-            style.transitionDelay = "0ms";
-            opts.before();
-          }
+          ? before
           : null;
 
       const after = opts.after
@@ -89,6 +93,11 @@ const transition = (opts, state) => {
           if (after) {
             after();
           }
+          if (opts.transitionClass) {
+            const transitionClassElement = opts.transitionClassElement || el;
+            transitionClassElement.classList.remove(opts.transitionClass);
+            el.offsetHeight; // force reflow
+          }
           resolve();
         }, duration + delay);
       };
@@ -101,8 +110,8 @@ const transition = (opts, state) => {
         }
       };
 
-      if (before) {
-        before();
+      if (maybeBefore) {
+        maybeBefore();
         el.offsetHeight; // force reflow
         setTimeout(() => {
           maybeDelayTransition();
@@ -114,7 +123,7 @@ const transition = (opts, state) => {
   }
 };
 
-export const transitionComponent = ({ isShow, state, attrs, domElements, beforeTransition, afterTransition, showClass }) => {
+export const transitionComponent = ({ isShow, state, attrs, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -133,6 +142,7 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
     domElements,
     {
       showClass,
+      transitionClass,
       duration,
       delay,
       timingFunction

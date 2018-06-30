@@ -9,6 +9,7 @@ export const createProps = vnode => {
     attrs,
     {
       fullBleed: true,
+      className: null,
       parentClassName: [
         attrs.className,
         classes.component,

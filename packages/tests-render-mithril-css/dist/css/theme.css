@@ -68,13 +68,11 @@
   }
 
   .pe-dialog.small-screen-full-screen .pe-dialog-pane__content>.pe-dialog-pane__body {
-    flex-shrink: 1;
-    max-height: none
+    flex-shrink: 1
   }
 
   .pe-dialog.small-screen-full-screen .pe-dialog-pane,.pe-dialog.small-screen-full-screen .pe-dialog-pane__body {
     height: 100vh;
-    max-height: 100vh;
     border: none;
     max-width: none
   }
@@ -170,7 +168,7 @@
   }
 }
 
-@media (max-width:890px) {
+@media (min-width:651px) and (max-width:900px) {
   .pe-dialog.pe-drawer.medium-screen-mini-drawer .pe-dialog__content {
     margin-left: 0;
     margin-right: 0
@@ -191,7 +189,7 @@
   }
 }
 
-@media (min-width:891px) {
+@media (min-width:901px) {
   .pe-dialog.pe-drawer.large-screen-floating-drawer {
     position: static;
     display: block;

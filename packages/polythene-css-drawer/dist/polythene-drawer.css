@@ -24,9 +24,12 @@
   transition-property: all
 }
 
+.pe-dialog.pe-drawer:not(.pe-dialog--transition) .pe-dialog__content {
+  transition-duration: 0s
+}
+
 .pe-dialog.pe-drawer .pe-dialog__content {
   position: relative;
-  transition-property: all;
   height: 100%;
   overflow: visible;
   min-width: 0;

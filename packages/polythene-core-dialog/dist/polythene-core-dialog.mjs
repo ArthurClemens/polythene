@@ -67,6 +67,7 @@ var classes = {
   open: "pe-dialog--open", // class set to html element
   visible: "pe-dialog--visible", // class set to dialog element
   showBackdrop: "pe-dialog--backdrop",
+  transition: "pe-dialog--transition",
 
   // lookup
   menuContent: menuClasses.content
@@ -92,7 +93,8 @@ var transitionOptions = function transitionOptions(state, attrs, isShow) {
       contentEl: state.contentEl,
       backdropEl: state.backdropEl
     },
-    showClass: classes.visible
+    showClass: classes.visible,
+    transitionClass: classes.transition
   };
 };
 

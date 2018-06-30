@@ -17,15 +17,15 @@ body, html {
   background: #f0f0f0;
 }
 .components {
-  flex-grow: 1;
   flex-shrink: 0;
+  flex-grow: 1;
   overflow: auto;
 }
 .row {
   padding: 16px;
   max-width: 480px;
-  margin: 0 auto;
   background: #fff;
+  margin: 0 auto;
 }
 .row + .row {
   border-top: 1px solid #eee;
@@ -52,22 +52,21 @@ body, html {
   margin-left: 40px;
 }
 
-@media only screen and (min-width:480px) {
-  .components {
-    padding: 16px;
-  }
-  .row {
-    padding: 16px 24px;
-  }
-}
-@media (min-width:650px) {
+@media (min-width:651px) {
   .components {
     width: auto;
+    padding: 16px;
     min-width: 480px;
   }
 }
-@media (min-width:890px) {
+@media (min-width:900px) {
   .large-screen-floating-drawer {
     margin: 16px 0 0 16px;
+  }
+  #show-drawer-button {
+    display: none;
+  }
+  .row {
+    margin: 0;
   }
 }

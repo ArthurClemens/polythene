@@ -114,13 +114,11 @@
 }
 
 .pe-dialog--full-screen .pe-dialog-pane__content>.pe-dialog-pane__body {
-  flex-shrink: 1;
-  max-height: none
+  flex-shrink: 1
 }
 
 .pe-dialog--full-screen .pe-dialog-pane,.pe-dialog--full-screen .pe-dialog-pane__body {
   height: 100vh;
-  max-height: 100vh;
   border: none;
   max-width: none
 }
@@ -129,12 +127,12 @@
   border-width: 1px
 }
 
-.pe-dialog-pane .pe-dialog-pane__footer.pe-dialog-pane__footer--buttons {
+.pe-dialog-pane .pe-dialog-pane__footer {
   min-height: 52px
 }
 
 .pe-dialog-pane .pe-dialog-pane__header {
-  min-height: 60px
+  min-height: 64px
 }
 
 .pe-dialog-pane .pe-dialog-pane__title {
@@ -155,10 +153,6 @@
 
 .pe-dialog-pane .pe-dialog-pane__header--title {
   padding: 20px 24px 16px
-}
-
-.pe-dialog-pane .pe-dialog-pane__body {
-  max-height: calc(100vh - 96px - 112px)
 }
 
 @media (max-width:440px) {
