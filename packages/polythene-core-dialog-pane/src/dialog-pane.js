@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "polythene-core";
+import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe, getStyle } from "polythene-core";
 import classes from "polythene-css-classes/dialog-pane";
 import buttonClasses from "polythene-css-classes/button";
 
@@ -17,20 +17,20 @@ const updateScrollOverflowState = vnode => {
   state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
 };
 
-const updateFooterState = vnode => {
+const updateBodyState = vnode => {
   const state = vnode.state;
+  const headerEl = state.headerEl();
+  const headerHeight = headerEl
+    ? headerEl.getBoundingClientRect().height
+    : 0;
   const footerEl = state.footerEl();
-  if (!footerEl) {
-    return;
-  }
-  const style = window.getComputedStyle(footerEl);
-  const height = footerEl.getBoundingClientRect().height;
-  const minHeight = parseInt(style.minHeight, 10);
-  if (height > minHeight) {
-    footerEl.classList.add(classes.footerHigh);
-  } else {
-    footerEl.classList.remove(classes.footerHigh);
-  }
+  const footerHeight = footerEl
+    ? footerEl.getBoundingClientRect().height
+    : 0;
+  const scrollEl = state.scrollEl();
+  const paddingTop = parseInt(getStyle({ element: scrollEl, prop: "padding-top" }) || 0, 10);
+  const paddingBottom = parseInt(getStyle({ element: scrollEl, prop: "padding-bottom" }) || 0, 10);
+  scrollEl.style.maxHeight = `calc(100vh - ${paddingTop + paddingBottom + headerHeight + footerHeight}px)`;
 };
 
 export const getInitialState = (vnode, createStream) => {
@@ -66,7 +66,7 @@ export const onMount = vnode => {
 
   state.scrollEl(dom.querySelector(`.${classes.body}`));
   state.footerEl(dom.querySelector(`.${classes.footer}`));
-  state.headerEl(dom.querySelector(`.${classes.title}`));
+  state.headerEl(dom.querySelector(`.${classes.header}`));
 
   state.isScrolling.map(() =>
     updateScrollOverflowState(vnode)
@@ -74,7 +74,7 @@ export const onMount = vnode => {
 
   const update = () => {
     updateScrollOverflowState(vnode);
-    updateFooterState(vnode);
+    updateBodyState(vnode);
   };
 
   state.cleanUp = () => (
@@ -83,6 +83,8 @@ export const onMount = vnode => {
 
   // resize: update scroll state ("overflow" borders)
   subscribe("resize", update);
+
+  update();
 };
 
 export const onUnMount = vnode => (

@@ -91,14 +91,6 @@
     })), _ref3;
   };
 
-  var padding_header_height_footer_height = function padding_header_height_footer_height(selector, vars) {
-    return polytheneCoreCss.sel(selector, {
-      " .pe-dialog-pane__body": {
-        maxHeight: "calc(100vh - " + 4 * vars.padding + "px - " + (vars.header_height + vars.footer_height) + "px)"
-      }
-    });
-  };
-
   var padding_header_bottom = function padding_header_bottom(selector, vars) {
     return polytheneCoreCss.sel(selector, {
       " .pe-dialog-pane__header--title": {
@@ -130,13 +122,13 @@
         },
 
         " > .pe-dialog-pane__body": {
-          flexShrink: 1,
-          maxHeight: "initial"
+          flexShrink: 1
+          // maxHeight: "initial",
         }
       },
       " .pe-dialog-pane, .pe-dialog-pane__body": {
         height: "100vh",
-        maxHeight: "100vh",
+        // maxHeight: "100vh",
         border: "none",
         maxWidth: "initial"
       }
@@ -258,7 +250,14 @@
         " .pe-dialog-pane__header": {
           minHeight: vars.header_height + "px"
         }
-      }), padding_header_height_footer_height(selector, vars)];
+      })];
+    },
+    footer_height: function footer_height(selector, vars) {
+      return [polytheneCoreCss.sel(selector, {
+        " .pe-dialog-pane__footer": {
+          minHeight: vars.footer_height + "px"
+        }
+      })];
     },
     padding: function padding(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
@@ -270,19 +269,10 @@
             paddingBottom: vars.padding - 10 + "px"
           }
         }
-      }), padding_header_bottom(selector, vars), padding_header_height_footer_height(selector, vars)];
+      }), padding_header_bottom(selector, vars)];
     },
     header_bottom: function header_bottom(selector, vars) {
       return [padding_header_bottom(selector, vars)];
-    },
-    footer_height: function footer_height(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        " .pe-dialog-pane__footer": {
-          ".pe-dialog-pane__footer--buttons": {
-            minHeight: vars.footer_height + "px"
-          }
-        }
-      }), padding_header_height_footer_height(selector, vars)];
     },
     border_width: function border_width(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
@@ -310,7 +300,7 @@
     border_width: 1,
     footer_height: 52,
     header_bottom: 20,
-    header_height: 60,
+    header_height: 64,
     line_height_title: 24,
     max_width: 7 * polytheneTheme.vars.grid_unit_menu, // 7 * 56 = 392 
     min_width: 5 * polytheneTheme.vars.grid_unit_menu, // 5 * 56 = 280

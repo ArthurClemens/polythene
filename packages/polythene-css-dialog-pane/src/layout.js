@@ -17,13 +17,6 @@ const max_width_side_padding_mobile = (selector, vars) => {
   };
 };
 
-const padding_header_height_footer_height = (selector, vars) =>
-  sel(selector, {
-    " .pe-dialog-pane__body": {
-      maxHeight: "calc(100vh - " + (4 * vars.padding) + "px - " + (vars.header_height + vars.footer_height) + "px)",
-    }
-  });
-
 const padding_header_bottom = (selector, vars) =>
   sel(selector, {
     " .pe-dialog-pane__header--title": {
@@ -55,12 +48,12 @@ export const fullScreen = selector =>
 
       " > .pe-dialog-pane__body": {
         flexShrink: 1 ,
-        maxHeight: "initial",
+        // maxHeight: "initial",
       }
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
-      maxHeight: "100vh",
+      // maxHeight: "100vh",
       border: "none",
       maxWidth: "initial",
     }
@@ -198,7 +191,13 @@ const varFns = {
         minHeight: vars.header_height + "px",
       },
     }),
-    padding_header_height_footer_height(selector, vars),
+  ],
+  footer_height: (selector, vars) => [
+    sel(selector, {
+      " .pe-dialog-pane__footer": {
+        minHeight: vars.footer_height + "px",
+      },
+    }),
   ],
   padding: (selector, vars) => [
     sel(selector, {
@@ -212,20 +211,9 @@ const varFns = {
       }
     }),
     padding_header_bottom(selector, vars),
-    padding_header_height_footer_height(selector, vars),
   ],
   header_bottom: (selector, vars) => [
     padding_header_bottom(selector, vars)
-  ],
-  footer_height: (selector, vars) => [
-    sel(selector, {
-      " .pe-dialog-pane__footer": {
-        ".pe-dialog-pane__footer--buttons": {
-          minHeight: vars.footer_height + "px",
-        },
-      },
-    }),
-    padding_header_height_footer_height(selector, vars),
   ],
   border_width: (selector, vars) => [
     sel(selector, {

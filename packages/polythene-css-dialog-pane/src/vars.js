@@ -7,7 +7,7 @@ export default {
   border_width:                    1,
   footer_height:                   52,
   header_bottom:                   20,
-  header_height:                   60,
+  header_height:                   64,
   line_height_title:               24,
   max_width:                       7 * vars.grid_unit_menu,      // 7 * 56 = 392 
   min_width:                       5 * vars.grid_unit_menu,      // 5 * 56 = 280

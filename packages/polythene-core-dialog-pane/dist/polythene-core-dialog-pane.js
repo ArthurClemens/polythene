@@ -72,20 +72,16 @@
     state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
   };
 
-  var updateFooterState = function updateFooterState(vnode) {
+  var updateBodyState = function updateBodyState(vnode) {
     var state = vnode.state;
+    var headerEl = state.headerEl();
+    var headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
     var footerEl = state.footerEl();
-    if (!footerEl) {
-      return;
-    }
-    var style = window.getComputedStyle(footerEl);
-    var height = footerEl.getBoundingClientRect().height;
-    var minHeight = parseInt(style.minHeight, 10);
-    if (height > minHeight) {
-      footerEl.classList.add(classes.footerHigh);
-    } else {
-      footerEl.classList.remove(classes.footerHigh);
-    }
+    var footerHeight = footerEl ? footerEl.getBoundingClientRect().height : 0;
+    var scrollEl = state.scrollEl();
+    var paddingTop = parseInt(polytheneCore.getStyle({ element: scrollEl, prop: "padding-top" }) || 0, 10);
+    var paddingBottom = parseInt(polytheneCore.getStyle({ element: scrollEl, prop: "padding-bottom" }) || 0, 10);
+    scrollEl.style.maxHeight = "calc(100vh - " + (paddingTop + paddingBottom + headerHeight + footerHeight) + "px)";
   };
 
   var getInitialState = function getInitialState(vnode, createStream) {
@@ -121,7 +117,7 @@
 
     state.scrollEl(dom.querySelector("." + classes.body));
     state.footerEl(dom.querySelector("." + classes.footer));
-    state.headerEl(dom.querySelector("." + classes.title));
+    state.headerEl(dom.querySelector("." + classes.header));
 
     state.isScrolling.map(function () {
       return updateScrollOverflowState(vnode);
@@ -129,7 +125,7 @@
 
     var update = function update() {
       updateScrollOverflowState(vnode);
-      updateFooterState(vnode);
+      updateBodyState(vnode);
     };
 
     state.cleanUp = function () {
@@ -138,6 +134,8 @@
 
     // resize: update scroll state ("overflow" borders)
     polytheneCore.subscribe("resize", update);
+
+    update();
   };
 
   var onUnMount = function onUnMount(vnode) {
