@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-shadow'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-shadow']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssShadow) { 'use strict';
 
   var classes = {
     component: "pe-dialog pe-drawer",
@@ -63,6 +63,8 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var SHADOW_WIDTH = 15;
@@ -70,7 +72,7 @@
   var _border = function _border(selector, vars, isRTL) {
     return polytheneCoreCss.sel(selector, {
       " .pe-dialog__content": {
-        borderWidth: "1px",
+        borderWidth: (vars.border ? 1 : 0) + "px",
         borderStyle: isRTL ? "none none none solid" : "none solid none none"
       }
     });
@@ -87,7 +89,7 @@
       return [{
         // Fixed
         ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
-      }, _border(selector + ".pe-drawer--border", vars, isRTL)];
+      }, _border(selector + ".pe-drawer--border", _extends$1({}, vars, { border: true }), isRTL)];
     };
   };
 
@@ -221,7 +223,7 @@
     });
   };
 
-  var varFns = {
+  var varFns = _extends$1({
     general_styles: function general_styles(selector, vars) {
       return [polytheneCoreCss.sel(selector, [alignLeft(selector, vars), {
         justifyContent: "flex-start",
@@ -350,7 +352,7 @@
       return [vars.backdrop && _backdrop(selector)];
     },
     border: function border(selector, vars) {
-      return [vars.border && _border2(selector)];
+      return [_border2(selector, vars)];
     },
     mini: function mini(selector, vars) {
       return vars.mini && [_mini(selector, vars), _content_width_mini_collapsed(selector, vars)];
@@ -364,11 +366,23 @@
     push: function push(selector, vars) {
       return vars.push && [_push(selector, vars), push_content_width(selector, vars)];
     }
-  };
+  }, polytheneCssShadow.sharedVarFns);
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var vars = {
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var themeVars = _extends$2({}, {
+    backdrop: false,
+    border: undefined, // set to `true` or `false`
+    cover: false,
+    floating: false,
+    mini: false,
+    permanent: false,
+    push: false
+  }, polytheneCssShadow.sharedVars);
+
+  var vars = _extends$2({}, {
     general_styles: true,
 
     animation_delay: "0s",
@@ -378,16 +392,6 @@
     content_max_width: 5 * polytheneTheme.vars.increment, // 5 * 56
     content_width: 240,
     content_width_mini_collapsed: polytheneTheme.vars.increment, // 1 * 56
-
-    // theme vars
-
-    backdrop: false,
-    border: false,
-    cover: false,
-    floating: false,
-    mini: false,
-    permanent: false,
-    push: false,
 
     // color vars
 
@@ -399,7 +403,7 @@
 
     color_light_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_light),
     color_dark_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_border_light)
-  };
+  }, themeVars);
 
   var fns = [layout, color];
   var selector = "." + classes.component.replace(/ /g, ".");

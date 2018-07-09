@@ -4,7 +4,7 @@ const iconMenuSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path
 
 const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 
-export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, pushToolbar, repeats, rtl, dark, createTopContent, drawerOpts }) => {
+export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createContent, showMenuIcon, pushToolbar, repeats, rtl, dark, createTopContent, drawerOpts }) => {
 
   const longText = h.trust(ipsum + ipsum + ipsum);
 
@@ -28,7 +28,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
         : navList;
 
       const toolbarRow = [
-        !drawerOpts.permanent && h(IconButton,
+        showMenuIcon && h(IconButton,
           {
             key: "icon",
             icon: { svg: { content: h.trust(iconMenuSVG) } },
@@ -94,7 +94,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                     {},
                     drawerOpts,
                     { content },
-                    !drawerOpts.permanent && {
+                    showMenuIcon && {
                       show: state.show(),
                       didHide: () => state.show(false)
                     }
@@ -104,10 +104,10 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
                   {
                     style: {
                       overflow: "auto",
-                      flexShrink: drawerOpts.permanent ? 1 : 0,
+                      flexShrink: !showMenuIcon ? 1 : 0,
                       flexGrow: 0,
                       width: drawerOpts.mini 
-                        ? `calc(100% - 56px)`
+                        ? "calc(100% - 56px)"
                         : "100%"
                     }
                   },

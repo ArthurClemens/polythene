@@ -1,17 +1,40 @@
 import { mixin, sel, createLayout } from "polythene-core-css";
 
-const shadowDirective = (which, num) => (selector, vars) =>
+const _createShadowForSelector = (which, depth) => (selector, vars) =>
   sel(selector, {
-    [` .pe-shadow__${which}.pe-shadow--z-${num}`]: {
-      boxShadow: vars[`shadow_${which}_z_${num}`]
+    [` .pe-shadow__${which}.pe-shadow--depth-${depth}`]: {
+      boxShadow: vars[`shadow_${which}_depth_${depth}`]
     }
   });
 
+const _createShadow = (selector, vars, depth, which) =>
+  sel(selector, {
+    [` .pe-shadow__${which}`]: {
+      boxShadow: vars[`shadow_${which}_depth_${depth}`]
+    }
+  });
+
+const shadow = (selector, vars, depth) => [
+  _createShadow(selector, vars, depth, "top"),
+  _createShadow(selector, vars, depth, "bottom")
+];
+
+const shadow_depth = (selector, vars) =>
+  vars.shadow_depth !== undefined
+    ? shadow(selector, vars, vars.shadow_depth)
+    : null;
+
+export const sharedVarFns = {
+  shadow_depth
+};
+
 const varFns = Object.assign({},
   {
-    general_styles: selector => [
+    general_styles: (selector, vars) => [
       sel(selector, [
-        mixin.fit(), {
+        mixin.fit(),
+        shadow(selector, vars, 1),
+        {
           borderRadius: "inherit",
           pointerEvents: "none",
 
@@ -33,10 +56,11 @@ const varFns = Object.assign({},
         }
       })
     ],
+    shadow_depth
   },
-  [1, 2, 3, 4, 5].reduce((acc, num) => (
-    acc[`shadow_top_z_${num}`] = shadowDirective("top", num),
-    acc[`shadow_bottom_z_${num}`] = shadowDirective("bottom", num),
+  [0, 1, 2, 3, 4, 5].reduce((acc, depth) => (
+    acc[`shadow_top_depth_${depth}`] = _createShadowForSelector("top", depth),
+    acc[`shadow_bottom_depth_${depth}`] = _createShadowForSelector("bottom", depth),
     acc
   ), {})
 );

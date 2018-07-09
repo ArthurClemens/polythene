@@ -13,7 +13,7 @@
 
     // states
     animated: "pe-shadow--animated",
-    depth_n: "pe-shadow--z-"
+    depth_n: "pe-shadow--depth-"
   };
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -36,7 +36,7 @@
 
     var attrs = vnode.attrs;
     var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-    var depthClass = "" + classes.depth_n + Math.min(5, attrs.z !== undefined ? attrs.z : 1);
+    var depthClass = attrs.z !== undefined ? "" + classes.depth_n + Math.min(5, attrs.z) : null;
     return [content, h("div", {
       key: "bottom",
       className: [classes.bottomShadow, depthClass].join(" ")

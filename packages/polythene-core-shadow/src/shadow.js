@@ -24,7 +24,9 @@ export const createContent = (vnode, { renderer: h }) => {
   const content = attrs.content
     ? attrs.content
     : attrs.children || vnode.children;
-  const depthClass = `${classes.depth_n}${Math.min(5, attrs.z !== undefined ? attrs.z : 1)}`;
+  const depthClass = attrs.z !== undefined
+    ? `${classes.depth_n}${Math.min(5, attrs.z)}`
+    : null;
   return [
     content,
     h("div", {

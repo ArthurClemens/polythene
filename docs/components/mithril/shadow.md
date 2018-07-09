@@ -64,6 +64,33 @@ m(Shadow, {
 <a id="styling"></a>
 ### Styling
 
+Below are examples how to change the shadow appearance, either with a theme or with CSS.
+
+You can find more information about theming in  [Theming](../../theming.md).
+
+<a id="themed-component"></a>
+#### Themed component
+
+~~~javascript
+import { ShadowCSS } from "polythene-css"
+
+ShadowCSS.addStyle(".themed-shadow", {
+  shadow_bottom_depth_1: "10px 10px 10px 0px rgba(45,58,112,.5)"
+})
+
+m(Shadow, {
+  className: "themed-shadow"
+})
+~~~
+
+Depth can be set using a theme (replacing the component option):
+
+~~~
+ShadowCSS.addStyle(".themed-shadow", {
+  shadow_depth: 3
+})
+~~~
+
 <a id="css"></a>
 #### CSS
 

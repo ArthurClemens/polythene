@@ -166,6 +166,16 @@
   .pe-dialog.pe-drawer.small-screen-cover-drawer.pe-dialog--visible .pe-dialog__backdrop {
     opacity: 1
   }
+
+  .pe-dialog.pe-drawer.small-screen-cover-drawer .pe-dialog__content {
+    border-width: 0;
+    border-style: none solid none none
+  }
+
+  .pe-rtl .pe-dialog.pe-drawer.small-screen-cover-drawer .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer.small-screen-cover-drawer .pe-dialog__content {
+    border-width: 0;
+    border-style: none none none solid
+  }
 }
 
 @media (min-width:651px) and (max-width:900px) {

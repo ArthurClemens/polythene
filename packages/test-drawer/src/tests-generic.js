@@ -12,6 +12,12 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
     color_dark_text:                "#fff",
     color_dark_backdrop_background: "rgba(69, 45, 157, .5)"
   });
+
+  DrawerCSS.addStyle(".drawer-tests-themed-variant", {
+    mini:         true,
+    border:       false,
+    shadow_depth: 3,
+  });
   
   ToolbarCSS.addStyle(".tests-drawer-themed-toolbar", {
     color_light_background: "#e01d5f",
@@ -71,7 +77,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Default drawer (type cover) (can be closed with ESCAPE) (with backdrop)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         z: 1
       }})
@@ -80,7 +86,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         modal: true,
         z: 1
       }})
@@ -89,7 +95,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Anchor end",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         anchor: "end",
         z: 1
@@ -99,7 +105,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Pushing drawer (push from left, without shadow, with border)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         push: true,
         border: true,
       }})
@@ -108,7 +114,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Pushing drawer including toolbar",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, pushToolbar: true, createTopContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, pushToolbar: true, createTopContent, drawerOpts: {
         push: true,
         border: true,
       }})
@@ -117,7 +123,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Mini (expanding) drawer",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, createTopContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
         border: true,
         mini: true,
       }})
@@ -126,7 +132,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Long content (scrolling list)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, repeats: 4, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, repeats: 4, drawerOpts: {
         backdrop: true,
         z: 1
       }})
@@ -135,7 +141,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Themed drawer",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         className: "drawer-tests-themed",
         tone: "dark",
@@ -143,10 +149,19 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
+      name: "Themed (set variant to mini and shadow, using a theme)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
+        permanent: true,
+        className: "drawer-tests-themed-variant",
+      }})
+    },
+    {
       name: "Styled drawer",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         style: {
           background: "#fff59d",
@@ -159,7 +174,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Transitions",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         z: 1,
         transitions: {
@@ -208,7 +223,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Default drawer (RTL)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         backdrop: true,
         z: 1,
       }})
@@ -217,7 +232,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Mini drawer (RTL)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         mini: true,
         border: true,
       }})
@@ -226,7 +241,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Anchor end (RTL)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         backdrop: true,
         anchor: "end",
         z: 1
@@ -236,7 +251,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "Pushing drawer (RTL)",
       interactive: true,
       exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, rtl: true, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         push: true,
         border: true,
       }})
@@ -249,7 +264,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       interactive: true,
       exclude: true,
       className: "pe-dark-tone",
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, dark: true, drawerOpts: {
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, dark: true, drawerOpts: {
         backdrop: true,
         z: 1
       }})

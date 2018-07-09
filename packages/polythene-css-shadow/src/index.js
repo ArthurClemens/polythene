@@ -1,6 +1,6 @@
 import classes from "polythene-css-classes/shadow";
-import layout from "./layout";
-import vars from "./vars";
+import layout, { sharedVarFns } from "./layout";
+import vars, { sharedVars } from "./vars";
 import { styler } from "polythene-core-css";
 
 const fns = [layout];
@@ -21,4 +21,6 @@ export {
   getStyle,
   layout,
   vars,
+  sharedVars,
+  sharedVarFns,
 };

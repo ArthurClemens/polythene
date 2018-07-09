@@ -1,12 +1,13 @@
 import { sel, selectorRTL, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
+import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 
 const SHADOW_WIDTH = 15;
 
 const _border = (selector, vars, isRTL) =>
   sel(selector, {
     " .pe-dialog__content": {
-      borderWidth: "1px",
+      borderWidth: `${vars.border ? 1 : 0}px`,
       borderStyle: isRTL ? "none none none solid" : "none solid none none"
     },
   });
@@ -24,7 +25,11 @@ const alignSide = isRTL => (selector, vars) => [
       [isRTL ? "left" : "right"]: "auto",
     },
   },
-  _border(`${selector}.pe-drawer--border`, vars, isRTL)
+  _border(`${selector}.pe-drawer--border`, Object.assign(
+    {},
+    vars,
+    { border: true }
+  ), isRTL)
 ];
 
 const alignLeft = alignSide(false);
@@ -297,7 +302,7 @@ const varFns = {
     vars.backdrop && backdrop(selector)
   ],
   border: (selector, vars) => [
-    vars.border && border(selector)
+    border(selector, vars)
   ],
   mini: (selector, vars) =>
     vars.mini && [
@@ -314,7 +319,8 @@ const varFns = {
     vars.push && [
       push(selector, vars),
       push_content_width(selector, vars)
-    ]
+    ],
+  ...shadowVarFns
 };
 
 export default createLayout({ varFns });

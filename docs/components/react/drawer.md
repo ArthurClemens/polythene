@@ -270,6 +270,19 @@ DrawerCSS.addStyle(".themed-drawer", {
 >
 ~~~
 
+As demonstrated in [responsive drawer](#responsive-drawer) above, some behaviors can be set using a theme (replacing component options):
+
+~~~javascript
+DrawerCSS.addStyle(
+  ".themed-mini-drawer",
+  {
+    mini:         true,
+    border:       false,
+    shadow_depth: 3,
+  }
+)
+~~~
+
 <a id="css"></a>
 #### CSS
 

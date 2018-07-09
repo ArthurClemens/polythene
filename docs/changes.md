@@ -66,6 +66,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Long lists are now scrollable
   * `offset` is deprecated; use `offsetH`
   * `size` is deprecated; use `width`
+* [Shadow](components/shadow.md)
+  * CSS style variables have been renamed: `z` has been changed to `depth`
 * [Slider](components/slider.md)
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * [Spinners](components/spinner.md) and [Tabs](components/tabs.md)

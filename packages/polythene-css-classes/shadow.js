@@ -8,5 +8,5 @@ export default {
 
   // states
   animated:     "pe-shadow--animated",
-  depth_n:      "pe-shadow--z-",
+  depth_n:      "pe-shadow--depth-",
 };

@@ -1,5 +1,6 @@
 import { sel, createColor, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
 
 var classes = {
   component: "pe-dialog pe-drawer",
@@ -60,6 +61,8 @@ var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var SHADOW_WIDTH = 15;
@@ -67,7 +70,7 @@ var SHADOW_WIDTH = 15;
 var _border = function _border(selector, vars$$1, isRTL) {
   return sel(selector, {
     " .pe-dialog__content": {
-      borderWidth: "1px",
+      borderWidth: (vars$$1.border ? 1 : 0) + "px",
       borderStyle: isRTL ? "none none none solid" : "none solid none none"
     }
   });
@@ -84,7 +87,7 @@ var alignSide = function alignSide(isRTL) {
     return [{
       // Fixed
       ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty$1(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty$1(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
-    }, _border(selector + ".pe-drawer--border", vars$$1, isRTL)];
+    }, _border(selector + ".pe-drawer--border", _extends$1({}, vars$$1, { border: true }), isRTL)];
   };
 };
 
@@ -218,7 +221,7 @@ var _floating = function _floating(selector) {
   });
 };
 
-var varFns = {
+var varFns = _extends$1({
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(selector, vars$$1), {
       justifyContent: "flex-start",
@@ -347,7 +350,7 @@ var varFns = {
     return [vars$$1.backdrop && _backdrop(selector)];
   },
   border: function border(selector, vars$$1) {
-    return [vars$$1.border && _border2(selector)];
+    return [_border2(selector, vars$$1)];
   },
   mini: function mini(selector, vars$$1) {
     return vars$$1.mini && [_mini(selector, vars$$1), _content_width_mini_collapsed(selector, vars$$1)];
@@ -361,11 +364,23 @@ var varFns = {
   push: function push(selector, vars$$1) {
     return vars$$1.push && [_push(selector, vars$$1), push_content_width(selector, vars$$1)];
   }
-};
+}, sharedVarFns);
 
 var layout = createLayout({ varFns: varFns });
 
-var vars$1 = {
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var themeVars = _extends$2({}, {
+  backdrop: false,
+  border: undefined, // set to `true` or `false`
+  cover: false,
+  floating: false,
+  mini: false,
+  permanent: false,
+  push: false
+}, sharedVars);
+
+var vars$1 = _extends$2({}, {
   general_styles: true,
 
   animation_delay: "0s",
@@ -375,16 +390,6 @@ var vars$1 = {
   content_max_width: 5 * vars.increment, // 5 * 56
   content_width: 240,
   content_width_mini_collapsed: vars.increment, // 1 * 56
-
-  // theme vars
-
-  backdrop: false,
-  border: false,
-  cover: false,
-  floating: false,
-  mini: false,
-  permanent: false,
-  push: false,
 
   // color vars
 
@@ -396,7 +401,7 @@ var vars$1 = {
 
   color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_light),
   color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
-};
+}, themeVars);
 
 var fns = [layout, color];
 var selector = "." + classes.component.replace(/ /g, ".");
