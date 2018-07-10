@@ -26,7 +26,7 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
   });
 
   const Block = {
-    view: ({ attrs }) =>
+    view: ({ attrs }) => 
       h("form", blockAttrs(attrs), h(SearchField, attrs))
   };
 
@@ -85,7 +85,7 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
       name: "With search results",
       component: {
         view: () =>
-          h(ResultsBlock, {})
+          h(ResultsBlock, { fullWidth: true })
       }
     },
 

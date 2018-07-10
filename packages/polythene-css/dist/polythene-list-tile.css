@@ -294,7 +294,7 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   background-color: inherit
 }
 
-.pe-dark-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-dark-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-dark-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-dark-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus {
+.pe-dark-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,.pe-dark-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,.pe-dark-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,.pe-dark-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus {
   outline: none;
   background-color: inherit
 }
@@ -331,7 +331,7 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   background-color: inherit
 }
 
-.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__primary:focus,.pe-list-tile:not(.pe-list-tile--disabled) a.pe-list-tile__secondary:focus {
+.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,.pe-light-tone.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,.pe-light-tone .pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus,.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__primary:focus,.pe-list-tile:not(.pe-list-tile--disabled):not(.pe-list-tile--selected) a.pe-list-tile__secondary:focus {
   outline: none;
   background-color: inherit
 }
@@ -364,19 +364,19 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   background-color: rgba(0,0,0,.06)
 }
 
-.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable,.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary .pe-list-tile__content-front {
+.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
   color: #fff
 }
 
-.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary,.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__secondary {
+.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-no-touch .pe-dark-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__secondary {
   background-color: hsla(0,0%,100%,.08)
 }
 
-.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable,.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary .pe-list-tile__content-front,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary .pe-list-tile__content-front {
+.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected),.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary .pe-list-tile__content-front {
   color: rgba(0,0,0,.87)
 }
 
-.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary,.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__secondary,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__primary,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable .pe-list-tile__secondary {
+.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-no-touch .pe-light-tone .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__secondary,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__primary,.pe-no-touch .pe-list-tile:hover.pe-list-tile--hoverable:not(.pe-list-tile--selected) .pe-list-tile__secondary {
   background-color: rgba(0,0,0,.06)
 }
 /*# sourceMappingURL=polythene-list-tile.css.map */

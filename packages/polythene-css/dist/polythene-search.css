@@ -74,6 +74,14 @@
   padding-left: 16px
 }
 
+.pe-search.pe-search--full-width+.pe-list .pe-list-tile>:first-child {
+  padding-left: 8px
+}
+
+.pe-search.pe-search--full-width+.pe-list .pe-list-tile>:last-child {
+  padding-right: 8px
+}
+
 .pe-search.pe-search--inset {
   border-radius: 4px
 }

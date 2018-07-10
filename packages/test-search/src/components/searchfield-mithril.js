@@ -75,7 +75,6 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
     view: ({ state, attrs }) => {
       // incoming value added for result list example:
       const value = attrs.value !== undefined ? attrs.value : state.value();
-      
       return h(Search, Object.assign(
         {},
         {

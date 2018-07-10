@@ -161,6 +161,14 @@ const varFns = {
         " .pe-textfield__input, .pe-textfield__label": {
           paddingLeft: full_width_input_indent + "px",
         }
+      },
+      ".pe-search--full-width + .pe-list .pe-list-tile": {
+        "> :first-child": {
+          paddingLeft: vars.full_width_side_padding + "px",
+        },
+        "> :last-child": {
+          paddingRight: vars.full_width_side_padding + "px",
+        }
       }
     });
   },

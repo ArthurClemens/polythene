@@ -244,6 +244,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
     },
     view: vnode => {
       const state = vnode.state;
+      const attrs = vnode.attrs;
       const searchValue = state.searchValue();
       const matches = state.matches();
       return h(".container",
@@ -253,6 +254,7 @@ export default ({ h, k, List, ListTile, SearchField }) => {
         },
         [
           h(SearchField, Object.assign({},
+            attrs,
             {
               key: "search",
               label: "Type color name",
