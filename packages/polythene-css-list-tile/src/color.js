@@ -93,7 +93,7 @@ const tintFns = tint => ({
   ],
   ["color_" + tint + "_focus_background"]: (selector, vars) => [
     sel(selector, {
-      ":not(.pe-list-tile--disabled)": {
+      ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
         " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
           backgroundColor: vars["color_" + tint + "_focus_background"]
         }

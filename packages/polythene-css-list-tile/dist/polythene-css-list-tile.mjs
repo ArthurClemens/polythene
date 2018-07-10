@@ -119,7 +119,7 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
     return [sel(selector, {
-      ":not(.pe-list-tile--disabled)": {
+      ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
         " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
           backgroundColor: vars$$1["color_" + tint + "_focus_background"]
         }

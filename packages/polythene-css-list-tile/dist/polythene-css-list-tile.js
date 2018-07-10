@@ -122,7 +122,7 @@
       })];
     }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ":not(.pe-list-tile--disabled)": {
+        ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
           " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
             backgroundColor: vars["color_" + tint + "_focus_background"]
           }
