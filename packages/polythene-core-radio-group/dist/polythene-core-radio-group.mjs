@@ -41,11 +41,11 @@ var createContent = function createContent(vnode, _ref2) {
     if (!buttonOpts) {
       return null;
     }
-    // Only set defaultChecked the first time when no value has been stored yet
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked) && checkedIndex === null;
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
+    // Only set defaultChecked the first time when no value has been stored yet
+    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) && checkedIndex === null;
     var isChecked = isDefaultChecked || buttonOpts.checked || checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */

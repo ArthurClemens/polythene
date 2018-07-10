@@ -157,6 +157,47 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 ~~~
 
 
+or use `defaultSelectedValue` on the group:
+
+##### With JSX
+
+~~~jsx
+<RadioGroup
+  name="company"
+  defaultSelectedValue="1"
+  buttons={[
+    {
+      value: "1",
+      label: "One",
+    },
+    {
+      value: "1",
+      label: "Two",
+    }
+  ]}
+/>
+~~~
+
+
+##### With hyperscript
+
+~~~javascript
+m(RadioGroup, {
+  name: "company",
+  defaultSelectedValue: "1",
+  buttons: [
+    {
+      value: "1",
+      label: "One",
+    },
+    {
+      value: "2",
+      label: "Two",
+    }
+  ]
+})
+~~~
+
 
 
 <a id="shared-options"></a>

@@ -7,7 +7,7 @@ Manages a set of [Radio Buttons](radio-button.md).
 - [Main features](#main-features)
 - [Usage](#usage)
 - [Options](#options)
-  - [Radio Group specific](#radio-group-specific)
+  - [Radio Group options](#radio-group-options)
   - [Common component options](#common-component-options)
 - [CSS classes](#css-classes)
 
@@ -35,13 +35,14 @@ Described in:
 ## Options
 
 
-<a id="radio-group-specific"></a>
-### Radio Group specific
+<a id="radio-group-options"></a>
+### Radio Group options
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
 | **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
+| **defaultSelectedValue** | optional | String | | The value of the default selected Radio Button |
 | **name**      | required | String | | Name for all radio button elements |
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 

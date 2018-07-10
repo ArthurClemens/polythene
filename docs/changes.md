@@ -66,6 +66,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Long lists are now scrollable
   * `offset` is deprecated; use `offsetH`
   * `size` is deprecated; use `width`
+* [Radio Group](components/radio-group.md)
+  * Added option `defaultSelectedValue`
 * [Shadow](components/shadow.md)
   * CSS style variables have been renamed: `z` has been changed to `depth`
 * [Slider](components/slider.md)

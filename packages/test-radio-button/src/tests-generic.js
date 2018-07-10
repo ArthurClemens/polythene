@@ -68,6 +68,24 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       }
     },
     {
+      name: "Option: defaultSelectedValue",
+      component: RadioGroup,
+      attrs: {
+        name: "defaultSelectedValue",
+        defaultSelectedValue: "1",
+        content: [
+          {
+            value: "1",
+            label: "One",
+          },
+          {
+            value: "2",
+            label: "Two",
+          }
+        ]
+      }
+    },
+    {
       name: "Option: disabled",
       component: RadioGroup,
       attrs: {

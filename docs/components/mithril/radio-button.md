@@ -101,20 +101,40 @@ Unlike [Checkbox](checkbox.md), the checked state does not need to be set explic
 To set the initially checked radio button, pass `defaultChecked` to the `button` option:
 
 ~~~javascript
-[
-  {
-    value: "1",
-    label: "One",
-    defaultChecked: true
-  },
-  {
-    value: "2",
-    label: "Two",
-  }
-]
+m(RadioGroup, {
+  name: "company",
+  buttons: [
+    {
+      value: "1",
+      label: "One",
+      defaultChecked: true
+    },
+    {
+      value: "2",
+      label: "Two",
+    }
+  ]
+})
 ~~~
 
+or use `defaultSelectedValue` on the group:
 
+~~~javascript
+m(RadioGroup, {
+  name: "company",
+  defaultSelectedValue: "1",
+  buttons: [
+    {
+      value: "1",
+      label: "One",
+    },
+    {
+      value: "2",
+      label: "Two",
+    }
+  ]
+})
+~~~
 
 
 <a id="shared-options"></a>
