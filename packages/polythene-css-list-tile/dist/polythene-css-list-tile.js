@@ -44,7 +44,7 @@
             backgroundColor: "inherit"
           }
         },
-        ":not(.pe-list-tile--disabled)": {
+        ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
           " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
             outline: "none",
             backgroundColor: "inherit"
@@ -136,13 +136,13 @@
 
     return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-list-tile--hoverable": {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
           color: vars["color_" + tint + "_hover"]
         }
       })];
     }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-list-tile--hoverable": {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
           " .pe-list-tile__primary, .pe-list-tile__secondary": {
             backgroundColor: vars["color_" + tint + "_hover_background"]
           }
@@ -150,7 +150,7 @@
       })];
     }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-list-tile--hoverable": {
+        ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
           " .pe-list-tile__primary .pe-list-tile__content-front": {
             color: vars["color_" + tint + "_hover_front"]
           }

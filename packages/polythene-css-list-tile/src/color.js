@@ -8,7 +8,7 @@ const generalFns = ({
           backgroundColor: "inherit"
         }
       },
-      ":not(.pe-list-tile--disabled)": {
+      ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
         " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
           outline: "none",
           backgroundColor: "inherit"
@@ -105,14 +105,14 @@ const tintFns = tint => ({
 const hoverTintFns = tint => ({
   ["color_" + tint + "_hover"]: (selector, vars) => [
     sel(selector, {
-      ".pe-list-tile--hoverable": {
+      ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
         color: vars["color_" + tint + "_hover"],
       }
     })
   ],
   ["color_" + tint + "_hover_background"]: (selector, vars) => [
     sel(selector, {
-      ".pe-list-tile--hoverable": {
+      ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
         " .pe-list-tile__primary, .pe-list-tile__secondary": {
           backgroundColor: vars["color_" + tint + "_hover_background"]
         },
@@ -121,7 +121,7 @@ const hoverTintFns = tint => ({
   ],
   ["color_" + tint + "_hover_front"]: (selector, vars) => [
     sel(selector, {
-      ".pe-list-tile--hoverable": {
+      ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
         " .pe-list-tile__primary .pe-list-tile__content-front": {
           color: vars["color_" + tint + "_hover_front"]
         },
