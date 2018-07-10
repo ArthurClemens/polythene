@@ -230,6 +230,16 @@
   width: 56px
 }
 
+.pe-dialog.pe-drawer .pe-dialog__content {
+  border-width: 0;
+  border-style: none solid none none
+}
+
+.pe-rtl .pe-dialog.pe-drawer .pe-dialog__content,[dir=rtl] .pe-dialog.pe-drawer .pe-dialog__content {
+  border-width: 0;
+  border-style: none none none solid
+}
+
 .pe-dark-tone.pe-dialog.pe-drawer .pe-dialog__backdrop,.pe-dark-tone .pe-dialog.pe-drawer .pe-dialog__backdrop {
   background-color: rgba(0,0,0,.5)
 }
