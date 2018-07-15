@@ -13,19 +13,19 @@
 
   // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
 
-  var MAX_Z = 5;
+  var MAX_SHADOW_DEPTH = 5;
 
   var tapStart = void 0,
       tapEndAll = function tapEndAll() {},
       downButtons = [];
 
   var animateZ = function animateZ(which, vnode) {
-    var zBase = vnode.state.zBase;
+    var shadowDepthBase = vnode.state.shadowDepthBase;
     var increase = vnode.attrs.increase || 1;
-    var z = vnode.state.z();
-    var newZ = which === "down" && zBase < MAX_Z ? Math.min(zBase + increase, MAX_Z) : which === "up" ? Math.max(z - increase, zBase) : z;
-    if (newZ !== z) {
-      vnode.state.z(newZ);
+    var shadowDepth = vnode.state.shadowDepth();
+    var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepth - increase, shadowDepthBase) : shadowDepth;
+    if (newShadowDepth !== shadowDepth) {
+      vnode.state.shadowDepth(newShadowDepth);
     }
   };
 
@@ -69,14 +69,15 @@
 
   var getInitialState = function getInitialState(vnode, createStream) {
     var attrs = vnode.attrs;
-    var zBase = attrs.z !== undefined ? attrs.z : 1;
-    var z = createStream(zBase);
+    var shadowDepthBase = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined // deprecated
+    ? attrs.z : 1;
+    var shadowDepth = createStream(shadowDepthBase);
     var tapEventsInited = createStream(false);
     return {
-      zBase: zBase,
-      z: z,
+      shadowDepthBase: shadowDepthBase,
+      shadowDepth: shadowDepth,
       tapEventsInited: tapEventsInited,
-      redrawOnUpdate: createStream.merge([z])
+      redrawOnUpdate: createStream.merge([shadowDepth])
     };
   };
 
@@ -85,6 +86,10 @@
       return;
     }
     var state = vnode.state;
+    var attrs = vnode.attrs;
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("RaisedButton", "z", "shadowDepth");
+    }
     if (!state.tapEventsInited()) {
       initTapEvents(vnode);
       state.tapEventsInited(true);
@@ -108,7 +113,7 @@
       parentClassName: [classes.super, attrs.parentClassName || classes.component].join(" "),
       animateOnTap: false,
       shadowComponent: h(Shadow, {
-        z: attrs.disabled ? 0 : state.z,
+        shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
         animated: true
       }),
       wash: attrs.wash !== undefined ? attrs.wash : false,

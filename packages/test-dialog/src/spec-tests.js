@@ -43,19 +43,19 @@ export default ({ DialogInstance, renderer, keys, Button, Dialog }) => {
       }
     },
     {
-      name: "Option: z (0) - spec",
+      name: "Option: shadowDepth (0) - spec",
       component: DialogInstance,
       attrs: {
         body: renderer.trust(shortText),
-        z: 0
+        shadowDepth: 0
       }
     },
     {
-      name: "Option: z (5) - spec",
+      name: "Option: shadowDepth (5) - spec",
       component: DialogInstance,
       attrs: {
         body: renderer.trust(shortText),
-        z: 6
+        shadowDepth: 5
       }
     },
     {

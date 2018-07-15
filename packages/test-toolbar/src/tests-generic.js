@@ -132,7 +132,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
     {
       name: "Shadow",
       component: {
-        view: () => h(Toolbar, { z: 1 }, toolbarRow),
+        view: () => h(Toolbar, { shadowDepth: 1 }, toolbarRow),
       }
     },
     {
@@ -181,7 +181,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
             },
             [
               h(Toolbar, {
-                z: 1,
+                shadowDepth: 1,
                 key: "toolbar", // for React
               }, toolbarRow),
               h("div",

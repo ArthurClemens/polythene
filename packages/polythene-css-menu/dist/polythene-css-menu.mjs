@@ -1,5 +1,6 @@
 import { sel, createColor, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -88,6 +89,8 @@ var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var alignSide = function alignSide(isRTL) {
@@ -175,7 +178,7 @@ var _z = function _z(selector, vars$$1) {
   });
 };
 
-var varFns = {
+var varFns = _extends$1({
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(vars$$1), {
       position: "static",
@@ -307,20 +310,29 @@ var varFns = {
       }
     })];
   },
-  top_menu: function top_menu(selector, vars$$1) {
-    return [vars$$1.top_menu && _top_menu(selector, vars$$1)];
-  },
+  // Theme vars
   backdrop: function backdrop(selector, vars$$1) {
     return [vars$$1.backdrop && _backdrop(selector, vars$$1)];
+  },
+  top_menu: function top_menu(selector, vars$$1) {
+    return [vars$$1.top_menu && _top_menu(selector, vars$$1)];
   },
   z: function z(selector, vars$$1) {
     return [vars$$1.z && _z(selector, vars$$1)];
   }
-};
+}, sharedVarFns);
 
 var layout = createLayout({ varFns: varFns });
 
-var vars$1 = {
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var themeVars = _extends$2({}, {
+  backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
+  top_menu: false, // set to true to position the menu at the top of the screen, full width
+  z: vars.z_menu // z-depth of the menu (not the shadow depth)
+}, sharedVars);
+
+var vars$1 = _extends$2({}, {
   general_styles: true,
 
   animation_delay: "0s",
@@ -336,12 +348,6 @@ var vars$1 = {
   width_factor: vars.grid_unit_menu,
   widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
 
-  // theme vars
-
-  backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
-  top_menu: false, // set to true to position the menu at the top of the screen, full width
-  z: vars.z_menu,
-
   // color vars
 
   color_light_background: rgba(vars.color_light_background),
@@ -351,7 +357,7 @@ var vars$1 = {
   color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 
   // text colors are set by content, usually list tiles
-};
+}, themeVars);
 
 var fns = [layout, color];
 var selector = "." + classes.component;

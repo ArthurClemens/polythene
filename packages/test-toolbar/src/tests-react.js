@@ -49,7 +49,7 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, renderer: h }) => {
     {
       name: "Option: shadow (JSX)",
       component: () =>
-        <Toolbar z={1}>
+        <Toolbar shadowDepth={1}>
           <ToolbarButton svg={{ content: iconMenuSVG }} />
           <span>Title</span>
           <ToolbarButton svg={{ content: iconRefreshSVG }} />

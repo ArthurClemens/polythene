@@ -51,7 +51,7 @@ export default {
           h(FAB, {
             className: "self-end",
             icon: { svg: { content: h.trust(iconPlusSVG) } },
-            z: 1,
+            shadowDepth: 1,
             style: {
               margin: "0 16px 16px 0"
             }

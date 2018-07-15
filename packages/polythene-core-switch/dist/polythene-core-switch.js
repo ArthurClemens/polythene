@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.polythene = {})));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core'], factory) :
+  (factory((global.polythene = {}),global['polythene-core']));
+}(this, (function (exports,polytheneCore) { 'use strict';
 
   var classes = {
     component: "pe-switch-control",
@@ -40,16 +40,29 @@
     return vnode.attrs.element || "div";
   };
 
-  var createContent = function createContent(vnode, _ref) {
-    var h = _ref.renderer,
-        Shadow = _ref.Shadow,
-        IconButton = _ref.IconButton;
+  var onMount = function onMount(_ref) {
+    var attrs = _ref.attrs;
+
+    if (attrs.zOn !== undefined) {
+      polytheneCore.deprecation("Switch", "zOn", "shadowDepthOn");
+    }
+    if (attrs.zOff !== undefined) {
+      polytheneCore.deprecation("Switch", "zOff", "shadowDepthOff");
+    }
+  };
+
+  var createContent = function createContent(vnode, _ref2) {
+    var h = _ref2.renderer,
+        Shadow = _ref2.Shadow,
+        IconButton = _ref2.IconButton;
 
     var attrs = vnode.attrs;
 
-    var zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
-    var zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
-    var z = attrs.checked ? zOn : zOff;
+    var shadowDepthOff = attrs.shadowDepthOff !== undefined ? attrs.shadowDepthOff : attrs.zOff !== undefined ? attrs.zOff // deprecated
+    : 1;
+    var shadowDepthOn = attrs.shadowDepthOn !== undefined ? attrs.shadowDepthOn : attrs.zOn !== undefined ? attrs.zOn // deprecated
+    : 2;
+    var shadowDepth = attrs.checked ? shadowDepthOn : shadowDepthOff;
     var raised = attrs.raised !== undefined ? attrs.raised : true;
 
     return [h("div", {
@@ -59,7 +72,7 @@
       className: classes.thumb,
       key: "button",
       content: h("div", { className: classes.knob }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
-        z: z,
+        shadowDepth: shadowDepth,
         animated: true
       }) : null]),
       style: attrs.style,
@@ -72,6 +85,7 @@
 
   var viewControl = /*#__PURE__*/Object.freeze({
     getElement: getElement,
+    onMount: onMount,
     createContent: createContent
   });
 

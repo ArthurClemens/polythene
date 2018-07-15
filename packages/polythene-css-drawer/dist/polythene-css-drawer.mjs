@@ -345,6 +345,8 @@ var varFns = _extends$1({
   content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars$$1) {
     return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars$$1)];
   },
+
+  // Theme vars
   cover: function cover(selector, vars$$1) {
     return vars$$1.cover && [_cover(selector, vars$$1), cover_content_max_width(selector, vars$$1)];
   },

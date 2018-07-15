@@ -69,10 +69,10 @@
   var onMount = function onMount(_ref) {
     var attrs = _ref.attrs;
 
-    if (attrs.borders) {
+    if (attrs.borders !== undefined) {
       polytheneCore.deprecation("List", "borders", "border");
     }
-    if (attrs.indentedBorders) {
+    if (attrs.indentedBorders !== undefined) {
       polytheneCore.deprecation("List", "indentedBorders", "indentedBorder");
     }
   };

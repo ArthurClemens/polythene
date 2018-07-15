@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, classForSize } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, classForSize, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/base-spinner";
 
 const transitionOptions = (state, attrs, isShow) => ({
@@ -35,6 +35,11 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
+
+  if (attrs.z !== undefined) {
+    deprecation("Spinner", "z", "shadowDepth");
+  }
+
   state.dom(vnode.dom);
 
   if (!attrs.permanent) {
@@ -71,10 +76,13 @@ export const createContent = (vnode, { renderer: h, Shadow }) => {
   if (state.hide) {
     setTimeout(() => { hideSpinner(state, attrs); }, 0);
   }
+  const shadowDepth = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z; // deprecated
 
   return [
     attrs.raised && attrs.content
-      ? h(Shadow, { key: "shadow", z: attrs.z })
+      ? h(Shadow, { key: "shadow", shadowDepth })
       : null,
     attrs.content
   ];

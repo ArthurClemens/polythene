@@ -15,10 +15,10 @@ const paddingClass = (attr = "both") =>
   paddingClasses[attr];
 
 export const onMount = ({ attrs }) => {
-  if (attrs.borders) {
+  if (attrs.borders !== undefined) {
     deprecation("List", "borders", "border");
   }
-  if (attrs.indentedBorders) {
+  if (attrs.indentedBorders !== undefined) {
     deprecation("List", "indentedBorders", "indentedBorder");
   }
 };

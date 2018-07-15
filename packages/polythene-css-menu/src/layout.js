@@ -1,5 +1,6 @@
 import { vars as themeVars } from "polythene-theme";
 import { sel, selectorRTL, createLayout } from "polythene-core-css";
+import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
@@ -215,15 +216,18 @@ const varFns = {
       }
     })
   ],
-  top_menu: (selector, vars) => [
-    vars.top_menu && top_menu(selector, vars)
-  ],
+  // Theme vars
   backdrop: (selector, vars) => [
     vars.backdrop && backdrop(selector, vars)
+  ],
+  top_menu: (selector, vars) => [
+    vars.top_menu && top_menu(selector, vars)
   ],
   z: (selector, vars) => [
     vars.z && z(selector, vars)
   ],
+  // shadow_depth:
+  ...shadowVarFns
 };
 
 export default createLayout({ varFns });

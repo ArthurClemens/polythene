@@ -31,19 +31,19 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Option: raised (with option z: 2)",
+      name: "Option: raised (with option shadowDepth: 2)",
       component: RaisedButton,
       attrs: {
         label: "Raised to 2",
-        z: 2
+        shadowDepth: 2
       }
     },
     {
-      name: "Option: raised (with option z: 5)",
+      name: "Option: raised (with option shadowDepth: 5)",
       component: RaisedButton,
       attrs: {
         label: "Raised to 5",
-        z: 5
+        shadowDepth: 5
       }
     },
     {

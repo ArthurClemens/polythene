@@ -1,6 +1,6 @@
 import classes from "polythene-css-classes/drawer";
 
-// Props to be passed to a dialog
+// Props to be passed to Dialog
 export const createProps = vnode => {
   const attrs = vnode.attrs;
   const isCover = !(attrs.push || attrs.permanent || attrs.mini);
@@ -23,9 +23,13 @@ export const createProps = vnode => {
         attrs.anchor === "end" ? classes.anchorEnd : null,
       ].join(" "),
       inactive: attrs.permanent && !attrs.mini,
+      shadowDepth: attrs.shadowDepth !== undefined
+        ? attrs.shadowDepth
+        : 0,
+      // deprecated:
       z: attrs.z !== undefined
         ? attrs.z
-        : 0
+        : undefined
     }
   );
 };

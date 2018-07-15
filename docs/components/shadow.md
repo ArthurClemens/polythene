@@ -37,10 +37,10 @@ Adds a configurable shadow to an element.
 <a id="shadow-options"></a>
 ### Shadow options
 
-| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
-| ------------- | -------------- | -------- | ----------- | --------------- |
-| **animated** | optional | Boolean | false | Set to `true` to animate the shadow when setting a new z value. |
-| **z** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
+| **Parameter**   |  **Required** | **Type** | **Default** | **Description** |
+| --------------- | -------------- | -------- | ----------- | --------------- |
+| **animated**    | optional | Boolean | false | Set to `true` to animate the shadow when setting a new z value. |
+| **shadowDepth** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
 
 
 <a id="common-component-options"></a>

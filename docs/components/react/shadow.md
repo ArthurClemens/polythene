@@ -22,7 +22,7 @@
 <a id="usage"></a>
 ## Usage
 
-Shadow has 5 depth levels, configured with option `z`.
+Shadow has 5 depth levels, configured with option `shadowDepth`.
 
 <a id="with-jsx"></a>
 #### With JSX
@@ -33,7 +33,7 @@ Shadow has 5 depth levels, configured with option `z`.
 import React from "react"
 import { Shadow } from "polythene-react"
 
-<Shadow z={2} />
+<Shadow shadowDepth={2} />
 ~~~
 
 <a id="with-hyperscript"></a>
@@ -44,7 +44,7 @@ import { Shadow } from "polythene-react"
 ~~~javascript
 import { renderer as h, Shadow } from "polythene-react"
 
-h(Shadow, { z: 2 })
+h(Shadow, { shadowDepth: 2 })
 ~~~
 
 To add a shadow to an element, the element must have the style `position: "relative"`. In this example the shadow is added to the outer div:
@@ -52,7 +52,7 @@ To add a shadow to an element, the element must have the style `position: "relat
 ~~~jsx
 <div className="outer" style={{ position: "relative" }}>
   <span>Some card</span>
-  <Shadow z={2} />
+  <Shadow shadowDepth={2} />
 </div>
 ~~~
 
@@ -65,12 +65,12 @@ h(".outer",
   },
   [
     h("span", "Some card"),
-    h(Shadow, { z: 2 })
+    h(Shadow, { shadowDepth: 2 })
   ]
 )
 ~~~
 
-To animated the shadow on change, use `animated`. Using a dynamic z value in the component state:
+To animated the shadow on change, use `animated`. Using a dynamic shadowDepth value in the component state:
 
 ~~~jsx
 import React, { Component } from "react";
@@ -80,14 +80,14 @@ class InteractiveShadow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      z: 1
+      shadowDepth: 1
     };
   }
 
   render() {
-    // change the z value, for instance after user interaction (left out here)
+    // change the shadowDepth value, for instance after user interaction (left out here)
     return (<div>
-      <Shadow z={this.state.z} />
+      <Shadow shadowDepth={this.state.shadowDepth} />
     </div>)
   }
 }

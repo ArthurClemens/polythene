@@ -52,7 +52,7 @@ export default ({ renderer: h, keys: k, Drawer, Toolbar, IconButton, createConte
         {
           className: "tests-drawer-themed-toolbar", // style set in tests-generic.js
           tone: "dark",
-          z: 1,
+          shadowDepth: 1,
         },
         toolbarRow
       );

@@ -64,17 +64,25 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * New option `height` (pixel or percentage value, or `"max"` to use the maximum available height within the parent element)
   * New option `backdrop` to make a menu stand out more
   * Long lists are now scrollable
-  * `offset` is deprecated; use `offsetH`
-  * `size` is deprecated; use `width`
 * [Radio Group](components/radio-group.md)
   * Added option `defaultSelectedValue`
 * [Shadow](components/shadow.md)
-  * CSS style variables have been renamed: `z` has been changed to `depth`
+  * CSS style variables have been renamed: `z` has been changed to `shadow_depth`
 * [Slider](components/slider.md)
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * [Spinners](components/spinner.md) and [Tabs](components/tabs.md)
   * CSS style variables for animation durations/delays have been changed to strings that include the unit ("ms" or "s")
 
+#### Deprecations
+
+* Card, Dialog, Drawer, Menu, Raised Button, Shadow, Spinner, Toolbar:
+  * `z` is deprecated; use `shadowDepth`
+* [Menu](components/menu.md)
+  * `offset` is deprecated; use `offsetH`
+  * `size` is deprecated; use `width`
+* [Switch](components/switch.md)
+  * `zOff` is deprecated; use `shadowDepthOff`
+  * `zOn` is deprecated; use `shadowDepthOn`
 
 #### Other
 

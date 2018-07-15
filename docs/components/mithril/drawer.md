@@ -132,7 +132,7 @@ How to create this:
 * Optionally use:
   * `fixed: true` - to show the drawer on top of all other content (except for dialogs and notifications); the drawer can be created at a deeper level than the root component by giving it a CSS style `position:fixed`
   * `backdrop: true` - to show a tinted backdrop
-  * `z` - a number between 0 and 5 to set the shadow depth; 1 is a good default value
+  * `shadowDepth` - a number between 0 and 5 to set the shadow depth; 1 is a good default value
 
 <a id="bottom-drawer"></a>
 #### Bottom drawer
@@ -201,7 +201,7 @@ DrawerCSS.addStyle(
   {
     permanent: true,
     floating: true,
-    z: 1,
+    shadowDepth: 1,
     border_radius: 4
   },
   {

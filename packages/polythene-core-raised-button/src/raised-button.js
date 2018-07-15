@@ -1,25 +1,25 @@
-import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from "polythene-core";
+import { isServer, pointerStartMoveEvent, pointerEndMoveEvent, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/raised-button";
 
 // Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
 
-const MAX_Z = 5;
+const MAX_SHADOW_DEPTH = 5;
 
 let tapStart,
   tapEndAll = () => {},
   downButtons = [];
 
 const animateZ = (which, vnode) => {
-  const zBase = vnode.state.zBase;
+  const shadowDepthBase = vnode.state.shadowDepthBase;
   const increase = vnode.attrs.increase || 1;
-  const z = vnode.state.z();
-  const newZ = which === "down" && zBase < MAX_Z
-    ? Math.min(zBase + increase, MAX_Z)
+  const shadowDepth = vnode.state.shadowDepth();
+  const newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH
+    ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH)
     : which === "up"
-      ? Math.max(z - increase, zBase)
-      : z;
-  if (newZ !== z) {
-    vnode.state.z(newZ);
+      ? Math.max(shadowDepth - increase, shadowDepthBase)
+      : shadowDepth;
+  if (newShadowDepth !== shadowDepth) {
+    vnode.state.shadowDepth(newShadowDepth);
   }
 };
 
@@ -56,14 +56,18 @@ const clearTapEvents = vnode => {
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
-  const zBase = attrs.z !== undefined ? attrs.z : 1;
-  const z = createStream(zBase);
+  const shadowDepthBase = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z !== undefined // deprecated
+      ? attrs.z
+      : 1; 
+  const shadowDepth = createStream(shadowDepthBase);
   const tapEventsInited = createStream(false);
   return {
-    zBase,
-    z,
+    shadowDepthBase,
+    shadowDepth,
     tapEventsInited,
-    redrawOnUpdate: createStream.merge([z])
+    redrawOnUpdate: createStream.merge([shadowDepth])
   };
 };
 
@@ -72,6 +76,10 @@ export const onMount = vnode => {
     return;
   }
   const state = vnode.state;
+  const attrs = vnode.attrs;
+  if (attrs.z !== undefined) {
+    deprecation("RaisedButton", "z", "shadowDepth");
+  }
   if (!state.tapEventsInited()) {
     initTapEvents(vnode);
     state.tapEventsInited(true);
@@ -97,7 +105,7 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
       ].join(" "),
       animateOnTap: false,
       shadowComponent: h(Shadow, {
-        z: attrs.disabled ? 0 : state.z,
+        shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
         animated: true
       }),
       wash: attrs.wash !== undefined

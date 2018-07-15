@@ -54,23 +54,23 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: appDrawer({ renderer, keys, Drawer, RaisedButton, createContent, drawerOpts: {
         fixed: true,
         backdrop: true,
-        z: 1
+        shadowDepth: 1
       }})
     },
     {
-      name: "Standard (options: permanent, border, z: 0)",
+      name: "Standard (options: permanent, border, shadowDepth: 0)",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         permanent: true,
         border: true,
-        z: 0
+        shadowDepth: 0,
       }})
     },
     {
-      name: "Standard within box (options: floating, z: 1)",
+      name: "Standard within box (options: floating, shadowDepth: 1)",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, createContent, drawerOpts: {
         permanent: true,
         floating: true,
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -79,7 +79,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -88,7 +88,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         modal: true,
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -98,7 +98,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
         anchor: "end",
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -134,7 +134,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, repeats: 4, drawerOpts: {
         backdrop: true,
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -145,7 +145,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
         backdrop: true,
         className: "tests-drawer-themed",
         tone: "dark",
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -158,7 +158,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
           background: "#fff59d",
           padding: "1.5rem"
         },
-        z: 1
+        shadowDepth: 1,
       }})
     },
     {
@@ -167,7 +167,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
-        z: 1,
+        shadowDepth: 1,
         transitions: {
           show: ({ backdropEl, contentEl }) => ({
             el: contentEl,
@@ -216,7 +216,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         backdrop: true,
-        z: 1,
+        shadowDepth: 1,
       }})
     },
     {
@@ -235,7 +235,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         backdrop: true,
         anchor: "end",
-        z: 1
+        shadowDepth: 1
       }})
     },
     {
@@ -269,7 +269,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       className: "pe-dark-tone",
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, dark: true, drawerOpts: {
         backdrop: true,
-        z: 1
+        shadowDepth: 1
       }})
     },
 

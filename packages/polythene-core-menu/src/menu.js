@@ -8,7 +8,7 @@ const DEFAULT_OFFSET_H           = 0;
 const DEFAULT_OFFSET_V           = "79%";
 const DEFAULT_TYPE               = "floating";
 const MIN_WIDTH                   = 1.5;
-const SHADOW_Z                   = 1;
+const DEFAULT_SHADOW_DEPTH                   = 1;
 
 const isTopMenu = ({ state, attrs }) =>
   attrs.topMenu || stylePropEquals({
@@ -195,10 +195,10 @@ const handleSubscriptions = (vnode, which) => {
 export const getInitialState = (vnode, createStream) => {
   const dom = createStream(null);
   const attrs = vnode.attrs;
-  if (attrs.offset) {
+  if (attrs.offset !== undefined) {
     deprecation("Menu", "offset", "offsetH");
   }
-  if (attrs.size) {
+  if (attrs.size !== undefined) {
     deprecation("Menu", "size", "width");
   }
   const visible = createStream(false);
@@ -297,7 +297,11 @@ export const createProps = (vnode, { keys: k }) => {
 
 export const createContent = (vnode, { renderer: h, Shadow }) => {
   const attrs = vnode.attrs;
-  const z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
+  const shadowDepth = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z !== undefined 
+      ? attrs.z // deprecated
+      : DEFAULT_SHADOW_DEPTH; 
   return [
     h("div",
       {
@@ -306,16 +310,21 @@ export const createContent = (vnode, { renderer: h, Shadow }) => {
       }
     ),
     h("div",
-      { className: classes.panel },
+      {
+        className: classes.panel,
+        key: "panel",
+      },
       [
-        z > 0 && h(Shadow, {
-          z,
-          animated: true
+        h(Shadow, {
+          shadowDepth,
+          animated: true,
+          key: "shadow",
         }),
         h("div", 
           {
             className: classes.content,
-            style: attrs.style
+            style: attrs.style,
+            key: "content",
           },
           attrs.content
             ? attrs.content

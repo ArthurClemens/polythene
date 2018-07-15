@@ -60,7 +60,7 @@
     }
     var state = vnode.state;
     var attrs = vnode.attrs;
-    if (attrs.borders) {
+    if (attrs.borders !== undefined) {
       polytheneCore.deprecation("Button", "borders", "border");
     }
     state.dom(vnode.dom);

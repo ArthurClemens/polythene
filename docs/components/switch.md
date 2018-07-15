@@ -46,8 +46,8 @@ See: [Checkbox](checkbox.md#options)
 | ------------- | -------------- | ---------- | ----------- | --------------- |
 | **raised**    | optional       | Boolean    | true | Shows a shadow below the thumb; when the Switch state is `on`, the depth is incremented by 1 |
 | **wash**      | optional       | Boolean    | true on touch devices | Set to false to always hide the wash (radial feedback); note that a (hidden) wash is still drawn to create a large tap target  |
-| **zOff**      | optional       | Number 0-5 | 1 | The shadow depth for the thumb in off state |
-| **zOn**       | optional       | Number 0-5 | 2 | The shadow depth for the thumb in on state |
+| **shadowDepthOff** | optional       | Number 0-5 | 1 | The shadow depth for the thumb in off state |
+| **shadowDepthOn**  | optional       | Number 0-5 | 2 | The shadow depth for the thumb in on state |
 
 
 

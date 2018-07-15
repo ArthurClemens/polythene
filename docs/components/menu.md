@@ -52,12 +52,12 @@ A local popup menu with a list of choices. A menu contains one or more [Lists](l
 | **permanent**    | optional | Boolean |  | Set to `true` to always show the menu (mostly used for demonstration purposes) |
 | **reposition**   | optional | Boolean | false | Set to `true` to position the menu to the menu item ([List Tile](list-tile.md)) that has class "selected" |
 | **scrollTarget** | optional | String |  | HTML element selector to scroll to at appearance, for example `".list-item-12"` |
+| **shadowDepth**  | optional | Number 0-5 | 3 | Depth of the shadow |
 | **show**         | optional | Boolean | | Set to `true` to show the menu |
 | **target**       | recommended | String |  | HTML element selector to position to, for example `"#my-button"` |
 | **topMenu**      | optional | Boolean |  | Set to `true` to make the menu appear full width at the top |
 | **transitions**  | optional | Object | | See "Transition options" below  |
 | **width**        | optional | Number: 1, 1.5, 2, 3, 4, 5, 6, 7, or "auto" | | Multiplication factor of width unit (56px); with "auto" the menu takes the width of the widest element; note that on smaller devices a large size may get clipped by the screen |
-| **z**            | optional | Number 0-5 | 3 | Depth of the shadow |
 
 <a id="transition-options"></a>
 ### Transition options

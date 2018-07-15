@@ -60,9 +60,9 @@ Displays a single dialog, or a stack of dialogs.
 | **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
 | **panes**         | optional | Array of `DialogPane` components (React) | | Used internally |
 | **panesOptions**  | optional | Array of `DialogPane` component options (Mithril)  | | Used internally |
+| **shadowDepth**   | optional | Number 0-5 | 3 | Depth of the shadow |
 | **title**         | optional | String |  | Header title; if omitted, no header will be shown |
 | **updateContentOnScroll** | optional | Boolean | false | Set to `true` to "unfreeze" dialog contents during scrolling; for performance this is set to false by default |
-| **z** | optional | Number 0-5 | 3 | Depth of the shadow |
 
 <a id="transition-options"></a>
 ### Transition options

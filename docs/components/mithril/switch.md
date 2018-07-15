@@ -2,7 +2,6 @@
 
 # Switch component for Mithril
 
-
 ## Usage
 
 Identical to [Checkbox](checkbox.md). See Checkbox usage instructions and replace "Checkbox" with "Switch".

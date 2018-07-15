@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-shadow'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-shadow']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssShadow) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -91,6 +91,8 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var alignSide = function alignSide(isRTL) {
@@ -178,7 +180,7 @@
     });
   };
 
-  var varFns = {
+  var varFns = _extends$1({
     general_styles: function general_styles(selector, vars) {
       return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
         position: "static",
@@ -310,20 +312,29 @@
         }
       })];
     },
-    top_menu: function top_menu(selector, vars) {
-      return [vars.top_menu && _top_menu(selector, vars)];
-    },
+    // Theme vars
     backdrop: function backdrop(selector, vars) {
       return [vars.backdrop && _backdrop(selector, vars)];
+    },
+    top_menu: function top_menu(selector, vars) {
+      return [vars.top_menu && _top_menu(selector, vars)];
     },
     z: function z(selector, vars) {
       return [vars.z && _z(selector, vars)];
     }
-  };
+  }, polytheneCssShadow.sharedVarFns);
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var vars = {
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var themeVars = _extends$2({}, {
+    backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
+    top_menu: false, // set to true to position the menu at the top of the screen, full width
+    z: polytheneTheme.vars.z_menu // z-depth of the menu (not the shadow depth)
+  }, polytheneCssShadow.sharedVars);
+
+  var vars = _extends$2({}, {
     general_styles: true,
 
     animation_delay: "0s",
@@ -339,12 +350,6 @@
     width_factor: polytheneTheme.vars.grid_unit_menu,
     widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
 
-    // theme vars
-
-    backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
-    top_menu: false, // set to true to position the menu at the top of the screen, full width
-    z: polytheneTheme.vars.z_menu,
-
     // color vars
 
     color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
@@ -354,7 +359,7 @@
     color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 
     // text colors are set by content, usually list tiles
-  };
+  }, themeVars);
 
   var fns = [layout, color];
   var selector = "." + classes.component;

@@ -47,7 +47,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **border** | optional | Boolean | false | Set to `true` to add a bottom border |
 | **compact** | optional | Boolean | false | Set to `true` to create a more compact Toolbar |
 | **fullbleed** | optional | Boolean | false | Set to `true` to remove side padding |
-| **z** | optional | Number 0-5 | No shadow | Depth of the shadow |
+| **shadowDepth** | optional | Number 0-5 | No shadow | Depth of the shadow |
 
 
 <a id="toolbartitle-options"></a>

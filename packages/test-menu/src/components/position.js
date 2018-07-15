@@ -45,7 +45,7 @@ const createPositionContainer = ({ h, k, Menu, List, ListTile, Shadow, IconButto
           ? h(".flex")
           : null,
         h(".bar", [
-          h(Shadow, { z: 1 }),
+          h(Shadow, { shadowDepth: 1 }),
           h(Menu, {
             className: "pe-light-tone",
             target: `#${attrs.id}`,

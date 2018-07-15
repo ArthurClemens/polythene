@@ -146,26 +146,26 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       }
     },
     {
-      name: "Option: z (0)",
+      name: "Option: shadowDepth (0)",
       interactive: true,
       exclude: true,
       component: {
         view: () => 
           Opener({
             body: renderer.trust(shortText),
-            z: 0
+            shadowDepth: 0
           })
       }
     },
     {
-      name: "Option: z (5)",
+      name: "Option: shadowDepth (5)",
       interactive: true,
       exclude: true,
       component: {
         view: () => 
           Opener({
             body: renderer.trust(shortText),
-            z: 5
+            shadowDepth: 5
           })
       }
     },

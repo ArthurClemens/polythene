@@ -165,12 +165,12 @@ export default ({ Switch, Icon, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: zOff (0), zOn (2)",
+      name: "Option: shadowDepthOff (0), shadowDepthOn (2)",
       interactive: true,
       component: Switch,
       attrs: {
-        zOff: 0,
-        zOn: 2
+        shadowDepthOff: 0,
+        shadowDepthOn: 2
       }
     },
     {

@@ -142,7 +142,7 @@ const toolbarRow = [
 ]
 
 m(Toolbar,
-  { z: 1 },
+  { shadowDepth: 1 },
   toolbarRow
 )
 ~~~

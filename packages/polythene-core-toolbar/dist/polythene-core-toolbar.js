@@ -32,8 +32,16 @@
     return vnode.attrs.element || "div";
   };
 
-  var createProps = function createProps(vnode, _ref) {
-    var k = _ref.keys;
+  var onMount = function onMount(_ref) {
+    var attrs = _ref.attrs;
+
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("Toolbar", "z", "shadowDepth");
+    }
+  };
+
+  var createProps = function createProps(vnode, _ref2) {
+    var k = _ref2.keys;
 
     var attrs = vnode.attrs;
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs), {
@@ -41,14 +49,15 @@
     }, attrs.events);
   };
 
-  var createContent = function createContent(vnode, _ref2) {
-    var renderer = _ref2.renderer,
-        Shadow = _ref2.Shadow;
+  var createContent = function createContent(vnode, _ref3) {
+    var renderer = _ref3.renderer,
+        Shadow = _ref3.Shadow;
 
     var attrs = vnode.attrs;
     var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-    var shadow = attrs.z !== undefined ? renderer(Shadow, {
-      z: attrs.z,
+    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+    var shadow = shadowDepth !== undefined ? renderer(Shadow, {
+      shadowDepth: shadowDepth,
       animated: true,
       key: "shadow"
     }) : null;
@@ -57,6 +66,7 @@
 
   var toolbar = /*#__PURE__*/Object.freeze({
     getElement: getElement,
+    onMount: onMount,
     createProps: createProps,
     createContent: createContent
   });

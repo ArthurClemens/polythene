@@ -24,13 +24,13 @@
 
 <a href="https://jsfiddle.net/ArthurClemens/87wjreeu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
-Shadow has 5 depth levels, configured with option `z`.
+Shadow has 5 depth levels, configured with option `shadowDepth`.
 
 ~~~javascript
 import m from "mithril"
 import { Shadow } from "polythene-mithril"
 
-m(Shadow, { z: 2 })
+m(Shadow, { shadowDepth: 2 })
 ~~~
 
 To add a shadow to an element, the element must have the style `position: "relative"`. In this example the shadow is added to the outer div:
@@ -42,16 +42,16 @@ m(".outer",
   },
   [
     m("span", "Some card"),
-    m(Shadow, { z: 2 })
+    m(Shadow, { shadowDepth: 2 })
   ]
 )
 ~~~
 
-To animated the shadow on change, use `animated`. Using a dynamic z value from `vnode.state`:
+To animated the shadow on change, use `animated`. Using a dynamic shadowDepth value from `vnode.state`:
 
 ~~~javascript
 m(Shadow, {
-  z: vnode.state.z,
+  shadowDepth: vnode.state.shadowDepth,
   animated: true
 })
 ~~~

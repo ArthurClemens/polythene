@@ -82,7 +82,7 @@
 
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  var DEFAULT_Z = 3;
+  var DEFAULT_SHADOW_DEPTH = 3;
 
   var getElement = function getElement(vnode) {
     return vnode.attrs.element || "div";
@@ -154,6 +154,11 @@
     }
     var state = vnode.state;
     var attrs = vnode.attrs;
+
+    if (attrs.z !== undefined) {
+      polytheneCore.deprecation("Dialog", "z", "shadowDepth");
+    }
+
     var dom = vnode.dom;
     state.el = dom;
     state.backdropEl = dom.querySelector("." + classes.backdrop);
@@ -261,6 +266,7 @@
       }
     }
     var pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
+    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
     return [h("div", {
       key: "backdrop",
       className: classes.backdrop
@@ -271,7 +277,7 @@
       className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
       key: "content"
     }, [attrs.fullScreen ? null : h(Shadow, {
-      z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
+      shadowDepth: shadowDepth !== undefined ? shadowDepth : DEFAULT_SHADOW_DEPTH,
       animated: true,
       key: "shadow"
     }), pane])];

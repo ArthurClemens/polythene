@@ -1,8 +1,14 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/shadow";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
+
+export const onMount = ({ attrs }) => {
+  if (attrs.z !== undefined) {
+    deprecation("Shadow", "z", "shadowDepth");
+  }
+};
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
@@ -24,8 +30,11 @@ export const createContent = (vnode, { renderer: h }) => {
   const content = attrs.content
     ? attrs.content
     : attrs.children || vnode.children;
-  const depthClass = attrs.z !== undefined
-    ? `${classes.depth_n}${Math.min(5, attrs.z)}`
+  const shadowDepth = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z; // deprecated
+  const depthClass = shadowDepth !== undefined
+    ? `${classes.depth_n}${Math.min(5, shadowDepth)}`
     : null;
   return [
     content,

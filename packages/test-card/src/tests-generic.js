@@ -1067,7 +1067,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
     {
-      name: "Depth 0, tight text",
+      name: "Shadow depth 0, tight text",
       component: Card,
       attrs: {
         style: { maxWidth: "170px" },
@@ -1077,11 +1077,11 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
             content: "Flat"
           }
         }],
-        z: 0
+        shadowDepth: 0
       }
     },
     {
-      name: "Depth 2, tight text",
+      name: "Shadow depth 2, tight text",
       component: Card,
       attrs: {
         style: { maxWidth: "170px" },
@@ -1091,7 +1091,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
             content: "Raised"
           }
         }],
-        z: 2
+        shadowDepth: 2
       }
     },
 

@@ -29,8 +29,12 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
 
   MenuCSS.addStyle(".tests-menu-themed-behavior-top", {
     top_menu: true,
-    z:        99999,
+    z:        99999, // z-depth
     height:   "50vh"
+  });
+
+  MenuCSS.addStyle(".tests-menu-themed-behavior-shadow", {
+    shadow_depth: 0,
   });
 
   const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
@@ -233,6 +237,22 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
     {
       name: "Themed behavior: set top menu",
       component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
+    },
+
+    {
+      name: "Themed behavior: set shadow",
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                height: "300px",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { height: "max", className: "tests-menu-themed-behavior-shadow" })
+          )
+      }
     },
 
     // Dark tone

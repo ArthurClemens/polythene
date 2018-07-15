@@ -347,6 +347,8 @@
     content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars) {
       return [_content_width_mini_collapsed(selector + ".pe-drawer--mini", vars)];
     },
+
+    // Theme vars
     cover: function cover(selector, vars) {
       return vars.cover && [_cover(selector, vars), cover_content_max_width(selector, vars)];
     },

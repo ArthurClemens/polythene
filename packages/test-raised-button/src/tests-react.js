@@ -99,8 +99,8 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
       section: "React JSX tests",
     },
     {
-      name: "Option: raised (with option z: 2) (JSX)",
-      component: () => <RaisedButton label="Button" z={2} />
+      name: "Option: raised (with option shadowDepth: 2) (JSX)",
+      component: () => <RaisedButton label="Button" shadowDepth={2} />
     },
     {
       name: "Option: inactivate (2s) (JSX)",

@@ -61,7 +61,7 @@ export default ({ renderer: h, keys: k, Toolbar, IconButton, Button, Dialog, isF
         className: "tests-dialog-full-screen-themed-toolbar",
         tone: "dark",
         content: fullScreenToolbarRow("New event"),
-        z: 0,
+        shadowDepth: 0,
       }
     ),
     body: h.trust(longText)

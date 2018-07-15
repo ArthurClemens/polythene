@@ -83,8 +83,8 @@ const reactTests = ({ FAB, Icon, SVG, renderer: h }) => { // eslint-disable-line
       component: () => <FAB mini><Icon><SVG>{iconAlarmSVG}</SVG></Icon></FAB>
     },
     {
-      name: "Option: z (5) (JSX)",
-      component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} z={5} />
+      name: "Option: shadowDepth (5) (JSX)",
+      component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} shadowDepth={5} />
     },
     {
       name: "Option: style (JSX)",

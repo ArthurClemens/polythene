@@ -64,7 +64,7 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
       })
     },
     {
-      name: "Option: raised, z -- Material Design Spinner",
+      name: "Option: raised -- Material Design Spinner",
       interactive: true,
       component: opener({
         renderer,

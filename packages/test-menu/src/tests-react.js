@@ -44,7 +44,7 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
       name: "Permanent (JSX)",
       component: () =>
         <Menu
-          size={5}
+          width={5}
           permanent
         >
           <List

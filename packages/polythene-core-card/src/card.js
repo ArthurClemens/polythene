@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/card";
 
 const createOverlay = ({ dispatcher, attrs, h, k }) => {
@@ -88,6 +88,12 @@ export const getElement = vnode =>
     ? "a"
     : "div";
 
+export const onMount = ({ attrs }) => {
+  if (attrs.z !== undefined) {
+    deprecation("Card", "z", "shadowDepth");
+  }
+};
+
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
@@ -142,10 +148,15 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
   const contents = Array.isArray(attrs.content)
     ? attrs.content.map(dispatcher)
     : attrs.content;
+  const shadowDepth = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z; // deprecated
 
   return [
     h(Shadow, {
-      z: attrs.z !== undefined ? attrs.z : 1,
+      shadowDepth: shadowDepth !== undefined
+        ? shadowDepth
+        : 1,
       animated: true,
       key: "shadow"
     }),

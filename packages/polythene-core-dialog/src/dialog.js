@@ -1,7 +1,7 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropEquals } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropEquals, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
-const DEFAULT_Z    = 3;
+const DEFAULT_SHADOW_DEPTH    = 3;
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
@@ -62,6 +62,11 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
+
+  if (attrs.z !== undefined) {
+    deprecation("Dialog", "z", "shadowDepth");
+  }
+
   const dom = vnode.dom;
   state.el = dom;
   state.backdropEl = dom.querySelector(`.${classes.backdrop}`);
@@ -171,6 +176,9 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
     : attrs.panes && attrs.panes.length
       ? attrs.panes[0]
       : createPane(vnode, { renderer, Pane } );
+  const shadowDepth = attrs.shadowDepth !== undefined
+    ? attrs.shadowDepth
+    : attrs.z; // deprecated
   return [
     h("div",
       {
@@ -196,7 +204,9 @@ export const createContent = (vnode, { renderer, Shadow, createPane, Pane }) => 
         attrs.fullScreen
           ? null
           : h(Shadow, {
-            z: attrs.z !== undefined ? attrs.z : DEFAULT_Z,
+            shadowDepth: shadowDepth !== undefined
+              ? shadowDepth
+              : DEFAULT_SHADOW_DEPTH,
             animated: true,
             key: "shadow"
           }),

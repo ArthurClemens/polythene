@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, classForSize } from 'polythene-core';
+import { filterSupportedAttributes, transitionComponent, classForSize, deprecation } from 'polythene-core';
 
 var classes = {
   component: "pe-spinner",
@@ -60,6 +60,11 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
+
+  if (attrs.z !== undefined) {
+    deprecation("Spinner", "z", "shadowDepth");
+  }
+
   state.dom(vnode.dom);
 
   if (!attrs.permanent) {
@@ -88,8 +93,9 @@ var createContent = function createContent(vnode, _ref2) {
       hideSpinner(state, attrs);
     }, 0);
   }
+  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
 
-  return [attrs.raised && attrs.content ? h(Shadow, { key: "shadow", z: attrs.z }) : null, attrs.content];
+  return [attrs.raised && attrs.content ? h(Shadow, { key: "shadow", shadowDepth: shadowDepth }) : null, attrs.content];
 };
 
 var spinner = /*#__PURE__*/Object.freeze({

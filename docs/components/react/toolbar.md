@@ -197,7 +197,7 @@ h(Toolbar, [
 ~~~jsx
 import { Toolbar } from "polythene-react"
 
-<Toolbar z={1}>
+<Toolbar shadowDepth={1}>
   ...
 </Toolbar>
 ~~~

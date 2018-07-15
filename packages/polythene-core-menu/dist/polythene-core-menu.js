@@ -66,7 +66,7 @@
   var DEFAULT_OFFSET_V = "79%";
   var DEFAULT_TYPE = "floating";
   var MIN_WIDTH = 1.5;
-  var SHADOW_Z = 1;
+  var DEFAULT_SHADOW_DEPTH = 1;
 
   var isTopMenu = function isTopMenu(_ref) {
     var state = _ref.state,
@@ -248,10 +248,10 @@
   var getInitialState = function getInitialState(vnode, createStream) {
     var dom = createStream(null);
     var attrs = vnode.attrs;
-    if (attrs.offset) {
+    if (attrs.offset !== undefined) {
       polytheneCore.deprecation("Menu", "offset", "offsetH");
     }
-    if (attrs.size) {
+    if (attrs.size !== undefined) {
       polytheneCore.deprecation("Menu", "size", "width");
     }
     var visible = createStream(false);
@@ -338,16 +338,22 @@
         Shadow = _ref3.Shadow;
 
     var attrs = vnode.attrs;
-    var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;
+    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined ? attrs.z // deprecated
+    : DEFAULT_SHADOW_DEPTH;
     return [h("div", {
       key: "backdrop",
       className: classes.backdrop
-    }), h("div", { className: classes.panel }, [z > 0 && h(Shadow, {
-      z: z,
-      animated: true
+    }), h("div", {
+      className: classes.panel,
+      key: "panel"
+    }, [h(Shadow, {
+      shadowDepth: shadowDepth,
+      animated: true,
+      key: "shadow"
     }), h("div", {
       className: classes.content,
-      style: attrs.style
+      style: attrs.style,
+      key: "content"
     }, attrs.content ? attrs.content : vnode.children)])];
   };
 

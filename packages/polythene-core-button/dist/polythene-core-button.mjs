@@ -56,7 +56,7 @@ var onMount = function onMount(vnode) {
   }
   var state = vnode.state;
   var attrs = vnode.attrs;
-  if (attrs.borders) {
+  if (attrs.borders !== undefined) {
     deprecation("Button", "borders", "border");
   }
   state.dom(vnode.dom);

@@ -54,9 +54,9 @@ Available themed spinners:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **permanent** | optional | Boolean | | Set to `true` to always show the spinner (mostly used for demonstration purposes) |
 | **raised** | optional | Boolean | | Set to `true` to create a FAB-like appearance with shadow and whitespace around the spinner |
+| **shadowDepth** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 | **show** | optional | Boolean | | Set to `true` to show the spinner |
 | **size** | optional | String | "regular" | Either "small" (24px), "regular" (32px), "medium" (40px), "large" (48px), "fab" (56px). Adds CSS class "small", "regular", "medium", "large", "fab" |
-| **z** | optional | Number 0-5 | 1 (if `raised` is set) | Depth of the shadow |
 
 <a id="indeterminate-options"></a>
 ### Indeterminate options

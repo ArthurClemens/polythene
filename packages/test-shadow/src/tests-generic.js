@@ -27,52 +27,52 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: z (0)",
+      name: "Option: shadowDepth (0)",
       component: Shadow,
       attrs: {
-        z: 0
+        shadowDepth: 0
       }
     },
     {
-      name: "Option: z (1)",
+      name: "Option: shadowDepth (1)",
       component: Shadow,
       attrs: {
-        z: 1
+        shadowDepth: 1
       }
     },
     {
-      name: "Option: z (2)",
+      name: "Option: shadowDepth (2)",
       component: Shadow,
       attrs: {
-        z: 2
+        shadowDepth: 2
       }
     },
     {
-      name: "Option: z (3)",
+      name: "Option: shadowDepth (3)",
       component: Shadow,
       attrs: {
-        z: 3
+        shadowDepth: 3
       }
     },
     {
-      name: "Option: z (4)",
+      name: "Option: shadowDepth (4)",
       component: Shadow,
       attrs: {
-        z: 4
+        shadowDepth: 4
       }
     },
     {
-      name: "Option: z (5)",
+      name: "Option: shadowDepth (5)",
       component: Shadow,
       attrs: {
-        z: 5
+        shadowDepth: 5
       }
     },
     {
       name: "Themed",
       component: Shadow,
       attrs: {
-        z: 1,
+        shadowDepth: 1,
         className: "tests-shadow-themed-shadow"
       }
     },

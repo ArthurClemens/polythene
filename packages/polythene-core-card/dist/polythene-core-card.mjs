@@ -107,8 +107,16 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || vnode.attrs.url ? "a" : "div";
 };
 
-var createProps = function createProps(vnode, _ref5) {
-  var k = _ref5.keys;
+var onMount = function onMount(_ref5) {
+  var attrs = _ref5.attrs;
+
+  if (attrs.z !== undefined) {
+    deprecation("Card", "z", "shadowDepth");
+  }
+};
+
+var createProps = function createProps(vnode, _ref6) {
+  var k = _ref6.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
@@ -116,15 +124,15 @@ var createProps = function createProps(vnode, _ref5) {
   }, attrs.url, attrs.events);
 };
 
-var createContent = function createContent(vnode, _ref6) {
-  var h = _ref6.renderer,
-      k = _ref6.keys,
-      CardActions = _ref6.CardActions,
-      CardMedia = _ref6.CardMedia,
-      CardPrimary = _ref6.CardPrimary,
-      Icon = _ref6.Icon,
-      Shadow = _ref6.Shadow,
-      ListTile = _ref6.ListTile;
+var createContent = function createContent(vnode, _ref7) {
+  var h = _ref7.renderer,
+      k = _ref7.keys,
+      CardActions = _ref7.CardActions,
+      CardMedia = _ref7.CardMedia,
+      CardPrimary = _ref7.CardPrimary,
+      Icon = _ref7.Icon,
+      Shadow = _ref7.Shadow,
+      ListTile = _ref7.ListTile;
 
 
   var dispatcher = function dispatcher(block) {
@@ -155,9 +163,10 @@ var createContent = function createContent(vnode, _ref6) {
 
   var attrs = vnode.attrs;
   var contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content;
+  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
 
   return [h(Shadow, {
-    z: attrs.z !== undefined ? attrs.z : 1,
+    shadowDepth: shadowDepth !== undefined ? shadowDepth : 1,
     animated: true,
     key: "shadow"
   }), h("div", {
@@ -168,6 +177,7 @@ var createContent = function createContent(vnode, _ref6) {
 
 var card = /*#__PURE__*/Object.freeze({
   getElement: getElement,
+  onMount: onMount,
   createProps: createProps,
   createContent: createContent
 });
@@ -206,10 +216,10 @@ var actionLayoutClasses = {
   justified: classes.actionsJustified
 };
 
-var onMount = function onMount(_ref) {
+var onMount$1 = function onMount(_ref) {
   var attrs = _ref.attrs;
 
-  if (attrs.bordered) {
+  if (attrs.bordered !== undefined) {
     deprecation("Card", "bordered", "border");
   }
 };
@@ -234,7 +244,7 @@ var createContent$1 = function createContent(vnode) {
 };
 
 var cardActions = /*#__PURE__*/Object.freeze({
-  onMount: onMount,
+  onMount: onMount$1,
   createProps: createProps$1,
   createContent: createContent$1
 });
@@ -279,7 +289,7 @@ var initImage = function initImage(_ref) {
   };
 };
 
-var onMount$1 = function onMount(vnode) {
+var onMount$2 = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
@@ -314,7 +324,7 @@ var createContent$2 = function createContent(vnode, _ref3) {
 };
 
 var cardMedia = /*#__PURE__*/Object.freeze({
-  onMount: onMount$1,
+  onMount: onMount$2,
   createProps: createProps$2,
   createContent: createContent$2
 });

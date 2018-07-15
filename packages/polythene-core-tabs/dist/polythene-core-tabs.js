@@ -184,7 +184,7 @@
   var getInitialState = function getInitialState(vnode, createStream) {
     var state = vnode.state;
     var attrs = vnode.attrs;
-    if (attrs.selectedTab) {
+    if (attrs.selectedTab !== undefined) {
       polytheneCore.deprecation("Tabs", "selectedTab", "selectedTabIndex");
     }
     var tabIndex = getIndex(state, attrs) || 0;

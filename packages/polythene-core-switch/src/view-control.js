@@ -1,14 +1,33 @@
+import { deprecation } from "polythene-core";
+
 import classes from "polythene-css-classes/switch";
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
+export const onMount = ({ attrs }) => {
+  if (attrs.zOn !== undefined) {
+    deprecation("Switch", "zOn", "shadowDepthOn");
+  }
+  if (attrs.zOff !== undefined) {
+    deprecation("Switch", "zOff", "shadowDepthOff");
+  }
+};
+
 export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
   const attrs = vnode.attrs;
 
-  const zOff = attrs.zOff !== undefined ? attrs.zOff : 1;
-  const zOn = attrs.zOn !== undefined ? attrs.zOn : 2;
-  const z = attrs.checked ? zOn : zOff;
+  const shadowDepthOff = attrs.shadowDepthOff !== undefined
+    ? attrs.shadowDepthOff
+    : attrs.zOff !== undefined 
+      ? attrs.zOff // deprecated
+      : 1;
+  const shadowDepthOn = attrs.shadowDepthOn !== undefined
+    ? attrs.shadowDepthOn
+    : attrs.zOn !== undefined 
+      ? attrs.zOn // deprecated
+      : 2; 
+  const shadowDepth = attrs.checked ? shadowDepthOn : shadowDepthOff;
   const raised = attrs.raised !== undefined
     ? attrs.raised
     : true; 
@@ -32,7 +51,7 @@ export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
             raised
               ? h(Shadow,
                 {
-                  z: z,
+                  shadowDepth,
                   animated: true
                 }
               )

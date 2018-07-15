@@ -73,23 +73,23 @@ export default ({ FAB, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Option: z (0)",
+      name: "Option: shadowDepth (0)",
       component: FAB,
       attrs: {
         icon: {
           svg: { content: trustedIconAlarm }
         },
-        z: 0
+        shadowDepth: 0
       }
     },
     {
-      name: "Option: z (5)",
+      name: "Option: shadowDepth (5)",
       component: FAB,
       attrs: {
         icon: {
           svg: { content: trustedIconAlarm }
         },
-        z: 5
+        shadowDepth: 5
       }
     },
     {

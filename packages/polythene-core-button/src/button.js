@@ -24,7 +24,7 @@ export const onMount = vnode => {
   }
   const state = vnode.state;
   const attrs = vnode.attrs;
-  if (attrs.borders) {
+  if (attrs.borders !== undefined) {
     deprecation("Button", "borders", "border");
   }
   state.dom(vnode.dom);

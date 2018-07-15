@@ -48,7 +48,9 @@ Differences from [Raised Button](raised-button.md) behaviour:
 <a id="button-options"></a>
 ### Button options
 
-See: [Button options](Button.md#options)
+See:
+* [Raised Button options](raised-button.md#options)
+* [Button options](button.md#options)
 
 
 <a id="fab-specific-options"></a>

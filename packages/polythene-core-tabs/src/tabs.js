@@ -137,7 +137,7 @@ const sortByLargestWidth = (a, b) =>
 export const getInitialState = (vnode, createStream) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-  if (attrs.selectedTab) {
+  if (attrs.selectedTab !== undefined) {
     deprecation("Tabs", "selectedTab", "selectedTabIndex");
   }
   const tabIndex = getIndex(state, attrs) || 0;

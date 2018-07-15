@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes, deprecation } from 'polythene-core';
 
 var classes = {
   component: "pe-shadow",
@@ -18,8 +18,16 @@ var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
+var onMount = function onMount(_ref) {
+  var attrs = _ref.attrs;
+
+  if (attrs.z !== undefined) {
+    deprecation("Shadow", "z", "shadowDepth");
+  }
+};
+
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
 
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
@@ -27,12 +35,13 @@ var createProps = function createProps(vnode, _ref) {
   });
 };
 
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer;
+var createContent = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer;
 
   var attrs = vnode.attrs;
   var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  var depthClass = attrs.z !== undefined ? "" + classes.depth_n + Math.min(5, attrs.z) : null;
+  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+  var depthClass = shadowDepth !== undefined ? "" + classes.depth_n + Math.min(5, shadowDepth) : null;
   return [content, h("div", {
     key: "bottom",
     className: [classes.bottomShadow, depthClass].join(" ")
@@ -44,6 +53,7 @@ var createContent = function createContent(vnode, _ref2) {
 
 var shadow = /*#__PURE__*/Object.freeze({
   getElement: getElement,
+  onMount: onMount,
   createProps: createProps,
   createContent: createContent
 });
