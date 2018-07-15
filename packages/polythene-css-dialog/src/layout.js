@@ -1,6 +1,6 @@
 import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-import { fullScreen } from "polythene-css-dialog-pane";
+import { fullScreen as fullScreenPane } from "polythene-css-dialog-pane";
 
 const minWidth = "320px";
 
@@ -10,6 +10,32 @@ const backdrop = selector =>
       display: "block",
       opacity: 1,
     }
+  });
+
+const fullScreen = selector =>
+  sel(selector, [
+    {
+      // Marker to be read by JavaScript
+      ":before": {
+        content: `"${"fullScreen"}"`,
+        display: "none",
+      },
+      padding: 0,
+
+      " .pe-dialog__content": {
+        width: "100%", // for IE 11
+      },
+    },
+    fullScreenPane(selector)
+  ]);
+
+const modal = selector =>
+  sel(selector, {
+    // Marker to be read by JavaScript
+    ":before": {
+      content: `"${"modal"}"`,
+      display: "none",
+    },
   });
 
 const varFns = {
@@ -23,15 +49,10 @@ const varFns = {
         bottom: 0,
         zIndex: themeVars.z_dialog,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-        transitionProperty: "opacity,background-color",
+        transitionProperty: "opacity,background-color,transform",
 
-        ".pe-dialog--full-screen": {
-          padding: 0,
-
-          " .pe-dialog__content": {
-            width: "100%", // for IE11
-          }
-        },
+        ".pe-dialog--full-screen": fullScreen(selector),
+        ".pe-dialog--modal": modal(selector),
 
         " .pe-dialog__content": {
           position: "relative",
@@ -47,7 +68,7 @@ const varFns = {
             left: 0,
             right: 0,
             bottom: 0,
-            display: "none",
+            pointerEvents: "none",
           }
         ],
 
@@ -69,18 +90,6 @@ const varFns = {
   position: (selector, vars) => [
     sel(selector, {
       position: vars.position,
-    }),
-  ],
-  padding_vertical: (selector, vars) => [
-    !vars.full_screen && sel(selector, {
-      paddingTop: vars.padding_vertical + "px",
-      paddingBottom: vars.padding_vertical + "px",
-    }),
-  ],
-  padding_horizontal: (selector, vars) => [
-    !vars.full_screen && sel(selector, {
-      paddingLeft: vars.padding_horizontal + "px",
-      paddingRight: vars.padding_horizontal + "px",
     }),
   ],
   animation_delay: (selector, vars) => [
@@ -112,16 +121,20 @@ const varFns = {
   border_radius: (selector, vars) => [
     !vars.full_screen && sel(selector, {
       " .pe-dialog__content": {
-        borderRadius: vars.border_radius + "px",
+        borderTopLeftRadius: vars.border_radius + "px",
+        borderTopRightRadius: vars.border_radius + "px",
+        borderBottomLeftRadius: vars.border_radius + "px",
+        borderBottomRightRadius: vars.border_radius + "px",
       },
     }),
   ],
-  full_screen: (selector, vars) => [
-    vars.full_screen && fullScreen(selector)
-  ],
-  backdrop: (selector, vars) => [
-    vars.backdrop && backdrop(selector)
-  ],
+  // Theme vars
+  backdrop: (selector, vars) =>
+    vars.backdrop && backdrop(selector),
+  full_screen: (selector, vars) =>
+    vars.full_screen && fullScreen(selector, vars),
+  modal: (selector, vars) =>
+    vars.modal && modal(selector, vars),
 };
 
 export default createLayout({ varFns });

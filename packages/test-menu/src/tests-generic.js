@@ -15,12 +15,22 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
   const { themeColor, themedList, styledList } = themed({ renderer, Menu, List, ListTile });
   const h = renderer;
 
-  MenuCSS.addStyle(".menu-tests-transitions", {
+  MenuCSS.addStyle(".tests-menu-transitions", {
     animation_duration:        ".8s",
     animation_delay:           ".2s",
     animation_timing_function: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
     animation_hide_css:        "opacity: 0; transform: translateY(20px);",
     animation_show_css:        "opacity: 1; transform: translateY(0);",
+  });
+
+  MenuCSS.addStyle(".tests-menu-themed-behavior-backdrop", {
+    backdrop: true
+  });
+
+  MenuCSS.addStyle(".tests-menu-themed-behavior-top", {
+    top_menu: true,
+    z:        99999,
+    height:   "50vh"
   });
 
   const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
@@ -171,7 +181,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       interactive: true,
       exclude: true,
       component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "theme-transitions",
-        className: "menu-tests-transitions"
+        className: "tests-menu-transitions"
       })
     },
     {
@@ -201,6 +211,32 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
           )
       }
     },
+
+    // Themed behavior
+
+    {
+      name: "Themed behavior (backdrop)",
+      component: {
+        view: () =>
+          h("div",
+            {
+              style: {
+                height: "300px",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { height: "max", className: "tests-menu-themed-behavior-backdrop" })
+          )
+      }
+    },
+
+    {
+      name: "Themed behavior (top menu)",
+      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
+    },
+
+    // Dark tone
+
     {
       name: "Menu items -- dark tone",
       className: "pe-dark-tone",
@@ -224,5 +260,6 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
           )
       }
     },
+
   ];
 };

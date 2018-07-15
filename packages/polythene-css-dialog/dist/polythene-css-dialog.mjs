@@ -66,6 +66,7 @@ var classes = {
 
   // states
   fullScreen: "pe-dialog--full-screen",
+  modal: "pe-dialog--modal",
   open: "pe-dialog--open", // class set to html element
   visible: "pe-dialog--visible", // class set to dialog element
   showBackdrop: "pe-dialog--backdrop",
@@ -127,6 +128,31 @@ var _backdrop = function _backdrop(selector) {
   });
 };
 
+var fullScreen$1 = function fullScreen$$1(selector) {
+  return sel(selector, [{
+    // Marker to be read by JavaScript
+    ":before": {
+      content: "\"" + "fullScreen" + "\"",
+      display: "none"
+    },
+    padding: 0,
+
+    " .pe-dialog__content": {
+      width: "100%" // for IE 11
+    }
+  }, fullScreen(selector)]);
+};
+
+var _modal = function _modal(selector) {
+  return sel(selector, {
+    // Marker to be read by JavaScript
+    ":before": {
+      content: "\"" + "modal" + "\"",
+      display: "none"
+    }
+  });
+};
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
@@ -136,15 +162,10 @@ var varFns = {
       bottom: 0,
       zIndex: vars.z_dialog,
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-      transitionProperty: "opacity,background-color",
+      transitionProperty: "opacity,background-color,transform",
 
-      ".pe-dialog--full-screen": {
-        padding: 0,
-
-        " .pe-dialog__content": {
-          width: "100%" // for IE11
-        }
-      },
+      ".pe-dialog--full-screen": fullScreen$1(selector),
+      ".pe-dialog--modal": _modal(selector),
 
       " .pe-dialog__content": {
         position: "relative",
@@ -159,7 +180,7 @@ var varFns = {
         left: 0,
         right: 0,
         bottom: 0,
-        display: "none"
+        pointerEvents: "none"
       }],
 
       ".pe-dialog--backdrop": _backdrop(selector)
@@ -176,18 +197,6 @@ var varFns = {
   position: function position(selector, vars$$1) {
     return [sel(selector, {
       position: vars$$1.position
-    })];
-  },
-  padding_vertical: function padding_vertical(selector, vars$$1) {
-    return [!vars$$1.full_screen && sel(selector, {
-      paddingTop: vars$$1.padding_vertical + "px",
-      paddingBottom: vars$$1.padding_vertical + "px"
-    })];
-  },
-  padding_horizontal: function padding_horizontal(selector, vars$$1) {
-    return [!vars$$1.full_screen && sel(selector, {
-      paddingLeft: vars$$1.padding_horizontal + "px",
-      paddingRight: vars$$1.padding_horizontal + "px"
     })];
   },
   animation_delay: function animation_delay(selector, vars$$1) {
@@ -219,15 +228,22 @@ var varFns = {
   border_radius: function border_radius(selector, vars$$1) {
     return [!vars$$1.full_screen && sel(selector, {
       " .pe-dialog__content": {
-        borderRadius: vars$$1.border_radius + "px"
+        borderTopLeftRadius: vars$$1.border_radius + "px",
+        borderTopRightRadius: vars$$1.border_radius + "px",
+        borderBottomLeftRadius: vars$$1.border_radius + "px",
+        borderBottomRightRadius: vars$$1.border_radius + "px"
       }
     })];
   },
-  full_screen: function full_screen(selector, vars$$1) {
-    return [vars$$1.full_screen && fullScreen(selector)];
-  },
+  // Theme vars
   backdrop: function backdrop(selector, vars$$1) {
-    return [vars$$1.backdrop && _backdrop(selector)];
+    return vars$$1.backdrop && _backdrop(selector);
+  },
+  full_screen: function full_screen(selector, vars$$1) {
+    return vars$$1.full_screen && fullScreen$1(selector, vars$$1);
+  },
+  modal: function modal(selector, vars$$1) {
+    return vars$$1.modal && _modal(selector, vars$$1);
   }
 };
 
@@ -242,13 +258,13 @@ var vars$1 = {
   animation_show_css: "opacity: 1;",
   animation_timing_function: "ease-in-out",
   border_radius: vars.unit_block_border_radius,
-  padding_horizontal: 5 * vars.grid_unit_component,
-  padding_vertical: 3 * vars.grid_unit_component,
   position: "fixed",
 
   // theme vars
 
+  backdrop: false,
   full_screen: false,
+  modal: false,
 
   // color vars
 

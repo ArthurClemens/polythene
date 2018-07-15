@@ -463,23 +463,37 @@
   Multi.displayName = "Multi";
 
   var getStyle = function getStyle(_ref) {
-    var _ref$element = _ref.element,
-        element = _ref$element === undefined ? document : _ref$element,
+    var element = _ref.element,
         selector = _ref.selector,
+        pseudoSelector = _ref.pseudoSelector,
         prop = _ref.prop;
 
     var el = selector ? element.querySelector(selector) : element;
     if (!el) {
       return;
     }
-    return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop) : null;
+    return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
   };
 
-  var isRTL = function isRTL(_ref2) {
-    var _ref2$element = _ref2.element,
-        element = _ref2$element === undefined ? document : _ref2$element,
-        selector = _ref2.selector;
-    return getStyle({ element: element, selector: selector, prop: "direction" }) === "rtl";
+  var stylePropEquals = function stylePropEquals(_ref2) {
+    var element = _ref2.element,
+        selector = _ref2.selector,
+        pseudoSelector = _ref2.pseudoSelector,
+        prop = _ref2.prop,
+        expected = _ref2.expected;
+
+    var el = selector ? element.querySelector(selector) : element;
+    if (!el) {
+      return false;
+    }
+    return expected === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  };
+
+  var isRTL = function isRTL(_ref3) {
+    var _ref3$element = _ref3.element,
+        element = _ref3$element === undefined ? document : _ref3$element,
+        selector = _ref3.selector;
+    return stylePropEquals({ element: element, selector: selector, prop: "direction", expected: "rtl" });
   };
 
   var styleDurationToMs = function styleDurationToMs(durationStr) {
@@ -679,6 +693,7 @@
   exports.unsubscribe = unsubscribe;
   exports.emit = emit;
   exports.getStyle = getStyle;
+  exports.stylePropEquals = stylePropEquals;
   exports.isRTL = isRTL;
   exports.styleDurationToMs = styleDurationToMs;
   exports.deprecation = deprecation;

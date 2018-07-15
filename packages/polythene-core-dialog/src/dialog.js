@@ -1,10 +1,26 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropEquals } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_Z    = 3;
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
+
+const isFullScreen = ({ state, attrs }) =>
+  attrs.fullScreen || stylePropEquals({
+    element: state.el,
+    pseudoSelector: ":before",
+    prop: "content",
+    expected: `"${"fullScreen"}"`
+  });
+
+const isModal = ({ state, attrs }) =>
+  attrs.modal || stylePropEquals({
+    element: state.el,
+    pseudoSelector: ":before",
+    prop: "content",
+    expected: `"${"modal"}"`
+  });
 
 const transitionOptions = (state, attrs, isShow) => ({
   state,
@@ -55,7 +71,7 @@ export const onMount = vnode => {
   if (!attrs.inactive) {
 
     const handleEscape = e => {
-      if (attrs.fullScreen || attrs.modal) return;
+      if (isFullScreen(vnode) || isModal(vnode)) return;
       if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
         const openDialogs = document.querySelectorAll(`.${classes.component}`);
         if (openDialogs[openDialogs.length - 1] === state.el) {
@@ -93,6 +109,7 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.parentClassName || classes.component,
         attrs.fromMultipleClassName,
         attrs.fullScreen ? classes.fullScreen : null,
+        attrs.modal ? classes.modal : null,
         attrs.backdrop ? classes.showBackdrop : null,
         // classes.visible is set in showDialog though transition
         attrs.tone === "dark" ? "pe-dark-tone" : null,
@@ -106,7 +123,7 @@ export const createProps = (vnode, { keys: k }) => {
         if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
           return;
         }
-        if (attrs.modal) {
+        if (isModal(vnode)) {
           // not allowed
           return;
         }

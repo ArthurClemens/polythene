@@ -13,7 +13,6 @@
 }
 
 .pe-menu.pe-menu--floating .pe-menu__panel {
-  z-index: 1000;
   transition-property: opacity,transform
 }
 
@@ -30,8 +29,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0;
-  z-index: 1000
+  opacity: 0
 }
 
 .pe-menu.pe-menu--backdrop.pe-menu .pe-menu__backdrop {
@@ -44,6 +42,11 @@
 
 .pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-1-5 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-2 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-3 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-4 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-5 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-6 .pe-menu__panel,.pe-menu.pe-menu--top-menu.pe-menu.pe-menu--width-7 .pe-menu__panel {
   width: 100vw
+}
+
+.pe-menu.pe-menu--top-menu.pe-menu:before {
+  content: "topMenu";
+  display: none
 }
 
 .pe-menu.pe-menu--top-menu.pe-menu .pe-menu__panel {
@@ -130,6 +133,10 @@
 
 .pe-menu .pe-menu__panel {
   min-width: 84px
+}
+
+.pe-menu.pe-menu--floating .pe-menu__backdrop,.pe-menu.pe-menu--floating .pe-menu__panel {
+  z-index: 1000
 }
 
 .pe-dark-tone.pe-menu .pe-menu__panel,.pe-dark-tone .pe-menu .pe-menu__panel {

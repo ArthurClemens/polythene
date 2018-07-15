@@ -32,6 +32,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           target: `#${id}`,
           show,
           didHide: () => state.show(false),
+          className: attrs.className,
           hideDelay: .180,
           width: 3,
           height: attrs.height,

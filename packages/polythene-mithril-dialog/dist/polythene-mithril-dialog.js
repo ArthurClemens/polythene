@@ -68,6 +68,7 @@
 
     // states
     fullScreen: "pe-dialog--full-screen",
+    modal: "pe-dialog--modal",
     open: "pe-dialog--open", // class set to html element
     visible: "pe-dialog--visible", // class set to dialog element
     showBackdrop: "pe-dialog--backdrop",

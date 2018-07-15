@@ -68,7 +68,7 @@ export default {
     content={toolbarRow("New event")}
     className="tests-dialog-react-jsx-themed-toolbar"
     tone="dark"
-    z={1}
+    z={0}
   />,
   body: <BodyText />
 };

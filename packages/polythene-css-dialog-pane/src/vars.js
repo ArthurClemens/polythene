@@ -13,6 +13,8 @@ export default {
   min_width:                       5 * vars.grid_unit_menu,      // 5 * 56 = 280
   padding:                         3 * vars.grid_unit_component, // 3 * 8 = 24
   side_padding_mobile:             6 * vars.grid_unit,           // 6 * 4 = 48
+  max_height:                      8 * vars.grid_unit_component,
+  margin_vertical:                 8 * vars.grid_unit_component,
 
   color_light_title_text:          "inherit",
   color_light_body_text:           "inherit",

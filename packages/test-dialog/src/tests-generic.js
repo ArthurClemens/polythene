@@ -7,7 +7,7 @@ import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
 
-export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile }) => {
+export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, List, ListTile }) => {
 
   const h = renderer;
 
@@ -42,8 +42,17 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
     animation_show_css:        "opacity: 1; transform: translate3d(0, 0, 0);"
   });
 
+  DialogCSS.addStyle(".tests-dialog-themed-behavior-full-screen", {
+    full_screen: true
+  });
+
+  DialogCSS.addStyle(".tests-dialog-themed-behavior-modal", {
+    modal:    true,
+    backdrop: true
+  });
+
   ToolbarCSS.addStyle(".tests-dialog-themed-toolbar", {
-    color_light_background: "#eee",
+    color_light_background: "#2196F3",
     color_dark_background: "#333",
   });
 
@@ -333,6 +342,32 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
             className: "tests-dialog-themed-toolbar"
           }),
         })
+      }
+    },
+
+    // Themed behavior
+
+    {
+      name: "Themed behavior (set modal, using a theme)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener({
+            title: "Long dialog with a very long title that surely won't fit here",
+            body: renderer.trust(longText),
+            footerButtons: cancelOkButtons({ renderer, keys, Button, Dialog }),
+            className: "tests-dialog-themed-behavior-modal"
+          })
+      }
+    },
+    {
+      name: "Themed behavior (set fullscreen, using a theme)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false, className: "tests-dialog-themed-behavior-full-screen", }))
       }
     },
   ];

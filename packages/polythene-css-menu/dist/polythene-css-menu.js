@@ -149,6 +149,12 @@
     return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
       return widthStyle({ vars: vars, width: width, value: "100vw" });
     }), {
+      // Marker to be read by JavaScript
+      ":before": {
+        content: "\"" + "topMenu" + "\"",
+        display: "none"
+      },
+
       " .pe-menu__panel": {
         position: "fixed",
         width: "100vw",
@@ -160,6 +166,16 @@
         borderTopRightRadius: 0
       }
     }]);
+  };
+
+  var _z = function _z(selector, vars) {
+    return polytheneCoreCss.sel(selector, {
+      ".pe-menu--floating": {
+        " .pe-menu__panel, .pe-menu__backdrop": {
+          zIndex: vars.z
+        }
+      }
+    });
   };
 
   var varFns = {
@@ -180,7 +196,6 @@
 
         ".pe-menu--floating": {
           " .pe-menu__panel": {
-            zIndex: polytheneTheme.vars.z_menu,
             transitionProperty: "opacity, transform"
           }
         },
@@ -199,8 +214,7 @@
           right: 0,
           bottom: 0,
           left: 0,
-          opacity: 0,
-          zIndex: polytheneTheme.vars.z_menu
+          opacity: 0
         },
 
         ".pe-menu--backdrop": _backdrop(selector),
@@ -300,7 +314,10 @@
       return [vars.top_menu && _top_menu(selector, vars)];
     },
     backdrop: function backdrop(selector, vars) {
-      return [vars.backdrop && _backdrop(selector)];
+      return [vars.backdrop && _backdrop(selector, vars)];
+    },
+    z: function z(selector, vars) {
+      return [vars.z && _z(selector, vars)];
     }
   };
 
@@ -326,6 +343,7 @@
 
     backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
     top_menu: false, // set to true to position the menu at the top of the screen, full width
+    z: polytheneTheme.vars.z_menu,
 
     // color vars
 

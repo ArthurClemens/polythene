@@ -68,6 +68,17 @@
   var MIN_WIDTH = 1.5;
   var SHADOW_Z = 1;
 
+  var isTopMenu = function isTopMenu(_ref) {
+    var state = _ref.state,
+        attrs = _ref.attrs;
+    return attrs.topMenu || polytheneCore.stylePropEquals({
+      element: state.dom(),
+      pseudoSelector: ":before",
+      prop: "content",
+      expected: "\"" + "topMenu" + "\""
+    });
+  };
+
   var positionMenu = function positionMenu(state, attrs) {
     if (polytheneCore.isServer) {
       return;
@@ -85,10 +96,13 @@
     }
 
     // Don't set the position or top offset if the menu position is fixed
-    var hasStylePositionFixed = polytheneCore.getStyle({ element: panelEl, prop: "position" }) === "fixed";
-
-    if (hasStylePositionFixed && !attrs.topMenu) {
-      panelEl.style = {};
+    var hasStylePositionFixed = polytheneCore.stylePropEquals({
+      element: panelEl,
+      prop: "position",
+      expected: "fixed"
+    });
+    if (hasStylePositionFixed && !isTopMenu({ state: state, attrs: attrs })) {
+      _extends(panelEl.style, {});
       panelEl.offsetHeight; // force reflow
       return;
     }
@@ -140,7 +154,6 @@
         var bottomMargin = firstItemHeight;
         panelEl.style.height = "calc(100% - " + (topMargin + bottomMargin) + "px)";
       } else {
-        console.log("attrs.height", attrs.height);
         var height = /^\d+$/.test(attrs.height.toString()) ? attrs.height + "px" : attrs.height;
         panelEl.style.height = height;
       }
@@ -310,8 +323,8 @@
     }
   };
 
-  var createProps = function createProps(vnode, _ref) {
-    var k = _ref.keys;
+  var createProps = function createProps(vnode, _ref2) {
+    var k = _ref2.keys;
 
     var attrs = vnode.attrs;
     var type = attrs.type || DEFAULT_TYPE;
@@ -320,9 +333,9 @@
     });
   };
 
-  var createContent = function createContent(vnode, _ref2) {
-    var h = _ref2.renderer,
-        Shadow = _ref2.Shadow;
+  var createContent = function createContent(vnode, _ref3) {
+    var h = _ref3.renderer,
+        Shadow = _ref3.Shadow;
 
     var attrs = vnode.attrs;
     var z = attrs.z !== undefined ? attrs.z : SHADOW_Z;

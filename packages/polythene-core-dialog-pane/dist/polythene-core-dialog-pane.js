@@ -72,18 +72,6 @@
     state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
   };
 
-  var updateBodyState = function updateBodyState(vnode) {
-    var state = vnode.state;
-    var headerEl = state.headerEl();
-    var headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
-    var footerEl = state.footerEl();
-    var footerHeight = footerEl ? footerEl.getBoundingClientRect().height : 0;
-    var scrollEl = state.scrollEl();
-    var paddingTop = parseInt(polytheneCore.getStyle({ element: scrollEl, prop: "padding-top" }) || 0, 10);
-    var paddingBottom = parseInt(polytheneCore.getStyle({ element: scrollEl, prop: "padding-bottom" }) || 0, 10);
-    scrollEl.style.maxHeight = "calc(100vh - " + (paddingTop + paddingBottom + headerHeight + footerHeight) + "px)";
-  };
-
   var getInitialState = function getInitialState(vnode, createStream) {
     var bottomOverflow = createStream(false);
     var footerEl = createStream(null);
@@ -125,7 +113,6 @@
 
     var update = function update() {
       updateScrollOverflowState(vnode);
-      updateBodyState(vnode);
     };
 
     state.cleanUp = function () {

@@ -1,5 +1,5 @@
 
-export const getStyle = ({ element = document, selector, prop }) => {
+export const getStyle = ({ element, selector, pseudoSelector, prop }) => {
   const el = selector
     ? element.querySelector(selector)
     : element;
@@ -9,12 +9,22 @@ export const getStyle = ({ element = document, selector, prop }) => {
   return el.currentStyle
     ? el.currentStyle[prop]
     : window.getComputedStyle
-      ? document.defaultView.getComputedStyle(el, null).getPropertyValue(prop)
+      ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop)
       : null;
 };
 
+export const stylePropEquals = ({ element, selector, pseudoSelector, prop, expected }) => {
+  const el = selector
+    ? element.querySelector(selector)
+    : element;
+  if (!el) {
+    return false;
+  }
+  return expected === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+};
+
 export const isRTL = ({ element = document, selector }) => 
-  getStyle({ element, selector, prop: "direction" }) === "rtl";
+  stylePropEquals({ element, selector, prop: "direction", expected: "rtl" });
 
 export const styleDurationToMs = durationStr => {
   const parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);

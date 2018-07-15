@@ -1,14 +1,15 @@
 
-export default ({ show, target, h, Menu, List, didHide, getState, height, topMenu, exposed=true }) =>
+export default ({ show, target, h, Menu, List, didHide, getState, height, topMenu, className, exposed=true }) =>
   h(Menu, {
-    target,
-    show,
+    className,
     didHide,
-    getState,
-    width: 3,
-    height,
-    topMenu,
     exposed,
+    getState,
+    height,
+    show,
+    target,
+    topMenu,
+    width: 3,
     content: h(List,
       {
         all: {

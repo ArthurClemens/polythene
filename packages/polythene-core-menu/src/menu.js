@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, getStyle } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, stylePropEquals } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
@@ -9,6 +9,14 @@ const DEFAULT_OFFSET_V           = "79%";
 const DEFAULT_TYPE               = "floating";
 const MIN_WIDTH                   = 1.5;
 const SHADOW_Z                   = 1;
+
+const isTopMenu = ({ state, attrs }) =>
+  attrs.topMenu || stylePropEquals({
+    element: state.dom(),
+    pseudoSelector: ":before",
+    prop: "content",
+    expected: `"${"topMenu"}"`
+  });
 
 const positionMenu = (state, attrs) => {
   if (isServer) {
@@ -27,10 +35,13 @@ const positionMenu = (state, attrs) => {
   }
 
   // Don't set the position or top offset if the menu position is fixed
-  const hasStylePositionFixed = getStyle({ element: panelEl, prop: "position" }) === "fixed";
-
-  if (hasStylePositionFixed && !attrs.topMenu) {
-    panelEl.style = {};
+  const hasStylePositionFixed = stylePropEquals({
+    element: panelEl,
+    prop: "position",
+    expected: "fixed"
+  });
+  if (hasStylePositionFixed && !isTopMenu({ state, attrs })) {
+    Object.assign(panelEl.style, {});
     panelEl.offsetHeight; // force reflow
     return;
   }
@@ -94,7 +105,6 @@ const positionMenu = (state, attrs) => {
       const bottomMargin = firstItemHeight;
       panelEl.style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
     } else {
-      console.log("attrs.height", attrs.height);
       const height = /^\d+$/.test(attrs.height.toString())
         ? `${attrs.height}px`
         : attrs.height;

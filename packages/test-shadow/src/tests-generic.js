@@ -7,7 +7,7 @@ export default ({ Shadow, renderer: h, keys: k }) => {
     shadow_bottom_depth_1: "10px 10px 10px 0px rgba(45,58,112,.5)"
   });
 
-  ShadowCSS.addStyle(".tests-shadow-set-shadow", {
+  ShadowCSS.addStyle(".tests-shadow-themed-behavior-shadow", {
     shadow_depth: 3
   });
 
@@ -77,14 +77,6 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Themed (set shadow depth to 3, using a theme)",
-      component: Shadow,
-      attrs: {
-        className: "tests-shadow-set-shadow"
-      }
-    },
-
-    {
       name: "Add to an element (default depth)",
       component: {
         view: () => 
@@ -109,6 +101,16 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       interactive: true,
       exclude: true,
       component: interactive({ h, k, Shadow })
+    },
+
+    // Themed behavior
+
+    {
+      name: "Themed behavior (set shadow depth to 3, using a theme)",
+      component: Shadow,
+      attrs: {
+        className: "tests-shadow-themed-behavior-shadow"
+      }
     },
 
     // Dark tone

@@ -49,6 +49,12 @@ const top_menu = (selector, vars) =>
   sel(selector, [
     vars.widths.map(width => widthStyle({ vars, width, value: "100vw" })),
     {
+      // Marker to be read by JavaScript
+      ":before": {
+        content: `"${"topMenu"}"`,
+        display: "none",
+      },
+
       " .pe-menu__panel": {
         position: "fixed",
         width: "100vw",
@@ -61,6 +67,15 @@ const top_menu = (selector, vars) =>
       }
     }
   ]);
+
+const z = (selector, vars) =>
+  sel(selector, {
+    ".pe-menu--floating": {
+      " .pe-menu__panel, .pe-menu__backdrop": {
+        zIndex: vars.z,
+      }
+    }
+  });
 
 const varFns = {
   general_styles: (selector, vars) => [
@@ -82,7 +97,6 @@ const varFns = {
 
         ".pe-menu--floating": {
           " .pe-menu__panel": {
-            zIndex: themeVars.z_menu,
             transitionProperty: "opacity, transform",
           }
         },
@@ -102,7 +116,6 @@ const varFns = {
           bottom: 0,
           left: 0,
           opacity: 0,
-          zIndex: themeVars.z_menu,
         },
 
         ".pe-menu--backdrop": backdrop(selector),
@@ -206,7 +219,10 @@ const varFns = {
     vars.top_menu && top_menu(selector, vars)
   ],
   backdrop: (selector, vars) => [
-    vars.backdrop && backdrop(selector)
+    vars.backdrop && backdrop(selector, vars)
+  ],
+  z: (selector, vars) => [
+    vars.z && z(selector, vars)
   ],
 };
 

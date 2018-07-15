@@ -46,33 +46,42 @@
 }
 
 @media (max-width:480px) {
+  .pe-dialog.small-screen-full-screen:before {
+    content: "fullScreen";
+    display: none
+  }
+
   .pe-dialog.small-screen-full-screen {
     padding: 0
   }
 
-  .pe-dialog.small-screen-full-screen .pe-dialog-pane {
+  .pe-dialog.small-screen-full-screen .pe-dialog__content {
+    width: 100%
+  }
+
+  .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane {
     border-radius: 0
   }
 
-  .pe-dialog.small-screen-full-screen .pe-dialog-pane__content {
+  .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane__content {
     border-radius: 0;
     max-width: none;
     height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column
+    width: 100vw
   }
 
-  .pe-dialog.small-screen-full-screen .pe-dialog-pane__content>* {
+  .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane__content>* {
     flex-shrink: 0
   }
 
-  .pe-dialog.small-screen-full-screen .pe-dialog-pane__content>.pe-dialog-pane__body {
-    flex-shrink: 1
+  .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane__content>.pe-dialog-pane__body {
+    flex-shrink: 1;
+    max-height: none
   }
 
-  .pe-dialog.small-screen-full-screen .pe-dialog-pane,.pe-dialog.small-screen-full-screen .pe-dialog-pane__body {
+  .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane,.pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane__body {
     height: 100vh;
+    max-height: 100vh;
     border: none;
     max-width: none
   }
@@ -81,6 +90,11 @@
 @media (max-width:480px) {
   .pe-menu.small-screen-top-menu.pe-menu--width-1-5 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-2 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-3 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-4 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-5 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-6 .pe-menu__panel,.pe-menu.small-screen-top-menu.pe-menu--width-7 .pe-menu__panel {
     width: 100vw
+  }
+
+  .pe-menu.small-screen-top-menu:before {
+    content: "topMenu";
+    display: none
   }
 
   .pe-menu.small-screen-top-menu .pe-menu__panel {

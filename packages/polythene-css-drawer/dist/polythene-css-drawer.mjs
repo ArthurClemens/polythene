@@ -266,7 +266,9 @@ var varFns = _extends$1({
       },
 
       " .pe-dialog-pane__body": {
-        overflow: "visible"
+        overflow: "visible",
+        maxHeight: "none",
+        border: "none"
       },
 
       // Fixed

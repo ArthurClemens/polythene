@@ -37,7 +37,7 @@ export default {
       className: "tests-dialog-react-themed-toolbar",
       tone: "dark",
       content: toolbarRow("New event"),
-      z: 1
+      z: 0
     }
   ),
   body: h.trust(content)

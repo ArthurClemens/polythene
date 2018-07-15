@@ -27,10 +27,18 @@ const padding_header_bottom = (selector, vars) =>
     },
   });
 
+/*
+Setting an explicit max-height is needed for IE 11
+*/
+const header_height_footer_height_margin_vertical = (selector, vars) =>
+  sel(selector, {
+    " .pe-dialog-pane__body": {
+      maxHeight: `calc(100vh - (${vars.header_height}px + ${vars.footer_height}px + 2 * ${vars.margin_vertical}px))`
+    }
+  });
+
 export const fullScreen = selector =>
   sel(selector, {
-    padding: 0,
-
     " .pe-dialog-pane": {
       borderRadius: 0,
     },
@@ -39,8 +47,6 @@ export const fullScreen = selector =>
       maxWidth: "none",
       height: "100vh",
       width: "100vw",
-      display: "flex",
-      flexDirection: "column",
 
       " > *": {
         flexShrink: 0
@@ -48,14 +54,14 @@ export const fullScreen = selector =>
 
       " > .pe-dialog-pane__body": {
         flexShrink: 1 ,
-        // maxHeight: "initial",
+        maxHeight: "none", // IE 11 doesn't know "initial"
       }
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
-      // maxHeight: "100vh",
+      maxHeight: "100vh",
       border: "none",
-      maxWidth: "initial",
+      maxWidth: "none", // IE 11 doesn't know "initial"
     }
   });
 
@@ -65,16 +71,20 @@ const varFns = {
       flex.layoutVertical,
       {
         position: "relative",
-        maxHeight: "100%",
-        borderRadius: "inherit",
+        borderTopLeftRadius: "inherit",
+        borderTopRightRadius: "inherit",
+        borderBottomLeftRadius: "inherit",
+        borderBottomRightRadius: "inherit",
         margin: 0,
-        
-        " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
-          zIndex: 1
-        },
 
         " .pe-dialog-pane__content": {
-          width: "100%"
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          borderTopLeftRadius: "inherit",
+          borderTopRightRadius: "inherit",
+          borderBottomLeftRadius: "inherit",
+          borderBottomRightRadius: "inherit",
         },
 
         " .pe-dialog-pane__title": {
@@ -86,7 +96,10 @@ const varFns = {
           },
         },
 
-        " .pe-dialog-pane__header": {
+        " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
+          borderTopLeftRadius: "inherit",
+          borderTopRightRadius: "inherit",
+
           " .pe-dialog-pane__title": {
             width: "100%",
             wordBreak: "break-all",
@@ -97,11 +110,9 @@ const varFns = {
         },
 
         " .pe-dialog-pane__body": [
-          flex.selfStretch,
           {
             overflowY: "auto",
             "-webkit-overflow-scrolling": "touch",
-            minHeight: "50px",
 
             " p": {
               margin: 0
@@ -111,20 +122,6 @@ const varFns = {
             }
           }
         ],
-
-        ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-          " .pe-dialog-pane__body": {
-            borderTopStyle: "solid",
-          }
-        },
-
-        ".pe-dialog-pane--footer": {
-          ".pe-dialog-pane--border-bottom": {
-            " .pe-dialog-pane__body": {
-              borderBottomStyle: "solid",
-            }
-          }
-        },
 
         ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
           padding: 0,
@@ -136,12 +133,17 @@ const varFns = {
         },
 
         " .pe-dialog-pane__footer": {
+          "&, > .pe-toolbar": {
+            borderBottomLeftRadius: "inherit",
+            borderBottomRightRadius: "inherit",
+          },
+
           ".pe-dialog-pane__footer--high": {
             // when buttons are stacked vertically
             paddingBottom: "8px"
           },
           ".pe-dialog-pane__footer--buttons": {
-            padding: "2px 8px",
+            padding: "0 8px",
             fontSize: 0, // remove inline block spacing
           },
         },
@@ -163,9 +165,6 @@ const varFns = {
         }
       },
     },
-    [
-      fullScreen(" .pe-dialog--full-screen")
-    ]
   ],
   max_width: (selector, vars) => [
     max_width_side_padding_mobile(selector, vars)
@@ -178,6 +177,12 @@ const varFns = {
       minWidth: vars.min_width + "px"
     }),
   ],
+  margin_vertical: (selector, vars) => [
+    sel(selector, {
+      maxHeight: `calc(100vh - 2 * ${vars.margin_vertical}px)`
+    }),
+    header_height_footer_height_margin_vertical(selector, vars)
+  ],
   line_height_title: (selector, vars) => [
     sel(selector, {
       " .pe-dialog-pane__title": {
@@ -187,10 +192,11 @@ const varFns = {
   ],
   header_height: (selector, vars) => [
     sel(selector, {
-      " .pe-dialog-pane__header": {
+      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
         minHeight: vars.header_height + "px",
       },
     }),
+    header_height_footer_height_margin_vertical(selector, vars)
   ],
   footer_height: (selector, vars) => [
     sel(selector, {
@@ -198,6 +204,7 @@ const varFns = {
         minHeight: vars.footer_height + "px",
       },
     }),
+    header_height_footer_height_margin_vertical(selector, vars)
   ],
   padding: (selector, vars) => [
     sel(selector, {
@@ -219,12 +226,14 @@ const varFns = {
     sel(selector, {
       ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
         " .pe-dialog-pane__body": {
+          // borderTopStyle set in color.js
           borderWidth: vars.border_width + "px"
         },
       },
       ".pe-dialog-pane--footer": {
         ".pe-dialog-pane--border-bottom": {
           " .pe-dialog-pane__body": {
+            // borderBottomStyle set in color.js
             borderWidth: vars.border_width + "px"
           }
         }

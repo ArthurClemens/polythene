@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe, getStyle } from "polythene-core";
+import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from "polythene-core";
 import classes from "polythene-css-classes/dialog-pane";
 import buttonClasses from "polythene-css-classes/button";
 
@@ -15,22 +15,6 @@ const updateScrollOverflowState = vnode => {
   }
   state.topOverflow(scroller.scrollTop > 0);
   state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
-};
-
-const updateBodyState = vnode => {
-  const state = vnode.state;
-  const headerEl = state.headerEl();
-  const headerHeight = headerEl
-    ? headerEl.getBoundingClientRect().height
-    : 0;
-  const footerEl = state.footerEl();
-  const footerHeight = footerEl
-    ? footerEl.getBoundingClientRect().height
-    : 0;
-  const scrollEl = state.scrollEl();
-  const paddingTop = parseInt(getStyle({ element: scrollEl, prop: "padding-top" }) || 0, 10);
-  const paddingBottom = parseInt(getStyle({ element: scrollEl, prop: "padding-bottom" }) || 0, 10);
-  scrollEl.style.maxHeight = `calc(100vh - ${paddingTop + paddingBottom + headerHeight + footerHeight}px)`;
 };
 
 export const getInitialState = (vnode, createStream) => {
@@ -74,7 +58,6 @@ export const onMount = vnode => {
 
   const update = () => {
     updateScrollOverflowState(vnode);
-    updateBodyState(vnode);
   };
 
   state.cleanUp = () => (

@@ -48,7 +48,9 @@
 }
 
 .pe-dialog.pe-drawer .pe-dialog-pane__body {
-  overflow: visible
+  overflow: visible;
+  max-height: none;
+  border: none
 }
 
 .pe-dialog.pe-drawer.pe-drawer--fixed {

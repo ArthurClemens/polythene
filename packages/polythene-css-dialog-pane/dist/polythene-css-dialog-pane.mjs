@@ -59,9 +59,11 @@ var tintFns = function tintFns(tint) {
   }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars$$1) {
     return [sel(selector, {
       ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
+        borderTopStyle: "solid",
         borderTopColor: vars$$1["color_" + tint + "_body_border"]
       },
       ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
+        borderBottomStyle: "solid",
         borderBottomColor: vars$$1["color_" + tint + "_body_border"]
       }
     })];
@@ -99,10 +101,19 @@ var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
   });
 };
 
+/*
+Setting an explicit max-height is needed for IE 11
+*/
+var header_height_footer_height_margin_vertical = function header_height_footer_height_margin_vertical(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-dialog-pane__body": {
+      maxHeight: "calc(100vh - (" + vars$$1.header_height + "px + " + vars$$1.footer_height + "px + 2 * " + vars$$1.margin_vertical + "px))"
+    }
+  });
+};
+
 var fullScreen = function fullScreen(selector) {
   return sel(selector, {
-    padding: 0,
-
     " .pe-dialog-pane": {
       borderRadius: 0
     },
@@ -111,23 +122,21 @@ var fullScreen = function fullScreen(selector) {
       maxWidth: "none",
       height: "100vh",
       width: "100vw",
-      display: "flex",
-      flexDirection: "column",
 
       " > *": {
         flexShrink: 0
       },
 
       " > .pe-dialog-pane__body": {
-        flexShrink: 1
-        // maxHeight: "initial",
+        flexShrink: 1,
+        maxHeight: "none" // IE 11 doesn't know "initial"
       }
     },
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
-      // maxHeight: "100vh",
+      maxHeight: "100vh",
       border: "none",
-      maxWidth: "initial"
+      maxWidth: "none" // IE 11 doesn't know "initial"
     }
   });
 };
@@ -136,16 +145,20 @@ var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutVertical, {
       position: "relative",
-      maxHeight: "100%",
-      borderRadius: "inherit",
+      borderTopLeftRadius: "inherit",
+      borderTopRightRadius: "inherit",
+      borderBottomLeftRadius: "inherit",
+      borderBottomRightRadius: "inherit",
       margin: 0,
 
-      " .pe-dialog-pane__header, pe-dialog-pane__body, pe-dialog-pane__header": {
-        zIndex: 1
-      },
-
       " .pe-dialog-pane__content": {
-        width: "100%"
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        borderTopLeftRadius: "inherit",
+        borderTopRightRadius: "inherit",
+        borderBottomLeftRadius: "inherit",
+        borderBottomRightRadius: "inherit"
       },
 
       " .pe-dialog-pane__title": {
@@ -157,7 +170,10 @@ var varFns = {
         }
       },
 
-      " .pe-dialog-pane__header": {
+      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
+        borderTopLeftRadius: "inherit",
+        borderTopRightRadius: "inherit",
+
         " .pe-dialog-pane__title": {
           width: "100%",
           wordBreak: "break-all",
@@ -167,10 +183,9 @@ var varFns = {
         }
       },
 
-      " .pe-dialog-pane__body": [flex.selfStretch, {
+      " .pe-dialog-pane__body": [{
         overflowY: "auto",
         "-webkit-overflow-scrolling": "touch",
-        minHeight: "50px",
 
         " p": {
           margin: 0
@@ -179,20 +194,6 @@ var varFns = {
           marginTop: "16px"
         }
       }],
-
-      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-        " .pe-dialog-pane__body": {
-          borderTopStyle: "solid"
-        }
-      },
-
-      ".pe-dialog-pane--footer": {
-        ".pe-dialog-pane--border-bottom": {
-          " .pe-dialog-pane__body": {
-            borderBottomStyle: "solid"
-          }
-        }
-      },
 
       ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
         padding: 0,
@@ -204,12 +205,17 @@ var varFns = {
       },
 
       " .pe-dialog-pane__footer": {
+        "&, > .pe-toolbar": {
+          borderBottomLeftRadius: "inherit",
+          borderBottomRightRadius: "inherit"
+        },
+
         ".pe-dialog-pane__footer--high": {
           // when buttons are stacked vertically
           paddingBottom: "8px"
         },
         ".pe-dialog-pane__footer--buttons": {
-          padding: "2px 8px",
+          padding: "0 8px",
           fontSize: 0 // remove inline block spacing
         }
       },
@@ -222,7 +228,7 @@ var varFns = {
           border: "none"
         }
       })
-    }, [fullScreen(" .pe-dialog--full-screen")]];
+    }];
   },
   max_width: function max_width(selector, vars$$1) {
     return [max_width_side_padding_mobile(selector, vars$$1)];
@@ -235,6 +241,11 @@ var varFns = {
       minWidth: vars$$1.min_width + "px"
     })];
   },
+  margin_vertical: function margin_vertical(selector, vars$$1) {
+    return [sel(selector, {
+      maxHeight: "calc(100vh - 2 * " + vars$$1.margin_vertical + "px)"
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+  },
   line_height_title: function line_height_title(selector, vars$$1) {
     return [sel(selector, {
       " .pe-dialog-pane__title": {
@@ -244,17 +255,17 @@ var varFns = {
   },
   header_height: function header_height(selector, vars$$1) {
     return [sel(selector, {
-      " .pe-dialog-pane__header": {
+      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
         minHeight: vars$$1.header_height + "px"
       }
-    })];
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
   },
   footer_height: function footer_height(selector, vars$$1) {
     return [sel(selector, {
       " .pe-dialog-pane__footer": {
         minHeight: vars$$1.footer_height + "px"
       }
-    })];
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
   },
   padding: function padding(selector, vars$$1) {
     return [sel(selector, {
@@ -275,12 +286,14 @@ var varFns = {
     return [sel(selector, {
       ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
         " .pe-dialog-pane__body": {
+          // borderTopStyle set in color.js
           borderWidth: vars$$1.border_width + "px"
         }
       },
       ".pe-dialog-pane--footer": {
         ".pe-dialog-pane--border-bottom": {
           " .pe-dialog-pane__body": {
+            // borderBottomStyle set in color.js
             borderWidth: vars$$1.border_width + "px"
           }
         }
@@ -303,6 +316,8 @@ var vars$1 = {
   min_width: 5 * vars.grid_unit_menu, // 5 * 56 = 280
   padding: 3 * vars.grid_unit_component, // 3 * 8 = 24
   side_padding_mobile: 6 * vars.grid_unit, // 6 * 4 = 48
+  max_height: 8 * vars.grid_unit_component,
+  margin_vertical: 8 * vars.grid_unit_component,
 
   color_light_title_text: "inherit",
   color_light_body_text: "inherit",

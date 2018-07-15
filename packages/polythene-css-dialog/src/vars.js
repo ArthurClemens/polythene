@@ -10,13 +10,13 @@ export default {
   animation_show_css:              "opacity: 1;",
   animation_timing_function:       "ease-in-out",
   border_radius:                   vars.unit_block_border_radius,
-  padding_horizontal:              5 * vars.grid_unit_component,
-  padding_vertical:                3 * vars.grid_unit_component,
   position:                        "fixed",
 
   // theme vars
   
+  backdrop:                        false,
   full_screen:                     false,
+  modal:                           false,
 
   // color vars
 

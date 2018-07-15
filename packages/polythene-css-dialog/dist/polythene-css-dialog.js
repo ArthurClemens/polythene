@@ -68,6 +68,7 @@
 
     // states
     fullScreen: "pe-dialog--full-screen",
+    modal: "pe-dialog--modal",
     open: "pe-dialog--open", // class set to html element
     visible: "pe-dialog--visible", // class set to dialog element
     showBackdrop: "pe-dialog--backdrop",
@@ -129,6 +130,31 @@
     });
   };
 
+  var fullScreen = function fullScreen(selector) {
+    return polytheneCoreCss.sel(selector, [{
+      // Marker to be read by JavaScript
+      ":before": {
+        content: "\"" + "fullScreen" + "\"",
+        display: "none"
+      },
+      padding: 0,
+
+      " .pe-dialog__content": {
+        width: "100%" // for IE 11
+      }
+    }, polytheneCssDialogPane.fullScreen(selector)]);
+  };
+
+  var _modal = function _modal(selector) {
+    return polytheneCoreCss.sel(selector, {
+      // Marker to be read by JavaScript
+      ":before": {
+        content: "\"" + "modal" + "\"",
+        display: "none"
+      }
+    });
+  };
+
   var varFns = {
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
@@ -138,15 +164,10 @@
         bottom: 0,
         zIndex: polytheneTheme.vars.z_dialog,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
-        transitionProperty: "opacity,background-color",
+        transitionProperty: "opacity,background-color,transform",
 
-        ".pe-dialog--full-screen": {
-          padding: 0,
-
-          " .pe-dialog__content": {
-            width: "100%" // for IE11
-          }
-        },
+        ".pe-dialog--full-screen": fullScreen(selector),
+        ".pe-dialog--modal": _modal(selector),
 
         " .pe-dialog__content": {
           position: "relative",
@@ -161,7 +182,7 @@
           left: 0,
           right: 0,
           bottom: 0,
-          display: "none"
+          pointerEvents: "none"
         }],
 
         ".pe-dialog--backdrop": _backdrop(selector)
@@ -178,18 +199,6 @@
     position: function position(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
         position: vars.position
-      })];
-    },
-    padding_vertical: function padding_vertical(selector, vars) {
-      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
-        paddingTop: vars.padding_vertical + "px",
-        paddingBottom: vars.padding_vertical + "px"
-      })];
-    },
-    padding_horizontal: function padding_horizontal(selector, vars) {
-      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
-        paddingLeft: vars.padding_horizontal + "px",
-        paddingRight: vars.padding_horizontal + "px"
       })];
     },
     animation_delay: function animation_delay(selector, vars) {
@@ -221,15 +230,22 @@
     border_radius: function border_radius(selector, vars) {
       return [!vars.full_screen && polytheneCoreCss.sel(selector, {
         " .pe-dialog__content": {
-          borderRadius: vars.border_radius + "px"
+          borderTopLeftRadius: vars.border_radius + "px",
+          borderTopRightRadius: vars.border_radius + "px",
+          borderBottomLeftRadius: vars.border_radius + "px",
+          borderBottomRightRadius: vars.border_radius + "px"
         }
       })];
     },
-    full_screen: function full_screen(selector, vars) {
-      return [vars.full_screen && polytheneCssDialogPane.fullScreen(selector)];
-    },
+    // Theme vars
     backdrop: function backdrop(selector, vars) {
-      return [vars.backdrop && _backdrop(selector)];
+      return vars.backdrop && _backdrop(selector);
+    },
+    full_screen: function full_screen(selector, vars) {
+      return vars.full_screen && fullScreen(selector, vars);
+    },
+    modal: function modal(selector, vars) {
+      return vars.modal && _modal(selector, vars);
     }
   };
 
@@ -244,13 +260,13 @@
     animation_show_css: "opacity: 1;",
     animation_timing_function: "ease-in-out",
     border_radius: polytheneTheme.vars.unit_block_border_radius,
-    padding_horizontal: 5 * polytheneTheme.vars.grid_unit_component,
-    padding_vertical: 3 * polytheneTheme.vars.grid_unit_component,
     position: "fixed",
 
     // theme vars
 
+    backdrop: false,
     full_screen: false,
+    modal: false,
 
     // color vars
 

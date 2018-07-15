@@ -68,6 +68,7 @@
 
     // states
     fullScreen: "pe-dialog--full-screen",
+    modal: "pe-dialog--modal",
     open: "pe-dialog--open", // class set to html element
     visible: "pe-dialog--visible", // class set to dialog element
     showBackdrop: "pe-dialog--backdrop",
@@ -85,6 +86,28 @@
 
   var getElement = function getElement(vnode) {
     return vnode.attrs.element || "div";
+  };
+
+  var isFullScreen = function isFullScreen(_ref) {
+    var state = _ref.state,
+        attrs = _ref.attrs;
+    return attrs.fullScreen || polytheneCore.stylePropEquals({
+      element: state.el,
+      pseudoSelector: ":before",
+      prop: "content",
+      expected: "\"" + "fullScreen" + "\""
+    });
+  };
+
+  var isModal = function isModal(_ref2) {
+    var state = _ref2.state,
+        attrs = _ref2.attrs;
+    return attrs.modal || polytheneCore.stylePropEquals({
+      element: state.el,
+      pseudoSelector: ":before",
+      prop: "content",
+      expected: "\"" + "modal" + "\""
+    });
   };
 
   var transitionOptions = function transitionOptions(state, attrs, isShow) {
@@ -140,7 +163,7 @@
     if (!attrs.inactive) {
 
       var handleEscape = function handleEscape(e) {
-        if (attrs.fullScreen || attrs.modal) return;
+        if (isFullScreen(vnode) || isModal(vnode)) return;
         if (e.key === "Escape" || e.key === "Esc") {
           // "Esc" for IE11
           var openDialogs = document.querySelectorAll("." + classes.component);
@@ -168,14 +191,14 @@
     return vnode.state.cleanUp && vnode.state.cleanUp();
   };
 
-  var createProps = function createProps(vnode, _ref) {
-    var k = _ref.keys;
+  var createProps = function createProps(vnode, _ref3) {
+    var k = _ref3.keys;
 
     var state = vnode.state;
     var attrs = vnode.attrs;
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
     _defineProperty({
-      className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.backdrop ? classes.showBackdrop : null,
+      className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null,
       // classes.visible is set in showDialog though transition
       attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
       "data-spawn-id": attrs.spawnId,
@@ -184,7 +207,7 @@
       if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
         return;
       }
-      if (attrs.modal) {
+      if (isModal(vnode)) {
         // not allowed
         return;
       }
@@ -192,9 +215,9 @@
     }));
   };
 
-  var createPane = function createPane(vnode, _ref2) {
-    var h = _ref2.renderer,
-        Pane = _ref2.Pane;
+  var createPane = function createPane(vnode, _ref4) {
+    var h = _ref4.renderer,
+        Pane = _ref4.Pane;
 
     var attrs = vnode.attrs;
     return h(Pane, {
@@ -210,11 +233,11 @@
     });
   };
 
-  var createContent = function createContent(vnode, _ref3) {
-    var renderer = _ref3.renderer,
-        Shadow = _ref3.Shadow,
-        createPane = _ref3.createPane,
-        Pane = _ref3.Pane;
+  var createContent = function createContent(vnode, _ref5) {
+    var renderer = _ref5.renderer,
+        Shadow = _ref5.Shadow,
+        createPane = _ref5.createPane,
+        Pane = _ref5.Pane;
 
     var state = vnode.state;
     var attrs = vnode.attrs;

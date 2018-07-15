@@ -21,6 +21,7 @@ export default {
   
   backdrop:                         undefined, // (Boolean) - if not set, backdrop existence is set by component option
   top_menu:                         false, // set to true to position the menu at the top of the screen, full width
+  z:                                vars.z_menu,
 
   // color vars
 

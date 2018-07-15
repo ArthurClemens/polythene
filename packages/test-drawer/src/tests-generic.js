@@ -7,13 +7,13 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
 
   const createContent = ({ repeats, onClick }) => navigationList({ renderer, keys, Icon, List, ListTile, repeats, onClick });
 
-  DrawerCSS.addStyle(".drawer-tests-themed", {
+  DrawerCSS.addStyle(".tests-drawer-themed", {
     color_dark_background:          "rgba(69, 45, 157, 1)",
     color_dark_text:                "#fff",
     color_dark_backdrop_background: "rgba(69, 45, 157, .5)"
   });
 
-  DrawerCSS.addStyle(".drawer-tests-themed-variant", {
+  DrawerCSS.addStyle(".tests-drawer-themed-behavior-mini", {
     mini:         true,
     border:       false,
     shadow_depth: 3,
@@ -143,18 +143,9 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         backdrop: true,
-        className: "drawer-tests-themed",
+        className: "tests-drawer-themed",
         tone: "dark",
         z: 1
-      }})
-    },
-    {
-      name: "Themed (set variant to mini and shadow, using a theme)",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
-        permanent: true,
-        className: "drawer-tests-themed-variant",
       }})
     },
     {
@@ -254,6 +245,18 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         push: true,
         border: true,
+      }})
+    },
+
+    // Themed behavior
+
+    {
+      name: "Themed behavior (set variant to mini and shadow, using a theme)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
+        permanent: true,
+        className: "tests-drawer-themed-behavior-mini",
       }})
     },
 

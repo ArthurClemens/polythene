@@ -31,9 +31,11 @@ const tintFns = tint => ({
   ["color_" + tint + "_body_border"]: (selector, vars) => [
     sel(selector, {
       ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
+        borderTopStyle: "solid",
         borderTopColor: vars["color_" + tint + "_body_border"]
       },
       ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
+        borderBottomStyle: "solid",
         borderBottomColor: vars["color_" + tint + "_body_border"]
       }
     })
