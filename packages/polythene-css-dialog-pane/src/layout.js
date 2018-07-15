@@ -153,6 +153,17 @@ const varFns = {
           flex.layoutEndJustified,
           flex.layoutWrap
         ],
+
+        ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+          " .pe-dialog-pane__body": {
+            borderTopStyle: "solid",
+          },
+        },
+        ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+          " .pe-dialog-pane__body": {
+            borderBottomStyle: "solid",
+          }
+        },
       },
     ]),
     {
@@ -224,18 +235,16 @@ const varFns = {
   ],
   border_width: (selector, vars) => [
     sel(selector, {
-      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+      ".pe-dialog-pane--header": {
         " .pe-dialog-pane__body": {
           // borderTopStyle set in color.js
           borderWidth: vars.border_width + "px"
         },
       },
       ".pe-dialog-pane--footer": {
-        ".pe-dialog-pane--border-bottom": {
-          " .pe-dialog-pane__body": {
-            // borderBottomStyle set in color.js
-            borderWidth: vars.border_width + "px"
-          }
+        " .pe-dialog-pane__body": {
+          // borderBottomStyle set in color.js
+          borderWidth: vars.border_width + "px"
         }
       },
     }),

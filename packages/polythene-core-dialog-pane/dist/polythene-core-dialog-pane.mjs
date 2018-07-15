@@ -130,11 +130,11 @@ var createProps = function createProps(vnode, _ref) {
 
   var state = vnode.state;
   var attrs = unpackAttrs(vnode.attrs);
-  var borders = attrs.borders || "overflow";
-  var showTopBorder = borders === "always" || borders === "overflow" && state.topOverflow();
-  var showBottomBorder = borders === "always" || borders === "overflow" && state.bottomOverflow();
   var withHeader = attrs.header !== undefined || attrs.title !== undefined;
   var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+  var borders = attrs.borders || "overflow";
+  var showTopBorder = borders === "always" || withHeader && borders === "overflow" && state.topOverflow();
+  var showBottomBorder = borders === "always" || withFooter && borders === "overflow" && state.bottomOverflow();
 
   return _extends({}, filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
   {

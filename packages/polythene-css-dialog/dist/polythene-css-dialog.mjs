@@ -1,6 +1,7 @@
 import { sel, createColor, mixin, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { fullScreen } from 'polythene-css-dialog-pane';
+import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -117,6 +118,8 @@ var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
 });
 
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var minWidth = "320px";
 
 var _backdrop = function _backdrop(selector) {
@@ -153,7 +156,7 @@ var _modal = function _modal(selector) {
   });
 };
 
-var varFns = {
+var varFns = _extends$1({
   general_styles: function general_styles(selector) {
     return [sel(selector, [flex.layoutCenterCenter, {
       top: 0,
@@ -245,11 +248,19 @@ var varFns = {
   modal: function modal(selector, vars$$1) {
     return vars$$1.modal && _modal(selector, vars$$1);
   }
-};
+}, sharedVarFns);
 
 var layout = createLayout({ varFns: varFns });
 
-var vars$1 = {
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var themeVars = _extends$2({}, {
+  backdrop: false,
+  full_screen: false,
+  modal: false
+}, sharedVars);
+
+var vars$1 = _extends$2({}, {
   general_styles: true,
 
   animation_delay: "0s",
@@ -259,12 +270,6 @@ var vars$1 = {
   animation_timing_function: "ease-in-out",
   border_radius: vars.unit_block_border_radius,
   position: "fixed",
-
-  // theme vars
-
-  backdrop: false,
-  full_screen: false,
-  modal: false,
 
   // color vars
 
@@ -276,7 +281,7 @@ var vars$1 = {
 
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
-};
+}, themeVars);
 
 var fns = [layout, color];
 var selector = "." + classes.component;

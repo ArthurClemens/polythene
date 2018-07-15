@@ -59,7 +59,6 @@ var tintFns = function tintFns(tint) {
   }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars$$1) {
     return [sel(selector, {
       ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-        borderTopStyle: "solid",
         borderTopColor: vars$$1["color_" + tint + "_body_border"]
       },
       ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
@@ -220,7 +219,18 @@ var varFns = {
         }
       },
 
-      " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap]
+      " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap],
+
+      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+        " .pe-dialog-pane__body": {
+          borderTopStyle: "solid"
+        }
+      },
+      ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+        " .pe-dialog-pane__body": {
+          borderBottomStyle: "solid"
+        }
+      }
     }]), {
       " .pe-dialog__content.pe-menu__content": _defineProperty$1({}, " " + selector, {
         " .pe-dialog-pane__body": {
@@ -284,18 +294,16 @@ var varFns = {
   },
   border_width: function border_width(selector, vars$$1) {
     return [sel(selector, {
-      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+      ".pe-dialog-pane--header": {
         " .pe-dialog-pane__body": {
           // borderTopStyle set in color.js
           borderWidth: vars$$1.border_width + "px"
         }
       },
       ".pe-dialog-pane--footer": {
-        ".pe-dialog-pane--border-bottom": {
-          " .pe-dialog-pane__body": {
-            // borderBottomStyle set in color.js
-            borderWidth: vars$$1.border_width + "px"
-          }
+        " .pe-dialog-pane__body": {
+          // borderBottomStyle set in color.js
+          borderWidth: vars$$1.border_width + "px"
         }
       }
     })];

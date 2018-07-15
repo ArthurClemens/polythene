@@ -295,6 +295,8 @@ const varFns = {
   content_width_mini_collapsed: (selector, vars) => [
     content_width_mini_collapsed(`${selector}.pe-drawer--mini`, vars)
   ],
+
+  // Theme vars
   cover: (selector, vars) =>
     vars.cover && [
       cover(selector, vars),
@@ -322,6 +324,7 @@ const varFns = {
       push(selector, vars),
       push_content_width(selector, vars)
     ],
+  // shadow_depth:
   ...shadowVarFns
 };
 

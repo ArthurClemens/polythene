@@ -251,7 +251,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
     // Themed behavior
 
     {
-      name: "Themed behavior (set variant to mini and shadow, using a theme)",
+      name: "Themed behavior: set variant to mini and shadow depth",
       interactive: true,
       exclude: true,
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {

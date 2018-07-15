@@ -106,7 +106,7 @@ export default ({ Shadow, renderer: h, keys: k }) => {
     // Themed behavior
 
     {
-      name: "Themed behavior (set shadow depth to 3, using a theme)",
+      name: "Themed behavior: set shadow depth to 3",
       component: Shadow,
       attrs: {
         className: "tests-shadow-themed-behavior-shadow"

@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-dialog-pane')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-dialog-pane'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-dialog-pane']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssDialogPane) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-dialog-pane'), require('polythene-css-shadow')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-dialog-pane', 'polythene-css-shadow'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-dialog-pane'],global['polythene-css-shadow']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssDialogPane,polytheneCssShadow) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -119,6 +119,8 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   var minWidth = "320px";
 
   var _backdrop = function _backdrop(selector) {
@@ -155,7 +157,7 @@
     });
   };
 
-  var varFns = {
+  var varFns = _extends$1({
     general_styles: function general_styles(selector) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
         top: 0,
@@ -247,11 +249,19 @@
     modal: function modal(selector, vars) {
       return vars.modal && _modal(selector, vars);
     }
-  };
+  }, polytheneCssShadow.sharedVarFns);
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
-  var vars = {
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var themeVars = _extends$2({}, {
+    backdrop: false,
+    full_screen: false,
+    modal: false
+  }, polytheneCssShadow.sharedVars);
+
+  var vars = _extends$2({}, {
     general_styles: true,
 
     animation_delay: "0s",
@@ -261,12 +271,6 @@
     animation_timing_function: "ease-in-out",
     border_radius: polytheneTheme.vars.unit_block_border_radius,
     position: "fixed",
-
-    // theme vars
-
-    backdrop: false,
-    full_screen: false,
-    modal: false,
 
     // color vars
 
@@ -278,7 +282,7 @@
 
     color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
     color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
-  };
+  }, themeVars);
 
   var fns = [layout, color];
   var selector = "." + classes.component;

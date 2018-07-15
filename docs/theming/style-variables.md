@@ -7,6 +7,7 @@
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
   - [Using media queries](#using-media-queries)
+  - [Themed behaviors](#themed-behaviors)
   - [Function `addStyle`](#function-addstyle)
   - [Under the hood](#under-the-hood)
 - [Choosing CSS-in-JS or CSS files](#choosing-css-in-js-or-css-files)
@@ -15,6 +16,8 @@
   - [React JSX example](#react-jsx-example)
 - [Global styling by overriding Polythene defaults](#global-styling-by-overriding-polythene-defaults)
 - [List of all variables](#list-of-all-variables)
+  - [Global variables](#global-variables)
+  - [Component variables](#component-variables)
 
 <!-- /MarkdownTOC -->
 
@@ -149,7 +152,10 @@ Then apply the styles by setting the class name:
 m(Card, { className: "themed-card small-image-card" })
 ~~~
 
-Some components allow to change their behavior using style variables. For example, Drawer's `vars.js` has a variable named `cover`. By setting this variable to `true`, the Drawer gets a "cover" behavior:
+<a id="themed-behaviors"></a>
+### Themed behaviors
+
+Some components allow to change their behavior using style variables. For example, Drawer's `vars.js` lists variable `cover`. By setting this variable to `true`, the Drawer gets cover behavior:
 
 ~~~javascript
 import { DrawerCSS } from "polythene-css"
@@ -350,11 +356,15 @@ To override global variables such as the app's primary action color, see [Global
 <a id="list-of-all-variables"></a>
 ## List of all variables
 
-Global variables:
+<a id="global-variables"></a>
+### Global variables
 
 * [polythene-style](../../packages/polythene-style/src/variables.js)
 
-Component variables:
+<a id="component-variables"></a>
+### Component variables
+
+Variables are defined in each module's `vars.js` file.
 
 * [polythene-css-base-spinner](../../packages/polythene-css-base-spinner/src/vars.js)
 * [polythene-css-button-group](../../packages/polythene-css-button-group/src/vars.js)
@@ -363,6 +373,7 @@ Component variables:
 * [polythene-css-checkbox](../../packages/polythene-css-checkbox/src/vars.js)
 * [polythene-css-dialog-pane](../../packages/polythene-css-dialog-pane/src/vars.js)
 * [polythene-css-dialog](../../packages/polythene-css-dialog/src/vars.js)
+* [polythene-css-drawer](../../packages/polythene-css-drawer/src/vars.js)
 * [polythene-css-fab](../../packages/polythene-css-fab/src/vars.js)
 * [polythene-css-icon-button](../../packages/polythene-css-icon-button/src/vars.js)
 * [polythene-css-icon](../../packages/polythene-css-icon/src/vars.js)

@@ -77,11 +77,11 @@ export const onUnMount = vnode => (
 export const createProps = (vnode, { keys: k }) => {
   const state = vnode.state;
   const attrs = unpackAttrs(vnode.attrs);
-  const borders = attrs.borders || "overflow";
-  const showTopBorder = borders === "always" || (borders === "overflow" && state.topOverflow());
-  const showBottomBorder = borders === "always" || (borders === "overflow" && state.bottomOverflow());
   const withHeader = attrs.header !== undefined || attrs.title !== undefined;
   const withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+  const borders = attrs.borders || "overflow";
+  const showTopBorder = borders === "always" || (withHeader && borders === "overflow" && state.topOverflow());
+  const showBottomBorder = borders === "always" || (withFooter && borders === "overflow" && state.bottomOverflow());
   
   return Object.assign(
     {},

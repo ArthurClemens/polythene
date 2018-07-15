@@ -215,7 +215,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
     // Themed behavior
 
     {
-      name: "Themed behavior (backdrop)",
+      name: "Themed behavior: set backdrop",
       component: {
         view: () =>
           h("div",
@@ -231,7 +231,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
     },
 
     {
-      name: "Themed behavior (top menu)",
+      name: "Themed behavior: set top menu",
       component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
     },
 

@@ -1,6 +1,7 @@
 import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 import { fullScreen as fullScreenPane } from "polythene-css-dialog-pane";
+import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 
 const minWidth = "320px";
 
@@ -135,6 +136,8 @@ const varFns = {
     vars.full_screen && fullScreen(selector, vars),
   modal: (selector, vars) =>
     vars.modal && modal(selector, vars),
+  // shadow_depth:
+  ...shadowVarFns
 };
 
 export default createLayout({ varFns });
