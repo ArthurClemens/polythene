@@ -1305,6 +1305,26 @@ var createColor = function createColor(_ref8) {
   };
 };
 
+var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
+  if (!vars) {
+    return;
+  }
+  var marker = Object.keys(behaviorVars).filter(function (bvar) {
+    return vars[bvar] === true;
+  }).join(".");
+  return marker ? "\"" + marker + "\"" : null;
+};
+
+var createMarker = function createMarker(vars, behaviorVars) {
+  var value = createMarkerValue(vars, behaviorVars);
+  return value && {
+    ":before": {
+      content: value,
+      display: "none"
+    }
+  };
+};
+
 var flex$2 = [{
   ".layout, .layout.horizontal": flex$1.layout,
   ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
@@ -1397,4 +1417,4 @@ var addLayoutStyles = function addLayoutStyles() {
   return styler.add("pe-layout", flex$2, commonStyle);
 };
 
-export { flex$1 as flex, mixin, styler, hex, rgba, sel, selectorRTL, createLayout, createColor, layoutStyles, addLayoutStyles };
+export { flex$1 as flex, mixin, styler, hex, rgba, sel, selectorRTL, createLayout, createColor, createMarker, layoutStyles, addLayoutStyles };

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropEquals, deprecation } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, deprecation } from 'polythene-core';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -87,22 +87,22 @@ var getElement = function getElement(vnode) {
 var isFullScreen = function isFullScreen(_ref) {
   var state = _ref.state,
       attrs = _ref.attrs;
-  return attrs.fullScreen || stylePropEquals({
+  return attrs.fullScreen || stylePropCompare({
     element: state.el,
     pseudoSelector: ":before",
     prop: "content",
-    expected: "\"" + "fullScreen" + "\""
+    contains: "\"" + "full_screen" + "\""
   });
 };
 
 var isModal = function isModal(_ref2) {
   var state = _ref2.state,
       attrs = _ref2.attrs;
-  return attrs.modal || stylePropEquals({
+  return attrs.modal || stylePropCompare({
     element: state.el,
     pseudoSelector: ":before",
     prop: "content",
-    expected: "\"" + "modal" + "\""
+    contains: "\"" + "modal" + "\""
   });
 };
 

@@ -469,25 +469,31 @@ var getStyle = function getStyle(_ref) {
   return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
 };
 
-var stylePropEquals = function stylePropEquals(_ref2) {
+var stylePropCompare = function stylePropCompare(_ref2) {
   var element = _ref2.element,
       selector = _ref2.selector,
       pseudoSelector = _ref2.pseudoSelector,
       prop = _ref2.prop,
-      expected = _ref2.expected;
+      equals = _ref2.equals,
+      contains = _ref2.contains;
 
   var el = selector ? element.querySelector(selector) : element;
   if (!el) {
     return false;
   }
-  return expected === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  if (equals !== undefined) {
+    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  }
+  if (contains !== undefined) {
+    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+  }
 };
 
 var isRTL = function isRTL(_ref3) {
   var _ref3$element = _ref3.element,
       element = _ref3$element === undefined ? document : _ref3$element,
       selector = _ref3.selector;
-  return stylePropEquals({ element: element, selector: selector, prop: "direction", expected: "rtl" });
+  return stylePropCompare({ element: element, selector: selector, prop: "direction", equals: "rtl" });
 };
 
 var styleDurationToMs = function styleDurationToMs(durationStr) {
@@ -665,4 +671,4 @@ var deprecation = function deprecation(component, deprecatedOption, newOption) {
 var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
 var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
 
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, classForSize, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, stylePropEquals, isRTL, styleDurationToMs, deprecation, iconDropdownUp, iconDropdownDown };
+export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, classForSize, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, stylePropCompare, isRTL, styleDurationToMs, deprecation, iconDropdownUp, iconDropdownDown };

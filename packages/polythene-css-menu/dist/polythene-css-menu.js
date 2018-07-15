@@ -93,6 +93,44 @@
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+  var behaviorVars = {
+    top_menu: false // set to true to position the menu at the top of the screen, full width
+  };
+
+  var themeVars = _extends$1({}, {
+    backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
+    z: polytheneTheme.vars.z_menu // z-depth of the menu (not the shadow depth)
+  }, behaviorVars, polytheneCssShadow.sharedVars);
+
+  var vars = _extends$1({}, {
+    general_styles: true,
+
+    animation_delay: "0s",
+    animation_duration: ".180s",
+    animation_hide_css: "opacity: 0;",
+    animation_hide_origin_effect_css: "transform: scale(0.75);", // set to "transform: scale(1)" to reset scaling
+    animation_show_css: "opacity: 1;",
+    animation_show_origin_effect_css: "transform: scale(1);",
+    animation_timing_function: "ease-in-out",
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    height: undefined, // (height value with unit) - if not set, height is set by component option
+    min_width: 1.5,
+    width_factor: polytheneTheme.vars.grid_unit_menu,
+    widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
+
+    // color vars
+
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
+
+    color_light_backdrop_background: "rgba(0, 0, 0, .1)",
+    color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
+
+    // text colors are set by content, usually list tiles
+  }, themeVars);
+
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var alignSide = function alignSide(isRTL) {
@@ -106,8 +144,8 @@
   var alignLeft = alignSide(false);
   var alignRight = alignSide(true);
 
-  var unifyWidth = function unifyWidth(vars, width) {
-    return width < vars.min_width ? vars.min_width : width;
+  var unifyWidth = function unifyWidth(vars$$1, width) {
+    return width < vars$$1.min_width ? vars$$1.min_width : width;
   };
 
   var widthClass = function widthClass(width) {
@@ -116,25 +154,25 @@
   };
 
   var widthStyle = function widthStyle(_ref) {
-    var vars = _ref.vars,
+    var vars$$1 = _ref.vars,
         width = _ref.width,
         value = _ref.value;
 
-    var s = unifyWidth(vars, width);
+    var s = unifyWidth(vars$$1, width);
     return _defineProperty$1({}, "." + widthClass(s), {
       " .pe-menu__panel": {
-        width: value || vars.width_factor * s + "px"
+        width: value || vars$$1.width_factor * s + "px"
         // We can't set maxWidth because we don't know the width of the container
       }
     });
   };
 
-  var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars) {
-    return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
-      return widthStyle({ vars: vars, width: width });
+  var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$$1) {
+    return polytheneCoreCss.sel(selector, [vars$$1.widths.map(function (width) {
+      return widthStyle({ vars: vars$$1, width: width });
     }), {
       " .pe-menu__panel": {
-        minWidth: polytheneTheme.vars.grid_unit_menu * vars.min_width + "px"
+        minWidth: polytheneTheme.vars.grid_unit_menu * vars$$1.min_width + "px"
       }
     }]);
   };
@@ -147,16 +185,10 @@
     });
   };
 
-  var _top_menu = function _top_menu(selector, vars) {
-    return polytheneCoreCss.sel(selector, [vars.widths.map(function (width) {
-      return widthStyle({ vars: vars, width: width, value: "100vw" });
-    }), {
-      // Marker to be read by JavaScript
-      ":before": {
-        content: "\"" + "topMenu" + "\"",
-        display: "none"
-      },
-
+  var _top_menu = function _top_menu(selector, vars$$1) {
+    return polytheneCoreCss.sel(selector, [vars$$1.widths.map(function (width) {
+      return widthStyle({ vars: vars$$1, width: width, value: "100vw" });
+    }), polytheneCoreCss.createMarker(vars$$1, behaviorVars), {
       " .pe-menu__panel": {
         position: "fixed",
         width: "100vw",
@@ -170,19 +202,19 @@
     }]);
   };
 
-  var _z = function _z(selector, vars) {
+  var _z = function _z(selector, vars$$1) {
     return polytheneCoreCss.sel(selector, {
       ".pe-menu--floating": {
         " .pe-menu__panel, .pe-menu__backdrop": {
-          zIndex: vars.z
+          zIndex: vars$$1.z
         }
       }
     });
   };
 
-  var varFns = _extends$1({
-    general_styles: function general_styles(selector, vars) {
-      return [polytheneCoreCss.sel(selector, [alignLeft(vars), {
+  var varFns = _extends$2({
+    general_styles: function general_styles(selector, vars$$1) {
+      return [polytheneCoreCss.sel(selector, [alignLeft(vars$$1), {
         position: "static",
 
         ".pe-menu--width-auto": {
@@ -225,7 +257,7 @@
           opacity: 1
         },
 
-        ".pe-menu--top-menu": _top_menu(selector, vars),
+        ".pe-menu--top-menu": _top_menu(selector, vars$$1),
 
         " .pe-menu__content": {
           overflow: "auto",
@@ -240,126 +272,91 @@
             height: "100%"
           }
         }
-      }]), _defineProperty$1({}, polytheneCoreCss.selectorRTL(selector), alignRight(vars))];
+      }]), _defineProperty$1({}, polytheneCoreCss.selectorRTL(selector), alignRight(vars$$1))];
     },
-    animation_delay: function animation_delay(selector, vars) {
+    animation_delay: function animation_delay(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         " .pe-menu__panel, .pe-menu__backdrop": {
-          transitionDelay: vars.animation_delay
+          transitionDelay: vars$$1.animation_delay
         }
       })];
     },
-    animation_duration: function animation_duration(selector, vars) {
+    animation_duration: function animation_duration(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         " .pe-menu__panel, .pe-menu__backdrop": {
-          transitionDuration: vars.animation_duration
+          transitionDuration: vars$$1.animation_duration
         }
       })];
     },
-    animation_timing_function: function animation_timing_function(selector, vars) {
+    animation_timing_function: function animation_timing_function(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         " .pe-menu__panel, .pe-menu__backdrop": {
-          transitionTimingFunction: vars.animation_timing_function
+          transitionTimingFunction: vars$$1.animation_timing_function
         }
       })];
     },
-    animation_show_css: function animation_show_css(selector, vars) {
+    animation_show_css: function animation_show_css(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         ".pe-menu--visible": {
-          " .pe-menu__panel": vars.animation_show_css
+          " .pe-menu__panel": vars$$1.animation_show_css
         }
       })];
     },
-    animation_hide_css: function animation_hide_css(selector, vars) {
+    animation_hide_css: function animation_hide_css(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-menu__panel": vars.animation_hide_css
+        " .pe-menu__panel": vars$$1.animation_hide_css
       })];
     },
-    animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars) {
+    animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         ".pe-menu--origin.pe-menu--visible": {
-          " .pe-menu__panel": vars.animation_show_origin_effect_css
+          " .pe-menu__panel": vars$$1.animation_show_origin_effect_css
         }
       })];
     },
-    animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars) {
+    animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         ".pe-menu--origin:not(.pe-menu--visible)": {
-          " .pe-menu__panel": vars.animation_hide_origin_effect_css
+          " .pe-menu__panel": vars$$1.animation_hide_origin_effect_css
         }
       })];
     },
-    height: function height(selector, vars) {
-      return [vars.height !== undefined && polytheneCoreCss.sel(selector, {
+    height: function height(selector, vars$$1) {
+      return [vars$$1.height !== undefined && polytheneCoreCss.sel(selector, {
         " .pe-menu__panel": {
-          height: vars.height
+          height: vars$$1.height
         }
       })];
     },
-    widths: function widths(selector, vars) {
-      return [widths_min_width_width_factor(selector, vars)];
+    widths: function widths(selector, vars$$1) {
+      return [widths_min_width_width_factor(selector, vars$$1)];
     },
-    min_width: function min_width(selector, vars) {
-      return [widths_min_width_width_factor(selector, vars)];
+    min_width: function min_width(selector, vars$$1) {
+      return [widths_min_width_width_factor(selector, vars$$1)];
     },
-    width_factor: function width_factor(selector, vars) {
-      return [widths_min_width_width_factor(selector, vars)];
+    width_factor: function width_factor(selector, vars$$1) {
+      return [widths_min_width_width_factor(selector, vars$$1)];
     },
-    border_radius: function border_radius(selector, vars) {
+    border_radius: function border_radius(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         " .pe-menu__panel": {
-          borderRadius: vars.border_radius + "px"
+          borderRadius: vars$$1.border_radius + "px"
         }
       })];
     },
     // Theme vars
-    backdrop: function backdrop(selector, vars) {
-      return [vars.backdrop && _backdrop(selector, vars)];
+    backdrop: function backdrop(selector, vars$$1) {
+      return [vars$$1.backdrop && _backdrop(selector, vars$$1)];
     },
-    top_menu: function top_menu(selector, vars) {
-      return [vars.top_menu && _top_menu(selector, vars)];
+    top_menu: function top_menu(selector, vars$$1) {
+      return [vars$$1.top_menu && _top_menu(selector, vars$$1)];
     },
-    z: function z(selector, vars) {
-      return [vars.z && _z(selector, vars)];
+    z: function z(selector, vars$$1) {
+      return [vars$$1.z && _z(selector, vars$$1)];
     }
   }, polytheneCssShadow.sharedVarFns);
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
-
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var themeVars = _extends$2({}, {
-    backdrop: undefined, // (Boolean) - if not set, backdrop existence is set by component option
-    top_menu: false, // set to true to position the menu at the top of the screen, full width
-    z: polytheneTheme.vars.z_menu // z-depth of the menu (not the shadow depth)
-  }, polytheneCssShadow.sharedVars);
-
-  var vars = _extends$2({}, {
-    general_styles: true,
-
-    animation_delay: "0s",
-    animation_duration: ".180s",
-    animation_hide_css: "opacity: 0;",
-    animation_hide_origin_effect_css: "transform: scale(0.75);", // set to "transform: scale(1)" to reset scaling
-    animation_show_css: "opacity: 1;",
-    animation_show_origin_effect_css: "transform: scale(1);",
-    animation_timing_function: "ease-in-out",
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    height: undefined, // (height value with unit) - if not set, height is set by component option
-    min_width: 1.5,
-    width_factor: polytheneTheme.vars.grid_unit_menu,
-    widths: [1, 1.5, 2, 3, 4, 5, 6, 7],
-
-    // color vars
-
-    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
-    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
-
-    color_light_backdrop_background: "rgba(0, 0, 0, .1)",
-    color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
-
-    // text colors are set by content, usually list tiles
-  }, themeVars);
 
   var fns = [layout, color];
   var selector = "." + classes.component;

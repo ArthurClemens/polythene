@@ -1,7 +1,7 @@
-import { sel, createColor, mixin, flex, createLayout, rgba, styler } from 'polythene-core-css';
+import { sel, createColor, rgba, mixin, flex, createLayout, createMarker, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { sharedVars, sharedVarFns } from 'polythene-css-shadow';
 import { fullScreen } from 'polythene-css-dialog-pane';
-import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -120,6 +120,40 @@ var color = createColor({
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var behaviorVars = {
+  full_screen: false,
+  modal: false
+};
+
+var themeVars = _extends$1({}, {
+  backdrop: false
+}, behaviorVars, sharedVars);
+
+var vars$1 = _extends$1({}, {
+  general_styles: true,
+
+  animation_delay: "0s",
+  animation_duration: ".220s",
+  animation_hide_css: "opacity: 0;",
+  animation_show_css: "opacity: 1;",
+  animation_timing_function: "ease-in-out",
+  border_radius: vars.unit_block_border_radius,
+  position: "fixed",
+
+  // color vars
+
+  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
+
+  color_light_background: rgba(vars.color_light_background),
+  color_dark_background: rgba(vars.color_dark_background),
+
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
+}, themeVars);
+
+var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var minWidth = "320px";
 
 var _backdrop = function _backdrop(selector) {
@@ -131,13 +165,8 @@ var _backdrop = function _backdrop(selector) {
   });
 };
 
-var fullScreen$1 = function fullScreen$$1(selector) {
-  return sel(selector, [{
-    // Marker to be read by JavaScript
-    ":before": {
-      content: "\"" + "fullScreen" + "\"",
-      display: "none"
-    },
+var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars), {
     padding: 0,
 
     " .pe-dialog__content": {
@@ -146,18 +175,12 @@ var fullScreen$1 = function fullScreen$$1(selector) {
   }, fullScreen(selector)]);
 };
 
-var _modal = function _modal(selector) {
-  return sel(selector, {
-    // Marker to be read by JavaScript
-    ":before": {
-      content: "\"" + "modal" + "\"",
-      display: "none"
-    }
-  });
+var _modal = function _modal(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars)]);
 };
 
-var varFns = _extends$1({
-  general_styles: function general_styles(selector) {
+var varFns = _extends$2({
+  general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [flex.layoutCenterCenter, {
       top: 0,
       left: 0,
@@ -167,7 +190,7 @@ var varFns = _extends$1({
       height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
       transitionProperty: "opacity,background-color,transform",
 
-      ".pe-dialog--full-screen": fullScreen$1(selector),
+      ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
       ".pe-dialog--modal": _modal(selector),
 
       " .pe-dialog__content": {
@@ -240,7 +263,7 @@ var varFns = _extends$1({
   },
   // Theme vars
   backdrop: function backdrop(selector, vars$$1) {
-    return vars$$1.backdrop && _backdrop(selector);
+    return vars$$1.backdrop && _backdrop(selector, vars$$1);
   },
   full_screen: function full_screen(selector, vars$$1) {
     return vars$$1.full_screen && fullScreen$1(selector, vars$$1);
@@ -251,37 +274,6 @@ var varFns = _extends$1({
 }, sharedVarFns);
 
 var layout = createLayout({ varFns: varFns });
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var themeVars = _extends$2({}, {
-  backdrop: false,
-  full_screen: false,
-  modal: false
-}, sharedVars);
-
-var vars$1 = _extends$2({}, {
-  general_styles: true,
-
-  animation_delay: "0s",
-  animation_duration: ".220s",
-  animation_hide_css: "opacity: 0;",
-  animation_show_css: "opacity: 1;",
-  animation_timing_function: "ease-in-out",
-  border_radius: vars.unit_block_border_radius,
-  position: "fixed",
-
-  // color vars
-
-  color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-  color_light_background: rgba(vars.color_light_background),
-  color_dark_background: rgba(vars.color_dark_background),
-
-  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
-  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
-}, themeVars);
 
 var fns = [layout, color];
 var selector = "." + classes.component;

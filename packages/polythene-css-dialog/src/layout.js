@@ -1,7 +1,8 @@
-import { mixin, flex, sel, createLayout } from "polythene-core-css";
+import { mixin, flex, sel, createLayout, createMarker } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 import { fullScreen as fullScreenPane } from "polythene-css-dialog-pane";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
+import { behaviorVars } from "./vars";
 
 const minWidth = "320px";
 
@@ -13,14 +14,10 @@ const backdrop = selector =>
     }
   });
 
-const fullScreen = selector =>
+const fullScreen = (selector, vars) =>
   sel(selector, [
+    createMarker(vars, behaviorVars),
     {
-      // Marker to be read by JavaScript
-      ":before": {
-        content: `"${"fullScreen"}"`,
-        display: "none",
-      },
       padding: 0,
 
       " .pe-dialog__content": {
@@ -30,17 +27,13 @@ const fullScreen = selector =>
     fullScreenPane(selector)
   ]);
 
-const modal = selector =>
-  sel(selector, {
-    // Marker to be read by JavaScript
-    ":before": {
-      content: `"${"modal"}"`,
-      display: "none",
-    },
-  });
+const modal = (selector, vars) =>
+  sel(selector, [
+    createMarker(vars, behaviorVars)
+  ]);
 
 const varFns = {
-  general_styles: selector => [
+  general_styles: (selector, vars) => [
     sel(selector, [
       flex.layoutCenterCenter,
       {
@@ -52,7 +45,7 @@ const varFns = {
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
         transitionProperty: "opacity,background-color,transform",
 
-        ".pe-dialog--full-screen": fullScreen(selector),
+        ".pe-dialog--full-screen": fullScreen(selector, vars),
         ".pe-dialog--modal": modal(selector),
 
         " .pe-dialog__content": {
@@ -131,7 +124,7 @@ const varFns = {
   ],
   // Theme vars
   backdrop: (selector, vars) =>
-    vars.backdrop && backdrop(selector),
+    vars.backdrop && backdrop(selector, vars),
   full_screen: (selector, vars) =>
     vars.full_screen && fullScreen(selector, vars),
   modal: (selector, vars) =>

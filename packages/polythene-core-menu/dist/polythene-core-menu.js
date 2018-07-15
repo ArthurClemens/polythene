@@ -71,11 +71,11 @@
   var isTopMenu = function isTopMenu(_ref) {
     var state = _ref.state,
         attrs = _ref.attrs;
-    return attrs.topMenu || polytheneCore.stylePropEquals({
+    return attrs.topMenu || polytheneCore.stylePropCompare({
       element: state.dom(),
       pseudoSelector: ":before",
       prop: "content",
-      expected: "\"" + "topMenu" + "\""
+      contains: "\"" + "top_menu" + "\""
     });
   };
 
@@ -96,11 +96,12 @@
     }
 
     // Don't set the position or top offset if the menu position is fixed
-    var hasStylePositionFixed = polytheneCore.stylePropEquals({
+    var hasStylePositionFixed = polytheneCore.stylePropCompare({
       element: panelEl,
       prop: "position",
-      expected: "fixed"
+      equals: "fixed"
     });
+
     if (hasStylePositionFixed && !isTopMenu({ state: state, attrs: attrs })) {
       _extends(panelEl.style, {});
       panelEl.offsetHeight; // force reflow

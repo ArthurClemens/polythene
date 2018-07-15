@@ -44,11 +44,6 @@
   width: 100vw
 }
 
-.pe-menu.pe-menu--top-menu.pe-menu:before {
-  content: "topMenu";
-  display: none
-}
-
 .pe-menu.pe-menu--top-menu.pe-menu .pe-menu__panel {
   position: fixed;
   width: 100vw;

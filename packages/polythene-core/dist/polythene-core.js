@@ -475,25 +475,31 @@
     return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
   };
 
-  var stylePropEquals = function stylePropEquals(_ref2) {
+  var stylePropCompare = function stylePropCompare(_ref2) {
     var element = _ref2.element,
         selector = _ref2.selector,
         pseudoSelector = _ref2.pseudoSelector,
         prop = _ref2.prop,
-        expected = _ref2.expected;
+        equals = _ref2.equals,
+        contains = _ref2.contains;
 
     var el = selector ? element.querySelector(selector) : element;
     if (!el) {
       return false;
     }
-    return expected === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+    if (equals !== undefined) {
+      return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+    }
+    if (contains !== undefined) {
+      return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+    }
   };
 
   var isRTL = function isRTL(_ref3) {
     var _ref3$element = _ref3.element,
         element = _ref3$element === undefined ? document : _ref3$element,
         selector = _ref3.selector;
-    return stylePropEquals({ element: element, selector: selector, prop: "direction", expected: "rtl" });
+    return stylePropCompare({ element: element, selector: selector, prop: "direction", equals: "rtl" });
   };
 
   var styleDurationToMs = function styleDurationToMs(durationStr) {
@@ -693,7 +699,7 @@
   exports.unsubscribe = unsubscribe;
   exports.emit = emit;
   exports.getStyle = getStyle;
-  exports.stylePropEquals = stylePropEquals;
+  exports.stylePropCompare = stylePropCompare;
   exports.isRTL = isRTL;
   exports.styleDurationToMs = styleDurationToMs;
   exports.deprecation = deprecation;

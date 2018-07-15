@@ -13,18 +13,23 @@ export const getStyle = ({ element, selector, pseudoSelector, prop }) => {
       : null;
 };
 
-export const stylePropEquals = ({ element, selector, pseudoSelector, prop, expected }) => {
+export const stylePropCompare = ({ element, selector, pseudoSelector, prop, equals, contains }) => {
   const el = selector
     ? element.querySelector(selector)
     : element;
   if (!el) {
     return false;
   }
-  return expected === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  if (equals !== undefined) {
+    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  }
+  if (contains !== undefined) {
+    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+  }
 };
 
 export const isRTL = ({ element = document, selector }) => 
-  stylePropEquals({ element, selector, prop: "direction", expected: "rtl" });
+  stylePropCompare({ element, selector, prop: "direction", equals: "rtl" });
 
 export const styleDurationToMs = durationStr => {
   const parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);

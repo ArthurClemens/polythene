@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, stylePropEquals } from 'polythene-core';
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, stylePropCompare } from 'polythene-core';
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -67,11 +67,11 @@ var DEFAULT_SHADOW_DEPTH = 1;
 var isTopMenu = function isTopMenu(_ref) {
   var state = _ref.state,
       attrs = _ref.attrs;
-  return attrs.topMenu || stylePropEquals({
+  return attrs.topMenu || stylePropCompare({
     element: state.dom(),
     pseudoSelector: ":before",
     prop: "content",
-    expected: "\"" + "topMenu" + "\""
+    contains: "\"" + "top_menu" + "\""
   });
 };
 
@@ -92,11 +92,12 @@ var positionMenu = function positionMenu(state, attrs) {
   }
 
   // Don't set the position or top offset if the menu position is fixed
-  var hasStylePositionFixed = stylePropEquals({
+  var hasStylePositionFixed = stylePropCompare({
     element: panelEl,
     prop: "position",
-    expected: "fixed"
+    equals: "fixed"
   });
+
   if (hasStylePositionFixed && !isTopMenu({ state: state, attrs: attrs })) {
     _extends(panelEl.style, {});
     panelEl.offsetHeight; // force reflow

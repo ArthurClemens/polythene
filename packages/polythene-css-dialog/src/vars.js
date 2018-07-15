@@ -2,13 +2,17 @@ import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 import { sharedVars as shadowVars } from "polythene-css-shadow";
 
+export const behaviorVars = {
+  full_screen:                       false,
+  modal:                             false,
+};
+
 const themeVars = Object.assign(
   {},
   {
-    backdrop:                      false,
-    full_screen:                   false,
-    modal:                         false,
+    backdrop:                        false,
   },
+  behaviorVars,
   shadowVars
 );
 

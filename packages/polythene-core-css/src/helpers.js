@@ -106,3 +106,25 @@ export const createColor = ({ varFns={}, superColor, varMixin = o => o }) => (se
       varMixin
     })
   );
+
+const createMarkerValue = (vars, behaviorVars) => {
+  if (!vars) {
+    return;
+  }
+  const marker = Object.keys(behaviorVars)
+    .filter(bvar => vars[bvar] === true)
+    .join(".");
+  return marker
+    ? `"${marker}"`
+    : null;
+};
+
+export const createMarker = (vars, behaviorVars) => {
+  const value = createMarkerValue(vars, behaviorVars);
+  return value && ({
+    ":before": {
+      content: value,
+      display: "none",
+    },
+  });
+};

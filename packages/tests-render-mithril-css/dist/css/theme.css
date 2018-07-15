@@ -47,7 +47,7 @@
 
 @media (max-width:480px) {
   .pe-dialog.small-screen-full-screen:before {
-    content: "fullScreen";
+    content: "full_screen";
     display: none
   }
 
@@ -93,7 +93,7 @@
   }
 
   .pe-menu.small-screen-top-menu:before {
-    content: "topMenu";
+    content: "top_menu";
     display: none
   }
 

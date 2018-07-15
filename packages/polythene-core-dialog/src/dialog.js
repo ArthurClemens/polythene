@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropEquals, deprecation } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_SHADOW_DEPTH    = 3;
@@ -7,19 +7,19 @@ export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 const isFullScreen = ({ state, attrs }) =>
-  attrs.fullScreen || stylePropEquals({
+  attrs.fullScreen || stylePropCompare({
     element: state.el,
     pseudoSelector: ":before",
     prop: "content",
-    expected: `"${"fullScreen"}"`
+    contains: `"${"full_screen"}"`
   });
 
 const isModal = ({ state, attrs }) =>
-  attrs.modal || stylePropEquals({
+  attrs.modal || stylePropCompare({
     element: state.el,
     pseudoSelector: ":before",
     prop: "content",
-    expected: `"${"modal"}"`
+    contains: `"${"modal"}"`
   });
 
 const transitionOptions = (state, attrs, isShow) => ({

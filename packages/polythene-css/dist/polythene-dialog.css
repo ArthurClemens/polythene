@@ -14,11 +14,6 @@
   transition-property: opacity,background-color,transform
 }
 
-.pe-dialog.pe-dialog--full-screen.pe-dialog:before {
-  content: "fullScreen";
-  display: none
-}
-
 .pe-dialog.pe-dialog--full-screen.pe-dialog {
   padding: 0
 }
@@ -52,11 +47,6 @@
   max-height: 100vh;
   border: none;
   max-width: none
-}
-
-.pe-dialog.pe-dialog--modal.pe-dialog:before {
-  content: "modal";
-  display: none
 }
 
 .pe-dialog .pe-dialog__content {

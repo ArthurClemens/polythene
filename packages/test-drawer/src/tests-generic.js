@@ -13,7 +13,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
     color_dark_backdrop_background: "rgba(69, 45, 157, .5)"
   });
 
-  DrawerCSS.addStyle(".tests-drawer-themed-behavior-mini", {
+  DrawerCSS.addStyle(".tests-drawer-themed-mini", {
     mini:         true,
     border:       false,
     shadow_depth: 3,
@@ -149,6 +149,15 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
+      name: "Themed (set variant to mini and shadow depth)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
+        permanent: true,
+        className: "tests-drawer-themed-mini",
+      }})
+    },
+    {
       name: "Styled drawer",
       interactive: true,
       exclude: true,
@@ -245,18 +254,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         push: true,
         border: true,
-      }})
-    },
-
-    // Themed behavior
-
-    {
-      name: "Themed behavior: set variant to mini and shadow depth",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
-        permanent: true,
-        className: "tests-drawer-themed-behavior-mini",
       }})
     },
 

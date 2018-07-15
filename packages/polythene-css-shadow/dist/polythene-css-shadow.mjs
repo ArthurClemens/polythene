@@ -75,10 +75,10 @@ var layout = createLayout({
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var sharedVars = {
-  shadow_top_depth_0: "initial",
-  shadow_bottom_depth_0: "initial",
+  shadow_top_depth_0: "none",
+  shadow_bottom_depth_0: "none",
 
-  shadow_top_depth_1: "initial",
+  shadow_top_depth_1: "none",
   shadow_bottom_depth_1: "0 1px 4px 0 rgba(0, 0, 0, 0.37)",
 
   shadow_top_depth_2: "0 2px 2px 0 rgba(0, 0, 0, 0.2)",

@@ -1,6 +1,7 @@
 import { vars as themeVars } from "polythene-theme";
-import { sel, selectorRTL, createLayout } from "polythene-core-css";
+import { sel, selectorRTL, createLayout, createMarker } from "polythene-core-css";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
+import { behaviorVars } from "./vars";
 
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
@@ -49,13 +50,8 @@ const backdrop = selector =>
 const top_menu = (selector, vars) =>
   sel(selector, [
     vars.widths.map(width => widthStyle({ vars, width, value: "100vw" })),
+    createMarker(vars, behaviorVars),
     {
-      // Marker to be read by JavaScript
-      ":before": {
-        content: `"${"topMenu"}"`,
-        display: "none",
-      },
-
       " .pe-menu__panel": {
         position: "fixed",
         width: "100vw",

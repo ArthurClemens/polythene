@@ -51,7 +51,7 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
     backdrop: true
   });
 
-  DialogCSS.addStyle(".tests-dialog-themed-behavior-shadow-depth", {
+  DialogCSS.addStyle(".tests-dialog-themed-shadow-depth", {
     shadow_depth: 0,
   });
 
@@ -166,6 +166,19 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
           Opener({
             body: renderer.trust(shortText),
             shadowDepth: 5
+          })
+      }
+    },
+    {
+      name: "Themed (set shadow depth to 0)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener({
+            title: "Long dialog with a very long title that surely won't fit here",
+            body: renderer.trust(longText),
+            className: "tests-dialog-themed-shadow-depth",
           })
       }
     },
@@ -372,20 +385,6 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       component: {
         view: () =>
           Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false, className: "tests-dialog-themed-behavior-full-screen", }))
-      }
-    },
-    {
-      name: "Themed behavior: set shadow depth to 0",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () =>
-          Opener({
-            title: "Long dialog with a very long title that surely won't fit here",
-            body: renderer.trust(longText),
-            className: "tests-dialog-themed-behavior-shadow-depth",
-            borders: "never",
-          })
       }
     },
   ];

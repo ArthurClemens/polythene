@@ -1,10 +1,10 @@
 import { vars } from "polythene-theme";
 
 export const sharedVars = {
-  shadow_top_depth_0:      "initial",
-  shadow_bottom_depth_0:   "initial",
+  shadow_top_depth_0:      "none",
+  shadow_bottom_depth_0:   "none",
 
-  shadow_top_depth_1:      "initial",
+  shadow_top_depth_1:      "none",
   shadow_bottom_depth_1:   "0 1px 4px 0 rgba(0, 0, 0, 0.37)",
 
   shadow_top_depth_2:      "0 2px 2px 0 rgba(0, 0, 0, 0.2)",

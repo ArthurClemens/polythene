@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-dialog-pane'), require('polythene-css-shadow')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-dialog-pane', 'polythene-css-shadow'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-dialog-pane'],global['polythene-css-shadow']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssDialogPane,polytheneCssShadow) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme'), require('polythene-css-shadow'), require('polythene-css-dialog-pane')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme', 'polythene-css-shadow', 'polythene-css-dialog-pane'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme'],global['polythene-css-shadow'],global['polythene-css-dialog-pane']));
+}(this, (function (exports,polytheneCoreCss,polytheneTheme,polytheneCssShadow,polytheneCssDialogPane) { 'use strict';
 
   var listTileClasses = {
     component: "pe-list-tile",
@@ -121,6 +121,40 @@
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+  var behaviorVars = {
+    full_screen: false,
+    modal: false
+  };
+
+  var themeVars = _extends$1({}, {
+    backdrop: false
+  }, behaviorVars, polytheneCssShadow.sharedVars);
+
+  var vars = _extends$1({}, {
+    general_styles: true,
+
+    animation_delay: "0s",
+    animation_duration: ".220s",
+    animation_hide_css: "opacity: 0;",
+    animation_show_css: "opacity: 1;",
+    animation_timing_function: "ease-in-out",
+    border_radius: polytheneTheme.vars.unit_block_border_radius,
+    position: "fixed",
+
+    // color vars
+
+    color_light_backdrop_background: "rgba(0, 0, 0, .4)",
+    color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
+
+    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
+
+    color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
+    color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
+  }, themeVars);
+
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   var minWidth = "320px";
 
   var _backdrop = function _backdrop(selector) {
@@ -132,13 +166,8 @@
     });
   };
 
-  var fullScreen = function fullScreen(selector) {
-    return polytheneCoreCss.sel(selector, [{
-      // Marker to be read by JavaScript
-      ":before": {
-        content: "\"" + "fullScreen" + "\"",
-        display: "none"
-      },
+  var fullScreen = function fullScreen(selector, vars$$1) {
+    return polytheneCoreCss.sel(selector, [polytheneCoreCss.createMarker(vars$$1, behaviorVars), {
       padding: 0,
 
       " .pe-dialog__content": {
@@ -147,18 +176,12 @@
     }, polytheneCssDialogPane.fullScreen(selector)]);
   };
 
-  var _modal = function _modal(selector) {
-    return polytheneCoreCss.sel(selector, {
-      // Marker to be read by JavaScript
-      ":before": {
-        content: "\"" + "modal" + "\"",
-        display: "none"
-      }
-    });
+  var _modal = function _modal(selector, vars$$1) {
+    return polytheneCoreCss.sel(selector, [polytheneCoreCss.createMarker(vars$$1, behaviorVars)]);
   };
 
-  var varFns = _extends$1({
-    general_styles: function general_styles(selector) {
+  var varFns = _extends$2({
+    general_styles: function general_styles(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, [polytheneCoreCss.flex.layoutCenterCenter, {
         top: 0,
         left: 0,
@@ -168,7 +191,7 @@
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
         transitionProperty: "opacity,background-color,transform",
 
-        ".pe-dialog--full-screen": fullScreen(selector),
+        ".pe-dialog--full-screen": fullScreen(selector, vars$$1),
         ".pe-dialog--modal": _modal(selector),
 
         " .pe-dialog__content": {
@@ -195,94 +218,63 @@
         }
       }];
     },
-    animation_hide_css: function animation_hide_css(selector, vars) {
-      return [polytheneCoreCss.sel(selector, [vars.animation_hide_css])];
+    animation_hide_css: function animation_hide_css(selector, vars$$1) {
+      return [polytheneCoreCss.sel(selector, [vars$$1.animation_hide_css])];
     },
-    position: function position(selector, vars) {
+    position: function position(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
-        position: vars.position
+        position: vars$$1.position
       })];
     },
-    animation_delay: function animation_delay(selector, vars) {
+    animation_delay: function animation_delay(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         "&, .pe-dialog__content": {
-          transitionDelay: vars.animation_delay
+          transitionDelay: vars$$1.animation_delay
         }
       })];
     },
-    animation_duration: function animation_duration(selector, vars) {
+    animation_duration: function animation_duration(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         "&, .pe-dialog__content": {
-          transitionDuration: vars.animation_duration
+          transitionDuration: vars$$1.animation_duration
         }
       })];
     },
-    animation_timing_function: function animation_timing_function(selector, vars) {
+    animation_timing_function: function animation_timing_function(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
         "&, .pe-dialog__content": {
-          transitionTimingFunction: vars.animation_timing_function
+          transitionTimingFunction: vars$$1.animation_timing_function
         }
       })];
     },
-    animation_show_css: function animation_show_css(selector, vars) {
+    animation_show_css: function animation_show_css(selector, vars$$1) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-dialog--visible": vars.animation_show_css
+        ".pe-dialog--visible": vars$$1.animation_show_css
       })];
     },
-    border_radius: function border_radius(selector, vars) {
-      return [!vars.full_screen && polytheneCoreCss.sel(selector, {
+    border_radius: function border_radius(selector, vars$$1) {
+      return [!vars$$1.full_screen && polytheneCoreCss.sel(selector, {
         " .pe-dialog__content": {
-          borderTopLeftRadius: vars.border_radius + "px",
-          borderTopRightRadius: vars.border_radius + "px",
-          borderBottomLeftRadius: vars.border_radius + "px",
-          borderBottomRightRadius: vars.border_radius + "px"
+          borderTopLeftRadius: vars$$1.border_radius + "px",
+          borderTopRightRadius: vars$$1.border_radius + "px",
+          borderBottomLeftRadius: vars$$1.border_radius + "px",
+          borderBottomRightRadius: vars$$1.border_radius + "px"
         }
       })];
     },
     // Theme vars
-    backdrop: function backdrop(selector, vars) {
-      return vars.backdrop && _backdrop(selector);
+    backdrop: function backdrop(selector, vars$$1) {
+      return vars$$1.backdrop && _backdrop(selector, vars$$1);
     },
-    full_screen: function full_screen(selector, vars) {
-      return vars.full_screen && fullScreen(selector, vars);
+    full_screen: function full_screen(selector, vars$$1) {
+      return vars$$1.full_screen && fullScreen(selector, vars$$1);
     },
-    modal: function modal(selector, vars) {
-      return vars.modal && _modal(selector, vars);
+    modal: function modal(selector, vars$$1) {
+      return vars$$1.modal && _modal(selector, vars$$1);
     }
   }, polytheneCssShadow.sharedVarFns);
 
   var layout = polytheneCoreCss.createLayout({ varFns: varFns });
-
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var themeVars = _extends$2({}, {
-    backdrop: false,
-    full_screen: false,
-    modal: false
-  }, polytheneCssShadow.sharedVars);
-
-  var vars = _extends$2({}, {
-    general_styles: true,
-
-    animation_delay: "0s",
-    animation_duration: ".220s",
-    animation_hide_css: "opacity: 0;",
-    animation_show_css: "opacity: 1;",
-    animation_timing_function: "ease-in-out",
-    border_radius: polytheneTheme.vars.unit_block_border_radius,
-    position: "fixed",
-
-    // color vars
-
-    color_light_backdrop_background: "rgba(0, 0, 0, .4)",
-    color_dark_backdrop_background: "rgba(0, 0, 0, .5)",
-
-    color_light_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_background),
-    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_background),
-
-    color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_regular),
-    color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_regular)
-  }, themeVars);
 
   var fns = [layout, color];
   var selector = "." + classes.component;

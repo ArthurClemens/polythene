@@ -3,11 +3,11 @@ import { ShadowCSS } from "polythene-css";
 
 export default ({ Shadow, renderer: h, keys: k }) => {
 
-  ShadowCSS.addStyle(".tests-shadow-themed-shadow", {
+  ShadowCSS.addStyle(".tests-shadow-themed-shadow-style", {
     shadow_bottom_depth_1: "10px 10px 10px 0px rgba(45,58,112,.5)"
   });
 
-  ShadowCSS.addStyle(".tests-shadow-themed-behavior-shadow", {
+  ShadowCSS.addStyle(".tests-shadow-themed-shadow-depth", {
     shadow_depth: 3
   });
 
@@ -69,11 +69,18 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Themed",
+      name: "Themed (shadow appearance)",
       component: Shadow,
       attrs: {
         shadowDepth: 1,
-        className: "tests-shadow-themed-shadow"
+        className: "tests-shadow-themed-shadow-style"
+      }
+    },
+    {
+      name: "Themed (shadow depth 3)",
+      component: Shadow,
+      attrs: {
+        className: "tests-shadow-themed-shadow-depth"
       }
     },
     {
@@ -101,16 +108,6 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       interactive: true,
       exclude: true,
       component: interactive({ h, k, Shadow })
-    },
-
-    // Themed behavior
-
-    {
-      name: "Themed behavior: set shadow depth to 3",
-      component: Shadow,
-      attrs: {
-        className: "tests-shadow-themed-behavior-shadow"
-      }
     },
 
     // Dark tone

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, stylePropEquals } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, deprecation, stylePropCompare } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 export const getElement = vnode =>
@@ -11,11 +11,11 @@ const MIN_WIDTH                   = 1.5;
 const DEFAULT_SHADOW_DEPTH                   = 1;
 
 const isTopMenu = ({ state, attrs }) =>
-  attrs.topMenu || stylePropEquals({
+  attrs.topMenu || stylePropCompare({
     element: state.dom(),
     pseudoSelector: ":before",
     prop: "content",
-    expected: `"${"topMenu"}"`
+    contains: `"${"top_menu"}"`
   });
 
 const positionMenu = (state, attrs) => {
@@ -35,11 +35,12 @@ const positionMenu = (state, attrs) => {
   }
 
   // Don't set the position or top offset if the menu position is fixed
-  const hasStylePositionFixed = stylePropEquals({
+  const hasStylePositionFixed = stylePropCompare({
     element: panelEl,
     prop: "position",
-    expected: "fixed"
+    equals: "fixed"
   });
+
   if (hasStylePositionFixed && !isTopMenu({ state, attrs })) {
     Object.assign(panelEl.style, {});
     panelEl.offsetHeight; // force reflow

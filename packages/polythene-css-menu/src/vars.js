@@ -2,13 +2,17 @@ import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 import { sharedVars as shadowVars } from "polythene-css-shadow";
 
+export const behaviorVars = {
+  top_menu:                         false, // set to true to position the menu at the top of the screen, full width
+};
+
 const themeVars = Object.assign(
   {},
   {
     backdrop:                       undefined, // (Boolean) - if not set, backdrop existence is set by component option
-    top_menu:                       false, // set to true to position the menu at the top of the screen, full width
     z:                              vars.z_menu, // z-depth of the menu (not the shadow depth)
   },
+  behaviorVars,
   shadowVars
 );
 
