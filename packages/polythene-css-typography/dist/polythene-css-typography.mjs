@@ -1,5 +1,4 @@
 import { vars } from 'polythene-style';
-export { vars } from 'polythene-style';
 import { addWebFont } from 'polythene-utilities';
 import { styler } from 'polythene-core-css';
 
@@ -168,7 +167,9 @@ var getStyle = function getStyle(customSelector, customVars) {
 };
 
 var addRoboto = function addRoboto() {
-  addWebFont("google", "Roboto:400,500,700,400italic:latin");
+  addWebFont("google", {
+    families: ["Roboto:400,500,700,400italic:latin"]
+  });
 };
 
 var addTypography = function addTypography() {

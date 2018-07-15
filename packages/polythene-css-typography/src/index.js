@@ -20,7 +20,9 @@ const getStyle = (customSelector, customVars, { mediaQuery }={}) =>
   });
 
 const addRoboto = () => {
-  addWebFont("google", "Roboto:400,500,700,400italic:latin");
+  addWebFont("google", {
+    families: ["Roboto:400,500,700,400italic:latin"],
+  });
 };
 
 const addTypography = () => {
@@ -33,5 +35,4 @@ export {
   addStyle,
   addTypography,
   getStyle,
-  vars,
 };

@@ -186,25 +186,35 @@ export const onMount = vnode => {
   }
   state.tabRowEl = dom.querySelector(`.${classes.tabRow}`);
 
-  // A promise can't resolve during the oncreate loop
-  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
-  whenCreateDone().then(() => {
+  const redrawLargestWidth = () => {
     if (state.tabs && attrs.largestWidth) {
       const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
       const largest = widths.sort(sortByLargestWidth)[0];
       state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");
     }
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-  });
+  };
 
-  const onResize = () =>
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  const redraw = () => (
+    redrawLargestWidth(),
+    setSelectedTab(state, attrs, state.selectedTabIndex(), false)
+  );
 
-  subscribe("resize", onResize),
+  const handleFontEvent = ({ name }) =>
+    name === "active" || name === "inactive"
+      ? redraw()
+      : null;
+
+  subscribe("resize", redraw);
+  subscribe("webfontloader", handleFontEvent);
 
   state.cleanUp = () => (
-    unsubscribe("resize", onResize)
+    unsubscribe("resize", redraw),
+    unsubscribe("webfontloader", handleFontEvent)
   );
+
+  // A promise can't resolve during the oncreate loop
+  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
+  whenCreateDone().then(redraw);
 };
 
 export const onUnMount = ({ state }) =>

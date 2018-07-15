@@ -11,6 +11,8 @@
 - [scrollTo](#scrollto)
 - [Timer](#timer)
 - [Web font loader](#web-font-loader)
+  - [Function `addWebFont`](#function-addwebfont)
+  - [Loading callbacks](#loading-callbacks)
   - [How to prevent Flash of Unstyled Text](#how-to-prevent-flash-of-unstyled-text)
 
 <!-- /MarkdownTOC -->
@@ -109,23 +111,77 @@ timer.stop()
 
 Wrapper around [webfontloader](https://github.com/typekit/webfontloader).
 
-Loads one or more web fonts (multiple vendors). This is a simple script without loading state callbacks.
+Loads one or more web fonts (optionally from multiple vendors). Works with Google Webfonts and Typekit.
 
 ~~~javascript
 import { addWebFont } from "polythene-utilities"
-import { styler } from "polythene-core-css"
 
-const robotoStyles = [{
-  "html, body, button, input, select, textarea": {
-    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
-  }
-}]
-
-export const addRoboto = () => (
-  addWebFont("google", "Roboto:400,500,700,400italic:latin"),
-  styler.add("roboto-font", robotoStyles)
-)
+addWebFont("google", {
+  families: ["Roboto:400,500,700,400italic:latin"]
+})
 ~~~
+
+For use with Typekit:
+
+~~~javascript
+import { addWebFont } from "polythene-utilities"
+
+addWebFont("typekit", {
+  id: "my-kit-id"
+})
+~~~
+
+<a id="function-addwebfont"></a>
+### Function `addWebFont`
+
+~~~javascript
+addWebFont(vendor, config)
+~~~
+
+| **Option**   | **Required** | **Type** | **Description** |
+| ------------ | ------------ | -------- | --------------- |
+| **vendor**   | required     | String   | Vendor name (or any other unique identifier) |
+| **config**   | required     | Object   | Configuration object to pass `families`, `id`, `text` |
+
+
+
+<a id="loading-callbacks"></a>
+### Loading callbacks
+
+To receive a callback when a font loading state has changed, subscribe to `webfontloader` events:
+
+~~~javascript
+import { addWebFont } from "polythene-utilities"
+import { subscribe, unsubscribe } from "polythene-core"
+
+const handleFontEvent = event => {
+  if (event.name === "active") {
+    // ...
+  }
+}
+
+subscribe("webfontloader", handleFontEvent)
+
+// To unsubscribe, pass the same function as with subscribe
+// unsubscribe("webfontloader", handleFontEvent)
+
+addWebFont("google", {
+  families: ["Roboto:400,500,700,400italic:latin"]
+})
+~~~
+
+#### webfontloader events
+
+~~~
+{ name: "loading",      vendor, family, config }
+{ name: "active",       vendor, family, config }
+{ name: "inactive"      vendor, family, config }
+{ name: "fontloading",  vendor, family, config, familyName, fvd }
+{ name: "fontactive",   vendor, family, config, familyName, fvd }
+{ name: "fontinactive", vendor, family, config, familyName, fvd }
+~~~
+
+See [webfontloader documentation](https://github.com/typekit/webfontloader) for more details.
 
 
 <a id="how-to-prevent-flash-of-unstyled-text"></a>

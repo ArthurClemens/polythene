@@ -86,6 +86,9 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 
 #### Other
 
+* [webfontloader](packages/polythene-utilities.md#web-font-loader)
+  * Aligned configuration to upstream library
+  * Now emits loading status callbacks
 * Various bug fixes
 
 <a id="120"></a>

@@ -1,9 +1,36 @@
-import { isServer, isClient } from 'polythene-core';
+import { isServer, emit, isClient } from 'polythene-core';
 
-var addWebFont = function addWebFont(vendor, family, key) {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var addWebFont = function addWebFont(vendor, config) {
   if (isServer) return;
   if (!window.WebFontConfig) {
-    window.WebFontConfig = {};
+    var emitEvent = function emitEvent(_ref) {
+      var name = _ref.name,
+          familyName = _ref.familyName,
+          fvd = _ref.fvd;
+      return emit("webfontloader", { name: name, familyName: familyName, fvd: fvd, vendor: vendor, config: config });
+    };
+    window.WebFontConfig = {
+      loading: function loading() {
+        return emitEvent({ name: "loading" });
+      },
+      active: function active() {
+        return emitEvent({ name: "active" });
+      },
+      inactive: function inactive() {
+        return emitEvent({ name: "inactive" });
+      },
+      fontloading: function fontloading(familyName, fvd) {
+        return emitEvent({ name: "fontloading", familyName: familyName, fvd: fvd });
+      },
+      fontactive: function fontactive(familyName, fvd) {
+        return emitEvent({ name: "fontactive", familyName: familyName, fvd: fvd });
+      },
+      fontinactive: function fontinactive(familyName, fvd) {
+        return emitEvent({ name: "fontinactive", familyName: familyName, fvd: fvd });
+      }
+    };
     (function () {
       var wf = document.createElement("script");
       wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
@@ -16,10 +43,8 @@ var addWebFont = function addWebFont(vendor, family, key) {
     })();
   }
   var vendorCfg = window.WebFontConfig[vendor] || {};
-  vendorCfg.families = vendorCfg.families || [];
-  vendorCfg.families.push(family);
-  if (key) {
-    vendorCfg.key = key;
+  if (config) {
+    _extends(vendorCfg, config);
   }
   window.WebFontConfig[vendor] = vendorCfg;
 };

@@ -169,7 +169,9 @@
   };
 
   var addRoboto = function addRoboto() {
-    polytheneUtilities.addWebFont("google", "Roboto:400,500,700,400italic:latin");
+    polytheneUtilities.addWebFont("google", {
+      families: ["Roboto:400,500,700,400italic:latin"]
+    });
   };
 
   var addTypography = function addTypography() {
@@ -179,7 +181,6 @@
     }));
   };
 
-  exports.vars = polytheneStyle.vars;
   exports.addRoboto = addRoboto;
   exports.addStyle = addStyle;
   exports.addTypography = addTypography;

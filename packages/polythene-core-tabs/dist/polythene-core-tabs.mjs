@@ -236,9 +236,7 @@ var onMount = function onMount(vnode) {
   }
   state.tabRowEl = dom.querySelector("." + classes.tabRow);
 
-  // A promise can't resolve during the oncreate loop
-  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
-  whenCreateDone().then(function () {
+  var redrawLargestWidth = function redrawLargestWidth() {
     if (state.tabs && attrs.largestWidth) {
       var widths = state.tabs.map(function (tabData) {
         return tabData.dom.getBoundingClientRect().width;
@@ -248,25 +246,36 @@ var onMount = function onMount(vnode) {
         return tabData.dom.style.width = largest + "px";
       });
     }
-    setSelectedTab(state, attrs, state.selectedTabIndex(), false);
-  });
-
-  var onResize = function onResize() {
-    return setSelectedTab(state, attrs, state.selectedTabIndex(), false);
   };
 
-  subscribe("resize", onResize), state.cleanUp = function () {
-    return unsubscribe("resize", onResize);
+  var redraw = function redraw() {
+    return redrawLargestWidth(), setSelectedTab(state, attrs, state.selectedTabIndex(), false);
   };
+
+  var handleFontEvent = function handleFontEvent(_ref) {
+    var name = _ref.name;
+    return name === "active" || name === "inactive" ? redraw() : null;
+  };
+
+  subscribe("resize", redraw);
+  subscribe("webfontloader", handleFontEvent);
+
+  state.cleanUp = function () {
+    return unsubscribe("resize", redraw), unsubscribe("webfontloader", handleFontEvent);
+  };
+
+  // A promise can't resolve during the oncreate loop
+  // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
+  whenCreateDone().then(redraw);
 };
 
-var onUnMount = function onUnMount(_ref) {
-  var state = _ref.state;
+var onUnMount = function onUnMount(_ref2) {
+  var state = _ref2.state;
   return state.cleanUp();
 };
 
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
+var createProps = function createProps(vnode, _ref3) {
+  var k = _ref3.keys;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -284,11 +293,11 @@ var createProps = function createProps(vnode, _ref2) {
   });
 };
 
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer,
-      k = _ref3.keys,
-      Tab = _ref3.Tab,
-      ScrollButton = _ref3.ScrollButton;
+var createContent = function createContent(vnode, _ref4) {
+  var h = _ref4.renderer,
+      k = _ref4.keys,
+      Tab = _ref4.Tab,
+      ScrollButton = _ref4.ScrollButton;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
