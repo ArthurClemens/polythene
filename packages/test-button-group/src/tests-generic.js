@@ -1,6 +1,7 @@
 import { ButtonCSS } from "polythene-css";
+import toggle from "./components/toggle";
 
-export default ({ renderer: h, Button, RaisedButton, ButtonGroup }) => {
+export default ({ renderer: h, keys: k, Button, ButtonGroup }) => {
   
   ButtonCSS.addStyle(".button-group-themed-white", {
     color_light_background: "#fff",
@@ -15,6 +16,8 @@ export default ({ renderer: h, Button, RaisedButton, ButtonGroup }) => {
     color_light_icon:       "rgba(255,255,255,.7)",
     color_light_separator:  "#fff",
   });
+
+  const Toggle = toggle({ h, k, Button, ButtonGroup });
 
   return [
     {
@@ -48,6 +51,10 @@ export default ({ renderer: h, Button, RaisedButton, ButtonGroup }) => {
             })
           ])
       },
+    },
+    {
+      name: "Toggle state",
+      component: Toggle
     },
     {
       name: "Themed (color, border radius, separators)",

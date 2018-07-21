@@ -22,12 +22,6 @@
           pointerEvents: "none"
         },
 
-        ".pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: 1
-          }
-        },
-
         " .pe-button__content": {
           position: "relative",
           borderRadius: "inherit"
@@ -40,18 +34,11 @@
           pointerEvents: "none"
         }],
 
-        " .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.fit(), {
+        " .pe-button__wash": [polytheneCoreCss.mixin.fit(), {
+          zIndex: 0,
           borderRadius: "inherit",
           pointerEvents: "none"
-        }],
-
-        " .pe-button__focus": {
-          opacity: 0
-        },
-
-        " .pe-button__wash": {
-          zIndex: 0
-        }
+        }]
       }), {
         ".pe-button-row": {
           // prevent inline block style to add extra space:
@@ -81,15 +68,14 @@
 
       // elements      
       content: "pe-button__content",
-      focus: "pe-button__focus",
       label: "pe-button__label",
+      textLabel: "pe-button__text-label",
       wash: "pe-button__wash",
       dropdown: "pe-button__dropdown",
 
       // states      
       border: "pe-button--border",
       disabled: "pe-button--disabled",
-      focused: "pe-button--focus",
       inactive: "pe-button--inactive",
       selected: "pe-button--selected",
       hasDropdown: "pe-button--dropdown",
@@ -105,14 +91,8 @@
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, {
-        ".pe-button--focus, &.pe-button--selected": {
-          " .pe-button__focus": {
-            opacity: 1
-          }
-        }
-      })];
+    general_styles: function general_styles() {
+      return [];
     }
   };
 
@@ -135,23 +115,19 @@
       })];
     }), _defineProperty$1(_ref, "color_" + tint + "_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ":not(.pe-button--disabled)": {
+        ":not(.pe-button--disabled):not(.pe-button--selected)": {
           " .pe-button__content": {
             backgroundColor: vars["color_" + tint + "_background"]
           }
         }
       })];
-    }), _defineProperty$1(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        " .pe-button__focus": {
-          backgroundColor: vars["color_" + tint + "_focus_background"]
-        }
-      })];
     }), _defineProperty$1(_ref, "color_" + tint + "_active_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        ".pe-button--selected": {
-          " .pe-button__content": {
-            backgroundColor: vars["color_" + tint + "_active_background"]
+        ":not(.pe-button--disabled)": {
+          ".pe-button--selected": {
+            " .pe-button__content": {
+              backgroundColor: vars["color_" + tint + "_active_background"]
+            }
           }
         }
       })];
@@ -209,24 +185,32 @@
 
     return _ref2 = {}, _defineProperty$1(_ref2, "color_" + tint + "_hover", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        color: vars["color_" + tint + "_hover"]
+        ":not(.pe-button--disabled):not(.pe-button--selected)": {
+          color: vars["color_" + tint + "_hover"]
+        }
       })];
     }), _defineProperty$1(_ref2, "color_" + tint + "_hover_border", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          borderColor: vars["color_" + tint + "_hover_border"]
+        ":not(.pe-button--disabled):not(.pe-button--selected)": {
+          " .pe-button__content": {
+            borderColor: vars["color_" + tint + "_hover_border"]
+          }
         }
       })];
     }), _defineProperty$1(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
+        ":not(.pe-button--disabled):not(.pe-button--selected)": {
+          " .pe-button__wash": {
+            backgroundColor: vars["color_" + tint + "_wash_background"]
+          }
         }
       })];
     }), _defineProperty$1(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content": {
-          backgroundColor: vars["color_" + tint + "_hover_background"]
+        ":not(.pe-button--disabled):not(.pe-button--selected)": {
+          " .pe-button__content": {
+            backgroundColor: vars["color_" + tint + "_hover_background"]
+          }
         }
       })];
     }), _defineProperty$1(_ref2, "color_" + tint + "_hover_icon", function (selector, vars) {
@@ -324,7 +308,7 @@
         },
 
         ".pe-button--border": {
-          " .pe-button__wash, .pe-button__focus, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
+          " .pe-button__wash, .pe-ripple": polytheneCoreCss.mixin.fit(-1),
 
           " .pe-button__content": {
             borderStyle: "solid",
@@ -336,6 +320,11 @@
           whiteSpace: "pre",
           userSelect: "none",
           "-moz-user-select": "none"
+        },
+
+        " .pe-button__text-label": {
+          display: "inline-block",
+          lineHeight: 1
         },
 
         ".pe-button--dropdown": {
@@ -383,6 +372,9 @@
           " .pe-button__content": {
             borderWidth: vars.border_width + "px"
           }
+        },
+        " .pe-button-group & + &": {
+          marginLeft: -vars.border_width + "px"
         }
       })];
     },
@@ -393,7 +385,7 @@
     },
     animation_duration: function animation_duration(selector, vars) {
       return [polytheneCoreCss.sel(selector, {
-        " .pe-button__content, .pe-button__wash, .pe-button__focus": [polytheneCoreCss.mixin.defaultTransition("all", vars.animation_duration)]
+        " .pe-button__content, .pe-button__wash": [polytheneCoreCss.mixin.defaultTransition("all", vars.animation_duration)]
       })];
     },
     padding_h: function padding_h(selector, vars) {
@@ -514,32 +506,32 @@
 
   var touch_height = polytheneTheme.vars.unit_touch_height; // 48
   var height = 36;
+  var border_width = 1;
 
   var vars = {
     general_styles: true,
 
     animation_duration: polytheneTheme.vars.animation_duration,
     border_radius: polytheneTheme.vars.unit_item_border_radius,
-    border_width: 1, // no border in MD, but used to correctly set the height when a theme does set a border
+    border_width: border_width, // no border in MD, but used to correctly set the height when a theme does set a border
     dropdown_icon_size: 24,
     font_size: 14,
     font_weight: 500,
-    label_padding_v: 9,
+    label_padding_v: 11,
     letter_spacing: 0.75,
-    line_height: polytheneTheme.vars.line_height,
+    line_height: 1,
     min_width: 8 * polytheneTheme.vars.grid_unit_component,
     outer_padding_v: (touch_height - height) / 2, // (48 - 36) / 2 = 6
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
     padding_h_border: 4 * polytheneTheme.vars.grid_unit, // 16
     padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
     row_margin_h: polytheneTheme.vars.grid_unit,
-    separator_width: 1,
+    separator_width: border_width,
     text_transform: "uppercase",
 
     color_light_background: "transparent",
     color_light_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_primary),
     color_light_wash_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
-    color_light_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_hover),
     color_light_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_active),
     color_light_disabled_background: "transparent",
     color_light_disabled_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_text_disabled),
@@ -549,7 +541,6 @@
     color_dark_background: "transparent",
     color_dark_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_primary),
     color_dark_wash_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
-    color_dark_focus_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_hover),
     color_dark_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_active),
     color_dark_disabled_background: "transparent",
     color_dark_disabled_text: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled),

@@ -84,7 +84,6 @@ export const createProps = (vnode, { keys: k }) => {
         inactive ? classes.inactive : null,
         attrs.separatorAtStart ? classes.separatorAtStart : null,
         (attrs.border || attrs.borders) ? classes.border : null,
-        state.focus() ? classes.focused : null,
         attrs.dropdown ? classes.hasDropdown : null,
         attrs.dropdown
           ? attrs.dropdown.open
@@ -127,7 +126,16 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => 
     : attrs.label !== undefined
       ? typeof attrs.label === "object"
         ? attrs.label
-        : h("div", { className: classes.label }, attrs.label)
+        : h("div",
+          { className: classes.label },
+          h("div",
+            {
+              className: classes.textLabel,
+              style: attrs.textStyle
+            },
+            attrs.label
+          )
+        )
       : children
         ? children
         : null;
@@ -154,8 +162,6 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => 
         )),
       // hover
       noWash ? null : h("div", { key: "wash", className: classes.wash }),
-      // focus
-      disabled ? null : h("div", { key: "focus", className: classes.focus }),
       label,
       attrs.dropdown
         ? h(Icon,

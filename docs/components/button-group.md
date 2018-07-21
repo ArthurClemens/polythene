@@ -16,6 +16,14 @@ Container for a row of buttons. Use this to create toggle buttons or split butto
 Button Group does not have any options. Buttons are passed as child nodes.
 
 
+<a id="composition"></a>
+## Composition
+
+Button Group is composed from:
+
+* [Button](button.md)
+
+
 <a id="css-classes"></a>
 ## CSS classes
 

@@ -158,7 +158,7 @@
   background-color: #2196f3
 }
 
-.pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tab.pe-text-button.pe-button .pe-button__focus,.pe-tab.pe-text-button.pe-button .pe-button__wash {
+.pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tab.pe-text-button.pe-button .pe-button__wash {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;

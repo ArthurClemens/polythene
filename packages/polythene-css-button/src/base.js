@@ -16,12 +16,6 @@ const varFns = {
         pointerEvents: "none"
       },
 
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1
-        }
-      },
-
       " .pe-button__content": {
         position: "relative",
         borderRadius: "inherit",
@@ -37,21 +31,14 @@ const varFns = {
         }
       ],
 
-      " .pe-button__wash, .pe-button__focus": [
+      " .pe-button__wash": [
         mixin.fit(),
         {
+          zIndex: 0,
           borderRadius: "inherit",
           pointerEvents: "none"
         }
       ],
-
-      " .pe-button__focus": {
-        opacity: 0
-      },
-
-      " .pe-button__wash": {
-        zIndex: 0
-      }
     }),
     {
       ".pe-button-row": {

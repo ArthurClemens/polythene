@@ -74,7 +74,7 @@ const varFns = {
         },
 
         ".pe-button--border": {
-          " .pe-button__wash, .pe-button__focus, .pe-ripple": mixin.fit(-1),
+          " .pe-button__wash, .pe-ripple": mixin.fit(-1),
 
           " .pe-button__content": {
             borderStyle: "solid",
@@ -86,6 +86,11 @@ const varFns = {
           whiteSpace: "pre",
           userSelect: "none",
           "-moz-user-select": "none"
+        },
+
+        " .pe-button__text-label": {
+          display: "inline-block",
+          lineHeight: 1,
         },
 
         ".pe-button--dropdown": {
@@ -140,6 +145,9 @@ const varFns = {
           borderWidth: vars.border_width + "px"
         },
       },
+      " .pe-button-group & + &": {
+        marginLeft: -vars.border_width + "px"
+      }
     })
   ],
   min_width: (selector, vars) => [
@@ -149,7 +157,7 @@ const varFns = {
   ],
   animation_duration: (selector, vars) => [
     sel(selector, {
-      " .pe-button__content, .pe-button__wash, .pe-button__focus": [
+      " .pe-button__content, .pe-button__wash": [
         mixin.defaultTransition("all", vars.animation_duration)
       ],
     })

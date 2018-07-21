@@ -1,27 +1,19 @@
 # Utility functions
 
-* **easing**: Easing functions
-* **scrollTo**: Animated scroll to a position
-* **Timer**: Simple start/stop/pause/resume timer
-* **Web font loader**: Loads one or more web fonts
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2" -->
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
-
-- [easing](#easing)
-- [scrollTo](#scrollto)
-- [Timer](#timer)
-- [Web font loader](#web-font-loader)
-  - [Function `addWebFont`](#function-addwebfont)
-  - [Loading callbacks](#loading-callbacks)
-  - [How to prevent Flash of Unstyled Text](#how-to-prevent-flash-of-unstyled-text)
+- [easing: simple easing functions](#easing-simple-easing-functions)
+- [scrollTo: animated scroll to a position](#scrollto-animated-scroll-to-a-position)
+- [Timer: simple start/stop/pause/resume timer](#timer-simple-startstoppauseresume-timer)
+- [addWebFont: web font loader](#addwebfont-web-font-loader)
 
 <!-- /MarkdownTOC -->
 
 
-<a id="easing"></a>
-## easing
+<a id="easing-simple-easing-functions"></a>
+## easing: simple easing functions
 
-Simple easing functions - inspired by http://gizma.com/easing/
+Inspired by http://gizma.com/easing/
 
 Example:
 
@@ -32,12 +24,12 @@ import { easing } from "polythene-utilities"
 const value = start + change * easing.easeInOutCubic(percentage)
 ~~~
 
+Find all easing functions in [easing.js](../../packages/polythene-utilities/src/easing.js)
 
 
-<a id="scrollto"></a>
-## scrollTo
 
-Animated scroll to a position.
+<a id="scrollto-animated-scroll-to-a-position"></a>
+## scrollTo: animated scroll to a position
 
 Signature:
 
@@ -72,10 +64,8 @@ scrollTo({
 
 
 
-<a id="timer"></a>
-## Timer
-
-Simple start/stop/pause/resume timer.
+<a id="timer-simple-startstoppauseresume-timer"></a>
+## Timer: simple start/stop/pause/resume timer
 
 Signature:
 
@@ -106,8 +96,8 @@ timer.stop()
 
 
 
-<a id="web-font-loader"></a>
-## Web font loader
+<a id="addwebfont-web-font-loader"></a>
+## addWebFont: web font loader
 
 Wrapper around [webfontloader](https://github.com/typekit/webfontloader).
 

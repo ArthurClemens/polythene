@@ -13,10 +13,6 @@
   pointer-events: none
 }
 
-.pe-button.pe-button--focus .pe-button__focus {
-  opacity: 1
-}
-
 .pe-button .pe-button__content,.pe-button .pe-button__label {
   position: relative;
   border-radius: inherit
@@ -29,22 +25,15 @@
   pointer-events: none
 }
 
-.pe-button .pe-button__focus,.pe-button .pe-button__wash {
+.pe-button .pe-button__wash {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 0;
   border-radius: inherit;
   pointer-events: none
-}
-
-.pe-button .pe-button__focus {
-  opacity: 0
-}
-
-.pe-button .pe-button__wash {
-  z-index: 0
 }
 
 .pe-button-row {
@@ -75,7 +64,7 @@
   justify-content: center
 }
 
-.pe-text-button.pe-button--border .pe-button__focus,.pe-text-button.pe-button--border .pe-button__wash,.pe-text-button.pe-button--border .pe-ripple {
+.pe-text-button.pe-button--border .pe-button__wash,.pe-text-button.pe-button--border .pe-ripple {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -91,6 +80,11 @@
   white-space: pre;
   user-select: none;
   -moz-user-select: none
+}
+
+.pe-text-button .pe-button__text-label {
+  display: inline-block;
+  line-height: 1
 }
 
 .pe-text-button.pe-button--dropdown {
@@ -131,7 +125,7 @@
   border-style: none solid none none
 }
 
-.pe-text-button .pe-button__content,.pe-text-button .pe-button__focus,.pe-text-button .pe-button__wash {
+.pe-text-button .pe-button__content,.pe-text-button .pe-button__wash {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
@@ -170,6 +164,10 @@
   border-width: 1px
 }
 
+.pe-button-group .pe-text-button+.pe-text-button {
+  margin-left: -1px
+}
+
 .pe-text-button.pe-button--dropdown .pe-button__dropdown {
   width: 24px
 }
@@ -186,11 +184,11 @@
 
 .pe-text-button .pe-button__label {
   font-weight: 500;
-  padding: 9px 0
+  padding: 11px 0
 }
 
 .pe-text-button.pe-button--border .pe-button__label {
-  padding: 8px 0
+  padding: 10px 0
 }
 
 .pe-text-button {
@@ -198,11 +196,11 @@
 }
 
 .pe-text-button .pe-button__dropdown,.pe-text-button .pe-button__label {
-  line-height: 1.5
+  line-height: 1
 }
 
 .pe-text-button .pe-button__dropdown {
-  min-height: calc(1.5em + 2 * 9px)
+  min-height: calc(1em + 2 * 11px)
 }
 
 .pe-text-button {
@@ -215,11 +213,11 @@
 }
 
 .pe-text-button.pe-button--high-label .pe-button__label {
-  padding: 15px 0
+  padding: 17px 0
 }
 
 .pe-text-button.pe-button--high-label .pe-button__dropdown,.pe-text-button.pe-button--high-label .pe-button__label {
-  min-height: calc(1.5em + 2 * 15px)
+  min-height: calc(1em + 2 * 17px)
 }
 
 .pe-text-button .pe-button__content {
@@ -250,11 +248,7 @@
   text-transform: uppercase
 }
 
-.pe-dark-tone.pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone .pe-text-button.pe-button--focus .pe-button__focus,.pe-dark-tone.pe-text-button.pe-button--selected .pe-button__focus,.pe-dark-tone .pe-text-button.pe-button--selected .pe-button__focus {
-  opacity: 1
-}
-
-.pe-dark-tone.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-dark-tone .pe-text-button:not(.pe-button--disabled) .pe-button__content {
+.pe-dark-tone.pe-text-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-dark-tone .pe-text-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content {
   background-color: transparent
 }
 
@@ -262,11 +256,7 @@
   color: #fff
 }
 
-.pe-dark-tone.pe-text-button .pe-button__focus,.pe-dark-tone .pe-text-button .pe-button__focus {
-  background-color: hsla(0,0%,100%,.08)
-}
-
-.pe-dark-tone.pe-text-button.pe-button--selected .pe-button__content,.pe-dark-tone .pe-text-button.pe-button--selected .pe-button__content {
+.pe-dark-tone.pe-text-button:not(.pe-button--disabled).pe-button--selected .pe-button__content,.pe-dark-tone .pe-text-button:not(.pe-button--disabled).pe-button--selected .pe-button__content {
   background-color: hsla(0,0%,100%,.14)
 }
 
@@ -294,11 +284,7 @@
   border-color: hsla(0,0%,100%,.26)
 }
 
-.pe-light-tone.pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-text-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-text-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-text-button.pe-button--selected .pe-button__focus,.pe-text-button.pe-button--focus .pe-button__focus,.pe-text-button.pe-button--selected .pe-button__focus {
-  opacity: 1
-}
-
-.pe-light-tone.pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-light-tone .pe-text-button:not(.pe-button--disabled) .pe-button__content,.pe-text-button:not(.pe-button--disabled) .pe-button__content {
+.pe-light-tone.pe-text-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-light-tone .pe-text-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-text-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content {
   background-color: transparent
 }
 
@@ -306,11 +292,7 @@
   color: rgba(0,0,0,.87)
 }
 
-.pe-light-tone.pe-text-button .pe-button__focus,.pe-light-tone .pe-text-button .pe-button__focus,.pe-text-button .pe-button__focus {
-  background-color: rgba(0,0,0,.06)
-}
-
-.pe-light-tone.pe-text-button.pe-button--selected .pe-button__content,.pe-light-tone .pe-text-button.pe-button--selected .pe-button__content,.pe-text-button.pe-button--selected .pe-button__content {
+.pe-light-tone.pe-text-button:not(.pe-button--disabled).pe-button--selected .pe-button__content,.pe-light-tone .pe-text-button:not(.pe-button--disabled).pe-button--selected .pe-button__content,.pe-text-button:not(.pe-button--disabled).pe-button--selected .pe-button__content {
   background-color: rgba(0,0,0,.14)
 }
 
@@ -338,11 +320,11 @@
   border-color: rgba(0,0,0,.26)
 }
 
-.pe-no-touch .pe-dark-tone .pe-text-button:hover .pe-button__wash {
+.pe-no-touch .pe-dark-tone .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
   background-color: hsla(0,0%,100%,.08)
 }
 
-.pe-no-touch .pe-light-tone .pe-text-button:hover .pe-button__wash,.pe-no-touch .pe-text-button:hover .pe-button__wash {
+.pe-no-touch .pe-light-tone .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
   background-color: rgba(0,0,0,.06)
 }
 /*# sourceMappingURL=polythene-button.css.map */

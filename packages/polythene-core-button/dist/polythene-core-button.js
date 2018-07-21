@@ -11,15 +11,14 @@
 
       // elements      
       content: "pe-button__content",
-      focus: "pe-button__focus",
       label: "pe-button__label",
+      textLabel: "pe-button__text-label",
       wash: "pe-button__wash",
       dropdown: "pe-button__dropdown",
 
       // states      
       border: "pe-button--border",
       disabled: "pe-button--disabled",
-      focused: "pe-button--focus",
       inactive: "pe-button--inactive",
       selected: "pe-button--selected",
       hasDropdown: "pe-button--dropdown",
@@ -116,7 +115,7 @@
 
     return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     {
-      className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, state.focus() ? classes.focused : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+      className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
     }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
       if (e.keyCode === 13 && state.focus()) {
         state.focus(false);
@@ -140,7 +139,10 @@
     var noink = attrs.ink !== undefined && attrs.ink === false;
     var disabled = attrs.disabled;
     var children = attrs.children || vnode.children;
-    var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, attrs.label) : children ? children : null;
+    var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", { className: classes.label }, h("div", {
+      className: classes.textLabel,
+      style: attrs.textStyle
+    }, attrs.label)) : children ? children : null;
     var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
     return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
     ? attrs.shadowComponent : null,
@@ -152,9 +154,7 @@
       target: state.dom()
     }, attrs.ripple)),
     // hover
-    noWash ? null : h("div", { key: "wash", className: classes.wash }),
-    // focus
-    disabled ? null : h("div", { key: "focus", className: classes.focus }), label, attrs.dropdown ? h(Icon, {
+    noWash ? null : h("div", { key: "wash", className: classes.wash }), label, attrs.dropdown ? h(Icon, {
       className: classes.dropdown,
       key: "dropdown",
       svg: { content: h.trust(polytheneCore.iconDropdownDown) }
