@@ -47,51 +47,6 @@ export default ({ renderer: h, RaisedButton }) => {
       }
     },
     {
-      name: "Themed button (color, font size, letter spacing, text transform)",
-      component: RaisedButton,
-      attrs: {
-        label: "Colored button",
-        className: "tests-raised-button-themed-button"
-      }
-    },
-    {
-      name: "Themed button (border)",
-      component: RaisedButton,
-      attrs: {
-        label: "Bordered button",
-        border: true,
-        className: "tests-raised-button-bordered-button"
-      }
-    },
-    {
-      name: "Themed button (with option disabled)",
-      component: RaisedButton,
-      attrs: {
-        label: "Disabled themed button",
-        className: "tests-raised-button-themed-button",
-        disabled: true
-      }
-    },
-    {
-      name: "Themed button (hover color)",
-      component: RaisedButton,
-      attrs: {
-        label: "Hover button",
-        className: "tests-raised-button-hover-button",
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: RaisedButton,
-      attrs: {
-        label: "Styled",
-        style: {
-          backgroundColor: "#EF6C00",
-          color: "#fff"
-        }
-      }
-    },
-    {
       name: "Option: wash (true)",
       interactive: true,
       component: RaisedButton,
@@ -116,15 +71,6 @@ export default ({ renderer: h, RaisedButton }) => {
       attrs: {
         label: "Disabled",
         disabled: true
-      }
-    },
-    {
-      name: "Option: disabled (false)",
-      interactive: true,
-      component: RaisedButton,
-      attrs: {
-        label: "Not disabled",
-        disabled: false
       }
     },
     {
@@ -194,9 +140,59 @@ export default ({ renderer: h, RaisedButton }) => {
           )
       }
     },
+    {
+      name: "Option: style (colors)",
+      component: RaisedButton,
+      attrs: {
+        label: "Styled",
+        style: {
+          backgroundColor: "#EF6C00",
+          color: "#fff"
+        }
+      }
+    },
 
-    // Dark tone
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed button (color, font size, letter spacing, text transform)",
+      component: RaisedButton,
+      attrs: {
+        label: "Colored button",
+        className: "tests-raised-button-themed-button"
+      }
+    },
+    {
+      name: "Themed button (border)",
+      component: RaisedButton,
+      attrs: {
+        label: "Bordered button",
+        border: true,
+        className: "tests-raised-button-bordered-button"
+      }
+    },
+    {
+      name: "Themed button (with option disabled)",
+      component: RaisedButton,
+      attrs: {
+        label: "Disabled themed button",
+        className: "tests-raised-button-themed-button",
+        disabled: true
+      }
+    },
+    {
+      name: "Themed button (hover color)",
+      component: RaisedButton,
+      attrs: {
+        label: "Hover button",
+        className: "tests-raised-button-hover-button",
+      }
+    },
 
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: label -- dark tone class (should be app's primary color)",
       component: RaisedButton,

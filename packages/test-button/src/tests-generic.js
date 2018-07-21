@@ -3,6 +3,7 @@ import { ButtonCSS } from "polythene-css";
 export default ({ renderer: h, Button }) => {
   
   ButtonCSS.addStyle(".tests-button-themed-button", {
+    contained:              true,
     color_light_background: "#2196F3",
     color_dark_background:  "#2196F3",
     color_light_text:       "#fff",
@@ -10,15 +11,21 @@ export default ({ renderer: h, Button }) => {
   });
 
   ButtonCSS.addStyle(".blue-on-dark-button", {
+    contained:       true,
     color_dark_text: "#2196F3"
   });
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
+    border:             true,
+    border_width:       2,
     color_light_text:   "#673ab7",
-    color_dark_text:    "#fff",
+    color_dark_text:    "#2196F3",
+    color_light_border: "#673ab7",
+    color_dark_border:  "#2196F3",
   });
 
   ButtonCSS.addStyle(".tests-button-hover-button", {
+    contained:                    true,
     color_light_hover:            "#fff",
     color_light_hover_background: "#673ab7",
     animation_duration:           "100ms",
@@ -26,6 +33,7 @@ export default ({ renderer: h, Button }) => {
 
   ButtonCSS.addStyle(".tests-button-media-query",
     {
+      contained:              true,
       color_light_background: "#673ab7",
       color_light_text:       "#fff",
     },
@@ -34,11 +42,12 @@ export default ({ renderer: h, Button }) => {
     }
   );
 
-  // ButtonCSS.addStyle(".tests-button-sentence-case", {
-  //   color_light_background: "#6200ee",
-  //   color_light_text:       "#fff",
-  //   text_transform:         "none"
-  // });
+  ButtonCSS.addStyle(".tests-button-sentence-case", {
+    contained:              true,
+    color_light_background: "#6200ee",
+    color_light_text:       "#fff",
+    text_transform:         "none"
+  });
   
   return [
     {
@@ -46,59 +55,6 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Label"
-      }
-    },
-    {
-      name: "Themed Button (colors, letter spacing)",
-      component: Button,
-      attrs: {
-        label: "Themed Button",
-        className: "tests-button-themed-button"
-      }
-    },
-    {
-      name: "Themed Button (media query - resize screen to see toggled style)",
-      component: Button,
-      attrs: {
-        label: "Media Query Button",
-        className: "tests-button-media-query"
-      }
-    },
-    // {
-    //   name: "Themed Button (colors, sentence case)",
-    //   component: Button,
-    //   attrs: {
-    //     label: "Sentence case",
-    //     className: "tests-button-sentence-case",
-    //   }
-    // },
-    {
-      name: "Themed Button: (option: border)",
-      component: Button,
-      attrs: {
-        label: "Border",
-        className: "tests-button-bordered-button",
-        border: true
-      }
-    },
-    {
-      name: "Themed Button (hover)",
-      component: Button,
-      interactive: true,
-      attrs: {
-        label: "Hover Button",
-        className: "tests-button-hover-button"
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: Button,
-      attrs: {
-        label: "Styled",
-        style: {
-          backgroundColor: "#EF6C00",
-          color: "#fff"
-        }
       }
     },
     {
@@ -139,16 +95,6 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Disabled",
-        disabled: true
-      }
-    },
-    {
-      name: "Themed Button: (option: border) (disabled)",
-      component: Button,
-      attrs: {
-        label: "Border",
-        className: "tests-button-bordered-button",
-        border: true,
         disabled: true
       }
     },
@@ -236,9 +182,92 @@ export default ({ renderer: h, Button }) => {
         inactivate: 2
       }
     },
+    {
+      name: "Option: contained",
+      component: Button,
+      attrs: {
+        label: "Contained",
+        contained: true
+      }
+    },
+    {
+      name: "Option: border",
+      component: Button,
+      attrs: {
+        label: "Border",
+        border: true
+      }
+    },
+    {
+      name: "Option: style (colors)",
+      component: Button,
+      attrs: {
+        label: "Styled",
+        style: {
+          backgroundColor: "#EF6C00",
+          color: "#fff"
+        }
+      }
+    },
 
-    // Dark tone class
-    
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed Button (colors, letter spacing)",
+      component: Button,
+      attrs: {
+        label: "Themed Button",
+        className: "tests-button-themed-button"
+      }
+    },
+    {
+      name: "Themed Button (media query - resize screen to see toggled style)",
+      interactive: true,
+      component: Button,
+      attrs: {
+        label: "Media Query Button",
+        className: "tests-button-media-query"
+      }
+    },
+    {
+      name: "Themed Button (colors, sentence case)",
+      component: Button,
+      attrs: {
+        label: "Sentence case",
+        className: "tests-button-sentence-case",
+      }
+    },
+    {
+      name: "Themed Button (border)",
+      component: Button,
+      attrs: {
+        label: "Border",
+        className: "tests-button-bordered-button",
+      }
+    },
+    {
+      name: "Themed Button (hover)",
+      component: Button,
+      interactive: true,
+      attrs: {
+        label: "Hover Button",
+        className: "tests-button-hover-button"
+      }
+    },
+    {
+      name: "Themed Button: (disabled)",
+      component: Button,
+      attrs: {
+        label: "Border",
+        className: "tests-button-bordered-button",
+        disabled: true
+      }
+    },
+
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: label -- dark tone class",
       className: "pe-dark-tone",
@@ -266,13 +295,12 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button: (option: border) -- dark tone class",
+      name: "Themed Button (border) -- dark tone class",
       className: "pe-dark-tone",
       component: Button,
       attrs: {
         label: "Border dark tone",
         className: "tests-button-bordered-button",
-        border: true
       }
     },
   ];

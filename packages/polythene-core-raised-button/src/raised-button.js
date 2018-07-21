@@ -111,6 +111,7 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
       wash: attrs.wash !== undefined
         ? attrs.wash
         : false,
+      contained: true,
       children
     },
     attrs

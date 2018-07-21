@@ -151,6 +151,4 @@ const varFns = Object.assign(
   customLayoutFns
 );
 
-export default createLayout({
-  varFns,
-});
+export default createLayout({ varFns });

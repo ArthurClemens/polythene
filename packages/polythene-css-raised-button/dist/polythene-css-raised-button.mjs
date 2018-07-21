@@ -15,11 +15,18 @@ var layout$1 = createLayout({
   superLayout: layout
 });
 
-var vars$1 = {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var themeVars = {
+  contained: true
+};
+
+var vars$1 = _extends({}, {
   general_styles: true,
 
   // Override Button:
   padding_h: 4 * vars.grid_unit, // 16
+
   color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover), // same as hover
   color_light_background: "#fff",
   color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
@@ -40,7 +47,7 @@ var vars$1 = {
 
   // color_light_hover_background:    "transparent",
   // color_dark_hover_background:     vars.color_primary_active,
-};
+}, themeVars);
 
 var fns = [layout$1, color$1];
 var selector = "." + classes.component;

@@ -14,15 +14,16 @@ var classes = {
 
     // states      
     border: "pe-button--border",
+    contained: "pe-button--contained",
     disabled: "pe-button--disabled",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected",
+    dropdownClosed: "pe-button--dropdown-closed",
+    dropdownOpen: "pe-button--dropdown-open",
+    extraWide: "pe-button--extra-wide",
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
-    extraWide: "pe-button--extra-wide",
-    separatorAtStart: "pe-button--separator-start",
-    dropdownOpen: "pe-button--dropdown-open",
-    dropdownClosed: "pe-button--dropdown-closed"
+    inactive: "pe-button--inactive",
+    selected: "pe-button--selected",
+    separatorAtStart: "pe-button--separator-start"
 };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -111,7 +112,7 @@ var createProps = function createProps(vnode, _ref) {
 
   return _extends({}, filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
   {
-    className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.super, attrs.parentClassName || classes.component, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, attrs.contained ? classes.contained : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
     if (e.keyCode === 13 && state.focus()) {
       state.focus(false);

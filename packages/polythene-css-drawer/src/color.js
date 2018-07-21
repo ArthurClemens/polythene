@@ -1,11 +1,13 @@
 import { sel, createColor } from "polythene-core-css";
 
 const generalFns = ({
-  general_styles: () => [{
-    " .pe-dialog__content": {
-      background: "none",
-    },
-  }]
+  general_styles: () => [
+    {
+      " .pe-dialog__content": {
+        background: "none",
+      },
+    }
+  ]
 });
 
 const tintFns = tint => ({

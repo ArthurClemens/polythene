@@ -56,8 +56,37 @@ const border_radius_button_group = (selector, vars, isRTL) =>
     },
   });
 
+const border = (selector, vars) =>
+  sel(selector, {
+    " .pe-button__wash, .pe-ripple": mixin.fit(-1),
+
+    " .pe-button__content": {
+      borderStyle: "solid",
+      paddingLeft: vars.padding_h_border + "px",
+      paddingRight: vars.padding_h_border + "px",
+    },
+  });
+
+const border_width = (selector, vars) =>
+  sel(selector, {
+    " .pe-button__content": {
+      borderWidth: vars.border_width + "px"
+    },
+    " .pe-button-group & + &": {
+      marginLeft: -vars.border_width + "px"
+    }
+  });
+
+const contained = (selector, vars) =>
+  sel(selector, {
+    " .pe-button__content": {
+      paddingLeft: vars.padding_h_contained + "px",
+      paddingRight: vars.padding_h_contained + "px",
+    },
+  });
+
 const varFns = {
-  general_styles: selector => [
+  general_styles: (selector, vars) => [
     sel(selector, [
       alignLeft(),
       {
@@ -67,20 +96,15 @@ const varFns = {
 
         " .pe-button__content": {
           position: "relative",
-          borderWidth: 0,
+          borderWidth: "1px", // default
           display: "flex",
           alignItems: "center",
           justifyContent: "center"
         },
 
-        ".pe-button--border": {
-          " .pe-button__wash, .pe-ripple": mixin.fit(-1),
+        ".pe-button--border": border(selector, vars),
 
-          " .pe-button__content": {
-            borderStyle: "solid",
-            borderWidth: "1px",
-          },
-        },
+        ".pe-button--contained": contained(selector, vars),
 
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",
@@ -139,16 +163,7 @@ const varFns = {
     border_radius_button_group(selectorRTL(`.pe-button-group ${selector}`), vars, true),
   ],
   border_width: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--border": {
-        " .pe-button__content": {
-          borderWidth: vars.border_width + "px"
-        },
-      },
-      " .pe-button-group & + &": {
-        marginLeft: -vars.border_width + "px"
-      }
-    })
+    border_width(selector, vars)
   ],
   min_width: (selector, vars) => [
     sel(selector, {
@@ -267,20 +282,18 @@ const varFns = {
       }
     })
   ],
-  padding_h_border: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--border": {
-        " .pe-button__content": {
-          padding: "0 " + vars.padding_h_border + "px",
-        }
-      }
-    })
-  ],
   letter_spacing: (selector, vars) => [
     sel(selector, {
       letterSpacing: vars.letter_spacing + "px"
     })
   ],
+
+  // Theme vars
+
+  border: (selector, vars) => 
+    vars.border && border(selector, vars),
+  contained: (selector, vars) => 
+    vars.contained && contained(selector, vars),
 };
 
 export default createLayout({ varFns });

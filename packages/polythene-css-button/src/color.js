@@ -1,7 +1,16 @@
 import { sel, createColor } from "polythene-core-css";
 
+const border = (selector, vars, tint) =>
+  sel(selector, {
+    ":not(.pe-button--disabled)": {
+      " .pe-button__content": {
+        borderColor: vars["color_" + tint + "_border"],
+      },
+    }
+  });
+
 const generalFns = ({
-  general_styles: () => [],
+  general_styles: () => []
 });
 
 const tintFns = tint => ({
@@ -60,13 +69,10 @@ const tintFns = tint => ({
   // Borders
 
   ["color_" + tint + "_border"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--border:not(.pe-button--disabled)": {
-        " .pe-button__content": {
-          borderColor: vars["color_" + tint + "_border"],
-        },
-      }
-    })
+    border(`${selector}.pe-button--border`, vars, tint)
+  ],
+  border: (selector, vars) => [
+    border(selector, vars, tint)
   ],
 
   ["color_" + tint + "_active_border"]: (selector, vars) => [

@@ -73,9 +73,9 @@ IconCSS.addStyle(selector, {
 })
 ~~~
 
-The `selector` is usually the class name.
+The `selector` is usually a class name.
 
-For example, to change the size and color of an icon:
+For example, to set the size and color of an icon:
 
 ~~~javascript
 IconCSS.addStyle(".purple-icon", {
@@ -84,6 +84,7 @@ IconCSS.addStyle(".purple-icon", {
   color_light:  "purple"
 })
 ~~~
+
 
 Then use that style for a specific component instance by using the same selector.
 
@@ -192,6 +193,8 @@ addStyle(selector, vars, options)
 
 Component variables are passed on to CSS creation modules (usually "layout" and "colors") that take variables and return a style object. The style object is converted to a style sheet by [j2c](http://j2c.py.gy).
 
+Only a minimal stylesheet is created, based on the set of passed variables. To recreate all styles, pass `general_styles: true`.
+
 
 <a id="choosing-css-in-js-or-css-files"></a>
 ## Choosing CSS-in-JS or CSS files
@@ -257,7 +260,7 @@ MenuCSS.addStyle(
     top_menu: true,
     backdrop: true,                                           // add a backdrop
     animation_hide_origin_effect_css: "transform: scale(1);", // prevent the menu fron scaling
-    height: "50vh !important",                                // use !important to override the component height option
+    height: "50vh !important",                                // use !important to override the component height option (if set)
   },
   {
     mediaQuery: "@media all and (max-width: 480px)"

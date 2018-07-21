@@ -427,6 +427,4 @@ const varFns = {
   ],
 };
 
-export default createLayout({
-  varFns,
-});
+export default createLayout({ varFns });

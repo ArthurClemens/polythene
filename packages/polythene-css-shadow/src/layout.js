@@ -65,6 +65,4 @@ const varFns = Object.assign({},
   ), {})
 );
 
-export default createLayout({
-  varFns,
-});
+export default createLayout({ varFns });

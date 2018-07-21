@@ -113,6 +113,7 @@ var createProps = function createProps(vnode, _ref) {
       animated: true
     }),
     wash: attrs.wash !== undefined ? attrs.wash : false,
+    contained: true,
     children: children
   }, attrs);
 };

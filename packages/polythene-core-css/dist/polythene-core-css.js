@@ -1084,7 +1084,12 @@
     var selector = selectors.join("");
     var styleList = styleFns.map(function (fn) {
       return fn(selector, vars, customVars);
+    }).filter(function (list) {
+      return list.length > 0;
     });
+    if (styleList.length === 0) {
+      return;
+    }
     var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
     if (mediaQuery) {
       add(id, [_defineProperty({}, mediaQuery, styleList)]);

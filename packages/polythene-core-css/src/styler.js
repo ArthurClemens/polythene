@@ -66,7 +66,10 @@ const addToDocument = (opts, ...styles) => {
 
 const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) => {
   const selector = selectors.join("");
-  const styleList = styleFns.map(fn => fn(selector, vars, customVars));
+  const styleList = styleFns.map(fn => fn(selector, vars, customVars)).filter(list => list.length > 0);
+  if (styleList.length === 0) {
+    return;
+  }
   const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   if (mediaQuery) {
     add(id, [{

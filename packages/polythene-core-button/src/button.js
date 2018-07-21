@@ -84,6 +84,7 @@ export const createProps = (vnode, { keys: k }) => {
         inactive ? classes.inactive : null,
         attrs.separatorAtStart ? classes.separatorAtStart : null,
         (attrs.border || attrs.borders) ? classes.border : null,
+        attrs.contained ? classes.contained : null,
         attrs.dropdown ? classes.hasDropdown : null,
         attrs.dropdown
           ? attrs.dropdown.open
