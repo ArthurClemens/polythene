@@ -4,6 +4,32 @@
   (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
 }(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
 
+  var classes = {
+      component: "pe-text-button",
+      super: "pe-button",
+      row: "pe-button-row",
+
+      // elements      
+      content: "pe-button__content",
+      label: "pe-button__label",
+      textLabel: "pe-button__text-label",
+      wash: "pe-button__wash",
+      dropdown: "pe-button__dropdown",
+
+      // states      
+      border: "pe-button--border",
+      contained: "pe-button--contained",
+      disabled: "pe-button--disabled",
+      dropdownClosed: "pe-button--dropdown-closed",
+      dropdownOpen: "pe-button--dropdown-open",
+      extraWide: "pe-button--extra-wide",
+      hasDropdown: "pe-button--dropdown",
+      highLabel: "pe-button--high-label",
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      separatorAtStart: "pe-button--separator-start"
+  };
+
   function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var varFns = {
@@ -59,33 +85,7 @@
     }
   };
 
-  var baseLayout = polytheneCoreCss.createLayout({ varFns: varFns });
-
-  var classes = {
-      component: "pe-text-button",
-      super: "pe-button",
-      row: "pe-button-row",
-
-      // elements      
-      content: "pe-button__content",
-      label: "pe-button__label",
-      textLabel: "pe-button__text-label",
-      wash: "pe-button__wash",
-      dropdown: "pe-button__dropdown",
-
-      // states      
-      border: "pe-button--border",
-      contained: "pe-button--contained",
-      disabled: "pe-button--disabled",
-      dropdownClosed: "pe-button--dropdown-closed",
-      dropdownOpen: "pe-button--dropdown-open",
-      extraWide: "pe-button--extra-wide",
-      hasDropdown: "pe-button--dropdown",
-      highLabel: "pe-button--high-label",
-      inactive: "pe-button--inactive",
-      selected: "pe-button--selected",
-      separatorAtStart: "pe-button--separator-start"
-  };
+  var superLayout = polytheneCoreCss.createLayout({ varFns: varFns });
 
   var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -325,8 +325,11 @@
   var _contained = function _contained(selector, vars) {
     return polytheneCoreCss.sel(selector, {
       " .pe-button__content": {
-        paddingLeft: vars.padding_h_contained + "px",
-        paddingRight: vars.padding_h_contained + "px"
+        paddingLeft: vars.padding_h + "px",
+        paddingRight: vars.padding_h + "px"
+      },
+      " .pe-button__wash": {
+        display: "none"
       }
     });
   };
@@ -347,8 +350,6 @@
         },
 
         ".pe-button--border": _border$1(selector, vars),
-
-        ".pe-button--contained": _contained(selector, vars),
 
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",
@@ -527,7 +528,7 @@
     }
   };
 
-  var layout = polytheneCoreCss.createLayout({ varFns: varFns$1 });
+  var superLayout$1 = polytheneCoreCss.createLayout({ varFns: varFns$1 });
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -557,10 +558,6 @@
     color_dark_disabled_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
   };
 
-  var containedVars = {
-    padding_h_contained: widePadding
-  };
-
   var vars = _extends$1({}, {
     general_styles: true,
 
@@ -575,7 +572,6 @@
     min_width: 8 * polytheneTheme.vars.grid_unit_component,
     outer_padding_v: (touch_height - height) / 2, // (48 - 36) / 2 = 6
     padding_h: 2 * polytheneTheme.vars.grid_unit, // 8
-
     padding_h_extra_wide: 6 * polytheneTheme.vars.grid_unit, // 24
     row_margin_h: polytheneTheme.vars.grid_unit,
     separator_width: border_width,
@@ -606,10 +602,10 @@
     // color_dark_hover:                   rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
     // color_dark_hover_background:        "transparent",
     // color_dark_hover_icon:              "inherit",
-  }, borderVars, containedVars, themeVars);
+  }, borderVars, themeVars);
 
-  var fns = [layout, color];
-  var baseFns = [baseLayout];
+  var fns = [superLayout$1, color];
+  var superFns = [superLayout];
   var superSelector = "." + classes.super;
   var selector = "." + classes.component;
 
@@ -617,17 +613,18 @@
     var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
         mediaQuery = _ref.mediaQuery;
 
+    var finalVars = customVars && customVars.contained ? containedButtonVars : vars;
     customSelector && polytheneCoreCss.styler.addStyle({
-      selectors: [customSelector, superSelector],
-      fns: baseFns,
-      vars: vars,
+      selectors: [superSelector, customSelector],
+      fns: superFns,
+      vars: finalVars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
     customSelector && polytheneCoreCss.styler.addStyle({
-      selectors: [customSelector, selector],
+      selectors: [selector, customSelector],
       fns: fns,
-      vars: vars,
+      vars: finalVars,
       customVars: customVars,
       mediaQuery: mediaQuery
     });
@@ -640,16 +637,17 @@
     var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
         mediaQuery = _ref2.mediaQuery;
 
+    var finalVars = customVars && customVars.contained ? containedButtonVars : vars;
     return polytheneCoreCss.styler.getStyle({
-      selectors: [customSelector, superSelector],
-      fns: baseFns,
-      vars: vars,
+      selectors: [superSelector, customSelector],
+      fns: superFns,
+      vars: finalVars,
       customVars: customVars,
       mediaQuery: mediaQuery
     }).concat(polytheneCoreCss.styler.getStyle({
-      selectors: [customSelector, selector],
+      selectors: [selector, customSelector],
       fns: fns,
-      vars: vars,
+      vars: finalVars,
       customVars: customVars,
       mediaQuery: mediaQuery
     }));
@@ -657,7 +655,7 @@
 
   polytheneCoreCss.styler.addStyle({
     selectors: [superSelector],
-    fns: baseFns,
+    fns: superFns,
     vars: vars
   });
   polytheneCoreCss.styler.addStyle({
@@ -666,11 +664,69 @@
     vars: vars
   });
 
-  exports.addStyle = addStyle;
-  exports.color = color;
-  exports.getStyle = getStyle;
-  exports.layout = layout;
-  exports.vars = vars;
+  var color$1 = polytheneCoreCss.createColor({
+    superColor: color
+  });
+
+  var layout = polytheneCoreCss.createLayout({
+    superLayout: superLayout$1
+  });
+
+  var containedButtonVars = {
+    general_styles: true,
+
+    padding_h: 4 * polytheneTheme.vars.grid_unit, // 16
+
+    color_light_background: "#fff",
+    color_light_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_light_wash_background: "transparent",
+
+    color_dark_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_dark),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+    color_dark_wash_background: "transparent"
+  };
+
+  var fns$1 = [layout, color$1];
+  var selectors = [classes.component, classes.contained].join(" ");
+  var selector$1 = "." + selectors.split(/\s/).join(".");
+
+  var addStyle$1 = polytheneCoreCss.styler.createAddStyle(selector$1, fns$1, containedButtonVars);
+
+  var getStyle$1 = polytheneCoreCss.styler.createGetStyle(selector$1, fns$1, containedButtonVars);
+
+  polytheneCoreCss.styler.addStyle({
+    selectors: [selector$1],
+    fns: fns$1,
+    vars: containedButtonVars
+  });
+
+  var addStyle$2 = function addStyle$$1(customSelector, customVars) {
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref.mediaQuery;
+
+    addStyle(customSelector, customVars, { mediaQuery: mediaQuery });
+  };
+
+  var getStyle$2 = function getStyle$$1() {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments[1];
+
+    var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref2.mediaQuery;
+
+    return getStyle(customSelector, customVars, { mediaQuery: mediaQuery }).concat(getStyle$1(customSelector, customVars, { mediaQuery: mediaQuery }));
+  };
+
+  var textButtonVars = vars;
+  var textButtonColor = color;
+  var textButtonLayout = superLayout$1;
+
+  exports.addStyle = addStyle$2;
+  exports.getStyle = getStyle$2;
+  exports.textButtonColor = textButtonColor;
+  exports.textButtonLayout = textButtonLayout;
+  exports.textButtonVars = textButtonVars;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

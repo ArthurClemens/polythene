@@ -1,6 +1,32 @@
 import { mixin, sel, createLayout, createColor, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
+var classes = {
+    component: "pe-text-button",
+    super: "pe-button",
+    row: "pe-button-row",
+
+    // elements      
+    content: "pe-button__content",
+    label: "pe-button__label",
+    textLabel: "pe-button__text-label",
+    wash: "pe-button__wash",
+    dropdown: "pe-button__dropdown",
+
+    // states      
+    border: "pe-button--border",
+    contained: "pe-button--contained",
+    disabled: "pe-button--disabled",
+    dropdownClosed: "pe-button--dropdown-closed",
+    dropdownOpen: "pe-button--dropdown-open",
+    extraWide: "pe-button--extra-wide",
+    hasDropdown: "pe-button--dropdown",
+    highLabel: "pe-button--high-label",
+    inactive: "pe-button--inactive",
+    selected: "pe-button--selected",
+    separatorAtStart: "pe-button--separator-start"
+};
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var varFns = {
@@ -56,33 +82,7 @@ var varFns = {
   }
 };
 
-var baseLayout = createLayout({ varFns: varFns });
-
-var classes = {
-    component: "pe-text-button",
-    super: "pe-button",
-    row: "pe-button-row",
-
-    // elements      
-    content: "pe-button__content",
-    label: "pe-button__label",
-    textLabel: "pe-button__text-label",
-    wash: "pe-button__wash",
-    dropdown: "pe-button__dropdown",
-
-    // states      
-    border: "pe-button--border",
-    contained: "pe-button--contained",
-    disabled: "pe-button--disabled",
-    dropdownClosed: "pe-button--dropdown-closed",
-    dropdownOpen: "pe-button--dropdown-open",
-    extraWide: "pe-button--extra-wide",
-    hasDropdown: "pe-button--dropdown",
-    highLabel: "pe-button--high-label",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected",
-    separatorAtStart: "pe-button--separator-start"
-};
+var superLayout = createLayout({ varFns: varFns });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -322,8 +322,11 @@ var _border_width = function _border_width(selector, vars$$1) {
 var _contained = function _contained(selector, vars$$1) {
   return sel(selector, {
     " .pe-button__content": {
-      paddingLeft: vars$$1.padding_h_contained + "px",
-      paddingRight: vars$$1.padding_h_contained + "px"
+      paddingLeft: vars$$1.padding_h + "px",
+      paddingRight: vars$$1.padding_h + "px"
+    },
+    " .pe-button__wash": {
+      display: "none"
     }
   });
 };
@@ -344,8 +347,6 @@ var varFns$1 = {
       },
 
       ".pe-button--border": _border$1(selector, vars$$1),
-
-      ".pe-button--contained": _contained(selector, vars$$1),
 
       " .pe-button__label, .pe-button__dropdown": {
         whiteSpace: "pre",
@@ -524,7 +525,7 @@ var varFns$1 = {
   }
 };
 
-var layout = createLayout({ varFns: varFns$1 });
+var superLayout$1 = createLayout({ varFns: varFns$1 });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -554,10 +555,6 @@ var borderVars = {
   color_dark_disabled_border: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled)
 };
 
-var containedVars = {
-  padding_h_contained: widePadding
-};
-
 var vars$1 = _extends$1({}, {
   general_styles: true,
 
@@ -572,7 +569,6 @@ var vars$1 = _extends$1({}, {
   min_width: 8 * vars.grid_unit_component,
   outer_padding_v: (touch_height - height) / 2, // (48 - 36) / 2 = 6
   padding_h: 2 * vars.grid_unit, // 8
-
   padding_h_extra_wide: 6 * vars.grid_unit, // 24
   row_margin_h: vars.grid_unit,
   separator_width: border_width,
@@ -603,10 +599,10 @@ var vars$1 = _extends$1({}, {
   // color_dark_hover:                   rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   // color_dark_hover_background:        "transparent",
   // color_dark_hover_icon:              "inherit",
-}, borderVars, containedVars, themeVars);
+}, borderVars, themeVars);
 
-var fns = [layout, color];
-var baseFns = [baseLayout];
+var fns = [superLayout$1, color];
+var superFns = [superLayout];
 var superSelector = "." + classes.super;
 var selector = "." + classes.component;
 
@@ -614,17 +610,18 @@ var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       mediaQuery = _ref.mediaQuery;
 
+  var finalVars = customVars && customVars.contained ? containedButtonVars : vars$1;
   customSelector && styler.addStyle({
-    selectors: [customSelector, superSelector],
-    fns: baseFns,
-    vars: vars$1,
+    selectors: [superSelector, customSelector],
+    fns: superFns,
+    vars: finalVars,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
   customSelector && styler.addStyle({
-    selectors: [customSelector, selector],
+    selectors: [selector, customSelector],
     fns: fns,
-    vars: vars$1,
+    vars: finalVars,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
@@ -637,16 +634,17 @@ var getStyle = function getStyle() {
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       mediaQuery = _ref2.mediaQuery;
 
+  var finalVars = customVars && customVars.contained ? containedButtonVars : vars$1;
   return styler.getStyle({
-    selectors: [customSelector, superSelector],
-    fns: baseFns,
-    vars: vars$1,
+    selectors: [superSelector, customSelector],
+    fns: superFns,
+    vars: finalVars,
     customVars: customVars,
     mediaQuery: mediaQuery
   }).concat(styler.getStyle({
-    selectors: [customSelector, selector],
+    selectors: [selector, customSelector],
     fns: fns,
-    vars: vars$1,
+    vars: finalVars,
     customVars: customVars,
     mediaQuery: mediaQuery
   }));
@@ -654,7 +652,7 @@ var getStyle = function getStyle() {
 
 styler.addStyle({
   selectors: [superSelector],
-  fns: baseFns,
+  fns: superFns,
   vars: vars$1
 });
 styler.addStyle({
@@ -663,4 +661,62 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+var color$1 = createColor({
+  superColor: color
+});
+
+var layout = createLayout({
+  superLayout: superLayout$1
+});
+
+var containedButtonVars = {
+  general_styles: true,
+
+  padding_h: 4 * vars.grid_unit, // 16
+
+  color_light_background: "#fff",
+  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_wash_background: "transparent",
+
+  color_dark_active_background: rgba(vars.color_primary_dark),
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+  color_dark_wash_background: "transparent"
+};
+
+var fns$1 = [layout, color$1];
+var selectors = [classes.component, classes.contained].join(" ");
+var selector$1 = "." + selectors.split(/\s/).join(".");
+
+var addStyle$1 = styler.createAddStyle(selector$1, fns$1, containedButtonVars);
+
+var getStyle$1 = styler.createGetStyle(selector$1, fns$1, containedButtonVars);
+
+styler.addStyle({
+  selectors: [selector$1],
+  fns: fns$1,
+  vars: containedButtonVars
+});
+
+var addStyle$2 = function addStyle$$1(customSelector, customVars) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref.mediaQuery;
+
+  addStyle(customSelector, customVars, { mediaQuery: mediaQuery });
+};
+
+var getStyle$2 = function getStyle$$1() {
+  var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var customVars = arguments[1];
+
+  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      mediaQuery = _ref2.mediaQuery;
+
+  return getStyle(customSelector, customVars, { mediaQuery: mediaQuery }).concat(getStyle$1(customSelector, customVars, { mediaQuery: mediaQuery }));
+};
+
+var textButtonVars = vars$1;
+var textButtonColor = color;
+var textButtonLayout = superLayout$1;
+
+export { addStyle$2 as addStyle, getStyle$2 as getStyle, textButtonColor, textButtonLayout, textButtonVars };

@@ -80,9 +80,12 @@ const border_width = (selector, vars) =>
 const contained = (selector, vars) =>
   sel(selector, {
     " .pe-button__content": {
-      paddingLeft: vars.padding_h_contained + "px",
-      paddingRight: vars.padding_h_contained + "px",
+      paddingLeft: vars.padding_h + "px",
+      paddingRight: vars.padding_h + "px",
     },
+    " .pe-button__wash": {
+      display: "none"
+    }
   });
 
 const varFns = {
@@ -103,8 +106,6 @@ const varFns = {
         },
 
         ".pe-button--border": border(selector, vars),
-
-        ".pe-button--contained": contained(selector, vars),
 
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",

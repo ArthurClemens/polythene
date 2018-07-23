@@ -18,15 +18,16 @@
 
       // states      
       border: "pe-button--border",
+      contained: "pe-button--contained",
       disabled: "pe-button--disabled",
-      inactive: "pe-button--inactive",
-      selected: "pe-button--selected",
+      dropdownClosed: "pe-button--dropdown-closed",
+      dropdownOpen: "pe-button--dropdown-open",
+      extraWide: "pe-button--extra-wide",
       hasDropdown: "pe-button--dropdown",
       highLabel: "pe-button--high-label",
-      extraWide: "pe-button--extra-wide",
-      separatorAtStart: "pe-button--separator-start",
-      dropdownOpen: "pe-button--dropdown-open",
-      dropdownClosed: "pe-button--dropdown-closed"
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      separatorAtStart: "pe-button--separator-start"
   };
 
   var classes = {

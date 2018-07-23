@@ -1,9 +1,9 @@
 import { rgba } from "polythene-core-css";
-import { vars as buttonVars } from "polythene-css-button";
+import { textButtonVars } from "polythene-css-button";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
 import { vars } from "polythene-theme";
 
-const fontSize = buttonVars.font_size;
+const fontSize = textButtonVars.font_size;
 const tab_label_line_height = 1.1 * fontSize;
 const tab_height = 48;
 const scroll_button_size = tab_height;
@@ -11,7 +11,7 @@ const scroll_button_size = tab_height;
 export default {
   general_styles:                   true,
 
-  animation_duration:               buttonVars.animation_duration,
+  animation_duration:               textButtonVars.animation_duration,
   indicator_slide_speed:            600, // px per second
   label_max_width:                  264,
   menu_tab_height:                  44,

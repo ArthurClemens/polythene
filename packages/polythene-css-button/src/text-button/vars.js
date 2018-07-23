@@ -27,10 +27,6 @@ const borderVars = {
   color_dark_disabled_border:           rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
 };
 
-const containedVars = {
-  padding_h_contained:                  widePadding,
-};
-
 export default Object.assign(
   {},
   {
@@ -47,7 +43,6 @@ export default Object.assign(
     min_width:                          8 * vars.grid_unit_component,
     outer_padding_v:                    (touch_height - height) / 2, // (48 - 36) / 2 = 6
     padding_h:                          2 * vars.grid_unit, // 8
-    
     padding_h_extra_wide:               6 * vars.grid_unit, // 24
     row_margin_h:                       vars.grid_unit,
     separator_width:                    border_width,
@@ -80,6 +75,5 @@ export default Object.assign(
     // color_dark_hover_icon:              "inherit",
   },
   borderVars,
-  containedVars,
   themeVars
 );

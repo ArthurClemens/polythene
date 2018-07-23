@@ -17,7 +17,6 @@ import * as MaterialDesignSpinnerCSS         from "polythene-css-material-design
 import * as MenuCSS                          from "polythene-css-menu";                             export { MenuCSS };
 import * as NotificationCSS                  from "polythene-css-notification";                     export { NotificationCSS };
 import * as RadioButtonCSS                   from "polythene-css-radio-button";                     export { RadioButtonCSS };
-import * as RaisedButtonCSS                  from "polythene-css-raised-button";                    export { RaisedButtonCSS };
 import * as RippleCSS                        from "polythene-css-ripple";                           export { RippleCSS };
 import * as SearchCSS                        from "polythene-css-search";                           export { SearchCSS };
 import * as SelectionControlCSS              from "polythene-css-selection-control";                export { SelectionControlCSS };
@@ -33,3 +32,7 @@ import * as TypographyCSS                    from "polythene-css-typography";   
 
 export { addTypography, addRoboto } from "polythene-css-typography";
 export { addLayoutStyles } from "polythene-core-css";
+
+// handle deprecation
+const RaisedButtonCSS = ButtonCSS;
+export { RaisedButtonCSS };

@@ -158,13 +158,6 @@
   background-color: #2196f3
 }
 
-.pe-tab.pe-text-button.pe-button .pe-button__content,.pe-tab.pe-text-button.pe-button .pe-button__wash {
-  transition-delay: 0ms;
-  transition-duration: .18s;
-  transition-timing-function: ease-out;
-  transition-property: all
-}
-
 .pe-tab.pe-text-button.pe-button {
   -ms-flex: 1;
   flex: 1;
@@ -323,22 +316,6 @@
 }
 
 .pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--selected) .pe-icon,.pe-tab.pe-text-button.pe-button:not(.pe-button--selected) .pe-icon {
-  color: rgba(0,0,0,.54)
-}
-
-.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-dark-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited {
-  color: hsla(0,0%,100%,.87)
-}
-
-.pe-dark-tone .pe-tab.pe-text-button.pe-button .pe-button__dropdown {
-  color: hsla(0,0%,100%,.7)
-}
-
-.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-light-tone .pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited,.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled),.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):link,.pe-tab.pe-text-button.pe-button:not(.pe-button--disabled):visited {
-  color: rgba(0,0,0,.73)
-}
-
-.pe-light-tone .pe-tab.pe-text-button.pe-button .pe-button__dropdown,.pe-tab.pe-text-button.pe-button .pe-button__dropdown {
   color: rgba(0,0,0,.54)
 }
 /*# sourceMappingURL=polythene-tabs.css.map */

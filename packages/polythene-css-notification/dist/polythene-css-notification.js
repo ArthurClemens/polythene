@@ -221,9 +221,7 @@
     }
   }, customLayoutFns);
 
-  var layout = polytheneCoreCss.createLayout({
-    varFns: varFns$1
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns$1 });
 
   var buttonPaddingH = 8; // padding, inner text space
 

@@ -1,6 +1,6 @@
 import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
-import { layout as superLayout } from "polythene-css-button";
+import { textButtonLayout } from "polythene-css-button";
 
 const tab_label_transition_property_animation_duration = (selector, vars) =>
   sel(selector, {
@@ -221,4 +221,4 @@ const varFns = {
   ],
 };
 
-export default createLayout({ varFns, superLayout });
+export default createLayout({ varFns, textButtonLayout });

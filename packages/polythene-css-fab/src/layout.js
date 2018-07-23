@@ -1,4 +1,4 @@
-import { layout as superLayout } from "polythene-css-raised-button";
+import { textButtonLayout } from "polythene-css-button";
 import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
@@ -67,4 +67,7 @@ const varFns = {
   ],
 };
 
-export default createLayout({ varFns, superLayout });
+export default createLayout({
+  varFns,
+  textButtonLayout
+});

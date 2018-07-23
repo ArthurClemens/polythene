@@ -635,9 +635,7 @@
     }
   };
 
-  var layout = polytheneCoreCss.createLayout({
-    varFns: varFns
-  });
+  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
 
   var lightForeground = polytheneTheme.vars.color_light_foreground;
   var darkForeground = polytheneTheme.vars.color_dark_foreground;

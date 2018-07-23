@@ -1,7 +1,7 @@
 import * as polytheneCssBaseSpinner from 'polythene-css-base-spinner';
 export { polytheneCssBaseSpinner as BaseSpinnerCSS };
-import * as polytheneCssButton from 'polythene-css-button';
-export { polytheneCssButton as ButtonCSS };
+import * as ButtonCSS from 'polythene-css-button';
+export { ButtonCSS };
 import * as polytheneCssButtonGroup from 'polythene-css-button-group';
 export { polytheneCssButtonGroup as ButtonGroupCSS };
 import * as polytheneCssCard from 'polythene-css-card';
@@ -36,8 +36,6 @@ import * as polytheneCssNotification from 'polythene-css-notification';
 export { polytheneCssNotification as NotificationCSS };
 import * as polytheneCssRadioButton from 'polythene-css-radio-button';
 export { polytheneCssRadioButton as RadioButtonCSS };
-import * as polytheneCssRaisedButton from 'polythene-css-raised-button';
-export { polytheneCssRaisedButton as RaisedButtonCSS };
 import * as polytheneCssRipple from 'polythene-css-ripple';
 export { polytheneCssRipple as RippleCSS };
 import * as polytheneCssSearch from 'polythene-css-search';
@@ -64,3 +62,8 @@ import * as polytheneCssTypography from 'polythene-css-typography';
 export { polytheneCssTypography as TypographyCSS };
 export { addTypography, addRoboto } from 'polythene-css-typography';
 export { addLayoutStyles } from 'polythene-core-css';
+
+// handle deprecation
+var RaisedButtonCSS = ButtonCSS;
+
+export { RaisedButtonCSS };

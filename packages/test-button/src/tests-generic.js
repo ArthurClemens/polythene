@@ -24,6 +24,11 @@ export default ({ renderer: h, Button }) => {
     color_dark_border:  "#2196F3",
   });
 
+  ButtonCSS.addStyle(".tests-button-contained-button", {
+    contained:              true,
+    color_light_background: "#fff",
+  });
+
   ButtonCSS.addStyle(".tests-button-hover-button", {
     contained:                    true,
     color_light_hover:            "#fff",
@@ -244,6 +249,14 @@ export default ({ renderer: h, Button }) => {
       attrs: {
         label: "Border",
         className: "tests-button-bordered-button",
+      }
+    },
+    {
+      name: "Themed Button (contained)",
+      component: Button,
+      attrs: {
+        label: "Contained",
+        className: "tests-button-contained-button",
       }
     },
     {

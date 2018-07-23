@@ -68,9 +68,7 @@ var varFns = _extends({}, {
   return acc["shadow_top_depth_" + depth] = _createShadowForSelector("top", depth), acc["shadow_bottom_depth_" + depth] = _createShadowForSelector("bottom", depth), acc;
 }, {}));
 
-var layout = createLayout({
-  varFns: varFns
-});
+var layout = createLayout({ varFns: varFns });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 

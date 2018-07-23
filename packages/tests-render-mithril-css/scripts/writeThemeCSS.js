@@ -28,7 +28,7 @@ const styles = [
     {
       color_light_background: "#2196F3",
       color_light_text:       "#fff",
-      padding_h:              16
+      contained:              true,
     },
     {
       mediaQuery: `@media all and (max-width: ${breakPointSmall}px)`

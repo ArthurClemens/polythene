@@ -1,7 +1,7 @@
 import { sel, createColor, mixin, flex, createLayout, selectorRTL, rgba, styler } from 'polythene-core-css';
-import { color, layout, vars } from 'polythene-css-button';
-import { vars as vars$1 } from 'polythene-theme';
-import { vars as vars$2 } from 'polythene-css-icon-button';
+import { textButtonColor, textButtonLayout, textButtonVars } from 'polythene-css-button';
+import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-css-icon-button';
 
 var buttonClasses = {
     component: "pe-text-button",
@@ -17,15 +17,16 @@ var buttonClasses = {
 
     // states      
     border: "pe-button--border",
+    contained: "pe-button--contained",
     disabled: "pe-button--disabled",
-    inactive: "pe-button--inactive",
-    selected: "pe-button--selected",
+    dropdownClosed: "pe-button--dropdown-closed",
+    dropdownOpen: "pe-button--dropdown-open",
+    extraWide: "pe-button--extra-wide",
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
-    extraWide: "pe-button--extra-wide",
-    separatorAtStart: "pe-button--separator-start",
-    dropdownOpen: "pe-button--dropdown-open",
-    dropdownClosed: "pe-button--dropdown-closed"
+    inactive: "pe-button--inactive",
+    selected: "pe-button--selected",
+    separatorAtStart: "pe-button--separator-start"
 };
 
 var classes = {
@@ -105,7 +106,7 @@ var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
 var tabColor = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-  superColor: color
+  textButtonColor: textButtonColor
 });
 
 function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -126,7 +127,7 @@ var varFns = {
       padding: 0,
 
       " .pe-button__content": {
-        lineHeight: vars$1.line_height + "em",
+        lineHeight: vars.line_height + "em",
         borderRadius: 0,
         position: "relative",
 
@@ -213,7 +214,7 @@ var varFns = {
     })];
   },
   tab_min_width_tablet: function tab_min_width_tablet(selector, vars$$1) {
-    return _defineProperty$1({}, "@media (min-width: " + vars$1.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) " + selector, {
+    return _defineProperty$1({}, "@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty$1({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) " + selector, {
       minWidth: vars$$1.tab_min_width_tablet + "px"
     }));
   },
@@ -314,7 +315,7 @@ var varFns = {
   }
 };
 
-var tabLayout = createLayout({ varFns: varFns, superLayout: layout });
+var tabLayout = createLayout({ varFns: varFns, textButtonLayout: textButtonLayout });
 
 var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -542,15 +543,15 @@ var varFns$1 = {
 
 var tabsLayout = createLayout({ varFns: varFns$1 });
 
-var fontSize = vars.font_size;
+var fontSize = textButtonVars.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 var tab_height = 48;
 var scroll_button_size = tab_height;
 
-var vars$3 = {
+var vars$2 = {
   general_styles: true,
 
-  animation_duration: vars.animation_duration,
+  animation_duration: textButtonVars.animation_duration,
   indicator_slide_speed: 600, // px per second
   label_max_width: 264,
   menu_tab_height: 44,
@@ -574,17 +575,17 @@ var vars$3 = {
   tab_min_width_tablet: 160,
   tabs_indent: 0,
 
-  color_light_text: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_regular),
-  color_light_selected: rgba(vars$1.color_primary),
+  color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
+  color_light_selected: rgba(vars.color_primary),
   color_light_selected_background: "transparent",
-  color_light_tab_indicator: rgba(vars$1.color_primary),
-  color_light_icon: vars$2.color_light,
+  color_light_tab_indicator: rgba(vars.color_primary),
+  color_light_icon: vars$1.color_light,
 
-  color_dark_text: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_regular),
-  color_dark_selected: rgba(vars$1.color_primary),
+  color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular),
+  color_dark_selected: rgba(vars.color_primary),
   color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: rgba(vars$1.color_primary),
-  color_dark_icon: vars$2.color_dark
+  color_dark_tab_indicator: rgba(vars.color_primary),
+  color_dark_icon: vars$1.color_dark
 
   // hover colors may be set in theme; disabled by default
 
@@ -608,14 +609,14 @@ var addStyle = function addStyle(customSelector, customVars) {
   customSelector && styler.addStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$3,
+    vars: vars$2,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$3,
+    vars: vars$2,
     customVars: customVars,
     mediaQuery: mediaQuery
   });
@@ -631,13 +632,13 @@ var getStyle = function getStyle() {
   return styler.getStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$3,
+    vars: vars$2,
     customVars: customVars,
     mediaQuery: mediaQuery
   }).concat(styler.getStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$3,
+    vars: vars$2,
     customVars: customVars,
     mediaQuery: mediaQuery
   }));
@@ -646,12 +647,12 @@ var getStyle = function getStyle() {
 styler.addStyle({
   selectors: [tabsSelector],
   fns: tabsFns,
-  vars: vars$3
+  vars: vars$2
 });
 styler.addStyle({
   selectors: [tabSelector],
   fns: tabFns,
-  vars: vars$3
+  vars: vars$2
 });
 
-export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, vars$3 as vars };
+export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, vars$2 as vars };

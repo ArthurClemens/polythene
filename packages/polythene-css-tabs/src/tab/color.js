@@ -1,5 +1,5 @@
 import { sel, createColor } from "polythene-core-css";
-import { color as superColor } from "polythene-css-button";
+import { textButtonColor } from "polythene-css-button";
 
 const generalFns = ({
   general_styles: selector => [
@@ -46,5 +46,5 @@ const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
 
 export default createColor({
   varFns: { lightTintFns, darkTintFns },
-  superColor
+  textButtonColor
 });

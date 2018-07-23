@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-raised-button'), require('polythene-core-css'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-raised-button', 'polythene-core-css', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-css-raised-button'],global['polythene-core-css'],global['polythene-theme']));
-}(this, (function (exports,polytheneCssRaisedButton,polytheneCoreCss,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-css-button'), require('polythene-core-css'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-css-button', 'polythene-core-css', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-css-button'],global['polythene-core-css'],global['polythene-theme']));
+}(this, (function (exports,polytheneCssButton,polytheneCoreCss,polytheneTheme) { 'use strict';
 
   var classes = {
     component: "pe-fab",
@@ -61,7 +61,7 @@
 
   var color = polytheneCoreCss.createColor({
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-    superColor: polytheneCssRaisedButton.color
+    textButtonColor: polytheneCssButton.textButtonColor
   });
 
   var varFns = {
@@ -126,7 +126,10 @@
     }
   };
 
-  var layout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssRaisedButton.layout });
+  var layout = polytheneCoreCss.createLayout({
+    varFns: varFns,
+    textButtonLayout: polytheneCssButton.textButtonLayout
+  });
 
   var vars = {
     general_styles: true,

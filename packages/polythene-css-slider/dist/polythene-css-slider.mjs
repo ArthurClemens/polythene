@@ -632,9 +632,7 @@ var varFns = {
   }
 };
 
-var layout = createLayout({
-  varFns: varFns
-});
+var layout = createLayout({ varFns: varFns });
 
 var lightForeground = vars.color_light_foreground;
 var darkForeground = vars.color_dark_foreground;

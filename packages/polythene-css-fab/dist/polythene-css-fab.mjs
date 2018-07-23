@@ -1,4 +1,4 @@
-import { color, layout } from 'polythene-css-raised-button';
+import { textButtonColor, textButtonLayout } from 'polythene-css-button';
 import { sel, createColor, mixin, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -57,9 +57,9 @@ var tintFns = function tintFns(tint) {
 var lightTintFns = _extends({}, generalFns, tintFns("light"));
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var color$1 = createColor({
+var color = createColor({
   varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-  superColor: color
+  textButtonColor: textButtonColor
 });
 
 var varFns = {
@@ -124,7 +124,10 @@ var varFns = {
   }
 };
 
-var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
+var layout = createLayout({
+  varFns: varFns,
+  textButtonLayout: textButtonLayout
+});
 
 var vars$1 = {
   general_styles: true,
@@ -143,7 +146,7 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_primary)
 };
 
-var fns = [layout$1, color$1];
+var fns = [layout, color];
 var selector = "." + classes.component;
 
 var addStyle = styler.createAddStyle(selector, fns, vars$1);
@@ -156,4 +159,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };
+export { addStyle, color, getStyle, layout, vars$1 as vars };

@@ -218,9 +218,7 @@ var varFns$1 = _extends$1({}, {
   }
 }, customLayoutFns);
 
-var layout = createLayout({
-  varFns: varFns$1
-});
+var layout = createLayout({ varFns: varFns$1 });
 
 var buttonPaddingH = 8; // padding, inner text space
 

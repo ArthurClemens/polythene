@@ -17,7 +17,7 @@
   "dependencies": {
     "polythene-core-css": "^1.2.0",
     "polythene-css-classes": "^1.2.0",
-    "polythene-css-raised-button": "^1.2.0",
+    "polythene-css-button": "^1.2.0",
     "polythene-theme": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

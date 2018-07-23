@@ -18,15 +18,16 @@
 
       // states      
       border: "pe-button--border",
+      contained: "pe-button--contained",
       disabled: "pe-button--disabled",
-      inactive: "pe-button--inactive",
-      selected: "pe-button--selected",
+      dropdownClosed: "pe-button--dropdown-closed",
+      dropdownOpen: "pe-button--dropdown-open",
+      extraWide: "pe-button--extra-wide",
       hasDropdown: "pe-button--dropdown",
       highLabel: "pe-button--high-label",
-      extraWide: "pe-button--extra-wide",
-      separatorAtStart: "pe-button--separator-start",
-      dropdownOpen: "pe-button--dropdown-open",
-      dropdownClosed: "pe-button--dropdown-closed"
+      inactive: "pe-button--inactive",
+      selected: "pe-button--selected",
+      separatorAtStart: "pe-button--separator-start"
   };
 
   var classes = {
@@ -106,7 +107,7 @@
 
   var tabColor = polytheneCoreCss.createColor({
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
-    superColor: polytheneCssButton.color
+    textButtonColor: polytheneCssButton.textButtonColor
   });
 
   function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -315,7 +316,7 @@
     }
   };
 
-  var tabLayout = polytheneCoreCss.createLayout({ varFns: varFns, superLayout: polytheneCssButton.layout });
+  var tabLayout = polytheneCoreCss.createLayout({ varFns: varFns, textButtonLayout: polytheneCssButton.textButtonLayout });
 
   var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -543,7 +544,7 @@
 
   var tabsLayout = polytheneCoreCss.createLayout({ varFns: varFns$1 });
 
-  var fontSize = polytheneCssButton.vars.font_size;
+  var fontSize = polytheneCssButton.textButtonVars.font_size;
   var tab_label_line_height = 1.1 * fontSize;
   var tab_height = 48;
   var scroll_button_size = tab_height;
@@ -551,7 +552,7 @@
   var vars = {
     general_styles: true,
 
-    animation_duration: polytheneCssButton.vars.animation_duration,
+    animation_duration: polytheneCssButton.textButtonVars.animation_duration,
     indicator_slide_speed: 600, // px per second
     label_max_width: 264,
     menu_tab_height: 44,
