@@ -44,10 +44,10 @@
     var attrs = _ref.attrs;
 
     if (attrs.zOn !== undefined) {
-      polytheneCore.deprecation("Switch", "zOn", "shadowDepthOn");
+      polytheneCore.deprecation("Switch", { option: "zOn", newOption: "shadowDepthOn" });
     }
     if (attrs.zOff !== undefined) {
-      polytheneCore.deprecation("Switch", "zOff", "shadowDepthOff");
+      polytheneCore.deprecation("Switch", { option: "zOff", newOption: "shadowDepthOff" });
     }
   };
 

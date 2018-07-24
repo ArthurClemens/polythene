@@ -138,7 +138,7 @@ export const getInitialState = (vnode, createStream) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (attrs.selectedTab !== undefined) {
-    deprecation("Tabs", "selectedTab", "selectedTabIndex");
+    deprecation("Tabs", { option: "selectedTab", newOption: "selectedTabIndex" });
   }
   const tabIndex = getIndex(state, attrs) || 0;
   const selectedTabIndex = createStream(tabIndex);

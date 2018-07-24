@@ -2,7 +2,7 @@ import classes from "polythene-css-classes/fab";
 
 // Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 
-// Props to be passed to a raised button, including 'content'
+// Props to be passed to a Button, including 'content'
 export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
   const attrs = vnode.attrs;
   const content = attrs.content
@@ -31,6 +31,7 @@ export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
       shadow: { increase: 5 },
       ink: true,
       wash: true,
+      raised: true,
       animateOnTap: attrs.animateOnTap !== undefined
         ? attrs.animateOnTap
         : true

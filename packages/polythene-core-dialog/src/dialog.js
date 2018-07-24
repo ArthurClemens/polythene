@@ -64,7 +64,7 @@ export const onMount = vnode => {
   const attrs = vnode.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Dialog", "z", "shadowDepth");
+    deprecation("Dialog", { option: "z", newOption: "shadowDepth" });
   }
 
   const dom = vnode.dom;

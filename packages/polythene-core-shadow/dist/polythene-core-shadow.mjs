@@ -22,7 +22,7 @@ var onMount = function onMount(_ref) {
   var attrs = _ref.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Shadow", "z", "shadowDepth");
+    deprecation("Shadow", { option: "z", newOption: "shadowDepth" });
   }
 };
 

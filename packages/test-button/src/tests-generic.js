@@ -152,23 +152,23 @@ export default ({ renderer: h, Button }) => {
           )
       }
     },
-    {
-      name: "Option: formaction",
-      component: Button,
-      attrs: {
-        label: "Form action",
-        formaction: "http://polythene.js.org"
-      }
-    },
-    {
-      name: "Option: inactive (false)",
-      interactive: true,
-      component: Button,
-      attrs: {
-        label: "Not inactive",
-        inactive: false
-      }
-    },
+    // {
+    //   name: "Option: formaction",
+    //   component: Button,
+    //   attrs: {
+    //     label: "Form action",
+    //     formaction: "http://polythene.js.org"
+    //   }
+    // },
+    // {
+    //   name: "Option: inactive (false)",
+    //   interactive: true,
+    //   component: Button,
+    //   attrs: {
+    //     label: "Not inactive",
+    //     inactive: false
+    //   }
+    // },
     {
       name: "Option: inactive (true)",
       interactive: true,
@@ -193,6 +193,14 @@ export default ({ renderer: h, Button }) => {
       attrs: {
         label: "Contained",
         contained: true
+      }
+    },
+    {
+      name: "Option: raised",
+      component: Button,
+      attrs: {
+        label: "Raised",
+        raised: true
       }
     },
     {

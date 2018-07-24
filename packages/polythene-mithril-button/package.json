@@ -17,7 +17,8 @@
     "polythene-core-button": "^1.2.0",
     "polythene-mithril-base": "^1.2.0",
     "polythene-mithril-icon": "^1.2.0",
-    "polythene-mithril-ripple": "^1.2.0"
+    "polythene-mithril-ripple": "^1.2.0",
+    "polythene-mithril-shadow": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

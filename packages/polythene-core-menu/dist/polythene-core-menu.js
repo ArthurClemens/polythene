@@ -250,10 +250,10 @@
     var dom = createStream(null);
     var attrs = vnode.attrs;
     if (attrs.offset !== undefined) {
-      polytheneCore.deprecation("Menu", "offset", "offsetH");
+      polytheneCore.deprecation("Menu", { option: "offset", newOption: "offsetH" });
     }
     if (attrs.size !== undefined) {
-      polytheneCore.deprecation("Menu", "size", "width");
+      polytheneCore.deprecation("Menu", { option: "size", newOption: "width" });
     }
     var visible = createStream(false);
     var transitioning = createStream(false);

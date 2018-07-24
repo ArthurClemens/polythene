@@ -156,7 +156,7 @@
     var attrs = vnode.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Dialog", "z", "shadowDepth");
+      polytheneCore.deprecation("Dialog", { option: "z", newOption: "shadowDepth" });
     }
 
     var dom = vnode.dom;

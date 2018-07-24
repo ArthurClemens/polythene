@@ -115,7 +115,7 @@
     var attrs = _ref5.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Card", "z", "shadowDepth");
+      polytheneCore.deprecation("Card", { option: "z", newOption: "shadowDepth" });
     }
   };
 
@@ -208,6 +208,7 @@
       hasDropdown: "pe-button--dropdown",
       highLabel: "pe-button--high-label",
       inactive: "pe-button--inactive",
+      raised: "pe-button--raised",
       selected: "pe-button--selected",
       separatorAtStart: "pe-button--separator-start"
   };
@@ -224,7 +225,7 @@
     var attrs = _ref.attrs;
 
     if (attrs.bordered !== undefined) {
-      polytheneCore.deprecation("Card", "bordered", "border");
+      polytheneCore.deprecation("Card", { option: "bordered", newOption: "border" });
     }
   };
 

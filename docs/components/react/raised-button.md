@@ -31,9 +31,9 @@
 
 ~~~jsx
 import React from "react"
-import { RaisedButton } from "polythene-react"
+import { Button } from "polythene-react"
 
-<RaisedButton label="Button" />
+<RaisedButton raised label="Button" />
 ~~~
 
 <a id="with-hyperscript"></a>
@@ -42,9 +42,10 @@ import { RaisedButton } from "polythene-react"
 <a href="https://jsfiddle.net/ArthurClemens/hL8wmrpL/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
-import { RaisedButton } from "polythene-react"
+import { Button } from "polythene-react"
 
-h(RaisedButton, {
+h(Button, {
+  raised: true,
   label: "Button"
 })
 ~~~
@@ -72,14 +73,15 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~jsx
-import { RaisedButtonCSS } from "polythene-css"
+import { ButtonCSS } from "polythene-css"
 
-RaisedButtonCSS.addStyle(".themed-raised-button", {
+ButtonCSS.addStyle(".themed-raised-button", {
   color_light_background: "#ff1744",
   color_light_text:       "#fff"
 })
 
-<RaisedButton
+<Button
+  raised
   label="Button"
   className="themed-raised-button"
 />
@@ -88,13 +90,14 @@ RaisedButtonCSS.addStyle(".themed-raised-button", {
 To create a hover effect:
 
 ~~~javascript
-RaisedButtonCSS.addStyle(".hover-button", {
+ButtonCSS.addStyle(".hover-button", {
   color_light_hover:            "#fff",
   color_light_hover_background: "#673ab7",
   animation_duration:           "100ms",
 })
 
 <Button
+  raised
   label="Hover"
   className="hover-button"
 />
@@ -103,12 +106,12 @@ RaisedButtonCSS.addStyle(".hover-button", {
 <a id="css"></a>
 #### CSS
 
-Change CSS using the [Raised Button CSS classes](../../../packages/polythene-css-classes/raised-button.js).
+Change CSS using the [Raised Button CSS classes](../../../packages/polythene-css-classes/button.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import classes from "polythene-css-classes/raised-button"
+import classes from "polythene-css-classes/button"
 ~~~
 
 <a id="style"></a>
@@ -117,7 +120,8 @@ import classes from "polythene-css-classes/raised-button"
 Some style attributes can be set using option `style`. For example:
 
 ~~~jsx
-<RaisedButton
+<Button
+  raised
   style={{
     color: "#fff",
     backgroundColor: "#ef6c00"

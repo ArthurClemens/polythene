@@ -51,6 +51,7 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 * [Button](components/button.md)
   * New options for varying the width and height: `extraWide` and `highLabel`
   * New option `dropdown` to add a dropdown triangle
+  * New option `raised` to create a Raised Button
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
   * MD2: the border radius is now set to `4`
   * Bordered button has a default medium gray border color
@@ -75,18 +76,19 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 
 #### Deprecations
 
-* Card, Dialog, Drawer, Menu, Raised Button, Shadow, Spinner, Toolbar:
+* Card, Dialog, Drawer, Menu, Shadow, Spinner, Toolbar:
   * `z` is deprecated; use `shadowDepth`
 * [Menu](components/menu.md)
   * `offset` is deprecated; use `offsetH`
   * `size` is deprecated; use `width`
+* Raised Button has been deprecated; use [Button](components/button.md) with option `raised: true`
 * [Switch](components/switch.md)
   * `zOff` is deprecated; use `shadowDepthOff`
   * `zOn` is deprecated; use `shadowDepthOn`
 
 #### Other
 
-* [webfontloader](packages/polythene-utilities.md#web-font-loader)
+* [webfontloader](packages/polythene-utilities.md#addwebfont-web-font-loader)
   * Aligned configuration to upstream library
   * Now emits loading status callbacks
 * Various bug fixes

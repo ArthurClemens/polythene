@@ -26,7 +26,7 @@
     var attrs = _ref.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Shadow", "z", "shadowDepth");
+      polytheneCore.deprecation("Shadow", { option: "z", newOption: "shadowDepth" });
     }
   };
 

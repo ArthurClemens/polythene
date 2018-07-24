@@ -197,10 +197,10 @@ export const getInitialState = (vnode, createStream) => {
   const dom = createStream(null);
   const attrs = vnode.attrs;
   if (attrs.offset !== undefined) {
-    deprecation("Menu", "offset", "offsetH");
+    deprecation("Menu", { option: "offset", newOption: "offsetH" });
   }
   if (attrs.size !== undefined) {
-    deprecation("Menu", "size", "width");
+    deprecation("Menu", { option: "size", newOption: "width" });
   }
   const visible = createStream(false);
   const transitioning = createStream(false);

@@ -23,6 +23,7 @@ var classes = {
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
     inactive: "pe-button--inactive",
+    raised: "pe-button--raised",
     selected: "pe-button--selected",
     separatorAtStart: "pe-button--separator-start"
 };

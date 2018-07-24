@@ -246,10 +246,10 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var dom = createStream(null);
   var attrs = vnode.attrs;
   if (attrs.offset !== undefined) {
-    deprecation("Menu", "offset", "offsetH");
+    deprecation("Menu", { option: "offset", newOption: "offsetH" });
   }
   if (attrs.size !== undefined) {
-    deprecation("Menu", "size", "width");
+    deprecation("Menu", { option: "size", newOption: "width" });
   }
   var visible = createStream(false);
   var transitioning = createStream(false);

@@ -70,10 +70,10 @@
     var attrs = _ref.attrs;
 
     if (attrs.borders !== undefined) {
-      polytheneCore.deprecation("List", "borders", "border");
+      polytheneCore.deprecation("List", { option: "borders", newOption: "border" });
     }
     if (attrs.indentedBorders !== undefined) {
-      polytheneCore.deprecation("List", "indentedBorders", "indentedBorder");
+      polytheneCore.deprecation("List", { option: "indentedBorders", newOption: "indentedBorder" });
     }
   };
 

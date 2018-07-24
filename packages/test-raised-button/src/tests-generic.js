@@ -1,8 +1,8 @@
-import { RaisedButtonCSS } from "polythene-css";
+import { ButtonCSS } from "polythene-css";
 
-export default ({ renderer: h, RaisedButton }) => {
+export default ({ renderer: h, Button }) => {
 
-  RaisedButtonCSS.addStyle(".tests-raised-button-themed-button", {
+  ButtonCSS.addStyle(".tests-raised-button-themed-button", {
     color_light_background: "#FF1744",
     color_light_text:       "#fff",
     letter_spacing:         0,
@@ -10,13 +10,13 @@ export default ({ renderer: h, RaisedButton }) => {
     font_size:              16
   });
 
-  RaisedButtonCSS.addStyle(".tests-raised-button-bordered-button", {
+  ButtonCSS.addStyle(".tests-raised-button-bordered-button", {
     color_light_background: "#fff",
     color_light_text:       "#673ab7",
     color_light_border:     "#673ab7",
   });
 
-  RaisedButtonCSS.addStyle(".tests-raised-button-hover-button", {
+  ButtonCSS.addStyle(".tests-raised-button-hover-button", {
     color_light_hover:            "#fff",
     color_light_hover_background: "#673ab7",
     animation_duration:           "100ms",
@@ -25,23 +25,26 @@ export default ({ renderer: h, RaisedButton }) => {
   return [
     {
       name: "Option: label",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Label"
       }
     },
     {
       name: "Option: raised (with option shadowDepth: 2)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Raised to 2",
         shadowDepth: 2
       }
     },
     {
       name: "Option: raised (with option shadowDepth: 5)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Raised to 5",
         shadowDepth: 5
       }
@@ -49,8 +52,9 @@ export default ({ renderer: h, RaisedButton }) => {
     {
       name: "Option: wash (true)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Wash",
         wash: true
       }
@@ -58,8 +62,9 @@ export default ({ renderer: h, RaisedButton }) => {
     {
       name: "Option: ink (false)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "No ink",
         ink: false
       }
@@ -67,8 +72,9 @@ export default ({ renderer: h, RaisedButton }) => {
     {
       name: "Option: disabled (true)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Disabled",
         disabled: true
       }
@@ -76,8 +82,9 @@ export default ({ renderer: h, RaisedButton }) => {
     {
       name: "Option: animateOnTap (false)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Don't animate shadow",
         animateOnTap: false
       }
@@ -85,35 +92,37 @@ export default ({ renderer: h, RaisedButton }) => {
     {
       name: "Option: inactivate (2s)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Inactivated for 2s",
         inactivate: 2
       }
     },
     {
       name: "Option: selected",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Selected",
         selected: true
       }
     },
-
-    {
-      name: "Option: inactive (false)",
-      interactive: true,
-      component: RaisedButton,
-      attrs: {
-        label: "Not inactive",
-        inactive: false
-      }
-    },
+    // {
+    //   name: "Option: inactive (false)",
+    //   interactive: true,
+    //   component: Button,
+    //   attrs: {
+    //     label: "Not inactive",
+    //     inactive: false
+    //   }
+    // },
     {
       name: "Option: inactive (true)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Inactive",
         inactive: true
       }
@@ -124,15 +133,18 @@ export default ({ renderer: h, RaisedButton }) => {
         view: () => 
           h(".pe-button-row",
             [
-              h(RaisedButton, {
+              h(Button, {
+                raised: true,
                 key: "one", // for React
                 label: "One"
               }),
-              h(RaisedButton, {
+              h(Button, {
+                raised: true,
                 key: "two", // for React
                 label: "Two"
               }),
-              h(RaisedButton, {
+              h(Button, {
+                raised: true,
                 key: "three", // for React
                 label: "Three"
               })
@@ -142,8 +154,9 @@ export default ({ renderer: h, RaisedButton }) => {
     },
     {
       name: "Option: style (colors)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Styled",
         style: {
           backgroundColor: "#EF6C00",
@@ -157,16 +170,18 @@ export default ({ renderer: h, RaisedButton }) => {
     },
     {
       name: "Themed button (color, font size, letter spacing, text transform)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Colored button",
         className: "tests-raised-button-themed-button"
       }
     },
     {
       name: "Themed button (border)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Bordered button",
         border: true,
         className: "tests-raised-button-bordered-button"
@@ -174,8 +189,9 @@ export default ({ renderer: h, RaisedButton }) => {
     },
     {
       name: "Themed button (with option disabled)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Disabled themed button",
         className: "tests-raised-button-themed-button",
         disabled: true
@@ -183,8 +199,9 @@ export default ({ renderer: h, RaisedButton }) => {
     },
     {
       name: "Themed button (hover color)",
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Hover button",
         className: "tests-raised-button-hover-button",
       }
@@ -195,18 +212,20 @@ export default ({ renderer: h, RaisedButton }) => {
     },
     {
       name: "Option: label -- dark tone class (should be app's primary color)",
-      component: RaisedButton,
+      component: Button,
       className: "pe-dark-tone",
       attrs: {
+        raised: true,
         label: "Label"
       }
     },
 
     {
       name: "Option: disabled -- dark tone class",
-      component: RaisedButton,
+      component: Button,
       className: "pe-dark-tone",
       attrs: {
+        raised: true,
         label: "Label",
         disabled: true
       }

@@ -62,7 +62,7 @@ var onMount = function onMount(vnode) {
   var attrs = vnode.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Spinner", "z", "shadowDepth");
+    deprecation("Spinner", { option: "z", newOption: "shadowDepth" });
   }
 
   state.dom(vnode.dom);

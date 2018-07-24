@@ -1,10 +1,10 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { withRouter } from "react-router-dom";
-import { renderer, RaisedButton } from "polythene-react";
+import { renderer, Button } from "polythene-react";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
 
-const reactTests = ({ RaisedButton, renderer: h }) => {
+const reactTests = ({ Button, renderer: h }) => {
 
   const withCounter = compose(
     withState("counter", "setCounter", 0),
@@ -21,7 +21,8 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
       name: "With router",
       interactive: true,
       component: withRouter(({ history }) => 
-        h(RaisedButton, {
+        h(Button, {
+          raised: true,
           label: "Go to /shadow",
           url: {
             href: "/shadow",
@@ -37,7 +38,8 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
       component: withCounter(({ counter, increment }) =>
         h("div", [
           h("div", `onclick called: ${counter}`),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Button",
             events: {
               onClick: increment
@@ -55,14 +57,17 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
             style: { background: "#fff" }
           },
           [
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Normal"
             }),
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Disabled",
               disabled: true
             }),
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Theme",
               className: "tests-raised-button-themed-button"
             })
@@ -78,16 +83,19 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
             style: { background: "#fff" }
           },
           [
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Normal",
               tone: "light"
             }),
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Disabled",
               disabled: true,
               tone: "light"
             }),
-            h(RaisedButton, {
+            h(Button, {
+              raised: true,
               label: "Theme",
               className: "tests-raised-button-themed-button",
               tone: "light"
@@ -100,16 +108,16 @@ const reactTests = ({ RaisedButton, renderer: h }) => {
     },
     {
       name: "Option: raised (with option shadowDepth: 2) (JSX)",
-      component: () => <RaisedButton label="Button" shadowDepth={2} />
+      component: () => <Button raised label="Button" shadowDepth={2} />
     },
     {
       name: "Option: inactivate (2s) (JSX)",
-      component: () => <RaisedButton label="Inactivated for 2s" inactivate={2} />
+      component: () => <Button raised label="Inactivated for 2s" inactivate={2} />
     },
 
   ];
 };
 
 export default []
-  .concat(genericTests({ RaisedButton, renderer }))
-  .concat(reactTests({ RaisedButton, renderer }));
+  .concat(genericTests({ Button, renderer }))
+  .concat(reactTests({ Button, renderer }));

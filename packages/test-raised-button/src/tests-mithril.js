@@ -1,7 +1,7 @@
-import { renderer, RaisedButton } from "polythene-mithril";
+import { renderer, Button } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
-const mithrilTests = ({ RaisedButton, renderer: h }) => {
+const mithrilTests = ({ Button, renderer: h }) => {
 
   return [
     {
@@ -10,8 +10,9 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
     {
       name: "Option: url (with oncreate)",
       interactive: true,
-      component: RaisedButton,
+      component: Button,
       attrs: {
+        raised: true,
         label: "Go to /#/shadow",
         url: {
           href: "/shadow",
@@ -28,7 +29,8 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
           vnode.state.clicked = 0,
         view: vnode => [
           h("div", `onclick called: ${vnode.state.clicked}`),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Button",
             events: {
               onclick: () => vnode.state.clicked++
@@ -44,14 +46,17 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
         view: () => h(".pe-button-row.pe-light-tone", {
           style: { background: "#fff" }
         }, [
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Normal"
           }),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Disabled",
             disabled: true
           }),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Theme",
             className: "tests-raised-button-themed-button"
           })
@@ -65,16 +70,19 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
         view: () => h(".pe-button-row", {
           style: { background: "#fff" }
         }, [
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Normal",
             tone: "light"
           }),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Disabled",
             disabled: true,
             tone: "light"
           }),
-          h(RaisedButton, {
+          h(Button, {
+            raised: true,
             label: "Theme",
             className: "tests-raised-button-themed-button",
             tone: "light"
@@ -86,5 +94,5 @@ const mithrilTests = ({ RaisedButton, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ RaisedButton, renderer }))
-  .concat(mithrilTests({ RaisedButton, renderer }));
+  .concat(genericTests({ Button, renderer }))
+  .concat(mithrilTests({ Button, renderer }));

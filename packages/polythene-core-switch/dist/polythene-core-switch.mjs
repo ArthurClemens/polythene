@@ -40,10 +40,10 @@ var onMount = function onMount(_ref) {
   var attrs = _ref.attrs;
 
   if (attrs.zOn !== undefined) {
-    deprecation("Switch", "zOn", "shadowDepthOn");
+    deprecation("Switch", { option: "zOn", newOption: "shadowDepthOn" });
   }
   if (attrs.zOff !== undefined) {
-    deprecation("Switch", "zOff", "shadowDepthOff");
+    deprecation("Switch", { option: "zOff", newOption: "shadowDepthOff" });
   }
 };
 

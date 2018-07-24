@@ -1,19 +1,17 @@
-import { StateComponent } from 'polythene-mithril-base';
-import { coreRaisedButton } from 'polythene-core-raised-button';
 import { Button } from 'polythene-mithril-button';
-import { Shadow } from 'polythene-mithril-shadow';
+import { deprecation } from 'polythene-core';
+import { ViewComponent, renderer } from 'polythene-mithril-base';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var RaisedButton = StateComponent(_extends({}, coreRaisedButton, {
-  createProps: function createProps(vnode, args) {
-    return coreRaisedButton.createProps(vnode, _extends(args, { Shadow: Shadow }));
+var RaisedButton = ViewComponent({
+  onMount: function onMount() {
+    deprecation("RaisedButton", { newComponent: "Button", newOption: "raised: true" });
   },
-  createContent: function createContent(vnode, args) {
-    return coreRaisedButton.createContent(vnode, _extends(args, { Shadow: Shadow }));
-  },
-  component: Button
-}));
+  view: function view(vnode) {
+    return renderer(Button, _extends({}, { raised: true }, vnode.attrs), vnode.children);
+  }
+});
 
 RaisedButton.displayName = "RaisedButton";
 

@@ -1,3 +1,6 @@
 
-export const deprecation = (component, deprecatedOption, newOption) =>
-  console.warn(`${component}: option '${deprecatedOption}' is deprecated and will be removed in later versions. Use '${newOption}' instead.`); // eslint-disable-line no-console
+export const deprecation = (component, { option, newOption, newComponent }) => (
+  option && console.warn(`${component}: option '${option}' is deprecated and will be removed in later versions. Use '${newOption}' instead.`), // eslint-disable-line no-console
+  newComponent && !newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' instead.`), // eslint-disable-line no-console
+  newComponent && newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' with option '${newOption}' instead.`) // eslint-disable-line no-console
+);

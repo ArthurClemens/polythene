@@ -111,7 +111,7 @@ var onMount = function onMount(_ref5) {
   var attrs = _ref5.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Card", "z", "shadowDepth");
+    deprecation("Card", { option: "z", newOption: "shadowDepth" });
   }
 };
 
@@ -204,6 +204,7 @@ var buttonClasses = {
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
     inactive: "pe-button--inactive",
+    raised: "pe-button--raised",
     selected: "pe-button--selected",
     separatorAtStart: "pe-button--separator-start"
 };
@@ -220,7 +221,7 @@ var onMount$1 = function onMount(_ref) {
   var attrs = _ref.attrs;
 
   if (attrs.bordered !== undefined) {
-    deprecation("Card", "bordered", "border");
+    deprecation("Card", { option: "bordered", newOption: "border" });
   }
 };
 

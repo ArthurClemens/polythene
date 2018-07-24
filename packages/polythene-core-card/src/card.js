@@ -90,7 +90,7 @@ export const getElement = vnode =>
 
 export const onMount = ({ attrs }) => {
   if (attrs.z !== undefined) {
-    deprecation("Card", "z", "shadowDepth");
+    deprecation("Card", { option: "z", newOption: "shadowDepth" });
   }
 };
 

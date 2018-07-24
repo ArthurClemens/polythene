@@ -26,6 +26,7 @@
       hasDropdown: "pe-button--dropdown",
       highLabel: "pe-button--high-label",
       inactive: "pe-button--inactive",
+      raised: "pe-button--raised",
       selected: "pe-button--selected",
       separatorAtStart: "pe-button--separator-start"
   };
@@ -185,7 +186,7 @@
     var state = vnode.state;
     var attrs = vnode.attrs;
     if (attrs.selectedTab !== undefined) {
-      polytheneCore.deprecation("Tabs", "selectedTab", "selectedTabIndex");
+      polytheneCore.deprecation("Tabs", { option: "selectedTab", newOption: "selectedTabIndex" });
     }
     var tabIndex = getIndex(state, attrs) || 0;
     var selectedTabIndex = createStream(tabIndex);

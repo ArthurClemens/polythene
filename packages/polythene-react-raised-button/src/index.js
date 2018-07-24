@@ -1,16 +1,17 @@
-import { StateComponent } from "polythene-react-base";
-import { coreRaisedButton as core } from "polythene-core-raised-button";
 import { Button } from "polythene-react-button";
-import { Shadow } from "polythene-react-shadow";
+import { deprecation } from "polythene-core";
+import { ViewComponent, renderer as h } from "polythene-react-base";
 
-export const RaisedButton = StateComponent(Object.assign(
-  {},
-  core,
-  {
-    createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Shadow })),
-    createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow })),
-    component: Button
-  }
-));
+export const RaisedButton = ViewComponent({
+  onMount: () => {
+    deprecation("RaisedButton", { newComponent: "Button", newOption: "raised: true" });
+  },
+  view: vnode =>
+    h(Button, Object.assign(
+      {},
+      { raised: true },
+      vnode.attrs
+    ), vnode.children)
+});
 
 RaisedButton.displayName = "RaisedButton";

@@ -28,9 +28,10 @@
 
 ~~~javascript
 import m from "mithril"
-import { RaisedButton } from "polythene-mithril"
+import { Button } from "polythene-mithril"
 
-m(RaisedButton, {
+m(Button, {
+  raised: true,
   label: "Button"
 })
 ~~~
@@ -46,9 +47,6 @@ See: [URLs and router links](../../handling-urls.md)
 <a id="appearance"></a>
 ## Appearance
 
-
-
-
 <a id="styling"></a>
 ### Styling
 
@@ -60,14 +58,15 @@ You can find more information about theming in  [Theming](../../theming.md).
 #### Themed component
 
 ~~~javascript
-import { RaisedButtonCSS } from "polythene-css"
+import { ButtonCSS } from "polythene-css"
 
-RaisedButtonCSS.addStyle(".themed-raised-button", {
+ButtonCSS.addStyle(".themed-raised-button", {
   color_light_background: "#ff1744",
   color_light_text:       "#fff"
 })
 
-m(RaisedButton, {
+m(Button, {
+  raised: true,
   label: "Button",
   className: "themed-raised-button"
 })
@@ -76,13 +75,14 @@ m(RaisedButton, {
 To create a hover effect:
 
 ~~~javascript
-RaisedButtonCSS.addStyle(".hover-button", {
+ButtonCSS.addStyle(".hover-button", {
   color_light_hover:            "#fff",
   color_light_hover_background: "#673ab7",
   animation_duration:           "100ms",
 })
 
-m(RaisedButton, {
+m(Button, {
+  raised: true,
   label: "Hover",
   className: "hover-button"
 })
@@ -92,12 +92,12 @@ m(RaisedButton, {
 <a id="css"></a>
 #### CSS
 
-Change CSS using the [Raised Button CSS classes](../../../packages/polythene-css-classes/raised-button.js).
+Change CSS using the [Button CSS classes](../../../packages/polythene-css-classes/button.js).
 
 Class names can be imported with:
 
 ~~~javascript
-import classes from "polythene-css-classes/raised-button"
+import classes from "polythene-css-classes/button"
 ~~~
 
 <a id="style"></a>
@@ -106,7 +106,8 @@ import classes from "polythene-css-classes/raised-button"
 Some style attributes can be set using option `style`. For example:
 
 ~~~javascript
-m(RaisedButton, {
+m(Button, {
+  raised: true,
   style: {
     backgroundColor: "#ef6c00",
     color: "#fff"

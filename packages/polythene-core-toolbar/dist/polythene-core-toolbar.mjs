@@ -32,7 +32,7 @@ var onMount = function onMount(_ref) {
   var attrs = _ref.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Toolbar", "z", "shadowDepth");
+    deprecation("Toolbar", { option: "z", newOption: "shadowDepth" });
   }
 };
 

@@ -7,10 +7,10 @@ export const getElement = vnode =>
 
 export const onMount = ({ attrs }) => {
   if (attrs.zOn !== undefined) {
-    deprecation("Switch", "zOn", "shadowDepthOn");
+    deprecation("Switch", { option: "zOn", newOption: "shadowDepthOn" });
   }
   if (attrs.zOff !== undefined) {
-    deprecation("Switch", "zOff", "shadowDepthOff");
+    deprecation("Switch", { option: "zOff", newOption: "shadowDepthOff" });
   }
 };
 

@@ -17,7 +17,7 @@
     "polythene-core-fab": "^1.2.0",
     "polythene-react-base": "^1.2.0",
     "polythene-react-icon": "^1.2.0",
-    "polythene-react-raised-button": "^1.2.0"
+    "polythene-react-button": "^1.2.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

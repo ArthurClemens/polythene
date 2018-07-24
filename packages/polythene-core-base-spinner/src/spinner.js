@@ -37,7 +37,7 @@ export const onMount = vnode => {
   const attrs = vnode.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Spinner", "z", "shadowDepth");
+    deprecation("Spinner", { option: "z", newOption: "shadowDepth" });
   }
 
   state.dom(vnode.dom);

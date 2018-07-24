@@ -66,7 +66,7 @@
     var attrs = vnode.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Spinner", "z", "shadowDepth");
+      polytheneCore.deprecation("Spinner", { option: "z", newOption: "shadowDepth" });
     }
 
     state.dom(vnode.dom);

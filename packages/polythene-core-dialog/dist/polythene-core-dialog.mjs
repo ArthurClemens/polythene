@@ -152,7 +152,7 @@ var onMount = function onMount(vnode) {
   var attrs = vnode.attrs;
 
   if (attrs.z !== undefined) {
-    deprecation("Dialog", "z", "shadowDepth");
+    deprecation("Dialog", { option: "z", newOption: "shadowDepth" });
   }
 
   var dom = vnode.dom;

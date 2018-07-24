@@ -23,6 +23,7 @@ var buttonClasses = {
     hasDropdown: "pe-button--dropdown",
     highLabel: "pe-button--high-label",
     inactive: "pe-button--inactive",
+    raised: "pe-button--raised",
     selected: "pe-button--selected",
     separatorAtStart: "pe-button--separator-start"
 };
@@ -182,7 +183,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
   var state = vnode.state;
   var attrs = vnode.attrs;
   if (attrs.selectedTab !== undefined) {
-    deprecation("Tabs", "selectedTab", "selectedTabIndex");
+    deprecation("Tabs", { option: "selectedTab", newOption: "selectedTabIndex" });
   }
   var tabIndex = getIndex(state, attrs) || 0;
   var selectedTabIndex = createStream(tabIndex);

@@ -18,7 +18,7 @@
 
   // Don't export 'element': it will be the wrapped raised button component (set in polythene-xxx-fab)
 
-  // Props to be passed to a raised button, including 'content'
+  // Props to be passed to a Button, including 'content'
   var createProps = function createProps(vnode, _ref) {
     var k = _ref.keys,
         h = _ref.renderer,
@@ -37,6 +37,7 @@
       shadow: { increase: 5 },
       ink: true,
       wash: true,
+      raised: true,
       animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
     });
   };

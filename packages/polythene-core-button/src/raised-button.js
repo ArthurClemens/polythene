@@ -1,7 +1,6 @@
 import { isServer, pointerStartMoveEvent, pointerEndMoveEvent, deprecation } from "polythene-core";
-import classes from "polythene-css-classes/raised-button";
 
-// Don't export 'getElement': it will be the wrapped button component (set in polythene-xxx-raised-button)
+// Don't export 'getElement': it will be the wrapped Button component (set in polythene-xxx-button)
 
 const MAX_SHADOW_DEPTH = 5;
 
@@ -78,7 +77,7 @@ export const onMount = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (attrs.z !== undefined) {
-    deprecation("RaisedButton", "z", "shadowDepth");
+    deprecation("RaisedButton", { option: "z", newOption: "shadowDepth" });
   }
   if (!state.tapEventsInited()) {
     initTapEvents(vnode);
@@ -99,10 +98,7 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
   return Object.assign(
     {},
     {
-      parentClassName: [
-        classes.super,
-        attrs.parentClassName || classes.component
-      ].join(" "),
+      raised: true,
       animateOnTap: false,
       shadowComponent: h(Shadow, {
         shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
@@ -111,7 +107,6 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
       wash: attrs.wash !== undefined
         ? attrs.wash
         : false,
-      contained: true,
       children
     },
     attrs

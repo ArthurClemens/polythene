@@ -36,7 +36,7 @@
     var attrs = _ref.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Toolbar", "z", "shadowDepth");
+      polytheneCore.deprecation("Toolbar", { option: "z", newOption: "shadowDepth" });
     }
   };
 

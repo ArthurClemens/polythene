@@ -1,7 +1,7 @@
 import { StateComponent } from "polythene-react-base";
 import { coreFAB as core } from "polythene-core-fab";
 import { Icon } from "polythene-react-icon";
-import { RaisedButton } from "polythene-react-raised-button";
+import { Button } from "polythene-react-button";
 
 export const FAB = StateComponent(Object.assign(
   {},
@@ -9,7 +9,7 @@ export const FAB = StateComponent(Object.assign(
   {
     createProps: (vnode, args) => core.createProps(vnode, Object.assign(args, { Icon })),
     createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Icon })),
-    component: RaisedButton
+    component: Button
   }
 ));
 

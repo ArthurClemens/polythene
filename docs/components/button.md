@@ -66,6 +66,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **inactive** | optional | Boolean |  | Set to `true` to disable button events and ripple/wash effects |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **label** | use `label` or `content` | String |  | The button label |
+| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 | **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |

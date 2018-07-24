@@ -10,7 +10,7 @@ const actionLayoutClasses = {
 
 export const onMount = ({ attrs }) => {
   if (attrs.bordered !== undefined) {
-    deprecation("Card", "bordered", "border");
+    deprecation("Card", { option: "bordered", newOption: "border" });
   }
 };
 

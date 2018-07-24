@@ -25,7 +25,7 @@ export const onMount = vnode => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   if (attrs.borders !== undefined) {
-    deprecation("Button", "borders", "border");
+    deprecation("Button", { option: "borders", newOption: "border" });
   }
   state.dom(vnode.dom);
   
@@ -78,6 +78,8 @@ export const createProps = (vnode, { keys: k }) => {
         classes.super,
         attrs.parentClassName || classes.component,
         attrs.contained ? classes.contained : null,
+        attrs.raised ? classes.contained : null,
+        attrs.raised ? classes.raised : null,
         attrs.selected ? classes.selected : null,
         attrs.highLabel ? classes.highLabel : null,
         attrs.extraWide ? classes.extraWide : null,
