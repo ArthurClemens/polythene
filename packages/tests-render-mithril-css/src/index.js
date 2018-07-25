@@ -16,7 +16,6 @@ import {
   Menu,
   Notification,
   RadioGroup,
-  RaisedButton,
   renderer,
   Slider,
   Snackbar,
@@ -66,7 +65,8 @@ const App = {
                 m("h2", "Drawer"),
                 m("h3", "Media query: cover drawer on small screen"),
                 m(".component", 
-                  m(RaisedButton, {
+                  m(Button, {
+                    raised: true,
                     id: "show-drawer-button",
                     label: "Show",
                     events: {
@@ -92,7 +92,8 @@ const App = {
               [
                 m("h2", "Raised Button"),
                 m(".component", 
-                  m(RaisedButton, {
+                  m(Button, {
+                    raised: true,
                     label: "Button"
                   })
                 )
@@ -291,14 +292,16 @@ const App = {
                 m("h2", "Themed Dialog"),
                 m("h3", "Media query: full screen on small screen"),
                 m(".component", 
-                  m(RaisedButton, {
+                  m(Button, {
+                    raised: true,
                     label: "Show dialog",
                     events: {
                       onclick: () => Dialog.show({
                         /* note the Dialog component is below the other elements in the app */
                         title: "Hello",
                         body: m("div", [
-                          m(RaisedButton, {
+                          m(Button, {
+                            raised: true,
                             events: {
                               onclick: () => Dialog.hide()
                             },
@@ -318,7 +321,8 @@ const App = {
               [
                 m("h2", "Notification"),
                 m(".component", 
-                  m(RaisedButton, {
+                  m(Button, {
+                    raised: true,
                     label: "Show Notification",
                     events: {
                       onclick: () => Notification.show({
@@ -334,7 +338,8 @@ const App = {
               [
                 m("h2", "Snackbar"),
                 m(".component", 
-                  m(RaisedButton, {
+                  m(Button, {
+                    raised: true,
                     label: "Show Snackbar",
                     events: {
                       onclick: () => Snackbar.show({
