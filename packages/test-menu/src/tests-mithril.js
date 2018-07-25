@@ -1,4 +1,4 @@
-import { renderer, keys, Dialog, Button, RaisedButton, Menu, List, ListTile, Shadow, IconButton, Icon } from "polythene-mithril";
+import { renderer, keys, Dialog, Button, Menu, List, ListTile, Shadow, IconButton, Icon } from "polythene-mithril";
 import genericTests from "./tests-generic";
 import settingsDialog from "./components/settings-dialog";
 import opener from "./components/opener";
@@ -18,8 +18,9 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
       exclude: true,
       component: {
         view: () => 
-          h(RaisedButton,
+          h(Button,
             {
+              raised: true,
               label: "Open",
               events: {
                 onclick: () => Dialog.show(settingsDialogOptions)
@@ -32,12 +33,12 @@ const mithrilTests = ({ Menu, List, ListTile, renderer: h }) => {
       name: "Menu with links",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: links, id: "links" })
+      component: opener({ renderer, keys, Menu, Button, List, ListTile, menuFn: links, id: "links" })
     },
   ];
     
 };
 
 export default []
-  .concat(genericTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }))
-  .concat(mithrilTests({ Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog, renderer, keys }));
+  .concat(genericTests({ Menu, List, ListTile, Button, Shadow, IconButton, Icon, Dialog, renderer, keys }))
+  .concat(mithrilTests({ Menu, List, ListTile, Button, Shadow, IconButton, Icon, Dialog, renderer, keys }));

@@ -86,7 +86,7 @@ For demonstration purposes, this can be emulated with a "step" function that upd
 ~~~javascript
 import m from "mithril"
 import stream from "mithril/stream"
-import { MaterialDesignProgressSpinner as Spinner, RaisedButton } from "polythene-mithril"
+import { MaterialDesignProgressSpinner as Spinner, Button } from "polythene-mithril"
 
 const STEP_DURATION = 2000
 
@@ -116,7 +116,8 @@ const Test = {
         show: true,
         percentage
       }),
-      m(RaisedButton, {
+      m(Button, {
+        raised: true,
         label: "Run",
         events: {
           onclick: () => (

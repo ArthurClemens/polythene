@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, List, ListTile, RaisedButton } from "polythene-react";
+import { Menu, List, ListTile, Button } from "polythene-react";
 
 export default class extends Component {
 
@@ -15,7 +15,8 @@ export default class extends Component {
     const target = "simple-menu-jsx";
     return (
       <div style={{ position: "relative" }}>
-        <RaisedButton
+        <Button
+          raised
           label="Open menu"
           id={target}
           events={{

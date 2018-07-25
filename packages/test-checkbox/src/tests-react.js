@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, Checkbox, RaisedButton, keys } from "polythene-react";
+import { renderer, Checkbox, Button, keys } from "polythene-react";
 import genericTests from "./tests-generic";
 import SimpleForm from "./components/toggle-button-jsx";
 
@@ -47,5 +47,5 @@ const reactTests = ({ Checkbox, renderer: h }) => { // eslint-disable-line no-un
 };
 
 export default []
-  .concat(genericTests({ Checkbox, RaisedButton, renderer, keys }))
-  .concat(reactTests({ Checkbox, RaisedButton, renderer, keys }));
+  .concat(genericTests({ Checkbox, Button, renderer, keys }))
+  .concat(reactTests({ Checkbox, Button, renderer, keys }));

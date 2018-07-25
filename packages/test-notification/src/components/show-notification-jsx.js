@@ -1,5 +1,5 @@
 import React from "react";
-import { Notification, Dialog, Button, RaisedButton } from "polythene-react";
+import { Notification, Dialog, Button } from "polythene-react";
 
 const dialogOptions = {
   body: "You pressed a message action",
@@ -29,7 +29,8 @@ const dialogOptions = {
 };
 
 export default () =>
-  <RaisedButton
+  <Button
+    raised
     label="Show notification"
     events={{
       onClick: () =>

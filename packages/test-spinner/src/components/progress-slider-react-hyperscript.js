@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { renderer as h, MaterialDesignProgressSpinner as Spinner, RaisedButton, Slider } from "polythene-react";
+import { renderer as h, MaterialDesignProgressSpinner as Spinner, Button, Slider } from "polythene-react";
 
 const STEP_DURATION = 2000;
 const MAX_VALUE = 1000;
@@ -74,7 +74,8 @@ export default class extends Component {
           ))
         })
       ),
-      h(RaisedButton, {
+      h(Button, {
+        raised: true,
         label: "Run",
         events: {
           onClick: () => (

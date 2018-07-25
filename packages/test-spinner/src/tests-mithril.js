@@ -1,4 +1,4 @@
-import { renderer, keys, RaisedButton, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider } from "polythene-mithril";
+import { renderer, keys, Button, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = () => {
@@ -6,5 +6,5 @@ const mithrilTests = () => {
 };
 
 export default []
-  .concat(genericTests({ RaisedButton, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider, renderer, keys }))
-  .concat(mithrilTests({ RaisedButton, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider, renderer, keys }));
+  .concat(genericTests({ Button, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider, renderer, keys }))
+  .concat(mithrilTests({ Button, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinner, Slider, renderer, keys }));

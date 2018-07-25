@@ -2,7 +2,7 @@ import stream from "mithril/stream";
 
 const STEP_DURATION = 2000;
 
-export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, className, permanent=true }) => ({
+export default ({ renderer: h, keys: k, spinners=[{}], Spinner, Button, className, permanent=true }) => ({
   oninit: vnode => {
     const show = stream(false);
     const start = stream(null);
@@ -33,7 +33,8 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton, cl
         style: { position: "relative" }
       },
       [
-        h(RaisedButton, {
+        h(Button, {
+          raised: true,
           label: permanent
             ? "Run"
             : "Toggle",

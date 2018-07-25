@@ -3,7 +3,7 @@ import onChange from "./components/onChange";
 import setValue from "./components/set-value";
 import { TextFieldCSS } from "polythene-css";
 
-export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
+export default ({ TextField, Button, renderer: h, keys: k }) => {
 
   const block = (test, attrs = {}) =>
     h("div",
@@ -28,9 +28,9 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
 
   const ipsum = "Lorem ipsum dolor sit amet, idque signiferumque at usu, eum recusabo aliquando id. Deleniti percipitur concludaturque eu eos. Vix elitr feugait ne. Mel agam integre eu, has minim aliquid salutandi eu. Est nusquam abhorreant ne. Ei wisi dicant eam, vix tota reque persequeris an. Quo in theophrastus reprehendunt, ius te graecis epicuri volutpat.";
   const shortIpsum = "Lorem ipsum dolor sit amet,";
-  const Focus = focus({ h, k, TextField, RaisedButton });
-  const OnChange = onChange({ h, k, TextField, RaisedButton });
-  const SetValue = setValue({ h, k, TextField, RaisedButton });
+  const Focus = focus({ h, k, TextField, Button });
+  const OnChange = onChange({ h, k, TextField, Button });
+  const SetValue = setValue({ h, k, TextField, Button });
   
   return [
     {
@@ -505,16 +505,6 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Themed",
-      component: {
-        view: () => 
-          h(TextField, {
-            label: "Your name",
-            className: "tests-textfield-themed-textfield"
-          })
-      }
-    },
-    {
       name: "Option: style",
       component: {
         view: () => 
@@ -526,35 +516,20 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
           })
       }
     },
-    // {
-    //   name: "Autocomplete form",
-    //   component: {
-    //     view: () => 
-    //       h("form",
-    //         { [k["autocomplete"]]: "on" }, 
-    //         h("div",
-    //           {
-    //             label: "Customer information"
-    //           },
-    //           [
-    //             h(TextField, {
-    //               type:               "email",
-    //               label:              "Email",
-    //               floatingLabel:      true,
-    //             }),
-    //             h(TextField, {
-    //               label:               "First name",
-    //               floatingLabel:      true,
-    //             }),
-    //             h(TextField, {
-    //               label:               "Last name",
-    //               floatingLabel:      true,
-    //             }),
-    //           ]
-    //         )
-    //       )
-    //   }
-    // },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed",
+      component: {
+        view: () => 
+          h(TextField, {
+            label: "Your name",
+            className: "tests-textfield-themed-textfield"
+          })
+      }
+    },
 
     /* Dark tone */
 
@@ -652,6 +627,36 @@ export default ({ TextField, RaisedButton, renderer: h, keys: k }) => {
         )
       }
     },
+
+    // {
+    //   name: "Autocomplete form",
+    //   component: {
+    //     view: () => 
+    //       h("form",
+    //         { [k["autocomplete"]]: "on" }, 
+    //         h("div",
+    //           {
+    //             label: "Customer information"
+    //           },
+    //           [
+    //             h(TextField, {
+    //               type:               "email",
+    //               label:              "Email",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "First name",
+    //               floatingLabel:      true,
+    //             }),
+    //             h(TextField, {
+    //               label:               "Last name",
+    //               floatingLabel:      true,
+    //             }),
+    //           ]
+    //         )
+    //       )
+    //   }
+    // },
   ];
 };
 

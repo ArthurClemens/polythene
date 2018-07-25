@@ -59,18 +59,19 @@ npm install --save polythene-react polythene-css
 
 ~~~jsx
 import React from "react"
-import { RaisedButton } from "polythene-react"
+import { Button } from "polythene-react"
 import "polythene-css"
 
-<RaisedButton label="Click" />
+<Button raised label="Click" />
 ~~~
 
 ##### With hyperscript
 
 ~~~javascript
-import { renderer as h, RaisedButton } from "polythene-react"
+import { renderer as h, Button } from "polythene-react"
 
-h(RaisedButton, {
+h(Button, {
+  raised: true,
   label: "Click"
 })
 ~~~
@@ -83,7 +84,7 @@ h(RaisedButton, {
 ~~~jsx
 import React from "react"
 import ReactDOM from "react-dom"
-import { renderer as h, RaisedButton, Dialog } from "polythene-react"
+import { renderer as h, Button, Dialog } from "polythene-react"
 import "polythene-css"
 import { addTypography } from "polythene-css"
 
@@ -91,7 +92,8 @@ addTypography()
 
 const App = () => (
   <div>
-    <RaisedButton
+    <Button
+      raised
       label="Show dialog"
       events={{
         onClick: () => Dialog.show({
@@ -115,14 +117,15 @@ ReactDOM.render(<App />, mountNode)
 
 ~~~javascript
 import ReactDOM from "react-dom"
-import { renderer as h, RaisedButton, Dialog } from "polythene-react"
+import { renderer as h, Button, Dialog } from "polythene-react"
 import { addTypography } from "polythene-css"
 
 addTypography()
 
 const App = () => (
   h("div", [
-    h(RaisedButton, {
+    h(Button, {
+      raised: true,
       label: "Show dialog",
       events: {
         onClick: () => Dialog.show({
@@ -188,10 +191,10 @@ To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~jsx
 /* global polythene */
-const { RaisedButton } = polythene
+const { Button } = polythene
 
 const App = () =>
-  <RaisedButton label="Button" />
+  <Button raised label="Button" />
 
 ReactDOM.render(
   <App />,

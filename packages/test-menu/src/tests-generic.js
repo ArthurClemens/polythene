@@ -10,7 +10,7 @@ import themed from "./components/themed";
 import transitions from "./components/transitions";
 import { MenuCSS } from "polythene-css";
 
-export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Shadow, IconButton, Icon, Dialog }) => {
+export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButton, Icon, Dialog }) => {
 
   const { themeColor, themedList, styledList } = themed({ renderer, Menu, List, ListTile });
   const h = renderer;
@@ -39,7 +39,8 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
 
   const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
 
-  const Opener = (dialogAttrs, label = "Open") => h(RaisedButton, {
+  const Opener = (dialogAttrs, label = "Open") => h(Button, {
+    raised: true,
     label,
     events: {
       [keys.onclick]: () => Dialog.show(dialogAttrs)
@@ -55,7 +56,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       name: "Exposed menu (simple, without state)",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, dropdown: true, menuFn: simple, id: "simple" })
+      component: opener({ renderer, keys, Menu, button: Button, List, ListTile, dropdown: true, menuFn: simple, id: "simple" })
     },
     {
       name: "Exposed menu (options: origin, scrollTarget, compact list, height \"max\")",
@@ -108,7 +109,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       name: "Option: topMenu",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu", height: "50vh", topMenu: true, exposed: false })
+      component: opener({ renderer, keys, Menu, button: Button, List, ListTile, menuFn: simple, id: "top-menu", height: "50vh", topMenu: true, exposed: false })
     },
     {
       name: "Dropdown menu (option: origin)",
@@ -130,6 +131,65 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
         view: () =>
           Opener(menuDialog({ renderer, keys, Icon, List, ListTile, Dialog }))
       }
+    },
+    {
+      name: "Option: transitions",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, Button, List, ListTile, menuFn: transitions, id: "transitions",
+        transitionOptions: {
+          transitions: {
+            show: ({ el }) => ({
+              el,
+              duration:   .5,
+              before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
+              transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
+            }),
+            hide: ({ el }) => ({
+              el,
+              duration:   .5,
+              transition: () => el.style.opacity = 0,
+            })
+          }
+        }
+      })
+    },
+    {
+      name: "Option: showDelay, hideDelay, showDuration, hideDuration",
+      interactive: true,
+      exclude: true,
+      component: opener({ renderer, keys, Menu, Button, List, ListTile, menuFn: transitions, id: "showDelay",
+        transitionOptions: {
+          showDuration: .9,
+          hideDuration: 1.2,
+          hideDelay: .3,
+          showTimingFunction: "ease-in-out",
+          hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
+        }
+      })
+    },
+    {
+      name: "Option: width",
+      component: widths({ renderer, Menu, List, ListTile })
+    },
+    {
+      name: "Option: style",
+      component: {
+        view: () =>
+          h(Menu, {
+            content: styledList,
+            permanent: true,
+            tone: "dark",
+            style: {
+              backgroundColor: themeColor,
+              color: "#fff"
+            }
+          })
+      }
+    },
+    
+    {
+      section: "Themed",
     },
     {
       name: "Themed (color and border radius)",
@@ -173,85 +233,17 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
           )
       }
     },
-
-    {
-      name: "Option: style",
-      component: {
-        view: () =>
-          h(Menu, {
-            content: styledList,
-            permanent: true,
-            tone: "dark",
-            style: {
-              backgroundColor: themeColor,
-              color: "#fff"
-            }
-          })
-      }
-    },
-    {
-      name: "Option: transitions",
-      interactive: true,
-      exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "transitions",
-        transitionOptions: {
-          transitions: {
-            show: ({ el }) => ({
-              el,
-              duration:   .5,
-              before:     () => (el.style.opacity = 0, el.style.transform = "translate3d(0, 20px, 0)"),
-              transition: () => (el.style.opacity = 1, el.style.transform = "translate3d(0, 0px,  0)")
-            }),
-            hide: ({ el }) => ({
-              el,
-              duration:   .5,
-              transition: () => el.style.opacity = 0,
-            })
-          }
-        }
-      })
-    },
     {
       name: "Transitions as theme",
       interactive: true,
       exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "theme-transitions",
+      component: opener({ renderer, keys, Menu, Button, List, ListTile, menuFn: transitions, id: "theme-transitions",
         className: "tests-menu-transitions"
       })
     },
     {
-      name: "Option: showDelay, hideDelay, showDuration, hideDuration",
-      interactive: true,
-      exclude: true,
-      component: opener({ renderer, keys, Menu, RaisedButton, List, ListTile, menuFn: transitions, id: "showDelay",
-        transitionOptions: {
-          showDuration: .9,
-          hideDuration: 1.2,
-          hideDelay: .3,
-          showTimingFunction: "ease-in-out",
-          hideTimingFunction: "cubic-bezier(0.09, 0.04, 0.16, 0.87)",
-        }
-      })
-    },
-    {
-      name: "Option: width",
-      component: widths({ renderer, Menu, List, ListTile })
-    },
-    {
-      name: "Menu items (RTL)",
-      component: {
-        view: () => 
-          h("div", { className: "pe-rtl" },
-            h(menuItems({ renderer, Menu, List, ListTile }))
-          )
-      }
-    },
-
-    // Themed behavior
-
-    {
       name: "Themed behavior: set top menu",
-      component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
+      component: opener({ renderer, keys, Menu, button: Button, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
     },
 
     {
@@ -281,5 +273,17 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       }
     },
 
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Menu items (RTL)",
+      component: {
+        view: () => 
+          h("div", { className: "pe-rtl" },
+            h(menuItems({ renderer, Menu, List, ListTile }))
+          )
+      }
+    },
   ];
 };

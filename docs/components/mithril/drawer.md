@@ -59,7 +59,7 @@ Using local state:
 
 ~~~javascript
 import m from "mithril"
-import { Drawer, List, ListTile, RaisedButton } from "polythene-mithril"
+import { Drawer, List, ListTile, Button } from "polythene-mithril"
 
 const navigationList = navItemClick =>
   m(List, {
@@ -75,7 +75,8 @@ const AppDrawer = {
     return [
       // For simplicity use a regular button to show the drawer
       // usually this would be the app bar's menu button
-      m(RaisedButton, {
+      m(Button, {
+        raised: true,
         label: "Show",
         events: {
           onclick: () => state.show = true

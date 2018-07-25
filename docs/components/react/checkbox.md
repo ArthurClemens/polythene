@@ -94,7 +94,7 @@ In this example we show a simple form with a checkbox to accept the Terms and Co
 
 ~~~jsx
 import React, { Component } from "react"
-import { RaisedButton, Checkbox } from "polythene-react"
+import { Button, Checkbox } from "polythene-react"
 
 class SimpleForm extends Component {
 
@@ -127,7 +127,8 @@ class SimpleForm extends Component {
           marginTop: "1rem"
         }}
       >
-        <RaisedButton
+        <Button
+          raised
           label="Toggle"
           events={{
             onClick: this.toggleState

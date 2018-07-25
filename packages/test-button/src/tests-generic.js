@@ -206,7 +206,7 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Raised",
-        raised: true
+        raised: true,
       }
     },
     {
@@ -214,7 +214,7 @@ export default ({ renderer: h, Button }) => {
       component: Button,
       attrs: {
         label: "Border",
-        border: true
+        border: true,
       }
     },
     {

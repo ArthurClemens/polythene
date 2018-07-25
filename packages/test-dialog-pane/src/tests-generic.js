@@ -118,40 +118,10 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       }
     },
     {
-      name: "Themed (color)",
-      component: DialogPane,
-      attrs: {
-        content: h("div", "Hello"),
-        className: "dialog-pane-tests-blue-dialog"
-      }
-    },
-    {
-      name: "Option: style",
-      component: DialogPane,
-      attrs: {
-        body: "Hello",
-        style: {
-          background: "#fff59d",
-          padding: "1.5rem"
-        }
-      }
-    },
-    {
       name: "Option: title, body, footer",
       interactive: true,
       component: DialogPane,
       attrs: {
-        title: "Long dialog with a very long title that surely won't fit here",
-        body: renderer.trust(longText),
-        footerButtons: cancelOkButtons({ renderer, Button })
-      }
-    },
-    {
-      name: "Option: title, body, footer (RTL)",
-      interactive: true,
-      component: DialogPane,
-      attrs: {
-        className: "pe-rtl",
         title: "Long dialog with a very long title that surely won't fit here",
         body: renderer.trust(longText),
         footerButtons: cancelOkButtons({ renderer, Button })
@@ -171,6 +141,44 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
         view: vnode => (
           h(DialogPane, form({ renderer, keys, Button, file: vnode.state.file }))
         )
+      }
+    },
+    {
+      name: "Option: style",
+      component: DialogPane,
+      attrs: {
+        body: "Hello",
+        style: {
+          background: "#fff59d",
+          padding: "1.5rem"
+        }
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed (color)",
+      component: DialogPane,
+      attrs: {
+        content: h("div", "Hello"),
+        className: "dialog-pane-tests-blue-dialog"
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: title, body, footer (RTL)",
+      interactive: true,
+      component: DialogPane,
+      attrs: {
+        className: "pe-rtl",
+        title: "Long dialog with a very long title that surely won't fit here",
+        body: renderer.trust(longText),
+        footerButtons: cancelOkButtons({ renderer, Button })
       }
     },
   ];

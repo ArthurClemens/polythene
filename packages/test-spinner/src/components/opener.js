@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton }) => ({
+export default ({ renderer: h, keys: k, spinners=[{}], Spinner, Button }) => ({
   oninit: vnode => {
     const show = stream(false);
     Object.assign(vnode.state, {
@@ -16,7 +16,8 @@ export default ({ renderer: h, keys: k, spinners=[{}], Spinner, RaisedButton }) 
         style: { position: "relative" }
       },
       [
-        h(RaisedButton, {
+        h(Button, {
+          raised: true,
           label: "Toggle",
           events: {
             [k.onclick]: () => state.show(!show)

@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ h, k, RaisedButton, Switch }) => ({
+export default ({ h, k, Button, Switch }) => ({
   oninit: vnode => {
     const checked = stream(false);
     Object.assign(vnode.state, {
@@ -20,7 +20,8 @@ export default ({ h, k, RaisedButton, Switch }) => ({
         style: {
           marginTop: "1rem"
         }
-      }, h(RaisedButton, {
+      }, h(Button, {
+        raised: true,
         label: "Toggle",
         events: {
           [k.onclick]: () => state.checked(!checked)

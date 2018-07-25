@@ -109,27 +109,6 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       component: ToolbarTitleComponentCheckbox,
     },
     {
-      name: "Option: style (colors and height)",
-      component: Toolbar,
-      attrs: {
-        content: toolbarRow,
-        style: {
-          backgroundColor: "#EF6C00",
-          color: "#fff",
-          height: "72px"
-        }
-      }
-    },
-    {
-      name: "Themed (dark tone)",
-      component: Toolbar,
-      attrs: {
-        className: "tests-toolbar-themed-toolbar",
-        content: toolbarRow,
-        tone: "dark"
-      }
-    },
-    {
       name: "Shadow",
       component: {
         view: () => h(Toolbar, { shadowDepth: 1 }, toolbarRow),
@@ -167,37 +146,29 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
           )
       }
     },
+    {
+      name: "Option: style (colors and height)",
+      component: Toolbar,
+      attrs: {
+        content: toolbarRow,
+        style: {
+          backgroundColor: "#EF6C00",
+          color: "#fff",
+          height: "72px"
+        }
+      }
+    },
 
     {
-      name: "Scrolling pane (RTL) (with shadow)",
-      component: {
-        view: () =>
-          h("div",
-            {
-              className: "pe-rtl",
-              style: {
-                overflow: "hidden"
-              }
-            },
-            [
-              h(Toolbar, {
-                shadowDepth: 1,
-                key: "toolbar", // for React
-              }, toolbarRow),
-              h("div",
-                {
-                  key: "content", // for React
-                  style: {
-                    padding: "20px",
-                    background: "#fff",
-                    height: "300px",
-                    overflowY: "auto"
-                  }
-                },
-                h.trust(longText)
-              )
-            ]
-          )
+      section: "Themed",
+    },
+    {
+      name: "Themed",
+      component: Toolbar,
+      attrs: {
+        className: "tests-toolbar-themed-toolbar",
+        content: toolbarRow,
+        tone: "dark"
       }
     },
 
@@ -237,6 +208,42 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       attrs: {
         content: toolbarRow,
         tone: "light"
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Scrolling pane (RTL) (with shadow)",
+      component: {
+        view: () =>
+          h("div",
+            {
+              className: "pe-rtl",
+              style: {
+                overflow: "hidden"
+              }
+            },
+            [
+              h(Toolbar, {
+                shadowDepth: 1,
+                key: "toolbar", // for React
+              }, toolbarRow),
+              h("div",
+                {
+                  key: "content", // for React
+                  style: {
+                    padding: "20px",
+                    background: "#fff",
+                    height: "300px",
+                    overflowY: "auto"
+                  }
+                },
+                h.trust(longText)
+              )
+            ]
+          )
       }
     },
   ];

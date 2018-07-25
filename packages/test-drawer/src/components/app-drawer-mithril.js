@@ -1,5 +1,5 @@
 import m from "mithril";
-import { Drawer, RaisedButton } from "polythene-mithril";
+import { Drawer, Button } from "polythene-mithril";
 
 const AppDrawer = {
   oninit: vnode => {
@@ -9,7 +9,8 @@ const AppDrawer = {
     const { createContent, ...drawerOpts } = attrs;
     const listTileClick = () => state.show = false;
     return [
-      m(RaisedButton, {
+      m(Button, {
+        raised: true,
         label: "Show",
         events: {
           onclick: () => state.show = true

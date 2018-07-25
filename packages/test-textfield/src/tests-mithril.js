@@ -1,9 +1,9 @@
-import { renderer, keys, TextField, RaisedButton } from "polythene-mithril";
+import { renderer, keys, TextField, Button } from "polythene-mithril";
 import genericTests from "./tests-generic";
 import setValue from "./components/set-value-mithril-withAttr";
 import FormValidation from "./components/form-validation-mithril";
 
-const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
+const mithrilTests = ({ TextField, Button, renderer: h }) => {
 
   const block = (test, attrs = {}) =>
     h("div",
@@ -19,7 +19,7 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
       test
     );
   
-  const SetValue = setValue({ h, TextField, RaisedButton });
+  const SetValue = setValue({ h, TextField, Button });
 
   return [
     {
@@ -49,5 +49,5 @@ const mithrilTests = ({ TextField, RaisedButton, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ TextField, RaisedButton, renderer, keys }))
-  .concat(mithrilTests({ TextField, RaisedButton, renderer, keys }));
+  .concat(genericTests({ TextField, Button, renderer, keys }))
+  .concat(mithrilTests({ TextField, Button, renderer, keys }));

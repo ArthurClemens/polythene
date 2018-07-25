@@ -1,6 +1,6 @@
 import m from "mithril";
 import { Form, Field, ValidationError } from "powerform";
-import { TextField, RaisedButton } from "polythene-mithril";
+import { TextField, Button } from "polythene-mithril";
 
 const TEST_USER_NAME = "ABC";
 const MIN_PASSWORD_LENGTH = 3;
@@ -137,7 +137,8 @@ class FormUI {
         label: "Confirm your password",
         type: "password",
       }),
-      m(RaisedButton, {
+      m(Button, {
+        raised: true,
         element: "button",
         type: "submit",
         label: "Send",

@@ -74,7 +74,7 @@ In this example we show a simple form with a checkbox to accept the Terms and Co
 
 ~~~javascript
 import m from "mithril"
-import { Checkbox, RaisedButton } from "polythene-mithril"
+import { Checkbox, Button } from "polythene-mithril"
 import stream from "mithril/stream"
 
 const SimpleForm = {
@@ -94,7 +94,8 @@ const SimpleForm = {
         checked
       }),
       m(".dialog-pane",
-        m(RaisedButton, {
+        m(Button, {
+          raised: true,
           label: "Accept",
           events: {
             onclick: () => state.checked(true) // only sets to checked

@@ -69,21 +69,6 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Themed (shadow appearance)",
-      component: Shadow,
-      attrs: {
-        shadowDepth: 1,
-        className: "tests-shadow-themed-shadow-style"
-      }
-    },
-    {
-      name: "Themed (shadow depth 3)",
-      component: Shadow,
-      attrs: {
-        className: "tests-shadow-themed-shadow-depth"
-      }
-    },
-    {
       name: "Add to an element (default depth)",
       component: {
         view: () => 
@@ -102,12 +87,30 @@ export default ({ Shadow, renderer: h, keys: k }) => {
           ])
       },
     },
-
     {
       name: "Interactive option: animated",
       interactive: true,
       exclude: true,
       component: interactive({ h, k, Shadow })
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed (shadow appearance)",
+      component: Shadow,
+      attrs: {
+        shadowDepth: 1,
+        className: "tests-shadow-themed-shadow-style"
+      }
+    },
+    {
+      name: "Themed (shadow depth 3)",
+      component: Shadow,
+      attrs: {
+        className: "tests-shadow-themed-shadow-depth"
+      }
     },
 
     {

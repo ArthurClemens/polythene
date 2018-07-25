@@ -86,7 +86,6 @@ v0.2                             |  v1.0
 
 | v1.0
 | --------------------------------- |
-| `RaisedButton` |
 | `RadioGroup` |
 
 
@@ -191,34 +190,6 @@ When a button has focus and the ENTER key is pressed, `onclick` is called.
 
 The `onclick` function of the `events` option (if any) is called.
 
-
-
-
-<a id="button-option-raised-has-become-raisedbutton"></a>
-### Button option "raised" has become RaisedButton
-
-The raised button state has moved to its own component.
-
-#### v0.2
-
-```javascript
-import button from "polythene/button/button"
-
-m(button, {
-  label: "Label",
-  raised: true
-})
-```
-
-#### v1.x
-
-```javascript
-import { RaisedButton } from "polythene-mithril"
-
-m(RaisedButton, {
-  label: "Label"
-})
-```
 
 
 <a id="card"></a>

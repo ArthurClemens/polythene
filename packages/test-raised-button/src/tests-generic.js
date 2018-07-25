@@ -219,7 +219,6 @@ export default ({ renderer: h, Button }) => {
         label: "Label"
       }
     },
-
     {
       name: "Option: disabled -- dark tone class",
       component: Button,

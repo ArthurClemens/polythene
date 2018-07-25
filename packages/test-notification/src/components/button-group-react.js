@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { RaisedButton, Notification } from "polythene-react";
+import { Button, Notification } from "polythene-react";
 import { subscribe, unsubscribe } from "polythene-core";
 
 export default (messageOptions, spawnOptions) => {
@@ -36,20 +36,23 @@ export default (messageOptions, spawnOptions) => {
     render() {
       const count = this.state.count;
       return <div className="pe-button-row">
-        <RaisedButton
+        <Button
+          raised
           label="Show"
           events={{
             onClick: () => Notification.show(Object.assign({}, messageOptions, { key: messageOptions.title }), spawnOptions)
           }}
         />
-        <RaisedButton
+        <Button
+          raised
           label="Hide"
           disabled={count === 0}
           events={{
             onClick: () => Notification.hide(spawnOptions)
           }}
         />
-        <RaisedButton
+        <Button
+          raised
           label="Clear"
           disabled={count === 0}
           events={{

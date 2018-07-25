@@ -1252,48 +1252,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
         }]
       }
     },
-    {
-      name: "Bottom action row, border (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", null,
-            h(Card,
-              {
-                content: [
-                  {
-                    header: {
-                      title: titleLineText,
-                      subtitle: infoLineText,
-                      icon: {
-                        size: "large",
-                        avatar: true,
-                        src: avatarImageUrl("1.png")
-                      }
-                    }
-                  },
-                  {
-                    media: {
-                      content: h("img", {
-                        src: greyImage
-                      })
-                    }
-                  },
-                  {
-                    text: { content: ipsum }
-                  },
-                  {
-                    actions: {
-                      border: true,
-                      content: twoButtonAndLessRow
-                    }
-                  }
-                ]
-              }
-            )
-          )
-      }
-    },
-
+    
     {
       section: "Dark tone",
     },
@@ -1428,6 +1387,51 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
           ]
         }))
       }
-    }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Bottom action row, border (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", null,
+            h(Card,
+              {
+                content: [
+                  {
+                    header: {
+                      title: titleLineText,
+                      subtitle: infoLineText,
+                      icon: {
+                        size: "large",
+                        avatar: true,
+                        src: avatarImageUrl("1.png")
+                      }
+                    }
+                  },
+                  {
+                    media: {
+                      content: h("img", {
+                        src: greyImage
+                      })
+                    }
+                  },
+                  {
+                    text: { content: ipsum }
+                  },
+                  {
+                    actions: {
+                      border: true,
+                      content: twoButtonAndLessRow
+                    }
+                  }
+                ]
+              }
+            )
+          )
+      }
+    },
   ];
 };

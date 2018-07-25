@@ -57,10 +57,11 @@ npm install --save polythene-mithril polythene-css
 
 ~~~javascript
 import m from "mithril"
-import { RaisedButton } from "polythene-mithril"
+import { Button } from "polythene-mithril"
 import "polythene-css"
 
-m(RaisedButton, {
+m(Button, {
+  raised: true,
   label: "Click"
 })
 ~~~
@@ -69,14 +70,15 @@ m(RaisedButton, {
 
 ~~~javascript
 import m from "mithril"
-import { RaisedButton, Dialog } from "polythene-mithril"
+import { Button, Dialog } from "polythene-mithril"
 import { addTypography } from "polythene-css"
 
 addTypography()
 
 const App = {
   view: () => [
-    m(RaisedButton, {
+    m(Button, {
+      raised: true,
       label: "Show dialog",
       events: {
         onclick: () => Dialog.show({
@@ -139,11 +141,12 @@ To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~javascript
 /* global m, polythene */
-const { RaisedButton } = polythene
+const { Button } = polythene
 
 const App = {
   view: () =>
-    m(RaisedButton, {
+    m(Button, {
+      raised: true,
       label: "Button"
     })
 }

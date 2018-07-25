@@ -77,6 +77,7 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
         title: "A one line message",
       })
     },
+    // Pro forma test
     // {
     //   name: "Option: content",
     //   interactive: true,
@@ -85,29 +86,6 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
     //     content: h("div", "This message tells some things using two lines")
     //   })
     // },
-    {
-      name: "Option: style",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "This message tells some things using two lines",
-        style: {
-          color: "white",
-          backgroundColor: "#2196F3",
-          padding: "1.5rem",
-        },
-      })
-    },
-    {
-      name: "Themed (color and border radius)",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "This message tells some things using two lines",
-        className: "notification-tests-blue-notification",
-        timeout: 0
-      })
-    },
     {
       name: "Option: transitions",
       interactive: true,
@@ -127,15 +105,6 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
             transition: () => el.style.opacity = 0,
           })
         }
-      })
-    },
-    {
-      name: "Transitions as theme",
-      interactive: true,
-      exclude: true,
-      component: buttonGroup({
-        title: "Transitions as theme",
-        className: "notification-tests-transitions",        
       })
     },
     {
@@ -238,6 +207,42 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       interactive: true,
       exclude: true,
       component: containerSelector(buttonGroup)
+    },
+    {
+      name: "Option: style",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "This message tells some things using two lines",
+        style: {
+          color: "white",
+          backgroundColor: "#2196F3",
+          padding: "1.5rem",
+        },
+      })
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed (color and border radius)",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "This message tells some things using two lines",
+        className: "notification-tests-blue-notification",
+        timeout: 0
+      })
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: buttonGroup({
+        title: "Transitions as theme",
+        className: "notification-tests-transitions",        
+      })
     },
   ];
 };

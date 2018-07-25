@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, RaisedButton } from "polythene-react";
+import { renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, Button } from "polythene-react";
 import genericTests from "./tests-generic";
 import AppDrawer from "./components/app-drawer-jsx";
 import navigationList from "./components/navigation-list";
@@ -23,5 +23,5 @@ const reactTests = () => {
 };
 
 export default []
-  .concat(genericTests({ renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, RaisedButton }))
-  .concat(reactTests({ renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, RaisedButton }));
+  .concat(genericTests({ renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, Button }))
+  .concat(reactTests({ renderer, keys, Drawer, List, ListTile, Icon, Toolbar, IconButton, Button }));

@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, RaisedButton, List, ListTile } from "polythene-react";
+import { Dialog, Button, List, ListTile } from "polythene-react";
 
 const Tile = ({ title, selected, disabled }) =>
   <ListTile
@@ -29,7 +29,8 @@ const dialogOptions = {
 };
 
 export default () => 
-  <RaisedButton
+  <Button
+    raised
     label="Open Menu Dialog"
     events={{
       onClick: () => Dialog.show(dialogOptions)

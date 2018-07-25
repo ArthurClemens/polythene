@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile } from "polythene-react";
+import { renderer, keys, Dialog, DialogPane, Button, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile } from "polythene-react";
 import genericTests from "./tests-generic";
 import ConditionalDialogPane from "./components/form-react";
 import fullScreenOptions from "./components/full-screen-react";
@@ -7,10 +7,11 @@ import fullScreenJsxOptions from "./components/full-screen-react-jsx";
 import Updating from "./components/updating-react-jsx";
 import Spawns from "./components/spawns-react-jsx";
 
-const reactTests = ({ Dialog, RaisedButton }) => {
+const reactTests = ({ Dialog, Button }) => {
 
   const Opener = ({ dialogAttrs, label = "Open" }) =>
-    <RaisedButton
+    <Button
+      raised
       label={label}
       events={{
         onClick: () => Dialog.show(dialogAttrs)
@@ -109,5 +110,5 @@ const reactTests = ({ Dialog, RaisedButton }) => {
 };
 
 export default []
-  .concat(genericTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }))
-  .concat(reactTests({ Dialog, DialogPane, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }));
+  .concat(genericTests({ Dialog, DialogPane, Button, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }))
+  .concat(reactTests({ Dialog, DialogPane, Button, Toolbar, ToolbarTitle, IconButton, Icon, List, ListTile, renderer, keys }));

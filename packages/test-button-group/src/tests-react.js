@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { renderer, keys, Button, RaisedButton, ButtonGroup } from "polythene-react";
+import { renderer, keys, Button, ButtonGroup } from "polythene-react";
 import genericTests from "./tests-generic";
 
 const reactTests = ({ Button, ButtonGroup }) => {
@@ -22,5 +22,5 @@ const reactTests = ({ Button, ButtonGroup }) => {
 };
 
 export default []
-  .concat(genericTests({ Button, RaisedButton, ButtonGroup, renderer, keys }))
-  .concat(reactTests({ Button, RaisedButton, ButtonGroup, renderer, keys }));
+  .concat(genericTests({ Button, ButtonGroup, renderer, keys }))
+  .concat(reactTests({ Button, ButtonGroup, renderer, keys }));

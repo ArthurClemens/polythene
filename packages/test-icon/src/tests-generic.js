@@ -44,24 +44,6 @@ export default ({ Icon, SVG, renderer: h }) => {
       }
     },
     {
-      name: "Option: style",
-      component: Icon,
-      attrs: {
-        svg: { content: trustedIconStars },
-        style: {
-          color: "#EF6C00"
-        }
-      }
-    },
-    {
-      name: "Themed (color and size)",
-      component: Icon,
-      attrs: {
-        svg: { content: trustedIconStars },
-        className: "tests-icon-themed-icon"
-      }
-    },
-    {
       name: "Option: size",
       component: {
         view: () => h("div",
@@ -98,6 +80,28 @@ export default ({ Icon, SVG, renderer: h }) => {
         src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
         avatar: true,
         size: "large"
+      }
+    },
+    {
+      name: "Option: style",
+      component: Icon,
+      attrs: {
+        svg: { content: trustedIconStars },
+        style: {
+          color: "#EF6C00"
+        }
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed (color and size)",
+      component: Icon,
+      attrs: {
+        svg: { content: trustedIconStars },
+        className: "tests-icon-themed-icon"
       }
     },
 

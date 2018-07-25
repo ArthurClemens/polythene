@@ -117,7 +117,7 @@ Menu state is best stored locally, in the container component:
 
 ~~~jsx
 import React, { Component } from "react"
-import { Menu, List, ListTile, RaisedButton } from "polythene-react"
+import { Menu, List, ListTile, Button } from "polythene-react"
 
 export default class extends Component {
 
@@ -133,7 +133,8 @@ export default class extends Component {
     const target = "simple-menu"
     return (
       <div style={{ position: "relative" }}>
-        <RaisedButton
+        <Button
+          raised
           label="Open menu"
           id={target}
           events={{
@@ -163,7 +164,7 @@ export default class extends Component {
 
 ~~~javascript
 import React, { Component } from "react"
-import { renderer as h, Menu, List, ListTile, RaisedButton } from "polythene-react"
+import { renderer as h, Menu, List, ListTile, Button } from "polythene-react"
 
 export default class extends Component {
 
@@ -180,8 +181,9 @@ export default class extends Component {
     return h("div",
       { style: { position: "relative" } },
       [
-        h(RaisedButton, 
+        h(Button, 
           {
+            raised: true,
             label: "Open menu",
             id: target,
             events: {
@@ -282,7 +284,7 @@ A dialog can be used as menu by passing param `menu` to the dialog component. Th
 
 ~~~jsx
 import React from "react";
-import { renderer as h, Dialog, RaisedButton, List, ListTile } from "polythene-react";
+import { renderer as h, Dialog, Button, List, ListTile } from "polythene-react";
 
 const Tile = ({ title, selected, disabled }) =>
   <ListTile
@@ -312,7 +314,8 @@ const dialogOptions = {
 };
 
 export default () => 
-  <RaisedButton
+  <Button
+    raised
     label="Open Menu Dialog"
     events={{
       onClick: () => Dialog.show(dialogOptions)
@@ -325,7 +328,7 @@ export default () =>
 #### With hyperscript
 
 ~~~javascript
-import { renderer as h, Dialog, RaisedButton, List, ListTile } from "polythene-react"
+import { renderer as h, Dialog, Button, List, ListTile } from "polythene-react"
 
 const tile = (title, selected, disabled) =>
   h(ListTile, {
@@ -355,7 +358,8 @@ const dialogOptions = {
 }
 
 const Page = () =>
-  h(RaisedButton, {
+  h(Button, {
+    raised: true,
     label: "Open",
     events: {
       onClick: () => Dialog.show(dialogOptions)

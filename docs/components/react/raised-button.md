@@ -33,7 +33,7 @@
 import React from "react"
 import { Button } from "polythene-react"
 
-<RaisedButton raised label="Button" />
+<Button raised label="Button" />
 ~~~
 
 <a id="with-hyperscript"></a>

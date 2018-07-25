@@ -7,7 +7,7 @@ const iconStarOutlineSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24.00 
 
 const iconStarFilledSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>";
 
-export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
+export default ({ Checkbox, Button, renderer: h, keys: k }) => {
   
   const trustedIconStarsOutline = h.trust(iconStarOutlineSVG);
   const trustedIconStarFilled = h.trust(iconStarFilledSVG);
@@ -59,25 +59,6 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
             label: "Label"
           })
         )
-      }
-    },
-    {
-      name: "Styled Checkbox",
-      component: Checkbox,
-      attrs: {
-        label: "Label",
-        defaultChecked: true,
-        style: {
-          color: "#ff0000"
-        }
-      }
-    },
-    {
-      name: "Themed Checkbox (color and font size)",
-      component: Checkbox,
-      attrs: {
-        label: "Label",
-        className: "tests-checkbox-themed-checkbox"
       }
     },
     {
@@ -158,17 +139,29 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       name: "Setting the checked state",
       interactive: true,
       exclude: true,
-      component: toggleButton({ h, k, RaisedButton, Checkbox })
+      component: toggleButton({ h, k, Button, Checkbox })
     },
     {
-      name: "Option: label (RTL)",
-      component: {
-        view: () => h("div",
-          { className: "pe-rtl" },
-          h(Checkbox,
-            { label: "ضع الكلمة المناسبة" }
-          )
-        )
+      name: "Styled Checkbox",
+      component: Checkbox,
+      attrs: {
+        label: "Label",
+        defaultChecked: true,
+        style: {
+          color: "#ff0000"
+        }
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed Checkbox (color and font size)",
+      component: Checkbox,
+      attrs: {
+        label: "Label",
+        className: "tests-checkbox-themed-checkbox"
       }
     },
 
@@ -246,6 +239,21 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
               label: "Label"
             })
           )
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () => h("div",
+          { className: "pe-rtl" },
+          h(Checkbox,
+            { label: "ضع الكلمة المناسبة" }
+          )
+        )
       }
     },
   ];

@@ -1,5 +1,5 @@
 
-export default ({ h, k, TextField, RaisedButton }) => ({
+export default ({ h, k, TextField, Button }) => ({
   oninit: vnode => {
     Object.assign(vnode.state, {
       setInputState: undefined
@@ -12,7 +12,8 @@ export default ({ h, k, TextField, RaisedButton }) => ({
         label: "Your name",
         onChange: ({ setInputState }) => state.setInputState = setInputState
       }),
-      h(RaisedButton, {
+      h(Button, {
+        raised: true,
         label: "Give focus",
         events: {
           [k.onclick]: () => state.setInputState({ focus: true })

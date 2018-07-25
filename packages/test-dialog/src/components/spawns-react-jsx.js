@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { RaisedButton, Dialog } from "polythene-react";
+import { Button, Dialog } from "polythene-react";
 import { DialogCSS } from "polythene-css";
 import { subscribe, unsubscribe } from "polythene-core";
 
@@ -8,7 +8,8 @@ DialogCSS.addStyle(".dialog-tests-static", {
 });
 
 const Opener = ({ title, spawn, id }) => (
-  <RaisedButton
+  <Button
+    raised
     key={title}
     label={title}
     events={{
@@ -17,7 +18,8 @@ const Opener = ({ title, spawn, id }) => (
           {
             key: title,
             title, 
-            body: <RaisedButton
+            body: <Button
+              raised
               label="Close"
               events={{
                 onClick: () => Dialog.hide({ spawn, id })

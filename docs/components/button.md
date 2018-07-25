@@ -70,6 +70,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 | **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
+| **shadowDepth**  | optional       | Number 0-5 | 0           | The shadow depth (see: [Raised Button](./raised-button.md)) |
 | **textStyle**  | optional | Object |  | Style object for the text label |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) |  | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
@@ -98,7 +99,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 Button is optionally composed from:
 
 * [Ripple](ripple.md) (when option `ink` is not `false`)
-
+* [Shadow](shadow.md)
 
 
 <a id="css-classes"></a>

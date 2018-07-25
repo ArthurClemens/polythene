@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import { RaisedButton, Snackbar } from "polythene-react";
+import { Button, Snackbar } from "polythene-react";
 import { subscribe, unsubscribe } from "polythene-core";
 
 export default class extends Component {
@@ -41,7 +41,8 @@ export default class extends Component {
     const count = this.state.count;
     return (<div className="pe-button-row">
       {variations.map(opts =>
-        <RaisedButton
+        <Button
+          raised
           key={opts.label}
           label={opts.label}
           events={{
@@ -61,14 +62,16 @@ export default class extends Component {
           }}
         />
       )}
-      <RaisedButton
+      <Button
+        raised
         label="Hide"
         disabled={count === 0}
         events={{
           onClick: () => Snackbar.hide({ spawn, position })
         }}
       />
-      <RaisedButton
+      <Button
+        raised
         label="Clear"
         disabled={count === 0}
         events={{

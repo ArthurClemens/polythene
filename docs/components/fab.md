@@ -2,7 +2,7 @@
 
 A circular main button with a [Shadow](shadow.md) and [Ripple](ripple.md) effect.
 
-Differences from [Raised Button](raised-button.md) behaviour:
+Differences from [Raised Button](raised-button.md) behavior:
 
 * The ripple emanates from the center of the button
 * The ripple has a 2/3 decay speed
@@ -85,8 +85,7 @@ See:
 
 FAB is composed from:
 
-* [Raised Button](raised-button.md)
-  * [Button](button.md)
+* [Button](button.md)
 * [Icon](icon.md) (when using option `icon`)
 
 

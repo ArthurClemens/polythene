@@ -7,10 +7,10 @@ The [Material Design specs](https://material.io/design/components/buttons.html) 
   * Create this with [Button](button.md)
 * **Outlined button**
   * Used for medium emphasis
-  * Create this with [Button](button.md) or [Raised Button](raised-button.md) with option `border: true`
+  * Create this with [Button](button.md) with option `border: true`
 * **Contained button**
   * Used for high emphasis
-  * Create this with [Raised Button](raised-button.md)
+  * Create this with [Button](button.md) with option `raised: true`
 * **Toggle button**
   * Within a button group
   * Create this with [Buttons](button.md) inside [Button Group](button-group.md)

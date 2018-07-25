@@ -1,7 +1,7 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import stream from "mithril/stream";
 
-export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menuFn, transitionOptions, id, dropdown }) => ({
+export default ({ renderer: h, keys: k, Menu, Button, List, ListTile, menuFn, transitionOptions, id, dropdown }) => ({
   oninit: vnode => {
     const show = stream(false);
     Object.assign(vnode.state, {
@@ -18,7 +18,8 @@ export default ({ renderer: h, keys: k, Menu, RaisedButton, List, ListTile, menu
         height: "inherit"
       }}
     > 
-      <RaisedButton
+      <Button
+        raised
         label="Open menu"
         id={id}
         events={{ [k.onclick]: () => state.show(true) }}

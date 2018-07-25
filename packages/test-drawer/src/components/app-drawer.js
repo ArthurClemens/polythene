@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, repeats, drawerOpts }) => {
+export default ({ renderer: h, keys: k, Drawer, Button, createContent, repeats, drawerOpts }) => {
 
   return {
     oninit: vnode => {
@@ -13,7 +13,8 @@ export default ({ renderer: h, keys: k, Drawer, RaisedButton, createContent, rep
     view: ({ state }) => {
       const show = state.show();
       return [
-        h(RaisedButton, {
+        h(Button, {
+          raised: true,
           key: "button", // for React
           label: "Show",
           events: {

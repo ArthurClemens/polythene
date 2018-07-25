@@ -97,6 +97,10 @@ export default ({ Ripple }) => {
         }
       }
     },
+
+    {
+      section: "Themed",
+    },
     {
       name: "Themed (end with permanent red)",
       interactive: true,
@@ -108,7 +112,6 @@ export default ({ Ripple }) => {
         persistent: true
       }
     },
-    
 
     {
       section: "Dark tone",

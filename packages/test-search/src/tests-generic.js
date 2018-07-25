@@ -63,13 +63,24 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
       }
     },
     {
-      name: "Colored field",
+      name: "With search results",
+      component: {
+        view: () =>
+          h(ResultsBlock, { fullWidth: true })
+      }
+    },
+    {
+      name: "Option: style",
       component: {
         view: () =>
           h(Block, {
             style: { background: "#BBDEFB" }
           })
       }
+    },
+
+    {
+      section: "Themed",
     },
     {
       name: "Theme",
@@ -81,14 +92,6 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
           })
       }
     },
-    {
-      name: "With search results",
-      component: {
-        view: () =>
-          h(ResultsBlock, { fullWidth: true })
-      }
-    },
-
     {
       section: "Dark tone",
     },
@@ -124,6 +127,19 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
             dark: true
           })
       }
-    }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "With search results (RTL)",
+      component: {
+        view: () =>
+          h("div", { className: "pe-rtl" },
+            h(ResultsBlock, { fullWidth: true })
+          )
+      }
+    },
   ];
 };

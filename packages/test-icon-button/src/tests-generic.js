@@ -42,12 +42,13 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
   );
 
   return [
-    {
-      name: "Child node (icon component)",
-      component: IconButton,
-      attrs: null,
-      children: FavIcon
-    },
+    // Pro forma test
+    // {
+    //   name: "Child node (icon component)",
+    //   component: IconButton,
+    //   attrs: null,
+    //   children: FavIcon
+    // },
     {
       name: "Option: icon",
       component: IconButton,
@@ -87,42 +88,6 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
           svg: { content: trustedIconLock }
         },
         wash: true
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconLock }
-        },
-        style: {
-          color: "#FFCCBC",
-          backgroundColor: "#4E342E"
-        }
-      }
-    },
-    {
-      name: "Themed (colors and padding)",
-      component: IconButton,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconLock }
-        },
-        className: "tests-icon-button-themed-icon-button"
-      }
-    },
-    {
-      name: "Themed (hover color)",
-      component: IconButton,
-      interactive: true,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconLock }
-        },
-        label: "Hover",
-        wash: true,
-        className: "tests-icon-button-themed-hover"
       }
     },
     {
@@ -175,19 +140,43 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: label (RTL)",
-      component: {
-        view: () => h("div",
-          { className: "pe-rtl" },
-          h(IconButton,
-            {
-              label: "ضع الكلمة المناسبة",
-              icon: {
-                svg: { content: trustedIconLock }
-              },
-            }
-          )
-        )
+      name: "Option: style (colors)",
+      component: IconButton,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconLock }
+        },
+        style: {
+          color: "#FFCCBC",
+          backgroundColor: "#4E342E"
+        }
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed (colors and padding)",
+      component: IconButton,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconLock }
+        },
+        className: "tests-icon-button-themed-icon-button"
+      }
+    },
+    {
+      name: "Themed (hover color)",
+      component: IconButton,
+      interactive: true,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconLock }
+        },
+        label: "Hover",
+        wash: true,
+        className: "tests-icon-button-themed-hover"
       }
     },
 
@@ -235,6 +224,26 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
         label: "Hover",
         wash: true,
         className: "tests-icon-button-themed-hover"
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () => h("div",
+          { className: "pe-rtl" },
+          h(IconButton,
+            {
+              label: "ضع الكلمة المناسبة",
+              icon: {
+                svg: { content: trustedIconLock }
+              },
+            }
+          )
+        )
       }
     },
   ];

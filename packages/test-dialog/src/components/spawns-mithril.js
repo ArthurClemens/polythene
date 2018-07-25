@@ -1,5 +1,5 @@
 import { DialogCSS } from "polythene-css";
-import { renderer as h, keys as k, Dialog, RaisedButton } from "polythene-mithril";
+import { renderer as h, keys as k, Dialog, Button } from "polythene-mithril";
 
 DialogCSS.addStyle(".dialog-tests-static", {
   position: "static",
@@ -20,14 +20,16 @@ const spawnBlock = spawnId => h("div",
 );
 
 const createOpener = ({ title, spawn, id }) => 
-  h(RaisedButton, {
+  h(Button, {
+    raised: true,
     key: title,
     label: title,
     events: {
       [k.onclick]: () => Dialog.show({
         key: title,
         title, 
-        body: h(RaisedButton, {
+        body: h(Button, {
+          raised: true,
           label: "Close",
           events: {
             [k.onclick]: () => Dialog.hide({ spawn, id })

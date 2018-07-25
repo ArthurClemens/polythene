@@ -56,6 +56,10 @@ export default ({ renderer: h, keys: k, Button, ButtonGroup }) => {
       name: "Toggle state",
       component: Toggle
     },
+
+    {
+      section: "Themed",
+    },
     {
       name: "Themed (color, border radius, separators)",
       component: {
@@ -82,28 +86,6 @@ export default ({ renderer: h, keys: k, Button, ButtonGroup }) => {
                 separatorAtStart: true,
               })
             ]
-          )
-      },
-    },
-    {
-      name: "Option: separator (with Button options extraWide, highLabel and dropdown) (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", null,
-            h(ButtonGroup, [
-              h(Button, {
-                label: "First",
-                extraWide: true,
-                highLabel: true,
-                className: "button-group-themed-white"
-              }),
-              h(Button, {
-                dropdown: true,
-                highLabel: true,
-                className: "button-group-themed-white",
-                separatorAtStart: true
-              })
-            ])
           )
       },
     },
@@ -143,6 +125,32 @@ export default ({ renderer: h, keys: k, Button, ButtonGroup }) => {
               separatorAtStart: true
             })
           ])
+      },
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: separator (with Button options extraWide, highLabel and dropdown) (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", null,
+            h(ButtonGroup, [
+              h(Button, {
+                label: "First",
+                extraWide: true,
+                highLabel: true,
+                className: "button-group-themed-white"
+              }),
+              h(Button, {
+                dropdown: true,
+                highLabel: true,
+                className: "button-group-themed-white",
+                separatorAtStart: true
+              })
+            ])
+          )
       },
     },
   ];

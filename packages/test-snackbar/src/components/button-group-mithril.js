@@ -1,10 +1,11 @@
-import { renderer as h, RaisedButton, Snackbar } from "polythene-mithril";
+import { renderer as h, Button, Snackbar } from "polythene-mithril";
 
 export default {
   view: ({ attrs }) =>
     h(".pe-button-row", [
       attrs.variations.map(opts =>
-        h(RaisedButton, {
+        h(Button, {
+          raised: true,
           label: opts.label,
           events: { onclick: () => Snackbar.show(Object.assign(
             {},
@@ -14,12 +15,14 @@ export default {
           ), attrs.spawnOptions) }
         })
       ),
-      h(RaisedButton, {
+      h(Button, {
+        raised: true,
         label: "Hide",
         disabled: Snackbar.count() === 0,
         events: { onclick: () => Snackbar.hide(attrs.spawnOptions) }
       }),
-      h(RaisedButton, {
+      h(Button, {
+        raised: true,
         label: "Clear",
         disabled: Snackbar.count() === 0,
         events: {

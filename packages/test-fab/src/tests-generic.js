@@ -40,29 +40,6 @@ export default ({ FAB, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Themed FAB (colors, size)",
-      component: FAB,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconAlarm }
-        },
-        className: "tests-fab-themed-fab"
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: FAB,
-      attrs: {
-        icon: {
-          svg: { content: trustedIconAlarm }
-        },
-        style: {
-          color: "#FFCCBC",
-          backgroundColor: "#4E342E"
-        }
-      }
-    },
-    {
       name: "Option: mini",
       component: FAB,
       attrs: {
@@ -104,7 +81,34 @@ export default ({ FAB, Icon, renderer: h }) => {
         animateOnTap: false
       }
     },
+    {
+      name: "Option: style (colors)",
+      component: FAB,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconAlarm }
+        },
+        style: {
+          color: "#FFCCBC",
+          backgroundColor: "#4E342E"
+        }
+      }
+    },
 
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed FAB (colors, size)",
+      component: FAB,
+      attrs: {
+        icon: {
+          svg: { content: trustedIconAlarm }
+        },
+        className: "tests-fab-themed-fab"
+      }
+    },
+    
     {
       section: "Dark tone",
     },

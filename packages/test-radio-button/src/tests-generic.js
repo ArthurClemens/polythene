@@ -151,48 +151,6 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       }
     },
     {
-      name: "Themed radio button (color and font size)",
-      component: RadioGroup,
-      attrs: {
-        name: "themed",
-        all: {
-          className: "tests-radio-button-themed-radio"
-        },
-        content: [
-          {
-            value: "One",
-            label: "One",
-          },
-          {
-            value: "Two",
-            label: "Two",
-            defaultChecked: true
-          }
-        ]
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: RadioGroup,
-      attrs: {
-        name: "style",
-        all: {
-          style: { color: "#EF6C00" }
-        },
-        content: [
-          {
-            value: "One",
-            label: "One",
-          },
-          {
-            value: "Two",
-            label: "Two",
-            defaultChecked: true
-          }
-        ]
-      }
-    },
-    {
       name: "Option: iconButton (custom hover behaviour)",
       interactive: true,
       component: RadioGroup,
@@ -222,29 +180,52 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       component: events({ h, k, RadioButton })
     },
     {
-      name: "Option: label (RTL)",
-      component: {
-        view: () => h("div",
-          { className: "pe-rtl" },
-          h(RadioGroup,
-            {
-              name: "label",
-              content: [
-                {
-                  value: "One",
-                  label: "واحد",
-                },
-                {
-                  value: "Two",
-                  label: "اثنان",
-                }
-              ]
-            }
-          )
-        )
+      name: "Option: style (colors)",
+      component: RadioGroup,
+      attrs: {
+        name: "style",
+        all: {
+          style: { color: "#EF6C00" }
+        },
+        content: [
+          {
+            value: "One",
+            label: "One",
+          },
+          {
+            value: "Two",
+            label: "Two",
+            defaultChecked: true
+          }
+        ]
       }
     },
 
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed radio button (color and font size)",
+      component: RadioGroup,
+      attrs: {
+        name: "themed",
+        all: {
+          className: "tests-radio-button-themed-radio"
+        },
+        content: [
+          {
+            value: "One",
+            label: "One",
+          },
+          {
+            value: "Two",
+            label: "Two",
+            defaultChecked: true
+          }
+        ]
+      }
+    },
+    
     {
       section: "Dark tone",
     },
@@ -367,6 +348,33 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
               ]
             })
           )
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: label (RTL)",
+      component: {
+        view: () => h("div",
+          { className: "pe-rtl" },
+          h(RadioGroup,
+            {
+              name: "label",
+              content: [
+                {
+                  value: "One",
+                  label: "واحد",
+                },
+                {
+                  value: "Two",
+                  label: "اثنان",
+                }
+              ]
+            }
+          )
+        )
       }
     },
   ];

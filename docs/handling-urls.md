@@ -84,12 +84,13 @@ Use the `Link` component (with option `element`) to render route-aware links.
 
 ~~~jsx
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
-import { RaisedButton } from "polythene-react"
+import { Button } from "polythene-react"
 
 const Index = ({ history }) => 
   <div>
     <h1>Home</h1>
-    <RaisedButton
+    <Button
+      raised
       element={Link}
       label="Go to page 1"
       url={{
@@ -101,7 +102,8 @@ const Index = ({ history }) =>
 const Page1 = ({ history }) => 
   <div>
     <h1>Page 1</h1>
-    <RaisedButton
+    <Button
+      raised
       element={Link}
       label="Go to home"
       url={{
@@ -128,12 +130,13 @@ ReactDOM.render(
 
 ~~~javascript
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
-import { RaisedButton } from "polythene-react"
+import { Button, renderer as h } from "polythene-react"
 
 const Index = ({ history }) => 
   h("div", [
     h("h1", "Home"),
-    h(RaisedButton, {
+    h(Button, {
+      raised: true,
       element: Link,
       label: "Go to page 1",
       url: {
@@ -145,7 +148,8 @@ const Index = ({ history }) =>
 const Page1 = ({ history }) => 
   h("div", [
     h("h1", "Page 1"),
-    h(RaisedButton, {
+    h(Button, {
+      raised: true,
       element: Link,
       label: "Go to home",
       url: {

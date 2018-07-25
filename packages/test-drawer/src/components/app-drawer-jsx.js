@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Drawer, RaisedButton } from "polythene-react";
+import { Drawer, Button } from "polythene-react";
 
 class AppDrawer extends Component {
 
@@ -14,7 +14,8 @@ class AppDrawer extends Component {
     const { createContent, ...drawerOpts } = this.props;
     return (
       <div>
-        <RaisedButton
+        <Button
+          raised
           label="Show"
           events={{
             onClick: () => this.setState({ show: true })

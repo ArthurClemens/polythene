@@ -35,7 +35,6 @@
   display: block;
   width: 100%;
   background: none;
-  text-align: left;
   color: inherit;
   border-style: none none solid;
   border-radius: 0;
@@ -62,7 +61,6 @@
   bottom: 0;
   pointer-events: none;
   white-space: nowrap;
-  text-align: left;
   cursor: text
 }
 

@@ -35,6 +35,10 @@ export default ({ SVG, renderer: h }) => {
         }
       }
     },
+
+    {
+      section: "Themed",
+    },
     {
       name: "Themed (color)",
       component: SVG,

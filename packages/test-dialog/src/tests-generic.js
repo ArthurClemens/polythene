@@ -7,25 +7,26 @@ import replaceDialog from "./components/replace-dialog";
 // import replacePane from "./components/replace-pane";
 import { DialogCSS, ToolbarCSS } from "polythene-css";
 
-export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, ToolbarTitle, IconButton, List, ListTile }) => {
+export default ({ renderer, keys, Dialog, Button, Toolbar, ToolbarTitle, IconButton, List, ListTile }) => {
 
   const h = renderer;
 
-  const Opener = (dialogAttrs, label = "Open") => h(RaisedButton, {
+  const Opener = (dialogAttrs, label = "Open") => h(Button, {
+    raised: true,
     label,
     events: {
       [keys.onclick]: () => Dialog.show(dialogAttrs)
     }
   });
 
-  const OpenerWithPromise = (dialogAttrs, label = "Open") => h(RaisedButton, {
-    label,
-    events: {
-      [keys.onclick]: () => Dialog.show(dialogAttrs).then(id => 
-        console.log("dialog shown: " + id) // eslint-disable-line no-console
-      ) 
-    }
-  });
+  // const OpenerWithPromise = (dialogAttrs, label = "Open") => h(Button, {
+  //   label,
+  //   events: {
+  //     [keys.onclick]: () => Dialog.show(dialogAttrs).then(id => 
+  //       console.log("dialog shown: " + id) // eslint-disable-line no-console
+  //     ) 
+  //   }
+  // });
 
   DialogCSS.addStyle(".dialog-tests-rounded-blue", {
     border_radius:                   10,
@@ -71,34 +72,6 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       }
     },
     {
-      name: "Themed pane (color, border radius, backdrop color)",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => 
-          Opener({
-            content: h("div", "Hello"),
-            className: "dialog-tests-rounded-blue",
-            backdrop: true
-          })
-      }
-    },
-    {
-      name: "Styled pane",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => 
-          Opener({
-            body: "Hello",
-            style: {
-              background: "#fff59d",
-              padding: "1.5rem"
-            }
-          })
-      }
-    },
-    {
       name: "Option: transitions",
       interactive: true,
       exclude: true,
@@ -116,17 +89,6 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
               transition: () => el.style.opacity = 0,
             })
           }
-        })
-      }
-    },
-    {
-      name: "Transitions as theme",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => Opener({
-          body: "Hello",
-          className: "dialog-tests-transitions"
         })
       }
     },
@@ -252,15 +214,7 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
           Opener(fullwidth({ renderer, keys, Dialog, Button }))
       }
     },
-    {
-      name: "Vertically stacked buttons (RTL)",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () =>
-          Opener(fullwidth({ renderer, keys, Dialog, Button, className: "pe-rtl" }))
-      }
-    },
+
     // {
     //   name: "Option: menu",
     //   interactive: true,
@@ -304,38 +258,40 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
 
     // Feedback and timing
 
-    {
-      name: "Promise shown",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => OpenerWithPromise({
-          body: "Hello"
-        })
-      }
-    },
-    {
-      name: "Option: didShow",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => Opener({
-          body: "Hello",
-          didShow: id => console.log("dialog shown: " + id) // eslint-disable-line no-console
-        })
-      }
-    },
-    {
-      name: "Option: didHide",
-      interactive: true,
-      exclude: true,
-      component: {
-        view: () => Opener({
-          body: "Hello",
-          didHide: id => console.log("dialog hidden: " + id) // eslint-disable-line no-console
-        })
-      }
-    },
+    // Pro forma tests
+    // {
+    //   name: "Promise shown",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => OpenerWithPromise({
+    //       body: "Hello"
+    //     })
+    //   }
+    // },
+    // {
+    //   name: "Option: didShow",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => Opener({
+    //       body: "Hello",
+    //       didShow: id => console.log("dialog shown: " + id) // eslint-disable-line no-console
+    //     })
+    //   }
+    // },
+    // {
+    //   name: "Option: didHide",
+    //   interactive: true,
+    //   exclude: true,
+    //   component: {
+    //     view: () => Opener({
+    //       body: "Hello",
+    //       didHide: id => console.log("dialog hidden: " + id) // eslint-disable-line no-console
+    //     })
+    //   }
+    // },
+
     {
       name: "Option: Toolbar as custom header and footer, fullBleed body",
       interactive: true,
@@ -361,9 +317,25 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
         })
       }
     },
+    {
+      name: "Styled pane",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          Opener({
+            body: "Hello",
+            style: {
+              background: "#fff59d",
+              padding: "1.5rem"
+            }
+          })
+      }
+    },
 
-    // Themed behavior
-
+    {
+      section: "Themed",
+    },
     {
       name: "Themed behavior: set modal",
       interactive: true,
@@ -385,6 +357,43 @@ export default ({ renderer, keys, Dialog, Button, RaisedButton, Toolbar, Toolbar
       component: {
         view: () =>
           Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false, className: "tests-dialog-themed-behavior-full-screen", }))
+      }
+    },
+    {
+      name: "Transitions as theme",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => Opener({
+          body: "Hello",
+          className: "dialog-tests-transitions"
+        })
+      }
+    },
+    {
+      name: "Themed pane (color, border radius, backdrop color)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          Opener({
+            content: h("div", "Hello"),
+            className: "dialog-tests-rounded-blue",
+            backdrop: true
+          })
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Vertically stacked buttons (RTL)",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () =>
+          Opener(fullwidth({ renderer, keys, Dialog, Button, className: "pe-rtl" }))
       }
     },
   ];

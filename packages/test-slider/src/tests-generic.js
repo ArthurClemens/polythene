@@ -120,19 +120,6 @@ export default ({ Slider, Icon, renderer: h }) => {
       }
     },
     {
-      name: "Option: style (colors)",
-      interactive: true,
-      component: Slider,
-      attrs: {
-        style: {
-          color: "red"
-        },
-        min: 0,
-        max: 100,
-        defaultValue: 50
-      }
-    },
-    {
       name: "Option: icon (custom svg)",
       interactive: true,
       component: Slider,
@@ -144,20 +131,6 @@ export default ({ Slider, Icon, renderer: h }) => {
           svg: { content: bullsEyeIcon }
         }),
         className: "slider-custom-icon"
-      }
-    },
-    {
-      name: "Themed slider (track and pin colors)",
-      interactive: true,
-      component: Slider,
-      attrs: {
-        min: 0,
-        max: 100,
-        stepSize: 10,
-        defaultValue: 50,
-        pin: true,
-        ticks: true,
-        className: "slider-custom-pin-color"
       }
     },
     {
@@ -188,6 +161,57 @@ export default ({ Slider, Icon, renderer: h }) => {
       attrs: {
         disabled: true,
         value: 50
+      }
+    },
+    {
+      name: "Option: style (colors)",
+      interactive: true,
+      component: Slider,
+      attrs: {
+        style: {
+          color: "red"
+        },
+        min: 0,
+        max: 100,
+        defaultValue: 50
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed slider (track and pin colors)",
+      interactive: true,
+      component: Slider,
+      attrs: {
+        min: 0,
+        max: 100,
+        stepSize: 10,
+        defaultValue: 50,
+        pin: true,
+        ticks: true,
+        className: "slider-custom-pin-color"
+      }
+    },
+
+    {
+      section: "Dark tone",
+    },
+    {
+      name: "With icon, pin and ticks -- dark tone class",
+      component: Slider,
+      className: "pe-dark-tone",
+      attrs: {
+        min: 0,
+        max: 100,
+        stepSize: 10,
+        defaultValue: 2,
+        pin: true,
+        ticks: true,
+        before: h(Icon, {
+          svg: { content: volumeIcon }
+        })
       }
     },
   ];

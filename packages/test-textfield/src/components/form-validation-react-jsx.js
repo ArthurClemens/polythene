@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Field, ValidationError } from "powerform";
-import { TextField, RaisedButton } from "polythene-react";
+import { TextField, Button } from "polythene-react";
 
 const TEST_USER_NAME = "ABC";
 const MIN_PASSWORD_LENGTH = 3;
@@ -147,7 +147,8 @@ class FormUI extends Component {
           label="Confirm your password"
           type="password"
         />
-        <RaisedButton
+        <Button
+          raised
           element="button"
           type="submit"
           label="Send"

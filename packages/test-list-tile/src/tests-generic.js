@@ -101,7 +101,6 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         }
       }
     },
-    
     {
       name: "Option: front (avatar)",
       component: ListTile,
@@ -137,41 +136,6 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         compactFront: true
       }
     },
-    {
-      name: "Themed (color and font size)",
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        front: h(Icon, {
-          svg: { content: trustedIconStars },
-          size: "medium"
-        }),
-        className: "tests-list-tile-themed-list-tile"
-      }
-    },
-    {
-      name: "Themed (title running on 2 lines)",
-      component: ListTile,
-      attrs: {
-        title: longText,
-        className: "tests-list-tile-themed-two-lines"
-      }
-    },
-    {
-      name: "Option: style (colors)",
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        front: h(Icon, {
-          svg: { content: trustedIconStars },
-          size: "medium"
-        }),
-        style: {
-          color: "#fff",
-          backgroundColor: "#EF6C00"
-        }
-      }
-    },
 
     // Appearance options
 
@@ -189,15 +153,6 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Ancillary Justice",
         selected: true
-      }
-    },
-    {
-      name: "Option: highlight (themed color)",
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        highlight: true,
-        className: "tests-list-tile-themed-highlight-list-tile",
       }
     },
     {
@@ -265,23 +220,52 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         }
       }
     },
+    {
+      name: "Option: style (colors)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        front: h(Icon, {
+          svg: { content: trustedIconStars },
+          size: "medium"
+        }),
+        style: {
+          color: "#fff",
+          backgroundColor: "#EF6C00"
+        }
+      }
+    },
 
     {
-      name: "Option: secondary (Icon) (RTL)",
-      component: {
-        view: () =>
-          h("div", { className: "pe-rtl" },
-            h(ListTile, {
-              title: "Ancillary Justice",
-              subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-              secondary: {
-                icon: {
-                  svg: { content: trustedIconStars },
-                  size: "medium"
-                }
-              }
-            })
-          )
+      section: "Themed",
+    },
+    {
+      name: "Themed (color and font size)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        front: h(Icon, {
+          svg: { content: trustedIconStars },
+          size: "medium"
+        }),
+        className: "tests-list-tile-themed-list-tile"
+      }
+    },
+    {
+      name: "Themed (title running on 2 lines)",
+      component: ListTile,
+      attrs: {
+        title: longText,
+        className: "tests-list-tile-themed-two-lines"
+      }
+    },
+    {
+      name: "Option: highlight (themed color)",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        highlight: true,
+        className: "tests-list-tile-themed-highlight-list-tile",
       }
     },
 
@@ -334,6 +318,28 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
           svg: { content: trustedIconStars },
           size: "medium"
         })
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: secondary (Icon) (RTL)",
+      component: {
+        view: () =>
+          h("div", { className: "pe-rtl" },
+            h(ListTile, {
+              title: "Ancillary Justice",
+              subtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
+              secondary: {
+                icon: {
+                  svg: { content: trustedIconStars },
+                  size: "medium"
+                }
+              }
+            })
+          )
       }
     },
   ];

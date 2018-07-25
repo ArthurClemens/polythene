@@ -67,27 +67,28 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
         ]
       }
     },
-    {
-      name: "Child nodes",
-      component: List,
-      children: [
-        h(ListTile, {
-          title: "Jennifer Barker",
-          key: "Jennifer Barker",
-          subtitle: "Starting post doc"
-        }),
-        h(ListTile, {
-          title: "Ali Connors",
-          key: "Ali Connors",
-          subtitle: "Brunch this weekend?"
-        }),
-        h(ListTile, {
-          title: "Grace VanDam",
-          key: "Grace VanDam",
-          subtitle: "Binge watching..."
-        })
-      ]
-    },
+    // Pro forma test
+    // {
+    //   name: "Child nodes",
+    //   component: List,
+    //   children: [
+    //     h(ListTile, {
+    //       title: "Jennifer Barker",
+    //       key: "Jennifer Barker",
+    //       subtitle: "Starting post doc"
+    //     }),
+    //     h(ListTile, {
+    //       title: "Ali Connors",
+    //       key: "Ali Connors",
+    //       subtitle: "Brunch this weekend?"
+    //     }),
+    //     h(ListTile, {
+    //       title: "Grace VanDam",
+    //       key: "Grace VanDam",
+    //       subtitle: "Binge watching..."
+    //     })
+    //   ]
+    // },
     {
       name: "Options: header, tiles, indent, indentedBorder",
       component: List,
@@ -153,6 +154,31 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       }
     },
     {
+      name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
+      interactive: true,
+      component: KeyboardState
+    },
+    {
+      name: "Option: style (colors)",
+      component: List,
+      attrs: {
+        header: { style: { color: "#356859"}, title: "Friends" },
+        tiles: [
+          h(ListTile, { style: { color: "#356859" }, title: "One", key: "One" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Two", key: "Two" }),
+          h(ListTile, { style: { color: "#356859" }, title: "Three", key: "Three" })
+        ],
+        style: {
+          backgroundColor: "#fffbe6",
+          color: "#356859"
+        }
+      }
+    },
+
+    {
+      section: "Themed",
+    },
+    {
       name: "Themed list (colors and padding)",
       component: List,
       attrs: {
@@ -178,48 +204,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
           className: "tests-lists-themed-list-tile"
         })
       ]
-    },
-    {
-      name: "Option: style (colors)",
-      component: List,
-      attrs: {
-        header: { style: { color: "#356859"}, title: "Friends" },
-        tiles: [
-          h(ListTile, { style: { color: "#356859" }, title: "One", key: "One" }),
-          h(ListTile, { style: { color: "#356859" }, title: "Two", key: "Two" }),
-          h(ListTile, { style: { color: "#356859" }, title: "Three", key: "Three" })
-        ],
-        style: {
-          backgroundColor: "#fffbe6",
-          color: "#356859"
-        }
-      }
-    },
-    {
-      name: "Option: compact (RTL)",
-      component: {
-        view: () =>
-          h(".pe-rtl", null,
-            h(List,
-              {
-                compact: true,
-                header: {
-                  title: "Friends"
-                },
-                tiles: [
-                  ListTileJennifer,
-                  ListTileAli,
-                  ListTileGrace
-                ]
-              }
-            )
-          )
-      }
-    },
-    {
-      name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
-      interactive: true,
-      component: KeyboardState
     },
 
     {
@@ -286,7 +270,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
     },
     {
       name: "Dark tone class + light tone class",
-      interactive: true,
       className: "pe-dark-tone",
       component: List,
       attrs: {
@@ -319,7 +302,6 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
     },
     {
       name: "Dark tone class + light tone",
-      interactive: true,
       className: "test-dark-tone",
       component: List,
       attrs: {
@@ -348,6 +330,31 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
             hoverable: true,
           })
         ]
+      }
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: compact (RTL)",
+      component: {
+        view: () =>
+          h(".pe-rtl", null,
+            h(List,
+              {
+                compact: true,
+                header: {
+                  title: "Friends"
+                },
+                tiles: [
+                  ListTileJennifer,
+                  ListTileAli,
+                  ListTileGrace
+                ]
+              }
+            )
+          )
       }
     },
   ];

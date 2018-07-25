@@ -62,7 +62,7 @@ Using local state:
 
 ~~~javascript
 import React from "react"
-import { Drawer, List, ListTile, RaisedButton } from "polythene-react"
+import { Drawer, List, ListTile, Button } from "polythene-react"
 
 const NavigationList = ({ navItemClick }) =>
   <List>
@@ -82,7 +82,8 @@ class AppDrawer extends Component {
   render() {
     return (
       <div>
-        <RaisedButton
+        <Button
+          raised
           label="Show"
           events={{
             onClick: () => this.setState({ show: true })

@@ -1,6 +1,6 @@
 # Raised Button
 
-Also called Contained Button. Displays a text button with a background and [Shadow](shadow.md) effect.
+Displays a text button with a background and [Shadow](shadow.md) effect.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
@@ -36,7 +36,7 @@ Also called Contained Button. Displays a text button with a background and [Shad
 <a id="options"></a>
 ## Options
 
-All options for [Button](button.md) also apply to Raised Button, with additionally:
+Raised Button is a [Button](button.md) with option `raised: true`. All options for [Button](button.md) also apply to Raised Button, with additionally:
 
 
 <a id="raised-button-options"></a>
@@ -44,10 +44,9 @@ All options for [Button](button.md) also apply to Raised Button, with additional
 
 | **Parameter**    |  **Required** | **Type**   | **Default** | **Description** |
 | ---------------- | -------------- | ---------- | ----------- | --------------- |
-| **animateOnTap** | optional       | Boolean    | true        | Set to false to remove z-animation and subsequent redraw |
-| **increase**     | optional       | Number     | 1           | The z-index increment/decrement on tap; the maximum z value is 5 |
+| **animateOnTap** | optional       | Boolean    | true        | Set to false to remove shadow depth animation and subsequent redraw |
+| **increase**     | optional       | Number     | 1           | The shadow depth increment/decrement on tap; the maximum z value is 5 |
 | **shadowDepth**  | optional       | Number 0-5 | 1           | The shadow depth |
-
 
 
 <a id="composition"></a>
@@ -57,7 +56,7 @@ Raised button is composed from:
 
 * [Button](button.md)
   * [Ripple](ripple.md) (when option `ink` is not `false`)
-* [Shadow](shadow.md) 
+* [Shadow](shadow.md)
 
 
 

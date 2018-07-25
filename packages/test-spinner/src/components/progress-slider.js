@@ -3,7 +3,7 @@ import stream from "mithril/stream";
 const STEP_DURATION = 2000;
 const MAX_VALUE = 1000;
 
-export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated, updateDuration, showActivateButton }) => ({
+export default ({ renderer: h, keys: k, Spinner, Button, Slider, animated, updateDuration, showActivateButton }) => ({
   oninit: vnode => {
     const start = stream(null);
     const percentage = stream(0);
@@ -59,7 +59,8 @@ export default ({ renderer: h, keys: k, Spinner, RaisedButton, Slider, animated,
           ))
         })
       ),
-      showActivateButton && h(RaisedButton, {
+      showActivateButton && h(Button, {
+        raised: true,
         label: "Run",
         events: {
           [k.onclick]: () => (

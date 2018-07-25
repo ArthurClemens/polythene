@@ -376,37 +376,10 @@ export default ({ renderer: h, Tabs }) => {
       exclude: true,
       component: OnChange
     },
+    
     {
-      name: "Option: content (RTL)",
-      component: {
-        view: () => 
-          h(".pe-rtl", null,
-            h(Tabs,
-              { content: threeButtons }
-            )
-          )
-      }
+      section: "Dark tone",
     },
-    // {
-    //   name: "Option: scrollable (RTL) (does not work with Chrome)",
-    //   component: {
-    //     view: () => 
-    //       h(".pe-rtl", {
-    //         style: {
-    //           color: "#fff",
-    //           backgroundColor: "#444",
-    //           overflowX: "hidden",
-    //           height: "48px"
-    //         }
-    //       }, h(Tabs, {
-    //         tabs: longList,
-    //         scrollable: true
-    //       }))
-    //   }
-    // },
-
-    // Dark tone
-
     {
       name: "Option: tabs (text buttons) -- dark theme class",
       className: "pe-dark-tone",
@@ -489,5 +462,37 @@ export default ({ renderer: h, Tabs }) => {
           }))
       }
     },
+
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: content (RTL)",
+      component: {
+        view: () => 
+          h(".pe-rtl", null,
+            h(Tabs,
+              { content: threeButtons }
+            )
+          )
+      }
+    },
+    // {
+    //   name: "Option: scrollable (RTL) (does not work with Chrome)",
+    //   component: {
+    //     view: () => 
+    //       h(".pe-rtl", {
+    //         style: {
+    //           color: "#fff",
+    //           backgroundColor: "#444",
+    //           overflowX: "hidden",
+    //           height: "48px"
+    //         }
+    //       }, h(Tabs, {
+    //         tabs: longList,
+    //         scrollable: true
+    //       }))
+    //   }
+    // },
   ];
 };

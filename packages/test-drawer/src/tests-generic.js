@@ -3,7 +3,7 @@ import appDrawer from "./components/app-drawer";
 import navigationList from "./components/navigation-list";
 import { DrawerCSS, ToolbarCSS } from "polythene-css";
 
-export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconButton, RaisedButton }) => {
+export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconButton, Button }) => {
 
   const createContent = ({ repeats, onClick }) => navigationList({ renderer, keys, Icon, List, ListTile, repeats, onClick });
 
@@ -51,7 +51,7 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       name: "App drawer",
       interactive: true,
       exclude: true,
-      component: appDrawer({ renderer, keys, Drawer, RaisedButton, createContent, drawerOpts: {
+      component: appDrawer({ renderer, keys, Drawer, Button, createContent, drawerOpts: {
         fixed: true,
         backdrop: true,
         shadowDepth: 1
@@ -138,39 +138,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
-      name: "Themed drawer",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
-        backdrop: true,
-        className: "tests-drawer-themed",
-        tone: "dark",
-        shadowDepth: 1,
-      }})
-    },
-    {
-      name: "Themed (set variant to mini and shadow depth)",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
-        permanent: true,
-        className: "tests-drawer-themed-mini",
-      }})
-    },
-    {
-      name: "Styled drawer",
-      interactive: true,
-      exclude: true,
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
-        backdrop: true,
-        style: {
-          background: "#fff59d",
-          padding: "1.5rem"
-        },
-        shadowDepth: 1,
-      }})
-    },
-    {
       name: "Transitions",
       interactive: true,
       exclude: true,
@@ -220,6 +187,61 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
     {
+      name: "Styled drawer",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
+        backdrop: true,
+        style: {
+          background: "#fff59d",
+          padding: "1.5rem"
+        },
+        shadowDepth: 1,
+      }})
+    },
+
+    {
+      section: "Themed",
+    },
+    {
+      name: "Themed drawer",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
+        backdrop: true,
+        className: "tests-drawer-themed",
+        tone: "dark",
+        shadowDepth: 1,
+      }})
+    },
+    {
+      name: "Themed (set variant to mini and shadow depth)",
+      interactive: true,
+      exclude: true,
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, createTopContent, drawerOpts: {
+        permanent: true,
+        className: "tests-drawer-themed-mini",
+      }})
+    },
+    
+    {
+      section: "Dark tone",
+    },
+    {
+      name: "Default drawer -- dark tone class",
+      interactive: true,
+      exclude: true,
+      className: "pe-dark-tone",
+      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, dark: true, drawerOpts: {
+        backdrop: true,
+        shadowDepth: 1
+      }})
+    },
+
+    {
+      section: "Right-to-left",
+    },
+    {
       name: "Default drawer (RTL)",
       interactive: true,
       exclude: true,
@@ -254,20 +276,6 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, rtl: true, drawerOpts: {
         push: true,
         border: true,
-      }})
-    },
-
-    {
-      section: "Dark tone",
-    },
-    {
-      name: "Default drawer -- dark tone class",
-      interactive: true,
-      exclude: true,
-      className: "pe-dark-tone",
-      component: navigation({ renderer, keys, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, dark: true, drawerOpts: {
-        backdrop: true,
-        shadowDepth: 1
       }})
     },
 

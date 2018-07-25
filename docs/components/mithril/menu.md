@@ -88,7 +88,7 @@ Menu state is best stored locally, in the container component:
 ~~~javascript
 import m from "mithril"
 import stream from "mithril/stream"
-import { Menu, List, ListTile, RaisedButton } from "polythene-mithril"
+import { Menu, List, ListTile, Button } from "polythene-mithril"
 
 const menuContents = m(List, [
   m(ListTile, {
@@ -115,8 +115,9 @@ const SimpleMenu = {
     return m("div",
       { style: { position: "relative" } },      // 4. container with `position: relative`
       [
-        m(RaisedButton, 
+        m(Button, 
           {
+            raised: true,
             label: "Open menu",
             id: target,                         // 3. target
             events: {
@@ -209,7 +210,7 @@ A dialog can be used as menu by passing param `menu` to the dialog component. Th
 
 ~~~javascript
 import m from "mithril"
-import { Dialog, RaisedButton, List, ListTile } from "polythene-mithril"
+import { Dialog, Button, List, ListTile } from "polythene-mithril"
 
 const tile = (title, selected, disabled) =>
   m(ListTile, {
@@ -240,7 +241,8 @@ const dialogOptions = {
 
 const Page = {
   view: () => 
-    m(RaisedButton, {
+    m(Button, {
+      raised: true,
       label: "Open",
       events: {
         onclick: () => Dialog.show(dialogOptions)
