@@ -276,7 +276,6 @@ var varFns = {
         display: "block",
         width: "100%",
         background: "none",
-        // textAlign: "left",
         color: "inherit",
         borderStyle: "none none solid none",
         borderRadius: 0,
@@ -311,7 +310,6 @@ var varFns = {
         bottom: 0,
         pointerEvents: "none",
         whiteSpace: "nowrap",
-        // textAlign: "left",
         cursor: "text"
       },
       ".pe-textfield--dirty .pe-textfield__label": {
