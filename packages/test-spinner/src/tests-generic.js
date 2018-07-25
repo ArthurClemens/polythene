@@ -245,8 +245,9 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
       })
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Material Design Spinner -- dark tone class -- Material Design Spinner",
       interactive: true,

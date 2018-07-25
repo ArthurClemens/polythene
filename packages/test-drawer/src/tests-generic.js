@@ -257,8 +257,9 @@ export default ({ keys, renderer, Drawer, List, ListTile, Icon, Toolbar, IconBut
       }})
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Default drawer -- dark tone class",
       interactive: true,

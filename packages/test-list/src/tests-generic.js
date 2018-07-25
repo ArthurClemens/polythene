@@ -222,8 +222,9 @@ export default ({ List, ListTile, Icon, renderer: h, keys: k }) => {
       component: KeyboardState
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: class -- dark tone class",
       interactive: true,

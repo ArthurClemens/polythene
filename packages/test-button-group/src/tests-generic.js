@@ -108,8 +108,9 @@ export default ({ renderer: h, keys: k, Button, ButtonGroup }) => {
       },
     },
 
-    // Dark tone class
-    
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: label -- dark tone class",
       className: "pe-dark-tone",

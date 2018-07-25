@@ -101,8 +101,9 @@ export default ({ Icon, SVG, renderer: h }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Child node (trusted svg children) -- dark tone class (color set with style option)",
       component: Icon,

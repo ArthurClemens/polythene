@@ -1294,8 +1294,9 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Texts -- dark theme class",
       component: Card,

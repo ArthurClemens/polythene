@@ -254,8 +254,9 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, RaisedButton, Sh
       component: opener({ renderer, keys, Menu, button: Button, RaisedButton, List, ListTile, menuFn: simple, id: "top-menu-themed", exposed: false, className: "tests-menu-themed-behavior-top" })
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Menu items -- dark tone",
       className: "pe-dark-tone",

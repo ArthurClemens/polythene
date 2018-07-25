@@ -110,8 +110,9 @@ export default ({ Shadow, renderer: h, keys: k }) => {
       component: interactive({ h, k, Shadow })
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Interactive option: animated -- dark tone class",
       interactive: true,

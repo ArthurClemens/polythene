@@ -105,8 +105,9 @@ export default ({ FAB, Icon, renderer: h }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: icon -- dark tone class",
       component: FAB,

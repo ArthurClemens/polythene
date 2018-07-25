@@ -172,8 +172,9 @@ export default ({ Checkbox, RaisedButton, renderer: h, keys: k }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: defaultChecked -- dark tone class",
       className: "pe-dark-tone",

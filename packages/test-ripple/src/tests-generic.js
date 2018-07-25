@@ -110,8 +110,9 @@ export default ({ Ripple }) => {
     },
     
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: style (white) -- dark tone class",
       interactive: true,

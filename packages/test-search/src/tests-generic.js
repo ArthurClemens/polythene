@@ -89,8 +89,9 @@ export default ({ renderer: h, keys: k, Search, SearchField, Shadow, List, ListT
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Theme -- dark tone class",
       className: "pe-dark-tone",

@@ -191,8 +191,9 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Child node (icon component) -- dark tone class",
       component: IconButton,

@@ -76,8 +76,9 @@ const mithrilTests = ({ Icon, ListTile, renderer: h }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: highSubtitle and front -- dark tone class",
       className: "pe-dark-tone",

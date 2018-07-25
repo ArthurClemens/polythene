@@ -44,8 +44,9 @@ export default ({ SVG, renderer: h }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: content -- dark tone class",
       className: "pe-dark-tone",

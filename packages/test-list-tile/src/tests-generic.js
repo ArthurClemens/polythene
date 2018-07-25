@@ -285,8 +285,9 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: disabled url -- dark tone class",
       component: ListTile,

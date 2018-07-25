@@ -245,8 +245,9 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       }
     },
 
-    // Dark tone
-
+    {
+      section: "Dark tone",
+    },
     {
       name: "Option: label -- dark tone",
       className: "pe-dark-tone",
