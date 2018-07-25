@@ -6,7 +6,7 @@ import { TextFieldCSS } from "polythene-css";
 export default ({ TextField, Button, renderer: h, keys: k }) => {
 
   const block = (test, attrs = {}) =>
-    h("div",
+    h("form",
       {
         style: Object.assign(
           {},
@@ -65,6 +65,7 @@ export default ({ TextField, Button, renderer: h, keys: k }) => {
           // Note that having a password field in a form will kick in form autocomplete
           h(TextField, {
             type: "password",
+            name: "new-password",
             defaultValue: "123456",
             key: "a" // for React
           }),
