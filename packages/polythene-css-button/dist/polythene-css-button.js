@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-theme')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-theme'], factory) :
-  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-theme']));
-}(this, (function (exports,polytheneCoreCss,polytheneTheme) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-css'), require('polythene-css-shadow'), require('polythene-theme')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-css', 'polythene-css-shadow', 'polythene-theme'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-css'],global['polythene-css-shadow'],global['polythene-theme']));
+}(this, (function (exports,polytheneCoreCss,polytheneCssShadow,polytheneTheme) { 'use strict';
 
   var classes = {
       component: "pe-text-button",
@@ -240,6 +240,8 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns, lightTintHoverFns: lightTintHoverFns, darkTintHoverFns: darkTintHoverFns }
   });
 
+  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
   function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
   var alignSide = function alignSide(isRTL) {
@@ -335,7 +337,7 @@
     });
   };
 
-  var varFns$1 = {
+  var varFns$1 = _extends$1({
     general_styles: function general_styles(selector, vars) {
       return [polytheneCoreCss.sel(selector, [alignLeft(), {
         display: "inline-block",
@@ -527,26 +529,46 @@
     contained: function contained(selector, vars) {
       return vars.contained && _contained(selector, vars);
     }
-  };
+  }, polytheneCssShadow.sharedVarFns);
 
   var superLayout$1 = polytheneCoreCss.createLayout({ varFns: varFns$1 });
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  var widePadding = 4 * polytheneTheme.vars.grid_unit; // 16
+  var themeVars = _extends$2({}, {
+    border: false,
+    contained: true
+  }, polytheneCssShadow.sharedVars);
+
+  var containedButtonVars = _extends$2({}, {
+    general_styles: true,
+
+    padding_h: 4 * polytheneTheme.vars.grid_unit, // 16
+
+    color_light_background: "#fff",
+    color_light_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
+    color_light_wash_background: "transparent",
+
+    color_dark_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_dark),
+    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
+    color_dark_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
+    color_dark_wash_background: "transparent"
+  }, themeVars);
+
+  var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
   var touch_height = polytheneTheme.vars.unit_touch_height; // 48
   var height = 36;
   var border_width = 1;
 
-  var themeVars = {
+  var themeVars$1 = _extends$3({}, {
     border: false,
     contained: false
-  };
+  }, polytheneCssShadow.sharedVars);
 
   var borderVars = {
     border_width: border_width,
-    padding_h_border: widePadding,
+    padding_h_border: containedButtonVars.padding_h,
 
     color_light_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_border_medium), // only specify this variable to get all 4 states
     // color_light_hover_border:             "transparent",
@@ -559,7 +581,7 @@
     color_dark_disabled_border: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_text_disabled)
   };
 
-  var vars = _extends$1({}, {
+  var vars = _extends$3({}, {
     general_styles: true,
 
     animation_duration: polytheneTheme.vars.animation_duration,
@@ -603,7 +625,7 @@
     // color_dark_hover:                   rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
     // color_dark_hover_background:        "transparent",
     // color_dark_hover_icon:              "inherit",
-  }, borderVars, themeVars);
+  }, borderVars, themeVars$1);
 
   var fns = [superLayout$1, color];
   var superFns = [superLayout];
@@ -672,21 +694,6 @@
   var layout = polytheneCoreCss.createLayout({
     superLayout: superLayout$1
   });
-
-  var containedButtonVars = {
-    general_styles: true,
-
-    padding_h: 4 * polytheneTheme.vars.grid_unit, // 16
-
-    color_light_background: "#fff",
-    color_light_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_light_foreground, polytheneTheme.vars.blend_light_background_disabled),
-    color_light_wash_background: "transparent",
-
-    color_dark_active_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary_dark),
-    color_dark_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_primary),
-    color_dark_disabled_background: polytheneCoreCss.rgba(polytheneTheme.vars.color_dark_foreground, polytheneTheme.vars.blend_dark_background_disabled),
-    color_dark_wash_background: "transparent"
-  };
 
   var fns$1 = [layout, color$1];
   var selectors = [classes.component, classes.contained].join(" ");

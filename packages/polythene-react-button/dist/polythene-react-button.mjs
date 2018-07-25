@@ -8,10 +8,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var TextButton = StateComponent(_extends({}, coreButton, {
   createProps: function createProps(vnode, args) {
-    return coreButton.createProps(vnode, _extends(args, { Ripple: Ripple, Icon: Icon }));
+    return coreButton.createProps(vnode, _extends(args, { Ripple: Ripple, Icon: Icon, Shadow: Shadow }));
   },
   createContent: function createContent(vnode, args) {
-    return coreButton.createContent(vnode, _extends(args, { Ripple: Ripple, Icon: Icon }));
+    return coreButton.createContent(vnode, _extends(args, { Ripple: Ripple, Icon: Icon, Shadow: Shadow }));
   }
 }));
 

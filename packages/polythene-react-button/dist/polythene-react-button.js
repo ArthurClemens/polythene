@@ -8,10 +8,10 @@
 
   var TextButton = polytheneReactBase.StateComponent(_extends({}, polytheneCoreButton.coreButton, {
     createProps: function createProps(vnode, args) {
-      return polytheneCoreButton.coreButton.createProps(vnode, _extends(args, { Ripple: polytheneReactRipple.Ripple, Icon: polytheneReactIcon.Icon }));
+      return polytheneCoreButton.coreButton.createProps(vnode, _extends(args, { Ripple: polytheneReactRipple.Ripple, Icon: polytheneReactIcon.Icon, Shadow: polytheneReactShadow.Shadow }));
     },
     createContent: function createContent(vnode, args) {
-      return polytheneCoreButton.coreButton.createContent(vnode, _extends(args, { Ripple: polytheneReactRipple.Ripple, Icon: polytheneReactIcon.Icon }));
+      return polytheneCoreButton.coreButton.createContent(vnode, _extends(args, { Ripple: polytheneReactRipple.Ripple, Icon: polytheneReactIcon.Icon, Shadow: polytheneReactShadow.Shadow }));
     }
   }));
 

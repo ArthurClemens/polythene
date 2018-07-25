@@ -8,10 +8,10 @@
 
   var TextButton = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreButton.coreButton, {
     createProps: function createProps(vnode, args) {
-      return polytheneCoreButton.coreButton.createProps(vnode, _extends(args, { Ripple: polytheneMithrilRipple.Ripple, Icon: polytheneMithrilIcon.Icon }));
+      return polytheneCoreButton.coreButton.createProps(vnode, _extends(args, { Ripple: polytheneMithrilRipple.Ripple, Icon: polytheneMithrilIcon.Icon, Shadow: polytheneMithrilShadow.Shadow }));
     },
     createContent: function createContent(vnode, args) {
-      return polytheneCoreButton.coreButton.createContent(vnode, _extends(args, { Ripple: polytheneMithrilRipple.Ripple, Icon: polytheneMithrilIcon.Icon }));
+      return polytheneCoreButton.coreButton.createContent(vnode, _extends(args, { Ripple: polytheneMithrilRipple.Ripple, Icon: polytheneMithrilIcon.Icon, Shadow: polytheneMithrilShadow.Shadow }));
     }
   }));
 

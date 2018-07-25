@@ -130,7 +130,8 @@ var createContent = function createContent(vnode, _ref3) {
   var h = _ref3.renderer,
       k = _ref3.keys,
       Ripple = _ref3.Ripple,
-      Icon = _ref3.Icon;
+      Icon = _ref3.Icon,
+      Shadow = _ref3.Shadow;
 
   var state = vnode.state;
   var attrs = vnode.attrs;
@@ -142,8 +143,11 @@ var createContent = function createContent(vnode, _ref3) {
     style: attrs.textStyle
   }, attrs.label)) : children ? children : null;
   var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [attrs.shadowComponent // "protected" option, used by raised-button
-  ? attrs.shadowComponent : null,
+  return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [h(Shadow, {
+    key: "shadow",
+    shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
+    animated: true
+  }),
   // Ripple
   disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
   // somehow Mithril does not update when the dom stream is updated
@@ -261,20 +265,14 @@ var onUnMount$1 = function onUnMount(vnode) {
   }
 };
 
-var createProps$1 = function createProps(vnode, _ref) {
-  var h = _ref.renderer,
-      Shadow = _ref.Shadow;
-
+var createProps$1 = function createProps(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
   return _extends$1({}, {
     raised: true,
     animateOnTap: false,
-    shadowComponent: h(Shadow, {
-      shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
-      animated: true
-    }),
+    shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
     wash: attrs.wash !== undefined ? attrs.wash : false,
     children: children
   }, attrs);

@@ -91,7 +91,7 @@ export const onUnMount = vnode => {
   }
 };
 
-export const createProps = (vnode, { renderer: h, Shadow }) => {
+export const createProps = vnode => {
   const attrs = vnode.attrs;
   const state = vnode.state;
   const children = attrs.children || vnode.children || [];
@@ -100,10 +100,7 @@ export const createProps = (vnode, { renderer: h, Shadow }) => {
     {
       raised: true,
       animateOnTap: false,
-      shadowComponent: h(Shadow, {
-        shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
-        animated: true
-      }),
+      shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
       wash: attrs.wash !== undefined
         ? attrs.wash
         : false,

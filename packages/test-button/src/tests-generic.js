@@ -29,6 +29,11 @@ export default ({ renderer: h, Button }) => {
     color_light_background: "#fff",
   });
 
+  ButtonCSS.addStyle(".tests-button-shadow-button", {
+    shadow_depth:           1,
+    color_light_background: "#fff",
+  });
+
   ButtonCSS.addStyle(".tests-button-hover-button", {
     contained:                    true,
     color_light_hover:            "#fff",
@@ -41,6 +46,7 @@ export default ({ renderer: h, Button }) => {
       contained:              true,
       color_light_background: "#673ab7",
       color_light_text:       "#fff",
+      shadow_depth:           1,
     },
     {
       mediaQuery: "@media all and (max-width: 480px) and (min-width: 360px), (min-width: 760px)"
@@ -235,15 +241,6 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
-      name: "Themed Button (media query - resize screen to see toggled style)",
-      interactive: true,
-      component: Button,
-      attrs: {
-        label: "Media Query Button",
-        className: "tests-button-media-query"
-      }
-    },
-    {
       name: "Themed Button (colors, sentence case)",
       component: Button,
       attrs: {
@@ -268,6 +265,14 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Themed Button (shadow)",
+      component: Button,
+      attrs: {
+        label: "Shadow",
+        className: "tests-button-shadow-button",
+      }
+    },
+    {
       name: "Themed Button (hover)",
       component: Button,
       interactive: true,
@@ -277,10 +282,19 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Themed Button (media query - resize screen to see toggled style)",
+      interactive: true,
+      component: Button,
+      attrs: {
+        label: "Media Query Button",
+        className: "tests-button-media-query"
+      }
+    },
+    {
       name: "Themed Button: (disabled)",
       component: Button,
       attrs: {
-        label: "Border",
+        label: "Disabled",
         className: "tests-button-bordered-button",
         disabled: true
       }

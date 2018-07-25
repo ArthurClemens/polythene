@@ -118,7 +118,7 @@ export const createProps = (vnode, { keys: k }) => {
   );
 };
 
-export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => {
+export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon, Shadow }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
   const noink = attrs.ink !== undefined && attrs.ink === false;
@@ -149,9 +149,13 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon }) => 
       style: attrs.style
     },
     [
-      attrs.shadowComponent // "protected" option, used by raised-button
-        ? attrs.shadowComponent
-        : null,
+      h(Shadow, {
+        key: "shadow",
+        shadowDepth: attrs.shadowDepth !== undefined
+          ? attrs.shadowDepth
+          : 0,
+        animated: true
+      }),
       // Ripple
       disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
         // somehow Mithril does not update when the dom stream is updated

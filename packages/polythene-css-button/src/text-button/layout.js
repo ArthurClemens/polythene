@@ -1,4 +1,5 @@
 import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
+import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 
 const alignSide = isRTL => () => ({
   ".pe-button--separator-start .pe-button__content": {
@@ -295,6 +296,8 @@ const varFns = {
     vars.border && border(selector, vars),
   contained: (selector, vars) => 
     vars.contained && contained(selector, vars),
+  // shadow_depth:
+  ...shadowVarFns
 };
 
 export default createLayout({ varFns });
