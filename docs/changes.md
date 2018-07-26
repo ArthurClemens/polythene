@@ -2,7 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [1.3.0](#130)
+- [1.3.2](#132)
   - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
   - [CSS](#css)
   - [Components](#components)
@@ -23,8 +23,8 @@
 <!-- /MarkdownTOC -->
 
 
-<a id="130"></a>
-## 1.3.0
+<a id="132"></a>
+## 1.3.2
 
 <a id="material-design-version-2----first-small-changes"></a>
 ### Material Design version 2 -- first small changes
