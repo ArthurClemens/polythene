@@ -629,6 +629,29 @@ export default ({ TextField, Button, renderer: h, keys: k }) => {
       }
     },
 
+    {
+      section: "Right-to-left",
+    },
+    {
+      name: "Option: counter (RTL)",
+      interactive: true,
+      component: {
+        view: () => 
+          h("div",
+            { className: "pe-rtl" },
+            block([
+              h(TextField, {
+                label: "وصف",
+                floatingLabel: true,
+                defaultValue: "أبجد هوز دولور الجلوس امات",
+                counter: 30,
+                error: "لقد تجاوزت الحد الأقصى لعدد الأحرف."
+              })
+            ])
+          )
+      }
+    },
+
     // {
     //   name: "Autocomplete form",
     //   component: {

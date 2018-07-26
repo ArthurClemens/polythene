@@ -1,3 +1,9 @@
+.pe-textfield .pe-textfield__counter {
+  text-align: right;
+  float: right;
+  padding: 0 0 0 16px
+}
+
 .pe-textfield:after {
   content: "";
   display: table;
@@ -97,12 +103,6 @@
   line-height: 1.5
 }
 
-.pe-textfield .pe-textfield__counter {
-  text-align: right;
-  float: right;
-  padding: 0 0 0 16px
-}
-
 .pe-textfield .pe-textfield__help-focus {
   transition-delay: 0ms;
   transition-duration: .18s;
@@ -135,6 +135,12 @@
 
 .pe-textfield.pe-textfield--full-width .pe-textfield__input-area {
   padding: 0
+}
+
+.pe-rtl .pe-textfield .pe-textfield__counter,[dir=rtl] .pe-textfield .pe-textfield__counter {
+  text-align: left;
+  float: left;
+  padding: 0 16px 0 0
 }
 
 .pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--focused .pe-textfield__label {

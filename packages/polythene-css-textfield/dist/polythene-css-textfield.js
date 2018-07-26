@@ -191,6 +191,22 @@
     varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
   });
 
+  function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var alignSide = function alignSide(isRTL) {
+    return function () {
+      return {
+        " .pe-textfield__counter": {
+          textAlign: isRTL ? "left" : "right",
+          float: isRTL ? "left" : "right",
+          padding: isRTL ? "0 16px 0 0" : "0 0 0 16px"
+        }
+      };
+    };
+  };
+  var alignLeft = alignSide(false);
+  var alignRight = alignSide(true);
+
   var vertical_spacing_top_input_padding_v = function vertical_spacing_top_input_padding_v(selector, vars) {
     return polytheneCoreCss.sel(selector, {
       " .pe-textfield__label": {
@@ -248,7 +264,7 @@
 
   var varFns = {
     general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.mixin.clearfix(), {
+      return [polytheneCoreCss.sel(selector, [alignLeft(), polytheneCoreCss.mixin.clearfix(), {
         position: "relative",
         lineHeight: polytheneTheme.vars.line_height,
         display: "inline-block",
@@ -354,12 +370,6 @@
           lineHeight: polytheneTheme.vars.line_height
         },
 
-        " .pe-textfield__counter": {
-          textAlign: "right",
-          float: "right",
-          padding: "0 0 0 16px"
-        },
-
         " .pe-textfield__help-focus": [polytheneCoreCss.mixin.defaultTransition("opacity"), {
           opacity: 0
         }],
@@ -389,7 +399,7 @@
             padding: 0
           }
         }
-      }])];
+      }]), _defineProperty$1({}, "*[dir=rtl] " + selector + ", .pe-rtl " + selector, [alignRight()])];
     },
     vertical_spacing_bottom: function vertical_spacing_bottom(selector, vars) {
       return [polytheneCoreCss.sel(selector, {

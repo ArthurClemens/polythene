@@ -1,6 +1,16 @@
 import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
+const alignSide = isRTL => () => ({
+  " .pe-textfield__counter": {
+    textAlign: isRTL ? "left" : "right",
+    float: isRTL ? "left": "right",
+    padding: isRTL ? "0 16px 0 0" : "0 0 0 16px"
+  },
+});
+const alignLeft = alignSide(false);
+const alignRight = alignSide(true);
+
 const vertical_spacing_top_input_padding_v = (selector, vars) =>
   sel(selector, {
     " .pe-textfield__label": {
@@ -53,6 +63,7 @@ const dense_full_width_input_padding_v_dense_full_width_input_padding_h = (selec
 const varFns = {
   general_styles: selector => [
     sel(selector, [
+      alignLeft(),
       mixin.clearfix(),
       {
         position: "relative",
@@ -160,12 +171,6 @@ const varFns = {
           lineHeight: themeVars.line_height,
         },
 
-        " .pe-textfield__counter": {
-          textAlign: "right",
-          float: "right",
-          padding: "0 0 0 16px"
-        },
-
         " .pe-textfield__help-focus": [
           mixin.defaultTransition("opacity"),
           {
@@ -199,7 +204,13 @@ const varFns = {
           },
         }
       },
-    ])
+    ]),
+    {
+      // RTL
+      [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
+        alignRight()
+      ],
+    }
   ],
   vertical_spacing_bottom: (selector, vars) => [
     sel(selector, {
