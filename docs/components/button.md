@@ -57,6 +57,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **Parameter** | **Required** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- | --- |
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
+| **contained** | optional | Boolean | false | Set to `true` to give the button a Contained Button appearance (larger side padding) |
 | **disabled** | optional | Boolean | false | Disables the button |
 | **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown icon; note that a dropdown button has no minimum width |
 | **extraWide** | optional | Boolean | false | Set to `true` to add even more side padding |
@@ -66,7 +67,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **inactive** | optional | Boolean |  | Set to `true` to disable button events and ripple/wash effects |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **label** | use `label` or `content` | String |  | The button label |
-| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button |
+| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button; see also: [Raised Button](./raised-button.md) |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 | **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |

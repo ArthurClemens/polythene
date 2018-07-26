@@ -9,6 +9,7 @@
   - [Links](#links)
   - [Events](#events)
   - [A row of buttons](#a-row-of-buttons)
+  - [Toggle buttons, split buttons](#toggle-buttons-split-buttons)
 - [Appearance](#appearance)
   - [Variations](#variations)
   - [Styling](#styling)
@@ -92,6 +93,11 @@ h(Button, {
 When placed inside an element with classname `pe-button-row`, buttons will get a side margin to set them apart. The row element itself will have an negative side margin so that the first button still lines up properly.
 
 
+<a id="toggle-buttons-split-buttons"></a>
+### Toggle buttons, split buttons
+
+Place a Button inside a [Button Group](./button-group.md) to create a tightly aligned group of buttons.
+
 
 <a id="appearance"></a>
 ## Appearance
@@ -99,13 +105,16 @@ When placed inside an element with classname `pe-button-row`, buttons will get a
 <a id="variations"></a>
 ### Variations
 
-* The hover effect can be hidden with `wash: false`.
-* Special hover effects can be created with a theme, see below.
-* The ripple effect on click can be hidden with `ink: false`.
-* Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead (which can contain a label).
-* Add a dropdown icon with `dropdown: true`.
-* Create a wide button with `extraWide: true`.
-* Create a high label with `highLabel: true`.
+* Create a Contained Button appearance with `contained: true`
+* Create a Raised Button appearance with `raised: true` (see also: [Raised Button](raised-button.md))
+* Add a border with `border: true`
+* The hover effect can be hidden with `wash: false`
+* Special hover effects can be created with a theme, see below
+* The ripple effect on click can be hidden with `ink: false`
+* (To be updated for specs MD 2) Button contains no icon as this is not part of the Material Design guidelines; use [Icon Button](../icon-button.md) instead (which can contain a label)
+* Add a dropdown icon with `dropdown: true`
+* Create a wide button with `extraWide: true`
+* Create a high label with `highLabel: true`
 
 <a id="styling"></a>
 ### Styling
