@@ -15,6 +15,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
   const BackButton = {
     view: ({ attrs }) =>
       h(IconButton, {
+        className: "pe-rtl--flip",
         icon: { svg: { content: iconBack } },
         ink: false,
         events: { [k.onclick]: attrs.leave },

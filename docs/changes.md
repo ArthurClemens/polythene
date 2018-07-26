@@ -73,6 +73,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Added CSS style variables `color_[tint]_tick_value`, `color_[tint]_pin_label` and `color_[tint]_pin_background`
 * [Spinners](components/spinner.md) and [Tabs](components/tabs.md)
   * CSS style variables for animation durations/delays have been changed to strings that include the unit ("ms" or "s")
+* Added RTL support for TextField, Search, Icon, Icon Button, FAB
+  * Supporting CSS class `pe-rtl--flip` can be used to flip directional icons or buttons
 
 #### Deprecations
 

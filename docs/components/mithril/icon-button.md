@@ -12,6 +12,7 @@
   - [Interactivity](#interactivity)
   - [Size](#size)
   - [Styling](#styling)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -194,6 +195,13 @@ m(IconButton, {
 })
 ~~~
 
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of the Icon Button is flipped when:
+
+* it is contained within an element that either has attribute `dir="rtl"` or has className `pe-rtl`
+* has className `pe-rtl--flip`
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone

@@ -23,6 +23,7 @@ export const createProps = (vnode, { keys: k, renderer: h, Icon }) => {
         attrs.mini ? classes.mini : null,
         attrs.className || attrs[k.class],
       ].join(" "),
+      className: null,
       // defaults
       ripple: {
         center: true,

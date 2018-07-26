@@ -29,6 +29,7 @@
     return _extends({}, attrs, {
       content: h("div", { className: classes.content }, content),
       parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
+      className: null,
       // defaults
       ripple: {
         center: true,

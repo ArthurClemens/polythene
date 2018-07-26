@@ -1413,6 +1413,13 @@ var commonStyle = [{
 
   ".pe-rtl": {
     direction: "rtl"
+  },
+
+  // flip directional icon if needed
+  "*[dir=rtl], .pe-rtl ": {
+    " .pe-rtl--flip": {
+      transform: "scaleX(-1)"
+    }
   }
 }];
 

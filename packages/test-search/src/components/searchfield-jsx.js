@@ -8,6 +8,7 @@ const iconMic = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14c
 
 const BackButton = ({ leave }) =>
   <IconButton
+    className="pe-rtl--flip"
     icon={{ svg: { content: iconBack } }}
     ink={false}
     events={{ onClick: leave }}

@@ -9,6 +9,7 @@
 - [Appearance](#appearance)
   - [Sizes](#sizes)
   - [Styling](#styling)
+  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -164,6 +165,13 @@ Some style attributes can be set using option `style`. For example:
 <Icon svg={{ content: starsSVG }} style={{ color: "#EF6C00" }} />
 ~~~
 
+<a id="rtl-right-to-left-support"></a>
+### RTL (right-to-left) support
+
+The direction of the Icon is flipped when:
+
+* it is contained within an element that either has attribute `dir="rtl"` or has className `pe-rtl`
+* has className `pe-rtl--flip`
 
 <a id="dark-or-light-tone"></a>
 ### Dark or light tone

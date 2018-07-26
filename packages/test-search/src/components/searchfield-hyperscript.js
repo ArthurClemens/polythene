@@ -13,6 +13,7 @@ const iconMic = h.trust(iconMicSVG);
 
 const BackButton = ({ leave }) =>
   h(IconButton, {
+    className: "pe-rtl--flip",
     icon: { svg: { content: iconBack } },
     ink: false,
     events: { onClick: leave },

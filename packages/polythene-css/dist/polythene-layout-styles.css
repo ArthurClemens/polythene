@@ -243,4 +243,8 @@
 .pe-rtl {
   direction: rtl
 }
+
+.pe-rtl .pe-rtl--flip,[dir=rtl] .pe-rtl--flip {
+  transform: scaleX(-1)
+}
 /*# sourceMappingURL=polythene-layout-styles.css.map */
