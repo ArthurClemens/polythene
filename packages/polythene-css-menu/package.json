@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-menu",
-  "version": "1.2.0",
+  "version": "1.3.2",
   "description": "",
   "main": "dist/polythene-css-menu",
   "module": "dist/polythene-css-menu.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.2.0",
-    "polythene-css-classes": "^1.2.0",
-    "polythene-css-shadow": "^1.2.0",
-    "polythene-theme": "^1.2.0"
+    "polythene-core-css": "^1.3.2",
+    "polythene-css-classes": "^1.3.2",
+    "polythene-css-shadow": "^1.3.2",
+    "polythene-theme": "^1.3.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

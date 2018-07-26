@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-base",
-  "version": "1.2.0",
+  "version": "1.3.2",
   "description": "",
   "main": "dist/polythene-mithril-base",
   "module": "dist/polythene-mithril-base.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "mithril": "1.1.6",
-    "polythene-core": "^1.2.0"
+    "polythene-core": "^1.3.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
