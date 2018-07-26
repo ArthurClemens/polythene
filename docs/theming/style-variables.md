@@ -6,8 +6,8 @@
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
-  - [Using media queries](#using-media-queries)
   - [Themed behaviors](#themed-behaviors)
+  - [Using media queries](#using-media-queries)
   - [Function `addStyle`](#function-addstyle)
   - [Under the hood](#under-the-hood)
 - [Choosing CSS-in-JS or CSS files](#choosing-css-in-js-or-css-files)
@@ -101,6 +101,55 @@ With React JSX:
 ~~~
 
 
+<a id="themed-behaviors"></a>
+### Themed behaviors
+
+A number of components allows to change its behavior using style variables. Some examples:
+
+Create a Contained Button with a drop shadow:
+
+~~~javascript
+import { ButtonCSS } from "polythene-css"
+
+ButtonCSS.addStyle(".contained-button", {
+  contained:              true,
+  color_light_background: "#673ab7",
+  color_light_text:       "#fff",
+  shadow_depth:           1,
+})
+~~~
+
+Create a cover Drawer:
+
+~~~javascript
+import { DrawerCSS } from "polythene-css"
+
+DrawerCSS.addStyle(".cover-drawer", {
+  cover: true
+})
+~~~
+
+Create a modal Dialog (disabling clicking the background) with a backdrop: 
+
+~~~javascript
+import { DialogCSS } from "polythene-css"
+
+DialogCSS.addStyle(".modal-dialog", {
+  modal:    true,
+  backdrop: true
+})
+~~~
+
+Create a Menu with a backdrop:
+
+~~~javascript
+import { MenuCSS } from "polythene-css"
+
+MenuCSS.addStyle(".menu-backdrop", {
+  backdrop: true
+})
+~~~
+
 <a id="using-media-queries"></a>
 ### Using media queries
 
@@ -153,24 +202,6 @@ Then apply the styles by setting the class name:
 m(Card, { className: "themed-card small-image-card" })
 ~~~
 
-<a id="themed-behaviors"></a>
-### Themed behaviors
-
-Some components allow to change their behavior using style variables. For example, Drawer's `vars.js` lists variable `cover`. By setting this variable to `true`, the Drawer gets cover behavior:
-
-~~~javascript
-import { DrawerCSS } from "polythene-css"
-
-DrawerCSS.addStyle(
-  ".small-screen-cover-drawer",
-  {
-    cover: true
-  },
-  {
-    mediaQuery: `@media all and (max-width: 480px)`
-  }
-)
-~~~
 
 
 

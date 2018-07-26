@@ -2,56 +2,84 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [Releases](#releases)
-  - [Next](#next)
-  - [1.2.0](#120)
-  - [1.1.0](#110)
-  - [1.0.0](#100)
-- [Pre releases](#pre-releases)
+- [1.3.0](#130)
+  - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
+  - [CSS](#css)
+  - [Components](#components)
+  - [Deprecations](#deprecations)
+  - [Other](#other)
+- [1.2.0](#120)
+  - [Components](#components-1)
+  - [Other](#other-1)
+- [1.1.0](#110)
+  - [Core](#core)
+  - [Components](#components-2)
+  - [Example code](#example-code)
+  - [Tooling](#tooling)
+  - [Other](#other-2)
+- [1.0.0](#100)
+- [Pre-releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
 
 
-<a id="releases"></a>
-## Releases
+<a id="130"></a>
+## 1.3.0
 
-<a id="next"></a>
-### Next
-
-#### Material Design version 2 -- first small changes
+<a id="material-design-version-2----first-small-changes"></a>
+### Material Design version 2 -- first small changes
 
 Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in next releases.
 
-#### CSS
+<a id="css"></a>
+### CSS
 
 CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [Style variables](theming/style-variables.md) how to use it).
 
-In terms of internal organisation, CSS variable files have been moved to each component's CSS package. This makes the CSS packages operate more standalone.
+In terms of internal organisation, CSS variable files have been moved to each component's CSS package, which is a more logical location.
 
-##### Themes and media queries
+#### Themes and behavior
 
-With an additional argument to `addStyle` it is now possible to define a theme style restricted by a media query.
+Themes are becoming more powerful. Next to setting dimensions and colors, a number of components can now change behavior by setting a theme "switch" variable in [addStyle](theming/style-variables.md#styling-components-with-variables).
+
+For example:
+
+* Change a Text Button to a Contained Button using `contained: true`
+* Set a Drawer to cover behavior using `cover: true`
+* Make a Dialog appear full screen using `full_screen: true`
+* Add a backdrop to a Menu with `backdrop: true`
+
+The switch variable may trigger one or more variables, or changes JavaScript behavior under the hood. For example, a full screen Dialog also disables the ESCAPE key.
+
+While this seems to duplicate component options, it makes sense when components need to appear and behave differently based on the available screen size.
+
+#### Themes and media queries
+
+With an additional argument to `addStyle` it is now possible to restrict a theme style by media query.
 
 Conceptually, this is very close to writing CSS with media queries, but it has the benefit that you don't need to know the internal component structure - you still work with style variables.
 
 Some examples:
 
-* Make a Dialog appear full screen on small screen sizes
-* Make a Menu appear full width on small screen sizes
+* Have a normal Dialog but make it full screen on small screen sizes
+* Have a normal local Menu but make it full width on small screen sizes
 * Create a Drawer that behaves differently on different screen sizes: [Mithril example](./components/mithril/drawer.md#responsive-drawer), [React example](./components/react/drawer.md#responsive-drawer)
 * Change the image size on a Card, without changing the component options
 
 See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to use this feature.
 
 
-#### Components
+<a id="components"></a>
+### Components
 
 * New component
   * [Button Group](components/button-group.md) - container for a row of buttons; use this to create toggle buttons or split buttons
 * [Button](components/button.md)
-  * New options for varying the width and height: `extraWide` and `highLabel`
-  * New option `dropdown` to add a dropdown triangle
-  * New option `raised` to create a Raised Button
+  * New options for varying the width and height: `extraWide` and `highLabel` (useful in Button Group)
+  * New option `dropdown` that adds a dropdown triangle
+  * New option `contained` to create a Contained Button appearance
+  * New option `raised` to create a Raised Button appearance
+    * A raised button is automatically a Contained Button, and adds an interactive shadow depth when tapped
   * Added default letter spacing (which can be overridden with CSS style variable `letter_spacing`)
   * MD2: the border radius is now set to `4`
   * Bordered button has a default medium gray border color
@@ -66,7 +94,7 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * New option `backdrop` to make a menu stand out more
   * Long lists are now scrollable
 * [Radio Group](components/radio-group.md)
-  * Added option `defaultSelectedValue`
+  * Added option `defaultSelectedValue` 
 * [Shadow](components/shadow.md)
   * CSS style variables have been renamed: `z` has been changed to `shadow_depth`
 * [Slider](components/slider.md)
@@ -76,7 +104,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 * Added RTL support for TextField, Search, Icon, Icon Button, FAB
   * Supporting CSS class `pe-rtl--flip` can be used to flip directional icons or buttons
 
-#### Deprecations
+<a id="deprecations"></a>
+### Deprecations
 
 * Card, Dialog, Drawer, Menu, Shadow, Spinner, Toolbar:
   * `z` is deprecated; use `shadowDepth`
@@ -88,7 +117,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * `zOff` is deprecated; use `shadowDepthOff`
   * `zOn` is deprecated; use `shadowDepthOn`
 
-#### Other
+<a id="other"></a>
+### Other
 
 * [webfontloader](packages/polythene-utilities.md#addwebfont-web-font-loader)
   * Aligned configuration to upstream library
@@ -96,9 +126,10 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 * Various bug fixes
 
 <a id="120"></a>
-### 1.2.0
+## 1.2.0
 
-#### Components
+<a id="components-1"></a>
+### Components
 
 * [Card](components/card.md)
   * It is now possible to embed a video using the `media` item
@@ -112,14 +143,16 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * CSS style variable `label_opacity` has been removed in favor of setting the transparency in the label color (using `rgba`); this creates a better color transition when selecting the tab
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 
-#### Other
+<a id="other-1"></a>
+### Other
 
 * Various bug fixes
 
 <a id="110"></a>
-### 1.1.0
+## 1.1.0
 
-#### Core
+<a id="core"></a>
+### Core
 
 * Updates to transition code:
   * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
@@ -127,7 +160,8 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * It is now possible to set transition duration and delay in a component theme (using component style variables)
   * Added options `showTimingFunction` and `hideTimingFunction`
 
-#### Components
+<a id="components-2"></a>
+### Components
 
 * New component
   * [Drawer](components/drawer.md) to create side navigation
@@ -146,165 +180,30 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Removed `onmouseover` listener
 * Added RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
 
-#### Example code
+<a id="example-code"></a>
+### Example code
 
 * Updated Text Field form validation to match Powerform v3
 * Tabs:
   * Added nested Tabs example
   * Added "hide all selection indicators"
 
-#### Tooling
+<a id="tooling"></a>
+### Tooling
 
 * Webpack 4 support
 
-#### Other
+<a id="other-2"></a>
+### Other
 
 * Various bug fixes
 
 <a id="100"></a>
-### 1.0.0
+## 1.0.0
 
 Equal to rc.11.
 
-
 <a id="pre-releases"></a>
-## Pre releases
+## Pre-releases
 
-
-#### 1.0.0-rc.11
-
-Changes to components:
-
-* Toolbar: Added support for action links. Use class `pe-action`.
-
-
-#### 1.0.0-rc.10
-
-Removed `polythene-fastclick` as it is no longer needed - the tap response on mobile is now sufficiently fast.
-
-Changes to components:
-
-* [Button](components/button.md)
-  * The default side margin has been removed
-  * Add parent element with class `.pe-button-row` to re-add the margins, or add margins where needed
-* [List](components/list.md)
-  * Removed keyboard control in favor of (more flexible) example code; see:
-    * Mithril
-      * [List](components/mithril/list.md#keyboard-control)
-      * [Search](components/mithril/search.md#result-list)
-    * React
-      * [List](components/react/list.md#keyboard-control)
-      * [Search](components/react/search.md#result-list)
-  * Option `padding` has new possible values "top", "bottom", "none" and "both", replacing `false`
-* TextField and Search: option `focus` has been removed (because setting the focus state outside of an event does not work on iOS)
-  * Use the `onChange` callback that returns the function `setInputState` - see [documentation for Mithril](components/mithril/textfield.md#programmatically-setting-focus-and-value), [documentation for React](components/react/textfield.md#programmatically-setting-focus-and-value)
-
-Bug fixes.
-
-
-
-#### 1.0.0-rc.9
-
-To make component packages more standalone, CSS classes are no longer exported by the component but from the common module `polythene-css-classes`:
-
-~~~javascript
-import buttonClasses from "polythene-css-classes/button"
-~~~
-
-All references to React 15 have been replaced with React 16.
-
-Changes to components:
-
-* Toolbar now has a default background color
-
-Bug fixes (thanks sjungwirth and ItsLeeOwen!).
-
-
-
-#### 1.0.0-rc.8
-
-Updated for React 16.
-
-Changes to components:
-
-* Menu
-  * Option `reposition` is now by default `false`
-* Icon
-  * Option `svg` must now use option `content` as well 
-
-Various bug fixes (thanks sjungwirth!).
-
-
-
-#### 1.0.0-rc.7
-
-Fix for newly introduced bug in button onclick handling.
-
-
-
-#### 1.0.0-rc.6
-
-* CSS can now optionally be read from files (as opposed to CSS-in-JS only); see [CSS](css.md) for more details.
-* `addLayoutStyles` and `addTypography` are now both imported from `polythene-css`; see [CSS](css.md).
-
-Changes to components:
-
-* All
-  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Style variables](theming/style-variables.md)
-* RadioGroup
-  * `onChange` now returns a state object that contains a variable `value`
-* List
-  * Added option `all`, analogous to Tab's `all`
-
-Various bug fixes.
-
-
-
-#### 1.0.0-rc.5
-
-Contains fixes for server-side rendering.
-
-Changes to components:
-
-* Dialog
-  * Option `footer` has been renamed to `footerButtons` to allow for more diverse footers
-  * Added option `header`
-  * Added option `fullBleed` to remove padding from the body element 
-  * Option `borders` has been changed from Boolean to String, with possible values: "always", "never", "overflow" (default)
-* List
-  * Added option `padding` to optionally remove the default top and bottom padding
-  * Added keyboard control
-* ListTile
-  * Added option `compactFront` to reduce the horizontal width of `front` content
-  * Added option `subContent` to show other types of content below the title (without height restriction)
-  * Added option `header`
-* Toolbar
-  * Added sub-component ToolbarTitle to improve styling 
-  * Removed default background colors to better fit in a Dialog
-
-Various bug fixes. 
-
-
-
-#### 1.0.0-rc.4
-
-Changes to components:
-
-* Dialog
-  * Option `fullscreen` has been renamed to `fullScreen` for consistency
-* RadioGroup
-  * Added option `all`
-* Ripple
-  * "constrained" is now the default setting; use option `unconstrained` to unset the default
-* Slider
-  * Option `step` has been renamed to `stepSize` to prevent confusion with step count
-* Spinner
-  * Renamed `iOSSpinner` to `IOSSpinner` to work with React
-
-Various bug fixes.
-
-
-
-#### 1.0.0-rc.1 to 1.0.0-rc.3
-
-Me learning to publish with Lerna.
+See: [Change log (pre-releases)](./changes-pre-releases.md)
