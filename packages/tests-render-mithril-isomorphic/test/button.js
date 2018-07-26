@@ -10,7 +10,7 @@ const debug = require("./debug");
 
 describe("Button", function() {
   it("should render", function() {
-    const expected = '<a class="pe-button pe-text-button        " tabindex="0"><div class="pe-button__content"><div key="ripple" class="pe-ripple    "></div><div key="wash" class="pe-button__wash"></div><div key="focus" class="pe-button__focus"></div><div class="pe-button__label">Show</div></div></a>'; // eslint-disable-line quotes
+    const expected = '<a class="pe-button pe-text-button               " tabindex="0"><div class="pe-button__content"><div key="shadow" class="pe-shadow pe-shadow--animated "><div key="bottom" class="pe-shadow__bottom pe-shadow--depth-0"></div><div key="top" class="pe-shadow__top pe-shadow--depth-0"></div></div><div key="ripple" class="pe-ripple    "></div><div key="wash" class="pe-button__wash"></div><div class="pe-button__label"><div class="pe-button__text-label">Show</div></div></div></a>'; // eslint-disable-line quotes
 
     return render([
       m(Button, {

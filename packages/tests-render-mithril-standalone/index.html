@@ -67,7 +67,6 @@ const {
   MaterialDesignSpinner,
   Notification,
   RadioGroup,
-  RaisedButton,
   Slider,
   Snackbar,
   SVG,
@@ -114,7 +113,8 @@ const app = {
         [
           m("h2", "Raised Button"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Button"
             })
           )
@@ -287,7 +287,8 @@ const app = {
         [
           m("h2", "Dialog"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show dialog",
               events: {
                 onclick: () => Dialog.show({
@@ -305,7 +306,8 @@ const app = {
         [
           m("h2", "Notification"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show Notification",
               events: {
                 onclick: () => Notification.show({
@@ -321,7 +323,8 @@ const app = {
         [
           m("h2", "Snackbar"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show Snackbar",
               events: {
                 onclick: () => Snackbar.show({

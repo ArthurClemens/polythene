@@ -5,7 +5,7 @@ Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and t
 Example: 
 
 import stream from "mithril/stream";
-import { renderer as h, RaisedButton } from "polythene-react";
+import { renderer as h, Button } from "polythene-react";
 
 const StateComponent = {
   oninit: vnode => {
@@ -19,7 +19,8 @@ const StateComponent = {
     const state = vnode.state;
     const attrs = vnode.attrs;
     const checked = state.checked();
-    return h(RaisedButton, {
+    return h(Button, {
+      raised: true,
       label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
       events: {
         [keys.onclick]: () => state.checked(!checked)

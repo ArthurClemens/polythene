@@ -10,18 +10,26 @@ import { IconButton } from "polythene-mithril-icon-button";
 import { MaterialDesignSpinner } from "polythene-mithril-material-design-spinner";
 import { Notification } from "polythene-mithril-notification";
 import { RadioGroup } from "polythene-mithril-radio-group";
-import { RaisedButton } from "polythene-mithril-raised-button";
 import { Slider } from "polythene-mithril-slider";
 import { Snackbar } from "polythene-mithril-snackbar";
 import { SVG } from "polythene-mithril-svg";
 import { Switch } from "polythene-mithril-switch";
 import { Tabs } from "polythene-mithril-tabs";
 import { TextField } from "polythene-mithril-textfield";
-import { addTypography } from "polythene-css";
+import { addTypography, CardCSS } from "polythene-css";
 
 addTypography();
 
 const linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
+
+CardCSS.addStyle(
+  ".themed-card",
+  {
+    color_dark_main_background: "#B89E58",
+    color_dark_title_text:      "#fff",
+    color_dark_subtitle_text:   "#fff"
+  }
+);
 
 const App = {
   view: () => 
@@ -45,7 +53,8 @@ const App = {
         [
           m("h6", "Raised Button"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Button"
             })
           )
@@ -232,7 +241,8 @@ const App = {
         [
           m("h6", "Dialog"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show dialog",
               events: {
                 onclick: () => Dialog.show({
@@ -250,7 +260,8 @@ const App = {
         [
           m("h6", "Notification"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show Notification",
               events: {
                 onclick: () => Notification.show({
@@ -266,7 +277,8 @@ const App = {
         [
           m("h6", "Snackbar"),
           m(".component", 
-            m(RaisedButton, {
+            m(Button, {
+              raised: true,
               label: "Show Snackbar",
               events: {
                 onclick: () => Snackbar.show({

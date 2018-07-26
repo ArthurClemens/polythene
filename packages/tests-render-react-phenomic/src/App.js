@@ -1,10 +1,11 @@
 import React from "react";
-import { RaisedButton, Dialog } from "polythene-react";
+import { Button, Dialog } from "polythene-react";
 import Layout from "./Layout";
 
 const App = () => (
   <Layout>
-    <RaisedButton
+    <Button
+      raised
       label="Open dialog"
       events={{
         onClick: () => Dialog.show({

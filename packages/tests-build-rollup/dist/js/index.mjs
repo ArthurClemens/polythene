@@ -1,19 +1,26 @@
 import m from 'mithril';
-import { Button, Card, Checkbox, Dialog, FAB, Icon, IconButton, MaterialDesignSpinner, Notification, RadioGroup, RaisedButton, Slider, Snackbar, SVG, Switch, Tabs, TextField } from 'polythene-mithril';
-import { addTypography } from 'polythene-css';
+import { Button, Card, Checkbox, Dialog, FAB, Icon, IconButton, MaterialDesignSpinner, Notification, RadioGroup, Slider, Snackbar, SVG, Switch, Tabs, TextField } from 'polythene-mithril';
+import { addTypography, CardCSS } from 'polythene-css';
 
 addTypography();
 
 var linkIconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z\"/></svg>";
+
+CardCSS.addStyle(".themed-card", {
+  color_dark_main_background: "#B89E58",
+  color_dark_title_text: "#fff",
+  color_dark_subtitle_text: "#fff"
+});
 
 var App = {
   view: function view() {
     return m(".page", [m(".row", [m("h3", "Polythene for Mithril built with Rollup"), m("h6", "CSS Test")]), m(".row", [m("h6", "SVG"), m(".component", m(SVG, {
       content: m.trust(linkIconSVG),
       className: "themed-svg"
-    }))]), m(".row", [m("h6", "Raised Button"), m(".component", m(RaisedButton, {
+    }))]), m(".row", [m("h6", "Raised Button"), m(".component", m(Button, {
+      raised: true,
       label: "Button"
-    }))]), m(".row", [m("h6", "Regular Button"), m(".component", m(Button, {
+    }))]), m(".row", [m("h6", "Text Button"), m(".component", m(Button, {
       label: "Button"
     }))]), m(".row", [m("h6", "Icon"), m(".component", m(Icon, {
       size: "large",
@@ -79,7 +86,8 @@ var App = {
       defaultValue: 50
     }))]), m(".row", [m("h6", "Spinner"), m(".component", m(MaterialDesignSpinner, {
       permanent: true
-    }))]), m(".row", [m("h6", "Dialog"), m(".component", m(RaisedButton, {
+    }))]), m(".row", [m("h6", "Dialog"), m(".component", m(Button, {
+      raised: true,
       label: "Show dialog",
       events: {
         onclick: function onclick() {
@@ -91,7 +99,8 @@ var App = {
           });
         }
       }
-    }))]), m(".row", [m("h6", "Notification"), m(".component", m(RaisedButton, {
+    }))]), m(".row", [m("h6", "Notification"), m(".component", m(Button, {
+      raised: true,
       label: "Show Notification",
       events: {
         onclick: function onclick() {
@@ -101,7 +110,8 @@ var App = {
           });
         }
       }
-    }))]), m(".row", [m("h6", "Snackbar"), m(".component", m(RaisedButton, {
+    }))]), m(".row", [m("h6", "Snackbar"), m(".component", m(Button, {
+      raised: true,
       label: "Show Snackbar",
       events: {
         onclick: function onclick() {

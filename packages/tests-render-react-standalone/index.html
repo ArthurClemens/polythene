@@ -70,7 +70,6 @@ const {
   MaterialDesignSpinner,
   Notification,
   RadioGroup,
-  RaisedButton,
   Slider,
   Snackbar,
   SVG,
@@ -88,7 +87,8 @@ const linkIconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3.
 
 ButtonCSS.addStyle(".themed-button", {
   color_light_background: "#FF1744",
-  color_light_text: "#fff"
+  color_light_text: "#fff",
+  contained: true
 });
 
 SVGCSS.addStyle(".themed-svg", {
@@ -112,13 +112,14 @@ const App = () => (
     <div className="row">
       <h2>Raised Button</h2>
       <div className="component">
-        <RaisedButton
+        <Button
+          raised
           label="Button"
         />
       </div>
     </div>
     <div className="row">
-      <h2>Regular Button</h2>
+      <h2>Text Button</h2>
       <div className="component">
         <Button
           label="Button"
@@ -126,7 +127,7 @@ const App = () => (
       </div>
     </div>
     <div className="row">
-      <h2>Themed Regular Button</h2>
+      <h2>Themed Text Button</h2>
       <div className="component">
         <Button
           label="Button"
@@ -206,7 +207,8 @@ const App = () => (
     <div className="row">
       <h2>Dialog</h2>
       <div className="component">
-        <RaisedButton
+        <Button
+          raised
           label="Show dialog"
           events={{
             onClick: () => Dialog.show({
@@ -222,7 +224,8 @@ const App = () => (
     <div className="row">
       <h2>Notification</h2>
       <div className="component">
-        <RaisedButton
+        <Button
+          raised
           label="Show notification"
           events={{
             onClick: () => Notification.show({
@@ -236,7 +239,8 @@ const App = () => (
     <div className="row">
       <h2>Snackbar</h2>
       <div className="component">
-        <RaisedButton
+        <Button
+          raised
           label="Show snackbar"
           events={{
             onClick: () => Snackbar.show({
