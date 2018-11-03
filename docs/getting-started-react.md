@@ -160,7 +160,6 @@ Included:
 * All component styles, plus Material Design styles (typography and font), from `polythene-css`
 * `subscribe`, `unsubscribe` from `polythene-core`
 * Layout styles from `polythene-utilities`
-* Fast Click from `polythene-fastclick`
 
 Not included:
 
