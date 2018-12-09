@@ -1,5 +1,9 @@
 /* global process */
 
+/*
+Expects `ncu` to be available globally.
+*/
+
 const shell = require("shelljs");
 const path = require("path");
 const glob = require("glob");
@@ -12,7 +16,10 @@ const updateDir = (dir, isBase) => {
   console.log(`Updating ${dir}`); // eslint-disable-line no-console
   shell.cd(dir);
   if (dir.includes("phenomic")) {
-    shell.exec("ncu -a -x react-router --packageFile package.json");
+    return;
+    // shell.exec("ncu -a -x react-router --packageFile package.json");
+  } else if (dir.includes("build-webpack-3")) {
+    shell.exec("ncu -a -x webpack,compression-webpack-plugin --packageFile package.json");
   } else {
     shell.exec("ncu -a --packageFile package.json");
   }
