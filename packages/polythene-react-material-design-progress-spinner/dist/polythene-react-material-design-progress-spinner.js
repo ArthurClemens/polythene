@@ -6,7 +6,6 @@
 
   var classes = {
     component: "pe-md-progress-spinner",
-
     // elements
     animation: "pe-md-progress-spinner__animation",
     circle: "pe-md-progress-spinner__circle",
@@ -16,11 +15,9 @@
 
   var baseSpinnerClasses = {
     component: "pe-spinner",
-
     // elements
     animation: "pe-spinner__animation",
     placeholder: "pe-spinner__placeholder",
-
     // states
     animated: "pe-spinner--animated",
     fab: "pe-spinner--fab",
@@ -34,20 +31,15 @@
     visible: "pe-spinner--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var SpinnerInstance = polytheneReactBase.StateComponent(_extends({}, polytheneCoreMaterialDesignProgressSpinner.coreMaterialDesignProgressSpinner, { component: polytheneReactBaseSpinner.BaseSpinner }));
-
-  var SpinnerToggle = polytheneReactBase.StateComponent(polytheneCore.Conditional);
+  const SpinnerInstance = polytheneReactBase.StateComponent(Object.assign({}, polytheneCoreMaterialDesignProgressSpinner.coreMaterialDesignProgressSpinner, {
+    component: polytheneReactBaseSpinner.BaseSpinner
+  }));
+  const SpinnerToggle = polytheneReactBase.StateComponent(polytheneCore.Conditional);
   SpinnerToggle.displayName = "MaterialDesignProgressSpinnerToggle";
-
-  var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
-    return polytheneReactBase.renderer(SpinnerToggle, _extends({}, props, {
-      placeholderClassName: baseSpinnerClasses.placeholder,
-      instance: SpinnerInstance
-    }));
-  };
-
+  const MaterialDesignProgressSpinner = props => polytheneReactBase.renderer(SpinnerToggle, Object.assign({}, props, {
+    placeholderClassName: baseSpinnerClasses.placeholder,
+    instance: SpinnerInstance
+  }));
   MaterialDesignProgressSpinner.classes = classes;
   MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
 

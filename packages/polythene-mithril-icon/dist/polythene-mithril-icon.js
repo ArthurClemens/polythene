@@ -4,17 +4,14 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-icon'],global['polythene-mithril-svg']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreIcon,polytheneMithrilSvg) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Icon = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreIcon.coreIcon, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreIcon.coreIcon.createProps(vnode, _extends(args, { SVG: polytheneMithrilSvg.SVG }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreIcon.coreIcon.createContent(vnode, _extends(args, { SVG: polytheneMithrilSvg.SVG }));
-    }
+  const Icon = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreIcon.coreIcon, {
+    createProps: (vnode, args) => polytheneCoreIcon.coreIcon.createProps(vnode, Object.assign(args, {
+      SVG: polytheneMithrilSvg.SVG
+    })),
+    createContent: (vnode, args) => polytheneCoreIcon.coreIcon.createContent(vnode, Object.assign(args, {
+      SVG: polytheneMithrilSvg.SVG
+    }))
   }));
-
   Icon.displayName = "Icon";
 
   exports.Icon = Icon;

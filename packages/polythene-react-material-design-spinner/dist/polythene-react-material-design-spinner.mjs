@@ -5,7 +5,6 @@ import { BaseSpinner } from 'polythene-react-base-spinner';
 
 var classes = {
   component: "pe-md-spinner",
-
   // elements
   animation: "pe-md-spinner__animation",
   circle: "pe-md-spinner__circle",
@@ -19,11 +18,9 @@ var classes = {
 
 var baseSpinnerClasses = {
   component: "pe-spinner",
-
   // elements
   animation: "pe-spinner__animation",
   placeholder: "pe-spinner__placeholder",
-
   // states
   animated: "pe-spinner--animated",
   fab: "pe-spinner--fab",
@@ -37,20 +34,15 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var SpinnerInstance = StateComponent(_extends({}, coreMaterialDesignSpinner, { component: BaseSpinner }));
-
-var SpinnerToggle = StateComponent(Conditional);
+const SpinnerInstance = StateComponent(Object.assign({}, coreMaterialDesignSpinner, {
+  component: BaseSpinner
+}));
+const SpinnerToggle = StateComponent(Conditional);
 SpinnerToggle.displayName = "MaterialDesignSpinnerToggle";
-
-var MaterialDesignSpinner = function MaterialDesignSpinner(props) {
-  return renderer(SpinnerToggle, _extends({}, props, {
-    placeholderClassName: baseSpinnerClasses.placeholder,
-    instance: SpinnerInstance
-  }));
-};
-
+const MaterialDesignSpinner = props => renderer(SpinnerToggle, Object.assign({}, props, {
+  placeholderClassName: baseSpinnerClasses.placeholder,
+  instance: SpinnerInstance
+}));
 MaterialDesignSpinner.classes = classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
 

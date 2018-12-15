@@ -4,17 +4,16 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-list-tile'],global['polythene-mithril-icon'],global['polythene-mithril-ripple']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreListTile,polytheneMithrilIcon,polytheneMithrilRipple) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var ListTile = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreListTile.coreListTile, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createProps(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon, Ripple: polytheneMithrilRipple.Ripple }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createContent(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon, Ripple: polytheneMithrilRipple.Ripple }));
-    }
+  const ListTile = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreListTile.coreListTile, {
+    createProps: (vnode, args) => polytheneCoreListTile.coreListTile.createProps(vnode, Object.assign(args, {
+      Icon: polytheneMithrilIcon.Icon,
+      Ripple: polytheneMithrilRipple.Ripple
+    })),
+    createContent: (vnode, args) => polytheneCoreListTile.coreListTile.createContent(vnode, Object.assign(args, {
+      Icon: polytheneMithrilIcon.Icon,
+      Ripple: polytheneMithrilRipple.Ripple
+    }))
   }));
-
   ListTile.displayName = "ListTile";
 
   exports.ListTile = ListTile;

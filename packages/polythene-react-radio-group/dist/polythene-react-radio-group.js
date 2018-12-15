@@ -4,14 +4,11 @@
   (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-radio-group'],global['polythene-react-radio-button']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreRadioGroup,polytheneReactRadioButton) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var RadioGroup = polytheneReactBase.StateComponent(_extends({}, polytheneCoreRadioGroup.coreRadioGroup, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreRadioGroup.coreRadioGroup.createContent(vnode, _extends(args, { RadioButton: polytheneReactRadioButton.RadioButton }));
-    }
+  const RadioGroup = polytheneReactBase.StateComponent(Object.assign({}, polytheneCoreRadioGroup.coreRadioGroup, {
+    createContent: (vnode, args) => polytheneCoreRadioGroup.coreRadioGroup.createContent(vnode, Object.assign(args, {
+      RadioButton: polytheneReactRadioButton.RadioButton
+    }))
   }));
-
   RadioGroup.displayName = "RadioGroup";
 
   exports.RadioGroup = RadioGroup;

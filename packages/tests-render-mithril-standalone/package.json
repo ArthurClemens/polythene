@@ -4,9 +4,9 @@
   "private": true,
   "description": "",
   "scripts": {
-    "dev": "http-server -p 3200",
     "build": "npm run update",
-    "update": "cd ../polythene-mithril && npm run build-standalone && cd - && cp ../polythene-mithril/dist/polythene-mithril-standalone.js* js/ && cd ../polythene-css && npm run build-standalone && cd - && cp ../polythene-css/dist/polythene-css-standalone.js* js/"
+    "update": "cd ../polythene-mithril && npm run build-standalone && cd - && cp ../polythene-mithril/dist/polythene-mithril-standalone.js* js/ && cd ../polythene-css && npm run build-standalone && cd - && cp ../polythene-css/dist/polythene-css-standalone.js* js/",
+    "serve": "http-server -p 5000"
   },
   "devDependencies": {
     "http-server": "^0.11.1"

@@ -4,18 +4,15 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-fab'],global['polythene-mithril-icon'],global['polythene-mithril-button']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreFab,polytheneMithrilIcon,polytheneMithrilButton) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var FAB = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreFab.coreFAB, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreFab.coreFAB.createProps(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreFab.coreFAB.createContent(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon }));
-    },
+  const FAB = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreFab.coreFAB, {
+    createProps: (vnode, args) => polytheneCoreFab.coreFAB.createProps(vnode, Object.assign(args, {
+      Icon: polytheneMithrilIcon.Icon
+    })),
+    createContent: (vnode, args) => polytheneCoreFab.coreFAB.createContent(vnode, Object.assign(args, {
+      Icon: polytheneMithrilIcon.Icon
+    })),
     component: polytheneMithrilButton.Button
   }));
-
   FAB.displayName = "FAB";
 
   exports.FAB = FAB;

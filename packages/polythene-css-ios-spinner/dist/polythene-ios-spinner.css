@@ -27,62 +27,62 @@
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:first-of-type {
   transform: rotate(1turn) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s 0ms linear infinite
+  animation: iosSpinnerFade 1s linear 0ms infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(2) {
   transform: rotate(330deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -83.33333333333333ms linear infinite
+  animation: iosSpinnerFade 1s linear -83.33333333333333ms infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(3) {
   transform: rotate(300deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.16666666666666666s linear infinite
+  animation: iosSpinnerFade 1s linear -.16666666666666666s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(4) {
   transform: rotate(270deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.25s linear infinite
+  animation: iosSpinnerFade 1s linear -.25s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(5) {
   transform: rotate(240deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.3333333333333333s linear infinite
+  animation: iosSpinnerFade 1s linear -.3333333333333333s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(6) {
   transform: rotate(210deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.41666666666666663s linear infinite
+  animation: iosSpinnerFade 1s linear -.41666666666666663s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(7) {
   transform: rotate(180deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.5s linear infinite
+  animation: iosSpinnerFade 1s linear -.5s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(8) {
   transform: rotate(150deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.5833333333333333s linear infinite
+  animation: iosSpinnerFade 1s linear -.5833333333333333s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(9) {
   transform: rotate(120deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.6666666666666666s linear infinite
+  animation: iosSpinnerFade 1s linear -.6666666666666666s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(10) {
   transform: rotate(90deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.75s linear infinite
+  animation: iosSpinnerFade 1s linear -.75s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(11) {
   transform: rotate(60deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.8333333333333333s linear infinite
+  animation: iosSpinnerFade 1s linear -.8333333333333333s infinite
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(12) {
   transform: rotate(30deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s -.9166666666666666s linear infinite
+  animation: iosSpinnerFade 1s linear -.9166666666666666s infinite
 }
 
 .pe-dark-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-dark-tone .pe-ios-spinner .pe-ios-spinner__blade {

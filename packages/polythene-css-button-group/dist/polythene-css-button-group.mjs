@@ -4,31 +4,27 @@ var classes = {
   component: "pe-button-group"
 };
 
-var varFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      display: "flex"
-    })];
-  }
+const varFns = {
+  general_styles: selector => [sel(selector, {
+    display: "flex"
+  })]
 };
-
-var layout = createLayout({ varFns: varFns });
+var layout = createLayout({
+  varFns
+});
 
 var vars = {
   general_styles: true
 };
 
-var fns = [layout];
-var selector = "." + classes.component;
-
-var addStyle = styler.createAddStyle(selector, fns, vars);
-
-var getStyle = styler.createGetStyle(selector, fns, vars);
-
+const fns = [layout];
+const selector = `.${classes.component}`;
+const addStyle = styler.createAddStyle(selector, fns, vars);
+const getStyle = styler.createGetStyle(selector, fns, vars);
 styler.addStyle({
   selectors: [selector],
-  fns: fns,
-  vars: vars
+  fns,
+  vars
 });
 
 export { addStyle, getStyle, layout, vars };

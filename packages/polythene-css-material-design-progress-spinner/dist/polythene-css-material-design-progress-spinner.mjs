@@ -1,10 +1,9 @@
 import { color, layout } from 'polythene-css-material-design-spinner';
-import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-md-progress-spinner",
-
   // elements
   animation: "pe-md-progress-spinner__animation",
   circle: "pe-md-progress-spinner__circle",
@@ -12,92 +11,76 @@ var classes = {
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      " .pe-md-progress-spinner__circle": {
-        borderColor: "currentcolor"
-      }
-    })];
-  }
+const generalFns = {
+  general_styles: selector => [sel(selector, {
+    " .pe-md-progress-spinner__circle": {
+      borderColor: "currentcolor"
+    }
+  })]
 };
 
-var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
-    return [sel(selector, {
-      color: vars$$1["color_" + tint]
-    })];
-  });
-};
+const tintFns = tint => ({
+  ["color_" + tint]: (selector, vars$$1) => [sel(selector, {
+    color: vars$$1["color_" + tint]
+  })]
+});
 
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
-
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
 var color$1 = createColor({
-  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns },
+  varFns: {
+    lightTintFns,
+    darkTintFns
+  },
   superColor: color
 });
 
-var varFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      position: "relative",
-
-      " .pe-md-progress-spinner__animation": {
-        position: "absolute",
-        width: "100%",
-        height: "100%"
-      },
-
-      " .pe-md-progress-spinner__circle": {
-        position: "absolute",
-        boxSizing: "border-box",
-        width: "100%",
-        height: "100%",
-        borderStyle: "solid",
-        borderRadius: "50%"
-      },
-
-      " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
-        transform: "rotate(0)",
-        clip: "rect(0, 0, 0, 0)"
-      }
-    })];
-  },
-  progress_animation_duration: function progress_animation_duration(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-md-progress-spinner__animation": {
-        animationDuration: vars$$1.progress_animation_duration
-      }
-    })];
-  }
+const varFns = {
+  general_styles: selector => [sel(selector, {
+    position: "relative",
+    " .pe-md-progress-spinner__animation": {
+      position: "absolute",
+      width: "100%",
+      height: "100%"
+    },
+    " .pe-md-progress-spinner__circle": {
+      position: "absolute",
+      boxSizing: "border-box",
+      width: "100%",
+      height: "100%",
+      borderStyle: "solid",
+      borderRadius: "50%"
+    },
+    " .pe-md-progress-spinner__circle-left, .pe-md-progress-spinner__circle-right": {
+      transform: "rotate(0)",
+      clip: "rect(0, 0, 0, 0)"
+    }
+  })],
+  progress_animation_duration: (selector, vars$$1) => [sel(selector, {
+    " .pe-md-progress-spinner__animation": {
+      animationDuration: vars$$1.progress_animation_duration
+    }
+  })]
 };
-
-var layout$1 = createLayout({ varFns: varFns, superLayout: layout });
+var layout$1 = createLayout({
+  varFns,
+  superLayout: layout
+});
 
 var vars$1 = {
   general_styles: true,
-
   progress_animation_duration: ".8s",
-
   color_light: rgba(vars.color_primary),
   color_dark: rgba(vars.color_primary)
 };
 
-var fns = [layout$1, color$1];
-var selector = "." + classes.component;
-
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
-
+const fns = [layout$1, color$1];
+const selector = `.${classes.component}`;
+const addStyle = styler.createAddStyle(selector, fns, vars$1);
+const getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns: fns,
+  fns,
   vars: vars$1
 });
 

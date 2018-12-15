@@ -6,7 +6,6 @@
 
   var classes = {
     component: "pe-ios-spinner",
-
     // elements
     blades: "pe-ios-spinner__blades",
     blade: "pe-ios-spinner__blade"
@@ -14,11 +13,9 @@
 
   var baseSpinnerClasses = {
     component: "pe-spinner",
-
     // elements
     animation: "pe-spinner__animation",
     placeholder: "pe-spinner__placeholder",
-
     // states
     animated: "pe-spinner--animated",
     fab: "pe-spinner--fab",
@@ -32,22 +29,17 @@
     visible: "pe-spinner--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var SpinnerInstance = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreIosSpinner.coreIOSSpinner, { component: polytheneMithrilBaseSpinner.BaseSpinner }));
-
-  var SpinnerToggle = polytheneMithrilBase.StateComponent(polytheneCore.Conditional);
+  const SpinnerInstance = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreIosSpinner.coreIOSSpinner, {
+    component: polytheneMithrilBaseSpinner.BaseSpinner
+  }));
+  const SpinnerToggle = polytheneMithrilBase.StateComponent(polytheneCore.Conditional);
   SpinnerToggle.displayName = "IOSSpinnerToggle";
-
-  var IOSSpinner = {
-    view: function view(vnode) {
-      return polytheneMithrilBase.renderer(SpinnerToggle, _extends({}, vnode.attrs, {
-        placeholderClassName: baseSpinnerClasses.placeholder,
-        instance: SpinnerInstance
-      }));
-    }
+  const IOSSpinner = {
+    view: vnode => polytheneMithrilBase.renderer(SpinnerToggle, Object.assign({}, vnode.attrs, {
+      placeholderClassName: baseSpinnerClasses.placeholder,
+      instance: SpinnerInstance
+    }))
   };
-
   IOSSpinner.classes = classes;
   IOSSpinner.displayName = "IOSSpinner";
 

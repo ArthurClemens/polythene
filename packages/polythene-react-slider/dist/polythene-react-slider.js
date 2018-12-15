@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-slider']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreSlider) { 'use strict';
 
-	var Slider = polytheneReactBase.StateComponent(polytheneCoreSlider.coreSlider);
-
+	const Slider = polytheneReactBase.StateComponent(polytheneCoreSlider.coreSlider);
 	Slider.displayName = "Slider";
 
 	exports.Slider = Slider;

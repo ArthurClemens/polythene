@@ -4,14 +4,11 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-search'],global['polythene-mithril-textfield']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreSearch,polytheneMithrilTextfield) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Search = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreSearch.coreSearch, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreSearch.coreSearch.createContent(vnode, _extends(args, { TextField: polytheneMithrilTextfield.TextField }));
-    }
+  const Search = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreSearch.coreSearch, {
+    createContent: (vnode, args) => polytheneCoreSearch.coreSearch.createContent(vnode, Object.assign(args, {
+      TextField: polytheneMithrilTextfield.TextField
+    }))
   }));
-
   Search.displayName = "Search";
 
   exports.Search = Search;

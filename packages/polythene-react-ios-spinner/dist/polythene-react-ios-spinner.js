@@ -6,7 +6,6 @@
 
   var classes = {
     component: "pe-ios-spinner",
-
     // elements
     blades: "pe-ios-spinner__blades",
     blade: "pe-ios-spinner__blade"
@@ -14,11 +13,9 @@
 
   var baseSpinnerClasses = {
     component: "pe-spinner",
-
     // elements
     animation: "pe-spinner__animation",
     placeholder: "pe-spinner__placeholder",
-
     // states
     animated: "pe-spinner--animated",
     fab: "pe-spinner--fab",
@@ -32,20 +29,15 @@
     visible: "pe-spinner--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var SpinnerInstance = polytheneReactBase.StateComponent(_extends({}, polytheneCoreIosSpinner.coreIOSSpinner, { component: polytheneReactBaseSpinner.BaseSpinner }));
-
-  var SpinnerToggle = polytheneReactBase.StateComponent(polytheneCore.Conditional);
+  const SpinnerInstance = polytheneReactBase.StateComponent(Object.assign({}, polytheneCoreIosSpinner.coreIOSSpinner, {
+    component: polytheneReactBaseSpinner.BaseSpinner
+  }));
+  const SpinnerToggle = polytheneReactBase.StateComponent(polytheneCore.Conditional);
   SpinnerToggle.displayName = "IOSSpinnerToggle";
-
-  var IOSSpinner = function IOSSpinner(props) {
-    return polytheneReactBase.renderer(SpinnerToggle, _extends({}, props, {
-      placeholderClassName: baseSpinnerClasses.placeholder,
-      instance: SpinnerInstance
-    }));
-  };
-
+  const IOSSpinner = props => polytheneReactBase.renderer(SpinnerToggle, Object.assign({}, props, {
+    placeholderClassName: baseSpinnerClasses.placeholder,
+    instance: SpinnerInstance
+  }));
   IOSSpinner.classes = classes;
   IOSSpinner.displayName = "IOSSpinner";
 

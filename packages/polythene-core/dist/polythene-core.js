@@ -4,20 +4,20 @@
   (factory((global.polythene = {})));
 }(this, (function (exports) { 'use strict';
 
-  var isClient = typeof document !== "undefined";
-  var isServer = !isClient;
+  const isClient = typeof document !== "undefined";
+  const isServer = !isClient;
 
-  var evts = {
+  const evts = {
     "animation": "animationend",
     "OAnimation": "oAnimationEnd",
     "MozAnimation": "animationend",
     "WebkitAnimation": "webkitAnimationEnd"
   };
-
-  var getAnimationEndEvent = function getAnimationEndEvent() {
+  const getAnimationEndEvent = () => {
     if (isClient) {
-      var el = document.createElement("fakeelement");
-      for (var a in evts) {
+      const el = document.createElement("fakeelement");
+
+      for (let a in evts) {
         if (el.style[a] !== undefined) {
           return evts[a];
         }
@@ -25,36 +25,37 @@
     }
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var modes = {
+  const modes = {
     hidden: "hidden",
     visible: "visible",
     exposing: "exposing",
     hiding: "hiding"
   };
+  const Conditional = {
+    getInitialState: (vnode, createStream) => {
+      const attrs = vnode.attrs;
 
-  var Conditional = {
-    getInitialState: function getInitialState(vnode, createStream) {
-      var attrs = vnode.attrs;
       if (!attrs.didHide) {
         return {};
       }
-      var visible = attrs.permanent || attrs.show;
-      var mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
+
+      const visible = attrs.permanent || attrs.show;
+      const mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
       return {
-        mode: mode,
+        mode,
         redrawOnUpdate: createStream.merge([mode])
       };
     },
-    onUpdate: function onUpdate(_ref) {
-      var state = _ref.state,
-          attrs = _ref.attrs;
-
+    onUpdate: ({
+      state,
+      attrs
+    }) => {
       if (!attrs.didHide) {
         return;
       }
-      var mode = state.mode();
+
+      const mode = state.mode();
+
       if (attrs.permanent) {
         if (mode === modes.visible && attrs.show) {
           state.mode(modes.exposing);
@@ -70,238 +71,198 @@
         }
       }
     },
-    view: function view(_ref2, _ref3) {
-      var state = _ref2.state,
-          attrs = _ref2.attrs;
-      var h = _ref3.renderer;
+    view: ({
+      state,
+      attrs
+    }, {
+      renderer: h
+    }) => {
+      const placeholder = h("span", {
+        className: attrs.placeholderClassName
+      }); // No didHide callback passed: use normal visibility evaluation
 
-      var placeholder = h("span", { className: attrs.placeholderClassName });
-
-      // No didHide callback passed: use normal visibility evaluation
       if (!attrs.didHide) {
         return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : placeholder;
-      }
+      } // else: use didHide to reset the state after hiding
 
-      // else: use didHide to reset the state after hiding
-      var mode = state.mode();
-      var visible = mode !== modes.hidden;
-      return visible ? h(attrs.instance, _extends({}, attrs, {
-        didHide: function didHide(args) {
-          return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
-        }
+
+      const mode = state.mode();
+      const visible = mode !== modes.hidden;
+      return visible ? h(attrs.instance, Object.assign({}, attrs, {
+        didHide: args => (attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden))
       }, mode === modes.hiding && {
         show: true,
         hide: true
       })) : placeholder;
     }
   };
-
   Conditional.displayName = "Conditional";
 
-  var r = function r(acc, p) {
-    return acc[p] = 1, acc;
-  };
-
+  const r = (acc, p) => (acc[p] = 1, acc);
   /* 
   Separately handled props:
   - class
   - element
   */
 
-  var defaultAttrs = [
-  // Universal
-  "key", "style", "href", "id",
 
-  // React
-  "tabIndex",
-
-  // Mithril
+  const defaultAttrs = [// Universal
+  "key", "style", "href", "id", // React
+  "tabIndex", // Mithril
   "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
-
-  var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$add = _ref.add,
-        addAttrs = _ref$add === undefined ? [] : _ref$add,
-        _ref$remove = _ref.remove,
-        removeAttrs = _ref$remove === undefined ? [] : _ref$remove;
-
-    var removeLookup = removeAttrs.reduce(r, {});
-    var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
-      return !removeLookup[item];
-    }).reduce(r, {});
-    return Object.keys(attrs).reduce(function (acc, key) {
-      return supported[key] ? acc[key] = attrs[key] : null, acc;
-    }, {});
+  const filterSupportedAttributes = (attrs, {
+    add: addAttrs = [],
+    remove: removeAttrs = []
+  } = {}) => {
+    const removeLookup = removeAttrs.reduce(r, {});
+    const supported = defaultAttrs.concat(addAttrs).filter(item => !removeLookup[item]).reduce(r, {});
+    return Object.keys(attrs).reduce((acc, key) => (supported[key] ? acc[key] = attrs[key] : null, acc), {});
   };
+  const unpackAttrs = attrs => typeof attrs === "function" ? attrs() : attrs;
 
-  var unpackAttrs = function unpackAttrs(attrs) {
-    return typeof attrs === "function" ? attrs() : attrs;
-  };
+  const sizeClasses = classes => ({
+    small: classes.small,
+    regular: classes.regular,
+    medium: classes.medium,
+    large: classes.large,
+    fab: classes.fab
+  });
 
-  var sizeClasses = function sizeClasses(classes) {
-    return {
-      small: classes.small,
-      regular: classes.regular,
-      medium: classes.medium,
-      large: classes.large,
-      fab: classes.fab
-    };
-  };
+  const classForSize = (classes, size = "regular") => sizeClasses(classes)[size];
 
-  var classForSize = function classForSize(classes) {
-    var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
-    return sizeClasses(classes)[size];
-  };
-
-  var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
-
-  var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
-
-  var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
-
-  var pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
-
-  var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
-
-  var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
+  const isTouch = isServer ? false : "ontouchstart" in document.documentElement;
+  const pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
+  const pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
+  const pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
+  const pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
+  const pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
   if (isClient) {
     document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
   }
 
-  var listeners = {};
+  const listeners = {}; // https://gist.github.com/Eartz/fe651f2fadcc11444549
 
-  // https://gist.github.com/Eartz/fe651f2fadcc11444549
-  var throttle = function throttle(func) {
-    var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
-    var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
+  const throttle = (func, s = 0.05, context = isClient ? window : {}) => {
+    let wait = false;
+    return (...args) => {
+      const later = () => func.apply(context, args);
 
-    var wait = false;
-    return function () {
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      var later = function later() {
-        return func.apply(context, args);
-      };
       if (!wait) {
         later();
         wait = true;
-        setTimeout(function () {
-          return wait = false;
-        }, s);
+        setTimeout(() => wait = false, s);
       }
     };
   };
-
-  var subscribe = function subscribe(eventName, listener, delay) {
+  const subscribe = (eventName, listener, delay) => {
     listeners[eventName] = listeners[eventName] || [];
     listeners[eventName].push(delay ? throttle(listener, delay) : listener);
   };
-
-  var unsubscribe = function unsubscribe(eventName, listener) {
+  const unsubscribe = (eventName, listener) => {
     if (!listeners[eventName]) {
       return;
     }
-    var index = listeners[eventName].indexOf(listener);
+
+    const index = listeners[eventName].indexOf(listener);
+
     if (index > -1) {
       listeners[eventName].splice(index, 1);
     }
   };
-
-  var emit = function emit(eventName, event) {
+  const emit = (eventName, event) => {
     if (!listeners[eventName]) {
       return;
     }
-    listeners[eventName].forEach(function (listener) {
-      return listener(event);
-    });
+
+    listeners[eventName].forEach(listener => listener(event));
   };
 
   if (isClient) {
-    window.addEventListener("resize", function (e) {
-      return emit("resize", e);
-    });
-    window.addEventListener("scroll", function (e) {
-      return emit("scroll", e);
-    });
-    window.addEventListener("keydown", function (e) {
-      return emit("keydown", e);
-    });
-    window.addEventListener(pointerEndEvent, function (e) {
-      return emit(pointerEndEvent, e);
-    });
+    window.addEventListener("resize", e => emit("resize", e));
+    window.addEventListener("scroll", e => emit("scroll", e));
+    window.addEventListener("keydown", e => emit("keydown", e));
+    window.addEventListener(pointerEndEvent, e => emit(pointerEndEvent, e));
   }
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  /*
+  Helper module to manage multiple items of the same component type.
+  */
+  const Multi = ({
+    options: mOptions,
+    renderer
+  }) => {
+    const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
 
-  var Multi = function Multi(_ref) {
-    var mOptions = _ref.options,
-        renderer = _ref.renderer;
+    let current;
 
-
-    var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
-    var current = void 0;
-
-    var getInitialState = function getInitialState(vnode, createStream) {
+    const getInitialState = (vnode, createStream) => {
       current = createStream(null);
       return {
-        current: current,
+        current,
         redrawOnUpdate: createStream.merge([current])
       };
     };
-
     /*
     @param e: { id, eventName }
     */
-    var onChange = function onChange(e) {
+
+
+    const onChange = e => {
       if (!current) {
         console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
       }
+
       current(e.id);
       emit(mOptions.name, e);
     };
 
-    var itemIndex = function itemIndex(id) {
-      var item = findItem(id);
+    const itemIndex = id => {
+      const item = findItem(id);
       return items.indexOf(item);
     };
 
-    var removeItem = function removeItem(id) {
-      var index = itemIndex(id);
+    const removeItem = id => {
+      const index = itemIndex(id);
+
       if (index !== -1) {
         items.splice(index, 1);
-        onChange({ id: id, name: "removeItem" });
+        onChange({
+          id,
+          name: "removeItem"
+        });
       }
     };
 
-    var replaceItem = function replaceItem(id, newItem) {
-      var index = itemIndex(id);
+    const replaceItem = (id, newItem) => {
+      const index = itemIndex(id);
+
       if (index !== -1) {
         items[index] = newItem;
       }
     };
 
-    var findItem = function findItem(id) {
+    const findItem = id => {
       // traditional for loop for IE10
-      for (var i = 0; i < items.length; i++) {
+      for (let i = 0; i < items.length; i++) {
         if (items[i].instanceId === id) {
           return items[i];
         }
       }
     };
 
-    var next = function next() {
+    const next = () => {
       if (items.length) {
         items[0].show = true;
       }
-      onChange({ id: items.length ? items[0].instanceId : null, name: "next" });
+
+      onChange({
+        id: items.length ? items[0].instanceId : null,
+        name: "next"
+      });
     };
 
-    var remove = function remove() {
-      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
-
+    const remove = (instanceId = mOptions.defaultId) => {
       if (mOptions.queue) {
         items.shift();
         next();
@@ -310,126 +271,138 @@
       }
     };
 
-    var removeAll = function removeAll() {
+    const removeAll = () => {
       items.length = 0;
-      onChange({ id: null, name: "removeAll" });
+      onChange({
+        id: null,
+        name: "removeAll"
+      });
     };
 
-    var setPauseState = function setPauseState(pause, instanceId) {
-      var item = findItem(instanceId);
+    const setPauseState = (pause, instanceId) => {
+      const item = findItem(instanceId);
+
       if (item) {
         item.pause = pause;
         item.unpause = !pause;
-        onChange({ id: instanceId, name: pause ? "pause" : "unpause" });
+        onChange({
+          id: instanceId,
+          name: pause ? "pause" : "unpause"
+        });
       }
     };
 
-    var createItem = function createItem(itemAttrs, instanceId, spawn) {
-      var resolveShow = void 0;
-      var resolveHide = void 0;
-      var attrs = unpackAttrs(itemAttrs);
+    const createItem = (itemAttrs, instanceId, spawn) => {
+      let resolveShow;
+      let resolveHide;
+      const attrs = unpackAttrs(itemAttrs);
 
-      var didShow = function didShow() {
+      const didShow = () => {
         if (attrs.didShow) {
           attrs.didShow(instanceId);
         }
-        onChange({ id: instanceId, name: "didShow" });
+
+        onChange({
+          id: instanceId,
+          name: "didShow"
+        });
         return resolveShow(instanceId);
       };
-      var showPromise = new Promise(function (resolve) {
-        return resolveShow = resolve;
-      });
 
-      var didHide = function didHide() {
+      const showPromise = new Promise(resolve => resolveShow = resolve);
+
+      const didHide = () => {
         if (attrs.didHide) {
           attrs.didHide(instanceId);
         }
-        onChange({ id: instanceId, name: "didHide" });
+
+        onChange({
+          id: instanceId,
+          name: "didHide"
+        });
         remove(instanceId);
         return resolveHide(instanceId);
       };
 
-      var hidePromise = new Promise(function (resolve) {
-        return resolveHide = resolve;
-      });
-
-      return _extends$1({}, mOptions, {
-        instanceId: instanceId,
-        spawn: spawn,
+      const hidePromise = new Promise(resolve => resolveHide = resolve);
+      return Object.assign({}, mOptions, {
+        instanceId,
+        spawn,
         attrs: itemAttrs,
         show: mOptions.queue ? false : true,
-        showPromise: showPromise,
-        hidePromise: hidePromise,
-        didShow: didShow,
-        didHide: didHide
+        showPromise,
+        hidePromise,
+        didShow,
+        didHide
       });
     };
 
-    var count = function count() {
-      return items.length;
-    };
-    var pause = function pause() {
-      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
-      return setPauseState(true, instanceId);
-    };
-    var unpause = function unpause() {
-      var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
-      return setPauseState(false, instanceId);
-    };
+    const count = () => items.length;
 
-    var show = function show() {
-      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    const pause = (instanceId = mOptions.defaultId) => setPauseState(true, instanceId);
 
-      var instanceId = spawnOpts.id || mOptions.defaultId;
-      var spawn = spawnOpts.spawn || mOptions.defaultId;
-      var item = createItem(attrs, instanceId, spawn);
-      onChange({ id: instanceId, name: "show" });
+    const unpause = (instanceId = mOptions.defaultId) => setPauseState(false, instanceId);
+
+    const show = (attrs = {}, spawnOpts = {}) => {
+      const instanceId = spawnOpts.id || mOptions.defaultId;
+      const spawn = spawnOpts.spawn || mOptions.defaultId;
+      const item = createItem(attrs, instanceId, spawn);
+      onChange({
+        id: instanceId,
+        name: "show"
+      });
+
       if (mOptions.queue) {
         items.push(item);
+
         if (items.length === 1) {
           next();
         }
       } else {
-        var storedItem = findItem(instanceId);
+        const storedItem = findItem(instanceId);
+
         if (!storedItem) {
           items.push(item);
         } else {
           replaceItem(instanceId, item);
         }
       }
+
       return item.showPromise;
     };
 
-    var hide = function hide() {
-      var spawnOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    const hide = (spawnOpts = {}) => {
+      const instanceId = spawnOpts.id || mOptions.defaultId;
+      const item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
 
-      var instanceId = spawnOpts.id || mOptions.defaultId;
-      var item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
       if (item) {
         item.hide = true;
       }
-      onChange({ id: instanceId, name: "hide" });
+
+      onChange({
+        id: instanceId,
+        name: "hide"
+      });
       return item ? item.hidePromise : Promise.resolve(instanceId);
     };
 
-    var clear = removeAll;
+    const clear = removeAll;
 
-    var view = function view(_ref2) {
-      var attrs = _ref2.attrs;
+    const view = ({
+      attrs
+    }) => {
+      const spawn = attrs.spawn || mOptions.defaultId;
+      const candidates = items.filter(item => item.show && item.spawn === spawn);
 
-      var spawn = attrs.spawn || mOptions.defaultId;
-      var candidates = items.filter(function (item) {
-        return item.show && item.spawn === spawn;
-      });
       if (mOptions.htmlShowClass && isClient && document.documentElement) {
         document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
       }
+
       return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
       : renderer(mOptions.holderSelector, {
         className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
-      }, candidates.map(function (itemData) {
-        return renderer(mOptions.instance, _extends$1({}, {
+      }, candidates.map(itemData => {
+        return renderer(mOptions.instance, Object.assign({}, {
           fromMultipleClassName: mOptions.className,
           fromMultipleClear: clear,
           fromMultipleDidHide: itemData.didHide,
@@ -448,81 +421,79 @@
     };
 
     return {
-      clear: clear,
-      count: count,
-      getInitialState: getInitialState,
-      hide: hide,
-      pause: pause,
-      remove: remove,
-      show: show,
-      unpause: unpause,
-      view: view
+      clear,
+      count,
+      getInitialState,
+      hide,
+      pause,
+      remove,
+      show,
+      unpause,
+      view
     };
   };
-
   Multi.displayName = "Multi";
 
-  var getStyle = function getStyle(_ref) {
-    var element = _ref.element,
-        selector = _ref.selector,
-        pseudoSelector = _ref.pseudoSelector,
-        prop = _ref.prop;
+  const getStyle = ({
+    element,
+    selector,
+    pseudoSelector,
+    prop
+  }) => {
+    const el = selector ? element.querySelector(selector) : element;
 
-    var el = selector ? element.querySelector(selector) : element;
     if (!el) {
       return;
     }
+
     return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
   };
+  const stylePropCompare = ({
+    element,
+    selector,
+    pseudoSelector,
+    prop,
+    equals,
+    contains
+  }) => {
+    const el = selector ? element.querySelector(selector) : element;
 
-  var stylePropCompare = function stylePropCompare(_ref2) {
-    var element = _ref2.element,
-        selector = _ref2.selector,
-        pseudoSelector = _ref2.pseudoSelector,
-        prop = _ref2.prop,
-        equals = _ref2.equals,
-        contains = _ref2.contains;
-
-    var el = selector ? element.querySelector(selector) : element;
     if (!el) {
       return false;
     }
+
     if (equals !== undefined) {
       return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
     }
+
     if (contains !== undefined) {
       return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
     }
   };
-
-  var isRTL = function isRTL(_ref3) {
-    var _ref3$element = _ref3.element,
-        element = _ref3$element === undefined ? document : _ref3$element,
-        selector = _ref3.selector;
-    return stylePropCompare({ element: element, selector: selector, prop: "direction", equals: "rtl" });
-  };
-
-  var styleDurationToMs = function styleDurationToMs(durationStr) {
-    var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
+  const isRTL = ({
+    element = document,
+    selector
+  }) => stylePropCompare({
+    element,
+    selector,
+    prop: "direction",
+    equals: "rtl"
+  });
+  const styleDurationToMs = durationStr => {
+    const parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
     return isNaN(parsed) ? 0 : parsed;
   };
 
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  /*
+  Generic show/hide transition module
+  */
 
-  // defaults
-  var DEFAULT_DURATION = .240;
-  var DEFAULT_DELAY = 0;
-  // const TRANSITION =    "both";
-
+  const DEFAULT_DURATION = .240;
+  const DEFAULT_DELAY = 0; // const TRANSITION =    "both";
   // See: transition
-  var show = function show(opts) {
-    return transition(opts, "show");
-  };
 
-  var hide = function hide(opts) {
-    return transition(opts, "hide");
-  };
-
+  const show = opts => transition(opts, "show");
+  const hide = opts => transition(opts, "hide");
   /*
   opts:
   - el
@@ -538,67 +509,70 @@
 
   - state (show, hide)
   */
-  var transition = function transition(opts, state) {
-    var el = opts.el;
+
+  const transition = (opts, state) => {
+    const el = opts.el;
+
     if (!el) {
       return Promise.resolve();
     } else {
-      return new Promise(function (resolve) {
-        var style = el.style;
-        var computedStyle = isClient ? window.getComputedStyle(el) : {};
-        var duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
-        var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
-        var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
+      return new Promise(resolve => {
+        const style = el.style;
+        const computedStyle = isClient ? window.getComputedStyle(el) : {};
+        const duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
+        const delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
+        const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
         if (opts.transitionClass) {
-          var transitionClassElement = opts.transitionClassElement || el;
+          const transitionClassElement = opts.transitionClassElement || el;
           transitionClassElement.classList.add(opts.transitionClass);
         }
 
-        var before = function before() {
+        const before = () => {
           style.transitionDuration = "0ms";
           style.transitionDelay = "0ms";
           opts.before();
         };
 
-        var maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
+        const maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
+        const after = opts.after ? () => opts.after() : null;
 
-        var after = opts.after ? function () {
-          return opts.after();
-        } : null;
-
-        var applyTransition = function applyTransition() {
+        const applyTransition = () => {
           style.transitionDuration = duration + "ms";
           style.transitionDelay = delay + "ms";
 
           if (timingFunction) {
             style.transitionTimingFunction = timingFunction;
           }
+
           if (opts.showClass) {
-            var showClassElement = opts.showClassElement || el;
+            const showClassElement = opts.showClassElement || el;
             showClassElement.classList[state === "show" ? "add" : "remove"](opts.showClass);
           }
+
           if (opts.transition) {
             opts.transition();
           }
         };
 
-        var doTransition = function doTransition() {
+        const doTransition = () => {
           applyTransition();
-          setTimeout(function () {
+          setTimeout(() => {
             if (after) {
               after();
             }
+
             if (opts.transitionClass) {
-              var _transitionClassElement = opts.transitionClassElement || el;
-              _transitionClassElement.classList.remove(opts.transitionClass);
+              const transitionClassElement = opts.transitionClassElement || el;
+              transitionClassElement.classList.remove(opts.transitionClass);
               el.offsetHeight; // force reflow
             }
+
             resolve();
           }, duration + delay);
         };
 
-        var maybeDelayTransition = function maybeDelayTransition() {
+        const maybeDelayTransition = () => {
           if (duration === 0) {
             doTransition();
           } else {
@@ -609,7 +583,8 @@
         if (maybeBefore) {
           maybeBefore();
           el.offsetHeight; // force reflow
-          setTimeout(function () {
+
+          setTimeout(() => {
             maybeDelayTransition();
           }, 0);
         } else {
@@ -619,67 +594,74 @@
     }
   };
 
-  var transitionComponent = function transitionComponent(_ref) {
-    var isShow = _ref.isShow,
-        state = _ref.state,
-        attrs = _ref.attrs,
-        domElements = _ref.domElements,
-        beforeTransition = _ref.beforeTransition,
-        afterTransition = _ref.afterTransition,
-        showClass = _ref.showClass,
-        transitionClass = _ref.transitionClass;
-
+  const transitionComponent = ({
+    isShow,
+    state,
+    attrs,
+    domElements,
+    beforeTransition,
+    afterTransition,
+    showClass,
+    transitionClass
+  }) => {
     if (state.transitioning()) {
       return Promise.resolve();
     }
+
     state.transitioning(true);
     state.visible(isShow ? true : false);
+
     if (beforeTransition) {
       beforeTransition();
     }
-    var duration = attrs[isShow ? "showDuration" : "hideDuration"];
-    var delay = attrs[isShow ? "showDelay" : "hideDelay"];
-    var timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
-    var transitions = attrs.transitions;
-    var fn = isShow ? show : hide;
-    var opts1 = _extends$2({}, attrs, domElements, {
-      showClass: showClass,
-      transitionClass: transitionClass,
-      duration: duration,
-      delay: delay,
-      timingFunction: timingFunction
+
+    const duration = attrs[isShow ? "showDuration" : "hideDuration"];
+    const delay = attrs[isShow ? "showDelay" : "hideDelay"];
+    const timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
+    const transitions = attrs.transitions;
+    const fn = isShow ? show : hide;
+    const opts1 = Object.assign({}, attrs, domElements, {
+      showClass,
+      transitionClass,
+      duration,
+      delay,
+      timingFunction
     });
-    var opts2 = _extends$2({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
-    var opts3 = _extends$2({}, opts2, {
+    const opts2 = Object.assign({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+    const opts3 = Object.assign({}, opts2, {
       duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
       hasDuration: opts2.duration !== undefined,
       delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,
       hasDelay: opts2.delay !== undefined
     });
-    return fn(opts3).then(function () {
-      var id = state.instanceId;
+    return fn(opts3).then(() => {
+      const id = state.instanceId;
+
       if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
         attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
       } else if (attrs[isShow ? "didShow" : "didHide"]) {
         attrs[isShow ? "didShow" : "didHide"](id); // when used directly
       }
+
       if (afterTransition) {
         afterTransition();
       }
+
       state.transitioning(false);
     });
   };
 
-  var deprecation = function deprecation(component, _ref) {
-    var option = _ref.option,
-        newOption = _ref.newOption,
-        newComponent = _ref.newComponent;
-    return option && console.warn(component + ": option '" + option + "' is deprecated and will be removed in later versions. Use '" + newOption + "' instead."), newComponent && !newOption && console.warn(component + ": this component is deprecated and will be removed in later versions. Use '" + newComponent + "' instead."), newComponent && newOption && console.warn(component + ": this component is deprecated and will be removed in later versions. Use '" + newComponent + "' with option '" + newOption + "' instead.") // eslint-disable-line no-console
-    ;
-  };
+  const deprecation = (component, {
+    option,
+    newOption,
+    newComponent
+  }) => (option && console.warn(`${component}: option '${option}' is deprecated and will be removed in later versions. Use '${newOption}' instead.`), // eslint-disable-line no-console
+  newComponent && !newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' instead.`), // eslint-disable-line no-console
+  newComponent && newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' with option '${newOption}' instead.`) // eslint-disable-line no-console
+  );
 
-  var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
-  var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
+  const iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
+  const iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
 
   exports.getAnimationEndEvent = getAnimationEndEvent;
   exports.Conditional = Conditional;

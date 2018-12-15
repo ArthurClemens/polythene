@@ -3,7 +3,6 @@ import { easing } from 'polythene-utilities';
 
 var classes = {
   component: "pe-md-progress-spinner",
-
   // elements
   animation: "pe-md-progress-spinner__animation",
   circle: "pe-md-progress-spinner__circle",
@@ -11,62 +10,66 @@ var classes = {
   circleLeft: "pe-md-progress-spinner__circle-left"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+const percentageValue = (min, max, percentage = 0) => min + (max - min) * percentage;
 
-var percentageValue = function percentageValue(min, max) {
-  var percentage = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  return min + (max - min) * percentage;
-};
-
-var rotateCircle = function rotateCircle(el, min, max, percentage) {
-  var style = el.style;
+const rotateCircle = (el, min, max, percentage) => {
+  const style = el.style;
   style["transform"] = style["-webkit-transform"] = style["-moz-transform"] = style["-ms-transform"] = style["-o-transform"] = "rotate(" + percentageValue(min, max, percentage) + "deg)";
 };
 
-var animate = function animate(stateEl, size, percentage) {
-  var animationEl = stateEl.querySelector("." + classes.animation);
-  var animationElStyle = animationEl.style;
+const animate = (stateEl, size, percentage) => {
+  const animationEl = stateEl.querySelector("." + classes.animation);
+  const animationElStyle = animationEl.style;
+
   if (percentage < 0.5) {
     animationElStyle.clip = "rect(0px, " + size + "px, " + size + "px, " + size / 2 + "px)";
   } else {
     animationElStyle.clip = "rect(auto, auto, auto, auto)";
   }
-  var leftCircle = stateEl.querySelector("." + classes.circleLeft);
-  var rightCircle = stateEl.querySelector("." + classes.circleRight);
+
+  const leftCircle = stateEl.querySelector("." + classes.circleLeft);
+  const rightCircle = stateEl.querySelector("." + classes.circleRight);
   leftCircle.style.clip = rightCircle.style.clip = "rect(0px, " + size / 2 + "px, " + size + "px, " + "0px)";
   rotateCircle(rightCircle, 0, 180, Math.min(1, percentage * 2));
   rotateCircle(leftCircle, 0, 360, percentage);
 };
 
-var updateWithPercentage = function updateWithPercentage(_ref) {
-  var state = _ref.state,
-      attrs = _ref.attrs,
-      size = _ref.size;
-
+const updateWithPercentage = ({
+  state,
+  attrs,
+  size
+}) => {
   if (!state.dom) {
     return;
   }
+
   if (state.animating()) {
     return;
   }
+
   if (attrs.percentage === undefined) {
     return;
   }
-  var percentage = unpackAttrs(attrs.percentage);
-  var previousPercentage = state.percentage();
-  var easingFn = attrs.animated ? easing.easeInOutQuad : function (v) {
-    return v;
-  };
+
+  const percentage = unpackAttrs(attrs.percentage);
+  const previousPercentage = state.percentage();
+  const easingFn = attrs.animated ? easing.easeInOutQuad : v => v;
+
   if (attrs.animated && previousPercentage !== percentage) {
-    var el = state.dom;
-    var animationDuration = attrs.updateDuration !== undefined ? attrs.updateDuration * 1000 : styleDurationToMs(getStyle({ element: el.querySelector("." + classes.animation), prop: "animation-duration" }));
-    var start = null;
-    var step = function step(timestamp) {
+    const el = state.dom;
+    const animationDuration = attrs.updateDuration !== undefined ? attrs.updateDuration * 1000 : styleDurationToMs(getStyle({
+      element: el.querySelector(`.${classes.animation}`),
+      prop: "animation-duration"
+    }));
+    let start = null;
+
+    const step = timestamp => {
       if (!start) start = timestamp;
-      var progress = timestamp - start;
-      var stepPercentage = 1.0 / animationDuration * progress;
-      var newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
+      const progress = timestamp - start;
+      const stepPercentage = 1.0 / animationDuration * progress;
+      const newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
       animate(el, size, easingFn(newPercentage));
+
       if (start && progress < animationDuration) {
         window.requestAnimationFrame(step);
       } else {
@@ -75,6 +78,7 @@ var updateWithPercentage = function updateWithPercentage(_ref) {
         state.animating(false);
       }
     };
+
     state.animating(true);
     window.requestAnimationFrame(step);
   } else {
@@ -83,41 +87,51 @@ var updateWithPercentage = function updateWithPercentage(_ref) {
   }
 };
 
-var getSize = function getSize(element) {
-  return Math.round(element ? parseFloat(getStyle({ element: element, prop: "height" })) - 2 * parseFloat(getStyle({ element: element, prop: "padding" })) : 0);
-};
+const getSize = element => Math.round(element ? parseFloat(getStyle({
+  element,
+  prop: "height"
+})) - 2 * parseFloat(getStyle({
+  element,
+  prop: "padding"
+})) : 0);
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var percentage = createStream(0);
-  var animating = createStream(false);
+const getInitialState = (vnode, createStream) => {
+  const percentage = createStream(0);
+  const animating = createStream(false);
   return {
-    animating: animating,
+    animating,
     dom: undefined,
-    percentage: percentage,
+    percentage,
     redrawOnUpdate: createStream.merge([animating])
   };
 };
-
-var onMount = function onMount(vnode) {
+const onMount = vnode => {
   if (!vnode.dom) {
     return;
   }
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+
+  const state = vnode.state;
+  const attrs = vnode.attrs;
   state.dom = vnode.dom;
-  var size = getSize(state.dom);
-  updateWithPercentage({ state: state, attrs: attrs, size: size });
+  const size = getSize(state.dom);
+  updateWithPercentage({
+    state,
+    attrs,
+    size
+  });
 };
-
-var createProps = function createProps(vnode, _ref2) {
-  var h = _ref2.renderer;
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var size = getSize(state.dom);
-  updateWithPercentage({ state: state, attrs: attrs, size: size });
-
-  var content = h("div", {
+const createProps = (vnode, {
+  renderer: h
+}) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  const size = getSize(state.dom);
+  updateWithPercentage({
+    state,
+    attrs,
+    size
+  });
+  const content = h("div", {
     key: "content",
     className: classes.animation,
     style: {
@@ -131,10 +145,9 @@ var createProps = function createProps(vnode, _ref2) {
     key: "right",
     className: [classes.circle, classes.circleRight].join(" ")
   })]);
-
-  return _extends({}, attrs, {
+  return Object.assign({}, attrs, {
     className: [classes.component, attrs.className].join(" "),
-    content: content
+    content
   });
 };
 

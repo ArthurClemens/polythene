@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-ripple']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreRipple) { 'use strict';
 
-	var Ripple = polytheneMithrilBase.StateComponent(polytheneCoreRipple.coreRipple);
-
+	const Ripple = polytheneMithrilBase.StateComponent(polytheneCoreRipple.coreRipple);
 	Ripple.displayName = "Ripple";
 
 	exports.Ripple = Ripple;

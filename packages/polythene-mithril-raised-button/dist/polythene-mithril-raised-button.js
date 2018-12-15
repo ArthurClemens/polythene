@@ -4,17 +4,17 @@
   (factory((global.polythene = {}),global['polythene-mithril-button'],global['polythene-core'],global['polythene-mithril-base']));
 }(this, (function (exports,polytheneMithrilButton,polytheneCore,polytheneMithrilBase) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var RaisedButton = polytheneMithrilBase.ViewComponent({
-    onMount: function onMount() {
-      polytheneCore.deprecation("RaisedButton", { newComponent: "Button", newOption: "raised: true" });
+  const RaisedButton = polytheneMithrilBase.ViewComponent({
+    onMount: () => {
+      polytheneCore.deprecation("RaisedButton", {
+        newComponent: "Button",
+        newOption: "raised: true"
+      });
     },
-    view: function view(vnode) {
-      return polytheneMithrilBase.renderer(polytheneMithrilButton.Button, _extends({}, { raised: true }, vnode.attrs), vnode.children);
-    }
+    view: vnode => polytheneMithrilBase.renderer(polytheneMithrilButton.Button, Object.assign({}, {
+      raised: true
+    }, vnode.attrs), vnode.children)
   });
-
   RaisedButton.displayName = "RaisedButton";
 
   exports.RaisedButton = RaisedButton;

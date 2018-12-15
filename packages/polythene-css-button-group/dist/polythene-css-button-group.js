@@ -8,31 +8,27 @@
     component: "pe-button-group"
   };
 
-  var varFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, {
-        display: "flex"
-      })];
-    }
+  const varFns = {
+    general_styles: selector => [polytheneCoreCss.sel(selector, {
+      display: "flex"
+    })]
   };
-
-  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
+  var layout = polytheneCoreCss.createLayout({
+    varFns
+  });
 
   var vars = {
     general_styles: true
   };
 
-  var fns = [layout];
-  var selector = "." + classes.component;
-
-  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
-
-  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
-
+  const fns = [layout];
+  const selector = `.${classes.component}`;
+  const addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
+  const getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
   polytheneCoreCss.styler.addStyle({
     selectors: [selector],
-    fns: fns,
-    vars: vars
+    fns,
+    vars
   });
 
   exports.addStyle = addStyle;

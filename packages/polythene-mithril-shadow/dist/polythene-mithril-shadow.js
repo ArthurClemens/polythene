@@ -4,10 +4,7 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-shadow']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreShadow) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Shadow = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreShadow.coreShadow));
-
+  const Shadow = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreShadow.coreShadow));
   Shadow.displayName = "Shadow";
 
   exports.Shadow = Shadow;

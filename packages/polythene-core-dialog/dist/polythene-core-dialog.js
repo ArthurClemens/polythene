@@ -6,7 +6,6 @@
 
   var listTileClasses = {
     component: "pe-list-tile",
-
     // elements
     content: "pe-list-tile__content",
     highSubtitle: "pe-list-tile__high-subtitle",
@@ -15,7 +14,6 @@
     subtitle: "pe-list-tile__subtitle",
     title: "pe-list-tile__title",
     contentFront: "pe-list-tile__content-front",
-
     // states
     compact: "pe-list-tile--compact",
     compactFront: "pe-list-tile--compact-front",
@@ -34,13 +32,11 @@
 
   var menuClasses = {
     component: "pe-menu",
-
     // elements
     panel: "pe-menu__panel",
     content: "pe-menu__content",
     placeholder: "pe-menu__placeholder",
     backdrop: "pe-menu__backdrop",
-
     // states
     floating: "pe-menu--floating",
     origin: "pe-menu--origin",
@@ -50,7 +46,6 @@
     width_auto: "pe-menu--width-auto",
     width_n: "pe-menu--width-",
     isTopMenu: "pe-menu--top-menu",
-
     // lookup
     listTile: listTileClasses.component,
     selectedListTile: listTileClasses.selected
@@ -58,131 +53,117 @@
 
   var classes = {
     component: "pe-dialog",
-
     // elements
     placeholder: "pe-dialog__placeholder",
     holder: "pe-dialog__holder",
     content: "pe-dialog__content",
     backdrop: "pe-dialog__backdrop",
     touch: "pe-dialog__touch",
-
     // states
     fullScreen: "pe-dialog--full-screen",
     modal: "pe-dialog--modal",
-    open: "pe-dialog--open", // class set to html element
-    visible: "pe-dialog--visible", // class set to dialog element
+    open: "pe-dialog--open",
+    // class set to html element
+    visible: "pe-dialog--visible",
+    // class set to dialog element
     showBackdrop: "pe-dialog--backdrop",
     transition: "pe-dialog--transition",
-
     // lookup
     menuContent: menuClasses.content
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  const DEFAULT_SHADOW_DEPTH = 3;
+  const getElement = vnode => vnode.attrs.element || "div";
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  const isFullScreen = ({
+    state,
+    attrs
+  }) => attrs.fullScreen || polytheneCore.stylePropCompare({
+    element: state.el,
+    pseudoSelector: ":before",
+    prop: "content",
+    contains: `"${"full_screen"}"`
+  });
 
-  var DEFAULT_SHADOW_DEPTH = 3;
+  const isModal = ({
+    state,
+    attrs
+  }) => attrs.modal || polytheneCore.stylePropCompare({
+    element: state.el,
+    pseudoSelector: ":before",
+    prop: "content",
+    contains: `"${"modal"}"`
+  });
 
-  var getElement = function getElement(vnode) {
-    return vnode.attrs.element || "div";
-  };
+  const transitionOptions = (state, attrs, isShow) => ({
+    state,
+    attrs,
+    isShow,
+    domElements: {
+      el: state.el,
+      contentEl: state.contentEl,
+      backdropEl: state.backdropEl
+    },
+    showClass: classes.visible,
+    transitionClass: classes.transition
+  });
 
-  var isFullScreen = function isFullScreen(_ref) {
-    var state = _ref.state,
-        attrs = _ref.attrs;
-    return attrs.fullScreen || polytheneCore.stylePropCompare({
-      element: state.el,
-      pseudoSelector: ":before",
-      prop: "content",
-      contains: "\"" + "full_screen" + "\""
-    });
-  };
+  const showDialog = (state, attrs) => polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
 
-  var isModal = function isModal(_ref2) {
-    var state = _ref2.state,
-        attrs = _ref2.attrs;
-    return attrs.modal || polytheneCore.stylePropCompare({
-      element: state.el,
-      pseudoSelector: ":before",
-      prop: "content",
-      contains: "\"" + "modal" + "\""
-    });
-  };
+  const hideDialog = (state, attrs) => polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
 
-  var transitionOptions = function transitionOptions(state, attrs, isShow) {
-    return {
-      state: state,
-      attrs: attrs,
-      isShow: isShow,
-      domElements: {
-        el: state.el,
-        contentEl: state.contentEl,
-        backdropEl: state.backdropEl
-      },
-      showClass: classes.visible,
-      transitionClass: classes.transition
-    };
-  };
-
-  var showDialog = function showDialog(state, attrs) {
-    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
-  };
-
-  var hideDialog = function hideDialog(state, attrs) {
-    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
-  };
-
-  var getInitialState = function getInitialState(vnode, createStream) {
-    var transitioning = createStream(false);
-    var visible = createStream(false);
+  const getInitialState = (vnode, createStream) => {
+    const transitioning = createStream(false);
+    const visible = createStream(false);
     return {
       backdropEl: undefined,
       touchEl: undefined,
       cleanUp: undefined,
       el: undefined,
       contentEl: undefined,
-      transitioning: transitioning,
-      visible: visible,
+      transitioning,
+      visible,
       redrawOnUpdate: createStream.merge([transitioning])
     };
   };
-
-  var onMount = function onMount(vnode) {
+  const onMount = vnode => {
     if (!vnode.dom) {
       return;
     }
-    var state = vnode.state;
-    var attrs = vnode.attrs;
+
+    const state = vnode.state;
+    const attrs = vnode.attrs;
 
     if (attrs.z !== undefined) {
-      polytheneCore.deprecation("Dialog", { option: "z", newOption: "shadowDepth" });
+      polytheneCore.deprecation("Dialog", {
+        option: "z",
+        newOption: "shadowDepth"
+      });
     }
 
-    var dom = vnode.dom;
+    const dom = vnode.dom;
     state.el = dom;
-    state.backdropEl = dom.querySelector("." + classes.backdrop);
-    state.touchEl = dom.querySelector("." + classes.touch);
-    state.contentEl = dom.querySelector("." + classes.content);
+    state.backdropEl = dom.querySelector(`.${classes.backdrop}`);
+    state.touchEl = dom.querySelector(`.${classes.touch}`);
+    state.contentEl = dom.querySelector(`.${classes.content}`);
 
     if (!attrs.inactive) {
-
-      var handleEscape = function handleEscape(e) {
+      const handleEscape = e => {
         if (isFullScreen(vnode) || isModal(vnode)) return;
+
         if (e.key === "Escape" || e.key === "Esc") {
           // "Esc" for IE11
-          var openDialogs = document.querySelectorAll("." + classes.component);
+          const openDialogs = document.querySelectorAll(`.${classes.component}`);
+
           if (openDialogs[openDialogs.length - 1] === state.el) {
-            hideDialog(state, _extends({}, attrs, {
+            hideDialog(state, Object.assign({}, attrs, {
               hideDelay: 0
             }));
           }
         }
       };
 
-      state.cleanUp = function () {
-        return polytheneCore.unsubscribe("keydown", handleEscape);
-      };
+      state.cleanUp = () => polytheneCore.unsubscribe("keydown", handleEscape);
 
       polytheneCore.subscribe("keydown", handleEscape);
 
@@ -191,40 +172,40 @@
       }
     }
   };
-
-  var onUnMount = function onUnMount(vnode) {
-    return vnode.state.cleanUp && vnode.state.cleanUp();
-  };
-
-  var createProps = function createProps(vnode, _ref3) {
-    var k = _ref3.keys;
-
-    var state = vnode.state;
-    var attrs = vnode.attrs;
-    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
-    _defineProperty({
-      className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null,
-      // classes.visible is set in showDialog though transition
+  const onUnMount = vnode => vnode.state.cleanUp && vnode.state.cleanUp();
+  const createProps = (vnode, {
+    keys: k
+  }) => {
+    const state = vnode.state;
+    const attrs = vnode.attrs;
+    return Object.assign({}, polytheneCore.filterSupportedAttributes(attrs, {
+      remove: ["style"]
+    }), // style set in content, and set by show/hide transition
+    {
+      className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
       attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
       "data-spawn-id": attrs.spawnId,
-      "data-instance-id": attrs.instanceId
-    }, k.onclick, function (e) {
-      if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
-        return;
+      "data-instance-id": attrs.instanceId,
+      // click backdrop: close dialog
+      [k.onclick]: e => {
+        if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
+          return;
+        }
+
+        if (isModal(vnode)) {
+          // not allowed
+          return;
+        }
+
+        hideDialog(state, attrs);
       }
-      if (isModal(vnode)) {
-        // not allowed
-        return;
-      }
-      hideDialog(state, attrs);
-    }));
+    });
   };
-
-  var createPane = function createPane(vnode, _ref4) {
-    var h = _ref4.renderer,
-        Pane = _ref4.Pane;
-
-    var attrs = vnode.attrs;
+  const createPane = (vnode, {
+    renderer: h,
+    Pane
+  }) => {
+    const attrs = vnode.attrs;
     return h(Pane, {
       body: attrs.content || attrs.body || attrs.menu || vnode.children,
       borders: attrs.borders,
@@ -238,35 +219,36 @@
       title: attrs.title
     });
   };
-
-  var createContent = function createContent(vnode, _ref5) {
-    var renderer = _ref5.renderer,
-        Shadow = _ref5.Shadow,
-        createPane = _ref5.createPane,
-        Pane = _ref5.Pane;
-
-    var state = vnode.state;
-    var attrs = vnode.attrs;
-    var h = renderer;
+  const createContent = (vnode, {
+    renderer,
+    Shadow,
+    createPane,
+    Pane
+  }) => {
+    const state = vnode.state;
+    const attrs = vnode.attrs;
+    const h = renderer;
 
     if (state.el) {
-      var visible = state.visible();
-      var transitioning = state.transitioning();
+      const visible = state.visible();
+      const transitioning = state.transitioning();
+
       if (!transitioning) {
         if (attrs.hide && visible) {
           // Use setTimeout to play nice with React's lifecycle functions
-          setTimeout(function () {
-            return hideDialog(state, attrs);
-          }, 0);
+          setTimeout(() => hideDialog(state, attrs), 0);
         } else if (attrs.show && !visible) {
-          setTimeout(function () {
-            return showDialog(state, attrs);
-          }, 0);
+          setTimeout(() => showDialog(state, attrs), 0);
         }
       }
     }
-    var pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, { renderer: renderer, Pane: Pane });
-    var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+
+    const pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, {
+      renderer,
+      Pane
+    });
+    const shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+
     return [h("div", {
       key: "backdrop",
       className: classes.backdrop

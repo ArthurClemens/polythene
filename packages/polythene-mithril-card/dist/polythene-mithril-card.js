@@ -4,32 +4,25 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-card'],global['polythene-mithril-icon'],global['polythene-mithril-list-tile'],global['polythene-mithril-shadow']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreCard,polytheneMithrilIcon,polytheneMithrilListTile,polytheneMithrilShadow) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var CardActions = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreCard.coreCardActions));
-
+  const CardActions = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreCard.coreCardActions));
   CardActions.displayName = "CardActions";
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var CardMedia = polytheneMithrilBase.StateComponent(_extends$1({}, polytheneCoreCard.coreCardMedia));
-
+  const CardMedia = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreCard.coreCardMedia));
   CardMedia.displayName = "CardMedia";
 
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var CardPrimary = polytheneMithrilBase.ViewComponent(_extends$2({}, polytheneCoreCard.coreCardPrimary));
-
+  const CardPrimary = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreCard.coreCardPrimary));
   CardPrimary.displayName = "CardPrimary";
 
-  var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Card = polytheneMithrilBase.ViewComponent(_extends$3({}, polytheneCoreCard.coreCard, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreCard.coreCard.createContent(vnode, _extends$3(args, { CardActions: CardActions, CardMedia: CardMedia, CardPrimary: CardPrimary, Icon: polytheneMithrilIcon.Icon, ListTile: polytheneMithrilListTile.ListTile, Shadow: polytheneMithrilShadow.Shadow }));
-    }
+  const Card = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreCard.coreCard, {
+    createContent: (vnode, args) => polytheneCoreCard.coreCard.createContent(vnode, Object.assign(args, {
+      CardActions,
+      CardMedia,
+      CardPrimary,
+      Icon: polytheneMithrilIcon.Icon,
+      ListTile: polytheneMithrilListTile.ListTile,
+      Shadow: polytheneMithrilShadow.Shadow
+    }))
   }));
-
   Card.displayName = "Card";
 
   exports.Card = Card;

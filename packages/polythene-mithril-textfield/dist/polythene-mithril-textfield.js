@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-textfield']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreTextfield) { 'use strict';
 
-	var TextField = polytheneMithrilBase.StateComponent(polytheneCoreTextfield.coreTextField);
-
+	const TextField = polytheneMithrilBase.StateComponent(polytheneCoreTextfield.coreTextField);
 	TextField.displayName = "TextField";
 
 	exports.TextField = TextField;

@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-slider']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreSlider) { 'use strict';
 
-	var Slider = polytheneMithrilBase.StateComponent(polytheneCoreSlider.coreSlider);
-
+	const Slider = polytheneMithrilBase.StateComponent(polytheneCoreSlider.coreSlider);
 	Slider.displayName = "Slider";
 
 	exports.Slider = Slider;

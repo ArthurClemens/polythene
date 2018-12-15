@@ -6,7 +6,7 @@
   "module": "dist/polythene-mithril-radio-group.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "build": "npm run clean && npm run rollup"
   },
   "files": [

@@ -4,10 +4,7 @@
   (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-svg']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreSvg) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var SVG = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreSvg.coreSVG));
-
+  const SVG = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreSvg.coreSVG));
   SVG.displayName = "SVG";
 
   exports.SVG = SVG;

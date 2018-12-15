@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-dialog-pane']));
 }(this, (function (exports,polytheneMithrilBase,polytheneCoreDialogPane) { 'use strict';
 
-	var DialogPane = polytheneMithrilBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
-
+	const DialogPane = polytheneMithrilBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
 	DialogPane.displayName = "DialogPane";
 
 	exports.DialogPane = DialogPane;

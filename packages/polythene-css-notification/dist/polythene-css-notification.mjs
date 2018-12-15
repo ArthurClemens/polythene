@@ -1,16 +1,14 @@
-import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-notification",
-
   // elements
   action: "pe-notification__action",
   content: "pe-notification__content",
   holder: "pe-notification__holder",
   placeholder: "pe-notification__placeholder",
   title: "pe-notification__title",
-
   // states
   hasContainer: "pe-notification--container",
   horizontal: "pe-notification--horizontal",
@@ -19,212 +17,162 @@ var classes = {
   visible: "pe-notification--visible"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+const generalFns = {
+  general_styles: selector => [] // eslint-disable-line no-unused-vars
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var generalFns = {
-  general_styles: function general_styles(selector) {
-    return [];
-  } // eslint-disable-line no-unused-vars
 };
 
-var tintFns = function tintFns(tint) {
-  var _ref;
-
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__content": {
-        color: vars$$1["color_" + tint + "_text"]
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__content": {
-        background: vars$$1["color_" + tint + "_background"]
-      }
-    })];
-  }), _ref;
-};
-
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
-
-var color = createColor({
-  varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
-});
-
-var varFns = {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, [flex.layoutCenterCenter, {
-      // assumes position relative
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      pointerEvents: "none",
-      justifyContent: "flex-start", // For IE 11
-
-      ".pe-multiple--screen": {
-        position: "fixed",
-        zIndex: vars.z_notification
-      }
-    }]), {
-      ":not(.pe-notification--container) .pe-multiple--container": {
-        position: "absolute"
-      }
-    }];
-  }
-};
-
-var holderLayout = createLayout({
-  varFns: varFns
-});
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var title_single_padding_v_title_padding_h = function title_single_padding_v_title_padding_h(selector, vars$$1) {
-  return sel(selector, {
-    " .pe-notification__title": {
-      padding: vars$$1.title_single_padding_v + "px " + vars$$1.title_padding_h + "px"
+const tintFns = tint => ({
+  ["color_" + tint + "_text"]: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__content": {
+      color: vars$$1["color_" + tint + "_text"]
     }
-  });
-};
+  })],
+  ["color_" + tint + "_background"]: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__content": {
+      background: vars$$1["color_" + tint + "_background"]
+    }
+  })]
+});
 
-var customLayoutFns = {
-  animation_hide_css: function animation_hide_css(selector, vars$$1) {
-    return [sel(selector, vars$$1.animation_hide_css)];
-  },
-  animation_show_css: function animation_show_css(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-notification--visible": [vars$$1.animation_show_css]
-
-    })];
-  },
-  width: function width(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__content": {
-        width: vars$$1.width + "px"
-      }
-    })];
-  },
-  animation_delay: function animation_delay(selector, vars$$1) {
-    return [sel(selector, {
-      transitionDelay: vars$$1.animation_delay
-    })];
-  },
-  animation_duration: function animation_duration(selector, vars$$1) {
-    return [sel(selector, {
-      transitionDuration: vars$$1.animation_duration
-    })];
-  },
-  animation_timing_function: function animation_timing_function(selector, vars$$1) {
-    return [sel(selector, {
-      transitionTimingFunction: vars$$1.animation_timing_function
-    })];
-  },
-  side_padding: function side_padding(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__content": {
-        padding: "0 " + vars$$1.side_padding + "px"
-      }
-    })];
-  },
-  border_radius: function border_radius(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__content": {
-        borderRadius: vars$$1.border_radius + "px"
-      }
-    })];
-  },
-  title_single_padding_v: function title_single_padding_v(selector, vars$$1) {
-    return [title_single_padding_v_title_padding_h(selector, vars$$1)];
-  },
-  title_padding_h: function title_padding_h(selector, vars$$1) {
-    return [title_single_padding_v_title_padding_h(selector, vars$$1)];
-  },
-  font_size: function font_size(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__title": {
-        fontSize: vars$$1.font_size + "px"
-      }
-    })];
-  },
-  line_height: function line_height(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-notification__title": {
-        lineHeight: vars$$1.line_height + "px"
-      }
-    })];
-  },
-  title_multi_padding_v: function title_multi_padding_v(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-notification--horizontal": {
-        " .pe-notification__title--multi-line": {
-          paddingTop: vars$$1.title_multi_padding_v + "px",
-          paddingBottom: vars$$1.title_multi_padding_v + "px"
-        }
-      },
-      ".pe-notification--vertical": {
-        " .pe-notification__title--multi-line": {
-          paddingTop: vars$$1.title_multi_padding_v + "px"
-        }
-      }
-    })];
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+var color = createColor({
+  varFns: {
+    lightTintFns,
+    darkTintFns
   }
+});
+
+const varFns = {
+  general_styles: selector => [sel(selector, [flex.layoutCenterCenter, {
+    // assumes position relative
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    pointerEvents: "none",
+    justifyContent: "flex-start",
+    // For IE 11
+    ".pe-multiple--screen": {
+      position: "fixed",
+      zIndex: vars.z_notification
+    }
+  }]), {
+    ":not(.pe-notification--container) .pe-multiple--container": {
+      position: "absolute"
+    }
+  }]
 };
+var holderLayout = createLayout({
+  varFns
+});
 
-var varFns$1 = _extends$1({}, {
-  general_styles: function general_styles(selector) {
-    return [sel(selector, [flex.layoutCenter, {
-      pointerEvents: "all",
-      justifyContent: "center",
-      margin: "0 auto",
-      transitionProperty: "all",
-      opacity: 0,
-
-      " .pe-notification__title": {
-        flex: "1 0 auto"
-      },
-
-      " .pe-notification__action": {
-        " .pe-button": {
-          margin: 0
-        }
-      },
-
-      " .pe-notification__content": {
-        maxWidth: "100%"
-      },
-
-      ".pe-notification--horizontal": {
-        " .pe-notification__content": flex.layoutHorizontal,
-        " .pe-notification__title": [flex.flex(), {
-          alignSelf: "center"
-        }],
-        " .pe-notification__action": flex.layoutCenter
-      },
-      ".pe-notification--vertical": {
-        " .pe-notification__content": [flex.layoutVertical],
-
-        " .pe-notification__title": {
-          paddingBottom: "6px"
-        },
-        " .pe-notification__action": [flex.layoutEndJustified, {
-          width: "100%"
-        }]
-      }
-    }])];
+const title_single_padding_v_title_padding_h = (selector, vars$$1) => sel(selector, {
+  " .pe-notification__title": {
+    padding: vars$$1.title_single_padding_v + "px " + vars$$1.title_padding_h + "px"
   }
+});
+
+const customLayoutFns = {
+  animation_hide_css: (selector, vars$$1) => [sel(selector, vars$$1.animation_hide_css)],
+  animation_show_css: (selector, vars$$1) => [sel(selector, {
+    ".pe-notification--visible": [vars$$1.animation_show_css]
+  })],
+  width: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__content": {
+      width: vars$$1.width + "px"
+    }
+  })],
+  animation_delay: (selector, vars$$1) => [sel(selector, {
+    transitionDelay: vars$$1.animation_delay
+  })],
+  animation_duration: (selector, vars$$1) => [sel(selector, {
+    transitionDuration: vars$$1.animation_duration
+  })],
+  animation_timing_function: (selector, vars$$1) => [sel(selector, {
+    transitionTimingFunction: vars$$1.animation_timing_function
+  })],
+  side_padding: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__content": {
+      padding: "0 " + vars$$1.side_padding + "px"
+    }
+  })],
+  border_radius: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__content": {
+      borderRadius: vars$$1.border_radius + "px"
+    }
+  })],
+  title_single_padding_v: (selector, vars$$1) => [title_single_padding_v_title_padding_h(selector, vars$$1)],
+  title_padding_h: (selector, vars$$1) => [title_single_padding_v_title_padding_h(selector, vars$$1)],
+  font_size: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__title": {
+      fontSize: vars$$1.font_size + "px"
+    }
+  })],
+  line_height: (selector, vars$$1) => [sel(selector, {
+    " .pe-notification__title": {
+      lineHeight: vars$$1.line_height + "px"
+    }
+  })],
+  title_multi_padding_v: (selector, vars$$1) => [sel(selector, {
+    ".pe-notification--horizontal": {
+      " .pe-notification__title--multi-line": {
+        paddingTop: vars$$1.title_multi_padding_v + "px",
+        paddingBottom: vars$$1.title_multi_padding_v + "px"
+      }
+    },
+    ".pe-notification--vertical": {
+      " .pe-notification__title--multi-line": {
+        paddingTop: vars$$1.title_multi_padding_v + "px"
+      }
+    }
+  })]
+};
+const varFns$1 = Object.assign({}, {
+  general_styles: selector => [sel(selector, [flex.layoutCenter, {
+    pointerEvents: "all",
+    justifyContent: "center",
+    margin: "0 auto",
+    transitionProperty: "all",
+    opacity: 0,
+    " .pe-notification__title": {
+      flex: "1 0 auto"
+    },
+    " .pe-notification__action": {
+      " .pe-button": {
+        margin: 0
+      }
+    },
+    " .pe-notification__content": {
+      maxWidth: "100%"
+    },
+    ".pe-notification--horizontal": {
+      " .pe-notification__content": flex.layoutHorizontal,
+      " .pe-notification__title": [flex.flex(), {
+        alignSelf: "center"
+      }],
+      " .pe-notification__action": flex.layoutCenter
+    },
+    ".pe-notification--vertical": {
+      " .pe-notification__content": [flex.layoutVertical],
+      " .pe-notification__title": {
+        paddingBottom: "6px"
+      },
+      " .pe-notification__action": [flex.layoutEndJustified, {
+        width: "100%"
+      }]
+    }
+  }])]
 }, customLayoutFns);
+var layout = createLayout({
+  varFns: varFns$1
+});
 
-var layout = createLayout({ varFns: varFns$1 });
-
-var buttonPaddingH = 8; // padding, inner text space
+const buttonPaddingH = 8; // padding, inner text space
 
 var vars$1 = {
   general_styles: true,
-
   animation_delay: "0s",
   animation_duration: ".3s",
   animation_hide_css: "opacity: 0;",
@@ -235,65 +183,56 @@ var vars$1 = {
   line_height: 20,
   min_height: 80,
   side_padding: 24 - buttonPaddingH,
-  title_multi_padding_v: 20, // 24 - natural line height
+  title_multi_padding_v: 20,
+  // 24 - natural line height
   title_padding_h: buttonPaddingH,
   title_single_padding_v: 14,
   width: 288,
-
   color_light_background: rgba(vars.color_light_background),
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_dark_primary),
-
   color_dark_background: rgba(vars.color_dark_background),
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
 };
 
-var fns = [layout, color];
-var selector = "." + classes.component;
+const fns = [layout, color];
+const selector = `.${classes.component}`;
+const holderFns = [holderLayout];
+const holderSelector = `.${classes.holder}`;
 
-var holderFns = [holderLayout];
-var holderSelector = "." + classes.holder;
-
-var addStyle = function addStyle(customSelector, customVars) {
-  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
-
+const addStyle = (customSelector, customVars, {
+  mediaQuery
+} = {}) => {
   customSelector && styler.addStyle({
     selectors: [customSelector, selector],
-    fns: fns,
+    fns,
     vars: vars$1,
-    customVars: customVars,
-    mediaQuery: mediaQuery
+    customVars,
+    mediaQuery
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, holderSelector],
     fns: holderFns,
     vars: vars$1,
-    customVars: customVars,
-    mediaQuery: mediaQuery
+    customVars,
+    mediaQuery
   });
 };
 
-var getStyle = function getStyle() {
-  var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  var customVars = arguments[1];
-
-  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
-
-  return styler.getStyle({
-    selectors: [customSelector, selector],
-    fns: fns,
-    vars: vars$1,
-    customVars: customVars,
-    mediaQuery: mediaQuery
-  }).concat(styler.getStyle({
-    selectors: [holderSelector],
-    fns: holderFns,
-    vars: vars$1,
-    customVars: customVars,
-    mediaQuery: mediaQuery
-  }));
-};
+const getStyle = (customSelector = "", customVars, {
+  mediaQuery
+} = {}) => styler.getStyle({
+  selectors: [customSelector, selector],
+  fns,
+  vars: vars$1,
+  customVars,
+  mediaQuery
+}).concat(styler.getStyle({
+  selectors: [holderSelector],
+  fns: holderFns,
+  vars: vars$1,
+  customVars,
+  mediaQuery
+}));
 
 styler.addStyle({
   selectors: [holderSelector],
@@ -302,7 +241,7 @@ styler.addStyle({
 });
 styler.addStyle({
   selectors: [selector],
-  fns: fns,
+  fns,
   vars: vars$1
 });
 

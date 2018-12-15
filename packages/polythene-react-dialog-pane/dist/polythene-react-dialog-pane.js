@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-dialog-pane']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreDialogPane) { 'use strict';
 
-	var DialogPane = polytheneReactBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
-
+	const DialogPane = polytheneReactBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
 	DialogPane.displayName = "DialogPane";
 
 	exports.DialogPane = DialogPane;

@@ -6,7 +6,7 @@
   "module": "dist/polythene-scripts.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js",
     "build": "npm run clean && npm run rollup",
     "test": "node test"
   },

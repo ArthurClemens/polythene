@@ -4,8 +4,7 @@
 	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-textfield']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreTextfield) { 'use strict';
 
-	var TextField = polytheneReactBase.StateComponent(polytheneCoreTextfield.coreTextField);
-
+	const TextField = polytheneReactBase.StateComponent(polytheneCoreTextfield.coreTextField);
 	TextField.displayName = "TextField";
 
 	exports.TextField = TextField;

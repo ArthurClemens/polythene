@@ -1,35 +1,27 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-selection-control'), require('polythene-mithril-icon'), require('polythene-mithril-icon-button'), require('polythene-core-checkbox')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-selection-control', 'polythene-mithril-icon', 'polythene-mithril-icon-button', 'polythene-core-checkbox'], factory) :
-  (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-selection-control'],global['polythene-mithril-icon'],global['polythene-mithril-icon-button'],global['polythene-core-checkbox']));
-}(this, (function (exports,polytheneMithrilBase,polytheneCoreSelectionControl,polytheneMithrilIcon,polytheneMithrilIconButton,polytheneCoreCheckbox) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-core-checkbox'), require('polythene-mithril-base'), require('polythene-core-selection-control'), require('polythene-mithril-icon'), require('polythene-mithril-icon-button')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'polythene-core-checkbox', 'polythene-mithril-base', 'polythene-core-selection-control', 'polythene-mithril-icon', 'polythene-mithril-icon-button'], factory) :
+  (factory((global.polythene = {}),global['polythene-core-checkbox'],global['polythene-mithril-base'],global['polythene-core-selection-control'],global['polythene-mithril-icon'],global['polythene-mithril-icon-button']));
+}(this, (function (exports,polytheneCoreCheckbox,polytheneMithrilBase,polytheneCoreSelectionControl,polytheneMithrilIcon,polytheneMithrilIconButton) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var ViewControl = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreSelectionControl.viewControl, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreSelectionControl.viewControl.createContent(vnode, _extends(args, { Icon: polytheneMithrilIcon.Icon, IconButton: polytheneMithrilIconButton.IconButton }));
-    }
+  const ViewControl = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreSelectionControl.viewControl, {
+    createContent: (vnode, args) => polytheneCoreSelectionControl.viewControl.createContent(vnode, Object.assign(args, {
+      Icon: polytheneMithrilIcon.Icon,
+      IconButton: polytheneMithrilIconButton.IconButton
+    }))
   }));
-
   ViewControl.displayName = "ViewControl";
 
-  var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var SelectionControl = polytheneMithrilBase.StateComponent(_extends$1({}, polytheneCoreSelectionControl.coreSelectionControl, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, _extends$1(args, { ViewControl: ViewControl }));
-    }
+  const SelectionControl = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreSelectionControl.coreSelectionControl, {
+    createContent: (vnode, args) => polytheneCoreSelectionControl.coreSelectionControl.createContent(vnode, Object.assign(args, {
+      ViewControl
+    }))
   }));
-
   SelectionControl.displayName = "SelectionControl";
 
-  var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Checkbox = polytheneMithrilBase.StateComponent(_extends$2({}, polytheneCoreCheckbox.coreCheckbox, {
+  const Checkbox = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreCheckbox.coreCheckbox, {
     component: SelectionControl
   }));
-
   Checkbox.displayName = "Checkbox";
 
   exports.Checkbox = Checkbox;

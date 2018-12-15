@@ -4,17 +4,16 @@
   (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-list-tile'],global['polythene-react-icon'],global['polythene-react-ripple']));
 }(this, (function (exports,polytheneReactBase,polytheneCoreListTile,polytheneReactIcon,polytheneReactRipple) { 'use strict';
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var ListTile = polytheneReactBase.ViewComponent(_extends({}, polytheneCoreListTile.coreListTile, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createProps(vnode, _extends(args, { Icon: polytheneReactIcon.Icon, Ripple: polytheneReactRipple.Ripple }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createContent(vnode, _extends(args, { Icon: polytheneReactIcon.Icon, Ripple: polytheneReactRipple.Ripple }));
-    }
+  const ListTile = polytheneReactBase.ViewComponent(Object.assign({}, polytheneCoreListTile.coreListTile, {
+    createProps: (vnode, args) => polytheneCoreListTile.coreListTile.createProps(vnode, Object.assign(args, {
+      Icon: polytheneReactIcon.Icon,
+      Ripple: polytheneReactRipple.Ripple
+    })),
+    createContent: (vnode, args) => polytheneCoreListTile.coreListTile.createContent(vnode, Object.assign(args, {
+      Icon: polytheneReactIcon.Icon,
+      Ripple: polytheneReactRipple.Ripple
+    }))
   }));
-
   ListTile.displayName = "ListTile";
 
   exports.ListTile = ListTile;

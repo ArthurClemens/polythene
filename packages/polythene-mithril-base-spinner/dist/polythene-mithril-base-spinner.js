@@ -6,11 +6,9 @@
 
   var classes = {
     component: "pe-spinner",
-
     // elements
     animation: "pe-spinner__animation",
     placeholder: "pe-spinner__placeholder",
-
     // states
     animated: "pe-spinner--animated",
     fab: "pe-spinner--fab",
@@ -24,14 +22,11 @@
     visible: "pe-spinner--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var BaseSpinner = polytheneMithrilBase.StateComponent(_extends({}, polytheneCoreBaseSpinner.coreBaseSpinner, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreBaseSpinner.coreBaseSpinner.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow }));
-    }
+  const BaseSpinner = polytheneMithrilBase.StateComponent(Object.assign({}, polytheneCoreBaseSpinner.coreBaseSpinner, {
+    createContent: (vnode, args) => polytheneCoreBaseSpinner.coreBaseSpinner.createContent(vnode, Object.assign(args, {
+      Shadow: polytheneMithrilShadow.Shadow
+    }))
   }));
-
   BaseSpinner.classes = classes;
   BaseSpinner.displayName = "BaseSpinner";
 

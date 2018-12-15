@@ -6,9 +6,7 @@
 
 	// Placeholder for custom theme config file
 	// In your app paths setup, change the current path to your custom config file; see the theme README.
-
 	// Example:
-
 	// export const componentConfig = {
 	//     Button: vars => {
 	//         const mainColor = '#e4521b';
@@ -30,8 +28,7 @@
 	//         ];
 	//     }
 	// };
-
-	var componentConfig = {};
+	const componentConfig = {};
 
 	exports.vars = polytheneStyle.vars;
 	exports.componentConfig = componentConfig;

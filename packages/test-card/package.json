@@ -17,7 +17,7 @@
   },
   "jest": {
     "setupFiles": [
-      "../../scripts/jest-shim.js"
+      "../../scripts/tests/jest-shim.js"
     ]
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

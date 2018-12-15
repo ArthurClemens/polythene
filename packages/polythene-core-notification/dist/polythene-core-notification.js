@@ -6,14 +6,12 @@
 
   var classes = {
     component: "pe-notification",
-
     // elements
     action: "pe-notification__action",
     content: "pe-notification__content",
     holder: "pe-notification__holder",
     placeholder: "pe-notification__placeholder",
     title: "pe-notification__title",
-
     // states
     hasContainer: "pe-notification--container",
     horizontal: "pe-notification--horizontal",
@@ -22,156 +20,143 @@
     visible: "pe-notification--visible"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+  const DEFAULT_TIME_OUT = 3;
+  const getElement = vnode => vnode.attrs.element || "div";
 
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var DEFAULT_TIME_OUT = 3;
-
-  var getElement = function getElement(vnode) {
-    return vnode.attrs.element || "div";
-  };
-
-  var pause = function pause(state) {
+  const pause = state => {
     state.paused(true);
+
     if (state.timer) {
       state.timer.pause();
     }
   };
 
-  var unpause = function unpause(state) {
+  const unpause = state => {
     state.paused(false);
+
     if (state.timer) {
       state.timer.resume();
     }
   };
 
-  var stopTimer = function stopTimer(state) {
+  const stopTimer = state => {
     if (state.timer) {
       state.timer.stop();
     }
   };
 
-  var transitionOptions = function transitionOptions(state, attrs, isShow) {
-    return {
-      state: state,
-      attrs: attrs,
-      isShow: isShow,
-      beforeTransition: isShow ? function () {
-        return stopTimer(state);
-      } : function () {
-        return stopTimer(state);
-      },
-      afterTransition: isShow ? function () {
-        // set timer to hide in a few seconds
-        var timeout = attrs.timeout;
-        if (timeout === 0) {
-          // do not time out
-        } else {
-          var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-          state.timer.start(function () {
-            hideNotification(state, attrs);
-          }, timeoutSeconds);
-        }
-      } : null,
-      domElements: {
-        el: state.el,
-        containerEl: state.containerEl
-      },
-      showClass: classes.visible
-    };
-  };
+  const transitionOptions = (state, attrs, isShow) => ({
+    state,
+    attrs,
+    isShow,
+    beforeTransition: isShow ? () => stopTimer(state) : () => stopTimer(state),
+    afterTransition: isShow ? () => {
+      // set timer to hide in a few seconds
+      const timeout = attrs.timeout;
 
-  var showNotification = function showNotification(state, attrs) {
-    return polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
-  };
+      if (timeout === 0) ; else {
+        const timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+        state.timer.start(() => {
+          hideNotification(state, attrs);
+        }, timeoutSeconds);
+      }
+    } : null,
+    domElements: {
+      el: state.el,
+      containerEl: state.containerEl
+    },
+    showClass: classes.visible
+  });
 
-  var hideNotification = function hideNotification(state, attrs) {
-    return polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
-  };
+  const showNotification = (state, attrs) => polytheneCore.transitionComponent(transitionOptions(state, attrs, true));
 
-  var setTitleStyles = function setTitleStyles(titleEl) {
+  const hideNotification = (state, attrs) => polytheneCore.transitionComponent(transitionOptions(state, attrs, false));
+
+  const setTitleStyles = titleEl => {
     if (polytheneCore.isServer) return;
-    var height = titleEl.getBoundingClientRect().height;
-    var lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
-    var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
-    var paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+    const height = titleEl.getBoundingClientRect().height;
+    const lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
+    const paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
+    const paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+
     if (height > lineHeight + paddingTop + paddingBottom) {
       titleEl.classList.add(classes.multilineTitle);
     }
   };
 
-  var getInitialState = function getInitialState(vnode, createStream) {
-    var transitioning = createStream(false);
-    var paused = createStream(false);
-    var mounted = createStream(false);
-    var visible = createStream(false);
+  const getInitialState = (vnode, createStream) => {
+    const transitioning = createStream(false);
+    const paused = createStream(false);
+    const mounted = createStream(false);
+    const visible = createStream(false);
     return {
       cleanUp: undefined,
       containerEl: undefined,
       dismissEl: undefined,
       el: undefined,
       timer: new polytheneUtilities.Timer(),
-      paused: paused,
-      transitioning: transitioning,
-      visible: visible,
-      mounted: mounted,
+      paused,
+      transitioning,
+      visible,
+      mounted,
       redrawOnUpdate: createStream.merge([visible])
     };
   };
-
-  var onMount = function onMount(vnode) {
+  const onMount = vnode => {
     if (!vnode.dom) {
       return;
     }
-    var dom = vnode.dom;
-    var state = vnode.state;
-    var attrs = vnode.attrs;
+
+    const dom = vnode.dom;
+    const state = vnode.state;
+    const attrs = vnode.attrs;
     state.el = dom;
-    var titleEl = state.el.querySelector("." + classes.title);
+    const titleEl = state.el.querySelector(`.${classes.title}`);
+
     if (titleEl) {
       setTitleStyles(titleEl);
     }
+
     if (!state.containerEl && polytheneCore.isClient) {
       // attrs.holderSelector is passed as option to Multiple
       state.containerEl = document.querySelector(attrs.containerSelector || attrs.holderSelector);
     }
+
     if (!state.containerEl && polytheneCore.isClient) {
       console.error("No container element found"); // eslint-disable-line no-console
     }
+
     if (attrs.containerSelector && state.containerEl) {
       state.containerEl.classList.add(classes.hasContainer);
     }
+
     if (attrs.show && !state.visible()) {
       showNotification(state, attrs);
     }
+
     state.mounted(true);
   };
-
-  var onUnMount = function onUnMount(vnode) {
-    return vnode.state.mounted(false);
-  };
-
-  var createProps = function createProps(vnode, _ref) {
-    var k = _ref.keys;
-
-    var attrs = vnode.attrs;
-    return _extends({}, polytheneCore.filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
-    _defineProperty({
-      className: [classes.component, attrs.fromMultipleClassName,
-      // classes.visible is set in showNotification though transition
+  const onUnMount = vnode => vnode.state.mounted(false);
+  const createProps = (vnode, {
+    keys: k
+  }) => {
+    const attrs = vnode.attrs;
+    return Object.assign({}, polytheneCore.filterSupportedAttributes(attrs, {
+      remove: ["style"]
+    }), // style set in content, and set by show/hide transition
+    {
+      className: [classes.component, attrs.fromMultipleClassName, // classes.visible is set in showNotification though transition
       attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
-      attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-    }, k.onclick, function (e) {
-      return e.preventDefault();
-    }));
+      attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
+      [k.onclick]: e => e.preventDefault()
+    });
   };
+  const createContent = (vnode, {
+    renderer: h
+  }) => {
+    const state = vnode.state;
+    const attrs = vnode.attrs;
 
-  var createContent = function createContent(vnode, _ref2) {
-    var h = _ref2.renderer;
-
-    var state = vnode.state;
-    var attrs = vnode.attrs;
     if (state.mounted() && !state.transitioning()) {
       if (attrs.hide && state.visible()) {
         hideNotification(state, attrs);
@@ -179,6 +164,7 @@
         showNotification(state, attrs);
       }
     }
+
     if (attrs.pause && !state.paused()) {
       pause(state, attrs);
     } else if (attrs.unpause && state.paused()) {
@@ -188,7 +174,11 @@
     return h("div", {
       className: classes.content,
       style: attrs.style
-    }, attrs.content || [attrs.title ? h("div", { className: classes.title }, attrs.title) : null, attrs.action ? h("div", { className: classes.action }, attrs.action) : null]);
+    }, attrs.content || [attrs.title ? h("div", {
+      className: classes.title
+    }, attrs.title) : null, attrs.action ? h("div", {
+      className: classes.action
+    }, attrs.action) : null]);
   };
 
   var notificationInstance = /*#__PURE__*/Object.freeze({

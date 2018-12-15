@@ -6,103 +6,86 @@
 
   var classes = {
     component: "pe-ripple",
-
     // elements
     mask: "pe-ripple__mask",
     waves: "pe-ripple__waves",
-
     // states
     unconstrained: "pe-ripple--unconstrained",
     wavesAnimating: "pe-ripple__waves--animating"
   };
 
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var generalFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, {
-        color: "inherit"
-      })];
-    }
+  const generalFns = {
+    general_styles: selector => [polytheneCoreCss.sel(selector, {
+      color: "inherit"
+    })]
   };
 
-  var tintFns = function tintFns(tint) {
-    var _ref;
-
-    return _ref = {}, _defineProperty(_ref, "color", function color(selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        color: vars["color"]
-      })];
-    }), _defineProperty(_ref, "color_" + tint, function (selector, vars) {
-      return [polytheneCoreCss.sel(selector, {
-        color: vars["color_" + tint]
-      })];
-    }), _ref;
-  };
-
-  var lightTintFns = _extends({}, generalFns, tintFns("light"));
-  var darkTintFns = _extends({}, generalFns, tintFns("dark"));
-
-  var color = polytheneCoreCss.createColor({
-    varFns: { lightTintFns: lightTintFns, darkTintFns: darkTintFns }
+  const tintFns = tint => ({
+    ["color"]: (selector, vars) => [polytheneCoreCss.sel(selector, {
+      color: vars["color"]
+    })],
+    ["color_" + tint]: (selector, vars) => [polytheneCoreCss.sel(selector, {
+      color: vars["color_" + tint]
+    })]
   });
 
-  var varFns = {
-    general_styles: function general_styles(selector) {
-      return [polytheneCoreCss.sel(selector, [polytheneCoreCss.mixin.fit(), {
-        color: "inherit",
-        borderRadius: "inherit",
-        pointerEvents: "none",
-
-        ":not(.pe-ripple--unconstrained)": {
-          borderRadius: "inherit",
-
-          " .pe-ripple__mask": {
-            overflow: "hidden",
-            borderRadius: "inherit"
-          }
-        },
-        " .pe-ripple__mask": [polytheneCoreCss.mixin.fit(), {
-          transform: "translate3d(0,0,0)"
-        }],
-
-        " .pe-ripple__waves": {
-          outline: "1px solid transparent", // for IE10
-          position: "absolute",
-          borderRadius: "50%",
-          pointerEvents: "none",
-          display: "none"
-        },
-        " .pe-ripple__waves--animating": {
-          display: "block"
-        }
-      }])];
+  const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
+  const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+  var color = polytheneCoreCss.createColor({
+    varFns: {
+      lightTintFns,
+      darkTintFns
     }
-  };
+  });
 
-  var layout = polytheneCoreCss.createLayout({ varFns: varFns });
+  const varFns = {
+    general_styles: selector => [polytheneCoreCss.sel(selector, [polytheneCoreCss.mixin.fit(), {
+      color: "inherit",
+      borderRadius: "inherit",
+      pointerEvents: "none",
+      ":not(.pe-ripple--unconstrained)": {
+        borderRadius: "inherit",
+        " .pe-ripple__mask": {
+          overflow: "hidden",
+          borderRadius: "inherit"
+        }
+      },
+      " .pe-ripple__mask": [polytheneCoreCss.mixin.fit(), {
+        transform: "translate3d(0,0,0)"
+      }],
+      " .pe-ripple__waves": {
+        outline: "1px solid transparent",
+        // for IE10
+        position: "absolute",
+        borderRadius: "50%",
+        pointerEvents: "none",
+        display: "none"
+      },
+      " .pe-ripple__waves--animating": {
+        display: "block"
+      }
+    }])]
+  };
+  var layout = polytheneCoreCss.createLayout({
+    varFns
+  });
 
   var vars = {
     general_styles: true,
-
     color: "inherit" // only specify this variable to get both states
     // color_light:   "inherit",
     // color_dark:    "inherit"
+
   };
 
-  var fns = [layout, color];
-  var selector = "." + classes.component;
-
-  var addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
-
-  var getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
-
+  const fns = [layout, color];
+  const selector = `.${classes.component}`;
+  const addStyle = polytheneCoreCss.styler.createAddStyle(selector, fns, vars);
+  const getStyle = polytheneCoreCss.styler.createGetStyle(selector, fns, vars);
   polytheneCoreCss.styler.addStyle({
     selectors: [selector],
-    fns: fns,
-    vars: vars
+    fns,
+    vars
   });
 
   exports.addStyle = addStyle;

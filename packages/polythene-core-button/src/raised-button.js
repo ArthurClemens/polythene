@@ -100,13 +100,15 @@ export const createProps = vnode => {
     {
       raised: true,
       animateOnTap: false,
-      shadowDepth: attrs.disabled ? 0 : state.shadowDepth,
       wash: attrs.wash !== undefined
         ? attrs.wash
         : false,
       children
     },
-    attrs
+    attrs,
+    {
+      shadowDepth: attrs.disabled ? 0 : state.shadowDepth(),
+    }
   );
 };
 
