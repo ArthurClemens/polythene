@@ -44,6 +44,7 @@
 
 .pe-dialog.pe-drawer .pe-dialog-pane {
   height: 100%;
+  max-height: none;
   min-width: 0
 }
 
