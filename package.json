@@ -7,6 +7,7 @@
     "build:css": "node ./scripts/buildComponentCSS",
     "build:collect-css": "cd packages/polythene-css && npm run build",
     "build:standalone": "node ./scripts/buildStandalone",
+    "publish": "node ./scripts/publish.js",
     "tests:run": "node ./scripts/runTests",
     "tests:update": "node_modules/jest/bin/jest.js --updateSnapshot --silent",
     "github:demos": "node ./scripts/copyToDemos",

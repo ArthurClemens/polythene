@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-search",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-search",
   "module": "dist/polythene-core-search.mjs",

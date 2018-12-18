@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-shadow",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-shadow",
   "module": "dist/polythene-core-shadow.mjs",
