@@ -262,6 +262,7 @@ var varFns = _extends$1({
 
       " .pe-dialog-pane": {
         height: "100%",
+        maxHeight: "none",
         minWidth: 0 // IE 11 does not accept "none" or "inital" here
       },
 
