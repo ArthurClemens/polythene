@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-toolbar",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-toolbar",
   "module": "dist/polythene-core-toolbar.mjs",

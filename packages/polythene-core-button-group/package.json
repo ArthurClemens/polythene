@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-button-group",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-button-group",
   "module": "dist/polythene-core-button-group.mjs",

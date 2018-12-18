@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-shadow",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-mithril-shadow",
   "module": "dist/polythene-mithril-shadow.mjs",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "polythene-core-shadow": "^1.3.2",
-    "polythene-mithril-base": "^1.3.2"
+    "polythene-mithril-base": "^1.3.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-icon",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-mithril-icon",
   "module": "dist/polythene-mithril-icon.mjs",
@@ -15,8 +15,8 @@
   ],
   "dependencies": {
     "polythene-core-icon": "^1.3.2",
-    "polythene-mithril-base": "^1.3.2",
-    "polythene-mithril-svg": "^1.3.2"
+    "polythene-mithril-base": "^1.3.3",
+    "polythene-mithril-svg": "^1.3.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

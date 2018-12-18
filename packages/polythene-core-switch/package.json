@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-switch",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-switch",
   "module": "dist/polythene-core-switch.mjs",

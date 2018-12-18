@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-dialog-pane",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-dialog-pane",
   "module": "dist/polythene-core-dialog-pane.mjs",

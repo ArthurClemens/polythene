@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-checkbox",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-css-checkbox",
   "module": "dist/polythene-css-checkbox.mjs",
@@ -15,9 +15,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.3.2",
+    "polythene-core-css": "^1.3.3",
     "polythene-css-classes": "^1.3.2",
-    "polythene-css-selection-control": "^1.3.2",
+    "polythene-css-selection-control": "^1.3.3",
     "polythene-theme": "^1.3.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

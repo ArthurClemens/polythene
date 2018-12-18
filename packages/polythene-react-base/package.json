@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-base",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-react-base",
   "module": "dist/polythene-react-base.mjs",

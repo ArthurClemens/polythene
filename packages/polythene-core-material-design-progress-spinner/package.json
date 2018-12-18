@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-material-design-progress-spinner",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-core-material-design-progress-spinner",
   "module": "dist/polythene-core-material-design-progress-spinner.mjs",
@@ -18,7 +18,7 @@
     "polythene-core-base-spinner": "^1.3.2",
     "polythene-css-classes": "^1.3.2",
     "polythene-theme": "^1.3.2",
-    "polythene-utilities": "^1.3.2"
+    "polythene-utilities": "^1.3.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

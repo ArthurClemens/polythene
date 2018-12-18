@@ -6,8 +6,8 @@ const fs = require("fs");
 const glob = require("glob");
 const baseDir = process.cwd();
 
-const CURRENT_VERSION      = "1.1.1";
-const NEW_VERSION          = "1.1.2";
+const CURRENT_VERSION      = "1.3.2";
+const NEW_VERSION          = "1.3.3";
 const PACKAGE_FILE_PATTERN = "./packages/**/package.json";
 
 const maybePublish = (filename, name) => {
