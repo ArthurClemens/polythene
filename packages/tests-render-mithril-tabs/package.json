@@ -1,6 +1,6 @@
 {
   "name": "tests-render-mithril-tabs",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "private": true,
   "main": "dist/js/test.js",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "mithril": "1.1.6",
-    "polythene-css": "^1.3.2",
-    "polythene-mithril": "^1.3.2"
+    "polythene-css": "^1.3.3",
+    "polythene-mithril": "^1.3.3"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^2.0.0",

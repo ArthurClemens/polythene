@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-react-phenomic",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -14,8 +14,8 @@
     "@phenomic/plugin-bundler-webpack": "^1.0.0-alpha.13",
     "@phenomic/preset-react-app": "^1.0.0-alpha.13",
     "extract-text-webpack-plugin": "^3.0.2",
-    "polythene-css": "^1.3.2",
-    "polythene-react": "^1.3.2",
+    "polythene-css": "^1.3.3",
+    "polythene-react": "^1.3.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",

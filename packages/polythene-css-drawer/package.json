@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-drawer",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-css-drawer",
   "module": "dist/polythene-css-drawer.mjs",
@@ -15,10 +15,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.3.2",
+    "polythene-core-css": "^1.3.3",
     "polythene-css-classes": "^1.3.2",
-    "polythene-css-dialog": "^1.3.2",
-    "polythene-css-shadow": "^1.3.2",
+    "polythene-css-dialog": "^1.3.3",
+    "polythene-css-shadow": "^1.3.3",
     "polythene-theme": "^1.3.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

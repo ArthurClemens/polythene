@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-slider",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-css-slider",
   "module": "dist/polythene-css-slider.mjs",
@@ -15,7 +15,7 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.3.2",
+    "polythene-core-css": "^1.3.3",
     "polythene-css-classes": "^1.3.2",
     "polythene-theme": "^1.3.2"
   },

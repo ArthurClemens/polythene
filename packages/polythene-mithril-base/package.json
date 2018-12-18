@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-base",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-mithril-base",
   "module": "dist/polythene-mithril-base.mjs",
