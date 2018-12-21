@@ -1,22 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-icon'), require('polythene-react-svg')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-icon', 'polythene-react-svg'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-icon'],global['polythene-react-svg']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreIcon,polytheneReactSvg) { 'use strict';
-
-  const Icon = polytheneReactBase.ViewComponent(Object.assign({}, polytheneCoreIcon.coreIcon, {
-    createProps: (vnode, args) => polytheneCoreIcon.coreIcon.createProps(vnode, Object.assign(args, {
-      SVG: polytheneReactSvg.SVG
-    })),
-    createContent: (vnode, args) => polytheneCoreIcon.coreIcon.createContent(vnode, Object.assign(args, {
-      SVG: polytheneReactSvg.SVG
-    }))
-  }));
-  Icon.displayName = "Icon";
-
-  exports.Icon = Icon;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-icon"),require("polythene-react-svg")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-icon","polythene-react-svg"],o):o(e.polythene={},e["polythene-react-base"],e["polythene-core-icon"],e["polythene-react-svg"])}(this,function(e,o,t,n){"use strict";const c=o.ViewComponent(Object.assign({},t.coreIcon,{createProps:(e,o)=>t.coreIcon.createProps(e,Object.assign(o,{SVG:n.SVG})),createContent:(e,o)=>t.coreIcon.createContent(e,Object.assign(o,{SVG:n.SVG}))}));c.displayName="Icon",e.Icon=c,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-icon.js.map

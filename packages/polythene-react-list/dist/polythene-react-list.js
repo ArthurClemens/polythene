@@ -1,22 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-list'), require('polythene-react-list-tile')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-list', 'polythene-react-list-tile'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-list'],global['polythene-react-list-tile']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreList,polytheneReactListTile) { 'use strict';
-
-  const List = polytheneReactBase.ViewComponent(Object.assign({}, polytheneCoreList.coreList, {
-    createProps: (vnode, args) => polytheneCoreList.coreList.createProps(vnode, Object.assign(args, {
-      ListTile: polytheneReactListTile.ListTile
-    })),
-    createContent: (vnode, args) => polytheneCoreList.coreList.createContent(vnode, Object.assign(args, {
-      ListTile: polytheneReactListTile.ListTile
-    }))
-  }));
-  List.displayName = "List";
-
-  exports.List = List;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-list"),require("polythene-react-list-tile")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-list","polythene-react-list-tile"],t):t(e.polythene={},e["polythene-react-base"],e["polythene-core-list"],e["polythene-react-list-tile"])}(this,function(e,t,i,o){"use strict";const s=t.ViewComponent(Object.assign({},i.coreList,{createProps:(e,t)=>i.coreList.createProps(e,Object.assign(t,{ListTile:o.ListTile})),createContent:(e,t)=>i.coreList.createContent(e,Object.assign(t,{ListTile:o.ListTile}))}));s.displayName="List",e.List=s,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-list.js.map

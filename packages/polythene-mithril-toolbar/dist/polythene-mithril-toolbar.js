@@ -1,23 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-shadow'), require('polythene-mithril-base'), require('polythene-core-toolbar')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-shadow', 'polythene-mithril-base', 'polythene-core-toolbar'], factory) :
-  (factory((global.polythene = {}),global['polythene-mithril-shadow'],global['polythene-mithril-base'],global['polythene-core-toolbar']));
-}(this, (function (exports,polytheneMithrilShadow,polytheneMithrilBase,polytheneCoreToolbar) { 'use strict';
-
-  const Toolbar = polytheneMithrilBase.ViewComponent(Object.assign({}, polytheneCoreToolbar.coreToolbar, {
-    createContent: (vnode, args) => polytheneCoreToolbar.coreToolbar.createContent(vnode, Object.assign(args, {
-      Shadow: polytheneMithrilShadow.Shadow
-    }))
-  }));
-  Toolbar.displayName = "Toolbar";
-
-  const ToolbarTitle = polytheneMithrilBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
-  ToolbarTitle.displayName = "ToolbarTitle";
-
-  exports.Toolbar = Toolbar;
-  exports.ToolbarTitle = ToolbarTitle;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-shadow"),require("polythene-mithril-base"),require("polythene-core-toolbar")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-shadow","polythene-mithril-base","polythene-core-toolbar"],o):o(e.polythene={},e["polythene-mithril-shadow"],e["polythene-mithril-base"],e["polythene-core-toolbar"])}(this,function(e,o,t,r){"use strict";const i=t.ViewComponent(Object.assign({},r.coreToolbar,{createContent:(e,t)=>r.coreToolbar.createContent(e,Object.assign(t,{Shadow:o.Shadow}))}));i.displayName="Toolbar";const l=t.ViewComponent(r.coreToolbarTitle);l.displayName="ToolbarTitle",e.Toolbar=i,e.ToolbarTitle=l,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-mithril-toolbar.js.map

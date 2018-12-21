@@ -44,7 +44,8 @@
     "j2c-plugin-prefix-browser": "^1.0.7",
     "lerna": "^3.6.0",
     "mini-css-extract-plugin": "0.5.0",
-    "mithril-jest": "^1.0.1",
+    "mithril": "^1.1.6",
+    "mithril-jest": "^1.0.2",
     "react": "^16.6.3",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.6.3",
@@ -54,17 +55,16 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-eslint": "^5.0.0",
     "rollup-plugin-jsx": "1.0.3",
-    "rollup-plugin-livereload": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-pathmodify": "^1.0.1",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-serve": "^0.6.0",
     "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.0",
     "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "1.1.0",
+    "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.10",
-    "webpack": "^4.27.1"
+    "webpack-dev-server": "3.1.10"
   }
 }

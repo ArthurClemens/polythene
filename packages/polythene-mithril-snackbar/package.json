@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-snackbar",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/polythene-mithril-snackbar",
   "module": "dist/polythene-mithril-snackbar.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.3.2",
-    "polythene-core-snackbar": "^1.3.2",
-    "polythene-css-classes": "^1.3.2",
-    "polythene-mithril-base": "^1.3.2"
+    "polythene-core": "^1.3.3",
+    "polythene-core-snackbar": "^1.3.3",
+    "polythene-css-classes": "^1.3.3",
+    "polythene-mithril-base": "^1.3.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

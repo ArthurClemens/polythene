@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-dialog",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "description": "",
   "scripts": {
@@ -8,13 +8,13 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-core": "^1.3.2",
-    "polythene-css": "^1.3.2",
-    "polythene-mithril": "^1.3.2",
-    "polythene-react": "^1.3.2"
+    "polythene-core": "^1.3.3",
+    "polythene-css": "^1.3.3",
+    "polythene-mithril": "^1.3.3",
+    "polythene-react": "^1.3.3"
   },
   "devDependencies": {
-    "mithril": "2.0.0-rc.3",
+    "mithril": "1.1.6",
     "react": "^16.2.0"
   },
   "jest": {

@@ -12,14 +12,14 @@ const createSourceMap = env.SOURCEMAP !== undefined
   ? !!parseInt(env.SOURCEMAP, 10)
   : true;
 
-const baseConfig = createConfig({ includeDepencies, lint: false });
+const baseConfig = createConfig({ includeDepencies });
 const targetConfig = Object.assign({}, baseConfig, {
   output: Object.assign(
     {},
     baseConfig.output,
     {
       file: `${env.DEST || pkg.main}.js`,
-      format: "umd",
+      format: "iife",
       sourcemap: createSourceMap,
       name
     }

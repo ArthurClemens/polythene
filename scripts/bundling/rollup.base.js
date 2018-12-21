@@ -1,13 +1,13 @@
 /* global process */
 import fs from "fs";
 import babel from "rollup-plugin-babel";
-import { eslint } from "rollup-plugin-eslint";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
+import pathmodify from "rollup-plugin-pathmodify";
 
 const env = process.env; // eslint-disable-line no-undef
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
-const external = Object.keys(pkg.dependencies || []);
+const external = Object.keys(pkg.dependencies || {});
 external.push("mithril");
 const name = env.MODULE_NAME || "polythene";
 
@@ -22,33 +22,41 @@ external.forEach(ext => {
   }
 });
 
-export const createConfig = ({ includeDepencies, lint }) => {
+export const createConfig = ({ includeDepencies }) => {
   const config = {
-    input: process.env.ENTRY || "index.js",
-    external: includeDepencies ? ["mithril"] : external,
+    input: env.ENTRY || "index.js",
+    external: includeDepencies ? [] : external,
     output: {
       name,
       globals,
     },
-    plugins: []
+    plugins: [
+      resolve({
+        jsnext: true,
+        main: true,
+      }),
+
+      pathmodify({
+        aliases: [
+          {
+            id: "mithril/stream",
+            resolveTo: "node_modules/mithril/stream/stream"
+          },
+          {
+            id: "mithril",
+            resolveTo: "node_modules/mithril/mithril"
+          }
+        ]
+      }),
+
+      // Convert CommonJS modules to ES6, so they can be included in a Rollup bundle
+      commonjs(),
+
+      babel({
+        exclude: "node_modules/**"
+      })
+    ]
   };
-  config.plugins.push(resolve({
-    jsnext: true,
-    main: true,
-    browser: true,
-  }));
-  lint && config.plugins.push(eslint({
-    cache: true
-  }));
-  config.plugins.push(commonjs({
-    namedExports: {
-      "node_modules/react/index.js": ["Children", "Component", "PropTypes", "createElement", "createFactory"],
-      "node_modules/react-dom/index.js": ["render"]
-    }
-  }));
-  config.plugins.push(babel({
-    comments: true,
-    runtimeHelpers: true,
-  }));
+  
   return config;
 };

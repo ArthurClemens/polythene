@@ -1,23 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-shadow'), require('polythene-react-base'), require('polythene-core-toolbar')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-shadow', 'polythene-react-base', 'polythene-core-toolbar'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-shadow'],global['polythene-react-base'],global['polythene-core-toolbar']));
-}(this, (function (exports,polytheneReactShadow,polytheneReactBase,polytheneCoreToolbar) { 'use strict';
-
-  const Toolbar = polytheneReactBase.ViewComponent(Object.assign({}, polytheneCoreToolbar.coreToolbar, {
-    createContent: (vnode, args) => polytheneCoreToolbar.coreToolbar.createContent(vnode, Object.assign(args, {
-      Shadow: polytheneReactShadow.Shadow
-    }))
-  }));
-  Toolbar.displayName = "Toolbar";
-
-  const ToolbarTitle = polytheneReactBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
-  ToolbarTitle.displayName = "ToolbarTitle";
-
-  exports.Toolbar = Toolbar;
-  exports.ToolbarTitle = ToolbarTitle;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-shadow"),require("polythene-react-base"),require("polythene-core-toolbar")):"function"==typeof define&&define.amd?define(["exports","polythene-react-shadow","polythene-react-base","polythene-core-toolbar"],o):o(e.polythene={},e["polythene-react-shadow"],e["polythene-react-base"],e["polythene-core-toolbar"])}(this,function(e,o,t,r){"use strict";const a=t.ViewComponent(Object.assign({},r.coreToolbar,{createContent:(e,t)=>r.coreToolbar.createContent(e,Object.assign(t,{Shadow:o.Shadow}))}));a.displayName="Toolbar";const n=t.ViewComponent(r.coreToolbarTitle);n.displayName="ToolbarTitle",e.Toolbar=a,e.ToolbarTitle=n,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-toolbar.js.map
