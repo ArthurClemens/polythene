@@ -74,6 +74,15 @@ const hoverTintFns = tint => ({
       },
     })
   ],
+  ["color_" + tint + "_wash_background"]: (selector, vars) => [
+    sel(selector, {
+      ":not(.pe-button--disabled):not(.pe-button--selected)": {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
+        },
+      }
+    })
+  ],
 });
 
 const lightTintFns = Object.assign({}, generalFns, tintFns("light"));

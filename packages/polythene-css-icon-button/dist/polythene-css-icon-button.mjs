@@ -65,6 +65,13 @@ const hoverTintFns = tint => ({
     " .pe-icon-button__content": {
       backgroundColor: vars$$1["color_" + tint + "_background_hover"]
     }
+  })],
+  ["color_" + tint + "_wash_background"]: (selector, vars$$1) => [sel(selector, {
+    ":not(.pe-button--disabled):not(.pe-button--selected)": {
+      " .pe-button__wash": {
+        backgroundColor: vars$$1["color_" + tint + "_wash_background"]
+      }
+    }
   })]
 });
 
