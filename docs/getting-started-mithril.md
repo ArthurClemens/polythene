@@ -125,7 +125,7 @@ Add to your HTML file:
 ~~~html
 <div id="root"></div>
 
-<script src="https://unpkg.com/mithril@1.1.3"></script>
+<script src="https://unpkg.com/mithril@1.1.6/mithril.min.js"></script>
 <script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
 ~~~
 
