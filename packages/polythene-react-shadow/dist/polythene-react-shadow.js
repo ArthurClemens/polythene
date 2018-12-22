@@ -1,18 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-shadow')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-shadow'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-shadow']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreShadow) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Shadow = polytheneReactBase.ViewComponent(_extends({}, polytheneCoreShadow.coreShadow));
-
-  Shadow.displayName = "Shadow";
-
-  exports.Shadow = Shadow;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-shadow"],o):o((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-shadow"])}(this,function(e,o,t){"use strict";const n=o.ViewComponent(Object.assign({},t.coreShadow));n.displayName="Shadow",e.Shadow=n,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-shadow.js.map

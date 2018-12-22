@@ -71,4 +71,3 @@ routes.forEach(route => routeData[route.path] = {
   }
 });
 h.route(mountNode, "/", routeData);
-

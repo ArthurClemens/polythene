@@ -26,7 +26,7 @@ export const StateComponent = ({
     vnode._mounted = false;
 
     vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
-      vnode._mounted && setTimeout(renderer.redraw)
+      vnode._mounted && setTimeout(renderer.redraw(true))
     ));
   };
 

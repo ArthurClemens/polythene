@@ -1,25 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-list-tile'), require('polythene-react-icon'), require('polythene-react-ripple')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-list-tile', 'polythene-react-icon', 'polythene-react-ripple'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-list-tile'],global['polythene-react-icon'],global['polythene-react-ripple']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreListTile,polytheneReactIcon,polytheneReactRipple) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var ListTile = polytheneReactBase.ViewComponent(_extends({}, polytheneCoreListTile.coreListTile, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createProps(vnode, _extends(args, { Icon: polytheneReactIcon.Icon, Ripple: polytheneReactRipple.Ripple }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreListTile.coreListTile.createContent(vnode, _extends(args, { Icon: polytheneReactIcon.Icon, Ripple: polytheneReactRipple.Ripple }));
-    }
-  }));
-
-  ListTile.displayName = "ListTile";
-
-  exports.ListTile = ListTile;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-list-tile"),require("polythene-react-icon"),require("polythene-react-ripple")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-list-tile","polythene-react-icon","polythene-react-ripple"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-list-tile"],e["polythene-react-icon"],e["polythene-react-ripple"])}(this,function(e,t,o,i,n){"use strict";const p=t.ViewComponent(Object.assign({},o.coreListTile,{createProps:(e,t)=>o.coreListTile.createProps(e,Object.assign(t,{Icon:i.Icon,Ripple:n.Ripple})),createContent:(e,t)=>o.coreListTile.createContent(e,Object.assign(t,{Icon:i.Icon,Ripple:n.Ripple}))}));p.displayName="ListTile",e.ListTile=p,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-list-tile.js.map

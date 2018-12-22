@@ -1,8 +1,7 @@
 import { StateComponent } from 'polythene-mithril-base';
 import { coreTextField } from 'polythene-core-textfield';
 
-var TextField = StateComponent(coreTextField);
-
+const TextField = StateComponent(coreTextField);
 TextField.displayName = "TextField";
 
 export { TextField };

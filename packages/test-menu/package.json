@@ -15,12 +15,12 @@
   },
   "devDependencies": {
     "mithril": "1.1.6",
-    "react": "^16.2.0",
-    "react-router-dom": "^4.1.2"
+    "react": "^16.7.0",
+    "react-router-dom": "^4.3.1"
   },
   "jest": {
     "setupFiles": [
-      "../../scripts/jest-shim.js"
+      "../../scripts/tests/jest-shim.js"
     ]
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

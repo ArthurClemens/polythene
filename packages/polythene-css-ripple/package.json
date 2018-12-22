@@ -6,8 +6,8 @@
   "module": "dist/polythene-css-ripple.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build:css": "node ../../scripts/writeComponentCSS.js",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "build:css": "node ../../scripts/private/writeComponentCSS.js",
     "build": "npm run clean && npm run rollup && npm run build:css"
   },
   "files": [
@@ -16,8 +16,8 @@
   ],
   "dependencies": {
     "polythene-core-css": "^1.3.3",
-    "polythene-css-classes": "^1.3.2",
-    "polythene-theme": "^1.3.2"
+    "polythene-css-classes": "^1.3.3",
+    "polythene-theme": "^1.3.3"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

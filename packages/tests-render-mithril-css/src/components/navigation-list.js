@@ -1,4 +1,3 @@
-import { ListTileCSS } from "polythene-css";
 
 const icons = {
   drafts: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z\"/></svg>",
@@ -7,10 +6,7 @@ const icons = {
   send: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z\"/></svg>"
 };
 
-ListTileCSS.addStyle(".tests-drawer-navigation-list", {
-  color_light_hover:       "#e01d5f",
-  color_light_hover_front: "#e01d5f" 
-});
+// Style for class "tests-drawer-navigation-list" is created in scripts/writeThemCSS.js
 
 export default ({ renderer: h, keys: k, Icon, List, ListTile, onClick=()=>{} }) => {
 

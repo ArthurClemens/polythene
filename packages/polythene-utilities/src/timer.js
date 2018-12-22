@@ -1,7 +1,7 @@
 
 import { isClient } from "polythene-core";
 
-export const Timer = () => {
+export const Timer = function() {
   let timerId, startTime, remaining, cb;
 
   const stop = () => {

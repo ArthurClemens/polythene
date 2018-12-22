@@ -1,20 +1,14 @@
-import { filterSupportedAttributes, deprecation } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
 var classes = {
-
   // Toolbar
-
   component: "pe-toolbar",
-
   // states
   compact: "pe-toolbar--compact",
   appBar: "pe-toolbar--app-bar",
-
   // Toolbar title
-
   // elements
   title: "pe-toolbar__title",
-
   // states
   centeredTitle: "pe-toolbar__title--center",
   indentedTitle: "pe-toolbar__title--indent",
@@ -22,38 +16,35 @@ var classes = {
   border: "pe-toolbar--border"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-
-var onMount = function onMount(_ref) {
-  var attrs = _ref.attrs;
-
+const getElement = vnode => vnode.attrs.element || "div";
+const onMount = ({
+  attrs
+}) => {
   if (attrs.z !== undefined) {
-    deprecation("Toolbar", { option: "z", newOption: "shadowDepth" });
+    deprecation("Toolbar", {
+      option: "z",
+      newOption: "shadowDepth"
+    });
   }
 };
-
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+const createProps = (vnode, {
+  keys: k
+}) => {
+  const attrs = vnode.attrs;
+  return Object.assign({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.compact ? classes.compact : null, attrs.fullbleed ? classes.fullbleed : null, attrs.border ? classes.border : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
+const createContent = (vnode, {
+  renderer,
+  Shadow
+}) => {
+  const attrs = vnode.attrs;
+  const content = attrs.content ? attrs.content : attrs.children || vnode.children;
+  const shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
 
-var createContent = function createContent(vnode, _ref3) {
-  var renderer = _ref3.renderer,
-      Shadow = _ref3.Shadow;
-
-  var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
-  var shadow = shadowDepth !== undefined ? renderer(Shadow, {
-    shadowDepth: shadowDepth,
+  const shadow = shadowDepth !== undefined ? renderer(Shadow, {
+    shadowDepth,
     animated: true,
     key: "shadow"
   }) : null;
@@ -67,23 +58,17 @@ var toolbar = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-
-var createProps$1 = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-
-  var attrs = vnode.attrs;
-  return _extends$1({}, filterSupportedAttributes(attrs), {
+const getElement$1 = vnode => vnode.attrs.element || "div";
+const createProps$1 = (vnode, {
+  keys: k
+}) => {
+  const attrs = vnode.attrs;
+  return Object.assign({}, filterSupportedAttributes(attrs), {
     className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
-
-var createContent$1 = function createContent(vnode) {
-  var attrs = vnode.attrs;
+const createContent$1 = vnode => {
+  const attrs = vnode.attrs;
   return attrs.text ? attrs.text : attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
 };
 

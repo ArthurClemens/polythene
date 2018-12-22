@@ -1,24 +1,6 @@
 {
   "presets": [
-    ["env", { "modules": false }]
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-react-jsx",
-    "transform-object-assign"
-  ],
-  "env": {
-    "test": {
-      "presets": [
-        "env"
-      ],
-      "plugins": ["transform-runtime"]
-    },
-    "production": {
-      "presets": [
-        ["env", { "modules": false }],
-        ["minify"]
-      ],
-    }
-  }
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
 }

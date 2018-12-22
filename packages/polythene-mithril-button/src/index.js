@@ -4,7 +4,11 @@ import { RaisedButton } from "./RaisedButton";
 
 export const Button = ViewComponent({
   view: vnode =>
-    h(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children)
+    h(vnode.attrs.raised
+      ? RaisedButton
+      : TextButton,
+    vnode.attrs,
+    vnode.children)
 });
 
 Button.displayName = "Button";

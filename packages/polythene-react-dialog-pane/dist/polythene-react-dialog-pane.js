@@ -1,16 +1,2 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-dialog-pane')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-dialog-pane'], factory) :
-	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-dialog-pane']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreDialogPane) { 'use strict';
-
-	var DialogPane = polytheneReactBase.StateComponent(polytheneCoreDialogPane.coreDialogPane);
-
-	DialogPane.displayName = "DialogPane";
-
-	exports.DialogPane = DialogPane;
-
-	Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-dialog-pane")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-dialog-pane"],o):o((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-dialog-pane"])}(this,function(e,o,t){"use strict";const n=o.StateComponent(t.coreDialogPane);n.displayName="DialogPane",e.DialogPane=n,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-dialog-pane.js.map

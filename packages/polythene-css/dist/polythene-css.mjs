@@ -63,7 +63,6 @@ export { polytheneCssTypography as TypographyCSS };
 export { addTypography, addRoboto } from 'polythene-css-typography';
 export { addLayoutStyles } from 'polythene-core-css';
 
-// handle deprecation
-var RaisedButtonCSS = ButtonCSS;
+const RaisedButtonCSS = ButtonCSS;
 
 export { RaisedButtonCSS };

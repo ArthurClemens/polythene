@@ -6,7 +6,7 @@
   "module": "dist/polythene-react-ios-spinner.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "build": "npm run clean && npm run rollup"
   },
   "files": [
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.3.2",
-    "polythene-core-ios-spinner": "^1.3.2",
-    "polythene-css-classes": "^1.3.2",
+    "polythene-core": "^1.3.3",
+    "polythene-core-ios-spinner": "^1.3.3",
+    "polythene-css-classes": "^1.3.3",
     "polythene-react-base": "^1.3.3",
     "polythene-react-base-spinner": "^1.3.3"
   },

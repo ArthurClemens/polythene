@@ -1,22 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-radio-group'), require('polythene-react-radio-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-radio-group', 'polythene-react-radio-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-radio-group'],global['polythene-react-radio-button']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreRadioGroup,polytheneReactRadioButton) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var RadioGroup = polytheneReactBase.StateComponent(_extends({}, polytheneCoreRadioGroup.coreRadioGroup, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreRadioGroup.coreRadioGroup.createContent(vnode, _extends(args, { RadioButton: polytheneReactRadioButton.RadioButton }));
-    }
-  }));
-
-  RadioGroup.displayName = "RadioGroup";
-
-  exports.RadioGroup = RadioGroup;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-radio-group"),require("polythene-react-radio-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-radio-group","polythene-react-radio-button"],o):o((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-radio-group"],e["polythene-react-radio-button"])}(this,function(e,o,t,r){"use strict";const n=o.StateComponent(Object.assign({},t.coreRadioGroup,{createContent:(e,o)=>t.coreRadioGroup.createContent(e,Object.assign(o,{RadioButton:r.RadioButton}))}));n.displayName="RadioGroup",e.RadioGroup=n,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-radio-group.js.map

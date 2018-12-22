@@ -1,6 +1,10 @@
 .pe-search,.pe-search .pe-textfield {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  -webkit-flex-basis: 0.000000001px;
   flex-basis: 0.000000001px;
   position: relative
 }
@@ -29,9 +33,13 @@
 }
 
 .pe-search .pe-search__content,.pe-search .pe-search__content .pe-textfield {
+  display: -webkit-box;
+  display: -moz-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-direction: row;
+  -webkit-flex-direction: row;
   flex-direction: row
 }
 
@@ -40,11 +48,16 @@
 }
 
 .pe-search .pe-search__content>* {
+  display: -webkit-box;
+  display: -moz-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-direction: column;
+  -webkit-flex-direction: column;
   flex-direction: column;
   -ms-align-self: center;
+  -webkit-align-self: center;
   align-self: center
 }
 

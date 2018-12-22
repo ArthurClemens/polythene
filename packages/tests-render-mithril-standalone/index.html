@@ -17,7 +17,6 @@ body, html {
   padding: 0;
   margin: 0;
 }
-.page {}
 .row {
   padding: 8px 16px;
   max-width: 480px;
@@ -53,7 +52,7 @@ h2 {
 }
 </style>
 
-<script src="https://unpkg.com/mithril"></script>
+<script src="https://unpkg.com/mithril@1.1.6/mithril.min.js"></script>
 <script src="js/polythene-mithril-standalone.js"></script>
 <script src="js/polythene-css-standalone.js"></script>
 <script>
@@ -77,6 +76,7 @@ const {
 
 const {
   ButtonCSS,
+  CardCSS,
   SVGCSS,
 } = polytheneCSS;
 
@@ -90,6 +90,15 @@ ButtonCSS.addStyle(".themed-button", {
 SVGCSS.addStyle(".themed-svg", {
   color_light: "#2196f3"
 });
+
+CardCSS.addStyle(
+  ".themed-card",
+  {
+    color_dark_main_background: "#B89E58",
+    color_dark_title_text:      "#fff",
+    color_dark_subtitle_text:   "#fff"
+  }
+);
 
 const app = {
   view: () => 
@@ -174,6 +183,7 @@ const app = {
           m(".component", 
             m(Card, {
               className: "themed-card",
+              tone: "dark",
               content: [
                 {
                   primary: {

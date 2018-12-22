@@ -16,6 +16,9 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 const nodeModules = path.join(process.cwd(), "node_modules");
 
 module.exports = config => ({
+  mode: process.env.PHENOMIC_ENV !== "static"
+    ? "development"
+    : "production",
   entry: {
     [config.bundleName]: [
       process.env.PHENOMIC_ENV !== "static" &&
@@ -33,17 +36,25 @@ module.exports = config => ({
   module: {
     rules: [
       {
+        test: /\.mjs$/, 
+        type: "javascript/auto",
+      },
+      {
         test: /\.js$/,
-        // exclude: /node_modules/,
-        loader: require.resolve("babel-loader"),
-        options: {
-          babelrc: false,
-          presets: [require.resolve("@phenomic/babel-preset")],
-          plugins: [
-            require.resolve("react-hot-loader/babel"),
-            require.resolve("babel-plugin-transform-object-assign")            
-          ]
-        }
+        exclude: /node_modules/,
+        use: [{
+          loader: "babel-loader",
+          options: {
+            babelrc: false,
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react"
+            ],
+            plugins: [
+              require.resolve("react-hot-loader/babel"),
+            ]
+          }
+        }]
       },
       {
         test: /\.css$/,
@@ -70,16 +81,13 @@ module.exports = config => ({
     }),
     process.env.PHENOMIC_ENV !== "static" &&
       new webpack.HotModuleReplacementPlugin(),
-    process.env.NODE_ENV === "production" &&
-      new webpack.optimize.UglifyJsPlugin()
+    // process.env.NODE_ENV === "production" &&
+    //   new webpack.optimize.UglifyJsPlugin()
   ].filter(item => item),
 
   resolve: {
-    // react-native(-web) | react-primitives
-    extensions: [".web.js", ".js", ".json"],
+    extensions: [".web.js", ".mjs", ".js", ".json"],
     alias: {
-      // "react-native": "react-native-web",
-
       // to ensure a single module is used
       react: path.resolve(path.join(nodeModules, "react")),
       "react-dom": path.resolve(path.join(nodeModules, "react-dom")),

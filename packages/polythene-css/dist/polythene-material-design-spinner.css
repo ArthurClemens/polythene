@@ -32,6 +32,16 @@
   }
 }
 
+@keyframes mdSpinnerFadeOut {
+  0% {
+    opacity: .99
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
 @keyframes mdSpinnerLayer1FadeInOut {
   0% {
     opacity: .99

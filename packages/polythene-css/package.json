@@ -6,8 +6,8 @@
   "module": "dist/polythene-css.mjs",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.es.js",
-    "build-standalone": "DEPS=1 MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-css-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/rollup.umd-includes.js",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "build-standalone": "MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js DEST=./dist/polythene-css-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
     "copy-css": "node ./scripts/copyCSS.js",
     "combine-css": "node ./scripts/combineCSS.js",
     "build": "npm run rollup && npm run build-standalone && npm run copy-css && npm run combine-css"

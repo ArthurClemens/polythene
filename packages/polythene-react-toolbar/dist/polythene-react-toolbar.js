@@ -1,27 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-toolbar'), require('polythene-react-shadow')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-toolbar', 'polythene-react-shadow'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-toolbar'],global['polythene-react-shadow']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreToolbar,polytheneReactShadow) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Toolbar = polytheneReactBase.ViewComponent(_extends({}, polytheneCoreToolbar.coreToolbar, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreToolbar.coreToolbar.createContent(vnode, _extends(args, { Shadow: polytheneReactShadow.Shadow }));
-    }
-  }));
-
-  Toolbar.displayName = "Toolbar";
-
-  var ToolbarTitle = polytheneReactBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
-
-  ToolbarTitle.displayName = "ToolbarTitle";
-
-  exports.Toolbar = Toolbar;
-  exports.ToolbarTitle = ToolbarTitle;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-react-base"),require("polythene-core-toolbar"),require("polythene-react-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-toolbar","polythene-react-shadow"],o):o((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-toolbar"],e["polythene-react-shadow"])}(this,function(e,o,t,r){"use strict";const a=o.ViewComponent(Object.assign({},t.coreToolbar,{createContent:(e,o)=>t.coreToolbar.createContent(e,Object.assign(o,{Shadow:r.Shadow}))}));a.displayName="Toolbar";const n=o.ViewComponent(t.coreToolbarTitle);n.displayName="ToolbarTitle",e.Toolbar=a,e.ToolbarTitle=n,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-toolbar.js.map

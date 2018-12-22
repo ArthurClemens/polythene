@@ -1,16 +1,2 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-slider')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-slider'], factory) :
-	(factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-slider']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreSlider) { 'use strict';
-
-	var Slider = polytheneReactBase.StateComponent(polytheneCoreSlider.coreSlider);
-
-	Slider.displayName = "Slider";
-
-	exports.Slider = Slider;
-
-	Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-slider")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-slider"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-slider"])}(this,function(e,t,o){"use strict";const r=t.StateComponent(o.coreSlider);r.displayName="Slider",e.Slider=r,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-slider.js.map

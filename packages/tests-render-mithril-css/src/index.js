@@ -26,6 +26,9 @@ import {
 } from "polythene-mithril";
 import "polythene-css/dist/polythene.css";
 import "polythene-css/dist/polythene-typography.css";
+
+// Styles for classes are created in scripts/writeThemCSS.js
+
 import exposed from "./components/exposed-menu";
 import navigationList from "./components/navigation-list";
 

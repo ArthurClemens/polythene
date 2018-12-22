@@ -94,12 +94,19 @@ const App = {
           m(".tabs-body",
             m("h1", m.route.get())
           ),
-          m("div", routeData.map(({ name, route }) =>
-            m(Button, {
-              label: name,
-              href: route,
-              oncreate: m.route.link,
-            })
+        ])
+      ),
+      m(".row",
+        m(".component", [
+          m("p", "Go to:"),
+          m("ul", routeData.map(({ name, route }) =>
+            m("li", 
+              m(Button, {
+                label: name,
+                href: route,
+                oncreate: m.route.link,
+              })
+            )
           ))
         ])
       )

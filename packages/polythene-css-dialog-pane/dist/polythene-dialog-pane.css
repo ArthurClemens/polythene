@@ -1,7 +1,11 @@
 .pe-dialog-pane {
+  display: -webkit-box;
+  display: -moz-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-direction: column;
+  -webkit-flex-direction: column;
   position: relative;
   margin: 0
 }
@@ -79,12 +83,18 @@
 
 .pe-dialog-pane .pe-dialog-pane__actions {
   -ms-flex-direction: row;
+  -webkit-flex-direction: row;
   flex-direction: row;
   -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
+  display: -webkit-box;
+  display: -moz-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap
 }
 
@@ -146,7 +156,7 @@
 }
 
 .pe-dialog-pane {
-  max-height: calc(100vh - 2 * 64px)
+  max-height: calc(100vh - 128px)
 }
 
 .pe-dialog-pane .pe-dialog-pane__body {

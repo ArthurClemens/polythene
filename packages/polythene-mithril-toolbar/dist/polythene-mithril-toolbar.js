@@ -1,27 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-mithril-base'), require('polythene-core-toolbar'), require('polythene-mithril-shadow')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-mithril-base', 'polythene-core-toolbar', 'polythene-mithril-shadow'], factory) :
-  (factory((global.polythene = {}),global['polythene-mithril-base'],global['polythene-core-toolbar'],global['polythene-mithril-shadow']));
-}(this, (function (exports,polytheneMithrilBase,polytheneCoreToolbar,polytheneMithrilShadow) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var Toolbar = polytheneMithrilBase.ViewComponent(_extends({}, polytheneCoreToolbar.coreToolbar, {
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreToolbar.coreToolbar.createContent(vnode, _extends(args, { Shadow: polytheneMithrilShadow.Shadow }));
-    }
-  }));
-
-  Toolbar.displayName = "Toolbar";
-
-  var ToolbarTitle = polytheneMithrilBase.ViewComponent(polytheneCoreToolbar.coreToolbarTitle);
-
-  ToolbarTitle.displayName = "ToolbarTitle";
-
-  exports.Toolbar = Toolbar;
-  exports.ToolbarTitle = ToolbarTitle;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports,require("polythene-mithril-base"),require("polythene-core-toolbar"),require("polythene-mithril-shadow")):"function"==typeof define&&define.amd?define(["exports","polythene-mithril-base","polythene-core-toolbar","polythene-mithril-shadow"],o):o((e=e||self).polythene={},e["polythene-mithril-base"],e["polythene-core-toolbar"],e["polythene-mithril-shadow"])}(this,function(e,o,t,r){"use strict";const l=o.ViewComponent(Object.assign({},t.coreToolbar,{createContent:(e,o)=>t.coreToolbar.createContent(e,Object.assign(o,{Shadow:r.Shadow}))}));l.displayName="Toolbar";const i=o.ViewComponent(t.coreToolbarTitle);i.displayName="ToolbarTitle",e.Toolbar=l,e.ToolbarTitle=i,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-mithril-toolbar.js.map

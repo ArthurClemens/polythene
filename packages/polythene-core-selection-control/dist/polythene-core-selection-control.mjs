@@ -2,12 +2,10 @@ import { filterSupportedAttributes, classForSize } from 'polythene-core';
 
 var classes = {
   component: "pe-control",
-
   // elements
   formLabel: "pe-control__form-label",
   input: "pe-control__input",
   label: "pe-control__label",
-
   // states
   disabled: "pe-control--disabled",
   inactive: "pe-control--inactive",
@@ -17,39 +15,34 @@ var classes = {
   on: "pe-control--on",
   regular: "pe-control--regular",
   small: "pe-control--small",
-
   // control view elements
   box: "pe-control__box",
   button: "pe-control__button",
-
   // control view states
   buttonOff: "pe-control__button--off",
   buttonOn: "pe-control__button--on"
 };
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+const getElement = vnode => vnode.attrs.element || "div";
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
+const currentState = (attrs, state) => {
+  const checked = attrs.checked !== undefined ? attrs.checked : state.checked();
+  const selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
+  const inactive = attrs.disabled || !selectable;
+  return {
+    checked,
+    inactive
+  };
 };
 
-var currentState = function currentState(attrs, state) {
-  var checked = attrs.checked !== undefined ? attrs.checked : state.checked();
-  var selectable = attrs.selectable !== undefined ? attrs.selectable(checked) : false;
-  var inactive = attrs.disabled || !selectable;
-  return { checked: checked, inactive: inactive };
-};
+const getInitialState = (vnode, createStream, {
+  keys: k
+}) => {
+  const attrs = vnode.attrs;
+  const isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked || false;
+  const checked = createStream(isChecked);
 
-var getInitialState = function getInitialState(vnode, createStream, _ref) {
-  var k = _ref.keys;
-
-  var attrs = vnode.attrs;
-  var isChecked = attrs.defaultChecked !== undefined ? attrs.defaultChecked : attrs.checked || false;
-  var checked = createStream(isChecked);
-
-  var notifyChange = function notifyChange(e, isChecked) {
+  const notifyChange = (e, isChecked) => {
     if (attrs.onChange) {
       attrs.onChange({
         event: e,
@@ -59,26 +52,27 @@ var getInitialState = function getInitialState(vnode, createStream, _ref) {
     }
   };
 
-  var onChange = function onChange(e) {
-    var isChecked = e.currentTarget.checked;
-    if (attrs.type === "radio") {
-      // do not set directly
-    } else {
+  const onChange = e => {
+    let isChecked = e.currentTarget.checked;
+
+    if (attrs.type === "radio") ; else {
       checked(isChecked);
     }
+
     notifyChange(e, isChecked);
   };
 
-  var toggle = function toggle(e) {
-    var newChecked = !checked();
+  const toggle = e => {
+    const newChecked = !checked();
     checked(newChecked);
     notifyChange(e, newChecked);
   };
 
-  var viewControlClickHandler = attrs.events && attrs.events[k.onclick];
-  var viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : function (e) {
+  const viewControlClickHandler = attrs.events && attrs.events[k.onclick];
+  const viewControlKeyDownHandler = attrs.events && attrs.events[k.onkeydown] ? attrs.events[k.onkeydown] : e => {
     if (e.key === "Enter" || e.keyCode === 32) {
       e.preventDefault();
+
       if (viewControlClickHandler) {
         viewControlClickHandler(e);
       } else {
@@ -86,60 +80,64 @@ var getInitialState = function getInitialState(vnode, createStream, _ref) {
       }
     }
   };
-
   return {
-    checked: checked,
-    toggle: toggle,
-    onChange: onChange,
-    viewControlClickHandler: viewControlClickHandler,
-    viewControlKeyDownHandler: viewControlKeyDownHandler,
+    checked,
+    toggle,
+    onChange,
+    viewControlClickHandler,
+    viewControlKeyDownHandler,
     redrawOnUpdate: createStream.merge([checked])
   };
 };
-
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-
-  var attrs = vnode.attrs;
-  var state = vnode.state;
-
-  var _currentState = currentState(attrs, state),
-      checked = _currentState.checked,
-      inactive = _currentState.inactive;
-
-  return _extends({}, filterSupportedAttributes(attrs), {
+const createProps = (vnode, {
+  keys: k
+}) => {
+  const attrs = vnode.attrs;
+  const state = vnode.state;
+  const {
+    checked,
+    inactive
+  } = currentState(attrs, state);
+  return Object.assign({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
     checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
-
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer,
-      k = _ref3.keys,
-      ViewControl = _ref3.ViewControl;
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  var _currentState2 = currentState(attrs, state),
-      checked = _currentState2.checked,
-      inactive = _currentState2.inactive;
-
-  return h("label", _extends({}, {
+const createContent = (vnode, {
+  renderer: h,
+  keys: k,
+  ViewControl
+}) => {
+  const state = vnode.state;
+  const attrs = vnode.attrs;
+  const {
+    checked,
+    inactive
+  } = currentState(attrs, state);
+  return h("label", Object.assign({}, {
     className: classes.formLabel
-  }, state.viewControlClickHandler && _defineProperty({}, k.onclick, function (e) {
-    return e.preventDefault(), state.viewControlClickHandler(e);
-  })), [h(ViewControl, _extends({}, attrs, {
-    inactive: inactive,
-    checked: checked,
+  }, state.viewControlClickHandler && {
+    [k.onclick]: e => (e.preventDefault(), state.viewControlClickHandler(e))
+  }), [h(ViewControl, Object.assign({}, attrs, {
+    inactive,
+    checked,
     key: "control",
-    events: _defineProperty({}, k.onkeydown, state.viewControlKeyDownHandler)
-  })), attrs.label ? h("." + classes.label, { key: "label" }, attrs.label) : null, h("input", _extends({}, attrs.events, {
+    events: {
+      // Only use key down event; click events are handled by input element
+      [k.onkeydown]: state.viewControlKeyDownHandler
+    }
+  })), attrs.label ? h(`.${classes.label}`, {
+    key: "label"
+  }, attrs.label) : null, h("input", Object.assign({}, attrs.events, {
     name: attrs.name,
     type: attrs.type,
     value: attrs.value,
-    checked: checked
-  }, attrs.disabled || inactive ? { disabled: "disabled" } : _defineProperty({}, k.onchange, state.onChange)))]);
+    checked
+  }, attrs.disabled || inactive ? {
+    disabled: "disabled"
+  } : {
+    [k.onchange]: state.onChange
+  }))]);
 };
 
 var selectionControl = /*#__PURE__*/Object.freeze({
@@ -149,39 +147,42 @@ var selectionControl = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+const CONTENT = [{
+  iconType: "iconOn",
+  className: classes.buttonOn
+}, {
+  iconType: "iconOff",
+  className: classes.buttonOff
+}];
+const getElement$1 = vnode => vnode.attrs.element || `.${classes.box}`;
 
-var CONTENT = [{ iconType: "iconOn", className: classes.buttonOn }, { iconType: "iconOff", className: classes.buttonOff }];
+const createIcon = (h, iconType, attrs, className) => // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
+// otherwise create a new object
+Object.assign({}, {
+  className,
+  key: iconType
+}, attrs[iconType] ? attrs[iconType] : {
+  svg: {
+    content: h.trust(attrs.icons[iconType])
+  }
+}, attrs.icon, attrs.size ? {
+  size: attrs.size
+} : null);
 
-var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || "." + classes.box;
-};
-
-var createIcon = function createIcon(h, iconType, attrs, className) {
-  return (
-    // if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
-    // otherwise create a new object
-    _extends$1({}, {
-      className: className,
-      key: iconType
-    }, attrs[iconType] ? attrs[iconType] : { svg: { content: h.trust(attrs.icons[iconType]) } }, attrs.icon, attrs.size ? { size: attrs.size } : null)
-  );
-};
-
-var createContent$1 = function createContent(vnode, _ref) {
-  var h = _ref.renderer,
-      Icon = _ref.Icon,
-      IconButton = _ref.IconButton;
-
-  var attrs = vnode.attrs;
-  return h(IconButton, _extends$1({}, {
+const createContent$1 = (vnode, {
+  renderer: h,
+  Icon,
+  IconButton
+}) => {
+  const attrs = vnode.attrs;
+  return h(IconButton, Object.assign({}, {
     element: "div",
     key: attrs.key,
     className: classes.button,
-    content: CONTENT.map(function (o) {
-      return h(Icon, createIcon(h, o.iconType, attrs, o.className));
-    }),
-    ripple: { center: true },
+    content: CONTENT.map(o => h(Icon, createIcon(h, o.iconType, attrs, o.className))),
+    ripple: {
+      center: true
+    },
     disabled: attrs.disabled,
     events: attrs.events,
     inactive: attrs.inactive

@@ -2,9 +2,7 @@ export { vars } from 'polythene-style';
 
 // Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.
-
 // Example:
-
 // export const componentConfig = {
 //     Button: vars => {
 //         const mainColor = '#e4521b';
@@ -26,7 +24,6 @@ export { vars } from 'polythene-style';
 //         ];
 //     }
 // };
-
-var componentConfig = {};
+const componentConfig = {};
 
 export { componentConfig };

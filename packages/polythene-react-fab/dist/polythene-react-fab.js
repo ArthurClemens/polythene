@@ -1,26 +1,2 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('polythene-react-base'), require('polythene-core-fab'), require('polythene-react-icon'), require('polythene-react-button')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'polythene-react-base', 'polythene-core-fab', 'polythene-react-icon', 'polythene-react-button'], factory) :
-  (factory((global.polythene = {}),global['polythene-react-base'],global['polythene-core-fab'],global['polythene-react-icon'],global['polythene-react-button']));
-}(this, (function (exports,polytheneReactBase,polytheneCoreFab,polytheneReactIcon,polytheneReactButton) { 'use strict';
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var FAB = polytheneReactBase.StateComponent(_extends({}, polytheneCoreFab.coreFAB, {
-    createProps: function createProps(vnode, args) {
-      return polytheneCoreFab.coreFAB.createProps(vnode, _extends(args, { Icon: polytheneReactIcon.Icon }));
-    },
-    createContent: function createContent(vnode, args) {
-      return polytheneCoreFab.coreFAB.createContent(vnode, _extends(args, { Icon: polytheneReactIcon.Icon }));
-    },
-    component: polytheneReactButton.Button
-  }));
-
-  FAB.displayName = "FAB";
-
-  exports.FAB = FAB;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("polythene-react-base"),require("polythene-core-fab"),require("polythene-react-icon"),require("polythene-react-button")):"function"==typeof define&&define.amd?define(["exports","polythene-react-base","polythene-core-fab","polythene-react-icon","polythene-react-button"],t):t((e=e||self).polythene={},e["polythene-react-base"],e["polythene-core-fab"],e["polythene-react-icon"],e["polythene-react-button"])}(this,function(e,t,o,n,c){"use strict";const r=t.StateComponent(Object.assign({},o.coreFAB,{createProps:(e,t)=>o.coreFAB.createProps(e,Object.assign(t,{Icon:n.Icon})),createContent:(e,t)=>o.coreFAB.createContent(e,Object.assign(t,{Icon:n.Icon})),component:c.Button}));r.displayName="FAB",e.FAB=r,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=polythene-react-fab.js.map

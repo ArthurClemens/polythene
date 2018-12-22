@@ -38,10 +38,15 @@
 
 .pe-snackbar__holder {
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
+  display: -webkit-box;
+  display: -moz-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
   position: fixed;
   top: auto;
