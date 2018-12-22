@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, classForSize, deprecation } from 'polythene-core';
+import { deprecation, transitionComponent, filterSupportedAttributes, classForSize } from 'polythene-core';
 
 var classes = {
   component: "pe-spinner",

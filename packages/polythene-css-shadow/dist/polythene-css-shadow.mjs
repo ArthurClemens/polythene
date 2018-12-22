@@ -1,5 +1,5 @@
+import { createLayout, sel, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { mixin, sel, createLayout, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-shadow",

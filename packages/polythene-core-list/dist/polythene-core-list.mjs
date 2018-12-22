@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, deprecation } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
 var listTileClasses = {
   component: "pe-list-tile",

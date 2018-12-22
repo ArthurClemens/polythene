@@ -4,10 +4,9 @@
   "description": "",
   "private": true,
   "main": "dist/js/index",
-  "module": "dist/js/index.mjs",
   "scripts": {
     "clean": "rm -rf dist/js/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd-includes.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "rollup": "INCLUDES=mithril ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
     "build": "npm run clean && npm run rollup",
     "serve": "http-server -p 5000 dist"
   },

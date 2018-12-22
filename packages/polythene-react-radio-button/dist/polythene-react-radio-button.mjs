@@ -1,5 +1,5 @@
-import { coreRadioButton } from 'polythene-core-radio-button';
 import { ViewComponent, StateComponent } from 'polythene-react-base';
+import { coreRadioButton } from 'polythene-core-radio-button';
 import { viewControl, coreSelectionControl } from 'polythene-core-selection-control';
 import { Icon } from 'polythene-react-icon';
 import { IconButton } from 'polythene-react-icon-button';

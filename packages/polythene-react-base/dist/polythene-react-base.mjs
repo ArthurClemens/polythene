@@ -1,5 +1,5 @@
-import h from 'react-hyperscript';
 import React from 'react';
+import h from 'react-hyperscript';
 import ReactDOM from 'react-dom';
 import { isClient } from 'polythene-core';
 

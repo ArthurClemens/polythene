@@ -1,4 +1,4 @@
-import { sel, createColor, createLayout, styler } from 'polythene-core-css';
+import { createColor, sel, createLayout, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-svg"

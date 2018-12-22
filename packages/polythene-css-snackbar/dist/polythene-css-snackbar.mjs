@@ -1,6 +1,6 @@
+import { createColor, createLayout, sel, flex, rgba, styler } from 'polythene-core-css';
 import { color, customLayoutFns } from 'polythene-css-notification';
 import { vars } from 'polythene-theme';
-import { createColor, flex, sel, createLayout, rgba, styler } from 'polythene-core-css';
 
 var notificationClasses = {
   component: "pe-notification",

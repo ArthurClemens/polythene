@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, deprecation } from 'polythene-core';
+import { deprecation, unsubscribe, subscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
 
 var listTileClasses = {
   component: "pe-list-tile",

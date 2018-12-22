@@ -1,6 +1,6 @@
-import { coreSelectionControl } from 'polythene-core-selection-control';
 import { ViewComponent, StateComponent } from 'polythene-react-base';
 import { viewControl, coreSwitch } from 'polythene-core-switch';
+import { coreSelectionControl } from 'polythene-core-selection-control';
 import { Shadow } from 'polythene-react-shadow';
 import { IconButton } from 'polythene-react-icon-button';
 

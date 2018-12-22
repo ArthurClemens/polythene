@@ -1,4 +1,4 @@
-import { sel, createLayout, styler } from 'polythene-core-css';
+import { createLayout, sel, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-button-group"

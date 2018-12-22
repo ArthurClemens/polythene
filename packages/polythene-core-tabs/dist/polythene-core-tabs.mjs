@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isTouch, subscribe, unsubscribe, isRTL, deprecation } from 'polythene-core';
+import { deprecation, isTouch, isRTL, subscribe, unsubscribe, filterSupportedAttributes } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 
 var buttonClasses = {

@@ -1,4 +1,4 @@
-import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes, getStyle } from 'polythene-core';
+import { filterSupportedAttributes, pointerStartMoveEvent, isClient, getStyle, isTouch, pointerMoveEvent, pointerEndMoveEvent } from 'polythene-core';
 
 var classes = {
   component: "pe-slider",

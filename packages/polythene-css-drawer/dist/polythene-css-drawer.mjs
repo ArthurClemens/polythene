@@ -1,6 +1,6 @@
+import { createColor, sel, createLayout, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
-import { sel, createColor, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-dialog pe-drawer",

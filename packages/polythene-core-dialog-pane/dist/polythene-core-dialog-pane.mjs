@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, unpackAttrs, subscribe, unsubscribe } from 'polythene-core';
+import { unsubscribe, subscribe, unpackAttrs, filterSupportedAttributes } from 'polythene-core';
 
 var classes = {
   component: "pe-dialog-pane",

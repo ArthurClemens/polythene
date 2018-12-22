@@ -1,6 +1,6 @@
+import { createColor, sel, rgba, createLayout, createMarker, selectorRTL, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 import { sharedVars, sharedVarFns } from 'polythene-css-shadow';
-import { sel, createColor, rgba, selectorRTL, createLayout, createMarker, styler } from 'polythene-core-css';
 
 var listTileClasses = {
   component: "pe-list-tile",

@@ -1,6 +1,6 @@
+import { vars } from 'polythene-style';
 import { addWebFont } from 'polythene-utilities';
 import { styler } from 'polythene-core-css';
-import { vars } from 'polythene-style';
 
 var reset = (() => [{
   // apply a natural box layout model to all elements, but allow elements to change

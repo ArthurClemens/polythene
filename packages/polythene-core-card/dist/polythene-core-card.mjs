@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, deprecation } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
 var classes = {
   component: "pe-card",

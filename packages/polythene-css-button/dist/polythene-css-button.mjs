@@ -1,6 +1,6 @@
-import { vars } from 'polythene-theme';
+import { createLayout, sel, mixin, createColor, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { sharedVarFns, sharedVars } from 'polythene-css-shadow';
-import { mixin, sel, createLayout, createColor, selectorRTL, rgba, styler } from 'polythene-core-css';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-text-button",

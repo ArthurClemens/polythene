@@ -1,7 +1,7 @@
-import { Icon } from 'polythene-mithril-icon';
-import { Button } from 'polythene-mithril-button';
 import { ViewComponent, StateComponent } from 'polythene-mithril-base';
 import { coreTab, coreScrollButton, coreTabs } from 'polythene-core-tabs';
+import { Icon } from 'polythene-mithril-icon';
+import { Button } from 'polythene-mithril-button';
 import { IconButton } from 'polythene-mithril-icon-button';
 
 const Tab = ViewComponent(Object.assign({}, coreTab, {

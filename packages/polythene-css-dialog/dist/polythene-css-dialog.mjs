@@ -1,7 +1,7 @@
-import { fullScreen } from 'polythene-css-dialog-pane';
+import { createColor, sel, rgba, createLayout, flex, createMarker, mixin, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
+import { fullScreen } from 'polythene-css-dialog-pane';
 import { sharedVars, sharedVarFns } from 'polythene-css-shadow';
-import { sel, createColor, rgba, mixin, flex, createLayout, createMarker, styler } from 'polythene-core-css';
 
 var listTileClasses = {
   component: "pe-list-tile",

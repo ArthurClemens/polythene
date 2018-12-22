@@ -1,4 +1,4 @@
-import { unpackAttrs, getStyle, styleDurationToMs } from 'polythene-core';
+import { getStyle, unpackAttrs, styleDurationToMs } from 'polythene-core';
 import { easing } from 'polythene-utilities';
 
 var classes = {

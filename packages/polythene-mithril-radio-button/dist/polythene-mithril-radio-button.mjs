@@ -1,5 +1,5 @@
-import { coreRadioButton } from 'polythene-core-radio-button';
 import { ViewComponent, StateComponent } from 'polythene-mithril-base';
+import { coreRadioButton } from 'polythene-core-radio-button';
 import { viewControl, coreSelectionControl } from 'polythene-core-selection-control';
 import { Icon } from 'polythene-mithril-icon';
 import { IconButton } from 'polythene-mithril-icon-button';

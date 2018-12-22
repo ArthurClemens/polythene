@@ -1,7 +1,7 @@
+import { createColor, sel, createLayout, flex, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { textButtonColor, textButtonLayout, textButtonVars } from 'polythene-css-button';
-import { vars as vars$1 } from 'polythene-css-icon-button';
 import { vars } from 'polythene-theme';
-import { sel, createColor, mixin, flex, createLayout, selectorRTL, rgba, styler } from 'polythene-core-css';
+import { vars as vars$1 } from 'polythene-css-icon-button';
 
 var buttonClasses = {
   component: "pe-text-button",

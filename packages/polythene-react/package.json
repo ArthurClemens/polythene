@@ -7,29 +7,31 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
-    "build-standalone": "DEPS=1 ENTRY=scripts/standalone.js SOURCEMAP=1 DEST=./dist/polythene-react-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd-includes.js",
-    "build": "npm run clean && npm run rollup"
+    "build-standalone": "ENTRY=scripts/standalone.js DEST=./dist/polythene-react-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
+    "build": "npm run clean && npm run rollup && npm run build-standalone"
   },
   "files": [
     "dist",
     "README.md"
   ],
   "dependencies": {
+    "polythene-core-css": "^1.3.3",
+    "polythene-core": "^1.3.3",
     "polythene-css": "^1.3.3",
     "polythene-react-base": "^1.3.3",
-    "polythene-react-button": "^1.3.3",
     "polythene-react-button-group": "^1.3.3",
+    "polythene-react-button": "^1.3.3",
     "polythene-react-card": "^1.3.3",
     "polythene-react-checkbox": "^1.3.3",
-    "polythene-react-dialog": "^1.3.3",
     "polythene-react-dialog-pane": "^1.3.3",
+    "polythene-react-dialog": "^1.3.3",
     "polythene-react-drawer": "^1.3.3",
     "polythene-react-fab": "^1.3.3",
-    "polythene-react-icon": "^1.3.3",
     "polythene-react-icon-button": "^1.3.3",
+    "polythene-react-icon": "^1.3.3",
     "polythene-react-ios-spinner": "^1.3.3",
-    "polythene-react-list": "^1.3.3",
     "polythene-react-list-tile": "^1.3.3",
+    "polythene-react-list": "^1.3.3",
     "polythene-react-material-design-progress-spinner": "^1.3.3",
     "polythene-react-material-design-spinner": "^1.3.3",
     "polythene-react-menu": "^1.3.3",
@@ -49,8 +51,6 @@
     "polythene-react-toolbar": "^1.3.3"
   },
   "peerDependencies": {
-    "polythene-core": "^1.3.3",
-    "polythene-core-css": "^1.3.3",
     "react": "^16.2.0",
     "react-hyperscript": "^3.0.0"
   },

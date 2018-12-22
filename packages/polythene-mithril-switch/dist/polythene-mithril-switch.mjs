@@ -1,6 +1,6 @@
-import { coreSelectionControl } from 'polythene-core-selection-control';
 import { ViewComponent, StateComponent } from 'polythene-mithril-base';
 import { viewControl, coreSwitch } from 'polythene-core-switch';
+import { coreSelectionControl } from 'polythene-core-selection-control';
 import { Shadow } from 'polythene-mithril-shadow';
 import { IconButton } from 'polythene-mithril-icon-button';
 

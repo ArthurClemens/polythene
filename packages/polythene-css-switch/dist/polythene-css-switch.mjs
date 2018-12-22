@@ -1,7 +1,7 @@
-import { vars as vars$1 } from 'polythene-css-icon-button';
+import { createColor, sel, createLayout, mixin, rgba, styler } from 'polythene-core-css';
 import { layout, vars as vars$2 } from 'polythene-css-selection-control';
 import { vars } from 'polythene-theme';
-import { sel, createColor, mixin, createLayout, rgba, styler } from 'polythene-core-css';
+import { vars as vars$1 } from 'polythene-css-icon-button';
 
 var classes = {
   component: "pe-switch-control",

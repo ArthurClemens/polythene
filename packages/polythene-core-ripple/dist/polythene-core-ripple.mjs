@@ -1,4 +1,4 @@
-import { isTouch, getAnimationEndEvent, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
+import { getAnimationEndEvent, isTouch, isServer, filterSupportedAttributes, pointerEndEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 const ANIMATION_END_EVENT = getAnimationEndEvent();

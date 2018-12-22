@@ -1,6 +1,6 @@
-import { Shadow } from 'polythene-react-shadow';
 import { ViewComponent } from 'polythene-react-base';
 import { coreToolbar, coreToolbarTitle } from 'polythene-core-toolbar';
+import { Shadow } from 'polythene-react-shadow';
 
 const Toolbar = ViewComponent(Object.assign({}, coreToolbar, {
   createContent: (vnode, args) => coreToolbar.createContent(vnode, Object.assign(args, {

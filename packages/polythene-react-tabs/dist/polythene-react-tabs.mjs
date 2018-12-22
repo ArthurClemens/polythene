@@ -1,7 +1,7 @@
-import { Icon } from 'polythene-react-icon';
-import { Button } from 'polythene-react-button';
 import { ViewComponent, StateComponent } from 'polythene-react-base';
 import { coreTab, coreScrollButton, coreTabs } from 'polythene-core-tabs';
+import { Icon } from 'polythene-react-icon';
+import { Button } from 'polythene-react-button';
 import { IconButton } from 'polythene-react-icon-button';
 
 const Tab = ViewComponent(Object.assign({}, coreTab, {

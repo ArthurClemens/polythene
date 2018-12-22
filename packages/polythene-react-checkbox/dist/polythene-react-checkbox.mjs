@@ -1,5 +1,5 @@
-import { coreCheckbox } from 'polythene-core-checkbox';
 import { ViewComponent, StateComponent } from 'polythene-react-base';
+import { coreCheckbox } from 'polythene-core-checkbox';
 import { viewControl, coreSelectionControl } from 'polythene-core-selection-control';
 import { Icon } from 'polythene-react-icon';
 import { IconButton } from 'polythene-react-icon-button';

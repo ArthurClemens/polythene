@@ -53,8 +53,8 @@ h2 {
 }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 <script src="js/polythene-react-standalone.js"></script>
 <script src="js/polythene-css-standalone.js"></script>
@@ -80,6 +80,7 @@ const {
 
 const {
   ButtonCSS,
+  CardCSS,
   SVGCSS,
 } = polytheneCSS;
 
@@ -94,6 +95,15 @@ ButtonCSS.addStyle(".themed-button", {
 SVGCSS.addStyle(".themed-svg", {
   color_light: "#2196f3"
 });
+
+CardCSS.addStyle(
+  ".themed-card",
+  {
+    color_dark_main_background: "#B89E58",
+    color_dark_title_text:      "#fff",
+    color_dark_subtitle_text:   "#fff"
+  }
+);
 
 const App = () => (
   <div className="page">
@@ -153,6 +163,33 @@ const App = () => (
             { label: "Saved" }
           ]}
           autofit
+        />
+      </div>
+    </div>
+    <div className="row">
+      <h2>Card</h2>
+      <div className="component">
+        <Card
+          className="themed-card"
+          tone="dark"
+          content={[
+            {
+              primary: {
+                title: "Get Ready",
+                subtitle: "2 Unlimited",
+                media: {
+                  ratio: "square",
+                  size: "medium",
+                  content: <img src="https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757" />
+                }
+              }
+            },
+            {
+              actions: {
+                content: <Button label="Listen now" />
+              }
+            }
+          ]}
         />
       </div>
     </div>

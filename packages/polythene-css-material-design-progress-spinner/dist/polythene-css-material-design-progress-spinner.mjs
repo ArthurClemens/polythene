@@ -1,6 +1,6 @@
 import { color, layout } from 'polythene-css-material-design-spinner';
+import { createColor, sel, createLayout, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-md-progress-spinner",

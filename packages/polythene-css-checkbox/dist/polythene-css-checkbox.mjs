@@ -1,5 +1,5 @@
-import { color, layout } from 'polythene-css-selection-control';
 import { createColor, createLayout, styler } from 'polythene-core-css';
+import { color, layout } from 'polythene-css-selection-control';
 
 var classes = {
   component: "pe-checkbox-control"

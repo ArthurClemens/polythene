@@ -6,12 +6,14 @@
   "main": "dist/js/test.js",
   "module": "dist/js/test.mjs",
   "scripts": {
+    "clean": "rm -rf dist/js/*",
     "dev": "npm-run-all --parallel dev:watch dev:serve",
-    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --port 3600 --host 0.0.0.0",
+    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 3600 --host 0.0.0.0",
     "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "writeCSS": "node ./scripts/writeThemeCSS",
-    "stats": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js --profile --json > stats.json",
-    "build": "npm run writeCSS && webpack --config ../../scripts/bundling/webpack.config.prod.js"
+    "webpack": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
+    "build": "npm run clean && npm run writeCSS && npm run webpack",
+    "serve": "http-server -p 5000 dist"
   },
   "dependencies": {
     "mithril": "1.1.6",

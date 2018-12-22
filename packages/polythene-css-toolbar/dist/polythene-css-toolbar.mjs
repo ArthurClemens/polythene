@@ -1,5 +1,5 @@
+import { createColor, sel, createLayout, flex, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { sel, createColor, mixin, flex, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   // Toolbar

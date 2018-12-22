@@ -1,5 +1,5 @@
+import { createColor, sel, createLayout, flex, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { sel, createColor, flex, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-notification",

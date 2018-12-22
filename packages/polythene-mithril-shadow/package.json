@@ -13,7 +13,7 @@
     "dist",
     "README.md"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "polythene-core-shadow": "^1.3.3",
     "polythene-mithril-base": "^1.3.3"
   },

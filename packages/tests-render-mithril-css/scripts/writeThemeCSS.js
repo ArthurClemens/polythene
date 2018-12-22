@@ -1,5 +1,5 @@
 const { writeCSS } = require("polythene-scripts");
-const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS, DrawerCSS } = require("polythene-css");
+const { CardCSS, ButtonCSS, IconCSS, DialogCSS, MenuCSS, DrawerCSS, ListTileCSS } = require("polythene-css");
 
 const breakPointSmall = 480;
 const breakPointDrawerSmall = 650;
@@ -97,6 +97,13 @@ const styles = [
       mediaQuery: `@media all and (min-width: ${breakPointDrawerMedium + 1}px)`
     }
   ),
+  ListTileCSS.getStyle(
+    ".tests-drawer-navigation-list",
+    {
+      color_light_hover:       "#e01d5f",
+      color_light_hover_front: "#e01d5f" 
+    }
+  )
 ];
 
 writeCSS({

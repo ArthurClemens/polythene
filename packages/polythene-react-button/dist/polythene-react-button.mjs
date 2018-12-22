@@ -1,7 +1,7 @@
-import { Ripple } from 'polythene-react-ripple';
-import { Icon } from 'polythene-react-icon';
 import { StateComponent, ViewComponent, renderer } from 'polythene-react-base';
 import { coreButton, coreRaisedButton } from 'polythene-core-button';
+import { Ripple } from 'polythene-react-ripple';
+import { Icon } from 'polythene-react-icon';
 import { Shadow } from 'polythene-react-shadow';
 
 const TextButton = StateComponent(Object.assign({}, coreButton, {

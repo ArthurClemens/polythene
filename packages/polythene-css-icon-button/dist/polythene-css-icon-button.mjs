@@ -1,5 +1,5 @@
+import { createColor, sel, createLayout, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
-import { sel, createColor, mixin, selectorRTL, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-button pe-icon-button",

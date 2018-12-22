@@ -1,7 +1,7 @@
 import { color, layout } from 'polythene-css-base-spinner';
+import { createColor, sel, createLayout, rgba, styler } from 'polythene-core-css';
 import { styleDurationToMs } from 'polythene-core';
 import { vars } from 'polythene-theme';
-import { sel, createColor, createLayout, rgba, styler } from 'polythene-core-css';
 
 var classes = {
   component: "pe-ios-spinner",

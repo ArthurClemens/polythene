@@ -18,7 +18,13 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ["*", ".mjs", ".js", ".jsx"]
+    // Make sure that Mithril is included only once
+    alias: {
+      "mithril/stream": path.resolve(baseDir, "node_modules/mithril/stream/stream.js"),
+      // Keep in this order!
+      "mithril": path.resolve(baseDir, "node_modules/mithril/mithril.js"),
+    },
+    extensions: ["*", ".mjs", ".js", ".jsx"],
   },
 
   module: {

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, isClient, deprecation, iconDropdownDown, isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
+import { deprecation, isClient, filterSupportedAttributes, iconDropdownDown, isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
 
 var classes = {
   component: "pe-text-button",

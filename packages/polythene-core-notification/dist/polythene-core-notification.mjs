@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, isClient, isServer } from 'polythene-core';
+import { isClient, transitionComponent, filterSupportedAttributes, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 
 var classes = {
