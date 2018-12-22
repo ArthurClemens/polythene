@@ -54,6 +54,7 @@
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-ignore": "^1.0.4",
     "rollup-plugin-jsx": "1.0.3",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-pathmodify": "^1.0.1",

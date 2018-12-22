@@ -3,8 +3,8 @@ import { terser } from "rollup-plugin-terser";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import fs from "fs";
-import pathmodify from "rollup-plugin-pathmodify";
 import resolve from "rollup-plugin-node-resolve";
+import ignore from "rollup-plugin-ignore";
 
 const env = process.env; // eslint-disable-line no-undef
 const pkg = JSON.parse(fs.readFileSync("./package.json"));
@@ -14,10 +14,11 @@ export default {
   input: env.ENTRY || "index.js",
   external: [
     "mitril",
-    "mithril/stream",
-    // ...Object.keys(pkg.devDependencies || {}),
-    // ...Object.keys(pkg.peerDependencies || {}),
+    "mithril/stream"
   ],
+  paths: {
+    mithril: "node_modules/mithril/mithril"
+  },
   output: {
     file: `${env.DEST || pkg.main}.js`,
     format: "iife", // immediately-invoked function expression — suitable for <script> tags
@@ -25,23 +26,12 @@ export default {
     name
   },
   plugins: [
+    ignore(["mithril"]),
     resolve(),
-    pathmodify({
-      aliases: [
-        {
-          id: "mithril",
-          resolveTo: "node_modules/mithril/mithril"
-        },
-        {
-          id: "mithril/stream",
-          resolveTo: "node_modules/mithril/stream/stream"
-        },
-      ]
-    }),
     commonjs(),
     babel({
       exclude: "node_modules/**"
     }),
-    terser()
+    // terser()
   ]
 };
