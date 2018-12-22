@@ -202,7 +202,7 @@ const varFns = {
     sel(selector, {
     }),
     label_padding_before(selector, vars, false),
-    label_padding_before(selectorRTL(selector), vars, false),
+    label_padding_before(selectorRTL(selector), vars, true),
   ],
 };
 

@@ -275,7 +275,7 @@ const varFns = {
   button_size: (selector, vars$$1) => [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)],
   icon_size: (selector, vars$$1) => [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)],
   label_padding_after: (selector, vars$$1) => [sel(selector, {}), label_padding_after(selector, vars$$1, false), label_padding_after(selectorRTL(selector), vars$$1, true)],
-  label_padding_before: (selector, vars$$1) => [sel(selector, {}), label_padding_before(selector, vars$$1, false), label_padding_before(selectorRTL(selector), vars$$1, false)]
+  label_padding_before: (selector, vars$$1) => [sel(selector, {}), label_padding_before(selector, vars$$1, false), label_padding_before(selectorRTL(selector), vars$$1, true)]
 };
 var layout = createLayout({
   varFns
