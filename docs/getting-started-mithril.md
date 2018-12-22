@@ -103,7 +103,7 @@ m.mount(document.querySelector("#app"), App)
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
 ~~~
-https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js
+https://unpkg.com/polythene-mithril/dist/polythene-mithril-standalone.js
 ~~~
 
 Included:
@@ -126,13 +126,13 @@ Add to your HTML file:
 <div id="root"></div>
 
 <script src="https://unpkg.com/mithril@1.1.6/mithril.min.js"></script>
-<script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
+<script src="https://unpkg.com/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
 ~~~
 
 To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 ~~~
 
 <a id="example-script"></a>

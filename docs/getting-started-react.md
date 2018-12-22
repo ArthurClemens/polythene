@@ -151,7 +151,7 @@ ReactDOM.render(h(App), mountNode)
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
 ~~~
-https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js
+https://unpkg.com/polythene-react/dist/polythene-react-standalone.js
 ~~~
 
 Included:
@@ -174,9 +174,9 @@ Add to your HTML file:
 ~~~html
 <div id="root"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
-<script src="https://rawgit.com/ArthurClemens/polythene/master/packages/polythene-react/dist/polythene-react-standalone.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/polythene-react/dist/polythene-react-standalone.js"></script>
 ~~~
 
 To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
