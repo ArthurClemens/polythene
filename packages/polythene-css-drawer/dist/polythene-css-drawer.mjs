@@ -214,6 +214,7 @@ const varFns = {
     },
     " .pe-dialog-pane": {
       height: "100%",
+      maxHeight: "none",
       minWidth: 0 // IE 11 does not accept "none" or "inital" here
 
     },

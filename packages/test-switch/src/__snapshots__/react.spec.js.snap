@@ -220,7 +220,7 @@ exports[`Option: icon 1`] = `
 </div>
 `;
 
-exports[`Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behavior) 1`] = `
 <SelectionControl
   iconButton={
     Object {

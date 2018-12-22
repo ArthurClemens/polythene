@@ -327,7 +327,7 @@ exports[`Option: element - RadioGroup 1`] = `
 </a>
 `;
 
-exports[`Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behavior) 1`] = `
 <RadioGroup
   all={
     Object {

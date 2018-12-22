@@ -625,7 +625,7 @@ exports[`Option: icon 1`] = `
 "
 `;
 
-exports[`Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behavior) 1`] = `
 "<div class=
 \\"pe-control pe-switch-control pe-control--off pe-control--regular\\">
   <label class=\\"pe-control__form-label\\"></label>

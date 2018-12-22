@@ -151,7 +151,7 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
       }
     },
     {
-      name: "Option: iconButton (custom hover behaviour)",
+      name: "Option: iconButton (custom hover behavior)",
       interactive: true,
       component: RadioGroup,
       attrs: {

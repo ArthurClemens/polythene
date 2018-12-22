@@ -15,11 +15,11 @@
     "README.md"
   ],
   "dependencies": {
-    "autoprefixer": "^9.4.2",
+    "autoprefixer": "^9.4.3",
     "cssbeautify": "^0.3.1",
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.7",
-    "postcss": "^7.0.6",
+    "postcss": "^7.0.7",
     "tar": "^4.4.8"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

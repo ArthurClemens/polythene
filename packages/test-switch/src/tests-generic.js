@@ -128,7 +128,7 @@ export default ({ Switch, Icon, Button, renderer: h, keys: k }) => {
       }
     },
     {
-      name: "Option: iconButton (custom hover behaviour)",
+      name: "Option: iconButton (custom hover behavior)",
       interactive: true,
       component: Switch,
       attrs: {

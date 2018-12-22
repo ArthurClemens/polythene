@@ -1364,7 +1364,7 @@ exports[`Option: element - RadioGroup 1`] = `
 "
 `;
 
-exports[`Option: iconButton (custom hover behaviour) 1`] = `
+exports[`Option: iconButton (custom hover behavior) 1`] = `
 "<div class=\\"pe-radio-group multiple\\">
   <div class=
   \\"pe-control pe-radio-control pe-control--off pe-control--regular\\">
