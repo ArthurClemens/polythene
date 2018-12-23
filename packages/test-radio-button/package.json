@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-radio-button",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "private": true,
   "description": "",
   "scripts": {
@@ -8,9 +8,9 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-css": "^1.3.3",
-    "polythene-mithril": "^1.3.3",
-    "polythene-react": "^1.3.3"
+    "polythene-css": "^1.4.0",
+    "polythene-mithril": "^1.4.0",
+    "polythene-react": "^1.4.0"
   },
   "devDependencies": {
     "mithril": "1.1.6",
