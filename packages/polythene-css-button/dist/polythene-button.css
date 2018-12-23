@@ -374,7 +374,11 @@
   background-color: rgba(0,0,0,.09)
 }
 
-.pe-no-touch .pe-dark-tone .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-light-tone .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+.pe-no-touch .pe-dark-tone .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+  background-color: transparent
+}
+
+.pe-no-touch .pe-light-tone .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-text-button.pe-button--contained:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
   background-color: transparent
 }
 /*# sourceMappingURL=polythene-button.css.map */

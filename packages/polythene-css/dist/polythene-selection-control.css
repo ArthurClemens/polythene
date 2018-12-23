@@ -213,8 +213,12 @@
   padding-left: 0
 }
 
-.pe-control .pe-control__label,.pe-rtl .pe-control .pe-control__label,[dir=rtl] .pe-control .pe-control__label {
+.pe-control .pe-control__label {
   padding-left: 16px
+}
+
+.pe-rtl .pe-control .pe-control__label,[dir=rtl] .pe-control .pe-control__label {
+  padding-right: 16px
 }
 
 .pe-dark-tone.pe-control .pe-control__box .pe-control__button,.pe-dark-tone .pe-control .pe-control__box .pe-control__button,.pe-dark-tone.pe-control .pe-control__box .pe-control__button--on,.pe-dark-tone .pe-control .pe-control__box .pe-control__button--on {

@@ -328,7 +328,11 @@
   padding-bottom: 9px
 }
 
-.pe-card .pe-card__primary.pe-card__primary--tight .pe-card__title,.pe-card .pe-card__text.pe-card__text--tight,.pe-card .pe-card__text.pe-card__text--tight:last-child {
+.pe-card .pe-card__text.pe-card__text--tight,.pe-card .pe-card__text.pe-card__text--tight:last-child {
+  padding-bottom: 9px
+}
+
+.pe-card .pe-card__primary.pe-card__primary--tight .pe-card__title {
   padding-bottom: 9px
 }
 
