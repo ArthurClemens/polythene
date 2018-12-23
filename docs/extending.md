@@ -2,17 +2,22 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
-- [material-components-web \(MDC-Web\)](#material-components-web-mdc-web)
+- [material-components-web (MDC-Web)](#material-components-web-mdc-web)
+  - [Introduction](#introduction)
   - [HTML](#html)
   - [CSS](#css)
   - [JavaScript](#javascript)
-  - [Combining MCW and Polythene](#combining-mcw-and-polythene)
+  - [Combining MDC-Web and Polythene](#combining-mdc-web-and-polythene)
 
 <!-- /MarkdownTOC -->
 
 
 <a id="material-components-web-mdc-web"></a>
 ## material-components-web (MDC-Web)
+
+NOTE: The code in this section can be found at https://github.com/ArthurClemens/polythene-mithril-material-components-web.
+
+### Introduction
 
 MDC-Web is a toolbox of Material Design components. Writing with MDC-Web is different than with Polythene; how components are shown and which behavior they show depends largely on the HTML you write. It is more HTML+CSS oriented than Polythene, which is more JavaScript-component based, using parameters to specify appearance and behavior.
 
@@ -47,17 +52,38 @@ import "@material/ripple/dist/mdc.ripple.css"
 <a id="javascript"></a>
 ### JavaScript
 
-To get component behavior, the component must be imported along with the base code:
+Often, the component must get initialized by attaching it to a DOM element. We can use Mithril's `oncreate`. 
 
 ~~~javascript
-import * as mdc from "material-components-web"
-import "@material/drawer"
+import { MDCTextField } from "@material/textfield";
+import "@material/textfield/dist/mdc.textfield.css";
+
+const MCWTextField = {
+  oncreate: ({ dom }) =>
+    new MDCTextField(dom),
+  view: () => 
+    m(".mdc-text-field.mdc-text-field--outlined",
+    [
+      m("input.mdc-text-field__input[id='tf-outlined'][type='text']"),
+      m(".mdc-notched-outline",
+        [
+          m(".mdc-notched-outline__leading"),
+          m(".mdc-notched-outline__notch", 
+            m("label.mdc-floating-label[for='tf-outlined']", 
+              "Your Name"
+            )
+          ),
+          m(".mdc-notched-outline__trailing")
+        ]
+      )
+    ]
+  )
+};
 ~~~
 
 
-
 <a id="combining-mcw-and-polythene"></a>
-### Combining MCW and Polythene
+### Combining MDC-Web and Polythene
 
 MCW components and Polythene components can easily be mixed.
 
@@ -66,27 +92,29 @@ A MCW Drawer component can contain any content, including a Polythene List:
 ~~~javascript
 const MCWDrawer = {
   view: () => 
-    m("aside.mdc-temporary-drawer.menu-drawer", 
-      m("nav.mdc-temporary-drawer__drawer",
-        m(List, {
-          className: "drawer-menu",
-          header: {
-            title: "Polythene List"
-          },
-          all: {
-            hoverable: true
-          },
-          tiles: [
-            { title: "Inbox" },
-            { title: "Important" },
-            { title: "Sent" },
-            { title: "Spam" },
-            { title: "Trash" },
-          ]
-        })
+    m("aside.mdc-drawer.mdc-drawer--dismissible.menu-drawer", 
+      m(".mdc-drawer__content",
+        m("nav.mdc-list",
+          m(List, {
+            className: "drawer-menu",
+            header: {
+              title: "Polythene List"
+            },
+            all: {
+              hoverable: true
+            },
+            tiles: [
+              { title: "Inbox" },
+              { title: "Important" },
+              { title: "Sent" },
+              { title: "Spam" },
+              { title: "Trash" },
+            ]
+          })
+        )
       )
     )
-}
+};
 ~~~
 
 And that drawer can be called from a Polythene Button:
@@ -95,12 +123,12 @@ And that drawer can be called from a Polythene Button:
 m(Button, {
   events: {
     onclick: () => {
-      let drawer = new mdc.drawer.MDCTemporaryDrawer(document.querySelector(".menu-drawer"))
-      drawer.open = true
+      const drawer = MDCDrawer.attachTo(document.querySelector(".menu-drawer"));
+      drawer.open = true;
+      document.body.addEventListener("click", event => {
+        drawer.open = false;
+      });
     }
   }
 }
 ~~~
-
-Exackage 
-
