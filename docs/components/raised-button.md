@@ -1,5 +1,6 @@
 # Raised Button
 
+
 Displays a text button with a background and [Shadow](shadow.md) effect.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
@@ -47,22 +48,4 @@ Raised Button is a [Button](button.md) with option `raised: true`. All options f
 | **animateOnTap** | optional       | Boolean    | true        | Set to false to remove shadow depth animation and subsequent redraw |
 | **increase**     | optional       | Number     | 1           | The shadow depth increment/decrement on tap; the maximum z value is 5 |
 | **shadowDepth**  | optional       | Number 0-5 | 1           | The shadow depth |
-
-
-<a id="composition"></a>
-## Composition
-
-Raised button is composed from:
-
-* [Button](button.md)
-  * [Ripple](ripple.md) (when option `ink` is not `false`)
-* [Shadow](shadow.md)
-
-
-
-<a id="css-classes"></a>
-## CSS classes
-
-* [Raised Button classes](../../packages/polythene-css-classes/raised-button.js)
-
 

@@ -402,7 +402,8 @@ Variables are defined in each module's `vars.js` file.
 
 * [polythene-css-base-spinner](../../packages/polythene-css-base-spinner/src/vars.js)
 * [polythene-css-button-group](../../packages/polythene-css-button-group/src/vars.js)
-* [polythene-css-button](../../packages/polythene-css-button/src/vars.js)
+* [polythene-css-button](../../packages/polythene-css-button/src/contained-button/vars.js)
+* [polythene-css-button](../../packages/polythene-css-button/src/text-button/vars.js)
 * [polythene-css-card](../../packages/polythene-css-card/src/vars.js)
 * [polythene-css-checkbox](../../packages/polythene-css-checkbox/src/vars.js)
 * [polythene-css-dialog-pane](../../packages/polythene-css-dialog-pane/src/vars.js)
@@ -418,7 +419,6 @@ Variables are defined in each module's `vars.js` file.
 * [polythene-css-material-design-spinner](../../packages/polythene-css-material-design-spinner/src/vars.js)
 * [polythene-css-menu](../../packages/polythene-css-menu/src/vars.js)
 * [polythene-css-notification](../../packages/polythene-css-notification/src/vars.js)
-* [polythene-css-raised-button](../../packages/polythene-css-raised-button/src/vars.js)
 * [polythene-css-ripple](../../packages/polythene-css-ripple/src/vars.js)
 * [polythene-css-search](../../packages/polythene-css-search/src/vars.js)
 * [polythene-css-selection-control](../../packages/polythene-css-selection-control/src/vars.js)
