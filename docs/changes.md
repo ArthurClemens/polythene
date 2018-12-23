@@ -1,10 +1,12 @@
 # Change log
 
-<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
-
+<!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
+- [1.4](#14)
 - [1.3.2](#132)
   - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
   - [CSS](#css)
+    - [Themes and behavior](#themes-and-behavior)
+    - [Themes and media queries](#themes-and-media-queries)
   - [Components](#components)
   - [Deprecations](#deprecations)
   - [Other](#other)
@@ -21,6 +23,12 @@
 - [Pre-releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
+
+## 1.4
+
+* Updated dependencies (Babel 7, React 16.7.0, preparation for Mithril v.2).
+* Smaller transpiled files
+* Bug fixes
 
 
 <a id="132"></a>
@@ -40,7 +48,7 @@ In terms of internal organisation, CSS variable files have been moved to each co
 
 #### Themes and behavior
 
-Themes are becoming more powerful. Next to setting dimensions and colors, a number of components can now change behavior by setting a theme "switch" variable in [addStyle](theming/style-variables.md#styling-components-with-variables).
+Theming has become more powerful. Next to setting dimensions and colors, a number of components can now change behavior by setting a theme "switch" variable in [addStyle](theming/style-variables.md#styling-components-with-variables).
 
 For example:
 

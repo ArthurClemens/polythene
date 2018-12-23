@@ -36,7 +36,7 @@ Commands:
 * `lerna run build:tests` - builds the tests
 * `lerna run clean` - removes all dist directories
 
-Packages are built with [Rollup](http://rollupjs.org), both as `es` module and as `umd`. Rollup creates smaller files compared to Webpack 2. If you like to experiment, build scripts are in the root `scripts` directory.
+Packages are built with [Rollup](http://rollupjs.org), both as `es` module and as `umd`. Rollup creates cleaner files compared to Webpack. If you like to experiment, build scripts are in the root `scripts` directory.
 
 
 
