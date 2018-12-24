@@ -21,6 +21,7 @@ const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
     " .pe-button__content": {
       width: labelSize + "px",
       height: labelSize + "px",
+      flexShrink: 0,
 
       " .pe-icon": [
         mixin.fit(iconOffset)

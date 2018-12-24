@@ -116,6 +116,11 @@ const App = () => (
       <div className="component">
         <SVG
           className="themed-svg"
+          { /* Set explicit size for IE 11: */ }
+          style={{
+            width: "24px",
+            height: "24px",
+          }}
         >{linkIconSVG}</SVG>
       </div>
     </div>

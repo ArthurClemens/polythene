@@ -1,7 +1,8 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
-- [1.4](#14)
+- [1.4.1](#141)
+- [1.4.0](#140)
 - [1.3.2](#132)
   - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
   - [CSS](#css)
@@ -24,7 +25,12 @@
 
 <!-- /MarkdownTOC -->
 
-## 1.4
+## 1.4.1
+
+* Various fixes for IE 11.
+
+
+## 1.4.0
 
 * Updated dependencies (Babel 7, React 16.7.0, preparation for Mithril v.2).
 * Smaller transpiled files

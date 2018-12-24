@@ -24,22 +24,18 @@ module.exports = {
       // Keep in this order!
       "mithril": path.resolve(baseDir, "node_modules/mithril/mithril.js"),
     },
-    extensions: ["*", ".mjs", ".js", ".jsx"],
+    extensions: [".mjs", ".js", ".jsx"],
   },
 
   module: {
     rules: [
       {
-        test: /\.mjs$/, 
-        type: "javascript/auto",
-      },
-      {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /node_modules/,
         use: [{
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
+            configFile: "../../babel.config.js"
           }
         }]
       },

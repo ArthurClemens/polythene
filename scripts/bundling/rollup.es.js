@@ -2,7 +2,6 @@
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import fs from "fs";
-// import pathmodify from "rollup-plugin-pathmodify";
 import resolve from "rollup-plugin-node-resolve";
 
 const env = process.env; // eslint-disable-line no-undef
@@ -24,7 +23,8 @@ export default {
     resolve(),
     commonjs(),
     babel({
-      exclude: "node_modules/**"
+      exclude: "node_modules/**",
+      configFile: "../../babel.config.js"
     }),
   ]
 };

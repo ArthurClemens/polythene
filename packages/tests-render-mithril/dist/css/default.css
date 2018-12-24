@@ -148,6 +148,12 @@ html {
   background: #fff;
 }
 
+/* Set explicit size for IE 11 */
+.tests-svg .pe-svg {
+  width: 24px;
+  height: 24px;
+}
+
 .pe-dark-tone .result-title,
 .test-dark-tone .result-title {
   color: #aaa;

@@ -26,6 +26,9 @@ export default {
   },
   external,
   plugins: [
+    replace({
+      "process.env.NODE_ENV": JSON.stringify("production")
+    }),
     // Make sure that Mithril is included only once (if passed in INCLUDES env variable)
     pathmodify({
       aliases: [
@@ -42,10 +45,8 @@ export default {
     resolve(),
     commonjs(),
     babel({
-      exclude: "node_modules/**"
-    }),
-    replace({
-      "process.env.NODE_ENV": JSON.stringify("production")
+      exclude: "node_modules/**",
+      configFile: "../../babel.config.js"
     }),
     terser()
   ]

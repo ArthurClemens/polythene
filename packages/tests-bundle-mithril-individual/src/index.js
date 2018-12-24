@@ -44,7 +44,12 @@ const App = {
           m(".component", 
             m(SVG, {
               content: m.trust(linkIconSVG),
-              className: "themed-svg"
+              className: "themed-svg",
+              // Set explicit size for IE 11:
+              style: {
+                width: "24px",
+                height: "24px",
+              }
             })
           )
         ]
