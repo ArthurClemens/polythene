@@ -5,11 +5,26 @@
 - [Basic principles](#basic-principles)
   - [Getting started](#getting-started)
   - [Using CSS-in-JS](#using-css-in-js)
+    - [Usage](#usage)
+    - [Theming options](#theming-options)
+    - [Under the hood](#under-the-hood)
   - [Using CSS files](#using-css-files)
+    - [Usage](#usage-1)
+    - [Theming](#theming)
+    - [Alternative approach](#alternative-approach)
 - [Extras](#extras)
   - [Supporting styles](#supporting-styles)
+    - [Using CSS-in-JS](#using-css-in-js-1)
+    - [Using CSS files](#using-css-files-1)
   - [Roboto font](#roboto-font)
+    - [Roboto using CSS-in-JS](#roboto-using-css-in-js)
+    - [Roboto using CSS files](#roboto-using-css-files)
   - [Layout classes](#layout-classes)
+      - [Mithril example](#mithril-example)
+      - [React JSX example](#react-jsx-example)
+    - [Layout classes using CSS-in-JS](#layout-classes-using-css-in-js)
+    - [Layout classes using CSS files](#layout-classes-using-css-files)
+    - [List of layout classes](#list-of-layout-classes)
 
 <!-- /MarkdownTOC -->
 
@@ -81,7 +96,7 @@ Choose this:
 
 Package `polythene-css` contains all component CSS files. Its existence in `node_modules` makes it possible to import CSS files.
 
-Most bundlers have options for importing CSS files. Frequently used with Webpack is [Extract Text Plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin).
+Most bundlers have options for importing CSS files. Frequently used with Webpack is [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin).
 
 Importing all CSS:
 

@@ -27,7 +27,7 @@ import {
 import "polythene-css/dist/polythene.css";
 import "polythene-css/dist/polythene-typography.css";
 
-// Styles for classes are created in scripts/writeThemCSS.js
+// Styles for classes are created in scripts/writeThemeCSS.js
 
 import exposed from "./components/exposed-menu";
 import navigationList from "./components/navigation-list";
