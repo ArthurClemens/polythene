@@ -10,80 +10,125 @@ var classes = {
   blade: "pe-ios-spinner__blade"
 };
 
-const generalFns = {
-  general_styles: selector => [sel(selector, {
-    " .pe-ios-spinner__blade": {
-      background: "currentcolor"
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
     }
-  })]
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-ios-spinner__blade": {
+        background: "currentcolor"
+      }
+    })];
+  }
 };
 
-const tintFns = tint => ({
-  ["color_" + tint]: (selector, vars$$1) => [sel(selector, {
-    color: vars$$1["color_" + tint]
-  })]
-});
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint]
+    })];
+  });
+};
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
 var color$1 = createColor({
   varFns: {
-    lightTintFns,
-    darkTintFns
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   },
   superColor: color
 });
 
-const bladeWidth = 9; // percent
+var bladeWidth = 9; // percent
 
-const bladeHeight = 28; // percent
+var bladeHeight = 28; // percent
 
-const kfFade = () => ({
-  " 0%": {
-    opacity: .640
-  },
-  " 100%": {
-    opacity: .035
-  }
-});
-
-const positionBlades = vars$$1 => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => {
-  // reverse to improve performance on iOS
-  const delay = -1 / 12 * i * styleDurationToMs(vars$$1.rotation_animation_duration);
-  const rotation = 360 - 360 / 12 * i;
+var kfFade = function kfFade() {
   return {
-    [" .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")"]: {
-      transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
-      animation: "iosSpinnerFade " + vars$$1.rotation_animation_duration + " " + delay + "ms linear infinite"
+    " 0%": {
+      opacity: .640
+    },
+    " 100%": {
+      opacity: .035
     }
   };
-});
+};
 
-const varFns = {
-  general_styles: selector => [sel(selector, {
-    " .pe-ios-spinner__blades": {
-      transform: "translate3d(0,0,0)",
-      position: "relative",
-      width: "100%",
-      height: "100%"
-    },
-    " .pe-ios-spinner__blade": {
-      position: "absolute",
-      width: bladeWidth + "%",
-      height: bladeHeight + "%",
-      left: (100 - bladeWidth) / 2 + "%",
-      top: (100 - bladeHeight) / 2 + "%",
-      opacity: 0,
-      borderRadius: "50px"
-    },
-    "@keyframes iosSpinnerFade": kfFade()
-  })],
-  rotation_animation_duration: (selector, vars$$1) => [sel(selector, {
-    " .pe-ios-spinner__blades": [positionBlades(vars$$1)]
-  })]
+var positionBlades = function positionBlades(vars$$1) {
+  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
+    // reverse to improve performance on iOS
+    var delay = -1 / 12 * i * styleDurationToMs(vars$$1.rotation_animation_duration);
+    var rotation = 360 - 360 / 12 * i;
+    return _defineProperty({}, " .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")", {
+      transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
+      animation: "iosSpinnerFade " + vars$$1.rotation_animation_duration + " " + delay + "ms linear infinite"
+    });
+  });
+};
+
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-ios-spinner__blades": {
+        transform: "translate3d(0,0,0)",
+        position: "relative",
+        width: "100%",
+        height: "100%"
+      },
+      " .pe-ios-spinner__blade": {
+        position: "absolute",
+        width: bladeWidth + "%",
+        height: bladeHeight + "%",
+        left: (100 - bladeWidth) / 2 + "%",
+        top: (100 - bladeHeight) / 2 + "%",
+        opacity: 0,
+        borderRadius: "50px"
+      },
+      "@keyframes iosSpinnerFade": kfFade()
+    })];
+  },
+  rotation_animation_duration: function rotation_animation_duration(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-ios-spinner__blades": [positionBlades(vars$$1)]
+    })];
+  }
 };
 var layout$1 = createLayout({
-  varFns,
+  varFns: varFns,
   superLayout: layout
 });
 
@@ -94,13 +139,13 @@ var vars$1 = {
   color_dark: rgba(vars.color_dark_foreground)
 };
 
-const fns = [layout$1, color$1];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout$1, color$1];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

@@ -1,19 +1,19 @@
 // Global style variables
-const grid_unit = 4;
-const grid_unit_component = 8;
-const increment = 7 * grid_unit_component; // 7 * 8 = 56
+var grid_unit = 4;
+var grid_unit_component = 8;
+var increment = 7 * grid_unit_component; // 7 * 8 = 56
 
-const increment_large = 8 * grid_unit_component; // 8 * 8 = 64
+var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
 
-const animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
-const animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
-const animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
-const vars = {
+var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
+var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
+var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
+var vars = {
   // grid
-  grid_unit,
-  grid_unit_component,
-  increment,
-  increment_large,
+  grid_unit: grid_unit,
+  grid_unit_component: grid_unit_component,
+  increment: increment,
+  increment_large: increment_large,
   grid_unit_menu: 56,
   grid_unit_icon_button: 6 * grid_unit_component,
   // 48
@@ -39,9 +39,9 @@ const vars = {
   unit_screen_size_small: 320,
   // transitions
   animation_duration: ".18s",
-  animation_curve_slow_in_fast_out,
-  animation_curve_slow_in_linear_out,
-  animation_curve_linear_in_fast_out,
+  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
+  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
+  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
   animation_curve_default: "ease-out",
   // font
   font_weight_light: 300,

@@ -3,6 +3,24 @@ import { Conditional } from 'polythene-core';
 import { coreDrawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-react-dialog';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-dialog pe-drawer",
   // states
@@ -16,17 +34,19 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-const DrawerInstance = StateComponent(Object.assign({}, coreDrawer, {
+var DrawerInstance = StateComponent(_extends({}, coreDrawer, {
   component: DialogInstance
 }));
-const DrawerToggle = StateComponent(Conditional);
+var DrawerToggle = StateComponent(Conditional);
 DrawerToggle.displayName = "DrawerToggle";
-const Drawer = props => renderer(DrawerToggle, Object.assign({}, props, {
-  placeholderClassName: classes.placeholder,
-  instance: DrawerInstance,
-  permanent: props.permanent || props.mini // passed to Conditional
+var Drawer = function Drawer(props) {
+  return renderer(DrawerToggle, _extends({}, props, {
+    placeholderClassName: classes.placeholder,
+    instance: DrawerInstance,
+    permanent: props.permanent || props.mini // passed to Conditional
 
-}));
+  }));
+};
 Drawer.displayName = "Drawer";
 
 export { Drawer };

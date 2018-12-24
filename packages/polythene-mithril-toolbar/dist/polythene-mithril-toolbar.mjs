@@ -2,14 +2,34 @@ import { ViewComponent } from 'polythene-mithril-base';
 import { coreToolbar, coreToolbarTitle } from 'polythene-core-toolbar';
 import { Shadow } from 'polythene-mithril-shadow';
 
-const Toolbar = ViewComponent(Object.assign({}, coreToolbar, {
-  createContent: (vnode, args) => coreToolbar.createContent(vnode, Object.assign(args, {
-    Shadow
-  }))
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var Toolbar = ViewComponent(_extends({}, coreToolbar, {
+  createContent: function createContent(vnode, args) {
+    return coreToolbar.createContent(vnode, _extends(args, {
+      Shadow: Shadow
+    }));
+  }
 }));
 Toolbar.displayName = "Toolbar";
 
-const ToolbarTitle = ViewComponent(coreToolbarTitle);
+var ToolbarTitle = ViewComponent(coreToolbarTitle);
 ToolbarTitle.displayName = "ToolbarTitle";
 
 export { Toolbar, ToolbarTitle };

@@ -1,17 +1,17 @@
-const isClient = typeof document !== "undefined";
-const isServer = !isClient;
+var isClient = typeof document !== "undefined";
+var isServer = !isClient;
 
-const evts = {
+var evts = {
   "animation": "animationend",
   "OAnimation": "oAnimationEnd",
   "MozAnimation": "animationend",
   "WebkitAnimation": "webkitAnimationEnd"
 };
-const getAnimationEndEvent = () => {
+var getAnimationEndEvent = function getAnimationEndEvent() {
   if (isClient) {
-    const el = document.createElement("fakeelement");
+    var el = document.createElement("fakeelement");
 
-    for (let a in evts) {
+    for (var a in evts) {
       if (el.style[a] !== undefined) {
         return evts[a];
       }
@@ -19,36 +19,54 @@ const getAnimationEndEvent = () => {
   }
 };
 
-const modes = {
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var modes = {
   hidden: "hidden",
   visible: "visible",
   exposing: "exposing",
   hiding: "hiding"
 };
-const Conditional = {
-  getInitialState: (vnode, createStream) => {
-    const attrs = vnode.attrs;
+var Conditional = {
+  getInitialState: function getInitialState(vnode, createStream) {
+    var attrs = vnode.attrs;
 
     if (!attrs.didHide) {
       return {};
     }
 
-    const visible = attrs.permanent || attrs.show;
-    const mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
+    var visible = attrs.permanent || attrs.show;
+    var mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
     return {
-      mode,
+      mode: mode,
       redrawOnUpdate: createStream.merge([mode])
     };
   },
-  onUpdate: ({
-    state,
-    attrs
-  }) => {
+  onUpdate: function onUpdate(_ref) {
+    var state = _ref.state,
+        attrs = _ref.attrs;
+
     if (!attrs.didHide) {
       return;
     }
 
-    const mode = state.mode();
+    var mode = state.mode();
 
     if (attrs.permanent) {
       if (mode === modes.visible && attrs.show) {
@@ -65,13 +83,11 @@ const Conditional = {
       }
     }
   },
-  view: ({
-    state,
-    attrs
-  }, {
-    renderer: h
-  }) => {
-    const placeholder = h("span", {
+  view: function view(_ref2, _ref3) {
+    var state = _ref2.state,
+        attrs = _ref2.attrs;
+    var h = _ref3.renderer;
+    var placeholder = h("span", {
       className: attrs.placeholderClassName
     }); // No didHide callback passed: use normal visibility evaluation
 
@@ -80,10 +96,12 @@ const Conditional = {
     } // else: use didHide to reset the state after hiding
 
 
-    const mode = state.mode();
-    const visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, Object.assign({}, attrs, {
-      didHide: args => (attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden))
+    var mode = state.mode();
+    var visible = mode !== modes.hidden;
+    return visible ? h(attrs.instance, _extends({}, attrs, {
+      didHide: function didHide(args) {
+        return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
+      }
     }, mode === modes.hiding && {
       show: true,
       hide: true
@@ -92,7 +110,9 @@ const Conditional = {
 };
 Conditional.displayName = "Conditional";
 
-const r = (acc, p) => (acc[p] = 1, acc);
+var r = function r(acc, p) {
+  return acc[p] = 1, acc;
+};
 /* 
 Separately handled props:
 - class
@@ -100,100 +120,130 @@ Separately handled props:
 */
 
 
-const defaultAttrs = [// Universal
+var defaultAttrs = [// Universal
 "key", "style", "href", "id", // React
 "tabIndex", // Mithril
 "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
-const filterSupportedAttributes = (attrs, {
-  add: addAttrs = [],
-  remove: removeAttrs = []
-} = {}) => {
-  const removeLookup = removeAttrs.reduce(r, {});
-  const supported = defaultAttrs.concat(addAttrs).filter(item => !removeLookup[item]).reduce(r, {});
-  return Object.keys(attrs).reduce((acc, key) => (supported[key] ? acc[key] = attrs[key] : null, acc), {});
+var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$add = _ref.add,
+      addAttrs = _ref$add === void 0 ? [] : _ref$add,
+      _ref$remove = _ref.remove,
+      removeAttrs = _ref$remove === void 0 ? [] : _ref$remove;
+
+  var removeLookup = removeAttrs.reduce(r, {});
+  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+    return !removeLookup[item];
+  }).reduce(r, {});
+  return Object.keys(attrs).reduce(function (acc, key) {
+    return supported[key] ? acc[key] = attrs[key] : null, acc;
+  }, {});
 };
-const unpackAttrs = attrs => typeof attrs === "function" ? attrs() : attrs;
+var unpackAttrs = function unpackAttrs(attrs) {
+  return typeof attrs === "function" ? attrs() : attrs;
+};
 
-const sizeClasses = classes => ({
-  small: classes.small,
-  regular: classes.regular,
-  medium: classes.medium,
-  large: classes.large,
-  fab: classes.fab
-});
+var sizeClasses = function sizeClasses(classes) {
+  return {
+    small: classes.small,
+    regular: classes.regular,
+    medium: classes.medium,
+    large: classes.large,
+    fab: classes.fab
+  };
+};
 
-const classForSize = (classes, size = "regular") => sizeClasses(classes)[size];
+var classForSize = function classForSize(classes) {
+  var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
+  return sizeClasses(classes)[size];
+};
 
-const isTouch = isServer ? false : "ontouchstart" in document.documentElement;
-const pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
-const pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
-const pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
-const pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
-const pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
+var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
+var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
+var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
+var pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
+var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
+var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
 if (isClient) {
   document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
 }
 
-const listeners = {}; // https://gist.github.com/Eartz/fe651f2fadcc11444549
+var listeners = {}; // https://gist.github.com/Eartz/fe651f2fadcc11444549
 
-const throttle = (func, s = 0.05, context = isClient ? window : {}) => {
-  let wait = false;
-  return (...args) => {
-    const later = () => func.apply(context, args);
+var throttle = function throttle(func) {
+  var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
+  var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isClient ? window : {};
+  var wait = false;
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var later = function later() {
+      return func.apply(context, args);
+    };
 
     if (!wait) {
       later();
       wait = true;
-      setTimeout(() => wait = false, s);
+      setTimeout(function () {
+        return wait = false;
+      }, s);
     }
   };
 };
-const subscribe = (eventName, listener, delay) => {
+var subscribe = function subscribe(eventName, listener, delay) {
   listeners[eventName] = listeners[eventName] || [];
   listeners[eventName].push(delay ? throttle(listener, delay) : listener);
 };
-const unsubscribe = (eventName, listener) => {
+var unsubscribe = function unsubscribe(eventName, listener) {
   if (!listeners[eventName]) {
     return;
   }
 
-  const index = listeners[eventName].indexOf(listener);
+  var index = listeners[eventName].indexOf(listener);
 
   if (index > -1) {
     listeners[eventName].splice(index, 1);
   }
 };
-const emit = (eventName, event) => {
+var emit = function emit(eventName, event) {
   if (!listeners[eventName]) {
     return;
   }
 
-  listeners[eventName].forEach(listener => listener(event));
+  listeners[eventName].forEach(function (listener) {
+    return listener(event);
+  });
 };
 
 if (isClient) {
-  window.addEventListener("resize", e => emit("resize", e));
-  window.addEventListener("scroll", e => emit("scroll", e));
-  window.addEventListener("keydown", e => emit("keydown", e));
-  window.addEventListener(pointerEndEvent, e => emit(pointerEndEvent, e));
+  window.addEventListener("resize", function (e) {
+    return emit("resize", e);
+  });
+  window.addEventListener("scroll", function (e) {
+    return emit("scroll", e);
+  });
+  window.addEventListener("keydown", function (e) {
+    return emit("keydown", e);
+  });
+  window.addEventListener(pointerEndEvent, function (e) {
+    return emit(pointerEndEvent, e);
+  });
 }
 
-/*
-Helper module to manage multiple items of the same component type.
-*/
-const Multi = ({
-  options: mOptions,
-  renderer
-}) => {
-  const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
+var Multi = function Multi(_ref) {
+  var mOptions = _ref.options,
+      renderer = _ref.renderer;
+  var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
 
-  let current;
+  var current;
 
-  const getInitialState = (vnode, createStream) => {
+  var getInitialState = function getInitialState(vnode, createStream) {
     current = createStream(null);
     return {
-      current,
+      current: current,
       redrawOnUpdate: createStream.merge([current])
     };
   };
@@ -202,7 +252,7 @@ const Multi = ({
   */
 
 
-  const onChange = e => {
+  var onChange = function onChange(e) {
     if (!current) {
       console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
     }
@@ -211,41 +261,41 @@ const Multi = ({
     emit(mOptions.name, e);
   };
 
-  const itemIndex = id => {
-    const item = findItem(id);
+  var itemIndex = function itemIndex(id) {
+    var item = findItem(id);
     return items.indexOf(item);
   };
 
-  const removeItem = id => {
-    const index = itemIndex(id);
+  var removeItem = function removeItem(id) {
+    var index = itemIndex(id);
 
     if (index !== -1) {
       items.splice(index, 1);
       onChange({
-        id,
+        id: id,
         name: "removeItem"
       });
     }
   };
 
-  const replaceItem = (id, newItem) => {
-    const index = itemIndex(id);
+  var replaceItem = function replaceItem(id, newItem) {
+    var index = itemIndex(id);
 
     if (index !== -1) {
       items[index] = newItem;
     }
   };
 
-  const findItem = id => {
+  var findItem = function findItem(id) {
     // traditional for loop for IE10
-    for (let i = 0; i < items.length; i++) {
+    for (var i = 0; i < items.length; i++) {
       if (items[i].instanceId === id) {
         return items[i];
       }
     }
   };
 
-  const next = () => {
+  var next = function next() {
     if (items.length) {
       items[0].show = true;
     }
@@ -256,7 +306,9 @@ const Multi = ({
     });
   };
 
-  const remove = (instanceId = mOptions.defaultId) => {
+  var remove = function remove() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+
     if (mOptions.queue) {
       items.shift();
       next();
@@ -265,7 +317,7 @@ const Multi = ({
     }
   };
 
-  const removeAll = () => {
+  var removeAll = function removeAll() {
     items.length = 0;
     onChange({
       id: null,
@@ -273,8 +325,8 @@ const Multi = ({
     });
   };
 
-  const setPauseState = (pause, instanceId) => {
-    const item = findItem(instanceId);
+  var setPauseState = function setPauseState(pause, instanceId) {
+    var item = findItem(instanceId);
 
     if (item) {
       item.pause = pause;
@@ -286,12 +338,12 @@ const Multi = ({
     }
   };
 
-  const createItem = (itemAttrs, instanceId, spawn) => {
-    let resolveShow;
-    let resolveHide;
-    const attrs = unpackAttrs(itemAttrs);
+  var createItem = function createItem(itemAttrs, instanceId, spawn) {
+    var resolveShow;
+    var resolveHide;
+    var attrs = unpackAttrs(itemAttrs);
 
-    const didShow = () => {
+    var didShow = function didShow() {
       if (attrs.didShow) {
         attrs.didShow(instanceId);
       }
@@ -303,9 +355,11 @@ const Multi = ({
       return resolveShow(instanceId);
     };
 
-    const showPromise = new Promise(resolve => resolveShow = resolve);
+    var showPromise = new Promise(function (resolve) {
+      return resolveShow = resolve;
+    });
 
-    const didHide = () => {
+    var didHide = function didHide() {
       if (attrs.didHide) {
         attrs.didHide(instanceId);
       }
@@ -318,29 +372,41 @@ const Multi = ({
       return resolveHide(instanceId);
     };
 
-    const hidePromise = new Promise(resolve => resolveHide = resolve);
-    return Object.assign({}, mOptions, {
-      instanceId,
-      spawn,
+    var hidePromise = new Promise(function (resolve) {
+      return resolveHide = resolve;
+    });
+    return _extends({}, mOptions, {
+      instanceId: instanceId,
+      spawn: spawn,
       attrs: itemAttrs,
       show: mOptions.queue ? false : true,
-      showPromise,
-      hidePromise,
-      didShow,
-      didHide
+      showPromise: showPromise,
+      hidePromise: hidePromise,
+      didShow: didShow,
+      didHide: didHide
     });
   };
 
-  const count = () => items.length;
+  var count = function count() {
+    return items.length;
+  };
 
-  const pause = (instanceId = mOptions.defaultId) => setPauseState(true, instanceId);
+  var pause = function pause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(true, instanceId);
+  };
 
-  const unpause = (instanceId = mOptions.defaultId) => setPauseState(false, instanceId);
+  var unpause = function unpause() {
+    var instanceId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : mOptions.defaultId;
+    return setPauseState(false, instanceId);
+  };
 
-  const show = (attrs = {}, spawnOpts = {}) => {
-    const instanceId = spawnOpts.id || mOptions.defaultId;
-    const spawn = spawnOpts.spawn || mOptions.defaultId;
-    const item = createItem(attrs, instanceId, spawn);
+  var show = function show() {
+    var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var spawn = spawnOpts.spawn || mOptions.defaultId;
+    var item = createItem(attrs, instanceId, spawn);
     onChange({
       id: instanceId,
       name: "show"
@@ -353,7 +419,7 @@ const Multi = ({
         next();
       }
     } else {
-      const storedItem = findItem(instanceId);
+      var storedItem = findItem(instanceId);
 
       if (!storedItem) {
         items.push(item);
@@ -365,9 +431,10 @@ const Multi = ({
     return item.showPromise;
   };
 
-  const hide = (spawnOpts = {}) => {
-    const instanceId = spawnOpts.id || mOptions.defaultId;
-    const item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
+  var hide = function hide() {
+    var spawnOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var instanceId = spawnOpts.id || mOptions.defaultId;
+    var item = mOptions.queue && items.length ? items[0] : findItem(instanceId);
 
     if (item) {
       item.hide = true;
@@ -380,13 +447,14 @@ const Multi = ({
     return item ? item.hidePromise : Promise.resolve(instanceId);
   };
 
-  const clear = removeAll;
+  var clear = removeAll;
 
-  const view = ({
-    attrs
-  }) => {
-    const spawn = attrs.spawn || mOptions.defaultId;
-    const candidates = items.filter(item => item.show && item.spawn === spawn);
+  var view = function view(_ref2) {
+    var attrs = _ref2.attrs;
+    var spawn = attrs.spawn || mOptions.defaultId;
+    var candidates = items.filter(function (item) {
+      return item.show && item.spawn === spawn;
+    });
 
     if (mOptions.htmlShowClass && isClient && document.documentElement) {
       document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
@@ -395,8 +463,8 @@ const Multi = ({
     return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
     : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
-    }, candidates.map(itemData => {
-      return renderer(mOptions.instance, Object.assign({}, {
+    }, candidates.map(function (itemData) {
+      return renderer(mOptions.instance, _extends({}, {
         fromMultipleClassName: mOptions.className,
         fromMultipleClear: clear,
         fromMultipleDidHide: itemData.didHide,
@@ -415,26 +483,25 @@ const Multi = ({
   };
 
   return {
-    clear,
-    count,
-    getInitialState,
-    hide,
-    pause,
-    remove,
-    show,
-    unpause,
-    view
+    clear: clear,
+    count: count,
+    getInitialState: getInitialState,
+    hide: hide,
+    pause: pause,
+    remove: remove,
+    show: show,
+    unpause: unpause,
+    view: view
   };
 };
 Multi.displayName = "Multi";
 
-const getStyle = ({
-  element,
-  selector,
-  pseudoSelector,
-  prop
-}) => {
-  const el = selector ? element.querySelector(selector) : element;
+var getStyle = function getStyle(_ref) {
+  var element = _ref.element,
+      selector = _ref.selector,
+      pseudoSelector = _ref.pseudoSelector,
+      prop = _ref.prop;
+  var el = selector ? element.querySelector(selector) : element;
 
   if (!el) {
     return;
@@ -442,15 +509,14 @@ const getStyle = ({
 
   return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
 };
-const stylePropCompare = ({
-  element,
-  selector,
-  pseudoSelector,
-  prop,
-  equals,
-  contains
-}) => {
-  const el = selector ? element.querySelector(selector) : element;
+var stylePropCompare = function stylePropCompare(_ref2) {
+  var element = _ref2.element,
+      selector = _ref2.selector,
+      pseudoSelector = _ref2.pseudoSelector,
+      prop = _ref2.prop,
+      equals = _ref2.equals,
+      contains = _ref2.contains;
+  var el = selector ? element.querySelector(selector) : element;
 
   if (!el) {
     return false;
@@ -464,30 +530,32 @@ const stylePropCompare = ({
     return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
   }
 };
-const isRTL = ({
-  element = document,
-  selector
-}) => stylePropCompare({
-  element,
-  selector,
-  prop: "direction",
-  equals: "rtl"
-});
-const styleDurationToMs = durationStr => {
-  const parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
+var isRTL = function isRTL(_ref3) {
+  var _ref3$element = _ref3.element,
+      element = _ref3$element === void 0 ? document : _ref3$element,
+      selector = _ref3.selector;
+  return stylePropCompare({
+    element: element,
+    selector: selector,
+    prop: "direction",
+    equals: "rtl"
+  });
+};
+var styleDurationToMs = function styleDurationToMs(durationStr) {
+  var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
   return isNaN(parsed) ? 0 : parsed;
 };
 
-/*
-Generic show/hide transition module
-*/
-
-const DEFAULT_DURATION = .240;
-const DEFAULT_DELAY = 0; // const TRANSITION =    "both";
+var DEFAULT_DURATION = .240;
+var DEFAULT_DELAY = 0; // const TRANSITION =    "both";
 // See: transition
 
-const show = opts => transition(opts, "show");
-const hide = opts => transition(opts, "hide");
+var show = function show(opts) {
+  return transition(opts, "show");
+};
+var hide = function hide(opts) {
+  return transition(opts, "hide");
+};
 /*
 opts:
 - el
@@ -504,34 +572,36 @@ opts:
 - state (show, hide)
 */
 
-const transition = (opts, state) => {
-  const el = opts.el;
+var transition = function transition(opts, state) {
+  var el = opts.el;
 
   if (!el) {
     return Promise.resolve();
   } else {
-    return new Promise(resolve => {
-      const style = el.style;
-      const computedStyle = isClient ? window.getComputedStyle(el) : {};
-      const duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
-      const delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
-      const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
+    return new Promise(function (resolve) {
+      var style = el.style;
+      var computedStyle = isClient ? window.getComputedStyle(el) : {};
+      var duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
+      var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
+      var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       if (opts.transitionClass) {
-        const transitionClassElement = opts.transitionClassElement || el;
+        var transitionClassElement = opts.transitionClassElement || el;
         transitionClassElement.classList.add(opts.transitionClass);
       }
 
-      const before = () => {
+      var before = function before() {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
         opts.before();
       };
 
-      const maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
-      const after = opts.after ? () => opts.after() : null;
+      var maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
+      var after = opts.after ? function () {
+        return opts.after();
+      } : null;
 
-      const applyTransition = () => {
+      var applyTransition = function applyTransition() {
         style.transitionDuration = duration + "ms";
         style.transitionDelay = delay + "ms";
 
@@ -540,7 +610,7 @@ const transition = (opts, state) => {
         }
 
         if (opts.showClass) {
-          const showClassElement = opts.showClassElement || el;
+          var showClassElement = opts.showClassElement || el;
           showClassElement.classList[state === "show" ? "add" : "remove"](opts.showClass);
         }
 
@@ -549,16 +619,18 @@ const transition = (opts, state) => {
         }
       };
 
-      const doTransition = () => {
+      var doTransition = function doTransition() {
         applyTransition();
-        setTimeout(() => {
+        setTimeout(function () {
           if (after) {
             after();
           }
 
           if (opts.transitionClass) {
-            const transitionClassElement = opts.transitionClassElement || el;
-            transitionClassElement.classList.remove(opts.transitionClass);
+            var _transitionClassElement = opts.transitionClassElement || el;
+
+            _transitionClassElement.classList.remove(opts.transitionClass);
+
             el.offsetHeight; // force reflow
           }
 
@@ -566,7 +638,7 @@ const transition = (opts, state) => {
         }, duration + delay);
       };
 
-      const maybeDelayTransition = () => {
+      var maybeDelayTransition = function maybeDelayTransition() {
         if (duration === 0) {
           doTransition();
         } else {
@@ -578,7 +650,7 @@ const transition = (opts, state) => {
         maybeBefore();
         el.offsetHeight; // force reflow
 
-        setTimeout(() => {
+        setTimeout(function () {
           maybeDelayTransition();
         }, 0);
       } else {
@@ -588,16 +660,16 @@ const transition = (opts, state) => {
   }
 };
 
-const transitionComponent = ({
-  isShow,
-  state,
-  attrs,
-  domElements,
-  beforeTransition,
-  afterTransition,
-  showClass,
-  transitionClass
-}) => {
+var transitionComponent = function transitionComponent(_ref) {
+  var isShow = _ref.isShow,
+      state = _ref.state,
+      attrs = _ref.attrs,
+      domElements = _ref.domElements,
+      beforeTransition = _ref.beforeTransition,
+      afterTransition = _ref.afterTransition,
+      showClass = _ref.showClass,
+      transitionClass = _ref.transitionClass;
+
   if (state.transitioning()) {
     return Promise.resolve();
   }
@@ -609,27 +681,31 @@ const transitionComponent = ({
     beforeTransition();
   }
 
-  const duration = attrs[isShow ? "showDuration" : "hideDuration"];
-  const delay = attrs[isShow ? "showDelay" : "hideDelay"];
-  const timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
-  const transitions = attrs.transitions;
-  const fn = isShow ? show : hide;
-  const opts1 = Object.assign({}, attrs, domElements, {
-    showClass,
-    transitionClass,
-    duration,
-    delay,
-    timingFunction
+  var duration = attrs[isShow ? "showDuration" : "hideDuration"];
+  var delay = attrs[isShow ? "showDelay" : "hideDelay"];
+  var timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
+  var transitions = attrs.transitions;
+  var fn = isShow ? show : hide;
+
+  var opts1 = _extends({}, attrs, domElements, {
+    showClass: showClass,
+    transitionClass: transitionClass,
+    duration: duration,
+    delay: delay,
+    timingFunction: timingFunction
   });
-  const opts2 = Object.assign({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
-  const opts3 = Object.assign({}, opts2, {
+
+  var opts2 = _extends({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+
+  var opts3 = _extends({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
     hasDuration: opts2.duration !== undefined,
     delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,
     hasDelay: opts2.delay !== undefined
   });
-  return fn(opts3).then(() => {
-    const id = state.instanceId;
+
+  return fn(opts3).then(function () {
+    var id = state.instanceId;
 
     if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
       attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
@@ -645,16 +721,17 @@ const transitionComponent = ({
   });
 };
 
-const deprecation = (component, {
-  option,
-  newOption,
-  newComponent
-}) => (option && console.warn(`${component}: option '${option}' is deprecated and will be removed in later versions. Use '${newOption}' instead.`), // eslint-disable-line no-console
-newComponent && !newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' instead.`), // eslint-disable-line no-console
-newComponent && newOption && console.warn(`${component}: this component is deprecated and will be removed in later versions. Use '${newComponent}' with option '${newOption}' instead.`) // eslint-disable-line no-console
-);
+var deprecation = function deprecation(component, _ref) {
+  var option = _ref.option,
+      newOption = _ref.newOption,
+      newComponent = _ref.newComponent;
+  return option && console.warn("".concat(component, ": option '").concat(option, "' is deprecated and will be removed in later versions. Use '").concat(newOption, "' instead.")), // eslint-disable-line no-console
+  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' instead.")), // eslint-disable-line no-console
+  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' with option '").concat(newOption, "' instead.")) // eslint-disable-line no-console
+  ;
+};
 
-const iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
-const iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
+var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
+var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
 
 export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, classForSize, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, stylePropCompare, isRTL, styleDurationToMs, deprecation, iconDropdownUp, iconDropdownDown };

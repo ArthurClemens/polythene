@@ -1,5 +1,38 @@
 import { unsubscribe, subscribe, unpackAttrs, filterSupportedAttributes } from 'polythene-core';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-dialog-pane",
   // elements
@@ -45,12 +78,14 @@ var buttonClasses = {
   separatorAtStart: "pe-button--separator-start"
 };
 
-const getElement = vnode => vnode.attrs.element || "form";
-const SCROLL_WATCH_END_TIMER = 150;
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "form";
+};
+var SCROLL_WATCH_END_TIMER = 150;
 
-const updateScrollOverflowState = vnode => {
-  const state = vnode.state;
-  const scroller = state.scrollEl();
+var updateScrollOverflowState = function updateScrollOverflowState(vnode) {
+  var state = vnode.state;
+  var scroller = state.scrollEl();
 
   if (!scroller) {
     return;
@@ -60,74 +95,78 @@ const updateScrollOverflowState = vnode => {
   state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
 };
 
-const getInitialState = (vnode, createStream) => {
-  const bottomOverflow = createStream(false);
-  const footerEl = createStream(null);
-  const headerEl = createStream(null);
-  const isScrolling = createStream(false);
-  const scrollEl = createStream(null);
-  const topOverflow = createStream(false);
-  const el = createStream(null);
+var getInitialState = function getInitialState(vnode, createStream) {
+  var bottomOverflow = createStream(false);
+  var footerEl = createStream(null);
+  var headerEl = createStream(null);
+  var isScrolling = createStream(false);
+  var scrollEl = createStream(null);
+  var topOverflow = createStream(false);
+  var el = createStream(null);
   return {
     cleanUp: undefined,
-    bottomOverflow,
-    el,
-    footerEl,
-    headerEl,
-    isScrolling,
-    scrollEl,
+    bottomOverflow: bottomOverflow,
+    el: el,
+    footerEl: footerEl,
+    headerEl: headerEl,
+    isScrolling: isScrolling,
+    scrollEl: scrollEl,
     scrollWatchId: undefined,
-    topOverflow,
+    topOverflow: topOverflow,
     redrawOnUpdate: createStream.merge([topOverflow, bottomOverflow, isScrolling])
   };
 };
-const onMount = vnode => {
+var onMount = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const state = vnode.state;
+  var dom = vnode.dom;
+  var state = vnode.state;
   state.el(dom);
-  state.scrollEl(dom.querySelector(`.${classes.body}`));
-  state.footerEl(dom.querySelector(`.${classes.footer}`));
-  state.headerEl(dom.querySelector(`.${classes.header}`));
-  state.isScrolling.map(() => updateScrollOverflowState(vnode));
+  state.scrollEl(dom.querySelector(".".concat(classes.body)));
+  state.footerEl(dom.querySelector(".".concat(classes.footer)));
+  state.headerEl(dom.querySelector(".".concat(classes.header)));
+  state.isScrolling.map(function () {
+    return updateScrollOverflowState(vnode);
+  });
 
-  const update = () => {
+  var update = function update() {
     updateScrollOverflowState(vnode);
   };
 
-  state.cleanUp = () => unsubscribe("resize", update); // resize: update scroll state ("overflow" borders)
+  state.cleanUp = function () {
+    return unsubscribe("resize", update);
+  }; // resize: update scroll state ("overflow" borders)
 
 
   subscribe("resize", update);
   update();
 };
-const onUnMount = vnode => vnode.state.cleanUp();
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const state = vnode.state;
-  const attrs = unpackAttrs(vnode.attrs);
-  const withHeader = attrs.header !== undefined || attrs.title !== undefined;
-  const withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
-  const borders = attrs.borders || "overflow";
-  const showTopBorder = borders === "always" || withHeader && borders === "overflow" && state.topOverflow();
-  const showBottomBorder = borders === "always" || withFooter && borders === "overflow" && state.bottomOverflow();
-  return Object.assign({}, filterSupportedAttributes(attrs, {
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.cleanUp();
+};
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+  var state = vnode.state;
+  var attrs = unpackAttrs(vnode.attrs);
+  var withHeader = attrs.header !== undefined || attrs.title !== undefined;
+  var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
+  var borders = attrs.borders || "overflow";
+  var showTopBorder = borders === "always" || withHeader && borders === "overflow" && state.topOverflow();
+  var showBottomBorder = borders === "always" || withFooter && borders === "overflow" && state.bottomOverflow();
+  return _extends({}, filterSupportedAttributes(attrs, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
   {
     className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.formOptions);
 };
-const createContent = (vnode, {
-  renderer: h,
-  keys: k
-}) => {
-  const state = vnode.state;
-  const attrs = unpackAttrs(vnode.attrs);
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      k = _ref2.keys;
+  var state = vnode.state;
+  var attrs = unpackAttrs(vnode.attrs);
   return h("div", {
     className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
     style: attrs.style
@@ -136,17 +175,16 @@ const createContent = (vnode, {
     key: "title"
   }, h("div", {
     className: classes.title
-  }, attrs.title)) : null, h("div", {
+  }, attrs.title)) : null, h("div", _defineProperty({
     className: classes.body,
-    key: "body",
-    [k.onscroll]: () => {
-      state.isScrolling(true);
-      clearTimeout(state.scrollWatchId);
-      state.scrollWatchId = setTimeout(() => {
-        state.isScrolling(false);
-      }, SCROLL_WATCH_END_TIMER);
-    }
-  }, attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
+    key: "body"
+  }, k.onscroll, function () {
+    state.isScrolling(true);
+    clearTimeout(state.scrollWatchId);
+    state.scrollWatchId = setTimeout(function () {
+      state.isScrolling(false);
+    }, SCROLL_WATCH_END_TIMER);
+  }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
     className: classes.footer,
     key: "footer"
   }, attrs.footer) : attrs.footerButtons ? h("div", {

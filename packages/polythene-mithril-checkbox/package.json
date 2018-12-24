@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-checkbox",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/polythene-mithril-checkbox",
   "module": "dist/polythene-mithril-checkbox.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-checkbox": "^1.4.0",
-    "polythene-core-selection-control": "^1.4.0",
-    "polythene-mithril-base": "^1.4.0",
-    "polythene-mithril-icon": "^1.4.0",
-    "polythene-mithril-icon-button": "^1.4.0"
+    "polythene-core-checkbox": "^1.4.1",
+    "polythene-core-selection-control": "^1.4.1",
+    "polythene-mithril-base": "^1.4.1",
+    "polythene-mithril-icon": "^1.4.1",
+    "polythene-mithril-icon-button": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

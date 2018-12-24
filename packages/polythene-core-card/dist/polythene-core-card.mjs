@@ -1,5 +1,23 @@
 import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-card",
   // elements
@@ -40,14 +58,13 @@ var classes = {
   textTight: "pe-card__text--tight"
 };
 
-const createOverlay = ({
-  dispatcher,
-  attrs,
-  h,
-  k
-}) => {
-  const element = attrs.element || "div";
-  const content = attrs.content.map(dispatcher);
+var createOverlay = function createOverlay(_ref) {
+  var dispatcher = _ref.dispatcher,
+      attrs = _ref.attrs,
+      h = _ref.h,
+      k = _ref.k;
+  var element = attrs.element || "div";
+  var content = attrs.content.map(dispatcher);
   return h("div", {
     key: attrs.key || "card-overlay",
     style: attrs.style,
@@ -62,38 +79,35 @@ const createOverlay = ({
   })]);
 };
 
-const createAny = ({
-  attrs,
-  h,
-  k
-}) => {
-  const element = attrs.element || "div";
-  return h(element, Object.assign({}, filterSupportedAttributes(attrs), {
+var createAny = function createAny(_ref2) {
+  var attrs = _ref2.attrs,
+      h = _ref2.h,
+      k = _ref2.k;
+  var element = attrs.element || "div";
+  return h(element, _extends({}, filterSupportedAttributes(attrs), {
     key: attrs.key || "card-any",
     className: [classes.any, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
   }), attrs.content);
 };
 
-const createText = ({
-  attrs,
-  h,
-  k
-}) => {
-  const element = attrs.element || "div";
-  return h(element, Object.assign({}, filterSupportedAttributes(attrs), {
+var createText = function createText(_ref3) {
+  var attrs = _ref3.attrs,
+      h = _ref3.h,
+      k = _ref3.k;
+  var element = attrs.element || "div";
+  return h(element, _extends({}, filterSupportedAttributes(attrs), {
     key: attrs.key || "card-text",
     className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events), attrs.content);
 };
 
-const createHeader = ({
-  attrs,
-  h,
-  k,
-  Icon,
-  ListTile
-}) => {
-  return h(ListTile, Object.assign({}, attrs, {
+var createHeader = function createHeader(_ref4) {
+  var attrs = _ref4.attrs,
+      h = _ref4.h,
+      k = _ref4.k,
+      Icon = _ref4.Icon,
+      ListTile = _ref4.ListTile;
+  return h(ListTile, _extends({}, attrs, {
     key: attrs.key || "card-header",
     className: [classes.header, attrs.className || attrs[k.class]].join(" ")
   }, attrs.icon ? {
@@ -101,10 +115,12 @@ const createHeader = ({
   } : null));
 };
 
-const getElement = vnode => vnode.attrs.element || vnode.attrs.url ? "a" : "div";
-const onMount = ({
-  attrs
-}) => {
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || vnode.attrs.url ? "a" : "div";
+};
+var onMount = function onMount(_ref5) {
+  var attrs = _ref5.attrs;
+
   if (attrs.z !== undefined) {
     deprecation("Card", {
       option: "z",
@@ -112,29 +128,29 @@ const onMount = ({
     });
   }
 };
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps = function createProps(vnode, _ref6) {
+  var k = _ref6.keys;
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.url, attrs.events);
 };
-const createContent = (vnode, {
-  renderer: h,
-  keys: k,
-  CardActions,
-  CardMedia,
-  CardPrimary,
-  Icon,
-  Shadow,
-  ListTile
-}) => {
-  const dispatcher = block => {
-    const key = Object.keys(block)[0];
-    const attrs = Object.assign({}, block[key], {
-      dispatcher,
-      key
+var createContent = function createContent(vnode, _ref7) {
+  var h = _ref7.renderer,
+      k = _ref7.keys,
+      CardActions = _ref7.CardActions,
+      CardMedia = _ref7.CardMedia,
+      CardPrimary = _ref7.CardPrimary,
+      Icon = _ref7.Icon,
+      Shadow = _ref7.Shadow,
+      ListTile = _ref7.ListTile;
+
+  var dispatcher = function dispatcher(block) {
+    var key = Object.keys(block)[0];
+
+    var attrs = _extends({}, block[key], {
+      dispatcher: dispatcher,
+      key: key
     });
 
     switch (key) {
@@ -143,11 +159,11 @@ const createContent = (vnode, {
 
       case "header":
         return createHeader({
-          attrs,
-          h,
-          k,
-          Icon,
-          ListTile
+          attrs: attrs,
+          h: h,
+          k: k,
+          Icon: Icon,
+          ListTile: ListTile
         });
 
       case "media":
@@ -155,10 +171,10 @@ const createContent = (vnode, {
 
       case "overlay":
         return createOverlay({
-          dispatcher,
-          attrs,
-          h,
-          k
+          dispatcher: dispatcher,
+          attrs: attrs,
+          h: h,
+          k: k
         });
 
       case "primary":
@@ -166,26 +182,26 @@ const createContent = (vnode, {
 
       case "text":
         return createText({
-          attrs,
-          h,
-          k
+          attrs: attrs,
+          h: h,
+          k: k
         });
 
       case "any":
         return createAny({
-          attrs,
-          h,
-          k
+          attrs: attrs,
+          h: h,
+          k: k
         });
 
       default:
-        throw `Content type "${key}" does not exist`;
+        throw "Content type \"".concat(key, "\" does not exist");
     }
   };
 
-  const attrs = vnode.attrs;
-  const contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content;
-  const shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+  var attrs = vnode.attrs;
+  var contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content;
+  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
 
   return [h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : 1,
@@ -229,14 +245,14 @@ var buttonClasses = {
   separatorAtStart: "pe-button--separator-start"
 };
 
-const actionLayoutClasses = {
+var actionLayoutClasses = {
   horizontal: classes.actionsHorizontal,
   vertical: classes.actionsVertical,
   justified: classes.actionsJustified
 };
-const onMount$1 = ({
-  attrs
-}) => {
+var onMount$1 = function onMount(_ref) {
+  var attrs = _ref.attrs;
+
   if (attrs.bordered !== undefined) {
     deprecation("Card", {
       option: "bordered",
@@ -245,18 +261,22 @@ const onMount$1 = ({
   }
 };
 
-const actionClassForLayout = (layout = "horizontal") => actionLayoutClasses[layout];
+var actionClassForLayout = function actionClassForLayout() {
+  var layout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "horizontal";
+  return actionLayoutClasses[layout];
+};
 
-const createProps$1 = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps$1 = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs), {
     key: "card-actions",
     className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.border || attrs.bordered ? classes.actionsBorder : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
-const createContent$1 = vnode => vnode.attrs.content || vnode.children;
+var createContent$1 = function createContent(vnode) {
+  return vnode.attrs.content || vnode.children;
+};
 
 var cardActions = /*#__PURE__*/Object.freeze({
   onMount: onMount$1,
@@ -264,74 +284,75 @@ var cardActions = /*#__PURE__*/Object.freeze({
   createContent: createContent$1
 });
 
-const imageRatios = {
+var imageRatios = {
   landscape: 16 / 9,
   square: 1
 };
-const mediaSizeClasses = {
+var mediaSizeClasses = {
   small: classes.mediaSmall,
   regular: classes.mediaRegular,
   medium: classes.mediaMedium,
   large: classes.mediaLarge
 };
 
-const mediaSizeClass = (size = "regular") => mediaSizeClasses[size];
+var mediaSizeClass = function mediaSizeClass() {
+  var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "regular";
+  return mediaSizeClasses[size];
+};
 
-const initImage = ({
-  dom,
-  img,
-  ratio,
-  origin
-}) => {
+var initImage = function initImage(_ref) {
+  var dom = _ref.dom,
+      img = _ref.img,
+      ratio = _ref.ratio,
+      origin = _ref.origin;
+
   img.onload = function () {
     // use a background image on the image container
     if (img.tagName === "IMG") {
-      dom.style.backgroundImage = `url(${img.src})`;
+      dom.style.backgroundImage = "url(".concat(img.src, ")");
     }
 
-    const naturalRatio = this.naturalWidth / this.naturalHeight; // crop-x: crop over x axis
+    var naturalRatio = this.naturalWidth / this.naturalHeight; // crop-x: crop over x axis
     // crop-y: crop over y axis
 
-    const cropClass = naturalRatio < imageRatios[ratio] ? classes.mediaCropX : classes.mediaCropY;
+    var cropClass = naturalRatio < imageRatios[ratio] ? classes.mediaCropX : classes.mediaCropY;
     dom.classList.add(cropClass);
-    const originClass = origin === "start" ? classes.mediaOriginStart : origin === "end" ? classes.mediaOriginEnd : classes.mediaOriginCenter;
+    var originClass = origin === "start" ? classes.mediaOriginStart : origin === "end" ? classes.mediaOriginEnd : classes.mediaOriginCenter;
     dom.classList.add(originClass);
   };
 };
 
-const onMount$2 = vnode => {
+var onMount$2 = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const attrs = vnode.attrs;
-  const ratio = attrs.ratio || "landscape";
-  const origin = attrs.origin || "center";
-  const dom = vnode.dom;
-  const img = dom.querySelector("img") || dom.querySelector("iframe");
+  var attrs = vnode.attrs;
+  var ratio = attrs.ratio || "landscape";
+  var origin = attrs.origin || "center";
+  var dom = vnode.dom;
+  var img = dom.querySelector("img") || dom.querySelector("iframe");
   initImage({
-    dom,
-    img,
-    ratio,
-    origin
+    dom: dom,
+    img: img,
+    ratio: ratio,
+    origin: origin
   });
 };
-const createProps$2 = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  const ratio = attrs.ratio || "landscape";
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps$2 = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
+  var attrs = vnode.attrs;
+  var ratio = attrs.ratio || "landscape";
+  return _extends({}, filterSupportedAttributes(attrs), {
     key: "card-media",
     className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
-const createContent$2 = (vnode, {
-  renderer: h
-}) => {
-  const attrs = vnode.attrs;
-  const dispatcher = attrs.dispatcher;
-  return [Object.assign({}, attrs.content, {
+var createContent$2 = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer;
+  var attrs = vnode.attrs;
+  var dispatcher = attrs.dispatcher;
+  return [_extends({}, attrs.content, {
     key: "content"
   }), attrs.overlay ? dispatcher({
     overlay: attrs.overlay,
@@ -348,31 +369,33 @@ var cardMedia = /*#__PURE__*/Object.freeze({
   createContent: createContent$2
 });
 
-const createProps$3 = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  const primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce((total, current) => Object.keys(current)[0] === "media" ? true : total, false) : attrs.media || false;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps$3 = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+  var attrs = vnode.attrs;
+  var primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce(function (total, current) {
+    return Object.keys(current)[0] === "media" ? true : total;
+  }, false) : attrs.media || false;
+  return _extends({}, filterSupportedAttributes(attrs), {
     key: "card-primary",
     className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
-const createContent$3 = (vnode, {
-  renderer: h
-}) => {
-  const attrs = vnode.attrs;
-  const dispatcher = attrs.dispatcher;
-  const primaryDispatch = {
-    title: pAttrs => pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
-      className: classes.title,
-      key: "title",
-      style: pAttrs.style
-    }, [pAttrs.title, pAttrs.subtitle ? h("div", {
-      className: classes.subtitle,
-      key: "subtitle"
-    }, pAttrs.subtitle) : null]),
-    media: pAttrs => {
+var createContent$3 = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
+  var attrs = vnode.attrs;
+  var dispatcher = attrs.dispatcher;
+  var primaryDispatch = {
+    title: function title(pAttrs) {
+      return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
+        className: classes.title,
+        key: "title",
+        style: pAttrs.style
+      }, [pAttrs.title, pAttrs.subtitle ? h("div", {
+        className: classes.subtitle,
+        key: "subtitle"
+      }, pAttrs.subtitle) : null]);
+    },
+    media: function media(pAttrs) {
       return h("div", {
         className: classes.primaryMedia,
         key: "media",
@@ -381,13 +404,15 @@ const createContent$3 = (vnode, {
         media: pAttrs
       }));
     },
-    actions: pAttrs => dispatcher({
-      actions: pAttrs
-    })
+    actions: function actions(pAttrs) {
+      return dispatcher({
+        actions: pAttrs
+      });
+    }
   };
-  return Array.isArray(attrs.content) ? attrs.content.map(block => {
-    const key = Object.keys(block)[0];
-    const pAttrs = block[key];
+  return Array.isArray(attrs.content) ? attrs.content.map(function (block) {
+    var key = Object.keys(block)[0];
+    var pAttrs = block[key];
     return primaryDispatch[key] ? primaryDispatch[key](pAttrs) : block;
   }) : [attrs.title ? primaryDispatch.title({
     title: attrs.title,

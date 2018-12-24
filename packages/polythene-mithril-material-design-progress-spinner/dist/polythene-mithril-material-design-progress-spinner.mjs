@@ -3,6 +3,24 @@ import { Conditional } from 'polythene-core';
 import { coreMaterialDesignProgressSpinner } from 'polythene-core-material-design-progress-spinner';
 import { BaseSpinner } from 'polythene-mithril-base-spinner';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-md-progress-spinner",
   // elements
@@ -30,16 +48,18 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-const SpinnerInstance = StateComponent(Object.assign({}, coreMaterialDesignProgressSpinner, {
+var SpinnerInstance = StateComponent(_extends({}, coreMaterialDesignProgressSpinner, {
   component: BaseSpinner
 }));
-const SpinnerToggle = StateComponent(Conditional);
+var SpinnerToggle = StateComponent(Conditional);
 SpinnerToggle.displayName = "MaterialDesignProgressSpinnerToggle";
-const MaterialDesignProgressSpinner = {
-  view: vnode => renderer(SpinnerToggle, Object.assign({}, vnode.attrs, {
-    placeholderClassName: baseSpinnerClasses.placeholder,
-    instance: SpinnerInstance
-  }))
+var MaterialDesignProgressSpinner = {
+  view: function view(vnode) {
+    return renderer(SpinnerToggle, _extends({}, vnode.attrs, {
+      placeholderClassName: baseSpinnerClasses.placeholder,
+      instance: SpinnerInstance
+    }));
+  }
 };
 MaterialDesignProgressSpinner.classes = classes;
 MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";

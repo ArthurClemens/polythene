@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-search",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "description": "",
   "scripts": {
@@ -8,13 +8,13 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-core-css": "^1.4.0",
-    "polythene-css": "^1.4.0",
-    "polythene-mithril": "^1.4.0",
-    "polythene-react": "^1.4.0"
+    "polythene-core-css": "^1.4.1",
+    "polythene-css": "^1.4.1",
+    "polythene-mithril": "^1.4.1",
+    "polythene-react": "^1.4.1"
   },
   "devDependencies": {
-    "mithril": "1.1.6",
+    "mithril": "^1.1.6",
     "react": "^16.7.0"
   },
   "jest": {

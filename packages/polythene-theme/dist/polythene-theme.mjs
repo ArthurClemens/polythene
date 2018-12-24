@@ -24,6 +24,6 @@ export { vars } from 'polythene-style';
 //         ];
 //     }
 // };
-const componentConfig = {};
+var componentConfig = {};
 
 export { componentConfig };

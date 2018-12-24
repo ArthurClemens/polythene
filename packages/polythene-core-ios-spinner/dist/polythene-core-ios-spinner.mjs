@@ -1,3 +1,21 @@
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-ios-spinner",
   // elements
@@ -5,21 +23,24 @@ var classes = {
   blade: "pe-ios-spinner__blade"
 };
 
-const blade = (num, h) => h("div", {
-  key: `blade-${num}`,
-  className: classes.blade
-});
+var blade = function blade(num, h) {
+  return h("div", {
+    key: "blade-".concat(num),
+    className: classes.blade
+  });
+};
 
-const createProps = (vnode, {
-  renderer: h
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+var createProps = function createProps(vnode, _ref) {
+  var h = _ref.renderer;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   state.content = state.content || h("div", {
     key: "content",
     className: classes.blades
-  }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(num => blade(num, h)));
-  return Object.assign({}, attrs, {
+  }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (num) {
+    return blade(num, h);
+  }));
+  return _extends({}, attrs, {
     className: [classes.component, attrs.className].join(" "),
     content: state.content
   });

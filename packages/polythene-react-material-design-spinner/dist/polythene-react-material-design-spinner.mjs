@@ -3,6 +3,24 @@ import { Conditional } from 'polythene-core';
 import { coreMaterialDesignSpinner } from 'polythene-core-material-design-spinner';
 import { BaseSpinner } from 'polythene-react-base-spinner';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-md-spinner",
   // elements
@@ -34,15 +52,17 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-const SpinnerInstance = StateComponent(Object.assign({}, coreMaterialDesignSpinner, {
+var SpinnerInstance = StateComponent(_extends({}, coreMaterialDesignSpinner, {
   component: BaseSpinner
 }));
-const SpinnerToggle = StateComponent(Conditional);
+var SpinnerToggle = StateComponent(Conditional);
 SpinnerToggle.displayName = "MaterialDesignSpinnerToggle";
-const MaterialDesignSpinner = props => renderer(SpinnerToggle, Object.assign({}, props, {
-  placeholderClassName: baseSpinnerClasses.placeholder,
-  instance: SpinnerInstance
-}));
+var MaterialDesignSpinner = function MaterialDesignSpinner(props) {
+  return renderer(SpinnerToggle, _extends({}, props, {
+    placeholderClassName: baseSpinnerClasses.placeholder,
+    instance: SpinnerInstance
+  }));
+};
 MaterialDesignSpinner.classes = classes;
 MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
 

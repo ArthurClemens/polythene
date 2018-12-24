@@ -12,6 +12,7 @@ const themeVars = Object.assign(
     mini:                            false,
     permanent:                       false,
     push:                            false,
+    z_index:                         vars.z_drawer,
   },
   shadowVars
 );
@@ -28,7 +29,7 @@ export default Object.assign(
     content_max_width:               5 * vars.increment,           // 5 * 56
     content_width:                   240,
     content_width_mini_collapsed:    vars.increment,               // 1 * 56
-
+    
     // color vars
     
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",

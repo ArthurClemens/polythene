@@ -24,7 +24,8 @@
 
 .pe-switch-control.pe-control--small .pe-button__content {
   width: 40px;
-  height: 40px
+  height: 40px;
+  flex-shrink: 0
 }
 
 .pe-switch-control.pe-control--small .pe-button__content .pe-icon {
@@ -42,7 +43,8 @@
 
 .pe-switch-control.pe-control--regular .pe-button__content {
   width: 48px;
-  height: 48px
+  height: 48px;
+  flex-shrink: 0
 }
 
 .pe-switch-control.pe-control--regular .pe-button__content .pe-icon {
@@ -60,7 +62,8 @@
 
 .pe-switch-control.pe-control--medium .pe-button__content {
   width: 56px;
-  height: 56px
+  height: 56px;
+  flex-shrink: 0
 }
 
 .pe-switch-control.pe-control--medium .pe-button__content .pe-icon {
@@ -78,7 +81,8 @@
 
 .pe-switch-control.pe-control--large .pe-button__content {
   width: 64px;
-  height: 64px
+  height: 64px;
+  flex-shrink: 0
 }
 
 .pe-switch-control.pe-control--large .pe-button__content .pe-icon {

@@ -71,46 +71,111 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-const generalFns = {
-  general_styles: selector => [] // eslint-disable-line no-unused-vars
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
 
 };
 
-const tintFns = tint => ({
-  ["color_" + tint + "_background"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog__content": {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
-    }
-  })],
-  ["color_" + tint + "_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog__content": {
-      color: vars$$1["color_" + tint + "_text"]
-    }
-  })],
-  ["color_" + tint + "_backdrop_background"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog__backdrop": {
-      backgroundColor: vars$$1["color_" + tint + "_backdrop_background"]
-    }
-  })]
-});
+var tintFns = function tintFns(tint) {
+  var _ref;
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog__content": {
+        backgroundColor: vars$$1["color_" + tint + "_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog__content": {
+        color: vars$$1["color_" + tint + "_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog__backdrop": {
+        backgroundColor: vars$$1["color_" + tint + "_backdrop_background"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
 var color = createColor({
   varFns: {
-    lightTintFns,
-    darkTintFns
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 
-const behaviorVars = {
+var behaviorVars = {
   full_screen: false,
   modal: false
 };
-const themeVars = Object.assign({}, {
-  backdrop: false
+
+var themeVars = _extends({}, {
+  backdrop: false,
+  z_index: vars.z_dialog
 }, behaviorVars, sharedVars);
-var vars$1 = Object.assign({}, {
+
+var vars$1 = _extends({}, {
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".220s",
@@ -128,106 +193,133 @@ var vars$1 = Object.assign({}, {
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_regular)
 }, themeVars);
 
-const minWidth = "320px";
+var minWidth = "320px";
 
-const backdrop = selector => sel(selector, {
-  ".pe-dialog--visible .pe-dialog__backdrop": {
-    display: "block",
-    opacity: 1
-  }
-});
+var _backdrop = function backdrop(selector) {
+  return sel(selector, {
+    ".pe-dialog--visible .pe-dialog__backdrop": {
+      display: "block",
+      opacity: 1
+    }
+  });
+};
 
-const fullScreen$1 = (selector, vars$$1) => sel(selector, [createMarker(vars$$1, behaviorVars), {
-  padding: 0,
-  " .pe-dialog__content": {
-    width: "100%" // for IE 11
-
-  }
-}, fullScreen(selector)]);
-
-const modal = (selector, vars$$1) => sel(selector, [createMarker(vars$$1, behaviorVars)]);
-
-const varFns = {
-  general_styles: (selector, vars$$1) => [sel(selector, [flex.layoutCenterCenter, {
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: vars.z_dialog,
-    height: "100%",
-    // 100vh would make the dialog go beneath Mobile Safari toolbar        
-    transitionProperty: "opacity,background-color,transform",
-    ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
-    ".pe-dialog--modal": modal(selector),
+var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars), {
+    padding: 0,
     " .pe-dialog__content": {
-      position: "relative",
-      transitionProperty: "all"
-    },
-    " .pe-dialog__backdrop": [mixin.defaultTransition("all"), // animation duration is set in component options
-    {
-      position: "absolute",
-      opacity: 0,
+      width: "100%" // for IE 11
+
+    }
+  }, fullScreen(selector)]);
+};
+
+var _modal = function modal(selector, vars$$1) {
+  return sel(selector, [createMarker(vars$$1, behaviorVars)]);
+};
+
+var varFns = _objectSpread({
+  general_styles: function general_styles(selector, vars$$1) {
+    return [sel(selector, [flex.layoutCenterCenter, {
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      pointerEvents: "none"
-    }],
-    ".pe-dialog--backdrop": backdrop(selector)
-  }]), {
-    ".pe-dialog__holder": {
+      zIndex: vars$$1.z_index,
       height: "100%",
-      minWidth
-    }
-  }],
-  animation_hide_css: (selector, vars$$1) => [sel(selector, [vars$$1.animation_hide_css])],
-  position: (selector, vars$$1) => [sel(selector, {
-    position: vars$$1.position
-  })],
-  animation_delay: (selector, vars$$1) => [sel(selector, {
-    "&, .pe-dialog__content": {
-      transitionDelay: vars$$1.animation_delay
-    }
-  })],
-  animation_duration: (selector, vars$$1) => [sel(selector, {
-    "&, .pe-dialog__content": {
-      transitionDuration: vars$$1.animation_duration
-    }
-  })],
-  animation_timing_function: (selector, vars$$1) => [sel(selector, {
-    "&, .pe-dialog__content": {
-      transitionTimingFunction: vars$$1.animation_timing_function
-    }
-  })],
-  animation_show_css: (selector, vars$$1) => [sel(selector, {
-    ".pe-dialog--visible": vars$$1.animation_show_css
-  })],
-  border_radius: (selector, vars$$1) => [!vars$$1.full_screen && sel(selector, {
-    " .pe-dialog__content": {
-      borderTopLeftRadius: vars$$1.border_radius + "px",
-      borderTopRightRadius: vars$$1.border_radius + "px",
-      borderBottomLeftRadius: vars$$1.border_radius + "px",
-      borderBottomRightRadius: vars$$1.border_radius + "px"
-    }
-  })],
+      // 100vh would make the dialog go beneath Mobile Safari toolbar        
+      transitionProperty: "opacity,background-color,transform",
+      ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
+      ".pe-dialog--modal": _modal(selector),
+      " .pe-dialog__content": {
+        position: "relative",
+        transitionProperty: "all"
+      },
+      " .pe-dialog__backdrop": [mixin.defaultTransition("all"), // animation duration is set in component options
+      {
+        position: "absolute",
+        opacity: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        pointerEvents: "none"
+      }],
+      ".pe-dialog--backdrop": _backdrop(selector)
+    }]), {
+      ".pe-dialog__holder": {
+        height: "100%",
+        minWidth: minWidth
+      }
+    }];
+  },
+  animation_hide_css: function animation_hide_css(selector, vars$$1) {
+    return [sel(selector, [vars$$1.animation_hide_css])];
+  },
+  position: function position(selector, vars$$1) {
+    return [sel(selector, {
+      position: vars$$1.position
+    })];
+  },
+  animation_delay: function animation_delay(selector, vars$$1) {
+    return [sel(selector, {
+      "&, .pe-dialog__content": {
+        transitionDelay: vars$$1.animation_delay
+      }
+    })];
+  },
+  animation_duration: function animation_duration(selector, vars$$1) {
+    return [sel(selector, {
+      "&, .pe-dialog__content": {
+        transitionDuration: vars$$1.animation_duration
+      }
+    })];
+  },
+  animation_timing_function: function animation_timing_function(selector, vars$$1) {
+    return [sel(selector, {
+      "&, .pe-dialog__content": {
+        transitionTimingFunction: vars$$1.animation_timing_function
+      }
+    })];
+  },
+  animation_show_css: function animation_show_css(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-dialog--visible": vars$$1.animation_show_css
+    })];
+  },
+  border_radius: function border_radius(selector, vars$$1) {
+    return [!vars$$1.full_screen && sel(selector, {
+      " .pe-dialog__content": {
+        borderTopLeftRadius: vars$$1.border_radius + "px",
+        borderTopRightRadius: vars$$1.border_radius + "px",
+        borderBottomLeftRadius: vars$$1.border_radius + "px",
+        borderBottomRightRadius: vars$$1.border_radius + "px"
+      }
+    })];
+  },
   // Theme vars
-  backdrop: (selector, vars$$1) => vars$$1.backdrop && backdrop(selector, vars$$1),
-  full_screen: (selector, vars$$1) => vars$$1.full_screen && fullScreen$1(selector, vars$$1),
-  modal: (selector, vars$$1) => vars$$1.modal && modal(selector, vars$$1),
-  // shadow_depth:
-  ...sharedVarFns
-};
+  backdrop: function backdrop(selector, vars$$1) {
+    return vars$$1.backdrop && _backdrop(selector, vars$$1);
+  },
+  full_screen: function full_screen(selector, vars$$1) {
+    return vars$$1.full_screen && fullScreen$1(selector, vars$$1);
+  },
+  modal: function modal(selector, vars$$1) {
+    return vars$$1.modal && _modal(selector, vars$$1);
+  }
+}, sharedVarFns);
+
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout, color];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

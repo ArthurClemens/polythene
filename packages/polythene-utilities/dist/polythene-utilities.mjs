@@ -1,54 +1,85 @@
 import { isServer, emit, isClient } from 'polythene-core';
 
-const addWebFont = (vendor, config) => {
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var addWebFont = function addWebFont(vendor, config) {
   if (isServer) return;
 
   if (!window.WebFontConfig) {
-    const emitEvent = ({
-      name,
-      familyName,
-      fvd
-    }) => emit("webfontloader", {
-      name,
-      familyName,
-      fvd,
-      vendor,
-      config
-    });
+    var emitEvent = function emitEvent(_ref) {
+      var name = _ref.name,
+          familyName = _ref.familyName,
+          fvd = _ref.fvd;
+      return emit("webfontloader", {
+        name: name,
+        familyName: familyName,
+        fvd: fvd,
+        vendor: vendor,
+        config: config
+      });
+    };
 
     window.WebFontConfig = {
-      loading: () => emitEvent({
-        name: "loading"
-      }),
-      active: () => emitEvent({
-        name: "active"
-      }),
-      inactive: () => emitEvent({
-        name: "inactive"
-      }),
-      fontloading: (familyName, fvd) => emitEvent({
-        name: "fontloading",
-        familyName,
-        fvd
-      }),
-      fontactive: (familyName, fvd) => emitEvent({
-        name: "fontactive",
-        familyName,
-        fvd
-      }),
-      fontinactive: (familyName, fvd) => emitEvent({
-        name: "fontinactive",
-        familyName,
-        fvd
-      })
+      loading: function loading() {
+        return emitEvent({
+          name: "loading"
+        });
+      },
+      active: function active() {
+        return emitEvent({
+          name: "active"
+        });
+      },
+      inactive: function inactive() {
+        return emitEvent({
+          name: "inactive"
+        });
+      },
+      fontloading: function fontloading(familyName, fvd) {
+        return emitEvent({
+          name: "fontloading",
+          familyName: familyName,
+          fvd: fvd
+        });
+      },
+      fontactive: function fontactive(familyName, fvd) {
+        return emitEvent({
+          name: "fontactive",
+          familyName: familyName,
+          fvd: fvd
+        });
+      },
+      fontinactive: function fontinactive(familyName, fvd) {
+        return emitEvent({
+          name: "fontinactive",
+          familyName: familyName,
+          fvd: fvd
+        });
+      }
     };
 
     (function () {
-      const wf = document.createElement("script");
+      var wf = document.createElement("script");
       wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
       wf.type = "text/javascript";
       wf.async = "true";
-      const s = document.getElementsByTagName("script")[0];
+      var s = document.getElementsByTagName("script")[0];
 
       if (s) {
         s.parentNode.insertBefore(wf, s);
@@ -56,10 +87,10 @@ const addWebFont = (vendor, config) => {
     })();
   }
 
-  const vendorCfg = window.WebFontConfig[vendor] || {};
+  var vendorCfg = window.WebFontConfig[vendor] || {};
 
   if (config) {
-    Object.assign(vendorCfg, config);
+    _extends(vendorCfg, config);
   }
 
   window.WebFontConfig[vendor] = vendorCfg;
@@ -70,33 +101,59 @@ https://gist.github.com/gre/1650294
 Easing Functions - inspired from http://gizma.com/easing/
 Only considering the t value for the range [0, 1] => [0, 1]
 */
-const easing = {
+var easing = {
   // no easing, no acceleration
-  linear: t => t,
+  linear: function linear(t) {
+    return t;
+  },
   // accelerating from zero velocity
-  easeInQuad: t => t * t,
+  easeInQuad: function easeInQuad(t) {
+    return t * t;
+  },
   // decelerating to zero velocity
-  easeOutQuad: t => t * (2 - t),
+  easeOutQuad: function easeOutQuad(t) {
+    return t * (2 - t);
+  },
   // acceleration until halfway, then deceleration
-  easeInOutQuad: t => t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t,
+  easeInOutQuad: function easeInOutQuad(t) {
+    return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  },
   // accelerating from zero velocity
-  easeInCubic: t => t * t * t,
+  easeInCubic: function easeInCubic(t) {
+    return t * t * t;
+  },
   // decelerating to zero velocity
-  easeOutCubic: t => --t * t * t + 1,
+  easeOutCubic: function easeOutCubic(t) {
+    return --t * t * t + 1;
+  },
   // acceleration until halfway, then deceleration
-  easeInOutCubic: t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+  easeInOutCubic: function easeInOutCubic(t) {
+    return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  },
   // accelerating from zero velocity
-  easeInQuart: t => t * t * t * t,
+  easeInQuart: function easeInQuart(t) {
+    return t * t * t * t;
+  },
   // decelerating to zero velocity
-  easeOutQuart: t => 1 - --t * t * t * t,
+  easeOutQuart: function easeOutQuart(t) {
+    return 1 - --t * t * t * t;
+  },
   // acceleration until halfway, then deceleration
-  easeInOutQuart: t => t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t,
+  easeInOutQuart: function easeInOutQuart(t) {
+    return t < .5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+  },
   // accelerating from zero velocity
-  easeInQuint: t => t * t * t * t * t,
+  easeInQuint: function easeInQuint(t) {
+    return t * t * t * t * t;
+  },
   // decelerating to zero velocity
-  easeOutQuint: t => 1 + --t * t * t * t * t,
+  easeOutQuint: function easeOutQuint(t) {
+    return 1 + --t * t * t * t * t;
+  },
   // acceleration until halfway, then deceleration
-  easeInOutQuint: t => t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t
+  easeInOutQuint: function easeInOutQuint(t) {
+    return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+  }
 };
 
 /*
@@ -104,30 +161,30 @@ const easing = {
  Derived from https://github.com/madebysource/animated-scrollto
  Adapted to Mithril and rewritten to es6.
 */
-const scrollTo = opts => {
+var scrollTo = function scrollTo(opts) {
   if (isServer) {
     return;
   }
 
-  const element = opts.element;
-  const which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
-  const to = opts.to;
-  const duration = opts.duration * 1000;
-  const easingFn = opts.easing || easing.easeInOutCubic;
-  const start = element[which];
-  const change = to - start;
-  const animationStart = new Date().getTime();
-  let animating = true;
-  return new Promise(resolve => {
-    const animateScroll = () => {
+  var element = opts.element;
+  var which = opts.direction === "horizontal" ? "scrollLeft" : "scrollTop";
+  var to = opts.to;
+  var duration = opts.duration * 1000;
+  var easingFn = opts.easing || easing.easeInOutCubic;
+  var start = element[which];
+  var change = to - start;
+  var animationStart = new Date().getTime();
+  var animating = true;
+  return new Promise(function (resolve) {
+    var animateScroll = function animateScroll() {
       if (!animating) {
         return;
       }
 
       requestAnimFrame(animateScroll);
-      const now = new Date().getTime();
-      const percentage = (now - animationStart) / duration;
-      const val = start + change * easingFn(percentage);
+      var now = new Date().getTime();
+      var percentage = (now - animationStart) / duration;
+      var val = start + change * easingFn(percentage);
       element[which] = val;
 
       if (percentage >= 1) {
@@ -140,20 +197,26 @@ const scrollTo = opts => {
     requestAnimFrame(animateScroll);
   });
 };
-const requestAnimFrame = isServer ? () => {} : (() => window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback => window.setTimeout(callback, 1000 / 60)))();
+var requestAnimFrame = isServer ? function () {} : function () {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+    return window.setTimeout(callback, 1000 / 60);
+  };
+}();
 
-const Timer = function () {
-  let timerId, startTime, remaining, cb;
+var Timer = function Timer() {
+  var timerId, startTime, remaining, cb;
 
-  const stop = () => {
+  var stop = function stop() {
     if (isClient) {
       window.clearTimeout(timerId);
     }
   };
 
-  const pause = () => (stop(), remaining -= new Date() - startTime);
+  var pause = function pause() {
+    return stop(), remaining -= new Date() - startTime;
+  };
 
-  const startTimer = () => {
+  var startTimer = function startTimer() {
     if (isClient) {
       stop();
       startTime = new Date();
@@ -161,15 +224,19 @@ const Timer = function () {
     }
   };
 
-  const start = (callback, delaySeconds) => (cb = callback, remaining = delaySeconds * 1000, startTimer());
+  var start = function start(callback, delaySeconds) {
+    return cb = callback, remaining = delaySeconds * 1000, startTimer();
+  };
 
-  const resume = () => startTimer();
+  var resume = function resume() {
+    return startTimer();
+  };
 
   return {
-    start,
-    pause,
-    resume,
-    stop
+    start: start,
+    pause: pause,
+    resume: resume,
+    stop: stop
   };
 };
 

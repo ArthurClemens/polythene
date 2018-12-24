@@ -4,22 +4,44 @@ import { coreSelectionControl } from 'polythene-core-selection-control';
 import { Shadow } from 'polythene-mithril-shadow';
 import { IconButton } from 'polythene-mithril-icon-button';
 
-const ViewControl = ViewComponent(Object.assign({}, viewControl, {
-  createContent: (vnode, args) => viewControl.createContent(vnode, Object.assign(args, {
-    Shadow,
-    IconButton
-  }))
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var ViewControl = ViewComponent(_extends({}, viewControl, {
+  createContent: function createContent(vnode, args) {
+    return viewControl.createContent(vnode, _extends(args, {
+      Shadow: Shadow,
+      IconButton: IconButton
+    }));
+  }
 }));
 ViewControl.displayName = "ViewControl";
 
-const SelectionControl = StateComponent(Object.assign({}, coreSelectionControl, {
-  createContent: (vnode, args) => coreSelectionControl.createContent(vnode, Object.assign(args, {
-    ViewControl
-  }))
+var SelectionControl = StateComponent(_extends({}, coreSelectionControl, {
+  createContent: function createContent(vnode, args) {
+    return coreSelectionControl.createContent(vnode, _extends(args, {
+      ViewControl: ViewControl
+    }));
+  }
 }));
 SelectionControl.displayName = "SelectionControl";
 
-const Switch = StateComponent(Object.assign({}, coreSwitch, {
+var Switch = StateComponent(_extends({}, coreSwitch, {
   component: SelectionControl
 }));
 Switch.displayName = "Switch";

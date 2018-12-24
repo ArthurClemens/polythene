@@ -4,52 +4,93 @@ var classes = {
   component: "pe-svg"
 };
 
-const generalFns = {
-  general_styles: selector => [sel(selector, {
-    color: "inherit",
-    " svg": {
-      color: "inherit",
-      " path, rect, circle, polygon": {
-        "&:not([fill=none])": {
-          fill: "currentcolor"
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
         }
       }
     }
-  })]
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      color: "inherit",
+      " svg": {
+        color: "inherit",
+        " path, rect, circle, polygon": {
+          "&:not([fill=none])": {
+            fill: "currentcolor"
+          }
+        }
+      }
+    })];
+  }
 };
 
-const tintFns = tint => ({
-  ["color_" + tint]: (selector, vars) => [sel(selector, {
-    " svg": {
-      " path, rect, circle, polygon": {
-        "&:not([fill=none])": {
-          fill: vars["color_" + tint]
+var tintFns = function tintFns(tint) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars) {
+    return [sel(selector, {
+      " svg": {
+        " path, rect, circle, polygon": {
+          "&:not([fill=none])": {
+            fill: vars["color_" + tint]
+          }
         }
       }
-    }
-  })]
-});
+    })];
+  });
+};
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
 var color = createColor({
   varFns: {
-    lightTintFns,
-    darkTintFns
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 
-const varFns = {
-  general_styles: selector => [sel(selector, {
-    lineHeight: 1,
-    " > div, svg": {
-      width: "inherit",
-      height: "inherit"
-    }
-  })]
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      lineHeight: 1,
+      " > div, svg": {
+        width: "inherit",
+        height: "inherit"
+      }
+    })];
+  }
 };
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
 var vars = {
@@ -58,14 +99,14 @@ var vars = {
   color_dark: "currentcolor"
 };
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars);
-const getStyle = styler.createGetStyle(selector, fns, vars);
+var fns = [layout, color];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars);
+var getStyle = styler.createGetStyle(selector, fns, vars);
 styler.addStyle({
   selectors: [selector],
-  fns,
-  vars
+  fns: fns,
+  vars: vars
 });
 
 export { addStyle, color, getStyle, layout, vars };

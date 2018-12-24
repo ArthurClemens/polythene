@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-slider",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/polythene-mithril-slider",
   "module": "dist/polythene-mithril-slider.mjs",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-slider": "^1.4.0",
-    "polythene-mithril-base": "^1.4.0"
+    "polythene-core-slider": "^1.4.1",
+    "polythene-mithril-base": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

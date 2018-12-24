@@ -17,134 +17,198 @@ var classes = {
   border: "pe-toolbar--border"
 };
 
-const generalFns = {
-  general_styles: selector => [] // eslint-disable-line no-unused-vars
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [];
+  } // eslint-disable-line no-unused-vars
 
 };
 
-const tintFns = tint => ({
-  ["color_" + tint + "_text"]: (selector, vars$$1) => [sel(selector, {
-    color: vars$$1["color_" + tint + "_text"]
-  })],
-  ["color_" + tint + "_background"]: (selector, vars$$1) => [sel(selector, {
-    backgroundColor: vars$$1["color_" + tint + "_background"]
-  })],
-  ["color_" + tint + "_border"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-toolbar--border": {
-      borderColor: vars$$1["color_" + tint + "_border"]
-    }
-  })]
-});
+var tintFns = function tintFns(tint) {
+  var _ref;
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_text"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-toolbar--border": {
+        borderColor: vars$$1["color_" + tint + "_border"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
 var color = createColor({
   varFns: {
-    lightTintFns,
-    darkTintFns
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 
-const breakpoint = breakpointSel => (selector, o) => ({
-  [breakpointSel]: {
-    [selector]: o
-  }
-});
+var breakpoint = function breakpoint(breakpointSel) {
+  return function (selector, o) {
+    return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
+  };
+};
 
-const indent_padding_side = (selector, vars$$1, isRTL) => sel(selector, {
-  " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": {
-    [isRTL ? "marginLeft" : "marginRight"]: 0,
-    [isRTL ? "marginRight" : "marginLeft"]: vars$$1.indent - vars$$1.padding_side + "px"
-  }
-});
+var indent_padding_side = function indent_padding_side(selector, vars$$1, isRTL) {
+  var _peToolbar__title;
 
-const title_padding_title_after_icon_padding = (selector, vars$$1, isRTL) => sel(selector, {
-  " > span, .pe-toolbar__title": {
-    [isRTL ? "marginLeft" : "marginRight"]: 0,
-    [isRTL ? "marginRight" : "marginLeft"]: vars$$1.title_padding + "px"
-  },
-  " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent, * + .pe-toolbar__title.pe-toolbar__title--indent": {
-    [isRTL ? "marginLeft" : "marginRight"]: 0,
-    [isRTL ? "marginRight" : "marginLeft"]: vars$$1.title_after_icon_padding + "px"
-  },
-  " .pe-toolbar__title--center": {
-    marginLeft: vars$$1.title_padding + "px",
-    marginRight: vars$$1.title_padding + "px"
-  }
-});
+  return sel(selector, {
+    " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", vars$$1.indent - vars$$1.padding_side + "px"), _peToolbar__title)
+  });
+};
 
-const breakpointPhoneOnly = breakpoint(`@media (min-width: ${vars.breakpoint_for_phone_only}px) and (orientation: landscape)`);
-const breakpointTabletPortraitUp = breakpoint(`@media (min-width: ${vars.breakpoint_for_tablet_portrait_up}px)`);
-const varFns = {
-  general_styles: selector => [sel(selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
-    position: "relative",
-    zIndex: vars.z_toolbar,
-    ".pe-toolbar--fullbleed": {
-      padding: 0
-    },
-    ".pe-toolbar--border": {
-      borderWidth: "1px",
-      borderStyle: "none none solid none"
-    },
-    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
-      width: "100%",
-      display: "block",
-      wordBreak: "break-all",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap"
-    },
+var title_padding_title_after_icon_padding = function title_padding_title_after_icon_padding(selector, vars$$1, isRTL) {
+  var _spanPeToolbar, _spanPe;
+
+  return sel(selector, {
+    " > span, .pe-toolbar__title": (_spanPeToolbar = {}, _defineProperty(_spanPeToolbar, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_spanPeToolbar, isRTL ? "marginRight" : "marginLeft", vars$$1.title_padding + "px"), _spanPeToolbar),
+    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent, * + .pe-toolbar__title.pe-toolbar__title--indent": (_spanPe = {}, _defineProperty(_spanPe, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_spanPe, isRTL ? "marginRight" : "marginLeft", vars$$1.title_after_icon_padding + "px"), _spanPe),
     " .pe-toolbar__title--center": {
-      textAlign: "center",
-      justifyContent: "center"
-    },
-    " > .pe-action": {
-      paddingLeft: "12px",
-      paddingRight: "12px"
-    },
-    " .pe-fit": [mixin.fit(), {
-      margin: 0
-    }]
-  }])],
-  height: (selector, vars$$1) => [sel(selector, {
-    height: vars$$1.height + "px"
-  })],
-  height_compact: (selector, vars$$1) => [sel(selector, {
-    ".pe-toolbar--compact": {
-      height: vars$$1.height_compact + "px"
+      marginLeft: vars$$1.title_padding + "px",
+      marginRight: vars$$1.title_padding + "px"
     }
-  }), breakpointPhoneOnly(selector, {
-    height: vars$$1.height + "px"
-  })],
-  line_height: (selector, vars$$1) => [sel(selector, {
-    lineHeight: vars$$1.line_height + "em",
-    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
-      lineHeight: vars$$1.line_height
-    }
-  })],
-  font_size: (selector, vars$$1) => [sel(selector, {
-    " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
-      fontSize: vars$$1.font_size + "px"
-    }
-  })],
-  padding_side: (selector, vars$$1) => [sel(selector, {
-    padding: "0 " + vars$$1.padding_side + "px"
-  }), indent_padding_side(selector, vars$$1, false), indent_padding_side(selectorRTL(selector), vars$$1, true)],
-  indent: (selector, vars$$1) => [indent_padding_side(selector, vars$$1, false), indent_padding_side(selectorRTL(selector), vars$$1, true)],
-  title_padding: (selector, vars$$1) => [title_padding_title_after_icon_padding(selector, vars$$1, false), title_padding_title_after_icon_padding(selectorRTL(selector), vars$$1, true)],
-  title_after_icon_padding: (selector, vars$$1) => [title_padding_title_after_icon_padding(selector, vars$$1, false), title_padding_title_after_icon_padding(selectorRTL(selector), vars$$1, true)],
-  height_large: (selector, vars$$1) => [breakpointTabletPortraitUp(selector, {
-    height: vars$$1.height_large + "px"
-  })],
-  padding_side_large: (selector, vars$$1) => [breakpointTabletPortraitUp(selector, {
-    padding: "0 " + vars$$1.padding_side_large + "px"
-  })]
+  });
+};
+
+var breakpointPhoneOnly = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_phone_only, "px) and (orientation: landscape)"));
+var breakpointTabletPortraitUp = breakpoint("@media (min-width: ".concat(vars.breakpoint_for_tablet_portrait_up, "px)"));
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
+      position: "relative",
+      zIndex: vars.z_toolbar,
+      ".pe-toolbar--fullbleed": {
+        padding: 0
+      },
+      ".pe-toolbar--border": {
+        borderWidth: "1px",
+        borderStyle: "none none solid none"
+      },
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+        width: "100%",
+        display: "block",
+        wordBreak: "break-all",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+      },
+      " .pe-toolbar__title--center": {
+        textAlign: "center",
+        justifyContent: "center"
+      },
+      " > .pe-action": {
+        paddingLeft: "12px",
+        paddingRight: "12px"
+      },
+      " .pe-fit": [mixin.fit(), {
+        margin: 0
+      }]
+    }])];
+  },
+  height: function height(selector, vars$$1) {
+    return [sel(selector, {
+      height: vars$$1.height + "px"
+    })];
+  },
+  height_compact: function height_compact(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-toolbar--compact": {
+        height: vars$$1.height_compact + "px"
+      }
+    }), breakpointPhoneOnly(selector, {
+      height: vars$$1.height + "px"
+    })];
+  },
+  line_height: function line_height(selector, vars$$1) {
+    return [sel(selector, {
+      lineHeight: vars$$1.line_height + "em",
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+        lineHeight: vars$$1.line_height
+      }
+    })];
+  },
+  font_size: function font_size(selector, vars$$1) {
+    return [sel(selector, {
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+        fontSize: vars$$1.font_size + "px"
+      }
+    })];
+  },
+  padding_side: function padding_side(selector, vars$$1) {
+    return [sel(selector, {
+      padding: "0 " + vars$$1.padding_side + "px"
+    }), indent_padding_side(selector, vars$$1, false), indent_padding_side(selectorRTL(selector), vars$$1, true)];
+  },
+  indent: function indent(selector, vars$$1) {
+    return [indent_padding_side(selector, vars$$1, false), indent_padding_side(selectorRTL(selector), vars$$1, true)];
+  },
+  title_padding: function title_padding(selector, vars$$1) {
+    return [title_padding_title_after_icon_padding(selector, vars$$1, false), title_padding_title_after_icon_padding(selectorRTL(selector), vars$$1, true)];
+  },
+  title_after_icon_padding: function title_after_icon_padding(selector, vars$$1) {
+    return [title_padding_title_after_icon_padding(selector, vars$$1, false), title_padding_title_after_icon_padding(selectorRTL(selector), vars$$1, true)];
+  },
+  height_large: function height_large(selector, vars$$1) {
+    return [breakpointTabletPortraitUp(selector, {
+      height: vars$$1.height_large + "px"
+    })];
+  },
+  padding_side_large: function padding_side_large(selector, vars$$1) {
+    return [breakpointTabletPortraitUp(selector, {
+      padding: "0 " + vars$$1.padding_side_large + "px"
+    })];
+  }
 };
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
-const padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
+var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 
 var vars$1 = {
   general_styles: true,
@@ -157,7 +221,7 @@ var vars$1 = {
   // 64
   indent: vars.unit_indent,
   line_height: vars.line_height,
-  padding_side,
+  padding_side: padding_side,
   padding_side_large: vars.grid_unit_component * 3 - 12,
   // 24 - 12 = 12
   title_after_icon_padding: vars.grid_unit_component * 9 - vars.grid_unit_component * 6 - padding_side,
@@ -172,13 +236,13 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout, color];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

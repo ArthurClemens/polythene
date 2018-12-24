@@ -1,7 +1,7 @@
 import { isServer } from 'polythene-core';
 import J2c from 'j2c';
 
-const layout = [{
+var layout = [{
   "display": "-webkit-box"
 }, {
   "display": "-moz-box"
@@ -12,177 +12,273 @@ const layout = [{
 }, {
   "display": "flex"
 }];
-const layoutInline = [layout, {
+var layoutInline = [layout, {
   "display": "-ms-inline-flexbox"
 }, {
   "display": "-webkit-inline-flex"
 }, {
   "display": "inline-flex"
 }];
-const layoutHorizontal = [layout, {
+var layoutHorizontal = [layout, {
   "-ms-flex-direction": "row",
   "-webkit-flex-direction": "row",
   "flex-direction": "row"
 }];
-const layoutHorizontalReverse = [layout, {
+var layoutHorizontalReverse = [layout, {
   "-ms-flex-direction": "row-reverse",
   "-webkit-flex-direction": "row-reverse",
   "flex-direction": "row-reverse"
 }];
-const layoutVertical = [layout, {
+var layoutVertical = [layout, {
   "-ms-flex-direction": "column",
   "-webkit-flex-direction": "column",
   "flex-direction": "column"
 }];
-const layoutVerticalReverse = [layout, {
+var layoutVerticalReverse = [layout, {
   "-ms-flex-direction": "column-reverse",
   "-webkit-flex-direction": "column-reverse",
   "flex-direction": "column-reverse"
 }];
-const layoutWrap = [layout, {
+var layoutWrap = [layout, {
   "-ms-flex-wrap": "wrap",
   "-webkit-flex-wrap": "wrap",
   "flex-wrap": "wrap"
 }];
-const layoutWrapReverse = [layout, {
+var layoutWrapReverse = [layout, {
   "-ms-flex-wrap": "wrap-reverse",
   "-webkit-flex-wrap": "wrap-reverse",
   "flex-wrap": "wrap-reverse"
 }];
-const layoutStart = [layout, {
+var layoutStart = [layout, {
   "-ms-flex-align": "start",
   "-webkit-align-items": "flex-start",
   "align-items": "flex-start"
 }];
-const layoutCenter = [layout, {
+var layoutCenter = [layout, {
   "-ms-flex-align": "center",
   "-webkit-align-items": "center",
   "align-items": "center"
 }];
-const layoutEnd = [layout, {
+var layoutEnd = [layout, {
   "-ms-flex-align": "end",
   "-webkit-align-items": "flex-end",
   "align-items": "flex-end"
 }];
-const layoutJustified = [layout, {
+var layoutJustified = [layout, {
   "-ms-flex-pack": "justify",
   "-webkit-justify-content": "space-between",
   "justify-content": "space-between"
 }];
-const layoutStartJustified = [layout, {
+var layoutStartJustified = [layout, {
   "-ms-flex-pack": "start",
   "-webkit-justify-content": "flex-start",
   "justify-content": "flex-start"
 }];
-const layoutCenterJustified = [layout, {
+var layoutCenterJustified = [layout, {
   "-ms-flex-pack": "center",
   "-webkit-justify-content": "center",
   "justify-content": "center"
 }];
-const layoutEndJustified = [layout, {
+var layoutEndJustified = [layout, {
   "-ms-flex-pack": "end",
   "-webkit-justify-content": "flex-end",
   "justify-content": "flex-end"
 }];
-const layoutCenterCenter = [layoutCenterJustified, layoutCenter];
-const layoutAroundJustified = [layout, {
+var layoutCenterCenter = [layoutCenterJustified, layoutCenter];
+var layoutAroundJustified = [layout, {
   "-ms-flex-pack": "distribute",
   "-webkit-justify-content": "space-around",
   "justify-content": "space-around"
 }];
 
-const flex = (num = 1) => [{
-  "-webkit-box-flex": num
-}, {
-  "-moz-box-flex": num
-}, {
-  "-webkit-flex": num
-}, {
-  "-ms-flex": num
-}, {
-  "flex": num
-}, num === 1 ? {
-  "-webkit-flex-basis": "0.000000001px"
-} : {}, num === 1 ? {
-  "flex-basis": "0.000000001px"
-} : {}];
+var flex = function flex() {
+  var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  return [{
+    "-webkit-box-flex": num
+  }, {
+    "-moz-box-flex": num
+  }, {
+    "-webkit-flex": num
+  }, {
+    "-ms-flex": num
+  }, {
+    "flex": num
+  }, num === 1 ? {
+    "-webkit-flex-basis": "0.000000001px"
+  } : {}, num === 1 ? {
+    "flex-basis": "0.000000001px"
+  } : {}];
+};
 
-const flexAuto = {
+var flexAuto = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
-const flexAutoVertical = {
+var flexAutoVertical = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
 
-const flexIndex = index => ({
-  "-ms-flex": index,
-  "-webkit-flex": index,
-  "flex": index
-});
+var flexIndex = function flexIndex(index) {
+  return {
+    "-ms-flex": index,
+    "-webkit-flex": index,
+    "flex": index
+  };
+};
 
-const flexGrow = value => ({
-  "-webkit-flex-grow": value,
-  "flex-grow": value
-});
+var flexGrow = function flexGrow(value) {
+  return {
+    "-webkit-flex-grow": value,
+    "flex-grow": value
+  };
+};
 
-const selfStart = {
+var selfStart = {
   "-ms-align-self": "flex-start",
   "-webkit-align-self": "flex-start",
   "align-self": "flex-start"
 };
-const selfCenter = {
+var selfCenter = {
   "-ms-align-self": "center",
   "-webkit-align-self": "center",
   "align-self": "center"
 };
-const selfEnd = {
+var selfEnd = {
   "-ms-align-self": "flex-end",
   "-webkit-align-self": "flex-end",
   "align-self": "flex-end"
 };
-const selfStretch = {
+var selfStretch = {
   "-ms-align-self": "stretch",
   "-webkit-align-self": "stretch",
   "align-self": "stretch"
 };
 var flex$1 = {
-  flex,
-  flexAuto,
-  flexAutoVertical,
-  flexIndex,
-  flexGrow,
-  layout,
-  layoutAroundJustified,
-  layoutCenter,
-  layoutCenterCenter,
-  layoutCenterJustified,
-  layoutEnd,
-  layoutEndJustified,
-  layoutHorizontal,
-  layoutHorizontalReverse,
-  layoutInline,
-  layoutJustified,
-  layoutStart,
-  layoutStartJustified,
-  layoutVertical,
-  layoutVerticalReverse,
-  layoutWrap,
-  layoutWrapReverse,
-  selfCenter,
-  selfEnd,
-  selfStart,
-  selfStretch
+  flex: flex,
+  flexAuto: flexAuto,
+  flexAutoVertical: flexAutoVertical,
+  flexIndex: flexIndex,
+  flexGrow: flexGrow,
+  layout: layout,
+  layoutAroundJustified: layoutAroundJustified,
+  layoutCenter: layoutCenter,
+  layoutCenterCenter: layoutCenterCenter,
+  layoutCenterJustified: layoutCenterJustified,
+  layoutEnd: layoutEnd,
+  layoutEndJustified: layoutEndJustified,
+  layoutHorizontal: layoutHorizontal,
+  layoutHorizontalReverse: layoutHorizontalReverse,
+  layoutInline: layoutInline,
+  layoutJustified: layoutJustified,
+  layoutStart: layoutStart,
+  layoutStartJustified: layoutStartJustified,
+  layoutVertical: layoutVertical,
+  layoutVerticalReverse: layoutVerticalReverse,
+  layoutWrap: layoutWrap,
+  layoutWrapReverse: layoutWrapReverse,
+  selfCenter: selfCenter,
+  selfEnd: selfEnd,
+  selfStart: selfStart,
+  selfStretch: selfStretch
 };
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
 
 // Mixins for j2c
 // Centers an item absolutely within relative parent
 // mixin.fit()
-const fit = (offset = 0) => {
-  const offsetPx = offset + "px";
+var fit = function fit() {
+  var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var offsetPx = offset + "px";
   return {
     position: "absolute",
     top: offsetPx,
@@ -194,7 +290,9 @@ const fit = (offset = 0) => {
 // mixin.fontSmoothing()
 
 
-const fontSmoothing = (smoothing = true) => {
+var fontSmoothing = function fontSmoothing() {
+  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
   if (smoothing) {
     return {
       "-webkit-font-smoothing": "antialiased",
@@ -212,7 +310,9 @@ const fontSmoothing = (smoothing = true) => {
 // mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
 
 
-const ellipsis = (lines, lineHeight, unit = "px") => {
+var ellipsis = function ellipsis(lines, lineHeight) {
+  var unit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "px";
+
   if (lines === "none") {
     return {
       textOverflow: "initial",
@@ -225,13 +325,13 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
   }
 
   return [{
-    "@supports (-webkit-line-clamp: 2)": Object.assign({}, lines !== undefined ? {
+    "@supports (-webkit-line-clamp: 2)": _extends({}, lines !== undefined ? {
       "-webkit-line-clamp": lines,
       "-webkit-box-orient": "vertical",
       display: "-webkit-box",
       wordBreak: "break-word"
     } : null)
-  }, Object.assign({}, {
+  }, _extends({}, {
     overflow: "hidden",
     textOverflow: "ellipsis",
     textRendering: "auto" // Samsung Android
@@ -245,39 +345,49 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
 // mixin.clearfix()
 
 
-const clearfix = () => ({
-  "&:after": {
-    content: "\"\"",
-    display: "table",
-    clear: "both"
-  }
-}); // Creates sticky headers in a scrollable list
+var clearfix = function clearfix() {
+  return {
+    "&:after": {
+      content: "\"\"",
+      display: "table",
+      clear: "both"
+    }
+  };
+}; // Creates sticky headers in a scrollable list
 // Does not work in Chrome: http://caniuse.com/#feat=css-sticky
 // mixin.sticky()
 
 
-const sticky = (zIndex = 1) => ({
-  position: "sticky",
-  top: 0,
-  zIndex: zIndex
-}); // Creates a transition with presets
+var sticky = function sticky() {
+  var zIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  return {
+    position: "sticky",
+    top: 0,
+    zIndex: zIndex
+  };
+}; // Creates a transition with presets
 // mixin.defaultTransition("opacity", vars.animation_duration)
 
 
-const defaultTransition = (properties = "all", duration = ".18s", curve = "ease-out") => ({
-  transitionDelay: "0ms",
-  transitionDuration: duration,
-  transitionTimingFunction: curve,
-  transitionProperty: properties
-});
+var defaultTransition = function defaultTransition() {
+  var properties = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "all";
+  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".18s";
+  var curve = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "ease-out";
+  return {
+    transitionDelay: "0ms",
+    transitionDuration: duration,
+    transitionTimingFunction: curve,
+    transitionProperty: properties
+  };
+};
 
 var mixin = {
-  clearfix,
-  defaultTransition,
-  ellipsis,
-  fit,
-  fontSmoothing,
-  sticky
+  clearfix: clearfix,
+  defaultTransition: defaultTransition,
+  ellipsis: ellipsis,
+  fit: fit,
+  fontSmoothing: fontSmoothing,
+  sticky: sticky
 };
 
 function unwrapExports (x) {
@@ -990,26 +1100,32 @@ exports.prefixPlugin = prefixPlugin;
 unwrapExports(j2cPluginPrefixBrowser_commonjs);
 var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPlugin;
 
-const j2c = new J2c(j2cPluginPrefixBrowser_commonjs_1);
-const ID_REGEX = /[^a-z0-9\\-]/g;
+var j2c = new J2c(j2cPluginPrefixBrowser_commonjs_1);
+var ID_REGEX = /[^a-z0-9\\-]/g;
 /*
  * @param id: identifier, used as HTMLElement id for the attached <style></style> element
  * @param styles: list of lists style Objects
  */
 
-const add = (id, ...styles) => addToDocument({
-  id
-}, ...styles);
+var add = function add(id) {
+  for (var _len = arguments.length, styles = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    styles[_key - 1] = arguments[_key];
+  }
+
+  return addToDocument.apply(void 0, [{
+    id: id
+  }].concat(styles));
+};
 /*
  * Removes a style from head.
  */
 
 
-const remove = id => {
+var remove = function remove(id) {
   if (isServer) return;
 
   if (id) {
-    const old = document.getElementById(id);
+    var old = document.getElementById(id);
 
     if (old && old.parentNode) {
       old.parentNode.removeChild(old);
@@ -1024,25 +1140,29 @@ const remove = id => {
  */
 
 
-const addToDocument = (opts, ...styles) => {
+var addToDocument = function addToDocument(opts) {
   if (isServer) return;
-  const id = opts.id.replace(ID_REGEX, "_");
-  const documentRef = opts.document || window.document;
+  var id = opts.id.replace(ID_REGEX, "_");
+  var documentRef = opts.document || window.document;
   remove(id);
-  const styleEl = documentRef.createElement("style");
+  var styleEl = documentRef.createElement("style");
 
   if (id) {
     styleEl.setAttribute("id", id);
   }
 
-  styles.forEach(styleList => {
+  for (var _len2 = arguments.length, styles = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    styles[_key2 - 1] = arguments[_key2];
+  }
+
+  styles.forEach(function (styleList) {
     // each style returns a list
     if (Object.keys(styleList).length) {
-      styleList.forEach(style => {
-        const scoped = {
+      styleList.forEach(function (style) {
+        var scoped = {
           "@global": style
         };
-        const sheet = j2c.sheet(scoped);
+        var sheet = j2c.sheet(scoped);
         styleEl.appendChild(documentRef.createTextNode(sheet));
       });
     }
@@ -1057,43 +1177,43 @@ const addToDocument = (opts, ...styles) => {
 */
 
 
-const addStyle = ({
-  selectors,
-  fns: styleFns,
-  vars,
-  customVars,
-  mediaQuery
-}) => {
-  const selector = selectors.join("");
-  const styleList = styleFns.map(fn => fn(selector, vars, customVars)).filter(list => list.length > 0);
+var addStyle = function addStyle(_ref) {
+  var selectors = _ref.selectors,
+      styleFns = _ref.fns,
+      vars = _ref.vars,
+      customVars = _ref.customVars,
+      mediaQuery = _ref.mediaQuery;
+  var selector = selectors.join("");
+  var styleList = styleFns.map(function (fn) {
+    return fn(selector, vars, customVars);
+  }).filter(function (list) {
+    return list.length > 0;
+  });
 
   if (styleList.length === 0) {
     return;
   }
 
-  const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
+  var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
 
   if (mediaQuery) {
-    add(id, [{
-      [mediaQuery]: styleList
-    }]);
+    add(id, [_defineProperty({}, mediaQuery, styleList)]);
   } else {
     add(id, styleList);
   }
 };
 
-const getStyle = ({
-  selectors,
-  fns: styleFns,
-  vars,
-  customVars,
-  mediaQuery
-}) => {
-  const selector = selectors.join("");
-  const styleList = styleFns.map(fn => fn(selector, vars, customVars));
-  return mediaQuery ? [{
-    [mediaQuery]: styleList
-  }] : styleList;
+var getStyle = function getStyle(_ref3) {
+  var selectors = _ref3.selectors,
+      styleFns = _ref3.fns,
+      vars = _ref3.vars,
+      customVars = _ref3.customVars,
+      mediaQuery = _ref3.mediaQuery;
+  var selector = selectors.join("");
+  var styleList = styleFns.map(function (fn) {
+    return fn(selector, vars, customVars);
+  });
+  return mediaQuery ? [_defineProperty({}, mediaQuery, styleList)] : styleList;
 };
 /*
  * Adds styles to head for a component.
@@ -1103,123 +1223,166 @@ const getStyle = ({
 */
 
 
-const createAddStyle = (selector, fns, vars) => (customSelector = "", customVars, {
-  mediaQuery
-} = {}) => addStyle({
-  selectors: [selector, customSelector],
-  fns,
-  vars,
-  customVars,
-  mediaQuery
-});
+var createAddStyle = function createAddStyle(selector, fns, vars) {
+  return function () {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
-const createGetStyle = (selector, fns, vars) => (customSelector = "", customVars, {
-  mediaQuery
-} = {}) => [getStyle({
-  selectors: [selector, customSelector],
-  fns,
-  vars,
-  customVars,
-  mediaQuery
-})];
+    var _ref5 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref5.mediaQuery;
 
-var styler = {
-  add,
-  addStyle,
-  addToDocument,
-  createAddStyle,
-  createGetStyle,
-  getStyle,
-  remove
+    return addStyle({
+      selectors: [selector, customSelector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    });
+  };
 };
 
-const sel = (selector, o) => ({
-  [selector]: o
-});
-const selectorRTL = selector => `*[dir=rtl] ${selector}, .pe-rtl ${selector}`;
-const rgba = (colorStr, opacity = 1) => `rgba(${colorStr}, ${opacity})`;
-const hex = value => {
-  const bigint = parseInt(value.substring(1), 16);
-  const r = bigint >> 16 & 255;
-  const g = bigint >> 8 & 255;
-  const b = bigint & 255;
+var createGetStyle = function createGetStyle(selector, fns, vars) {
+  return function () {
+    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var customVars = arguments.length > 1 ? arguments[1] : undefined;
+
+    var _ref6 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        mediaQuery = _ref6.mediaQuery;
+
+    return [getStyle({
+      selectors: [selector, customSelector],
+      fns: fns,
+      vars: vars,
+      customVars: customVars,
+      mediaQuery: mediaQuery
+    })];
+  };
+};
+
+var styler = {
+  add: add,
+  addStyle: addStyle,
+  addToDocument: addToDocument,
+  createAddStyle: createAddStyle,
+  createGetStyle: createGetStyle,
+  getStyle: getStyle,
+  remove: remove
+};
+
+var sel = function sel(selector, o) {
+  return _defineProperty({}, selector, o);
+};
+var selectorRTL = function selectorRTL(selector) {
+  return "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector);
+};
+var rgba = function rgba(colorStr) {
+  var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return "rgba(".concat(colorStr, ", ").concat(opacity, ")");
+};
+var hex = function hex(value) {
+  var bigint = parseInt(value.substring(1), 16);
+  var r = bigint >> 16 & 255;
+  var g = bigint >> 8 & 255;
+  var b = bigint & 255;
   return r + "," + g + "," + b;
 };
 
-const createStyle = ({
-  varFns,
-  customVarFns,
-  superStyle,
-  varMixin,
-  selector,
-  scopedSelector,
-  componentVars,
-  customVars
-}) => {
-  const allVars = { ...componentVars,
-    ...customVars
-  };
-  const currentVars = customVars ? customVars : allVars;
-  const {
-    general_styles,
-    // eslint-disable-line no-unused-vars
-    ...otherVars
-  } = componentVars || {};
-  const baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
-  const fns = Object.assign({}, !!customVars && customVarFns, varFns);
-  return baseLayout.concat(Object.keys(varMixin(currentVars)).map(v => fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null).filter(s => s));
+var createStyle = function createStyle(_ref2) {
+  var varFns = _ref2.varFns,
+      customVarFns = _ref2.customVarFns,
+      superStyle = _ref2.superStyle,
+      varMixin = _ref2.varMixin,
+      selector = _ref2.selector,
+      scopedSelector = _ref2.scopedSelector,
+      componentVars = _ref2.componentVars,
+      customVars = _ref2.customVars;
+
+  var allVars = _objectSpread({}, componentVars, customVars);
+
+  var currentVars = customVars ? customVars : allVars;
+
+  var _ref3 = componentVars || {},
+      general_styles = _ref3.general_styles,
+      otherVars = _objectWithoutProperties(_ref3, ["general_styles"]);
+
+  var baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
+
+  var fns = _extends({}, !!customVars && customVarFns, varFns);
+
+  return baseLayout.concat(Object.keys(varMixin(currentVars)).map(function (v) {
+    return fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null;
+  }).filter(function (s) {
+    return s;
+  }));
 };
 
-const createLayout = ({
-  varFns,
-  customVarFns,
-  superLayout,
-  varMixin = o => o
-}) => (selector, componentVars, customVars) => createStyle({
-  varFns,
-  customVarFns,
-  superStyle: superLayout,
-  varMixin,
-  selector,
-  scopedSelector: selector,
-  componentVars,
-  customVars
-});
-const createColorStyle = ({
-  selector,
-  scopedSelector,
-  componentVars,
-  customVars,
-  varFns,
-  superColor,
-  varMixin
-}) => createStyle({
-  varFns,
-  superStyle: superColor,
-  varMixin,
-  selector,
-  scopedSelector,
-  componentVars,
-  customVars
-});
+var createLayout = function createLayout(_ref4) {
+  var varFns = _ref4.varFns,
+      customVarFns = _ref4.customVarFns,
+      superLayout = _ref4.superLayout,
+      _ref4$varMixin = _ref4.varMixin,
+      varMixin = _ref4$varMixin === void 0 ? function (o) {
+    return o;
+  } : _ref4$varMixin;
+  return function (selector, componentVars, customVars) {
+    return createStyle({
+      varFns: varFns,
+      customVarFns: customVarFns,
+      superStyle: superLayout,
+      varMixin: varMixin,
+      selector: selector,
+      scopedSelector: selector,
+      componentVars: componentVars,
+      customVars: customVars
+    });
+  };
+};
+var createColorStyle = function createColorStyle(_ref5) {
+  var selector = _ref5.selector,
+      scopedSelector = _ref5.scopedSelector,
+      componentVars = _ref5.componentVars,
+      customVars = _ref5.customVars,
+      varFns = _ref5.varFns,
+      superColor = _ref5.superColor,
+      varMixin = _ref5.varMixin;
+  return createStyle({
+    varFns: varFns,
+    superStyle: superColor,
+    varMixin: varMixin,
+    selector: selector,
+    scopedSelector: scopedSelector,
+    componentVars: componentVars,
+    customVars: customVars
+  });
+};
 
-const appendPseudoClass = ({
-  scopes,
-  selector,
-  isNoTouch = false
-}) => isNoTouch ? scopes.map(s => s + selector + ":hover").join(",") : scopes.map(s => s + selector).join(",");
+var appendPseudoClass = function appendPseudoClass(_ref6) {
+  var scopes = _ref6.scopes,
+      selector = _ref6.selector,
+      _ref6$isNoTouch = _ref6.isNoTouch,
+      isNoTouch = _ref6$isNoTouch === void 0 ? false : _ref6$isNoTouch;
+  return isNoTouch ? scopes.map(function (s) {
+    return s + selector + ":hover";
+  }).join(",") : scopes.map(function (s) {
+    return s + selector;
+  }).join(",");
+};
 
-const createScopedSelector = ({
-  scopes,
-  selector,
-  isNoTouch = false
-}) => selector.split(/\s*,\s*/).map(s => appendPseudoClass({
-  scopes,
-  selector: s,
-  isNoTouch
-}));
+var createScopedSelector = function createScopedSelector(_ref7) {
+  var scopes = _ref7.scopes,
+      selector = _ref7.selector,
+      _ref7$isNoTouch = _ref7.isNoTouch,
+      isNoTouch = _ref7$isNoTouch === void 0 ? false : _ref7$isNoTouch;
+  return selector.split(/\s*,\s*/).map(function (s) {
+    return appendPseudoClass({
+      scopes: scopes,
+      selector: s,
+      isNoTouch: isNoTouch
+    });
+  });
+};
 
-const colorScopes = [{
+var colorScopes = [{
   // has/inside dark tone
   scopes: [".pe-dark-tone", ".pe-dark-tone "],
   varFnName: "darkTintFns",
@@ -1240,39 +1403,49 @@ const colorScopes = [{
   varFnName: "lightTintHoverFns",
   isNoTouch: true
 }];
-const createColor = ({
-  varFns = {},
-  superColor,
-  varMixin = o => o
-}) => (selector, componentVars, customVars) => colorScopes.map(({
-  scopes,
-  varFnName,
-  isNoTouch
-}) => createColorStyle({
-  selector,
-  scopedSelector: createScopedSelector({
-    scopes,
-    selector,
-    isNoTouch
-  }),
-  componentVars,
-  customVars,
-  varFns: varFns[varFnName],
-  superColor,
-  varMixin
-}));
+var createColor = function createColor(_ref8) {
+  var _ref8$varFns = _ref8.varFns,
+      varFns = _ref8$varFns === void 0 ? {} : _ref8$varFns,
+      superColor = _ref8.superColor,
+      _ref8$varMixin = _ref8.varMixin,
+      varMixin = _ref8$varMixin === void 0 ? function (o) {
+    return o;
+  } : _ref8$varMixin;
+  return function (selector, componentVars, customVars) {
+    return colorScopes.map(function (_ref9) {
+      var scopes = _ref9.scopes,
+          varFnName = _ref9.varFnName,
+          isNoTouch = _ref9.isNoTouch;
+      return createColorStyle({
+        selector: selector,
+        scopedSelector: createScopedSelector({
+          scopes: scopes,
+          selector: selector,
+          isNoTouch: isNoTouch
+        }),
+        componentVars: componentVars,
+        customVars: customVars,
+        varFns: varFns[varFnName],
+        superColor: superColor,
+        varMixin: varMixin
+      });
+    });
+  };
+};
 
-const createMarkerValue = (vars, behaviorVars) => {
+var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
   if (!vars) {
     return;
   }
 
-  const marker = Object.keys(behaviorVars).filter(bvar => vars[bvar] === true).join(".");
-  return marker ? `"${marker}"` : null;
+  var marker = Object.keys(behaviorVars).filter(function (bvar) {
+    return vars[bvar] === true;
+  }).join(".");
+  return marker ? "\"".concat(marker, "\"") : null;
 };
 
-const createMarker = (vars, behaviorVars) => {
-  const value = createMarkerValue(vars, behaviorVars);
+var createMarker = function createMarker(vars, behaviorVars) {
+  var value = createMarkerValue(vars, behaviorVars);
   return value && {
     ":before": {
       content: value,
@@ -1366,7 +1539,9 @@ var commonStyle = [{
   }
 }];
 
-const layoutStyles = [flex$2, commonStyle];
-const addLayoutStyles = () => styler.add("pe-layout", flex$2, commonStyle);
+var layoutStyles = [flex$2, commonStyle];
+var addLayoutStyles = function addLayoutStyles() {
+  return styler.add("pe-layout", flex$2, commonStyle);
+};
 
 export { flex$1 as flex, mixin, styler, hex, rgba, sel, selectorRTL, createLayout, createColor, createMarker, layoutStyles, addLayoutStyles };

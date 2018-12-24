@@ -1,6 +1,39 @@
 import { isClient, transitionComponent, filterSupportedAttributes, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-notification",
   // elements
@@ -17,10 +50,12 @@ var classes = {
   visible: "pe-notification--visible"
 };
 
-const DEFAULT_TIME_OUT = 3;
-const getElement = vnode => vnode.attrs.element || "div";
+var DEFAULT_TIME_OUT = 3;
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
-const pause = state => {
+var pause = function pause(state) {
   state.paused(true);
 
   if (state.timer) {
@@ -28,7 +63,7 @@ const pause = state => {
   }
 };
 
-const unpause = state => {
+var unpause = function unpause(state) {
   state.paused(false);
 
   if (state.timer) {
@@ -36,79 +71,89 @@ const unpause = state => {
   }
 };
 
-const stopTimer = state => {
+var stopTimer = function stopTimer(state) {
   if (state.timer) {
     state.timer.stop();
   }
 };
 
-const transitionOptions = (state, attrs, isShow) => ({
-  state,
-  attrs,
-  isShow,
-  beforeTransition: isShow ? () => stopTimer(state) : () => stopTimer(state),
-  afterTransition: isShow ? () => {
-    // set timer to hide in a few seconds
-    const timeout = attrs.timeout;
+var transitionOptions = function transitionOptions(state, attrs, isShow) {
+  return {
+    state: state,
+    attrs: attrs,
+    isShow: isShow,
+    beforeTransition: isShow ? function () {
+      return stopTimer(state);
+    } : function () {
+      return stopTimer(state);
+    },
+    afterTransition: isShow ? function () {
+      // set timer to hide in a few seconds
+      var timeout = attrs.timeout;
 
-    if (timeout === 0) ; else {
-      const timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-      state.timer.start(() => {
-        hideNotification(state, attrs);
-      }, timeoutSeconds);
-    }
-  } : null,
-  domElements: {
-    el: state.el,
-    containerEl: state.containerEl
-  },
-  showClass: classes.visible
-});
+      if (timeout === 0) ; else {
+        var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
+        state.timer.start(function () {
+          hideNotification(state, attrs);
+        }, timeoutSeconds);
+      }
+    } : null,
+    domElements: {
+      el: state.el,
+      containerEl: state.containerEl
+    },
+    showClass: classes.visible
+  };
+};
 
-const showNotification = (state, attrs) => transitionComponent(transitionOptions(state, attrs, true));
+var showNotification = function showNotification(state, attrs) {
+  return transitionComponent(transitionOptions(state, attrs, true));
+};
 
-const hideNotification = (state, attrs) => transitionComponent(transitionOptions(state, attrs, false));
+var hideNotification = function hideNotification(state, attrs) {
+  return transitionComponent(transitionOptions(state, attrs, false));
+};
 
-const setTitleStyles = titleEl => {
+var setTitleStyles = function setTitleStyles(titleEl) {
   if (isServer) return;
-  const height = titleEl.getBoundingClientRect().height;
-  const lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
-  const paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
-  const paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
+  var height = titleEl.getBoundingClientRect().height;
+  var lineHeight = parseInt(window.getComputedStyle(titleEl).lineHeight, 10);
+  var paddingTop = parseInt(window.getComputedStyle(titleEl).paddingTop, 10);
+  var paddingBottom = parseInt(window.getComputedStyle(titleEl).paddingBottom, 10);
 
   if (height > lineHeight + paddingTop + paddingBottom) {
     titleEl.classList.add(classes.multilineTitle);
   }
 };
 
-const getInitialState = (vnode, createStream) => {
-  const transitioning = createStream(false);
-  const paused = createStream(false);
-  const mounted = createStream(false);
-  const visible = createStream(false);
+var getInitialState = function getInitialState(vnode, createStream) {
+  var transitioning = createStream(false);
+  var paused = createStream(false);
+  var mounted = createStream(false);
+  var visible = createStream(false);
   return {
     cleanUp: undefined,
     containerEl: undefined,
     dismissEl: undefined,
     el: undefined,
     timer: new Timer(),
-    paused,
-    transitioning,
-    visible,
-    mounted,
+    paused: paused,
+    transitioning: transitioning,
+    visible: visible,
+    mounted: mounted,
     redrawOnUpdate: createStream.merge([visible])
   };
 };
-const onMount = vnode => {
+var onMount = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+  var dom = vnode.dom;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   state.el = dom;
-  const titleEl = state.el.querySelector(`.${classes.title}`);
+  var titleEl = state.el.querySelector(".".concat(classes.title));
 
   if (titleEl) {
     setTitleStyles(titleEl);
@@ -133,26 +178,27 @@ const onMount = vnode => {
 
   state.mounted(true);
 };
-const onUnMount = vnode => vnode.state.mounted(false);
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  return Object.assign({}, filterSupportedAttributes(attrs, {
+var onUnMount = function onUnMount(vnode) {
+  return vnode.state.mounted(false);
+};
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
-  {
+  _defineProperty({
     className: [classes.component, attrs.fromMultipleClassName, // classes.visible is set in showNotification though transition
     attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
-    attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
-    [k.onclick]: e => e.preventDefault()
-  });
+    attrs.containerSelector ? classes.hasContainer : null, attrs.layout === "vertical" ? classes.vertical : classes.horizontal, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }, k.onclick, function (e) {
+    return e.preventDefault();
+  }));
 };
-const createContent = (vnode, {
-  renderer: h
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
 
   if (state.mounted() && !state.transitioning()) {
     if (attrs.hide && state.visible()) {

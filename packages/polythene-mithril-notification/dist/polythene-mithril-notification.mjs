@@ -18,24 +18,26 @@ var classes = {
   visible: "pe-notification--visible"
 };
 
-const NotificationInstance = StateComponent(coreNotificationInstance);
+var NotificationInstance = StateComponent(coreNotificationInstance);
 NotificationInstance.displayName = "NotificationInstance";
-const options = {
+var options = {
   name: "notification",
   className: classes.component,
   htmlShowClass: classes.open,
   defaultId: "default_notification",
-  holderSelector: `.${classes.holder}`,
+  holderSelector: ".".concat(classes.holder),
   instance: NotificationInstance,
-  placeholder: `span.${classes.placeholder}`,
+  placeholder: "span.".concat(classes.placeholder),
   queue: true
 };
-const Multiple = Multi({
-  options,
-  renderer
+var Multiple = Multi({
+  options: options,
+  renderer: renderer
 });
-const Notification = StateComponent(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(p => Notification[p] = Multiple[p]);
+var Notification = StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+  return Notification[p] = Multiple[p];
+});
 Notification.displayName = "Notification";
 
 export { NotificationInstance, Notification };

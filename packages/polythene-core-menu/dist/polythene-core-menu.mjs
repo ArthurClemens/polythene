@@ -1,5 +1,23 @@
 import { deprecation, transitionComponent, pointerEndMoveEvent, filterSupportedAttributes, isServer, stylePropCompare, subscribe, unsubscribe } from 'polythene-core';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var listTileClasses = {
   component: "pe-list-tile",
   // elements
@@ -47,24 +65,27 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-const getElement = vnode => vnode.attrs.element || "div";
-const DEFAULT_OFFSET_H = 0;
-const DEFAULT_OFFSET_V = "79%";
-const DEFAULT_TYPE = "floating";
-const MIN_WIDTH = 1.5;
-const DEFAULT_SHADOW_DEPTH = 1;
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
+var DEFAULT_OFFSET_H = 0;
+var DEFAULT_OFFSET_V = "79%";
+var DEFAULT_TYPE = "floating";
+var MIN_WIDTH = 1.5;
+var DEFAULT_SHADOW_DEPTH = 1;
 
-const isTopMenu = ({
-  state,
-  attrs
-}) => attrs.topMenu || stylePropCompare({
-  element: state.dom(),
-  pseudoSelector: ":before",
-  prop: "content",
-  contains: `"${"top_menu"}"`
-});
+var isTopMenu = function isTopMenu(_ref) {
+  var state = _ref.state,
+      attrs = _ref.attrs;
+  return attrs.topMenu || stylePropCompare({
+    element: state.dom(),
+    pseudoSelector: ":before",
+    prop: "content",
+    contains: "\"".concat("top_menu", "\"")
+  });
+};
 
-const positionMenu = (state, attrs) => {
+var positionMenu = function positionMenu(state, attrs) {
   if (isServer) {
     return;
   }
@@ -73,64 +94,69 @@ const positionMenu = (state, attrs) => {
     return;
   }
 
-  const targetEl = document.querySelector(attrs.target);
+  var targetEl = document.querySelector(attrs.target);
 
   if (!targetEl) {
     return;
   }
 
-  const panelEl = state.panelEl;
+  var panelEl = state.panelEl;
 
   if (!panelEl) {
     return;
   } // Don't set the position or top offset if the menu position is fixed
 
 
-  const hasStylePositionFixed = stylePropCompare({
+  var hasStylePositionFixed = stylePropCompare({
     element: panelEl,
     prop: "position",
     equals: "fixed"
   });
 
   if (hasStylePositionFixed && !isTopMenu({
-    state,
-    attrs
+    state: state,
+    attrs: attrs
   })) {
-    Object.assign(panelEl.style, {});
+    _extends(panelEl.style, {});
+
     panelEl.offsetHeight; // force reflow
 
     return;
   }
 
-  const contentEl = state.contentEl;
-  const parentRect = panelEl.parentNode.getBoundingClientRect();
-  const targetRect = targetEl.getBoundingClientRect();
-  const attrsOffsetH = attrs.offsetH !== undefined ? attrs.offsetH : attrs.offset !== undefined ? attrs.offset // deprecated
+  var contentEl = state.contentEl;
+  var parentRect = panelEl.parentNode.getBoundingClientRect();
+  var targetRect = targetEl.getBoundingClientRect();
+  var attrsOffsetH = attrs.offsetH !== undefined ? attrs.offsetH : attrs.offset !== undefined ? attrs.offset // deprecated
   : DEFAULT_OFFSET_H;
-  const attrsOffsetV = attrs.offsetV !== undefined ? attrs.offsetV : DEFAULT_OFFSET_V;
-  const offsetH = attrsOffsetH.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetH) * 0.01 * targetRect.width) : Math.round(parseFloat(attrsOffsetH));
-  const offsetV = attrsOffsetV.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetV) * 0.01 * targetRect.height) : Math.round(parseFloat(attrsOffsetV));
-  let positionOffsetV = offsetV;
-  const attrsOrigin = attrs.origin || "top";
-  const origin = attrsOrigin.split(/\W+/).reduce((acc, curr) => (acc[curr] = true, acc), {});
-  const firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+  var attrsOffsetV = attrs.offsetV !== undefined ? attrs.offsetV : DEFAULT_OFFSET_V;
+  var offsetH = attrsOffsetH.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetH) * 0.01 * targetRect.width) : Math.round(parseFloat(attrsOffsetH));
+  var offsetV = attrsOffsetV.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetV) * 0.01 * targetRect.height) : Math.round(parseFloat(attrsOffsetV));
+  var positionOffsetV = offsetV;
+  var attrsOrigin = attrs.origin || "top";
+  var origin = attrsOrigin.split(/\W+/).reduce(function (acc, curr) {
+    return acc[curr] = true, acc;
+  }, {});
+  var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
 
   if (attrs.reposition) {
     // get the first List Tile to calculate the top position  
-    const selectedItem = contentEl.querySelector("." + classes.selectedListTile);
+    var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
 
     if (firstItem && selectedItem) {
       // calculate v position: menu should shift upward relative to the first item
-      const firstItemRect = firstItem.getBoundingClientRect();
-      const selectedItemRect = selectedItem.getBoundingClientRect();
+      var firstItemRect = firstItem.getBoundingClientRect();
+      var selectedItemRect = selectedItem.getBoundingClientRect();
       positionOffsetV = firstItemRect.top - selectedItemRect.top;
     } // align to middle of target
 
 
-    const alignEl = selectedItem || firstItem;
-    const alignRect = alignEl.getBoundingClientRect();
-    const targetRect = targetEl.getBoundingClientRect();
-    const heightDiff = targetRect.height - alignRect.height;
+    var alignEl = selectedItem || firstItem;
+    var alignRect = alignEl.getBoundingClientRect();
+
+    var _targetRect = targetEl.getBoundingClientRect();
+
+    var heightDiff = _targetRect.height - alignRect.height;
     positionOffsetV += Math.abs(heightDiff) / 2;
   } else if (attrs.origin && !hasStylePositionFixed) {
     if (origin.top) {
@@ -141,20 +167,20 @@ const positionMenu = (state, attrs) => {
   }
 
   if (attrs.height) {
-    const firstItemHeight = firstItem ? firstItem.clientHeight : 48; // default List Tile height
+    var firstItemHeight = firstItem ? firstItem.clientHeight : 48; // default List Tile height
 
     if (attrs.height === "max") {
-      const topMargin = positionOffsetV;
-      const bottomMargin = firstItemHeight;
-      panelEl.style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
+      var topMargin = positionOffsetV;
+      var bottomMargin = firstItemHeight;
+      panelEl.style.height = "calc(100% - ".concat(topMargin + bottomMargin, "px)");
     } else {
-      const height = /^\d+$/.test(attrs.height.toString()) ? `${attrs.height}px` : attrs.height;
+      var height = /^\d+$/.test(attrs.height.toString()) ? "".concat(attrs.height, "px") : attrs.height;
       panelEl.style.height = height;
     }
   } // prevent animated changes
 
 
-  const transitionDuration = panelEl.style.transitionDuration;
+  var transitionDuration = panelEl.style.transitionDuration;
   panelEl.style.transitionDuration = "0ms";
 
   if (panelEl.parentNode && !hasStylePositionFixed) {
@@ -178,7 +204,7 @@ const positionMenu = (state, attrs) => {
   panelEl.style.transitionDuration = transitionDuration;
 };
 
-const scrollContent = (state, attrs) => {
+var scrollContent = function scrollContent(state, attrs) {
   if (isServer) {
     return;
   }
@@ -187,7 +213,7 @@ const scrollContent = (state, attrs) => {
     return;
   }
 
-  const scrollTargetEl = document.querySelector(attrs.scrollTarget);
+  var scrollTargetEl = document.querySelector(attrs.scrollTarget);
 
   if (!scrollTargetEl) {
     return;
@@ -196,34 +222,46 @@ const scrollContent = (state, attrs) => {
   state.contentEl.scrollTop = scrollTargetEl.offsetTop;
 };
 
-const transitionOptions = (state, attrs, isShow) => ({
-  state,
-  attrs,
-  isShow,
-  beforeTransition: isShow ? () => state.update() : null,
-  domElements: {
-    el: state.panelEl,
-    showClassElement: state.dom()
-  },
-  showClass: classes.visible
-});
+var transitionOptions = function transitionOptions(state, attrs, isShow) {
+  return {
+    state: state,
+    attrs: attrs,
+    isShow: isShow,
+    beforeTransition: isShow ? function () {
+      return state.update();
+    } : null,
+    domElements: {
+      el: state.panelEl,
+      showClassElement: state.dom()
+    },
+    showClass: classes.visible
+  };
+};
 
-const showMenu = (state, attrs) => transitionComponent(transitionOptions(state, attrs, true));
+var showMenu = function showMenu(state, attrs) {
+  return transitionComponent(transitionOptions(state, attrs, true));
+};
 
-const hideMenu = (state, attrs) => transitionComponent(transitionOptions(state, attrs, false));
+var hideMenu = function hideMenu(state, attrs) {
+  return transitionComponent(transitionOptions(state, attrs, false));
+};
 
-const unifyWidth = width => width < MIN_WIDTH ? MIN_WIDTH : width;
+var unifyWidth = function unifyWidth(width) {
+  return width < MIN_WIDTH ? MIN_WIDTH : width;
+};
 
-const widthClass = size => classes.width_n + size.toString().replace(".", "-");
+var widthClass = function widthClass(size) {
+  return classes.width_n + size.toString().replace(".", "-");
+};
 
-const handleSubscriptions = (vnode, which) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+var handleSubscriptions = function handleSubscriptions(vnode, which) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
 
   if (which === "mount") {
     subscribe("resize", state.update);
     subscribe("keydown", state.handleEscape);
-    setTimeout(() => {
+    setTimeout(function () {
       state.activateDismissTap();
       showMenu(state, attrs);
     }, 0);
@@ -234,9 +272,9 @@ const handleSubscriptions = (vnode, which) => {
   }
 };
 
-const getInitialState = (vnode, createStream) => {
-  const dom = createStream(null);
-  const attrs = vnode.attrs;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var dom = createStream(null);
+  var attrs = vnode.attrs;
 
   if (attrs.offset !== undefined) {
     deprecation("Menu", {
@@ -252,12 +290,12 @@ const getInitialState = (vnode, createStream) => {
     });
   }
 
-  const visible = createStream(false);
-  const transitioning = createStream(false);
+  var visible = createStream(false);
+  var transitioning = createStream(false);
   return {
-    dom,
-    visible,
-    transitioning,
+    dom: dom,
+    visible: visible,
+    transitioning: transitioning,
     activateDismissTap: undefined,
     // set in onMount
     contentEl: undefined,
@@ -275,19 +313,19 @@ const getInitialState = (vnode, createStream) => {
     redrawOnUpdate: createStream.merge([transitioning])
   };
 };
-const onMount = vnode => {
+var onMount = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   state.dom(vnode.dom);
-  state.panelEl = vnode.dom.querySelector(`.${classes.panel}`);
-  state.contentEl = vnode.dom.querySelector(`.${classes.content}`);
+  state.panelEl = vnode.dom.querySelector(".".concat(classes.panel));
+  state.contentEl = vnode.dom.querySelector(".".concat(classes.content));
 
   if (!attrs.permanent) {
-    state.handleDismissTap = e => {
+    state.handleDismissTap = function (e) {
       if (e.target === state.panelEl) {
         return;
       }
@@ -295,22 +333,26 @@ const onMount = vnode => {
       hideMenu(state, attrs);
     };
 
-    state.update = () => {
+    state.update = function () {
       positionMenu(state, attrs);
       scrollContent(state, attrs);
     };
 
-    state.activateDismissTap = () => {
-      pointerEndMoveEvent.forEach(evt => document.addEventListener(evt, state.handleDismissTap));
+    state.activateDismissTap = function () {
+      pointerEndMoveEvent.forEach(function (evt) {
+        return document.addEventListener(evt, state.handleDismissTap);
+      });
     };
 
-    state.deActivateDismissTap = () => {
-      pointerEndMoveEvent.forEach(evt => document.removeEventListener(evt, state.handleDismissTap));
+    state.deActivateDismissTap = function () {
+      pointerEndMoveEvent.forEach(function (evt) {
+        return document.removeEventListener(evt, state.handleDismissTap);
+      });
     };
 
-    state.handleEscape = e => {
+    state.handleEscape = function (e) {
       if (e.key === "Escape" || e.key === "Esc") {
-        hideMenu(state, Object.assign({}, attrs, {
+        hideMenu(state, _extends({}, attrs, {
           hideDelay: 0
         }));
       }
@@ -319,28 +361,26 @@ const onMount = vnode => {
     handleSubscriptions(vnode, "mount");
   }
 };
-const onUnMount = vnode => {
-  const attrs = vnode.attrs;
+var onUnMount = function onUnMount(vnode) {
+  var attrs = vnode.attrs;
 
   if (!attrs.permanent) {
     handleSubscriptions(vnode, "unmount");
   }
 };
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  const type = attrs.type || DEFAULT_TYPE;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
+  var attrs = vnode.attrs;
+  var type = attrs.type || DEFAULT_TYPE;
+  return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, attrs.topMenu ? classes.isTopMenu : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
-const createContent = (vnode, {
-  renderer: h,
-  Shadow
-}) => {
-  const attrs = vnode.attrs;
-  const shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined ? attrs.z // deprecated
+var createContent = function createContent(vnode, _ref3) {
+  var h = _ref3.renderer,
+      Shadow = _ref3.Shadow;
+  var attrs = vnode.attrs;
+  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined ? attrs.z // deprecated
   : DEFAULT_SHADOW_DEPTH;
   return [h("div", {
     key: "backdrop",
@@ -349,7 +389,7 @@ const createContent = (vnode, {
     className: classes.panel,
     key: "panel"
   }, [h(Shadow, {
-    shadowDepth,
+    shadowDepth: shadowDepth,
     animated: true,
     key: "shadow"
   }), h("div", {

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-drawer",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/polythene-react-drawer",
   "module": "dist/polythene-react-drawer.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.0",
-    "polythene-core-drawer": "^1.4.0",
-    "polythene-css-classes": "^1.4.0",
-    "polythene-react-base": "^1.4.0",
-    "polythene-react-dialog": "^1.4.0"
+    "polythene-core": "^1.4.1",
+    "polythene-core-drawer": "^1.4.1",
+    "polythene-css-classes": "^1.4.1",
+    "polythene-react-base": "^1.4.1",
+    "polythene-react-dialog": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

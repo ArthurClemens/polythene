@@ -21,248 +21,313 @@ var classes = {
   fullBleed: "pe-dialog-pane--body-full-bleed"
 };
 
-const generalFns = {
-  general_styles: () => [{
-    " .pe-dialog-pane__body": {
-      borderColor: "transparent"
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
     }
-  }]
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var generalFns = {
+  general_styles: function general_styles() {
+    return [{
+      " .pe-dialog-pane__body": {
+        borderColor: "transparent"
+      }
+    }];
+  }
 };
 
-const tintFns = tint => ({
-  ["color_" + tint + "_background"]: (selector, vars$$1) => [sel(selector, {
-    backgroundColor: vars$$1["color_" + tint + "_background"]
-  })],
-  ["color_" + tint + "_title_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__header .pe-dialog-pane__title": {
-      color: vars$$1["color_" + tint + "_title_text"]
-    }
-  })],
-  ["color_" + tint + "_body_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__body": {
-      color: vars$$1["color_" + tint + "_body_text"]
-    }
-  })],
-  ["color_" + tint + "_body_border"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-      borderTopColor: vars$$1["color_" + tint + "_body_border"]
-    },
-    ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
-      borderBottomStyle: "solid",
-      borderBottomColor: vars$$1["color_" + tint + "_body_border"]
-    }
-  })]
-});
+var tintFns = function tintFns(tint) {
+  var _ref;
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      backgroundColor: vars$$1["color_" + tint + "_background"]
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__header .pe-dialog-pane__title": {
+        color: vars$$1["color_" + tint + "_title_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_body_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__body": {
+        color: vars$$1["color_" + tint + "_body_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
+        borderTopColor: vars$$1["color_" + tint + "_body_border"]
+      },
+      ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
+        borderBottomStyle: "solid",
+        borderBottomColor: vars$$1["color_" + tint + "_body_border"]
+      }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
 var color = createColor({
   varFns: {
-    lightTintFns,
-    darkTintFns
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
   }
 });
 
-const max_width_side_padding_mobile = (selector, vars$$1) => {
-  const maxWidthBreakpointMobile = vars$$1.max_width + 2 * vars$$1.side_padding_mobile;
-  return {
-    ["@media (max-width: " + maxWidthBreakpointMobile + "px)"]: {
-      [selector]: {
-        maxWidth: `calc(100vw - ${2 * vars$$1.side_padding_mobile}px)`
-      }
-    },
-    ["@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)"]: {
-      [selector]: {
-        maxWidth: vars$$1.max_width + "px"
-      }
-    }
-  };
+var max_width_side_padding_mobile = function max_width_side_padding_mobile(selector, vars$$1) {
+  var _ref3;
+
+  var maxWidthBreakpointMobile = vars$$1.max_width + 2 * vars$$1.side_padding_mobile;
+  return _ref3 = {}, _defineProperty(_ref3, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty({}, selector, {
+    maxWidth: "calc(100vw - ".concat(2 * vars$$1.side_padding_mobile, "px)")
+  })), _defineProperty(_ref3, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty({}, selector, {
+    maxWidth: vars$$1.max_width + "px"
+  })), _ref3;
 };
 
-const padding_header_bottom = (selector, vars$$1) => sel(selector, {
-  " .pe-dialog-pane__header--title": {
-    paddingTop: vars$$1.padding - 4 + "px",
-    paddingRight: vars$$1.padding + "px",
-    paddingBottom: vars$$1.header_bottom - 4 + "px",
-    paddingLeft: vars$$1.padding + "px"
-  }
-});
+var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-dialog-pane__header--title": {
+      paddingTop: vars$$1.padding - 4 + "px",
+      paddingRight: vars$$1.padding + "px",
+      paddingBottom: vars$$1.header_bottom - 4 + "px",
+      paddingLeft: vars$$1.padding + "px"
+    }
+  });
+};
 /*
 Setting an explicit max-height is needed for IE 11
 */
 
 
-const header_height_footer_height_margin_vertical = (selector, vars$$1) => sel(selector, {
-  " .pe-dialog-pane__body": {
-    maxHeight: `calc(100vh - (${vars$$1.header_height}px + ${vars$$1.footer_height}px + 2 * ${vars$$1.margin_vertical}px))`
-  }
-});
+var header_height_footer_height_margin_vertical = function header_height_footer_height_margin_vertical(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-dialog-pane__body": {
+      maxHeight: "calc(100vh - (".concat(vars$$1.header_height, "px + ").concat(vars$$1.footer_height, "px + 2 * ").concat(vars$$1.margin_vertical, "px))")
+    }
+  });
+};
 
-const fullScreen = selector => sel(selector, {
-  " .pe-dialog-pane": {
-    borderRadius: 0
-  },
-  " .pe-dialog-pane__content": {
-    borderRadius: 0,
-    maxWidth: "none",
-    height: "100vh",
-    width: "100vw",
-    " > *": {
-      flexShrink: 0
+var fullScreen = function fullScreen(selector) {
+  return sel(selector, {
+    " .pe-dialog-pane": {
+      borderRadius: 0
     },
-    " > .pe-dialog-pane__body": {
-      flexShrink: 1,
-      maxHeight: "none" // IE 11 doesn't know "initial"
+    " .pe-dialog-pane__content": {
+      borderRadius: 0,
+      maxWidth: "none",
+      height: "100vh",
+      width: "100vw",
+      " > *": {
+        flexShrink: 0
+      },
+      " > .pe-dialog-pane__body": {
+        flexShrink: 1,
+        maxHeight: "none" // IE 11 doesn't know "initial"
+
+      }
+    },
+    " .pe-dialog-pane, .pe-dialog-pane__body": {
+      height: "100vh",
+      maxHeight: "100vh",
+      border: "none",
+      maxWidth: "none" // IE 11 doesn't know "initial"
 
     }
-  },
-  " .pe-dialog-pane, .pe-dialog-pane__body": {
-    height: "100vh",
-    maxHeight: "100vh",
-    border: "none",
-    maxWidth: "none" // IE 11 doesn't know "initial"
-
-  }
-});
-const varFns = {
-  general_styles: selector => [sel(selector, [flex.layoutVertical, {
-    position: "relative",
-    borderTopLeftRadius: "inherit",
-    borderTopRightRadius: "inherit",
-    borderBottomLeftRadius: "inherit",
-    borderBottomRightRadius: "inherit",
-    margin: 0,
-    " .pe-dialog-pane__content": {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
+  });
+};
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [flex.layoutVertical, {
+      position: "relative",
       borderTopLeftRadius: "inherit",
       borderTopRightRadius: "inherit",
       borderBottomLeftRadius: "inherit",
-      borderBottomRightRadius: "inherit"
-    },
-    " .pe-dialog-pane__title": {
-      fontSize: vars.font_size_title + "px",
-      fontWeight: vars.font_weight_medium,
-      "& + div": {
-        marginTop: "16px"
-      }
-    },
-    " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
-      borderTopLeftRadius: "inherit",
-      borderTopRightRadius: "inherit",
-      " .pe-dialog-pane__title": {
+      borderBottomRightRadius: "inherit",
+      margin: 0,
+      " .pe-dialog-pane__content": {
         width: "100%",
-        wordBreak: "break-all",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap"
-      }
-    },
-    " .pe-dialog-pane__body": [{
-      overflowY: "auto",
-      "-webkit-overflow-scrolling": "touch",
-      " p": {
-        margin: 0
-      },
-      " p + p": {
-        marginTop: "16px"
-      }
-    }],
-    ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
-      padding: 0,
-      borderStyle: "none"
-    },
-    " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
-      paddingTop: 0
-    },
-    " .pe-dialog-pane__footer": {
-      "&, > .pe-toolbar": {
+        display: "flex",
+        flexDirection: "column",
+        borderTopLeftRadius: "inherit",
+        borderTopRightRadius: "inherit",
         borderBottomLeftRadius: "inherit",
         borderBottomRightRadius: "inherit"
       },
-      ".pe-dialog-pane__footer--high": {
-        // when buttons are stacked vertically
-        paddingBottom: "8px"
+      " .pe-dialog-pane__title": {
+        fontSize: vars.font_size_title + "px",
+        fontWeight: vars.font_weight_medium,
+        "& + div": {
+          marginTop: "16px"
+        }
       },
-      ".pe-dialog-pane__footer--buttons": {
-        padding: "0 8px",
-        fontSize: 0 // remove inline block spacing
+      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
+        borderTopLeftRadius: "inherit",
+        borderTopRightRadius: "inherit",
+        " .pe-dialog-pane__title": {
+          width: "100%",
+          wordBreak: "break-all",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        }
+      },
+      " .pe-dialog-pane__body": [{
+        overflowY: "auto",
+        "-webkit-overflow-scrolling": "touch",
+        " p": {
+          margin: 0
+        },
+        " p + p": {
+          marginTop: "16px"
+        }
+      }],
+      ".pe-dialog-pane--body-full-bleed .pe-dialog-pane__body": {
+        padding: 0,
+        borderStyle: "none"
+      },
+      " .pe-dialog-pane__header--title + .pe-dialog-pane__body": {
+        paddingTop: 0
+      },
+      " .pe-dialog-pane__footer": {
+        "&, > .pe-toolbar": {
+          borderBottomLeftRadius: "inherit",
+          borderBottomRightRadius: "inherit"
+        },
+        ".pe-dialog-pane__footer--high": {
+          // when buttons are stacked vertically
+          paddingBottom: "8px"
+        },
+        ".pe-dialog-pane__footer--buttons": {
+          padding: "0 8px",
+          fontSize: 0 // remove inline block spacing
 
+        }
+      },
+      " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap],
+      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
+        " .pe-dialog-pane__body": {
+          borderTopStyle: "solid"
+        }
+      },
+      ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
+        " .pe-dialog-pane__body": {
+          borderBottomStyle: "solid"
+        }
       }
-    },
-    " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap],
-    ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-      " .pe-dialog-pane__body": {
-        borderTopStyle: "solid"
-      }
-    },
-    ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
-      " .pe-dialog-pane__body": {
-        borderBottomStyle: "solid"
-      }
-    }
-  }]), {
-    " .pe-dialog__content.pe-menu__content": {
-      [` ${selector}`]: {
+    }]), {
+      " .pe-dialog__content.pe-menu__content": _defineProperty({}, " ".concat(selector), {
         " .pe-dialog-pane__body": {
           padding: 0,
           border: "none"
         }
+      })
+    }];
+  },
+  max_width: function max_width(selector, vars$$1) {
+    return [max_width_side_padding_mobile(selector, vars$$1)];
+  },
+  side_padding_mobile: function side_padding_mobile(selector, vars$$1) {
+    return [max_width_side_padding_mobile(selector, vars$$1)];
+  },
+  min_width: function min_width(selector, vars$$1) {
+    return [sel(selector, {
+      minWidth: vars$$1.min_width + "px"
+    })];
+  },
+  margin_vertical: function margin_vertical(selector, vars$$1) {
+    return [sel(selector, {
+      maxHeight: "calc(100vh - 2 * ".concat(vars$$1.margin_vertical, "px)")
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+  },
+  line_height_title: function line_height_title(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__title": {
+        lineHeight: vars$$1.line_height_title + "px"
       }
-    }
-  }],
-  max_width: (selector, vars$$1) => [max_width_side_padding_mobile(selector, vars$$1)],
-  side_padding_mobile: (selector, vars$$1) => [max_width_side_padding_mobile(selector, vars$$1)],
-  min_width: (selector, vars$$1) => [sel(selector, {
-    minWidth: vars$$1.min_width + "px"
-  })],
-  margin_vertical: (selector, vars$$1) => [sel(selector, {
-    maxHeight: `calc(100vh - 2 * ${vars$$1.margin_vertical}px)`
-  }), header_height_footer_height_margin_vertical(selector, vars$$1)],
-  line_height_title: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__title": {
-      lineHeight: vars$$1.line_height_title + "px"
-    }
-  })],
-  header_height: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
-      minHeight: vars$$1.header_height + "px"
-    }
-  }), header_height_footer_height_margin_vertical(selector, vars$$1)],
-  footer_height: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__footer": {
-      minHeight: vars$$1.footer_height + "px"
-    }
-  }), header_height_footer_height_margin_vertical(selector, vars$$1)],
-  padding: (selector, vars$$1) => [sel(selector, {
-    " .pe-dialog-pane__body": {
-      padding: vars$$1.padding + "px"
-    },
-    ".pe-dialog-pane--footer": {
+    })];
+  },
+  header_height: function header_height(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
+        minHeight: vars$$1.header_height + "px"
+      }
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+  },
+  footer_height: function footer_height(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-dialog-pane__footer": {
+        minHeight: vars$$1.footer_height + "px"
+      }
+    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+  },
+  padding: function padding(selector, vars$$1) {
+    return [sel(selector, {
       " .pe-dialog-pane__body": {
-        paddingBottom: vars$$1.padding - 10 + "px"
+        padding: vars$$1.padding + "px"
+      },
+      ".pe-dialog-pane--footer": {
+        " .pe-dialog-pane__body": {
+          paddingBottom: vars$$1.padding - 10 + "px"
+        }
       }
-    }
-  }), padding_header_bottom(selector, vars$$1)],
-  header_bottom: (selector, vars$$1) => [padding_header_bottom(selector, vars$$1)],
-  border_width: (selector, vars$$1) => [sel(selector, {
-    ".pe-dialog-pane--header": {
-      " .pe-dialog-pane__body": {
-        // borderTopStyle set in color.js
-        borderWidth: vars$$1.border_width + "px"
+    }), padding_header_bottom(selector, vars$$1)];
+  },
+  header_bottom: function header_bottom(selector, vars$$1) {
+    return [padding_header_bottom(selector, vars$$1)];
+  },
+  border_width: function border_width(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-dialog-pane--header": {
+        " .pe-dialog-pane__body": {
+          // borderTopStyle set in color.js
+          borderWidth: vars$$1.border_width + "px"
+        }
+      },
+      ".pe-dialog-pane--footer": {
+        " .pe-dialog-pane__body": {
+          // borderBottomStyle set in color.js
+          borderWidth: vars$$1.border_width + "px"
+        }
       }
-    },
-    ".pe-dialog-pane--footer": {
-      " .pe-dialog-pane__body": {
-        // borderBottomStyle set in color.js
-        borderWidth: vars$$1.border_width + "px"
-      }
-    }
-  })]
+    })];
+  }
 };
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
 var vars$1 = {
@@ -292,13 +357,13 @@ var vars$1 = {
   color_dark_background: "inherit"
 };
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout, color];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

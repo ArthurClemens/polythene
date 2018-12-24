@@ -1,5 +1,23 @@
 import { filterSupportedAttributes } from 'polythene-core';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-search",
   // elements
@@ -9,38 +27,40 @@ var classes = {
   searchInset: "pe-search--inset"
 };
 
-const getElement = vnode => vnode.attrs.element || "div";
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 
-const getNameOfState = state => state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
+var getNameOfState = function getNameOfState(state) {
+  return state.focus && state.dirty ? "focus_dirty" : state.focus ? "focus" : state.dirty ? "dirty" : "none";
+};
 
-const getInitialState = (vnode, createStream) => {
-  const searchState = createStream({});
+var getInitialState = function getInitialState(vnode, createStream) {
+  var searchState = createStream({});
   return {
-    searchState
+    searchState: searchState
   };
 };
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
+  var attrs = vnode.attrs;
+  return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.fullWidth ? classes.searchFullWidth : classes.searchInset, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };
-const createContent = (vnode, {
-  renderer: h,
-  TextField
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  const searchState = getNameOfState(state.searchState());
-  const buttons = (attrs.buttons || {})[searchState] || {};
-  const textfieldAttrs = attrs.textfield || {};
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      TextField = _ref2.TextField;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var searchState = getNameOfState(state.searchState());
+  var buttons = (attrs.buttons || {})[searchState] || {};
+  var textfieldAttrs = attrs.textfield || {};
   return h("div", {
     className: classes.content
-  }, [buttons.before, h(TextField, Object.assign({}, textfieldAttrs, {
+  }, [buttons.before, h(TextField, _extends({}, textfieldAttrs, {
     key: "input",
-    onChange: newState => {
+    onChange: function onChange(newState) {
       state.searchState(newState);
 
       if (textfieldAttrs.onChange) {

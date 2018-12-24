@@ -3,7 +3,7 @@ import h from 'react-hyperscript';
 import ReactDOM from 'react-dom';
 import { isClient } from 'polythene-core';
 
-const keys = {
+var keys = {
   autocomplete: "autoComplete",
   autofocus: "autoFocus",
   class: "className",
@@ -33,82 +33,198 @@ const keys = {
   tabindex: "tabIndex"
 };
 
-/*
-Takes a Mithril component object and returns a React component (for keys oninit and view).
-Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
-
-Example: 
-
-import stream from "mithril/stream";
-import { renderer as h, Button } from "polythene-react";
-
-const StateComponent = {
-  oninit: vnode => {
-    const checked = stream(false);
-    Object.assign(vnode.state, {
-      checked,
-      redrawOnUpdate: stream.merge([checked])
-    });
-  },
-  view: vnode => {
-    const state = vnode.state;
-    const attrs = vnode.attrs;
-    const checked = state.checked();
-    return h(Button, {
-      raised: true,
-      label: `Click ${attrs.subject} to switch ${checked ? "Off" : "On"}`,
-      events: {
-        [keys.onclick]: () => state.checked(!checked)
-      }
-    });
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
   }
-};
 
-h(StateComponent, { subject: "airco"});
-*/
-const MithrilToReact = component => class extends React.Component {
-  constructor(props) {
-    super(props);
-    const vnode = Object.assign({}, component, {
-      state: {},
-      attrs: this.props,
-      redrawValues: undefined
-    });
+  return _typeof(obj);
+}
 
-    if (component.oninit) {
-      component.oninit(vnode);
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
     }
 
-    this.state = vnode;
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
 
-  componentDidMount() {
-    this._mounted = true;
-    this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(values => {
-      if (this._mounted) {
-        this.setState({
-          redrawValues: values
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+var MithrilToReact = function MithrilToReact(component) {
+  return (
+    /*#__PURE__*/
+    function (_React$Component) {
+      _inherits(_class, _React$Component);
+
+      function _class(props) {
+        var _this;
+
+        _classCallCheck(this, _class);
+
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this, props));
+
+        var vnode = _extends({}, component, {
+          state: {},
+          attrs: _this.props,
+          redrawValues: undefined
         });
+
+        if (component.oninit) {
+          component.oninit(vnode);
+        }
+
+        _this.state = vnode;
+        return _this;
       }
-    });
-  }
 
-  componentWillUnmount() {
-    this._mounted = false;
-  }
+      _createClass(_class, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+          var _this2 = this;
 
-  render() {
-    return component.view({
-      state: this.state.state,
-      attrs: this.props
-    }, this.props.children);
-  }
+          this._mounted = true;
+          this.state.state.redrawOnUpdate && this.state.state.redrawOnUpdate.map(function (values) {
+            if (_this2._mounted) {
+              _this2.setState({
+                redrawValues: values
+              });
+            }
+          });
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          this._mounted = false;
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return component.view({
+            state: this.state.state,
+            attrs: this.props
+          }, this.props.children);
+        }
+      }]);
 
+      return _class;
+    }(React.Component)
+  );
 };
 
-const renderer = (...args) => typeof args[0] === "object" ? h.call(null, MithrilToReact(args[0]), ...args.slice(1)) : h.call(null, ...args);
+var renderer = function renderer() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
 
-renderer.trust = (html, element = "div") => {
+  return _typeof(args[0]) === "object" ? h.call.apply(h, [null, MithrilToReact(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [null].concat(args));
+};
+
+renderer.trust = function (html) {
+  var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "div";
   if (html == null) html = "";
   return h(element, {
     dangerouslySetInnerHTML: {
@@ -285,157 +401,227 @@ module["exports"] = createStream;
 
 var stream$1 = stream;
 
-const requiresKeys = true;
-const StateComponent = ({
-  createContent = () => {},
-  createProps = () => ({}),
-  getElement = () => "div",
-  component,
-  getInitialState = () => ({}),
-  onMount = () => {},
-  onUnMount = () => {},
-  onUpdate = () => {},
-  view = null
-}) => {
-  return class extends React.Component {
-    constructor(props) {
-      super(props);
-      this.dom = null;
-      const protoState = Object.assign({}, component, this.createVirtualNode(), {
-        redrawValues: undefined
-      });
-      this.state = getInitialState(protoState, stream$1, {
-        keys
-      });
-      this.registerDOM = this.registerDOM.bind(this);
-      this._render = this._render.bind(this);
-    }
+var requiresKeys = true;
+var StateComponent = function StateComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === void 0 ? function () {
+    return "div";
+  } : _ref$getElement,
+      component = _ref.component,
+      _ref$getInitialState = _ref.getInitialState,
+      getInitialState = _ref$getInitialState === void 0 ? function () {
+    return {};
+  } : _ref$getInitialState,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount,
+      _ref$onUpdate = _ref.onUpdate,
+      onUpdate = _ref$onUpdate === void 0 ? function () {} : _ref$onUpdate,
+      _ref$view = _ref.view,
+      view = _ref$view === void 0 ? null : _ref$view;
+  return (
+    /*#__PURE__*/
+    function (_React$Component) {
+      _inherits(_class, _React$Component);
 
-    componentDidMount() {
-      this._mounted = true;
-      this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(values => setTimeout(() => this._mounted && this.setState({
-        redrawValues: values
-      }), 0));
-      onMount(this.createVirtualNode(), {
-        keys
-      });
-    }
+      function _class(props) {
+        var _this;
 
-    componentDidUpdate() {
-      onUpdate(this.createVirtualNode());
-    }
+        _classCallCheck(this, _class);
 
-    componentWillUnmount() {
-      this._mounted = false;
-      onUnMount(this.createVirtualNode());
-    }
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this, props));
+        _this.dom = null;
 
-    createVirtualNode() {
-      return {
-        state: this.state,
-        attrs: this.props,
-        children: this.props.children,
-        dom: this.dom
-      };
-    }
+        var protoState = _extends({}, component, _this.createVirtualNode(), {
+          redrawValues: undefined
+        });
 
-    registerDOM(el) {
-      if (isClient && !this.dom && el) {
-        this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+        _this.state = getInitialState(protoState, stream$1, {
+          keys: keys
+        });
+        _this.registerDOM = _this.registerDOM.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+        _this._render = _this._render.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+        return _this;
       }
-    }
 
-    _render() {
-      const vnode = this.createVirtualNode();
-      return renderer(component || getElement(vnode), Object.assign({}, createProps(vnode, {
-        renderer,
-        requiresKeys,
-        keys
-      }), {
-        ref: this.registerDOM
-      }), [vnode.attrs.before, createContent(vnode, {
-        renderer,
-        requiresKeys,
-        keys
-      }), vnode.attrs.after]);
-    }
+      _createClass(_class, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+          var _this2 = this;
 
-    render() {
-      return view ? view(this.createVirtualNode(), {
-        renderer,
-        render: this._render
-      }) : this._render(this.props);
-    }
+          this._mounted = true;
+          this.state.redrawOnUpdate && this.state.redrawOnUpdate.map(function (values) {
+            return setTimeout(function () {
+              return _this2._mounted && _this2.setState({
+                redrawValues: values
+              });
+            }, 0);
+          });
+          onMount(this.createVirtualNode(), {
+            keys: keys
+          });
+        }
+      }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+          onUpdate(this.createVirtualNode());
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          this._mounted = false;
+          onUnMount(this.createVirtualNode());
+        }
+      }, {
+        key: "createVirtualNode",
+        value: function createVirtualNode() {
+          return {
+            state: this.state,
+            attrs: this.props,
+            children: this.props.children,
+            dom: this.dom
+          };
+        }
+      }, {
+        key: "registerDOM",
+        value: function registerDOM(el) {
+          if (isClient && !this.dom && el) {
+            this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+          }
+        }
+      }, {
+        key: "_render",
+        value: function _render() {
+          var vnode = this.createVirtualNode();
+          return renderer(component || getElement(vnode), _extends({}, createProps(vnode, {
+            renderer: renderer,
+            requiresKeys: requiresKeys,
+            keys: keys
+          }), {
+            ref: this.registerDOM
+          }), [vnode.attrs.before, createContent(vnode, {
+            renderer: renderer,
+            requiresKeys: requiresKeys,
+            keys: keys
+          }), vnode.attrs.after]);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return view ? view(this.createVirtualNode(), {
+            renderer: renderer,
+            render: this._render
+          }) : this._render(this.props);
+        }
+      }]);
 
-  };
+      return _class;
+    }(React.Component)
+  );
 };
 
-const requiresKeys$1 = true;
-const ViewComponent = ({
-  createContent = () => {},
-  createProps = () => ({}),
-  getElement = () => "div",
-  onMount = () => {},
-  onUnMount = () => {},
-  component,
-  view = null
-}) => {
-  return class extends React.Component {
-    constructor(props) {
-      super(props);
-      this.dom = null;
-      this.registerDOM = this.registerDOM.bind(this);
-      this._render = this._render.bind(this);
-    }
+var requiresKeys$1 = true;
+var ViewComponent = function ViewComponent(_ref) {
+  var _ref$createContent = _ref.createContent,
+      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      _ref$createProps = _ref.createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
+      _ref$getElement = _ref.getElement,
+      getElement = _ref$getElement === void 0 ? function () {
+    return "div";
+  } : _ref$getElement,
+      _ref$onMount = _ref.onMount,
+      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      _ref$onUnMount = _ref.onUnMount,
+      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount,
+      component = _ref.component,
+      _ref$view = _ref.view,
+      view = _ref$view === void 0 ? null : _ref$view;
+  return (
+    /*#__PURE__*/
+    function (_React$Component) {
+      _inherits(_class, _React$Component);
 
-    componentDidMount() {
-      onMount(this.createVirtualNode(), {
-        keys
-      });
-    }
+      function _class(props) {
+        var _this;
 
-    componentWillUnmount() {
-      onUnMount(this.createVirtualNode());
-    }
+        _classCallCheck(this, _class);
 
-    createVirtualNode() {
-      const props = Object.assign({}, this.props);
-      return {
-        attrs: props,
-        children: props.children,
-        dom: this.dom
-      };
-    }
-
-    registerDOM(el) {
-      if (isClient && !this.dom && el) {
-        this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this, props));
+        _this.dom = null;
+        _this.registerDOM = _this.registerDOM.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+        _this._render = _this._render.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+        return _this;
       }
-    }
 
-    _render() {
-      const vnode = this.createVirtualNode();
-      return renderer(component || getElement(vnode), Object.assign({}, createProps(vnode, {
-        renderer,
-        requiresKeys: requiresKeys$1,
-        keys
-      }), {
-        ref: this.registerDOM
-      }), [vnode.attrs.before, createContent(vnode, {
-        renderer,
-        requiresKeys: requiresKeys$1,
-        keys
-      }), vnode.attrs.after]);
-    }
+      _createClass(_class, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+          onMount(this.createVirtualNode(), {
+            keys: keys
+          });
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          onUnMount(this.createVirtualNode());
+        }
+      }, {
+        key: "createVirtualNode",
+        value: function createVirtualNode() {
+          var props = _extends({}, this.props);
 
-    render() {
-      return view ? view(this.createVirtualNode(), {
-        renderer,
-        render: this._render
-      }) : this._render(this.props);
-    }
+          return {
+            attrs: props,
+            children: props.children,
+            dom: this.dom
+          };
+        }
+      }, {
+        key: "registerDOM",
+        value: function registerDOM(el) {
+          if (isClient && !this.dom && el) {
+            this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
+          }
+        }
+      }, {
+        key: "_render",
+        value: function _render() {
+          var vnode = this.createVirtualNode();
+          return renderer(component || getElement(vnode), _extends({}, createProps(vnode, {
+            renderer: renderer,
+            requiresKeys: requiresKeys$1,
+            keys: keys
+          }), {
+            ref: this.registerDOM
+          }), [vnode.attrs.before, createContent(vnode, {
+            renderer: renderer,
+            requiresKeys: requiresKeys$1,
+            keys: keys
+          }), vnode.attrs.after]);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return view ? view(this.createVirtualNode(), {
+            renderer: renderer,
+            render: this._render
+          }) : this._render(this.props);
+        }
+      }]);
 
-  };
+      return _class;
+    }(React.Component)
+  );
 };
 
 export { keys, MithrilToReact, renderer, StateComponent, ViewComponent };

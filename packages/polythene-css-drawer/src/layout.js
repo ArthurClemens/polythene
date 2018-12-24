@@ -103,12 +103,12 @@ const push_content_width = (pushSelector, vars) => [
   _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars, false),
 ];
 
-const cover = selector =>
+const cover = (selector, vars) =>
   sel(selector, {
     " .pe-dialog__content": {
       position: "absolute",
       top: 0,
-      zIndex: themeVars.z_drawer,
+      zIndex: vars.z_index,
     },
     ".pe-dialog--visible": {
       " .pe-dialog__touch": {
@@ -233,7 +233,7 @@ const varFns = {
         ".pe-drawer--floating": floating(selector, vars),
 
         // Cover (default)
-        ".pe-drawer--cover": cover(selector),
+        ".pe-drawer--cover": cover(selector, vars),
 
         // Push
         ".pe-drawer--push": push(selector, vars),

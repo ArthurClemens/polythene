@@ -1,6 +1,39 @@
 import { deprecation, isTouch, isRTL, subscribe, unsubscribe, filterSupportedAttributes } from 'polythene-core';
 import { scrollTo } from 'polythene-utilities';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var buttonClasses = {
   component: "pe-text-button",
   super: "pe-button",
@@ -51,36 +84,40 @@ var classes = {
   label: buttonClasses.label
 };
 
-const SCROLL_SPEED = 600; // px per second
+var SCROLL_SPEED = 600; // px per second
 
-const SCROLL_DELAY = .15; // seconds
+var SCROLL_DELAY = .15; // seconds
 
-const SCROLL_MIN_DURATION = .5; // seconds
+var SCROLL_MIN_DURATION = .5; // seconds
 
-const INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
+var INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
 
-const whenCreateDone = () => Promise.resolve();
-
-const getIndex = (state, attrs) => {
-  const attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined ? attrs.selectedTabIndex : attrs.selectedTab !== undefined // deprecated
-  ? attrs.selectedTab : undefined;
-  return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : Array.isArray(attrs.tabs) ? attrs.tabs.reduce((acc, tab, index) => acc === undefined && !tab.disabled ? index : acc, undefined) : undefined;
+var whenCreateDone = function whenCreateDone() {
+  return Promise.resolve();
 };
 
-const scrollButtonGetNewIndex = (index, tabs) => {
-  const minTabIndex = 0;
-  const maxTabIndex = tabs.length - 1;
+var getIndex = function getIndex(state, attrs) {
+  var attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined ? attrs.selectedTabIndex : attrs.selectedTab !== undefined // deprecated
+  ? attrs.selectedTab : undefined;
+  return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : Array.isArray(attrs.tabs) ? attrs.tabs.reduce(function (acc, tab, index) {
+    return acc === undefined && !tab.disabled ? index : acc;
+  }, undefined) : undefined;
+};
+
+var scrollButtonGetNewIndex = function scrollButtonGetNewIndex(index, tabs) {
+  var minTabIndex = 0;
+  var maxTabIndex = tabs.length - 1;
   return {
     backward: Math.max(index - 1, minTabIndex),
     forward: Math.min(index + 1, maxTabIndex)
   };
 };
 
-const handleScrollButtonClick = (state, attrs, e, direction) => {
+var handleScrollButtonClick = function handleScrollButtonClick(state, attrs, e, direction) {
   e.stopPropagation();
   e.preventDefault();
-  const currentTabIndex = state.selectedTabIndex();
-  const newIndex = scrollButtonGetNewIndex(currentTabIndex, state.tabs)[direction];
+  var currentTabIndex = state.selectedTabIndex();
+  var newIndex = scrollButtonGetNewIndex(currentTabIndex, state.tabs)[direction];
 
   if (newIndex !== currentTabIndex) {
     setSelectedTab(state, attrs, newIndex, true);
@@ -89,65 +126,69 @@ const handleScrollButtonClick = (state, attrs, e, direction) => {
   }
 };
 
-const scrollToTab = (state, tabIndex) => {
-  const tabs = state.tabs;
-  const scroller = state.tabRowEl; // Scroll to position of selected tab
+var scrollToTab = function scrollToTab(state, tabIndex) {
+  var tabs = state.tabs;
+  var scroller = state.tabRowEl; // Scroll to position of selected tab
 
-  const tabLeft = tabs.slice(0, tabIndex).reduce((totalWidth, tabData) => totalWidth + tabData.dom.getBoundingClientRect().width, 0); // Tabs at the far right will not fully move to the left
+  var tabLeft = tabs.slice(0, tabIndex).reduce(function (totalWidth, tabData) {
+    return totalWidth + tabData.dom.getBoundingClientRect().width;
+  }, 0); // Tabs at the far right will not fully move to the left
   // because the scrollable row will stick to the right 
   // to get the max scroll left, we subtract the visible viewport from the scroll width
 
-  const scrollerWidth = scroller.getBoundingClientRect().width; // frame width
+  var scrollerWidth = scroller.getBoundingClientRect().width; // frame width
 
-  const scrollingWidth = scroller.scrollWidth;
-  const maxScroll = scrollingWidth - scrollerWidth;
-  const left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
-  const currentLeft = scroller.scrollLeft;
+  var scrollingWidth = scroller.scrollWidth;
+  var maxScroll = scrollingWidth - scrollerWidth;
+  var left = state.isRTL ? -1 * Math.min(tabLeft, maxScroll) : Math.min(tabLeft, maxScroll);
+  var currentLeft = scroller.scrollLeft;
 
   if (currentLeft !== left) {
-    const duration = Math.abs(currentLeft - left) / SCROLL_SPEED;
-    const delaySeconds = SCROLL_DELAY;
-    setTimeout(() => {
+    var duration = Math.abs(currentLeft - left) / SCROLL_SPEED;
+    var delaySeconds = SCROLL_DELAY;
+    setTimeout(function () {
       scrollTo({
         element: scroller,
         to: left,
         duration: Math.max(SCROLL_MIN_DURATION, duration),
         direction: "horizontal"
-      }).then(() => updateScrollButtons(state));
+      }).then(function () {
+        return updateScrollButtons(state);
+      });
     }, delaySeconds * 1000);
   }
 };
 
-const updateScrollButtons = state => {
-  const tabRowEl = state.tabRowEl;
-  const scrollLeft = tabRowEl.scrollLeft;
-  const currentTabIndex = state.selectedTabIndex();
-  const tabsEl = state.tabsEl;
-  const minTabIndex = 0;
-  const maxTabIndex = state.tabs.length - 1;
-  const isAtStart = tabRowEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
-  const isAtEnd = scrollLeft >= tabRowEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
+var updateScrollButtons = function updateScrollButtons(state) {
+  var tabRowEl = state.tabRowEl;
+  var scrollLeft = tabRowEl.scrollLeft;
+  var currentTabIndex = state.selectedTabIndex();
+  var tabsEl = state.tabsEl;
+  var minTabIndex = 0;
+  var maxTabIndex = state.tabs.length - 1;
+  var isAtStart = tabRowEl.scrollLeft === 0 && currentTabIndex === minTabIndex;
+  var isAtEnd = scrollLeft >= tabRowEl.scrollWidth - tabsEl.getBoundingClientRect().width - 1 && currentTabIndex === maxTabIndex;
   state.scrollButtonAtStart(isAtStart);
   state.scrollButtonAtEnd(isAtEnd);
 };
 
-const animateIndicator = (selectedTabEl, animate, state) => {
-  const parentRect = state.tabsEl.getBoundingClientRect();
-  const rect = selectedTabEl.getBoundingClientRect();
-  const buttonSize = state.managesScroll ? rect.height : 0;
-  const translateX = state.isRTL ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
-  const scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
-  const transformCmd = `translate(${translateX}px, 0) scaleX(${scaleX})`;
-  const duration = animate ? INDICATOR_SLIDE_MIN_DURATION : 0;
-  const style = state.tabIndicatorEl.style;
+var animateIndicator = function animateIndicator(selectedTabEl, animate, state) {
+  var parentRect = state.tabsEl.getBoundingClientRect();
+  var rect = selectedTabEl.getBoundingClientRect();
+  var buttonSize = state.managesScroll ? rect.height : 0;
+  var translateX = state.isRTL ? rect.right - parentRect.right + state.tabRowEl.scrollLeft + buttonSize : rect.left - parentRect.left + state.tabRowEl.scrollLeft - buttonSize;
+  var scaleX = 1 / (parentRect.width - 2 * buttonSize) * rect.width;
+  var transformCmd = "translate(".concat(translateX, "px, 0) scaleX(").concat(scaleX, ")");
+  var duration = animate ? INDICATOR_SLIDE_MIN_DURATION : 0;
+  var style = state.tabIndicatorEl.style;
   style["transition-duration"] = duration + "s";
   style.transform = transformCmd;
 };
 
-const setSelectedTab = (state, attrs, index, animate) => {
+var setSelectedTab = function setSelectedTab(state, attrs, index, animate) {
   state.selectedTabIndex(index);
   if (!state.tabs.length) return;
-  const selectedTabEl = state.tabs[index].dom;
+  var selectedTabEl = state.tabs[index].dom;
 
   if (selectedTabEl && state.tabIndicatorEl && state.tabsEl) {
     animateIndicator(selectedTabEl, animate, state);
@@ -161,18 +202,20 @@ const setSelectedTab = (state, attrs, index, animate) => {
 
   if (attrs.onChange) {
     attrs.onChange({
-      index,
+      index: index,
       options: state.tabs[index].attrs,
       el: selectedTabEl
     });
   }
 };
 
-const sortByLargestWidth = (a, b) => a < b ? 1 : a > b ? -1 : 0;
+var sortByLargestWidth = function sortByLargestWidth(a, b) {
+  return a < b ? 1 : a > b ? -1 : 0;
+};
 
-const getInitialState = (vnode, createStream) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var state = vnode.state;
+  var attrs = vnode.attrs;
 
   if (attrs.selectedTab !== undefined) {
     deprecation("Tabs", {
@@ -181,14 +224,22 @@ const getInitialState = (vnode, createStream) => {
     });
   }
 
-  const tabIndex = getIndex(state, attrs) || 0;
-  const selectedTabIndex = createStream(tabIndex);
-  const scrollButtonAtStart = createStream(true);
-  const scrollButtonAtEnd = createStream(true);
+  var tabIndex = getIndex(state, attrs) || 0;
+  var selectedTabIndex = createStream(tabIndex);
+  var scrollButtonAtStart = createStream(true);
+  var scrollButtonAtEnd = createStream(true);
 
-  const registerTabButton = state => (index, data) => state.tabs[index] = data;
+  var registerTabButton = function registerTabButton(state) {
+    return function (index, data) {
+      return state.tabs[index] = data;
+    };
+  };
 
-  const registerScrollButton = state => (position, dom) => state.scrollButtons[position] = dom;
+  var registerScrollButton = function registerScrollButton(state) {
+    return function (position, dom) {
+      return state.scrollButtons[position] = dom;
+    };
+  };
 
   return {
     tabsEl: undefined,
@@ -197,142 +248,156 @@ const getInitialState = (vnode, createStream) => {
     // {data, el}
     tabRow: undefined,
     tabIndicatorEl: undefined,
-    selectedTabIndex,
+    selectedTabIndex: selectedTabIndex,
     previousSelectedTabIndex: undefined,
     managesScroll: attrs.scrollable && !isTouch,
-    scrollButtonAtStart,
-    scrollButtonAtEnd,
+    scrollButtonAtStart: scrollButtonAtStart,
+    scrollButtonAtEnd: scrollButtonAtEnd,
     scrollButtons: {
       start: undefined,
       end: undefined
     },
-    registerTabButton,
-    registerScrollButton,
+    registerTabButton: registerTabButton,
+    registerScrollButton: registerScrollButton,
     isRTL: false,
     cleanUp: undefined,
     // set in onMount
     redrawOnUpdate: createStream.merge([selectedTabIndex, scrollButtonAtStart, scrollButtonAtEnd])
   };
 };
-const onMount = vnode => {
+var onMount = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+  var dom = vnode.dom;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
   state.tabsEl = dom;
   state.isRTL = isRTL({
     element: dom
   });
 
   if (!attrs.hideIndicator) {
-    state.tabIndicatorEl = dom.querySelector(`.${classes.indicator}`);
+    state.tabIndicatorEl = dom.querySelector(".".concat(classes.indicator));
   }
 
-  state.tabRowEl = dom.querySelector(`.${classes.tabRow}`);
+  state.tabRowEl = dom.querySelector(".".concat(classes.tabRow));
 
-  const redrawLargestWidth = () => {
+  var redrawLargestWidth = function redrawLargestWidth() {
     if (state.tabs && attrs.largestWidth) {
-      const widths = state.tabs.map(tabData => tabData.dom.getBoundingClientRect().width);
-      const largest = widths.sort(sortByLargestWidth)[0];
-      state.tabs.forEach(tabData => tabData.dom.style.width = largest + "px");
+      var widths = state.tabs.map(function (tabData) {
+        return tabData.dom.getBoundingClientRect().width;
+      });
+      var largest = widths.sort(sortByLargestWidth)[0];
+      state.tabs.forEach(function (tabData) {
+        return tabData.dom.style.width = largest + "px";
+      });
     }
   };
 
-  const redraw = () => (redrawLargestWidth(), setSelectedTab(state, attrs, state.selectedTabIndex(), false));
+  var redraw = function redraw() {
+    return redrawLargestWidth(), setSelectedTab(state, attrs, state.selectedTabIndex(), false);
+  };
 
-  const handleFontEvent = ({
-    name
-  }) => name === "active" || name === "inactive" ? redraw() : null;
+  var handleFontEvent = function handleFontEvent(_ref) {
+    var name = _ref.name;
+    return name === "active" || name === "inactive" ? redraw() : null;
+  };
 
   subscribe("resize", redraw);
   subscribe("webfontloader", handleFontEvent);
 
-  state.cleanUp = () => (unsubscribe("resize", redraw), unsubscribe("webfontloader", handleFontEvent)); // A promise can't resolve during the oncreate loop
+  state.cleanUp = function () {
+    return unsubscribe("resize", redraw), unsubscribe("webfontloader", handleFontEvent);
+  }; // A promise can't resolve during the oncreate loop
   // The Mithril draw loop is synchronous - there is no delay between one this oncreate and the tab button's oncreate
 
 
   whenCreateDone().then(redraw);
 };
-const onUnMount = ({
-  state
-}) => state.cleanUp();
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  const autofit = attrs.scrollable || attrs.centered ? false : attrs.autofit ? true : false; // Keep selected tab up to date
+var onUnMount = function onUnMount(_ref2) {
+  var state = _ref2.state;
+  return state.cleanUp();
+};
+var createProps = function createProps(vnode, _ref3) {
+  var k = _ref3.keys;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var autofit = attrs.scrollable || attrs.centered ? false : attrs.autofit ? true : false; // Keep selected tab up to date
 
-  const index = getIndex(state, attrs);
+  var index = getIndex(state, attrs);
 
   if (index !== undefined && state.previousSelectedTabIndex !== index) {
     setSelectedTab(state, attrs, index, true);
   }
 
   state.previousSelectedTabIndex = index;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.scrollButtonAtStart() ? classes.isAtStart : null, state.scrollButtonAtEnd() ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
-const createContent = (vnode, {
-  renderer: h,
-  keys: k,
-  Tab,
-  ScrollButton
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  const buttons = attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
+var createContent = function createContent(vnode, _ref4) {
+  var h = _ref4.renderer,
+      k = _ref4.keys,
+      Tab = _ref4.Tab,
+      ScrollButton = _ref4.ScrollButton;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var buttons = attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
 
   if (buttons.length === 0) {
     console.error("No tabs specified"); // eslint-disable-line no-console
   }
 
-  const tabRow = buttons.map((buttonOpts = {}, index) => {
-    const buttonOptsCombined = Object.assign({}, buttonOpts, {
+  var tabRow = buttons.map(function () {
+    var buttonOpts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var index = arguments.length > 1 ? arguments[1] : undefined;
+
+    var buttonOptsCombined = _extends({}, buttonOpts, {
       // These options can be overridden by `all`
       selected: index === state.selectedTabIndex(),
       animateOnTap: attrs.animateOnTap !== false ? true : false
     }, attrs.all, {
       // Internal options, should not get overridden
-      index,
-      key: buttonOpts.key || `tab-${index}`,
+      index: index,
+      key: buttonOpts.key || "tab-".concat(index),
       register: state.registerTabButton(state),
-      onSelect: () => setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true)
+      onSelect: function onSelect() {
+        return setSelectedTab(state, attrs, index, attrs.noIndicatorSlide ? false : true);
+      }
     });
+
     return h(Tab, buttonOptsCombined);
   });
-  let scrollButtonAtStart, scrollButtonAtEnd;
+  var scrollButtonAtStart, scrollButtonAtEnd;
 
   if (attrs.scrollable) {
-    scrollButtonAtStart = h(ScrollButton, Object.assign({}, {
+    scrollButtonAtStart = h(ScrollButton, _extends({}, {
       key: "backward",
       icon: attrs.scrollIconBackward,
       className: classes.scrollButtonAtStart,
       position: "start",
       register: state.registerScrollButton(state),
-      events: {
-        [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "backward")
-      },
+      events: _defineProperty({}, k.onclick, function (e) {
+        return handleScrollButtonClick(state, attrs, e, "backward");
+      }),
       isRTL: state.isRTL
     }));
-    scrollButtonAtEnd = h(ScrollButton, Object.assign({}, {
+    scrollButtonAtEnd = h(ScrollButton, _extends({}, {
       key: "forward",
       icon: attrs.scrollIconForward,
       className: classes.scrollButtonAtEnd,
       position: "end",
       register: state.registerScrollButton(state),
-      events: {
-        [k.onclick]: e => handleScrollButtonClick(state, attrs, e, "forward")
-      },
+      events: _defineProperty({}, k.onclick, function (e) {
+        return handleScrollButtonClick(state, attrs, e, "forward");
+      }),
       isRTL: state.isRTL
     }));
   }
 
-  const tabIndicator = attrs.hideIndicator ? null : h("div", {
+  var tabIndicator = attrs.hideIndicator ? null : h("div", {
     key: "indicator",
     className: classes.indicator
   });
@@ -350,30 +415,29 @@ var tabs = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-const onMount$1 = vnode => {
+var onMount$1 = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const attrs = vnode.attrs;
+  var dom = vnode.dom;
+  var attrs = vnode.attrs;
   attrs.register(attrs.index, {
-    attrs,
-    dom
+    attrs: attrs,
+    dom: dom
   });
 };
-const createProps$1 = (vnode, {
-  renderer: h,
-  keys: k,
-  Icon
-}) => {
-  const attrs = vnode.attrs; // Let internal onclick function co-exist with passed button option
+var createProps$1 = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      k = _ref.keys,
+      Icon = _ref.Icon;
+  var attrs = vnode.attrs; // Let internal onclick function co-exist with passed button option
 
   attrs.events = attrs.events || {};
 
-  attrs.events[k.onclick] = attrs.events[k.onclick] || (() => {});
+  attrs.events[k.onclick] = attrs.events[k.onclick] || function () {};
 
-  return Object.assign({}, attrs, {
+  return _extends({}, attrs, {
     content: h("div", {
       className: classes.tabContent
     }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.label ? h("div", {
@@ -383,15 +447,15 @@ const createProps$1 = (vnode, {
     selected: attrs.selected,
     wash: false,
     ripple: true,
-    events: Object.assign({}, attrs.events, {
-      [k.onclick]: e => {
-        attrs.onSelect();
-        attrs.events[k.onclick](e);
-      }
-    })
+    events: _extends({}, attrs.events, _defineProperty({}, k.onclick, function (e) {
+      attrs.onSelect();
+      attrs.events[k.onclick](e);
+    }))
   });
 };
-const createContent$1 = vnode => vnode.children;
+var createContent$1 = function createContent(vnode) {
+  return vnode.children;
+};
 
 var tab = /*#__PURE__*/Object.freeze({
   onMount: onMount$1,
@@ -399,23 +463,22 @@ var tab = /*#__PURE__*/Object.freeze({
   createContent: createContent$1
 });
 
-const arrowBackward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>";
-const arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
-const onMount$2 = vnode => {
+var arrowBackward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\"/></svg>";
+var arrowForward = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"/></svg>";
+var onMount$2 = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const attrs = vnode.attrs;
+  var dom = vnode.dom;
+  var attrs = vnode.attrs;
   attrs.register(attrs.position, dom);
 };
-const createProps$2 = (vnode, {
-  renderer: h,
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  const icon = attrs.position === "start" ? attrs.icon || {
+var createProps$2 = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      k = _ref.keys;
+  var attrs = vnode.attrs;
+  var icon = attrs.position === "start" ? attrs.icon || {
     svg: {
       content: h.trust(attrs.isRTL ? arrowForward : arrowBackward)
     }
@@ -426,7 +489,7 @@ const createProps$2 = (vnode, {
   };
   return {
     className: [classes.scrollButton, attrs.className || attrs[k.class]].join(" "),
-    icon,
+    icon: icon,
     ripple: {
       center: true
     },

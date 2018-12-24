@@ -1,5 +1,38 @@
 import { filterSupportedAttributes, pointerStartMoveEvent, isClient, getStyle, isTouch, pointerMoveEvent, pointerEndMoveEvent } from 'polythene-core';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-slider",
   // elements
@@ -26,10 +59,10 @@ var classes = {
   tickValue: "pe-slider__tick--value"
 };
 
-const MAX_TICKS = 100;
-let focusElement;
+var MAX_TICKS = 100;
+var focusElement;
 
-const deFocus = state => {
+var deFocus = function deFocus(state) {
   if (focusElement) {
     focusElement.blur();
   }
@@ -38,36 +71,39 @@ const deFocus = state => {
   state.hasFocus(false);
 };
 
-const focus = (state, el) => {
+var focus = function focus(state, el) {
   deFocus(state);
   focusElement = el;
   state.hasFocus(true);
 };
 
-const positionFromEvent = (e, isVertical) => // isVertical not yet implemented
-isTouch && e.touches ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX;
+var positionFromEvent = function positionFromEvent(e, isVertical) {
+  return (// isVertical not yet implemented
+    isTouch && e.touches ? isVertical ? e.touches[0].pageY : e.touches[0].pageX : isVertical ? e.pageY : e.pageX
+  );
+};
 
-const updatePinPosition = state => {
+var updatePinPosition = function updatePinPosition(state) {
   if (state.controlEl && state.pinEl) {
-    const left = state.fraction() * state.rangeWidth;
+    var left = state.fraction() * state.rangeWidth;
     state.pinEl.style.left = left + "px";
   }
 };
 
-const updateValue = (state, value) => {
+var updateValue = function updateValue(state, value) {
   state.setValue(value, true);
   updatePinPosition(state);
 };
 
-const generateTickMarks = (h, stepCount, stepSize, value) => {
-  const items = [];
-  const stepWithValue = value / stepSize;
-  let s = 0;
+var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
+  var items = [];
+  var stepWithValue = value / stepSize;
+  var s = 0;
 
   while (s < stepCount + 1) {
     items.push(h("div", {
       className: s <= stepWithValue ? [classes.tick, classes.tickValue].join(" ") : classes.tick,
-      key: `tick-${s}`
+      key: "tick-".concat(s)
     }));
     s++;
   }
@@ -75,7 +111,7 @@ const generateTickMarks = (h, stepCount, stepSize, value) => {
   return items;
 };
 
-const readRangeData = state => {
+var readRangeData = function readRangeData(state) {
   if (state.controlEl && isClient) {
     // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
     state.controlWidth = parseFloat(getStyle({
@@ -83,49 +119,56 @@ const readRangeData = state => {
       prop: "width"
     }));
     state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
-    const styles = window.getComputedStyle(state.trackEl);
+    var styles = window.getComputedStyle(state.trackEl);
     state.rangeOffset = parseFloat(styles.marginLeft);
   }
 };
 
-const calculateClickOffset = (state, controlOffset = 0) => {
+var calculateClickOffset = function calculateClickOffset(state) {
+  var controlOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   state.clickOffset = state.trackEl.getBoundingClientRect().left - (state.rangeOffset - state.controlWidth / 2) + controlOffset;
 };
 
-const initControlEvent = (state, e) => {
-  const controlPos = state.controlEl.getBoundingClientRect().left;
-  const eventPos = positionFromEvent(e);
-  const controlOffset = eventPos - controlPos - state.controlWidth / 2;
+var initControlEvent = function initControlEvent(state, e) {
+  var controlPos = state.controlEl.getBoundingClientRect().left;
+  var eventPos = positionFromEvent(e);
+  var controlOffset = eventPos - controlPos - state.controlWidth / 2;
   calculateClickOffset(state, controlOffset);
 };
 
-const initTrackEvent = state => calculateClickOffset(state, 0);
+var initTrackEvent = function initTrackEvent(state) {
+  return calculateClickOffset(state, 0);
+};
 
-const handlePosEvent = (state, e) => {
-  const pos = positionFromEvent(e) - state.clickOffset;
-  const value = state.min + (pos - state.rangeOffset) / state.rangeWidth * (state.max - state.min);
+var handlePosEvent = function handlePosEvent(state, e) {
+  var pos = positionFromEvent(e) - state.clickOffset;
+  var value = state.min + (pos - state.rangeOffset) / state.rangeWidth * (state.max - state.min);
   updateValue(state, value);
 };
 
-const startDrag = (state, attrs, e) => {
+var startDrag = function startDrag(state, attrs, e) {
   if (state.isDragging()) return;
   e.preventDefault();
   state.isDragging(true);
   state.isActive(true);
   deFocus(state);
 
-  const drag = e => {
+  var drag = function drag(e) {
     if (!state.isDragging()) return;
     handlePosEvent(state, e);
   };
 
-  const endDrag = () => {
+  var endDrag = function endDrag() {
     if (!state.isDragging()) return;
     deFocus(state);
 
     if (isClient) {
-      pointerMoveEvent.forEach(evt => window.removeEventListener(evt, drag));
-      pointerEndMoveEvent.forEach(evt => window.removeEventListener(evt, endDrag));
+      pointerMoveEvent.forEach(function (evt) {
+        return window.removeEventListener(evt, drag);
+      });
+      pointerEndMoveEvent.forEach(function (evt) {
+        return window.removeEventListener(evt, endDrag);
+      });
     }
 
     state.isDragging(false);
@@ -133,8 +176,12 @@ const startDrag = (state, attrs, e) => {
   };
 
   if (isClient) {
-    pointerMoveEvent.forEach(evt => window.addEventListener(evt, drag));
-    pointerEndMoveEvent.forEach(evt => window.addEventListener(evt, endDrag));
+    pointerMoveEvent.forEach(function (evt) {
+      return window.addEventListener(evt, drag);
+    });
+    pointerEndMoveEvent.forEach(function (evt) {
+      return window.addEventListener(evt, endDrag);
+    });
   }
 
   readRangeData(state);
@@ -144,7 +191,7 @@ const startDrag = (state, attrs, e) => {
   }
 };
 
-const startTrack = (state, attrs, e) => {
+var startTrack = function startTrack(state, attrs, e) {
   e.preventDefault();
 
   if (state.isDragging()) {
@@ -157,32 +204,37 @@ const startTrack = (state, attrs, e) => {
   startDrag(state, attrs, e);
 };
 
-const createSlider = (vnode, {
-  h,
-  k,
-  hasTicks,
-  interactiveTrack
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  const fraction = state.fraction();
-  const range = state.max - state.min;
-  const stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
+var createSlider = function createSlider(vnode, _ref) {
+  var _ref2;
 
-  const onStartTrack = e => startTrack(state, attrs, e);
+  var h = _ref.h,
+      k = _ref.k,
+      hasTicks = _ref.hasTicks,
+      interactiveTrack = _ref.interactiveTrack;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  var fraction = state.fraction();
+  var range = state.max - state.min;
+  var stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
 
-  const onInitDrag = e => {
+  var onStartTrack = function onStartTrack(e) {
+    return startTrack(state, attrs, e);
+  };
+
+  var onInitDrag = function onInitDrag(e) {
     readRangeData(state);
     initControlEvent(state, e);
     startDrag(state, attrs, e);
   };
 
-  const flexValueCss = fraction + " 1 0%";
-  const flexRestValue = 1 - fraction;
-  const flexRestCss = flexRestValue + " 1 0%";
-  return h("div", Object.assign({}, {
+  var flexValueCss = fraction + " 1 0%";
+  var flexRestValue = 1 - fraction;
+  var flexRestCss = flexRestValue + " 1 0%";
+  return h("div", _extends({}, {
     className: classes.track
-  }, interactiveTrack && !attrs.disabled && pointerStartMoveEvent.reduce((acc, evt) => (acc[k[`on${evt}`]] = onStartTrack, acc), {})), [h("div", {
+  }, interactiveTrack && !attrs.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+    return acc[k["on".concat(evt)]] = onStartTrack, acc;
+  }, {})), [h("div", {
     className: classes.trackPart + " " + classes.trackPartValue,
     key: "trackPartValue",
     style: {
@@ -194,40 +246,41 @@ const createSlider = (vnode, {
     className: classes.trackBar
   }, h("div", {
     className: classes.trackBarValue
-  }))), h("div", Object.assign({}, {
+  }))), h("div", _extends({}, {
     className: classes.control,
     key: "control"
   }, attrs.disabled ? {
     disabled: true
-  } : {
-    [k.tabindex]: attrs[k.tabindex] || 0,
-    [k.onfocus]: () => focus(state, state.controlEl),
-    [k.onblur]: () => deFocus(state),
-    [k.onkeydown]: e => {
-      if (e.key !== "Tab") {
-        e.preventDefault();
-      }
-
-      if (e.key === "Escape" || e.key === "Esc") {
-        state.controlEl.blur(e);
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
-        state.decrement(state, e.shiftKey);
-      } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
-        state.increment(state, e.shiftKey);
-      } else if (e.key === "Home") {
-        updateValue(state, state.min);
-      } else if (e.key === "End") {
-        updateValue(state, state.max);
-      } else if (e.key === "PageDown") {
-        state.decrement(state, true);
-      } else if (e.key === "PageUp") {
-        state.increment(state, true);
-      }
-
-      readRangeData(state);
-      updatePinPosition(state);
+  } : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onfocus, function () {
+    return focus(state, state.controlEl);
+  }), _defineProperty(_ref2, k.onblur, function () {
+    return deFocus(state);
+  }), _defineProperty(_ref2, k.onkeydown, function (e) {
+    if (e.key !== "Tab") {
+      e.preventDefault();
     }
-  }, !attrs.disabled && pointerStartMoveEvent.reduce((acc, evt) => (acc[k[`on${evt}`]] = onInitDrag, acc), {}), attrs.events ? attrs.events : null, hasTicks ? {
+
+    if (e.key === "Escape" || e.key === "Esc") {
+      state.controlEl.blur(e);
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
+      state.decrement(state, e.shiftKey);
+    } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
+      state.increment(state, e.shiftKey);
+    } else if (e.key === "Home") {
+      updateValue(state, state.min);
+    } else if (e.key === "End") {
+      updateValue(state, state.max);
+    } else if (e.key === "PageDown") {
+      state.decrement(state, true);
+    } else if (e.key === "PageUp") {
+      state.increment(state, true);
+    }
+
+    readRangeData(state);
+    updatePinPosition(state);
+  }), _ref2), !attrs.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+    return acc[k["on".concat(evt)]] = onInitDrag, acc;
+  }, {}), attrs.events ? attrs.events : null, hasTicks ? {
     step: stepCount
   } : null), attrs.icon ? h("div", {
     className: classes.thumb,
@@ -256,22 +309,23 @@ const createSlider = (vnode, {
   }) : null]);
 };
 
-const getInitialState = (vnode, createStream) => {
-  const attrs = vnode.attrs;
-  const min = attrs.min !== undefined ? attrs.min : 0;
-  const max = attrs.max !== undefined ? attrs.max : 100;
-  const range = max - min;
-  const stepSize = attrs.stepSize !== undefined ? attrs.stepSize : 1;
-  const defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
-  const previousValue = createStream(undefined);
-  const isActive = createStream(false);
-  const hasFocus = createStream(false);
-  const isDragging = createStream(false);
-  const fraction = createStream(min);
-  const value = createStream(0);
-  const normalizeFactor = 1 / stepSize;
+var getInitialState = function getInitialState(vnode, createStream) {
+  var attrs = vnode.attrs;
+  var min = attrs.min !== undefined ? attrs.min : 0;
+  var max = attrs.max !== undefined ? attrs.max : 100;
+  var range = max - min;
+  var stepSize = attrs.stepSize !== undefined ? attrs.stepSize : 1;
+  var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
+  var previousValue = createStream(undefined);
+  var isActive = createStream(false);
+  var hasFocus = createStream(false);
+  var isDragging = createStream(false);
+  var fraction = createStream(min);
+  var value = createStream(0);
+  var normalizeFactor = 1 / stepSize;
 
-  const setValue = (v, shouldNotify = false) => {
+  var setValue = function setValue(v) {
+    var shouldNotify = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     if (v < min) v = min;
     if (v > max) v = max;
     value(stepSize ? Math.round(v * normalizeFactor) / normalizeFactor : v);
@@ -286,30 +340,34 @@ const getInitialState = (vnode, createStream) => {
     previousValue(v);
   };
 
-  const increment = (state, useLargeStep) => updateValue(state, value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
+  var increment = function increment(state, useLargeStep) {
+    return updateValue(state, value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
+  };
 
-  const decrement = (state, useLargeStep) => updateValue(state, value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
+  var decrement = function decrement(state, useLargeStep) {
+    return updateValue(state, value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
+  };
 
   setValue(defaultValue);
   return {
-    min,
-    max,
-    stepSize,
-    fraction,
+    min: min,
+    max: max,
+    stepSize: stepSize,
+    fraction: fraction,
     // DOM elements
     trackEl: null,
     controlEl: null,
     pinEl: null,
     // functions
-    setValue,
-    increment,
-    decrement,
+    setValue: setValue,
+    increment: increment,
+    decrement: decrement,
     // streams
-    isDragging,
-    isActive,
-    value,
-    previousValue,
-    hasFocus,
+    isDragging: isDragging,
+    isActive: isActive,
+    value: value,
+    previousValue: previousValue,
+    hasFocus: hasFocus,
     // coordinates
     controlWidth: 0,
     rangeWidth: 0,
@@ -318,56 +376,56 @@ const getInitialState = (vnode, createStream) => {
     redrawOnUpdate: createStream.merge([isActive, value])
   };
 };
-const onMount = vnode => {
+var onMount = function onMount(vnode) {
   if (!vnode.dom) {
     return;
   }
 
-  const dom = vnode.dom;
-  const state = vnode.state;
-  const attrs = vnode.attrs;
-  state.trackEl = dom.querySelector(`.${classes.track}`);
-  state.controlEl = dom.querySelector(`.${classes.control}`);
-  state.pinEl = dom.querySelector(`.${classes.pin}`);
+  var dom = vnode.dom;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
+  state.trackEl = dom.querySelector(".".concat(classes.track));
+  state.controlEl = dom.querySelector(".".concat(classes.control));
+  state.pinEl = dom.querySelector(".".concat(classes.pin));
   readRangeData(state);
 
   if (attrs.pin) {
-    setTimeout(() => {
+    setTimeout(function () {
       updateValue(state, state.value());
     }, 0);
   }
 };
-const createProps = (vnode, {
-  keys: k
-}) => {
-  const state = vnode.state;
-  const attrs = vnode.attrs;
+var createProps = function createProps(vnode, _ref3) {
+  var k = _ref3.keys;
+  var state = vnode.state;
+  var attrs = vnode.attrs;
 
   if (attrs.value !== undefined) {
     if (state.previousValue() !== attrs.value) {
       state.previousValue(attrs.value);
-      setTimeout(() => state.setValue(state.previousValue()), 0); // perform in next tick to play nice with React
+      setTimeout(function () {
+        return state.setValue(state.previousValue());
+      }, 0); // perform in next tick to play nice with React
     }
   }
 
-  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  const interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  return Object.assign({}, filterSupportedAttributes(attrs), {
+  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+  return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
-const createContent = (vnode, {
-  renderer: h,
-  keys: k
-}) => {
-  const attrs = vnode.attrs;
-  const hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  const interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
+var createContent = function createContent(vnode, _ref4) {
+  var h = _ref4.renderer,
+      k = _ref4.keys;
+  var attrs = vnode.attrs;
+  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
+  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
   return createSlider(vnode, {
-    h,
-    k,
-    hasTicks,
-    interactiveTrack
+    h: h,
+    k: k,
+    hasTicks: hasTicks,
+    interactiveTrack: interactiveTrack
   });
 };
 

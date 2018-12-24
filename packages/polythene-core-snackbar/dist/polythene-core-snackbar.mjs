@@ -1,42 +1,42 @@
 export { coreNotificationInstance as coreSnackbarInstance } from 'polythene-core-notification';
 
-const DEFAULT_DURATION = 0.4;
+var DEFAULT_DURATION = 0.4;
 
-const show = ({
-  containerEl,
-  el,
-  duration,
-  delay
-}) => {
+var show = function show(_ref) {
+  var containerEl = _ref.containerEl,
+      el = _ref.el,
+      duration = _ref.duration,
+      delay = _ref.delay;
   return {
     el: containerEl,
     duration: duration || DEFAULT_DURATION,
     delay: delay || 0,
-    before: () => {
+    before: function before() {
       el.style.display = "block";
-      const height = el.getBoundingClientRect().height;
-      containerEl.style.transform = `translate3d(0, ${height}px, 0)`;
+      var height = el.getBoundingClientRect().height;
+      containerEl.style.transform = "translate3d(0, ".concat(height, "px, 0)");
     },
-    transition: () => containerEl.style.transform = "translate3d(0, 0px, 0)"
+    transition: function transition() {
+      return containerEl.style.transform = "translate3d(0, 0px, 0)";
+    }
   };
 };
 
-const hide = ({
-  containerEl,
-  el,
-  duration,
-  delay
-}) => {
+var hide = function hide(_ref2) {
+  var containerEl = _ref2.containerEl,
+      el = _ref2.el,
+      duration = _ref2.duration,
+      delay = _ref2.delay;
   return {
     el: containerEl,
     duration: duration || DEFAULT_DURATION,
     delay: delay || 0,
-    transition: () => {
-      const height = el.getBoundingClientRect().height;
-      containerEl.style.transform = `translate3d(0, ${height}px, 0)`;
+    transition: function transition() {
+      var height = el.getBoundingClientRect().height;
+      containerEl.style.transform = "translate3d(0, ".concat(height, "px, 0)");
     },
     // reset to original position to counter the removal of the snackbar instance
-    after: () => {
+    after: function after() {
       // prevent a "bounce back"
       el.style.display = "none";
       containerEl.style.transitionDuration = "0ms";
@@ -46,8 +46,8 @@ const hide = ({
 };
 
 var transitions = {
-  show,
-  hide
+  show: show,
+  hide: hide
 };
 
 export { transitions };

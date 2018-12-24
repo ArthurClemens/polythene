@@ -1,3 +1,21 @@
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-button pe-icon-button",
   // elements
@@ -9,13 +27,12 @@ var classes = {
 
 // Props to be passed to a button, including 'content'
 
-const createProps = (vnode, {
-  renderer: h,
-  Icon
-}) => {
-  const attrs = vnode.attrs;
-  const content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return Object.assign({}, {
+var createProps = function createProps(vnode, _ref) {
+  var h = _ref.renderer,
+      Icon = _ref.Icon;
+  var attrs = vnode.attrs;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+  return _extends({}, {
     content: h("div", {
       className: classes.content
     }, content),
@@ -28,7 +45,9 @@ const createProps = (vnode, {
     animateOnTap: false
   }, attrs);
 };
-const createContent = vnode => vnode.children;
+var createContent = function createContent(vnode) {
+  return vnode.children;
+};
 
 var iconButton = /*#__PURE__*/Object.freeze({
   createProps: createProps,

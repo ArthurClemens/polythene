@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-list-tile",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/polythene-react-list-tile",
   "module": "dist/polythene-react-list-tile.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-list-tile": "^1.4.0",
-    "polythene-react-base": "^1.4.0",
-    "polythene-react-icon": "^1.4.0",
-    "polythene-react-ripple": "^1.4.0"
+    "polythene-core-list-tile": "^1.4.1",
+    "polythene-react-base": "^1.4.1",
+    "polythene-react-icon": "^1.4.1",
+    "polythene-react-ripple": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

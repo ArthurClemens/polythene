@@ -11,47 +11,94 @@ var classes = {
   depth_n: "pe-shadow--depth-"
 };
 
-const _createShadowForSelector = (which, depth) => (selector, vars$$1) => sel(selector, {
-  [` .pe-shadow__${which}.pe-shadow--depth-${depth}`]: {
-    boxShadow: vars$$1[`shadow_${which}_depth_${depth}`]
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
   }
-});
 
-const _createShadow = (selector, vars$$1, depth, which) => sel(selector, {
-  [` .pe-shadow__${which}`]: {
-    boxShadow: vars$$1[`shadow_${which}_depth_${depth}`]
-  }
-});
+  return obj;
+}
 
-const shadow = (selector, vars$$1, depth) => [_createShadow(selector, vars$$1, depth, "top"), _createShadow(selector, vars$$1, depth, "bottom")];
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-const shadow_depth = (selector, vars$$1) => vars$$1.shadow_depth !== undefined ? shadow(selector, vars$$1, vars$$1.shadow_depth) : null;
-
-const sharedVarFns = {
-  shadow_depth
-};
-const varFns = Object.assign({}, {
-  general_styles: (selector, vars$$1) => [sel(selector, [mixin.fit(), shadow(selector, vars$$1, 1), {
-    borderRadius: "inherit",
-    pointerEvents: "none",
-    " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
-      borderRadius: "inherit"
-    }]
-  }])],
-  transition: (selector, vars$$1) => [sel(selector, {
-    ".pe-shadow--animated": {
-      " .pe-shadow__bottom, .pe-shadow__top": {
-        transition: vars$$1.transition
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
       }
     }
-  })],
-  shadow_depth
-}, [0, 1, 2, 3, 4, 5].reduce((acc, depth) => (acc[`shadow_top_depth_${depth}`] = _createShadowForSelector("top", depth), acc[`shadow_bottom_depth_${depth}`] = _createShadowForSelector("bottom", depth), acc), {}));
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var _createShadowForSelector = function _createShadowForSelector(which, depth) {
+  return function (selector, vars$$1) {
+    return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which, ".pe-shadow--depth-").concat(depth), {
+      boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
+    }));
+  };
+};
+
+var _createShadow = function _createShadow(selector, vars$$1, depth, which) {
+  return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which), {
+    boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
+  }));
+};
+
+var shadow = function shadow(selector, vars$$1, depth) {
+  return [_createShadow(selector, vars$$1, depth, "top"), _createShadow(selector, vars$$1, depth, "bottom")];
+};
+
+var shadow_depth = function shadow_depth(selector, vars$$1) {
+  return vars$$1.shadow_depth !== undefined ? shadow(selector, vars$$1, vars$$1.shadow_depth) : null;
+};
+
+var sharedVarFns = {
+  shadow_depth: shadow_depth
+};
+
+var varFns = _extends({}, {
+  general_styles: function general_styles(selector, vars$$1) {
+    return [sel(selector, [mixin.fit(), shadow(selector, vars$$1, 1), {
+      borderRadius: "inherit",
+      pointerEvents: "none",
+      " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
+        borderRadius: "inherit"
+      }]
+    }])];
+  },
+  transition: function transition(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-shadow--animated": {
+        " .pe-shadow__bottom, .pe-shadow__top": {
+          transition: vars$$1.transition
+        }
+      }
+    })];
+  },
+  shadow_depth: shadow_depth
+}, [0, 1, 2, 3, 4, 5].reduce(function (acc, depth) {
+  return acc["shadow_top_depth_".concat(depth)] = _createShadowForSelector("top", depth), acc["shadow_bottom_depth_".concat(depth)] = _createShadowForSelector("bottom", depth), acc;
+}, {}));
+
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
-const sharedVars = {
+var sharedVars = {
   shadow_top_depth_0: "none",
   shadow_bottom_depth_0: "none",
   shadow_top_depth_1: "none",
@@ -67,18 +114,18 @@ const sharedVars = {
   // theme vars
   shadow_depth: undefined
 };
-var vars$1 = Object.assign({}, {
+var vars$1 = _extends({}, {
   general_styles: true,
-  transition: `box-shadow ${vars.animation_duration} ease-out`
+  transition: "box-shadow ".concat(vars.animation_duration, " ease-out")
 }, sharedVars);
 
-const fns = [layout];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

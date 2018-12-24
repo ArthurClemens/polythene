@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-textfield",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/polythene-core-textfield",
   "module": "dist/polythene-core-textfield.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.0",
-    "polythene-css-classes": "^1.4.0",
-    "polythene-theme": "^1.4.0"
+    "polythene-core": "^1.4.1",
+    "polythene-css-classes": "^1.4.1",
+    "polythene-theme": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

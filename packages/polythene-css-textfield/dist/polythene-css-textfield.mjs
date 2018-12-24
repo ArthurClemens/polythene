@@ -30,500 +30,618 @@ var classes = {
   stateReadonly: "pe-textfield--readonly"
 };
 
-const generalFns = {
-  general_styles: selector => [sel(selector, {
-    " .pe-textfield__input-area": {
-      color: "inherit",
-      "&:after": {
-        backgroundColor: "currentcolor"
-      }
-    },
-    ".pe-textfield--disabled, &.pe-textfield--readonly": {
-      " .pe-textfield__input-area:after": {
-        backgroundColor: "transparent"
-      }
-    },
-    ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-      " .pe-textfield__input": {
-        boxShadow: "none"
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
       }
     }
-  })]
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+var generalFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, {
+      " .pe-textfield__input-area": {
+        color: "inherit",
+        "&:after": {
+          backgroundColor: "currentcolor"
+        }
+      },
+      ".pe-textfield--disabled, &.pe-textfield--readonly": {
+        " .pe-textfield__input-area:after": {
+          backgroundColor: "transparent"
+        }
+      },
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+        " .pe-textfield__input": {
+          boxShadow: "none"
+        }
+      }
+    })];
+  }
 };
 
-const tintFns = tint => ({
-  ["color_" + tint + "_focus_border"]: (selector, vars$$1) => [sel(selector, {
-    color: vars$$1["color_" + tint + "_focus_border"] // override by specifying "color"
+var tintFns = function tintFns(tint) {
+  var _ref;
 
-  })],
-  ["color_" + tint + "_input_background"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input-area": {
-      backgroundColor: vars$$1["color_" + tint + "_input_background"]
-    },
-    " .pe-textfield__input:-webkit-autofill": {
-      "-webkit-box-shadow": "0 0 0px 1000px " + vars$$1["color_" + tint + "_input_background"] + " inset"
-    }
-  })],
-  ["color_" + tint + "_input_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input": {
-      color: vars$$1["color_" + tint + "_input_text"]
-    },
-    " .pe-textfield__input:-webkit-autofill": {
-      color: vars$$1["color_" + tint + "_input_text"] + " !important"
-    }
-  })],
-  ["color_" + tint + "_counter_ok_border"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--counter ": {
-      " .pe-textfield__input-area:after": {
-        backgroundColor: vars$$1["color_" + tint + "_counter_ok_border"]
-      }
-    }
-  })],
-  ["color_" + tint + "_input_bottom_border"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input": {
-      borderColor: vars$$1["color_" + tint + "_input_bottom_border"]
-    }
-  })],
-  ["color_" + tint + "_label_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__label": {
-      color: vars$$1["color_" + tint + "_label_text"]
-    }
-  })],
-  ["color_" + tint + "_disabled_label_text"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--disabled, &.pe-textfield--readonly": {
-      " .pe-textfield__input-area:after": {
-        backgroundImage: "linear-gradient(to right, " + vars$$1["color_" + tint + "_disabled_label_text"] + " 20%, rgba(255, 255, 255, 0) 0%)"
-      }
-    },
-    ".pe-textfield--disabled": {
-      " .pe-textfield__input, .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_disabled_label_text"]
-      }
-    }
-  })],
-  ["color_" + tint + "_readonly_label_text"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--readonly": {
-      " .pe-textfield__input, .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_readonly_label_text"]
-      }
-    }
-  })],
-  ["color_" + tint + "_highlight_text"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--focused": {
-      // note: not when textfield--dirty and not textfield--focused
-      ".pe-textfield--floating-label .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_highlight_text"]
-      }
-    }
-  })],
-  ["color_" + tint + "_required_symbol"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--focused": {
-      ".pe-textfield--required.pe-textfield--floating-label": {
-        " .pe-textfield__required-indicator": {
-          color: vars$$1["color_" + tint + "_required_symbol"]
-        }
-      }
-    }
-  })],
-  ["color_" + tint + "_help_text"]: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__help, .pe-textfield__counter": {
-      color: vars$$1["color_" + tint + "_help_text"]
-    }
-  })],
-  ["color_" + tint + "_input_error_border"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-      " .pe-textfield__input": {
-        borderColor: vars$$1["color_" + tint + "_input_error_border"]
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_focus_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      color: vars$$1["color_" + tint + "_focus_border"] // override by specifying "color"
+
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input-area": {
+        backgroundColor: vars$$1["color_" + tint + "_input_background"]
       },
-      "&, &.pe-textfield--counter": {
+      " .pe-textfield__input:-webkit-autofill": {
+        "-webkit-box-shadow": "0 0 0px 1000px " + vars$$1["color_" + tint + "_input_background"] + " inset"
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input": {
+        color: vars$$1["color_" + tint + "_input_text"]
+      },
+      " .pe-textfield__input:-webkit-autofill": {
+        color: vars$$1["color_" + tint + "_input_text"] + " !important"
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_counter_ok_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--counter ": {
         " .pe-textfield__input-area:after": {
-          backgroundColor: vars$$1["color_" + tint + "_input_error_border"]
+          backgroundColor: vars$$1["color_" + tint + "_counter_ok_border"]
         }
       }
-    }
-  })],
-  ["color_" + tint + "_input_error_text"]: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
-      " .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_input_error_text"]
-      },
-      " .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help": {
-        color: vars$$1["color_" + tint + "_input_error_text"]
-      },
-      ".pe-textfield--required .pe-textfield__label": {
-        color: vars$$1["color_" + tint + "_input_error_text"]
-      }
-    }
-  })]
-});
-
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
-var color = createColor({
-  varFns: {
-    lightTintFns,
-    darkTintFns
-  }
-});
-
-const alignSide = isRTL => () => ({
-  " .pe-textfield__counter": {
-    textAlign: isRTL ? "left" : "right",
-    float: isRTL ? "left" : "right",
-    padding: isRTL ? "0 16px 0 0" : "0 0 0 16px"
-  }
-});
-
-const alignLeft = alignSide(false);
-const alignRight = alignSide(true);
-
-const vertical_spacing_top_input_padding_v = (selector, vars$$1) => sel(selector, {
-  " .pe-textfield__label": {
-    top: vars$$1.vertical_spacing_top + vars$$1.input_padding_v + "px"
-  }
-});
-
-const floating_label_vertical_spacing_top_input_padding_v = (selector, vars$$1) => sel(selector, {
-  ".pe-textfield--floating-label .pe-textfield__label": {
-    top: vars$$1.floating_label_vertical_spacing_top + vars$$1.input_padding_v + "px"
-  }
-});
-
-const dense_floating_label_vertical_spacing_top_input_padding_v = (selector, vars$$1) => sel(selector, {
-  ".pe-textfield--floating-label.pe-textfield--dense .pe-textfield__label": {
-    top: vars$$1.dense_floating_label_vertical_spacing_top + vars$$1.input_padding_v + "px"
-  }
-});
-
-const input_padding_v_input_padding_h = (selector, vars$$1) => sel(selector, {
-  " .pe-textfield__input": {
-    padding: vars$$1.input_padding_v + "px " + vars$$1.input_padding_h + "px"
-  },
-  " textarea.pe-textfield__input": {
-    margin: vars$$1.input_padding_v + "px " + vars$$1.input_padding_h + "px"
-  }
-});
-
-const full_width_input_padding_v_full_width_input_padding_h = (selector, vars$$1) => sel(selector, {
-  ".pe-textfield--full-width": {
-    " .pe-textfield__input": {
-      padding: vars$$1.full_width_input_padding_v + "px " + vars$$1.full_width_input_padding_h + "px"
-    }
-  }
-});
-
-const dense_full_width_input_padding_v_dense_full_width_input_padding_h = (selector, vars$$1) => sel(selector, {
-  ".pe-textfield--full-width.pe-textfield--dense": {
-    " .pe-textfield__input": {
-      padding: vars$$1.dense_full_width_input_padding_v + "px " + vars$$1.dense_full_width_input_padding_h + "px"
-    }
-  }
-});
-
-const varFns = {
-  general_styles: selector => [sel(selector, [alignLeft(), mixin.clearfix(), {
-    position: "relative",
-    lineHeight: vars.line_height,
-    display: "inline-block",
-    boxSizing: "border-box",
-    margin: 0,
-    overflow: "visible",
-    // Firefox needs this
-    width: "100%",
-    maxWidth: "100%",
-    " .pe-textfield__input-area": {
-      position: "relative",
-      "&:after": {
-        position: "absolute",
-        content: "\"\"",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        opacity: 0
-      }
-    },
-    ".pe-textfield--focused .pe-textfield__input-area:after": {
-      opacity: 1
-    },
-    " .pe-textfield__input": {
-      display: "block",
-      width: "100%",
-      background: "none",
-      color: "inherit",
-      borderStyle: "none none solid none",
-      borderRadius: 0,
-      margin: 0,
-      // disable glow on textfield--invalid fields
-      "&:textfield--invalid": {
-        boxShadow: "none"
-      },
-      ":invalid": {
-        boxShadow: "none"
-      },
-      // Remove clear cross icon from IE
-      "::-ms-clear": {
-        width: 0,
-        height: 0
-      }
-    },
-    " textarea.pe-textfield__input": {
-      padding: 0,
-      display: "block"
-    },
-    // focus border
-    ".pe-textfield--focused .pe-textfield__input": {
-      outline: "none"
-    },
-    " .pe-textfield__label": {
-      position: "absolute",
-      display: "block",
-      bottom: 0,
-      pointerEvents: "none",
-      whiteSpace: "nowrap",
-      cursor: "text"
-    },
-    ".pe-textfield--dirty .pe-textfield__label": {
-      visibility: "hidden"
-    },
-    "&:not(.pe-textfield--no-char)": {
-      " .pe-textfield__required-indicator, .pe-textfield__optional-indicator": {
-        padding: "0 0 0 .25em"
-      }
-    },
-    ".pe-textfield--floating-label": {
-      ".pe-textfield--focused, &.pe-textfield--dirty": {
-        " .pe-textfield__label": {
-          visibility: "visible"
-        }
-      }
-    },
-    ".pe-textfield--disabled, &.pe-textfield--readonly": {
-      " .pe-textfield__label": {
-        cursor: "auto"
-      },
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_bottom_border", function (selector, vars$$1) {
+    return [sel(selector, {
       " .pe-textfield__input": {
-        "border-bottom": "none"
-      },
-      " .pe-textfield__input-area:after": {
-        opacity: 1,
-        height: "1px",
-        bottom: "-1px",
-        backgroundPosition: "top",
-        backgroundSize: "4px 1px",
-        backgroundRepeat: "repeat-x"
+        borderColor: vars$$1["color_" + tint + "_input_bottom_border"]
       }
-    },
-    " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
-      lineHeight: vars.line_height
-    },
-    " .pe-textfield__help-focus": [mixin.defaultTransition("opacity"), {
-      opacity: 0
-    }],
-    ".pe-textfield--focused .pe-textfield__help-focus, &.pe-textfield--dirty .pe-textfield__help-focus": {
-      opacity: 1
-    },
-    ".pe-textfield--hide-clear": {
-      " .pe-textfield__input::-ms-clear": {
-        display: "none"
-      }
-    },
-    ".pe-textfield--hide-spinner": {
-      " input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
-        "-webkit-appearance": "none",
-        margin: 0
-      },
-      " input[type=number]": {
-        "-moz-appearance": "textfield"
-      }
-    },
-    ".pe-textfield--full-width": {
-      width: "100%",
-      padding: 0,
-      " .pe-textfield__input-area": {
-        padding: 0
-      }
-    }
-  }]), {
-    // RTL
-    [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [alignRight()]
-  }],
-  vertical_spacing_bottom: (selector, vars$$1) => [sel(selector, {
-    paddingBottom: vars$$1.vertical_spacing_bottom + "px"
-  })],
-  floating_label_vertical_spacing_bottom: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      paddingBottom: vars$$1.floating_label_vertical_spacing_bottom + "px"
-    },
-    ".pe-textfield--dense": {
-      paddingBottom: vars$$1.dense_floating_label_vertical_spacing_bottom + "px"
-    }
-  })],
-  vertical_spacing_top: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input-area": {
-      paddingTop: vars$$1.vertical_spacing_top + "px"
-    }
-  }), vertical_spacing_top_input_padding_v(selector, vars$$1)],
-  input_padding_v: (selector, vars$$1) => [vertical_spacing_top_input_padding_v(selector, vars$$1), floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1), dense_floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1), input_padding_v_input_padding_h(selector, vars$$1)],
-  input_padding_h: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__label": {
-      left: vars$$1.input_padding_h + "px",
-      right: vars$$1.input_padding_h + "px"
-    }
-  }), input_padding_v_input_padding_h(selector, vars$$1)],
-  floating_label_vertical_spacing_top: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      " .pe-textfield__input-area": {
-        paddingTop: vars$$1.floating_label_vertical_spacing_top + "px"
-      }
-    }
-  }), floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1)],
-  dense_floating_label_vertical_spacing_top: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label.pe-textfield--dense": {
-      " .pe-textfield__input-area": {
-        paddingTop: vars$$1.dense_floating_label_vertical_spacing_top + "px"
-      }
-    }
-  }), dense_floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1)],
-  input_focus_border_animation_duration: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input-area:after": mixin.defaultTransition("opacity", vars$$1.input_focus_border_animation_duration)
-  })],
-  input_focus_border_width: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input-area:after": {
-      height: vars$$1.input_focus_border_width + "px"
-    }
-  })],
-  font_size_error: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
-      fontSize: vars$$1.font_size_error + "px",
-      minHeight: vars$$1.font_size_error * vars.line_height + "px"
-    }
-  })],
-  font_size_input: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input, .pe-textfield__label": {
-      fontSize: vars$$1.font_size_input + "px"
-    }
-  })],
-  line_height_input: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input, .pe-textfield__label": {
-      lineHeight: vars$$1.line_height_input + "px"
-    }
-  })],
-  input_border_width: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__input": {
-      borderWidth: vars$$1.input_border_width + "px"
-    },
-    // focus border
-    ".pe-textfield--focused .pe-textfield__input": {
-      borderWidth: vars$$1.input_border_width + "px",
-      outline: "none"
-    }
-  })],
-  full_width_input_padding_v: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--full-width": {
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
       " .pe-textfield__label": {
-        top: vars$$1.full_width_input_padding_v + "px"
+        color: vars$$1["color_" + tint + "_label_text"]
       }
-    }
-  }), full_width_input_padding_v_full_width_input_padding_h(selector, vars$$1)],
-  full_width_input_padding_h: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--full-width": {
-      " .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter": {
-        paddingLeft: vars$$1.full_width_input_padding_h + "px",
-        paddingRight: vars$$1.full_width_input_padding_h + "px"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--disabled, &.pe-textfield--readonly": {
+        " .pe-textfield__input-area:after": {
+          backgroundImage: "linear-gradient(to right, " + vars$$1["color_" + tint + "_disabled_label_text"] + " 20%, rgba(255, 255, 255, 0) 0%)"
+        }
       },
-      " .pe-textfield__label": {
-        left: vars$$1.full_width_input_padding_h + "px",
-        right: vars$$1.full_width_input_padding_h + "px"
-      }
-    }
-  }), full_width_input_padding_v_full_width_input_padding_h(selector, vars$$1)],
-  dense_font_size_input: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--dense": {
-      "&, .pe-textfield__input, .pe-textfield__label": {
-        fontSize: vars$$1.dense_font_size_input + "px"
-      }
-    }
-  })],
-  dense_full_width_font_size_input: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--dense": {
-      " .pe-textfield__input": {
-        fontSize: vars$$1.dense_full_width_font_size_input + "px"
-      },
-      " .pe-textfield__label": {
-        fontSize: vars$$1.dense_full_width_font_size_input + "px"
-      }
-    }
-  })],
-  dense_full_width_input_padding_v: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--full-width": {
-      ".pe-textfield--dense": {
-        " .pe-textfield__label": {
-          top: vars$$1.dense_full_width_input_padding_v + "px"
+      ".pe-textfield--disabled": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_disabled_label_text"]
         }
       }
-    }
-  }), dense_full_width_input_padding_v_dense_full_width_input_padding_h(selector, vars$$1)],
-  dense_full_width_input_padding_h: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--full-width": {
-      ".pe-textfield--dense": {
-        " .pe-textfield__label": {
-          left: vars$$1.dense_full_width_input_padding_h + "px",
-          right: vars$$1.dense_full_width_input_padding_h + "px"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_readonly_label_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--readonly": {
+        " .pe-textfield__input, .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_readonly_label_text"]
         }
       }
-    }
-  }), dense_full_width_input_padding_v_dense_full_width_input_padding_h(selector, vars$$1)],
-  margin_top_error_message: (selector, vars$$1) => [sel(selector, {
-    " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
-      marginTop: vars$$1.margin_top_error_message + "px"
-    }
-  })],
-  floating_label_animation_duration: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      " .pe-textfield__label": mixin.defaultTransition("all", vars$$1.floating_label_animation_duration)
-    }
-  })],
-  dense_font_size_floating_label: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      ".pe-textfield--dense": {
-        ".pe-textfield--focused, &.pe-textfield--dirty": {
-          fontSize: vars$$1.dense_font_size_floating_label + "px"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_highlight_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--focused": {
+        // note: not when textfield--dirty and not textfield--focused
+        ".pe-textfield--floating-label .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_highlight_text"]
         }
       }
-    }
-  })],
-  dense_floating_label_top: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      ".pe-textfield--dense": {
-        ".pe-textfield--focused, &.pe-textfield--dirty": {
-          " .pe-textfield__label": {
-            top: vars$$1.dense_floating_label_top + "px"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_required_symbol", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--focused": {
+        ".pe-textfield--required.pe-textfield--floating-label": {
+          " .pe-textfield__required-indicator": {
+            color: vars$$1["color_" + tint + "_required_symbol"]
           }
         }
       }
-    }
-  })],
-  floating_label_top: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      ".pe-textfield--focused, &.pe-textfield--dirty": {
-        " .pe-textfield__label": {
-          top: vars$$1.floating_label_top + "px"
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_help_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__help, .pe-textfield__counter": {
+        color: vars$$1["color_" + tint + "_help_text"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_error_border", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
+        " .pe-textfield__input": {
+          borderColor: vars$$1["color_" + tint + "_input_error_border"]
+        },
+        "&, &.pe-textfield--counter": {
+          " .pe-textfield__input-area:after": {
+            backgroundColor: vars$$1["color_" + tint + "_input_error_border"]
+          }
         }
       }
-    }
-  })],
-  font_size_floating_label: (selector, vars$$1) => [sel(selector, {
-    ".pe-textfield--floating-label": {
-      ".pe-textfield--focused, &.pe-textfield--dirty": {
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_input_error_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--invalid:not(.pe-textfield--hide-validation)": {
         " .pe-textfield__label": {
-          fontSize: vars$$1.font_size_floating_label + "px"
+          color: vars$$1["color_" + tint + "_input_error_text"]
+        },
+        " .pe-textfield__error, .pe-textfield__counter, .pe-textfield__help": {
+          color: vars$$1["color_" + tint + "_input_error_text"]
+        },
+        ".pe-textfield--required .pe-textfield__label": {
+          color: vars$$1["color_" + tint + "_input_error_text"]
         }
       }
+    })];
+  }), _ref;
+};
+
+var lightTintFns = _extends({}, generalFns, tintFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+
+var color = createColor({
+  varFns: {
+    lightTintFns: lightTintFns,
+    darkTintFns: darkTintFns
+  }
+});
+
+var alignSide = function alignSide(isRTL) {
+  return function () {
+    return {
+      " .pe-textfield__counter": {
+        textAlign: isRTL ? "left" : "right",
+        float: isRTL ? "left" : "right",
+        padding: isRTL ? "0 16px 0 0" : "0 0 0 16px"
+      }
+    };
+  };
+};
+
+var alignLeft = alignSide(false);
+var alignRight = alignSide(true);
+
+var vertical_spacing_top_input_padding_v = function vertical_spacing_top_input_padding_v(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-textfield__label": {
+      top: vars$$1.vertical_spacing_top + vars$$1.input_padding_v + "px"
     }
-  })]
+  });
+};
+
+var floating_label_vertical_spacing_top_input_padding_v = function floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1) {
+  return sel(selector, {
+    ".pe-textfield--floating-label .pe-textfield__label": {
+      top: vars$$1.floating_label_vertical_spacing_top + vars$$1.input_padding_v + "px"
+    }
+  });
+};
+
+var dense_floating_label_vertical_spacing_top_input_padding_v = function dense_floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1) {
+  return sel(selector, {
+    ".pe-textfield--floating-label.pe-textfield--dense .pe-textfield__label": {
+      top: vars$$1.dense_floating_label_vertical_spacing_top + vars$$1.input_padding_v + "px"
+    }
+  });
+};
+
+var input_padding_v_input_padding_h = function input_padding_v_input_padding_h(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-textfield__input": {
+      padding: vars$$1.input_padding_v + "px " + vars$$1.input_padding_h + "px"
+    },
+    " textarea.pe-textfield__input": {
+      margin: vars$$1.input_padding_v + "px " + vars$$1.input_padding_h + "px"
+    }
+  });
+};
+
+var full_width_input_padding_v_full_width_input_padding_h = function full_width_input_padding_v_full_width_input_padding_h(selector, vars$$1) {
+  return sel(selector, {
+    ".pe-textfield--full-width": {
+      " .pe-textfield__input": {
+        padding: vars$$1.full_width_input_padding_v + "px " + vars$$1.full_width_input_padding_h + "px"
+      }
+    }
+  });
+};
+
+var dense_full_width_input_padding_v_dense_full_width_input_padding_h = function dense_full_width_input_padding_v_dense_full_width_input_padding_h(selector, vars$$1) {
+  return sel(selector, {
+    ".pe-textfield--full-width.pe-textfield--dense": {
+      " .pe-textfield__input": {
+        padding: vars$$1.dense_full_width_input_padding_v + "px " + vars$$1.dense_full_width_input_padding_h + "px"
+      }
+    }
+  });
+};
+
+var varFns = {
+  general_styles: function general_styles(selector) {
+    return [sel(selector, [alignLeft(), mixin.clearfix(), {
+      position: "relative",
+      lineHeight: vars.line_height,
+      display: "inline-block",
+      boxSizing: "border-box",
+      margin: 0,
+      overflow: "visible",
+      // Firefox needs this
+      width: "100%",
+      maxWidth: "100%",
+      " .pe-textfield__input-area": {
+        position: "relative",
+        "&:after": {
+          position: "absolute",
+          content: "\"\"",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          opacity: 0
+        }
+      },
+      ".pe-textfield--focused .pe-textfield__input-area:after": {
+        opacity: 1
+      },
+      " .pe-textfield__input": {
+        display: "block",
+        width: "100%",
+        background: "none",
+        color: "inherit",
+        borderStyle: "none none solid none",
+        borderRadius: 0,
+        margin: 0,
+        // disable glow on textfield--invalid fields
+        "&:textfield--invalid": {
+          boxShadow: "none"
+        },
+        ":invalid": {
+          boxShadow: "none"
+        },
+        // Remove clear cross icon from IE
+        "::-ms-clear": {
+          width: 0,
+          height: 0
+        }
+      },
+      " textarea.pe-textfield__input": {
+        padding: 0,
+        display: "block"
+      },
+      // focus border
+      ".pe-textfield--focused .pe-textfield__input": {
+        outline: "none"
+      },
+      " .pe-textfield__label": {
+        position: "absolute",
+        display: "block",
+        bottom: 0,
+        pointerEvents: "none",
+        whiteSpace: "nowrap",
+        cursor: "text"
+      },
+      ".pe-textfield--dirty .pe-textfield__label": {
+        visibility: "hidden"
+      },
+      "&:not(.pe-textfield--no-char)": {
+        " .pe-textfield__required-indicator, .pe-textfield__optional-indicator": {
+          padding: "0 0 0 .25em"
+        }
+      },
+      ".pe-textfield--floating-label": {
+        ".pe-textfield--focused, &.pe-textfield--dirty": {
+          " .pe-textfield__label": {
+            visibility: "visible"
+          }
+        }
+      },
+      ".pe-textfield--disabled, &.pe-textfield--readonly": {
+        " .pe-textfield__label": {
+          cursor: "auto"
+        },
+        " .pe-textfield__input": {
+          "border-bottom": "none"
+        },
+        " .pe-textfield__input-area:after": {
+          opacity: 1,
+          height: "1px",
+          bottom: "-1px",
+          backgroundPosition: "top",
+          backgroundSize: "4px 1px",
+          backgroundRepeat: "repeat-x"
+        }
+      },
+      " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
+        lineHeight: vars.line_height
+      },
+      " .pe-textfield__help-focus": [mixin.defaultTransition("opacity"), {
+        opacity: 0
+      }],
+      ".pe-textfield--focused .pe-textfield__help-focus, &.pe-textfield--dirty .pe-textfield__help-focus": {
+        opacity: 1
+      },
+      ".pe-textfield--hide-clear": {
+        " .pe-textfield__input::-ms-clear": {
+          display: "none"
+        }
+      },
+      ".pe-textfield--hide-spinner": {
+        " input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
+          "-webkit-appearance": "none",
+          margin: 0
+        },
+        " input[type=number]": {
+          "-moz-appearance": "textfield"
+        }
+      },
+      ".pe-textfield--full-width": {
+        width: "100%",
+        padding: 0,
+        " .pe-textfield__input-area": {
+          padding: 0
+        }
+      }
+    }]), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight()])];
+  },
+  vertical_spacing_bottom: function vertical_spacing_bottom(selector, vars$$1) {
+    return [sel(selector, {
+      paddingBottom: vars$$1.vertical_spacing_bottom + "px"
+    })];
+  },
+  floating_label_vertical_spacing_bottom: function floating_label_vertical_spacing_bottom(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        paddingBottom: vars$$1.floating_label_vertical_spacing_bottom + "px"
+      },
+      ".pe-textfield--dense": {
+        paddingBottom: vars$$1.dense_floating_label_vertical_spacing_bottom + "px"
+      }
+    })];
+  },
+  vertical_spacing_top: function vertical_spacing_top(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input-area": {
+        paddingTop: vars$$1.vertical_spacing_top + "px"
+      }
+    }), vertical_spacing_top_input_padding_v(selector, vars$$1)];
+  },
+  input_padding_v: function input_padding_v(selector, vars$$1) {
+    return [vertical_spacing_top_input_padding_v(selector, vars$$1), floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1), dense_floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1), input_padding_v_input_padding_h(selector, vars$$1)];
+  },
+  input_padding_h: function input_padding_h(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__label": {
+        left: vars$$1.input_padding_h + "px",
+        right: vars$$1.input_padding_h + "px"
+      }
+    }), input_padding_v_input_padding_h(selector, vars$$1)];
+  },
+  floating_label_vertical_spacing_top: function floating_label_vertical_spacing_top(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        " .pe-textfield__input-area": {
+          paddingTop: vars$$1.floating_label_vertical_spacing_top + "px"
+        }
+      }
+    }), floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1)];
+  },
+  dense_floating_label_vertical_spacing_top: function dense_floating_label_vertical_spacing_top(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label.pe-textfield--dense": {
+        " .pe-textfield__input-area": {
+          paddingTop: vars$$1.dense_floating_label_vertical_spacing_top + "px"
+        }
+      }
+    }), dense_floating_label_vertical_spacing_top_input_padding_v(selector, vars$$1)];
+  },
+  input_focus_border_animation_duration: function input_focus_border_animation_duration(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input-area:after": mixin.defaultTransition("opacity", vars$$1.input_focus_border_animation_duration)
+    })];
+  },
+  input_focus_border_width: function input_focus_border_width(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input-area:after": {
+        height: vars$$1.input_focus_border_width + "px"
+      }
+    })];
+  },
+  font_size_error: function font_size_error(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
+        fontSize: vars$$1.font_size_error + "px",
+        minHeight: vars$$1.font_size_error * vars.line_height + "px"
+      }
+    })];
+  },
+  font_size_input: function font_size_input(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input, .pe-textfield__label": {
+        fontSize: vars$$1.font_size_input + "px"
+      }
+    })];
+  },
+  line_height_input: function line_height_input(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input, .pe-textfield__label": {
+        lineHeight: vars$$1.line_height_input + "px"
+      }
+    })];
+  },
+  input_border_width: function input_border_width(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__input": {
+        borderWidth: vars$$1.input_border_width + "px"
+      },
+      // focus border
+      ".pe-textfield--focused .pe-textfield__input": {
+        borderWidth: vars$$1.input_border_width + "px",
+        outline: "none"
+      }
+    })];
+  },
+  full_width_input_padding_v: function full_width_input_padding_v(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--full-width": {
+        " .pe-textfield__label": {
+          top: vars$$1.full_width_input_padding_v + "px"
+        }
+      }
+    }), full_width_input_padding_v_full_width_input_padding_h(selector, vars$$1)];
+  },
+  full_width_input_padding_h: function full_width_input_padding_h(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--full-width": {
+        " .pe-textfield__error, .pe-textfield__help, .pe-textfield__counter": {
+          paddingLeft: vars$$1.full_width_input_padding_h + "px",
+          paddingRight: vars$$1.full_width_input_padding_h + "px"
+        },
+        " .pe-textfield__label": {
+          left: vars$$1.full_width_input_padding_h + "px",
+          right: vars$$1.full_width_input_padding_h + "px"
+        }
+      }
+    }), full_width_input_padding_v_full_width_input_padding_h(selector, vars$$1)];
+  },
+  dense_font_size_input: function dense_font_size_input(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--dense": {
+        "&, .pe-textfield__input, .pe-textfield__label": {
+          fontSize: vars$$1.dense_font_size_input + "px"
+        }
+      }
+    })];
+  },
+  dense_full_width_font_size_input: function dense_full_width_font_size_input(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--dense": {
+        " .pe-textfield__input": {
+          fontSize: vars$$1.dense_full_width_font_size_input + "px"
+        },
+        " .pe-textfield__label": {
+          fontSize: vars$$1.dense_full_width_font_size_input + "px"
+        }
+      }
+    })];
+  },
+  dense_full_width_input_padding_v: function dense_full_width_input_padding_v(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--full-width": {
+        ".pe-textfield--dense": {
+          " .pe-textfield__label": {
+            top: vars$$1.dense_full_width_input_padding_v + "px"
+          }
+        }
+      }
+    }), dense_full_width_input_padding_v_dense_full_width_input_padding_h(selector, vars$$1)];
+  },
+  dense_full_width_input_padding_h: function dense_full_width_input_padding_h(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--full-width": {
+        ".pe-textfield--dense": {
+          " .pe-textfield__label": {
+            left: vars$$1.dense_full_width_input_padding_h + "px",
+            right: vars$$1.dense_full_width_input_padding_h + "px"
+          }
+        }
+      }
+    }), dense_full_width_input_padding_v_dense_full_width_input_padding_h(selector, vars$$1)];
+  },
+  margin_top_error_message: function margin_top_error_message(selector, vars$$1) {
+    return [sel(selector, {
+      " .pe-textfield__error, .pe-textfield__error-placeholder, .pe-textfield__help, .pe-textfield__counter": {
+        marginTop: vars$$1.margin_top_error_message + "px"
+      }
+    })];
+  },
+  floating_label_animation_duration: function floating_label_animation_duration(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        " .pe-textfield__label": mixin.defaultTransition("all", vars$$1.floating_label_animation_duration)
+      }
+    })];
+  },
+  dense_font_size_floating_label: function dense_font_size_floating_label(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        ".pe-textfield--dense": {
+          ".pe-textfield--focused, &.pe-textfield--dirty": {
+            fontSize: vars$$1.dense_font_size_floating_label + "px"
+          }
+        }
+      }
+    })];
+  },
+  dense_floating_label_top: function dense_floating_label_top(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        ".pe-textfield--dense": {
+          ".pe-textfield--focused, &.pe-textfield--dirty": {
+            " .pe-textfield__label": {
+              top: vars$$1.dense_floating_label_top + "px"
+            }
+          }
+        }
+      }
+    })];
+  },
+  floating_label_top: function floating_label_top(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        ".pe-textfield--focused, &.pe-textfield--dirty": {
+          " .pe-textfield__label": {
+            top: vars$$1.floating_label_top + "px"
+          }
+        }
+      }
+    })];
+  },
+  font_size_floating_label: function font_size_floating_label(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-textfield--floating-label": {
+        ".pe-textfield--focused, &.pe-textfield--dirty": {
+          " .pe-textfield__label": {
+            fontSize: vars$$1.font_size_floating_label + "px"
+          }
+        }
+      }
+    })];
+  }
 };
 var layout = createLayout({
-  varFns
+  varFns: varFns
 });
 
 var vars$1 = {
@@ -594,13 +712,13 @@ var vars$1 = {
   color_dark_counter_ok_border: rgba(vars.color_primary)
 };
 
-const fns = [layout, color];
-const selector = `.${classes.component}`;
-const addStyle = styler.createAddStyle(selector, fns, vars$1);
-const getStyle = styler.createGetStyle(selector, fns, vars$1);
+var fns = [layout, color];
+var selector = ".".concat(classes.component);
+var addStyle = styler.createAddStyle(selector, fns, vars$1);
+var getStyle = styler.createGetStyle(selector, fns, vars$1);
 styler.addStyle({
   selectors: [selector],
-  fns,
+  fns: fns,
   vars: vars$1
 });
 

@@ -4,6 +4,24 @@ import { coreDialog } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
 import { Shadow } from 'polythene-react-shadow';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var listTileClasses = {
   component: "pe-list-tile",
   // elements
@@ -72,28 +90,32 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-const DialogInstance = StateComponent(Object.assign({}, coreDialog, {
-  createContent: (vnode, args) => coreDialog.createContent(vnode, Object.assign(args, {
-    Shadow,
-    Pane: DialogPane,
-    createPane: coreDialog.createPane
-  }))
+var DialogInstance = StateComponent(_extends({}, coreDialog, {
+  createContent: function createContent(vnode, args) {
+    return coreDialog.createContent(vnode, _extends(args, {
+      Shadow: Shadow,
+      Pane: DialogPane,
+      createPane: coreDialog.createPane
+    }));
+  }
 }));
 DialogInstance.displayName = "DialogInstance";
-const options = {
+var options = {
   name: "dialog",
   htmlShowClass: classes.open,
   defaultId: "default_dialog",
-  holderSelector: `div.${classes.holder}`,
+  holderSelector: "div.".concat(classes.holder),
   instance: DialogInstance,
-  placeholder: `span.${classes.placeholder}`
+  placeholder: "span.".concat(classes.placeholder)
 };
-const Multiple = Multi({
-  options,
-  renderer
+var Multiple = Multi({
+  options: options,
+  renderer: renderer
 });
-const Dialog = StateComponent(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(p => Dialog[p] = Multiple[p]);
+var Dialog = StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+  return Dialog[p] = Multiple[p];
+});
 Dialog.displayName = "Dialog";
 
 export { DialogInstance, Dialog };

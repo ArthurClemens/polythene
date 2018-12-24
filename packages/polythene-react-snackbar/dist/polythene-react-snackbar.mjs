@@ -2,6 +2,24 @@ import { StateComponent, renderer } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
 import { coreSnackbarInstance, transitions } from 'polythene-core-snackbar';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var notificationClasses = {
   component: "pe-notification",
   // elements
@@ -18,7 +36,7 @@ var notificationClasses = {
   visible: "pe-notification--visible"
 };
 
-var classes = Object.assign({}, notificationClasses, {
+var classes = _extends({}, notificationClasses, {
   component: "pe-notification pe-snackbar",
   // elements
   holder: "pe-snackbar__holder",
@@ -27,25 +45,27 @@ var classes = Object.assign({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
-const SnackbarInstance = StateComponent(coreSnackbarInstance);
+var SnackbarInstance = StateComponent(coreSnackbarInstance);
 SnackbarInstance.displayName = "SnackbarInstance";
-const options = {
+var options = {
   name: "snackbar",
   className: classes.component,
   htmlShowClass: classes.open,
   defaultId: "default_snackbar",
-  holderSelector: `.${classes.holder}`,
+  holderSelector: ".".concat(classes.holder),
   instance: SnackbarInstance,
-  placeholder: `span.${classes.placeholder}`,
+  placeholder: "span.".concat(classes.placeholder),
   queue: true,
-  transitions
+  transitions: transitions
 };
-const Multiple = Multi({
-  options,
-  renderer
+var Multiple = Multi({
+  options: options,
+  renderer: renderer
 });
-const Snackbar = StateComponent(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(p => Snackbar[p] = Multiple[p]);
+var Snackbar = StateComponent(Multiple);
+Object.getOwnPropertyNames(Multiple).forEach(function (p) {
+  return Snackbar[p] = Multiple[p];
+});
 Snackbar.displayName = "Snackbar";
 
 export { SnackbarInstance, Snackbar };

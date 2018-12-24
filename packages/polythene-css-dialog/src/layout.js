@@ -41,7 +41,7 @@ const varFns = {
         left: 0,
         right: 0,
         bottom: 0,
-        zIndex: themeVars.z_dialog,
+        zIndex: vars.z_index,
         height: "100%", // 100vh would make the dialog go beneath Mobile Safari toolbar        
         transitionProperty: "opacity,background-color,transform",
 

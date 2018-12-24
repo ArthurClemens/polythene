@@ -3,6 +3,24 @@ import { Conditional } from 'polythene-core';
 import { coreIOSSpinner } from 'polythene-core-ios-spinner';
 import { BaseSpinner } from 'polythene-react-base-spinner';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-ios-spinner",
   // elements
@@ -28,15 +46,17 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-const SpinnerInstance = StateComponent(Object.assign({}, coreIOSSpinner, {
+var SpinnerInstance = StateComponent(_extends({}, coreIOSSpinner, {
   component: BaseSpinner
 }));
-const SpinnerToggle = StateComponent(Conditional);
+var SpinnerToggle = StateComponent(Conditional);
 SpinnerToggle.displayName = "IOSSpinnerToggle";
-const IOSSpinner = props => renderer(SpinnerToggle, Object.assign({}, props, {
-  placeholderClassName: baseSpinnerClasses.placeholder,
-  instance: SpinnerInstance
-}));
+var IOSSpinner = function IOSSpinner(props) {
+  return renderer(SpinnerToggle, _extends({}, props, {
+    placeholderClassName: baseSpinnerClasses.placeholder,
+    instance: SpinnerInstance
+  }));
+};
 IOSSpinner.classes = classes;
 IOSSpinner.displayName = "IOSSpinner";
 

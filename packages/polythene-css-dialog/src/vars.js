@@ -11,6 +11,7 @@ const themeVars = Object.assign(
   {},
   {
     backdrop:                        false,
+    z_index:                         vars.z_dialog,
   },
   behaviorVars,
   shadowVars
@@ -28,7 +29,7 @@ export default Object.assign(
     animation_timing_function:       "ease-in-out",
     border_radius:                   vars.unit_block_border_radius,
     position:                        "fixed",
-
+    
     // color vars
 
     color_light_backdrop_background: "rgba(0, 0, 0, .4)",

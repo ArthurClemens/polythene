@@ -3,6 +3,24 @@ import { Conditional } from 'polythene-core';
 import { coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-react-shadow';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var listTileClasses = {
   component: "pe-list-tile",
   // elements
@@ -50,17 +68,21 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-const MenuInstance = StateComponent(Object.assign({}, coreMenu, {
-  createContent: (vnode, args) => coreMenu.createContent(vnode, Object.assign(args, {
-    Shadow
-  }))
+var MenuInstance = StateComponent(_extends({}, coreMenu, {
+  createContent: function createContent(vnode, args) {
+    return coreMenu.createContent(vnode, _extends(args, {
+      Shadow: Shadow
+    }));
+  }
 }));
-const MenuToggle = StateComponent(Conditional);
+var MenuToggle = StateComponent(Conditional);
 MenuToggle.displayName = "MenuToggle";
-const Menu = props => renderer(MenuToggle, Object.assign({}, props, {
-  placeholderClassName: classes.placeholder,
-  instance: MenuInstance
-}));
+var Menu = function Menu(props) {
+  return renderer(MenuToggle, _extends({}, props, {
+    placeholderClassName: classes.placeholder,
+    instance: MenuInstance
+  }));
+};
 Menu.displayName = "Menu";
 
 export { Menu };

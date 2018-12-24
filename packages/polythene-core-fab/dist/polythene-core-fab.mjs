@@ -1,3 +1,21 @@
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 var classes = {
   component: "pe-fab",
   // elements
@@ -8,14 +26,13 @@ var classes = {
 
 // Props to be passed to a Button, including 'content'
 
-const createProps = (vnode, {
-  keys: k,
-  renderer: h,
-  Icon
-}) => {
-  const attrs = vnode.attrs;
-  const content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return Object.assign({}, attrs, {
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys,
+      h = _ref.renderer,
+      Icon = _ref.Icon;
+  var attrs = vnode.attrs;
+  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
+  return _extends({}, attrs, {
     content: h("div", {
       className: classes.content
     }, content),
@@ -35,7 +52,9 @@ const createProps = (vnode, {
     animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
   });
 };
-const createContent = vnode => vnode.children;
+var createContent = function createContent(vnode) {
+  return vnode.children;
+};
 
 var fab = /*#__PURE__*/Object.freeze({
   createProps: createProps,
