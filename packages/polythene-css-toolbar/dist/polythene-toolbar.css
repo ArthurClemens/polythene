@@ -23,13 +23,18 @@
   border-style: none none solid
 }
 
+.pe-toolbar>* {
+  flex-shrink: 0
+}
+
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
   width: 100%;
   display: block;
   word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap
+  white-space: nowrap;
+  flex-shrink: 1
 }
 
 .pe-toolbar .pe-toolbar__title--center {
@@ -51,8 +56,12 @@
   margin: 0
 }
 
+.pe-toolbar .pe-action,.pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
+  font-size: 20px
+}
+
 .pe-toolbar .pe-toolbar__title,.pe-toolbar .pe-toolbar__title--indent,.pe-toolbar>span {
-  font-size: 18px
+  font-weight: 500
 }
 
 .pe-toolbar {
@@ -87,6 +96,12 @@
   padding: 0 4px
 }
 
+@media (min-width:600px) {
+  .pe-toolbar {
+    padding: 0 12px
+  }
+}
+
 .pe-toolbar .pe-toolbar__title--indent,.pe-toolbar .pe-toolbar__title.pe-toolbar__title--indent {
   margin-right: 0;
   margin-left: 68px
@@ -98,39 +113,85 @@
 }
 
 @media (min-width:600px) {
-  .pe-toolbar {
-    padding: 0 12px
+  .pe-toolbar .pe-toolbar__title--indent,.pe-toolbar .pe-toolbar__title.pe-toolbar__title--indent {
+    margin-right: 0;
+    margin-left: 68px
+  }
+}
+
+@media (min-width:600px) {
+  .pe-rtl .pe-toolbar .pe-toolbar__title--indent,.pe-rtl .pe-toolbar .pe-toolbar__title.pe-toolbar__title--indent,[dir=rtl] .pe-toolbar .pe-toolbar__title--indent,[dir=rtl] .pe-toolbar .pe-toolbar__title.pe-toolbar__title--indent {
+    margin-left: 0;
+    margin-right: 68px
+  }
+}
+
+.pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child {
+  margin-left: 0;
+  margin-right: 4px
+}
+
+.pe-rtl .pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child,[dir=rtl] .pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child {
+  margin-right: 0;
+  margin-left: 4px
+}
+
+@media (min-width:600px) {
+  .pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child {
+    margin-left: 0;
+    margin-right: 12px
+  }
+}
+
+@media (min-width:600px) {
+  .pe-rtl .pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child,[dir=rtl] .pe-toolbar>:not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child {
+    margin-right: 0;
+    margin-left: 12px
   }
 }
 
 .pe-toolbar .pe-toolbar__title,.pe-toolbar>span {
   margin-right: 0;
-  margin-left: 12px
-}
-
-.pe-toolbar *+.pe-toolbar__title,.pe-toolbar *+.pe-toolbar__title--indent,.pe-toolbar *+.pe-toolbar__title.pe-toolbar__title--indent,.pe-toolbar>*+span {
-  margin-right: 0;
-  margin-left: 20px
+  margin-left: 16px
 }
 
 .pe-toolbar .pe-toolbar__title--center {
-  margin-left: 12px;
-  margin-right: 12px
+  margin-left: 16px;
+  margin-right: 16px
 }
 
 .pe-rtl .pe-toolbar .pe-toolbar__title,.pe-rtl .pe-toolbar>span,[dir=rtl] .pe-toolbar .pe-toolbar__title,[dir=rtl] .pe-toolbar>span {
   margin-left: 0;
-  margin-right: 12px
-}
-
-.pe-rtl .pe-toolbar *+.pe-toolbar__title,.pe-rtl .pe-toolbar *+.pe-toolbar__title--indent,.pe-rtl .pe-toolbar *+.pe-toolbar__title.pe-toolbar__title--indent,.pe-rtl .pe-toolbar>*+span,[dir=rtl] .pe-toolbar *+.pe-toolbar__title,[dir=rtl] .pe-toolbar *+.pe-toolbar__title--indent,[dir=rtl] .pe-toolbar *+.pe-toolbar__title.pe-toolbar__title--indent,[dir=rtl] .pe-toolbar>*+span {
-  margin-left: 0;
-  margin-right: 20px
+  margin-right: 16px
 }
 
 .pe-rtl .pe-toolbar .pe-toolbar__title--center,[dir=rtl] .pe-toolbar .pe-toolbar__title--center {
-  margin-left: 12px;
-  margin-right: 12px
+  margin-left: 16px;
+  margin-right: 16px
+}
+
+@media (min-width:600px) {
+  .pe-toolbar .pe-toolbar__title,.pe-toolbar>span {
+    margin-right: 0;
+    margin-left: 8px
+  }
+
+  .pe-toolbar .pe-toolbar__title--center {
+    margin-left: 8px;
+    margin-right: 8px
+  }
+}
+
+@media (min-width:600px) {
+  .pe-rtl .pe-toolbar .pe-toolbar__title,.pe-rtl .pe-toolbar>span,[dir=rtl] .pe-toolbar .pe-toolbar__title,[dir=rtl] .pe-toolbar>span {
+    margin-left: 0;
+    margin-right: 8px
+  }
+
+  .pe-rtl .pe-toolbar .pe-toolbar__title--center,[dir=rtl] .pe-toolbar .pe-toolbar__title--center {
+    margin-left: 8px;
+    margin-right: 8px
+  }
 }
 
 .pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar {

@@ -1,6 +1,7 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
+- [1.4.2](#142)
 - [1.4.1](#141)
 - [1.4.0](#140)
 - [1.3.2](#132)
@@ -24,6 +25,13 @@
 - [Pre-releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
+
+## 1.4.2
+
+* Toolbar:
+  * Align title and first icon to grid, differentiating whitespace on mobile and tablet
+  * Increased font size to `20px` and font weight to `500`
+
 
 ## 1.4.1
 

@@ -101,7 +101,7 @@ export default ({ ToolbarTitle, IconButton, renderer: h }) => {
     h("div", {
       className: indentedTitleClass,
       key: "title"
-    }, "Indented title"),
+    }, "Toolbar title indented"),
     toolbarButton("add", trustedIconAddSVG)
   ];
 

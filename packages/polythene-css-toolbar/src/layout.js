@@ -7,29 +7,42 @@ const breakpoint = breakpointSel => (selector, o) => ({
   }
 });
 
-const indent_padding_side = (selector, vars, isRTL) =>
-  sel(selector, {
+const indent_padding_side = ({ selector, vars, isRTL, isLarge }) => {
+  const indent = isLarge ? vars.indent_large : vars.indent;
+  const fn = isLarge ? breakpointTabletPortraitUp : sel;
+  return fn(selector, {
     " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": {
       [isRTL ? "marginLeft" : "marginRight"]: 0,
-      [isRTL ? "marginRight" : "marginLeft"]: (vars.indent - vars.padding_side) + "px"
+      [isRTL ? "marginRight" : "marginLeft"]: indent + "px"
     },
   });
+};
 
-const title_padding_title_after_icon_padding = (selector, vars, isRTL) =>
-  sel(selector, {
+const title_padding = ({ selector, vars, isRTL, isLarge }) => {
+  const title_padding = isLarge ? vars.title_padding_large : vars.title_padding;
+  const fn = isLarge ? breakpointTabletPortraitUp : sel;
+  return fn(selector, {
     " > span, .pe-toolbar__title": {
       [isRTL ? "marginLeft" : "marginRight"]: 0,
-      [isRTL ? "marginRight" : "marginLeft"]: vars.title_padding + "px" 
-    },
-    " > * + span, * + .pe-toolbar__title, * + .pe-toolbar__title--indent, * + .pe-toolbar__title.pe-toolbar__title--indent": {
-      [isRTL ? "marginLeft" : "marginRight"]: 0,
-      [isRTL ? "marginRight" : "marginLeft"]: vars.title_after_icon_padding + "px"
+      [isRTL ? "marginRight" : "marginLeft"]: title_padding + "px" 
     },
     " .pe-toolbar__title--center": {
-      marginLeft: vars.title_padding + "px",
-      marginRight: vars.title_padding + "px"
+      marginLeft: title_padding + "px",
+      marginRight: title_padding + "px"
     },
   });
+};
+
+const title_padding_title_after_icon_padding = ({ selector, vars, isRTL, isLarge }) => {
+  const padding = isLarge ? vars.title_after_icon_padding_large : vars.title_after_icon_padding;
+  const fn = isLarge ? breakpointTabletPortraitUp : sel;
+  return fn(selector, {
+    " > :not(.pe-toolbar__title):first-child:not(.pe-toolbar__title--indent):first-child": {
+      [isRTL ? "marginRight" : "marginLeft"]: 0,
+      [isRTL ? "marginLeft" : "marginRight"]: padding + "px"
+    },
+  });
+};
 
 const breakpointPhoneOnly = breakpoint(`@media (min-width: ${themeVars.breakpoint_for_phone_only}px) and (orientation: landscape)`);
 
@@ -54,6 +67,10 @@ const varFns = {
           borderStyle: "none none solid none",
         },
 
+        " > *": {
+          flexShrink: 0
+        },
+
         " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
           width: "100%",
           display: "block",
@@ -61,6 +78,7 @@ const varFns = {
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
+          flexShrink: 1
         },
 
         " .pe-toolbar__title--center": {
@@ -108,8 +126,15 @@ const varFns = {
   ],
   font_size: (selector, vars) => [
     sel(selector, {
-      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent, .pe-action": {
         fontSize: vars.font_size + "px",
+      }
+    }),
+  ],
+  font_weight: (selector, vars) => [
+    sel(selector, {
+      " > span, .pe-toolbar__title, .pe-toolbar__title--indent": {
+        fontWeight: vars.font_weight,
       }
     }),
   ],
@@ -117,20 +142,32 @@ const varFns = {
     sel(selector, {
       padding: "0 " + vars.padding_side + "px",
     }),
-    indent_padding_side(selector, vars, false),
-    indent_padding_side(selectorRTL(selector), vars, true),
+    indent_padding_side({ selector, vars }),
+    indent_padding_side({ selector: selectorRTL(selector), vars, isRTL: true }),
   ],
   indent: (selector, vars) => [
-    indent_padding_side(selector, vars, false),
-    indent_padding_side(selectorRTL(selector), vars, true),
+    indent_padding_side({ selector, vars }),
+    indent_padding_side({ selector: selectorRTL(selector), vars, isRTL: true }),
+  ],
+  indent_large: (selector, vars) => [
+    indent_padding_side({ selector, vars, isLarge: true }),
+    indent_padding_side({ selector: selectorRTL(selector), vars, isRTL: true, isLarge: true }),
   ],
   title_padding: (selector, vars) => [
-    title_padding_title_after_icon_padding(selector, vars, false),
-    title_padding_title_after_icon_padding(selectorRTL(selector), vars, true),
+    title_padding({ selector, vars }),
+    title_padding({ selector: selectorRTL(selector), vars, isRTL: true }),
+  ],
+  title_padding_large: (selector, vars) => [
+    title_padding({ selector, vars, isLarge: true }),
+    title_padding({ selector: selectorRTL(selector), vars, isRTL: true, isLarge: true }),
   ],
   title_after_icon_padding: (selector, vars) => [
-    title_padding_title_after_icon_padding(selector, vars, false),
-    title_padding_title_after_icon_padding(selectorRTL(selector), vars, true),
+    title_padding_title_after_icon_padding({ selector, vars }),
+    title_padding_title_after_icon_padding({ selector: selectorRTL(selector), vars, isRTL: true }),
+  ],
+  title_after_icon_padding_large: (selector, vars) => [
+    title_padding_title_after_icon_padding({ selector, vars, isLarge: true }),
+    title_padding_title_after_icon_padding({ selector: selectorRTL(selector), vars, isRTL: true, isLarge: true }),
   ],
   height_large: (selector, vars) => [
     breakpointTabletPortraitUp(selector, {

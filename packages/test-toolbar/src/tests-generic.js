@@ -56,7 +56,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       }
     },
     {
-      name: "ToolbarTitle, at start",
+      name: "ToolbarTitle, no icon at start",
       component: Toolbar,
       attrs: {
         content: toolbarTitleComponentAtStart

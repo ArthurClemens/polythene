@@ -22,6 +22,7 @@ export const vars = {
   unit_block_border_radius: 4,
   unit_item_border_radius: 4,
   unit_indent: 72,
+  unit_indent_large: 80,
   unit_side_padding: 16,
 
   // buttons
