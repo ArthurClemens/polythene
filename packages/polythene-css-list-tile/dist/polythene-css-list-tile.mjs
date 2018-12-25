@@ -11,7 +11,7 @@ var classes = {
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
   contentFront: "pe-list-tile__content-front",
-  // states
+  // states  
   compact: "pe-list-tile--compact",
   compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
@@ -20,8 +20,10 @@ var classes = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
+  inset: "pe-list-tile--inset",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  rounded: "pe-list-tile--rounded",
   highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky",
   navigation: "pe-list-tile--navigation"
@@ -132,6 +134,14 @@ var tintFns = function tintFns(tint) {
       ".pe-list-tile--selected": {
         " .pe-list-tile__primary, pe-list-tile__secondary": {
           backgroundColor: vars$$1["color_" + tint + "_selected_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--selected": {
+        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+          color: vars$$1["color_" + tint + "_selected_text"]
         }
       }
     })];
@@ -400,6 +410,18 @@ var varFns = {
       " .pe-list-tile__content": [paddingH(vars$$1.side_padding)]
     })];
   },
+  inset_padding: function inset_padding(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--inset": [paddingH(vars$$1.inset_padding)]
+    })];
+  },
+  rounded_border_radius: function rounded_border_radius(selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--rounded .pe-list-tile__primary": {
+        borderRadius: vars$$1.rounded_border_radius + "px"
+      }
+    })];
+  },
   compact_front_item_width: function compact_front_item_width(selector, vars$$1) {
     return [sel(selector, {
       " .pe-list-tile__content-front": {
@@ -518,9 +540,13 @@ var vars$1 = {
   has_high_subtitle_padding: 13,
   has_subtitle_padding: 15,
   high_subtitle_line_count: 2,
+  inset_padding: 1 * vars.grid_unit_component,
+  // 8
   line_height_subtitle: 20,
   padding: 13,
+  rounded_border_radius: vars.unit_item_border_radius,
   side_padding: 2 * vars.grid_unit_component,
+  // 16
   single_height: single_height,
   single_line_height: single_height - 2 * padding - (2 * 5 + 1),
   single_with_icon_height: single_with_icon_height,
@@ -538,6 +564,7 @@ var vars$1 = {
   color_light_hover_front: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_hover_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_selected_text: "inherit",
   color_light_selected_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_highlight_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   // background color may be set in theme; disabled by default
@@ -552,6 +579,7 @@ var vars$1 = {
   color_dark_hover: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_hover_front: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_selected_text: "inherit",
   color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover) // background color may be set in theme; disabled by default
   // color_dark_background:           "inherit",

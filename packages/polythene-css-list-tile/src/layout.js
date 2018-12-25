@@ -264,6 +264,20 @@ const varFns = {
       ]
     }),
   ],
+  inset_padding: (selector, vars) => [
+    sel(selector, {
+      ".pe-list-tile--inset": [
+        paddingH(vars.inset_padding)
+      ]
+    }),
+  ],
+  rounded_border_radius: (selector, vars) => [
+    sel(selector, {
+      ".pe-list-tile--rounded .pe-list-tile__primary": {
+        borderRadius: vars.rounded_border_radius + "px"
+      }
+    }),
+  ],
   compact_front_item_width: (selector, vars) => [
     sel(selector, {
       " .pe-list-tile__content-front": {            

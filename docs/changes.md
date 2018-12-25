@@ -29,9 +29,10 @@
 ## 1.4.2
 
 * Toolbar:
-  * Align title and first icon to grid, differentiating whitespace on mobile and tablet
-  * Increased font size to `20px` and font weight to `500`
-
+  * Better aligned title and first icon to the grid, differentiating whitespace on mobile and tablet.
+  * Increased font size to `20px` and font weight to `500`, which can be overridden by theming.
+* List Tile:
+  * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable as well.
 
 ## 1.4.1
 

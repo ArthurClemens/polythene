@@ -82,6 +82,15 @@ const tintFns = tint => ({
       },
     })
   ],
+  ["color_" + tint + "_selected_text"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-list-tile--selected": {
+        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+          color: vars["color_" + tint + "_selected_text"]
+        }
+      },
+    })
+  ],
   ["color_" + tint + "_highlight_background"]: (selector, vars) => [
     sel(selector, {
       ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {

@@ -57,8 +57,10 @@ Displays a list element as part of a [List](list.md).
 | **hoverable** | optional | Boolean | false | Set to `true` to show a hover effect (non-touch devices) |
 | **indent** | optional | Boolean | | Set to `true` to indent the content |
 | **ink** | optional | Boolean | false | Set to `true` to show a ripple effect when the tile is tapped |
+| **inset** | optional | Boolean | false | Set to `true` to add side paddings |
 | **navigation** | optional | Boolean | | Set to `true` to use a Material Design navigation style |
 | **ripple** | optional (valid if `ink` is `true`) | Options object | | Pass [Ripple](ripple.md) options to define ripple behavior |
+| **rounded** | optional | Boolean | false | Set to `true` to make the highlight and selection rounded |
 | **secondary** | optional       | Object   |             | Options for secondary content, see below |
 | **selectable** | optional | Boolean | false | Set to `true` to show a mouse pointer (non-touch devices) |
 | **selected** | optional | Boolean | false | Set to `true` to show a selected state |

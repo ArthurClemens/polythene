@@ -43,7 +43,7 @@ var classes = {
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
   contentFront: "pe-list-tile__content-front",
-  // states
+  // states  
   compact: "pe-list-tile--compact",
   compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
@@ -52,8 +52,10 @@ var classes = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
+  inset: "pe-list-tile--inset",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  rounded: "pe-list-tile--rounded",
   highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky",
   navigation: "pe-list-tile--navigation"
@@ -131,7 +133,7 @@ var createProps = function createProps(vnode, _ref3) {
     remove: ["tabindex", "tabIndex"]
   }), // tabindex is set elsewhere
   {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.header ? classes.header : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.rounded ? classes.rounded : null, attrs.header ? classes.header : null, attrs.inset ? classes.inset : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
   );
 };

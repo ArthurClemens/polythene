@@ -20,6 +20,13 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
 
   ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
     color_light_highlight_background: "#FFECB3",
+    font_weight_title: 500,
+  });
+
+  ListTileCSS.addStyle(".test-list-tile-selected-inset", {
+    color_light_selected_background: "#ede5fd",
+    color_light_selected_text: "#743bed",
+    font_weight_title: 500,
   });
 
   // const longTitle = "ListTilewithaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongtitle";
@@ -266,6 +273,17 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         title: "Ancillary Justice",
         highlight: true,
         className: "tests-list-tile-themed-highlight-list-tile",
+      }
+    },
+    {
+      name: "Option: selected, inset, rounded",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        selected: true,
+        inset: true,
+        rounded: true,
+        className: "test-list-tile-selected-inset"
       }
     },
 

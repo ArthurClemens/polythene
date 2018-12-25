@@ -38,9 +38,11 @@ export default {
   has_high_subtitle_padding:          13,
   has_subtitle_padding:               15,
   high_subtitle_line_count:           2,
+  inset_padding:                      1 * vars.grid_unit_component, // 8
   line_height_subtitle:               20,
   padding:                            13,
-  side_padding:                       2 * vars.grid_unit_component,
+  rounded_border_radius:              vars.unit_item_border_radius,
+  side_padding:                       2 * vars.grid_unit_component, // 16
   single_height,
   single_line_height:                 single_height - 2 * padding - (2 * 5 + 1),
   single_with_icon_height,      
@@ -59,6 +61,7 @@ export default {
   color_light_hover_front:            rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   color_light_hover_background:       rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_focus_background:       rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_selected_text:          "inherit",
   color_light_selected_background:    rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_light_highlight_background:   rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   // background color may be set in theme; disabled by default
@@ -74,6 +77,7 @@ export default {
   color_dark_hover:                   rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_hover_front:             rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   color_dark_hover_background:        rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_selected_text:           "inherit",
   color_dark_selected_background:     rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_highlight_background:    rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   // background color may be set in theme; disabled by default
