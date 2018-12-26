@@ -129,7 +129,6 @@ html {
 }
 
 .tests-list .pe-list:not(.tests-lists-themed-list),
-.tests-list-tile .pe-list-tile,
 .tests-list .pe-dark-tone .result .pe-light-tone.pe-list,
 .tests-list-tile .result .pe-light-tone.pe-list-tile,
 .tests-list-tile .pe-dark-tone .result .pe-light-tone.pe-list-tile,

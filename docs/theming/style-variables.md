@@ -7,6 +7,7 @@
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
   - [Themed behaviors](#themed-behaviors)
+  - [Using scope](#using-scope)
   - [Using media queries](#using-media-queries)
   - [Function `addStyle`](#function-addstyle)
   - [Under the hood](#under-the-hood)
@@ -78,11 +79,14 @@ The `selector` is usually a class name.
 For example, to set the size and color of an icon:
 
 ~~~javascript
-IconCSS.addStyle(".purple-icon", {
-  // Note that we only need to list the variables that differ
-  size_regular: 44,
-  color_light:  "purple"
-})
+IconCSS.addStyle(
+  ".purple-icon",
+  {
+    // Note that we only need to list the variables that differ
+    size_regular: 44,
+    color_light:  "purple"
+  }
+)
 ~~~
 
 
@@ -111,12 +115,15 @@ Create a Contained Button with a drop shadow:
 ~~~javascript
 import { ButtonCSS } from "polythene-css"
 
-ButtonCSS.addStyle(".contained-button", {
-  contained:              true,
-  color_light_background: "#673ab7",
-  color_light_text:       "#fff",
-  shadow_depth:           1,
-})
+ButtonCSS.addStyle(
+  ".contained-button",
+  {
+    contained:              true,
+    color_light_background: "#673ab7",
+    color_light_text:       "#fff",
+    shadow_depth:           1,
+  }
+)
 ~~~
 
 Create a cover Drawer:
@@ -124,9 +131,12 @@ Create a cover Drawer:
 ~~~javascript
 import { DrawerCSS } from "polythene-css"
 
-DrawerCSS.addStyle(".cover-drawer", {
-  cover: true
-})
+DrawerCSS.addStyle(
+  ".cover-drawer",
+  {
+    cover: true
+  }
+)
 ~~~
 
 Create a modal Dialog (disabling clicking the background) with a backdrop: 
@@ -134,10 +144,13 @@ Create a modal Dialog (disabling clicking the background) with a backdrop:
 ~~~javascript
 import { DialogCSS } from "polythene-css"
 
-DialogCSS.addStyle(".modal-dialog", {
-  modal:    true,
-  backdrop: true
-})
+DialogCSS.addStyle(
+  ".modal-dialog",
+  {
+    modal:    true,
+    backdrop: true
+  }
+)
 ~~~
 
 Create a Menu with a backdrop:
@@ -145,9 +158,32 @@ Create a Menu with a backdrop:
 ~~~javascript
 import { MenuCSS } from "polythene-css"
 
-MenuCSS.addStyle(".menu-backdrop", {
-  backdrop: true
-})
+MenuCSS.addStyle(
+  ".menu-backdrop",
+  {
+    backdrop: true
+  }
+)
+~~~
+
+### Using scope
+
+To restrict a theme style to a CSS scope, add parameter `scope` as attribute of the "additional options":
+
+~~~javascript
+import { ListTileCSS } from "polythene-css"
+
+ListTileCSS.addStyle(
+  ".navigation-list-tile",
+  {
+    // Style variables:
+    font_size_title: 21
+  },
+  {
+    // Additional options:
+    scope: ".main-navigation"
+  }
+)
 ~~~
 
 <a id="using-media-queries"></a>
@@ -161,14 +197,16 @@ Conceptually, this is very close to writing CSS with media queries, but it has t
 Pass the media query string as attribute of the "additional options":
 
 ~~~javascript
+import { IconCSS } from "polythene-css"
+
 IconCSS.addStyle(
   ".small-screen-icon",
-  // Style variables:
   {
+    // Style variables:
     size_regular: 16
   },
-  // Additional options:
   {
+    // Additional options:
     mediaQuery: "@media all and (max-width: 420px)"
   }
 )
@@ -249,9 +287,12 @@ import { IconCSS } from "polythene-css"
 
 const unitSize = 20
 
-IconCSS.addStyle(".app-icon", {
-  size_large: 4 * unitSize
-})
+IconCSS.addStyle(
+  ".app-icon",
+  {
+    size_large: 4 * unitSize
+  }
+)
 
 // Show the large icon
 m(Icon, {
@@ -266,9 +307,12 @@ To create a blue button on a dark background:
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
 
-ButtonCSS.addStyle(".blue-on-dark-button", {
-  color_dark_text: "#1976D2"
-})
+ButtonCSS.addStyle(
+  ".blue-on-dark-button",
+  {
+    color_dark_text: "#1976D2"
+  }
+)
 
 // Show the blue button on a dark background
 m(".pe-dark-tone", 
@@ -318,9 +362,12 @@ import { IconCSS } from "polythene-css"
 
 const unitSize = 20
 
-IconCSS.addStyle(".app-icon", {
-  size_large: 4 * unitSize
-})
+IconCSS.addStyle(
+  ".app-icon",
+  {
+    size_large: 4 * unitSize
+  }
+)
 
 // Show the large icon
 <Icon className="app-icon" size="large" />
@@ -332,9 +379,12 @@ To create a blue button on a dark background:
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
 
-ButtonCSS.addStyle(".blue-on-dark-button", {
-  color_dark_text: "#1976D2"
-})
+ButtonCSS.addStyle(
+  ".blue-on-dark-button",
+  {
+    color_dark_text: "#1976D2"
+  }
+)
 
 // Show the blue button on a dark background
 <div className="pe-dark-tone">
@@ -402,8 +452,8 @@ Variables are defined in each module's `vars.js` file.
 
 * [polythene-css-base-spinner](../../packages/polythene-css-base-spinner/src/vars.js)
 * [polythene-css-button-group](../../packages/polythene-css-button-group/src/vars.js)
-* [polythene-css-button](../../packages/polythene-css-button/src/contained-button/vars.js)
-* [polythene-css-button](../../packages/polythene-css-button/src/text-button/vars.js)
+* [polythene-css-button (Contained)](../../packages/polythene-css-button/src/contained-button/vars.js)
+* [polythene-css-button (Text)](../../packages/polythene-css-button/src/text-button/vars.js)
 * [polythene-css-card](../../packages/polythene-css-card/src/vars.js)
 * [polythene-css-checkbox](../../packages/polythene-css-checkbox/src/vars.js)
 * [polythene-css-dialog-pane](../../packages/polythene-css-dialog-pane/src/vars.js)

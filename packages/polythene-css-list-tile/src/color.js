@@ -1,5 +1,15 @@
 import { sel, createColor } from "polythene-core-css";
 
+const selected = (selector, vars, tint) =>
+  sel(selector, {
+    "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+      color: vars["color_" + tint + "_selected_text"]
+    },
+    " .pe-list-tile__primary, pe-list-tile__secondary": {
+      backgroundColor: vars["color_" + tint + "_selected_background"]
+    }
+  });
+
 const generalFns = ({
   general_styles: selector => [
     sel(selector, {
@@ -73,24 +83,6 @@ const tintFns = tint => ({
       },
     })
   ],
-  ["color_" + tint + "_selected_background"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-list-tile--selected": {
-        " .pe-list-tile__primary, pe-list-tile__secondary": {
-          backgroundColor: vars["color_" + tint + "_selected_background"]
-        }
-      },
-    })
-  ],
-  ["color_" + tint + "_selected_text"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-list-tile--selected": {
-        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-          color: vars["color_" + tint + "_selected_text"]
-        }
-      },
-    })
-  ],
   ["color_" + tint + "_highlight_background"]: (selector, vars) => [
     sel(selector, {
       ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
@@ -107,6 +99,17 @@ const tintFns = tint => ({
           backgroundColor: vars["color_" + tint + "_focus_background"]
         }
       }
+    })
+  ],
+
+  ["color_" + tint + "_selected_text"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-list-tile--selected": selected(selector, vars, tint)
+    })
+  ],
+  ["color_" + tint + "_selected_background"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-list-tile--selected": selected(selector, vars, tint)
     })
   ],
 });
@@ -139,8 +142,13 @@ const hoverTintFns = tint => ({
   ],
 });
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+const themeFns = tint => ({
+  selected: (selector, vars) =>
+    vars.selected && selected(selector, vars, tint)
+});
+
+const lightTintFns = Object.assign({}, generalFns, tintFns("light"), themeFns("light"));
+const darkTintFns = Object.assign({}, generalFns, tintFns("dark"), themeFns("dark"));
 
 const lightTintHoverFns = hoverTintFns("light");
 const darkTintHoverFns = hoverTintFns("dark");

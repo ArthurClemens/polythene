@@ -7,7 +7,7 @@ import {
 import { addTypography, addLayoutStyles } from "polythene-css";
 import "polythene-css";
 import { rules as css } from "./styles";
-import { renderer as h, List, Toolbar, ListTile, Snackbar, Notification } from "polythene-react";
+import { renderer as h, List, Toolbar, ToolbarTitle, ListTile, Snackbar, Notification } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 import OnMatch from "./OnMatch";
@@ -24,7 +24,9 @@ const NavBar = () =>
           backgroundColor: "rgba(255,255,255,.93)"
         }
       },
-      h("span", "Polythene Components for React")
+      h(ToolbarTitle, {
+        text: "Polythene Components for React"
+      })
     )
   );
 

@@ -2,22 +2,24 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.4.2](#142)
+  - [CSS](#css)
+  - [Components](#components)
 - [1.4.1](#141)
 - [1.4.0](#140)
 - [1.3.2](#132)
   - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
-  - [CSS](#css)
+  - [CSS](#css-1)
     - [Themes and behavior](#themes-and-behavior)
     - [Themes and media queries](#themes-and-media-queries)
-  - [Components](#components)
+  - [Components](#components-1)
   - [Deprecations](#deprecations)
   - [Other](#other)
 - [1.2.0](#120)
-  - [Components](#components-1)
+  - [Components](#components-2)
   - [Other](#other-1)
 - [1.1.0](#110)
   - [Core](#core)
-  - [Components](#components-2)
+  - [Components](#components-3)
   - [Example code](#example-code)
   - [Tooling](#tooling)
   - [Other](#other-2)
@@ -27,6 +29,12 @@
 <!-- /MarkdownTOC -->
 
 ## 1.4.2
+
+### CSS
+
+Functions `addStyle` and `getStyle` now accept a parameter `scope` to  restrict a theme style to a CSS scope. See [Style variables](theming/style-variables.md) for an example.
+
+### Components
 
 * Toolbar:
   * Better aligned title and first icon to the grid, differentiating whitespace on mobile and tablet.

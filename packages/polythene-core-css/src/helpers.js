@@ -90,7 +90,7 @@ const colorScopes = [
   },
 ];
 
-export const createColor = ({ varFns={}, superColor, varMixin = o => o }) => (selector, componentVars, customVars) =>
+export const createColor = ({ varFns={}, superColor, varMixin = o => o }) => (selector, componentVars, customVars) => (
   colorScopes.map(({ scopes, varFnName, isNoTouch }) => 
     createColorStyle({
       selector,
@@ -105,7 +105,8 @@ export const createColor = ({ varFns={}, superColor, varMixin = o => o }) => (se
       superColor,
       varMixin
     })
-  );
+  )
+);
 
 const createMarkerValue = (vars, behaviorVars) => {
   if (!vars) {

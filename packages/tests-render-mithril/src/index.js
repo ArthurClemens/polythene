@@ -1,7 +1,7 @@
 import { addLayoutStyles, addTypography } from "polythene-css";
 import { rules as css } from "./styles";
 import Page from "./Page";
-import { renderer as h, List, ListTile, Toolbar } from "polythene-mithril";
+import { renderer as h, List, ListTile, Toolbar, ToolbarTitle } from "polythene-mithril";
 import routes from "./routes";
 import Footer from "./Footer";
 
@@ -15,7 +15,9 @@ const navBar = () =>
     {
       style: { backgroundColor: "rgba(255,255,255,.93)" }
     },
-    h("span", TITLE)
+    h(ToolbarTitle, {
+      text: TITLE
+    })
   ));
 
 const index = {

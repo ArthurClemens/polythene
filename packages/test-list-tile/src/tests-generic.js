@@ -6,16 +6,35 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
 
   const trustedIconStars = h.trust(iconStars);
 
-  ListTileCSS.addStyle(".tests-list-tile-themed-list-tile", {
-    color_light_title:      "#424242",
-    color_light_background: "#FFECB3",
-    color_dark_title:       "#FFECB3",
-    color_dark_background:  "#5D4037",
-    font_size_title:        21
-  });
+  ListTileCSS.addStyle(".pe-list-tile",
+    {
+      color_light_background: "#fff",
+    },
+    {
+      scope: ".tests-list-tile"
+    }
+  );
+
+  ListTileCSS.addStyle(".tests-list-tile-themed-list-tile",
+    {
+      color_light_title:      "#424242",
+      color_light_background: "#FFECB3",
+      color_dark_title:       "#FFECB3",
+      color_dark_background:  "#5D4037",
+      font_size_title:        21
+    },
+    {
+      scope: ".tests-list-tile"
+    }
+  );
 
   ListTileCSS.addStyle(".tests-list-tile-themed-two-lines", {
     title_line_count: 2
+  });
+  ListTileCSS.addStyle(".tests-list-tile-themed-three-lines", {
+    title_line_count: 3
+  }, {
+    mediaQuery: "@media all and (max-width: 559px)"
   });
 
   ListTileCSS.addStyle(".tests-list-tile-themed-highlight-list-tile", {
@@ -27,6 +46,9 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     color_light_selected_background: "#ede5fd",
     color_light_selected_text: "#743bed",
     font_weight_title: 500,
+    selected: true,
+    inset: true,
+    rounded: true,
   });
 
   // const longTitle = "ListTilewithaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongtitle";
@@ -155,11 +177,29 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
     {
+      name: "Option: navigation",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        navigation: true
+      }
+    },
+    {
       name: "Option: selected",
       component: ListTile,
       attrs: {
         title: "Ancillary Justice",
         selected: true
+      }
+    },
+    {
+      name: "Options: selected, inset, rounded",
+      component: ListTile,
+      attrs: {
+        title: "Ancillary Justice",
+        selected: true,
+        inset: true,
+        rounded: true,
       }
     },
     {
@@ -259,11 +299,11 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
     {
-      name: "Themed (title running on 2 lines)",
+      name: "Themed (title running on 2 lines, and on small screen on 3)",
       component: ListTile,
       attrs: {
         title: longText,
-        className: "tests-list-tile-themed-two-lines"
+        className: "tests-list-tile-themed-two-lines tests-list-tile-themed-three-lines"
       }
     },
     {
@@ -275,14 +315,12 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
         className: "tests-list-tile-themed-highlight-list-tile",
       }
     },
+    
     {
-      name: "Option: selected, inset, rounded",
+      name: "Themed selected, inset, rounded",
       component: ListTile,
       attrs: {
         title: "Ancillary Justice",
-        selected: true,
-        inset: true,
-        rounded: true,
         className: "test-list-tile-selected-inset"
       }
     },

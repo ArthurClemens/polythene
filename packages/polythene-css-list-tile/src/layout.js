@@ -33,6 +33,25 @@ const title_line_count_single_line_height = (selector, vars) =>
     ]
   });
 
+const unSelectable = selector => 
+  sel(selector, {
+    "&, a": {
+      pointerEvents: "none"
+    }
+  });
+
+const inset = (selector, vars) => 
+  sel(selector, [
+    paddingH(vars.inset_padding)
+  ]);
+
+const rounded = (selector, vars) => 
+  sel(selector, {
+    " .pe-list-tile__primary": {
+      borderRadius: vars.rounded_border_radius + "px"
+    }
+  });
+
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
@@ -115,11 +134,7 @@ const varFns = {
           }
         ],
 
-        ".pe-list-tile--selected, &.pe-list-tile--disabled": {
-          "&, a": {
-            pointerEvents: "none"
-          }
-        },
+        ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars),
 
         ".pe-list-tile--subtitle": {
           " .pe-list-tile__content": {
@@ -266,16 +281,12 @@ const varFns = {
   ],
   inset_padding: (selector, vars) => [
     sel(selector, {
-      ".pe-list-tile--inset": [
-        paddingH(vars.inset_padding)
-      ]
+      ".pe-list-tile--inset": inset(selector, vars)
     }),
   ],
   rounded_border_radius: (selector, vars) => [
     sel(selector, {
-      ".pe-list-tile--rounded .pe-list-tile__primary": {
-        borderRadius: vars.rounded_border_radius + "px"
-      }
+      ".pe-list-tile--rounded": rounded(selector, vars)
     }),
   ],
   compact_front_item_width: (selector, vars) => [
@@ -365,6 +376,15 @@ const varFns = {
       },
     })
   ],
+
+  // Theme vars
+
+  inset: (selector, vars) => 
+    vars.inset && inset(selector, vars),
+  rounded: (selector, vars) => 
+    vars.rounded && rounded(selector, vars),
+  selected: (selector, vars) => 
+    vars.selected && unSelectable(selector, vars),
 };
 
 export default createLayout({ varFns });

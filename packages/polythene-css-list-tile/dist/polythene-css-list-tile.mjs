@@ -62,6 +62,17 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+var _selected = function selected(selector, vars$$1, tint) {
+  return sel(selector, {
+    "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+      color: vars$$1["color_" + tint + "_selected_text"]
+    },
+    " .pe-list-tile__primary, pe-list-tile__secondary": {
+      backgroundColor: vars$$1["color_" + tint + "_selected_background"]
+    }
+  });
+};
+
 var generalFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
@@ -129,22 +140,6 @@ var tintFns = function tintFns(tint) {
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-list-tile--selected": {
-        " .pe-list-tile__primary, pe-list-tile__secondary": {
-          backgroundColor: vars$$1["color_" + tint + "_selected_background"]
-        }
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-list-tile--selected": {
-        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-          color: vars$$1["color_" + tint + "_selected_text"]
-        }
-      }
-    })];
   }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars$$1) {
     return [sel(selector, {
       ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
@@ -160,6 +155,14 @@ var tintFns = function tintFns(tint) {
           backgroundColor: vars$$1["color_" + tint + "_focus_background"]
         }
       }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--selected": _selected(selector, vars$$1, tint)
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars$$1) {
+    return [sel(selector, {
+      ".pe-list-tile--selected": _selected(selector, vars$$1, tint)
     })];
   }), _ref;
 };
@@ -192,9 +195,17 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref2;
 };
 
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var themeFns = function themeFns(tint) {
+  return {
+    selected: function selected(selector, vars$$1) {
+      return vars$$1.selected && _selected(selector, vars$$1, tint);
+    }
+  };
+};
 
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+var lightTintFns = _extends({}, generalFns, tintFns("light"), themeFns("light"));
+
+var darkTintFns = _extends({}, generalFns, tintFns("dark"), themeFns("dark"));
 
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
@@ -246,6 +257,26 @@ var title_line_count_single_line_height = function title_line_count_single_line_
   });
 };
 
+var unSelectable = function unSelectable(selector) {
+  return sel(selector, {
+    "&, a": {
+      pointerEvents: "none"
+    }
+  });
+};
+
+var _inset = function inset(selector, vars$$1) {
+  return sel(selector, [paddingH(vars$$1.inset_padding)]);
+};
+
+var _rounded = function rounded(selector, vars$$1) {
+  return sel(selector, {
+    " .pe-list-tile__primary": {
+      borderRadius: vars$$1.rounded_border_radius + "px"
+    }
+  });
+};
+
 var varFns = {
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(vars$$1), flex.layout, {
@@ -292,11 +323,7 @@ var varFns = {
           whiteSpace: "normal"
         }]
       }],
-      ".pe-list-tile--selected, &.pe-list-tile--disabled": {
-        "&, a": {
-          pointerEvents: "none"
-        }
-      },
+      ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars$$1),
       ".pe-list-tile--subtitle": {
         " .pe-list-tile__content": {
           " .pe-list-tile__title": {
@@ -412,14 +439,12 @@ var varFns = {
   },
   inset_padding: function inset_padding(selector, vars$$1) {
     return [sel(selector, {
-      ".pe-list-tile--inset": [paddingH(vars$$1.inset_padding)]
+      ".pe-list-tile--inset": _inset(selector, vars$$1)
     })];
   },
   rounded_border_radius: function rounded_border_radius(selector, vars$$1) {
     return [sel(selector, {
-      ".pe-list-tile--rounded .pe-list-tile__primary": {
-        borderRadius: vars$$1.rounded_border_radius + "px"
-      }
+      ".pe-list-tile--rounded": _rounded(selector, vars$$1)
     })];
   },
   compact_front_item_width: function compact_front_item_width(selector, vars$$1) {
@@ -500,6 +525,16 @@ var varFns = {
         }
       }
     })];
+  },
+  // Theme vars
+  inset: function inset(selector, vars$$1) {
+    return vars$$1.inset && _inset(selector, vars$$1);
+  },
+  rounded: function rounded(selector, vars$$1) {
+    return vars$$1.rounded && _rounded(selector, vars$$1);
+  },
+  selected: function selected(selector, vars$$1) {
+    return vars$$1.selected && unSelectable(selector, vars$$1);
   }
 };
 var layout = createLayout({
@@ -522,7 +557,12 @@ var layout = createLayout({
 var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
-var vars$1 = {
+var themeVars = _extends({}, {
+  inset: false,
+  selected: false,
+  rounded: false
+});
+var vars$1 = _extends({}, {
   general_styles: true,
   compact_front_item_width: 64,
   compact_padding: 9,
@@ -584,7 +624,7 @@ var vars$1 = {
   color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover) // background color may be set in theme; disabled by default
   // color_dark_background:           "inherit",
 
-};
+}, themeVars);
 
 var fns = [layout, color];
 var selector = ".".concat(classes.component);

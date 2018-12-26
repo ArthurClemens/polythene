@@ -1169,6 +1169,12 @@ var addToDocument = function addToDocument(opts) {
   });
   documentRef.head.appendChild(styleEl);
 };
+
+var wrapInScope = function wrapInScope(_ref) {
+  var styles = _ref.styles,
+      scope = _ref.scope;
+  return scope ? [_defineProperty({}, scope, styles)] : styles;
+};
 /*
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
@@ -1177,13 +1183,15 @@ var addToDocument = function addToDocument(opts) {
 */
 
 
-var addStyle = function addStyle(_ref) {
-  var selectors = _ref.selectors,
-      styleFns = _ref.fns,
-      vars = _ref.vars,
-      customVars = _ref.customVars,
-      mediaQuery = _ref.mediaQuery;
-  var selector = selectors.join("");
+var addStyle = function addStyle(_ref3) {
+  var selectors = _ref3.selectors,
+      styleFns = _ref3.fns,
+      vars = _ref3.vars,
+      customVars = _ref3.customVars,
+      mediaQuery = _ref3.mediaQuery,
+      scope = _ref3.scope;
+  var prefix = scope ? " " : "";
+  var selector = prefix + selectors.join("");
   var styleList = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   }).filter(function (list) {
@@ -1195,25 +1203,34 @@ var addStyle = function addStyle(_ref) {
   }
 
   var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-
-  if (mediaQuery) {
-    add(id, [_defineProperty({}, mediaQuery, styleList)]);
-  } else {
-    add(id, styleList);
-  }
+  add(id, wrapInScope({
+    styles: wrapInScope({
+      styles: styleList,
+      scope: scope
+    }),
+    scope: mediaQuery
+  }));
 };
 
-var getStyle = function getStyle(_ref3) {
-  var selectors = _ref3.selectors,
-      styleFns = _ref3.fns,
-      vars = _ref3.vars,
-      customVars = _ref3.customVars,
-      mediaQuery = _ref3.mediaQuery;
-  var selector = selectors.join("");
+var getStyle = function getStyle(_ref4) {
+  var selectors = _ref4.selectors,
+      styleFns = _ref4.fns,
+      vars = _ref4.vars,
+      customVars = _ref4.customVars,
+      mediaQuery = _ref4.mediaQuery,
+      scope = _ref4.scope;
+  var prefix = scope ? " " : "";
+  var selector = prefix + selectors.join("");
   var styleList = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   });
-  return mediaQuery ? [_defineProperty({}, mediaQuery, styleList)] : styleList;
+  return wrapInScope({
+    styles: wrapInScope({
+      styles: styleList,
+      scope: scope
+    }),
+    scope: mediaQuery
+  });
 };
 /*
  * Adds styles to head for a component.
@@ -1229,14 +1246,16 @@ var createAddStyle = function createAddStyle(selector, fns, vars) {
     var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
     var _ref5 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-        mediaQuery = _ref5.mediaQuery;
+        mediaQuery = _ref5.mediaQuery,
+        scope = _ref5.scope;
 
     return addStyle({
       selectors: [selector, customSelector],
       fns: fns,
       vars: vars,
       customVars: customVars,
-      mediaQuery: mediaQuery
+      mediaQuery: mediaQuery,
+      scope: scope
     });
   };
 };
@@ -1247,14 +1266,16 @@ var createGetStyle = function createGetStyle(selector, fns, vars) {
     var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
     var _ref6 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-        mediaQuery = _ref6.mediaQuery;
+        mediaQuery = _ref6.mediaQuery,
+        scope = _ref6.scope;
 
     return [getStyle({
       selectors: [selector, customSelector],
       fns: fns,
       vars: vars,
       customVars: customVars,
-      mediaQuery: mediaQuery
+      mediaQuery: mediaQuery,
+      scope: scope
     })];
   };
 };

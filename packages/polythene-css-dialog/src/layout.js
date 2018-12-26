@@ -1,5 +1,4 @@
 import { mixin, flex, sel, createLayout, createMarker } from "polythene-core-css";
-import { vars as themeVars } from "polythene-theme";
 import { fullScreen as fullScreenPane } from "polythene-css-dialog-pane";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 import { behaviorVars } from "./vars";

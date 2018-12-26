@@ -57,6 +57,11 @@ const addToDocument = (opts, ...styles) => {
   documentRef.head.appendChild(styleEl);
 };
 
+const wrapInScope = ({ styles, scope }) => 
+  scope
+    ? [{ [scope]: styles }]
+    : styles;
+
 /*
  * Adds styles to head for a component.
  * @param selector: Array of Strings: selectors
@@ -64,28 +69,31 @@ const addToDocument = (opts, ...styles) => {
  * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
 */
 
-const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) => {
-  const selector = selectors.join("");
+const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope }) => {
+  const prefix = scope ? " " : "";
+  const selector = prefix + selectors.join("");
   const styleList = styleFns.map(fn => fn(selector, vars, customVars)).filter(list => list.length > 0);
   if (styleList.length === 0) {
     return;
   }
   const id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
-  if (mediaQuery) {
-    add(id, [{
-      [mediaQuery]: styleList
-    }]);
-  } else {
-    add(id, styleList);
-  }
+  add(id,
+    wrapInScope({
+      styles: wrapInScope({ styles: styleList, scope }),
+      scope: mediaQuery
+    })
+  );
 };
 
-const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) => {
-  const selector = selectors.join("");
+
+const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope }) => {
+  const prefix = scope ? " " : "";
+  const selector = prefix + selectors.join("");
   const styleList = styleFns.map(fn => fn(selector, vars, customVars));
-  return mediaQuery
-    ? [{ [mediaQuery]: styleList }]
-    : styleList;
+  return wrapInScope({
+    styles: wrapInScope({ styles: styleList, scope }),
+    scope: mediaQuery
+  });
 };
 
 /*
@@ -94,22 +102,24 @@ const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery }) =>
  * @param fns: Array of Functions: (selector, componentVars) => [j2c style objects]
  * @param vars: (Object) Style configuration variables
 */
-const createAddStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery }={}) => 
+const createAddStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery, scope }={}) => 
   addStyle({
     selectors: [selector, customSelector],
     fns,
     vars,
     customVars,
-    mediaQuery
+    mediaQuery,
+    scope
   });
 
-const createGetStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery }={}) => 
+const createGetStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery, scope }={}) => 
   [getStyle({
     selectors: [selector, customSelector],
     fns,
     vars,
     customVars,
-    mediaQuery
+    mediaQuery,
+    scope
   })];
 
 export default {
