@@ -266,12 +266,14 @@ var unSelectable = function unSelectable(selector) {
 };
 
 var _inset = function inset(selector, vars$$1) {
-  return sel(selector, [paddingH(vars$$1.inset_padding)]);
+  return sel(selector, {
+    margin: vars$$1.inset_size + "px"
+  });
 };
 
 var _rounded = function rounded(selector, vars$$1) {
   return sel(selector, {
-    " .pe-list-tile__primary": {
+    "&, .pe-list-tile__primary": {
       borderRadius: vars$$1.rounded_border_radius + "px"
     }
   });
@@ -437,7 +439,7 @@ var varFns = {
       " .pe-list-tile__content": [paddingH(vars$$1.side_padding)]
     })];
   },
-  inset_padding: function inset_padding(selector, vars$$1) {
+  inset_size: function inset_size(selector, vars$$1) {
     return [sel(selector, {
       ".pe-list-tile--inset": _inset(selector, vars$$1)
     })];
@@ -580,7 +582,7 @@ var vars$1 = _extends({}, {
   has_high_subtitle_padding: 13,
   has_subtitle_padding: 15,
   high_subtitle_line_count: 2,
-  inset_padding: 1 * vars.grid_unit_component,
+  inset_size: 1 * vars.grid_unit_component,
   // 8
   line_height_subtitle: 20,
   padding: 13,

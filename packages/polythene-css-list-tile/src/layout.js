@@ -41,13 +41,13 @@ const unSelectable = selector =>
   });
 
 const inset = (selector, vars) => 
-  sel(selector, [
-    paddingH(vars.inset_padding)
-  ]);
+  sel(selector, {
+    margin: vars.inset_size + "px"
+  });
 
 const rounded = (selector, vars) => 
   sel(selector, {
-    " .pe-list-tile__primary": {
+    "&, .pe-list-tile__primary": {
       borderRadius: vars.rounded_border_radius + "px"
     }
   });
@@ -279,7 +279,7 @@ const varFns = {
       ]
     }),
   ],
-  inset_padding: (selector, vars) => [
+  inset_size: (selector, vars) => [
     sel(selector, {
       ".pe-list-tile--inset": inset(selector, vars)
     }),
