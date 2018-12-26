@@ -62,7 +62,9 @@ var tintFns = function tintFns(tint) {
 
   return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint + "_text"]
+      "&, .pe-toolbar__title": {
+        color: vars$$1["color_" + tint + "_text"]
+      }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
     return [sel(selector, {
@@ -147,6 +149,9 @@ var varFns = {
     return [sel(selector, [flex.layout, flex.layoutHorizontal, flex.layoutCenter, {
       position: "relative",
       zIndex: vars.z_toolbar,
+      " > a": {
+        textDecoration: "none"
+      },
       ".pe-toolbar--fullbleed": {
         padding: 0
       },

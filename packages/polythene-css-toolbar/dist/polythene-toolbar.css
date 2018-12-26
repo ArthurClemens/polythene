@@ -14,6 +14,10 @@
   z-index: 100
 }
 
+.pe-toolbar>a {
+  text-decoration: none
+}
+
 .pe-toolbar.pe-toolbar--fullbleed {
   padding: 0
 }
@@ -194,7 +198,7 @@
   }
 }
 
-.pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar {
+.pe-dark-tone.pe-toolbar,.pe-dark-tone .pe-toolbar,.pe-dark-tone.pe-toolbar .pe-toolbar__title,.pe-dark-tone .pe-toolbar .pe-toolbar__title {
   color: #fff
 }
 
@@ -206,7 +210,7 @@
   background-color: #222
 }
 
-.pe-light-tone.pe-toolbar,.pe-light-tone .pe-toolbar,.pe-toolbar {
+.pe-light-tone.pe-toolbar,.pe-light-tone .pe-toolbar,.pe-light-tone.pe-toolbar .pe-toolbar__title,.pe-light-tone .pe-toolbar .pe-toolbar__title,.pe-toolbar,.pe-toolbar .pe-toolbar__title {
   color: rgba(0,0,0,.87)
 }
 

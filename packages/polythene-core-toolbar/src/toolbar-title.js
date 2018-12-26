@@ -1,8 +1,12 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/toolbar";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
+export const getElement = ({ attrs }) =>
+  attrs.element
+    ? attrs.element
+    : attrs.url
+      ? "a"
+      : "div";
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
@@ -19,7 +23,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.className || attrs[k.class],
       ].join(" ")
     },
-    attrs.events
+    attrs.events,
+    attrs.url
   );
 };
 

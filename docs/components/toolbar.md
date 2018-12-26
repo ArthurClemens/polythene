@@ -58,6 +58,7 @@ See [Material Design Toolbars](https://material.io/guidelines/layout/structure.h
 | **center**    | optional | Boolean | false | Set to `true` to center the text |
 | **indent**    | optional | Boolean | false | Set to `true` to indent the text as if it would be next to an icon |
 | **text**      | either text or children | Boolean |  | Title text |
+| **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
 
 <a id="common-component-options"></a>

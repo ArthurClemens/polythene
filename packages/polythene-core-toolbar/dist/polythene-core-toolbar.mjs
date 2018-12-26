@@ -76,15 +76,16 @@ var toolbar = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || "div";
+var getElement$1 = function getElement(_ref) {
+  var attrs = _ref.attrs;
+  return attrs.element ? attrs.element : attrs.url ? "a" : "div";
 };
-var createProps$1 = function createProps(vnode, _ref) {
-  var k = _ref.keys;
+var createProps$1 = function createProps(vnode, _ref2) {
+  var k = _ref2.keys;
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
+  }, attrs.events, attrs.url);
 };
 var createContent$1 = function createContent(vnode) {
   var attrs = vnode.attrs;

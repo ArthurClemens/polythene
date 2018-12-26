@@ -58,6 +58,10 @@ const varFns = {
         position: "relative", 
         zIndex: themeVars.z_toolbar,
 
+        " > a": {
+          textDecoration: "none",
+        },
+
         ".pe-toolbar--fullbleed": {
           padding: 0
         },
