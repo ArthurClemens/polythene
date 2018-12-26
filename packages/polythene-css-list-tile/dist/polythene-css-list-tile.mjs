@@ -267,7 +267,8 @@ var unSelectable = function unSelectable(selector) {
 
 var _inset = function inset(selector, vars$$1) {
   return sel(selector, {
-    margin: vars$$1.inset_size + "px"
+    margin: vars$$1.inset_size + "px",
+    " .pe-list-tile__content": [paddingH(vars$$1.side_padding - vars$$1.inset_size)]
   });
 };
 

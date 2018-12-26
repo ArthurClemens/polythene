@@ -263,6 +263,11 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   margin: 8px
 }
 
+.pe-list-tile.pe-list-tile--inset.pe-list-tile .pe-list-tile__content {
+  padding-left: 8px;
+  padding-right: 8px
+}
+
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__content:not(.pe-list-tile__content-front) {
   padding-top: 13px;
   padding-bottom: 14px

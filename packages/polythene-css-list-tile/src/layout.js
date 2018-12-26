@@ -42,7 +42,11 @@ const unSelectable = selector =>
 
 const inset = (selector, vars) => 
   sel(selector, {
-    margin: vars.inset_size + "px"
+    margin: vars.inset_size + "px",
+    
+    " .pe-list-tile__content": [
+      paddingH(vars.side_padding - vars.inset_size)
+    ]
   });
 
 const rounded = (selector, vars) => 
