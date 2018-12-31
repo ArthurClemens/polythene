@@ -48,19 +48,21 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
         console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
       }
       // Only set defaultChecked the first time when no value has been stored yet
-      const isDefaultChecked =
-        (
-          buttonOpts.defaultChecked ||
-          buttonOpts.checked ||
-          (attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue)
-        ) && checkedIndex === null;
+      const buttonOptsDefaultChecked = checkedIndex === null
+        ? buttonOpts.defaultChecked !== undefined
+          ? buttonOpts.defaultChecked
+          : attrs.defaultSelectedValue !== undefined
+            ? buttonOpts.value === attrs.defaultSelectedValue
+            : undefined
+        : undefined;
       const buttonOptsChecked = buttonOpts.checked !== undefined
         ? buttonOpts.checked
-        : checkedIndex === index; // Use internal state if checked state is not set in attrs
-      const isChecked = isDefaultChecked !== undefined
-        ? isDefaultChecked
-        : buttonOptsChecked;
-      
+        : undefined;
+      const isChecked = buttonOptsChecked !== undefined
+        ? buttonOptsChecked
+        : buttonOptsDefaultChecked !== undefined
+          ? buttonOptsDefaultChecked
+          : checkedIndex === index;
       return h(RadioButton, Object.assign(
         {},
         {

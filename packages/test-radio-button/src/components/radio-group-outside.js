@@ -6,6 +6,7 @@ const model = {
     {
       value: "left",
       label: "Left",
+      checked: true
     },
     {
       value: "right",
@@ -16,7 +17,7 @@ const model = {
 
 export default ({ h, RadioGroup, Button }) => ({
   oninit: vnode => {
-    const checkedValue = stream();
+    const checkedValue = stream("left");
     Object.assign(vnode.state, {
       checkedValue,
     });
@@ -29,7 +30,7 @@ export default ({ h, RadioGroup, Button }) => ({
         name: model.name,
         className: "multiple",
         onChange: ({ value }) => state.checkedValue(value),
-        defaultSelectedValue: "left",
+        // defaultSelectedValue: "left",
         content: model.values.map(v => ({
           ...v,
           checked: checkedValue === v.value,

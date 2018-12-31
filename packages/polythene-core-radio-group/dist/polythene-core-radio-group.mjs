@@ -56,10 +56,9 @@ var createContent = function createContent(vnode, _ref2) {
     } // Only set defaultChecked the first time when no value has been stored yet
 
 
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) && checkedIndex === null;
-    var buttonOptsChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : checkedIndex === index; // Use internal state if checked state is not set in attrs
-
-    var isChecked = isDefaultChecked !== undefined ? isDefaultChecked : buttonOptsChecked;
+    var buttonOptsDefaultChecked = checkedIndex === null ? buttonOpts.defaultChecked !== undefined ? buttonOpts.defaultChecked : attrs.defaultSelectedValue !== undefined ? buttonOpts.value === attrs.defaultSelectedValue : undefined : undefined;
+    var buttonOptsChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : undefined;
+    var isChecked = buttonOptsChecked !== undefined ? buttonOptsChecked : buttonOptsDefaultChecked !== undefined ? buttonOptsDefaultChecked : checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,
