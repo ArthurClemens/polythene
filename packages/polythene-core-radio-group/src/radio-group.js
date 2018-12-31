@@ -57,7 +57,9 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
       const buttonOptsChecked = buttonOpts.checked !== undefined
         ? buttonOpts.checked
         : checkedIndex === index; // Use internal state if checked state is not set in attrs
-      const isChecked = isDefaultChecked || buttonOptsChecked;
+      const isChecked = isDefaultChecked !== undefined
+        ? isDefaultChecked
+        : buttonOptsChecked;
       
       return h(RadioButton, Object.assign(
         {},
