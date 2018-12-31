@@ -17,6 +17,9 @@
     "polythene-core-shadow": "^1.4.1",
     "polythene-mithril-base": "^1.4.1"
   },
+  "devDependencies": {
+    "@types/mithril": "^1.1.13"
+  },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT"

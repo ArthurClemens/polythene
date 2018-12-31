@@ -7,8 +7,10 @@ const generalFns = ({
 const tintFns = tint => ({
   ["color_" + tint + "_text"]: (selector, vars) => [
     sel(selector, {
-      "&, .pe-toolbar__title": {
-        color: vars["color_" + tint + "_text"],  
+      " .pe-toolbar__title": {
+        "&, a:link, a:visited": {
+          color: vars["color_" + tint + "_text"],
+        }
       }
     })
   ],

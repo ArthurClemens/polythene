@@ -38,23 +38,23 @@ export default class extends Component {
                 ink: true,
                 hoverable: true,
               },
-            },
-            [
-              {
-                title: "Link to Shadow",
-                url: {
-                  to: "/shadow",
+              tiles: [
+                {
+                  title: "Link to Shadow",
+                  url: {
+                    to: "/shadow",
+                  },
+                  key: "shadow"
                 },
-                key: "shadow"
-              },
-              {
-                title: "Link to Button",
-                url: {
-                  to: "/button",
+                {
+                  title: "Link to Button",
+                  url: {
+                    to: "/button",
+                  },
+                  key: "button"
                 },
-                key: "button"
-              },
-            ]
+              ]
+            }
           )
         })
       ]

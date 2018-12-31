@@ -14,7 +14,7 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
       key={left}
       title={left}
       secondary={{ content: right }}
-      hoverable={true}
+      hoverable
       disabled={disabled}
     />;
 
@@ -50,7 +50,6 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
           <List
             key="one"
             compact
-            hoverable
             tiles={[
               Tile("Bold", "\u2318B"),
               Tile("Italic", "\u2318I"),
@@ -63,7 +62,6 @@ const reactTests = ({ renderer: h, Menu, List, ListTile }) => {
           <List
             key="two"
             compact
-            hoverable
             tiles={[
               Tile("Clear formatting", "\u2318/", true),
               Tile("Custom spacing", "")

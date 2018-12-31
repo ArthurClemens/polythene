@@ -8,6 +8,7 @@ export default ({ renderer: h, keys: k, Dialog, List, ListTile }) => {
       selected,
       disabled,
       ink: true,
+      hoverable: true,
       events: {
         [k.onclick]: () => {
           if (!disabled) {
@@ -19,7 +20,6 @@ export default ({ renderer: h, keys: k, Dialog, List, ListTile }) => {
 
   return {
     menu: h(List, {
-      hoverable: true,
       tiles: [
         tile("Any bar, any cross, any impediment will be medicinable to me: I am sick in displeasure to him", true, false),
         tile("and whatsoever comes athwart his affection ranges", false, false),

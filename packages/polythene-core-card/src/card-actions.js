@@ -2,6 +2,9 @@ import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/card";
 import buttonClasses from "polythene-css-classes/button";
 
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
+  
 const actionLayoutClasses = {
   horizontal: classes.actionsHorizontal,
   vertical:   classes.actionsVertical,

@@ -2,4 +2,6 @@
 
 Polythene for React component.
 
-[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/react/raised-button.md)
+DEPRECATED: Use Button.
+
+[Documentation](https://github.com/ArthurClemens/polythene/tree/master/docs/components/react/button.md)

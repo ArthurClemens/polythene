@@ -213,7 +213,7 @@ Option `fullscreen` has been renamed to `fullScreen`.
 <a id="fab"></a>
 ### FAB
 
-FAB is now composed from `polythene-raised-button`. This should have no consequences.
+FAB is now composed from `polythene-button`. This should have no consequences.
 
 
 <a id="icon"></a>

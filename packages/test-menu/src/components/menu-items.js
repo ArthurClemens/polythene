@@ -17,7 +17,6 @@ export default ({ renderer: h, Menu, List, ListTile }) => {
           h(List, {
             key: "one", // for React
             compact: true,
-            hoverable: true,
             tiles: [
               tile("Bold", "\u2318B"),
               tile("Italic", "\u2318I"),
@@ -30,7 +29,6 @@ export default ({ renderer: h, Menu, List, ListTile }) => {
           h(List, {
             key: "two", // for React
             compact: true,
-            hoverable: true,
             tiles: [
               tile("Clear formatting", "\u2318/", true),
               tile("Custom spacing", "")

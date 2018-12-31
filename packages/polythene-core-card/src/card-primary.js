@@ -1,6 +1,9 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/card";
 
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
+  
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   const primaryHasMedia = Array.isArray(attrs.content)

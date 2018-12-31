@@ -11,6 +11,7 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
@@ -19,6 +20,9 @@
     "polythene-css-classes": "^1.4.1",
     "polythene-react-base": "^1.4.1",
     "polythene-react-shadow": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

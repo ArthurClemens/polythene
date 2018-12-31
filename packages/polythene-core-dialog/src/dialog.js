@@ -73,7 +73,7 @@ export const onMount = vnode => {
   state.touchEl = dom.querySelector(`.${classes.touch}`);
   state.contentEl = dom.querySelector(`.${classes.content}`);
 
-  if (!attrs.inactive) {
+  if (!attrs.inactive) { // used by Drawer
 
     const handleEscape = e => {
       if (isFullScreen(vnode) || isModal(vnode)) return;
@@ -121,8 +121,8 @@ export const createProps = (vnode, { keys: k }) => {
         attrs.tone === "light" ? "pe-light-tone" : null,
         attrs.className || attrs[k.class],
       ].join(" "),
-      "data-spawn-id": attrs.spawnId,
-      "data-instance-id": attrs.instanceId,
+      "data-spawn-id": attrs.spawnId,       // received from Multi
+      "data-instance-id": attrs.instanceId, // received from Multi
       // click backdrop: close dialog
       [k.onclick]: e => {
         if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {

@@ -44,15 +44,15 @@ Navigation panel that appears with a cover or push animation, or can be placed p
 | ------------- | ------------- | ---------- | --------------- | --------------- |
 | **anchor**    | optional      | String     | "start"         | Set to "end" to reveal the drawer from the far (right) side; with RTL "end" becomes the left side |
 | **backdrop**  | optional      | Boolean    | false           | Set to `true` to show a backdrop background color |
-| **border**    | optional      | Boolean    |                 | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
-| **fixed**     | optional      | Boolean    |                 | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
-| **floating**  | optional      | Boolean    |                 | Variant of `permanent`; additionally set this to `true` to display the drawer as a "floating" block (instead of full height) |
-| **mini**      | optional      | Boolean    |                 | Set to `true` to display a fraction of the drawer (typically to show the icons only), and to reveal the full menu when expanding |
+| **border**    | optional      | Boolean    | false           | Useful with a permanent or pushing drawer when no shadow is used; set to `true` to create a border at the right side; with RTL the border is shown at the left side |
+| **fixed**     | optional      | Boolean    | false           | Set to `true` to give the drawer CSS property `position: fixed`; useful for an app drawer (that must be shown covering all content) when it is drawn from a deeper component |
+| **floating**  | optional      | Boolean    | false           | Variant of `permanent`; additionally set this to `true` to display the drawer as a "floating" block (instead of full height) |
+| **mini**      | optional      | Boolean    | false           | Set to `true` to display a fraction of the drawer (typically to show the icons only), and to reveal the full menu when expanding |
 | **modal**     | optional      | Boolean    | false | Set to `true` to create a modal drawer; tapping the backdrop or pressing ESCAPE will not close the drawer |
-| **permanent** | optional      | Boolean    |                 | Set to `true` to display the drawer as a permanent side menu |
+| **permanent** | optional      | Boolean    | false           | Set to `true` to display the drawer as a permanent side menu |
 | **push**      | optional      | Boolean    | `false` (cover) | Set to `true` to animate the drawer with a push animation, pushing away the content next to the drawer | 
 | **shadowDepth** | optional      | Number 0-5 | 0               | Depth of the shadow; 0 will show no shadow |
-| **show**      | optional      | Boolean    |                 | Set to `true` to reveal the drawer, `false` to hide a displayed drawer |
+| **show**      | optional      | Boolean    | false            | Set to `true` to reveal the drawer, `false` to hide a displayed drawer |
 
 <a id="transition-options"></a>
 ### Transition options

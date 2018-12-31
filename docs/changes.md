@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.4.2](#142)
+  - [Type definitions](#type-definitions)
   - [CSS](#css)
   - [Components](#components)
 - [1.4.1](#141)
@@ -28,19 +29,26 @@
 
 <!-- /MarkdownTOC -->
 
+
 ## 1.4.2
+
+### Type definitions
+
+All components now contain TypeScript type definitions. This makes it easier to use in TypeScript projects and helps to ensure that the options passed to components are valid.
 
 ### CSS
 
-Functions `addStyle` and `getStyle` now accept a parameter `scope` to  restrict a theme style to a CSS scope. See [Style variables](theming/style-variables.md) for an example.
+Functions `addStyle` and `getStyle` now accept a parameter `scope` to  restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md) for an example.
 
 ### Components
 
+* Card:
+  * Option `content` is now restricted to contain only the list of option objects for distinct card areas. To pass other content, use `children`.
+* List Tile:
+  * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable.
 * Toolbar:
   * Better aligned title and first icon to the grid, differentiating whitespace on mobile and tablet.
-  * Increased font size to `20px` and font weight to `500`, which can be overridden by theming.
-* List Tile:
-  * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable as well.
+  * Increased font size to `20px` (which can be overridden by theming).
 
 ## 1.4.1
 

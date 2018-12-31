@@ -37,7 +37,6 @@ export default ({ renderer: h, keys: k, Menu, List, ListTile }) => ({
           offsetV: 0,
           reposition: true,
           content: h(List, {
-            hoverable: true,
             tiles: menuOptions.map((setting, index) =>
               h(ListTile, {
                 title: setting,

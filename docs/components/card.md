@@ -15,6 +15,7 @@ This implementation closely follows the [design specification](https://material.
   - [Options for text](#options-for-text)
   - [Options for header](#options-for-header)
   - [Options for media](#options-for-media)
+  - [Options for media.overlay](#options-for-mediaoverlay)
   - [Options for actions](#options-for-actions)
   - [Options for any](#options-for-any)
   - [Common component options](#common-component-options)
@@ -61,7 +62,7 @@ This implementation closely follows the [design specification](https://material.
 
 | **Parameter**   |  **Required** | **Type** | **Default** | **Description** |
 | --------------- | -------------- | -------- | ----------- | --------------- |
-| **content**     | required | String, hyperscript or component or Array |  | Any content, or a list of option objects for distinct areas - see below |
+| **content**     | required | Array |  | List of option objects for distinct areas - see below; to pass other content, use `children` |
 | **shadowDepth** | optional | Number 0-5 | 1 | Depth of the shadow |
 | **url**         | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) | | URL for the entire card; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 
@@ -85,7 +86,7 @@ Next to the card itself, each content parts has a set of options:
 | **subtitle**  | optional | String |  | Subtitle text |
 | **media**     | optional | Options object, equal to media part below |  | Media that is shown in this part |
 | **actions**   | optional | Options object, equal to actions part below |  | Actions that are shown in this part |
-| **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **tight**     | optional | Boolean | false | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
 
@@ -97,23 +98,25 @@ Next to the card itself, each content parts has a set of options:
 | **element**   | optional | String | "div" | HTML tag |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__text` |
 | **content**   | required | String, hyperscript or component |  | Text contents |
-| **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **tight**     | optional | Boolean | false | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
 
 <a id="options-for-header"></a>
 ### Options for header
 
+The header is composed from [List Tile](list-tile.md). The header accepts all options for List Tile, plus `icon`.
+
+A Material Design header needs one of these options:
+
+* `icon` (or `front`)
+* `title`
+* `info`
+* `url`
+
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **className** | optional | String |  | Extra CSS class appended to `pe-card__header` |
-| **element**   | optional | String | "a" | HTML tag |
-| **events**    | optional | Object | | Card events; options object containing one or more events such as `onclick` (React: `onClick`) |
 | **icon**      | optional | Object |  | [Icon](icon.md) options object; used to show an round "avatar" portrait image |
-| **info**      | optional | String | | The subtitle (1 line high) |
-| **title**     | required | String | | The title content |
-| **url**       | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) | | URL for the header; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
-| **style**     | optional | String |  | Style object |
 
 
 <a id="options-for-media"></a>
@@ -123,14 +126,22 @@ Next to the card itself, each content parts has a set of options:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__media` |
 | **content**   | required | String, hyperscript or component |  | The image or iframe |
-| **element**   | optional | String | "a" or div" | HTML tag |
+| **element**   | optional | String | "div" | HTML tag |
 | **origin**    | optional | String: "start", "center", "end | "center" | From which side cropping should be done |
-| **overlay**   | optional | Options object, equal to card options | | Content to place on the overlay |
+| **overlay**   | optional | Options object, equal to card options; see below | | Content to place on the overlay |
 | **showDimmer** | optional | Boolean | false | Set to `true` to create an image dimmer; the dimmer does not have a default style |
 | **ratio**     | optional | String: "landscape" or "square" | "landscape" | Image ratio; "landscape" translates to `16:9` ratio |
-| **sheet**     | optional | Boolean | | Set to `true` to show the overlay as a partly covering sheet |
 | **size**      | optional | String: "small", "medium", "large", "extra-large" | | For primary media only; defines the image (or iframe) size |
 | **style**     | optional | String |  | Style object |
+
+
+### Options for media.overlay
+
+The media overlay part can contain any card content. Additional options:
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **sheet**     | optional | Boolean | false | Set to `true` to show the overlay as a partly covering sheet |
 
 
 <a id="options-for-actions"></a>
@@ -138,12 +149,12 @@ Next to the card itself, each content parts has a set of options:
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **border**    | optional | Boolean | | Set to `true` to add a top border |
+| **border**    | optional | Boolean | false | Set to `true` to add a top border |
 | **className** | optional | String |  | Extra CSS class appended to `pe-card__actions` |
 | **content**   | required | String, hyperscript or component |  | Action contents, for instance a list of buttons |
 | **element**   | optional | String | "div" | HTML tag |
 | **layout**    | optional | String: "horizontal", "vertical" or "justified" | "horizontal" | Set to "vertical" for a vertical list of actions; use "justified" for a horizontally evenly spread of icons |
-| **tight**     | optional | Boolean | | Set to `true` to reduce the top and bottom padding |
+| **tight**     | optional | Boolean | false | Set to `true` to reduce the top and bottom padding |
 | **style**     | optional | String |  | Style object |
 
 

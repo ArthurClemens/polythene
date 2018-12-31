@@ -92,6 +92,9 @@ export const onMount = ({ attrs }) => {
   if (attrs.z !== undefined) {
     deprecation("Card", { option: "z", newOption: "shadowDepth" });
   }
+  if (attrs.content && !Array.isArray(attrs.content)) {
+    deprecation("Card", { message: "option 'content' is restricted to contain only the list of option objects for distinct card areas. To pass other content, use 'children'." });
+  }
 };
 
 export const createProps = (vnode, { keys: k }) => {
@@ -147,11 +150,11 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
   const attrs = vnode.attrs;
   const contents = Array.isArray(attrs.content)
     ? attrs.content.map(dispatcher)
-    : attrs.content;
+    : attrs.content; // deprecated
   const shadowDepth = attrs.shadowDepth !== undefined
     ? attrs.shadowDepth
     : attrs.z; // deprecated
-
+  const children = attrs.children || vnode.children;
   return [
     h(Shadow, {
       shadowDepth: shadowDepth !== undefined
@@ -166,6 +169,7 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
         key: "content"
       },
       contents
-    )
+    ),
+    children
   ];
 };

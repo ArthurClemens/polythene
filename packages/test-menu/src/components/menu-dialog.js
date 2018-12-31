@@ -13,6 +13,7 @@ export default ({ renderer: h, keys: k, List, ListTile, Dialog })  => {
   };
 
   return {
+    id: "menu",
     menu: h(List, {
       tiles: [
         createListTile("Show all notification content including sensitive notification content"),

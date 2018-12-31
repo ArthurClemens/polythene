@@ -13,7 +13,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
       show,
       selectedIndex,
       redrawOnUpdate: stream.merge([show]), // for React
-      id: "id-" + Math.floor(Math.random() * 1000)
+      id: "id-" + vnode.attrs.id || new Date().getTime() + Math.floor(Math.random() * 1000)
     });
   },
   view: ({ state, attrs }) => {
@@ -41,7 +41,6 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           backdrop: attrs.backdrop,
           topMenu: attrs.topMenu,
           content: h(List, {
-            hoverable: true,
             compact: true,
             tiles: menuOptions.map((item, index) =>
               h(ListTile, {

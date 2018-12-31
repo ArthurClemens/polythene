@@ -6,11 +6,25 @@
 
 - [Options](#options)
 - [Usage](#usage)
+    - [With JSX](#with-jsx)
+    - [With hyperscript](#with-hyperscript)
   - [Images](#images)
+    - [Cropping / origin](#cropping--origin)
+      - [With JSX](#with-jsx-1)
+      - [With hyperscript](#with-hyperscript-1)
+    - [Overlay](#overlay)
+    - [With JSX](#with-jsx-2)
+      - [With hyperscript](#with-hyperscript-2)
+    - [Title image](#title-image)
+    - [With JSX](#with-jsx-3)
+      - [With hyperscript](#with-hyperscript-3)
   - [Embedded videos](#embedded-videos)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -357,7 +371,7 @@ Images with an overlay (text, actions) can be created with `media.overlay`:
     {
       media: {
         ratio: "square",
-        content: <img src="img/large.jpg" />
+        content: <img src="img/large.jpg" />,
         overlay: {
           sheet: true,
           className: "pe-dark-tone",

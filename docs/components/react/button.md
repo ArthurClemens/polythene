@@ -6,6 +6,8 @@
 
 - [Options](#options)
 - [Usage](#usage)
+    - [With JSX](#with-jsx)
+    - [With hyperscript](#with-hyperscript)
   - [Links](#links)
   - [Events](#events)
   - [A row of buttons](#a-row-of-buttons)
@@ -13,6 +15,9 @@
 - [Appearance](#appearance)
   - [Variations](#variations)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -106,7 +111,7 @@ Place a Button inside a [Button Group](./button-group.md) to create a tightly al
 ### Variations
 
 * Create a Contained Button appearance with `contained: true`
-* Create a Raised Button appearance with `raised: true` (see also: [Raised Button](raised-button.md))
+* Create a Raised Button appearance with `raised: true`
 * Add a border with `border: true`
 * The hover effect can be hidden with `wash: false`
 * Special hover effects can be created with a theme, see below

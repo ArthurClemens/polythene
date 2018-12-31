@@ -43,7 +43,7 @@ var listTileClasses = {
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
   contentFront: "pe-list-tile__content-front",
-  // states
+  // states  
   compact: "pe-list-tile--compact",
   compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
@@ -52,8 +52,10 @@ var listTileClasses = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
+  inset: "pe-list-tile--inset",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  rounded: "pe-list-tile--rounded",
   highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky",
   navigation: "pe-list-tile--navigation"
@@ -227,6 +229,7 @@ var createProps = function createProps(vnode, _ref3) {
     className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
     attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
     "data-spawn-id": attrs.spawnId,
+    // received from Multi
     "data-instance-id": attrs.instanceId
   }, k.onclick, function (e) {
     if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {

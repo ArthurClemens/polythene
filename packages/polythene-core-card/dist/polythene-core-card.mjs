@@ -127,6 +127,12 @@ var onMount = function onMount(_ref5) {
       newOption: "shadowDepth"
     });
   }
+
+  if (attrs.content && !Array.isArray(attrs.content)) {
+    deprecation("Card", {
+      message: "option 'content' is restricted to contain only the list of option objects for distinct card areas. To pass other content, use 'children'."
+    });
+  }
 };
 var createProps = function createProps(vnode, _ref6) {
   var k = _ref6.keys;
@@ -200,9 +206,11 @@ var createContent = function createContent(vnode, _ref7) {
   };
 
   var attrs = vnode.attrs;
-  var contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content;
+  var contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content; // deprecated
+
   var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
 
+  var children = attrs.children || vnode.children;
   return [h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : 1,
     animated: true,
@@ -210,7 +218,7 @@ var createContent = function createContent(vnode, _ref7) {
   }), h("div", {
     className: classes.content,
     key: "content"
-  }, contents)];
+  }, contents), children];
 };
 
 var card = /*#__PURE__*/Object.freeze({
@@ -245,6 +253,9 @@ var buttonClasses = {
   separatorAtStart: "pe-button--separator-start"
 };
 
+var getElement$1 = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 var actionLayoutClasses = {
   horizontal: classes.actionsHorizontal,
   vertical: classes.actionsVertical,
@@ -279,11 +290,15 @@ var createContent$1 = function createContent(vnode) {
 };
 
 var cardActions = /*#__PURE__*/Object.freeze({
+  getElement: getElement$1,
   onMount: onMount$1,
   createProps: createProps$1,
   createContent: createContent$1
 });
 
+var getElement$2 = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 var imageRatios = {
   landscape: 16 / 9,
   square: 1
@@ -364,11 +379,15 @@ var createContent$2 = function createContent(vnode, _ref3) {
 };
 
 var cardMedia = /*#__PURE__*/Object.freeze({
+  getElement: getElement$2,
   onMount: onMount$2,
   createProps: createProps$2,
   createContent: createContent$2
 });
 
+var getElement$3 = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+};
 var createProps$3 = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
@@ -422,6 +441,7 @@ var createContent$3 = function createContent(vnode, _ref2) {
 };
 
 var cardPrimary = /*#__PURE__*/Object.freeze({
+  getElement: getElement$3,
   createProps: createProps$3,
   createContent: createContent$3
 });

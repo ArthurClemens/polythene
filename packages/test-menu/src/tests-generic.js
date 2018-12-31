@@ -38,6 +38,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
   });
 
   const ExposedDropdown = exposed({ renderer, keys, Menu, List, ListTile, Button });
+  const MenuItems = menuItems({ renderer, Menu, List, ListTile });
 
   const Opener = (dialogAttrs, label = "Open") => h(Button, {
     raised: true,
@@ -101,7 +102,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
                 padding: "0 10px"
               }
             },
-            h(ExposedDropdown, { height: "max", backdrop: true })
+            h(ExposedDropdown, { id: "exposed-backdrop", height: "max", backdrop: true })
           )
       }
     },
@@ -214,7 +215,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
                 padding: "0 10px"
               }
             },
-            h(ExposedDropdown, { height: "max", className: "tests-menu-themed-backdrop" })
+            h(ExposedDropdown, { id: "themed-backdrop", height: "max", className: "tests-menu-themed-backdrop" })
           )
       }
     },
@@ -229,7 +230,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
                 padding: "0 10px"
               }
             },
-            h(ExposedDropdown, { height: "max", className: "tests-menu-themed-shadow" })
+            h(ExposedDropdown, { id: "themed-shadow", height: "max", className: "tests-menu-themed-shadow" })
           )
       }
     },
@@ -268,7 +269,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
                 padding: "0 10px"
               }
             },
-            h(ExposedDropdown, { height: "max", backdrop: true })
+            h(ExposedDropdown, { id: "exposed-backdrop-dark", height: "max", backdrop: true })
           )
       }
     },
@@ -281,7 +282,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
       component: {
         view: () => 
           h("div", { className: "pe-rtl" },
-            h(menuItems({ renderer, Menu, List, ListTile }))
+            h(MenuItems)
           )
       }
     },

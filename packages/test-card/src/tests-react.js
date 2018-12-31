@@ -1,3 +1,4 @@
+// @tsc-check
 import React from "react"; // eslint-disable-line no-unused-vars
 import { renderer, keys, Card, List, ListTile, Button, IconButton, Tabs } from "polythene-react";
 import genericTests from "./tests-generic";

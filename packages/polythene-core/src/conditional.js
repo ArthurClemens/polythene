@@ -45,7 +45,7 @@ export const Conditional = {
   },
   view: ({ state, attrs }, { renderer: h }) => {
     const placeholder = h("span", { className: attrs.placeholderClassName });
-
+        
     // No didHide callback passed: use normal visibility evaluation
     if (!attrs.didHide) {
       return attrs.permanent || attrs.inactive || attrs.show

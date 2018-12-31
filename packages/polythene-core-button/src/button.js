@@ -1,3 +1,4 @@
+// @ts-check
 import { filterSupportedAttributes, isClient, deprecation, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
 

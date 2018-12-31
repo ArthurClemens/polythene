@@ -1,24 +1,3 @@
-var isClient = typeof document !== "undefined";
-var isServer = !isClient;
-
-var evts = {
-  "animation": "animationend",
-  "OAnimation": "oAnimationEnd",
-  "MozAnimation": "animationend",
-  "WebkitAnimation": "webkitAnimationEnd"
-};
-var getAnimationEndEvent = function getAnimationEndEvent() {
-  if (isClient) {
-    var el = document.createElement("fakeelement");
-
-    for (var a in evts) {
-      if (el.style[a] !== undefined) {
-        return evts[a];
-      }
-    }
-  }
-};
-
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -110,6 +89,18 @@ var Conditional = {
 };
 Conditional.displayName = "Conditional";
 
+var deprecation = function deprecation(component, _ref) {
+  var option = _ref.option,
+      newOption = _ref.newOption,
+      newComponent = _ref.newComponent,
+      message = _ref.message;
+  return option && console.warn("".concat(component, ": option '").concat(option, "' is deprecated and will be removed in later versions. Use '").concat(newOption, "' instead.")), // eslint-disable-line no-console
+  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' instead.")), // eslint-disable-line no-console
+  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' with option '").concat(newOption, "' instead.")), // eslint-disable-line no-console
+  message && console.warn("".concat(component, ": ").concat(message)) // eslint-disable-line no-console
+  ;
+};
+
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
@@ -157,6 +148,80 @@ var classForSize = function classForSize(classes) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
   return sizeClasses(classes)[size];
 };
+
+var isClient = typeof document !== "undefined";
+var isServer = !isClient;
+
+var evts = {
+  "animation": "animationend",
+  "OAnimation": "oAnimationEnd",
+  "MozAnimation": "animationend",
+  "WebkitAnimation": "webkitAnimationEnd"
+};
+var getAnimationEndEvent = function getAnimationEndEvent() {
+  if (isClient) {
+    var el = document.createElement("fakeelement");
+
+    for (var a in evts) {
+      if (el.style[a] !== undefined) {
+        return evts[a];
+      }
+    }
+  }
+};
+
+var getStyle = function getStyle(_ref) {
+  var element = _ref.element,
+      selector = _ref.selector,
+      pseudoSelector = _ref.pseudoSelector,
+      prop = _ref.prop;
+  var el = selector ? element.querySelector(selector) : element;
+
+  if (!el) {
+    return;
+  }
+
+  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
+};
+var stylePropCompare = function stylePropCompare(_ref2) {
+  var element = _ref2.element,
+      selector = _ref2.selector,
+      pseudoSelector = _ref2.pseudoSelector,
+      prop = _ref2.prop,
+      equals = _ref2.equals,
+      contains = _ref2.contains;
+  var el = selector ? element.querySelector(selector) : element;
+
+  if (!el) {
+    return false;
+  }
+
+  if (equals !== undefined) {
+    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  }
+
+  if (contains !== undefined) {
+    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+  }
+};
+var isRTL = function isRTL(_ref3) {
+  var _ref3$element = _ref3.element,
+      element = _ref3$element === void 0 ? document : _ref3$element,
+      selector = _ref3.selector;
+  return stylePropCompare({
+    element: element,
+    selector: selector,
+    prop: "direction",
+    equals: "rtl"
+  });
+};
+var styleDurationToMs = function styleDurationToMs(durationStr) {
+  var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
+  return isNaN(parsed) ? 0 : parsed;
+};
+
+var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
+var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
 
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
@@ -464,19 +529,21 @@ var Multi = function Multi(_ref) {
     : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _extends({}, {
-        fromMultipleClassName: mOptions.className,
+      return renderer(mOptions.instance, _extends({}, unpackAttrs(attrs), {
         fromMultipleClear: clear,
+        spawnId: spawn,
+        // from mOptions:
+        fromMultipleClassName: mOptions.className,
+        holderSelector: mOptions.holderSelector,
+        transitions: mOptions.transitions,
+        // from itemData:
         fromMultipleDidHide: itemData.didHide,
         fromMultipleDidShow: itemData.didShow,
         hide: itemData.hide,
-        holderSelector: mOptions.holderSelector,
         instanceId: itemData.instanceId,
         key: itemData.key,
         pause: itemData.pause,
         show: itemData.show,
-        spawnId: spawn,
-        transitions: mOptions.transitions,
         unpause: itemData.unpause
       }, unpackAttrs(itemData.attrs)));
     }));
@@ -495,56 +562,6 @@ var Multi = function Multi(_ref) {
   };
 };
 Multi.displayName = "Multi";
-
-var getStyle = function getStyle(_ref) {
-  var element = _ref.element,
-      selector = _ref.selector,
-      pseudoSelector = _ref.pseudoSelector,
-      prop = _ref.prop;
-  var el = selector ? element.querySelector(selector) : element;
-
-  if (!el) {
-    return;
-  }
-
-  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
-};
-var stylePropCompare = function stylePropCompare(_ref2) {
-  var element = _ref2.element,
-      selector = _ref2.selector,
-      pseudoSelector = _ref2.pseudoSelector,
-      prop = _ref2.prop,
-      equals = _ref2.equals,
-      contains = _ref2.contains;
-  var el = selector ? element.querySelector(selector) : element;
-
-  if (!el) {
-    return false;
-  }
-
-  if (equals !== undefined) {
-    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
-  }
-
-  if (contains !== undefined) {
-    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
-  }
-};
-var isRTL = function isRTL(_ref3) {
-  var _ref3$element = _ref3.element,
-      element = _ref3$element === void 0 ? document : _ref3$element,
-      selector = _ref3.selector;
-  return stylePropCompare({
-    element: element,
-    selector: selector,
-    prop: "direction",
-    equals: "rtl"
-  });
-};
-var styleDurationToMs = function styleDurationToMs(durationStr) {
-  var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
-  return isNaN(parsed) ? 0 : parsed;
-};
 
 var DEFAULT_DURATION = .240;
 var DEFAULT_DELAY = 0; // const TRANSITION =    "both";
@@ -721,17 +738,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-var deprecation = function deprecation(component, _ref) {
-  var option = _ref.option,
-      newOption = _ref.newOption,
-      newComponent = _ref.newComponent;
-  return option && console.warn("".concat(component, ": option '").concat(option, "' is deprecated and will be removed in later versions. Use '").concat(newOption, "' instead.")), // eslint-disable-line no-console
-  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' instead.")), // eslint-disable-line no-console
-  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' with option '").concat(newOption, "' instead.")) // eslint-disable-line no-console
-  ;
-};
-
-var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
-var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
-
-export { getAnimationEndEvent, Conditional, filterSupportedAttributes, unpackAttrs, classForSize, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit, getStyle, stylePropCompare, isRTL, styleDurationToMs, deprecation, iconDropdownUp, iconDropdownDown };
+export { Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };

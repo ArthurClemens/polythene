@@ -7,11 +7,26 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Calling a Dialog](#calling-a-dialog)
+    - [Dialog spawner](#dialog-spawner)
+    - [Multiple dialog spawners](#multiple-dialog-spawners)
+    - [Multiple dialogs](#multiple-dialogs)
+    - [Showing and hiding dialogs](#showing-and-hiding-dialogs)
+      - [show](#show)
+      - [hide](#hide)
+    - [Callbacks](#callbacks)
   - [Drawing a Dialog](#drawing-a-dialog)
+    - [Example with a Toolbar as custom header and footer](#example-with-a-toolbar-as-custom-header-and-footer)
+    - [Example with modal and backdrop](#example-with-modal-and-backdrop)
+    - [Full screen dialog](#full-screen-dialog)
   - [Dynamic content](#dynamic-content)
+    - [Passing dialog options as a function](#passing-dialog-options-as-a-function)
+      - [Continuously calling Dialog.show](#continuously-calling-dialogshow)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -100,13 +115,17 @@ Dialog.hide(options)
 
 Shows a new dialog instance.
 
-`Dialog.show(dialogOptions, spawnOptions)`
+`Dialog.show(dialogOptions, spawnOptions) : Promise`
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **dialogOptions** | required | Options object or Function that returns an options object | | See [Dialog options](../dialog.md) |
-| **spawnOptions** | optional | Options object | | Pass `id` if you are using multiple simultaneous dialogs; pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
-| **Returns** |||| Promise |
+
+| **Parameter** |  **Required** | **Type** | **Default** | **Description** |
+| ------------- | -------------- | -------- | ----------- | --------------- |
+| **spawnOptions.id** | optional | String | "default_dialog" | Dialog instance id; use to differentiate simultaneous dialogs. |
+| **spawnOptions.spawn** | optional | String | "default_dialog" | Spawn id. Use with multiple spawn locations. `spawn` must also be passed as option at the spawning Dialog. |
+
 
 Examples:
 
@@ -143,12 +162,12 @@ Dialog.show(
 
 Hides the current dialog instance.
 
-`Dialog.hide(spawnOptions)`
+`Dialog.hide(spawnOptions) : Promise`
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **spawnOptions** | optional | Options object | | Pass `id` if you are using multiple simultaneous dialogs; pass `spawn` when using multiple spawners and `spawn` is also set at the spawner |
-| **Returns** |||| Promise |
+| **spawnOptions.id** | optional | String | "default_dialog" | Dialog instance id; use to differentiate simultaneous dialogs. |
+| **spawnOptions.spawn** | optional | String | "default_dialog" | Spawn id. Use with multiple spawn locations. `spawn` must also be passed as option at the spawning Dialog. |
 
 Examples:
 
@@ -321,7 +340,7 @@ Dialog.show({
 There are 2 ways to keep the dialog contents up to date:
 
 1. By passing dialog options as a function.
-1. By continuously calling `Dialog.show(attrs)` with possibly changed attrs.
+2. By continuously calling `Dialog.show(attrs)` with possibly changed attrs.
 
 Examples of both are shown below.
 

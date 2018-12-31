@@ -1,11 +1,11 @@
-export { getAnimationEndEvent } from "./animation-event";
 export { Conditional } from "./Conditional";
+export { deprecation } from "./developer";
 export { filterSupportedAttributes, unpackAttrs, classForSize } from "./attrs";
+export { getAnimationEndEvent } from "./animation-event";
+export { getStyle, stylePropCompare, isRTL, styleDurationToMs } from "./style";
+export { iconDropdownUp, iconDropdownDown } from "./icons";
 export { isClient, isServer } from "./iso";
 export { isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent } from "./pointer";
-export { Multi } from "./multi";
+export { Multi } from "./Multi";
 export { show, hide, transitionComponent } from "./transition";
 export { throttle, subscribe, unsubscribe, emit } from "./events";
-export { getStyle, stylePropCompare, isRTL, styleDurationToMs } from "./style";
-export { deprecation } from "./developer";
-export { iconDropdownUp, iconDropdownDown } from "./icons";

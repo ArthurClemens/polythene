@@ -8,7 +8,7 @@ export default {
   general_styles:                 true,
      
   font_size:                      20,
-  font_weight:                    500,
+  font_weight:                    400,
   height:                         vars.grid_unit_component * 7, // 56
   height_compact:                 vars.grid_unit_component * 6, // 48
   height_large:                   vars.grid_unit_component * 8, // 64

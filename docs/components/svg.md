@@ -34,7 +34,7 @@ This is a low-level and simple module for handling SVGs. If you want to use SVG 
 | **after**     | optional       | String, hyperscript or component | | Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth |
 | **before**    | optional       | String, hyperscript or component | | Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth |
 | **className** | optional       | String   |       | Extra CSS class appended to `pe-svg` |
-| **content**   | use `content` or children | String, hyperscript or component |  | Any content |
+| **content**   | use `content` or children | String, hyperscript or component |  | SVG content |
 | **element**   | optional       | String   | "div" | HTML element tag |
 | **id**        | optional       | String   |       | HTML element id |
 | **style**     | optional       | Object   |       | For setting simple style attributes |

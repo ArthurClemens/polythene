@@ -1,5 +1,8 @@
 import classes from "polythene-css-classes/drawer";
 
+export const getElement = vnode =>
+  vnode.attrs.element || "div";
+  
 // Props to be passed to Dialog
 export const createProps = vnode => {
   const attrs = vnode.attrs;

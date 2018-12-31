@@ -39,7 +39,7 @@ Adds a configurable shadow to an element.
 
 | **Parameter**   |  **Required** | **Type** | **Default** | **Description** |
 | --------------- | -------------- | -------- | ----------- | --------------- |
-| **animated**    | optional | Boolean | false | Set to `true` to animate the shadow when setting a new z value. |
+| **animated**    | optional | Boolean | false | Set to `true` to animate the shadow when setting a new shadow depth value. |
 | **shadowDepth** | optional | Number 0-5 | 1 | Depth of the shadow; value `0` results in no shadow |
 
 

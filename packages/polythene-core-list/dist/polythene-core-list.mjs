@@ -28,7 +28,7 @@ var listTileClasses = {
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
   contentFront: "pe-list-tile__content-front",
-  // states
+  // states  
   compact: "pe-list-tile--compact",
   compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
@@ -37,8 +37,10 @@ var listTileClasses = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
+  inset: "pe-list-tile--inset",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  rounded: "pe-list-tile--rounded",
   highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky",
   navigation: "pe-list-tile--navigation"
@@ -73,8 +75,8 @@ var paddingClass = function paddingClass() {
   return paddingClasses[attr];
 };
 
-var onMount = function onMount(_ref) {
-  var attrs = _ref.attrs;
+var onMount = function onMount(vnode) {
+  var attrs = vnode.attrs;
 
   if (attrs.borders !== undefined) {
     deprecation("List", {
@@ -90,18 +92,18 @@ var onMount = function onMount(_ref) {
     });
   }
 };
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
+var createProps = function createProps(vnode, _ref) {
+  var k = _ref.keys;
   var attrs = vnode.attrs;
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.border || attrs.borders ? classes.border : null, attrs.indentedBorder || attrs.indentedBorders ? classes.indentedBorder : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer,
-      requiresKeys = _ref3.requiresKeys,
-      k = _ref3.keys,
-      ListTile = _ref3.ListTile;
+var createContent = function createContent(vnode, _ref2) {
+  var h = _ref2.renderer,
+      requiresKeys = _ref2.requiresKeys,
+      k = _ref2.keys,
+      ListTile = _ref2.ListTile;
   var attrs = vnode.attrs;
   var headerOpts;
 

@@ -28,7 +28,6 @@ export default ({ renderer: h, keys: k, Icon, List, ListTile, onClick=()=>{} }) 
   const nums = [1];
 
   return h(List, {
-    hoverable: true,
     tiles: [].concat.apply([], nums.map((num, index) => ([
       {
         index,

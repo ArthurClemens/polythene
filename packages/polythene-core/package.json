@@ -11,8 +11,12 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
+  "devDependencies": {
+    "@types/mithril": "^1.1.13"
+  },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT"

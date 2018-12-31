@@ -88,9 +88,7 @@ var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children
   var content = attrs.content ? attrs.content : [frontComp, h("div", {
     className: classes.content,
     style: attrs.style
-  }, [attrs.content ? _extends({}, requiresKeys ? {
-    key: "content"
-  } : null, attrs.content) : children, attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? {
+  }, [attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? {
     key: "title"
   } : null, {
     className: classes.title
@@ -106,7 +104,7 @@ var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children
     key: "subContent"
   } : null, {
     className: classes.subContent
-  }), attrs.subContent) : null])];
+  }), attrs.subContent) : null, children])];
   return h(element, props, content);
 };
 

@@ -11,6 +11,7 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
@@ -20,6 +21,9 @@
     "polythene-mithril-base": "^1.4.1",
     "polythene-mithril-dialog-pane": "^1.4.1",
     "polythene-mithril-shadow": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/mithril": "^1.1.13"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

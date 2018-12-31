@@ -2,7 +2,7 @@
 
 A circular main button with a [Shadow](shadow.md) and [Ripple](ripple.md) effect.
 
-Differences from [Raised Button](raised-button.md) behavior:
+Differences from a Raised [Button](button.md) behavior:
 
 * The ripple emanates from the center of the button
 * The ripple has a 2/3 decay speed
@@ -26,7 +26,7 @@ Differences from [Raised Button](raised-button.md) behavior:
 <a id="main-features"></a>
 ## Main features
 
-* All [Button](button.md) and [Raised Button](raised-button.md) main features
+* All [Button](button.md) main features
 * Custom icon
 * Display mini size
 
@@ -49,7 +49,6 @@ Differences from [Raised Button](raised-button.md) behavior:
 ### Button options
 
 See:
-* [Raised Button options](raised-button.md#options)
 * [Button options](button.md#options)
 
 

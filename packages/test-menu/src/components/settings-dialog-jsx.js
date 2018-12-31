@@ -7,6 +7,7 @@ const Tile = ({ title, selected, disabled }) =>
     selected={selected}
     disabled={disabled}
     ink
+    hoverable
     events={{
       onClick: () => {
         if (!disabled) {
@@ -18,7 +19,6 @@ const Tile = ({ title, selected, disabled }) =>
 
 const dialogOptions = {
   menu: <List
-    hoverable
     tiles={[
       <Tile key="one" title="Item one" selected={true} disabled={false} />,
       <Tile key="two" title="Item two" selected={false} disabled={false} />,

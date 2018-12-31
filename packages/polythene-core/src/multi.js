@@ -181,6 +181,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
     if (mOptions.htmlShowClass && isClient && document.documentElement) {
       document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
     }
+    
     return !candidates.length
       ? renderer(mOptions.placeholder) // placeholder because we cannot return null
       : renderer(mOptions.holderSelector,
@@ -192,22 +193,26 @@ export const Multi = ({ options: mOptions, renderer }) => {
         candidates.map(itemData => {
           return renderer(mOptions.instance, Object.assign(
             {},
+            unpackAttrs(attrs),
             {
-              fromMultipleClassName: mOptions.className,
               fromMultipleClear: clear,
+              spawnId: spawn,
+              // from mOptions:
+              fromMultipleClassName: mOptions.className,
+              holderSelector: mOptions.holderSelector,
+              transitions: mOptions.transitions,
+              // from itemData:
               fromMultipleDidHide: itemData.didHide,
               fromMultipleDidShow: itemData.didShow,
               hide: itemData.hide,
-              holderSelector: mOptions.holderSelector,
               instanceId: itemData.instanceId,
               key: itemData.key,
               pause: itemData.pause,
               show: itemData.show,
-              spawnId: spawn,
-              transitions: mOptions.transitions,
               unpause: itemData.unpause,
             },
-            unpackAttrs(itemData.attrs)
+            unpackAttrs(itemData.attrs),
+            
           ));
         })
       );

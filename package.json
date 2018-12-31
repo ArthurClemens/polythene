@@ -70,6 +70,8 @@
     "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "1.2.0",
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.2.2",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "3.1.13"

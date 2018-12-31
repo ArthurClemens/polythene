@@ -9,6 +9,7 @@ Displays a text button with a [Ripple](ripple.md) effect.
 - [Keyboard control](#keyboard-control)
 - [Options](#options)
   - [Button specific options](#button-specific-options)
+  - [Raised button options](#raised-button-options)
   - [Common component options](#common-component-options)
 - [Composition](#composition)
 - [CSS classes](#css-classes)
@@ -67,14 +68,25 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **inactive** | optional | Boolean |  | Set to `true` to disable button events and ripple/wash effects |
 | **ink** | optional | Boolean | true | Set to false to disable the ripple effect on click/tap |
 | **label** | use `label` or `content` | String |  | The button label |
-| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button; see also: [Raised Button](./raised-button.md) |
 | **ripple** | optional (valid if `ink` is `true`) | Options object |  | Pass [ripple](ripple.md) options to define ripple behavior |
 | **selected** | optional | Boolean | false | Set to `true` to show the button as selected |
 | **separatorAtStart** | optional | Boolean | false | Set to `true` to add a separator - normally placed at the left, with RTL languages at the right side |
-| **shadowDepth**  | optional       | Number 0-5 | 0           | The shadow depth (see: [Raised Button](./raised-button.md)) |
 | **textStyle**  | optional | Object |  | Style object for the text label |
 | **url** | optional | Object with `href`, optionally `oncreate` (for Mithril) or `onClick` (for React) or `to` (for React Router) |  | URL location; Mithril: for in-app route linking set `oncreate : m.route.link`; React: for in-app route linking use `onClick` and a router such as `react-router-dom` |
 | **wash** | optional | Boolean | true | Set to false to hide the effect on hover |
+
+### Raised button options
+
+A raised button is a button with option `raised: true`.
+
+| **Parameter**    |  **Required** | **Type**   | **Default** | **Description** |
+| ---------------- | -------------- | ---------- | ----------- | --------------- |
+| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button |
+| **shadowDepth**  | optional       | Number 0-5 | 0           | The shadow depth |
+| **animateOnTap** | optional       | Boolean    | true        | Set to false to remove shadow depth animation and subsequent redraw |
+| **increase**     | optional       | Number     | 1           | The shadow depth increment/decrement on tap; the maximum shadow depth is 5 |
+| **shadowDepth**  | optional       | Number 0-5 | 1           | The shadow depth |
+
 
 <a id="common-component-options"></a>
 ### Common component options

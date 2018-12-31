@@ -18,6 +18,9 @@
     "polythene-css-classes": "^1.4.1",
     "polythene-theme": "^1.4.1"
   },
+  "devDependencies": {
+    "polythene-core-dialog-pane": "^1.4.1"
+  },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
   "license": "MIT"

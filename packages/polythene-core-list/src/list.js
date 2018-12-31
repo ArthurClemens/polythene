@@ -14,7 +14,8 @@ const paddingClasses = {
 const paddingClass = (attr = "both") =>
   paddingClasses[attr];
 
-export const onMount = ({ attrs }) => {
+export const onMount = vnode => {
+  const attrs = vnode.attrs;
   if (attrs.borders !== undefined) {
     deprecation("List", { option: "borders", newOption: "border" });
   }

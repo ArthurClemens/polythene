@@ -6,8 +6,10 @@
 - [Defaults](#defaults)
 - [Setting transitions](#setting-transitions)
   - [Component options](#component-options)
+    - [Example with simple transition settings](#example-with-simple-transition-settings)
   - [Scripted component options with `transitions`](#scripted-component-options-with-transitions)
-  - [Themed \(using style variables\)](#themed-using-style-variables)
+  - [Themed (using style variables)](#themed-using-style-variables)
+    - [Effects](#effects)
   - [Custom CSS](#custom-css)
 - [Transient components](#transient-components)
 - [Changes](#changes)
@@ -137,50 +139,6 @@ Dialog({
   }
 })
 ~~~
-
-Of course these functions can be made as complex as necessary. For instance for a pushing [Drawer](components/drawer.md):
-
-~~~javascript
-import { isRTL } from "polythene-core"
-
-Drawer({
-  // ...
-  transitions: {
-    show: ({ contentEl }) => {
-      const rtl = isRTL({ element: contentEl })
-      const side = rtl ? "marginRight" : "marginLeft"
-
-      return {
-        el:         contentEl,
-        duration:   .240,
-        before:     () => {
-          const rect = contentEl.getBoundingClientRect()
-          const width = rect.width
-          contentEl.style[side] = `-${width}px`
-        },
-        transition: () => {
-          contentEl.style[side] = 0
-        }
-      }
-    },
-    hide: ({ contentEl }) => {
-      const rtl = isRTL({ element: contentEl })
-      const side = rtl ? "marginRight" : "marginLeft"
-
-      return {
-        el:         contentEl,
-        duration:   .240,
-        transition: () => {
-          const rect = contentEl.getBoundingClientRect()
-          const width = rect.width
-          contentEl.style[side] = `-${width}px`
-        }
-      }
-    }
-  }
-})
-~~~
-
 
 <a id="themed-using-style-variables"></a>
 ### Themed (using style variables) 

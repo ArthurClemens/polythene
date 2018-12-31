@@ -40,7 +40,6 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
           origin: "top",
           backdrop: attrs.backdrop,
           content: h(List, {
-            hoverable: true,
             compact: true,
             tiles: menuOptions.map((item, index) =>
               h(ListTile, {

@@ -62,8 +62,10 @@ var tintFns = function tintFns(tint) {
 
   return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
     return [sel(selector, {
-      "&, .pe-toolbar__title": {
-        color: vars$$1["color_" + tint + "_text"]
+      " .pe-toolbar__title": {
+        "&, a:link, a:visited": {
+          color: vars$$1["color_" + tint + "_text"]
+        }
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
@@ -320,7 +322,7 @@ var padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
 var vars$1 = {
   general_styles: true,
   font_size: 20,
-  font_weight: 500,
+  font_weight: 400,
   height: vars.grid_unit_component * 7,
   // 56
   height_compact: vars.grid_unit_component * 6,

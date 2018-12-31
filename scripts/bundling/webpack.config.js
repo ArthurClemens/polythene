@@ -3,13 +3,14 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const baseDir = process.cwd();
+const env = process.env; // eslint-disable-line no-undef
 
 module.exports = {
 
   context: path.resolve(baseDir, "./src"),
 
   entry: {
-    index: path.resolve(baseDir, "./index.js"),
+    index: path.resolve(baseDir, env.ENTRY || "./index.js"),
   },
 
   output: {
@@ -24,11 +25,17 @@ module.exports = {
       // Keep in this order!
       "mithril": path.resolve(baseDir, "node_modules/mithril/mithril.js"),
     },
-    extensions: [".mjs", ".js", ".jsx"],
+    extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
   },
 
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          { loader: "ts-loader" }
+        ]
+      },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,

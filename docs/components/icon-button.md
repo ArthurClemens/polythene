@@ -44,8 +44,8 @@ Displays an [Icon](icon.md) as a button. Also called toggle button.
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **icon**      | either icon or child nodes must be passed | Object |  | [Icon](icon.md) options object; also used to show an round "avatar" portrait image |
 | **label** | optional | String |  | Optional button label |
-| **compact**   | optional | Boolean | | Set to `true` to use less padding |
-| **inactive** | optional | Boolean | | Set to `true` to disable button events and ripple/wash effects |
+| **compact**   | optional | Boolean | false | Set to `true` to use less padding |
+| **inactive** | optional | Boolean | false | Set to `true` to disable button events and ripple/wash effects |
 
 
 <a id="common-component-options"></a>

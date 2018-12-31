@@ -11,12 +11,17 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
     "polythene-core": "^1.4.1",
     "polythene-css-classes": "^1.4.1",
     "polythene-theme": "^1.4.1"
+  },
+  "devDependencies": {
+    "polythene-core-icon": "^1.4.1",
+    "polythene-core-list-tile": "^1.4.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

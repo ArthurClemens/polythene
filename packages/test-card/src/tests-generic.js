@@ -169,36 +169,38 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
   return [
     {
       name: "Any content (list)",
-      component: Card,
-      attrs: {
-        content: h(List, {
-          hoverable: true,
-          tiles: [
-            h(ListTile, {
-              title: listTitle,
-              subtitle: listSubtitle,
-              key: "one" // for React
-            }),
-            h(ListTile, {
-              title: listTitle,
-              subtitle: listSubtitle,
-              key: "two" // for React
-            }),
-            h(ListTile, {
-              title: listTitle,
-              subtitle: listSubtitle,
-              key: "three" // for React
-            })
-          ]
-        })
+      component: {
+        view: () => 
+          // Use child node
+          h(Card, null, h(List, {
+            hoverable: true,
+            tiles: [
+              h(ListTile, {
+                title: listTitle,
+                subtitle: listSubtitle,
+                key: "one" // for React
+              }),
+              h(ListTile, {
+                title: listTitle,
+                subtitle: listSubtitle,
+                key: "two" // for React
+              }),
+              h(ListTile, {
+                title: listTitle,
+                subtitle: listSubtitle,
+                key: "three" // for React
+              })
+            ]
+          }))
       }
     },
     {
       name: "Any content (tabs)",
       component: {
         view: () =>
+          // Use child attribute
           h(Card, {
-            content: h(tabsContent)
+            children: h(tabsContent)
           })
       }  
     },

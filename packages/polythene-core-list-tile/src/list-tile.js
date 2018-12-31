@@ -1,7 +1,8 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/list-tile";
 
-export const getElement = () => "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
+export const getElement = () =>
+  "div"; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
 
 const primaryContent = (h, k, requiresKeys, attrs, children) => {
   const url = attrs.keyboardControl
@@ -52,13 +53,6 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
           style: attrs.style
         },
         [
-          attrs.content
-            ? Object.assign(
-              {},
-              requiresKeys ? { key: "content" } : null,
-              attrs.content
-            )
-            : children,
           attrs.title && !attrs.content
             ? h("div", Object.assign(
               {},
@@ -86,7 +80,8 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
               requiresKeys ? { key: "subContent" } : null,
               { className: classes.subContent }
             ), attrs.subContent)
-            : null
+            : null,
+          children,
         ]
       )
     ];
