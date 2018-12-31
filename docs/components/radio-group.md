@@ -42,7 +42,7 @@ Described in:
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
 | **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
-| **defaultSelectedValue** | optional | String | | The value of the default selected Radio Button |
+| **defaultSelectedValue** | optional | String | | The value of the default selected Radio Button; ignored if Radio Button's `value` is used |
 | **name**      | required | String | | Name for all radio button elements |
 | **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
 
