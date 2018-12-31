@@ -2,11 +2,11 @@ import stream from "mithril/stream";
 
 const model = {
   name: "outside",
+  defaultCheckedValue: "left",
   values: [
     {
       value: "left",
       label: "Left",
-      checked: true
     },
     {
       value: "right",
@@ -17,7 +17,7 @@ const model = {
 
 export default ({ h, RadioGroup, Button }) => ({
   oninit: vnode => {
-    const checkedValue = stream("left");
+    const checkedValue = stream(model.defaultCheckedValue);
     Object.assign(vnode.state, {
       checkedValue,
     });
@@ -30,7 +30,6 @@ export default ({ h, RadioGroup, Button }) => ({
         name: model.name,
         className: "multiple",
         onChange: ({ value }) => state.checkedValue(value),
-        // defaultSelectedValue: "left",
         content: model.values.map(v => ({
           ...v,
           checked: checkedValue === v.value,
