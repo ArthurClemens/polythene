@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/radio-group";
 
 const getButtons = vnode => {
@@ -15,6 +15,9 @@ export const getElement = vnode =>
 
 export const getInitialState = (vnode, createStream) => {
   const attrs = vnode.attrs;
+  if (attrs.defaultSelectedValue !== undefined) {
+    deprecation("RadioGroup", { option: "defaultSelectedValue", newOption: "defaultCheckedValue", since: "1.4.2" });
+  }
   const buttons = getButtons(vnode);
   const checkedIdx = buttons.reduce((acc, buttonOpts, index) => {
     if (buttonOpts.value === undefined) {
@@ -24,7 +27,8 @@ export const getInitialState = (vnode, createStream) => {
       ? acc
       : (
         buttonOpts.defaultChecked !== undefined
-        || (attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) 
+        || (attrs.defaultCheckedValue !== undefined && buttonOpts.value === attrs.defaultCheckedValue)
+        || (attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) // deprecated
       )
         ? index
         : acc;
@@ -57,7 +61,8 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
   const state = vnode.state;
   const checkedIndex = state.checkedIndex();
   const buttons = getButtons(vnode);
-  
+  const groupCheckedValue= attrs.checkedValue;
+
   return buttons.length
     ? buttons.map((buttonOpts, index) => {
       if (!buttonOpts) {
@@ -65,7 +70,9 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
       }
       const isChecked = buttonOpts.checked !== undefined
         ? buttonOpts.checked
-        : checkedIndex === index;
+        : groupCheckedValue !== undefined
+          ? buttonOpts.value === groupCheckedValue
+          : checkedIndex === index;
       return h(RadioButton, Object.assign(
         {},
         {

@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-button",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-mithril-radio-button",
   "module": "dist/polythene-mithril-radio-button.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-button": "^1.4.1",
-    "polythene-core-selection-control": "^1.4.1",
-    "polythene-mithril-base": "^1.4.1",
-    "polythene-mithril-icon": "^1.4.1",
-    "polythene-mithril-icon-button": "^1.4.1"
+    "polythene-core-radio-button": "^1.4.2",
+    "polythene-core-selection-control": "^1.4.2",
+    "polythene-mithril-base": "^1.4.2",
+    "polythene-mithril-icon": "^1.4.2",
+    "polythene-mithril-icon-button": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-toolbar",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-react-toolbar",
   "module": "dist/polythene-react-toolbar.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.4.1",
-    "polythene-react-base": "^1.4.1",
-    "polythene-react-shadow": "^1.4.1"
+    "polythene-core-toolbar": "^1.4.2",
+    "polythene-react-base": "^1.4.2",
+    "polythene-react-shadow": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

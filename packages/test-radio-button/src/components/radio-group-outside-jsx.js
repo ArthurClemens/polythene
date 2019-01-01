@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { RadioGroup, Button } from "polythene-react";
 
-const model = {
+const formData = {
   name: "outside",
-  defaultCheckedValue: "left",
+  defaultCheckedValue: "right",
   values: [
     {
       value: "left",
@@ -21,7 +21,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkedValue: model.defaultCheckedValue
+      checkedValue: formData.defaultCheckedValue
     };
   }
 
@@ -30,14 +30,13 @@ export default class extends Component {
     return (
       <div>
         <RadioGroup
+          name={formData.name}
           className="multiple"
-          name="onChange"
+          checkedValue={checkedValue}
           onChange={({ value }) => this.setState({ checkedValue: value })}
-          content={model.values.map(v => ({
-            ...v,
-            checked: checkedValue === v.value,
-          }))}
+          content={formData.values}
         />
+        {/* Simulate setting the radio button state from outside: */}
         <div className="pe-button-row">
           <Button
             label="Set Left"

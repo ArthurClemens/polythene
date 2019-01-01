@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-icon-button",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-mithril-icon-button",
   "module": "dist/polythene-mithril-icon-button.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon-button": "^1.4.1",
-    "polythene-mithril-base": "^1.4.1",
-    "polythene-mithril-button": "^1.4.1",
-    "polythene-mithril-icon": "^1.4.1"
+    "polythene-core-icon-button": "^1.4.2",
+    "polythene-mithril-base": "^1.4.2",
+    "polythene-mithril-button": "^1.4.2",
+    "polythene-mithril-icon": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

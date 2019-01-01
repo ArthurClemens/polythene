@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-card",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-react-card",
   "module": "dist/polythene-react-card.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-card": "^1.4.1",
-    "polythene-react-base": "^1.4.1",
-    "polythene-react-icon": "^1.4.1",
-    "polythene-react-list-tile": "^1.4.1",
-    "polythene-react-shadow": "^1.4.1"
+    "polythene-core-card": "^1.4.2",
+    "polythene-react-base": "^1.4.2",
+    "polythene-react-icon": "^1.4.2",
+    "polythene-react-list-tile": "^1.4.2",
+    "polythene-react-shadow": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

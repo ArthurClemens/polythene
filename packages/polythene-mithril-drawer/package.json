@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-drawer",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-mithril-drawer",
   "module": "dist/polythene-mithril-drawer.mjs",
@@ -14,11 +14,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.1",
-    "polythene-core-drawer": "^1.4.1",
-    "polythene-css-classes": "^1.4.1",
-    "polythene-mithril-base": "^1.4.1",
-    "polythene-mithril-dialog": "^1.4.1"
+    "polythene-core": "^1.4.2",
+    "polythene-core-drawer": "^1.4.2",
+    "polythene-css-classes": "^1.4.2",
+    "polythene-mithril-base": "^1.4.2",
+    "polythene-mithril-dialog": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-icon",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-react-icon",
   "module": "dist/polythene-react-icon.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon": "^1.4.1",
-    "polythene-react-base": "^1.4.1",
-    "polythene-react-svg": "^1.4.1"
+    "polythene-core-icon": "^1.4.2",
+    "polythene-react-base": "^1.4.2",
+    "polythene-react-svg": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

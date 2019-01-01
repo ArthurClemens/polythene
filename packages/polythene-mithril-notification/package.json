@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-notification",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-mithril-notification",
   "module": "dist/polythene-mithril-notification.mjs",
@@ -14,10 +14,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.1",
-    "polythene-core-notification": "^1.4.1",
-    "polythene-css-classes": "^1.4.1",
-    "polythene-mithril-base": "^1.4.1"
+    "polythene-core": "^1.4.2",
+    "polythene-core-notification": "^1.4.2",
+    "polythene-css-classes": "^1.4.2",
+    "polythene-mithril-base": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -32,13 +32,23 @@ var getElement = function getElement(vnode) {
 };
 var getInitialState = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
+
+  if (attrs.defaultSelectedValue !== undefined) {
+    deprecation("RadioGroup", {
+      option: "defaultSelectedValue",
+      newOption: "defaultCheckedValue",
+      since: "1.4.2"
+    });
+  }
+
   var buttons = getButtons(vnode);
   var checkedIdx = buttons.reduce(function (acc, buttonOpts, index) {
     if (buttonOpts.value === undefined) {
       console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
     }
 
-    return acc !== null ? acc : buttonOpts.defaultChecked !== undefined || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue ? index : acc;
+    return acc !== null ? acc : buttonOpts.defaultChecked !== undefined || attrs.defaultCheckedValue !== undefined && buttonOpts.value === attrs.defaultCheckedValue || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue // deprecated
+    ? index : acc;
   }, null);
   var checkedIndex = createStream(checkedIdx);
   return {
@@ -60,12 +70,13 @@ var createContent = function createContent(vnode, _ref2) {
   var state = vnode.state;
   var checkedIndex = state.checkedIndex();
   var buttons = getButtons(vnode);
+  var groupCheckedValue = attrs.checkedValue;
   return buttons.length ? buttons.map(function (buttonOpts, index) {
     if (!buttonOpts) {
       return null;
     }
 
-    var isChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : checkedIndex === index;
+    var isChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : groupCheckedValue !== undefined ? buttonOpts.value === groupCheckedValue : checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,

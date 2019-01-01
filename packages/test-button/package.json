@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-button",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "description": "",
   "main": "dist/polythene-test-button",
@@ -10,9 +10,9 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-css": "^1.4.1",
-    "polythene-mithril": "^1.4.1",
-    "polythene-react": "^1.4.1"
+    "polythene-css": "^1.4.2",
+    "polythene-mithril": "^1.4.2",
+    "polythene-react": "^1.4.2"
   },
   "devDependencies": {
     "react": "^16.7.0",
