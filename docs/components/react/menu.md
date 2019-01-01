@@ -8,7 +8,11 @@
 - [Options](#options-1)
 - [Types of menu](#types-of-menu)
 - [Usage](#usage)
+    - [With JSX](#with-jsx)
+    - [With hyperscript](#with-hyperscript)
   - [Showing](#showing)
+    - [With JSX](#with-jsx-1)
+    - [With hyperscript](#with-hyperscript-1)
   - [Hiding the menu](#hiding-the-menu)
   - [Positioning](#positioning)
   - [Long lists: menu height and scrolling](#long-lists-menu-height-and-scrolling)
@@ -16,10 +20,17 @@
   - [Dropdown menu](#dropdown-menu)
   - [Exposing dropdown menu](#exposing-dropdown-menu)
   - [Dialog menu](#dialog-menu)
-  - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
+    - [With JSX](#with-jsx-2)
+    - [With hyperscript](#with-hyperscript-2)
+  - [Settings menu (position to selected value)](#settings-menu-position-to-selected-value)
+    - [With JSX](#with-jsx-3)
+    - [With hyperscript](#with-hyperscript-3)
 - [Appearance](#appearance)
   - [Variations](#variations)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -227,6 +238,9 @@ To be able to shift the menu vertically to the selected menu item, that menu ite
 
 <a id="long-lists-menu-height-and-scrolling"></a>
 ### Long lists: menu height and scrolling
+
+<a href="https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvAHjmoCcIAHYgAjgdqAXgA6IEsW5xEAelkcMAdwDmEYvjpZZAQQ7FCAVw4BhWDjRxZ3WlACeBpjFlYMcRh2sZqAawwr4a1sHQicAWg4Yb2JZABMIdyD7RzQYCKjqYjD3DDRYjCh6GHwAKzhxAD4WWXYuXgrRNDZOHn5BEXFJaTkFZTUNLV19I1NzJisbZNDUlzcPL19-QMmQ8Oo4K3jElZS09bhs4lz8wtTS8pAqmpb6xrum+IA3PghYsRAMbm5K6qeKyhAcBgsEyEHoCEQIAADIgAIxQgAcIAAvhR0NhcJDzgC6AwmMQ8PIXlgbPo+AAlDL8MAcWhYPjiSLRcSNIkQEm0MnAPgAWSYhgofAAQoZiMR6IKADIJYhSmUAFWgMD4yL4NLpDJAO2maSZmRZaFx7j43L5aAFwtF4rQcvctuIitgKr4wj42qc9yN-AshgA8rwwZYXXxkLCKAAmCgAZgoABYKABWCgANgoAHYKAiKABOCjwvNh2GR2Ex2Hx2FJ2Gp2EZ2FZ2G58NQgC6+Fc3AAFGgXRU+B3gI0+HxiOpYIg+AADM2GF6MekAEmAaGRE4og74PhgdnHNsayIAlPvPVA3HA+ABRAAeNiBsWnfBgl8YeTPlOi+BMdJsqQYJvXXo4QxMk5DtuFpaR9z-bshwEQxuBgDhQPAuAj2gocDASfAckYYMBzQmC4EIWglHHMACiBNd8KHIEQUYWIAEk8kfccoUomCYNecdxFeMJxD4ABqN1kPwV4+AAHzEvhUiUPgABEMEYDt93wAIHXZGAlPXIdkXXHToMiJjEMgvD2K9E0+FCCAVBIZ1XQwuB8DA2hpC0vgzNEuzCEw7DileVyzMI4jg3srCjkYLCiKUfzwTaYEYEyGAGKYy9gq8hyfKwuKEqS2JH1cyJiGMbsO1cocWCeUqCOIOxYGEYATPYxqb3UQMuJASITxHR4YHEQUiXFN1aDgFr6GHUI+B9YdaEq9jLOs4g2ogNBQi4YgDUamDkT0jaGiovgWGnGbhwwDhVLqicAGJF1eFdto2gRIrqwKlDujb4liAAJV4YDqpSezG7yYGIABlMKNO5Z7SPI5UD1exqvNy2TgQwOw6vwOsoTh9ilFeAw6qjLGYLmkg6uJ4hCeozhbCgeUTrOgcQAu9QYCwXiQAEgQsroxjcsvCm+E5KylvecVvhAI6ACNvB8WJwKO3Fn2IX6jrK6V3BVmCtG4Zk9o2kdYDgOqfX9EdwTbT4Ow7ZmsEFJbecg4RexK3X7pYNW1NgDWNs3VHgGt-AR2IWB+fu4dRx+v25wD8OQ-u146u4uc2Y5u3H1jjaaPiui6tTlLhHzznaMSnm069xqlp8MvZtobrFAlz2XdDmBuoYQ36qrxr6DMCBfHHP7HYB9KgdBhTwcLrPi+S8dc8FSG1WhlVUND0Oto72RduXmDD1j9ejv3Qnd72lgRTFegjvjv3Yn5k8JeBI3+RNwM4GQTPspLy9W0D4Ojtl5zYmItAdUGqh2ckwccz0jqrxds3fEbdgH3S7lAHuPg+4O17CFIEIMwb9gesRccABCZ6i9IEHw3o1X4EBHhkKHEvFUe5PQxT4DoL4wZ+5O3XOVShAhqq1XbvhMmbUoxQihNwS8vVXJS18CoWkhg8ifkKBwNqF18gqIwOI-C2tYjxDQCoNqUI+DwlEetFUyJqH7SvDeRK94ybvFcGI9m8dxC5SwNNdmh8ypxEobtVC9w3yZFkr6Hk+ADK5UQncYgLBmHcD4IfQUnxuD7hxF+JUHA8BS1vuQKgr9TaWDwGWRA4YowojRCATAOA8CaA2EkvEzBIQS1oLEOwUEhyaO0bovgTZREAG56FoEcrqDA8RaBhGkbQOCHN+lhAllaegEQgoNVcKdJaYRRbjk6ZeHpy5GiTMUEMsICtaRQAmfBCIgywT7PoMQQ5zSJp02WbAMAC0+CxhERs3pAJslPzwNmRAUIUTNioEgtAPgISoFKRiPAeoNC5W6oUbgFgNBlABMYcgkIugyHkLI7gPgVCaDpAoKkshDBYFiAS98MLgTOQRdiKg1V4J4FqK0Yp6JymQihWEf+WB8AUrhdSpFVAUV4HRT0LFOK8XaHZZyolJKyWZA5XSblMDeX4hpSAOlmJAQ3AJMiZsyIgA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
 
 Menu lists with a small number of items will fit on any screen. Longer lists need to be constrained to a certain size, especially on mobile.
 
