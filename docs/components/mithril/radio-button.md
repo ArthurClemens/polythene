@@ -7,10 +7,16 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+    - [Reading the checked state](#reading-the-checked-state)
+    - [Setting the checked state](#setting-the-checked-state)
+    - [Maintaining state](#maintaining-state)
   - [Shared options](#shared-options)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -117,12 +123,12 @@ m(RadioGroup, {
 })
 ~~~
 
-or use `defaultSelectedValue` on the group:
+or use `defaultCheckedValue` on the group:
 
 ~~~javascript
 m(RadioGroup, {
   name: "company",
-  defaultSelectedValue: "1",
+  defaultCheckedValue: "1",
   buttons: [
     {
       value: "1",
@@ -134,6 +140,75 @@ m(RadioGroup, {
     }
   ]
 })
+~~~
+
+#### Maintaining state
+
+<a href="https://flems.io/#0=N4IgtglgJlA2CmIBcAWAnAOgIwHYA0IAZhAgM7IDaoAdgIZiJIgYAWALmLCAQMYD21NvEHIQAHlI8AThAAObAASkpPALwAdEOzazSSAPT6ptAO4BzCGwz8w+gIJS2LAK5SAwggbVS+2X1gAnk7C8PpgtKRCUr60PADWtGbwPn6BwdTwALSQTjKw+lAQkb7+QSwh2ZYseZmRtNRQtLAC8BgAVqSaAHxi+pIy8l3q1BLScorKapraugZGphZWNvaOLu6ewiml6aHhkfDRsrEJSVtp5RmZPKQ+hcWpZRXXpLVs9Y3NGe2dID19Y4NhsNuCBSPAEDw2BABOQmAAGJBwzIAZkRIAAvngaPRGMwOiD+IJhGxRIYFBAwH5HAowApCFI+LTNDlqiRNMMyRSqRM2FJ4PQ6QymeAqnk+rz+WB2dROZS+NTgAoAEq0Qp8ADiDOcsjwCgAQs42GwBAp0YLGQpNA8dpVcmyQMNCZElBKBaoaRhInz6I6YYpFSq1Zq+NrdQajSaze7rRd4EDqE7FAAxeW090ACgAlApVF0FMBhgoFIm6amACK0N45-OFosKOgMJCWkAhtikaBx7i1otQeCEWjOWBsNzleLwKAANSazngTc0MjM7E0eG7CgAbtPkk2KKuiwXqHXD+vN3OQAhCGxl7u67BaAAjcGngAyfcvXYPR8x1-3R7rG9gM6nguS7vr+Ra3g+sCnkqECLm+K4foeX6IQoAC6tborWfJsK4B4-nWAgQNQlhNumip1EIprZrmNYoUWJY8KOcTjlOAHwNWXqSumhDlpWtAYL2-aDsOTEsZumYANzXgA8nebTwJCGARO2ZjUOmFHwLq+G-oxCnMZOm4Ib+6KZquyGHmuEDwCYpHkW8lEmTmebaXWDGiQZbEcfZrS6WOHkzlm17YbhNLppohRrsuCg7nRdZgOmgbQsGoa0WBdYNrOpZSGAFZvBgGVGWlxbuaxM6FWlAgjvUSS2cenmOTRGnWCVm7pv+M6ZuVYGEkIghNjx2W5fx7XJNeRYmV1h5kgAyhSg6VuxYJGkRZgKMECjGGqCh3oaxoHhp5q0q27a9kgY2hZoGCyFkO0RtQmQMiYUUxUVoXhntWnnYeEGPs203wIoL4XlesW-sYRTjk2vJlV9dbwGuxJ6Klr0EQmsAQPEpHUXmTW+fppXwGFZ6vponWw+NsMTbD8XvQIn2g0eP1QX9APKrBIGTWB4NglAUNSDDDOHvDiNNi5r0CDw6OYwoWZOS6C3NXpYlsUTwFvmTgt1phmsmedqGmbF+tmRhwza8MYAYGAIaCOmUB8DwzheFYd58FAAS6im2UGwSjKyCQByiHe97giCYIQlCMKiMiACsSAAEw4BiWIgBlojWDcPtEiITAu27yNHDAK1NnHcKyAAHlJ1Da1dWSbdCmRmFqsgKAA1AoNeZLde0PXwJjI+EUgWPdxqyMXpcV6bwwd3XfBXAIvL+K37fXQ9qr1z1DKwP3tCD0RmTnmwTYoOPlfoqH4IKRH3iiAiSIABxIFgGKoQQ6PUHEsJUCnOKiCyeQAAK3iEJEEErguBMBmHoQwzhqCyDiGYawjIwiihIP-LA2AMAADZkF2lgN8EEbAAjXVEP0cYSdsQMF-ig2ArxvRgEAQtEBBAwGiEgXMGBcCEHLD-iQWhko0EYLhOKOh+CCCEOIUwUh8hn7oiAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+If you want to maintain the radio button states yourself, for instance when using a state management solution like Meiosis or Redux, you can either:
+* Set option `checked` on each Radio Button
+* Set option `checkedValue` on the Radio Group
+
+This example shows the latter method:
+
+~~~javascript
+import m from "mithril"
+import stream from "mithril/stream"
+import { RadioGroup, Button } from "polythene-mithril"
+
+const Form = () => {
+  const model = {
+    name: "outside",
+    defaultCheckedValue: "right",
+    values: [
+      {
+        value: "left",
+        label: "Left",
+      },
+      {
+        value: "right",
+        label: "Right",
+      },
+    ]
+  }
+  return {
+    oninit: ({ state }) => {
+      const checkedValue = stream(model.defaultCheckedValue);
+      Object.assign(state, {
+        checkedValue,
+      })
+    },
+    view: ({ state }) => {
+      const checkedValue = state.checkedValue();
+      return m("div", [
+        m(RadioGroup, {
+          name: model.name,
+          checkedValue,
+          onChange: ({ value }) => state.checkedValue(value),
+          content: model.values
+        }),
+        // Simulate setting the radio button state from outside:
+        m(".pe-button-row", [
+          m(Button, {
+            label: "Set Left",
+            raised: true,
+            events: {
+              onclick: () => state.checkedValue("left"),
+            }
+          }),
+          m(Button, {
+            label: "Set Right",
+            raised: true,
+            events: {
+              onclick: () => state.checkedValue("right"),
+            }
+          })
+        ])
+      ])
+    }
+  }
+}
 ~~~
 
 

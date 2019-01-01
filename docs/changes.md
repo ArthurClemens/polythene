@@ -1,8 +1,10 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
-- [1.4.1](#141)
-- [1.4.0](#140)
+- [1.4](#14)
+  - [1.4.2](#142)
+  - [1.4.1](#141)
+  - [1.4.0](#140)
 - [1.3.2](#132)
   - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
   - [CSS](#css)
@@ -25,12 +27,23 @@
 
 <!-- /MarkdownTOC -->
 
-## 1.4.1
+## 1.4 
 
-* Various fixes for IE 11.
+### 1.4.2
+
+Fixes and improvements for [Radio Group](./components/radio-group.md):
+* New option `checkedValue`: checks the Radio Button that has this value. It is ignored when one of the group's Radio Buttons uses option `checked`. This is useful when you maintain the state of the value yourself.
+* Added examples for state management:
+  * [Mithril version](https://flems.io/#0=N4IgtglgJlA2CmIBcAWAnAOgIwHYA0IAZhAgM7IDaoAdgIZiJIgYAWALmLCAQMYD21NvEHIQAHlI8AThAAObAASkpPALwAdEOzazSSAPT6ptAO4BzCGwz8w+gIJS2LAK5SAwggbVS+2X1gAnk7C8PpgtKRCUr60PADWtGbwPn6BwdTwALSQTjKw+lAQkb7+QSwh2ZYseZmRtNRQtLAC8BgAVqSaAHxi+pIy8l3q1BLScorKapraugZGphZWNvaOLu6ewiml6aHhkfDRsrEJSVtp5RmZPKQ+hcWpZRXXpLVs9Y3NGe2dID19Y4NhsNuCBSPAEDw2BABOQmAAGJBwzIAZkRIAAvngaPRGMwOiD+IJhGxRIYFBAwH5HAowApCFI+LTNDlqiRNMMyRSqRM2FJ4PQ6QymeAqnk+rz+WB2dROZS+NTgAoAEq0Qp8ADiDOcsjwCgAQs42GwBAp0YLGQpNA8dpVcmyQMNCZElBKBaoaRhInz6I6YYpFSq1Zq+NrdQajSaze7rRd4EDqE7FAAxeW090ACgAlApVF0FMBhgoFIm6amACK0N45-OFosKOgMJCWkAhtikaBx7i1otQeCEWjOWBsNzleLwKAANSazngTc0MjM7E0eG7CgAbtPkk2KKuiwXqHXD+vN3OQAhCGxl7u67BaAAjcGngAyfcvXYPR8x1-3R7rG9gM6nguS7vr+Ra3g+sCnkqECLm+K4foeX6IQoAC6tborWfJsK4B4-nWAgQNQlhNumip1EIprZrmNYoUWJY8KOcTjlOAHwNWXqSumhDlpWtAYL2-aDsOTEsZumYANzXgA8nebTwJCGARO2ZjUOmFHwLq+G-oxCnMZOm4Ib+6KZquyGHmuEDwCYpHkW8lEmTmebaXWDGiQZbEcfZrS6WOHkzlm17YbhNLppohRrsuCg7nRdZgOmgbQsGoa0WBdYNrOpZSGAFZvBgGVGWlxbuaxM6FWlAgjvUSS2cenmOTRGnWCVm7pv+M6ZuVYGEkIghNjx2W5fx7XJNeRYmV1h5kgAyhSg6VuxYJGkRZgKMECjGGqCh3oaxoHhp5q0q27a9kgY2hZoGCyFkO0RtQmQMiYUUxUVoXhntWnnYeEGPs203wIoL4XlesW-sYRTjk2vJlV9dbwGuxJ6Klr0EQmsAQPEpHUXmTW+fppXwGFZ6vponWw+NsMTbD8XvQIn2g0eP1QX9APKrBIGTWB4NglAUNSDDDOHvDiNNi5r0CDw6OYwoWZOS6C3NXpYlsUTwFvmTgt1phmsmedqGmbF+tmRhwza8MYAYGAIaCOmUB8DwzheFYd58FAAS6im2UGwSjKyCQByiHe97giCYIQlCMKiMiACsSAAEw4BiWIgBlojWDcPtEiITAu27yNHDAK1NnHcKyAAHlJ1Da1dWSbdCmRmFqsgKAA1AoNeZLde0PXwJjI+EUgWPdxqyMXpcV6bwwd3XfBXAIvL+K37fXQ9qr1z1DKwP3tCD0RmTnmwTYoOPlfoqH4IKRH3iiAiSIABxIFgGKoQQ6PUHEsJUCnOKiCyeQAAK3iEJEEErguBMBmHoQwzhqCyDiGYawjIwiihIP-LA2AMAADZkF2lgN8EEbAAjXVEP0cYSdsQMF-ig2ArxvRgEAQtEBBAwGiEgXMGBcCEHLD-iQWhko0EYLhOKOh+CCCEOIUwUh8hn7oiAA)
+  * [React version](https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvAHjmoCcIAHYgAjgdqAXgA6IEsW5xEAelkcMAdwDmEYvjpZZAQQ7FCAVw4BhWDjRxZ3WlACeBpjFlYMcRh2sZqAawwr4a1sHQicAWg4Yb2JZABMIdyD7RzQYCKjqYjD3DDRYjCh6GHwAKzhxAD4WWXYuXgrRNDZOHn5BEXFJaTkFZTUNLV19I1NzJisbZNDUlzcPL19-QMmQ8Oo4K3jElZS09bhs4lz8wtTS8pAqmpb6xrum+IA3PghYsRAMbm5K6qeKyhAcBgsEyEHoCEQIAADIgAIxQgAcIAAvhR0NhcJDzgC6AwmMQ8PIXlgbPo+AAlDL8MAcWhYPjiSLRcSNIkQEm0MnACkYeK0ADitMM3AofAAQoZiMR6HxkXwaXSGSAdtM0kzMiy0Lj3HxueTeWDBbRhaKJVKZXLhHwVU57trqZysAARDBHPhW4CNPh8TA4RBK43EOCvGDiChevixGBgDCGKDEEyhXwwWIANQKhhg-sZEBUJDDEceGfg-uQEe9nrQ3urfCLUEz2ZAsDAxALVZrfCgGAARsDGwAZaOtyjl2Xh9sV0feusNpVcPPD8cdzs9vtK8m5-MjidjiMAXUayLtXY2fAAYo6+DAAB6MPJwClU-AmOk2VIMXUR+0cQyZTkACm4WlpAASk-Hc4GFGAOEA4C4BA0cDASfAckYd1wOXagkx8FN03rLN5UdF0jnwKMYzjBNsNw4tRyPds6O9SI8mg-8wMrGt7T4LCYGTNNi3QpC4BQo5GE0Ki+Pw0dImIYwq3-Kc+BYP4FO9Fh9T5I1hRU6tfRgYRgDAIjXQwfBdIY5dq243i8MzfSrJwiTM3Miy+HoRNcgCfT-25GcYFlMDhAqPhBJQmBiAAZREmBvK48SbII3z-OcizcTvYh9MMjhnWM-BfLgZKa1kBodxrYBZAAKj4cL2TjV0-KBKUIDQFRgtCPhFD5Phu0laUq1QvyFXpQNgyjf1ytkArqyUiBnmoE84AAOQxd5uDSbrzTQCJaCUSptNUs1er26su17KB3nCsK+EHFtNRcmtFASFMju9GBHnxOB9PYu6azcqAIF8f1WPdIKQoayK6pi+zqPwxtm2HfzntlSbCuK76WAO+hEZO4FzsujcF1u772owR7YkR173s+xHvV+-6fEBgKQcIZCwaiyG4uLRt5y3BGSos5FkerIrtN+GbUY7UXHnF70EPow97kpaInQAeQAWXwJioxgu5iBYC8sr4YW0FFT5uBAnFX2gaC8G7VdyCoIEQWIMFLDwABWABORAkVRdEcDwTQNgtvFmEhbtaFiOwMOtXl4ma-0ACYoW4a8AG55bQfBVoiA1aDCFQhW4PgAGo+CztaevoLalGj1wODUTbpW4RPk7TjPy5zvkwlS2koBLsvs46sFu-oYhe9rjB66asI4f9AAWVv07QOiAUdnjnfBPAvahFE9yoP60B8CFUBAXS8HVDQozewpuAsDQygBYxyEhLoZHkQw0G4HwVE0OkFCpWQhgsCxH-tEUiFMb532xFQYgdhVp4FqK0FEaJT4YnPlSMIsQ6TgOvrQW++JoEgCfngV+PQP5fx-oMC+mC-5AJAdQrBWAcHAjwVAh+MC4GYkBDcAkyI9zIiAA)
+* `defaultSelectedValue` is deprecated; use `defaultCheckedValue`
+
+### 1.4.1
+
+Various fixes for IE 11.
 
 
-## 1.4.0
+### 1.4.0
 
 * Updated dependencies (Babel 7, React 16.7.0, preparation for Mithril v.2).
 * Smaller transpiled files
