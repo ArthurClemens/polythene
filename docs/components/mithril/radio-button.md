@@ -158,7 +158,7 @@ import stream from "mithril/stream"
 import { RadioGroup, Button } from "polythene-mithril"
 
 const Form = () => {
-  const model = {
+  const formData = {
     name: "outside",
     defaultCheckedValue: "right",
     values: [
@@ -174,7 +174,7 @@ const Form = () => {
   }
   return {
     oninit: ({ state }) => {
-      const checkedValue = stream(model.defaultCheckedValue);
+      const checkedValue = stream(formData.defaultCheckedValue);
       Object.assign(state, {
         checkedValue,
       })
@@ -183,10 +183,10 @@ const Form = () => {
       const checkedValue = state.checkedValue();
       return m("div", [
         m(RadioGroup, {
-          name: model.name,
+          name: formData.name,
           checkedValue,
           onChange: ({ value }) => state.checkedValue(value),
-          content: model.values
+          content: formData.values
         }),
         // Simulate setting the radio button state from outside:
         m(".pe-button-row", [
