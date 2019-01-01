@@ -9,7 +9,7 @@
     "dev:serve": "ENTRY=./src/index.ts ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 3300 --host 0.0.0.0",
     "dev:watch": "ENTRY=./src/index.ts ../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "webpack": "ENTRY=./src/index.ts ../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
-    "build": "npm run clean && npm run webpack",
+    "test:build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist",
     "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict src/index.ts"
   },

@@ -29,6 +29,10 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
+var getElement = function getElement(vnode) {
+  return vnode.attrs.element || "div";
+}; // Props to be passed to Dialog
+
 var createProps = function createProps(vnode) {
   var attrs = vnode.attrs;
   var isCover = !(attrs.push || attrs.permanent || attrs.mini);
@@ -47,6 +51,7 @@ var createContent = function createContent(vnode) {
 };
 
 var drawer = /*#__PURE__*/Object.freeze({
+  getElement: getElement,
   createProps: createProps,
   createContent: createContent
 });

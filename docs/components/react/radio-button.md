@@ -7,10 +7,24 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+    - [With JSX](#with-jsx)
+    - [With hyperscript](#with-hyperscript)
+    - [Reading the checked state](#reading-the-checked-state)
+    - [With JSX](#with-jsx-1)
+    - [With hyperscript](#with-hyperscript-1)
+    - [Setting the checked state](#setting-the-checked-state)
+      - [With JSX](#with-jsx-2)
+      - [With hyperscript](#with-hyperscript-2)
+    - [Maintaining state](#maintaining-state)
   - [Shared options](#shared-options)
+    - [With JSX](#with-jsx-3)
+    - [With hyperscript](#with-hyperscript-3)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -157,14 +171,14 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 ~~~
 
 
-or use `defaultSelectedValue` on the group:
+or use `defaultCheckedValue` on the group:
 
 ##### With JSX
 
 ~~~jsx
 <RadioGroup
   name="company"
-  defaultSelectedValue="1"
+  defaultCheckedValue="1"
   buttons={[
     {
       value: "1",
@@ -184,7 +198,7 @@ or use `defaultSelectedValue` on the group:
 ~~~javascript
 m(RadioGroup, {
   name: "company",
-  defaultSelectedValue: "1",
+  defaultCheckedValue: "1",
   buttons: [
     {
       value: "1",
@@ -198,6 +212,75 @@ m(RadioGroup, {
 })
 ~~~
 
+
+#### Maintaining state
+
+<a href="https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvAHjmoCcIAHYgAjgdqAXgA6IEsW5xEAelkcMAdwDmEYvjpZZAQQ7FCAVw4BhWDjRxZ3WlACeBpjFlYMcRh2sZqAawwr4a1sHQicAWg4Yb2JZABMIdyD7RzQYCKjqYjD3DDRYjCh6GHwAKzhxAD4WWXYuXgrRNDZOHn5BEXFJaTkFZTUNLV19I1NzJisbZNDUlzcPL19-QMmQ8Oo4K3jElZS09bhs4lz8wtTS8pAqmpb6xrum+IA3PghYsRAMbm5K6qeKyhAcBgsEyEHoCEQIAADIgAIxQgAcIAAvhR0NhcJDzgC6AwmMQ8PIXlgbPo+AAlDL8MAcWhYPjiSLRcSNIkQEm0MnACkYeK0ADitMM3AofAAQoZiMR6HxkXwaXSGSAdtM0kzMiy0Lj3HxueTeWDBbRhaKJVKZXLhHwVU57trqZysAARDBHPhW4CNPh8TA4RBK43EOCvGDiChevixGBgDCGKDEEyhXwwWIANQKhhg-sZEBUJDDEceGfg-uQEe9nrQ3urfCLUEz2ZAsDAxALVZrfCgGAARsDGwAZaOtyjl2Xh9sV0feusNpVcPPD8cdzs9vtK8m5-MjidjiMAXUayLtXY2fAAYo6+DAAB6MPJwClU-AmOk2VIMXUR+0cQyZTkACm4WlpAASk-Hc4GFGAOEA4C4BA0cDASfAckYd1wOXagkx8FN03rLN5UdF0jnwKMYzjBNsNw4tRyPds6O9SI8mg-8wMrGt7T4LCYGTNNi3QpC4BQo5GE0Ki+Pw0dImIYwq3-Kc+BYP4FO9Fh9T5I1hRU6tfRgYRgDAIjXQwfBdIY5dq243i8MzfSrJwiTM3Miy+HoRNcgCfT-25GcYFlMDhAqPhBJQmBiAAZREmBvK48SbII3z-OcizcTvYh9MMjhnWM-BfLgZKa1kBodxrYBZAAKj4cL2TjV0-KBKUIDQFRgtCPhFD5Phu0laUq1QvyFXpQNgyjf1ytkArqyUiBnmoE84AAOQxd5uDSbrzTQCJaCUSptNUs1er26su17KB3nCsK+EHFtNRcmtFASFMju9GBHnxOB9PYu6azcqAIF8f1WPdIKQoayK6pi+zqPwxtm2HfzntlSbCuK76WAO+hEZO4FzsujcF1u772owR7YkR173s+xHvV+-6fEBgKQcIZCwaiyG4uLRt5y3BGSos5FkerIrtN+GbUY7UXHnF70EPow97kpaInQAeQAWXwJioxgu5iBYC8sr4YW0FFT5uBAnFX2gaC8G7VdyCoIEQWIMFLDwABWABORAkVRdEcDwTQNgtvFmEhbtaFiOwMOtXl4ma-0ACYoW4a8AG55bQfBVoiA1aDCFQhW4PgAGo+CztaevoLalGj1wODUTbpW4RPk7TjPy5zvkwlS2koBLsvs46sFu-oYhe9rjB66asI4f9AAWVv07QOiAUdnjnfBPAvahFE9yoP60B8CFUBAXS8HVDQozewpuAsDQygBYxyEhLoZHkQw0G4HwVE0OkFCpWQhgsCxH-tEUiFMb532xFQYgdhVp4FqK0FEaJT4YnPlSMIsQ6TgOvrQW++JoEgCfngV+PQP5fx-oMC+mC-5AJAdQrBWAcHAjwVAh+MC4GYkBDcAkyI9zIiAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+
+If you want to maintain the radio button states yourself, for instance when using a state management solution like Meiosis or Redux, you can either:
+* Set option `checked` on each Radio Button
+* Set option `checkedValue` on the Radio Group
+
+This example shows the latter method:
+
+~~~jsx
+import React from "react"
+import { RadioGroup, Button } from "polythene-react"
+
+const formData = {
+  name: "outside",
+  defaultCheckedValue: "right",
+  values: [
+    {
+      value: "left",
+      label: "Left",
+    },
+    {
+      value: "right",
+      label: "Right",
+    },
+  ]
+}
+
+class Form extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      checkedValue: formData.defaultCheckedValue
+    }
+  }
+  render() {
+    const checkedValue = this.state.checkedValue
+    return (
+      <div>
+        <RadioGroup
+          name={formData.name}
+          checkedValue={checkedValue}
+          onChange={({ value }) => this.setState({ checkedValue: value })}
+          content={formData.values}
+        />
+        {/* Simulate setting the radio button state from outside: */}
+        <div className="pe-button-row">
+          <Button
+            label="Set Left"
+            raised
+            events={{
+              onClick: () => this.setState({ checkedValue: "left" })
+            }}
+          />
+          <Button
+            label="Set Right"
+            raised
+            events={{
+              onClick: () => this.setState({ checkedValue: "right" })
+            }}
+          />
+        </div>
+      </div>
+    )
+  }
+}
+~~~
 
 
 <a id="shared-options"></a>

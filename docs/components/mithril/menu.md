@@ -15,10 +15,13 @@
   - [Dropdown menu](#dropdown-menu)
   - [Exposing dropdown menu](#exposing-dropdown-menu)
   - [Dialog menu](#dialog-menu)
-  - [Settings menu \(position to selected value\)](#settings-menu-position-to-selected-value)
+  - [Settings menu (position to selected value)](#settings-menu-position-to-selected-value)
 - [Appearance](#appearance)
   - [Variations](#variations)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -198,7 +201,7 @@ The placement varies with the element that opens it; often the menu covers the c
 <a id="exposing-dropdown-menu"></a>
 ### Exposing dropdown menu
 
-The menu is exposes the clicked element above it. This is the default menu behavior: a menu has a top position that takes the clicked element into account.
+The menu exposes the clicked element above it. This is the default menu behavior: a menu has a top position that takes the clicked element into account.
 
 The appearance will look more natural when `origin` is set to "top" - it will look as if the menu is appearing out of the clicked element.
 

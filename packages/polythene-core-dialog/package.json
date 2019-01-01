@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-dialog",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "dist/polythene-core-dialog",
   "module": "dist/polythene-core-dialog.mjs",
@@ -14,9 +14,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.1",
-    "polythene-css-classes": "^1.4.1",
-    "polythene-theme": "^1.4.1"
+    "polythene-core": "^1.4.2",
+    "polythene-css-classes": "^1.4.2",
+    "polythene-theme": "^1.4.2"
   },
   "devDependencies": {
     "polythene-core-dialog-pane": "^1.4.1"

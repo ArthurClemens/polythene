@@ -55,7 +55,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **checked**   | optional | Boolean | false | Managed checked state (see: [Handling state](../handling-state.md)) |
-| **defaultChecked** | optional | Boolean | false | Initially checked state |
+| **defaultChecked** | optional | Boolean | false | Initially checked state; ignored if `value` is used |
 | **disabled**  | optional | Boolean |  | Set to `true` to disable the Checkbox |
 | **iconButton** | optional | Options object for the [Icon Button](icon-button.md) | | Add attributes like `wash` and `ink` |
 | **iconOff**    | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the off state |

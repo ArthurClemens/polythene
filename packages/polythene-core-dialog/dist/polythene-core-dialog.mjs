@@ -189,6 +189,7 @@ var onMount = function onMount(vnode) {
   state.contentEl = dom.querySelector(".".concat(classes.content));
 
   if (!attrs.inactive) {
+    // used by Drawer
     var handleEscape = function handleEscape(e) {
       if (isFullScreen(vnode) || isModal(vnode)) return;
 

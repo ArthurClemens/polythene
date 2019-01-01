@@ -51,173 +51,229 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-/* eslint-enable */
-Stream.SKIP = {};
-Stream.lift = lift;
-Stream.scan = scan;
-Stream.merge = merge;
-Stream.combine = combine;
-Stream.scanMerge = scanMerge;
-Stream["fantasy-land/of"] = Stream;
-var warnedHalt = false;
-Object.defineProperty(Stream, "HALT", {
-  get: function get() {
-    warnedHalt && console.log("HALT is deprecated and has been renamed to SKIP");
-    warnedHalt = true;
-    return Stream.SKIP;
-  }
-});
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
 
-function Stream(value) {
-  var dependentStreams = [];
-  var dependentFns = [];
+var stream = createCommonjsModule(function (module) {
 
-  function stream(v) {
-    if (arguments.length && v !== Stream.SKIP && open(stream)) {
-      value = v;
-      stream.changing();
-      stream.state = "active";
-      dependentStreams.forEach(function (s, i) {
-        s(dependentFns[i](value));
+  (function () {
+    /* eslint-enable */
+
+    var guid = 0,
+        HALT = {};
+
+    function createStream() {
+      function stream() {
+        if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+        return stream._state.value;
+      }
+
+      initStream(stream);
+      if (arguments.length > 0 && arguments[0] !== HALT) updateStream(stream, arguments[0]);
+      return stream;
+    }
+
+    function initStream(stream) {
+      stream.constructor = createStream;
+      stream._state = {
+        id: guid++,
+        value: undefined,
+        state: 0,
+        derive: undefined,
+        recover: undefined,
+        deps: {},
+        parents: [],
+        endStream: undefined,
+        unregister: undefined
+      };
+      stream.map = stream["fantasy-land/map"] = map, stream["fantasy-land/ap"] = ap, stream["fantasy-land/of"] = createStream;
+      stream.valueOf = valueOf, stream.toJSON = toJSON, stream.toString = valueOf;
+      Object.defineProperties(stream, {
+        end: {
+          get: function get() {
+            if (!stream._state.endStream) {
+              var endStream = createStream();
+              endStream.map(function (value) {
+                if (value === true) {
+                  unregisterStream(stream);
+
+                  endStream._state.unregister = function () {
+                    unregisterStream(endStream);
+                  };
+                }
+
+                return value;
+              });
+              stream._state.endStream = endStream;
+            }
+
+            return stream._state.endStream;
+          }
+        }
       });
     }
 
-    return value;
-  }
+    function updateStream(stream, value) {
+      updateState(stream, value);
 
-  stream.constructor = Stream;
-  stream.state = arguments.length && value !== Stream.SKIP ? "active" : "pending";
-
-  stream.changing = function () {
-    open(stream) && (stream.state = "changing");
-    dependentStreams.forEach(function (s) {
-      s.dependent && s.dependent.changing();
-      s.changing();
-    });
-  };
-
-  stream.map = function (fn, ignoreInitial) {
-    var target = stream.state === "active" && ignoreInitial !== Stream.SKIP ? Stream(fn(value)) : Stream();
-    dependentStreams.push(target);
-    dependentFns.push(fn);
-    return target;
-  };
-
-  var end;
-
-  function createEnd() {
-    end = Stream();
-    end.map(function (value) {
-      if (value === true) {
-        stream.state = "ended";
-        dependentStreams.length = dependentFns.length = 0;
+      for (var id in stream._state.deps) {
+        updateDependency(stream._state.deps[id], false);
       }
 
-      return value;
-    });
-    return end;
-  }
-
-  stream.toJSON = function () {
-    return value != null && typeof value.toJSON === "function" ? value.toJSON() : value;
-  };
-
-  stream["fantasy-land/map"] = stream.map;
-
-  stream["fantasy-land/ap"] = function (x) {
-    return combine(function (s1, s2) {
-      return s1()(s2());
-    }, [x, stream]);
-  };
-
-  Object.defineProperty(stream, "end", {
-    get: function get() {
-      return end || createEnd();
+      if (stream._state.unregister != null) stream._state.unregister();
+      finalize(stream);
     }
-  });
-  return stream;
-}
 
-function combine(fn, streams) {
-  var ready = streams.every(function (s) {
-    if (s.constructor !== Stream) throw new Error("Ensure that each item passed to stream.combine/stream.merge/lift is a stream");
-    return s.state === "active";
-  });
-  var stream = ready ? Stream(fn.apply(null, streams.concat([streams]))) : Stream();
-  var changed = [];
-  streams.forEach(function (s) {
-    s.map(function (value) {
-      changed.push(s);
+    function updateState(stream, value) {
+      stream._state.value = value;
+      stream._state.changed = true;
+      if (stream._state.state !== 2) stream._state.state = 1;
+    }
 
-      if (ready || streams.every(function (s) {
-        return s.state !== "pending";
-      })) {
-        ready = true;
-        stream(fn.apply(null, streams.concat([changed])));
-        changed = [];
+    function updateDependency(stream, mustSync) {
+      var state = stream._state,
+          parents = state.parents;
+
+      if (parents.length > 0 && parents.every(active) && (mustSync || parents.some(changed))) {
+        var value = stream._state.derive();
+
+        if (value === HALT) return false;
+        updateState(stream, value);
+      }
+    }
+
+    function finalize(stream) {
+      stream._state.changed = false;
+
+      for (var id in stream._state.deps) {
+        stream._state.deps[id]._state.changed = false;
+      }
+    }
+
+    function combine(fn, streams) {
+      if (!streams.every(valid)) throw new Error("Ensure that each item passed to stream.combine/stream.merge is a stream");
+      return initDependency(createStream(), streams, function () {
+        return fn.apply(this, streams.concat([streams.filter(changed)]));
+      });
+    }
+
+    function initDependency(dep, streams, derive) {
+      var state = dep._state;
+      state.derive = derive;
+      state.parents = streams.filter(notEnded);
+      registerDependency(dep, state.parents);
+      updateDependency(dep, true);
+      return dep;
+    }
+
+    function registerDependency(stream, parents) {
+      for (var i = 0; i < parents.length; i++) {
+        parents[i]._state.deps[stream._state.id] = stream;
+        registerDependency(stream, parents[i]._state.parents);
+      }
+    }
+
+    function unregisterStream(stream) {
+      for (var i = 0; i < stream._state.parents.length; i++) {
+        var parent = stream._state.parents[i];
+        delete parent._state.deps[stream._state.id];
       }
 
-      return value;
-    }, Stream.SKIP).parent = stream;
-  });
-  return stream;
-}
+      for (var id in stream._state.deps) {
+        var dependent = stream._state.deps[id];
 
-function merge(streams) {
-  return combine(function () {
-    return streams.map(function (s) {
-      return s();
-    });
-  }, streams);
-}
+        var index = dependent._state.parents.indexOf(stream);
 
-function scan(fn, acc, origin) {
-  var stream = origin.map(function (v) {
-    acc = fn(acc, v);
-    return acc;
-  });
-  stream(acc);
-  return stream;
-}
+        if (index > -1) dependent._state.parents.splice(index, 1);
+      }
 
-function scanMerge(tuples, seed) {
-  var streams = tuples.map(function (tuple) {
-    return tuple[0];
-  });
-  var stream = combine(function () {
-    var changed = arguments[arguments.length - 1];
-    streams.forEach(function (stream, i) {
-      if (changed.indexOf(stream) > -1) seed = tuples[i][1](seed, stream());
-    });
-    return seed;
-  }, streams);
-  stream(seed);
-  return stream;
-}
+      stream._state.state = 2; //ended
 
-function lift() {
-  var fn = arguments[0];
-  var streams = Array.prototype.slice.call(arguments, 1);
-  return merge(streams).map(function (streams) {
-    return fn.apply(undefined, streams);
-  });
-}
+      stream._state.deps = {};
+    }
 
-function open(s) {
-  return s.state === "pending" || s.state === "active" || s.state === "changing";
-}
+    function map(fn) {
+      return combine(function (stream) {
+        return fn(stream());
+      }, [this]);
+    }
 
-var stream = /*#__PURE__*/Object.freeze({
-  default: Stream
+    function ap(stream) {
+      return combine(function (s1, s2) {
+        return s1()(s2());
+      }, [stream, this]);
+    }
+
+    function valueOf() {
+      return this._state.value;
+    }
+
+    function toJSON() {
+      return this._state.value != null && typeof this._state.value.toJSON === "function" ? this._state.value.toJSON() : this._state.value;
+    }
+
+    function valid(stream) {
+      return stream._state;
+    }
+
+    function active(stream) {
+      return stream._state.state === 1;
+    }
+
+    function changed(stream) {
+      return stream._state.changed;
+    }
+
+    function notEnded(stream) {
+      return stream._state.state !== 2;
+    }
+
+    function merge(streams) {
+      return combine(function () {
+        return streams.map(function (s) {
+          return s();
+        });
+      }, streams);
+    }
+
+    function scan(reducer, seed, stream) {
+      var newStream = combine(function (s) {
+        return seed = reducer(seed, s._state.value);
+      }, [stream]);
+      if (newStream._state.state === 0) newStream(seed);
+      return newStream;
+    }
+
+    function scanMerge(tuples, seed) {
+      var streams = tuples.map(function (tuple) {
+        var stream = tuple[0];
+        if (stream._state.state === 0) stream(undefined);
+        return stream;
+      });
+      var newStream = combine(function () {
+        var changed = arguments[arguments.length - 1];
+        streams.forEach(function (stream, idx) {
+          if (changed.indexOf(stream) > -1) {
+            seed = tuples[idx][1](seed, stream._state.value);
+          }
+        });
+        return seed;
+      }, streams);
+      return newStream;
+    }
+
+    createStream["fantasy-land/of"] = createStream;
+    createStream.merge = merge;
+    createStream.combine = combine;
+    createStream.scan = scan;
+    createStream.scanMerge = scanMerge;
+    createStream.HALT = HALT;
+    module["exports"] = createStream;
+  })();
 });
 
-function getCjsExportFromNamespace (n) {
-	return n && n.default || n;
-}
-
-var require$$0 = getCjsExportFromNamespace(stream);
-
-var stream$1 = require$$0;
+var stream$1 = stream;
 
 var requiresKeys = false;
 var StateComponent = function StateComponent(_ref) {

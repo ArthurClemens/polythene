@@ -1,13 +1,41 @@
-import { filterSupportedAttributes } from "polythene-core";
+import { filterSupportedAttributes, deprecation } from "polythene-core";
 import classes from "polythene-css-classes/radio-group";
+
+const getButtons = vnode => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.buttons
+      ? attrs.buttons
+      : attrs.children || vnode.children || [];
+};
 
 export const getElement = vnode =>
   vnode.attrs.element || "div";
 
 export const getInitialState = (vnode, createStream) => {
-  const checkedIndex = createStream(null);
+  const attrs = vnode.attrs;
+  if (attrs.defaultSelectedValue !== undefined) {
+    deprecation("RadioGroup", { option: "defaultSelectedValue", newOption: "defaultCheckedValue", since: "1.4.2" });
+  }
+  const buttons = getButtons(vnode);
+  const checkedIdx = buttons.reduce((acc, buttonOpts, index) => {
+    if (buttonOpts.value === undefined) {
+      console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
+    }
+    return acc !== null
+      ? acc
+      : (
+        buttonOpts.defaultChecked !== undefined
+        || (attrs.defaultCheckedValue !== undefined && buttonOpts.value === attrs.defaultCheckedValue)
+        || (attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) // deprecated
+      )
+        ? index
+        : acc;
+  }, null);
+  const checkedIndex = createStream(checkedIdx);
   return {
-    checkedIndex,
+    checkedIndex: checkedIndex,
     redrawOnUpdate: createStream.merge([checkedIndex])
   };
 };
@@ -32,29 +60,19 @@ export const createContent = (vnode, { renderer: h, RadioButton }) => {
   const attrs = vnode.attrs;
   const state = vnode.state;
   const checkedIndex = state.checkedIndex();
-
-  const buttons = attrs.content
-    ? attrs.content
-    : attrs.buttons
-      ? attrs.buttons
-      : attrs.children || vnode.children || [];
+  const buttons = getButtons(vnode);
+  const groupCheckedValue= attrs.checkedValue;
 
   return buttons.length
     ? buttons.map((buttonOpts, index) => {
       if (!buttonOpts) {
         return null;
       }
-      if (buttonOpts.value === undefined) {
-        console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
-      }
-      // Only set defaultChecked the first time when no value has been stored yet
-      const isDefaultChecked =
-        (
-          buttonOpts.defaultChecked ||
-          buttonOpts.checked ||
-          (attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue)
-        ) && checkedIndex === null;
-      const isChecked = isDefaultChecked || buttonOpts.checked || checkedIndex === index;
+      const isChecked = buttonOpts.checked !== undefined
+        ? buttonOpts.checked
+        : groupCheckedValue !== undefined
+          ? buttonOpts.value === groupCheckedValue
+          : checkedIndex === index;
       return h(RadioButton, Object.assign(
         {},
         {

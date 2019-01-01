@@ -31,7 +31,7 @@ var listTileClasses = {
   subtitle: "pe-list-tile__subtitle",
   title: "pe-list-tile__title",
   contentFront: "pe-list-tile__content-front",
-  // states
+  // states  
   compact: "pe-list-tile--compact",
   compactFront: "pe-list-tile--compact-front",
   disabled: "pe-list-tile--disabled",
@@ -40,8 +40,10 @@ var listTileClasses = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
+  inset: "pe-list-tile--inset",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
+  rounded: "pe-list-tile--rounded",
   highlight: "pe-list-tile--highlight",
   sticky: "pe-list-tile--sticky",
   navigation: "pe-list-tile--navigation"

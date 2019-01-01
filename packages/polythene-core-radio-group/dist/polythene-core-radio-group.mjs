@@ -1,4 +1,4 @@
-import { filterSupportedAttributes } from 'polythene-core';
+import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -22,11 +22,35 @@ var classes = {
   component: "pe-radio-group"
 };
 
+var getButtons = function getButtons(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
+};
+
 var getElement = function getElement(vnode) {
   return vnode.attrs.element || "div";
 };
 var getInitialState = function getInitialState(vnode, createStream) {
-  var checkedIndex = createStream(null);
+  var attrs = vnode.attrs;
+
+  if (attrs.defaultSelectedValue !== undefined) {
+    deprecation("RadioGroup", {
+      option: "defaultSelectedValue",
+      newOption: "defaultCheckedValue",
+      since: "1.4.2"
+    });
+  }
+
+  var buttons = getButtons(vnode);
+  var checkedIdx = buttons.reduce(function (acc, buttonOpts, index) {
+    if (buttonOpts.value === undefined) {
+      console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
+    }
+
+    return acc !== null ? acc : buttonOpts.defaultChecked !== undefined || attrs.defaultCheckedValue !== undefined && buttonOpts.value === attrs.defaultCheckedValue || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue // deprecated
+    ? index : acc;
+  }, null);
+  var checkedIndex = createStream(checkedIdx);
   return {
     checkedIndex: checkedIndex,
     redrawOnUpdate: createStream.merge([checkedIndex])
@@ -45,19 +69,14 @@ var createContent = function createContent(vnode, _ref2) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var checkedIndex = state.checkedIndex();
-  var buttons = attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
+  var buttons = getButtons(vnode);
+  var groupCheckedValue = attrs.checkedValue;
   return buttons.length ? buttons.map(function (buttonOpts, index) {
     if (!buttonOpts) {
       return null;
     }
 
-    if (buttonOpts.value === undefined) {
-      console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
-    } // Only set defaultChecked the first time when no value has been stored yet
-
-
-    var isDefaultChecked = (buttonOpts.defaultChecked || buttonOpts.checked || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue) && checkedIndex === null;
-    var isChecked = isDefaultChecked || buttonOpts.checked || checkedIndex === index;
+    var isChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : groupCheckedValue !== undefined ? buttonOpts.value === groupCheckedValue : checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
       name: attrs.name,
