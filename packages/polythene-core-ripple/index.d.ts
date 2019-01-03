@@ -1,6 +1,6 @@
 import { CommonOptions } from "polythene-core";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * Name of animation function: "ease-in-out" or "cubic-bezier(0.1, 0.7, 1.0, 0.1)".

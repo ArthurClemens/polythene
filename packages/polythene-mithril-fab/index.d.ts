@@ -3,7 +3,7 @@ import { Options } from "polythene-core-fab";
 
 interface FAB extends Options{}
 declare namespace FAB {}
-declare const FAB: Component<Options, any>;
+declare const FAB: Component<Options>;
 
 export { FAB };
 export as namespace FAB;

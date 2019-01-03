@@ -38,6 +38,13 @@ export default ({ renderer: h, Tabs }) => {
     color_dark_tab_indicator:  "#F44336"
   });
 
+  TabsCSS.addStyle(".tests-tabs-scrollable", {
+    color_dark_text:           "#00BCD4",
+    color_dark_hover:          "#40c4ff",
+    color_dark_selected:       "#40c4ff",
+    color_dark_tab_indicator:  "#40c4ff"
+  });
+
   TabsCSS.addStyle(".tests-tabs-no-indicators", {
     color_light_text:     "#333",
     color_light_selected: "#333",
@@ -201,7 +208,8 @@ export default ({ renderer: h, Tabs }) => {
           h(Tabs, {
             tabs: longList,
             scrollable: true,
-            tone: "dark"
+            tone: "dark",
+            className: "tests-tabs-scrollable",
           }))
       }
     },
@@ -222,6 +230,7 @@ export default ({ renderer: h, Tabs }) => {
             scrollIconBackward: { svg: { content: arrowBack } },
             scrollIconForward: { svg: { content: arrowForward } },
             tone: "dark",
+            className: "tests-tabs-scrollable",
           }))
       }
     },

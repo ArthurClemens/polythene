@@ -14,6 +14,9 @@
   - [Mobile bottom menu](#mobile-bottom-menu)
   - [Scrollable tabs with custom arrow icons](#scrollable-tabs-with-custom-arrow-icons)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Tab widths](#tab-widths)
   - [Dark or light tone](#dark-or-light-tone)
 
@@ -109,6 +112,25 @@ To set shared options all at once, use option `all`:
     { label: "Notifs" }
   ]
 }
+~~~
+
+Alternatively, write the tab options as `children`:
+
+~~~javascript
+m(Tabs, [
+  {
+    label: "One"
+  },
+  {
+    label: "Two",
+    disabled: true,
+    icon: { svg: { content: m.trust(iconHeartSVG) } }
+  },
+  {
+    label: "Three",
+    selected: true,
+  }
+])
 ~~~
 
 

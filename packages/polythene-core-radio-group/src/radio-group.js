@@ -35,7 +35,7 @@ export const getInitialState = (vnode, createStream) => {
   }, null);
   const checkedIndex = createStream(checkedIdx);
   return {
-    checkedIndex: checkedIndex,
+    checkedIndex,
     redrawOnUpdate: createStream.merge([checkedIndex])
   };
 };

@@ -3,7 +3,7 @@ import { Options } from "polythene-core-radio-button";
 
 interface RadioButton extends Options{}
 declare namespace RadioButton {}
-declare const RadioButton: Component<Options, any>;
+declare const RadioButton: Component<Options>;
 
 export { RadioButton };
 export as namespace RadioButton;

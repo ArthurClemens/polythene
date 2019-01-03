@@ -1,6 +1,6 @@
 import { CommonOptions } from "polythene-core";
 
-interface CommonSVGOptions extends CommonOptions {
+interface CommonSVGOptions extends Partial<CommonOptions> {
 
   /**
    * SVG content: string, hyperscript or component.

@@ -7,13 +7,25 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Notification spawner](#notification-spawner)
+    - [Multiple notification spawners](#multiple-notification-spawners)
+    - [Spawner position](#spawner-position)
   - [Notification functions](#notification-functions)
+    - [show](#show)
+    - [hide](#hide)
+    - [pause](#pause)
+    - [unpause](#unpause)
+    - [clear](#clear)
+    - [count](#count)
   - [Callbacks](#callbacks)
   - [Example with action, dialog, pausing](#example-with-action-dialog-pausing)
 - [Appearance](#appearance)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
+    - [Transitioning a container](#transitioning-a-container)
 
 <!-- /MarkdownTOC -->
 
@@ -87,7 +99,7 @@ The notifications holder has by default CSS property `position: fixed`. This wil
 Notification.show(messageOptions, { spawn: "notifs", position: "container" })
 ~~~
 
-This will render the holder with `position: absolute`. The containing element needs to have `position: relative`.
+This will render the holder with `position: absolute`. The container element needs to have `position: relative`.
 
 
 <a id="notification-functions"></a>

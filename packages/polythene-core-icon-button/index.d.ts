@@ -1,38 +1,7 @@
-import { CommonOptions } from "polythene-core";
+import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
-export interface Options extends CommonOptions {
-
-  /* START COMMON OPTIONS */
-
-  /**
-   * Options object containing one or more standard events such as onclick (React: onClick).
-   */
-  events?: object;
-
-  /**
-   * (Mithril)
-   * Tab index.
-   */
-  tabindex?: number;
-  
-  /**
-   * (React)
-   * Tab index.
-   */
-  tabIndex?: number;
-
-  /**
-   * Alternative content; replaces any children.
-   */
-  content?: any;
-
-  /**
-   * Alternative content.
-   */
-  children?: any;
-
-  /* END COMMON OPTIONS */
+export interface Options extends ButtonOptions {
 
   /**
    * Icon options object; also used to show an round "avatar" portrait image.
@@ -40,20 +9,14 @@ export interface Options extends CommonOptions {
   icon?: IconOptions;
 
   /**
-   * Optional button label.
+   * Optional button label, placed next to the icon.
    */
   label?: string;
 
   /**
-   * Set to true to use less padding.
+   * Set to true to use smaller padding.
    * @default false
    */
   compact?: boolean;
-
-  /**
-   * Set to true to disable button events and ripple/wash effects.
-   * @default false
-   */
-  inactive?: boolean;
 
 }

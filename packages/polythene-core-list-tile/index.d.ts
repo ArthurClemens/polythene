@@ -2,7 +2,7 @@ import { CommonOptions, URLOptions } from "polythene-core";
 import { Options as IconOptions } from "polythene-core-icon";
 import { Options as RippleOptions } from "polythene-core-ripple";
 
-interface CommonListTileOptions extends CommonOptions {
+interface CommonListTileOptions extends Partial<CommonOptions> {
 
   /**
    * Set to true to reduce vertical padding.
@@ -142,7 +142,7 @@ interface PrimaryContentOptions extends CommonListTileOptions {
    * Mithril: for in-app route linking set `oncreate: m.route.link`.
    * React: for in-app route linking use onClick and a router such as react-router-dom.
    */
-  url?: URLOptions;
+  url?: Partial<URLOptions>;
 
   /**
    * Options object containing one or more standard events such as onclick (React: onClick).
@@ -163,7 +163,7 @@ interface PrimaryContentOptions extends CommonListTileOptions {
   
 }
 
-interface SecondaryContentOptions extends CommonOptions {
+interface SecondaryContentOptions extends Partial<CommonOptions> {
 
   /**
    * Icon options object for Icon in secondary content; will be placed above secondary content.
@@ -181,7 +181,7 @@ interface SecondaryContentOptions extends CommonOptions {
    * Mithril: for in-app route linking set `oncreate: m.route.link`.
    * React: for in-app route linking use onClick and a router such as react-router-dom.
    */
-  url?: URLOptions;
+  url?: Partial<URLOptions>;
 
 }
 

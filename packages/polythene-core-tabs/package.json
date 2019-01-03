@@ -11,6 +11,7 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
@@ -20,6 +21,10 @@
     "polythene-css-classes": "^1.4.2",
     "polythene-theme": "^1.4.2",
     "polythene-utilities": "^1.4.2"
+  },
+  "devDependencies": {
+    "polythene-core-button": "^1.4.2",
+    "polythene-core-icon": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -1,8 +1,6 @@
-import { CommonOptions, TransitionOptions } from "polythene-core";
+import { CommonOptions, TransitionOptions, Content } from "polythene-core";
 
-type Content = object | any;
-
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
   
   /**
    * Menu content.
@@ -90,7 +88,7 @@ export interface Options extends CommonOptions {
   /**
    * Configures the appearance of the component.
    */
-  transitions?: TransitionOptions;
+  transitions?: Partial<TransitionOptions>;
 
   /**
    * Multiplication factor of width unit (56px).

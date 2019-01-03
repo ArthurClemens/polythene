@@ -20,8 +20,8 @@
     "polythene-theme": "^1.4.2"
   },
   "devDependencies": {
-    "polythene-core-button": "^1.4.1",
-    "polythene-core-icon": "^1.4.1"
+    "polythene-core-button": "^1.4.2",
+    "polythene-core-icon": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -110,6 +110,6 @@ export const vars = {
   z_menu:         1000,
   z_app_bar:      2000,
   z_drawer:       3000,
-  z_notification: 4000,
   z_dialog:       5000,
+  z_notification: 7000,
 };

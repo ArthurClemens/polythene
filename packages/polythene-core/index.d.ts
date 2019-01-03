@@ -1,5 +1,7 @@
 import * as m from "mithril";
 
+export type Content = object | any;
+
 /* animation-event.js START */
 
   /**
@@ -77,38 +79,38 @@ export interface CommonOptions {
   /**
    * Extra content after main content; note that this content is placed right of preceding elements with a higher stacking depth.
    */
-  after?: any;
+  after: any;
 
   /**
    * Extra content before main content; note that this content is placed left of subsequent elements with a lower stacking depth.
    */
-  before?: any;
+  before: any;
 
   /**
    * Additional CSS class to default component class.
    */
-  className?: string;
+  className: string;
   
   /**
    * HTML element id.
    */
-  id?: string;
+  id: string;
 
   /**
    * Generated HTML element.
    * @default "div"
    */
-  element?: string;
+  element: string;
 
   /**
    * For setting simple style attributes.
    */
-  style?: CSSStyleDeclaration;
+  style: Partial<CSSStyleDeclaration>;
 
   /**
    * Renders the component light on dark (sets class pe-dark-tone); use "light" to locally inverse (sets class pe-light-tone).
    */
-  tone?: "dark" | "light";
+  tone: "dark" | "light";
 
 }
 
@@ -117,71 +119,71 @@ export interface URLOptions {
   /**
    * Link target.
    */
-  href?: string;
+  href: string;
 
   /**
    * Mithril lifecycle method.
    * https://mithril.js.org/route.html
    */
-  oncreate?: (vnode: m.VnodeDOM) => any;
+  oncreate: (vnode: m.VnodeDOM) => any;
 
   /**
    * Mithril lifecycle method.
    * https://mithril.js.org/route.html
    */
-  onupdate?: (vnode: m.VnodeDOM) => any;
+  onupdate: (vnode: m.VnodeDOM) => any;
 
   /**
    * React event method.
    */
-  onClick?: (e:Event) => any;
+  onClick: (e:Event) => any;
 
   /**
    * React Router path.
    */
-  to?: string;
+  to: string;
 }
 
 interface TransitionAppearanceReturnOptions {
   
-  el?: HTMLElement,
+  el: HTMLElement,
 
   /**
    * Transition duration in seconds.
    */
-  duration?: number;
+  duration: number;
 
   /**
    * Delay duration in seconds.
    */
-  delay?: number;
+  delay: number;
 
   /**
    * Callback function called just before the transition.
    */
-  before?: () => void;
+  before: () => void;
 
   /**
    * Callback function called just after the transition. After a hide transition, the transitioning element may be reset or hidden.
    */
-  after?: () => void;
+  after: () => void;
 
   /**
    * Callback function called at the transition. The transitioning element should be set to its goal.
    */
-  transition?: () => void;
+  transition: () => void;
 
   /**
    * The timing function.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
    */
-  timingFunction?: string;
+  timingFunction: string;
 
 }
 
 interface TransitionAppearanceOptions {
-  show?: ({ el, backdropEl, contentEl } : { el?: HTMLElement, backdropEl?: HTMLElement, contentEl?: HTMLElement }) => TransitionAppearanceReturnOptions;
-  hide?: ({ el, backdropEl, contentEl } : { el?: HTMLElement, backdropEl?: HTMLElement, contentEl?: HTMLElement }) => TransitionAppearanceReturnOptions;
+  show?: ({ el, backdropEl, contentEl } : { el?: HTMLElement, backdropEl?: HTMLElement, contentEl?: HTMLElement }) => Partial<TransitionAppearanceReturnOptions>;
+  hide?: ({ el, backdropEl, contentEl } : { el?: HTMLElement, backdropEl?: HTMLElement, contentEl?: HTMLElement }) => Partial<TransitionAppearanceReturnOptions>;
 }
 
 export interface TransitionOptions {
@@ -190,51 +192,51 @@ export interface TransitionOptions {
    * The show transition duration in seconds.
    * @default .240
    */
-  showDuration?: number;
+  showDuration: number;
 
   /**
    * The hide transition duration in seconds.
    * @default .240
    */
-  hideDuration?: number;
+  hideDuration: number;
 
   /**
    * The show delay duration in seconds.
    * @default 0
    */
-  showDelay?: number;
+  showDelay: number;
 
   /**
    * The hide delay duration in seconds.
    * @default 0
    */
-  hideDelay?: number;
+  hideDelay: number;
 
   /**
    * The show timing function.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
    */
-  showTimingFunction?: string;
+  showTimingFunction: string;
 
   /**
    * The hide timing function.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function
    */
-  hideTimingFunction?: string;
+  hideTimingFunction: string;
 
   /**
    * Callback function that is called when the show transition is done.
    */
-  didShow?: (id: string) => void;
+  didShow: (id: string) => void;
   
   /**
    * Callback function that is called when the hide transition is done.
    */
-  didHide?: (id: string) => void;
+  didHide: (id: string) => void;
 
   /**
    * Object with functions for keys show and hide.
    */
-  transitions?: TransitionAppearanceOptions;
+  transitions: Partial<TransitionAppearanceOptions>;
 
 }

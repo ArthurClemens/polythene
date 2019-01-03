@@ -206,7 +206,7 @@ export const createProps = (vnode, { keys: k }) => {
         state.isDirty()             ? classes.stateDirty : "",
         attrs.floatingLabel         ? classes.hasFloatingLabel : "",
         attrs.disabled              ? classes.stateDisabled : "",
-        attrs.readonly              ? classes.stateReadonly : "",
+        attrs[k.readonly]           ? classes.stateReadonly : "",
         attrs.dense                 ? classes.isDense : "",
         attrs.required              ? classes.isRequired : "",
         attrs.fullWidth             ? classes.hasFullWidth : "",
@@ -225,41 +225,71 @@ export const createProps = (vnode, { keys: k }) => {
 export const createContent = (vnode, { renderer: h, keys: k }) => {
   const state = vnode.state;
   const attrs = vnode.attrs;
-
+  const {
+    counter,      
+    disabled,      
+    error: errorAttr,      
+    events,
+    help,
+    label: labelAttr,
+    multiLine,
+    optionalIndicator: optionalIndicatorAttr,
+    required,
+    requiredIndicator: requiredIndicatorAttr,
+    rows: rowsAttr,
+    type: typeAttr,
+    // unused here:
+    className,               // eslint-disable-line no-unused-vars
+    defaultValue,            // eslint-disable-line no-unused-vars
+    dense,                   // eslint-disable-line no-unused-vars
+    floatingLabel,           // eslint-disable-line no-unused-vars
+    focusHelp,               // eslint-disable-line no-unused-vars
+    fullWidth,               // eslint-disable-line no-unused-vars
+    hideValidation,          // eslint-disable-line no-unused-vars
+    onChange,                // eslint-disable-line no-unused-vars
+    style,                   // eslint-disable-line no-unused-vars
+    tone,                    // eslint-disable-line no-unused-vars
+    valid,                   // eslint-disable-line no-unused-vars
+    validate,                // eslint-disable-line no-unused-vars
+    validateAtStart,         // eslint-disable-line no-unused-vars
+    value,                   // eslint-disable-line no-unused-vars
+    ...rest
+  } = attrs;
+  
   const inputEl = state.inputEl();
-  let error = attrs.error || state.error();
+  let error = errorAttr || state.error();
   const isInvalid = state.isInvalid();
-  const inputType = attrs.multiLine ? "textarea" : "input";
-  const type = attrs.multiLine
+  const inputType = multiLine ? "textarea" : "input";
+  const type = multiLine
     ? null
-    : !attrs.type || attrs.type === "submit" || attrs.type === "search"
+    : !typeAttr || typeAttr === "submit" || typeAttr === "search"
       ? "text"
-      : attrs.type;
+      : typeAttr;
   const showError = isInvalid && error !== undefined;
-  
-  
-  const inactive = attrs.disabled || attrs[k.readonly];
-
-  const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
+  const inactive = disabled || rest.readonly;
+  const rows = multiLine
+    ? rowsAttr
+    : undefined;
+  const requiredIndicator = required && requiredIndicatorAttr !== ""
     ? h("span",
       {
         key: "required",
         className: classes.requiredIndicator
       },
-      attrs.requiredIndicator || "*"
+      requiredIndicatorAttr || "*"
     )
     : null;
-  const optionalIndicator = !attrs.required && attrs.optionalIndicator
+  const optionalIndicator = !required && optionalIndicatorAttr
     ? h("span",
       {
         key: "optional",
         className: classes.optionalIndicator
       },
-      attrs.optionalIndicator
+      optionalIndicatorAttr
     )
     : null;
-  const label = attrs.label
-    ? [attrs.label, requiredIndicator, optionalIndicator]
+  const label = labelAttr
+    ? [labelAttr, requiredIndicator, optionalIndicator]
     : null;
 
   return [
@@ -282,12 +312,9 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
           {
             key: "input",
             className: classes.input,
-            disabled: attrs.disabled
+            disabled: disabled
           },
           type ? { type } : null,
-          attrs.name 
-            ? { name: attrs.name }
-            : null,
 
           !ignoreEvent(attrs, k.onclick)
             ? {
@@ -355,30 +382,22 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             }
             : null,
 
-          attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-          attrs.required !== undefined && !!attrs.required ?       { required: true } : null,
-          attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? { [k.readonly]: true } : null,
-          attrs.pattern !== undefined ?                            { pattern: attrs.pattern } : null,
-          attrs[k.maxlength] !== undefined ?                       { [k.maxlength]: attrs[k.maxlength] } : null,
-          attrs[k.minlength] !== undefined ?                       { [k.minlength]: attrs[k.minlength] } : null,
-          attrs.max !== undefined ?                                { max: attrs.max } : null,
-          attrs.min !== undefined ?                                { min: attrs.min } : null,
-          attrs[k.autofocus] !== undefined ?                       { [k.autofocus]: attrs[k.autofocus] } : null,
-          attrs[k.tabindex] !== undefined ?                        { [k.tabindex]: attrs[k.tabindex] } : null,
-          attrs.rows !== undefined ?                               { rows: attrs.rows } : null
+          events ? attrs.events : null, // NOTE: may overwrite oninput
+          rows !== undefined ? { rows } : null,
+          {...rest}
         ))
       ]
     ),
-    attrs.counter
+    counter
       ? h("div",
         {
           key: "counter",
           className: classes.counter
         },
-        ((inputEl && inputEl.value.length) || 0) + " / " + attrs.counter
+        ((inputEl && inputEl.value.length) || 0) + " / " + counter
       )
       : null,
-    attrs.help && !showError
+    help && !showError
       ? h("div",
         {
           key: "help",
@@ -387,7 +406,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
             attrs.focusHelp ? classes.focusHelp : null
           ].join(" ")
         },
-        attrs.help
+        help
       )
       : null,
     showError
@@ -398,7 +417,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
         },
         error
       )
-      : state.showErrorPlaceholder && !attrs.help
+      : state.showErrorPlaceholder && !help
         ? h("div",
           {
             key: "error-placeholder",

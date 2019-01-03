@@ -22,10 +22,10 @@
     "polythene-react-dialog-pane": "^1.4.2",
     "polythene-react-shadow": "^1.4.2"
   },
-  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
-  "homepage": "https://github.com/ArthurClemens/polythene",
-  "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.7.18"
-  }
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
+  "license": "MIT"
 }

@@ -152,7 +152,7 @@ type ContentOptions = {
 
 type Content = Array<ContentOptions>; 
 
-interface GenericContentOptions extends CommonOptions {
+interface GenericContentOptions extends Partial<CommonOptions> {
   
   /**
    * List of option objects for distinct areas.
@@ -195,7 +195,7 @@ interface CardOptions extends GenericContentOptions {
   /**
    * URL for the entire card; Mithril: for in-app route linking set oncreate : m.route.link; React: for in-app route linking use onClick and a router such as react-router-dom.
    */
-  url?: URLOptions;
+  url?: Partial<URLOptions>;
 
 }
 

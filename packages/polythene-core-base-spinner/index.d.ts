@@ -1,6 +1,6 @@
 import { CommonOptions, TransitionOptions } from "polythene-core";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /* START COMMON OPTIONS */
 
@@ -12,7 +12,7 @@ export interface Options extends CommonOptions {
   /**
    * Configures the appearance of the component.
    */
-  transitions?: TransitionOptions;
+  transitions?: Partial<TransitionOptions>;
 
   /* END COMMON OPTIONS */
 

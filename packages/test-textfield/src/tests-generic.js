@@ -600,7 +600,7 @@ export default ({ TextField, Button, renderer: h, keys: k }) => {
         view: () => block(
           h(TextField, {
             defaultValue: "John",
-            readonly: true
+            [k.readonly]: true
           }), { dark: true })
       }
     },

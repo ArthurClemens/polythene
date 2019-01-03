@@ -74,15 +74,15 @@ The amount of change depends on the step size. This can be set with option `step
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
 | **defaultValue** | optional | Number | 0 | Initial slider value |
-| **disabled** | optional | Boolean |  | Set to `true` to make the slider read only |
+| **disabled** | optional | Boolean | false | Set to `true` to make the slider read only |
 | **icon** | optional | String, hyperscript or component | | Adds a String, hyperscript or component to the slider control |
 | **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
 | **max** | optional | Number | 100 | Maximum slider value |
 | **min** | optional | Number | 0 | Minimum slider value |
 | **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
-| **pin** | optional | Boolean |  | Use with `step`; on click shows a pin shape with the current value |
+| **pin** | optional | Boolean | false | Use with `step`; on click shows a pin shape with the current value |
 | **stepSize** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
-| **ticks** | optional | Boolean |  | Show a tick for each step; limited to 100 |
+| **ticks** | optional | Boolean | false | Show a tick for each step; limited to 100 |
 | **value** | optional | Number | 0 | Managed Slider value (see: [Handling state](../handling-state.md)) |
 
 

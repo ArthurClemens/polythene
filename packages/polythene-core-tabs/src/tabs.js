@@ -9,7 +9,28 @@ const INDICATOR_SLIDE_MIN_DURATION = .25; // seconds
 
 const whenCreateDone = () => Promise.resolve();
 
-const getIndex = (state, attrs) => {
+const getButtons = vnode => {
+  const attrs = vnode.attrs;
+  return attrs.content
+    ? attrs.content
+    : attrs.tabs
+      ? attrs.tabs
+      : attrs.children || vnode.children || [];
+};
+
+const getIndex = vnode => {
+  const buttons = getButtons(vnode);
+  const attrs = vnode.attrs;
+  const selectedIndex = Array.isArray(buttons)
+    ? buttons.reduce((acc, tab, index) => (
+      acc === undefined && !tab.disabled && tab.selected  
+        ? index
+        : acc
+    ), undefined)
+    : undefined;
+  if (selectedIndex !== undefined) {
+    return selectedIndex;
+  }
   const attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined
     ? attrs.selectedTabIndex
     : attrs.selectedTab !== undefined // deprecated
@@ -17,13 +38,7 @@ const getIndex = (state, attrs) => {
       : undefined;
   return attrsSelectedTabIndex !== undefined
     ? attrsSelectedTabIndex
-    : Array.isArray(attrs.tabs)
-      ? attrs.tabs.reduce((acc, tab, index) => (
-        acc === undefined && !tab.disabled
-          ? index
-          : acc
-      ), undefined)
-      : undefined;
+    : 0;
 };
 
 const scrollButtonGetNewIndex = (index, tabs) => {
@@ -135,12 +150,11 @@ const sortByLargestWidth = (a, b) =>
       : 0;
 
 export const getInitialState = (vnode, createStream) => {
-  const state = vnode.state;
   const attrs = vnode.attrs;
   if (attrs.selectedTab !== undefined) {
     deprecation("Tabs", { option: "selectedTab", newOption: "selectedTabIndex" });
   }
-  const tabIndex = getIndex(state, attrs) || 0;
+  const tabIndex = getIndex(vnode) || 0;
   const selectedTabIndex = createStream(tabIndex);
   const scrollButtonAtStart = createStream(true);
   const scrollButtonAtEnd = createStream(true);
@@ -230,7 +244,7 @@ export const createProps = (vnode, { keys: k }) => {
       : false;
 
   // Keep selected tab up to date
-  const index = getIndex(state, attrs);
+  const index = getIndex(vnode);
   if (index !== undefined && state.previousSelectedTabIndex !== index) {
     setSelectedTab(state, attrs, index, true);
   }
@@ -261,11 +275,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Tab, ScrollButton }
   const state = vnode.state;
   const attrs = vnode.attrs;
 
-  const buttons = attrs.content
-    ? attrs.content
-    : attrs.tabs
-      ? attrs.tabs
-      : attrs.children || vnode.children || [];
+  const buttons = getButtons(vnode);
 
   if (buttons.length === 0) {
     console.error("No tabs specified"); // eslint-disable-line no-console

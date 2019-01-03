@@ -1,7 +1,7 @@
 import { CommonOptions } from "polythene-core";
 import { Options as SVGOptions } from "polythene-core-svg";
 
-interface CommonIconOptions extends CommonOptions {
+interface CommonIconOptions extends Partial<CommonOptions> {
 
   /* START COMMON OPTIONS */
 

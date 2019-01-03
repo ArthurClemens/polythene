@@ -53,10 +53,9 @@ The information on this page refers to the **Notification** component, but it al
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **action** | optional | String, hyperscript or component | | Will likely contain a button |
+| **action** | optional | String, hyperscript or component | | Action element; will likely contain a button |
 | **containerSelector** | optional | String |  | Selector of container HTML element that will be animated with the Notification (does not need to be the direct parent); for instance if a FAB button needs to move together with the Notification, both the FAB and Notification will be placed in the same container; transitions will then move both simultaneously; if set, the Notification's `position` will be `absolute` (default: `fixed`) |
-| **dismissSelector** | optional | String | | Not used yet; will implement "Disappear after user interaction elsewhere" |
-| **timeout** | optional | Number (seconds) | 3 | How long the Notification should be displayed before it hides automatically; use `0` to not hide automatically |
+| **timeout** | optional | Number (seconds) | 3 | Duration (in seconds) to show the Notification. After this the Notification hides automatically. Use `0` to not hide automatically. |
 | **title** | required | String | | Text |
 
 <a id="notification-appearance-options"></a>
@@ -73,7 +72,7 @@ The information on this page refers to the **Notification** component, but it al
 | **Parameter**  |  **Required** | **Type** | **Default** | **Description** |
 | -------------- | -------------- | -------- | ----------- | --------------- |
 | **id**         | optional       | String   | "default_notification" | Notification instance id |
-| **position**   | optional       | String   | "screen" | Set to "container" to give the Notification holder `position: absolute`, so it will be positioned relative to its container |
+| **position**   | optional       | String   | "screen" | Set to "container" to give the Notification holder CSS style `position: absolute`. The container element needs to have `position: relative`. |
 | **spawn**      | optional       | String   | "default_notification" | Notification spawner id |
 
 <a id="transition-options"></a>

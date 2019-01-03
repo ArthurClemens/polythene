@@ -3,7 +3,7 @@ import { Options } from "polythene-core-material-design-progress-spinner";
 
 interface MaterialDesignProgressSpinner extends Options{}
 declare namespace MaterialDesignProgressSpinner {}
-declare const MaterialDesignProgressSpinner: Component<Options, any>;
+declare const MaterialDesignProgressSpinner: Component<Options>;
 
 export { MaterialDesignProgressSpinner };
 export as namespace MaterialDesignProgressSpinner;

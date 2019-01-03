@@ -1,7 +1,7 @@
 import { CommonOptions, TransitionOptions } from "polythene-core";
 import { Options as DialogPaneOptions } from "polythene-core-dialog-pane";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * Spawner id.
@@ -12,7 +12,7 @@ export interface Options extends CommonOptions {
 
 }
 
-export interface AppearanceOptions extends DialogPaneOptions, TransitionOptions {
+export interface AppearanceOptions extends DialogPaneOptions, Partial<TransitionOptions> {
 
   /**
    * Set to true to make the dialog full screen.
@@ -81,7 +81,7 @@ export interface SpawnOptions {
 
   /**
    * Spawner id.
-   * Use with multiple spawn locations. `spawn` must also be passed as option at the spawner dialog.
+   * Use with multiple spawn locations. The id bound to `spawn` must be the same as the one passed to the spawner dialog.
    * @default "default_dialog"
    */
   spawn?: string;

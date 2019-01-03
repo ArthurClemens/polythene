@@ -50,21 +50,21 @@ Displays a tab row of navigation buttons.
 
 | **Parameter** |  **Required** | **Type** | **Default** | **Description** |
 | ------------- | -------------- | -------- | ----------- | --------------- |
-| **activeSelected** | optional | Boolean | | Set to `true` to enabled clicks/taps on the selected tab button |
+| **activeSelected** | optional | Boolean | false | Set to `true` to enable clicks/taps on the selected tab button |
 | **all**  | optional       | Options Object | | Tab button options that will be applied to all tabs, see "Tab button options" below |
-| **autofit** | optional | Boolean | false | Set to `true` to let the buttons fill the button row |
+| **autofit** | optional | Boolean | false | Set to `true` to let the buttons fill the entire button row |
 | **centered** | optional | Boolean | false | Set to `true` to center the button row; this automatically sets `autofit` to `false` |
-| **hideIndicator** | optional | Boolean | false | Set to `true` to hide the tab indicator |
-| **largestWidth** | optional | Boolean | false | Set to `true` to make all tabs the width of the largest tab |
+| **hideIndicator** | optional | Boolean | false | Set to `true` to hide the "current tab" indicator |
+| **largestWidth** | optional | Boolean | false | Set to `true` to give all tabs the width of the largest tab |
 | **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
-| **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the tab indicator slide to the new position |
+| **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the "current tab" indicator slide to the new position |
 | **onChange**  | optional       | Function `({index::Number, options::Object, el::HTMLElement}) -> undefined` | | Callback function that receives the tabs state |
-| **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on no-touch devices 2 scroll buttons will be added to navigate tabs |
+| **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on non-touch devices, 2 scroll buttons will be added to navigate tabs |
 | **scrollIconBackward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
 | **scrollIconForward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
-| **selectedTabIndex** | optional | Number | 0 | The Array index of the selected tab |
+| **selectedTabIndex** | optional | Number | 0 | The Array index of the selected tab. Overridden when one of the tabs has option `selected`. |
 | **small** | optional | Boolean | false | Set to `true` to reduce the tab widths on larger screens |
-| **tabs**   | use `content` or `tabs` | Array of option objects | | Button row content |
+| **tabs**   | use `content` or `tabs` | Array of tab button option objects | | Button row content |
 
 
 <a id="tab-button-options"></a>

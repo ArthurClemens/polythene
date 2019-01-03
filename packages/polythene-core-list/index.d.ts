@@ -1,7 +1,7 @@
 import { CommonOptions } from "polythene-core";
 import { Options as ListTileOptions } from "polythene-core-list-tile";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * List of List Tile components or (when using `all`) List Tile options.

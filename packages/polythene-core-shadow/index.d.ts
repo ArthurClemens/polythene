@@ -1,6 +1,6 @@
 import { CommonOptions } from "polythene-core";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * Set to true to animate the shadow when setting a new z value.

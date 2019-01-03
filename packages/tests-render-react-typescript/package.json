@@ -9,13 +9,14 @@
     "dev:serve": "ENTRY=./src/index.tsx ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 3310 --host 0.0.0.0",
     "dev:watch": "ENTRY=./src/index.tsx ../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "webpack": "ENTRY=./src/index.tsx ../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
-    "test:build": "npm run clean && npm run webpack",
+    "build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist",
     "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --jsx react src/index.tsx"
   },
   "dependencies": {
-    "polythene-css": "^1.4.1",
-    "polythene-react": "^1.4.1",
+    "polythene-css": "^1.4.2",
+    "polythene-react": "^1.4.2",
+    "polythene-utilities": "^1.4.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },

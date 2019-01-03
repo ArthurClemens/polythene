@@ -11,12 +11,16 @@
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
     "polythene-core-toolbar": "^1.4.2",
     "polythene-mithril-base": "^1.4.2",
     "polythene-mithril-shadow": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/mithril": "^1.1.13"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

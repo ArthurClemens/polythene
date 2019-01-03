@@ -96,12 +96,25 @@ var whenCreateDone = function whenCreateDone() {
   return Promise.resolve();
 };
 
-var getIndex = function getIndex(state, attrs) {
+var getButtons = function getButtons(vnode) {
+  var attrs = vnode.attrs;
+  return attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
+};
+
+var getIndex = function getIndex(vnode) {
+  var buttons = getButtons(vnode);
+  var attrs = vnode.attrs;
+  var selectedIndex = Array.isArray(buttons) ? buttons.reduce(function (acc, tab, index) {
+    return acc === undefined && !tab.disabled && tab.selected ? index : acc;
+  }, undefined) : undefined;
+
+  if (selectedIndex !== undefined) {
+    return selectedIndex;
+  }
+
   var attrsSelectedTabIndex = attrs.selectedTabIndex !== undefined ? attrs.selectedTabIndex : attrs.selectedTab !== undefined // deprecated
   ? attrs.selectedTab : undefined;
-  return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : Array.isArray(attrs.tabs) ? attrs.tabs.reduce(function (acc, tab, index) {
-    return acc === undefined && !tab.disabled ? index : acc;
-  }, undefined) : undefined;
+  return attrsSelectedTabIndex !== undefined ? attrsSelectedTabIndex : 0;
 };
 
 var scrollButtonGetNewIndex = function scrollButtonGetNewIndex(index, tabs) {
@@ -224,7 +237,7 @@ var getInitialState = function getInitialState(vnode, createStream) {
     });
   }
 
-  var tabIndex = getIndex(state, attrs) || 0;
+  var tabIndex = getIndex(vnode) || 0;
   var selectedTabIndex = createStream(tabIndex);
   var scrollButtonAtStart = createStream(true);
   var scrollButtonAtEnd = createStream(true);
@@ -326,7 +339,7 @@ var createProps = function createProps(vnode, _ref3) {
   var attrs = vnode.attrs;
   var autofit = attrs.scrollable || attrs.centered ? false : attrs.autofit ? true : false; // Keep selected tab up to date
 
-  var index = getIndex(state, attrs);
+  var index = getIndex(vnode);
 
   if (index !== undefined && state.previousSelectedTabIndex !== index) {
     setSelectedTab(state, attrs, index, true);
@@ -344,7 +357,7 @@ var createContent = function createContent(vnode, _ref4) {
       ScrollButton = _ref4.ScrollButton;
   var state = vnode.state;
   var attrs = vnode.attrs;
-  var buttons = attrs.content ? attrs.content : attrs.tabs ? attrs.tabs : attrs.children || vnode.children || [];
+  var buttons = getButtons(vnode);
 
   if (buttons.length === 0) {
     console.error("No tabs specified"); // eslint-disable-line no-console

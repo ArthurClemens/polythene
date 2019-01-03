@@ -23,9 +23,9 @@ export const Timer = function() {
     }
   };
 
-  const start = (callback, delaySeconds) => (
+  const start = (callback, duration) => (
     cb = callback,
-    remaining = delaySeconds * 1000,
+    remaining = duration * 1000,
     startTimer()
   );
 

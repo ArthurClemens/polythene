@@ -15,3 +15,11 @@ export namespace renderer {
   export function trust(html: string, element?: string): any;
 
 }
+
+export namespace keys {
+
+  export type keys = { [key: string]: string; };
+
+  export function normalizeKey(key: string): string;
+
+}

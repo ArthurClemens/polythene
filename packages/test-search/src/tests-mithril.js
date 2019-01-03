@@ -2,7 +2,7 @@ import { renderer, keys, Search, IconButton, Button, Shadow, List, ListTile } fr
 import genericTests from "./tests-generic";
 import searchField from "./components/searchfield-mithril";
 
-const SearchField = searchField({ renderer, keys, Search, IconButton, Button, Shadow }); 
+const SearchField = searchField({ renderer, keys, Search, IconButton, Shadow }); 
 
 const mithrilTests = () => {
 

@@ -1,12 +1,12 @@
 import { CommonOptions } from "polythene-core";
 import { Options as RadioButtonOptions } from "polythene-core-radio-button";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * Name for all radio button elements.
    */
-  name: string;
+  name?: string;
 
   /**
    * Radio Button options that will be applied to all Radio Buttons in the group.
@@ -24,9 +24,14 @@ export interface Options extends CommonOptions {
   content?: Array<RadioButtonOptions>;
 
   /**
-   * The value of the default selected Radio Button.
+   * The value of the default checked Radio Button.
    */
-  defaultSelectedValue?: string;
+  defaultCheckedValue?: string;
+
+  /**
+   * The value of the checked Radio Button.
+   */
+  checkedValue?: string;
 
   /**
    * Callback function.

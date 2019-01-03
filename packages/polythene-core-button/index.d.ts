@@ -28,14 +28,9 @@ interface RaisedButtonOptions {
   increase?: number;
 
 }
-export interface Options extends CommonOptions, RaisedButtonOptions {
+export interface Options extends Partial<CommonOptions>, RaisedButtonOptions {
 
   /* START COMMON OPTIONS */
-
-  /**
-   * The button label.
-   */
-  label?: string;
 
   /**
    * HTML element tag; may also be "button".
@@ -62,6 +57,11 @@ export interface Options extends CommonOptions, RaisedButtonOptions {
 
   /* END COMMON OPTIONS */
 
+  /**
+   * The button label.
+   */
+  label?: string;
+  
   /**
    * Set to true to add a border; by default the border has no color - set border color to class pe-button__content to see the border.
    */
@@ -160,7 +160,7 @@ export interface Options extends CommonOptions, RaisedButtonOptions {
    * Mithril: for in-app route linking set `oncreate: m.route.link`.
    * React: for in-app route linking use onClick and a router such as react-router-dom.
    */
-  url?: URLOptions;
+  url?: Partial<URLOptions>;
 
   /**
    * Set to false to hide the effect on hover
@@ -169,7 +169,8 @@ export interface Options extends CommonOptions, RaisedButtonOptions {
   wash?: boolean;
 
   /**
-   * Alternative content, unstyled. Ignores `label` and `children`.
+   * Alternative content, unstyled.
+   * Ignores `label` and `children`.
    */
   content?: any;
 
@@ -177,6 +178,5 @@ export interface Options extends CommonOptions, RaisedButtonOptions {
    * Alternative content, unstyled.
    */
   children?: any;
+
 }
-
-

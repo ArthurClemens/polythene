@@ -15,9 +15,16 @@ export { ListTile } from "polythene-react-list-tile";
 export { MaterialDesignProgressSpinner } from "polythene-react-material-design-progress-spinner";
 export { MaterialDesignSpinner } from "polythene-react-material-design-spinner";
 export { Menu } from "polythene-react-menu";
+export { Notification } from "polythene-react-notification";
 export { RadioButton } from "polythene-react-radio-button";
 export { RadioGroup } from "polythene-react-radio-group";
-export { RaisedButton } from "polythene-react-raised-button"; // Deprecated
+export { Ripple } from "polythene-react-ripple";
+export { Search } from "polythene-react-search";
 export { Shadow } from "polythene-react-shadow";
+export { Slider } from "polythene-react-slider";
+export { Snackbar } from "polythene-react-snackbar";
 export { SVG } from "polythene-react-svg";
 export { Switch } from "polythene-react-switch";
+export { Tabs } from "polythene-react-tabs";
+export { TextField, onChangeTextFieldState } from "polythene-react-textfield";
+export { Toolbar, ToolbarTitle } from "polythene-react-toolbar";

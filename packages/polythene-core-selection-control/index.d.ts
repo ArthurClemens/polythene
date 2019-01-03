@@ -2,7 +2,7 @@ import { CommonOptions } from "polythene-core";
 import { Options as IconButtonOptions } from "polythene-core-icon-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
-export interface Options extends CommonOptions {
+export interface Options extends Partial<CommonOptions> {
 
   /* START COMMON OPTIONS */
 
@@ -81,7 +81,7 @@ export interface Options extends CommonOptions {
 
 }
 
-export interface IconOptions extends CommonOptions {
+export interface IconOptions extends Partial<CommonOptions> {
 
   /**
    * Assigns a different icon for the off state.

@@ -224,8 +224,8 @@ var Timer = function Timer() {
     }
   };
 
-  var start = function start(callback, delaySeconds) {
-    return cb = callback, remaining = delaySeconds * 1000, startTimer();
+  var start = function start(callback, duration) {
+    return cb = callback, remaining = duration * 1000, startTimer();
   };
 
   var resume = function resume() {

@@ -57,10 +57,13 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
       if (attrs.setValue) {
         value.map(v => attrs.getValue(v));
       }
-      const setInputState = stream();
+      let setInputState;
 
-      const clear = () =>
-        setInputState()({ value: "", focus: true });
+      const clear = () => {
+        if (vnode.state.setInputState) {
+          vnode.state.setInputState({ value: "", focus: true });
+        }
+      };
 
       const leave = () =>
         value("");
@@ -82,7 +85,7 @@ export default ({ renderer: h, keys: k, Search, IconButton, Shadow } ) => {
           textfield: {
             onChange: ({ value, setInputState }) => (
               state.value(value),
-              state.setInputState(setInputState),
+              state.setInputState = setInputState,
               // onChange callback added for result list example:
               attrs.onChange && attrs.onChange({ value, setInputState })
             ),

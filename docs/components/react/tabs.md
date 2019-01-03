@@ -6,13 +6,22 @@
 
 - [Options](#options)
 - [Usage](#usage)
+    - [With JSX](#with-jsx)
+    - [With hyperscript](#with-hyperscript)
   - [Tab options](#tab-options)
   - [Scrollable tabs](#scrollable-tabs)
+    - [With JSX](#with-jsx-1)
+    - [With hyperscript](#with-hyperscript-1)
   - [Getting the tabs state](#getting-the-tabs-state)
 - [Appearance](#appearance)
   - [Mobile bottom menu](#mobile-bottom-menu)
   - [Scrollable tabs with custom arrow icons](#scrollable-tabs-with-custom-arrow-icons)
+    - [With JSX](#with-jsx-2)
+    - [With hyperscript](#with-hyperscript-2)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Tab widths](#tab-widths)
   - [Dark or light tone](#dark-or-light-tone)
 
@@ -83,8 +92,8 @@ Icons:
 
 ~~~javascript
 [
-  { icon: { svg: { content: h.trust(iconHeartSVG) } } },
-  { icon: { svg: { content: h.trust(iconAlarmSVG) } } },
+  { icon: { svg: { content: iconHeartSVG } } },
+  { icon: { svg: { content: h.trust(iconAlarmSVG_String) } } },
   ...
 ];
 ~~~
@@ -95,11 +104,11 @@ Text labels and icons combined:
 [
   {
     label: "Favs",
-    icon: { svg: { content: h.trust(iconHeartSVG) } }
+    icon: { svg: { content: iconHeartSVG } }
   },
   {
     label: "Notifs",
-    icon: { svg: { content: h.trust(iconAlarmSVG) } },
+    icon: { svg: { content: h.trust(iconAlarmSVG_String) } },
   },
   ...
 ]
@@ -132,6 +141,27 @@ To set shared options all at once, use option `all`:
     { label: "Notifs" }
   ]
 }
+~~~
+
+Alternatively, write the tab options as `children`:
+
+~~~jsx
+<Tabs>
+  {[
+    {
+      label: "One"
+    },
+    {
+      label: "Two",
+      disabled: true,
+      icon: { svg: { content: iconHeartSVG } } 
+    },
+    {
+      label: "Three",
+      selected: true,
+    }
+  ]}
+</Tabs>
 ~~~
 
 

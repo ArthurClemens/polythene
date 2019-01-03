@@ -2,7 +2,7 @@ import { CommonOptions } from "polythene-core";
 import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
-export interface Options extends CommonOptions, ButtonOptions {   
+export interface Options extends Partial<CommonOptions>, ButtonOptions {   
 
   /**
    * Icon options object.
