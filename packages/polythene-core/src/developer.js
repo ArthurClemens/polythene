@@ -1,4 +1,15 @@
+// @ts-check
 
+/**
+ * 
+ * @param {string} component 
+ * @param {object} params
+ * @param {string} [params.option]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newComponent]
+ * @param {string} [params.since]
+ */
 export const deprecation = (component, { option, newOption, newComponent, since }) => {
   const version = since
     ? `Changed in version ${since}.`

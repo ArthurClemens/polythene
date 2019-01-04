@@ -6,8 +6,21 @@ import { isClient } from "./iso";
 import { unpackAttrs } from "./attrs";
 import { emit } from "./events";
 
+/**
+ * @typedef {object} Item 
+ */
+
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.options
+ * @param {function} params.renderer
+ */
 export const Multi = ({ options: mOptions, renderer }) => {
 
+  /**
+   * @type {Array<Item>} items
+   */
   const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
   let current;
   
@@ -116,20 +129,17 @@ export const Multi = ({ options: mOptions, renderer }) => {
 
     const hidePromise = new Promise(resolve => resolveHide = resolve);
 
-    return Object.assign(
-      {},
-      mOptions,
-      {
-        instanceId,
-        spawn,
-        attrs: itemAttrs,
-        show: mOptions.queue ? false : true,
-        showPromise,
-        hidePromise,
-        didShow,
-        didHide
-      }
-    );
+    return {
+      ...mOptions,
+      instanceId,
+      spawn,
+      attrs: itemAttrs,
+      show: mOptions.queue ? false : true,
+      showPromise,
+      hidePromise,
+      didShow,
+      didHide
+    };
   };
 
   const count = () => items.length;
@@ -191,29 +201,25 @@ export const Multi = ({ options: mOptions, renderer }) => {
             : "pe-multiple--screen"
         },
         candidates.map(itemData => {
-          return renderer(mOptions.instance, Object.assign(
-            {},
-            unpackAttrs(attrs),
-            {
-              fromMultipleClear: clear,
-              spawnId: spawn,
-              // from mOptions:
-              fromMultipleClassName: mOptions.className,
-              holderSelector: mOptions.holderSelector,
-              transitions: mOptions.transitions,
-              // from itemData:
-              fromMultipleDidHide: itemData.didHide,
-              fromMultipleDidShow: itemData.didShow,
-              hide: itemData.hide,
-              instanceId: itemData.instanceId,
-              key: itemData.key,
-              pause: itemData.pause,
-              show: itemData.show,
-              unpause: itemData.unpause,
-            },
-            unpackAttrs(itemData.attrs),
-            
-          ));
+          return renderer(mOptions.instance, {
+            ...unpackAttrs(attrs),
+            fromMultipleClear: clear,
+            spawnId: spawn,
+            // from mOptions:
+            fromMultipleClassName: mOptions.className,
+            holderSelector: mOptions.holderSelector,
+            transitions: mOptions.transitions,
+            // from itemData:
+            fromMultipleDidHide: itemData.didHide,
+            fromMultipleDidShow: itemData.didShow,
+            hide: itemData.hide,
+            instanceId: itemData.instanceId,
+            key: itemData.key,
+            pause: itemData.pause,
+            show: itemData.show,
+            unpause: itemData.unpause,
+            ...unpackAttrs(itemData.attrs)
+          });
         })
       );
   };

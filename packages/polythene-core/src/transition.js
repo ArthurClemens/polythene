@@ -1,3 +1,5 @@
+//@ts-check
+
 /*
 Generic show/hide transition module
 */
@@ -5,33 +7,36 @@ Generic show/hide transition module
 import { isClient } from "./iso";
 import { styleDurationToMs } from "./style";
 
-// defaults
+/**
+ * 
+ * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
+ */
+
 const DEFAULT_DURATION = .240;
 const DEFAULT_DELAY =    0;
-// const TRANSITION =    "both";
 
-// See: transition
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @returns {Promise}
+ */
 export const show = opts =>
   transition(opts, "show");
 
+/**
+ * 
+ * @param {TransitionOpts} opts
+ * @returns {Promise} 
+ */
 export const hide = opts =>
   transition(opts, "hide");
 
-/*
-opts:
-- el
-- duration
-- delay
-- showClass
-- transitionClass
-- before
-- show
-- hide
-- after
-- timingFunction
-
-- state (show, hide)
-*/
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @param {"show"|"hide"} state 
+ * @returns {Promise}
+ */
 const transition = (opts, state) => {
   const el = opts.el;
   if (!el) {
@@ -39,13 +44,16 @@ const transition = (opts, state) => {
   } else {
     return new Promise(resolve => {
       const style = el.style;
+      /**
+       * @type {object} computedStyle
+       */
       const computedStyle = isClient
         ? window.getComputedStyle(el)
         : {};
-      const duration = opts.hasDuration
+      const duration = opts.hasDuration && opts.duration !== undefined
         ? opts.duration * 1000.0
         : styleDurationToMs(computedStyle.transitionDuration);
-      const delay = opts.hasDelay
+      const delay = opts.hasDelay && opts.delay !== undefined
         ? opts.delay * 1000.0
         : styleDurationToMs(computedStyle.transitionDelay);
       const timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
@@ -58,7 +66,9 @@ const transition = (opts, state) => {
       const before = () => {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
-        opts.before();
+        if (opts.before && typeof opts.before === "function") {
+          opts.before();
+        }
       };
 
       const maybeBefore = (opts.before && state === "show")
@@ -67,9 +77,11 @@ const transition = (opts, state) => {
           ? before
           : null;
 
-      const after = opts.after
-        ? () => opts.after()
-        : null;
+      const after = () => {
+        if (opts.after && typeof opts.after === "function") {
+          opts.after();
+        }
+      };
 
       const applyTransition = () => {
         style.transitionDuration = duration + "ms";
@@ -123,6 +135,19 @@ const transition = (opts, state) => {
   }
 };
 
+/**
+ * 
+ * @param {object} params
+ * @param {boolean} [params.isShow]
+ * @param {object} [params.state]
+ * @param {object} [params.attrs]
+ * @param {Array<HTMLElement>} [params.domElements]
+ * @param {() => void} [params.beforeTransition]
+ * @param {() => void} [params.afterTransition]
+ * @param {string} [params.showClass]
+ * @param {string} [params.transitionClass]
+ * @returns {Promise}
+ */
 export const transitionComponent = ({ isShow, state, attrs, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
   if (state.transitioning()) {
     return Promise.resolve();
@@ -137,24 +162,22 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
   const timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
   const transitions = attrs.transitions;
   const fn = isShow ? show : hide;
-  const opts1 = Object.assign({},
-    attrs,
-    domElements,
-    {
-      showClass,
-      transitionClass,
-      duration,
-      delay,
-      timingFunction
-    }
-  );
-  const opts2 = Object.assign({},
-    opts1,
-    transitions && transitions[isShow ? "show" : "hide"](opts1)
-  );
-  const opts3 = Object.assign({},
-    opts2,
-    {
+  const opts1 = {
+    ...attrs,
+    ...domElements,
+    showClass,
+    transitionClass,
+    duration,
+    delay,
+    timingFunction
+  };
+  const opts2 = {
+    ...opts1,
+    ...(transitions && transitions[isShow ? "show" : "hide"](opts1))
+  };
+  const opts3 = {
+    ...opts2,
+    ...{
       duration: opts2.duration !== undefined
         ? opts2.duration
         : DEFAULT_DURATION,
@@ -164,7 +187,7 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
         : DEFAULT_DELAY,
       hasDelay: opts2.delay !== undefined,
     }
-  );
+  };
   return fn(opts3).then(() => {
     const id = state.instanceId;
     if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {

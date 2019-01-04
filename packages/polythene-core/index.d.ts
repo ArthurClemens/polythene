@@ -1,4 +1,4 @@
-import m from "mithril";
+import * as m from "mithril";
 
 export type Content = object | any;
 
@@ -7,7 +7,7 @@ export type Content = object | any;
   /**
    * Returns the name of the animation end event of the current client.
    */
-  declare function getAnimationEndEvent() : string | void;
+  export function getAnimationEndEvent() : string | void;
 
 /* animation-event.js END */
 
@@ -17,12 +17,12 @@ export type Content = object | any;
   /**
    * Updates the `attrs` object by adding keys to or removing keys from it.
    */
-  declare function filterSupportedAttributes(attrs: object, { add, remove } : { add: string[], remove: string[]}) : void;
+  export function filterSupportedAttributes(attrs: object, { add, remove } : { add?: Array<string>, remove?: Array<string>}) : void;
 
   /**
    * Unpacks the `attrs` object if it is wrapped in a stream function.
    */
-  declare function unpackAttrs(attrs: object | (() => object)) : object;
+  export function unpackAttrs(attrs: object | (() => object)) : object;
 
   export interface CSSClasses {
     [s: string]: string;
@@ -31,9 +31,35 @@ export type Content = object | any;
   /**
    * Gets the class name for a given size.
    */
-  declare function classForSize(classes: CSSClasses, size: string) : string;
+  export function classForSize(classes: CSSClasses, size: string) : string;
 
 /* attrs.js END */
+
+
+/* Conditional.js START */
+
+  export interface ConditionalOptions {
+    
+    permanent?: boolean;
+
+    show?: boolean;
+
+    hide?: boolean;
+
+    inactive?: boolean;
+
+    instance?: any;
+
+    placeholderClassName?: string;
+
+    /**
+     * Callback function that is called when the hide transition is done.
+     */
+    didHide: (id: string) => void;
+
+  }
+
+/* Conditional.js END */
 
 
 /* developer.js START */
@@ -41,21 +67,32 @@ export type Content = object | any;
   /**
    * Creates console warnings for deprecated components or component options and provides info on replacements.
    */
-  declare function deprecation(component: string, { option, newOption, newComponent, message } : { option?: string, newOption?: string, newComponent?: string, message?: string } ) : void;
+  export function deprecation(component: string, { option, newOption, newComponent, message } : { option?: string, newOption?: string, newComponent?: string, message?: string } ) : void;
 
 /* developer.js END */
+
+
+/* events.js START */
+
+  export function throttle(func: function, s?:string, context?: object) : void;
+  export function subscribe(eventName: string, listener: object, delay?: number) : void;
+  export function unsubscribe(eventName: string, listener: object) : void;
+  export function emit(eventName: string, event: object) : void;
+
+/* events.js START */
+
 
 /* icon.js START */
 
   /**
    * SVG string for dropdown icon.
    */
-  declare function iconDropdownUp() : string;
+  export function iconDropdownUp() : string;
 
   /**
    * SVG string for dropup icon.
    */
-  declare function iconDropdownDown() : string;
+  export function iconDropdownDown() : string;
 
 /* icon.js END */
 
@@ -65,14 +102,39 @@ export type Content = object | any;
   /**
    * Returns true if the client has a document property.
    */
-  declare function isClient() : boolean;
+  export function isClient() : boolean;
 
   /**
    * Returns true if the client does not have a document property.
    */
-  declare function isServer() : boolean;
+  export function isServer() : boolean;
 
 /* iso.js END */
+
+/* multi.js START */
+
+/* multi.js END */
+
+/* pointer.js START */
+
+  export function isTouch(isServer: boolean) : boolean;
+  export function pointerStartEvent(isServer: boolean) : Array<string>;
+  export function pointerEndEvent(isServer: boolean) : Array<string>;
+  export function pointerStartMoveEvent(isServer: boolean) : Array<string>;
+  export function pointerMoveEvent(isServer: boolean) : Array<string>;
+  export function pointerEndMoveEvent(isServer: boolean) : Array<string>;
+
+/* pointer.js END */
+
+/* style.js START */
+
+  export function getStyle({ element, selector, pseudoSelector, prop } : { element: object, selector?: string, pseudoSelector?: string, prop: string }) : object;
+  export function stylePropCompare({ element, selector, pseudoSelector, prop, equals, contains } : { element: object, selector?: string, pseudoSelector?: string, prop: string, equals?: string, contains?: string }) : boolean;
+  export function isRTL({ element, selector } : { element: object, selector?: string }) : boolean; 
+  export function styleDurationToMs(durationStr: string) : number;
+
+/* style.js END */
+
 
 export interface CommonOptions {
 
@@ -240,3 +302,4 @@ export interface TransitionOptions {
   transitions: Partial<TransitionAppearanceOptions>;
 
 }
+

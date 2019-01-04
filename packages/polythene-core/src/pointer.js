@@ -1,3 +1,5 @@
+// @ts-check
+
 import { isClient, isServer } from "./iso";
 
 export const isTouch = isServer
@@ -25,5 +27,8 @@ export const pointerEndMoveEvent = isTouch
   : ["mouseup"];
 
 if (isClient) {
-  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+  const htmlElement = document.querySelector("html");
+  if (htmlElement) {
+    htmlElement.classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+  }
 }

@@ -1,3 +1,4 @@
+// @ts-check
 
 const modes = {
   hidden:   "hidden",
@@ -7,6 +8,10 @@ const modes = {
 };
 
 export const Conditional = {
+  /**
+   * @param {object} vnode
+   * @param {object} createStream
+   */
   getInitialState: (vnode, createStream) => {
     const attrs = vnode.attrs;
     if (!attrs.didHide) {
@@ -23,6 +28,11 @@ export const Conditional = {
       redrawOnUpdate: createStream.merge([mode])
     };
   },
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   */
   onUpdate: ({ state, attrs }) => {
     if (!attrs.didHide) {
       return;
@@ -43,6 +53,13 @@ export const Conditional = {
       }
     }
   },
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   * @param {object} attrs
+   * @param {function} attrs.renderer
+   */
   view: ({ state, attrs }, { renderer: h }) => {
     const placeholder = h("span", { className: attrs.placeholderClassName });
         
@@ -57,25 +74,28 @@ export const Conditional = {
     const mode = state.mode();
     const visible = mode !== modes.hidden;
     return visible
-      ? h(attrs.instance, Object.assign(
-        {},
+      ? h(attrs.instance, {
         attrs,
-        {
-          didHide: args => (
-            attrs.didHide(args),
-            state.mode(attrs.permanent
-              ? modes.visible
-              : modes.hidden
+        ...{
+          didHide:
+            /**
+             * @param {any} args
+             */
+            (args) => (
+              attrs.didHide(args),
+              state.mode(attrs.permanent
+                ? modes.visible
+                : modes.hidden
+              )
             )
-          )
         },
-        mode === modes.hiding && {
-          show: true,
-          hide: true
-        }
-      ))
+        ...(mode === modes.hiding
+          ? { show: true, hide: true }
+          : undefined
+        )
+      })
       : placeholder; 
-  }
+  },
+  displayName: "Conditional"
 };
 
-Conditional.displayName = "Conditional";
