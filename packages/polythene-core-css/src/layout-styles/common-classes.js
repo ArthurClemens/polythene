@@ -1,4 +1,11 @@
-export default [{
+// @ts-check
+
+/**
+ * @typedef {{[selector:string] : object}} Style
+ * @type {Array<Style>} classes
+ */
+
+const classes = [{
   ".pe-block": {
     display: "block"
   },
@@ -44,3 +51,5 @@ export default [{
     }
   }
 }];
+
+export default classes;

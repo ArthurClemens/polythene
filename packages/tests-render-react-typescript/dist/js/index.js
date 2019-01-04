@@ -24705,7 +24705,7 @@ Object.freeze({
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-css/dist/polythene-core-css.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: flex, mixin, styler, hex, rgba, sel, selectorRTL, createLayout, createColor, createMarker, layoutStyles, addLayoutStyles */
+/*! exports provided: flex, mixin, styler, rgba, sel, selectorRTL, createLayout, createColor, createMarker, layoutStyles, addLayoutStyles */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24713,7 +24713,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flex", function() { return flex$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixin", function() { return mixin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styler", function() { return styler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hex", function() { return hex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rgba", function() { return rgba; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sel", function() { return sel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectorRTL", function() { return selectorRTL; });
@@ -24722,9 +24721,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createMarker", function() { return createMarker; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layoutStyles", function() { return layoutStyles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLayoutStyles", function() { return addLayoutStyles; });
-/* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
-/* harmony import */ var j2c__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! j2c */ "../../polythene-core-css/node_modules/j2c/dist/j2c.commonjs.js");
+/* harmony import */ var j2c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! j2c */ "../../polythene-core-css/node_modules/j2c/dist/j2c.commonjs.js");
+/* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
 
+ // @ts-check
+
+/**
+ * @typedef {{[selector:string] : object}} Style
+ * @typedef {Array<Style> | Style} Styles
+ */
+
+/**
+ * @type {Styles} layout
+ */
 
 var layout = [{
   "display": "-webkit-box"
@@ -24737,6 +24746,10 @@ var layout = [{
 }, {
   "display": "flex"
 }];
+/**
+ * @type {Styles} layoutInline
+ */
+
 var layoutInline = [layout, {
   "display": "-ms-inline-flexbox"
 }, {
@@ -24744,77 +24757,142 @@ var layoutInline = [layout, {
 }, {
   "display": "inline-flex"
 }];
+/**
+ * @type {Styles} layoutHorizontal
+ */
+
 var layoutHorizontal = [layout, {
   "-ms-flex-direction": "row",
   "-webkit-flex-direction": "row",
   "flex-direction": "row"
 }];
+/**
+ * @type {Styles} layoutHorizontalReverse
+ */
+
 var layoutHorizontalReverse = [layout, {
   "-ms-flex-direction": "row-reverse",
   "-webkit-flex-direction": "row-reverse",
   "flex-direction": "row-reverse"
 }];
+/**
+ * @type {Styles} layoutVertical
+ */
+
 var layoutVertical = [layout, {
   "-ms-flex-direction": "column",
   "-webkit-flex-direction": "column",
   "flex-direction": "column"
 }];
+/**
+ * @type {Styles} layoutVerticalReverse
+ */
+
 var layoutVerticalReverse = [layout, {
   "-ms-flex-direction": "column-reverse",
   "-webkit-flex-direction": "column-reverse",
   "flex-direction": "column-reverse"
 }];
+/**
+ * @type {Styles} layoutWrap
+ */
+
 var layoutWrap = [layout, {
   "-ms-flex-wrap": "wrap",
   "-webkit-flex-wrap": "wrap",
   "flex-wrap": "wrap"
 }];
+/**
+ * @type {Styles} layoutWrapReverse
+ */
+
 var layoutWrapReverse = [layout, {
   "-ms-flex-wrap": "wrap-reverse",
   "-webkit-flex-wrap": "wrap-reverse",
   "flex-wrap": "wrap-reverse"
 }];
+/**
+ * @type {Styles} layoutStart
+ */
+
 var layoutStart = [layout, {
   "-ms-flex-align": "start",
   "-webkit-align-items": "flex-start",
   "align-items": "flex-start"
 }];
+/**
+ * @type {Styles} layoutCenter
+ */
+
 var layoutCenter = [layout, {
   "-ms-flex-align": "center",
   "-webkit-align-items": "center",
   "align-items": "center"
 }];
+/**
+ * @type {Styles} layoutEnd
+ */
+
 var layoutEnd = [layout, {
   "-ms-flex-align": "end",
   "-webkit-align-items": "flex-end",
   "align-items": "flex-end"
 }];
+/**
+ * @type {Styles} layoutJustified
+ */
+
 var layoutJustified = [layout, {
   "-ms-flex-pack": "justify",
   "-webkit-justify-content": "space-between",
   "justify-content": "space-between"
 }];
+/**
+ * @type {Styles} layoutStartJustified
+ */
+
 var layoutStartJustified = [layout, {
   "-ms-flex-pack": "start",
   "-webkit-justify-content": "flex-start",
   "justify-content": "flex-start"
 }];
+/**
+ * @type {Styles} layoutCenterJustified
+ */
+
 var layoutCenterJustified = [layout, {
   "-ms-flex-pack": "center",
   "-webkit-justify-content": "center",
   "justify-content": "center"
 }];
+/**
+ * @type {Styles} layoutEndJustified
+ */
+
 var layoutEndJustified = [layout, {
   "-ms-flex-pack": "end",
   "-webkit-justify-content": "flex-end",
   "justify-content": "flex-end"
 }];
+/**
+ * @type {Styles} layoutCenterCenter
+ */
+
 var layoutCenterCenter = [layoutCenterJustified, layoutCenter];
+/**
+ * @type {Styles} layoutAroundJustified
+ */
+
 var layoutAroundJustified = [layout, {
   "-ms-flex-pack": "distribute",
   "-webkit-justify-content": "space-around",
   "justify-content": "space-around"
 }];
+/**
+ * 
+ * @param {number} [num=1] 
+ * @returns {Styles}
+ */
 
 var flex = function flex() {
   var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
@@ -24834,17 +24912,30 @@ var flex = function flex() {
     "flex-basis": "0.000000001px"
   } : {}];
 };
+/**
+ * @type {Styles} flexAuto
+ */
+
 
 var flexAuto = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
+/**
+ * @type {Styles} flexAutoVertical
+ */
+
 var flexAutoVertical = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
+/**
+ * 
+ * @param {number|"none"} index 
+ * @returns {Styles}
+ */
 
 var flexIndex = function flexIndex(index) {
   return {
@@ -24853,6 +24944,12 @@ var flexIndex = function flexIndex(index) {
     "flex": index
   };
 };
+/**
+ * 
+ * @param {number} value 
+ * @returns {Styles}
+ */
+
 
 var flexGrow = function flexGrow(value) {
   return {
@@ -24860,22 +24957,38 @@ var flexGrow = function flexGrow(value) {
     "flex-grow": value
   };
 };
+/**
+ * @type {Styles} selfStart
+ */
+
 
 var selfStart = {
   "-ms-align-self": "flex-start",
   "-webkit-align-self": "flex-start",
   "align-self": "flex-start"
 };
+/**
+ * @type {Styles} selfCenter
+ */
+
 var selfCenter = {
   "-ms-align-self": "center",
   "-webkit-align-self": "center",
   "align-self": "center"
 };
+/**
+ * @type {Styles} selfEnd
+ */
+
 var selfEnd = {
   "-ms-align-self": "flex-end",
   "-webkit-align-self": "flex-end",
   "align-self": "flex-end"
 };
+/**
+ * @type {Styles} selfStretch
+ */
+
 var selfStretch = {
   "-ms-align-self": "stretch",
   "-webkit-align-self": "stretch",
@@ -24923,24 +25036,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
 }
 
 function _objectSpread(target) {
@@ -24996,9 +25091,17 @@ function _objectWithoutProperties(source, excluded) {
   }
 
   return target;
-} // Mixins for j2c
-// Centers an item absolutely within relative parent
-// mixin.fit()
+} // @ts-check
+
+/**
+ * @typedef {object} CSSStyleObject 
+ */
+
+/**
+ * Centers an item absolutely within relative parent.
+ * @param {number} [offset=0] 
+ * @returns {CSSStyleObject}
+ */
 
 
 var fit = function fit() {
@@ -25011,8 +25114,12 @@ var fit = function fit() {
     bottom: offsetPx,
     left: offsetPx
   };
-}; // Optional font smoothing
-// mixin.fontSmoothing()
+};
+/**
+ * Optional font smoothing.
+ * @param {boolean} [smoothing=true] 
+ * @returns {CSSStyleObject}
+ */
 
 
 var fontSmoothing = function fontSmoothing() {
@@ -25029,10 +25136,20 @@ var fontSmoothing = function fontSmoothing() {
       "-moz-osx-font-smoothing": "auto"
     };
   }
-}; // Breaks off a line with ...
-// unless lines is "none"
-// mixin.ellipsis(1, 16) // max 1 line, 16px high
-// mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
+};
+/**
+ * Breaks off a line with ... unless lines is "none"
+ * @param {number|"none"} lines 
+ * @param {number} lineHeight 
+ * @param {string} [unit=px]
+ * @example
+ * // max 1 line, 16px high
+ * mixin.ellipsis(1, 16)
+ * @example 
+ * // max 2 lines, 2.6em high
+ * mixin.ellipsis(2, 1.3, "em")
+ * @returns {CSSStyleObject} 
+ */
 
 
 var ellipsis = function ellipsis(lines, lineHeight) {
@@ -25050,24 +25167,26 @@ var ellipsis = function ellipsis(lines, lineHeight) {
   }
 
   return [{
-    "@supports (-webkit-line-clamp: 2)": _extends({}, lines !== undefined ? {
+    "@supports (-webkit-line-clamp: 2)": lines !== undefined ? {
       "-webkit-line-clamp": lines,
       "-webkit-box-orient": "vertical",
       display: "-webkit-box",
       wordBreak: "break-word"
-    } : null)
-  }, _extends({}, {
+    } : undefined
+  }, _objectSpread({
     overflow: "hidden",
     textOverflow: "ellipsis",
-    textRendering: "auto" // Samsung Android
-
+    textRendering: "auto"
   }, lineHeight !== undefined ? {
     maxHeight: lines * lineHeight + unit
-  } : null, lineHeight === 1 ? {
+  } : undefined, lineHeight === 1 ? {
     wordWrap: "nowrap"
-  } : null)];
-}; // Clears float
-// mixin.clearfix()
+  } : undefined)];
+};
+/**
+ * Clears float.
+ * @returns {CSSStyleObject} 
+ */
 
 
 var clearfix = function clearfix() {
@@ -25078,9 +25197,13 @@ var clearfix = function clearfix() {
       clear: "both"
     }
   };
-}; // Creates sticky headers in a scrollable list
-// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
-// mixin.sticky()
+};
+/**
+ * Creates sticky headers in a scrollable list.
+ * Does not work in IE 11, Edge < 16.
+ * @param {number} [zIndex=1] 
+ * @returns {CSSStyleObject} 
+ */
 
 
 var sticky = function sticky() {
@@ -25090,8 +25213,16 @@ var sticky = function sticky() {
     top: 0,
     zIndex: zIndex
   };
-}; // Creates a transition with presets
-// mixin.defaultTransition("opacity", vars.animation_duration)
+};
+/**
+ * Creates a transition with presets
+ * @param {string} [properties=all]
+ * @param {string} [duration=".18s"] 
+ * @param {string} [curve=ease-out] 
+ * @example
+ * mixin.defaultTransition("opacity", vars.animation_duration)
+ * @returns {CSSStyleObject} 
+ */
 
 
 var defaultTransition = function defaultTransition() {
@@ -25808,12 +25939,20 @@ var j2cPluginPrefixBrowser_commonjs = createCommonjsModule(function (module, exp
   exports.prefixPlugin = prefixPlugin;
 });
 unwrapExports(j2cPluginPrefixBrowser_commonjs);
-var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPlugin;
-var j2c = new j2c__WEBPACK_IMPORTED_MODULE_1__(j2cPluginPrefixBrowser_commonjs_1);
+var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPlugin; // @ts-ignore
+
+var j2c = new j2c__WEBPACK_IMPORTED_MODULE_0__(j2cPluginPrefixBrowser_commonjs_1);
 var ID_REGEX = /[^a-z0-9\\-]/g;
-/*
- * @param id: identifier, used as HTMLElement id for the attached <style></style> element
- * @param styles: list of lists style Objects
+/**
+ * @typedef {object} CSSStyleObject 
+ * @typedef {(selector: string|Array<string>, vars: object, customVars?: object) => Array<object>} StyleFn
+ */
+
+/**
+ * Adds styles to head.
+ * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @param {...Array<CSSStyleObject>} styles - List of lists style Objects
+ * @returns {void}
  */
 
 var add = function add(id) {
@@ -25825,13 +25964,15 @@ var add = function add(id) {
     id: id
   }].concat(styles));
 };
-/*
+/**
  * Removes a style from head.
+ * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @returns {void}
  */
 
 
 var remove = function remove(id) {
-  if (polythene_core__WEBPACK_IMPORTED_MODULE_0__["isServer"]) return;
+  if (polythene_core__WEBPACK_IMPORTED_MODULE_1__["isServer"]) return;
 
   if (id) {
     var old = document.getElementById(id);
@@ -25841,23 +25982,27 @@ var remove = function remove(id) {
     }
   }
 };
-/*
- * opts: options object
- * id: identifier, used as HTMLElement id for the attached <style></style> element
- * document: document reference; default window.document
- * styles: list of lists style objects
+/**
+ * Adds styles to the head.
+ * @param {object} params
+ * @param {string} params.id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @param {object} [params.document] - Document reference.
+ * @param {...Array<CSSStyleObject>} styles - List of lists style Objects.
+ * @returns {void}
  */
 
 
-var addToDocument = function addToDocument(opts) {
-  if (polythene_core__WEBPACK_IMPORTED_MODULE_0__["isServer"]) return;
-  var id = opts.id.replace(ID_REGEX, "_");
-  var documentRef = opts.document || window.document;
-  remove(id);
+var addToDocument = function addToDocument(_ref) {
+  var id = _ref.id,
+      document = _ref.document;
+  if (polythene_core__WEBPACK_IMPORTED_MODULE_1__["isServer"]) return;
+  var safeId = id.replace(ID_REGEX, "_");
+  remove(safeId);
+  var documentRef = document || window.document;
   var styleEl = documentRef.createElement("style");
 
-  if (id) {
-    styleEl.setAttribute("id", id);
+  if (safeId) {
+    styleEl.setAttribute("id", safeId);
   }
 
   for (var _len2 = arguments.length, styles = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
@@ -25878,27 +26023,40 @@ var addToDocument = function addToDocument(opts) {
   });
   documentRef.head.appendChild(styleEl);
 };
+/**
+ * 
+ * @param {object} params
+ * @param {CSSStyleObject|Array<CSSStyleObject>} params.styles
+ * @param {string} [params.scope]
+ * @returns {Array<CSSStyleObject>}
+ */
 
-var wrapInScope = function wrapInScope(_ref) {
-  var styles = _ref.styles,
-      scope = _ref.scope;
+
+var wrapInScope = function wrapInScope(_ref2) {
+  var styles = _ref2.styles,
+      scope = _ref2.scope;
   return scope ? [_defineProperty({}, scope, styles)] : styles;
 };
-/*
+/**
  * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
-*/
+ * @param {object} params
+ * @param {Array<string>} params.selectors
+ * @param {Array<StyleFn>} params.fns
+ * @param {object} params.vars
+ * @param {object} [params.customVars]
+ * @param {string} [params.mediaQuery]
+ * @param {string} [params.scope]
+ * @returns {void}
+ */
 
 
-var addStyle = function addStyle(_ref3) {
-  var selectors = _ref3.selectors,
-      styleFns = _ref3.fns,
-      vars = _ref3.vars,
-      customVars = _ref3.customVars,
-      mediaQuery = _ref3.mediaQuery,
-      scope = _ref3.scope;
+var addStyle = function addStyle(_ref4) {
+  var selectors = _ref4.selectors,
+      styleFns = _ref4.fns,
+      vars = _ref4.vars,
+      customVars = _ref4.customVars,
+      mediaQuery = _ref4.mediaQuery,
+      scope = _ref4.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
   var styleList = styleFns.map(function (fn) {
@@ -25920,14 +26078,26 @@ var addStyle = function addStyle(_ref3) {
     scope: mediaQuery
   }));
 };
+/**
+ * Returns a list of style objects for a component.
+ * @param {object} params
+ * @param {Array<string>} params.selectors
+ * @param {Array<StyleFn>} params.fns
+ * @param {object} params.vars - Style configuration variables
+ * @param {object} [params.customVars] - Style configuration variables
+ * @param {string} [params.mediaQuery] - Mediaquery string
+ * @param {string} [params.scope] - Scope selector
+ * @returns {Array<CSSStyleObject>}
+ */
 
-var getStyle = function getStyle(_ref4) {
-  var selectors = _ref4.selectors,
-      styleFns = _ref4.fns,
-      vars = _ref4.vars,
-      customVars = _ref4.customVars,
-      mediaQuery = _ref4.mediaQuery,
-      scope = _ref4.scope;
+
+var getStyle = function getStyle(_ref5) {
+  var selectors = _ref5.selectors,
+      styleFns = _ref5.fns,
+      vars = _ref5.vars,
+      customVars = _ref5.customVars,
+      mediaQuery = _ref5.mediaQuery,
+      scope = _ref5.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
   var styleList = styleFns.map(function (fn) {
@@ -25941,52 +26111,79 @@ var getStyle = function getStyle(_ref4) {
     scope: mediaQuery
   });
 };
-/*
+/**
  * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param fns: Array of Functions: (selector, componentVars) => [j2c style objects]
- * @param vars: (Object) Style configuration variables
-*/
+ * @param {string} selector 
+ * @param {Array<StyleFn>} fns 
+ * @param {object} vars - Style configuration variables
+ */
 
 
 var createAddStyle = function createAddStyle(selector, fns, vars) {
-  return function () {
-    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var customVars = arguments.length > 1 ? arguments[1] : undefined;
+  return (
+    /**
+     * @param {string} [customSelector=""]
+     * @param {object} customVars
+     * @param {object} [scoping={}]
+     * @param {string} [scoping.mediaQuery]
+     * @param {string} [scoping.scope]
+     * @returns {void}
+     */
+    function () {
+      var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
-    var _ref5 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-        mediaQuery = _ref5.mediaQuery,
-        scope = _ref5.scope;
+      var _ref6 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+          mediaQuery = _ref6.mediaQuery,
+          scope = _ref6.scope;
 
-    return addStyle({
-      selectors: [selector, customSelector],
-      fns: fns,
-      vars: vars,
-      customVars: customVars,
-      mediaQuery: mediaQuery,
-      scope: scope
-    });
-  };
+      return addStyle({
+        selectors: [selector, customSelector],
+        fns: fns,
+        vars: vars,
+        customVars: customVars,
+        mediaQuery: mediaQuery,
+        scope: scope
+      });
+    }
+  );
 };
+/**
+ * Returns styles for a component.
+ * @param {string} selector 
+ * @param {Array<StyleFn>} fns 
+ * @param {object} vars - Style configuration variables
+ */
+
 
 var createGetStyle = function createGetStyle(selector, fns, vars) {
-  return function () {
-    var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var customVars = arguments.length > 1 ? arguments[1] : undefined;
+  return (
+    /**
+     * @param {string} [customSelector=""]
+     * @param {object} customVars
+     * @param {object} [scoping={}]
+     * @param {string} [scoping.mediaQuery]
+     * @param {string} [scoping.scope]
+     * @returns {Array<CSSStyleObject>}
+     */
+    function () {
+      var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
-    var _ref6 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-        mediaQuery = _ref6.mediaQuery,
-        scope = _ref6.scope;
+      var _ref7 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+          mediaQuery = _ref7.mediaQuery,
+          scope = _ref7.scope;
 
-    return [getStyle({
-      selectors: [selector, customSelector],
-      fns: fns,
-      vars: vars,
-      customVars: customVars,
-      mediaQuery: mediaQuery,
-      scope: scope
-    })];
-  };
+      return [getStyle({
+        selectors: [selector, customSelector],
+        fns: fns,
+        vars: vars,
+        customVars: customVars,
+        mediaQuery: mediaQuery,
+        scope: scope
+      })];
+    }
+  );
 };
 
 var styler = {
@@ -25997,28 +26194,58 @@ var styler = {
   createGetStyle: createGetStyle,
   getStyle: getStyle,
   remove: remove
-};
+}; // @ts-check
+
+/**
+ * @typedef {(selector: string, vars: object, customVars?: object) => Array<object>} StyleFn
+ * @typedef {{[s: string]: StyleFn}} StyleCollection
+ */
+
+/**
+ * Wraps an object with a selector.
+ * @param {string} selector 
+ * @param {object} o 
+ * @returns {object}
+ */
 
 var sel = function sel(selector, o) {
   return _defineProperty({}, selector, o);
 };
+/**
+ * Creates a right-to-left selector.
+ * @param {string} selector
+ * @returns {string}
+ */
+
 
 var selectorRTL = function selectorRTL(selector) {
   return "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector);
 };
+/**
+ * Creates a rgba CSS color string.
+ * @param {string} colorStr 
+ * @param {number} opacity 
+ * @returns {string}
+ */
+
 
 var rgba = function rgba(colorStr) {
   var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   return "rgba(".concat(colorStr, ", ").concat(opacity, ")");
 };
+/**
+ * @param {object} params
+ * @param {string} [params.selector]
+ * @param {string} [params.scopedSelector]
+ * @param {StyleCollection} [params.varFns]
+ * @param {StyleCollection} [params.customVarFns]
+ * @param {StyleFn} [params.superStyle]
+ * @param {(_:any) => StyleCollection} [params.varMixin]
+ * @param {StyleCollection} [params.componentVars]
+ * @param {StyleCollection} [params.customVars]
+ * @returns {Array<object>}
+ */
 
-var hex = function hex(value) {
-  var bigint = parseInt(value.substring(1), 16);
-  var r = bigint >> 16 & 255;
-  var g = bigint >> 8 & 255;
-  var b = bigint & 255;
-  return r + "," + g + "," + b;
-};
 
 var createStyle = function createStyle(_ref2) {
   var varFns = _ref2.varFns,
@@ -26027,20 +26254,20 @@ var createStyle = function createStyle(_ref2) {
       varMixin = _ref2.varMixin,
       selector = _ref2.selector,
       scopedSelector = _ref2.scopedSelector,
-      componentVars = _ref2.componentVars,
+      _ref2$componentVars = _ref2.componentVars,
+      componentVars = _ref2$componentVars === void 0 ? {} : _ref2$componentVars,
       customVars = _ref2.customVars;
 
   var allVars = _objectSpread({}, componentVars, customVars);
 
   var currentVars = customVars ? customVars : allVars;
 
-  var _ref3 = componentVars || {},
-      general_styles = _ref3.general_styles,
-      otherVars = _objectWithoutProperties(_ref3, ["general_styles"]);
+  var general_styles = componentVars.general_styles,
+      otherVars = _objectWithoutProperties(componentVars, ["general_styles"]);
 
   var baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
 
-  var fns = _extends({}, !!customVars && customVarFns, varFns);
+  var fns = _objectSpread({}, !!customVars && customVarFns, varFns);
 
   return baseLayout.concat(Object.keys(varMixin(currentVars)).map(function (v) {
     return fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null;
@@ -26048,37 +26275,68 @@ var createStyle = function createStyle(_ref2) {
     return s;
   }));
 };
+/**
+ * 
+ * @param {object} params
+ * @param {StyleCollection} [params.varFns]
+ * @param {StyleCollection} [params.customVarFns]
+ * @param {StyleFn} [params.superLayout]
+ * @param {(_:any) => StyleCollection} [params.varMixin]
+ * @returns {StyleFn}
+ */
 
-var createLayout = function createLayout(_ref4) {
-  var varFns = _ref4.varFns,
-      customVarFns = _ref4.customVarFns,
-      superLayout = _ref4.superLayout,
-      _ref4$varMixin = _ref4.varMixin,
-      varMixin = _ref4$varMixin === void 0 ? function (o) {
+
+var createLayout = function createLayout(_ref3) {
+  var varFns = _ref3.varFns,
+      customVarFns = _ref3.customVarFns,
+      superLayout = _ref3.superLayout,
+      _ref3$varMixin = _ref3.varMixin,
+      varMixin = _ref3$varMixin === void 0 ? function (o) {
     return o;
-  } : _ref4$varMixin;
-  return function (selector, componentVars, customVars) {
-    return createStyle({
-      varFns: varFns,
-      customVarFns: customVarFns,
-      superStyle: superLayout,
-      varMixin: varMixin,
-      selector: selector,
-      scopedSelector: selector,
-      componentVars: componentVars,
-      customVars: customVars
-    });
-  };
+  } : _ref3$varMixin;
+  return (
+    /**
+     * @param {string} selector
+     * @param {object} componentVars
+     * @param {object} [customVars]
+     * @returns {Array<object>}
+     */
+    function (selector, componentVars, customVars) {
+      return createStyle({
+        varFns: varFns,
+        customVarFns: customVarFns,
+        superStyle: superLayout,
+        varMixin: varMixin,
+        selector: selector,
+        scopedSelector: selector,
+        componentVars: componentVars,
+        customVars: customVars
+      });
+    }
+  );
 };
+/**
+ * 
+ * @param {object} params
+ * @param {string} [params.selector]
+ * @param {string} [params.scopedSelector]
+ * @param {object} [params.componentVars]
+ * @param {object} [params.customVars]  
+ * @param {StyleFn} [params.superColor]
+ * @param {StyleCollection} [params.varFns]
+ * @param {(_:any) => StyleCollection} [params.varMixin]
+ * @returns {Array<object>}
+ */
 
-var createColorStyle = function createColorStyle(_ref5) {
-  var selector = _ref5.selector,
-      scopedSelector = _ref5.scopedSelector,
-      componentVars = _ref5.componentVars,
-      customVars = _ref5.customVars,
-      varFns = _ref5.varFns,
-      superColor = _ref5.superColor,
-      varMixin = _ref5.varMixin;
+
+var createColorStyle = function createColorStyle(_ref4) {
+  var selector = _ref4.selector,
+      scopedSelector = _ref4.scopedSelector,
+      componentVars = _ref4.componentVars,
+      customVars = _ref4.customVars,
+      varFns = _ref4.varFns,
+      superColor = _ref4.superColor,
+      varMixin = _ref4.varMixin;
   return createStyle({
     varFns: varFns,
     superStyle: superColor,
@@ -26089,32 +26347,60 @@ var createColorStyle = function createColorStyle(_ref5) {
     customVars: customVars
   });
 };
+/**
+ * 
+ * @param {object} params 
+ * @param {Array<string>} params.scopes
+ * @param {string} params.selector
+ * @param {boolean} params.isNoTouch
+* @returns {string}
+ */
 
-var appendPseudoClass = function appendPseudoClass(_ref6) {
-  var scopes = _ref6.scopes,
-      selector = _ref6.selector,
-      _ref6$isNoTouch = _ref6.isNoTouch,
-      isNoTouch = _ref6$isNoTouch === void 0 ? false : _ref6$isNoTouch;
+
+var appendPseudoClass = function appendPseudoClass(_ref5) {
+  var scopes = _ref5.scopes,
+      selector = _ref5.selector,
+      isNoTouch = _ref5.isNoTouch;
   return isNoTouch ? scopes.map(function (s) {
     return s + selector + ":hover";
   }).join(",") : scopes.map(function (s) {
     return s + selector;
   }).join(",");
 };
+/**
+ * 
+ * @param {object} params 
+ * @param {Array<string>} params.scopes
+ * @param {string} params.selector
+ * @param {boolean} [params.isNoTouch]
+ * @returns {string}
+ */
 
-var createScopedSelector = function createScopedSelector(_ref7) {
-  var scopes = _ref7.scopes,
-      selector = _ref7.selector,
-      _ref7$isNoTouch = _ref7.isNoTouch,
-      isNoTouch = _ref7$isNoTouch === void 0 ? false : _ref7$isNoTouch;
+
+var createScopedSelector = function createScopedSelector(_ref6) {
+  var scopes = _ref6.scopes,
+      selector = _ref6.selector,
+      _ref6$isNoTouch = _ref6.isNoTouch,
+      isNoTouch = _ref6$isNoTouch === void 0 ? false : _ref6$isNoTouch;
   return selector.split(/\s*,\s*/).map(function (s) {
     return appendPseudoClass({
       scopes: scopes,
       selector: s,
       isNoTouch: isNoTouch
     });
-  });
+  }).join("");
 };
+/**
+ * @typedef {object} ColorScopeObject
+ * @property {Array<string>} scopes
+ * @property {string} varFnName
+ * @property {boolean} isNoTouch
+ */
+
+/**
+ * @type {Array<ColorScopeObject>} colorScopes
+ */
+
 
 var colorScopes = [{
   // has/inside dark tone
@@ -26137,36 +26423,59 @@ var colorScopes = [{
   varFnName: "lightTintHoverFns",
   isNoTouch: true
 }];
+/**
+ * 
+ * @param {object} params
+ * @param {object} [params.varFns]
+ * @param {StyleFn} [params.superColor]
+ * @param {(_:any) => StyleCollection} [params.varMixin]
+ * @returns {StyleFn}
+ */
 
-var createColor = function createColor(_ref8) {
-  var _ref8$varFns = _ref8.varFns,
-      varFns = _ref8$varFns === void 0 ? {} : _ref8$varFns,
-      superColor = _ref8.superColor,
-      _ref8$varMixin = _ref8.varMixin,
-      varMixin = _ref8$varMixin === void 0 ? function (o) {
+var createColor = function createColor(_ref7) {
+  var _ref7$varFns = _ref7.varFns,
+      varFns = _ref7$varFns === void 0 ? {} : _ref7$varFns,
+      superColor = _ref7.superColor,
+      _ref7$varMixin = _ref7.varMixin,
+      varMixin = _ref7$varMixin === void 0 ? function (o) {
     return o;
-  } : _ref8$varMixin;
-  return function (selector, componentVars, customVars) {
-    return colorScopes.map(function (_ref9) {
-      var scopes = _ref9.scopes,
-          varFnName = _ref9.varFnName,
-          isNoTouch = _ref9.isNoTouch;
-      return createColorStyle({
-        selector: selector,
-        scopedSelector: createScopedSelector({
-          scopes: scopes,
+  } : _ref7$varMixin;
+  return (
+    /**
+     * @param {string} selector
+     * @param {object} componentVars
+     * @param {object} [customVars]
+     * @returns {Array<object>}
+     */
+    function (selector, componentVars, customVars) {
+      return colorScopes.map(function (_ref8) {
+        var scopes = _ref8.scopes,
+            varFnName = _ref8.varFnName,
+            isNoTouch = _ref8.isNoTouch;
+        return createColorStyle({
           selector: selector,
-          isNoTouch: isNoTouch
-        }),
-        componentVars: componentVars,
-        customVars: customVars,
-        varFns: varFns[varFnName],
-        superColor: superColor,
-        varMixin: varMixin
+          scopedSelector: createScopedSelector({
+            scopes: scopes,
+            selector: selector,
+            isNoTouch: isNoTouch
+          }),
+          componentVars: componentVars,
+          customVars: customVars,
+          varFns: varFns[varFnName],
+          superColor: superColor,
+          varMixin: varMixin
+        });
       });
-    });
-  };
+    }
+  );
 };
+/**
+ * 
+ * @param {object} vars 
+ * @param {object} behaviorVars
+ * @returns {string|undefined} 
+ */
+
 
 var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
   if (!vars) {
@@ -26176,20 +26485,36 @@ var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
   var marker = Object.keys(behaviorVars).filter(function (bvar) {
     return vars[bvar] === true;
   }).join(".");
-  return marker ? "\"".concat(marker, "\"") : null;
+  return marker ? "\"".concat(marker, "\"") : undefined;
 };
+/**
+ * Creates a CSS style from which the key can be read from the `content` property.
+ * @param {object} vars 
+ * @param {object} behaviorVars 
+ * @returns {object}
+ */
+
 
 var createMarker = function createMarker(vars, behaviorVars) {
   var value = createMarkerValue(vars, behaviorVars);
-  return value && {
+  return value ? {
     ":before": {
       content: value,
       display: "none"
     }
-  };
-};
+  } : undefined;
+}; // @ts-check
 
-var flex$2 = [{
+/**
+ * @typedef {{[selector:string] : Style | any}} Style
+ */
+
+/**
+ * @type {Array<Style>} classes
+ */
+
+
+var classes = [{
   ".layout, .layout.horizontal": flex$1.layout,
   ".layout.horizontal.inline, .layout.vertical.inline": flex$1.layoutInline,
   ".layout.horizontal": flex$1.layoutHorizontal,
@@ -26233,8 +26558,14 @@ var flex$2 = [{
   ".self-center": flex$1.selfCenter,
   ".self-end": flex$1.selfEnd,
   ".self-stretch": flex$1.selfStretch
-}];
-var commonStyle = [{
+}]; // @ts-check
+
+/**
+ * @typedef {{[selector:string] : object}} Style
+ * @type {Array<Style>} classes
+ */
+
+var classes$1 = [{
   ".pe-block": {
     display: "block"
   },
@@ -26271,12 +26602,25 @@ var commonStyle = [{
       transform: "scaleX(-1)"
     }
   }
-}];
-var layoutStyles = [flex$2, commonStyle];
+}]; // @ts-check
+
+/**
+ * @typedef {{[selector:string] : object}} Style
+ * 
+
+/**
+ * @type {Array<Style>} layoutStyles
+ */
+
+var layoutStyles = [classes, classes$1];
+/**
+ * @returns {void}
+ */
 
 var addLayoutStyles = function addLayoutStyles() {
-  return styler.add("pe-layout", flex$2, commonStyle);
-};
+  return styler.add("pe-layout", classes, classes$1);
+}; // @ts-check
+
 
 
 

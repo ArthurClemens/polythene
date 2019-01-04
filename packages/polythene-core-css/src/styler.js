@@ -1,21 +1,28 @@
-import { prefixPlugin } from "j2c-plugin-prefix-browser/dist/j2c-plugin-prefix-browser.commonjs";
-import { isServer } from "polythene-core";
-import J2c from "j2c";
+// @ts-check
 
-const j2c = new J2c(prefixPlugin);
+import { j2c } from "./j2c";
+import { isServer } from "polythene-core";
+
 const ID_REGEX = /[^a-z0-9\\-]/g;
 
-/*
- * @param id: identifier, used as HTMLElement id for the attached <style></style> element
- * @param styles: list of lists style Objects
+/**
+ * @typedef {object} CSSStyleObject 
+ * @typedef {(selector: string|Array<string>, vars: object, customVars?: object) => Array<object>} StyleFn
+ */
+
+/**
+ * Adds styles to head.
+ * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @param {...Array<CSSStyleObject>} styles - List of lists style Objects
+ * @returns {void}
  */
 const add = (id, ...styles) =>
-  addToDocument({
-    id
-  }, ...styles);
+  addToDocument({ id }, ...styles);
 
-/*
+/**
  * Removes a style from head.
+ * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @returns {void}
  */
 const remove = id => {
   if (isServer) return;
@@ -27,20 +34,22 @@ const remove = id => {
   }
 };
 
-/*
- * opts: options object
- * id: identifier, used as HTMLElement id for the attached <style></style> element
- * document: document reference; default window.document
- * styles: list of lists style objects
+/**
+ * Adds styles to the head.
+ * @param {object} params
+ * @param {string} params.id - Identifier, used as HTMLElement id for the attached <style></style> element.
+ * @param {object} [params.document] - Document reference.
+ * @param {...Array<CSSStyleObject>} styles - List of lists style Objects.
+ * @returns {void}
  */
-const addToDocument = (opts, ...styles) => {
+const addToDocument = ({ id, document }, ...styles) => {
   if (isServer) return;
-  const id = opts.id.replace(ID_REGEX, "_");
-  const documentRef = opts.document || window.document;
-  remove(id);
+  const safeId = id.replace(ID_REGEX, "_");
+  remove(safeId);
+  const documentRef = document || window.document;
   const styleEl = documentRef.createElement("style");
-  if (id) {
-    styleEl.setAttribute("id", id);
+  if (safeId) {
+    styleEl.setAttribute("id", safeId);
   }
   styles.forEach(styleList => {
     // each style returns a list
@@ -57,18 +66,29 @@ const addToDocument = (opts, ...styles) => {
   documentRef.head.appendChild(styleEl);
 };
 
+/**
+ * 
+ * @param {object} params
+ * @param {CSSStyleObject|Array<CSSStyleObject>} params.styles
+ * @param {string} [params.scope]
+ * @returns {Array<CSSStyleObject>}
+ */
 const wrapInScope = ({ styles, scope }) => 
   scope
     ? [{ [scope]: styles }]
     : styles;
 
-/*
+/**
  * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param vars: Object configuration variables
- * @param styleFns: Array of Functions: (selector, componentVars) => [j2c style objects]
-*/
-
+ * @param {object} params
+ * @param {Array<string>} params.selectors
+ * @param {Array<StyleFn>} params.fns
+ * @param {object} params.vars
+ * @param {object} [params.customVars]
+ * @param {string} [params.mediaQuery]
+ * @param {string} [params.scope]
+ * @returns {void}
+ */
 const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope }) => {
   const prefix = scope ? " " : "";
   const selector = prefix + selectors.join("");
@@ -85,7 +105,17 @@ const addStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scop
   );
 };
 
-
+/**
+ * Returns a list of style objects for a component.
+ * @param {object} params
+ * @param {Array<string>} params.selectors
+ * @param {Array<StyleFn>} params.fns
+ * @param {object} params.vars - Style configuration variables
+ * @param {object} [params.customVars] - Style configuration variables
+ * @param {string} [params.mediaQuery] - Mediaquery string
+ * @param {string} [params.scope] - Scope selector
+ * @returns {Array<CSSStyleObject>}
+ */
 const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scope }) => {
   const prefix = scope ? " " : "";
   const selector = prefix + selectors.join("");
@@ -96,31 +126,55 @@ const getStyle = ({ selectors, fns: styleFns, vars, customVars, mediaQuery, scop
   });
 };
 
-/*
+/**
  * Adds styles to head for a component.
- * @param selector: Array of Strings: selectors
- * @param fns: Array of Functions: (selector, componentVars) => [j2c style objects]
- * @param vars: (Object) Style configuration variables
-*/
-const createAddStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery, scope }={}) => 
-  addStyle({
-    selectors: [selector, customSelector],
-    fns,
-    vars,
-    customVars,
-    mediaQuery,
-    scope
-  });
+ * @param {string} selector 
+ * @param {Array<StyleFn>} fns 
+ * @param {object} vars - Style configuration variables
+ */
+const createAddStyle = (selector, fns, vars) =>
+  /**
+   * @param {string} [customSelector=""]
+   * @param {object} customVars
+   * @param {object} [scoping={}]
+   * @param {string} [scoping.mediaQuery]
+   * @param {string} [scoping.scope]
+   * @returns {void}
+   */
+  (customSelector="", customVars, { mediaQuery, scope }={}) => 
+    addStyle({
+      selectors: [selector, customSelector],
+      fns,
+      vars,
+      customVars,
+      mediaQuery,
+      scope
+    });
 
-const createGetStyle = (selector, fns, vars) => (customSelector="", customVars, { mediaQuery, scope }={}) => 
-  [getStyle({
-    selectors: [selector, customSelector],
-    fns,
-    vars,
-    customVars,
-    mediaQuery,
-    scope
-  })];
+/**
+ * Returns styles for a component.
+ * @param {string} selector 
+ * @param {Array<StyleFn>} fns 
+ * @param {object} vars - Style configuration variables
+ */
+const createGetStyle = (selector, fns, vars) =>
+  /**
+   * @param {string} [customSelector=""]
+   * @param {object} customVars
+   * @param {object} [scoping={}]
+   * @param {string} [scoping.mediaQuery]
+   * @param {string} [scoping.scope]
+   * @returns {Array<CSSStyleObject>}
+   */
+  (customSelector="", customVars, { mediaQuery, scope }={}) => 
+    [getStyle({
+      selectors: [selector, customSelector],
+      fns,
+      vars,
+      customVars,
+      mediaQuery,
+      scope
+    })];
 
 export default {
   add,

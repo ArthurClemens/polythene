@@ -1,6 +1,15 @@
+// @ts-check
+
 import flex from "../mixin-flex";
 
-export default [{
+/**
+ * @typedef {{[selector:string] : Style | any}} Style
+ */
+ 
+/**
+ * @type {Array<Style>} classes
+ */
+const classes = [{
   ".layout, .layout.horizontal": flex.layout,
   ".layout.horizontal.inline, .layout.vertical.inline": flex.layoutInline,
   ".layout.horizontal": flex.layoutHorizontal,
@@ -46,3 +55,4 @@ export default [{
   ".self-stretch": flex.selfStretch
 }];
 
+export default classes;

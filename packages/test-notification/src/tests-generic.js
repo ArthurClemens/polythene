@@ -232,7 +232,6 @@ export default ({ renderer: h, keys: k, Notification, Dialog, Button, buttonGrou
       component: buttonGroup({
         title: "This message tells some things using two lines",
         className: "notification-tests-blue-notification",
-        timeout: 0
       })
     },
     {

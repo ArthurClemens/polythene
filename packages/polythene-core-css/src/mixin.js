@@ -1,7 +1,14 @@
-// Mixins for j2c
+// @ts-check
 
-// Centers an item absolutely within relative parent
-// mixin.fit()
+/**
+ * @typedef {object} CSSStyleObject 
+ */
+
+/**
+ * Centers an item absolutely within relative parent.
+ * @param {number} [offset=0] 
+ * @returns {CSSStyleObject}
+ */
 const fit = (offset = 0) => {
   const offsetPx = offset + "px";
   return {
@@ -13,8 +20,11 @@ const fit = (offset = 0) => {
   };
 };
 
-// Optional font smoothing
-// mixin.fontSmoothing()
+/**
+ * Optional font smoothing.
+ * @param {boolean} [smoothing=true] 
+ * @returns {CSSStyleObject}
+ */
 const fontSmoothing = (smoothing = true) => {
   if (smoothing) {
     return {
@@ -29,10 +39,19 @@ const fontSmoothing = (smoothing = true) => {
   }
 };
 
-// Breaks off a line with ...
-// unless lines is "none"
-// mixin.ellipsis(1, 16) // max 1 line, 16px high
-// mixin.ellipsis(2, 1.3, "em") // max 2 lines, 2.6em high
+/**
+ * Breaks off a line with ... unless lines is "none"
+ * @param {number|"none"} lines 
+ * @param {number} lineHeight 
+ * @param {string} [unit=px]
+ * @example
+ * // max 1 line, 16px high
+ * mixin.ellipsis(1, 16)
+ * @example 
+ * // max 2 lines, 2.6em high
+ * mixin.ellipsis(2, 1.3, "em")
+ * @returns {CSSStyleObject} 
+ */
 const ellipsis = (lines, lineHeight, unit = "px") => {
   if (lines === "none") {
     return {
@@ -46,8 +65,7 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
   }
   return [
     {
-      "@supports (-webkit-line-clamp: 2)": Object.assign(
-        {},
+      "@supports (-webkit-line-clamp: 2)":
         lines !== undefined
           ? {
             "-webkit-line-clamp": lines,
@@ -55,28 +73,28 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
             display: "-webkit-box",
             wordBreak: "break-word",
           }
-          : null
-      )
+          : undefined
     },
-    Object.assign(
-      {},
-      {
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        textRendering: "auto", // Samsung Android
-      },
-      lineHeight !== undefined
+    {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      textRendering: "auto", // Samsung Android
+      ...(lineHeight !== undefined
         ? { maxHeight: (lines * lineHeight) + unit }
-        : null,
-      lineHeight === 1
+        : undefined
+      ),
+      ...(lineHeight === 1
         ? { wordWrap: "nowrap" }
-        : null
-    )
+        : undefined
+      )
+    }
   ];
 };
 
-// Clears float
-// mixin.clearfix()
+/**
+ * Clears float.
+ * @returns {CSSStyleObject} 
+ */
 const clearfix = () => ({
   "&:after": {
     content: "\"\"",
@@ -85,17 +103,27 @@ const clearfix = () => ({
   }
 });
 
-// Creates sticky headers in a scrollable list
-// Does not work in Chrome: http://caniuse.com/#feat=css-sticky
-// mixin.sticky()
+/**
+ * Creates sticky headers in a scrollable list.
+ * Does not work in IE 11, Edge < 16.
+ * @param {number} [zIndex=1] 
+ * @returns {CSSStyleObject} 
+ */
 const sticky = (zIndex = 1) => ({
   position: "sticky",
   top: 0,
   zIndex: zIndex
 });
 
-// Creates a transition with presets
-// mixin.defaultTransition("opacity", vars.animation_duration)
+/**
+ * Creates a transition with presets
+ * @param {string} [properties=all]
+ * @param {string} [duration=".18s"] 
+ * @param {string} [curve=ease-out] 
+ * @example
+ * mixin.defaultTransition("opacity", vars.animation_duration)
+ * @returns {CSSStyleObject} 
+ */
 const defaultTransition = (properties = "all", duration = ".18s", curve = "ease-out") => ({
   transitionDelay: "0ms",
   transitionDuration: duration,
@@ -111,4 +139,3 @@ export default {
   fontSmoothing,
   sticky,
 };
-

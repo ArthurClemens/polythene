@@ -1,3 +1,13 @@
+// @ts-check
+
+/**
+ * @typedef {{[selector:string] : object}} Style
+ * @typedef {Array<Style> | Style} Styles
+ */
+
+/**
+ * @type {Styles} layout
+ */
 const layout = [
   {
     "display": "-webkit-box"
@@ -16,6 +26,9 @@ const layout = [
   }
 ];
 
+/**
+ * @type {Styles} layoutInline
+ */
 const layoutInline = [
   layout, {
     "display": "-ms-inline-flexbox"
@@ -26,6 +39,9 @@ const layoutInline = [
   }
 ];
 
+/**
+ * @type {Styles} layoutHorizontal
+ */
 const layoutHorizontal = [
   layout, {
     "-ms-flex-direction": "row",
@@ -34,6 +50,9 @@ const layoutHorizontal = [
   }
 ];
 
+/**
+ * @type {Styles} layoutHorizontalReverse
+ */
 const layoutHorizontalReverse = [
   layout, {
     "-ms-flex-direction": "row-reverse",
@@ -42,6 +61,9 @@ const layoutHorizontalReverse = [
   }
 ];
 
+/**
+ * @type {Styles} layoutVertical
+ */
 const layoutVertical = [
   layout, {
     "-ms-flex-direction": "column",
@@ -50,6 +72,9 @@ const layoutVertical = [
   }
 ];
 
+/**
+ * @type {Styles} layoutVerticalReverse
+ */
 const layoutVerticalReverse = [
   layout, {
     "-ms-flex-direction": "column-reverse",
@@ -58,6 +83,9 @@ const layoutVerticalReverse = [
   }
 ];
 
+/**
+ * @type {Styles} layoutWrap
+ */
 const layoutWrap = [
   layout, {
     "-ms-flex-wrap": "wrap",
@@ -66,6 +94,9 @@ const layoutWrap = [
   }
 ];
 
+/**
+ * @type {Styles} layoutWrapReverse
+ */
 const layoutWrapReverse = [
   layout, {
     "-ms-flex-wrap": "wrap-reverse",
@@ -74,6 +105,9 @@ const layoutWrapReverse = [
   }
 ];
 
+/**
+ * @type {Styles} layoutStart
+ */
 const layoutStart = [
   layout, {
     "-ms-flex-align": "start",
@@ -82,6 +116,9 @@ const layoutStart = [
   }
 ];
 
+/**
+ * @type {Styles} layoutCenter
+ */
 const layoutCenter = [
   layout, {
     "-ms-flex-align": "center",
@@ -90,6 +127,9 @@ const layoutCenter = [
   }
 ];
 
+/**
+ * @type {Styles} layoutEnd
+ */
 const layoutEnd = [
   layout, {
     "-ms-flex-align": "end",
@@ -98,6 +138,9 @@ const layoutEnd = [
   }
 ];
 
+/**
+ * @type {Styles} layoutJustified
+ */
 const layoutJustified = [
   layout, {
     "-ms-flex-pack": "justify",
@@ -106,6 +149,9 @@ const layoutJustified = [
   }
 ];
 
+/**
+ * @type {Styles} layoutStartJustified
+ */
 const layoutStartJustified = [
   layout, {
     "-ms-flex-pack": "start",
@@ -114,6 +160,9 @@ const layoutStartJustified = [
   }
 ];
 
+/**
+ * @type {Styles} layoutCenterJustified
+ */
 const layoutCenterJustified = [
   layout, {
     "-ms-flex-pack": "center",
@@ -122,6 +171,9 @@ const layoutCenterJustified = [
   }
 ];
 
+/**
+ * @type {Styles} layoutEndJustified
+ */
 const layoutEndJustified = [
   layout, {
     "-ms-flex-pack": "end",
@@ -130,11 +182,17 @@ const layoutEndJustified = [
   }
 ];
 
+/**
+ * @type {Styles} layoutCenterCenter
+ */
 const layoutCenterCenter = [
   layoutCenterJustified,
   layoutCenter
 ];
 
+/**
+ * @type {Styles} layoutAroundJustified
+ */
 const layoutAroundJustified = [
   layout, {
     "-ms-flex-pack": "distribute",
@@ -143,6 +201,11 @@ const layoutAroundJustified = [
   }
 ];
 
+/**
+ * 
+ * @param {number} [num=1] 
+ * @returns {Styles}
+ */
 const flex = (num = 1) => (
   [{
     "-webkit-box-flex": num
@@ -161,47 +224,75 @@ const flex = (num = 1) => (
   } : {}]
 );
 
+/**
+ * @type {Styles} flexAuto
+ */
 const flexAuto = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
 
+/**
+ * @type {Styles} flexAutoVertical
+ */
 const flexAutoVertical = {
   "-ms-flex": "1 1 auto",
   "-webkit-flex-basis": "auto",
   "flex-basis": "auto"
 };
 
+/**
+ * 
+ * @param {number|"none"} index 
+ * @returns {Styles}
+ */
 const flexIndex = index => ({
   "-ms-flex": index,
   "-webkit-flex": index,
   "flex": index
 });
 
+/**
+ * 
+ * @param {number} value 
+ * @returns {Styles}
+ */
 const flexGrow = value => ({
   "-webkit-flex-grow": value,
   "flex-grow": value
 });
 
+/**
+ * @type {Styles} selfStart
+ */
 const selfStart = {
   "-ms-align-self": "flex-start",
   "-webkit-align-self": "flex-start",
   "align-self": "flex-start"
 };
 
+/**
+ * @type {Styles} selfCenter
+ */
 const selfCenter = {
   "-ms-align-self": "center",
   "-webkit-align-self": "center",
   "align-self": "center"
 };
 
+/**
+ * @type {Styles} selfEnd
+ */
 const selfEnd = {
   "-ms-align-self": "flex-end",
   "-webkit-align-self": "flex-end",
   "align-self": "flex-end"
 };
 
+/**
+ * @type {Styles} selfStretch
+ */
 const selfStretch = {
   "-ms-align-self": "stretch",
   "-webkit-align-self": "stretch",
