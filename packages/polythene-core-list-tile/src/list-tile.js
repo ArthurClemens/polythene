@@ -36,6 +36,7 @@ const primaryContent = (h, k, requiresKeys, attrs, children) => {
     {},
     filterSupportedAttributes(attrs),
     attrs.events,
+    requiresKeys ? { key: "primary" } : null,
     {
       className: classes.primary,
       style: null

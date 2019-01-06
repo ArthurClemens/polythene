@@ -80,7 +80,9 @@ var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children
   })) : null;
   var hasTabIndex = !attrs.header && attrs.url;
 
-  var props = _extends({}, filterSupportedAttributes(attrs), attrs.events, {
+  var props = _extends({}, filterSupportedAttributes(attrs), attrs.events, requiresKeys ? {
+    key: "primary"
+  } : null, {
     className: classes.primary,
     style: null
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
