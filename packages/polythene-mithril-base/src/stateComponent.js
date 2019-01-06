@@ -1,40 +1,64 @@
+// @ts-check
+
+/**
+ * @typedef {import("mithril").Vnode} Vnode
+ * @typedef {import("../index")}
+ * @typedef {import("../index").StateComponentAssemblyOptions} StateComponentAssemblyOptions
+ */
+
 import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
 const requiresKeys = false;
 
+/**
+ * @param {StateComponentAssemblyOptions} params
+ */
 export const StateComponent = ({
-  createContent = () => {},
-  createProps = () => {},
+  createContent = () => null,
+  createProps = () => ({}),
   component = null,
   getElement = () => "div",
   getInitialState = () => ({}),
-  onMount = () => {},
-  onUnMount = () => {},
-  onUpdate = () => {},
-  view = null
+  onMount = () => null,
+  onUnMount = () => null,
+  onUpdate = () => null,
+  view = null,
 }) => {
 
-  const oninit = vnode => {
-    const protoState = Object.assign(
-      {},
-      vnode
-    );
-    const initialState = getInitialState(protoState, stream, { keys });
-    Object.assign(vnode.state, initialState);
-    vnode._mounted = false;
-
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(() => (
-      vnode._mounted && setTimeout(renderer.redraw(true))
-    ));
+  const localState = {
+    mounted: false
   };
 
+  /**
+   * @param {Vnode} vnode 
+   */
+  const oninit = vnode => {
+    /**
+     * @type {{ redrawOnUpdate?: Array<function>, _?: any }} initialState
+     */
+    const initialState = getInitialState(vnode, stream, { keys });
+    vnode.state = {...initialState};
+
+    initialState.redrawOnUpdate !== undefined
+      ? initialState.redrawOnUpdate.map(() => (
+        localState && setTimeout(renderer.redraw)
+      ))
+      : undefined;
+  };
+
+  /**
+   * @param {Vnode} vnode 
+   */
   const oncreate = vnode => {
-    vnode._mounted = true;
+    localState.mounted = true;
     onMount(vnode, { keys });
   };
 
+  /**
+   * @param {Vnode} vnode 
+   */
   const render = vnode => {
     return renderer(
       component || getElement(vnode),
@@ -49,8 +73,16 @@ export const StateComponent = ({
 
   return {
     view: view
-      ? vnode => view(vnode, { render, renderer })
-      : vnode => render(vnode),
+      ?
+      /**
+       * @param {Vnode} vnode
+       */
+      vnode => view(vnode, { render, renderer })
+      :
+      /**
+       * @param {Vnode} vnode
+       */
+      vnode => render(vnode),
     oninit,
     oncreate,
     onremove: onUnMount,

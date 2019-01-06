@@ -1,21 +1,38 @@
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+// @ts-check
 var modes = {
   hidden: "hidden",
   visible: "visible",
@@ -23,6 +40,10 @@ var modes = {
   hiding: "hiding"
 };
 var Conditional = {
+  /**
+   * @param {object} vnode
+   * @param {object} createStream
+   */
   getInitialState: function getInitialState(vnode, createStream) {
     var attrs = vnode.attrs;
 
@@ -37,6 +58,12 @@ var Conditional = {
       redrawOnUpdate: createStream.merge([mode])
     };
   },
+
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   */
   onUpdate: function onUpdate(_ref) {
     var state = _ref.state,
         attrs = _ref.attrs;
@@ -62,6 +89,14 @@ var Conditional = {
       }
     }
   },
+
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   * @param {object} attrs
+   * @param {function} attrs.renderer
+   */
   view: function view(_ref2, _ref3) {
     var state = _ref2.state,
         attrs = _ref2.attrs;
@@ -77,18 +112,36 @@ var Conditional = {
 
     var mode = state.mode();
     var visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, _extends({}, attrs, {
-      didHide: function didHide(args) {
+    return visible ? h(attrs.instance, _objectSpread({
+      attrs: attrs
+    }, {
+      didHide:
+      /**
+       * @param {any} args
+       */
+      function didHide(args) {
         return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
       }
-    }, mode === modes.hiding && {
+    }, mode === modes.hiding ? {
       show: true,
       hide: true
-    })) : placeholder;
-  }
+    } : undefined)) : placeholder;
+  },
+  displayName: "Conditional"
 };
-Conditional.displayName = "Conditional";
 
+// @ts-check
+
+/**
+ * 
+ * @param {string} component 
+ * @param {object} params
+ * @param {string} [params.option]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newComponent]
+ * @param {string} [params.since]
+ */
 var deprecation = function deprecation(component, _ref) {
   var option = _ref.option,
       newOption = _ref.newOption,
@@ -101,38 +154,79 @@ var deprecation = function deprecation(component, _ref) {
   ;
 };
 
+// @ts-check
+
+/**
+ * Reducer helper function.
+ * @param {object} acc 
+ * @param {string} p 
+ * @returns {object}
+ */
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
-/* 
-Separately handled props:
-- class
-- element
-*/
+/**
+ * List of default attributes.
+ * Separately handled:
+ * - class
+ * - element
+ * @type Array<string> defaultAttrs
+ */
 
 
 var defaultAttrs = [// Universal
 "key", "style", "href", "id", // React
 "tabIndex", // Mithril
 "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+/**
+ * 
+ * @param {{[s: string]: string}} attrs 
+ * @param {object} [modifications] 
+ * @param {Array<string>} [modifications.add]
+ * @param {Array<string>} [modifications.remove]
+ * @returns {object}
+ */
+
 var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$add = _ref.add,
-      addAttrs = _ref$add === void 0 ? [] : _ref$add,
-      _ref$remove = _ref.remove,
-      removeAttrs = _ref$remove === void 0 ? [] : _ref$remove;
+      add = _ref.add,
+      remove = _ref.remove;
 
-  var removeLookup = removeAttrs.reduce(r, {});
-  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+  /**
+   * @type {{[s: string]: string}} removeLookup 
+   */
+  var removeLookup = remove ? remove.reduce(r, {}) : {};
+  /**
+   * @type {Array<string>} attrsList 
+   */
+
+  var attrsList = add ? defaultAttrs.concat(add) : [];
+  var supported = attrsList.filter(function (item) {
     return !removeLookup[item];
   }).reduce(r, {});
-  return Object.keys(attrs).reduce(function (acc, key) {
+  return Object.keys(attrs).reduce(
+  /**
+   * @param {object} acc
+   * @param {string} key
+   */
+  function (acc, key) {
     return supported[key] ? acc[key] = attrs[key] : null, acc;
   }, {});
 };
+/**
+ * 
+ * @param {object|function} attrs 
+ * @returns {object}
+ */
+
 var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
+/**
+ * 
+ * @param {{[s: string]: string}} classes 
+ * @returns {{[s: string]: string}}
+ */
 
 var sizeClasses = function sizeClasses(classes) {
   return {
@@ -143,6 +237,13 @@ var sizeClasses = function sizeClasses(classes) {
     fab: classes.fab
   };
 };
+/**
+ * 
+ * @param {{[s: string]: string}} classes 
+ * @param {string} [size] 
+ * @returns {object}
+ */
+
 
 var classForSize = function classForSize(classes) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
@@ -151,6 +252,11 @@ var classForSize = function classForSize(classes) {
 
 var isClient = typeof document !== "undefined";
 var isServer = !isClient;
+
+// @ts-check
+/**
+ * @type {{[s: string]: string}} evts
+ */
 
 var evts = {
   "animation": "animationend",
@@ -161,15 +267,34 @@ var evts = {
 var getAnimationEndEvent = function getAnimationEndEvent() {
   if (isClient) {
     var el = document.createElement("fakeelement");
+    /**
+     * @type {string} a
+     */
 
     for (var a in evts) {
-      if (el.style[a] !== undefined) {
+      /**
+       * @type {object} style
+       */
+      var style = el.style;
+
+      if (style[a] !== undefined) {
         return evts[a];
       }
     }
   }
 };
 
+// @ts-check
+
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} [params.selector]
+ * @param {string} [params.pseudoSelector]
+ * @param {string} params.prop
+ * @returns {object|undefined}
+ */
 var getStyle = function getStyle(_ref) {
   var element = _ref.element,
       selector = _ref.selector,
@@ -178,11 +303,39 @@ var getStyle = function getStyle(_ref) {
   var el = selector ? element.querySelector(selector) : element;
 
   if (!el) {
-    return;
+    return undefined;
   }
 
-  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
+  if (el.currentStyle) {
+    return el.currentStyle;
+  }
+
+  if (window.getComputedStyle) {
+    var defaultView = document.defaultView;
+
+    if (defaultView) {
+      var style = defaultView.getComputedStyle(el, pseudoSelector);
+
+      if (style) {
+        return style.getPropertyValue(prop);
+      }
+    }
+  }
+
+  return undefined;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} [params.selector]
+ * @param {string} [params.pseudoSelector]
+ * @param {string} params.prop
+ * @param {string} [params.equals]
+ * @param {string} [params.contains]
+ * @returns {boolean}
+ */
+
 var stylePropCompare = function stylePropCompare(_ref2) {
   var element = _ref2.element,
       selector = _ref2.selector,
@@ -196,14 +349,28 @@ var stylePropCompare = function stylePropCompare(_ref2) {
     return false;
   }
 
-  if (equals !== undefined) {
-    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  var defaultView = document.defaultView;
+
+  if (defaultView) {
+    if (equals !== undefined) {
+      return equals === defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+    }
+
+    if (contains !== undefined) {
+      return defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+    }
   }
 
-  if (contains !== undefined) {
-    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
-  }
+  return false;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} params.selector
+ * @returns {boolean}
+ */
+
 var isRTL = function isRTL(_ref3) {
   var _ref3$element = _ref3.element,
       element = _ref3$element === void 0 ? document : _ref3$element,
@@ -215,6 +382,12 @@ var isRTL = function isRTL(_ref3) {
     equals: "rtl"
   });
 };
+/**
+ * 
+ * @param {string} durationStr 
+ * @returns {number}
+ */
+
 var styleDurationToMs = function styleDurationToMs(durationStr) {
   var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
   return isNaN(parsed) ? 0 : parsed;
@@ -223,6 +396,7 @@ var styleDurationToMs = function styleDurationToMs(durationStr) {
 var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
 var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
 
+// @ts-check
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
 var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
@@ -231,10 +405,26 @@ var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
 var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
 if (isClient) {
-  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+  var htmlElement = document.querySelector("html");
+
+  if (htmlElement) {
+    htmlElement.classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+  }
 }
 
-var listeners = {}; // https://gist.github.com/Eartz/fe651f2fadcc11444549
+// @ts-check
+/**
+ * @type {{[s: string]: Array<function>}} listeners
+ */
+
+var listeners = {};
+/**
+ * @param {function} func
+ * @param {number} [s]
+ * @param {object} [context]
+ * @returns {function}
+ * @see https://gist.github.com/Eartz/fe651f2fadcc11444549
+ */
 
 var throttle = function throttle(func) {
   var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
@@ -258,10 +448,23 @@ var throttle = function throttle(func) {
     }
   };
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} listener 
+ * @param {number} [delay] 
+ */
+
 var subscribe = function subscribe(eventName, listener, delay) {
   listeners[eventName] = listeners[eventName] || [];
   listeners[eventName].push(delay ? throttle(listener, delay) : listener);
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} listener 
+ */
+
 var unsubscribe = function unsubscribe(eventName, listener) {
   if (!listeners[eventName]) {
     return;
@@ -273,6 +476,12 @@ var unsubscribe = function unsubscribe(eventName, listener) {
     listeners[eventName].splice(index, 1);
   }
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} event 
+ */
+
 var emit = function emit(eventName, event) {
   if (!listeners[eventName]) {
     return;
@@ -293,14 +502,31 @@ if (isClient) {
   window.addEventListener("keydown", function (e) {
     return emit("keydown", e);
   });
-  window.addEventListener(pointerEndEvent, function (e) {
-    return emit(pointerEndEvent, e);
+  pointerEndEvent.forEach(function (eventName) {
+    return window.addEventListener(eventName, function (e) {
+      return emit(eventName, e);
+    });
   });
 }
+
+/**
+ * @typedef {object} Item 
+ */
+
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.options
+ * @param {function} params.renderer
+ */
 
 var Multi = function Multi(_ref) {
   var mOptions = _ref.options,
       renderer = _ref.renderer;
+
+  /**
+   * @type {Array<Item>} items
+   */
   var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
 
   var current;
@@ -440,7 +666,7 @@ var Multi = function Multi(_ref) {
     var hidePromise = new Promise(function (resolve) {
       return resolveHide = resolve;
     });
-    return _extends({}, mOptions, {
+    return _objectSpread({}, mOptions, {
       instanceId: instanceId,
       spawn: spawn,
       attrs: itemAttrs,
@@ -529,7 +755,7 @@ var Multi = function Multi(_ref) {
     : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _extends({}, unpackAttrs(attrs), {
+      return renderer(mOptions.instance, _objectSpread({}, unpackAttrs(attrs), {
         fromMultipleClear: clear,
         spawnId: spawn,
         // from mOptions:
@@ -563,31 +789,37 @@ var Multi = function Multi(_ref) {
 };
 Multi.displayName = "Multi";
 
+/**
+ * 
+ * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
+ */
+
 var DEFAULT_DURATION = .240;
-var DEFAULT_DELAY = 0; // const TRANSITION =    "both";
-// See: transition
+var DEFAULT_DELAY = 0;
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @returns {Promise}
+ */
 
 var show = function show(opts) {
   return transition(opts, "show");
 };
+/**
+ * 
+ * @param {TransitionOpts} opts
+ * @returns {Promise} 
+ */
+
 var hide = function hide(opts) {
   return transition(opts, "hide");
 };
-/*
-opts:
-- el
-- duration
-- delay
-- showClass
-- transitionClass
-- before
-- show
-- hide
-- after
-- timingFunction
-
-- state (show, hide)
-*/
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @param {"show"|"hide"} state 
+ * @returns {Promise}
+ */
 
 var transition = function transition(opts, state) {
   var el = opts.el;
@@ -597,9 +829,13 @@ var transition = function transition(opts, state) {
   } else {
     return new Promise(function (resolve) {
       var style = el.style;
+      /**
+       * @type {object} computedStyle
+       */
+
       var computedStyle = isClient ? window.getComputedStyle(el) : {};
-      var duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
-      var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
+      var duration = opts.hasDuration && opts.duration !== undefined ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
+      var delay = opts.hasDelay && opts.delay !== undefined ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
       var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       if (opts.transitionClass) {
@@ -610,13 +846,19 @@ var transition = function transition(opts, state) {
       var before = function before() {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
-        opts.before();
+
+        if (opts.before && typeof opts.before === "function") {
+          opts.before();
+        }
       };
 
       var maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
-      var after = opts.after ? function () {
-        return opts.after();
-      } : null;
+
+      var after = function after() {
+        if (opts.after && typeof opts.after === "function") {
+          opts.after();
+        }
+      };
 
       var applyTransition = function applyTransition() {
         style.transitionDuration = duration + "ms";
@@ -676,6 +918,20 @@ var transition = function transition(opts, state) {
     });
   }
 };
+/**
+ * 
+ * @param {object} params
+ * @param {boolean} [params.isShow]
+ * @param {object} [params.state]
+ * @param {object} [params.attrs]
+ * @param {Array<HTMLElement>} [params.domElements]
+ * @param {() => void} [params.beforeTransition]
+ * @param {() => void} [params.afterTransition]
+ * @param {string} [params.showClass]
+ * @param {string} [params.transitionClass]
+ * @returns {Promise}
+ */
+
 
 var transitionComponent = function transitionComponent(_ref) {
   var isShow = _ref.isShow,
@@ -704,7 +960,7 @@ var transitionComponent = function transitionComponent(_ref) {
   var transitions = attrs.transitions;
   var fn = isShow ? show : hide;
 
-  var opts1 = _extends({}, attrs, domElements, {
+  var opts1 = _objectSpread({}, attrs, domElements, {
     showClass: showClass,
     transitionClass: transitionClass,
     duration: duration,
@@ -712,9 +968,9 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _extends({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+  var opts2 = _objectSpread({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
 
-  var opts3 = _extends({}, opts2, {
+  var opts3 = _objectSpread({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
     hasDuration: opts2.duration !== undefined,
     delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,

@@ -1,3 +1,5 @@
+// @ts-check
+
 import h from "react-hyperscript";
 import { MithrilToReact } from "./MithrilToReact";
 
@@ -13,4 +15,4 @@ renderer.trust = (html, element = "div") => {
   });
 };
 
-renderer.displayName = "react";
+renderer["displayName"] = "react";

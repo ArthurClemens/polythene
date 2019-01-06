@@ -1,3 +1,5 @@
+// @ts-check
+
 /*
 Takes a Mithril component object and returns a React component (for keys oninit and view).
 Automatically redraws when the stream `vnode.state.redrawOnUpdate` exists, and the stream is updated.
@@ -40,15 +42,12 @@ export const MithrilToReact = component => (
 
     constructor(props) {
       super(props);
-      const vnode = Object.assign(
-        {},
-        component,
-        {
-          state: {},
-          attrs: this.props,
-          redrawValues: undefined
-        }
-      );
+      const vnode = {
+        ...component,
+        state: {},
+        attrs: this.props,
+        redrawValues: undefined
+      };
       if (component.oninit) {
         component.oninit(vnode);
       }

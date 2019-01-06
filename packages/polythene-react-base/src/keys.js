@@ -1,3 +1,4 @@
+// @ts-check
 
 export const keys = {
   autocomplete: "autoComplete",
@@ -28,5 +29,3 @@ export const keys = {
   readonly:     "readOnly",
   tabindex:     "tabIndex",
 };
-
-export const normalizeKey = key => keys[key.toLowerCase()];

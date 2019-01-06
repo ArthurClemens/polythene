@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").ViewComponentAssemblyOptions} ViewComponentAssemblyOptions
+ */
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { renderer } from "./renderer";
@@ -6,6 +12,9 @@ import { isClient } from "polythene-core";
 
 const requiresKeys = true;
 
+/**
+ * @param {ViewComponentAssemblyOptions} params
+ */
 export const ViewComponent = ({
   createContent = () => {},
   createProps = () => ({}),
@@ -34,7 +43,7 @@ export const ViewComponent = ({
     }
 
     createVirtualNode() {
-      const props = Object.assign({}, this.props);
+      const props = {...this.props};
       return {
         attrs: props,
         children: props.children,
@@ -70,7 +79,7 @@ export const ViewComponent = ({
     render() {
       return view
         ? view(this.createVirtualNode(), { renderer, render: this._render })
-        : this._render(this.props);
+        : this._render();
     }
   };
 };

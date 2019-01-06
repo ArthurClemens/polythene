@@ -1,3 +1,5 @@
+import { Component, Vnode } from "mithril";
+import { Stream } from "mithril/stream";
 
 /**
  * Stand-in for Mithril.
@@ -12,13 +14,73 @@ export namespace renderer {
    * @param {string} [element=div] Wrapper element to contain the unescaped contents.
    */
   export function trust(html: string, element?: string): any;
-
+  export const displayName: string;
 }
+
 
 export namespace keys {
 
   export type keys = { [key: string]: string; };
 
-  export function normalizeKey(key: string): string;
-
 }
+
+/* ViewComponent */
+
+interface ViewComponentAssemblyOptions {
+  createContent?: (vnode: Vnode, options?: any) => any;
+  createProps?: (vnode: Vnode, options?: object) => object;
+  getElement?: (vnode: Vnode) => string;
+  component?: any;
+  view?: ((vnode: Vnode, options?: object) => any) | null;
+  onMount?: (vnode: Vnode, options?: object) => void;
+  onUnMount?: (vnode: Vnode) => void;
+}
+
+export const ViewComponentAssemblyOptions: ViewComponentAssemblyOptions;
+
+interface ViewComponentAssembly {
+  (_: ViewComponentAssemblyOptions): ViewComponent;
+}
+
+declare const ViewComponentAssembly: ViewComponentAssembly;
+
+export { ViewComponentAssembly };
+export as namespace ViewComponentAssembly;
+
+interface ViewComponent extends Component {
+  (_: ViewComponentAssemblyOptions): Component;
+  displayName: string;
+}
+
+declare const ViewComponent: ViewComponent;
+
+export { ViewComponent };
+export as namespace ViewComponent;
+
+
+/* StateComponent */
+
+interface StateComponentAssemblyOptions extends ViewComponentAssemblyOptions {
+  getInitialState?: (vnode: Vnode, stream?: <T>(value?: T) => Stream<T>, options?: object) => object;
+  onUpdate?: (vnode: Vnode) => void;
+}
+export const StateComponentAssemblyOptions: StateComponentAssemblyOptions;
+
+interface StateComponentAssembly {
+  (_: StateComponentAssemblyOptions): StateComponent;
+}
+
+declare const StateComponentAssembly: StateComponentAssembly;
+
+export { StateComponentAssembly };
+export as namespace StateComponentAssembly;
+
+interface StateComponent extends Component {
+  (_: StateComponentAssemblyOptions): Component;
+  displayName: string;
+}
+
+declare const StateComponent: StateComponent;
+
+export { StateComponent };
+export as namespace StateComponent;

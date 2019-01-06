@@ -3,6 +3,7 @@ import h from 'react-hyperscript';
 import ReactDOM from 'react-dom';
 import { isClient } from 'polythene-core';
 
+// @ts-check
 var keys = {
   autocomplete: "autoComplete",
   autofocus: "autoFocus",
@@ -69,6 +70,21 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -85,6 +101,25 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 function _inherits(subClass, superClass) {
@@ -167,7 +202,7 @@ var MithrilToReact = function MithrilToReact(component) {
 
         _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this, props));
 
-        var vnode = _extends({}, component, {
+        var vnode = _objectSpread({}, component, {
           state: {},
           attrs: _this.props,
           redrawValues: undefined
@@ -233,7 +268,7 @@ renderer.trust = function (html) {
   });
 };
 
-renderer.displayName = "react";
+renderer["displayName"] = "react";
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -402,6 +437,10 @@ module["exports"] = createStream;
 var stream$1 = stream;
 
 var requiresKeys = true;
+/**
+ * @param {StateComponentAssemblyOptions} params
+ */
+
 var StateComponent = function StateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
@@ -518,7 +557,7 @@ var StateComponent = function StateComponent(_ref) {
           return view ? view(this.createVirtualNode(), {
             renderer: renderer,
             render: this._render
-          }) : this._render(this.props);
+          }) : this._render();
         }
       }]);
 
@@ -528,6 +567,10 @@ var StateComponent = function StateComponent(_ref) {
 };
 
 var requiresKeys$1 = true;
+/**
+ * @param {ViewComponentAssemblyOptions} params
+ */
+
 var ViewComponent = function ViewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
@@ -578,7 +621,7 @@ var ViewComponent = function ViewComponent(_ref) {
       }, {
         key: "createVirtualNode",
         value: function createVirtualNode() {
-          var props = _extends({}, this.props);
+          var props = _objectSpread({}, this.props);
 
           return {
             attrs: props,
@@ -615,7 +658,7 @@ var ViewComponent = function ViewComponent(_ref) {
           return view ? view(this.createVirtualNode(), {
             renderer: renderer,
             render: this._render
-          }) : this._render(this.props);
+          }) : this._render();
         }
       }]);
 

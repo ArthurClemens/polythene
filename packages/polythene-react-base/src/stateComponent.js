@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").StateComponentAssemblyOptions} StateComponentAssemblyOptions
+ */
+
 import React from "react";
 import ReactDOM from "react-dom";
 import stream from "mithril/stream";
@@ -7,6 +13,9 @@ import { isClient } from "polythene-core";
 
 const requiresKeys = true;
 
+/**
+ * @param {StateComponentAssemblyOptions} params
+ */
 export const StateComponent = ({
   createContent = () => {},
   createProps = () => ({}),
@@ -91,7 +100,7 @@ export const StateComponent = ({
     render() {
       return view
         ? view(this.createVirtualNode(), { renderer, render: this._render })
-        : this._render(this.props);
+        : this._render();
     }
   };
 };

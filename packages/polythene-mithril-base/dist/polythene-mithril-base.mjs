@@ -1,5 +1,6 @@
 import m from 'mithril';
 
+// @ts-check
 var keys = {
   autocomplete: "autocomplete",
   autofocus: "autofocus",
@@ -30,25 +31,42 @@ var keys = {
   tabindex: "tabindex"
 };
 
+// @ts-ignore
 var renderer = m;
-renderer.displayName = "mithril";
+renderer["displayName"] = "mithril";
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 function createCommonjsModule(fn, module) {
@@ -276,11 +294,19 @@ var stream = createCommonjsModule(function (module) {
 var stream$1 = stream;
 
 var requiresKeys = false;
+/**
+ * @param {StateComponentAssemblyOptions} params
+ */
+
 var StateComponent = function StateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      createContent = _ref$createContent === void 0 ? function () {
+    return null;
+  } : _ref$createContent,
       _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {} : _ref$createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
       _ref$component = _ref.component,
       component = _ref$component === void 0 ? null : _ref$component,
       _ref$getElement = _ref.getElement,
@@ -292,35 +318,53 @@ var StateComponent = function StateComponent(_ref) {
     return {};
   } : _ref$getInitialState,
       _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      onMount = _ref$onMount === void 0 ? function () {
+    return null;
+  } : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount,
+      onUnMount = _ref$onUnMount === void 0 ? function () {
+    return null;
+  } : _ref$onUnMount,
       _ref$onUpdate = _ref.onUpdate,
-      onUpdate = _ref$onUpdate === void 0 ? function () {} : _ref$onUpdate,
+      onUpdate = _ref$onUpdate === void 0 ? function () {
+    return null;
+  } : _ref$onUpdate,
       _ref$view = _ref.view,
       view = _ref$view === void 0 ? null : _ref$view;
+  var localState = {
+    mounted: false
+  };
+  /**
+   * @param {Vnode} vnode 
+   */
 
   var oninit = function oninit(vnode) {
-    var protoState = _extends({}, vnode);
-
-    var initialState = getInitialState(protoState, stream$1, {
+    /**
+     * @type {{ redrawOnUpdate?: Array<function>, _?: any }} initialState
+     */
+    var initialState = getInitialState(vnode, stream$1, {
       keys: keys
     });
-
-    _extends(vnode.state, initialState);
-
-    vnode._mounted = false;
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return vnode._mounted && setTimeout(renderer.redraw(true));
-    });
+    vnode.state = _objectSpread({}, initialState);
+    initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function () {
+      return localState && setTimeout(renderer.redraw);
+    }) : undefined;
   };
+  /**
+   * @param {Vnode} vnode 
+   */
+
 
   var oncreate = function oncreate(vnode) {
-    vnode._mounted = true;
+    localState.mounted = true;
     onMount(vnode, {
       keys: keys
     });
   };
+  /**
+   * @param {Vnode} vnode 
+   */
+
 
   var render = function render(vnode) {
     return renderer(component || getElement(vnode), createProps(vnode, {
@@ -335,12 +379,20 @@ var StateComponent = function StateComponent(_ref) {
   };
 
   return {
-    view: view ? function (vnode) {
+    view: view ?
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return view(vnode, {
         render: render,
         renderer: renderer
       });
-    } : function (vnode) {
+    } :
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return render(vnode);
     },
     oninit: oninit,
@@ -350,12 +402,21 @@ var StateComponent = function StateComponent(_ref) {
   };
 };
 
+// @ts-check
 var requiresKeys$1 = false;
+/**
+ * @param {ViewComponentAssemblyOptions} params
+ */
+
 var ViewComponent = function ViewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      createContent = _ref$createContent === void 0 ? function () {
+    return null;
+  } : _ref$createContent,
       _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {} : _ref$createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
       _ref$getElement = _ref.getElement,
       getElement = _ref$getElement === void 0 ? function () {
     return "div";
@@ -365,10 +426,17 @@ var ViewComponent = function ViewComponent(_ref) {
       _ref$view = _ref.view,
       view = _ref$view === void 0 ? null : _ref$view,
       _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      onMount = _ref$onMount === void 0 ? function () {
+    return null;
+  } : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount;
+      onUnMount = _ref$onUnMount === void 0 ? function () {
+    return null;
+  } : _ref$onUnMount;
 
+  /**
+   * @param {Vnode} vnode 
+   */
   var render = function render(vnode) {
     return renderer(component || getElement(vnode), createProps(vnode, {
       renderer: renderer,
@@ -382,14 +450,26 @@ var ViewComponent = function ViewComponent(_ref) {
   };
 
   return {
-    view: view ? function (vnode) {
+    view: view ?
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return view(vnode, {
         render: render,
         renderer: renderer
       });
-    } : function (vnode) {
+    } :
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return render(vnode);
     },
+
+    /**
+     * @param {Vnode} vnode
+     */
     oncreate: function oncreate(vnode) {
       return onMount(vnode, {
         keys: keys
@@ -399,4 +479,4 @@ var ViewComponent = function ViewComponent(_ref) {
   };
 };
 
-export { keys, renderer, StateComponent, ViewComponent };
+export { keys, renderer, StateComponent, StateComponent as StateComponentAssembly, ViewComponent, ViewComponent as ViewComponentAssembly };

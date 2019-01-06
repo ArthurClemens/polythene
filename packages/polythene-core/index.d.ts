@@ -74,7 +74,7 @@ export type Content = object | any;
 
 /* events.js START */
 
-  export function throttle(func: function, s?:string, context?: object) : void;
+  export function throttle(func: (...args: any) => any, s?:string, context?: object) : void;
   export function subscribe(eventName: string, listener: object, delay?: number) : void;
   export function unsubscribe(eventName: string, listener: object) : void;
   export function emit(eventName: string, event: object) : void;
@@ -303,3 +303,18 @@ export interface TransitionOptions {
 
 }
 
+export interface CoreViewComponentAssemblyOptions {
+  createContent: (vnode: any, options?: any) => any;
+  createProps: (vnode: any, options?: any) => any;
+  getElement: (vnode: any) => any;
+  component: any;
+  view: (vnode: any, options?: any) => any;
+  onMount: (vnode: any, options?: any) => any;
+  onUnMount: (vnode: any) => any;
+}
+
+
+export interface CoreStateComponentAssemblyOptions extends CoreViewComponentAssemblyOptions {
+  getInitialState: (vnode: any, stream?:any, options?:any) => any;
+  onUpdate: (vnode: any) => any;
+}

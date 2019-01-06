@@ -1,18 +1,31 @@
+// @ts-check
+
+/**
+ * @typedef {import("mithril").Vnode} Vnode
+ * @typedef {import("../index").ViewComponentAssemblyOptions} ViewComponentAssemblyOptions
+ */
+
 import { renderer } from "./renderer";
 import { keys } from "./keys";
 
 const requiresKeys = false;
 
+/**
+ * @param {ViewComponentAssemblyOptions} params
+ */
 export const ViewComponent = ({
-  createContent = () => {},
-  createProps = () => {},
+  createContent = () => null,
+  createProps = () => ({}),
   getElement = () => "div",
   component = null,
   view = null,
-  onMount = () => {},
-  onUnMount = () => {},
+  onMount = () => null,
+  onUnMount = () => null,
 }) => {
 
+  /**
+   * @param {Vnode} vnode 
+   */
   const render = vnode =>
     renderer(
       component || getElement(vnode),
@@ -26,8 +39,19 @@ export const ViewComponent = ({
 
   return {
     view: view
-      ? vnode => view(vnode, { render, renderer })
-      : vnode => render(vnode),
+      ?
+      /**
+       * @param {Vnode} vnode
+       */
+      vnode => view(vnode, { render, renderer })
+      :
+      /**
+       * @param {Vnode} vnode
+       */
+      vnode => render(vnode),
+    /**
+     * @param {Vnode} vnode
+     */
     oncreate: vnode => onMount(vnode, { keys }),
     onremove: onUnMount
   };
