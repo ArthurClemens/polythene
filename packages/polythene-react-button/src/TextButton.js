@@ -13,4 +13,4 @@ export const TextButton = StateComponent(Object.assign(
   }
 ));
 
-TextButton.displayName = "TextButton";
+TextButton["displayName"] = "TextButton";

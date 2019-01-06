@@ -23845,6 +23845,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-text-button",
   super: "pe-button",
@@ -24131,7 +24150,7 @@ var createProps$1 = function createProps(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
-  return _extends({}, {
+  return _objectSpread({
     raised: true,
     animateOnTap: false,
     wash: attrs.wash !== undefined ? attrs.wash : false,
@@ -45482,7 +45501,7 @@ var TextButton = Object(polythene_react_base__WEBPACK_IMPORTED_MODULE_0__["State
     }));
   }
 }));
-TextButton.displayName = "TextButton";
+TextButton["displayName"] = "TextButton";
 var RaisedButton = Object(polythene_react_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"], {
   createProps: function createProps(vnode, args) {
     return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createProps(vnode, _extends(args, {
@@ -45496,13 +45515,14 @@ var RaisedButton = Object(polythene_react_base__WEBPACK_IMPORTED_MODULE_0__["Sta
   },
   component: TextButton
 }));
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton"; // @ts-check
+
 var Button = Object(polythene_react_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])({
   view: function view(vnode) {
     return Object(polythene_react_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
   }
 });
-Button.displayName = "Button";
+Button["displayName"] = "Button";
 
 
 /***/ }),
@@ -47157,7 +47177,7 @@ ToolbarTitle.displayName = "ToolbarTitle";
 /*!***********************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-react/dist/polythene-react.mjs ***!
   \***********************************************************************************************************************/
-/*! exports provided: Button, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle, keys, MithrilToReact, renderer, StateComponent, ViewComponent */
+/*! exports provided: keys, MithrilToReact, renderer, StateComponent, ViewComponent, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle, Button */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";

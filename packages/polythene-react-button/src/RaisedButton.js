@@ -13,4 +13,4 @@ export const RaisedButton = StateComponent(Object.assign(
   }
 ));
 
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";

@@ -15,18 +15,29 @@ const build = function(dir) {
 shell.exec("lerna bootstrap");
 
 componentNames.forEach(function(name) {
-  const componentCssDir = `packages/polythene-css-${name}`;
-  const coreDir = `packages/polythene-core-${name}`;
-  const mithrilDir = `packages/polythene-mithril-${name}`;
-  const reactDir = `packages/polythene-react-${name}`;
-  const cssDir = "packages/polythene-css";
+  if (name === "base") {
+    [mithrilBaseDir, reactBaseDir].forEach(function(dir) {
+      if (shell.test("-d", dir)) {
+        console.log(`Building dir ${dir}`); // eslint-disable-line no-console
+        build(dir);
+      } else {
+        console.log(`Directory ${dir} does not exist`); // eslint-disable-line no-console
+      }
+    });
+  } else {
+    const componentCssDir = `packages/polythene-css-${name}`;
+    const coreDir = `packages/polythene-core-${name}`;
+    const mithrilDir = `packages/polythene-mithril-${name}`;
+    const reactDir = `packages/polythene-react-${name}`;
+    const cssDir = "packages/polythene-css";
 
-  [componentCssDir, coreDir, cssDir, mithrilBaseDir, reactBaseDir, mithrilDir, reactDir].forEach(function(dir) {
-    if (shell.test("-d", dir)) {
-      console.log(`Building dir ${dir}`); // eslint-disable-line no-console
-      build(dir);
-    } else {
-      console.log(`Directory ${dir} does not exist`); // eslint-disable-line no-console
-    }
-  });
+    [componentCssDir, coreDir, cssDir, mithrilDir, reactDir].forEach(function(dir) {
+      if (shell.test("-d", dir)) {
+        console.log(`Building dir ${dir}`); // eslint-disable-line no-console
+        build(dir);
+      } else {
+        console.log(`Directory ${dir} does not exist`); // eslint-disable-line no-console
+      }
+    });
+  }
 });

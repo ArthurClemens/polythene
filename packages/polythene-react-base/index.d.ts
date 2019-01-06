@@ -24,12 +24,12 @@ export namespace keys {
 
 }
 
-interface Vnode {
-  attrs?: {
+export interface Vnode {
+  attrs: {
     [x: string]: any;
     children?: React.ReactNode;
   };
-  children: React.ReactNode;
+  children?: React.ReactNode;
   dom?: Element | Text;
 }
 

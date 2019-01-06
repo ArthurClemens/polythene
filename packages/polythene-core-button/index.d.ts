@@ -1,4 +1,4 @@
-import { CommonOptions, URLOptions } from "polythene-core";
+import { CommonOptions, URLOptions, CoreStateComponentAssemblyOptions } from "polythene-core";
 import { Options as RippleOptions } from "polythene-core-ripple";
 
 interface RaisedButtonOptions {
@@ -180,3 +180,6 @@ export interface Options extends Partial<CommonOptions>, RaisedButtonOptions {
   children?: any;
 
 }
+
+export const coreButton: CoreStateComponentAssemblyOptions;
+export const coreRaisedButton: CoreStateComponentAssemblyOptions;

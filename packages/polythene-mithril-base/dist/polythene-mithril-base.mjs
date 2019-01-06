@@ -31,7 +31,6 @@ var keys = {
   tabindex: "tabindex"
 };
 
-// @ts-ignore
 var renderer = m;
 renderer["displayName"] = "mithril";
 

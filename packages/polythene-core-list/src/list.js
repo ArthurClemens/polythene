@@ -64,22 +64,20 @@ export const createContent = (vnode, { renderer: h, requiresKeys, keys: k, ListT
       ? attrs.content
       : attrs.children || vnode.children;
   return [
-    headerOpts ? h(ListTile, Object.assign(
-      {},
-      requiresKeys ? { key: "header" } : null,
-      attrs.all,
-      headerOpts,
-      {
+    headerOpts
+      ? h(ListTile, {
+        ...(requiresKeys ? { key: "header" } : undefined),
+        ...attrs.all,
+        ...headerOpts,
         header: true
-      }
-    )) : null,
+      })
+      : undefined,
     attrs.all
       ? tiles.map(tileOpts => 
-        h(ListTile, Object.assign(
-          {},
-          attrs.all,
-          tileOpts
-        ))
+        h(ListTile, {
+          ...attrs.all,
+          ...tileOpts
+        })
       )
       : tiles
   ];

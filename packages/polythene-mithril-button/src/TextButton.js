@@ -1,3 +1,5 @@
+// @ts-check
+
 import { StateComponent } from "polythene-mithril-base";
 import { coreButton as core } from "polythene-core-button";
 import { Ripple } from "polythene-mithril-ripple";
@@ -13,4 +15,4 @@ export const TextButton = StateComponent(Object.assign(
   }
 ));
 
-TextButton.displayName = "TextButton";
+TextButton["displayName"] = "TextButton";

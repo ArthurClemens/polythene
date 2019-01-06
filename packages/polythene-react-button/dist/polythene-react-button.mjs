@@ -38,7 +38,7 @@ var TextButton = StateComponent(_extends({}, coreButton, {
     }));
   }
 }));
-TextButton.displayName = "TextButton";
+TextButton["displayName"] = "TextButton";
 
 var RaisedButton = StateComponent(_extends({}, coreRaisedButton, {
   createProps: function createProps(vnode, args) {
@@ -53,13 +53,14 @@ var RaisedButton = StateComponent(_extends({}, coreRaisedButton, {
   },
   component: TextButton
 }));
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";
 
+// @ts-check
 var Button = ViewComponent({
   view: function view(vnode) {
     return renderer(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
   }
 });
-Button.displayName = "Button";
+Button["displayName"] = "Button";
 
 export { Button };

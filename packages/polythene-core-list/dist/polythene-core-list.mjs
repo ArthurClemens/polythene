@@ -1,5 +1,20 @@
 import { deprecation, filterSupportedAttributes } from 'polythene-core';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -16,6 +31,25 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 var listTileClasses = {
@@ -113,12 +147,12 @@ var createContent = function createContent(vnode, _ref2) {
   }
 
   var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
-  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? {
+  return [headerOpts ? h(ListTile, _objectSpread({}, requiresKeys ? {
     key: "header"
-  } : null, attrs.all, headerOpts, {
+  } : undefined, attrs.all, headerOpts, {
     header: true
-  })) : null, attrs.all ? tiles.map(function (tileOpts) {
-    return h(ListTile, _extends({}, attrs.all, tileOpts));
+  })) : undefined, attrs.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _objectSpread({}, attrs.all, tileOpts));
   }) : tiles];
 };
 

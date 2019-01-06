@@ -95,21 +95,16 @@ export const createProps = vnode => {
   const attrs = vnode.attrs;
   const state = vnode.state;
   const children = attrs.children || vnode.children || [];
-  return Object.assign(
-    {},
-    {
-      raised: true,
-      animateOnTap: false,
-      wash: attrs.wash !== undefined
-        ? attrs.wash
-        : false,
-      children
-    },
-    attrs,
-    {
-      shadowDepth: attrs.disabled ? 0 : state.shadowDepth(),
-    }
-  );
+  return {
+    raised: true,
+    animateOnTap: false,
+    wash: attrs.wash !== undefined
+      ? attrs.wash
+      : false,
+    children,
+    ...attrs,
+    shadowDepth: attrs.disabled ? 0 : state.shadowDepth(),
+  };
 };
 
 export const createContent = vnode =>
