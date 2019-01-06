@@ -9302,23 +9302,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subscribe", function() { return subscribe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unsubscribe", function() { return unsubscribe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "emit", function() { return emit; });
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
-}
+  return target;
+} // @ts-check
+
 
 var modes = {
   hidden: "hidden",
@@ -9327,6 +9344,10 @@ var modes = {
   hiding: "hiding"
 };
 var Conditional = {
+  /**
+   * @param {object} vnode
+   * @param {object} createStream
+   */
   getInitialState: function getInitialState(vnode, createStream) {
     var attrs = vnode.attrs;
 
@@ -9341,6 +9362,12 @@ var Conditional = {
       redrawOnUpdate: createStream.merge([mode])
     };
   },
+
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   */
   onUpdate: function onUpdate(_ref) {
     var state = _ref.state,
         attrs = _ref.attrs;
@@ -9366,6 +9393,14 @@ var Conditional = {
       }
     }
   },
+
+  /**
+   * @param {object} params
+   * @param {object} params.state
+   * @param {object} params.attrs
+   * @param {object} attrs
+   * @param {function} attrs.renderer
+   */
   view: function view(_ref2, _ref3) {
     var state = _ref2.state,
         attrs = _ref2.attrs;
@@ -9381,17 +9416,34 @@ var Conditional = {
 
     var mode = state.mode();
     var visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, _extends({}, attrs, {
-      didHide: function didHide(args) {
+    return visible ? h(attrs.instance, _objectSpread({
+      attrs: attrs
+    }, {
+      didHide:
+      /**
+       * @param {any} args
+       */
+      function didHide(args) {
         return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
       }
-    }, mode === modes.hiding && {
+    }, mode === modes.hiding ? {
       show: true,
       hide: true
-    })) : placeholder;
-  }
-};
-Conditional.displayName = "Conditional";
+    } : undefined)) : placeholder;
+  },
+  displayName: "Conditional"
+}; // @ts-check
+
+/**
+ * 
+ * @param {string} component 
+ * @param {object} params
+ * @param {string} [params.option]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newOption]
+ * @param {string} [params.newComponent]
+ * @param {string} [params.since]
+ */
 
 var deprecation = function deprecation(component, _ref) {
   var option = _ref.option,
@@ -9403,42 +9455,84 @@ var deprecation = function deprecation(component, _ref) {
   newComponent && !newOption && console.warn("".concat(version).concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' instead. ").concat(version)), // eslint-disable-line no-console
   newComponent && newOption && console.warn("".concat(version).concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' with option '").concat(newOption, "' instead. ").concat(version)) // eslint-disable-line no-console
   ;
-};
+}; // @ts-check
+
+/**
+ * Reducer helper function.
+ * @param {object} acc 
+ * @param {string} p 
+ * @returns {object}
+ */
+
 
 var r = function r(acc, p) {
   return acc[p] = 1, acc;
 };
-/* 
-Separately handled props:
-- class
-- element
-*/
+/**
+ * List of default attributes.
+ * Separately handled:
+ * - class
+ * - element
+ * @type Array<string> defaultAttrs
+ */
 
 
 var defaultAttrs = [// Universal
 "key", "style", "href", "id", // React
 "tabIndex", // Mithril
 "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
+/**
+ * 
+ * @param {{[s: string]: string}} attrs 
+ * @param {object} [modifications] 
+ * @param {Array<string>} [modifications.add]
+ * @param {Array<string>} [modifications.remove]
+ * @returns {object}
+ */
 
 var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
   var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-      _ref$add = _ref.add,
-      addAttrs = _ref$add === void 0 ? [] : _ref$add,
-      _ref$remove = _ref.remove,
-      removeAttrs = _ref$remove === void 0 ? [] : _ref$remove;
+      add = _ref.add,
+      remove = _ref.remove;
+  /**
+   * @type {{[s: string]: string}} removeLookup 
+   */
 
-  var removeLookup = removeAttrs.reduce(r, {});
-  var supported = defaultAttrs.concat(addAttrs).filter(function (item) {
+
+  var removeLookup = remove ? remove.reduce(r, {}) : {};
+  /**
+   * @type {Array<string>} attrsList 
+   */
+
+  var attrsList = add ? defaultAttrs.concat(add) : [];
+  var supported = attrsList.filter(function (item) {
     return !removeLookup[item];
   }).reduce(r, {});
-  return Object.keys(attrs).reduce(function (acc, key) {
+  return Object.keys(attrs).reduce(
+  /**
+   * @param {object} acc
+   * @param {string} key
+   */
+  function (acc, key) {
     return supported[key] ? acc[key] = attrs[key] : null, acc;
   }, {});
 };
+/**
+ * 
+ * @param {object|function} attrs 
+ * @returns {object}
+ */
+
 
 var unpackAttrs = function unpackAttrs(attrs) {
   return typeof attrs === "function" ? attrs() : attrs;
 };
+/**
+ * 
+ * @param {{[s: string]: string}} classes 
+ * @returns {{[s: string]: string}}
+ */
+
 
 var sizeClasses = function sizeClasses(classes) {
   return {
@@ -9449,6 +9543,13 @@ var sizeClasses = function sizeClasses(classes) {
     fab: classes.fab
   };
 };
+/**
+ * 
+ * @param {{[s: string]: string}} classes 
+ * @param {string} [size] 
+ * @returns {object}
+ */
+
 
 var classForSize = function classForSize(classes) {
   var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "regular";
@@ -9456,7 +9557,12 @@ var classForSize = function classForSize(classes) {
 };
 
 var isClient = typeof document !== "undefined";
-var isServer = !isClient;
+var isServer = !isClient; // @ts-check
+
+/**
+ * @type {{[s: string]: string}} evts
+ */
+
 var evts = {
   "animation": "animationend",
   "OAnimation": "oAnimationEnd",
@@ -9467,14 +9573,33 @@ var evts = {
 var getAnimationEndEvent = function getAnimationEndEvent() {
   if (isClient) {
     var el = document.createElement("fakeelement");
+    /**
+     * @type {string} a
+     */
 
     for (var a in evts) {
-      if (el.style[a] !== undefined) {
+      /**
+       * @type {object} style
+       */
+      var style = el.style;
+
+      if (style[a] !== undefined) {
         return evts[a];
       }
     }
   }
-};
+}; // @ts-check
+
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} [params.selector]
+ * @param {string} [params.pseudoSelector]
+ * @param {string} params.prop
+ * @returns {object|undefined}
+ */
+
 
 var getStyle = function getStyle(_ref) {
   var element = _ref.element,
@@ -9484,11 +9609,39 @@ var getStyle = function getStyle(_ref) {
   var el = selector ? element.querySelector(selector) : element;
 
   if (!el) {
-    return;
+    return undefined;
   }
 
-  return el.currentStyle ? el.currentStyle[prop] : window.getComputedStyle ? document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop) : null;
+  if (el.currentStyle) {
+    return el.currentStyle;
+  }
+
+  if (window.getComputedStyle) {
+    var defaultView = document.defaultView;
+
+    if (defaultView) {
+      var style = defaultView.getComputedStyle(el, pseudoSelector);
+
+      if (style) {
+        return style.getPropertyValue(prop);
+      }
+    }
+  }
+
+  return undefined;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} [params.selector]
+ * @param {string} [params.pseudoSelector]
+ * @param {string} params.prop
+ * @param {string} [params.equals]
+ * @param {string} [params.contains]
+ * @returns {boolean}
+ */
+
 
 var stylePropCompare = function stylePropCompare(_ref2) {
   var element = _ref2.element,
@@ -9503,14 +9656,28 @@ var stylePropCompare = function stylePropCompare(_ref2) {
     return false;
   }
 
-  if (equals !== undefined) {
-    return equals === document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+  var defaultView = document.defaultView;
+
+  if (defaultView) {
+    if (equals !== undefined) {
+      return equals === defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop);
+    }
+
+    if (contains !== undefined) {
+      return defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
+    }
   }
 
-  if (contains !== undefined) {
-    return document.defaultView.getComputedStyle(el, pseudoSelector).getPropertyValue(prop).indexOf(contains) !== -1;
-  }
+  return false;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.element
+ * @param {string} params.selector
+ * @returns {boolean}
+ */
+
 
 var isRTL = function isRTL(_ref3) {
   var _ref3$element = _ref3.element,
@@ -9523,6 +9690,12 @@ var isRTL = function isRTL(_ref3) {
     equals: "rtl"
   });
 };
+/**
+ * 
+ * @param {string} durationStr 
+ * @returns {number}
+ */
+
 
 var styleDurationToMs = function styleDurationToMs(durationStr) {
   var parsed = parseFloat(durationStr) * (durationStr.indexOf("ms") === -1 ? 1000 : 1);
@@ -9530,7 +9703,8 @@ var styleDurationToMs = function styleDurationToMs(durationStr) {
 };
 
 var iconDropdownUp = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-up-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 14l5-5 5 5z\"/></svg>";
-var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>";
+var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 10l5 5 5-5z\"/></svg>"; // @ts-check
+
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
 var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
@@ -9539,10 +9713,26 @@ var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
 var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
 if (isClient) {
-  document.querySelector("html").classList.add(isTouch ? "pe-touch" : "pe-no-touch");
-}
+  var htmlElement = document.querySelector("html");
 
-var listeners = {}; // https://gist.github.com/Eartz/fe651f2fadcc11444549
+  if (htmlElement) {
+    htmlElement.classList.add(isTouch ? "pe-touch" : "pe-no-touch");
+  }
+} // @ts-check
+
+/**
+ * @type {{[s: string]: Array<function>}} listeners
+ */
+
+
+var listeners = {};
+/**
+ * @param {function} func
+ * @param {number} [s]
+ * @param {object} [context]
+ * @returns {function}
+ * @see https://gist.github.com/Eartz/fe651f2fadcc11444549
+ */
 
 var throttle = function throttle(func) {
   var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.05;
@@ -9566,11 +9756,24 @@ var throttle = function throttle(func) {
     }
   };
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} listener 
+ * @param {number} [delay] 
+ */
+
 
 var subscribe = function subscribe(eventName, listener, delay) {
   listeners[eventName] = listeners[eventName] || [];
   listeners[eventName].push(delay ? throttle(listener, delay) : listener);
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} listener 
+ */
+
 
 var unsubscribe = function unsubscribe(eventName, listener) {
   if (!listeners[eventName]) {
@@ -9583,6 +9786,12 @@ var unsubscribe = function unsubscribe(eventName, listener) {
     listeners[eventName].splice(index, 1);
   }
 };
+/**
+ * 
+ * @param {string} eventName 
+ * @param {object} event 
+ */
+
 
 var emit = function emit(eventName, event) {
   if (!listeners[eventName]) {
@@ -9604,14 +9813,31 @@ if (isClient) {
   window.addEventListener("keydown", function (e) {
     return emit("keydown", e);
   });
-  window.addEventListener(pointerEndEvent, function (e) {
-    return emit(pointerEndEvent, e);
+  pointerEndEvent.forEach(function (eventName) {
+    return window.addEventListener(eventName, function (e) {
+      return emit(eventName, e);
+    });
   });
 }
+/**
+ * @typedef {object} Item 
+ */
+
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.options
+ * @param {function} params.renderer
+ */
+
 
 var Multi = function Multi(_ref) {
   var mOptions = _ref.options,
       renderer = _ref.renderer;
+  /**
+   * @type {Array<Item>} items
+   */
+
   var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
 
   var current;
@@ -9751,7 +9977,7 @@ var Multi = function Multi(_ref) {
     var hidePromise = new Promise(function (resolve) {
       return resolveHide = resolve;
     });
-    return _extends({}, mOptions, {
+    return _objectSpread({}, mOptions, {
       instanceId: instanceId,
       spawn: spawn,
       attrs: itemAttrs,
@@ -9840,7 +10066,7 @@ var Multi = function Multi(_ref) {
     : renderer(mOptions.holderSelector, {
       className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _extends({}, unpackAttrs(attrs), {
+      return renderer(mOptions.instance, _objectSpread({}, unpackAttrs(attrs), {
         fromMultipleClear: clear,
         spawnId: spawn,
         // from mOptions:
@@ -9874,32 +10100,38 @@ var Multi = function Multi(_ref) {
 };
 
 Multi.displayName = "Multi";
+/**
+ * 
+ * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
+ */
+
 var DEFAULT_DURATION = .240;
-var DEFAULT_DELAY = 0; // const TRANSITION =    "both";
-// See: transition
+var DEFAULT_DELAY = 0;
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @returns {Promise}
+ */
 
 var show = function show(opts) {
   return transition(opts, "show");
 };
+/**
+ * 
+ * @param {TransitionOpts} opts
+ * @returns {Promise} 
+ */
+
 
 var hide = function hide(opts) {
   return transition(opts, "hide");
 };
-/*
-opts:
-- el
-- duration
-- delay
-- showClass
-- transitionClass
-- before
-- show
-- hide
-- after
-- timingFunction
-
-- state (show, hide)
-*/
+/**
+ * 
+ * @param {TransitionOpts} opts 
+ * @param {"show"|"hide"} state 
+ * @returns {Promise}
+ */
 
 
 var transition = function transition(opts, state) {
@@ -9910,9 +10142,13 @@ var transition = function transition(opts, state) {
   } else {
     return new Promise(function (resolve) {
       var style = el.style;
+      /**
+       * @type {object} computedStyle
+       */
+
       var computedStyle = isClient ? window.getComputedStyle(el) : {};
-      var duration = opts.hasDuration ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
-      var delay = opts.hasDelay ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
+      var duration = opts.hasDuration && opts.duration !== undefined ? opts.duration * 1000.0 : styleDurationToMs(computedStyle.transitionDuration);
+      var delay = opts.hasDelay && opts.delay !== undefined ? opts.delay * 1000.0 : styleDurationToMs(computedStyle.transitionDelay);
       var timingFunction = opts.timingFunction || computedStyle.transitionTimingFunction;
 
       if (opts.transitionClass) {
@@ -9923,13 +10159,19 @@ var transition = function transition(opts, state) {
       var before = function before() {
         style.transitionDuration = "0ms";
         style.transitionDelay = "0ms";
-        opts.before();
+
+        if (opts.before && typeof opts.before === "function") {
+          opts.before();
+        }
       };
 
       var maybeBefore = opts.before && state === "show" ? before : opts.before && state === "hide" ? before : null;
-      var after = opts.after ? function () {
-        return opts.after();
-      } : null;
+
+      var after = function after() {
+        if (opts.after && typeof opts.after === "function") {
+          opts.after();
+        }
+      };
 
       var applyTransition = function applyTransition() {
         style.transitionDuration = duration + "ms";
@@ -9989,6 +10231,20 @@ var transition = function transition(opts, state) {
     });
   }
 };
+/**
+ * 
+ * @param {object} params
+ * @param {boolean} [params.isShow]
+ * @param {object} [params.state]
+ * @param {object} [params.attrs]
+ * @param {Array<HTMLElement>} [params.domElements]
+ * @param {() => void} [params.beforeTransition]
+ * @param {() => void} [params.afterTransition]
+ * @param {string} [params.showClass]
+ * @param {string} [params.transitionClass]
+ * @returns {Promise}
+ */
+
 
 var transitionComponent = function transitionComponent(_ref) {
   var isShow = _ref.isShow,
@@ -10017,7 +10273,7 @@ var transitionComponent = function transitionComponent(_ref) {
   var transitions = attrs.transitions;
   var fn = isShow ? show : hide;
 
-  var opts1 = _extends({}, attrs, domElements, {
+  var opts1 = _objectSpread({}, attrs, domElements, {
     showClass: showClass,
     transitionClass: transitionClass,
     duration: duration,
@@ -10025,9 +10281,9 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _extends({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+  var opts2 = _objectSpread({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
 
-  var opts3 = _extends({}, opts2, {
+  var opts3 = _objectSpread({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
     hasDuration: opts2.duration !== undefined,
     delay: opts2.delay !== undefined ? opts2.delay : DEFAULT_DELAY,
@@ -21214,7 +21470,7 @@ BaseSpinner.displayName = "BaseSpinner";
 /*!*************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-mithril-base/dist/polythene-mithril-base.mjs ***!
   \*************************************************************************************************************************************/
-/*! exports provided: keys, renderer, StateComponent, ViewComponent */
+/*! exports provided: keys, renderer, StateComponent, StateComponentAssembly, ViewComponent, ViewComponentAssembly */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21222,8 +21478,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keys", function() { return keys; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderer", function() { return renderer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateComponent", function() { return StateComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateComponentAssembly", function() { return StateComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewComponent", function() { return ViewComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewComponentAssembly", function() { return ViewComponent; });
 /* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mithril */ "../node_modules/mithril/mithril.js");
+ // @ts-check
 
 var keys = {
   autocomplete: "autocomplete",
@@ -21253,26 +21512,43 @@ var keys = {
   ontouchstart: "ontouchstart",
   readonly: "readonly",
   tabindex: "tabindex"
-};
+}; // @ts-ignore
+
 var renderer = mithril__WEBPACK_IMPORTED_MODULE_0__;
-renderer.displayName = "mithril";
+renderer["displayName"] = "mithril";
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 function createCommonjsModule(fn, module) {
@@ -21498,12 +21774,19 @@ var stream = createCommonjsModule(function (module) {
 });
 var stream$1 = stream;
 var requiresKeys = false;
+/**
+ * @param {StateComponentAssemblyOptions} params
+ */
 
 var StateComponent = function StateComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      createContent = _ref$createContent === void 0 ? function () {
+    return null;
+  } : _ref$createContent,
       _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {} : _ref$createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
       _ref$component = _ref.component,
       component = _ref$component === void 0 ? null : _ref$component,
       _ref$getElement = _ref.getElement,
@@ -21515,35 +21798,53 @@ var StateComponent = function StateComponent(_ref) {
     return {};
   } : _ref$getInitialState,
       _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      onMount = _ref$onMount === void 0 ? function () {
+    return null;
+  } : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount,
+      onUnMount = _ref$onUnMount === void 0 ? function () {
+    return null;
+  } : _ref$onUnMount,
       _ref$onUpdate = _ref.onUpdate,
-      onUpdate = _ref$onUpdate === void 0 ? function () {} : _ref$onUpdate,
+      onUpdate = _ref$onUpdate === void 0 ? function () {
+    return null;
+  } : _ref$onUpdate,
       _ref$view = _ref.view,
       view = _ref$view === void 0 ? null : _ref$view;
+  var localState = {
+    mounted: false
+  };
+  /**
+   * @param {Vnode} vnode 
+   */
 
   var oninit = function oninit(vnode) {
-    var protoState = _extends({}, vnode);
-
-    var initialState = getInitialState(protoState, stream$1, {
+    /**
+     * @type {{ redrawOnUpdate?: Array<function>, _?: any }} initialState
+     */
+    var initialState = getInitialState(vnode, stream$1, {
       keys: keys
     });
-
-    _extends(vnode.state, initialState);
-
-    vnode._mounted = false;
-    vnode.state.redrawOnUpdate && vnode.state.redrawOnUpdate.map(function () {
-      return vnode._mounted && setTimeout(renderer.redraw(true));
-    });
+    vnode.state = _objectSpread({}, initialState);
+    initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function () {
+      return localState && setTimeout(renderer.redraw);
+    }) : undefined;
   };
+  /**
+   * @param {Vnode} vnode 
+   */
+
 
   var oncreate = function oncreate(vnode) {
-    vnode._mounted = true;
+    localState.mounted = true;
     onMount(vnode, {
       keys: keys
     });
   };
+  /**
+   * @param {Vnode} vnode 
+   */
+
 
   var render = function render(vnode) {
     return renderer(component || getElement(vnode), createProps(vnode, {
@@ -21558,12 +21859,20 @@ var StateComponent = function StateComponent(_ref) {
   };
 
   return {
-    view: view ? function (vnode) {
+    view: view ?
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return view(vnode, {
         render: render,
         renderer: renderer
       });
-    } : function (vnode) {
+    } :
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return render(vnode);
     },
     oninit: oninit,
@@ -21571,15 +21880,23 @@ var StateComponent = function StateComponent(_ref) {
     onremove: onUnMount,
     onupdate: onUpdate
   };
-};
+}; // @ts-check
+
 
 var requiresKeys$1 = false;
+/**
+ * @param {ViewComponentAssemblyOptions} params
+ */
 
 var ViewComponent = function ViewComponent(_ref) {
   var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
+      createContent = _ref$createContent === void 0 ? function () {
+    return null;
+  } : _ref$createContent,
       _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {} : _ref$createProps,
+      createProps = _ref$createProps === void 0 ? function () {
+    return {};
+  } : _ref$createProps,
       _ref$getElement = _ref.getElement,
       getElement = _ref$getElement === void 0 ? function () {
     return "div";
@@ -21589,9 +21906,16 @@ var ViewComponent = function ViewComponent(_ref) {
       _ref$view = _ref.view,
       view = _ref$view === void 0 ? null : _ref$view,
       _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
+      onMount = _ref$onMount === void 0 ? function () {
+    return null;
+  } : _ref$onMount,
       _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount;
+      onUnMount = _ref$onUnMount === void 0 ? function () {
+    return null;
+  } : _ref$onUnMount;
+  /**
+   * @param {Vnode} vnode 
+   */
 
   var render = function render(vnode) {
     return renderer(component || getElement(vnode), createProps(vnode, {
@@ -21606,14 +21930,26 @@ var ViewComponent = function ViewComponent(_ref) {
   };
 
   return {
-    view: view ? function (vnode) {
+    view: view ?
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return view(vnode, {
         render: render,
         renderer: renderer
       });
-    } : function (vnode) {
+    } :
+    /**
+     * @param {Vnode} vnode
+     */
+    function (vnode) {
       return render(vnode);
     },
+
+    /**
+     * @param {Vnode} vnode
+     */
     oncreate: function oncreate(vnode) {
       return onMount(vnode, {
         keys: keys
@@ -21687,6 +22023,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -21705,6 +22056,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var TextButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"], {
   createProps: function createProps(vnode, args) {
     return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"].createProps(vnode, _extends(args, {
@@ -21721,27 +22091,32 @@ var TextButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["Sta
     }));
   }
 }));
-TextButton.displayName = "TextButton";
-var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"], {
+TextButton["displayName"] = "TextButton";
+var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponentAssembly"])(_objectSpread({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createProps(vnode, _extends(args, {
+    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createProps(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createContent(vnode, _extends(args, {
+    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createContent(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"]
     }));
   },
   component: TextButton
 }));
-RaisedButton.displayName = "RaisedButton";
-var Button = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])({
+RaisedButton.displayName = "RaisedButton"; // @ts-check
+
+var Button = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])({
+  /**
+   * @param {Vnode} vnode
+   * @param {Options} vnode.attrs
+   */
   view: function view(vnode) {
     return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
   }
 });
-Button.displayName = "Button";
+Button["displayName"] = "Button";
 
 
 /***/ }),
@@ -23396,7 +23771,7 @@ ToolbarTitle.displayName = "ToolbarTitle";
 /*!***************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-mithril/dist/polythene-mithril.mjs ***!
   \***************************************************************************************************************************/
-/*! exports provided: keys, renderer, StateComponent, ViewComponent, Button, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle */
+/*! exports provided: keys, renderer, StateComponent, StateComponentAssembly, ViewComponent, ViewComponentAssembly, Button, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23408,7 +23783,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StateComponent", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StateComponentAssembly", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponentAssembly"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ViewComponent", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ViewComponentAssembly", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponentAssembly"]; });
 
 /* harmony import */ var polythene_mithril_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-mithril-button */ "../../polythene-mithril-button/dist/polythene-mithril-button.mjs");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return polythene_mithril_button__WEBPACK_IMPORTED_MODULE_1__["Button"]; });

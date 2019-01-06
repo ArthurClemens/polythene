@@ -33,7 +33,7 @@ const NavBar = () =>
 const Index = () =>
   h("div", null, [
     NavBar(),
-    h(".navbar-spacer"),
+    h(".navbar-spacer", { key: "spacer" }),
     h(List,
       { className: "index-list" },
       routes.map(route => (

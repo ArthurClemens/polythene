@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
-    "build": "npm run clean && npm run rollup"
+    "build": "npm run clean && npm run rollup",
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true index.js"
   },
   "files": [
     "dist",
@@ -22,7 +23,8 @@
     "polythene-mithril-shadow": "^1.4.2"
   },
   "devDependencies": {
-    "@types/mithril": "^1.1.13"
+    "@types/mithril": "^1.1.14",
+    "polythene-core": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",
