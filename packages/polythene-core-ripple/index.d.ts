@@ -84,7 +84,7 @@ export interface Options extends Partial<CommonOptions> {
   /**
    * Callback function just before the ripple starts.
    */
-  start?: (e: MouseEvent) => void;
+  start?: (e: Event) => void;
 
   /**
    * Callback function when the ripple has ended.

@@ -58,7 +58,7 @@ Displays a tab row of navigation buttons.
 | **largestWidth** | optional | Boolean | false | Set to `true` to give all tabs the width of the largest tab |
 | **menu** | optional | Boolean | false | Set to `true` to make the tabs behave like a mobile navigation menu; this removes the minimum width settings from the tab buttons and compresses padding and label font size |
 | **noIndicatorSlide** | optional | Boolean | false | Set to `true` not let the "current tab" indicator slide to the new position |
-| **onChange**  | optional       | Function `({index::Number, options::Object, el::HTMLElement}) -> undefined` | | Callback function that receives the tabs state |
+| **onChange**  | optional       | Function `({ index: number, options: TabButtonOptions, el: HTMLElement }) => undefined` | | Callback function that receives the tabs state |
 | **scrollable** | optional | Boolean | false | Set to `true` to make the button row scrollable; this automatically sets `autofit` to `false`; on non-touch devices, 2 scroll buttons will be added to navigate tabs |
 | **scrollIconBackward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |
 | **scrollIconForward** | optional | [Icon](icon.md) options object | | Overrides default arrow icon |

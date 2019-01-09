@@ -79,7 +79,7 @@ The amount of change depends on the step size. This can be set with option `step
 | **interactiveTrack** | optional | Boolean | true | Set to `false` to prevent clicking on the track |
 | **max** | optional | Number | 100 | Maximum slider value |
 | **min** | optional | Number | 0 | Minimum slider value |
-| **onChange** | optional | Function `({value::Number}) -> undefined` | | Callback function that receives the slider state |
+| **onChange** | optional | Function `({ value: number }) => undefined` | | Callback function that receives the slider state |
 | **pin** | optional | Boolean | false | Use with `step`; on click shows a pin shape with the current value |
 | **stepSize** | optional | Number | 1 | Step size; set to 0 for a continuous (smooth) slider |
 | **ticks** | optional | Boolean | false | Show a tick for each step; limited to 100 |

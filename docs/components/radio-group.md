@@ -44,7 +44,7 @@ Described in:
 | **buttons**   | use `buttons` or `content` | Array | | List of [Radio Button options](radio-button.md#options) |
 | **defaultCheckedValue** | optional | String | | The value of the default checked Radio Button; ignored if Radio Button's `checked` is used |
 | **checkedValue**     | optional | String | | Checks the Radio Button that has this value. It is ignored when one of the group's Radio Buttons uses option `checked`. This is useful when you maintain the state of the value yourself. |
-| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
+| **onChange**  | optional | Function `({ event: Event, checked: boolean, value: string }) => undefined` | | See: [Handling state](../handling-state.md) |
 | **all**       | optional       | Options Object | | [Radio Button options](radio-button.md#options) that will be applied to all Radio Buttons |
 
 

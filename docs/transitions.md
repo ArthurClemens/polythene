@@ -66,8 +66,8 @@ Any method listed above will override these defaults.
 | **hideDelay**    | optional       | Number   | `0`         | The hide delay duration in seconds |
 | **showTimingFunction** | optional | String   |             | The show timing function; see [transition-timing-function](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function) |
 | **hideTimingFunction** | optional | String   |             | The hide timing function; see [transition-timing-function](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function) |
-| **didShow**      | optional       | Function `(id::String) -> undefined` | | Callback function that is called when the show transition is done |
-| **didHide**      | optional       | Function `(id::String) -> undefined` | | Callback function that is called when the hide transition is done |
+| **didShow**      | optional       | Function `(id: string) => undefined` | | Callback function that is called when the show transition is done |
+| **didHide**      | optional       | Function `(id: string) => undefined` | | Callback function that is called when the hide transition is done |
 | **transitions**  | optional       | Object   |             | Object with functions for keys `show` and `hide`; see below for an example |
 
 <a id="example-with-simple-transition-settings"></a>

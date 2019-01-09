@@ -67,7 +67,7 @@ export interface Options extends Partial<CommonOptions> {
   /**
    * Sets the active state based on the checkbox state; receives the current selected state, return the selectable state.
    */
-  selectable?: ( selected: boolean) => boolean;
+  selectable?: (selected: boolean) => boolean;
 
   /**
    * Equivalent to Icon's type option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px).

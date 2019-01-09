@@ -62,8 +62,8 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **iconOn**     | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the on state |
 | **label**     | optional | String | | Text label |
 | **name**      | optional | String | | Input element name |
-| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
-| **selectable** | optional | Function `(selected::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
+| **onChange**  | optional | Function `({ event: Event, checked: boolean, value: string }) => undefined` | | See: [Handling state](../handling-state.md) |
+| **selectable** | optional | Function `(selected: boolean) => boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 | **value**     | optional | String |  | Input element value |
 

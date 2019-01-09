@@ -43,8 +43,8 @@ Content for [Dialog](dialog.md).
 | **hideDuration** | optional       | Number   |             | The hide transition duration in seconds |
 | **showDelay**    | optional       | Number   |             | The show delay duration in seconds |
 | **hideDelay**    | optional       | Number   |             | The hide delay duration in seconds |
-| **didShow**      | optional       | Function `(id::String) -> undefined` | | Callback function that is called when the show transition is done |
-| **didHide**      | optional       | Function `(id::String) -> undefined` | | Callback function that is called when the hide transition is done |
+| **didShow**      | optional       | Function `(id: string) => undefined` | | Callback function that is called when the show transition is done |
+| **didHide**      | optional       | Function `(id: string) => undefined` | | Callback function that is called when the hide transition is done |
 
 
 

@@ -51,8 +51,8 @@ Form control to select a single option from a set. Generates a styled radio butt
 | **iconOn**     | optional | Options object for [Icon](icon.md) | | Assigns a different icon for the on state |
 | **label**     | optional | String | | Text label |
 | **name**      | optional, but required when using [Radio Group](radio-group.md) | String | | Input element name |
-| **onChange**  | optional | Function `({event::Event, checked::Boolean, value::String}) -> undefined` | | See: [Handling state](../handling-state.md) |
-| **selectable** | optional | Function `(checked::Boolean) -> Boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
+| **onChange**  | optional | Function `({ event: Event, checked: boolean, value: string }) => undefined` | | See: [Handling state](../handling-state.md) |
+| **selectable** | optional | Function `(selected: boolean) => boolean` | | Sets the active state based on the checkbox state; receives the current selected state, return the selectable state |
 | **size**       | optional | String | "regular" | Equivalent to [Icon's type](icon.md) option; either "small" (16px), "regular" (24px), "medium" (32px), "large" (40px) |
 | **value**     | optional | String |  | Input element value |
 

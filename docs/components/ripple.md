@@ -53,13 +53,13 @@ Adds a touch ripple effect to an element.
 | **center**                  | optional | Boolean | false | Set to `true` to start the ripple from the center |
 | **disabled**  | optional | Boolean | false | Set to `true` to disable ripples |
 | **duration**                | optional | Number | `1 / opacityDecayVelocity * 0.2` | The animation duration in seconds |
-| **end**       | optional | Function | | Callback function when the ripple has ended; see Callback functions |
+| **start**     | optional | Function | `(e: Event) => void` | Callback function just before the ripple starts; see Callback functions |
+| **end**       | optional | Function | `(e: AnimationEvent) => void` | Callback function when the ripple has ended; see Callback functions |
 | **endOpacity**              | optional | Number | 0.0 | Opacity at the end of the ripple animation |
 | **endScale**                | optional | Number | 2.0 | Scale at the end of the ripple animation |
 | **multi**     | optional | Boolean | false | Set to `true` to enable multiple simultaneous ripples, instead of one after the other |
 | **opacityDecayVelocity**    | optional | Number | 0.4 | Velocity of decrease of opacity |
 | **persistent**              | optional | Boolean | false | Set to `true` to keep the ripple at the end of the animation to make a persistent color fill |
-| **start**     | optional | Function | | Callback function just before the ripple starts; see Callback functions |
 | **startOpacity**            | optional | Number | 0.2 | Opacity at the start of the ripple animation |
 | **startScale**              | optional | Number | 0.1 | Scale at the start of the ripple animation |
 | **target**                  | optional | HTML Element | the ripple's parent node element | The target defines which element responds to tap |

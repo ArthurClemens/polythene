@@ -77,7 +77,7 @@ These options also have effect on the generated HTML input field.
 | **ignoreEvents** | optional | Array | | List of input event names to ignore, for instance `["onblur"]` |
 | **multiLine** | optional | Boolean | false | Set to `true` to create a textarea instead of an text input field |
 | **name** | optional | String | | Input element name |
-| **onChange**  | optional | Function `({focus::Boolean, setInputState({ focus, value }) -> undefined, dirty::Boolean, value::String, el::HTMLElement, invalid::Boolean, error:String}) -> undefined` | | Callback function that receives the field state |
+| **onChange**  | optional | Function `({ focus: boolean, setInputState: setInputStateFn, dirty: boolean, value: string, el: HTMLElement, invalid: boolean, error: string }) => undefined` | | Callback function that receives the field state |
 | **readonly** (React: **readOnly**) | optional | Boolean | | Creates a readonly input field |
 | **rows** | optional (only when `multiLine` is `true`) | Number | | The number of rows for the textarea |
 | **type** | optional | String: "text", "password", "email", "number", ... | "text" | Type of input element |
@@ -101,7 +101,7 @@ These options also have effect on the generated HTML input field.
 | **required**  | optional | Boolean | false  | Set to `true` to use HTML5 field validation to test for a non-empty value; adds a "required mark" (asterisk character) to the label |
 | **requiredIndicator** | optional | String | "*"  | String to indicate that the field is required; added to the label string |
 | **valid**     | optional | Boolean | false | Use for per field validation when the field value is kept in local state, for instance when using a form validator; overrides built-in form validation |
-| **validate**  | optional | Function `(value::String) -> {valid::Boolean, error::String}` | | Use for custom per field validation when you don't keep the field value in a local state (in that case, use `valid`) |
+| **validate**  | optional | Function `(value: string) => { valid: boolean, error: string } | undefined` | | Use for custom per field validation when you don't keep the field value in a local state (in that case, use `valid`) |
 | **validateAtStart** | optional | Boolean | false | Set to `true` to validate the field before any user action |
 | **validateOnInput** | optional | Boolean | false | Set to `true` to validate the field at the first keypress |
 | **validateResetOnClear** | optional | Boolean | false | Set to `true` to re-initiate validation state when the field is cleared |
