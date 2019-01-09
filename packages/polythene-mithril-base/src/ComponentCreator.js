@@ -3,7 +3,7 @@
 /**
  * @typedef {import("mithril").Vnode} Vnode
  * @typedef {import("../index")}
- * @typedef {import("../index").StateComponentAssemblyOptions} StateComponentAssemblyOptions
+ * @typedef {import("../index").ComponentCreatorOptions} ComponentCreatorOptions
  */
 
 import stream from "mithril/stream";
@@ -13,9 +13,9 @@ import { keys } from "./keys";
 const requiresKeys = false;
 
 /**
- * @param {StateComponentAssemblyOptions} params
+ * @param {ComponentCreatorOptions} params
  */
-export const StateComponent = ({
+export const ComponentCreator = ({
   createContent = () => null,
   createProps = () => ({}),
   component = null,

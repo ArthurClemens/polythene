@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, Content } from "polythene-core";
+import { CommonOptions, TransitionOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
   
@@ -98,3 +98,5 @@ export interface Options extends Partial<CommonOptions> {
   width: "auto" | 1 | 1.5 | 2 | 3 | 4 | 5 | 6 | 7;
   
 }
+
+export const coreMenu: CoreComponentCreatorOptions;

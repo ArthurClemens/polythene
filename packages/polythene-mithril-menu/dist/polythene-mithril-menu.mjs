@@ -1,24 +1,40 @@
-import { StateComponent, renderer } from 'polythene-mithril-base';
-import { Conditional } from 'polythene-core';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
+import { coreConditional } from 'polythene-core';
 import { coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var listTileClasses = {
@@ -70,23 +86,26 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-var MenuInstance = StateComponent(_extends({}, coreMenu, {
+var MenuInstance = ComponentCreator(_objectSpread({}, coreMenu, {
   createContent: function createContent(vnode, args) {
-    return coreMenu.createContent(vnode, _extends(args, {
+    return coreMenu.createContent(vnode, _objectSpread({}, args, {
       Shadow: Shadow
     }));
   }
 }));
-var MenuToggle = StateComponent(Conditional);
-MenuToggle.displayName = "MenuToggle";
+var MenuToggle = ComponentCreator(coreConditional);
+MenuToggle["displayName"] = "MenuToggle";
 var Menu = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return renderer(MenuToggle, _extends({}, vnode.attrs, {
+    return renderer(MenuToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: MenuInstance
     }));
   }
 };
-Menu.displayName = "Menu";
+Menu["displayName"] = "Menu";
 
 export { Menu };

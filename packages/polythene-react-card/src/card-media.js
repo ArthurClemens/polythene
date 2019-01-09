@@ -1,9 +1,8 @@
-import { StateComponent } from "polythene-react-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-react-base";
 import { coreCardMedia as core } from "polythene-core-card";
 
-export const CardMedia = StateComponent(Object.assign(
-  {},
-  core
-));
+export const CardMedia = ComponentCreator(core);
 
-CardMedia.displayName = "CardMedia";
+CardMedia["displayName"] = "CardMedia";

@@ -33,7 +33,6 @@ export const createContent = (vnode, { renderer: h, Icon, IconButton }) => {
     {},
     {
       element: "div",
-      key: attrs.key,
       className: classes.button,
       content: CONTENT.map(o =>
         h(Icon, createIcon(h, o.iconType, attrs, o.className))

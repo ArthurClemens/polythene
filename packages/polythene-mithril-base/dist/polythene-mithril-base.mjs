@@ -294,10 +294,10 @@ var stream$1 = stream;
 
 var requiresKeys = false;
 /**
- * @param {StateComponentAssemblyOptions} params
+ * @param {ComponentCreatorOptions} params
  */
 
-var StateComponent = function StateComponent(_ref) {
+var ComponentCreator = function ComponentCreator(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === void 0 ? function () {
     return null;
@@ -401,81 +401,4 @@ var StateComponent = function StateComponent(_ref) {
   };
 };
 
-// @ts-check
-var requiresKeys$1 = false;
-/**
- * @param {ViewComponentAssemblyOptions} params
- */
-
-var ViewComponent = function ViewComponent(_ref) {
-  var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {
-    return null;
-  } : _ref$createContent,
-      _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {
-    return {};
-  } : _ref$createProps,
-      _ref$getElement = _ref.getElement,
-      getElement = _ref$getElement === void 0 ? function () {
-    return "div";
-  } : _ref$getElement,
-      _ref$component = _ref.component,
-      component = _ref$component === void 0 ? null : _ref$component,
-      _ref$view = _ref.view,
-      view = _ref$view === void 0 ? null : _ref$view,
-      _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {
-    return null;
-  } : _ref$onMount,
-      _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {
-    return null;
-  } : _ref$onUnMount;
-
-  /**
-   * @param {Vnode} vnode 
-   */
-  var render = function render(vnode) {
-    return renderer(component || getElement(vnode), createProps(vnode, {
-      renderer: renderer,
-      requiresKeys: requiresKeys$1,
-      keys: keys
-    }), [vnode.attrs.before, createContent(vnode, {
-      renderer: renderer,
-      requiresKeys: requiresKeys$1,
-      keys: keys
-    }), vnode.attrs.after]);
-  };
-
-  return {
-    view: view ?
-    /**
-     * @param {Vnode} vnode
-     */
-    function (vnode) {
-      return view(vnode, {
-        render: render,
-        renderer: renderer
-      });
-    } :
-    /**
-     * @param {Vnode} vnode
-     */
-    function (vnode) {
-      return render(vnode);
-    },
-
-    /**
-     * @param {Vnode} vnode
-     */
-    oncreate: function oncreate(vnode) {
-      return onMount(vnode, {
-        keys: keys
-      });
-    },
-    onremove: onUnMount
-  };
-};
-
-export { keys, renderer, StateComponent, StateComponent as StateComponentAssembly, ViewComponent, ViewComponent as ViewComponentAssembly };
+export { keys, renderer, ComponentCreator };

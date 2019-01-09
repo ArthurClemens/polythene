@@ -1,39 +1,58 @@
-import { ViewComponent, StateComponent } from 'polythene-react-base';
+import { ComponentCreator } from 'polythene-react-base';
 import { coreCardActions, coreCardMedia, coreCardPrimary, coreCard } from 'polythene-core-card';
 import { Icon } from 'polythene-react-icon';
 import { ListTile } from 'polythene-react-list-tile';
 import { Shadow } from 'polythene-react-shadow';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var CardActions = ViewComponent(_extends({}, coreCardActions));
-CardActions.displayName = "CardActions";
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
 
-var CardMedia = StateComponent(_extends({}, coreCardMedia));
-CardMedia.displayName = "CardMedia";
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
 
-var CardPrimary = ViewComponent(_extends({}, coreCardPrimary));
-CardPrimary.displayName = "CardPrimary";
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-var Card = ViewComponent(_extends({}, coreCard, {
+  return target;
+}
+
+// @ts-check
+var CardActions = ComponentCreator(coreCardActions);
+CardActions["displayName"] = "CardActions";
+
+// @ts-check
+var CardMedia = ComponentCreator(coreCardMedia);
+CardMedia["displayName"] = "CardMedia";
+
+// @ts-check
+var CardPrimary = ComponentCreator(coreCardPrimary);
+CardPrimary["displayName"] = "CardPrimary";
+
+var Card = ComponentCreator(_objectSpread({}, coreCard, {
   createContent: function createContent(vnode, args) {
-    return coreCard.createContent(vnode, _extends(args, {
+    return coreCard.createContent(vnode, _objectSpread({}, args, {
       CardActions: CardActions,
       CardMedia: CardMedia,
       CardPrimary: CardPrimary,
@@ -43,6 +62,6 @@ var Card = ViewComponent(_extends({}, coreCard, {
     }));
   }
 }));
-Card.displayName = "Card";
+Card["displayName"] = "Card";
 
 export { Card };

@@ -1,4 +1,4 @@
-import { CommonOptions, Content } from "polythene-core";
+import { CommonOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -84,3 +84,5 @@ export interface Options extends Partial<CommonOptions> {
   ticks?: boolean;
 
 }
+
+export const coreSlider: CoreComponentCreatorOptions;

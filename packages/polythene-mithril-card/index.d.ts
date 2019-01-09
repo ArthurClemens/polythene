@@ -1,7 +1,9 @@
-import { Component } from "mithril";
+import { Component, Vnode } from "mithril";
 import { Options } from "polythene-core-card";
 
-interface Card extends Options{}
+interface Card extends Options{
+  (_: Options): Vnode<Options>;
+}
 declare namespace Card {}
 declare const Card: Component<Options>;
 

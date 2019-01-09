@@ -1,9 +1,8 @@
-import { ViewComponent } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-mithril-base";
 import { coreCardPrimary as core } from "polythene-core-card";
 
-export const CardPrimary = ViewComponent(Object.assign(
-  {},
-  core
-));
+export const CardPrimary = ComponentCreator(core);
 
-CardPrimary.displayName = "CardPrimary";
+CardPrimary["displayName"] = "CardPrimary";

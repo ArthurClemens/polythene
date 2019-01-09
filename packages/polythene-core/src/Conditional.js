@@ -75,20 +75,18 @@ export const Conditional = {
     const visible = mode !== modes.hidden;
     return visible
       ? h(attrs.instance, {
-        attrs,
-        ...{
-          didHide:
-            /**
-             * @param {any} args
-             */
-            (args) => (
-              attrs.didHide(args),
-              state.mode(attrs.permanent
-                ? modes.visible
-                : modes.hidden
-              )
+        ...attrs,
+        didHide:
+          /**
+           * @param {any} args
+           */
+          (args) => (
+            attrs.didHide(args),
+            state.mode(attrs.permanent
+              ? modes.visible
+              : modes.hidden
             )
-        },
+          ),
         ...(mode === modes.hiding
           ? { show: true, hide: true }
           : undefined

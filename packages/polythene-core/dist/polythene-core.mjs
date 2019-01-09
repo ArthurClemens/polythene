@@ -112,9 +112,7 @@ var Conditional = {
 
     var mode = state.mode();
     var visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, _objectSpread({
-      attrs: attrs
-    }, {
+    return visible ? h(attrs.instance, _objectSpread({}, attrs, {
       didHide:
       /**
        * @param {any} args
@@ -787,7 +785,7 @@ var Multi = function Multi(_ref) {
     view: view
   };
 };
-Multi.displayName = "Multi";
+Multi["displayName"] = "Multi";
 
 /**
  * 
@@ -994,4 +992,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };
+export { Conditional as coreConditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };

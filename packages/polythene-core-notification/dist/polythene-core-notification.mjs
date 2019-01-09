@@ -224,7 +224,7 @@ var createContent = function createContent(vnode, _ref2) {
   }, attrs.action) : null]);
 };
 
-var notificationInstance = /*#__PURE__*/Object.freeze({
+var notification = /*#__PURE__*/Object.freeze({
   getElement: getElement,
   getInitialState: getInitialState,
   onMount: onMount,
@@ -233,4 +233,4 @@ var notificationInstance = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-export { notificationInstance as coreNotificationInstance };
+export { notification as coreNotification };

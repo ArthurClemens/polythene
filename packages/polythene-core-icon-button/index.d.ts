@@ -1,3 +1,4 @@
+import { CoreComponentCreatorOptions } from "polythene-core";
 import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -20,3 +21,5 @@ export interface Options extends ButtonOptions {
   compact?: boolean;
 
 }
+
+export const coreIconButton: CoreComponentCreatorOptions;

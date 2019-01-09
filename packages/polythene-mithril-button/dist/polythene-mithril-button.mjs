@@ -1,4 +1,4 @@
-import { StateComponent, StateComponentAssembly, renderer } from 'polythene-mithril-base';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { coreButton, coreRaisedButton } from 'polythene-core-button';
 import { Ripple } from 'polythene-mithril-ripple';
 import { Icon } from 'polythene-mithril-icon';
@@ -17,24 +17,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
 }
 
 function _objectSpread(target) {
@@ -56,16 +38,16 @@ function _objectSpread(target) {
   return target;
 }
 
-var TextButton = StateComponent(_extends({}, coreButton, {
+var TextButton = ComponentCreator(_objectSpread({}, coreButton, {
   createProps: function createProps(vnode, args) {
-    return coreButton.createProps(vnode, _extends(args, {
+    return coreButton.createProps(vnode, _objectSpread({}, args, {
       Ripple: Ripple,
       Icon: Icon,
       Shadow: Shadow
     }));
   },
   createContent: function createContent(vnode, args) {
-    return coreButton.createContent(vnode, _extends(args, {
+    return coreButton.createContent(vnode, _objectSpread({}, args, {
       Ripple: Ripple,
       Icon: Icon,
       Shadow: Shadow
@@ -74,7 +56,7 @@ var TextButton = StateComponent(_extends({}, coreButton, {
 }));
 TextButton["displayName"] = "TextButton";
 
-var RaisedButton = StateComponentAssembly(_objectSpread({}, coreRaisedButton, {
+var RaisedButton = ComponentCreator(_objectSpread({}, coreRaisedButton, {
   createProps: function createProps(vnode, args) {
     return coreRaisedButton.createProps(vnode, _objectSpread({}, args, {
       Shadow: Shadow
@@ -87,13 +69,12 @@ var RaisedButton = StateComponentAssembly(_objectSpread({}, coreRaisedButton, {
   },
   component: TextButton
 }));
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";
 
 // @ts-check
-var Button = StateComponent({
+var Button = ComponentCreator({
   /**
    * @param {Vnode} vnode
-   * @param {Options} vnode.attrs
    */
   view: function view(vnode) {
     return renderer(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);

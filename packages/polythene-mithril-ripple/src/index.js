@@ -1,6 +1,8 @@
-import { StateComponent } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-mithril-base";
 import { coreRipple as core } from "polythene-core-ripple";
 
-export const Ripple = StateComponent(core);
+export const Ripple = ComponentCreator(core);
 
-Ripple.displayName = "Ripple";
+Ripple["displayName"] = "Ripple";

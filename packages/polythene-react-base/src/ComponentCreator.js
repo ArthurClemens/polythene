@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @typedef {import("../index").StateComponentAssemblyOptions} StateComponentAssemblyOptions
+ * @typedef {import("../index").ComponentCreatorOptions} ComponentCreatorOptions
  */
 
 import React from "react";
@@ -14,9 +14,9 @@ import { isClient } from "polythene-core";
 const requiresKeys = true;
 
 /**
- * @param {StateComponentAssemblyOptions} params
+ * @param {ComponentCreatorOptions} params
  */
-export const StateComponent = ({
+export const ComponentCreator = ({
   createContent = () => {},
   createProps = () => ({}),
   getElement = () => "div",

@@ -159,7 +159,7 @@ export const createContent = (vnode, { renderer: h, keys: k, Ripple, Icon, Shado
         animated: true
       }),
       // Ripple
-      disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false)
+      disabled || noink || !Ripple || (h["displayName"] === "react" ? !state.dom() : false)
         // somehow Mithril does not update when the dom stream is updated
         ? null
         : h(Ripple, Object.assign({},

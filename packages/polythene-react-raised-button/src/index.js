@@ -1,8 +1,8 @@
 import { Button } from "polythene-react-button";
 import { deprecation } from "polythene-core";
-import { ViewComponent, renderer as h } from "polythene-react-base";
+import { ComponentCreator, renderer as h } from "polythene-react-base";
 
-export const RaisedButton = ViewComponent({
+export const RaisedButton = ComponentCreator({
   onMount: () => {
     deprecation("RaisedButton", { newComponent: "Button", newOption: "raised: true" });
   },
@@ -14,4 +14,4 @@ export const RaisedButton = ViewComponent({
     ), vnode.children)
 });
 
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";

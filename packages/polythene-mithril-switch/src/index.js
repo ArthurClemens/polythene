@@ -1,13 +1,12 @@
-import { StateComponent } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-mithril-base";
 import { coreSwitch as core } from "polythene-core-switch";
 import { SelectionControl } from "./selection-control";
 
-export const Switch = StateComponent(Object.assign(
-  {},
-  core,
-  {
-    component: SelectionControl
-  }
-));
+export const Switch = ComponentCreator({
+  ...core,
+  component: SelectionControl
+});
 
-Switch.displayName = "Switch";
+Switch["displayName"] = "Switch";

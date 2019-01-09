@@ -1,17 +1,18 @@
+// @ts-check
+
 import { Button } from "polythene-mithril-button";
 import { deprecation } from "polythene-core";
-import { ViewComponent, renderer as h } from "polythene-mithril-base";
+import { ComponentCreator, renderer as h } from "polythene-mithril-base";
 
-export const RaisedButton = ViewComponent({
+export const RaisedButton = ComponentCreator({
   onMount: () => {
     deprecation("RaisedButton", { newComponent: "Button", newOption: "raised: true" });
   },
   view: vnode =>
-    h(Button, Object.assign(
-      {},
-      { raised: true },
-      vnode.attrs
-    ), vnode.children)
+    h(Button, {
+      raised: true,
+      ...vnode.attrs
+    }, vnode.children)
 });
 
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";

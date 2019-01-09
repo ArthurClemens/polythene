@@ -1,4 +1,4 @@
-import { CommonOptions } from "polythene-core";
+import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
 
 interface CommonSVGOptions extends Partial<CommonOptions> {
 
@@ -15,3 +15,5 @@ interface CommonSVGOptions extends Partial<CommonOptions> {
 }
 
 export type Options = CommonSVGOptions;
+
+export const coreSVG: CoreComponentCreatorOptions;

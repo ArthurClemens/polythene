@@ -26,13 +26,15 @@ const mithrilTests = ({ TextField, Button, renderer: h }) => {
       section: "Mithril specific tests",
     },
     {
-      name: "Option: autocapitalize (iOS, Chrome 43 on Android)",
+      name: "Option: domAttributes (autocapitalize for iOS, Chrome 43 on Android)",
       component: {
         view: () => block([
           h(TextField, {
             name: "state",
-            autocapitalize: "characters",
-            placeholder: "type anything..."
+            placeholder: "type anything...",
+            domAttributes: {
+              autocapitalize: "characters",
+            }
           })
         ])
       }

@@ -1,7 +1,22 @@
-import { StateComponent, renderer } from 'polythene-react-base';
-import { Conditional } from 'polythene-core';
+import { ComponentCreator, renderer } from 'polythene-react-base';
+import { coreConditional } from 'polythene-core';
 import { coreDrawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-react-dialog';
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -21,6 +36,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-dialog pe-drawer",
   // states
@@ -34,11 +68,11 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-var DrawerInstance = StateComponent(_extends({}, coreDrawer, {
+var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
   component: DialogInstance
 }));
-var DrawerToggle = StateComponent(Conditional);
-DrawerToggle.displayName = "DrawerToggle";
+var DrawerToggle = ComponentCreator(coreConditional);
+DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = function Drawer(props) {
   return renderer(DrawerToggle, _extends({}, props, {
     placeholderClassName: classes.placeholder,
@@ -47,6 +81,6 @@ var Drawer = function Drawer(props) {
 
   }));
 };
-Drawer.displayName = "Drawer";
+Drawer["displayName"] = "Drawer";
 
 export { Drawer };

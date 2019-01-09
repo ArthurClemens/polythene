@@ -32,10 +32,7 @@ const beautifyCSS = cssString =>
   });
 
 const saveToFile = (path, cssString) => 
-  fs.writeFileSync(path, cssString, "ascii", err => {  
-    // throws an error, you could also catch it here
-    if (err) throw err;
-  });
+  fs.writeFileSync(path, cssString, "ascii");
 
 export const processCSS = ({ styles, path, autoPrefix }) => {
   const cssString = styles.reduce((acc, current) => (
@@ -69,7 +66,7 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=tr
       to:  path,
       map: { inline: false }
     }
-    : {};
+    : { from: undefined };
 
   postcss(plugins)
     .process(cssString, options)

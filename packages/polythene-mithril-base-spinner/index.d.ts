@@ -1,7 +1,9 @@
-import { Component } from "mithril";
+import { Component, Vnode } from "mithril";
 import { Options } from "polythene-core-base-spinner";
 
-interface BaseSpinner extends Options{}
+interface BaseSpinner extends Options{
+  (_: Options): Vnode<Options>;
+}
 declare namespace BaseSpinner {}
 declare const BaseSpinner: Component<Options>;
 

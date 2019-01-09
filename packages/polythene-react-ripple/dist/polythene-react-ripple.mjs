@@ -1,7 +1,8 @@
-import { StateComponent } from 'polythene-react-base';
+import { ComponentCreator } from 'polythene-react-base';
 import { coreRipple } from 'polythene-core-ripple';
 
-var Ripple = StateComponent(coreRipple);
-Ripple.displayName = "Ripple";
+// @ts-check
+var Ripple = ComponentCreator(coreRipple);
+Ripple["displayName"] = "Ripple";
 
 export { Ripple };

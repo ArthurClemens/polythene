@@ -7,10 +7,10 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
-    "build-standalone": "MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js DEST=./dist/polythene-css-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
+    "build:standalone": "MODULE_NAME=polytheneCSS ENTRY=scripts/standalone.js DEST=./dist/polythene-css-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
     "copy-css": "node ./scripts/copyCSS.js",
     "combine-css": "node ./scripts/combineCSS.js",
-    "build": "npm run rollup && npm run build-standalone && npm run copy-css && npm run combine-css"
+    "build": "npm run rollup && npm run build:standalone && npm run copy-css && npm run combine-css"
   },
   "files": [
     "dist",

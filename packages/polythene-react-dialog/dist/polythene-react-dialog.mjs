@@ -1,25 +1,41 @@
-import { StateComponent, renderer } from 'polythene-react-base';
+import { ComponentCreator, renderer } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
 import { coreDialog } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
 import { Shadow } from 'polythene-react-shadow';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var listTileClasses = {
@@ -92,16 +108,16 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-var DialogInstance = StateComponent(_extends({}, coreDialog, {
+var DialogInstance = ComponentCreator(_objectSpread({}, coreDialog, {
   createContent: function createContent(vnode, args) {
-    return coreDialog.createContent(vnode, _extends(args, {
+    return coreDialog.createContent(vnode, _objectSpread({}, args, {
       Shadow: Shadow,
       Pane: DialogPane,
       createPane: coreDialog.createPane
     }));
   }
 }));
-DialogInstance.displayName = "DialogInstance";
+DialogInstance["displayName"] = "DialogInstance";
 var options = {
   name: "dialog",
   htmlShowClass: classes.open,
@@ -114,10 +130,10 @@ var Multiple = Multi({
   options: options,
   renderer: renderer
 });
-var Dialog = StateComponent(Multiple);
+var Dialog = ComponentCreator(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Dialog[p] = Multiple[p];
 });
-Dialog.displayName = "Dialog";
+Dialog["displayName"] = "Dialog";
 
 export { DialogInstance, Dialog };

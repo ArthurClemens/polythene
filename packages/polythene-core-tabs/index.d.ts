@@ -1,4 +1,4 @@
-import { CommonOptions, Content } from "polythene-core";
+import { CommonOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
 import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -118,3 +118,7 @@ interface TabButtonOptions extends ButtonOptions {
 }
 
 export interface Options extends TabOptions, TabButtonOptions{}
+
+export const coreTabs: CoreComponentCreatorOptions;
+export const coreTab: CoreComponentCreatorOptions;
+export const coreScrollButton: CoreComponentCreatorOptions;

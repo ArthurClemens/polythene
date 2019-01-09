@@ -1,3 +1,4 @@
+import { CoreComponentCreatorOptions } from "polythene-core";
 import { Options as SpinnerOptions } from "polythene-core-base-spinner";
 
 export interface Options extends SpinnerOptions {
@@ -9,3 +10,5 @@ export interface Options extends SpinnerOptions {
   singleColor?: boolean;
 
 }
+
+export const coreIOSSpinner: CoreComponentCreatorOptions;

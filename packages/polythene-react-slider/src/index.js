@@ -1,6 +1,8 @@
-import { StateComponent } from "polythene-react-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-react-base";
 import { coreSlider as core } from "polythene-core-slider";
 
-export const Slider = StateComponent(core);
+export const Slider = ComponentCreator(core);
 
-Slider.displayName = "Slider";
+Slider["displayName"] = "Slider";

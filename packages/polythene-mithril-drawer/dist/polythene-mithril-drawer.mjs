@@ -1,24 +1,40 @@
-import { StateComponent, renderer } from 'polythene-mithril-base';
-import { Conditional } from 'polythene-core';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
+import { coreConditional } from 'polythene-core';
 import { coreDrawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-mithril-dialog';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -34,14 +50,17 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-var DrawerInstance = StateComponent(_extends({}, coreDrawer, {
+var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
   component: DialogInstance
 }));
-var DrawerToggle = StateComponent(Conditional);
-DrawerToggle.displayName = "DrawerToggle";
+var DrawerToggle = ComponentCreator(coreConditional);
+DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return renderer(DrawerToggle, _extends({}, vnode.attrs, {
+    return renderer(DrawerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
       permanent: vnode.attrs.permanent || vnode.attrs.mini // passed to Conditional
@@ -49,6 +68,6 @@ var Drawer = {
     }));
   }
 };
-Drawer.displayName = "Drawer";
+Drawer["displayName"] = "Drawer";
 
 export { Drawer };

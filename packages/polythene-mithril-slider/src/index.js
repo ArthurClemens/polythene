@@ -1,6 +1,8 @@
-import { StateComponent } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-mithril-base";
 import { coreSlider as core } from "polythene-core-slider";
 
-export const Slider = StateComponent(core);
+export const Slider = ComponentCreator(core);
 
-Slider.displayName = "Slider";
+Slider["displayName"] = "Slider";

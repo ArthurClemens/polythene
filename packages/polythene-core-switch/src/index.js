@@ -1,4 +1,5 @@
 import * as coreSwitch from "./switch";
 export { coreSwitch };
-import * as viewControl from "./view-control";
-export { viewControl };
+
+import * as coreViewControl from "./view-control";
+export { coreViewControl };

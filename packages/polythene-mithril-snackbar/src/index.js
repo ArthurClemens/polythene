@@ -1,11 +1,13 @@
-import { StateComponent, renderer } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
-import { coreSnackbarInstance as core, transitions } from "polythene-core-snackbar";
+import { coreSnackbar as core, transitions } from "polythene-core-snackbar";
 import classes from "polythene-css-classes/snackbar";
 
-export const SnackbarInstance = StateComponent(core);
+export const SnackbarInstance = ComponentCreator(core);
 
-SnackbarInstance.displayName = "SnackbarInstance";
+SnackbarInstance["displayName"] = "SnackbarInstance";
 
 const options = {
   name:           "snackbar",
@@ -20,7 +22,7 @@ const options = {
 };
 
 const Multiple = Multi({ options, renderer });
-export const Snackbar = StateComponent(Multiple);
+export const Snackbar = ComponentCreator(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Snackbar[p] = Multiple[p]);
 
-Snackbar.displayName = "Snackbar";
+Snackbar["displayName"] = "Snackbar";

@@ -1,24 +1,40 @@
-import { StateComponent, renderer } from 'polythene-react-base';
-import { Conditional } from 'polythene-core';
+import { ComponentCreator, renderer } from 'polythene-react-base';
+import { coreConditional } from 'polythene-core';
 import { coreMaterialDesignProgressSpinner } from 'polythene-core-material-design-progress-spinner';
 import { BaseSpinner } from 'polythene-react-base-spinner';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -48,18 +64,18 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = StateComponent(_extends({}, coreMaterialDesignProgressSpinner, {
+var SpinnerInstance = ComponentCreator(_objectSpread({}, coreMaterialDesignProgressSpinner, {
   component: BaseSpinner
 }));
-var SpinnerToggle = StateComponent(Conditional);
-SpinnerToggle.displayName = "MaterialDesignProgressSpinnerToggle";
+var SpinnerToggle = ComponentCreator(coreConditional);
+SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
-  return renderer(SpinnerToggle, _extends({}, props, {
+  return renderer(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,
     instance: SpinnerInstance
   }));
 };
-MaterialDesignProgressSpinner.classes = classes;
-MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
+MaterialDesignProgressSpinner["classes"] = classes;
+MaterialDesignProgressSpinner["displayName"] = "MaterialDesignProgressSpinner";
 
 export { MaterialDesignProgressSpinner };

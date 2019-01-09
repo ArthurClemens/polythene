@@ -215,7 +215,7 @@ var createContent = function createContent(vnode, _ref3) {
     shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
     animated: true
   }), // Ripple
-  disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
+  disabled || noink || !Ripple || (h["displayName"] === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
   ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()

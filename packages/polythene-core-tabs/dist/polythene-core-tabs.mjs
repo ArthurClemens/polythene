@@ -227,7 +227,6 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var state = vnode.state;
   var attrs = vnode.attrs;
 
   if (attrs.selectedTab !== undefined) {
@@ -446,9 +445,9 @@ var createProps$1 = function createProps(vnode, _ref) {
       Icon = _ref.Icon;
   var attrs = vnode.attrs; // Let internal onclick function co-exist with passed button option
 
-  attrs.events = attrs.events || {};
+  var events = attrs.events || {};
 
-  attrs.events[k.onclick] = attrs.events[k.onclick] || function () {};
+  events[k.onclick] = events[k.onclick] || function () {};
 
   return _extends({}, attrs, {
     content: h("div", {
@@ -460,9 +459,9 @@ var createProps$1 = function createProps(vnode, _ref) {
     selected: attrs.selected,
     wash: false,
     ripple: true,
-    events: _extends({}, attrs.events, _defineProperty({}, k.onclick, function (e) {
+    events: _extends({}, events, _defineProperty({}, k.onclick, function (e) {
       attrs.onSelect();
-      attrs.events[k.onclick](e);
+      events[k.onclick](e);
     }))
   });
 };

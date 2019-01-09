@@ -8,7 +8,7 @@ const baseDir = process.cwd();
 
 const build = dir => {
   shell.cd(dir);
-  shell.exec("npm run build-standalone");
+  shell.exec("npm run build:standalone");
   shell.cd(baseDir);
 };
 

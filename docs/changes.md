@@ -50,6 +50,8 @@ Functions `addStyle` and `getStyle` now accept a parameter `scope` to  restrict 
   * Option `content` is now restricted to contain only the list of option objects for distinct card areas. To pass other content, use `children`.
 * List Tile:
   * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable.
+* TextField:
+  * Additional DOM properties such as `autocapitalize` (`autoCapitalize` for React) can be passed with option `domAttributes`.
 * Toolbar:
   * Better aligned title and first icon to the grid, differentiating whitespace on mobile and tablet.
   * Increased font size to `20px` (which can be overridden by theming).

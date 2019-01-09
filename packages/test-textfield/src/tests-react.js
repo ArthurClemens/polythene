@@ -21,31 +21,44 @@ const reactTests = ({ TextField, Button, renderer: h }) => { // eslint-disable-l
       section: "React JSX tests",
     },
     {
+      name: "Option: domAttributes (autocapitalize for iOS, Chrome 43 on Android) (JSX)",
+      component: () =>
+        block(
+          <TextField
+            name="state"
+            placeholder="type anything..."
+            domAttributes={{
+              autoCapitalize: "characters"
+            }}
+          />
+        )
+    },
+    {
       name: "Option: value (JSX)",
       component: () =>
-        block([
+        block(<React.Fragment>
           <TextField
             type="password"
             defaultValue="123456"
             key="a"
-          />,
+          />
           <TextField
             type="number"
             defaultValue="123456"
             key="b"
-          />,
+          />
           <TextField
             type="email"
             defaultValue="a@b.com"
             key="c"
           />
-        ])
+        </React.Fragment>)
     },
     {
       name: "Option: counter, floatingLabel (JSX)",
       interactive: true,
       component: () =>
-        block([
+        block(
           <TextField
             label="Description"
             floatingLabel
@@ -53,7 +66,7 @@ const reactTests = ({ TextField, Button, renderer: h }) => { // eslint-disable-l
             error="You have exceeded the maximum number of characters."
             key="x"
           />
-        ])
+        )
     },
     {
       name: "Form validation with github.com/ludbek/powerform",

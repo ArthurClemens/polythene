@@ -7,8 +7,9 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
-    "build-standalone": "ENTRY=scripts/standalone.js DEST=./dist/polythene-mithril-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
-    "build": "npm run clean && npm run rollup && npm run build-standalone"
+    "build:standalone": "ENTRY=scripts/standalone.js DEST=./dist/polythene-mithril-standalone ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.browser.js",
+    "build": "npm run clean && npm run rollup",
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true index.js"
   },
   "files": [
     "dist",

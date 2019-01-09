@@ -56,4 +56,4 @@ var drawer = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-export { drawer as coreDrawer };
+export { drawer as coreDrawer, getElement, createProps, createContent };

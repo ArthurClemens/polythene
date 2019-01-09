@@ -9,7 +9,7 @@
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "write-css": "node ./scripts/writeCSS.js",
     "build": "npm run clean && npm run rollup && npm run write-css",
-    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs index.js"
+    "typecheck": "../../node_modules/typescript/bin/tsc --project ./tsconfig.json"
   },
   "files": [
     "dist",

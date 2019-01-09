@@ -1,39 +1,55 @@
-import { StateComponent } from 'polythene-react-base';
+import { ComponentCreator } from 'polythene-react-base';
 import { coreIconButton } from 'polythene-core-icon-button';
 import { Icon } from 'polythene-react-icon';
 import { Button } from 'polythene-react-button';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var IconButton = StateComponent(_extends({}, coreIconButton, {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var IconButton = ComponentCreator(_objectSpread({}, coreIconButton, {
   createProps: function createProps(vnode, args) {
-    return coreIconButton.createProps(vnode, _extends(args, {
+    return coreIconButton.createProps(vnode, _objectSpread({}, args, {
       Icon: Icon
     }));
   },
   createContent: function createContent(vnode, args) {
-    return coreIconButton.createContent(vnode, _extends(args, {
+    return coreIconButton.createContent(vnode, _objectSpread({}, args, {
       Icon: Icon
     }));
   },
   component: Button
 }));
-IconButton.displayName = "IconButton";
+IconButton["displayName"] = "IconButton";
 
 export { IconButton };

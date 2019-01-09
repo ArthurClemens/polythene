@@ -1,11 +1,13 @@
-import { StateComponent, renderer } from "polythene-react-base";
+// @ts-check
+
+import { ComponentCreator, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
-import { coreNotificationInstance as core } from "polythene-core-notification";
+import { coreNotification as core } from "polythene-core-notification";
 import classes from "polythene-css-classes/notification";
 
-export const NotificationInstance = StateComponent(core);
+export const NotificationInstance = ComponentCreator(core);
 
-NotificationInstance.displayName = "NotificationInstance";
+NotificationInstance["displayName"] = "NotificationInstance";
 
 const options = {
   name:           "notification",
@@ -19,7 +21,7 @@ const options = {
 };
 
 const Multiple = Multi({ options, renderer });
-export const Notification = StateComponent(Multiple);
+export const Notification = ComponentCreator(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(p => Notification[p] = Multiple[p]);
 
-Notification.displayName = "Notification";
+Notification["displayName"] = "Notification";

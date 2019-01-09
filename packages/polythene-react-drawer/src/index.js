@@ -1,17 +1,18 @@
-import { StateComponent, renderer as h } from "polythene-react-base";
-import { Conditional } from "polythene-core";
+// @ts-check
+
+import { ComponentCreator, renderer as h } from "polythene-react-base";
+import { coreConditional } from "polythene-core";
 import { coreDrawer as core } from "polythene-core-drawer";
 import { DialogInstance } from "polythene-react-dialog";
 import classes from "polythene-css-classes/drawer";
 
-const DrawerInstance = StateComponent(Object.assign(
-  {},
-  core,
-  { component: DialogInstance }
-));
+const DrawerInstance = ComponentCreator({
+  ...core,
+  component: DialogInstance
+});
 
-const DrawerToggle = StateComponent(Conditional);
-DrawerToggle.displayName = "DrawerToggle";
+const DrawerToggle = ComponentCreator(coreConditional);
+DrawerToggle["displayName"] = "DrawerToggle";
 
 export const Drawer = props => (
   h(DrawerToggle, Object.assign(
@@ -25,4 +26,4 @@ export const Drawer = props => (
   ))
 );
 
-Drawer.displayName = "Drawer";
+Drawer["displayName"] = "Drawer";

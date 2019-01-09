@@ -1,9 +1,8 @@
-import { StateComponent } from "polythene-mithril-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-mithril-base";
 import { coreCardMedia as core } from "polythene-core-card";
 
-export const CardMedia = StateComponent(Object.assign(
-  {},
-  core
-));
+export const CardMedia = ComponentCreator(core);
 
-CardMedia.displayName = "CardMedia";
+CardMedia["displayName"] = "CardMedia";

@@ -1,35 +1,54 @@
-import { ViewComponent } from 'polythene-react-base';
+import { ComponentCreator } from 'polythene-react-base';
 import { coreToolbar, coreToolbarTitle } from 'polythene-core-toolbar';
 import { Shadow } from 'polythene-react-shadow';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var Toolbar = ViewComponent(_extends({}, coreToolbar, {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var Toolbar = ComponentCreator(_objectSpread({}, coreToolbar, {
   createContent: function createContent(vnode, args) {
-    return coreToolbar.createContent(vnode, _extends(args, {
+    return coreToolbar.createContent(vnode, _objectSpread({}, args, {
       Shadow: Shadow
     }));
   }
 }));
-Toolbar.displayName = "Toolbar";
+Toolbar["displayName"] = "Toolbar";
 
-var ToolbarTitle = ViewComponent(coreToolbarTitle);
-ToolbarTitle.displayName = "ToolbarTitle";
+// @ts-check
+var ToolbarTitle = ComponentCreator(coreToolbarTitle);
+ToolbarTitle["displayName"] = "ToolbarTitle";
+
+// @ts-check
 
 export { Toolbar, ToolbarTitle };

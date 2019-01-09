@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, Content } from "polythene-core";
+import { CommonOptions, TransitionOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -80,3 +80,5 @@ export interface SpawnOptions {
 
 export type show = <T>(messageOptions: AppearanceOptions, spawnOptions?: SpawnOptions) => Promise<T>;
 export type hide = <T>(spawnOptions?: SpawnOptions) => Promise<T>;
+
+export const coreNotification: CoreComponentCreatorOptions;

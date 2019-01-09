@@ -73,7 +73,7 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
                 padding: "0 10px"
               }
             },
-            h(ExposedDropdown, { height: "max" })
+            h(ExposedDropdown, { id: "exposed-menu", height: "max" })
           )
       }
     },
@@ -84,8 +84,14 @@ export default ({ renderer, keys, Menu, List, ListTile, Button, Shadow, IconButt
       component: {
         view: () =>
           h("div",
-            null,
-            h(ExposedDropdown, { height: 150 })
+            {
+              style: {
+                height: "300px",
+                backgroundColor: "#dadada",
+                padding: "0 10px"
+              }
+            },
+            h(ExposedDropdown, { id: "exposed-menu-height-150", height: 150 })
           )
       }
     },

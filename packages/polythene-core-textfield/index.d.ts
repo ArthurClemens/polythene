@@ -1,4 +1,4 @@
-import { CommonOptions } from "polythene-core";
+import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
 
 export type onChangeTextFieldState = { focus: boolean, setInputState: setInputStateFn, dirty: boolean, value: string, el: HTMLElement, invalid: boolean, error: string };
 type onChangeTextField = ({ focus, setInputState, dirty, value, el, invalid, error } : onChangeTextFieldState) => void;
@@ -102,7 +102,8 @@ interface InputOptions {
 
   /**
    * (Mithril)
-   * Set to true to give the input field autofocus; NOTE: does not work on iOS, set focus explicitly when an event is fired.
+   * Set to true to give the input field autofocus.
+   * Does not work on iOS; set focus explicitly when an event is fired.
    */
   autofocus?: boolean;
   
@@ -167,23 +168,9 @@ interface InputOptions {
   rows?: number;
 
   /**
-   * Placeholder text.
+   * Placeholder text. ALternative for using a label.
    */
   placeholder?: string;
-
-  /**
-   * (Mithril)
-   * Apple introduced an attribute on HTMLInputElement and HTMLTextAreaElement called autocapitalize in iOS 5. It allows the page author to hint at how the browser should present the virtual keyboard for a user to optimize text entry for the user. In it's simplest form, you could indicate that a text box should automatically capitalize the first letter of every new sentence.
-   * @see https://googlechrome.github.io/samples/autocapitalize/
-   */
-  autocapitalize?: "off" | "none" | "on" | "sentences" | "words" | "characters";
-
-  /**
-   * (React)
-   * Apple introduced an attribute on HTMLInputElement and HTMLTextAreaElement called autocapitalize in iOS 5. It allows the page author to hint at how the browser should present the virtual keyboard for a user to optimize text entry for the user. In it's simplest form, you could indicate that a text box should automatically capitalize the first letter of every new sentence.
-   * @see https://googlechrome.github.io/samples/autocapitalize/
-   */
-  autoCapitalize?: "off" | "none" | "on" | "sentences" | "words" | "characters";
 
 }
 
@@ -285,3 +272,4 @@ interface ValidationOptions {
 
 export interface Options extends CommonTextFieldOptions, InputOptions, AppearanceOptions, ValidationOptions{}
 
+export const coreTextField: CoreComponentCreatorOptions;

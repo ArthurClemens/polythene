@@ -1,6 +1,6 @@
-import { StateComponent, renderer } from 'polythene-mithril-base';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
-import { coreNotificationInstance } from 'polythene-core-notification';
+import { coreNotification } from 'polythene-core-notification';
 
 var classes = {
   component: "pe-notification",
@@ -18,8 +18,9 @@ var classes = {
   visible: "pe-notification--visible"
 };
 
-var NotificationInstance = StateComponent(coreNotificationInstance);
-NotificationInstance.displayName = "NotificationInstance";
+// @ts-check
+var NotificationInstance = ComponentCreator(coreNotification);
+NotificationInstance["displayName"] = "NotificationInstance";
 var options = {
   name: "notification",
   className: classes.component,
@@ -34,10 +35,10 @@ var Multiple = Multi({
   options: options,
   renderer: renderer
 });
-var Notification = StateComponent(Multiple);
+var Notification = ComponentCreator(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Notification[p] = Multiple[p];
 });
-Notification.displayName = "Notification";
+Notification["displayName"] = "Notification";
 
 export { NotificationInstance, Notification };

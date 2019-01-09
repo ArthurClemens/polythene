@@ -1,7 +1,8 @@
-import { StateComponent } from 'polythene-react-base';
+import { ComponentCreator } from 'polythene-react-base';
 import { coreDialogPane } from 'polythene-core-dialog-pane';
 
-var DialogPane = StateComponent(coreDialogPane);
-DialogPane.displayName = "DialogPane";
+// @ts-check
+var DialogPane = ComponentCreator(coreDialogPane);
+DialogPane["displayName"] = "DialogPane";
 
 export { DialogPane };

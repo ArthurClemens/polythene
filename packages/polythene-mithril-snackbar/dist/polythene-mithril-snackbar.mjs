@@ -1,6 +1,6 @@
-import { StateComponent, renderer } from 'polythene-mithril-base';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
-import { coreSnackbarInstance, transitions } from 'polythene-core-snackbar';
+import { coreSnackbar, transitions } from 'polythene-core-snackbar';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -45,8 +45,9 @@ var classes = _extends({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
-var SnackbarInstance = StateComponent(coreSnackbarInstance);
-SnackbarInstance.displayName = "SnackbarInstance";
+// @ts-check
+var SnackbarInstance = ComponentCreator(coreSnackbar);
+SnackbarInstance["displayName"] = "SnackbarInstance";
 var options = {
   name: "snackbar",
   className: classes.component,
@@ -62,10 +63,10 @@ var Multiple = Multi({
   options: options,
   renderer: renderer
 });
-var Snackbar = StateComponent(Multiple);
+var Snackbar = ComponentCreator(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Snackbar[p] = Multiple[p];
 });
-Snackbar.displayName = "Snackbar";
+Snackbar["displayName"] = "Snackbar";
 
 export { SnackbarInstance, Snackbar };

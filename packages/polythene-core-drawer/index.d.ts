@@ -1,3 +1,4 @@
+import { CoreComponentCreatorOptions } from "polythene-core";
 import { Options as DialogOptions, AppearanceOptions as DialogAppearanceOptions } from "polythene-core-dialog";
 
 export interface Options extends DialogOptions, DialogAppearanceOptions {
@@ -76,3 +77,5 @@ export interface Options extends DialogOptions, DialogAppearanceOptions {
   element?: string;
 
 }
+
+export const coreDrawer: CoreComponentCreatorOptions;

@@ -40,17 +40,17 @@ export type Content = object | any;
 
   export interface ConditionalOptions {
     
-    permanent?: boolean;
+    permanent: boolean;
 
-    show?: boolean;
+    show: boolean;
 
-    hide?: boolean;
+    hide: boolean;
 
-    inactive?: boolean;
+    inactive: boolean;
 
-    instance?: any;
+    instance: any;
 
-    placeholderClassName?: string;
+    placeholderClassName: string;
 
     /**
      * Callback function that is called when the hide transition is done.
@@ -58,6 +58,8 @@ export type Content = object | any;
     didHide: (id: string) => void;
 
   }
+
+  export const coreConditional: Partial<CoreComponentCreatorOptions>;
 
 /* Conditional.js END */
 
@@ -112,6 +114,9 @@ export type Content = object | any;
 /* iso.js END */
 
 /* multi.js START */
+
+export const Multi: ({ options, renderer } : { options: object, renderer: any }) => any;
+
 
 /* multi.js END */
 
@@ -173,6 +178,11 @@ export interface CommonOptions {
    * Renders the component light on dark (sets class pe-dark-tone); use "light" to locally inverse (sets class pe-light-tone).
    */
   tone: "dark" | "light";
+
+  /**
+   * Extra DOM attributes.
+   */
+  domAttributes: {[key: string]: string};
 
 }
 
@@ -303,18 +313,14 @@ export interface TransitionOptions {
 
 }
 
-export interface CoreViewComponentAssemblyOptions {
-  createContent: (vnode: any, options?: any) => any;
-  createProps: (vnode: any, options?: any) => any;
+export interface CoreComponentCreatorOptions {
   getElement: (vnode: any) => any;
-  component: any;
-  view: (vnode: any, options?: any) => any;
+  getInitialState: (vnode: any, stream?:any, options?:any) => any;
   onMount: (vnode: any, options?: any) => any;
   onUnMount: (vnode: any) => any;
-}
-
-
-export interface CoreStateComponentAssemblyOptions extends CoreViewComponentAssemblyOptions {
-  getInitialState: (vnode: any, stream?:any, options?:any) => any;
   onUpdate: (vnode: any) => any;
+  createProps: (vnode: any, options?: any) => any;
+  createContent: (vnode: any, options?: any) => any;
+  component: any;
+  view: (vnode: any, options?: any) => any;
 }

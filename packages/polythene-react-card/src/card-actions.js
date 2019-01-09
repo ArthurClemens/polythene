@@ -1,9 +1,8 @@
-import { ViewComponent } from "polythene-react-base";
+// @ts-check
+
+import { ComponentCreator } from "polythene-react-base";
 import { coreCardActions as core } from "polythene-core-card";
 
-export const CardActions = ViewComponent(Object.assign(
-  {},
-  core
-));
+export const CardActions = ComponentCreator(core);
 
-CardActions.displayName = "CardActions";
+CardActions["displayName"] = "CardActions";

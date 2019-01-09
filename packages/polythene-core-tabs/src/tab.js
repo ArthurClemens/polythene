@@ -17,8 +17,8 @@ export const onMount = vnode => {
 export const createProps = (vnode, { renderer: h, keys: k, Icon }) => {
   const attrs = vnode.attrs;
   // Let internal onclick function co-exist with passed button option
-  attrs.events = attrs.events || {};
-  attrs.events[k.onclick] = attrs.events[k.onclick] || (() => {});
+  const events = attrs.events || {};
+  events[k.onclick] = events[k.onclick] || (() => {});
   return Object.assign(
     {},
     attrs,
@@ -44,11 +44,11 @@ export const createProps = (vnode, { renderer: h, keys: k, Icon }) => {
       ripple: true,
       events: Object.assign(
         {},
-        attrs.events,
+        events,
         {
           [k.onclick]: e => {
             attrs.onSelect();
-            attrs.events[k.onclick](e);
+            events[k.onclick](e);
           }
         }
       )

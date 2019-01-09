@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions } from "polythene-core";
+import { CommonOptions, TransitionOptions, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -48,3 +48,5 @@ export interface Options extends Partial<CommonOptions> {
   size?: "small" | "regular" | "medium" | "large" | "fab"
 
 }
+
+export const coreBaseSpinner: CoreComponentCreatorOptions;

@@ -101,4 +101,4 @@ var viewControl = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-export { _switch as coreSwitch, viewControl };
+export { _switch as coreSwitch, viewControl as coreViewControl };

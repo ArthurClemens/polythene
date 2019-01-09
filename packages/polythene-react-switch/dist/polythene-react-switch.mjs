@@ -1,49 +1,65 @@
-import { ViewComponent, StateComponent } from 'polythene-react-base';
-import { viewControl, coreSwitch } from 'polythene-core-switch';
+import { ComponentCreator } from 'polythene-react-base';
+import { coreViewControl, coreSwitch } from 'polythene-core-switch';
 import { coreSelectionControl } from 'polythene-core-selection-control';
 import { Shadow } from 'polythene-react-shadow';
 import { IconButton } from 'polythene-react-icon-button';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var ViewControl = ViewComponent(_extends({}, viewControl, {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var ViewControl = ComponentCreator(_objectSpread({}, coreViewControl, {
   createContent: function createContent(vnode, args) {
-    return viewControl.createContent(vnode, _extends(args, {
+    return coreViewControl.createContent(vnode, _objectSpread({}, args, {
       Shadow: Shadow,
       IconButton: IconButton
     }));
   }
 }));
-ViewControl.displayName = "ViewControl";
+ViewControl["displayName"] = "ViewControl";
 
-var SelectionControl = StateComponent(_extends({}, coreSelectionControl, {
+var SelectionControl = ComponentCreator(_objectSpread({}, coreSelectionControl, {
   createContent: function createContent(vnode, args) {
-    return coreSelectionControl.createContent(vnode, _extends(args, {
+    return coreSelectionControl.createContent(vnode, _objectSpread({}, args, {
       ViewControl: ViewControl
     }));
   }
 }));
-SelectionControl.displayName = "SelectionControl";
+SelectionControl["displayName"] = "SelectionControl";
 
-var Switch = StateComponent(_extends({}, coreSwitch, {
+var Switch = ComponentCreator(_objectSpread({}, coreSwitch, {
   component: SelectionControl
 }));
-Switch.displayName = "Switch";
+Switch["displayName"] = "Switch";
 
 export { Switch };

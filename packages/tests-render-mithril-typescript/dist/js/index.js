@@ -845,6 +845,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-text-button",
   super: "pe-button",
@@ -999,7 +1018,7 @@ var createContent = function createContent(vnode, _ref3) {
     shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
     animated: true
   }), // Ripple
-  disabled || noink || !Ripple || (h.displayName === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
+  disabled || noink || !Ripple || (h["displayName"] === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
   ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: state.dom()
@@ -1131,7 +1150,7 @@ var createProps$1 = function createProps(vnode) {
   var attrs = vnode.attrs;
   var state = vnode.state;
   var children = attrs.children || vnode.children || [];
-  return _extends({}, {
+  return _objectSpread({
     raised: true,
     animateOnTap: false,
     wash: attrs.wash !== undefined ? attrs.wash : false,
@@ -4866,12 +4885,15 @@ Object.freeze({
 /*!***********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-drawer/dist/polythene-core-drawer.mjs ***!
   \***********************************************************************************************************************************/
-/*! exports provided: coreDrawer */
+/*! exports provided: coreDrawer, getElement, createProps, createContent */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreDrawer", function() { return drawer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getElement", function() { return getElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProps", function() { return createProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createContent", function() { return createContent; });
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -5318,7 +5340,9 @@ var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children
   })) : null;
   var hasTabIndex = !attrs.header && attrs.url;
 
-  var props = _extends({}, Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["filterSupportedAttributes"])(attrs), attrs.events, {
+  var props = _extends({}, Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["filterSupportedAttributes"])(attrs), attrs.events, requiresKeys ? {
+    key: "primary"
+  } : null, {
     className: classes.primary,
     style: null
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
@@ -5417,6 +5441,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -5433,6 +5472,25 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 var listTileClasses = {
@@ -5532,12 +5590,12 @@ var createContent = function createContent(vnode, _ref2) {
   }
 
   var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
-  return [headerOpts ? h(ListTile, _extends({}, requiresKeys ? {
+  return [headerOpts ? h(ListTile, _objectSpread({}, requiresKeys ? {
     key: "header"
-  } : null, attrs.all, headerOpts, {
+  } : undefined, attrs.all, headerOpts, {
     header: true
-  })) : null, attrs.all ? tiles.map(function (tileOpts) {
-    return h(ListTile, _extends({}, attrs.all, tileOpts));
+  })) : undefined, attrs.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _objectSpread({}, attrs.all, tileOpts));
   }) : tiles];
 };
 
@@ -6280,12 +6338,12 @@ Object.freeze({
 /*!***********************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-notification/dist/polythene-core-notification.mjs ***!
   \***********************************************************************************************************************************************/
-/*! exports provided: coreNotificationInstance */
+/*! exports provided: coreNotification */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreNotificationInstance", function() { return notificationInstance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreNotification", function() { return notification; });
 /* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
 /* harmony import */ var polythene_utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-utilities */ "../../polythene-utilities/dist/polythene-utilities.mjs");
 
@@ -6517,7 +6575,7 @@ var createContent = function createContent(vnode, _ref2) {
   }, attrs.action) : null]);
 };
 
-var notificationInstance =
+var notification =
 /*#__PURE__*/
 Object.freeze({
   getElement: getElement,
@@ -7045,13 +7103,13 @@ Object.freeze({
 /*!*********************************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-selection-control/dist/polythene-core-selection-control.mjs ***!
   \*********************************************************************************************************************************************************/
-/*! exports provided: coreSelectionControl, viewControl */
+/*! exports provided: coreSelectionControl, coreViewControl */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreSelectionControl", function() { return selectionControl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "viewControl", function() { return viewControl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreViewControl", function() { return viewControl; });
 /* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
 
 
@@ -7267,7 +7325,6 @@ var createContent$1 = function createContent(vnode, _ref) {
   var attrs = vnode.attrs;
   return h(IconButton, _extends({}, {
     element: "div",
-    key: attrs.key,
     className: classes.button,
     content: CONTENT.map(function (o) {
       return h(Icon, createIcon(h, o.iconType, attrs, o.className));
@@ -7844,14 +7901,14 @@ Object.freeze({
 /*!***************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-snackbar/dist/polythene-core-snackbar.mjs ***!
   \***************************************************************************************************************************************/
-/*! exports provided: coreSnackbarInstance, transitions */
+/*! exports provided: coreSnackbar, transitions */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transitions", function() { return transitions; });
 /* harmony import */ var polythene_core_notification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-notification */ "../../polythene-core-notification/dist/polythene-core-notification.mjs");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "coreSnackbarInstance", function() { return polythene_core_notification__WEBPACK_IMPORTED_MODULE_0__["coreNotificationInstance"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "coreSnackbar", function() { return polythene_core_notification__WEBPACK_IMPORTED_MODULE_0__["coreNotification"]; });
 
 
 var DEFAULT_DURATION = 0.4;
@@ -7988,13 +8045,13 @@ Object.freeze({
 /*!***********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core-switch/dist/polythene-core-switch.mjs ***!
   \***********************************************************************************************************************************/
-/*! exports provided: coreSwitch, viewControl */
+/*! exports provided: coreSwitch, coreViewControl */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreSwitch", function() { return _switch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "viewControl", function() { return viewControl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreViewControl", function() { return viewControl; });
 /* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
 
 
@@ -8347,7 +8404,6 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
 };
 
 var getInitialState = function getInitialState(vnode, createStream) {
-  var state = vnode.state;
   var attrs = vnode.attrs;
 
   if (attrs.selectedTab !== undefined) {
@@ -8573,9 +8629,9 @@ var createProps$1 = function createProps(vnode, _ref) {
       Icon = _ref.Icon;
   var attrs = vnode.attrs; // Let internal onclick function co-exist with passed button option
 
-  attrs.events = attrs.events || {};
+  var events = attrs.events || {};
 
-  attrs.events[k.onclick] = attrs.events[k.onclick] || function () {};
+  events[k.onclick] = events[k.onclick] || function () {};
 
   return _extends({}, attrs, {
     content: h("div", {
@@ -8587,9 +8643,9 @@ var createProps$1 = function createProps(vnode, _ref) {
     selected: attrs.selected,
     wash: false,
     ripple: true,
-    events: _extends({}, attrs.events, _defineProperty({}, k.onclick, function (e) {
+    events: _extends({}, events, _defineProperty({}, k.onclick, function (e) {
       attrs.onSelect();
-      attrs.events[k.onclick](e);
+      events[k.onclick](e);
     }))
   });
 };
@@ -8711,42 +8767,6 @@ function _objectSpread(target) {
     ownKeys.forEach(function (key) {
       _defineProperty(target, key, source[key]);
     });
-  }
-
-  return target;
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
   }
 
   return target;
@@ -8985,7 +9005,7 @@ var createProps = function createProps(vnode, _ref3) {
   var attrs = vnode.attrs;
   var isInvalid = state.isInvalid();
   return _extends({}, Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["filterSupportedAttributes"])(attrs), {
-    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs[k.readonly] ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 
@@ -8993,54 +9013,25 @@ var createContent = function createContent(vnode, _ref4) {
   var h = _ref4.renderer,
       k = _ref4.keys;
   var state = vnode.state;
-  var attrs = vnode.attrs;
 
-  var counter = attrs.counter,
-      disabled = attrs.disabled,
-      errorAttr = attrs.error,
-      events = attrs.events,
-      help = attrs.help,
-      labelAttr = attrs.label,
-      multiLine = attrs.multiLine,
-      name = attrs.name,
-      optionalIndicatorAttr = attrs.optionalIndicator,
-      required = attrs.required,
-      requiredIndicatorAttr = attrs.requiredIndicator,
-      rowsAttr = attrs.rows,
-      typeAttr = attrs.type,
-      className = attrs.className,
-      defaultValue = attrs.defaultValue,
-      dense = attrs.dense,
-      floatingLabel = attrs.floatingLabel,
-      focusHelp = attrs.focusHelp,
-      fullWidth = attrs.fullWidth,
-      hideValidation = attrs.hideValidation,
-      onChange = attrs.onChange,
-      style = attrs.style,
-      tone = attrs.tone,
-      valid = attrs.valid,
-      validate = attrs.validate,
-      validateAtStart = attrs.validateAtStart,
-      value = attrs.value,
-      rest = _objectWithoutProperties(attrs, ["counter", "disabled", "error", "events", "help", "label", "multiLine", "name", "optionalIndicator", "required", "requiredIndicator", "rows", "type", "className", "defaultValue", "dense", "floatingLabel", "focusHelp", "fullWidth", "hideValidation", "onChange", "style", "tone", "valid", "validate", "validateAtStart", "value"]);
+  var attrs = _objectSpread({}, vnode.attrs, vnode.attrs.domAttributes);
 
   var inputEl = state.inputEl();
-  var error = errorAttr || state.error();
+  var error = attrs.error || state.error();
   var isInvalid = state.isInvalid();
-  var inputType = multiLine ? "textarea" : "input";
-  var type = multiLine ? null : !typeAttr || typeAttr === "submit" || typeAttr === "search" ? "text" : typeAttr;
+  var inputType = attrs.multiLine ? "textarea" : "input";
+  var type = attrs.multiLine ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
   var showError = isInvalid && error !== undefined;
-  var inactive = disabled || rest.readonly;
-  var rows = multiLine ? rowsAttr : undefined;
-  var requiredIndicator = required && requiredIndicatorAttr !== "" ? h("span", {
+  var inactive = attrs.disabled || attrs[k.readonly];
+  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
     key: "required",
     className: classes.requiredIndicator
-  }, requiredIndicatorAttr || "*") : null;
-  var optionalIndicator = !required && optionalIndicatorAttr ? h("span", {
+  }, attrs.requiredIndicator || "*") : null;
+  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? h("span", {
     key: "optional",
     className: classes.optionalIndicator
-  }, optionalIndicatorAttr) : null;
-  var label = labelAttr ? [labelAttr, requiredIndicator, optionalIndicator] : null;
+  }, attrs.optionalIndicator) : null;
+  var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
   return [h("div", {
     className: classes.inputArea,
     key: "input-area"
@@ -9050,11 +9041,11 @@ var createContent = function createContent(vnode, _ref4) {
   }, label) : null, h(inputType, _extends({}, {
     key: "input",
     className: classes.input,
-    disabled: disabled
+    disabled: attrs.disabled
   }, type ? {
     type: type
-  } : null, name ? {
-    name: name
+  } : null, attrs.name ? {
+    name: attrs.name
   } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
     if (inactive) {
       return;
@@ -9109,19 +9100,29 @@ var createContent = function createContent(vnode, _ref4) {
         focus: false
       });
     }
-  }) : null, events ? attrs.events : null, // NOTE: may overwrite oninput
-  rows !== undefined ? {
-    rows: rows
-  } : null, _objectSpread({}, rest)))]), counter ? h("div", {
+  }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
+  attrs.required !== undefined && !!attrs.required ? {
+    required: true
+  } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? {
+    pattern: attrs.pattern
+  } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? {
+    max: attrs.max
+  } : null, attrs.min !== undefined ? {
+    min: attrs.min
+  } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? {
+    rows: attrs.rows
+  } : null, attrs.placeholder !== undefined ? {
+    placeholder: attrs.placeholder
+  } : null, attrs.domAttributes !== undefined ? _objectSpread({}, attrs.domAttributes) : null))]), attrs.counter ? h("div", {
     key: "counter",
     className: classes.counter
-  }, (inputEl && inputEl.value.length || 0) + " / " + counter) : null, help && !showError ? h("div", {
+  }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {
     key: "help",
     className: [classes.help, attrs.focusHelp ? classes.focusHelp : null].join(" ")
-  }, help) : null, showError ? h("div", {
+  }, attrs.help) : null, showError ? h("div", {
     key: "error",
     className: classes.error
-  }, error) : state.showErrorPlaceholder && !help ? h("div", {
+  }, error) : state.showErrorPlaceholder && !attrs.help ? h("div", {
     key: "error-placeholder",
     className: classes.errorPlaceholder
   }) : null];
@@ -9269,12 +9270,12 @@ Object.freeze({
 /*!*********************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-core/dist/polythene-core.mjs ***!
   \*********************************************************************************************************************/
-/*! exports provided: Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit */
+/*! exports provided: coreConditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Conditional", function() { return Conditional; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coreConditional", function() { return Conditional; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deprecation", function() { return deprecation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterSupportedAttributes", function() { return filterSupportedAttributes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unpackAttrs", function() { return unpackAttrs; });
@@ -9416,9 +9417,7 @@ var Conditional = {
 
     var mode = state.mode();
     var visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, _objectSpread({
-      attrs: attrs
-    }, {
+    return visible ? h(attrs.instance, _objectSpread({}, attrs, {
       didHide:
       /**
        * @param {any} args
@@ -10099,7 +10098,7 @@ var Multi = function Multi(_ref) {
   };
 };
 
-Multi.displayName = "Multi";
+Multi["displayName"] = "Multi";
 /**
  * 
  * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
@@ -21418,22 +21417,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -21453,15 +21468,15 @@ var classes = {
   small: "pe-spinner--small",
   visible: "pe-spinner--visible"
 };
-var BaseSpinner = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_base_spinner__WEBPACK_IMPORTED_MODULE_1__["coreBaseSpinner"], {
+var BaseSpinner = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_base_spinner__WEBPACK_IMPORTED_MODULE_1__["coreBaseSpinner"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_base_spinner__WEBPACK_IMPORTED_MODULE_1__["coreBaseSpinner"].createContent(vnode, _extends(args, {
+    return polythene_core_base_spinner__WEBPACK_IMPORTED_MODULE_1__["coreBaseSpinner"].createContent(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_2__["Shadow"]
     }));
   }
 }));
-BaseSpinner.classes = classes;
-BaseSpinner.displayName = "BaseSpinner";
+BaseSpinner["classes"] = classes;
+BaseSpinner["displayName"] = "BaseSpinner";
 
 
 /***/ }),
@@ -21470,17 +21485,14 @@ BaseSpinner.displayName = "BaseSpinner";
 /*!*************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-mithril-base/dist/polythene-mithril-base.mjs ***!
   \*************************************************************************************************************************************/
-/*! exports provided: keys, renderer, StateComponent, StateComponentAssembly, ViewComponent, ViewComponentAssembly */
+/*! exports provided: keys, renderer, ComponentCreator */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keys", function() { return keys; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderer", function() { return renderer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateComponent", function() { return StateComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateComponentAssembly", function() { return StateComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewComponent", function() { return ViewComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewComponentAssembly", function() { return ViewComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentCreator", function() { return ComponentCreator; });
 /* harmony import */ var mithril__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mithril */ "../node_modules/mithril/mithril.js");
  // @ts-check
 
@@ -21512,8 +21524,7 @@ var keys = {
   ontouchstart: "ontouchstart",
   readonly: "readonly",
   tabindex: "tabindex"
-}; // @ts-ignore
-
+};
 var renderer = mithril__WEBPACK_IMPORTED_MODULE_0__;
 renderer["displayName"] = "mithril";
 
@@ -21775,10 +21786,10 @@ var stream = createCommonjsModule(function (module) {
 var stream$1 = stream;
 var requiresKeys = false;
 /**
- * @param {StateComponentAssemblyOptions} params
+ * @param {ComponentCreatorOptions} params
  */
 
-var StateComponent = function StateComponent(_ref) {
+var ComponentCreator = function ComponentCreator(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === void 0 ? function () {
     return null;
@@ -21880,83 +21891,6 @@ var StateComponent = function StateComponent(_ref) {
     onremove: onUnMount,
     onupdate: onUpdate
   };
-}; // @ts-check
-
-
-var requiresKeys$1 = false;
-/**
- * @param {ViewComponentAssemblyOptions} params
- */
-
-var ViewComponent = function ViewComponent(_ref) {
-  var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {
-    return null;
-  } : _ref$createContent,
-      _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {
-    return {};
-  } : _ref$createProps,
-      _ref$getElement = _ref.getElement,
-      getElement = _ref$getElement === void 0 ? function () {
-    return "div";
-  } : _ref$getElement,
-      _ref$component = _ref.component,
-      component = _ref$component === void 0 ? null : _ref$component,
-      _ref$view = _ref.view,
-      view = _ref$view === void 0 ? null : _ref$view,
-      _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {
-    return null;
-  } : _ref$onMount,
-      _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {
-    return null;
-  } : _ref$onUnMount;
-  /**
-   * @param {Vnode} vnode 
-   */
-
-  var render = function render(vnode) {
-    return renderer(component || getElement(vnode), createProps(vnode, {
-      renderer: renderer,
-      requiresKeys: requiresKeys$1,
-      keys: keys
-    }), [vnode.attrs.before, createContent(vnode, {
-      renderer: renderer,
-      requiresKeys: requiresKeys$1,
-      keys: keys
-    }), vnode.attrs.after]);
-  };
-
-  return {
-    view: view ?
-    /**
-     * @param {Vnode} vnode
-     */
-    function (vnode) {
-      return view(vnode, {
-        render: render,
-        renderer: renderer
-      });
-    } :
-    /**
-     * @param {Vnode} vnode
-     */
-    function (vnode) {
-      return render(vnode);
-    },
-
-    /**
-     * @param {Vnode} vnode
-     */
-    oncreate: function oncreate(vnode) {
-      return onMount(vnode, {
-        keys: keys
-      });
-    },
-    onremove: onUnMount
-  };
 };
 
 
@@ -21976,28 +21910,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_button_group__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-button-group */ "../../polythene-core-button-group/dist/polythene-core-button-group.mjs");
 
+ // @ts-check
 
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-var ButtonGroup = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_button_group__WEBPACK_IMPORTED_MODULE_1__["coreButtonGroup"]));
-ButtonGroup.displayName = "ButtonGroup";
+var ButtonGroup = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_button_group__WEBPACK_IMPORTED_MODULE_1__["coreButtonGroup"]);
+ButtonGroup["displayName"] = "ButtonGroup";
 
 
 /***/ }),
@@ -22038,24 +21954,6 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
@@ -22075,16 +21973,16 @@ function _objectSpread(target) {
   return target;
 }
 
-var TextButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"], {
+var TextButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"].createProps(vnode, _extends(args, {
+    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"].createProps(vnode, _objectSpread({}, args, {
       Ripple: polythene_mithril_ripple__WEBPACK_IMPORTED_MODULE_2__["Ripple"],
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_3__["Icon"],
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"].createContent(vnode, _extends(args, {
+    return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreButton"].createContent(vnode, _objectSpread({}, args, {
       Ripple: polythene_mithril_ripple__WEBPACK_IMPORTED_MODULE_2__["Ripple"],
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_3__["Icon"],
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"]
@@ -22092,7 +21990,7 @@ var TextButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["Sta
   }
 }));
 TextButton["displayName"] = "TextButton";
-var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponentAssembly"])(_objectSpread({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"], {
+var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"], {
   createProps: function createProps(vnode, args) {
     return polythene_core_button__WEBPACK_IMPORTED_MODULE_1__["coreRaisedButton"].createProps(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"]
@@ -22105,12 +22003,11 @@ var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["S
   },
   component: TextButton
 }));
-RaisedButton.displayName = "RaisedButton"; // @ts-check
+RaisedButton["displayName"] = "RaisedButton"; // @ts-check
 
-var Button = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])({
+var Button = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])({
   /**
    * @param {Vnode} vnode
-   * @param {Options} vnode.attrs
    */
   view: function view(vnode) {
     return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
@@ -22142,33 +22039,52 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var CardActions = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardActions"]));
-CardActions.displayName = "CardActions";
-var CardMedia = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardMedia"]));
-CardMedia.displayName = "CardMedia";
-var CardPrimary = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardPrimary"]));
-CardPrimary.displayName = "CardPrimary";
-var Card = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCard"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+} // @ts-check
+
+
+var CardActions = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardActions"]);
+CardActions["displayName"] = "CardActions"; // @ts-check
+
+var CardMedia = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardMedia"]);
+CardMedia["displayName"] = "CardMedia"; // @ts-check
+
+var CardPrimary = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCardPrimary"]);
+CardPrimary["displayName"] = "CardPrimary";
+var Card = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCard"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCard"].createContent(vnode, _extends(args, {
+    return polythene_core_card__WEBPACK_IMPORTED_MODULE_1__["coreCard"].createContent(vnode, _objectSpread({}, args, {
       CardActions: CardActions,
       CardMedia: CardMedia,
       CardPrimary: CardPrimary,
@@ -22178,7 +22094,7 @@ var Card = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewCompo
     }));
   }
 }));
-Card.displayName = "Card";
+Card["displayName"] = "Card";
 
 
 /***/ }),
@@ -22204,45 +22120,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["viewControl"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreViewControl"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["viewControl"].createContent(vnode, _extends(args, {
+    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreViewControl"].createContent(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_3__["Icon"],
       IconButton: polythene_mithril_icon_button__WEBPACK_IMPORTED_MODULE_4__["IconButton"]
     }));
   }
 }));
-ViewControl.displayName = "ViewControl";
-var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
+ViewControl["displayName"] = "ViewControl";
+var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"].createContent(vnode, _extends(args, {
+    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"].createContent(vnode, _objectSpread({}, args, {
       ViewControl: ViewControl
     }));
   }
 }));
-SelectionControl.displayName = "SelectionControl";
-var Checkbox = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_checkbox__WEBPACK_IMPORTED_MODULE_1__["coreCheckbox"], {
+SelectionControl["displayName"] = "SelectionControl";
+var Checkbox = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_checkbox__WEBPACK_IMPORTED_MODULE_1__["coreCheckbox"], {
   component: SelectionControl
 }));
-Checkbox.displayName = "Checkbox";
+Checkbox["displayName"] = "Checkbox";
 
 
 /***/ }),
@@ -22260,9 +22192,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_dialog_pane__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-dialog-pane */ "../../polythene-core-dialog-pane/dist/polythene-core-dialog-pane.mjs");
 
+ // @ts-check
 
-var DialogPane = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_dialog_pane__WEBPACK_IMPORTED_MODULE_1__["coreDialogPane"]);
-DialogPane.displayName = "DialogPane";
+var DialogPane = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_dialog_pane__WEBPACK_IMPORTED_MODULE_1__["coreDialogPane"]);
+DialogPane["displayName"] = "DialogPane";
 
 
 /***/ }),
@@ -22289,22 +22222,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var listTileClasses = {
@@ -22374,16 +22323,16 @@ var classes = {
   // lookup
   menuContent: menuClasses.content
 };
-var DialogInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_dialog__WEBPACK_IMPORTED_MODULE_2__["coreDialog"], {
+var DialogInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_dialog__WEBPACK_IMPORTED_MODULE_2__["coreDialog"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_dialog__WEBPACK_IMPORTED_MODULE_2__["coreDialog"].createContent(vnode, _extends(args, {
+    return polythene_core_dialog__WEBPACK_IMPORTED_MODULE_2__["coreDialog"].createContent(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_4__["Shadow"],
       Pane: polythene_mithril_dialog_pane__WEBPACK_IMPORTED_MODULE_3__["DialogPane"],
       createPane: polythene_core_dialog__WEBPACK_IMPORTED_MODULE_2__["coreDialog"].createPane
     }));
   }
 }));
-DialogInstance.displayName = "DialogInstance";
+DialogInstance["displayName"] = "DialogInstance";
 var options = {
   name: "dialog",
   htmlShowClass: classes.open,
@@ -22396,11 +22345,11 @@ var Multiple = Object(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Multi"])({
   options: options,
   renderer: polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"]
 });
-var Dialog = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(Multiple);
+var Dialog = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Dialog[p] = Multiple[p];
 });
-Dialog.displayName = "Dialog";
+Dialog["displayName"] = "Dialog";
 
 
 /***/ }),
@@ -22424,22 +22373,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -22454,14 +22419,17 @@ var classes = {
   fixed: "pe-drawer--fixed",
   anchorEnd: "pe-drawer--anchor-end"
 };
-var DrawerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_drawer__WEBPACK_IMPORTED_MODULE_2__["coreDrawer"], {
+var DrawerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_drawer__WEBPACK_IMPORTED_MODULE_2__["coreDrawer"], {
   component: polythene_mithril_dialog__WEBPACK_IMPORTED_MODULE_3__["DialogInstance"]
 }));
-var DrawerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Conditional"]);
-DrawerToggle.displayName = "DrawerToggle";
+var DrawerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["coreConditional"]);
+DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(DrawerToggle, _extends({}, vnode.attrs, {
+    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(DrawerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
       permanent: vnode.attrs.permanent || vnode.attrs.mini // passed to Conditional
@@ -22469,7 +22437,7 @@ var Drawer = {
     }));
   }
 };
-Drawer.displayName = "Drawer";
+Drawer["displayName"] = "Drawer";
 
 
 /***/ }),
@@ -22493,38 +22461,54 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var FAB = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var FAB = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"].createProps(vnode, _extends(args, {
+    return polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"].createProps(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"].createContent(vnode, _extends(args, {
+    return polythene_core_fab__WEBPACK_IMPORTED_MODULE_1__["coreFAB"].createContent(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"]
     }));
   },
   component: polythene_mithril_button__WEBPACK_IMPORTED_MODULE_3__["Button"]
 }));
-FAB.displayName = "FAB";
+FAB["displayName"] = "FAB";
 
 
 /***/ }),
@@ -22548,38 +22532,54 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var IconButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var IconButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"].createProps(vnode, _extends(args, {
+    return polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"].createProps(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"].createContent(vnode, _extends(args, {
+    return polythene_core_icon_button__WEBPACK_IMPORTED_MODULE_1__["coreIconButton"].createContent(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"]
     }));
   },
   component: polythene_mithril_button__WEBPACK_IMPORTED_MODULE_3__["Button"]
 }));
-IconButton.displayName = "IconButton";
+IconButton["displayName"] = "IconButton";
 
 
 /***/ }),
@@ -22601,37 +22601,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var Icon = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var Icon = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"].createProps(vnode, _extends(args, {
+    return polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"].createProps(vnode, _objectSpread({}, args, {
       SVG: polythene_mithril_svg__WEBPACK_IMPORTED_MODULE_2__["SVG"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"].createContent(vnode, _extends(args, {
+    return polythene_core_icon__WEBPACK_IMPORTED_MODULE_1__["coreIcon"].createContent(vnode, _objectSpread({}, args, {
       SVG: polythene_mithril_svg__WEBPACK_IMPORTED_MODULE_2__["SVG"]
     }));
   }
 }));
-Icon.displayName = "Icon";
+Icon["displayName"] = "Icon";
 
 
 /***/ }),
@@ -22655,22 +22671,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -22696,21 +22728,24 @@ var baseSpinnerClasses = {
   small: "pe-spinner--small",
   visible: "pe-spinner--visible"
 };
-var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_ios_spinner__WEBPACK_IMPORTED_MODULE_2__["coreIOSSpinner"], {
+var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_ios_spinner__WEBPACK_IMPORTED_MODULE_2__["coreIOSSpinner"], {
   component: polythene_mithril_base_spinner__WEBPACK_IMPORTED_MODULE_3__["BaseSpinner"]
 }));
-var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Conditional"]);
-SpinnerToggle.displayName = "IOSSpinnerToggle";
+var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["coreConditional"]);
+SpinnerToggle["displayName"] = "IOSSpinnerToggle";
 var IOSSpinner = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _extends({}, vnode.attrs, {
+    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
       instance: SpinnerInstance
     }));
   }
 };
-IOSSpinner.classes = classes;
-IOSSpinner.displayName = "IOSSpinner";
+IOSSpinner["classes"] = classes;
+IOSSpinner["displayName"] = "IOSSpinner";
 
 
 /***/ }),
@@ -22734,39 +22769,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var ListTile = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var ListTile = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"].createProps(vnode, _extends(args, {
+    return polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"].createProps(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"],
       Ripple: polythene_mithril_ripple__WEBPACK_IMPORTED_MODULE_3__["Ripple"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"].createContent(vnode, _extends(args, {
+    return polythene_core_list_tile__WEBPACK_IMPORTED_MODULE_1__["coreListTile"].createContent(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"],
       Ripple: polythene_mithril_ripple__WEBPACK_IMPORTED_MODULE_3__["Ripple"]
     }));
   }
 }));
-ListTile.displayName = "ListTile";
+ListTile["displayName"] = "ListTile";
 
 
 /***/ }),
@@ -22788,37 +22839,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var List = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var List = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"], {
   createProps: function createProps(vnode, args) {
-    return polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"].createProps(vnode, _extends(args, {
+    return polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"].createProps(vnode, _objectSpread({}, args, {
       ListTile: polythene_mithril_list_tile__WEBPACK_IMPORTED_MODULE_2__["ListTile"]
     }));
   },
   createContent: function createContent(vnode, args) {
-    return polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"].createContent(vnode, _extends(args, {
+    return polythene_core_list__WEBPACK_IMPORTED_MODULE_1__["coreList"].createContent(vnode, _objectSpread({}, args, {
       ListTile: polythene_mithril_list_tile__WEBPACK_IMPORTED_MODULE_2__["ListTile"]
     }));
   }
 }));
-List.displayName = "List";
+List["displayName"] = "List";
 
 
 /***/ }),
@@ -22842,22 +22909,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -22885,21 +22968,24 @@ var baseSpinnerClasses = {
   small: "pe-spinner--small",
   visible: "pe-spinner--visible"
 };
-var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_material_design_progress_spinner__WEBPACK_IMPORTED_MODULE_2__["coreMaterialDesignProgressSpinner"], {
+var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_material_design_progress_spinner__WEBPACK_IMPORTED_MODULE_2__["coreMaterialDesignProgressSpinner"], {
   component: polythene_mithril_base_spinner__WEBPACK_IMPORTED_MODULE_3__["BaseSpinner"]
 }));
-var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Conditional"]);
-SpinnerToggle.displayName = "MaterialDesignProgressSpinnerToggle";
+var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["coreConditional"]);
+SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 var MaterialDesignProgressSpinner = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _extends({}, vnode.attrs, {
+    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
       instance: SpinnerInstance
     }));
   }
 };
-MaterialDesignProgressSpinner.classes = classes;
-MaterialDesignProgressSpinner.displayName = "MaterialDesignProgressSpinner";
+MaterialDesignProgressSpinner["classes"] = classes;
+MaterialDesignProgressSpinner["displayName"] = "MaterialDesignProgressSpinner";
 
 
 /***/ }),
@@ -22923,22 +23009,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -22970,21 +23072,24 @@ var baseSpinnerClasses = {
   small: "pe-spinner--small",
   visible: "pe-spinner--visible"
 };
-var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_material_design_spinner__WEBPACK_IMPORTED_MODULE_2__["coreMaterialDesignSpinner"], {
+var SpinnerInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_material_design_spinner__WEBPACK_IMPORTED_MODULE_2__["coreMaterialDesignSpinner"], {
   component: polythene_mithril_base_spinner__WEBPACK_IMPORTED_MODULE_3__["BaseSpinner"]
 }));
-var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Conditional"]);
-SpinnerToggle.displayName = "MaterialDesignSpinnerToggle";
+var SpinnerToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["coreConditional"]);
+SpinnerToggle["displayName"] = "MaterialDesignSpinnerToggle";
 var MaterialDesignSpinner = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _extends({}, vnode.attrs, {
+    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
       instance: SpinnerInstance
     }));
   }
 };
-MaterialDesignSpinner.classes = classes;
-MaterialDesignSpinner.displayName = "MaterialDesignSpinner";
+MaterialDesignSpinner["classes"] = classes;
+MaterialDesignSpinner["displayName"] = "MaterialDesignSpinner";
 
 
 /***/ }),
@@ -23008,22 +23113,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var listTileClasses = {
@@ -23073,24 +23194,27 @@ var classes = {
   listTile: listTileClasses.component,
   selectedListTile: listTileClasses.selected
 };
-var MenuInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_menu__WEBPACK_IMPORTED_MODULE_2__["coreMenu"], {
+var MenuInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_menu__WEBPACK_IMPORTED_MODULE_2__["coreMenu"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_menu__WEBPACK_IMPORTED_MODULE_2__["coreMenu"].createContent(vnode, _extends(args, {
+    return polythene_core_menu__WEBPACK_IMPORTED_MODULE_2__["coreMenu"].createContent(vnode, _objectSpread({}, args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_3__["Shadow"]
     }));
   }
 }));
-var MenuToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Conditional"]);
-MenuToggle.displayName = "MenuToggle";
+var MenuToggle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core__WEBPACK_IMPORTED_MODULE_1__["coreConditional"]);
+MenuToggle["displayName"] = "MenuToggle";
 var Menu = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(MenuToggle, _extends({}, vnode.attrs, {
+    return Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"])(MenuToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: MenuInstance
     }));
   }
 };
-Menu.displayName = "Menu";
+Menu["displayName"] = "Menu";
 
 
 /***/ }),
@@ -23126,9 +23250,10 @@ var classes = {
   multilineTitle: "pe-notification__title--multi-line",
   vertical: "pe-notification--vertical",
   visible: "pe-notification--visible"
-};
-var NotificationInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_notification__WEBPACK_IMPORTED_MODULE_2__["coreNotificationInstance"]);
-NotificationInstance.displayName = "NotificationInstance";
+}; // @ts-check
+
+var NotificationInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_notification__WEBPACK_IMPORTED_MODULE_2__["coreNotification"]);
+NotificationInstance["displayName"] = "NotificationInstance";
 var options = {
   name: "notification",
   className: classes.component,
@@ -23143,11 +23268,11 @@ var Multiple = Object(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Multi"])({
   options: options,
   renderer: polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"]
 });
-var Notification = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(Multiple);
+var Notification = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Notification[p] = Multiple[p];
 });
-Notification.displayName = "Notification";
+Notification["displayName"] = "Notification";
 
 
 /***/ }),
@@ -23173,6 +23298,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23191,27 +23331,46 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["viewControl"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreViewControl"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["viewControl"].createContent(vnode, _extends(args, {
+    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreViewControl"].createContent(vnode, _objectSpread({}, args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_3__["Icon"],
       IconButton: polythene_mithril_icon_button__WEBPACK_IMPORTED_MODULE_4__["IconButton"]
     }));
   }
 }));
-ViewControl.displayName = "ViewControl";
-var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
+ViewControl["displayName"] = "ViewControl";
+var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
   createContent: function createContent(vnode, args) {
     return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"].createContent(vnode, _extends(args, {
       ViewControl: ViewControl
     }));
   }
 }));
-SelectionControl.displayName = "SelectionControl";
-var RadioButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_radio_button__WEBPACK_IMPORTED_MODULE_1__["coreRadioButton"], {
+SelectionControl["displayName"] = "SelectionControl";
+var RadioButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_radio_button__WEBPACK_IMPORTED_MODULE_1__["coreRadioButton"], {
   component: SelectionControl
 }));
-RadioButton.displayName = "RadioButton";
+RadioButton["displayName"] = "RadioButton";
 
 
 /***/ }),
@@ -23233,6 +23392,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23251,14 +23425,33 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var RadioGroup = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_radio_group__WEBPACK_IMPORTED_MODULE_1__["coreRadioGroup"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var RadioGroup = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_radio_group__WEBPACK_IMPORTED_MODULE_1__["coreRadioGroup"], {
   createContent: function createContent(vnode, args) {
     return polythene_core_radio_group__WEBPACK_IMPORTED_MODULE_1__["coreRadioGroup"].createContent(vnode, _extends(args, {
       RadioButton: polythene_mithril_radio_button__WEBPACK_IMPORTED_MODULE_2__["RadioButton"]
     }));
   }
 }));
-RadioGroup.displayName = "RadioGroup";
+RadioGroup["displayName"] = "RadioGroup";
 
 
 /***/ }),
@@ -23298,7 +23491,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_2__["ViewComponent"])({
+var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_2__["ComponentCreator"])({
   onMount: function onMount() {
     Object(polythene_core__WEBPACK_IMPORTED_MODULE_1__["deprecation"])("RaisedButton", {
       newComponent: "Button",
@@ -23311,7 +23504,7 @@ var RaisedButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_2__["V
     }, vnode.attrs), vnode.children);
   }
 });
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";
 
 
 /***/ }),
@@ -23329,9 +23522,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_ripple__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-ripple */ "../../polythene-core-ripple/dist/polythene-core-ripple.mjs");
 
+ // @ts-check
 
-var Ripple = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_ripple__WEBPACK_IMPORTED_MODULE_1__["coreRipple"]);
-Ripple.displayName = "Ripple";
+var Ripple = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_ripple__WEBPACK_IMPORTED_MODULE_1__["coreRipple"]);
+Ripple["displayName"] = "Ripple";
 
 
 /***/ }),
@@ -23353,6 +23547,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23371,14 +23580,33 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var Search = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_search__WEBPACK_IMPORTED_MODULE_1__["coreSearch"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var Search = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_search__WEBPACK_IMPORTED_MODULE_1__["coreSearch"], {
   createContent: function createContent(vnode, args) {
     return polythene_core_search__WEBPACK_IMPORTED_MODULE_1__["coreSearch"].createContent(vnode, _extends(args, {
       TextField: polythene_mithril_textfield__WEBPACK_IMPORTED_MODULE_2__["TextField"]
     }));
   }
 }));
-Search.displayName = "Search";
+Search["displayName"] = "Search";
 
 
 /***/ }),
@@ -23396,28 +23624,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_shadow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-shadow */ "../../polythene-core-shadow/dist/polythene-core-shadow.mjs");
 
+ // @ts-check
 
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-var Shadow = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_shadow__WEBPACK_IMPORTED_MODULE_1__["coreShadow"]));
-Shadow.displayName = "Shadow";
+var Shadow = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_shadow__WEBPACK_IMPORTED_MODULE_1__["coreShadow"]);
+Shadow["displayName"] = "Shadow";
 
 
 /***/ }),
@@ -23435,9 +23645,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-slider */ "../../polythene-core-slider/dist/polythene-core-slider.mjs");
 
+ // @ts-check
 
-var Slider = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_slider__WEBPACK_IMPORTED_MODULE_1__["coreSlider"]);
-Slider.displayName = "Slider";
+var Slider = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_slider__WEBPACK_IMPORTED_MODULE_1__["coreSlider"]);
+Slider["displayName"] = "Slider";
 
 
 /***/ }),
@@ -23501,10 +23712,11 @@ var classes = _extends({}, notificationClasses, {
   placeholder: "pe-snackbar__placeholder",
   // states
   open: "pe-snackbar--open"
-});
+}); // @ts-check
 
-var SnackbarInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_snackbar__WEBPACK_IMPORTED_MODULE_2__["coreSnackbarInstance"]);
-SnackbarInstance.displayName = "SnackbarInstance";
+
+var SnackbarInstance = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_snackbar__WEBPACK_IMPORTED_MODULE_2__["coreSnackbar"]);
+SnackbarInstance["displayName"] = "SnackbarInstance";
 var options = {
   name: "snackbar",
   className: classes.component,
@@ -23520,11 +23732,11 @@ var Multiple = Object(polythene_core__WEBPACK_IMPORTED_MODULE_1__["Multi"])({
   options: options,
   renderer: polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"]
 });
-var Snackbar = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(Multiple);
+var Snackbar = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(Multiple);
 Object.getOwnPropertyNames(Multiple).forEach(function (p) {
   return Snackbar[p] = Multiple[p];
 });
-Snackbar.displayName = "Snackbar";
+Snackbar["displayName"] = "Snackbar";
 
 
 /***/ }),
@@ -23542,28 +23754,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-svg */ "../../polythene-core-svg/dist/polythene-core-svg.mjs");
 
+ // @ts-check
 
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-var SVG = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_svg__WEBPACK_IMPORTED_MODULE_1__["coreSVG"]));
-SVG.displayName = "SVG";
+var SVG = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_svg__WEBPACK_IMPORTED_MODULE_1__["coreSVG"]);
+SVG["displayName"] = "SVG";
 
 
 /***/ }),
@@ -23589,6 +23783,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23607,27 +23816,46 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["viewControl"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var ViewControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["coreViewControl"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["viewControl"].createContent(vnode, _extends(args, {
+    return polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["coreViewControl"].createContent(vnode, _extends(args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_3__["Shadow"],
       IconButton: polythene_mithril_icon_button__WEBPACK_IMPORTED_MODULE_4__["IconButton"]
     }));
   }
 }));
-ViewControl.displayName = "ViewControl";
-var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
+ViewControl["displayName"] = "ViewControl";
+var SelectionControl = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"], {
   createContent: function createContent(vnode, args) {
-    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"].createContent(vnode, _extends(args, {
+    return polythene_core_selection_control__WEBPACK_IMPORTED_MODULE_2__["coreSelectionControl"].createContent(vnode, _objectSpread({}, args, {
       ViewControl: ViewControl
     }));
   }
 }));
-SelectionControl.displayName = "SelectionControl";
-var Switch = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["coreSwitch"], {
+SelectionControl["displayName"] = "SelectionControl";
+var Switch = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_switch__WEBPACK_IMPORTED_MODULE_1__["coreSwitch"], {
   component: SelectionControl
 }));
-Switch.displayName = "Switch";
+Switch["displayName"] = "Switch";
 
 
 /***/ }),
@@ -23653,6 +23881,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23671,7 +23914,26 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var Tab = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTab"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var Tab = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTab"], {
   createProps: function createProps(vnode, args) {
     return polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTab"].createProps(vnode, _extends(args, {
       Icon: polythene_mithril_icon__WEBPACK_IMPORTED_MODULE_2__["Icon"]
@@ -23679,12 +23941,12 @@ var Tab = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewCompon
   },
   component: polythene_mithril_button__WEBPACK_IMPORTED_MODULE_3__["Button"]
 }));
-Tab.displayName = "Tab";
-var ScrollButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreScrollButton"], {
+Tab["displayName"] = "Tab";
+var ScrollButton = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreScrollButton"], {
   component: polythene_mithril_icon_button__WEBPACK_IMPORTED_MODULE_4__["IconButton"]
 }));
-ScrollButton.displayName = "ScrollButton";
-var Tabs = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(_extends({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTabs"], {
+ScrollButton["displayName"] = "ScrollButton";
+var Tabs = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTabs"], {
   createContent: function createContent(vnode, args) {
     return polythene_core_tabs__WEBPACK_IMPORTED_MODULE_1__["coreTabs"].createContent(vnode, _extends(args, {
       Tab: Tab,
@@ -23692,7 +23954,7 @@ var Tabs = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComp
     }));
   }
 }));
-Tabs.displayName = "Tabs";
+Tabs["displayName"] = "Tabs";
 
 
 /***/ }),
@@ -23710,9 +23972,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-mithril-base */ "../../polythene-mithril-base/dist/polythene-mithril-base.mjs");
 /* harmony import */ var polythene_core_textfield__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-textfield */ "../../polythene-core-textfield/dist/polythene-core-textfield.mjs");
 
+ // @ts-check
 
-var TextField = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"])(polythene_core_textfield__WEBPACK_IMPORTED_MODULE_1__["coreTextField"]);
-TextField.displayName = "TextField";
+var TextField = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_textfield__WEBPACK_IMPORTED_MODULE_1__["coreTextField"]);
+TextField["displayName"] = "TextField";
 
 
 /***/ }),
@@ -23735,6 +23998,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -23753,16 +24031,37 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var Toolbar = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(_extends({}, polythene_core_toolbar__WEBPACK_IMPORTED_MODULE_1__["coreToolbar"], {
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+var Toolbar = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(_objectSpread({}, polythene_core_toolbar__WEBPACK_IMPORTED_MODULE_1__["coreToolbar"], {
   createContent: function createContent(vnode, args) {
     return polythene_core_toolbar__WEBPACK_IMPORTED_MODULE_1__["coreToolbar"].createContent(vnode, _extends(args, {
       Shadow: polythene_mithril_shadow__WEBPACK_IMPORTED_MODULE_2__["Shadow"]
     }));
   }
 }));
-Toolbar.displayName = "Toolbar";
-var ToolbarTitle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"])(polythene_core_toolbar__WEBPACK_IMPORTED_MODULE_1__["coreToolbarTitle"]);
-ToolbarTitle.displayName = "ToolbarTitle";
+Toolbar["displayName"] = "Toolbar"; // @ts-check
+
+var ToolbarTitle = Object(polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"])(polythene_core_toolbar__WEBPACK_IMPORTED_MODULE_1__["coreToolbarTitle"]);
+ToolbarTitle["displayName"] = "ToolbarTitle"; // @ts-check
+
 
 
 /***/ }),
@@ -23771,7 +24070,7 @@ ToolbarTitle.displayName = "ToolbarTitle";
 /*!***************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-mithril/dist/polythene-mithril.mjs ***!
   \***************************************************************************************************************************/
-/*! exports provided: keys, renderer, StateComponent, StateComponentAssembly, ViewComponent, ViewComponentAssembly, Button, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle */
+/*! exports provided: keys, renderer, ComponentCreator, Button, ButtonGroup, Card, Checkbox, DialogInstance, Dialog, DialogPane, Drawer, FAB, Icon, IconButton, IOSSpinner, List, ListTile, MaterialDesignProgressSpinner, MaterialDesignSpinner, Menu, NotificationInstance, Notification, RadioButton, RadioGroup, RaisedButton, Ripple, Search, Shadow, Slider, SnackbarInstance, Snackbar, SVG, Switch, Tabs, TextField, Toolbar, ToolbarTitle */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23781,13 +24080,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "renderer", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["renderer"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StateComponent", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StateComponentAssembly", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["StateComponentAssembly"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ViewComponent", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ViewComponentAssembly", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ViewComponentAssembly"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentCreator", function() { return polythene_mithril_base__WEBPACK_IMPORTED_MODULE_0__["ComponentCreator"]; });
 
 /* harmony import */ var polythene_mithril_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-mithril-button */ "../../polythene-mithril-button/dist/polythene-mithril-button.mjs");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return polythene_mithril_button__WEBPACK_IMPORTED_MODULE_1__["Button"]; });
@@ -24046,8 +24339,8 @@ var vars = {
   z_menu: 1000,
   z_app_bar: 2000,
   z_drawer: 3000,
-  z_notification: 4000,
-  z_dialog: 5000
+  z_dialog: 5000,
+  z_notification: 7000
 };
 
 

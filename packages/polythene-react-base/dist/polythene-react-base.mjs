@@ -438,10 +438,10 @@ var stream$1 = stream;
 
 var requiresKeys = true;
 /**
- * @param {StateComponentAssemblyOptions} params
+ * @param {ComponentCreatorOptions} params
  */
 
-var StateComponent = function StateComponent(_ref) {
+var ComponentCreator = function ComponentCreator(_ref) {
   var _ref$createContent = _ref.createContent,
       createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
       _ref$createProps = _ref.createProps,
@@ -566,105 +566,4 @@ var StateComponent = function StateComponent(_ref) {
   );
 };
 
-var requiresKeys$1 = true;
-/**
- * @param {ViewComponentAssemblyOptions} params
- */
-
-var ViewComponent = function ViewComponent(_ref) {
-  var _ref$createContent = _ref.createContent,
-      createContent = _ref$createContent === void 0 ? function () {} : _ref$createContent,
-      _ref$createProps = _ref.createProps,
-      createProps = _ref$createProps === void 0 ? function () {
-    return {};
-  } : _ref$createProps,
-      _ref$getElement = _ref.getElement,
-      getElement = _ref$getElement === void 0 ? function () {
-    return "div";
-  } : _ref$getElement,
-      _ref$onMount = _ref.onMount,
-      onMount = _ref$onMount === void 0 ? function () {} : _ref$onMount,
-      _ref$onUnMount = _ref.onUnMount,
-      onUnMount = _ref$onUnMount === void 0 ? function () {} : _ref$onUnMount,
-      component = _ref.component,
-      _ref$view = _ref.view,
-      view = _ref$view === void 0 ? null : _ref$view;
-  return (
-    /*#__PURE__*/
-    function (_React$Component) {
-      _inherits(_class, _React$Component);
-
-      function _class(props) {
-        var _this;
-
-        _classCallCheck(this, _class);
-
-        _this = _possibleConstructorReturn(this, _getPrototypeOf(_class).call(this, props));
-        _this.dom = null;
-        _this.registerDOM = _this.registerDOM.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-        _this._render = _this._render.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-        return _this;
-      }
-
-      _createClass(_class, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-          onMount(this.createVirtualNode(), {
-            keys: keys
-          });
-        }
-      }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-          onUnMount(this.createVirtualNode());
-        }
-      }, {
-        key: "createVirtualNode",
-        value: function createVirtualNode() {
-          var props = _objectSpread({}, this.props);
-
-          return {
-            attrs: props,
-            children: props.children,
-            dom: this.dom
-          };
-        }
-      }, {
-        key: "registerDOM",
-        value: function registerDOM(el) {
-          if (isClient && !this.dom && el) {
-            this.dom = el instanceof HTMLElement ? el : ReactDOM.findDOMNode(el);
-          }
-        }
-      }, {
-        key: "_render",
-        value: function _render() {
-          var vnode = this.createVirtualNode();
-          return renderer(component || getElement(vnode), _extends({}, createProps(vnode, {
-            renderer: renderer,
-            requiresKeys: requiresKeys$1,
-            keys: keys
-          }), {
-            ref: this.registerDOM
-          }), [vnode.attrs.before, createContent(vnode, {
-            renderer: renderer,
-            requiresKeys: requiresKeys$1,
-            keys: keys
-          }), vnode.attrs.after]);
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return view ? view(this.createVirtualNode(), {
-            renderer: renderer,
-            render: this._render
-          }) : this._render();
-        }
-      }]);
-
-      return _class;
-    }(React.Component)
-  );
-};
-
-export { keys, MithrilToReact, renderer, StateComponent, ViewComponent };
+export { keys, MithrilToReact, renderer, ComponentCreator };

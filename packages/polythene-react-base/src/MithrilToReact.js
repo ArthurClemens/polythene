@@ -9,7 +9,7 @@ Example:
 import stream from "mithril/stream";
 import { renderer as h, Button } from "polythene-react";
 
-const StateComponent = {
+const ComponentCreator = {
   oninit: vnode => {
     const checked = stream(false);
     Object.assign(vnode.state, {
@@ -31,7 +31,7 @@ const StateComponent = {
   }
 };
 
-h(StateComponent, { subject: "airco"});
+h(ComponentCreator, { subject: "airco"});
 */
 
 import React from "react";

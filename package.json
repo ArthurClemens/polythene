@@ -2,7 +2,7 @@
   "scripts": {
     "lint": "eslint ./packages/polythene-*",
     "clean": "lerna clean --yes",
-    "build": "lerna run build && npm run build:css",
+    "build": "lerna run build && npm run build:css && npm run build:standalone",
     "build:component": "node ./scripts/private/buildComponent",
     "build:css": "node ./scripts/private/buildComponentCSS",
     "build:collect-css": "cd packages/polythene-css && npm run build",
@@ -15,6 +15,7 @@
     "publish:test": "node --experimental-modules ./scripts/private/publish --dry-run --version 1.4.2",
     "publish:real": "node --experimental-modules ./scripts/private/publish --version 1.4.2",
     "github:demos": "node ./scripts/private/copyToDemos",
+    "typecheck": "lerna run typecheck",
     "docs:check": "./node_modules/broken-link-checker/bin/blc -ro http://localhost:6419/"
   },
   "devDependencies": {

@@ -1,24 +1,40 @@
-import { StateComponent, renderer } from 'polythene-mithril-base';
-import { Conditional } from 'polythene-core';
+import { ComponentCreator, renderer } from 'polythene-mithril-base';
+import { coreConditional } from 'polythene-core';
 import { coreIOSSpinner } from 'polythene-core-ios-spinner';
 import { BaseSpinner } from 'polythene-mithril-base-spinner';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var classes = {
@@ -46,20 +62,23 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = StateComponent(_extends({}, coreIOSSpinner, {
+var SpinnerInstance = ComponentCreator(_objectSpread({}, coreIOSSpinner, {
   component: BaseSpinner
 }));
-var SpinnerToggle = StateComponent(Conditional);
-SpinnerToggle.displayName = "IOSSpinnerToggle";
+var SpinnerToggle = ComponentCreator(coreConditional);
+SpinnerToggle["displayName"] = "IOSSpinnerToggle";
 var IOSSpinner = {
+  /**
+   * @param {Vnode} vnode
+   */
   view: function view(vnode) {
-    return renderer(SpinnerToggle, _extends({}, vnode.attrs, {
+    return renderer(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
       instance: SpinnerInstance
     }));
   }
 };
-IOSSpinner.classes = classes;
-IOSSpinner.displayName = "IOSSpinner";
+IOSSpinner["classes"] = classes;
+IOSSpinner["displayName"] = "IOSSpinner";
 
 export { IOSSpinner };

@@ -1,2 +1,2 @@
-import * as coreNotificationInstance from "./notification-instance";
-export { coreNotificationInstance };
+import * as coreNotification from "./notification";
+export { coreNotification };

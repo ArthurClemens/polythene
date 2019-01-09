@@ -1,4 +1,4 @@
-import { CommonOptions, URLOptions, Content } from "polythene-core";
+import { CommonOptions, URLOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface ToolbarOptions extends Partial<CommonOptions> {
 
@@ -83,3 +83,6 @@ export interface ToolbarTitleOptions extends Partial<CommonOptions> {
    */
   children?: Content;
 }
+
+export const coreToolbar: CoreComponentCreatorOptions;
+export const coreToolbarTitle: CoreComponentCreatorOptions;

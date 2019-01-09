@@ -1,4 +1,4 @@
-import { CommonOptions } from "polythene-core";
+import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -26,3 +26,5 @@ export interface Options extends Partial<CommonOptions> {
   children?: any;
 
 }
+
+export const coreShadow: CoreComponentCreatorOptions;

@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
-    "build": "npm run clean && npm run rollup"
+    "build": "npm run clean && npm run rollup",
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true index.js"
   },
   "files": [
     "dist",
@@ -18,6 +19,10 @@
     "polythene-core": "^1.4.2",
     "polythene-react-base": "^1.4.2",
     "polythene-react-button": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18",
+    "polythene-core-button": "^1.4.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

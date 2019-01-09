@@ -1,4 +1,4 @@
-import { CommonOptions } from "polythene-core";
+import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
 import { Options as RadioButtonOptions } from "polythene-core-radio-button";
 
 export interface Options extends Partial<CommonOptions> {
@@ -40,3 +40,5 @@ export interface Options extends Partial<CommonOptions> {
   onChange?: ({ event, checked, value } : { event: Event, checked: boolean, value: string }) => void;
 
 }
+
+export const coreRadioGroup: CoreComponentCreatorOptions;

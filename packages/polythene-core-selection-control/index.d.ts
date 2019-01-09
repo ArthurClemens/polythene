@@ -1,4 +1,4 @@
-import { CommonOptions } from "polythene-core";
+import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
 import { Options as IconButtonOptions } from "polythene-core-icon-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -94,3 +94,6 @@ export interface IconOptions extends Partial<CommonOptions> {
   iconOn?: IconOptions;
 
 }
+
+export const coreSelectionControl: CoreComponentCreatorOptions;
+export const coreViewControl: CoreComponentCreatorOptions;

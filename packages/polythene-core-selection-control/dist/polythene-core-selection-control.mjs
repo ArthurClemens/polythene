@@ -210,7 +210,6 @@ var createContent$1 = function createContent(vnode, _ref) {
   var attrs = vnode.attrs;
   return h(IconButton, _extends({}, {
     element: "div",
-    key: attrs.key,
     className: classes.button,
     content: CONTENT.map(function (o) {
       return h(Icon, createIcon(h, o.iconType, attrs, o.className));
@@ -230,4 +229,4 @@ var viewControl = /*#__PURE__*/Object.freeze({
   createContent: createContent$1
 });
 
-export { selectionControl as coreSelectionControl, viewControl };
+export { selectionControl as coreSelectionControl, viewControl as coreViewControl };

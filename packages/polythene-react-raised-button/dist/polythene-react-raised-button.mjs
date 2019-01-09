@@ -1,6 +1,6 @@
 import { Button } from 'polythene-react-button';
 import { deprecation } from 'polythene-core';
-import { ViewComponent, renderer } from 'polythene-react-base';
+import { ComponentCreator, renderer } from 'polythene-react-base';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -20,7 +20,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-var RaisedButton = ViewComponent({
+var RaisedButton = ComponentCreator({
   onMount: function onMount() {
     deprecation("RaisedButton", {
       newComponent: "Button",
@@ -33,6 +33,6 @@ var RaisedButton = ViewComponent({
     }, vnode.attrs), vnode.children);
   }
 });
-RaisedButton.displayName = "RaisedButton";
+RaisedButton["displayName"] = "RaisedButton";
 
 export { RaisedButton };

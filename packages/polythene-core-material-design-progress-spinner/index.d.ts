@@ -1,3 +1,4 @@
+import { CoreComponentCreatorOptions } from "polythene-core";
 import { Options as SpinnerOptions } from "polythene-core-base-spinner";
 
 export interface Options extends SpinnerOptions {
@@ -20,3 +21,6 @@ export interface Options extends SpinnerOptions {
   updateDuration?: number;
 
 }
+
+export const coreMaterialDesignProgressSpinner: CoreComponentCreatorOptions;
+
