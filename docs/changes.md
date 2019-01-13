@@ -53,6 +53,8 @@ Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a
 
 * Card:
   * Option `content` is now restricted to contain only the list of option objects for distinct card areas. To pass other content, use `children`.
+* Drawer:
+  * A drawer now uses a `div` as wrapping element instead of `form`.  
 * List Tile:
   * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable.
 * TextField:
