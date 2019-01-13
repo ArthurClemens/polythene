@@ -1,48 +1,53 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
-- [1.4](#14)
-  - [1.4.3](#143)
-    - [Type definitions](#type-definitions)
+- [1.5](#15)
+  - [1.5.0](#150)
+    - [TypeScript type definitions](#typescript-type-definitions)
     - [CSS](#css)
     - [Components](#components)
+- [1.4](#14)
   - [1.4.2](#142)
   - [1.4.1](#141)
   - [1.4.0](#140)
-- [1.3.2](#132)
-  - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
-  - [CSS](#css-1)
-    - [Themes and behavior](#themes-and-behavior)
-    - [Themes and media queries](#themes-and-media-queries)
-  - [Components](#components-1)
-  - [Deprecations](#deprecations)
-  - [Other](#other)
-- [1.2.0](#120)
-  - [Components](#components-2)
-  - [Other](#other-1)
-- [1.1.0](#110)
-  - [Core](#core)
-  - [Components](#components-3)
-  - [Example code](#example-code)
-  - [Tooling](#tooling)
-  - [Other](#other-2)
-- [1.0.0](#100)
+- [1.3](#13)
+  - [1.3.2](#132)
+    - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
+    - [CSS](#css-1)
+      - [Themes and behavior](#themes-and-behavior)
+      - [Themes and media queries](#themes-and-media-queries)
+    - [Components](#components-1)
+    - [Deprecations](#deprecations)
+    - [Other](#other)
+- [1.2](#12)
+  - [1.2.0](#120)
+    - [Components](#components-2)
+    - [Other](#other-1)
+- [1.1](#11)
+  - [1.1.0](#110)
+    - [Core](#core)
+    - [Components](#components-3)
+    - [Example code](#example-code)
+    - [Tooling](#tooling)
+    - [Other](#other-2)
+- [1.0](#10)
+  - [1.0.0](#100)
 - [Pre-releases](#pre-releases)
 
 <!-- /MarkdownTOC -->
 
 
-## 1.4
+## 1.5
 
-### 1.4.3
+### 1.5.0
 
-#### Type definitions
+#### TypeScript type definitions
 
-All components now contain TypeScript type definitions. This makes it easier to use in TypeScript projects and helps to ensure to select valid component options.
+All components now contain TypeScript type definitions. This makes it easier to use in TypeScript projects and helps to ensure to select valid component options. Read more in [TypeScript](typescript.md).
 
 #### CSS
 
-Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md) for an example.
+Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md#using-scope) for an example.
 
 #### Components
 
@@ -56,9 +61,14 @@ Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a
   * Better aligned title and first icon to the grid, differentiating whitespace on mobile and tablet.
   * Increased font size to `20px` (which can be overridden by theming).
 
+
+---
+
+## 1.4
+
 ### 1.4.2
 
-Fixes and improvements for [Radio Group](./components/radio-group.md):
+Fixes and improvements for [Radio Group](components/radio-group.md):
 * New option `checkedValue`: checks the Radio Button that has this value. It is ignored when one of the group's Radio Buttons uses option `checked`. This is useful when you maintain the state of the value yourself.
 * Added examples for state management:
   * [Mithril version](https://flems.io/#0=N4IgtglgJlA2CmIBcAWAnAOgIwHYA0IAZhAgM7IDaoAdgIZiJIgYAWALmLCAQMYD21NvEHIQAHlI8AThAAObAASkpPALwAdEOzazSSAPT6ptAO4BzCGwz8w+gIJS2LAK5SAwggbVS+2X1gAnk7C8PpgtKRCUr60PADWtGbwPn6BwdTwALSQTjKw+lAQkb7+QSwh2ZYseZmRtNRQtLAC8BgAVqSaAHxi+pIy8l3q1BLScorKapraugZGphZWNvaOLu6ewiml6aHhkfDRsrEJSVtp5RmZPKQ+hcWpZRXXpLVs9Y3NGe2dID19Y4NhsNuCBSPAEDw2BABOQmAAGJBwzIAZkRIAAvngaPRGMwOiD+IJhGxRIYFBAwH5HAowApCFI+LTNDlqiRNMMyRSqRM2FJ4PQ6QymeAqnk+rz+WB2dROZS+NTgAoAEq0Qp8ADiDOcsjwCgAQs42GwBAp0YLGQpNA8dpVcmyQMNCZElBKBaoaRhInz6I6YYpFSq1Zq+NrdQajSaze7rRd4EDqE7FAAxeW090ACgAlApVF0FMBhgoFIm6amACK0N45-OFosKOgMJCWkAhtikaBx7i1otQeCEWjOWBsNzleLwKAANSazngTc0MjM7E0eG7CgAbtPkk2KKuiwXqHXD+vN3OQAhCGxl7u67BaAAjcGngAyfcvXYPR8x1-3R7rG9gM6nguS7vr+Ra3g+sCnkqECLm+K4foeX6IQoAC6tborWfJsK4B4-nWAgQNQlhNumip1EIprZrmNYoUWJY8KOcTjlOAHwNWXqSumhDlpWtAYL2-aDsOTEsZumYANzXgA8nebTwJCGARO2ZjUOmFHwLq+G-oxCnMZOm4Ib+6KZquyGHmuEDwCYpHkW8lEmTmebaXWDGiQZbEcfZrS6WOHkzlm17YbhNLppohRrsuCg7nRdZgOmgbQsGoa0WBdYNrOpZSGAFZvBgGVGWlxbuaxM6FWlAgjvUSS2cenmOTRGnWCVm7pv+M6ZuVYGEkIghNjx2W5fx7XJNeRYmV1h5kgAyhSg6VuxYJGkRZgKMECjGGqCh3oaxoHhp5q0q27a9kgY2hZoGCyFkO0RtQmQMiYUUxUVoXhntWnnYeEGPs203wIoL4XlesW-sYRTjk2vJlV9dbwGuxJ6Klr0EQmsAQPEpHUXmTW+fppXwGFZ6vponWw+NsMTbD8XvQIn2g0eP1QX9APKrBIGTWB4NglAUNSDDDOHvDiNNi5r0CDw6OYwoWZOS6C3NXpYlsUTwFvmTgt1phmsmedqGmbF+tmRhwza8MYAYGAIaCOmUB8DwzheFYd58FAAS6im2UGwSjKyCQByiHe97giCYIQlCMKiMiACsSAAEw4BiWIgBlojWDcPtEiITAu27yNHDAK1NnHcKyAAHlJ1Da1dWSbdCmRmFqsgKAA1AoNeZLde0PXwJjI+EUgWPdxqyMXpcV6bwwd3XfBXAIvL+K37fXQ9qr1z1DKwP3tCD0RmTnmwTYoOPlfoqH4IKRH3iiAiSIABxIFgGKoQQ6PUHEsJUCnOKiCyeQAAK3iEJEEErguBMBmHoQwzhqCyDiGYawjIwiihIP-LA2AMAADZkF2lgN8EEbAAjXVEP0cYSdsQMF-ig2ArxvRgEAQtEBBAwGiEgXMGBcCEHLD-iQWhko0EYLhOKOh+CCCEOIUwUh8hn7oiAA)
@@ -77,23 +87,26 @@ Fixes and improvements for [Radio Group](./components/radio-group.md):
 * Smaller transpiled files
 * Bug fixes
 
+---
+
+## 1.3
 
 <a id="132"></a>
-## 1.3.2
+### 1.3.2
 
 <a id="material-design-version-2----first-small-changes"></a>
-### Material Design version 2 -- first small changes
+#### Material Design version 2 -- first small changes
 
 Google has updated their Material Design specs ("Version 2"). A couple of the changes have been included in this release; more will follow in next releases.
 
 <a id="css"></a>
-### CSS
+#### CSS
 
 CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [Style variables](theming/style-variables.md) how to use it).
 
 In terms of internal organisation, CSS variable files have been moved to each component's CSS package, which is a more logical location.
 
-#### Themes and behavior
+##### Themes and behavior
 
 Theming has become more powerful. Next to setting dimensions and colors, a number of components can now change behavior by setting a theme "switch" variable in [addStyle](theming/style-variables.md#styling-components-with-variables).
 
@@ -108,7 +121,7 @@ The switch variable may trigger one or more variables, or changes JavaScript beh
 
 While this seems to duplicate component options, it makes sense when components need to appear and behave differently based on the available screen size.
 
-#### Themes and media queries
+##### Themes and media queries
 
 With an additional argument to `addStyle` it is now possible to restrict a theme style by media query.
 
@@ -118,14 +131,14 @@ Some examples:
 
 * Have a normal Dialog but make it full screen on small screen sizes
 * Have a normal local Menu but make it full width on small screen sizes
-* Create a Drawer that behaves differently on different screen sizes: [Mithril example](./components/mithril/drawer.md#responsive-drawer), [React example](./components/react/drawer.md#responsive-drawer)
+* Create a Drawer that behaves differently on different screen sizes: [Mithril example](components/mithril/drawer.md#responsive-drawer), [React example](components/react/drawer.md#responsive-drawer)
 * Change the image size on a Card, without changing the component options
 
 See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to use this feature.
 
 
 <a id="components"></a>
-### Components
+#### Components
 
 * New component
   * [Button Group](components/button-group.md) - container for a row of buttons; use this to create toggle buttons or split buttons
@@ -160,7 +173,7 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Supporting CSS class `pe-rtl--flip` can be used to flip directional icons or buttons
 
 <a id="deprecations"></a>
-### Deprecations
+#### Deprecations
 
 * Card, Dialog, Drawer, Menu, Shadow, Spinner, Toolbar:
   * `z` is deprecated; use `shadowDepth`
@@ -173,18 +186,22 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * `zOn` is deprecated; use `shadowDepthOn`
 
 <a id="other"></a>
-### Other
+#### Other
 
 * [webfontloader](packages/polythene-utilities.md#addwebfont-web-font-loader)
   * Aligned configuration to upstream library
   * Now emits loading status callbacks
 * Various bug fixes
 
+---
+
+## 1.2
+
 <a id="120"></a>
-## 1.2.0
+### 1.2.0
 
 <a id="components-1"></a>
-### Components
+#### Components
 
 * [Card](components/card.md)
   * It is now possible to embed a video using the `media` item
@@ -199,15 +216,19 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 * Hover styles: Button, Raised Button and Icon Button have optional hover CSS variables to generate hover styles
 
 <a id="other-1"></a>
-### Other
+#### Other
 
 * Various bug fixes
 
+---
+
+## 1.1
+
 <a id="110"></a>
-## 1.1.0
+### 1.1.0
 
 <a id="core"></a>
-### Core
+#### Core
 
 * Updates to transition code:
   * The API of option `transitions` has changed - see [Transitions documentation](transitions.md) and a [from 1.0 to 1.1 change list](transitions.md#converting-from-polythene-10)
@@ -216,7 +237,7 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Added options `showTimingFunction` and `hideTimingFunction`
 
 <a id="components-2"></a>
-### Components
+#### Components
 
 * New component
   * [Drawer](components/drawer.md) to create side navigation
@@ -236,7 +257,7 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
 * Added RTL support for Card, Checkbox, Dialog, List Tile, List, Radio Button, Switch, Toolbar
 
 <a id="example-code"></a>
-### Example code
+#### Example code
 
 * Updated Text Field form validation to match Powerform v3
 * Tabs:
@@ -244,21 +265,25 @@ See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to
   * Added "hide all selection indicators"
 
 <a id="tooling"></a>
-### Tooling
+#### Tooling
 
 * Webpack 4 support
 
 <a id="other-2"></a>
-### Other
+#### Other
 
 * Various bug fixes
 
+---
+
+## 1.0
+
 <a id="100"></a>
-## 1.0.0
+### 1.0.0
 
 Equal to rc.11.
 
 <a id="pre-releases"></a>
 ## Pre-releases
 
-See: [Change log (pre-releases)](./changes-pre-releases.md)
+See: [Change log (pre-releases)](changes-pre-releases.md)

@@ -24,6 +24,7 @@
 * [Transitions](transitions.md)
 * [Handling state](handling-state.md)
 * [URLs and router links](handling-urls.md)
+* [TypeScript](typescript.md)
 
 ## Components
 

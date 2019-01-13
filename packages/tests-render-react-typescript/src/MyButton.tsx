@@ -1,6 +1,3 @@
-/*
-Example of a State Component.
-*/
 
 import React from "react";
 import { Button } from "polythene-react";
