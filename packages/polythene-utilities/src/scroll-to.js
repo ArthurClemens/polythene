@@ -43,7 +43,7 @@ export const scrollTo = opts => {
 const requestAnimFrame = isServer
   ? () => {}
   : (() =>
-    window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || (callback =>
+    window.requestAnimationFrame || window.webkitRequestAnimationFrame || window["mozRequestAnimationFrame"] || (callback =>
       window.setTimeout(callback, 1000 / 60)
     )
   )();

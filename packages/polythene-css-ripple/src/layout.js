@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, sel, createLayout } from "polythene-core-css";
 
 const varFns = {

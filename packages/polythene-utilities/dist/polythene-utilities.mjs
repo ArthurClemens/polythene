@@ -21,7 +21,13 @@ function _extends() {
 var addWebFont = function addWebFont(vendor, config) {
   if (isServer) return;
 
-  if (!window.WebFontConfig) {
+  if (!window["WebFontConfig"]) {
+    /**
+     * @param {object} params
+     * @param {string} [params.name]
+     * @param {string} [params.familyName]
+     * @param {any} [params.fvd]
+     */
     var emitEvent = function emitEvent(_ref) {
       var name = _ref.name,
           familyName = _ref.familyName,
@@ -35,7 +41,7 @@ var addWebFont = function addWebFont(vendor, config) {
       });
     };
 
-    window.WebFontConfig = {
+    window["WebFontConfig"] = {
       loading: function loading() {
         return emitEvent({
           name: "loading"
@@ -78,22 +84,22 @@ var addWebFont = function addWebFont(vendor, config) {
       var wf = document.createElement("script");
       wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
       wf.type = "text/javascript";
-      wf.async = "true";
+      wf.async = true;
       var s = document.getElementsByTagName("script")[0];
 
-      if (s) {
+      if (s && s.parentNode) {
         s.parentNode.insertBefore(wf, s);
       }
     })();
   }
 
-  var vendorCfg = window.WebFontConfig[vendor] || {};
+  var vendorCfg = window["WebFontConfig"][vendor] || {};
 
   if (config) {
     _extends(vendorCfg, config);
   }
 
-  window.WebFontConfig[vendor] = vendorCfg;
+  window["WebFontConfig"][vendor] = vendorCfg;
 };
 
 /*
@@ -198,13 +204,24 @@ var scrollTo = function scrollTo(opts) {
   });
 };
 var requestAnimFrame = isServer ? function () {} : function () {
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window["mozRequestAnimationFrame"] || function (callback) {
     return window.setTimeout(callback, 1000 / 60);
   };
 }();
 
+// @ts-check
 var Timer = function Timer() {
-  var timerId, startTime, remaining, cb;
+  /** @type {number} */
+  var timerId;
+  /** @type {number} */
+
+  var startTime;
+  /** @type {number} */
+
+  var remaining;
+  /** @type {() => any} */
+
+  var cb;
 
   var stop = function stop() {
     if (isClient) {
@@ -213,13 +230,13 @@ var Timer = function Timer() {
   };
 
   var pause = function pause() {
-    return stop(), remaining -= new Date() - startTime;
+    return stop(), remaining -= new Date().getTime() - startTime;
   };
 
   var startTimer = function startTimer() {
     if (isClient) {
       stop();
-      startTime = new Date();
+      startTime = new Date().getTime();
       timerId = window.setTimeout(cb, remaining);
     }
   };

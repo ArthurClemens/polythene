@@ -165,7 +165,6 @@ var layoutAroundJustified = [layout, {
   "justify-content": "space-around"
 }];
 /**
- * 
  * @param {number} [num=1] 
  * @returns {Styles}
  */
@@ -234,6 +233,19 @@ var flexGrow = function flexGrow(value) {
   };
 };
 /**
+ * 
+ * @param {number} value 
+ * @returns {Styles}
+ */
+
+
+var flexShrink = function flexShrink(value) {
+  return {
+    "-webkit-flex-shrink": value,
+    "flex-shrink": value
+  };
+};
+/**
  * @type {Styles} selfStart
  */
 
@@ -276,6 +288,7 @@ var flex$1 = {
   flexAutoVertical: flexAutoVertical,
   flexIndex: flexIndex,
   flexGrow: flexGrow,
+  flexShrink: flexShrink,
   layout: layout,
   layoutAroundJustified: layoutAroundJustified,
   layoutCenter: layoutCenter,
@@ -372,13 +385,13 @@ function _objectWithoutProperties(source, excluded) {
 // @ts-check
 
 /**
- * @typedef {object} CSSStyleObject 
+ * @typedef {object} StyleObject 
  */
 
 /**
  * Centers an item absolutely within relative parent.
  * @param {number} [offset=0] 
- * @returns {CSSStyleObject}
+ * @returns {StyleObject}
  */
 var fit = function fit() {
   var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
@@ -392,28 +405,6 @@ var fit = function fit() {
   };
 };
 /**
- * Optional font smoothing.
- * @param {boolean} [smoothing=true] 
- * @returns {CSSStyleObject}
- */
-
-
-var fontSmoothing = function fontSmoothing() {
-  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-  if (smoothing) {
-    return {
-      "-webkit-font-smoothing": "antialiased",
-      "-moz-osx-font-smoothing": "grayscale"
-    };
-  } else {
-    return {
-      "-webkit-font-smoothing": "subpixel-antialiased",
-      "-moz-osx-font-smoothing": "auto"
-    };
-  }
-};
-/**
  * Breaks off a line with ... unless lines is "none"
  * @param {number|"none"} lines 
  * @param {number} lineHeight 
@@ -424,7 +415,7 @@ var fontSmoothing = function fontSmoothing() {
  * @example 
  * // max 2 lines, 2.6em high
  * mixin.ellipsis(2, 1.3, "em")
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -461,7 +452,7 @@ var ellipsis = function ellipsis(lines, lineHeight) {
 };
 /**
  * Clears float.
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -478,7 +469,7 @@ var clearfix = function clearfix() {
  * Creates sticky headers in a scrollable list.
  * Does not work in IE 11, Edge < 16.
  * @param {number} [zIndex=1] 
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -497,7 +488,7 @@ var sticky = function sticky() {
  * @param {string} [curve=ease-out] 
  * @example
  * mixin.defaultTransition("opacity", vars.animation_duration)
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -518,7 +509,6 @@ var mixin = {
   defaultTransition: defaultTransition,
   ellipsis: ellipsis,
   fit: fit,
-  fontSmoothing: fontSmoothing,
   sticky: sticky
 };
 
@@ -1237,14 +1227,14 @@ var j2c = new J2c(j2cPluginPrefixBrowser_commonjs_1);
 
 var ID_REGEX = /[^a-z0-9\\-]/g;
 /**
- * @typedef {object} CSSStyleObject 
+ * @typedef {object} StyleObject 
  * @typedef {(selector: string|Array<string>, vars: object, customVars?: object) => Array<object>} StyleFn
  */
 
 /**
  * Adds styles to head.
  * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
- * @param {...Array<CSSStyleObject>} styles - List of lists style Objects
+ * @param {...Array<StyleObject>} styles - List of style Objects
  * @returns {void}
  */
 
@@ -1280,7 +1270,7 @@ var remove = function remove(id) {
  * @param {object} params
  * @param {string} params.id - Identifier, used as HTMLElement id for the attached <style></style> element.
  * @param {object} [params.document] - Document reference.
- * @param {...Array<CSSStyleObject>} styles - List of lists style Objects.
+ * @param {...Array<StyleObject>} styles - List of style Objects.
  * @returns {void}
  */
 
@@ -1302,10 +1292,10 @@ var addToDocument = function addToDocument(_ref) {
     styles[_key2 - 1] = arguments[_key2];
   }
 
-  styles.forEach(function (styleList) {
+  styles.forEach(function (styles) {
     // each style returns a list
-    if (Object.keys(styleList).length) {
-      styleList.forEach(function (style) {
+    if (Object.keys(styles).length) {
+      styles.forEach(function (style) {
         var scoped = {
           "@global": style
         };
@@ -1319,9 +1309,9 @@ var addToDocument = function addToDocument(_ref) {
 /**
  * 
  * @param {object} params
- * @param {CSSStyleObject|Array<CSSStyleObject>} params.styles
+ * @param {StyleObject|Array<StyleObject>} params.styles
  * @param {string} [params.scope]
- * @returns {Array<CSSStyleObject>}
+ * @returns {Array<StyleObject>}
  */
 
 
@@ -1331,7 +1321,7 @@ var wrapInScope = function wrapInScope(_ref2) {
   return scope ? [_defineProperty({}, scope, styles)] : styles;
 };
 /**
- * Adds styles to head for a component.
+ * Adds component styles to head.
  * @param {object} params
  * @param {Array<string>} params.selectors
  * @param {Array<StyleFn>} params.fns
@@ -1352,20 +1342,20 @@ var addStyle = function addStyle(_ref4) {
       scope = _ref4.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
-  var styleList = styleFns.map(function (fn) {
+  var styles = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   }).filter(function (list) {
     return list.length > 0;
   });
 
-  if (styleList.length === 0) {
+  if (styles.length === 0) {
     return;
   }
 
   var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id, wrapInScope({
     styles: wrapInScope({
-      styles: styleList,
+      styles: styles,
       scope: scope
     }),
     scope: mediaQuery
@@ -1380,7 +1370,7 @@ var addStyle = function addStyle(_ref4) {
  * @param {object} [params.customVars] - Style configuration variables
  * @param {string} [params.mediaQuery] - Mediaquery string
  * @param {string} [params.scope] - Scope selector
- * @returns {Array<CSSStyleObject>}
+ * @returns {Array<StyleObject>}
  */
 
 
@@ -1393,19 +1383,19 @@ var getStyle = function getStyle(_ref5) {
       scope = _ref5.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
-  var styleList = styleFns.map(function (fn) {
+  var styles = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   });
   return wrapInScope({
     styles: wrapInScope({
-      styles: styleList,
+      styles: styles,
       scope: scope
     }),
     scope: mediaQuery
   });
 };
 /**
- * Adds styles to head for a component.
+ * Adds component styles to head.
  * @param {string} selector 
  * @param {Array<StyleFn>} fns 
  * @param {object} vars - Style configuration variables
@@ -1457,7 +1447,7 @@ var createGetStyle = function createGetStyle(selector, fns, vars) {
      * @param {object} [scoping={}]
      * @param {string} [scoping.mediaQuery]
      * @param {string} [scoping.scope]
-     * @returns {Array<CSSStyleObject>}
+     * @returns {Array<StyleObject>}
      */
     function () {
       var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
@@ -1759,17 +1749,12 @@ var createColor = function createColor(_ref7) {
   );
 };
 /**
- * 
  * @param {object} vars 
  * @param {object} behaviorVars
  * @returns {string|undefined} 
  */
 
 var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
-  if (!vars) {
-    return;
-  }
-
   var marker = Object.keys(behaviorVars).filter(function (bvar) {
     return vars[bvar] === true;
   }).join(".");
@@ -1784,6 +1769,10 @@ var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
 
 
 var createMarker = function createMarker(vars, behaviorVars) {
+  if (!vars) {
+    console.error("createMarker requires param `vars`"); // eslint-disable-line no-console
+  }
+
   var value = createMarkerValue(vars, behaviorVars);
   return value ? {
     ":before": {

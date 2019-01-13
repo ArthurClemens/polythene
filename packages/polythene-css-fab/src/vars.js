@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").DrawerVars} DrawerVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {DrawerVars} drawerVars
+ */
+const drawerVars = {
   general_styles:               true,
 
   size_mini:                    5 * vars.grid_unit_component, // 5 * 8 = 40
@@ -17,3 +26,5 @@ export default {
   color_dark_focus_opacity:     vars.blend_dark_background_hover_medium, // same as button
   color_dark_background:        rgba(vars.color_primary)
 };
+
+export default drawerVars;

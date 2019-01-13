@@ -1,8 +1,14 @@
+// @ts-check
+
 import { vars as themeVars } from "polythene-theme";
 import { sel, selectorRTL, createLayout, createMarker } from "polythene-core-css";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 import { behaviorVars } from "./vars";
 
+/**
+ * 
+ * @param {boolean} isRTL 
+ */
 const alignSide = isRTL => () => ({
   textAlign: isRTL ? "right" : "left"
 });
@@ -18,6 +24,13 @@ const widthClass = width => {
   return "pe-menu--width-" + widthStr;
 };
 
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.vars
+ * @param {number} params.width
+ * @param {string} [params.value]
+ */
 const widthStyle = ({ vars, width, value }) => {
   const s = unifyWidth(vars, width);
   return {
@@ -40,7 +53,7 @@ const widths_min_width_width_factor = (selector, vars) =>
     }
   ]);
 
-const backdrop = selector =>
+const backdrop = (selector, vars) => // eslint-disable-line no-unused-vars
   sel(selector, {
     " .pe-menu__backdrop": {
       display: "block"
@@ -77,7 +90,7 @@ const z = (selector, vars) =>
 const varFns = {
   general_styles: (selector, vars) => [
     sel(selector, [
-      alignLeft(vars),
+      alignLeft(),
       {
         position: "static",
 
@@ -139,7 +152,7 @@ const varFns = {
       }
     ]),
     {
-      [selectorRTL(selector)]: alignRight(vars)
+      [selectorRTL(selector)]: alignRight()
     }
   ],
   animation_delay: (selector, vars) => [

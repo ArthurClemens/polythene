@@ -244,7 +244,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {IconButtonVars} iconButtonVars
+ */
+
+var iconButtonVars = {
   general_styles: true,
   animation_duration: vars.animation_duration,
   label_font_size: 16,
@@ -284,14 +289,15 @@ var vars$1 = {
 
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, iconButtonVars);
+var getStyle = styler.createGetStyle(selector, fns, iconButtonVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: iconButtonVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, iconButtonVars as vars };

@@ -198,7 +198,7 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
    * @type {Array<string>} attrsList 
    */
 
-  var attrsList = add ? defaultAttrs.concat(add) : [];
+  var attrsList = add ? defaultAttrs.concat(add) : defaultAttrs;
   var supported = attrsList.filter(function (item) {
     return !removeLookup[item];
   }).reduce(r, {});
@@ -285,7 +285,6 @@ var getAnimationEndEvent = function getAnimationEndEvent() {
 // @ts-check
 
 /**
- * 
  * @param {object} params
  * @param {object} params.element
  * @param {string} [params.selector]

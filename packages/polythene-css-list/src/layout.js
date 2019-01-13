@@ -1,3 +1,5 @@
+// @ts-check
+
 import { sel, createLayout } from "polythene-core-css";
 
 const borderStyle = vars => ({

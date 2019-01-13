@@ -356,6 +356,7 @@ var layout = createLayout({
   varFns: varFns
 });
 
+// @ts-check
 var vars$1 = {
   general_styles: true,
   animation_duration: vars.animation_duration,
@@ -403,6 +404,7 @@ var vars$1 = {
   color_dark_focus_off_opacity: .09
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, vars$1);
@@ -413,4 +415,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, vars$1 as vars };

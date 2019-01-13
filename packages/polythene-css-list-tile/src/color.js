@@ -1,3 +1,5 @@
+// @ts-check
+
 import { sel, createColor } from "polythene-core-css";
 
 const selected = (selector, vars, tint) =>

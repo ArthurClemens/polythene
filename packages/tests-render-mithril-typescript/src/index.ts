@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import m from "mithril";
 import {
   Button,
   Card,
@@ -38,6 +38,13 @@ CardCSS.addStyle(
     color_dark_subtitle_text:   "#fff"
   }
 );
+
+/* Test other CSS styles */
+import { BaseSpinnerCSS, ButtonCSS } from "polythene-css";
+
+BaseSpinnerCSS.addStyle(".test", {});
+ButtonCSS.addStyle(".test", {});
+/* end */
 
 const App = {
   view: () => 

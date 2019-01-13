@@ -148,11 +148,23 @@ var contentColor = createColor({
   }
 });
 
-var alignSide = function alignSide() {
-  return function () {
-    return {};
-  };
-};
+/** 
+ * @param {boolean} isRTL 
+ */
+
+var alignSide = function alignSide(isRTL) {
+  return (// eslint-disable-line no-unused-vars
+
+    /**
+     * @param {string} [selector]
+     * @param {object} [vars]
+     */
+    function (selector, vars$$1) {
+      return {};
+    }
+  );
+}; // eslint-disable-line no-unused-vars
+
 
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
@@ -583,10 +595,15 @@ var overlayColor = createColor({
   }
 });
 
+// @ts-check
 var padding_v = 24;
 var padding_actions_v = 8;
 var actions_button_margin_v = 2;
-var vars$1 = {
+/**
+ * @type {CardVars} cardVars
+ */
+
+var cardVars = {
   general_styles: true,
   actions_button_margin_h: vars.grid_unit,
   actions_button_margin_v: actions_button_margin_v,
@@ -627,6 +644,7 @@ var vars$1 = {
   color_dark_overlay_background: rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
 
+// @ts-check
 var selector = ".".concat(classes.component);
 var contentSelector = ".".concat(classes.content);
 var overlaySheetSelector = ".".concat(classes.overlaySheet);
@@ -637,35 +655,42 @@ var contentColorFns = [contentColor];
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlaySheetSelector],
     fns: overlayColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + contentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlayContentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -674,54 +699,61 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return styler.getStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlaySheetSelector],
     fns: overlayColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   })).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", contentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   })).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlayContentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 styler.addStyle({
   selectors: [selector],
   fns: baseFns,
-  vars: vars$1
+  vars: cardVars
 });
 styler.addStyle({
   selectors: [overlaySheetSelector],
   fns: overlayColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 styler.addStyle({
   selectors: [contentSelector],
   fns: contentColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 styler.addStyle({
   selectors: [overlayContentSelector],
   fns: contentColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, cardVars as vars };

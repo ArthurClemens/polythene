@@ -78,6 +78,7 @@ var color = createColor({
   }
 });
 
+// @ts-check
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
@@ -93,20 +94,30 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars = {
+// @ts-check
+
+/**
+ * @typedef {import("../index").SVGVars} SVGVars
+ */
+
+/**
+ * @type {SVGVars} svgVars
+ */
+var svgVars = {
   general_styles: true,
   color_light: "currentcolor",
   color_dark: "currentcolor"
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars);
-var getStyle = styler.createGetStyle(selector, fns, vars);
+var addStyle = styler.createAddStyle(selector, fns, svgVars);
+var getStyle = styler.createGetStyle(selector, fns, svgVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: svgVars
 });
 
-export { addStyle, color, getStyle, layout, vars };
+export { addStyle, getStyle, color, layout, svgVars as vars };

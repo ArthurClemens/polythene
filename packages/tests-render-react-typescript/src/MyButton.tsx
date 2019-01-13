@@ -2,7 +2,7 @@
 Example of a State Component.
 */
 
-import * as React from "react";
+import React from "react";
 import { Button } from "polythene-react";
 import { ButtonCSS } from "polythene-css";
 

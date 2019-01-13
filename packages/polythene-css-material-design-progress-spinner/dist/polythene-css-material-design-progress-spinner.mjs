@@ -74,6 +74,7 @@ var color$1 = createColor({
   superColor: color
 });
 
+// @ts-check
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
@@ -110,21 +111,27 @@ var layout$1 = createLayout({
   superLayout: layout
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {MaterialDesignProgressSpinnerVars} materialDesignProgressSpinnerVars
+ */
+
+var materialDesignProgressSpinnerVars = {
   general_styles: true,
   progress_animation_duration: ".8s",
   color_light: rgba(vars.color_primary),
   color_dark: rgba(vars.color_primary)
 };
 
+// @ts-check
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, materialDesignProgressSpinnerVars);
+var getStyle = styler.createGetStyle(selector, fns, materialDesignProgressSpinnerVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: materialDesignProgressSpinnerVars
 });
 
-export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$1 as vars };
+export { addStyle, getStyle, color$1 as color, layout$1 as layout, materialDesignProgressSpinnerVars as vars };

@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import m from "mithril";
 import { Button } from "polythene-mithril";
 import { ButtonCSS } from "polythene-css";
 

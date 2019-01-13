@@ -1,22 +1,26 @@
+// @ts-check
+
 import reset from "./reset";
-import roboto, { loadRoboto } from "./roboto";
+import { robotoStyle, loadRoboto } from "./roboto";
 import typography from "./typography";
 import { addWebFont } from "polythene-utilities";
 import { styler } from "polythene-core-css";
 import { vars } from "polythene-style";
 
-const fns = [roboto, reset, typography];
+const fns = [robotoStyle, reset, typography];
+const fnsWithLoadRoboto = [loadRoboto, robotoStyle, reset, typography]; // adds font import for written CSS
 const selector = "";
 
 const addStyle = styler.createAddStyle(selector, fns, vars);
 
-const getStyle = (customSelector, customVars, { mediaQuery }={}) => 
+const getStyle = (customSelector, customVars, { mediaQuery="", scope="" } = {}) => 
   styler.getStyle({
     selectors: [customSelector, selector],
-    fns: [loadRoboto].concat(fns), // add font import for written CSS
+    fns: fnsWithLoadRoboto,
     vars,
     customVars,
     mediaQuery,
+    scope,
   });
 
 const addRoboto = () => {

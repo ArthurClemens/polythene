@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").DialogPaneVars} DialogPaneVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {DialogPaneVars} dialogPaneVars
+ */
+const dialogPaneVars = {
   general_styles:                  true,
 
   border_width:                    1,
@@ -26,3 +35,5 @@ export default {
   color_dark_body_border:          rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
   color_dark_background:           "inherit",
 };
+
+export default dialogPaneVars;

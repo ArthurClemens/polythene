@@ -457,7 +457,12 @@ var layout$1 = createLayout({
   varMixin: withCreateSizeVar
 });
 
-var vars$3 = {
+// @ts-check
+/**
+ * @type {SwitchVars} switchVars
+ */
+
+var switchVars = {
   general_styles: true,
   animation_duration: vars.animation_duration,
   hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2,
@@ -472,7 +477,7 @@ var vars$3 = {
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#eee",
   color_light_wash_on: rgba(vars.color_primary, vars.blend_light_background_active),
-  color_light_wash_off: vars$1.color_light_wash,
+  color_light_wash_off: vars$1.color_light_wash_background,
   color_light_track_on: rgba(vars.color_primary_faded),
   color_light_track_on_opacity: .55,
   color_light_track_off: rgba(vars.color_light_foreground, vars.blend_light_text_regular),
@@ -487,7 +492,7 @@ var vars$3 = {
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
   color_dark_wash_on: rgba(vars.color_primary, vars.blend_dark_background_active),
-  color_dark_wash_off: vars$1.color_dark_wash,
+  color_dark_wash_off: vars$1.color_dark_wash_background,
   color_dark_track_on: rgba(vars.color_primary_faded, vars.blend_dark_text_tertiary),
   // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
@@ -501,14 +506,15 @@ var vars$3 = {
 
 };
 
+// @ts-check
 var fns = [layout$1, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$3);
-var getStyle = styler.createGetStyle(selector, fns, vars$3);
+var addStyle = styler.createAddStyle(selector, fns, switchVars);
+var getStyle = styler.createGetStyle(selector, fns, switchVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$3
+  vars: switchVars
 });
 
-export { addStyle, color, getStyle, layout$1 as layout, vars$3 as vars };
+export { addStyle, getStyle, color, layout$1 as layout, switchVars as vars };

@@ -156,13 +156,15 @@ export const createContent = (vnode, { renderer: h, keys: k, CardActions, CardMe
     : attrs.z; // deprecated
   const children = attrs.children || vnode.children;
   return [
-    h(Shadow, {
-      shadowDepth: shadowDepth !== undefined
-        ? shadowDepth
-        : 1,
-      animated: true,
-      key: "shadow"
-    }),
+    h(Shadow,
+      {
+        shadowDepth: shadowDepth !== undefined
+          ? shadowDepth
+          : 1,
+        animated: true,
+        key: "shadow"
+      }
+    ),
     h("div",
       {
         className: classes.content,

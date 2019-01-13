@@ -15,19 +15,16 @@ export const getInitialState = () => {
 
 export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
-  return Object.assign(
-    {},
-    filterSupportedAttributes(attrs),
-    {
-      className: [
-        classes.component,
-        attrs.unconstrained ? classes.unconstrained : null,
-        attrs.tone === "dark" ? "pe-dark-tone" : null,
-        attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.className || attrs[k.class],
-      ].join(" ")
-    }
-  );
+  return {
+    ...filterSupportedAttributes(attrs),
+    className: [
+      classes.component,
+      attrs.unconstrained ? classes.unconstrained : null,
+      attrs.tone === "dark" ? "pe-dark-tone" : null,
+      attrs.tone === "light" ? "pe-light-tone" : null,
+      attrs.className || attrs[k.class],
+    ].join(" ")
+  };
 };
 
 const updateAnimationState = state =>

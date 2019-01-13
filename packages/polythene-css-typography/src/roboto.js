@@ -1,5 +1,6 @@
+// @ts-check
 
-export default () => [
+export const robotoStyle = () => [
   {
     "html, body, button, input, select, textarea": {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif"

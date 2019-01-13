@@ -1,22 +1,38 @@
 import { getAnimationEndEvent, isTouch, isServer, filterSupportedAttributes, pointerEndEvent } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
@@ -130,7 +146,7 @@ var getInitialState = function getInitialState() {
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _objectSpread({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };

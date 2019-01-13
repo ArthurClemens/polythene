@@ -176,7 +176,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {BaseSpinnerVars} baseSpinnerVars
+ */
+
+var baseSpinnerVars = {
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".220s",
@@ -193,14 +198,15 @@ var vars$1 = {
 
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, baseSpinnerVars);
+var getStyle = styler.createGetStyle(selector, fns, baseSpinnerVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: baseSpinnerVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, baseSpinnerVars as vars };

@@ -205,15 +205,11 @@ export const createColor = ({ varFns={}, superColor, varMixin = o => o }) =>
   );
 
 /**
- * 
  * @param {object} vars 
  * @param {object} behaviorVars
  * @returns {string|undefined} 
  */
 const createMarkerValue = (vars, behaviorVars) => {
-  if (!vars) {
-    return;
-  }
   const marker = Object.keys(behaviorVars)
     .filter(bvar => vars[bvar] === true)
     .join(".");
@@ -229,6 +225,9 @@ const createMarkerValue = (vars, behaviorVars) => {
  * @returns {object}
  */
 export const createMarker = (vars, behaviorVars) => {
+  if (!vars) {
+    console.error("createMarker requires param `vars`"); // eslint-disable-line no-console
+  }
   const value = createMarkerValue(vars, behaviorVars);
   return value
     ? ({

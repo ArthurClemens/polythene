@@ -51,16 +51,36 @@ var _createShadowForSelector = function _createShadowForSelector(which, depth) {
     }));
   };
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth 
+ * @param {"top"|"bottom"} which 
+ */
+
 
 var _createShadow = function _createShadow(selector, vars$$1, depth, which) {
   return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which), {
     boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
   }));
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth
+ * @returns {object}
+ */
+
 
 var shadow = function shadow(selector, vars$$1, depth) {
   return [_createShadow(selector, vars$$1, depth, "top"), _createShadow(selector, vars$$1, depth, "bottom")];
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @returns {object}
+ */
+
 
 var shadow_depth = function shadow_depth(selector, vars$$1) {
   return vars$$1.shadow_depth !== undefined ? shadow(selector, vars$$1, vars$$1.shadow_depth) : null;
@@ -119,6 +139,7 @@ var vars$1 = _extends({}, {
   transition: "box-shadow ".concat(vars.animation_duration, " ease-out")
 }, sharedVars);
 
+// @ts-check
 var fns = [layout];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, vars$1);

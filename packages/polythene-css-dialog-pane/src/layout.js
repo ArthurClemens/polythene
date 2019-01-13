@@ -1,3 +1,5 @@
+// @ts-check
+
 import { flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
@@ -37,6 +39,9 @@ const header_height_footer_height_margin_vertical = (selector, vars) =>
     }
   });
 
+/**
+ * @param {string} selector 
+ */
 export const fullScreen = selector =>
   sel(selector, {
     " .pe-dialog-pane": {

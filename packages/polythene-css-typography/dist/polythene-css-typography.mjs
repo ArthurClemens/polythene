@@ -2,6 +2,7 @@ import { vars } from 'polythene-style';
 import { addWebFont } from 'polythene-utilities';
 import { styler } from 'polythene-core-css';
 
+// @ts-check
 var reset = (function () {
   return [{
     // apply a natural box layout model to all elements, but allow elements to change
@@ -29,19 +30,21 @@ var reset = (function () {
   }];
 });
 
-var roboto = (function () {
+// @ts-check
+var robotoStyle = function robotoStyle() {
   return [{
     "html, body, button, input, select, textarea": {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif"
     }
   }];
-});
+};
 var loadRoboto = function loadRoboto() {
   return [{
     "@import": "url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700')"
   }];
 };
 
+// @ts-check
 var fontSize = 14;
 var typography = (function () {
   return [{
@@ -144,21 +147,27 @@ var typography = (function () {
   }];
 });
 
-var fns = [roboto, reset, typography];
+// @ts-check
+var fns = [robotoStyle, reset, typography];
+var fnsWithLoadRoboto = [loadRoboto, robotoStyle, reset, typography]; // adds font import for written CSS
+
 var selector = "";
 var addStyle = styler.createAddStyle(selector, fns, vars);
 
 var getStyle = function getStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   return styler.getStyle({
     selectors: [customSelector, selector],
-    fns: [loadRoboto].concat(fns),
-    // add font import for written CSS
+    fns: fnsWithLoadRoboto,
     vars: vars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 

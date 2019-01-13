@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").IconVars} IconVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {IconVars} iconVars
+ */
+const iconVars = {
   general_styles:                true,
 
   size_small:                    vars.unit_icon_size_small,  // 16 
@@ -16,3 +25,5 @@ export default {
   color_light:                   "currentcolor",
   color_dark:                    "currentcolor"
 };
+
+export default iconVars;

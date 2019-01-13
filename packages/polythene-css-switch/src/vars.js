@@ -1,9 +1,18 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").SwitchVars} SwitchVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
 import { vars as selectionControlVars } from "polythene-css-selection-control";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {SwitchVars} switchVars
+ */
+const switchVars = {
   general_styles:                     true,
 
   animation_duration:                 vars.animation_duration,
@@ -19,7 +28,7 @@ export default {
   color_light_thumb_off:              "#f1f1f1",
   color_light_thumb_disabled:         "#eee",
   color_light_wash_on:                rgba(vars.color_primary, vars.blend_light_background_active),
-  color_light_wash_off:               iconButtonVars.color_light_wash,
+  color_light_wash_off:               iconButtonVars.color_light_wash_background,
 
   color_light_track_on:               rgba(vars.color_primary_faded),
   color_light_track_on_opacity:       .55,
@@ -38,7 +47,7 @@ export default {
   color_dark_thumb_off:               "#bdbdbd",
   color_dark_thumb_disabled:          "#555",
   color_dark_wash_on:                 rgba(vars.color_primary, vars.blend_dark_background_active),
-  color_dark_wash_off:                iconButtonVars.color_dark_wash,
+  color_dark_wash_off:                iconButtonVars.color_dark_wash_background,
 
   color_dark_track_on:                rgba(vars.color_primary_faded, vars.blend_dark_text_tertiary), // or "#5a7f7c"
   color_dark_track_on_opacity:        9,
@@ -53,3 +62,5 @@ export default {
 
   // color_dark_focus_on and so on taken from selectionControlVars
 };
+
+export default switchVars;

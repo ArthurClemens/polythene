@@ -1,3 +1,5 @@
+// @ts-check
+
 import { sel, selectorRTL, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
@@ -117,7 +119,11 @@ const cover = (selector, vars) =>
     }
   });
 
-const mini = miniSelector =>
+/**
+ * @param {string} miniSelector 
+ * @param {object} [vars] 
+ */
+const mini = (miniSelector, vars) => // eslint-disable-line no-unused-vars
   sel(miniSelector, {
     " .pe-dialog__content": {
       marginLeft: 0,
@@ -125,7 +131,11 @@ const mini = miniSelector =>
     },
   });
 
-const permanent = permanentSelector =>
+/**
+ * @param {string} permanentSelector 
+ * @param {object} [vars] 
+ */
+const permanent = (permanentSelector, vars) => // eslint-disable-line no-unused-vars
   sel(permanentSelector, {
     position: "static",
     display: "block",
@@ -140,12 +150,20 @@ const permanent = permanentSelector =>
     }
   });
 
+/**
+ * @param {string} pushSelector 
+ * @param {object} [vars] 
+ */
 // fn: pushSelector contains .pe-drawer--push
-const push = pushSelector => 
+const push = (pushSelector, vars) => // eslint-disable-line no-unused-vars
   sel(pushSelector, {
     position: "static",
   });
 
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
 const borderRadius = (selector, vars) =>
   sel(selector, {
     " .pe-dialog__content": {
@@ -153,7 +171,11 @@ const borderRadius = (selector, vars) =>
     }
   });
 
-const floating = selector =>
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
+const floating = (selector, vars) => // eslint-disable-line no-unused-vars
   sel(selector, {
     height: "auto",
 
@@ -163,6 +185,10 @@ const floating = selector =>
   });
 
 const varFns = {
+  /**
+   * @param {string} selector 
+   * @param {object} [vars] 
+   */
   general_styles: (selector, vars) => [
     sel(selector, [
       alignLeft(selector, vars),

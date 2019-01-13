@@ -1,3 +1,5 @@
+// @ts-check
+
 import { layout as superLayout } from "polythene-css-base-spinner";
 import { sel, createLayout } from "polythene-core-css";
 import { styleDurationToMs } from "polythene-core";

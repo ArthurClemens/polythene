@@ -1,7 +1,6 @@
 // @ts-check
 
 /**
- * 
  * @param {object} params
  * @param {object} params.element
  * @param {string} [params.selector]

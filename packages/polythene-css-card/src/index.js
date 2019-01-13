@@ -1,3 +1,5 @@
+// @ts-check
+
 import classes from "polythene-css-classes/card";
 import color from "./color";
 import contentColor from "./color-content";
@@ -15,13 +17,14 @@ const baseFns = [layout, color];
 const overlayColorFns = [overlayColor];
 const contentColorFns = [contentColor];
 
-const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
+const addStyle = (customSelector, customVars, { mediaQuery="", scope="" } = {}) => {
   customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
     vars,
     customVars,
     mediaQuery,
+    scope,
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlaySheetSelector],
@@ -29,6 +32,7 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     vars,
     customVars,
     mediaQuery,
+    scope,
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + contentSelector],
@@ -36,6 +40,7 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     vars,
     customVars,
     mediaQuery,
+    scope,
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, " " + overlayContentSelector],
@@ -43,34 +48,39 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     vars,
     customVars,
     mediaQuery,
+    scope,
   });
 };
 
-const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => 
+const getStyle = (customSelector = "", customVars, { mediaQuery="", scope="" } = {}) => 
   styler.getStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
     vars,
     customVars,
     mediaQuery,
+    scope,
   }).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlaySheetSelector],
     fns: overlayColorFns,
     vars,
     customVars,
     mediaQuery,
+    scope,
   })).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", contentSelector],
     fns: contentColorFns,
     vars,
     customVars,
     mediaQuery,
+    scope,
   })).concat(styler.getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlayContentSelector],
     fns: contentColorFns,
     vars,
     customVars,
     mediaQuery,
+    scope,
   }));
 
 styler.addStyle({
@@ -96,8 +106,8 @@ styler.addStyle({
 
 export {
   addStyle,
-  color,
   getStyle,
+  color,
   layout,
   vars,
 };

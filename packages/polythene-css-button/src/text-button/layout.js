@@ -1,6 +1,11 @@
+// @ts-check
+
 import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
 
+/** 
+ * @param {boolean} isRTL 
+ */
 const alignSide = isRTL => () => ({
   ".pe-button--separator-start .pe-button__content": {
     borderStyle: isRTL

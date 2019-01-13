@@ -55,7 +55,7 @@ export const filterSupportedAttributes = (attrs, { add, remove} = {}) => {
    */
   const attrsList = add
     ? defaultAttrs.concat(add)
-    : [];
+    : defaultAttrs;
   const supported = attrsList.filter(item => !removeLookup[item]).reduce(r, {});
   return Object.keys(attrs).reduce(
     /**

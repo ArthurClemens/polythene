@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").SearchVars} SearchVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {SearchVars} searchVars
+ */
+const searchVars = {
   general_styles:                 true,
 
   font_size_input:                20,
@@ -23,5 +32,7 @@ export default {
         
   color_dark_label_text:          rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_input_text:          rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_background:          rgba(vars.color_dark_background)
+  color_dark_background:          rgba(vars.color_dark_background),
 };
+
+export default searchVars;

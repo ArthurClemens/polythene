@@ -161,7 +161,7 @@
 
 .pe-notification__holder.pe-multiple--screen {
   position: fixed;
-  z-index: 7000
+  z-index: 5000
 }
 
 :not(.pe-notification--container) .pe-multiple--container {

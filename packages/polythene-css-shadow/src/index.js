@@ -1,3 +1,5 @@
+// @ts-check
+
 import classes from "polythene-css-classes/shadow";
 import layout, { sharedVarFns } from "./layout";
 import vars, { sharedVars } from "./vars";

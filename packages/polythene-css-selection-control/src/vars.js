@@ -1,3 +1,5 @@
+// @ts-check
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 

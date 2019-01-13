@@ -5,26 +5,38 @@ var classes = {
   component: "pe-checkbox-control"
 };
 
+// @ts-check
 var color$1 = createColor({
   superColor: color
 });
 
+// @ts-check
 var layout$1 = createLayout({
   superLayout: layout
 });
 
-var vars = {
+// @ts-check
+
+/**
+ * @typedef {import("../index").CheckboxVars} CheckboxVars
+ */
+
+/**
+ * @type {CheckboxVars} checkboxVars
+ */
+var checkboxVars = {
   general_styles: true
 };
 
+// @ts-check
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars);
-var getStyle = styler.createGetStyle(selector, fns, vars);
+var addStyle = styler.createAddStyle(selector, fns, checkboxVars);
+var getStyle = styler.createGetStyle(selector, fns, checkboxVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: checkboxVars
 });
 
-export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars };
+export { addStyle, getStyle, color$1 as color, layout$1 as layout, checkboxVars as vars };

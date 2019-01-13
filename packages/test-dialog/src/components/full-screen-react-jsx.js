@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, Button, Toolbar, IconButton } from "polythene-react";
+import { Dialog, Button, Toolbar, ToolbarTitle, IconButton } from "polythene-react";
 import { ToolbarCSS } from "polythene-css";
 
 const DIALOG_CONFIRM = "confirm-fullscreen";
@@ -51,7 +51,7 @@ const toolbarRow = title => [
       onClick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
     }}
   />,
-  <span className="flex" key="spacer">{title}</span>,
+  <ToolbarTitle>{title}</ToolbarTitle>,
   <Button
     key="save"
     label="Save"

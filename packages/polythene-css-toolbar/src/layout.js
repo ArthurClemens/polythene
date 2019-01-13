@@ -1,12 +1,30 @@
+// @ts-check
+
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
-const breakpoint = breakpointSel => (selector, o) => ({
-  [breakpointSel]: {
-    [selector]: o
-  }
-});
+/**
+ * 
+ * @param {string} breakpointSel 
+ */
+const breakpoint = breakpointSel =>
+  /**
+   * @param {string} selector
+   * @param {object} o
+   */
+  (selector, o) => ({
+    [breakpointSel]: {
+      [selector]: o
+    }
+  });
 
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
 const indent_padding_side = ({ selector, vars, isRTL, isLarge }) => {
   const indent = isLarge ? vars.indent_large : vars.indent;
   const fn = isLarge ? breakpointTabletPortraitUp : sel;
@@ -18,6 +36,13 @@ const indent_padding_side = ({ selector, vars, isRTL, isLarge }) => {
   });
 };
 
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
 const title_padding = ({ selector, vars, isRTL, isLarge }) => {
   const title_padding = isLarge ? vars.title_padding_large : vars.title_padding;
   const fn = isLarge ? breakpointTabletPortraitUp : sel;
@@ -33,6 +58,13 @@ const title_padding = ({ selector, vars, isRTL, isLarge }) => {
   });
 };
 
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
 const title_padding_title_after_icon_padding = ({ selector, vars, isRTL, isLarge }) => {
   const padding = isLarge ? vars.title_after_icon_padding_large : vars.title_after_icon_padding;
   const fn = isLarge ? breakpointTabletPortraitUp : sel;

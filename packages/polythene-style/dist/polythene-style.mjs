@@ -1,3 +1,4 @@
+// @ts-check
 // Global style variables
 var grid_unit = 4;
 var grid_unit_component = 8;
@@ -5,9 +6,6 @@ var increment = 7 * grid_unit_component; // 7 * 8 = 56
 
 var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
 
-var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
-var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
-var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
 var vars = {
   // grid
   grid_unit: grid_unit,
@@ -40,9 +38,9 @@ var vars = {
   unit_screen_size_small: 320,
   // transitions
   animation_duration: ".18s",
-  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
-  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
-  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
+  animation_curve_slow_in_fast_out: "cubic-bezier(.4, 0, .2, 1)",
+  animation_curve_slow_in_linear_out: "cubic-bezier(0, 0, .2, 1)",
+  animation_curve_linear_in_fast_out: "cubic-bezier(.4, 0, 1, 1)",
   animation_curve_default: "ease-out",
   // font
   font_weight_light: 300,
@@ -113,8 +111,10 @@ var vars = {
   z_menu: 1000,
   z_app_bar: 2000,
   z_drawer: 3000,
-  z_dialog: 5000,
-  z_notification: 7000
+  z_notification: 5000,
+  z_dialog: 7000
 };
+
+// @ts-check
 
 export { vars };

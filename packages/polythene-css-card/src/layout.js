@@ -1,7 +1,17 @@
+// @ts-check
+
 import { mixin, flex, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
-const alignSide = () => () => ({});
+/** 
+ * @param {boolean} isRTL 
+ */
+const alignSide = isRTL => // eslint-disable-line no-unused-vars
+  /**
+   * @param {string} [selector]
+   * @param {object} [vars]
+   */
+  (selector, vars) => ({}); // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 

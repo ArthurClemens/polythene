@@ -1,3 +1,5 @@
+// @ts-check
+
 import { vars } from "polythene-theme";
 
 export const sharedVars = {

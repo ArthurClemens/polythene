@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => () => ({

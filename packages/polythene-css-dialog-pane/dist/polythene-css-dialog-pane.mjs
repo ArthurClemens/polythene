@@ -140,6 +140,10 @@ var header_height_footer_height_margin_vertical = function header_height_footer_
     }
   });
 };
+/**
+ * @param {string} selector 
+ */
+
 
 var fullScreen = function fullScreen(selector) {
   return sel(selector, {
@@ -330,7 +334,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {DialogPaneVars} dialogPaneVars
+ */
+
+var dialogPaneVars = {
   general_styles: true,
   border_width: 1,
   footer_height: 52,
@@ -357,14 +366,15 @@ var vars$1 = {
   color_dark_background: "inherit"
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, dialogPaneVars);
+var getStyle = styler.createGetStyle(selector, fns, dialogPaneVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: dialogPaneVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars, fullScreen };
+export { addStyle, getStyle, color, layout, dialogPaneVars as vars, fullScreen };

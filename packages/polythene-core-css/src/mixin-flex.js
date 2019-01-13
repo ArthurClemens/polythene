@@ -202,7 +202,6 @@ const layoutAroundJustified = [
 ];
 
 /**
- * 
  * @param {number} [num=1] 
  * @returns {Styles}
  */
@@ -264,6 +263,16 @@ const flexGrow = value => ({
 });
 
 /**
+ * 
+ * @param {number} value 
+ * @returns {Styles}
+ */
+const flexShrink = value => ({
+  "-webkit-flex-shrink": value,
+  "flex-shrink": value
+});
+
+/**
  * @type {Styles} selfStart
  */
 const selfStart = {
@@ -305,6 +314,7 @@ export default {
   flexAutoVertical,
   flexIndex,
   flexGrow,
+  flexShrink,
   layout,
   layoutAroundJustified,
   layoutCenter,
@@ -325,5 +335,5 @@ export default {
   selfCenter,
   selfEnd,
   selfStart,
-  selfStretch
+  selfStretch,
 };

@@ -198,10 +198,8 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       name: "Any content (tabs)",
       component: {
         view: () =>
-          // Use child attribute
-          h(Card, {
-            children: h(tabsContent)
-          })
+          // Testing child node
+          h(Card, null, h(tabsContent))
       }  
     },
     {

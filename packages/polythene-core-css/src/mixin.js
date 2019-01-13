@@ -1,13 +1,13 @@
 // @ts-check
 
 /**
- * @typedef {object} CSSStyleObject 
+ * @typedef {object} StyleObject 
  */
 
 /**
  * Centers an item absolutely within relative parent.
  * @param {number} [offset=0] 
- * @returns {CSSStyleObject}
+ * @returns {StyleObject}
  */
 const fit = (offset = 0) => {
   const offsetPx = offset + "px";
@@ -21,25 +21,6 @@ const fit = (offset = 0) => {
 };
 
 /**
- * Optional font smoothing.
- * @param {boolean} [smoothing=true] 
- * @returns {CSSStyleObject}
- */
-const fontSmoothing = (smoothing = true) => {
-  if (smoothing) {
-    return {
-      "-webkit-font-smoothing": "antialiased",
-      "-moz-osx-font-smoothing": "grayscale"
-    };
-  } else {
-    return {
-      "-webkit-font-smoothing": "subpixel-antialiased",
-      "-moz-osx-font-smoothing": "auto"
-    };
-  }
-};
-
-/**
  * Breaks off a line with ... unless lines is "none"
  * @param {number|"none"} lines 
  * @param {number} lineHeight 
@@ -50,7 +31,7 @@ const fontSmoothing = (smoothing = true) => {
  * @example 
  * // max 2 lines, 2.6em high
  * mixin.ellipsis(2, 1.3, "em")
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 const ellipsis = (lines, lineHeight, unit = "px") => {
   if (lines === "none") {
@@ -93,7 +74,7 @@ const ellipsis = (lines, lineHeight, unit = "px") => {
 
 /**
  * Clears float.
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 const clearfix = () => ({
   "&:after": {
@@ -107,7 +88,7 @@ const clearfix = () => ({
  * Creates sticky headers in a scrollable list.
  * Does not work in IE 11, Edge < 16.
  * @param {number} [zIndex=1] 
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 const sticky = (zIndex = 1) => ({
   position: "sticky",
@@ -122,7 +103,7 @@ const sticky = (zIndex = 1) => ({
  * @param {string} [curve=ease-out] 
  * @example
  * mixin.defaultTransition("opacity", vars.animation_duration)
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 const defaultTransition = (properties = "all", duration = ".18s", curve = "ease-out") => ({
   transitionDelay: "0ms",
@@ -136,6 +117,5 @@ export default {
   defaultTransition,
   ellipsis,
   fit,
-  fontSmoothing,
   sticky,
 };

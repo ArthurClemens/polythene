@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {"light" | "dark"} tint
+ */
+
 import { sel, createColor } from "polythene-core-css";
 
 const border = (selector, vars, tint) =>
@@ -13,6 +19,9 @@ const generalFns = ({
   general_styles: () => []
 });
 
+/**
+ * @param {tint} tint 
+ */
 const tintFns = tint => ({
 
   // Text
@@ -118,6 +127,9 @@ const tintFns = tint => ({
 
 });
 
+/**
+ * @param {tint} tint 
+ */
 const hoverTintFns = tint => ({
 
   ["color_" + tint + "_hover"]: (selector, vars) => [
@@ -168,8 +180,14 @@ const hoverTintFns = tint => ({
 
 });
 
-const lightTintFns = Object.assign({}, generalFns, tintFns("light"));
-const darkTintFns = Object.assign({}, generalFns, tintFns("dark"));
+const lightTintFns = {
+  ...generalFns,
+  ...tintFns("light")
+};
+const darkTintFns = {
+  ...generalFns,
+  ...tintFns("dark")
+};
 
 const lightTintHoverFns = hoverTintFns("light");
 const darkTintHoverFns = hoverTintFns("dark");

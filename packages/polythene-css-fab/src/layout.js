@@ -1,4 +1,5 @@
-import { textButtonLayout } from "polythene-css-button";
+// @ts-check
+
 import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
@@ -68,6 +69,5 @@ const varFns = {
 };
 
 export default createLayout({
-  varFns,
-  textButtonLayout
+  varFns
 });

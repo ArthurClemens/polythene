@@ -69,7 +69,6 @@ const styles = [{
 * defaultTransition
 * ellipsis
 * fit
-* fontSmoothing
 * sticky
 * vendorize
 

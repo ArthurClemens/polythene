@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").TextfieldVars} TextfieldVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {TextfieldVars} textfieldVars
+ */
+const textfieldVars = {
   general_styles:                               true,
 
   dense_floating_label_top:                     10,
@@ -59,5 +68,7 @@ export default {
   color_dark_help_text:                         rgba(vars.color_dark_foreground, vars.blend_dark_text_tertiary),
   color_dark_required_symbol:                   rgba("221, 44, 0"),
   color_dark_focus_border:                      rgba(vars.color_primary),
-  color_dark_counter_ok_border:                 rgba(vars.color_primary)
+  color_dark_counter_ok_border:                 rgba(vars.color_primary),
 };
+
+export default textfieldVars;

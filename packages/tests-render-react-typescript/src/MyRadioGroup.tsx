@@ -2,7 +2,7 @@
 Example of a Functional Component.
 */
 
-import * as React from "react";
+import React from "react";
 import { RadioGroup } from "polythene-react";
 
 interface MyRadioGroupProps extends Partial<RadioGroup> {

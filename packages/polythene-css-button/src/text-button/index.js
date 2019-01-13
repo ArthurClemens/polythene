@@ -1,3 +1,5 @@
+// @ts-check
+
 import superLayout from "./base";
 import classes from "polythene-css-classes/button";
 import color from "./color";
@@ -10,7 +12,14 @@ const superFns = [superLayout];
 const superSelector = `.${classes.super}`;
 const selector = `.${classes.component}`;
 
-const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
+/**
+ * @param {string} customSelector 
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
+const addStyle = (customSelector, customVars, { mediaQuery="", scope="" } = {}) => {
   const finalVars = customVars && customVars.contained
     ? containedButtonVars
     : vars;
@@ -20,6 +29,7 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     vars: finalVars,
     customVars,
     mediaQuery,
+    scope,
   });
   customSelector && styler.addStyle({
     selectors: [selector, customSelector],
@@ -27,10 +37,18 @@ const addStyle = (customSelector, customVars, { mediaQuery }={}) => {
     vars: finalVars,
     customVars,
     mediaQuery,
+    scope,
   });
 };
 
-const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => {
+/**
+ * @param {string} [customSelector]
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
+const getStyle = (customSelector = "", customVars, { mediaQuery="", scope="" } = {}) => {
   const finalVars = customVars && customVars.contained
     ? containedButtonVars
     : vars;
@@ -41,6 +59,7 @@ const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => {
       vars: finalVars,
       customVars,
       mediaQuery,
+      scope,
     })
     .concat(styler.getStyle({
       selectors: [selector, customSelector],
@@ -48,6 +67,7 @@ const getStyle = (customSelector = "", customVars, { mediaQuery }={}) => {
       vars: finalVars,
       customVars,
       mediaQuery,
+      scope,
     }));
 };
 

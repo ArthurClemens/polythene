@@ -1,3 +1,5 @@
+// @ts-check
+
 /*
 Styling derived from https://github.com/PolymerElements/paper-spinner
 

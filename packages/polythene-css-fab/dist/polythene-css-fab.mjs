@@ -1,4 +1,3 @@
-import { textButtonColor, textButtonLayout } from 'polythene-css-button';
 import { createColor, sel, createLayout, mixin, rgba, styler } from 'polythene-core-css';
 import { vars } from 'polythene-theme';
 
@@ -89,10 +88,10 @@ var color = createColor({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
-  },
-  textButtonColor: textButtonColor
+  }
 });
 
+// @ts-check
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, {
@@ -150,11 +149,15 @@ var varFns = {
   }
 };
 var layout = createLayout({
-  varFns: varFns,
-  textButtonLayout: textButtonLayout
+  varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {DrawerVars} drawerVars
+ */
+
+var drawerVars = {
   general_styles: true,
   size_mini: 5 * vars.grid_unit_component,
   // 5 * 8 = 40
@@ -173,14 +176,15 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_primary)
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, drawerVars);
+var getStyle = styler.createGetStyle(selector, fns, drawerVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: drawerVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, drawerVars as vars };

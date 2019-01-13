@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").BaseSpinnerVars} BaseSpinnerVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {BaseSpinnerVars} baseSpinnerVars
+ */
+const baseSpinnerVars = {
   general_styles:                true,
     
   animation_delay:               "0s",
@@ -18,3 +27,5 @@ export default {
   color_light_raised_background: rgba(vars.color_light_background),
   color_dark_raised_background:  rgba(vars.color_light_background) // also use light background with dark tone
 };
+
+export default baseSpinnerVars;

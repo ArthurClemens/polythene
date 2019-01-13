@@ -1,3 +1,5 @@
+// @ts-check
+
 import { vars } from "polythene-style";
 
 const fontSize = 14;

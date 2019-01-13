@@ -76,6 +76,7 @@ var color = createColor({
   }
 });
 
+// @ts-check
 var varFns = {
   general_styles: function general_styles(selector) {
     return [sel(selector, [mixin.fit(), {
@@ -110,7 +111,16 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars = {
+// @ts-check
+
+/**
+ * @typedef {import("../index").RippleVars} RippleVars
+ */
+
+/**
+ * @type {RippleVars} rippleVars
+ */
+var rippleVars = {
   general_styles: true,
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",
@@ -118,14 +128,15 @@ var vars = {
 
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars);
-var getStyle = styler.createGetStyle(selector, fns, vars);
+var addStyle = styler.createAddStyle(selector, fns, rippleVars);
+var getStyle = styler.createGetStyle(selector, fns, rippleVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: rippleVars
 });
 
-export { addStyle, color, getStyle, layout, vars };
+export { addStyle, getStyle, color, layout, rippleVars as vars };

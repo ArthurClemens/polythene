@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, flex, sel, createLayout, createMarker } from "polythene-core-css";
 import { fullScreen as fullScreenPane } from "polythene-css-dialog-pane";
 import { sharedVarFns as shadowVarFns } from "polythene-css-shadow";
@@ -5,7 +7,11 @@ import { behaviorVars } from "./vars";
 
 const minWidth = "320px";
 
-const backdrop = selector =>
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ */
+const backdrop = (selector, vars) => // eslint-disable-line no-unused-vars
   sel(selector, {
     ".pe-dialog--visible .pe-dialog__backdrop": {
       display: "block",
@@ -23,7 +29,7 @@ const fullScreen = (selector, vars) =>
         width: "100%", // for IE 11
       },
     },
-    fullScreenPane(selector)
+    fullScreenPane(selector, vars)
   ]);
 
 const modal = (selector, vars) =>
@@ -32,6 +38,10 @@ const modal = (selector, vars) =>
   ]);
 
 const varFns = {
+  /**
+   * @param {string} selector
+   * @param {object} vars 
+   */
   general_styles: (selector, vars) => [
     sel(selector, [
       flex.layoutCenterCenter,
@@ -45,7 +55,7 @@ const varFns = {
         transitionProperty: "opacity,background-color,transform",
 
         ".pe-dialog--full-screen": fullScreen(selector, vars),
-        ".pe-dialog--modal": modal(selector),
+        ".pe-dialog--modal": modal(selector, vars),
 
         " .pe-dialog__content": {
           position: "relative",
@@ -65,7 +75,7 @@ const varFns = {
           }
         ],
 
-        ".pe-dialog--backdrop": backdrop(selector),
+        ".pe-dialog--backdrop": backdrop(selector, vars),
       }
     ]),
     {

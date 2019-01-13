@@ -124,7 +124,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {IconVars} iconVars
+ */
+
+var iconVars = {
   general_styles: true,
   size_small: vars.unit_icon_size_small,
   // 16 
@@ -141,14 +146,15 @@ var vars$1 = {
   color_dark: "currentcolor"
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, iconVars);
+var getStyle = styler.createGetStyle(selector, fns, iconVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: iconVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, iconVars as vars };

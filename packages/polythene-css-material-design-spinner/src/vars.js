@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").MaterialDesignSpinnerVars} MaterialDesignSpinnerVars
+ */
+
 /*
 Styling derived from https://github.com/PolymerElements/paper-spinner
 
@@ -24,7 +30,10 @@ const red500 =    "#f44336";
 const yellow600 = "#fdd835";
 const green500 =  "#4caf50";
 
-export default {
+/**
+ * @type {MaterialDesignSpinnerVars} materialDesignSpinnerVars
+ */
+const materialDesignSpinnerVars = {
   general_styles:       true,
   
   arc_size,
@@ -49,3 +58,5 @@ export default {
   color_dark_3:         yellow600,
   color_dark_4:         green500,
 };
+
+export default materialDesignSpinnerVars;

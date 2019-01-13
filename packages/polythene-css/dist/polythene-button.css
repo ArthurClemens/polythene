@@ -19,8 +19,6 @@
 }
 
 .pe-button .pe-button__label {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   display: block;
   pointer-events: none
 }

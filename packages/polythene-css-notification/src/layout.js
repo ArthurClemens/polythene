@@ -1,3 +1,5 @@
+// @ts-check
+
 import { flex, sel, createLayout } from "polythene-core-css";
 
 const title_single_padding_v_title_padding_h = (selector, vars) =>

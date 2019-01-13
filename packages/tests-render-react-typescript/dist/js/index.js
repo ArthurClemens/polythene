@@ -24908,7 +24908,6 @@ var layoutAroundJustified = [layout, {
   "justify-content": "space-around"
 }];
 /**
- * 
  * @param {number} [num=1] 
  * @returns {Styles}
  */
@@ -24977,6 +24976,19 @@ var flexGrow = function flexGrow(value) {
   };
 };
 /**
+ * 
+ * @param {number} value 
+ * @returns {Styles}
+ */
+
+
+var flexShrink = function flexShrink(value) {
+  return {
+    "-webkit-flex-shrink": value,
+    "flex-shrink": value
+  };
+};
+/**
  * @type {Styles} selfStart
  */
 
@@ -25019,6 +25031,7 @@ var flex$1 = {
   flexAutoVertical: flexAutoVertical,
   flexIndex: flexIndex,
   flexGrow: flexGrow,
+  flexShrink: flexShrink,
   layout: layout,
   layoutAroundJustified: layoutAroundJustified,
   layoutCenter: layoutCenter,
@@ -25113,13 +25126,13 @@ function _objectWithoutProperties(source, excluded) {
 } // @ts-check
 
 /**
- * @typedef {object} CSSStyleObject 
+ * @typedef {object} StyleObject 
  */
 
 /**
  * Centers an item absolutely within relative parent.
  * @param {number} [offset=0] 
- * @returns {CSSStyleObject}
+ * @returns {StyleObject}
  */
 
 
@@ -25135,28 +25148,6 @@ var fit = function fit() {
   };
 };
 /**
- * Optional font smoothing.
- * @param {boolean} [smoothing=true] 
- * @returns {CSSStyleObject}
- */
-
-
-var fontSmoothing = function fontSmoothing() {
-  var smoothing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-  if (smoothing) {
-    return {
-      "-webkit-font-smoothing": "antialiased",
-      "-moz-osx-font-smoothing": "grayscale"
-    };
-  } else {
-    return {
-      "-webkit-font-smoothing": "subpixel-antialiased",
-      "-moz-osx-font-smoothing": "auto"
-    };
-  }
-};
-/**
  * Breaks off a line with ... unless lines is "none"
  * @param {number|"none"} lines 
  * @param {number} lineHeight 
@@ -25167,7 +25158,7 @@ var fontSmoothing = function fontSmoothing() {
  * @example 
  * // max 2 lines, 2.6em high
  * mixin.ellipsis(2, 1.3, "em")
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -25204,7 +25195,7 @@ var ellipsis = function ellipsis(lines, lineHeight) {
 };
 /**
  * Clears float.
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -25221,7 +25212,7 @@ var clearfix = function clearfix() {
  * Creates sticky headers in a scrollable list.
  * Does not work in IE 11, Edge < 16.
  * @param {number} [zIndex=1] 
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -25240,7 +25231,7 @@ var sticky = function sticky() {
  * @param {string} [curve=ease-out] 
  * @example
  * mixin.defaultTransition("opacity", vars.animation_duration)
- * @returns {CSSStyleObject} 
+ * @returns {StyleObject} 
  */
 
 
@@ -25261,7 +25252,6 @@ var mixin = {
   defaultTransition: defaultTransition,
   ellipsis: ellipsis,
   fit: fit,
-  fontSmoothing: fontSmoothing,
   sticky: sticky
 };
 
@@ -25963,14 +25953,14 @@ var j2cPluginPrefixBrowser_commonjs_1 = j2cPluginPrefixBrowser_commonjs.prefixPl
 var j2c = new j2c__WEBPACK_IMPORTED_MODULE_0__(j2cPluginPrefixBrowser_commonjs_1);
 var ID_REGEX = /[^a-z0-9\\-]/g;
 /**
- * @typedef {object} CSSStyleObject 
+ * @typedef {object} StyleObject 
  * @typedef {(selector: string|Array<string>, vars: object, customVars?: object) => Array<object>} StyleFn
  */
 
 /**
  * Adds styles to head.
  * @param {string} id - Identifier, used as HTMLElement id for the attached <style></style> element.
- * @param {...Array<CSSStyleObject>} styles - List of lists style Objects
+ * @param {...Array<StyleObject>} styles - List of style Objects
  * @returns {void}
  */
 
@@ -26006,7 +25996,7 @@ var remove = function remove(id) {
  * @param {object} params
  * @param {string} params.id - Identifier, used as HTMLElement id for the attached <style></style> element.
  * @param {object} [params.document] - Document reference.
- * @param {...Array<CSSStyleObject>} styles - List of lists style Objects.
+ * @param {...Array<StyleObject>} styles - List of style Objects.
  * @returns {void}
  */
 
@@ -26028,10 +26018,10 @@ var addToDocument = function addToDocument(_ref) {
     styles[_key2 - 1] = arguments[_key2];
   }
 
-  styles.forEach(function (styleList) {
+  styles.forEach(function (styles) {
     // each style returns a list
-    if (Object.keys(styleList).length) {
-      styleList.forEach(function (style) {
+    if (Object.keys(styles).length) {
+      styles.forEach(function (style) {
         var scoped = {
           "@global": style
         };
@@ -26045,9 +26035,9 @@ var addToDocument = function addToDocument(_ref) {
 /**
  * 
  * @param {object} params
- * @param {CSSStyleObject|Array<CSSStyleObject>} params.styles
+ * @param {StyleObject|Array<StyleObject>} params.styles
  * @param {string} [params.scope]
- * @returns {Array<CSSStyleObject>}
+ * @returns {Array<StyleObject>}
  */
 
 
@@ -26057,7 +26047,7 @@ var wrapInScope = function wrapInScope(_ref2) {
   return scope ? [_defineProperty({}, scope, styles)] : styles;
 };
 /**
- * Adds styles to head for a component.
+ * Adds component styles to head.
  * @param {object} params
  * @param {Array<string>} params.selectors
  * @param {Array<StyleFn>} params.fns
@@ -26078,20 +26068,20 @@ var addStyle = function addStyle(_ref4) {
       scope = _ref4.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
-  var styleList = styleFns.map(function (fn) {
+  var styles = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   }).filter(function (list) {
     return list.length > 0;
   });
 
-  if (styleList.length === 0) {
+  if (styles.length === 0) {
     return;
   }
 
   var id = selector.trim().replace(/^[^a-z]?(.*)/, "$1");
   add(id, wrapInScope({
     styles: wrapInScope({
-      styles: styleList,
+      styles: styles,
       scope: scope
     }),
     scope: mediaQuery
@@ -26106,7 +26096,7 @@ var addStyle = function addStyle(_ref4) {
  * @param {object} [params.customVars] - Style configuration variables
  * @param {string} [params.mediaQuery] - Mediaquery string
  * @param {string} [params.scope] - Scope selector
- * @returns {Array<CSSStyleObject>}
+ * @returns {Array<StyleObject>}
  */
 
 
@@ -26119,19 +26109,19 @@ var getStyle = function getStyle(_ref5) {
       scope = _ref5.scope;
   var prefix = scope ? " " : "";
   var selector = prefix + selectors.join("");
-  var styleList = styleFns.map(function (fn) {
+  var styles = styleFns.map(function (fn) {
     return fn(selector, vars, customVars);
   });
   return wrapInScope({
     styles: wrapInScope({
-      styles: styleList,
+      styles: styles,
       scope: scope
     }),
     scope: mediaQuery
   });
 };
 /**
- * Adds styles to head for a component.
+ * Adds component styles to head.
  * @param {string} selector 
  * @param {Array<StyleFn>} fns 
  * @param {object} vars - Style configuration variables
@@ -26183,7 +26173,7 @@ var createGetStyle = function createGetStyle(selector, fns, vars) {
      * @param {object} [scoping={}]
      * @param {string} [scoping.mediaQuery]
      * @param {string} [scoping.scope]
-     * @returns {Array<CSSStyleObject>}
+     * @returns {Array<StyleObject>}
      */
     function () {
       var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
@@ -26489,7 +26479,6 @@ var createColor = function createColor(_ref7) {
   );
 };
 /**
- * 
  * @param {object} vars 
  * @param {object} behaviorVars
  * @returns {string|undefined} 
@@ -26497,10 +26486,6 @@ var createColor = function createColor(_ref7) {
 
 
 var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
-  if (!vars) {
-    return;
-  }
-
   var marker = Object.keys(behaviorVars).filter(function (bvar) {
     return vars[bvar] === true;
   }).join(".");
@@ -26515,6 +26500,10 @@ var createMarkerValue = function createMarkerValue(vars, behaviorVars) {
 
 
 var createMarker = function createMarker(vars, behaviorVars) {
+  if (!vars) {
+    console.error("createMarker requires param `vars`"); // eslint-disable-line no-console
+  }
+
   var value = createMarkerValue(vars, behaviorVars);
   return value ? {
     ":before": {
@@ -29788,22 +29777,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var ANIMATION_END_EVENT = Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["getAnimationEndEvent"])();
@@ -29919,7 +29924,7 @@ var getInitialState = function getInitialState() {
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
-  return _extends({}, Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["filterSupportedAttributes"])(attrs), {
+  return _objectSpread({}, Object(polythene_core__WEBPACK_IMPORTED_MODULE_0__["filterSupportedAttributes"])(attrs), {
     className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
@@ -32503,7 +32508,7 @@ var filterSupportedAttributes = function filterSupportedAttributes(attrs) {
    * @type {Array<string>} attrsList 
    */
 
-  var attrsList = add ? defaultAttrs.concat(add) : [];
+  var attrsList = add ? defaultAttrs.concat(add) : defaultAttrs;
   var supported = attrsList.filter(function (item) {
     return !removeLookup[item];
   }).reduce(r, {});
@@ -32590,7 +32595,6 @@ var getAnimationEndEvent = function getAnimationEndEvent() {
 }; // @ts-check
 
 /**
- * 
  * @param {object} params
  * @param {object} params.element
  * @param {string} [params.selector]
@@ -33314,16 +33318,16 @@ var transitionComponent = function transitionComponent(_ref) {
 /*!*********************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-base-spinner/dist/polythene-css-base-spinner.mjs ***!
   \*********************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return baseSpinnerVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -33501,8 +33505,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {BaseSpinnerVars} baseSpinnerVars
+ */
+
+var baseSpinnerVars = {
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".220s",
@@ -33517,15 +33526,16 @@ var vars$1 = {
   color_light_raised_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_background),
   color_dark_raised_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_background) // also use light background with dark tone
 
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, baseSpinnerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, baseSpinnerVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: baseSpinnerVars
 });
 
 
@@ -33543,13 +33553,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return buttonGroupVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 
 var classes = {
   component: "pe-button-group"
-};
+}; // @ts-check
+
 var varFns = {
+  /**
+   * @param {string} selector
+   */
   general_styles: function general_styles(selector) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       display: "flex"
@@ -33558,18 +33572,28 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars = {
+}); // @ts-check
+
+/**
+ * @typedef {import("../index").ButtonGroupVars} ButtonGroupVars
+ */
+
+/**
+ * @type {ButtonGroupVars} buttonGroupVars
+ */
+
+var buttonGroupVars = {
   general_styles: true
-};
+}; // @ts-check
+
 var fns = [layout];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, buttonGroupVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, buttonGroupVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: buttonGroupVars
 });
 
 
@@ -33579,16 +33603,19 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-button/dist/polythene-css-button.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, getStyle, textButtonColor, textButtonLayout, textButtonVars */
+/*! exports provided: addStyle, getStyle, containedButtonVars, containedButtonColor, containedButtonLayout, textButtonColor, textButtonLayout, textButtonVars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle$2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle$2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "containedButtonVars", function() { return containedButtonVars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "containedButtonColor", function() { return containedButtonColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "containedButtonLayout", function() { return containedButtonLayout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textButtonColor", function() { return textButtonColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textButtonLayout", function() { return textButtonLayout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textButtonVars", function() { return textButtonVars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "textButtonVars", function() { return textButtonVars$1; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_shadow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-shadow */ "../../polythene-css-shadow/dist/polythene-css-shadow.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -33690,12 +33717,12 @@ var varFns = {
         position: "relative",
         borderRadius: "inherit"
       },
-      " .pe-button__label": [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["mixin"].fontSmoothing(), {
+      " .pe-button__label": {
         position: "relative",
         display: "block",
         borderRadius: "inherit",
         pointerEvents: "none"
-      }],
+      },
       " .pe-button__wash": [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["mixin"].fit(), {
         zIndex: 0,
         borderRadius: "inherit",
@@ -33738,6 +33765,9 @@ var generalFns = {
     return [];
   }
 };
+/**
+ * @param {tint} tint 
+ */
 
 var tintFns = function tintFns(tint) {
   var _ref;
@@ -33818,6 +33848,10 @@ var tintFns = function tintFns(tint) {
     })];
   }), _ref;
 };
+/**
+ * @param {tint} tint 
+ */
+
 
 var hoverTintFns = function hoverTintFns(tint) {
   var _ref2;
@@ -33861,9 +33895,9 @@ var hoverTintFns = function hoverTintFns(tint) {
   }), _ref2;
 };
 
-var lightTintFns = _extends({}, generalFns, tintFns("light"));
+var lightTintFns = _objectSpread({}, generalFns, tintFns("light"));
 
-var darkTintFns = _extends({}, generalFns, tintFns("dark"));
+var darkTintFns = _objectSpread({}, generalFns, tintFns("dark"));
 
 var lightTintHoverFns = hoverTintFns("light");
 var darkTintHoverFns = hoverTintFns("dark");
@@ -33875,6 +33909,9 @@ var superColor = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createC
     darkTintHoverFns: darkTintHoverFns
   }
 });
+/** 
+ * @param {boolean} isRTL 
+ */
 
 var alignSide = function alignSide(isRTL) {
   return function () {
@@ -34150,12 +34187,16 @@ var superLayout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["crea
   varFns: varFns$1
 });
 
-var themeVars = _extends({}, {
+var themeVars = _objectSpread({
   border: false,
   contained: true
 }, polythene_css_shadow__WEBPACK_IMPORTED_MODULE_1__["sharedVars"]);
+/**
+ * @type {ContainedButtonVars} containedButtonVars
+ */
 
-var containedButtonVars = _extends({}, {
+
+var containedButtonVars = _objectSpread({
   general_styles: true,
   padding_h: 4 * polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].grid_unit,
   // 16
@@ -34193,8 +34234,11 @@ var borderVars = {
   // color_dark_active_border:             "transparent",
   color_dark_disabled_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_text_disabled)
 };
+/**
+ * @type {TextButtonVars} textButtonVars
+ */
 
-var vars$1 = _extends({}, {
+var textButtonVars = _objectSpread({
   general_styles: true,
   animation_duration: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].animation_duration,
   border_radius: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].unit_item_border_radius,
@@ -34229,81 +34273,103 @@ var vars$1 = _extends({}, {
   color_dark_disabled_background: "transparent",
   color_dark_disabled_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_text_disabled),
   color_dark_icon: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_text_secondary),
-  color_dark_separator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_border_light) // color_light_hover:                  rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  // color_light_hover_background:       "transparent",
-  // color_light_hover_icon:             "inherit",
-  //
-  // color_dark_hover:                   rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  // color_dark_hover_background:        "transparent",
-  // color_dark_hover_icon:              "inherit",
+  color_dark_separator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_border_light)
+}, borderVars, themeVars$1); // @ts-check
 
-}, borderVars, themeVars$1);
 
 var fns = [superLayout$1, superColor];
 var superFns = [superLayout];
 var superSelector = ".".concat(classes.super);
 var selector = ".".concat(classes.component);
+/**
+ * @param {string} customSelector 
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
-  var finalVars = customVars && customVars.contained ? containedButtonVars : vars$1;
+  var finalVars = customVars && customVars.contained ? containedButtonVars : textButtonVars;
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [superSelector, customSelector],
     fns: superFns,
     vars: finalVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [selector, customSelector],
     fns: fns,
     vars: finalVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
+/**
+ * @param {string} [customSelector]
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
+
 
 var getStyle = function getStyle() {
   var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
-  var finalVars = customVars && customVars.contained ? containedButtonVars : vars$1;
+  var finalVars = customVars && customVars.contained ? containedButtonVars : textButtonVars;
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [superSelector, customSelector],
     fns: superFns,
     vars: finalVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [selector, customSelector],
     fns: fns,
     vars: finalVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [superSelector],
   fns: superFns,
-  vars: vars$1
+  vars: textButtonVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
-});
+  vars: textButtonVars
+}); // @ts-check
+
 var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"])({
   superColor: superColor
-});
+}); // @ts-check
+
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   superLayout: superLayout$1
-});
+}); // @ts-check
+
 var fns$1 = [layout, color];
 var selectors = [classes.component, classes.contained].join(" ");
 var selector$1 = ".".concat(selectors.split(/\s/).join("."));
@@ -34313,34 +34379,62 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector$1],
   fns: fns$1,
   vars: containedButtonVars
-});
+}); // @ts-check
+
+/**
+ * @param {string} customSelector 
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
 
 var addStyle$2 = function addStyle$$1(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   addStyle(customSelector, customVars, {
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
+/**
+ * @param {string} [customSelector]
+ * @param {object} [customVars]
+ * @param {object} [scoping]
+ * @param {string} [scoping.mediaQuery]
+ * @param {string} [scoping.scope]
+ */
+
 
 var getStyle$2 = function getStyle$$1() {
   var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return getStyle(customSelector, customVars, {
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(getStyle$1(customSelector, customVars, {
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
-var textButtonVars = vars$1;
+var textButtonVars$1 = textButtonVars;
 var textButtonColor = superColor;
 var textButtonLayout = superLayout$1;
+var containedButtonVars$1 = containedButtonVars;
+var containedButtonColor = color;
+var containedButtonLayout = layout;
 
 
 /***/ }),
@@ -34349,16 +34443,16 @@ var textButtonLayout = superLayout$1;
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-card/dist/polythene-css-card.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return cardVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -34508,12 +34602,23 @@ var contentColor = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["creat
     darkTintFns: darkTintFns$1
   }
 });
+/** 
+ * @param {boolean} isRTL 
+ */
 
-var alignSide = function alignSide() {
-  return function () {
-    return {};
-  };
-};
+var alignSide = function alignSide(isRTL) {
+  return (// eslint-disable-line no-unused-vars
+
+    /**
+     * @param {string} [selector]
+     * @param {object} [vars]
+     */
+    function (selector, vars$$1) {
+      return {};
+    }
+  );
+}; // eslint-disable-line no-unused-vars
+
 
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
@@ -34941,11 +35046,16 @@ var overlayColor = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["creat
     lightTintFns: lightTintFns$2,
     darkTintFns: darkTintFns$2
   }
-});
+}); // @ts-check
+
 var padding_v = 24;
 var padding_actions_v = 8;
 var actions_button_margin_v = 2;
-var vars$1 = {
+/**
+ * @type {CardVars} cardVars
+ */
+
+var cardVars = {
   general_styles: true,
   actions_button_margin_h: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit,
   actions_button_margin_v: actions_button_margin_v,
@@ -34984,7 +35094,8 @@ var vars$1 = {
   color_dark_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_regular),
   color_dark_actions_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_border_light),
   color_dark_overlay_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_overlay_background)
-};
+}; // @ts-check
+
 var selector = ".".concat(classes.component);
 var contentSelector = ".".concat(classes.content);
 var overlaySheetSelector = ".".concat(classes.overlaySheet);
@@ -34995,35 +35106,42 @@ var contentColorFns = [contentColor];
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, " " + overlaySheetSelector],
     fns: overlayColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, " " + contentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, " " + overlayContentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -35032,54 +35150,61 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, selector],
     fns: baseFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlaySheetSelector],
     fns: overlayColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   })).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, customSelector ? " " : "", contentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   })).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, customSelector ? " " : "", overlayContentSelector],
     fns: contentColorFns,
-    vars: vars$1,
+    vars: cardVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: baseFns,
-  vars: vars$1
+  vars: cardVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [overlaySheetSelector],
   fns: overlayColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [contentSelector],
   fns: contentColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [overlayContentSelector],
   fns: contentColorFns,
-  vars: vars$1
+  vars: cardVars
 });
 
 
@@ -35089,40 +35214,52 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-checkbox/dist/polythene-css-checkbox.mjs ***!
   \*************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return checkboxVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-selection-control */ "../../polythene-css-selection-control/dist/polythene-css-selection-control.mjs");
 
 
 var classes = {
   component: "pe-checkbox-control"
-};
+}; // @ts-check
+
 var color$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"])({
   superColor: polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__["color"]
-});
+}); // @ts-check
+
 var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   superLayout: polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__["layout"]
-});
-var vars = {
+}); // @ts-check
+
+/**
+ * @typedef {import("../index").CheckboxVars} CheckboxVars
+ */
+
+/**
+ * @type {CheckboxVars} checkboxVars
+ */
+
+var checkboxVars = {
   general_styles: true
-};
+}; // @ts-check
+
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, checkboxVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, checkboxVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: checkboxVars
 });
 
 
@@ -35132,16 +35269,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*******************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-dialog-pane/dist/polythene-css-dialog-pane.mjs ***!
   \*******************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars, fullScreen */
+/*! exports provided: addStyle, getStyle, color, layout, vars, fullScreen */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return dialogPaneVars; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fullScreen", function() { return fullScreen; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -35286,6 +35423,10 @@ var header_height_footer_height_margin_vertical = function header_height_footer_
     }
   });
 };
+/**
+ * @param {string} selector 
+ */
+
 
 var fullScreen = function fullScreen(selector) {
   return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
@@ -35475,8 +35616,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {DialogPaneVars} dialogPaneVars
+ */
+
+var dialogPaneVars = {
   general_styles: true,
   border_width: 1,
   footer_height: 52,
@@ -35501,15 +35647,16 @@ var vars$1 = {
   color_dark_body_text: "inherit",
   color_dark_body_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_border_light),
   color_dark_background: "inherit"
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, dialogPaneVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, dialogPaneVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: dialogPaneVars
 });
 
 
@@ -35519,16 +35666,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-dialog/dist/polythene-css-dialog.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return dialogVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_dialog_pane__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-dialog-pane */ "../../polythene-css-dialog-pane/dist/polythene-css-dialog-pane.mjs");
 /* harmony import */ var polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-css-shadow */ "../../polythene-css-shadow/dist/polythene-css-shadow.mjs");
@@ -35707,8 +35854,12 @@ var themeVars = _extends({}, {
   backdrop: false,
   z_index: polythene_theme__WEBPACK_IMPORTED_MODULE_3__["vars"].z_dialog
 }, behaviorVars, polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__["sharedVars"]);
+/**
+ * @type {DialogVars} dialogVars
+ */
 
-var vars$1 = _extends({}, {
+
+var dialogVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".220s",
@@ -35727,14 +35878,20 @@ var vars$1 = _extends({}, {
 }, themeVars);
 
 var minWidth = "320px";
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ */
 
-var _backdrop = function backdrop(selector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
-    ".pe-dialog--visible .pe-dialog__backdrop": {
-      display: "block",
-      opacity: 1
-    }
-  });
+var _backdrop = function backdrop(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
+      ".pe-dialog--visible .pe-dialog__backdrop": {
+        display: "block",
+        opacity: 1
+      }
+    })
+  );
 };
 
 var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
@@ -35744,7 +35901,7 @@ var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
       width: "100%" // for IE 11
 
     }
-  }, Object(polythene_css_dialog_pane__WEBPACK_IMPORTED_MODULE_1__["fullScreen"])(selector)]);
+  }, Object(polythene_css_dialog_pane__WEBPACK_IMPORTED_MODULE_1__["fullScreen"])(selector, vars$$1)]);
 };
 
 var _modal = function modal(selector, vars$$1) {
@@ -35752,6 +35909,10 @@ var _modal = function modal(selector, vars$$1) {
 };
 
 var varFns = _objectSpread({
+  /**
+   * @param {string} selector
+   * @param {object} vars 
+   */
   general_styles: function general_styles(selector, vars$$1) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["flex"].layoutCenterCenter, {
       top: 0,
@@ -35763,7 +35924,7 @@ var varFns = _objectSpread({
       // 100vh would make the dialog go beneath Mobile Safari toolbar        
       transitionProperty: "opacity,background-color,transform",
       ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
-      ".pe-dialog--modal": _modal(selector),
+      ".pe-dialog--modal": _modal(selector, vars$$1),
       " .pe-dialog__content": {
         position: "relative",
         transitionProperty: "all"
@@ -35778,7 +35939,7 @@ var varFns = _objectSpread({
         bottom: 0,
         pointerEvents: "none"
       }],
-      ".pe-dialog--backdrop": _backdrop(selector)
+      ".pe-dialog--backdrop": _backdrop(selector, vars$$1)
     }]), {
       ".pe-dialog__holder": {
         height: "100%",
@@ -35844,15 +36005,16 @@ var varFns = _objectSpread({
 
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
+}); // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, dialogVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, dialogVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: dialogVars
 });
 
 
@@ -35862,16 +36024,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-drawer/dist/polythene-css-drawer.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return drawerVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 /* harmony import */ var polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-css-shadow */ "../../polythene-css-shadow/dist/polythene-css-shadow.mjs");
@@ -36094,37 +36256,63 @@ var _cover = function cover(selector, vars$$1) {
     }
   });
 };
+/**
+ * @param {string} miniSelector 
+ * @param {object} [vars] 
+ */
 
-var _mini = function mini(miniSelector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(miniSelector, {
-    " .pe-dialog__content": {
-      marginLeft: 0,
-      marginRight: 0
-    }
-  });
+
+var _mini = function mini(miniSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(miniSelector, {
+      " .pe-dialog__content": {
+        marginLeft: 0,
+        marginRight: 0
+      }
+    })
+  );
 };
-
-var _permanent = function permanent(permanentSelector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(permanentSelector, {
-    position: "static",
-    display: "block",
-    padding: 0,
-    overflow: "initial",
-    " .pe-dialog__content": {
-      overflow: "visible",
-      maxHeight: "initial",
-      marginLeft: 0,
-      marginRight: 0
-    }
-  });
-}; // fn: pushSelector contains .pe-drawer--push
+/**
+ * @param {string} permanentSelector 
+ * @param {object} [vars] 
+ */
 
 
-var _push = function push(pushSelector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(pushSelector, {
-    position: "static"
-  });
+var _permanent = function permanent(permanentSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(permanentSelector, {
+      position: "static",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+      " .pe-dialog__content": {
+        overflow: "visible",
+        maxHeight: "initial",
+        marginLeft: 0,
+        marginRight: 0
+      }
+    })
+  );
 };
+/**
+ * @param {string} pushSelector 
+ * @param {object} [vars] 
+ */
+// fn: pushSelector contains .pe-drawer--push
+
+
+var _push = function push(pushSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(pushSelector, {
+      position: "static"
+    })
+  );
+};
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
+
 
 var borderRadius = function borderRadius(selector, vars$$1) {
   return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
@@ -36133,17 +36321,28 @@ var borderRadius = function borderRadius(selector, vars$$1) {
     }
   });
 };
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
 
-var _floating = function floating(selector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
-    height: "auto",
-    " .pe-dialog__content": {
-      height: "auto"
-    }
-  });
+
+var _floating = function floating(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
+      height: "auto",
+      " .pe-dialog__content": {
+        height: "auto"
+      }
+    })
+  );
 };
 
 var varFns = _objectSpread({
+  /**
+   * @param {string} selector 
+   * @param {object} [vars] 
+   */
   general_styles: function general_styles(selector, vars$$1) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [alignLeft(selector, vars$$1), {
       justifyContent: "flex-start",
@@ -36285,7 +36484,7 @@ var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayou
   varFns: varFns
 });
 
-var themeVars = _extends({}, {
+var themeVars = _objectSpread({
   backdrop: false,
   border: undefined,
   // set to `true` or `false`
@@ -36296,8 +36495,12 @@ var themeVars = _extends({}, {
   push: false,
   z_index: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].z_drawer
 }, polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__["sharedVars"]);
+/**
+ * @type {DrawerVars} drawerVars
+ */
 
-var vars$1 = _extends({}, {
+
+var drawerVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".260s",
@@ -36315,16 +36518,17 @@ var vars$1 = _extends({}, {
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background),
   color_light_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_border_light),
   color_dark_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_border_light)
-}, themeVars);
+}, themeVars); // @ts-check
+
 
 var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, drawerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, drawerVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: drawerVars
 });
 
 
@@ -36334,20 +36538,18 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!***************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-fab/dist/polythene-css-fab.mjs ***!
   \***************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
-/* harmony import */ var polythene_css_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-css-button */ "../../polythene-css-button/dist/polythene-css-button.mjs");
-/* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
-/* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return drawerVars; });
+/* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
+/* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
 
 var classes = {
@@ -36393,7 +36595,7 @@ function _extends() {
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       ".pe-button--focus": {
         " .pe-button__focus": {
           opacity: 1
@@ -36407,19 +36609,19 @@ var tintFns = function tintFns(tint) {
   var _ref;
 
   return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       " .pe-button__content": {
         color: vars$$1["color_" + tint]
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       " .pe-button__content": {
         backgroundColor: vars$$1["color_" + tint + "_background"]
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       ".pe-button--focus": {
         " .pe-button__focus": {
           backgroundColor: vars$$1["color_" + tint + "_focus_background"]
@@ -36433,16 +36635,16 @@ var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createColor"])({
+var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"])({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
-  },
-  textButtonColor: polythene_css_button__WEBPACK_IMPORTED_MODULE_0__["textButtonColor"]
-});
+  }
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles(selector) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       userSelect: "none",
       "-moz-user-select": "none",
       display: "inline-block",
@@ -36462,14 +36664,14 @@ var varFns = {
         alignItems: "center",
         justifyContent: "center"
       },
-      " .pe-button__wash, .pe-button__focus": [polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["mixin"].fit(), {
+      " .pe-button__wash, .pe-button__focus": [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["mixin"].fit(), {
         borderRadius: "inherit"
       }],
       " .pe-ripple": {
         borderRadius: "inherit"
       },
       " .pe-button__wash": {
-        transition: "background-color " + polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].animation_duration + " ease-in-out",
+        transition: "background-color " + polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].animation_duration + " ease-in-out",
         borderRadius: "inherit",
         pointerEvents: "none",
         backgroundColor: "transparent"
@@ -36477,7 +36679,7 @@ var varFns = {
     })];
   },
   size_regular: function size_regular(selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       " .pe-button__content": {
         width: vars$$1.size_regular + "px",
         height: vars$$1.size_regular + "px"
@@ -36485,47 +36687,52 @@ var varFns = {
     })];
   },
   size_mini: function size_mini(selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
       ".pe-fab--mini": {
         " .pe-button__content": {
           width: vars$$1.size_mini + "px",
           height: vars$$1.size_mini + "px",
-          padding: (vars$$1.size_mini - polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].unit_icon_size) / 2 + "px"
+          padding: (vars$$1.size_mini - polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].unit_icon_size) / 2 + "px"
         }
       }
     })];
   }
 };
-var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createLayout"])({
-  varFns: varFns,
-  textButtonLayout: polythene_css_button__WEBPACK_IMPORTED_MODULE_0__["textButtonLayout"]
-});
-var vars$1 = {
+var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
+  varFns: varFns
+}); // @ts-check
+
+/**
+ * @type {DrawerVars} drawerVars
+ */
+
+var drawerVars = {
   general_styles: true,
-  size_mini: 5 * polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].grid_unit_component,
+  size_mini: 5 * polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit_component,
   // 5 * 8 = 40
-  size_regular: 7 * polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].grid_unit_component,
+  size_regular: 7 * polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit_component,
   // 7 * 8 = 56
-  color_light: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary_foreground),
-  color_light_focus_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_light_background_hover),
-  color_light_focus_opacity: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_light_background_hover_medium,
+  color_light: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary_foreground),
+  color_light_focus_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_background_hover),
+  color_light_focus_opacity: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_background_hover_medium,
   // same as button
-  color_light_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
-  color_dark: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary_foreground),
-  color_dark_focus_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_background_hover),
+  color_light_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
+  color_dark: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary_foreground),
+  color_dark_focus_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover),
   // same as button
-  color_dark_focus_opacity: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_background_hover_medium,
+  color_dark_focus_opacity: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover_medium,
   // same as button
-  color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary)
-};
+  color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary)
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, vars$1);
-polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, drawerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, drawerVars);
+polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: drawerVars
 });
 
 
@@ -36535,16 +36742,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
 /*!*******************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-icon-button/dist/polythene-css-icon-button.mjs ***!
   \*******************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return iconButtonVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -36790,8 +36997,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {IconButtonVars} iconButtonVars
+ */
+
+var iconButtonVars = {
   general_styles: true,
   animation_duration: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].animation_duration,
   label_font_size: 16,
@@ -36829,15 +37041,16 @@ var vars$1 = {
   // color_light_background_hover:         "currentColor",
   // color_dark_background_hover:          "currentColor",
 
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, iconButtonVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, iconButtonVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: iconButtonVars
 });
 
 
@@ -36847,16 +37060,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-icon/dist/polythene-css-icon.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return iconVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -36982,8 +37195,13 @@ var varFns = _extends({}, {
 
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {IconVars} iconVars
+ */
+
+var iconVars = {
   general_styles: true,
   size_small: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].unit_icon_size_small,
   // 16 
@@ -36998,15 +37216,16 @@ var vars$1 = {
   color_dark_avatar_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_disabled),
   color_light: "currentcolor",
   color_dark: "currentcolor"
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, iconVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, iconVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: iconVars
 });
 
 
@@ -37016,16 +37235,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*******************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-ios-spinner/dist/polythene-css-ios-spinner.mjs ***!
   \*******************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return iOSSpinnerVars; });
 /* harmony import */ var polythene_css_base_spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-css-base-spinner */ "../../polythene-css-base-spinner/dist/polythene-css-base-spinner.mjs");
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-core */ "../../polythene-core/dist/polythene-core.mjs");
@@ -37160,21 +37379,27 @@ var varFns = {
 var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createLayout"])({
   varFns: varFns,
   superLayout: polythene_css_base_spinner__WEBPACK_IMPORTED_MODULE_0__["layout"]
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {IOSSpinnerVars} iOSSpinnerVars
+ */
+
+var iOSSpinnerVars = {
   general_styles: true,
   rotation_animation_duration: "1s",
   color_light: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_3__["vars"].color_light_foreground),
   color_dark: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_3__["vars"].color_dark_foreground)
-};
+}; // @ts-check
+
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, iOSSpinnerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, iOSSpinnerVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: iOSSpinnerVars
 });
 
 
@@ -37184,16 +37409,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
 /*!***************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-list-tile/dist/polythene-css-list-tile.mjs ***!
   \***************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return listTileVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -37257,6 +37482,25 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 var _selected = function selected(selector, vars$$1, tint) {
@@ -37454,12 +37698,14 @@ var title_line_count_single_line_height = function title_line_count_single_line_
   });
 };
 
-var unSelectable = function unSelectable(selector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
-    "&, a": {
-      pointerEvents: "none"
-    }
-  });
+var unSelectable = function unSelectable(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars 
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
+      "&, a": {
+        pointerEvents: "none"
+      }
+    })
+  );
 };
 
 var _inset = function inset(selector, vars$$1) {
@@ -37755,14 +38001,16 @@ var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayou
 var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
-
-var themeVars = _extends({}, {
+var themeVars = {
   inset: false,
   selected: false,
   rounded: false
-});
+};
+/**
+ * @type {ListTileVars} listTileVars
+ */
 
-var vars$1 = _extends({}, {
+var listTileVars = _objectSpread({
   general_styles: true,
   compact_front_item_width: 64,
   compact_padding: 9,
@@ -37821,19 +38069,18 @@ var vars$1 = _extends({}, {
   color_dark_hover_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover),
   color_dark_selected_text: "inherit",
   color_dark_selected_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover),
-  color_dark_highlight_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover) // background color may be set in theme; disabled by default
-  // color_dark_background:           "inherit",
+  color_dark_highlight_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_background_hover)
+}, themeVars); // @ts-check
 
-}, themeVars);
 
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, listTileVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, listTileVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: listTileVars
 });
 
 
@@ -37843,16 +38090,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-list/dist/polythene-css-list.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return listVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -37974,7 +38221,7 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
 
 var borderStyle = function borderStyle(vars$$1) {
   return {
@@ -38044,8 +38291,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {ListVars} listVars
+ */
+
+var listVars = {
   general_styles: true,
   border_width_bordered: 1,
   border_width_stacked: 1,
@@ -38057,15 +38309,16 @@ var vars$1 = {
   // color_light_background: "inherit",
   // color_dark_background:  "inherit"
 
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, listVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, listVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: listVars
 });
 
 
@@ -38075,16 +38328,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*************************************************************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-material-design-progress-spinner/dist/polythene-css-material-design-progress-spinner.mjs ***!
   \*************************************************************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return materialDesignProgressSpinnerVars; });
 /* harmony import */ var polythene_css_material_design_spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-css-material-design-spinner */ "../../polythene-css-material-design-spinner/dist/polythene-css-material-design-spinner.mjs");
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -38161,7 +38414,8 @@ var color$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createColo
     darkTintFns: darkTintFns
   },
   superColor: polythene_css_material_design_spinner__WEBPACK_IMPORTED_MODULE_0__["color"]
-});
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["sel"])(selector, {
@@ -38196,21 +38450,27 @@ var varFns = {
 var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createLayout"])({
   varFns: varFns,
   superLayout: polythene_css_material_design_spinner__WEBPACK_IMPORTED_MODULE_0__["layout"]
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {MaterialDesignProgressSpinnerVars} materialDesignProgressSpinnerVars
+ */
+
+var materialDesignProgressSpinnerVars = {
   general_styles: true,
   progress_animation_duration: ".8s",
   color_light: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
   color_dark: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary)
-};
+}; // @ts-check
+
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, materialDesignProgressSpinnerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, materialDesignProgressSpinnerVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: materialDesignProgressSpinnerVars
 });
 
 
@@ -38220,16 +38480,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
 /*!*******************************************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-material-design-spinner/dist/polythene-css-material-design-spinner.mjs ***!
   \*******************************************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return materialDesignSpinnerVars; });
 /* harmony import */ var polythene_css_base_spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-css-base-spinner */ "../../polythene-css-base-spinner/dist/polythene-css-base-spinner.mjs");
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -38702,18 +38962,7 @@ var varFns = {
 var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["createLayout"])({
   varFns: varFns,
   superLayout: polythene_css_base_spinner__WEBPACK_IMPORTED_MODULE_0__["layout"]
-});
-/*
-Styling derived from https://github.com/PolymerElements/paper-spinner
-
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
+}); // @ts-check
 
 var arc_size = 270; // degrees - amount of circle the arc takes up
 
@@ -38727,7 +38976,11 @@ var blue400 = "#42a5f5";
 var red500 = "#f44336";
 var yellow600 = "#fdd835";
 var green500 = "#4caf50";
-var vars$2 = {
+/**
+ * @type {MaterialDesignSpinnerVars} materialDesignSpinnerVars
+ */
+
+var materialDesignSpinnerVars = {
   general_styles: true,
   arc_size: arc_size,
   arc_start_degrees: arc_start_degrees,
@@ -38748,15 +39001,16 @@ var vars$2 = {
   color_dark_2: red500,
   color_dark_3: yellow600,
   color_dark_4: green500
-};
+}; // @ts-check
+
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, vars$2);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, vars$2);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createAddStyle(selector, fns, materialDesignSpinnerVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].createGetStyle(selector, fns, materialDesignSpinnerVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$2
+  vars: materialDesignSpinnerVars
 });
 
 
@@ -38766,16 +39020,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_1__["styler"].addStyle({
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-menu/dist/polythene-css-menu.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return menuVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 /* harmony import */ var polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-css-shadow */ "../../polythene-css-shadow/dist/polythene-css-shadow.mjs");
@@ -38922,14 +39176,17 @@ var behaviorVars = {
 
 };
 
-var themeVars = _extends({}, {
+var themeVars = _objectSpread({
   backdrop: undefined,
   // (Boolean) - if not set, backdrop existence is set by component option
-  z: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].z_menu // z-depth of the menu (not the shadow depth)
-
+  z: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].z_menu
 }, behaviorVars, polythene_css_shadow__WEBPACK_IMPORTED_MODULE_2__["sharedVars"]);
+/**
+ * @type {MenuVars} menuVars
+ */
 
-var vars$1 = _extends({}, {
+
+var menuVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".180s",
@@ -38949,9 +39206,13 @@ var vars$1 = _extends({}, {
   color_light_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_background),
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background),
   color_light_backdrop_background: "rgba(0, 0, 0, .1)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)" // text colors are set by content, usually list tiles
-
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 }, themeVars);
+/**
+ * 
+ * @param {boolean} isRTL 
+ */
+
 
 var alignSide = function alignSide(isRTL) {
   return function () {
@@ -38972,6 +39233,14 @@ var widthClass = function widthClass(width) {
   var widthStr = width.toString().replace(".", "-");
   return "pe-menu--width-" + widthStr;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.vars
+ * @param {number} params.width
+ * @param {string} [params.value]
+ */
+
 
 var widthStyle = function widthStyle(_ref) {
   var vars$$1 = _ref.vars,
@@ -38999,12 +39268,14 @@ var widths_min_width_width_factor = function widths_min_width_width_factor(selec
   }]);
 };
 
-var _backdrop = function backdrop(selector) {
-  return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
-    " .pe-menu__backdrop": {
-      display: "block"
-    }
-  });
+var _backdrop = function backdrop(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
+      " .pe-menu__backdrop": {
+        display: "block"
+      }
+    })
+  );
 };
 
 var _top_menu = function top_menu(selector, vars$$1) {
@@ -39040,7 +39311,7 @@ var _z = function z(selector, vars$$1) {
 
 var varFns = _objectSpread({
   general_styles: function general_styles(selector, vars$$1) {
-    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [alignLeft(vars$$1), {
+    return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [alignLeft(), {
       position: "static",
       ".pe-menu--width-auto": {
         width: "auto"
@@ -39087,7 +39358,7 @@ var varFns = _objectSpread({
           height: "100%"
         }
       }
-    }]), _defineProperty({}, Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["selectorRTL"])(selector), alignRight(vars$$1))];
+    }]), _defineProperty({}, Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["selectorRTL"])(selector), alignRight())];
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
@@ -39173,15 +39444,16 @@ var varFns = _objectSpread({
 
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
+}); // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, menuVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, menuVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: menuVars
 });
 
 
@@ -39191,18 +39463,18 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-notification/dist/polythene-css-notification.mjs ***!
   \*********************************************************************************************************************************************/
-/*! exports provided: addStyle, color, customLayoutFns, getStyle, holderLayout, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars, customLayoutFns, holderLayout */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "customLayoutFns", function() { return customLayoutFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "holderLayout", function() { return holderLayout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return notificationVars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "customLayoutFns", function() { return customLayoutFns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "holderLayout", function() { return holderLayout; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -39290,7 +39562,8 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["flex"].layoutCenterCenter, {
@@ -39448,10 +39721,15 @@ var varFns$1 = _extends({}, {
 
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns$1
-});
+}); // @ts-check
+
 var buttonPaddingH = 8; // padding, inner text space
 
-var vars$1 = {
+/**
+ * @type {NotificationVars} notificationVars
+ */
+
+var notificationVars = {
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".3s",
@@ -39472,7 +39750,8 @@ var vars$1 = {
   color_light_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_dark_primary),
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background),
   color_dark_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_text_primary)
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var holderFns = [holderLayout];
@@ -39480,21 +39759,26 @@ var holderSelector = ".".concat(classes.holder);
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: notificationVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: notificationVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -39503,32 +39787,37 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: notificationVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: notificationVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [holderSelector],
   fns: holderFns,
-  vars: vars$1
+  vars: notificationVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: notificationVars
 });
 
 
@@ -39538,26 +39827,28 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-radio-button/dist/polythene-css-radio-button.mjs ***!
   \*********************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return radioButtonVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-selection-control */ "../../polythene-css-selection-control/dist/polythene-css-selection-control.mjs");
 
 
 var classes = {
   component: "pe-radio-control"
-};
+}; // @ts-check
+
 var color$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"])({
   superColor: polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__["color"]
-});
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles() {
     return {
@@ -39570,18 +39861,28 @@ var varFns = {
 var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns,
   superLayout: polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__["layout"]
-});
-var vars = {
+}); // @ts-check
+
+/**
+ * @typedef {import("../index").RadioButtonVars} RadioButtonVars
+ */
+
+/**
+ * @type {RadioButtonVars} radioButtonVars
+ */
+
+var radioButtonVars = {
   general_styles: true
-};
+}; // @ts-check
+
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, radioButtonVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, radioButtonVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: radioButtonVars
 });
 
 
@@ -39591,16 +39892,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-ripple/dist/polythene-css-ripple.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return rippleVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 
 var classes = {
@@ -39677,7 +39978,8 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, [polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["mixin"].fit(), {
@@ -39710,22 +40012,32 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars = {
+}); // @ts-check
+
+/**
+ * @typedef {import("../index").RippleVars} RippleVars
+ */
+
+/**
+ * @type {RippleVars} rippleVars
+ */
+
+var rippleVars = {
   general_styles: true,
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",
   // color_dark:    "inherit"
 
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, rippleVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, rippleVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: rippleVars
 });
 
 
@@ -39735,16 +40047,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-search/dist/polythene-css-search.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return searchVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -39836,7 +40148,7 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
 
 var inset_height_line_height_input = function inset_height_line_height_input(selector, vars$$1) {
   var inset_input_padding_v = (vars$$1.inset_height - vars$$1.line_height_input) / 2;
@@ -40008,8 +40320,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {SearchVars} searchVars
+ */
+
+var searchVars = {
   general_styles: true,
   font_size_input: 20,
   full_width_border_radius: 0,
@@ -40029,15 +40346,16 @@ var vars$1 = {
   color_dark_label_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_disabled),
   color_dark_input_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_primary),
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background)
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, searchVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, searchVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: searchVars
 });
 
 
@@ -40047,14 +40365,14 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*******************************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-selection-control/dist/polythene-css-selection-control.mjs ***!
   \*******************************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
@@ -40414,7 +40732,8 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
+}); // @ts-check
+
 var vars$1 = {
   general_styles: true,
   animation_duration: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].animation_duration,
@@ -40460,7 +40779,8 @@ var vars$1 = {
   color_dark_focus_on_opacity: .14,
   color_dark_focus_off: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground),
   color_dark_focus_off_opacity: .09
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
@@ -40543,16 +40863,36 @@ var _createShadowForSelector = function _createShadowForSelector(which, depth) {
     }));
   };
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth 
+ * @param {"top"|"bottom"} which 
+ */
+
 
 var _createShadow = function _createShadow(selector, vars$$1, depth, which) {
   return Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, _defineProperty({}, " .pe-shadow__".concat(which), {
     boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
   }));
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth
+ * @returns {object}
+ */
+
 
 var shadow = function shadow(selector, vars$$1, depth) {
   return [_createShadow(selector, vars$$1, depth, "top"), _createShadow(selector, vars$$1, depth, "bottom")];
 };
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @returns {object}
+ */
+
 
 var shadow_depth = function shadow_depth(selector, vars$$1) {
   return vars$$1.shadow_depth !== undefined ? shadow(selector, vars$$1, vars$$1.shadow_depth) : null;
@@ -40609,7 +40949,8 @@ var sharedVars = {
 var vars$1 = _extends({}, {
   general_styles: true,
   transition: "box-shadow ".concat(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].animation_duration, " ease-out")
-}, sharedVars);
+}, sharedVars); // @ts-check
+
 
 var fns = [layout];
 var selector = ".".concat(classes.component);
@@ -40628,14 +40969,14 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-slider/dist/polythene-css-slider.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
@@ -40902,7 +41243,7 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
 
 var getThumbSize = function getThumbSize(vars$$1) {
   var thumbSize = Math.max(vars$$1.thumb_size, 2 * vars$$1.thumb_border_width);
@@ -41288,7 +41629,8 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
+}); // @ts-check
+
 var lightForeground = polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_foreground;
 var darkForeground = polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground;
 var activeColor = polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
@@ -41361,7 +41703,8 @@ var vars$1 = {
   color_dark_disabled_label: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_disabled),
   color_dark_pin_label: "#fff",
   color_dark_pin_background: "currentColor"
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
@@ -41379,17 +41722,17 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-snackbar/dist/polythene-css-snackbar.mjs ***!
   \*************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, holderLayout, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars, holderLayout */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "holderLayout", function() { return holderLayout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color$1; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return snackbarVars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "holderLayout", function() { return holderLayout; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-notification */ "../../polythene-css-notification/dist/polythene-css-notification.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -41453,7 +41796,8 @@ var classes = _extends({}, notificationClasses, {
   placeholder: "pe-snackbar__placeholder",
   // states
   open: "pe-snackbar--open"
-});
+}); // @ts-check
+
 
 var color$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"])({
   superColor: polythene_css_notification__WEBPACK_IMPORTED_MODULE_1__["color"]
@@ -41530,8 +41874,13 @@ var varFns$1 = {
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns$1,
   customVarFns: polythene_css_notification__WEBPACK_IMPORTED_MODULE_1__["customLayoutFns"]
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {SnackbarVars} snackbarVars
+ */
+
+var snackbarVars = {
   general_styles: true,
   animation_hide_css: "",
   animation_show_css: "",
@@ -41541,7 +41890,8 @@ var vars$1 = {
   min_width: 288,
   color_light_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_light_background),
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_background)
-};
+}; // @ts-check
+
 var fns = [layout, color$1];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
 var holderFns = [holderLayout];
@@ -41549,21 +41899,26 @@ var holderSelector = ".".concat(classes.holder.replace(/ /g, "."));
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -41572,32 +41927,37 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [holderSelector],
   fns: holderFns,
-  vars: vars$1
+  vars: snackbarVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: snackbarVars
 });
 
 
@@ -41607,16 +41967,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!***************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-svg/dist/polythene-css-svg.mjs ***!
   \***************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return svgVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 
 var classes = {
@@ -41695,7 +42055,8 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   }
-});
+}); // @ts-check
+
 var varFns = {
   general_styles: function general_styles(selector) {
     return [Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["sel"])(selector, {
@@ -41709,20 +42070,30 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars = {
+}); // @ts-check
+
+/**
+ * @typedef {import("../index").SVGVars} SVGVars
+ */
+
+/**
+ * @type {SVGVars} svgVars
+ */
+
+var svgVars = {
   general_styles: true,
   color_light: "currentcolor",
   color_dark: "currentcolor"
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, svgVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, svgVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars
+  vars: svgVars
 });
 
 
@@ -41732,16 +42103,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-switch/dist/polythene-css-switch.mjs ***!
   \*********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout$1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return switchVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-selection-control */ "../../polythene-css-selection-control/dist/polythene-css-selection-control.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
@@ -42202,8 +42573,13 @@ var layout$1 = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLay
   varFns: varFns,
   superLayout: polythene_css_selection_control__WEBPACK_IMPORTED_MODULE_1__["layout"],
   varMixin: withCreateSizeVar
-});
-var vars$3 = {
+}); // @ts-check
+
+/**
+ * @type {SwitchVars} switchVars
+ */
+
+var switchVars = {
   general_styles: true,
   animation_duration: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].animation_duration,
   hit_area_padding: (polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].grid_unit_icon_button - polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].unit_icon_size) / 2,
@@ -42218,7 +42594,7 @@ var vars$3 = {
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#eee",
   color_light_wash_on: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_light_background_active),
-  color_light_wash_off: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_light_wash,
+  color_light_wash_off: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_light_wash_background,
   color_light_track_on: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary_faded),
   color_light_track_on_opacity: .55,
   color_light_track_off: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_light_text_regular),
@@ -42233,7 +42609,7 @@ var vars$3 = {
   color_dark_thumb_off: "#bdbdbd",
   color_dark_thumb_disabled: "#555",
   color_dark_wash_on: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_background_active),
-  color_dark_wash_off: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_dark_wash,
+  color_dark_wash_off: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_dark_wash_background,
   color_dark_track_on: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary_faded, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_text_tertiary),
   // or "#5a7f7c"
   color_dark_track_on_opacity: 9,
@@ -42245,15 +42621,16 @@ var vars$3 = {
   // color_dark_icon_off:                   "currentcolor"
   // color_dark_focus_on and so on taken from selectionControlVars
 
-};
+}; // @ts-check
+
 var fns = [layout$1, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$3);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$3);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, switchVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, switchVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$3
+  vars: switchVars
 });
 
 
@@ -42263,21 +42640,21 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!*****************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-tabs/dist/polythene-css-tabs.mjs ***!
   \*****************************************************************************************************************************/
-/*! exports provided: addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, vars */
+/*! exports provided: addStyle, getStyle, vars, tabColor, tabLayout, tabsColor, tabsLayout */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return tabsVars; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabColor", function() { return tabColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabLayout", function() { return tabLayout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabsColor", function() { return tabsColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabsLayout", function() { return tabsLayout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$2; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
-/* harmony import */ var polythene_css_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-css-button */ "../../polythene-css-button/dist/polythene-css-button.mjs");
-/* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
+/* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
+/* harmony import */ var polythene_css_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-css-button */ "../../polythene-css-button/dist/polythene-css-button.mjs");
 /* harmony import */ var polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! polythene-css-icon-button */ "../../polythene-css-icon-button/dist/polythene-css-icon-button.mjs");
 
 
@@ -42413,8 +42790,7 @@ var tabColor = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createCol
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
-  },
-  textButtonColor: polythene_css_button__WEBPACK_IMPORTED_MODULE_1__["textButtonColor"]
+  }
 });
 
 var tab_label_transition_property_animation_duration = function tab_label_transition_property_animation_duration(selector, vars$$1) {
@@ -42432,7 +42808,7 @@ var varFns = {
       borderRadius: 0,
       padding: 0,
       " .pe-button__content": {
-        lineHeight: polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].line_height + "em",
+        lineHeight: polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].line_height + "em",
         borderRadius: 0,
         position: "relative",
         " .pe-button__label, .pe-icon": {
@@ -42512,7 +42888,7 @@ var varFns = {
     })];
   },
   tab_min_width_tablet: function tab_min_width_tablet(selector, vars$$1) {
-    return _defineProperty({}, "@media (min-width: " + polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ".concat(selector), {
+    return _defineProperty({}, "@media (min-width: " + polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ".concat(selector), {
       minWidth: vars$$1.tab_min_width_tablet + "px"
     }));
   },
@@ -42613,8 +42989,7 @@ var varFns = {
   }
 };
 var tabLayout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
-  varFns: varFns,
-  textButtonLayout: polythene_css_button__WEBPACK_IMPORTED_MODULE_1__["textButtonLayout"]
+  varFns: varFns
 });
 var generalFns$1 = {
   general_styles: function general_styles(selector) {
@@ -42829,14 +43204,19 @@ var varFns$1 = {
 };
 var tabsLayout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns$1
-});
-var fontSize = polythene_css_button__WEBPACK_IMPORTED_MODULE_1__["textButtonVars"].font_size;
+}); // @ts-check
+
+var fontSize = polythene_css_button__WEBPACK_IMPORTED_MODULE_2__["textButtonVars"].font_size;
 var tab_label_line_height = 1.1 * fontSize;
 var tab_height = 48;
 var scroll_button_size = tab_height;
-var vars$2 = {
+/**
+ * @type {TabsVars} tabsVars
+ */
+
+var tabsVars = {
   general_styles: true,
-  animation_duration: polythene_css_button__WEBPACK_IMPORTED_MODULE_1__["textButtonVars"].animation_duration,
+  animation_duration: polythene_css_button__WEBPACK_IMPORTED_MODULE_2__["textButtonVars"].animation_duration,
   indicator_slide_speed: 600,
   // px per second
   label_max_width: 264,
@@ -42860,15 +43240,15 @@ var vars$2 = {
   tab_min_width: 72,
   tab_min_width_tablet: 160,
   tabs_indent: 0,
-  color_light_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_light_text_regular),
-  color_light_selected: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
+  color_light_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_light_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_light_text_regular),
+  color_light_selected: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
   color_light_selected_background: "transparent",
-  color_light_tab_indicator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
+  color_light_tab_indicator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
   color_light_icon: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_light,
-  color_dark_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].blend_dark_text_regular),
-  color_dark_selected: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
+  color_dark_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_regular),
+  color_dark_selected: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
   color_dark_selected_background: "transparent",
-  color_dark_tab_indicator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_2__["vars"].color_primary),
+  color_dark_tab_indicator: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
   color_dark_icon: polythene_css_icon_button__WEBPACK_IMPORTED_MODULE_3__["vars"].color_dark // hover colors may be set in theme; disabled by default
   // color_light_hover:                    rgba(vars.color_light_foreground, vars.blend_light_text_primary),
   // color_light_hover_background:         "transparent",
@@ -42876,7 +43256,8 @@ var vars$2 = {
   // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   // color_dark_hover_background:          "transparent",
 
-};
+}; // @ts-check
+
 var tabsFns = [tabsLayout, tabsColor];
 var tabFns = [tabLayout, tabColor];
 var tabsSelector = ".".concat(classes.component);
@@ -42885,21 +43266,26 @@ var tabSelector = " .".concat(tabClass.replace(/ /g, "."));
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -42908,32 +43294,37 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].getStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [tabsSelector],
   fns: tabsFns,
-  vars: vars$2
+  vars: tabsVars
 });
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [tabSelector],
   fns: tabFns,
-  vars: vars$2
+  vars: tabsVars
 });
 
 
@@ -42943,16 +43334,16 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!***************************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-textfield/dist/polythene-css-textfield.mjs ***!
   \***************************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return textfieldVars; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 /* harmony import */ var polythene_theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! polythene-theme */ "../../polythene-theme/dist/polythene-theme.mjs");
 
@@ -43598,8 +43989,13 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
-var vars$1 = {
+}); // @ts-check
+
+/**
+ * @type {TextfieldVars} textfieldVars
+ */
+
+var textfieldVars = {
   general_styles: true,
   dense_floating_label_top: 10,
   dense_floating_label_vertical_spacing_bottom: 4,
@@ -43665,15 +44061,16 @@ var vars$1 = {
   color_dark_required_symbol: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])("221, 44, 0"),
   color_dark_focus_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary),
   color_dark_counter_ok_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_primary)
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
-var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, vars$1);
+var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, textfieldVars);
+var getStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createGetStyle(selector, fns, textfieldVars);
 polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: textfieldVars
 });
 
 
@@ -43683,14 +44080,14 @@ polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].addStyle({
 /*!***********************************************************************************************************************************!*\
   !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/polythene-css-toolbar/dist/polythene-css-toolbar.mjs ***!
   \***********************************************************************************************************************************/
-/*! exports provided: addStyle, color, getStyle, layout, vars */
+/*! exports provided: addStyle, getStyle, color, layout, vars */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addStyle", function() { return addStyle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStyle", function() { return getStyle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "layout", function() { return layout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars$1; });
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
@@ -43787,12 +44184,30 @@ var color = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createColor"
     darkTintFns: darkTintFns
   }
 });
+/**
+ * 
+ * @param {string} breakpointSel 
+ */
 
 var breakpoint = function breakpoint(breakpointSel) {
-  return function (selector, o) {
-    return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
-  };
+  return (
+    /**
+     * @param {string} selector
+     * @param {object} o
+     */
+    function (selector, o) {
+      return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
+    }
+  );
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var indent_padding_side = function indent_padding_side(_ref2) {
   var _peToolbar__title;
@@ -43807,6 +44222,14 @@ var indent_padding_side = function indent_padding_side(_ref2) {
     " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", indent + "px"), _peToolbar__title)
   });
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var _title_padding = function title_padding(_ref3) {
   var _spanPeToolbar;
@@ -43825,6 +44248,14 @@ var _title_padding = function title_padding(_ref3) {
     }
   });
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var title_padding_title_after_icon_padding = function title_padding_title_after_icon_padding(_ref4) {
   var _notPeToolbar_;
@@ -44009,7 +44440,8 @@ var varFns = {
 };
 var layout = Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["createLayout"])({
   varFns: varFns
-});
+}); // @ts-check
+
 var padding_side = polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit_component * 2 - 12; // 16 - 12 = 4
 
 var padding_side_large = polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].grid_unit_component * 3 - 12; // 24 - 12 = 12
@@ -44039,7 +44471,8 @@ var vars$1 = {
   color_dark_text: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_text_primary),
   color_dark_border: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_foreground, polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].blend_dark_border_light),
   color_dark_background: Object(polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["rgba"])(polythene_theme__WEBPACK_IMPORTED_MODULE_1__["vars"].color_dark_background)
-};
+}; // @ts-check
+
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_0__["styler"].createAddStyle(selector, fns, vars$1);
@@ -44071,7 +44504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_core_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polythene-core-css */ "../../polythene-core-css/dist/polythene-core-css.mjs");
 
 
-
+ // @ts-check
 
 var reset = function reset() {
   return [{
@@ -44098,9 +44531,10 @@ var reset = function reset() {
       opacity: 1
     }
   }];
-};
+}; // @ts-check
 
-var roboto = function roboto() {
+
+var robotoStyle = function robotoStyle() {
   return [{
     "html, body, button, input, select, textarea": {
       fontFamily: "Roboto, Helvetica, Arial, sans-serif"
@@ -44112,7 +44546,8 @@ var loadRoboto = function loadRoboto() {
   return [{
     "@import": "url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700')"
   }];
-};
+}; // @ts-check
+
 
 var fontSize = 14;
 
@@ -44215,23 +44650,29 @@ var typography = function typography() {
       "font-weight": polythene_style__WEBPACK_IMPORTED_MODULE_0__["vars"].font_weight_medium
     }
   }];
-};
+}; // @ts-check
 
-var fns = [roboto, reset, typography];
+
+var fns = [robotoStyle, reset, typography];
+var fnsWithLoadRoboto = [loadRoboto, robotoStyle, reset, typography]; // adds font import for written CSS
+
 var selector = "";
 var addStyle = polythene_core_css__WEBPACK_IMPORTED_MODULE_2__["styler"].createAddStyle(selector, fns, polythene_style__WEBPACK_IMPORTED_MODULE_0__["vars"]);
 
 var getStyle = function getStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   return polythene_core_css__WEBPACK_IMPORTED_MODULE_2__["styler"].getStyle({
     selectors: [customSelector, selector],
-    fns: [loadRoboto].concat(fns),
-    // add font import for written CSS
+    fns: fnsWithLoadRoboto,
     vars: polythene_style__WEBPACK_IMPORTED_MODULE_0__["vars"],
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -47531,6 +47972,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return vars; });
+// @ts-check
 // Global style variables
 var grid_unit = 4;
 var grid_unit_component = 8;
@@ -47538,9 +47980,6 @@ var increment = 7 * grid_unit_component; // 7 * 8 = 56
 
 var increment_large = 8 * grid_unit_component; // 8 * 8 = 64
 
-var animation_curve_slow_in_fast_out = "cubic-bezier(.4, 0, .2, 1)";
-var animation_curve_slow_in_linear_out = "cubic-bezier(0, 0, .2, 1)";
-var animation_curve_linear_in_fast_out = "cubic-bezier(.4, 0, 1, 1)";
 var vars = {
   // grid
   grid_unit: grid_unit,
@@ -47573,9 +48012,9 @@ var vars = {
   unit_screen_size_small: 320,
   // transitions
   animation_duration: ".18s",
-  animation_curve_slow_in_fast_out: animation_curve_slow_in_fast_out,
-  animation_curve_slow_in_linear_out: animation_curve_slow_in_linear_out,
-  animation_curve_linear_in_fast_out: animation_curve_linear_in_fast_out,
+  animation_curve_slow_in_fast_out: "cubic-bezier(.4, 0, .2, 1)",
+  animation_curve_slow_in_linear_out: "cubic-bezier(0, 0, .2, 1)",
+  animation_curve_linear_in_fast_out: "cubic-bezier(.4, 0, 1, 1)",
   animation_curve_default: "ease-out",
   // font
   font_weight_light: 300,
@@ -47646,9 +48085,10 @@ var vars = {
   z_menu: 1000,
   z_app_bar: 2000,
   z_drawer: 3000,
-  z_dialog: 5000,
-  z_notification: 7000
-};
+  z_notification: 5000,
+  z_dialog: 7000
+}; // @ts-check
+
 
 
 /***/ }),
@@ -47666,7 +48106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var polythene_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polythene-style */ "../../polythene-style/dist/polythene-style.mjs");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "vars", function() { return polythene_style__WEBPACK_IMPORTED_MODULE_0__["vars"]; });
 
- // Placeholder for custom theme config file
+ // @ts-check
+// Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.
 // Example:
 // export const componentConfig = {
@@ -47691,7 +48132,8 @@ __webpack_require__.r(__webpack_exports__);
 //     }
 // };
 
-var componentConfig = {};
+var componentConfig = {}; // @ts-check
+
 
 
 /***/ }),
@@ -47733,7 +48175,13 @@ function _extends() {
 var addWebFont = function addWebFont(vendor, config) {
   if (polythene_core__WEBPACK_IMPORTED_MODULE_0__["isServer"]) return;
 
-  if (!window.WebFontConfig) {
+  if (!window["WebFontConfig"]) {
+    /**
+     * @param {object} params
+     * @param {string} [params.name]
+     * @param {string} [params.familyName]
+     * @param {any} [params.fvd]
+     */
     var emitEvent = function emitEvent(_ref) {
       var name = _ref.name,
           familyName = _ref.familyName,
@@ -47747,7 +48195,7 @@ var addWebFont = function addWebFont(vendor, config) {
       });
     };
 
-    window.WebFontConfig = {
+    window["WebFontConfig"] = {
       loading: function loading() {
         return emitEvent({
           name: "loading"
@@ -47790,22 +48238,22 @@ var addWebFont = function addWebFont(vendor, config) {
       var wf = document.createElement("script");
       wf.src = (document.location.protocol === "https:" ? "https" : "http") + "://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
       wf.type = "text/javascript";
-      wf.async = "true";
+      wf.async = true;
       var s = document.getElementsByTagName("script")[0];
 
-      if (s) {
+      if (s && s.parentNode) {
         s.parentNode.insertBefore(wf, s);
       }
     })();
   }
 
-  var vendorCfg = window.WebFontConfig[vendor] || {};
+  var vendorCfg = window["WebFontConfig"][vendor] || {};
 
   if (config) {
     _extends(vendorCfg, config);
   }
 
-  window.WebFontConfig[vendor] = vendorCfg;
+  window["WebFontConfig"][vendor] = vendorCfg;
 };
 /*
 https://gist.github.com/gre/1650294
@@ -47912,13 +48360,23 @@ var scrollTo = function scrollTo(opts) {
 };
 
 var requestAnimFrame = polythene_core__WEBPACK_IMPORTED_MODULE_0__["isServer"] ? function () {} : function () {
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window["mozRequestAnimationFrame"] || function (callback) {
     return window.setTimeout(callback, 1000 / 60);
   };
-}();
+}(); // @ts-check
 
 var Timer = function Timer() {
-  var timerId, startTime, remaining, cb;
+  /** @type {number} */
+  var timerId;
+  /** @type {number} */
+
+  var startTime;
+  /** @type {number} */
+
+  var remaining;
+  /** @type {() => any} */
+
+  var cb;
 
   var stop = function stop() {
     if (polythene_core__WEBPACK_IMPORTED_MODULE_0__["isClient"]) {
@@ -47927,13 +48385,13 @@ var Timer = function Timer() {
   };
 
   var pause = function pause() {
-    return stop(), remaining -= new Date() - startTime;
+    return stop(), remaining -= new Date().getTime() - startTime;
   };
 
   var startTimer = function startTimer() {
     if (polythene_core__WEBPACK_IMPORTED_MODULE_0__["isClient"]) {
       stop();
-      startTime = new Date();
+      startTime = new Date().getTime();
       timerId = window.setTimeout(cb, remaining);
     }
   };
@@ -71471,8 +71929,11 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
 var polythene_react_1 = __webpack_require__(/*! polythene-react */ "../../polythene-react/dist/polythene-react.mjs");
 var polythene_css_1 = __webpack_require__(/*! polythene-css */ "../../polythene-css/dist/polythene-css.mjs");
 var CLASS_NAME = "themed-button";
@@ -71490,10 +71951,10 @@ var MyButton = /** @class */ (function (_super) {
         var className = showCustomColor
             ? CLASS_NAME
             : "";
-        return React.createElement(polythene_react_1.Button, __assign({}, otherProps, { className: className }));
+        return react_1.default.createElement(polythene_react_1.Button, __assign({}, otherProps, { className: className }));
     };
     return MyButton;
-}(React.Component));
+}(react_1.default.Component));
 exports.default = MyButton;
 
 
@@ -71531,8 +71992,11 @@ var __rest = (this && this.__rest) || function (s, e) {
             t[p[i]] = s[p[i]];
     return t;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
 var polythene_react_1 = __webpack_require__(/*! polythene-react */ "../../polythene-react/dist/polythene-react.mjs");
 var MyRadioGroup = function (_a) {
     var customColor = _a.customColor, name = _a.name, otherProps = __rest(_a, ["customColor", "name"]);
@@ -71543,7 +72007,7 @@ var MyRadioGroup = function (_a) {
             }
         }
         : undefined;
-    return React.createElement(polythene_react_1.RadioGroup, __assign({ name: name, all: all }, otherProps));
+    return react_1.default.createElement(polythene_react_1.RadioGroup, __assign({ name: name, all: all }, otherProps));
 };
 exports.default = MyRadioGroup;
 
@@ -71583,30 +72047,33 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
 var polythene_react_1 = __webpack_require__(/*! polythene-react */ "../../polythene-react/dist/polythene-react.mjs");
-var iconSearch = React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" }));
-var iconBack = React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" }));
-var iconClear = React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" }));
-var iconMic = React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" }));
+var iconSearch = react_1.default.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" }));
+var iconBack = react_1.default.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" }));
+var iconClear = react_1.default.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" }));
+var iconMic = react_1.default.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" }));
 var BackButton = function (_a) {
     var leave = _a.leave;
-    return React.createElement(polythene_react_1.IconButton, { className: "pe-rtl--flip", icon: { svg: { content: iconBack } }, ink: false, events: { onClick: leave } });
+    return react_1.default.createElement(polythene_react_1.IconButton, { className: "pe-rtl--flip", icon: { svg: { content: iconBack } }, ink: false, events: { onClick: leave } });
 };
 var ClearButton = function (_a) {
     var clear = _a.clear;
-    return React.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconClear } }, ink: false, events: { onClick: clear } });
+    return react_1.default.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconClear } }, ink: false, events: { onClick: clear } });
 };
 var SearchIcon = function () {
-    return React.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconSearch } }, inactive: true });
+    return react_1.default.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconSearch } }, inactive: true });
 };
 var MicIcon = function () {
-    return React.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconMic } }, inactive: true });
+    return react_1.default.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconMic } }, inactive: true });
 };
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
@@ -71635,7 +72102,7 @@ var default_1 = /** @class */ (function (_super) {
         var _this = this;
         var props = this.props;
         var value = this.state.value;
-        return (React.createElement(polythene_react_1.Search, __assign({ textfield: {
+        return (react_1.default.createElement(polythene_react_1.Search, __assign({ textfield: {
                 onChange: function (_a) {
                     var value = _a.value, setInputState = _a.setInputState;
                     return (_this.setState({ value: value, setInputState: setInputState }));
@@ -71660,10 +72127,10 @@ var default_1 = /** @class */ (function (_super) {
                     before: BackButton({ leave: this.leave }),
                     after: ClearButton({ clear: this.clear })
                 }
-            }, before: React.createElement(polythene_react_1.Shadow, null) }, props)));
+            }, before: react_1.default.createElement(polythene_react_1.Shadow, null) }, props)));
     };
     return default_1;
-}(React.Component));
+}(react_1.default.Component));
 exports.default = default_1;
 
 
@@ -71678,19 +72145,22 @@ exports.default = default_1;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "../node_modules/react/index.js");
-var ReactDOM = __webpack_require__(/*! react-dom */ "../node_modules/react-dom/index.js");
+var react_1 = __importDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "../node_modules/react-dom/index.js"));
 var polythene_react_1 = __webpack_require__(/*! polythene-react */ "../../polythene-react/dist/polythene-react.mjs");
 var polythene_css_1 = __webpack_require__(/*! polythene-css */ "../../polythene-css/dist/polythene-css.mjs");
-var SearchField_1 = __webpack_require__(/*! ./SearchField */ "./SearchField.tsx");
-var MyRadioGroup_1 = __webpack_require__(/*! ./MyRadioGroup */ "./MyRadioGroup.tsx");
-var MyButton_1 = __webpack_require__(/*! ./MyButton */ "./MyButton.tsx");
+var SearchField_1 = __importDefault(__webpack_require__(/*! ./SearchField */ "./SearchField.tsx"));
+var MyRadioGroup_1 = __importDefault(__webpack_require__(/*! ./MyRadioGroup */ "./MyRadioGroup.tsx"));
+var MyButton_1 = __importDefault(__webpack_require__(/*! ./MyButton */ "./MyButton.tsx"));
 polythene_css_1.addTypography();
-var linkIconSVG = React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" }));
-var iconFavoriteSVG = React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
-    React.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" }));
+var linkIconSVG = react_1.default.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" }));
+var iconFavoriteSVG = react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+    react_1.default.createElement("path", { d: "M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" }));
 polythene_css_1.SVGCSS.addStyle(".themed-svg", {
     color_light: "#2196f3"
 });
@@ -71699,52 +72169,52 @@ polythene_css_1.CardCSS.addStyle(".themed-card", {
     color_dark_title_text: "#fff",
     color_dark_subtitle_text: "#fff"
 });
-var App = function () { return (React.createElement("div", { className: "page" },
-    React.createElement("div", { className: "row" },
-        React.createElement("h1", null, "Polythene for React built with TypeScript")),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "SVG"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.SVG, { className: "themed-svg", style: {
+var App = function () { return (react_1.default.createElement("div", { className: "page" },
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h1", null, "Polythene for React built with TypeScript")),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "SVG"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.SVG, { className: "themed-svg", style: {
                     width: "24px",
                     height: "24px",
                 } }, linkIconSVG))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Raised Button"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Button, { raised: true, label: "Button" }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Text Button"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Button, { label: "Button" }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Themed Text Button"),
-        React.createElement("div", { className: "component" },
-            React.createElement(MyButton_1.default, { label: "Custom button", showCustomColor: true }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Icon"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Icon, { size: "large", src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png", avatar: true }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Icon Button"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconFavoriteSVG } }, label: "Like" }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "FAB"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.FAB, { icon: { svg: { content: linkIconSVG } } }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Tabs"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Tabs, { tabs: [
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Raised Button"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Button, { raised: true, label: "Button" }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Text Button"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Button, { label: "Button" }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Themed Text Button"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(MyButton_1.default, { label: "Custom button", showCustomColor: true }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Icon"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Icon, { size: "large", src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png", avatar: true }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Icon Button"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.IconButton, { icon: { svg: { content: iconFavoriteSVG } }, label: "Like" }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "FAB"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.FAB, { icon: { svg: { content: linkIconSVG } } }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Tabs"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Tabs, { tabs: [
                     { label: "New" },
                     { label: "Favorites", selected: true },
                     { label: "Saved", disabled: true }
                 ], autofit: true }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Card"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Card, { className: "themed-card", tone: "dark", content: [
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Card"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Card, { className: "themed-card", tone: "dark", content: [
                     {
                         primary: {
                             title: "Get Ready",
@@ -71752,28 +72222,28 @@ var App = function () { return (React.createElement("div", { className: "page" }
                             media: {
                                 ratio: "square",
                                 size: "medium",
-                                content: React.createElement("img", { src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757" })
+                                content: react_1.default.createElement("img", { src: "https://lastfm-img2.akamaized.net/i/u/avatar170s/ca297951611442bda8ea55fba764c757" })
                             }
                         }
                     },
                     {
                         actions: {
-                            content: React.createElement(polythene_react_1.Button, { label: "Listen now" })
+                            content: react_1.default.createElement(polythene_react_1.Button, { label: "Listen now" })
                         }
                     }
                 ] }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Checkbox"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Checkbox, { label: "Label" }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Switch"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Switch, { label: "Label" }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Radio Button"),
-        React.createElement("div", { className: "component" },
-            React.createElement(MyRadioGroup_1.default, { name: "my-radio-button", customColor: true, defaultCheckedValue: "two", buttons: [
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Checkbox"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Checkbox, { label: "Label" }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Switch"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Switch, { label: "Label" }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Radio Button"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(MyRadioGroup_1.default, { name: "my-radio-button", customColor: true, defaultCheckedValue: "two", buttons: [
                     {
                         value: "one",
                         label: "One",
@@ -71783,10 +72253,10 @@ var App = function () { return (React.createElement("div", { className: "page" }
                         label: "Two",
                     }
                 ] }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "TextField"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.TextField, { defaultValue: "abC", validate: function (value) {
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "TextField"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.TextField, { defaultValue: "abC", validate: function (value) {
                     return value !== value.toLowerCase()
                         ? ({
                             valid: false,
@@ -71794,22 +72264,22 @@ var App = function () { return (React.createElement("div", { className: "page" }
                         })
                         : null;
                 }, validateAtStart: true }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Slider"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Slider, { defaultValue: 50 }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Spinner"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.MaterialDesignSpinner, { permanent: true, raised: true }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Search"),
-        React.createElement("div", { className: "component" },
-            React.createElement(SearchField_1.default, null))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Dialog"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Button, { raised: true, label: "Show dialog", events: {
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Slider"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Slider, { defaultValue: 50 }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Spinner"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.MaterialDesignSpinner, { permanent: true, raised: true }))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Search"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(SearchField_1.default, null))),
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Dialog"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Button, { raised: true, label: "Show dialog", events: {
                     onClick: function () { return polythene_react_1.Dialog.show({
                         /* note the Dialog component is below the other elements in the app */
                         title: "Hello",
@@ -71817,29 +72287,29 @@ var App = function () { return (React.createElement("div", { className: "page" }
                         backdrop: true
                     }); }
                 } }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Notification"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Button, { raised: true, label: "Show notification", events: {
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Notification"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Button, { raised: true, label: "Show notification", events: {
                     onClick: function () { return polythene_react_1.Notification.show({
                         /* note the Notification component is below the other elements in the app */
                         title: "Hello"
                     }); }
                 } }))),
-    React.createElement("div", { className: "row" },
-        React.createElement("h2", null, "Snackbar"),
-        React.createElement("div", { className: "component" },
-            React.createElement(polythene_react_1.Button, { raised: true, label: "Show snackbar", events: {
+    react_1.default.createElement("div", { className: "row" },
+        react_1.default.createElement("h2", null, "Snackbar"),
+        react_1.default.createElement("div", { className: "component" },
+            react_1.default.createElement(polythene_react_1.Button, { raised: true, label: "Show snackbar", events: {
                     onClick: function () { return polythene_react_1.Snackbar.show({
                         /* note the Snackbar component is below the other elements in the app */
                         title: "Hello"
                     }); }
                 } }))),
-    React.createElement(polythene_react_1.Dialog, null),
-    React.createElement(polythene_react_1.Snackbar, null),
-    React.createElement(polythene_react_1.Notification, null))); };
+    react_1.default.createElement(polythene_react_1.Dialog, null),
+    react_1.default.createElement(polythene_react_1.Snackbar, null),
+    react_1.default.createElement(polythene_react_1.Notification, null))); };
 var mountNode = document.querySelector("#app");
-ReactDOM.render(React.createElement(App, null), mountNode);
+react_dom_1.default.render(react_1.default.createElement(App, null), mountNode);
 
 
 /***/ })

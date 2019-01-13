@@ -512,7 +512,15 @@
   background-color: rgba(33,150,243,.14)
 }
 
+.pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--off .pe-button__wash {
+  background-color: hsla(0,0%,100%,.08)
+}
+
 .pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
   background-color: rgba(33,150,243,.14)
+}
+
+.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--off .pe-button__wash,.pe-no-touch .pe-switch-control:hover.pe-control--off .pe-button__wash {
+  background-color: rgba(0,0,0,.06)
 }
 /*# sourceMappingURL=polythene-switch.css.map */

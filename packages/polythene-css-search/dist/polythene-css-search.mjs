@@ -90,6 +90,8 @@ var color = createColor({
   }
 });
 
+// @ts-check
+
 var inset_height_line_height_input = function inset_height_line_height_input(selector, vars$$1) {
   var inset_input_padding_v = (vars$$1.inset_height - vars$$1.line_height_input) / 2;
   return sel(selector, {
@@ -262,7 +264,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {SearchVars} searchVars
+ */
+
+var searchVars = {
   general_styles: true,
   font_size_input: 20,
   full_width_border_radius: 0,
@@ -284,14 +291,15 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, searchVars);
+var getStyle = styler.createGetStyle(selector, fns, searchVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: searchVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, searchVars as vars };

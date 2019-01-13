@@ -144,14 +144,17 @@ var behaviorVars = {
 
 };
 
-var themeVars = _extends({}, {
+var themeVars = _objectSpread({
   backdrop: undefined,
   // (Boolean) - if not set, backdrop existence is set by component option
-  z: vars.z_menu // z-depth of the menu (not the shadow depth)
-
+  z: vars.z_menu
 }, behaviorVars, sharedVars);
+/**
+ * @type {MenuVars} menuVars
+ */
 
-var vars$1 = _extends({}, {
+
+var menuVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".180s",
@@ -171,9 +174,13 @@ var vars$1 = _extends({}, {
   color_light_background: rgba(vars.color_light_background),
   color_dark_background: rgba(vars.color_dark_background),
   color_light_backdrop_background: "rgba(0, 0, 0, .1)",
-  color_dark_backdrop_background: "rgba(0, 0, 0, .5)" // text colors are set by content, usually list tiles
-
+  color_dark_backdrop_background: "rgba(0, 0, 0, .5)"
 }, themeVars);
+
+/**
+ * 
+ * @param {boolean} isRTL 
+ */
 
 var alignSide = function alignSide(isRTL) {
   return function () {
@@ -194,6 +201,14 @@ var widthClass = function widthClass(width) {
   var widthStr = width.toString().replace(".", "-");
   return "pe-menu--width-" + widthStr;
 };
+/**
+ * 
+ * @param {object} params
+ * @param {object} params.vars
+ * @param {number} params.width
+ * @param {string} [params.value]
+ */
+
 
 var widthStyle = function widthStyle(_ref) {
   var vars$$1 = _ref.vars,
@@ -221,12 +236,14 @@ var widths_min_width_width_factor = function widths_min_width_width_factor(selec
   }]);
 };
 
-var _backdrop = function backdrop(selector) {
-  return sel(selector, {
-    " .pe-menu__backdrop": {
-      display: "block"
-    }
-  });
+var _backdrop = function backdrop(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(selector, {
+      " .pe-menu__backdrop": {
+        display: "block"
+      }
+    })
+  );
 };
 
 var _top_menu = function top_menu(selector, vars$$1) {
@@ -262,7 +279,7 @@ var _z = function z(selector, vars$$1) {
 
 var varFns = _objectSpread({
   general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(vars$$1), {
+    return [sel(selector, [alignLeft(), {
       position: "static",
       ".pe-menu--width-auto": {
         width: "auto"
@@ -309,7 +326,7 @@ var varFns = _objectSpread({
           height: "100%"
         }
       }
-    }]), _defineProperty({}, selectorRTL(selector), alignRight(vars$$1))];
+    }]), _defineProperty({}, selectorRTL(selector), alignRight())];
   },
   animation_delay: function animation_delay(selector, vars$$1) {
     return [sel(selector, {
@@ -397,14 +414,15 @@ var layout = createLayout({
   varFns: varFns
 });
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, menuVars);
+var getStyle = styler.createGetStyle(selector, fns, menuVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: menuVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, menuVars as vars };

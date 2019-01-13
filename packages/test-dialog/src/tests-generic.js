@@ -193,7 +193,7 @@ export default ({ renderer, keys, Dialog, Button, Toolbar, ToolbarTitle, IconBut
       exclude: true,
       component: {
         view: () =>
-          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: true }))
+          Opener(fullScreen({ renderer, keys, Toolbar, ToolbarTitle, IconButton, Button, Dialog, isFullscreen: true }))
       }
     },
     {
@@ -202,7 +202,7 @@ export default ({ renderer, keys, Dialog, Button, Toolbar, ToolbarTitle, IconBut
       exclude: true,
       component: {
         view: () =>
-          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false }))
+          Opener(fullScreen({ renderer, keys, Toolbar, ToolbarTitle, IconButton, Button, Dialog, isFullscreen: false }))
       }
     },
     {
@@ -356,7 +356,7 @@ export default ({ renderer, keys, Dialog, Button, Toolbar, ToolbarTitle, IconBut
       exclude: true,
       component: {
         view: () =>
-          Opener(fullScreen({ renderer, keys, Toolbar, IconButton, Button, Dialog, isFullscreen: false, className: "tests-dialog-themed-behavior-full-screen", }))
+          Opener(fullScreen({ renderer, keys, Toolbar, ToolbarTitle, IconButton, Button, Dialog, isFullscreen: false, className: "tests-dialog-themed-behavior-full-screen", }))
       }
     },
     {

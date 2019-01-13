@@ -121,6 +121,8 @@ var color = createColor({
   }
 });
 
+// @ts-check
+
 var borderStyle = function borderStyle(vars$$1) {
   return {
     borderStyle: "none none solid none",
@@ -191,7 +193,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {ListVars} listVars
+ */
+
+var listVars = {
   general_styles: true,
   border_width_bordered: 1,
   border_width_stacked: 1,
@@ -205,14 +212,15 @@ var vars$1 = {
 
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, listVars);
+var getStyle = styler.createGetStyle(selector, fns, listVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: listVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, listVars as vars };

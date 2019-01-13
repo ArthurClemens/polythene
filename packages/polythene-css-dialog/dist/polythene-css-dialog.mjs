@@ -176,8 +176,12 @@ var themeVars = _extends({}, {
   backdrop: false,
   z_index: vars.z_dialog
 }, behaviorVars, sharedVars);
+/**
+ * @type {DialogVars} dialogVars
+ */
 
-var vars$1 = _extends({}, {
+
+var dialogVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".220s",
@@ -196,14 +200,20 @@ var vars$1 = _extends({}, {
 }, themeVars);
 
 var minWidth = "320px";
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ */
 
-var _backdrop = function backdrop(selector) {
-  return sel(selector, {
-    ".pe-dialog--visible .pe-dialog__backdrop": {
-      display: "block",
-      opacity: 1
-    }
-  });
+var _backdrop = function backdrop(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(selector, {
+      ".pe-dialog--visible .pe-dialog__backdrop": {
+        display: "block",
+        opacity: 1
+      }
+    })
+  );
 };
 
 var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
@@ -213,7 +223,7 @@ var fullScreen$1 = function fullScreen$$1(selector, vars$$1) {
       width: "100%" // for IE 11
 
     }
-  }, fullScreen(selector)]);
+  }, fullScreen(selector, vars$$1)]);
 };
 
 var _modal = function modal(selector, vars$$1) {
@@ -221,6 +231,10 @@ var _modal = function modal(selector, vars$$1) {
 };
 
 var varFns = _objectSpread({
+  /**
+   * @param {string} selector
+   * @param {object} vars 
+   */
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [flex.layoutCenterCenter, {
       top: 0,
@@ -232,7 +246,7 @@ var varFns = _objectSpread({
       // 100vh would make the dialog go beneath Mobile Safari toolbar        
       transitionProperty: "opacity,background-color,transform",
       ".pe-dialog--full-screen": fullScreen$1(selector, vars$$1),
-      ".pe-dialog--modal": _modal(selector),
+      ".pe-dialog--modal": _modal(selector, vars$$1),
       " .pe-dialog__content": {
         position: "relative",
         transitionProperty: "all"
@@ -247,7 +261,7 @@ var varFns = _objectSpread({
         bottom: 0,
         pointerEvents: "none"
       }],
-      ".pe-dialog--backdrop": _backdrop(selector)
+      ".pe-dialog--backdrop": _backdrop(selector, vars$$1)
     }]), {
       ".pe-dialog__holder": {
         height: "100%",
@@ -315,14 +329,15 @@ var layout = createLayout({
   varFns: varFns
 });
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, dialogVars);
+var getStyle = styler.createGetStyle(selector, fns, dialogVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: dialogVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, dialogVars as vars };

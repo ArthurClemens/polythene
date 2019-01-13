@@ -38,11 +38,11 @@
 
 #### Type definitions
 
-All components now contain TypeScript type definitions. This makes it easier to use in TypeScript projects and helps to ensure that the options passed to components are valid.
+All components now contain TypeScript type definitions. This makes it easier to use in TypeScript projects and helps to ensure to select valid component options.
 
 #### CSS
 
-Functions `addStyle` and `getStyle` now accept a parameter `scope` to  restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md) for an example.
+Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md) for an example.
 
 #### Components
 

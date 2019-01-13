@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, sel, createLayout } from "polythene-core-css";
 
 const _createShadowForSelector = (which, depth) => (selector, vars) =>
@@ -7,6 +9,12 @@ const _createShadowForSelector = (which, depth) => (selector, vars) =>
     }
   });
 
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth 
+ * @param {"top"|"bottom"} which 
+ */
 const _createShadow = (selector, vars, depth, which) =>
   sel(selector, {
     [` .pe-shadow__${which}`]: {
@@ -14,11 +22,22 @@ const _createShadow = (selector, vars, depth, which) =>
     }
   });
 
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @param {number} depth
+ * @returns {object}
+ */
 const shadow = (selector, vars, depth) => [
   _createShadow(selector, vars, depth, "top"),
   _createShadow(selector, vars, depth, "bottom")
 ];
 
+/**
+ * @param {string} selector 
+ * @param {object} vars 
+ * @returns {object}
+ */
 const shadow_depth = (selector, vars) =>
   vars.shadow_depth !== undefined
     ? shadow(selector, vars, vars.shadow_depth)

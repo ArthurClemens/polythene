@@ -62,6 +62,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var _selected = function selected(selector, vars$$1, tint) {
   return sel(selector, {
     "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
@@ -257,12 +276,14 @@ var title_line_count_single_line_height = function title_line_count_single_line_
   });
 };
 
-var unSelectable = function unSelectable(selector) {
-  return sel(selector, {
-    "&, a": {
-      pointerEvents: "none"
-    }
-  });
+var unSelectable = function unSelectable(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars 
+    sel(selector, {
+      "&, a": {
+        pointerEvents: "none"
+      }
+    })
+  );
 };
 
 var _inset = function inset(selector, vars$$1) {
@@ -560,12 +581,16 @@ var layout = createLayout({
 var single_height = 48;
 var padding = 8;
 var single_with_icon_height = 56;
-var themeVars = _extends({}, {
+var themeVars = {
   inset: false,
   selected: false,
   rounded: false
-});
-var vars$1 = _extends({}, {
+};
+/**
+ * @type {ListTileVars} listTileVars
+ */
+
+var listTileVars = _objectSpread({
   general_styles: true,
   compact_front_item_width: 64,
   compact_padding: 9,
@@ -624,19 +649,18 @@ var vars$1 = _extends({}, {
   color_dark_hover_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   color_dark_selected_text: "inherit",
   color_dark_selected_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover) // background color may be set in theme; disabled by default
-  // color_dark_background:           "inherit",
-
+  color_dark_highlight_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 }, themeVars);
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, listTileVars);
+var getStyle = styler.createGetStyle(selector, fns, listTileVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: listTileVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, listTileVars as vars };

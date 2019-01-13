@@ -1,9 +1,18 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").NotificationVars} NotificationVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 const buttonPaddingH = 8; // padding, inner text space
 
-export default {
+/**
+ * @type {NotificationVars} notificationVars
+ */
+const notificationVars = {
   general_styles:            true,
 
   animation_delay:           "0s",
@@ -27,3 +36,5 @@ export default {
   color_dark_background:     rgba(vars.color_dark_background),
   color_dark_text:           rgba(vars.color_dark_foreground, vars.blend_light_text_primary)
 };
+
+export default notificationVars;

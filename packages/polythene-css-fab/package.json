@@ -8,15 +8,16 @@
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
     "build:css": "node ../../scripts/private/writeComponentCSS.js",
-    "build": "npm run clean && npm run rollup && npm run build:css"
+    "build": "npm run clean && npm run rollup && npm run build:css",
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true index.js"
   },
   "files": [
     "dist",
+    "index.d.ts",
     "README.md"
   ],
   "dependencies": {
     "polythene-core-css": "^1.4.2",
-    "polythene-css-button": "^1.4.2",
     "polythene-css-classes": "^1.4.2",
     "polythene-theme": "^1.4.2"
   },

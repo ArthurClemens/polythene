@@ -1,5 +1,6 @@
 export { vars } from 'polythene-style';
 
+// @ts-check
 // Placeholder for custom theme config file
 // In your app paths setup, change the current path to your custom config file; see the theme README.
 // Example:
@@ -25,5 +26,7 @@ export { vars } from 'polythene-style';
 //     }
 // };
 var componentConfig = {};
+
+// @ts-check
 
 export { componentConfig };

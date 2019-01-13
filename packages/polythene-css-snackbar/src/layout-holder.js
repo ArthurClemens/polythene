@@ -1,3 +1,5 @@
+// @ts-check
+
 import { vars as defaultVars } from "polythene-theme";
 import { flex, sel, createLayout } from "polythene-core-css";
 

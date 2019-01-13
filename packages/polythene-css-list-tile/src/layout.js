@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({ // eslint-disable-line no-unused-vars
@@ -33,7 +35,7 @@ const title_line_count_single_line_height = (selector, vars) =>
     ]
   });
 
-const unSelectable = selector => 
+const unSelectable = (selector, vars) => // eslint-disable-line no-unused-vars 
   sel(selector, {
     "&, a": {
       pointerEvents: "none"

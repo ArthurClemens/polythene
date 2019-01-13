@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, sel, createLayout } from "polythene-core-css";
 
 const varFns = {
@@ -21,15 +23,12 @@ const varFns = {
         borderRadius: "inherit",
       },
 
-      " .pe-button__label": [
-        mixin.fontSmoothing(),
-        {
-          position: "relative",
-          display: "block",
-          borderRadius: "inherit",
-          pointerEvents: "none",
-        }
-      ],
+      " .pe-button__label": {
+        position: "relative",
+        display: "block",
+        borderRadius: "inherit",
+        pointerEvents: "none",
+      },
 
       " .pe-button__wash": [
         mixin.fit(),

@@ -1,3 +1,5 @@
+// @ts-check
+
 import classes from "polythene-css-classes/button-group";
 import layout from "./layout";
 import vars from "./vars";

@@ -1,5 +1,5 @@
-import * as stream from "mithril/stream";
-import * as m from "mithril";
+import stream from "mithril/stream";
+import m from "mithril";
 import { Stream } from "mithril/stream";
 import { Search, IconButton, Shadow } from "polythene-mithril";
 

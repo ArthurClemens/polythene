@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").SnackbarVars} SnackbarVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {SnackbarVars} snackbarVars
+ */
+const snackbarVars = {
   general_styles:         true,
  
   animation_hide_css:     "",
@@ -14,3 +23,5 @@ export default {
   color_light_background: rgba(vars.color_light_background),   
   color_dark_background:  rgba(vars.color_dark_background)
 };
+
+export default snackbarVars;

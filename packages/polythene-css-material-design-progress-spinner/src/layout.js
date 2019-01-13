@@ -1,3 +1,5 @@
+// @ts-check
+
 import { layout as superLayout } from "polythene-css-material-design-spinner";
 import { sel, createLayout } from "polythene-core-css";
 

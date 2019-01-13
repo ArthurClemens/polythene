@@ -60,6 +60,7 @@ var classes = _extends({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
+// @ts-check
 var color$1 = createColor({
   superColor: color
 });
@@ -138,7 +139,12 @@ var layout = createLayout({
   customVarFns: customLayoutFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {SnackbarVars} snackbarVars
+ */
+
+var snackbarVars = {
   general_styles: true,
   animation_hide_css: "",
   animation_show_css: "",
@@ -150,6 +156,7 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
+// @ts-check
 var fns = [layout, color$1];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
 var holderFns = [holderLayout];
@@ -157,21 +164,26 @@ var holderSelector = ".".concat(classes.holder.replace(/ /g, "."));
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && styler.addStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -180,32 +192,37 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return styler.getStyle({
     selectors: [customSelector, selector],
     fns: fns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(styler.getStyle({
     selectors: [holderSelector],
     fns: holderFns,
-    vars: vars$1,
+    vars: snackbarVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 styler.addStyle({
   selectors: [holderSelector],
   fns: holderFns,
-  vars: vars$1
+  vars: snackbarVars
 });
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: snackbarVars
 });
 
-export { addStyle, color$1 as color, getStyle, holderLayout, layout, vars$1 as vars };
+export { addStyle, getStyle, color$1 as color, layout, snackbarVars as vars, holderLayout };

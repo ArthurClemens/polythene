@@ -1,6 +1,6 @@
 import { createColor, sel, createLayout, flex, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
-import { textButtonColor, textButtonLayout, textButtonVars } from 'polythene-css-button';
 import { vars } from 'polythene-theme';
+import { textButtonVars } from 'polythene-css-button';
 import { vars as vars$1 } from 'polythene-css-icon-button';
 
 var buttonClasses = {
@@ -134,8 +134,7 @@ var tabColor = createColor({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
-  },
-  textButtonColor: textButtonColor
+  }
 });
 
 var tab_label_transition_property_animation_duration = function tab_label_transition_property_animation_duration(selector, vars$$1) {
@@ -334,8 +333,7 @@ var varFns = {
   }
 };
 var tabLayout = createLayout({
-  varFns: varFns,
-  textButtonLayout: textButtonLayout
+  varFns: varFns
 });
 
 var generalFns$1 = {
@@ -553,11 +551,16 @@ var tabsLayout = createLayout({
   varFns: varFns$1
 });
 
+// @ts-check
 var fontSize = textButtonVars.font_size;
 var tab_label_line_height = 1.1 * fontSize;
 var tab_height = 48;
 var scroll_button_size = tab_height;
-var vars$2 = {
+/**
+ * @type {TabsVars} tabsVars
+ */
+
+var tabsVars = {
   general_styles: true,
   animation_duration: textButtonVars.animation_duration,
   indicator_slide_speed: 600,
@@ -601,6 +604,7 @@ var vars$2 = {
 
 };
 
+// @ts-check
 var tabsFns = [tabsLayout, tabsColor];
 var tabFns = [tabLayout, tabColor];
 var tabsSelector = ".".concat(classes.component);
@@ -609,21 +613,26 @@ var tabSelector = " .".concat(tabClass.replace(/ /g, "."));
 
 var addStyle = function addStyle(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref.mediaQuery;
+      _ref$mediaQuery = _ref.mediaQuery,
+      mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
+      _ref$scope = _ref.scope,
+      scope = _ref$scope === void 0 ? "" : _ref$scope;
 
   customSelector && styler.addStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
   customSelector && styler.addStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   });
 };
 
@@ -632,32 +641,37 @@ var getStyle = function getStyle() {
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 
   var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-      mediaQuery = _ref2.mediaQuery;
+      _ref2$mediaQuery = _ref2.mediaQuery,
+      mediaQuery = _ref2$mediaQuery === void 0 ? "" : _ref2$mediaQuery,
+      _ref2$scope = _ref2.scope,
+      scope = _ref2$scope === void 0 ? "" : _ref2$scope;
 
   return styler.getStyle({
     selectors: [customSelector, tabsSelector],
     fns: tabsFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }).concat(styler.getStyle({
     selectors: [customSelector, tabSelector],
     fns: tabFns,
-    vars: vars$2,
+    vars: tabsVars,
     customVars: customVars,
-    mediaQuery: mediaQuery
+    mediaQuery: mediaQuery,
+    scope: scope
   }));
 };
 
 styler.addStyle({
   selectors: [tabsSelector],
   fns: tabsFns,
-  vars: vars$2
+  vars: tabsVars
 });
 styler.addStyle({
   selectors: [tabSelector],
   fns: tabFns,
-  vars: vars$2
+  vars: tabsVars
 });
 
-export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, vars$2 as vars };
+export { addStyle, getStyle, tabsVars as vars, tabColor, tabLayout, tabsColor, tabsLayout };

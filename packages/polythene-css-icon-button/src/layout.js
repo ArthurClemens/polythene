@@ -1,3 +1,5 @@
+// @ts-check
+
 import { mixin, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars

@@ -1,3 +1,5 @@
+// @ts-check
+
 import { layout as superLayout } from "polythene-css-selection-control";
 import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";

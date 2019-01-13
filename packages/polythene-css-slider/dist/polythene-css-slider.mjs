@@ -263,6 +263,8 @@ var color = createColor({
   }
 });
 
+// @ts-check
+
 var getThumbSize = function getThumbSize(vars$$1) {
   var thumbSize = Math.max(vars$$1.thumb_size, 2 * vars$$1.thumb_border_width);
   var barOffset = thumbSize / 2;
@@ -649,6 +651,7 @@ var layout = createLayout({
   varFns: varFns
 });
 
+// @ts-check
 var lightForeground = vars.color_light_foreground;
 var darkForeground = vars.color_dark_foreground;
 var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
@@ -723,6 +726,7 @@ var vars$1 = {
   color_dark_pin_background: "currentColor"
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, vars$1);
@@ -733,4 +737,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, vars$1 as vars };

@@ -92,11 +92,30 @@ var color = createColor({
   }
 });
 
+/**
+ * 
+ * @param {string} breakpointSel 
+ */
+
 var breakpoint = function breakpoint(breakpointSel) {
-  return function (selector, o) {
-    return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
-  };
+  return (
+    /**
+     * @param {string} selector
+     * @param {object} o
+     */
+    function (selector, o) {
+      return _defineProperty({}, breakpointSel, _defineProperty({}, selector, o));
+    }
+  );
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var indent_padding_side = function indent_padding_side(_ref2) {
   var _peToolbar__title;
@@ -111,6 +130,14 @@ var indent_padding_side = function indent_padding_side(_ref2) {
     " .pe-toolbar__title--indent, .pe-toolbar__title.pe-toolbar__title--indent": (_peToolbar__title = {}, _defineProperty(_peToolbar__title, isRTL ? "marginLeft" : "marginRight", 0), _defineProperty(_peToolbar__title, isRTL ? "marginRight" : "marginLeft", indent + "px"), _peToolbar__title)
   });
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var _title_padding = function title_padding(_ref3) {
   var _spanPeToolbar;
@@ -129,6 +156,14 @@ var _title_padding = function title_padding(_ref3) {
     }
   });
 };
+/**
+ * @param {object} params
+ * @param {string} params.selector
+ * @param {object} params.vars
+ * @param {boolean} [params.isRTL]
+ * @param {boolean} [params.isLarge]
+ */
+
 
 var title_padding_title_after_icon_padding = function title_padding_title_after_icon_padding(_ref4) {
   var _notPeToolbar_;
@@ -315,6 +350,7 @@ var layout = createLayout({
   varFns: varFns
 });
 
+// @ts-check
 var padding_side = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 
 var padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
@@ -346,6 +382,7 @@ var vars$1 = {
   color_dark_background: rgba(vars.color_dark_background)
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, vars$1);
@@ -356,4 +393,4 @@ styler.addStyle({
   vars: vars$1
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, vars$1 as vars };

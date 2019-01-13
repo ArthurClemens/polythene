@@ -1,3 +1,5 @@
+// @ts-check
+
 import classes from "polythene-css-classes/dialog-pane";
 import color from "./color";
 import layout, { fullScreen } from "./layout";
@@ -19,8 +21,8 @@ styler.addStyle({
 
 export {
   addStyle,
-  color,
   getStyle,
+  color,
   layout,
   vars,
   fullScreen,

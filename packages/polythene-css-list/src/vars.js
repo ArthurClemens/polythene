@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").ListVars} ListVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {ListVars} listVars
+ */
+const listVars = {
   general_styles:         true,
 
   border_width_bordered:  1,
@@ -16,3 +25,5 @@ export default {
   // color_light_background: "inherit",
   // color_dark_background:  "inherit"
 };
+
+export default listVars;

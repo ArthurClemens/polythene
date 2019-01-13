@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").CardVars} CardVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
@@ -5,7 +11,10 @@ const padding_v = 24;
 const padding_actions_v = 8;
 const actions_button_margin_v = 2;
 
-export default {
+/**
+ * @type {CardVars} cardVars
+ */
+const cardVars = {
   general_styles:                      true,
 
   actions_button_margin_h:             vars.grid_unit,
@@ -48,3 +57,5 @@ export default {
   color_dark_actions_border:           rgba(vars.color_dark_foreground, vars.blend_dark_border_light),
   color_dark_overlay_background:       rgba(vars.color_dark_background, vars.blend_dark_overlay_background)
 };
+
+export default cardVars;

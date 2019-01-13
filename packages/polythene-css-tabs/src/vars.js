@@ -1,3 +1,9 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").TabsVars} TabsVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { textButtonVars } from "polythene-css-button";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
@@ -8,7 +14,10 @@ const tab_label_line_height = 1.1 * fontSize;
 const tab_height = 48;
 const scroll_button_size = tab_height;
 
-export default {
+/**
+ * @type {TabsVars} tabsVars
+ */
+const tabsVars = {
   general_styles:                   true,
 
   animation_duration:               textButtonVars.animation_duration,
@@ -55,3 +64,5 @@ export default {
   // color_dark_hover:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
   // color_dark_hover_background:          "transparent",
 };
+
+export default tabsVars;

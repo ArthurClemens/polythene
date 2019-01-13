@@ -1,7 +1,16 @@
+// @ts-check
+
+/**
+ * @typedef {import("../index").IconButtonVars} IconButtonVars
+ */
+
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
-export default {
+/**
+ * @type {IconButtonVars} iconButtonVars
+ */
+const iconButtonVars = {
   general_styles:            true,
 
   animation_duration:        vars.animation_duration,
@@ -41,3 +50,5 @@ export default {
   // color_light_background_hover:         "currentColor",
   // color_dark_background_hover:          "currentColor",
 };
+
+export default iconButtonVars;

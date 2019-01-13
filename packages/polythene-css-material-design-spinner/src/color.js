@@ -1,3 +1,5 @@
+// @ts-check
+
 import { color as superColor } from "polythene-css-base-spinner";
 import { sel, createColor } from "polythene-core-css";
 

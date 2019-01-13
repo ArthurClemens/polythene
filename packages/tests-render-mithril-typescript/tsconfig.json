@@ -13,6 +13,8 @@
     "allowJs": true,
     "jsx": "react",
     "outDir": "dist/js",
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

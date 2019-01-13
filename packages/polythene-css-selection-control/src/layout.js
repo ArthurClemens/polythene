@@ -1,3 +1,5 @@
+// @ts-check
+
 // Returns a style function to be used by Checkbox and Radio Button
 
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";

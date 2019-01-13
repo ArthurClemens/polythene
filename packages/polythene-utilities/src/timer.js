@@ -1,8 +1,20 @@
+// @ts-check
 
 import { isClient } from "polythene-core";
 
 export const Timer = function() {
-  let timerId, startTime, remaining, cb;
+
+  /** @type {number} */
+  let timerId;
+
+  /** @type {number} */
+  let startTime;
+
+  /** @type {number} */
+  let remaining;
+
+  /** @type {() => any} */
+  let cb;
 
   const stop = () => {
     if (isClient) {
@@ -12,13 +24,13 @@ export const Timer = function() {
 
   const pause = () => (
     stop(),
-    remaining -= new Date() - startTime
+    remaining -= new Date().getTime() - startTime
   );
 
   const startTimer = () => {
     if (isClient) {
       stop();
-      startTime = new Date();
+      startTime = new Date().getTime();
       timerId = window.setTimeout(cb, remaining);
     }
   };

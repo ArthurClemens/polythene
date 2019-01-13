@@ -471,17 +471,7 @@ var layout$1 = createLayout({
   superLayout: layout
 });
 
-/*
-Styling derived from https://github.com/PolymerElements/paper-spinner
-
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
+// @ts-check
 var arc_size = 270; // degrees - amount of circle the arc takes up
 
 var arc_time = 1.333; // s - time it takes to expand and contract arc
@@ -494,7 +484,11 @@ var blue400 = "#42a5f5";
 var red500 = "#f44336";
 var yellow600 = "#fdd835";
 var green500 = "#4caf50";
-var vars$2 = {
+/**
+ * @type {MaterialDesignSpinnerVars} materialDesignSpinnerVars
+ */
+
+var materialDesignSpinnerVars = {
   general_styles: true,
   arc_size: arc_size,
   arc_start_degrees: arc_start_degrees,
@@ -517,14 +511,15 @@ var vars$2 = {
   color_dark_4: green500
 };
 
+// @ts-check
 var fns = [layout$1, color$1];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$2);
-var getStyle = styler.createGetStyle(selector, fns, vars$2);
+var addStyle = styler.createAddStyle(selector, fns, materialDesignSpinnerVars);
+var getStyle = styler.createGetStyle(selector, fns, materialDesignSpinnerVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$2
+  vars: materialDesignSpinnerVars
 });
 
-export { addStyle, color$1 as color, getStyle, layout$1 as layout, vars$2 as vars };
+export { addStyle, getStyle, color$1 as color, layout$1 as layout, materialDesignSpinnerVars as vars };

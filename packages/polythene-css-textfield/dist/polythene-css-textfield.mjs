@@ -644,7 +644,12 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var vars$1 = {
+// @ts-check
+/**
+ * @type {TextfieldVars} textfieldVars
+ */
+
+var textfieldVars = {
   general_styles: true,
   dense_floating_label_top: 10,
   dense_floating_label_vertical_spacing_bottom: 4,
@@ -712,14 +717,15 @@ var vars$1 = {
   color_dark_counter_ok_border: rgba(vars.color_primary)
 };
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, textfieldVars);
+var getStyle = styler.createGetStyle(selector, fns, textfieldVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: textfieldVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, textfieldVars as vars };

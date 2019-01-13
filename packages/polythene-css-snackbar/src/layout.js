@@ -1,3 +1,5 @@
+// @ts-check
+
 import { customLayoutFns as customNotificationLayoutFns } from "polythene-css-notification";
 import { sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";

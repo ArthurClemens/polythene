@@ -11,7 +11,7 @@
     "webpack": "ENTRY=./src/index.ts ../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
     "build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist",
-    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict src/index.ts"
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --esModuleInterop src/index.ts"
   },
   "dependencies": {
     "es6-object-assign": "^1.1.0",

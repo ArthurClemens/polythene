@@ -219,37 +219,63 @@ var _cover = function cover(selector, vars$$1) {
     }
   });
 };
+/**
+ * @param {string} miniSelector 
+ * @param {object} [vars] 
+ */
 
-var _mini = function mini(miniSelector) {
-  return sel(miniSelector, {
-    " .pe-dialog__content": {
-      marginLeft: 0,
-      marginRight: 0
-    }
-  });
+
+var _mini = function mini(miniSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(miniSelector, {
+      " .pe-dialog__content": {
+        marginLeft: 0,
+        marginRight: 0
+      }
+    })
+  );
 };
-
-var _permanent = function permanent(permanentSelector) {
-  return sel(permanentSelector, {
-    position: "static",
-    display: "block",
-    padding: 0,
-    overflow: "initial",
-    " .pe-dialog__content": {
-      overflow: "visible",
-      maxHeight: "initial",
-      marginLeft: 0,
-      marginRight: 0
-    }
-  });
-}; // fn: pushSelector contains .pe-drawer--push
+/**
+ * @param {string} permanentSelector 
+ * @param {object} [vars] 
+ */
 
 
-var _push = function push(pushSelector) {
-  return sel(pushSelector, {
-    position: "static"
-  });
+var _permanent = function permanent(permanentSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(permanentSelector, {
+      position: "static",
+      display: "block",
+      padding: 0,
+      overflow: "initial",
+      " .pe-dialog__content": {
+        overflow: "visible",
+        maxHeight: "initial",
+        marginLeft: 0,
+        marginRight: 0
+      }
+    })
+  );
 };
+/**
+ * @param {string} pushSelector 
+ * @param {object} [vars] 
+ */
+// fn: pushSelector contains .pe-drawer--push
+
+
+var _push = function push(pushSelector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(pushSelector, {
+      position: "static"
+    })
+  );
+};
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
+
 
 var borderRadius = function borderRadius(selector, vars$$1) {
   return sel(selector, {
@@ -258,17 +284,28 @@ var borderRadius = function borderRadius(selector, vars$$1) {
     }
   });
 };
+/**
+ * @param {string} selector 
+ * @param {object} [vars] 
+ */
 
-var _floating = function floating(selector) {
-  return sel(selector, {
-    height: "auto",
-    " .pe-dialog__content": {
-      height: "auto"
-    }
-  });
+
+var _floating = function floating(selector, vars$$1) {
+  return (// eslint-disable-line no-unused-vars
+    sel(selector, {
+      height: "auto",
+      " .pe-dialog__content": {
+        height: "auto"
+      }
+    })
+  );
 };
 
 var varFns = _objectSpread({
+  /**
+   * @param {string} selector 
+   * @param {object} [vars] 
+   */
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(selector, vars$$1), {
       justifyContent: "flex-start",
@@ -410,7 +447,7 @@ var layout = createLayout({
   varFns: varFns
 });
 
-var themeVars = _extends({}, {
+var themeVars = _objectSpread({
   backdrop: false,
   border: undefined,
   // set to `true` or `false`
@@ -421,8 +458,12 @@ var themeVars = _extends({}, {
   push: false,
   z_index: vars.z_drawer
 }, sharedVars);
+/**
+ * @type {DrawerVars} drawerVars
+ */
 
-var vars$1 = _extends({}, {
+
+var drawerVars = _objectSpread({
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".260s",
@@ -442,14 +483,15 @@ var vars$1 = _extends({}, {
   color_dark_border: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
 }, themeVars);
 
+// @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, drawerVars);
+var getStyle = styler.createGetStyle(selector, fns, drawerVars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: drawerVars
 });
 
-export { addStyle, color, getStyle, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, drawerVars as vars };
