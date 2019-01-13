@@ -17,9 +17,7 @@ import m from "mithril"
 import { Button } from "polythene-mithril"
 import { ButtonCSS } from "polythene-css"
 
-const CLASS_NAME = "themed-button"
-
-ButtonCSS.addStyle(`.${CLASS_NAME}`, {
+ButtonCSS.addStyle(".custom-color", {
   color_light_background: "#FF1744",
   color_light_text:       "#fff"
 })
@@ -30,7 +28,7 @@ interface MyButtonAttrs extends Partial<Button> {
 
 const MyButton = ({ attrs: { showCustomColor, ...otherAttrs }} : { attrs: MyButtonAttrs }) => {
   const className = showCustomColor
-    ? CLASS_NAME
+    ? "custom-color"
     : ""
   return {
     view: () => 
@@ -61,9 +59,7 @@ import React from "react"
 import { Button } from "polythene-react"
 import { ButtonCSS } from "polythene-css"
 
-const CLASS_NAME = "themed-button"
-
-ButtonCSS.addStyle(`.${CLASS_NAME}`, {
+ButtonCSS.addStyle(".custom-color", {
   color_light_background: "#FF1744",
   color_light_text:       "#fff"
 })
@@ -71,13 +67,15 @@ ButtonCSS.addStyle(`.${CLASS_NAME}`, {
 interface MyButtonProps extends Partial<Button> {
   showCustomColor: boolean
 }
-interface MyButtonState {}
+interface MyButtonState {
+  // no state used here
+}
 
 export default class MyButton extends React.Component<MyButtonProps, MyButtonState> {
   render() {
     const { showCustomColor, ...otherProps } = this.props
     const className = showCustomColor
-      ? CLASS_NAME
+      ? "custom-color"
       : ""
     return <Button {...otherProps} className={className} />
   }
