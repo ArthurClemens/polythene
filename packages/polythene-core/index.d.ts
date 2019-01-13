@@ -69,7 +69,7 @@ export type Content = object | any;
   /**
    * Creates console warnings for deprecated components or component options and provides info on replacements.
    */
-  export function deprecation(component: string, { option, newOption, newComponent, message } : { option?: string, newOption?: string, newComponent?: string, message?: string } ) : void;
+  export function deprecation(component: string, { option, newOption, newComponent, message, since } : { option?: string, newOption?: string, newComponent?: string, message?: string, since?: string } ) : void;
 
 /* developer.js END */
 

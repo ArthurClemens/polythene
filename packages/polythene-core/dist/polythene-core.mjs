@@ -145,10 +145,10 @@ var deprecation = function deprecation(component, _ref) {
       newOption = _ref.newOption,
       newComponent = _ref.newComponent,
       since = _ref.since;
-  var version = since ? "Changed in version ".concat(since, ".") : "";
+  var version = since ? "Since version ".concat(since, ".") : "";
   return option && console.warn("".concat(component, ": option '").concat(option, "' is deprecated and will be removed in later versions. Use '").concat(newOption, "' instead. ").concat(version)), // eslint-disable-line no-console
-  newComponent && !newOption && console.warn("".concat(version).concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' instead. ").concat(version)), // eslint-disable-line no-console
-  newComponent && newOption && console.warn("".concat(version).concat(component, ": this component is deprecated and will be removed in later versions. Use '").concat(newComponent, "' with option '").concat(newOption, "' instead. ").concat(version)) // eslint-disable-line no-console
+  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component '").concat(newComponent, "' instead. ").concat(version)), // eslint-disable-line no-console
+  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component '").concat(newComponent, "' with option '").concat(newOption, "' instead. ").concat(version)) // eslint-disable-line no-console
   ;
 };
 
