@@ -11,7 +11,7 @@ const PACKAGE_FILE_PATTERN = "./packages/*/package.json";
 
 const argv = parseArgs(process.argv.slice(2));
 const isTestRun = !!argv["dry-run"];
-const newVersion = argv["version"]
+const newVersion = argv["version"];
 
 shell.exec("npm whoami", { silent: true }, (code, stdout, stderr) => {
   if (stderr) {
@@ -37,7 +37,7 @@ const maybePublish = filename => {
       if (version !== newVersion) {
         if (isTestRun) {
           console.log("DRY RUN", `Publish: ${name}`); // eslint-disable-line no-console
-          resolve(filename)
+          resolve(filename);
         } else {
           shell.cd(path.dirname(filename));
           shell.exec("npm publish");

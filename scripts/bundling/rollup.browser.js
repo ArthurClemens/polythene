@@ -17,7 +17,7 @@ const external = [
   "react-dom"
 ].filter(e => includes.indexOf(e) === -1);
 export default {
-  input: env.ENTRY || "index.js",
+  input: env.ENTRY || "src/index.js",
   output: {
     name,
     format: "umd",

@@ -9,7 +9,7 @@ const pkg = JSON.parse(fs.readFileSync("./package.json"));
 const name = env.MODULE_NAME || "polythene";
 
 export default {
-  input: env.ENTRY || "index.js",
+  input: env.ENTRY || "src/index.js",
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),

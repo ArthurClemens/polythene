@@ -59,6 +59,9 @@ export default ({ h, k, List, ListTile }) => {
       header,
       selected,
       hoverable,
+      inset: true,
+      rounded: true,
+      compact: true,
       className: header
         ? ""
         : "tests-list-keyboard-list-tile",
@@ -99,7 +102,6 @@ export default ({ h, k, List, ListTile }) => {
         // The container catches all keyboard events
         { [k.onkeydown]: state.handleKey },
         h(List, {
-          border: true,
           tiles: tileData.map((item, index) => createTile(Object.assign(
             {},
             item,

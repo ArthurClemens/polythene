@@ -10,7 +10,7 @@ module.exports = {
   context: path.resolve(baseDir, "./src"),
 
   entry: {
-    index: path.resolve(baseDir, env.ENTRY || "./index.js"),
+    index: path.resolve(baseDir, env.ENTRY || "./src/index.js"),
   },
 
   output: {

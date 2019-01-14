@@ -62,5 +62,5 @@ export default ({ h, k, Icon, List, ListTile, repeats=1, onClick=()=>{} }) => {
           }
         ]))).map(tile)
       })
-    };
   };
+};

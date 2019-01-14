@@ -1,16 +1,14 @@
 /* global process */
-import child_process from "child_process";
 import fs from "fs";
 import glob from "fast-glob";
 import parseArgs from "minimist";
 import shell from "shelljs";
 
-const baseDir = process.cwd();
 const PACKAGE_FILE_PATTERN = "./packages/*/package.json";
 
 const argv = parseArgs(process.argv.slice(2));
 const isTestRun = !!argv["dry-run"];
-const newVersion = argv["version"]
+const newVersion = argv["version"];
 
 const update = filename => {
   return new Promise((resolve, reject) => {

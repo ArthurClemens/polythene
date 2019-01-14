@@ -11,7 +11,7 @@
     "copy-css": "node ./scripts/copyCSS.js",
     "combine-css": "node ./scripts/combineCSS.js",
     "build": "npm run rollup && npm run build:standalone && npm run copy-css && npm run combine-css",
-    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true index.js"
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true src/index.js"
   },
   "files": [
     "dist",
