@@ -60,7 +60,7 @@ const createStyle = ({ varFns, customVarFns, superStyle, varMixin, selector, sco
       : superStyle(selector, otherVars)
     : [];
   const fns = {
-    ...(!!customVars && customVarFns),
+    ...(customVars ? customVarFns : {}),
     ...varFns
   };
   return baseLayout
