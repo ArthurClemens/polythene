@@ -1,9 +1,24 @@
-const shell           = require("shelljs");
-const glob            = require("glob-fs")();
-const { writeCSS }    = require("../dist/polythene-scripts");
-const { getStyle }    = require("../../polythene-css-svg");
+const shell                  = require("shelljs");
+const glob                   = require("glob-fs")();
+const { writeCSS }           = require("../dist/polythene-scripts");
+const { addStyle, getStyle } = require("../../polythene-css-svg");
 
 glob.readdirSync("./test/*.css*").map(file => shell.rm(file));
+
+/*
+Use (wrong) addStyle instead of getStyle
+Expect file to be empty
+*/
+writeCSS({
+  styles: [
+    addStyle(".test-theme-svg-1", {
+      color_light: "#0D47A1",
+      color_dark: "orange"
+    }),
+  ],
+  path: "./test/test-none.css",
+  sourceMap: false,
+});
 
 const styles = [
   getStyle(".test-theme-svg-1", {

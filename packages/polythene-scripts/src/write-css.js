@@ -45,7 +45,14 @@ export const writeCSS = ({ css, styles, path, autoPrefix, beautify, sourceMap=tr
   const cssString = css
     ? css
     : styles
-      ? styles.reduce((acc, current) => acc + makeStyleSheet(current), "")
+      ? styles.reduce((acc, current) => (
+        current !== undefined
+          ? acc + makeStyleSheet(current)
+          : (
+            console.log("No style passed to writeCSS. Make sure to use getStyle, not addStyle..."), // eslint-disable-line no-console
+            acc
+          )
+      ), "")
       : "";
 
   const mapPath = `${path}.map`;
