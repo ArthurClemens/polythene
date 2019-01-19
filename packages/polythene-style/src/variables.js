@@ -26,8 +26,8 @@ export const vars = {
   // buttons
   unit_touch_height:                    48,
   unit_icon_size_small:                 2 * grid_unit_component,  // 16
-  unit_icon_size:                       3 * grid_unit_component,        // 24
-  unit_icon_size_medium:                4 * grid_unit_component, // 32
+  unit_icon_size:                       3 * grid_unit_component,  // 24
+  unit_icon_size_medium:                4 * grid_unit_component,  // 32
   unit_icon_size_large:                 5 * grid_unit_component,  // 40
 
   // screen dimensions
