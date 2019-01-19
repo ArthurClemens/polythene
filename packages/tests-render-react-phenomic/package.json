@@ -9,19 +9,18 @@
     "serve": "http-server dist -p 5000"
   },
   "dependencies": {
-    "@phenomic/cli": "^1.0.0-beta.7",
-    "@phenomic/core": "^1.0.0-beta.7",
-    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "@phenomic/cli": "^1.0.0-beta.9",
+    "@phenomic/core": "^1.0.0-beta.9",
     "polythene-css": "^1.4.2",
     "polythene-react": "^1.4.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
     "react-router": "3.2.0",
-    "react-hot-loader": "4.3.12"
+    "react-hot-loader": "4.6.3"
   },
   "devDependencies": {
-    "@phenomic/preset-react-app": "^1.0.0-beta.0",
+    "@phenomic/preset-react-app": "^1.0.0-beta.9",
     "http-server": "^0.11.1"
   },
   "phenomic": {

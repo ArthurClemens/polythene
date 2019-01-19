@@ -5,9 +5,10 @@ const Layout = ({ children, meta }) => {
   return (
     <div>
       <Head>
-        {/* Language and charset */}
         <meta charSet="utf-8" />
         <htmlAttributes lang="en" />
+        
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en,Intl.~locale.nl,Promise,Object.assign,Array.prototype.find" type="text/javascript" />
         
         {/* Mobile */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
