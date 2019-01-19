@@ -20,7 +20,8 @@ var classes = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
-  inset: "pe-list-tile--inset",
+  insetH: "pe-list-tile--inset-h",
+  insetV: "pe-list-tile--inset-v",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   rounded: "pe-list-tile--rounded",
@@ -82,14 +83,16 @@ function _objectSpread(target) {
 }
 
 var _selected = function selected(selector, vars$$1, tint) {
-  return sel(selector, {
+  var selectedTextColor = vars$$1["color_" + tint + "_selected_text"];
+  return sel(selector, _objectSpread({}, selectedTextColor !== "inherit" ? {
     "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-      color: vars$$1["color_" + tint + "_selected_text"]
-    },
+      color: selectedTextColor
+    }
+  } : undefined, {
     " .pe-list-tile__primary, pe-list-tile__secondary": {
       backgroundColor: vars$$1["color_" + tint + "_selected_background"]
     }
-  });
+  }));
 };
 
 var generalFns = {
@@ -249,20 +252,36 @@ var alignSide = function alignSide(isRTL) {
 
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
+/**
+ * @param {number} left
+ * @param {number} [right]
+ */
 
-var paddingH = function paddingH(h) {
+var paddingH = function paddingH(left) {
+  var right = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : left;
   return {
-    "padding-left": h + "px",
-    "padding-right": h + "px"
+    "padding-left": left + "px",
+    "padding-right": right + "px"
   };
 };
+/**
+ * @param {number} top 
+ * @param {number} [bottom] 
+ */
 
-var paddingV = function paddingV(top, bottom) {
+
+var paddingV = function paddingV(top) {
+  var bottom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : top;
   return {
     "padding-top": top + "px",
-    "padding-bottom": (bottom || top) + "px"
+    "padding-bottom": bottom + "px"
   };
 };
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
 
 var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars$$1) {
   return sel(selector, {
@@ -275,6 +294,11 @@ var title_line_count_single_line_height = function title_line_count_single_line_
     " .pe-list-tile__title": [mixin.ellipsis(vars$$1.title_line_count, vars$$1.single_line_height, "px")]
   });
 };
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
 
 var unSelectable = function unSelectable(selector, vars$$1) {
   return (// eslint-disable-line no-unused-vars 
@@ -285,13 +309,50 @@ var unSelectable = function unSelectable(selector, vars$$1) {
     })
   );
 };
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
 
 var _inset = function inset(selector, vars$$1) {
+  return insetH(selector, vars$$1), insetV(selector, vars$$1);
+};
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
+
+var insetH = function insetH(selector, vars$$1) {
+  var margin = vars$$1.inset_h_size;
   return sel(selector, {
-    margin: vars$$1.inset_size + "px",
-    " .pe-list-tile__content": [paddingH(vars$$1.side_padding - vars$$1.inset_size)]
+    marginLeft: margin + "px",
+    marginRight: margin + "px",
+    " .pe-list-tile__content": {
+      marginLeft: -margin + "px",
+      marginRight: -margin + "px"
+    }
   });
 };
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
+
+var insetV = function insetV(selector, vars$$1) {
+  var margin = vars$$1.inset_v_size;
+  return sel(selector, {
+    marginTop: margin + "px",
+    marginBottom: margin + "px"
+  });
+};
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+
 
 var _rounded = function rounded(selector, vars$$1) {
   return sel(selector, {
@@ -302,6 +363,10 @@ var _rounded = function rounded(selector, vars$$1) {
 };
 
 var varFns = {
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
   general_styles: function general_styles(selector, vars$$1) {
     return [sel(selector, [alignLeft(vars$$1), flex.layout, {
       position: "relative",
@@ -311,6 +376,8 @@ var varFns = {
         }
       },
       ".pe-list-tile--sticky": mixin.sticky(2),
+      ".pe-list-tile--inset-h": insetH(selector, vars$$1),
+      ".pe-list-tile--inset-v": insetV(selector, vars$$1),
       " .pe-list-tile__primary": {
         width: "100%"
       },
@@ -554,6 +621,12 @@ var varFns = {
   inset: function inset(selector, vars$$1) {
     return vars$$1.inset && _inset(selector, vars$$1);
   },
+  inset_h: function inset_h(selector, vars$$1) {
+    return vars$$1.inset_h && insetH(selector, vars$$1);
+  },
+  inset_v: function inset_v(selector, vars$$1) {
+    return vars$$1.inset_h && insetV(selector, vars$$1);
+  },
   rounded: function rounded(selector, vars$$1) {
     return vars$$1.rounded && _rounded(selector, vars$$1);
   },
@@ -583,6 +656,8 @@ var padding = 8;
 var single_with_icon_height = 56;
 var themeVars = {
   inset: false,
+  inset_h: false,
+  inset_v: false,
   selected: false,
   rounded: false
 };
@@ -608,7 +683,9 @@ var listTileVars = _objectSpread({
   has_high_subtitle_padding: 13,
   has_subtitle_padding: 15,
   high_subtitle_line_count: 2,
-  inset_size: 1 * vars.grid_unit_component,
+  inset_h_size: 1 * vars.grid_unit_component,
+  // 8
+  inset_v_size: 1 * vars.grid_unit_component,
   // 8
   line_height_subtitle: 20,
   padding: 13,

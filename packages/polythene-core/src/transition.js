@@ -173,7 +173,10 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
   };
   const opts2 = {
     ...opts1,
-    ...(transitions && transitions[isShow ? "show" : "hide"](opts1))
+    ...(transitions
+      ? transitions[isShow ? "show" : "hide"](opts1)
+      : undefined
+    )
   };
   const opts3 = {
     ...opts2,

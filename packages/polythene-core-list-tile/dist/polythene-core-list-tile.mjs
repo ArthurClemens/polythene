@@ -52,7 +52,8 @@ var classes = {
   hasSubtitle: "pe-list-tile--subtitle",
   header: "pe-list-tile--header",
   hoverable: "pe-list-tile--hoverable",
-  inset: "pe-list-tile--inset",
+  insetH: "pe-list-tile--inset-h",
+  insetV: "pe-list-tile--inset-v",
   selectable: "pe-list-tile--selectable",
   selected: "pe-list-tile--selected",
   rounded: "pe-list-tile--rounded",
@@ -133,7 +134,7 @@ var createProps = function createProps(vnode, _ref3) {
     remove: ["tabindex", "tabIndex"]
   }), // tabindex is set elsewhere
   {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.rounded ? classes.rounded : null, attrs.header ? classes.header : null, attrs.inset ? classes.inset : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.rounded ? classes.rounded : null, attrs.header ? classes.header : null, attrs.inset || attrs.insetH ? classes.insetH : null, attrs.inset || attrs.insetV ? classes.insetV : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
   }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
   );
 };

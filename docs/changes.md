@@ -56,7 +56,7 @@ Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a
 * Drawer:
   * A drawer now uses a `div` as wrapping element instead of `form`.  
 * List Tile:
-  * Added options `inset` and `rounded` for the creation of Drawer "destination labels". Both options are themeable.
+  * Added options `inset` (further specialised with `insetH` and `insetV`) and `rounded` for the creation of Drawer "destination labels". Both options are themeable.
 * TextField:
   * Additional DOM properties such as `autocapitalize` (`autoCapitalize` for React) can be passed with option `domAttributes`.
 * Toolbar:

@@ -2,15 +2,22 @@
 
 import { sel, createColor } from "polythene-core-css";
 
-const selected = (selector, vars, tint) =>
-  sel(selector, {
-    "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-      color: vars["color_" + tint + "_selected_text"]
-    },
+const selected = (selector, vars, tint) => {
+  const selectedTextColor = vars["color_" + tint + "_selected_text"];
+  return sel(selector, {
+    ...(selectedTextColor !== "inherit"
+      ? {
+        "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
+          color: selectedTextColor
+        }
+      }
+      : undefined
+    ),
     " .pe-list-tile__primary, pe-list-tile__secondary": {
       backgroundColor: vars["color_" + tint + "_selected_background"]
     }
   });
+};
 
 const generalFns = ({
   general_styles: selector => [

@@ -52,10 +52,22 @@ interface CommonListTileOptions extends Partial<CommonOptions> {
   ink?: boolean;
 
   /**
-   * Set to true to add side and top margins.
+   * Set to true to add side and vertical margins.
    * @default false
    */
   inset?: boolean;
+
+  /**
+   * Set to true to add side margins.
+   * @default false
+   */
+  insetH?: boolean;
+  
+  /**
+   * Set to true to add vertical margins.
+   * @default false
+   */
+  insetV?: boolean;
 
   /**
    * Set to true to use a Material Design navigation style.

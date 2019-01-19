@@ -21,6 +21,21 @@
   z-index: 2
 }
 
+.pe-list-tile.pe-list-tile--inset-h.pe-list-tile {
+  margin-left: 8px;
+  margin-right: 8px
+}
+
+.pe-list-tile.pe-list-tile--inset-h.pe-list-tile .pe-list-tile__content {
+  margin-left: -8px;
+  margin-right: -8px
+}
+
+.pe-list-tile.pe-list-tile--inset-v.pe-list-tile {
+  margin-top: 8px;
+  margin-bottom: 8px
+}
+
 .pe-list-tile .pe-list-tile__primary {
   width: 100%
 }
@@ -259,15 +274,6 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   padding-bottom: 16px
 }
 
-.pe-list-tile.pe-list-tile--inset.pe-list-tile {
-  margin: 8px
-}
-
-.pe-list-tile.pe-list-tile--inset.pe-list-tile .pe-list-tile__content {
-  padding-left: 8px;
-  padding-right: 8px
-}
-
 .pe-list-tile:not(.pe-list-tile--header) .pe-list-tile__content:not(.pe-list-tile__content-front) {
   padding-top: 13px;
   padding-bottom: 14px
@@ -366,10 +372,6 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   color: hsla(0,0%,100%,.7)
 }
 
-.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__content,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__content,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__content,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__content,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__subtitle,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__title,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__title,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__title,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__title {
-  color: inherit
-}
-
 .pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__primary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile .pe-list-tile__primary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone.pe-list-tile pe-list-tile__secondary,.pe-dark-tone.pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile pe-list-tile__secondary,.pe-dark-tone .pe-list-tile.pe-list-tile--selected.pe-dark-tone .pe-list-tile pe-list-tile__secondary {
   background-color: hsla(0,0%,100%,.08)
 }
@@ -415,11 +417,7 @@ html.pe-no-touch .pe-list-tile.pe-list-tile--hoverable:not(.pe-list-tile--header
   background-color: rgba(0,0,0,.06)
 }
 
-.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__content,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__content,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__content,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__content,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__subtitle,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__subtitle,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__title,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__title,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__title,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__title,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__content,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__content,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__subtitle,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__title,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__title,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__content,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__content,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__subtitle,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__subtitle,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__title,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__title,.pe-list-tile.pe-list-tile--selected.pe-list-tile,.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__content,.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__subtitle,.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__title {
-  color: inherit
-}
-
-.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary {
+.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-light-tone.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,.pe-light-tone .pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-light-tone.pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-light-tone .pe-list-tile pe-list-tile__secondary,.pe-list-tile.pe-list-tile--selected.pe-list-tile .pe-list-tile__primary,.pe-list-tile.pe-list-tile--selected.pe-list-tile pe-list-tile__secondary {
   background-color: rgba(0,0,0,.06)
 }
 

@@ -1,16 +1,14 @@
 import notificationClasses from "./notification";
 
-export default Object.assign(
-  {},
-  notificationClasses,
-  {
-    component:      "pe-notification pe-snackbar",
+export default {
+  ...notificationClasses,
 
-    // elements
-    holder:         "pe-snackbar__holder",
-    placeholder:    "pe-snackbar__placeholder",
+  component:      "pe-notification pe-snackbar",
 
-    // states
-    open:           "pe-snackbar--open",
-  }
-);
+  // elements
+  holder:         "pe-snackbar__holder",
+  placeholder:    "pe-snackbar__placeholder",
+
+  // states
+  open:           "pe-snackbar--open",
+};

@@ -19,7 +19,8 @@ export interface ListTileVars {
   has_high_subtitle_padding:          number,
   has_subtitle_padding:               number,
   high_subtitle_line_count:           number,
-  inset_size:                         number,
+  inset_h_size:                       number,
+  inset_v_size:                       number,
   line_height_subtitle:               number,
   padding:                            number,
   rounded_border_radius:              number,
@@ -60,6 +61,8 @@ export interface ListTileVars {
   color_dark_highlight_background:    string,
   color_dark_background?:             string,
   inset:                              boolean,
+  inset_h:                            boolean,
+  inset_v:                            boolean,
   selected:                           boolean,
   rounded:                            boolean,
 

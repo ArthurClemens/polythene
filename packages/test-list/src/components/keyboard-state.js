@@ -1,3 +1,4 @@
+
 import { ListTileCSS } from "polythene-css";
 
 import stream from "mithril/stream";
@@ -59,7 +60,7 @@ export default ({ h, k, List, ListTile }) => {
       header,
       selected,
       hoverable,
-      inset: true,
+      insetH: true,
       rounded: true,
       compact: true,
       className: header

@@ -27,6 +27,8 @@ const single_with_icon_height = 56;
 
 export const themeVars = {
   inset:      false,
+  inset_h:    false,
+  inset_v:    false,
   selected:   false,
   rounded:    false,
 };
@@ -53,7 +55,8 @@ const listTileVars = {
   has_high_subtitle_padding:          13,
   has_subtitle_padding:               15,
   high_subtitle_line_count:           2,
-  inset_size:                         1 * vars.grid_unit_component, // 8
+  inset_h_size:                       1 * vars.grid_unit_component, // 8
+  inset_v_size:                       1 * vars.grid_unit_component, // 8
   line_height_subtitle:               20,
   padding:                            13,
   rounded_border_radius:              vars.unit_item_border_radius,

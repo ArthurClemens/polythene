@@ -1,5 +1,9 @@
 // @ts-check
 
+/**
+ * @typedef {import("../index").ListTileVars} ListTileVars
+ */
+
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
 
 const alignSide = isRTL => vars => ({ // eslint-disable-line no-unused-vars
@@ -10,16 +14,28 @@ const alignSide = isRTL => vars => ({ // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 
-const paddingH = h => ({
-  "padding-left": h + "px",
-  "padding-right": h + "px"
+/**
+ * @param {number} left
+ * @param {number} [right]
+ */
+const paddingH = (left, right=left) => ({
+  "padding-left": left + "px",
+  "padding-right": right + "px"
 });
 
-const paddingV = (top, bottom) => ({
+/**
+ * @param {number} top 
+ * @param {number} [bottom] 
+ */
+const paddingV = (top, bottom=top) => ({
   "padding-top": top + "px",
-  "padding-bottom": (bottom || top) + "px"
+  "padding-bottom": bottom + "px"
 });
 
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
 const title_line_count_single_line_height = (selector, vars) =>
   sel(selector, {
     lineHeight: vars.single_line_height + "px",
@@ -35,6 +51,10 @@ const title_line_count_single_line_height = (selector, vars) =>
     ]
   });
 
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
 const unSelectable = (selector, vars) => // eslint-disable-line no-unused-vars 
   sel(selector, {
     "&, a": {
@@ -42,15 +62,49 @@ const unSelectable = (selector, vars) => // eslint-disable-line no-unused-vars
     }
   });
 
-const inset = (selector, vars) => 
-  sel(selector, {
-    margin: vars.inset_size + "px",
-    
-    " .pe-list-tile__content": [
-      paddingH(vars.side_padding - vars.inset_size)
-    ]
-  });
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+const inset = (selector, vars) => (
+  insetH(selector, vars),
+  insetV(selector, vars)
+);
 
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+const insetH = (selector, vars) => {
+  const margin = vars.inset_h_size;
+
+  return sel(selector, {
+    marginLeft: margin + "px",
+    marginRight: margin + "px",
+
+    " .pe-list-tile__content": {
+      marginLeft: -margin + "px",
+      marginRight: -margin + "px",
+    }
+  });
+};
+
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
+const insetV = (selector, vars) => {
+  const margin = vars.inset_v_size;
+  return sel(selector, {
+    marginTop: margin + "px",
+    marginBottom: margin + "px"
+  });
+};
+
+/**
+ * @param {string} selector 
+ * @param {ListTileVars} vars 
+ */
 const rounded = (selector, vars) => 
   sel(selector, {
     "&, .pe-list-tile__primary": {
@@ -59,6 +113,10 @@ const rounded = (selector, vars) =>
   });
 
 const varFns = {
+  /**
+   * @param {string} selector 
+   * @param {ListTileVars} vars 
+   */
   general_styles: (selector, vars) => [
     sel(selector, [
       alignLeft(vars),
@@ -73,6 +131,9 @@ const varFns = {
         },
 
         ".pe-list-tile--sticky": mixin.sticky(2),
+
+        ".pe-list-tile--inset-h": insetH(selector, vars),
+        ".pe-list-tile--inset-v": insetV(selector, vars),
 
         " .pe-list-tile__primary": {
           width: "100%"
@@ -387,6 +448,10 @@ const varFns = {
 
   inset: (selector, vars) => 
     vars.inset && inset(selector, vars),
+  inset_h: (selector, vars) => 
+    vars.inset_h && insetH(selector, vars),
+  inset_v: (selector, vars) => 
+    vars.inset_h && insetV(selector, vars),
   rounded: (selector, vars) => 
     vars.rounded && rounded(selector, vars),
   selected: (selector, vars) => 
