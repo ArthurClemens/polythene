@@ -316,7 +316,8 @@ var varFns = _objectSpread({
       },
       ".pe-menu--top-menu": _top_menu(selector, vars$$1),
       " .pe-menu__content": {
-        overflow: "auto",
+        overflowX: "auto",
+        overflowY: "auto",
         width: "100%",
         height: "100%"
       },

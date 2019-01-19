@@ -324,6 +324,9 @@ var onMount = function onMount(vnode) {
   var attrs = vnode.attrs;
   state.dom(vnode.dom);
   state.panelEl = vnode.dom.querySelector(".".concat(classes.panel));
+
+  _extends(state.panelEl.style, attrs.style);
+
   state.contentEl = vnode.dom.querySelector(".".concat(classes.content));
 
   if (!attrs.permanent) {
@@ -374,7 +377,9 @@ var createProps = function createProps(vnode, _ref2) {
   var k = _ref2.keys;
   var attrs = vnode.attrs;
   var type = attrs.type || DEFAULT_TYPE;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs, {
+    remove: ["style"]
+  }), {
     className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, attrs.topMenu ? classes.isTopMenu : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
@@ -396,7 +401,6 @@ var createContent = function createContent(vnode, _ref3) {
     key: "shadow"
   }), h("div", {
     className: classes.content,
-    style: attrs.style,
     key: "content"
   }, attrs.content ? attrs.content : vnode.children)])];
 };

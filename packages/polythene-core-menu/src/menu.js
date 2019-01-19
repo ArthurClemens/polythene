@@ -227,6 +227,7 @@ export const onMount = vnode => {
   const attrs = vnode.attrs;
   state.dom(vnode.dom);
   state.panelEl = vnode.dom.querySelector(`.${classes.panel}`);
+  Object.assign(state.panelEl.style, attrs.style);
   state.contentEl = vnode.dom.querySelector(`.${classes.content}`);
 
   if (!attrs.permanent) {
@@ -278,7 +279,7 @@ export const createProps = (vnode, { keys: k }) => {
   const type = attrs.type || DEFAULT_TYPE;
   return Object.assign(
     {}, 
-    filterSupportedAttributes(attrs),
+    filterSupportedAttributes(attrs, { remove: ["style"] }),
     {
       className: [
         classes.component,
@@ -324,7 +325,6 @@ export const createContent = (vnode, { renderer: h, Shadow }) => {
         h("div", 
           {
             className: classes.content,
-            style: attrs.style,
             key: "content",
           },
           attrs.content

@@ -137,7 +137,8 @@ const varFns = {
         ".pe-menu--top-menu": top_menu(selector, vars),
 
         " .pe-menu__content": {
-          overflow: "auto",
+          overflowX: "auto",
+          overflowY: "auto",
           width: "100%",
           height: "100%",
         },
