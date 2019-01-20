@@ -7,10 +7,10 @@ export default {
   general_styles:                      true,
   
   animation_duration:                  vars.animation_duration,
-  button_size:                         6 * vars.grid_unit_component,
-  icon_size:                           3 * vars.grid_unit_component,
+  button_size:                         6 * vars.grid_unit_component, // 48
+  label_height:                        5 * vars.grid_unit_component, // 40
+  icon_size:                           3 * vars.grid_unit_component, // 24
   label_font_size:                     2 * vars.grid_unit_component, // 16
-  label_height:                        3 * vars.grid_unit_component, // 24
   label_padding_after:                 0,
   label_padding_before:                vars.grid_unit * 4, // 16
 

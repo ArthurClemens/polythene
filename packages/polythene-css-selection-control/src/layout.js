@@ -1,5 +1,3 @@
-// @ts-check
-
 // Returns a style function to be used by Checkbox and Radio Button
 
 import { mixin, flex, sel, selectorRTL, createLayout } from "polythene-core-css";
@@ -9,28 +7,28 @@ const alignSide = isRTL => vars => ({}); // eslint-disable-line no-unused-vars
 const alignLeft = alignSide(false);
 const alignRight = alignSide(true);
 
-const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
-  const labelSize = iconSize + vars.label_height;
-  const iconOffset = (labelSize - iconSize) / 2;
-  return {
-    " .pe-control__form-label": {
-      height: height + "px"
-    },
-    " .pe-control__box": {
-      width: iconSize + "px",
-      height: iconSize + "px"
-    },
-    " .pe-button__content": {
-      width: labelSize + "px",
-      height: labelSize + "px",
-      flexShrink: 0,
+// const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
+//   const labelSize = iconSize + vars.label_height;
+//   const iconOffset = (labelSize - iconSize) / 2;
+//   return {
+//     " .pe-control__form-label": {
+//       height: height + "px"
+//     },
+//     " .pe-control__box": {
+//       width: iconSize + "px",
+//       height: iconSize + "px"
+//     },
+//     " .pe-button__content": {
+//       width: labelSize + "px",
+//       height: labelSize + "px",
+//       flexShrink: 0,
 
-      " .pe-icon": [
-        mixin.fit(iconOffset)
-      ]
-    }
-  };
-};
+//       " .pe-icon": [
+//         mixin.fit(iconOffset)
+//       ]
+//     }
+//   };
+// };
 
 const activeButton = () => ({
   opacity: 1,
@@ -141,6 +139,8 @@ const varFns = {
         },
 
         " .pe-button__content": {
+          flexShrink: 0,
+          
           " .pe-icon": {
             position: "absolute"
           }
@@ -162,16 +162,16 @@ const varFns = {
     })
   ],
   label_height: (selector, vars) => [
-    sel(selector, {
-      " .pe-control__box": {
-        width: vars.label_height + "px",
-        height: vars.label_height + "px",
-      },
-      ".pe-control--small": makeSize(vars, themeVars.unit_icon_size_small, themeVars.unit_icon_size_small),
-      ".pe-control--regular": makeSize(vars, vars.label_height, themeVars.unit_icon_size),
-      ".pe-control--medium": makeSize(vars, themeVars.unit_icon_size_medium, themeVars.unit_icon_size_medium),
-      ".pe-control--large": makeSize(vars, themeVars.unit_icon_size_large, themeVars.unit_icon_size_large),
-    })
+    // sel(selector, {
+    //   " .pe-control__box": {
+    //     width: vars.label_height + "px",
+    //     height: vars.label_height + "px",
+    //   },
+    //   ".pe-control--small": makeSize(vars, themeVars.unit_icon_size_small, themeVars.unit_icon_size_small),
+    //   ".pe-control--regular": makeSize(vars, vars.label_height, themeVars.unit_icon_size),
+    //   ".pe-control--medium": makeSize(vars, themeVars.unit_icon_size_medium, themeVars.unit_icon_size_medium),
+    //   ".pe-control--large": makeSize(vars, themeVars.unit_icon_size_large, themeVars.unit_icon_size_large),
+    // })
   ],
   animation_duration: (selector, vars) => [
     sel(selector, {

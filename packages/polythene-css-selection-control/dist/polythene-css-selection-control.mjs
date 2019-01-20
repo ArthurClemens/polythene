@@ -8,6 +8,7 @@ var classes = {
   input: "pe-control__input",
   label: "pe-control__label",
   // states
+  compact: "pe-control--compact",
   disabled: "pe-control--disabled",
   inactive: "pe-control--inactive",
   large: "pe-control--large",
@@ -191,28 +192,27 @@ var alignSide = function alignSide(isRTL) {
 
 
 var alignLeft = alignSide(false);
-var alignRight = alignSide(true);
-
-var makeSize = function makeSize(vars$$1, height) {
-  var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
-  var labelSize = iconSize + vars$$1.label_height;
-  var iconOffset = (labelSize - iconSize) / 2;
-  return {
-    " .pe-control__form-label": {
-      height: height + "px"
-    },
-    " .pe-control__box": {
-      width: iconSize + "px",
-      height: iconSize + "px"
-    },
-    " .pe-button__content": {
-      width: labelSize + "px",
-      height: labelSize + "px",
-      flexShrink: 0,
-      " .pe-icon": [mixin.fit(iconOffset)]
-    }
-  };
-};
+var alignRight = alignSide(true); // const makeSize = (vars, height, iconSize = themeVars.unit_icon_size) => {
+//   const labelSize = iconSize + vars.label_height;
+//   const iconOffset = (labelSize - iconSize) / 2;
+//   return {
+//     " .pe-control__form-label": {
+//       height: height + "px"
+//     },
+//     " .pe-control__box": {
+//       width: iconSize + "px",
+//       height: iconSize + "px"
+//     },
+//     " .pe-button__content": {
+//       width: labelSize + "px",
+//       height: labelSize + "px",
+//       flexShrink: 0,
+//       " .pe-icon": [
+//         mixin.fit(iconOffset)
+//       ]
+//     }
+//   };
+// };
 
 var activeButton = function activeButton() {
   return {
@@ -308,6 +308,7 @@ var varFns = {
         }
       },
       " .pe-button__content": {
+        flexShrink: 0,
         " .pe-icon": {
           position: "absolute"
         }
@@ -322,16 +323,17 @@ var varFns = {
     })];
   },
   label_height: function label_height(selector, vars$$1) {
-    return [sel(selector, {
-      " .pe-control__box": {
-        width: vars$$1.label_height + "px",
-        height: vars$$1.label_height + "px"
-      },
-      ".pe-control--small": makeSize(vars$$1, vars.unit_icon_size_small, vars.unit_icon_size_small),
-      ".pe-control--regular": makeSize(vars$$1, vars$$1.label_height, vars.unit_icon_size),
-      ".pe-control--medium": makeSize(vars$$1, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-      ".pe-control--large": makeSize(vars$$1, vars.unit_icon_size_large, vars.unit_icon_size_large)
-    })];
+    return [// sel(selector, {
+      //   " .pe-control__box": {
+      //     width: vars.label_height + "px",
+      //     height: vars.label_height + "px",
+      //   },
+      //   ".pe-control--small": makeSize(vars, themeVars.unit_icon_size_small, themeVars.unit_icon_size_small),
+      //   ".pe-control--regular": makeSize(vars, vars.label_height, themeVars.unit_icon_size),
+      //   ".pe-control--medium": makeSize(vars, themeVars.unit_icon_size_medium, themeVars.unit_icon_size_medium),
+      //   ".pe-control--large": makeSize(vars, themeVars.unit_icon_size_large, themeVars.unit_icon_size_large),
+      // })
+    ];
   },
   animation_duration: function animation_duration(selector, vars$$1) {
     return [sel(selector, {
@@ -361,11 +363,13 @@ var vars$1 = {
   general_styles: true,
   animation_duration: vars.animation_duration,
   button_size: 6 * vars.grid_unit_component,
+  // 48
+  label_height: 5 * vars.grid_unit_component,
+  // 40
   icon_size: 3 * vars.grid_unit_component,
+  // 24
   label_font_size: 2 * vars.grid_unit_component,
   // 16
-  label_height: 3 * vars.grid_unit_component,
-  // 24
   label_padding_after: 0,
   label_padding_before: vars.grid_unit * 4,
   // 16

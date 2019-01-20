@@ -131,7 +131,6 @@ var Conditional = {
 // @ts-check
 
 /**
- * 
  * @param {string} component 
  * @param {object} params
  * @param {string} [params.option]
@@ -146,10 +145,19 @@ var deprecation = function deprecation(component, _ref) {
       newComponent = _ref.newComponent,
       since = _ref.since;
   var version = since ? "Since version ".concat(since, ".") : "";
-  return option && console.warn("".concat(component, ": option '").concat(option, "' is deprecated and will be removed in later versions. Use '").concat(newOption, "' instead. ").concat(version)), // eslint-disable-line no-console
-  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component '").concat(newComponent, "' instead. ").concat(version)), // eslint-disable-line no-console
-  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component '").concat(newComponent, "' with option '").concat(newOption, "' instead. ").concat(version)) // eslint-disable-line no-console
+  return option && console.warn("".concat(component, ": option \"").concat(option, "\" is deprecated and will be removed in later versions. Use \"").concat(newOption, "\" instead. ").concat(version)), // eslint-disable-line no-console
+  newComponent && !newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component \"").concat(newComponent, "\" instead. ").concat(version)), // eslint-disable-line no-console
+  newComponent && newOption && console.warn("".concat(component, ": this component is deprecated and will be removed in later versions. Use component \"").concat(newComponent, "\" with option \"").concat(newOption, "\" instead. ").concat(version)) // eslint-disable-line no-console
   ;
+};
+/**
+ * 
+ * @param {string} component 
+ * @param {Array<string>} vars 
+ */
+
+var requiredVars = function requiredVars(component, vars) {
+  console.warn("".concat(component, ": required variables: ").concat(vars.join(", "), ".")); // eslint-disable-line no-console
 };
 
 // @ts-check
@@ -965,7 +973,7 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _objectSpread({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+  var opts2 = _objectSpread({}, opts1, transitions ? transitions[isShow ? "show" : "hide"](opts1) : undefined);
 
   var opts3 = _objectSpread({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
@@ -991,4 +999,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Conditional as coreConditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };
+export { Conditional as coreConditional, deprecation, requiredVars, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };

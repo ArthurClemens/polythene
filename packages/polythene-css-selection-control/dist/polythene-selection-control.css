@@ -78,6 +78,10 @@
   pointer-events: none
 }
 
+.pe-control .pe-button__content {
+  flex-shrink: 0
+}
+
 .pe-control .pe-button__content .pe-icon {
   position: absolute
 }
@@ -110,103 +114,6 @@
 
 .pe-control .pe-control__form-label {
   font-size: 16px
-}
-
-.pe-control .pe-control__box {
-  width: 24px;
-  height: 24px
-}
-
-.pe-control.pe-control--small .pe-control__form-label {
-  height: 16px
-}
-
-.pe-control.pe-control--small .pe-control__box {
-  width: 16px;
-  height: 16px
-}
-
-.pe-control.pe-control--small .pe-button__content {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0
-}
-
-.pe-control.pe-control--small .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-control.pe-control--regular .pe-control__form-label {
-  height: 24px
-}
-
-.pe-control.pe-control--regular .pe-control__box {
-  width: 24px;
-  height: 24px
-}
-
-.pe-control.pe-control--regular .pe-button__content {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0
-}
-
-.pe-control.pe-control--regular .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-control.pe-control--medium .pe-control__form-label {
-  height: 32px
-}
-
-.pe-control.pe-control--medium .pe-control__box {
-  width: 32px;
-  height: 32px
-}
-
-.pe-control.pe-control--medium .pe-button__content {
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0
-}
-
-.pe-control.pe-control--medium .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-control.pe-control--large .pe-control__form-label {
-  height: 40px
-}
-
-.pe-control.pe-control--large .pe-control__box {
-  width: 40px;
-  height: 40px
-}
-
-.pe-control.pe-control--large .pe-button__content {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0
-}
-
-.pe-control.pe-control--large .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
 }
 
 .pe-control .pe-control__label {

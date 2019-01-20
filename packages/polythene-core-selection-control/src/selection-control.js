@@ -86,6 +86,7 @@ export const createProps = (vnode, { keys: k }) => {
         checked ? classes.on : classes.off,
         attrs.disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
+        attrs.compact ? classes.compact : null,
         classForSize(classes, attrs.size),
         attrs.tone === "dark" ? "pe-dark-tone" : null,
         attrs.tone === "light" ? "pe-light-tone" : null,
@@ -100,7 +101,6 @@ export const createContent = (vnode, { renderer: h, keys: k, ViewControl }) => {
   const attrs = vnode.attrs;
   const { checked, inactive } = currentState(attrs, state);
   
-
   return h("label",
     Object.assign(
       {},

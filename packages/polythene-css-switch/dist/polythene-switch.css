@@ -12,91 +12,14 @@
   transition-property: all
 }
 
-.pe-switch-control .pe-control__box {
-  width: 24px;
-  height: 24px
-}
-
-.pe-switch-control.pe-control--small .pe-control__box {
-  width: 16px;
-  height: 16px
-}
-
-.pe-switch-control.pe-control--small .pe-button__content {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0
-}
-
-.pe-switch-control.pe-control--small .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-switch-control.pe-control--regular .pe-control__box {
-  width: 24px;
-  height: 24px
-}
-
-.pe-switch-control.pe-control--regular .pe-button__content {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0
-}
-
-.pe-switch-control.pe-control--regular .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-switch-control.pe-control--medium .pe-control__box {
-  width: 32px;
-  height: 32px
-}
-
-.pe-switch-control.pe-control--medium .pe-button__content {
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0
-}
-
-.pe-switch-control.pe-control--medium .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
-}
-
-.pe-switch-control.pe-control--large .pe-control__box {
-  width: 40px;
-  height: 40px
-}
-
-.pe-switch-control.pe-control--large .pe-button__content {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0
-}
-
-.pe-switch-control.pe-control--large .pe-button__content .pe-icon {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  left: 12px
+.pe-switch-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
 }
 
 .pe-switch-control .pe-switch-control__track {
-  left: 0;
-  right: auto;
-  position: absolute
+  position: relative
 }
 
 .pe-switch-control .pe-switch-control__thumb {
@@ -111,7 +34,8 @@
 
 .pe-switch-control .pe-switch-control__knob {
   position: relative;
-  border-radius: 50%
+  border-radius: 50%;
+  flex-shrink: 0
 }
 
 .pe-switch-control .pe-icon-button .pe-button__content {
@@ -154,34 +78,28 @@
 }
 
 .pe-switch-control.pe-control--small .pe-control__form-label {
-  height: 16px;
   min-width: 24px
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__track {
-  height: 8px;
+  height: 9px;
   width: 23.4px;
-  top: 4px;
-  border-radius: 8px
+  border-radius: 9px
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__thumb {
-  top: -12px
+  top: -17.5px
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__knob {
-  width: 12px;
-  height: 12px;
-  margin: 2px
+  width: 13px;
+  height: 13px
 }
 
 .pe-switch-control.pe-control--small .pe-button__content {
-  padding: 12px
-}
-
-.pe-switch-control.pe-control--small .pe-control__label {
-  padding-left: 37.33333333333333px;
-  padding-right: 0
+  padding: 0;
+  width: auto;
+  height: auto
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__track {
@@ -190,44 +108,38 @@
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__thumb {
-  left: -14px;
+  left: -15px;
   right: auto
 }
 
 .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb {
-  left: -2px;
+  left: -4px;
   right: auto
 }
 
 .pe-switch-control.pe-control--regular .pe-control__form-label {
-  height: 24px;
   min-width: 36px
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__track {
   height: 14px;
   width: 35.4px;
-  top: 5px;
   border-radius: 14px
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
-  top: -12px
+  top: -15px
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__knob {
   width: 20px;
-  height: 20px;
-  margin: 2px
+  height: 20px
 }
 
 .pe-switch-control.pe-control--regular .pe-button__content {
-  padding: 12px
-}
-
-.pe-switch-control.pe-control--regular .pe-control__label {
-  padding-left: 52px;
-  padding-right: 0
+  padding: 0;
+  width: auto;
+  height: auto
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__track {
@@ -236,44 +148,38 @@
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
-  left: -14px;
+  left: -12px;
   right: auto
 }
 
 .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb {
-  left: 2px;
+  left: 4px;
   right: auto
 }
 
 .pe-switch-control.pe-control--medium .pe-control__form-label {
-  height: 32px;
   min-width: 48px
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__track {
-  height: 18px;
+  height: 18.5px;
   width: 47.4px;
-  top: 7px;
-  border-radius: 18px
+  border-radius: 18.5px
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
-  top: -12px
+  top: -13px
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__knob {
-  width: 26px;
-  height: 26px;
-  margin: 3px
+  width: 26.5px;
+  height: 26.5px
 }
 
 .pe-switch-control.pe-control--medium .pe-button__content {
-  padding: 12px
-}
-
-.pe-switch-control.pe-control--medium .pe-control__label {
-  padding-left: 66.66666666666666px;
-  padding-right: 0
+  padding: -9.5px;
+  width: auto;
+  height: auto
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__track {
@@ -282,44 +188,38 @@
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
-  left: -15px;
+  left: -9px;
   right: auto
 }
 
 .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb {
-  left: 7px;
+  left: 12px;
   right: auto
 }
 
 .pe-switch-control.pe-control--large .pe-control__form-label {
-  height: 40px;
   min-width: 60px
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__track {
-  height: 22px;
+  height: 23px;
   width: 59.4px;
-  top: 9px;
-  border-radius: 22px
+  border-radius: 23px
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__thumb {
-  top: -12px
+  top: -10.5px
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__knob {
-  width: 32px;
-  height: 32px;
-  margin: 4px
+  width: 33px;
+  height: 33px
 }
 
 .pe-switch-control.pe-control--large .pe-button__content {
-  padding: 12px
-}
-
-.pe-switch-control.pe-control--large .pe-control__label {
-  padding-left: 81.33333333333334px;
-  padding-right: 0
+  padding: -23px;
+  width: auto;
+  height: auto
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__track {
@@ -328,23 +228,13 @@
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__thumb {
-  left: -16px;
+  left: -5px;
   right: auto
 }
 
 .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
-  left: 12px;
+  left: 22px;
   right: auto
-}
-
-.pe-rtl .pe-switch-control .pe-switch-control__track,[dir=rtl] .pe-switch-control .pe-switch-control__track {
-  right: 0;
-  left: auto
-}
-
-.pe-rtl .pe-switch-control.pe-control--small .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--small .pe-control__label {
-  padding-right: 37.33333333333333px;
-  padding-left: 0
 }
 
 .pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__track {
@@ -353,18 +243,13 @@
 }
 
 .pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__thumb {
-  right: -14px;
+  right: -15px;
   left: auto
 }
 
 .pe-rtl .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb {
-  right: -2px;
+  right: -4px;
   left: auto
-}
-
-.pe-rtl .pe-switch-control.pe-control--regular .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--regular .pe-control__label {
-  padding-right: 52px;
-  padding-left: 0
 }
 
 .pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__track {
@@ -373,18 +258,13 @@
 }
 
 .pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
-  right: -14px;
+  right: -12px;
   left: auto
 }
 
 .pe-rtl .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb {
-  right: 2px;
+  right: 4px;
   left: auto
-}
-
-.pe-rtl .pe-switch-control.pe-control--medium .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--medium .pe-control__label {
-  padding-right: 66.66666666666666px;
-  padding-left: 0
 }
 
 .pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__track {
@@ -393,18 +273,13 @@
 }
 
 .pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
-  right: -15px;
+  right: -9px;
   left: auto
 }
 
 .pe-rtl .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb {
-  right: 7px;
+  right: 12px;
   left: auto
-}
-
-.pe-rtl .pe-switch-control.pe-control--large .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--large .pe-control__label {
-  padding-right: 81.33333333333334px;
-  padding-left: 0
 }
 
 .pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__track {
@@ -413,12 +288,12 @@
 }
 
 .pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__thumb {
-  right: -16px;
+  right: -5px;
   left: auto
 }
 
 .pe-rtl .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
-  right: 12px;
+  right: 22px;
   left: auto
 }
 

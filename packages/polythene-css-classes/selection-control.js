@@ -8,6 +8,7 @@ export default {
   label:     "pe-control__label",
 
   // states
+  compact:   "pe-control--compact",
   disabled:  "pe-control--disabled",
   inactive:  "pe-control--inactive",
   large:     "pe-control--large",

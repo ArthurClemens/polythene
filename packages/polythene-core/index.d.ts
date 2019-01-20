@@ -71,6 +71,11 @@ export type Content = object | any;
    */
   export function deprecation(component: string, { option, newOption, newComponent, message, since } : { option?: string, newOption?: string, newComponent?: string, message?: string, since?: string } ) : void;
 
+  /**
+   * Creates console warnings for missing vars passed to a style function.
+   */
+  export function requiredVars(component: string, vars: Array<string>) : void;
+
 /* developer.js END */
 
 

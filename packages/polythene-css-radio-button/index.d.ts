@@ -1,8 +1,8 @@
 
 import { StyleObject, StyleFn, Scoping } from "polythene-core-css";
+import { SelectionControlVars } from "polythene-css-selection-control";
 
-export interface RadioButtonVars {
-  general_styles: boolean,
+export interface RadioButtonVars extends Partial<SelectionControlVars> {
 }
 
 export const vars: RadioButtonVars;

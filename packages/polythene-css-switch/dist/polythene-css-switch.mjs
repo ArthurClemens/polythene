@@ -1,5 +1,5 @@
 import { createColor, sel, createLayout, mixin, rgba, styler } from 'polythene-core-css';
-import { layout, vars as vars$2 } from 'polythene-css-selection-control';
+import { layout } from 'polythene-css-selection-control';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-css-icon-button';
 
@@ -268,40 +268,41 @@ var color = createColor({
   }
 });
 
+var MIN_BUTTON_SIZE = 44;
+
 var transition = function transition(vars$$1, properties) {
   var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars$$1.animation_duration;
   return mixin.defaultTransition(properties, duration, "ease-out");
 };
 
+var roundToEven = function roundToEven(num) {
+  return 0.5 * Math.floor(num * 2);
+};
+
 var getSizeData = function getSizeData(vars$$1, size) {
   var factor = size / vars.unit_icon_size;
-  var thumbSize = Math.floor(0.5 * vars$$1.thumb_size * factor) * 2; // round to even
-
-  var scaledTrackHeight = Math.floor(0.5 * vars$$1.track_height * factor) * 2; // round to even
-
-  var scaledTrackWidth = Math.floor(0.5 * vars$$1.track_length * factor) * 2;
-  var scaledThumbSize = Math.floor(0.5 * vars$$1.thumb_size * factor) * 2;
-  var trackTop = (vars$$1.label_height * factor - scaledTrackHeight) / 2;
-  var thumbPadding = vars$$1.icon_button_padding;
-  var thumbMargin = (size - scaledThumbSize) / 2;
-  var thumbOuterSize = size + 2 * thumbPadding;
-  var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
-  var thumbOffsetMax = thumbOffsetMin + scaledTrackWidth - thumbSize;
-  var thumbOffsetY = thumbOffsetMin + thumbMargin;
+  var thumbSize = vars$$1.thumb_size * factor;
+  var scaledTrackHeight = vars$$1.track_height * factor;
+  var scaledTrackWidth = vars$$1.track_length * factor;
+  var scaledThumbSize = vars$$1.thumb_size * factor;
+  var thumbOuterSize = Math.max(MIN_BUTTON_SIZE, scaledThumbSize);
+  var thumbPadding = Math.min(0, thumbOuterSize - 2 * scaledThumbSize);
+  var thumbOffsetMin = Math.round(-(thumbOuterSize / 2) + thumbSize / 2);
+  var thumbOffsetMax = Math.round(thumbOffsetMin + scaledTrackWidth - thumbSize);
+  console.log("thumbOuterSize", thumbOuterSize, "thumbPadding", thumbPadding);
+  var thumbOffsetY = -thumbOuterSize / 2 + scaledTrackHeight / 2;
   var trackVisualOffset = 0.3; // prevent sub pixel of track to shine through knob border
 
   return {
     factor: factor,
-    scaledThumbSize: scaledThumbSize,
-    scaledTrackHeight: scaledTrackHeight,
-    scaledTrackWidth: scaledTrackWidth,
+    scaledThumbSize: roundToEven(scaledThumbSize),
+    scaledTrackHeight: roundToEven(scaledTrackHeight),
+    scaledTrackWidth: roundToEven(scaledTrackWidth),
     size: size,
-    thumbMargin: thumbMargin,
-    thumbOffsetMax: thumbOffsetMax,
-    thumbOffsetMin: thumbOffsetMin,
-    thumbOffsetY: thumbOffsetY,
-    thumbPadding: thumbPadding,
-    trackTop: trackTop,
+    thumbOffsetMax: roundToEven(thumbOffsetMax),
+    thumbOffsetMin: roundToEven(thumbOffsetMin),
+    thumbOffsetY: roundToEven(thumbOffsetY),
+    thumbPadding: roundToEven(thumbPadding),
     trackVisualOffset: trackVisualOffset
   };
 };
@@ -310,21 +311,16 @@ var customSize = function customSize(vars$$1, _ref) {
   var scaledThumbSize = _ref.scaledThumbSize,
       scaledTrackHeight = _ref.scaledTrackHeight,
       scaledTrackWidth = _ref.scaledTrackWidth,
-      size = _ref.size,
-      thumbMargin = _ref.thumbMargin,
       thumbOffsetY = _ref.thumbOffsetY,
       thumbPadding = _ref.thumbPadding,
-      trackTop = _ref.trackTop,
       trackVisualOffset = _ref.trackVisualOffset;
   return {
     " .pe-control__form-label": {
-      height: size + "px",
       minWidth: scaledTrackWidth + "px"
     },
     " .pe-switch-control__track": {
       height: scaledTrackHeight + "px",
       width: scaledTrackWidth - 2 * trackVisualOffset + "px",
-      top: trackTop + "px",
       borderRadius: scaledTrackHeight + "px"
     },
     " .pe-switch-control__thumb": {
@@ -332,25 +328,23 @@ var customSize = function customSize(vars$$1, _ref) {
     },
     " .pe-switch-control__knob": {
       width: scaledThumbSize + "px",
-      height: scaledThumbSize + "px",
-      margin: thumbMargin + "px"
+      height: scaledThumbSize + "px"
     },
     " .pe-button__content": {
-      padding: thumbPadding + "px"
+      padding: thumbPadding + "px",
+      width: "auto",
+      height: "auto"
     }
   };
 };
 
 var customSpacing = function customSpacing(vars$$1, _ref2, isRTL) {
-  var _peControl__label, _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
+  var _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
 
-  var factor = _ref2.factor,
-      scaledTrackWidth = _ref2.scaledTrackWidth,
-      thumbOffsetMax = _ref2.thumbOffsetMax,
+  var thumbOffsetMax = _ref2.thumbOffsetMax,
       thumbOffsetMin = _ref2.thumbOffsetMin,
       trackVisualOffset = _ref2.trackVisualOffset;
   return {
-    " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars$$1.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
     " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
     " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
     ".pe-control--on": {
@@ -358,19 +352,6 @@ var customSpacing = function customSpacing(vars$$1, _ref2, isRTL) {
     }
   };
 };
-
-var alignSide = function alignSide(isRTL) {
-  return function () {
-    var _peSwitchControl_4;
-
-    return {
-      " .pe-switch-control__track": (_peSwitchControl_4 = {}, _defineProperty(_peSwitchControl_4, isRTL ? "right" : "left", 0), _defineProperty(_peSwitchControl_4, isRTL ? "left" : "right", "auto"), _peSwitchControl_4)
-    };
-  };
-};
-
-var alignLeft = alignSide(false);
-var alignRight = alignSide(true);
 
 var createSize = function createSize(selector, vars$$1) {
   var sizeData = {
@@ -384,7 +365,7 @@ var createSize = function createSize(selector, vars$$1) {
     ".pe-control--regular": [customSize(vars$$1, sizeData.regular), customSpacing(vars$$1, sizeData.regular, false)],
     ".pe-control--medium": [customSize(vars$$1, sizeData.medium), customSpacing(vars$$1, sizeData.medium, false)],
     ".pe-control--large": [customSize(vars$$1, sizeData.large), customSpacing(vars$$1, sizeData.large, false)]
-  }), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(), {
+  }), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [{
     ".pe-control--small": [customSpacing(vars$$1, sizeData.small, true)],
     ".pe-control--regular": [customSpacing(vars$$1, sizeData.regular, true)],
     ".pe-control--medium": [customSpacing(vars$$1, sizeData.medium, true)],
@@ -394,10 +375,13 @@ var createSize = function createSize(selector, vars$$1) {
 
 var varFns = {
   general_styles: function general_styles(selector) {
-    return [sel(selector, [alignLeft(), {
-      " .pe-switch-control__track": [{
-        position: "absolute"
-      }],
+    return [sel(selector, [{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      " .pe-switch-control__track": {
+        position: "relative"
+      },
       " .pe-switch-control__thumb": {
         position: "absolute",
         zIndex: 1,
@@ -409,7 +393,8 @@ var varFns = {
       },
       " .pe-switch-control__knob": {
         position: "relative",
-        borderRadius: "50%"
+        borderRadius: "50%",
+        flexShrink: 0
       },
       " .pe-icon-button .pe-button__content": {
         transition: "none",
@@ -437,6 +422,11 @@ var varFns = {
       }
     })];
   },
+  height: function height(selector, vars$$1) {
+    return [vars$$1.height && sel(selector, {
+      height: vars$$1.height + "px"
+    })];
+  },
   animation_duration: function animation_duration(selector, vars$$1) {
     return [sel(selector, {
       " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars$$1, "all")
@@ -446,7 +436,7 @@ var varFns = {
 };
 
 var withCreateSizeVar = function withCreateSizeVar(vars$$1) {
-  return vars$$1.thumb_size || vars$$1.track_height || vars$$1.track_length || vars$$1.label_height || vars$$1.icon_button_padding ? _extends({}, vars$$1, {
+  return vars$$1.thumb_size || vars$$1.track_height || vars$$1.track_length || vars$$1.icon_button_padding ? _extends({}, vars$$1, {
     createSize: true
   }) : vars$$1;
 };
@@ -464,6 +454,7 @@ var layout$1 = createLayout({
 
 var switchVars = {
   general_styles: true,
+  height: undefined,
   animation_duration: vars.animation_duration,
   hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2,
   // 12
@@ -472,7 +463,6 @@ var switchVars = {
   thumb_size: 20,
   track_height: 14,
   track_length: 36,
-  label_height: vars$2.label_height,
   color_light_thumb_on: rgba(vars.color_primary),
   color_light_thumb_off: "#f1f1f1",
   color_light_thumb_disabled: "#eee",

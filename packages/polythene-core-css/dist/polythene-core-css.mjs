@@ -1548,7 +1548,7 @@ var createStyle = function createStyle(_ref2) {
 
   var baseLayout = superStyle !== undefined ? customVars !== undefined ? superStyle(selector, componentVars, customVars) : superStyle(selector, otherVars) : [];
 
-  var fns = _objectSpread({}, customVars ? customVarFns : {}, varFns);
+  var fns = _objectSpread({}, customVars ? customVarFns : undefined, varFns);
 
   return baseLayout.concat(Object.keys(varMixin(currentVars)).map(function (v) {
     return fns && fns[v] !== undefined ? fns[v](scopedSelector, allVars) : null;

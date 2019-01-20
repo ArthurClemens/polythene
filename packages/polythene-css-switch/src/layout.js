@@ -4,35 +4,37 @@ import { layout as superLayout } from "polythene-css-selection-control";
 import { mixin, sel, createLayout } from "polythene-core-css";
 import { vars as themeVars } from "polythene-theme";
 
+const MIN_BUTTON_SIZE = 44;
+
 const transition = (vars, properties, duration = vars.animation_duration) =>
   mixin.defaultTransition(properties, duration, "ease-out");
 
+const roundToEven = num =>
+  0.5 * Math.floor(num * 2);
+
 const getSizeData = (vars, size) => {
   const factor = size / themeVars.unit_icon_size;
-  const thumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2; // round to even
-  const scaledTrackHeight = Math.floor(0.5 * vars.track_height * factor) * 2; // round to even
-  const scaledTrackWidth = Math.floor(0.5 * vars.track_length * factor) * 2;
-  const scaledThumbSize = Math.floor(0.5 * vars.thumb_size * factor) * 2;
-  const trackTop = ((vars.label_height * factor - scaledTrackHeight) / 2);
-  const thumbPadding = vars.icon_button_padding;
-  const thumbMargin = (size - scaledThumbSize) / 2;
-  const thumbOuterSize = size + 2 * thumbPadding;
-  const thumbOffsetMin = -(thumbOuterSize / 2) + (thumbSize / 2);
-  const thumbOffsetMax = thumbOffsetMin + scaledTrackWidth - thumbSize;
-  const thumbOffsetY = thumbOffsetMin + thumbMargin;
+  const thumbSize = vars.thumb_size * factor;
+  const scaledTrackHeight = vars.track_height * factor;
+  const scaledTrackWidth = vars.track_length * factor;
+  const scaledThumbSize = vars.thumb_size * factor;
+  const thumbOuterSize = Math.max(MIN_BUTTON_SIZE, scaledThumbSize);
+  const thumbPadding = Math.min(0, (thumbOuterSize - 2 * scaledThumbSize));
+  const thumbOffsetMin = Math.round(-(thumbOuterSize / 2) + (thumbSize / 2));
+  const thumbOffsetMax = Math.round(thumbOffsetMin + scaledTrackWidth - thumbSize);
+  console.log("thumbOuterSize", thumbOuterSize, "thumbPadding", thumbPadding);
+  const thumbOffsetY = (-thumbOuterSize / 2) + (scaledTrackHeight / 2);
   const trackVisualOffset = 0.3; // prevent sub pixel of track to shine through knob border
   return {
     factor,
-    scaledThumbSize,
-    scaledTrackHeight,
-    scaledTrackWidth,
+    scaledThumbSize: roundToEven(scaledThumbSize),
+    scaledTrackHeight: roundToEven(scaledTrackHeight),
+    scaledTrackWidth: roundToEven(scaledTrackWidth),
     size,
-    thumbMargin,
-    thumbOffsetMax,
-    thumbOffsetMin,
-    thumbOffsetY,
-    thumbPadding,
-    trackTop,
+    thumbOffsetMax: roundToEven(thumbOffsetMax),
+    thumbOffsetMin: roundToEven(thumbOffsetMin),
+    thumbOffsetY: roundToEven(thumbOffsetY),
+    thumbPadding: roundToEven(thumbPadding),
     trackVisualOffset,
   };
 };
@@ -43,22 +45,17 @@ const customSize = (
     scaledThumbSize,
     scaledTrackHeight,
     scaledTrackWidth,
-    size,
-    thumbMargin,
     thumbOffsetY,
     thumbPadding,
-    trackTop,
     trackVisualOffset,
   }) => {
   return {
     " .pe-control__form-label": {
-      height: size + "px",
       minWidth: scaledTrackWidth + "px",
     },
     " .pe-switch-control__track": {
       height: scaledTrackHeight + "px",
       width: (scaledTrackWidth - 2 * trackVisualOffset) + "px",
-      top: trackTop + "px",
       borderRadius: scaledTrackHeight + "px"
     },
     " .pe-switch-control__thumb": {
@@ -67,10 +64,11 @@ const customSize = (
     " .pe-switch-control__knob": {
       width: scaledThumbSize + "px",
       height: scaledThumbSize + "px",
-      margin: thumbMargin + "px"
     },
     " .pe-button__content": {
-      padding: thumbPadding + "px"
+      padding: thumbPadding + "px",
+      width: "auto",
+      height: "auto"
     }
   };
 };
@@ -78,18 +76,12 @@ const customSize = (
 const customSpacing = (
   vars,
   {
-    factor,
-    scaledTrackWidth,
     thumbOffsetMax,
     thumbOffsetMin,
     trackVisualOffset,
   },
   isRTL) => {
   return {
-    " .pe-control__label": {
-      [isRTL ? "paddingRight" : "paddingLeft"]: (vars.padding * factor + 8 + scaledTrackWidth) + "px",
-      [isRTL ? "paddingLeft" : "paddingRight"]: 0
-    },
     " .pe-switch-control__track": {
       [isRTL ? "right" : "left"]: trackVisualOffset + "px",
       [isRTL ? "left" : "right"]: "auto"
@@ -106,15 +98,6 @@ const customSpacing = (
     }
   };
 };
-
-const alignSide = isRTL => () => ({
-  " .pe-switch-control__track": {
-    [isRTL ? "right" : "left"]: 0,
-    [isRTL ? "left" : "right"]: "auto"
-  }
-});
-const alignLeft = alignSide(false);
-const alignRight = alignSide(true);
 
 const createSize = (selector, vars) => {
   const sizeData = {
@@ -145,7 +128,6 @@ const createSize = (selector, vars) => {
     {
       // RTL
       [`*[dir=rtl] ${selector}, .pe-rtl ${selector}`]: [
-        alignRight(),
         {
           ".pe-control--small":   [
             customSpacing(vars, sizeData.small, true)
@@ -168,13 +150,14 @@ const createSize = (selector, vars) => {
 const varFns = {
   general_styles: selector => [
     sel(selector, [
-      alignLeft(),
       {
-        " .pe-switch-control__track": [
-          {
-            position: "absolute",
-          }
-        ],
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        
+        " .pe-switch-control__track": {
+          position: "relative"
+        },
 
         " .pe-switch-control__thumb": {
           position: "absolute",
@@ -188,7 +171,8 @@ const varFns = {
 
         " .pe-switch-control__knob": {
           position: "relative",
-          borderRadius: "50%"
+          borderRadius: "50%",
+          flexShrink: 0,
         },
 
         " .pe-icon-button .pe-button__content": {
@@ -226,6 +210,11 @@ const varFns = {
       }
     }
   ],
+  height: (selector, vars) => [
+    vars.height && sel(selector, {
+      height: vars.height + "px",
+    })
+  ],
   animation_duration: (selector, vars) => [
     sel(selector, {
       " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
@@ -235,7 +224,7 @@ const varFns = {
 };
 
 const withCreateSizeVar = vars =>
-  (vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding)
+  (vars.thumb_size || vars.track_height || vars.track_length || vars.icon_button_padding)
     ? Object.assign({}, vars, {
       createSize: true
     })

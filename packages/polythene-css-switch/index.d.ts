@@ -1,8 +1,10 @@
 
 import { StyleObject, StyleFn, Scoping } from "polythene-core-css";
+import { SelectionControlVars } from "polythene-css-selection-control";
 
-export interface SwitchVars {
+export interface SwitchVars extends Partial<SelectionControlVars>{
   general_styles:                     boolean,
+  height:                             number | undefined,
   animation_duration:                 number,
   hit_area_padding:                   number,
   icon_button_padding:                number,
@@ -10,7 +12,6 @@ export interface SwitchVars {
   thumb_size:                         number,
   track_height:                       number,
   track_length:                       number,
-  label_height:                       number,
   color_light_thumb_on:               string,
   color_light_thumb_off:              string,
   color_light_thumb_disabled:         string,

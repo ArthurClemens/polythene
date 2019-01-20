@@ -1,5 +1,6 @@
 import { createColor, createLayout, styler } from 'polythene-core-css';
-import { color, layout } from 'polythene-css-selection-control';
+import { color, layout, vars as vars$1 } from 'polythene-css-selection-control';
+import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-radio-control"
@@ -26,16 +27,15 @@ var layout$1 = createLayout({
 });
 
 // @ts-check
-
-/**
- * @typedef {import("../index").RadioButtonVars} RadioButtonVars
- */
-
 /**
  * @type {RadioButtonVars} radioButtonVars
  */
+
 var radioButtonVars = {
-  general_styles: true
+  general_styles: true,
+  button_size: 5 * vars.grid_unit_component,
+  // 40
+  icon_size: vars$1.icon_size
 };
 
 // @ts-check

@@ -1,5 +1,5 @@
 export { Conditional as coreConditional } from "./Conditional";
-export { deprecation } from "./developer";
+export { deprecation, requiredVars } from "./developer";
 export { filterSupportedAttributes, unpackAttrs, classForSize } from "./attrs";
 export { getAnimationEndEvent } from "./animation-event";
 export { getStyle, stylePropCompare, isRTL, styleDurationToMs } from "./style";

@@ -20,8 +20,8 @@ import { rgba } from "polythene-core-css";
 import { vars as superVars } from "polythene-css-base-spinner";
 import { vars } from "polythene-theme";
  
-const arc_size =          270; // degrees - amount of circle the arc takes up
-const arc_time =          1.333; // s - time it takes to expand and contract arc
+const arc_size =          270;       // degrees - amount of circle the arc takes up
+const arc_time =          1.333;     // s - time it takes to expand and contract arc
 const arc_start_degrees = 360/5 * 3; // degrees - how much the start location of the arc should rotate each time, 216 gives us a 5 pointed star shape (it"s 360/5 * 3). For a 7 pointed star, we might do 360/7 * 3 = 154.286.
 const rotation_duration = 360 * arc_time / (arc_start_degrees + (360 - arc_size)); // 1.568s
 

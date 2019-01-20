@@ -12,6 +12,10 @@ export default ({ Switch, Icon, Button, renderer: h, keys: k }) => {
   const orange = "#ef6c00";
   const blue = "#2196F3";
   
+  SwitchCSS.addStyle(".tests-switch-height", {
+    height: 50,
+  });
+
   SwitchCSS.addStyle(".tests-switch-themed-switch-color", {
     color_light_thumb_off: blue,
     color_light_thumb_on:  blue,
@@ -52,6 +56,14 @@ export default ({ Switch, Icon, Button, renderer: h, keys: k }) => {
   );
 
   return [
+    {
+      name: "TEST HEIGHT",
+      component: Switch,
+      attrs: {
+        label: "Label",
+        className: "tests-switch-height"
+      }
+    },
     {
       name: "No options",
       component: Switch

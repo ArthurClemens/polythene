@@ -37,13 +37,9 @@ export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
       {
         className: classes.track,
         key: "track"
-      }
-    ),
-    h(IconButton, Object.assign(
-      {},
-      {
+      },
+      h(IconButton, {
         className: classes.thumb,
-        key: "button",
         content: h("div",
           { className: classes.knob },
           [
@@ -62,9 +58,9 @@ export const createContent = (vnode, { renderer: h, Shadow, IconButton }) => {
         disabled: attrs.disabled,
         events: attrs.events,
         ink: attrs.ink || false,
-        inactive: attrs.inactive
-      },
-      attrs.iconButton
-    ))
+        inactive: attrs.inactive,
+        ...attrs.iconButton
+      })
+    )
   ];
 };

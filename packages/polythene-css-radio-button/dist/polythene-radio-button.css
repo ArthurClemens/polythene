@@ -1,3 +1,15 @@
+.pe-radio-control .pe-button.pe-control__button {
+  top: -8px;
+  left: -8px;
+  right: auto
+}
+
+.pe-rtl .pe-radio-control .pe-button.pe-control__button,[dir=rtl] .pe-radio-control .pe-button.pe-control__button {
+  top: -8px;
+  right: -8px;
+  left: auto
+}
+
 .pe-radio-group {
   display: flex
 }

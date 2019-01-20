@@ -14,14 +14,11 @@ const icons = {
 
 export const createProps = vnode => {
   const attrs = vnode.attrs;
-  return Object.assign(
-    {},
-    attrs,
-    {
-      icons,
-      selectable: attrs.selectable || (selected => !selected), // default: only selectable when not checked
-      instanceClass: classes.component,
-      type: "radio"
-    }
-  );
+  return {
+    icons,
+    ...attrs,
+    selectable: attrs.selectable || (selected => !selected), // default: only selectable when not checked
+    instanceClass: classes.component,
+    type: "radio",
+  };
 };

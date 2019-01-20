@@ -40,6 +40,7 @@ var classes = {
   input: "pe-control__input",
   label: "pe-control__label",
   // states
+  compact: "pe-control--compact",
   disabled: "pe-control--disabled",
   inactive: "pe-control--inactive",
   large: "pe-control--large",
@@ -134,7 +135,7 @@ var createProps = function createProps(vnode, _ref2) {
 
   return _extends({}, filterSupportedAttributes(attrs), {
     className: [classes.component, attrs.instanceClass, // for instance pe-checkbox-control
-    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    checked ? classes.on : classes.off, attrs.disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.compact ? classes.compact : null, classForSize(classes, attrs.size), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
 var createContent = function createContent(vnode, _ref3) {

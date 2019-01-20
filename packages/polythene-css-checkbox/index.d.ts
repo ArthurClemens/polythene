@@ -1,9 +1,8 @@
 
 import { StyleObject, StyleFn, Scoping } from "polythene-core-css";
+import { SelectionControlVars } from "polythene-css-selection-control";
 
-export interface CheckboxVars {
-  general_styles: boolean,
-}
+export interface CheckboxVars extends Partial<SelectionControlVars> {}
 
 export const vars: CheckboxVars;
 export const color: StyleFn;

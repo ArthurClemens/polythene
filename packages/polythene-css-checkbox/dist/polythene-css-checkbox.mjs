@@ -20,12 +20,16 @@ var layout$1 = createLayout({
 /**
  * @typedef {import("../index").CheckboxVars} CheckboxVars
  */
+// import { vars } from "polythene-theme";
+// import { vars as selectionControlVars } from "polythene-css-selection-control";
 
 /**
  * @type {CheckboxVars} checkboxVars
  */
 var checkboxVars = {
-  general_styles: true
+  general_styles: true // button_size:    5 * vars.grid_unit_component, // 40
+  // icon_size:      selectionControlVars.icon_size
+
 };
 
 // @ts-check

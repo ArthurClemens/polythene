@@ -6,7 +6,6 @@
 
 import { rgba } from "polythene-core-css";
 import { vars as iconButtonVars } from "polythene-css-icon-button";
-import { vars as selectionControlVars } from "polythene-css-selection-control";
 import { vars } from "polythene-theme";
 
 /**
@@ -15,6 +14,7 @@ import { vars } from "polythene-theme";
 const switchVars = {
   general_styles:                     true,
 
+  height:                             undefined,
   animation_duration:                 vars.animation_duration,
   hit_area_padding:                   (vars.grid_unit_icon_button - vars.unit_icon_size) / 2, // 12
   icon_button_padding:                iconButtonVars.padding,
@@ -22,7 +22,6 @@ const switchVars = {
   thumb_size:                         20,
   track_height:                       14,
   track_length:                       36,
-  label_height:                       selectionControlVars.label_height,
 
   color_light_thumb_on:               rgba(vars.color_primary),
   color_light_thumb_off:              "#f1f1f1",

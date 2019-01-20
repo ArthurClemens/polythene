@@ -1,5 +1,20 @@
 import { deprecation } from 'polythene-core';
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -16,6 +31,25 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
 }
 
 var classes = {
@@ -78,9 +112,8 @@ var createContent = function createContent(vnode, _ref2) {
   return [h("div", {
     className: classes.track,
     key: "track"
-  }), h(IconButton, _extends({}, {
+  }, h(IconButton, _objectSpread({
     className: classes.thumb,
-    key: "button",
     content: h("div", {
       className: classes.knob
     }, [attrs.icon ? attrs.icon : null, raised ? h(Shadow, {
@@ -92,7 +125,7 @@ var createContent = function createContent(vnode, _ref2) {
     events: attrs.events,
     ink: attrs.ink || false,
     inactive: attrs.inactive
-  }, attrs.iconButton))];
+  }, attrs.iconButton)))];
 };
 
 var viewControl = /*#__PURE__*/Object.freeze({
