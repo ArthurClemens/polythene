@@ -22,7 +22,7 @@
     "polythene-react-icon": "^1.4.2"
   },
   "devDependencies": {
-    "@types/react": "^16.7.18"
+    "@types/react": "^16.7.20"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

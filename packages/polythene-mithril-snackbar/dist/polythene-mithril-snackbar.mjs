@@ -2,22 +2,38 @@ import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
 import { coreSnackbar, transitions } from 'polythene-core-snackbar';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return obj;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
     }
 
-    return target;
-  };
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
 
-  return _extends.apply(this, arguments);
+  return target;
 }
 
 var notificationClasses = {
@@ -36,7 +52,7 @@ var notificationClasses = {
   visible: "pe-notification--visible"
 };
 
-var classes = _extends({}, notificationClasses, {
+var classes = _objectSpread({}, notificationClasses, {
   component: "pe-notification pe-snackbar",
   // elements
   holder: "pe-snackbar__holder",

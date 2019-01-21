@@ -965,7 +965,7 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _objectSpread({}, opts1, transitions && transitions[isShow ? "show" : "hide"](opts1));
+  var opts2 = _objectSpread({}, opts1, transitions ? transitions[isShow ? "show" : "hide"](opts1) : undefined);
 
   var opts3 = _objectSpread({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
