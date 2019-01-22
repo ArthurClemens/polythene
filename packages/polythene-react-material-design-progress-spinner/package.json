@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/polythene-react-material-design-progress-spinner",
   "module": "dist/polythene-react-material-design-progress-spinner.mjs",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",

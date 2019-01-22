@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/polythene-css-base-spinner",
   "module": "dist/polythene-css-base-spinner.mjs",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",

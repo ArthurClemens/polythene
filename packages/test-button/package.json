@@ -5,6 +5,7 @@
   "description": "",
   "main": "dist/polythene-test-button",
   "module": "dist/polythene-test-button.mjs",
+  "sideEffects": false,
   "scripts": {
     "test": "../../node_modules/jest/bin/jest.js src/** --silent",
     "test:watch": "npm run test -- --watch --no-watchman"

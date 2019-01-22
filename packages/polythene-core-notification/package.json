@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/polythene-core-notification",
   "module": "dist/polythene-core-notification.mjs",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",

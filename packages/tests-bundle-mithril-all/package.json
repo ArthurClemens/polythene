@@ -1,6 +1,5 @@
 {
   "name": "polythene-tests-bundle-mithril-all",
-  "sideEffects": false,
   "version": "1.4.2",
   "description": "",
   "private": true,
@@ -12,6 +11,7 @@
     "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 3700 --host 0.0.0.0",
     "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
     "webpack": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
+    "analyse": "ANALYSE=1 npm run webpack",
     "build": "npm run clean && npm run webpack",
     "serve": "http-server -p 5000 dist"
   },

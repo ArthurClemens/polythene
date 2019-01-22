@@ -3,6 +3,7 @@
   "version": "1.4.2",
   "private": true,
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "test": "../../node_modules/jest/bin/jest.js src/** --silent",
     "test:watch": "npm run test -- --watch --no-watchman"

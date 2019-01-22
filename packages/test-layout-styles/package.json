@@ -3,6 +3,7 @@
   "version": "1.4.2",
   "private": true,
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "test": "true",
     "test:watch": "true"

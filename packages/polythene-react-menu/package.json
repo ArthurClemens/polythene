@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/polythene-react-menu",
   "module": "dist/polythene-react-menu.mjs",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
     "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
