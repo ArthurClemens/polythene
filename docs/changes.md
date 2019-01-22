@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.5](#15)
   - [1.5.0](#150)
+    - [Bundle size](#bundle-size)
     - [TypeScript type definitions](#typescript-type-definitions)
     - [CSS](#css)
     - [Components](#components)
@@ -40,6 +41,12 @@
 ## 1.5
 
 ### 1.5.0
+
+#### Bundle size
+
+All packages now contain `sideEffects: false` as hint to Webpack to perform tree shaking when creating a production build. This means that bundles created with Webpack are now significantly smaller.
+
+For example, the bundle size from package "tests-bundle-mithril-all" went from 320 KB to 182 KB, a reduction of 57 percent.
 
 #### TypeScript type definitions
 
