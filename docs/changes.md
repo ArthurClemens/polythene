@@ -46,7 +46,7 @@
 
 All packages now contain `sideEffects: false` as hint to Webpack to perform tree shaking when creating a production build. This means that bundles created with Webpack are now significantly smaller.
 
-For example, the bundle size from package "tests-bundle-mithril-all" went from 320 KB to 182 KB, a reduction of 57 percent.
+For example, the bundle size from package "tests-bundle-mithril-all" went from 320 KB to 182 KB (including Mithril), a reduction of 57 percent. With gzip compression the size is further reduced to 71 KB.
 
 #### TypeScript type definitions
 
