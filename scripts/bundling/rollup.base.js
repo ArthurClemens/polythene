@@ -4,7 +4,7 @@ import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
-const env = process.env; // eslint-disable-line no-undef
+const env = process.env;
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
 const external = Object.keys(pkg.dependencies || {});
 const name = env.MODULE_NAME || "polythene";

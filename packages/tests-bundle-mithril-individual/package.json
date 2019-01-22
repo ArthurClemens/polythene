@@ -1,5 +1,6 @@
 {
   "name": "polythene-tests-bundle-mithril-individual",
+  "sideEffects": false,
   "version": "1.4.2",
   "description": "",
   "private": true,
@@ -16,7 +17,8 @@
   },
   "dependencies": {
     "mithril": "^1.1.6",
-    "polythene-css": "^1.4.2",
+    "polythene-css-card": "^1.4.2",
+    "polythene-css-typography": "^1.4.2",
     "polythene-mithril-button": "^1.4.2",
     "polythene-mithril-card": "^1.4.2",
     "polythene-mithril-checkbox": "^1.4.2",

@@ -1,5 +1,6 @@
 {
   "name": "polythene-tests-bundle-mithril-all",
+  "sideEffects": false,
   "version": "1.4.2",
   "description": "",
   "private": true,
