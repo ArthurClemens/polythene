@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {DialogPaneVars} dialogPaneVars
  */
 const dialogPaneVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                  true,
 
   border_width:                    1,

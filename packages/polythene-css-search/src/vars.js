@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {SearchVars} searchVars
  */
 const searchVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                 true,
 
   font_size_input:                20,

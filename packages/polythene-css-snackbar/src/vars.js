@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {SnackbarVars} snackbarVars
  */
 const snackbarVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:         true,
  
   animation_hide_css:     "",

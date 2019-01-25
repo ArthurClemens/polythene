@@ -18,6 +18,9 @@ const scroll_button_size = tab_height;
  * @type {TabsVars} tabsVars
  */
 const tabsVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                   true,
 
   animation_duration:               textButtonVars.animation_duration,

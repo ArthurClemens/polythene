@@ -41,6 +41,9 @@ const borderVars = {
  * @type {TextButtonVars} textButtonVars
  */
 const textButtonVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                     true,
               
   animation_duration:                 vars.animation_duration,

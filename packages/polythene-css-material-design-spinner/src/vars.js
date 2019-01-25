@@ -34,6 +34,9 @@ const green500 =  "#4caf50";
  * @type {MaterialDesignSpinnerVars} materialDesignSpinnerVars
  */
 const materialDesignSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:       true,
   
   arc_size,

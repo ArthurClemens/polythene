@@ -13,6 +13,9 @@ import { vars } from "polythene-theme";
  * @type {SwitchVars} switchVars
  */
 const switchVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                     true,
 
   animation_duration:                 vars.animation_duration,

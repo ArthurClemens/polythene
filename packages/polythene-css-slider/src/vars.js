@@ -19,6 +19,9 @@ const side_spacing =                   Math.max(10, largestElement / 2 - thumb_s
 const horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
 export default {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                      true,
 
   active_pin_thumb_scale,

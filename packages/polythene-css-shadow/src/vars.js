@@ -25,12 +25,12 @@ export const sharedVars = {
   shadow_depth: undefined,
 };
 
-export default Object.assign(
-  {},
-  {
-    general_styles:          true,
+export default {
+  /**
+   * Generate general styles, not defined by variables
+   */
+  general_styles:          true,
 
-    transition:              `box-shadow ${vars.animation_duration} ease-out`,
-  },
-  sharedVars
-);
+  transition:              `box-shadow ${vars.animation_duration} ease-out`,
+  ...sharedVars
+};

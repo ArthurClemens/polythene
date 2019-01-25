@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {TextfieldVars} textfieldVars
  */
 const textfieldVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                               true,
 
   dense_floating_label_top:                     10,
@@ -21,7 +24,12 @@ const textfieldVars = {
   dense_full_width_font_size_input:             13,
   dense_full_width_input_padding_h:             16,
   dense_full_width_input_padding_v:             15, // 16 minus natural label height padding (1)
+  
   floating_label_animation_duration:            ".12s",
+
+  /**
+   * Top position in pixels
+   */
   floating_label_top:                           14,
   floating_label_vertical_spacing_bottom:       7, // 8 minus natural label height padding (1)
   floating_label_vertical_spacing_top:          30, // 16 + 8 + 8 minus natural label height padding (2)

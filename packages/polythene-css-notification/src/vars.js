@@ -13,6 +13,9 @@ const buttonPaddingH = 8; // padding, inner text space
  * @type {NotificationVars} notificationVars
  */
 const notificationVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:            true,
 
   animation_delay:           "0s",

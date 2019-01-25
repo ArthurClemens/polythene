@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {IconVars} iconVars
  */
 const iconVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                true,
 
   size_small:                    vars.unit_icon_size_small,  // 16 

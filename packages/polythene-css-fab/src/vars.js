@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {DrawerVars} drawerVars
  */
 const drawerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:               true,
 
   size_mini:                    5 * vars.grid_unit_component, // 5 * 8 = 40

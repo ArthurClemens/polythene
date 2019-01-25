@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {MaterialDesignProgressSpinnerVars} materialDesignProgressSpinnerVars
  */
 const materialDesignProgressSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:              true,
   
   progress_animation_duration: ".8s",

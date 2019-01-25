@@ -8,6 +8,9 @@
  * @type {RippleVars} rippleVars
  */
 const rippleVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:  true,
   
   color:           "inherit" // only specify this variable to get both states

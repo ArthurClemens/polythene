@@ -7,6 +7,9 @@ const padding_side       = vars.grid_unit_component * 2 - 12; // 16 - 12 = 4
 const padding_side_large = vars.grid_unit_component * 3 - 12; // 24 - 12 = 12
 
 export default {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                 true,
      
   font_size:                      20,

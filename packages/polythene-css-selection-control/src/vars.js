@@ -4,6 +4,9 @@ import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
 
 export default {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                      true,
   
   animation_duration:                  vars.animation_duration,

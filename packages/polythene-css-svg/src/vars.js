@@ -8,6 +8,9 @@
  * @type {SVGVars} svgVars
  */
 const svgVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   
   color_light:    "currentcolor",

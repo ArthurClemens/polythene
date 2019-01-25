@@ -25,6 +25,9 @@ const themeVars = {
  * @type {DrawerVars} drawerVars
  */
 const drawerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                  true,
 
   animation_delay:                 "0s",

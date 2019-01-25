@@ -19,6 +19,9 @@ export const themeVars = {
  * @type {ContainedButtonVars} containedButtonVars
  */
 const containedButtonVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                  true,
   
   padding_h:                       4 * vars.grid_unit, // 16

@@ -11,6 +11,9 @@ import { vars } from "polythene-theme";
  * @type {BaseSpinnerVars} baseSpinnerVars
  */
 const baseSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                true,
     
   animation_delay:               "0s",

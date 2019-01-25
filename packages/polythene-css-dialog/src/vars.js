@@ -27,6 +27,9 @@ const themeVars = Object.assign(
  * @type {DialogVars} dialogVars
  */
 const dialogVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                  true,
 
   animation_delay:                 "0s",

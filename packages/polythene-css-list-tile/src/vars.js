@@ -37,6 +37,9 @@ export const themeVars = {
  * @type {ListTileVars} listTileVars
  */
 const listTileVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles:                     true,
   
   compact_front_item_width:           64,
