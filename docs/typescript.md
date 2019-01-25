@@ -4,12 +4,17 @@ TypeScript support is available for all Polythene components. The type definitio
 
 <img src="https://arthurclemens.github.io/assets/polythene/docs/type-validation.png" alt="Screenshot of type validation in Visual Studio Code" width="382" />
 
+Code editors like Visual Studio Code let you peek into the component's type definition.
+
+<img src="https://arthurclemens.github.io/assets/polythene/docs/type-definition.png" alt="Screenshot of type definition preview in Visual Studio Code" width="675" />
+
+
 
 ## Extending typings with wrapper components
 
-When creating a [wrapper component](theming/wrapper-components.md), you can create a type definition that extends the Polythene component interface.
+When creating a [wrapper component](theming/wrapper-components.md), you can create a type definition to extend the Polythene component interface.
 
-This example shows how to create a custom Button that extends the interface to accept new option `showCustomColor`.
+This example shows a custom Button component that extends the Polythene Button interface to accept a new option `showCustomColor`.
 
 ### Mithril
 
