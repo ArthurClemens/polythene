@@ -70,5 +70,3 @@ export default ({ SVG, renderer: h }) => {
     },
   ];
 };
-
-
