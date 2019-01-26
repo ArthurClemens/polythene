@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-slider",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "dist/polythene-react-slider",
   "module": "dist/polythene-react-slider.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-slider": "^1.5.0",
-    "polythene-react-base": "^1.5.0"
+    "polythene-core-slider": "^1.5.1",
+    "polythene-react-base": "^1.5.1"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

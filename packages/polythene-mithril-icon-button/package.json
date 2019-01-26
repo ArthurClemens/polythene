@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-icon-button",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "dist/polythene-mithril-icon-button",
   "module": "dist/polythene-mithril-icon-button.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon-button": "^1.5.0",
-    "polythene-mithril-base": "^1.5.0",
-    "polythene-mithril-button": "^1.5.0",
-    "polythene-mithril-icon": "^1.5.0"
+    "polythene-core-icon-button": "^1.5.1",
+    "polythene-mithril-base": "^1.5.1",
+    "polythene-mithril-button": "^1.5.1",
+    "polythene-mithril-icon": "^1.5.1"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

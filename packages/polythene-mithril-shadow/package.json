@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-shadow",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "dist/polythene-mithril-shadow",
   "module": "dist/polythene-mithril-shadow.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.5.0",
-    "polythene-mithril-base": "^1.5.0"
+    "polythene-core-shadow": "^1.5.1",
+    "polythene-mithril-base": "^1.5.1"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"
