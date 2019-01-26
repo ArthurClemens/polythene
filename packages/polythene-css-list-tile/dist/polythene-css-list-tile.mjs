@@ -666,6 +666,9 @@ var themeVars = {
  */
 
 var listTileVars = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   compact_front_item_width: 64,
   compact_padding: 9,

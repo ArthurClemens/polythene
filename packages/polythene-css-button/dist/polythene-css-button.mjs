@@ -577,6 +577,9 @@ var themeVars = _objectSpread({
  */
 
 var containedButtonVars = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   padding_h: 4 * vars.grid_unit,
   // 16
@@ -619,6 +622,9 @@ var borderVars = {
  */
 
 var textButtonVars = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_duration: vars.animation_duration,
   border_radius: vars.unit_item_border_radius,

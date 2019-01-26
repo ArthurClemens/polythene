@@ -254,6 +254,9 @@ var buttonPaddingH = 8; // padding, inner text space
  */
 
 var notificationVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".3s",

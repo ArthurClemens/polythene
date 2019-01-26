@@ -358,6 +358,9 @@ var layout = createLayout({
 
 // @ts-check
 var vars$1 = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_duration: vars.animation_duration,
   button_size: 6 * vars.grid_unit_component,

@@ -463,6 +463,9 @@ var layout$1 = createLayout({
  */
 
 var switchVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_duration: vars.animation_duration,
   hit_area_padding: (vars.grid_unit_icon_button - vars.unit_icon_size) / 2,

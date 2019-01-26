@@ -121,6 +121,9 @@ var layout = createLayout({
  * @type {RippleVars} rippleVars
  */
 var rippleVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   color: "inherit" // only specify this variable to get both states
   // color_light:   "inherit",

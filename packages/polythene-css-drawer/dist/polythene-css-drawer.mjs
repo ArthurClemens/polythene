@@ -464,6 +464,9 @@ var themeVars = _objectSpread({
 
 
 var drawerVars = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_delay: "0s",
   animation_duration: ".260s",

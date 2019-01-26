@@ -669,6 +669,9 @@ var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
 var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
 var vars$1 = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   active_pin_thumb_scale: active_pin_thumb_scale,
   active_thumb_scale: active_thumb_scale,

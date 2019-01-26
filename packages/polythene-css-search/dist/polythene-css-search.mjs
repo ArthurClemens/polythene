@@ -270,6 +270,9 @@ var layout = createLayout({
  */
 
 var searchVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   font_size_input: 20,
   full_width_border_radius: 0,

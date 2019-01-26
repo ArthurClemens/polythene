@@ -561,6 +561,9 @@ var scroll_button_size = tab_height;
  */
 
 var tabsVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_duration: textButtonVars.animation_duration,
   indicator_slide_speed: 600,

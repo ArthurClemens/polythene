@@ -489,6 +489,9 @@ var green500 = "#4caf50";
  */
 
 var materialDesignSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   arc_size: arc_size,
   arc_start_degrees: arc_start_degrees,

@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-radio-group",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "",
   "main": "dist/polythene-mithril-radio-group",
   "module": "dist/polythene-mithril-radio-group.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-group": "^1.4.2",
-    "polythene-mithril-base": "^1.4.2",
-    "polythene-mithril-radio-button": "^1.4.2"
+    "polythene-core-radio-group": "^1.5.0",
+    "polythene-mithril-base": "^1.5.0",
+    "polythene-mithril-radio-button": "^1.5.0"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

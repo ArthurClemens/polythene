@@ -117,6 +117,9 @@ var layout$1 = createLayout({
  */
 
 var materialDesignProgressSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   progress_animation_duration: ".8s",
   color_light: rgba(vars.color_primary),

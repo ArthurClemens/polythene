@@ -146,6 +146,9 @@ var layout = createLayout({
  */
 
 var snackbarVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_hide_css: "",
   animation_show_css: "",

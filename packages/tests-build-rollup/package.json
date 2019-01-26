@@ -1,6 +1,6 @@
 {
   "name": "polythene-build-rollup",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "",
   "private": true,
   "main": "dist/js/index",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "mithril": "^1.1.6",
-    "polythene-css": "^1.4.2",
-    "polythene-mithril": "^1.4.2"
+    "polythene-css": "^1.5.0",
+    "polythene-mithril": "^1.5.0"
   }
 }

@@ -35,6 +35,9 @@ var layout$1 = createLayout({
  * @type {RadioButtonVars} radioButtonVars
  */
 var radioButtonVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true
 };
 

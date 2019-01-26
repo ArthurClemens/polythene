@@ -29,6 +29,9 @@ var layout = createLayout({
  * @type {ButtonGroupVars} buttonGroupVars
  */
 var buttonGroupVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true
 };
 

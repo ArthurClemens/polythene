@@ -44,6 +44,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 var _createShadowForSelector = function _createShadowForSelector(which, depth) {
   return function (selector, vars$$1) {
     return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which, ".pe-shadow--depth-").concat(depth), {
@@ -134,7 +153,10 @@ var sharedVars = {
   // theme vars
   shadow_depth: undefined
 };
-var vars$1 = _extends({}, {
+var vars$1 = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   transition: "box-shadow ".concat(vars.animation_duration, " ease-out")
 }, sharedVars);

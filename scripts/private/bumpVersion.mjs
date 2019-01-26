@@ -15,7 +15,7 @@ const update = filename => {
     const fileContents = fs.readFileSync(filename, "utf8");
     const data = JSON.parse(fileContents);
     const name = data.name;
-    console.log("------------------------------");
+    console.log("------------------------------"); // eslint-disable-line no-console
     console.log(`Package: ${name}`); // eslint-disable-line no-console
     if (data.version !== newVersion) {
       if (isTestRun) {

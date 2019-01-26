@@ -340,6 +340,9 @@ var layout = createLayout({
  */
 
 var dialogPaneVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   border_width: 1,
   footer_height: 52,

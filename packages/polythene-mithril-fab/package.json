@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-fab",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "",
   "main": "dist/polythene-mithril-fab",
   "module": "dist/polythene-mithril-fab.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-fab": "^1.4.2",
-    "polythene-mithril-base": "^1.4.2",
-    "polythene-mithril-button": "^1.4.2",
-    "polythene-mithril-icon": "^1.4.2"
+    "polythene-core-fab": "^1.5.0",
+    "polythene-mithril-base": "^1.5.0",
+    "polythene-mithril-button": "^1.5.0",
+    "polythene-mithril-icon": "^1.5.0"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

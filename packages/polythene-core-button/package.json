@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-button",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "",
   "main": "dist/polythene-core-button",
   "module": "dist/polythene-core-button.mjs",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.4.2",
-    "polythene-css-classes": "^1.4.2",
-    "polythene-theme": "^1.4.2"
+    "polythene-core": "^1.5.0",
+    "polythene-css-classes": "^1.5.0",
+    "polythene-theme": "^1.5.0"
   },
   "devDependencies": {
-    "polythene-core-ripple": "^1.4.2"
+    "polythene-core-ripple": "^1.5.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

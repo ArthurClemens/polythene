@@ -200,6 +200,9 @@ var layout = createLayout({
  */
 
 var listVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   border_width_bordered: 1,
   border_width_stacked: 1,

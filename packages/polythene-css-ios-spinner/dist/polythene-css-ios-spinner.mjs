@@ -138,6 +138,9 @@ var layout$1 = createLayout({
  */
 
 var iOSSpinnerVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   rotation_animation_duration: "1s",
   color_light: rgba(vars.color_light_foreground),

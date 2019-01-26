@@ -250,6 +250,9 @@ var layout = createLayout({
  */
 
 var iconButtonVars = {
+  /**
+   * Generate general styles, not defined by variables
+   */
   general_styles: true,
   animation_duration: vars.animation_duration,
   label_font_size: 16,

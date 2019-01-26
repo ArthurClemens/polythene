@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-list",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "",
   "main": "dist/polythene-mithril-list",
   "module": "dist/polythene-mithril-list.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-list": "^1.4.2",
-    "polythene-mithril-base": "^1.4.2",
-    "polythene-mithril-list-tile": "^1.4.2"
+    "polythene-core-list": "^1.5.0",
+    "polythene-mithril-base": "^1.5.0",
+    "polythene-mithril-list-tile": "^1.5.0"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"
