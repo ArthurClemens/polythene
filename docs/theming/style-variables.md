@@ -6,6 +6,7 @@
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
+  - [Only the minimum of CSS](#only-the-minimum-of-css)
   - [Themed behaviors](#themed-behaviors)
   - [Using scope](#using-scope)
   - [Using media queries](#using-media-queries)
@@ -103,6 +104,22 @@ With React JSX:
 ~~~jsx
 <Icon className="purple-icon" />
 ~~~
+
+
+### Only the minimum of CSS
+
+When using `addStyle` (or `getStyle` when [writing CSS to a file](../css.md#theming-options)) only a minimal subset of CSS is created based on the passed variables.
+
+When using a custom style for a component that will be displayed on a dark tone, be sure to also add dark tone color variables:
+
+~~~javascript
+ButtonCSS.addStyle(".my-button", {
+  color_light_text: "#333",
+  color_dark_text:  "#fff",
+});
+~~~
+
+To use all default variables, pass `general_styles: true`. This will read the default variables, plus the ones added with addStyle/getStyle. The resulting CSS will be bigger of course.
 
 
 <a id="themed-behaviors"></a>
@@ -215,7 +232,7 @@ IconCSS.addStyle(
 It is possible to combine styles. This card has a colored background, and at small screen sizes the image is displayed smaller:
 
 ~~~javascript
-CardCSS.getStyle(
+CardCSS.addStyle(
   ".themed-card",
   {
     color_dark_main_background: "#B89E58",
@@ -223,7 +240,7 @@ CardCSS.getStyle(
     color_dark_subtitle_text:   "#fff"
   }
 ),
-CardCSS.getStyle(
+CardCSS.addStyle(
   ".small-image-card",
   {
     image_size_medium: 90
