@@ -374,12 +374,8 @@ var _border_width = function border_width(selector, vars$$1) {
   });
 };
 
-var _contained = function contained(selector, vars$$1) {
+var _contained = function contained(selector) {
   return sel(selector, {
-    " .pe-button__content": {
-      paddingLeft: vars$$1.padding_h + "px",
-      paddingRight: vars$$1.padding_h + "px"
-    },
     " .pe-button__wash": {
       display: "none"
     }
@@ -398,7 +394,9 @@ var varFns$1 = _objectSpread({
         // default
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingTop: 0,
+        paddingBottom: 0
       },
       ".pe-button--border": _border$1(selector, vars$$1),
       " .pe-button__label, .pe-button__dropdown": {
@@ -460,7 +458,8 @@ var varFns$1 = _objectSpread({
   padding_h: function padding_h(selector, vars$$1) {
     return [sel(selector, {
       " .pe-button__content": {
-        padding: "0 " + vars$$1.padding_h + "px",
+        paddingLeft: vars$$1.padding_h + "px",
+        paddingRight: vars$$1.padding_h + "px",
         " .pe-button__dropdown": {
           minWidth: "calc(36px - 2 * ".concat(vars$$1.padding_h, "px)")
         },

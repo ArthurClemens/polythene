@@ -83,12 +83,8 @@ const border_width = (selector, vars) =>
     }
   });
 
-const contained = (selector, vars) =>
+const contained = selector =>
   sel(selector, {
-    " .pe-button__content": {
-      paddingLeft: vars.padding_h + "px",
-      paddingRight: vars.padding_h + "px",
-    },
     " .pe-button__wash": {
       display: "none"
     }
@@ -108,7 +104,9 @@ const varFns = {
           borderWidth: "1px", // default
           display: "flex",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          paddingTop: 0,
+          paddingBottom: 0,
         },
 
         ".pe-button--border": border(selector, vars),
@@ -187,8 +185,9 @@ const varFns = {
   padding_h: (selector, vars) => [
     sel(selector, {
       " .pe-button__content": {
-        padding: "0 " + vars.padding_h + "px",
-
+        paddingLeft: vars.padding_h + "px",
+        paddingRight: vars.padding_h + "px",
+  
         " .pe-button__dropdown": {
           minWidth: `calc(36px - 2 * ${vars.padding_h}px)`,
         },
