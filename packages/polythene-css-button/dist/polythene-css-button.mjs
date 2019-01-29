@@ -488,7 +488,7 @@ var varFns$1 = _objectSpread({
           padding: vars$$1.label_padding_v - 1 + "px 0"
         }
       }
-    }), line_height_label_padding_v(selector, vars$$1), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.line_height !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   font_weight: function font_weight(selector, vars$$1) {
     return [sel(selector, {
@@ -516,7 +516,7 @@ var varFns$1 = _objectSpread({
       " .pe-button__label, .pe-button__dropdown": {
         lineHeight: vars$$1.line_height
       }
-    }), line_height_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.label_padding_v !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   dropdown_icon_size: function dropdown_icon_size(selector, vars$$1) {
     return [sel(selector, {
@@ -538,7 +538,7 @@ var varFns$1 = _objectSpread({
       ".pe-button--high-label": {
         padding: 0
       }
-    }), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.label_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   separator_width: function separator_width(selector, vars$$1) {
     return [sel(selector, {
@@ -559,7 +559,7 @@ var varFns$1 = _objectSpread({
     return vars$$1.border && _border$1(selector, vars$$1);
   },
   contained: function contained(selector, vars$$1) {
-    return vars$$1.contained && _contained(selector, vars$$1);
+    return vars$$1.contained && _contained(selector);
   }
 }, sharedVarFns);
 
