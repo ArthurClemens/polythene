@@ -6,7 +6,6 @@
 
 import { rgba } from "polythene-core-css";
 import { vars } from "polythene-theme";
-import containedButtonVars from "../contained-button/vars";
 import { sharedVars as shadowVars } from "polythene-css-shadow";
 
 const touch_height = vars.unit_touch_height; // 48
@@ -24,7 +23,6 @@ const themeVars = Object.assign(
 
 const borderVars = {
   border_width,
-  padding_h_border:                     containedButtonVars.padding_h,
 
   color_light_border:                   rgba(vars.color_light_foreground, vars.blend_light_border_medium), // only specify this variable to get all 4 states
   // color_light_hover_border:             "transparent",

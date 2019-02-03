@@ -42,7 +42,6 @@ export interface TextButtonVars extends Partial<ShadowVars> {
   color_dark_hover_background?:    string,
   color_dark_hover_icon?:          string,
   border_width:                    number,
-  padding_h_border:                number,
   color_light_border:              string,
   color_light_hover_border?:       string,
   color_light_active_border?:      string,

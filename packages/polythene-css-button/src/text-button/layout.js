@@ -62,14 +62,12 @@ const border_radius_button_group = (selector, vars, isRTL) =>
     },
   });
 
-const border = (selector, vars) =>
+const border = selector =>
   sel(selector, {
     " .pe-button__wash, .pe-ripple": mixin.fit(-1),
 
     " .pe-button__content": {
       borderStyle: "solid",
-      paddingLeft: vars.padding_h_border + "px",
-      paddingRight: vars.padding_h_border + "px",
     },
   });
 
@@ -91,7 +89,7 @@ const contained = selector =>
   });
 
 const varFns = {
-  general_styles: (selector, vars) => [
+  general_styles: selector => [
     sel(selector, [
       alignLeft(),
       {
@@ -109,7 +107,7 @@ const varFns = {
           paddingBottom: 0,
         },
 
-        ".pe-button--border": border(selector, vars),
+        ".pe-button--border": border(selector),
 
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",
@@ -304,7 +302,7 @@ const varFns = {
   // Theme vars
 
   border: (selector, vars) => 
-    vars.border && border(selector, vars),
+    vars.border && border(selector),
   contained: (selector, vars) => 
     vars.contained && contained(selector),
   // shadow_depth:

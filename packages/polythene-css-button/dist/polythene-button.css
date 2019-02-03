@@ -72,9 +72,7 @@
 }
 
 .pe-text-button.pe-button--border.pe-text-button .pe-button__content {
-  border-style: solid;
-  padding-left: 16px;
-  padding-right: 16px
+  border-style: solid
 }
 
 .pe-text-button .pe-button__dropdown,.pe-text-button .pe-button__label {
