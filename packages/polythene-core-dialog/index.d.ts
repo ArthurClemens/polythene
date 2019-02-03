@@ -88,7 +88,10 @@ export interface SpawnOptions {
 
 }
 
-export type show = <T>(dialogOptions: AppearanceOptions, spawnOptions?: SpawnOptions) => Promise<T>;
+type showStatic = <T>(dialogOptions: AppearanceOptions, spawnOptions?: SpawnOptions) => Promise<T>;
+type showDynamic = (_:any) => showStatic;
+export type show = showDynamic & showStatic;
+
 export type hide = <T>(spawnOptions?: SpawnOptions) => Promise<T>;
 export type createPane = (vnode: any, { renderer, Pane } : { renderer: any, Pane: any }) => any;
 
