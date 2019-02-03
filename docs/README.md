@@ -17,7 +17,7 @@
 * [CSS](css.md)
 * [Theming](theming.md)
   * [Light and dark](theming/light-and-dark.md)
-  * [Style variables](theming/style-variables.md)
+  * [Styling with variables](theming/style-variables.md)
   * [Wrapper components](theming/wrapper-components.md)
   * [Global theme file](theming/global-theme-file.md)
   * [Custom CSS](theming/custom-css.md)

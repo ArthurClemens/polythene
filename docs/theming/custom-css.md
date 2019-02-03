@@ -1,12 +1,11 @@
 [Back to Theme main page](../theming.md)
 
-# Style variables
+# Custom CSS
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
-  - [Advanced: using media queries](#advanced-using-media-queries)
   - [Function `addStyle`](#function-addstyle)
 - [Choosing CSS-in-JS or CSS files](#choosing-css-in-js-or-css-files)
 - [Examples](#examples)

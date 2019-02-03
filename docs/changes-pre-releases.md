@@ -100,7 +100,7 @@ Fix for newly introduced bug in button onclick handling.
 Changes to components:
 
 * All
-  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Theming Style variables](theming/style-variables.md)
+  * As consequence of the CSS change, the component method `theme` has been replaced with `addStyle`; see [Styling with variables](theming/style-variables.md)
 * RadioGroup
   * `onChange` now returns a state object that contains a variable `value`
 * List

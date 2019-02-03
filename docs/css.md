@@ -69,7 +69,7 @@ IconCSS.addStyle(".my-icon", {
 })
 ~~~
 
-Read more at [Theming Style variables](theming/style-variables.md).
+Read more at [Styling with variables](theming/style-variables.md).
 
 
 #### Under the hood
