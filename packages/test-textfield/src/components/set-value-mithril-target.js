@@ -14,7 +14,7 @@ export default ({ h, TextField }) => ({
       h(TextField, {
         help: "Type text, or press ARROW RIGHT to insert a character programmaticaly",
         events: {
-          oninput: h.withAttr("value", value => state.value(value)),
+          oninput: e => state.value(e.target.value),
           onkeydown: e => {
             if (e.key === "ArrowRight" || e.key === "Right") {
               state.value(value + String.fromCharCode(97 + Math.floor(Math.random() * 26)));

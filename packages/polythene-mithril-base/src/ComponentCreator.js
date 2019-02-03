@@ -39,7 +39,7 @@ export const ComponentCreator = ({
      * @type {{ redrawOnUpdate?: Array<function>, _?: any }} initialState
      */
     const initialState = getInitialState(vnode, stream, { keys });
-    vnode.state = {...initialState};
+    Object.assign(vnode.state, initialState);
 
     initialState.redrawOnUpdate !== undefined
       ? initialState.redrawOnUpdate.map(() => (
