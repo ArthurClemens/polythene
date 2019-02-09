@@ -17,16 +17,15 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
     color_dark_background:  "#333"
   });
 
-  const paneToolbar = ({ compact } = {}) =>
+  const paneToolbar = ({ title="Header", tone="light", ...attrs } = {}) =>
     h(Toolbar, {
-      compact,
+      ...attrs,
+      tone,
       content: [
-        h(ToolbarTitle, { key: "header", text: "Header" })
+        h(ToolbarTitle, { key: "header", text: title })
       ],
-      tone: "light",
       className: "tests-dialog-pane-themed-toolbar"
     });
-
 
   return [
     {
@@ -46,17 +45,7 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
             background: "#eee"
           }
         }, "Body"), 
-        
-        footer: h("div",
-          {
-            style: {
-              background: "#00c853",
-              color: "#fff",
-              padding: "16px 24px"
-            }
-          },
-          "Footer"
-        )
+        footerButtons: cancelOkButtons({ renderer, Button }),
       }
     },
     {
@@ -64,27 +53,18 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       component: DialogPane,
       attrs: {
         header: paneToolbar(),
-        body: h("div", {
-          style: {
-            background: "#eee"
-          }
-        }, "Body"),
+        body: "Body",
         fullBleed: true,
-        footer: h(Toolbar, {
-          content: [
-            h(ToolbarTitle, { key: "footer", text: "Footer" })
-          ],
-          tone: "dark",
-          className: "tests-dialog-pane-themed-toolbar"
-        }),
+        footer: paneToolbar({ title: "Footer", compact: true, tone: "dark", }),
       }
     },
     {
-      name: "With Toolbar (compact)",
+      name: "With Toolbar (compact), body with default padding",
       component: DialogPane,
       attrs: {
         header: paneToolbar({ compact: true }),
-        body: "Body"
+        body: "Body",
+        footer: paneToolbar({ title: "Footer", compact: true, tone: "dark", }),
       }
     },
     {
@@ -93,7 +73,7 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       attrs: {
         title: "Title",
         body: renderer.trust(longText),
-        footer: "Footer",
+        footerButtons: cancelOkButtons({ renderer, Button }),
         borders: "always"
       }
     },
@@ -103,7 +83,7 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       attrs: {
         title: "Title",
         body: renderer.trust(longText),
-        footer: "Footer",
+        footerButtons: cancelOkButtons({ renderer, Button }),
         borders: "never"
       }
     },
@@ -113,7 +93,7 @@ export default ({ renderer, keys, DialogPane, Toolbar, ToolbarTitle, Button }) =
       attrs: {
         title: "Title",
         body: renderer.trust(longText),
-        footer: "Footer",
+        footerButtons: cancelOkButtons({ renderer, Button }),
         borders: "overflow"
       }
     },

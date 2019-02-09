@@ -227,6 +227,10 @@ var varFns = {
         paddingTop: 0
       },
       " .pe-dialog-pane__footer": {
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: 1,
+        justifyContent: "center",
         "&, > .pe-toolbar": {
           borderBottomLeftRadius: "inherit",
           borderBottomRightRadius: "inherit"
@@ -241,7 +245,9 @@ var varFns = {
 
         }
       },
-      " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap],
+      " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap, {
+        alignItems: "center"
+      }],
       ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
         " .pe-dialog-pane__body": {
           borderTopStyle: "solid"
@@ -262,10 +268,10 @@ var varFns = {
     }];
   },
   max_width: function max_width(selector, vars$$1) {
-    return [max_width_side_padding_mobile(selector, vars$$1)];
+    return [vars$$1.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars$$1)];
   },
   side_padding_mobile: function side_padding_mobile(selector, vars$$1) {
-    return [max_width_side_padding_mobile(selector, vars$$1)];
+    return [vars$$1.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars$$1)];
   },
   min_width: function min_width(selector, vars$$1) {
     return [sel(selector, {
@@ -275,7 +281,7 @@ var varFns = {
   margin_vertical: function margin_vertical(selector, vars$$1) {
     return [sel(selector, {
       maxHeight: "calc(100vh - 2 * ".concat(vars$$1.margin_vertical, "px)")
-    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+    }), vars$$1.header_height !== undefined && vars$$1.footer_height !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
   },
   line_height_title: function line_height_title(selector, vars$$1) {
     return [sel(selector, {
@@ -286,17 +292,17 @@ var varFns = {
   },
   header_height: function header_height(selector, vars$$1) {
     return [sel(selector, {
-      " .pe-dialog-pane__header, .pe-dialog-pane__content > .pe-toolbar": {
-        minHeight: vars$$1.header_height + "px"
+      " .pe-dialog-pane__header": {
+        height: vars$$1.header_height + "px"
       }
-    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+    }), vars$$1.footer_height !== undefined && vars$$1.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
   },
   footer_height: function footer_height(selector, vars$$1) {
     return [sel(selector, {
-      " .pe-dialog-pane__footer": {
+      " .pe-dialog-pane__footer--buttons .pe-dialog-pane__actions": {
         minHeight: vars$$1.footer_height + "px"
       }
-    }), header_height_footer_height_margin_vertical(selector, vars$$1)];
+    }), vars$$1.header_height !== undefined && vars$$1.footer_height !== undefined && vars$$1.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
   },
   padding: function padding(selector, vars$$1) {
     return [sel(selector, {
@@ -308,7 +314,7 @@ var varFns = {
           paddingBottom: vars$$1.padding - 10 + "px"
         }
       }
-    }), padding_header_bottom(selector, vars$$1)];
+    }), vars$$1.header_bottom !== undefined && padding_header_bottom(selector, vars$$1)];
   },
   header_bottom: function header_bottom(selector, vars$$1) {
     return [padding_header_bottom(selector, vars$$1)];

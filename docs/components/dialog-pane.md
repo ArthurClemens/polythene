@@ -11,8 +11,8 @@ Content for [Dialog](dialog.md).
 
 ## Usage
 
-* [Usage with Mithril](mithril/dialog.md)
-* [Usage with React](react/dialog.md)
+* [Dialog: Usage with Mithril](mithril/dialog.md)
+* [Dialog: Usage with React](react/dialog.md)
 
 
 <a id="options"></a>

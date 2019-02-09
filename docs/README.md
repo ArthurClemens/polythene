@@ -34,6 +34,7 @@
   * [Icon Button](components/icon-button.md)
   * [Button Group](components/button-group.md)
 * [Card](components/card.md)
+* [Dialog Pane](components/dialog-pane.md)
 * [Dialog](components/dialog.md)
 * [Drawer](components/drawer.md)
 * [Icon](components/icon.md)
