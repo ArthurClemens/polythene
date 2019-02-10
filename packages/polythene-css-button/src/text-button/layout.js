@@ -62,14 +62,12 @@ const border_radius_button_group = (selector, vars, isRTL) =>
     },
   });
 
-const border = (selector, vars) =>
+const border = selector =>
   sel(selector, {
     " .pe-button__wash, .pe-ripple": mixin.fit(-1),
 
     " .pe-button__content": {
       borderStyle: "solid",
-      paddingLeft: vars.padding_h_border + "px",
-      paddingRight: vars.padding_h_border + "px",
     },
   });
 
@@ -83,19 +81,15 @@ const border_width = (selector, vars) =>
     }
   });
 
-const contained = (selector, vars) =>
+const contained = selector =>
   sel(selector, {
-    " .pe-button__content": {
-      paddingLeft: vars.padding_h + "px",
-      paddingRight: vars.padding_h + "px",
-    },
     " .pe-button__wash": {
       display: "none"
     }
   });
 
 const varFns = {
-  general_styles: (selector, vars) => [
+  general_styles: selector => [
     sel(selector, [
       alignLeft(),
       {
@@ -108,10 +102,12 @@ const varFns = {
           borderWidth: "1px", // default
           display: "flex",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          paddingTop: 0,
+          paddingBottom: 0,
         },
 
-        ".pe-button--border": border(selector, vars),
+        ".pe-button--border": border(selector),
 
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",
@@ -187,8 +183,9 @@ const varFns = {
   padding_h: (selector, vars) => [
     sel(selector, {
       " .pe-button__content": {
-        padding: "0 " + vars.padding_h + "px",
-
+        paddingLeft: vars.padding_h + "px",
+        paddingRight: vars.padding_h + "px",
+  
         " .pe-button__dropdown": {
           minWidth: `calc(36px - 2 * ${vars.padding_h}px)`,
         },
@@ -220,9 +217,12 @@ const varFns = {
         }
       },
     }),
-    line_height_label_padding_v(selector, vars),
-    outer_padding_v_label_padding_v(selector, vars),
-    line_height_outer_padding_v_label_padding_v(selector, vars)
+    vars.line_height !== undefined &&
+      line_height_label_padding_v(selector, vars),
+    vars.outer_padding_v !== undefined && 
+      outer_padding_v_label_padding_v(selector, vars),
+    vars.line_height !== undefined && vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined &&
+      line_height_outer_padding_v_label_padding_v(selector, vars)
   ],
   font_weight: (selector, vars) => [
     sel(selector, {
@@ -251,8 +251,10 @@ const varFns = {
         lineHeight: vars.line_height,
       },
     }),
-    line_height_label_padding_v(selector, vars),
-    line_height_outer_padding_v_label_padding_v(selector, vars)
+    vars.label_padding_v !== undefined &&
+      line_height_label_padding_v(selector, vars),
+    vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined && 
+      line_height_outer_padding_v_label_padding_v(selector, vars)
   ],
   dropdown_icon_size: (selector, vars) => [
     sel(selector, {
@@ -277,8 +279,10 @@ const varFns = {
         padding: 0,
       },
     }),
-    outer_padding_v_label_padding_v(selector, vars),
-    line_height_outer_padding_v_label_padding_v(selector, vars)
+    vars.label_padding_v !== undefined && 
+      outer_padding_v_label_padding_v(selector, vars),
+    vars.line_height !== undefined && vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined && 
+      line_height_outer_padding_v_label_padding_v(selector, vars)
   ],
   separator_width: (selector, vars) => [
     sel(selector, {
@@ -298,9 +302,9 @@ const varFns = {
   // Theme vars
 
   border: (selector, vars) => 
-    vars.border && border(selector, vars),
+    vars.border && border(selector),
   contained: (selector, vars) => 
-    vars.contained && contained(selector, vars),
+    vars.contained && contained(selector),
   // shadow_depth:
   ...shadowVarFns
 };

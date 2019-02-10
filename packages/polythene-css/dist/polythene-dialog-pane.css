@@ -67,6 +67,13 @@
   padding-top: 0
 }
 
+.pe-dialog-pane .pe-dialog-pane__footer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center
+}
+
 .pe-dialog-pane .pe-dialog-pane__footer,.pe-dialog-pane .pe-dialog-pane__footer>.pe-toolbar {
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit
@@ -95,7 +102,8 @@
   display: flex;
   -ms-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  align-items: center
 }
 
 .pe-dialog-pane.pe-dialog-pane--header.pe-dialog-pane--border-top .pe-dialog-pane__body {
@@ -115,12 +123,12 @@
   border-width: 1px
 }
 
-.pe-dialog-pane .pe-dialog-pane__footer {
+.pe-dialog-pane .pe-dialog-pane__footer--buttons .pe-dialog-pane__actions {
   min-height: 52px
 }
 
-.pe-dialog-pane .pe-dialog-pane__content>.pe-toolbar,.pe-dialog-pane .pe-dialog-pane__header {
-  min-height: 64px
+.pe-dialog-pane .pe-dialog-pane__header {
+  height: 64px
 }
 
 .pe-dialog-pane .pe-dialog-pane__title {

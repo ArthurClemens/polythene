@@ -6,7 +6,7 @@ import color from "./color";
 import layout from "./layout";
 import vars from "./vars";
 import { styler } from "polythene-core-css";
-import { vars as containedButtonVars } from "../contained-button";
+import containedButtonVars from "../contained-button/vars";
 const fns = [layout, color];
 const superFns = [superLayout];
 const superSelector = `.${classes.super}`;

@@ -352,13 +352,11 @@ var border_radius_button_group = function border_radius_button_group(selector, v
   });
 };
 
-var _border$1 = function border(selector, vars$$1) {
+var _border$1 = function border(selector) {
   return sel(selector, {
     " .pe-button__wash, .pe-ripple": mixin.fit(-1),
     " .pe-button__content": {
-      borderStyle: "solid",
-      paddingLeft: vars$$1.padding_h_border + "px",
-      paddingRight: vars$$1.padding_h_border + "px"
+      borderStyle: "solid"
     }
   });
 };
@@ -374,12 +372,8 @@ var _border_width = function border_width(selector, vars$$1) {
   });
 };
 
-var _contained = function contained(selector, vars$$1) {
+var _contained = function contained(selector) {
   return sel(selector, {
-    " .pe-button__content": {
-      paddingLeft: vars$$1.padding_h + "px",
-      paddingRight: vars$$1.padding_h + "px"
-    },
     " .pe-button__wash": {
       display: "none"
     }
@@ -387,7 +381,7 @@ var _contained = function contained(selector, vars$$1) {
 };
 
 var varFns$1 = _objectSpread({
-  general_styles: function general_styles(selector, vars$$1) {
+  general_styles: function general_styles(selector) {
     return [sel(selector, [alignLeft(), {
       display: "inline-block",
       background: "transparent",
@@ -398,9 +392,11 @@ var varFns$1 = _objectSpread({
         // default
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingTop: 0,
+        paddingBottom: 0
       },
-      ".pe-button--border": _border$1(selector, vars$$1),
+      ".pe-button--border": _border$1(selector),
       " .pe-button__label, .pe-button__dropdown": {
         whiteSpace: "pre",
         userSelect: "none",
@@ -460,7 +456,8 @@ var varFns$1 = _objectSpread({
   padding_h: function padding_h(selector, vars$$1) {
     return [sel(selector, {
       " .pe-button__content": {
-        padding: "0 " + vars$$1.padding_h + "px",
+        paddingLeft: vars$$1.padding_h + "px",
+        paddingRight: vars$$1.padding_h + "px",
         " .pe-button__dropdown": {
           minWidth: "calc(36px - 2 * ".concat(vars$$1.padding_h, "px)")
         },
@@ -489,7 +486,7 @@ var varFns$1 = _objectSpread({
           padding: vars$$1.label_padding_v - 1 + "px 0"
         }
       }
-    }), line_height_label_padding_v(selector, vars$$1), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.line_height !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   font_weight: function font_weight(selector, vars$$1) {
     return [sel(selector, {
@@ -517,7 +514,7 @@ var varFns$1 = _objectSpread({
       " .pe-button__label, .pe-button__dropdown": {
         lineHeight: vars$$1.line_height
       }
-    }), line_height_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.label_padding_v !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   dropdown_icon_size: function dropdown_icon_size(selector, vars$$1) {
     return [sel(selector, {
@@ -539,7 +536,7 @@ var varFns$1 = _objectSpread({
       ".pe-button--high-label": {
         padding: 0
       }
-    }), outer_padding_v_label_padding_v(selector, vars$$1), line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars$$1.label_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
   },
   separator_width: function separator_width(selector, vars$$1) {
     return [sel(selector, {
@@ -557,10 +554,10 @@ var varFns$1 = _objectSpread({
   },
   // Theme vars
   border: function border(selector, vars$$1) {
-    return vars$$1.border && _border$1(selector, vars$$1);
+    return vars$$1.border && _border$1(selector);
   },
   contained: function contained(selector, vars$$1) {
-    return vars$$1.contained && _contained(selector, vars$$1);
+    return vars$$1.contained && _contained(selector);
   }
 }, sharedVarFns);
 
@@ -568,43 +565,18 @@ var superLayout$1 = createLayout({
   varFns: varFns$1
 });
 
-var themeVars = _objectSpread({
-  border: false,
-  contained: true
-}, sharedVars);
-/**
- * @type {ContainedButtonVars} containedButtonVars
- */
-
-var containedButtonVars = _objectSpread({
-  /**
-   * Generate general styles, not defined by variables
-   */
-  general_styles: true,
-  padding_h: 4 * vars.grid_unit,
-  // 16
-  color_light_background: "#fff",
-  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
-  color_light_wash_background: "transparent",
-  color_dark_active_background: rgba(vars.color_primary_dark),
-  color_dark_background: rgba(vars.color_primary),
-  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
-  color_dark_wash_background: "transparent"
-}, themeVars);
-
 var touch_height = vars.unit_touch_height; // 48
 
 var height = 36;
 var border_width = 1;
 
-var themeVars$1 = _extends({}, {
+var themeVars = _extends({}, {
   border: false,
   contained: false
 }, sharedVars);
 
 var borderVars = {
   border_width: border_width,
-  padding_h_border: containedButtonVars.padding_h,
   color_light_border: rgba(vars.color_light_foreground, vars.blend_light_border_medium),
   // only specify this variable to get all 4 states
   // color_light_hover_border:             "transparent",
@@ -660,7 +632,31 @@ var textButtonVars = _objectSpread({
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
   color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_separator: rgba(vars.color_dark_foreground, vars.blend_dark_border_light)
-}, borderVars, themeVars$1);
+}, borderVars, themeVars);
+
+var themeVars$1 = _objectSpread({
+  border: false,
+  contained: true
+}, sharedVars);
+/**
+ * @type {ContainedButtonVars} containedButtonVars
+ */
+
+var containedButtonVars = _objectSpread({
+  /**
+   * Generate general styles, not defined by variables
+   */
+  general_styles: true,
+  padding_h: 4 * vars.grid_unit,
+  // 16
+  color_light_background: "#fff",
+  color_light_disabled_background: rgba(vars.color_light_foreground, vars.blend_light_background_disabled),
+  color_light_wash_background: "transparent",
+  color_dark_active_background: rgba(vars.color_primary_dark),
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_disabled_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_disabled),
+  color_dark_wash_background: "transparent"
+}, themeVars$1);
 
 // @ts-check
 var fns = [superLayout$1, superColor];

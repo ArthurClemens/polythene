@@ -34,38 +34,22 @@ var keys = {
 var renderer = m;
 renderer["displayName"] = "mithril";
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
     }
 
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
+    return target;
+  };
 
-  return target;
+  return _extends.apply(this, arguments);
 }
 
 function createCommonjsModule(fn, module) {
@@ -344,7 +328,9 @@ var ComponentCreator = function ComponentCreator(_ref) {
     var initialState = getInitialState(vnode, stream$1, {
       keys: keys
     });
-    vnode.state = _objectSpread({}, initialState);
+
+    _extends(vnode.state, initialState);
+
     initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function () {
       return localState && setTimeout(renderer.redraw);
     }) : undefined;

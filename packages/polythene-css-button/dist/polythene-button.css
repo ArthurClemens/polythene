@@ -58,7 +58,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0
 }
 
 .pe-text-button.pe-button--border.pe-text-button .pe-button__wash,.pe-text-button.pe-button--border.pe-text-button .pe-ripple {
@@ -70,9 +72,7 @@
 }
 
 .pe-text-button.pe-button--border.pe-text-button .pe-button__content {
-  border-style: solid;
-  padding-left: 16px;
-  padding-right: 16px
+  border-style: solid
 }
 
 .pe-text-button .pe-button__dropdown,.pe-text-button .pe-button__label {
@@ -212,7 +212,8 @@
 }
 
 .pe-text-button .pe-button__content {
-  padding: 0 8px
+  padding-left: 8px;
+  padding-right: 8px
 }
 
 .pe-text-button .pe-button__content .pe-button__dropdown {
@@ -332,7 +333,8 @@
 }
 
 .pe-text-button.pe-button--contained .pe-button__content {
-  padding: 0 16px
+  padding-left: 16px;
+  padding-right: 16px
 }
 
 .pe-text-button.pe-button--contained .pe-button__content .pe-button__dropdown {
@@ -341,11 +343,6 @@
 
 .pe-text-button.pe-button--contained .pe-button__content.pe-button--dropdown .pe-button__label+.pe-button__dropdown {
   margin-right: -9px
-}
-
-.pe-text-button.pe-button--contained .pe-button__content {
-  padding-left: 16px;
-  padding-right: 16px
 }
 
 .pe-text-button.pe-button--contained .pe-button__wash {

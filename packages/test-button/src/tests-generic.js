@@ -2,6 +2,16 @@ import { ButtonCSS } from "polythene-css";
 
 export default ({ renderer: h, Button }) => {
   
+  ButtonCSS.addStyle(".tests-button-small-button", {
+    contained: true,
+    border: true,
+    font_size: 13,
+    padding_h: 4,
+    label_padding_v: 8,
+    color_light_text: "#333",
+    color_dark_text: "#fff",
+  });
+
   ButtonCSS.addStyle(".tests-button-themed-button", {
     contained:              true,
     color_light_background: "#2196F3",
@@ -257,6 +267,14 @@ export default ({ renderer: h, Button }) => {
       }
     },
     {
+      name: "Themed Button (border, small)",
+      component: Button,
+      attrs: {
+        label: "Small",
+        className: "tests-button-small-button",
+      }
+    },
+    {
       name: "Themed Button (contained)",
       component: Button,
       attrs: {
@@ -336,6 +354,15 @@ export default ({ renderer: h, Button }) => {
       attrs: {
         label: "Border dark tone",
         className: "tests-button-bordered-button",
+      }
+    },
+    {
+      name: "Themed Button (border, small) -- dark tone class",
+      className: "pe-dark-tone",
+      component: Button,
+      attrs: {
+        label: "Small dark tone",
+        className: "tests-button-small-button",
       }
     },
   ];

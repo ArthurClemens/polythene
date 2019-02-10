@@ -21,7 +21,7 @@ This section describes a number of ways to create customizations - from simple l
 Customization options can be used side by side:
 
 1. [Light and Dark](theming/light-and-dark.md)
-1. [Style variables](theming/style-variables.md)
+1. [Styling with variables](theming/style-variables.md)
 1. [Wrapper components](theming/wrapper-components.md)
 1. [Global theme file](theming/global-theme-file.md)
 1. [Custom CSS](theming/custom-css.md)

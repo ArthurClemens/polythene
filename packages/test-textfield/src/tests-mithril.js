@@ -1,6 +1,6 @@
 import { renderer, keys, TextField, Button } from "polythene-mithril";
 import genericTests from "./tests-generic";
-import setValue from "./components/set-value-mithril-withAttr";
+import setValue from "./components/set-value-mithril-target";
 import FormValidation from "./components/form-validation-mithril";
 
 const mithrilTests = ({ TextField, Button, renderer: h }) => {
@@ -40,7 +40,7 @@ const mithrilTests = ({ TextField, Button, renderer: h }) => {
       }
     },
     {
-      name: "Set value (variation with withAttr)",
+      name: "Set value (variation with e.target.value)",
       interactive: true,
       excluded: true,
       component: {

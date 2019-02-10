@@ -1,11 +1,14 @@
 [Back to Theme main page](../theming.md)
 
-# Style variables
+# Styling with variables
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
 - [Introduction](#introduction)
 - [Styling components with variables](#styling-components-with-variables)
+  - [Using addStyle](#using-addstyle)
+  - [Performance](#performance)
+  - [Only the minimum of CSS](#only-the-minimum-of-css)
   - [Themed behaviors](#themed-behaviors)
   - [Using scope](#using-scope)
   - [Using media queries](#using-media-queries)
@@ -53,18 +56,13 @@ export default {
 <a id="styling-components-with-variables"></a>
 ## Styling components with variables 
 
+### Using addStyle
+
 Each component's CSS functions can be accessed with the naming pattern `{ComponentName}CSS`:
 
 ~~~javascript
 import { IconCSS } from "polythene-css"
 ~~~
-
-You may also choose to import directly from the component's CSS package:
-
-~~~javascript
-import { addStyle } from "polythene-css-icon"
-~~~
-
 
 Call `addStyle` to create a style:
 
@@ -103,6 +101,46 @@ With React JSX:
 ~~~jsx
 <Icon className="purple-icon" />
 ~~~
+
+
+### Performance
+
+The above method is the easiest way to create a new style, but any import from `polythene-css` will trigger each component to add its styles to the page head.
+
+This is not a problem if you are using CSS-in-JS anyway, but when you are using CSS files instead, this is unnecessary overhead.
+
+Two options to keep the impact small:
+
+1. Keep all CSS in files: [write custom CSS to a file](../css.md#theming-options)
+2. Import from the component's CSS package:
+
+~~~javascript
+import { addStyle } from "polythene-css-icon"
+
+addStyle(
+  ".purple-icon",
+  {
+    color_light:  "purple"
+  }
+)
+~~~
+
+
+
+### Only the minimum of CSS
+
+When using `addStyle` (or `getStyle` when [writing CSS to a file](../css.md#theming-options)) only a minimal subset of CSS is created based on the passed variables.
+
+Tip 1: When using a custom style for a component that will be displayed on a dark tone, be sure to also add dark tone color variables:
+
+~~~javascript
+ButtonCSS.addStyle(".my-button", {
+  color_light_text: "#333",
+  color_dark_text:  "#fff",
+});
+~~~
+
+Tip 2: To use all default variables, pass `general_styles: true`. This will read the default variables, plus the ones added with addStyle/getStyle. The resulting CSS will be bigger of course.
 
 
 <a id="themed-behaviors"></a>
@@ -215,7 +253,7 @@ IconCSS.addStyle(
 It is possible to combine styles. This card has a colored background, and at small screen sizes the image is displayed smaller:
 
 ~~~javascript
-CardCSS.getStyle(
+CardCSS.addStyle(
   ".themed-card",
   {
     color_dark_main_background: "#B89E58",
@@ -223,7 +261,7 @@ CardCSS.getStyle(
     color_dark_subtitle_text:   "#fff"
   }
 ),
-CardCSS.getStyle(
+CardCSS.addStyle(
   ".small-image-card",
   {
     image_size_medium: 90

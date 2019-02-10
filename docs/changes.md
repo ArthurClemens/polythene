@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.5](#15)
+  - [1.5.1](#151)
   - [1.5.0](#150)
     - [Bundle size](#bundle-size)
     - [TypeScript type definitions](#typescript-type-definitions)
@@ -40,6 +41,13 @@
 
 ## 1.5
 
+### 1.5.1
+
+* Fixes for Mithril 2
+* Button: Removed Button variable `padding_h_border`: use `padding_h`
+* Documentation: [Styling with variables](theming/style-variables.md) - added section about performance
+* Other bug fixes
+
 ### 1.5.0
 
 #### Bundle size
@@ -54,7 +62,7 @@ All components now contain TypeScript type definitions. This makes it easier to 
 
 #### CSS
 
-Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a theme style to a CSS scope, for example a specific page. See [Style variables](theming/style-variables.md#using-scope) for an example.
+Functions `addStyle` and `getStyle` now accept a parameter `scope` to restrict a theme style to a CSS scope, for example a specific page. See [Styling with variables](theming/style-variables.md#using-scope) for an example.
 
 #### Components
 
@@ -111,7 +119,7 @@ Google has updated their Material Design specs ("Version 2"). A couple of the ch
 <a id="css"></a>
 #### CSS
 
-CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [Style variables](theming/style-variables.md) how to use it).
+CSS creation has been optimized, specifically when creating themed CSS. Instead of recreating the entire CSS, now only a minimal subset is created based on the passed variables (see [Styling with variables](theming/style-variables.md) how to use it).
 
 In terms of internal organisation, CSS variable files have been moved to each component's CSS package, which is a more logical location.
 
@@ -143,7 +151,7 @@ Some examples:
 * Create a Drawer that behaves differently on different screen sizes: [Mithril example](components/mithril/drawer.md#responsive-drawer), [React example](components/react/drawer.md#responsive-drawer)
 * Change the image size on a Card, without changing the component options
 
-See [CSS/Style variables](theming/style-variables.md#using-media-queries) how to use this feature.
+See [CSS/Styling with variables](theming/style-variables.md#using-media-queries) how to use this feature.
 
 
 <a id="components"></a>
