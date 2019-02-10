@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-snackbar",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "",
   "main": "dist/polythene-mithril-snackbar",
   "module": "dist/polythene-mithril-snackbar.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.1",
-    "polythene-core-snackbar": "^1.5.1",
-    "polythene-css-classes": "^1.5.1",
-    "polythene-mithril-base": "^1.5.1"
+    "polythene-core": "^1.5.2",
+    "polythene-core-snackbar": "^1.5.2",
+    "polythene-css-classes": "^1.5.2",
+    "polythene-mithril-base": "^1.5.2"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

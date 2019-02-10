@@ -2,7 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.5](#15)
-  - [1.5.1](#151)
+  - [1.5.2](#152)
   - [1.5.0](#150)
     - [Bundle size](#bundle-size)
     - [TypeScript type definitions](#typescript-type-definitions)
@@ -41,7 +41,7 @@
 
 ## 1.5
 
-### 1.5.1
+### 1.5.2
 
 * Fixes for Mithril 2
 * Button: Removed Button variable `padding_h_border`: use `padding_h`

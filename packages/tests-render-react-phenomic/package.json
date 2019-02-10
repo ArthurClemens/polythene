@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-render-react-phenomic",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -11,8 +11,8 @@
   "dependencies": {
     "@phenomic/cli": "^1.0.0-beta.9",
     "@phenomic/core": "^1.0.0-beta.9",
-    "polythene-css": "^1.5.1",
-    "polythene-react": "^1.5.1",
+    "polythene-css": "^1.5.2",
+    "polythene-react": "^1.5.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",

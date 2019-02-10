@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-switch",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "",
   "main": "dist/polythene-css-switch",
   "module": "dist/polythene-css-switch.mjs",
@@ -18,11 +18,11 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.5.1",
-    "polythene-css-classes": "^1.5.1",
-    "polythene-css-icon-button": "^1.5.1",
-    "polythene-css-selection-control": "^1.5.1",
-    "polythene-theme": "^1.5.1"
+    "polythene-core-css": "^1.5.2",
+    "polythene-css-classes": "^1.5.2",
+    "polythene-css-icon-button": "^1.5.2",
+    "polythene-css-selection-control": "^1.5.2",
+    "polythene-theme": "^1.5.2"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

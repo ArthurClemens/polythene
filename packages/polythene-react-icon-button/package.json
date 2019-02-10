@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-icon-button",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "",
   "main": "dist/polythene-react-icon-button",
   "module": "dist/polythene-react-icon-button.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-icon-button": "^1.5.1",
-    "polythene-react-base": "^1.5.1",
-    "polythene-react-button": "^1.5.1",
-    "polythene-react-icon": "^1.5.1"
+    "polythene-core-icon-button": "^1.5.2",
+    "polythene-react-base": "^1.5.2",
+    "polythene-react-button": "^1.5.2",
+    "polythene-react-icon": "^1.5.2"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"
