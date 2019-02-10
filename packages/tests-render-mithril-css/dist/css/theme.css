@@ -13,11 +13,6 @@
 }
 
 @media (max-width:480px) {
-  .pe-text-button.themed-button .pe-button__content {
-    padding-left: 16px;
-    padding-right: 16px
-  }
-
   .pe-text-button.themed-button .pe-button__wash {
     display: none
   }
@@ -32,11 +27,6 @@
 }
 
 @media (max-width:480px) {
-  .pe-text-button.pe-button--contained.themed-button .pe-button__content {
-    padding-left: 16px;
-    padding-right: 16px
-  }
-
   .pe-text-button.pe-button--contained.themed-button .pe-button__wash {
     display: none
   }

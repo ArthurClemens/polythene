@@ -1,6 +1,6 @@
 {
   "name": "tests-render-react-typescript",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "private": true,
   "scripts": {
@@ -14,9 +14,9 @@
     "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --jsx react --esModuleInterop src/index.tsx"
   },
   "dependencies": {
-    "polythene-css": "^1.5.0",
-    "polythene-react": "^1.5.0",
-    "polythene-utilities": "^1.5.0",
+    "polythene-css": "^1.5.1",
+    "polythene-react": "^1.5.1",
+    "polythene-utilities": "^1.5.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
   },
