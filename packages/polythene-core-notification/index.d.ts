@@ -78,7 +78,10 @@ export interface SpawnOptions {
 
 }
 
-export type show = <T>(messageOptions: AppearanceOptions, spawnOptions?: SpawnOptions) => Promise<T>;
+type showStatic = <T>(messageOptions: AppearanceOptions, spawnOptions?: SpawnOptions) => Promise<T>;
+type showDynamic = (_:any) => showStatic;
+export type show = showDynamic & showStatic;
+
 export type hide = <T>(spawnOptions?: SpawnOptions) => Promise<T>;
 
 export const coreNotification: CoreComponentCreatorOptions;

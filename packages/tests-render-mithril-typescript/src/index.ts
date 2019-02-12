@@ -304,11 +304,11 @@ const App = {
               raised: true,
               label: "Show Notification",
               events: {
-                onclick: () => Notification.show({
+                onclick: () => Notification.show(() => ({
                   /* note the Notification component is below the other elements in the app */
                   title: "Hello",
                   timeout: 2,
-                })
+                }))
               }
             })
           )
