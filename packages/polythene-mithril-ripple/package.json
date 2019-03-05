@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-ripple",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-mithril-ripple",
   "module": "dist/polythene-mithril-ripple.mjs",
@@ -16,8 +16,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-ripple": "^1.5.2",
-    "polythene-mithril-base": "^1.5.2"
+    "polythene-core-ripple": "^1.5.3",
+    "polythene-mithril-base": "^1.5.3"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

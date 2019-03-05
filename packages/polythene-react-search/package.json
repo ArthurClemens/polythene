@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-search",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-react-search",
   "module": "dist/polythene-react-search.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-search": "^1.5.2",
-    "polythene-react-base": "^1.5.2",
-    "polythene-react-textfield": "^1.5.2"
+    "polythene-core-search": "^1.5.3",
+    "polythene-react-base": "^1.5.3",
+    "polythene-react-textfield": "^1.5.3"
   },
   "devDependencies": {
     "@types/react": "^16.8.6"

@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-fab",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-react-fab",
   "module": "dist/polythene-react-fab.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-fab": "^1.5.2",
-    "polythene-react-base": "^1.5.2",
-    "polythene-react-button": "^1.5.2",
-    "polythene-react-icon": "^1.5.2"
+    "polythene-core-fab": "^1.5.3",
+    "polythene-react-base": "^1.5.3",
+    "polythene-react-button": "^1.5.3",
+    "polythene-react-icon": "^1.5.3"
   },
   "devDependencies": {
     "@types/react": "^16.8.6"

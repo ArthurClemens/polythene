@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-svg",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "description": "",
   "sideEffects": false,
@@ -9,10 +9,10 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-css": "^1.5.2",
-    "polythene-css-svg": "^1.5.2",
-    "polythene-mithril": "^1.5.2",
-    "polythene-react": "^1.5.2"
+    "polythene-css": "^1.5.3",
+    "polythene-css-svg": "^1.5.3",
+    "polythene-mithril": "^1.5.3",
+    "polythene-react": "^1.5.3"
   },
   "devDependencies": {
     "react": "^16.8.3"

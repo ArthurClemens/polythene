@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-shadow",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-react-shadow",
   "module": "dist/polythene-react-shadow.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.5.2",
-    "polythene-react-base": "^1.5.2"
+    "polythene-core-shadow": "^1.5.3",
+    "polythene-react-base": "^1.5.3"
   },
   "devDependencies": {
     "@types/react": "^16.8.6"

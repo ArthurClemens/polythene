@@ -1,6 +1,6 @@
 {
   "name": "tests-render-mithril-isomorphic",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "description": "Polythene for Mithril isomorphic tests",
   "license": "MIT",
@@ -12,11 +12,11 @@
   "devDependencies": {
     "mithril": "^1.1.6",
     "mithril-node-render": "2.3.1",
-    "mocha": "^6.0.2",
-    "polythene-mithril": "^1.5.2",
-    "polythene-mithril-button": "^1.5.2",
-    "polythene-mithril-raised-button": "^1.5.2",
-    "polythene-mithril-slider": "^1.5.2",
-    "polythene-mithril-snackbar": "^1.5.2"
+    "mocha": "^5.2.0",
+    "polythene-mithril": "^1.5.3",
+    "polythene-mithril-button": "^1.5.3",
+    "polythene-mithril-raised-button": "^1.5.3",
+    "polythene-mithril-slider": "^1.5.3",
+    "polythene-mithril-snackbar": "^1.5.3"
   }
 }

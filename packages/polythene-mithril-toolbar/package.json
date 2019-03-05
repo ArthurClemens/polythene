@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-toolbar",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-mithril-toolbar",
   "module": "dist/polythene-mithril-toolbar.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-toolbar": "^1.5.2",
-    "polythene-mithril-base": "^1.5.2",
-    "polythene-mithril-shadow": "^1.5.2"
+    "polythene-core-toolbar": "^1.5.3",
+    "polythene-mithril-base": "^1.5.3",
+    "polythene-mithril-shadow": "^1.5.3"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"
