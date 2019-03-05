@@ -1,5 +1,5 @@
 import { createLayout, sel, mixin, styler } from 'polythene-core-css';
-import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-shadow",
@@ -64,9 +64,9 @@ function _objectSpread(target) {
 }
 
 var _createShadowForSelector = function _createShadowForSelector(which, depth) {
-  return function (selector, vars$$1) {
+  return function (selector, vars) {
     return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which, ".pe-shadow--depth-").concat(depth), {
-      boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
+      boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
     }));
   };
 };
@@ -78,9 +78,9 @@ var _createShadowForSelector = function _createShadowForSelector(which, depth) {
  */
 
 
-var _createShadow = function _createShadow(selector, vars$$1, depth, which) {
+var _createShadow = function _createShadow(selector, vars, depth, which) {
   return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which), {
-    boxShadow: vars$$1["shadow_".concat(which, "_depth_").concat(depth)]
+    boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
   }));
 };
 /**
@@ -91,8 +91,8 @@ var _createShadow = function _createShadow(selector, vars$$1, depth, which) {
  */
 
 
-var shadow = function shadow(selector, vars$$1, depth) {
-  return [_createShadow(selector, vars$$1, depth, "top"), _createShadow(selector, vars$$1, depth, "bottom")];
+var shadow = function shadow(selector, vars, depth) {
+  return [_createShadow(selector, vars, depth, "top"), _createShadow(selector, vars, depth, "bottom")];
 };
 /**
  * @param {string} selector 
@@ -101,8 +101,8 @@ var shadow = function shadow(selector, vars$$1, depth) {
  */
 
 
-var shadow_depth = function shadow_depth(selector, vars$$1) {
-  return vars$$1.shadow_depth !== undefined ? shadow(selector, vars$$1, vars$$1.shadow_depth) : null;
+var shadow_depth = function shadow_depth(selector, vars) {
+  return vars.shadow_depth !== undefined ? shadow(selector, vars, vars.shadow_depth) : null;
 };
 
 var sharedVarFns = {
@@ -110,8 +110,8 @@ var sharedVarFns = {
 };
 
 var varFns = _extends({}, {
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [mixin.fit(), shadow(selector, vars$$1, 1), {
+  general_styles: function general_styles(selector, vars) {
+    return [sel(selector, [mixin.fit(), shadow(selector, vars, 1), {
       borderRadius: "inherit",
       pointerEvents: "none",
       " .pe-shadow__bottom, .pe-shadow__top": [mixin.fit(), {
@@ -119,11 +119,11 @@ var varFns = _extends({}, {
       }]
     }])];
   },
-  transition: function transition(selector, vars$$1) {
+  transition: function transition(selector, vars) {
     return [sel(selector, {
       ".pe-shadow--animated": {
         " .pe-shadow__bottom, .pe-shadow__top": {
-          transition: vars$$1.transition
+          transition: vars.transition
         }
       }
     })];
@@ -153,23 +153,23 @@ var sharedVars = {
   // theme vars
   shadow_depth: undefined
 };
-var vars$1 = _objectSpread({
+var vars = _objectSpread({
   /**
    * Generate general styles, not defined by variables
    */
   general_styles: true,
-  transition: "box-shadow ".concat(vars.animation_duration, " ease-out")
+  transition: "box-shadow ".concat(vars$1.animation_duration, " ease-out")
 }, sharedVars);
 
 // @ts-check
 var fns = [layout];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, vars);
+var getStyle = styler.createGetStyle(selector, fns, vars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: vars
 });
 
-export { addStyle, getStyle, layout, vars$1 as vars, sharedVars, sharedVarFns };
+export { addStyle, getStyle, layout, vars, sharedVars, sharedVarFns };

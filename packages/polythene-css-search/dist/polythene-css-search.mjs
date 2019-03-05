@@ -56,23 +56,23 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
+      backgroundColor: vars["color_" + tint + "_background"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_label_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_label_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-textfield": {
         " .pe-textfield__label": {
-          color: vars$$1["color_" + tint + "_label_text"]
+          color: vars["color_" + tint + "_label_text"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_input_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_input_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-textfield": {
         " .pe-textfield__input": {
-          color: vars$$1["color_" + tint + "_input_text"]
+          color: vars["color_" + tint + "_input_text"]
         }
       }
     })];
@@ -92,8 +92,8 @@ var color = createColor({
 
 // @ts-check
 
-var inset_height_line_height_input = function inset_height_line_height_input(selector, vars$$1) {
-  var inset_input_padding_v = (vars$$1.inset_height - vars$$1.line_height_input) / 2;
+var inset_height_line_height_input = function inset_height_line_height_input(selector, vars) {
+  var inset_input_padding_v = (vars.inset_height - vars.line_height_input) / 2;
   return sel(selector, {
     ".pe-search--inset": {
       " .pe-textfield__input, .pe-textfield__label": {
@@ -104,8 +104,8 @@ var inset_height_line_height_input = function inset_height_line_height_input(sel
   });
 };
 
-var full_width_height_line_height_input = function full_width_height_line_height_input(selector, vars$$1) {
-  var full_width_input_padding_v = (vars$$1.full_width_height - vars$$1.line_height_input) / 2;
+var full_width_height_line_height_input = function full_width_height_line_height_input(selector, vars) {
+  var full_width_input_padding_v = (vars.full_width_height - vars.line_height_input) / 2;
   return sel(selector, {
     ".pe-search--full-width": {
       " .pe-textfield__input, .pe-textfield__label": {
@@ -157,104 +157,104 @@ var varFns = {
       }
     }])];
   },
-  font_size_input: function font_size_input(selector, vars$$1) {
+  font_size_input: function font_size_input(selector, vars) {
     return [sel(selector, {
       " .pe-textfield": {
         " .pe-textfield__input, .pe-textfield__label": {
-          fontSize: vars$$1.font_size_input + "px"
+          fontSize: vars.font_size_input + "px"
         }
       }
     })];
   },
-  line_height_input: function line_height_input(selector, vars$$1) {
+  line_height_input: function line_height_input(selector, vars) {
     return [sel(selector, {
       " .pe-textfield__input, .pe-textfield__label": {
-        lineHeight: vars$$1.line_height_input + "px"
+        lineHeight: vars.line_height_input + "px"
       }
-    }), inset_height_line_height_input(selector, vars$$1)];
+    }), inset_height_line_height_input(selector, vars)];
   },
-  inset_border_radius: function inset_border_radius(selector, vars$$1) {
+  inset_border_radius: function inset_border_radius(selector, vars) {
     return [sel(selector, {
       ".pe-search--inset": {
-        "border-radius": vars$$1.inset_border_radius + "px"
+        "border-radius": vars.inset_border_radius + "px"
       }
     })];
   },
-  inset_side_padding: function inset_side_padding(selector, vars$$1) {
+  inset_side_padding: function inset_side_padding(selector, vars) {
     return [sel(selector, {
       ".pe-search--inset": {
-        padding: "0 " + vars$$1.inset_side_padding + "px"
+        padding: "0 " + vars.inset_side_padding + "px"
       }
     })];
   },
-  inset_height: function inset_height(selector, vars$$1) {
+  inset_height: function inset_height(selector, vars) {
     return [sel(selector, {
       ".pe-search--inset": {
         "&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label": {
           padding: 0,
-          height: vars$$1.inset_height + "px"
+          height: vars.inset_height + "px"
         }
       }
-    }), inset_height_line_height_input(selector, vars$$1)];
+    }), inset_height_line_height_input(selector, vars)];
   },
-  full_width_height: function full_width_height(selector, vars$$1) {
+  full_width_height: function full_width_height(selector, vars) {
     return [sel(selector, {
       ".pe-search--full-width": {
         "&, .pe-textfield__input-area, .pe-textfield__input, .pe-textfield__label": {
-          height: vars$$1.full_width_height + "px"
+          height: vars.full_width_height + "px"
         }
       }
-    }), full_width_height_line_height_input(selector, vars$$1)];
+    }), full_width_height_line_height_input(selector, vars)];
   },
-  inset_input_indent: function inset_input_indent(selector, vars$$1) {
+  inset_input_indent: function inset_input_indent(selector, vars) {
     return [sel(selector, {
       ".pe-search--inset": {
         " .pe-textfield__input, .pe-textfield__label": {
-          paddingLeft: vars$$1.inset_input_indent + "px"
+          paddingLeft: vars.inset_input_indent + "px"
         }
       }
     })];
   },
-  inset_input_right_padding: function inset_input_right_padding(selector, vars$$1) {
+  inset_input_right_padding: function inset_input_right_padding(selector, vars) {
     return [sel(selector, {
       ".pe-search--inset": {
         " .pe-textfield__input, .pe-textfield__label": {
-          paddingRight: vars$$1.inset_input_right_padding + "px"
+          paddingRight: vars.inset_input_right_padding + "px"
         }
       }
     })];
   },
-  full_width_side_padding: function full_width_side_padding(selector, vars$$1) {
-    var full_width_input_indent = vars.unit_indent - vars$$1.full_width_side_padding - vars.grid_unit_icon_button;
+  full_width_side_padding: function full_width_side_padding(selector, vars$1) {
+    var full_width_input_indent = vars.unit_indent - vars$1.full_width_side_padding - vars.grid_unit_icon_button;
     return sel(selector, {
       ".pe-search--full-width": {
-        padding: "0 " + vars$$1.full_width_side_padding + "px",
+        padding: "0 " + vars$1.full_width_side_padding + "px",
         " .pe-textfield__input, .pe-textfield__label": {
           paddingLeft: full_width_input_indent + "px"
         }
       },
       ".pe-search--full-width + .pe-list .pe-list-tile": {
         "> :first-child": {
-          paddingLeft: vars$$1.full_width_side_padding + "px"
+          paddingLeft: vars$1.full_width_side_padding + "px"
         },
         "> :last-child": {
-          paddingRight: vars$$1.full_width_side_padding + "px"
+          paddingRight: vars$1.full_width_side_padding + "px"
         }
       }
     });
   },
-  full_width_border_radius: function full_width_border_radius(selector, vars$$1) {
+  full_width_border_radius: function full_width_border_radius(selector, vars) {
     return [sel(selector, {
       ".pe-search--full-width": {
-        borderRadius: vars$$1.full_width_border_radius + "px"
+        borderRadius: vars.full_width_border_radius + "px"
       }
     })];
   },
-  full_width_input_right_padding: function full_width_input_right_padding(selector, vars$$1) {
+  full_width_input_right_padding: function full_width_input_right_padding(selector, vars) {
     return [sel(selector, {
       ".pe-search--full-width": {
         " .pe-textfield__input, .pe-textfield__label": {
-          paddingRight: vars$$1.full_width_input_right_padding + "px"
+          paddingRight: vars.full_width_input_right_padding + "px"
         }
       }
     })];

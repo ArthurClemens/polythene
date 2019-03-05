@@ -60,16 +60,16 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        color: vars$$1["color_" + tint + "_text"]
+        color: vars["color_" + tint + "_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        background: vars$$1["color_" + tint + "_background"]
+        background: vars["color_" + tint + "_background"]
       }
     })];
   }), _ref;
@@ -113,90 +113,90 @@ var holderLayout = createLayout({
   varFns: varFns
 });
 
-var title_single_padding_v_title_padding_h = function title_single_padding_v_title_padding_h(selector, vars$$1) {
+var title_single_padding_v_title_padding_h = function title_single_padding_v_title_padding_h(selector, vars) {
   return sel(selector, {
     " .pe-notification__title": {
-      padding: vars$$1.title_single_padding_v + "px " + vars$$1.title_padding_h + "px"
+      padding: vars.title_single_padding_v + "px " + vars.title_padding_h + "px"
     }
   });
 };
 
 var customLayoutFns = {
-  animation_hide_css: function animation_hide_css(selector, vars$$1) {
-    return [sel(selector, vars$$1.animation_hide_css)];
+  animation_hide_css: function animation_hide_css(selector, vars) {
+    return [sel(selector, vars.animation_hide_css)];
   },
-  animation_show_css: function animation_show_css(selector, vars$$1) {
+  animation_show_css: function animation_show_css(selector, vars) {
     return [sel(selector, {
-      ".pe-notification--visible": [vars$$1.animation_show_css]
+      ".pe-notification--visible": [vars.animation_show_css]
     })];
   },
-  width: function width(selector, vars$$1) {
+  width: function width(selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        width: vars$$1.width + "px"
+        width: vars.width + "px"
       }
     })];
   },
-  animation_delay: function animation_delay(selector, vars$$1) {
+  animation_delay: function animation_delay(selector, vars) {
     return [sel(selector, {
-      transitionDelay: vars$$1.animation_delay
+      transitionDelay: vars.animation_delay
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      transitionDuration: vars$$1.animation_duration
+      transitionDuration: vars.animation_duration
     })];
   },
-  animation_timing_function: function animation_timing_function(selector, vars$$1) {
+  animation_timing_function: function animation_timing_function(selector, vars) {
     return [sel(selector, {
-      transitionTimingFunction: vars$$1.animation_timing_function
+      transitionTimingFunction: vars.animation_timing_function
     })];
   },
-  side_padding: function side_padding(selector, vars$$1) {
+  side_padding: function side_padding(selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        padding: "0 " + vars$$1.side_padding + "px"
+        padding: "0 " + vars.side_padding + "px"
       }
     })];
   },
-  border_radius: function border_radius(selector, vars$$1) {
+  border_radius: function border_radius(selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        borderRadius: vars$$1.border_radius + "px"
+        borderRadius: vars.border_radius + "px"
       }
     })];
   },
-  title_single_padding_v: function title_single_padding_v(selector, vars$$1) {
-    return [title_single_padding_v_title_padding_h(selector, vars$$1)];
+  title_single_padding_v: function title_single_padding_v(selector, vars) {
+    return [title_single_padding_v_title_padding_h(selector, vars)];
   },
-  title_padding_h: function title_padding_h(selector, vars$$1) {
-    return [title_single_padding_v_title_padding_h(selector, vars$$1)];
+  title_padding_h: function title_padding_h(selector, vars) {
+    return [title_single_padding_v_title_padding_h(selector, vars)];
   },
-  font_size: function font_size(selector, vars$$1) {
+  font_size: function font_size(selector, vars) {
     return [sel(selector, {
       " .pe-notification__title": {
-        fontSize: vars$$1.font_size + "px"
+        fontSize: vars.font_size + "px"
       }
     })];
   },
-  line_height: function line_height(selector, vars$$1) {
+  line_height: function line_height(selector, vars) {
     return [sel(selector, {
       " .pe-notification__title": {
-        lineHeight: vars$$1.line_height + "px"
+        lineHeight: vars.line_height + "px"
       }
     })];
   },
-  title_multi_padding_v: function title_multi_padding_v(selector, vars$$1) {
+  title_multi_padding_v: function title_multi_padding_v(selector, vars) {
     return [sel(selector, {
       ".pe-notification--horizontal": {
         " .pe-notification__title--multi-line": {
-          paddingTop: vars$$1.title_multi_padding_v + "px",
-          paddingBottom: vars$$1.title_multi_padding_v + "px"
+          paddingTop: vars.title_multi_padding_v + "px",
+          paddingBottom: vars.title_multi_padding_v + "px"
         }
       },
       ".pe-notification--vertical": {
         " .pe-notification__title--multi-line": {
-          paddingTop: vars$$1.title_multi_padding_v + "px"
+          paddingTop: vars.title_multi_padding_v + "px"
         }
       }
     })];

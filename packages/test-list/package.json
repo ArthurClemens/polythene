@@ -14,7 +14,7 @@
     "polythene-react": "^1.5.2"
   },
   "devDependencies": {
-    "react": "^16.7.0",
+    "react": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "polythene-core-list-tile": "^1.5.2"
   },

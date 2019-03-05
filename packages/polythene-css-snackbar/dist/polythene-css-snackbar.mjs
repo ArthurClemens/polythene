@@ -1,5 +1,5 @@
 import { createColor, createLayout, sel, flex, rgba, styler } from 'polythene-core-css';
-import { color, customLayoutFns } from 'polythene-css-notification';
+import { color as color$1, customLayoutFns } from 'polythene-css-notification';
 import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) {
@@ -62,8 +62,8 @@ var classes = _objectSpread({}, notificationClasses, {
 });
 
 // @ts-check
-var color$1 = createColor({
-  superColor: color
+var color = createColor({
+  superColor: color$1
 });
 
 var varFns = {
@@ -114,21 +114,21 @@ var varFns$1 = {
       }
     })];
   },
-  min_width: function min_width(selector, vars$$1) {
+  min_width: function min_width(selector, vars) {
     return [breakpointTabletPortraitUp(selector, {
-      minWidth: vars$$1.min_width + "px"
+      minWidth: vars.min_width + "px"
     })];
   },
-  max_width: function max_width(selector, vars$$1) {
+  max_width: function max_width(selector, vars) {
     return [breakpointTabletPortraitUp(selector, {
-      maxWidth: vars$$1.max_width + "px"
+      maxWidth: vars.max_width + "px"
     })];
   },
-  border_radius: function border_radius(selector, vars$$1) {
+  border_radius: function border_radius(selector, vars) {
     return [sel(selector, {
       " .pe-notification__content": {
-        borderTopLeftRadius: vars$$1.border_radius + "px",
-        borderTopRightRadius: vars$$1.border_radius + "px",
+        borderTopLeftRadius: vars.border_radius + "px",
+        borderTopRightRadius: vars.border_radius + "px",
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0
       }
@@ -161,7 +161,7 @@ var snackbarVars = {
 };
 
 // @ts-check
-var fns = [layout, color$1];
+var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
 var holderFns = [holderLayout];
 var holderSelector = ".".concat(classes.holder.replace(/ /g, "."));
@@ -229,4 +229,4 @@ styler.addStyle({
   vars: snackbarVars
 });
 
-export { addStyle, getStyle, color$1 as color, layout, snackbarVars as vars, holderLayout };
+export { addStyle, getStyle, color, layout, snackbarVars as vars, holderLayout };

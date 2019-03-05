@@ -58,7 +58,7 @@
     "react-hyperscript": "^3.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.7.20"
+    "@types/react": "^16.8.6"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

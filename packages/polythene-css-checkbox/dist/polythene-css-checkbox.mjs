@@ -1,18 +1,18 @@
 import { createColor, createLayout, styler } from 'polythene-core-css';
-import { color, layout } from 'polythene-css-selection-control';
+import { color as color$1, layout as layout$1 } from 'polythene-css-selection-control';
 
 var classes = {
   component: "pe-checkbox-control"
 };
 
 // @ts-check
-var color$1 = createColor({
-  superColor: color
+var color = createColor({
+  superColor: color$1
 });
 
 // @ts-check
-var layout$1 = createLayout({
-  superLayout: layout
+var layout = createLayout({
+  superLayout: layout$1
 });
 
 // @ts-check
@@ -32,7 +32,7 @@ var checkboxVars = {
 };
 
 // @ts-check
-var fns = [layout$1, color$1];
+var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, checkboxVars);
 var getStyle = styler.createGetStyle(selector, fns, checkboxVars);
@@ -42,4 +42,4 @@ styler.addStyle({
   vars: checkboxVars
 });
 
-export { addStyle, getStyle, color$1 as color, layout$1 as layout, checkboxVars as vars };
+export { addStyle, getStyle, color, layout, checkboxVars as vars };

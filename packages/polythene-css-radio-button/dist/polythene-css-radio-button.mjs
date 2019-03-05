@@ -1,13 +1,13 @@
 import { createColor, createLayout, styler } from 'polythene-core-css';
-import { color, layout } from 'polythene-css-selection-control';
+import { color as color$1, layout as layout$1 } from 'polythene-css-selection-control';
 
 var classes = {
   component: "pe-radio-control"
 };
 
 // @ts-check
-var color$1 = createColor({
-  superColor: color
+var color = createColor({
+  superColor: color$1
 });
 
 // @ts-check
@@ -20,9 +20,9 @@ var varFns = {
     };
   }
 };
-var layout$1 = createLayout({
+var layout = createLayout({
   varFns: varFns,
-  superLayout: layout
+  superLayout: layout$1
 });
 
 // @ts-check
@@ -42,7 +42,7 @@ var radioButtonVars = {
 };
 
 // @ts-check
-var fns = [layout$1, color$1];
+var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, radioButtonVars);
 var getStyle = styler.createGetStyle(selector, fns, radioButtonVars);
@@ -52,4 +52,4 @@ styler.addStyle({
   vars: radioButtonVars
 });
 
-export { addStyle, getStyle, color$1 as color, layout$1 as layout, radioButtonVars as vars };
+export { addStyle, getStyle, color, layout, radioButtonVars as vars };

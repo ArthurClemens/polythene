@@ -1,5 +1,5 @@
 import { createColor, sel, createLayout, mixin, rgba, styler } from 'polythene-core-css';
-import { layout, vars as vars$2 } from 'polythene-css-selection-control';
+import { layout as layout$1, vars as vars$2 } from 'polythene-css-selection-control';
 import { vars } from 'polythene-theme';
 import { vars as vars$1 } from 'polythene-css-icon-button';
 
@@ -70,161 +70,161 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
     return [sel(selector, {
       " .pe-control__label": {
-        color: vars$$1["color_" + tint + "_label"]
+        color: vars["color_" + tint + "_label"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-switch-control__track": {
-          backgroundColor: vars$$1["color_" + tint + "_track_off"]
+          backgroundColor: vars["color_" + tint + "_track_off"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_off_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_off_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-switch-control__track": {
-          opacity: vars$$1["color_" + tint + "_track_off_opacity"]
+          opacity: vars["color_" + tint + "_track_off_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-switch-control__thumb": {
-          color: vars$$1["color_" + tint + "_thumb_off"]
+          color: vars["color_" + tint + "_thumb_off"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-button--focus": {
           " .pe-button__focus": {
-            backgroundColor: vars$$1["color_" + tint + "_focus_off"]
+            backgroundColor: vars["color_" + tint + "_focus_off"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-button--focus": {
           " .pe-button__focus": {
-            opacity: vars$$1["color_" + tint + "_focus_off_opacity"]
+            opacity: vars["color_" + tint + "_focus_off_opacity"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_icon_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_icon_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-icon": {
-          color: vars$$1["color_" + tint + "_icon_off"]
+          color: vars["color_" + tint + "_icon_off"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_off_label"]
+          color: vars["color_" + tint + "_off_label"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-switch-control__track": {
-          backgroundColor: vars$$1["color_" + tint + "_track_on"]
+          backgroundColor: vars["color_" + tint + "_track_on"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_on_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_on_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-switch-control__track": {
-          opacity: vars$$1["color_" + tint + "_track_on_opacity"]
+          opacity: vars["color_" + tint + "_track_on_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-switch-control__thumb": {
-          color: vars$$1["color_" + tint + "_thumb_on"]
+          color: vars["color_" + tint + "_thumb_on"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-button--focus": {
           " .pe-button__focus": {
-            backgroundColor: vars$$1["color_" + tint + "_focus_on"]
+            backgroundColor: vars["color_" + tint + "_focus_on"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-button--focus": {
           " .pe-button__focus": {
-            opacity: vars$$1["color_" + tint + "_focus_on_opacity"]
+            opacity: vars["color_" + tint + "_focus_on_opacity"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_icon_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_icon_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-icon": {
-          color: vars$$1["color_" + tint + "_icon_on"]
+          color: vars["color_" + tint + "_icon_on"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_on_label"]
+          color: vars["color_" + tint + "_on_label"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_disabled"]
+          color: vars["color_" + tint + "_disabled"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
         " .pe-switch-control__track": {
-          backgroundColor: vars$$1["color_" + tint + "_track_disabled"]
+          backgroundColor: vars["color_" + tint + "_track_disabled"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_disabled_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_disabled_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
         " .pe-switch-control__track": {
-          opacity: vars$$1["color_" + tint + "_track_disabled_opacity"]
+          opacity: vars["color_" + tint + "_track_disabled_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on.pe-control--disabled, &.pe-control--off.pe-control--disabled": {
         " .pe-switch-control__thumb, .pe-button__content": {
-          color: vars$$1["color_" + tint + "_thumb_disabled"]
+          color: vars["color_" + tint + "_thumb_disabled"]
         }
       }
     })];
@@ -234,19 +234,19 @@ var tintFns = function tintFns(tint) {
 var hoverTintFns = function hoverTintFns(tint) {
   var _ref2;
 
-  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_wash_on", function (selector, vars$$1) {
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_wash_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-button__wash": {
-          backgroundColor: vars$$1["color_" + tint + "_wash_on"]
+          backgroundColor: vars["color_" + tint + "_wash_on"]
         }
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_wash_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-button__wash": {
-          backgroundColor: vars$$1["color_" + tint + "_wash_off"]
+          backgroundColor: vars["color_" + tint + "_wash_off"]
         }
       }
     })];
@@ -268,21 +268,21 @@ var color = createColor({
   }
 });
 
-var transition = function transition(vars$$1, properties) {
-  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars$$1.animation_duration;
+var transition = function transition(vars, properties) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.animation_duration;
   return mixin.defaultTransition(properties, duration, "ease-out");
 };
 
-var getSizeData = function getSizeData(vars$$1, size) {
+var getSizeData = function getSizeData(vars$1, size) {
   var factor = size / vars.unit_icon_size;
-  var thumbSize = Math.floor(0.5 * vars$$1.thumb_size * factor) * 2; // round to even
+  var thumbSize = Math.floor(0.5 * vars$1.thumb_size * factor) * 2; // round to even
 
-  var scaledTrackHeight = Math.floor(0.5 * vars$$1.track_height * factor) * 2; // round to even
+  var scaledTrackHeight = Math.floor(0.5 * vars$1.track_height * factor) * 2; // round to even
 
-  var scaledTrackWidth = Math.floor(0.5 * vars$$1.track_length * factor) * 2;
-  var scaledThumbSize = Math.floor(0.5 * vars$$1.thumb_size * factor) * 2;
-  var trackTop = (vars$$1.label_height * factor - scaledTrackHeight) / 2;
-  var thumbPadding = vars$$1.icon_button_padding;
+  var scaledTrackWidth = Math.floor(0.5 * vars$1.track_length * factor) * 2;
+  var scaledThumbSize = Math.floor(0.5 * vars$1.thumb_size * factor) * 2;
+  var trackTop = (vars$1.label_height * factor - scaledTrackHeight) / 2;
+  var thumbPadding = vars$1.icon_button_padding;
   var thumbMargin = (size - scaledThumbSize) / 2;
   var thumbOuterSize = size + 2 * thumbPadding;
   var thumbOffsetMin = -(thumbOuterSize / 2) + thumbSize / 2;
@@ -306,7 +306,7 @@ var getSizeData = function getSizeData(vars$$1, size) {
   };
 };
 
-var customSize = function customSize(vars$$1, _ref) {
+var customSize = function customSize(vars, _ref) {
   var scaledThumbSize = _ref.scaledThumbSize,
       scaledTrackHeight = _ref.scaledTrackHeight,
       scaledTrackWidth = _ref.scaledTrackWidth,
@@ -341,7 +341,7 @@ var customSize = function customSize(vars$$1, _ref) {
   };
 };
 
-var customSpacing = function customSpacing(vars$$1, _ref2, isRTL) {
+var customSpacing = function customSpacing(vars, _ref2, isRTL) {
   var _peControl__label, _peSwitchControl_, _peSwitchControl_2, _peSwitchControl_3;
 
   var factor = _ref2.factor,
@@ -350,7 +350,7 @@ var customSpacing = function customSpacing(vars$$1, _ref2, isRTL) {
       thumbOffsetMin = _ref2.thumbOffsetMin,
       trackVisualOffset = _ref2.trackVisualOffset;
   return {
-    " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars$$1.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
+    " .pe-control__label": (_peControl__label = {}, _defineProperty(_peControl__label, isRTL ? "paddingRight" : "paddingLeft", vars.padding * factor + 8 + scaledTrackWidth + "px"), _defineProperty(_peControl__label, isRTL ? "paddingLeft" : "paddingRight", 0), _peControl__label),
     " .pe-switch-control__track": (_peSwitchControl_ = {}, _defineProperty(_peSwitchControl_, isRTL ? "right" : "left", trackVisualOffset + "px"), _defineProperty(_peSwitchControl_, isRTL ? "left" : "right", "auto"), _peSwitchControl_),
     " .pe-switch-control__thumb": (_peSwitchControl_2 = {}, _defineProperty(_peSwitchControl_2, isRTL ? "right" : "left", thumbOffsetMin + "px"), _defineProperty(_peSwitchControl_2, isRTL ? "left" : "right", "auto"), _peSwitchControl_2),
     ".pe-control--on": {
@@ -372,23 +372,23 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var createSize = function createSize(selector, vars$$1) {
+var createSize = function createSize(selector, vars$1) {
   var sizeData = {
-    small: getSizeData(vars$$1, vars.unit_icon_size_small),
-    regular: getSizeData(vars$$1, vars.unit_icon_size),
-    medium: getSizeData(vars$$1, vars.unit_icon_size_medium),
-    large: getSizeData(vars$$1, vars.unit_icon_size_large)
+    small: getSizeData(vars$1, vars.unit_icon_size_small),
+    regular: getSizeData(vars$1, vars.unit_icon_size),
+    medium: getSizeData(vars$1, vars.unit_icon_size_medium),
+    large: getSizeData(vars$1, vars.unit_icon_size_large)
   };
   return [sel(selector, {
-    ".pe-control--small": [customSize(vars$$1, sizeData.small), customSpacing(vars$$1, sizeData.small, false)],
-    ".pe-control--regular": [customSize(vars$$1, sizeData.regular), customSpacing(vars$$1, sizeData.regular, false)],
-    ".pe-control--medium": [customSize(vars$$1, sizeData.medium), customSpacing(vars$$1, sizeData.medium, false)],
-    ".pe-control--large": [customSize(vars$$1, sizeData.large), customSpacing(vars$$1, sizeData.large, false)]
+    ".pe-control--small": [customSize(vars$1, sizeData.small), customSpacing(vars$1, sizeData.small, false)],
+    ".pe-control--regular": [customSize(vars$1, sizeData.regular), customSpacing(vars$1, sizeData.regular, false)],
+    ".pe-control--medium": [customSize(vars$1, sizeData.medium), customSpacing(vars$1, sizeData.medium, false)],
+    ".pe-control--large": [customSize(vars$1, sizeData.large), customSpacing(vars$1, sizeData.large, false)]
   }), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(), {
-    ".pe-control--small": [customSpacing(vars$$1, sizeData.small, true)],
-    ".pe-control--regular": [customSpacing(vars$$1, sizeData.regular, true)],
-    ".pe-control--medium": [customSpacing(vars$$1, sizeData.medium, true)],
-    ".pe-control--large": [customSpacing(vars$$1, sizeData.large, true)]
+    ".pe-control--small": [customSpacing(vars$1, sizeData.small, true)],
+    ".pe-control--regular": [customSpacing(vars$1, sizeData.regular, true)],
+    ".pe-control--medium": [customSpacing(vars$1, sizeData.medium, true)],
+    ".pe-control--large": [customSpacing(vars$1, sizeData.large, true)]
   }])];
 };
 
@@ -437,23 +437,23 @@ var varFns = {
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars$$1, "all")
+      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
     })];
   },
   createSize: createSize
 };
 
-var withCreateSizeVar = function withCreateSizeVar(vars$$1) {
-  return vars$$1.thumb_size || vars$$1.track_height || vars$$1.track_length || vars$$1.label_height || vars$$1.icon_button_padding ? _extends({}, vars$$1, {
+var withCreateSizeVar = function withCreateSizeVar(vars) {
+  return vars.thumb_size || vars.track_height || vars.track_length || vars.label_height || vars.icon_button_padding ? _extends({}, vars, {
     createSize: true
-  }) : vars$$1;
+  }) : vars;
 };
 
-var layout$1 = createLayout({
+var layout = createLayout({
   varFns: varFns,
-  superLayout: layout,
+  superLayout: layout$1,
   varMixin: withCreateSizeVar
 });
 
@@ -510,7 +510,7 @@ var switchVars = {
 };
 
 // @ts-check
-var fns = [layout$1, color];
+var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, switchVars);
 var getStyle = styler.createGetStyle(selector, fns, switchVars);
@@ -520,4 +520,4 @@ styler.addStyle({
   vars: switchVars
 });
 
-export { addStyle, getStyle, color, layout$1 as layout, switchVars as vars };
+export { addStyle, getStyle, color, layout, switchVars as vars };

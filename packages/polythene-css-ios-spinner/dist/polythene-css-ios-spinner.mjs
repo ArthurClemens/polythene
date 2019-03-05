@@ -1,4 +1,4 @@
-import { color, layout } from 'polythene-css-base-spinner';
+import { color as color$1, layout as layout$1 } from 'polythene-css-base-spinner';
 import { createColor, sel, createLayout, rgba, styler } from 'polythene-core-css';
 import { styleDurationToMs } from 'polythene-core';
 import { vars } from 'polythene-theme';
@@ -54,9 +54,9 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint, function (selector, vars$$1) {
+  return _defineProperty({}, "color_" + tint, function (selector, vars) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint]
+      color: vars["color_" + tint]
     })];
   });
 };
@@ -65,12 +65,12 @@ var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var color$1 = createColor({
+var color = createColor({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   },
-  superColor: color
+  superColor: color$1
 });
 
 var bladeWidth = 9; // percent
@@ -88,14 +88,14 @@ var kfFade = function kfFade() {
   };
 };
 
-var positionBlades = function positionBlades(vars$$1) {
+var positionBlades = function positionBlades(vars) {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) {
     // reverse to improve performance on iOS
-    var delay = -1 / 12 * i * styleDurationToMs(vars$$1.rotation_animation_duration);
+    var delay = -1 / 12 * i * styleDurationToMs(vars.rotation_animation_duration);
     var rotation = 360 - 360 / 12 * i;
     return _defineProperty({}, " .pe-ios-spinner__blade:nth-of-type(" + (i + 1) + ")", {
       transform: "rotate(" + rotation + "deg) translate3d(0,-140%,0)",
-      animation: "iosSpinnerFade " + vars$$1.rotation_animation_duration + " " + delay + "ms linear infinite"
+      animation: "iosSpinnerFade " + vars.rotation_animation_duration + " " + delay + "ms linear infinite"
     });
   });
 };
@@ -121,15 +121,15 @@ var varFns = {
       "@keyframes iosSpinnerFade": kfFade()
     })];
   },
-  rotation_animation_duration: function rotation_animation_duration(selector, vars$$1) {
+  rotation_animation_duration: function rotation_animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-ios-spinner__blades": [positionBlades(vars$$1)]
+      " .pe-ios-spinner__blades": [positionBlades(vars)]
     })];
   }
 };
-var layout$1 = createLayout({
+var layout = createLayout({
   varFns: varFns,
-  superLayout: layout
+  superLayout: layout$1
 });
 
 // @ts-check
@@ -148,7 +148,7 @@ var iOSSpinnerVars = {
 };
 
 // @ts-check
-var fns = [layout$1, color$1];
+var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, iOSSpinnerVars);
 var getStyle = styler.createGetStyle(selector, fns, iOSSpinnerVars);
@@ -158,4 +158,4 @@ styler.addStyle({
   vars: iOSSpinnerVars
 });
 
-export { addStyle, getStyle, color$1 as color, layout$1 as layout, iOSSpinnerVars as vars };
+export { addStyle, getStyle, color, layout, iOSSpinnerVars as vars };

@@ -1,4 +1,4 @@
-import { color, layout, vars } from 'polythene-css-base-spinner';
+import { color as color$1, layout as layout$1, vars } from 'polythene-css-base-spinner';
 import { createColor, sel, createLayout, mixin, rgba, styler } from 'polythene-core-css';
 import { vars as vars$1 } from 'polythene-theme';
 
@@ -73,39 +73,39 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_single", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_single", function (selector, vars) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint + "_single"]
+      color: vars["color_" + tint + "_single"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_1", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_1", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-1": {
-          borderColor: vars$$1["color_" + tint + "_1"]
+          borderColor: vars["color_" + tint + "_1"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_2", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_2", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-2": {
-          borderColor: vars$$1["color_" + tint + "_2"]
+          borderColor: vars["color_" + tint + "_2"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_3", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_3", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-3": {
-          borderColor: vars$$1["color_" + tint + "_3"]
+          borderColor: vars["color_" + tint + "_3"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_4", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_4", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-spinner--single-color)": {
         " .pe-md-spinner__layer-4": {
-          borderColor: vars$$1["color_" + tint + "_4"]
+          borderColor: vars["color_" + tint + "_4"]
         }
       }
     })];
@@ -116,12 +116,12 @@ var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var color$1 = createColor({
+var color = createColor({
   varFns: {
     lightTintFns: lightTintFns,
     darkTintFns: darkTintFns
   },
-  superColor: color
+  superColor: color$1
 });
 
 var OPACITY_MIN = 0;
@@ -291,14 +291,14 @@ var kfLayer4FadeInOut = function kfLayer4FadeInOut() {
   };
 };
 
-var layerAnimation = function layerAnimation(vars$$1, num) {
+var layerAnimation = function layerAnimation(vars, num) {
   return _defineProperty({}, ".pe-md-spinner__layer-" + num, {
-    animation: "mdSpinnerFillUnfillRotate " + 4 * vars$$1.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars$$1.arc_time + "s " + CURVE_INFINITE
+    animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE + ",  mdSpinnerLayer" + num + "FadeInOut " + 4 * vars.arc_time + "s " + CURVE_INFINITE
   });
 };
 
 var varFns = {
-  general_styles: function general_styles(selector, vars$$1) {
+  general_styles: function general_styles(selector, vars) {
     return [sel(selector, {
       "@keyframes mdSpinnerRotate": kfRotate(),
       "@keyframes mdSpinnerRightSpin": kfRightSpin(),
@@ -386,7 +386,7 @@ var varFns = {
       * other animation rules. See https://github.com/Polymer/platform/issues/53.
       */
       " .pe-md-spinner__layer": [[1, 2, 3, 4].map(function (num) {
-        return layerAnimation(vars$$1, num);
+        return layerAnimation(vars, num);
       }), {
         position: "absolute",
         width: "100%",
@@ -395,80 +395,80 @@ var varFns = {
       }]
     })];
   },
-  rotation_duration: function rotation_duration(selector, vars$$1) {
+  rotation_duration: function rotation_duration(selector, vars) {
     return [sel(selector, {
       " .pe-md-spinner__animation": {
-        animation: "mdSpinnerRotate " + vars$$1.rotation_duration + "s linear infinite"
+        animation: "mdSpinnerRotate " + vars.rotation_duration + "s linear infinite"
       }
     })];
   },
-  border_width_small: function border_width_small(selector, vars$$1) {
+  border_width_small: function border_width_small(selector, vars) {
     return [sel(selector, {
       ".pe-spinner--small": {
         " .pe-md-spinner__circle": {
-          borderWidth: vars$$1.border_width_small + "px"
+          borderWidth: vars.border_width_small + "px"
         }
       }
     })];
   },
-  border_width_regular: function border_width_regular(selector, vars$$1) {
+  border_width_regular: function border_width_regular(selector, vars) {
     return [sel(selector, {
       ".pe-spinner--regular": {
         " .pe-md-spinner__circle": {
-          borderWidth: vars$$1.border_width_regular + "px"
+          borderWidth: vars.border_width_regular + "px"
         }
       }
     })];
   },
-  border_width_medium: function border_width_medium(selector, vars$$1) {
+  border_width_medium: function border_width_medium(selector, vars) {
     return [sel(selector, {
       ".pe-spinner--medium": {
         " .pe-md-spinner__circle": {
-          borderWidth: vars$$1.border_width_medium + "px"
+          borderWidth: vars.border_width_medium + "px"
         }
       }
     })];
   },
-  border_width_large: function border_width_large(selector, vars$$1) {
+  border_width_large: function border_width_large(selector, vars) {
     return [sel(selector, {
       ".pe-spinner--large": {
         " .pe-md-spinner__circle": {
-          borderWidth: vars$$1.border_width_large + "px"
+          borderWidth: vars.border_width_large + "px"
         }
       }
     })];
   },
-  border_width_fab: function border_width_fab(selector, vars$$1) {
+  border_width_fab: function border_width_fab(selector, vars) {
     return [sel(selector, {
       ".pe-spinner--fab": {
         " .pe-md-spinner__circle": {
-          borderWidth: vars$$1.border_width_fab + "px"
+          borderWidth: vars.border_width_fab + "px"
         }
       }
     })];
   },
-  arc_size: function arc_size(selector, vars$$1) {
+  arc_size: function arc_size(selector, vars) {
     return [sel(selector, {
-      "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars$$1.arc_size)
+      "@keyframes mdSpinnerFillUnfillRotate": kfFillUnfillRotate(vars.arc_size)
     })];
   },
-  arc_time: function arc_time(selector, vars$$1) {
+  arc_time: function arc_time(selector, vars) {
     return [sel(selector, {
       " .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle": {
-        animation: "mdSpinnerLeftSpin " + vars$$1.arc_time + "s " + CURVE_INFINITE
+        animation: "mdSpinnerLeftSpin " + vars.arc_time + "s " + CURVE_INFINITE
       },
       " .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle": {
-        animation: "mdSpinnerRightSpin " + vars$$1.arc_time + "s " + CURVE_INFINITE
+        animation: "mdSpinnerRightSpin " + vars.arc_time + "s " + CURVE_INFINITE
       },
       " .pe-md-spinner__layer": {
-        animation: "mdSpinnerFillUnfillRotate " + 4 * vars$$1.arc_time + "s " + CURVE_INFINITE
+        animation: "mdSpinnerFillUnfillRotate " + 4 * vars.arc_time + "s " + CURVE_INFINITE
       }
     })];
   }
 };
-var layout$1 = createLayout({
+var layout = createLayout({
   varFns: varFns,
-  superLayout: layout
+  superLayout: layout$1
 });
 
 // @ts-check
@@ -515,7 +515,7 @@ var materialDesignSpinnerVars = {
 };
 
 // @ts-check
-var fns = [layout$1, color$1];
+var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, materialDesignSpinnerVars);
 var getStyle = styler.createGetStyle(selector, fns, materialDesignSpinnerVars);
@@ -525,4 +525,4 @@ styler.addStyle({
   vars: materialDesignSpinnerVars
 });
 
-export { addStyle, getStyle, color$1 as color, layout$1 as layout, materialDesignSpinnerVars as vars };
+export { addStyle, getStyle, color, layout, materialDesignSpinnerVars as vars };

@@ -116,12 +116,12 @@ var varFns = {
       }
     }];
   },
-  row_margin_h: function row_margin_h(selector, vars$$1) {
+  row_margin_h: function row_margin_h(selector, vars) {
     return [{
       ".pe-button-row": _defineProperty({
-        margin: "0 -".concat(vars$$1.row_margin_h, "px")
+        margin: "0 -".concat(vars.row_margin_h, "px")
       }, " ".concat(selector), {
-        margin: "0 ".concat(vars$$1.row_margin_h, "px")
+        margin: "0 ".concat(vars.row_margin_h, "px")
       })
     }];
   }
@@ -130,11 +130,11 @@ var superLayout = createLayout({
   varFns: varFns
 });
 
-var _border = function border(selector, vars$$1, tint) {
+var _border = function border(selector, vars, tint) {
   return sel(selector, {
     ":not(.pe-button--disabled)": {
       " .pe-button__content": {
-        borderColor: vars$$1["color_" + tint + "_border"]
+        borderColor: vars["color_" + tint + "_border"]
       }
     }
   });
@@ -152,77 +152,77 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled)": {
         "&, &:link, &:visited": {
-          color: vars$$1["color_" + tint + "_text"]
+          color: vars["color_" + tint + "_text"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_text", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--disabled": {
-        color: vars$$1["color_" + tint + "_disabled_text"]
+        color: vars["color_" + tint + "_disabled_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__content": {
-          backgroundColor: vars$$1["color_" + tint + "_background"]
+          backgroundColor: vars["color_" + tint + "_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_active_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_active_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled)": {
         ".pe-button--selected": {
           " .pe-button__content": {
-            backgroundColor: vars$$1["color_" + tint + "_active_background"]
+            backgroundColor: vars["color_" + tint + "_active_background"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--disabled": {
         " .pe-button__content": {
-          backgroundColor: vars$$1["color_" + tint + "_disabled_background"]
+          backgroundColor: vars["color_" + tint + "_disabled_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
-    return [_border("".concat(selector, ".pe-button--border"), vars$$1, tint)];
-  }), _defineProperty(_ref, "border", function border(selector, vars$$1) {
-    return [_border(selector, vars$$1, tint)];
-  }), _defineProperty(_ref, "color_" + tint + "_active_border", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
+    return [_border("".concat(selector, ".pe-button--border"), vars, tint)];
+  }), _defineProperty(_ref, "border", function border(selector, vars) {
+    return [_border(selector, vars, tint)];
+  }), _defineProperty(_ref, "color_" + tint + "_active_border", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--border.pe-button--selected": {
         " .pe-button__content": {
-          borderColor: vars$$1["color_" + tint + "_active_border"]
+          borderColor: vars["color_" + tint + "_active_border"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled_border", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_border", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--border.pe-button--disabled": {
         " .pe-button__content": {
-          borderColor: vars$$1["color_" + tint + "_disabled_border"]
+          borderColor: vars["color_" + tint + "_disabled_border"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars) {
     return [sel(selector, {
       " .pe-button__dropdown": {
-        color: vars$$1["color_" + tint + "_icon"]
+        color: vars["color_" + tint + "_icon"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_separator", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_separator", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--separator-start": {
         " .pe-button__content": {
-          borderColor: vars$$1["color_" + tint + "_separator"]
+          borderColor: vars["color_" + tint + "_separator"]
         }
       }
     })];
@@ -236,40 +236,40 @@ var tintFns = function tintFns(tint) {
 var hoverTintFns = function hoverTintFns(tint) {
   var _ref2;
 
-  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars$$1) {
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
-        color: vars$$1["color_" + tint + "_hover"]
+        color: vars["color_" + tint + "_hover"]
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_hover_border", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_border", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__content": {
-          borderColor: vars$$1["color_" + tint + "_hover_border"]
+          borderColor: vars["color_" + tint + "_hover_border"]
         }
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__wash": {
-          backgroundColor: vars$$1["color_" + tint + "_wash_background"]
+          backgroundColor: vars["color_" + tint + "_wash_background"]
         }
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__content": {
-          backgroundColor: vars$$1["color_" + tint + "_hover_background"]
+          backgroundColor: vars["color_" + tint + "_hover_background"]
         }
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_hover_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_icon", function (selector, vars) {
     return [sel(selector, {
       " .pe-button__dropdown": {
-        color: vars$$1["color_" + tint + "_hover_icon"]
+        color: vars["color_" + tint + "_hover_icon"]
       }
     })];
   }), _ref2;
@@ -307,41 +307,41 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var line_height_label_padding_v = function line_height_label_padding_v(selector, vars$$1) {
+var line_height_label_padding_v = function line_height_label_padding_v(selector, vars) {
   return sel(selector, {
     " .pe-button__dropdown": {
-      minHeight: "calc((1em * ".concat(vars$$1.line_height, ") + 2 * ").concat(vars$$1.label_padding_v, "px)")
+      minHeight: "calc((1em * ".concat(vars.line_height, ") + 2 * ").concat(vars.label_padding_v, "px)")
     }
   });
 };
 
-var outer_padding_v_label_padding_v = function outer_padding_v_label_padding_v(selector, vars$$1) {
+var outer_padding_v_label_padding_v = function outer_padding_v_label_padding_v(selector, vars) {
   return sel(selector, {
     ".pe-button--high-label": {
       padding: 0,
       " .pe-button__label": {
-        padding: vars$$1.outer_padding_v + vars$$1.label_padding_v + "px 0"
+        padding: vars.outer_padding_v + vars.label_padding_v + "px 0"
       }
     }
   });
 };
 
-var line_height_outer_padding_v_label_padding_v = function line_height_outer_padding_v_label_padding_v(selector, vars$$1) {
+var line_height_outer_padding_v_label_padding_v = function line_height_outer_padding_v_label_padding_v(selector, vars) {
   return sel(selector, {
     ".pe-button--high-label": {
       " .pe-button__label, .pe-button__dropdown": {
-        minHeight: "calc((1em * ".concat(vars$$1.line_height, ") + 2 * ").concat(vars$$1.outer_padding_v + vars$$1.label_padding_v, "px)")
+        minHeight: "calc((1em * ".concat(vars.line_height, ") + 2 * ").concat(vars.outer_padding_v + vars.label_padding_v, "px)")
       }
     }
   });
 };
 
-var border_radius_button_group = function border_radius_button_group(selector, vars$$1, isRTL) {
+var border_radius_button_group = function border_radius_button_group(selector, vars, isRTL) {
   var _peButton__content, _peButton__content2;
 
   return sel(selector, {
     " .pe-button__content": {
-      borderRadius: vars$$1.border_radius + "px"
+      borderRadius: vars.border_radius + "px"
     },
     ":not(:first-child)": {
       " .pe-button__content": (_peButton__content = {}, _defineProperty(_peButton__content, isRTL ? "borderTopRightRadius" : "borderTopLeftRadius", 0), _defineProperty(_peButton__content, isRTL ? "borderBottomRightRadius" : "borderBottomLeftRadius", 0), _peButton__content)
@@ -361,13 +361,13 @@ var _border$1 = function border(selector) {
   });
 };
 
-var _border_width = function border_width(selector, vars$$1) {
+var _border_width = function border_width(selector, vars) {
   return sel(selector, {
     " .pe-button__content": {
-      borderWidth: vars$$1.border_width + "px"
+      borderWidth: vars.border_width + "px"
     },
     " .pe-button-group & + &": {
-      marginLeft: -vars$$1.border_width + "px"
+      marginLeft: -vars.border_width + "px"
     }
   });
 };
@@ -433,131 +433,131 @@ var varFns$1 = _objectSpread({
       }
     }]), [sel(selectorRTL(selector), alignRight())]];
   },
-  border_radius: function border_radius(selector, vars$$1) {
+  border_radius: function border_radius(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        borderRadius: vars$$1.border_radius + "px"
+        borderRadius: vars.border_radius + "px"
       }
-    }), border_radius_button_group(".pe-button-group ".concat(selector), vars$$1, false), border_radius_button_group(selectorRTL(".pe-button-group ".concat(selector)), vars$$1, true)];
+    }), border_radius_button_group(".pe-button-group ".concat(selector), vars, false), border_radius_button_group(selectorRTL(".pe-button-group ".concat(selector)), vars, true)];
   },
-  border_width: function border_width(selector, vars$$1) {
-    return [_border_width(selector, vars$$1)];
+  border_width: function border_width(selector, vars) {
+    return [_border_width(selector, vars)];
   },
-  min_width: function min_width(selector, vars$$1) {
+  min_width: function min_width(selector, vars) {
     return [sel(selector, {
-      minWidth: vars$$1.min_width + "px"
+      minWidth: vars.min_width + "px"
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-button__content, .pe-button__wash": [mixin.defaultTransition("all", vars$$1.animation_duration)]
+      " .pe-button__content, .pe-button__wash": [mixin.defaultTransition("all", vars.animation_duration)]
     })];
   },
-  padding_h: function padding_h(selector, vars$$1) {
+  padding_h: function padding_h(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        paddingLeft: vars$$1.padding_h + "px",
-        paddingRight: vars$$1.padding_h + "px",
+        paddingLeft: vars.padding_h + "px",
+        paddingRight: vars.padding_h + "px",
         " .pe-button__dropdown": {
-          minWidth: "calc(36px - 2 * ".concat(vars$$1.padding_h, "px)")
+          minWidth: "calc(36px - 2 * ".concat(vars.padding_h, "px)")
         },
         ".pe-button--dropdown": {
           " .pe-button__label + .pe-button__dropdown": {
-            marginRight: "calc(7px - ".concat(vars$$1.padding_h, "px)")
+            marginRight: "calc(7px - ".concat(vars.padding_h, "px)")
           }
         }
       }
     })];
   },
-  padding_h_extra_wide: function padding_h_extra_wide(selector, vars$$1) {
+  padding_h_extra_wide: function padding_h_extra_wide(selector, vars) {
     return [sel(selector, {
       ".pe-button--extra-wide .pe-button__content": {
-        padding: "0 " + vars$$1.padding_h_extra_wide + "px"
+        padding: "0 " + vars.padding_h_extra_wide + "px"
       }
     })];
   },
-  label_padding_v: function label_padding_v(selector, vars$$1) {
+  label_padding_v: function label_padding_v(selector, vars) {
     return [sel(selector, {
       " .pe-button__label": {
-        padding: vars$$1.label_padding_v + "px 0"
+        padding: vars.label_padding_v + "px 0"
       },
       ".pe-button--border": {
         " .pe-button__label": {
-          padding: vars$$1.label_padding_v - 1 + "px 0"
+          padding: vars.label_padding_v - 1 + "px 0"
         }
       }
-    }), vars$$1.line_height !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars.line_height !== undefined && line_height_label_padding_v(selector, vars), vars.outer_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars), vars.line_height !== undefined && vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars)];
   },
-  font_weight: function font_weight(selector, vars$$1) {
+  font_weight: function font_weight(selector, vars) {
     return [sel(selector, {
       " .pe-button__label": {
-        fontWeight: vars$$1.font_weight
+        fontWeight: vars.font_weight
       }
     })];
   },
-  text_transform: function text_transform(selector, vars$$1) {
+  text_transform: function text_transform(selector, vars) {
     return [sel(selector, {
       " .pe-button__label": {
-        textTransform: vars$$1.text_transform
+        textTransform: vars.text_transform
       }
     })];
   },
-  font_size: function font_size(selector, vars$$1) {
+  font_size: function font_size(selector, vars) {
     return [sel(selector, {
       " .pe-button__label, .pe-button__dropdown": {
-        fontSize: vars$$1.font_size + "px"
+        fontSize: vars.font_size + "px"
       }
     })];
   },
-  line_height: function line_height(selector, vars$$1) {
+  line_height: function line_height(selector, vars) {
     return [sel(selector, {
       " .pe-button__label, .pe-button__dropdown": {
-        lineHeight: vars$$1.line_height
+        lineHeight: vars.line_height
       }
-    }), vars$$1.label_padding_v !== undefined && line_height_label_padding_v(selector, vars$$1), vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars.label_padding_v !== undefined && line_height_label_padding_v(selector, vars), vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars)];
   },
-  dropdown_icon_size: function dropdown_icon_size(selector, vars$$1) {
+  dropdown_icon_size: function dropdown_icon_size(selector, vars) {
     return [sel(selector, {
       ".pe-button--dropdown": {
         " .pe-button__dropdown": {
-          width: vars$$1.dropdown_icon_size + "px"
+          width: vars.dropdown_icon_size + "px"
         },
         " .pe-svg": {
-          width: vars$$1.dropdown_icon_size + "px",
-          height: vars$$1.dropdown_icon_size + "px",
-          marginTop: -vars$$1.dropdown_icon_size / 2 + "px"
+          width: vars.dropdown_icon_size + "px",
+          height: vars.dropdown_icon_size + "px",
+          marginTop: -vars.dropdown_icon_size / 2 + "px"
         }
       }
     })];
   },
-  outer_padding_v: function outer_padding_v(selector, vars$$1) {
+  outer_padding_v: function outer_padding_v(selector, vars) {
     return [sel(selector, {
-      padding: vars$$1.outer_padding_v + "px 0",
+      padding: vars.outer_padding_v + "px 0",
       ".pe-button--high-label": {
         padding: 0
       }
-    }), vars$$1.label_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars$$1), vars$$1.line_height !== undefined && vars$$1.outer_padding_v !== undefined && vars$$1.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars$$1)];
+    }), vars.label_padding_v !== undefined && outer_padding_v_label_padding_v(selector, vars), vars.line_height !== undefined && vars.outer_padding_v !== undefined && vars.label_padding_v !== undefined && line_height_outer_padding_v_label_padding_v(selector, vars)];
   },
-  separator_width: function separator_width(selector, vars$$1) {
+  separator_width: function separator_width(selector, vars) {
     return [sel(selector, {
       ".pe-button--separator-start": {
         " .pe-button__content": {
-          borderWidth: vars$$1.separator_width + "px"
+          borderWidth: vars.separator_width + "px"
         }
       }
     })];
   },
-  letter_spacing: function letter_spacing(selector, vars$$1) {
+  letter_spacing: function letter_spacing(selector, vars) {
     return [sel(selector, {
-      letterSpacing: vars$$1.letter_spacing + "px"
+      letterSpacing: vars.letter_spacing + "px"
     })];
   },
   // Theme vars
-  border: function border(selector, vars$$1) {
-    return vars$$1.border && _border$1(selector);
+  border: function border(selector, vars) {
+    return vars.border && _border$1(selector);
   },
-  contained: function contained(selector, vars$$1) {
-    return vars$$1.contained && _contained(selector);
+  contained: function contained(selector, vars) {
+    return vars.contained && _contained(selector);
   }
 }, sharedVarFns);
 
@@ -775,7 +775,7 @@ styler.addStyle({
  * @param {string} [scoping.scope]
  */
 
-var addStyle$2 = function addStyle$$1(customSelector, customVars) {
+var addStyle$2 = function addStyle$1(customSelector, customVars) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       _ref$mediaQuery = _ref.mediaQuery,
       mediaQuery = _ref$mediaQuery === void 0 ? "" : _ref$mediaQuery,
@@ -796,7 +796,7 @@ var addStyle$2 = function addStyle$$1(customSelector, customVars) {
  */
 
 
-var getStyle$2 = function getStyle$$1() {
+var getStyle$2 = function getStyle$2() {
   var customSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var customVars = arguments.length > 1 ? arguments[1] : undefined;
 

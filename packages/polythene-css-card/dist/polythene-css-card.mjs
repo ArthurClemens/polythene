@@ -82,9 +82,9 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint + "_main_background", function (selector, vars$$1) {
+  return _defineProperty({}, "color_" + tint + "_main_background", function (selector, vars) {
     return [sel(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_main_background"]
+      backgroundColor: vars["color_" + tint + "_main_background"]
     })];
   });
 };
@@ -110,28 +110,28 @@ var generalFns$1 = {
 var tintFns$1 = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__title": {
-        color: vars$$1["color_" + tint + "_title_text"]
+        color: vars["color_" + tint + "_title_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_subtitle_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_subtitle_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__subtitle": {
-        color: vars$$1["color_" + tint + "_subtitle_text"]
+        color: vars["color_" + tint + "_subtitle_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__text": {
-        color: vars$$1["color_" + tint + "_text"]
+        color: vars["color_" + tint + "_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_actions_border", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_actions_border", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__actions--border": {
-        borderTop: "1px solid " + vars$$1["color_" + tint + "_actions_border"]
+        borderTop: "1px solid " + vars["color_" + tint + "_actions_border"]
       }
     })];
   }), _ref;
@@ -159,7 +159,7 @@ var alignSide = function alignSide(isRTL) {
      * @param {string} [selector]
      * @param {object} [vars]
      */
-    function (selector, vars$$1) {
+    function (selector, vars) {
       return {};
     }
   );
@@ -169,60 +169,60 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var tight_title_padding_bottom_subtitle_line_height_padding_bottom = function tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars$$1) {
+var tight_title_padding_bottom_subtitle_line_height_padding_bottom = function tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars) {
   return sel(selector, {
     " .pe-card__primary": {
       ".pe-card__primary--tight": {
         " .pe-card__title": {
-          paddingBottom: vars$$1.tight_title_padding_bottom - vars$$1.subtitle_line_height_padding_bottom + "px"
+          paddingBottom: vars.tight_title_padding_bottom - vars.subtitle_line_height_padding_bottom + "px"
         }
       }
     }
   });
 };
 
-var title_padding_v_title_padding_h_subtitle_line_height_padding_bottom = function title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars$$1) {
+var title_padding_v_title_padding_h_subtitle_line_height_padding_bottom = function title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars) {
   return sel(selector, {
     " .pe-card__title": {
-      padding: [vars$$1.title_padding_v, vars$$1.title_padding_h, vars$$1.title_padding_v - vars$$1.subtitle_line_height_padding_bottom, vars$$1.title_padding_h].map(function (v) {
+      padding: [vars.title_padding_v, vars.title_padding_h, vars.title_padding_v - vars.subtitle_line_height_padding_bottom, vars.title_padding_h].map(function (v) {
         return v + "px";
       }).join(" ")
     }
   });
 };
 
-var text_padding_v_text_line_height_padding_top = function text_padding_v_text_line_height_padding_top(selector, vars$$1) {
+var text_padding_v_text_line_height_padding_top = function text_padding_v_text_line_height_padding_top(selector, vars) {
   return sel(selector, {
     " .pe-card__text": {
-      paddingTop: vars$$1.text_padding_v - vars$$1.text_line_height_padding_top + "px"
+      paddingTop: vars.text_padding_v - vars.text_line_height_padding_top + "px"
     }
   });
 };
 
-var text_padding_bottom_text_line_height_padding_bottom = function text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1) {
+var text_padding_bottom_text_line_height_padding_bottom = function text_padding_bottom_text_line_height_padding_bottom(selector, vars) {
   return sel(selector, {
     " .pe-card__text": {
       "&:last-child": {
-        paddingBottom: vars$$1.text_padding_bottom - vars$$1.text_line_height_padding_bottom + "px"
+        paddingBottom: vars.text_padding_bottom - vars.text_line_height_padding_bottom + "px"
       }
     }
   });
 };
 
-var tight_text_padding_bottom_text_line_height_padding_bottom = function tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1) {
+var tight_text_padding_bottom_text_line_height_padding_bottom = function tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars) {
   return sel(selector, {
     " .pe-card__text": {
-      paddingBottom: vars$$1.tight_text_padding_bottom - vars$$1.text_line_height_padding_bottom + "px",
+      paddingBottom: vars.tight_text_padding_bottom - vars.text_line_height_padding_bottom + "px",
       ".pe-card__text--tight, &.pe-card__text--tight:last-child": {
-        paddingBottom: vars$$1.tight_text_padding_bottom - vars$$1.text_line_height_padding_bottom + "px"
+        paddingBottom: vars.tight_text_padding_bottom - vars.text_line_height_padding_bottom + "px"
       }
     }
   });
 };
 
 var varFns = {
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(vars$$1), {
+  general_styles: function general_styles(selector, vars$1) {
+    return [sel(selector, [alignLeft(vars$1), {
       display: "block",
       position: "relative",
       "&, a:link, a:visited": {
@@ -391,12 +391,12 @@ var varFns = {
       }
     }, {
       // RTL
-      "*[dir=rtl], .pe-rtl ": _defineProperty({}, selector, alignRight(vars$$1))
+      "*[dir=rtl], .pe-rtl ": _defineProperty({}, selector, alignRight(vars$1))
     }])];
   },
-  border_radius: function border_radius(selector, vars$$1) {
+  border_radius: function border_radius(selector, vars) {
     return [sel(selector, {
-      borderRadius: vars$$1.border_radius + "px",
+      borderRadius: vars.border_radius + "px",
       " .pe-card__content .pe-card__media": {
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
@@ -405,162 +405,162 @@ var varFns = {
       },
       " .pe-card__content .pe-card__media:not(.pe-card__media--square):not(.pe-card__media--landscape)": {
         ":first-child": {
-          borderTopLeftRadius: vars$$1.border_radius + "px",
-          borderTopRightRadius: vars$$1.border_radius + "px"
+          borderTopLeftRadius: vars.border_radius + "px",
+          borderTopRightRadius: vars.border_radius + "px"
         },
         ":last-child": {
-          borderBottomLeftRadius: vars$$1.border_radius + "px",
-          borderBottomRightRadius: vars$$1.border_radius + "px"
+          borderBottomLeftRadius: vars.border_radius + "px",
+          borderBottomRightRadius: vars.border_radius + "px"
         }
       }
     })];
   },
-  image_size_small: function image_size_small(selector, vars$$1) {
+  image_size_small: function image_size_small(selector, vars) {
     return [sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--small": {
-          width: vars$$1.image_size_small + "px",
-          height: vars$$1.image_size_small + "px"
+          width: vars.image_size_small + "px",
+          height: vars.image_size_small + "px"
         }
       }
     })];
   },
-  image_size_regular: function image_size_regular(selector, vars$$1) {
+  image_size_regular: function image_size_regular(selector, vars) {
     return [sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--regular": {
-          width: vars$$1.image_size_regular + "px"
+          width: vars.image_size_regular + "px"
         }
       }
     })];
   },
-  image_size_medium: function image_size_medium(selector, vars$$1) {
+  image_size_medium: function image_size_medium(selector, vars) {
     return [sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--medium": {
-          width: vars$$1.image_size_medium + "px"
+          width: vars.image_size_medium + "px"
         }
       }
     })];
   },
-  image_size_large: function image_size_large(selector, vars$$1) {
+  image_size_large: function image_size_large(selector, vars) {
     return [sel(selector, {
       " .pe-card__primary-media": {
         " .pe-card__media--large": {
-          width: vars$$1.image_size_large + "px"
+          width: vars.image_size_large + "px"
         }
       }
     })];
   },
-  one_line_height_with_icon: function one_line_height_with_icon(selector, vars$$1) {
+  one_line_height_with_icon: function one_line_height_with_icon(selector, vars) {
     return [sel(selector, {
       " .pe-card__header": {
-        height: vars$$1.one_line_height_with_icon + "px"
+        height: vars.one_line_height_with_icon + "px"
       }
     })];
   },
-  tight_title_padding_bottom: function tight_title_padding_bottom(selector, vars$$1) {
-    return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars$$1)];
+  tight_title_padding_bottom: function tight_title_padding_bottom(selector, vars) {
+    return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars)];
   },
-  subtitle_line_height_padding_bottom: function subtitle_line_height_padding_bottom(selector, vars$$1) {
-    return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars$$1), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars$$1)];
+  subtitle_line_height_padding_bottom: function subtitle_line_height_padding_bottom(selector, vars) {
+    return [sel(selector, {}), tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
   },
-  title_padding_v: function title_padding_v(selector, vars$$1) {
-    return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars$$1)];
+  title_padding_v: function title_padding_v(selector, vars) {
+    return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
   },
-  title_padding_h: function title_padding_h(selector, vars$$1) {
-    return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars$$1)];
+  title_padding_h: function title_padding_h(selector, vars) {
+    return [sel(selector, {}), title_padding_v_title_padding_h_subtitle_line_height_padding_bottom(selector, vars)];
   },
-  actions_button_margin_h: function actions_button_margin_h(selector, vars$$1) {
+  actions_button_margin_h: function actions_button_margin_h(selector, vars) {
     return [sel(selector, {
       " .pe-card__actions.pe-card__actions--horizontal": {
-        margin: "0 -".concat(vars$$1.actions_button_margin_h, "px"),
+        margin: "0 -".concat(vars.actions_button_margin_h, "px"),
         " .pe-button": {
-          margin: "0 ".concat(vars$$1.actions_button_margin_h, "px")
+          margin: "0 ".concat(vars.actions_button_margin_h, "px")
         }
       }
     })];
   },
-  actions_padding_v: function actions_padding_v(selector, vars$$1) {
+  actions_padding_v: function actions_padding_v(selector, vars) {
     return [sel(selector, {
       " .pe-card__actions": {
-        paddingTop: vars$$1.actions_padding_v + "px",
-        paddingBottom: vars$$1.actions_padding_v + "px"
+        paddingTop: vars.actions_padding_v + "px",
+        paddingBottom: vars.actions_padding_v + "px"
       }
     })];
   },
-  actions_padding_h: function actions_padding_h(selector, vars$$1) {
+  actions_padding_h: function actions_padding_h(selector, vars) {
     return [sel(selector, {
       " .pe-card__actions": {
-        paddingRight: vars$$1.actions_padding_h + "px",
-        paddingLeft: vars$$1.actions_padding_h + "px"
+        paddingRight: vars.actions_padding_h + "px",
+        paddingLeft: vars.actions_padding_h + "px"
       }
     })];
   },
-  actions_button_margin_v: function actions_button_margin_v(selector, vars$$1) {
+  actions_button_margin_v: function actions_button_margin_v(selector, vars) {
     return [sel(selector, {
       " .pe-card__actions": {
         ".pe-card__actions--vertical": {
           " .pe-button": {
-            marginTop: vars$$1.actions_button_margin_v + "px",
-            marginBottom: vars$$1.actions_button_margin_v + "px"
+            marginTop: vars.actions_button_margin_v + "px",
+            marginBottom: vars.actions_button_margin_v + "px"
           }
         }
       }
     })];
   },
-  actions_vertical_padding_v: function actions_vertical_padding_v(selector, vars$$1) {
+  actions_vertical_padding_v: function actions_vertical_padding_v(selector, vars) {
     return [sel(selector, {
       " .pe-card__actions": {
         ".pe-card__actions--vertical": {
           ":not(.pe-card__actions--tight)": {
-            paddingTop: vars$$1.actions_vertical_padding_v + "px",
-            paddingBottom: vars$$1.actions_vertical_padding_v + "px"
+            paddingTop: vars.actions_vertical_padding_v + "px",
+            paddingBottom: vars.actions_vertical_padding_v + "px"
           },
           // nested
           " .pe-card__actions": [{
             "&:first-child": {
-              marginTop: -vars$$1.actions_vertical_padding_v + "px"
+              marginTop: -vars.actions_vertical_padding_v + "px"
             },
             "&:last-child": {
-              marginBottom: -vars$$1.actions_vertical_padding_v + "px"
+              marginBottom: -vars.actions_vertical_padding_v + "px"
             }
           }]
         }
       }
     })];
   },
-  offset_small_padding_v: function offset_small_padding_v(selector, vars$$1) {
+  offset_small_padding_v: function offset_small_padding_v(selector, vars) {
     return [sel(selector, {
       " .pe-card__text, .pe-card__primary": {
         "& + .pe-card__actions:not(:last-child)": {
-          marginTop: -(vars$$1.offset_small_padding_v + 3) + "px"
+          marginTop: -(vars.offset_small_padding_v + 3) + "px"
         }
       }
     })];
   },
-  text_padding_h: function text_padding_h(selector, vars$$1) {
+  text_padding_h: function text_padding_h(selector, vars) {
     return [sel(selector, {
       " .pe-card__text": {
-        paddingRight: vars$$1.text_padding_h + "px",
-        paddingLeft: vars$$1.text_padding_h + "px"
+        paddingRight: vars.text_padding_h + "px",
+        paddingLeft: vars.text_padding_h + "px"
       }
     })];
   },
-  text_padding_v: function text_padding_v(selector, vars$$1) {
-    return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars$$1)];
+  text_padding_v: function text_padding_v(selector, vars) {
+    return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
   },
-  text_line_height_padding_top: function text_line_height_padding_top(selector, vars$$1) {
-    return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars$$1)];
+  text_line_height_padding_top: function text_line_height_padding_top(selector, vars) {
+    return [sel(selector, {}), text_padding_v_text_line_height_padding_top(selector, vars)];
   },
-  text_padding_bottom: function text_padding_bottom(selector, vars$$1) {
-    return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1)];
+  text_padding_bottom: function text_padding_bottom(selector, vars) {
+    return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
   },
-  tight_text_padding_bottom: function tight_text_padding_bottom(selector, vars$$1) {
-    return [sel(selector, {}), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1)];
+  tight_text_padding_bottom: function tight_text_padding_bottom(selector, vars) {
+    return [sel(selector, {}), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
   },
-  text_line_height_padding_bottom: function text_line_height_padding_bottom(selector, vars$$1) {
-    return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars$$1)];
+  text_line_height_padding_bottom: function text_line_height_padding_bottom(selector, vars) {
+    return [sel(selector, {}), text_padding_bottom_text_line_height_padding_bottom(selector, vars), tight_text_padding_bottom_text_line_height_padding_bottom(selector, vars)];
   }
 };
 var layout = createLayout({
@@ -575,10 +575,10 @@ var generalFns$2 = {
 };
 
 var tintFns$2 = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint + "_overlay_background", function (selector, vars$$1) {
+  return _defineProperty({}, "color_" + tint + "_overlay_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-card__overlay__content": {
-        backgroundColor: vars$$1["color_" + tint + "_overlay_background"]
+        backgroundColor: vars["color_" + tint + "_overlay_background"]
       }
     })];
   });

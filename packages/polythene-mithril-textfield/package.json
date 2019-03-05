@@ -21,7 +21,7 @@
     "polythene-mithril-base": "^1.5.2"
   },
   "devDependencies": {
-    "@types/mithril": "^1.1.14"
+    "@types/mithril": "^1.1.16"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

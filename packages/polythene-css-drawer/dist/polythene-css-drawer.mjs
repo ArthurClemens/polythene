@@ -80,22 +80,22 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
     return [sel(selector, {
       " .pe-dialog__content": {
-        borderColor: vars$$1["color_" + tint + "_border"]
+        borderColor: vars["color_" + tint + "_border"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
+        backgroundColor: vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-dialog__backdrop": {
-        backgroundColor: vars$$1["color_" + tint + "_backdrop_background"]
+        backgroundColor: vars["color_" + tint + "_backdrop_background"]
       }
     })];
   }), _ref;
@@ -114,27 +114,27 @@ var color = createColor({
 
 var SHADOW_WIDTH = 15;
 
-var _border = function _border(selector, vars$$1, isRTL) {
+var _border = function _border(selector, vars, isRTL) {
   return sel(selector, {
     " .pe-dialog__content": {
-      borderWidth: "".concat(vars$$1.border ? 1 : 0, "px"),
+      borderWidth: "".concat(vars.border ? 1 : 0, "px"),
       borderStyle: isRTL ? "none none none solid" : "none solid none none"
     }
   });
 };
 
-var _border2 = function border(selector, vars$$1) {
-  return [_border(selector, vars$$1, false), _border(selectorRTL(selector), vars$$1, true)];
+var _border2 = function border(selector, vars) {
+  return [_border(selector, vars, false), _border(selectorRTL(selector), vars, true)];
 };
 
 var alignSide = function alignSide(isRTL) {
-  return function (selector, vars$$1) {
+  return function (selector, vars) {
     var _peDrawerFixed;
 
     return [{
       // Fixed
       ".pe-drawer--fixed": (_peDrawerFixed = {}, _defineProperty(_peDrawerFixed, isRTL ? "right" : "left", 0), _defineProperty(_peDrawerFixed, isRTL ? "left" : "right", "auto"), _peDrawerFixed)
-    }, _border("".concat(selector, ".pe-drawer--border"), _extends({}, vars$$1, {
+    }, _border("".concat(selector, ".pe-drawer--border"), _extends({}, vars, {
       border: true
     }), isRTL)];
   };
@@ -156,61 +156,61 @@ var selectorAnchorEnd = function selectorAnchorEnd(selector) {
 }; // fn: miniSelector contains .pe-drawer--mini
 
 
-var _content_width_mini_collapsed = function content_width_mini_collapsed(miniSelector, vars$$1) {
+var _content_width_mini_collapsed = function content_width_mini_collapsed(miniSelector, vars) {
   return sel(miniSelector, {
     ":not(.pe-dialog--visible) .pe-dialog__content": {
-      width: "".concat(vars$$1.content_width_mini_collapsed, "px")
+      width: "".concat(vars.content_width_mini_collapsed, "px")
     }
   });
 }; // fn: coverSelector contains .pe-drawer--cover
 
 
-var _cover_content_max_width = function _cover_content_max_width(coverSelector, vars$$1, isRTL) {
+var _cover_content_max_width = function _cover_content_max_width(coverSelector, vars, isRTL) {
   var _peDialog__content, _peDialogVisible;
 
   return sel(coverSelector, {
     " .pe-dialog__content": (_peDialog__content = {
-      maxWidth: "".concat(vars$$1.content_max_width, "px")
-    }, _defineProperty(_peDialog__content, isRTL ? "right" : "left", "".concat(-vars$$1.content_max_width - SHADOW_WIDTH, "px")), _defineProperty(_peDialog__content, isRTL ? "left" : "right", "auto"), _peDialog__content),
+      maxWidth: "".concat(vars.content_max_width, "px")
+    }, _defineProperty(_peDialog__content, isRTL ? "right" : "left", "".concat(-vars.content_max_width - SHADOW_WIDTH, "px")), _defineProperty(_peDialog__content, isRTL ? "left" : "right", "auto"), _peDialog__content),
     ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible = {}, _defineProperty(_peDialogVisible, isRTL ? "right" : "left", 0), _defineProperty(_peDialogVisible, isRTL ? "left" : "right", "auto"), _peDialogVisible)
   });
 };
 
-var cover_content_max_width = function cover_content_max_width(coverSelector, vars$$1) {
-  return [_cover_content_max_width(coverSelector, vars$$1, false), _cover_content_max_width(selectorRTL(coverSelector), vars$$1, true), _cover_content_max_width(selectorAnchorEnd(coverSelector), vars$$1, true), _cover_content_max_width(selectorAnchorEnd(selectorRTL(coverSelector)), vars$$1, false)];
+var cover_content_max_width = function cover_content_max_width(coverSelector, vars) {
+  return [_cover_content_max_width(coverSelector, vars, false), _cover_content_max_width(selectorRTL(coverSelector), vars, true), _cover_content_max_width(selectorAnchorEnd(coverSelector), vars, true), _cover_content_max_width(selectorAnchorEnd(selectorRTL(coverSelector)), vars, false)];
 }; // fn: selector contains .pe-drawer--permanent
 
 
-var _content_width = function content_width(selector, vars$$1) {
+var _content_width = function content_width(selector, vars) {
   return sel(selector, {
     " .pe-dialog__content": {
-      width: "".concat(vars$$1.content_width, "px")
+      width: "".concat(vars.content_width, "px")
     }
   });
 }; // fn: pushSelector contains .pe-drawer--push
 
 
-var _push_content_width = function _push_content_width(pushSelector, vars$$1, isRTL) {
+var _push_content_width = function _push_content_width(pushSelector, vars, isRTL) {
   var _peDialog__content2, _peDialogVisible2;
 
   return sel(pushSelector, {
-    " .pe-dialog__content": (_peDialog__content2 = {}, _defineProperty(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", "".concat(-vars$$1.content_width - SHADOW_WIDTH, "px")), _defineProperty(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
+    " .pe-dialog__content": (_peDialog__content2 = {}, _defineProperty(_peDialog__content2, isRTL ? "marginRight" : "marginLeft", "".concat(-vars.content_width - SHADOW_WIDTH, "px")), _defineProperty(_peDialog__content2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialog__content2),
     ".pe-dialog--visible .pe-dialog__content": (_peDialogVisible2 = {
-      width: "".concat(vars$$1.content_width, "px")
+      width: "".concat(vars.content_width, "px")
     }, _defineProperty(_peDialogVisible2, isRTL ? "marginRight" : "marginLeft", 0), _defineProperty(_peDialogVisible2, isRTL ? "marginLeft" : "marginRight", "auto"), _peDialogVisible2)
   });
 };
 
-var push_content_width = function push_content_width(pushSelector, vars$$1) {
-  return [_push_content_width(pushSelector, vars$$1, false), _push_content_width(selectorRTL(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(pushSelector), vars$$1, true), _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars$$1, false)];
+var push_content_width = function push_content_width(pushSelector, vars) {
+  return [_push_content_width(pushSelector, vars, false), _push_content_width(selectorRTL(pushSelector), vars, true), _push_content_width(selectorAnchorEnd(pushSelector), vars, true), _push_content_width(selectorAnchorEnd(selectorRTL(pushSelector)), vars, false)];
 };
 
-var _cover = function cover(selector, vars$$1) {
+var _cover = function cover(selector, vars) {
   return sel(selector, {
     " .pe-dialog__content": {
       position: "absolute",
       top: 0,
-      zIndex: vars$$1.z_index
+      zIndex: vars.z_index
     },
     ".pe-dialog--visible": {
       " .pe-dialog__touch": {
@@ -225,7 +225,7 @@ var _cover = function cover(selector, vars$$1) {
  */
 
 
-var _mini = function mini(miniSelector, vars$$1) {
+var _mini = function mini(miniSelector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(miniSelector, {
       " .pe-dialog__content": {
@@ -241,7 +241,7 @@ var _mini = function mini(miniSelector, vars$$1) {
  */
 
 
-var _permanent = function permanent(permanentSelector, vars$$1) {
+var _permanent = function permanent(permanentSelector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(permanentSelector, {
       position: "static",
@@ -264,7 +264,7 @@ var _permanent = function permanent(permanentSelector, vars$$1) {
 // fn: pushSelector contains .pe-drawer--push
 
 
-var _push = function push(pushSelector, vars$$1) {
+var _push = function push(pushSelector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(pushSelector, {
       position: "static"
@@ -277,10 +277,10 @@ var _push = function push(pushSelector, vars$$1) {
  */
 
 
-var borderRadius = function borderRadius(selector, vars$$1) {
+var borderRadius = function borderRadius(selector, vars) {
   return sel(selector, {
     " .pe-dialog__content": {
-      borderRadius: vars$$1.border_radius + "px"
+      borderRadius: vars.border_radius + "px"
     }
   });
 };
@@ -290,7 +290,7 @@ var borderRadius = function borderRadius(selector, vars$$1) {
  */
 
 
-var _floating = function floating(selector, vars$$1) {
+var _floating = function floating(selector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(selector, {
       height: "auto",
@@ -306,8 +306,8 @@ var varFns = _objectSpread({
    * @param {string} selector 
    * @param {object} [vars] 
    */
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(selector, vars$$1), {
+  general_styles: function general_styles(selector, vars$1) {
+    return [sel(selector, [alignLeft(selector, vars$1), {
       justifyContent: "flex-start",
       position: "absolute",
       top: 0,
@@ -360,15 +360,15 @@ var varFns = _objectSpread({
         zIndex: vars.z_drawer
       },
       // Mini
-      ".pe-drawer--mini": _mini(selector, vars$$1),
+      ".pe-drawer--mini": _mini(selector, vars$1),
       // Permanent
-      ".pe-drawer--permanent": _permanent(selector, vars$$1),
+      ".pe-drawer--permanent": _permanent(selector, vars$1),
       // Floating
-      ".pe-drawer--floating": _floating(selector, vars$$1),
+      ".pe-drawer--floating": _floating(selector, vars$1),
       // Cover (default)
-      ".pe-drawer--cover": _cover(selector, vars$$1),
+      ".pe-drawer--cover": _cover(selector, vars$1),
       // Push
-      ".pe-drawer--push": _push(selector, vars$$1),
+      ".pe-drawer--push": _push(selector, vars$1),
       // Backdrop
       " .pe-dialog__backdrop": {
         pointerEvents: "none",
@@ -384,62 +384,62 @@ var varFns = _objectSpread({
         bottom: 0
       },
       ".pe-dialog--backdrop": _backdrop(selector)
-    }]), [sel(selectorRTL(selector), alignRight(selector, vars$$1))]];
+    }]), [sel(selectorRTL(selector), alignRight(selector, vars$1))]];
   },
-  animation_delay: function animation_delay(selector, vars$$1) {
+  animation_delay: function animation_delay(selector, vars) {
     return [sel(selector, {
       "&, .pe-dialog__content, .pe-dialog__backdrop": {
-        transitionDelay: vars$$1.animation_delay
+        transitionDelay: vars.animation_delay
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
       "&, .pe-dialog__content, .pe-dialog__backdrop": {
-        transitionDuration: vars$$1.animation_duration
+        transitionDuration: vars.animation_duration
       }
     })];
   },
-  animation_timing_function: function animation_timing_function(selector, vars$$1) {
+  animation_timing_function: function animation_timing_function(selector, vars) {
     return [sel(selector, {
       "&, .pe-dialog__content, .pe-dialog__backdrop": {
-        transitionTimingFunction: vars$$1.animation_timing_function
+        transitionTimingFunction: vars.animation_timing_function
       }
     })];
   },
-  border_radius: function border_radius(selector, vars$$1) {
-    return [borderRadius(selector, vars$$1)];
+  border_radius: function border_radius(selector, vars) {
+    return [borderRadius(selector, vars)];
   },
-  content_max_width: function content_max_width(selector, vars$$1) {
-    return [cover_content_max_width("".concat(selector, ".pe-drawer--cover"), vars$$1)];
+  content_max_width: function content_max_width(selector, vars) {
+    return [cover_content_max_width("".concat(selector, ".pe-drawer--cover"), vars)];
   },
-  content_width: function content_width(selector, vars$$1) {
-    return [_content_width(selector, vars$$1), _content_width("".concat(selector, ".pe-dialog--visible"), vars$$1), _content_width("".concat(selector, ".pe-drawer--permanent"), vars$$1), push_content_width("".concat(selector, ".pe-drawer--push"), vars$$1)];
+  content_width: function content_width(selector, vars) {
+    return [_content_width(selector, vars), _content_width("".concat(selector, ".pe-dialog--visible"), vars), _content_width("".concat(selector, ".pe-drawer--permanent"), vars), push_content_width("".concat(selector, ".pe-drawer--push"), vars)];
   },
-  content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars$$1) {
-    return [_content_width_mini_collapsed("".concat(selector, ".pe-drawer--mini"), vars$$1)];
+  content_width_mini_collapsed: function content_width_mini_collapsed(selector, vars) {
+    return [_content_width_mini_collapsed("".concat(selector, ".pe-drawer--mini"), vars)];
   },
   // Theme vars
-  cover: function cover(selector, vars$$1) {
-    return vars$$1.cover && [_cover(selector, vars$$1), cover_content_max_width(selector, vars$$1)];
+  cover: function cover(selector, vars) {
+    return vars.cover && [_cover(selector, vars), cover_content_max_width(selector, vars)];
   },
-  backdrop: function backdrop(selector, vars$$1) {
-    return [vars$$1.backdrop && _backdrop(selector)];
+  backdrop: function backdrop(selector, vars) {
+    return [vars.backdrop && _backdrop(selector)];
   },
-  border: function border(selector, vars$$1) {
-    return [_border2(selector, vars$$1)];
+  border: function border(selector, vars) {
+    return [_border2(selector, vars)];
   },
-  mini: function mini(selector, vars$$1) {
-    return vars$$1.mini && [_mini(selector, vars$$1), _content_width_mini_collapsed(selector, vars$$1)];
+  mini: function mini(selector, vars) {
+    return vars.mini && [_mini(selector, vars), _content_width_mini_collapsed(selector, vars)];
   },
-  permanent: function permanent(selector, vars$$1) {
-    return [vars$$1.permanent && _permanent(selector, vars$$1)];
+  permanent: function permanent(selector, vars) {
+    return [vars.permanent && _permanent(selector, vars)];
   },
-  floating: function floating(selector, vars$$1) {
-    return [vars$$1.floating && _floating(selector, vars$$1)];
+  floating: function floating(selector, vars) {
+    return [vars.floating && _floating(selector, vars)];
   },
-  push: function push(selector, vars$$1) {
-    return vars$$1.push && [_push(selector, vars$$1), push_content_width(selector, vars$$1)];
+  push: function push(selector, vars) {
+    return vars.push && [_push(selector, vars), push_content_width(selector, vars)];
   }
 }, sharedVarFns);
 

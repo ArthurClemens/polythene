@@ -60,10 +60,10 @@ var generalFns = {
 };
 
 var tintFns = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint + "_raised_background", function (selector, vars$$1) {
+  return _defineProperty({}, "color_" + tint + "_raised_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-spinner--raised": {
-        backgroundColor: vars$$1["color_" + tint + "_raised_background"]
+        backgroundColor: vars["color_" + tint + "_raised_background"]
       }
     })];
   });
@@ -108,66 +108,66 @@ var varFns = {
       }
     })];
   },
-  animation_show_css: function animation_show_css(selector, vars$$1) {
+  animation_show_css: function animation_show_css(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--visible, &.pe-spinner--permanent": [vars$$1.animation_show_css]
+      ".pe-spinner--visible, &.pe-spinner--permanent": [vars.animation_show_css]
     })];
   },
-  animation_hide_css: function animation_hide_css(selector, vars$$1) {
-    return _defineProperty({}, selector, vars$$1.animation_hide_css);
+  animation_hide_css: function animation_hide_css(selector, vars) {
+    return _defineProperty({}, selector, vars.animation_hide_css);
   },
-  animation_delay: function animation_delay(selector, vars$$1) {
+  animation_delay: function animation_delay(selector, vars) {
     return [sel(selector, {
-      transitionDelay: vars$$1.animation_delay
+      transitionDelay: vars.animation_delay
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      transitionDuration: vars$$1.animation_duration
+      transitionDuration: vars.animation_duration
     })];
   },
-  animation_timing_function: function animation_timing_function(selector, vars$$1) {
+  animation_timing_function: function animation_timing_function(selector, vars) {
     return [sel(selector, {
-      transitionTimingFunction: vars$$1.animation_timing_function
+      transitionTimingFunction: vars.animation_timing_function
     })];
   },
-  size_small: function size_small(selector, vars$$1) {
+  size_small: function size_small(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--small": sizes(vars$$1.size_small),
+      ".pe-spinner--small": sizes(vars.size_small),
       ".pe-spinner--raised": {
-        ".pe-spinner--small": raisedSize(vars$$1.size_small)
+        ".pe-spinner--small": raisedSize(vars.size_small)
       }
     })];
   },
-  size_regular: function size_regular(selector, vars$$1) {
+  size_regular: function size_regular(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--regular": sizes(vars$$1.size_regular),
+      ".pe-spinner--regular": sizes(vars.size_regular),
       ".pe-spinner--raised": {
-        ".pe-spinner--regular": raisedSize(vars$$1.size_regular)
+        ".pe-spinner--regular": raisedSize(vars.size_regular)
       }
     })];
   },
-  size_medium: function size_medium(selector, vars$$1) {
+  size_medium: function size_medium(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--medium": sizes(vars$$1.size_medium),
+      ".pe-spinner--medium": sizes(vars.size_medium),
       ".pe-spinner--raised": {
-        ".pe-spinner--medium": raisedSize(vars$$1.size_medium)
+        ".pe-spinner--medium": raisedSize(vars.size_medium)
       }
     })];
   },
-  size_large: function size_large(selector, vars$$1) {
+  size_large: function size_large(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--large": sizes(vars$$1.size_large),
+      ".pe-spinner--large": sizes(vars.size_large),
       ".pe-spinner--raised": {
-        ".pe-spinner--large": raisedSize(vars$$1.size_large)
+        ".pe-spinner--large": raisedSize(vars.size_large)
       }
     })];
   },
-  size_fab: function size_fab(selector, vars$$1) {
+  size_fab: function size_fab(selector, vars) {
     return [sel(selector, {
-      ".pe-spinner--fab": sizes(vars$$1.size_fab),
+      ".pe-spinner--fab": sizes(vars.size_fab),
       ".pe-spinner--raised": {
-        ".pe-spinner--fab": raisedSize(vars$$1.size_fab)
+        ".pe-spinner--fab": raisedSize(vars.size_fab)
       }
     })];
   }

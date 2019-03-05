@@ -485,8 +485,8 @@ var ComponentCreator = function ComponentCreator(_ref) {
         _this.state = getInitialState(protoState, stream$1, {
           keys: keys
         });
-        _this.registerDOM = _this.registerDOM.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-        _this._render = _this._render.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+        _this.registerDOM = _this.registerDOM.bind(_assertThisInitialized(_this));
+        _this._render = _this._render.bind(_assertThisInitialized(_this));
         return _this;
       }
 

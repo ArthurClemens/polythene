@@ -47,8 +47,8 @@
     "polythene-test-textfield": "^1.5.2",
     "polythene-test-toolbar": "^1.5.2",
     "polythene-utilities": "^1.5.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {

@@ -67,30 +67,30 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"]
+      backgroundColor: vars["color_" + tint + "_background"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_title_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__header .pe-dialog-pane__title": {
-        color: vars$$1["color_" + tint + "_title_text"]
+        color: vars["color_" + tint + "_title_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_body_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_body_text", function (selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__body": {
-        color: vars$$1["color_" + tint + "_body_text"]
+        color: vars["color_" + tint + "_body_text"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_body_border", function (selector, vars) {
     return [sel(selector, {
       ".pe-dialog-pane--border-top .pe-dialog-pane__body": {
-        borderTopColor: vars$$1["color_" + tint + "_body_border"]
+        borderTopColor: vars["color_" + tint + "_body_border"]
       },
       ".pe-dialog-pane--border-bottom .pe-dialog-pane__body": {
         borderBottomStyle: "solid",
-        borderBottomColor: vars$$1["color_" + tint + "_body_border"]
+        borderBottomColor: vars["color_" + tint + "_body_border"]
       }
     })];
   }), _ref;
@@ -107,24 +107,24 @@ var color = createColor({
   }
 });
 
-var max_width_side_padding_mobile = function max_width_side_padding_mobile(selector, vars$$1) {
+var max_width_side_padding_mobile = function max_width_side_padding_mobile(selector, vars) {
   var _ref3;
 
-  var maxWidthBreakpointMobile = vars$$1.max_width + 2 * vars$$1.side_padding_mobile;
+  var maxWidthBreakpointMobile = vars.max_width + 2 * vars.side_padding_mobile;
   return _ref3 = {}, _defineProperty(_ref3, "@media (max-width: " + maxWidthBreakpointMobile + "px)", _defineProperty({}, selector, {
-    maxWidth: "calc(100vw - ".concat(2 * vars$$1.side_padding_mobile, "px)")
+    maxWidth: "calc(100vw - ".concat(2 * vars.side_padding_mobile, "px)")
   })), _defineProperty(_ref3, "@media (min-width: " + (maxWidthBreakpointMobile + 1) + "px)", _defineProperty({}, selector, {
-    maxWidth: vars$$1.max_width + "px"
+    maxWidth: vars.max_width + "px"
   })), _ref3;
 };
 
-var padding_header_bottom = function padding_header_bottom(selector, vars$$1) {
+var padding_header_bottom = function padding_header_bottom(selector, vars) {
   return sel(selector, {
     " .pe-dialog-pane__header--title": {
-      paddingTop: vars$$1.padding - 4 + "px",
-      paddingRight: vars$$1.padding + "px",
-      paddingBottom: vars$$1.header_bottom - 4 + "px",
-      paddingLeft: vars$$1.padding + "px"
+      paddingTop: vars.padding - 4 + "px",
+      paddingRight: vars.padding + "px",
+      paddingBottom: vars.header_bottom - 4 + "px",
+      paddingLeft: vars.padding + "px"
     }
   });
 };
@@ -133,10 +133,10 @@ Setting an explicit max-height is needed for IE 11
 */
 
 
-var header_height_footer_height_margin_vertical = function header_height_footer_height_margin_vertical(selector, vars$$1) {
+var header_height_footer_height_margin_vertical = function header_height_footer_height_margin_vertical(selector, vars) {
   return sel(selector, {
     " .pe-dialog-pane__body": {
-      maxHeight: "calc(100vh - (".concat(vars$$1.header_height, "px + ").concat(vars$$1.footer_height, "px + 2 * ").concat(vars$$1.margin_vertical, "px))")
+      maxHeight: "calc(100vh - (".concat(vars.header_height, "px + ").concat(vars.footer_height, "px + 2 * ").concat(vars.margin_vertical, "px))")
     }
   });
 };
@@ -267,70 +267,70 @@ var varFns = {
       })
     }];
   },
-  max_width: function max_width(selector, vars$$1) {
-    return [vars$$1.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars$$1)];
+  max_width: function max_width(selector, vars) {
+    return [vars.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars)];
   },
-  side_padding_mobile: function side_padding_mobile(selector, vars$$1) {
-    return [vars$$1.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars$$1)];
+  side_padding_mobile: function side_padding_mobile(selector, vars) {
+    return [vars.side_padding_mobile !== undefined && max_width_side_padding_mobile(selector, vars)];
   },
-  min_width: function min_width(selector, vars$$1) {
+  min_width: function min_width(selector, vars) {
     return [sel(selector, {
-      minWidth: vars$$1.min_width + "px"
+      minWidth: vars.min_width + "px"
     })];
   },
-  margin_vertical: function margin_vertical(selector, vars$$1) {
+  margin_vertical: function margin_vertical(selector, vars) {
     return [sel(selector, {
-      maxHeight: "calc(100vh - 2 * ".concat(vars$$1.margin_vertical, "px)")
-    }), vars$$1.header_height !== undefined && vars$$1.footer_height !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
+      maxHeight: "calc(100vh - 2 * ".concat(vars.margin_vertical, "px)")
+    }), vars.header_height !== undefined && vars.footer_height !== undefined && header_height_footer_height_margin_vertical(selector, vars)];
   },
-  line_height_title: function line_height_title(selector, vars$$1) {
+  line_height_title: function line_height_title(selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__title": {
-        lineHeight: vars$$1.line_height_title + "px"
+        lineHeight: vars.line_height_title + "px"
       }
     })];
   },
-  header_height: function header_height(selector, vars$$1) {
+  header_height: function header_height(selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__header": {
-        height: vars$$1.header_height + "px"
+        height: vars.header_height + "px"
       }
-    }), vars$$1.footer_height !== undefined && vars$$1.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
+    }), vars.footer_height !== undefined && vars.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars)];
   },
-  footer_height: function footer_height(selector, vars$$1) {
+  footer_height: function footer_height(selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__footer--buttons .pe-dialog-pane__actions": {
-        minHeight: vars$$1.footer_height + "px"
+        minHeight: vars.footer_height + "px"
       }
-    }), vars$$1.header_height !== undefined && vars$$1.footer_height !== undefined && vars$$1.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars$$1)];
+    }), vars.header_height !== undefined && vars.footer_height !== undefined && vars.margin_vertical !== undefined && header_height_footer_height_margin_vertical(selector, vars)];
   },
-  padding: function padding(selector, vars$$1) {
+  padding: function padding(selector, vars) {
     return [sel(selector, {
       " .pe-dialog-pane__body": {
-        padding: vars$$1.padding + "px"
+        padding: vars.padding + "px"
       },
       ".pe-dialog-pane--footer": {
         " .pe-dialog-pane__body": {
-          paddingBottom: vars$$1.padding - 10 + "px"
+          paddingBottom: vars.padding - 10 + "px"
         }
       }
-    }), vars$$1.header_bottom !== undefined && padding_header_bottom(selector, vars$$1)];
+    }), vars.header_bottom !== undefined && padding_header_bottom(selector, vars)];
   },
-  header_bottom: function header_bottom(selector, vars$$1) {
-    return [padding_header_bottom(selector, vars$$1)];
+  header_bottom: function header_bottom(selector, vars) {
+    return [padding_header_bottom(selector, vars)];
   },
-  border_width: function border_width(selector, vars$$1) {
+  border_width: function border_width(selector, vars) {
     return [sel(selector, {
       ".pe-dialog-pane--header": {
         " .pe-dialog-pane__body": {
           // borderTopStyle set in color.js
-          borderWidth: vars$$1.border_width + "px"
+          borderWidth: vars.border_width + "px"
         }
       },
       ".pe-dialog-pane--footer": {
         " .pe-dialog-pane__body": {
           // borderBottomStyle set in color.js
-          borderWidth: vars$$1.border_width + "px"
+          borderWidth: vars.border_width + "px"
         }
       }
     })];

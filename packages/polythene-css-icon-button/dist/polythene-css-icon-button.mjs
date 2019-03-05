@@ -58,35 +58,35 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
     return [sel(selector, {
       "&, .pe-icon-button__label": {
-        color: vars$$1["color_" + tint]
+        color: vars["color_" + tint]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__content": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
+        backgroundColor: vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars) {
     return [sel(selector, {
-      opacity: vars$$1["color_" + tint + "_wash_opacity"]
+      opacity: vars["color_" + tint + "_wash_opacity"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--focus, &.pe-button--selected": {
         " .pe-button__focus": {
-          opacity: vars$$1["color_" + tint + "_focus_opacity"]
+          opacity: vars["color_" + tint + "_focus_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--disabled": {
         " .pe-button__content, .pe-icon-button__label": {
-          color: vars$$1["color_" + tint + "_disabled"]
+          color: vars["color_" + tint + "_disabled"]
         }
       }
     })];
@@ -96,29 +96,29 @@ var tintFns = function tintFns(tint) {
 var hoverTintFns = function hoverTintFns(tint) {
   var _ref2;
 
-  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars$$1) {
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__content": {
-        color: vars$$1["color_" + tint + "_hover"]
+        color: vars["color_" + tint + "_hover"]
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_label_hover", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_label_hover", function (selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__label": {
-        color: vars$$1["color_" + tint + "_label_hover"]
+        color: vars["color_" + tint + "_label_hover"]
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_background_hover", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_background_hover", function (selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__content": {
-        backgroundColor: vars$$1["color_" + tint + "_background_hover"]
+        backgroundColor: vars["color_" + tint + "_background_hover"]
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__wash": {
-          backgroundColor: vars$$1["color_" + tint + "_wash_background"]
+          backgroundColor: vars["color_" + tint + "_wash_background"]
         }
       }
     })];
@@ -141,7 +141,7 @@ var color = createColor({
 });
 
 var alignSide = function alignSide(isRTL) {
-  return function (vars$$1) {
+  return function (vars) {
     return {};
   };
 }; // eslint-disable-line no-unused-vars
@@ -150,21 +150,21 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var _label_padding_before = function label_padding_before(selector, vars$$1, isRTL) {
+var _label_padding_before = function label_padding_before(selector, vars, isRTL) {
   return sel(selector, {
-    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.label_padding_before + "px")
+    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars.label_padding_before + "px")
   });
 };
 
-var _label_padding_after = function label_padding_after(selector, vars$$1, isRTL) {
+var _label_padding_after = function label_padding_after(selector, vars, isRTL) {
   return sel(selector, {
-    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars$$1.label_padding_after + "px")
+    " .pe-icon-button__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars.label_padding_after + "px")
   });
 };
 
 var varFns = {
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(vars$$1), {
+  general_styles: function general_styles(selector, vars) {
+    return [sel(selector, [alignLeft(vars), {
       // don't set button size to facilitate different icon sizes
       display: "inline-flex",
       alignItems: "center",
@@ -182,62 +182,62 @@ var varFns = {
         borderRadius: "50%",
         pointerEvents: "none"
       }
-    }, _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(vars$$1)])])];
+    }, _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(vars)])])];
   },
-  padding: function padding(selector, vars$$1) {
+  padding: function padding(selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__content": {
-        padding: vars$$1.padding + "px"
+        padding: vars.padding + "px"
       }
     })];
   },
-  padding_compact: function padding_compact(selector, vars$$1) {
+  padding_compact: function padding_compact(selector, vars) {
     return [sel(selector, {
       ".pe-icon-button--compact": {
         " .pe-icon-button__content": {
-          padding: vars$$1.padding_compact + "px"
+          padding: vars.padding_compact + "px"
         }
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-button__content, .pe-button__wash": [mixin.defaultTransition("all", vars$$1.animation_duration)]
+      " .pe-button__content, .pe-button__wash": [mixin.defaultTransition("all", vars.animation_duration)]
     })];
   },
-  label_font_size: function label_font_size(selector, vars$$1) {
+  label_font_size: function label_font_size(selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__label": {
-        fontSize: vars$$1.label_font_size + "px"
+        fontSize: vars.label_font_size + "px"
       }
     })];
   },
-  label_line_height: function label_line_height(selector, vars$$1) {
+  label_line_height: function label_line_height(selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__label": {
-        lineHeight: vars$$1.label_line_height + "px"
+        lineHeight: vars.label_line_height + "px"
       }
     })];
   },
-  label_font_weight: function label_font_weight(selector, vars$$1) {
+  label_font_weight: function label_font_weight(selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__label": {
-        fontWeight: vars$$1.label_font_weight
+        fontWeight: vars.label_font_weight
       }
     })];
   },
-  label_text_transform: function label_text_transform(selector, vars$$1) {
+  label_text_transform: function label_text_transform(selector, vars) {
     return [sel(selector, {
       " .pe-icon-button__label": {
-        textTransform: vars$$1.label_text_transform
+        textTransform: vars.label_text_transform
       }
     })];
   },
-  label_padding_after: function label_padding_after(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), _label_padding_after(selectorRTL(selector), vars$$1, true)];
+  label_padding_after: function label_padding_after(selector, vars) {
+    return [sel(selector, {}), _label_padding_after(selector, vars, false), _label_padding_after(selectorRTL(selector), vars, true)];
   },
-  label_padding_before: function label_padding_before(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), _label_padding_before(selectorRTL(selector), vars$$1, true)];
+  label_padding_before: function label_padding_before(selector, vars) {
+    return [sel(selector, {}), _label_padding_before(selector, vars, false), _label_padding_before(selectorRTL(selector), vars, true)];
   }
 };
 var layout = createLayout({
