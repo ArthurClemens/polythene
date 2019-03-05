@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-group",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "",
   "main": "dist/polythene-react-radio-group",
   "module": "dist/polythene-react-radio-group.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-radio-group": "^1.5.3",
-    "polythene-react-base": "^1.5.3",
-    "polythene-react-radio-button": "^1.5.3"
+    "polythene-core-radio-group": "^1.5.4",
+    "polythene-react-base": "^1.5.4",
+    "polythene-react-radio-button": "^1.5.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.6"

@@ -263,15 +263,15 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     //     disabled: true
     //   }
     // },
-    {
-      name: "Option: selectable",
-      interactive: true,
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        selectable: true
-      }
-    },
+    // {
+    //   name: "Option: selectable",
+    //   interactive: true,
+    //   component: ListTile,
+    //   attrs: {
+    //     title: "Ancillary Justice",
+    //     selectable: true
+    //   }
+    // },
 
     // Secondary content options
 

@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.5](#15)
+  - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
     - [Bundle size](#bundle-size)
@@ -40,6 +41,11 @@
 
 
 ## 1.5
+
+### 1.5.4
+
+Includes a fix to allow events on List Tile secondary content.
+
 
 ### 1.5.2
 

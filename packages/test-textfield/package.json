@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-textfield",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "private": true,
   "description": "",
   "sideEffects": false,
@@ -9,9 +9,9 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-css": "^1.5.3",
-    "polythene-mithril": "^1.5.3",
-    "polythene-react": "^1.5.3",
+    "polythene-css": "^1.5.4",
+    "polythene-mithril": "^1.5.4",
+    "polythene-react": "^1.5.4",
     "powerform": "^3.1.4"
   },
   "devDependencies": {

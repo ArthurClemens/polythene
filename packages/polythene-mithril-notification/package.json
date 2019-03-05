@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-notification",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "",
   "main": "dist/polythene-mithril-notification",
   "module": "dist/polythene-mithril-notification.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.3",
-    "polythene-core-notification": "^1.5.3",
-    "polythene-css-classes": "^1.5.3",
-    "polythene-mithril-base": "^1.5.3"
+    "polythene-core": "^1.5.4",
+    "polythene-core-notification": "^1.5.4",
+    "polythene-css-classes": "^1.5.4",
+    "polythene-mithril-base": "^1.5.4"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"
