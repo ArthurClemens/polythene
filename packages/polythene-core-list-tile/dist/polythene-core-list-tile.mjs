@@ -118,7 +118,7 @@ var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
   var hasTabIndex = attrs.url;
   return h(element, _extends({}, url, {
     className: classes.secondary
-  }, requiresKeys ? {
+  }, attrs.events, requiresKeys ? {
     key: "secondary"
   } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", {
     className: classes.content

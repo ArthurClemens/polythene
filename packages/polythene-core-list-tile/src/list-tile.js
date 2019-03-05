@@ -106,9 +106,10 @@ const secondaryContent = (h, k, requiresKeys, Icon, attrs = {}) => {
       {
         className: classes.secondary,
       },
+      attrs.events,
       requiresKeys ? { key: "secondary" } : null,
       filterSupportedAttributes(attrs),
-      hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 }
+      hasTabIndex && { [k.tabindex]: attrs[k.tabindex] || 0 },
     ),
     h("div",
       { className: classes.content },
