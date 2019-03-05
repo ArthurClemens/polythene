@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-slider",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "description": "",
   "sideEffects": false,
@@ -9,11 +9,11 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-core-css": "^1.5.2",
-    "polythene-css": "^1.5.2",
-    "polythene-mithril": "^1.5.2",
-    "polythene-react": "^1.5.2",
-    "polythene-theme": "^1.5.2"
+    "polythene-core-css": "^1.5.3",
+    "polythene-css": "^1.5.3",
+    "polythene-mithril": "^1.5.3",
+    "polythene-react": "^1.5.3",
+    "polythene-theme": "^1.5.3"
   },
   "devDependencies": {
     "mithril": "^1.1.6",

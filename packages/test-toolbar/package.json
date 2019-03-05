@@ -1,6 +1,6 @@
 {
   "name": "polythene-test-toolbar",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "description": "",
   "sideEffects": false,
@@ -9,11 +9,11 @@
     "test:watch": "npm run test -- --watch --no-watchman"
   },
   "dependencies": {
-    "polythene-core-toolbar": "^1.5.2",
-    "polythene-css": "^1.5.2",
-    "polythene-css-classes": "^1.5.2",
-    "polythene-mithril": "^1.5.2",
-    "polythene-react": "^1.5.2"
+    "polythene-core-toolbar": "^1.5.3",
+    "polythene-css": "^1.5.3",
+    "polythene-css-classes": "^1.5.3",
+    "polythene-mithril": "^1.5.3",
+    "polythene-react": "^1.5.3"
   },
   "devDependencies": {
     "react": "^16.7.0"

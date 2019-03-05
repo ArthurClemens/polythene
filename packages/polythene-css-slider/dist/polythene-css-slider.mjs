@@ -1,5 +1,5 @@
 import { createColor, sel, createLayout, flex, mixin, rgba, styler } from 'polythene-core-css';
-import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-slider",
@@ -106,146 +106,146 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         " .pe-icon": {
-          color: vars$$1["color_" + tint + "_icon"]
+          color: vars["color_" + tint + "_icon"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         " .pe-slider__label": {
-          color: vars$$1["color_" + tint + "_label"]
+          color: vars["color_" + tint + "_label"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint + "_thumb_on"] // override by specifying "color"
+      color: vars["color_" + tint + "_thumb_on"] // override by specifying "color"
 
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_inactive", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_inactive", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__track-bar-value": {
-        background: vars$$1["color_" + tint + "_track_inactive"]
+        background: vars["color_" + tint + "_track_inactive"]
       },
       ".pe-slider--min:not(.pe-slider--disabled):not(.pe-slider--ticks)": {
         " .pe-slider__control:after": {
-          borderColor: vars$$1["color_" + tint + "_track_inactive"]
+          borderColor: vars["color_" + tint + "_track_inactive"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_tick", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_tick", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__tick": {
-        background: vars$$1["color_" + tint + "_tick"]
+        background: vars["color_" + tint + "_tick"]
       },
       ".pe-slider--min:not(.pe-slider--disabled)": {
         ".pe-slider--tick": {
-          backgroundColor: vars$$1["color_" + tint + "_tick"]
+          backgroundColor: vars["color_" + tint + "_tick"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_tick_value", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_tick_value", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__tick--value": {
-        background: vars$$1["color_" + tint + "_tick_value"]
+        background: vars["color_" + tint + "_tick_value"]
       },
       ".pe-slider--min:not(.pe-slider--disabled)": {
         ".pe-slider--tick--value": {
-          backgroundColor: vars$$1["color_" + tint + "_tick_value"]
+          backgroundColor: vars["color_" + tint + "_tick_value"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_icon", function (selector, vars) {
     return [sel(selector, {
       " .pe-icon": {
-        color: vars$$1["color_" + tint + "_disabled_icon"]
+        color: vars["color_" + tint + "_disabled_icon"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled_label", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__label": {
-        color: vars$$1["color_" + tint + "_disabled_label"]
+        color: vars["color_" + tint + "_disabled_label"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_active", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_active", function (selector, vars) {
     return [sel(selector, {
       ".pe-slider--active": {
         " .pe-slider__track-bar-value": {
-          background: vars$$1["color_" + tint + "_track_active"]
+          background: vars["color_" + tint + "_track_active"]
         }
       },
       ".pe-slider--min:not(.pe-slider--disabled)": {
         ".pe-slider--active .pe-slider__control:after": {
-          borderColor: vars$$1["color_" + tint + "_track_active"]
+          borderColor: vars["color_" + tint + "_track_active"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_inactive", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_inactive", function (selector, vars) {
     return [sel(selector, {
       ".pe-slider--disabled": {
         " .pe-slider__control": {
-          background: vars$$1["color_" + tint + "_thumb_inactive"]
+          background: vars["color_" + tint + "_thumb_inactive"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         " .pe-slider__control": {
-          backgroundColor: vars$$1["color_" + tint + "_thumb_background"]
+          backgroundColor: vars["color_" + tint + "_thumb_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus_opacity", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         " .pe-slider__control": {
           ":before": {
-            opacity: vars$$1["color_" + tint + "_thumb_off_focus_opacity"]
+            opacity: vars["color_" + tint + "_thumb_off_focus_opacity"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_off_focus", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         ".pe-slider--focus.pe-slider--min:not(.pe-slider--pin) .pe-slider__control:before,\
         .pe-slider--min:not(.pe-slider--pin) .pe-slider__control:focus:before": {
-          backgroundColor: vars$$1["color_" + tint + "_thumb_off_focus"]
+          backgroundColor: vars["color_" + tint + "_thumb_off_focus"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_thumb_on_focus_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_thumb_on_focus_opacity", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         ".pe-slider--focus:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:before,\
         &:not(.pe-slider--min):not(.pe-slider--pin) .pe-slider__control:focus:before": {
-          opacity: vars$$1["color_" + tint + "_thumb_on_focus_opacity"]
+          opacity: vars["color_" + tint + "_thumb_on_focus_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_pin_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_pin_label", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__pin:after": {
-        color: vars$$1["color_" + tint + "_pin_label"]
+        color: vars["color_" + tint + "_pin_label"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_pin_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_pin_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-slider__pin": {
-        backgroundColor: vars$$1["color_" + tint + "_pin_background"]
+        backgroundColor: vars["color_" + tint + "_pin_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_track_value", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_track_value", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-slider--disabled)": {
         " .pe-slider__track-value .pe-slider__track-bar-value": {
-          backgroundColor: vars$$1["color_" + tint + "_track_value"]
+          backgroundColor: vars["color_" + tint + "_track_value"]
         }
       }
     })];
@@ -265,34 +265,34 @@ var color = createColor({
 
 // @ts-check
 
-var getThumbSize = function getThumbSize(vars$$1) {
-  var thumbSize = Math.max(vars$$1.thumb_size, 2 * vars$$1.thumb_border_width);
+var getThumbSize = function getThumbSize(vars) {
+  var thumbSize = Math.max(vars.thumb_size, 2 * vars.thumb_border_width);
   var barOffset = thumbSize / 2;
   var stepsOffset = barOffset - 1;
   return {
     normalThumbSize: thumbSize,
-    disabledThumbSize: thumbSize - 2 * vars$$1.thumb_border_width,
+    disabledThumbSize: thumbSize - 2 * vars.thumb_border_width,
     barOffset: barOffset,
     stepsOffset: stepsOffset
   };
 };
 
-var getBorderWidth = function getBorderWidth(vars$$1) {
-  var borderWidth = vars$$1.thumb_border_width;
-  var scaledBorderWidth = Math.max(1, vars$$1.thumb_border_width / vars$$1.active_thumb_scale);
+var getBorderWidth = function getBorderWidth(vars) {
+  var borderWidth = vars.thumb_border_width;
+  var scaledBorderWidth = Math.max(1, vars.thumb_border_width / vars.active_thumb_scale);
   return {
     normalBorderWidth: borderWidth,
-    disabledBorderWidth: 1 / vars$$1.disabled_thumb_scale * vars$$1.thumb_border_width,
+    disabledBorderWidth: 1 / vars.disabled_thumb_scale * vars.thumb_border_width,
     scaledBorderWidth: scaledBorderWidth
   };
 };
 
-var thumb_size_thumb_border_width_disabled_thumb_scale = function thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars$$1) {
-  var _getThumbSize = getThumbSize(vars$$1),
+var thumb_size_thumb_border_width_disabled_thumb_scale = function thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars) {
+  var _getThumbSize = getThumbSize(vars),
       normalThumbSize = _getThumbSize.normalThumbSize,
       disabledThumbSize = _getThumbSize.disabledThumbSize;
 
-  var _getBorderWidth = getBorderWidth(vars$$1),
+  var _getBorderWidth = getBorderWidth(vars),
       normalBorderWidth = _getBorderWidth.normalBorderWidth,
       disabledBorderWidth = _getBorderWidth.disabledBorderWidth;
 
@@ -317,40 +317,40 @@ var thumb_size_thumb_border_width_disabled_thumb_scale = function thumb_size_thu
   });
 };
 
-var height_track_height = function height_track_height(selector, vars$$1) {
+var height_track_height = function height_track_height(selector, vars) {
   return sel(selector, {
-    marginTop: (vars$$1.height - vars$$1.track_height) / 2 + "px "
+    marginTop: (vars.height - vars.track_height) / 2 + "px "
   });
 };
 
-var track_height_bar_height = function track_height_bar_height(selector, vars$$1) {
+var track_height_bar_height = function track_height_bar_height(selector, vars) {
   return sel(selector, {
     " .pe-slider__track-part": {
-      margin: (vars$$1.track_height - vars$$1.bar_height) / 2 + "px 0"
+      margin: (vars.track_height - vars.bar_height) / 2 + "px 0"
     }
   });
 };
 
-var thumb_size_thumb_touch_size = function thumb_size_thumb_touch_size(selector, vars$$1) {
-  var _getThumbSize2 = getThumbSize(vars$$1),
+var thumb_size_thumb_touch_size = function thumb_size_thumb_touch_size(selector, vars) {
+  var _getThumbSize2 = getThumbSize(vars),
       normalThumbSize = _getThumbSize2.normalThumbSize;
 
   return sel(selector, {
     " .pe-slider__control:before": {
-      left: -vars$$1.thumb_touch_size / 2 + normalThumbSize / 2 + "px",
-      top: -vars$$1.thumb_touch_size / 2 + normalThumbSize / 2 + "px"
+      left: -vars.thumb_touch_size / 2 + normalThumbSize / 2 + "px",
+      top: -vars.thumb_touch_size / 2 + normalThumbSize / 2 + "px"
     }
   });
 };
 
-var thumb_size_active_thumb_scale = function thumb_size_active_thumb_scale(selector, vars$$1) {
-  var _getThumbSize3 = getThumbSize(vars$$1),
+var thumb_size_active_thumb_scale = function thumb_size_active_thumb_scale(selector, vars) {
+  var _getThumbSize3 = getThumbSize(vars),
       normalThumbSize = _getThumbSize3.normalThumbSize;
 
-  var _getBorderWidth2 = getBorderWidth(vars$$1),
+  var _getBorderWidth2 = getBorderWidth(vars),
       scaledBorderWidth = _getBorderWidth2.scaledBorderWidth;
 
-  var scaledThumbDiff = (vars$$1.active_thumb_scale - 1) * normalThumbSize / 2;
+  var scaledThumbDiff = (vars.active_thumb_scale - 1) * normalThumbSize / 2;
   return sel(selector, {
     ".pe-slider--active:not(.pe-slider--ticks)": {
       " .pe-slider__control": {
@@ -373,13 +373,13 @@ var thumb_size_active_thumb_scale = function thumb_size_active_thumb_scale(selec
   });
 };
 
-var thumb_size_pin_width = function thumb_size_pin_width(selector, vars$$1) {
-  var _getThumbSize4 = getThumbSize(vars$$1),
+var thumb_size_pin_width = function thumb_size_pin_width(selector, vars) {
+  var _getThumbSize4 = getThumbSize(vars),
       stepsOffset = _getThumbSize4.stepsOffset;
 
   return sel(selector, {
     " .pe-slider__pin": {
-      margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - vars$$1.pin_width / 2 + 1) + "px"
+      margin: "0 " + stepsOffset + "px 0 " + (stepsOffset - vars.pin_width / 2 + 1) + "px"
     }
   });
 };
@@ -427,10 +427,10 @@ var varFns = {
         }
       }],
       " .pe-slider__label": {
-        minWidth: vars.unit_icon_size + "px",
+        minWidth: vars$1.unit_icon_size + "px",
         textAlign: "center",
         fontSize: "16px",
-        fontWeight: vars.font_weight_medium
+        fontWeight: vars$1.font_weight_medium
       },
       " .pe-slider__track-part": [flex.flex(), {
         userSelect: "none",
@@ -498,8 +498,8 @@ var varFns = {
       }
     }])];
   },
-  thumb_size: function thumb_size(selector, vars$$1) {
-    var _getThumbSize5 = getThumbSize(vars$$1),
+  thumb_size: function thumb_size(selector, vars) {
+    var _getThumbSize5 = getThumbSize(vars),
         normalThumbSize = _getThumbSize5.normalThumbSize,
         barOffset = _getThumbSize5.barOffset,
         stepsOffset = _getThumbSize5.stepsOffset;
@@ -519,130 +519,130 @@ var varFns = {
         width: "calc(100% - " + 2 * stepsOffset + "px)",
         margin: "0 " + stepsOffset + "px"
       }
-    }), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars$$1), thumb_size_thumb_touch_size(selector, vars$$1), thumb_size_active_thumb_scale(selector, vars$$1), thumb_size_pin_width(selector, vars$$1)];
+    }), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars), thumb_size_thumb_touch_size(selector, vars), thumb_size_active_thumb_scale(selector, vars), thumb_size_pin_width(selector, vars)];
   },
-  active_thumb_scale: function active_thumb_scale(selector, vars$$1) {
+  active_thumb_scale: function active_thumb_scale(selector, vars) {
     return [sel(selector, {
       ".pe-slider--active:not(.pe-slider--ticks)": {
         " .pe-slider__control": {
-          transform: "scale(" + vars$$1.active_thumb_scale + ")"
+          transform: "scale(" + vars.active_thumb_scale + ")"
         }
       }
-    }), thumb_size_active_thumb_scale(selector, vars$$1)];
+    }), thumb_size_active_thumb_scale(selector, vars)];
   },
-  thumb_touch_size: function thumb_touch_size(selector, vars$$1) {
+  thumb_touch_size: function thumb_touch_size(selector, vars) {
     return [sel(selector, {
       " .pe-slider__control": {
         ":before": {
-          width: vars$$1.thumb_touch_size + "px",
-          height: vars$$1.thumb_touch_size + "px"
+          width: vars.thumb_touch_size + "px",
+          height: vars.thumb_touch_size + "px"
         }
       }
-    }), thumb_size_thumb_touch_size(selector, vars$$1)];
+    }), thumb_size_thumb_touch_size(selector, vars)];
   },
-  thumb_border_width: function thumb_border_width(selector, vars$$1) {
-    return [sel(selector, {}), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars$$1)];
+  thumb_border_width: function thumb_border_width(selector, vars) {
+    return [sel(selector, {}), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars)];
   },
-  disabled_thumb_scale: function disabled_thumb_scale(selector, vars$$1) {
+  disabled_thumb_scale: function disabled_thumb_scale(selector, vars) {
     return [sel(selector, {
       ".pe-slider--disabled": {
         " .pe-slider__control": {
-          transform: "scale(" + vars$$1.disabled_thumb_scale + ")"
+          transform: "scale(" + vars.disabled_thumb_scale + ")"
         }
       }
-    }), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars$$1)];
+    }), thumb_size_thumb_border_width_disabled_thumb_scale(selector, vars)];
   },
-  active_pin_thumb_scale: function active_pin_thumb_scale(selector, vars$$1) {
+  active_pin_thumb_scale: function active_pin_thumb_scale(selector, vars) {
     return [sel(selector, {
       ".pe-slider--pin.pe-slider--active, &.pe-slider--pin.pe-slider--focus": {
         " .pe-slider__control": {
-          transform: "scale(" + vars$$1.active_pin_thumb_scale + ")"
+          transform: "scale(" + vars.active_pin_thumb_scale + ")"
         }
       }
     })];
   },
-  height: function height(selector, vars$$1) {
+  height: function height(selector, vars) {
     return [sel(selector, {
-      height: vars$$1.height + "px",
+      height: vars.height + "px",
       " > .pe-icon": {
-        height: vars$$1.height + "px"
+        height: vars.height + "px"
       },
       " .pe-slider__label": {
-        height: vars$$1.height + "px",
-        lineHeight: vars$$1.height + "px"
+        height: vars.height + "px",
+        lineHeight: vars.height + "px"
       },
       " .pe-slider__ticks": {
-        top: vars$$1.height / 2 - 1 + "px"
+        top: vars.height / 2 - 1 + "px"
       }
-    }), height_track_height(selector, vars$$1)];
+    }), height_track_height(selector, vars)];
   },
-  track_height: function track_height(selector, vars$$1) {
+  track_height: function track_height(selector, vars) {
     return [sel(selector, {
       " .pe-slider__track": {
-        height: vars$$1.track_height + "px"
+        height: vars.track_height + "px"
       }
-    }), height_track_height(selector, vars$$1), track_height_bar_height(selector, vars$$1)];
+    }), height_track_height(selector, vars), track_height_bar_height(selector, vars)];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-slider__track": mixin.defaultTransition("transform", vars$$1.animation_duration),
-      " .pe-slider__control:before": mixin.defaultTransition("background-color", vars$$1.animation_duration),
-      " .pe-slider__control:after": mixin.defaultTransition("border", vars$$1.animation_duration),
-      " .pe-slider__thumb": mixin.defaultTransition("opacity", vars$$1.animation_duration),
-      " .pe-slider__track-bar-value": mixin.defaultTransition("transform, background-color", vars$$1.animation_duration)
+      " .pe-slider__track": mixin.defaultTransition("transform", vars.animation_duration),
+      " .pe-slider__control:before": mixin.defaultTransition("background-color", vars.animation_duration),
+      " .pe-slider__control:after": mixin.defaultTransition("border", vars.animation_duration),
+      " .pe-slider__thumb": mixin.defaultTransition("opacity", vars.animation_duration),
+      " .pe-slider__track-bar-value": mixin.defaultTransition("transform, background-color", vars.animation_duration)
     })];
   },
-  side_spacing: function side_spacing(selector, vars$$1) {
+  side_spacing: function side_spacing(selector, vars) {
     return [sel(selector, {
       " .pe-slider__track": {
-        margin: "0 " + vars$$1.side_spacing + "px"
+        margin: "0 " + vars.side_spacing + "px"
       }
     })];
   },
-  horizontal_layout_side_spacing: function horizontal_layout_side_spacing(selector, vars$$1) {
+  horizontal_layout_side_spacing: function horizontal_layout_side_spacing(selector, vars) {
     return [sel(selector, {
       " div + .pe-slider__track": {
-        margin: "0 " + vars$$1.horizontal_layout_side_spacing + "px"
+        margin: "0 " + vars.horizontal_layout_side_spacing + "px"
       }
     })];
   },
-  bar_height: function bar_height(selector, vars$$1) {
+  bar_height: function bar_height(selector, vars) {
     return [sel(selector, {
       " .pe-slider__track-part,\
         .pe-slider__track-bar-value,\
         .pe-slider__ticks,\
         .pe-slider__tick": {
-        height: vars$$1.bar_height + "px"
+        height: vars.bar_height + "px"
       }
-    }), track_height_bar_height(selector, vars$$1)];
+    }), track_height_bar_height(selector, vars)];
   },
-  step_width: function step_width(selector, vars$$1) {
+  step_width: function step_width(selector, vars) {
     return [sel(selector, {
       " .pe-slider__tick": {
-        width: vars$$1.step_width + "px"
+        width: vars.step_width + "px"
       }
     })];
   },
-  pin_width: function pin_width(selector, vars$$1) {
+  pin_width: function pin_width(selector, vars) {
     return [sel(selector, {
       " .pe-slider__pin": {
-        width: vars$$1.pin_width + "px",
+        width: vars.pin_width + "px",
         "::before": {
-          width: vars$$1.pin_width + "px",
-          height: vars$$1.pin_width + "px"
+          width: vars.pin_width + "px",
+          height: vars.pin_width + "px"
         },
         "::after": {
-          width: vars$$1.pin_width + "px",
-          height: vars$$1.pin_height + "px",
-          lineHeight: vars$$1.pin_width + "px"
+          width: vars.pin_width + "px",
+          height: vars.pin_height + "px",
+          lineHeight: vars.pin_width + "px"
         }
       }
-    }), thumb_size_pin_width(selector, vars$$1)];
+    }), thumb_size_pin_width(selector, vars)];
   },
-  pin_font_size: function pin_font_size(selector, vars$$1) {
+  pin_font_size: function pin_font_size(selector, vars) {
     return [sel(selector, {
       " .pe-slider__pin::after": {
-        fontSize: vars$$1.pin_font_size + "px"
+        fontSize: vars.pin_font_size + "px"
       }
     })];
   }
@@ -652,9 +652,9 @@ var layout = createLayout({
 });
 
 // @ts-check
-var lightForeground = vars.color_light_foreground;
-var darkForeground = vars.color_dark_foreground;
-var activeColor = vars.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
+var lightForeground = vars$1.color_light_foreground;
+var darkForeground = vars$1.color_dark_foreground;
+var activeColor = vars$1.color_primary; // or override in CSS by setting 'color' property on '.pe-slider'
 
 var thumb_size = 12;
 var thumb_touch_size = Math.max(40, thumb_size);
@@ -668,14 +668,14 @@ var height = Math.max(52, largestThumbSize);
 var side_spacing = Math.max(10, largestElement / 2 - thumb_size / 2);
 var horizontal_layout_side_spacing = side_spacing + 4; // optimization for horizontal layout
 
-var vars$1 = {
+var vars = {
   /**
    * Generate general styles, not defined by variables
    */
   general_styles: true,
   active_pin_thumb_scale: active_pin_thumb_scale,
   active_thumb_scale: active_thumb_scale,
-  animation_duration: vars.animation_duration,
+  animation_duration: vars$1.animation_duration,
   bar_height: 2,
   disabled_thumb_scale: disabled_thumb_scale,
   height: height,
@@ -702,10 +702,10 @@ var vars$1 = {
   color_light_thumb_inactive: rgba(lightForeground, .26),
   color_light_tick: rgba(lightForeground, 1),
   color_light_tick_value: rgba(lightForeground, 1),
-  color_light_icon: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_icon: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled_label: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_icon: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+  color_light_disabled_icon: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
+  color_light_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+  color_light_disabled_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
   color_light_pin_label: "#fff",
   color_light_pin_background: "currentColor",
   color_dark_track_active: rgba(darkForeground, .3),
@@ -721,10 +721,10 @@ var vars$1 = {
   color_dark_thumb_inactive: rgba(darkForeground, .2),
   color_dark_tick: rgba(darkForeground, 1),
   color_dark_tick_value: rgba(darkForeground, 1),
-  color_dark_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_icon: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_icon: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+  color_dark_disabled_icon: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
+  color_dark_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+  color_dark_disabled_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
   color_dark_pin_label: "#fff",
   color_dark_pin_background: "currentColor"
 };
@@ -732,12 +732,12 @@ var vars$1 = {
 // @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, vars);
+var getStyle = styler.createGetStyle(selector, fns, vars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: vars
 });
 
-export { addStyle, getStyle, color, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, vars };

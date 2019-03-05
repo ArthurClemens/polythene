@@ -114,16 +114,16 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-menu__panel": {
-        "background-color": vars$$1["color_" + tint + "_background"]
+        "background-color": vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_backdrop_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-menu__backdrop": {
-        "background-color": vars$$1["color_" + tint + "_backdrop_background"]
+        "background-color": vars["color_" + tint + "_backdrop_background"]
       }
     })];
   }), _ref;
@@ -197,8 +197,8 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var unifyWidth = function unifyWidth(vars$$1, width) {
-  return width < vars$$1.min_width ? vars$$1.min_width : width;
+var unifyWidth = function unifyWidth(vars, width) {
+  return width < vars.min_width ? vars.min_width : width;
 };
 
 var widthClass = function widthClass(width) {
@@ -215,32 +215,32 @@ var widthClass = function widthClass(width) {
 
 
 var widthStyle = function widthStyle(_ref) {
-  var vars$$1 = _ref.vars,
+  var vars = _ref.vars,
       width = _ref.width,
       value = _ref.value;
-  var s = unifyWidth(vars$$1, width);
+  var s = unifyWidth(vars, width);
   return _defineProperty({}, "." + widthClass(s), {
     " .pe-menu__panel": {
-      width: value || vars$$1.width_factor * s + "px" // We can't set maxWidth because we don't know the width of the container
+      width: value || vars.width_factor * s + "px" // We can't set maxWidth because we don't know the width of the container
 
     }
   });
 };
 
-var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$$1) {
-  return sel(selector, [vars$$1.widths.map(function (width) {
+var widths_min_width_width_factor = function widths_min_width_width_factor(selector, vars$1) {
+  return sel(selector, [vars$1.widths.map(function (width) {
     return widthStyle({
-      vars: vars$$1,
+      vars: vars$1,
       width: width
     });
   }), {
     " .pe-menu__panel": {
-      minWidth: vars.grid_unit_menu * vars$$1.min_width + "px"
+      minWidth: vars.grid_unit_menu * vars$1.min_width + "px"
     }
   }]);
 };
 
-var _backdrop = function backdrop(selector, vars$$1) {
+var _backdrop = function backdrop(selector, vars) {
   return (// eslint-disable-line no-unused-vars
     sel(selector, {
       " .pe-menu__backdrop": {
@@ -250,14 +250,14 @@ var _backdrop = function backdrop(selector, vars$$1) {
   );
 };
 
-var _top_menu = function top_menu(selector, vars$$1) {
-  return sel(selector, [vars$$1.widths.map(function (width) {
+var _top_menu = function top_menu(selector, vars) {
+  return sel(selector, [vars.widths.map(function (width) {
     return widthStyle({
-      vars: vars$$1,
+      vars: vars,
       width: width,
       value: "100vw"
     });
-  }), createMarker(vars$$1, behaviorVars), {
+  }), createMarker(vars, behaviorVars), {
     " .pe-menu__panel": {
       position: "fixed",
       width: "100vw",
@@ -271,18 +271,18 @@ var _top_menu = function top_menu(selector, vars$$1) {
   }]);
 };
 
-var _z = function z(selector, vars$$1) {
+var _z = function z(selector, vars) {
   return sel(selector, {
     ".pe-menu--floating": {
       " .pe-menu__panel, .pe-menu__backdrop": {
-        zIndex: vars$$1.z
+        zIndex: vars.z
       }
     }
   });
 };
 
 var varFns = _objectSpread({
-  general_styles: function general_styles(selector, vars$$1) {
+  general_styles: function general_styles(selector, vars) {
     return [sel(selector, [alignLeft(), {
       position: "static",
       ".pe-menu--width-auto": {
@@ -318,7 +318,7 @@ var varFns = _objectSpread({
       ".pe-menu--visible .pe-menu__backdrop": {
         opacity: 1
       },
-      ".pe-menu--top-menu": _top_menu(selector, vars$$1),
+      ".pe-menu--top-menu": _top_menu(selector, vars),
       " .pe-menu__content": {
         overflowX: "auto",
         overflowY: "auto",
@@ -333,85 +333,85 @@ var varFns = _objectSpread({
       }
     }]), _defineProperty({}, selectorRTL(selector), alignRight())];
   },
-  animation_delay: function animation_delay(selector, vars$$1) {
+  animation_delay: function animation_delay(selector, vars) {
     return [sel(selector, {
       " .pe-menu__panel, .pe-menu__backdrop": {
-        transitionDelay: vars$$1.animation_delay
+        transitionDelay: vars.animation_delay
       }
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
       " .pe-menu__panel, .pe-menu__backdrop": {
-        transitionDuration: vars$$1.animation_duration
+        transitionDuration: vars.animation_duration
       }
     })];
   },
-  animation_timing_function: function animation_timing_function(selector, vars$$1) {
+  animation_timing_function: function animation_timing_function(selector, vars) {
     return [sel(selector, {
       " .pe-menu__panel, .pe-menu__backdrop": {
-        transitionTimingFunction: vars$$1.animation_timing_function
+        transitionTimingFunction: vars.animation_timing_function
       }
     })];
   },
-  animation_show_css: function animation_show_css(selector, vars$$1) {
+  animation_show_css: function animation_show_css(selector, vars) {
     return [sel(selector, {
       ".pe-menu--visible": {
-        " .pe-menu__panel": vars$$1.animation_show_css
+        " .pe-menu__panel": vars.animation_show_css
       }
     })];
   },
-  animation_hide_css: function animation_hide_css(selector, vars$$1) {
+  animation_hide_css: function animation_hide_css(selector, vars) {
     return [sel(selector, {
-      " .pe-menu__panel": vars$$1.animation_hide_css
+      " .pe-menu__panel": vars.animation_hide_css
     })];
   },
-  animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars$$1) {
+  animation_show_origin_effect_css: function animation_show_origin_effect_css(selector, vars) {
     return [sel(selector, {
       ".pe-menu--origin.pe-menu--visible": {
-        " .pe-menu__panel": vars$$1.animation_show_origin_effect_css
+        " .pe-menu__panel": vars.animation_show_origin_effect_css
       }
     })];
   },
-  animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars$$1) {
+  animation_hide_origin_effect_css: function animation_hide_origin_effect_css(selector, vars) {
     return [sel(selector, {
       ".pe-menu--origin:not(.pe-menu--visible)": {
-        " .pe-menu__panel": vars$$1.animation_hide_origin_effect_css
+        " .pe-menu__panel": vars.animation_hide_origin_effect_css
       }
     })];
   },
-  height: function height(selector, vars$$1) {
-    return [vars$$1.height !== undefined && sel(selector, {
+  height: function height(selector, vars) {
+    return [vars.height !== undefined && sel(selector, {
       " .pe-menu__panel": {
-        height: vars$$1.height
+        height: vars.height
       }
     })];
   },
-  widths: function widths(selector, vars$$1) {
-    return [widths_min_width_width_factor(selector, vars$$1)];
+  widths: function widths(selector, vars) {
+    return [widths_min_width_width_factor(selector, vars)];
   },
-  min_width: function min_width(selector, vars$$1) {
-    return [widths_min_width_width_factor(selector, vars$$1)];
+  min_width: function min_width(selector, vars) {
+    return [widths_min_width_width_factor(selector, vars)];
   },
-  width_factor: function width_factor(selector, vars$$1) {
-    return [widths_min_width_width_factor(selector, vars$$1)];
+  width_factor: function width_factor(selector, vars) {
+    return [widths_min_width_width_factor(selector, vars)];
   },
-  border_radius: function border_radius(selector, vars$$1) {
+  border_radius: function border_radius(selector, vars) {
     return [sel(selector, {
       " .pe-menu__panel": {
-        borderRadius: vars$$1.border_radius + "px"
+        borderRadius: vars.border_radius + "px"
       }
     })];
   },
   // Theme vars
-  backdrop: function backdrop(selector, vars$$1) {
-    return [vars$$1.backdrop && _backdrop(selector, vars$$1)];
+  backdrop: function backdrop(selector, vars) {
+    return [vars.backdrop && _backdrop(selector, vars)];
   },
-  top_menu: function top_menu(selector, vars$$1) {
-    return [vars$$1.top_menu && _top_menu(selector, vars$$1)];
+  top_menu: function top_menu(selector, vars) {
+    return [vars.top_menu && _top_menu(selector, vars)];
   },
-  z: function z(selector, vars$$1) {
-    return [vars$$1.z && _z(selector, vars$$1)];
+  z: function z(selector, vars) {
+    return [vars.z && _z(selector, vars)];
   }
 }, sharedVarFns);
 

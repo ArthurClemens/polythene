@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-button-group",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-mithril-button-group",
   "module": "dist/polythene-mithril-button-group.mjs",
@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-button-group": "^1.5.2",
-    "polythene-mithril-base": "^1.5.2"
+    "polythene-core-button-group": "^1.5.3",
+    "polythene-mithril-base": "^1.5.3"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.14"

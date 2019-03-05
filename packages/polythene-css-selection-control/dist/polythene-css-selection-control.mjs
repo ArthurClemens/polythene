@@ -1,5 +1,5 @@
 import { createColor, sel, createLayout, flex, mixin, selectorRTL, rgba, styler } from 'polythene-core-css';
-import { vars } from 'polythene-theme';
+import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-control",
@@ -75,97 +75,97 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_on", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_on", function (selector, vars) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint + "_on"] // override by specifying "color"
+      color: vars["color_" + tint + "_on"] // override by specifying "color"
 
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_off", function (selector, vars) {
     return [sel(selector, {
       " .pe-control__button--off": {
-        color: vars$$1["color_" + tint + "_off"]
+        color: vars["color_" + tint + "_off"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--disabled": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_disabled"]
+          color: vars["color_" + tint + "_disabled"]
         },
         " .pe-control__box": {
           " .pe-control__button--on, .pe-control__button--off": {
-            color: vars$$1["color_" + tint + "_disabled"]
+            color: vars["color_" + tint + "_disabled"]
           }
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_label", function (selector, vars) {
     return [sel(selector, {
       " .pe-control__label": {
-        color: vars$$1["color_" + tint + "_label"]
+        color: vars["color_" + tint + "_label"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_on_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_on_icon", function (selector, vars) {
     return [sel(selector, {
       " .pe-control__box": {
         " .pe-control__button--on": {
-          color: vars$$1["color_" + tint + "_on_icon"]
+          color: vars["color_" + tint + "_on_icon"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_off_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_off_icon", function (selector, vars) {
     return [sel(selector, {
       " .pe-control__box": {
         " .pe-control__button--off": {
-          color: vars$$1["color_" + tint + "_off_icon"]
+          color: vars["color_" + tint + "_off_icon"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-button--focus .pe-button__focus": {
-          backgroundColor: vars$$1["color_" + tint + "_focus_on"]
+          backgroundColor: vars["color_" + tint + "_focus_on"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-button--focus .pe-button__focus": {
-          backgroundColor: vars$$1["color_" + tint + "_focus_off"]
+          backgroundColor: vars["color_" + tint + "_focus_off"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-button--focus .pe-button__focus": {
-          opacity: vars$$1["color_" + tint + "_focus_on_opacity"]
+          opacity: vars["color_" + tint + "_focus_on_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-button--focus .pe-button__focus": {
-          opacity: vars$$1["color_" + tint + "_focus_off_opacity"]
+          opacity: vars["color_" + tint + "_focus_off_opacity"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_on_label", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_on_label"]
+          color: vars["color_" + tint + "_on_label"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_off_label", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
         " .pe-control__label": {
-          color: vars$$1["color_" + tint + "_off_label"]
+          color: vars["color_" + tint + "_off_label"]
         }
       }
     })];
@@ -184,7 +184,7 @@ var color = createColor({
 });
 
 var alignSide = function alignSide(isRTL) {
-  return function (vars$$1) {
+  return function (vars) {
     return {};
   };
 }; // eslint-disable-line no-unused-vars
@@ -193,9 +193,9 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var makeSize = function makeSize(vars$$1, height) {
-  var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
-  var labelSize = iconSize + vars$$1.label_height;
+var makeSize = function makeSize(vars, height) {
+  var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars$1.unit_icon_size;
+  var labelSize = iconSize + vars.label_height;
   var iconOffset = (labelSize - iconSize) / 2;
   return {
     " .pe-control__form-label": {
@@ -228,31 +228,31 @@ var inactiveButton = function inactiveButton() {
   };
 };
 
-var button_size_icon_size = function button_size_icon_size(selector, vars$$1, isRTL) {
+var button_size_icon_size = function button_size_icon_size(selector, vars, isRTL) {
   var _peButtonPeContr;
 
   return sel(selector, {
     " .pe-button.pe-control__button": (_peButtonPeContr = {
-      top: -((vars$$1.button_size - vars$$1.icon_size) / 2) + "px"
-    }, _defineProperty(_peButtonPeContr, isRTL ? "right" : "left", -((vars$$1.button_size - vars$$1.icon_size) / 2) + "px"), _defineProperty(_peButtonPeContr, isRTL ? "left" : "right", "auto"), _peButtonPeContr)
+      top: -((vars.button_size - vars.icon_size) / 2) + "px"
+    }, _defineProperty(_peButtonPeContr, isRTL ? "right" : "left", -((vars.button_size - vars.icon_size) / 2) + "px"), _defineProperty(_peButtonPeContr, isRTL ? "left" : "right", "auto"), _peButtonPeContr)
   });
 };
 
-var _label_padding_before = function label_padding_before(selector, vars$$1, isRTL) {
+var _label_padding_before = function label_padding_before(selector, vars, isRTL) {
   return sel(selector, {
-    " .pe-control__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.label_padding_before + "px")
+    " .pe-control__label": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars.label_padding_before + "px")
   });
 };
 
-var _label_padding_after = function label_padding_after(selector, vars$$1, isRTL) {
+var _label_padding_after = function label_padding_after(selector, vars, isRTL) {
   return sel(selector, {
-    " .pe-control__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars$$1.label_padding_after + "px")
+    " .pe-control__label": _defineProperty({}, isRTL ? "paddingLeft" : "paddingRight", vars.label_padding_after + "px")
   });
 };
 
 var varFns = {
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(vars$$1), {
+  general_styles: function general_styles(selector, vars) {
+    return [sel(selector, [alignLeft(vars), {
       display: "inline-block",
       boxSizing: "border-box",
       margin: 0,
@@ -312,44 +312,44 @@ var varFns = {
           position: "absolute"
         }
       }
-    }, _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(vars$$1)])])];
+    }, _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(vars)])])];
   },
-  label_font_size: function label_font_size(selector, vars$$1) {
+  label_font_size: function label_font_size(selector, vars) {
     return [sel(selector, {
       " .pe-control__form-label": {
-        fontSize: vars$$1.label_font_size + "px"
+        fontSize: vars.label_font_size + "px"
       }
     })];
   },
-  label_height: function label_height(selector, vars$$1) {
+  label_height: function label_height(selector, vars) {
     return [sel(selector, {
       " .pe-control__box": {
-        width: vars$$1.label_height + "px",
-        height: vars$$1.label_height + "px"
+        width: vars.label_height + "px",
+        height: vars.label_height + "px"
       },
-      ".pe-control--small": makeSize(vars$$1, vars.unit_icon_size_small, vars.unit_icon_size_small),
-      ".pe-control--regular": makeSize(vars$$1, vars$$1.label_height, vars.unit_icon_size),
-      ".pe-control--medium": makeSize(vars$$1, vars.unit_icon_size_medium, vars.unit_icon_size_medium),
-      ".pe-control--large": makeSize(vars$$1, vars.unit_icon_size_large, vars.unit_icon_size_large)
+      ".pe-control--small": makeSize(vars, vars$1.unit_icon_size_small, vars$1.unit_icon_size_small),
+      ".pe-control--regular": makeSize(vars, vars.label_height, vars$1.unit_icon_size),
+      ".pe-control--medium": makeSize(vars, vars$1.unit_icon_size_medium, vars$1.unit_icon_size_medium),
+      ".pe-control--large": makeSize(vars, vars$1.unit_icon_size_large, vars$1.unit_icon_size_large)
     })];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
+  animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-button.pe-control__button": [mixin.defaultTransition("opacity", vars$$1.animation_duration)],
-      " .pe-control__label": [mixin.defaultTransition("all", vars$$1.animation_duration)]
+      " .pe-button.pe-control__button": [mixin.defaultTransition("opacity", vars.animation_duration)],
+      " .pe-control__label": [mixin.defaultTransition("all", vars.animation_duration)]
     })];
   },
-  button_size: function button_size(selector, vars$$1) {
-    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)];
+  button_size: function button_size(selector, vars) {
+    return [sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(selectorRTL(selector), vars, true)];
   },
-  icon_size: function icon_size(selector, vars$$1) {
-    return [sel(selector, {}), button_size_icon_size(selector, vars$$1, false), button_size_icon_size(selectorRTL(selector), vars$$1, true)];
+  icon_size: function icon_size(selector, vars) {
+    return [sel(selector, {}), button_size_icon_size(selector, vars, false), button_size_icon_size(selectorRTL(selector), vars, true)];
   },
-  label_padding_after: function label_padding_after(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_after(selector, vars$$1, false), _label_padding_after(selectorRTL(selector), vars$$1, true)];
+  label_padding_after: function label_padding_after(selector, vars) {
+    return [sel(selector, {}), _label_padding_after(selector, vars, false), _label_padding_after(selectorRTL(selector), vars, true)];
   },
-  label_padding_before: function label_padding_before(selector, vars$$1) {
-    return [sel(selector, {}), _label_padding_before(selector, vars$$1, false), _label_padding_before(selectorRTL(selector), vars$$1, true)];
+  label_padding_before: function label_padding_before(selector, vars) {
+    return [sel(selector, {}), _label_padding_before(selector, vars, false), _label_padding_before(selectorRTL(selector), vars, true)];
   }
 };
 var layout = createLayout({
@@ -357,25 +357,25 @@ var layout = createLayout({
 });
 
 // @ts-check
-var vars$1 = {
+var vars = {
   /**
    * Generate general styles, not defined by variables
    */
   general_styles: true,
-  animation_duration: vars.animation_duration,
-  button_size: 6 * vars.grid_unit_component,
-  icon_size: 3 * vars.grid_unit_component,
-  label_font_size: 2 * vars.grid_unit_component,
+  animation_duration: vars$1.animation_duration,
+  button_size: 6 * vars$1.grid_unit_component,
+  icon_size: 3 * vars$1.grid_unit_component,
+  label_font_size: 2 * vars$1.grid_unit_component,
   // 16
-  label_height: 3 * vars.grid_unit_component,
+  label_height: 3 * vars$1.grid_unit_component,
   // 24
   label_padding_after: 0,
-  label_padding_before: vars.grid_unit * 4,
+  label_padding_before: vars$1.grid_unit * 4,
   // 16
-  color_light_on: rgba(vars.color_primary),
-  color_light_off: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
-  color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
+  color_light_on: rgba(vars$1.color_primary),
+  color_light_off: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+  color_light_label: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_secondary),
+  color_light_disabled: rgba(vars$1.color_light_foreground, vars$1.blend_light_text_disabled),
   color_light_thumb_off_focus_opacity: .08,
   color_light_thumb_on_focus_opacity: .11,
   // icon colors may be set in theme; set to "inherit" by default
@@ -384,14 +384,14 @@ var vars$1 = {
   // label on/off colors may be set in theme; set to color_light_label by default
   // color_light_on_label
   // color_light_off_label
-  color_light_focus_on: rgba(vars.color_primary),
+  color_light_focus_on: rgba(vars$1.color_primary),
   color_light_focus_on_opacity: .11,
-  color_light_focus_off: rgba(vars.color_light_foreground),
+  color_light_focus_off: rgba(vars$1.color_light_foreground),
   color_light_focus_off_opacity: .07,
-  color_dark_on: rgba(vars.color_primary),
-  color_dark_off: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
-  color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
+  color_dark_on: rgba(vars$1.color_primary),
+  color_dark_off: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+  color_dark_label: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_secondary),
+  color_dark_disabled: rgba(vars$1.color_dark_foreground, vars$1.blend_dark_text_disabled),
   color_dark_thumb_off_focus_opacity: .08,
   color_dark_thumb_on_focus_opacity: .11,
   // icon color may be set in theme; set to "inherit" by default
@@ -400,22 +400,22 @@ var vars$1 = {
   // label on/off colors may be set in theme; set to color_dark_label by default
   // color_dark_on_label
   // color_dark_off_label
-  color_dark_focus_on: rgba(vars.color_primary),
+  color_dark_focus_on: rgba(vars$1.color_primary),
   // or '#80cbc4'
   color_dark_focus_on_opacity: .14,
-  color_dark_focus_off: rgba(vars.color_dark_foreground),
+  color_dark_focus_off: rgba(vars$1.color_dark_foreground),
   color_dark_focus_off_opacity: .09
 };
 
 // @ts-check
 var fns = [layout, color];
 var selector = ".".concat(classes.component);
-var addStyle = styler.createAddStyle(selector, fns, vars$1);
-var getStyle = styler.createGetStyle(selector, fns, vars$1);
+var addStyle = styler.createAddStyle(selector, fns, vars);
+var getStyle = styler.createGetStyle(selector, fns, vars);
 styler.addStyle({
   selectors: [selector],
   fns: fns,
-  vars: vars$1
+  vars: vars
 });
 
-export { addStyle, getStyle, color, layout, vars$1 as vars };
+export { addStyle, getStyle, color, layout, vars };

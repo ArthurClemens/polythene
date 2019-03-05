@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-snackbar",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "",
   "main": "dist/polythene-react-snackbar",
   "module": "dist/polythene-react-snackbar.mjs",
@@ -17,10 +17,10 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.2",
-    "polythene-core-snackbar": "^1.5.2",
-    "polythene-css-classes": "^1.5.2",
-    "polythene-react-base": "^1.5.2"
+    "polythene-core": "^1.5.3",
+    "polythene-core-snackbar": "^1.5.3",
+    "polythene-css-classes": "^1.5.3",
+    "polythene-react-base": "^1.5.3"
   },
   "devDependencies": {
     "@types/react": "^16.7.20"

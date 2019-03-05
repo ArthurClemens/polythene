@@ -57,23 +57,23 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint, function (selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        color: vars$$1["color_" + tint]
+        color: vars["color_" + tint]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
+        backgroundColor: vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--focus": {
         " .pe-button__focus": {
-          backgroundColor: vars$$1["color_" + tint + "_focus_background"]
+          backgroundColor: vars["color_" + tint + "_focus_background"]
         }
       }
     })];
@@ -128,21 +128,21 @@ var varFns = {
       }
     })];
   },
-  size_regular: function size_regular(selector, vars$$1) {
+  size_regular: function size_regular(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        width: vars$$1.size_regular + "px",
-        height: vars$$1.size_regular + "px"
+        width: vars.size_regular + "px",
+        height: vars.size_regular + "px"
       }
     })];
   },
-  size_mini: function size_mini(selector, vars$$1) {
+  size_mini: function size_mini(selector, vars$1) {
     return [sel(selector, {
       ".pe-fab--mini": {
         " .pe-button__content": {
-          width: vars$$1.size_mini + "px",
-          height: vars$$1.size_mini + "px",
-          padding: (vars$$1.size_mini - vars.unit_icon_size) / 2 + "px"
+          width: vars$1.size_mini + "px",
+          height: vars$1.size_mini + "px",
+          padding: (vars$1.size_mini - vars.unit_icon_size) / 2 + "px"
         }
       }
     })];

@@ -101,26 +101,26 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_selected", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_selected", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
-          color: vars$$1["color_" + tint + "_selected"]
+          color: vars["color_" + tint + "_selected"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--selected": {
         " .pe-button__content": {
-          background: vars$$1["color_" + tint + "_selected_background"]
+          background: vars["color_" + tint + "_selected_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_icon", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-button--selected) .pe-icon": {
-        color: vars$$1["color_" + tint + "_icon"]
+        color: vars["color_" + tint + "_icon"]
       }
     })];
   }), _ref;
@@ -137,9 +137,9 @@ var tabColor = createColor({
   }
 });
 
-var tab_label_transition_property_animation_duration = function tab_label_transition_property_animation_duration(selector, vars$$1) {
+var tab_label_transition_property_animation_duration = function tab_label_transition_property_animation_duration(selector, vars) {
   return sel(selector, {
-    " .pe-button__content": mixin.defaultTransition(vars$$1.tab_label_transition_property, vars$$1.animation_duration)
+    " .pe-button__content": mixin.defaultTransition(vars.tab_label_transition_property, vars.animation_duration)
   });
 };
 
@@ -212,120 +212,120 @@ var varFns = {
       }
     }])];
   },
-  tab_height: function tab_height(selector, vars$$1) {
+  tab_height: function tab_height(selector, vars) {
     return [sel(selector, {
-      height: vars$$1.tab_height + "px",
+      height: vars.tab_height + "px",
       " .pe-button__content": {
-        height: vars$$1.tab_height + "px"
+        height: vars.tab_height + "px"
       }
     })];
   },
-  tab_min_width: function tab_min_width(selector, vars$$1) {
+  tab_min_width: function tab_min_width(selector, vars) {
     return [sel(selector, {
-      minWidth: vars$$1.tab_min_width + "px" // for smaller screens, see also media query
+      minWidth: vars.tab_min_width + "px" // for smaller screens, see also media query
 
     })];
   },
-  tab_max_width: function tab_max_width(selector, vars$$1) {
+  tab_max_width: function tab_max_width(selector, vars) {
     return [sel(selector, {
-      maxWidth: isNaN(vars$$1.tab_max_width) ? vars$$1.tab_max_width : vars$$1.tab_max_width + "px"
+      maxWidth: isNaN(vars.tab_max_width) ? vars.tab_max_width : vars.tab_max_width + "px"
     })];
   },
-  tab_min_width_tablet: function tab_min_width_tablet(selector, vars$$1) {
+  tab_min_width_tablet: function tab_min_width_tablet(selector, vars$1) {
     return _defineProperty({}, "@media (min-width: " + vars.breakpoint_for_tablet_landscape_up + "px)", _defineProperty({}, ".pe-tabs:not(.pe-tabs--small):not(.pe-tabs--menu):not(.pe-tabs--autofit):not(.pe-tabs--scrollable):not(.pe-tabs--compact) ".concat(selector), {
-      minWidth: vars$$1.tab_min_width_tablet + "px"
+      minWidth: vars$1.tab_min_width_tablet + "px"
     }));
   },
-  tab_icon_label_height: function tab_icon_label_height(selector, vars$$1) {
+  tab_icon_label_height: function tab_icon_label_height(selector, vars) {
     return [sel(selector, {
       ".pe-tabs__tab--icon": {
         "&, .pe-button__content": {
-          height: vars$$1.tab_icon_label_height + "px"
+          height: vars.tab_icon_label_height + "px"
         }
       }
     })];
   },
-  tab_label_transition_property: function tab_label_transition_property(selector, vars$$1) {
-    return [tab_label_transition_property_animation_duration(selector, vars$$1)];
+  tab_label_transition_property: function tab_label_transition_property(selector, vars) {
+    return [tab_label_transition_property_animation_duration(selector, vars)];
   },
-  animation_duration: function animation_duration(selector, vars$$1) {
-    return [tab_label_transition_property_animation_duration(selector, vars$$1)];
+  animation_duration: function animation_duration(selector, vars) {
+    return [tab_label_transition_property_animation_duration(selector, vars)];
   },
-  tab_content_padding_v: function tab_content_padding_v(selector, vars$$1) {
+  tab_content_padding_v: function tab_content_padding_v(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
-        padding: "0 " + vars$$1.tab_content_padding_v + "px"
+        padding: "0 " + vars.tab_content_padding_v + "px"
       }
     })];
   },
-  label_max_width: function label_max_width(selector, vars$$1) {
+  label_max_width: function label_max_width(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
         " .pe-button__label, .pe-icon": {
-          maxWidth: vars$$1.label_max_width + "px" // or .pe-tabs width minus 56dp
+          maxWidth: vars.label_max_width + "px" // or .pe-tabs width minus 56dp
 
         }
       }
     })];
   },
-  tab_label_line_height: function tab_label_line_height(selector, vars$$1) {
+  tab_label_line_height: function tab_label_line_height(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
         " .pe-button__label, .pe-icon": {
-          lineHeight: vars$$1.tab_label_line_height + "px",
-          maxHeight: 2 * vars$$1.tab_label_line_height + "px"
+          lineHeight: vars.tab_label_line_height + "px",
+          maxHeight: 2 * vars.tab_label_line_height + "px"
         }
       }
     })];
   },
-  tab_label_vertical_offset: function tab_label_vertical_offset(selector, vars$$1) {
+  tab_label_vertical_offset: function tab_label_vertical_offset(selector, vars) {
     return [sel(selector, {
       " .pe-button__content": {
         " .pe-button__label": {
-          margin: vars$$1.tab_label_vertical_offset + "px 0 0 0"
+          margin: vars.tab_label_vertical_offset + "px 0 0 0"
         }
       }
     })];
   },
-  tab_icon_label_icon_spacing: function tab_icon_label_icon_spacing(selector, vars$$1) {
+  tab_icon_label_icon_spacing: function tab_icon_label_icon_spacing(selector, vars) {
     return [sel(selector, {
       ".pe-tabs__tab--icon": {
         "&, .pe-button__content": {
           " .pe-icon": {
-            marginBottom: vars$$1.tab_icon_label_icon_spacing + "px"
+            marginBottom: vars.tab_icon_label_icon_spacing + "px"
           }
         }
       }
     })];
   },
-  menu_tab_height: function menu_tab_height(selector, vars$$1) {
+  menu_tab_height: function menu_tab_height(selector, vars) {
     return [sel(selector, {
       ".pe-tabs--menu &": {
         // reset sizes to fit within a small space
-        height: vars$$1.menu_tab_height + "px",
+        height: vars.menu_tab_height + "px",
         "&, &.pe-tabs__tab--icon, &.pe-text-button": {
           " .pe-button__content": {
-            height: vars$$1.menu_tab_height + "px"
+            height: vars.menu_tab_height + "px"
           }
         }
       }
     })];
   },
-  menu_tab_icon_label_height: function menu_tab_icon_label_height(selector, vars$$1) {
+  menu_tab_icon_label_height: function menu_tab_icon_label_height(selector, vars) {
     return [sel(selector, {
       ".pe-tabs--menu &": {
         "&.pe-tabs__tab--icon": {
-          height: vars$$1.menu_tab_icon_label_height + "px"
+          height: vars.menu_tab_icon_label_height + "px"
         }
       }
     })];
   },
-  tab_menu_content_padding_v: function tab_menu_content_padding_v(selector, vars$$1) {
+  tab_menu_content_padding_v: function tab_menu_content_padding_v(selector, vars) {
     return [sel(selector, {
       ".pe-tabs--menu &": {
         "&, &.pe-tabs__tab--icon, &.pe-text-button": {
           " .pe-button__content": {
-            padding: "0 " + vars$$1.tab_menu_content_padding_v + "px"
+            padding: "0 " + vars.tab_menu_content_padding_v + "px"
           }
         }
       }
@@ -358,10 +358,10 @@ var generalFns$1 = {
 };
 
 var tintFns$1 = function tintFns(tint) {
-  return _defineProperty({}, "color_" + tint + "_tab_indicator", function (selector, vars$$1) {
+  return _defineProperty({}, "color_" + tint + "_tab_indicator", function (selector, vars) {
     return [sel(selector, {
       " .pe-tabs__indicator": {
-        backgroundColor: vars$$1["color_" + tint + "_tab_indicator"]
+        backgroundColor: vars["color_" + tint + "_tab_indicator"]
       }
     })];
   });
@@ -391,10 +391,10 @@ var alignSide = function alignSide(isRTL) {
 var alignLeft = alignSide(false);
 var alignRight = alignSide(true);
 
-var _tabs_indent = function tabs_indent(selector, vars$$1, isRTL) {
+var _tabs_indent = function tabs_indent(selector, vars, isRTL) {
   return sel(selector, {
     " .pe-tabs__row": {
-      ".pe-tabs__row--indent": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars$$1.tabs_indent + "px")
+      ".pe-tabs__row--indent": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", vars.tabs_indent + "px")
     }
   });
 };
@@ -475,74 +475,74 @@ var varFns$1 = {
       }]
     }]), _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight()])];
   },
-  tabs_indent: function tabs_indent(selector, vars$$1) {
-    return [_tabs_indent(selector, vars$$1, false), _tabs_indent(selectorRTL(selector), vars$$1, true)];
+  tabs_indent: function tabs_indent(selector, vars) {
+    return [_tabs_indent(selector, vars, false), _tabs_indent(selectorRTL(selector), vars, true)];
   },
-  tab_height: function tab_height(selector, vars$$1) {
+  tab_height: function tab_height(selector, vars) {
     return [sel(selector, {
       ".pe-tabs--scrollable": {
         display: "flex",
         // hide scrollbar (this approach is required for Firefox)
-        "max-height": vars$$1.tab_height + "px"
+        "max-height": vars.tab_height + "px"
       }
     })];
   },
-  scrollbar_offset: function scrollbar_offset(selector, vars$$1) {
+  scrollbar_offset: function scrollbar_offset(selector, vars) {
     return [sel(selector, {
       ".pe-tabs--scrollable": {
         " .pe-tabs__row": {
-          marginBottom: -vars$$1.scrollbar_offset + "px"
+          marginBottom: -vars.scrollbar_offset + "px"
         }
       }
     })];
   },
-  scroll_button_size: function scroll_button_size(selector, vars$$1) {
+  scroll_button_size: function scroll_button_size(selector, vars) {
     return [sel(selector, {
       " .pe-no-touch &": {
         " .pe-tabs__scroll-button": {
-          width: vars$$1.scroll_button_size + "px",
-          height: vars$$1.scroll_button_size + "px"
+          width: vars.scroll_button_size + "px",
+          height: vars.scroll_button_size + "px"
         }
       }
     })];
   },
-  scroll_button_fade_duration: function scroll_button_fade_duration(selector, vars$$1) {
+  scroll_button_fade_duration: function scroll_button_fade_duration(selector, vars) {
     return [sel(selector, {
       " .pe-no-touch &": {
         " .pe-tabs__scroll-button": {
           " .pe-button__content": {
-            transitionDuration: vars$$1.scroll_button_fade_duration
+            transitionDuration: vars.scroll_button_fade_duration
           }
         }
       }
     })];
   },
-  scroll_button_fade_delay: function scroll_button_fade_delay(selector, vars$$1) {
+  scroll_button_fade_delay: function scroll_button_fade_delay(selector, vars) {
     return [sel(selector, {
       " .pe-no-touch &": {
         " .pe-tabs__scroll-button": {
           " .pe-button__content": {
-            transitionDelay: vars$$1.scroll_button_fade_delay
+            transitionDelay: vars.scroll_button_fade_delay
           }
         }
       }
     })];
   },
-  scroll_button_opacity: function scroll_button_opacity(selector, vars$$1) {
+  scroll_button_opacity: function scroll_button_opacity(selector, vars) {
     return [sel(selector, {
       " .pe-no-touch &": {
         " .pe-tabs__scroll-button": {
           " .pe-button__content": {
-            opacity: vars$$1.scroll_button_opacity
+            opacity: vars.scroll_button_opacity
           }
         }
       }
     })];
   },
-  tab_indicator_height: function tab_indicator_height(selector, vars$$1) {
+  tab_indicator_height: function tab_indicator_height(selector, vars) {
     return [sel(selector, {
       " .pe-tabs__indicator": {
-        height: vars$$1.tab_indicator_height + "px"
+        height: vars.tab_indicator_height + "px"
       }
     })];
   }

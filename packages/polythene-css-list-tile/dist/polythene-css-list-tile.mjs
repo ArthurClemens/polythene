@@ -82,15 +82,15 @@ function _objectSpread(target) {
   return target;
 }
 
-var _selected = function selected(selector, vars$$1, tint) {
-  var selectedTextColor = vars$$1["color_" + tint + "_selected_text"];
+var _selected = function selected(selector, vars, tint) {
+  var selectedTextColor = vars["color_" + tint + "_selected_text"];
   return sel(selector, _objectSpread({}, selectedTextColor !== "inherit" ? {
     "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
       color: selectedTextColor
     }
   } : undefined, {
     " .pe-list-tile__primary, pe-list-tile__secondary": {
-      backgroundColor: vars$$1["color_" + tint + "_selected_background"]
+      backgroundColor: vars["color_" + tint + "_selected_background"]
     }
   }));
 };
@@ -119,72 +119,72 @@ var generalFns = {
 var tintFns = function tintFns(tint) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title", function (selector, vars$$1) {
+  return _ref = {}, _defineProperty(_ref, "color_" + tint + "_title", function (selector, vars) {
     return [sel(selector, {
-      color: vars$$1["color_" + tint + "_title"]
+      color: vars["color_" + tint + "_title"]
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_background", function (selector, vars) {
     return [sel(selector, {
-      backgroundColor: vars$$1["color_" + tint + "_background"],
+      backgroundColor: vars["color_" + tint + "_background"],
       "&.pe-list-tile--sticky": {
-        backgroundColor: vars$$1["color_" + tint + "_background"]
+        backgroundColor: vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_list_header", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_list_header", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--header": {
-        color: vars$$1["color_" + tint + "_list_header"]
+        color: vars["color_" + tint + "_list_header"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_subtitle", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_subtitle", function (selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__subtitle": {
-        color: vars$$1["color_" + tint + "_subtitle"]
+        color: vars["color_" + tint + "_subtitle"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_secondary", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_secondary", function (selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__secondary": {
-        color: vars$$1["color_" + tint + "_secondary"]
+        color: vars["color_" + tint + "_secondary"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_front", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_front", function (selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__content-front": {
-        color: vars$$1["color_" + tint + "_front"]
+        color: vars["color_" + tint + "_front"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_text_disabled", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_text_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--disabled": {
         "&, .pe-list-tile__title, .pe-list-tile__content, .pe-list-tile__subtitle": {
-          color: vars$$1["color_" + tint + "_text_disabled"]
+          color: vars["color_" + tint + "_text_disabled"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_highlight_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--highlight:not(.pe-list-tile--selected)": {
         " .pe-list-tile__primary, pe-list-tile__secondary": {
-          backgroundColor: vars$$1["color_" + tint + "_highlight_background"]
+          backgroundColor: vars["color_" + tint + "_highlight_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
     return [sel(selector, {
       ":not(.pe-list-tile--disabled):not(.pe-list-tile--selected)": {
         " a.pe-list-tile__primary:focus, a.pe-list-tile__secondary:focus": {
-          backgroundColor: vars$$1["color_" + tint + "_focus_background"]
+          backgroundColor: vars["color_" + tint + "_focus_background"]
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_selected_text", function (selector, vars) {
     return [sel(selector, {
-      ".pe-list-tile--selected": _selected(selector, vars$$1, tint)
+      ".pe-list-tile--selected": _selected(selector, vars, tint)
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref, "color_" + tint + "_selected_background", function (selector, vars) {
     return [sel(selector, {
-      ".pe-list-tile--selected": _selected(selector, vars$$1, tint)
+      ".pe-list-tile--selected": _selected(selector, vars, tint)
     })];
   }), _ref;
 };
@@ -192,25 +192,25 @@ var tintFns = function tintFns(tint) {
 var hoverTintFns = function hoverTintFns(tint) {
   var _ref2;
 
-  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars$$1) {
+  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_hover", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
-        color: vars$$1["color_" + tint + "_hover"]
+        color: vars["color_" + tint + "_hover"]
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_background", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
         " .pe-list-tile__primary, .pe-list-tile__secondary": {
-          backgroundColor: vars$$1["color_" + tint + "_hover_background"]
+          backgroundColor: vars["color_" + tint + "_hover_background"]
         }
       }
     })];
-  }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars$$1) {
+  }), _defineProperty(_ref2, "color_" + tint + "_hover_front", function (selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--hoverable:not(.pe-list-tile--selected)": {
         " .pe-list-tile__primary .pe-list-tile__content-front": {
-          color: vars$$1["color_" + tint + "_hover_front"]
+          color: vars["color_" + tint + "_hover_front"]
         }
       }
     })];
@@ -219,8 +219,8 @@ var hoverTintFns = function hoverTintFns(tint) {
 
 var themeFns = function themeFns(tint) {
   return {
-    selected: function selected(selector, vars$$1) {
-      return vars$$1.selected && _selected(selector, vars$$1, tint);
+    selected: function selected(selector, vars) {
+      return vars.selected && _selected(selector, vars, tint);
     }
   };
 };
@@ -241,7 +241,7 @@ var color = createColor({
 });
 
 var alignSide = function alignSide(isRTL) {
-  return function (vars$$1) {
+  return function (vars) {
     return {
       // eslint-disable-line no-unused-vars
       " .pe-list-tile__content-front + .pe-list-tile__content": _defineProperty({}, isRTL ? "paddingRight" : "paddingLeft", 0)
@@ -283,15 +283,15 @@ var paddingV = function paddingV(top) {
  */
 
 
-var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars$$1) {
+var title_line_count_single_line_height = function title_line_count_single_line_height(selector, vars) {
   return sel(selector, {
-    lineHeight: vars$$1.single_line_height + "px",
+    lineHeight: vars.single_line_height + "px",
     ".pe-list-tile--navigation": {
       " .pe-list-tile__title": {
-        minHeight: vars$$1.single_line_height + "px"
+        minHeight: vars.single_line_height + "px"
       }
     },
-    " .pe-list-tile__title": [mixin.ellipsis(vars$$1.title_line_count, vars$$1.single_line_height, "px")]
+    " .pe-list-tile__title": [mixin.ellipsis(vars.title_line_count, vars.single_line_height, "px")]
   });
 };
 /**
@@ -300,7 +300,7 @@ var title_line_count_single_line_height = function title_line_count_single_line_
  */
 
 
-var unSelectable = function unSelectable(selector, vars$$1) {
+var unSelectable = function unSelectable(selector, vars) {
   return (// eslint-disable-line no-unused-vars 
     sel(selector, {
       "&, a": {
@@ -315,8 +315,8 @@ var unSelectable = function unSelectable(selector, vars$$1) {
  */
 
 
-var _inset = function inset(selector, vars$$1) {
-  return insetH(selector, vars$$1), insetV(selector, vars$$1);
+var _inset = function inset(selector, vars) {
+  return insetH(selector, vars), insetV(selector, vars);
 };
 /**
  * @param {string} selector 
@@ -324,8 +324,8 @@ var _inset = function inset(selector, vars$$1) {
  */
 
 
-var insetH = function insetH(selector, vars$$1) {
-  var margin = vars$$1.inset_h_size;
+var insetH = function insetH(selector, vars) {
+  var margin = vars.inset_h_size;
   return sel(selector, {
     marginLeft: margin + "px",
     marginRight: margin + "px",
@@ -341,8 +341,8 @@ var insetH = function insetH(selector, vars$$1) {
  */
 
 
-var insetV = function insetV(selector, vars$$1) {
-  var margin = vars$$1.inset_v_size;
+var insetV = function insetV(selector, vars) {
+  var margin = vars.inset_v_size;
   return sel(selector, {
     marginTop: margin + "px",
     marginBottom: margin + "px"
@@ -354,10 +354,10 @@ var insetV = function insetV(selector, vars$$1) {
  */
 
 
-var _rounded = function rounded(selector, vars$$1) {
+var _rounded = function rounded(selector, vars) {
   return sel(selector, {
     "&, .pe-list-tile__primary": {
-      borderRadius: vars$$1.rounded_border_radius + "px"
+      borderRadius: vars.rounded_border_radius + "px"
     }
   });
 };
@@ -367,8 +367,8 @@ var varFns = {
    * @param {string} selector 
    * @param {ListTileVars} vars 
    */
-  general_styles: function general_styles(selector, vars$$1) {
-    return [sel(selector, [alignLeft(vars$$1), flex.layout, {
+  general_styles: function general_styles(selector, vars) {
+    return [sel(selector, [alignLeft(vars), flex.layout, {
       position: "relative",
       ".pe-list-tile--navigation": {
         " .pe-list-tile__title": {
@@ -376,8 +376,8 @@ var varFns = {
         }
       },
       ".pe-list-tile--sticky": mixin.sticky(2),
-      ".pe-list-tile--inset-h": insetH(selector, vars$$1),
-      ".pe-list-tile--inset-v": insetV(selector, vars$$1),
+      ".pe-list-tile--inset-h": insetH(selector, vars),
+      ".pe-list-tile--inset-v": insetV(selector, vars),
       " .pe-list-tile__primary": {
         width: "100%"
       },
@@ -406,15 +406,15 @@ var varFns = {
       " .pe-list-tile__title": {
         whiteSpace: "normal"
       },
-      " .pe-list-tile__subtitle": [mixin.ellipsis(vars$$1.subtitle_line_count, vars$$1.line_height_subtitle, "px"), {
-        fontSize: vars$$1.font_size_subtitle + "px",
-        fontWeight: vars$$1.font_weight_subtitle,
-        lineHeight: vars$$1.line_height_subtitle + "px",
-        ".pe-list-tile__high-subtitle": [mixin.ellipsis(vars$$1.high_subtitle_line_count, vars$$1.line_height_subtitle, "px"), {
+      " .pe-list-tile__subtitle": [mixin.ellipsis(vars.subtitle_line_count, vars.line_height_subtitle, "px"), {
+        fontSize: vars.font_size_subtitle + "px",
+        fontWeight: vars.font_weight_subtitle,
+        lineHeight: vars.line_height_subtitle + "px",
+        ".pe-list-tile__high-subtitle": [mixin.ellipsis(vars.high_subtitle_line_count, vars.line_height_subtitle, "px"), {
           whiteSpace: "normal"
         }]
       }],
-      ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars$$1),
+      ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars),
       ".pe-list-tile--subtitle": {
         " .pe-list-tile__content": {
           " .pe-list-tile__title": {
@@ -478,160 +478,160 @@ var varFns = {
           cursor: "pointer"
         }
       }
-    }]), _defineProperty({}, selectorRTL(selector), alignRight(vars$$1))];
+    }]), _defineProperty({}, selectorRTL(selector), alignRight(vars))];
   },
-  title_line_count: function title_line_count(selector, vars$$1) {
-    return [title_line_count_single_line_height(selector, vars$$1)];
+  title_line_count: function title_line_count(selector, vars) {
+    return [title_line_count_single_line_height(selector, vars)];
   },
-  single_line_height: function single_line_height(selector, vars$$1) {
-    return [title_line_count_single_line_height(selector, vars$$1)];
+  single_line_height: function single_line_height(selector, vars) {
+    return [title_line_count_single_line_height(selector, vars)];
   },
-  font_size_title: function font_size_title(selector, vars$$1) {
+  font_size_title: function font_size_title(selector, vars) {
     return [sel(selector, {
-      fontSize: vars$$1.font_size_title + "px",
+      fontSize: vars.font_size_title + "px",
       " .pe-list-tile__secondary": {
-        fontSize: vars$$1.font_size_title + "px"
+        fontSize: vars.font_size_title + "px"
       }
     })];
   },
-  font_weight_title: function font_weight_title(selector, vars$$1) {
+  font_weight_title: function font_weight_title(selector, vars) {
     return [sel(selector, {
-      fontWeight: vars$$1.font_weight_title
+      fontWeight: vars.font_weight_title
     })];
   },
-  font_size_navigation_title: function font_size_navigation_title(selector, vars$$1) {
-    return [sel(selector, {
-      ".pe-list-tile--navigation": {
-        fontSize: vars$$1.font_size_navigation_title + "px"
-      }
-    })];
-  },
-  font_weight_navigation_title: function font_weight_navigation_title(selector, vars$$1) {
+  font_size_navigation_title: function font_size_navigation_title(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--navigation": {
-        fontWeight: vars$$1.font_weight_navigation_title
+        fontSize: vars.font_size_navigation_title + "px"
       }
     })];
   },
-  padding: function padding(selector, vars$$1) {
+  font_weight_navigation_title: function font_weight_navigation_title(selector, vars) {
+    return [sel(selector, {
+      ".pe-list-tile--navigation": {
+        fontWeight: vars.font_weight_navigation_title
+      }
+    })];
+  },
+  padding: function padding(selector, vars) {
     return [sel(selector, {
       ":not(.pe-list-tile--header)": {
-        " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars$$1.padding, vars$$1.padding + 1)]
+        " .pe-list-tile__content:not(.pe-list-tile__content-front)": [paddingV(vars.padding, vars.padding + 1)]
       },
       " .pe-list-tile__content": {
-        ".pe-list-tile__content-front": [paddingV(vars$$1.padding - 5)]
+        ".pe-list-tile__content-front": [paddingV(vars.padding - 5)]
       }
     })];
   },
-  side_padding: function side_padding(selector, vars$$1) {
+  side_padding: function side_padding(selector, vars) {
     return [sel(selector, {
-      " .pe-list-tile__content": [paddingH(vars$$1.side_padding)]
+      " .pe-list-tile__content": [paddingH(vars.side_padding)]
     })];
   },
-  inset_size: function inset_size(selector, vars$$1) {
+  inset_size: function inset_size(selector, vars) {
     return [sel(selector, {
-      ".pe-list-tile--inset": _inset(selector, vars$$1)
+      ".pe-list-tile--inset": _inset(selector, vars)
     })];
   },
-  rounded_border_radius: function rounded_border_radius(selector, vars$$1) {
+  rounded_border_radius: function rounded_border_radius(selector, vars) {
     return [sel(selector, {
-      ".pe-list-tile--rounded": _rounded(selector, vars$$1)
+      ".pe-list-tile--rounded": _rounded(selector, vars)
     })];
   },
-  compact_front_item_width: function compact_front_item_width(selector, vars$$1) {
+  compact_front_item_width: function compact_front_item_width(selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__content-front": {
         ".pe-list-tile--compact-front": {
-          width: vars$$1.compact_front_item_width + "px"
+          width: vars.compact_front_item_width + "px"
         }
       }
     })];
   },
-  front_item_width: function front_item_width(selector, vars$$1) {
+  front_item_width: function front_item_width(selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__content-front": {
         ":not(.pe-list-tile--compact-front)": {
-          width: vars$$1.front_item_width + "px"
+          width: vars.front_item_width + "px"
         }
       }
     })];
   },
-  font_size_small: function font_size_small(selector, vars$$1) {
+  font_size_small: function font_size_small(selector, vars) {
     return [sel(selector, {
       " .pe-list-tile__content": {
         " small": {
-          fontSize: vars$$1.font_size_small + "px"
+          fontSize: vars.font_size_small + "px"
         }
       }
     })];
   },
-  has_high_subtitle_padding: function has_high_subtitle_padding(selector, vars$$1) {
+  has_high_subtitle_padding: function has_high_subtitle_padding(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--high-subtitle": {
-        " .pe-list-tile__content": [paddingV(vars$$1.has_high_subtitle_padding, vars$$1.has_high_subtitle_padding + 1)]
+        " .pe-list-tile__content": [paddingV(vars.has_high_subtitle_padding, vars.has_high_subtitle_padding + 1)]
       }
     })];
   },
-  has_subtitle_padding: function has_subtitle_padding(selector, vars$$1) {
+  has_subtitle_padding: function has_subtitle_padding(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--subtitle": {
-        " .pe-list-tile__content": [paddingV(vars$$1.has_subtitle_padding, vars$$1.has_subtitle_padding + 1)]
+        " .pe-list-tile__content": [paddingV(vars.has_subtitle_padding, vars.has_subtitle_padding + 1)]
       }
     })];
   },
-  single_height: function single_height(selector, vars$$1) {
+  single_height: function single_height(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--header": {
-        height: vars$$1.single_height + "px",
-        " .pe-list-tile__title": [mixin.ellipsis(1, vars$$1.single_height, "px"), {
-          lineHeight: vars$$1.single_height + "px",
+        height: vars.single_height + "px",
+        " .pe-list-tile__title": [mixin.ellipsis(1, vars.single_height, "px"), {
+          lineHeight: vars.single_height + "px",
           padding: 0
         }]
       }
     })];
   },
-  font_size_list_header: function font_size_list_header(selector, vars$$1) {
+  font_size_list_header: function font_size_list_header(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--header": {
         " .pe-list-tile__title": {
-          fontSize: vars$$1.font_size_list_header + "px"
+          fontSize: vars.font_size_list_header + "px"
         }
       }
     })];
   },
-  font_weight_list_header: function font_weight_list_header(selector, vars$$1) {
+  font_weight_list_header: function font_weight_list_header(selector, vars) {
     return [sel(selector, {
       ".pe-list-tile--header": {
         " .pe-list-tile__title": {
-          fontWeight: vars$$1.font_weight_list_header
+          fontWeight: vars.font_weight_list_header
         }
       }
     })];
   },
-  compact_padding: function compact_padding(selector, vars$$1) {
+  compact_padding: function compact_padding(selector, vars) {
     return [sel(selector, {
       " .pe-list--compact &, &.pe-list-tile--compact": {
         ":not(.pe-list-tile--header)": {
-          " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars$$1.compact_padding, vars$$1.compact_padding + 1)
+          " .pe-list-tile__content:not(.pe-list-tile__content-front)": paddingV(vars.compact_padding, vars.compact_padding + 1)
         }
       }
     })];
   },
   // Theme vars
-  inset: function inset(selector, vars$$1) {
-    return vars$$1.inset && _inset(selector, vars$$1);
+  inset: function inset(selector, vars) {
+    return vars.inset && _inset(selector, vars);
   },
-  inset_h: function inset_h(selector, vars$$1) {
-    return vars$$1.inset_h && insetH(selector, vars$$1);
+  inset_h: function inset_h(selector, vars) {
+    return vars.inset_h && insetH(selector, vars);
   },
-  inset_v: function inset_v(selector, vars$$1) {
-    return vars$$1.inset_h && insetV(selector, vars$$1);
+  inset_v: function inset_v(selector, vars) {
+    return vars.inset_h && insetV(selector, vars);
   },
-  rounded: function rounded(selector, vars$$1) {
-    return vars$$1.rounded && _rounded(selector, vars$$1);
+  rounded: function rounded(selector, vars) {
+    return vars.rounded && _rounded(selector, vars);
   },
-  selected: function selected(selector, vars$$1) {
-    return vars$$1.selected && unSelectable(selector, vars$$1);
+  selected: function selected(selector, vars) {
+    return vars.selected && unSelectable(selector, vars);
   }
 };
 var layout = createLayout({
