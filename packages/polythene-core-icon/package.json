@@ -1,6 +1,6 @@
 {
   "name": "polythene-core-icon",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "",
   "main": "dist/polythene-core-icon",
   "module": "dist/polythene-core-icon.mjs",
@@ -16,12 +16,12 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core": "^1.5.3",
-    "polythene-css-classes": "^1.5.3",
-    "polythene-theme": "^1.5.3"
+    "polythene-core": "^1.5.4",
+    "polythene-css-classes": "^1.5.4",
+    "polythene-theme": "^1.5.4"
   },
   "devDependencies": {
-    "polythene-core-svg": "^1.5.3"
+    "polythene-core-svg": "^1.5.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

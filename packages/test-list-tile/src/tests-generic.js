@@ -131,6 +131,27 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       }
     },
     {
+      name: "Option: secondary (events)",
+      interactive: true,
+      component: ListTile,
+      attrs: {
+        title: "Click me and click the icon",
+        events: {
+          [keys.onclick]: () => console.log("clicked")
+        },
+        secondary: {
+          icon: {
+            svg: { content: trustedIconStars },
+            size: "medium"
+          },
+          events: {
+            [keys.onclick]: () => console.log("clicked")
+          }
+        }
+      }
+    },
+
+    {
       name: "Option: front (avatar)",
       component: ListTile,
       attrs: {
@@ -242,15 +263,15 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
     //     disabled: true
     //   }
     // },
-    {
-      name: "Option: selectable",
-      interactive: true,
-      component: ListTile,
-      attrs: {
-        title: "Ancillary Justice",
-        selectable: true
-      }
-    },
+    // {
+    //   name: "Option: selectable",
+    //   interactive: true,
+    //   component: ListTile,
+    //   attrs: {
+    //     title: "Ancillary Justice",
+    //     selectable: true
+    //   }
+    // },
 
     // Secondary content options
 
