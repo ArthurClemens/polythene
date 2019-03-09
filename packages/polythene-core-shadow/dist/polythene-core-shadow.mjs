@@ -44,7 +44,9 @@ var onMount = function onMount(_ref) {
 var createProps = function createProps(vnode, _ref2) {
   var k = _ref2.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.animated && classes.animated, attrs.className || attrs[k.class]].join(" ")
   });
 };

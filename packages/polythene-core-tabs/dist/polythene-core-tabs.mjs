@@ -345,7 +345,9 @@ var createProps = function createProps(vnode, _ref3) {
   }
 
   state.previousSelectedTabIndex = index;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.scrollable ? classes.scrollable : null, state.scrollButtonAtStart() ? classes.isAtStart : null, state.scrollButtonAtEnd() ? classes.isAtEnd : null, attrs.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, attrs.compact ? classes.compactTabs : null, attrs.menu ? classes.isMenu : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };
@@ -449,7 +451,9 @@ var createProps$1 = function createProps(vnode, _ref) {
 
   events[k.onclick] = events[k.onclick] || function () {};
 
-  return _extends({}, attrs, {
+  return _extends({}, attrs, attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     content: h("div", {
       className: classes.tabContent
     }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.label ? h("div", {

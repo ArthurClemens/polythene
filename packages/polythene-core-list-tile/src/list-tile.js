@@ -134,6 +134,7 @@ export const createProps = (vnode, { keys: k }) => {
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["tabindex", "tabIndex"] }), // tabindex is set elsewhere
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.component,

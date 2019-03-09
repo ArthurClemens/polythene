@@ -158,7 +158,9 @@ var createProps = function createProps(vnode, _ref) {
   return _extends({}, filterSupportedAttributes(attrs, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
-  {
+  attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.formOptions);
 };

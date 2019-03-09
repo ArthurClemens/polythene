@@ -59,7 +59,9 @@ var getInitialState = function getInitialState(vnode, createStream) {
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };

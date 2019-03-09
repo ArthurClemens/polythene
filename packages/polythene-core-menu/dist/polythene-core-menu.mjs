@@ -380,7 +380,9 @@ var createProps = function createProps(vnode, _ref2) {
   var type = attrs.type || DEFAULT_TYPE;
   return _extends({}, filterSupportedAttributes(attrs, {
     remove: ["style"]
-  }), {
+  }), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, attrs.topMenu ? classes.isTopMenu : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   });
 };

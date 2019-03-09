@@ -91,7 +91,9 @@ var onMount = function onMount(vnode) {
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.instanceClass, classForSize(classes, attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
 };

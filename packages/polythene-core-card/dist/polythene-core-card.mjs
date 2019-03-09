@@ -137,7 +137,9 @@ var onMount = function onMount(_ref5) {
 var createProps = function createProps(vnode, _ref6) {
   var k = _ref6.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.url, attrs.events);
 };
@@ -280,7 +282,9 @@ var actionClassForLayout = function actionClassForLayout() {
 var createProps$1 = function createProps(vnode, _ref2) {
   var k = _ref2.keys;
   var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     key: "card-actions",
     className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.border || attrs.bordered ? classes.actionsBorder : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
@@ -358,7 +362,9 @@ var createProps$2 = function createProps(vnode, _ref2) {
   var k = _ref2.keys;
   var attrs = vnode.attrs;
   var ratio = attrs.ratio || "landscape";
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     key: "card-media",
     className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);
@@ -394,7 +400,9 @@ var createProps$3 = function createProps(vnode, _ref) {
   var primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce(function (total, current) {
     return Object.keys(current)[0] === "media" ? true : total;
   }, false) : attrs.media || false;
-  return _extends({}, filterSupportedAttributes(attrs), {
+  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     key: "card-primary",
     className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, attrs.className || attrs[k.class]].join(" ")
   }, attrs.events);

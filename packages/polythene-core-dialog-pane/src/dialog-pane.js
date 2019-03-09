@@ -86,6 +86,7 @@ export const createProps = (vnode, { keys: k }) => {
   return Object.assign(
     {},
     filterSupportedAttributes(attrs, { remove: ["style"] }), // style set in content, and set by show/hide transition
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.component,

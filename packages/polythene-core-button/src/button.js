@@ -75,6 +75,7 @@ export const createProps = (vnode, { keys: k }) => {
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs, { add: [k.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.super,

@@ -29,6 +29,7 @@ export const createProps = (vnode, { keys: k }) => {
   return Object.assign(
     {},
     filterSupportedAttributes(attrs),
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.component,

@@ -204,7 +204,7 @@ var MithrilToReact = function MithrilToReact(component) {
 
         var vnode = _objectSpread({}, component, {
           state: {},
-          attrs: _this.props,
+          attrs: props,
           redrawValues: undefined
         });
 

@@ -17,6 +17,7 @@ export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return {
     ...filterSupportedAttributes(attrs),
+    ...(attrs.testId && { "data-test-id": attrs.testId }),
     className: [
       classes.component,
       attrs.unconstrained ? classes.unconstrained : null,

@@ -45,7 +45,7 @@ export const MithrilToReact = component => (
       const vnode = {
         ...component,
         state: {},
-        attrs: this.props,
+        attrs: props,
         redrawValues: undefined
       };
       if (component.oninit) {

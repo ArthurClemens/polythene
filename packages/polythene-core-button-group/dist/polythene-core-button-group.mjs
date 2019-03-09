@@ -23,7 +23,9 @@ var classes = {
 var createProps = function createProps(vnode, _ref) {
   var k = _ref.keys;
   var attrs = vnode.attrs;
-  return _extends({}, {
+  return _extends({}, attrs.testId && {
+    "data-test-id": attrs.testId
+  }, {
     className: [classes.component, attrs.className || attrs[k.class]].join(" ")
   });
 };

@@ -227,7 +227,9 @@ var createProps = function createProps(vnode, _ref3) {
   return _extends({}, filterSupportedAttributes(attrs, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
-  _defineProperty({
+  attrs.testId && {
+    "data-test-id": attrs.testId
+  }, _defineProperty({
     className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
     attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
     "data-spawn-id": attrs.spawnId,

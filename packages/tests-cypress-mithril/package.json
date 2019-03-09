@@ -1,0 +1,26 @@
+{
+  "name": "polythene-tests-cypress-mithril",
+  "version": "1.5.4",
+  "description": "",
+  "private": true,
+  "main": "dist/js/test",
+  "module": "dist/js/test.mjs",
+  "scripts": {
+    "clean": "rm -rf dist/js/*",
+    "dev": "npm-run-all --parallel dev:watch dev:serve",
+    "dev:serve": "../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ../../scripts/bundling/webpack.config.dev.js --disableHostCheck true --port 4000 --host 0.0.0.0",
+    "dev:watch": "../../node_modules/webpack/bin/webpack.js --watch --config ../../scripts/bundling/webpack.config.dev.js",
+    "webpack": "../../node_modules/webpack/bin/webpack.js --config ../../scripts/bundling/webpack.config.prod.js",
+    "build": "npm run clean && npm run webpack",
+    "serve": "http-server -p 5000 dist"
+  },
+  "dependencies": {
+    "mithril": "^1.1.6",
+    "polythene-css": "^1.5.4",
+    "polythene-mithril": "^1.5.4",
+    "polythene-tests-cypress":  "^1.5.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

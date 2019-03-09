@@ -280,6 +280,7 @@ export const createProps = (vnode, { keys: k }) => {
   return Object.assign(
     {}, 
     filterSupportedAttributes(attrs, { remove: ["style"] }),
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.component,

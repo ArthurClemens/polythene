@@ -6,6 +6,7 @@ export const createProps = (vnode, { keys: k }) => {
   const attrs = vnode.attrs;
   return Object.assign(
     {},
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       className: [
         classes.component,

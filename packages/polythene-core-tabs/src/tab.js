@@ -22,6 +22,7 @@ export const createProps = (vnode, { renderer: h, keys: k, Icon }) => {
   return Object.assign(
     {},
     attrs,
+    attrs.testId && { "data-test-id": attrs.testId },
     {
       content: h("div",
         { className: classes.tabContent },
