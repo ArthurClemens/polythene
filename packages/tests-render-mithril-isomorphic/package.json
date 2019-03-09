@@ -12,7 +12,7 @@
   "devDependencies": {
     "mithril": "^1.1.6",
     "mithril-node-render": "2.3.1",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.2",
     "polythene-mithril": "^1.5.4",
     "polythene-mithril-button": "^1.5.4",
     "polythene-mithril-raised-button": "^1.5.4",

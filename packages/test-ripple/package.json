@@ -14,7 +14,7 @@
     "polythene-react": "^1.5.4"
   },
   "devDependencies": {
-    "react": "^16.8.3",
+    "react": "^16.8.4",
     "recompose": "^0.30.0"
   },
   "jest": {

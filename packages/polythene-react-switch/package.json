@@ -24,7 +24,7 @@
     "polythene-react-shadow": "^1.5.4"
   },
   "devDependencies": {
-    "@types/react": "^16.8.6"
+    "@types/react": "^16.8.7"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

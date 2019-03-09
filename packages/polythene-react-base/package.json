@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16",
-    "@types/react": "^16.8.6"
+    "@types/react": "^16.8.7"
   },
   "peerDependencies": {
     "react": "^16.2.0",
