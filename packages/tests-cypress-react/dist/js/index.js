@@ -33163,7 +33163,7 @@ var getInitialState = function getInitialState(vnode, createStream, _ref) {
     previousValue: previousValue,
     setInputState: setInputState,
     showErrorPlaceholder: showErrorPlaceholder,
-    redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
+    redrawOnUpdate: createStream.merge([isInvalid, isDirty])
   };
 };
 
@@ -33271,9 +33271,10 @@ var createContent = function createContent(vnode, _ref4) {
   } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
     if (inactive) {
       return;
-    } // in case the browser does not give the field focus,
-    // for instance when the user tapped to the current field off screen
+    }
 
+    console.log("onclick"); // in case the browser does not give the field focus,
+    // for instance when the user tapped to the current field off screen
 
     state.setInputState({
       vnode: vnode,
@@ -33285,6 +33286,7 @@ var createContent = function createContent(vnode, _ref4) {
       return;
     }
 
+    console.log("onfocus");
     state.setInputState({
       vnode: vnode,
       focus: true
@@ -33299,6 +33301,7 @@ var createContent = function createContent(vnode, _ref4) {
 
     notifyState(vnode);
   }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
+    console.log("onblur");
     state.setInputState({
       vnode: vnode,
       type: "onblur",
@@ -33307,8 +33310,9 @@ var createContent = function createContent(vnode, _ref4) {
 
     state.el().classList.remove(classes.stateFocused);
   }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
-    // default input event
+    console.log("oninput"); // default input event
     // may be overwritten by attrs.events
+
     state.setInputState({
       vnode: vnode,
       type: "input"
@@ -49861,34 +49865,17 @@ var Timer = function Timer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tests_defaultValue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tests/defaultValue */ "../../tests-cypress/textfield/tests/defaultValue.js");
-/* harmony import */ var _tests_render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tests/render */ "../../tests-cypress/textfield/tests/render.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-
-
-var tests = [_tests_render__WEBPACK_IMPORTED_MODULE_1__["default"], _tests_defaultValue__WEBPACK_IMPORTED_MODULE_0__["default"]];
+var tests = [_tests_defaultValue__WEBPACK_IMPORTED_MODULE_0__["default"]];
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var TextField = _ref.TextField,
       h = _ref.renderer,
       k = _ref.keys;
-
-  var block = function block(test) {
-    var attrs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return h("div", {
-      style: _extends({}, attrs.dark ? null : {
-        background: "#fff"
-      }, attrs.fullWidth ? null : {
-        padding: "10px 15px"
-      })
-    }, test);
-  };
-
   return tests.map(function (t) {
     return t({
       rootPath: "/textfield",
       h: h,
       k: k,
-      block: block,
       TextField: TextField
     });
   });
@@ -49938,7 +49925,6 @@ var reactTests = function reactTests() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var rootPath = _ref.rootPath,
-      block = _ref.block,
       h = _ref.h,
       TextField = _ref.TextField;
   return {
@@ -49946,80 +49932,12 @@ __webpack_require__.r(__webpack_exports__);
     name: "Text Field: defaultValue",
     component: {
       view: function view() {
-        return block([h(TextField, {
+        return h(TextField, {
           testId: "defaultValue",
           defaultValue: "Text",
           key: "field" // for React
 
-        })]);
-      }
-    }
-  };
-});
-
-/***/ }),
-
-/***/ "../../tests-cypress/textfield/tests/render.js":
-/*!**********************************************************************************************************************!*\
-  !*** /Users/arthur/code/Github Projects/Polythene/polythene/master/packages/tests-cypress/textfield/tests/render.js ***!
-  \**********************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var range = function range(n) {
-  return Array.apply(null, Array(n)).map(function (_, i) {
-    return i;
-  });
-};
-
-var COL_COUNT = 10;
-var ROW_COUNT = 10;
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var rootPath = _ref.rootPath,
-      h = _ref.h,
-      TextField = _ref.TextField;
-  var Columns = {
-    view: function view(_ref2) {
-      var row = _ref2.attrs.row;
-      return range(COL_COUNT).map(function (col) {
-        return h("td", {
-          key: col
-        }, h(TextField, {
-          testId: "".concat(row, "-").concat(col),
-          label: "Text",
-          floatingLabel: true,
-          defaultValue: "Text ".concat(row, "-").concat(col)
-        }));
-      });
-    }
-  };
-  var Rows = {
-    view: function view() {
-      return range(ROW_COUNT).map(function (row) {
-        return h("tr", {
-          key: row
-        }, h(Columns, {
-          row: row
-        }));
-      });
-    }
-  };
-  var renderCount = 0;
-  return {
-    path: "".concat(rootPath, "/render"),
-    name: "Text Field: render",
-    component: {
-      view: function view() {
-        renderCount++;
-        return h("div", [h("p", {
-          key: "count"
-        }, ["view called: ", h("span", {
-          "data-test-id": "count"
-        }, renderCount)]), h("table", {
-          key: "table"
-        }, h("tbody", null, h(Rows)))]);
+        });
       }
     }
   };

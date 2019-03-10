@@ -6,6 +6,7 @@
  * @typedef {import("../index").ComponentCreatorOptions} ComponentCreatorOptions
  */
 
+import isEqual from "lodash.isequal";
 import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";
@@ -28,7 +29,8 @@ export const ComponentCreator = ({
 }) => {
 
   const localState = {
-    mounted: false
+    mounted: false,
+    value: null,
   };
 
   /**
@@ -42,9 +44,14 @@ export const ComponentCreator = ({
     Object.assign(vnode.state, initialState);
 
     initialState.redrawOnUpdate !== undefined
-      ? initialState.redrawOnUpdate.map(() => (
-        localState && setTimeout(renderer.redraw)
-      ))
+      ? initialState.redrawOnUpdate.map(value => {
+        if (localState.mounted) {
+          if (!isEqual(value, localState.value)) {
+            new Promise(resolve => requestAnimationFrame(resolve)).then(renderer.redraw)
+            localState.value = value;
+          }
+        }
+      })
       : undefined;
   };
 

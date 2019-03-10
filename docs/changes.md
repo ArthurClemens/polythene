@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.5](#15)
+  - [1.5.5](#155)
   - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
@@ -41,6 +42,11 @@
 
 
 ## 1.5
+
+### 1.5.5
+
+* Fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
+
 
 ### 1.5.4
 

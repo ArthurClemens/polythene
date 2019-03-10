@@ -134,7 +134,7 @@ export const getInitialState = (vnode, createStream, { keys: k }) => {
     previousValue,
     setInputState,
     showErrorPlaceholder,
-    redrawOnUpdate: createStream.merge([inputEl, isInvalid, isDirty])
+    redrawOnUpdate: createStream.merge([isInvalid, isDirty])
   };
 };
 

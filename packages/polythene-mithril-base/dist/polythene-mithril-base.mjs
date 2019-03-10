@@ -1,4 +1,5 @@
 import m from 'mithril';
+import isEqual from 'lodash.isequal';
 
 // @ts-check
 var keys = {
@@ -315,7 +316,8 @@ var ComponentCreator = function ComponentCreator(_ref) {
       _ref$view = _ref.view,
       view = _ref$view === void 0 ? null : _ref$view;
   var localState = {
-    mounted: false
+    mounted: false,
+    value: null
   };
   /**
    * @param {Vnode} vnode 
@@ -331,8 +333,15 @@ var ComponentCreator = function ComponentCreator(_ref) {
 
     _extends(vnode.state, initialState);
 
-    initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function () {
-      return localState && setTimeout(renderer.redraw);
+    initialState.redrawOnUpdate !== undefined ? initialState.redrawOnUpdate.map(function (value) {
+      if (localState.mounted) {
+        if (!isEqual(value, localState.value)) {
+          new Promise(function (resolve) {
+            return requestAnimationFrame(resolve);
+          }).then(renderer.redraw);
+          localState.value = value;
+        }
+      }
     }) : undefined;
   };
   /**

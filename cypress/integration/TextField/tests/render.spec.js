@@ -11,8 +11,11 @@ describe("Text Field render", () => {
   it("should show the render count", () => {
     cy.get("[data-test-id=count]").should("contain", "1");
     cy.get("[data-test-id=0-0] input").click();
-    cy.get("[data-test-id=0-0] input").type(" something");
-    cy.get("[data-test-id=count]").should("contain", "1");
+    // expect 3 more events: onclick, onfocus, onblur
+    cy.get("[data-test-id=count]").should("contain", "4");
+    // expect 3 more events: oninput, and Mithril's event => redraw
+    cy.get("[data-test-id=0-0] input").type("X");
+    cy.get("[data-test-id=count]").should("contain", "6");
   });
    
 });

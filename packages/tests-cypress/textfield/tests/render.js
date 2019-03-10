@@ -3,10 +3,9 @@ const range = n =>
   Array.apply(null, Array(n)).map((_, i) => i);
 
 const COL_COUNT = 10;
-const ROW_COUNT = 10;
+const ROW_COUNT = 90;
 
 export default ({ rootPath, h, TextField }) => {
-  
   const Columns = {
     view: ({ attrs: { row } }) =>
       range(COL_COUNT).map(col =>

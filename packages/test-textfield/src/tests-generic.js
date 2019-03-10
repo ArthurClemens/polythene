@@ -6,7 +6,7 @@ import { TextFieldCSS } from "polythene-css";
 export default ({ TextField, Button, renderer: h, keys: k }) => {
 
   const block = (test, attrs = {}) =>
-    h("form",
+    h("div",
       {
         style: Object.assign(
           {},
