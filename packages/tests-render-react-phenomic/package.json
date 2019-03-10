@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "phenomic start",
     "build": "phenomic build",
-    "serve": "http-server dist -p 5000"
+    "serve": "http-server -c-1 dist -p 5000"
   },
   "dependencies": {
     "@phenomic/cli": "^1.0.0-beta.9",

@@ -21,6 +21,7 @@
     "cypress:open": "cypress open",
     "cypress:test:mithril": "cd packages/tests-cypress-mithril && npm run dev",
     "cypress:test:react": "cd packages/tests-cypress-react && npm run dev",
+    "test:mithril": "CYPRESS_TESTS_PORT=4000 npm-run-all --parallel cypress:test:mithril cypress:open",
     "test:mithril:i": "CYPRESS_TESTS_PORT=4000 npm-run-all --parallel cypress:test:mithril cypress:open",
     "test:react:i": "CYPRESS_TESTS_PORT=4100 npm-run-all --parallel cypress:test:react cypress:open"
   },
