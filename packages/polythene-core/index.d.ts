@@ -164,6 +164,11 @@ export interface CommonOptions {
   id: string;
 
   /**
+   * Test id. Gets rendered as "data-test-id=my-value"
+   */
+  testId: string;
+
+  /**
    * Generated HTML element.
    * @default "div"
    */

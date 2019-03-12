@@ -74,7 +74,8 @@ const App = {
           m(".component", 
             m(Button, {
               raised: true,
-              label: "Button"
+              label: "Button",
+              testId: "my-button"
             })
           )
         ]
@@ -96,6 +97,7 @@ const App = {
             m(MyButton, {
               label: "Button",
               showCustomColor: true,
+              testId: "my-button",
             })
           )
         ]
@@ -107,7 +109,8 @@ const App = {
             m(Icon, {
               size: "large",
               src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-              avatar: true
+              avatar: true,
+              testId: "my-icon"
             })
           )
         ]

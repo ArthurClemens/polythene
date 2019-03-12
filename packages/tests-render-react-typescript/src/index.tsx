@@ -64,6 +64,7 @@ const App = () => (
         <Button
           raised
           label="Button"
+          testId="my-button"
         />
       </div>
     </div>
@@ -91,6 +92,7 @@ const App = () => (
           size="large"
           src="http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png"
           avatar
+          testId="my-icon"
         />
       </div>
     </div>
