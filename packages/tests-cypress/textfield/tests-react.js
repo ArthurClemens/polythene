@@ -1,7 +1,7 @@
 import { renderer, keys, TextField } from "polythene-react";
 import genericTests from "./tests-generic";
 
-const reactTests = () => { // eslint-disable-line no-unused-vars
+const reactTests = () => {
   return [];
 };
 

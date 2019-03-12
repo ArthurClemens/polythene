@@ -39,21 +39,28 @@ export default ({ rootPath, h, TextField }) => {
     component: {
       view: () => {
         renderCount++;
-        return h("div", [
-          h("p",
-            { key: "count" },
-            [
-              "view called: ",
-              h("span", { "data-test-id": "count" }, renderCount),
-            ]
-          ),
-          h("table",
-            { key: "table" },
-            h("tbody", null,
-              h(Rows)
+        return h("div",
+          {
+            "data-renderer-id": h.displayName
+          },
+          [
+            h("p",
+              { key: "count" },
+              [
+                "view called: ",
+                h("span", {
+                  "data-test-id": "count",
+                }, renderCount),
+              ]
+            ),
+            h("table",
+              { key: "table" },
+              h("tbody", null,
+                h(Rows)
+              )
             )
-          )
-        ]);
+          ]
+        );
       }
     }
   };

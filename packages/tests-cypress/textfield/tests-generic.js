@@ -1,7 +1,9 @@
 import testDefaultValue from "./tests/defaultValue";
+import testRender from "./tests/render";
 
 const tests = [
-  testDefaultValue
+  testDefaultValue,
+  testRender,
 ];
 
 export default ({ TextField, renderer: h, keys: k }) => {

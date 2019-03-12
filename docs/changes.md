@@ -46,6 +46,7 @@
 ### 1.5.5
 
 * Fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
+* Fixes a bug where Webpack's production build (using treeshaking) caused JS-in-CSS functions to drop, resulting in missing styles in the document head.
 
 
 ### 1.5.4

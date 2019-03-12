@@ -8,20 +8,18 @@ addTypography();
 
 const index = {
   view: () =>
-    [
-      h(List,
-        routes.map(route => (
-          h(ListTile, {
-            title: route.name,
-            hoverable: true,
-            url: {
-              href: route.path,
-              oncreate: h.route.link
-            }
-          })
-        ))
-      ),
-    ]
+    h(List,
+      routes.map(route => (
+        h(ListTile, {
+          title: route.name,
+          hoverable: true,
+          url: {
+            href: route.path,
+            oncreate: h.route.link
+          }
+        })
+      ))
+    ),
 };
 
 h.route.prefix("#");

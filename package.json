@@ -19,11 +19,16 @@
     "docs:check": "./node_modules/broken-link-checker/bin/blc -ro http://localhost:6419/",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open",
-    "cypress:test:mithril": "cd packages/tests-cypress-mithril && npm run dev",
-    "cypress:test:react": "cd packages/tests-cypress-react && npm run dev",
-    "test:mithril": "CYPRESS_TESTS_PORT=4000 npm-run-all --parallel cypress:test:mithril cypress:open",
-    "test:mithril:i": "CYPRESS_TESTS_PORT=4000 npm-run-all --parallel cypress:test:mithril cypress:open",
-    "test:react:i": "CYPRESS_TESTS_PORT=4100 npm-run-all --parallel cypress:test:react cypress:open"
+    "serve:mithril": "cd packages/tests-cypress-mithril && npm run serve",
+    "serve:react": "cd packages/tests-cypress-react && npm run serve",
+    "dev:mithril": "cd packages/tests-cypress-mithril && npm run dev",
+    "dev:react": "cd packages/tests-cypress-react && npm run dev",
+    "test:i:prod:mithril": "cd packages/tests-cypress-mithril && npm run build && cd - && CYPRESS_TESTS_PORT=5000 npm-run-all --parallel serve:mithril cypress:open",
+    "test:i:prod:react": "cd packages/tests-cypress-react && npm run build && cd - && CYPRESS_TESTS_PORT=5000 npm-run-all --parallel serve:react cypress:open",
+    "test:i:dev:mithril": "CYPRESS_TESTS_PORT=3000 CYPRESS_TESTS_RENDERER=mithril npm-run-all --parallel dev:mithril cypress:open",
+    "test:i:dev:react": "CYPRESS_TESTS_PORT=3000 CYPRESS_TESTS_RENDERER=react npm-run-all --parallel dev:react cypress:open",
+    "test:prod:mithril": "cd packages/tests-cypress-mithril && npm run build && cd - && CYPRESS_TESTS_PORT=5000 CYPRESS_TESTS_RENDERER=mithril npm-run-all --parallel serve:mithril cypress:run",
+    "test:prod:react": "cd packages/tests-cypress-react && npm run build && cd - && CYPRESS_TESTS_PORT=5000 CYPRESS_TESTS_RENDERER=react npm-run-all --parallel serve:react cypress:run"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

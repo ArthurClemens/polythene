@@ -25,3 +25,7 @@ export const baseUrl = () => {
   const port = Cypress.env("TESTS_PORT");
   return `http://localhost:${port}/#`;
 };
+
+export const getRenderer = () => {
+  return Cypress.env("TESTS_RENDERER");
+};

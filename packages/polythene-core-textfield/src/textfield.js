@@ -134,7 +134,7 @@ export const getInitialState = (vnode, createStream, { keys: k }) => {
     previousValue,
     setInputState,
     showErrorPlaceholder,
-    redrawOnUpdate: createStream.merge([isInvalid, isDirty])
+    // redrawOnUpdate: createStream.merge([isInvalid, isDirty])
   };
 };
 
@@ -240,10 +240,7 @@ export const createContent = (vnode, { renderer: h, keys: k }) => {
       ? "text"
       : attrs.type;
   const showError = isInvalid && error !== undefined;
-  
-  
   const inactive = attrs.disabled || attrs[k.readonly];
-
   const requiredIndicator = attrs.required && attrs.requiredIndicator !== ""
     ? h("span",
       {
