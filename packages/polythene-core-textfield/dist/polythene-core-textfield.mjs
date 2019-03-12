@@ -221,8 +221,7 @@ var getInitialState = function getInitialState(vnode, createStream, _ref) {
     isTouched: isTouched,
     previousValue: previousValue,
     setInputState: setInputState,
-    showErrorPlaceholder: showErrorPlaceholder // redrawOnUpdate: createStream.merge([isInvalid, isDirty])
-
+    showErrorPlaceholder: showErrorPlaceholder
   };
 };
 var onMount = function onMount(vnode) {
