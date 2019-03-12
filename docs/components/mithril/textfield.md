@@ -8,13 +8,18 @@
 - [Usage](#usage)
   - [Help texts](#help-texts)
   - [Front-end validation](#front-end-validation)
+    - [When to validate](#when-to-validate)
   - [Custom validation](#custom-validation)
+    - [Checking the field value with callback function "validate"](#checking-the-field-value-with-callback-function-validate)
   - [Using a validation library / setting the "valid" state directly](#using-a-validation-library--setting-the-valid-state-directly)
   - [Character counter](#character-counter)
   - [Reading and setting the value](#reading-and-setting-the-value)
   - [Programmatically setting focus and value](#programmatically-setting-focus-and-value)
 - [Appearance](#appearance)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -249,12 +254,12 @@ m(TextField, {
 })
 ~~~
 
-Finally, you can also use Mithril's `m.withAttr`:
+Finally, you can also use `oninput` directly:
 
 ~~~javascript
 m(TextField, {
   events: {
-    oninput: m.withAttr("value", value => vnode.state.value = value),
+    oninput: e => vnode.state.value = e.target.value,
   },
   value: vnode.state.value
 })
