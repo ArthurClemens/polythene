@@ -2,6 +2,8 @@ import { isServer, pointerStartMoveEvent, pointerEndMoveEvent, deprecation } fro
 
 // Don't export 'getElement': it will be the wrapped Button component (set in polythene-xxx-button)
 
+const DEFAULT_SHADOW_DEPTH = 1;
+const DEFAULT_SHADOW_DEPTH_INCREASE = 1;
 const MAX_SHADOW_DEPTH = 5;
 
 let tapStart,
@@ -10,7 +12,7 @@ let tapStart,
 
 const animateZ = (which, vnode) => {
   const shadowDepthBase = vnode.state.shadowDepthBase;
-  const increase = vnode.attrs.increase || 1;
+  const increase = vnode.attrs.increase || DEFAULT_SHADOW_DEPTH_INCREASE;
   const shadowDepth = vnode.state.shadowDepth();
   const newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH
     ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH)
@@ -59,7 +61,7 @@ export const getInitialState = (vnode, createStream) => {
     ? attrs.shadowDepth
     : attrs.z !== undefined // deprecated
       ? attrs.z
-      : 1; 
+      : DEFAULT_SHADOW_DEPTH; 
   const shadowDepth = createStream(shadowDepthBase);
   const tapEventsInited = createStream(false);
   return {
