@@ -129,7 +129,7 @@ Use the [pathmodify](https://www.npmjs.com/package/pathmodify) plugin to change 
 ~~~javascript
 browserify().plugin(pathmodify, {
   mods: [
-    pathmodify.mod.id("polythene-config", "app/custom-theme")
+    pathmodify.mod.id("polythene-theme", "app/custom-theme")
   ]
 })
 ~~~
