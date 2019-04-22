@@ -18,6 +18,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-icon",
   // states
@@ -28,31 +64,22 @@ var classes = {
   small: "pe-icon--small"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+var _Icon = function _Icon(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      SVG = _ref.SVG,
+      props = _objectWithoutProperties(_ref, ["h", "a", "SVG"]);
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, classForSize(classes, attrs.size), attrs.avatar ? classes.avatar : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      SVG = _ref2.SVG;
-  var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.svg ? h(SVG, attrs.svg) : attrs.src ? h("img", {
-    src: attrs.src
-  }) : attrs.children || vnode.children;
+    className: [classes.component, classForSize(classes, props.size), props.avatar ? classes.avatar : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.events);
+
+  var content = props.content ? props.content : props.svg ? h(SVG, props.svg) : props.src ? h("img", {
+    src: props.src
+  }) : props.children;
+  return h(props.element || "div", componentProps, content);
 };
 
-var icon = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { icon as coreIcon };
+export { _Icon };

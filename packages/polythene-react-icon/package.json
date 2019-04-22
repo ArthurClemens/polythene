@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
+    "cyano-react": "^0.4.2",
     "polythene-core-icon": "^1.5.4",
-    "polythene-react-base": "^1.5.4",
     "polythene-react-svg": "^1.5.4"
   },
   "devDependencies": {
