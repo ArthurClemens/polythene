@@ -1,8 +1,4 @@
-// @ts-check
+import { _Shadow } from "polythene-core-shadow";
+import { cast, h, a } from "cyano-react";
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreShadow as core } from "polythene-core-shadow";
-
-export const Shadow = ComponentCreator(core);
-
-Shadow["displayName"] = "Shadow";
+export const Shadow = cast(_Shadow, { h, a });

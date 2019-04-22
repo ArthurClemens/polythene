@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.5.4",
-    "polythene-react-base": "^1.5.4"
+    "cyano-react": "^0.4.2",
+    "polythene-core-shadow": "^1.5.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.7"

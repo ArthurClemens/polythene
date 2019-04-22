@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-shadow": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4"
+    "cyano-mithril": "^0.4.2",
+    "polythene-core-shadow": "^1.5.4"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"
