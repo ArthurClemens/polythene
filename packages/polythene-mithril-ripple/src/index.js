@@ -1,8 +1,4 @@
-// @ts-check
+import { _Ripple } from "polythene-core-ripple";
+import { cast, h, a, getDom, useState, useEffect } from "cyano-mithril";
 
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreRipple as core } from "polythene-core-ripple";
-
-export const Ripple = ComponentCreator(core);
-
-Ripple["displayName"] = "Ripple";
+export const Ripple = cast(_Ripple, { h, a, getDom, useState, useEffect });

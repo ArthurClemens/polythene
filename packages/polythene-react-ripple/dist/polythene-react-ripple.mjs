@@ -1,8 +1,12 @@
-import { ComponentCreator } from 'polythene-react-base';
-import { coreRipple } from 'polythene-core-ripple';
+import { _Ripple } from 'polythene-core-ripple';
+import { cast, h, a, getDom, useState, useEffect } from 'cyano-react';
 
-// @ts-check
-var Ripple = ComponentCreator(coreRipple);
-Ripple["displayName"] = "Ripple";
+var Ripple = cast(_Ripple, {
+  h: h,
+  a: a,
+  getDom: getDom,
+  useState: useState,
+  useEffect: useEffect
+});
 
 export { Ripple };

@@ -1,4 +1,4 @@
-import { getAnimationEndEvent, isTouch, isServer, filterSupportedAttributes, pointerEndEvent } from 'polythene-core';
+import { getAnimationEndEvent, isTouch, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) {
@@ -16,23 +16,96 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
     }
 
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
   }
 
   return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var ANIMATION_END_EVENT = getAnimationEndEvent();
@@ -64,7 +137,7 @@ var animation = (function (_ref) {
   var e = _ref.e,
       id = _ref.id,
       el = _ref.el,
-      attrs = _ref.attrs,
+      props = _ref.props,
       classes = _ref.classes;
   return new Promise(function (resolve) {
     var container = document.createElement("div");
@@ -79,16 +152,16 @@ var animation = (function (_ref) {
     var w = el.offsetWidth;
     var h = el.offsetHeight;
     var waveRadius = Math.sqrt(w * w + h * h);
-    var mx = attrs.center ? rect.left + rect.width / 2 : x;
-    var my = attrs.center ? rect.top + rect.height / 2 : y;
+    var mx = props.center ? rect.left + rect.width / 2 : x;
+    var my = props.center ? rect.top + rect.height / 2 : y;
     var rx = mx - rect.left - waveRadius / 2;
     var ry = my - rect.top - waveRadius / 2;
-    var startOpacity = attrs.startOpacity !== undefined ? attrs.startOpacity : DEFAULT_START_OPACITY;
-    var opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined ? attrs.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
-    var endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
-    var startScale = attrs.startScale || DEFAULT_START_SCALE;
-    var endScale = attrs.endScale || DEFAULT_END_SCALE;
-    var duration = attrs.duration ? attrs.duration : 1 / opacityDecayVelocity * 0.2;
+    var startOpacity = props.startOpacity !== undefined ? props.startOpacity : DEFAULT_START_OPACITY;
+    var opacityDecayVelocity = props.opacityDecayVelocity !== undefined ? props.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+    var endOpacity = props.endOpacity || DEFAULT_END_OPACITY;
+    var startScale = props.startScale || DEFAULT_START_SCALE;
+    var endScale = props.endScale || DEFAULT_END_SCALE;
+    var duration = props.duration ? props.duration : 1 / opacityDecayVelocity * 0.2;
     var color = window.getComputedStyle(el).color;
     var style = waves.style;
     style.width = style.height = waveRadius + "px";
@@ -98,7 +171,7 @@ var animation = (function (_ref) {
     style.backgroundColor = color;
     style.opacity = startOpacity;
     style.animationName = id;
-    style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
+    style.animationTimingFunction = props.animationTimingFunction || vars.animation_curve_default;
     var rippleStyleSheet = "@keyframes ".concat(id, " {\n      0% {\n        transform:scale(").concat(startScale, ");\n        opacity: ").concat(startOpacity, "\n      }\n      100% {\n        transform:scale(").concat(endScale, ");\n        opacity: ").concat(endOpacity, ";\n      }\n    }");
     addStyleToHead(id, rippleStyleSheet);
 
@@ -106,7 +179,7 @@ var animation = (function (_ref) {
       removeStyleFromHead(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
 
-      if (attrs.persistent) {
+      if (props.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
@@ -133,96 +206,99 @@ var classes = {
   wavesAnimating: "pe-ripple__waves--animating"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-var getInitialState = function getInitialState() {
-  return {
-    animations: {},
-    animating: false,
-    cleanUp: undefined
-  };
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _objectSpread({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    className: [classes.component, attrs.unconstrained ? classes.unconstrained : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
+var useAnimationsState = function useAnimationsState(_ref) {
+  var useState = _ref.useState;
+
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      animations = _useState2[0],
+      setAnimations = _useState2[1];
+
+  return [animations, function (addId, animation) {
+    return setAnimations(_extends({}, animations, _defineProperty({}, addId, animation)));
+  }, function (removeId) {
+    var updated = _extends({}, animations);
+
+    delete updated[removeId];
+    setAnimations(updated);
+  }];
 };
 
-var updateAnimationState = function updateAnimationState(state) {
-  return state.animating = Object.keys(state.animations).length > 0;
-};
+var _Ripple = function _Ripple(_ref2) {
+  var h = _ref2.h,
+      a = _ref2.a,
+      getDom = _ref2.getDom,
+      useState = _ref2.useState,
+      useEffect = _ref2.useEffect,
+      props = _objectWithoutProperties(_ref2, ["h", "a", "getDom", "useState", "useEffect"]);
 
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
+  var _useState3 = useState(),
+      _useState4 = _slicedToArray(_useState3, 2),
+      domElement = _useState4[0],
+      setDomElement = _useState4[1];
 
-  if (isServer) {
-    return;
-  }
+  var _useAnimationsState = useAnimationsState({
+    useState: useState
+  }),
+      _useAnimationsState2 = _slicedToArray(_useAnimationsState, 3),
+      animations = _useAnimationsState2[0],
+      addAnimation = _useAnimationsState2[1],
+      removeAnimation = _useAnimationsState2[2];
 
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+  var isAnimating = Object.keys(animations).length > 0;
+  var triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   var tap = function tap(e) {
-    if (attrs.disabled || !attrs.multi && state.animating) {
+    if (props.disabled || !props.multi && isAnimating) {
       return;
     }
 
-    if (attrs.start) {
-      attrs.start(e);
+    if (props.start) {
+      props.start(e);
     }
 
     var id = "ripple_animation_".concat(new Date().getTime());
-    state.animations[id] = animation({
+    var rippleAnimation = animation({
       e: e,
       id: id,
-      el: vnode.dom,
-      attrs: attrs,
+      el: domElement,
+      props: props,
       classes: classes
     }).then(function (evt) {
-      if (attrs.end) {
-        attrs.end(evt);
+      if (props.end) {
+        props.end(evt);
       }
 
-      delete state.animations[id];
-      updateAnimationState(state);
+      removeAnimation(id);
     });
-    updateAnimationState(state);
+    addAnimation(id, rippleAnimation);
   };
 
-  var triggerEl = attrs.target ? attrs.target : vnode.dom && vnode.dom.parentElement;
-
-  if (triggerEl) {
-    pointerEndEvent.forEach(function (evt) {
-      return triggerEl.addEventListener(evt, tap, false);
-    });
-  }
-
-  state.cleanUp = function () {
+  useEffect(function () {
     if (triggerEl) {
       pointerEndEvent.forEach(function (evt) {
-        return triggerEl.removeEventListener(evt, tap, false);
+        return triggerEl.addEventListener(evt, tap, false);
       });
     }
-  };
-};
-var onUnMount = function onUnMount(_ref2) {
-  var state = _ref2.state;
-  return state.cleanUp && state.cleanUp();
+
+    return function () {
+      if (triggerEl) {
+        pointerEndEvent.forEach(function (evt) {
+          return triggerEl.removeEventListener(evt, tap, false);
+        });
+      }
+    };
+  }, [triggerEl]);
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), getDom(function (dom) {
+    return dom && !domElement && setDomElement(dom);
+  }), props.testId && {
+    "data-test-id": props.testId
+  }, {
+    className: [classes.component, props.unconstrained ? classes.unconstrained : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  });
+
+  return h(props.element || "div", componentProps);
 };
 
-var ripple = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  createProps: createProps,
-  onMount: onMount,
-  onUnMount: onUnMount
-});
-
-export { ripple as coreRipple };
+export { _Ripple };

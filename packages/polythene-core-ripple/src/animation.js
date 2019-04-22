@@ -25,7 +25,7 @@ const removeStyleFromHead = id => {
   }
 };
 
-export default ({ e, id, el, attrs, classes }) => {
+export default ({ e, id, el, props, classes }) => {
   return new Promise(resolve => {
     const container = document.createElement("div");
     container.setAttribute("class", classes.mask);
@@ -39,21 +39,21 @@ export default ({ e, id, el, attrs, classes }) => {
     const w = el.offsetWidth;
     const h = el.offsetHeight;
     const waveRadius = Math.sqrt(w * w + h * h);
-    const mx = (attrs.center) ? (rect.left + rect.width / 2) : x;
-    const my = (attrs.center) ? (rect.top + rect.height / 2) : y;
+    const mx = (props.center) ? (rect.left + rect.width / 2) : x;
+    const my = (props.center) ? (rect.top + rect.height / 2) : y;
     const rx = mx - rect.left - waveRadius / 2;
     const ry = my - rect.top - waveRadius / 2;
-    const startOpacity = attrs.startOpacity !== undefined
-      ? attrs.startOpacity
+    const startOpacity = props.startOpacity !== undefined
+      ? props.startOpacity
       : DEFAULT_START_OPACITY;
-    const opacityDecayVelocity = attrs.opacityDecayVelocity !== undefined
-      ? attrs.opacityDecayVelocity
+    const opacityDecayVelocity = props.opacityDecayVelocity !== undefined
+      ? props.opacityDecayVelocity
       : OPACITY_DECAY_VELOCITY;
-    const endOpacity = attrs.endOpacity || DEFAULT_END_OPACITY;
-    const startScale = attrs.startScale || DEFAULT_START_SCALE;
-    const endScale = attrs.endScale || DEFAULT_END_SCALE;
-    const duration = attrs.duration
-      ? attrs.duration
+    const endOpacity = props.endOpacity || DEFAULT_END_OPACITY;
+    const startScale = props.startScale || DEFAULT_START_SCALE;
+    const endScale = props.endScale || DEFAULT_END_SCALE;
+    const duration = props.duration
+      ? props.duration
       : 1 / opacityDecayVelocity * 0.2;
     const color = window.getComputedStyle(el).color;
     
@@ -68,7 +68,7 @@ export default ({ e, id, el, attrs, classes }) => {
     style.backgroundColor = color;
     style.opacity = startOpacity;
     style.animationName = id;
-    style.animationTimingFunction = attrs.animationTimingFunction || vars.animation_curve_default;
+    style.animationTimingFunction = props.animationTimingFunction || vars.animation_curve_default;
 
     const rippleStyleSheet = `@keyframes ${id} {
       0% {
@@ -85,7 +85,7 @@ export default ({ e, id, el, attrs, classes }) => {
     const animationDone = evt => {
       removeStyleFromHead(id);
       waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
-      if (attrs.persistent) {
+      if (props.persistent) {
         style.opacity = endOpacity;
         style.transform = "scale(" + endScale + ")";
       } else {
