@@ -40,7 +40,6 @@ const mithrilTests = ({ SVG, renderer: h }) => {
       }
     },
   ];
-    
 };
 
 export default []

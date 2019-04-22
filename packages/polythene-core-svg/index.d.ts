@@ -16,4 +16,4 @@ interface CommonSVGOptions extends Partial<CommonOptions> {
 
 export type Options = CommonSVGOptions;
 
-export const coreSVG: CoreComponentCreatorOptions;
+export const _SVG: CoreComponentCreatorOptions;

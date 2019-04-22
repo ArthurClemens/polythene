@@ -54,7 +54,7 @@
     "polythene-react-toolbar": "^1.5.4"
   },
   "peerDependencies": {
-    "react": "^16.2.0",
+    "react": "^16.8.4",
     "react-hyperscript": "^3.0.0"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 import m from 'mithril';
-import isEqual from 'lodash.isequal';
 
 // @ts-check
 var keys = {
@@ -277,6 +276,14 @@ var stream = createCommonjsModule(function (module) {
 
 var stream$1 = stream;
 
+// @ts-check
+
+/**
+ * @typedef {import("mithril").Vnode} Vnode
+ * @typedef {import("../index")}
+ * @typedef {import("../index").ComponentCreatorOptions} ComponentCreatorOptions
+ */
+var isEqual = require("lodash.isequal");
 var requiresKeys = false;
 /**
  * @param {ComponentCreatorOptions} params

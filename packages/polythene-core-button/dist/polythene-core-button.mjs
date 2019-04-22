@@ -243,6 +243,8 @@ var button = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
+var DEFAULT_SHADOW_DEPTH = 1;
+var DEFAULT_SHADOW_DEPTH_INCREASE = 1;
 var MAX_SHADOW_DEPTH = 5;
 
 var tapStart,
@@ -251,7 +253,7 @@ var tapStart,
 
 var animateZ = function animateZ(which, vnode) {
   var shadowDepthBase = vnode.state.shadowDepthBase;
-  var increase = vnode.attrs.increase || 1;
+  var increase = vnode.attrs.increase || DEFAULT_SHADOW_DEPTH_INCREASE;
   var shadowDepth = vnode.state.shadowDepth();
   var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepth - increase, shadowDepthBase) : shadowDepth;
 
@@ -306,7 +308,7 @@ var clearTapEvents = function clearTapEvents(vnode) {
 var getInitialState$1 = function getInitialState(vnode, createStream) {
   var attrs = vnode.attrs;
   var shadowDepthBase = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined // deprecated
-  ? attrs.z : 1;
+  ? attrs.z : DEFAULT_SHADOW_DEPTH;
   var shadowDepth = createStream(shadowDepthBase);
   var tapEventsInited = createStream(false);
   return {

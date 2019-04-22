@@ -1,8 +1,12 @@
-import { ComponentCreator } from 'polythene-mithril-base';
-import { coreSVG } from 'polythene-core-svg';
+import { _SVG } from 'polythene-core-svg';
+import { cast, h, a, useEffect, useState, getDom } from 'cyano-mithril';
 
-// @ts-check
-var SVG = ComponentCreator(coreSVG);
-SVG["displayName"] = "SVG";
+var SVG = cast(_SVG, {
+  h: h,
+  a: a,
+  useEffect: useEffect,
+  useState: useState,
+  getDom: getDom
+});
 
 export { SVG };

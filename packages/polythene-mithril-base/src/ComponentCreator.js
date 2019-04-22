@@ -6,7 +6,7 @@
  * @typedef {import("../index").ComponentCreatorOptions} ComponentCreatorOptions
  */
 
-import isEqual from "lodash.isequal";
+const isEqual = require("lodash.isequal");
 import stream from "mithril/stream";
 import { renderer } from "./renderer";
 import { keys } from "./keys";

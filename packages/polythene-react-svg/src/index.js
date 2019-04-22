@@ -1,8 +1,4 @@
-// @ts-check
+import { _SVG } from "polythene-core-svg";
+import { cast, h, a, useEffect, useState, getDom } from "cyano-react";
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreSVG as core } from "polythene-core-svg";
-
-export const SVG = ComponentCreator(core);
-
-SVG["displayName"] = "SVG";
+export const SVG = cast(_SVG, { h, a, useEffect, useState, getDom });

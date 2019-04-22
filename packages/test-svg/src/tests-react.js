@@ -51,7 +51,7 @@ const reactTests = ({ SVG, renderer: h }) => {
     },
     {
       name: "Option: style (JSX)",
-      component: () => <SVG content={iconStarsSVG} style={{ color: "#EF6C00" }} />
+      component: () => <SVG style={{ color: "#EF6C00" }}>{iconStarsSVG}</SVG>
     },
   ];
     

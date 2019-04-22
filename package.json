@@ -63,7 +63,7 @@
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.7",
     "jest": "^24.3.1",
-    "lerna": "^3.13.1",
+    "lerna": "^3.13.3",
     "mini-css-extract-plugin": "0.5.0",
     "minimist": "^1.2.0",
     "mithril": "^1.1.6",
@@ -90,8 +90,9 @@
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
-    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-modules": "^1.0.0"
   }
 }

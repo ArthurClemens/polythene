@@ -1,6 +1,7 @@
 /* global process */
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebpackModules = require("webpack-modules");
 
 const baseDir = process.cwd();
 const env = process.env; // eslint-disable-line no-undef
@@ -19,11 +20,12 @@ module.exports = {
   },
 
   resolve: {
-    // Make sure that Mithril is included only once
+    // Make sure that libs are included only once
     alias: {
       "mithril/stream": path.resolve(baseDir, "node_modules/mithril/stream/stream.js"),
-      // Keep in this order!
       "mithril": path.resolve(baseDir, "node_modules/mithril/mithril.js"),
+      "react": path.resolve(baseDir, "node_modules/react"),
+      "react-dom": path.resolve(baseDir, "node_modules/react-dom"),
     },
     extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
   },
@@ -39,6 +41,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
+        type: "javascript/auto",
         use: [{
           loader: "babel-loader",
           options: {
@@ -64,6 +67,7 @@ module.exports = {
   },
 
   plugins: [
+    new WebpackModules(),
     new MiniCssExtractPlugin({
       filename: "css/app.css"
     }),
