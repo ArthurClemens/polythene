@@ -249,7 +249,7 @@ var _Ripple = function _Ripple(_ref2) {
   var triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   var tap = function tap(e) {
-    if (props.disabled || !props.multi && isAnimating) {
+    if (props.disabled || !domElement || !props.multi && isAnimating) {
       return;
     }
 

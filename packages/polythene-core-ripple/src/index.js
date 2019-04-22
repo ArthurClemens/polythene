@@ -26,7 +26,7 @@ export const _Ripple = ({ h, a, getDom, useState, useEffect, ...props }) => {
   const triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
   
   const tap = e => {
-    if (props.disabled || (!props.multi && isAnimating)) {
+    if (props.disabled || !domElement || (!props.multi && isAnimating)) {
       return;
     }
     if (props.start) {
