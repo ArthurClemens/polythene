@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
+    "cyano-react": "^0.4.2",
     "polythene-core-icon-button": "^1.5.4",
-    "polythene-react-base": "^1.5.4",
     "polythene-react-button": "^1.5.4",
     "polythene-react-icon": "^1.5.4"
   },

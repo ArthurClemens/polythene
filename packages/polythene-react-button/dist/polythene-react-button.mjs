@@ -1,85 +1,19 @@
-import { ComponentCreator, renderer } from 'polythene-react-base';
-import { coreButton, coreRaisedButton } from 'polythene-core-button';
+import { _Button } from 'polythene-core-button';
 import { Ripple } from 'polythene-react-ripple';
 import { Icon } from 'polythene-react-icon';
 import { Shadow } from 'polythene-react-shadow';
+import { cast, h, a, getDom, useState, useEffect, useRef } from 'cyano-react';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-var TextButton = ComponentCreator(_objectSpread({}, coreButton, {
-  createProps: function createProps(vnode, args) {
-    return coreButton.createProps(vnode, _objectSpread({}, args, {
-      Ripple: Ripple,
-      Icon: Icon,
-      Shadow: Shadow
-    }));
-  },
-  createContent: function createContent(vnode, args) {
-    return coreButton.createContent(vnode, _objectSpread({}, args, {
-      Ripple: Ripple,
-      Icon: Icon,
-      Shadow: Shadow
-    }));
-  }
-}));
-TextButton["displayName"] = "TextButton";
-
-var RaisedButton = ComponentCreator(_objectSpread({}, coreRaisedButton, {
-  createProps: function createProps(vnode, args) {
-    return coreRaisedButton.createProps(vnode, _objectSpread({}, args, {
-      Shadow: Shadow
-    }));
-  },
-  createContent: function createContent(vnode, args) {
-    return coreRaisedButton.createContent(vnode, _objectSpread({}, args, {
-      Shadow: Shadow
-    }));
-  },
-  component: TextButton
-}));
-RaisedButton["displayName"] = "RaisedButton";
-
-// @ts-check
-var Button = ComponentCreator({
-  /**
-   * @param {Vnode} vnode
-   */
-  view: function view(vnode) {
-    return renderer(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children);
-  }
+var Button = cast(_Button, {
+  h: h,
+  a: a,
+  getDom: getDom,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  Ripple: Ripple,
+  Shadow: Shadow,
+  Icon: Icon
 });
-Button["displayName"] = "Button";
 
 export { Button };

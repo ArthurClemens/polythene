@@ -1,19 +1,7 @@
-// @ts-check
+import { _Button } from "polythene-core-button";
+import { Ripple } from "polythene-react-ripple";
+import { Icon } from "polythene-react-icon";
+import { Shadow } from "polythene-react-shadow";
+import { cast, h, a, useState, useEffect, useRef, getDom } from "cyano-react";
 
-/**
- * @typedef {import("polythene-react-base").Vnode} Vnode
- */
-
-import { ComponentCreator, renderer as h } from "polythene-react-base";
-import { TextButton } from "./TextButton";
-import { RaisedButton } from "./RaisedButton";
-
-export const Button = ComponentCreator({
-  /**
-   * @param {Vnode} vnode
-   */
-  view: vnode =>
-    h(vnode.attrs.raised ? RaisedButton : TextButton, vnode.attrs, vnode.children)
-});
-
-Button["displayName"] = "Button";
+export const Button = cast(_Button, { h, a, getDom, useState, useEffect, useRef, Ripple, Shadow, Icon });

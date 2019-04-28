@@ -1,3 +1,18 @@
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -16,6 +31,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-button pe-icon-button",
   // elements
@@ -25,33 +76,25 @@ var classes = {
   compact: "pe-icon-button--compact"
 };
 
-// Props to be passed to a button, including 'content'
+var _IconButton = function _IconButton(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      Icon = _ref.Icon,
+      Button = _ref.Button,
+      props = _objectWithoutProperties(_ref, ["h", "a", "Icon", "Button"]);
 
-var createProps = function createProps(vnode, _ref) {
-  var h = _ref.renderer,
-      Icon = _ref.Icon;
-  var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return _extends({}, {
-    content: h("div", {
-      className: classes.content
-    }, content),
-    after: attrs.label && h("div", {
-      className: classes.label
-    }, attrs.label),
-    parentClassName: [attrs.parentClassName || classes.component, attrs.compact ? classes.compact : null].join(" "),
+  var content = props.content ? props.content : props.icon ? h(Icon, props.icon) : props.children;
+
+  var componentProps = _extends({}, {
+    content: h("div", _defineProperty({}, a.className, classes.content), content),
+    after: props.label && h("div", _defineProperty({}, a.className, classes.label), props.label),
+    parentClassName: [props.parentClassName || classes.component, props.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,
     animateOnTap: false
-  }, attrs);
-};
-var createContent = function createContent(vnode) {
-  return vnode.children;
+  }, props);
+
+  return h(Button, componentProps);
 };
 
-var iconButton = /*#__PURE__*/Object.freeze({
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { iconButton as coreIconButton };
+export { _IconButton };

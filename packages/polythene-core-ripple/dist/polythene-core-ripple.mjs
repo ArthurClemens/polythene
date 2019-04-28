@@ -275,19 +275,16 @@ var _Ripple = function _Ripple(_ref2) {
   };
 
   useEffect(function () {
-    if (triggerEl) {
+    if (triggerEl && triggerEl.addEventListener) {
       pointerEndEvent.forEach(function (evt) {
         return triggerEl.addEventListener(evt, tap, false);
       });
-    }
-
-    return function () {
-      if (triggerEl) {
+      return function () {
         pointerEndEvent.forEach(function (evt) {
           return triggerEl.removeEventListener(evt, tap, false);
         });
-      }
-    };
+      };
+    }
   }, [triggerEl]);
 
   var componentProps = _extends({}, filterSupportedAttributes(props), getDom(function (dom) {

@@ -1,4 +1,4 @@
-import { deprecation, isClient, filterSupportedAttributes, iconDropdownDown, isServer, pointerStartMoveEvent, pointerEndMoveEvent } from 'polythene-core';
+import { isServer, pointerStartMoveEvent, pointerEndMoveEvent, filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -66,6 +66,80 @@ function _objectSpread(target) {
   return target;
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-text-button",
   super: "pe-button",
@@ -91,281 +165,265 @@ var classes = {
   separatorAtStart: "pe-button--separator-start"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "a";
-};
-var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream(null);
-  var focus = createStream(false);
-  var inactive = createStream(false);
-  var mouseover = createStream(false);
-  return {
-    dom: dom,
-    focus: focus,
-    inactive: inactive,
-    mouseover: mouseover,
-    redrawOnUpdate: createStream.merge([dom, focus, inactive])
+var DEFAULT_SHADOW_DEPTH = 1;
+var DEFAULT_SHADOW_DEPTH_INCREASE = 1;
+var MAX_SHADOW_DEPTH = 5;
+var downButtons = [];
+/*
+useRef combined with useState to enforce re-render.
+*/
+
+var useStateWithRef = function useStateWithRef(_ref) {
+  var useState = _ref.useState,
+      useRef = _ref.useRef;
+  return function (initialValue) {
+    var value = useRef(initialValue);
+
+    var _useState = useState(value.current),
+        _useState2 = _slicedToArray(_useState, 2),
+        setValue = _useState2[1];
+
+    return [value, function (newValue) {
+      return value.current = newValue, setValue(value.current);
+    }];
   };
 };
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
+
+var animateZ = function animateZ(which, getButtonProps) {
+  var _getButtonProps = getButtonProps(),
+      shadowDepthBase = _getButtonProps.shadowDepthBase,
+      shadowDepthRef = _getButtonProps.shadowDepthRef,
+      setShadowDepth = _getButtonProps.setShadowDepth,
+      increase = _getButtonProps.increase;
+
+  var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepthRef.current - increase, shadowDepthBase) : shadowDepthRef.current;
+
+  if (newShadowDepth !== shadowDepthRef.current) {
+    setShadowDepth(newShadowDepth);
+  }
+};
+
+var tapHandler = function tapHandler(_ref2) {
+  var which = _ref2.which,
+      getButtonProps = _ref2.getButtonProps;
+
+  if (which === "down") {
+    downButtons.push(getButtonProps);
   }
 
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+  animateZ(which, getButtonProps);
+};
 
-  if (attrs.borders !== undefined) {
-    deprecation("Button", {
-      option: "borders",
-      newOption: "border"
-    });
-  }
+var useAnimatedShadow = function useAnimatedShadow(_ref3) {
+  var useState = _ref3.useState,
+      useEffect = _ref3.useEffect,
+      useRef = _ref3.useRef,
+      domElement = _ref3.domElement,
+      props = _objectWithoutProperties(_ref3, ["useState", "useEffect", "useRef", "domElement"]);
 
-  state.dom(vnode.dom);
+  var _useState3 = useState(props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH),
+      _useState4 = _slicedToArray(_useState3, 1),
+      shadowDepthBase = _useState4[0];
 
-  if (isClient) {
-    var handleInactivate = function handleInactivate() {
-      return state.inactive(true), setTimeout(function () {
-        return state.inactive(false);
-      }, attrs.inactivate * 1000);
+  var _useStateWithRef = useStateWithRef({
+    useState: useState,
+    useRef: useRef
+  })(shadowDepthBase),
+      _useStateWithRef2 = _slicedToArray(_useStateWithRef, 2),
+      shadowDepthRef = _useStateWithRef2[0],
+      setShadowDepth = _useStateWithRef2[1];
+
+  var increase = props.increase || DEFAULT_SHADOW_DEPTH_INCREASE;
+  var animateOnTap = props.animateOnTap !== false ? true : false;
+
+  var getButtonProps = function getButtonProps() {
+    return {
+      shadowDepthBase: shadowDepthBase,
+      shadowDepthRef: shadowDepthRef,
+      setShadowDepth: setShadowDepth,
+      increase: increase
+    };
+  };
+
+  useEffect(function () {
+    // Init tap events
+    if (isServer || !domElement || !animateOnTap) return;
+
+    var tapStart = function tapStart() {
+      return tapHandler({
+        which: "down",
+        getButtonProps: getButtonProps
+      });
     };
 
+    var tapEndAll = function tapEndAll() {
+      downButtons.map(function (getButtonProps) {
+        return tapHandler({
+          which: "up",
+          getButtonProps: getButtonProps
+        });
+      });
+      downButtons.length = 0;
+    };
+
+    pointerStartMoveEvent.forEach(function (evt) {
+      return domElement.addEventListener(evt, tapStart);
+    });
+    pointerEndMoveEvent.forEach(function (evt) {
+      return document.addEventListener(evt, tapEndAll);
+    }); // Clear tap events
+
+    return function () {
+      pointerStartMoveEvent.forEach(function (evt) {
+        return domElement.removeEventListener(evt, tapStart);
+      });
+      pointerEndMoveEvent.forEach(function (evt) {
+        return document.removeEventListener(evt, tapEndAll);
+      });
+    };
+  }, [domElement]);
+  var shadowDepth = props.disabled ? 0 : shadowDepthRef.current;
+  return [shadowDepth];
+};
+
+var _Button = function _Button(_ref) {
+  var _ref4;
+
+  var h = _ref.h,
+      a = _ref.a,
+      getDom = _ref.getDom,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      useRef = _ref.useRef,
+      Ripple = _ref.Ripple,
+      Shadow = _ref.Shadow,
+      Icon = _ref.Icon,
+      props = _objectWithoutProperties(_ref, ["h", "a", "getDom", "useState", "useEffect", "useRef", "Ripple", "Shadow", "Icon"]);
+
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
+
+  var _useState3 = useState(props.inactive),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isInactive = _useState4[0],
+      setIsInactive = _useState4[1];
+
+  var _useState5 = useState(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      hasFocus = _useState6[0],
+      setHasFocus = _useState6[1];
+
+  var _useState7 = useState(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      hasMouseOver = _useState8[0],
+      setHasMouseOver = _useState8[1];
+
+  var disabled = props.disabled;
+  var inactive = props.inactive || isInactive;
+  var onClickHandler = props.events && props.events[a.onclick];
+  var onKeyUpHandler = props.events && props.events[a.onkeyup] || onClickHandler;
+
+  var _ref2 = props.raised ? useAnimatedShadow(_objectSpread({
+    useState: useState,
+    useEffect: useEffect,
+    useRef: useRef,
+    domElement: domElement
+  }, props)) : [0],
+      _ref3 = _slicedToArray(_ref2, 1),
+      shadowDepth = _ref3[0];
+
+  var handleInactivate = function handleInactivate() {
+    return setIsInactive(true), setTimeout(function () {
+      return setIsInactive(false);
+    }, props.inactivate * 1000);
+  };
+
+  useEffect(function () {
+    if (!domElement || !domElement.addEventListener) return;
+
     var onFocus = function onFocus() {
-      return state.focus(!state.mouseover());
+      return setHasFocus(!hasMouseOver);
     };
 
     var onBlur = function onBlur() {
-      return state.focus(false);
+      return setHasFocus(false);
     };
 
     var onMouseOver = function onMouseOver() {
-      return state.mouseover(true);
+      return setHasMouseOver(true);
     };
 
     var onMouseOut = function onMouseOut() {
-      return state.mouseover(false);
+      return setHasMouseOver(false);
     };
 
     var onClick = handleInactivate;
-    vnode.dom.addEventListener("focus", onFocus, false);
-    vnode.dom.addEventListener("blur", onBlur, false);
-    vnode.dom.addEventListener("mouseover", onMouseOver, false);
-    vnode.dom.addEventListener("mouseout", onMouseOut, false);
-    vnode.dom.addEventListener("click", onClick, false);
-
-    state.removeEventListeners = function () {
-      return vnode.dom.removeEventListener("focus", onFocus, false), vnode.dom.removeEventListener("blur", onBlur, false), vnode.dom.removeEventListener("mouseover", onBlur, false), vnode.dom.removeEventListener("mouseout", onMouseOut, false), vnode.dom.removeEventListener("click", onClick, false);
+    domElement.addEventListener("focus", onFocus, false);
+    domElement.addEventListener("blur", onBlur, false);
+    domElement.addEventListener("mouseover", onMouseOver, false);
+    domElement.addEventListener("mouseout", onMouseOut, false);
+    domElement.addEventListener("click", onClick, false);
+    return function () {
+      domElement.removeEventListener("focus", onFocus, false);
+      domElement.removeEventListener("blur", onBlur, false);
+      domElement.removeEventListener("mouseover", onBlur, false);
+      domElement.removeEventListener("mouseout", onMouseOut, false);
+      domElement.removeEventListener("click", onClick, false);
     };
-  }
-};
-var onUnMount = function onUnMount(vnode) {
-  return vnode.state.removeEventListeners && vnode.state.removeEventListeners();
-};
-var createProps = function createProps(vnode, _ref) {
-  var _ref2;
+  }, [domElement]);
 
-  var k = _ref.keys;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var disabled = attrs.disabled;
-  var inactive = attrs.inactive || state.inactive();
-  var onClickHandler = attrs.events && attrs.events[k.onclick];
-  var onKeyUpHandler = attrs.events && attrs.events[k.onkeyup] || onClickHandler;
-  return _extends({}, filterSupportedAttributes(attrs, {
-    add: [k.formaction, "type"],
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
+    add: [a.formaction, "type"],
     remove: ["style"]
   }), // Set style on content, not on component
-  attrs.testId && {
-    "data-test-id": attrs.testId
+  getDom(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
+  }), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.super, attrs.parentClassName || classes.component, attrs.contained ? classes.contained : null, attrs.raised ? classes.contained : null, attrs.raised ? classes.raised : null, attrs.selected ? classes.selected : null, attrs.highLabel ? classes.highLabel : null, attrs.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, attrs.separatorAtStart ? classes.separatorAtStart : null, attrs.border || attrs.borders ? classes.border : null, attrs.dropdown ? classes.hasDropdown : null, attrs.dropdown ? attrs.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events, inactive ? null : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, disabled || inactive ? -1 : attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onclick, onClickHandler), _defineProperty(_ref2, k.onkeyup, function (e) {
-    if (e.keyCode === 13 && state.focus()) {
-      state.focus(false);
+    className: [classes.super, props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.events, inactive ? null : (_ref4 = {}, _defineProperty(_ref4, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_ref4, a.onclick, onClickHandler), _defineProperty(_ref4, a.onkeyup, function (e) {
+    if (e.keyCode === 13 && hasFocus) {
+      setHasFocus(false);
 
       if (onKeyUpHandler) {
         onKeyUpHandler(e);
       }
     }
-  }), _ref2), attrs.url, disabled ? {
+  }), _ref4), props.url, disabled ? {
     disabled: true
   } : null);
-};
-var createContent = function createContent(vnode, _ref3) {
-  var _h;
 
-  var h = _ref3.renderer,
-      k = _ref3.keys,
-      Ripple = _ref3.Ripple,
-      Icon = _ref3.Icon,
-      Shadow = _ref3.Shadow;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var noink = attrs.ink !== undefined && attrs.ink === false;
-  var disabled = attrs.disabled;
-  var children = attrs.children || vnode.children;
-  var label = attrs.content ? attrs.content : attrs.label !== undefined ? _typeof(attrs.label) === "object" ? attrs.label : h("div", {
+  var noink = props.ink !== undefined && props.ink === false;
+  var label = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {
     className: classes.label
   }, h("div", {
     className: classes.textLabel,
-    style: attrs.textStyle
-  }, attrs.label)) : children ? children : null;
-  var noWash = disabled || attrs.wash !== undefined && !attrs.wash;
-  return h("div", (_h = {}, _defineProperty(_h, k.class, classes.content), _defineProperty(_h, "style", attrs.style), _h), [h(Shadow, {
+    style: props.textStyle
+  }, props.label)) : props.children;
+  var noWash = disabled || props.raised && props.wash !== true || props.wash !== undefined && !props.wash;
+  return h(props.element || "div", componentProps, h("div", {
+    className: classes.content,
+    style: props.style
+  }, [h(Shadow, {
     key: "shadow",
-    shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
+    shadowDepth: shadowDepth !== undefined ? shadowDepth : 0,
     animated: true
-  }), // Ripple
-  disabled || noink || !Ripple || (h["displayName"] === "react" ? !state.dom() : false) // somehow Mithril does not update when the dom stream is updated
-  ? null : h(Ripple, _extends({}, {
+  }), disabled || noink ? null : h(Ripple, _extends({}, {
     key: "ripple",
-    target: state.dom()
-  }, attrs.ripple)), // hover
-  noWash ? null : h("div", {
+    target: domElement
+  }, props.ripple)), noWash ? null : h("div", {
     key: "wash",
     className: classes.wash
-  }), label, attrs.dropdown ? h(Icon, {
+  }), label, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {
       content: h.trust(iconDropdownDown)
     }
-  }) : null]);
+  }) : null]));
 };
 
-var button = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  onMount: onMount,
-  onUnMount: onUnMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-var DEFAULT_SHADOW_DEPTH = 1;
-var DEFAULT_SHADOW_DEPTH_INCREASE = 1;
-var MAX_SHADOW_DEPTH = 5;
-
-var tapStart,
-    tapEndAll = function tapEndAll() {},
-    downButtons = [];
-
-var animateZ = function animateZ(which, vnode) {
-  var shadowDepthBase = vnode.state.shadowDepthBase;
-  var increase = vnode.attrs.increase || DEFAULT_SHADOW_DEPTH_INCREASE;
-  var shadowDepth = vnode.state.shadowDepth();
-  var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepth - increase, shadowDepthBase) : shadowDepth;
-
-  if (newShadowDepth !== shadowDepth) {
-    vnode.state.shadowDepth(newShadowDepth);
-  }
-};
-
-var tapHandler = function tapHandler(which, vnode) {
-  if (which === "down") {
-    downButtons.push(_extends({}, vnode));
-  }
-
-  var animateOnTap = vnode.attrs.animateOnTap !== false ? true : false;
-
-  if (animateOnTap) {
-    animateZ(which, vnode);
-  }
-};
-
-var initTapEvents = function initTapEvents(vnode) {
-  if (isServer) return;
-
-  tapStart = function tapStart() {
-    return tapHandler("down", vnode);
-  };
-
-  tapEndAll = function tapEndAll() {
-    downButtons.map(function (buttonVnode) {
-      return tapHandler("up", buttonVnode);
-    });
-    downButtons = [];
-  };
-
-  pointerStartMoveEvent.forEach(function (evt) {
-    return vnode.dom.addEventListener(evt, tapStart);
-  });
-  pointerEndMoveEvent.forEach(function (evt) {
-    return document.addEventListener(evt, tapEndAll);
-  });
-};
-
-var clearTapEvents = function clearTapEvents(vnode) {
-  pointerStartMoveEvent.forEach(function (evt) {
-    return vnode.dom.removeEventListener(evt, tapStart);
-  });
-  pointerEndMoveEvent.forEach(function (evt) {
-    return document.removeEventListener(evt, tapEndAll);
-  });
-};
-
-var getInitialState$1 = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
-  var shadowDepthBase = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined // deprecated
-  ? attrs.z : DEFAULT_SHADOW_DEPTH;
-  var shadowDepth = createStream(shadowDepthBase);
-  var tapEventsInited = createStream(false);
-  return {
-    shadowDepthBase: shadowDepthBase,
-    shadowDepth: shadowDepth,
-    tapEventsInited: tapEventsInited,
-    redrawOnUpdate: createStream.merge([shadowDepth])
-  };
-};
-var onMount$1 = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  if (attrs.z !== undefined) {
-    deprecation("RaisedButton", {
-      option: "z",
-      newOption: "shadowDepth"
-    });
-  }
-
-  if (!state.tapEventsInited()) {
-    initTapEvents(vnode);
-    state.tapEventsInited(true);
-  }
-};
-var onUnMount$1 = function onUnMount(vnode) {
-  if (vnode.state.tapEventsInited()) {
-    clearTapEvents(vnode);
-  }
-};
-var createProps$1 = function createProps(vnode) {
-  var attrs = vnode.attrs;
-  var state = vnode.state;
-  var children = attrs.children || vnode.children || [];
-  return _objectSpread({
-    raised: true,
-    animateOnTap: false,
-    wash: attrs.wash !== undefined ? attrs.wash : false,
-    children: children
-  }, attrs, {
-    shadowDepth: attrs.disabled ? 0 : state.shadowDepth()
-  });
-};
-var createContent$1 = function createContent(vnode) {
-  return vnode.children;
-};
-
-var raisedButton = /*#__PURE__*/Object.freeze({
-  getInitialState: getInitialState$1,
-  onMount: onMount$1,
-  onUnMount: onUnMount$1,
-  createProps: createProps$1,
-  createContent: createContent$1
-});
-
-export { button as coreButton, raisedButton as coreRaisedButton };
+export { _Button };

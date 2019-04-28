@@ -59,11 +59,9 @@ export interface ContainedButtonVars extends Partial<ShadowVars> {
   padding_h:                       number,
   color_light_background:          string,
   color_light_disabled_background: string,
-  color_light_wash_background:     string,
   color_dark_active_background:    string,
   color_dark_background:           string,
   color_dark_disabled_background:  string,
-  color_dark_wash_background:      string,
   border:                          boolean,
   contained:                       boolean,
 }

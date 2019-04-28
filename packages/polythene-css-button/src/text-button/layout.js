@@ -83,9 +83,7 @@ const border_width = (selector, vars) =>
 
 const contained = selector =>
   sel(selector, {
-    " .pe-button__wash": {
-      display: "none"
-    }
+    //
   });
 
 const varFns = {

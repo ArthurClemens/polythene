@@ -45,15 +45,14 @@ export const _Ripple = ({ h, a, getDom, useState, useEffect, ...props }) => {
 
   useEffect(
     () => {
-      if (triggerEl) {
+      if (triggerEl && triggerEl.addEventListener) {
         pointerEndEvent.forEach(evt =>
           triggerEl.addEventListener(evt, tap, false));
-      }
-      return () => {
-        if (triggerEl) {
+      
+        return () => {
           pointerEndEvent.forEach(evt =>
             triggerEl.removeEventListener(evt, tap, false));
-        }
+        };
       }
     },
     [triggerEl]

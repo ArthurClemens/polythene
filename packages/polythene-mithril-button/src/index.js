@@ -1,23 +1,7 @@
-// @ts-check
+import { _Button } from "polythene-core-button";
+import { Ripple } from "polythene-mithril-ripple";
+import { Icon } from "polythene-mithril-icon";
+import { Shadow } from "polythene-mithril-shadow";
+import { cast, h, a, useState, useEffect, useRef, getDom } from "cyano-mithril";
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- */
-
-import { ComponentCreator, renderer as h } from "polythene-mithril-base";
-import { TextButton } from "./TextButton";
-import { RaisedButton } from "./RaisedButton";
-
-export const Button = ComponentCreator({
-  /**
-   * @param {Vnode} vnode
-   */
-  view: vnode =>
-    h(vnode.attrs.raised
-      ? RaisedButton
-      : TextButton,
-    vnode.attrs,
-    vnode.children)
-});
-
-Button["displayName"] = "Button";
+export const Button = cast(_Button, { h, a, getDom, useState, useEffect, useRef, Ripple, Shadow, Icon });
