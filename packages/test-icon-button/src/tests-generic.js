@@ -25,9 +25,9 @@ export default ({ IconButton, Icon, SVG, renderer: h, keys: k }) => {
 
   const sizeNames = ["small", "regular", "medium", "large"];
 
-  const FavIcon = h(Icon, null,
-    h(SVG, null, trustedIconLock)
-  );
+  // const FavIcon = h(Icon, null,
+  //   h(SVG, null, trustedIconLock)
+  // );
 
   const sizes = (sizes, attrs) => sizes.map(size =>
     h(IconButton, {

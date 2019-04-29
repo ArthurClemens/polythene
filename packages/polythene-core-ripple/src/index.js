@@ -22,7 +22,9 @@ const useAnimationsState = ({ useState }) => {
 export const _Ripple = ({ h, a, getDom, useState, useEffect, ...props }) => {
   const [domElement, setDomElement] = useState();
   const [animations, addAnimation, removeAnimation] = useAnimationsState({ useState });
-  const isAnimating = Object.keys(animations).length > 0;
+  const isAnimating = animations
+    ? Object.keys(animations).length > 0
+    : false;
   const triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
   
   const tap = e => {

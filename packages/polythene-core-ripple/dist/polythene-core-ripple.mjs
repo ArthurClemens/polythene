@@ -245,7 +245,7 @@ var _Ripple = function _Ripple(_ref2) {
       addAnimation = _useAnimationsState2[1],
       removeAnimation = _useAnimationsState2[2];
 
-  var isAnimating = Object.keys(animations).length > 0;
+  var isAnimating = animations ? Object.keys(animations).length > 0 : false;
   var triggerEl = props.target || (domElement ? domElement.parentElement : undefined);
 
   var tap = function tap(e) {

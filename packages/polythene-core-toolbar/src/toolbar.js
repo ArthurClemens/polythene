@@ -1,53 +1,40 @@
-import { filterSupportedAttributes, deprecation } from "polythene-core";
+import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/toolbar";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
-
-export const onMount = ({ attrs }) => {
-  if (attrs.z !== undefined) {
-    deprecation("Toolbar", { option: "z", newOption: "shadowDepth" });
-  }
-};
-
-export const createProps = (vnode, { keys: k }) => {
-  const attrs = vnode.attrs;
-  return Object.assign(
+export const _Toolbar = ({ h, a, Shadow, ...props }) => {
+  const componentProps = Object.assign(
     {},
-    filterSupportedAttributes(attrs),
-    attrs.testId && { "data-test-id": attrs.testId },
+    filterSupportedAttributes(props),
+    props.testId && { "data-test-id": props.testId },
     {
       className: [
         classes.component,
-        attrs.compact ? classes.compact : null,
-        attrs.fullbleed ? classes.fullbleed : null,
-        attrs.border ? classes.border : null,
-        attrs.tone === "dark" ? "pe-dark-tone" : null,
-        attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.className || attrs[k.class],
+        props.compact ? classes.compact : null,
+        props.fullbleed ? classes.fullbleed : null,
+        props.border ? classes.border : null,
+        props.tone === "dark" ? "pe-dark-tone" : null,
+        props.tone === "light" ? "pe-light-tone" : null,
+        props.className || props[a.class],
       ].join(" ")
     },
-    attrs.events
+    props.events
   );
-};
 
-export const createContent = (vnode, { renderer, Shadow }) => {
-  const attrs = vnode.attrs;
-  const content = attrs.content
-    ? attrs.content
-    : attrs.children || vnode.children;
-  const shadowDepth = attrs.shadowDepth !== undefined
-    ? attrs.shadowDepth
-    : attrs.z; // deprecated
-  const shadow = shadowDepth !== undefined
-    ? renderer(Shadow, {
-      shadowDepth,
+  const content = props.content || props.children;
+
+  const shadow = props.shadowDepth !== undefined
+    ? h(Shadow, {
+      shadowDepth: props.shadowDepth,
       animated: true,
       key: "shadow"
     })
     : null;
-  return [
-    content,
-    shadow
-  ];
+
+  return h(props.element || "div",
+    componentProps,
+    [
+      content,
+      shadow
+    ]
+  );
 };

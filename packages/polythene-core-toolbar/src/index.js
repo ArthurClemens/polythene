@@ -1,4 +1,2 @@
-import * as coreToolbar from "./toolbar";
-export { coreToolbar };
-import * as coreToolbarTitle from "./toolbar-title";
-export { coreToolbarTitle };
+export { _Toolbar } from "./toolbar";
+export { _ToolbarTitle } from "./toolbar-title";

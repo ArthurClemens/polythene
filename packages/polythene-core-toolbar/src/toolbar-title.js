@@ -1,39 +1,37 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/toolbar";
 
-export const getElement = ({ attrs }) =>
-  attrs.element
-    ? attrs.element
-    : attrs.url
+export const _ToolbarTitle = ({ h, a, ...props }) => {
+  const element = props.element
+    ? props.element
+    : props.url
       ? "a"
       : "div";
-
-export const createProps = (vnode, { keys: k }) => {
-  const attrs = vnode.attrs;
-  return Object.assign(
+  const componentProps = Object.assign(
     {},
-    filterSupportedAttributes(attrs),
-    attrs.testId && { "data-test-id": attrs.testId },
+    filterSupportedAttributes(props),
+    props.testId && { "data-test-id": props.testId },
     {
       className: [
         classes.title,
-        attrs.indent ? classes.indentedTitle : null,
-        attrs.center ? classes.centeredTitle : null,
-        attrs.tone === "dark" ? "pe-dark-tone" : null,
-        attrs.tone === "light" ? "pe-light-tone" : null,
-        attrs.className || attrs[k.class],
+        props.indent ? classes.indentedTitle : null,
+        props.center ? classes.centeredTitle : null,
+        props.tone === "dark" ? "pe-dark-tone" : null,
+        props.tone === "light" ? "pe-light-tone" : null,
+        props.className || props[a.class],
       ].join(" ")
     },
-    attrs.events,
-    attrs.url
+    props.events,
+    props.url
   );
-};
+  const content = props.text
+    ? props.text
+    : props.content
+      ? props.content
+      : props.children;
 
-export const createContent = vnode => {
-  const attrs = vnode.attrs;
-  return attrs.text
-    ? attrs.text
-    : attrs.content
-      ? attrs.content
-      : attrs.children || vnode.children || attrs;
+  return h(element,
+    componentProps,
+    content
+  );
 };

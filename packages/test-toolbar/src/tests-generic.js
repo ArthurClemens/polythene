@@ -1,26 +1,31 @@
-import shared from "./components/shared";
 import { ToolbarCSS } from "polythene-css";
-import toolbarTitleComponentCheckbox from "./components/toolbarTitleComponentCheckbox";
+import _toolbarRow from "./components/toolbarRow";
+import _toolbarRowWithTitle from "./components/toolbarRowWithTitle";
+import _toolbarRowWithTitleAtStart from "./components/toolbarRowWithTitleAtStart";
+import _toolbarRowWithTitleAtStartIndented from "./components/toolbarRowWithTitleAtStartIndented";
+import _toolbarTitleCentered from "./components/toolbarTitleCentered";
+import _toolbarRowWithTitleAsSpan from "./components/toolbarRowWithTitleAsSpan";
+import _toolbarRowWithTitleCenteredBalanced from "./components/toolbarRowWithTitleCenteredBalanced";
+import _toolbarRowWithTitleAsSpanIndented from "./components/toolbarRowWithTitleAsSpanIndented";
+import _toolbarRowWithCheckbox from "./components/toolbarRowWithCheckbox";
+import _toolbarRowWithAction from "./components/toolbarRowWithAction";
 
 const ipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>";
 const longText = ipsum + ipsum + ipsum + ipsum + ipsum;
 
 export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) => {
 
-  const {
-    toolbarRow,
-    toolbarRowIndentedTitle,
-    toolbarTitleAsSpan,
-    toolbarTitleComponent,
-    toolbarTitleComponentAction,
-    toolbarTitleComponentAtStart,
-    toolbarTitleComponentCentered,
-    toolbarTitleComponentCenteredBalanced,
-    toolbarTitleComponentIndented,
-  } = shared({ IconButton, ToolbarTitle, renderer: h });
-
-  const ToolbarTitleComponentCheckbox = toolbarTitleComponentCheckbox({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h });
-
+  const toolbarRow = _toolbarRow({ IconButton, h });
+  const toolbarRowWithTitle = _toolbarRowWithTitle({ ToolbarTitle, IconButton, h });
+  const toolbarRowWithTitleAtStart = _toolbarRowWithTitleAtStart({ ToolbarTitle, IconButton, h });
+  const toolbarRowWithTitleAtStartIndented = _toolbarRowWithTitleAtStartIndented({ ToolbarTitle, IconButton, h });
+  const toolbarTitleCentered = _toolbarTitleCentered({ ToolbarTitle, h });
+  const toolbarRowWithTitleCenteredBalanced = _toolbarRowWithTitleCenteredBalanced({ ToolbarTitle, IconButton, h });
+  const toolbarRowWithTitleAsSpan = _toolbarRowWithTitleAsSpan({ ToolbarTitle, IconButton, h });
+  const toolbarRowWithTitleAsSpanIndented = _toolbarRowWithTitleAsSpanIndented({ ToolbarTitle, IconButton, h });
+  const toolbarRowWithCheckbox = _toolbarRowWithCheckbox({ ToolbarTitle, IconButton, Checkbox, h });
+  const toolbarRowWithAction = _toolbarRowWithAction({ ToolbarTitle, IconButton, h });
+  
   ToolbarCSS.addStyle(".tests-toolbar-themed-toolbar", {
     color_light_background: "#00c853",
     color_dark_background:  "#00c853"
@@ -29,89 +34,116 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
   return [
     {
       name: "Child node",
-      component: Toolbar,
-      attrs: null,
-      children: toolbarRow
+      component: {
+        view: () => 
+          h(Toolbar, null, toolbarRow())
+      },
     },
     {
       name: "Option: content",
-      component: Toolbar,
-      attrs: {
-        content: toolbarRow
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRow()
+          })
+      },
     },
     {
       name: "Option: compact",
-      component: Toolbar,
-      attrs: {
-        compact: true,
-        content: toolbarRow
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            compact: true,
+            content: toolbarRowWithTitle()
+          })
+      },
     },
     {
       name: "ToolbarTitle",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponent
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitle()
+          })
+      },
     },
     {
       name: "ToolbarTitle, no icon at start",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentAtStart
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitleAtStart()
+          })
+      },
+      
     },
     {
       name: "ToolbarTitle, indented (without left icon)",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentIndented
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitleAtStartIndented()
+          })
+      },
     },
     {
       name: "ToolbarTitle, centered",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentCentered
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarTitleCentered()
+          })
+      },
     },
     {
       name: "ToolbarTitle, centered, balanced with a placeholder",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentCenteredBalanced
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitleCenteredBalanced()
+          })
+      },
     },
     {
       name: "Title as span",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleAsSpan
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitleAsSpan()
+          })
+      },
     },
     {
       name: "Title as span, indented (without left icon)",
-      component: Toolbar,
-      attrs: {
-        content: toolbarRowIndentedTitle
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithTitleAsSpanIndented()
+          })
+      },
     },
     {
       name: "Action",
-      component: Toolbar,
-      attrs: {
-        content: toolbarTitleComponentAction
-      }
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithAction()
+          })
+      },
     },
     {
       name: "Checkbox",
-      component: ToolbarTitleComponentCheckbox,
+      component: {
+        view: () => 
+          h(Toolbar, {
+            content: toolbarRowWithCheckbox()
+          })
+      },      
     },
     {
       name: "Shadow",
       component: {
-        view: () => h(Toolbar, { shadowDepth: 1 }, toolbarRow),
+        view: () => h(Toolbar, { shadowDepth: 1 }, toolbarRowWithTitle()),
       }
     },
     {
@@ -129,7 +161,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
               h(Toolbar, {
                 border: true,
                 key: "toolbar", // for React
-              }, toolbarRow),
+              }, toolbarRowWithTitle()),
               h("div",
                 {
                   key: "content", // for React
@@ -150,7 +182,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       name: "Option: style (colors and height)",
       component: Toolbar,
       attrs: {
-        content: toolbarRow,
+        content: toolbarRowWithTitle(),
         style: {
           backgroundColor: "#EF6C00",
           color: "#fff",
@@ -167,7 +199,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       component: Toolbar,
       attrs: {
         className: "tests-toolbar-themed-toolbar",
-        content: toolbarRow,
+        content: toolbarRowWithTitle(),
         tone: "dark"
       }
     },
@@ -180,7 +212,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       className: "pe-dark-tone",
       component: Toolbar,
       attrs: {
-        content: toolbarRow
+        content: toolbarRowWithTitle()
       }
     },
     {
@@ -189,7 +221,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       component: Toolbar,
       attrs: {
         className: "tests-toolbar-themed-toolbar",
-        content: toolbarRow
+        content: toolbarRowWithTitle()
       }
     },
     {
@@ -197,7 +229,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       className: "pe-dark-tone",
       component: Toolbar,
       attrs: {
-        content: toolbarRow,
+        content: toolbarRowWithTitle(),
         className: "pe-light-tone"
       }
     },
@@ -206,7 +238,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
       className: "test-dark-tone",
       component: Toolbar,
       attrs: {
-        content: toolbarRow,
+        content: toolbarRowWithTitle(),
         tone: "light"
       }
     },
@@ -229,7 +261,7 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
               h(Toolbar, {
                 shadowDepth: 1,
                 key: "toolbar", // for React
-              }, toolbarRow),
+              }, toolbarRowWithTitle()),
               h("div",
                 {
                   key: "content", // for React

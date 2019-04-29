@@ -1,12 +1,5 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreToolbar as core } from "polythene-core-toolbar";
+import { _Toolbar } from "polythene-core-toolbar";
 import { Shadow } from "polythene-mithril-shadow";
+import { cast, h, a } from "cyano-mithril";
 
-export const Toolbar = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { Shadow }))
-});
-
-Toolbar["displayName"] = "Toolbar";
+export const Toolbar = cast(_Toolbar, { h, a, Shadow });

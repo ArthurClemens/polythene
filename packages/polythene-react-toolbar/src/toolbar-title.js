@@ -1,8 +1,4 @@
-// @ts-check
+import { _ToolbarTitle } from "polythene-core-toolbar";
+import { cast, h, a } from "cyano-react";
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreToolbarTitle as core } from "polythene-core-toolbar";
-
-export const ToolbarTitle = ComponentCreator(core);
-
-ToolbarTitle["displayName"] = "ToolbarTitle";
+export const ToolbarTitle = cast(_ToolbarTitle, { h, a });

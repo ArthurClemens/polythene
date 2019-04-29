@@ -24,7 +24,7 @@
     "@types/mithril": "^1.1.16"
   },
   "peerDependencies": {
-    "mithril": "^1.1.6"
+    "mithril": "^2.0.0-rc.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

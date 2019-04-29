@@ -403,7 +403,10 @@ var _Button = function _Button(_ref) {
     className: classes.textLabel,
     style: props.textStyle
   }, props.label)) : props.children;
-  var noWash = disabled || props.raised && props.wash !== true || props.wash !== undefined && !props.wash;
+  var noWash = disabled // if disabled: no wash
+  || props.raised && props.wash !== true // if raised/contained: enable wash if true
+  || props.wash !== undefined && !props.wash; // otherwise: enable wash unless false
+
   return h(props.element || "div", componentProps, h("div", {
     className: classes.content,
     style: props.style

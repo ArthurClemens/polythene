@@ -15,7 +15,7 @@
     "polythene-react": "^1.5.4"
   },
   "devDependencies": {
-    "mithril": "^1.1.6",
+    "mithril": "^2.0.0-rc.4",
     "react": "^16.8.4",
     "react-router-dom": "^4.3.1"
   },

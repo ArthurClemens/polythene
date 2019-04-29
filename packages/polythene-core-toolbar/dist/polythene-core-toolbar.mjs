@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -18,6 +18,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   // Toolbar
   component: "pe-toolbar",
@@ -34,72 +70,42 @@ var classes = {
   border: "pe-toolbar--border"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-var onMount = function onMount(_ref) {
-  var attrs = _ref.attrs;
+var _Toolbar = function _Toolbar(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      Shadow = _ref.Shadow,
+      props = _objectWithoutProperties(_ref, ["h", "a", "Shadow"]);
 
-  if (attrs.z !== undefined) {
-    deprecation("Toolbar", {
-      option: "z",
-      newOption: "shadowDepth"
-    });
-  }
-};
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.compact ? classes.compact : null, attrs.fullbleed ? classes.fullbleed : null, attrs.border ? classes.border : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent = function createContent(vnode, _ref3) {
-  var renderer = _ref3.renderer,
-      Shadow = _ref3.Shadow;
-  var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.children || vnode.children;
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+    className: [classes.component, props.compact ? classes.compact : null, props.fullbleed ? classes.fullbleed : null, props.border ? classes.border : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.events);
 
-  var shadow = shadowDepth !== undefined ? renderer(Shadow, {
-    shadowDepth: shadowDepth,
+  var content = props.content || props.children;
+  var shadow = props.shadowDepth !== undefined ? h(Shadow, {
+    shadowDepth: props.shadowDepth,
     animated: true,
     key: "shadow"
   }) : null;
-  return [content, shadow];
+  return h(props.element || "div", componentProps, [content, shadow]);
 };
 
-var toolbar = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  onMount: onMount,
-  createProps: createProps,
-  createContent: createContent
-});
+var _ToolbarTitle = function _ToolbarTitle(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      props = _objectWithoutProperties(_ref, ["h", "a"]);
 
-var getElement$1 = function getElement(_ref) {
-  var attrs = _ref.attrs;
-  return attrs.element ? attrs.element : attrs.url ? "a" : "div";
-};
-var createProps$1 = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var element = props.element ? props.element : props.url ? "a" : "div";
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.title, attrs.indent ? classes.indentedTitle : null, attrs.center ? classes.centeredTitle : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events, attrs.url);
-};
-var createContent$1 = function createContent(vnode) {
-  var attrs = vnode.attrs;
-  return attrs.text ? attrs.text : attrs.content ? attrs.content : attrs.children || vnode.children || attrs;
+    className: [classes.title, props.indent ? classes.indentedTitle : null, props.center ? classes.centeredTitle : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.events, props.url);
+
+  var content = props.text ? props.text : props.content ? props.content : props.children;
+  return h(element, componentProps, content);
 };
 
-var toolbarTitle = /*#__PURE__*/Object.freeze({
-  getElement: getElement$1,
-  createProps: createProps$1,
-  createContent: createContent$1
-});
-
-export { toolbar as coreToolbar, toolbarTitle as coreToolbarTitle };
+export { _Toolbar, _ToolbarTitle };

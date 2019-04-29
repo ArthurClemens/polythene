@@ -1,4 +1,4 @@
 // @ts-check
 
-export * from "./toolbar";
-export * from "./toolbar-title";
+export { Toolbar } from "./toolbar";
+export { ToolbarTitle } from "./toolbar-title";
