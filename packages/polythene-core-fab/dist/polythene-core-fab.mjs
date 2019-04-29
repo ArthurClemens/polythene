@@ -16,6 +16,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-fab",
   // elements
@@ -24,19 +60,20 @@ var classes = {
   mini: "pe-fab--mini"
 };
 
-// Props to be passed to a Button, including 'content'
+var _FAB = function _FAB(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      Button = _ref.Button,
+      Icon = _ref.Icon,
+      props = _objectWithoutProperties(_ref, ["h", "a", "Button", "Icon"]);
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys,
-      h = _ref.renderer,
-      Icon = _ref.Icon;
-  var attrs = vnode.attrs;
-  var content = attrs.content ? attrs.content : attrs.icon ? h(Icon, attrs.icon) : attrs.children || vnode.children;
-  return _extends({}, attrs, {
+  var content = props.content ? props.content : props.icon ? h(Icon, props.icon) : props.children;
+
+  var componentProps = _extends({}, props, {
     content: h("div", {
       className: classes.content
     }, content),
-    parentClassName: [classes.component, attrs.mini ? classes.mini : null, attrs.className || attrs[k.class]].join(" "),
+    parentClassName: [classes.component, props.mini ? classes.mini : null, props.className || props[a.class]].join(" "),
     className: null,
     // defaults
     ripple: {
@@ -49,16 +86,10 @@ var createProps = function createProps(vnode, _ref) {
     ink: true,
     wash: true,
     raised: true,
-    animateOnTap: attrs.animateOnTap !== undefined ? attrs.animateOnTap : true
+    animateOnTap: props.animateOnTap !== undefined ? props.animateOnTap : true
   });
-};
-var createContent = function createContent(vnode) {
-  return vnode.children;
+
+  return h(Button, componentProps, content);
 };
 
-var fab = /*#__PURE__*/Object.freeze({
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { fab as coreFAB };
+export { _FAB };

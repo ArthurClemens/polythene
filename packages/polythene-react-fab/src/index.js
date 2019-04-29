@@ -1,15 +1,7 @@
-// @ts-check
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreFAB as core } from "polythene-core-fab";
+import { _FAB } from "polythene-core-fab";
 import { Icon } from "polythene-react-icon";
 import { Button } from "polythene-react-button";
+import { cast, h, a } from "cyano-react";
 
-export const FAB = ComponentCreator({
-  ...core,
-  createProps: (vnode, args) => core.createProps(vnode, { ...args, Icon }),
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, Icon }),
-  component: Button
-});
-
-FAB["displayName"] = "FAB";
+export const FAB = cast(_FAB, { h, a, Button, Icon });
