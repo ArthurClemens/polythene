@@ -7,5 +7,6 @@ var Icon = cast(_Icon, {
   a: a,
   SVG: SVG
 });
+Icon["displayName"] = "Icon";
 
 export { Icon };

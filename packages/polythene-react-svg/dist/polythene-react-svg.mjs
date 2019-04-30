@@ -8,5 +8,6 @@ var SVG = cast(_SVG, {
   useState: useState,
   getDom: getDom
 });
+SVG["displayName"] = "SVG";
 
 export { SVG };

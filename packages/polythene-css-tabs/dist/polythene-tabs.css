@@ -96,7 +96,8 @@
   position: absolute;
   z-index: 1;
   bottom: 0;
-  width: 100%
+  width: 100%;
+  opacity: 0
 }
 
 .pe-toolbar--tabs .pe-toolbar__bar .pe-tabs {

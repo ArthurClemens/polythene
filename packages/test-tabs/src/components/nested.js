@@ -46,32 +46,34 @@ const subButtonsNew = [
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 const subTabsNew = ({ h, Tabs }) => {
+  const tabs = subButtonsNew;
   return {
     oninit: vnode => {
-      const tab = stream({ options: subButtonsNew[0] });
+      const currentTabIndex = stream(0);
       Object.assign(vnode.state, {
-        tab,
-        redrawOnUpdate: stream.merge([tab]) // for React
+        currentTabIndex,
+        redrawOnUpdate: stream.merge([currentTabIndex]) // for React
       });
     },
-    view: vnode => {
-      const state = vnode.state;
-      const tab = state.tab();
-
+    view: ({ state }) => {
+      const currentTabIndex = state.currentTabIndex();
       return h(".sub-tabs",
         [
           h(Tabs, {
-            tabs: subButtonsNew,
+            tabs,
             autofit: true,
-            onChange: newTab => state.tab(newTab)
+            onChange: ({ index }) => state.currentTabIndex(index)
           }),
           h(".content",
+            {
+              key: "content"
+            },
             [
               h("h5",
-                tab.options.label
+                tabs[currentTabIndex].label
               ),
               h(".text",
-                `${tab.options.label} ${lorem}`
+                `${tabs[currentTabIndex].label} ${lorem}`
               ),
             ]
           )
@@ -83,34 +85,37 @@ const subTabsNew = ({ h, Tabs }) => {
 
 export default ({ h, Tabs }) => {
   const SubTabsNew = subTabsNew({ h, Tabs });
+  const tabs = mainButtons;
 
   return {
     oninit: vnode => {
-      const tab = stream({ options: mainButtons[0] });
+      const currentTabIndex = stream(0);
       Object.assign(vnode.state, {
-        tab,
-        redrawOnUpdate: stream.merge([tab]) // for React
+        currentTabIndex,
+        redrawOnUpdate: stream.merge([currentTabIndex]) // for React
       });
     },
-    view: vnode => {
-      const state = vnode.state;
-      const tab = state.tab();
-
+    view: ({ state }) => {
+      const currentTabIndex = state.currentTabIndex();
+      const id = tabs[currentTabIndex].id;
       return h("div", [
         h(Tabs, {
-          tabs: mainButtons,
+          tabs,
           autofit: true,
-          onChange: newTab => state.tab(newTab)
+          onChange: ({ index }) => state.currentTabIndex(index)
         }),
         h(".tests-nested-tabs-main",
+          null,
           [
-            h("h3",
-              tab.options.label
+            h("h3", { key: "title" },
+              tabs[currentTabIndex].label
             ),
-            h(".text",
-              `${tab.options.label} ${lorem}`
+            h(".text", { key: "text" },
+              `${tabs[currentTabIndex].label} ${lorem}`
             ),
-            tab.options.id === "new" && h(SubTabsNew)
+            h("div", { key: id }, 
+              id === "new" && h(SubTabsNew)
+            )
           ]
         )
       ]);

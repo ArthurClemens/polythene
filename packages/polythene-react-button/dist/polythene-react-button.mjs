@@ -15,5 +15,6 @@ var Button = cast(_Button, {
   Shadow: Shadow,
   Icon: Icon
 });
+Button["displayName"] = "Button";
 
 export { Button };

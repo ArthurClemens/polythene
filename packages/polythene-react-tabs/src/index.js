@@ -1,13 +1,14 @@
-// @ts-check 
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreTabs as core } from "polythene-core-tabs";
-import { Tab } from "./tab";
-import { ScrollButton } from "./scroll-button";
+import { _ScrollButton, _Tab, _Tabs } from "polythene-core-tabs";
 
-export const Tabs = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, Tab, ScrollButton })
-});
+import { Button } from "polythene-react-button";
+import { Icon } from "polythene-react-icon";
+import { IconButton } from "polythene-react-icon-button";
+
+import { cast, h, a, getDom, useState, useEffect } from "cyano-react";
+
+const ScrollButton = cast(_ScrollButton, { h, a, IconButton });
+const Tab = cast(_Tab, { h, a, Button, Icon });
+export const Tabs = cast(_Tabs, { h, a, getDom, useState, useEffect, ScrollButton, Tab });
 
 Tabs["displayName"] = "Tabs";

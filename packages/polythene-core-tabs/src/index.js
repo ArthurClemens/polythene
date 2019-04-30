@@ -1,6 +1,4 @@
-import * as coreTabs from "./tabs";
-export { coreTabs };
-import * as coreTab from "./tab";
-export { coreTab };
-import * as coreScrollButton from "./scroll-button";
-export { coreScrollButton };
+
+export { _Tabs } from "./Tabs";
+export { _Tab } from "./Tab";
+export { _ScrollButton } from "./ScrollButton";

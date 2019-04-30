@@ -103,8 +103,9 @@ const varFns = {
           zIndex: 1,
           bottom: 0,
           // left/right set in alignSide
-          width: "100%" // and transformed with js
+          width: "100%", // and transformed with js
           // background-color defined in implementation/theme css
+          opacity: 0, // set to 1 in js
         },
 
         " .pe-toolbar--tabs .pe-toolbar__bar &": [

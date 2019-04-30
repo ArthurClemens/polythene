@@ -5,3 +5,5 @@ import { Shadow } from "polythene-react-shadow";
 import { cast, h, a, useState, useEffect, useRef, getDom } from "cyano-react";
 
 export const Button = cast(_Button, { h, a, getDom, useState, useEffect, useRef, Ripple, Shadow, Icon });
+
+Button["displayName"] = "Button";

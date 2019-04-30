@@ -21,6 +21,7 @@ const defaultAttrs = [
   "style",
   "href",
   "id",
+  "data-index",
   
   // React
   "tabIndex",

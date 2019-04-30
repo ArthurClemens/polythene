@@ -18,7 +18,10 @@ export const _SVG = ({ h, a, useEffect, useState, getDom, ...props }) => {
   
   const componentProps = Object.assign({},
     filterSupportedAttributes(props),
-    getDom(dom => dom && !domElement && setDomElement(dom)),
+    getDom(dom => dom && !domElement && (
+      setDomElement(dom),
+      props.getDom && props.getDom(dom)
+    )),
     props.testId && { "data-test-id": props.testId },
     {
       className: [

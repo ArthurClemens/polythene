@@ -9,5 +9,6 @@ var IconButton = cast(_IconButton, {
   Icon: Icon,
   Button: Button
 });
+IconButton["displayName"] = "IconButton";
 
 export { IconButton };

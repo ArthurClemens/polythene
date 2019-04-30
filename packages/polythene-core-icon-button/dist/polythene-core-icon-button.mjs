@@ -1,18 +1,3 @@
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -78,16 +63,19 @@ var classes = {
 
 var _IconButton = function _IconButton(_ref) {
   var h = _ref.h,
-      a = _ref.a,
       Icon = _ref.Icon,
       Button = _ref.Button,
-      props = _objectWithoutProperties(_ref, ["h", "a", "Icon", "Button"]);
+      props = _objectWithoutProperties(_ref, ["h", "Icon", "Button"]);
 
   var content = props.content ? props.content : props.icon ? h(Icon, props.icon) : props.children;
 
   var componentProps = _extends({}, {
-    content: h("div", _defineProperty({}, a.className, classes.content), content),
-    after: props.label && h("div", _defineProperty({}, a.className, classes.label), props.label),
+    content: h("div", {
+      className: classes.content
+    }, content),
+    after: props.label && h("div", {
+      className: classes.label
+    }, props.label),
     parentClassName: [props.parentClassName || classes.component, props.compact ? classes.compact : null].join(" "),
     // defaults
     wash: false,

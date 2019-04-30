@@ -4,3 +4,5 @@ import { Button } from "polythene-react-button";
 import { cast, h, a } from "cyano-react";
 
 export const IconButton = cast(_IconButton, { h, a, Icon, Button });
+
+IconButton["displayName"] = "IconButton";

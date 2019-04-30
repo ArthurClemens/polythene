@@ -173,7 +173,7 @@ var r = function r(acc, p) {
 
 
 var defaultAttrs = [// Universal
-"key", "style", "href", "id", // React
+"key", "style", "href", "id", "data-index", // React
 "tabIndex", // Mithril
 "tabindex", "oninit", "oncreate", "onupdate", "onbeforeremove", "onremove", "onbeforeupdate"];
 /**

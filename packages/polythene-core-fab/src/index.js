@@ -1,13 +1,11 @@
 import classes from "polythene-css-classes/fab";
 
 export const _FAB = ({ h, a, Button, Icon, ...props }) => {
-
   const content = props.content
     ? props.content
     : props.icon
       ? h(Icon, props.icon)
       : props.children;
-
   const componentProps = Object.assign(
     {},
     props,
@@ -36,6 +34,5 @@ export const _FAB = ({ h, a, Button, Icon, ...props }) => {
         : true
     }
   );
-  
   return h(Button, componentProps, content);
 };

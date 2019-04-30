@@ -119,8 +119,10 @@ var _SVG = function _SVG(_ref) {
     }
   }, [domElement]);
 
-  var componentProps = _extends({}, filterSupportedAttributes(props), getDom(function (dom) {
-    return dom && !domElement && setDomElement(dom);
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
+    remove: ["ref"]
+  }), getDom(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
   }), props.testId && {
     "data-test-id": props.testId
   }, {

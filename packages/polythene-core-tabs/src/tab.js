@@ -1,61 +1,48 @@
 import classes from "polythene-css-classes/tabs";
 
-// Don't export 'element': it will be the wrapped Button component (set in polythene-xxx-tabs/tab)
+export const _Tab = ({ h, a, Button, Icon, ...props }) => {
 
-export const onMount = vnode => {
-  if (!vnode.dom) {
-    return;
-  }
-  const dom = vnode.dom;
-  const attrs = vnode.attrs;
-  attrs.register(attrs.index, {
-    attrs,
-    dom
-  });
-};
-
-export const createProps = (vnode, { renderer: h, keys: k, Icon }) => {
-  const attrs = vnode.attrs;
   // Let internal onclick function co-exist with passed button option
-  const events = attrs.events || {};
-  events[k.onclick] = events[k.onclick] || (() => {});
-  return Object.assign(
-    {},
-    attrs,
-    attrs.testId && { "data-test-id": attrs.testId },
+  const events = props.events || {};
+  events[a.onclick] = events[a.onclick] || (() => {});
+
+  const componentProps = Object.assign({}, 
+    props,
+    props.testId && { "data-test-id": props.testId },
     {
+      "data-index": props.index,
       content: h("div",
         { className: classes.tabContent },
         [
-          attrs.icon ? h(Icon, attrs.icon) : null,
-          attrs.label
+          props.icon ? h(Icon, props.icon) : null,
+          props.label
             ? h("div",
               { className: classes.label },
-              h("span", attrs.label)
+              h("span", props.label)
             )
             : null,
         ]),
       className: [
         classes.tab,
-        attrs.icon && attrs.label ? classes.tabHasIcon : null,
-        attrs.className || attrs[k.class],
+        props.icon && props.label ? classes.tabHasIcon : null,
+        props.className || props[a.class],
       ].join(" "),
-      selected: attrs.selected,
+      selected: props.selected,
       wash: false,
       ripple: true,
       events: Object.assign(
         {},
         events,
         {
-          [k.onclick]: e => {
-            attrs.onSelect();
-            events[k.onclick](e);
+          [a.onclick]: e => {
+            props.onSelect();
+            events[a.onclick](e);
           }
         }
       )
     }
   );
-};
 
-export const createContent = vnode =>
-  vnode.children;
+  const content = props.children;
+  return h(Button, componentProps, content);
+};

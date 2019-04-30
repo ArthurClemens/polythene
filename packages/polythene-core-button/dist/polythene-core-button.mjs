@@ -376,7 +376,7 @@ var _Button = function _Button(_ref) {
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
-    remove: ["style"]
+    remove: ["style", "ref"]
   }), // Set style on content, not on component
   getDom(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
