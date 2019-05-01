@@ -19,6 +19,7 @@ export default {
   dropdownOpen:     "pe-button--dropdown-open",
   extraWide:        "pe-button--extra-wide",
   hasDropdown:      "pe-button--dropdown",
+  focus:            "pe-button--focus",
   highLabel:        "pe-button--high-label",
   inactive:         "pe-button--inactive",
   raised:           "pe-button--raised",

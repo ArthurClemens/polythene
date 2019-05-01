@@ -20,6 +20,7 @@ var classes = {
   dropdownOpen: "pe-button--dropdown-open",
   extraWide: "pe-button--extra-wide",
   hasDropdown: "pe-button--dropdown",
+  focus: "pe-button--focus",
   highLabel: "pe-button--high-label",
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
@@ -189,6 +190,14 @@ var tintFns = function tintFns(tint) {
       ".pe-button--disabled": {
         " .pe-button__content": {
           backgroundColor: vars["color_" + tint + "_disabled_background"]
+        }
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
+    return [sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
         }
       }
     })];

@@ -72,6 +72,7 @@ export const useAnimatedShadow = ({ useState, useEffect, useRef, domElement, ...
         domElement.addEventListener(evt, tapStart));
       pointerEndMoveEvent.forEach(evt =>
         document.addEventListener(evt, tapEndAll));
+        
       // Clear tap events
       return () => {
         pointerStartMoveEvent.forEach(evt =>

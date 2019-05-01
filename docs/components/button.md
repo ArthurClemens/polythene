@@ -81,7 +81,7 @@ A raised button is a button with option `raised: true`.
 
 | **Parameter**    |  **Required** | **Type**   | **Default** | **Description** |
 | ---------------- | -------------- | ---------- | ----------- | --------------- |
-| **raised** | optional | Boolean | false | Set to `true` to create a Raised Button |
+| **raised**       | optional | Boolean | false | Set to `true` to create a Raised Button |
 | **shadowDepth**  | optional       | Number 0-5 | 0           | The shadow depth |
 | **animateOnTap** | optional       | Boolean    | true        | Set to false to remove shadow depth animation and subsequent redraw |
 | **increase**     | optional       | Number     | 1           | The shadow depth increment/decrement on tap; the maximum shadow depth is 5 |

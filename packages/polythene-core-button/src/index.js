@@ -3,50 +3,27 @@ import classes from "polythene-css-classes/button";
 import { useAnimatedShadow } from "./useAnimatedShadow";
 
 export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
+  const events = props.events || {};
   const [domElement, setDomElement] = useState();
   const [isInactive, setIsInactive] = useState(props.inactive);
   const [hasFocus, setHasFocus] = useState(false);
-  const [hasMouseOver, setHasMouseOver] = useState(false);
   const disabled = props.disabled;
   const inactive = props.inactive || isInactive;
-  const onClickHandler = props.events && props.events[a.onclick];
-  const onKeyUpHandler = (props.events && props.events[a.onkeyup]) || onClickHandler;
+  const onClickHandler = events[a.onclick] || (() => {});
+  const onKeyUpHandler = events[a.onkeyup] || onClickHandler;
   const [shadowDepth] = props.raised
     ? useAnimatedShadow({ useState, useEffect, useRef, domElement, ...props })
     : [0];
 
-  const handleInactivate = () => (
-    setIsInactive(true),
+  const handleInactivate = () => {
+    if (props.inactivate === undefined) {
+      return;
+    }
+    setIsInactive(true);
     setTimeout(() => (
       setIsInactive(false)
-    ), props.inactivate * 1000)
-  );
-
-  useEffect(
-    () => {
-      if (!domElement || !domElement.addEventListener) return;
-      const onFocus = () => setHasFocus(!hasMouseOver);
-      const onBlur = () => setHasFocus(false);
-      const onMouseOver = () => setHasMouseOver(true);
-      const onMouseOut = () => setHasMouseOver(false);
-      const onClick = handleInactivate;
-
-      domElement.addEventListener("focus", onFocus, false);
-      domElement.addEventListener("blur", onBlur, false);
-      domElement.addEventListener("mouseover", onMouseOver, false);
-      domElement.addEventListener("mouseout", onMouseOut, false);
-      domElement.addEventListener("click", onClick, false);
-
-      return () => {
-        domElement.removeEventListener("focus", onFocus, false);
-        domElement.removeEventListener("blur", onBlur, false);
-        domElement.removeEventListener("mouseover", onBlur, false);
-        domElement.removeEventListener("mouseout", onMouseOut, false);
-        domElement.removeEventListener("click", onClick, false);
-      };
-    },
-    [domElement]
-  );
+    ), props.inactivate * 1000);
+  };
 
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
@@ -62,6 +39,7 @@ export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Sha
         props.contained ? classes.contained : null,
         props.raised ? classes.contained : null,
         props.raised ? classes.raised : null,
+        hasFocus ? classes.focus : null,
         props.selected ? classes.selected : null,
         props.highLabel ? classes.highLabel : null,
         props.extraWide ? classes.extraWide : null,
@@ -80,24 +58,38 @@ export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Sha
         props.className || props[a.class],
       ].join(" ")
     },
-    props.events,
     inactive ? null : {
       [a.tabindex]: disabled || inactive
         ? -1
         : props[a.tabindex] || 0,
-      [a.onclick]: onClickHandler,
+      [a.onfocus]: e => (
+        setHasFocus(true),
+        events[a.onfocus] && events[a.onfocus](e)
+      ),
+      [a.onblur]: e => (
+        setHasFocus(false),
+        events[a.onblur] && events[a.onblur](e)
+      ),
+      ...events,
+      [a.onclick]: e => (
+        setHasFocus(false),
+        handleInactivate(e),
+        onClickHandler(e)
+      ),
       [a.onkeyup]: e => {
-        if (e.keyCode === 13 && hasFocus) {
-          setHasFocus(false);
-          if (onKeyUpHandler) {
+        // With focus, trigger click with ENTER and with SPACE
+        if (hasFocus) {
+          if (e.keyCode === 13 || e.keyCode == 0 || e.keyCode == 32) {
+            setHasFocus(false);
             onKeyUpHandler(e);
           }
         }
-      }
+      },
     },
     props.url,
     disabled ? { disabled: true } : null,
   );
+
   const noink = props.ink !== undefined && props.ink === false;
   const label = props.content
     ? props.content
@@ -115,9 +107,14 @@ export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Sha
           )
         )
       : props.children;
-  const noWash = disabled                         // if disabled: no wash
-    || (props.raised && props.wash !== true)      // if raised/contained: enable wash if true
-    || (props.wash !== undefined && !props.wash); // otherwise: enable wash unless false
+  
+  /*
+  Use wash to indicate focus, or hover when not a raised button.
+  */
+  const showWash = !disabled && (
+    (props.raised && (/* hasFocus ||  */props.wash === true))
+    || (!props.raised && (/* hasFocus &&  */props.wash !== false))
+  );
 
   return h(props.element || "div",
     componentProps,
@@ -143,9 +140,9 @@ export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Sha
             },
             props.ripple
           )),
-        noWash
-          ? null
-          : h("div", { key: "wash", className: classes.wash }),
+        showWash
+          ? h("div", { key: "wash", className: classes.wash })
+          : null,
         label,
         props.dropdown
           ? h(Icon,

@@ -158,6 +158,7 @@ var classes = {
   dropdownOpen: "pe-button--dropdown-open",
   extraWide: "pe-button--extra-wide",
   hasDropdown: "pe-button--dropdown",
+  focus: "pe-button--focus",
   highLabel: "pe-button--high-label",
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
@@ -287,7 +288,7 @@ var useAnimatedShadow = function useAnimatedShadow(_ref3) {
 };
 
 var _Button = function _Button(_ref) {
-  var _ref4;
+  var _objectSpread2, _objectSpread3;
 
   var h = _ref.h,
       a = _ref.a,
@@ -299,6 +300,8 @@ var _Button = function _Button(_ref) {
       Shadow = _ref.Shadow,
       Icon = _ref.Icon,
       props = _objectWithoutProperties(_ref, ["h", "a", "getDom", "useState", "useEffect", "useRef", "Ripple", "Shadow", "Icon"]);
+
+  var events = props.events || {};
 
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
@@ -315,15 +318,12 @@ var _Button = function _Button(_ref) {
       hasFocus = _useState6[0],
       setHasFocus = _useState6[1];
 
-  var _useState7 = useState(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      hasMouseOver = _useState8[0],
-      setHasMouseOver = _useState8[1];
-
   var disabled = props.disabled;
   var inactive = props.inactive || isInactive;
-  var onClickHandler = props.events && props.events[a.onclick];
-  var onKeyUpHandler = props.events && props.events[a.onkeyup] || onClickHandler;
+
+  var onClickHandler = events[a.onclick] || function () {};
+
+  var onKeyUpHandler = events[a.onkeyup] || onClickHandler;
 
   var _ref2 = props.raised ? useAnimatedShadow(_objectSpread({
     useState: useState,
@@ -335,64 +335,41 @@ var _Button = function _Button(_ref) {
       shadowDepth = _ref3[0];
 
   var handleInactivate = function handleInactivate() {
-    return setIsInactive(true), setTimeout(function () {
+    if (props.inactivate === undefined) {
+      return;
+    }
+
+    setIsInactive(true);
+    setTimeout(function () {
       return setIsInactive(false);
     }, props.inactivate * 1000);
   };
 
-  useEffect(function () {
-    if (!domElement || !domElement.addEventListener) return;
-
-    var onFocus = function onFocus() {
-      return setHasFocus(!hasMouseOver);
-    };
-
-    var onBlur = function onBlur() {
-      return setHasFocus(false);
-    };
-
-    var onMouseOver = function onMouseOver() {
-      return setHasMouseOver(true);
-    };
-
-    var onMouseOut = function onMouseOut() {
-      return setHasMouseOver(false);
-    };
-
-    var onClick = handleInactivate;
-    domElement.addEventListener("focus", onFocus, false);
-    domElement.addEventListener("blur", onBlur, false);
-    domElement.addEventListener("mouseover", onMouseOver, false);
-    domElement.addEventListener("mouseout", onMouseOut, false);
-    domElement.addEventListener("click", onClick, false);
-    return function () {
-      domElement.removeEventListener("focus", onFocus, false);
-      domElement.removeEventListener("blur", onBlur, false);
-      domElement.removeEventListener("mouseover", onBlur, false);
-      domElement.removeEventListener("mouseout", onMouseOut, false);
-      domElement.removeEventListener("click", onClick, false);
-    };
-  }, [domElement]);
-
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
-    remove: ["style", "ref"]
+    remove: ["style"]
   }), // Set style on content, not on component
   getDom(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.super, props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
-  }, props.events, inactive ? null : (_ref4 = {}, _defineProperty(_ref4, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_ref4, a.onclick, onClickHandler), _defineProperty(_ref4, a.onkeyup, function (e) {
-    if (e.keyCode === 13 && hasFocus) {
-      setHasFocus(false);
-
-      if (onKeyUpHandler) {
+    className: [classes.super, props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasFocus ? classes.focus : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, inactive ? null : _objectSpread((_objectSpread2 = {}, _defineProperty(_objectSpread2, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_objectSpread2, a.onfocus, function (e) {
+    return setHasFocus(true), events[a.onfocus] && events[a.onfocus](e);
+  }), _defineProperty(_objectSpread2, a.onblur, function (e) {
+    return setHasFocus(false), events[a.onblur] && events[a.onblur](e);
+  }), _objectSpread2), events, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onclick, function (e) {
+    return setHasFocus(false), handleInactivate(e), onClickHandler(e);
+  }), _defineProperty(_objectSpread3, a.onkeyup, function (e) {
+    // With focus, trigger click with ENTER and with SPACE
+    if (hasFocus) {
+      if (e.keyCode === 13 || e.keyCode == 0 || e.keyCode == 32) {
+        setHasFocus(false);
         onKeyUpHandler(e);
       }
     }
-  }), _ref4), props.url, disabled ? {
+  }), _objectSpread3)), props.url, disabled ? {
     disabled: true
   } : null);
 
@@ -403,10 +380,15 @@ var _Button = function _Button(_ref) {
     className: classes.textLabel,
     style: props.textStyle
   }, props.label)) : props.children;
-  var noWash = disabled // if disabled: no wash
-  || props.raised && props.wash !== true // if raised/contained: enable wash if true
-  || props.wash !== undefined && !props.wash; // otherwise: enable wash unless false
+  /*
+  Use wash to indicate focus, or hover when not a raised button.
+  */
 
+  var showWash = !disabled && (props.raised &&
+  /* hasFocus ||  */
+  props.wash === true || !props.raised &&
+  /* hasFocus &&  */
+  props.wash !== false);
   return h(props.element || "div", componentProps, h("div", {
     className: classes.content,
     style: props.style
@@ -417,10 +399,10 @@ var _Button = function _Button(_ref) {
   }), disabled || noink ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: domElement
-  }, props.ripple)), noWash ? null : h("div", {
+  }, props.ripple)), showWash ? h("div", {
     key: "wash",
     className: classes.wash
-  }), label, props.dropdown ? h(Icon, {
+  }) : null, label, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {

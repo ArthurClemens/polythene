@@ -74,6 +74,15 @@ const tintFns = tint => ({
       },
     })
   ],
+  ["color_" + tint + "_wash_background"]: (selector, vars) => [
+    sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
+        },
+      }
+    })
+  ],
 
   // Borders
 
