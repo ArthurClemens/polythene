@@ -1,4 +1,3 @@
-import * as coreSwitch from "./switch";
-export { coreSwitch };
 
+export { _Switch } from "./_Switch";
 export { _ViewControl } from "./ViewControl";
