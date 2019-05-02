@@ -1,79 +1,26 @@
-import { ComponentCreator } from 'polythene-react-base';
-import { coreRadioButton } from 'polythene-core-radio-button';
-import { _ViewControl, coreSelectionControl } from 'polythene-core-selection-control';
-import { cast, h } from 'cyano-react';
+import { _RadioButton } from 'polythene-core-radio-button';
+import { _ViewControl, _SelectionControl } from 'polythene-core-selection-control';
+import { cast, h, a, useState } from 'cyano-react';
 import { Icon } from 'polythene-react-icon';
 import { IconButton } from 'polythene-react-icon-button';
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
 
 var ViewControl = cast(_ViewControl, {
   h: h,
   Icon: Icon,
   IconButton: IconButton
 });
-var SelectionControl = ComponentCreator(_objectSpread({}, coreSelectionControl, {
-  createContent: function createContent(vnode, args) {
-    return coreSelectionControl.createContent(vnode, _extends(args, {
-      ViewControl: ViewControl
-    }));
-  }
-}));
+ViewControl["displayName"] = "ViewControl";
+var SelectionControl = cast(_SelectionControl, {
+  h: h,
+  a: a,
+  useState: useState,
+  ViewControl: ViewControl
+});
 SelectionControl["displayName"] = "SelectionControl";
-
-var RadioButton = ComponentCreator(_objectSpread({}, coreRadioButton, {
-  component: SelectionControl
-}));
+var RadioButton = cast(_RadioButton, {
+  h: h,
+  SelectionControl: SelectionControl
+});
 RadioButton["displayName"] = "RadioButton";
 
-export { RadioButton };
+export { SelectionControl, RadioButton };

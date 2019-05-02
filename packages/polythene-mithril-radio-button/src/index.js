@@ -1,12 +1,15 @@
-// @ts-check
 
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreRadioButton as core } from "polythene-core-radio-button";
-import { SelectionControl } from "./selection-control";
+import { _RadioButton } from "polythene-core-radio-button";
+import { _ViewControl, _SelectionControl } from "polythene-core-selection-control";
+import { cast, h, a, useState } from "cyano-mithril";
+import { Icon } from "polythene-mithril-icon";
+import { IconButton } from "polythene-mithril-icon-button";
 
-export const RadioButton = ComponentCreator({
-  ...core,
-  component: SelectionControl
-});
+const ViewControl = cast(_ViewControl, { h, Icon, IconButton });
+ViewControl["displayName"] = "ViewControl";
 
+export const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
+SelectionControl["displayName"] = "SelectionControl";
+
+export const RadioButton = cast(_RadioButton, { h, SelectionControl });
 RadioButton["displayName"] = "RadioButton";
