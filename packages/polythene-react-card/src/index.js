@@ -1,17 +1,12 @@
-// @ts-check
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreCard as core } from "polythene-core-card";
-import { CardActions } from "./card-actions";
-import { CardMedia } from "./card-media";
-import { CardPrimary } from "./card-primary";
+import { _Card } from "polythene-core-card";
+import { CardActions } from "./CardActions";
+import { CardMedia } from "./CardMedia";
+import { CardPrimary } from "./CardPrimary";
 import { Icon } from "polythene-react-icon";
 import { ListTile } from "polythene-react-list-tile";
 import { Shadow } from "polythene-react-shadow";
+import { cast, h, a } from "cyano-react";
 
-export const Card = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, CardActions, CardMedia, CardPrimary, Icon, ListTile, Shadow })
-});
-
+export const Card = cast(_Card, { h, a, CardActions, CardMedia, CardPrimary, Icon, ListTile, Shadow });
 Card["displayName"] = "Card";

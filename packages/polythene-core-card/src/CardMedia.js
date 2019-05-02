@@ -1,9 +1,6 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/card";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
-  
 const imageRatios = {
   landscape: 16 / 9,
   square:    1
@@ -40,50 +37,51 @@ const initImage = ({ dom, img, ratio, origin }) => {
   };
 };
 
-export const onMount = vnode => {
-  if (!vnode.dom) {
-    return;
-  }
-  const attrs = vnode.attrs;
-  const ratio = attrs.ratio || "landscape";
-  const origin = attrs.origin || "center";
-  const dom = vnode.dom;
-  const img = dom.querySelector("img") || dom.querySelector("iframe");
-  initImage({ dom, img, ratio, origin });
-};
+export const _CardMedia = ({ h, a, useEffect, useState, getRef, ...props }) => {
+  const [domElement, setDomElement] = useState();
+  const ratio = props.ratio || "landscape";
 
-export const createProps = (vnode, { keys: k }) => {
-  const attrs = vnode.attrs;
-  const ratio = attrs.ratio || "landscape";
-  return Object.assign(
-    {},
-    filterSupportedAttributes(attrs),
-    attrs.testId && { "data-test-id": attrs.testId },
+  useEffect(
+    () => {
+      if (!domElement) {
+        return;
+      }
+      const ratio = props.ratio || "landscape";
+      const origin = props.origin || "center";
+      const img = domElement.querySelector("img") || domElement.querySelector("iframe");
+      initImage({ dom: domElement, img, ratio, origin });
+    },
+    [domElement]
+  );
+
+  const componentProps = Object.assign({},
+    filterSupportedAttributes(props),
+    getRef(dom => dom && !domElement && setDomElement(dom)),
+    props.testId && { "data-test-id": props.testId },
     {
       key: "card-media",
       className: [
         classes.media,
-        mediaSizeClass(attrs.size),
+        mediaSizeClass(props.size),
         ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare,
-        attrs.className || attrs[k.class]
+        props.className || props[a.class]
       ].join(" ")
     },
-    attrs.events
+    props.events
   );
-};
 
-export const createContent = (vnode, { renderer: h }) => {
-  const attrs = vnode.attrs;
-  const dispatcher = attrs.dispatcher;
-  return [
-    Object.assign({}, attrs.content, { key: "content" }),
-    attrs.overlay
-      ? dispatcher({ overlay: attrs.overlay, key: "overlay" })
-      : attrs.showDimmer && h("div",
+  const dispatcher = props.dispatcher;
+  const content = [
+    Object.assign({}, props.content, { key: "content" }),
+    props.overlay
+      ? dispatcher({ overlay: props.overlay, key: "overlay" })
+      : props.showDimmer && h("div",
         {
           className: classes.mediaDimmer,
           key: "dimmer"
         }
       )
   ];
+
+  return h(props.element || "div", componentProps, content);
 };

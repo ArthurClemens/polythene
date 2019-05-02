@@ -1,40 +1,35 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/card";
 
-export const getElement = vnode =>
-  vnode.attrs.element || "div";
-  
-export const createProps = (vnode, { keys: k }) => {
-  const attrs = vnode.attrs;
-  const primaryHasMedia = Array.isArray(attrs.content)
-    ? attrs.content.reduce((total, current) =>
+export const _CardPrimary = ({ h, a, ...props }) => {
+
+  const primaryHasMedia = Array.isArray(props.content)
+    ? props.content.reduce((total, current) =>
       Object.keys(current)[0] === "media"
         ? true
         : total, false)
-    : attrs.media || false;
-  return Object.assign(
-    {},
-    filterSupportedAttributes(attrs),
-    attrs.testId && { "data-test-id": attrs.testId },
+    : props.media || false;
+
+  const componentProps = Object.assign({},
+    filterSupportedAttributes(props),
+    props.testId && { "data-test-id": props.testId },
     {
       key: "card-primary",
       className: [
         classes.primary,
-        attrs.tight ? classes.primaryTight : null,
+        props.tight ? classes.primaryTight : null,
         primaryHasMedia ? classes.primaryHasMedia : null,
-        attrs.className || attrs[k.class]
+        props.className || props[a.class]
       ].join(" "),
     },
-    attrs.events
+    props.events
   );
-};
 
-export const createContent = (vnode, { renderer: h })  => {
-  const attrs = vnode.attrs;
-  const dispatcher = attrs.dispatcher;
+  const dispatcher = props.dispatcher;
   const primaryDispatch = {
     title: pAttrs => (
-      pAttrs.attrs || pAttrs.props
+      pAttrs.attrs    // Mithril
+      || pAttrs.props // React
         ? pAttrs || pAttrs.props
         : h("div",
           {
@@ -69,8 +64,8 @@ export const createContent = (vnode, { renderer: h })  => {
     actions: pAttrs => dispatcher({ actions: pAttrs }),
   };
 
-  return Array.isArray(attrs.content)
-    ? attrs.content.map(block => {
+  const content = Array.isArray(props.content)
+    ? props.content.map(block => {
       const key = Object.keys(block)[0];
       const pAttrs = block[key];
       return primaryDispatch[key]
@@ -78,15 +73,17 @@ export const createContent = (vnode, { renderer: h })  => {
         : block;
     })
     : [
-      attrs.title
+      props.title
         ? primaryDispatch.title({
-          title: attrs.title,
-          subtitle: attrs.subtitle,
+          title: props.title,
+          subtitle: props.subtitle,
           key: "title"
         })
         : null,
-      attrs.media ? primaryDispatch.media(attrs.media) : null,
-      attrs.actions ? primaryDispatch.actions(attrs.actions) : null,
-      attrs.content
+      props.media ? primaryDispatch.media(props.media) : null,
+      props.actions ? primaryDispatch.actions(props.actions) : null,
+      props.content
     ];
+
+  return h(props.element || "div", componentProps, content);
 };

@@ -1,7 +1,5 @@
-import * as coreCard from "./card"; export { coreCard };
 
-import * as coreCardActions from "./card-actions"; export { coreCardActions };
-
-import * as coreCardMedia from "./card-media"; export { coreCardMedia };
-
-import * as coreCardPrimary from "./card-primary"; export { coreCardPrimary };
+export { _Card } from "./_Card";
+export { _CardMedia } from "./CardMedia";
+export { _CardActions } from "./CardActions";
+export { _CardPrimary } from "./CardPrimary";

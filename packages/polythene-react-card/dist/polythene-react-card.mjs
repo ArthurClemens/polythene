@@ -1,67 +1,40 @@
-import { ComponentCreator } from 'polythene-react-base';
-import { coreCardActions, coreCardMedia, coreCardPrimary, coreCard } from 'polythene-core-card';
+import { _CardActions, _CardMedia, _CardPrimary, _Card } from 'polythene-core-card';
+import { cast, h, a, useState, useEffect, getRef } from 'cyano-react';
 import { Icon } from 'polythene-react-icon';
 import { ListTile } from 'polythene-react-list-tile';
 import { Shadow } from 'polythene-react-shadow';
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-// @ts-check
-var CardActions = ComponentCreator(coreCardActions);
+var CardActions = cast(_CardActions, {
+  h: h,
+  a: a
+});
 CardActions["displayName"] = "CardActions";
 
-// @ts-check
-var CardMedia = ComponentCreator(coreCardMedia);
+var CardMedia = cast(_CardMedia, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  getRef: getRef
+});
 CardMedia["displayName"] = "CardMedia";
 
-// @ts-check
-var CardPrimary = ComponentCreator(coreCardPrimary);
+var CardPrimary = cast(_CardPrimary, {
+  h: h,
+  a: a
+});
 CardPrimary["displayName"] = "CardPrimary";
 
-var Card = ComponentCreator(_objectSpread({}, coreCard, {
-  createContent: function createContent(vnode, args) {
-    return coreCard.createContent(vnode, _objectSpread({}, args, {
-      CardActions: CardActions,
-      CardMedia: CardMedia,
-      CardPrimary: CardPrimary,
-      Icon: Icon,
-      ListTile: ListTile,
-      Shadow: Shadow
-    }));
-  }
-}));
+var Card = cast(_Card, {
+  h: h,
+  a: a,
+  CardActions: CardActions,
+  CardMedia: CardMedia,
+  CardPrimary: CardPrimary,
+  Icon: Icon,
+  ListTile: ListTile,
+  Shadow: Shadow
+});
 Card["displayName"] = "Card";
 
 export { Card };

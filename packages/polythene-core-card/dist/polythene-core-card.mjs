@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -16,6 +16,80 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var classes = {
@@ -60,19 +134,19 @@ var classes = {
 
 var createOverlay = function createOverlay(_ref) {
   var dispatcher = _ref.dispatcher,
-      attrs = _ref.attrs,
+      props = _ref.props,
       h = _ref.h,
-      k = _ref.k;
-  var element = attrs.element || "div";
-  var content = attrs.content.map(dispatcher);
+      a = _ref.a;
+  var element = props.element || "div";
+  var content = props.content.map(dispatcher);
   return h("div", {
-    key: attrs.key || "card-overlay",
-    style: attrs.style,
-    className: [classes.overlay, attrs.sheet ? classes.overlaySheet : null, attrs.tone === "light" ? null : "pe-dark-tone", // default dark tone
-    attrs.tone === "light" ? "pe-light-tone" : null].join(" ")
+    key: props.key || "card-overlay",
+    style: props.style,
+    className: [classes.overlay, props.sheet ? classes.overlaySheet : null, props.tone === "light" ? null : "pe-dark-tone", // default dark tone
+    props.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [h(element, {
     key: "content",
-    className: [classes.overlayContent, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.overlayContent, props.className || props[a.class]].join(" ")
   }, content), h("div", {
     key: "dimmer",
     className: classes.mediaDimmer
@@ -80,126 +154,105 @@ var createOverlay = function createOverlay(_ref) {
 };
 
 var createAny = function createAny(_ref2) {
-  var attrs = _ref2.attrs,
+  var props = _ref2.props,
       h = _ref2.h,
-      k = _ref2.k;
-  var element = attrs.element || "div";
-  return h(element, _extends({}, filterSupportedAttributes(attrs), {
-    key: attrs.key || "card-any",
-    className: [classes.any, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
-  }), attrs.content);
+      a = _ref2.a;
+  var element = props.element || "div";
+  return h(element, _extends({}, filterSupportedAttributes(props), {
+    key: props.key || "card-any",
+    className: [classes.any, props.tight ? classes.textTight : null, props.className || props[a.class]].join(" ")
+  }), props.content);
 };
 
 var createText = function createText(_ref3) {
-  var attrs = _ref3.attrs,
+  var props = _ref3.props,
       h = _ref3.h,
-      k = _ref3.k;
-  var element = attrs.element || "div";
-  return h(element, _extends({}, filterSupportedAttributes(attrs), {
-    key: attrs.key || "card-text",
-    className: [classes.text, attrs.tight ? classes.textTight : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events), attrs.content);
+      a = _ref3.a;
+  var element = props.element || "div";
+  return h(element, _extends({}, filterSupportedAttributes(props), {
+    key: props.key || "card-text",
+    className: [classes.text, props.tight ? classes.textTight : null, props.className || props[a.class]].join(" ")
+  }, props.events), props.content);
 };
 
 var createHeader = function createHeader(_ref4) {
-  var attrs = _ref4.attrs,
+  var props = _ref4.props,
       h = _ref4.h,
-      k = _ref4.k,
+      a = _ref4.a,
       Icon = _ref4.Icon,
       ListTile = _ref4.ListTile;
-  return h(ListTile, _extends({}, attrs, {
-    key: attrs.key || "card-header",
-    className: [classes.header, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.icon ? {
-    front: h(Icon, attrs.icon)
+  return h(ListTile, _extends({}, props, {
+    key: props.key || "card-header",
+    className: [classes.header, props.className || props[a.class]].join(" ")
+  }, props.icon ? {
+    front: h(Icon, props.icon)
   } : null));
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || vnode.attrs.url ? "a" : "div";
-};
-var onMount = function onMount(_ref5) {
-  var attrs = _ref5.attrs;
+var _Card = function _Card(_ref5) {
+  var h = _ref5.h,
+      a = _ref5.a,
+      CardActions = _ref5.CardActions,
+      CardMedia = _ref5.CardMedia,
+      CardPrimary = _ref5.CardPrimary,
+      Icon = _ref5.Icon,
+      ListTile = _ref5.ListTile,
+      Shadow = _ref5.Shadow,
+      props = _objectWithoutProperties(_ref5, ["h", "a", "CardActions", "CardMedia", "CardPrimary", "Icon", "ListTile", "Shadow"]);
 
-  if (attrs.z !== undefined) {
-    deprecation("Card", {
-      option: "z",
-      newOption: "shadowDepth"
-    });
-  }
-
-  if (attrs.content && !Array.isArray(attrs.content)) {
-    deprecation("Card", {
-      message: "option 'content' is restricted to contain only the list of option objects for distinct card areas. To pass other content, use 'children'."
-    });
-  }
-};
-var createProps = function createProps(vnode, _ref6) {
-  var k = _ref6.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.url, attrs.events);
-};
-var createContent = function createContent(vnode, _ref7) {
-  var h = _ref7.renderer,
-      k = _ref7.keys,
-      CardActions = _ref7.CardActions,
-      CardMedia = _ref7.CardMedia,
-      CardPrimary = _ref7.CardPrimary,
-      Icon = _ref7.Icon,
-      Shadow = _ref7.Shadow,
-      ListTile = _ref7.ListTile;
+    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.url, props.events);
 
   var dispatcher = function dispatcher(block) {
     var key = Object.keys(block)[0];
 
-    var attrs = _extends({}, block[key], {
+    var props = _extends({}, block[key], {
       dispatcher: dispatcher,
       key: key
     });
 
     switch (key) {
       case "actions":
-        return h(CardActions, attrs);
+        return h(CardActions, props);
 
       case "header":
         return createHeader({
-          attrs: attrs,
+          props: props,
           h: h,
-          k: k,
+          a: a,
           Icon: Icon,
           ListTile: ListTile
         });
 
       case "media":
-        return h(CardMedia, attrs);
+        return h(CardMedia, props);
 
       case "overlay":
         return createOverlay({
           dispatcher: dispatcher,
-          attrs: attrs,
+          props: props,
           h: h,
-          k: k
+          a: a
         });
 
       case "primary":
-        return h(CardPrimary, attrs);
+        return h(CardPrimary, props);
 
       case "text":
         return createText({
-          attrs: attrs,
+          props: props,
           h: h,
-          k: k
+          a: a
         });
 
       case "any":
         return createAny({
-          attrs: attrs,
+          props: props,
           h: h,
-          k: k
+          a: a
         });
 
       default:
@@ -207,102 +260,22 @@ var createContent = function createContent(vnode, _ref7) {
     }
   };
 
-  var attrs = vnode.attrs;
-  var contents = Array.isArray(attrs.content) ? attrs.content.map(dispatcher) : attrs.content; // deprecated
+  var contents = Array.isArray(props.content) ? props.content.map(dispatcher) : props.content; // deprecated
 
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+  var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
 
-  var children = attrs.children || vnode.children;
-  return [h(Shadow, {
+  var content = [h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : 1,
     animated: true,
     key: "shadow"
   }), h("div", {
     className: classes.content,
     key: "content"
-  }, contents), children];
+  }, contents), props.children];
+  var element = props.element || props.url ? "a" : "div";
+  return h(element, componentProps, content);
 };
 
-var card = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  onMount: onMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-var buttonClasses = {
-  component: "pe-text-button",
-  super: "pe-button",
-  row: "pe-button-row",
-  // elements      
-  content: "pe-button__content",
-  label: "pe-button__label",
-  textLabel: "pe-button__text-label",
-  wash: "pe-button__wash",
-  dropdown: "pe-button__dropdown",
-  // states      
-  border: "pe-button--border",
-  contained: "pe-button--contained",
-  disabled: "pe-button--disabled",
-  dropdownClosed: "pe-button--dropdown-closed",
-  dropdownOpen: "pe-button--dropdown-open",
-  extraWide: "pe-button--extra-wide",
-  hasDropdown: "pe-button--dropdown",
-  highLabel: "pe-button--high-label",
-  inactive: "pe-button--inactive",
-  raised: "pe-button--raised",
-  selected: "pe-button--selected",
-  separatorAtStart: "pe-button--separator-start"
-};
-
-var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-var actionLayoutClasses = {
-  horizontal: classes.actionsHorizontal,
-  vertical: classes.actionsVertical,
-  justified: classes.actionsJustified
-};
-var onMount$1 = function onMount(_ref) {
-  var attrs = _ref.attrs;
-
-  if (attrs.bordered !== undefined) {
-    deprecation("Card", {
-      option: "bordered",
-      newOption: "border"
-    });
-  }
-};
-
-var actionClassForLayout = function actionClassForLayout() {
-  var layout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "horizontal";
-  return actionLayoutClasses[layout];
-};
-
-var createProps$1 = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    key: "card-actions",
-    className: [classes.actions, attrs.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(attrs.layout), attrs.border || attrs.bordered ? classes.actionsBorder : null, attrs.tight ? classes.actionsTight : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent$1 = function createContent(vnode) {
-  return vnode.attrs.content || vnode.children;
-};
-
-var cardActions = /*#__PURE__*/Object.freeze({
-  getElement: getElement$1,
-  onMount: onMount$1,
-  createProps: createProps$1,
-  createContent: createContent$1
-});
-
-var getElement$2 = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
 var imageRatios = {
   landscape: 16 / 9,
   square: 1
@@ -341,76 +314,128 @@ var initImage = function initImage(_ref) {
   };
 };
 
-var onMount$2 = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
+var _CardMedia = function _CardMedia(_ref2) {
+  var h = _ref2.h,
+      a = _ref2.a,
+      useEffect = _ref2.useEffect,
+      useState = _ref2.useState,
+      getRef = _ref2.getRef,
+      props = _objectWithoutProperties(_ref2, ["h", "a", "useEffect", "useState", "getRef"]);
 
-  var attrs = vnode.attrs;
-  var ratio = attrs.ratio || "landscape";
-  var origin = attrs.origin || "center";
-  var dom = vnode.dom;
-  var img = dom.querySelector("img") || dom.querySelector("iframe");
-  initImage({
-    dom: dom,
-    img: img,
-    ratio: ratio,
-    origin: origin
-  });
-};
-var createProps$2 = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-  var attrs = vnode.attrs;
-  var ratio = attrs.ratio || "landscape";
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
+
+  var ratio = props.ratio || "landscape";
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    var ratio = props.ratio || "landscape";
+    var origin = props.origin || "center";
+    var img = domElement.querySelector("img") || domElement.querySelector("iframe");
+    initImage({
+      dom: domElement,
+      img: img,
+      ratio: ratio,
+      origin: origin
+    });
+  }, [domElement]);
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), getRef(function (dom) {
+    return dom && !domElement && setDomElement(dom);
+  }), props.testId && {
+    "data-test-id": props.testId
   }, {
     key: "card-media",
-    className: [classes.media, mediaSizeClass(attrs.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent$2 = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer;
-  var attrs = vnode.attrs;
-  var dispatcher = attrs.dispatcher;
-  return [_extends({}, attrs.content, {
+    className: [classes.media, mediaSizeClass(props.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, props.className || props[a.class]].join(" ")
+  }, props.events);
+
+  var dispatcher = props.dispatcher;
+  var content = [_extends({}, props.content, {
     key: "content"
-  }), attrs.overlay ? dispatcher({
-    overlay: attrs.overlay,
+  }), props.overlay ? dispatcher({
+    overlay: props.overlay,
     key: "overlay"
-  }) : attrs.showDimmer && h("div", {
+  }) : props.showDimmer && h("div", {
     className: classes.mediaDimmer,
     key: "dimmer"
   })];
+  return h(props.element || "div", componentProps, content);
 };
 
-var cardMedia = /*#__PURE__*/Object.freeze({
-  getElement: getElement$2,
-  onMount: onMount$2,
-  createProps: createProps$2,
-  createContent: createContent$2
-});
-
-var getElement$3 = function getElement(vnode) {
-  return vnode.attrs.element || "div";
+var buttonClasses = {
+  component: "pe-text-button",
+  super: "pe-button",
+  row: "pe-button-row",
+  // elements      
+  content: "pe-button__content",
+  label: "pe-button__label",
+  textLabel: "pe-button__text-label",
+  wash: "pe-button__wash",
+  dropdown: "pe-button__dropdown",
+  // states      
+  border: "pe-button--border",
+  contained: "pe-button--contained",
+  disabled: "pe-button--disabled",
+  dropdownClosed: "pe-button--dropdown-closed",
+  dropdownOpen: "pe-button--dropdown-open",
+  extraWide: "pe-button--extra-wide",
+  hasDropdown: "pe-button--dropdown",
+  focus: "pe-button--focus",
+  highLabel: "pe-button--high-label",
+  inactive: "pe-button--inactive",
+  raised: "pe-button--raised",
+  selected: "pe-button--selected",
+  separatorAtStart: "pe-button--separator-start"
 };
-var createProps$3 = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  var primaryHasMedia = Array.isArray(attrs.content) ? attrs.content.reduce(function (total, current) {
+
+var actionLayoutClasses = {
+  horizontal: classes.actionsHorizontal,
+  vertical: classes.actionsVertical,
+  justified: classes.actionsJustified
+};
+
+var actionClassForLayout = function actionClassForLayout() {
+  var layout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "horizontal";
+  return actionLayoutClasses[layout];
+};
+
+var _CardActions = function _CardActions(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      props = _objectWithoutProperties(_ref, ["h", "a"]);
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
+  }, {
+    key: "card-actions",
+    className: [classes.actions, props.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(props.layout), props.border || props.bordered ? classes.actionsBorder : null, props.tight ? classes.actionsTight : null, props.className || props[a.class]].join(" ")
+  }, props.events);
+
+  var content = props.content || props.children;
+  return h(props.element || "div", componentProps, content);
+};
+
+var _CardPrimary = function _CardPrimary(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      props = _objectWithoutProperties(_ref, ["h", "a"]);
+
+  var primaryHasMedia = Array.isArray(props.content) ? props.content.reduce(function (total, current) {
     return Object.keys(current)[0] === "media" ? true : total;
-  }, false) : attrs.media || false;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  }, false) : props.media || false;
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
     key: "card-primary",
-    className: [classes.primary, attrs.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent$3 = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer;
-  var attrs = vnode.attrs;
-  var dispatcher = attrs.dispatcher;
+    className: [classes.primary, props.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, props.className || props[a.class]].join(" ")
+  }, props.events);
+
+  var dispatcher = props.dispatcher;
   var primaryDispatch = {
     title: function title(pAttrs) {
       return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
@@ -437,21 +462,16 @@ var createContent$3 = function createContent(vnode, _ref2) {
       });
     }
   };
-  return Array.isArray(attrs.content) ? attrs.content.map(function (block) {
+  var content = Array.isArray(props.content) ? props.content.map(function (block) {
     var key = Object.keys(block)[0];
     var pAttrs = block[key];
     return primaryDispatch[key] ? primaryDispatch[key](pAttrs) : block;
-  }) : [attrs.title ? primaryDispatch.title({
-    title: attrs.title,
-    subtitle: attrs.subtitle,
+  }) : [props.title ? primaryDispatch.title({
+    title: props.title,
+    subtitle: props.subtitle,
     key: "title"
-  }) : null, attrs.media ? primaryDispatch.media(attrs.media) : null, attrs.actions ? primaryDispatch.actions(attrs.actions) : null, attrs.content];
+  }) : null, props.media ? primaryDispatch.media(props.media) : null, props.actions ? primaryDispatch.actions(props.actions) : null, props.content];
+  return h(props.element || "div", componentProps, content);
 };
 
-var cardPrimary = /*#__PURE__*/Object.freeze({
-  getElement: getElement$3,
-  createProps: createProps$3,
-  createContent: createContent$3
-});
-
-export { card as coreCard, cardActions as coreCardActions, cardMedia as coreCardMedia, cardPrimary as coreCardPrimary };
+export { _Card, _CardMedia, _CardActions, _CardPrimary };
