@@ -1,7 +1,6 @@
-import { ComponentCreator } from 'polythene-mithril-base';
 import { _Conditional } from 'polythene-core';
 import { cast, h, useState, useEffect } from 'cyano-mithril';
-import { coreDrawer } from 'polythene-core-drawer';
+import { _Drawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-mithril-dialog';
 
 function _defineProperty(obj, key, value) {
@@ -51,9 +50,11 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
-  component: DialogInstance
-}));
+var DrawerInstance = cast(_Drawer, {
+  h: h,
+  Dialog: DialogInstance
+});
+DrawerInstance["displayName"] = "DrawerInstance";
 var DrawerToggle = cast(_Conditional, {
   h: h,
   useState: useState,

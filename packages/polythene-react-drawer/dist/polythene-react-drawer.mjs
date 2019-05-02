@@ -1,23 +1,7 @@
-import { ComponentCreator } from 'polythene-react-base';
 import { _Conditional } from 'polythene-core';
 import { cast, h, useState, useEffect } from 'cyano-react';
-import { coreDrawer } from 'polythene-core-drawer';
+import { _Drawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-react-dialog';
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -37,25 +21,6 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
 var classes = {
   component: "pe-dialog pe-drawer",
   // states
@@ -69,9 +34,11 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
-  component: DialogInstance
-}));
+var DrawerInstance = cast(_Drawer, {
+  h: h,
+  Dialog: DialogInstance
+});
+DrawerInstance["displayName"] = "DrawerInstance";
 var DrawerToggle = cast(_Conditional, {
   h: h,
   useState: useState,

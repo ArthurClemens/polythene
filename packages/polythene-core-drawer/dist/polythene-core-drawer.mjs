@@ -16,6 +16,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-dialog pe-drawer",
   // states
@@ -29,31 +65,24 @@ var classes = {
   anchorEnd: "pe-drawer--anchor-end"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-}; // Props to be passed to Dialog
+var _Drawer = function _Drawer(_ref) {
+  var h = _ref.h,
+      Dialog = _ref.Dialog,
+      props = _objectWithoutProperties(_ref, ["h", "Dialog"]);
 
-var createProps = function createProps(vnode) {
-  var attrs = vnode.attrs;
-  var isCover = !(attrs.push || attrs.permanent || attrs.mini);
-  return _extends({}, attrs, {
+  var isCover = !(props.push || props.permanent || props.mini);
+
+  var componentProps = _extends({}, props, {
     fullBleed: true,
     className: null,
-    parentClassName: [attrs.className, classes.component, isCover ? classes.cover : null, attrs.push ? classes.push : null, attrs.permanent ? classes.permanent : null, attrs.border ? classes.border : null, attrs.mini ? classes.mini : null, attrs.floating ? classes.floating : null, attrs.fixed ? classes.fixed : null, attrs.anchor === "end" ? classes.anchorEnd : null].join(" "),
-    inactive: attrs.permanent && !attrs.mini,
-    shadowDepth: attrs.shadowDepth !== undefined ? attrs.shadowDepth : 0,
+    parentClassName: [props.className, classes.component, isCover ? classes.cover : null, props.push ? classes.push : null, props.permanent ? classes.permanent : null, props.border ? classes.border : null, props.mini ? classes.mini : null, props.floating ? classes.floating : null, props.fixed ? classes.fixed : null, props.anchor === "end" ? classes.anchorEnd : null].join(" "),
+    inactive: props.permanent && !props.mini,
+    shadowDepth: props.shadowDepth !== undefined ? props.shadowDepth : 0,
     // deprecated:
-    z: attrs.z !== undefined ? attrs.z : undefined
+    z: props.z !== undefined ? props.z : undefined
   });
-};
-var createContent = function createContent(vnode) {
-  return vnode.children;
+
+  return h(Dialog, componentProps, props.children);
 };
 
-var drawer = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { drawer as coreDrawer, getElement, createProps, createContent };
+export { _Drawer };
