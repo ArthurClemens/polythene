@@ -1,8 +1,11 @@
-// @ts-check
-
+import { _ViewControl } from "polythene-core-selection-control";
+import { cast, h } from "cyano-mithril";
+import { Icon } from "polythene-mithril-icon";
+import { IconButton } from "polythene-mithril-icon-button";
 import { ComponentCreator } from "polythene-mithril-base";
 import { coreSelectionControl as core } from "polythene-core-selection-control";
-import { ViewControl } from "./view-control";
+
+const ViewControl = cast(_ViewControl, { h, Icon, IconButton });
 
 export const SelectionControl = ComponentCreator({
   ...core,

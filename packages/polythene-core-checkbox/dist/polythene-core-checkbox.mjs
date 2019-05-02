@@ -16,6 +16,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-checkbox-control"
 };
@@ -25,23 +61,23 @@ var iconOff = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M
 var icons = {
   iconOff: iconOff,
   iconOn: iconOn
-}; // Props to be passed to a selection control
+};
+var _Checkbox = function _Checkbox(_ref) {
+  var h = _ref.h,
+      SelectionControl = _ref.SelectionControl,
+      props = _objectWithoutProperties(_ref, ["h", "SelectionControl"]);
 
-var createProps = function createProps(vnode) {
-  var attrs = vnode.attrs;
-  return _extends({}, attrs, {
+  var componentProps = _extends({}, props, {
     icons: icons,
-    selectable: attrs.selectable || function () {
+    selectable: props.selectable || function () {
       return true;
     },
     // default: always selectable, regardless the checked state
     instanceClass: classes.component,
     type: "checkbox"
   });
+
+  return h(SelectionControl, componentProps);
 };
 
-var checkbox = /*#__PURE__*/Object.freeze({
-  createProps: createProps
-});
-
-export { checkbox as coreCheckbox };
+export { _Checkbox };

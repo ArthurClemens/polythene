@@ -33,6 +33,80 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-control",
   // elements
@@ -178,57 +252,139 @@ var selectionControl = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
+var _SelectionControl = function _SelectionControl(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      ViewControl = _ref.ViewControl,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "ViewControl"]);
+
+  var defaultChecked = props.defaultChecked !== undefined ? props.defaultChecked : props.checked || false;
+
+  var _useState = useState(defaultChecked),
+      _useState2 = _slicedToArray(_useState, 2),
+      previousIsChecked = _useState2[0],
+      setIsChecked = _useState2[1];
+
+  var isChecked = props.checked !== undefined ? props.checked : previousIsChecked;
+  var selectable = props.selectable !== undefined ? props.selectable(isChecked) : false;
+  var inactive = props.disabled || !selectable;
+
+  var notifyChange = function notifyChange(e, isChecked) {
+    if (props.onChange) {
+      props.onChange({
+        event: e,
+        checked: isChecked,
+        value: props.value
+      });
+    }
+  };
+
+  var onChange = function onChange(e) {
+    var isChecked = e.currentTarget.checked;
+
+    if (props.type === "radio") ; else {
+      setIsChecked(isChecked);
+    }
+
+    notifyChange(e, isChecked);
+  };
+
+  var toggle = function toggle(e) {
+    var newChecked = !isChecked;
+    setIsChecked(newChecked);
+    notifyChange(e, newChecked);
+  };
+
+  var viewControlClickHandler = props.events && props.events[a.onclick];
+  var viewControlKeyDownHandler = props.events && props.events[a.onkeydown] ? props.events[a.onkeydown] : function (e) {
+    if (e.key === "Enter" || e.keyCode === 32) {
+      e.preventDefault();
+
+      if (viewControlClickHandler) {
+        viewControlClickHandler(e);
+      } else {
+        toggle(e);
+      }
+    }
+  };
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
+  }, {
+    className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
+    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  });
+
+  var content = h("label", _extends({}, {
+    className: classes.formLabel
+  }, viewControlClickHandler && _defineProperty({}, a.onclick, function (e) {
+    return e.preventDefault(), viewControlClickHandler(e);
+  })), [h(ViewControl, _extends({}, props, {
+    inactive: inactive,
+    checked: isChecked,
+    key: "control",
+    events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler)
+  })), props.label ? h(".".concat(classes.label), {
+    key: "label"
+  }, props.label) : null, h("input", _extends({}, props.events, {
+    name: props.name,
+    type: props.type,
+    value: props.value,
+    checked: isChecked
+  }, props.disabled || inactive ? {
+    disabled: "disabled"
+  } : _defineProperty({}, a.onchange, onChange)))]);
+  return h(props.element || "div", componentProps, content);
+};
+
 var CONTENT = [{
   iconType: "iconOn",
   className: classes.buttonOn
 }, {
   iconType: "iconOff",
   className: classes.buttonOff
-}];
-var getElement$1 = function getElement(vnode) {
-  return vnode.attrs.element || ".".concat(classes.box);
-};
+}]; // export const getElement = vnode =>
+//   vnode.props.element || `.${classes.box}`;
 
-var createIcon = function createIcon(h, iconType, attrs, className) {
-  return (// if attrs.iconOn/attrs.iconOff is passed, use that icon options object and ignore size
+var createIcon = function createIcon(h, iconType, props, className) {
+  return (// if props.iconOn/props.iconOff is passed, use that icon options object and ignore size
     // otherwise create a new object
     _extends({}, {
       className: className,
       key: iconType
-    }, attrs[iconType] ? attrs[iconType] : {
+    }, props[iconType] ? props[iconType] : {
       svg: {
-        content: h.trust(attrs.icons[iconType])
+        content: h.trust(props.icons[iconType])
       }
-    }, attrs.icon, attrs.size ? {
-      size: attrs.size
+    }, props.icon, props.size ? {
+      size: props.size
     } : null)
   );
 };
 
-var createContent$1 = function createContent(vnode, _ref) {
-  var h = _ref.renderer,
+var _ViewControl = function _ViewControl(_ref) {
+  var h = _ref.h,
       Icon = _ref.Icon,
-      IconButton = _ref.IconButton;
-  var attrs = vnode.attrs;
-  return h(IconButton, _extends({}, {
+      IconButton = _ref.IconButton,
+      props = _objectWithoutProperties(_ref, ["h", "Icon", "IconButton"]);
+
+  var element = props.element || ".".concat(classes.box);
+  var content = h(IconButton, _extends({}, {
     element: "div",
     className: classes.button,
     content: CONTENT.map(function (o) {
-      return h(Icon, createIcon(h, o.iconType, attrs, o.className));
+      return h(Icon, createIcon(h, o.iconType, props, o.className));
     }),
     ripple: {
       center: true
     },
-    disabled: attrs.disabled,
-    events: attrs.events,
-    inactive: attrs.inactive
-  }, attrs.iconButton // for example for hover behaviour
+    disabled: props.disabled,
+    events: props.events,
+    inactive: props.inactive
+  }, props.iconButton // for example for hover behaviour
   ));
+  return h(element, null, content);
 };
 
-var viewControl = /*#__PURE__*/Object.freeze({
-  getElement: getElement$1,
-  createContent: createContent$1
-});
-
-export { selectionControl as coreSelectionControl, viewControl as coreViewControl };
+export { selectionControl as coreSelectionControl, _SelectionControl, _ViewControl };

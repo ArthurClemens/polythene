@@ -1,6 +1,7 @@
 import { ComponentCreator } from 'polythene-mithril-base';
 import { coreRadioButton } from 'polythene-core-radio-button';
-import { coreViewControl, coreSelectionControl } from 'polythene-core-selection-control';
+import { _ViewControl, coreSelectionControl } from 'polythene-core-selection-control';
+import { cast, h } from 'cyano-mithril';
 import { Icon } from 'polythene-mithril-icon';
 import { IconButton } from 'polythene-mithril-icon-button';
 
@@ -56,16 +57,11 @@ function _objectSpread(target) {
   return target;
 }
 
-var ViewControl = ComponentCreator(_objectSpread({}, coreViewControl, {
-  createContent: function createContent(vnode, args) {
-    return coreViewControl.createContent(vnode, _objectSpread({}, args, {
-      Icon: Icon,
-      IconButton: IconButton
-    }));
-  }
-}));
-ViewControl["displayName"] = "ViewControl";
-
+var ViewControl = cast(_ViewControl, {
+  h: h,
+  Icon: Icon,
+  IconButton: IconButton
+});
 var SelectionControl = ComponentCreator(_objectSpread({}, coreSelectionControl, {
   createContent: function createContent(vnode, args) {
     return coreSelectionControl.createContent(vnode, _extends(args, {

@@ -18,6 +18,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-switch-control",
   // elements
@@ -101,4 +137,37 @@ var viewControl = /*#__PURE__*/Object.freeze({
   createContent: createContent
 });
 
-export { _switch as coreSwitch, viewControl as coreViewControl };
+var _ViewControl = function _ViewControl(_ref) {
+  var h = _ref.h,
+      IconButton = _ref.IconButton,
+      Shadow = _ref.Shadow,
+      props = _objectWithoutProperties(_ref, ["h", "IconButton", "Shadow"]);
+
+  var element = props.element || "div";
+  var shadowDepthOff = props.shadowDepthOff !== undefined ? props.shadowDepthOff : props.zOff !== undefined ? props.zOff // deprecated
+  : 1;
+  var shadowDepthOn = props.shadowDepthOn !== undefined ? props.shadowDepthOn : props.zOn !== undefined ? props.zOn // deprecated
+  : 2;
+  var shadowDepth = props.checked ? shadowDepthOn : shadowDepthOff;
+  var raised = props.raised !== undefined ? props.raised : true;
+  return h(element, null, [h("div", {
+    className: classes.track,
+    key: "track"
+  }), h(IconButton, _extends({}, {
+    className: classes.thumb,
+    key: "button",
+    content: h("div", {
+      className: classes.knob
+    }, [props.icon ? props.icon : null, raised ? h(Shadow, {
+      shadowDepth: shadowDepth,
+      animated: true
+    }) : null]),
+    style: props.style,
+    disabled: props.disabled,
+    events: props.events,
+    ink: props.ink || false,
+    inactive: props.inactive
+  }, props.iconButton))]);
+};
+
+export { _switch as coreSwitch, viewControl as coreViewControl, _ViewControl };

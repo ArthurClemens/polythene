@@ -1,8 +1,9 @@
 import { ComponentCreator } from 'polythene-mithril-base';
-import { coreViewControl, coreSwitch } from 'polythene-core-switch';
-import { coreSelectionControl } from 'polythene-core-selection-control';
+import { _ViewControl, coreSwitch } from 'polythene-core-switch';
+import { cast, h } from 'cyano-mithril';
 import { Shadow } from 'polythene-mithril-shadow';
 import { IconButton } from 'polythene-mithril-icon-button';
+import { coreSelectionControl } from 'polythene-core-selection-control';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -17,24 +18,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
 }
 
 function _objectSpread(target) {
@@ -56,16 +39,11 @@ function _objectSpread(target) {
   return target;
 }
 
-var ViewControl = ComponentCreator(_objectSpread({}, coreViewControl, {
-  createContent: function createContent(vnode, args) {
-    return coreViewControl.createContent(vnode, _extends(args, {
-      Shadow: Shadow,
-      IconButton: IconButton
-    }));
-  }
-}));
-ViewControl["displayName"] = "ViewControl";
-
+var ViewControl = cast(_ViewControl, {
+  h: h,
+  Shadow: Shadow,
+  IconButton: IconButton
+});
 var SelectionControl = ComponentCreator(_objectSpread({}, coreSelectionControl, {
   createContent: function createContent(vnode, args) {
     return coreSelectionControl.createContent(vnode, _objectSpread({}, args, {

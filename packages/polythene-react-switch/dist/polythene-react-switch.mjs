@@ -1,8 +1,9 @@
 import { ComponentCreator } from 'polythene-react-base';
-import { coreViewControl, coreSwitch } from 'polythene-core-switch';
-import { coreSelectionControl } from 'polythene-core-selection-control';
+import { _ViewControl, coreSwitch } from 'polythene-core-switch';
+import { cast, h } from 'cyano-react';
 import { Shadow } from 'polythene-react-shadow';
 import { IconButton } from 'polythene-react-icon-button';
+import { coreSelectionControl } from 'polythene-core-selection-control';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -38,16 +39,11 @@ function _objectSpread(target) {
   return target;
 }
 
-var ViewControl = ComponentCreator(_objectSpread({}, coreViewControl, {
-  createContent: function createContent(vnode, args) {
-    return coreViewControl.createContent(vnode, _objectSpread({}, args, {
-      Shadow: Shadow,
-      IconButton: IconButton
-    }));
-  }
-}));
-ViewControl["displayName"] = "ViewControl";
-
+var ViewControl = cast(_ViewControl, {
+  h: h,
+  Shadow: Shadow,
+  IconButton: IconButton
+});
 var SelectionControl = ComponentCreator(_objectSpread({}, coreSelectionControl, {
   createContent: function createContent(vnode, args) {
     return coreSelectionControl.createContent(vnode, _objectSpread({}, args, {

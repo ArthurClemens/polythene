@@ -1,5 +1,5 @@
 import * as coreSelectionControl from "./selection-control";
 export { coreSelectionControl };
 
-import * as coreViewControl from "./view-control";
-export { coreViewControl };
+export { _SelectionControl } from "./SelectionControl";
+export { _ViewControl } from "./ViewControl";
