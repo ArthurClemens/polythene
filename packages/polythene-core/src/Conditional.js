@@ -7,93 +7,66 @@ const modes = {
   hiding:   "hiding",
 };
 
-export const Conditional = {
-  /**
-   * @param {object} vnode
-   * @param {object} createStream
-   */
-  getInitialState: (vnode, createStream) => {
-    const attrs = vnode.attrs;
-    if (!attrs.didHide) {
-      return {};
-    }
-    const visible = attrs.permanent || attrs.show;
-    const mode = createStream(attrs.permanent
+export const _Conditional = ({ h, useState, useEffect, ...props }) => {
+  const initialMode = props.permanent
+    ? modes.visible
+    : props.permanent || props.show
       ? modes.visible
-      : visible
-        ? modes.visible
-        : modes.hidden);
-    return {
-      mode,
-      redrawOnUpdate: createStream.merge([mode])
-    };
-  },
-  /**
-   * @param {object} params
-   * @param {object} params.state
-   * @param {object} params.attrs
-   */
-  onUpdate: ({ state, attrs }) => {
-    if (!attrs.didHide) {
-      return;
-    }
-    const mode = state.mode();
-    if (attrs.permanent) {
-      if (mode === modes.visible && attrs.show) {
-        state.mode(modes.exposing);
-      } else if (mode === modes.exposing && !attrs.show) {
-        state.mode(modes.hiding);
-      }
-    } else {
-      // "normal" type
-      if (mode === modes.hidden && attrs.show) {
-        state.mode(modes.visible);
-      } else if (mode === modes.visible && !attrs.show) {
-        state.mode(modes.hiding);
-      }
-    }
-  },
-  /**
-   * @param {object} params
-   * @param {object} params.state
-   * @param {object} params.attrs
-   * @param {object} attrs
-   * @param {function} attrs.renderer
-   */
-  view: ({ state, attrs }, { renderer: h }) => {
-    const placeholder = h("span", { className: attrs.placeholderClassName });
-        
-    // No didHide callback passed: use normal visibility evaluation
-    if (!attrs.didHide) {
-      return attrs.permanent || attrs.inactive || attrs.show
-        ? h(attrs.instance, attrs)
-        : placeholder;
-    }
+      : modes.hidden;
+  const [mode, setMode] = useState(initialMode);
 
-    // else: use didHide to reset the state after hiding
-    const mode = state.mode();
-    const visible = mode !== modes.hidden;
-    return visible
-      ? h(attrs.instance, {
-        ...attrs,
-        didHide:
-          /**
-           * @param {any} args
-           */
-          (args) => (
-            attrs.didHide(args),
-            state.mode(attrs.permanent
-              ? modes.visible
-              : modes.hidden
-            )
-          ),
-        ...(mode === modes.hiding
-          ? { show: true, hide: true }
-          : undefined
-        )
-      })
-      : placeholder; 
-  },
-  displayName: "Conditional"
+  useEffect(
+    () => {
+      let newMode = mode;
+      if (props.permanent) {
+        if (mode === modes.visible && props.show) {
+          newMode = modes.exposing;
+        } else if (mode === modes.exposing && !props.show) {
+          newMode = modes.hiding;
+        }
+      } else {
+        // "normal" type
+        if (mode === modes.hidden && props.show) {
+          newMode = modes.visible;
+        } else if (mode === modes.visible && !props.show) {
+          newMode = modes.hiding;
+        }
+      }
+      if (newMode !== mode) {
+        setMode(newMode);
+      }
+    },
+    [props]
+  );
+
+  const placeholder = h("span", { className: props.placeholderClassName });
+
+  // No didHide callback passed: use normal visibility evaluation
+  if (!props.didHide) {
+    return props.permanent || props.inactive || props.show
+      ? h(props.instance, props)
+      : placeholder;
+  }
+
+  const visible = mode !== modes.hidden;
+  return visible
+    ? h(props.instance, {
+      ...props,
+      didHide:
+        /**
+         * @param {any} args
+         */
+        (args) => (
+          props.didHide(args),
+          setMode(props.permanent
+            ? modes.visible
+            : modes.hidden
+          )
+        ),
+      ...(mode === modes.hiding
+        ? { show: true, hide: true }
+        : undefined
+      )
+    })
+    : placeholder;
 };
-

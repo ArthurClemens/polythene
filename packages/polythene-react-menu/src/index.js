@@ -1,11 +1,11 @@
-// @ts-check
 
 /**
  * @typedef {import("polythene-react-base").Vnode} Vnode
  */
 
-import { ComponentCreator, renderer as h } from "polythene-react-base";
-import { coreConditional } from "polythene-core";
+import { ComponentCreator } from "polythene-react-base";
+import { _Conditional } from "polythene-core";
+import { cast, h, useState, useEffect } from "cyano-react";
 import { coreMenu as core } from "polythene-core-menu";
 import classes from "polythene-css-classes/menu";
 import { Shadow } from "polythene-react-shadow";
@@ -15,7 +15,7 @@ const MenuInstance = ComponentCreator({
   createContent: (vnode, args) => core.createContent(vnode, { ...args, Shadow })
 });
 
-const MenuToggle = ComponentCreator(coreConditional);
+const MenuToggle = cast(_Conditional, { h, useState, useEffect });
 MenuToggle["displayName"] = "MenuToggle";
 
 /**

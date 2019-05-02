@@ -17,6 +17,7 @@
     "README.md"
   ],
   "dependencies": {
+    "cyano-react": "^0.5.0",
     "polythene-core": "^1.5.4",
     "polythene-core-menu": "^1.5.4",
     "polythene-css-classes": "^1.5.4",

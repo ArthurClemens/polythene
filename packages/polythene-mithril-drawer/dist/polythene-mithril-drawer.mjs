@@ -1,5 +1,6 @@
-import { ComponentCreator, renderer } from 'polythene-mithril-base';
-import { coreConditional } from 'polythene-core';
+import { ComponentCreator } from 'polythene-mithril-base';
+import { _Conditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-mithril';
 import { coreDrawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-mithril-dialog';
 
@@ -53,14 +54,18 @@ var classes = {
 var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
   component: DialogInstance
 }));
-var DrawerToggle = ComponentCreator(coreConditional);
+var DrawerToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = {
   /**
    * @param {Vnode} vnode
    */
   view: function view(vnode) {
-    return renderer(DrawerToggle, _objectSpread({}, vnode.attrs, {
+    return h(DrawerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: DrawerInstance,
       permanent: vnode.attrs.permanent || vnode.attrs.mini // passed to Conditional

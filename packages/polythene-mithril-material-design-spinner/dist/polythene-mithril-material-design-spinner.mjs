@@ -1,8 +1,7 @@
 import { BaseSpinner } from 'polythene-mithril-base-spinner';
 import { _Spinner } from 'polythene-core-material-design-spinner';
-import { cast, h } from 'cyano-mithril';
-import { ComponentCreator, renderer } from 'polythene-mithril-base';
-import { coreConditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-mithril';
+import { _Conditional } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -73,14 +72,18 @@ var Spinner = cast(_Spinner, {
   h: h,
   BaseSpinner: BaseSpinner
 });
-var SpinnerToggle = ComponentCreator(coreConditional);
+var SpinnerToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 SpinnerToggle["displayName"] = "MaterialDesignSpinnerToggle";
 var MaterialDesignSpinner = {
   /**
    * @param {Vnode} vnode
    */
   view: function view(vnode) {
-    return renderer(SpinnerToggle, _objectSpread({}, vnode.attrs, {
+    return h(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
       instance: Spinner
     }));

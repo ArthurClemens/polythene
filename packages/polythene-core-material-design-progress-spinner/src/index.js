@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, unpackAttrs, getStyle, styleDurationToMs } from "polythene-core";
+import { unpackAttrs, getStyle, styleDurationToMs } from "polythene-core";
 import { easing } from "polythene-utilities";
 import classes from "polythene-css-classes/material-design-progress-spinner";
 

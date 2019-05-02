@@ -1,5 +1,6 @@
-import { ComponentCreator, renderer } from 'polythene-mithril-base';
-import { coreConditional } from 'polythene-core';
+import { ComponentCreator } from 'polythene-mithril-base';
+import { _Conditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-mithril';
 import { coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
@@ -94,14 +95,18 @@ var MenuInstance = ComponentCreator(_objectSpread({}, coreMenu, {
     }));
   }
 }));
-var MenuToggle = ComponentCreator(coreConditional);
+var MenuToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 MenuToggle["displayName"] = "MenuToggle";
 var Menu = {
   /**
    * @param {Vnode} vnode
    */
   view: function view(vnode) {
-    return renderer(MenuToggle, _objectSpread({}, vnode.attrs, {
+    return h(MenuToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,
       instance: MenuInstance
     }));

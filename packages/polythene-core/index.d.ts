@@ -59,7 +59,7 @@ export type Content = object | any;
 
   }
 
-  export const coreConditional: Partial<CoreComponentCreatorOptions>;
+  export const _Conditional: Partial<CoreComponentCreatorOptions>;
 
 /* Conditional.js END */
 

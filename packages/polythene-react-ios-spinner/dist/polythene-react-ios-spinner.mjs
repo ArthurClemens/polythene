@@ -1,8 +1,7 @@
 import { BaseSpinner } from 'polythene-react-base-spinner';
 import { _Spinner } from 'polythene-core-ios-spinner';
-import { cast, h } from 'cyano-react';
-import { ComponentCreator, renderer } from 'polythene-react-base';
-import { coreConditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-react';
+import { _Conditional } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -67,14 +66,18 @@ var Spinner = cast(_Spinner, {
   h: h,
   BaseSpinner: BaseSpinner
 });
-var SpinnerToggle = ComponentCreator(coreConditional);
+var SpinnerToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 SpinnerToggle["displayName"] = "IOSSpinnerToggle";
 /**
  * @param {Vnode} props 
  */
 
 var IOSSpinner = function IOSSpinner(props) {
-  return renderer(SpinnerToggle, _objectSpread({}, props, {
+  return h(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,
     instance: Spinner
   }));

@@ -1,5 +1,6 @@
-import { ComponentCreator, renderer } from 'polythene-react-base';
-import { coreConditional } from 'polythene-core';
+import { ComponentCreator } from 'polythene-react-base';
+import { _Conditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-react';
 import { coreDrawer } from 'polythene-core-drawer';
 import { DialogInstance } from 'polythene-react-dialog';
 
@@ -71,10 +72,14 @@ var classes = {
 var DrawerInstance = ComponentCreator(_objectSpread({}, coreDrawer, {
   component: DialogInstance
 }));
-var DrawerToggle = ComponentCreator(coreConditional);
+var DrawerToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = function Drawer(props) {
-  return renderer(DrawerToggle, _extends({}, props, {
+  return h(DrawerToggle, _extends({}, props, {
     placeholderClassName: classes.placeholder,
     instance: DrawerInstance,
     permanent: props.permanent || props.mini // passed to Conditional

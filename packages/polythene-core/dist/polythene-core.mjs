@@ -32,12 +32,143 @@ function _objectSpread(target) {
   return target;
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 // @ts-check
 var modes = {
   hidden: "hidden",
   visible: "visible",
   exposing: "exposing",
   hiding: "hiding"
+};
+var _Conditional = function _Conditional(_ref) {
+  var h = _ref.h,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      props = _objectWithoutProperties(_ref, ["h", "useState", "useEffect"]);
+
+  var initialMode = props.permanent ? modes.visible : props.permanent || props.show ? modes.visible : modes.hidden;
+
+  var _useState = useState(initialMode),
+      _useState2 = _slicedToArray(_useState, 2),
+      mode = _useState2[0],
+      setMode = _useState2[1];
+
+  useEffect(function () {
+    var newMode = mode;
+
+    if (props.permanent) {
+      if (mode === modes.visible && props.show) {
+        newMode = modes.exposing;
+      } else if (mode === modes.exposing && !props.show) {
+        newMode = modes.hiding;
+      }
+    } else {
+      // "normal" type
+      if (mode === modes.hidden && props.show) {
+        newMode = modes.visible;
+      } else if (mode === modes.visible && !props.show) {
+        newMode = modes.hiding;
+      }
+    }
+
+    if (newMode !== mode) {
+      setMode(newMode);
+    }
+  }, [props]);
+  var placeholder = h("span", {
+    className: props.placeholderClassName
+  }); // No didHide callback passed: use normal visibility evaluation
+
+  if (!props.didHide) {
+    return props.permanent || props.inactive || props.show ? h(props.instance, props) : placeholder;
+  }
+
+  var visible = mode !== modes.hidden;
+  return visible ? h(props.instance, _objectSpread({}, props, {
+    didHide:
+    /**
+     * @param {any} args
+     */
+    function didHide(args) {
+      return props.didHide(args), setMode(props.permanent ? modes.visible : modes.hidden);
+    }
+  }, mode === modes.hiding ? {
+    show: true,
+    hide: true
+  } : undefined)) : placeholder;
 };
 var Conditional = {
   /**
@@ -64,9 +195,9 @@ var Conditional = {
    * @param {object} params.state
    * @param {object} params.attrs
    */
-  onUpdate: function onUpdate(_ref) {
-    var state = _ref.state,
-        attrs = _ref.attrs;
+  onUpdate: function onUpdate(_ref2) {
+    var state = _ref2.state,
+        attrs = _ref2.attrs;
 
     if (!attrs.didHide) {
       return;
@@ -97,10 +228,10 @@ var Conditional = {
    * @param {object} attrs
    * @param {function} attrs.renderer
    */
-  view: function view(_ref2, _ref3) {
-    var state = _ref2.state,
-        attrs = _ref2.attrs;
-    var h = _ref3.renderer;
+  view: function view(_ref3, _ref4) {
+    var state = _ref3.state,
+        attrs = _ref3.attrs;
+    var h = _ref4.renderer;
     var placeholder = h("span", {
       className: attrs.placeholderClassName
     }); // No didHide callback passed: use normal visibility evaluation
@@ -997,4 +1128,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Conditional as coreConditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };
+export { Conditional as coreConditional, _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };

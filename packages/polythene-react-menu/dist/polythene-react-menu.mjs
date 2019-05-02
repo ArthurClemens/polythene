@@ -1,5 +1,6 @@
-import { ComponentCreator, renderer } from 'polythene-react-base';
-import { coreConditional } from 'polythene-core';
+import { ComponentCreator } from 'polythene-react-base';
+import { _Conditional } from 'polythene-core';
+import { cast, h, useState, useEffect } from 'cyano-react';
 import { coreMenu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-react-shadow';
 
@@ -94,14 +95,18 @@ var MenuInstance = ComponentCreator(_objectSpread({}, coreMenu, {
     }));
   }
 }));
-var MenuToggle = ComponentCreator(coreConditional);
+var MenuToggle = cast(_Conditional, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
 MenuToggle["displayName"] = "MenuToggle";
 /**
  * @param {Vnode} props 
  */
 
 var Menu = function Menu(props) {
-  return renderer(MenuToggle, _objectSpread({}, props, {
+  return h(MenuToggle, _objectSpread({}, props, {
     placeholderClassName: classes.placeholder,
     instance: MenuInstance
   }));
