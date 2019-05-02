@@ -438,7 +438,9 @@ var _CardPrimary = function _CardPrimary(_ref) {
   var dispatcher = props.dispatcher;
   var primaryDispatch = {
     title: function title(pAttrs) {
-      return pAttrs.attrs || pAttrs.props ? pAttrs || pAttrs.props : h("div", {
+      return pAttrs.attrs // Mithril
+      || pAttrs.props // React
+      ? pAttrs || pAttrs.props : h("div", {
         className: classes.title,
         key: "title",
         style: pAttrs.style
