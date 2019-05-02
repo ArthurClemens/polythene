@@ -1,8 +1,10 @@
-import { ComponentCreator } from 'polythene-mithril-base';
-import { coreButtonGroup } from 'polythene-core-button-group';
+import { cast, h, a } from 'cyano-mithril';
+import { _ButtonGroup } from 'polythene-core-button-group';
 
-// @ts-check
-var ButtonGroup = ComponentCreator(coreButtonGroup);
+var ButtonGroup = cast(_ButtonGroup, {
+  h: h,
+  a: a
+});
 ButtonGroup["displayName"] = "ButtonGroup";
 
 export { ButtonGroup };

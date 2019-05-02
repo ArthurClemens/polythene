@@ -16,26 +16,58 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-button-group"
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, attrs.testId && {
-    "data-test-id": attrs.testId
+var _ButtonGroup = function _ButtonGroup(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      props = _objectWithoutProperties(_ref, ["h", "a"]);
+
+  var componentProps = _extends({}, props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, props.className || props[a.class]].join(" ")
   });
-};
-var createContent = function createContent(vnode) {
-  return vnode.children;
+
+  return h(props.element || "div", componentProps, props.children);
 };
 
-var buttonGroup = /*#__PURE__*/Object.freeze({
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { buttonGroup as coreButtonGroup };
+export { _ButtonGroup };
