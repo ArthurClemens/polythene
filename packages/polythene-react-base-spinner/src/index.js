@@ -1,14 +1,10 @@
-// @ts-check
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreBaseSpinner as core } from "polythene-core-base-spinner";
-import classes from "polythene-css-classes/base-spinner";
+import { _BaseSpinner } from "polythene-core-base-spinner";
 import { Shadow } from "polythene-react-shadow";
+import classes from "polythene-css-classes/base-spinner";
+import { cast, h, a, useRef, useState, useEffect, getRef } from "cyano-react";
 
-export const BaseSpinner = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, Shadow }),
-});
+export const BaseSpinner = cast(_BaseSpinner, { h, a, useRef, useState, useEffect, getRef, Shadow });
 
-BaseSpinner["classes"] = classes;
 BaseSpinner["displayName"] = "BaseSpinner";
+BaseSpinner["classes"] = classes;

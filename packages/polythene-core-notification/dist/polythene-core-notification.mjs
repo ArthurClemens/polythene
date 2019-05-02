@@ -79,7 +79,10 @@ var stopTimer = function stopTimer(state) {
 
 var transitionOptions = function transitionOptions(state, attrs, isShow) {
   return {
-    state: state,
+    isTransitioning: state.transitioning(),
+    setIsTransitioning: state.transitioning,
+    setIsVisible: state.visible,
+    instanceId: state.instanceId,
     attrs: attrs,
     isShow: isShow,
     beforeTransition: isShow ? function () {

@@ -919,7 +919,10 @@ var transition = function transition(opts, state) {
  * 
  * @param {object} params
  * @param {boolean} [params.isShow]
- * @param {object} [params.state]
+ * @param {boolean} [params.isTransitioning]
+ * @param {string} [params.instanceId]
+ * @param {(boolean) => void} [params.setIsTransitioning]
+ * @param {(boolean) => void} [params.setIsVisible]
  * @param {object} [params.attrs]
  * @param {Array<HTMLElement>} [params.domElements]
  * @param {() => void} [params.beforeTransition]
@@ -931,8 +934,11 @@ var transition = function transition(opts, state) {
 
 
 var transitionComponent = function transitionComponent(_ref) {
-  var isShow = _ref.isShow,
-      state = _ref.state,
+  var isTransitioning = _ref.isTransitioning,
+      setIsTransitioning = _ref.setIsTransitioning,
+      setIsVisible = _ref.setIsVisible,
+      instanceId = _ref.instanceId,
+      isShow = _ref.isShow,
       attrs = _ref.attrs,
       domElements = _ref.domElements,
       beforeTransition = _ref.beforeTransition,
@@ -940,12 +946,12 @@ var transitionComponent = function transitionComponent(_ref) {
       showClass = _ref.showClass,
       transitionClass = _ref.transitionClass;
 
-  if (state.transitioning()) {
+  if (isTransitioning) {
     return Promise.resolve();
   }
 
-  state.transitioning(true);
-  state.visible(isShow ? true : false);
+  setIsTransitioning(true);
+  setIsVisible(isShow ? true : false);
 
   if (beforeTransition) {
     beforeTransition();
@@ -975,7 +981,7 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 
   return fn(opts3).then(function () {
-    var id = state.instanceId;
+    var id = instanceId;
 
     if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
       attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
@@ -987,7 +993,7 @@ var transitionComponent = function transitionComponent(_ref) {
       afterTransition();
     }
 
-    state.transitioning(false);
+    setIsTransitioning(false);
   });
 };
 

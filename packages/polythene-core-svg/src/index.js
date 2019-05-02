@@ -1,7 +1,7 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/svg";
 
-export const _SVG = ({ h, a, useEffect, useState, getDom, ...props }) => {
+export const _SVG = ({ h, a, useEffect, useState, getRef, ...props }) => {
   const [domElement, setDomElement] = useState();
 
   useEffect(
@@ -18,9 +18,9 @@ export const _SVG = ({ h, a, useEffect, useState, getDom, ...props }) => {
   
   const componentProps = Object.assign({},
     filterSupportedAttributes(props),
-    getDom(dom => dom && !domElement && (
+    getRef(dom => dom && !domElement && (
       setDomElement(dom),
-      props.getDom && props.getDom(dom)
+      props.getRef && props.getRef(dom)
     )),
     props.testId && { "data-test-id": props.testId },
     {

@@ -146,6 +146,7 @@ var buttonClasses = {
   dropdownOpen: "pe-button--dropdown-open",
   extraWide: "pe-button--extra-wide",
   hasDropdown: "pe-button--dropdown",
+  focus: "pe-button--focus",
   highLabel: "pe-button--high-label",
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
@@ -221,12 +222,12 @@ var sortByLargestWidth = function sortByLargestWidth(a, b) {
 var _Tabs = function _Tabs(_ref) {
   var h = _ref.h,
       a = _ref.a,
-      getDom = _ref.getDom,
+      getRef = _ref.getRef,
       useState = _ref.useState,
       useEffect = _ref.useEffect,
       ScrollButton = _ref.ScrollButton,
       Tab = _ref.Tab,
-      props = _objectWithoutProperties(_ref, ["h", "a", "getDom", "useState", "useEffect", "ScrollButton", "Tab"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "getRef", "useState", "useEffect", "ScrollButton", "Tab"]);
 
   var buttons = getButtons(props);
 
@@ -456,7 +457,7 @@ var _Tabs = function _Tabs(_ref) {
     setPreviousSelectedTabIndex(tabIndex);
   }
 
-  var componentProps = _extends({}, getDom(function (dom) {
+  var componentProps = _extends({}, getRef(function (dom) {
     return dom && !domElement && setDomElement(dom);
   }), filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId

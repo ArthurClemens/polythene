@@ -1,7 +1,8 @@
+import { BaseSpinner } from 'polythene-react-base-spinner';
+import { _Spinner } from 'polythene-core-material-design-progress-spinner';
+import { cast, h, useState, useRef, useEffect } from 'cyano-react';
 import { ComponentCreator, renderer } from 'polythene-react-base';
 import { coreConditional } from 'polythene-core';
-import { coreMaterialDesignProgressSpinner } from 'polythene-core-material-design-progress-spinner';
-import { BaseSpinner } from 'polythene-react-base-spinner';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -64,15 +65,23 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = ComponentCreator(_objectSpread({}, coreMaterialDesignProgressSpinner, {
-  component: BaseSpinner
-}));
+var Spinner = cast(_Spinner, {
+  h: h,
+  useState: useState,
+  useRef: useRef,
+  useEffect: useEffect,
+  BaseSpinner: BaseSpinner
+});
 var SpinnerToggle = ComponentCreator(coreConditional);
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
+/**
+ * @param {Vnode} props 
+ */
+
 var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
   return renderer(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,
-    instance: SpinnerInstance
+    instance: Spinner
   }));
 };
 MaterialDesignProgressSpinner["classes"] = classes;

@@ -1,12 +1,12 @@
 import { _SVG } from 'polythene-core-svg';
-import { cast, h, a, useEffect, useState, getDom } from 'cyano-mithril';
+import { cast, h, a, useEffect, useState, getRef } from 'cyano-mithril';
 
 var SVG = cast(_SVG, {
   h: h,
   a: a,
   useEffect: useEffect,
   useState: useState,
-  getDom: getDom
+  getRef: getRef
 });
 
 export { SVG };

@@ -19,6 +19,80 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-md-progress-spinner",
   // elements
@@ -33,8 +107,8 @@ var percentageValue = function percentageValue(min, max) {
   return min + (max - min) * percentage;
 };
 
-var rotateCircle = function rotateCircle(el, min, max, percentage) {
-  var style = el.style;
+var rotateCircle = function rotateCircle(domElement, min, max, percentage) {
+  var style = domElement.style;
   style["transform"] = style["-webkit-transform"] = style["-moz-transform"] = style["-ms-transform"] = style["-o-transform"] = "rotate(" + percentageValue(min, max, percentage) + "deg)";
 };
 
@@ -56,57 +130,55 @@ var animate = function animate(stateEl, size, percentage) {
 };
 
 var updateWithPercentage = function updateWithPercentage(_ref) {
-  var state = _ref.state,
-      attrs = _ref.attrs,
-      size = _ref.size;
+  var domElement = _ref.domElement,
+      isAnimating = _ref.isAnimating,
+      setIsAnimating = _ref.setIsAnimating,
+      percentage = _ref.percentage,
+      setPercentage = _ref.setPercentage,
+      size = _ref.size,
+      props = _ref.props;
 
-  if (!state.dom) {
+  if (!domElement || isAnimating || size === undefined || props.percentage === undefined) {
     return;
   }
 
-  if (state.animating()) {
-    return;
-  }
+  var currentPercentage = unpackAttrs(props.percentage);
+  var previousPercentage = percentage;
 
-  if (attrs.percentage === undefined) {
-    return;
-  }
-
-  var percentage = unpackAttrs(attrs.percentage);
-  var previousPercentage = state.percentage();
-  var easingFn = attrs.animated ? easing.easeInOutQuad : function (v) {
-    return v;
-  };
-
-  if (attrs.animated && previousPercentage !== percentage) {
-    var el = state.dom;
-    var animationDuration = attrs.updateDuration !== undefined ? attrs.updateDuration * 1000 : styleDurationToMs(getStyle({
-      element: el.querySelector(".".concat(classes.animation)),
-      prop: "animation-duration"
-    }));
-    var start = null;
-
-    var step = function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = timestamp - start;
-      var stepPercentage = 1.0 / animationDuration * progress;
-      var newPercentage = previousPercentage + stepPercentage * (percentage - previousPercentage);
-      animate(el, size, easingFn(newPercentage));
-
-      if (start && progress < animationDuration) {
-        window.requestAnimationFrame(step);
-      } else {
-        start = null;
-        state.percentage(percentage);
-        state.animating(false);
-      }
+  if (previousPercentage !== currentPercentage) {
+    var easingFn = props.animated ? easing.easeInOutQuad : function (v) {
+      return v;
     };
 
-    state.animating(true);
-    window.requestAnimationFrame(step);
-  } else {
-    animate(state.dom, size, easingFn(percentage));
-    state.percentage(percentage);
+    if (props.animated) {
+      var animationDuration = props.updateDuration !== undefined ? props.updateDuration * 1000 : styleDurationToMs(getStyle({
+        element: domElement.querySelector(".".concat(classes.animation)),
+        prop: "animation-duration"
+      }));
+      var start = null;
+
+      var step = function step(timestamp) {
+        if (!start) start = timestamp;
+        var progress = timestamp - start;
+        var stepPercentage = 1.0 / animationDuration * progress;
+        var newPercentage = previousPercentage + stepPercentage * (currentPercentage - previousPercentage);
+        animate(domElement, size, easingFn(newPercentage));
+
+        if (start && progress < animationDuration) {
+          window.requestAnimationFrame(step);
+        } else {
+          start = null;
+          setPercentage(currentPercentage);
+          setIsAnimating(false);
+        }
+      };
+
+      setIsAnimating(true);
+      window.requestAnimationFrame(step);
+    } else {
+      animate(domElement, size, easingFn(currentPercentage));
+      setPercentage(currentPercentage);
+    }
   }
 };
 
@@ -120,42 +192,50 @@ var getSize = function getSize(element) {
   })) : 0);
 };
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var percentage = createStream(0);
-  var animating = createStream(false);
-  return {
-    animating: animating,
-    dom: undefined,
-    percentage: percentage,
-    redrawOnUpdate: createStream.merge([animating])
-  };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
+var _Spinner = function _Spinner(_ref2) {
+  var h = _ref2.h,
+      useState = _ref2.useState,
+      useEffect = _ref2.useEffect,
+      BaseSpinner = _ref2.BaseSpinner,
+      props = _objectWithoutProperties(_ref2, ["h", "useState", "useEffect", "BaseSpinner"]);
 
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  state.dom = vnode.dom;
-  var size = getSize(state.dom);
+  var _useState = useState(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      percentage = _useState2[0],
+      setPercentage = _useState2[1];
+
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isAnimating = _useState4[0],
+      setIsAnimating = _useState4[1];
+
+  var _useState5 = useState(),
+      _useState6 = _slicedToArray(_useState5, 2),
+      domElement = _useState6[0],
+      setDomElement = _useState6[1];
+
+  var _useState7 = useState(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      size = _useState8[0],
+      setSize = _useState8[1];
+
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    setSize(getSize(domElement));
+  }, [domElement]);
   updateWithPercentage({
-    state: state,
-    attrs: attrs,
-    size: size
+    domElement: domElement,
+    isAnimating: isAnimating,
+    percentage: percentage,
+    setPercentage: setPercentage,
+    setIsAnimating: setIsAnimating,
+    size: size,
+    props: props
   });
-};
-var createProps = function createProps(vnode, _ref2) {
-  var h = _ref2.renderer;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var size = getSize(state.dom);
-  updateWithPercentage({
-    state: state,
-    attrs: attrs,
-    size: size
-  });
-  var content = h("div", {
+  var content = props.content || h("div", {
     key: "content",
     className: classes.animation,
     style: {
@@ -169,16 +249,16 @@ var createProps = function createProps(vnode, _ref2) {
     key: "right",
     className: [classes.circle, classes.circleRight].join(" ")
   })]);
-  return _extends({}, attrs, {
-    className: [classes.component, attrs.className].join(" "),
+
+  var componentProps = _extends({}, props, {
+    ref: function ref(dom) {
+      return dom && !domElement && setDomElement(dom);
+    },
+    className: [classes.component, props.className].join(" "),
     content: content
   });
+
+  return h(BaseSpinner, componentProps);
 };
 
-var spinner = /*#__PURE__*/Object.freeze({
-  getInitialState: getInitialState,
-  onMount: onMount,
-  createProps: createProps
-});
-
-export { spinner as coreMaterialDesignProgressSpinner };
+export { _Spinner };

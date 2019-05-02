@@ -1,7 +1,8 @@
+import { BaseSpinner } from 'polythene-react-base-spinner';
+import { _Spinner } from 'polythene-core-material-design-spinner';
+import { cast, h } from 'cyano-react';
 import { ComponentCreator, renderer } from 'polythene-react-base';
 import { coreConditional } from 'polythene-core';
-import { coreMaterialDesignSpinner } from 'polythene-core-material-design-spinner';
-import { BaseSpinner } from 'polythene-react-base-spinner';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -38,19 +39,6 @@ function _objectSpread(target) {
 }
 
 var classes = {
-  component: "pe-md-spinner",
-  // elements
-  animation: "pe-md-spinner__animation",
-  circle: "pe-md-spinner__circle",
-  circleClipper: "pe-md-spinner__circle-clipper",
-  circleClipperLeft: "pe-md-spinner__circle-clipper-left",
-  circleClipperRight: "pe-md-spinner__circle-clipper-right",
-  gapPatch: "pe-md-spinner__gap-patch",
-  layer: "pe-md-spinner__layer",
-  layerN: "pe-md-spinner__layer-"
-};
-
-var baseSpinnerClasses = {
   component: "pe-spinner",
   // elements
   animation: "pe-spinner__animation",
@@ -68,9 +56,17 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = ComponentCreator(_objectSpread({}, coreMaterialDesignSpinner, {
-  component: BaseSpinner
-}));
+var Spinner = cast(_Spinner, {
+  h: h,
+  BaseSpinner: BaseSpinner
+});
+// import classes from "polythene-css-classes/material-design-spinner";
+// import { BaseSpinner } from "polythene-react-base-spinner";
+// const SpinnerInstance = ComponentCreator({
+//   ...core,
+//   component: BaseSpinner
+// });
+
 var SpinnerToggle = ComponentCreator(coreConditional);
 SpinnerToggle["displayName"] = "MaterialDesignSpinnerToggle";
 /**
@@ -79,11 +75,11 @@ SpinnerToggle["displayName"] = "MaterialDesignSpinnerToggle";
 
 var MaterialDesignSpinner = function MaterialDesignSpinner(props) {
   return renderer(SpinnerToggle, _objectSpread({}, props, {
-    placeholderClassName: baseSpinnerClasses.placeholder,
-    instance: SpinnerInstance
+    placeholderClassName: classes.placeholder,
+    instance: Spinner
   }));
 };
 MaterialDesignSpinner["classes"] = classes;
 MaterialDesignSpinner["displayName"] = "MaterialDesignSpinner";
 
-export { MaterialDesignSpinner };
+export { Spinner, MaterialDesignSpinner };

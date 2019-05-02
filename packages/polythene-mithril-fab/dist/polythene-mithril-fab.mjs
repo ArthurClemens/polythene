@@ -3,7 +3,6 @@ import { Icon } from 'polythene-mithril-icon';
 import { Button } from 'polythene-mithril-button';
 import { cast, h, a } from 'cyano-mithril';
 
-// @ts-check
 var FAB = cast(_FAB, {
   h: h,
   a: a,

@@ -227,10 +227,10 @@ var useAnimationsState = function useAnimationsState(_ref) {
 var _Ripple = function _Ripple(_ref2) {
   var h = _ref2.h,
       a = _ref2.a,
-      getDom = _ref2.getDom,
+      getRef = _ref2.getRef,
       useState = _ref2.useState,
       useEffect = _ref2.useEffect,
-      props = _objectWithoutProperties(_ref2, ["h", "a", "getDom", "useState", "useEffect"]);
+      props = _objectWithoutProperties(_ref2, ["h", "a", "getRef", "useState", "useEffect"]);
 
   var _useState3 = useState(),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -287,7 +287,7 @@ var _Ripple = function _Ripple(_ref2) {
     }
   }, [triggerEl]);
 
-  var componentProps = _extends({}, filterSupportedAttributes(props), getDom(function (dom) {
+  var componentProps = _extends({}, filterSupportedAttributes(props), getRef(function (dom) {
     return dom && !domElement && setDomElement(dom);
   }), props.testId && {
     "data-test-id": props.testId

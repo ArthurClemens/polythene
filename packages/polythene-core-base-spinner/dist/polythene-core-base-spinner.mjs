@@ -1,4 +1,19 @@
-import { deprecation, transitionComponent, filterSupportedAttributes, classForSize } from 'polythene-core';
+import { transitionComponent, filterSupportedAttributes, classForSize } from 'polythene-core';
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -16,6 +31,99 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var classes = {
@@ -36,92 +144,76 @@ var classes = {
   visible: "pe-spinner--visible"
 };
 
-var transitionOptions = function transitionOptions(state, attrs, isShow) {
-  return {
-    state: state,
-    attrs: attrs,
-    isShow: isShow,
+var showSpinner = function showSpinner(opts) {
+  return transitionComponent(_objectSpread({}, opts, {
+    isShow: true
+  }));
+}; // const hideSpinner = opts =>
+//   transitionComponent({
+//     ...opts,
+//     isShow: false
+//   });
+
+
+var _BaseSpinner = function _BaseSpinner(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      getRef = _ref.getRef,
+      Shadow = _ref.Shadow,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "getRef", "Shadow"]);
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isTransitioning = _useState2[0],
+      setIsTransitioning = _useState2[1];
+
+  var _useState3 = useState(!!props.permanent),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isVisible = _useState4[0],
+      setIsVisible = _useState4[1];
+
+  var _useState5 = useState(),
+      _useState6 = _slicedToArray(_useState5, 2),
+      domElement = _useState6[0],
+      setDomElement = _useState6[1];
+
+  var transitionOptions = {
+    isTransitioning: isTransitioning,
+    setIsTransitioning: setIsTransitioning,
+    setIsVisible: setIsVisible,
+    attrs: props,
     domElements: {
-      el: state.dom()
+      el: domElement
     },
     showClass: classes.visible
   };
-};
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
 
-var showSpinner = function showSpinner(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, true));
-};
+    if (!props.permanent) {
+      showSpinner(transitionOptions);
+    }
+  }, [domElement]);
 
-var hideSpinner = function hideSpinner(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, false));
-};
-
-var getInitialState = function getInitialState(vnode, createStream) {
-  var transitioning = createStream(false);
-  var visible = createStream(false);
-  var dom = createStream(null);
-  return {
-    dom: dom,
-    visible: visible,
-    transitioning: transitioning,
-    redrawOnUpdate: createStream.merge([transitioning])
-  };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
-
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  if (attrs.z !== undefined) {
-    deprecation("Spinner", {
-      option: "z",
-      newOption: "shadowDepth"
-    });
-  }
-
-  state.dom(vnode.dom);
-
-  if (!attrs.permanent) {
-    showSpinner(state, attrs);
-  }
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var componentProps = _extends({}, filterSupportedAttributes(props), getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
+  }), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.instanceClass, classForSize(classes, attrs.size), attrs.singleColor ? classes.singleColor : null, attrs.raised ? classes.raised : null, attrs.animated ? classes.animated : null, attrs.permanent ? classes.permanent : null, attrs.permanent ? classes.visible : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.events);
-};
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      Shadow = _ref2.Shadow;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+    className: [classes.component, props.instanceClass, classForSize(classes, props.size), props.singleColor ? classes.singleColor : null, props.raised ? classes.raised : null, props.animated ? classes.animated : null, props.permanent ? classes.permanent : null, isVisible ? classes.visible : null, props.className || props[a.class]].join(" ")
+  }, props.events); // if (state.hide) {
+  //   setTimeout(() => { hideSpinner(state, attrs); }, 0);
+  // }
 
-  if (state.hide) {
-    setTimeout(function () {
-      hideSpinner(state, attrs);
-    }, 0);
-  }
 
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
-
-  return [attrs.raised && attrs.content ? h(Shadow, {
+  return h("div", componentProps, [props.raised && props.content ? h(Shadow, {
     key: "shadow",
-    shadowDepth: shadowDepth
-  }) : null, attrs.content];
+    shadowDepth: props.shadowDepth
+  }) : null, props.content]);
 };
 
-var spinner = /*#__PURE__*/Object.freeze({
-  getInitialState: getInitialState,
-  onMount: onMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { spinner as coreBaseSpinner };
+export { _BaseSpinner };

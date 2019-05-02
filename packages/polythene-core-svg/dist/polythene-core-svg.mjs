@@ -101,8 +101,8 @@ var _SVG = function _SVG(_ref) {
       a = _ref.a,
       useEffect = _ref.useEffect,
       useState = _ref.useState,
-      getDom = _ref.getDom,
-      props = _objectWithoutProperties(_ref, ["h", "a", "useEffect", "useState", "getDom"]);
+      getRef = _ref.getRef,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useEffect", "useState", "getRef"]);
 
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
@@ -119,10 +119,8 @@ var _SVG = function _SVG(_ref) {
     }
   }, [domElement]);
 
-  var componentProps = _extends({}, filterSupportedAttributes(props, {
-    remove: ["ref"]
-  }), getDom(function (dom) {
-    return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
+  var componentProps = _extends({}, filterSupportedAttributes(props), getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.getRef && props.getRef(dom));
   }), props.testId && {
     "data-test-id": props.testId
   }, {

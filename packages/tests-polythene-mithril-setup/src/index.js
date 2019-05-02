@@ -1,6 +1,6 @@
-import m from "../node_modules/mithril/mithril";
-import { Dialog, Button } from "./node_modules/polythene-mithril";
-import { addLayoutStyles, addTypography } from "./node_modules/polythene-css";
+import m from "mithril";
+import { Dialog, Button } from "polythene-mithril";
+import { addLayoutStyles, addTypography } from "polythene-css";
 
 addLayoutStyles();
 addTypography();

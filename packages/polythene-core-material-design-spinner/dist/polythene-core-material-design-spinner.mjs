@@ -16,6 +16,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-md-spinner",
   // elements
@@ -52,24 +88,24 @@ var layer = function layer(num, h) {
   }))]);
 };
 
-var createProps = function createProps(vnode, _ref) {
-  var h = _ref.renderer;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  state.content = state.content || h("div", {
+var _Spinner = function _Spinner(_ref) {
+  var h = _ref.h,
+      BaseSpinner = _ref.BaseSpinner,
+      props = _objectWithoutProperties(_ref, ["h", "BaseSpinner"]);
+
+  var content = props.content || h("div", {
     key: "content",
     className: classes.animation
   }, [1, 2, 3, 4].map(function (num) {
     return layer(num, h);
   }));
-  return _extends({}, attrs, {
-    className: [classes.component, attrs.className].join(" "),
-    content: state.content
+
+  var componentProps = _extends({}, props, {
+    className: [classes.component, props.className].join(" "),
+    content: content
   });
+
+  return h(BaseSpinner, componentProps);
 };
 
-var spinner = /*#__PURE__*/Object.freeze({
-  createProps: createProps
-});
-
-export { spinner as coreMaterialDesignSpinner };
+export { _Spinner };

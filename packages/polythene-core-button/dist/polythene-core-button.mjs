@@ -292,14 +292,14 @@ var _Button = function _Button(_ref) {
 
   var h = _ref.h,
       a = _ref.a,
-      getDom = _ref.getDom,
+      getRef = _ref.getRef,
       useState = _ref.useState,
       useEffect = _ref.useEffect,
       useRef = _ref.useRef,
       Ripple = _ref.Ripple,
       Shadow = _ref.Shadow,
       Icon = _ref.Icon,
-      props = _objectWithoutProperties(_ref, ["h", "a", "getDom", "useState", "useEffect", "useRef", "Ripple", "Shadow", "Icon"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "getRef", "useState", "useEffect", "useRef", "Ripple", "Shadow", "Icon"]);
 
   var events = props.events || {};
 
@@ -349,8 +349,8 @@ var _Button = function _Button(_ref) {
     add: [a.formaction, "type"],
     remove: ["style"]
   }), // Set style on content, not on component
-  getDom(function (dom) {
-    return dom && !domElement && (setDomElement(dom), props.getDom && props.getDom(dom));
+  getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.getRef && props.getRef(dom));
   }), props.testId && {
     "data-test-id": props.testId
   }, {

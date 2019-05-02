@@ -23,7 +23,10 @@ const isModal = ({ state, attrs }) =>
   });
 
 const transitionOptions = (state, attrs, isShow) => ({
-  state,
+  isTransitioning: state.transitioning(),
+  setIsTransitioning: state.transitioning,
+  setIsVisible: state.visible,
+  instanceId: state.instanceId,
   attrs,
   isShow,
   domElements: {

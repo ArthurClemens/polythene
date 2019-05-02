@@ -1,4 +1,4 @@
-import * as m from "mithril";
+import * as m from "./node_modules/mithrilmodules/mithril";
 
 export type Content = object | any;
 

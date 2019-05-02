@@ -2,7 +2,7 @@ import { _ScrollButton, _Tab, _Tabs } from 'polythene-core-tabs';
 import { Button } from 'polythene-react-button';
 import { Icon } from 'polythene-react-icon';
 import { IconButton } from 'polythene-react-icon-button';
-import { cast, h, a, getDom, useState, useEffect } from 'cyano-react';
+import { cast, h, a, getRef, useState, useEffect } from 'cyano-react';
 
 var ScrollButton = cast(_ScrollButton, {
   h: h,
@@ -18,7 +18,7 @@ var Tab = cast(_Tab, {
 var Tabs = cast(_Tabs, {
   h: h,
   a: a,
-  getDom: getDom,
+  getRef: getRef,
   useState: useState,
   useEffect: useEffect,
   ScrollButton: ScrollButton,

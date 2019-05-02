@@ -1,7 +1,8 @@
+import { BaseSpinner } from 'polythene-react-base-spinner';
+import { _Spinner } from 'polythene-core-ios-spinner';
+import { cast, h } from 'cyano-react';
 import { ComponentCreator, renderer } from 'polythene-react-base';
 import { coreConditional } from 'polythene-core';
-import { coreIOSSpinner } from 'polythene-core-ios-spinner';
-import { BaseSpinner } from 'polythene-react-base-spinner';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -62,15 +63,20 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = ComponentCreator(_objectSpread({}, coreIOSSpinner, {
-  component: BaseSpinner
-}));
+var Spinner = cast(_Spinner, {
+  h: h,
+  BaseSpinner: BaseSpinner
+});
 var SpinnerToggle = ComponentCreator(coreConditional);
 SpinnerToggle["displayName"] = "IOSSpinnerToggle";
+/**
+ * @param {Vnode} props 
+ */
+
 var IOSSpinner = function IOSSpinner(props) {
   return renderer(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,
-    instance: SpinnerInstance
+    instance: Spinner
   }));
 };
 IOSSpinner["classes"] = classes;

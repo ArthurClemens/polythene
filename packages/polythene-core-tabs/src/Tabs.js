@@ -53,7 +53,7 @@ const sortByLargestWidth = (a, b) =>
       ? -1
       : 0;
 
-export const _Tabs = ({ h, a, getDom, useState, useEffect, ScrollButton, Tab, ...props }) => {
+export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ...props }) => {
   const buttons = getButtons(props);
   if (buttons.length === 0) {
     throw new Error("No tabs specified");
@@ -237,7 +237,7 @@ export const _Tabs = ({ h, a, getDom, useState, useEffect, ScrollButton, Tab, ..
 
   const componentProps = Object.assign(
     {},
-    getDom(dom => dom && !domElement && (
+    getRef(dom => dom && !domElement && (
       setDomElement(dom)
     )),
     filterSupportedAttributes(props),

@@ -185,10 +185,12 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
     },
     {
       name: "Option: permanent",
-      component: MaterialDesignProgressSpinner,
-      attrs: {
-        permanent: true,
-        percentage: .75
+      component: {
+        view: () => 
+          renderer(MaterialDesignProgressSpinner, {
+            permanent: true,
+            percentage: .75
+          })
       }
     },
     {
@@ -237,11 +239,11 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
         Spinner: MaterialDesignProgressSpinner,
         spinners: [
           {
+            className: "tests-spinner-themed-md-progress-spinner",
             raised: true,
           }
         ],
         permanent: false,
-        className: "tests-spinner-themed-md-progress-spinner"
       })
     },
 

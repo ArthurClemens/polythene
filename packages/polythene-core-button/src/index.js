@@ -2,7 +2,7 @@ import { filterSupportedAttributes, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
 import { useAnimatedShadow } from "./useAnimatedShadow";
 
-export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
+export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
   const events = props.events || {};
   const [domElement, setDomElement] = useState();
   const [isInactive, setIsInactive] = useState(props.inactive);
@@ -27,9 +27,9 @@ export const _Button = ({ h, a, getDom, useState, useEffect, useRef, Ripple, Sha
 
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
-    getDom(dom => dom && !domElement && (
+    getRef(dom => dom && !domElement && (
       setDomElement(dom),
-      props.getDom && props.getDom(dom)
+      props.getRef && props.getRef(dom)
     )),
     props.testId && { "data-test-id": props.testId },
     {

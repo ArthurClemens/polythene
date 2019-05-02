@@ -1,7 +1,8 @@
+import { BaseSpinner } from 'polythene-mithril-base-spinner';
+import { _Spinner } from 'polythene-core-ios-spinner';
+import { cast, h } from 'cyano-mithril';
 import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { coreConditional } from 'polythene-core';
-import { coreIOSSpinner } from 'polythene-core-ios-spinner';
-import { BaseSpinner } from 'polythene-mithril-base-spinner';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -62,9 +63,10 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = ComponentCreator(_objectSpread({}, coreIOSSpinner, {
-  component: BaseSpinner
-}));
+var Spinner = cast(_Spinner, {
+  h: h,
+  BaseSpinner: BaseSpinner
+});
 var SpinnerToggle = ComponentCreator(coreConditional);
 SpinnerToggle["displayName"] = "IOSSpinnerToggle";
 var IOSSpinner = {
@@ -74,7 +76,7 @@ var IOSSpinner = {
   view: function view(vnode) {
     return renderer(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
-      instance: SpinnerInstance
+      instance: Spinner
     }));
   }
 };

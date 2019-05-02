@@ -227,7 +227,10 @@ var scrollContent = function scrollContent(state, attrs) {
 
 var transitionOptions = function transitionOptions(state, attrs, isShow) {
   return {
-    state: state,
+    isTransitioning: state.transitioning(),
+    setIsTransitioning: state.transitioning,
+    setIsVisible: state.visible,
+    instanceId: state.instanceId,
     attrs: attrs,
     isShow: isShow,
     beforeTransition: isShow ? function () {

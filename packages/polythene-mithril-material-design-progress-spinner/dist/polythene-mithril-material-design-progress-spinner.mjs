@@ -1,7 +1,8 @@
+import { BaseSpinner } from 'polythene-mithril-base-spinner';
+import { _Spinner } from 'polythene-core-material-design-progress-spinner';
+import { cast, h, useState, useRef, useEffect } from 'cyano-mithril';
 import { ComponentCreator, renderer } from 'polythene-mithril-base';
 import { coreConditional } from 'polythene-core';
-import { coreMaterialDesignProgressSpinner } from 'polythene-core-material-design-progress-spinner';
-import { BaseSpinner } from 'polythene-mithril-base-spinner';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -64,9 +65,13 @@ var baseSpinnerClasses = {
   visible: "pe-spinner--visible"
 };
 
-var SpinnerInstance = ComponentCreator(_objectSpread({}, coreMaterialDesignProgressSpinner, {
-  component: BaseSpinner
-}));
+var Spinner = cast(_Spinner, {
+  h: h,
+  useState: useState,
+  useRef: useRef,
+  useEffect: useEffect,
+  BaseSpinner: BaseSpinner
+});
 var SpinnerToggle = ComponentCreator(coreConditional);
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 var MaterialDesignProgressSpinner = {
@@ -76,7 +81,7 @@ var MaterialDesignProgressSpinner = {
   view: function view(vnode) {
     return renderer(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
-      instance: SpinnerInstance
+      instance: Spinner
     }));
   }
 };

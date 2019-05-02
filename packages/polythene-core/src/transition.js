@@ -139,7 +139,10 @@ const transition = (opts, state) => {
  * 
  * @param {object} params
  * @param {boolean} [params.isShow]
- * @param {object} [params.state]
+ * @param {boolean} [params.isTransitioning]
+ * @param {string} [params.instanceId]
+ * @param {(boolean) => void} [params.setIsTransitioning]
+ * @param {(boolean) => void} [params.setIsVisible]
  * @param {object} [params.attrs]
  * @param {Array<HTMLElement>} [params.domElements]
  * @param {() => void} [params.beforeTransition]
@@ -148,12 +151,12 @@ const transition = (opts, state) => {
  * @param {string} [params.transitionClass]
  * @returns {Promise}
  */
-export const transitionComponent = ({ isShow, state, attrs, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
-  if (state.transitioning()) {
+export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIsVisible, instanceId, isShow, attrs, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
+  if (isTransitioning) {
     return Promise.resolve();
   }
-  state.transitioning(true);
-  state.visible(isShow ? true : false);
+  setIsTransitioning(true);
+  setIsVisible(isShow ? true : false);
   if (beforeTransition) {
     beforeTransition();
   }
@@ -192,7 +195,7 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
     }
   };
   return fn(opts3).then(() => {
-    const id = state.instanceId;
+    const id = instanceId;
     if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
       attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
     } else if (attrs[isShow ? "didShow" : "didHide"]) {
@@ -201,6 +204,6 @@ export const transitionComponent = ({ isShow, state, attrs, domElements, beforeT
     if (afterTransition) {
       afterTransition();
     }
-    state.transitioning(false);
+    setIsTransitioning(false);
   });
 };

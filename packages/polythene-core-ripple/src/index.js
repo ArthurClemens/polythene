@@ -19,7 +19,7 @@ const useAnimationsState = ({ useState }) => {
   ];
 };
 
-export const _Ripple = ({ h, a, getDom, useState, useEffect, ...props }) => {
+export const _Ripple = ({ h, a, getRef, useState, useEffect, ...props }) => {
   const [domElement, setDomElement] = useState();
   const [animations, addAnimation, removeAnimation] = useAnimationsState({ useState });
   const isAnimating = animations
@@ -62,7 +62,7 @@ export const _Ripple = ({ h, a, getDom, useState, useEffect, ...props }) => {
 
   const componentProps = Object.assign({}, 
     filterSupportedAttributes(props),
-    getDom(dom => dom && !domElement && setDomElement(dom)),
+    getRef(dom => dom && !domElement && setDomElement(dom)),
     props.testId && { "data-test-id": props.testId },
     {
       className: [

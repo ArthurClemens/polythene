@@ -1,10 +1,10 @@
 import { _Ripple } from 'polythene-core-ripple';
-import { cast, h, a, getDom, useState, useEffect } from 'cyano-mithril';
+import { cast, h, a, getRef, useState, useEffect } from 'cyano-mithril';
 
 var Ripple = cast(_Ripple, {
   h: h,
   a: a,
-  getDom: getDom,
+  getRef: getRef,
   useState: useState,
   useEffect: useEffect
 });

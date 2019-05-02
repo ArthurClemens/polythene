@@ -1,5 +1,5 @@
-import { CoreComponentCreatorOptions } from "polythene-core";
-import { Options as SpinnerOptions } from "polythene-core-base-spinner";
+import { CoreComponentCreatorOptions } from "./node_modules/polythene-core";
+import { Options as SpinnerOptions } from "./node_modules/polythene-core-base-spinner";
 
 export interface Options extends SpinnerOptions {
 

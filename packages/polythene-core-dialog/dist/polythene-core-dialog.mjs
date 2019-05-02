@@ -133,7 +133,10 @@ var isModal = function isModal(_ref2) {
 
 var transitionOptions = function transitionOptions(state, attrs, isShow) {
   return {
-    state: state,
+    isTransitioning: state.transitioning(),
+    setIsTransitioning: state.transitioning,
+    setIsVisible: state.visible,
+    instanceId: state.instanceId,
     attrs: attrs,
     isShow: isShow,
     domElements: {

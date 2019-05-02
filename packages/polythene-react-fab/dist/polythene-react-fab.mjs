@@ -3,7 +3,6 @@ import { Icon } from 'polythene-react-icon';
 import { Button } from 'polythene-react-button';
 import { cast, h, a } from 'cyano-react';
 
-// @ts-check
 var FAB = cast(_FAB, {
   h: h,
   a: a,

@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, TransitionOptions, CoreComponentCreatorOptions } from "./node_modules/polythene-core/polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 

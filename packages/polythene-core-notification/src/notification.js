@@ -28,7 +28,10 @@ const stopTimer = state => {
 };
 
 const transitionOptions = (state, attrs, isShow) => ({
-  state,
+  isTransitioning: state.transitioning(),
+  setIsTransitioning: state.transitioning,
+  setIsVisible: state.visible,
+  instanceId: state.instanceId,
   attrs,
   isShow,
   beforeTransition: isShow

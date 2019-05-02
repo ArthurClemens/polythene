@@ -4,7 +4,7 @@ import h from "react-hyperscript";
 import { MithrilToReact } from "./MithrilToReact";
 
 export const renderer = (...args) =>
-  typeof args[0] === "object"
+  typeof args[0] === "object" && args[0].view !== undefined
     ? h.call(null, MithrilToReact(args[0]), ...args.slice(1))
     : h.call(null, ...args);
 

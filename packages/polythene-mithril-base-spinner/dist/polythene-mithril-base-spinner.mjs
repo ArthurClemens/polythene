@@ -1,40 +1,6 @@
-import { ComponentCreator } from 'polythene-mithril-base';
-import { coreBaseSpinner } from 'polythene-core-base-spinner';
+import { _BaseSpinner } from 'polythene-core-base-spinner';
 import { Shadow } from 'polythene-mithril-shadow';
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
+import { cast, h, a, useState, useEffect, getRef } from 'cyano-mithril';
 
 var classes = {
   component: "pe-spinner",
@@ -54,14 +20,15 @@ var classes = {
   visible: "pe-spinner--visible"
 };
 
-var BaseSpinner = ComponentCreator(_objectSpread({}, coreBaseSpinner, {
-  createContent: function createContent(vnode, args) {
-    return coreBaseSpinner.createContent(vnode, _objectSpread({}, args, {
-      Shadow: Shadow
-    }));
-  }
-}));
-BaseSpinner["classes"] = classes;
+var BaseSpinner = cast(_BaseSpinner, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  getRef: getRef,
+  Shadow: Shadow
+});
 BaseSpinner["displayName"] = "BaseSpinner";
+BaseSpinner["classes"] = classes;
 
 export { BaseSpinner };

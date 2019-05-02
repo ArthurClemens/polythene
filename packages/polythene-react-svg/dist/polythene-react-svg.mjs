@@ -1,12 +1,12 @@
 import { _SVG } from 'polythene-core-svg';
-import { cast, h, a, useEffect, useState, getDom } from 'cyano-react';
+import { cast, h, a, useEffect, useState, getRef } from 'cyano-react';
 
 var SVG = cast(_SVG, {
   h: h,
   a: a,
   useEffect: useEffect,
   useState: useState,
-  getDom: getDom
+  getRef: getRef
 });
 SVG["displayName"] = "SVG";
 
