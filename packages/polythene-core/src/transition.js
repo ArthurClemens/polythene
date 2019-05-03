@@ -143,7 +143,7 @@ const transition = (opts, state) => {
  * @param {string} [params.instanceId]
  * @param {(boolean) => void} [params.setIsTransitioning]
  * @param {(boolean) => void} [params.setIsVisible]
- * @param {object} [params.attrs]
+ * @param {object} [params.props]
  * @param {Array<HTMLElement>} [params.domElements]
  * @param {() => void} [params.beforeTransition]
  * @param {() => void} [params.afterTransition]
@@ -151,7 +151,7 @@ const transition = (opts, state) => {
  * @param {string} [params.transitionClass]
  * @returns {Promise}
  */
-export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIsVisible, instanceId, isShow, attrs, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
+export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIsVisible, instanceId, isShow, props, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
   if (isTransitioning) {
     return Promise.resolve();
   }
@@ -160,13 +160,13 @@ export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIs
   if (beforeTransition) {
     beforeTransition();
   }
-  const duration = attrs[isShow ? "showDuration" : "hideDuration"];
-  const delay = attrs[isShow ? "showDelay" : "hideDelay"];
-  const timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
-  const transitions = attrs.transitions;
+  const duration = props[isShow ? "showDuration" : "hideDuration"];
+  const delay = props[isShow ? "showDelay" : "hideDelay"];
+  const timingFunction = props[isShow ? "showTimingFunction" : "hideTimingFunction"];
+  const transitions = props.transitions;
   const fn = isShow ? show : hide;
   const opts1 = {
-    ...attrs,
+    ...props,
     ...domElements,
     showClass,
     transitionClass,
@@ -196,10 +196,10 @@ export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIs
   };
   return fn(opts3).then(() => {
     const id = instanceId;
-    if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
-      attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
-    } else if (attrs[isShow ? "didShow" : "didHide"]) {
-      attrs[isShow ? "didShow" : "didHide"](id); // when used directly
+    if (props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
+      props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call props.didShow / props.didHide
+    } else if (props[isShow ? "didShow" : "didHide"]) {
+      props[isShow ? "didShow" : "didHide"](id); // when used directly
     }
     if (afterTransition) {
       afterTransition();

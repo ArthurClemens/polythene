@@ -170,94 +170,6 @@ var _Conditional = function _Conditional(_ref) {
     hide: true
   } : undefined)) : placeholder;
 };
-var Conditional = {
-  /**
-   * @param {object} vnode
-   * @param {object} createStream
-   */
-  getInitialState: function getInitialState(vnode, createStream) {
-    var attrs = vnode.attrs;
-
-    if (!attrs.didHide) {
-      return {};
-    }
-
-    var visible = attrs.permanent || attrs.show;
-    var mode = createStream(attrs.permanent ? modes.visible : visible ? modes.visible : modes.hidden);
-    return {
-      mode: mode,
-      redrawOnUpdate: createStream.merge([mode])
-    };
-  },
-
-  /**
-   * @param {object} params
-   * @param {object} params.state
-   * @param {object} params.attrs
-   */
-  onUpdate: function onUpdate(_ref2) {
-    var state = _ref2.state,
-        attrs = _ref2.attrs;
-
-    if (!attrs.didHide) {
-      return;
-    }
-
-    var mode = state.mode();
-
-    if (attrs.permanent) {
-      if (mode === modes.visible && attrs.show) {
-        state.mode(modes.exposing);
-      } else if (mode === modes.exposing && !attrs.show) {
-        state.mode(modes.hiding);
-      }
-    } else {
-      // "normal" type
-      if (mode === modes.hidden && attrs.show) {
-        state.mode(modes.visible);
-      } else if (mode === modes.visible && !attrs.show) {
-        state.mode(modes.hiding);
-      }
-    }
-  },
-
-  /**
-   * @param {object} params
-   * @param {object} params.state
-   * @param {object} params.attrs
-   * @param {object} attrs
-   * @param {function} attrs.renderer
-   */
-  view: function view(_ref3, _ref4) {
-    var state = _ref3.state,
-        attrs = _ref3.attrs;
-    var h = _ref4.renderer;
-    var placeholder = h("span", {
-      className: attrs.placeholderClassName
-    }); // No didHide callback passed: use normal visibility evaluation
-
-    if (!attrs.didHide) {
-      return attrs.permanent || attrs.inactive || attrs.show ? h(attrs.instance, attrs) : placeholder;
-    } // else: use didHide to reset the state after hiding
-
-
-    var mode = state.mode();
-    var visible = mode !== modes.hidden;
-    return visible ? h(attrs.instance, _objectSpread({}, attrs, {
-      didHide:
-      /**
-       * @param {any} args
-       */
-      function didHide(args) {
-        return attrs.didHide(args), state.mode(attrs.permanent ? modes.visible : modes.hidden);
-      }
-    }, mode === modes.hiding ? {
-      show: true,
-      hide: true
-    } : undefined)) : placeholder;
-  },
-  displayName: "Conditional"
-};
 
 // @ts-check
 
@@ -1054,7 +966,7 @@ var transition = function transition(opts, state) {
  * @param {string} [params.instanceId]
  * @param {(boolean) => void} [params.setIsTransitioning]
  * @param {(boolean) => void} [params.setIsVisible]
- * @param {object} [params.attrs]
+ * @param {object} [params.props]
  * @param {Array<HTMLElement>} [params.domElements]
  * @param {() => void} [params.beforeTransition]
  * @param {() => void} [params.afterTransition]
@@ -1070,7 +982,7 @@ var transitionComponent = function transitionComponent(_ref) {
       setIsVisible = _ref.setIsVisible,
       instanceId = _ref.instanceId,
       isShow = _ref.isShow,
-      attrs = _ref.attrs,
+      props = _ref.props,
       domElements = _ref.domElements,
       beforeTransition = _ref.beforeTransition,
       afterTransition = _ref.afterTransition,
@@ -1088,13 +1000,13 @@ var transitionComponent = function transitionComponent(_ref) {
     beforeTransition();
   }
 
-  var duration = attrs[isShow ? "showDuration" : "hideDuration"];
-  var delay = attrs[isShow ? "showDelay" : "hideDelay"];
-  var timingFunction = attrs[isShow ? "showTimingFunction" : "hideTimingFunction"];
-  var transitions = attrs.transitions;
+  var duration = props[isShow ? "showDuration" : "hideDuration"];
+  var delay = props[isShow ? "showDelay" : "hideDelay"];
+  var timingFunction = props[isShow ? "showTimingFunction" : "hideTimingFunction"];
+  var transitions = props.transitions;
   var fn = isShow ? show : hide;
 
-  var opts1 = _objectSpread({}, attrs, domElements, {
+  var opts1 = _objectSpread({}, props, domElements, {
     showClass: showClass,
     transitionClass: transitionClass,
     duration: duration,
@@ -1114,10 +1026,10 @@ var transitionComponent = function transitionComponent(_ref) {
   return fn(opts3).then(function () {
     var id = instanceId;
 
-    if (attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
-      attrs[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call attrs.didShow / attrs.didHide
-    } else if (attrs[isShow ? "didShow" : "didHide"]) {
-      attrs[isShow ? "didShow" : "didHide"](id); // when used directly
+    if (props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
+      props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call props.didShow / props.didHide
+    } else if (props[isShow ? "didShow" : "didHide"]) {
+      props[isShow ? "didShow" : "didHide"](id); // when used directly
     }
 
     if (afterTransition) {
@@ -1128,4 +1040,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Conditional as coreConditional, _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };
+export { _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };

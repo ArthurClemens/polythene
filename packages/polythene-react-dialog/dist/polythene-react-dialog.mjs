@@ -1,42 +1,9 @@
-import { ComponentCreator, renderer } from 'polythene-react-base';
+import { cast, h, a, useState, useEffect, useRef, getRef } from 'cyano-react';
+import { renderer, ComponentCreator } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
-import { coreDialog } from 'polythene-core-dialog';
+import { _Dialog } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
 import { Shadow } from 'polythene-react-shadow';
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
 
 var listTileClasses = {
   component: "pe-list-tile",
@@ -109,15 +76,17 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-var DialogInstance = ComponentCreator(_objectSpread({}, coreDialog, {
-  createContent: function createContent(vnode, args) {
-    return coreDialog.createContent(vnode, _objectSpread({}, args, {
-      Shadow: Shadow,
-      Pane: DialogPane,
-      createPane: coreDialog.createPane
-    }));
-  }
-}));
+// @ts-check
+var DialogInstance = cast(_Dialog, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  getRef: getRef,
+  Shadow: Shadow,
+  Pane: DialogPane
+});
 DialogInstance["displayName"] = "DialogInstance";
 var options = {
   name: "dialog",

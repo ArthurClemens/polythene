@@ -5,19 +5,15 @@
  * @typedef {import("polythene-core-dialog").Options} Options
  */
 
+import { cast, h, a, useState, useEffect, useRef, getRef } from "cyano-mithril";
 import { ComponentCreator, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
-import { coreDialog as core } from "polythene-core-dialog";
+import { _Dialog } from "polythene-core-dialog";
 import classes from "polythene-css-classes/dialog";
 import { DialogPane } from "polythene-mithril-dialog-pane";
 import { Shadow } from "polythene-mithril-shadow";
 
-export const DialogInstance = ComponentCreator({
-  ...core,
-  createContent:
-    (vnode, args) => core.createContent(vnode, {...args, Shadow, Pane: DialogPane, createPane: core.createPane })
-});
-
+export const DialogInstance = cast(_Dialog, { h, a, useState, useEffect, useRef, getRef, Shadow, Pane: DialogPane });
 DialogInstance["displayName"] = "DialogInstance";
 
 const options = {

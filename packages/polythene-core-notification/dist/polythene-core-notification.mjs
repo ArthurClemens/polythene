@@ -77,13 +77,13 @@ var stopTimer = function stopTimer(state) {
   }
 };
 
-var transitionOptions = function transitionOptions(state, attrs, isShow) {
+var transitionOptions = function transitionOptions(state, props, isShow) {
   return {
     isTransitioning: state.transitioning(),
     setIsTransitioning: state.transitioning,
     setIsVisible: state.visible,
     instanceId: state.instanceId,
-    attrs: attrs,
+    props: props,
     isShow: isShow,
     beforeTransition: isShow ? function () {
       return stopTimer(state);
@@ -92,12 +92,12 @@ var transitionOptions = function transitionOptions(state, attrs, isShow) {
     },
     afterTransition: isShow ? function () {
       // set timer to hide in a few seconds
-      var timeout = attrs.timeout;
+      var timeout = props.timeout;
 
       if (timeout === 0) ; else {
         var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
         state.timer.start(function () {
-          hideNotification(state, attrs);
+          hideNotification(state, props);
         }, timeoutSeconds);
       }
     } : null,

@@ -4,9 +4,9 @@ import form from "./components/form-mithril";
 import Updating from "./components/updating-mithril";
 import Spawns from "./components/spawns-mithril";
 
-const mithrilTests = ({ renderer, keys, Dialog, Button }) => {
+const mithrilTests = ({ renderer: h, keys, Dialog, Button }) => {
 
-  const Opener = (dialogAttrs, label = "Open") => renderer(Button, {
+  const Opener = (dialogAttrs, label = "Open") => h(Button, {
     raised: true,
     label,
     events: {
@@ -33,7 +33,7 @@ const mithrilTests = ({ renderer, keys, Dialog, Button }) => {
       exclude: true,
       component: {
         view: () =>
-          renderer(Updating)
+          h(Updating)
       }
     },
     {
@@ -42,7 +42,7 @@ const mithrilTests = ({ renderer, keys, Dialog, Button }) => {
       exclude: true,
       component: {
         view: () =>
-          renderer(Spawns)
+          h(Spawns)
       }
     },
   ];

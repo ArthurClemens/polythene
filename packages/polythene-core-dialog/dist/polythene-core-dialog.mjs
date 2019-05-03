@@ -1,4 +1,4 @@
-import { deprecation, unsubscribe, subscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
+import { subscribe, unsubscribe, filterSupportedAttributes, stylePropCompare, transitionComponent } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -31,6 +31,80 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var listTileClasses = {
@@ -105,226 +179,201 @@ var classes = {
 };
 
 var DEFAULT_SHADOW_DEPTH = 3;
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
 
-var isFullScreen = function isFullScreen(_ref) {
-  var state = _ref.state,
-      attrs = _ref.attrs;
-  return attrs.fullScreen || stylePropCompare({
-    element: state.el,
-    pseudoSelector: ":before",
-    prop: "content",
-    contains: "\"".concat("full_screen", "\"")
+var createPane = function createPane(_ref) {
+  var h = _ref.h,
+      Pane = _ref.Pane,
+      props = _ref.props;
+  return h(Pane, {
+    body: props.content || props.body || props.menu || props.children,
+    borders: props.borders,
+    className: props.className,
+    footer: props.footer,
+    footerButtons: props.footerButtons,
+    formOptions: props.formOptions,
+    fullBleed: props.fullBleed,
+    header: props.header,
+    style: props.style,
+    title: props.title
   });
 };
 
-var isModal = function isModal(_ref2) {
-  var state = _ref2.state,
-      attrs = _ref2.attrs;
-  return attrs.modal || stylePropCompare({
-    element: state.el,
-    pseudoSelector: ":before",
-    prop: "content",
-    contains: "\"".concat("modal", "\"")
-  });
-};
+var _Dialog = function _Dialog(_ref2) {
+  var h = _ref2.h,
+      a = _ref2.a,
+      useState = _ref2.useState,
+      useEffect = _ref2.useEffect,
+      useRef = _ref2.useRef,
+      getRef = _ref2.getRef,
+      Pane = _ref2.Pane,
+      Shadow = _ref2.Shadow,
+      props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "Pane", "Shadow"]);
 
-var transitionOptions = function transitionOptions(state, attrs, isShow) {
-  return {
-    isTransitioning: state.transitioning(),
-    setIsTransitioning: state.transitioning,
-    setIsVisible: state.visible,
-    instanceId: state.instanceId,
-    attrs: attrs,
-    isShow: isShow,
-    domElements: {
-      el: state.el,
-      contentEl: state.contentEl,
-      backdropEl: state.backdropEl
-    },
-    showClass: classes.visible,
-    transitionClass: classes.transition
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
+
+  var isInitedRef = useRef(false);
+  var isVisibleRef = useRef(false);
+  var isTransitioningRef = useRef(false);
+  var backdropElRef = useRef();
+  var touchElRef = useRef();
+  var contentElRef = useRef();
+
+  var setIsTransitioning = function setIsTransitioning(value) {
+    return isTransitioningRef.current = value;
   };
-};
 
-var showDialog = function showDialog(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, true));
-};
-
-var hideDialog = function hideDialog(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, false));
-};
-
-var getInitialState = function getInitialState(vnode, createStream) {
-  var transitioning = createStream(false);
-  var visible = createStream(false);
-  return {
-    backdropEl: undefined,
-    touchEl: undefined,
-    cleanUp: undefined,
-    el: undefined,
-    contentEl: undefined,
-    transitioning: transitioning,
-    visible: visible,
-    redrawOnUpdate: createStream.merge([transitioning])
+  var setIsVisible = function setIsVisible(value) {
+    return isVisibleRef.current = value;
   };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
 
-  var state = vnode.state;
-  var attrs = vnode.attrs;
+  var transitionOptions = function transitionOptions(_ref3) {
+    var isShow = _ref3.isShow,
+        _ref3$hideDelay = _ref3.hideDelay,
+        hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay;
+    return {
+      isTransitioning: isTransitioningRef.current,
+      setIsTransitioning: setIsTransitioning,
+      setIsVisible: setIsVisible,
+      instanceId: props.instanceId,
+      props: _extends({}, props, {
+        hideDelay: hideDelay
+      }),
+      isShow: isShow,
+      domElements: {
+        el: domElement,
+        contentEl: contentElRef.current,
+        backdropEl: backdropElRef.current
+      },
+      showClass: classes.visible,
+      transitionClass: classes.transition
+    };
+  };
 
-  if (attrs.z !== undefined) {
-    deprecation("Dialog", {
-      option: "z",
-      newOption: "shadowDepth"
+  var showDialog = function showDialog() {
+    return transitionComponent(transitionOptions({
+      isShow: true
+    }));
+  };
+
+  var hideDialog = function hideDialog(hideDelay) {
+    return transitionComponent(transitionOptions({
+      isShow: false,
+      hideDelay: hideDelay
+    }));
+  };
+
+  var isModal = function isModal() {
+    return props.modal || stylePropCompare({
+      element: domElement,
+      pseudoSelector: ":before",
+      prop: "content",
+      contains: "\"".concat("modal", "\"")
     });
-  }
+  };
 
-  var dom = vnode.dom;
-  state.el = dom;
-  state.backdropEl = dom.querySelector(".".concat(classes.backdrop));
-  state.touchEl = dom.querySelector(".".concat(classes.touch));
-  state.contentEl = dom.querySelector(".".concat(classes.content));
+  var isFullScreen = function isFullScreen() {
+    return props.fullScreen || stylePropCompare({
+      element: domElement,
+      pseudoSelector: ":before",
+      prop: "content",
+      contains: "\"".concat("full_screen", "\"")
+    });
+  };
 
-  if (!attrs.inactive) {
-    // used by Drawer
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    backdropElRef.current = domElement.querySelector(".".concat(classes.backdrop));
+    touchElRef.current = domElement.querySelector(".".concat(classes.touch));
+    contentElRef.current = domElement.querySelector(".".concat(classes.content));
+  }, [domElement]);
+  useEffect(function () {
+    if (!domElement || props.inactive) {
+      return;
+    }
+
     var handleEscape = function handleEscape(e) {
-      if (isFullScreen(vnode) || isModal(vnode)) return;
+      if (isFullScreen() || isModal()) return;
 
       if (e.key === "Escape" || e.key === "Esc") {
         // "Esc" for IE11
         var openDialogs = document.querySelectorAll(".".concat(classes.component));
 
-        if (openDialogs[openDialogs.length - 1] === state.el) {
-          hideDialog(state, _extends({}, attrs, {
-            hideDelay: 0
-          }));
+        if (openDialogs[openDialogs.length - 1] === domElement) {
+          hideDialog(0);
         }
       }
     };
 
-    state.cleanUp = function () {
-      return unsubscribe("keydown", handleEscape);
-    };
-
     subscribe("keydown", handleEscape);
+    isInitedRef.current = true;
+    return function () {
+      unsubscribe("keydown", handleEscape);
+    };
+  }, [domElement]);
 
-    if (attrs.show) {
-      showDialog(state, attrs);
-    }
-  }
-};
-var onUnMount = function onUnMount(vnode) {
-  return vnode.state.cleanUp && vnode.state.cleanUp();
-};
-var createProps = function createProps(vnode, _ref3) {
-  var k = _ref3.keys;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs, {
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
-  attrs.testId && {
-    "data-test-id": attrs.testId
-  }, _defineProperty({
-    className: [attrs.parentClassName || classes.component, attrs.fromMultipleClassName, attrs.fullScreen ? classes.fullScreen : null, attrs.modal ? classes.modal : null, attrs.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
-    attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" "),
-    "data-spawn-id": attrs.spawnId,
+  getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
+  }), _defineProperty({
+    className: [props.parentClassName || classes.component, props.fromMultipleClassName, props.fullScreen ? classes.fullScreen : null, props.modal ? classes.modal : null, props.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
+    props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" "),
+    "data-spawn-id": props.spawnId,
     // received from Multi
-    "data-instance-id": attrs.instanceId
-  }, k.onclick, function (e) {
-    if (e.target !== state.el && e.target !== state.backdropEl && e.target !== state.touchEl) {
+    "data-instance-id": props.instanceId
+  }, a.onclick, function (e) {
+    if (e.target !== domElement && e.target !== backdropElRef.current && e.target !== touchElRef.current) {
       return;
     }
 
-    if (isModal(vnode)) {
+    if (isModal()) {
       // not allowed
       return;
     }
 
-    hideDialog(state, attrs);
+    hideDialog();
   }));
-};
-var createPane = function createPane(vnode, _ref4) {
-  var h = _ref4.renderer,
-      Pane = _ref4.Pane;
-  var attrs = vnode.attrs;
-  return h(Pane, {
-    body: attrs.content || attrs.body || attrs.menu || vnode.children,
-    borders: attrs.borders,
-    className: attrs.className,
-    footer: attrs.footer,
-    footerButtons: attrs.footerButtons,
-    formOptions: attrs.formOptions,
-    fullBleed: attrs.fullBleed,
-    header: attrs.header,
-    style: attrs.style,
-    title: attrs.title
-  });
-};
-var createContent = function createContent(vnode, _ref5) {
-  var renderer = _ref5.renderer,
-      Shadow = _ref5.Shadow,
-      createPane = _ref5.createPane,
-      Pane = _ref5.Pane;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var h = renderer;
 
-  if (state.el) {
-    var visible = state.visible();
-    var transitioning = state.transitioning();
-
-    if (!transitioning) {
-      if (attrs.hide && visible) {
+  if (domElement) {
+    if (!isTransitioningRef.current) {
+      if (props.hide && isVisibleRef.current) {
         // Use setTimeout to play nice with React's lifecycle functions
-        setTimeout(function () {
-          return hideDialog(state, attrs);
-        }, 0);
-      } else if (attrs.show && !visible) {
-        setTimeout(function () {
-          return showDialog(state, attrs);
-        }, 0);
+        setTimeout(hideDialog);
+      } else if (props.show && !isVisibleRef.current) {
+        setTimeout(showDialog);
       }
     }
   }
 
-  var pane = attrs.panesOptions && attrs.panesOptions.length ? h(Pane, attrs.panesOptions[0]) : attrs.panes && attrs.panes.length ? attrs.panes[0] : createPane(vnode, {
-    renderer: renderer,
-    Pane: Pane
+  var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({
+    h: h,
+    Pane: Pane,
+    props: props
   });
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z; // deprecated
+  var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
 
-  return [h("div", {
+  var content = [h("div", {
     key: "backdrop",
     className: classes.backdrop
   }), h("div", {
     key: "touch",
     className: classes.touch
   }), h("div", {
-    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
+    className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
     key: "content"
-  }, [attrs.fullScreen ? null : h(Shadow, {
+  }, [props.fullScreen ? null : h(Shadow, {
     shadowDepth: shadowDepth !== undefined ? shadowDepth : DEFAULT_SHADOW_DEPTH,
     animated: true,
     key: "shadow"
-  }), pane])];
+  }), props.before, pane, props.after])];
+  return h(props.element || "div", componentProps, content);
 };
 
-var dialog = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  onMount: onMount,
-  onUnMount: onUnMount,
-  createProps: createProps,
-  createPane: createPane,
-  createContent: createContent
-});
-
-export { dialog as coreDialog };
+export { _Dialog };

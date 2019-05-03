@@ -183,7 +183,7 @@ var _BaseSpinner = function _BaseSpinner(_ref) {
     isTransitioning: isTransitioning,
     setIsTransitioning: setIsTransitioning,
     setIsVisible: setIsVisible,
-    attrs: props,
+    props: props,
     domElements: {
       el: domElement
     },

@@ -225,13 +225,13 @@ var scrollContent = function scrollContent(state, attrs) {
   state.contentEl.scrollTop = scrollTargetEl.offsetTop;
 };
 
-var transitionOptions = function transitionOptions(state, attrs, isShow) {
+var transitionOptions = function transitionOptions(state, props, isShow) {
   return {
     isTransitioning: state.transitioning(),
     setIsTransitioning: state.transitioning,
     setIsVisible: state.visible,
     instanceId: state.instanceId,
-    attrs: attrs,
+    props: props,
     isShow: isShow,
     beforeTransition: isShow ? function () {
       return state.update();

@@ -27,12 +27,12 @@ const stopTimer = state => {
   }
 };
 
-const transitionOptions = (state, attrs, isShow) => ({
+const transitionOptions = (state, props, isShow) => ({
   isTransitioning: state.transitioning(),
   setIsTransitioning: state.transitioning,
   setIsVisible: state.visible,
   instanceId: state.instanceId,
-  attrs,
+  props,
   isShow,
   beforeTransition: isShow
     ? () => stopTimer(state)
@@ -40,7 +40,7 @@ const transitionOptions = (state, attrs, isShow) => ({
   afterTransition: isShow
     ? () => {
       // set timer to hide in a few seconds
-      const timeout = attrs.timeout;
+      const timeout = props.timeout;
       if (timeout === 0) {
         // do not time out
       } else {
@@ -48,7 +48,7 @@ const transitionOptions = (state, attrs, isShow) => ({
           ? timeout
           : DEFAULT_TIME_OUT;
         state.timer.start(() => {
-          hideNotification(state, attrs);
+          hideNotification(state, props);
         }, timeoutSeconds);
       }     
     }

@@ -149,12 +149,12 @@ const scrollContent = (state, attrs) => {
   state.contentEl.scrollTop = scrollTargetEl.offsetTop;
 };
 
-const transitionOptions = (state, attrs, isShow) => ({
+const transitionOptions = (state, props, isShow) => ({
   isTransitioning: state.transitioning(),
   setIsTransitioning: state.transitioning,
   setIsVisible: state.visible,
   instanceId: state.instanceId,
-  attrs,
+  props,
   isShow,
   beforeTransition: isShow
     ? () => state.update()

@@ -22,7 +22,7 @@ export const _BaseSpinner = ({ h, a, useState, useEffect, getRef, Shadow, ...pro
     isTransitioning,
     setIsTransitioning,
     setIsVisible,
-    attrs: props,
+    props,
     domElements: {
       el: domElement,
     },
