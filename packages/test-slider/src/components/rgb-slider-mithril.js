@@ -85,9 +85,9 @@ export default ({ h, k, Slider, TextField }) => {
 
   return {
     oninit: vnode => {
-      const red = stream(127);
-      const green = stream(127);
-      const blue = stream(127);
+      const red = stream(Math.round(Math.random() * 255));
+      const green = stream(Math.round(Math.random() * 255));
+      const blue = stream(Math.round(Math.random() * 255));
 
       const rgb = stream.merge([red, green, blue]).map(values =>
         values.join(",")

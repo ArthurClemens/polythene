@@ -33,6 +33,80 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-slider",
   // elements
@@ -60,22 +134,6 @@ var classes = {
 };
 
 var MAX_TICKS = 100;
-var focusElement;
-
-var deFocus = function deFocus(state) {
-  if (focusElement) {
-    focusElement.blur();
-  }
-
-  focusElement = undefined;
-  state.hasFocus(false);
-};
-
-var focus = function focus(state, el) {
-  deFocus(state);
-  focusElement = el;
-  state.hasFocus(true);
-};
 
 var positionFromEvent = function positionFromEvent(e, isVertical) {
   return (// isVertical not yet implemented
@@ -83,157 +141,278 @@ var positionFromEvent = function positionFromEvent(e, isVertical) {
   );
 };
 
-var updatePinPosition = function updatePinPosition(state) {
-  if (state.controlEl && state.pinEl) {
-    var left = state.fraction() * state.rangeWidth;
-    state.pinEl.style.left = left + "px";
-  }
-};
+var _Slider = function _Slider(_ref) {
+  var _ref3;
 
-var updateValue = function updateValue(state, value) {
-  state.setValue(value, true);
-  updatePinPosition(state);
-};
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      useRef = _ref.useRef,
+      getRef = _ref.getRef,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "useRef", "getRef"]);
 
-var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
-  var items = [];
-  var stepWithValue = value / stepSize;
-  var s = 0;
+  var min = props.min !== undefined ? props.min : 0;
+  var max = props.max !== undefined ? props.max : 100;
+  var range = max - min;
+  var stepSize = props.stepSize !== undefined ? props.stepSize : 1;
+  var normalizeFactor = 1 / stepSize;
+  var hasTicks = props.ticks !== undefined && props.ticks !== false;
+  var interactiveTrack = props.interactiveTrack !== undefined ? props.interactiveTrack : true;
+  var stepCount = Math.min(MAX_TICKS, parseInt(range / stepSize, 10));
+  var defaultValue = props.defaultValue !== undefined ? props.defaultValue : props.value !== undefined ? props.value : 0;
+  var focusElementRef = useRef();
+  var trackElRef = useRef();
+  var controlElRef = useRef();
+  var pinElRef = useRef();
 
-  while (s < stepCount + 1) {
-    items.push(h("div", {
-      className: s <= stepWithValue ? [classes.tick, classes.tickValue].join(" ") : classes.tick,
-      key: "tick-".concat(s)
-    }));
-    s++;
-  }
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  return items;
-};
+  var _useState3 = useState(min),
+      _useState4 = _slicedToArray(_useState3, 2),
+      fraction = _useState4[0],
+      setFraction = _useState4[1];
 
-var readRangeData = function readRangeData(state) {
-  if (state.controlEl && isClient) {
-    // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
-    state.controlWidth = parseFloat(getStyle({
-      element: state.controlEl,
-      prop: "width"
-    }));
-    state.rangeWidth = state.trackEl.getBoundingClientRect().width - state.controlWidth;
-    var styles = window.getComputedStyle(state.trackEl);
-    state.rangeOffset = parseFloat(styles.marginLeft);
-  }
-};
+  var _useState5 = useState(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      hasFocus = _useState6[0],
+      setHasFocus = _useState6[1];
 
-var calculateClickOffset = function calculateClickOffset(state) {
-  var controlOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  state.clickOffset = state.trackEl.getBoundingClientRect().left - (state.rangeOffset - state.controlWidth / 2) + controlOffset;
-};
+  var _useState7 = useState(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      value = _useState8[0],
+      setValue = _useState8[1];
 
-var initControlEvent = function initControlEvent(state, e) {
-  var controlPos = state.controlEl.getBoundingClientRect().left;
-  var eventPos = positionFromEvent(e);
-  var controlOffset = eventPos - controlPos - state.controlWidth / 2;
-  calculateClickOffset(state, controlOffset);
-};
+  var _useState9 = useState(),
+      _useState10 = _slicedToArray(_useState9, 2),
+      previousValue = _useState10[0],
+      setPreviousValue = _useState10[1];
 
-var initTrackEvent = function initTrackEvent(state) {
-  return calculateClickOffset(state, 0);
-};
+  var _useState11 = useState(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      isActive = _useState12[0],
+      setIsActive = _useState12[1];
 
-var handlePosEvent = function handlePosEvent(state, e) {
-  var pos = positionFromEvent(e) - state.clickOffset;
-  var value = state.min + (pos - state.rangeOffset) / state.rangeWidth * (state.max - state.min);
-  updateValue(state, value);
-};
+  var isDraggingRef = useRef(false);
+  var clickOffsetRef = useRef(0);
+  var rangeWidthRef = useRef(0);
+  var rangeOffsetRef = useRef(0);
+  var controlWidthRef = useRef(0);
 
-var startDrag = function startDrag(state, attrs, e) {
-  if (state.isDragging()) return;
-  e.preventDefault();
-  state.isDragging(true);
-  state.isActive(true);
-  deFocus(state);
-
-  var drag = function drag(e) {
-    if (!state.isDragging()) return;
-    handlePosEvent(state, e);
+  var updatePinPosition = function updatePinPosition() {
+    if (controlElRef.current && pinElRef.current) {
+      var left = fraction * rangeWidthRef.current;
+      pinElRef.current.style.left = left + "px";
+    }
   };
 
-  var endDrag = function endDrag() {
-    if (!state.isDragging()) return;
-    deFocus(state);
+  var generateTickMarks = function generateTickMarks(h, stepCount, stepSize, value) {
+    var items = [];
+    var stepWithValue = value / stepSize;
+    var s = 0;
+
+    while (s < stepCount + 1) {
+      items.push(h("div", {
+        className: s <= stepWithValue ? [classes.tick, classes.tickValue].join(" ") : classes.tick,
+        key: "tick-".concat(s)
+      }));
+      s++;
+    }
+
+    return items;
+  };
+
+  var readRangeData = function readRangeData() {
+    if (controlElRef.current && isClient) {
+      // range is from the far left to the far right minus the thumb width (max x is at the left side of the thumb)
+      controlWidthRef.current = parseFloat(getStyle({
+        element: controlElRef.current,
+        prop: "width"
+      }));
+      rangeWidthRef.current = trackElRef.current.getBoundingClientRect().width - controlWidthRef.current;
+      var styles = window.getComputedStyle(trackElRef.current);
+      rangeOffsetRef.current = parseFloat(styles.marginLeft);
+    }
+  };
+
+  var updateClickOffset = function updateClickOffset() {
+    var controlOffset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    clickOffsetRef.current = trackElRef.current.getBoundingClientRect().left - (rangeOffsetRef.current - controlWidthRef.current / 2) + controlOffset;
+  };
+
+  var initControlEvent = function initControlEvent(e) {
+    var controlPos = controlElRef.current.getBoundingClientRect().left;
+    var eventPos = positionFromEvent(e);
+    var controlOffset = eventPos - controlPos - controlWidthRef.current / 2;
+    updateClickOffset(controlOffset);
+  };
+
+  var initTrackEvent = function initTrackEvent() {
+    return updateClickOffset(0);
+  };
+
+  var handlePosEvent = function handlePosEvent(e) {
+    var pos = positionFromEvent(e) - clickOffsetRef.current;
+    var newValue = min + (pos - rangeOffsetRef.current) / rangeWidthRef.current * range;
+    updateValue(newValue);
+  };
+
+  var startDrag = function startDrag(e) {
+    if (isDraggingRef.current) return;
+    e.preventDefault();
+    isDraggingRef.current = true;
+    setIsActive(true);
+    deFocus();
+
+    var drag = function drag(e) {
+      if (!isDraggingRef.current) return;
+      handlePosEvent(e);
+    };
+
+    var endDrag = function endDrag() {
+      if (!isDraggingRef.current) return;
+      deFocus();
+
+      if (isClient) {
+        pointerMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, drag);
+        });
+        pointerEndMoveEvent.forEach(function (evt) {
+          return window.removeEventListener(evt, endDrag);
+        });
+      }
+
+      isDraggingRef.current = false;
+      setIsActive(false);
+    };
 
     if (isClient) {
       pointerMoveEvent.forEach(function (evt) {
-        return window.removeEventListener(evt, drag);
+        return window.addEventListener(evt, drag);
       });
       pointerEndMoveEvent.forEach(function (evt) {
-        return window.removeEventListener(evt, endDrag);
+        return window.addEventListener(evt, endDrag);
       });
     }
 
-    state.isDragging(false);
-    state.isActive(false);
+    readRangeData();
   };
 
-  if (isClient) {
-    pointerMoveEvent.forEach(function (evt) {
-      return window.addEventListener(evt, drag);
+  var handleNewValue = function handleNewValue(_ref2) {
+    var value = _ref2.value,
+        _ref2$shouldNotify = _ref2.shouldNotify,
+        shouldNotify = _ref2$shouldNotify === void 0 ? false : _ref2$shouldNotify;
+    if (value < min) value = min;
+    if (value > max) value = max;
+    var newValue = stepSize ? Math.round(value * normalizeFactor) / normalizeFactor : value;
+    setFraction((newValue - min) / range);
+    setPreviousValue(newValue);
+    setValue(newValue);
+
+    if (shouldNotify && props.onChange) {
+      props.onChange({
+        value: newValue
+      });
+    }
+  };
+
+  var updateValue = function updateValue(value) {
+    handleNewValue({
+      value: value,
+      shouldNotify: true
     });
-    pointerEndMoveEvent.forEach(function (evt) {
-      return window.addEventListener(evt, endDrag);
+  };
+
+  var increment = function increment(useLargeStep) {
+    return updateValue(value + (useLargeStep ? 10 : 1) * (stepSize || 1));
+  };
+
+  var decrement = function decrement(useLargeStep) {
+    return updateValue(value - (useLargeStep ? 10 : 1) * (stepSize || 1));
+  };
+
+  var deFocus = function deFocus() {
+    if (focusElementRef.current) {
+      focusElementRef.current.blur();
+    }
+
+    focusElementRef.current = undefined;
+    setHasFocus(false);
+  };
+
+  var focus = function focus(element) {
+    deFocus();
+    focusElementRef.current = element;
+    setHasFocus(true);
+  };
+
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    trackElRef.current = domElement.querySelector(".".concat(classes.track));
+    controlElRef.current = domElement.querySelector(".".concat(classes.control));
+    pinElRef.current = domElement.querySelector(".".concat(classes.pin));
+    readRangeData();
+    handleNewValue({
+      value: defaultValue
     });
-  }
+  }, [domElement]);
+  useEffect(function () {
+    if (!props.pin) {
+      return;
+    }
 
-  readRangeData(state);
+    updatePinPosition();
+  }, [value]); // Handle external changes of `value`
 
-  if (attrs.pin) {
-    updatePinPosition(state);
-  }
-};
+  useEffect(function () {
+    if (previousValue !== props.value) {
+      handleNewValue({
+        value: props.value
+      });
+    }
+  }, [props.value]);
 
-var startTrack = function startTrack(state, attrs, e) {
-  e.preventDefault();
-
-  if (state.isDragging()) {
-    return;
-  }
-
-  readRangeData(state);
-  initTrackEvent(state);
-  handlePosEvent(state, e);
-  startDrag(state, attrs, e);
-};
-
-var createSlider = function createSlider(vnode, _ref) {
-  var _ref2;
-
-  var h = _ref.h,
-      k = _ref.k,
-      hasTicks = _ref.hasTicks,
-      interactiveTrack = _ref.interactiveTrack;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var fraction = state.fraction();
-  var range = state.max - state.min;
-  var stepCount = Math.min(MAX_TICKS, parseInt(range / state.stepSize, 10));
+  var componentProps = _extends({}, filterSupportedAttributes(props), getRef(function (dom) {
+    return dom && !domElement && setDomElement(dom);
+  }), props.testId && {
+    "data-test-id": props.testId
+  }, {
+    className: [classes.component, props.disabled ? classes.isDisabled : null, props.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, isActive ? classes.isActive : null, hasFocus ? classes.hasFocus : null, fraction === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  });
 
   var onStartTrack = function onStartTrack(e) {
-    return startTrack(state, attrs, e);
+    e.preventDefault();
+
+    if (isDraggingRef.current) {
+      return;
+    }
+
+    readRangeData();
+    initTrackEvent();
+    handlePosEvent(e);
+    startDrag(e);
   };
 
   var onInitDrag = function onInitDrag(e) {
-    readRangeData(state);
-    initControlEvent(state, e);
-    startDrag(state, attrs, e);
+    e.preventDefault();
+    readRangeData();
+    initControlEvent(e);
+    startDrag(e);
   };
 
   var flexValueCss = fraction + " 1 0%";
   var flexRestValue = 1 - fraction;
   var flexRestCss = flexRestValue + " 1 0%";
-  return h("div", _extends({}, {
+  var content = [props.before, h("div", _extends({}, {
     className: classes.track
-  }, interactiveTrack && !attrs.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
-    return acc[k["on".concat(evt)]] = onStartTrack, acc;
+  }, interactiveTrack && !props.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+    return acc[a["on".concat(evt)]] = onStartTrack, acc;
   }, {})), [h("div", {
     className: classes.trackPart + " " + classes.trackPartValue,
     key: "trackPartValue",
@@ -249,43 +428,42 @@ var createSlider = function createSlider(vnode, _ref) {
   }))), h("div", _extends({}, {
     className: classes.control,
     key: "control"
-  }, attrs.disabled ? {
+  }, props.disabled ? {
     disabled: true
-  } : (_ref2 = {}, _defineProperty(_ref2, k.tabindex, attrs[k.tabindex] || 0), _defineProperty(_ref2, k.onfocus, function () {
-    return focus(state, state.controlEl);
-  }), _defineProperty(_ref2, k.onblur, function () {
-    return deFocus(state);
-  }), _defineProperty(_ref2, k.onkeydown, function (e) {
+  } : (_ref3 = {}, _defineProperty(_ref3, a.tabindex, props[a.tabindex] || 0), _defineProperty(_ref3, a.onfocus, function () {
+    return focus(controlElRef.current);
+  }), _defineProperty(_ref3, a.onblur, function () {
+    return deFocus();
+  }), _defineProperty(_ref3, a.onkeydown, function (e) {
     if (e.key !== "Tab") {
       e.preventDefault();
     }
 
     if (e.key === "Escape" || e.key === "Esc") {
-      state.controlEl.blur(e);
+      controlElRef.current.blur(e);
     } else if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "Left" || e.key === "Down") {
-      state.decrement(state, e.shiftKey);
+      decrement(!!e.shiftKey);
     } else if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "Right" || e.key === "Up") {
-      state.increment(state, e.shiftKey);
+      increment(!!e.shiftKey);
     } else if (e.key === "Home") {
-      updateValue(state, state.min);
+      updateValue(min);
     } else if (e.key === "End") {
-      updateValue(state, state.max);
+      updateValue(max);
     } else if (e.key === "PageDown") {
-      state.decrement(state, true);
+      decrement(true);
     } else if (e.key === "PageUp") {
-      state.increment(state, true);
+      increment(true);
     }
 
-    readRangeData(state);
-    updatePinPosition(state);
-  }), _ref2), !attrs.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
-    return acc[k["on".concat(evt)]] = onInitDrag, acc;
-  }, {}), attrs.events ? attrs.events : null, hasTicks ? {
+    readRangeData(); // updatePinPosition();
+  }), _ref3), !props.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+    return acc[a["on".concat(evt)]] = onInitDrag, acc;
+  }, {}), props.events ? props.events : null, hasTicks ? {
     step: stepCount
-  } : null), attrs.icon ? h("div", {
+  } : null), props.icon ? h("div", {
     className: classes.thumb,
     key: "icon"
-  }, attrs.icon) : null), h("div", {
+  }, props.icon) : null), h("div", {
     className: classes.trackPart + " " + classes.trackPartRest,
     key: "trackPartRest",
     style: {
@@ -299,143 +477,15 @@ var createSlider = function createSlider(vnode, _ref) {
     className: classes.trackBar
   }, h("div", {
     className: classes.trackBarValue
-  }))), hasTicks && !attrs.disabled ? h("div", {
+  }))), hasTicks && !props.disabled ? h("div", {
     className: classes.ticks,
     key: "ticks"
-  }, generateTickMarks(h, stepCount, state.stepSize, state.value())) : null, hasTicks && attrs.pin && !attrs.disabled ? h("div", {
+  }, generateTickMarks(h, stepCount, stepSize, value)) : null, hasTicks && props.pin && !props.disabled ? h("div", {
     className: classes.pin,
     key: "pin",
-    value: state.value()
-  }) : null]);
+    value: value
+  }) : null]), props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
-  var min = attrs.min !== undefined ? attrs.min : 0;
-  var max = attrs.max !== undefined ? attrs.max : 100;
-  var range = max - min;
-  var stepSize = attrs.stepSize !== undefined ? attrs.stepSize : 1;
-  var defaultValue = attrs.defaultValue !== undefined ? attrs.defaultValue : attrs.value !== undefined ? attrs.value : 0;
-  var previousValue = createStream(undefined);
-  var isActive = createStream(false);
-  var hasFocus = createStream(false);
-  var isDragging = createStream(false);
-  var fraction = createStream(min);
-  var value = createStream(0);
-  var normalizeFactor = 1 / stepSize;
-
-  var setValue = function setValue(v) {
-    var shouldNotify = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    if (v < min) v = min;
-    if (v > max) v = max;
-    value(stepSize ? Math.round(v * normalizeFactor) / normalizeFactor : v);
-    fraction((value() - min) / range);
-
-    if (shouldNotify && attrs.onChange) {
-      attrs.onChange({
-        value: value()
-      });
-    }
-
-    previousValue(v);
-  };
-
-  var increment = function increment(state, useLargeStep) {
-    return updateValue(state, value() + (useLargeStep ? 10 : 1) * (stepSize || 1));
-  };
-
-  var decrement = function decrement(state, useLargeStep) {
-    return updateValue(state, value() - (useLargeStep ? 10 : 1) * (stepSize || 1));
-  };
-
-  setValue(defaultValue);
-  return {
-    min: min,
-    max: max,
-    stepSize: stepSize,
-    fraction: fraction,
-    // DOM elements
-    trackEl: null,
-    controlEl: null,
-    pinEl: null,
-    // functions
-    setValue: setValue,
-    increment: increment,
-    decrement: decrement,
-    // streams
-    isDragging: isDragging,
-    isActive: isActive,
-    value: value,
-    previousValue: previousValue,
-    hasFocus: hasFocus,
-    // coordinates
-    controlWidth: 0,
-    rangeWidth: 0,
-    rangeOffset: 0,
-    clickOffset: 0,
-    redrawOnUpdate: createStream.merge([isActive, value])
-  };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
-
-  var dom = vnode.dom;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  state.trackEl = dom.querySelector(".".concat(classes.track));
-  state.controlEl = dom.querySelector(".".concat(classes.control));
-  state.pinEl = dom.querySelector(".".concat(classes.pin));
-  readRangeData(state);
-
-  if (attrs.pin) {
-    setTimeout(function () {
-      updateValue(state, state.value());
-    }, 0);
-  }
-};
-var createProps = function createProps(vnode, _ref3) {
-  var k = _ref3.keys;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  if (attrs.value !== undefined) {
-    if (state.previousValue() !== attrs.value) {
-      state.previousValue(attrs.value);
-      setTimeout(function () {
-        return state.setValue(state.previousValue());
-      }, 0); // perform in next tick to play nice with React
-    }
-  }
-
-  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    className: [classes.component, attrs.disabled ? classes.isDisabled : null, attrs.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, state.isActive() ? classes.isActive : null, state.hasFocus() ? classes.hasFocus : null, state.fraction() === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-var createContent = function createContent(vnode, _ref4) {
-  var h = _ref4.renderer,
-      k = _ref4.keys;
-  var attrs = vnode.attrs;
-  var hasTicks = attrs.ticks !== undefined && attrs.ticks !== false;
-  var interactiveTrack = attrs.interactiveTrack !== undefined ? attrs.interactiveTrack : true;
-  return createSlider(vnode, {
-    h: h,
-    k: k,
-    hasTicks: hasTicks,
-    interactiveTrack: interactiveTrack
-  });
-};
-
-var slider = /*#__PURE__*/Object.freeze({
-  getInitialState: getInitialState,
-  onMount: onMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { slider as coreSlider };
+export { _Slider };

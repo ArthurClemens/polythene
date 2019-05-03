@@ -111,9 +111,9 @@ class RGBSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      red: 127,
-      green: 127,
-      blue: 127
+      red: Math.round(Math.random() * 255),
+      green: Math.round(Math.random() * 255),
+      blue: Math.round(Math.random() * 255)
     };
     this.update = this.update.bind(this);
   }

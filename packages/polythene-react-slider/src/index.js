@@ -1,8 +1,5 @@
-// @ts-check
+import { _Slider } from "polythene-core-slider";
+import { cast, h, a, useState, useEffect, useRef, getRef } from "cyano-react";
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreSlider as core } from "polythene-core-slider";
-
-export const Slider = ComponentCreator(core);
-
+export const Slider = cast(_Slider, { h, a, useState, useEffect, useRef, getRef });
 Slider["displayName"] = "Slider";
