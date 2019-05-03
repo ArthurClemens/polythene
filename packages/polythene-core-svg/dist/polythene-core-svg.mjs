@@ -110,12 +110,15 @@ var _SVG = function _SVG(_ref) {
       setDomElement = _useState2[1];
 
   useEffect(function () {
-    if (!domElement) return; // Prevent that SVG gets keyboard focus
+    if (!domElement) {
+      return;
+    } // Prevent that SVG gets keyboard focus
 
-    var elem = domElement.querySelector("svg");
 
-    if (elem) {
-      elem.setAttribute("focusable", "false");
+    var svgElement = domElement.querySelector("svg");
+
+    if (svgElement) {
+      svgElement.setAttribute("focusable", "false");
     }
   }, [domElement]);
 
@@ -127,7 +130,7 @@ var _SVG = function _SVG(_ref) {
     className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   });
 
-  var content = props.content ? props.content : props.children;
+  var content = [props.before, props.content ? props.content : props.children, props.after];
   return h(props.element || "div", componentProps, content);
 };
 

@@ -88,6 +88,7 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
       }
     ),
     [
+      props.before,
       h(ViewControl, Object.assign(
         {},
         props,
@@ -121,7 +122,8 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
           : {
             [a.onchange]: onChange
           }
-      ))
+      )),
+      props.after,
     ]
   );
   return h(props.element || "div", componentProps, content);

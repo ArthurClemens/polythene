@@ -327,6 +327,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
   return h("div",
     componentProps,
     [
+      props.before,
       scrollButtonAtStart,
       h("div",
         {
@@ -343,6 +344,7 @@ export const _Tabs = ({ h, a, getRef, useState, useEffect, ScrollButton, Tab, ..
         ]
       ),
       scrollButtonAtEnd,
+      props.after
     ]
   );
 };

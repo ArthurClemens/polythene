@@ -1,6 +1,6 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router-dom";
-import { renderer, Button } from "polythene-react";
+import { renderer, Button, Icon } from "polythene-react";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
 import { ButtonCSS } from "polythene-css";
@@ -150,5 +150,5 @@ const reactTests = ({ Button, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ Button, renderer }))
-  .concat(reactTests({ Button, renderer }));
+  .concat(genericTests({ Button, Icon, renderer }))
+  .concat(reactTests({ Button, Icon, renderer }));

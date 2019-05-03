@@ -75,7 +75,7 @@ var _Shadow = function _Shadow(_ref) {
     className: [classes.component, props.animated && classes.animated, props.className || props[a.class]].join(" ")
   });
 
-  var content = props.content ? props.content : props.children;
+  var content = [props.before, props.content ? props.content : props.children, props.after];
   var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
 
   var depthClass = shadowDepth !== undefined ? "".concat(classes.depth_n).concat(Math.min(5, shadowDepth)) : null;

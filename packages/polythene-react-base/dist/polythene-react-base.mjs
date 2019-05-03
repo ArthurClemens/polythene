@@ -255,7 +255,7 @@ var renderer = function renderer() {
     args[_key] = arguments[_key];
   }
 
-  return _typeof(args[0]) === "object" && args[0].view !== undefined ? h.call.apply(h, [null, MithrilToReact(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [null].concat(args));
+  return _typeof(args[0]) === "object" && !!args[0].view ? h.call.apply(h, [null, MithrilToReact(args[0])].concat(_toConsumableArray(args.slice(1)))) : h.call.apply(h, [null].concat(args));
 };
 
 renderer.trust = function (html) {

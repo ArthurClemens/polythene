@@ -210,10 +210,11 @@ var _BaseSpinner = function _BaseSpinner(_ref) {
   // }
 
 
-  return h("div", componentProps, [props.raised && props.content ? h(Shadow, {
+  var content = [props.before, props.content, props.after].filter(Boolean);
+  return h("div", componentProps, [props.raised && content.length > 0 ? h(Shadow, {
     key: "shadow",
     shadowDepth: props.shadowDepth
-  }) : null, props.content]);
+  }) : null, content]);
 };
 
 export { _BaseSpinner };

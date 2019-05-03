@@ -14,9 +14,13 @@ export const _Shadow = ({ h, a, ...props }) => {
       ].join(" ")
     }
   );
-  const content = props.content
-    ? props.content
-    : props.children;
+  const content = [
+    props.before,
+    props.content
+      ? props.content
+      : props.children,
+    props.after
+  ];
   const shadowDepth = props.shadowDepth !== undefined
     ? props.shadowDepth
     : props.z; // deprecated

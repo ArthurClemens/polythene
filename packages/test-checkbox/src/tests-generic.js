@@ -36,6 +36,15 @@ export default ({ Checkbox, Button, renderer: h, keys: k }) => {
   );
 
   return [
+    // {
+    //   name: "Option: label, before, after",
+    //   component: Checkbox,
+    //   attrs: {
+    //     label: "Label",
+    //     before: "Before",
+    //     after: "After",
+    //   }
+    // },
     {
       name: "Option: label",
       component: Checkbox,

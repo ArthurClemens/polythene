@@ -39,6 +39,17 @@ export default ({ Toolbar, ToolbarTitle, IconButton, Checkbox, renderer: h }) =>
           h(Toolbar, null, toolbarRow())
       },
     },
+    // {
+    //   name: "Option: content, before, after",
+    //   component: {
+    //     view: () => 
+    //       h(Toolbar, {
+    //         content: toolbarRow(),
+    //         before: "Before",
+    //         after: "After"
+    //       })
+    //   },
+    // },
     {
       name: "Option: content",
       component: {

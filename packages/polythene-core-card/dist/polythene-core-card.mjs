@@ -260,8 +260,8 @@ var _Card = function _Card(_ref5) {
     }
   };
 
-  var contents = Array.isArray(props.content) ? props.content.map(dispatcher) : props.content; // deprecated
-
+  var contents = [props.before, Array.isArray(props.content) ? props.content.map(dispatcher) : props.content, // deprecated
+  props.after];
   var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
 
   var content = [h(Shadow, {

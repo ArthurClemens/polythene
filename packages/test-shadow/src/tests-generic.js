@@ -19,6 +19,15 @@ export default ({ Shadow, renderer: h, keys: k }) => {
     //   attrs: {},
     //   children: ["Child"]
     // },
+    // {
+    //   name: "Option: content, before, after",
+    //   component: Shadow,
+    //   attrs: {
+    //     content: "Content",
+    //     before: "Before",
+    //     after: "After"
+    //   }
+    // },
     {
       name: "Option: content",
       component: Shadow,

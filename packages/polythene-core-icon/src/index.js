@@ -19,13 +19,17 @@ export const _Icon = ({ h, a, SVG, ...props }) => {
     props.events
   );
 
-  const content = props.content
-    ? props.content
-    : props.svg
-      ? h(SVG, props.svg)
-      : props.src
-        ? h("img", { src: props.src })
-        : props.children;
+  const content = [
+    props.before,
+    props.content
+      ? props.content
+      : props.svg
+        ? h(SVG, props.svg)
+        : props.src
+          ? h("img", { src: props.src })
+          : props.children,
+    props.after
+  ];
 
   return h(props.element || "div",
     componentProps,

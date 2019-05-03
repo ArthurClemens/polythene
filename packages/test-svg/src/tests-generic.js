@@ -18,6 +18,15 @@ export default ({ SVG, renderer: h }) => {
       attrs: null,
       children: [trustedIconStars]
     },
+    // {
+    //   name: "Option: content (trusted), before, after",
+    //   component: SVG,
+    //   attrs: {
+    //     content: trustedIconStars,
+    //     before: "Before",
+    //     after: "After"
+    //   },
+    // },
     {
       name: "Option: content (trusted)",
       component: SVG,

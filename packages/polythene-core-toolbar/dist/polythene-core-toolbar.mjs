@@ -82,7 +82,7 @@ var _Toolbar = function _Toolbar(_ref) {
     className: [classes.component, props.compact ? classes.compact : null, props.fullbleed ? classes.fullbleed : null, props.border ? classes.border : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   }, props.events);
 
-  var content = props.content || props.children;
+  var content = [props.before, props.content || props.children, props.after];
   var shadow = props.shadowDepth !== undefined ? h(Shadow, {
     shadowDepth: props.shadowDepth,
     animated: true,

@@ -76,9 +76,9 @@ var _Icon = function _Icon(_ref) {
     className: [classes.component, classForSize(classes, props.size), props.avatar ? classes.avatar : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   }, props.events);
 
-  var content = props.content ? props.content : props.svg ? h(SVG, props.svg) : props.src ? h("img", {
+  var content = [props.before, props.content ? props.content : props.svg ? h(SVG, props.svg) : props.src ? h("img", {
     src: props.src
-  }) : props.children;
+  }) : props.children, props.after];
   return h(props.element || "div", componentProps, content);
 };
 

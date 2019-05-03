@@ -130,9 +130,13 @@ export const _Card = ({ h, a, CardActions, CardMedia, CardPrimary, Icon, ListTil
     }
   };
 
-  const contents = Array.isArray(props.content)
-    ? props.content.map(dispatcher)
-    : props.content; // deprecated
+  const contents = [
+    props.before,
+    Array.isArray(props.content)
+      ? props.content.map(dispatcher)
+      : props.content, // deprecated
+    props.after,
+  ];
   const shadowDepth = props.shadowDepth !== undefined
     ? props.shadowDepth
     : props.z; // deprecated

@@ -1,4 +1,4 @@
-import { renderer, Button } from "polythene-mithril";
+import { renderer, Button, Icon } from "polythene-mithril";
 import genericTests from "./tests-generic";
 
 const mithrilTests = ({ Button, renderer: h }) => {
@@ -94,5 +94,5 @@ const mithrilTests = ({ Button, renderer: h }) => {
 };
 
 export default []
-  .concat(genericTests({ Button, renderer }))
-  .concat(mithrilTests({ Button, renderer }));
+  .concat(genericTests({ Button, Icon, renderer }))
+  .concat(mithrilTests({ Button, Icon, renderer }));

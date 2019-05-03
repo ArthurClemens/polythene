@@ -112,6 +112,15 @@ export default ({ renderer: h, Tabs }) => {
     //   attrs: null,
     //   children: threeButtons
     // },
+    // {
+    //   name: "Option: content, before, after",
+    //   component: Tabs,
+    //   attrs: {
+    //     content: threeButtons,
+    //     before: "Before",
+    //     after: "After"
+    //   }
+    // },
     {
       name: "Option: content",
       component: Tabs,

@@ -91,13 +91,16 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   );
 
   const noink = props.ink !== undefined && props.ink === false;
-  const label = props.content
+  const buttonContent = props.content
     ? props.content
     : props.label !== undefined
       ? typeof props.label === "object"
         ? props.label
         : h("div",
-          { className: classes.label },
+          {
+            className: classes.label,
+            key: "label"
+          },
           h("div",
             {
               className: classes.textLabel,
@@ -112,8 +115,8 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   Use wash to indicate focus, or hover when not a raised button.
   */
   const showWash = !disabled && (
-    (props.raised && (/* hasFocus ||  */props.wash === true))
-    || (!props.raised && (/* hasFocus &&  */props.wash !== false))
+    (props.raised && (/* hasFocus || */ props.wash === true))
+    || (!props.raised && (/* hasFocus && */ props.wash !== false))
   );
 
   return h(props.element || "div",
@@ -143,7 +146,9 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         showWash
           ? h("div", { key: "wash", className: classes.wash })
           : null,
-        label,
+        props.before,
+        buttonContent,
+        props.after,
         props.dropdown
           ? h(Icon,
             {

@@ -374,8 +374,9 @@ var _Button = function _Button(_ref) {
   } : null);
 
   var noink = props.ink !== undefined && props.ink === false;
-  var label = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {
-    className: classes.label
+  var buttonContent = props.content ? props.content : props.label !== undefined ? _typeof(props.label) === "object" ? props.label : h("div", {
+    className: classes.label,
+    key: "label"
   }, h("div", {
     className: classes.textLabel,
     style: props.textStyle
@@ -385,9 +386,9 @@ var _Button = function _Button(_ref) {
   */
 
   var showWash = !disabled && (props.raised &&
-  /* hasFocus ||  */
+  /* hasFocus || */
   props.wash === true || !props.raised &&
-  /* hasFocus &&  */
+  /* hasFocus && */
   props.wash !== false);
   return h(props.element || "div", componentProps, h("div", {
     className: classes.content,
@@ -402,7 +403,7 @@ var _Button = function _Button(_ref) {
   }, props.ripple)), showWash ? h("div", {
     key: "wash",
     className: classes.wash
-  }) : null, label, props.dropdown ? h(Icon, {
+  }) : null, props.before, buttonContent, props.after, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {

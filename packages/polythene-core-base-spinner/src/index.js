@@ -69,12 +69,18 @@ export const _BaseSpinner = ({ h, a, useState, useEffect, getRef, Shadow, ...pro
   //   setTimeout(() => { hideSpinner(state, attrs); }, 0);
   // }
 
+  const content = [
+    props.before,
+    props.content,
+    props.after,
+  ].filter(Boolean);
+
   return h("div",
     componentProps, [
-      props.raised && props.content
+      props.raised && content.length > 0
         ? h(Shadow, { key: "shadow", shadowDepth: props.shadowDepth })
         : null,
-      props.content
+      content
     ]
   );
 };

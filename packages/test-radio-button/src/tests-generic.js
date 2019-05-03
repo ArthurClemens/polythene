@@ -32,6 +32,25 @@ export default ({ RadioGroup: PeRadioGroup, RadioButton, renderer: h, keys: k })
   };
 
   return [
+    // {
+    //   name: "Option: label, before, after",
+    //   component: RadioGroup,
+    //   attrs: {
+    //     name: "label",
+    //     content: [
+    //       {
+    //         value: "One",
+    //         label: "One",
+    //         before: "Before",
+    //       },
+    //       {
+    //         value: "Two",
+    //         label: "Two",
+    //         after: "After",
+    //       }
+    //     ],
+    //   }
+    // },
     {
       name: "Option: label",
       component: RadioGroup,

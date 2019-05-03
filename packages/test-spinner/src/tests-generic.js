@@ -46,6 +46,15 @@ export default ({ MaterialDesignSpinner, MaterialDesignProgressSpinner, IOSSpinn
         permanent: true
       }
     },
+    // {
+    //   name: "Option: permanent -- Material Design Spinner, before, after",
+    //   component: MaterialDesignSpinner,
+    //   attrs: {
+    //     permanent: true,
+    //     before: "Before",
+    //     after: "After"
+    //   }
+    // },
     {
       name: "Option: size -- Material Design Spinner",
       interactive: true,

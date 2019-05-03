@@ -517,10 +517,10 @@ var _Tabs = function _Tabs(_ref) {
     key: "indicator",
     className: classes.indicator
   });
-  return h("div", componentProps, [scrollButtonAtStart, h("div", {
+  return h("div", componentProps, [props.before, scrollButtonAtStart, h("div", {
     key: "tabrow",
     className: [classes.tabRow, props.centered ? classes.tabRowCentered : null, props.scrollable ? classes.tabRowIndent : null].join(" ")
-  }, [tabRow, tabIndicator]), scrollButtonAtEnd]);
+  }, [tabRow, tabIndicator]), scrollButtonAtEnd, props.after]);
 };
 
 var _Tab = function _Tab(_ref) {

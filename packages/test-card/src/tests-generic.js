@@ -203,6 +203,20 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, renderer: h, k
       }  
     },
     {
+      name: "Primary with title and subtitle, before and after",
+      component: Card,
+      attrs: {
+        content: [{
+          primary: {
+            title: "Primary title",
+            subtitle: "Subtitle"
+          }
+        }],
+        before: h("div", "Before"),
+        after: h("div", "After"),
+      }
+    },
+    {
       name: "Primary with title and subtitle",
       component: Card,
       attrs: {

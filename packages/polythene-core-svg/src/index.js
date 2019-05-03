@@ -6,11 +6,13 @@ export const _SVG = ({ h, a, useEffect, useState, getRef, ...props }) => {
 
   useEffect(
     () => {
-      if (!domElement) return;
+      if (!domElement) {
+        return;
+      }
       // Prevent that SVG gets keyboard focus
-      const elem = domElement.querySelector("svg");
-      if (elem) {
-        elem.setAttribute("focusable", "false");
+      const svgElement = domElement.querySelector("svg");
+      if (svgElement) {
+        svgElement.setAttribute("focusable", "false");
       }
     },
     [domElement]
@@ -33,10 +35,15 @@ export const _SVG = ({ h, a, useEffect, useState, getRef, ...props }) => {
     }
   );
 
-  const content = props.content
-    ? props.content
-    : props.children;
+  const content = [
+    props.before,
+    props.content
+      ? props.content
+      : props.children,
+    props.after
+  ];
 
+  
   return h(props.element || "div",
     componentProps,
     content
