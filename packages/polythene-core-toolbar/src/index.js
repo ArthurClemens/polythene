@@ -1,2 +1,2 @@
-export { _Toolbar } from "./_Toolbar";
+export { _Toolbar } from "./Toolbar";
 export { _ToolbarTitle } from "./ToolbarTitle";
