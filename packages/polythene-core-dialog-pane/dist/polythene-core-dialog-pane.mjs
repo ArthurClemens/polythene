@@ -1,4 +1,4 @@
-import { unsubscribe, subscribe, unpackAttrs, filterSupportedAttributes } from 'polythene-core';
+import { unpackAttrs, subscribe, unsubscribe, filterSupportedAttributes } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -31,6 +31,80 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var classes = {
@@ -71,6 +145,7 @@ var buttonClasses = {
   dropdownOpen: "pe-button--dropdown-open",
   extraWide: "pe-button--extra-wide",
   hasDropdown: "pe-button--dropdown",
+  focus: "pe-button--focus",
   highLabel: "pe-button--high-label",
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
@@ -78,132 +153,125 @@ var buttonClasses = {
   separatorAtStart: "pe-button--separator-start"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "form";
-};
-var SCROLL_WATCH_END_TIMER = 150;
+var SCROLL_WATCH_END_TIMER = 50;
+var _DialogPane = function _DialogPane(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      useRef = _ref.useRef,
+      getRef = _ref.getRef,
+      unpackedProps = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "useRef", "getRef"]);
 
-var updateScrollOverflowState = function updateScrollOverflowState(vnode) {
-  var state = vnode.state;
-  var scroller = state.scrollEl();
+  var props = unpackAttrs(unpackedProps);
 
-  if (!scroller) {
-    return;
-  }
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  state.topOverflow(scroller.scrollTop > 0);
-  state.bottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
-};
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isScrolling = _useState4[0],
+      setIsScrolling = _useState4[1];
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var bottomOverflow = createStream(false);
-  var footerEl = createStream(null);
-  var headerEl = createStream(null);
-  var isScrolling = createStream(false);
-  var scrollEl = createStream(null);
-  var topOverflow = createStream(false);
-  var el = createStream(null);
-  return {
-    cleanUp: undefined,
-    bottomOverflow: bottomOverflow,
-    el: el,
-    footerEl: footerEl,
-    headerEl: headerEl,
-    isScrolling: isScrolling,
-    scrollEl: scrollEl,
-    scrollWatchId: undefined,
-    topOverflow: topOverflow,
-    redrawOnUpdate: createStream.merge([topOverflow, bottomOverflow, isScrolling])
-  };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
+  var _useState5 = useState(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      hasTopOverflow = _useState6[0],
+      setHasTopOverflow = _useState6[1];
 
-  var dom = vnode.dom;
-  var state = vnode.state;
-  state.el(dom);
-  state.scrollEl(dom.querySelector(".".concat(classes.body)));
-  state.footerEl(dom.querySelector(".".concat(classes.footer)));
-  state.headerEl(dom.querySelector(".".concat(classes.header)));
-  state.isScrolling.map(function () {
-    return updateScrollOverflowState(vnode);
-  });
+  var _useState7 = useState(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      hasBottomOverflow = _useState8[0],
+      setHasBottomOverflow = _useState8[1];
 
-  var update = function update() {
-    updateScrollOverflowState(vnode);
+  var headerElRef = useRef();
+  var footerElRef = useRef();
+  var scrollElRef = useRef();
+  var scrollWatchIdRef = useRef();
+
+  var updateScrollOverflowState = function updateScrollOverflowState() {
+    var scroller = scrollElRef.current;
+
+    if (!scroller) {
+      return;
+    }
+
+    setHasTopOverflow(scroller.scrollTop > 0);
+    setHasBottomOverflow(scroller.scrollHeight - (scroller.scrollTop + scroller.getBoundingClientRect().height) > 0);
   };
 
-  state.cleanUp = function () {
-    return unsubscribe("resize", update);
-  }; // resize: update scroll state ("overflow" borders)
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
 
+    headerElRef.current = domElement.querySelector(".".concat(classes.header));
+    footerElRef.current = domElement.querySelector(".".concat(classes.footer));
+    scrollElRef.current = domElement.querySelector(".".concat(classes.body));
+  }, [domElement]);
+  useEffect(function () {
+    if (!scrollElRef.current) {
+      return;
+    }
 
-  subscribe("resize", update);
-  update();
-};
-var onUnMount = function onUnMount(vnode) {
-  return vnode.state.cleanUp();
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var state = vnode.state;
-  var attrs = unpackAttrs(vnode.attrs);
-  var withHeader = attrs.header !== undefined || attrs.title !== undefined;
-  var withFooter = attrs.footer !== undefined || attrs.footerButtons !== undefined;
-  var borders = attrs.borders || "overflow";
-  var showTopBorder = borders === "always" || withHeader && borders === "overflow" && state.topOverflow();
-  var showBottomBorder = borders === "always" || withFooter && borders === "overflow" && state.bottomOverflow();
-  return _extends({}, filterSupportedAttributes(attrs, {
+    var update = function update() {
+      updateScrollOverflowState();
+    };
+
+    subscribe("resize", update);
+    return function () {
+      unsubscribe("resize", update);
+    };
+  }, [scrollElRef.current]);
+  useEffect(function () {
+    updateScrollOverflowState();
+  }, [scrollElRef.current, isScrolling]);
+  var withHeader = props.header !== undefined || props.title !== undefined;
+  var withFooter = props.footer !== undefined || props.footerButtons !== undefined;
+  var borders = props.borders || "overflow";
+  var showTopBorder = borders === "always" || withHeader && borders === "overflow" && hasTopOverflow;
+  var showBottomBorder = borders === "always" || withFooter && borders === "overflow" && hasBottomOverflow;
+
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
   }), // style set in content, and set by show/hide transition
-  attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    className: [classes.component, attrs.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  }, attrs.formOptions);
-};
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      k = _ref2.keys;
-  var state = vnode.state;
-  var attrs = unpackAttrs(vnode.attrs);
-  return h("div", {
-    className: [classes.content, attrs.menu ? classes.menuContent : null].join(" "),
-    style: attrs.style
-  }, [attrs.header ? attrs.header : attrs.title ? h("div", {
+  props.testId && {
+    "data-test-id": props.testId
+  }, getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
+  }), {
+    className: [classes.component, props.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+  }, props.formOptions);
+
+  var contents = h("div", {
+    className: [classes.content, props.menu ? classes.menuContent : null].join(" "),
+    style: props.style
+  }, [props.header ? props.header : props.title ? h("div", {
     className: [classes.header, classes.headerWithTitle].join(" "),
     key: "title"
   }, h("div", {
     className: classes.title
-  }, attrs.title)) : null, h("div", _defineProperty({
+  }, props.title)) : null, h("div", _defineProperty({
     className: classes.body,
     key: "body"
-  }, k.onscroll, function () {
-    state.isScrolling(true);
-    clearTimeout(state.scrollWatchId);
-    state.scrollWatchId = setTimeout(function () {
-      state.isScrolling(false);
+  }, a.onscroll, function () {
+    setIsScrolling(true);
+    clearTimeout(scrollWatchIdRef.current);
+    scrollWatchIdRef.current = setTimeout(function () {
+      setIsScrolling(false);
     }, SCROLL_WATCH_END_TIMER);
-  }), attrs.content || attrs.body || attrs.menu), attrs.footer ? h("div", {
+  }), props.content || props.body || props.menu), props.footer ? h("div", {
     className: classes.footer,
     key: "footer"
-  }, attrs.footer) : attrs.footerButtons ? h("div", {
+  }, props.footer) : props.footerButtons ? h("div", {
     className: [classes.footer, classes.footerWithButtons, buttonClasses.row].join(" "),
     key: "footer"
   }, h("div", {
     className: classes.actions
-  }, attrs.footerButtons)) : null]);
+  }, props.footerButtons)) : null]);
+  var content = [props.before, contents, props.after];
+  return h(props.element || "form", componentProps, content);
 };
 
-var dialogPane = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  onMount: onMount,
-  onUnMount: onUnMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { dialogPane as coreDialogPane };
+export { _DialogPane };

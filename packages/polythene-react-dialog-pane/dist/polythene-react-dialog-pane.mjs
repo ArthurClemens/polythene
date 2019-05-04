@@ -1,8 +1,14 @@
-import { ComponentCreator } from 'polythene-react-base';
-import { coreDialogPane } from 'polythene-core-dialog-pane';
+import { _DialogPane } from 'polythene-core-dialog-pane';
+import { cast, h, a, useState, useEffect, useRef, getRef } from 'cyano-react';
 
-// @ts-check
-var DialogPane = ComponentCreator(coreDialogPane);
+var DialogPane = cast(_DialogPane, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  getRef: getRef
+});
 DialogPane["displayName"] = "DialogPane";
 
 export { DialogPane };

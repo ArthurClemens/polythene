@@ -65,7 +65,7 @@ export const fullScreen = selector =>
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
       maxHeight: "100vh",
-      border: "none",
+      borderTopStyle: "none",
       maxWidth: "none", // IE 11 doesn't know "initial"
     }
   });
@@ -118,6 +118,8 @@ const varFns = {
           {
             overflowY: "auto",
             "-webkit-overflow-scrolling": "touch",
+            borderTopStyle: "solid",
+            borderBottomStyle: "solid",
 
             " p": {
               margin: 0
@@ -166,17 +168,6 @@ const varFns = {
             alignItems: "center"
           }
         ],
-
-        ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-          " .pe-dialog-pane__body": {
-            borderTopStyle: "solid",
-          },
-        },
-        ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
-          " .pe-dialog-pane__body": {
-            borderBottomStyle: "solid",
-          }
-        },
       },
     ]),
     {
@@ -248,17 +239,8 @@ const varFns = {
   ],
   border_width: (selector, vars) => [
     sel(selector, {
-      ".pe-dialog-pane--header": {
-        " .pe-dialog-pane__body": {
-          // borderTopStyle set in color.js
-          borderWidth: vars.border_width + "px"
-        },
-      },
-      ".pe-dialog-pane--footer": {
-        " .pe-dialog-pane__body": {
-          // borderBottomStyle set in color.js
-          borderWidth: vars.border_width + "px"
-        }
+      " .pe-dialog-pane__body": {
+        borderWidth: vars.border_width + "px"
       },
     }),
   ],

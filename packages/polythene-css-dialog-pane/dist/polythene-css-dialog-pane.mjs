@@ -167,7 +167,7 @@ var fullScreen = function fullScreen(selector) {
     " .pe-dialog-pane, .pe-dialog-pane__body": {
       height: "100vh",
       maxHeight: "100vh",
-      border: "none",
+      borderTopStyle: "none",
       maxWidth: "none" // IE 11 doesn't know "initial"
 
     }
@@ -212,6 +212,8 @@ var varFns = {
       " .pe-dialog-pane__body": [{
         overflowY: "auto",
         "-webkit-overflow-scrolling": "touch",
+        borderTopStyle: "solid",
+        borderBottomStyle: "solid",
         " p": {
           margin: 0
         },
@@ -247,17 +249,7 @@ var varFns = {
       },
       " .pe-dialog-pane__actions": [flex.layoutHorizontal, flex.layoutEndJustified, flex.layoutWrap, {
         alignItems: "center"
-      }],
-      ".pe-dialog-pane--header.pe-dialog-pane--border-top": {
-        " .pe-dialog-pane__body": {
-          borderTopStyle: "solid"
-        }
-      },
-      ".pe-dialog-pane--footer.pe-dialog-pane--border-bottom": {
-        " .pe-dialog-pane__body": {
-          borderBottomStyle: "solid"
-        }
-      }
+      }]
     }]), {
       " .pe-dialog__content.pe-menu__content": _defineProperty({}, " ".concat(selector), {
         " .pe-dialog-pane__body": {
@@ -321,17 +313,8 @@ var varFns = {
   },
   border_width: function border_width(selector, vars) {
     return [sel(selector, {
-      ".pe-dialog-pane--header": {
-        " .pe-dialog-pane__body": {
-          // borderTopStyle set in color.js
-          borderWidth: vars.border_width + "px"
-        }
-      },
-      ".pe-dialog-pane--footer": {
-        " .pe-dialog-pane__body": {
-          // borderBottomStyle set in color.js
-          borderWidth: vars.border_width + "px"
-        }
+      " .pe-dialog-pane__body": {
+        borderWidth: vars.border_width + "px"
       }
     })];
   }
