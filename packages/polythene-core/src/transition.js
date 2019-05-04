@@ -196,14 +196,14 @@ export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIs
   };
   return fn(opts3).then(() => {
     const id = instanceId;
+    if (afterTransition) {
+      afterTransition();
+    }
+    setIsTransitioning(false);
     if (props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
       props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call props.didShow / props.didHide
     } else if (props[isShow ? "didShow" : "didHide"]) {
       props[isShow ? "didShow" : "didHide"](id); // when used directly
     }
-    if (afterTransition) {
-      afterTransition();
-    }
-    setIsTransitioning(false);
   });
 };

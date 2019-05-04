@@ -6,6 +6,6 @@ export { getStyle, stylePropCompare, isRTL, styleDurationToMs } from "./style";
 export { iconDropdownUp, iconDropdownDown } from "./icons";
 export { isClient, isServer } from "./iso";
 export { isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent } from "./pointer";
-export { Multi } from "./Multi";
+export { Multi } from "./multi";
 export { show, hide, transitionComponent } from "./transition";
 export { throttle, subscribe, unsubscribe, emit } from "./events";

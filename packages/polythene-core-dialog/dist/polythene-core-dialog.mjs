@@ -1,4 +1,4 @@
-import { subscribe, unsubscribe, filterSupportedAttributes, stylePropCompare, transitionComponent } from 'polythene-core';
+import { subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -214,27 +214,35 @@ var _Dialog = function _Dialog(_ref2) {
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
-  var isInitedRef = useRef(false);
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isTransitioning = _useState4[0],
+      setIsTransitioning = _useState4[1];
+
   var isVisibleRef = useRef(false);
-  var isTransitioningRef = useRef(false);
   var backdropElRef = useRef();
   var touchElRef = useRef();
   var contentElRef = useRef();
-
-  var setIsTransitioning = function setIsTransitioning(value) {
-    return isTransitioningRef.current = value;
-  };
+  var isHidingRef = useRef(false);
 
   var setIsVisible = function setIsVisible(value) {
     return isVisibleRef.current = value;
   };
+
+  var isVisible = isVisibleRef.current;
+
+  var setIsHiding = function setIsHiding(value) {
+    return isHidingRef.current = value;
+  };
+
+  var isHiding = isHidingRef.current;
 
   var transitionOptions = function transitionOptions(_ref3) {
     var isShow = _ref3.isShow,
         _ref3$hideDelay = _ref3.hideDelay,
         hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay;
     return {
-      isTransitioning: isTransitioningRef.current,
+      isTransitioning: isTransitioning,
       setIsTransitioning: setIsTransitioning,
       setIsVisible: setIsVisible,
       instanceId: props.instanceId,
@@ -259,7 +267,7 @@ var _Dialog = function _Dialog(_ref2) {
   };
 
   var hideDialog = function hideDialog(hideDelay) {
-    return transitionComponent(transitionOptions({
+    return setIsHiding(true), transitionComponent(transitionOptions({
       isShow: false,
       hideDelay: hideDelay
     }));
@@ -311,11 +319,25 @@ var _Dialog = function _Dialog(_ref2) {
     };
 
     subscribe("keydown", handleEscape);
-    isInitedRef.current = true;
     return function () {
       unsubscribe("keydown", handleEscape);
     };
   }, [domElement]);
+  useEffect(function () {
+    if (!domElement || isTransitioning || isHiding) {
+      return;
+    }
+
+    if (props.hide) {
+      if (isVisible) {
+        hideDialog();
+      }
+    } else if (props.show) {
+      if (!isVisible) {
+        showDialog();
+      }
+    }
+  }, [domElement, isTransitioning, isVisible, props.hide, props.show]);
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
@@ -340,17 +362,6 @@ var _Dialog = function _Dialog(_ref2) {
 
     hideDialog();
   }));
-
-  if (domElement) {
-    if (!isTransitioningRef.current) {
-      if (props.hide && isVisibleRef.current) {
-        // Use setTimeout to play nice with React's lifecycle functions
-        setTimeout(hideDialog);
-      } else if (props.show && !isVisibleRef.current) {
-        setTimeout(showDialog);
-      }
-    }
-  }
 
   var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({
     h: h,

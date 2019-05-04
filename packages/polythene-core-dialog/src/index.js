@@ -19,21 +19,23 @@ const createPane = ({ h, Pane, props }) =>
 
 export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shadow, ...props }) => {
   const [domElement, setDomElement] = useState();
-  const isInitedRef = useRef(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const isVisibleRef = useRef(false);
-  const isTransitioningRef = useRef(false);
   const backdropElRef = useRef();
   const touchElRef = useRef();
   const contentElRef = useRef();
+  const isHidingRef = useRef(false);
     
-  const setIsTransitioning = value => 
-    isTransitioningRef.current = value;
-
   const setIsVisible = value => 
     isVisibleRef.current = value;
+  const isVisible = isVisibleRef.current;
+
+  const setIsHiding = value => 
+    isHidingRef.current = value;
+  const isHiding = isHidingRef.current;
 
   const transitionOptions = ({ isShow, hideDelay = props.hideDelay }) => ({
-    isTransitioning: isTransitioningRef.current,
+    isTransitioning,
     setIsTransitioning,
     setIsVisible,
     instanceId: props.instanceId,
@@ -55,6 +57,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
   );
   
   const hideDialog = hideDelay => (
+    setIsHiding(true),
     transitionComponent(transitionOptions({ isShow: false, hideDelay } ))
   );
   
@@ -91,7 +94,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
       if (!domElement || props.inactive) {
         return;
       }
-      
       const handleEscape = e => {
         if (isFullScreen() || isModal()) return;
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
@@ -101,15 +103,31 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
           }
         }
       };
-
       subscribe("keydown", handleEscape);
-      isInitedRef.current = true;
 
       return () => {
         unsubscribe("keydown", handleEscape);
       };
     },
     [domElement]
+  );
+  
+  useEffect(
+    () => {
+      if (!domElement || isTransitioning || isHiding) {
+        return;
+      }
+      if (props.hide) {
+        if (isVisible) {
+          hideDialog();
+        }
+      } else if (props.show) {
+        if (!isVisible) {
+          showDialog();
+        }
+      }
+    },
+    [domElement, isTransitioning, isVisible, props.hide, props.show]
   );
   
   const componentProps = Object.assign(
@@ -146,17 +164,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
       }
     }
   );
-
-  if (domElement) {
-    if (!isTransitioningRef.current) {
-      if (props.hide && isVisibleRef.current) {
-        // Use setTimeout to play nice with React's lifecycle functions
-        setTimeout(hideDialog);
-      } else if (props.show && !isVisibleRef.current) {
-        setTimeout(showDialog);
-      }
-    }
-  }
 
   const pane = props.panesOptions && props.panesOptions.length
     ? h(Pane, props.panesOptions[0])
