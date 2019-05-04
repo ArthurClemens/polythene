@@ -829,6 +829,35 @@ var Multi = function Multi(_ref) {
 };
 Multi["displayName"] = "Multi";
 
+var TRANSITION_TYPES = {
+  SHOW: "show",
+  HIDE: "hide",
+  DONE: "done"
+};
+var transitionStateReducer = function transitionStateReducer(state, type) {
+  switch (type) {
+    case TRANSITION_TYPES.SHOW:
+      return _objectSpread({}, state, {
+        isTransitioning: true,
+        isVisible: true
+      });
+
+    case TRANSITION_TYPES.HIDE:
+      return _objectSpread({}, state, {
+        isTransitioning: true,
+        isHiding: true
+      });
+
+    case TRANSITION_TYPES.DONE:
+      return _objectSpread({}, state, {
+        isTransitioning: false,
+        isVisible: state.isHiding ? false : true
+      });
+
+    default:
+      throw new Error("Unhandled action type:", type);
+  }
+};
 /**
  * 
  * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
@@ -961,6 +990,7 @@ var transition = function transition(opts, state) {
 /**
  * 
  * @param {object} params
+ * @param {(string) => void} [params.dispatchTransitionState]
  * @param {boolean} [params.isShow]
  * @param {boolean} [params.isTransitioning]
  * @param {string} [params.instanceId]
@@ -977,9 +1007,8 @@ var transition = function transition(opts, state) {
 
 
 var transitionComponent = function transitionComponent(_ref) {
-  var isTransitioning = _ref.isTransitioning,
-      setIsTransitioning = _ref.setIsTransitioning,
-      setIsVisible = _ref.setIsVisible,
+  var dispatchTransitionState = _ref.dispatchTransitionState,
+      isTransitioning = _ref.isTransitioning,
       instanceId = _ref.instanceId,
       isShow = _ref.isShow,
       props = _ref.props,
@@ -993,16 +1022,15 @@ var transitionComponent = function transitionComponent(_ref) {
     return Promise.resolve();
   }
 
-  setIsTransitioning(true);
-  setIsVisible(isShow ? true : false);
+  dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW : TRANSITION_TYPES.HIDE);
 
   if (beforeTransition) {
     beforeTransition();
   }
 
-  var duration = props[isShow ? "showDuration" : "hideDuration"];
-  var delay = props[isShow ? "showDelay" : "hideDelay"];
-  var timingFunction = props[isShow ? "showTimingFunction" : "hideTimingFunction"];
+  var duration = isShow ? props.showDuration : props.hideDuration;
+  var delay = isShow ? props.showDelay : props.hideDelay;
+  var timingFunction = isShow ? props.showTimingFunction : props.hideTimingFunction;
   var transitions = props.transitions;
   var fn = isShow ? show : hide;
 
@@ -1014,7 +1042,7 @@ var transitionComponent = function transitionComponent(_ref) {
     timingFunction: timingFunction
   });
 
-  var opts2 = _objectSpread({}, opts1, transitions ? transitions[isShow ? "show" : "hide"](opts1) : undefined);
+  var opts2 = _objectSpread({}, opts1, transitions ? (isShow ? transitions.show : transitions.hide)(opts1) : undefined);
 
   var opts3 = _objectSpread({}, opts2, {
     duration: opts2.duration !== undefined ? opts2.duration : DEFAULT_DURATION,
@@ -1030,14 +1058,14 @@ var transitionComponent = function transitionComponent(_ref) {
       afterTransition();
     }
 
-    setIsTransitioning(false);
+    dispatchTransitionState(TRANSITION_TYPES.DONE);
 
-    if (props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
-      props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call props.didShow / props.didHide
-    } else if (props[isShow ? "didShow" : "didHide"]) {
-      props[isShow ? "didShow" : "didHide"](id); // when used directly
+    if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
+      (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide
+    } else if (isShow ? props.didShow : props.didHide) {
+      (isShow ? props.didShow : props.didHide)(id); // when used directly
     }
   });
 };
 
-export { _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, throttle, subscribe, unsubscribe, emit };
+export { _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, transitionStateReducer, throttle, subscribe, unsubscribe, emit };

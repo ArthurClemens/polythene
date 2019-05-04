@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_SHADOW_DEPTH = 3;
@@ -17,27 +17,25 @@ const createPane = ({ h, Pane, props }) =>
     title: props.title,
   });
 
-export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shadow, ...props }) => {
+const initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false,
+};
+  
+export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, ...props }) => {
+  const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const isVisibleRef = useRef(false);
   const backdropElRef = useRef();
   const touchElRef = useRef();
   const contentElRef = useRef();
-  const isHidingRef = useRef(false);
-    
-  const setIsVisible = value => 
-    isVisibleRef.current = value;
-  const isVisible = isVisibleRef.current;
-
-  const setIsHiding = value => 
-    isHidingRef.current = value;
-  const isHiding = isHidingRef.current;
+  
+  const isVisible = transitionState.isVisible;
+  const isTransitioning = transitionState.isTransitioning;
+  const isHiding = transitionState.isHiding;
 
   const transitionOptions = ({ isShow, hideDelay = props.hideDelay }) => ({
-    isTransitioning,
-    setIsTransitioning,
-    setIsVisible,
+    dispatchTransitionState,
     instanceId: props.instanceId,
     props: Object.assign({}, props, {
       hideDelay
@@ -57,7 +55,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
   );
   
   const hideDialog = hideDelay => (
-    setIsHiding(true),
     transitionComponent(transitionOptions({ isShow: false, hideDelay } ))
   );
   
@@ -170,9 +167,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, Pane, Shado
     : props.panes && props.panes.length
       ? props.panes[0]
       : createPane({ h, Pane, props });
-  const shadowDepth = props.shadowDepth !== undefined
-    ? props.shadowDepth
-    : props.z; // deprecated
+  const shadowDepth = props.shadowDepth;
 
   const content = [
     h("div",

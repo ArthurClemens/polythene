@@ -1,4 +1,4 @@
-import { cast, h, a, useState, useEffect, useRef, getRef } from 'cyano-mithril';
+import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-mithril';
 import { renderer, ComponentCreator } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
 import { _Dialog } from 'polythene-core-dialog';
@@ -84,6 +84,7 @@ var DialogInstance = cast(_Dialog, {
   useEffect: useEffect,
   useRef: useRef,
   getRef: getRef,
+  useReducer: useReducer,
   Shadow: Shadow,
   Pane: DialogPane
 });

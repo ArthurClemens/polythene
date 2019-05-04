@@ -1,4 +1,4 @@
-import { subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
+import { transitionStateReducer, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -198,6 +198,11 @@ var createPane = function createPane(_ref) {
   });
 };
 
+var initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false
+};
 var _Dialog = function _Dialog(_ref2) {
   var h = _ref2.h,
       a = _ref2.a,
@@ -205,46 +210,34 @@ var _Dialog = function _Dialog(_ref2) {
       useEffect = _ref2.useEffect,
       useRef = _ref2.useRef,
       getRef = _ref2.getRef,
+      useReducer = _ref2.useReducer,
       Pane = _ref2.Pane,
       Shadow = _ref2.Shadow,
-      props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "Pane", "Shadow"]);
+      props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "useReducer", "Pane", "Shadow"]);
+
+  var _useReducer = useReducer(transitionStateReducer, initialTransitionState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      transitionState = _useReducer2[0],
+      dispatchTransitionState = _useReducer2[1];
 
   var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
-  var _useState3 = useState(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      isTransitioning = _useState4[0],
-      setIsTransitioning = _useState4[1];
-
-  var isVisibleRef = useRef(false);
   var backdropElRef = useRef();
   var touchElRef = useRef();
   var contentElRef = useRef();
-  var isHidingRef = useRef(false);
-
-  var setIsVisible = function setIsVisible(value) {
-    return isVisibleRef.current = value;
-  };
-
-  var isVisible = isVisibleRef.current;
-
-  var setIsHiding = function setIsHiding(value) {
-    return isHidingRef.current = value;
-  };
-
-  var isHiding = isHidingRef.current;
+  var isVisible = transitionState.isVisible;
+  var isTransitioning = transitionState.isTransitioning;
+  var isHiding = transitionState.isHiding;
 
   var transitionOptions = function transitionOptions(_ref3) {
     var isShow = _ref3.isShow,
         _ref3$hideDelay = _ref3.hideDelay,
         hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay;
     return {
-      isTransitioning: isTransitioning,
-      setIsTransitioning: setIsTransitioning,
-      setIsVisible: setIsVisible,
+      dispatchTransitionState: dispatchTransitionState,
       instanceId: props.instanceId,
       props: _extends({}, props, {
         hideDelay: hideDelay
@@ -267,7 +260,7 @@ var _Dialog = function _Dialog(_ref2) {
   };
 
   var hideDialog = function hideDialog(hideDelay) {
-    return setIsHiding(true), transitionComponent(transitionOptions({
+    return transitionComponent(transitionOptions({
       isShow: false,
       hideDelay: hideDelay
     }));
@@ -368,8 +361,7 @@ var _Dialog = function _Dialog(_ref2) {
     Pane: Pane,
     props: props
   });
-  var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : props.z; // deprecated
-
+  var shadowDepth = props.shadowDepth;
   var content = [h("div", {
     key: "backdrop",
     className: classes.backdrop

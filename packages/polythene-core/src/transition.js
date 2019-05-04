@@ -7,6 +7,37 @@ Generic show/hide transition module
 import { isClient } from "./iso";
 import { styleDurationToMs } from "./style";
 
+const TRANSITION_TYPES = {
+  SHOW: "show",
+  HIDE: "hide",
+  DONE: "done",
+};
+
+export const transitionStateReducer = (state, type) => {
+  switch (type) {
+  case TRANSITION_TYPES.SHOW:
+    return {
+      ...state,
+      isTransitioning: true,
+      isVisible: true,
+    };
+  case TRANSITION_TYPES.HIDE:
+    return {
+      ...state,
+      isTransitioning: true,
+      isHiding: true,
+    };
+  case TRANSITION_TYPES.DONE:
+    return {
+      ...state,
+      isTransitioning: false,
+      isVisible: state.isHiding ? false : true,
+    };
+  default:
+    throw new Error("Unhandled action type:", type);
+  }
+};
+
 /**
  * 
  * @typedef {{ el?: HTMLElement, duration?: number, hasDuration?: boolean, delay?: number, hasDelay?: boolean, timingFunction?: string, transitionClass?: string, transitionClassElement?: HTMLElement, before?: () => void, after?: () => void, transition?: () => void, showClass?: string, showClassElement?: HTMLElement  }} TransitionOpts
@@ -138,6 +169,7 @@ const transition = (opts, state) => {
 /**
  * 
  * @param {object} params
+ * @param {(string) => void} [params.dispatchTransitionState]
  * @param {boolean} [params.isShow]
  * @param {boolean} [params.isTransitioning]
  * @param {string} [params.instanceId]
@@ -151,18 +183,17 @@ const transition = (opts, state) => {
  * @param {string} [params.transitionClass]
  * @returns {Promise}
  */
-export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIsVisible, instanceId, isShow, props, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
+export const transitionComponent = ({ dispatchTransitionState, isTransitioning, instanceId, isShow, props, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
   if (isTransitioning) {
     return Promise.resolve();
   }
-  setIsTransitioning(true);
-  setIsVisible(isShow ? true : false);
+  dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW : TRANSITION_TYPES.HIDE);
   if (beforeTransition) {
     beforeTransition();
   }
-  const duration = props[isShow ? "showDuration" : "hideDuration"];
-  const delay = props[isShow ? "showDelay" : "hideDelay"];
-  const timingFunction = props[isShow ? "showTimingFunction" : "hideTimingFunction"];
+  const duration = isShow ? props.showDuration : props.hideDuration;
+  const delay = isShow ? props.showDelay : props.hideDelay;
+  const timingFunction = isShow ? props.showTimingFunction : props.hideTimingFunction;
   const transitions = props.transitions;
   const fn = isShow ? show : hide;
   const opts1 = {
@@ -177,7 +208,7 @@ export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIs
   const opts2 = {
     ...opts1,
     ...(transitions
-      ? transitions[isShow ? "show" : "hide"](opts1)
+      ? (isShow ? transitions.show : transitions.hide)(opts1)
       : undefined
     )
   };
@@ -199,11 +230,11 @@ export const transitionComponent = ({ isTransitioning, setIsTransitioning, setIs
     if (afterTransition) {
       afterTransition();
     }
-    setIsTransitioning(false);
-    if (props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"]) {
-      props[isShow ? "fromMultipleDidShow" : "fromMultipleDidHide"](id); // when used with Multiple; this will call props.didShow / props.didHide
-    } else if (props[isShow ? "didShow" : "didHide"]) {
-      props[isShow ? "didShow" : "didHide"](id); // when used directly
+    dispatchTransitionState(TRANSITION_TYPES.DONE);
+    if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
+      (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide
+    } else if (isShow ? props.didShow : props.didHide) {
+      (isShow ? props.didShow : props.didHide)(id); // when used directly
     }
   });
 };
