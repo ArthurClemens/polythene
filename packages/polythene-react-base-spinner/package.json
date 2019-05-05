@@ -17,7 +17,7 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "^0.5.0",
+    "cyano-react": "^0.5.1",
     "polythene-core-base-spinner": "^1.5.4",
     "polythene-css-classes": "^1.5.4",
     "polythene-react-shadow": "^1.5.4"

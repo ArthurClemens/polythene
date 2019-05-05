@@ -1,4 +1,4 @@
-export { coreNotification as coreSnackbar } from 'polythene-core-notification';
+export { _Notification as _Snackbar } from 'polythene-core-notification';
 
 var DEFAULT_DURATION = 0.4;
 

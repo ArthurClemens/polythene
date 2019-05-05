@@ -1,6 +1,7 @@
-import { ComponentCreator, renderer } from 'polythene-react-base';
+import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-react';
+import { renderer, ComponentCreator } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
-import { coreSnackbar, transitions } from 'polythene-core-snackbar';
+import { _Snackbar, transitions } from 'polythene-core-snackbar';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -62,7 +63,15 @@ var classes = _objectSpread({}, notificationClasses, {
 });
 
 // @ts-check
-var SnackbarInstance = ComponentCreator(coreSnackbar);
+var SnackbarInstance = cast(_Snackbar, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  getRef: getRef,
+  useReducer: useReducer
+});
 SnackbarInstance["displayName"] = "SnackbarInstance";
 var options = {
   name: "snackbar",

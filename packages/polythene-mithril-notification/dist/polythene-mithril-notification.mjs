@@ -1,6 +1,7 @@
-import { ComponentCreator, renderer } from 'polythene-mithril-base';
+import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-mithril';
+import { renderer, ComponentCreator } from 'polythene-mithril-base';
 import { Multi } from 'polythene-core';
-import { coreNotification } from 'polythene-core-notification';
+import { _Notification } from 'polythene-core-notification';
 
 var classes = {
   component: "pe-notification",
@@ -19,7 +20,15 @@ var classes = {
 };
 
 // @ts-check
-var NotificationInstance = ComponentCreator(coreNotification);
+var NotificationInstance = cast(_Notification, {
+  h: h,
+  a: a,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  getRef: getRef,
+  useReducer: useReducer
+});
 NotificationInstance["displayName"] = "NotificationInstance";
 var options = {
   name: "notification",

@@ -707,6 +707,8 @@ var Multi = function Multi(_ref) {
       return resolveHide = resolve;
     });
     return _objectSpread({}, mOptions, {
+      keyId: new Date().getTime(),
+      // to force rendering a new component (for Mithril)
       instanceId: instanceId,
       spawn: spawn,
       attrs: itemAttrs,
@@ -807,7 +809,7 @@ var Multi = function Multi(_ref) {
         fromMultipleDidShow: itemData.didShow,
         hide: itemData.hide,
         instanceId: itemData.instanceId,
-        key: itemData.key,
+        key: itemData.key !== undefined ? itemData.key : itemData.keyId,
         pause: itemData.pause,
         show: itemData.show,
         unpause: itemData.unpause
@@ -839,7 +841,8 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
     case TRANSITION_TYPES.SHOW:
       return _objectSpread({}, state, {
         isTransitioning: true,
-        isVisible: true
+        isVisible: true,
+        isHiding: false
       });
 
     case TRANSITION_TYPES.HIDE:
@@ -851,7 +854,8 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
     case TRANSITION_TYPES.DONE:
       return _objectSpread({}, state, {
         isTransitioning: false,
-        isVisible: state.isHiding ? false : true
+        isVisible: state.isHiding ? false : true // keep isHiding state to prevent calling show immediately after
+
       });
 
     default:
@@ -1058,7 +1062,7 @@ var transitionComponent = function transitionComponent(_ref) {
       afterTransition();
     }
 
-    dispatchTransitionState(TRANSITION_TYPES.DONE);
+    dispatchTransitionState(TRANSITION_TYPES.DONE); // Component may unmount after this point
 
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide

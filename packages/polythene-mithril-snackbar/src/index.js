@@ -1,12 +1,12 @@
 // @ts-check
 
+import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from "cyano-mithril";
 import { ComponentCreator, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
-import { coreSnackbar as core, transitions } from "polythene-core-snackbar";
+import { _Snackbar, transitions } from "polythene-core-snackbar";
 import classes from "polythene-css-classes/snackbar";
 
-export const SnackbarInstance = ComponentCreator(core);
-
+export const SnackbarInstance = cast(_Snackbar, { h, a, useState, useEffect, useRef, getRef, useReducer });
 SnackbarInstance["displayName"] = "SnackbarInstance";
 
 const options = {

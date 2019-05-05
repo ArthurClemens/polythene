@@ -74,6 +74,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       contains: `"${"full_screen"}"`
     });
 
+  // DOM elements
   useEffect(
     () => {
       if (!domElement) {
@@ -86,6 +87,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
     [domElement]
   );
 
+  // Handle Escape key
   useEffect(
     () => {
       if (!domElement || props.inactive) {
@@ -106,9 +108,10 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         unsubscribe("keydown", handleEscape);
       };
     },
-    [domElement]
+    [domElement, props.inactive]
   );
   
+  // Show / hide logic
   useEffect(
     () => {
       if (!domElement || isTransitioning || isHiding) {
@@ -124,7 +127,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         }
       }
     },
-    [domElement, isTransitioning, isVisible, props.hide, props.show]
+    [domElement, isTransitioning, isHiding, isVisible, props.hide, props.show]
   );
   
   const componentProps = Object.assign(

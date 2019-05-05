@@ -131,6 +131,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
 
     return {
       ...mOptions,
+      keyId: new Date().getTime(), // to force rendering a new component (for Mithril)
       instanceId,
       spawn,
       attrs: itemAttrs,
@@ -214,7 +215,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
             fromMultipleDidShow: itemData.didShow,
             hide: itemData.hide,
             instanceId: itemData.instanceId,
-            key: itemData.key,
+            key: itemData.key !== undefined ? itemData.key : itemData.keyId,
             pause: itemData.pause,
             show: itemData.show,
             unpause: itemData.unpause,

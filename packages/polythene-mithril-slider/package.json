@@ -17,7 +17,7 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-mithril": "^0.5.0",
+    "cyano-mithril": "^0.5.1",
     "polythene-core-slider": "^1.5.4"
   },
   "devDependencies": {

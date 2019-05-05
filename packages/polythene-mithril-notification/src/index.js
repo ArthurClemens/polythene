@@ -1,12 +1,12 @@
 // @ts-check
 
+import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from "cyano-mithril";
 import { ComponentCreator, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
-import { coreNotification as core } from "polythene-core-notification";
+import { _Notification } from "polythene-core-notification";
 import classes from "polythene-css-classes/notification";
 
-export const NotificationInstance = ComponentCreator(core);
-
+export const NotificationInstance = cast(_Notification, { h, a, useState, useEffect, useRef, getRef, useReducer });
 NotificationInstance["displayName"] = "NotificationInstance";
 
 const options = {
