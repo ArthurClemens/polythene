@@ -1,13 +1,6 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreList as core } from "polythene-core-list";
+import { _List } from "polythene-core-list";
 import { ListTile } from "polythene-mithril-list-tile";
+import { cast, h, a } from "cyano-mithril";
 
-export const List = ComponentCreator({
-  ...core,
-  createProps: (vnode, args) => core.createProps(vnode, { ...args, ListTile }),
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, ListTile })
-});
-
+export const List = cast(_List, { h, a, ListTile });
 List["displayName"] = "List";

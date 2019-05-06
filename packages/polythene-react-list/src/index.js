@@ -1,13 +1,6 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-react-base";
-import { coreList as core } from "polythene-core-list";
+import { _List } from "polythene-core-list";
 import { ListTile } from "polythene-react-list-tile";
+import { cast, h, a } from "cyano-react";
 
-export const List = ComponentCreator({
-  ...core,
-  createProps: (vnode, args) => core.createProps(vnode, { ...args, ListTile }),
-  createContent: (vnode, args) => core.createContent(vnode, { ...args,  ListTile })
-});
-
+export const List = cast(_List, { h, a, ListTile });
 List["displayName"] = "List";

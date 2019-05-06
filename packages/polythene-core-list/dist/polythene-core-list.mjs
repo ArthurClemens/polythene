@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -52,6 +52,42 @@ function _objectSpread(target) {
   return target;
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var listTileClasses = {
   component: "pe-list-tile",
   // elements
@@ -95,9 +131,6 @@ var classes = {
   header: listTileClasses.header
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
 var paddingClasses = {
   both: classes.padding,
   bottom: classes.paddingBottom,
@@ -110,60 +143,35 @@ var paddingClass = function paddingClass() {
   return paddingClasses[attr];
 };
 
-var onMount = function onMount(vnode) {
-  var attrs = vnode.attrs;
+var _List = function _List(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      ListTile = _ref.ListTile,
+      props = _objectWithoutProperties(_ref, ["h", "a", "ListTile"]);
 
-  if (attrs.borders !== undefined) {
-    deprecation("List", {
-      option: "borders",
-      newOption: "border"
-    });
-  }
-
-  if (attrs.indentedBorders !== undefined) {
-    deprecation("List", {
-      option: "indentedBorders",
-      newOption: "indentedBorder"
-    });
-  }
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.border || attrs.borders ? classes.border : null, attrs.indentedBorder || attrs.indentedBorders ? classes.indentedBorder : null, attrs.header ? classes.hasHeader : null, attrs.compact ? classes.compact : null, paddingClass(attrs.padding), attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, props.border || props.borders ? classes.border : null, props.indentedBorder || props.indentedBorders ? classes.indentedBorder : null, props.header ? classes.hasHeader : null, props.compact ? classes.compact : null, paddingClass(props.padding), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   });
-};
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      requiresKeys = _ref2.requiresKeys,
-      k = _ref2.keys,
-      ListTile = _ref2.ListTile;
-  var attrs = vnode.attrs;
+
   var headerOpts;
 
-  if (attrs.header) {
-    headerOpts = _extends({}, attrs.header);
-    headerOpts[k.class] = [classes.header, headerOpts[k.class] || null].join(" ");
+  if (props.header) {
+    headerOpts = _extends({}, props.header);
+    headerOpts[a.class] = [classes.header, headerOpts[a.class] || null].join(" ");
   }
 
-  var tiles = attrs.tiles ? attrs.tiles : attrs.content ? attrs.content : attrs.children || vnode.children;
-  return [headerOpts ? h(ListTile, _objectSpread({}, requiresKeys ? {
+  var tiles = props.tiles ? props.tiles : props.content ? props.content : props.children;
+  var contents = [headerOpts ? h(ListTile, _objectSpread({
     key: "header"
-  } : undefined, attrs.all, headerOpts, {
+  }, props.all, headerOpts, {
     header: true
-  })) : undefined, attrs.all ? tiles.map(function (tileOpts) {
-    return h(ListTile, _objectSpread({}, attrs.all, tileOpts));
+  })) : undefined, props.all ? tiles.map(function (tileOpts) {
+    return h(ListTile, _objectSpread({}, props.all, tileOpts));
   }) : tiles];
+  var content = [props.before, contents, props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
-var list = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  onMount: onMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { list as coreList };
+export { _List };
