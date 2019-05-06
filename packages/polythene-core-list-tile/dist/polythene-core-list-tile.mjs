@@ -33,6 +33,42 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 var classes = {
   component: "pe-list-tile",
   // elements
@@ -62,107 +98,109 @@ var classes = {
   navigation: "pe-list-tile--navigation"
 };
 
-var getElement = function getElement() {
-  return "div";
-}; // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
+var _ListTile = function _ListTile(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      Ripple = _ref.Ripple,
+      Icon = _ref.Icon,
+      props = _objectWithoutProperties(_ref, ["h", "a", "Ripple", "Icon"]);
 
-var primaryContent = function primaryContent(h, k, requiresKeys, attrs, children) {
-  var url = attrs.keyboardControl ? null : attrs.url;
-  var element = attrs.element ? attrs.element : url ? "a" : "div";
-  var contentFrontClass = [classes.content, classes.contentFront, attrs.compactFront ? classes.compactFront : null].join(" ");
-  var frontComp = attrs.front ? h("div", _extends({}, requiresKeys ? {
-    key: "front"
-  } : null, {
-    className: contentFrontClass
-  }), attrs.front) : attrs.indent ? h("div", _extends({}, requiresKeys ? {
-    key: "front"
-  } : null, {
-    className: contentFrontClass
-  })) : null;
-  var hasTabIndex = !attrs.header && attrs.url;
+  var hasTabIndex = !props.header && !props.url && !(props.secondary && props.secondary.url);
+  var heightClass = props.subtitle ? classes.hasSubtitle : props.highSubtitle ? classes.hasHighSubtitle : props.front || props.indent ? classes.hasFront : null;
 
-  var props = _extends({}, filterSupportedAttributes(attrs), attrs.events, requiresKeys ? {
-    key: "primary"
-  } : null, {
-    className: classes.primary,
-    style: null
-  }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0), url);
-
-  var content = attrs.content ? attrs.content : [frontComp, h("div", {
-    className: classes.content,
-    style: attrs.style
-  }, [attrs.title && !attrs.content ? h("div", _extends({}, requiresKeys ? {
-    key: "title"
-  } : null, {
-    className: classes.title
-  }), attrs.title) : null, attrs.subtitle ? h("div", _extends({}, requiresKeys ? {
-    key: "subtitle"
-  } : null, {
-    className: classes.subtitle
-  }), attrs.subtitle) : null, attrs.highSubtitle ? h("div", _extends({}, requiresKeys ? {
-    key: "highSubtitle"
-  } : null, {
-    className: classes.subtitle + " " + classes.highSubtitle
-  }), attrs.highSubtitle) : null, attrs.subContent ? h("div", _extends({}, requiresKeys ? {
-    key: "subContent"
-  } : null, {
-    className: classes.subContent
-  }), attrs.subContent) : null, children])];
-  return h(element, props, content);
-};
-
-var secondaryContent = function secondaryContent(h, k, requiresKeys, Icon) {
-  var attrs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
-  var url = attrs.keyboardControl ? null : attrs.url;
-  var element = attrs.element ? attrs.element : url ? "a" : "div";
-  var hasTabIndex = attrs.url;
-  return h(element, _extends({}, url, {
-    className: classes.secondary
-  }, attrs.events, requiresKeys ? {
-    key: "secondary"
-  } : null, filterSupportedAttributes(attrs), hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0)), h("div", {
-    className: classes.content
-  }, [attrs.icon ? h(Icon, attrs.icon) : null, attrs.content ? attrs.content : null]));
-};
-
-var createProps = function createProps(vnode, _ref3) {
-  var k = _ref3.keys;
-  var attrs = vnode.attrs;
-  var hasTabIndex = !attrs.header && !attrs.url && !(attrs.secondary && attrs.secondary.url);
-  var heightClass = attrs.subtitle ? classes.hasSubtitle : attrs.highSubtitle ? classes.hasHighSubtitle : attrs.front || attrs.indent ? classes.hasFront : null;
-  return _extends({}, filterSupportedAttributes(attrs, {
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["tabindex", "tabIndex"]
   }), // tabindex is set elsewhere
-  attrs.testId && {
-    "data-test-id": attrs.testId
+  props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.selected ? classes.selected : null, attrs.disabled ? classes.disabled : null, attrs.sticky ? classes.sticky : null, attrs.compact ? classes.compact : null, attrs.hoverable ? classes.hoverable : null, attrs.selectable ? classes.selectable : null, attrs.highlight ? classes.highlight : null, attrs.rounded ? classes.rounded : null, attrs.header ? classes.header : null, attrs.inset || attrs.insetH ? classes.insetH : null, attrs.inset || attrs.insetV ? classes.insetV : null, attrs.navigation ? classes.navigation : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, heightClass, attrs.className || attrs[k.class]].join(" ")
-  }, hasTabIndex && _defineProperty({}, k.tabindex, attrs[k.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
+    className: [classes.component, props.selected ? classes.selected : null, props.disabled ? classes.disabled : null, props.sticky ? classes.sticky : null, props.compact ? classes.compact : null, props.hoverable ? classes.hoverable : null, props.selectable ? classes.selectable : null, props.highlight ? classes.highlight : null, props.rounded ? classes.rounded : null, props.header ? classes.header : null, props.inset || props.insetH ? classes.insetH : null, props.inset || props.insetV ? classes.insetV : null, props.navigation ? classes.navigation : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, heightClass, props.className || props[a.class]].join(" ")
+  }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0) // events and url are attached to primary content to not interfere with controls
   );
-};
-var createContent = function createContent(vnode, _ref5) {
-  var h = _ref5.renderer,
-      requiresKeys = _ref5.requiresKeys,
-      k = _ref5.keys,
-      Ripple = _ref5.Ripple,
-      Icon = _ref5.Icon;
-  var attrs = vnode.attrs;
 
-  var primaryAttrs = _extends({}, requiresKeys ? {
+  var primaryProps = _extends({}, {
     key: "primary"
-  } : null, attrs);
+  }, props);
 
-  delete primaryAttrs.id;
-  delete primaryAttrs[k.class];
-  return [attrs.ink && !attrs.disabled ? h(Ripple, _extends({}, attrs.ripple, requiresKeys ? {
+  delete primaryProps.id;
+  delete primaryProps[a.class];
+  var contents = [props.ink && !props.disabled ? h(Ripple, _extends({}, props.ripple ? {
     key: "ripple"
-  } : null)) : null, primaryContent(h, k, requiresKeys, primaryAttrs, attrs.children || vnode.children), attrs.secondary ? secondaryContent(h, k, requiresKeys, Icon, attrs.secondary) : null];
+  } : null)) : null, primaryContent({
+    h: h,
+    a: a,
+    props: primaryProps
+  }), props.secondary ? secondaryContent({
+    h: h,
+    a: a,
+    Icon: Icon,
+    props: props.secondary
+  }) : null];
+  var content = [props.before, contents, props.after];
+  return h("div", // because primary or secondary content can be an "a", the container is always defined as "div", and option `element` is passed to primary content
+  componentProps, content);
 };
 
-var listTile = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  createProps: createProps,
-  createContent: createContent
-});
+var primaryContent = function primaryContent(_ref3) {
+  var h = _ref3.h,
+      a = _ref3.a,
+      props = _ref3.props;
+  var url = props.keyboardControl ? null : props.url;
+  var element = props.element ? props.element : url ? "a" : "div";
+  var contentFrontClass = [classes.content, classes.contentFront, props.compactFront ? classes.compactFront : null].join(" ");
+  var frontComp = props.front || props.indent ? h("div", _extends({}, {
+    key: "front"
+  }, {
+    className: contentFrontClass
+  }), props.front) : null;
+  var hasTabIndex = !props.header && props.url;
 
-export { listTile as coreListTile };
+  var elementProps = _extends({}, filterSupportedAttributes(props), props.events, {
+    key: "primary"
+  }, {
+    className: classes.primary,
+    style: null
+  }, hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0), url);
+
+  var content = props.content ? props.content : [frontComp, h("div", {
+    className: classes.content,
+    style: props.style
+  }, [props.title && !props.content ? h("div", _extends({}, {
+    key: "title"
+  }, {
+    className: classes.title
+  }), props.title) : null, props.subtitle ? h("div", _extends({}, {
+    key: "subtitle"
+  }, {
+    className: classes.subtitle
+  }), props.subtitle) : null, props.highSubtitle ? h("div", _extends({}, {
+    key: "highSubtitle"
+  }, {
+    className: classes.subtitle + " " + classes.highSubtitle
+  }), props.highSubtitle) : null, props.subContent ? h("div", _extends({}, {
+    key: "subContent"
+  }, {
+    className: classes.subContent
+  }), props.subContent) : null, props.children])];
+  return h(element, elementProps, content);
+};
+
+var secondaryContent = function secondaryContent(_ref5) {
+  var h = _ref5.h,
+      a = _ref5.a,
+      Icon = _ref5.Icon,
+      _ref5$props = _ref5.props,
+      props = _ref5$props === void 0 ? {} : _ref5$props;
+  var url = props.keyboardControl ? null : props.url;
+  var element = props.element ? props.element : url ? "a" : "div";
+  var hasTabIndex = props.url;
+  return h(element, _extends({}, url, {
+    className: classes.secondary
+  }, props.events, {
+    key: "secondary"
+  }, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0)), h("div", {
+    className: classes.content
+  }, [props.icon ? h(Icon, props.icon) : null, props.content ? props.content : null]));
+};
+
+export { _ListTile };

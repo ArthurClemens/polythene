@@ -137,7 +137,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
       attrs: {
         title: "Click me and click the icon",
         events: {
-          [keys.onclick]: () => console.log("clicked")
+          [keys.onclick]: () => console.log("clicked primary")
         },
         secondary: {
           icon: {
@@ -145,7 +145,7 @@ export default ({ ListTile, Icon, renderer: h, keys }) => {
             size: "medium"
           },
           events: {
-            [keys.onclick]: () => console.log("clicked")
+            [keys.onclick]: () => console.log("clicked secondary")
           }
         }
       }
