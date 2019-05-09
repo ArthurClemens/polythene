@@ -1,12 +1,6 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreRadioGroup as core } from "polythene-core-radio-group";
+import { _RadioGroup } from "polythene-core-radio-group";
 import { RadioButton } from "polythene-mithril-radio-button";
+import { cast, h, a, useState, useEffect } from "cyano-mithril";
 
-export const RadioGroup = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { RadioButton }))
-});
-
+export const RadioGroup = cast(_RadioGroup, { h, a, useState, useEffect, RadioButton });
 RadioGroup["displayName"] = "RadioGroup";

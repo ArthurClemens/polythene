@@ -1,4 +1,4 @@
-import { deprecation, filterSupportedAttributes } from 'polythene-core';
+import { filterSupportedAttributes } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -18,62 +18,118 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-radio-group"
 };
 
-var getButtons = function getButtons(vnode) {
-  var attrs = vnode.attrs;
-  return attrs.content ? attrs.content : attrs.buttons ? attrs.buttons : attrs.children || vnode.children || [];
-};
+var _RadioGroup = function _RadioGroup(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      RadioButton = _ref.RadioButton,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "RadioButton"]);
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
-var getInitialState = function getInitialState(vnode, createStream) {
-  var attrs = vnode.attrs;
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      checkedIndex = _useState2[0],
+      setCheckedIndex = _useState2[1];
 
-  if (attrs.defaultSelectedValue !== undefined) {
-    deprecation("RadioGroup", {
-      option: "defaultSelectedValue",
-      newOption: "defaultCheckedValue",
-      since: "1.4.2"
-    });
-  }
+  var buttons = props.content || props.buttons || props.children;
+  useEffect(function () {
+    var index = buttons.reduce(function (acc, buttonOpts, index) {
+      if (buttonOpts.value === undefined) {
+        console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
+      }
 
-  var buttons = getButtons(vnode);
-  var checkedIdx = buttons.reduce(function (acc, buttonOpts, index) {
-    if (buttonOpts.value === undefined) {
-      console.error("Option 'value' not set for radio button"); // eslint-disable-line no-console
-    }
+      return acc !== null ? acc : buttonOpts.defaultChecked !== undefined || props.defaultCheckedValue !== undefined && buttonOpts.value === props.defaultCheckedValue || props.defaultSelectedValue !== undefined && buttonOpts.value === props.defaultSelectedValue // deprecated
+      ? index : acc;
+    }, null);
+    setCheckedIndex(index);
+  }, []);
 
-    return acc !== null ? acc : buttonOpts.defaultChecked !== undefined || attrs.defaultCheckedValue !== undefined && buttonOpts.value === attrs.defaultCheckedValue || attrs.defaultSelectedValue !== undefined && buttonOpts.value === attrs.defaultSelectedValue // deprecated
-    ? index : acc;
-  }, null);
-  var checkedIndex = createStream(checkedIdx);
-  return {
-    checkedIndex: checkedIndex,
-    redrawOnUpdate: createStream.merge([checkedIndex])
-  };
-};
-var createProps = function createProps(vnode, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
   }, {
-    className: [classes.component, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   });
-};
-var createContent = function createContent(vnode, _ref2) {
-  var h = _ref2.renderer,
-      RadioButton = _ref2.RadioButton;
-  var attrs = vnode.attrs;
-  var state = vnode.state;
-  var checkedIndex = state.checkedIndex();
-  var buttons = getButtons(vnode);
-  var groupCheckedValue = attrs.checkedValue;
-  return buttons.length ? buttons.map(function (buttonOpts, index) {
+
+  var groupCheckedValue = props.checkedValue;
+  var contents = buttons.length ? buttons.map(function (buttonOpts, index) {
     if (!buttonOpts) {
       return null;
     }
@@ -81,28 +137,23 @@ var createContent = function createContent(vnode, _ref2) {
     var isChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : groupCheckedValue !== undefined ? buttonOpts.value === groupCheckedValue : checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
-      name: attrs.name,
+      name: props.name,
       key: buttonOpts.value
-    }, attrs.all,
+    }, props.all,
     /* individual button options */
     buttonOpts, {
       /* this component's options */
-      onChange: function onChange(_ref3) {
-        var value = _ref3.value;
-        return state.checkedIndex(index), attrs.onChange && attrs.onChange({
+      onChange: function onChange(_ref2) {
+        var value = _ref2.value;
+        return setCheckedIndex(index), props.onChange && props.onChange({
           value: value
         });
       },
       checked: isChecked
     }));
   }) : null;
+  var content = [props.before, contents, props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
-var radioGroup = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { radioGroup as coreRadioGroup };
+export { _RadioGroup };

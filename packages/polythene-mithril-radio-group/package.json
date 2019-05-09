@@ -17,8 +17,8 @@
     "README.md"
   ],
   "dependencies": {
+    "cyano-mithril": "^0.5.1",
     "polythene-core-radio-group": "^1.5.4",
-    "polythene-mithril-base": "^1.5.4",
     "polythene-mithril-radio-button": "^1.5.4"
   },
   "devDependencies": {
