@@ -1,7 +1,6 @@
-import { ComponentCreator } from 'polythene-mithril-base';
 import { _Conditional } from 'polythene-core';
-import { cast, h, useState, useEffect } from 'cyano-mithril';
-import { coreMenu } from 'polythene-core-menu';
+import { cast, h, a, useReducer, useState, useEffect, useRef, getRef } from 'cyano-mithril';
+import { _Menu } from 'polythene-core-menu';
 import { Shadow } from 'polythene-mithril-shadow';
 
 function _defineProperty(obj, key, value) {
@@ -88,13 +87,16 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-var MenuInstance = ComponentCreator(_objectSpread({}, coreMenu, {
-  createContent: function createContent(vnode, args) {
-    return coreMenu.createContent(vnode, _objectSpread({}, args, {
-      Shadow: Shadow
-    }));
-  }
-}));
+var MenuInstance = cast(_Menu, {
+  h: h,
+  a: a,
+  useReducer: useReducer,
+  useState: useState,
+  useEffect: useEffect,
+  useRef: useRef,
+  getRef: getRef,
+  Shadow: Shadow
+});
 var MenuToggle = cast(_Conditional, {
   h: h,
   useState: useState,

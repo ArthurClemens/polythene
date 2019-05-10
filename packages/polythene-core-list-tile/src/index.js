@@ -49,7 +49,12 @@ export const _ListTile = ({ h, a, Ripple, Icon, ...props }) => {
   delete primaryProps[a.class];
   const contents = [
     props.ink && !props.disabled
-      ? h(Ripple, Object.assign({}, props.ripple ? { key: "ripple" } : null))
+      ? h(Ripple,
+          Object.assign({},
+            props.ripple,
+            { key: "ripple" }
+          )
+        )
       : null,
     primaryContent({ h, a, props: primaryProps }),
     props.secondary
@@ -165,9 +170,9 @@ const secondaryContent = ({ h, a, Icon, props = {} }) => {
         className: classes.secondary,
       },
       props.events,
-      { key: "secondary" },
       filterSupportedAttributes(props),
       hasTabIndex && { [a.tabindex]: props[a.tabindex] || 0 },
+      { key: "secondary" },
     ),
     h("div",
       { className: classes.content },

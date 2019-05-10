@@ -124,9 +124,9 @@ var _ListTile = function _ListTile(_ref) {
 
   delete primaryProps.id;
   delete primaryProps[a.class];
-  var contents = [props.ink && !props.disabled ? h(Ripple, _extends({}, props.ripple ? {
+  var contents = [props.ink && !props.disabled ? h(Ripple, _extends({}, props.ripple, {
     key: "ripple"
-  } : null)) : null, primaryContent({
+  })) : null, primaryContent({
     h: h,
     a: a,
     props: primaryProps
@@ -196,9 +196,9 @@ var secondaryContent = function secondaryContent(_ref5) {
   var hasTabIndex = props.url;
   return h(element, _extends({}, url, {
     className: classes.secondary
-  }, props.events, {
+  }, props.events, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0), {
     key: "secondary"
-  }, filterSupportedAttributes(props), hasTabIndex && _defineProperty({}, a.tabindex, props[a.tabindex] || 0)), h("div", {
+  }), h("div", {
     className: classes.content
   }, [props.icon ? h(Icon, props.icon) : null, props.content ? props.content : null]));
 };

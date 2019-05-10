@@ -1,4 +1,4 @@
-import { deprecation, transitionComponent, pointerEndMoveEvent, filterSupportedAttributes, isServer, stylePropCompare, subscribe, unsubscribe } from 'polythene-core';
+import { transitionStateReducer, subscribe, transitionComponent, unsubscribe, filterSupportedAttributes, isServer, stylePropCompare, pointerEndMoveEvent } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -16,6 +16,80 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var listTileClasses = {
@@ -68,189 +142,11 @@ var classes = {
   selectedListTile: listTileClasses.selected
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
 var DEFAULT_OFFSET_H = 0;
 var DEFAULT_OFFSET_V = "79%";
 var DEFAULT_TYPE = "floating";
 var MIN_WIDTH = 1.5;
 var DEFAULT_SHADOW_DEPTH = 1;
-
-var isTopMenu = function isTopMenu(_ref) {
-  var state = _ref.state,
-      attrs = _ref.attrs;
-  return attrs.topMenu || stylePropCompare({
-    element: state.dom(),
-    pseudoSelector: ":before",
-    prop: "content",
-    contains: "\"".concat("top_menu", "\"")
-  });
-};
-
-var positionMenu = function positionMenu(state, attrs) {
-  if (isServer) {
-    return;
-  }
-
-  if (!attrs.target) {
-    return;
-  }
-
-  var targetEl = document.querySelector(attrs.target);
-
-  if (!targetEl) {
-    return;
-  }
-
-  var panelEl = state.panelEl;
-
-  if (!panelEl) {
-    return;
-  } // Don't set the position or top offset if the menu position is fixed
-
-
-  var hasStylePositionFixed = stylePropCompare({
-    element: panelEl,
-    prop: "position",
-    equals: "fixed"
-  });
-
-  if (hasStylePositionFixed && !isTopMenu({
-    state: state,
-    attrs: attrs
-  })) {
-    _extends(panelEl.style, {});
-
-    panelEl.offsetHeight; // force reflow
-
-    return;
-  }
-
-  var contentEl = state.contentEl;
-  var parentRect = panelEl.parentNode.getBoundingClientRect();
-  var targetRect = targetEl.getBoundingClientRect();
-  var attrsOffsetH = attrs.offsetH !== undefined ? attrs.offsetH : attrs.offset !== undefined ? attrs.offset // deprecated
-  : DEFAULT_OFFSET_H;
-  var attrsOffsetV = attrs.offsetV !== undefined ? attrs.offsetV : DEFAULT_OFFSET_V;
-  var offsetH = attrsOffsetH.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetH) * 0.01 * targetRect.width) : Math.round(parseFloat(attrsOffsetH));
-  var offsetV = attrsOffsetV.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetV) * 0.01 * targetRect.height) : Math.round(parseFloat(attrsOffsetV));
-  var positionOffsetV = offsetV;
-  var attrsOrigin = attrs.origin || "top";
-  var origin = attrsOrigin.split(/\W+/).reduce(function (acc, curr) {
-    return acc[curr] = true, acc;
-  }, {});
-  var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
-
-  if (attrs.reposition) {
-    // get the first List Tile to calculate the top position  
-    var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
-
-    if (firstItem && selectedItem) {
-      // calculate v position: menu should shift upward relative to the first item
-      var firstItemRect = firstItem.getBoundingClientRect();
-      var selectedItemRect = selectedItem.getBoundingClientRect();
-      positionOffsetV = firstItemRect.top - selectedItemRect.top;
-    } // align to middle of target
-
-
-    var alignEl = selectedItem || firstItem;
-    var alignRect = alignEl.getBoundingClientRect();
-
-    var _targetRect = targetEl.getBoundingClientRect();
-
-    var heightDiff = _targetRect.height - alignRect.height;
-    positionOffsetV += Math.abs(heightDiff) / 2;
-  } else if (attrs.origin && !hasStylePositionFixed) {
-    if (origin.top) {
-      positionOffsetV += targetRect.top - parentRect.top;
-    } else if (origin.bottom) {
-      positionOffsetV += targetRect.top - parentRect.bottom;
-    }
-  }
-
-  if (attrs.height) {
-    var firstItemHeight = firstItem ? firstItem.clientHeight : 48; // default List Tile height
-
-    if (attrs.height === "max") {
-      var topMargin = positionOffsetV;
-      var bottomMargin = firstItemHeight;
-      panelEl.style.height = "calc(100% - ".concat(topMargin + bottomMargin, "px)");
-    } else {
-      var height = /^\d+$/.test(attrs.height.toString()) ? "".concat(attrs.height, "px") : attrs.height;
-      panelEl.style.height = height;
-    }
-  } // prevent animated changes
-
-
-  var transitionDuration = panelEl.style.transitionDuration;
-  panelEl.style.transitionDuration = "0ms";
-
-  if (panelEl.parentNode && !hasStylePositionFixed) {
-    if (origin.right) {
-      panelEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
-    } else {
-      panelEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
-    }
-
-    if (origin.bottom) {
-      panelEl.style.bottom = positionOffsetV + "px";
-    } else {
-      panelEl.style.top = positionOffsetV + "px";
-    }
-
-    panelEl.style.transformOrigin = attrsOrigin.split(/\W+/).join(" ");
-  }
-
-  panelEl.offsetHeight; // force reflow
-
-  panelEl.style.transitionDuration = transitionDuration;
-};
-
-var scrollContent = function scrollContent(state, attrs) {
-  if (isServer) {
-    return;
-  }
-
-  if (!attrs.scrollTarget) {
-    return;
-  }
-
-  var scrollTargetEl = document.querySelector(attrs.scrollTarget);
-
-  if (!scrollTargetEl) {
-    return;
-  }
-
-  state.contentEl.scrollTop = scrollTargetEl.offsetTop;
-};
-
-var transitionOptions = function transitionOptions(state, props, isShow) {
-  return {
-    isTransitioning: state.transitioning(),
-    setIsTransitioning: state.transitioning,
-    setIsVisible: state.visible,
-    instanceId: state.instanceId,
-    props: props,
-    isShow: isShow,
-    beforeTransition: isShow ? function () {
-      return state.update();
-    } : null,
-    domElements: {
-      el: state.panelEl,
-      showClassElement: state.dom()
-    },
-    showClass: classes.visible
-  };
-};
-
-var showMenu = function showMenu(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, true));
-};
-
-var hideMenu = function hideMenu(state, attrs) {
-  return transitionComponent(transitionOptions(state, attrs, false));
-};
 
 var unifyWidth = function unifyWidth(width) {
   return width < MIN_WIDTH ? MIN_WIDTH : width;
@@ -260,142 +156,293 @@ var widthClass = function widthClass(size) {
   return classes.width_n + size.toString().replace(".", "-");
 };
 
-var handleSubscriptions = function handleSubscriptions(vnode, which) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  if (which === "mount") {
-    subscribe("resize", state.update);
-    subscribe("keydown", state.handleEscape);
-    setTimeout(function () {
-      state.activateDismissTap();
-      showMenu(state, attrs);
-    }, 0);
-  } else {
-    unsubscribe("resize", state.update);
-    unsubscribe("keydown", state.handleEscape);
-    state.deActivateDismissTap();
-  }
+var initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false
 };
+var _Menu = function _Menu(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useReducer = _ref.useReducer,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      useRef = _ref.useRef,
+      getRef = _ref.getRef,
+      Shadow = _ref.Shadow,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useReducer", "useState", "useEffect", "useRef", "getRef", "Shadow"]);
 
-var getInitialState = function getInitialState(vnode, createStream) {
-  var dom = createStream(null);
-  var attrs = vnode.attrs;
+  var _useReducer = useReducer(transitionStateReducer, initialTransitionState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      dispatchTransitionState = _useReducer2[1];
 
-  if (attrs.offset !== undefined) {
-    deprecation("Menu", {
-      option: "offset",
-      newOption: "offsetH"
-    });
-  }
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  if (attrs.size !== undefined) {
-    deprecation("Menu", {
-      option: "size",
-      newOption: "width"
-    });
-  }
+  var _useState3 = useState(!!props.permanent),
+      _useState4 = _slicedToArray(_useState3, 2),
+      setIsVisible = _useState4[1];
 
-  var visible = createStream(false);
-  var transitioning = createStream(false);
-  return {
-    dom: dom,
-    visible: visible,
-    transitioning: transitioning,
-    activateDismissTap: undefined,
-    // set in onMount
-    contentEl: undefined,
-    // set in onMount
-    deActivateDismissTap: undefined,
-    // set in onMount
-    handleDismissTap: undefined,
-    // set in onMount
-    handleEscape: undefined,
-    // set in onMount
-    panelEl: undefined,
-    // set in onMount
-    update: undefined,
-    // set in onMount
-    redrawOnUpdate: createStream.merge([transitioning])
+  var panelElRef = useRef();
+  var contentElRef = useRef();
+
+  var update = function update() {
+    positionMenu();
+    scrollContent();
   };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
 
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  state.dom(vnode.dom);
-  state.panelEl = vnode.dom.querySelector(".".concat(classes.panel));
+  var transitionOptions = function transitionOptions(_ref2) {
+    var isShow = _ref2.isShow,
+        _ref2$hideDelay = _ref2.hideDelay,
+        hideDelay = _ref2$hideDelay === void 0 ? props.hideDelay : _ref2$hideDelay;
+    return {
+      dispatchTransitionState: dispatchTransitionState,
+      setIsVisible: setIsVisible,
+      props: _extends({}, props, {
+        hideDelay: hideDelay
+      }),
+      isShow: isShow,
+      beforeTransition: isShow ? function () {
+        return update();
+      } : null,
+      domElements: {
+        el: panelElRef.current,
+        showClassElement: domElement
+      },
+      showClass: classes.visible
+    };
+  };
 
-  _extends(state.panelEl.style, attrs.style);
+  var isTopMenu = function isTopMenu() {
+    return props.topMenu || stylePropCompare({
+      element: domElement,
+      pseudoSelector: ":before",
+      prop: "content",
+      contains: "\"".concat("top_menu", "\"")
+    });
+  };
 
-  state.contentEl = vnode.dom.querySelector(".".concat(classes.content));
+  var positionMenu = function positionMenu() {
+    if (isServer) {
+      return;
+    }
 
-  if (!attrs.permanent) {
-    state.handleDismissTap = function (e) {
-      if (e.target === state.panelEl) {
+    if (!props.target) {
+      return;
+    }
+
+    var panelEl = panelElRef.current;
+    var contentEl = contentElRef.current;
+    var targetEl = document.querySelector(props.target);
+
+    if (!targetEl) {
+      return;
+    }
+
+    if (!panelEl) {
+      return;
+    } // Don't set the position or top offset if the menu position is fixed
+
+
+    var hasStylePositionFixed = stylePropCompare({
+      element: panelEl,
+      prop: "position",
+      equals: "fixed"
+    });
+
+    if (hasStylePositionFixed && !isTopMenu()) {
+      _extends(panelEl.style, {});
+
+      panelEl.offsetHeight; // force reflow
+
+      return;
+    }
+
+    var parentRect = panelEl.parentNode.getBoundingClientRect();
+    var targetRect = targetEl.getBoundingClientRect();
+    var attrsOffsetH = props.offsetH !== undefined ? props.offsetH : props.offset !== undefined ? props.offset // deprecated
+    : DEFAULT_OFFSET_H;
+    var attrsOffsetV = props.offsetV !== undefined ? props.offsetV : DEFAULT_OFFSET_V;
+    var offsetH = attrsOffsetH.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetH) * 0.01 * targetRect.width) : Math.round(parseFloat(attrsOffsetH));
+    var offsetV = attrsOffsetV.toString().indexOf("%") !== -1 ? Math.round(parseFloat(attrsOffsetV) * 0.01 * targetRect.height) : Math.round(parseFloat(attrsOffsetV));
+    var positionOffsetV = offsetV;
+    var attrsOrigin = props.origin || "top";
+    var origin = attrsOrigin.split(/\W+/).reduce(function (acc, curr) {
+      return acc[curr] = true, acc;
+    }, {});
+    var firstItem = contentEl.querySelectorAll("." + classes.listTile)[0];
+
+    if (props.reposition) {
+      // get the first List Tile to calculate the top position  
+      var selectedItem = contentEl.querySelector("." + classes.selectedListTile);
+
+      if (firstItem && selectedItem) {
+        // calculate v position: menu should shift upward relative to the first item
+        var firstItemRect = firstItem.getBoundingClientRect();
+        var selectedItemRect = selectedItem.getBoundingClientRect();
+        positionOffsetV = firstItemRect.top - selectedItemRect.top;
+      } // align to middle of target
+
+
+      var alignEl = selectedItem || firstItem;
+      var alignRect = alignEl.getBoundingClientRect();
+
+      var _targetRect = targetEl.getBoundingClientRect();
+
+      var heightDiff = _targetRect.height - alignRect.height;
+      positionOffsetV += Math.abs(heightDiff) / 2;
+    } else if (props.origin && !hasStylePositionFixed) {
+      if (origin.top) {
+        positionOffsetV += targetRect.top - parentRect.top;
+      } else if (origin.bottom) {
+        positionOffsetV += targetRect.top - parentRect.bottom;
+      }
+    }
+
+    if (props.height) {
+      var firstItemHeight = firstItem ? firstItem.clientHeight : 48; // default List Tile height
+
+      if (props.height === "max") {
+        var topMargin = positionOffsetV;
+        var bottomMargin = firstItemHeight;
+        panelEl.style.height = "calc(100% - ".concat(topMargin + bottomMargin, "px)");
+      } else {
+        var height = /^\d+$/.test(props.height.toString()) ? "".concat(props.height, "px") : props.height;
+        panelEl.style.height = height;
+      }
+    } // prevent animated changes
+
+
+    var transitionDuration = panelEl.style.transitionDuration;
+    panelEl.style.transitionDuration = "0ms";
+
+    if (panelEl.parentNode && !hasStylePositionFixed) {
+      if (origin.right) {
+        panelEl.style.right = targetRect.right - parentRect.right + offsetH + "px";
+      } else {
+        panelEl.style.left = targetRect.left - parentRect.left + offsetH + "px";
+      }
+
+      if (origin.bottom) {
+        panelEl.style.bottom = positionOffsetV + "px";
+      } else {
+        panelEl.style.top = positionOffsetV + "px";
+      }
+
+      panelEl.style.transformOrigin = attrsOrigin.split(/\W+/).join(" ");
+    }
+
+    panelEl.offsetHeight; // force reflow
+
+    panelEl.style.transitionDuration = transitionDuration;
+  };
+
+  var scrollContent = function scrollContent() {
+    if (isServer) {
+      return;
+    }
+
+    if (!props.scrollTarget) {
+      return;
+    }
+
+    var scrollTargetEl = document.querySelector(props.scrollTarget);
+
+    if (!scrollTargetEl) {
+      return;
+    }
+
+    contentElRef.current.scrollTop = scrollTargetEl.offsetTop;
+  };
+
+  var showMenu = function showMenu() {
+    return transitionComponent(transitionOptions({
+      isShow: true
+    }));
+  };
+
+  var hideMenu = function hideMenu() {
+    var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        hideDelay = _ref3.hideDelay;
+
+    return transitionComponent(transitionOptions({
+      isShow: false,
+      hideDelay: hideDelay
+    }));
+  };
+
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    panelElRef.current = domElement.querySelector(".".concat(classes.panel));
+
+    _extends(panelElRef.current.style, props.style);
+
+    contentElRef.current = domElement.querySelector(".".concat(classes.content));
+
+    var handleEscape = function handleEscape(e) {
+      if (e.key === "Escape" || e.key === "Esc") {
+        hideMenu({
+          hideDelay: 0
+        });
+      }
+    };
+
+    var handleDismissTap = function handleDismissTap(e) {
+      if (e.target === panelElRef.current) {
         return;
       }
 
-      hideMenu(state, attrs);
+      hideMenu();
     };
 
-    state.update = function () {
-      positionMenu(state, attrs);
-      scrollContent(state, attrs);
-    };
-
-    state.activateDismissTap = function () {
+    var activateDismissTap = function activateDismissTap() {
       pointerEndMoveEvent.forEach(function (evt) {
-        return document.addEventListener(evt, state.handleDismissTap);
+        return document.addEventListener(evt, handleDismissTap);
       });
     };
 
-    state.deActivateDismissTap = function () {
+    var deActivateDismissTap = function deActivateDismissTap() {
       pointerEndMoveEvent.forEach(function (evt) {
-        return document.removeEventListener(evt, state.handleDismissTap);
+        return document.removeEventListener(evt, handleDismissTap);
       });
     };
 
-    state.handleEscape = function (e) {
-      if (e.key === "Escape" || e.key === "Esc") {
-        hideMenu(state, _extends({}, attrs, {
-          hideDelay: 0
-        }));
+    if (!props.permanent) {
+      subscribe("resize", update);
+      subscribe("keydown", handleEscape);
+      setTimeout(function () {
+        activateDismissTap();
+        showMenu();
+      }, 0);
+    }
+
+    return function () {
+      if (!props.permanent) {
+        unsubscribe("resize", update);
+        unsubscribe("keydown", handleEscape);
+        deActivateDismissTap();
       }
     };
+  }, [domElement]);
+  var type = props.type || DEFAULT_TYPE;
 
-    handleSubscriptions(vnode, "mount");
-  }
-};
-var onUnMount = function onUnMount(vnode) {
-  var attrs = vnode.attrs;
-
-  if (!attrs.permanent) {
-    handleSubscriptions(vnode, "unmount");
-  }
-};
-var createProps = function createProps(vnode, _ref2) {
-  var k = _ref2.keys;
-  var attrs = vnode.attrs;
-  var type = attrs.type || DEFAULT_TYPE;
-  return _extends({}, filterSupportedAttributes(attrs, {
+  var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
-  }), attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    className: [classes.component, attrs.permanent ? classes.permanent : null, attrs.origin ? classes.origin : null, attrs.backdrop ? classes.showBackdrop : null, attrs.topMenu ? classes.isTopMenu : null, type === "floating" && !attrs.permanent ? classes.floating : null, attrs.width || attrs.size ? widthClass(unifyWidth(attrs.width || attrs.size)) : null, attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
+  }), props.testId && {
+    "data-test-id": props.testId
+  }, getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.getRef && props.getRef(dom));
+  }), {
+    className: [classes.component, props.permanent ? classes.permanent : null, props.origin ? classes.origin : null, props.backdrop ? classes.showBackdrop : null, props.topMenu ? classes.isTopMenu : null, type === "floating" && !props.permanent ? classes.floating : null, props.width || props.size ? widthClass(unifyWidth(props.width || props.size)) : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   });
-};
-var createContent = function createContent(vnode, _ref3) {
-  var h = _ref3.renderer,
-      Shadow = _ref3.Shadow;
-  var attrs = vnode.attrs;
-  var shadowDepth = attrs.shadowDepth !== undefined ? attrs.shadowDepth : attrs.z !== undefined ? attrs.z // deprecated
-  : DEFAULT_SHADOW_DEPTH;
-  return [h("div", {
+
+  var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH;
+  var contents = [h("div", {
     key: "backdrop",
     className: classes.backdrop
   }), h("div", {
@@ -408,16 +455,9 @@ var createContent = function createContent(vnode, _ref3) {
   }), h("div", {
     className: classes.content,
     key: "content"
-  }, attrs.content ? attrs.content : vnode.children)])];
+  }, props.content || props.children)])];
+  var content = [props.before, contents, props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
-var menu = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  onMount: onMount,
-  onUnMount: onUnMount,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { menu as coreMenu };
+export { _Menu };
