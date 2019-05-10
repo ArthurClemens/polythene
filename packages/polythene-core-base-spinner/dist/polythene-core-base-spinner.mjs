@@ -1,4 +1,4 @@
-import { transitionComponent, filterSupportedAttributes, classForSize } from 'polythene-core';
+import { transitionStateReducer, transitionComponent, filterSupportedAttributes, classForSize } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -155,34 +155,34 @@ var showSpinner = function showSpinner(opts) {
 //   });
 
 
+var initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false
+};
 var _BaseSpinner = function _BaseSpinner(_ref) {
   var h = _ref.h,
       a = _ref.a,
+      useReducer = _ref.useReducer,
       useState = _ref.useState,
       useEffect = _ref.useEffect,
       getRef = _ref.getRef,
       Shadow = _ref.Shadow,
-      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "getRef", "Shadow"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "useReducer", "useState", "useEffect", "getRef", "Shadow"]);
 
-  var _useState = useState(false),
+  var _useReducer = useReducer(transitionStateReducer, initialTransitionState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      transitionState = _useReducer2[0],
+      dispatchTransitionState = _useReducer2[1];
+
+  var _useState = useState(),
       _useState2 = _slicedToArray(_useState, 2),
-      isTransitioning = _useState2[0],
-      setIsTransitioning = _useState2[1];
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  var _useState3 = useState(!!props.permanent),
-      _useState4 = _slicedToArray(_useState3, 2),
-      isVisible = _useState4[0],
-      setIsVisible = _useState4[1];
-
-  var _useState5 = useState(),
-      _useState6 = _slicedToArray(_useState5, 2),
-      domElement = _useState6[0],
-      setDomElement = _useState6[1];
-
+  var isVisible = transitionState.isVisible;
   var transitionOptions = {
-    isTransitioning: isTransitioning,
-    setIsTransitioning: setIsTransitioning,
-    setIsVisible: setIsVisible,
+    dispatchTransitionState: dispatchTransitionState,
     props: props,
     domElements: {
       el: domElement

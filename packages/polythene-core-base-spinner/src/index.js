@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, classForSize } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, classForSize, transitionStateReducer } from "polythene-core";
 import classes from "polythene-css-classes/base-spinner";
 
 const showSpinner = opts =>
@@ -13,15 +13,20 @@ const showSpinner = opts =>
 //     isShow: false
 //   });
 
-export const _BaseSpinner = ({ h, a, useState, useEffect, getRef, Shadow, ...props }) => {
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isVisible, setIsVisible] = useState(!!props.permanent);
+const initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false,
+};
+
+export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Shadow, ...props }) => {
+  const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
 
+  const isVisible = transitionState.isVisible;
+
   const transitionOptions = {
-    isTransitioning,
-    setIsTransitioning,
-    setIsVisible,
+    dispatchTransitionState,
     props,
     domElements: {
       el: domElement,

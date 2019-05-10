@@ -1,6 +1,6 @@
 import { _BaseSpinner } from 'polythene-core-base-spinner';
 import { Shadow } from 'polythene-mithril-shadow';
-import { cast, h, a, useState, useEffect, getRef } from 'cyano-mithril';
+import { cast, h, a, useReducer, useState, useEffect, getRef } from 'cyano-mithril';
 
 var classes = {
   component: "pe-spinner",
@@ -23,6 +23,7 @@ var classes = {
 var BaseSpinner = cast(_BaseSpinner, {
   h: h,
   a: a,
+  useReducer: useReducer,
   useState: useState,
   useEffect: useEffect,
   getRef: getRef,
