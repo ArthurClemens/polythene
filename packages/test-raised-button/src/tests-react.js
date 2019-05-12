@@ -1,6 +1,7 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { withRouter } from "react-router-dom";
 import { renderer, Button, Icon } from "polythene-react";
+// import { RaisedButton } from "polythene-react-raised-button";
 import genericTests from "./tests-generic";
 import { compose, withState, withHandlers } from "recompose";
 
@@ -17,6 +18,14 @@ const reactTests = ({ Button, renderer: h }) => {
     {
       section: "React specific tests",
     },
+    // {
+    //   name: "Deprecated polythene-react-raised-button",
+    //   interactive: true,
+    //   component: RaisedButton,
+    //   attrs: {
+    //     label: "Deprecated",
+    //   }
+    // },
     {
       name: "With router",
       interactive: true,

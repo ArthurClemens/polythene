@@ -1,38 +1,45 @@
 import { Button } from 'polythene-react-button';
-import { deprecation } from 'polythene-core';
-import { ComponentCreator, renderer } from 'polythene-react-base';
+import { h } from 'cyano-react';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return obj;
 }
 
-var RaisedButton = ComponentCreator({
-  onMount: function onMount() {
-    deprecation("RaisedButton", {
-      newComponent: "Button",
-      newOption: "raised: true"
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
     });
-  },
-  view: function view(vnode) {
-    return renderer(Button, _extends({}, {
-      raised: true
-    }, vnode.attrs), vnode.children);
   }
-});
+
+  return target;
+}
+
+var RaisedButton = function RaisedButton(props) {
+  return h(Button, _objectSpread({}, props, {
+    raised: true
+  }));
+};
 RaisedButton["displayName"] = "RaisedButton";
 
 export { RaisedButton };

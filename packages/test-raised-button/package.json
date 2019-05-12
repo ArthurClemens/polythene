@@ -11,6 +11,8 @@
   "dependencies": {
     "polythene-css": "^1.5.4",
     "polythene-mithril": "^1.5.4",
+    "polythene-mithril-raised-button": "^1.5.4",
+    "polythene-react-raised-button": "^1.5.4",
     "polythene-react": "^1.5.4"
   },
   "devDependencies": {

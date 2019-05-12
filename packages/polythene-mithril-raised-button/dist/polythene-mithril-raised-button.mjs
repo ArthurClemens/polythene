@@ -1,6 +1,5 @@
 import { Button } from 'polythene-mithril-button';
-import { deprecation } from 'polythene-core';
-import { ComponentCreator, renderer } from 'polythene-mithril-base';
+import { h } from 'cyano-mithril';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -36,19 +35,13 @@ function _objectSpread(target) {
   return target;
 }
 
-var RaisedButton = ComponentCreator({
-  onMount: function onMount() {
-    deprecation("RaisedButton", {
-      newComponent: "Button",
-      newOption: "raised: true"
-    });
-  },
+var RaisedButton = {
   view: function view(vnode) {
-    return renderer(Button, _objectSpread({
+    return h(Button, _objectSpread({
       raised: true
     }, vnode.attrs), vnode.children);
   }
-});
+};
 RaisedButton["displayName"] = "RaisedButton";
 
 export { RaisedButton };

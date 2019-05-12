@@ -1,4 +1,5 @@
 import { renderer, Button, Icon } from "polythene-mithril";
+// import { RaisedButton } from "polythene-mithril-raised-button";
 import genericTests from "./tests-generic";
 
 const mithrilTests = ({ Button, renderer: h }) => {
@@ -7,6 +8,14 @@ const mithrilTests = ({ Button, renderer: h }) => {
     {
       section: "Mithril specific tests",
     },
+    // {
+    //   name: "Deprecated polythene-mithril-raised-button",
+    //   interactive: true,
+    //   component: RaisedButton,
+    //   attrs: {
+    //     label: "Deprecated",
+    //   }
+    // },
     {
       name: "Option: url (with oncreate)",
       interactive: true,
