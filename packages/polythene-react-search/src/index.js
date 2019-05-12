@@ -1,12 +1,6 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-react-base";
-import { coreSearch as core } from "polythene-core-search";
+import { _Search } from "polythene-core-search";
 import { TextField } from "polythene-react-textfield";
+import { cast, h, a, useState } from "cyano-react";
 
-export const Search = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, { ...args, TextField })
-});
-
+export const Search = cast(_Search, { h, a, useState, TextField });
 Search["displayName"] = "Search";

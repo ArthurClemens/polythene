@@ -1,12 +1,6 @@
-// @ts-check
-
-import { ComponentCreator } from "polythene-mithril-base";
-import { coreSearch as core } from "polythene-core-search";
+import { _Search } from "polythene-core-search";
 import { TextField } from "polythene-mithril-textfield";
+import { cast, h, a, useState } from "cyano-mithril";
 
-export const Search = ComponentCreator({
-  ...core,
-  createContent: (vnode, args) => core.createContent(vnode, Object.assign(args, { TextField }))
-});
-
+export const Search = cast(_Search, { h, a, useState, TextField });
 Search["displayName"] = "Search";
