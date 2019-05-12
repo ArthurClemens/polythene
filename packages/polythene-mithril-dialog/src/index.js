@@ -1,4 +1,3 @@
-// @ts-check
 
 /**
  * @typedef {import("mithril").Vnode} Vnode
@@ -6,7 +5,6 @@
  */
 
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from "cyano-mithril";
-import { ComponentCreator, renderer } from "polythene-mithril-base";
 import { Multi } from "polythene-core";
 import { _Dialog } from "polythene-core-dialog";
 import classes from "polythene-css-classes/dialog";
@@ -25,8 +23,9 @@ const options = {
   placeholder:    `span.${classes.placeholder}`
 };
 
-const Multiple = Multi({ options, renderer });
-export const Dialog = ComponentCreator(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(p => Dialog[p] = Multiple[p]);
-
+const MultipleInstance = Multi({ options });
+export const Dialog = cast(MultipleInstance.render, { h, useState, useEffect });
+Object.getOwnPropertyNames(MultipleInstance)
+  .filter(p => p !== "render")
+  .forEach(p => Dialog[p] = MultipleInstance[p]);
 Dialog["displayName"] = "Dialog";

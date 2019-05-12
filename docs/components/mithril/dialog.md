@@ -314,10 +314,9 @@ const confirmDialogOpts = ({
       label: "Delete",
       events: {
         onclick: () => (
-          // hide confirm dialog
-          Dialog.hide({ id: DIALOG_CONFIRM }),
-          // hide main dialog
-          Dialog.hide()
+          Dialog
+            .hide({ id: DIALOG_CONFIRM }) // hide confirm dialog
+            .then(Dialog.hide) // hide main dialog
         )
       }
     })

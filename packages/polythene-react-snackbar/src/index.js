@@ -1,7 +1,5 @@
-// @ts-check
 
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from "cyano-react";
-import { ComponentCreator, renderer } from "polythene-react-base";
 import { Multi } from "polythene-core";
 import { _Snackbar, transitions } from "polythene-core-snackbar";
 import classes from "polythene-css-classes/snackbar";
@@ -21,8 +19,9 @@ const options = {
   transitions
 };
 
-const Multiple = Multi({ options, renderer });
-export const Snackbar = ComponentCreator(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(p => Snackbar[p] = Multiple[p]);
-
-Snackbar["displayName"] = "Snackbar";
+const MultipleInstance = Multi({ options });
+export const Snackbar = cast(MultipleInstance.render, { h, useState, useEffect });
+Object.getOwnPropertyNames(MultipleInstance)
+  .filter(p => p !== "render")
+  .forEach(p => Snackbar[p] = MultipleInstance[p]);
+  Snackbar["displayName"] = "Snackbar";

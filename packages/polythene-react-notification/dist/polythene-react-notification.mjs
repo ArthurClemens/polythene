@@ -1,5 +1,4 @@
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-react';
-import { renderer, ComponentCreator } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
 import { _Notification } from 'polythene-core-notification';
 
@@ -19,7 +18,6 @@ var classes = {
   visible: "pe-notification--visible"
 };
 
-// @ts-check
 var NotificationInstance = cast(_Notification, {
   h: h,
   a: a,
@@ -40,13 +38,18 @@ var options = {
   placeholder: "span.".concat(classes.placeholder),
   queue: true
 };
-var Multiple = Multi({
-  options: options,
-  renderer: renderer
+var MultipleInstance = Multi({
+  options: options
 });
-var Notification = ComponentCreator(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(function (p) {
-  return Notification[p] = Multiple[p];
+var Notification = cast(MultipleInstance.render, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
+Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
+  return p !== "render";
+}).forEach(function (p) {
+  return Notification[p] = MultipleInstance[p];
 });
 Notification["displayName"] = "Notification";
 

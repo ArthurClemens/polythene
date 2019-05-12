@@ -32,6 +32,7 @@ export default ({ renderer: h, keys: k, Toolbar, ToolbarTitle, IconButton, Butto
     body: "This event is not yet saved. Are you sure you want to delete this event?",
     // modal: true,
     backdrop: true,
+    hideDuration: 0,
     footerButtons: [
       h(Button, {
         label: "Cancel",
@@ -43,10 +44,9 @@ export default ({ renderer: h, keys: k, Toolbar, ToolbarTitle, IconButton, Butto
         label: "Delete",
         events: {
           [k.onclick]: () => (
-            // hide confirm dialog
-            Dialog.hide({ id: DIALOG_CONFIRM }),
-            // hide main dialog
-            Dialog.hide()
+            Dialog
+              .hide({ id: DIALOG_CONFIRM }) // hide confirm dialog
+              .then(Dialog.hide) // hide main dialog
           )
         }
       })

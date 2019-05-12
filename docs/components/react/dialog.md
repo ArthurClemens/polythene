@@ -7,11 +7,36 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Calling a Dialog](#calling-a-dialog)
+    - [Dialog spawner](#dialog-spawner)
+      - [With JSX](#with-jsx)
+      - [With hyperscript](#with-hyperscript)
+    - [Multiple dialog spawners](#multiple-dialog-spawners)
+    - [Multiple dialogs](#multiple-dialogs)
+    - [Showing and hiding dialogs](#showing-and-hiding-dialogs)
+      - [show](#show)
+      - [hide](#hide)
+    - [Callbacks](#callbacks)
   - [Drawing a Dialog](#drawing-a-dialog)
+    - [Example with a Toolbar as custom header and footer](#example-with-a-toolbar-as-custom-header-and-footer)
+      - [With JSX](#with-jsx-1)
+      - [With hyperscript](#with-hyperscript-1)
+    - [Example with modal and backdrop](#example-with-modal-and-backdrop)
+      - [With JSX](#with-jsx-2)
+      - [With hyperscript](#with-hyperscript-2)
+    - [Full screen dialog](#full-screen-dialog)
+    - [With JSX](#with-jsx-3)
+      - [With hyperscript](#with-hyperscript-3)
   - [Dynamic content](#dynamic-content)
+    - [Passing dialog options as a function](#passing-dialog-options-as-a-function)
+      - [With JSX](#with-jsx-4)
+    - [Continuously calling Dialog.show](#continuously-calling-dialogshow)
+      - [With JSX](#with-jsx-5)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -363,10 +388,10 @@ const confirmDialogOpts = ({
       label="Delete"
       events={{
         onClick: () => (
-          // hide confirm dialog
-          Dialog.hide({ id: DIALOG_CONFIRM }),
-          // hide main dialog
-          Dialog.hide()
+          
+          Dialog
+            .hide({ id: DIALOG_CONFIRM }) // hide confirm dialog
+            .then(Dialog.hide) // hide main dialog
         )
       }}
     />

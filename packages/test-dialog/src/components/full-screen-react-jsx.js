@@ -22,19 +22,20 @@ const confirmDialogOpts = ({
   backdrop: true,
   footerButtons: [
     <Button
+      key="cancel"
       label="Cancel"
       events={{
         onClick: () => Dialog.hide({ id: DIALOG_CONFIRM })
       }}
     />,
     <Button
+      key="confirm"
       label="Delete"
       events={{
         onClick: () => (
-          // hide confirm dialog
-          Dialog.hide({ id: DIALOG_CONFIRM }),
-          // hide main dialog
-          Dialog.hide()
+          Dialog
+            .hide({ id: DIALOG_CONFIRM }) // hide confirm dialog
+            .then(Dialog.hide) // hide main dialog
         )
       }}
     />
@@ -51,7 +52,7 @@ const toolbarRow = title => [
       onClick: () => Dialog.show(confirmDialogOpts, { id: DIALOG_CONFIRM })
     }}
   />,
-  <ToolbarTitle>{title}</ToolbarTitle>,
+  <ToolbarTitle key="title">{title}</ToolbarTitle>,
   <Button
     key="save"
     label="Save"

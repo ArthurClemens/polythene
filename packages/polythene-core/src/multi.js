@@ -4,7 +4,9 @@ Helper module to manage multiple items of the same component type.
 
 import { isClient } from "./iso";
 import { unpackAttrs } from "./attrs";
-import { emit } from "./events";
+import { emit, subscribe, unsubscribe } from "./events";
+
+const EVENT_NAME = "multiple";
 
 /**
  * @typedef {object} Item 
@@ -14,33 +16,19 @@ import { emit } from "./events";
  * 
  * @param {object} params
  * @param {object} params.options
- * @param {function} params.renderer
  */
-export const Multi = ({ options: mOptions, renderer }) => {
+export const Multi = ({ options: mOptions }) => {
 
   /**
    * @type {Array<Item>} items
    */
   const items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
-  let current;
-  
-  const getInitialState = (vnode, createStream) => {
-    current = createStream(null);
-    return {
-      current,
-      redrawOnUpdate: createStream.merge([current])
-    };
-  };
 
   /*
   @param e: { id, eventName }
   */
   const onChange = e => {
-    if (!current) {
-      console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
-    }
-    current(e.id);
-    emit(mOptions.name, e);
+    emit(EVENT_NAME, e);
   };
 
   const itemIndex = id => {
@@ -105,36 +93,38 @@ export const Multi = ({ options: mOptions, renderer }) => {
   const createItem = (itemAttrs, instanceId, spawn) => {
     let resolveShow;
     let resolveHide;
-    const attrs = unpackAttrs(itemAttrs);
+    const props = unpackAttrs(itemAttrs);
 
     const didShow = () => {
-      if (attrs.didShow) {
-        attrs.didShow(instanceId);
+      if (props.didShow) {
+        props.didShow(instanceId);
       }
       onChange({ id: instanceId, name: "didShow" });
       return resolveShow(instanceId);
     };
+
     const showPromise = new Promise(resolve => 
       resolveShow = resolve
     );
 
+    const hidePromise = new Promise(resolve =>
+      resolveHide = resolve
+    );
+
     const didHide = () => {
-      if (attrs.didHide) {
-        attrs.didHide(instanceId);
+      if (props.didHide) {
+        props.didHide(instanceId);
       }
       onChange({ id: instanceId, name: "didHide" });
       remove(instanceId);
       return resolveHide(instanceId);
     };
 
-    const hidePromise = new Promise(resolve => resolveHide = resolve);
-
     return {
       ...mOptions,
-      keyId: new Date().getTime(), // to force rendering a new component (for Mithril)
       instanceId,
       spawn,
-      attrs: itemAttrs,
+      props: itemAttrs,
       show: mOptions.queue ? false : true,
       showPromise,
       hidePromise,
@@ -147,10 +137,10 @@ export const Multi = ({ options: mOptions, renderer }) => {
   const pause = (instanceId = mOptions.defaultId) => setPauseState(true, instanceId);
   const unpause = (instanceId = mOptions.defaultId) => setPauseState(false, instanceId);
 
-  const show = (attrs = {}, spawnOpts = {}) => {
+  const show = (props = {}, spawnOpts = {}) => {
     const instanceId = spawnOpts.id || mOptions.defaultId;
     const spawn = spawnOpts.spawn || mOptions.defaultId;
-    const item = createItem(attrs, instanceId, spawn);
+    const item = createItem(props, instanceId, spawn);
     onChange({ id: instanceId, name: "show" });
     if (mOptions.queue) {
       items.push(item);
@@ -184,8 +174,21 @@ export const Multi = ({ options: mOptions, renderer }) => {
 
   const clear = removeAll;
 
-  const view = ({ attrs }) => {
-    const spawn = attrs.spawn || mOptions.defaultId;
+  const render = ({ h, useState, useEffect, ...props }) => {
+    const [, setCurrent] = useState();
+    useEffect(
+      () => {
+        subscribe(EVENT_NAME, e => {
+          setCurrent(e);
+        });
+        return () => {
+          unsubscribe(EVENT_NAME);
+        }
+      },
+      []
+    );
+    
+    const spawn = props.spawn || mOptions.defaultId;
     const candidates = items.filter(item => 
       item.show && item.spawn === spawn
     );
@@ -194,16 +197,16 @@ export const Multi = ({ options: mOptions, renderer }) => {
     }
     
     return !candidates.length
-      ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-      : renderer(mOptions.holderSelector,
+      ? h(mOptions.placeholder) // placeholder because we cannot return null
+      : h(mOptions.holderSelector,
         {
-          className: attrs.position === "container"
+          className: props.position === "container"
             ? "pe-multiple--container"
             : "pe-multiple--screen"
         },
         candidates.map(itemData => {
-          return renderer(mOptions.instance, {
-            ...unpackAttrs(attrs),
+          return h(mOptions.instance, {
+            ...unpackAttrs(props),
             fromMultipleClear: clear,
             spawnId: spawn,
             // from mOptions:
@@ -219,7 +222,7 @@ export const Multi = ({ options: mOptions, renderer }) => {
             pause: itemData.pause,
             show: itemData.show,
             unpause: itemData.unpause,
-            ...unpackAttrs(itemData.attrs)
+            ...unpackAttrs(itemData.props)
           });
         })
       );
@@ -228,13 +231,12 @@ export const Multi = ({ options: mOptions, renderer }) => {
   return {
     clear,
     count,
-    getInitialState,  
     hide,
     pause,
     remove,
     show,
     unpause,
-    view,
+    render,
   };
 };
 

@@ -1,5 +1,4 @@
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-react';
-import { renderer, ComponentCreator } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
 import { _Snackbar, transitions } from 'polythene-core-snackbar';
 
@@ -62,7 +61,6 @@ var classes = _objectSpread({}, notificationClasses, {
   open: "pe-snackbar--open"
 });
 
-// @ts-check
 var SnackbarInstance = cast(_Snackbar, {
   h: h,
   a: a,
@@ -84,13 +82,18 @@ var options = {
   queue: true,
   transitions: transitions
 };
-var Multiple = Multi({
-  options: options,
-  renderer: renderer
+var MultipleInstance = Multi({
+  options: options
 });
-var Snackbar = ComponentCreator(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(function (p) {
-  return Snackbar[p] = Multiple[p];
+var Snackbar = cast(MultipleInstance.render, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
+Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
+  return p !== "render";
+}).forEach(function (p) {
+  return Snackbar[p] = MultipleInstance[p];
 });
 Snackbar["displayName"] = "Snackbar";
 

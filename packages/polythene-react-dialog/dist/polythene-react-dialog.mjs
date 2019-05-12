@@ -1,5 +1,4 @@
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-react';
-import { renderer, ComponentCreator } from 'polythene-react-base';
 import { Multi } from 'polythene-core';
 import { _Dialog } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
@@ -76,7 +75,6 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-// @ts-check
 var DialogInstance = cast(_Dialog, {
   h: h,
   a: a,
@@ -97,13 +95,18 @@ var options = {
   instance: DialogInstance,
   placeholder: "span.".concat(classes.placeholder)
 };
-var Multiple = Multi({
-  options: options,
-  renderer: renderer
+var MultipleInstance = Multi({
+  options: options
 });
-var Dialog = ComponentCreator(Multiple);
-Object.getOwnPropertyNames(Multiple).forEach(function (p) {
-  return Dialog[p] = Multiple[p];
+var Dialog = cast(MultipleInstance.render, {
+  h: h,
+  useState: useState,
+  useEffect: useEffect
+});
+Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
+  return p !== "render";
+}).forEach(function (p) {
+  return Dialog[p] = MultipleInstance[p];
 });
 Dialog["displayName"] = "Dialog";
 

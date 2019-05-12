@@ -282,7 +282,8 @@ var _Dialog = function _Dialog(_ref2) {
       prop: "content",
       contains: "\"".concat("full_screen", "\"")
     });
-  };
+  }; // DOM elements
+
 
   useEffect(function () {
     if (!domElement) {
@@ -292,7 +293,8 @@ var _Dialog = function _Dialog(_ref2) {
     backdropElRef.current = domElement.querySelector(".".concat(classes.backdrop));
     touchElRef.current = domElement.querySelector(".".concat(classes.touch));
     contentElRef.current = domElement.querySelector(".".concat(classes.content));
-  }, [domElement]);
+  }, [domElement]); // Handle Escape key
+
   useEffect(function () {
     if (!domElement || props.inactive) {
       return;
@@ -315,7 +317,8 @@ var _Dialog = function _Dialog(_ref2) {
     return function () {
       unsubscribe("keydown", handleEscape);
     };
-  }, [domElement]);
+  }, [domElement, props.inactive]); // Show / hide logic
+
   useEffect(function () {
     if (!domElement || isTransitioning || isHiding) {
       return;
@@ -330,7 +333,7 @@ var _Dialog = function _Dialog(_ref2) {
         showDialog();
       }
     }
-  }, [domElement, isTransitioning, isVisible, props.hide, props.show]);
+  }, [domElement, isTransitioning, isHiding, isVisible, props.hide, props.show]);
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]

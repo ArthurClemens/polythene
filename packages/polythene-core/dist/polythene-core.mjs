@@ -549,6 +549,7 @@ if (isClient) {
   });
 }
 
+var EVENT_NAME = "multiple";
 /**
  * @typedef {object} Item 
  */
@@ -557,39 +558,22 @@ if (isClient) {
  * 
  * @param {object} params
  * @param {object} params.options
- * @param {function} params.renderer
  */
 
 var Multi = function Multi(_ref) {
-  var mOptions = _ref.options,
-      renderer = _ref.renderer;
+  var mOptions = _ref.options;
 
   /**
    * @type {Array<Item>} items
    */
   var items = []; // This is shared between all instances of a type (Dialog, Notification, ...)
 
-  var current;
-
-  var getInitialState = function getInitialState(vnode, createStream) {
-    current = createStream(null);
-    return {
-      current: current,
-      redrawOnUpdate: createStream.merge([current])
-    };
-  };
   /*
   @param e: { id, eventName }
   */
 
-
   var onChange = function onChange(e) {
-    if (!current) {
-      console.error("Cannot set state. Did you set a root element like Dialog to show instances?"); // eslint-disable-line no-console
-    }
-
-    current(e.id);
-    emit(mOptions.name, e);
+    emit(EVENT_NAME, e);
   };
 
   var itemIndex = function itemIndex(id) {
@@ -672,11 +656,11 @@ var Multi = function Multi(_ref) {
   var createItem = function createItem(itemAttrs, instanceId, spawn) {
     var resolveShow;
     var resolveHide;
-    var attrs = unpackAttrs(itemAttrs);
+    var props = unpackAttrs(itemAttrs);
 
     var didShow = function didShow() {
-      if (attrs.didShow) {
-        attrs.didShow(instanceId);
+      if (props.didShow) {
+        props.didShow(instanceId);
       }
 
       onChange({
@@ -689,10 +673,13 @@ var Multi = function Multi(_ref) {
     var showPromise = new Promise(function (resolve) {
       return resolveShow = resolve;
     });
+    var hidePromise = new Promise(function (resolve) {
+      return resolveHide = resolve;
+    });
 
     var didHide = function didHide() {
-      if (attrs.didHide) {
-        attrs.didHide(instanceId);
+      if (props.didHide) {
+        props.didHide(instanceId);
       }
 
       onChange({
@@ -703,15 +690,10 @@ var Multi = function Multi(_ref) {
       return resolveHide(instanceId);
     };
 
-    var hidePromise = new Promise(function (resolve) {
-      return resolveHide = resolve;
-    });
     return _objectSpread({}, mOptions, {
-      keyId: new Date().getTime(),
-      // to force rendering a new component (for Mithril)
       instanceId: instanceId,
       spawn: spawn,
-      attrs: itemAttrs,
+      props: itemAttrs,
       show: mOptions.queue ? false : true,
       showPromise: showPromise,
       hidePromise: hidePromise,
@@ -735,11 +717,11 @@ var Multi = function Multi(_ref) {
   };
 
   var show = function show() {
-    var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var spawnOpts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var instanceId = spawnOpts.id || mOptions.defaultId;
     var spawn = spawnOpts.spawn || mOptions.defaultId;
-    var item = createItem(attrs, instanceId, spawn);
+    var item = createItem(props, instanceId, spawn);
     onChange({
       id: instanceId,
       name: "show"
@@ -782,9 +764,25 @@ var Multi = function Multi(_ref) {
 
   var clear = removeAll;
 
-  var view = function view(_ref2) {
-    var attrs = _ref2.attrs;
-    var spawn = attrs.spawn || mOptions.defaultId;
+  var render = function render(_ref2) {
+    var h = _ref2.h,
+        useState = _ref2.useState,
+        useEffect = _ref2.useEffect,
+        props = _objectWithoutProperties(_ref2, ["h", "useState", "useEffect"]);
+
+    var _useState = useState(),
+        _useState2 = _slicedToArray(_useState, 2),
+        setCurrent = _useState2[1];
+
+    useEffect(function () {
+      subscribe(EVENT_NAME, function (e) {
+        setCurrent(e);
+      });
+      return function () {
+        unsubscribe(EVENT_NAME);
+      };
+    }, []);
+    var spawn = props.spawn || mOptions.defaultId;
     var candidates = items.filter(function (item) {
       return item.show && item.spawn === spawn;
     });
@@ -793,11 +791,11 @@ var Multi = function Multi(_ref) {
       document.documentElement.classList[candidates.length ? "add" : "remove"](mOptions.htmlShowClass);
     }
 
-    return !candidates.length ? renderer(mOptions.placeholder) // placeholder because we cannot return null
-    : renderer(mOptions.holderSelector, {
-      className: attrs.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
+    return !candidates.length ? h(mOptions.placeholder) // placeholder because we cannot return null
+    : h(mOptions.holderSelector, {
+      className: props.position === "container" ? "pe-multiple--container" : "pe-multiple--screen"
     }, candidates.map(function (itemData) {
-      return renderer(mOptions.instance, _objectSpread({}, unpackAttrs(attrs), {
+      return h(mOptions.instance, _objectSpread({}, unpackAttrs(props), {
         fromMultipleClear: clear,
         spawnId: spawn,
         // from mOptions:
@@ -813,20 +811,19 @@ var Multi = function Multi(_ref) {
         pause: itemData.pause,
         show: itemData.show,
         unpause: itemData.unpause
-      }, unpackAttrs(itemData.attrs)));
+      }, unpackAttrs(itemData.props)));
     }));
   };
 
   return {
     clear: clear,
     count: count,
-    getInitialState: getInitialState,
     hide: hide,
     pause: pause,
     remove: remove,
     show: show,
     unpause: unpause,
-    view: view
+    render: render
   };
 };
 Multi["displayName"] = "Multi";
