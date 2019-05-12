@@ -1,8 +1,5 @@
-// @ts-check
+import { _TextField } from "polythene-core-textfield";
+import { cast, h, a, useEffect, useState, useRef, getRef } from "cyano-react";
 
-import { ComponentCreator } from "polythene-react-base";
-import { coreTextField as core } from "polythene-core-textfield";
-
-export const TextField = ComponentCreator(core);
-
+export const TextField = cast(_TextField, { h, a, useEffect, useState, useRef, getRef });
 TextField["displayName"] = "TextField";

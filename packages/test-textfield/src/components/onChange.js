@@ -3,6 +3,9 @@ import stream from "mithril/stream";
 export default ({ h, TextField }) => ({
   oninit: vnode => {
     const textfieldState = stream({});
+    if (h.redraw) {
+      textfieldState.map(h.redraw); // update Mithril
+    }
     const value = stream("");
     value.map(v => {
       if (textfieldState().el) {

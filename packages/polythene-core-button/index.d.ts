@@ -28,6 +28,7 @@ interface RaisedButtonOptions {
   increase?: number;
 
 }
+
 export interface Options extends Partial<CommonOptions>, RaisedButtonOptions {
 
   /* START COMMON OPTIONS */
@@ -81,9 +82,10 @@ export interface Options extends Partial<CommonOptions>, RaisedButtonOptions {
 
   /**
    * Set to true to add a dropdown icon; note that a dropdown button has no minimum width.
-   * @default false
    */
-  dropdown?: boolean;
+  dropdown?: {
+    open: boolean
+  };
 
   /**
    * Set to true to add even more side padding.

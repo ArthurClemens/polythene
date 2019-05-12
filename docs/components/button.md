@@ -60,7 +60,7 @@ Read first: [Turning on keyboard control](../keyboard-control.md)
 | **border** | optional | Boolean | false | Set to `true` to add a border; by default the border has no color - set border color to class `pe-button__content` to see the border |
 | **contained** | optional | Boolean | false | Set to `true` to give the button a Contained Button appearance (larger side padding) |
 | **disabled** | optional | Boolean | false | Disables the button |
-| **dropdown** | optional | Boolean | false | Set to `true` to add a dropdown icon; note that a dropdown button has no minimum width |
+| **dropdown** | optional | Object |  | Set to a trueish value to add a dropdown icon; use `dropdown.open` to show an "open" icon, otherwise a "closed" icon is shown; note that a dropdown button has no minimum width |
 | **extraWide** | optional | Boolean | false | Set to `true` to add even more side padding |
 | **formaction** (React: **formAction**) | optional | String |  | "The URI of a program that processes the information submitted by the button. If specified, it overrides the action attribute of the button"s form owner." [source:MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) |
 | **highLabel** | optional | Boolean | false | This does not make the button higher in itself; set to `true` to move the vertical "outer" padding to the label, creating a higher hover effect (and higher separator when using [Button Group](button-group.md)) |

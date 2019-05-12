@@ -52,6 +52,80 @@ function _objectSpread(target) {
   return target;
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
 var classes = {
   component: "pe-textfield",
   // elements
@@ -81,234 +155,255 @@ var classes = {
   stateReadonly: "pe-textfield--readonly"
 };
 
-var getElement = function getElement(vnode) {
-  return vnode.attrs.element || "div";
-};
 var DEFAULT_VALID_STATE = {
   invalid: false,
   message: undefined
 };
 
-var validateCustom = function validateCustom(state, attrs) {
-  var el = state.inputEl();
-
-  if (!el) {
-    return DEFAULT_VALID_STATE;
-  }
-
-  var validState = attrs.validate(state.inputEl().value);
-  return {
-    invalid: validState && !validState.valid,
-    message: validState && validState.error
-  };
+var ignoreEvent = function ignoreEvent(props, name) {
+  return props.ignoreEvents && props.ignoreEvents.indexOf(name) !== -1;
 };
 
-var validateCounter = function validateCounter(state, attrs) {
-  return {
-    invalid: state.inputEl().value.length > attrs.counter,
-    message: attrs.error
-  };
-};
+var _TextField = function _TextField(_ref) {
+  var h = _ref.h,
+      a = _ref.a,
+      useState = _ref.useState,
+      useEffect = _ref.useEffect,
+      useRef = _ref.useRef,
+      getRef = _ref.getRef,
+      props = _objectWithoutProperties(_ref, ["h", "a", "useState", "useEffect", "useRef", "getRef"]);
 
-var validateHTML = function validateHTML(state, attrs) {
-  return {
-    invalid: !state.inputEl().checkValidity(),
-    message: attrs.error
-  };
-};
+  var defaultValue = props.defaultValue !== undefined && props.defaultValue !== null ? props.defaultValue.toString() : props.value !== undefined && props.value !== null ? props.value.toString() : "";
 
-var getValidStatus = function getValidStatus(state, attrs) {
-  var status = DEFAULT_VALID_STATE; // attrs.validateResetOnClear: reset validation when field is cleared
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      domElement = _useState2[0],
+      setDomElement = _useState2[1];
 
-  if (state.isTouched() && state.isInvalid() && state.inputEl().value.length === 0 && attrs.validateResetOnClear) {
-    state.isTouched(false);
-    state.isInvalid(false);
-    state.error(undefined);
-  }
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isInvalid = _useState4[0],
+      setIsInvalid = _useState4[1];
 
-  if (!status.invalid && attrs.counter) {
-    status = validateCounter(state, attrs);
-  }
+  var _useState5 = useState(defaultValue),
+      _useState6 = _slicedToArray(_useState5, 2),
+      value = _useState6[0],
+      setValue = _useState6[1];
 
-  if (!status.invalid && state.inputEl() && state.inputEl().checkValidity) {
-    status = validateHTML(state, attrs);
-  }
+  var inputElRef = useRef();
+  var previousValueRef = useRef();
+  var previousStatusRef = useRef();
+  var isDirtyRef = useRef(defaultValue !== "");
+  var hasFocusRef = useRef(false);
+  var isTouchedRef = useRef(false);
+  var errorRef = useRef(props.error);
+  var inputType = props.multiLine ? "textarea" : "input";
+  var showErrorPlaceholder = !!(props.valid !== undefined || props.validate || props.min || props.max || props[a.minlength] || props[a.maxlength] || props.required || props.pattern);
 
-  if (!status.invalid && attrs.validate) {
-    status = validateCustom(state, attrs);
-  }
-
-  return status;
-};
-
-var checkValidity = function checkValidity(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs; // default
-
-  var status = attrs.valid !== undefined ? {
-    invalid: !attrs.valid,
-    message: attrs.error
-  } : !state.isTouched() && !attrs.validateAtStart ? DEFAULT_VALID_STATE : getValidStatus(state, attrs);
-  var previousInvalid = state.isInvalid();
-  state.error(status.message);
-
-  if (status.invalid !== previousInvalid) {
-    state.isInvalid(status.invalid);
-  }
-
-  if (!status.invalid) {
-    state.error(undefined);
-  }
-};
-
-var notifyState = function notifyState(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-
-  if (attrs.onChange) {
-    var status = getValidStatus(state, attrs);
-    attrs.onChange({
-      focus: state.hasFocus(),
-      dirty: state.isDirty(),
-      el: state.inputEl(),
-      invalid: status.invalid,
-      error: status.error,
-      value: state.inputEl().value,
-      setInputState: function setInputState(newState) {
-        var hasNewValue = newState.value !== undefined && newState.value !== state.inputEl().value;
-        var hasNewFocus = newState.focus !== undefined && newState.focus !== state.hasFocus();
-
-        if (hasNewValue || hasNewFocus) {
-          state.setInputState(_extends({}, newState, {
-            vnode: vnode
-          }));
-        }
-      }
-    });
-  }
-};
-
-var ignoreEvent = function ignoreEvent(attrs, name) {
-  return attrs.ignoreEvents && attrs.ignoreEvents.indexOf(name) !== -1;
-};
-
-var getInitialState = function getInitialState(vnode, createStream, _ref) {
-  var k = _ref.keys;
-  var attrs = vnode.attrs;
-  var defaultValue = attrs.defaultValue !== undefined && attrs.defaultValue !== null ? attrs.defaultValue.toString() : attrs.value !== undefined && attrs.value !== null ? attrs.value.toString() : "";
-  var el = createStream(null);
-  var inputEl = createStream(null);
-  var setInputState = createStream({});
-  var error = createStream(attrs.error);
-  var hasFocus = createStream(false);
-  var isTouched = createStream(false); // true when any change is made
-
-  var isDirty = createStream(defaultValue !== ""); // true for any input
-
-  var isInvalid = createStream(false);
-  var previousValue = createStream(undefined);
-  var didSetFocusTime = 0;
-  var showErrorPlaceholder = !!(attrs.valid !== undefined || attrs.validate || attrs.min || attrs.max || attrs[k.minlength] || attrs[k.maxlength] || attrs.required || attrs.pattern);
-  return {
-    defaultValue: defaultValue,
-    didSetFocusTime: didSetFocusTime,
-    el: el,
-    error: error,
-    hasFocus: hasFocus,
-    inputEl: inputEl,
-    isDirty: isDirty,
-    isInvalid: isInvalid,
-    isTouched: isTouched,
-    previousValue: previousValue,
-    setInputState: setInputState,
-    showErrorPlaceholder: showErrorPlaceholder
-  };
-};
-var onMount = function onMount(vnode) {
-  if (!vnode.dom) {
-    return;
-  }
-
-  var dom = vnode.dom;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  state.el(dom);
-  var inputType = attrs.multiLine ? "textarea" : "input";
-  var inputEl = dom.querySelector(inputType);
-  vnode.state.inputEl(inputEl);
-  state.inputEl().value = state.defaultValue;
-  state.setInputState.map(function (_ref2) {
-    var vnode = _ref2.vnode,
+  var handleStateUpdate = function handleStateUpdate() {
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         type = _ref2.type,
         focus = _ref2.focus,
         value = _ref2.value;
 
-    if (vnode) {
-      value !== undefined ? state.inputEl().value = value : null;
-      focus !== undefined && (state.hasFocus(focus), focus ? state.inputEl().focus() : state.inputEl().blur());
-      type === "input" && (attrs.validateOnInput || attrs.counter) && state.isTouched(state.inputEl().value !== state.defaultValue);
-      type !== "input" && state.isTouched(state.inputEl().value !== state.defaultValue);
-      type === "onblur" && state.isTouched(true);
-      state.isDirty(state.inputEl().value !== "");
-      checkValidity(vnode);
-      notifyState(vnode);
-      state.previousValue(state.inputEl().value);
+    if (!inputElRef.current) {
+      return;
     }
+
+    if (value !== undefined) {
+      inputElRef.current.value = value;
+    }
+
+    if (focus !== undefined) {
+      hasFocusRef.current = focus;
+
+      if (focus) {
+        inputElRef.current.focus();
+      } else {
+        inputElRef.current.blur();
+      }
+    }
+
+    if (type === "input" && (props.validateOnInput || props.counter)) {
+      isTouchedRef.current = inputElRef.current.value !== defaultValue;
+    }
+
+    if (type !== "input") {
+      isTouchedRef.current = inputElRef.current.value !== defaultValue;
+    }
+
+    if (type === "onblur") {
+      isTouchedRef.current = true;
+    }
+
+    isDirtyRef.current = inputElRef.current.value !== "";
+    checkValidity();
+    notifyState();
+
+    if (previousValueRef.current !== inputElRef.current.value) {
+      setValue(inputElRef.current.value); // force update
+    }
+  };
+
+  var validateCustom = function validateCustom() {
+    if (!inputElRef.current) {
+      return DEFAULT_VALID_STATE;
+    }
+
+    var validState = props.validate(inputElRef.current.value);
+    return {
+      invalid: validState && !validState.valid,
+      message: validState && validState.error
+    };
+  };
+
+  var validateCounter = function validateCounter() {
+    return {
+      invalid: inputElRef.current.value.length > props.counter,
+      message: props.error
+    };
+  };
+
+  var validateHTML = function validateHTML() {
+    return {
+      invalid: !inputElRef.current.checkValidity(),
+      message: props.error
+    };
+  };
+
+  var getValidStatus = function getValidStatus() {
+    var status = DEFAULT_VALID_STATE; // props.validateResetOnClear: reset validation when field is cleared
+
+    if (isTouchedRef.current && isInvalid && inputElRef.current.value.length === 0 && props.validateResetOnClear) {
+      isTouchedRef.current = false;
+      setIsInvalid(false);
+      errorRef.current = undefined;
+    }
+
+    if (props.counter) {
+      status = validateCounter();
+    }
+
+    if (!status.invalid && inputElRef.current.checkValidity) {
+      status = validateHTML();
+    }
+
+    if (!status.invalid && props.validate) {
+      status = validateCustom();
+    }
+
+    return status;
+  };
+
+  var checkValidity = function checkValidity() {
+    // default
+    var status = props.valid !== undefined ? {
+      invalid: !props.valid,
+      message: props.error
+    } : !isTouchedRef.current && !props.validateAtStart ? DEFAULT_VALID_STATE : getValidStatus();
+    var previousInvalid = isInvalid;
+    errorRef.current = status.message;
+
+    if (status.invalid !== previousInvalid) {
+      setIsInvalid(status.invalid);
+    }
+
+    if (!status.invalid) {
+      errorRef.current = undefined;
+    }
+  };
+
+  var notifyState = function notifyState() {
+    if (props.onChange) {
+      var validStatus = getValidStatus();
+      var status = {
+        focus: hasFocusRef.current,
+        dirty: isDirtyRef.current,
+        invalid: validStatus.invalid,
+        error: validStatus.error,
+        value: inputElRef.current.value
+      };
+
+      if (JSON.stringify(status) !== JSON.stringify(previousStatusRef.current)) {
+        props.onChange(_objectSpread({}, status, {
+          el: inputElRef.current,
+          setInputState: function setInputState(newState) {
+            var hasNewValue = newState.value !== undefined && newState.value !== inputElRef.current.value;
+            var hasNewFocus = newState.focus !== undefined && newState.focus !== hasFocusRef.current;
+
+            if (hasNewValue || hasNewFocus) {
+              handleStateUpdate(newState);
+            }
+          }
+        }));
+        previousStatusRef.current = status;
+      }
+    }
+  };
+
+  useEffect(function () {
+    if (!domElement) {
+      return;
+    }
+
+    inputElRef.current = domElement.querySelector(inputType);
+    inputElRef.current.value = defaultValue;
+    handleStateUpdate();
+    checkValidity(); // handle `validateAtStart`
+
+    notifyState();
+  }, [domElement]); // Handle value updates
+
+  useEffect(function () {
+    if (!inputElRef.current) {
+      return;
+    }
+
+    var value = props.value !== undefined && props.value !== null ? props.value : inputElRef.current ? inputElRef.current.value : previousValueRef.current;
+    var valueStr = value === undefined || value === null ? "" : value.toString();
+
+    if (inputElRef.current && previousValueRef.current !== valueStr) {
+      inputElRef.current.value = valueStr;
+      previousValueRef.current = valueStr;
+      handleStateUpdate({
+        type: "input"
+      });
+    }
+  }, [inputElRef.current, props.value]); // Handle error state updates
+
+  useEffect(function () {
+    if (!inputElRef.current) {
+      return;
+    }
+
+    checkValidity();
+    notifyState();
+  }, [props, inputElRef.current && inputElRef.current.value]);
+
+  var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
+    "data-test-id": props.testId
+  }, getRef(function (dom) {
+    return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
+  }), {
+    className: [classes.component, isInvalid ? classes.stateInvalid : "", hasFocusRef.current ? classes.stateFocused : "", isDirtyRef.current ? classes.stateDirty : "", props.floatingLabel ? classes.hasFloatingLabel : "", props.disabled ? classes.stateDisabled : "", props.readonly ? classes.stateReadonly : "", props.dense ? classes.isDense : "", props.required ? classes.isRequired : "", props.fullWidth ? classes.hasFullWidth : "", props.counter ? classes.hasCounter : "", props.hideSpinner !== false && props.hideSpinner !== undefined ? classes.hideSpinner : "", props.hideClear !== false && props.hideClear !== undefined ? classes.hideClear : "", props.hideValidation ? classes.hideValidation : "", props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
   });
-  notifyState(vnode);
-};
-var onUpdate = function onUpdate(vnode) {
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  checkValidity(vnode);
-  var inputEl = state.inputEl();
-  var value = attrs.value !== undefined && attrs.value !== null ? attrs.value : inputEl ? inputEl.value : state.previousValue();
-  var valueStr = value === undefined || value === null ? "" : value.toString();
 
-  if (inputEl && state.previousValue() !== valueStr) {
-    inputEl.value = valueStr;
-    state.previousValue(valueStr);
-    state.setInputState({
-      vnode: vnode,
-      type: "input"
-    });
-  }
-};
-var createProps = function createProps(vnode, _ref3) {
-  var k = _ref3.keys;
-  var state = vnode.state;
-  var attrs = vnode.attrs;
-  var isInvalid = state.isInvalid();
-  return _extends({}, filterSupportedAttributes(attrs), attrs.testId && {
-    "data-test-id": attrs.testId
-  }, {
-    className: [classes.component, isInvalid ? classes.stateInvalid : "", state.hasFocus() ? classes.stateFocused : "", state.isDirty() ? classes.stateDirty : "", attrs.floatingLabel ? classes.hasFloatingLabel : "", attrs.disabled ? classes.stateDisabled : "", attrs.readonly ? classes.stateReadonly : "", attrs.dense ? classes.isDense : "", attrs.required ? classes.isRequired : "", attrs.fullWidth ? classes.hasFullWidth : "", attrs.counter ? classes.hasCounter : "", attrs.hideSpinner !== false && attrs.hideSpinner !== undefined ? classes.hideSpinner : "", attrs.hideClear !== false && attrs.hideClear !== undefined ? classes.hideClear : "", attrs.hideValidation ? classes.hideValidation : "", attrs.tone === "dark" ? "pe-dark-tone" : null, attrs.tone === "light" ? "pe-light-tone" : null, attrs.className || attrs[k.class]].join(" ")
-  });
-};
-var createContent = function createContent(vnode, _ref4) {
-  var h = _ref4.renderer,
-      k = _ref4.keys;
-  var state = vnode.state;
+  var allProps = _objectSpread({}, props, props.domAttributes);
 
-  var attrs = _objectSpread({}, vnode.attrs, vnode.attrs.domAttributes);
-
-  var inputEl = state.inputEl();
-  var error = attrs.error || state.error();
-  var isInvalid = state.isInvalid();
-  var inputType = attrs.multiLine ? "textarea" : "input";
-  var type = attrs.multiLine ? null : !attrs.type || attrs.type === "submit" || attrs.type === "search" ? "text" : attrs.type;
-  var showError = isInvalid && error !== undefined;
-  var inactive = attrs.disabled || attrs[k.readonly];
-  var requiredIndicator = attrs.required && attrs.requiredIndicator !== "" ? h("span", {
+  var errorMessage = props.error || errorRef.current;
+  var type = allProps.multiLine ? null : !allProps.type || allProps.type === "submit" || allProps.type === "search" ? "text" : allProps.type;
+  var showError = isInvalid && errorMessage !== undefined;
+  var inactive = allProps.disabled || allProps[a.readonly];
+  var requiredIndicator = allProps.required && allProps.requiredIndicator !== "" ? h("span", {
     key: "required",
     className: classes.requiredIndicator
-  }, attrs.requiredIndicator || "*") : null;
-  var optionalIndicator = !attrs.required && attrs.optionalIndicator ? h("span", {
+  }, allProps.requiredIndicator || "*") : null;
+  var optionalIndicator = !allProps.required && allProps.optionalIndicator ? h("span", {
     key: "optional",
     className: classes.optionalIndicator
-  }, attrs.optionalIndicator) : null;
-  var label = attrs.label ? [attrs.label, requiredIndicator, optionalIndicator] : null;
-  return [h("div", {
+  }, allProps.optionalIndicator) : null;
+  var label = allProps.label ? [allProps.label, requiredIndicator, optionalIndicator] : null;
+  var contents = [h("div", {
     className: classes.inputArea,
     key: "input-area"
   }, [label ? h("label", {
@@ -317,100 +412,85 @@ var createContent = function createContent(vnode, _ref4) {
   }, label) : null, h(inputType, _extends({}, {
     key: "input",
     className: classes.input,
-    disabled: attrs.disabled
+    disabled: allProps.disabled
   }, type ? {
     type: type
-  } : null, attrs.name ? {
-    name: attrs.name
-  } : null, !ignoreEvent(attrs, k.onclick) ? _defineProperty({}, k.onclick, function () {
+  } : null, allProps.name ? {
+    name: allProps.name
+  } : null, !ignoreEvent(allProps, a.onclick) ? _defineProperty({}, a.onclick, function () {
     if (inactive) {
       return;
     } // in case the browser does not give the field focus,
     // for instance when the user tapped to the current field off screen
 
 
-    state.setInputState({
-      vnode: vnode,
+    handleStateUpdate({
       focus: true
     });
-    notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, k.onfocus) ? _defineProperty({}, k.onfocus, function () {
+  }) : null, !ignoreEvent(allProps, a.onfocus) ? _defineProperty({}, a.onfocus, function () {
     if (inactive) {
       return;
     }
 
-    state.setInputState({
-      vnode: vnode,
+    handleStateUpdate({
       focus: true
     }); // set CSS class manually in case field gets focus but is off screen
     // and no redraw is triggered
-    // at the next redraw state.hasFocus() will be read and the focus class be set
+    // at the next redraw `hasFocusRef.current` will be read and the focus class be set
     // in the props.class statement
 
-    if (state.el()) {
-      state.el().classList.add(classes.stateFocused);
+    if (domElement) {
+      domElement.classList.add(classes.stateFocused);
     }
-
-    notifyState(vnode);
-  }) : null, !ignoreEvent(attrs, k.onblur) ? _defineProperty({}, k.onblur, function () {
-    state.setInputState({
-      vnode: vnode,
+  }) : null, !ignoreEvent(allProps, a.onblur) ? _defineProperty({}, a.onblur, function () {
+    handleStateUpdate({
       type: "onblur",
       focus: false
     }); // same principle as onfocus
 
-    state.el().classList.remove(classes.stateFocused);
-  }) : null, !ignoreEvent(attrs, k.oninput) ? _defineProperty({}, k.oninput, function () {
+    domElement.classList.remove(classes.stateFocused);
+  }) : null, !ignoreEvent(allProps, a.oninput) ? _defineProperty({}, a.oninput, function (e) {
     // default input event
-    // may be overwritten by attrs.events
-    state.setInputState({
-      vnode: vnode,
+    // may be overwritten by props.events
+    handleStateUpdate({
       type: "input"
     });
-  }) : null, !ignoreEvent(attrs, k.onkeydown) ? _defineProperty({}, k.onkeydown, function (e) {
+  }) : null, !ignoreEvent(allProps, a.onkeydown) ? _defineProperty({}, a.onkeydown, function (e) {
     if (e.key === "Enter") {
-      state.isTouched(true);
+      isTouchedRef.current = true;
     } else if (e.key === "Escape" || e.key === "Esc") {
-      state.setInputState({
-        vnode: vnode,
+      handleStateUpdate({
         focus: false
       });
     }
-  }) : null, attrs.events ? attrs.events : null, // NOTE: may overwrite oninput
-  attrs.required !== undefined && !!attrs.required ? {
+  }) : null, allProps.events ? allProps.events : null, // NOTE: may overwrite oninput
+  allProps.required !== undefined && !!allProps.required ? {
     required: true
-  } : null, attrs[k.readonly] !== undefined && !!attrs[k.readonly] ? _defineProperty({}, k.readonly, true) : null, attrs.pattern !== undefined ? {
-    pattern: attrs.pattern
-  } : null, attrs[k.maxlength] !== undefined ? _defineProperty({}, k.maxlength, attrs[k.maxlength]) : null, attrs[k.minlength] !== undefined ? _defineProperty({}, k.minlength, attrs[k.minlength]) : null, attrs.max !== undefined ? {
-    max: attrs.max
-  } : null, attrs.min !== undefined ? {
-    min: attrs.min
-  } : null, attrs[k.autofocus] !== undefined ? _defineProperty({}, k.autofocus, attrs[k.autofocus]) : null, attrs[k.tabindex] !== undefined ? _defineProperty({}, k.tabindex, attrs[k.tabindex]) : null, attrs.rows !== undefined ? {
-    rows: attrs.rows
-  } : null, attrs.placeholder !== undefined ? {
-    placeholder: attrs.placeholder
-  } : null, attrs.domAttributes !== undefined ? _objectSpread({}, attrs.domAttributes) : null))]), attrs.counter ? h("div", {
-    key: "counter",
+  } : null, allProps[a.readonly] !== undefined && !!allProps[a.readonly] ? _defineProperty({}, a.readonly, true) : null, allProps.pattern !== undefined ? {
+    pattern: allProps.pattern
+  } : null, allProps[a.maxlength] !== undefined ? _defineProperty({}, a.maxlength, allProps[a.maxlength]) : null, allProps[a.minlength] !== undefined ? _defineProperty({}, a.minlength, allProps[a.minlength]) : null, allProps.max !== undefined ? {
+    max: allProps.max
+  } : null, allProps.min !== undefined ? {
+    min: allProps.min
+  } : null, allProps[a.autofocus] !== undefined ? _defineProperty({}, a.autofocus, allProps[a.autofocus]) : null, allProps[a.tabindex] !== undefined ? _defineProperty({}, a.tabindex, allProps[a.tabindex]) : null, allProps.rows !== undefined ? {
+    rows: allProps.rows
+  } : null, allProps.placeholder !== undefined ? {
+    placeholder: allProps.placeholder
+  } : null, allProps.domAttributes !== undefined ? _objectSpread({}, allProps.domAttributes) : null))]), allProps.counter ? h("div", {
+    key: 'counter',
     className: classes.counter
-  }, (inputEl && inputEl.value.length || 0) + " / " + attrs.counter) : null, attrs.help && !showError ? h("div", {
+  }, (value.length || 0) + " / " + allProps.counter) : null, allProps.help && !showError ? h("div", {
     key: "help",
-    className: [classes.help, attrs.focusHelp ? classes.focusHelp : null].join(" ")
-  }, attrs.help) : null, showError ? h("div", {
+    className: [classes.help, allProps.focusHelp ? classes.focusHelp : null].join(" ")
+  }, allProps.help) : null, showError ? h("div", {
     key: "error",
     className: classes.error
-  }, error) : state.showErrorPlaceholder && !attrs.help ? h("div", {
+  }, errorMessage) : showErrorPlaceholder && !allProps.help ? h("div", {
     key: "error-placeholder",
     className: classes.errorPlaceholder
   }) : null];
+  var content = [props.before, contents, props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
-var textfield = /*#__PURE__*/Object.freeze({
-  getElement: getElement,
-  getInitialState: getInitialState,
-  onMount: onMount,
-  onUpdate: onUpdate,
-  createProps: createProps,
-  createContent: createContent
-});
-
-export { textfield as coreTextField };
+export { _TextField };
