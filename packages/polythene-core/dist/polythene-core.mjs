@@ -549,7 +549,6 @@ if (isClient) {
   });
 }
 
-var EVENT_NAME = "multiple";
 /**
  * @typedef {object} Item 
  */
@@ -573,7 +572,7 @@ var Multi = function Multi(_ref) {
   */
 
   var onChange = function onChange(e) {
-    emit(EVENT_NAME, e);
+    emit(mOptions.name, e);
   };
 
   var itemIndex = function itemIndex(id) {
@@ -776,11 +775,11 @@ var Multi = function Multi(_ref) {
         setCurrent = _useState2[1];
 
     useEffect(function () {
-      subscribe(EVENT_NAME, function (e) {
+      subscribe(mOptions.name, function (e) {
         setCurrent(e);
       });
       return function () {
-        unsubscribe(EVENT_NAME);
+        unsubscribe(mOptions.name);
       };
     }, []);
     var spawn = props.spawn || mOptions.defaultId;

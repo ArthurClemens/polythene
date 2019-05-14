@@ -6,8 +6,6 @@ import { isClient } from "./iso";
 import { unpackAttrs } from "./attrs";
 import { emit, subscribe, unsubscribe } from "./events";
 
-const EVENT_NAME = "multiple";
-
 /**
  * @typedef {object} Item 
  */
@@ -28,7 +26,7 @@ export const Multi = ({ options: mOptions }) => {
   @param e: { id, eventName }
   */
   const onChange = e => {
-    emit(EVENT_NAME, e);
+    emit(mOptions.name, e);
   };
 
   const itemIndex = id => {
@@ -179,11 +177,11 @@ export const Multi = ({ options: mOptions }) => {
     const [, setCurrent] = useState();
     useEffect(
       () => {
-        subscribe(EVENT_NAME, e => {
+        subscribe(mOptions.name, e => {
           setCurrent(e);
         });
         return () => {
-          unsubscribe(EVENT_NAME);
+          unsubscribe(mOptions.name);
         }
       },
       []
