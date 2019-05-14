@@ -1,1 +1,0 @@
-# Polythene List Tile Tests

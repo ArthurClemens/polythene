@@ -1,0 +1,32 @@
+import stream from "mithril/stream";
+
+export default ({ h, a, Button, Switch }) => ({
+  oninit: vnode => {
+    const checked = stream(false);
+    Object.assign(vnode.state, {
+      checked,
+      redrawOnUpdate: stream.merge([checked]) // for React
+    });
+  },
+  view: vnode => {
+    const state = vnode.state;
+    const checked = state.checked();
+    return h("div", [
+      h(Switch, {
+        onChange: newState => state.checked(newState.checked),
+        checked
+      }),
+      h("div", {
+        style: {
+          marginTop: "1rem"
+        }
+      }, h(Button, {
+        raised: true,
+        label: "Toggle",
+        events: {
+          [a.onclick]: () => state.checked(!checked)
+        }
+      }))
+    ]);
+  }
+});

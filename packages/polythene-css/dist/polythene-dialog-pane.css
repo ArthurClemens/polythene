@@ -47,7 +47,9 @@
 
 .pe-dialog-pane .pe-dialog-pane__body {
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch;
+  border-top-style: solid;
+  border-bottom-style: solid
 }
 
 .pe-dialog-pane .pe-dialog-pane__body p {
@@ -106,20 +108,12 @@
   align-items: center
 }
 
-.pe-dialog-pane.pe-dialog-pane--header.pe-dialog-pane--border-top .pe-dialog-pane__body {
-  border-top-style: solid
-}
-
-.pe-dialog-pane.pe-dialog-pane--footer.pe-dialog-pane--border-bottom .pe-dialog-pane__body {
-  border-bottom-style: solid
-}
-
 .pe-dialog__content.pe-menu__content .pe-dialog-pane .pe-dialog-pane__body {
   padding: 0;
   border: none
 }
 
-.pe-dialog-pane.pe-dialog-pane--footer .pe-dialog-pane__body,.pe-dialog-pane.pe-dialog-pane--header .pe-dialog-pane__body {
+.pe-dialog-pane .pe-dialog-pane__body {
   border-width: 1px
 }
 

@@ -1,7 +1,9 @@
 import { addLayoutStyles, addTypography } from "polythene-css";
 import { rules as css } from "./styles";
 import Page from "./Page";
-import { renderer as h, List, ListTile, Toolbar, ToolbarTitle } from "polythene-mithril";
+import { List, ListTile, Toolbar, ToolbarTitle } from "polythene-mithril";
+import { h } from "cyano-mithril";
+
 import routes from "./routes";
 import Footer from "./Footer";
 

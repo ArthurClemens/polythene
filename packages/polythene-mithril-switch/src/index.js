@@ -7,7 +7,7 @@ import { _SelectionControl } from "polythene-core-selection-control";
 const ViewControl = cast(_ViewControl, { h, Shadow, IconButton });
 ViewControl["displayName"] = "ViewControl";
 
-export const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
+const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
 SelectionControl["displayName"] = "SelectionControl";
 
 export const Switch = cast(_Switch, { h, SelectionControl });

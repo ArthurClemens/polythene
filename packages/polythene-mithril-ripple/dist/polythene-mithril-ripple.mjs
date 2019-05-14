@@ -8,5 +8,6 @@ var Ripple = cast(_Ripple, {
   useState: useState,
   useEffect: useEffect
 });
+Ripple["displayName"] = "Ripple";
 
 export { Ripple };

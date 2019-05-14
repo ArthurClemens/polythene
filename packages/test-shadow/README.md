@@ -1,1 +1,0 @@
-# Polythene Shadow Tests

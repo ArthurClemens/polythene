@@ -1,1 +1,0 @@
-# Polythene Radio Button Tests

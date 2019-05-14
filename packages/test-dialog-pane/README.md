@@ -1,1 +1,0 @@
-# Polythene Dialog Pane Tests

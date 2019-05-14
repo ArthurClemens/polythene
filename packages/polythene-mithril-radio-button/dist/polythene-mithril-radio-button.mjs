@@ -23,4 +23,4 @@ var RadioButton = cast(_RadioButton, {
 });
 RadioButton["displayName"] = "RadioButton";
 
-export { SelectionControl, RadioButton };
+export { RadioButton };

@@ -1,4 +1,4 @@
-import { renderer as h } from "polythene-mithril";
+import { h } from "cyano-mithril";
 
 export default {
   view: () => 

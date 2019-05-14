@@ -122,6 +122,7 @@ export const Multi = ({ options: mOptions }) => {
 
     return {
       ...mOptions,
+      // keyId: mOptions.queue ? new Date().getTime() : undefined, // to force rendering a new component
       instanceId,
       spawn,
       props: itemAttrs,

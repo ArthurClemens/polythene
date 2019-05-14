@@ -7,7 +7,8 @@ import {
 import { addTypography, addLayoutStyles } from "polythene-css";
 import "polythene-css";
 import { rules as css } from "./styles";
-import { renderer as h, List, Toolbar, ToolbarTitle, ListTile, Snackbar, Notification } from "polythene-react";
+import { List, Toolbar, ToolbarTitle, ListTile, Snackbar, Notification } from "polythene-react";
+import { h } from "cyano-react";
 import Page from "./Page";
 import routes from "./routes";
 import OnMatch from "./OnMatch";

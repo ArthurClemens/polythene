@@ -9,5 +9,6 @@ var FAB = cast(_FAB, {
   Button: Button,
   Icon: Icon
 });
+FAB["displayName"] = "FAB";
 
 export { FAB };

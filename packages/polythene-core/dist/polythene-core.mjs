@@ -691,6 +691,7 @@ var Multi = function Multi(_ref) {
     };
 
     return _objectSpread({}, mOptions, {
+      // keyId: mOptions.queue ? new Date().getTime() : undefined, // to force rendering a new component
       instanceId: instanceId,
       spawn: spawn,
       props: itemAttrs,

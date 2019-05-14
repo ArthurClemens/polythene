@@ -50,7 +50,7 @@
 .pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane,.pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__body {
   height: 100vh;
   max-height: 100vh;
-  border: none;
+  border-top-style: none;
   max-width: none
 }
 

@@ -23,4 +23,4 @@ var Checkbox = cast(_Checkbox, {
 });
 Checkbox["displayName"] = "Checkbox";
 
-export { SelectionControl, Checkbox };
+export { Checkbox };

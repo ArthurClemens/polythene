@@ -5,5 +5,6 @@ var Shadow = cast(_Shadow, {
   h: h,
   a: a
 });
+Shadow["displayName"] = "Shadow";
 
 export { Shadow };

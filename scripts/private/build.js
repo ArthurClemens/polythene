@@ -22,10 +22,23 @@ const buildPackage = dir => {
   }
 };
 
-glob.sync(PACKAGE_FILE_PATTERN)
+const validDirs = glob.sync(PACKAGE_FILE_PATTERN)
   .filter(filename => !/node_modules/.test(filename))
-  .forEach(filename => {
-    const dir = path.dirname(filename);
-    buildPackage(dir);
-  });
+  .map(filename => path.dirname(filename)) // get dirs
+  .filter(dir => !(
+    dir.includes("tests-render-react-standalone") ||
+    dir.includes("tests-render-mithril-standalone")
+  ));
 
+validDirs
+  .filter(dir => !(
+    dir.includes("tests-render-react-phenomic")
+  ))
+  .forEach(buildPackage);
+
+// Build tests-render-react-phenomic
+validDirs
+  .filter(dir => (
+    dir.includes("tests-render-react-phenomic")
+  ))
+  .forEach(buildPackage);

@@ -23,4 +23,4 @@ var Switch = cast(_Switch, {
 });
 Switch["displayName"] = "Switch";
 
-export { SelectionControl, Switch };
+export { Switch };

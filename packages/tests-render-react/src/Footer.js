@@ -1,4 +1,4 @@
-import { renderer as h } from "polythene-react";
+import { h } from "cyano-react";
 
 export default () =>
   h(".footer", null,

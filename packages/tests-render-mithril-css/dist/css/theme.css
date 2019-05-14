@@ -13,10 +13,6 @@
 }
 
 @media (max-width:480px) {
-  .pe-text-button.themed-button .pe-button__wash {
-    display: none
-  }
-
   .pe-light-tone.pe-text-button.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-light-tone .pe-text-button.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-text-button.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content {
     background-color: #2196f3
   }
@@ -27,10 +23,6 @@
 }
 
 @media (max-width:480px) {
-  .pe-text-button.pe-button--contained.themed-button .pe-button__wash {
-    display: none
-  }
-
   .pe-light-tone.pe-text-button.pe-button--contained.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-light-tone .pe-text-button.pe-button--contained.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content,.pe-text-button.pe-button--contained.themed-button:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__content {
     background-color: #2196f3
   }
@@ -88,7 +80,7 @@
   .pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane,.pe-dialog.small-screen-full-screen.pe-dialog.small-screen-full-screen .pe-dialog-pane__body {
     height: 100vh;
     max-height: 100vh;
-    border: none;
+    border-top-style: none;
     max-width: none
   }
 }

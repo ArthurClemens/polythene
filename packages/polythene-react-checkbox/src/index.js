@@ -8,7 +8,7 @@ import { IconButton } from "polythene-react-icon-button";
 const ViewControl = cast(_ViewControl, { h, Icon, IconButton });
 ViewControl["displayName"] = "ViewControl";
 
-export const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
+const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
 SelectionControl["displayName"] = "SelectionControl";
 
 export const Checkbox = cast(_Checkbox, { h, SelectionControl });

@@ -1,0 +1,40 @@
+import stream from "mithril/stream";
+
+export default ({ h, a, Drawer, Button, createContent, repeats, drawerOpts }) => {
+
+  return {
+    oninit: vnode => {
+      const show = stream(false);
+      Object.assign(vnode.state, {
+        show,
+        redrawOnUpdate: stream.merge([show]) // React: redraw whenever variables change
+      });
+    },
+    view: ({ state }) => {
+      const show = state.show();
+      return [
+        h(Button, {
+          raised: true,
+          key: "button", // for React
+          label: "Show",
+          events: {
+            [a.onclick]: () => state.show(true)
+          }
+        }),
+        h(Drawer, Object.assign(
+          {},
+          drawerOpts,
+          {
+            key: "drawer", // for React
+            content: createContent({
+              repeats,
+              onClick: () => state.show(false)
+            }),
+            show,
+            didHide: () => state.show(false) // sync state with component
+          }
+        ))
+      ];
+    }
+  };
+};

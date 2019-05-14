@@ -1,4 +1,3 @@
-export * from 'polythene-react-base';
 export * from 'polythene-react-button';
 export * from 'polythene-react-button-group';
 export * from 'polythene-react-card';
