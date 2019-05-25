@@ -17,6 +17,7 @@ const varFns = {
     sel(selector, {
       width: "100%",
       opacity: 1,
+      display: "none",
       
       " .pe-notification__content": {
         width: "100%",

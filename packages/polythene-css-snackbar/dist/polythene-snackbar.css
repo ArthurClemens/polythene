@@ -1,6 +1,7 @@
 .pe-notification.pe-snackbar {
   width: 100%;
-  opacity: 1
+  opacity: 1;
+  display: none
 }
 
 .pe-notification.pe-snackbar .pe-notification__content {

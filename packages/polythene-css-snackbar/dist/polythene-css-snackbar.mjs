@@ -100,6 +100,7 @@ var varFns$1 = {
     return [sel(selector, {
       width: "100%",
       opacity: 1,
+      display: "none",
       " .pe-notification__content": {
         width: "100%",
         margin: "0 auto",

@@ -36,7 +36,7 @@ export const transitionStateReducer = (state, type) => {
       // keep isHiding state to prevent calling show immediately after
     };
   default:
-    throw new Error("Unhandled action type:", type);
+    throw new Error(`Unhandled action type: ${type}`);
   }
 };
 
