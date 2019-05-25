@@ -11,20 +11,40 @@ const env = process.env;
 const pkg = JSON.parse(fs.readFileSync("./package.json"));
 const name = env.MODULE_NAME || "polythene";
 const includes = (env.INCLUDES || "").split(/\s*,\s*/);
+
 const external = [
   "mithril",
   "react",
   "react-dom"
 ].filter(e => includes.indexOf(e) === -1);
+
+const globals = {};
+external.forEach(ext => {
+  switch (ext) {
+  case "mithril":
+    globals["mithril"] = "m";
+    break;
+  case "react":
+    globals["react"] = "React";
+    break;
+  case "react-dom":
+    globals["react-dom"] = "ReactDOM";
+    break;
+  default:
+    globals[ext] = ext;
+  }
+});
+
 export default {
   input: env.ENTRY || "src/index.js",
+  external,
   output: {
     name,
+    globals,
     format: "umd",
     file: `${env.DEST || pkg.main}.js`,
     sourcemap: true,
   },
-  external,
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify("production")
@@ -43,7 +63,12 @@ export default {
       ]
     }),
     resolve(),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        "node_modules/react/index.js": ["Children", "Component", "PropTypes", "createElement", "createFactory"],
+        "node_modules/react-dom/index.js": ["render"]
+      }
+    }),
     babel({
       exclude: "node_modules/**",
       configFile: "../../babel.config.js"

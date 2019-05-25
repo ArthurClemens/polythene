@@ -230,4 +230,4 @@ styler.addStyle({
   vars: snackbarVars
 });
 
-export { addStyle, getStyle, color, layout, snackbarVars as vars, holderLayout };
+export { addStyle, color, getStyle, holderLayout, layout, snackbarVars as vars };

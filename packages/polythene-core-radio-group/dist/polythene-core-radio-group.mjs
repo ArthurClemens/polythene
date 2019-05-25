@@ -125,7 +125,7 @@ var _RadioGroup = function _RadioGroup(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var groupCheckedValue = props.checkedValue;

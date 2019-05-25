@@ -212,4 +212,4 @@ styler.addStyle({
   vars: baseSpinnerVars
 });
 
-export { addStyle, getStyle, color, layout, baseSpinnerVars as vars };
+export { addStyle, color, getStyle, layout, baseSpinnerVars as vars };

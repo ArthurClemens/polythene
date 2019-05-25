@@ -369,4 +369,4 @@ styler.addStyle({
   vars: dialogPaneVars
 });
 
-export { addStyle, getStyle, color, layout, dialogPaneVars as vars, fullScreen };
+export { addStyle, color, fullScreen, getStyle, layout, dialogPaneVars as vars };

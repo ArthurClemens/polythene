@@ -28,3 +28,12 @@ export * from 'polythene-react-switch';
 export * from 'polythene-react-tabs';
 export * from 'polythene-react-textfield';
 export * from 'polythene-react-toolbar';
+
+// export const renderer = h;
+// renderer.trust = (html, element = "div") => {
+//   if (html == null) html = "";
+//   return h(element, {
+//     dangerouslySetInnerHTML: { __html: html }
+//   });
+// };
+// renderer["displayName"] = "react";

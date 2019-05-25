@@ -29,7 +29,7 @@ import * as _TabsCSS from 'polythene-css-tabs';
 import * as _TextFieldCSS from 'polythene-css-textfield';
 import * as _ToolbarCSS from 'polythene-css-toolbar';
 import * as _TypographyCSS from 'polythene-css-typography';
-export { addTypography, addRoboto } from 'polythene-css-typography';
+export { addRoboto, addTypography } from 'polythene-css-typography';
 export { addLayoutStyles } from 'polythene-core-css';
 
 // Use intermediate variables to bypass Webpack's treeshaking
@@ -67,4 +67,4 @@ var TypographyCSS = _TypographyCSS;
 
 var RaisedButtonCSS = ButtonCSS;
 
-export { BaseSpinnerCSS, ButtonCSS, ButtonGroupCSS, CardCSS, CheckboxCSS, DialogCSS, DialogPaneCSS, DrawerCSS, FABCSS, IconCSS, IconButtonCSS, IOSSpinnerCSS, ListCSS, ListTileCSS, MaterialDesignProgressSpinnerCSS, MaterialDesignSpinnerCSS, MenuCSS, NotificationCSS, RadioButtonCSS, RippleCSS, SearchCSS, SelectionControlCSS, ShadowCSS, SliderCSS, SnackbarCSS, SVGCSS, SwitchCSS, TabsCSS, TextFieldCSS, ToolbarCSS, TypographyCSS, RaisedButtonCSS };
+export { BaseSpinnerCSS, ButtonCSS, ButtonGroupCSS, CardCSS, CheckboxCSS, DialogCSS, DialogPaneCSS, DrawerCSS, FABCSS, IOSSpinnerCSS, IconButtonCSS, IconCSS, ListCSS, ListTileCSS, MaterialDesignProgressSpinnerCSS, MaterialDesignSpinnerCSS, MenuCSS, NotificationCSS, RadioButtonCSS, RaisedButtonCSS, RippleCSS, SVGCSS, SearchCSS, SelectionControlCSS, ShadowCSS, SliderCSS, SnackbarCSS, SwitchCSS, TabsCSS, TextFieldCSS, ToolbarCSS, TypographyCSS };

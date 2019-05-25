@@ -1,4 +1,4 @@
-import { isServer, pointerStartMoveEvent, pointerEndMoveEvent } from "polythene-core";
+import { isServer, pointerStartDownEvent, pointerEndDownEvent } from "polythene-core";
 
 const DEFAULT_SHADOW_DEPTH = 1;
 const DEFAULT_SHADOW_DEPTH_INCREASE = 1;
@@ -68,16 +68,16 @@ export const useAnimatedShadow = ({ useState, useEffect, useRef, domElement, ...
           tapHandler({ which: "up", getButtonProps }));
         downButtons.length = 0;
       };
-      pointerStartMoveEvent.forEach(evt =>
+      pointerStartDownEvent.forEach(evt =>
         domElement.addEventListener(evt, tapStart));
-      pointerEndMoveEvent.forEach(evt =>
+      pointerEndDownEvent.forEach(evt =>
         document.addEventListener(evt, tapEndAll));
         
       // Clear tap events
       return () => {
-        pointerStartMoveEvent.forEach(evt =>
+        pointerStartDownEvent.forEach(evt =>
           domElement.removeEventListener(evt, tapStart));
-        pointerEndMoveEvent.forEach(evt =>
+        pointerEndDownEvent.forEach(evt =>
           document.removeEventListener(evt, tapEndAll));
       };
     },

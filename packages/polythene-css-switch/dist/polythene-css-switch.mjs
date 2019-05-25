@@ -520,4 +520,4 @@ styler.addStyle({
   vars: switchVars
 });
 
-export { addStyle, getStyle, color, layout, switchVars as vars };
+export { addStyle, color, getStyle, layout, switchVars as vars };

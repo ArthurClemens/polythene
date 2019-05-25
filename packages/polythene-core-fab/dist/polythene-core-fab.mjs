@@ -73,7 +73,7 @@ var _FAB = function _FAB(_ref) {
     content: h("div", {
       className: classes.content
     }, content),
-    parentClassName: [classes.component, props.mini ? classes.mini : null, props.className || props[a.class]].join(" "),
+    parentClassName: [classes.component, props.mini ? classes.mini : null, props.className || props[a["class"]]].join(" "),
     className: null,
     // defaults
     ripple: {

@@ -53,4 +53,4 @@ Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
 });
 Notification["displayName"] = "Notification";
 
-export { NotificationInstance, Notification };
+export { Notification, NotificationInstance };

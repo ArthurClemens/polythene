@@ -46,8 +46,13 @@ module.exports = config => ({
     rules: [
       {
         test: /\.m?js$/,
+        // exclude: /node_modules/, // <==== don't exclude node_modules
+        type: "javascript/auto",
         use: [{
-          loader: "babel-loader"
+          loader: "babel-loader",
+          options: {
+            configFile: "../../babel.config.js"
+          }
         }]
       },
       {

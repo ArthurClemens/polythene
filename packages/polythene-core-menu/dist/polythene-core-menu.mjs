@@ -1,4 +1,4 @@
-import { transitionStateReducer, subscribe, transitionComponent, unsubscribe, filterSupportedAttributes, isServer, stylePropCompare, pointerEndMoveEvent } from 'polythene-core';
+import { transitionStateReducer, subscribe, transitionComponent, unsubscribe, filterSupportedAttributes, isServer, stylePropCompare, pointerEndDownEvent } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -401,13 +401,13 @@ var _Menu = function _Menu(_ref) {
     };
 
     var activateDismissTap = function activateDismissTap() {
-      pointerEndMoveEvent.forEach(function (evt) {
+      pointerEndDownEvent.forEach(function (evt) {
         return document.addEventListener(evt, handleDismissTap);
       });
     };
 
     var deActivateDismissTap = function deActivateDismissTap() {
-      pointerEndMoveEvent.forEach(function (evt) {
+      pointerEndDownEvent.forEach(function (evt) {
         return document.removeEventListener(evt, handleDismissTap);
       });
     };
@@ -438,7 +438,7 @@ var _Menu = function _Menu(_ref) {
   }, getRef(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.getRef && props.getRef(dom));
   }), {
-    className: [classes.component, props.permanent ? classes.permanent : null, props.origin ? classes.origin : null, props.backdrop ? classes.showBackdrop : null, props.topMenu ? classes.isTopMenu : null, type === "floating" && !props.permanent ? classes.floating : null, props.width || props.size ? widthClass(unifyWidth(props.width || props.size)) : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.permanent ? classes.permanent : null, props.origin ? classes.origin : null, props.backdrop ? classes.showBackdrop : null, props.topMenu ? classes.isTopMenu : null, type === "floating" && !props.permanent ? classes.floating : null, props.width || props.size ? widthClass(unifyWidth(props.width || props.size)) : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var shadowDepth = props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH;

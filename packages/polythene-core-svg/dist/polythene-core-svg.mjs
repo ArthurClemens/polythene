@@ -127,7 +127,7 @@ var _SVG = function _SVG(_ref) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var content = [props.before, props.content ? props.content : props.children, props.after];

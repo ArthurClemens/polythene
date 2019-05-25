@@ -64,7 +64,7 @@ var _ButtonGroup = function _ButtonGroup(_ref) {
   var componentProps = _extends({}, props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.className || props[a["class"]]].join(" ")
   });
 
   return h(props.element || "div", componentProps, props.children);

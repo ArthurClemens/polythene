@@ -497,4 +497,4 @@ styler.addStyle({
   vars: drawerVars
 });
 
-export { addStyle, getStyle, color, layout, drawerVars as vars };
+export { addStyle, color, getStyle, layout, drawerVars as vars };

@@ -130,7 +130,7 @@ function _nonIterableRest() {
 
 var buttonClasses = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -462,7 +462,7 @@ var _Tabs = function _Tabs(_ref) {
   }), filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.scrollable ? classes.scrollable : null, isScrollButtonAtStart ? classes.isAtStart : null, isScrollButtonAtEnd ? classes.isAtEnd : null, props.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, props.compact ? classes.compactTabs : null, props.menu ? classes.isMenu : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.scrollable ? classes.scrollable : null, isScrollButtonAtStart ? classes.isAtStart : null, isScrollButtonAtEnd ? classes.isAtEnd : null, props.activeSelected ? classes.activeSelectable : null, autofit ? classes.isAutofit : null, props.compact ? classes.compactTabs : null, props.menu ? classes.isMenu : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var tabRow = buttons.map(function () {
@@ -544,7 +544,7 @@ var _Tab = function _Tab(_ref) {
     }, [props.icon ? h(Icon, props.icon) : null, props.label ? h("div", {
       className: classes.label
     }, h("span", props.label)) : null]),
-    className: [classes.tab, props.icon && props.label ? classes.tabHasIcon : null, props.className || props[a.class]].join(" "),
+    className: [classes.tab, props.icon && props.label ? classes.tabHasIcon : null, props.className || props[a["class"]]].join(" "),
     selected: props.selected,
     wash: false,
     ripple: true,
@@ -577,7 +577,7 @@ var _ScrollButton = function _ScrollButton(_ref) {
   };
 
   var componentProps = _extends({}, {
-    className: [classes.scrollButton, props.className || props[a.class]].join(" "),
+    className: [classes.scrollButton, props.className || props[a["class"]]].join(" "),
     icon: icon,
     ripple: {
       center: true
@@ -588,4 +588,4 @@ var _ScrollButton = function _ScrollButton(_ref) {
   return h(IconButton, componentProps);
 };
 
-export { _Tabs, _Tab, _ScrollButton };
+export { _ScrollButton, _Tab, _Tabs };

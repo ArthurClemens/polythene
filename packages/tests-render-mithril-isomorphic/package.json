@@ -11,8 +11,8 @@
   "directories": {},
   "devDependencies": {
     "mithril": "^2.0.0-rc.4",
-    "mithril-node-render": "2.3.1",
-    "mocha": "^6.0.2",
+    "mithril-node-render": "2.3.2",
+    "mocha": "^6.1.4",
     "polythene-mithril": "^1.5.4",
     "polythene-mithril-button": "^1.5.4",
     "polythene-mithril-raised-button": "^1.5.4",

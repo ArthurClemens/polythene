@@ -142,4 +142,4 @@ styler.addStyle({
   vars: rippleVars
 });
 
-export { addStyle, getStyle, color, layout, rippleVars as vars };
+export { addStyle, color, getStyle, layout, rippleVars as vars };

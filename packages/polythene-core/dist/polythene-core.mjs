@@ -440,9 +440,9 @@ var iconDropdownDown = "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"dd-down-s
 var isTouch = isServer ? false : "ontouchstart" in document.documentElement;
 var pointerStartEvent = isTouch ? ["touchstart", "click"] : ["click"];
 var pointerEndEvent = isTouch ? ["click", "mouseup"] : ["mouseup"];
-var pointerStartMoveEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
+var pointerStartDownEvent = isTouch ? ["touchstart", "mousedown"] : ["mousedown"];
 var pointerMoveEvent = isTouch ? ["touchmove", "mousemove"] : ["mousemove"];
-var pointerEndMoveEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
+var pointerEndDownEvent = isTouch ? ["touchend", "mouseup"] : ["mouseup"];
 
 if (isClient) {
   var htmlElement = document.querySelector("html");
@@ -856,7 +856,7 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
       });
 
     default:
-      throw new Error("Unhandled action type:", type);
+      throw new Error("Unhandled action type: ".concat(type));
   }
 };
 /**
@@ -1069,4 +1069,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { _Conditional, deprecation, filterSupportedAttributes, unpackAttrs, classForSize, getAnimationEndEvent, getStyle, stylePropCompare, isRTL, styleDurationToMs, iconDropdownUp, iconDropdownDown, isClient, isServer, isTouch, pointerStartEvent, pointerEndEvent, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, Multi, show, hide, transitionComponent, transitionStateReducer, throttle, subscribe, unsubscribe, emit };
+export { Multi, _Conditional, classForSize, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };

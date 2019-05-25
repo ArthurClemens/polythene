@@ -5,6 +5,7 @@ import { useAnimatedShadow } from "./useAnimatedShadow";
 export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
   const events = props.events || {};
   const [domElement, setDomElement] = useState();
+  const contentElement = useRef();
   const [isInactive, setIsInactive] = useState(props.inactive);
   const [hasFocus, setHasFocus] = useState(false);
   const disabled = props.disabled;
@@ -29,6 +30,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     getRef(dom => dom && !domElement && (
       setDomElement(dom),
+      contentElement.current = dom.querySelector(`.${classes.content}`),
       props.getRef && props.getRef(dom)
     )),
     props.testId && { "data-test-id": props.testId },
@@ -119,46 +121,48 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
     || (!props.raised && (/* hasFocus && */ props.wash !== false))
   );
 
-  return h(props.element || "div",
-    componentProps,
-    h("div",
-      {
-        className: classes.content,
-        style: props.style
-      },
-      [
-        h(Shadow, {
-          key: "shadow",
-          shadowDepth: shadowDepth !== undefined
-            ? shadowDepth
-            : 0,
-          animated: true
-        }),
-        disabled || noink
-          ? null
-          : h(Ripple, Object.assign({},
-            {
-              key: "ripple",
-              target: domElement
-            },
-            props.ripple
-          )),
-        showWash
-          ? h("div", { key: "wash", className: classes.wash })
-          : null,
-        props.before,
-        buttonContent,
-        props.after,
-        props.dropdown
-          ? h(Icon,
-            {
-              className: classes.dropdown,
-              key: "dropdown",
-              svg: { content: h.trust(iconDropdownDown) }
-            }
-          )
-          : null
-      ]
-    )
+  return h(props.element || "a",
+    componentProps, [
+      props.before,
+      h("div",
+        {
+          className: classes.content,
+          style: props.style
+        },
+        [
+          h(Shadow, {
+            key: "shadow",
+            shadowDepth: shadowDepth !== undefined
+              ? shadowDepth
+              : 0,
+            animated: true
+          }),
+          disabled || noink
+            ? null
+            : h(Ripple, Object.assign({},
+              {
+                key: "ripple",
+                target: contentElement.current
+              },
+              props.ripple
+            )),
+          showWash
+            ? h("div", { key: "wash", className: classes.wash })
+            : null,
+          
+          buttonContent,
+          props.dropdown
+            ? h(Icon,
+              {
+                className: classes.dropdown,
+                key: "dropdown",
+                svg: { content: h.trust(iconDropdownDown) }
+              }
+            )
+            : null
+        ]
+      ),
+      props.after,
+    ]
   );
 };

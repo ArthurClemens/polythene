@@ -344,4 +344,4 @@ styler.addStyle({
   vars: dialogVars
 });
 
-export { addStyle, getStyle, color, layout, dialogVars as vars };
+export { addStyle, color, getStyle, layout, dialogVars as vars };

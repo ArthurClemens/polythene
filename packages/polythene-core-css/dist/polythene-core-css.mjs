@@ -513,7 +513,7 @@ var mixin = {
 };
 
 function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -1902,4 +1902,4 @@ var addLayoutStyles = function addLayoutStyles() {
 
 // @ts-check
 
-export { flex$1 as flex, mixin, styler, rgba, sel, selectorRTL, createLayout, createColor, createMarker, layoutStyles, addLayoutStyles };
+export { addLayoutStyles, createColor, createLayout, createMarker, flex$1 as flex, layoutStyles, mixin, rgba, sel, selectorRTL, styler };

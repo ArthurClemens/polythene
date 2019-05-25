@@ -204,7 +204,7 @@ var _BaseSpinner = function _BaseSpinner(_ref) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.instanceClass, classForSize(classes, props.size), props.singleColor ? classes.singleColor : null, props.raised ? classes.raised : null, props.animated ? classes.animated : null, props.permanent ? classes.permanent : null, isVisible ? classes.visible : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.instanceClass, classForSize(classes, props.size), props.singleColor ? classes.singleColor : null, props.raised ? classes.raised : null, props.animated ? classes.animated : null, props.permanent ? classes.permanent : null, isVisible ? classes.visible : null, props.className || props[a["class"]]].join(" ")
   }, props.events); // if (state.hide) {
   //   setTimeout(() => { hideSpinner(state, attrs); }, 0);
   // }

@@ -342,7 +342,7 @@ var _Dialog = function _Dialog(_ref2) {
     return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
   }), _defineProperty({
     className: [props.parentClassName || classes.component, props.fromMultipleClassName, props.fullScreen ? classes.fullScreen : null, props.modal ? classes.modal : null, props.backdrop ? classes.showBackdrop : null, // classes.visible is set in showDialog though transition
-    props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" "),
+    props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" "),
     "data-spawn-id": props.spawnId,
     // received from Multi
     "data-instance-id": props.instanceId

@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndMoveEvent, stylePropCompare, transitionStateReducer } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndDownEvent, stylePropCompare, transitionStateReducer } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 const DEFAULT_OFFSET_H           = 0;
@@ -219,12 +219,12 @@ export const _Menu = ({ h, a, useReducer, useState, useEffect, useRef, getRef, S
       };
 
       const activateDismissTap = () => {
-        pointerEndMoveEvent.forEach(evt =>
+        pointerEndDownEvent.forEach(evt =>
           document.addEventListener(evt, handleDismissTap));
       };
   
       const deActivateDismissTap = () => {
-        pointerEndMoveEvent.forEach(evt =>
+        pointerEndDownEvent.forEach(evt =>
           document.removeEventListener(evt, handleDismissTap));
       };
 

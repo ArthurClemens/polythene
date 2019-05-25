@@ -72,7 +72,7 @@ var _Shadow = function _Shadow(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.animated && classes.animated, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.animated && classes.animated, props.className || props[a["class"]]].join(" ")
   });
 
   var content = [props.before, props.content ? props.content : props.children, props.after];

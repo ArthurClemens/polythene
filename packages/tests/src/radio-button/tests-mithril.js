@@ -1,4 +1,4 @@
-import { RadioButton, RadioGroup, Button, keys } from "polythene-mithril";
+import { RadioButton, RadioGroup, Button } from "polythene-mithril";
 import { h, a } from "cyano-mithril";
 import genericTests from "./tests-generic";
 import onChange from "./components/radio-group-onchange";

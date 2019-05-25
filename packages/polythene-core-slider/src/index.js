@@ -1,4 +1,4 @@
-import { isTouch, pointerStartMoveEvent, pointerMoveEvent, pointerEndMoveEvent, isClient, filterSupportedAttributes, getStyle } from "polythene-core";
+import { isTouch, pointerStartDownEvent, pointerMoveEvent, pointerEndDownEvent, isClient, filterSupportedAttributes, getStyle } from "polythene-core";
 import classes from "polythene-css-classes/slider";
 
 const MAX_TICKS = 100;
@@ -114,7 +114,7 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
       if (isClient) {
         pointerMoveEvent.forEach(evt =>
           window.removeEventListener(evt, drag));
-        pointerEndMoveEvent.forEach(evt =>
+        pointerEndDownEvent.forEach(evt =>
           window.removeEventListener(evt, endDrag));
       }
       isDraggingRef.current = false;
@@ -124,7 +124,7 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
     if (isClient) {
       pointerMoveEvent.forEach(evt =>
         window.addEventListener(evt, drag));
-      pointerEndMoveEvent.forEach(evt =>
+      pointerEndDownEvent.forEach(evt =>
         window.addEventListener(evt, endDrag));
     }
     readRangeData();
@@ -256,7 +256,7 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
       Object.assign(
         {},
         { className: classes.track },
-        interactiveTrack && !props.disabled && pointerStartMoveEvent.reduce((acc, evt) => (
+        interactiveTrack && !props.disabled && pointerStartDownEvent.reduce((acc, evt) => (
           acc[a[`on${evt}`]] = onStartTrack,
           acc
         ), {})
@@ -312,7 +312,7 @@ export const _Slider = ({ h, a, useState, useEffect, useRef, getRef, ...props })
               }
             },
           !props.disabled &&
-            pointerStartMoveEvent.reduce((acc, evt) => (
+            pointerStartDownEvent.reduce((acc, evt) => (
               acc[a[`on${evt}`]] = onInitDrag,
               acc
             ), {}),

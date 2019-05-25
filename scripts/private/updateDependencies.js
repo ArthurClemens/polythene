@@ -17,11 +17,11 @@ const updateDir = (dir, isBase) => {
   shell.cd(dir);
   if (dir.includes("phenomic")) {
     return;
-    // shell.exec("ncu -a -x react-router --packageFile package.json");
+    // shell.exec("ncu -u -x react-router --packageFile package.json");
   } else if (dir.includes("build-webpack-3")) {
-    shell.exec("ncu -a -x webpack,compression-webpack-plugin --packageFile package.json");
+    shell.exec("ncu -u -x webpack,compression-webpack-plugin --packageFile package.json");
   } else {
-    shell.exec("ncu -a --packageFile package.json");
+    shell.exec("ncu -u --packageFile package.json");
   }
   if (!isBase) {
     shell.rm("-rf", "./node_modules");

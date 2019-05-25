@@ -15,11 +15,7 @@ const buildPackage = dir => {
   shell.cd(baseDir);
   console.log(`Building ${dir}`); // eslint-disable-line no-console
   shell.cd(dir);
-  if (dir.includes("tests-render-react-standalone") || dir.includes("tests-render-mithril-standalone")) {
-    return;
-  } else {
-    shell.exec("npm run build");
-  }
+  shell.exec("npm run build");
 };
 
 const validDirs = glob.sync(PACKAGE_FILE_PATTERN)

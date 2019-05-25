@@ -129,7 +129,7 @@ var classes = {
 
 var buttonClasses = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -241,7 +241,7 @@ var _DialogPane = function _DialogPane(_ref) {
   }, getRef(function (dom) {
     return dom && !domElement && (setDomElement(dom), props.ref && props.ref(dom));
   }), {
-    className: [classes.component, props.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.fullBleed ? classes.fullBleed : null, showTopBorder ? classes.borderTop : null, showBottomBorder ? classes.borderBottom : null, withHeader ? classes.withHeader : null, withFooter ? classes.withFooter : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, props.formOptions);
 
   var contents = h("div", {

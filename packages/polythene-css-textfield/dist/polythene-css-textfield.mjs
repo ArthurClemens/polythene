@@ -224,7 +224,7 @@ var alignSide = function alignSide(isRTL) {
     return {
       " .pe-textfield__counter": {
         textAlign: isRTL ? "left" : "right",
-        float: isRTL ? "left" : "right",
+        "float": isRTL ? "left" : "right",
         padding: isRTL ? "0 16px 0 0" : "0 0 0 16px"
       }
     };
@@ -735,4 +735,4 @@ styler.addStyle({
   vars: textfieldVars
 });
 
-export { addStyle, getStyle, color, layout, textfieldVars as vars };
+export { addStyle, color, getStyle, layout, textfieldVars as vars };

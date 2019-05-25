@@ -16,7 +16,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-hot-loader": "4.8.4",
+    "react-hot-loader": "4.8.8",
     "react-router": "3.2.0"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "presets": [
       "@phenomic/preset-react-app"
     ],
-    "port": 3900
+    "port": 3000,
+    "bundleName": "polythene-tests-render-react-phenomic"
   }
 }

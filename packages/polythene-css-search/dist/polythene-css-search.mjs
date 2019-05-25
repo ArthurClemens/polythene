@@ -305,4 +305,4 @@ styler.addStyle({
   vars: searchVars
 });
 
-export { addStyle, getStyle, color, layout, searchVars as vars };
+export { addStyle, color, getStyle, layout, searchVars as vars };

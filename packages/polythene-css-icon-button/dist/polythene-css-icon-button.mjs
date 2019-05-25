@@ -303,4 +303,4 @@ styler.addStyle({
   vars: iconButtonVars
 });
 
-export { addStyle, getStyle, color, layout, iconButtonVars as vars };
+export { addStyle, color, getStyle, layout, iconButtonVars as vars };

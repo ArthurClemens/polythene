@@ -120,7 +120,7 @@ var _Search = function _Search(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.fullWidth ? classes.searchFullWidth : classes.searchInset, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.fullWidth ? classes.searchFullWidth : classes.searchInset, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
   var searchStateName = getNameOfState(searchState);

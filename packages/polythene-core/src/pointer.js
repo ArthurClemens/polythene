@@ -14,7 +14,7 @@ export const pointerEndEvent = isTouch
   ? ["click", "mouseup"]
   : ["mouseup"];
 
-export const pointerStartMoveEvent = isTouch
+export const pointerStartDownEvent = isTouch
   ? ["touchstart", "mousedown"]
   : ["mousedown"];
 
@@ -22,7 +22,7 @@ export const pointerMoveEvent = isTouch
   ? ["touchmove", "mousemove"]
   : ["mousemove"];
 
-export const pointerEndMoveEvent = isTouch
+export const pointerEndDownEvent = isTouch
   ? ["touchend", "mouseup"]
   : ["mouseup"];
 

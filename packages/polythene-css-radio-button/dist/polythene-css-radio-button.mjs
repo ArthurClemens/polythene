@@ -52,4 +52,4 @@ styler.addStyle({
   vars: radioButtonVars
 });
 
-export { addStyle, getStyle, color, layout, radioButtonVars as vars };
+export { addStyle, color, getStyle, layout, radioButtonVars as vars };

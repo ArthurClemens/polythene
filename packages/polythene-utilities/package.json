@@ -19,7 +19,7 @@
   "dependencies": {
     "polythene-core": "^1.5.4",
     "polythene-core-css": "^1.5.4",
-    "webfontloader": "^1.6.27"
+    "webfontloader": "^1.6.28"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

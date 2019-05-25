@@ -22,7 +22,7 @@
     "polythene-mithril-button": "^1.5.4"
   },
   "devDependencies": {
-    "@types/mithril": "^1.1.14",
+    "@types/mithril": "^1.1.16",
     "polythene-core-button": "^1.5.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

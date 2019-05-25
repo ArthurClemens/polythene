@@ -160,4 +160,4 @@ styler.addStyle({
   vars: iconVars
 });
 
-export { addStyle, getStyle, color, layout, iconVars as vars };
+export { addStyle, color, getStyle, layout, iconVars as vars };

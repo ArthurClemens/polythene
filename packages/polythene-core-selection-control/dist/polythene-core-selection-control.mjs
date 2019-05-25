@@ -191,7 +191,7 @@ var _SelectionControl = function _SelectionControl(_ref) {
     "data-test-id": props.testId
   }, {
     className: [classes.component, props.instanceClass, // for instance pe-checkbox-control
-    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    isChecked ? classes.on : classes.off, props.disabled ? classes.disabled : null, inactive ? classes.inactive : null, classForSize(classes, props.size), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var content = h("label", _extends({}, {

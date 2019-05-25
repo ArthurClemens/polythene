@@ -42,4 +42,4 @@ styler.addStyle({
   vars: checkboxVars
 });
 
-export { addStyle, getStyle, color, layout, checkboxVars as vars };
+export { addStyle, color, getStyle, layout, checkboxVars as vars };

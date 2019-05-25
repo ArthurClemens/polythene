@@ -257,4 +257,4 @@ var Timer = function Timer() {
   };
 };
 
-export { addWebFont, easing, scrollTo, Timer };
+export { Timer, addWebFont, easing, scrollTo };

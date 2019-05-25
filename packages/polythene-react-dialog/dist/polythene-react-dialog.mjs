@@ -110,4 +110,4 @@ Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
 });
 Dialog["displayName"] = "Dialog";
 
-export { DialogInstance, Dialog };
+export { Dialog, DialogInstance };

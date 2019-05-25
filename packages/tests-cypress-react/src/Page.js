@@ -1,4 +1,4 @@
-import { renderer as h } from "polythene-react";
+import { h } from "polythene-tests/utils/enhanced-renderer";
 
 const Results = (name, tests) => 
   h("div",

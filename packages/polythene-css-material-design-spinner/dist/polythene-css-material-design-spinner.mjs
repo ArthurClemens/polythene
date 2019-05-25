@@ -525,4 +525,4 @@ styler.addStyle({
   vars: materialDesignSpinnerVars
 });
 
-export { addStyle, getStyle, color, layout, materialDesignSpinnerVars as vars };
+export { addStyle, color, getStyle, layout, materialDesignSpinnerVars as vars };

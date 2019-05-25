@@ -1,4 +1,4 @@
-import { getAnimationEndEvent, isTouch, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
+import { isTouch, getAnimationEndEvent, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) {
@@ -292,7 +292,7 @@ var _Ripple = function _Ripple(_ref2) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.unconstrained ? classes.unconstrained : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.unconstrained ? classes.unconstrained : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   return h(props.element || "div", componentProps);

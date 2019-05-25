@@ -227,4 +227,4 @@ styler.addStyle({
   vars: listVars
 });
 
-export { addStyle, getStyle, color, layout, listVars as vars };
+export { addStyle, color, getStyle, layout, listVars as vars };

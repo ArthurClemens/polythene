@@ -22,7 +22,7 @@
     "polythene-react-button": "^1.5.4"
   },
   "devDependencies": {
-    "@types/react": "^16.8.7",
+    "@types/react": "^16.8.18",
     "polythene-core-button": "^1.5.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

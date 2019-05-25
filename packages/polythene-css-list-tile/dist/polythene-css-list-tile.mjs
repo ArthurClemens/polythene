@@ -743,4 +743,4 @@ styler.addStyle({
   vars: listTileVars
 });
 
-export { addStyle, getStyle, color, layout, listTileVars as vars };
+export { addStyle, color, getStyle, layout, listTileVars as vars };

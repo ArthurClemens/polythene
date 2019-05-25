@@ -1,4 +1,4 @@
-import { isServer, pointerStartMoveEvent, pointerEndMoveEvent, filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
+import { isServer, pointerStartDownEvent, pointerEndDownEvent, filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -142,7 +142,7 @@ function _nonIterableRest() {
 
 var classes = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -267,18 +267,18 @@ var useAnimatedShadow = function useAnimatedShadow(_ref3) {
       downButtons.length = 0;
     };
 
-    pointerStartMoveEvent.forEach(function (evt) {
+    pointerStartDownEvent.forEach(function (evt) {
       return domElement.addEventListener(evt, tapStart);
     });
-    pointerEndMoveEvent.forEach(function (evt) {
+    pointerEndDownEvent.forEach(function (evt) {
       return document.addEventListener(evt, tapEndAll);
     }); // Clear tap events
 
     return function () {
-      pointerStartMoveEvent.forEach(function (evt) {
+      pointerStartDownEvent.forEach(function (evt) {
         return domElement.removeEventListener(evt, tapStart);
       });
-      pointerEndMoveEvent.forEach(function (evt) {
+      pointerEndDownEvent.forEach(function (evt) {
         return document.removeEventListener(evt, tapEndAll);
       });
     };
@@ -307,6 +307,8 @@ var _Button = function _Button(_ref) {
       _useState2 = _slicedToArray(_useState, 2),
       domElement = _useState2[0],
       setDomElement = _useState2[1];
+
+  var contentElement = useRef();
 
   var _useState3 = useState(props.inactive),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -350,11 +352,11 @@ var _Button = function _Button(_ref) {
     remove: ["style"]
   }), // Set style on content, not on component
   getRef(function (dom) {
-    return dom && !domElement && (setDomElement(dom), props.getRef && props.getRef(dom));
+    return dom && !domElement && (setDomElement(dom), contentElement.current = dom.querySelector(".".concat(classes.content)), props.getRef && props.getRef(dom));
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.super, props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasFocus ? classes.focus : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasFocus ? classes.focus : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, inactive ? null : _objectSpread((_objectSpread2 = {}, _defineProperty(_objectSpread2, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_objectSpread2, a.onfocus, function (e) {
     return setHasFocus(true), events[a.onfocus] && events[a.onfocus](e);
   }), _defineProperty(_objectSpread2, a.onblur, function (e) {
@@ -390,7 +392,7 @@ var _Button = function _Button(_ref) {
   props.wash === true || !props.raised &&
   /* hasFocus && */
   props.wash !== false);
-  return h(props.element || "div", componentProps, h("div", {
+  return h(props.element || "a", componentProps, [props.before, h("div", {
     className: classes.content,
     style: props.style
   }, [h(Shadow, {
@@ -399,17 +401,17 @@ var _Button = function _Button(_ref) {
     animated: true
   }), disabled || noink ? null : h(Ripple, _extends({}, {
     key: "ripple",
-    target: domElement
+    target: contentElement.current
   }, props.ripple)), showWash ? h("div", {
     key: "wash",
     className: classes.wash
-  }) : null, props.before, buttonContent, props.after, props.dropdown ? h(Icon, {
+  }) : null, buttonContent, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {
       content: h.trust(iconDropdownDown)
     }
-  }) : null]));
+  }) : null]), props.after]);
 };
 
 export { _Button };

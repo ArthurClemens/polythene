@@ -97,4 +97,4 @@ Object.getOwnPropertyNames(MultipleInstance).filter(function (p) {
 });
 Snackbar["displayName"] = "Snackbar";
 
-export { SnackbarInstance, Snackbar };
+export { Snackbar, SnackbarInstance };

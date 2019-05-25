@@ -28,3 +28,8 @@ export * from "polythene-mithril-switch";
 export * from "polythene-mithril-tabs";
 export * from "polythene-mithril-textfield";
 export * from "polythene-mithril-toolbar";
+
+import m from "mithril";
+
+export const renderer = m;
+renderer["displayName"] = "mithril";

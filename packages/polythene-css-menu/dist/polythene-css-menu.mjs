@@ -430,4 +430,4 @@ styler.addStyle({
   vars: menuVars
 });
 
-export { addStyle, getStyle, color, layout, menuVars as vars };
+export { addStyle, color, getStyle, layout, menuVars as vars };

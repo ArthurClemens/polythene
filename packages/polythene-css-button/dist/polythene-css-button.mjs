@@ -4,7 +4,7 @@ import { vars } from 'polythene-theme';
 
 var classes = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -665,7 +665,7 @@ var containedButtonVars = _objectSpread({
 // @ts-check
 var fns = [superLayout$1, superColor];
 var superFns = [superLayout];
-var superSelector = ".".concat(classes.super);
+var superSelector = ".".concat(classes["super"]);
 var selector = ".".concat(classes.component);
 /**
  * @param {string} customSelector 
@@ -826,4 +826,4 @@ var containedButtonVars$1 = containedButtonVars;
 var containedButtonColor = color;
 var containedButtonLayout = layout;
 
-export { addStyle$2 as addStyle, getStyle$2 as getStyle, containedButtonVars$1 as containedButtonVars, containedButtonColor, containedButtonLayout, textButtonColor, textButtonLayout, textButtonVars$1 as textButtonVars };
+export { addStyle$2 as addStyle, containedButtonColor, containedButtonLayout, containedButtonVars$1 as containedButtonVars, getStyle$2 as getStyle, textButtonColor, textButtonLayout, textButtonVars$1 as textButtonVars };

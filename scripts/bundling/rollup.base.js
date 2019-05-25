@@ -15,6 +15,12 @@ external.forEach(ext => {
   case "mithril":
     globals["mithril"] = "m";
     break;
+  case "react":
+      globals["react"] = "React";
+      break;
+  case "react-dom":
+    globals["react-dom"] = "ReactDOM";
+    break;
   default:
     globals[ext] = ext;
   }

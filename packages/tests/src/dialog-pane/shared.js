@@ -12,6 +12,6 @@ export const cancelOkButtons = ({ h, Button }) => [
   })
 ];
 
-export const commonDialogProps = ({ h, keys, Button }) => ({
-  footerButtons: cancelOkButtons({ h, keys, Button })
+export const commonDialogProps = ({ h, a, Button }) => ({
+  footerButtons: cancelOkButtons({ h, a, Button })
 });

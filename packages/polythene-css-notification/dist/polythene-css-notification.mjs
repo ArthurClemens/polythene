@@ -348,4 +348,4 @@ styler.addStyle({
   vars: notificationVars
 });
 
-export { addStyle, getStyle, color, layout, notificationVars as vars, customLayoutFns, holderLayout };
+export { addStyle, color, customLayoutFns, getStyle, holderLayout, layout, notificationVars as vars };

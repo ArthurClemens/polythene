@@ -172,4 +172,4 @@ styler.addStyle({
   vars: vars
 });
 
-export { addStyle, getStyle, layout, vars, sharedVars, sharedVarFns };
+export { addStyle, getStyle, layout, sharedVarFns, sharedVars, vars };

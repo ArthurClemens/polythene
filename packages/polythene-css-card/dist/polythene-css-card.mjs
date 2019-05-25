@@ -756,4 +756,4 @@ styler.addStyle({
   vars: cardVars
 });
 
-export { addStyle, getStyle, color, layout, cardVars as vars };
+export { addStyle, color, getStyle, layout, cardVars as vars };

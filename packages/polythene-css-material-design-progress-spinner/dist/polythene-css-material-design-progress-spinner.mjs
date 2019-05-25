@@ -137,4 +137,4 @@ styler.addStyle({
   vars: materialDesignProgressSpinnerVars
 });
 
-export { addStyle, getStyle, color, layout, materialDesignProgressSpinnerVars as vars };
+export { addStyle, color, getStyle, layout, materialDesignProgressSpinnerVars as vars };

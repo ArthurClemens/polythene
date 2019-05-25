@@ -7,6 +7,6 @@
 * `throttle`, `subscribe`, `unsubscribe`, `emit`
 * `isClient`, `isServer`
 * `Multi` component - used by Dialog, Notification, Snackbar
-* `isTouch`, `pointerStartEvent`, `pointerEndEvent`, `pointerStartMoveEvent`, `pointerMoveEvent`, `pointerEndMoveEvent`
+* `isTouch`, `pointerStartEvent`, `pointerEndEvent`, `pointerStartDownEvent`, `pointerEndDownEvent`, `pointerMoveEvent`
 * `getStyle`, `isRTL`
 * `show`, `hide`, `transitionComponent`

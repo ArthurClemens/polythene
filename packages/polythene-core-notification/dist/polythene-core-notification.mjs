@@ -303,7 +303,7 @@ var _Notification = function _Notification(_ref) {
   }, _defineProperty({
     className: [classes.component, props.fromMultipleClassName, // classes.visible is set in showNotification though transition
     props.tone === "light" ? null : "pe-dark-tone", // default dark tone
-    props.containerSelector ? classes.hasContainer : null, props.layout === "vertical" ? classes.vertical : classes.horizontal, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    props.containerSelector ? classes.hasContainer : null, props.layout === "vertical" ? classes.vertical : classes.horizontal, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, a.onclick, function (e) {
     return e.preventDefault();
   }));

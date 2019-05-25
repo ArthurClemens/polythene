@@ -146,7 +146,7 @@ var createOverlay = function createOverlay(_ref) {
     props.tone === "light" ? "pe-light-tone" : null].join(" ")
   }, [h(element, {
     key: "content",
-    className: [classes.overlayContent, props.className || props[a.class]].join(" ")
+    className: [classes.overlayContent, props.className || props[a["class"]]].join(" ")
   }, content), h("div", {
     key: "dimmer",
     className: classes.mediaDimmer
@@ -160,7 +160,7 @@ var createAny = function createAny(_ref2) {
   var element = props.element || "div";
   return h(element, _extends({}, filterSupportedAttributes(props), {
     key: props.key || "card-any",
-    className: [classes.any, props.tight ? classes.textTight : null, props.className || props[a.class]].join(" ")
+    className: [classes.any, props.tight ? classes.textTight : null, props.className || props[a["class"]]].join(" ")
   }), props.content);
 };
 
@@ -171,7 +171,7 @@ var createText = function createText(_ref3) {
   var element = props.element || "div";
   return h(element, _extends({}, filterSupportedAttributes(props), {
     key: props.key || "card-text",
-    className: [classes.text, props.tight ? classes.textTight : null, props.className || props[a.class]].join(" ")
+    className: [classes.text, props.tight ? classes.textTight : null, props.className || props[a["class"]]].join(" ")
   }, props.events), props.content);
 };
 
@@ -183,7 +183,7 @@ var createHeader = function createHeader(_ref4) {
       ListTile = _ref4.ListTile;
   return h(ListTile, _extends({}, props, {
     key: props.key || "card-header",
-    className: [classes.header, props.className || props[a.class]].join(" ")
+    className: [classes.header, props.className || props[a["class"]]].join(" ")
   }, props.icon ? {
     front: h(Icon, props.icon)
   } : null));
@@ -203,7 +203,7 @@ var _Card = function _Card(_ref5) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, props.url, props.events);
 
   var dispatcher = function dispatcher(block) {
@@ -350,7 +350,7 @@ var _CardMedia = function _CardMedia(_ref2) {
     "data-test-id": props.testId
   }, {
     key: "card-media",
-    className: [classes.media, mediaSizeClass(props.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, props.className || props[a.class]].join(" ")
+    className: [classes.media, mediaSizeClass(props.size), ratio === "landscape" ? classes.mediaRatioLandscape : classes.mediaRatioSquare, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
   var dispatcher = props.dispatcher;
@@ -368,7 +368,7 @@ var _CardMedia = function _CardMedia(_ref2) {
 
 var buttonClasses = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -412,7 +412,7 @@ var _CardActions = function _CardActions(_ref) {
     "data-test-id": props.testId
   }, {
     key: "card-actions",
-    className: [classes.actions, props.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(props.layout), props.border || props.bordered ? classes.actionsBorder : null, props.tight ? classes.actionsTight : null, props.className || props[a.class]].join(" ")
+    className: [classes.actions, props.layout !== "vertical" ? buttonClasses.row : null, actionClassForLayout(props.layout), props.border || props.bordered ? classes.actionsBorder : null, props.tight ? classes.actionsTight : null, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
   var content = props.content || props.children;
@@ -432,7 +432,7 @@ var _CardPrimary = function _CardPrimary(_ref) {
     "data-test-id": props.testId
   }, {
     key: "card-primary",
-    className: [classes.primary, props.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, props.className || props[a.class]].join(" ")
+    className: [classes.primary, props.tight ? classes.primaryTight : null, primaryHasMedia ? classes.primaryHasMedia : null, props.className || props[a["class"]]].join(" ")
   }, props.events);
 
   var dispatcher = props.dispatcher;
@@ -476,4 +476,4 @@ var _CardPrimary = function _CardPrimary(_ref) {
   return h(props.element || "div", componentProps, content);
 };
 
-export { _Card, _CardMedia, _CardActions, _CardPrimary };
+export { _Card, _CardActions, _CardMedia, _CardPrimary };

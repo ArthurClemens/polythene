@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, pointerStartMoveEvent, isClient, getStyle, isTouch, pointerMoveEvent, pointerEndMoveEvent } from 'polythene-core';
+import { filterSupportedAttributes, pointerStartDownEvent, isClient, getStyle, isTouch, pointerMoveEvent, pointerEndDownEvent } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -280,7 +280,7 @@ var _Slider = function _Slider(_ref) {
         pointerMoveEvent.forEach(function (evt) {
           return window.removeEventListener(evt, drag);
         });
-        pointerEndMoveEvent.forEach(function (evt) {
+        pointerEndDownEvent.forEach(function (evt) {
           return window.removeEventListener(evt, endDrag);
         });
       }
@@ -293,7 +293,7 @@ var _Slider = function _Slider(_ref) {
       pointerMoveEvent.forEach(function (evt) {
         return window.addEventListener(evt, drag);
       });
-      pointerEndMoveEvent.forEach(function (evt) {
+      pointerEndDownEvent.forEach(function (evt) {
         return window.addEventListener(evt, endDrag);
       });
     }
@@ -383,7 +383,7 @@ var _Slider = function _Slider(_ref) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.disabled ? classes.isDisabled : null, props.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, isActive ? classes.isActive : null, hasFocus ? classes.hasFocus : null, fraction === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.disabled ? classes.isDisabled : null, props.pin ? classes.hasPin : null, interactiveTrack ? classes.hasTrack : null, isActive ? classes.isActive : null, hasFocus ? classes.hasFocus : null, fraction === 0 ? classes.isAtMin : null, hasTicks ? classes.hasTicks : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var onStartTrack = function onStartTrack(e) {
@@ -411,7 +411,7 @@ var _Slider = function _Slider(_ref) {
   var flexRestCss = flexRestValue + " 1 0%";
   var content = [props.before, h("div", _extends({}, {
     className: classes.track
-  }, interactiveTrack && !props.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+  }, interactiveTrack && !props.disabled && pointerStartDownEvent.reduce(function (acc, evt) {
     return acc[a["on".concat(evt)]] = onStartTrack, acc;
   }, {})), [h("div", {
     className: classes.trackPart + " " + classes.trackPartValue,
@@ -456,7 +456,7 @@ var _Slider = function _Slider(_ref) {
     }
 
     readRangeData(); // updatePinPosition();
-  }), _ref3), !props.disabled && pointerStartMoveEvent.reduce(function (acc, evt) {
+  }), _ref3), !props.disabled && pointerStartDownEvent.reduce(function (acc, evt) {
     return acc[a["on".concat(evt)]] = onInitDrag, acc;
   }, {}), props.events ? props.events : null, hasTicks ? {
     step: stepCount

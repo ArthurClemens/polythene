@@ -5,7 +5,7 @@ import { vars as vars$1 } from 'polythene-css-icon-button';
 
 var buttonClasses = {
   component: "pe-text-button",
-  super: "pe-button",
+  "super": "pe-button",
   row: "pe-button-row",
   // elements      
   content: "pe-button__content",
@@ -680,4 +680,4 @@ styler.addStyle({
   vars: tabsVars
 });
 
-export { addStyle, getStyle, tabsVars as vars, tabColor, tabLayout, tabsColor, tabsLayout };
+export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, tabsVars as vars };

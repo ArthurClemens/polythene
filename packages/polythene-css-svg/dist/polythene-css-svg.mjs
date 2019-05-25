@@ -123,4 +123,4 @@ styler.addStyle({
   vars: svgVars
 });
 
-export { addStyle, getStyle, color, layout, svgVars as vars };
+export { addStyle, color, getStyle, layout, svgVars as vars };

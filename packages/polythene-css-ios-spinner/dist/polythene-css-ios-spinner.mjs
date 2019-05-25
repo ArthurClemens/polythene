@@ -158,4 +158,4 @@ styler.addStyle({
   vars: iOSSpinnerVars
 });
 
-export { addStyle, getStyle, color, layout, iOSSpinnerVars as vars };
+export { addStyle, color, getStyle, layout, iOSSpinnerVars as vars };

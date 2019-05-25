@@ -7,6 +7,12 @@
   - [Which packages do you need?](#which-packages-do-you-need)
   - [Installation](#installation)
   - [Examples](#examples)
+    - [A single component](#a-single-component)
+      - [With JSX](#with-jsx)
+      - [With hyperscript](#with-hyperscript)
+    - [A simple app](#a-simple-app)
+      - [With JSX](#with-jsx-1)
+      - [With hyperscript](#with-hyperscript-1)
 - [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
   - [Setup](#setup)
   - [Example script](#example-script)
@@ -174,15 +180,15 @@ Add to your HTML file:
 ~~~html
 <div id="root"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/polythene-react/dist/polythene-react-standalone.js"></script>
 ~~~
 
 To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
 
 ~~~html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 ~~~
 
 <a id="example-script"></a>

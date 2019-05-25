@@ -6,10 +6,10 @@ const tests = [
   testRender,
 ];
 
-export default ({ TextField, renderer: h, keys: k }) => {
+export default ({ TextField, h, a }) => {
   
   return tests.map(t => 
-    t({ rootPath: "/textfield", h, k, TextField })
+    t({ rootPath: "/textfield", h, a, TextField })
   );
 };
 

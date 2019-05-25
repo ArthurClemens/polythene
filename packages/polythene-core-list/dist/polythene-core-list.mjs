@@ -152,14 +152,14 @@ var _List = function _List(_ref) {
   var componentProps = _extends({}, filterSupportedAttributes(props), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes.component, props.border || props.borders ? classes.border : null, props.indentedBorder || props.indentedBorders ? classes.indentedBorder : null, props.header ? classes.hasHeader : null, props.compact ? classes.compact : null, paddingClass(props.padding), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a.class]].join(" ")
+    className: [classes.component, props.border || props.borders ? classes.border : null, props.indentedBorder || props.indentedBorders ? classes.indentedBorder : null, props.header ? classes.hasHeader : null, props.compact ? classes.compact : null, paddingClass(props.padding), props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
   var headerOpts;
 
   if (props.header) {
     headerOpts = _extends({}, props.header);
-    headerOpts[a.class] = [classes.header, headerOpts[a.class] || null].join(" ");
+    headerOpts[a["class"]] = [classes.header, headerOpts[a["class"]] || null].join(" ");
   }
 
   var tiles = props.tiles ? props.tiles : props.content ? props.content : props.children;
