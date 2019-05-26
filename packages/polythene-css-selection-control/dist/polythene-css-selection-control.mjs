@@ -124,32 +124,40 @@ var tintFns = function tintFns(tint) {
   }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
-        " .pe-button--focus .pe-button__focus": {
-          backgroundColor: vars["color_" + tint + "_focus_on"]
+        " .pe-button--focus": {
+          " .pe-button__focus": {
+            backgroundColor: vars["color_" + tint + "_focus_on"]
+          }
         }
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
-        " .pe-button--focus .pe-button__focus": {
-          backgroundColor: vars["color_" + tint + "_focus_off"]
+        " .pe-button--focus": {
+          " .pe-button__focus": {
+            backgroundColor: vars["color_" + tint + "_focus_off"]
+          }
         }
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
-        " .pe-button--focus .pe-button__focus": {
-          opacity: vars["color_" + tint + "_focus_on_opacity"]
+        " .pe-button--focus": {
+          " .pe-button__focus": {
+            opacity: vars["color_" + tint + "_focus_on_opacity"]
+          }
         }
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
-        " .pe-button--focus .pe-button__focus": {
-          opacity: vars["color_" + tint + "_focus_off_opacity"]
+        " .pe-button--focus": {
+          " .pe-button__focus": {
+            opacity: vars["color_" + tint + "_focus_off_opacity"]
+          }
         }
       }
     })];

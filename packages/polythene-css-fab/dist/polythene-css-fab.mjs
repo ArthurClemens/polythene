@@ -77,6 +77,14 @@ var tintFns = function tintFns(tint) {
         }
       }
     })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
+    return [sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
+        }
+      }
+    })];
   }), _ref;
 };
 
@@ -171,12 +179,14 @@ var drawerVars = {
   color_light_focus_opacity: vars.blend_light_background_hover_medium,
   // same as button
   color_light_background: rgba(vars.color_primary),
+  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_dark: rgba(vars.color_primary_foreground),
   color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
   // same as button
   color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
   // same as button
-  color_dark_background: rgba(vars.color_primary)
+  color_dark_background: rgba(vars.color_primary),
+  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };
 
 // @ts-check

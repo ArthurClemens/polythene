@@ -48,6 +48,7 @@ Under the hood: integration of [Cyano](https://github.com/ArthurClemens/cyano) w
 
 Bug fixes:
 
+* Restores focus color with keyboard tab navigation (Button, Icon Button, FAB, Checkbox, Radio Button, Switch, Tabs)
 * ButtonGroup: fixes a layout issue with arrow button
 * Button: reenables `wash` when set to `true`
 * TextField: fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.

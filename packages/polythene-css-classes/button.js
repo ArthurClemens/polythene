@@ -25,4 +25,5 @@ export default {
   raised:           "pe-button--raised",
   selected:         "pe-button--selected",
   separatorAtStart: "pe-button--separator-start",
+  hasWash:          "pe-button--wash",
 };

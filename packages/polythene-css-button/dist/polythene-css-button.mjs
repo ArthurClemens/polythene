@@ -25,7 +25,8 @@ var classes = {
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
   selected: "pe-button--selected",
-  separatorAtStart: "pe-button--separator-start"
+  separatorAtStart: "pe-button--separator-start",
+  hasWash: "pe-button--wash"
 };
 
 function _defineProperty(obj, key, value) {
@@ -261,7 +262,7 @@ var hoverTintFns = function hoverTintFns(tint) {
     })];
   }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      ":not(.pe-button--disabled):not(.pe-button--selected)": {
+      ".pe-button--wash": {
         " .pe-button__wash": {
           backgroundColor: vars["color_" + tint + "_wash_background"]
         }

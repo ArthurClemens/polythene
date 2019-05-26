@@ -26,6 +26,14 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
     ), props.inactivate * 1000);
   };
 
+  /*
+  Use wash to indicate focus, or hover when not a raised button.
+  */
+ const showWash = !disabled && !props.selected && (
+  (props.raised && (/* hasFocus || */ props.wash === true))
+  || (!props.raised && (/* hasFocus && */ props.wash !== false))
+);
+
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     getRef(dom => dom && !domElement && (
@@ -55,6 +63,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
             ? classes.dropdownOpen
             : classes.dropdownClosed
           : null,
+        showWash ? classes.hasWash : null,
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
@@ -113,13 +122,6 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         )
       : props.children;
   
-  /*
-  Use wash to indicate focus, or hover when not a raised button.
-  */
-  const showWash = !disabled && (
-    (props.raised && (/* hasFocus || */ props.wash === true))
-    || (!props.raised && (/* hasFocus && */ props.wash !== false))
-  );
 
   return h(props.element || "a",
     componentProps, [
@@ -146,9 +148,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
               },
               props.ripple
             )),
-          showWash
-            ? h("div", { key: "wash", className: classes.wash })
-            : null,
+          h("div", { key: "wash", className: classes.wash }),
           
           buttonContent,
           props.dropdown

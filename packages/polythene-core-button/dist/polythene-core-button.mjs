@@ -163,7 +163,8 @@ var classes = {
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
   selected: "pe-button--selected",
-  separatorAtStart: "pe-button--separator-start"
+  separatorAtStart: "pe-button--separator-start",
+  hasWash: "pe-button--wash"
 };
 
 var DEFAULT_SHADOW_DEPTH = 1;
@@ -346,6 +347,16 @@ var _Button = function _Button(_ref) {
       return setIsInactive(false);
     }, props.inactivate * 1000);
   };
+  /*
+  Use wash to indicate focus, or hover when not a raised button.
+  */
+
+
+  var showWash = !disabled && !props.selected && (props.raised &&
+  /* hasFocus || */
+  props.wash === true || !props.raised &&
+  /* hasFocus && */
+  props.wash !== false);
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
@@ -356,7 +367,7 @@ var _Button = function _Button(_ref) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasFocus ? classes.focus : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
+    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasFocus ? classes.focus : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, showWash ? classes.hasWash : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, inactive ? null : _objectSpread((_objectSpread2 = {}, _defineProperty(_objectSpread2, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_objectSpread2, a.onfocus, function (e) {
     return setHasFocus(true), events[a.onfocus] && events[a.onfocus](e);
   }), _defineProperty(_objectSpread2, a.onblur, function (e) {
@@ -383,15 +394,6 @@ var _Button = function _Button(_ref) {
     className: classes.textLabel,
     style: props.textStyle
   }, props.label)) : props.children;
-  /*
-  Use wash to indicate focus, or hover when not a raised button.
-  */
-
-  var showWash = !disabled && (props.raised &&
-  /* hasFocus || */
-  props.wash === true || !props.raised &&
-  /* hasFocus && */
-  props.wash !== false);
   return h(props.element || "a", componentProps, [props.before, h("div", {
     className: classes.content,
     style: props.style
@@ -402,10 +404,10 @@ var _Button = function _Button(_ref) {
   }), disabled || noink ? null : h(Ripple, _extends({}, {
     key: "ripple",
     target: contentElement.current
-  }, props.ripple)), showWash ? h("div", {
+  }, props.ripple)), h("div", {
     key: "wash",
     className: classes.wash
-  }) : null, buttonContent, props.dropdown ? h(Icon, {
+  }), buttonContent, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {

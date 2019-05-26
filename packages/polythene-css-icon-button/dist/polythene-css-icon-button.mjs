@@ -90,6 +90,14 @@ var tintFns = function tintFns(tint) {
         }
       }
     })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
+    return [sel(selector, {
+      ".pe-button--focus": {
+        " .pe-button__wash": {
+          backgroundColor: vars["color_" + tint + "_wash_background"]
+        }
+      }
+    })];
   }), _ref;
 };
 
@@ -116,7 +124,7 @@ var hoverTintFns = function hoverTintFns(tint) {
     })];
   }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      ":not(.pe-button--disabled):not(.pe-button--selected)": {
+      ".pe-button--wash": {
         " .pe-button__wash": {
           backgroundColor: vars["color_" + tint + "_wash_background"]
         }
