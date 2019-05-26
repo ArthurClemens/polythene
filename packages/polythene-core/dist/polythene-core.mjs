@@ -775,11 +775,9 @@ var Multi = function Multi(_ref) {
         setCurrent = _useState2[1];
 
     useEffect(function () {
-      subscribe(mOptions.name, function (e) {
-        setCurrent(e);
-      });
+      subscribe(mOptions.name, setCurrent);
       return function () {
-        unsubscribe(mOptions.name);
+        unsubscribe(mOptions.name, setCurrent);
       };
     }, []);
     var spawn = props.spawn || mOptions.defaultId;

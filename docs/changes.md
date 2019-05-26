@@ -1,8 +1,8 @@
 # Change log
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
-- [1.5](#15)
-  - [1.5.5](#155)
+- [1.6](#16)
+  - [1.6.0](#160)
   - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
@@ -40,12 +40,17 @@
 
 <!-- /MarkdownTOC -->
 
+## 1.6
 
-## 1.5
+### 1.6.0
 
-### 1.5.5
+Under the hood: integration of [Cyano](https://github.com/ArthurClemens/cyano) with the React Hooks API. This has resulted in more coherent (and slighly smaller) code.
 
-* Fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
+Bug fixes:
+
+* ButtonGroup: fixes a layout issue with arrow button
+* Button: reenables `wash` when set to `true`
+* TextField: fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
 * Fixes a bug where Webpack's production build (using treeshaking) caused JS-in-CSS functions to drop, resulting in missing styles in the document head.
 
 
