@@ -1,4 +1,4 @@
-import { CommonOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, Content, CyanoComponentOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -85,4 +85,4 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export const coreSlider: CoreComponentCreatorOptions;
+export const _Slider: (options: CyanoComponentOptions & Options) => any;

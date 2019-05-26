@@ -1,7 +1,7 @@
-import { CoreComponentCreatorOptions } from "./node_modules/polythene-core";
-import { Options as SpinnerOptions } from "./node_modules/polythene-core-base-spinner";
+import { CyanoComponentOptions } from "polythene-core";
+import { Options as BaseSpinnerOptions } from "polythene-core-base-spinner";
 
-export interface Options extends SpinnerOptions {
+export interface Options extends BaseSpinnerOptions {
 
   /**
    * Set to true to use only one color (by default the primary color).
@@ -11,4 +11,4 @@ export interface Options extends SpinnerOptions {
 
 }
 
-export const coreIOSSpinner: CoreComponentCreatorOptions;
+export const _Spinner: (options: CyanoComponentOptions & Options) => any;

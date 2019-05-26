@@ -1,4 +1,4 @@
-
+export * from "polythene-react-base";
 export * from "polythene-react-button";
 export * from "polythene-react-button-group";
 export * from "polythene-react-card";
@@ -30,15 +30,3 @@ export * from "polythene-react-tabs";
 export * from "polythene-react-textfield";
 export * from "polythene-react-toolbar";
 
-// import h from "react-hyperscript";
-
-// export const renderer = h;
-
-// renderer.trust = (html, element = "div") => {
-//   if (html == null) html = "";
-//   return h(element, {
-//     dangerouslySetInnerHTML: { __html: html }
-//   });
-// };
-
-// renderer["displayName"] = "react";

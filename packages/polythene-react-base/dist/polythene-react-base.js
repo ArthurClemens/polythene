@@ -1,0 +1,2 @@
+!function(e,r){"object"==typeof exports&&"undefined"!=typeof module?r(require("react-hyperscript")):"function"==typeof define&&define.amd?define(["react-hyperscript"],r):r((e=e||self)["react-hyperscript"])}(this,function(e){"use strict";e=e&&e.hasOwnProperty("default")?e.default:e,renderer.trust=function(r){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"div";return null==r&&(r=""),e(t,{dangerouslySetInnerHTML:{__html:r}})},renderer.displayName="react"});
+//# sourceMappingURL=polythene-react-base.js.map

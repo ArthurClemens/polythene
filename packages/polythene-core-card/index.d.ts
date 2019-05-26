@@ -1,4 +1,4 @@
-import { CommonOptions, URLOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, URLOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as ListTileOptions } from "polythene-core-list-tile";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -201,7 +201,8 @@ interface CardOptions extends GenericContentOptions {
 
 export type Options = CardOptions;
 
-export const coreCard: CoreComponentCreatorOptions;
-export const coreCardActions: CoreComponentCreatorOptions;
-export const coreCardMedia: CoreComponentCreatorOptions;
-export const coreCardPrimary: CoreComponentCreatorOptions;
+export const _Card: (options: CyanoComponentOptions & CardOptions) => any;
+export const _CardMedia: (options: CyanoComponentOptions & MediaOptions) => any;
+export const _CardActions: (options: CyanoComponentOptions & ActionsOptions) => any;
+export const _CardPrimary: (options: CyanoComponentOptions & PrimaryContentOptions) => any;
+

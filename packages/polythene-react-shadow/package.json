@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
+    "polythene-react-base": "^1.5.4",
     "polythene-core-shadow": "^1.5.4"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as SVGOptions } from "polythene-core-svg";
 
-interface CommonIconOptions extends Partial<CommonOptions> {
+export interface Options extends Partial<CommonOptions> {
 
   /* START COMMON OPTIONS */
 
@@ -40,6 +40,4 @@ interface CommonIconOptions extends Partial<CommonOptions> {
   children?: any;
 }
 
-export type Options = CommonIconOptions;
-
-export const coreIcon: CoreComponentCreatorOptions;
+export const _Icon: (options: CyanoComponentOptions & Options) => any;

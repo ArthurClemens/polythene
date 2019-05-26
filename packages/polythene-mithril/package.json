@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "polythene-css": "^1.5.4",
+    "polythene-mithril-base": "^1.5.4",
     "polythene-mithril-button": "^1.5.4",
     "polythene-mithril-button-group": "^1.5.4",
     "polythene-mithril-card": "^1.5.4",

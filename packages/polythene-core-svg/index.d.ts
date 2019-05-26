@@ -1,6 +1,6 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 
-interface CommonSVGOptions extends Partial<CommonOptions> {
+export interface Options extends Partial<CommonOptions> {
 
   /**
    * SVG content: string, hyperscript or component.
@@ -14,6 +14,4 @@ interface CommonSVGOptions extends Partial<CommonOptions> {
 
 }
 
-export type Options = CommonSVGOptions;
-
-export const _SVG: CoreComponentCreatorOptions;
+export const _SVG: (options: CyanoComponentOptions & Options) => any;

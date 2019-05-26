@@ -20,6 +20,7 @@
     "cyano-react": "^0.5.1",
     "polythene-core-selection-control": "^1.5.4",
     "polythene-core-switch": "^1.5.4",
+    "polythene-react-base": "^1.5.4",
     "polythene-react-icon-button": "^1.5.4",
     "polythene-react-shadow": "^1.5.4"
   },

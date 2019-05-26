@@ -1,4 +1,4 @@
-import { CommonOptions, URLOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, URLOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as IconOptions } from "polythene-core-icon";
 import { Options as RippleOptions } from "polythene-core-ripple";
 
@@ -197,6 +197,6 @@ interface SecondaryContentOptions extends Partial<CommonOptions> {
 
 }
 
-export type Options = PrimaryContentOptions;
+export interface Options extends CommonListTileOptions, PrimaryContentOptions {}
 
-export const coreListTile: CoreComponentCreatorOptions;
+export const _ListTile: (options: CyanoComponentOptions & Options) => any;

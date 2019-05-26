@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, TransitionOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as DialogPaneOptions } from "polythene-core-dialog-pane";
 
 export interface Options extends Partial<CommonOptions> {
@@ -93,9 +93,5 @@ type showDynamic = (_:any) => showStatic;
 export type show = showDynamic & showStatic;
 
 export type hide = <T>(spawnOptions?: SpawnOptions) => Promise<T>;
-export type createPane = (vnode: any, { renderer, Pane } : { renderer: any, Pane: any }) => any;
 
-interface DialogCreatorOptions extends CoreComponentCreatorOptions {
-  createPane: (vnode: any, { renderer, Pane } : { renderer: any, Pane: any }) => any;
-}
-export const coreDialog: DialogCreatorOptions;
+export const _Dialog: (options: CyanoComponentOptions & AppearanceOptions) => any;

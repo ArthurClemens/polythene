@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as RadioButtonOptions } from "polythene-core-radio-button";
 
 export interface Options extends Partial<CommonOptions> {
@@ -41,4 +41,4 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export const coreRadioGroup: CoreComponentCreatorOptions;
+export const _RadioGroup: (options: CyanoComponentOptions & Options) => any;

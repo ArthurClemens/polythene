@@ -1,4 +1,4 @@
-import { CommonOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, Content, CyanoComponentOptions } from "polythene-core";
 import { Options as TextFieldOptions } from "polythene-core-textfield";
 
 interface SearchButtons {
@@ -37,4 +37,4 @@ export interface Options extends Partial<CommonOptions> {
   
 }
 
-export const coreSearch: CoreComponentCreatorOptions;
+export const _Search: (options: CyanoComponentOptions & Options) => any;

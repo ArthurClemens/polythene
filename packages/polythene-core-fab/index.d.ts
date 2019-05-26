@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -17,4 +17,4 @@ export interface Options extends Partial<CommonOptions>, ButtonOptions {
 
 }
 
-export const coreFAB: CoreComponentCreatorOptions;
+export const _FAB: (options: CyanoComponentOptions & Options) => any;

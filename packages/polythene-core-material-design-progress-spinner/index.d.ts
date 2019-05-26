@@ -1,7 +1,7 @@
-import { CoreComponentCreatorOptions } from "./node_modules/polythene-core";
-import { Options as SpinnerOptions } from "./node_modules/polythene-core-base-spinner";
+import { CyanoComponentOptions } from "polythene-core";
+import { Options as BaseSpinnerOptions } from "polythene-core-base-spinner";
 
-export interface Options extends SpinnerOptions {
+export interface Options extends BaseSpinnerOptions {
 
   /**
    * Sets the progress percentage value between 0 and 1.
@@ -22,5 +22,4 @@ export interface Options extends SpinnerOptions {
 
 }
 
-export const coreMaterialDesignProgressSpinner: CoreComponentCreatorOptions;
-
+export const _Spinner: (options: CyanoComponentOptions & Options) => any;

@@ -1,4 +1,4 @@
-import { CoreComponentCreatorOptions } from "polythene-core";
+import { CyanoComponentOptions } from "polythene-core";
 import { Options as ButtonOptions } from "polythene-core-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
@@ -22,4 +22,4 @@ export interface Options extends ButtonOptions {
 
 }
 
-export const coreIconButton: CoreComponentCreatorOptions;
+export const _IconButton: (options: CyanoComponentOptions & Options) => any;

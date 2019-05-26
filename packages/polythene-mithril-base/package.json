@@ -1,0 +1,31 @@
+{
+  "name": "polythene-mithril-base",
+  "version": "1.5.4",
+  "description": "",
+  "main": "dist/polythene-mithril-base",
+  "module": "dist/polythene-mithril-base.mjs",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist/*",
+    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js && ../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.es.js",
+    "build": "npm run clean && npm run rollup",
+    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true src/index.js"
+  },
+  "files": [
+    "dist",
+    "index.d.ts",
+    "README.md"
+  ],
+  "dependencies": {
+    "polythene-core": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/mithril": "^1.1.14"
+  },
+  "peerDependencies": {
+    "mithril": "2.0.0-rc.4"
+  },
+  "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
+  "homepage": "https://github.com/ArthurClemens/polythene",
+  "license": "MIT"
+}

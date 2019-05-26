@@ -1,3 +1,4 @@
+export * from "polythene-mithril-base";
 export * from "polythene-mithril-button";
 export * from "polythene-mithril-button-group";
 export * from "polythene-mithril-card";
@@ -28,8 +29,3 @@ export * from "polythene-mithril-switch";
 export * from "polythene-mithril-tabs";
 export * from "polythene-mithril-textfield";
 export * from "polythene-mithril-toolbar";
-
-import m from "mithril";
-
-export const renderer = m;
-renderer["displayName"] = "mithril";

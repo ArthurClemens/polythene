@@ -1,4 +1,4 @@
-import { CoreComponentCreatorOptions } from "polythene-core";
+import { CyanoComponentOptions } from "polythene-core";
 import { Options as DialogOptions, AppearanceOptions as DialogAppearanceOptions } from "polythene-core-dialog";
 
 export interface Options extends DialogOptions, DialogAppearanceOptions {
@@ -78,4 +78,4 @@ export interface Options extends DialogOptions, DialogAppearanceOptions {
 
 }
 
-export const coreDrawer: CoreComponentCreatorOptions;
+export const _Drawer: (options: CyanoComponentOptions & Options) => any;

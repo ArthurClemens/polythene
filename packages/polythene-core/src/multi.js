@@ -177,11 +177,9 @@ export const Multi = ({ options: mOptions }) => {
     const [, setCurrent] = useState();
     useEffect(
       () => {
-        subscribe(mOptions.name, e => {
-          setCurrent(e);
-        });
+        subscribe(mOptions.name, setCurrent);
         return () => {
-          unsubscribe(mOptions.name);
+          unsubscribe(mOptions.name, setCurrent);
         }
       },
       []

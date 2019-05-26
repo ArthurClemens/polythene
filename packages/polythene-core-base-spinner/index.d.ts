@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, CoreComponentCreatorOptions } from "./node_modules/polythene-core/polythene-core";
+import { CommonOptions, TransitionOptions, CyanoComponentOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -49,4 +49,4 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export const coreBaseSpinner: CoreComponentCreatorOptions;
+export const _BaseSpinner: (options: CyanoComponentOptions & Options) => any;

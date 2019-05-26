@@ -16,6 +16,8 @@ body, html {
 }
 .component {
   margin: 1rem 0;
+  padding: 1rem;
+  background: #f5f5f5;
 }
 h1 {
   font-size: 32px;

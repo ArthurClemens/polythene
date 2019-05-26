@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as ListTileOptions } from "polythene-core-list-tile";
 
 export interface Options extends Partial<CommonOptions> {
@@ -60,4 +60,4 @@ export interface Options extends Partial<CommonOptions> {
   
 }
 
-export const coreList: CoreComponentCreatorOptions;
+export const _List: (options: CyanoComponentOptions & Options) => any;

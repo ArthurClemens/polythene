@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {    
 
@@ -60,4 +60,4 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export const coreDialogPane: CoreComponentCreatorOptions;
+export const _DialogPane: (options: CyanoComponentOptions & Options) => any;

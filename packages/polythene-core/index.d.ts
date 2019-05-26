@@ -1,4 +1,4 @@
-import * as m from "./node_modules/mithrilmodules/mithril";
+import * as m from "mithril";
 
 export type Content = object | any;
 
@@ -59,7 +59,7 @@ export type Content = object | any;
 
   }
 
-  export const _Conditional: Partial<CoreComponentCreatorOptions>;
+  export const _Conditional: (options: CyanoComponentOptions & ConditionalOptions) => any;
 
 /* Conditional.js END */
 
@@ -115,7 +115,7 @@ export type Content = object | any;
 
 /* multi.js START */
 
-export const Multi: ({ options, renderer } : { options: object, renderer: any }) => any;
+export const Multi: ({ options } : { options: object }) => any;
 
 
 /* multi.js END */
@@ -318,14 +318,16 @@ export interface TransitionOptions {
 
 }
 
-export interface CoreComponentCreatorOptions {
-  getElement: (vnode: any) => any;
-  getInitialState: (vnode: any, stream?:any, options?:any) => any;
-  onMount: (vnode: any, options?: any) => any;
-  onUnMount: (vnode: any) => any;
-  onUpdate: (vnode: any) => any;
-  createProps: (vnode: any, options?: any) => any;
-  createContent: (vnode: any, options?: any) => any;
-  component: any;
-  view: (vnode: any, options?: any) => any;
+export type CyanoComponentOptions = {
+  h: (args:any) => any;
+  a?: object;
+  cast?: (args:any) => any;
+  getRef?: (args:any) => any;
+  useCallback?: (args:any) => any;
+  useEffect?: (args:any) => any;
+  useLayoutEffect?: (args:any) => any;
+  useMemo?: (args:any) => any;
+  useReducer?: (args:any) => any;
+  useRef?: (args:any) => any;
+  useState?: (args:any) => any;
 }

@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
 
@@ -93,4 +93,4 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export const coreRipple: CoreComponentCreatorOptions;
+export const _Ripple: (options: CyanoComponentOptions & Options) => any;

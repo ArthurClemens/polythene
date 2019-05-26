@@ -1,8 +1,8 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 import { Options as IconButtonOptions } from "polythene-core-icon-button";
 import { Options as IconOptions } from "polythene-core-icon";
 
-export interface Options extends Partial<CommonOptions> {
+export interface SelectionControlOptions extends Partial<CommonOptions> {
 
   /* START COMMON OPTIONS */
 
@@ -81,7 +81,7 @@ export interface Options extends Partial<CommonOptions> {
 
 }
 
-export interface IconOptions extends Partial<CommonOptions> {
+export interface ViewControlOptions extends Partial<CommonOptions>, Partial<IconButtonOptions> {
 
   /**
    * Assigns a different icon for the off state.
@@ -95,5 +95,6 @@ export interface IconOptions extends Partial<CommonOptions> {
 
 }
 
-export const coreSelectionControl: CoreComponentCreatorOptions;
-export const coreViewControl: CoreComponentCreatorOptions;
+
+export const _SelectionControl: (options: CyanoComponentOptions & SelectionControlOptions) => any;
+export const _ViewControl: (options: CyanoComponentOptions & ViewControlOptions) => any;

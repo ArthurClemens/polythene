@@ -1,4 +1,4 @@
-import { CommonOptions, TransitionOptions, Content, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, TransitionOptions, Content, CyanoComponentOptions } from "polythene-core";
 
 export interface Options extends Partial<CommonOptions> {
   
@@ -95,8 +95,8 @@ export interface Options extends Partial<CommonOptions> {
    * With "auto" the menu takes the width of the widest element
    * Note that on smaller devices a large size may get clipped by the screen
    */
-  width: "auto" | 1 | 1.5 | 2 | 3 | 4 | 5 | 6 | 7;
+  width?: "auto" | 1 | 1.5 | 2 | 3 | 4 | 5 | 6 | 7;
   
 }
 
-export const coreMenu: CoreComponentCreatorOptions;
+export const _Menu: (options: CyanoComponentOptions & Options) => any;

@@ -1,4 +1,4 @@
-import { CommonOptions, CoreComponentCreatorOptions } from "polythene-core";
+import { CommonOptions, CyanoComponentOptions } from "polythene-core";
 
 export type onChangeTextFieldState = { focus: boolean, setInputState: setInputStateFn, dirty: boolean, value: string, el: HTMLElement, invalid: boolean, error: string };
 type onChangeTextField = ({ focus, setInputState, dirty, value, el, invalid, error } : onChangeTextFieldState) => void;
@@ -272,4 +272,4 @@ interface ValidationOptions {
 
 export interface Options extends CommonTextFieldOptions, InputOptions, AppearanceOptions, ValidationOptions{}
 
-export const coreTextField: CoreComponentCreatorOptions;
+export const _TextField: (options: CyanoComponentOptions & Options) => any;

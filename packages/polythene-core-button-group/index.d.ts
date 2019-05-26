@@ -1,5 +1,5 @@
-import { CoreComponentCreatorOptions } from "polythene-core";
+import { CyanoComponentOptions } from "polythene-core";
 
 export interface Options {}
 
-export const coreButtonGroup: CoreComponentCreatorOptions;
+export const _ButtonGroup: (options: CyanoComponentOptions & Options) => any;

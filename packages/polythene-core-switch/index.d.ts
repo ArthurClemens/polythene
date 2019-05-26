@@ -1,8 +1,7 @@
-import { CoreComponentCreatorOptions } from "polythene-core";
-import { Options as SelectionControlOptions, IconOptions } from "polythene-core-selection-control";
+import { CyanoComponentOptions } from "polythene-core";
+import { SelectionControlOptions, ViewControlOptions } from "polythene-core-selection-control";
 
-export interface Options extends SelectionControlOptions, IconOptions {
-
+export interface Options extends SelectionControlOptions {
 
   /**
    * Shows a shadow below the thumb; when the Switch state is on, the depth is incremented by 1.
@@ -34,5 +33,5 @@ export interface Options extends SelectionControlOptions, IconOptions {
 
 }
 
-export const coreSwitch: CoreComponentCreatorOptions;
-export const coreViewControl: CoreComponentCreatorOptions;
+export const _Switch: (options: CyanoComponentOptions & Options) => any;
+export const _ViewControl: (options: CyanoComponentOptions & ViewControlOptions) => any;

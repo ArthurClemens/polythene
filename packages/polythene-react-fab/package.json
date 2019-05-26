@@ -19,6 +19,7 @@
   "dependencies": {
     "cyano-react": "^0.5.1",
     "polythene-core-fab": "^1.5.4",
+    "polythene-react-base": "^1.5.4",
     "polythene-react-button": "^1.5.4",
     "polythene-react-icon": "^1.5.4"
   },
