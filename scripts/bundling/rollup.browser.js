@@ -60,6 +60,14 @@ export default {
           id: "mithril",
           resolveTo: "node_modules/mithril/mithril.js"
         },
+        {
+          id: "cyano-mithril",
+          resolveTo: "node_modules/cyano-mithril/dist/cyano-mithril.mjs"
+        },
+        {
+          id: "cyano-react",
+          resolveTo: "node_modules/cyano-react/dist/cyano-react.mjs"
+        },
       ]
     }),
     resolve(),

@@ -3,6 +3,7 @@ import fs from "fs";
 import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
+import pathmodify from "rollup-plugin-pathmodify";
 
 const env = process.env;
 export const pkg = JSON.parse(fs.readFileSync("./package.json"));
@@ -35,7 +36,26 @@ export const createConfig = () => {
       globals,
     },
     plugins: [
-
+      pathmodify({
+        aliases: [
+          {
+            id: "mithril/stream",
+            resolveTo: "node_modules/mithril/stream/stream.js"
+          },
+          {
+            id: "mithril",
+            resolveTo: "node_modules/mithril/mithril.js"
+          },
+          {
+            id: "cyano-mithril",
+            resolveTo: "node_modules/cyano-mithril/dist/cyano-mithril.mjs"
+          },
+          {
+            id: "cyano-react",
+            resolveTo: "node_modules/cyano-react/dist/cyano-react.mjs"
+          },
+        ]
+      }),
       resolve(),
 
       commonjs({
