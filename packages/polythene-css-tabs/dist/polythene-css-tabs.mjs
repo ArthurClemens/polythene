@@ -26,7 +26,8 @@ var buttonClasses = {
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
   selected: "pe-button--selected",
-  separatorAtStart: "pe-button--separator-start"
+  separatorAtStart: "pe-button--separator-start",
+  hasWash: "pe-button--wash"
 };
 
 var classes = {
