@@ -69,6 +69,10 @@
   color: hsla(0,0%,100%,.26)
 }
 
+.pe-dark-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__wash,.pe-dark-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__wash {
+  background-color: hsla(0,0%,100%,.08)
+}
+
 .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__focus,.pe-light-tone.pe-button.pe-icon-button.pe-button--selected .pe-button__focus,.pe-light-tone .pe-button.pe-icon-button.pe-button--selected .pe-button__focus {
   background-color: currentcolor
 }
@@ -85,11 +89,15 @@
   opacity: .12
 }
 
-.pe-no-touch .pe-dark-tone .pe-button.pe-icon-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+.pe-button.pe-icon-button.pe-button--focus .pe-button__wash,.pe-light-tone.pe-button.pe-icon-button.pe-button--focus .pe-button__wash,.pe-light-tone .pe-button.pe-icon-button.pe-button--focus .pe-button__wash {
+  background-color: rgba(0,0,0,.06)
+}
+
+.pe-no-touch .pe-dark-tone .pe-button.pe-icon-button:hover.pe-button--wash .pe-button__wash {
   background-color: hsla(0,0%,100%,.08)
 }
 
-.pe-no-touch .pe-button.pe-icon-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-light-tone .pe-button.pe-icon-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+.pe-no-touch .pe-button.pe-icon-button:hover.pe-button--wash .pe-button__wash,.pe-no-touch .pe-light-tone .pe-button.pe-icon-button:hover.pe-button--wash .pe-button__wash {
   background-color: rgba(0,0,0,.06)
 }
 /*# sourceMappingURL=polythene-icon-button.css.map */

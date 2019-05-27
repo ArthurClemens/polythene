@@ -332,11 +332,11 @@
   border-color: rgba(0,0,0,.24)
 }
 
-.pe-no-touch .pe-dark-tone .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+.pe-no-touch .pe-dark-tone .pe-text-button:hover.pe-button--wash .pe-button__wash {
   background-color: hsla(0,0%,100%,.08)
 }
 
-.pe-no-touch .pe-light-tone .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash,.pe-no-touch .pe-text-button:hover:not(.pe-button--disabled):not(.pe-button--selected) .pe-button__wash {
+.pe-no-touch .pe-light-tone .pe-text-button:hover.pe-button--wash .pe-button__wash,.pe-no-touch .pe-text-button:hover.pe-button--wash .pe-button__wash {
   background-color: rgba(0,0,0,.06)
 }
 
