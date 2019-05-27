@@ -16,12 +16,6 @@ export namespace renderer {
 
 }
 
-export namespace keys {
-
-  export type keys = { [key: string]: string; };
-
-}
-
 export interface Vnode<Options = {}> {
   attrs: Options;
   children?: React.ReactNode;
