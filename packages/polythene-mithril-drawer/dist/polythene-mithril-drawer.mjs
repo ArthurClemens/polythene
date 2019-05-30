@@ -62,9 +62,6 @@ var DrawerToggle = cast(_Conditional, {
 });
 DrawerToggle["displayName"] = "DrawerToggle";
 var Drawer = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: function view(vnode) {
     return h(DrawerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,

@@ -1,50 +1,51 @@
-.pe-search,.pe-search .pe-textfield {
+.pe-search, .pe-search .pe-textfield {
   -webkit-box-flex: 1;
-  -moz-box-flex: 1;
+     -moz-box-flex: 1;
   -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px;
-  position: relative
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-flex-basis: px;
+            flex-basis: px;
+  position: relative;
 }
 
 .pe-search .pe-textfield {
   align-items: center;
   padding: 0;
-  z-index: 1
+  z-index: 1;
 }
 
 .pe-search .pe-textfield .pe-textfield__input-area {
-  padding: 0
+  padding: 0;
 }
 
 .pe-search .pe-textfield .pe-textfield__input-area:after {
-  display: none
+  display: none;
 }
 
 .pe-search .pe-textfield .pe-textfield__input {
-  border: none
+  border: none;
 }
 
 .pe-search .pe-textfield .pe-textfield__label {
   top: 0;
-  bottom: 0
+  bottom: 0;
 }
 
-.pe-search .pe-search__content,.pe-search .pe-search__content .pe-textfield {
+.pe-search .pe-search__content, .pe-search .pe-search__content .pe-textfield {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-direction: row;
+      -ms-flex-direction: row;
   -webkit-flex-direction: row;
-  flex-direction: row
+          flex-direction: row;
 }
 
-.pe-search .pe-search__content,.pe-search .pe-search__content .pe-textfield__input-area {
-  flex-grow: 1
+.pe-search .pe-search__content,
+.pe-search .pe-search__content .pe-textfield__input-area {
+  flex-grow: 1;
 }
 
 .pe-search .pe-search__content>* {
@@ -53,103 +54,123 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-direction: column;
+      -ms-flex-direction: column;
   -webkit-flex-direction: column;
-  flex-direction: column;
-  -ms-align-self: center;
+          flex-direction: column;
+      -ms-align-self: center;
   -webkit-align-self: center;
-  align-self: center
+          align-self: center;
 }
 
-.pe-search .pe-textfield .pe-textfield__input,.pe-search .pe-textfield .pe-textfield__label {
-  font-size: 20px
+.pe-search .pe-textfield .pe-textfield__input,
+.pe-search .pe-textfield .pe-textfield__label {
+  font-size: 20px;
 }
 
 .pe-search.pe-search--full-width {
-  border-radius: 0
+  border-radius: 0;
 }
 
-.pe-search.pe-search--full-width,.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__input-area,.pe-search.pe-search--full-width .pe-textfield__label {
-  height: 56px
+.pe-search.pe-search--full-width,
+.pe-search.pe-search--full-width .pe-textfield__input,
+.pe-search.pe-search--full-width .pe-textfield__input-area,
+.pe-search.pe-search--full-width .pe-textfield__label {
+  height: 56px;
 }
 
-.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__label {
+.pe-search.pe-search--full-width .pe-textfield__input,
+.pe-search.pe-search--full-width .pe-textfield__label {
   padding-top: 18px;
   padding-bottom: 18px;
-  padding-right: 0
+  padding-right: 0;
 }
 
 .pe-search.pe-search--full-width {
-  padding: 0 8px
+  padding: 0 8px;
 }
 
-.pe-search.pe-search--full-width .pe-textfield__input,.pe-search.pe-search--full-width .pe-textfield__label {
-  padding-left: 16px
+.pe-search.pe-search--full-width .pe-textfield__input,
+.pe-search.pe-search--full-width .pe-textfield__label {
+  padding-left: 16px;
 }
 
 .pe-search.pe-search--full-width+.pe-list .pe-list-tile>:first-child {
-  padding-left: 8px
+  padding-left: 8px;
 }
 
 .pe-search.pe-search--full-width+.pe-list .pe-list-tile>:last-child {
-  padding-right: 8px
+  padding-right: 8px;
 }
 
 .pe-search.pe-search--inset {
-  border-radius: 4px
+  border-radius: 4px;
 }
 
-.pe-search.pe-search--inset,.pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__input-area,.pe-search.pe-search--inset .pe-textfield__label {
+.pe-search.pe-search--inset, .pe-search.pe-search--inset .pe-textfield__input,
+.pe-search.pe-search--inset .pe-textfield__input-area,
+.pe-search.pe-search--inset .pe-textfield__label {
   padding: 0;
-  height: 48px
+  height: 48px;
 }
 
-.pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__label {
-  padding: 14px 0 14px 16px
+.pe-search.pe-search--inset .pe-textfield__input,
+.pe-search.pe-search--inset .pe-textfield__label {
+  padding: 14px 0 14px 16px;
 }
 
 .pe-search.pe-search--inset {
-  padding: 0
+  padding: 0;
 }
 
-.pe-search .pe-textfield__input,.pe-search .pe-textfield__label {
-  line-height: 20px
+.pe-search .pe-textfield__input, .pe-search .pe-textfield__label {
+  line-height: 20px;
 }
 
-.pe-search.pe-search--inset .pe-textfield__input,.pe-search.pe-search--inset .pe-textfield__label {
+.pe-search.pe-search--inset .pe-textfield__input,
+.pe-search.pe-search--inset .pe-textfield__label {
   padding-top: 14px;
-  padding-bottom: 14px
+  padding-bottom: 14px;
 }
 
-.pe-dark-tone.pe-search .pe-textfield__input-area,.pe-dark-tone .pe-search .pe-textfield__input-area {
-  background-color: transparent
+.pe-dark-tone.pe-search .pe-textfield__input-area,
+.pe-dark-tone .pe-search .pe-textfield__input-area {
+  background-color: transparent;
 }
 
-.pe-dark-tone.pe-search .pe-textfield .pe-textfield__label,.pe-dark-tone .pe-search .pe-textfield .pe-textfield__label {
-  color: hsla(0,0%,100%,.26)
+.pe-dark-tone.pe-search .pe-textfield .pe-textfield__label,
+.pe-dark-tone .pe-search .pe-textfield .pe-textfield__label {
+  color: hsla(0, 0%, 100%, .26);
 }
 
-.pe-dark-tone.pe-search .pe-textfield .pe-textfield__input,.pe-dark-tone .pe-search .pe-textfield .pe-textfield__input {
-  color: #fff
+.pe-dark-tone.pe-search .pe-textfield .pe-textfield__input,
+.pe-dark-tone .pe-search .pe-textfield .pe-textfield__input {
+  color: #fff;
 }
 
-.pe-dark-tone.pe-search,.pe-dark-tone .pe-search {
-  background-color: #222
+.pe-dark-tone.pe-search, .pe-dark-tone .pe-search {
+  background-color: #222;
 }
 
-.pe-light-tone.pe-search .pe-textfield__input-area,.pe-light-tone .pe-search .pe-textfield__input-area,.pe-search .pe-textfield__input-area {
-  background-color: transparent
+.pe-light-tone.pe-search .pe-textfield__input-area,
+.pe-light-tone .pe-search .pe-textfield__input-area,
+.pe-search .pe-textfield__input-area {
+  background-color: transparent;
 }
 
-.pe-light-tone.pe-search .pe-textfield .pe-textfield__label,.pe-light-tone .pe-search .pe-textfield .pe-textfield__label,.pe-search .pe-textfield .pe-textfield__label {
-  color: rgba(0,0,0,.26)
+.pe-light-tone.pe-search .pe-textfield .pe-textfield__label,
+.pe-light-tone .pe-search .pe-textfield .pe-textfield__label,
+.pe-search .pe-textfield .pe-textfield__label {
+  color: rgba(0, 0, 0, .26);
 }
 
-.pe-light-tone.pe-search .pe-textfield .pe-textfield__input,.pe-light-tone .pe-search .pe-textfield .pe-textfield__input,.pe-search .pe-textfield .pe-textfield__input {
-  color: rgba(0,0,0,.87)
+.pe-light-tone.pe-search .pe-textfield .pe-textfield__input,
+.pe-light-tone .pe-search .pe-textfield .pe-textfield__input,
+.pe-search .pe-textfield .pe-textfield__input {
+  color: rgba(0, 0, 0, .87);
 }
 
-.pe-light-tone.pe-search,.pe-light-tone .pe-search,.pe-search {
-  background-color: #fff
+.pe-light-tone.pe-search, .pe-light-tone .pe-search, .pe-search {
+  background-color: #fff;
 }
+
 /*# sourceMappingURL=polythene-search.css.map */

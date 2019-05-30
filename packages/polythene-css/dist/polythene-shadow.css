@@ -3,72 +3,76 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0
+  left: 0;
 }
 
 .pe-shadow.pe-shadow .pe-shadow__top {
-  box-shadow: none
+  box-shadow: none;
 }
 
 .pe-shadow.pe-shadow .pe-shadow__bottom {
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37)
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
 }
 
 .pe-shadow {
   border-radius: inherit;
-  pointer-events: none
+  pointer-events: none;
 }
 
-.pe-shadow .pe-shadow__bottom,.pe-shadow .pe-shadow__top {
+.pe-shadow .pe-shadow__bottom, .pe-shadow .pe-shadow__top {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: inherit
+  border-radius: inherit;
 }
 
-.pe-shadow.pe-shadow--animated .pe-shadow__bottom,.pe-shadow.pe-shadow--animated .pe-shadow__top {
-  transition: box-shadow .18s ease-out
+.pe-shadow.pe-shadow--animated .pe-shadow__bottom,
+.pe-shadow.pe-shadow--animated .pe-shadow__top {
+  transition: box-shadow .18s ease-out;
 }
 
-.pe-shadow .pe-shadow__bottom.pe-shadow--depth-0,.pe-shadow .pe-shadow__top.pe-shadow--depth-0,.pe-shadow .pe-shadow__top.pe-shadow--depth-1 {
-  box-shadow: none
+.pe-shadow .pe-shadow__bottom.pe-shadow--depth-0,
+.pe-shadow .pe-shadow__top.pe-shadow--depth-0,
+.pe-shadow .pe-shadow__top.pe-shadow--depth-1 {
+  box-shadow: none;
 }
 
 .pe-shadow .pe-shadow__bottom.pe-shadow--depth-1 {
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37)
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
 }
 
 .pe-shadow .pe-shadow__top.pe-shadow--depth-2 {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2)
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2);
 }
 
 .pe-shadow .pe-shadow__bottom.pe-shadow--depth-2 {
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3)
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3);
 }
 
 .pe-shadow .pe-shadow__top.pe-shadow--depth-3 {
-  box-shadow: 0 11px 7px 0 rgba(0,0,0,.19)
+  box-shadow: 0 11px 7px 0 rgba(0, 0, 0, .19);
 }
 
 .pe-shadow .pe-shadow__bottom.pe-shadow--depth-3 {
-  box-shadow: 0 13px 25px 0 rgba(0,0,0,.3)
+  box-shadow: 0 13px 25px 0 rgba(0, 0, 0, .3);
 }
 
 .pe-shadow .pe-shadow__top.pe-shadow--depth-4 {
-  box-shadow: 0 14px 12px 0 rgba(0,0,0,.17)
+  box-shadow: 0 14px 12px 0 rgba(0, 0, 0, .17);
 }
 
 .pe-shadow .pe-shadow__bottom.pe-shadow--depth-4 {
-  box-shadow: 0 20px 40px 0 rgba(0,0,0,.3)
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, .3);
 }
 
 .pe-shadow .pe-shadow__top.pe-shadow--depth-5 {
-  box-shadow: 0 17px 17px 0 rgba(0,0,0,.15)
+  box-shadow: 0 17px 17px 0 rgba(0, 0, 0, .15);
 }
 
 .pe-shadow .pe-shadow__bottom.pe-shadow--depth-5 {
-  box-shadow: 0 27px 55px 0 rgba(0,0,0,.3)
+  box-shadow: 0 27px 55px 0 rgba(0, 0, 0, .3);
 }
+
 /*# sourceMappingURL=polythene-shadow.css.map */

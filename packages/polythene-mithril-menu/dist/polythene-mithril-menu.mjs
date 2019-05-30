@@ -104,9 +104,6 @@ var MenuToggle = cast(_Conditional, {
 });
 MenuToggle["displayName"] = "MenuToggle";
 var Menu = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: function view(vnode) {
     return h(MenuToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: classes.placeholder,

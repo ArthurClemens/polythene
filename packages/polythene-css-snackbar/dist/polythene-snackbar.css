@@ -1,17 +1,17 @@
 .pe-notification.pe-snackbar {
   width: 100%;
   opacity: 1;
-  display: none
+  display: none;
 }
 
 .pe-notification.pe-snackbar .pe-notification__content {
   width: 100%;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 @media (min-width:600px) {
   .pe-notification.pe-snackbar.pe-notification--horizontal .pe-notification__title {
-    padding-right: 30px
+    padding-right: 30px;
   }
 }
 
@@ -19,28 +19,31 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0
+  border-bottom-right-radius: 0;
 }
 
 @media (min-width:600px) {
   .pe-notification.pe-snackbar {
     max-width: 568px;
-    min-width: 288px
+    min-width: 288px;
   }
 }
 
-.pe-dark-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-dark-tone .pe-notification.pe-snackbar .pe-notification__content {
-  background: #222
+.pe-dark-tone.pe-notification.pe-snackbar .pe-notification__content,
+.pe-dark-tone .pe-notification.pe-snackbar .pe-notification__content {
+  background: #222;
 }
 
-.pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,.pe-notification.pe-snackbar .pe-notification__content {
-  background: #fff
+.pe-light-tone.pe-notification.pe-snackbar .pe-notification__content,
+.pe-light-tone .pe-notification.pe-snackbar .pe-notification__content,
+.pe-notification.pe-snackbar .pe-notification__content {
+  background: #fff;
 }
 
 .pe-snackbar__holder {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
-  justify-content: center;
+          justify-content: center;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -48,7 +51,7 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
+          align-items: center;
   position: fixed;
   top: auto;
   right: 0;
@@ -56,11 +59,12 @@
   left: 0;
   z-index: 5000;
   pointer-events: none;
-  justify-content: flex-start;
-  width: 100%
+          justify-content: flex-start;
+  width: 100%;
 }
 
 .pe-notification--container .pe-snackbar__holder {
-  position: relative
+  position: relative;
 }
+
 /*# sourceMappingURL=polythene-snackbar.css.map */

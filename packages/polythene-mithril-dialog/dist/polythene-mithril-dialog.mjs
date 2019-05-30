@@ -75,10 +75,6 @@ var classes = {
   menuContent: menuClasses.content
 };
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- * @typedef {import("polythene-core-dialog").Options} Options
- */
 var DialogInstance = cast(_Dialog, {
   h: h,
   a: a,

@@ -1,11 +1,11 @@
 .pe-md-progress-spinner {
-  position: relative
+  position: relative;
 }
 
 .pe-md-progress-spinner .pe-md-progress-spinner__animation {
   position: absolute;
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .pe-md-progress-spinner .pe-md-progress-spinner__circle {
@@ -14,31 +14,37 @@
   width: 100%;
   height: 100%;
   border-style: solid;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
-.pe-md-progress-spinner .pe-md-progress-spinner__circle-left,.pe-md-progress-spinner .pe-md-progress-spinner__circle-right {
+.pe-md-progress-spinner .pe-md-progress-spinner__circle-left,
+.pe-md-progress-spinner .pe-md-progress-spinner__circle-right {
   transform: rotate(0);
-  clip: rect(0,0,0,0)
+  clip: rect(0, 0, 0, 0);
 }
 
 .pe-md-progress-spinner .pe-md-progress-spinner__animation {
-  animation-duration: .8s
+  animation-duration: .8s;
 }
 
-.pe-dark-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-dark-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle {
-  border-color: currentcolor
+.pe-dark-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,
+.pe-dark-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle {
+  border-color: currentcolor;
 }
 
-.pe-dark-tone.pe-md-progress-spinner,.pe-dark-tone .pe-md-progress-spinner {
-  color: #2196f3
+.pe-dark-tone.pe-md-progress-spinner, .pe-dark-tone .pe-md-progress-spinner {
+  color: #2196f3;
 }
 
-.pe-light-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-light-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle,.pe-md-progress-spinner .pe-md-progress-spinner__circle {
-  border-color: currentcolor
+.pe-light-tone.pe-md-progress-spinner .pe-md-progress-spinner__circle,
+.pe-light-tone .pe-md-progress-spinner .pe-md-progress-spinner__circle,
+.pe-md-progress-spinner .pe-md-progress-spinner__circle {
+  border-color: currentcolor;
 }
 
-.pe-light-tone.pe-md-progress-spinner,.pe-light-tone .pe-md-progress-spinner,.pe-md-progress-spinner {
-  color: #2196f3
+.pe-light-tone.pe-md-progress-spinner, .pe-light-tone .pe-md-progress-spinner,
+.pe-md-progress-spinner {
+  color: #2196f3;
 }
+
 /*# sourceMappingURL=polythene-material-design-progress-spinner.css.map */

@@ -6,23 +6,23 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
+          align-items: center;
   pointer-events: all;
   justify-content: center;
   margin: 0 auto;
-  transition-property: all
+  transition-property: all;
 }
 
 .pe-notification .pe-notification__title {
-  flex: 1 0 auto
+  flex: 1 0 auto;
 }
 
 .pe-notification .pe-notification__action .pe-button {
-  margin: 0
+  margin: 0;
 }
 
 .pe-notification .pe-notification__content {
-  max-width: 100%
+  max-width: 100%;
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__content {
@@ -31,20 +31,20 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-direction: row;
+      -ms-flex-direction: row;
   -webkit-flex-direction: row;
-  flex-direction: row
+          flex-direction: row;
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__title {
   -webkit-box-flex: 1;
-  -moz-box-flex: 1;
+     -moz-box-flex: 1;
   -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px;
-  align-self: center
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-flex-basis: px;
+            flex-basis: px;
+  align-self: center;
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__action {
@@ -55,7 +55,7 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center
+          align-items: center;
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__content {
@@ -64,13 +64,13 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -ms-flex-direction: column;
+      -ms-flex-direction: column;
   -webkit-flex-direction: column;
-  flex-direction: column
+          flex-direction: column;
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__title {
-  padding-bottom: 6px
+  padding-bottom: 6px;
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__action {
@@ -81,68 +81,71 @@
   display: flex;
   -ms-flex-pack: end;
   -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  width: 100%
+          justify-content: flex-end;
+  width: 100%;
 }
 
 .pe-notification {
   transition-delay: 0s;
   transition-duration: .3s;
-  opacity: 0
+  opacity: 0;
 }
 
 .pe-notification.pe-notification--visible {
-  opacity: 1
+  opacity: 1;
 }
 
 .pe-notification {
-  transition-timing-function: ease-in-out
+  transition-timing-function: ease-in-out;
 }
 
 .pe-notification .pe-notification__content {
-  border-radius: 4px
+  border-radius: 4px;
 }
 
 .pe-notification .pe-notification__title {
   font-size: 14px;
-  line-height: 20px
+  line-height: 20px;
 }
 
 .pe-notification .pe-notification__content {
-  padding: 0 16px
+  padding: 0 16px;
 }
 
 .pe-notification.pe-notification--horizontal .pe-notification__title--multi-line {
   padding-top: 20px;
-  padding-bottom: 20px
+  padding-bottom: 20px;
 }
 
 .pe-notification.pe-notification--vertical .pe-notification__title--multi-line {
-  padding-top: 20px
+  padding-top: 20px;
 }
 
 .pe-notification .pe-notification__title {
-  padding: 14px 8px
+  padding: 14px 8px;
 }
 
 .pe-notification .pe-notification__content {
-  width: 288px
+  width: 288px;
 }
 
-.pe-dark-tone.pe-notification .pe-notification__content,.pe-dark-tone .pe-notification .pe-notification__content {
+.pe-dark-tone.pe-notification .pe-notification__content,
+.pe-dark-tone .pe-notification .pe-notification__content {
   background: #222;
-  color: hsla(0,0%,100%,.87)
+  color: hsla(0, 0%, 100%, .87);
 }
 
-.pe-light-tone.pe-notification .pe-notification__content,.pe-light-tone .pe-notification .pe-notification__content,.pe-notification .pe-notification__content {
+.pe-light-tone.pe-notification .pe-notification__content,
+.pe-light-tone .pe-notification .pe-notification__content,
+.pe-notification .pe-notification__content {
   background: #fff;
-  color: #000
+  color: #000;
 }
 
 .pe-notification__holder {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
-  justify-content: center;
+          justify-content: center;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -150,21 +153,22 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
+          align-items: center;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   pointer-events: none;
-  justify-content: flex-start
+          justify-content: flex-start;
 }
 
 .pe-notification__holder.pe-multiple--screen {
   position: fixed;
-  z-index: 5000
+  z-index: 5000;
 }
 
 :not(.pe-notification--container) .pe-multiple--container {
-  position: absolute
+  position: absolute;
 }
+
 /*# sourceMappingURL=polythene-notification.css.map */

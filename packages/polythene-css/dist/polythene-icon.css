@@ -4,70 +4,72 @@
   background-repeat: no-repeat;
   position: relative;
   font-size: 0;
-  line-height: 0
+  line-height: 0;
 }
 
 .pe-icon.pe-icon--avatar {
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .pe-icon.pe-icon--avatar img {
   border: none;
   border-radius: 50%;
   width: inherit;
-  height: inherit
+  height: inherit;
 }
 
 .pe-icon img {
-  height: inherit
+  height: inherit;
 }
 
-.pe-icon .pe-svg,.pe-icon .pe-svg>div {
+.pe-icon .pe-svg, .pe-icon .pe-svg>div {
   width: inherit;
-  height: inherit
+  height: inherit;
 }
 
 .pe-icon.pe-icon--small {
   width: 16px;
-  height: 16px
+  height: 16px;
 }
 
 .pe-icon.pe-icon--regular {
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 
 .pe-icon.pe-icon--medium {
   width: 32px;
-  height: 32px
+  height: 32px;
 }
 
 .pe-icon.pe-icon--large {
   width: 40px;
-  height: 40px
+  height: 40px;
 }
 
-.pe-dark-tone.pe-icon,.pe-dark-tone .pe-icon {
-  color: currentColor
+.pe-dark-tone.pe-icon, .pe-dark-tone .pe-icon {
+  color: currentColor;
 }
 
-.pe-dark-tone.pe-icon.pe-icon--avatar,.pe-dark-tone .pe-icon.pe-icon--avatar {
-  background-color: hsla(0,0%,100%,.12)
+.pe-dark-tone.pe-icon.pe-icon--avatar, .pe-dark-tone .pe-icon.pe-icon--avatar {
+  background-color: hsla(0, 0%, 100%, .12);
 }
 
-.pe-dark-tone.pe-icon,.pe-dark-tone .pe-icon {
-  color: currentcolor
+.pe-dark-tone.pe-icon, .pe-dark-tone .pe-icon {
+  color: currentcolor;
 }
 
-.pe-icon,.pe-light-tone.pe-icon,.pe-light-tone .pe-icon {
-  color: currentColor
+.pe-icon, .pe-light-tone.pe-icon, .pe-light-tone .pe-icon {
+  color: currentColor;
 }
 
-.pe-icon.pe-icon--avatar,.pe-light-tone.pe-icon.pe-icon--avatar,.pe-light-tone .pe-icon.pe-icon--avatar {
-  background-color: rgba(0,0,0,.09)
+.pe-icon.pe-icon--avatar, .pe-light-tone.pe-icon.pe-icon--avatar,
+.pe-light-tone .pe-icon.pe-icon--avatar {
+  background-color: rgba(0, 0, 0, .09);
 }
 
-.pe-icon,.pe-light-tone.pe-icon,.pe-light-tone .pe-icon {
-  color: currentcolor
+.pe-icon, .pe-light-tone.pe-icon, .pe-light-tone .pe-icon {
+  color: currentcolor;
 }
+
 /*# sourceMappingURL=polythene-icon.css.map */

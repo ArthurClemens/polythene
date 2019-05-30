@@ -1,136 +1,136 @@
 @keyframes mdSpinnerRotate {
   to {
-    transform: rotate(1turn)
+    transform: rotate(1turn);
   }
 }
 
 @keyframes mdSpinnerRightSpin {
   0% {
-    transform: rotate(-130deg)
+    transform: rotate(-130deg);
   }
 
   50% {
-    transform: rotate(5deg)
+    transform: rotate(5deg);
   }
 
   to {
-    transform: rotate(-130deg)
+    transform: rotate(-130deg);
   }
 }
 
 @keyframes mdSpinnerLeftSpin {
   0% {
-    transform: rotate(130deg)
+    transform: rotate(130deg);
   }
 
   50% {
-    transform: rotate(-5deg)
+    transform: rotate(-5deg);
   }
 
   to {
-    transform: rotate(130deg)
+    transform: rotate(130deg);
   }
 }
 
 @keyframes mdSpinnerFadeOut {
   0% {
-    opacity: .99
+    opacity: .99;
   }
 
   to {
-    opacity: 0
+    opacity: 0;
   }
 }
 
 @keyframes mdSpinnerLayer1FadeInOut {
   0% {
-    opacity: .99
+    opacity: .99;
   }
 
   25% {
-    opacity: .99
+    opacity: .99;
   }
 
   26% {
-    opacity: 0
+    opacity: 0;
   }
 
   89% {
-    opacity: 0
+    opacity: 0;
   }
 
   90% {
-    opacity: .99
+    opacity: .99;
   }
 
   to {
-    opacity: .99
+    opacity: .99;
   }
 }
 
 @keyframes mdSpinnerLayer2FadeInOut {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 
   15% {
-    opacity: 0
+    opacity: 0;
   }
 
   25% {
-    opacity: .99
+    opacity: .99;
   }
 
   50% {
-    opacity: .99
+    opacity: .99;
   }
 
   51% {
-    opacity: 0
+    opacity: 0;
   }
 }
 
 @keyframes mdSpinnerLayer3FadeInOut {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 
   40% {
-    opacity: 0
+    opacity: 0;
   }
 
   50% {
-    opacity: .99
+    opacity: .99;
   }
 
   75% {
-    opacity: .99
+    opacity: .99;
   }
 
   76% {
-    opacity: 0
+    opacity: 0;
   }
 }
 
 @keyframes mdSpinnerLayer4FadeInOut {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 
   65% {
-    opacity: 0
+    opacity: 0;
   }
 
   75% {
-    opacity: .99
+    opacity: .99;
   }
 
   90% {
-    opacity: .99
+    opacity: .99;
   }
 
   to {
-    opacity: 0
+    opacity: 0;
   }
 }
 
@@ -138,7 +138,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  direction: ltr
+  direction: ltr;
 }
 
 .pe-md-spinner .pe-md-spinner__gap-patch {
@@ -149,12 +149,12 @@
   width: 10%;
   height: 100%;
   overflow: hidden;
-  border-color: inherit
+  border-color: inherit;
 }
 
 .pe-md-spinner .pe-md-spinner__gap-patch .pe-md-spinner__circle {
   width: 1000%;
-  left: -450%
+  left: -450%;
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper {
@@ -165,11 +165,11 @@
   width: 50%;
   height: 100%;
   overflow: hidden;
-  border-color: inherit
+  border-color: inherit;
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper .pe-md-spinner__circle {
-  width: 200%
+  width: 200%;
 }
 
 .pe-md-spinner .pe-md-spinner__circle {
@@ -184,158 +184,178 @@
   border-style: solid;
   border-color: inherit;
   border-radius: 50%;
-  border-bottom-color: transparent!important
+  border-bottom-color: transparent !important;
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle {
   transform: rotate(129deg);
-  border-right-color: transparent!important
+  border-right-color: transparent !important;
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle {
   transform: rotate(-129deg);
   left: -100%;
-  border-left-color: transparent!important
+  border-left-color: transparent !important;
 }
 
 .pe-md-spinner .pe-md-spinner__layer.pe-md-spinner__layer-1 {
-  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both,mdSpinnerLayer1FadeInOut 5.332s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4, 0, .2, 1) infinite both,
+               mdSpinnerLayer1FadeInOut 5.332s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__layer.pe-md-spinner__layer-2 {
-  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both,mdSpinnerLayer2FadeInOut 5.332s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4, 0, .2, 1) infinite both,
+               mdSpinnerLayer2FadeInOut 5.332s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__layer.pe-md-spinner__layer-3 {
-  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both,mdSpinnerLayer3FadeInOut 5.332s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4, 0, .2, 1) infinite both,
+               mdSpinnerLayer3FadeInOut 5.332s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__layer.pe-md-spinner__layer-4 {
-  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both,mdSpinnerLayer4FadeInOut 5.332s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4, 0, .2, 1) infinite both,
+               mdSpinnerLayer4FadeInOut 5.332s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__layer {
   position: absolute;
   width: 100%;
   height: 100%;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 @keyframes mdSpinnerFillUnfillRotate {
   12.5% {
-    transform: rotate(135deg)
+    transform: rotate(135deg);
   }
 
   25% {
-    transform: rotate(270deg)
+    transform: rotate(270deg);
   }
 
   37.5% {
-    transform: rotate(405deg)
+    transform: rotate(405deg);
   }
 
   50% {
-    transform: rotate(540deg)
+    transform: rotate(540deg);
   }
 
   62.5% {
-    transform: rotate(675deg)
+    transform: rotate(675deg);
   }
 
   75% {
-    transform: rotate(810deg)
+    transform: rotate(810deg);
   }
 
   87.5% {
-    transform: rotate(945deg)
+    transform: rotate(945deg);
   }
 
   to {
-    transform: rotate(3turn)
+    transform: rotate(3turn);
   }
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper-left .pe-md-spinner__circle {
-  animation: mdSpinnerLeftSpin 1.333s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerLeftSpin 1.333s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__circle-clipper-right .pe-md-spinner__circle {
-  animation: mdSpinnerRightSpin 1.333s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerRightSpin 1.333s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner .pe-md-spinner__layer {
-  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4,0,.2,1) infinite both
+  animation: mdSpinnerFillUnfillRotate 5.332s cubic-bezier(.4, 0, .2, 1) infinite both;
 }
 
 .pe-md-spinner.pe-spinner--fab .pe-md-spinner__circle {
-  border-width: 5.25px
+  border-width: 5.25px;
 }
 
 .pe-md-spinner.pe-spinner--large .pe-md-spinner__circle {
-  border-width: 4.5px
+  border-width: 4.5px;
 }
 
 .pe-md-spinner.pe-spinner--medium .pe-md-spinner__circle {
-  border-width: 3.75px
+  border-width: 3.75px;
 }
 
 .pe-md-spinner.pe-spinner--regular .pe-md-spinner__circle {
-  border-width: 3px
+  border-width: 3px;
 }
 
 .pe-md-spinner.pe-spinner--small .pe-md-spinner__circle {
-  border-width: 2.25px
+  border-width: 2.25px;
 }
 
 .pe-md-spinner .pe-md-spinner__animation {
-  animation: mdSpinnerRotate 1.568235294117647s linear infinite
+  animation: mdSpinnerRotate 1.568235294117647s linear infinite;
 }
 
-.pe-dark-tone.pe-md-spinner .pe-md-spinner__layer,.pe-dark-tone .pe-md-spinner .pe-md-spinner__layer {
-  border-color: currentcolor
+.pe-dark-tone.pe-md-spinner .pe-md-spinner__layer,
+.pe-dark-tone .pe-md-spinner .pe-md-spinner__layer {
+  border-color: currentcolor;
 }
 
-.pe-dark-tone.pe-md-spinner,.pe-dark-tone .pe-md-spinner {
-  color: #2196f3
+.pe-dark-tone.pe-md-spinner, .pe-dark-tone .pe-md-spinner {
+  color: #2196f3;
 }
 
-.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1 {
-  border-color: #42a5f5
+.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,
+.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1 {
+  border-color: #42a5f5;
 }
 
-.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2 {
-  border-color: #f44336
+.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,
+.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2 {
+  border-color: #f44336;
 }
 
-.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3 {
-  border-color: #fdd835
+.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,
+.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3 {
+  border-color: #fdd835;
 }
 
-.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4 {
-  border-color: #4caf50
+.pe-dark-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,
+.pe-dark-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4 {
+  border-color: #4caf50;
 }
 
-.pe-light-tone.pe-md-spinner .pe-md-spinner__layer,.pe-light-tone .pe-md-spinner .pe-md-spinner__layer,.pe-md-spinner .pe-md-spinner__layer {
-  border-color: currentcolor
+.pe-light-tone.pe-md-spinner .pe-md-spinner__layer,
+.pe-light-tone .pe-md-spinner .pe-md-spinner__layer,
+.pe-md-spinner .pe-md-spinner__layer {
+  border-color: currentcolor;
 }
 
-.pe-light-tone.pe-md-spinner,.pe-light-tone .pe-md-spinner,.pe-md-spinner {
-  color: #2196f3
+.pe-light-tone.pe-md-spinner, .pe-light-tone .pe-md-spinner, .pe-md-spinner {
+  color: #2196f3;
 }
 
-.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1 {
-  border-color: #42a5f5
+.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,
+.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1,
+.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-1 {
+  border-color: #42a5f5;
 }
 
-.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2 {
-  border-color: #f44336
+.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,
+.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2,
+.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-2 {
+  border-color: #f44336;
 }
 
-.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3 {
-  border-color: #fdd835
+.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,
+.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3,
+.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-3 {
+  border-color: #fdd835;
 }
 
-.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4 {
-  border-color: #4caf50
+.pe-light-tone.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,
+.pe-light-tone .pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4,
+.pe-md-spinner:not(.pe-spinner--single-color) .pe-md-spinner__layer-4 {
+  border-color: #4caf50;
 }
+
 /*# sourceMappingURL=polythene-material-design-spinner.css.map */

@@ -2,7 +2,7 @@
   transform: translateZ(0);
   position: relative;
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blade {
@@ -12,92 +12,96 @@
   left: 45.5%;
   top: 36%;
   opacity: 0;
-  border-radius: 50px
+  border-radius: 50px;
 }
 
 @keyframes iosSpinnerFade {
   0% {
-    opacity: .64
+    opacity: .64;
   }
 
   to {
-    opacity: .035
+    opacity: .035;
   }
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:first-of-type {
-  transform: rotate(1turn) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear 0ms infinite
+  transform: rotate(1turn) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear 0ms infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(2) {
-  transform: rotate(330deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -83.33333333333333ms infinite
+  transform: rotate(330deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -83.33333333333333ms infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(3) {
-  transform: rotate(300deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.16666666666666666s infinite
+  transform: rotate(300deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.16666666666666666s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(4) {
-  transform: rotate(270deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.25s infinite
+  transform: rotate(270deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.25s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(5) {
-  transform: rotate(240deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.3333333333333333s infinite
+  transform: rotate(240deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.3333333333333333s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(6) {
-  transform: rotate(210deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.41666666666666663s infinite
+  transform: rotate(210deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.41666666666666663s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(7) {
-  transform: rotate(180deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.5s infinite
+  transform: rotate(180deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.5s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(8) {
-  transform: rotate(150deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.5833333333333333s infinite
+  transform: rotate(150deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.5833333333333333s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(9) {
-  transform: rotate(120deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.6666666666666666s infinite
+  transform: rotate(120deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.6666666666666666s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(10) {
-  transform: rotate(90deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.75s infinite
+  transform: rotate(90deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.75s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(11) {
-  transform: rotate(60deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.8333333333333333s infinite
+  transform: rotate(60deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.8333333333333333s infinite;
 }
 
 .pe-ios-spinner .pe-ios-spinner__blades .pe-ios-spinner__blade:nth-of-type(12) {
-  transform: rotate(30deg) translate3d(0,-140%,0);
-  animation: iosSpinnerFade 1s linear -.9166666666666666s infinite
+  transform: rotate(30deg) translate3d(0, -140%, 0);
+  animation: iosSpinnerFade 1s linear -.9166666666666666s infinite;
 }
 
-.pe-dark-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-dark-tone .pe-ios-spinner .pe-ios-spinner__blade {
-  background: currentcolor
+.pe-dark-tone.pe-ios-spinner .pe-ios-spinner__blade,
+.pe-dark-tone .pe-ios-spinner .pe-ios-spinner__blade {
+  background: currentcolor;
 }
 
-.pe-dark-tone.pe-ios-spinner,.pe-dark-tone .pe-ios-spinner {
-  color: #fff
+.pe-dark-tone.pe-ios-spinner, .pe-dark-tone .pe-ios-spinner {
+  color: #fff;
 }
 
-.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone.pe-ios-spinner .pe-ios-spinner__blade,.pe-light-tone .pe-ios-spinner .pe-ios-spinner__blade {
-  background: currentcolor
+.pe-ios-spinner .pe-ios-spinner__blade,
+.pe-light-tone.pe-ios-spinner .pe-ios-spinner__blade,
+.pe-light-tone .pe-ios-spinner .pe-ios-spinner__blade {
+  background: currentcolor;
 }
 
-.pe-ios-spinner,.pe-light-tone.pe-ios-spinner,.pe-light-tone .pe-ios-spinner {
-  color: #000
+.pe-ios-spinner, .pe-light-tone.pe-ios-spinner, .pe-light-tone .pe-ios-spinner {
+  color: #000;
 }
+
 /*# sourceMappingURL=polythene-ios-spinner.css.map */

@@ -2,17 +2,17 @@
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
-.pe-control input[type=checkbox],.pe-control input[type=radio] {
-  display: none
+.pe-control input[type=checkbox], .pe-control input[type=radio] {
+  display: none;
 }
 
 .pe-control .pe-control__form-label {
-  -ms-flex-direction: row;
+      -ms-flex-direction: row;
   -webkit-flex-direction: row;
-  flex-direction: row;
+          flex-direction: row;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -20,19 +20,19 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
+          align-items: center;
   position: relative;
   cursor: pointer;
   margin: 0;
-  color: inherit
+  color: inherit;
 }
 
 .pe-control .pe-control__form-label:focus {
-  outline: 0
+  outline: 0;
 }
 
 .pe-control.pe-control--inactive .pe-control__form-label {
-  cursor: default
+  cursor: default;
 }
 
 .pe-control .pe-control__box {
@@ -40,96 +40,98 @@
   display: inline-block;
   box-sizing: border-box;
   color: inherit;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-control .pe-control__box:focus {
-  outline: 0
+  outline: 0;
 }
 
 .pe-control .pe-button.pe-control__button {
-  position: absolute
+  position: absolute;
 }
 
 .pe-control.pe-control--off .pe-control__button--on {
   opacity: 0;
-  z-index: -1
+  z-index: -1;
 }
 
-.pe-control.pe-control--off .pe-control__button--off,.pe-control.pe-control--on .pe-control__button--on {
+.pe-control.pe-control--off .pe-control__button--off,
+.pe-control.pe-control--on .pe-control__button--on {
   opacity: 1;
-  z-index: 0
+  z-index: 0;
 }
 
 .pe-control.pe-control--on .pe-control__button--off {
   opacity: 0;
-  z-index: -1
+  z-index: -1;
 }
 
 .pe-control .pe-control__label {
-  align-self: center
+  align-self: center;
 }
 
 .pe-control.pe-control--disabled .pe-control__form-label {
-  cursor: auto
+  cursor: auto;
 }
 
 .pe-control.pe-control--disabled .pe-control__button {
-  pointer-events: none
+  pointer-events: none;
 }
 
 .pe-control .pe-button__content .pe-icon {
-  position: absolute
+  position: absolute;
 }
 
 .pe-control .pe-button.pe-control__button {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: opacity
+  transition-property: opacity;
 }
 
 .pe-control .pe-control__label {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: all
+  transition-property: all;
 }
 
 .pe-control .pe-button.pe-control__button {
   top: -12px;
   left: -12px;
-  right: auto
+  right: auto;
 }
 
-.pe-rtl .pe-control .pe-button.pe-control__button,[dir=rtl] .pe-control .pe-button.pe-control__button {
+.pe-rtl .pe-control .pe-button.pe-control__button,
+[dir=rtl] .pe-control .pe-button.pe-control__button {
   top: -12px;
   right: -12px;
-  left: auto
+  left: auto;
 }
 
 .pe-control .pe-control__form-label {
-  font-size: 16px
+  font-size: 16px;
 }
 
 .pe-control .pe-control__box {
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 
 .pe-control.pe-control--small .pe-control__form-label {
-  height: 16px
+  height: 16px;
 }
 
 .pe-control.pe-control--small .pe-control__box {
   width: 16px;
-  height: 16px
+  height: 16px;
 }
 
 .pe-control.pe-control--small .pe-button__content {
   width: 40px;
   height: 40px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-control.pe-control--small .pe-button__content .pe-icon {
@@ -137,22 +139,22 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-control.pe-control--regular .pe-control__form-label {
-  height: 24px
+  height: 24px;
 }
 
 .pe-control.pe-control--regular .pe-control__box {
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 
 .pe-control.pe-control--regular .pe-button__content {
   width: 48px;
   height: 48px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-control.pe-control--regular .pe-button__content .pe-icon {
@@ -160,22 +162,22 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-control.pe-control--medium .pe-control__form-label {
-  height: 32px
+  height: 32px;
 }
 
 .pe-control.pe-control--medium .pe-control__box {
   width: 32px;
-  height: 32px
+  height: 32px;
 }
 
 .pe-control.pe-control--medium .pe-button__content {
   width: 56px;
   height: 56px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-control.pe-control--medium .pe-button__content .pe-icon {
@@ -183,22 +185,22 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-control.pe-control--large .pe-control__form-label {
-  height: 40px
+  height: 40px;
 }
 
 .pe-control.pe-control--large .pe-control__box {
   width: 40px;
-  height: 40px
+  height: 40px;
 }
 
 .pe-control.pe-control--large .pe-button__content {
   width: 64px;
   height: 64px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-control.pe-control--large .pe-button__content .pe-icon {
@@ -206,74 +208,109 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-control .pe-control__label {
-  padding-right: 0
+  padding-right: 0;
 }
 
-.pe-rtl .pe-control .pe-control__label,[dir=rtl] .pe-control .pe-control__label {
-  padding-left: 0
+.pe-rtl .pe-control .pe-control__label, [dir=rtl] .pe-control .pe-control__label {
+  padding-left: 0;
 }
 
 .pe-control .pe-control__label {
-  padding-left: 16px
+  padding-left: 16px;
 }
 
-.pe-rtl .pe-control .pe-control__label,[dir=rtl] .pe-control .pe-control__label {
-  padding-right: 16px
+.pe-rtl .pe-control .pe-control__label, [dir=rtl] .pe-control .pe-control__label {
+  padding-right: 16px;
 }
 
-.pe-dark-tone.pe-control .pe-control__box .pe-control__button,.pe-dark-tone .pe-control .pe-control__box .pe-control__button,.pe-dark-tone.pe-control .pe-control__box .pe-control__button--on,.pe-dark-tone .pe-control .pe-control__box .pe-control__button--on {
-  color: inherit
+.pe-dark-tone.pe-control .pe-control__box .pe-control__button,
+.pe-dark-tone .pe-control .pe-control__box .pe-control__button,
+.pe-dark-tone.pe-control .pe-control__box .pe-control__button--on,
+.pe-dark-tone .pe-control .pe-control__box .pe-control__button--on {
+  color: inherit;
 }
 
-.pe-dark-tone.pe-control,.pe-dark-tone .pe-control {
-  color: #2196f3
+.pe-dark-tone.pe-control, .pe-dark-tone .pe-control {
+  color: #2196f3;
 }
 
-.pe-dark-tone.pe-control .pe-control__button--off,.pe-dark-tone .pe-control .pe-control__button--off,.pe-dark-tone.pe-control .pe-control__label,.pe-dark-tone .pe-control .pe-control__label {
-  color: hsla(0,0%,100%,.7)
+.pe-dark-tone.pe-control .pe-control__button--off,
+.pe-dark-tone .pe-control .pe-control__button--off,
+.pe-dark-tone.pe-control .pe-control__label,
+.pe-dark-tone .pe-control .pe-control__label {
+  color: hsla(0, 0%, 100%, .7);
 }
 
-.pe-dark-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-dark-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-dark-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-dark-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-dark-tone.pe-control.pe-control--disabled .pe-control__label,.pe-dark-tone .pe-control.pe-control--disabled .pe-control__label {
-  color: hsla(0,0%,100%,.26)
+.pe-dark-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,
+.pe-dark-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,
+.pe-dark-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,
+.pe-dark-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,
+.pe-dark-tone.pe-control.pe-control--disabled .pe-control__label,
+.pe-dark-tone .pe-control.pe-control--disabled .pe-control__label {
+  color: hsla(0, 0%, 100%, .26);
 }
 
-.pe-dark-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
+.pe-dark-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
+.pe-dark-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
   background-color: #2196f3;
-  opacity: .14
+  opacity: .14;
 }
 
-.pe-dark-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-dark-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
+.pe-dark-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
+.pe-dark-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
   background-color: #fff;
-  opacity: .09
+  opacity: .09;
 }
 
-.pe-control .pe-control__box .pe-control__button,.pe-control .pe-control__box .pe-control__button--on,.pe-light-tone.pe-control .pe-control__box .pe-control__button,.pe-light-tone .pe-control .pe-control__box .pe-control__button,.pe-light-tone.pe-control .pe-control__box .pe-control__button--on,.pe-light-tone .pe-control .pe-control__box .pe-control__button--on {
-  color: inherit
+.pe-control .pe-control__box .pe-control__button,
+.pe-control .pe-control__box .pe-control__button--on,
+.pe-light-tone.pe-control .pe-control__box .pe-control__button,
+.pe-light-tone .pe-control .pe-control__box .pe-control__button,
+.pe-light-tone.pe-control .pe-control__box .pe-control__button--on,
+.pe-light-tone .pe-control .pe-control__box .pe-control__button--on {
+  color: inherit;
 }
 
-.pe-control,.pe-light-tone.pe-control,.pe-light-tone .pe-control {
-  color: #2196f3
+.pe-control, .pe-light-tone.pe-control, .pe-light-tone .pe-control {
+  color: #2196f3;
 }
 
-.pe-control .pe-control__button--off,.pe-control .pe-control__label,.pe-light-tone.pe-control .pe-control__button--off,.pe-light-tone .pe-control .pe-control__button--off,.pe-light-tone.pe-control .pe-control__label,.pe-light-tone .pe-control .pe-control__label {
-  color: rgba(0,0,0,.54)
+.pe-control .pe-control__button--off, .pe-control .pe-control__label,
+.pe-light-tone.pe-control .pe-control__button--off,
+.pe-light-tone .pe-control .pe-control__button--off,
+.pe-light-tone.pe-control .pe-control__label,
+.pe-light-tone .pe-control .pe-control__label {
+  color: rgba(0, 0, 0, .54);
 }
 
-.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-control.pe-control--disabled .pe-control__label,.pe-light-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-light-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,.pe-light-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-light-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,.pe-light-tone.pe-control.pe-control--disabled .pe-control__label,.pe-light-tone .pe-control.pe-control--disabled .pe-control__label {
-  color: rgba(0,0,0,.26)
+.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,
+.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,
+.pe-control.pe-control--disabled .pe-control__label,
+.pe-light-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,
+.pe-light-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--off,
+.pe-light-tone.pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,
+.pe-light-tone .pe-control.pe-control--disabled .pe-control__box .pe-control__button--on,
+.pe-light-tone.pe-control.pe-control--disabled .pe-control__label,
+.pe-light-tone .pe-control.pe-control--disabled .pe-control__label {
+  color: rgba(0, 0, 0, .26);
 }
 
-.pe-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,.pe-light-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
+.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
+.pe-light-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
+.pe-light-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
   background-color: #2196f3;
-  opacity: .11
+  opacity: .11;
 }
 
-.pe-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,.pe-light-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
+.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
+.pe-light-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
+.pe-light-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
   background-color: #000;
-  opacity: .07
+  opacity: .07;
 }
+
 /*# sourceMappingURL=polythene-selection-control.css.map */

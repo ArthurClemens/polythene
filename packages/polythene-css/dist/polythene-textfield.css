@@ -1,13 +1,13 @@
 .pe-textfield .pe-textfield__counter {
   text-align: right;
   float: right;
-  padding: 0 0 0 16px
+  padding: 0 0 0 16px;
 }
 
 .pe-textfield:after {
   content: "";
   display: table;
-  clear: both
+  clear: both;
 }
 
 .pe-textfield {
@@ -17,11 +17,11 @@
   margin: 0;
   overflow: visible;
   width: 100%;
-  max-width: 100%
+  max-width: 100%;
 }
 
-.pe-textfield,.pe-textfield .pe-textfield__input-area {
-  position: relative
+.pe-textfield, .pe-textfield .pe-textfield__input-area {
+  position: relative;
 }
 
 .pe-textfield .pe-textfield__input-area:after {
@@ -30,11 +30,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  opacity: 0
+  opacity: 0;
 }
 
 .pe-textfield.pe-textfield--focused .pe-textfield__input-area:after {
-  opacity: 1
+  opacity: 1;
 }
 
 .pe-textfield .pe-textfield__input {
@@ -44,21 +44,22 @@
   color: inherit;
   border-style: none none solid;
   border-radius: 0;
-  margin: 0
+  margin: 0;
 }
 
-.pe-textfield .pe-textfield__input:invalid,.pe-textfield .pe-textfield__input:textfield--invalid {
-  box-shadow: none
+.pe-textfield .pe-textfield__input:invalid,
+.pe-textfield .pe-textfield__input:textfield--invalid {
+  box-shadow: none;
 }
 
 .pe-textfield .pe-textfield__input::-ms-clear {
   width: 0;
-  height: 0
+  height: 0;
 }
 
 .pe-textfield textarea.pe-textfield__input {
   padding: 0;
-  display: block
+  display: block;
 }
 
 .pe-textfield .pe-textfield__label {
@@ -67,40 +68,47 @@
   bottom: 0;
   pointer-events: none;
   white-space: nowrap;
-  cursor: text
+  cursor: text;
 }
 
 .pe-textfield.pe-textfield--dirty .pe-textfield__label {
-  visibility: hidden
+  visibility: hidden;
 }
 
-.pe-textfield:not(.pe-textfield--no-char) .pe-textfield__optional-indicator,.pe-textfield:not(.pe-textfield--no-char) .pe-textfield__required-indicator {
-  padding: 0 0 0 .25em
+.pe-textfield:not(.pe-textfield--no-char) .pe-textfield__optional-indicator,
+.pe-textfield:not(.pe-textfield--no-char) .pe-textfield__required-indicator {
+  padding: 0 0 0 .25em;
 }
 
-.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
-  visibility: visible
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
+  visibility: visible;
 }
 
-.pe-textfield.pe-textfield--disabled .pe-textfield__label,.pe-textfield.pe-textfield--readonly .pe-textfield__label {
-  cursor: auto
+.pe-textfield.pe-textfield--disabled .pe-textfield__label,
+.pe-textfield.pe-textfield--readonly .pe-textfield__label {
+  cursor: auto;
 }
 
-.pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-textfield.pe-textfield--readonly .pe-textfield__input {
-  border-bottom: none
+.pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-textfield.pe-textfield--readonly .pe-textfield__input {
+  border-bottom: none;
 }
 
-.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
+.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
   opacity: 1;
   height: 1px;
   bottom: -1px;
   background-position: top;
   background-size: 4px 1px;
-  background-repeat: repeat-x
+  background-repeat: repeat-x;
 }
 
-.pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__error,.pe-textfield .pe-textfield__error-placeholder,.pe-textfield .pe-textfield__help {
-  line-height: 1.5
+.pe-textfield .pe-textfield__counter, .pe-textfield .pe-textfield__error,
+.pe-textfield .pe-textfield__error-placeholder,
+.pe-textfield .pe-textfield__help {
+  line-height: 1.5;
 }
 
 .pe-textfield .pe-textfield__help-focus {
@@ -108,121 +116,135 @@
   transition-duration: .18s;
   transition-timing-function: ease-out;
   transition-property: opacity;
-  opacity: 0
+  opacity: 0;
 }
 
-.pe-textfield.pe-textfield--dirty .pe-textfield__help-focus,.pe-textfield.pe-textfield--focused .pe-textfield__help-focus {
-  opacity: 1
+.pe-textfield.pe-textfield--dirty .pe-textfield__help-focus,
+.pe-textfield.pe-textfield--focused .pe-textfield__help-focus {
+  opacity: 1;
 }
 
 .pe-textfield.pe-textfield--hide-clear .pe-textfield__input::-ms-clear {
-  display: none
+  display: none;
 }
 
-.pe-textfield.pe-textfield--hide-spinner input[type=number]::-webkit-inner-spin-button,.pe-textfield.pe-textfield--hide-spinner input[type=number]::-webkit-outer-spin-button {
+.pe-textfield.pe-textfield--hide-spinner input[type=number]::-webkit-inner-spin-button,
+.pe-textfield.pe-textfield--hide-spinner input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  margin: 0
+  margin: 0;
 }
 
 .pe-textfield.pe-textfield--hide-spinner input[type=number] {
-  -moz-appearance: textfield
+  -moz-appearance: textfield;
 }
 
 .pe-textfield.pe-textfield--full-width {
   width: 100%;
-  padding: 0
+  padding: 0;
 }
 
 .pe-textfield.pe-textfield--full-width .pe-textfield__input-area {
-  padding: 0
+  padding: 0;
 }
 
-.pe-rtl .pe-textfield .pe-textfield__counter,[dir=rtl] .pe-textfield .pe-textfield__counter {
+.pe-rtl .pe-textfield .pe-textfield__counter,
+[dir=rtl] .pe-textfield .pe-textfield__counter {
   text-align: left;
   float: left;
-  padding: 0 16px 0 0
+  padding: 0 16px 0 0;
 }
 
-.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--focused .pe-textfield__label {
-  top: 10px
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--dirty .pe-textfield__label,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--focused .pe-textfield__label {
+  top: 10px;
 }
 
 .pe-textfield.pe-textfield--floating-label.pe-textfield--dense .pe-textfield__input-area {
-  padding-top: 23px
+  padding-top: 23px;
 }
 
-.pe-textfield.pe-textfield--dense,.pe-textfield.pe-textfield--dense .pe-textfield__input,.pe-textfield.pe-textfield--dense .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--dirty,.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--focused {
-  font-size: 13px
+.pe-textfield.pe-textfield--dense,
+.pe-textfield.pe-textfield--dense .pe-textfield__input,
+.pe-textfield.pe-textfield--dense .pe-textfield__label,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--dirty,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dense.pe-textfield--focused {
+  font-size: 13px;
 }
 
 .pe-textfield.pe-textfield--full-width.pe-textfield--dense .pe-textfield__label {
   left: 16px;
   right: 16px;
-  top: 15px
+  top: 15px;
 }
 
 .pe-textfield.pe-textfield--full-width.pe-textfield--dense .pe-textfield__input {
-  padding: 15px 16px
+  padding: 15px 16px;
 }
 
 .pe-textfield.pe-textfield--floating-label .pe-textfield__label {
   transition-delay: 0ms;
   transition-duration: .12s;
   transition-timing-function: ease-out;
-  transition-property: all
+  transition-property: all;
 }
 
-.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
-  top: 14px
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
+  top: 14px;
 }
 
 .pe-textfield.pe-textfield--floating-label {
-  padding-bottom: 7px
+  padding-bottom: 7px;
 }
 
 .pe-textfield.pe-textfield--dense {
-  padding-bottom: 4px
+  padding-bottom: 4px;
 }
 
 .pe-textfield.pe-textfield--floating-label .pe-textfield__input-area {
-  padding-top: 30px
+  padding-top: 30px;
 }
 
-.pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__error,.pe-textfield .pe-textfield__error-placeholder,.pe-textfield .pe-textfield__help {
+.pe-textfield .pe-textfield__counter, .pe-textfield .pe-textfield__error,
+.pe-textfield .pe-textfield__error-placeholder,
+.pe-textfield .pe-textfield__help {
   font-size: 12px;
-  min-height: 18px
+  min-height: 18px;
 }
 
-.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
-  font-size: 12px
+.pe-textfield.pe-textfield--floating-label.pe-textfield--dirty .pe-textfield__label,
+.pe-textfield.pe-textfield--floating-label.pe-textfield--focused .pe-textfield__label {
+  font-size: 12px;
 }
 
-.pe-textfield .pe-textfield__input,.pe-textfield .pe-textfield__label {
-  font-size: 16px
+.pe-textfield .pe-textfield__input, .pe-textfield .pe-textfield__label {
+  font-size: 16px;
 }
 
-.pe-textfield.pe-textfield--full-width .pe-textfield__counter,.pe-textfield.pe-textfield--full-width .pe-textfield__error,.pe-textfield.pe-textfield--full-width .pe-textfield__help {
+.pe-textfield.pe-textfield--full-width .pe-textfield__counter,
+.pe-textfield.pe-textfield--full-width .pe-textfield__error,
+.pe-textfield.pe-textfield--full-width .pe-textfield__help {
   padding-left: 20px;
-  padding-right: 20px
+  padding-right: 20px;
 }
 
 .pe-textfield.pe-textfield--full-width .pe-textfield__label {
   left: 20px;
   right: 20px;
-  top: 18px
+  top: 18px;
 }
 
 .pe-textfield.pe-textfield--full-width .pe-textfield__input {
-  padding: 18px 20px
+  padding: 18px 20px;
 }
 
 .pe-textfield .pe-textfield__input {
-  border-width: 1px
+  border-width: 1px;
 }
 
 .pe-textfield.pe-textfield--focused .pe-textfield__input {
   border-width: 1px;
-  outline: none
+  outline: none;
 }
 
 .pe-textfield .pe-textfield__input-area:after {
@@ -230,223 +252,333 @@
   transition-duration: .18s;
   transition-timing-function: ease-out;
   transition-property: opacity;
-  height: 2px
+  height: 2px;
 }
 
 .pe-textfield .pe-textfield__label {
   left: 0;
-  right: 0
+  right: 0;
 }
 
 .pe-textfield.pe-textfield--floating-label .pe-textfield__label {
-  top: 37px
+  top: 37px;
 }
 
 .pe-textfield.pe-textfield--floating-label.pe-textfield--dense .pe-textfield__label {
-  top: 30px
+  top: 30px;
 }
 
 .pe-textfield .pe-textfield__input {
-  padding: 7px 0
+  padding: 7px 0;
 }
 
 .pe-textfield textarea.pe-textfield__input {
-  margin: 7px 0
+  margin: 7px 0;
 }
 
-.pe-textfield .pe-textfield__input,.pe-textfield .pe-textfield__label {
-  line-height: 20px
+.pe-textfield .pe-textfield__input, .pe-textfield .pe-textfield__label {
+  line-height: 20px;
 }
 
-.pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__error,.pe-textfield .pe-textfield__error-placeholder,.pe-textfield .pe-textfield__help {
-  margin-top: 6px
+.pe-textfield .pe-textfield__counter, .pe-textfield .pe-textfield__error,
+.pe-textfield .pe-textfield__error-placeholder,
+.pe-textfield .pe-textfield__help {
+  margin-top: 6px;
 }
 
 .pe-textfield {
-  padding-bottom: 7px
+  padding-bottom: 7px;
 }
 
 .pe-textfield .pe-textfield__input-area {
-  padding-top: 6px
+  padding-top: 6px;
 }
 
 .pe-textfield .pe-textfield__label {
-  top: 13px
+  top: 13px;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input-area,.pe-dark-tone .pe-textfield .pe-textfield__input-area {
-  color: inherit
+.pe-dark-tone.pe-textfield .pe-textfield__input-area,
+.pe-dark-tone .pe-textfield .pe-textfield__input-area {
+  color: inherit;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield .pe-textfield__input-area:after {
-  background-color: currentcolor
+.pe-dark-tone.pe-textfield .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield .pe-textfield__input-area:after {
+  background-color: currentcolor;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
-  background-color: transparent
+.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
+  background-color: transparent;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
-  box-shadow: none
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
+  box-shadow: none;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input,.pe-dark-tone .pe-textfield .pe-textfield__input {
-  color: #fff
+.pe-dark-tone.pe-textfield .pe-textfield__input,
+.pe-dark-tone .pe-textfield .pe-textfield__input {
+  color: #fff;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input:-webkit-autofill,.pe-dark-tone .pe-textfield .pe-textfield__input:-webkit-autofill {
-  color: #fff!important
+.pe-dark-tone.pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-dark-tone .pe-textfield .pe-textfield__input:-webkit-autofill {
+  color: #fff !important;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input-area,.pe-dark-tone .pe-textfield .pe-textfield__input-area {
-  background-color: transparent
+.pe-dark-tone.pe-textfield .pe-textfield__input-area,
+.pe-dark-tone .pe-textfield .pe-textfield__input-area {
+  background-color: transparent;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input:-webkit-autofill,.pe-dark-tone .pe-textfield .pe-textfield__input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset
+.pe-dark-tone.pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-dark-tone .pe-textfield .pe-textfield__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,.pe-dark-tone .pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label {
-  color: #2196f3
+.pe-dark-tone.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label {
+  color: #2196f3;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__input,.pe-dark-tone .pe-textfield .pe-textfield__input {
-  border-color: hsla(0,0%,100%,.1)
+.pe-dark-tone.pe-textfield .pe-textfield__input,
+.pe-dark-tone .pe-textfield .pe-textfield__input {
+  border-color: hsla(0, 0%, 100%, .1);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
-  color: #de3226
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
+  color: #de3226;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
-  color: #de3226
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
+  color: #de3226;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
-  color: #de3226
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
+  color: #de3226;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
-  border-color: #de3226
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
+  border-color: #de3226;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after {
-  background-color: #de3226
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,
+.pe-dark-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after {
+  background-color: #de3226;
 }
 
-.pe-dark-tone.pe-textfield .pe-textfield__label,.pe-dark-tone .pe-textfield .pe-textfield__label {
-  color: hsla(0,0%,100%,.4)
+.pe-dark-tone.pe-textfield .pe-textfield__label,
+.pe-dark-tone .pe-textfield .pe-textfield__label {
+  color: hsla(0, 0%, 100%, .4);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
-  background-image: linear-gradient(90deg,hsla(0,0%,100%,.26) 20%,hsla(0,0%,100%,0) 0)
+.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
+  background-image: linear-gradient(90deg, hsla(0, 0%, 100%, .26) 20%, hsla(0, 0%, 100%, 0) 0);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__label,.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__label {
-  color: hsla(0,0%,100%,.26)
+.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-dark-tone.pe-textfield.pe-textfield--disabled .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--disabled .pe-textfield__label {
+  color: hsla(0, 0%, 100%, .26);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input,.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input,.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__label,.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__label,.pe-dark-tone.pe-textfield .pe-textfield__counter,.pe-dark-tone .pe-textfield .pe-textfield__counter,.pe-dark-tone.pe-textfield .pe-textfield__help,.pe-dark-tone .pe-textfield .pe-textfield__help {
-  color: hsla(0,0%,100%,.4)
+.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input,
+.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input,
+.pe-dark-tone.pe-textfield.pe-textfield--readonly .pe-textfield__label,
+.pe-dark-tone .pe-textfield.pe-textfield--readonly .pe-textfield__label,
+.pe-dark-tone.pe-textfield .pe-textfield__counter,
+.pe-dark-tone .pe-textfield .pe-textfield__counter,
+.pe-dark-tone.pe-textfield .pe-textfield__help,
+.pe-dark-tone .pe-textfield .pe-textfield__help {
+  color: hsla(0, 0%, 100%, .4);
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,.pe-dark-tone .pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator {
-  color: #dd2c00
+.pe-dark-tone.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,
+.pe-dark-tone .pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator {
+  color: #dd2c00;
 }
 
-.pe-dark-tone.pe-textfield,.pe-dark-tone .pe-textfield {
-  color: #2196f3
+.pe-dark-tone.pe-textfield, .pe-dark-tone .pe-textfield {
+  color: #2196f3;
 }
 
-.pe-dark-tone.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,.pe-dark-tone .pe-textfield.pe-textfield--counter .pe-textfield__input-area:after {
-  background-color: #2196f3
+.pe-dark-tone.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,
+.pe-dark-tone .pe-textfield.pe-textfield--counter .pe-textfield__input-area:after {
+  background-color: #2196f3;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input-area,.pe-light-tone .pe-textfield .pe-textfield__input-area,.pe-textfield .pe-textfield__input-area {
-  color: inherit
+.pe-light-tone.pe-textfield .pe-textfield__input-area,
+.pe-light-tone .pe-textfield .pe-textfield__input-area,
+.pe-textfield .pe-textfield__input-area {
+  color: inherit;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input-area:after,.pe-light-tone .pe-textfield .pe-textfield__input-area:after,.pe-textfield .pe-textfield__input-area:after {
-  background-color: currentcolor
+.pe-light-tone.pe-textfield .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield .pe-textfield__input-area:after,
+.pe-textfield .pe-textfield__input-area:after {
+  background-color: currentcolor;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
-  background-color: transparent
+.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
+  background-color: transparent;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
-  box-shadow: none
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
+  box-shadow: none;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input,.pe-light-tone .pe-textfield .pe-textfield__input,.pe-textfield .pe-textfield__input {
-  color: rgba(0,0,0,.87)
+.pe-light-tone.pe-textfield .pe-textfield__input,
+.pe-light-tone .pe-textfield .pe-textfield__input,
+.pe-textfield .pe-textfield__input {
+  color: rgba(0, 0, 0, .87);
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input:-webkit-autofill,.pe-light-tone .pe-textfield .pe-textfield__input:-webkit-autofill,.pe-textfield .pe-textfield__input:-webkit-autofill {
-  color: rgba(0,0,0,.87)!important
+.pe-light-tone.pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-light-tone .pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-textfield .pe-textfield__input:-webkit-autofill {
+  color: rgba(0, 0, 0, .87) !important;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input-area,.pe-light-tone .pe-textfield .pe-textfield__input-area,.pe-textfield .pe-textfield__input-area {
-  background-color: transparent
+.pe-light-tone.pe-textfield .pe-textfield__input-area,
+.pe-light-tone .pe-textfield .pe-textfield__input-area,
+.pe-textfield .pe-textfield__input-area {
+  background-color: transparent;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input:-webkit-autofill,.pe-light-tone .pe-textfield .pe-textfield__input:-webkit-autofill,.pe-textfield .pe-textfield__input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px transparent inset
+.pe-light-tone.pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-light-tone .pe-textfield .pe-textfield__input:-webkit-autofill,
+.pe-textfield .pe-textfield__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,.pe-light-tone .pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label {
-  color: rgba(33,150,243,.87)
+.pe-light-tone.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label,
+.pe-textfield.pe-textfield--focused.pe-textfield--floating-label .pe-textfield__label {
+  color: rgba(33, 150, 243, .87);
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__input,.pe-light-tone .pe-textfield .pe-textfield__input,.pe-textfield .pe-textfield__input {
-  border-color: rgba(0,0,0,.11)
+.pe-light-tone.pe-textfield .pe-textfield__input,
+.pe-light-tone .pe-textfield .pe-textfield__input,
+.pe-textfield .pe-textfield__input {
+  border-color: rgba(0, 0, 0, .11);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
-  color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__label {
+  color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
-  color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__counter,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__error,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__help {
+  color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
-  color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--required .pe-textfield__label {
+  color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
-  border-color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input {
+  border-color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after {
-  background-color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,
+.pe-light-tone.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation).pe-textfield--counter .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--invalid:not(.pe-textfield--hide-validation) .pe-textfield__input-area:after {
+  background-color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield .pe-textfield__label,.pe-light-tone .pe-textfield .pe-textfield__label,.pe-textfield .pe-textfield__label {
-  color: rgba(0,0,0,.4)
+.pe-light-tone.pe-textfield .pe-textfield__label,
+.pe-light-tone .pe-textfield .pe-textfield__label,
+.pe-textfield .pe-textfield__label {
+  color: rgba(0, 0, 0, .4);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
-  background-image: linear-gradient(90deg,rgba(0,0,0,.26) 20%,hsla(0,0%,100%,0) 0)
+.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--disabled .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--readonly .pe-textfield__input-area:after {
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, .26) 20%, hsla(0, 0%, 100%, 0) 0);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__label,.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__label,.pe-textfield.pe-textfield--disabled .pe-textfield__input,.pe-textfield.pe-textfield--disabled .pe-textfield__label {
-  color: rgba(0,0,0,.26)
+.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-light-tone.pe-textfield.pe-textfield--disabled .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--disabled .pe-textfield__label,
+.pe-textfield.pe-textfield--disabled .pe-textfield__input,
+.pe-textfield.pe-textfield--disabled .pe-textfield__label {
+  color: rgba(0, 0, 0, .26);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input,.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input,.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__label,.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__label,.pe-light-tone.pe-textfield .pe-textfield__counter,.pe-light-tone .pe-textfield .pe-textfield__counter,.pe-light-tone.pe-textfield .pe-textfield__help,.pe-light-tone .pe-textfield .pe-textfield__help,.pe-textfield.pe-textfield--readonly .pe-textfield__input,.pe-textfield.pe-textfield--readonly .pe-textfield__label,.pe-textfield .pe-textfield__counter,.pe-textfield .pe-textfield__help {
-  color: rgba(0,0,0,.4)
+.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__input,
+.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__input,
+.pe-light-tone.pe-textfield.pe-textfield--readonly .pe-textfield__label,
+.pe-light-tone .pe-textfield.pe-textfield--readonly .pe-textfield__label,
+.pe-light-tone.pe-textfield .pe-textfield__counter,
+.pe-light-tone .pe-textfield .pe-textfield__counter,
+.pe-light-tone.pe-textfield .pe-textfield__help,
+.pe-light-tone .pe-textfield .pe-textfield__help,
+.pe-textfield.pe-textfield--readonly .pe-textfield__input,
+.pe-textfield.pe-textfield--readonly .pe-textfield__label,
+.pe-textfield .pe-textfield__counter, .pe-textfield .pe-textfield__help {
+  color: rgba(0, 0, 0, .4);
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,.pe-light-tone .pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator {
-  color: #dd2c00
+.pe-light-tone.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,
+.pe-light-tone .pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator,
+.pe-textfield.pe-textfield--focused.pe-textfield--required.pe-textfield--floating-label .pe-textfield__required-indicator {
+  color: #dd2c00;
 }
 
-.pe-light-tone.pe-textfield,.pe-light-tone .pe-textfield,.pe-textfield {
-  color: #2196f3
+.pe-light-tone.pe-textfield, .pe-light-tone .pe-textfield, .pe-textfield {
+  color: #2196f3;
 }
 
-.pe-light-tone.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,.pe-light-tone .pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after {
-  background-color: #2196f3
+.pe-light-tone.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,
+.pe-light-tone .pe-textfield.pe-textfield--counter .pe-textfield__input-area:after,
+.pe-textfield.pe-textfield--counter .pe-textfield__input-area:after {
+  background-color: #2196f3;
 }
+
 /*# sourceMappingURL=polythene-textfield.css.map */

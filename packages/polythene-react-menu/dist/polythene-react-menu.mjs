@@ -103,10 +103,6 @@ var MenuToggle = cast(_Conditional, {
   useEffect: useEffect
 });
 MenuToggle["displayName"] = "MenuToggle";
-/**
- * @param {Vnode} props 
- */
-
 var Menu = function Menu(props) {
   return h(MenuToggle, _objectSpread({}, props, {
     placeholderClassName: classes.placeholder,

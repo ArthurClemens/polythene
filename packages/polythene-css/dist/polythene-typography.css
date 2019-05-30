@@ -1,101 +1,101 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700");
 
-body,button,html,input,select,textarea {
-  font-family: Roboto,Helvetica,Arial,sans-serif
+body, button, html, input, select, textarea {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 html {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
-*,:after,:before {
-  box-sizing: inherit
+*, :after, :before {
+  box-sizing: inherit;
 }
 
 * {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
-:focus,a,a:active,a:focus,input:active {
-  outline: 0
+:focus, a, a:active, a:focus, input:active {
+  outline: 0;
 }
 
 input:disabled {
-  opacity: 1
+  opacity: 1;
 }
 
-h1,h2,h3,h4,h5,h6,p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
-h1 small,h2 small,h3 small,h4 small,h5 small,h6 small {
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -.02em;
-  font-size: .6em
+  font-size: .6em;
 }
 
 h1 {
-  font-size: 56px
+  font-size: 56px;
 }
 
-h1,h2 {
+h1, h2 {
   font-weight: 400;
   line-height: 1.5;
   margin-top: 24px;
-  margin-bottom: 24px
+  margin-bottom: 24px;
 }
 
 h2 {
-  font-size: 45px
+  font-size: 45px;
 }
 
 h3 {
   font-size: 34px;
-  margin-bottom: 24px
+  margin-bottom: 24px;
 }
 
-h3,h4 {
+h3, h4 {
   font-weight: 400;
   line-height: 1.5;
-  margin-top: 24px
+  margin-top: 24px;
 }
 
 h4 {
   font-size: 24px;
   -moz-osx-font-smoothing: grayscale;
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
 
 h5 {
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: -.02em
+  letter-spacing: -.02em;
 }
 
-h5,h6 {
+h5, h6 {
   line-height: 1.5;
   margin-top: 24px;
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
 
 h6 {
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: .04em
+  letter-spacing: .04em;
 }
 
-body,html,p {
+body, html, p {
   font-size: 14px;
   line-height: 1.5;
-  font-weight: 400
+  font-weight: 400;
 }
 
 p {
   letter-spacing: 0;
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
 
 blockquote {
@@ -104,20 +104,21 @@ blockquote {
   font-style: italic;
   letter-spacing: .08em;
   margin-top: 24px;
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
 
-blockquote,ol,ul {
+blockquote, ol, ul {
   font-weight: 400;
-  line-height: 1.5
+  line-height: 1.5;
 }
 
-ol,ul {
+ol, ul {
   font-size: 14px;
-  letter-spacing: 0
+  letter-spacing: 0;
 }
 
-b,strong {
-  font-weight: 500
+b, strong {
+  font-weight: 500;
 }
+
 /*# sourceMappingURL=polythene-typography.css.map */

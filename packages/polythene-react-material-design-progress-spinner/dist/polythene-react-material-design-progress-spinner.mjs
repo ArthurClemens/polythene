@@ -77,10 +77,6 @@ var SpinnerToggle = cast(_Conditional, {
   useEffect: useEffect
 });
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
-/**
- * @param {Vnode} props 
- */
-
 var MaterialDesignProgressSpinner = function MaterialDesignProgressSpinner(props) {
   return h(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,

@@ -72,10 +72,6 @@ var SpinnerToggle = cast(_Conditional, {
   useEffect: useEffect
 });
 SpinnerToggle["displayName"] = "IOSSpinnerToggle";
-/**
- * @param {Vnode} props 
- */
-
 var IOSSpinner = function IOSSpinner(props) {
   return h(SpinnerToggle, _objectSpread({}, props, {
     placeholderClassName: baseSpinnerClasses.placeholder,

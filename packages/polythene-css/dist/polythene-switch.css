@@ -2,30 +2,30 @@
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: opacity
+  transition-property: opacity;
 }
 
 .pe-switch-control .pe-control__label {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: all
+  transition-property: all;
 }
 
 .pe-switch-control .pe-control__box {
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 
 .pe-switch-control.pe-control--small .pe-control__box {
   width: 16px;
-  height: 16px
+  height: 16px;
 }
 
 .pe-switch-control.pe-control--small .pe-button__content {
   width: 40px;
   height: 40px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-switch-control.pe-control--small .pe-button__content .pe-icon {
@@ -33,18 +33,18 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-switch-control.pe-control--regular .pe-control__box {
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 
 .pe-switch-control.pe-control--regular .pe-button__content {
   width: 48px;
   height: 48px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-switch-control.pe-control--regular .pe-button__content .pe-icon {
@@ -52,18 +52,18 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-switch-control.pe-control--medium .pe-control__box {
   width: 32px;
-  height: 32px
+  height: 32px;
 }
 
 .pe-switch-control.pe-control--medium .pe-button__content {
   width: 56px;
   height: 56px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-switch-control.pe-control--medium .pe-button__content .pe-icon {
@@ -71,18 +71,18 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-switch-control.pe-control--large .pe-control__box {
   width: 40px;
-  height: 40px
+  height: 40px;
 }
 
 .pe-switch-control.pe-control--large .pe-button__content {
   width: 64px;
   height: 64px;
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-switch-control.pe-control--large .pe-button__content .pe-icon {
@@ -90,32 +90,32 @@
   top: 12px;
   right: 12px;
   bottom: 12px;
-  left: 12px
+  left: 12px;
 }
 
 .pe-switch-control .pe-switch-control__track {
   left: 0;
   right: auto;
-  position: absolute
+  position: absolute;
 }
 
 .pe-switch-control .pe-switch-control__thumb {
   position: absolute;
   z-index: 1;
-  color: inherit
+  color: inherit;
 }
 
 .pe-switch-control .pe-switch-control__thumb:focus {
-  outline: 0
+  outline: 0;
 }
 
 .pe-switch-control .pe-switch-control__knob {
   position: relative;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .pe-switch-control .pe-icon-button .pe-button__content {
-  transition: none
+  transition: none;
 }
 
 .pe-switch-control .pe-icon-button .pe-button__content .pe-switch-control__knob .pe-icon {
@@ -125,10 +125,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
-:root .pe-switch-control input,_:-ms-fullscreen input {
+:root .pe-switch-control input, _:-ms-fullscreen input {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -139,388 +139,460 @@
   bottom: 0;
   display: block;
   opacity: 0;
-  cursor: pointer
+  cursor: pointer;
 }
 
-:root .pe-switch-control label,_:-ms-fullscreen label {
-  cursor: auto
+:root .pe-switch-control label, _:-ms-fullscreen label {
+  cursor: auto;
 }
 
-.pe-switch-control .pe-button__focus,.pe-switch-control .pe-control__label,.pe-switch-control .pe-switch-control__thumb,.pe-switch-control .pe-switch-control__track {
+.pe-switch-control .pe-button__focus, .pe-switch-control .pe-control__label,
+.pe-switch-control .pe-switch-control__thumb,
+.pe-switch-control .pe-switch-control__track {
   transition-delay: 0ms;
   transition-duration: .18s;
   transition-timing-function: ease-out;
-  transition-property: all
+  transition-property: all;
 }
 
 .pe-switch-control.pe-control--small .pe-control__form-label {
   height: 16px;
-  min-width: 24px
+  min-width: 24px;
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__track {
   height: 8px;
   width: 23.4px;
   top: 4px;
-  border-radius: 8px
+  border-radius: 8px;
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__thumb {
-  top: -12px
+  top: -12px;
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__knob {
   width: 12px;
   height: 12px;
-  margin: 2px
+  margin: 2px;
 }
 
 .pe-switch-control.pe-control--small .pe-button__content {
-  padding: 12px
+  padding: 12px;
 }
 
 .pe-switch-control.pe-control--small .pe-control__label {
   padding-left: 37.33333333333333px;
-  padding-right: 0
+  padding-right: 0;
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__track {
   left: .3px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--small .pe-switch-control__thumb {
   left: -14px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb {
   left: -2px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--regular .pe-control__form-label {
   height: 24px;
-  min-width: 36px
+  min-width: 36px;
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__track {
   height: 14px;
   width: 35.4px;
   top: 5px;
-  border-radius: 14px
+  border-radius: 14px;
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
-  top: -12px
+  top: -12px;
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__knob {
   width: 20px;
   height: 20px;
-  margin: 2px
+  margin: 2px;
 }
 
 .pe-switch-control.pe-control--regular .pe-button__content {
-  padding: 12px
+  padding: 12px;
 }
 
 .pe-switch-control.pe-control--regular .pe-control__label {
   padding-left: 52px;
-  padding-right: 0
+  padding-right: 0;
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__track {
   left: .3px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
   left: -14px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb {
   left: 2px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--medium .pe-control__form-label {
   height: 32px;
-  min-width: 48px
+  min-width: 48px;
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__track {
   height: 18px;
   width: 47.4px;
   top: 7px;
-  border-radius: 18px
+  border-radius: 18px;
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
-  top: -12px
+  top: -12px;
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__knob {
   width: 26px;
   height: 26px;
-  margin: 3px
+  margin: 3px;
 }
 
 .pe-switch-control.pe-control--medium .pe-button__content {
-  padding: 12px
+  padding: 12px;
 }
 
 .pe-switch-control.pe-control--medium .pe-control__label {
   padding-left: 66.66666666666666px;
-  padding-right: 0
+  padding-right: 0;
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__track {
   left: .3px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
   left: -15px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb {
   left: 7px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--large .pe-control__form-label {
   height: 40px;
-  min-width: 60px
+  min-width: 60px;
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__track {
   height: 22px;
   width: 59.4px;
   top: 9px;
-  border-radius: 22px
+  border-radius: 22px;
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__thumb {
-  top: -12px
+  top: -12px;
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__knob {
   width: 32px;
   height: 32px;
-  margin: 4px
+  margin: 4px;
 }
 
 .pe-switch-control.pe-control--large .pe-button__content {
-  padding: 12px
+  padding: 12px;
 }
 
 .pe-switch-control.pe-control--large .pe-control__label {
   padding-left: 81.33333333333334px;
-  padding-right: 0
+  padding-right: 0;
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__track {
   left: .3px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--large .pe-switch-control__thumb {
   left: -16px;
-  right: auto
+  right: auto;
 }
 
 .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
   left: 12px;
-  right: auto
+  right: auto;
 }
 
-.pe-rtl .pe-switch-control .pe-switch-control__track,[dir=rtl] .pe-switch-control .pe-switch-control__track {
+.pe-rtl .pe-switch-control .pe-switch-control__track,
+[dir=rtl] .pe-switch-control .pe-switch-control__track {
   right: 0;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--small .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--small .pe-control__label {
+.pe-rtl .pe-switch-control.pe-control--small .pe-control__label,
+[dir=rtl] .pe-switch-control.pe-control--small .pe-control__label {
   padding-right: 37.33333333333333px;
-  padding-left: 0
+  padding-left: 0;
 }
 
-.pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__track {
+.pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__track,
+[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__track {
   right: .3px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--small .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--small .pe-switch-control__thumb {
   right: -14px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--small.pe-control--on .pe-switch-control__thumb {
   right: -2px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--regular .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--regular .pe-control__label {
+.pe-rtl .pe-switch-control.pe-control--regular .pe-control__label,
+[dir=rtl] .pe-switch-control.pe-control--regular .pe-control__label {
   padding-right: 52px;
-  padding-left: 0
+  padding-left: 0;
 }
 
-.pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__track {
+.pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__track,
+[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__track {
   right: .3px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--regular .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--regular .pe-switch-control__thumb {
   right: -14px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--regular.pe-control--on .pe-switch-control__thumb {
   right: 2px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--medium .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--medium .pe-control__label {
+.pe-rtl .pe-switch-control.pe-control--medium .pe-control__label,
+[dir=rtl] .pe-switch-control.pe-control--medium .pe-control__label {
   padding-right: 66.66666666666666px;
-  padding-left: 0
+  padding-left: 0;
 }
 
-.pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__track {
+.pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__track,
+[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__track {
   right: .3px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--medium .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--medium .pe-switch-control__thumb {
   right: -15px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--medium.pe-control--on .pe-switch-control__thumb {
   right: 7px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--large .pe-control__label,[dir=rtl] .pe-switch-control.pe-control--large .pe-control__label {
+.pe-rtl .pe-switch-control.pe-control--large .pe-control__label,
+[dir=rtl] .pe-switch-control.pe-control--large .pe-control__label {
   padding-right: 81.33333333333334px;
-  padding-left: 0
+  padding-left: 0;
 }
 
-.pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__track,[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__track {
+.pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__track,
+[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__track {
   right: .3px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--large .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--large .pe-switch-control__thumb {
   right: -16px;
-  left: auto
+  left: auto;
 }
 
-.pe-rtl .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb,[dir=rtl] .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
+.pe-rtl .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb,
+[dir=rtl] .pe-switch-control.pe-control--large.pe-control--on .pe-switch-control__thumb {
   right: 12px;
-  left: auto
+  left: auto;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__knob {
-  background-color: currentcolor
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__knob {
+  background-color: currentcolor;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-icon,.pe-dark-tone .pe-switch-control.pe-control--off .pe-icon {
-  color: currentcolor
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-icon,
+.pe-dark-tone .pe-switch-control.pe-control--off .pe-icon {
+  color: currentcolor;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__knob {
-  background-color: currentcolor
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,
+.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__knob {
+  background-color: currentcolor;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-icon,.pe-dark-tone .pe-switch-control.pe-control--on .pe-icon {
-  color: currentcolor
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-icon,
+.pe-dark-tone .pe-switch-control.pe-control--on .pe-icon {
+  color: currentcolor;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,
+.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb {
+  color: #2196f3;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #bdbdbd
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,
+.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb {
+  color: #bdbdbd;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
-  color: #555
+.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
+.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
+.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,
+.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,
+.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,
+.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,
+.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,
+.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
+  color: #555;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__track {
-  background-color: rgba(100,181,249,.4);
-  opacity: 1
+.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__track,
+.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__track {
+  background-color: rgba(100, 181, 249, .4);
+  opacity: 1;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__track {
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__track,
+.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__track {
   background-color: #717171;
-  opacity: .55
+  opacity: .55;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
+.pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,
+.pe-dark-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,
+.pe-dark-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,
+.pe-dark-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
   background-color: #717171;
-  opacity: .3
+  opacity: .3;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__knob,.pe-switch-control.pe-control--off .pe-switch-control__knob {
-  background-color: currentcolor
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-switch-control.pe-control--off .pe-switch-control__knob {
+  background-color: currentcolor;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-icon,.pe-light-tone .pe-switch-control.pe-control--off .pe-icon,.pe-switch-control.pe-control--off .pe-icon {
-  color: currentcolor
+.pe-light-tone.pe-switch-control.pe-control--off .pe-icon,
+.pe-light-tone .pe-switch-control.pe-control--off .pe-icon,
+.pe-switch-control.pe-control--off .pe-icon {
+  color: currentcolor;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__knob,.pe-switch-control.pe-control--on .pe-switch-control__knob {
-  background-color: currentcolor
+.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,
+.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__knob,
+.pe-switch-control.pe-control--on .pe-switch-control__knob {
+  background-color: currentcolor;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-icon,.pe-light-tone .pe-switch-control.pe-control--on .pe-icon,.pe-switch-control.pe-control--on .pe-icon {
-  color: currentcolor
+.pe-light-tone.pe-switch-control.pe-control--on .pe-icon,
+.pe-light-tone .pe-switch-control.pe-control--on .pe-icon,
+.pe-switch-control.pe-control--on .pe-icon {
+  color: currentcolor;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb,.pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3
+.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,
+.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb,
+.pe-switch-control.pe-control--on .pe-switch-control__thumb {
+  color: #2196f3;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb,.pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #f1f1f1
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,
+.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb,
+.pe-switch-control.pe-control--off .pe-switch-control__thumb {
+  color: #f1f1f1;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
-  color: #eee
+.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
+.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
+.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,
+.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,
+.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,
+.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,
+.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,
+.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb,
+.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
+.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__thumb,
+.pe-switch-control.pe-control--on.pe-control--disabled .pe-button__content,
+.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__thumb {
+  color: #eee;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__track,.pe-switch-control.pe-control--on .pe-switch-control__track {
+.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__track,
+.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__track,
+.pe-switch-control.pe-control--on .pe-switch-control__track {
   background-color: #64b5f9;
-  opacity: .55
+  opacity: .55;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__track,.pe-switch-control.pe-control--off .pe-switch-control__track {
-  background-color: rgba(0,0,0,.73);
-  opacity: .55
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__track,
+.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__track,
+.pe-switch-control.pe-control--off .pe-switch-control__track {
+  background-color: rgba(0, 0, 0, .73);
+  opacity: .55;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
-  background-color: rgba(0,0,0,.09);
-  opacity: 1
+.pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,
+.pe-light-tone .pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,
+.pe-light-tone.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,
+.pe-light-tone .pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track,
+.pe-switch-control.pe-control--off.pe-control--disabled .pe-switch-control__track,
+.pe-switch-control.pe-control--on.pe-control--disabled .pe-switch-control__track {
+  background-color: rgba(0, 0, 0, .09);
+  opacity: 1;
 }
 
 .pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--on .pe-button__wash {
-  background-color: rgba(33,150,243,.14)
+  background-color: rgba(33, 150, 243, .14);
 }
 
 .pe-no-touch .pe-dark-tone .pe-switch-control:hover.pe-control--off .pe-button__wash {
-  background-color: hsla(0,0%,100%,.08)
+  background-color: hsla(0, 0%, 100%, .08);
 }
 
-.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
-  background-color: rgba(33,150,243,.14)
+.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--on .pe-button__wash,
+.pe-no-touch .pe-switch-control:hover.pe-control--on .pe-button__wash {
+  background-color: rgba(33, 150, 243, .14);
 }
 
-.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--off .pe-button__wash,.pe-no-touch .pe-switch-control:hover.pe-control--off .pe-button__wash {
-  background-color: rgba(0,0,0,.06)
+.pe-no-touch .pe-light-tone .pe-switch-control:hover.pe-control--off .pe-button__wash,
+.pe-no-touch .pe-switch-control:hover.pe-control--off .pe-button__wash {
+  background-color: rgba(0, 0, 0, .06);
 }
+
 /*# sourceMappingURL=polythene-switch.css.map */

@@ -73,9 +73,6 @@ var SpinnerToggle = cast(_Conditional, {
 });
 SpinnerToggle["displayName"] = "IOSSpinnerToggle";
 var IOSSpinner = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: function view(vnode) {
     return h(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,

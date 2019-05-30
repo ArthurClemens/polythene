@@ -1,7 +1,7 @@
 .pe-dialog {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
-  justify-content: center;
+          justify-content: center;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -9,54 +9,55 @@
   display: flex;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
+          align-items: center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 7000;
   height: 100%;
-  transition-property: opacity,background-color,transform
+  transition-property: opacity, background-color, transform;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog {
-  padding: 0
+  padding: 0;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog .pe-dialog__content {
-  width: 100%
+  width: 100%;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane {
-  border-radius: 0
+  border-radius: 0;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__content {
   border-radius: 0;
   max-width: none;
   height: 100vh;
-  width: 100vw
+  width: 100vw;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__content>* {
-  flex-shrink: 0
+  flex-shrink: 0;
 }
 
 .pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__content>.pe-dialog-pane__body {
   flex-shrink: 1;
-  max-height: none
+  max-height: none;
 }
 
-.pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane,.pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__body {
+.pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane,
+.pe-dialog.pe-dialog--full-screen.pe-dialog.pe-dialog .pe-dialog-pane__body {
   height: 100vh;
   max-height: 100vh;
   border-top-style: none;
-  max-width: none
+  max-width: none;
 }
 
 .pe-dialog .pe-dialog__content {
   position: relative;
-  transition-property: all
+  transition-property: all;
 }
 
 .pe-dialog .pe-dialog__backdrop {
@@ -70,62 +71,67 @@
   left: 0;
   right: 0;
   bottom: 0;
-  pointer-events: none
+  pointer-events: none;
 }
 
 .pe-dialog.pe-dialog--backdrop.pe-dialog.pe-dialog--visible .pe-dialog__backdrop {
   display: block;
-  opacity: 1
+  opacity: 1;
 }
 
 .pe-dialog__holder {
   height: 100%;
-  min-width: 320px
+  min-width: 320px;
 }
 
-.pe-dialog,.pe-dialog .pe-dialog__content {
+.pe-dialog, .pe-dialog .pe-dialog__content {
   transition-delay: 0s;
-  transition-duration: .22s
+  transition-duration: .22s;
 }
 
 .pe-dialog {
-  opacity: 0
+  opacity: 0;
 }
 
 .pe-dialog.pe-dialog--visible {
-  opacity: 1
+  opacity: 1;
 }
 
-.pe-dialog,.pe-dialog .pe-dialog__content {
-  transition-timing-function: ease-in-out
+.pe-dialog, .pe-dialog .pe-dialog__content {
+  transition-timing-function: ease-in-out;
 }
 
 .pe-dialog .pe-dialog__content {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px
+  border-bottom-right-radius: 4px;
 }
 
 .pe-dialog {
-  position: fixed
+  position: fixed;
 }
 
-.pe-dark-tone.pe-dialog .pe-dialog__backdrop,.pe-dark-tone .pe-dialog .pe-dialog__backdrop {
-  background-color: rgba(0,0,0,.5)
+.pe-dark-tone.pe-dialog .pe-dialog__backdrop,
+.pe-dark-tone .pe-dialog .pe-dialog__backdrop {
+  background-color: rgba(0, 0, 0, .5);
 }
 
-.pe-dark-tone.pe-dialog .pe-dialog__content,.pe-dark-tone .pe-dialog .pe-dialog__content {
+.pe-dark-tone.pe-dialog .pe-dialog__content,
+.pe-dark-tone .pe-dialog .pe-dialog__content {
   background-color: #222;
-  color: hsla(0,0%,100%,.87)
+  color: hsla(0, 0%, 100%, .87);
 }
 
-.pe-dialog .pe-dialog__backdrop,.pe-light-tone.pe-dialog .pe-dialog__backdrop,.pe-light-tone .pe-dialog .pe-dialog__backdrop {
-  background-color: rgba(0,0,0,.4)
+.pe-dialog .pe-dialog__backdrop, .pe-light-tone.pe-dialog .pe-dialog__backdrop,
+.pe-light-tone .pe-dialog .pe-dialog__backdrop {
+  background-color: rgba(0, 0, 0, .4);
 }
 
-.pe-dialog .pe-dialog__content,.pe-light-tone.pe-dialog .pe-dialog__content,.pe-light-tone .pe-dialog .pe-dialog__content {
+.pe-dialog .pe-dialog__content, .pe-light-tone.pe-dialog .pe-dialog__content,
+.pe-light-tone .pe-dialog .pe-dialog__content {
   background-color: #fff;
-  color: rgba(0,0,0,.73)
+  color: rgba(0, 0, 0, .73);
 }
+
 /*# sourceMappingURL=polythene-dialog.css.map */

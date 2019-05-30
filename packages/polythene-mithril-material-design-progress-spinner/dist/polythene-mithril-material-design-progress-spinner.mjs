@@ -78,9 +78,6 @@ var SpinnerToggle = cast(_Conditional, {
 });
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 var MaterialDesignProgressSpinner = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: function view(vnode) {
     return h(SpinnerToggle, _objectSpread({}, vnode.attrs, {
       placeholderClassName: baseSpinnerClasses.placeholder,
