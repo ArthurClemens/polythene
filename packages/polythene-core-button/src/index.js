@@ -29,18 +29,22 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   /*
   Use wash to indicate focus, or hover when not a raised button.
   */
- const showWash = !disabled && !props.selected && (
-  (props.raised && (/* hasFocus || */ props.wash === true))
-  || (!props.raised && (/* hasFocus && */ props.wash !== false))
-);
+  const showWash = !disabled && !props.selected && hasFocus && props.wash !== false;
 
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
-    getRef(dom => dom && !domElement && (
-      setDomElement(dom),
-      contentElement.current = dom.querySelector(`.${classes.content}`),
-      props.getRef && props.getRef(dom)
-    )),
+    getRef(dom => {
+      if (!dom || domElement) {
+        return;
+      }
+      setDomElement(dom);
+      if (dom.querySelector) {
+        contentElement.current = dom.querySelector(`.${classes.content}`);
+      }
+      if (props.getRef) {
+        props.getRef(dom);
+      }
+    }),
     props.testId && { "data-test-id": props.testId },
     {
       className: [

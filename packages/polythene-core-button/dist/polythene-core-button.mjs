@@ -352,18 +352,26 @@ var _Button = function _Button(_ref) {
   */
 
 
-  var showWash = !disabled && !props.selected && (props.raised &&
-  /* hasFocus || */
-  props.wash === true || !props.raised &&
-  /* hasFocus && */
-  props.wash !== false);
+  var showWash = !disabled && !props.selected && hasFocus && props.wash !== false;
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
     remove: ["style"]
   }), // Set style on content, not on component
   getRef(function (dom) {
-    return dom && !domElement && (setDomElement(dom), contentElement.current = dom.querySelector(".".concat(classes.content)), props.getRef && props.getRef(dom));
+    if (!dom || domElement) {
+      return;
+    }
+
+    setDomElement(dom);
+
+    if (dom.querySelector) {
+      contentElement.current = dom.querySelector(".".concat(classes.content));
+    }
+
+    if (props.getRef) {
+      props.getRef(dom);
+    }
   }), props.testId && {
     "data-test-id": props.testId
   }, {
