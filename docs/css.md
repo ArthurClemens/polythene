@@ -113,7 +113,7 @@ Theming options are more limited than using CSS-in-JS as styles will not be adde
 
 Creating CSS is very similar to CSS-in-JS, but instead of `addStyle` you call `getStyle` to fetch the styles before writing them to a file.
 
-`writeCSS` is provided by [polythene-scripts](packages/polythene-scripts.md).
+`writeCSS` is provided by `polythene-scripts` - see [available options](packages/polythene-scripts.md#write-css).
 
 For example, to create a CSS file that contains themed CSS for Card and Button, you could write:
 

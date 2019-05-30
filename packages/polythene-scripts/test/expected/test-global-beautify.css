@@ -1,0 +1,14 @@
+:global {
+  .pe-dark-tone.pe-svg.test-theme-svg-1 svg circle:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-1 svg circle:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-1 svg path:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-1 svg path:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-1 svg polygon:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-1 svg polygon:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-1 svg rect:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-1 svg rect:not([fill=none]) {
+    fill: orange;
+  }
+  .pe-light-tone.pe-svg.test-theme-svg-1 svg circle:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-1 svg circle:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-1 svg path:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-1 svg path:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-1 svg polygon:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-1 svg polygon:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-1 svg rect:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-1 svg rect:not([fill=none]),.pe-svg.test-theme-svg-1 svg circle:not([fill=none]),.pe-svg.test-theme-svg-1 svg path:not([fill=none]),.pe-svg.test-theme-svg-1 svg polygon:not([fill=none]),.pe-svg.test-theme-svg-1 svg rect:not([fill=none]) {
+    fill: #0d47a1;
+  }
+  .pe-dark-tone.pe-svg.test-theme-svg-2 svg circle:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-2 svg circle:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-2 svg path:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-2 svg path:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-2 svg polygon:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-2 svg polygon:not([fill=none]),.pe-dark-tone.pe-svg.test-theme-svg-2 svg rect:not([fill=none]),.pe-dark-tone .pe-svg.test-theme-svg-2 svg rect:not([fill=none]) {
+    fill: red;
+  }
+  .pe-light-tone.pe-svg.test-theme-svg-2 svg circle:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-2 svg circle:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-2 svg path:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-2 svg path:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-2 svg polygon:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-2 svg polygon:not([fill=none]),.pe-light-tone.pe-svg.test-theme-svg-2 svg rect:not([fill=none]),.pe-light-tone .pe-svg.test-theme-svg-2 svg rect:not([fill=none]),.pe-svg.test-theme-svg-2 svg circle:not([fill=none]),.pe-svg.test-theme-svg-2 svg path:not([fill=none]),.pe-svg.test-theme-svg-2 svg polygon:not([fill=none]),.pe-svg.test-theme-svg-2 svg rect:not([fill=none]) {
+    fill: green;
+  }
+}

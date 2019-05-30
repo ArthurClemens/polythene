@@ -1,76 +1,180 @@
-const shell                  = require("shelljs");
-const glob                   = require("glob-fs")();
+const path                   = require("path");
+const fs                     = require("fs");
 const { writeCSS }           = require("../dist/polythene-scripts");
 const { addStyle, getStyle } = require("../../polythene-css-svg");
+const assert = require("assert");
 
-glob.readdirSync("./test/*.css*").map(file => shell.rm(file));
+/* global describe, it, should */
+"use strict";
 
-/*
-Use (wrong) addStyle instead of getStyle
-Expect file to be empty
-*/
-writeCSS({
-  styles: [
-    addStyle(".test-theme-svg-1", {
+
+describe("writeCSS", () => {
+  
+  const getResultPath = fileName =>
+  path.resolve(__dirname, `./results/${fileName}`);
+
+  const getExpectedPath = fileName =>
+    path.resolve(__dirname, `./expected/${fileName}`);
+
+  const styles = [
+    getStyle(".test-theme-svg-1", {
       color_light: "#0D47A1",
       color_dark: "orange"
     }),
-  ],
-  path: "./test/test-none.css",
-  sourceMap: false,
-});
+    getStyle(".test-theme-svg-2", {
+      color_light: "green",
+      color_dark: "red"
+    })
+  ];
 
-const styles = [
-  getStyle(".test-theme-svg-1", {
-    color_light: "#0D47A1",
-    color_dark: "orange"
-  }),
-  getStyle(".test-theme-svg-2", {
-    color_light: "green",
-    color_dark: "red"
-  })
-];
+  it("Use (wrong) addStyle instead of getStyle: expect file to be empty", done => {
+    const fileName = "test-none.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles: [
+        addStyle(".test-theme-svg-1", {
+          color_light: "#0D47A1",
+          color_dark: "orange"
+        }),
+      ],
+      path: pathResult,
+      sourceMap: false,
+    }).then(() => {
+      const contentResult = fs.readFileSync(pathResult, "utf8");
+      const contentExpected = fs.readFileSync(pathExpected, "utf8");
+      assert(contentResult === contentExpected);
+      done();
+    });
+  });
 
-/* 
-Expect file:
-* to be minified
-* to have a sourcemap
-*/
-writeCSS({
-  styles,
-  path: "./test/test-defaults.css"
-});
+  it("Defaults: expect file to be minified and have a sourcemap", done => {
+    const fileName = "test-defaults.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles,
+      path: pathResult,
+    })
+    .then(
+      () => {
+        const pathResultMap = getResultPath(`${fileName}.map`);
+        const pathExpectedMap = getExpectedPath(`${fileName}.map`);
+        const contentResultMapExists= fs.existsSync(pathResultMap);
+        if (!contentResultMapExists) {
+          return done(new Error("Sourcemap not found"));
+        }
+        
+        const contentResultMap = fs.readFileSync(pathResultMap, "utf8");
+        const contentExpectedMap = fs.readFileSync(pathExpectedMap, "utf8");
+        assert(contentResultMap === contentExpectedMap);
+        
+        const contentResult = fs.readFileSync(pathResult, "utf8");
+        const contentExpected = fs.readFileSync(pathExpected, "utf8");
+        assert(contentResult === contentExpected);
 
-/* 
-Expect file:
-* to be minified
-* not to have a sourcemap
-*/
-writeCSS({
-  styles,
-  path: "./test/test-no-sourcemap.css",
-  sourceMap: false,
-});
+        done();
+      }
+    );
+  });
 
-/* 
-Expect file:
-* not to be minified
-* to be beautified
-* to have a sourcemap
-*/
-writeCSS({
-  styles,
-  path: "./test/test-beautify.css",
-  beautify: true
-});
+  it("No sourcemap: expect file to be minified and not have a sourcemap", done => {
+    const fileName = "test-no-sourcemap.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles,
+      path: pathResult,
+      sourceMap: false,
+    })
+    .then(
+      () => {
+        const pathResultMap = getResultPath(`${fileName}.map`);
+        const contentResultMapExists= fs.existsSync(pathResultMap);
+        assert(!contentResultMapExists);
 
-/* 
-Expect file:
-* to be gzipped
-* to have a sourcemap
-*/
-writeCSS({
-  styles,
-  path: "./test/test-gzip.css",
-  gzip: true
+        const contentResult = fs.readFileSync(pathResult, "utf8");
+        const contentExpected = fs.readFileSync(pathExpected, "utf8");
+        assert(contentResult === contentExpected);
+
+        done();
+      }
+    );
+  });
+
+  it("Beautified: expect file not to be minified, be beautified and have a sourcemap", done => {
+    const fileName = "test-beautify.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles,
+      path: pathResult,
+      beautify: true,
+    })
+    .then(
+      () => {
+        const contentResult = fs.readFileSync(pathResult, "utf8");
+        const contentExpected = fs.readFileSync(pathExpected, "utf8");
+        assert(contentResult === contentExpected);
+
+        done();
+      }
+    );
+  });
+
+  it("Gzipped: expect file to be gzipped and have a sourcemap", done => {
+    const fileName = "test-gzip.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles,
+      path: pathResult,
+      gzip: true,
+    })
+    .then(
+      () => {
+        const pathResultMap = getResultPath(`${fileName}.map`);
+        const contentResultMapExists= fs.existsSync(pathResultMap);
+        assert(contentResultMapExists);
+
+        const pathResultGzip = getResultPath(`${fileName}.gz`);
+        const pathExpectedGzip = getResultPath(`${fileName}.gz`);
+        const contentResultGzipExists= fs.existsSync(pathResultGzip);
+        assert(contentResultGzipExists);
+
+        const contentResultGzip = fs.readFileSync(pathResultGzip, "utf8");
+        const contentExpectedGzip = fs.readFileSync(pathExpectedGzip, "utf8");
+        assert(contentResultGzip === contentExpectedGzip);
+
+        const contentResult = fs.readFileSync(pathResult, "utf8");
+        const contentExpected = fs.readFileSync(pathExpected, "utf8");
+        assert(contentResult === contentExpected);
+
+        done();
+      }
+    );
+  });
+
+  it("Wrapped in global: expect file to be wrapped in :global{} and to be beautified", done => {
+    const fileName = "test-global.css";
+    const pathResult = getResultPath(fileName);
+    const pathExpected = getExpectedPath(fileName);
+    writeCSS({
+      styles,
+      path: pathResult,
+      wrapInGlobal: true,
+      beautify: false,
+      sourceMap: false,
+    })
+    .then(
+      () => {
+        const contentResult = fs.readFileSync(pathResult, "utf8");
+        const contentExpected = fs.readFileSync(pathExpected, "utf8");
+        assert(contentResult === contentExpected);
+
+        done();
+      }
+    );
+  });
+
 });

@@ -7,10 +7,10 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf dist/*",
-    "rollup": "../../node_modules/rollup/bin/rollup -c ../../scripts/bundling/rollup.umd.js",
-    "build": "npm run clean && npm run rollup",
-    "test": "node test",
-    "typecheck": "../../node_modules/typescript/bin/tsc --noEmit --strict --allowJs --checkJs --noImplicitAny false --lib es2015,DOM,ScriptHost --esModuleInterop true src/index.js"
+    "build": "npm run clean && npm run build:commonjs",
+    "build:commonjs": "babel ./src --out-file dist/polythene-scripts.js --extensions '.ts'",
+    "test": "rm -rf test/results/* && mocha",
+    "typecheck": "tsc"
   },
   "files": [
     "dist",
@@ -19,11 +19,24 @@
   ],
   "dependencies": {
     "autoprefixer": "^9.5.1",
+    "babel-preset-minify": "^0.5.0",
     "cssbeautify": "^0.3.1",
     "j2c": "^1.0.0-4",
     "j2c-plugin-prefix-browser": "^1.0.7",
+    "perfectionist": "^2.4.0",
     "postcss": "^7.0.16",
-    "tar": "^4.4.8"
+    "postcss-prettify": "^0.3.4",
+    "tar": "^4.4.8",
+    "typescript": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@types/autoprefixer": "^9.5.0",
+    "@types/cssnano": "^4.0.0",
+    "@types/tar": "^4.0.0",
+    "mocha": "^6.1.4"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

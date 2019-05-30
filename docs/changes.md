@@ -3,12 +3,16 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.6](#16)
   - [1.6.0](#160)
+    - [Under the hood](#under-the-hood)
+    - [CSS](#css)
+    - [Bug fixes](#bug-fixes)
+    - [Removed](#removed)
   - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
     - [Bundle size](#bundle-size)
     - [TypeScript type definitions](#typescript-type-definitions)
-    - [CSS](#css)
+    - [CSS](#css-1)
     - [Components](#components)
 - [1.4](#14)
   - [1.4.2](#142)
@@ -17,7 +21,7 @@
 - [1.3](#13)
   - [1.3.2](#132)
     - [Material Design version 2 -- first small changes](#material-design-version-2----first-small-changes)
-    - [CSS](#css-1)
+    - [CSS](#css-2)
       - [Themes and behavior](#themes-and-behavior)
       - [Themes and media queries](#themes-and-media-queries)
     - [Components](#components-1)
@@ -44,15 +48,29 @@
 
 ### 1.6.0
 
-Under the hood: integration of [Cyano](https://github.com/ArthurClemens/cyano) with the React Hooks API. This has resulted in more coherent (and slighly smaller) code.
+#### Under the hood
 
-Bug fixes:
+Integration of [Cyano](https://github.com/ArthurClemens/cyano) with the React Hooks API. This has resulted in more coherent (and slighly smaller) code.
 
-* Restores focus color with keyboard tab navigation (Button, Icon Button, FAB, Checkbox, Radio Button, Switch, Tabs)
-* ButtonGroup: fixes a layout issue with arrow button
-* Button: reenables `wash` when set to `true`
+#### CSS
+
+Function `writeCSS` in [polythene-scripts](packages/polythene-scripts.md#write-css) can be used to write themed CSS to a file. The function accepts new option `wrapInGlobal` to use with CSS Modules: set to `true` to wrap the generated css inside a `:global { ... }` tag.
+
+#### Bug fixes
+
+* Restores focus color with keyboard tab navigation (Button, Icon Button, FAB, Checkbox, Radio Button, Switch, Tabs).
+* ButtonGroup: fixes a layout issue with arrow button.
+* Button: reenables `wash` when set to `true`.
 * TextField: fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
 * Fixes a bug where Webpack's production build (using treeshaking) caused JS-in-CSS functions to drop, resulting in missing styles in the document head.
+
+#### Removed
+
+* `renderer` is no longer exported from `polythene-mithril` and `polythene-react`. 
+  * For Mithril: use `m`.
+  * For React with JSX: no change.
+  * For React with hyperscript: use [react-hyperscript](https://github.com/mlmorg/react-hyperscript) or `ReactDOM.render`.
+* Most deprecation warnings have been removed.
 
 
 ### 1.5.4
