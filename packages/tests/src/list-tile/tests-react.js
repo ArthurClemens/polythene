@@ -114,10 +114,10 @@ const reactTests = ({ Icon, ListTile, h }) => {
       )
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: child (JSX)",
+      name: "Option: child",
       component: () =>
         <ListTile
           title="Ancillary Justice"
@@ -125,7 +125,7 @@ const reactTests = ({ Icon, ListTile, h }) => {
         />
     },
     {
-      name: "Option: highSubtitle and front (JSX)",
+      name: "Option: highSubtitle and front",
       component: withRouter(({ history }) => 
         <ListTile
           title="Ancillary Justice"

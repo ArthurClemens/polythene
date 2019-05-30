@@ -8,10 +8,10 @@ const reactTests = ({ Shadow }) => {
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Add to a React element (JSX)",
+      name: "Add to a React element",
       component: () =>
         <div>
           <div>Some element</div>

@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-checkbox";
-import { Vnode } from "polythene-react-base";
 
-interface Checkbox extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Checkbox extends Options{}
 declare namespace Checkbox {}
 declare class Checkbox extends Component<Options> {}
 

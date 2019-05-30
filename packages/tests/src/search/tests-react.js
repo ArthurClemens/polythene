@@ -3,7 +3,6 @@ import { Search, IconButton, Button, Shadow, List, ListTile } from "polythene-re
 import { h } from "../../utils/enhanced-renderer";
 import { a } from "cyano-react";
 import genericTests from "./tests-generic";
-import SearchField from "./components/searchfield-hyperscript";
 import SearchFieldJSX from "./components/searchfield-jsx";
 
 const reactTests = () => {
@@ -13,20 +12,12 @@ const reactTests = () => {
       section: "React specific tests",
     },
     {
-      name: "Option: textfield, buttons (hyperscript)",
-      component: () =>
-        <SearchField />
-    },
-    {
-      section: "React JSX tests",
-    },
-    {
-      name: "Option: textfield, buttons (JSX)",
+      name: "Option: textfield, buttons",
       component: () =>
         <SearchFieldJSX />
     },
     {
-      name: "Theme (JSX)",
+      name: "Theme",
       component: () =>
         <SearchFieldJSX className="tests-search-themed-search" tone="dark" />
     },

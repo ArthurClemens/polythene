@@ -1,4 +1,4 @@
-import { Component, Vnode } from "mithril";
+import { Component } from "mithril";
 import { Options } from "polythene-core-list-tile";
 
 interface ListTile extends Options{}

@@ -6,18 +6,12 @@
 
 - [Options](#options)
 - [Usage](#usage)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
   - [Tab options](#tab-options)
   - [Scrollable tabs](#scrollable-tabs)
-    - [With JSX](#with-jsx-1)
-    - [With hyperscript](#with-hyperscript-1)
   - [Getting the tabs state](#getting-the-tabs-state)
 - [Appearance](#appearance)
   - [Mobile bottom menu](#mobile-bottom-menu)
   - [Scrollable tabs with custom arrow icons](#scrollable-tabs-with-custom-arrow-icons)
-    - [With JSX](#with-jsx-2)
-    - [With hyperscript](#with-hyperscript-2)
   - [Styling](#styling)
     - [Themed component](#themed-component)
     - [CSS](#css)
@@ -41,9 +35,6 @@
 Tabs can show a text label, an icon, or the combination of the two. 
 Because each tab are registered with the parent Tabs component, tabs cannot be passed as children but only as option parameter to Tabs.
 
-<a id="with-jsx"></a>
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/zoppbr7t/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -56,24 +47,6 @@ const tabOptions = [{
 
 <Tabs tabs={tabOptions} />
 ~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/hd68eu6n/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Tabs } from "polythene-react"
-
-const tabOptions = [{
-  //
-}]
-
-h(Tabs, {
-  tabs: tabOptions
-})
-~~~
-
 
 <a id="tab-options"></a>
 ### Tab options
@@ -180,8 +153,6 @@ The container's `background-color` will automatically set the scroll button colo
 
 For example:
 
-<a id="with-jsx-1"></a>
-#### With JSX
 
 ~~~jsx
 <div
@@ -195,29 +166,6 @@ For example:
 >
   <Tabs scrollable tabs={tabOptions} />
 </div>
-~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-h("div",
-  {
-    style: {
-      maxWidth: "400px",
-      color: "#fff",
-      backgroundColor: "#444",
-      overflowX: "hidden",
-      height: "48px"
-    }
-  },
-  h(Tabs,
-    {
-      scrollable: true,
-      tabs: tabOptions
-    }
-  )
-)
 ~~~
 
 
@@ -261,9 +209,6 @@ Use option `menu` to remove the minimum width settings from the tab buttons and 
 <a id="scrollable-tabs-with-custom-arrow-icons"></a>
 ### Scrollable tabs with custom arrow icons
 
-<a id="with-jsx-2"></a>
-#### With JSX
-
 ~~~jsx
 import React from "react"
 import { Tabs } from "polythene-react"
@@ -297,46 +242,6 @@ const tabOptions = [
   />
 </div>
 ~~~
-
-<a id="with-hyperscript-2"></a>
-#### With hyperscript
-
-~~~javascript
-import { renderer as h, Tabs } from "polythene-react"
-
-const arrowBackSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z\"/></svg>"
-const arrowForwardSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z\"/></svg>"
-
-const tabOptions = [
-  { label: "Web" },
-  { label: "Shopping" },
-  { label: "Videos" },
-  { label: "Images" },
-  { label: "Books" },
-  { label: "More" }
-]
-
-h("div",
-  {
-    style: {
-      maxWidth: "400px",
-      color: "#fff",
-      backgroundColor: "#444",
-      overflowX: "hidden",
-      height: "48px"
-    },
-  },
-  h(Tabs,
-    {
-      scrollable: true,
-      scrollIconBackward: { svg: { content: h.trust(arrowBackSVG) } },
-      scrollIconForward: { svg: { content: h.trust(arrowForwardSVG) } },
-      tabs: tabOptions
-    }
-  )
-)
-~~~
-
 
 <a id="styling"></a>
 ### Styling
@@ -386,20 +291,6 @@ Some style attributes can be set using option `style`. The tab button styles can
   }}
 />
 ~~~
-
-or with hyperscript:
-
-~~~javascript
-h(Tabs, {
-  all: {
-    style: {
-      backgroundColor: "#EF6C00",
-      color: "#fff"
-    }
-  }
-})
-~~~
-
 
 <a id="tab-widths"></a>
 ### Tab widths

@@ -1,4 +1,3 @@
-export * from "polythene-react-base";
 export * from "polythene-react-button";
 export * from "polythene-react-button-group";
 export * from "polythene-react-card";
@@ -29,4 +28,3 @@ export * from "polythene-react-switch";
 export * from "polythene-react-tabs";
 export * from "polythene-react-textfield";
 export * from "polythene-react-toolbar";
-

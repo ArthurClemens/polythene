@@ -1,4 +1,3 @@
-export * from "polythene-mithril-base";
 export { Button } from "polythene-mithril-button";
 export { ButtonGroup } from "polythene-mithril-button-group";
 export { Card } from "polythene-mithril-card";

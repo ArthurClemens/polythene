@@ -6,13 +6,13 @@
 
 ## Live examples
 
-Try out Polythene in JSFiddles and Flems.
+Try out Polythene in JSFiddles and Flems:
 
-## Topics
+### Topics
 
 * [Router links](https://jsfiddle.net/ArthurClemens/7vurv0c3/)
 
-## Components
+### Components
 
 * Buttons
   * [Button](https://jsfiddle.net/ArthurClemens/5d5xfoxs/)

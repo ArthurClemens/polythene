@@ -1,8 +1,4 @@
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- */
-
 import { _Conditional } from "polythene-core";
 import { cast, h, useState, useEffect } from "cyano-mithril";
 import { _Drawer } from "polythene-core-drawer";
@@ -16,9 +12,6 @@ const DrawerToggle = cast(_Conditional, { h, useState, useEffect });
 DrawerToggle["displayName"] = "DrawerToggle";
 
 export const Drawer = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: vnode =>
     h(DrawerToggle, {
       ...vnode.attrs,

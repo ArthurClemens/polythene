@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-icon";
-import { Vnode } from "polythene-react-base";
 
-interface Icon extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Icon extends Options{}
 declare namespace Icon {}
 declare class Icon extends Component<Options> {}
 

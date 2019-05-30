@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options, show, hide } from "polythene-core-snackbar";
-import { Vnode } from "polythene-react-base";
 
-interface Snackbar extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Snackbar extends Options{}
 declare namespace Snackbar {}
 
 declare class Snackbar extends Component<Options> {

@@ -15,10 +15,10 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Header with icon, media, actions (JSX)",
+      name: "Header with icon, media, actions",
       component: () => 
         <Card
           content={[
@@ -50,7 +50,7 @@ const reactTests = ({ Card, Button }) => { // eslint-disable-line no-unused-vars
         />
     },
     {
-      name: "Embedded video (JSX)",
+      name: "Embedded video",
       component: () => 
         <Card
           content={[

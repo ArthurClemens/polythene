@@ -19,7 +19,6 @@
   "dependencies": {
     "cyano-react": "^0.5.1",
     "polythene-core-card": "^1.5.4",
-    "polythene-react-base": "^1.5.4",
     "polythene-react-icon": "^1.5.4",
     "polythene-react-list-tile": "^1.5.4",
     "polythene-react-shadow": "^1.5.4"

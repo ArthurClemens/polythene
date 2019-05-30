@@ -76,23 +76,23 @@ const reactTests = ({ FAB, Icon, SVG, h }) => { // eslint-disable-line no-unused
       section: "React  JSX tests",
     },
     {
-      name: "Option: icon as attribute (JSX)",
+      name: "Option: icon as attribute",
       component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} mini />
     },
     {
-      name: "Option: icon as component (JSX)",
+      name: "Option: icon as component",
       component: () => <FAB mini><Icon><SVG>{iconAlarmSVG}</SVG></Icon></FAB>
     },
     {
-      name: "Option: shadowDepth (5) (JSX)",
+      name: "Option: shadowDepth (5)",
       component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} shadowDepth={5} />
     },
     {
-      name: "Option: style (JSX)",
+      name: "Option: style",
       component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
     },
     {
-      name: "With router (JSX)",
+      name: "With router",
       interactive: true,
       component: withRouter(({ history }) => 
         <FAB

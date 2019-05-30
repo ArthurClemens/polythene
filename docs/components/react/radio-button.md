@@ -7,18 +7,10 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
     - [Reading the checked state](#reading-the-checked-state)
-    - [With JSX](#with-jsx-1)
-    - [With hyperscript](#with-hyperscript-1)
     - [Setting the checked state](#setting-the-checked-state)
-      - [With JSX](#with-jsx-2)
-      - [With hyperscript](#with-hyperscript-2)
     - [Maintaining state](#maintaining-state)
   - [Shared options](#shared-options)
-    - [With JSX](#with-jsx-3)
-    - [With hyperscript](#with-hyperscript-3)
 - [Appearance](#appearance)
   - [Styling](#styling)
     - [Themed component](#themed-component)
@@ -69,9 +61,6 @@ Radio Buttons will generally be used with a [Radio Group](radio-group.md) that m
 
 Equivalent to the example above, now including state handling:
 
-<a id="with-jsx"></a>
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/b1vbbLgw/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -94,30 +83,6 @@ import { RadioGroup } from "polythene-react"
 />
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/fhqrcuL9/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, RadioGroup } from "polythene-react"
-
-// Better solution
-h(RadioGroup, {
-  name: "company",
-  buttons: [
-    {
-      value: "1",
-      label: "One",
-    },
-    {
-      value: "2",
-      label: "Two",
-    }
-  ]
-})
-~~~
-
 Note that `name` is required when using RadioGroup.
 
 See also [Handling state](../../handling-state.md).
@@ -128,8 +93,6 @@ See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 
-<a id="with-jsx-1"></a>
-#### With JSX
 
 ~~~jsx
 <RadioGroup
@@ -137,14 +100,6 @@ To read the checked state, use `onChange`:
 />
 ~~~
 
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-h(RadioGroup, {
-  onChange: state => this.setState({ checkedValue: state.value })
-})
-~~~
 
 But unlike [Checkbox](checkbox.md), the checked state does not need to be set explicitly - this is handled by Radio Group:
 
@@ -173,8 +128,6 @@ To set the initially checked radio button, pass `defaultChecked` to the `button`
 
 or use `defaultCheckedValue` on the group:
 
-##### With JSX
-
 ~~~jsx
 <RadioGroup
   name="company"
@@ -191,27 +144,6 @@ or use `defaultCheckedValue` on the group:
   ]}
 />
 ~~~
-
-
-##### With hyperscript
-
-~~~javascript
-m(RadioGroup, {
-  name: "company",
-  defaultCheckedValue: "1",
-  buttons: [
-    {
-      value: "1",
-      label: "One",
-    },
-    {
-      value: "2",
-      label: "Two",
-    }
-  ]
-})
-~~~
-
 
 #### Maintaining state
 
@@ -288,9 +220,6 @@ class Form extends React.Component {
 
 Use RadioGroup's option `all` to pass options that should be applied to all Radio Buttons.
 
-<a id="with-jsx-2"></a>
-#### With JSX
-
 ~~~jsx
 <RadioGroup
   name="company"
@@ -302,23 +231,6 @@ Use RadioGroup's option `all` to pass options that should be applied to all Radi
   ]}
 />
 ~~~
-
-<a id="with-hyperscript-2"></a>
-#### With hyperscript
-
-~~~javascript
-h(RadioGroup, {
-  name: "company",
-  all: {
-    className: "my-class"
-  },
-  buttons: [
-    // ...
-  ]
-})
-~~~
-
-
 
 <a id="appearance"></a>
 ## Appearance

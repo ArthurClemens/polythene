@@ -7,10 +7,14 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Reading and setting the checked state](#reading-and-setting-the-checked-state)
+    - [Example managing mutating state](#example-managing-mutating-state)
 - [Appearance](#appearance)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Icons](#icons)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -26,8 +30,6 @@
 <a id="usage"></a>
 ## Usage
 
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/hp6ksg2m/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -42,21 +44,6 @@ import { Checkbox } from "polythene-react"
 />
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/g07snvox/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Checkbox } from "polythene-react"
-
-h(Checkbox, {
-  defaultChecked: true,
-  label: "Label"
-  value: "100"
-})
-~~~
-
 
 <a id="reading-and-setting-the-checked-state"></a>
 ### Reading and setting the checked state
@@ -65,9 +52,6 @@ See also [Handling state](../../handling-state.md).
 
 To read the checked state, use `onChange`:
 
-<a id="with-jsx-1"></a>
-#### With JSX
-
 ~~~jsx
 <Checkbox 
   onChange={
@@ -75,16 +59,6 @@ To read the checked state, use `onChange`:
   }
   checked={this.state.checked}
 />
-~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-h(Checkbox, {
-  onChange: newState => this.setState({ checked: newState.checked }),
-  checked: this.state.checked
-})
 ~~~
 
 <a id="example-managing-mutating-state"></a>

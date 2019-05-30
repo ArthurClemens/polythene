@@ -1,8 +1,4 @@
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- */
-
 import { _Conditional } from "polythene-core";
 import { cast, h, a, useReducer, useRef, getRef, useState, useEffect } from "cyano-mithril";
 import { _Menu } from "polythene-core-menu";
@@ -14,9 +10,6 @@ const MenuToggle = cast(_Conditional, { h, useState, useEffect });
 MenuToggle["displayName"] = "MenuToggle";
 
 export const Menu = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: vnode =>
     h(MenuToggle, {
       ...vnode.attrs,

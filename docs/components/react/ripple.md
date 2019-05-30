@@ -9,6 +9,9 @@
 - [Variations](#variations)
 - [Appearance](#appearance)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -24,8 +27,6 @@
 <a id="usage"></a>
 ## Usage
 
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/brx9wdhv/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -57,39 +58,6 @@ import { Ripple, ListTile } from "polythene-react"
   after={<Ripple/>}
 />
 ~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/L0e0bb68/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { Ripple } from "polythene-react"
-
-// render component inside container
-h("div", 
-  {
-    style: {
-      position: "relative",
-      width: "400px",
-      height: "200px"
-    }
-  },
-  h(Ripple)
-)
-~~~
-
-Use option `after` to append a Ripple to a Polythene component:
-
-~~~javascript
-import { Ripple, ListTile } from "polythene-react"
-
-h(ListTile, {
-  title: "Title",
-  after: h(Ripple)
-})
-~~~
-
 
 
 <a id="variations"></a>

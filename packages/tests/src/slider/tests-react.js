@@ -9,10 +9,10 @@ const reactTests = ({ Slider, h, a }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: ticks with pin (JSX)",
+      name: "Option: ticks with pin",
       interactive: true,
       component: () =>
         <Slider 
@@ -25,7 +25,7 @@ const reactTests = ({ Slider, h, a }) => { // eslint-disable-line no-unused-vars
         />
     },
     {
-      name: "With an editable numeric value (JSX)",
+      name: "With an editable numeric value",
       interactive: true,
       component: () => <RGBSlider />
     }

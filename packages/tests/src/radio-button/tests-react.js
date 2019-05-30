@@ -51,10 +51,10 @@ const reactTests = ({ RadioButton }) => {
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: label (JSX)",
+      name: "Option: label",
       component: () =>
         <RadioGroup buttons={[
           {
@@ -68,15 +68,15 @@ const reactTests = ({ RadioButton }) => {
         ]} className="multiple" />
     },
     {
-      name: "RadioButtons onChange (JSX)",
+      name: "RadioButtons onChange",
       component: Form
     },
     {
-      name: "RadioGroup onChange (JSX)",
+      name: "RadioGroup onChange",
       component: RadioGroupOnChange
     },
     {
-      name: "RadioGroup set from outside (JSX)",
+      name: "RadioGroup set from outside",
       component: RadioGroupOutside
     },
   ];

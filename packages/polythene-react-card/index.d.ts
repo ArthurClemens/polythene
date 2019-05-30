@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-card";
-import { Vnode } from "polythene-react-base";
 
-interface Card extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Card extends Options{}
 declare namespace Card {}
 declare class Card extends Component<Options> {}
 

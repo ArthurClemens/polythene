@@ -1,7 +1,4 @@
 
-/**
- * @typedef {import("polythene-react-base").Vnode} Vnode
- */
 
 import { _Conditional } from "polythene-core";
 import { cast, h, a, useReducer, useRef, getRef, useState, useEffect } from "cyano-react";
@@ -13,9 +10,6 @@ const MenuInstance = cast(_Menu, { h, a, useReducer, useState, useEffect, useRef
 const MenuToggle = cast(_Conditional, { h, useState, useEffect });
 MenuToggle["displayName"] = "MenuToggle";
 
-/**
- * @param {Vnode} props 
- */
 export const Menu = props => (
   h(MenuToggle, {
     ...props,

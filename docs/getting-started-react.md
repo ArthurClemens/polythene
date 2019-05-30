@@ -8,11 +8,7 @@
   - [Installation](#installation)
   - [Examples](#examples)
     - [A single component](#a-single-component)
-      - [With JSX](#with-jsx)
-      - [With hyperscript](#with-hyperscript)
     - [A simple app](#a-simple-app)
-      - [With JSX](#with-jsx-1)
-      - [With hyperscript](#with-hyperscript-1)
 - [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
   - [Setup](#setup)
   - [Example script](#example-script)
@@ -61,8 +57,6 @@ npm install --save polythene-react polythene-css
 
 #### A single component
 
-##### With JSX
-
 ~~~jsx
 import React from "react"
 import { Button } from "polythene-react"
@@ -71,26 +65,13 @@ import "polythene-css"
 <Button raised label="Click" />
 ~~~
 
-##### With hyperscript
-
-~~~javascript
-import { renderer as h, Button } from "polythene-react"
-
-h(Button, {
-  raised: true,
-  label: "Click"
-})
-~~~
-
 
 #### A simple app
-
-##### With JSX
 
 ~~~jsx
 import React from "react"
 import ReactDOM from "react-dom"
-import { renderer as h, Button, Dialog } from "polythene-react"
+import { Button, Dialog } from "polythene-react"
 import "polythene-css"
 import { addTypography } from "polythene-css"
 
@@ -117,39 +98,6 @@ const App = () => (
 const mountNode = document.querySelector("#app")
 ReactDOM.render(<App />, mountNode)
 ~~~
-
-
-##### With hyperscript
-
-~~~javascript
-import ReactDOM from "react-dom"
-import { renderer as h, Button, Dialog } from "polythene-react"
-import { addTypography } from "polythene-css"
-
-addTypography()
-
-const App = () => (
-  h("div", [
-    h(Button, {
-      raised: true,
-      label: "Show dialog",
-      events: {
-        onClick: () => Dialog.show({
-          /* note the Dialog component is below the other elements in the app */
-          title: "Hello",
-          body: "Click outside to close, or press ESCAPE",
-          backdrop: true
-        })
-      }
-    }),
-    h(Dialog)
-  ])
-)
-
-const mountNode = document.querySelector("#app")
-ReactDOM.render(h(App), mountNode)
-~~~
-
 
 <a id="usage-in-a-html-file-or-jsfiddle"></a>
 ## Usage in a HTML file or JSFiddle

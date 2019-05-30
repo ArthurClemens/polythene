@@ -8,8 +8,6 @@
 - [Usage](#usage)
   - [Calling a Dialog](#calling-a-dialog)
     - [Dialog spawner](#dialog-spawner)
-      - [With JSX](#with-jsx)
-      - [With hyperscript](#with-hyperscript)
     - [Multiple dialog spawners](#multiple-dialog-spawners)
     - [Multiple dialogs](#multiple-dialogs)
     - [Showing and hiding dialogs](#showing-and-hiding-dialogs)
@@ -18,19 +16,11 @@
     - [Callbacks](#callbacks)
   - [Drawing a Dialog](#drawing-a-dialog)
     - [Example with a Toolbar as custom header and footer](#example-with-a-toolbar-as-custom-header-and-footer)
-      - [With JSX](#with-jsx-1)
-      - [With hyperscript](#with-hyperscript-1)
     - [Example with modal and backdrop](#example-with-modal-and-backdrop)
-      - [With JSX](#with-jsx-2)
-      - [With hyperscript](#with-hyperscript-2)
     - [Full screen dialog](#full-screen-dialog)
-    - [With JSX](#with-jsx-3)
-      - [With hyperscript](#with-hyperscript-3)
   - [Dynamic content](#dynamic-content)
     - [Passing dialog options as a function](#passing-dialog-options-as-a-function)
-      - [With JSX](#with-jsx-4)
     - [Continuously calling Dialog.show](#continuously-calling-dialogshow)
-      - [With JSX](#with-jsx-5)
 - [Appearance](#appearance)
   - [Styling](#styling)
     - [Themed component](#themed-component)
@@ -66,9 +56,6 @@ Dialogs will be spawned from the component invocation (`<Dialog />`). To show a 
 
 Because a dialog should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
 
-<a id="with-jsx"></a>
-##### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/m08o291L/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -82,18 +69,6 @@ render() {
     <Dialog  />
   </div>)
 }
-~~~
-
-<a id="with-hyperscript"></a>
-##### With hyperscript
-
-~~~javascript
-import { renderer as h, Dialog } from "polythene-react"
-
-h("div", [
-  // ... app content
-  h(Dialog)
-])
 ~~~
 
 The Dialog component itself does not accept any appearance options. Instead, you pass options when calling `show` - allowing to show custom dialogs from anywhere in the app.
@@ -115,11 +90,6 @@ When you are using multiple spawners, differentiate them with option `spawn`:
 <Dialog spawn="special" />
 ~~~
 
-or with hyperscript:
-
-~~~javascript
-h(Dialog, { spawn: "special" })
-~~~
 
 Calls to show the that particular dialog will then also need to pass the same spawn name:
 
@@ -245,9 +215,6 @@ Variations:
 
 A dialog header can contain any content, but using a [Toolbar](../toolbar.md) is convenient to display action buttons (not according to Material Design specs, but nonetheless used in many interfaces).
 
-<a id="with-jsx-1"></a>
-##### With JSX
-
 ~~~jsx
 import React from "react"
 import { Dialog, Toolbar, ToolbarTitle } from "polythene-react"
@@ -261,38 +228,12 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
-<a id="with-hyperscript-1"></a>
-##### With hyperscript
-
-~~~javascript
-import { renderer as h, Dialog, Toolbar, ToolbarTitle } from "polythene-react"
-
-const dialogOptions = {
-  header: h(Toolbar, {
-    content: [
-      h(ToolbarTitle, { text: "Title", key: "title" })
-    ]
-  }),
-  body: "Body", 
-  footer: h(Toolbar, {
-    content: [
-      h(ToolbarTitle, { text: "Footer", key: "footer" })
-    ]
-  })
-})
-
-Dialog.show(dialogOptions)
-~~~
-
 <a id="example-with-modal-and-backdrop"></a>
 #### Example with modal and backdrop
 
 A modal dialog is a dialog that can only be closed with an explicit choice; clicking the background does not count as a choice.
 
 To make this behavior explicit, a modal dialog often has a tinted backdrop. This also gives focus to the dialog contents.
-
-<a id="with-jsx-2"></a>
-##### With JSX
 
 ~~~jsx
 import React from "react"
@@ -314,44 +255,10 @@ const dialogOptions = {
 Dialog.show(dialogOptions)
 ~~~
 
-<a id="with-hyperscript-2"></a>
-##### With hyperscript
-
-~~~javascript
-import { renderer as h, Dialog, Button } from "polythene-react"
-
-const footerButtons = [
-  h(Button,
-    {
-      label: "Cancel",
-      onClick: Dialog.hide
-    }
-  ),
-  h(Button,
-    {
-      label: "Discard",
-      onClick: Dialog.hide
-    }
-  )
-]
-
-const dialogOptions = {
-  body: "Discard draft?",
-  modal: true,
-  backdrop: true,
-  footerButtons
-})
-
-Dialog.show(dialogOptions)
-~~~
-
 <a id="full-screen-dialog"></a>
 #### Full screen dialog
 
 A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (options `title` and `footer` are not used):
-
-<a id="with-jsx-3"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/npq4phf3/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -406,53 +313,6 @@ Dialog.show({
 })
 ~~~
 
-<a id="with-hyperscript-3"></a>
-##### With hyperscript
-
-~~~javascript
-import { renderer as h, Button, Toolbar, IconButton } from "polythene-react"
-import { addLayoutStyles } from "polythene-css"
-
-addLayoutStyles() // to use h(".flex")
-
-const iconClose = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/></svg>"
-const shortText = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-const content = "Content..."
-
-const toolbarRow = title => [
-  h(IconButton, {
-    key: "close",
-    icon: {
-      svg: { content: h.trust(iconClose) }
-    },
-    events: {
-      onClick: () => Dialog.hide()
-    }
-  }),
-  h("span.flex", { key: "spacer" }, title),
-  h(Button, {
-    key: "save",
-    label: "Save",
-    events: {
-      onClick: () => Dialog.hide()
-    }
-  })
-]
-
-const dialogOptions = {
-  fullScreen: true,
-  backdrop: true,
-  header: h(Toolbar,
-    { content: toolbarRow("New event") }
-  ),
-  body: h.trust(content)
-}
-
-Dialog.show(dialogOptions)
-~~~
-
-
 
 <a id="dynamic-content"></a>
 ### Dynamic content
@@ -482,8 +342,6 @@ Dialog.show(optionsFn)
 
 The more elaborate example below shows a file upload form, where the submit button is disabled until a file has been selected.
 
-<a id="with-jsx-4"></a>
-##### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/1fgh0bgt/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -556,9 +414,6 @@ The example shows a counter that is reflected in the dialog.
 <a href="https://jsfiddle.net/ArthurClemens/oe91vy6f/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 
-<a id="with-jsx-5"></a>
-##### With JSX
-
 ~~~jsx
 import React, { Component } from "react"
 import { Dialog, Button } from "polythene-react"
@@ -600,8 +455,6 @@ class Updating extends Component {
   }
 }
 ~~~
-
-
 
 <a id="appearance"></a>
 ## Appearance

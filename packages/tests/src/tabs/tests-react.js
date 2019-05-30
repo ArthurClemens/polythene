@@ -15,10 +15,10 @@ const reactTests = ({ Tabs }) => {
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: selectedTabIndex (1) (JSX)",
+      name: "Option: selectedTabIndex (1)",
       component: () =>
         <Tabs
           autofit
@@ -27,7 +27,7 @@ const reactTests = ({ Tabs }) => {
         />
     },
     {
-      name: "Option: scrollable with custom icons (JSX)",
+      name: "Option: scrollable with custom icons",
       component: () =>
         <ScrollableTabs />
     },

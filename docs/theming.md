@@ -9,8 +9,7 @@ This section describes a number of ways to create customizations - from simple l
 - [Customization options](#customization-options)
 - [The quickest way to create a custom blue button](#the-quickest-way-to-create-a-custom-blue-button)
   - [Mithril example](#mithril-example)
-  - [React JSX example](#react-jsx-example)
-  - [React hyperscript example](#react-hyperscript-example)
+  - [React example](#react-example)
 
 <!-- /MarkdownTOC -->
 
@@ -57,7 +56,7 @@ m(Button, {
 
 
 <a id="react-jsx-example"></a>
-### React JSX example
+### React example
 
 ~~~jsx
 import React from "react"
@@ -70,23 +69,4 @@ ButtonCSS.addStyle(".blue-button", {
 })
 
 <Button className="blue-button" label="Blue Button" />
-~~~ 
-
-
-<a id="react-hyperscript-example"></a>
-### React hyperscript example
-
-~~~javascript
-import { renderer as h, Button } from "polythene-react"
-import { ButtonCSS } from "polythene-css"
-
-ButtonCSS.addStyle(".blue-button", {
-  color_light_background: "blue",
-  color_light_text:       "white"
-})
-
-h(Button, {
-  className: "blue-button",
-  label: "Blue Button"
-})
 ~~~ 

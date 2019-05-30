@@ -89,10 +89,10 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
     },
     
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Options: header, tiles, indent, indentedBorder (JSX)",
+      name: "Options: header, tiles, indent, indentedBorder",
       component: () =>
         <List
           indentedBorder

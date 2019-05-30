@@ -273,7 +273,7 @@ A full screen dialog uses [Toolbar](../toolbar.md) to implement its own header (
 
 ~~~javascript
 import m from "mithril"
-import { renderer as h, Button, Toolbar, IconButton } from "polythene-mithril"
+import { Button, Toolbar, IconButton } from "polythene-mithril"
 import { addLayoutStyles } from "polythene-css"
 
 addLayoutStyles() // to use m(".flex")
@@ -421,17 +421,18 @@ The example shows a counter that is reflected in the dialog.
 <a href="https://jsfiddle.net/ArthurClemens/pwLLjtL0/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
+import m from "mithril"
 import stream from "mithril/stream"
-import { renderer as h, Dialog, Button } from "polythene-mithril"
+import { Dialog, Button } from "polythene-mithril"
 
 const longText = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
 
 const Updating = {
   oninit: vnode => {
     const dialogVisible = stream(false)
-    dialogVisible.map(h.redraw) // redraw whenever this changes
+    dialogVisible.map(m.redraw) // redraw whenever this changes
     const count = stream(0)
-    count.map(h.redraw) // redraw whenever this changes
+    count.map(m.redraw) // redraw whenever this changes
     vnode.state = {
       dialogVisible,
       count
@@ -443,14 +444,14 @@ const Updating = {
     if (dialogVisible) {
       const dialogProps = {
         title: state.count(),
-        body: h.trust(longText),
+        body: m.trust(longText),
         didHide: () => state.dialogVisible(false)
       }
       Dialog.show(dialogProps)
     }
-    return h("div", [
-      h("span", state.count()),
-      h(Button, {
+    return m("div", [
+      m("span", state.count()),
+      m(Button, {
         raised: true,
         label: "Show Dialog",
         events: {

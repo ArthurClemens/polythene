@@ -1,7 +1,4 @@
 
-/**
- * @typedef {import("polythene-react-base").Vnode} Vnode
- */
 
 import { BaseSpinner } from "polythene-react-base-spinner";
 import { _Spinner } from "polythene-core-material-design-progress-spinner";
@@ -14,9 +11,6 @@ const Spinner = cast(_Spinner, { h, useState, useRef, useEffect, BaseSpinner });
 const SpinnerToggle = cast(_Conditional, { h, useState, useEffect });
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 
-/**
- * @param {Vnode} props 
- */
 export const MaterialDesignProgressSpinner = props => (
   h(SpinnerToggle, {
     ...props,

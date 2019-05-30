@@ -12,10 +12,10 @@ const reactTests = () => {
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "App drawer (JSX)",
+      name: "App drawer",
       interactive: true,
       exclude: true,
       component: () =>

@@ -1,9 +1,4 @@
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- * @typedef {import("polythene-core-dialog").Options} Options
- */
-
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from "cyano-mithril";
 import { Multi } from "polythene-core";
 import { _Dialog } from "polythene-core-dialog";

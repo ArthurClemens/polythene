@@ -99,8 +99,6 @@ const SimpleForm = {
 <a id="react-example"></a>
 ## React example
 
-#### With JSX
-
 Checkbox:
 
 ~~~jsx
@@ -122,31 +120,6 @@ Text Field:
   value={this.state.value}
 />
 ~~~
-
-#### With hyperscript
-
-Checkbox:
-
-~~~javascript
-h(Checkbox, {
-  // read state
-  onChange: newState => this.setState({ checked: newState.checked }),
-  // set checked state 
-  checked: this.state.checked
-})
-~~~
-
-Text Field:
-
-~~~javascript
-m(TextField, {
-  // read state
-  onChange: newState => this.setState({ value: newState.value }),
-  // set checked state 
-  value: this.state.value
-})
-~~~
-
 
 
 <a id="components-supporting-onchange"></a>

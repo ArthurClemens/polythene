@@ -61,14 +61,14 @@ const reactTests = ({ Ripple, h }) => { // eslint-disable-line no-unused-vars
       )
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: center (JSX)",
+      name: "Option: center",
       component: () => <Ripple center={true} />
     },
     {
-      name: "Themed (should be red and permanent) (JSX)",
+      name: "Themed (should be red and permanent)",
       component: () => <Ripple
         className="react-ripple-themed-ripple"
         endOpacity={1.0}
@@ -76,7 +76,7 @@ const reactTests = ({ Ripple, h }) => { // eslint-disable-line no-unused-vars
       />
     },
     {
-      name: "Appended to an element (JSX)",
+      name: "Appended to an element",
       component: () =>
         <div style={{
           position: "relative",

@@ -1,9 +1,7 @@
-import { Component, Vnode } from "mithril";
+import { Component } from "mithril";
 import { Options } from "polythene-core-button-group";
 
-interface ButtonGroup extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface ButtonGroup extends Options{}
 declare namespace ButtonGroup {}
 declare const ButtonGroup: Component<Options>;
 

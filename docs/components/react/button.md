@@ -6,8 +6,6 @@
 
 - [Options](#options)
 - [Usage](#usage)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
   - [Links](#links)
   - [Events](#events)
   - [A row of buttons](#a-row-of-buttons)
@@ -33,9 +31,6 @@
 <a id="usage"></a>
 ## Usage
 
-<a id="with-jsx"></a>
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/5db99xoj/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -43,19 +38,6 @@ import React from "react"
 import { Button } from "polythene-react"
 
 <Button label="Button" />
-~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/5z374g58/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Button } from "polythene-react"
-
-h(Button, {
-  label: "Button"
-})
 ~~~
 
 
@@ -78,17 +60,6 @@ Add an onClick event:
     onClick: () => console.log("click")
   }}
 />
-~~~
-
-With hyperscript:
-
-~~~javascript
-h(Button, {
-  label: "Button",
-  events: {
-    onClick: () => console.log("click")
-  }
-})
 ~~~
 
 

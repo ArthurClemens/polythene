@@ -9,7 +9,10 @@
   - [Links](#links)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -24,9 +27,6 @@
 
 <a id="usage"></a>
 ## Usage
-
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/gmdcvjeL/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -82,71 +82,11 @@ front={<Icon
 />}
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/mc9kaqgc/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, ListTile } from "polythene-react"
-
-h(ListTile, {
-  title: "My title"
-})
-~~~
-
-To show the subtitle on 1 line:
-
-~~~javascript
-h(ListTile, {
-  title: "My title",
-  subtitle: "My subtitle"
-})
-~~~
-
-To show a long subtitle running on 2 lines:
-
-~~~javascript
-h(ListTile, {
-  title: "My title",
-  highSubtitle: "My loooooooooooong subtitle"
-})
-~~~
-
-To show an icon:
-
-~~~javascript
-import { renderer as h, ListTile, Icon } from "polythene-react"
-
-h(ListTile, {
-  title: "My title",
-  front: h(Icon, {
-    size: "large",
-    avatar: true,
-    src: "app/images/1.png"
-  })
-})
-~~~
-
-Or use an SVG as icon:
-
-~~~javascript
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
-
-// ...
-front: h(Icon, {
-  svg: { content: h.trust(starsSVG) }
-})
-~~~
-
-
 <a id="links"></a>
 ### Links
 
 Both primary and secondary content can be set as link. For a general principle, see: [URLs and router links](../../handling-urls.md).
 
-<a id="with-jsx-1"></a>
-#### With JSX
 
 To make the primary content a link:
 
@@ -204,65 +144,6 @@ const starsSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99
   })
 />
 ~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-To make the primary content a link:
-
-~~~javascript
-import { renderer as h, List, ListTile, Icon } from "polythene-react"
-import { withRouter } from "react-router-dom"
-
-withRouter(({ history }) =>
-  h(List, [
-    h(ListTile, {
-      title: "Jennifer Barker",
-      subtitle: "Starting post doc",
-      front: h(Icon, {
-        src: "images/jennifer.png",
-        avatar: true,
-        size: "large"
-      }),
-      url: {
-        href: "/friends/jennifer"
-        onClick: e => (
-          e.preventDefault(),
-          history.push("/friends/jennifer")
-        )
-      }
-    })
-  ])
-)
-~~~
-
-To show secondary content at the right, including a link:
-
-~~~javascript
-import { renderer as h,  ListTile, Icon } from "polythene-react"
-
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
-
-// ... withRouter, List
-h(ListTile, {
-  title: "My title",
-  secondary: {
-    icon: {
-      size: "small",
-      svg: { content: h.trust(starsSVG) }
-    },
-    url: {
-      href: "/friends/jennifer"
-      onClick: e => (
-        e.preventDefault(),
-        history.push("/friends/jennifer")
-      )
-    }
-  })
-})
-~~~
-
-
 
 <a id="appearance"></a>
 ## Appearance

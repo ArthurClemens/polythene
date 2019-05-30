@@ -9,7 +9,10 @@
   - [Links](#links)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style option](#style-option)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -24,9 +27,6 @@
 
 <a id="usage"></a>
 ## Usage
-
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/nj11av54/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -53,23 +53,6 @@ or even with Icon and SVG components:
 import { FAB, Icon, SVG } from "polythene-react"
 
 <FAB mini><Icon><SVG>{iconSVG}</SVG></Icon></FAB>
-~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/Lebqe5g2/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, FAB } from "polythene-react"
-
-// note the quoted SVG string:
-const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>"
-
-h(FAB, {
-  mini: true,
-  icon: { svg: { content: h.trust(iconSVG) } }
-})
 ~~~
 
 
@@ -110,15 +93,6 @@ FABCSS.addStyle(".themed-fab", {
 })
 
 <FAB icon={{ svg: { content: starsSVG } }} className="themed-fab" />
-~~~
-
-or with hyperscript:
-
-~~~javascript
-h(FAB, {
-  icon: { svg: { content: h.trust(starsSVG) } },
-  className: "themed-svg"
-})
 ~~~
 
 <a id="css"></a>

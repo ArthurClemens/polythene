@@ -1,4 +1,3 @@
-export * from "polythene-react-base";
 export { Button } from "polythene-react-button";
 export { ButtonGroup } from "polythene-react-button-group";
 export { Card } from "polythene-react-card";

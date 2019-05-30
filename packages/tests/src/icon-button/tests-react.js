@@ -74,26 +74,26 @@ const reactTests = ({ IconButton, Icon, SVG, h }) => { // eslint-disable-line no
     },
 
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: icon as attribute (JSX)",
+      name: "Option: icon as attribute",
       component: () => <IconButton icon={{ svg: { content: iconFavoriteSVG } }} />
     },
     {
-      name: "Option: icon as component (JSX)",
+      name: "Option: icon as component",
       component: () => <IconButton><Icon><SVG>{iconFavoriteSVG}</SVG></Icon></IconButton>
     },
     {
-      name: "Option: label (JSX)",
+      name: "Option: label",
       component: () => <IconButton label="Label"><Icon><SVG>{iconFavoriteSVG}</SVG></Icon></IconButton>
     },
     {
-      name: "Option: style (JSX)",
+      name: "Option: style",
       component: () => <IconButton icon={{ svg: { content: iconFavoriteSVG } }} style={{ color: "#FFCCBC", backgroundColor: "#4E342E" }}>{iconFavoriteSVG}</IconButton>
     },
     {
-      name: "With router (JSX)",
+      name: "With router",
       interactive: true,
       component: withRouter(({ history }) => 
         <IconButton

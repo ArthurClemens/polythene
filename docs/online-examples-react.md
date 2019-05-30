@@ -6,9 +6,7 @@
 
 ## Live examples
 
-Try out Polythene in JSFiddles and Flems.
-
-## JSX
+Try out Polythene in JSFiddles and Flems:
 
 ### Topics
 
@@ -61,44 +59,3 @@ Try out Polythene in JSFiddles and Flems.
 * [SVG](https://jsfiddle.net/ArthurClemens/qm31tx7b/)
 * [Tabs](https://jsfiddle.net/ArthurClemens/zoppbr7t/)
 * [Toolbar](https://jsfiddle.net/ArthurClemens/rgmzx6jr/)
-
-
-## Hyperscript
-
-### Topics
-
-* [Router links](https://jsfiddle.net/ArthurClemens/gqef8c0g/)
-
-### Components
-
-* Buttons
-  * [Button](https://jsfiddle.net/ArthurClemens/5z374g58/)
-  * [FAB](https://jsfiddle.net/ArthurClemens/Lebqe5g2/)
-  * [Icon Button](https://jsfiddle.net/ArthurClemens/xh7jgutu/)
-  * [Raised Button](https://jsfiddle.net/ArthurClemens/hL8wmrpL/)
-* [Card](https://jsfiddle.net/ArthurClemens/h6n5jzgd/)
-* Dialog: no hyperscript examples yet
-* [Icon](https://jsfiddle.net/ArthurClemens/qhh725aa/)
-* Inputs and Controls
-  * [Checkbox](https://jsfiddle.net/ArthurClemens/g07snvox/)
-  * [Radio Button](https://jsfiddle.net/ArthurClemens/fhqrcuL9/)
-  * [Slider](https://jsfiddle.net/ArthurClemens/ekht8sef/)
-  * [Switch](https://jsfiddle.net/ArthurClemens/0eaeadbm/)
-  * [Text Field](https://jsfiddle.net/ArthurClemens/yug5s0ha/)
-* [List](https://jsfiddle.net/ArthurClemens/3vdfmg8p/)
-* [List Tile](https://jsfiddle.net/ArthurClemens/mc9kaqgc/)
-* Menu
-  * [Menu layout and styling](https://jsfiddle.net/ArthurClemens/umrnvm13/)
-  * [Menu opening variations](https://jsfiddle.net/ArthurClemens/fzcys56b/)
-* Notifications
-  * [Notification](https://jsfiddle.net/ArthurClemens/08g6aqpd/)
-  * [Snackbar](https://jsfiddle.net/ArthurClemens/opx44Lhq/)
-* [Ripple](https://jsfiddle.net/ArthurClemens/L0e0bb68/)
-* Search
-  * [Search field](https://jsfiddle.net/ArthurClemens/hruxczph/)
-* [Shadow](https://jsfiddle.net/ArthurClemens/ohuxgfef/)
-* [Spinner](https://jsfiddle.net/ArthurClemens/j74x8b9w/)
-* [SVG](https://jsfiddle.net/ArthurClemens/3v5v5kdb/)
-* [Tabs](https://jsfiddle.net/ArthurClemens/hd68eu6n/)
-* [Toolbar](https://jsfiddle.net/ArthurClemens/dg9f6day/)
-

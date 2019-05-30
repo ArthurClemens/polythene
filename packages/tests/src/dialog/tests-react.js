@@ -59,10 +59,10 @@ const reactTests = ({ Dialog, Button }) => {
       }
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: title and body (long text) (JSX)",
+      name: "Option: title and body (long text)",
       interactive: true,
       exclude: true,
       component: () =>
@@ -73,14 +73,14 @@ const reactTests = ({ Dialog, Button }) => {
         }} />
     },
     {
-      name: "Option: modal with backdrop (JSX)",
+      name: "Option: modal with backdrop",
       interactive: true,
       exclude: true,
       component: () =>
         <Opener dialogAttrs={modalDialogOptions} />
     },
     {
-      name: "Full screen (JSX)",
+      name: "Full screen",
       interactive: true,
       exclude: true,
       component: () =>

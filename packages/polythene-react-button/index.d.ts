@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-button";
-import { Vnode } from "polythene-react-base";
 
-interface Button extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Button extends Options{}
 declare namespace Button {}
 declare class Button extends Component<Options> {}
 

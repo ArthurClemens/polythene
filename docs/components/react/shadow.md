@@ -7,7 +7,9 @@
 - [Options](#options)
 - [Usage](#usage)
 - [Appearance](#appearance)
+    - [Themed component](#themed-component)
   - [Styling](#styling)
+    - [CSS](#css)
 
 <!-- /MarkdownTOC -->
 
@@ -24,9 +26,6 @@
 
 Shadow has 5 depth levels, configured with option `shadowDepth`.
 
-<a id="with-jsx"></a>
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/uej4sw3q/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -36,17 +35,6 @@ import { Shadow } from "polythene-react"
 <Shadow shadowDepth={2} />
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/ohuxgfef/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Shadow } from "polythene-react"
-
-h(Shadow, { shadowDepth: 2 })
-~~~
-
 To add a shadow to an element, the element must have the style `position: "relative"`. In this example the shadow is added to the outer div:
 
 ~~~jsx
@@ -54,20 +42,6 @@ To add a shadow to an element, the element must have the style `position: "relat
   <span>Some card</span>
   <Shadow shadowDepth={2} />
 </div>
-~~~
-
-or with hyperscript:
-
-~~~javascript
-h(".outer",
-  {
-    style: { position: "relative" }
-  },
-  [
-    h("span", "Some card"),
-    h(Shadow, { shadowDepth: 2 })
-  ]
-)
 ~~~
 
 To animated the shadow on change, use `animated`. Using a dynamic shadowDepth value in the component state:

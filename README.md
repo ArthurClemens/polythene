@@ -15,7 +15,7 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 
 * Allows creating dynamic and interactive interfaces with ease
 * Closely follows the Material Design specification
-* Versatile theming options
+* Versatile theming options to totally deviate from Material Design
 * Supports touch, mouse and keyboard
 * Extensive documentation with example code
 
@@ -56,9 +56,10 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 
 ## Compatibility
 
-* Mithril 1.x
+* Mithril 1.x, Mithril 2.x
 * React 16.x
 * Bundlers: Rollup, Webpack 3 and 4
+* TypeScript
 
 
 ## Browser support
@@ -69,8 +70,3 @@ Can be used as general-purpose component library that includes dialogs, cards, n
 * Internet Explorer: 11 - see [Known issues](docs/known-issues.md)
 * Mobile Safari: 9+
 * Safari: 9+
-
-
-## Older versions
-
-* [Polythene 0.3 for Mithril 0.x](https://github.com/ArthurClemens/polythene/tree/0.x)

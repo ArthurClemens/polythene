@@ -12,6 +12,9 @@
 - [Appearance](#appearance)
   - [Single color](#single-color)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
 
@@ -50,27 +53,12 @@ import { MaterialDesignProgressSpinner as Spinner } from "polythene-react"
 <a id="displaying-the-spinner"></a>
 ### Displaying the Spinner
 
-<a id="with-jsx"></a>
-#### With JSX
-
 ~~~jsx
 import React from "react"
 import { MaterialDesignSpinner as Spinner } from "polythene-react"
 
 <Spinner show />
 ~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/j74x8b9w/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, MaterialDesignSpinner as Spinner } from "polythene-react"
-
-h(Spinner, { show: true })
-~~~
-
 
 <a id="show"></a>
 ### Show
@@ -86,9 +74,6 @@ By default the Spinner is hidden. To show the spinner, either:
 
 To show a spinner "filling" a progress circle:
 
-<a id="with-jsx-1"></a>
-#### With JSX
-
 ~~~jsx
 import React from "react"
 import { MaterialDesignSpinner as Spinner } from "polythene-react"
@@ -96,119 +81,9 @@ import { MaterialDesignSpinner as Spinner } from "polythene-react"
 <Spinner show percentage={this.state.percentage} />
 ~~~
 
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-import { renderer as h, MaterialDesignProgressSpinner as Spinner } from "polythene-react"
-
-h(Spinner,
-  {
-    show: true,
-    percentage: this.state.percentage
-  }
-)
-~~~
-
 The progress spinner draws a circle between 0 and 360 degrees. The completeness is set with `percentage`, with a range between `0.0` and `1.0`. This value would normally be set by a progress function, for instance a loader.
 
 For demonstration purposes, this can be emulated with a "step" function that updates the percentage until 1.0 is reached:
-
-<a id="with-hyperscript-2"></a>
-#### With hyperscript
-
-~~~javascript
-import { Component } from "react"
-import { renderer as h, MaterialDesignProgressSpinner as Spinner, Button, Slider } from "polythene-react"
-
-const STEP_DURATION = 2000
-
-export default class extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      percentage: 0
-    }
-    this.step = this.step.bind(this)
-    this.updatePercentage = this.updatePercentage.bind(this)
-  }
-
-  componentDidMount() {
-    this._mounted = true
-  }
-
-  componentWillUnmount() {
-    this._mounted = false
-  }
-
-  updatePercentage(percentage) {
-    if (this._mounted) {
-      this.setState({ percentage })
-    }
-  }
-
-  step(timestamp) {
-    if (!this._start) {
-      this._start = timestamp
-    }
-    const progress = timestamp - this._start
-    this.setState({
-      percentage: Math.min(1, 1.0 / STEP_DURATION * progress)
-    })
-    if (progress <= STEP_DURATION) {
-      window.requestAnimationFrame(this.step)
-    }
-  }
-
-  render() {
-    const percentage = this.state.percentage
-    return h("div", [
-      h("div",
-        {
-          style: {
-            display: "flex",
-            width: "100%",
-            margin: "0 0 20px 0"
-          }
-        },
-        h(Slider, {
-          min: 0,
-          max: 1,
-          step: 0,
-          value: percentage,
-          permanent: true,
-          onChange: ({ value }) => this.updatePercentage(value),
-          style: {
-            display: "flex",
-            alignItems: "center"
-          },
-          after: h(Spinner, Object.assign(
-            {},
-            {
-              show: true,
-              percentage,
-              class: "self-center"
-            }
-          ))
-        })
-      ),
-      h(Button, {
-        raised: true,
-        label: "Run",
-        events: {
-          onClick: () => (
-            this._start = null,
-            window.requestAnimationFrame(this.step)
-          )
-        }
-      })
-    ])
-  }
-}
-~~~
-
-
 
 <a id="appearance"></a>
 ## Appearance

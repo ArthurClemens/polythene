@@ -6,10 +6,16 @@
 
 - [Options](#options)
 - [Usage](#usage)
+      - [With SVG](#with-svg)
+      - [With SVG source files](#with-svg-source-files)
+      - [With image source files](#with-image-source-files)
 - [Appearance](#appearance)
   - [Sizes](#sizes)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -24,9 +30,6 @@
 
 <a id="usage"></a>
 ## Usage
-
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/ep9pf5wp/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -63,54 +66,6 @@ import { Icon, SVG } from "polythene-react"
 ~~~jsx
 <Icon src={"img/arrow.png" />
 ~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/qhh725aa/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-<a id="with-trusted-svg-text"></a>
-##### With trusted SVG text
-
-~~~javascript
-import { renderer as h, Icon } from "polythene-react"
-
-// note the quoted SVG string:
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
-
-h(Icon, {
-  svg: { content: h.trust(starsSVG) }
-})
-~~~
-
-or pass an SVG component as child:
-
-~~~javascript
-import { renderer as h, Icon, SVG } from "polythene-react"
-
-h(Icon,
-  h(SVG, { content: h.trust(starsSVG) })
-)
-~~~
-
-<a id="with-svg-source-files-1"></a>
-##### With SVG source files
-
-~~~javascript
-h(Icon, {
-  svg: { src: "app/assets/stars.svg" }
-})
-~~~
-
-<a id="with-image-source-files-1"></a>
-##### With image source files
-
-~~~javascript
-h(Icon, {
-  src: "img/arrow.png"
-})
-~~~
-
 
 
 <a id="appearance"></a>

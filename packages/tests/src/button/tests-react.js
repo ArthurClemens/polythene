@@ -133,18 +133,18 @@ const reactTests = ({ Button, h }) => {
         )
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Themed Button: (option: border) (JSX)",
+      name: "Themed Button: (option: border)",
       component: () => <Button label="Button" className="react-secondary-button" border />
     },
     {
-      name: "Option: inactivate (2s) (JSX)",
+      name: "Option: inactivate (2s)",
       component: () => <Button label="Inactivated for 2s" inactivate={2} />
     },
     {
-      name: "HOC (JSX)",
+      name: "HOC",
       component: () => <SecondaryButton label="Secondary Button" />
     },
   ];

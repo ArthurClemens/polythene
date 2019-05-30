@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-material-design-spinner";
-import { Vnode } from "polythene-react-base";
 
-interface MaterialDesignSpinner extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface MaterialDesignSpinner extends Options{}
 declare namespace MaterialDesignSpinner {}
 declare class MaterialDesignSpinner extends Component<Options> {}
 

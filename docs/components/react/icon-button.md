@@ -12,7 +12,10 @@
   - [Interactivity](#interactivity)
   - [Size](#size)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -29,9 +32,6 @@
 ## Usage
 
 Icon Button takes an icon options object.
-
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/xuo1gow5/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -60,38 +60,7 @@ import { IconButton, Icon, SVG } from "polythene-react"
 <IconButton><Icon><SVG>{starsSVG}</SVG></Icon></IconButton>
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/xh7jgutu/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, IconButton } from "polythene-react"
-
-// note the quoted SVG string:
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
-
-h(IconButton, {
-  icon: { svg: { content: h.trust(starsSVG) } }
-})
-~~~
-
 See [Icon](../icon.md) for more Icon options.
-
-Alternatively, pass an Icon as child:
-
-~~~javascript
-import { renderer as h, Icon, IconButton, SVG } from "polythene-react"
-
-const starsSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"/></svg>"
-
-const StarIcon = h(Icon,
-  h(SVG, { content: h.trust(starsSVG) })
-)
-
-h(IconButton, StarIcon)
-~~~
-
 
 
 <a id="links"></a>
@@ -125,15 +94,6 @@ Disable hover and ripple effects:
 <IconButton icon={{ svg: { content: starsSVG } }} wash={false} ink={false} />
 ~~~
 
-or with hyperscript:
-
-~~~javascript
-h(IconButton, {
-  icon: { svg: { content: h.trust(starsSVG) } },
-  wash: false,
-  ink: false
-})
-~~~
 
 Alternatively, use `inactive`:
 

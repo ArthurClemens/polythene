@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-ripple";
-import { Vnode } from "polythene-react-base";
 
-interface Ripple extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Ripple extends Options{}
 declare namespace Ripple {}
 declare class Ripple extends Component<Options> {}
 

@@ -1,8 +1,4 @@
 
-/**
- * @typedef {import("mithril").Vnode} Vnode
- */
-
 import { BaseSpinner } from "polythene-mithril-base-spinner";
 import { _Spinner } from "polythene-core-material-design-progress-spinner";
 import classes from "polythene-css-classes/material-design-progress-spinner";
@@ -15,9 +11,6 @@ const SpinnerToggle = cast(_Conditional, { h, useState, useEffect });
 SpinnerToggle["displayName"] = "MaterialDesignProgressSpinnerToggle";
 
 export const MaterialDesignProgressSpinner = {
-  /**
-   * @param {Vnode} vnode
-   */
   view: vnode =>
     h(SpinnerToggle, {
       ...vnode.attrs,

@@ -1,24 +1,24 @@
-import { renderer as h } from "polythene-mithril";
+import m from "mithril";
 
 const results = ({ name, tests }) => (
-  h("div", {
+  m("div", {
     className: `tests-${name.replace(/[^\w\d]+/g, "-").toLowerCase()}`
   }, tests.map(test => {
     if (test.section) {
-      return h("div", test.section);
+      return m("div", test.section);
     }
     const testName = `test-${(test.name)}`;
-    return h("div", {
+    return m("div", {
       key: testName,
       className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),
     }, [
-      h("div",
+      m("div",
         { className: "result-title" },
         test.name
       ),
-      h("div",
-        h("div",
-          h("div", h(test.component, test.attrs, test.children))
+      m("div",
+        m("div",
+          m("div", m(test.component, test.attrs, test.children))
         )
       )
     ]);

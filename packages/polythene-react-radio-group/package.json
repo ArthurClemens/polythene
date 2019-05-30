@@ -19,8 +19,7 @@
   "dependencies": {
     "cyano-react": "^0.5.1",
     "polythene-core-radio-group": "^1.5.4",
-    "polythene-react-radio-button": "^1.5.4",
-    "polythene-react-base": "^1.5.4"
+    "polythene-react-radio-button": "^1.5.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.18"

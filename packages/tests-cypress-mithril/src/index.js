@@ -1,6 +1,7 @@
+import m from "mithril";
 import { addLayoutStyles, addTypography } from "polythene-css";
 import Page from "./Page";
-import { renderer as h, List, ListTile } from "polythene-mithril";
+import { List, ListTile } from "polythene-mithril";
 import routes from "./routes";
 
 addLayoutStyles();
@@ -8,21 +9,21 @@ addTypography();
 
 const index = {
   view: () =>
-    h(List,
+    m(List,
       routes.map(route => (
-        h(ListTile, {
+        m(ListTile, {
           title: route.name,
           hoverable: true,
           url: {
             href: route.path,
-            oncreate: h.route.link
+            oncreate: m.route.link
           }
         })
       ))
     ),
 };
 
-h.route.prefix("#");
+m.route.prefix("#");
 const mountNode = document.querySelector("#app");
 const routeData = {
   "/": {
@@ -36,4 +37,4 @@ routes.forEach(route => routeData[route.path] = {
     return Page(route, "/");
   }
 });
-h.route(mountNode, "/", routeData);
+m.route(mountNode, "/", routeData);

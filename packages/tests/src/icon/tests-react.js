@@ -49,18 +49,18 @@ const reactTests = ({ Icon, SVG, h }) => { // eslint-disable-line no-unused-vars
     },
 
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: svg as attribute (JSX)",
+      name: "Option: svg as attribute",
       component: () => <Icon svg={{ content: iconStarsSVG }} />
     },
     {
-      name: "Option: SVG as component (JSX)",
+      name: "Option: SVG as component",
       component: () => <Icon><SVG>{iconStarsSVG}</SVG></Icon>
     },
     {
-      name: "Option: style (JSX)",
+      name: "Option: style",
       component: () => <Icon style={{ color: "#EF6C00" }}><SVG>{iconStarsSVG}</SVG></Icon>
     },
   ];

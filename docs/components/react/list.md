@@ -12,7 +12,10 @@
   - [Keyboard control](#keyboard-control)
 - [Appearance](#appearance)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -28,9 +31,6 @@
 <a id="usage"></a>
 ## Usage
 
-<a id="with-jsx"></a>
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/yzba5Lvn/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -45,31 +45,10 @@ import { List, ListTile } from "polythene-react"
 
 The list header will be also rendered using a list tile.
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/3vdfmg8p/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, List, ListTile } from "polythene-react"
-
-h(List, {
-  header: {
-    title: "Friends"
-  },
-  tiles: [
-    h(ListTile, {title: "Jennifer Barker"}),
-    h(ListTile, {title: "Ali Connors"}),
-  ]
-})
-~~~
-
-
 <a id="list-content-variations"></a>
 ## List content variations
 
 See [List Tile](list-tile.md) for layout variations, for example to add links, icons and images. 
-
 
 
 <a id="variations"></a>
@@ -80,9 +59,6 @@ See [List Tile](list-tile.md) for layout variations, for example to add links, i
 > [source](https://material.io/guidelines/components/subheaders.html#subheaders-list-subheaders)
 
 In this situation we want to indent the list-header, and if we show borders, indent them too. We do so by adding the parameter `indent` to the header [List Tiles](../list-tile.md), and set `indentedBorder` to true. For example:
-
-<a id="with-jsx-1"></a>
-#### With JSX
 
 ~~~jsx
 import React from "react"
@@ -95,24 +71,6 @@ import { List, ListTile } from "polythene-react"
   ]}  
 />
 ~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-import { renderer as h, List, ListTile } from "polythene-react"
-
-h(List, {
-  indentedBorder: true,
-  tiles: [
-    h(ListTile, {
-      title: "Jennifer Barker",
-      indent: true
-    })
-  ]
-})
-~~~
-
 
 <a id="sticky-headers"></a>
 ### Sticky headers
@@ -150,9 +108,6 @@ In this example we are creating a list that accepts a click to create the first 
 A more elaborate example is given in [Search - Results list](search.md#result-list).
 
 <a href="https://jsfiddle.net/ArthurClemens/hv8kcfs1/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-<a id="with-jsx-2"></a>
-#### With JSX
 
 ~~~jsx
 import React from "react"
@@ -209,8 +164,6 @@ class KeyboardList extends React.Component {
   }
 }
 ~~~
-
-
 
 
 <a id="appearance"></a>

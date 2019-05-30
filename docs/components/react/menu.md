@@ -8,11 +8,7 @@
 - [Options](#options-1)
 - [Types of menu](#types-of-menu)
 - [Usage](#usage)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
   - [Showing](#showing)
-    - [With JSX](#with-jsx-1)
-    - [With hyperscript](#with-hyperscript-1)
   - [Hiding the menu](#hiding-the-menu)
   - [Positioning](#positioning)
   - [Long lists: menu height and scrolling](#long-lists-menu-height-and-scrolling)
@@ -20,11 +16,7 @@
   - [Dropdown menu](#dropdown-menu)
   - [Exposing dropdown menu](#exposing-dropdown-menu)
   - [Dialog menu](#dialog-menu)
-    - [With JSX](#with-jsx-2)
-    - [With hyperscript](#with-hyperscript-2)
   - [Settings menu (position to selected value)](#settings-menu-position-to-selected-value)
-    - [With JSX](#with-jsx-3)
-    - [With hyperscript](#with-hyperscript-3)
 - [Appearance](#appearance)
   - [Variations](#variations)
   - [Styling](#styling)
@@ -69,8 +61,6 @@
 
 A bare bones menu (made permanently visible to start simple):
 
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/gta0c3te/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -84,23 +74,6 @@ import { Menu, List, ListTile } from "polythene-react"
     <ListTile title="No" />
   </List>
 </Menu>
-~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/umrnvm13/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Menu, List, ListTile } from "polythene-react"
-
-h(Menu, {
-  permanent: true,
-  content: h(List, [
-    h(ListTile, { title: "Yes" }),
-    h(ListTile, { title: "No" })
-  ])
-})
 ~~~
 
 <a id="showing"></a>
@@ -121,8 +94,6 @@ Four things are involved in creating a menu:
 
 Menu state is best stored locally, in the container component:
 
-<a id="with-jsx-1"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/Lm1o6f9y/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -167,58 +138,6 @@ export default class extends Component {
   }
 }
 ~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/fzcys56b/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import React, { Component } from "react"
-import { renderer as h, Menu, List, ListTile, Button } from "polythene-react"
-
-export default class extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      isOpen: false
-    }
-  }
-
-  render() {
-    const isOpen = this.state.isOpen
-    const target = "simple-menu"
-    return h("div",
-      { style: { position: "relative" } },
-      [
-        h(Button, 
-          {
-            raised: true,
-            label: "Open menu",
-            id: target,
-            events: {
-              onClick: () => this.setState({ isOpen: true })
-            }
-          }
-        ),
-        h(Menu, 
-          {
-            target: `#${target}`,
-            show: isOpen,
-            didHide: () => this.setState({ isOpen: false })
-          },
-          h(List, [
-            h(ListTile, { title: "Yes", ink: true, hoverable: true }),
-            h(ListTile, { title: "No", ink: true, hoverable: true })
-          ])
-        )
-      ]
-    )
-  }
-}
-~~~
-
 
 <a id="hiding-the-menu"></a>
 ### Hiding the menu
@@ -293,12 +212,9 @@ The appearance will look more natural when `origin` is set to "top" - it will lo
 
 A dialog can be used as menu by passing param `menu` to the dialog component. This will show a dialog with menu contents, centered on the screen:
 
-<a id="with-jsx-2"></a>
-#### With JSX
-
 ~~~jsx
 import React from "react";
-import { renderer as h, Dialog, Button, List, ListTile } from "polythene-react";
+import { Dialog, Button, List, ListTile } from "polythene-react";
 
 const Tile = ({ title, selected, disabled }) =>
   <ListTile
@@ -337,60 +253,12 @@ export default () =>
   />;
 ~~~
 
-
-<a id="with-hyperscript-2"></a>
-#### With hyperscript
-
-~~~javascript
-import { renderer as h, Dialog, Button, List, ListTile } from "polythene-react"
-
-const tile = (title, selected, disabled) =>
-  h(ListTile, {
-    title,
-    selected,
-    disabled,
-    ink: true,
-    events: {
-      onClick: () => {
-        if (!disabled) {
-          Dialog.hide()
-        }
-      }
-    }
-  })
-
-const dialogOptions = {
-  menu: h(List, {
-    hoverable: true,
-    tiles: [
-      tile("Item one",   true,  false),
-      tile("Item two",   false, false),
-      tile("Item three", false, true)
-    ]
-  }),
-  hideDelay: .240
-}
-
-const Page = () =>
-  h(Button, {
-    raised: true,
-    label: "Open",
-    events: {
-      onClick: () => Dialog.show(dialogOptions)
-    }
-  })
-~~~
-
-
 <a id="settings-menu-position-to-selected-value"></a>
 ### Settings menu (position to selected value)
 
 A settings menu shows the selected value, and when opening the menu, highlights the selected value in the menu.
 
 Similar to the simple menu, we keep track of the "open" state. Here we're adding the state for the selected index.
-
-<a id="with-jsx-3"></a>
-#### With JSX
 
 ~~~jsx
 <Menu 
@@ -418,39 +286,6 @@ Similar to the simple menu, we keep track of the "open" state. Here we're adding
   </List>
 </Menu>
 ~~~
-
-<a id="with-hyperscript-3"></a>
-#### With hyperscript
-
-~~~javascript
-h(Menu, 
-  {
-    target: `#${target}`,
-    show: isOpen,
-    size: 5,
-    offsetH: 16,
-    offsetV: 0,
-    reposition: true,
-    didHide: () => this.setState({ isOpen: false })
-  },
-  h(List,
-    {
-      tiles: menuOptions.map((setting, index) =>
-        h(ListTile, {
-          title: setting,
-          selected: index === selectedIndex,
-          ink: true,
-          events: {
-            onClick: () => this.setState({ selectedIndex: index })
-          }
-        })
-      )
-    }
-  )
-)
-~~~
-
-
 
 <a id="appearance"></a>
 ## Appearance

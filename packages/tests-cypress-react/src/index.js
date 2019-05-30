@@ -6,12 +6,14 @@ import {
 } from "react-router-dom";
 import { addTypography, addLayoutStyles } from "polythene-css";
 import "polythene-css";
-import { renderer as h, List, ListTile } from "polythene-react";
+import { List, ListTile } from "polythene-react";
 import Page from "./Page";
 import routes from "./routes";
 
 addTypography();
 addLayoutStyles();
+
+const h = ReactDOM.render;
 
 const Index = () =>
   h("div", null, [

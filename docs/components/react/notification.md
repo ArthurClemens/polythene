@@ -7,8 +7,6 @@
 - [Options](#options)
 - [Usage](#usage)
   - [Notification spawner](#notification-spawner)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
     - [Multiple notification spawners](#multiple-notification-spawners)
     - [Spawner position](#spawner-position)
   - [Notification functions](#notification-functions)
@@ -20,8 +18,6 @@
     - [count](#count)
   - [Callbacks](#callbacks)
   - [Example with action, dialog, pausing](#example-with-action-dialog-pausing)
-    - [With JSX](#with-jsx-1)
-    - [With hyperscript](#with-hyperscript-1)
 - [Appearance](#appearance)
   - [Styling](#styling)
     - [Themed component](#themed-component)
@@ -30,8 +26,6 @@
   - [Dark or light tone](#dark-or-light-tone)
   - [Transitions](#transitions)
     - [Transitioning a container](#transitioning-a-container)
-    - [With JSX](#with-jsx-2)
-    - [With hyperscript](#with-hyperscript-2)
 
 <!-- /MarkdownTOC -->
 
@@ -54,12 +48,9 @@ The Notification component itself does not accept any appearance options. Instea
 <a id="notification-spawner"></a>
 ### Notification spawner
 
-Notifications will be spawned from `<Notification />` (hyperscript: `h(Notification)`). To show notification messages, use `Notification.show()` - more on that later.
+Notifications will be spawned from `<Notification />`. To show notification messages, use `Notification.show()` - more on that later.
 
 Because a notification should float on top of everything else, outside of the context of the caller, it can be considered a global component. It is best placed in the root view, so that it is not obstructed by other components:
-
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/c3wsbhj0/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -75,21 +66,6 @@ render() {
     <Notification />
   </div>)
 }
-~~~
-
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/08g6aqpd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { renderer as h, Notification } from "polythene-react"
-
-h("div", [
-  // ... app content
-  // h(Dialog) // if you use dialogs
-  h(Notification)
-])
 ~~~
 
 Side notes:
@@ -109,11 +85,6 @@ If you are using multiple spawners, differentiate them with option `spawn`:
 <Notification spawn="notifs" />
 ~~~
 
-or with hyperscript:
-
-~~~javascript
-h(Notification, { spawn: "notifs" })
-~~~
 
 Calls to show the message will then also need to pass that spawn:
 
@@ -272,9 +243,6 @@ Callback functions that are called after the transition: `didShow` and `didHide`
 
 Let's say the notification has an Undo button. Clicking it shows a dialog is on screen with OK/Cancel buttons. During the time the dialog is on screen, the notification is paused, so it will still there after the dialog Cancel button is clicked.
 
-<a id="with-jsx-1"></a>
-#### With JSX
-
 ~~~jsx
 import React from "react"
 import { Notification, Dialog, Button } from "polythene-react"
@@ -329,66 +297,6 @@ export default () =>
     }}
   />
 ~~~
-
-<a id="with-hyperscript-1"></a>
-#### With hyperscript
-
-~~~javascript
-import { renderer as h, Notification, Dialog, Button } from "polythene-react"
-
-const dialogOptions = {
-  body: "You pressed a message action",
-  footer: [
-    h(Button, {
-      label: "Cancel",
-      events: {
-        onClick: () => {
-          Dialog.hide()
-          Notification.unpause()
-        }
-      }
-    }),
-    h(Button, {
-      label: "OK",
-      events: {
-        onClick: () => {
-          Dialog.hide()
-          Notification.hide()
-        }
-      }
-    })
-  ],
-  backdrop: true,
-  modal: true,
-  hideDelay: .2
-}
-
-export default () =>
-  h(Button,
-    {
-      raised: true,
-      label: "Show notification",
-      events: {
-        onClick: () =>
-          Notification.show({
-            title: "This is the message",
-            key: "This is the message",
-            layout: "vertical",
-            action: h(Button, {
-              label: "Let me think about it",
-              events: {
-                onClick: () => {
-                  Notification.pause()
-                  Dialog.show(dialogOptions)
-                }
-              }
-            })
-          })
-      }
-    }
-  )
-~~~
-
 
 
 <a id="appearance"></a>
@@ -476,9 +384,6 @@ For this, specify option `containerSelector`.
 
 Note that the container has `position: relative`. The messages will have `position: absolute`.
 
-<a id="with-jsx-2"></a>
-#### With JSX
-
 ~~~jsx
 <div
   id="notifs-area"
@@ -489,27 +394,6 @@ Note that the container has `position: relative`. The messages will have `positi
 >
   <Snackbar spawn="bottom" />
 </div>
-
-Snackbar.show({
-  spawn: "bottom",
-  containerSelector: "#notifs-area",
-  // more message options
-});
-~~~
-
-<a id="with-hyperscript-2"></a>
-#### With hyperscript
-
-~~~javascript
-h("#notifs-area",
-  {
-    style: {
-      position: "relative",
-      height: "200px",
-    }
-  },
-  h(Snackbar, { spawn: "bottom" })
-);
 
 Snackbar.show({
   spawn: "bottom",

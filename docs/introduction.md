@@ -6,8 +6,14 @@
 - [No architecture](#no-architecture)
 - [Composition](#composition)
   - [Example: SVG](#example-svg)
+    - [Mithril example](#mithril-example)
+    - [React example](#react-example)
   - [Example: Icon Button](#example-icon-button)
+    - [Mithril example](#mithril-example-1)
+    - [React example](#react-example-1)
   - [Example: functions to write sub-components](#example-functions-to-write-sub-components)
+    - [Mithril example](#mithril-example-2)
+    - [React example](#react-example-2)
 - [Next](#next)
 
 <!-- /MarkdownTOC -->
@@ -51,7 +57,7 @@ m(Icon,
 )
 ~~~
 
-#### React JSX example
+#### React example
 
 ~~~jsx
 import React from "react"
@@ -63,19 +69,6 @@ const iconSVG = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 17.
   <SVG>{iconSVG}</SVG>
 </Icon>
 ~~~
-
-#### React hyperscript example
-
-~~~javascript
-import { renderer as h, Icon, SVG } from "polythene-react"
-
-const iconSVG = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\"/></svg>"
-
-h(Icon,
-  h(SVG, { content: m.trust(iconSVG) })
-)
-~~~
-
 
 <a id="example-icon-button"></a>
 ### Example: Icon Button
@@ -116,7 +109,7 @@ m(IconButton,
 )
 ~~~
 
-#### React JSX example
+#### React example
 
 Passing a custom Icon as a child to Icon Button:
 
@@ -148,39 +141,6 @@ const iconSVG = ... // see above
 />
 ~~~
 
-#### React hyperscript example
-
-Passing a custom Icon as a child to Icon Button:
-
-~~~javascript
-import { renderer as h, Icon, IconButton, SVG } from "polythene-react"
-
-const iconSVG = "..." // see above
-
-const StarIcon = h(Icon,
-  h(SVG, { content: h.trust(iconSVG) })
-)
-
-h(IconButton, StarIcon)
-~~~
-
-Because Icon Button accepts `icon` options (and Icon accepts `svg` options), we can also use object notation:
-
-~~~javascript
-import { renderer as h, IconButton } from "polythene-react"
-
-const iconSVG = "..." // see above
-
-h(IconButton,
-  {
-    icon: {
-      svg: { content: h.trust(iconSVG) }
-    }
-  }
-)
-~~~
-
-
 
 <a id="example-functions-to-write-sub-components"></a>
 ### Example: functions to write sub-components
@@ -210,7 +170,7 @@ m(Menu, {
 })
 ~~~
 
-#### React JSX example
+#### React example
 
 ~~~jsx
 import React from "react"
@@ -231,28 +191,6 @@ const menuOptions = [
     }
   </List>
 </Menu>
-~~~
-
-#### React hyperscript example
-
-~~~javascript
-import { renderer as h, Menu, List, ListTile } from "polythene-react"
-
-const menuOptions = [
-  "Show all notification content",
-  "Hide sensitive notification content",
-  "Hide all notification content"
-]
-
-h(Menu, {
-  content: h(List, {
-    tiles: menuOptions.map(title =>
-      h(ListTile,
-        { title }
-      )
-    )
-  })
-})
 ~~~
 
 

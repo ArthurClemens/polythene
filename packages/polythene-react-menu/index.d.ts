@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { Options } from "polythene-core-menu";
-import { Vnode } from "polythene-react-base";
 
-interface Menu extends Options{
-  (_: Options): Vnode<Options>;
-}
+interface Menu extends Options{}
 declare namespace Menu {}
 declare class Menu extends Component<Options> {}
 

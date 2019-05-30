@@ -6,18 +6,10 @@
 
 - [Options](#options)
 - [Usage](#usage)
-    - [With JSX](#with-jsx)
-    - [With hyperscript](#with-hyperscript)
   - [Images](#images)
     - [Cropping / origin](#cropping--origin)
-      - [With JSX](#with-jsx-1)
-      - [With hyperscript](#with-hyperscript-1)
     - [Overlay](#overlay)
-    - [With JSX](#with-jsx-2)
-      - [With hyperscript](#with-hyperscript-2)
     - [Title image](#title-image)
-    - [With JSX](#with-jsx-3)
-      - [With hyperscript](#with-hyperscript-3)
   - [Embedded videos](#embedded-videos)
 - [Appearance](#appearance)
   - [Styling](#styling)
@@ -40,8 +32,6 @@
 <a id="usage"></a>
 ## Usage
 
-<a id="with-jsx"></a>
-#### With JSX
 
 <a href="https://jsfiddle.net/ArthurClemens/dhq3cLrv/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
@@ -87,10 +77,10 @@ Content parts are processed in the order as they are written. Of course this mak
 To show in order:
 
 1. header with portrait image
-1. media item
-1. title and subtitle
-1. action row
-1. text
+2. media item
+3. title and subtitle
+4. action row
+5. text
 
 these are passed in this order to `content`:
 
@@ -176,139 +166,6 @@ addLayoutStyles() // to use className="flex"
 />
 ~~~
 
-<a id="with-hyperscript"></a>
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/h6n5jzgd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-The card can contain various elements. The `content` parameter accepts any String, hyperscript or component:
-
-~~~javascript
-import { renderer as h, List } from "polythene-react"
-
-h(Card, {
-  content: h(List, {...})
-})
-~~~
-
-To generated Material Design elements, pass an array of element options, where each item is an object with on of the keys:
-
-* primary
-* text
-* media
-* header
-* actions
-
-Element `primary` contains the sub-options `title` and `subtitle`:
-
-~~~javascript
-h(Card, {
-  content: [{
-    primary: {
-      title: "Primary title",
-      subtitle: "Subtitle"
-    }
-  }]
-})
-~~~
-
-Content parts are processed in the order as they are written. Of course this makes it possible to wildly deviate from the design specs.
-
-To show in order:
-
-1. header with portrait image
-1. media item
-1. title and subtitle
-1. action row
-1. text
-
-these are passed in this order to `content`:
-
-~~~javascript
-h(Card, {
-  content: [
-    {
-      header: {
-        title: "Name",
-        subtitle: "date",
-        icon: {
-          size: "large",
-          avatar: true,
-          src: "img/avatar.png"
-        }
-      }
-    },
-    {
-      media: {
-        content: h("img", {
-          src: "img/large.jpg"
-        })
-      }
-    },
-    {
-      primary: {
-        title: "Primary title",
-        subtitle: "Subtitle"
-      }
-    },
-    {
-      actions: {
-        content: [
-          h(button, {
-            label: "Action 1"
-          }),
-          h(button, {
-            label: "Action 2"
-          })
-        ]
-      }
-    },
-    {
-      text: {
-        content: "More text"
-      }
-    }
-  ]
-})
-~~~
-
-For further control over the `primary` content, you can pass an array to `primary.content`.
-
-~~~javascript
-import { addLayoutStyles } from "polythene-css"
-addLayoutStyles() // to use h(".flex")
-
-h(Card, {
-  content: [{
-    primary: {
-      content: [
-        {
-          media: {
-            ratio: ratio,
-            size: "large",
-            content: h("img", {
-              src: "img/large.jpg"
-            })
-          }
-        },
-        h(".flex"), // 
-        {
-          actions: {
-            layout: "vertical",
-            content: [
-              h(IconButton, { icon: { svg: { content: h.trust(iconHeart) } } }),
-              h(IconButton, { icon: { svg: { content: h.trust(iconBookmark) } } }),
-              h(IconButton, { icon: { svg: { content: h.trust(iconShare) } } })
-            ]
-          }
-        }
-      ]
-    }
-  }]
-})
-~~~
-
-
 <a id="images"></a>
 ### Images
 
@@ -323,8 +180,6 @@ An image that does not fit the ratio is cropped by CSS. An additional parameter 
 
 To show the left side of a landscape image:
 
-<a id="with-jsx-1"></a>
-##### With JSX
 
 ~~~jsx
 <Card
@@ -339,31 +194,11 @@ To show the left side of a landscape image:
 />
 ~~~
 
-<a id="with-hyperscript-1"></a>
-##### With hyperscript
-
-~~~javascript
-h(Card, {
-  content: [{
-    media: {
-      origin: "start",
-      content: h("img", {
-        src: "img/large.png"
-      })
-    }
-  }]
-})
-~~~
-
-
 
 <a id="overlay"></a>
 #### Overlay
 
 Images with an overlay (text, actions) can be created with `media.overlay`:
-
-<a id="with-jsx-2"></a>
-#### With JSX
 
 ~~~jsx
 <Card
@@ -398,46 +233,6 @@ Images with an overlay (text, actions) can be created with `media.overlay`:
 />
 ~~~
 
-<a id="with-hyperscript-2"></a>
-##### With hyperscript
-
-~~~javascript
-h(Card, {
-  content: [{
-    media: {
-      ratio: "square",
-      content: h("img", {
-        src: "img/large.jpg"
-      }),
-      overlay: {
-        sheet: true,
-        className: "pe-dark-tone",
-        content: [
-          {
-            primary: {
-              title: "Primary title",
-              subtitle: "Subtitle"
-            }
-          },
-          {
-            actions: {
-              content: [
-                h(Button, {
-                  label: "Action 1"
-                }),
-                h(Button, {
-                  label: "Action 2"
-                })
-              ]
-            }
-          }
-        ]
-      }
-    }
-  }]
-})
-~~~
-
 An additional HTML element to control the image is "card__media__dimmer". First enable the dimmer: 
 
 ~~~javascript
@@ -466,8 +261,6 @@ To create a fuzzy dark border all around use an inset box shadow
 
 To create a square image at the right side of the title, use `primary.media`:
 
-<a id="with-jsx-3"></a>
-#### With JSX
 
 ~~~jsx
 <Card
@@ -485,27 +278,6 @@ To create a square image at the right side of the title, use `primary.media`:
     }
   ]}
 />
-~~~
-
-<a id="with-hyperscript-3"></a>
-##### With hyperscript
-
-~~~javascript
-h(Card, {
-  content: [{
-    primary: {
-      title: title,
-      subtitle: "Subtitle",
-      media: {
-        ratio: "square",
-        size,
-        content: h("img", {
-          src: "img/large.jpg"
-        })
-      }
-    }
-  }]
-})
 ~~~
 
 <a id="embedded-videos"></a>

@@ -3,7 +3,7 @@
 
 Polythene uniformly uses a `url` object to handle both external URLs and internal app links.
 
-Requirements for the `url` object differ per renderer.
+The contents of the `url` object is different for Mithril and React.
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="1,2,3" -->
 
@@ -21,7 +21,7 @@ Requirements for the `url` object differ per renderer.
 <a id="mithril"></a>
 ## Mithril
 
-Mithril includes [a build-in router](https://mithril.js.org/#routing).
+Mithril includes [a built-in router](https://mithril.js.org/#routing).
 
 To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it should either:
 
@@ -78,8 +78,6 @@ React does not include a router itself, but [React Router](https://github.com/Re
 
 Use the `Link` component (with option `element`) to render route-aware links.
 
-#### With JSX
-
 <a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
@@ -124,64 +122,8 @@ ReactDOM.render(
 )
 ~~~
 
-#### With hyperscript
-
-<a href="https://jsfiddle.net/ArthurClemens/gqef8c0g/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
-
-~~~javascript
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
-import { Button, renderer as h } from "polythene-react"
-
-const Index = ({ history }) => 
-  h("div", [
-    h("h1", "Home"),
-    h(Button, {
-      raised: true,
-      element: Link,
-      label: "Go to page 1",
-      url: {
-        to: "/page1"
-      }
-     })
-  ])
-
-const Page1 = ({ history }) => 
-  h("div", [
-    h("h1", "Page 1"),
-    h(Button, {
-      raised: true,
-      element: Link,
-      label: "Go to home",
-      url: {
-        to: "/"
-      }
-     })
-  ])
-
-const App = () => 
-  h(Switch, [
-    h(Route, {
-      exact: true,
-      path: "/",
-      component: Index
-    }),
-    h(Route, {
-      path: "/page1",
-      component: Page1
-     })
-  ])
-
-ReactDOM.render(
-  h(Router, null, h(App)),
-  document.getElementById("root")
-)
-~~~
-
-
 <a id="external-links-1"></a>
 ### External links
-
-#### With JSX
 
 ~~~jsx
 <Button
@@ -190,14 +132,3 @@ ReactDOM.render(
   }}
 />
 ~~~
-
-#### With hyperscript
-
-~~~javascript
-h(Button, {
-  url: {
-    href: "https://en.wikipedia.org/wiki/E._E._Cummings"
-  }
-})
-~~~
-

@@ -14,10 +14,10 @@ const reactTests = () => {
 
   return [
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: title, body, footer (JSX)",
+      name: "Option: title, body, footer",
       component: () =>
         <DialogPane
           title="Long dialog with a very long title that surely won't fit here"

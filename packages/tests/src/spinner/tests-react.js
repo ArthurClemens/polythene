@@ -3,7 +3,6 @@ import { Button, IOSSpinner, MaterialDesignSpinner, MaterialDesignProgressSpinne
 import { h } from "../../utils/enhanced-renderer";
 import { a } from "cyano-react";
 import genericTests from "./tests-generic";
-import ProgressSlider from "./components/progress-slider-react-hyperscript";
 
 const reactTests = () => {
   return [
@@ -11,20 +10,12 @@ const reactTests = () => {
       section: "React specific tests",
     },
     {
-      name: "Interactive (animated, updateDuration) -- Material Design Progress Spinner (hyperscript)",
-      component: () =>
-        <ProgressSlider updateDuration={0.3} />
-    },
-    {
-      section: "React JSX tests",
-    },
-    {
-      name: "Option: permanent (JSX) -- Material Design Spinner",
+      name: "Option: permanent -- Material Design Spinner",
       component: () =>
         <MaterialDesignSpinner permanent />
     },
     {
-      name: "Option: permanent (JSX) -- iOS Spinner",
+      name: "Option: permanent -- iOS Spinner",
       component: () =>
         <IOSSpinner permanent />
     },

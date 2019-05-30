@@ -40,18 +40,18 @@ const reactTests = ({ SVG, h }) => {
     },
 
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: svg as content attribute (JSX)",
+      name: "Option: svg as content attribute",
       component: () => <SVG content={iconStarsSVG} />
     },
     {
-      name: "Option: SVG as component (JSX)",
+      name: "Option: SVG as component",
       component: () => <SVG>{iconStarsSVG}</SVG>
     },
     {
-      name: "Option: style (JSX)",
+      name: "Option: style",
       component: () => <SVG style={{ color: "#EF6C00" }}>{iconStarsSVG}</SVG>
     },
   ];

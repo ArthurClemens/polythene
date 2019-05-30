@@ -4,7 +4,6 @@ import { Menu, List, ListTile, Shadow, IconButton, Button, Icon, Dialog } from "
 import { h } from "../../utils/enhanced-renderer";
 import { a } from "cyano-react";
 import genericTests from "./tests-generic";
-import SimpleHyperscript from "./components/simple-react-hyperscript";
 import SimpleJSX from "./components/simple-jsx";
 import SettingsJSX from "./components/settings-dialog-jsx";
 import Links from "./components/links-react";
@@ -25,13 +24,6 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
       section: "React specific tests"
     },
     {
-      name: "Simple menu (demo without state) (hyperscript)",
-      interactive: true,
-      exclude: true,
-      component: () =>
-        h(SimpleHyperscript)
-    },
-    {
       name: "Menu with links",
       interactive: true,
       exclude: true,
@@ -40,10 +32,10 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
       )
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Permanent (JSX)",
+      name: "Permanent",
       component: () =>
         <Menu
           width={5}
@@ -72,13 +64,13 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
         </Menu>
     },
     {
-      name: "Simple menu (demo without state) (JSX)",
+      name: "Simple menu (demo without state)",
       interactive: true,
       exclude: true,
       component: () => <SimpleJSX />
     },
     {
-      name: "Dialog with option 'menu' (demo without state) (JSX)",
+      name: "Dialog with option 'menu' (demo without state)",
       interactive: true,
       exclude: true,
       component: () => <SettingsJSX />

@@ -114,14 +114,14 @@ const reactTests = ({ Button, h }) => {
         )
     },
     {
-      section: "React JSX tests",
+      section: "React tests",
     },
     {
-      name: "Option: raised (with option shadowDepth: 2) (JSX)",
+      name: "Option: raised (with option shadowDepth: 2)",
       component: () => <Button raised label="Button" shadowDepth={2} />
     },
     {
-      name: "Option: inactivate (2s) (JSX)",
+      name: "Option: inactivate (2s)",
       component: () => <Button raised label="Inactivated for 2s" inactivate={2} />
     },
 
