@@ -127,6 +127,9 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
           showNotification();
         }
       }
+      return () => {
+        stopTimer();
+      }
     },
     [domElement, isTransitioning, isVisible, isHiding, props.hide, props.show]
   );

@@ -275,6 +275,10 @@ var _Notification = function _Notification(_ref) {
         showNotification();
       }
     }
+
+    return function () {
+      stopTimer();
+    };
   }, [domElement, isTransitioning, isVisible, isHiding, props.hide, props.show]); // Pause logic
 
   useEffect(function () {
