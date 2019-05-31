@@ -1,6 +1,6 @@
 import stream from "mithril/stream";
 
-export default ({ h, a, Shadow }) => ({
+export default ({ h, a, Shadow, className }) => ({
   oninit: vnode => {
     const shadowDepth = stream(1);
     Object.assign(vnode.state, {
@@ -25,7 +25,8 @@ export default ({ h, a, Shadow }) => ({
       ),
       h(Shadow, {
         animated: true,
-        shadowDepth
+        shadowDepth,
+        className
       })
     ]);
   }

@@ -1,4 +1,5 @@
-import { isServer, pointerStartDownEvent, pointerEndDownEvent, filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
+import { filterSupportedAttributes, iconDropdownDown } from 'polythene-core';
+import { getDepthClass } from 'polythene-core-shadow';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -166,127 +167,18 @@ var classes = {
   hasHover: "pe-button--has-hover"
 };
 
+var shadowClasses = {
+  component: "pe-shadow",
+  // elements      
+  bottomShadow: "pe-shadow__bottom",
+  topShadow: "pe-shadow__top",
+  // states
+  animated: "pe-shadow--animated",
+  depth_n: "pe-shadow--depth-",
+  with_active_shadow: "pe-with-active-shadow"
+};
+
 var DEFAULT_SHADOW_DEPTH = 1;
-var DEFAULT_SHADOW_DEPTH_INCREASE = 1;
-var MAX_SHADOW_DEPTH = 5;
-var downButtons = [];
-/*
-useRef combined with useState to enforce re-render.
-*/
-
-var useStateWithRef = function useStateWithRef(_ref) {
-  var useState = _ref.useState,
-      useRef = _ref.useRef;
-  return function (initialValue) {
-    var value = useRef(initialValue);
-
-    var _useState = useState(value.current),
-        _useState2 = _slicedToArray(_useState, 2),
-        setValue = _useState2[1];
-
-    return [value, function (newValue) {
-      return value.current = newValue, setValue(value.current);
-    }];
-  };
-};
-
-var animateZ = function animateZ(which, getButtonProps) {
-  var _getButtonProps = getButtonProps(),
-      shadowDepthBase = _getButtonProps.shadowDepthBase,
-      shadowDepthRef = _getButtonProps.shadowDepthRef,
-      setShadowDepth = _getButtonProps.setShadowDepth,
-      increase = _getButtonProps.increase;
-
-  var newShadowDepth = which === "down" && shadowDepthBase < MAX_SHADOW_DEPTH ? Math.min(shadowDepthBase + increase, MAX_SHADOW_DEPTH) : which === "up" ? Math.max(shadowDepthRef.current - increase, shadowDepthBase) : shadowDepthRef.current;
-
-  if (newShadowDepth !== shadowDepthRef.current) {
-    setShadowDepth(newShadowDepth);
-  }
-};
-
-var tapHandler = function tapHandler(_ref2) {
-  var which = _ref2.which,
-      getButtonProps = _ref2.getButtonProps;
-
-  if (which === "down") {
-    downButtons.push(getButtonProps);
-  }
-
-  animateZ(which, getButtonProps);
-};
-
-var useAnimatedShadow = function useAnimatedShadow(_ref3) {
-  var useState = _ref3.useState,
-      useEffect = _ref3.useEffect,
-      useRef = _ref3.useRef,
-      domElement = _ref3.domElement,
-      props = _objectWithoutProperties(_ref3, ["useState", "useEffect", "useRef", "domElement"]);
-
-  var _useState3 = useState(props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH),
-      _useState4 = _slicedToArray(_useState3, 1),
-      shadowDepthBase = _useState4[0];
-
-  var _useStateWithRef = useStateWithRef({
-    useState: useState,
-    useRef: useRef
-  })(shadowDepthBase),
-      _useStateWithRef2 = _slicedToArray(_useStateWithRef, 2),
-      shadowDepthRef = _useStateWithRef2[0],
-      setShadowDepth = _useStateWithRef2[1];
-
-  var increase = props.increase || DEFAULT_SHADOW_DEPTH_INCREASE;
-  var animateOnTap = props.animateOnTap !== false ? true : false;
-
-  var getButtonProps = function getButtonProps() {
-    return {
-      shadowDepthBase: shadowDepthBase,
-      shadowDepthRef: shadowDepthRef,
-      setShadowDepth: setShadowDepth,
-      increase: increase
-    };
-  };
-
-  useEffect(function () {
-    // Init tap events
-    if (isServer || !domElement || !animateOnTap) return;
-
-    var tapStart = function tapStart() {
-      return tapHandler({
-        which: "down",
-        getButtonProps: getButtonProps
-      });
-    };
-
-    var tapEndAll = function tapEndAll() {
-      downButtons.map(function (getButtonProps) {
-        return tapHandler({
-          which: "up",
-          getButtonProps: getButtonProps
-        });
-      });
-      downButtons.length = 0;
-    };
-
-    pointerStartDownEvent.forEach(function (evt) {
-      return domElement.addEventListener(evt, tapStart);
-    });
-    pointerEndDownEvent.forEach(function (evt) {
-      return document.addEventListener(evt, tapEndAll);
-    }); // Clear tap events
-
-    return function () {
-      pointerStartDownEvent.forEach(function (evt) {
-        return domElement.removeEventListener(evt, tapStart);
-      });
-      pointerEndDownEvent.forEach(function (evt) {
-        return document.removeEventListener(evt, tapEndAll);
-      });
-    };
-  }, [domElement]);
-  var shadowDepth = props.disabled ? 0 : shadowDepthRef.current;
-  return [shadowDepth];
-};
-
 var _Button = function _Button(_ref) {
   var _objectSpread2, _objectSpread3;
 
@@ -321,15 +213,8 @@ var _Button = function _Button(_ref) {
   var onClickHandler = events[a.onclick] || function () {};
 
   var onKeyUpHandler = events[a.onkeyup] || onClickHandler;
-
-  var _ref2 = props.raised ? useAnimatedShadow(_objectSpread({
-    useState: useState,
-    useEffect: useEffect,
-    useRef: useRef,
-    domElement: domElement
-  }, props)) : [0],
-      _ref3 = _slicedToArray(_ref2, 1),
-      shadowDepth = _ref3[0];
+  var shadowDepth = props.raised ? props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH : 0;
+  var animateOnTap = props.animateOnTap !== false ? true : false;
 
   var handleInactivate = function handleInactivate() {
     if (props.inactivate === undefined) {
@@ -365,7 +250,9 @@ var _Button = function _Button(_ref) {
   }), props.testId && {
     "data-test-id": props.testId
   }, {
-    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, props.raised ? classes.contained : null, props.raised ? classes.raised : null, hasHover ? classes.hasHover : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
+    className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, // Raised button classes
+    props.raised ? classes.contained : null, props.raised ? classes.raised : null, props.raised && animateOnTap ? shadowClasses.with_active_shadow : null, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : null, //
+    hasHover ? classes.hasHover : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   }, inactive ? null : _objectSpread((_objectSpread2 = {}, _defineProperty(_objectSpread2, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_objectSpread2, a.onmouseout, function (e) {
     return document.activeElement.blur(), props.events && props.events[a.onmouseout];
   }), _objectSpread2), events, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onclick, function (e) {

@@ -1,12 +1,13 @@
 
 export default {
-  component:    "pe-shadow",
-
-  // elements
-  bottomShadow: "pe-shadow__bottom",
-  topShadow:    "pe-shadow__top",
+  component:          "pe-shadow",
+      
+  // elements      
+  bottomShadow:       "pe-shadow__bottom",
+  topShadow:          "pe-shadow__top",
 
   // states
-  animated:     "pe-shadow--animated",
-  depth_n:      "pe-shadow--depth-",
+  animated:           "pe-shadow--animated",
+  depth_n:            "pe-shadow--depth-",
+  with_active_shadow: "pe-with-active-shadow",
 };

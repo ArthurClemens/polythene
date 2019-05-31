@@ -154,7 +154,7 @@ export default ({ List, ListTile, Icon, h, a }) => {
       }
     },
     {
-      name: "Keyboard control: click to select, then use the arrow keys (Escape to deselect)",
+      name: "Keyboard control: click to select, then use the arrow keys or TAB (Escape to deselect)",
       interactive: true,
       component: KeyboardState
     },

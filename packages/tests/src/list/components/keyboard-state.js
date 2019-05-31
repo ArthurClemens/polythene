@@ -77,11 +77,11 @@ export default ({ h, a, List, ListTile }) => {
 
       const handleKey = e => {
         const index = cityIndex();
-        if (e.key === "ArrowDown" || e.key === "Down") { // "Down" for IE11
+        if (e.key === "ArrowDown" || e.key === "Down" || (e.key === "Tab" && !e.shiftKey)) { // "Down" for IE11
           e.preventDefault();
           const newIndex = Math.min(index + 1, validIndices.length - 1);
           cityIndex(newIndex);
-        } else if (e.key === "ArrowUp" || e.key === "Up") { // "Up" for IE11
+        } else if (e.key === "ArrowUp" || e.key === "Up" || (e.key === "Tab" && e.shiftKey)) { // "Up" for IE11
           e.preventDefault();
           const newIndex = Math.max(0, index - 1);
           cityIndex(newIndex);

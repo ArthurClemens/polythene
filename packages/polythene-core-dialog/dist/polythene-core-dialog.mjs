@@ -275,15 +275,6 @@ var _Dialog = function _Dialog(_ref2) {
     });
   };
 
-  var isFullScreen = function isFullScreen() {
-    return props.fullScreen || stylePropCompare({
-      element: domElement,
-      pseudoSelector: ":before",
-      prop: "content",
-      contains: "\"".concat("full_screen", "\"")
-    });
-  }; // DOM elements
-
 
   useEffect(function () {
     if (!domElement) {
@@ -301,8 +292,6 @@ var _Dialog = function _Dialog(_ref2) {
     }
 
     var handleEscape = function handleEscape(e) {
-      if (isFullScreen() || isModal()) return;
-
       if (e.key === "Escape" || e.key === "Esc") {
         // "Esc" for IE11
         var openDialogs = document.querySelectorAll(".".concat(classes.component));

@@ -3,12 +3,13 @@ import { vars as vars$1 } from 'polythene-theme';
 
 var classes = {
   component: "pe-shadow",
-  // elements
+  // elements      
   bottomShadow: "pe-shadow__bottom",
   topShadow: "pe-shadow__top",
   // states
   animated: "pe-shadow--animated",
-  depth_n: "pe-shadow--depth-"
+  depth_n: "pe-shadow--depth-",
+  with_active_shadow: "pe-with-active-shadow"
 };
 
 function _defineProperty(obj, key, value) {
@@ -65,10 +66,34 @@ function _objectSpread(target) {
 
 var _createShadowForSelector = function _createShadowForSelector(which, depth) {
   return function (selector, vars) {
-    return sel(selector, _defineProperty({}, " .pe-shadow__".concat(which, ".pe-shadow--depth-").concat(depth), {
-      boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
-    }));
+    return [_createRegularShadowForSelector(which, depth, selector, vars), _createActiveShadowForSelector(which, depth, selector, vars)];
   };
+};
+
+var _createRegularShadowForSelector = function _createRegularShadowForSelector(which, depth, selector, vars) {
+  return sel(selector, _defineProperty({}, ".pe-shadow--depth-".concat(depth, " .pe-shadow__").concat(which), {
+    boxShadow: vars["shadow_".concat(which, "_depth_").concat(depth)]
+  }));
+};
+
+var _createActiveShadowForSelector = function _createActiveShadowForSelector(which, depth, selector, vars) {
+  if (depth === 5) {
+    return [];
+  }
+
+  var hoverDepth = depth + 1;
+  var hoverSelector = ".pe-with-active-shadow.pe-shadow--depth-".concat(hoverDepth);
+  return [sel("".concat(hoverSelector, ":focus ").concat(selector, ", ").concat(hoverSelector, ":active ").concat(selector), _defineProperty({}, " .pe-shadow__".concat(which), {
+    boxShadow: vars["shadow_".concat(which, "_depth_").concat(hoverDepth)]
+  }))];
+};
+
+var _createActiveShadowTransition = function _createActiveShadowTransition(selector, vars) {
+  return sel(".pe-with-active-shadow ".concat(selector), {
+    " .pe-shadow__bottom, .pe-shadow__top": {
+      transition: vars.transition
+    }
+  });
 };
 /**
  * @param {string} selector 
@@ -105,6 +130,16 @@ var shadow_depth = function shadow_depth(selector, vars) {
   return vars.shadow_depth !== undefined ? shadow(selector, vars, vars.shadow_depth) : null;
 };
 
+var transition = function transition(selector, vars) {
+  return [sel(selector, {
+    ".pe-shadow--animated": {
+      " .pe-shadow__bottom, .pe-shadow__top": {
+        transition: vars.transition
+      }
+    }
+  }), _createActiveShadowTransition(selector, vars)];
+};
+
 var sharedVarFns = {
   shadow_depth: shadow_depth
 };
@@ -119,15 +154,7 @@ var varFns = _extends({}, {
       }]
     }])];
   },
-  transition: function transition(selector, vars) {
-    return [sel(selector, {
-      ".pe-shadow--animated": {
-        " .pe-shadow__bottom, .pe-shadow__top": {
-          transition: vars.transition
-        }
-      }
-    })];
-  },
+  transition: transition,
   shadow_depth: shadow_depth
 }, [0, 1, 2, 3, 4, 5].reduce(function (acc, depth) {
   return acc["shadow_top_depth_".concat(depth)] = _createShadowForSelector("top", depth), acc["shadow_bottom_depth_".concat(depth)] = _createShadowForSelector("bottom", depth), acc;

@@ -94,7 +94,6 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         return;
       }
       const handleEscape = e => {
-        if (isFullScreen() || isModal()) return;
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(`.${classes.component}`);
           if (openDialogs[openDialogs.length - 1] === domElement) {

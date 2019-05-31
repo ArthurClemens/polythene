@@ -137,7 +137,7 @@ writeCSS({
   styles,
   path: "./dist/css/theme.css",
   autoPrefix: true,
-  gzip: true,
+  gzip: true
 })
 ~~~
 

@@ -1,6 +1,9 @@
 import { filterSupportedAttributes, iconDropdownDown } from "polythene-core";
 import classes from "polythene-css-classes/button";
-import { useAnimatedShadow } from "./useAnimatedShadow";
+import shadowClasses from "polythene-css-classes/shadow";
+import { getDepthClass } from "polythene-core-shadow";
+
+const DEFAULT_SHADOW_DEPTH = 1;
 
 export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
   const events = props.events || {};
@@ -11,9 +14,10 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   const inactive = props.inactive || isInactive;
   const onClickHandler = events[a.onclick] || (() => {});
   const onKeyUpHandler = events[a.onkeyup] || onClickHandler;
-  const [shadowDepth] = props.raised
-    ? useAnimatedShadow({ useState, useEffect, useRef, domElement, ...props })
-    : [0];
+  const shadowDepth = props.raised
+    ? props.shadowDepth !== undefined ? props.shadowDepth : DEFAULT_SHADOW_DEPTH
+    : 0;
+  const animateOnTap = props.animateOnTap !== false ? true : false;
 
   const handleInactivate = () => {
     if (props.inactivate === undefined) {
@@ -51,8 +55,12 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         classes.super,
         props.parentClassName || classes.component,
         props.contained ? classes.contained : null,
+        // Raised button classes
         props.raised ? classes.contained : null,
         props.raised ? classes.raised : null,
+        props.raised && animateOnTap ? shadowClasses.with_active_shadow : null,
+        props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : null,
+        //
         hasHover ? classes.hasHover : null,
         props.selected ? classes.selected : null,
         props.highLabel ? classes.highLabel : null,

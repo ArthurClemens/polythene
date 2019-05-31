@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "polythene-core": "^1.5.4",
+    "polythene-core-shadow": "^1.5.4",
     "polythene-css-classes": "^1.5.4",
     "polythene-theme": "^1.5.4"
   },

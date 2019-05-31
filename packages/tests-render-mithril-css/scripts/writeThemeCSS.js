@@ -111,5 +111,5 @@ writeCSS({
   path: "./dist/css/theme.css",
   autoPrefix: true,
   gzip: true,
-  beautify: true,
+  beautify: true
 });

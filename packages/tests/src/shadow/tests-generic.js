@@ -11,6 +11,10 @@ export default ({ Shadow, h, a }) => {
     shadow_depth: 3
   });
 
+  ShadowCSS.addStyle(".tests-shadow-themed-transition", {
+    transition: `box-shadow .5s ease-in-out`
+  });
+
 
   return [
     // {
@@ -120,6 +124,12 @@ export default ({ Shadow, h, a }) => {
       attrs: {
         className: "tests-shadow-themed-shadow-depth"
       }
+    },
+    {
+      name: "Themed transition",
+      interactive: true,
+      exclude: true,
+      component: interactive({ h, a, Shadow, className: "tests-shadow-themed-transition" })
     },
 
     {

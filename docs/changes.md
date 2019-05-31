@@ -5,8 +5,11 @@
   - [1.6.0](#160)
     - [Under the hood](#under-the-hood)
     - [CSS](#css)
+    - [Focus indication](#focus-indication)
+    - [Closing Dialog with ESCAPE](#closing-dialog-with-escape)
     - [Bug fixes](#bug-fixes)
     - [Removed](#removed)
+    - [Other changes](#other-changes)
   - [1.5.4](#154)
   - [1.5.2](#152)
   - [1.5.0](#150)
@@ -56,9 +59,22 @@ Integration of [Cyano](https://github.com/ArthurClemens/cyano) with the React Ho
 
 Function `writeCSS` in [polythene-scripts](packages/polythene-scripts.md#write-css) can be used to write themed CSS to a file. The function accepts new option `wrapInGlobal` to use with CSS Modules: set to `true` to wrap the generated css inside a `:global { ... }` tag.
 
+#### Focus indication
+
+Keyboard TAB navigation now highlights components that have focus. Pressing ENTER executes the equivalent of a click.
+
+Affected components: Button, Icon Button, FAB, List Tile, Checkbox, Radio Button, Switch, Tabs.
+
+The highlight is created by element with className `pe-button__wash`. The color can be themed with variable `color_light_wash_background` and `color_dark_wash_background`.
+
+Raised Buttons also show a deeper shadow on focus.
+
+#### Closing Dialog with ESCAPE
+
+To improve accessibility, all Dialogs (including modal and fullscreen dialogs) can now be closed by pressing ESCAPE.
+
 #### Bug fixes
 
-* Restores focus color with keyboard tab navigation (Button, Icon Button, FAB, Checkbox, Radio Button, Switch, Tabs).
 * ButtonGroup: fixes a layout issue with arrow button.
 * Button: reenables `wash` when set to `true`.
 * TextField: fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
@@ -71,6 +87,11 @@ Function `writeCSS` in [polythene-scripts](packages/polythene-scripts.md#write-c
   * For React with JSX: no change.
   * For React with hyperscript: use [react-hyperscript](https://github.com/mlmorg/react-hyperscript) or `ReactDOM.render`.
 * Most deprecation warnings have been removed.
+
+#### Other changes
+
+* Raised Button styles are now defined by CSS only. Shadow contains a couple of extra hepler classes for this purpose.
+
 
 
 ### 1.5.4

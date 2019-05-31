@@ -3,9 +3,37 @@
 import { mixin, sel, createLayout } from "polythene-core-css";
 
 const _createShadowForSelector = (which, depth) => (selector, vars) =>
+  [
+    _createRegularShadowForSelector(which, depth, selector, vars),
+    _createActiveShadowForSelector(which, depth, selector, vars)
+  ];
+
+const _createRegularShadowForSelector = (which, depth, selector, vars) =>
   sel(selector, {
-    [` .pe-shadow__${which}.pe-shadow--depth-${depth}`]: {
+    [`.pe-shadow--depth-${depth} .pe-shadow__${which}`]: {
       boxShadow: vars[`shadow_${which}_depth_${depth}`]
+    }
+  });
+
+const _createActiveShadowForSelector = (which, depth, selector, vars) => {
+  if (depth === 5) {
+    return [];
+  }
+  const hoverDepth = depth + 1;
+  const hoverSelector = `.pe-with-active-shadow.pe-shadow--depth-${hoverDepth}`;
+  return [
+    sel(`${hoverSelector}:focus ${selector}, ${hoverSelector}:active ${selector}`, {
+      [` .pe-shadow__${which}`]: {
+        boxShadow: vars[`shadow_${which}_depth_${hoverDepth}`], 
+      }
+    })
+  ];
+};
+
+const _createActiveShadowTransition = (selector, vars) =>
+  sel(`.pe-with-active-shadow ${selector}`, {
+    " .pe-shadow__bottom, .pe-shadow__top": {
+      transition: vars.transition
     }
   });
 
@@ -43,6 +71,17 @@ const shadow_depth = (selector, vars) =>
     ? shadow(selector, vars, vars.shadow_depth)
     : null;
 
+const transition = (selector, vars) => [
+  sel(selector, {
+    ".pe-shadow--animated": {
+      " .pe-shadow__bottom, .pe-shadow__top": {
+        transition: vars.transition
+      }
+    }
+  }),
+  _createActiveShadowTransition(selector, vars)
+];
+
 export const sharedVarFns = {
   shadow_depth
 };
@@ -66,22 +105,14 @@ const varFns = Object.assign({},
         },
       ])
     ],
-    transition: (selector, vars) => [
-      sel(selector, {
-        ".pe-shadow--animated": {
-          " .pe-shadow__bottom, .pe-shadow__top": {
-            transition: vars.transition
-          }
-        }
-      })
-    ],
+    transition,
     shadow_depth
   },
   [0, 1, 2, 3, 4, 5].reduce((acc, depth) => (
     acc[`shadow_top_depth_${depth}`] = _createShadowForSelector("top", depth),
     acc[`shadow_bottom_depth_${depth}`] = _createShadowForSelector("bottom", depth),
     acc
-  ), {})
+  ), {}),
 );
 
 export default createLayout({ varFns });
