@@ -397,7 +397,7 @@ var varFns$1 = _objectSpread({
       " .pe-button__wash": {
         opacity: 0
       },
-      // Always show wash on focus
+      // Always show wash on focus but not on click
       "&:focus:not(:active) .pe-button__wash": {
         opacity: 1
       },

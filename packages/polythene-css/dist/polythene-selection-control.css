@@ -228,9 +228,7 @@
 }
 
 .pe-dark-tone.pe-control .pe-control__box .pe-control__button,
-.pe-dark-tone .pe-control .pe-control__box .pe-control__button,
-.pe-dark-tone.pe-control .pe-control__box .pe-control__button--on,
-.pe-dark-tone .pe-control .pe-control__box .pe-control__button--on {
+.pe-dark-tone .pe-control .pe-control__box .pe-control__button {
   color: inherit;
 }
 
@@ -254,24 +252,23 @@
   color: hsla(0, 0%, 100%, .26);
 }
 
-.pe-dark-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
-.pe-dark-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
-  background-color: #2196f3;
-  opacity: .14;
+.pe-dark-tone.pe-control .pe-control__box .pe-control__button--off,
+.pe-dark-tone .pe-control .pe-control__box .pe-control__button--off,
+.pe-dark-tone.pe-control .pe-control__box .pe-control__button--on,
+.pe-dark-tone .pe-control .pe-control__box .pe-control__button--on {
+  color: inherit;
 }
 
-.pe-dark-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
-.pe-dark-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
-  background-color: #fff;
-  opacity: .09;
+.pe-dark-tone.pe-control.pe-control--off .pe-control__label,
+.pe-dark-tone .pe-control.pe-control--off .pe-control__label,
+.pe-dark-tone.pe-control.pe-control--on .pe-control__label,
+.pe-dark-tone .pe-control.pe-control--on .pe-control__label {
+  color: hsla(0, 0%, 100%, .7);
 }
 
 .pe-control .pe-control__box .pe-control__button,
-.pe-control .pe-control__box .pe-control__button--on,
 .pe-light-tone.pe-control .pe-control__box .pe-control__button,
-.pe-light-tone .pe-control .pe-control__box .pe-control__button,
-.pe-light-tone.pe-control .pe-control__box .pe-control__button--on,
-.pe-light-tone .pe-control .pe-control__box .pe-control__button--on {
+.pe-light-tone .pe-control .pe-control__box .pe-control__button {
   color: inherit;
 }
 
@@ -299,18 +296,22 @@
   color: rgba(0, 0, 0, .26);
 }
 
-.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
-.pe-light-tone.pe-control.pe-control--on .pe-button--focus .pe-button__focus,
-.pe-light-tone .pe-control.pe-control--on .pe-button--focus .pe-button__focus {
-  background-color: #2196f3;
-  opacity: .11;
+.pe-control .pe-control__box .pe-control__button--off,
+.pe-control .pe-control__box .pe-control__button--on,
+.pe-light-tone.pe-control .pe-control__box .pe-control__button--off,
+.pe-light-tone .pe-control .pe-control__box .pe-control__button--off,
+.pe-light-tone.pe-control .pe-control__box .pe-control__button--on,
+.pe-light-tone .pe-control .pe-control__box .pe-control__button--on {
+  color: inherit;
 }
 
-.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
-.pe-light-tone.pe-control.pe-control--off .pe-button--focus .pe-button__focus,
-.pe-light-tone .pe-control.pe-control--off .pe-button--focus .pe-button__focus {
-  background-color: #000;
-  opacity: .07;
+.pe-control.pe-control--off .pe-control__label,
+.pe-control.pe-control--on .pe-control__label,
+.pe-light-tone.pe-control.pe-control--off .pe-control__label,
+.pe-light-tone .pe-control.pe-control--off .pe-control__label,
+.pe-light-tone.pe-control.pe-control--on .pe-control__label,
+.pe-light-tone .pe-control.pe-control--on .pe-control__label {
+  color: rgba(0, 0, 0, .54);
 }
 
 /*# sourceMappingURL=polythene-selection-control.css.map */

@@ -2,7 +2,7 @@
 
 ## Demo site
 
-* [Mithril demo site](https://arthurclemens.github.io/polythene-demos/mithril/)
+* [Mithril kitchen sink demo site](https://arthurclemens.github.io/polythene-demos/mithril/)
 
 ## Live examples
 

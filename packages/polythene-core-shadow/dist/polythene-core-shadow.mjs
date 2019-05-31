@@ -56,12 +56,13 @@ function _objectWithoutProperties(source, excluded) {
 
 var classes = {
   component: "pe-shadow",
-  // elements
+  // elements      
   bottomShadow: "pe-shadow__bottom",
   topShadow: "pe-shadow__top",
   // states
   animated: "pe-shadow--animated",
-  depth_n: "pe-shadow--depth-"
+  depth_n: "pe-shadow--depth-",
+  with_active_shadow: "pe-with-active-shadow"
 };
 
 var getDepthClass = function getDepthClass(shadowDepth) {

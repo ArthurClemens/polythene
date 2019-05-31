@@ -2,7 +2,7 @@
 
 ## Demo site
 
-* [React demo site](https://arthurclemens.github.io/polythene-demos/react/)
+* [React kitchen sink demo site](https://arthurclemens.github.io/polythene-demos/react/)
 
 ## Live examples
 

@@ -232,10 +232,6 @@
   margin-right: auto;
 }
 
-.pe-tab.pe-text-button.pe-button .pe-button__content .pe-button__focus {
-  display: none;
-}
-
 .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content,
 .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-button__content,
 .pe-tab.pe-text-button.pe-button.pe-tabs__tab--icon .pe-button__content .pe-icon,
