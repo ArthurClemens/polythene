@@ -69,7 +69,7 @@ var _IconButton = function _IconButton(_ref) {
 
   var content = props.content ? props.content : props.icon ? h(Icon, props.icon) : props.children;
 
-  var componentProps = _extends({}, {
+  var buttonProps = _extends({}, {
     content: h("div", {
       className: classes.content
     }, content),
@@ -82,7 +82,7 @@ var _IconButton = function _IconButton(_ref) {
     animateOnTap: false
   }, props);
 
-  return h(Button, componentProps);
+  return h(Button, buttonProps);
 };
 
 export { _IconButton };

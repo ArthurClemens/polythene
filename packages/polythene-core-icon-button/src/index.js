@@ -6,7 +6,7 @@ export const _IconButton = ({ h, Icon, Button, ...props }) => {
     : props.icon
       ? h(Icon, props.icon)
       : props.children;
-  const componentProps = Object.assign(
+  const buttonProps = Object.assign(
     {},
     {
       content: h("div", { className: classes.content }, content),
@@ -22,5 +22,5 @@ export const _IconButton = ({ h, Icon, Button, ...props }) => {
     props
   );
 
-  return h(Button, componentProps);
+  return h(Button, buttonProps);
 };
