@@ -15,84 +15,7 @@ const reactTests = ({ FAB, Icon, SVG, h }) => { // eslint-disable-line no-unused
       section: "React specific tests",
     },
     {
-      name: "With router",
-      interactive: true,
-      component: withRouter(({ history }) => 
-        h(FAB, {
-          icon: {
-            svg: { content: trustedIconAlarm }
-          },
-          url: {
-            href: "/shadow",
-            onClick: e => (e.preventDefault(), history.push("/shadow"))
-          }
-        })
-      )
-    },
-    {
-      name: "Dark tone class + light tone class",
-      className: "pe-dark-tone",
-      component: () =>
-        h(".pe-button-row.pe-light-tone", {
-          style: { background: "#fff", padding: "8px 4px" }
-        }, [
-          h(FAB, {
-            icon: {
-              svg: { content: trustedIconAlarm }
-            }
-          }),
-          h(FAB, {
-            icon: {
-              svg: { content: trustedIconAlarm }
-            },
-            className: "tests-fab-themed-fab"
-          })
-        ])
-    },
-    {
-      name: "Dark tone class + light tone",
-      className: "test-dark-tone",
-      component: () =>
-        h(".pe-button-row", {
-          style: { background: "#fff", padding: "8px 4px" }
-        }, [
-          h(FAB, {
-            icon: {
-              svg: { content: trustedIconAlarm }
-            },
-            tint: "light"
-          }),
-          h(FAB, {
-            icon: {
-              svg: { content: trustedIconAlarm }
-            },
-            className: "tests-fab-themed-fab",
-            tint: "light"
-          })
-        ])
-    },
-
-    {
-      section: "React  JSX tests",
-    },
-    {
-      name: "Option: icon as attribute",
-      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} mini />
-    },
-    {
-      name: "Option: icon as component",
-      component: () => <FAB mini><Icon><SVG>{iconAlarmSVG}</SVG></Icon></FAB>
-    },
-    {
-      name: "Option: shadowDepth (5)",
-      component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} shadowDepth={5} />
-    },
-    {
-      name: "Option: style",
-      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
-    },
-    {
-      name: "With router",
+      name: "With router (JSX)",
       interactive: true,
       component: withRouter(({ history }) => 
         <FAB
@@ -104,7 +27,70 @@ const reactTests = ({ FAB, Icon, SVG, h }) => { // eslint-disable-line no-unused
         />
       )
     },
-
+    {
+      name: "Dark tone class + light tone class (JSX)",
+      className: "pe-dark-tone",
+      component: () =>
+        <div
+          className="pe-button-row pe-light-tone"
+          style={{
+            background: "#fff", padding: "8px 4px"
+          }}
+        >
+          <FAB
+            icon={{
+              svg: { content: trustedIconAlarm }
+            }}
+          />
+          <FAB
+            icon={{
+              svg: { content: trustedIconAlarm }
+            }}
+            className="tests-fab-themed-fab"
+          />
+        </div>
+    },
+    {
+      name: "Dark tone class + light tone (JSX)",
+      className: "test-dark-tone",
+      component: () =>
+        <div
+          className="pe-button-row"
+          style={{
+            background: "#fff", padding: "8px 4px"
+          }}
+        >
+          <FAB
+            icon={{
+              svg: { content: trustedIconAlarm }
+            }}
+            tint="light"
+          />
+          <FAB
+            icon={{
+              svg: { content: trustedIconAlarm }
+            }}
+            className="tests-fab-themed-fab"
+            tint="light"
+          />
+        </div>
+    },
+    {
+      name: "Option: icon as attribute (JSX)",
+      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} mini />
+    },
+    {
+      name: "Option: icon as component (JSX)",
+      component: () => <FAB mini><Icon><SVG>{iconAlarmSVG}</SVG></Icon></FAB>
+    },
+    {
+      name: "Option: shadowDepth (5) (JSX)",
+      component: () => <FAB mini icon={{ svg: { content: iconAlarmSVG } }} shadowDepth={5} />
+    },
+    {
+      name: "Option: style (JSX)",
+      component: () => <FAB icon={{ svg: { content: iconAlarmSVG } }} style={{ color: "#ef6c00", backgroundColor: "#fff" }} />
+    },
   ];
 };
 

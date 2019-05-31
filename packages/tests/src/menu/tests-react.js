@@ -24,15 +24,12 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
       section: "React specific tests"
     },
     {
-      name: "Menu with links",
+      name: "Menu with links (JSX)",
       interactive: true,
       exclude: true,
       component: withRouter(({ history }) => 
-        h(Links, { history })
+        <Links history={history} />
       )
-    },
-    {
-      section: "React tests",
     },
     {
       name: "Permanent",
@@ -64,13 +61,13 @@ const reactTests = ({ h, Menu, List, ListTile }) => {
         </Menu>
     },
     {
-      name: "Simple menu (demo without state)",
+      name: "Simple menu (demo without state) (JSX)",
       interactive: true,
       exclude: true,
       component: () => <SimpleJSX />
     },
     {
-      name: "Dialog with option 'menu' (demo without state)",
+      name: "Dialog with option 'menu' (demo without state) (JSX)",
       interactive: true,
       exclude: true,
       component: () => <SettingsJSX />

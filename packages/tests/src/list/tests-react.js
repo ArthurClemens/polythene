@@ -33,66 +33,66 @@ const reactTests = ({ List, Icon, ListTile, h }) => {
       section: "React specific tests",
     },
     {
-      name: "Options: header, tiles with urls",
+      name: "Options: header, tiles with urls (JSX)",
       interactive: true,
       component: () =>
-        h("div", [
-          h(List, {
-            key: "one",
-            header: {
+        <div>
+          <List
+            key="one"
+            header={{
               title: "Friends"
-            },
-            border: true,
-            tiles: [
+            }}
+            border
+            tiles={[
               listTileJennifer("urls 1"),
               listTileAli("urls 2"),
               listTileGrace("urls 3")
-            ]
-          }),
-          h(List, {
-            key: "two",
-            header: {
+            ]}
+          />
+          <List
+            key="two"
+            header={{
               title: "Friends"
-            },
-            border: true,
-            tiles: [
+            }}
+            border
+            tiles={[
               listTileJennifer("urls 4"),
               listTileAli("urls 5"),
               listTileGrace("urls 6")
-            ]
-          })
-        ])
+            ]}
+          />
+        </div>
     },
     {
-      name: "Options: header.sticky",
+      name: "Options: header.sticky (JSX)",
       interactive: true,
       exclude: true,
       component: () =>
-        h(".scrollable-list", ["one", "two", "three", "four", "five"].map(ord => {
-          return h(List,
-            {
-              header: {
+        <div
+          className="scrollable-list"
+        >
+          {["one", "two", "three", "four", "five"].map(ord =>
+            <List
+              key={ord}
+              header={{
                 title: `Sub header ${ord}`,
                 sticky: true
-              },
-              tiles: [
+              }}
+              tiles={[
                 listTileJennifer(ord + "1"),
                 listTileAli(ord + "2"),
                 listTileGrace(ord + "3"),
                 listTileJennifer(ord + "4"),
                 listTileAli(ord + "5"),
                 listTileGrace(ord + "6")
-              ]
-            }
-          );
-        }))
+              ]}
+            />
+          )}
+        </div>
     },
-    
+
     {
-      section: "React tests",
-    },
-    {
-      name: "Options: header, tiles, indent, indentedBorder",
+      name: "Options: header, tiles, indent, indentedBorder (JSX)",
       component: () =>
         <List
           indentedBorder

@@ -12,12 +12,12 @@ const reactTests = () => {
       section: "React specific tests",
     },
     {
-      name: "Option: textfield, buttons",
+      name: "React: option: textfield, buttons (JSX)",
       component: () =>
         <SearchFieldJSX />
     },
     {
-      name: "Theme",
+      name: "React: theme (JSX)",
       component: () =>
         <SearchFieldJSX className="tests-search-themed-search" tone="dark" />
     },
@@ -26,5 +26,5 @@ const reactTests = () => {
 };
 
 export default []
-  .concat(genericTests({ Search, IconButton, Button, Shadow, SearchField, List, ListTile, h, a }))
-  .concat(reactTests({ Search, IconButton, Button, Shadow, SearchField, List, ListTile, h, a }));
+  .concat(genericTests({ Search, IconButton, Button, Shadow, SearchField: SearchFieldJSX, List, ListTile, h, a }))
+  .concat(reactTests({ Search, IconButton, Button, Shadow, SearchField: SearchFieldJSX, List, ListTile, h, a }));

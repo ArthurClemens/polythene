@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Button, Icon } from "polythene-react";
 import { h } from "../../utils/enhanced-renderer";
 import genericTests from "./tests-generic";
@@ -30,121 +30,84 @@ const reactTests = ({ Button, h }) => {
       section: "React specific tests",
     },
     {
-      name: "Option: router url (with hash)",
+      name: "Option: router url (with hash) (JSX)",
       interactive: true,
       component: () => 
-        h(Button, {
-          label: "Go to #/shadow",
-          url: {
-            href: "#/shadow"          },
-        })
+        <Button
+          label="Go to #/shadow"
+          url={{
+            href: "#/shadow"
+          }}
+        />
     },
     {
-      name: "With React Router Link",
+      name: "With router (JSX)",
+      interactive: true,
+      component: withRouter(({ history }) => 
+        <Button
+          label="Go to /shadow"
+          url={{
+            href: "/shadow",
+            onClick: e => (e.preventDefault(), history.push("/shadow"))
+          }}
+        />
+      )
+    },
+
+    {
+      name: "With React Router Link (JSX)",
       interactive: true,
       component: () => 
-        h(Button, {
-          label: "Go to /shadow",
-          element: Link,
-          url: {
-            to: "/shadow",
-          },
-        })
+        <Button
+          label="Go to /shadow"
+          element={Link}
+          url={{
+            to: "/shadow"
+          }}
+        />
     },
     {
-      name: "Option: events (onclick)",
+      name: "Option: events (onClick) (JSX)",
       interactive: true,
       exclude: true,
       component: withCounter(({ counter, increment }) =>
-        h("div", [
-          h("div", `onclick called: ${counter}`),
-          h(Button, {
-            label: "Button",
-            events: {
+        <div>
+          <div>{`onClick called: ${counter}`}</div>
+          <Button
+            label="Button"
+            events={{
               onClick: increment
-            }
-          })
-        ])
+            }}
+          />
+        </div>
       )
     },
     {
-      name: "Key down (after having focus) results in click",
+      name: "Key down (after having focus) results in click (JSX)",
       interactive: true,
       exclude: true,
       component: withCounter(({ counter, increment }) =>
-        h("div", [
-          h("div", `onclick called: ${counter}`),
-          h(Button, {
-            label: "Button",
-            events: {
+        <div>
+          <div>{`onClick called: ${counter}`}</div>
+          <Button
+            label="Button"
+            events={{
               onClick: increment
-            }
-          })
-        ])
+            }}
+          />
+        </div>
       )
     },
     {
-      name: "Dark tone class + light tone class",
-      className: "pe-dark-tone",
-      component: () =>
-        h(".pe-button-row.pe-light-tone",
-          {
-            style: { background: "#fff" }
-          },
-          [
-            h(Button, {
-              label: "Normal"
-            }),
-            h(Button, {
-              label: "Disabled",
-              disabled: true
-            }),
-            h(Button, {
-              label: "Theme",
-              className: "tests-button-themed-button"
-            })
-          ]
-        )
-    },
-    {
-      name: "Dark tone class + light tone",
-      className: "pe-dark-tone",
-      component: () =>
-        h(".pe-button-row",
-          {
-            style: { background: "#fff" }
-          },
-          [
-            h(Button, {
-              label: "Normal",
-              tone: "light"
-            }),
-            h(Button, {
-              label: "Disabled",
-              disabled: true,
-              tone: "light"
-            }),
-            h(Button, {
-              label: "Theme",
-              className: "tests-button-themed-button",
-              tone: "light"
-            })
-          ]
-        )
-    },
-    {
-      section: "React tests",
-    },
-    {
-      name: "Themed Button: (option: border)",
+      name: "Themed Button: (option: border) (JSX)",
       component: () => <Button label="Button" className="react-secondary-button" border />
     },
     {
-      name: "Option: inactivate (2s)",
+      name: "Option: inactivate (2s) (JSX)",
       component: () => <Button label="Inactivated for 2s" inactivate={2} />
     },
     {
-      name: "HOC",
+      name: "HOC (JSX)",
       component: () => <SecondaryButton label="Secondary Button" />
     },
   ];

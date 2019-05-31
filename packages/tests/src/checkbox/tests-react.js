@@ -12,10 +12,10 @@ const reactTests = ({ Checkbox, h }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Option: defaultChecked",
+      name: "Option: defaultChecked (JSX)",
       component: () =>
         <Checkbox
           label="Label"
@@ -23,7 +23,7 @@ const reactTests = ({ Checkbox, h }) => { // eslint-disable-line no-unused-vars
         />
     },
     {
-      name: "Option: iconOn, iconOff (custom icon)",
+      name: "Option: iconOn, iconOff (custom icon) (JSX)",
       component: () =>
         <div
           style={{
@@ -39,7 +39,7 @@ const reactTests = ({ Checkbox, h }) => { // eslint-disable-line no-unused-vars
         </div>
     },
     {
-      name: "Setting the checked state",
+      name: "Setting the checked state (JSX)",
       interactive: true,
       exclude: true,
       component: () => 

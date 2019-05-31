@@ -48,7 +48,7 @@ const reactTests = ({ Dialog, Button }) => {
       section: "React specific tests",
     },
     {
-      name: "Full screen",
+      name: "Full screen (hyperscript)",
       interactive: true,
       exclude: true,
       component: {
@@ -59,10 +59,7 @@ const reactTests = ({ Dialog, Button }) => {
       }
     },
     {
-      section: "React tests",
-    },
-    {
-      name: "Option: title and body (long text)",
+      name: "Option: title and body (long text) (JSX)",
       interactive: true,
       exclude: true,
       component: () =>
@@ -73,7 +70,7 @@ const reactTests = ({ Dialog, Button }) => {
         }} />
     },
     {
-      name: "Option: modal with backdrop",
+      name: "Option: modal with backdrop (JSX)",
       interactive: true,
       exclude: true,
       component: () =>
@@ -87,7 +84,7 @@ const reactTests = ({ Dialog, Button }) => {
         <Opener dialogAttrs={fullScreenJsxOptions} />
     },
     {
-      name: "Conditional button states",
+      name: "Conditional button states (JSX)",
       interactive: true,
       exclude: true,
       component: () =>
@@ -96,13 +93,13 @@ const reactTests = ({ Dialog, Button }) => {
         }} />
     },
     {
-      name: "Updating dialog",
+      name: "Updating dialog (JSX)",
       interactive: true,
       exclude: true,
       component: () => <Updating />
     },
     {
-      name: "Spawns and ids",
+      name: "Spawns and ids (JSX)",
       interactive: true,
       exclude: true,
       component: () => <Spawns />

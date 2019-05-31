@@ -26,6 +26,7 @@ module.exports = {
       "mithril": path.resolve(baseDir, "node_modules/mithril/mithril.js"),
       "react": path.resolve(baseDir, "node_modules/react"),
       "react-dom": path.resolve(baseDir, "node_modules/react-dom"),
+      "react-router-dom": path.resolve(baseDir, "node_modules/react-router-dom"),
     },
     extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
   },

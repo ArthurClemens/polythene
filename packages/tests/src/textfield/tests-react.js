@@ -20,10 +20,10 @@ const reactTests = ({ TextField }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Option: domAttributes (autocapitalize for iOS, Chrome 43 on Android)",
+      name: "Option: domAttributes (autocapitalize for iOS, Chrome 43 on Android) (JSX)",
       component: () =>
         block(
           <TextField
@@ -36,7 +36,7 @@ const reactTests = ({ TextField }) => { // eslint-disable-line no-unused-vars
         )
     },
     {
-      name: "Option: value",
+      name: "Option: value (JSX)",
       component: () =>
         block(<React.Fragment>
           <TextField
@@ -57,7 +57,7 @@ const reactTests = ({ TextField }) => { // eslint-disable-line no-unused-vars
         </React.Fragment>)
     },
     {
-      name: "Option: counter, floatingLabel",
+      name: "Option: counter, floatingLabel (JSX)",
       interactive: true,
       component: () =>
         block(
@@ -71,7 +71,7 @@ const reactTests = ({ TextField }) => { // eslint-disable-line no-unused-vars
         )
     },
     {
-      name: "Form validation with github.com/ludbek/powerform",
+      name: "Form validation with github.com/ludbek/powerform (JSX)",
       interactive: true,
       excluded: true,
       component: {

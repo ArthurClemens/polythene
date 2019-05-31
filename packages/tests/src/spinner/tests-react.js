@@ -10,12 +10,12 @@ const reactTests = () => {
       section: "React specific tests",
     },
     {
-      name: "Option: permanent -- Material Design Spinner",
+      name: "Option: permanent -- Material Design Spinner (JSX)",
       component: () =>
         <MaterialDesignSpinner permanent />
     },
     {
-      name: "Option: permanent -- iOS Spinner",
+      name: "Option: permanent -- iOS Spinner (JSX)",
       component: () =>
         <IOSSpinner permanent />
     },

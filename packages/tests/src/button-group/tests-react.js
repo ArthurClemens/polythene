@@ -8,10 +8,10 @@ const reactTests = ({ Button, ButtonGroup }) => {
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Group (buttons extraWide and highLabel)",
+      name: "Group (buttons extraWide and highLabel) (JSX)",
       component: () => (
         <ButtonGroup>
           <Button label="One" extraWide highLabel />

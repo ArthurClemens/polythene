@@ -8,10 +8,10 @@ const reactTests = ({ Switch }) => { // eslint-disable-line no-unused-vars
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Option: defaultChecked",
+      name: "Option: defaultChecked (JSX)",
       component: () =>
         <Switch
           label="Label"

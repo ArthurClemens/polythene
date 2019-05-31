@@ -17,107 +17,7 @@ const reactTests = ({ Icon, ListTile, h }) => {
       section: "React specific tests",
     },
     {
-      name: "Option: url",
-      interactive: true,
-      component: withRouter(({ history }) => 
-        h(ListTile, {
-          title: "Ancillary Justice",
-          url: {
-            href: "/shadow",
-            onClick: e => (e.preventDefault(), history.push("/shadow"))
-          }
-        })
-      )
-    },
-    {
-      name: "Option: url (disabled)",
-      interactive: true,
-      component: withRouter(({ history }) => 
-        h(ListTile, {
-          title: "Ancillary Justice",
-          url: {
-            href: "/shadow",
-            onClick: e => (e.preventDefault(), history.push("/shadow"))
-          },
-          disabled: true
-        })
-      )
-    },
-    {
-      name: "Option: secondary (url)",
-      interactive: true,
-      component: withRouter(({ history }) => 
-        h(ListTile, {
-          title: "Ancillary Justice",
-          secondary: {
-            icon: {
-              svg: { content: trustedIconStars },
-              size: "medium"
-            },
-            url: {
-              href: "/shadow",
-              onClick: e => (e.preventDefault(), history.push("/shadow"))
-            }
-          }
-        })
-      )
-    },
-    {
-      name: "Option: highSubtitle and front",
-      component: withRouter(({ history }) => 
-        h(ListTile, {
-          title: "Ancillary Justice",
-          highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-          front: h(Icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-            avatar: true,
-            size: "large"
-          }),
-          secondary: {
-            icon: {
-              svg: { content: trustedIconStars }
-            },
-            url: {
-              href: "/shadow",
-              onClick: e => (e.preventDefault(), history.push("/shadow"))
-            }
-          }
-        })
-      )
-    },
-
-    {
-      section: "Dark tone",
-    },
-    {
-      name: "Option: highSubtitle and front -- dark tone class",
-      className: "pe-dark-tone",
-      component: withRouter(({ history }) => 
-        h(ListTile, {
-          title: "Ancillary Justice",
-          highSubtitle: "The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before.",
-          front: h(Icon, {
-            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
-            avatar: true,
-            size: "large"
-          }),
-          secondary: {
-            icon: {
-              svg: { content: trustedIconStars }
-            },
-            url: {
-              href: "/shadow",
-              onClick: e => (e.preventDefault(), history.push("/shadow"))
-            }
-          }
-        })
-      )
-    },
-    {
-      section: "React tests",
-    },
-    {
-      name: "Option: child",
+      name: "Option: child (JSX)",
       component: () =>
         <ListTile
           title="Ancillary Justice"
@@ -125,8 +25,21 @@ const reactTests = ({ Icon, ListTile, h }) => {
         />
     },
     {
-      name: "Option: highSubtitle and front",
+      name: "Option: url (JSX)",
+      interactive: true,
       component: withRouter(({ history }) => 
+        <ListTile
+          title="Ancillary Justice"
+          url={{
+            href: "/shadow",
+            onClick: e => (e.preventDefault(), history.push("/shadow"))
+          }}
+        />
+      )
+    },
+    {
+      name: "Option: highSubtitle and front (JSX)",
+      component: ({ history }) =>
         <ListTile
           title="Ancillary Justice"
           highSubtitle="The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
@@ -137,6 +50,32 @@ const reactTests = ({ Icon, ListTile, h }) => {
           />}
           secondary={{
             icon: { svg: { content: iconStarsSVG } },
+            url: {
+              href: "/shadow",
+              onClick: e => (e.preventDefault(), history.push("/shadow"))
+            }
+          }}
+        />
+    },
+    {
+      section: "Dark tone",
+    },
+    {
+      name: "Option: highSubtitle and front -- dark tone class (JSX)",
+      className: "pe-dark-tone",
+      component: withRouter(({ history }) => 
+        <ListTile
+          title="Ancillary Justice"
+          highSubtitle="The body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it. It was minus fifteen degrees Celsius and a storm had passed just hours before."
+          front={h(Icon, {
+            src: "http://arthurclemens.github.io/assets/polythene/examples/avatar-1.png",
+            avatar: true,
+            size: "large"
+          })}
+          secondary={{
+            icon: {
+              svg: { content: trustedIconStars }
+            },
             url: {
               href: "/shadow",
               onClick: e => (e.preventDefault(), history.push("/shadow"))

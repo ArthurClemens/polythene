@@ -17,14 +17,14 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, h }) => {
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Child node, option compact",
+      name: "Child node, option compact (JSX)",
       component: () => <Toolbar compact>{toolbarRowWithTitle(h)}</Toolbar>
     },
     {
-      name: "JSX toolbar row",
+      name: "Toolbar row (JSX)",
       component: () =>
         <Toolbar>
           <ToolbarButton svg={{ content: iconMenuSVG }} />
@@ -34,7 +34,7 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, h }) => {
         </Toolbar>
     },
     {
-      name: "Option: style (colors and height)",
+      name: "Option: style (colors and height) (JSX)",
       component: () =>
         <Toolbar
           content={toolbarRowWithTitle(h)}
@@ -46,7 +46,7 @@ const reactTests = ({ Toolbar, ToolbarTitle, IconButton, h }) => {
         />
     },
     {
-      name: "Option: shadow",
+      name: "Option: shadow (JSX)",
       component: () =>
         <Toolbar shadowDepth={1}>
           <ToolbarButton svg={{ content: iconMenuSVG }} />

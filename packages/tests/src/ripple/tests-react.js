@@ -23,48 +23,44 @@ const reactTests = ({ Ripple, h }) => { // eslint-disable-line no-unused-vars
       section: "React specific tests",
     },
     {
-      name: "Appended to an element",
+      name: "Appended to an element (JSX)",
       interactive: true,
       exclude: true,
       component: () =>
-        h("div",
-          {
-            style: {
-              position: "relative",
-              width:    "100px",
-              height:   "100px",
-            }
-          },
-          h(Ripple)
-        )
+        <div
+          style={{
+            position: "relative",
+            width:    "100px",
+            height:   "100px",
+          }}
+        >
+          <Ripple />
+        </div>
     },
     {
-      name: "Option: start (after click)",
+      name: "Option: start (after click) (JSX)",
       interactive: true,
       exclude: true,
       component: withCounter(({ counter, increment }) =>
-        h(Ripple, {
-          before: h("div", `start called: ${counter}`),
-          start: () => increment()
-        })
+        <Ripple
+          before={<div>{`start called: ${counter}`}</div>}
+          start={() => increment()}
+        />
       )
     },
     {
-      name: "Option: end (after click)",
+      name: "Option: end (after click) (JSX)",
       interactive: true,
       exclude: true,
       component: withCounter(({ counter, increment }) =>
-        h(Ripple, {
-          before: h("div", `start called: ${counter}`),
-          end: () => increment()
-        })
+        <Ripple
+          before={<div>{`start called: ${counter}`}</div>}
+          end={() => increment()}
+        />
       )
     },
     {
-      section: "React tests",
-    },
-    {
-      name: "Option: center",
+      name: "Option: center (JSX)",
       component: () => <Ripple center={true} />
     },
     {
@@ -75,18 +71,6 @@ const reactTests = ({ Ripple, h }) => { // eslint-disable-line no-unused-vars
         persistent
       />
     },
-    {
-      name: "Appended to an element",
-      component: () =>
-        <div style={{
-          position: "relative",
-          width:    "100px",
-          height:   "100px",
-        }}>
-          <Ripple />
-        </div>
-    },
-
   ];
 };
 export default []

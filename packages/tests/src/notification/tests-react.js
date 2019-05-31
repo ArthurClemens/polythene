@@ -11,10 +11,10 @@ const reactTests = () => {
 
   return [
     {
-      section: "React tests",
+      section: "React specific tests",
     },
     {
-      name: "Option: layout vertical",
+      name: "Option: layout vertical (JSX)",
       interactive: true,
       exclude: true,
       component: () => <ShowNotification />
