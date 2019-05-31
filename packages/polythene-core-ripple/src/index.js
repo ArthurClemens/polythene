@@ -75,7 +75,13 @@ export const _Ripple = ({ h, a, getRef, useState, useEffect, ...props }) => {
     }
   );
 
+  const content = [
+    props.before,
+    props.after,
+  ];
+
   return h(props.element || "div",
-    componentProps
+    componentProps,
+    content
   );
 };

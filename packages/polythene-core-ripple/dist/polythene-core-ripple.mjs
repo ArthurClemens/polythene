@@ -295,7 +295,8 @@ var _Ripple = function _Ripple(_ref2) {
     className: [classes.component, props.unconstrained ? classes.unconstrained : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
   });
 
-  return h(props.element || "div", componentProps);
+  var content = [props.before, props.after];
+  return h(props.element || "div", componentProps, content);
 };
 
 export { _Ripple };
