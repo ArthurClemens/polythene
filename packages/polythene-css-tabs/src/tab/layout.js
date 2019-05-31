@@ -38,9 +38,6 @@ const varFns = {
             marginLeft: "auto",
             marginRight: "auto"
           },
-          " .pe-button__focus": {
-            display: "none"
-          }
         },
         ".pe-tabs__tab--icon": {
           "&, .pe-button__content": {

@@ -17,14 +17,23 @@ export default ({ h, Button, Icon }) => {
   ButtonCSS.addStyle(".tests-button-themed-button", {
     contained:              true,
     color_light_background: "#2196F3",
-    color_dark_background:  "#2196F3",
     color_light_text:       "#fff",
+    color_dark_background:  "#2196F3",
     letter_spacing:         0
   });
 
   ButtonCSS.addStyle(".blue-on-dark-button", {
     contained:       true,
     color_dark_text: "#2196F3"
+  });
+
+  ButtonCSS.addStyle(".tests-button-themed-wash-button", {
+    color_light_text:            "#673ab7",
+    color_dark_text:             "rgba(255, 255, 255, 1)",
+    color_dark_background:       "rgba(33, 150, 243, 1)",
+    color_light_wash_background: "rgba(103, 58, 183, .1)",
+    color_dark_wash_background:  "rgba(0, 37, 112, .2)",
+
   });
 
   ButtonCSS.addStyle(".tests-button-bordered-button", {
@@ -268,6 +277,14 @@ export default ({ h, Button, Icon }) => {
       }
     },
     {
+      name: "Themed Button (colors, wash)",
+      component: Button,
+      attrs: {
+        label: "Themed wash color",
+        className: "tests-button-themed-wash-button"
+      }
+    },
+    {
       name: "Themed Button (colors, sentence case)",
       component: Button,
       attrs: {
@@ -353,6 +370,15 @@ export default ({ h, Button, Icon }) => {
       attrs: {
         label: "Themed Button",
         className: "tests-button-themed-button"
+      }
+    },
+    {
+      name: "Themed Button (colors, wash)",
+      className: "pe-dark-tone",
+      component: Button,
+      attrs: {
+        label: "Themed wash color",
+        className: "tests-button-themed-wash-button"
       }
     },
     {

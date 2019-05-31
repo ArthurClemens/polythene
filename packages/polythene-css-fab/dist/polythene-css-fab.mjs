@@ -44,13 +44,7 @@ function _extends() {
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1
-        }
-      }
-    })];
+    return [];
   }
 };
 
@@ -67,14 +61,6 @@ var tintFns = function tintFns(tint) {
     return [sel(selector, {
       " .pe-button__content": {
         backgroundColor: vars["color_" + tint + "_background"]
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_background", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          backgroundColor: vars["color_" + tint + "_focus_background"]
-        }
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
@@ -122,18 +108,15 @@ var varFns = {
         alignItems: "center",
         justifyContent: "center"
       },
-      " .pe-button__wash, .pe-button__focus": [mixin.fit(), {
-        borderRadius: "inherit"
-      }],
       " .pe-ripple": {
         borderRadius: "inherit"
       },
-      " .pe-button__wash": {
-        transition: "background-color " + vars.animation_duration + " ease-in-out",
+      " .pe-button__wash": [mixin.fit(), {
         borderRadius: "inherit",
+        transition: "background-color " + vars.animation_duration + " ease-in-out",
         pointerEvents: "none",
         backgroundColor: "transparent"
-      }
+      }]
     })];
   },
   size_regular: function size_regular(selector, vars) {
@@ -175,16 +158,9 @@ var drawerVars = {
   size_regular: 7 * vars.grid_unit_component,
   // 7 * 8 = 56
   color_light: rgba(vars.color_primary_foreground),
-  color_light_focus_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
-  color_light_focus_opacity: vars.blend_light_background_hover_medium,
-  // same as button
   color_light_background: rgba(vars.color_primary),
   color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_dark: rgba(vars.color_primary_foreground),
-  color_dark_focus_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
-  // same as button
-  color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
-  // same as button
   color_dark_background: rgba(vars.color_primary),
   color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
 };

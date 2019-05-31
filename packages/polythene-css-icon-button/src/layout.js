@@ -44,6 +44,30 @@ const varFns = {
           borderRadius: "50%",
           pointerEvents: "none"
         },
+
+        // TODO: move wash styles to base button
+        " .pe-button__wash": [
+          mixin.fit(),
+          {
+            zIndex: 0,
+            borderRadius: "inherit",
+            pointerEvents: "none",
+            opacity: 0
+          }
+        ],
+        // Always show wash on focus but not on click
+        "&:focus:not(:active)": {
+          " .pe-button__wash": {
+            opacity: 1
+          },
+        },
+        // Only show wash on hover when "has hover" class set
+        ".pe-button--has-hover:hover": {
+          " .pe-button__wash": {
+            opacity: 1
+          },
+        },
+
       },
       {
         // RTL

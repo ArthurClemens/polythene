@@ -76,11 +76,9 @@ const tintFns = tint => ({
   ],
   ["color_" + tint + "_wash_background"]: (selector, vars) => [
     sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        },
-      }
+      " .pe-button__wash": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
+      },
     })
   ],
 
@@ -154,16 +152,6 @@ const hoverTintFns = tint => ({
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_hover_border"],
-        },
-      }
-    })
-  ],
-
-  ["color_" + tint + "_wash_background"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--wash": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
         },
       }
     })

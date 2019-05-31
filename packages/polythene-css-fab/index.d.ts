@@ -6,13 +6,9 @@ export interface DrawerVars {
   size_mini:                    number,
   size_regular:                 number,
   color_light:                  string,
-  color_light_focus_background: string,
-  color_light_focus_opacity:    number,
   color_light_background:       string,
   color_light_wash_background:  string,
   color_dark:                   string,
-  color_dark_focus_background:  string,
-  color_dark_focus_opacity:     number,
   color_dark_background:        string,
   color_dark_wash_background:   string,
 }

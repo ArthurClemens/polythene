@@ -42,7 +42,7 @@ Select a value from a continuous or discrete range of values by moving the slide
 <a id="keyboard-control"></a>
 ## Keyboard control
 
-Read first: [Turning on keyboard control](../keyboard-control.md)
+Press TAB to navigate to the slider thumb - it will show a highlight. Press ENTER to execute the equivalent of a click.
 
 1. Start keyboard control by tabbing to the slider thumb. It will show a focus state.
 1. Keyboard interaction follows the [WAI-ARIA slider authoring practices](https://www.w3.org/TR/wai-aria-practices-1.1/#slider).

@@ -38,11 +38,7 @@ Form control to select one or more options from a set. Generates a styled checkb
 <a id="keyboard-control"></a>
 ## Keyboard control
 
-Read first: [Turning on keyboard control](../keyboard-control.md)
-
-1. Start keyboard control by tabbing to the checkbox. It will show a focus state.
-1. Press Enter to simulate a click.
-
+Press TAB to navigate to a button - it will show a highlight. Press ENTER to execute the equivalent of a click.
 
 
 <a id="options"></a>

@@ -107,6 +107,21 @@ const varFns = {
 
         ".pe-button--border": border(selector),
 
+        // TODO: move wash styles to base button
+        " .pe-button__wash": {
+          opacity: 0
+        },
+        // Always show wash on focus but not on click
+        "&:focus:not(:active) .pe-button__wash": {
+          opacity: 1
+        },
+        // Only show wash on hover when "has hover" class set
+        ".pe-button--has-hover:hover": {
+          " .pe-button__wash": {
+            opacity: 1
+          },
+        },
+
         " .pe-button__label, .pe-button__dropdown": {
           whiteSpace: "pre",
           userSelect: "none",

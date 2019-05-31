@@ -45,13 +45,7 @@ function _extends() {
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          backgroundColor: "currentcolor"
-        }
-      }
-    })];
+    return [];
   }
 };
 
@@ -70,18 +64,6 @@ var tintFns = function tintFns(tint) {
         backgroundColor: vars["color_" + tint + "_background"]
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars) {
-    return [sel(selector, {
-      opacity: vars["color_" + tint + "_wash_opacity"]
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_opacity", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          opacity: vars["color_" + tint + "_focus_opacity"]
-        }
-      }
-    })];
   }), _defineProperty(_ref, "color_" + tint + "_disabled", function (selector, vars) {
     return [sel(selector, {
       ".pe-button--disabled": {
@@ -92,10 +74,8 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        }
+      " .pe-button__wash": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
       }
     })];
   }), _ref;
@@ -120,14 +100,6 @@ var hoverTintFns = function hoverTintFns(tint) {
     return [sel(selector, {
       " .pe-icon-button__content": {
         backgroundColor: vars["color_" + tint + "_background_hover"]
-      }
-    })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-button--wash": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        }
       }
     })];
   }), _ref2;
@@ -189,6 +161,25 @@ var varFns = {
         lineHeight: 1,
         borderRadius: "50%",
         pointerEvents: "none"
+      },
+      // TODO: move wash styles to base button
+      " .pe-button__wash": [mixin.fit(), {
+        zIndex: 0,
+        borderRadius: "inherit",
+        pointerEvents: "none",
+        opacity: 0
+      }],
+      // Always show wash on focus but not on click
+      "&:focus:not(:active)": {
+        " .pe-button__wash": {
+          opacity: 1
+        }
+      },
+      // Only show wash on hover when "has hover" class set
+      ".pe-button--has-hover:hover": {
+        " .pe-button__wash": {
+          opacity: 1
+        }
       }
     }, _defineProperty({}, "*[dir=rtl] ".concat(selector, ", .pe-rtl ").concat(selector), [alignRight(vars)])])];
   },
@@ -288,12 +279,10 @@ var iconButtonVars = {
   color_light: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_label: rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_focus_opacity: vars.blend_light_background_hover_medium,
   color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
   color_dark: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label: rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_focus_opacity: vars.blend_dark_background_hover_medium,
   color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover) // hover colors may be set in theme; disabled by default
   // color_light_background_hover:         "currentColor",
   // color_dark_background_hover:          "currentColor",

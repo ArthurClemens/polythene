@@ -20,13 +20,12 @@ var classes = {
   dropdownOpen: "pe-button--dropdown-open",
   extraWide: "pe-button--extra-wide",
   hasDropdown: "pe-button--dropdown",
-  focus: "pe-button--focus",
   highLabel: "pe-button--high-label",
   inactive: "pe-button--inactive",
   raised: "pe-button--raised",
   selected: "pe-button--selected",
   separatorAtStart: "pe-button--separator-start",
-  hasWash: "pe-button--wash"
+  hasHover: "pe-button--has-hover"
 };
 
 function _defineProperty(obj, key, value) {
@@ -196,10 +195,8 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        }
+      " .pe-button__wash": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
@@ -257,14 +254,6 @@ var hoverTintFns = function hoverTintFns(tint) {
       ":not(.pe-button--disabled):not(.pe-button--selected)": {
         " .pe-button__content": {
           borderColor: vars["color_" + tint + "_hover_border"]
-        }
-      }
-    })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_background", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-button--wash": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
         }
       }
     })];
@@ -404,6 +393,20 @@ var varFns$1 = _objectSpread({
         paddingBottom: 0
       },
       ".pe-button--border": _border$1(selector),
+      // TODO: move wash styles to base button
+      " .pe-button__wash": {
+        opacity: 0
+      },
+      // Always show wash on focus
+      "&:focus:not(:active) .pe-button__wash": {
+        opacity: 1
+      },
+      // Only show wash on hover when "has hover" class set
+      ".pe-button--has-hover:hover": {
+        " .pe-button__wash": {
+          opacity: 1
+        }
+      },
       " .pe-button__label, .pe-button__dropdown": {
         whiteSpace: "pre",
         userSelect: "none",

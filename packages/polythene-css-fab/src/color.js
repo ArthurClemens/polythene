@@ -3,15 +3,7 @@
 import { sel, createColor } from "polythene-core-css";
 
 const generalFns = ({
-  general_styles: selector => [
-    sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          opacity: 1,
-        }
-      },
-    })
-  ],
+  general_styles: selector => [],
 });
 
 const tintFns = tint => ({
@@ -26,15 +18,6 @@ const tintFns = tint => ({
     sel(selector, {
       " .pe-button__content": {
         backgroundColor: vars["color_" + tint + "_background"],
-      },
-    })
-  ],
-  ["color_" + tint + "_focus_background"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__focus": {
-          backgroundColor: vars["color_" + tint + "_focus_background"]
-        }
       },
     })
   ],

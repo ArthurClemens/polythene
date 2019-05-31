@@ -106,7 +106,8 @@ var _ViewControl = function _ViewControl(_ref) {
     disabled: props.disabled,
     events: props.events,
     ink: props.ink || false,
-    inactive: props.inactive
+    inactive: props.inactive,
+    wash: false
   }, props.iconButton))]);
 };
 

@@ -7,7 +7,6 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
   const [domElement, setDomElement] = useState();
   const contentElement = useRef();
   const [isInactive, setIsInactive] = useState(props.inactive);
-  const [hasFocus, setHasFocus] = useState(false);
   const disabled = props.disabled;
   const inactive = props.inactive || isInactive;
   const onClickHandler = events[a.onclick] || (() => {});
@@ -26,10 +25,11 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
     ), props.inactivate * 1000);
   };
 
-  /*
-  Use wash to indicate focus, or hover when not a raised button.
-  */
-  const showWash = !disabled && !props.selected && hasFocus && props.wash !== false;
+  const hasHover = !disabled && !props.selected && (
+    props.raised
+      ? props.wash
+      : props.wash !== false
+  );
 
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
@@ -53,7 +53,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         props.contained ? classes.contained : null,
         props.raised ? classes.contained : null,
         props.raised ? classes.raised : null,
-        hasFocus ? classes.focus : null,
+        hasHover ? classes.hasHover : null,
         props.selected ? classes.selected : null,
         props.highLabel ? classes.highLabel : null,
         props.extraWide ? classes.extraWide : null,
@@ -67,7 +67,6 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
             ? classes.dropdownOpen
             : classes.dropdownClosed
           : null,
-        showWash ? classes.hasWash : null,
         props.tone === "dark" ? "pe-dark-tone" : null,
         props.tone === "light" ? "pe-light-tone" : null,
         props.className || props[a.class],
@@ -77,29 +76,21 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
       [a.tabindex]: disabled || inactive
         ? -1
         : props[a.tabindex] || 0,
-      [a.onfocus]: e => (
-        setHasFocus(true),
-        events[a.onfocus] && events[a.onfocus](e)
-      ),
-      [a.onblur]: e => (
-        setHasFocus(false),
-        events[a.onblur] && events[a.onblur](e)
+      [a.onmouseout]: e => (
+        document.activeElement.blur(),
+        props.events && props.events[a.onmouseout]
       ),
       ...events,
       [a.onclick]: e => (
-        setHasFocus(false),
+        document.activeElement.blur(),
         handleInactivate(e),
         onClickHandler(e)
       ),
       [a.onkeyup]: e => {
-        // With focus, trigger click with ENTER and with SPACE
-        if (hasFocus) {
-          if (e.keyCode === 13 || e.keyCode == 0 || e.keyCode == 32) {
-            setHasFocus(false);
-            onKeyUpHandler(e);
-          }
+        if (onKeyUpHandler) {
+          onKeyUpHandler(e);
         }
-      },
+      }
     },
     props.url,
     disabled ? { disabled: true } : null,

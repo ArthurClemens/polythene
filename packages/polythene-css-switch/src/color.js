@@ -60,28 +60,6 @@ const tintFns = tint => ({
       }
     })
   ],
-  ["color_" + tint + "_focus_off"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_off"]
-          }
-        },
-      }
-    })
-  ],
-  ["color_" + tint + "_focus_off_opacity"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_off_opacity"],
-          }
-        },
-      }
-    })
-  ],
   ["color_" + tint + "_icon_off"]: (selector, vars) => [
     sel(selector, {
       ".pe-control--off": {
@@ -124,28 +102,6 @@ const tintFns = tint => ({
       ".pe-control--on": {
         " .pe-switch-control__thumb": {
           color: vars["color_" + tint + "_thumb_on"]
-        },
-      }
-    })
-  ],
-  ["color_" + tint + "_focus_on"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_on"]
-          }
-        },
-      }
-    })
-  ],
-  ["color_" + tint + "_focus_on_opacity"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_on_opacity"],
-          }
         },
       }
     })
@@ -208,24 +164,24 @@ const tintFns = tint => ({
 });
 
 const hoverTintFns = tint => ({
-  ["color_" + tint + "_wash_on"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--on": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_on"]
-        }
-      },
-    })
-  ],
-  ["color_" + tint + "_wash_off"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--off": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_off"]
-        }
-      }
-    })
-  ],
+  // ["color_" + tint + "_wash_on"]: (selector, vars) => [
+  //   sel(selector, {
+  //     ".pe-control--on": {
+  //       " .pe-button__wash": {
+  //         backgroundColor: vars["color_" + tint + "_wash_on"]
+  //       }
+  //     },
+  //   })
+  // ],
+  // ["color_" + tint + "_wash_off"]: (selector, vars) => [
+  //   sel(selector, {
+  //     ".pe-control--off": {
+  //       " .pe-button__wash": {
+  //         backgroundColor: vars["color_" + tint + "_wash_off"]
+  //       }
+  //     }
+  //   })
+  // ],
 });
 
 const lightTintFns = Object.assign({}, generalFns, tintFns("light"));

@@ -69,50 +69,6 @@ const tintFns = tint => ({
       }
     })
   ],
-  ["color_" + tint + "_focus_on"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_on"]
-          }
-        },
-      },
-    })
-  ],
-  ["color_" + tint + "_focus_off"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_off"]
-          }
-        },
-      },
-    })
-  ],
-  ["color_" + tint + "_focus_on_opacity"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_on_opacity"],
-          }
-        },
-      },
-    })
-  ],
-  ["color_" + tint + "_focus_off_opacity"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_off_opacity"],
-          }
-        },
-      },
-    })
-  ],
   ["color_" + tint + "_on_label"]: (selector, vars) => [
     sel(selector, {
       ".pe-control--on": {

@@ -228,7 +228,7 @@ const varFns = {
   ],
   animation_duration: (selector, vars) => [
     sel(selector, {
-      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label": transition(vars, "all")
     })
   ],
   createSize

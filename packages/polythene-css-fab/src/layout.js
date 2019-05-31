@@ -28,23 +28,19 @@ const varFns = {
         justifyContent: "center",
       },
 
-      " .pe-button__wash, .pe-button__focus": [
-        mixin.fit(),
-        {
-          borderRadius: "inherit",
-        }
-      ],
-
       " .pe-ripple": {
         borderRadius: "inherit"
       },
 
-      " .pe-button__wash": {
-        transition: "background-color " + themeVars.animation_duration + " ease-in-out",
-        borderRadius: "inherit",
-        pointerEvents: "none",
-        backgroundColor: "transparent"
-      }
+      " .pe-button__wash": [
+        mixin.fit(),
+        {
+          borderRadius: "inherit",
+          transition: "background-color " + themeVars.animation_duration + " ease-in-out",
+          pointerEvents: "none",
+          backgroundColor: "transparent"
+        }
+      ]
     })
   ],
   size_regular: (selector, vars) => [

@@ -3,15 +3,7 @@
 import { sel, createColor } from "polythene-core-css";
 
 const generalFns = ({
-  general_styles: selector => [
-    sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          backgroundColor: "currentcolor"
-        }
-      },
-    })
-  ],
+  general_styles: selector => [],
 });
 
 const tintFns = tint => ({
@@ -29,20 +21,6 @@ const tintFns = tint => ({
       },
     })
   ],
-  ["color_" + tint + "_wash_opacity"]: (selector, vars) => [
-    sel(selector, {
-      opacity: vars["color_" + tint + "_wash_opacity"]
-    })
-  ],
-  ["color_" + tint + "_focus_opacity"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--focus, &.pe-button--selected": {
-        " .pe-button__focus": {
-          opacity: vars["color_" + tint + "_focus_opacity"],
-        }
-      },
-    })
-  ],
   ["color_" + tint + "_disabled"]: (selector, vars) => [
     sel(selector, {
       ".pe-button--disabled": {
@@ -54,11 +32,9 @@ const tintFns = tint => ({
   ],
   ["color_" + tint + "_wash_background"]: (selector, vars) => [
     sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        },
-      }
+      " .pe-button__wash": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
+      },
     })
   ],
 });
@@ -83,15 +59,6 @@ const hoverTintFns = tint => ({
       " .pe-icon-button__content": { 
         backgroundColor: vars["color_" + tint + "_background_hover"]
       },
-    })
-  ],
-  ["color_" + tint + "_wash_background"]: (selector, vars) => [
-    sel(selector, {
-      ".pe-button--wash": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        },
-      }
     })
   ],
 });

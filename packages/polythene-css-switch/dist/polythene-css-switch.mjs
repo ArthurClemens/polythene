@@ -100,26 +100,6 @@ var tintFns = function tintFns(tint) {
         }
       }
     })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_off"]
-          }
-        }
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_off_opacity", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--off": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_off_opacity"]
-          }
-        }
-      }
-    })];
   }), _defineProperty(_ref, "color_" + tint + "_icon_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
@@ -157,26 +137,6 @@ var tintFns = function tintFns(tint) {
       ".pe-control--on": {
         " .pe-switch-control__thumb": {
           color: vars["color_" + tint + "_thumb_on"]
-        }
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            backgroundColor: vars["color_" + tint + "_focus_on"]
-          }
-        }
-      }
-    })];
-  }), _defineProperty(_ref, "color_" + tint + "_focus_on_opacity", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--on": {
-        " .pe-button--focus": {
-          " .pe-button__focus": {
-            opacity: vars["color_" + tint + "_focus_on_opacity"]
-          }
         }
       }
     })];
@@ -232,25 +192,25 @@ var tintFns = function tintFns(tint) {
 };
 
 var hoverTintFns = function hoverTintFns(tint) {
-  var _ref2;
-
-  return _ref2 = {}, _defineProperty(_ref2, "color_" + tint + "_wash_on", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--on": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_on"]
-        }
-      }
-    })];
-  }), _defineProperty(_ref2, "color_" + tint + "_wash_off", function (selector, vars) {
-    return [sel(selector, {
-      ".pe-control--off": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_off"]
-        }
-      }
-    })];
-  }), _ref2;
+  return {// ["color_" + tint + "_wash_on"]: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-control--on": {
+    //       " .pe-button__wash": {
+    //         backgroundColor: vars["color_" + tint + "_wash_on"]
+    //       }
+    //     },
+    //   })
+    // ],
+    // ["color_" + tint + "_wash_off"]: (selector, vars) => [
+    //   sel(selector, {
+    //     ".pe-control--off": {
+    //       " .pe-button__wash": {
+    //         backgroundColor: vars["color_" + tint + "_wash_off"]
+    //       }
+    //     }
+    //   })
+    // ],
+  };
 };
 
 var lightTintFns = _extends({}, generalFns, tintFns("light"));
@@ -439,7 +399,7 @@ var varFns = {
   },
   animation_duration: function animation_duration(selector, vars) {
     return [sel(selector, {
-      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label, .pe-button__focus": transition(vars, "all")
+      " .pe-switch-control__track, .pe-switch-control__thumb, .pe-control__label": transition(vars, "all")
     })];
   },
   createSize: createSize
