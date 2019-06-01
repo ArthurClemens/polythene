@@ -6,7 +6,7 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
     ? props.defaultChecked
     : props.checked || false;
   const [previousIsChecked, setIsChecked] = useState(defaultChecked);
-
+  
   const isChecked = props.checked !== undefined
     ? props.checked
     : previousIsChecked;
@@ -95,7 +95,6 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
         {
           inactive,
           checked: isChecked,
-          key: "control",
           events: {
             // Only use key down event; click events are handled by input element
             [a.onkeydown]: viewControlKeyDownHandler
@@ -108,10 +107,10 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
           props.label
         )
         : null,
-      h("input", Object.assign(
-        {},
+      h("input", Object.assign({},
         props.events,
         {
+          key: "input",
           name: props.name,
           type: props.type,
           value: props.value,

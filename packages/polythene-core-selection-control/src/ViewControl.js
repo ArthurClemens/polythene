@@ -5,9 +5,6 @@ const CONTENT = [
   { iconType: "iconOff", className: classes.buttonOff}
 ];
 
-// export const getElement = vnode =>
-//   vnode.props.element || `.${classes.box}`;
-
 const createIcon = (h, iconType, props, className) => (
   // if props.iconOn/props.iconOff is passed, use that icon options object and ignore size
   // otherwise create a new object

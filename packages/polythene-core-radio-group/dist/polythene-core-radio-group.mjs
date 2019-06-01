@@ -137,8 +137,7 @@ var _RadioGroup = function _RadioGroup(_ref) {
     var isChecked = buttonOpts.checked !== undefined ? buttonOpts.checked : groupCheckedValue !== undefined ? buttonOpts.value === groupCheckedValue : checkedIndex === index;
     return h(RadioButton, _extends({}, {
       /* group attributes that may be overwritten by individual buttons */
-      name: props.name,
-      key: buttonOpts.value
+      name: props.name
     }, props.all,
     /* individual button options */
     buttonOpts, {
@@ -149,7 +148,9 @@ var _RadioGroup = function _RadioGroup(_ref) {
           value: value
         });
       },
-      checked: isChecked
+      checked: isChecked,
+      key: buttonOpts.value // required for proper selection
+
     }));
   }) : null;
   var content = [props.before, contents, props.after];

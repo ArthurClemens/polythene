@@ -201,11 +201,11 @@ var _SelectionControl = function _SelectionControl(_ref) {
   })), [props.before, h(ViewControl, _extends({}, props, {
     inactive: inactive,
     checked: isChecked,
-    key: "control",
     events: _defineProperty({}, a.onkeydown, viewControlKeyDownHandler)
   })), props.label ? h(".".concat(classes.label), {
     key: "label"
   }, props.label) : null, h("input", _extends({}, props.events, {
+    key: "input",
     name: props.name,
     type: props.type,
     value: props.value,
@@ -220,8 +220,7 @@ var CONTENT = [{
 }, {
   iconType: "iconOff",
   className: classes.buttonOff
-}]; // export const getElement = vnode =>
-//   vnode.props.element || `.${classes.box}`;
+}];
 
 var createIcon = function createIcon(h, iconType, props, className) {
   return (// if props.iconOn/props.iconOff is passed, use that icon options object and ignore size

@@ -4,7 +4,7 @@ import classes from "polythene-css-classes/radio-group";
 export const _RadioGroup = ({ h, a, useState, useEffect, RadioButton, ...props }) => {
   const [checkedIndex, setCheckedIndex] = useState();
   const buttons = props.content || props.buttons || props.children;
-
+  
   useEffect(
     () => {
       const index = buttons.reduce((acc, buttonOpts, index) => {
@@ -50,12 +50,12 @@ export const _RadioGroup = ({ h, a, useState, useEffect, RadioButton, ...props }
         : groupCheckedValue !== undefined
           ? buttonOpts.value === groupCheckedValue
           : checkedIndex === index;
+      
       return h(RadioButton, Object.assign(
         {},
         {
           /* group attributes that may be overwritten by individual buttons */
           name: props.name,
-          key: buttonOpts.value
         },
         props.all,
         /* individual button options */
@@ -66,7 +66,8 @@ export const _RadioGroup = ({ h, a, useState, useEffect, RadioButton, ...props }
             setCheckedIndex(index),
             props.onChange && props.onChange({ value })
           ),
-          checked: isChecked
+          checked: isChecked,
+          key: buttonOpts.value // required for proper selection
         }
       ));
     })

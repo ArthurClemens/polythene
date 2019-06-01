@@ -23,10 +23,6 @@ export const _Drawer = ({ h, Dialog, ...props }) => {
       shadowDepth: props.shadowDepth !== undefined
         ? props.shadowDepth
         : 0,
-      // deprecated:
-      z: props.z !== undefined
-        ? props.z
-        : undefined
     }
   );
   return h(Dialog, componentProps, props.children);
