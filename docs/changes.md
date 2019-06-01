@@ -53,7 +53,7 @@
 
 #### Under the hood
 
-Integration of [Cyano](https://github.com/ArthurClemens/cyano) with the React Hooks API. This has resulted in more coherent (and slighly smaller) code.
+Integration of [Cyano](https://github.com/ArthurClemens/cyano) (which includes the React Hooks API for Mithril). This has resulted in more coherent (and also slighly smaller) code.
 
 #### CSS
 
@@ -65,9 +65,11 @@ Keyboard TAB navigation now highlights components that have focus. Pressing ENTE
 
 Affected components: Button, Icon Button, FAB, List Tile, Checkbox, Radio Button, Switch, Tabs.
 
-The highlight is created by element with className `pe-button__wash`. The color can be themed with variable `color_light_wash_background` and `color_dark_wash_background`.
+The highlight is created by element with className `pe-button__wash`. The color can be themed with variables:
+*  `color_light_wash_background` and `color_dark_wash_background`
+*  `color_light_wash_opacity` and `color_dark_wash_opacity`
 
-Raised Buttons also show a deeper shadow on focus.
+Raised Buttons also show an extra shadow on focus.
 
 #### Closing dialogs and drawers with ESCAPE
 
@@ -78,7 +80,6 @@ Use new option `disableEscape` to prevent ESCAPE from closing the dialog or draw
 #### Bug fixes
 
 * ButtonGroup: fixes a layout issue with arrow button.
-* Button: reenables `wash` when set to `true`.
 * TextField: fixes a bug where large numbers of Text Field instances on the page caused a delay due to excessive redrawing.
 * Fixes a bug where Webpack's production build (using treeshaking) caused JS-in-CSS functions to drop, resulting in missing styles in the document head.
 
@@ -92,7 +93,7 @@ Use new option `disableEscape` to prevent ESCAPE from closing the dialog or draw
 
 #### Other changes
 
-* Raised Button styles are now defined by CSS only. Shadow contains a couple of extra hepler classes for this purpose.
+* Raised Button styles are now defined by CSS only. Shadow component contains a couple of extra hepler classes for this purpose.
 
 
 
