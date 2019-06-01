@@ -70,7 +70,7 @@ Displays a tab row of navigation buttons.
 <a id="tab-button-options"></a>
 ### Tab button options
 
-Tab buttons use the same parameters as [button](button.md), except for `wash` (disabled), `raised` and `z` (makes visually no difference).
+Tab buttons use the same parameters as [button](button.md), except for `wash` (disabled), `raised` and `shadowDepth` (makes visually no difference).
 
 These options can be grouped into `tabsOpts` and applied to all tabs.
 

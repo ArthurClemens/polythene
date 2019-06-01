@@ -90,7 +90,7 @@ Menu is usually composed from:
 
 Menu also contains:
 
-* [Shadow](shadow.md) (when option `z` is not `0`)
+* [Shadow](shadow.md) (when option `shadowDepth` is not `0`)
 
 
 <a id="css-classes"></a>
