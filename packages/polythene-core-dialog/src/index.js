@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer, REFERRER_COMPONENT } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_SHADOW_DEPTH = 3;
@@ -37,7 +37,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   const isTransitioning = transitionState.isTransitioning;
   const isHiding = transitionState.isHiding;
   
-  const transitionOptions = ({ isShow, hideDelay = props.hideDelay }) => ({
+  const transitionOptions = ({ isShow, hideDelay = props.hideDelay, referrer }) => ({
     dispatchTransitionState,
     instanceId: props.instanceId,
     props: Object.assign({}, props, {
@@ -51,14 +51,15 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
     },
     showClass: classes.visible,
     transitionClass: classes.transition,
+    referrer,
   });
   
   const showDialog = () => (
     transitionComponent(transitionOptions({ isShow: true }))
   );
   
-  const hideDialog = hideDelay => (
-    transitionComponent(transitionOptions({ isShow: false, hideDelay } ))
+  const hideDialog = ({ hideDelay, referrer } = {}) => (
+    transitionComponent(transitionOptions({ isShow: false, hideDelay, referrer } ))
   );
   
   const isModal = () =>
@@ -72,7 +73,9 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
     });
 
   const isFullScreen = () =>
-    props.fullScreen || stylePropCompare({
+    props.fullScreen
+    || (domElement && domElement.classList.contains(classes.fullScreen))
+    || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -103,7 +106,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(openDialogsSelector);
           if (openDialogs[openDialogs.length - 1] === domElement) {
-            hideDialog(0);
+            hideDialog({ hideDelay: 0, referrer: REFERRER_COMPONENT });
           }
         }
       };
@@ -165,7 +168,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
           // not allowed
           return;
         }
-        hideDialog();
+        hideDialog({ referrer: REFERRER_COMPONENT });
       }
     }
   );

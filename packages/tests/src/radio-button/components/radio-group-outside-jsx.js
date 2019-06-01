@@ -3,7 +3,7 @@ import { RadioGroup, Button } from "polythene-react";
 
 const formData = {
   name: "outside",
-  defaultCheckedValue: "right",
+  defaultCheckedValue: undefined,
   values: [
     {
       value: "left",

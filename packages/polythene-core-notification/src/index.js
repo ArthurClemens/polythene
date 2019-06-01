@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, isClient, isServer, transitionStateReducer } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, isClient, isServer, transitionStateReducer, REFERRER_COMPONENT } from "polythene-core";
 import { Timer } from "polythene-utilities";
 import classes from "polythene-css-classes/notification";
 
@@ -34,7 +34,7 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
   const isHiding = transitionState.isHiding;
   const timer = timerRef.current;
 
-  const transitionOptions = ({ isShow }) => ({
+  const transitionOptions = ({ isShow, referrer }) => ({
     dispatchTransitionState,
     instanceId: props.instanceId,
     props,
@@ -50,7 +50,7 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
           const timeoutSeconds = timeout !== undefined
             ? timeout
             : DEFAULT_TIME_OUT;
-          timer.start(hideNotification, timeoutSeconds);
+          timer.start(() => hideNotification({ referrer: REFERRER_COMPONENT }), timeoutSeconds);
         }     
       }
       : null,
@@ -59,13 +59,14 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
       containerEl: containerElRef.current
     },
     showClass: classes.visible,
+    referrer
   });
 
   const showNotification = () =>
     transitionComponent(transitionOptions({ isShow: true }));
 
-  const hideNotification = () =>
-    transitionComponent(transitionOptions({ isShow: false }));
+  const hideNotification = ({ referrer } = {}) =>
+    transitionComponent(transitionOptions({ isShow: false, referrer }));
 
   const pause = () => {
     setIsPaused(true);
@@ -146,13 +147,13 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
       if (!domElement || isTransitioning || isHiding) {
         return;
       }
-      if (props.pause) {
-        if (!isPaused) {
-          pause();
-        }
-      } else if (props.unpause) {
+      if (props.unpause) {
         if (isPaused) {
           unpause();
+        }
+      } else if (props.pause) {
+        if (!isPaused) {
+          pause();
         }
       }
     },

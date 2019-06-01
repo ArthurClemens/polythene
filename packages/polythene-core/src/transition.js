@@ -7,6 +7,8 @@ Generic show/hide transition module
 import { isClient } from "./iso";
 import { styleDurationToMs } from "./style";
 
+export const REFERRER_COMPONENT = "component";
+
 const TRANSITION_TYPES = {
   SHOW: "show",
   HIDE: "hide",
@@ -183,9 +185,10 @@ const transition = (opts, state) => {
  * @param {() => void} [params.afterTransition]
  * @param {string} [params.showClass]
  * @param {string} [params.transitionClass]
+ * @param {string} [params.referrer]
  * @returns {Promise}
  */
-export const transitionComponent = ({ dispatchTransitionState, isTransitioning, instanceId, isShow, props, domElements, beforeTransition, afterTransition, showClass, transitionClass }) => {
+export const transitionComponent = ({ dispatchTransitionState, isTransitioning, instanceId, isShow, props, domElements, beforeTransition, afterTransition, showClass, transitionClass, referrer }) => {
   if (isTransitioning) {
     return Promise.resolve();
   }
@@ -234,7 +237,16 @@ export const transitionComponent = ({ dispatchTransitionState, isTransitioning, 
       afterTransition();
     }
 
-    dispatchTransitionState(TRANSITION_TYPES.DONE);
+    /*
+    A bit of a hack:
+    When a hide action from within a component is called,
+    the component props `show` and `hide` are unchanged,
+    resulting in an erroneous call to the show function.
+    In this case we are omitting the "done" dispatch.
+    */
+    if (referrer !== REFERRER_COMPONENT) {
+      dispatchTransitionState(TRANSITION_TYPES.DONE);
+    }
 
     // Component may unmount after this point
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {

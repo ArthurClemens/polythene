@@ -1,4 +1,4 @@
-import { transitionStateReducer, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
+import { transitionStateReducer, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare, REFERRER_COMPONENT } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -237,7 +237,8 @@ var _Dialog = function _Dialog(_ref2) {
   var transitionOptions = function transitionOptions(_ref3) {
     var isShow = _ref3.isShow,
         _ref3$hideDelay = _ref3.hideDelay,
-        hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay;
+        hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay,
+        referrer = _ref3.referrer;
     return {
       dispatchTransitionState: dispatchTransitionState,
       instanceId: props.instanceId,
@@ -251,7 +252,8 @@ var _Dialog = function _Dialog(_ref2) {
         backdropEl: backdropElRef.current
       },
       showClass: classes.visible,
-      transitionClass: classes.transition
+      transitionClass: classes.transition,
+      referrer: referrer
     };
   };
 
@@ -261,10 +263,15 @@ var _Dialog = function _Dialog(_ref2) {
     }));
   };
 
-  var hideDialog = function hideDialog(hideDelay) {
+  var hideDialog = function hideDialog() {
+    var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        hideDelay = _ref4.hideDelay,
+        referrer = _ref4.referrer;
+
     return transitionComponent(transitionOptions({
       isShow: false,
-      hideDelay: hideDelay
+      hideDelay: hideDelay,
+      referrer: referrer
     }));
   };
 
@@ -278,7 +285,7 @@ var _Dialog = function _Dialog(_ref2) {
   };
 
   var isFullScreen = function isFullScreen() {
-    return props.fullScreen || stylePropCompare({
+    return props.fullScreen || domElement && domElement.classList.contains(classes.fullScreen) || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -310,7 +317,10 @@ var _Dialog = function _Dialog(_ref2) {
         var openDialogs = document.querySelectorAll(openDialogsSelector);
 
         if (openDialogs[openDialogs.length - 1] === domElement) {
-          hideDialog(0);
+          hideDialog({
+            hideDelay: 0,
+            referrer: REFERRER_COMPONENT
+          });
         }
       }
     };
@@ -358,7 +368,9 @@ var _Dialog = function _Dialog(_ref2) {
       return;
     }
 
-    hideDialog();
+    hideDialog({
+      referrer: REFERRER_COMPONENT
+    });
   }));
 
   var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({

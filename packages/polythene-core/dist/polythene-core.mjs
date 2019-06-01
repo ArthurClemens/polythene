@@ -826,6 +826,7 @@ var Multi = function Multi(_ref) {
 };
 Multi["displayName"] = "Multi";
 
+var REFERRER_COMPONENT = "component";
 var TRANSITION_TYPES = {
   SHOW: "show",
   HIDE: "hide",
@@ -1001,6 +1002,7 @@ var transition = function transition(opts, state) {
  * @param {() => void} [params.afterTransition]
  * @param {string} [params.showClass]
  * @param {string} [params.transitionClass]
+ * @param {string} [params.referrer]
  * @returns {Promise}
  */
 
@@ -1015,7 +1017,8 @@ var transitionComponent = function transitionComponent(_ref) {
       beforeTransition = _ref.beforeTransition,
       afterTransition = _ref.afterTransition,
       showClass = _ref.showClass,
-      transitionClass = _ref.transitionClass;
+      transitionClass = _ref.transitionClass,
+      referrer = _ref.referrer;
 
   if (isTransitioning) {
     return Promise.resolve();
@@ -1056,8 +1059,19 @@ var transitionComponent = function transitionComponent(_ref) {
     if (afterTransition) {
       afterTransition();
     }
+    /*
+    A bit of a hack:
+    When a hide action from within a component is called,
+    the component props `show` and `hide` are unchanged,
+    resulting in an erroneous call to the show function.
+    In this case we are omitting the "done" dispatch.
+    */
 
-    dispatchTransitionState(TRANSITION_TYPES.DONE); // Component may unmount after this point
+
+    if (referrer !== REFERRER_COMPONENT) {
+      dispatchTransitionState(TRANSITION_TYPES.DONE);
+    } // Component may unmount after this point
+
 
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide
@@ -1067,4 +1081,4 @@ var transitionComponent = function transitionComponent(_ref) {
   });
 };
 
-export { Multi, _Conditional, classForSize, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };
+export { Multi, REFERRER_COMPONENT, _Conditional, classForSize, deprecation, emit, filterSupportedAttributes, getAnimationEndEvent, getStyle, hide, iconDropdownDown, iconDropdownUp, isClient, isRTL, isServer, isTouch, pointerEndDownEvent, pointerEndEvent, pointerMoveEvent, pointerStartDownEvent, pointerStartEvent, show, styleDurationToMs, stylePropCompare, subscribe, throttle, transitionComponent, transitionStateReducer, unpackAttrs, unsubscribe };

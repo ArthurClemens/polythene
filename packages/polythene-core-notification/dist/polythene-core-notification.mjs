@@ -1,4 +1,4 @@
-import { transitionStateReducer, isClient, transitionComponent, filterSupportedAttributes, isServer } from 'polythene-core';
+import { transitionStateReducer, isClient, transitionComponent, REFERRER_COMPONENT, filterSupportedAttributes, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 
 function _defineProperty(obj, key, value) {
@@ -177,7 +177,8 @@ var _Notification = function _Notification(_ref) {
   var timer = timerRef.current;
 
   var transitionOptions = function transitionOptions(_ref2) {
-    var isShow = _ref2.isShow;
+    var isShow = _ref2.isShow,
+        referrer = _ref2.referrer;
     return {
       dispatchTransitionState: dispatchTransitionState,
       instanceId: props.instanceId,
@@ -190,14 +191,19 @@ var _Notification = function _Notification(_ref) {
 
         if (timeout === 0) ; else {
           var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
-          timer.start(hideNotification, timeoutSeconds);
+          timer.start(function () {
+            return hideNotification({
+              referrer: REFERRER_COMPONENT
+            });
+          }, timeoutSeconds);
         }
       } : null,
       domElements: {
         el: domElement,
         containerEl: containerElRef.current
       },
-      showClass: classes.visible
+      showClass: classes.visible,
+      referrer: referrer
     };
   };
 
@@ -208,8 +214,12 @@ var _Notification = function _Notification(_ref) {
   };
 
   var hideNotification = function hideNotification() {
+    var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        referrer = _ref3.referrer;
+
     return transitionComponent(transitionOptions({
-      isShow: false
+      isShow: false,
+      referrer: referrer
     }));
   };
 
@@ -287,13 +297,13 @@ var _Notification = function _Notification(_ref) {
       return;
     }
 
-    if (props.pause) {
-      if (!isPaused) {
-        pause();
-      }
-    } else if (props.unpause) {
+    if (props.unpause) {
       if (isPaused) {
         unpause();
+      }
+    } else if (props.pause) {
+      if (!isPaused) {
+        pause();
       }
     }
   }, [domElement, isTransitioning, isHiding, props.pause, props.unpause]);
