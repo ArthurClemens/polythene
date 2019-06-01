@@ -65,10 +65,14 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      ".pe-button--focus": {
-        " .pe-button__wash": {
-          backgroundColor: vars["color_" + tint + "_wash_background"]
-        }
+      " .pe-button__wash-color": {
+        backgroundColor: vars["color_" + tint + "_wash_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars) {
+    return [sel(selector, {
+      " .pe-button__wash-color": {
+        opacity: vars["color_" + tint + "_wash_opacity"]
       }
     })];
   }), _ref;
@@ -159,10 +163,12 @@ var drawerVars = {
   // 7 * 8 = 56
   color_light: rgba(vars.color_primary_foreground),
   color_light_background: rgba(vars.color_primary),
-  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_wash_background: "currentColor",
+  color_light_wash_opacity: 0.1,
   color_dark: rgba(vars.color_primary_foreground),
   color_dark_background: rgba(vars.color_primary),
-  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover)
+  color_dark_wash_background: "currentColor",
+  color_dark_wash_opacity: 0.1
 };
 
 // @ts-check

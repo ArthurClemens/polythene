@@ -11,6 +11,7 @@ var classes = {
   label: "pe-button__label",
   textLabel: "pe-button__text-label",
   wash: "pe-button__wash",
+  washColor: "pe-button__wash-color",
   dropdown: "pe-button__dropdown",
   // states      
   border: "pe-button--border",
@@ -104,7 +105,7 @@ var varFns = {
         borderRadius: "inherit",
         pointerEvents: "none"
       },
-      " .pe-button__wash": [mixin.fit(), {
+      " .pe-button__wash, .pe-button__wash-color": [mixin.fit(), {
         zIndex: 0,
         borderRadius: "inherit",
         pointerEvents: "none"
@@ -195,8 +196,14 @@ var tintFns = function tintFns(tint) {
     })];
   }), _defineProperty(_ref, "color_" + tint + "_wash_background", function (selector, vars) {
     return [sel(selector, {
-      " .pe-button__wash": {
+      " .pe-button__wash-color": {
         backgroundColor: vars["color_" + tint + "_wash_background"]
+      }
+    })];
+  }), _defineProperty(_ref, "color_" + tint + "_wash_opacity", function (selector, vars) {
+    return [sel(selector, {
+      " .pe-button__wash-color": {
+        opacity: vars["color_" + tint + "_wash_opacity"]
       }
     })];
   }), _defineProperty(_ref, "color_" + tint + "_border", function (selector, vars) {
@@ -353,7 +360,7 @@ var border_radius_button_group = function border_radius_button_group(selector, v
 
 var _border$1 = function border(selector) {
   return sel(selector, {
-    " .pe-button__wash, .pe-ripple": mixin.fit(-1),
+    " .pe-button__wash, .pe-button__wash-color, .pe-ripple": mixin.fit(-1),
     " .pe-button__content": {
       borderStyle: "solid"
     }
@@ -628,7 +635,8 @@ var textButtonVars = _objectSpread({
   text_transform: "uppercase",
   color_light_background: "transparent",
   color_light_text: rgba(vars.color_light_foreground, vars.blend_light_text_primary),
-  color_light_wash_background: rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_wash_background: "currentColor",
+  color_light_wash_opacity: 0.1,
   color_light_active_background: rgba(vars.color_light_foreground, vars.blend_light_background_active),
   color_light_disabled_background: "transparent",
   color_light_disabled_text: rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
@@ -636,7 +644,8 @@ var textButtonVars = _objectSpread({
   color_light_separator: rgba(vars.color_light_foreground, vars.blend_light_border_light),
   color_dark_background: "transparent",
   color_dark_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_primary),
-  color_dark_wash_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_wash_background: "currentColor",
+  color_dark_wash_opacity: 0.1,
   color_dark_active_background: rgba(vars.color_dark_foreground, vars.blend_dark_background_active),
   color_dark_disabled_background: "transparent",
   color_dark_disabled_text: rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),

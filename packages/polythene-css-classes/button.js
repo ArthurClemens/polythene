@@ -9,6 +9,7 @@ export default {
   label:            "pe-button__label",
   textLabel:        "pe-button__text-label",
   wash:             "pe-button__wash",
+  washColor:        "pe-button__wash-color",
   dropdown:         "pe-button__dropdown",
       
   // states      

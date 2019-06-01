@@ -24,10 +24,12 @@ export interface IconButtonVars {
   color_light_label:             string,
   color_light_disabled:          string,
   color_light_wash_background:   string,
+  color_light_wash_opacity:      number,
   color_dark:                    string,
   color_dark_label:              string,
   color_dark_disabled:           string,
   color_dark_wash_background:    string,
+  color_dark_wash_opacity:       number,
   color_light_background_hover?: string,
   color_dark_background_hover?:  string,
 }

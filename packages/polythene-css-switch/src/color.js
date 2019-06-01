@@ -5,22 +5,22 @@ import { sel, createColor } from "polythene-core-css";
 const generalFns = ({
   general_styles: selector => [
     sel(selector, {
-      ".pe-control--off": {
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-icon": {
-          color: "currentcolor"
-        },
-      },
-      ".pe-control--on": {
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-icon": {
-          color: "currentcolor"
-        },
-      },
+      // ".pe-control--off": {
+      //   " .pe-switch-control__knob": {
+      //     backgroundColor: "currentcolor"
+      //   },
+      //   " .pe-icon": {
+      //     color: "currentcolor"
+      //   },
+      // },
+      // ".pe-control--on": {
+      //   " .pe-switch-control__knob": {
+      //     backgroundColor: "currentcolor"
+      //   },
+      //   " .pe-icon": {
+      //     color: "currentcolor"
+      //   },
+      // },
     })
   ],
 });
@@ -54,8 +54,8 @@ const tintFns = tint => ({
   ["color_" + tint + "_thumb_off"]: (selector, vars) => [
     sel(selector, {
       ".pe-control--off": {
-        " .pe-switch-control__thumb": {
-          color: vars["color_" + tint + "_thumb_off"]
+        " .pe-switch-control__knob": {
+          backgroundColor: vars["color_" + tint + "_thumb_off"]
         },
       }
     })
@@ -100,8 +100,8 @@ const tintFns = tint => ({
   ["color_" + tint + "_thumb_on"]: (selector, vars) => [
     sel(selector, {
       ".pe-control--on": {
-        " .pe-switch-control__thumb": {
-          color: vars["color_" + tint + "_thumb_on"]
+        " .pe-switch-control__knob": {
+          backgroundColor: vars["color_" + tint + "_thumb_on"]
         },
       }
     })

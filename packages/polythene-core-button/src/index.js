@@ -160,7 +160,13 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
               },
               props.ripple
             )),
-          h("div", { key: "wash", className: classes.wash }),
+          h("div",
+            {
+              key: "wash",
+              className: classes.wash
+            },
+            h("div", { className: classes.washColor })
+          ),
           
           buttonContent,
           props.dropdown

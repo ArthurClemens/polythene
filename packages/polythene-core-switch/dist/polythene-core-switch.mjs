@@ -1,18 +1,3 @@
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -109,7 +94,7 @@ var _ViewControl = function _ViewControl(_ref) {
   return h(element, null, [h("div", {
     className: classes.track,
     key: "track"
-  }), h(IconButton, _extends({}, _defineProperty({
+  }), h(IconButton, _extends({}, {
     className: classes.thumb,
     key: "button",
     content: h("div", {
@@ -121,9 +106,9 @@ var _ViewControl = function _ViewControl(_ref) {
     style: props.style,
     disabled: props.disabled,
     events: props.events,
-    ink: props.ink || false,
+    ink: props.ink,
     inactive: props.inactive
-  }, a.tabindex, -1), props.iconButton))]);
+  }, props.iconButton))]);
 };
 
 export { _Switch, _ViewControl };

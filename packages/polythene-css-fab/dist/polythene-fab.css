@@ -55,9 +55,10 @@
   background-color: #2196f3;
 }
 
-.pe-dark-tone.pe-fab.pe-button--focus .pe-button__wash,
-.pe-dark-tone .pe-fab.pe-button--focus .pe-button__wash {
-  background-color: hsla(0, 0%, 100%, .08);
+.pe-dark-tone.pe-fab .pe-button__wash-color,
+.pe-dark-tone .pe-fab .pe-button__wash-color {
+  background-color: currentColor;
+  opacity: .1;
 }
 
 .pe-fab .pe-button__content, .pe-light-tone.pe-fab .pe-button__content,
@@ -66,10 +67,10 @@
   background-color: #2196f3;
 }
 
-.pe-fab.pe-button--focus .pe-button__wash,
-.pe-light-tone.pe-fab.pe-button--focus .pe-button__wash,
-.pe-light-tone .pe-fab.pe-button--focus .pe-button__wash {
-  background-color: rgba(0, 0, 0, .06);
+.pe-fab .pe-button__wash-color, .pe-light-tone.pe-fab .pe-button__wash-color,
+.pe-light-tone .pe-fab .pe-button__wash-color {
+  background-color: currentColor;
+  opacity: .1;
 }
 
 /*# sourceMappingURL=polythene-fab.css.map */

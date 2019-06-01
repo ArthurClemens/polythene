@@ -39,12 +39,14 @@ const iconButtonVars = {
   color_light:                          rgba(vars.color_light_foreground, vars.blend_light_text_secondary),               
   color_light_label:                    rgba(vars.color_light_foreground, vars.blend_light_text_secondary),
   color_light_disabled:                 rgba(vars.color_light_foreground, vars.blend_light_text_disabled),
-  color_light_wash_background:          rgba(vars.color_light_foreground, vars.blend_light_background_hover),
+  color_light_wash_background:          "currentColor",
+  color_light_wash_opacity:             0.1,
 
   color_dark:                           rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_label:                     rgba(vars.color_dark_foreground, vars.blend_dark_text_secondary),
   color_dark_disabled:                  rgba(vars.color_dark_foreground, vars.blend_dark_text_disabled),
-  color_dark_wash_background:           rgba(vars.color_dark_foreground, vars.blend_dark_background_hover),
+  color_dark_wash_background:           "currentColor",
+  color_dark_wash_opacity:              0.1,
 
   // hover colors may be set in theme; disabled by default
 

@@ -150,6 +150,7 @@ var classes = {
   label: "pe-button__label",
   textLabel: "pe-button__text-label",
   wash: "pe-button__wash",
+  washColor: "pe-button__wash-color",
   dropdown: "pe-button__dropdown",
   // states      
   border: "pe-button--border",
@@ -297,7 +298,9 @@ var _Button = function _Button(_ref) {
   }, props.ripple)), h("div", {
     key: "wash",
     className: classes.wash
-  }), buttonContent, props.dropdown ? h(Icon, {
+  }, h("div", {
+    className: classes.washColor
+  })), buttonContent, props.dropdown ? h(Icon, {
     className: classes.dropdown,
     key: "dropdown",
     svg: {

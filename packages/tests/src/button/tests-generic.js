@@ -31,8 +31,10 @@ export default ({ h, Button, Icon }) => {
     color_light_text:            "#673ab7",
     color_dark_text:             "rgba(255, 255, 255, 1)",
     color_dark_background:       "rgba(33, 150, 243, 1)",
-    color_light_wash_background: "rgba(103, 58, 183, .1)",
-    color_dark_wash_background:  "rgba(0, 37, 112, .2)",
+    color_light_wash_background: "rgb(103, 58, 183)",
+    color_light_wash_opacity:    0.1,
+    color_dark_wash_background:  "rgb(0, 37, 112)",
+    color_dark_wash_opacity:     0.2,
 
   });
 

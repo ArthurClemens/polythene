@@ -30,7 +30,7 @@ const varFns = {
         pointerEvents: "none",
       },
 
-      " .pe-button__wash": [
+      " .pe-button__wash, .pe-button__wash-color": [
         mixin.fit(),
         {
           zIndex: 0,

@@ -46,23 +46,22 @@ function _extends() {
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel(selector, {
-      ".pe-control--off": {
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-icon": {
-          color: "currentcolor"
-        }
-      },
-      ".pe-control--on": {
-        " .pe-switch-control__knob": {
-          backgroundColor: "currentcolor"
-        },
-        " .pe-icon": {
-          color: "currentcolor"
-        }
-      }
+    return [sel(selector, {// ".pe-control--off": {
+      //   " .pe-switch-control__knob": {
+      //     backgroundColor: "currentcolor"
+      //   },
+      //   " .pe-icon": {
+      //     color: "currentcolor"
+      //   },
+      // },
+      // ".pe-control--on": {
+      //   " .pe-switch-control__knob": {
+      //     backgroundColor: "currentcolor"
+      //   },
+      //   " .pe-icon": {
+      //     color: "currentcolor"
+      //   },
+      // },
     })];
   }
 };
@@ -95,8 +94,8 @@ var tintFns = function tintFns(tint) {
   }), _defineProperty(_ref, "color_" + tint + "_thumb_off", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--off": {
-        " .pe-switch-control__thumb": {
-          color: vars["color_" + tint + "_thumb_off"]
+        " .pe-switch-control__knob": {
+          backgroundColor: vars["color_" + tint + "_thumb_off"]
         }
       }
     })];
@@ -135,8 +134,8 @@ var tintFns = function tintFns(tint) {
   }), _defineProperty(_ref, "color_" + tint + "_thumb_on", function (selector, vars) {
     return [sel(selector, {
       ".pe-control--on": {
-        " .pe-switch-control__thumb": {
-          color: vars["color_" + tint + "_thumb_on"]
+        " .pe-switch-control__knob": {
+          backgroundColor: vars["color_" + tint + "_thumb_on"]
         }
       }
     })];

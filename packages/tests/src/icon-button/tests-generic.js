@@ -147,8 +147,7 @@ export default ({ IconButton, Icon, SVG, h, a }) => {
           svg: { content: trustedIconLock }
         },
         style: {
-          color: "#FFCCBC",
-          backgroundColor: "#4E342E"
+          color: "#ff5722",
         }
       }
     },

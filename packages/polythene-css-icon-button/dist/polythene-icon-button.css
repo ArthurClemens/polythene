@@ -93,9 +93,10 @@
   color: hsla(0, 0%, 100%, .26);
 }
 
-.pe-dark-tone.pe-button.pe-icon-button .pe-button__wash,
-.pe-dark-tone .pe-button.pe-icon-button .pe-button__wash {
-  background-color: hsla(0, 0%, 100%, .08);
+.pe-dark-tone.pe-button.pe-icon-button .pe-button__wash-color,
+.pe-dark-tone .pe-button.pe-icon-button .pe-button__wash-color {
+  background-color: currentColor;
+  opacity: .1;
 }
 
 .pe-button.pe-icon-button, .pe-button.pe-icon-button .pe-icon-button__label,
@@ -115,10 +116,11 @@
   color: rgba(0, 0, 0, .26);
 }
 
-.pe-button.pe-icon-button .pe-button__wash,
-.pe-light-tone.pe-button.pe-icon-button .pe-button__wash,
-.pe-light-tone .pe-button.pe-icon-button .pe-button__wash {
-  background-color: rgba(0, 0, 0, .06);
+.pe-button.pe-icon-button .pe-button__wash-color,
+.pe-light-tone.pe-button.pe-icon-button .pe-button__wash-color,
+.pe-light-tone .pe-button.pe-icon-button .pe-button__wash-color {
+  background-color: currentColor;
+  opacity: .1;
 }
 
 /*# sourceMappingURL=polythene-icon-button.css.map */

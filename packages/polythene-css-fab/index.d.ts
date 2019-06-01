@@ -8,9 +8,11 @@ export interface DrawerVars {
   color_light:                  string,
   color_light_background:       string,
   color_light_wash_background:  string,
+  color_light_wash_opacity:     number,
   color_dark:                   string,
   color_dark_background:        string,
   color_dark_wash_background:   string,
+  color_dark_wash_opacity:      number,
 }
 
 export const vars: DrawerVars;
