@@ -13,6 +13,7 @@
     "publish:test": "node --experimental-modules ./scripts/private/publish --dry-run --version 1.5.4",
     "publish:real": "node --experimental-modules ./scripts/private/publish --version 1.5.4",
     "github:demos": "node ./scripts/private/copyToDemos",
+    "github:assets": "node ./scripts/private/copyToAssets",
     "typecheck": "lerna run typecheck",
     "docs:check": "./node_modules/broken-link-checker/bin/blc -ro http://localhost:6419/",
     "cypress:run": "cypress run",
