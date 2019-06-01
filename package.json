@@ -6,7 +6,7 @@
     "build:component": "node ./scripts/private/buildComponent",
     "build:css": "node ./scripts/private/buildComponentCSS",
     "build:collect-css": "cd packages/polythene-css && npm run build",
-    "build:standalone": "node ./scripts/private/buildStandalone",
+    "build:standalone": "node ./scripts/private/buildStandalone && npm run github:assets",
     "dependencies:update": "node ./scripts/private/updateDependencies",
     "bump:test": "node --experimental-modules ./scripts/private/bumpVersion --dry-run --version 1.5.4",
     "bump:real": "node --experimental-modules ./scripts/private/bumpVersion --version 1.5.4",
