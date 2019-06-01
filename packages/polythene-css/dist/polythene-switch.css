@@ -441,34 +441,14 @@
   left: auto;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
-.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__knob {
-  background-color: currentcolor;
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-icon,
-.pe-dark-tone .pe-switch-control.pe-control--off .pe-icon {
-  color: currentcolor;
-}
-
 .pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,
 .pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__knob {
-  background-color: currentcolor;
+  background-color: #2196f3;
 }
 
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-icon,
-.pe-dark-tone .pe-switch-control.pe-control--on .pe-icon {
-  color: currentcolor;
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,
-.pe-dark-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3;
-}
-
-.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,
-.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #bdbdbd;
+.pe-dark-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-dark-tone .pe-switch-control.pe-control--off .pe-switch-control__knob {
+  background-color: #bdbdbd;
 }
 
 .pe-dark-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
@@ -502,40 +482,16 @@
   opacity: .3;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
-.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__knob,
-.pe-switch-control.pe-control--off .pe-switch-control__knob {
-  background-color: currentcolor;
-}
-
-.pe-light-tone.pe-switch-control.pe-control--off .pe-icon,
-.pe-light-tone .pe-switch-control.pe-control--off .pe-icon,
-.pe-switch-control.pe-control--off .pe-icon {
-  color: currentcolor;
-}
-
 .pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__knob,
 .pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__knob,
 .pe-switch-control.pe-control--on .pe-switch-control__knob {
-  background-color: currentcolor;
+  background-color: #2196f3;
 }
 
-.pe-light-tone.pe-switch-control.pe-control--on .pe-icon,
-.pe-light-tone .pe-switch-control.pe-control--on .pe-icon,
-.pe-switch-control.pe-control--on .pe-icon {
-  color: currentcolor;
-}
-
-.pe-light-tone.pe-switch-control.pe-control--on .pe-switch-control__thumb,
-.pe-light-tone .pe-switch-control.pe-control--on .pe-switch-control__thumb,
-.pe-switch-control.pe-control--on .pe-switch-control__thumb {
-  color: #2196f3;
-}
-
-.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__thumb,
-.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__thumb,
-.pe-switch-control.pe-control--off .pe-switch-control__thumb {
-  color: #f1f1f1;
+.pe-light-tone.pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-light-tone .pe-switch-control.pe-control--off .pe-switch-control__knob,
+.pe-switch-control.pe-control--off .pe-switch-control__knob {
+  background-color: #f1f1f1;
 }
 
 .pe-light-tone.pe-switch-control.pe-control--off.pe-control--disabled .pe-button__content,
