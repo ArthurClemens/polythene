@@ -91,7 +91,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         : props[a.tabindex] || 0,
       ...events,
       [a.onmousedown]: e => (
-        domElement && domElement.addEventListener("mouseleave", handleMouseLeave),
+        domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave),
         props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e)
       ),
       [a.onclick]: e => (

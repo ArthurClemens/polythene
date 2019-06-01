@@ -42,7 +42,7 @@ const Results = (name, tests) =>
       if (test.section) {
         return h(css.sectionTitle, test.section);
       }
-      const testName = `test-${(test.name)}`;
+      const testName = `test-${(test.name)}`.toLowerCase().replace(/ /g, "-");
       return h([css.resultRow, test.interactive ? css.interactive : null].join(""), {
         key: testName,
         className: [testName.replace(/[^\w\d]/g, "-").toLowerCase(), test.className || null].join(" "),

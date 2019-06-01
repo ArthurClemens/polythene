@@ -375,7 +375,7 @@ export default ({ h, Button, Icon }) => {
       }
     },
     {
-      name: "Themed Button (colors, wash)",
+      name: "Themed Button (colors, wash) -- dark tone class",
       className: "pe-dark-tone",
       component: Button,
       attrs: {
