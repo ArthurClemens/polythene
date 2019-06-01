@@ -33,6 +33,7 @@
     "@babel/cli": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/autoprefixer": "^9.5.0",
     "@types/cssnano": "^4.0.0",
     "@types/tar": "^4.0.0",

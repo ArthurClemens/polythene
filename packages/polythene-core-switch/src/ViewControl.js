@@ -1,7 +1,7 @@
 
 import classes from "polythene-css-classes/switch";
 
-export const _ViewControl = ({ h, IconButton, Shadow, ...props }) => {
+export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
   const element = props.element || "div";
   const shadowDepthOff = props.shadowDepthOff !== undefined
     ? props.shadowDepthOff
@@ -48,7 +48,8 @@ export const _ViewControl = ({ h, IconButton, Shadow, ...props }) => {
         disabled: props.disabled,
         events: props.events,
         ink: props.ink || false,
-        inactive: props.inactive
+        inactive: props.inactive,
+        [a.tabindex]: -1
       },
       props.iconButton
     ))

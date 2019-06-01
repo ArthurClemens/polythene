@@ -1,3 +1,18 @@
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -79,9 +94,10 @@ var _Switch = function _Switch(_ref) {
 
 var _ViewControl = function _ViewControl(_ref) {
   var h = _ref.h,
+      a = _ref.a,
       IconButton = _ref.IconButton,
       Shadow = _ref.Shadow,
-      props = _objectWithoutProperties(_ref, ["h", "IconButton", "Shadow"]);
+      props = _objectWithoutProperties(_ref, ["h", "a", "IconButton", "Shadow"]);
 
   var element = props.element || "div";
   var shadowDepthOff = props.shadowDepthOff !== undefined ? props.shadowDepthOff : props.zOff !== undefined ? props.zOff // deprecated
@@ -93,7 +109,7 @@ var _ViewControl = function _ViewControl(_ref) {
   return h(element, null, [h("div", {
     className: classes.track,
     key: "track"
-  }), h(IconButton, _extends({}, {
+  }), h(IconButton, _extends({}, _defineProperty({
     className: classes.thumb,
     key: "button",
     content: h("div", {
@@ -107,7 +123,7 @@ var _ViewControl = function _ViewControl(_ref) {
     events: props.events,
     ink: props.ink || false,
     inactive: props.inactive
-  }, props.iconButton))]);
+  }, a.tabindex, -1), props.iconButton))]);
 };
 
 export { _Switch, _ViewControl };

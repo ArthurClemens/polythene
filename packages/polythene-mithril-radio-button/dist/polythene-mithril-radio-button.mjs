@@ -6,6 +6,7 @@ import { IconButton } from 'polythene-mithril-icon-button';
 
 var ViewControl = cast(_ViewControl, {
   h: h,
+  a: a,
   Icon: Icon,
   IconButton: IconButton
 });
@@ -19,6 +20,7 @@ var SelectionControl = cast(_SelectionControl, {
 SelectionControl["displayName"] = "SelectionControl";
 var RadioButton = cast(_RadioButton, {
   h: h,
+  a: a,
   SelectionControl: SelectionControl
 });
 RadioButton["displayName"] = "RadioButton";

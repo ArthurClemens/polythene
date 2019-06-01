@@ -1,4 +1,3 @@
-import stream from "mithril/stream";
 
 const model = {
   name: "outside",
@@ -15,40 +14,38 @@ const model = {
   ]
 };
 
-export default ({ h, RadioGroup, Button }) => ({
-  oninit: ({ state }) => {
-    const checkedValue = stream(model.defaultCheckedValue);
-    Object.assign(state, {
-      checkedValue,
-    });
-  },
-  view: ({ state }) => {
-    const checkedValue = state.checkedValue();
-    return h("div", [
-      h(RadioGroup, {
-        name: model.name,
-        className: "multiple",
-        checkedValue,
-        onChange: ({ value }) => state.checkedValue(value),
-        content: model.values
-      }),
-      // Simulate setting the radio button state from outside:
-      h(".pe-button-row", [
-        h(Button, {
-          label: "Set Left",
-          raised: true,
-          events: {
-            onclick: () => state.checkedValue("left"),
-          }
+export default ({ h, RadioGroup, Button }) => {
+  const state = {
+    checkedValue: model.defaultCheckedValue
+  };
+  return {
+    view: () => {
+      return h("div", [
+        h(RadioGroup, {
+          name: model.name,
+          className: "multiple",
+          checkedValue: state.checkedValue,
+          onChange: ({ value }) => state.checkedValue = value,
+          content: model.values
         }),
-        h(Button, {
-          label: "Set Right",
-          raised: true,
-          events: {
-            onclick: () => state.checkedValue("right"),
-          }
-        })
-      ])
-    ]);
+        // Simulate setting the radio button state from outside:
+        h(".pe-button-row", [
+          h(Button, {
+            label: "Set Left",
+            raised: true,
+            events: {
+              onclick: () => state.checkedValue = "left"
+            }
+          }),
+          h(Button, {
+            label: "Set Right",
+            raised: true,
+            events: {
+              onclick: () => state.checkedValue = "right",
+            }
+          })
+        ])
+      ]);
+    }
   }
-});
+};

@@ -210,9 +210,7 @@ var _SelectionControl = function _SelectionControl(_ref) {
     type: props.type,
     value: props.value,
     checked: isChecked
-  }, props.disabled || inactive ? {
-    disabled: "disabled"
-  } : _defineProperty({}, a.onchange, onChange))), props.after]);
+  }, props.disabled || inactive ? _defineProperty({}, a.readonly, "readonly") : _defineProperty({}, a.onchange, onChange))), props.after]);
   return h(props.element || "div", componentProps, content);
 };
 

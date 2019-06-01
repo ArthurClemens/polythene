@@ -5,11 +5,11 @@ import { cast, h, a, useState } from "cyano-react";
 import { Icon } from "polythene-react-icon";
 import { IconButton } from "polythene-react-icon-button";
 
-const ViewControl = cast(_ViewControl, { h, Icon, IconButton });
+const ViewControl = cast(_ViewControl, { h, a, Icon, IconButton });
 ViewControl["displayName"] = "ViewControl";
 
 const SelectionControl = cast(_SelectionControl, { h, a, useState, ViewControl });
 SelectionControl["displayName"] = "SelectionControl";
 
-export const Checkbox = cast(_Checkbox, { h, SelectionControl });
+export const Checkbox = cast(_Checkbox, { h, a, SelectionControl });
 Checkbox["displayName"] = "Checkbox";

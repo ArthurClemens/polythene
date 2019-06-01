@@ -263,9 +263,15 @@ var _Button = function _Button(_ref) {
   }), _defineProperty(_objectSpread3, a.onclick, function (e) {
     return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(e), onClickHandler(e);
   }), _defineProperty(_objectSpread3, a.onkeyup, function (e) {
-    if (onKeyUpHandler) {
-      onKeyUpHandler(e);
+    if (e.keyCode === 13 && document.activeElement === domElement) {
+      document.activeElement.blur();
+
+      if (onKeyUpHandler) {
+        onKeyUpHandler(e);
+      }
     }
+
+    props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e);
   }), _objectSpread3)), props.url, disabled ? {
     disabled: true
   } : null);

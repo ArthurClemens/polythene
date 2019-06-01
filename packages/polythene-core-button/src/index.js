@@ -100,9 +100,13 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         onClickHandler(e)
       ),
       [a.onkeyup]: e => {
-        if (onKeyUpHandler) {
-          onKeyUpHandler(e);
+        if (e.keyCode === 13 && document.activeElement === domElement) {
+          document.activeElement.blur();
+          if (onKeyUpHandler) {
+            onKeyUpHandler(e);
+          }
         }
+        props.events && props.events[a.onkeyup] && props.events[a.onkeyup](e)
       }
     },
     props.url,

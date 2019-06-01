@@ -6,6 +6,7 @@ import { _SelectionControl } from 'polythene-core-selection-control';
 
 var ViewControl = cast(_ViewControl, {
   h: h,
+  a: a,
   Shadow: Shadow,
   IconButton: IconButton
 });
@@ -19,6 +20,7 @@ var SelectionControl = cast(_SelectionControl, {
 SelectionControl["displayName"] = "SelectionControl";
 var Switch = cast(_Switch, {
   h: h,
+  a: a,
   SelectionControl: SelectionControl
 });
 Switch["displayName"] = "Switch";

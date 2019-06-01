@@ -51,7 +51,8 @@
     "polythene-css-tabs": "^1.5.4",
     "polythene-css-textfield": "^1.5.4",
     "polythene-css-toolbar": "^1.5.4",
-    "polythene-css-typography": "^1.5.4"
+    "polythene-css-typography": "^1.5.4",
+    "polythene-scripts": "^1.5.4"
   },
   "devDependencies": {
     "polythene-scripts": "^1.5.4"

@@ -14,7 +14,7 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
     ? props.selectable(isChecked)
     : false;
   const inactive = props.disabled || !selectable;
-
+  
   const notifyChange = (e, isChecked) => {
     if (props.onChange) {
       props.onChange({
@@ -118,7 +118,7 @@ export const _SelectionControl = ({ h, a, useState, ViewControl, ...props }) => 
           checked: isChecked
         },
         props.disabled || inactive
-          ? { disabled: "disabled" }
+          ? { [a.readonly]: "readonly" }
           : {
             [a.onchange]: onChange
           }
