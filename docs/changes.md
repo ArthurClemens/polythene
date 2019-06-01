@@ -73,6 +73,8 @@ Raised Buttons also show a deeper shadow on focus.
 
 To improve accessibility, all Dialogs (including modal and fullscreen dialogs) can now be closed by pressing ESCAPE.
 
+Use new option `disableEscape` to prevent ESCAPE from closing the dialog.
+
 #### Bug fixes
 
 * ButtonGroup: fixes a layout issue with arrow button.

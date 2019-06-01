@@ -33,7 +33,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   const isVisible = transitionState.isVisible;
   const isTransitioning = transitionState.isTransitioning;
   const isHiding = transitionState.isHiding;
-
+  
   const transitionOptions = ({ isShow, hideDelay = props.hideDelay }) => ({
     dispatchTransitionState,
     instanceId: props.instanceId,
@@ -94,6 +94,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         return;
       }
       const handleEscape = e => {
+        if (props.disableEscape && (isFullScreen(vnode) || isModal(vnode))) return;
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(`.${classes.component}`);
           if (openDialogs[openDialogs.length - 1] === domElement) {

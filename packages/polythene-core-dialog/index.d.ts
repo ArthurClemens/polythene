@@ -18,18 +18,22 @@ export interface AppearanceOptions extends DialogPaneOptions, Partial<Transition
    * Set to true to make the dialog full screen.
    * - Title and footer will be ignored.
    * - Instead pass a Toolbar to `body`.
-   * - Pressing ESCAPE will not close the dialog.
    * @default false
    */
   fullScreen?: boolean;
 
   /**
    * Set to true to create a modal dialog.
-   * - Tapping the backdrop or pressing ESCAPE will not close the dialog.
+   * - Tapping the backdrop will not close the dialog.
    * @default false
    */
   modal?: boolean;
 
+  /**
+   * Set to `true` to not close the dialog when pressing ESCAPE.
+   */
+  disableEscape? : boolean;
+  
   /**
    * Depth of the shadow.
    * Number 0-5

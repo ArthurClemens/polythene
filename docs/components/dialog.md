@@ -48,8 +48,9 @@ A dialog is invoked with `Dialog.show(dialogOptions)`, where `dialogOptions` are
 | **Parameter**     |  **Required** | **Type** | **Default** | **Description** |
 | ----------------- | -------------- | -------- | ----------- | --------------- |
 | **backdrop**      | optional | Boolean | false | Set to `true` to show a backdrop background color |
-| **fullScreen**    | optional | Boolean | false | Set to `true` to make the dialog full screen; pressing ESCAPE will not close the dialog; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
-| **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop or pressing ESCAPE will not close the dialog |
+| **fullScreen**    | optional | Boolean | false | Set to `true` to make the dialog full screen; `title` and `footer` will be ignored; pass a [Toolbar](toolbar.md) to `body` (see "Usage" for an example) |
+| **modal**         | optional | Boolean | false | Set to `true` to create a modal dialog; tapping the backdrop will not close the dialog |
+| **disableEscape** | optional | Boolean | false | Set to `true` to not close the dialog when pressing ESCAPE |
 | **panes**         | optional | Array of `DialogPane` components (React) | | Used internally |
 | **panesOptions**  | optional | Array of `DialogPane` component options (Mithril)  | | Used internally |
 | **shadowDepth**   | optional | Number 0-5 | 3 | Depth of the shadow |

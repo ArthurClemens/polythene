@@ -233,8 +233,13 @@ var _Notification = function _Notification(_ref) {
     if (timer) {
       timer.stop();
     }
-  }; // DOM elements
+  };
 
+  useEffect(function () {
+    return function () {
+      stopTimer();
+    };
+  }, []); // DOM elements
 
   useEffect(function () {
     if (!domElement) {
@@ -275,10 +280,6 @@ var _Notification = function _Notification(_ref) {
         showNotification();
       }
     }
-
-    return function () {
-      stopTimer();
-    };
   }, [domElement, isTransitioning, isVisible, isHiding, props.hide, props.show]); // Pause logic
 
   useEffect(function () {

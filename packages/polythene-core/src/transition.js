@@ -33,7 +33,7 @@ export const transitionStateReducer = (state, type) => {
       ...state,
       isTransitioning: false,
       isVisible: state.isHiding ? false : true,
-      // keep isHiding state to prevent calling show immediately after
+      isHiding: false,
     };
   default:
     throw new Error(`Unhandled action type: ${type}`);
@@ -178,7 +178,7 @@ const transition = (opts, state) => {
  * @param {(boolean) => void} [params.setIsTransitioning]
  * @param {(boolean) => void} [params.setIsVisible]
  * @param {object} [params.props]
- * @param {Array<HTMLElement>} [params.domElements]
+ * @param {object} [params.domElements]
  * @param {() => void} [params.beforeTransition]
  * @param {() => void} [params.afterTransition]
  * @param {string} [params.showClass]
@@ -228,11 +228,14 @@ export const transitionComponent = ({ dispatchTransitionState, isTransitioning, 
     }
   };
   return fn(opts3).then(() => {
+    
     const id = instanceId;
     if (afterTransition) {
       afterTransition();
     }
+
     dispatchTransitionState(TRANSITION_TYPES.DONE);
+
     // Component may unmount after this point
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide

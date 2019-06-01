@@ -849,8 +849,8 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
     case TRANSITION_TYPES.DONE:
       return _objectSpread({}, state, {
         isTransitioning: false,
-        isVisible: state.isHiding ? false : true // keep isHiding state to prevent calling show immediately after
-
+        isVisible: state.isHiding ? false : true,
+        isHiding: false
       });
 
     default:
@@ -996,7 +996,7 @@ var transition = function transition(opts, state) {
  * @param {(boolean) => void} [params.setIsTransitioning]
  * @param {(boolean) => void} [params.setIsVisible]
  * @param {object} [params.props]
- * @param {Array<HTMLElement>} [params.domElements]
+ * @param {object} [params.domElements]
  * @param {() => void} [params.beforeTransition]
  * @param {() => void} [params.afterTransition]
  * @param {string} [params.showClass]

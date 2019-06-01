@@ -32,7 +32,6 @@ export default ({ h, a, Toolbar, ToolbarTitle, IconButton, Button, Dialog, isFul
     body: "This event is not yet saved. Are you sure you want to delete this event?",
     // modal: true,
     backdrop: true,
-    hideDuration: 0,
     footerButtons: [
       h(Button, {
         label: "Cancel",

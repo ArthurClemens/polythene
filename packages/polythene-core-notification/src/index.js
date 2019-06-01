@@ -87,6 +87,15 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
     }
   };
 
+  useEffect(
+    () => {
+      return () => {
+        stopTimer();
+      }
+    },
+    []
+  );
+
   // DOM elements
   useEffect(
     () => {
@@ -126,9 +135,6 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
         if (!isVisible) {
           showNotification();
         }
-      }
-      return () => {
-        stopTimer();
       }
     },
     [domElement, isTransitioning, isVisible, isHiding, props.hide, props.show]
