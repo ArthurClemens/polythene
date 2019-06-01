@@ -13,7 +13,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
   const iconHeart = h.trust(iconHeartSVG);
   const iconBookmark = h.trust(iconBookmarkSVG);
   const iconShare = h.trust(iconShareSVG);
-  const greyImage = IMG_URL + "grey.jpg";
+  // const greyImage = IMG_URL + "grey.jpg";
   const squareImage = IMG_URL + "circle.png";
   const landscapeImage = IMG_URL + "1.jpg";
   const portraitImage = IMG_URL + "2.jpg";
@@ -260,7 +260,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             media: {
               content: h("img", {
-                src: greyImage
+                src: holidayImage
               })
             }
           }
@@ -275,7 +275,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             media: {
               content: h("img", {
-                src: greyImage
+                src: holidayImage
               })
             }
           },
@@ -296,7 +296,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             media: {
               content: h("img", {
-                src: greyImage
+                src: holidayImage
               })
             }
           },
@@ -334,7 +334,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             media: {
               content: h("img", {
-                src: greyImage
+                src: holidayImage
               })
             }
           },
@@ -369,7 +369,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
           {
             media: {
               content: h("img", {
-                src: greyImage
+                src: holidayImage
               })
             }
           },
@@ -1428,7 +1428,7 @@ export default ({ Card, List, ListTile, Button, IconButton, Tabs, h, a }) => {
                   {
                     media: {
                       content: h("img", {
-                        src: greyImage
+                        src: holidayImage
                       })
                     }
                   },
