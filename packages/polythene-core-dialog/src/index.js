@@ -3,6 +3,9 @@ import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_SHADOW_DEPTH = 3;
 
+export const openDialogsSelector =
+  `.${classes.component}`;
+
 const createPane = ({ h, Pane, props }) =>
   h(Pane, {
     body: props.content || props.body || props.menu || props.children,
@@ -23,7 +26,7 @@ const initialTransitionState = {
   isHiding: false,
 };
   
-export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, ...props }) => {
+export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, openDialogsSelector, ...props }) => {
   const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
   const backdropElRef = useRef();
@@ -59,7 +62,9 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   );
   
   const isModal = () =>
-    props.modal || stylePropCompare({
+    props.modal
+    || (domElement && domElement.classList.contains(classes.modal))
+    || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -94,9 +99,9 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         return;
       }
       const handleEscape = e => {
-        if (props.disableEscape && (isFullScreen(vnode) || isModal(vnode))) return;
+        if (props.disableEscape && (isFullScreen() || isModal())) return;
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
-          const openDialogs = document.querySelectorAll(`.${classes.component}`);
+          const openDialogs = document.querySelectorAll(openDialogsSelector);
           if (openDialogs[openDialogs.length - 1] === domElement) {
             hideDialog(0);
           }

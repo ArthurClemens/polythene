@@ -19,7 +19,7 @@ const mithrilTests = () => {
       component: {
         view: () => 
           h(AppDrawer, {
-            permanent: true,
+            fixed: true,
             backdrop: true,
             createContent
           })

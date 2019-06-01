@@ -1,11 +1,11 @@
 
 import { _Conditional } from "polythene-core";
 import { cast, h, useState, useEffect } from "cyano-mithril";
-import { _Drawer } from "polythene-core-drawer";
+import { _Drawer, openDialogsSelector } from "polythene-core-drawer";
 import { DialogInstance } from "polythene-mithril-dialog";
 import classes from "polythene-css-classes/drawer";
 
-const DrawerInstance = cast(_Drawer, { h, Dialog: DialogInstance });
+const DrawerInstance = cast(_Drawer, { h, Dialog: DialogInstance, openDialogsSelector });
 DrawerInstance["displayName"] = "DrawerInstance";
 
 const DrawerToggle = cast(_Conditional, { h, useState, useEffect });

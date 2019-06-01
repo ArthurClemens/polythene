@@ -1,3 +1,4 @@
+import dialogClasses from "./dialog";
 
 export default {
   component:       "pe-dialog pe-drawer",
@@ -11,4 +12,6 @@ export default {
   floating:        "pe-drawer--floating",
   fixed:           "pe-drawer--fixed",
   anchorEnd:       "pe-drawer--anchor-end",
+
+  visible:         dialogClasses.visible,
 };

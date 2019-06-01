@@ -179,6 +179,7 @@ var classes = {
 };
 
 var DEFAULT_SHADOW_DEPTH = 3;
+var openDialogsSelector = ".".concat(classes.component);
 
 var createPane = function createPane(_ref) {
   var h = _ref.h,
@@ -213,7 +214,8 @@ var _Dialog = function _Dialog(_ref2) {
       useReducer = _ref2.useReducer,
       Pane = _ref2.Pane,
       Shadow = _ref2.Shadow,
-      props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "useReducer", "Pane", "Shadow"]);
+      openDialogsSelector = _ref2.openDialogsSelector,
+      props = _objectWithoutProperties(_ref2, ["h", "a", "useState", "useEffect", "useRef", "getRef", "useReducer", "Pane", "Shadow", "openDialogsSelector"]);
 
   var _useReducer = useReducer(transitionStateReducer, initialTransitionState),
       _useReducer2 = _slicedToArray(_useReducer, 2),
@@ -267,7 +269,7 @@ var _Dialog = function _Dialog(_ref2) {
   };
 
   var isModal = function isModal() {
-    return props.modal || stylePropCompare({
+    return props.modal || domElement && domElement.classList.contains(classes.modal) || stylePropCompare({
       element: domElement,
       pseudoSelector: ":before",
       prop: "content",
@@ -301,11 +303,11 @@ var _Dialog = function _Dialog(_ref2) {
     }
 
     var handleEscape = function handleEscape(e) {
-      if (props.disableEscape && (isFullScreen(vnode) || isModal(vnode))) return;
+      if (props.disableEscape && (isFullScreen() || isModal())) return;
 
       if (e.key === "Escape" || e.key === "Esc") {
         // "Esc" for IE11
-        var openDialogs = document.querySelectorAll(".".concat(classes.component));
+        var openDialogs = document.querySelectorAll(openDialogsSelector);
 
         if (openDialogs[openDialogs.length - 1] === domElement) {
           hideDialog(0);
@@ -382,4 +384,4 @@ var _Dialog = function _Dialog(_ref2) {
   return h(props.element || "div", componentProps, content);
 };
 
-export { _Dialog };
+export { _Dialog, openDialogsSelector };

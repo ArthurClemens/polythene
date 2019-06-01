@@ -1,6 +1,6 @@
 import { cast, h, a, useState, useEffect, useRef, getRef, useReducer } from 'cyano-react';
 import { Multi } from 'polythene-core';
-import { _Dialog } from 'polythene-core-dialog';
+import { _Dialog, openDialogsSelector } from 'polythene-core-dialog';
 import { DialogPane } from 'polythene-react-dialog-pane';
 import { Shadow } from 'polythene-react-shadow';
 
@@ -84,7 +84,8 @@ var DialogInstance = cast(_Dialog, {
   getRef: getRef,
   useReducer: useReducer,
   Shadow: Shadow,
-  Pane: DialogPane
+  Pane: DialogPane,
+  openDialogsSelector: openDialogsSelector
 });
 DialogInstance["displayName"] = "DialogInstance";
 var options = {

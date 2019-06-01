@@ -1,5 +1,8 @@
 import classes from "polythene-css-classes/drawer";
 
+export const openDialogsSelector =
+  `.${classes.component}.${classes.visible}:not(.${classes.permanent}),.${classes.component}.${classes.visible}.${classes.mini},.${classes.component}.${classes.cover},.${classes.component}.${classes.permanent}.${classes.visible}`.replace(/ /g, ".");
+  
 export const _Drawer = ({ h, Dialog, ...props }) => {
   const isCover = !(props.push || props.permanent || props.mini);
   const componentProps = Object.assign({},

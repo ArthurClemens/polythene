@@ -6,7 +6,7 @@
     - [Under the hood](#under-the-hood)
     - [CSS](#css)
     - [Focus indication](#focus-indication)
-    - [Closing Dialog with ESCAPE](#closing-dialog-with-escape)
+    - [Closing dialogs and drawers with ESCAPE](#closing-dialogs-and-drawers-with-escape)
     - [Bug fixes](#bug-fixes)
     - [Removed](#removed)
     - [Other changes](#other-changes)
@@ -69,11 +69,11 @@ The highlight is created by element with className `pe-button__wash`. The color 
 
 Raised Buttons also show a deeper shadow on focus.
 
-#### Closing Dialog with ESCAPE
+#### Closing dialogs and drawers with ESCAPE
 
-To improve accessibility, all Dialogs (including modal and fullscreen dialogs) can now be closed by pressing ESCAPE.
+To improve accessibility, all dialogs and drawers (including modal and fullscreen dialogs) can now be closed by pressing ESCAPE.
 
-Use new option `disableEscape` to prevent ESCAPE from closing the dialog.
+Use new option `disableEscape` to prevent ESCAPE from closing the dialog or drawer.
 
 #### Bug fixes
 

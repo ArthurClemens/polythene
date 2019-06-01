@@ -72,7 +72,7 @@ export default ({ h, a, Drawer, List, ListTile, Icon, Toolbar, IconButton, Butto
       }})
     },
     {
-      name: "Default drawer (type cover) (can be closed with ESCAPE) (with backdrop)",
+      name: "Default drawer (type cover) (with backdrop)",
       interactive: true,
       exclude: true,
       component: navigation({ h, a, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
@@ -81,12 +81,13 @@ export default ({ h, a, Drawer, List, ListTile, Icon, Toolbar, IconButton, Butto
       }})
     },
     {
-      name: "Default drawer (modal, cannot be closed with ESCAPE or backdrop tap)",
+      name: "Default drawer (modal with disableEscape: cannot be closed with backdrop tap or ESCAPE)",
       interactive: true,
       exclude: true,
       component: navigation({ h, a, Drawer, Toolbar, IconButton, showMenuIcon: true, createContent, drawerOpts: {
         modal: true,
         shadowDepth: 1,
+        disableEscape: true
       }})
     },
     {
