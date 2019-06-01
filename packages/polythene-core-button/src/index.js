@@ -35,6 +35,11 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
       : props.wash !== false
   );
 
+  const handleMouseLeave = e => {
+    domElement.blur();
+    domElement.removeEventListener("mouseleave", handleMouseLeave);
+  };
+
   const componentProps = Object.assign({},
     filterSupportedAttributes(props, { add: [a.formaction, "type"], remove: ["style"] }), // Set style on content, not on component
     getRef(dom => {
@@ -84,13 +89,13 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
       [a.tabindex]: disabled || inactive
         ? -1
         : props[a.tabindex] || 0,
-      [a.onmouseout]: e => (
-        document.activeElement.blur(),
-        props.events && props.events[a.onmouseout]
-      ),
       ...events,
+      [a.onmousedown]: e => (
+        domElement && domElement.addEventListener("mouseleave", handleMouseLeave),
+        props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e)
+      ),
       [a.onclick]: e => (
-        document.activeElement.blur(),
+        document.activeElement === domElement && document.activeElement.blur(),
         handleInactivate(e),
         onClickHandler(e)
       ),

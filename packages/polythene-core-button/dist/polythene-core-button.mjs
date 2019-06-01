@@ -180,7 +180,7 @@ var shadowClasses = {
 
 var DEFAULT_SHADOW_DEPTH = 1;
 var _Button = function _Button(_ref) {
-  var _objectSpread2, _objectSpread3;
+  var _objectSpread3;
 
   var h = _ref.h,
       a = _ref.a,
@@ -229,6 +229,11 @@ var _Button = function _Button(_ref) {
 
   var hasHover = !disabled && !props.selected && (props.raised ? props.wash : props.wash !== false);
 
+  var handleMouseLeave = function handleMouseLeave(e) {
+    domElement.blur();
+    domElement.removeEventListener("mouseleave", handleMouseLeave);
+  };
+
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     add: [a.formaction, "type"],
     remove: ["style"]
@@ -253,10 +258,10 @@ var _Button = function _Button(_ref) {
     className: [classes["super"], props.parentClassName || classes.component, props.contained ? classes.contained : null, // Raised button classes
     props.raised ? classes.contained : null, props.raised ? classes.raised : null, props.raised && animateOnTap ? shadowClasses.with_active_shadow : null, props.raised && animateOnTap ? getDepthClass(shadowDepth + 1) : null, //
     hasHover ? classes.hasHover : null, props.selected ? classes.selected : null, props.highLabel ? classes.highLabel : null, props.extraWide ? classes.extraWide : null, disabled ? classes.disabled : null, inactive ? classes.inactive : null, props.separatorAtStart ? classes.separatorAtStart : null, props.border || props.borders ? classes.border : null, props.dropdown ? classes.hasDropdown : null, props.dropdown ? props.dropdown.open ? classes.dropdownOpen : classes.dropdownClosed : null, props.tone === "dark" ? "pe-dark-tone" : null, props.tone === "light" ? "pe-light-tone" : null, props.className || props[a["class"]]].join(" ")
-  }, inactive ? null : _objectSpread((_objectSpread2 = {}, _defineProperty(_objectSpread2, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), _defineProperty(_objectSpread2, a.onmouseout, function (e) {
-    return document.activeElement.blur(), props.events && props.events[a.onmouseout];
-  }), _objectSpread2), events, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onclick, function (e) {
-    return document.activeElement.blur(), handleInactivate(e), onClickHandler(e);
+  }, inactive ? null : _objectSpread(_defineProperty({}, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), events, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onmousedown, function (e) {
+    return domElement && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
+  }), _defineProperty(_objectSpread3, a.onclick, function (e) {
+    return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(e), onClickHandler(e);
   }), _defineProperty(_objectSpread3, a.onkeyup, function (e) {
     if (onKeyUpHandler) {
       onKeyUpHandler(e);
