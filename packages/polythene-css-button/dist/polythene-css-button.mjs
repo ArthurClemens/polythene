@@ -360,7 +360,7 @@ var border_radius_button_group = function border_radius_button_group(selector, v
 
 var _border$1 = function border(selector) {
   return sel(selector, {
-    " .pe-button__wash, .pe-button__wash-color, .pe-ripple": mixin.fit(-1),
+    " .pe-button__wash, .pe-ripple": mixin.fit(-1),
     " .pe-button__content": {
       borderStyle: "solid"
     }

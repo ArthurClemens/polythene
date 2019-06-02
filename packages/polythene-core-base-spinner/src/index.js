@@ -23,7 +23,7 @@ export const _BaseSpinner = ({ h, a, useReducer, useState, useEffect, getRef, Sh
   const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
 
-  const isVisible = transitionState.isVisible;
+  const isVisible = (transitionState || initialTransitionState).isVisible;
 
   const transitionOptions = {
     dispatchTransitionState,

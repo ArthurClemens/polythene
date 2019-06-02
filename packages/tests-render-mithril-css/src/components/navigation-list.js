@@ -8,7 +8,7 @@ const icons = {
 
 // Style for class "tests-drawer-navigation-list" is created in scripts/writeThemeCSS.js
 
-export default ({ renderer: h, keys: k, Icon, List, ListTile, onClick=()=>{} }) => {
+export default ({ renderer: h, Icon, List, ListTile, onClick=()=>{} }) => {
 
   const tile = ({ title, icon, index }) =>
     h(ListTile, {
@@ -21,7 +21,7 @@ export default ({ renderer: h, keys: k, Icon, List, ListTile, onClick=()=>{} }) 
       hoverable: true,
       navigation: true,
       events: {
-        [k.onclick]: onClick
+        onclick: onClick
       }
     });
 

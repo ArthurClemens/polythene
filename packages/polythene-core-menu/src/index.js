@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndDownEvent, stylePropCompare, transitionStateReducer } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, isServer, pointerEndDownEvent, stylePropCompare, transitionStateReducer, initialTransitionState } from "polythene-core";
 import classes from "polythene-css-classes/menu";
 
 const DEFAULT_OFFSET_H           = 0;
@@ -12,12 +12,6 @@ const unifyWidth = width =>
 
 const widthClass = size =>
   classes.width_n + size.toString().replace(".", "-");
-
-const initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false,
-};
 
 export const _Menu = ({ h, a, useReducer, useState, useEffect, useRef, getRef, Shadow, ...props }) => {
   const [, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);

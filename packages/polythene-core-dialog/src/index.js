@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer, REFERRER_COMPONENT } from "polythene-core";
+import { filterSupportedAttributes, subscribe, unsubscribe, transitionComponent, stylePropCompare, transitionStateReducer, initialTransitionState } from "polythene-core";
 import classes from "polythene-css-classes/dialog";
 
 const DEFAULT_SHADOW_DEPTH = 3;
@@ -20,12 +20,6 @@ const createPane = ({ h, Pane, props }) =>
     title: props.title,
   });
 
-const initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false,
-};
-  
 export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer, Pane, Shadow, openDialogsSelector, ...props }) => {
   const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
@@ -33,9 +27,9 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   const touchElRef = useRef();
   const contentElRef = useRef();
   
-  const isVisible = transitionState.isVisible;
-  const isTransitioning = transitionState.isTransitioning;
-  const isHiding = transitionState.isHiding;
+  const isVisible = (transitionState || initialTransitionState).isVisible;
+  const isTransitioning = (transitionState || initialTransitionState).isTransitioning;
+  const isHiding = (transitionState || initialTransitionState).isHiding;
   
   const transitionOptions = ({ isShow, hideDelay = props.hideDelay, referrer }) => ({
     dispatchTransitionState,
@@ -106,7 +100,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         if (e.key === "Escape" || e.key === "Esc") { // "Esc" for IE11
           const openDialogs = document.querySelectorAll(openDialogsSelector);
           if (openDialogs[openDialogs.length - 1] === domElement) {
-            hideDialog({ hideDelay: 0, referrer: REFERRER_COMPONENT });
+            hideDialog({ hideDelay: 0 });
           }
         }
       };
@@ -168,7 +162,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
           // not allowed
           return;
         }
-        hideDialog({ referrer: REFERRER_COMPONENT });
+        hideDialog();
       }
     }
   );

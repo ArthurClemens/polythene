@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-button",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "",
   "main": "dist/polythene-react-radio-button",
   "module": "dist/polythene-react-radio-button.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-radio-button": "^1.5.4",
-    "polythene-core-selection-control": "^1.5.4",
-    "polythene-react-icon": "^1.5.4",
-    "polythene-react-icon-button": "^1.5.4"
+    "polythene-core-radio-button": "^1.6.0",
+    "polythene-core-selection-control": "^1.6.0",
+    "polythene-react-icon": "^1.6.0",
+    "polythene-react-icon-button": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.18"

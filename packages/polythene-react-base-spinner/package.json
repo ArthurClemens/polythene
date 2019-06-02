@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-base-spinner",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "",
   "main": "dist/polythene-react-base-spinner",
   "module": "dist/polythene-react-base-spinner.mjs",
@@ -18,9 +18,9 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-base-spinner": "^1.5.4",
-    "polythene-css-classes": "^1.5.4",
-    "polythene-react-shadow": "^1.5.4"
+    "polythene-core-base-spinner": "^1.6.0",
+    "polythene-css-classes": "^1.6.0",
+    "polythene-react-shadow": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.18"

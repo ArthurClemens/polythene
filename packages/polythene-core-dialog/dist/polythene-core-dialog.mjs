@@ -1,4 +1,4 @@
-import { transitionStateReducer, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare, REFERRER_COMPONENT } from 'polythene-core';
+import { transitionStateReducer, initialTransitionState, subscribe, unsubscribe, transitionComponent, filterSupportedAttributes, stylePropCompare } from 'polythene-core';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -199,11 +199,6 @@ var createPane = function createPane(_ref) {
   });
 };
 
-var initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false
-};
 var _Dialog = function _Dialog(_ref2) {
   var h = _ref2.h,
       a = _ref2.a,
@@ -230,9 +225,9 @@ var _Dialog = function _Dialog(_ref2) {
   var backdropElRef = useRef();
   var touchElRef = useRef();
   var contentElRef = useRef();
-  var isVisible = transitionState.isVisible;
-  var isTransitioning = transitionState.isTransitioning;
-  var isHiding = transitionState.isHiding;
+  var isVisible = (transitionState || initialTransitionState).isVisible;
+  var isTransitioning = (transitionState || initialTransitionState).isTransitioning;
+  var isHiding = (transitionState || initialTransitionState).isHiding;
 
   var transitionOptions = function transitionOptions(_ref3) {
     var isShow = _ref3.isShow,
@@ -318,8 +313,7 @@ var _Dialog = function _Dialog(_ref2) {
 
         if (openDialogs[openDialogs.length - 1] === domElement) {
           hideDialog({
-            hideDelay: 0,
-            referrer: REFERRER_COMPONENT
+            hideDelay: 0
           });
         }
       }
@@ -368,9 +362,7 @@ var _Dialog = function _Dialog(_ref2) {
       return;
     }
 
-    hideDialog({
-      referrer: REFERRER_COMPONENT
-    });
+    hideDialog();
   }));
 
   var pane = props.panesOptions && props.panesOptions.length ? h(Pane, props.panesOptions[0]) : props.panes && props.panes.length ? props.panes[0] : createPane({

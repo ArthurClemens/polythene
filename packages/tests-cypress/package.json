@@ -1,16 +1,16 @@
 {
   "name": "polythene-tests-cypress",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "private": true,
   "description": "",
   "sideEffects": false,
   "dependencies": {
     "cyano-mithril": "^0.5.1",
     "cyano-react": "^0.5.1",
-    "polythene-tests": "^1.5.4",
-    "polythene-css": "^1.5.4",
-    "polythene-mithril": "^1.5.4",
-    "polythene-react": "^1.5.4"
+    "polythene-tests": "^1.6.0",
+    "polythene-css": "^1.6.0",
+    "polythene-mithril": "^1.6.0",
+    "polythene-react": "^1.6.0"
   },
   "peerDependencies": {
     "mithril": "^2.0.0-rc.4",

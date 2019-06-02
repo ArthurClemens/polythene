@@ -1,4 +1,4 @@
-import { filterSupportedAttributes, transitionComponent, isClient, isServer, transitionStateReducer, REFERRER_COMPONENT } from "polythene-core";
+import { filterSupportedAttributes, transitionComponent, isClient, isServer, transitionStateReducer, initialTransitionState } from "polythene-core";
 import { Timer } from "polythene-utilities";
 import classes from "polythene-css-classes/notification";
 
@@ -15,12 +15,6 @@ const setTitleStyles = titleEl => {
   }
 };
 
-const initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false,
-};
-
 export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useReducer, ...props }) => {
   const [transitionState, dispatchTransitionState] = useReducer(transitionStateReducer, initialTransitionState);
   const [domElement, setDomElement] = useState();
@@ -29,10 +23,10 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
   const titleElRef = useRef();
   const timerRef = useRef(new Timer());
   
-  const isVisible = transitionState.isVisible;
-  const isTransitioning = transitionState.isTransitioning;
-  const isHiding = transitionState.isHiding;
-  const timer = timerRef.current;
+  const isVisible = (transitionState || initialTransitionState).isVisible;
+  const isTransitioning = (transitionState || initialTransitionState).isTransitioning;
+  const isHiding = (transitionState || initialTransitionState).isHiding;
+  const timer = timerRef && timerRef.current;
 
   const transitionOptions = ({ isShow, referrer }) => ({
     dispatchTransitionState,
@@ -50,7 +44,7 @@ export const _Notification = ({ h, a, useState, useEffect, useRef, getRef, useRe
           const timeoutSeconds = timeout !== undefined
             ? timeout
             : DEFAULT_TIME_OUT;
-          timer.start(() => hideNotification({ referrer: REFERRER_COMPONENT }), timeoutSeconds);
+          timer.start(() => hideNotification(), timeoutSeconds);
         }     
       }
       : null,

@@ -180,7 +180,7 @@ var _BaseSpinner = function _BaseSpinner(_ref) {
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
-  var isVisible = transitionState.isVisible;
+  var isVisible = (transitionState || initialTransitionState).isVisible;
   var transitionOptions = {
     dispatchTransitionState: dispatchTransitionState,
     props: props,

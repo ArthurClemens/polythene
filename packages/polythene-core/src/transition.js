@@ -7,12 +7,16 @@ Generic show/hide transition module
 import { isClient } from "./iso";
 import { styleDurationToMs } from "./style";
 
-export const REFERRER_COMPONENT = "component";
-
 const TRANSITION_TYPES = {
   SHOW: "show",
   HIDE: "hide",
   DONE: "done",
+};
+
+export const initialTransitionState = {
+  isVisible: false,
+  isTransitioning: false,
+  isHiding: false,
 };
 
 export const transitionStateReducer = (state, type) => {
@@ -237,16 +241,7 @@ export const transitionComponent = ({ dispatchTransitionState, isTransitioning, 
       afterTransition();
     }
 
-    /*
-    A bit of a hack:
-    When a hide action from within a component is called,
-    the component props `show` and `hide` are unchanged,
-    resulting in an erroneous call to the show function.
-    In this case we are omitting the "done" dispatch.
-    */
-    if (referrer !== REFERRER_COMPONENT) {
-      dispatchTransitionState(TRANSITION_TYPES.DONE);
-    }
+    dispatchTransitionState(TRANSITION_TYPES.DONE);
 
     // Component may unmount after this point
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {

@@ -64,7 +64,7 @@ const border_radius_button_group = (selector, vars, isRTL) =>
 
 const border = selector =>
   sel(selector, {
-    " .pe-button__wash, .pe-button__wash-color, .pe-ripple": mixin.fit(-1),
+    " .pe-button__wash, .pe-ripple": mixin.fit(-1),
 
     " .pe-button__content": {
       borderStyle: "solid",

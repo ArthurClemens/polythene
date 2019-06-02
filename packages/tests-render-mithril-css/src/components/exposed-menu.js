@@ -5,7 +5,7 @@ const menuOptions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(n =
   key: n,
 }));
   
-export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
+export default ({ renderer: h,  Menu, Button, List, ListTile }) => ({
   oninit: vnode => {
     const show = stream(false);
     const selectedIndex = stream(0);
@@ -50,7 +50,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
                 ink: true,
                 hoverable: true,
                 events: {
-                  [k.onclick]: () => (
+                  onclick: () => (
                     state.selectedIndex(index),
                     state.show(false)
                   )
@@ -66,7 +66,7 @@ export default ({ renderer: h, keys: k, Menu, Button, List, ListTile }) => ({
             open: show
           },
           events: {
-            [k.onclick]: () => state.show(!show)
+            onclick: () => state.show(!show)
           }
         })
       ]

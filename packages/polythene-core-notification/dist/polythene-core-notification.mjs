@@ -1,4 +1,4 @@
-import { transitionStateReducer, isClient, transitionComponent, REFERRER_COMPONENT, filterSupportedAttributes, isServer } from 'polythene-core';
+import { transitionStateReducer, initialTransitionState, isClient, transitionComponent, filterSupportedAttributes, isServer } from 'polythene-core';
 import { Timer } from 'polythene-utilities';
 
 function _defineProperty(obj, key, value) {
@@ -138,11 +138,6 @@ var setTitleStyles = function setTitleStyles(titleEl) {
   }
 };
 
-var initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false
-};
 var _Notification = function _Notification(_ref) {
   var h = _ref.h,
       a = _ref.a,
@@ -171,10 +166,10 @@ var _Notification = function _Notification(_ref) {
   var containerElRef = useRef();
   var titleElRef = useRef();
   var timerRef = useRef(new Timer());
-  var isVisible = transitionState.isVisible;
-  var isTransitioning = transitionState.isTransitioning;
-  var isHiding = transitionState.isHiding;
-  var timer = timerRef.current;
+  var isVisible = (transitionState || initialTransitionState).isVisible;
+  var isTransitioning = (transitionState || initialTransitionState).isTransitioning;
+  var isHiding = (transitionState || initialTransitionState).isHiding;
+  var timer = timerRef && timerRef.current;
 
   var transitionOptions = function transitionOptions(_ref2) {
     var isShow = _ref2.isShow,
@@ -192,9 +187,7 @@ var _Notification = function _Notification(_ref) {
         if (timeout === 0) ; else {
           var timeoutSeconds = timeout !== undefined ? timeout : DEFAULT_TIME_OUT;
           timer.start(function () {
-            return hideNotification({
-              referrer: REFERRER_COMPONENT
-            });
+            return hideNotification();
           }, timeoutSeconds);
         }
       } : null,

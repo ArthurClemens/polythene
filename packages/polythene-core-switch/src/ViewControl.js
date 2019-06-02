@@ -47,8 +47,8 @@ export const _ViewControl = ({ h, a, IconButton, Shadow, ...props }) => {
         style: props.style,
         disabled: props.disabled,
         events: props.events,
-        ink: props.ink,
-        inactive: props.inactive
+        ink: props.ink || false,
+        inactive: props.inactive,
       },
       props.iconButton
     ))

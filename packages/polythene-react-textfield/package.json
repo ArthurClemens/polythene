@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-textfield",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "",
   "main": "dist/polythene-react-textfield",
   "module": "dist/polythene-react-textfield.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-textfield": "^1.5.4"
+    "polythene-core-textfield": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.18"

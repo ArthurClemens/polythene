@@ -1,4 +1,4 @@
-import { transitionStateReducer, subscribe, transitionComponent, unsubscribe, filterSupportedAttributes, isServer, stylePropCompare, pointerEndDownEvent } from 'polythene-core';
+import { transitionStateReducer, initialTransitionState, subscribe, transitionComponent, unsubscribe, filterSupportedAttributes, isServer, stylePropCompare, pointerEndDownEvent } from 'polythene-core';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -156,11 +156,6 @@ var widthClass = function widthClass(size) {
   return classes.width_n + size.toString().replace(".", "-");
 };
 
-var initialTransitionState = {
-  isVisible: false,
-  isTransitioning: false,
-  isHiding: false
-};
 var _Menu = function _Menu(_ref) {
   var h = _ref.h,
       a = _ref.a,
