@@ -22,7 +22,7 @@ export const sharedVars = {
   shadow_bottom_depth_5:   "0 27px 55px 0 rgba(0, 0, 0, 0.3)",   
 
   // theme vars
-  shadow_depth: undefined,
+  shadow_depth:            undefined,
 };
 
 export default {

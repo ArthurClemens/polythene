@@ -1,10 +1,12 @@
 import { filterSupportedAttributes } from "polythene-core";
 import classes from "polythene-css-classes/shadow";
 
+const DEFAULT_SHADOW_DEPTH = 1;
+
 export const getDepthClass = shadowDepth =>
   shadowDepth !== undefined
     ? `${classes.depth_n}${Math.min(5, shadowDepth)}`
-    : null;
+    : DEFAULT_SHADOW_DEPTH;
 
 export const _Shadow = ({ h, a, ...props }) => {
   const depthClass = getDepthClass(props.shadowDepth);
