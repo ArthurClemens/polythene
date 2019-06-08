@@ -413,31 +413,6 @@ const App = {
       ),
       m(".row",
         [
-          m("h6", "Search"),
-          m(".component", 
-            m(Search, {
-              textfield: { label: "Search" },
-              before: m(Shadow),
-              buttons: {
-                none: {
-                  before: m(SearchIcon),
-                },
-                focus: {
-                  before: m(SearchIcon),
-                },
-                focus_dirty: {
-                  before: m(SearchIcon),
-                },
-                dirty: {
-                  before: m(SearchIcon),
-                }
-              },
-            })
-          )
-        ]
-      ),
-      m(".row",
-        [
           m("h6", "Slider"),
           m(".component", 
             m(Slider, {

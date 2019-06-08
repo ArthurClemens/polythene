@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-fab",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "dist/polythene-react-fab",
   "module": "dist/polythene-react-fab.mjs",
@@ -18,12 +18,12 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-fab": "^1.6.0",
-    "polythene-react-button": "^1.6.0",
-    "polythene-react-icon": "^1.6.0"
+    "polythene-core-fab": "^1.6.1",
+    "polythene-react-button": "^1.6.1",
+    "polythene-react-icon": "^1.6.1"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

@@ -50,18 +50,21 @@ const getStyle = (customSelector = "", customVars, { mediaQuery="", scope="" } =
     scope,
   }));
 
-styler.addStyle({
-  selectors: [tabsSelector],
-  fns: tabsFns,
-  vars
-});
-styler.addStyle({
-  selectors: [tabSelector],
-  fns: tabFns,
-  vars
-});
+const addGeneralStyleToHead = () => {
+  styler.addStyle({
+    selectors: [tabsSelector],
+    fns: tabsFns,
+    vars
+  });
+  styler.addStyle({
+    selectors: [tabSelector],
+    fns: tabFns,
+    vars
+  });
+};
 
 export {
+  addGeneralStyleToHead,
   addStyle,
   getStyle,
   vars,

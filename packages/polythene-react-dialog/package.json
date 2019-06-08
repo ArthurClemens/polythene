@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-dialog",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "dist/polythene-react-dialog",
   "module": "dist/polythene-react-dialog.mjs",
@@ -18,14 +18,14 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core": "^1.6.0",
-    "polythene-core-dialog": "^1.6.0",
-    "polythene-css-classes": "^1.6.0",
-    "polythene-react-dialog-pane": "^1.6.0",
-    "polythene-react-shadow": "^1.6.0"
+    "polythene-core": "^1.6.1",
+    "polythene-core-dialog": "^1.6.1",
+    "polythene-css-classes": "^1.6.1",
+    "polythene-react-dialog-pane": "^1.6.1",
+    "polythene-react-shadow": "^1.6.1"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

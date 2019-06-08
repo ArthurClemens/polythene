@@ -133,8 +133,8 @@ var alignSide = function alignSide(isRTL) {
 }; // eslint-disable-line no-unused-vars
 
 
-var alignLeft = alignSide(false);
-var alignRight = alignSide(true);
+var alignLeft = alignSide();
+var alignRight = alignSide();
 
 var _label_padding_before = function label_padding_before(selector, vars, isRTL) {
   return sel(selector, {
@@ -302,10 +302,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
 var addStyle = styler.createAddStyle(selector, fns, iconButtonVars);
 var getStyle = styler.createGetStyle(selector, fns, iconButtonVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: iconButtonVars
-});
 
-export { addStyle, color, getStyle, layout, iconButtonVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: iconButtonVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, iconButtonVars as vars };

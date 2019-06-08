@@ -52,7 +52,10 @@
 
 ### 1.6.1
 
-* Dialog: fixes option `element`
+Bug fixes:
+
+* CSS: fixes too rigorous tree shaking when building with Rollup.
+* Dialog: fixes option `element`.
 
 
 ### 1.6.0

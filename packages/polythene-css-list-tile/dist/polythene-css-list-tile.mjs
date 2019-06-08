@@ -414,7 +414,7 @@ var varFns = {
           whiteSpace: "normal"
         }]
       }],
-      ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector, vars),
+      ".pe-list-tile--selected, &.pe-list-tile--disabled": unSelectable(selector),
       ".pe-list-tile--subtitle": {
         " .pe-list-tile__content": {
           " .pe-list-tile__title": {
@@ -631,7 +631,7 @@ var varFns = {
     return vars.rounded && _rounded(selector, vars);
   },
   selected: function selected(selector, vars) {
-    return vars.selected && unSelectable(selector, vars);
+    return vars.selected && unSelectable(selector);
   }
 };
 var layout = createLayout({
@@ -737,10 +737,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, listTileVars);
 var getStyle = styler.createGetStyle(selector, fns, listTileVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: listTileVars
-});
 
-export { addStyle, color, getStyle, layout, listTileVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: listTileVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, listTileVars as vars };

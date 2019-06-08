@@ -60,27 +60,23 @@ export default {
           id: "mithril",
           resolveTo: "node_modules/mithril/mithril.js"
         },
-        {
-          id: "cyano-mithril",
-          resolveTo: "node_modules/cyano-mithril/dist/cyano-mithril.mjs"
-        },
-        {
-          id: "cyano-react",
-          resolveTo: "node_modules/cyano-react/dist/cyano-react.mjs"
-        },
       ]
     }),
+
     resolve(),
+    
     commonjs({
       namedExports: {
         "node_modules/react/index.js": ["Children", "Component", "PropTypes", "createElement", "createFactory"],
         "node_modules/react-dom/index.js": ["render"]
       }
     }),
+    
     babel({
       exclude: "node_modules/**",
       configFile: "../../babel.config.js"
     }),
+    
     terser()
   ]
 };

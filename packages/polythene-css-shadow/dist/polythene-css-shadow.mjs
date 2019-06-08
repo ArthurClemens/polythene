@@ -193,10 +193,13 @@ var fns = [layout];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, vars);
 var getStyle = styler.createGetStyle(selector, fns, vars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: vars
-});
 
-export { addStyle, getStyle, layout, sharedVarFns, sharedVars, vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: vars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, getStyle, layout, sharedVarFns, sharedVars, vars };

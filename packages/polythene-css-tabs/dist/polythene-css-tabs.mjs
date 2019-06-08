@@ -667,15 +667,17 @@ var getStyle = function getStyle() {
   }));
 };
 
-styler.addStyle({
-  selectors: [tabsSelector],
-  fns: tabsFns,
-  vars: tabsVars
-});
-styler.addStyle({
-  selectors: [tabSelector],
-  fns: tabFns,
-  vars: tabsVars
-});
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  styler.addStyle({
+    selectors: [tabsSelector],
+    fns: tabsFns,
+    vars: tabsVars
+  });
+  styler.addStyle({
+    selectors: [tabSelector],
+    fns: tabFns,
+    vars: tabsVars
+  });
+};
 
-export { addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, tabsVars as vars };
+export { addGeneralStyleToHead, addStyle, getStyle, tabColor, tabLayout, tabsColor, tabsLayout, tabsVars as vars };

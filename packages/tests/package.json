@@ -1,26 +1,26 @@
 {
   "name": "polythene-tests",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "description": "",
   "main": "dist/polythene-tests",
   "module": "dist/polythene-tests.mjs",
   "sideEffects": false,
   "dependencies": {
-    "polythene-core-css": "^1.6.0",
-    "polythene-css": "^1.6.0",
-    "polythene-mithril": "^1.6.0",
-    "polythene-react": "^1.6.0"
+    "polythene-core-css": "^1.6.1",
+    "polythene-css": "^1.6.1",
+    "polythene-mithril": "^1.6.1",
+    "polythene-react": "^1.6.1"
   },
   "devDependencies": {
     "cyano-mithril": "^0.5.1",
     "cyano-react": "^0.5.1",
-    "polythene-core": "^1.6.0",
-    "polythene-theme": "^1.6.0",
+    "polythene-core": "^1.6.1",
+    "polythene-theme": "^1.6.1",
     "powerform": "^3.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^5.0.1",
     "recompose": "^0.30.0"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",

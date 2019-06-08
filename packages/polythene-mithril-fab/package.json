@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-fab",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "dist/polythene-mithril-fab",
   "module": "dist/polythene-mithril-fab.mjs",
@@ -18,9 +18,9 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.5.1",
-    "polythene-core-fab": "^1.6.0",
-    "polythene-mithril-button": "^1.6.0",
-    "polythene-mithril-icon": "^1.6.0"
+    "polythene-core-fab": "^1.6.1",
+    "polythene-mithril-button": "^1.6.1",
+    "polythene-mithril-icon": "^1.6.1"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

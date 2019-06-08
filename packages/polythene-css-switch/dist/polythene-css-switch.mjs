@@ -216,8 +216,8 @@ var lightTintFns = _extends({}, generalFns, tintFns("light"));
 
 var darkTintFns = _extends({}, generalFns, tintFns("dark"));
 
-var lightTintHoverFns = hoverTintFns("light");
-var darkTintHoverFns = hoverTintFns("dark");
+var lightTintHoverFns = hoverTintFns();
+var darkTintHoverFns = hoverTintFns();
 var color = createColor({
   varFns: {
     lightTintFns: lightTintFns,
@@ -473,10 +473,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, switchVars);
 var getStyle = styler.createGetStyle(selector, fns, switchVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: switchVars
-});
 
-export { addStyle, color, getStyle, layout, switchVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: switchVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, switchVars as vars };

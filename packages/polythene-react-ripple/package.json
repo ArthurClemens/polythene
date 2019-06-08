@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-ripple",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "dist/polythene-react-ripple",
   "module": "dist/polythene-react-ripple.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-ripple": "^1.6.0"
+    "polythene-core-ripple": "^1.6.1"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

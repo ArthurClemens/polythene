@@ -1,6 +1,6 @@
 {
   "name": "polythene-css-base-spinner",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "",
   "main": "dist/polythene-css-base-spinner",
   "module": "dist/polythene-css-base-spinner.mjs",
@@ -17,9 +17,9 @@
     "README.md"
   ],
   "dependencies": {
-    "polythene-core-css": "^1.6.0",
-    "polythene-css-classes": "^1.6.0",
-    "polythene-theme": "^1.6.0"
+    "polythene-core-css": "^1.6.1",
+    "polythene-css-classes": "^1.6.1",
+    "polythene-theme": "^1.6.1"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

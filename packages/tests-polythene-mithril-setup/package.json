@@ -2,7 +2,7 @@
   "name": "tests-polythene-mithril-setup",
   "private": true,
   "description": "Polythene for Mithril setup example",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist/js/*",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "mithril": "^2.0.0-rc.4",
-    "polythene-css": "^1.6.0",
-    "polythene-mithril": "^1.6.0"
+    "polythene-css": "^1.6.1",
+    "polythene-mithril": "^1.6.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

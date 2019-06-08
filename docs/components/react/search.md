@@ -147,6 +147,7 @@ const iconMic = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 14c
 
 const BackButton = ({ leave }) =>
   <IconButton
+    key="back"
     icon={{ svg: { content: iconBack } }}
     ink={false}
     events={{ onClick: leave }}
@@ -154,6 +155,7 @@ const BackButton = ({ leave }) =>
 
 const ClearButton = ({ clear }) =>
   <IconButton
+    key="clear"
     icon={{ svg: { content: iconClear } }}
     ink={false}
     events={{ onClick: clear }}
@@ -161,12 +163,14 @@ const ClearButton = ({ clear }) =>
 
 const SearchIcon = () =>
   <IconButton
+    key="search"
     icon={{ svg: { content: iconSearch } }}
     inactive
   />
 
 const MicIcon = () =>
   <IconButton
+    key="mic"
     icon={{ svg: { content: iconMic } }}
     inactive
   />

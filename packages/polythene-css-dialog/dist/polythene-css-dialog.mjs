@@ -265,7 +265,7 @@ var varFns = _objectSpread({
         bottom: 0,
         pointerEvents: "none"
       }],
-      ".pe-dialog--backdrop": _backdrop(selector, vars)
+      ".pe-dialog--backdrop": _backdrop(selector)
     }]), {
       ".pe-dialog__holder": {
         height: "100%",
@@ -319,7 +319,7 @@ var varFns = _objectSpread({
   },
   // Theme vars
   backdrop: function backdrop(selector, vars) {
-    return vars.backdrop && _backdrop(selector, vars);
+    return vars.backdrop && _backdrop(selector);
   },
   full_screen: function full_screen(selector, vars) {
     return vars.full_screen && fullScreen(selector, vars);
@@ -338,10 +338,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, dialogVars);
 var getStyle = styler.createGetStyle(selector, fns, dialogVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: dialogVars
-});
 
-export { addStyle, color, getStyle, layout, dialogVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: dialogVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, dialogVars as vars };

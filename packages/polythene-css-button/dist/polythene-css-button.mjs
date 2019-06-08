@@ -750,16 +750,18 @@ var getStyle = function getStyle() {
   }));
 };
 
-styler.addStyle({
-  selectors: [superSelector],
-  fns: superFns,
-  vars: textButtonVars
-});
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: textButtonVars
-});
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  styler.addStyle({
+    selectors: [superSelector],
+    fns: superFns,
+    vars: textButtonVars
+  });
+  styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: textButtonVars
+  });
+};
 
 // @ts-check
 var color = createColor({
@@ -777,11 +779,14 @@ var selectors = [classes.component, classes.contained].join(" ");
 var selector$1 = ".".concat(selectors.split(/\s/).join("."));
 var addStyle$1 = styler.createAddStyle(selector$1, fns$1, containedButtonVars);
 var getStyle$1 = styler.createGetStyle(selector$1, fns$1, containedButtonVars);
-styler.addStyle({
-  selectors: [selector$1],
-  fns: fns$1,
-  vars: containedButtonVars
-});
+
+var addGeneralStyleToHead$1 = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector$1],
+    fns: fns$1,
+    vars: containedButtonVars
+  });
+};
 
 // @ts-check
 /**
@@ -839,4 +844,9 @@ var containedButtonVars$1 = containedButtonVars;
 var containedButtonColor = color;
 var containedButtonLayout = layout;
 
-export { addStyle$2 as addStyle, containedButtonColor, containedButtonLayout, containedButtonVars$1 as containedButtonVars, getStyle$2 as getStyle, textButtonColor, textButtonLayout, textButtonVars$1 as textButtonVars };
+var addGeneralStyleToHead$2 = function addGeneralStyleToHead$2() {
+  addGeneralStyleToHead$1();
+  addGeneralStyleToHead();
+};
+
+export { addGeneralStyleToHead$2 as addGeneralStyleToHead, addStyle$2 as addStyle, containedButtonColor, containedButtonLayout, containedButtonVars$1 as containedButtonVars, getStyle$2 as getStyle, textButtonColor, textButtonLayout, textButtonVars$1 as textButtonVars };

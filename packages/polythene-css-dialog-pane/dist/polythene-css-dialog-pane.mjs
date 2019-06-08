@@ -363,10 +363,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, dialogPaneVars);
 var getStyle = styler.createGetStyle(selector, fns, dialogPaneVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: dialogPaneVars
-});
 
-export { addStyle, color, fullScreen, getStyle, layout, dialogPaneVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: dialogPaneVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, fullScreen, getStyle, layout, dialogPaneVars as vars };

@@ -166,8 +166,8 @@ var alignSide = function alignSide(isRTL) {
 }; // eslint-disable-line no-unused-vars
 
 
-var alignLeft = alignSide(false);
-var alignRight = alignSide(true);
+var alignLeft = alignSide();
+var alignRight = alignSide();
 
 var tight_title_padding_bottom_subtitle_line_height_padding_bottom = function tight_title_padding_bottom_subtitle_line_height_padding_bottom(selector, vars) {
   return sel(selector, {
@@ -735,25 +735,27 @@ var getStyle = function getStyle() {
   }));
 };
 
-styler.addStyle({
-  selectors: [selector],
-  fns: baseFns,
-  vars: cardVars
-});
-styler.addStyle({
-  selectors: [overlaySheetSelector],
-  fns: overlayColorFns,
-  vars: cardVars
-});
-styler.addStyle({
-  selectors: [contentSelector],
-  fns: contentColorFns,
-  vars: cardVars
-});
-styler.addStyle({
-  selectors: [overlayContentSelector],
-  fns: contentColorFns,
-  vars: cardVars
-});
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  styler.addStyle({
+    selectors: [selector],
+    fns: baseFns,
+    vars: cardVars
+  });
+  styler.addStyle({
+    selectors: [overlaySheetSelector],
+    fns: overlayColorFns,
+    vars: cardVars
+  });
+  styler.addStyle({
+    selectors: [contentSelector],
+    fns: contentColorFns,
+    vars: cardVars
+  });
+  styler.addStyle({
+    selectors: [overlayContentSelector],
+    fns: contentColorFns,
+    vars: cardVars
+  });
+};
 
-export { addStyle, color, getStyle, layout, cardVars as vars };
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, cardVars as vars };

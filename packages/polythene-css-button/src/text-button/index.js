@@ -71,18 +71,21 @@ const getStyle = (customSelector = "", customVars, { mediaQuery="", scope="" } =
     }));
 };
 
-styler.addStyle({
-  selectors: [superSelector],
-  fns: superFns,
-  vars
-});
-styler.addStyle({
-  selectors: [selector],
-  fns,
-  vars
-});
+const addGeneralStyleToHead = () => {
+  styler.addStyle({
+    selectors: [superSelector],
+    fns: superFns,
+    vars
+  });
+  styler.addStyle({
+    selectors: [selector],
+    fns,
+    vars
+  });
+};
 
 export {
+  addGeneralStyleToHead,
   addStyle,
   color,
   getStyle,

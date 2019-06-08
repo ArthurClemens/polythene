@@ -14,13 +14,15 @@ const addStyle = styler.createAddStyle(selector, fns, vars);
 
 const getStyle = styler.createGetStyle(selector, fns, vars);
 
-styler.addStyle({
-  selectors: [selector],
-  fns,
-  vars
-});
+const addGeneralStyleToHead = () =>
+  styler.addStyle({
+    selectors: [selector],
+    fns,
+    vars
+  });
 
 export {
+  addGeneralStyleToHead,
   addStyle,
   getStyle,
   color,
