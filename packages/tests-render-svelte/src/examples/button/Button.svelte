@@ -1,5 +1,5 @@
 <script>
-  import { Button } from "polythene-svelte";
+  import Button from "polythene-svelte-button";
   // import Button from "../../../../polythene-svelte/src/button/Button.svelte";
   // import { Button } from "../../lib/button";
   import { ButtonCSS } from "polythene-css";

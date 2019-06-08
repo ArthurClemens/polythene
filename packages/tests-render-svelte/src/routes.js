@@ -1,4 +1,4 @@
-import { Shadow } from "./examples/shadow";
+import Shadow from "./examples/shadow/Shadow.svelte";
 import Button from "./examples/button/Button.svelte";
 import Home from "./Home.svelte";
 

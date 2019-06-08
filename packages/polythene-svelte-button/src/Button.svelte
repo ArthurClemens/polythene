@@ -1,7 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import { iconDropdownDown } from "polythene-core";
-  import { Shadow, getShadowDepthClass } from "../shadow";
+  import Shadow, { getShadowDepthClass } from "polythene-svelte-shadow";
   import classes from "polythene-css-classes/button";
   import shadowClasses from "polythene-css-classes/shadow";
   import TextLabel from "./TextLabel.svelte";

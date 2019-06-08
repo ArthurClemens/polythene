@@ -1,6 +1,6 @@
 <script>
   import { depth } from "./stores.js";
-  import { Shadow } from "polythene-svelte";
+  import Shadow from "polythene-svelte-shadow";
   import { ShadowCSS } from "polythene-css";
 
   ShadowCSS.addStyle(".example-shadow-themed-transition", {

@@ -1,5 +1,5 @@
 <script>
-  import { Shadow } from "polythene-svelte";
+  import Shadow from "polythene-svelte-shadow";
   import Interactive from "./interactive/Interactive.svelte";
   import { ShadowCSS } from "polythene-css";
 

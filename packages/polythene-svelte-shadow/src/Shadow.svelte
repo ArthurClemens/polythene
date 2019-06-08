@@ -1,6 +1,10 @@
+<script context="module">
+  import { getShadowDepthClass as getDepthClass } from "./getShadowDepthClass";
+  export const getShadowDepthClass = getDepthClass; // workaround
+</script>
+
 <script>
   import classes from "polythene-css-classes/shadow";
-  import { getShadowDepthClass } from "./getShadowDepthClass";
 
   // Common vars
   export let className = "";
@@ -16,7 +20,7 @@
     classes.component,
     animated ? classes.animated : undefined,
     className,
-    getShadowDepthClass(shadowDepth)
+    getDepthClass(shadowDepth)
   ].join(" ");
 
 </script>

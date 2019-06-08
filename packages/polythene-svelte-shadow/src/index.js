@@ -1,3 +1,4 @@
 
-export { default as Shadow } from "./Shadow.svelte";
+import Shadow from "./Shadow.svelte";
+export default Shadow;
 export { getShadowDepthClass } from "./getShadowDepthClass";
