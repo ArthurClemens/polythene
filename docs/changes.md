@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.6](#16)
+  - [1.6.1](#161)
   - [1.6.0](#160)
     - [Under the hood](#under-the-hood)
     - [CSS](#css)
@@ -48,6 +49,11 @@
 <!-- /MarkdownTOC -->
 
 ## 1.6
+
+### 1.6.1
+
+* Dialog: fixes option `element`
+
 
 ### 1.6.0
 

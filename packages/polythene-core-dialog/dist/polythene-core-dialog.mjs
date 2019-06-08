@@ -187,6 +187,7 @@ var createPane = function createPane(_ref) {
       props = _ref.props;
   return h(Pane, {
     body: props.content || props.body || props.menu || props.children,
+    element: props.element,
     borders: props.borders,
     className: props.className,
     footer: props.footer,
@@ -385,7 +386,7 @@ var _Dialog = function _Dialog(_ref2) {
     animated: true,
     key: "shadow"
   }), props.before, pane, props.after])];
-  return h(props.element || "div", componentProps, content);
+  return h("div", componentProps, content);
 };
 
 export { _Dialog, openDialogsSelector };

@@ -9,6 +9,7 @@ export const openDialogsSelector =
 const createPane = ({ h, Pane, props }) =>
   h(Pane, {
     body: props.content || props.body || props.menu || props.children,
+    element: props.element,
     borders: props.borders,
     className: props.className,
     footer: props.footer,
@@ -211,5 +212,5 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       ]
     )
   ];
-  return h(props.element || "div", componentProps, content);
+  return h("div", componentProps, content);
 };
