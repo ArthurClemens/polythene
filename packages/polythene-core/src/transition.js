@@ -34,11 +34,18 @@ export const transitionStateReducer = (state, type) => {
       isTransitioning: true,
       isHiding: true,
     };
-  case TRANSITION_TYPES.DONE:
+  case TRANSITION_TYPES.SHOW_DONE:
     return {
       ...state,
       isTransitioning: false,
-      isVisible: state.isHiding ? false : true,
+      isVisible: true,
+      isHiding: false,
+    };
+  case TRANSITION_TYPES.HIDE_DONE:
+    return {
+      ...state,
+      isTransitioning: false,
+      isVisible: false,
       isHiding: false,
     };
   default:
@@ -241,7 +248,7 @@ export const transitionComponent = ({ dispatchTransitionState, isTransitioning, 
       afterTransition();
     }
 
-    dispatchTransitionState(TRANSITION_TYPES.DONE);
+    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE);
 
     // Component may unmount after this point
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {

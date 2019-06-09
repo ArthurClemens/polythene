@@ -851,10 +851,17 @@ var transitionStateReducer = function transitionStateReducer(state, type) {
         isHiding: true
       });
 
-    case TRANSITION_TYPES.DONE:
+    case TRANSITION_TYPES.SHOW_DONE:
       return _objectSpread({}, state, {
         isTransitioning: false,
-        isVisible: state.isHiding ? false : true,
+        isVisible: true,
+        isHiding: false
+      });
+
+    case TRANSITION_TYPES.HIDE_DONE:
+      return _objectSpread({}, state, {
+        isTransitioning: false,
+        isVisible: false,
         isHiding: false
       });
 
@@ -1064,7 +1071,7 @@ var transitionComponent = function transitionComponent(_ref) {
       afterTransition();
     }
 
-    dispatchTransitionState(TRANSITION_TYPES.DONE); // Component may unmount after this point
+    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE); // Component may unmount after this point
 
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide

@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.6](#16)
+  - [1.6.2](#162)
   - [1.6.1](#161)
   - [1.6.0](#160)
     - [Under the hood](#under-the-hood)
@@ -49,6 +50,13 @@
 <!-- /MarkdownTOC -->
 
 ## 1.6
+
+### 1.6.2
+
+Bug fixes:
+
+* Transitions: prevent appearing when a hiding transition has been canceled.
+
 
 ### 1.6.1
 
