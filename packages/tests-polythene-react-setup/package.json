@@ -2,7 +2,7 @@
   "name": "tests-polythene-react-setup",
   "private": true,
   "description": "Polythene for React setup example",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,9 +18,9 @@
     "serve": "http-server -c-1 -p 5000 dist"
   },
   "dependencies": {
-    "polythene-css": "^1.6.1",
-    "polythene-react": "^1.6.1",
-    "polythene-react-svg": "^1.6.1",
+    "polythene-css": "^1.6.2",
+    "polythene-react": "^1.6.2",
+    "polythene-react-svg": "^1.6.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

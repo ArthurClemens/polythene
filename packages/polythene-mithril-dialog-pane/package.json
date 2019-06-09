@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-dialog-pane",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "",
   "main": "dist/polythene-mithril-dialog-pane",
   "module": "dist/polythene-mithril-dialog-pane.mjs",
@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.5.1",
-    "polythene-core-dialog-pane": "^1.6.1"
+    "polythene-core-dialog-pane": "^1.6.2"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"

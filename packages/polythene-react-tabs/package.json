@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-tabs",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "",
   "main": "dist/polythene-react-tabs",
   "module": "dist/polythene-react-tabs.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-tabs": "^1.6.1",
-    "polythene-react-button": "^1.6.1",
-    "polythene-react-icon": "^1.6.1",
-    "polythene-react-icon-button": "^1.6.1"
+    "polythene-core-tabs": "^1.6.2",
+    "polythene-react-button": "^1.6.2",
+    "polythene-react-icon": "^1.6.2",
+    "polythene-react-icon-button": "^1.6.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"
