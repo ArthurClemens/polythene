@@ -15,8 +15,6 @@ import {
   Menu,
   Notification,
   RadioGroup,
-  Search,
-  Shadow,
   Slider,
   Snackbar,
   SVG,
