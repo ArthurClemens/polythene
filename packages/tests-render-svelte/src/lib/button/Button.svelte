@@ -1,8 +1,10 @@
 <script>
-  import { writable } from "svelte/store";
-  import { iconDropdownDown } from "polythene-core";
+  import { Icon} from "../icon";
   import { Shadow, getShadowDepthClass } from "../shadow";
+  import { writable } from "svelte/store";
   import classes from "polythene-css-classes/button";
+  import IconDropdownDown from "./IconDropdownDown.svelte";
+  // import IconDropdownUp from "./IconDropdownUp.svelte";
   import shadowClasses from "polythene-css-classes/shadow";
   import TextLabel from "./TextLabel.svelte";
 
@@ -160,7 +162,9 @@
       <slot />
     {/if}
 
-    {#if dropdown}{iconDropdownDown}{/if}
+    {#if dropdown}
+      <Icon className={classes.dropdown}><IconDropdownDown /></Icon>
+    {/if}
   </div>
   <slot name="after" />
 </a>

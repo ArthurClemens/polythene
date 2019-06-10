@@ -39,23 +39,7 @@
   <div class="example">
     <div class="example-info">Option: inactivate (for 2 secs)</div>
     <div class="example-component">
-      <Button raised label="Button" inactivate="2" />
-    </div>
-  </div>
-
-  <div class="example">
-    <div class="example-info">Option: events (onmouseup)</div>
-    <div class="example-component">
-      <Button raised label="Button" events={{
-        onmouseup: addOnMouseUp
-      }} />
-      {#if R_onMouseUpCalled.length}
-        <div style="margin-top: 1em;">
-          {#each R_onMouseUpCalled as called}
-            <div style="border-top: 1px solid #eee; padding: 5px 0; color: #aaa;">{called}</div>
-          {/each}
-        </div>
-      {/if}
+      <Button label="Button" inactivate="2" />
     </div>
   </div>
 
@@ -121,9 +105,25 @@
   </div>
 
   <div class="example">
-    <div class="example-info">Dropdown</div>
+    <div class="example-info">Option: dropdown with label (not interactive) -- see Menu examples</div>
     <div class="example-component">
-      <Button raised label="Button" dropdown />
+      <Button label="Button" dropdown />
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-info">Option: events (onmouseup)</div>
+    <div class="example-component">
+      <Button label="Button" events={{
+        onmouseup: addOnMouseUp
+      }} />
+      {#if R_onMouseUpCalled.length}
+        <div style="margin-top: 1em;">
+          {#each R_onMouseUpCalled as called}
+            <div style="border-top: 1px solid #eee; padding: 5px 0; color: #aaa;">{called}</div>
+          {/each}
+        </div>
+      {/if}
     </div>
   </div>
 
