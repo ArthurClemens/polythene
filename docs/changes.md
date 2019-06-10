@@ -2,6 +2,9 @@
 
 <!-- MarkdownTOC autolink="true" autoanchor="true" bracket="round" levels="2,3" -->
 - [1.6](#16)
+  - [1.6.3](#163)
+  - [1.6.2](#162)
+  - [1.6.1](#161)
   - [1.6.0](#160)
     - [Under the hood](#under-the-hood)
     - [CSS](#css)
@@ -48,6 +51,28 @@
 <!-- /MarkdownTOC -->
 
 ## 1.6
+
+### 1.6.3
+
+Bug fixes:
+
+* Drawer: fix responsive drawer.
+
+
+### 1.6.2
+
+Bug fixes:
+
+* Transitions: prevent appearing when a hiding transition has been canceled.
+
+
+### 1.6.1
+
+Bug fixes:
+
+* CSS: fixes too rigorous tree shaking when building with Rollup.
+* Dialog: fixes option `element`.
+
 
 ### 1.6.0
 

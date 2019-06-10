@@ -15,8 +15,6 @@ import {
   Menu,
   Notification,
   RadioGroup,
-  Search,
-  Shadow,
   Slider,
   Snackbar,
   SVG,
@@ -407,31 +405,6 @@ const App = {
                   })
                   : null,
               validateAtStart: true
-            })
-          )
-        ]
-      ),
-      m(".row",
-        [
-          m("h6", "Search"),
-          m(".component", 
-            m(Search, {
-              textfield: { label: "Search" },
-              before: m(Shadow),
-              buttons: {
-                none: {
-                  before: m(SearchIcon),
-                },
-                focus: {
-                  before: m(SearchIcon),
-                },
-                focus_dirty: {
-                  before: m(SearchIcon),
-                },
-                dirty: {
-                  before: m(SearchIcon),
-                }
-              },
             })
           )
         ]

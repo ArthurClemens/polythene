@@ -83,28 +83,31 @@ const getStyle = (customSelector = "", customVars, { mediaQuery="", scope="" } =
     scope,
   }));
 
-styler.addStyle({
-  selectors: [selector],
-  fns: baseFns,
-  vars
-});
-styler.addStyle({
-  selectors: [overlaySheetSelector],
-  fns: overlayColorFns,
-  vars
-});
-styler.addStyle({
-  selectors: [contentSelector],
-  fns: contentColorFns,
-  vars
-});
-styler.addStyle({
-  selectors: [overlayContentSelector],
-  fns: contentColorFns,
-  vars
-});
+const addGeneralStyleToHead = () => {
+  styler.addStyle({
+    selectors: [selector],
+    fns: baseFns,
+    vars
+  });
+  styler.addStyle({
+    selectors: [overlaySheetSelector],
+    fns: overlayColorFns,
+    vars
+  });
+  styler.addStyle({
+    selectors: [contentSelector],
+    fns: contentColorFns,
+    vars
+  });
+  styler.addStyle({
+    selectors: [overlayContentSelector],
+    fns: contentColorFns,
+    vars
+  });
+};
 
 export {
+  addGeneralStyleToHead,
   addStyle,
   getStyle,
   color,

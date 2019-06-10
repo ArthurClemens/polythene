@@ -187,6 +187,7 @@ var createPane = function createPane(_ref) {
       props = _ref.props;
   return h(Pane, {
     body: props.content || props.body || props.menu || props.children,
+    element: props.element,
     borders: props.borders,
     className: props.className,
     footer: props.footer,
@@ -227,7 +228,6 @@ var _Dialog = function _Dialog(_ref2) {
   var contentElRef = useRef();
   var isVisible = (transitionState || initialTransitionState).isVisible;
   var isTransitioning = (transitionState || initialTransitionState).isTransitioning;
-  var isHiding = (transitionState || initialTransitionState).isHiding;
 
   var transitionOptions = function transitionOptions(_ref3) {
     var isShow = _ref3.isShow,
@@ -235,6 +235,7 @@ var _Dialog = function _Dialog(_ref2) {
         hideDelay = _ref3$hideDelay === void 0 ? props.hideDelay : _ref3$hideDelay,
         referrer = _ref3.referrer;
     return {
+      transitionState: transitionState,
       dispatchTransitionState: dispatchTransitionState,
       instanceId: props.instanceId,
       props: _extends({}, props, {
@@ -326,7 +327,7 @@ var _Dialog = function _Dialog(_ref2) {
   }, [domElement, props.inactive]); // Show / hide logic
 
   useEffect(function () {
-    if (!domElement || isTransitioning || isHiding) {
+    if (!domElement || isTransitioning) {
       return;
     }
 
@@ -339,7 +340,7 @@ var _Dialog = function _Dialog(_ref2) {
         showDialog();
       }
     }
-  }, [domElement, isTransitioning, isHiding, isVisible, props.hide, props.show]);
+  }, [domElement, isTransitioning, isVisible, props.hide, props.show]);
 
   var componentProps = _extends({}, filterSupportedAttributes(props, {
     remove: ["style"]
@@ -385,7 +386,7 @@ var _Dialog = function _Dialog(_ref2) {
     animated: true,
     key: "shadow"
   }), props.before, pane, props.after])];
-  return h(props.element || "div", componentProps, content);
+  return h("div", componentProps, content);
 };
 
 export { _Dialog, openDialogsSelector };

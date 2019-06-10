@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-textfield",
-  "version": "1.6.0",
+  "version": "1.6.3",
   "description": "",
   "main": "dist/polythene-react-textfield",
   "module": "dist/polythene-react-textfield.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-textfield": "^1.6.0"
+    "polythene-core-textfield": "^1.6.3"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

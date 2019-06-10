@@ -262,7 +262,7 @@ var _Button = function _Button(_ref) {
   }, inactive ? null : _objectSpread(_defineProperty({}, a.tabindex, disabled || inactive ? -1 : props[a.tabindex] || 0), events, (_objectSpread3 = {}, _defineProperty(_objectSpread3, a.onmousedown, function (e) {
     return domElement && domElement.addEventListener && domElement.addEventListener("mouseleave", handleMouseLeave), props.events && props.events[a.onmousedown] && props.events[a.onmousedown](e);
   }), _defineProperty(_objectSpread3, a.onclick, function (e) {
-    return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(e), onClickHandler(e);
+    return document.activeElement === domElement && document.activeElement.blur(), handleInactivate(), onClickHandler(e);
   }), _defineProperty(_objectSpread3, a.onkeyup, function (e) {
     if (e.keyCode === 13 && document.activeElement === domElement) {
       document.activeElement.blur();

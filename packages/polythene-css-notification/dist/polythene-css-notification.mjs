@@ -337,15 +337,17 @@ var getStyle = function getStyle() {
   }));
 };
 
-styler.addStyle({
-  selectors: [holderSelector],
-  fns: holderFns,
-  vars: notificationVars
-});
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: notificationVars
-});
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  styler.addStyle({
+    selectors: [holderSelector],
+    fns: holderFns,
+    vars: notificationVars
+  });
+  styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: notificationVars
+  });
+};
 
-export { addStyle, color, customLayoutFns, getStyle, holderLayout, layout, notificationVars as vars };
+export { addGeneralStyleToHead, addStyle, color, customLayoutFns, getStyle, holderLayout, layout, notificationVars as vars };

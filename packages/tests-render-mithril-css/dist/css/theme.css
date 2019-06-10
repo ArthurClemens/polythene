@@ -146,8 +146,7 @@
   }
 
   .pe-menu.small-screen-top-menu.pe-menu--origin:not(.pe-menu--visible) .pe-menu__panel {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 
   .pe-menu.small-screen-top-menu .pe-menu__panel {

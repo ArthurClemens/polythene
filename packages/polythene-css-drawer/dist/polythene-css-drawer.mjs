@@ -432,15 +432,15 @@ var varFns = _objectSpread({
         zIndex: vars.z_drawer
       },
       // Mini
-      ".pe-drawer--mini": _mini(selector, vars$1),
+      ".pe-drawer--mini": _mini(selector),
       // Permanent
-      ".pe-drawer--permanent": _permanent(selector, vars$1),
+      ".pe-drawer--permanent": _permanent(selector),
       // Floating
-      ".pe-drawer--floating": _floating(selector, vars$1),
+      ".pe-drawer--floating": _floating(selector),
       // Cover (default)
       ".pe-drawer--cover": _cover(selector, vars$1),
       // Push
-      ".pe-drawer--push": _push(selector, vars$1),
+      ".pe-drawer--push": _push(selector),
       // Backdrop
       " .pe-dialog__backdrop": {
         pointerEvents: "none",
@@ -502,16 +502,16 @@ var varFns = _objectSpread({
     return [_border2(selector, vars)];
   },
   mini: function mini(selector, vars) {
-    return vars.mini && [_mini(selector, vars), _content_width_mini_collapsed(selector, vars)];
+    return vars.mini && [_mini(selector), _content_width_mini_collapsed(selector, vars)];
   },
   permanent: function permanent(selector, vars) {
-    return [vars.permanent && _permanent(selector, vars)];
+    return [vars.permanent && _permanent(selector)];
   },
   floating: function floating(selector, vars) {
-    return [vars.floating && _floating(selector, vars)];
+    return [vars.floating && _floating(selector)];
   },
   push: function push(selector, vars) {
-    return vars.push && [_push(selector, vars), push_content_width(selector, vars)];
+    return vars.push && [_push(selector), push_content_width(selector, vars)];
   }
 }, sharedVarFns);
 
@@ -563,10 +563,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component.replace(/ /g, "."));
 var addStyle = styler.createAddStyle(selector, fns, drawerVars);
 var getStyle = styler.createGetStyle(selector, fns, drawerVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: drawerVars
-});
 
-export { addStyle, color, getStyle, layout, drawerVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: drawerVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, drawerVars as vars };

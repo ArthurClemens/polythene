@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-radio-group",
-  "version": "1.6.0",
+  "version": "1.6.3",
   "description": "",
   "main": "dist/polythene-react-radio-group",
   "module": "dist/polythene-react-radio-group.mjs",
@@ -18,11 +18,11 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-radio-group": "^1.6.0",
-    "polythene-react-radio-button": "^1.6.0"
+    "polythene-core-radio-group": "^1.6.3",
+    "polythene-react-radio-button": "^1.6.3"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

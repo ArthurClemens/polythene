@@ -35,7 +35,13 @@ const containedButtonVars = containedButton.vars;
 const containedButtonColor = containedButton.color;
 const containedButtonLayout = containedButton.layout;
 
+const addGeneralStyleToHead = () => {
+  containedButton.addGeneralStyleToHead();
+  textButton.addGeneralStyleToHead();
+};
+
 export {
+  addGeneralStyleToHead,
   addStyle,
   getStyle,
   containedButtonVars,

@@ -405,7 +405,7 @@ var varFns = _objectSpread({
   },
   // Theme vars
   backdrop: function backdrop(selector, vars) {
-    return [vars.backdrop && _backdrop(selector, vars)];
+    return [vars.backdrop && _backdrop(selector)];
   },
   top_menu: function top_menu(selector, vars) {
     return [vars.top_menu && _top_menu(selector, vars)];
@@ -424,10 +424,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, menuVars);
 var getStyle = styler.createGetStyle(selector, fns, menuVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: menuVars
-});
 
-export { addStyle, color, getStyle, layout, menuVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: menuVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, menuVars as vars };

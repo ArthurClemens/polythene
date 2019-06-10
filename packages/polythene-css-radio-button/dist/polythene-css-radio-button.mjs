@@ -46,10 +46,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, radioButtonVars);
 var getStyle = styler.createGetStyle(selector, fns, radioButtonVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: radioButtonVars
-});
 
-export { addStyle, color, getStyle, layout, radioButtonVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: radioButtonVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, radioButtonVars as vars };

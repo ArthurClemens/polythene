@@ -1,128 +1,125 @@
 
-// Use intermediate variables to bypass Webpack's treeshaking
-
-import * as _BaseSpinnerCSS from "polythene-css-base-spinner";
-const BaseSpinnerCSS = _BaseSpinnerCSS;
+import * as BaseSpinnerCSS from "polythene-css-base-spinner";
 export { BaseSpinnerCSS };
+BaseSpinnerCSS.addGeneralStyleToHead();
 
-import * as _ButtonCSS from "polythene-css-button";
-const ButtonCSS = _ButtonCSS;
+import * as ButtonCSS from "polythene-css-button";
 export { ButtonCSS };
+ButtonCSS.addGeneralStyleToHead();
 
-import * as _ButtonGroupCSS from "polythene-css-button-group";
-const ButtonGroupCSS = _ButtonGroupCSS;
+import * as ButtonGroupCSS from "polythene-css-button-group";
 export { ButtonGroupCSS };
+ButtonGroupCSS.addGeneralStyleToHead();
 
-import * as _CardCSS from "polythene-css-card";
-const CardCSS = _CardCSS;
+import * as CardCSS from "polythene-css-card";
 export { CardCSS };
+CardCSS.addGeneralStyleToHead();
 
-import * as _CheckboxCSS from "polythene-css-checkbox";
-const CheckboxCSS = _CheckboxCSS;
+import * as CheckboxCSS from "polythene-css-checkbox";
 export { CheckboxCSS };
+CheckboxCSS.addGeneralStyleToHead();
 
-import * as _DialogCSS from "polythene-css-dialog";
-const DialogCSS = _DialogCSS;
+import * as DialogCSS from "polythene-css-dialog";
 export { DialogCSS };
+DialogCSS.addGeneralStyleToHead();
 
-import * as _DialogPaneCSS from "polythene-css-dialog-pane";
-const DialogPaneCSS = _DialogPaneCSS;
+import * as DialogPaneCSS from "polythene-css-dialog-pane";
 export { DialogPaneCSS };
+DialogPaneCSS.addGeneralStyleToHead();
 
-import * as _DrawerCSS from "polythene-css-drawer";
-const DrawerCSS = _DrawerCSS;
+import * as DrawerCSS from "polythene-css-drawer";
 export { DrawerCSS };
+DrawerCSS.addGeneralStyleToHead();
 
-import * as _FABCSS from "polythene-css-fab";
-const FABCSS = _FABCSS;
+import * as FABCSS from "polythene-css-fab";
 export { FABCSS };
+FABCSS.addGeneralStyleToHead();
 
-import * as _IconCSS from "polythene-css-icon";
-const IconCSS = _IconCSS;
+import * as IconCSS from "polythene-css-icon";
 export { IconCSS };
+IconCSS.addGeneralStyleToHead();
 
-import * as _IconButtonCSS from "polythene-css-icon-button";
-const IconButtonCSS = _IconButtonCSS;
+import * as IconButtonCSS from "polythene-css-icon-button";
 export { IconButtonCSS };
+IconButtonCSS.addGeneralStyleToHead();
 
-import * as _IOSSpinnerCSS from "polythene-css-ios-spinner";
-const IOSSpinnerCSS = _IOSSpinnerCSS;
+import * as IOSSpinnerCSS from "polythene-css-ios-spinner";
 export { IOSSpinnerCSS };
+IOSSpinnerCSS.addGeneralStyleToHead();
 
-import * as _ListCSS from "polythene-css-list";
-const ListCSS = _ListCSS;
+import * as ListCSS from "polythene-css-list";
 export { ListCSS };
+ListCSS.addGeneralStyleToHead();
 
-import * as _ListTileCSS from "polythene-css-list-tile";
-const ListTileCSS = _ListTileCSS;
+import * as ListTileCSS from "polythene-css-list-tile";
 export { ListTileCSS };
+ListTileCSS.addGeneralStyleToHead();
 
-import * as _MaterialDesignProgressSpinnerCSS from "polythene-css-material-design-progress-spinner";
-const MaterialDesignProgressSpinnerCSS = _MaterialDesignProgressSpinnerCSS;
+import * as MaterialDesignProgressSpinnerCSS from "polythene-css-material-design-progress-spinner";
 export { MaterialDesignProgressSpinnerCSS };
+MaterialDesignProgressSpinnerCSS.addGeneralStyleToHead();
 
-import * as _MaterialDesignSpinnerCSS from "polythene-css-material-design-spinner";
-const MaterialDesignSpinnerCSS = _MaterialDesignSpinnerCSS;
+import * as MaterialDesignSpinnerCSS from "polythene-css-material-design-spinner";
 export { MaterialDesignSpinnerCSS };
+MaterialDesignSpinnerCSS.addGeneralStyleToHead();
 
-import * as _MenuCSS from "polythene-css-menu";
-const MenuCSS = _MenuCSS;
+import * as MenuCSS from "polythene-css-menu";
 export { MenuCSS };
+MenuCSS.addGeneralStyleToHead();
 
-import * as _NotificationCSS from "polythene-css-notification";
-const NotificationCSS = _NotificationCSS;
+import * as NotificationCSS from "polythene-css-notification";
 export { NotificationCSS };
+NotificationCSS.addGeneralStyleToHead();
 
-import * as _RadioButtonCSS from "polythene-css-radio-button";
-const RadioButtonCSS = _RadioButtonCSS;
+import * as RadioButtonCSS from "polythene-css-radio-button";
 export { RadioButtonCSS };
+RadioButtonCSS.addGeneralStyleToHead();
 
-import * as _RippleCSS from "polythene-css-ripple";
-const RippleCSS = _RippleCSS;
+import * as RippleCSS from "polythene-css-ripple";
 export { RippleCSS };
+RippleCSS.addGeneralStyleToHead();
 
-import * as _SearchCSS from "polythene-css-search";
-const SearchCSS = _SearchCSS;
+import * as SearchCSS from "polythene-css-search";
 export { SearchCSS };
+SearchCSS.addGeneralStyleToHead();
 
-import * as _SelectionControlCSS from "polythene-css-selection-control";
-const SelectionControlCSS = _SelectionControlCSS;
+import * as SelectionControlCSS from "polythene-css-selection-control";
 export { SelectionControlCSS };
+SelectionControlCSS.addGeneralStyleToHead();
 
-import * as _ShadowCSS from "polythene-css-shadow";
-const ShadowCSS = _ShadowCSS;
+import * as ShadowCSS from "polythene-css-shadow";
 export { ShadowCSS };
+ShadowCSS.addGeneralStyleToHead();
 
-import * as _SliderCSS from "polythene-css-slider";
-const SliderCSS = _SliderCSS;
+import * as SliderCSS from "polythene-css-slider";
 export { SliderCSS };
+SliderCSS.addGeneralStyleToHead();
 
-import * as _SnackbarCSS from "polythene-css-snackbar";
-const SnackbarCSS = _SnackbarCSS;
+import * as SnackbarCSS from "polythene-css-snackbar";
 export { SnackbarCSS };
+SnackbarCSS.addGeneralStyleToHead();
 
-import * as _SVGCSS from "polythene-css-svg";
-const SVGCSS = _SVGCSS;
+import * as SVGCSS from "polythene-css-svg";
 export { SVGCSS };
+SVGCSS.addGeneralStyleToHead();
 
-import * as _SwitchCSS from "polythene-css-switch";
-const SwitchCSS = _SwitchCSS;
+import * as SwitchCSS from "polythene-css-switch";
 export { SwitchCSS };
+SwitchCSS.addGeneralStyleToHead();
 
-import * as _TabsCSS from "polythene-css-tabs";
-const TabsCSS = _TabsCSS;
+import * as TabsCSS from "polythene-css-tabs";
 export { TabsCSS };
+TabsCSS.addGeneralStyleToHead();
 
-import * as _TextFieldCSS from "polythene-css-textfield";
-const TextFieldCSS = _TextFieldCSS;
+import * as TextFieldCSS from "polythene-css-textfield";
 export { TextFieldCSS };
+TextFieldCSS.addGeneralStyleToHead();
 
-import * as _ToolbarCSS from "polythene-css-toolbar";
-const ToolbarCSS = _ToolbarCSS;
+import * as ToolbarCSS from "polythene-css-toolbar";
 export { ToolbarCSS };
+ToolbarCSS.addGeneralStyleToHead();
 
-import * as _TypographyCSS from "polythene-css-typography";
-const TypographyCSS = _TypographyCSS;
+import * as TypographyCSS from "polythene-css-typography";
 export { TypographyCSS };
 
 export { addTypography, addRoboto } from "polythene-css-typography";

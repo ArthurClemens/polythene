@@ -48,7 +48,6 @@ const App = {
     m(".page", [
       m(".row", [
         m("h3", "Polythene for Mithril built with Rollup"),
-        m("h6", "CSS Test")
       ]),
       m(".row",
         [

@@ -36,10 +36,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, checkboxVars);
 var getStyle = styler.createGetStyle(selector, fns, checkboxVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: checkboxVars
-});
 
-export { addStyle, color, getStyle, layout, checkboxVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: checkboxVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, checkboxVars as vars };

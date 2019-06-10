@@ -131,10 +131,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, materialDesignProgressSpinnerVars);
 var getStyle = styler.createGetStyle(selector, fns, materialDesignProgressSpinnerVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: materialDesignProgressSpinnerVars
-});
 
-export { addStyle, color, getStyle, layout, materialDesignProgressSpinnerVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: materialDesignProgressSpinnerVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, materialDesignProgressSpinnerVars as vars };

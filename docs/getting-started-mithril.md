@@ -7,7 +7,9 @@
   - [Which packages do you need?](#which-packages-do-you-need)
   - [Installation](#installation)
   - [Examples](#examples)
-- [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
+    - [A single component](#a-single-component)
+    - [A simple app](#a-simple-app)
+- [Usage in a HTML file, JSFiddle or flems](#usage-in-a-html-file-jsfiddle-or-flems)
   - [Setup](#setup)
   - [Example script](#example-script)
 
@@ -98,7 +100,7 @@ m.mount(document.querySelector("#app"), App)
 
 
 <a id="usage-in-a-html-file-or-jsfiddle"></a>
-## Usage in a HTML file or JSFiddle
+## Usage in a HTML file, JSFiddle or flems
 
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
@@ -129,7 +131,7 @@ Add to your HTML file:
 <script src="https://unpkg.com/polythene-mithril/dist/polythene-mithril-standalone.js"></script>
 ~~~
 
-To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
+To be able to write es6, add `babel-standalone` (not necessary for JSFiddle or flems):
 
 ~~~html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
@@ -155,5 +157,6 @@ m.mount(document.getElementById("root"), App)
 ~~~
 
 
-See: [Full working JSFiddle](https://jsfiddle.net/ArthurClemens/5d5xfoxs/)
+See: [online flems](https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRloDYBmAXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAOlAA8Zcj2wyABDHJgAvBpCyZuFAHp7mcjKkBXM0jGwJAcx6ubgBGEjwQTjB4MjD22AgAnq6qiPYwMphQ+Jjw0Clx8IlSyQC0IgFS+vCxCUlQiKXllcVpGVk5dRIAVjBWAHzaqRQGMr1aWrpDhiZmltYytjAOTi7unojeMH7lwaHhmJGI0dUFtSktmdm5x4UlYJHXp8V3MM3pF+2IXT0g-YP6hqMoON8DwAG5GHj4WaUCAyPoDEGg3ogAC+RCEonEIC+ikgylUMnUeLSRmARgAQm55tAjCijOYjPkbnUxlBicYAILYbD00laIxGUE8RAAdxQRgAFABKemAgUCkQSynUqBEPlQeXy8iYHh4fDimTkNyIIj8zVGLBBRDwcVWZUyaBWM0ClFSrQo1kiCQiCBuZQS-AQMBubwyPyHACiXgJ5PiAEl8BKrDC4SApWqudgpaj0SBhGJ1BJnrjoCo1GhUZwQPAeFAANYCFDUDEFtBlVyVAACdQAHoSSB4FGgbHZHH7sHXfEWICJ7O2KnxOwAmCS0VfFMwSZhzxp8b21nEkGTxbBYvTDSsooA)
+
 

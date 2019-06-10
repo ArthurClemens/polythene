@@ -65,8 +65,9 @@ var classes = {
   with_active_shadow: "pe-with-active-shadow"
 };
 
+var DEFAULT_SHADOW_DEPTH = 1;
 var getDepthClass = function getDepthClass(shadowDepth) {
-  return shadowDepth !== undefined ? "".concat(classes.depth_n).concat(Math.min(5, shadowDepth)) : null;
+  return shadowDepth !== undefined ? "".concat(classes.depth_n).concat(Math.min(5, shadowDepth)) : DEFAULT_SHADOW_DEPTH;
 };
 var _Shadow = function _Shadow(_ref) {
   var h = _ref.h,

@@ -9,6 +9,7 @@ export const openDialogsSelector =
 const createPane = ({ h, Pane, props }) =>
   h(Pane, {
     body: props.content || props.body || props.menu || props.children,
+    element: props.element,
     borders: props.borders,
     className: props.className,
     footer: props.footer,
@@ -29,9 +30,9 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   
   const isVisible = (transitionState || initialTransitionState).isVisible;
   const isTransitioning = (transitionState || initialTransitionState).isTransitioning;
-  const isHiding = (transitionState || initialTransitionState).isHiding;
-  
+
   const transitionOptions = ({ isShow, hideDelay = props.hideDelay, referrer }) => ({
+    transitionState,
     dispatchTransitionState,
     instanceId: props.instanceId,
     props: Object.assign({}, props, {
@@ -116,7 +117,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
   // Show / hide logic
   useEffect(
     () => {
-      if (!domElement || isTransitioning || isHiding) {
+      if (!domElement || isTransitioning) {
         return;
       }
       if (props.hide) {
@@ -129,7 +130,7 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
         }
       }
     },
-    [domElement, isTransitioning, isHiding, isVisible, props.hide, props.show]
+    [domElement, isTransitioning, isVisible, props.hide, props.show]
   );
   
   const componentProps = Object.assign(
@@ -211,5 +212,5 @@ export const _Dialog = ({ h, a, useState, useEffect, useRef, getRef, useReducer,
       ]
     )
   ];
-  return h(props.element || "div", componentProps, content);
+  return h("div", componentProps, content);
 };

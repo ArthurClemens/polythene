@@ -219,15 +219,17 @@ var getStyle = function getStyle() {
   }));
 };
 
-styler.addStyle({
-  selectors: [holderSelector],
-  fns: holderFns,
-  vars: snackbarVars
-});
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: snackbarVars
-});
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  styler.addStyle({
+    selectors: [holderSelector],
+    fns: holderFns,
+    vars: snackbarVars
+  });
+  styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: snackbarVars
+  });
+};
 
-export { addStyle, color, getStyle, holderLayout, layout, snackbarVars as vars };
+export { addGeneralStyleToHead, addStyle, color, getStyle, holderLayout, layout, snackbarVars as vars };

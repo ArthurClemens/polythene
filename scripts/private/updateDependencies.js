@@ -39,4 +39,5 @@ glob.sync(PACKAGE_FILE_PATTERN)
 
 
 shell.exec("npm install");
+shell.exec("npm audit fix");
 shell.exec("lerna bootstrap");

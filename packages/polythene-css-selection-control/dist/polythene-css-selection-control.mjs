@@ -158,8 +158,8 @@ var alignSide = function alignSide(isRTL) {
 }; // eslint-disable-line no-unused-vars
 
 
-var alignLeft = alignSide(false);
-var alignRight = alignSide(true);
+var alignLeft = alignSide();
+var alignRight = alignSide();
 
 var makeSize = function makeSize(vars$1, height) {
   var iconSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : vars.unit_icon_size;
@@ -387,10 +387,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, selectionControlVars);
 var getStyle = styler.createGetStyle(selector, fns, selectionControlVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: selectionControlVars
-});
 
-export { addStyle, color, getStyle, layout, selectionControlVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: selectionControlVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, selectionControlVars as vars };

@@ -4,24 +4,7 @@ import { sel, createColor } from "polythene-core-css";
 
 const generalFns = ({
   general_styles: selector => [
-    sel(selector, {
-      // ".pe-control--off": {
-      //   " .pe-switch-control__knob": {
-      //     backgroundColor: "currentcolor"
-      //   },
-      //   " .pe-icon": {
-      //     color: "currentcolor"
-      //   },
-      // },
-      // ".pe-control--on": {
-      //   " .pe-switch-control__knob": {
-      //     backgroundColor: "currentcolor"
-      //   },
-      //   " .pe-icon": {
-      //     color: "currentcolor"
-      //   },
-      // },
-    })
+    sel(selector, {})
   ],
 });
 

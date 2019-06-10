@@ -12,7 +12,7 @@ const BackButton = ({ leave }) =>
     icon={{ svg: { content: iconBack } }}
     ink={false}
     events={{ onClick: leave }}
-    key='back'
+    key="back"
   />;
 
 const ClearButton = ({ clear }) =>
@@ -20,21 +20,21 @@ const ClearButton = ({ clear }) =>
     icon={{ svg: { content: iconClear } }}
     ink={false}
     events={{ onClick: clear }}
-    key='clear'
+    key="clear"
   />;
 
 const SearchIcon = () =>
   <IconButton
     icon={{ svg: { content: iconSearch } }}
     inactive
-    key='search'
+    key="search"
   />;
 
 const MicIcon = () =>
   <IconButton
     icon={{ svg: { content: iconMic } }}
     inactive
-    key='mic'
+    key="mic"
   />;
 
 export default class extends Component {

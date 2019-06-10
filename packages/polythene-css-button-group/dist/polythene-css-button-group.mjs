@@ -40,10 +40,13 @@ var fns = [layout];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, buttonGroupVars);
 var getStyle = styler.createGetStyle(selector, fns, buttonGroupVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: buttonGroupVars
-});
 
-export { addStyle, getStyle, layout, buttonGroupVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: buttonGroupVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, getStyle, layout, buttonGroupVars as vars };

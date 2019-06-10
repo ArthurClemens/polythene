@@ -136,10 +136,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, rippleVars);
 var getStyle = styler.createGetStyle(selector, fns, rippleVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: rippleVars
-});
 
-export { addStyle, color, getStyle, layout, rippleVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: rippleVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, rippleVars as vars };

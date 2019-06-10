@@ -61,12 +61,12 @@ export default ({ h, a, Dialog, Button, Toolbar, ToolbarTitle, IconButton, List,
 
   return [
     {
-      name: "Option: body",
+      name: "Option: body, element",
       exclude: true,
       interactive: true,
       component: {
         view: () => 
-          Opener({ body: "Hello" })
+          Opener({ body: "Hello", element: "div" })
       }
     },
     {

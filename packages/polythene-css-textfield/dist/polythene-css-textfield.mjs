@@ -729,10 +729,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, textfieldVars);
 var getStyle = styler.createGetStyle(selector, fns, textfieldVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: textfieldVars
-});
 
-export { addStyle, color, getStyle, layout, textfieldVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: textfieldVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, textfieldVars as vars };

@@ -152,10 +152,13 @@ var fns = [layout, color];
 var selector = ".".concat(classes.component);
 var addStyle = styler.createAddStyle(selector, fns, iOSSpinnerVars);
 var getStyle = styler.createGetStyle(selector, fns, iOSSpinnerVars);
-styler.addStyle({
-  selectors: [selector],
-  fns: fns,
-  vars: iOSSpinnerVars
-});
 
-export { addStyle, color, getStyle, layout, iOSSpinnerVars as vars };
+var addGeneralStyleToHead = function addGeneralStyleToHead() {
+  return styler.addStyle({
+    selectors: [selector],
+    fns: fns,
+    vars: iOSSpinnerVars
+  });
+};
+
+export { addGeneralStyleToHead, addStyle, color, getStyle, layout, iOSSpinnerVars as vars };

@@ -10,6 +10,7 @@ declare type actionFn = () => void;
 
 const BackButton = ({ leave } : { leave: actionFn }) =>
   <IconButton
+    key="back"
     className="pe-rtl--flip"
     icon={{ svg: { content: iconBack } }}
     ink={false}
@@ -18,6 +19,7 @@ const BackButton = ({ leave } : { leave: actionFn }) =>
 
 const ClearButton = ({ clear } : { clear: actionFn }) =>
   <IconButton
+    key="clear"
     icon={{ svg: { content: iconClear } }}
     ink={false}
     events={{ onClick: clear }}
@@ -25,12 +27,14 @@ const ClearButton = ({ clear } : { clear: actionFn }) =>
 
 const SearchIcon = () =>
   <IconButton
+    key="search"
     icon={{ svg: { content: iconSearch } }}
     inactive
   />;
 
 const MicIcon = () =>
   <IconButton
+    key="mic"
     icon={{ svg: { content: iconMic } }}
     inactive
   />;

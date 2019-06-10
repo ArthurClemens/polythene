@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-icon-button",
-  "version": "1.6.0",
+  "version": "1.6.3",
   "description": "",
   "main": "dist/polythene-react-icon-button",
   "module": "dist/polythene-react-icon-button.mjs",
@@ -18,12 +18,12 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-icon-button": "^1.6.0",
-    "polythene-react-button": "^1.6.0",
-    "polythene-react-icon": "^1.6.0"
+    "polythene-core-icon-button": "^1.6.3",
+    "polythene-react-button": "^1.6.3",
+    "polythene-react-icon": "^1.6.3"
   },
   "devDependencies": {
-    "@types/react": "^16.8.18"
+    "@types/react": "^16.8.19"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

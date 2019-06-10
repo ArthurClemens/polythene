@@ -1,6 +1,6 @@
 {
   "name": "polythene-tests-cypress-mithril",
-  "version": "1.6.0",
+  "version": "1.6.3",
   "description": "",
   "private": true,
   "main": "dist/js/index",
@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "mithril": "^2.0.0-rc.4",
-    "polythene-css": "^1.6.0",
-    "polythene-mithril": "^1.6.0",
+    "polythene-css": "^1.6.3",
+    "polythene-mithril": "^1.6.3",
     "polythene-tests-cypress":  "^1.5.4"
   },
   "devDependencies": {

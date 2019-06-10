@@ -56,6 +56,7 @@ export const createConfig = () => {
           },
         ]
       }),
+      
       resolve(),
 
       commonjs({
