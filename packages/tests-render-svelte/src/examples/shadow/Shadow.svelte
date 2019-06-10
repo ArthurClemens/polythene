@@ -1,5 +1,5 @@
 <script>
-  import Shadow from "polythene-svelte-shadow";
+  import { Shadow } from "../../lib/shadow";
   import Interactive from "./interactive/Interactive.svelte";
   import { ShadowCSS } from "polythene-css";
 
@@ -28,8 +28,10 @@
     <div class="example-info">
       <p>shadowDepth="1"</p>
     </div>
-    <div class="shadow-example">
-      <Shadow shadowDepth="1" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow shadowDepth="1" />
+      </div>
     </div>
   </div>
 
@@ -37,8 +39,10 @@
     <div class="example-info">
       <p>shadowDepth="3"</p>
     </div>
-    <div class="shadow-example">
-      <Shadow shadowDepth="3" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow shadowDepth="3" />
+      </div>
     </div>
   </div>
 
@@ -46,8 +50,10 @@
     <div class="example-info">
       <p>shadowDepth="5"</p>
     </div>
-    <div class="shadow-example">
-      <Shadow shadowDepth="5" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow shadowDepth="5" />
+      </div>
     </div>
   </div>
 
@@ -55,8 +61,10 @@
     <div class="example-info">
       <p>shadowDepth="0"</p>
     </div>
-    <div class="shadow-example">
-      <Shadow shadowDepth="0" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow shadowDepth="0" />
+      </div>
     </div>
   </div>
 
@@ -64,10 +72,12 @@
     <div class="example-info">
       <p>Themed shadow</p>
     </div>
-    <div class="shadow-example">
-      <Shadow
-        className="example-shadow-themed-shadow"
-        style="background-color: rgba(243, 229, 245,1.0)" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow
+          className="example-shadow-themed-shadow"
+          style="background-color: rgba(243, 229, 245,1.0)" />
+      </div>
     </div>
   </div>
 
@@ -75,8 +85,10 @@
     <div class="example-info">
       <p>Themed shadow depth</p>
     </div>
-    <div class="shadow-example">
-      <Shadow className="example-shadow-themed-shadow-depth" />
+    <div class="example-component">
+      <div class="shadow-example">
+        <Shadow className="example-shadow-themed-shadow-depth" />
+      </div>
     </div>
   </div>
 

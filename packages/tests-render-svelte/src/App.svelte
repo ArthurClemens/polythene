@@ -4,21 +4,47 @@
 </script>
 
 <style>
+:global(body) {
+	margin: 0;
+}
+
 :global(.page) {
-	padding: 20px 20px 70px 20px;
+	padding: 0 0 50px 0;
 }
 
 :global(.page) h1 {
 	color: #333;
-	margin-top: 0;
-	font-size: 30px;
+	font-size: 46px;
+	padding: 0 30px;
 }
 
-:global(.example) + .example {
-	margin-top: 50px;
+:global(.example) {
+	padding: 30px;
+}
+
+:global(.example) {
+	border-top: 1px solid #eaeaea;
+}
+:global(.example.pe-dark-tone) {
+	border-top: 1px solid #555;
+}
+:global(.example:not(.pe-dark-tone) + .example.pe-dark-tone) {
+	border-top: none;
+}
+:global(.example.pe-dark-tone + .example:not(.pe-dark-tone)) {
+	border-top: none;
+}
+
+:global(.example.pe-dark-tone) {
+  background-color: #303030;
+  color: #777;
+}
+
+:global(.example-component) {
+	margin-top: 1em;
 }
 :global(.example-info) {
-	margin: 1em 0;
+	color: #777;
 }
 :global(.example-info) p {
 	margin: 0;

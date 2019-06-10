@@ -1,6 +1,6 @@
 <script>
   import { depth } from "./stores.js";
-  import Shadow from "polythene-svelte-shadow";
+  import { Shadow } from "../../../lib/shadow";
   import { ShadowCSS } from "polythene-css";
 
   ShadowCSS.addStyle(".example-shadow-themed-transition", {
@@ -23,11 +23,13 @@
     <p>Themed shadow transition</p>
     <p>The shadowDepth is: {shadowDepth}. Click to change.</p>
   </div>
-  <div class="shadow-example" on:click={increment}>
-    <Shadow
-      className="example-shadow-themed-transition"
-      shadowDepth={shadowDepth}
-      animated
-    />
+  <div class="example-component">
+    <div class="shadow-example" on:click={increment}>
+      <Shadow
+        className="example-shadow-themed-transition"
+        shadowDepth={shadowDepth}
+        animated
+      />
+    </div>
   </div>
 </div>
