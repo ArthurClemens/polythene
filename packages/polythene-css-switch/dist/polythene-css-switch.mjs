@@ -46,23 +46,7 @@ function _extends() {
 
 var generalFns = {
   general_styles: function general_styles(selector) {
-    return [sel(selector, {// ".pe-control--off": {
-      //   " .pe-switch-control__knob": {
-      //     backgroundColor: "currentcolor"
-      //   },
-      //   " .pe-icon": {
-      //     color: "currentcolor"
-      //   },
-      // },
-      // ".pe-control--on": {
-      //   " .pe-switch-control__knob": {
-      //     backgroundColor: "currentcolor"
-      //   },
-      //   " .pe-icon": {
-      //     color: "currentcolor"
-      //   },
-      // },
-    })];
+    return [sel(selector, {})];
   }
 };
 

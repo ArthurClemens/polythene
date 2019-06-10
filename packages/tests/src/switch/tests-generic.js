@@ -165,16 +165,16 @@ export default ({ Switch, Icon, Button, h, a }) => {
       exclude: true,
       component: toggleButton({ h, a, Button, Switch })
     },
-    {
-      name: "Option: style (colors)",
-      component: Switch,
-      attrs: {
-        label: "Label",
-        style: {
-          color: "#EF6C00"
-        }
-      }
-    },
+    // {
+    //   name: "Option: style (colors)",
+    //   component: Switch,
+    //   attrs: {
+    //     label: "Label",
+    //     style: {
+    //       color: "#EF6C00"
+    //     }
+    //   }
+    // },
 
     {
       section: "Themed",
