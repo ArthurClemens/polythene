@@ -13,7 +13,10 @@
 - [Appearance](#appearance)
   - [Sizes](#sizes)
   - [Styling](#styling)
-  - [RTL \(right-to-left\) support](#rtl-right-to-left-support)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
+  - [RTL (right-to-left) support](#rtl-right-to-left-support)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -29,7 +32,7 @@
 <a id="usage"></a>
 ## Usage
 
-<a href="https://jsfiddle.net/ArthurClemens/ubzhapwy/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4IgzgxgTg9gNnEAuA2gBgDRoLoZAMwEs4BTMZFUAOwEMBbE5EAOgAsAXOxPCGK9kvyYAeOISoBrAASsoJfAF4AOiA7sADmCQB6bTSjtWAVygRSDKmGYBzQoaMAjZoRh6wYEuzDb18AJ6GgiTaJAAe9Oqk3vjmVhDuKlJycMrg7H5RrCSeKgB8SlQFwpBQhOrsUmCmqWqaOnoGxqbmgla29k4ubh5ePv6BVMFg7DRUACY0cHzBvnABWYMAtHR2ssR9cwMky6ulcIvDoxNTg8wAVmB5wtolZez5hVTF0HeV1Sq1Wrr69s0kFm1Vo5nK4aO5PN5ZvMgjcRuNJtMNtClvFIf0FttUQc4cdpudLiBctdbuUHkUxoQAG5SQhjVKwGDsK7aCmU3IgPAeUgQdguSxMAAsSAAjMKBSAAL4Yaj0RhIFgXDkgXj8QTsJgq4ZSYBSACSKqkEqkCikUK2AG4CpqKjr9XwAMIAZUdhuNpvRQSdjstjztVC9zBoYzGjvSpAAFCpmIEGGNFoQVSoMNqClIpLwplAAPpiawcJBSFQAYnw+GFAHYBQKk6n0-AYNmJlAJAXCyAixAAKyigBsACYa1QJQBKH1WvhahN8R0ANQA4m6VMVKdYpAB3WmGZRKFR96s7kAyEiEPPsbe7-eJSmEEhrgBCMFC55AaCkr73Uj3O6u6hohikdLfiAACywp9lIFbMH25YADLCgAHMwCGfsK+zCswPYCos5bMGgADMMF9uBACcUECvsOHCsRiwYcKcHgSRSHEVIiE9nhn5SKRe5wJ2zACj2UgCsw5YEbx8EMcKABeQHaESNwrvkIA+mmabjpYFQAILqOobrAAUSjsNet4FuGw7GrkUgoLWBl0JGLCwGuzBUIyJBJpZtaqZwdk0G5elUCphZMoYcj4AWHzsBoXwNL8Zj-K0NhAp0rhmhiixjP8MDeCswXrEW2hToUHIeQFUgjFA1ieGFIBZg4cCjBIKj6RUKlSm2jrZFIkxgDABYAAoeoMUj4A2UjAbsxBSIseoGuldAwCow7Fdgw4YMVtlRg5blWf5Kk2XZ0Z2KQbkqAA8uUfIFmAhCSa5IArcVabrSwvB0L4gz8MdO0BQZVngHQkxwMdIByNYRh1VAQOxoQRh0ED4MVSo2DMP96jhldN3mQ9JW2X6yZ+SVJUGejJCrV9BMqWAK4FjqKoCPwBZ0NGUBGMM4YFbOc5mRKWMBSOPNSItZMqYLAXLaTAVPcwm0cu5ZN7VGvLsEdMunedfAFjQlJ-voC3i9j+0vW9aqfeTUg4yqeP82mxNVfDt166bVQQFVtT1D8TSxQCCUdCC3QQkiWwhOEr1RHoWtlYs6HqFQ1iDqbaaa9rUAFuwzOuULLUiwTWdpmLa37dLybbd9XkK4d9ttmdvLq5UYa3fdGeS4b0wfSrGePeGuMpu3FPXSQtv6AjRU99bVPanWqr02bTMs+wbMqhzXMO+TwwZP33cGfHdaZlVJb4MR8FoGgjU7QZZ9BUa5P83z7c51Iedk5LheyyXkuK8ryYqAAKlksa61jTcYCvRbkyNuptzZ8EtiPSofcB7lXtlbSoY8aZ8DpuwBmM9Wbs3nEvRBZgwRgAAHKyiqjGEgcYCqJCvj3G+5M74PwlgXGAjl1DbCbBIRY7BphbWKvLFg78K7f1-uQqQ4Z2GlWmItO6y8O5Rmbu9UBn8e4QKoFAreNs2x2zjvHSm1hqYTzQRg1Os957ThwYaGRJV8HuGIQwUhwiKGJkPNQ02tDs5LQbrnAoEoxxUEZnNIw-AxEwAgDDNUNhPAAFEWj8DvH4XUYw7IMlAStKQWl1CjgKEqLkJAeR8nIPKcsnYkBoElNKEAtAGBMGYKiJUtM1RMElLgEAYhJAFMoBU2UTBsprDgAAAUGKEdUeATCIHlJ8eogT1ASGsDUoB2gel7D6X2XCuFFimAwgs8acBkbiHxEqdIrCmAknVBKbAEogA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 
 <a id="with-trusted-svg-text"></a>

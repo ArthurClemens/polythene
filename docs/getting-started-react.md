@@ -9,7 +9,7 @@
   - [Examples](#examples)
     - [A single component](#a-single-component)
     - [A simple app](#a-simple-app)
-- [Usage in a HTML file or JSFiddle](#usage-in-a-html-file-or-jsfiddle)
+- [Usage in a HTML file, JSFiddle or flems](#usage-in-a-html-file-jsfiddle-or-flems)
   - [Setup](#setup)
   - [Example script](#example-script)
 
@@ -100,7 +100,7 @@ ReactDOM.render(<App />, mountNode)
 ~~~
 
 <a id="usage-in-a-html-file-or-jsfiddle"></a>
-## Usage in a HTML file or JSFiddle
+## Usage in a HTML file, JSFiddle or flems
 
 A "standalone" version of Polythene - useful for demonstration purposes - is available at:
 
@@ -133,7 +133,7 @@ Add to your HTML file:
 <script src="https://unpkg.com/polythene-react/dist/polythene-react-standalone.js"></script>
 ~~~
 
-To be able to write es6, add `babel-standalone` (not necessary for JSFiddle):
+To be able to write es6, add `babel-standalone` (not necessary for JSFiddle or flems):
 
 ~~~html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
@@ -156,5 +156,5 @@ ReactDOM.render(
 ~~~
 
 
-See: [Full working JSFiddle](https://jsfiddle.net/ArthurClemens/5db99xoj/)
+See: [online flems](https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvAHjmoCcIAHYgAjgdqAXgA6IEsW5xEAelkYOxQgFchsHGjj4A5hGUqARvgi0FcODGJxZ3WlACeypjFlxiGNABMMUeq7tHZzQYAFoOGAxqYlt7J0IXcMjo0PdPHz8Q-AArOHEAPhY3Th5ifNE0NhLeASExCWIpGXlFA3UYTW09A2NTc0trWKCEkLcPb19-IfjE6gtp4LC5uFTxjP8cvJBC4q5ecsr2Pf5BEXFJaTlZai80Ta8YKAgANw58EJi0bixZCKjicK0FSMDihLy0LAAAQArPgAAz4ACMshUWC8v2SAI4QJBYIh+CwEDuuQKRSOpQOFRYXhefAgXnq2NoxFJshpz3ylBAllg0VMWjwABZEIiAMyhYUAThAAF8KOhsLhEARcly6AwmMQ8Or3HxgHwAELA4j0PgyvjCPiBGYhCoVHX8ACC3G4Fr4AAoAJQWg58PgsI2NU0cDAQSxePhQDCGR71QMmtDiPiySloABKmIAIgB5ACy+Ai3hgHHdFT9LGdrpTFDLfHB1FRmt0VgAohpNQaHABJLylkBMlkgT0VT1qiHcaDFvCGaOPLk8mB8+gIZUADhFsvlIEwODw+GWY41zGVsoAulQnmgANYr1DbxV4P7RfAPZ6PWjfJuqqhqcjKi7NCiXxXjo+4Qhi-womiEHPq+76fgwmxcsQDjcEq3LVFqcoKruypPgC4JYC+MBvn4CHEEhP4cH+DRNFcKjAaBdA-PheI-Ki6KsYRxGkR+mgUd+IAoWheDkrwZ4ykAA)
 

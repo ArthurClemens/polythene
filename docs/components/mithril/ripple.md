@@ -9,6 +9,9 @@
 - [Variations](#variations)
 - [Appearance](#appearance)
   - [Styling](#styling)
+    - [Themed component](#themed-component)
+    - [CSS](#css)
+    - [Style](#style)
   - [Dark or light tone](#dark-or-light-tone)
 
 <!-- /MarkdownTOC -->
@@ -24,7 +27,7 @@
 <a id="usage"></a>
 ## Usage
 
-<a href="https://jsfiddle.net/ArthurClemens/rcyn8f64/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4IgzgxgTg9gNnEAuA2gBgDQE4BsBWAXQxADMBLOAUzGRVADsBDAW0uRADoALAF2cWIQY9HpRHsAPHDL0A1gAIuUSiQC8AHRC8eABzBIA9AcZQeXAK5QIVVvTAcA5mTPmARhzIxjYMJR5gDHXgATzMxSgNKAA8WHSoAkht7CB9NeWU4DXAeYPiuSj9NAD51elKJSCgyHR55MCss7T1DY1MLKxsxeycXd09vX39AkLD6CLAeRnoAE0Y4YQiguFD8sYBaZmclCmHl0coNraq4NYmp2fmxjgArMGKJA0rqnhKy+groZ7qGzSb9IxMLg6lFs3S2bg8XkYPj8ASWK3Cj0mMzmC12CPWKThI1WByxp2RFwWNzuICKDyeNVe5WmZAAbvIyNMsrAYDx7gZaXSiiBiL4qBAeJ47OwACxIACMEtFIAAvhgGCw2EhOLdeSAhCIxDx2JqJvJgPIAErVOKUeSy+SqeTw-YAblKetqhpNOjNAGEAMqei1Wm048Jez0Ot6uj3ejiMabTT05KgACk0HDCrGmayqbqomgwBtK8nkQnmUAA+tIHLwkPJNABiEgkCUAdlFos0pVlAEoQ-n847hPqAIJuv3AUrqHh0siUADulfj7atRXkKDzVb4ic4sCnHHobMo2aXK57a80jH3I-o3dXY6UKkrvx4un+rSB1hBXUc4L6XltuLW0xBMABJsZjHAY1YGBmZrZoel7yJMUAOH4d4gMWrhwFMsitmUtTdvKVYgJ6BTyHMYAwJWAAKAZjPIJAwFA8gALJHBQ8hrMappUPI-7MDAmjtjBBDthgMHMOuHCbvuy4Xt2Y6iUmQo8FmvL4e6fY8FAjAyJQ0zyPG-4kIw5hwDw-EgEJMH5nJnBCMwQRjCI4kcXuykWd2olhlQ-HSZeXmXoJwnefIVniTAU6STBsliQpSk5poABybIFmpGladMfEBbBQViTZdnao5mbObFgWXu5Tk5uemVHuY9BOilYzTJW6nmHuxW4b5sHtfm-kiWJEnKVJl6RfJzgxSp2qUFA6WucFOULA5kGja5lnxh5lDlUtq4QONUCNVAzUbR2rmdfI3WBcFfU5gNMnHpw0WFfhsaAvIMA6IwEDOMEU2tTNMC2XNPD5VBLmtctq3rSDq5nKYADyr3vTklYcHgB3Hfmx2nSVvWheFgVDbdI33ZoAAiliMEKwhfZlP1-fZAMLYTEOlQV4OVau0yk+T9CVgAzBwaAo0dAnmWdWNhf1EU3cmBP7poDFGUKQPC1T2W-bl81OTLjMrWVuYQ7J8tkLtzUZZVY7sxpnOVhKSMC616NK25os44Nkt3TLBFxtplOwdTat0xrwOs0zZos6b-jwTwsNvR9lZoBwDYm6zEy5JQlYVaz3aFnRyG1iQWAABxoPzIAbfmsq25l9uJ1lSYXQeuOu9LLkgAAKvkqY5joE1gGQEzajmYg6aR0g6coaVmdXy1JrNtOA4tWtg7rrNjtY0JgHFSrISm2npgHk+wYPUfw8EVt8-vl5d1APd9yIRstazh120LJsEG2IalMwHA8dVPB6TAEDmFsADRCPAACinQRAACFggAElpjrlZOyCe8hBw6E7KUdU-JKCCmFDQFU+cGxIDQHKBUIAmCsHYBwLE6pNSiHECqKhqt-pz3NOnIIPdLbpEoOhIUdJKBdnkK4N6sgHCwGqg1eQucSACPyGQcsPBKyFx0FEARU4mRmCtkXAApCGcu9BMHcOwZzPBIAcBELlEQEA0g5B4LoGQpU7BgLbDgAAATGFEHUxBLCIBVH8Fo1UdAiMYcwAwTjjguIAEx8z5umCAHAcChOYnAL+MgSTqhyF3dglIdSygILKIAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 Append a ripple to any HTML element (which requires to have style `position: relative` and a size):
 

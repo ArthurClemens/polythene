@@ -33,7 +33,7 @@ To [make a link a router link](https://mithril.js.org/route.html#mroutelink), it
 <a id="router-links"></a>
 ### Router links
 
-<a href="https://jsfiddle.net/ArthurClemens/7vurv0c3/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4Igxg9gdgzhA2BTEAucD4EMAONEBMQAaEGMAJw1QG0AGIgRloDYBmAXRIDMBLJGGqCiYAtsjQA6ABYAXEfGLooMxMtQgAPPB5QA1gAIp5RFwC8AHRCyZuFAHo7mcjKkBXcmCRjYEgOY8XVwAjCR4IRxg8GRg7bAQATxdVRDtEAA9RbH47Li8YCTBIy31jeAtSGXj+KUREGUsAPnMoZo0ych5sGX0YD3LrWwcnQI8vVXz-QJCwiKiYuPhEmqgUmBlMKHxMeGgUhaXkgFoRAKM+WISklePTjvhDtY2tnZWJACsYRo07ds6ZJpaUDaFD+PT6lgGMHsjmcblGiG8E1OwVC4UwkTq80uy1W602212F0WV0Qh0KWOJOLJkQeeOeu3enxADW+vy6ANa+B4ADd9Dx8OVKBB6szvlzuQ1FHgkGAZGFYOpaChaIdmCgAEwMEAAXyIQlE4hAjMUkGUqhk6lNa30wH0ACFXDIZNB9Nr9KZ9PsSQBuZrNK3dACSm3S7ptfpk3J4iAA7ih9AAKACU7oa+mozX0+nMcgTEIYliI2ZAAAkIGJLEmiJms-oRAmHU7oEXgDXayVMDw8Ph4zJyK5ENWoO2c1ggoh4PHLABxCD6Z2ezC+RD6AvENu19yT8PD9u1owmKcgWJLxBrod72vQCiITAqeMiCSUR2ICTaPQbrPajfapM19g5s02q+oCAb6AACqeDBhq2LSRtGcaJimphphmu45vW+aFsWkHLqulYXrW9aNs6UAtp+HZdgQvb9oOG6jpg47bjOc4LlI5aIIWFFbvGsGXlmB5cEedhcbul7XsYd6IA+T4QC+b46LoFHfmJrp-ruAH1FAwF+lAYEiHJygAHIQPgK4evgEBgK43gyBIACOA7kPEADKE6ILKEDkHmIAAMRCiKSYgY+z4qBI2DGLwaQ+b5lYgWBoWIAAInemAwTWlgiag+jBmZaSEZl2BQZY8a4WeQHBbJL4JgZrjGaZg7FllRaJSl6xBbpUrubK8oCGg6pKgwACcOp6iAwhiOoBSRCa0AqGoaBBKZ8Q7lmRX4FyUC+PGA3YGkIHal1MpytAfUgAwKAMMwOqcCA766H11D6pNaAnC4dwAAIrGkFokFu6iQtCdXYLovgFOWdhvWc8AfeqEi0PDhweBIzCQ7cfASCcUDGiQlTYIabIWtq7DakAA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~javascript
 m(Button, {
@@ -78,7 +78,7 @@ React does not include a router itself, but [React Router](https://github.com/Re
 
 Use the `Link` component (with option `element`) to render route-aware links.
 
-<a href="https://jsfiddle.net/ArthurClemens/1hm2w5xd/" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
+<a href="https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvAHjmoCcIAHYgAjgdqAXgA6IEsW5xEAelkYOxQgFchsHGjj4A5hGUqARvgi0FcODGJxZ3WlACeypjFlxiGNABMMUeq7tHZzQYAFoOGAxqYlt7J0IXcMjo0PdPHz8Q-AArOHEAPhY3Th5ifNE0NhLeASExCWIpGXlFA3UYTW09A2NTc0trWKCEkLcPb19-IfjE6gtp4LC5uFTxjP8cvJBC4q5ecsr2Pf5BEXFJaTlZai80Ta8YKAgANw58EJi0bixZCKjicK0FSMDihLy0LAAAQArPgAAz4ACMshUWC8v2SAI4QJBYIh+CwEDuuQKRSOpQOFRYXhefAgXnq2NoxFJshpz3ylBAllg0VMWjwABZEIiAMyhYUAThAAF8KOhsLhEARcly6AwmMQ8Or3HxgBU+HwABIYOCEABKOJgHEQfEtwOtFANfAAygB3fTUQhOtCG+2MH2GgAyRIA1j6ZXxhHbMf7rQARADyAFkANwVHX8YB2jAQSxeABCwOI9D4kejgRmIXTaAz9F1AElvDAAB5RvgACmzhDzJY4DjLAEoo-k+M7qS8DobDSxCIj8kaITAinOp9OWObc-mi416M7p3xHh1NcJgCG0KGZfvp1AMIZHvUAOK0PglvjcDA6GB8RHia+GtQoFPfVfQPacS1tcRbE-GBfxAf8yyvUDDVkNcinZSk0EzPgAAUYMRdsuz4Ht3FofshxHMdQInDlr1nec8K-H8V3nOjNzzGBC2LPdkOnI9NGIU9z0vBDb3vIDxGfV8X0IJc-14gCOCA4AQLA8DaEgkBZHktSZSQg9UPHNlJwqOstH4ABBbhuEI4dhFHcd3U9Qg1xnONDxbf53wwZR6m0kA+DoLA7BCBhTybB4WxlQzeI3K1vN8qCPy-ODAohEKT2ARjYMjGKZ1kJziC9TDzUxJNk3wCJmw4DtxzjDhCismzUKKer8kDPhwWoVFNV0KwAFENE1AsHAbLxapAJkWRAQcKkHGs1XS6BrTwQw70eLkeRgPl6yFOFEFFRFZXlEBMBwPB8GWRaNWYZVZQAXSoJ4LwQFAFXO5U-mifAHmeR5aG+XrVSoQC8AuZoUS+UMdEuiEMX+FE0Xh77fv+wGGE2LliAcbglW5aotTld68a+gFwSwH6YD+vx0eITGQaUsHGkueQVChmGguRsm4dRdFSbxCnUZpgT6ZAbHcbwcleAemUgA" target="_blank"><img src="https://arthurclemens.github.io/assets/polythene/docs/try-out-green.gif" height="36" /></a>
 
 ~~~jsx
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
