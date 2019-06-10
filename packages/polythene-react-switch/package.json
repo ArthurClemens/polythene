@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-switch",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "",
   "main": "dist/polythene-react-switch",
   "module": "dist/polythene-react-switch.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-selection-control": "^1.6.2",
-    "polythene-core-switch": "^1.6.2",
-    "polythene-react-icon-button": "^1.6.2",
-    "polythene-react-shadow": "^1.6.2"
+    "polythene-core-selection-control": "^1.6.3",
+    "polythene-core-switch": "^1.6.3",
+    "polythene-react-icon-button": "^1.6.3",
+    "polythene-react-shadow": "^1.6.3"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"

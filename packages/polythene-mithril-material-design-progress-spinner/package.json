@@ -1,6 +1,6 @@
 {
   "name": "polythene-mithril-material-design-progress-spinner",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "",
   "main": "dist/polythene-mithril-material-design-progress-spinner",
   "module": "dist/polythene-mithril-material-design-progress-spinner.mjs",
@@ -18,10 +18,10 @@
   ],
   "dependencies": {
     "cyano-mithril": "^0.5.1",
-    "polythene-core": "^1.6.2",
-    "polythene-core-material-design-progress-spinner": "^1.6.2",
-    "polythene-css-classes": "^1.6.2",
-    "polythene-mithril-base-spinner": "^1.6.2"
+    "polythene-core": "^1.6.3",
+    "polythene-core-material-design-progress-spinner": "^1.6.3",
+    "polythene-css-classes": "^1.6.3",
+    "polythene-mithril-base-spinner": "^1.6.3"
   },
   "devDependencies": {
     "@types/mithril": "^1.1.16"
