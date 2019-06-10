@@ -28,8 +28,8 @@
 
 <div
   class={R_classNames}
-  id={id}
-  {style}
+  {...id && {id}}
+  {...style && {style}}
   {...{ 'data-test-id': testId }}
   {...events}
 >

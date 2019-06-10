@@ -147,9 +147,6 @@ var app = (function () {
             resolved_promise.then(flush);
         }
     }
-    function add_binding_callback(fn) {
-        binding_callbacks.push(fn);
-    }
     function add_render_callback(fn) {
         render_callbacks.push(fn);
     }
@@ -855,8 +852,8 @@ var app = (function () {
 
     	var div2_levels = [
     		{ class: ctx.R_classNames },
-    		{ id: ctx.id },
-    		{ style: ctx.style },
+    		ctx.id && {id: ctx.id},
+    		ctx.style && {style: ctx.style},
     		{ 'data-test-id': ctx.testId },
     		ctx.events
     	];
@@ -883,9 +880,9 @@ var app = (function () {
     			div1 = element("div");
 
     			div0.className = div0_class_value = shadowClasses.bottomShadow;
-    			add_location(div0, file, 38, 2, 828);
+    			add_location(div0, file, 38, 2, 850);
     			div1.className = div1_class_value = shadowClasses.topShadow;
-    			add_location(div1, file, 39, 2, 867);
+    			add_location(div1, file, 39, 2, 889);
     			set_attributes(div2, div2_data);
     			add_location(div2, file, 28, 0, 668);
     		},
@@ -940,8 +937,8 @@ var app = (function () {
 
     			set_attributes(div2, get_spread_update(div2_levels, [
     				(changed.R_classNames) && { class: ctx.R_classNames },
-    				(changed.id) && { id: ctx.id },
-    				(changed.style) && { style: ctx.style },
+    				(changed.id) && ctx.id && {id: ctx.id},
+    				(changed.style) && ctx.style && {style: ctx.style},
     				(changed.testId) && { 'data-test-id': ctx.testId },
     				(changed.events) && ctx.events
     			]));
@@ -14735,6 +14732,99 @@ var app = (function () {
     	}
     }
 
+    function createCommonjsModule$1(fn, module) {
+    	return module = { exports: {} }, fn(module, module.exports), module.exports;
+    }
+
+    var rngBrowser = createCommonjsModule$1(function (module) {
+    // Unique ID creation requires a high quality random # generator.  In the
+    // browser this is a little complicated due to unknown quality of Math.random()
+    // and inconsistent support for the `crypto` API.  We do the best we can via
+    // feature-detection
+
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto
+    // implementation. Also, find the complete implementation of crypto on IE11.
+    var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
+                          (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
+
+    if (getRandomValues) {
+      // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+      var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+      module.exports = function whatwgRNG() {
+        getRandomValues(rnds8);
+        return rnds8;
+      };
+    } else {
+      // Math.random()-based (RNG)
+      //
+      // If all else fails, use Math.random().  It's fast, but is of unspecified
+      // quality.
+      var rnds = new Array(16);
+
+      module.exports = function mathRNG() {
+        for (var i = 0, r; i < 16; i++) {
+          if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+          rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+        }
+
+        return rnds;
+      };
+    }
+    });
+
+    /**
+     * Convert array of 16 byte values to UUID string format of the form:
+     * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+     */
+    var byteToHex = [];
+    for (var i = 0; i < 256; ++i) {
+      byteToHex[i] = (i + 0x100).toString(16).substr(1);
+    }
+
+    function bytesToUuid(buf, offset) {
+      var i = offset || 0;
+      var bth = byteToHex;
+      // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+      return ([bth[buf[i++]], bth[buf[i++]], 
+    	bth[buf[i++]], bth[buf[i++]], '-',
+    	bth[buf[i++]], bth[buf[i++]], '-',
+    	bth[buf[i++]], bth[buf[i++]], '-',
+    	bth[buf[i++]], bth[buf[i++]], '-',
+    	bth[buf[i++]], bth[buf[i++]],
+    	bth[buf[i++]], bth[buf[i++]],
+    	bth[buf[i++]], bth[buf[i++]]]).join('');
+    }
+
+    var bytesToUuid_1 = bytesToUuid;
+
+    function v4(options, buf, offset) {
+      var i = buf && offset || 0;
+
+      if (typeof(options) == 'string') {
+        buf = options === 'binary' ? new Array(16) : null;
+        options = null;
+      }
+      options = options || {};
+
+      var rnds = options.random || (options.rng || rngBrowser)();
+
+      // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+      rnds[6] = (rnds[6] & 0x0f) | 0x40;
+      rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+      // Copy bytes to buffer, if provided
+      if (buf) {
+        for (var ii = 0; ii < 16; ++ii) {
+          buf[i + ii] = rnds[ii];
+        }
+      }
+
+      return buf || bytesToUuid_1(rnds);
+    }
+
+    var v4_1 = v4;
+
     var classes$u = {
       component: "pe-svg"
     };
@@ -14762,6 +14852,7 @@ var app = (function () {
     	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$1);
 
     	var div_levels = [
+    		{ "data-uid": ctx.uid },
     		{ class: ctx.R_classNames },
     		(ctx.style && {style: ctx.style}),
     		(ctx.id && { 'id': ctx.id }),
@@ -14787,7 +14878,7 @@ var app = (function () {
     			if (after_slot) after_slot.c();
 
     			set_attributes(div, div_data);
-    			add_location(div, file$3, 31, 0, 684);
+    			add_location(div, file$3, 40, 0, 964);
     		},
 
     		l: function claim(nodes) {
@@ -14818,7 +14909,6 @@ var app = (function () {
     				after_slot.m(div, null);
     			}
 
-    			add_binding_callback(() => ctx.div_binding(div, null));
     			current = true;
     		},
 
@@ -14835,12 +14925,8 @@ var app = (function () {
     				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$1), get_slot_context(after_slot_1, ctx, get_after_slot_context$1));
     			}
 
-    			if (changed.items) {
-    				ctx.div_binding(null, div);
-    				ctx.div_binding(div, null);
-    			}
-
     			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.uid) && { "data-uid": ctx.uid },
     				(changed.R_classNames) && { class: ctx.R_classNames },
     				(changed.style) && (ctx.style && {style: ctx.style}),
     				(changed.id) && (ctx.id && { 'id': ctx.id }),
@@ -14874,7 +14960,6 @@ var app = (function () {
     			if (default_slot) default_slot.d(detaching);
 
     			if (after_slot) after_slot.d(detaching);
-    			ctx.div_binding(null, div);
     		}
     	};
     }
@@ -14884,11 +14969,13 @@ var app = (function () {
 
       // DOM bindings
       let domElement;
+      const uid = v4_1();
 
       // Common vars
       let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined } = $$props;
 
       onMount(() => {
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
         const svgElement = domElement.querySelector("svg");
         if (svgElement) {
           svgElement.setAttribute("focusable", "false");
@@ -14901,11 +14988,6 @@ var app = (function () {
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-
-    	function div_binding($$node, check) {
-    		domElement = $$node;
-    		$$invalidate('domElement', domElement);
-    	}
 
     	$$self.$set = $$props => {
     		if ('className' in $$props) $$invalidate('className', className = $$props.className);
@@ -14929,7 +15011,7 @@ var app = (function () {
     	};
 
     	return {
-    		domElement,
+    		uid,
     		className,
     		events,
     		id,
@@ -14937,7 +15019,6 @@ var app = (function () {
     		testId,
     		tone,
     		R_classNames,
-    		div_binding,
     		$$slots,
     		$$scope
     	};
@@ -15619,7 +15700,7 @@ var app = (function () {
     const get_before_slot_changes$3 = ({}) => ({});
     const get_before_slot_context$3 = ({}) => ({});
 
-    // (150:4) {#if disabled || _noInk}
+    // (162:4) {#if disabled || _noInk}
     function create_if_block_2(ctx) {
     	var div;
 
@@ -15627,7 +15708,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.className = "pe-ripple";
-    			add_location(div, file$7, 150, 6, 4511);
+    			add_location(div, file$7, 162, 6, 4791);
     		},
 
     		m: function mount(target, anchor) {
@@ -15642,7 +15723,7 @@ var app = (function () {
     	};
     }
 
-    // (161:4) {:else}
+    // (173:4) {:else}
     function create_else_block$1(ctx) {
     	var current;
 
@@ -15689,7 +15770,7 @@ var app = (function () {
     	};
     }
 
-    // (159:4) {#if label !== undefined}
+    // (171:4) {#if label !== undefined}
     function create_if_block_1(ctx) {
     	var current;
 
@@ -15736,7 +15817,7 @@ var app = (function () {
     	};
     }
 
-    // (165:4) {#if dropdown}
+    // (177:4) {#if dropdown}
     function create_if_block$1(ctx) {
     	var current;
 
@@ -15784,7 +15865,7 @@ var app = (function () {
     	};
     }
 
-    // (166:6) <Icon className={classes.dropdown}>
+    // (178:6) <Icon className={classes.dropdown}>
     function create_default_slot$1(ctx) {
     	var current;
 
@@ -15858,10 +15939,11 @@ var app = (function () {
     	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
 
     	var a_levels = [
+    		{ "data-uid": ctx.uid },
     		{ class: ctx.R_classNames },
     		(ctx.style && {style: ctx.style}),
-    		(ctx.id && { 'id': ctx.id }),
-    		{ 'data-test-id': ctx.testId },
+    		(ctx.id && { "id": ctx.id }),
+    		{ "data-test-id": ctx.testId },
     		ctx.events,
     		{ href: null },
     		ctx.url,
@@ -15898,15 +15980,15 @@ var app = (function () {
     			if (after_slot) after_slot.c();
 
     			div0.className = "pe-button__wash-color";
-    			add_location(div0, file$7, 153, 6, 4587);
+    			add_location(div0, file$7, 165, 6, 4867);
     			div1.className = "pe-button__wash";
-    			add_location(div1, file$7, 152, 4, 4551);
+    			add_location(div1, file$7, 164, 4, 4831);
 
     			div2.className = "pe-button__content";
-    			add_location(div2, file$7, 147, 2, 4392);
+    			add_location(div2, file$7, 159, 2, 4672);
 
     			set_attributes(a, a_data);
-    			add_location(a, file$7, 133, 0, 4092);
+    			add_location(a, file$7, 145, 0, 4370);
 
     			dispose = [
     				listen(a, "mousedown", ctx.onMouseDown),
@@ -15955,7 +16037,6 @@ var app = (function () {
     				after_slot.m(a, null);
     			}
 
-    			add_binding_callback(() => ctx.a_binding(a, null));
     			current = true;
     		},
 
@@ -16030,16 +16111,12 @@ var app = (function () {
     				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$3), get_slot_context(after_slot_1, ctx, get_after_slot_context$3));
     			}
 
-    			if (changed.items) {
-    				ctx.a_binding(null, a);
-    				ctx.a_binding(a, null);
-    			}
-
     			set_attributes(a, get_spread_update(a_levels, [
+    				(changed.uid) && { "data-uid": ctx.uid },
     				(changed.R_classNames) && { class: ctx.R_classNames },
     				(changed.style) && (ctx.style && {style: ctx.style}),
-    				(changed.id) && (ctx.id && { 'id': ctx.id }),
-    				(changed.testId) && { 'data-test-id': ctx.testId },
+    				(changed.id) && (ctx.id && { "id": ctx.id }),
+    				(changed.testId) && { "data-test-id": ctx.testId },
     				(changed.events) && ctx.events,
     				{ href: null },
     				(changed.url) && ctx.url,
@@ -16086,7 +16163,6 @@ var app = (function () {
     			if (if_block2) if_block2.d();
 
     			if (after_slot) after_slot.d(detaching);
-    			ctx.a_binding(null, a);
     			run_all(dispose);
     		}
     	};
@@ -16101,6 +16177,7 @@ var app = (function () {
       const isInactive = writable(false); validate_store(isInactive, 'isInactive'); subscribe($$self, isInactive, $$value => { $isInactive = $$value; $$invalidate('$isInactive', $isInactive); });
 
       // DOM bindings
+      const uid = v4_1();
       let domElement;
 
       // Common vars
@@ -16158,17 +16235,16 @@ var app = (function () {
       const _noInk = ink !== undefined && ink === false;
       const _tabindex = disabled || inactive ? -1 : tabindex || 0;
 
+      onMount(() => {
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
+      });
+
     	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'borders', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash'];
     	Object.keys($$props).forEach(key => {
     		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Button> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
-
-    	function a_binding($$node, check) {
-    		domElement = $$node;
-    		$$invalidate('domElement', domElement);
-    	}
 
     	$$self.$set = $$props => {
     		if ('className' in $$props) $$invalidate('className', className = $$props.className);
@@ -16239,7 +16315,7 @@ var app = (function () {
 
     	return {
     		isInactive,
-    		domElement,
+    		uid,
     		className,
     		events,
     		id,
@@ -16275,7 +16351,6 @@ var app = (function () {
     		_tabindex,
     		undefined,
     		R_classNames,
-    		a_binding,
     		$$slots,
     		$$scope
     	};

@@ -1,10 +1,17 @@
 <script>
+  /*
+  Workaround for issue https://github.com/sveltejs/svelte/issues/2937
+  Generate a unique instance uid instead of doing
+  bind:this={domElement}
+  */
+  import uuidv4 from "uuid/v4";
+ 	import { onMount } from "svelte";
+
   import { Icon} from "../icon";
   import { Shadow, getShadowDepthClass } from "../shadow";
   import { writable } from "svelte/store";
   import classes from "polythene-css-classes/button";
   import IconDropdownDown from "./IconDropdownDown.svelte";
-  // import IconDropdownUp from "./IconDropdownUp.svelte";
   import shadowClasses from "polythene-css-classes/shadow";
   import TextLabel from "./TextLabel.svelte";
 
@@ -12,6 +19,7 @@
   const isInactive = writable(false);
 
   // DOM bindings
+  const uid = uuidv4();
   let domElement;
 
   // Common vars
@@ -129,15 +137,19 @@
     tone === "light" ? "pe-light-tone" : undefined,
     className
   ].join(" ");
+
+  onMount(() => {
+    domElement = document.querySelector(`[data-uid="${uid}"]`);
+  });
 </script>
 
 <a
+  {...{ "data-uid": uid }}
   class={R_classNames}
   {...(style && {style})}
-  {...(id && { 'id': id })}
-  {...{ 'data-test-id': testId }}
+  {...(id && { "id": id })}
+  {...{ "data-test-id": testId }}
   {...events}
-  bind:this={domElement}
   href={null}
   {...url}
   tabindex={_tabindex}

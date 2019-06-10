@@ -1,9 +1,17 @@
 <script>
-	import { onMount } from "svelte";
+  /*
+  Workaround for issue https://github.com/sveltejs/svelte/issues/2937
+  Generate a unique instance uid instead of doing
+  bind:this={domElement}
+  */
+  import uuidv4 from "uuid/v4";
+  import { onMount } from "svelte";
+   
   import classes from "polythene-css-classes/svg";
 
   // DOM bindings
   let domElement;
+  const uid = uuidv4();
 
   // Common vars
   export let className = "";
@@ -21,6 +29,7 @@
   ].join(" ");
 
   onMount(() => {
+    domElement = document.querySelector(`[data-uid="${uid}"]`);
     const svgElement = domElement.querySelector("svg");
     if (svgElement) {
       svgElement.setAttribute("focusable", "false");
@@ -30,7 +39,7 @@
 </script>
 
 <div
-  bind:this={domElement}
+  {...{ "data-uid": uid }}
   class={R_classNames}
   {...(style && {style})}
   {...(id && { 'id': id })}
