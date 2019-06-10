@@ -3,6 +3,7 @@ import { h, a } from "cyano-mithril";
 import genericTests from "./tests-generic";
 import AppDrawer from "./components/app-drawer-mithril";
 import navigationList from "./components/navigation-list";
+import { ResponsiveDrawer } from "./components/responsive-mithril";
 
 const mithrilTests = () => {
 
@@ -23,6 +24,15 @@ const mithrilTests = () => {
             backdrop: true,
             createContent
           })
+      }
+    },
+    {
+      name: "Responsive drawer",
+      interactive: true,
+      exclude: true,
+      component: {
+        view: () => 
+          h(ResponsiveDrawer)
       }
     },
   ];

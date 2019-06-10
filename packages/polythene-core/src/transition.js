@@ -7,16 +7,16 @@ Generic show/hide transition module
 import { isClient } from "./iso";
 import { styleDurationToMs } from "./style";
 
-const TRANSITION_TYPES = {
+export const TRANSITION_TYPES = {
   SHOW: "show",
   HIDE: "hide",
-  DONE: "done",
+  SHOW_DONE: "show-done",
+  HIDE_DONE: "hide-done",
 };
 
 export const initialTransitionState = {
   isVisible: false,
   isTransitioning: false,
-  isHiding: false,
 };
 
 export const transitionStateReducer = (state, type) => {
@@ -26,27 +26,23 @@ export const transitionStateReducer = (state, type) => {
       ...state,
       isTransitioning: true,
       isVisible: true,
-      isHiding: false,
     };
   case TRANSITION_TYPES.HIDE:
     return {
       ...state,
       isTransitioning: true,
-      isHiding: true,
     };
   case TRANSITION_TYPES.SHOW_DONE:
     return {
       ...state,
       isTransitioning: false,
       isVisible: true,
-      isHiding: false,
     };
   case TRANSITION_TYPES.HIDE_DONE:
     return {
       ...state,
       isTransitioning: false,
       isVisible: false,
-      isHiding: false,
     };
   default:
     throw new Error(`Unhandled action type: ${type}`);
@@ -248,13 +244,14 @@ export const transitionComponent = ({ dispatchTransitionState, isTransitioning, 
       afterTransition();
     }
 
-    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE);
-
     // Component may unmount after this point
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide
     } else if (isShow ? props.didShow : props.didHide) {
       (isShow ? props.didShow : props.didHide)(id); // when used directly
     }
+
+    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE);
+
   });
 };

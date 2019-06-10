@@ -829,40 +829,36 @@ Multi["displayName"] = "Multi";
 var TRANSITION_TYPES = {
   SHOW: "show",
   HIDE: "hide",
-  DONE: "done"
+  SHOW_DONE: "show-done",
+  HIDE_DONE: "hide-done"
 };
 var initialTransitionState = {
   isVisible: false,
-  isTransitioning: false,
-  isHiding: false
+  isTransitioning: false
 };
 var transitionStateReducer = function transitionStateReducer(state, type) {
   switch (type) {
     case TRANSITION_TYPES.SHOW:
       return _objectSpread({}, state, {
         isTransitioning: true,
-        isVisible: true,
-        isHiding: false
+        isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE:
       return _objectSpread({}, state, {
-        isTransitioning: true,
-        isHiding: true
+        isTransitioning: true
       });
 
     case TRANSITION_TYPES.SHOW_DONE:
       return _objectSpread({}, state, {
         isTransitioning: false,
-        isVisible: true,
-        isHiding: false
+        isVisible: true
       });
 
     case TRANSITION_TYPES.HIDE_DONE:
       return _objectSpread({}, state, {
         isTransitioning: false,
-        isVisible: false,
-        isHiding: false
+        isVisible: false
       });
 
     default:
@@ -1069,15 +1065,16 @@ var transitionComponent = function transitionComponent(_ref) {
 
     if (afterTransition) {
       afterTransition();
-    }
+    } // Component may unmount after this point
 
-    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE); // Component may unmount after this point
 
     if (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide) {
       (isShow ? props.fromMultipleDidShow : props.fromMultipleDidHide)(id); // when used with Multiple; this will call props.didShow / props.didHide
     } else if (isShow ? props.didShow : props.didHide) {
       (isShow ? props.didShow : props.didHide)(id); // when used directly
     }
+
+    dispatchTransitionState(isShow ? TRANSITION_TYPES.SHOW_DONE : TRANSITION_TYPES.HIDE_DONE);
   });
 };
 
