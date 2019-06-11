@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-dialog",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "",
   "main": "dist/polythene-react-dialog",
   "module": "dist/polythene-react-dialog.mjs",
@@ -18,11 +18,11 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core": "^1.6.3",
-    "polythene-core-dialog": "^1.6.3",
-    "polythene-css-classes": "^1.6.3",
-    "polythene-react-dialog-pane": "^1.6.3",
-    "polythene-react-shadow": "^1.6.3"
+    "polythene-core": "^1.6.4",
+    "polythene-core-dialog": "^1.6.4",
+    "polythene-css-classes": "^1.6.4",
+    "polythene-react-dialog-pane": "^1.6.4",
+    "polythene-react-shadow": "^1.6.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"
