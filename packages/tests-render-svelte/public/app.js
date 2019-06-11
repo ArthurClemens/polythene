@@ -15700,7 +15700,7 @@ var app = (function () {
     const get_before_slot_changes$3 = ({}) => ({});
     const get_before_slot_context$3 = ({}) => ({});
 
-    // (162:4) {#if disabled || _noInk}
+    // (193:4) {#if disabled || noInk}
     function create_if_block_2(ctx) {
     	var div;
 
@@ -15708,7 +15708,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			div.className = "pe-ripple";
-    			add_location(div, file$7, 162, 6, 4791);
+    			add_location(div, file$7, 193, 6, 5250);
     		},
 
     		m: function mount(target, anchor) {
@@ -15723,7 +15723,7 @@ var app = (function () {
     	};
     }
 
-    // (173:4) {:else}
+    // (204:4) {:else}
     function create_else_block$1(ctx) {
     	var current;
 
@@ -15770,7 +15770,7 @@ var app = (function () {
     	};
     }
 
-    // (171:4) {#if label !== undefined}
+    // (202:4) {#if label !== undefined}
     function create_if_block_1(ctx) {
     	var current;
 
@@ -15817,7 +15817,7 @@ var app = (function () {
     	};
     }
 
-    // (177:4) {#if dropdown}
+    // (208:4) {#if dropdown}
     function create_if_block$1(ctx) {
     	var current;
 
@@ -15865,7 +15865,7 @@ var app = (function () {
     	};
     }
 
-    // (178:6) <Icon className={classes.dropdown}>
+    // (209:6) <Icon className={classes.dropdown}>
     function create_default_slot$1(ctx) {
     	var current;
 
@@ -15900,7 +15900,7 @@ var app = (function () {
     }
 
     function create_fragment$8(ctx) {
-    	var a, t0, div2, t1, t2, div1, div0, t3, t4, current_block_type_index, if_block1, t5, t6, current, dispose;
+    	var a, t0, div2, t1, t2, div1, div0, t3, t4, current_block_type_index, if_block1, t5, t6, current;
 
     	const before_slot_1 = ctx.$$slots.before;
     	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$3);
@@ -15913,7 +15913,7 @@ var app = (function () {
     		$$inline: true
     	});
 
-    	var if_block0 = (ctx.disabled || ctx._noInk) && create_if_block_2(ctx);
+    	var if_block0 = (ctx.disabled || ctx.noInk) && create_if_block_2(ctx);
 
     	const label_slot_1 = ctx.$$slots.label;
     	const label_slot = create_slot(label_slot_1, ctx, get_label_slot_context);
@@ -15939,15 +15939,8 @@ var app = (function () {
     	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
 
     	var a_levels = [
-    		{ "data-uid": ctx.uid },
-    		{ class: ctx.R_classNames },
-    		(ctx.style && {style: ctx.style}),
-    		(ctx.id && { "id": ctx.id }),
-    		{ "data-test-id": ctx.testId },
-    		ctx.events,
     		{ href: null },
-    		ctx.url,
-    		{ tabindex: ctx._tabindex }
+    		ctx.elementProps
     	];
 
     	var a_data = {};
@@ -15980,21 +15973,15 @@ var app = (function () {
     			if (after_slot) after_slot.c();
 
     			div0.className = "pe-button__wash-color";
-    			add_location(div0, file$7, 165, 6, 4867);
+    			add_location(div0, file$7, 196, 6, 5326);
     			div1.className = "pe-button__wash";
-    			add_location(div1, file$7, 164, 4, 4831);
+    			add_location(div1, file$7, 195, 4, 5290);
 
     			div2.className = "pe-button__content";
-    			add_location(div2, file$7, 159, 2, 4672);
+    			add_location(div2, file$7, 190, 2, 5132);
 
     			set_attributes(a, a_data);
-    			add_location(a, file$7, 145, 0, 4370);
-
-    			dispose = [
-    				listen(a, "mousedown", ctx.onMouseDown),
-    				listen(a, "keyup", ctx.onKeyUp),
-    				listen(a, "click", ctx.onClick)
-    			];
+    			add_location(a, file$7, 188, 0, 5071);
     		},
 
     		l: function claim(nodes) {
@@ -16049,7 +16036,7 @@ var app = (function () {
     			if (changed._shadowDepth) shadow_changes.shadowDepth = ctx._shadowDepth;
     			shadow.$set(shadow_changes);
 
-    			if (ctx.disabled || ctx._noInk) {
+    			if (ctx.disabled || ctx.noInk) {
     				if (!if_block0) {
     					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
@@ -16112,15 +16099,8 @@ var app = (function () {
     			}
 
     			set_attributes(a, get_spread_update(a_levels, [
-    				(changed.uid) && { "data-uid": ctx.uid },
-    				(changed.R_classNames) && { class: ctx.R_classNames },
-    				(changed.style) && (ctx.style && {style: ctx.style}),
-    				(changed.id) && (ctx.id && { "id": ctx.id }),
-    				(changed.testId) && { "data-test-id": ctx.testId },
-    				(changed.events) && ctx.events,
     				{ href: null },
-    				(changed.url) && ctx.url,
-    				(changed._tabindex) && { tabindex: ctx._tabindex }
+    				(changed.elementProps) && ctx.elementProps
     			]));
     		},
 
@@ -16163,7 +16143,6 @@ var app = (function () {
     			if (if_block2) if_block2.d();
 
     			if (after_slot) after_slot.d(detaching);
-    			run_all(dispose);
     		}
     	};
     }
@@ -16180,8 +16159,39 @@ var app = (function () {
       const uid = v4_1();
       let domElement;
 
+      onMount(() => {
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
+      });
+
       // Common vars
-      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, borders = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined } = $$props;
+      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined, props = {
+        className,
+        events,
+        id,
+        style,
+        testId,
+        tone,
+        animateOnTap,
+        border,
+        contained,
+        disabled,
+        dropdown,
+        extraWide,
+        highLabel,
+        inactivate,
+        inactive,
+        ink,
+        label,
+        parentClassName: "",
+        raised: false,
+        selected: false,
+        separatorAtStart: false,
+        shadowDepth,
+        tabindex: 0,
+        textStyle,
+        url: { href: "javascript:false" },
+        wash,
+      } } = $$props;
 
       const onClickHandler = events.onclick || (() => {});
       const onKeyUpHandler = events.onkeyup || onClickHandler;
@@ -16232,14 +16242,10 @@ var app = (function () {
           ? parseInt(shadowDepth, 10)
           : 1
         : 0;
-      const _noInk = ink !== undefined && ink === false;
-      const _tabindex = disabled || inactive ? -1 : tabindex || 0;
+      const noInk = ink !== undefined && ink === false;
+      const tabIndex = disabled || inactive ? -1 : tabindex || 0;
 
-      onMount(() => {
-        domElement = document.querySelector(`[data-uid="${uid}"]`);
-      });
-
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'borders', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash'];
+    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash', 'props'];
     	Object.keys($$props).forEach(key => {
     		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Button> was created with unknown prop '${key}'`);
     	});
@@ -16255,7 +16261,6 @@ var app = (function () {
     		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
     		if ('animateOnTap' in $$props) $$invalidate('animateOnTap', animateOnTap = $$props.animateOnTap);
     		if ('border' in $$props) $$invalidate('border', border = $$props.border);
-    		if ('borders' in $$props) $$invalidate('borders', borders = $$props.borders);
     		if ('contained' in $$props) $$invalidate('contained', contained = $$props.contained);
     		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
     		if ('dropdown' in $$props) $$invalidate('dropdown', dropdown = $$props.dropdown);
@@ -16274,14 +16279,15 @@ var app = (function () {
     		if ('textStyle' in $$props) $$invalidate('textStyle', textStyle = $$props.textStyle);
     		if ('url' in $$props) $$invalidate('url', url = $$props.url);
     		if ('wash' in $$props) $$invalidate('wash', wash = $$props.wash);
+    		if ('props' in $$props) $$invalidate('props', props = $$props.props);
     		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
     	};
 
-    	let R_inactive, R_classNames;
+    	let R_inactive, R_classNames, elementProps;
 
-    	$$self.$$.update = ($$dirty = { inactive: 1, $isInactive: 1, parentClassName: 1, contained: 1, raised: 1, selected: 1, highLabel: 1, extraWide: 1, disabled: 1, R_inactive: 1, separatorAtStart: 1, border: 1, borders: 1, dropdown: 1, tone: 1, className: 1 }) => {
+    	$$self.$$.update = ($$dirty = { inactive: 1, $isInactive: 1, parentClassName: 1, contained: 1, raised: 1, selected: 1, highLabel: 1, extraWide: 1, disabled: 1, R_inactive: 1, separatorAtStart: 1, border: 1, dropdown: 1, tone: 1, className: 1, R_classNames: 1, style: 1, id: 1, testId: 1, events: 1, url: 1 }) => {
     		if ($$dirty.inactive || $$dirty.$isInactive) { $$invalidate('R_inactive', R_inactive = inactive || $isInactive); }
-    		if ($$dirty.parentClassName || $$dirty.contained || $$dirty.raised || $$dirty.selected || $$dirty.highLabel || $$dirty.extraWide || $$dirty.disabled || $$dirty.R_inactive || $$dirty.separatorAtStart || $$dirty.border || $$dirty.borders || $$dirty.dropdown || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+    		if ($$dirty.parentClassName || $$dirty.contained || $$dirty.raised || $$dirty.selected || $$dirty.highLabel || $$dirty.extraWide || $$dirty.disabled || $$dirty.R_inactive || $$dirty.separatorAtStart || $$dirty.border || $$dirty.dropdown || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
             classes$w.super,
             parentClassName || classes$w.component,
             contained ? classes$w.contained : undefined,
@@ -16300,7 +16306,7 @@ var app = (function () {
             disabled ? classes$w.disabled : undefined,
             R_inactive ? classes$w.inactive : undefined,
             separatorAtStart ? classes$w.separatorAtStart : undefined,
-            border || borders ? classes$w.border : undefined,
+            border ? classes$w.border : undefined,
             dropdown ? classes$w.hasDropdown : undefined,
             !!dropdown
               ? dropdown.open
@@ -16311,11 +16317,23 @@ var app = (function () {
             tone === "light" ? "pe-light-tone" : undefined,
             className
           ].join(" ")); }
+    		if ($$dirty.R_classNames || $$dirty.style || $$dirty.id || $$dirty.testId || $$dirty.events || $$dirty.url) { $$invalidate('elementProps', elementProps = {
+            "data-uid": uid,
+            class: R_classNames,
+            ...(style ? { style } : undefined),
+            ...(id ? { id } : undefined),
+            "data-test-id": testId,
+            ...events,
+            ...url,
+            tabindex: tabIndex,
+            onmousedown: onMouseDown,
+            onkeyup: onKeyUp,
+            onclick: onClick,
+          }); }
     	};
 
     	return {
     		isInactive,
-    		uid,
     		className,
     		events,
     		id,
@@ -16324,7 +16342,6 @@ var app = (function () {
     		tone,
     		animateOnTap,
     		border,
-    		borders,
     		contained,
     		disabled,
     		dropdown,
@@ -16343,14 +16360,11 @@ var app = (function () {
     		textStyle,
     		url,
     		wash,
-    		onClick,
-    		onMouseDown,
-    		onKeyUp,
+    		props,
     		_shadowDepth,
-    		_noInk,
-    		_tabindex,
+    		noInk,
     		undefined,
-    		R_classNames,
+    		elementProps,
     		$$slots,
     		$$scope
     	};
@@ -16359,7 +16373,7 @@ var app = (function () {
     class Button extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$8, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "borders", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash"]);
+    		init(this, options, instance$7, create_fragment$8, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash", "props"]);
     	}
 
     	get className() {
@@ -16423,14 +16437,6 @@ var app = (function () {
     	}
 
     	set border(value) {
-    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	get borders() {
-    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set borders(value) {
     		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -16575,6 +16581,14 @@ var app = (function () {
     	}
 
     	set wash(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get props() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set props(value) {
     		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -17931,11 +17945,189 @@ var app = (function () {
     	}
     }
 
-    /* src/examples/svg/StarSVG.svelte generated by Svelte v3.4.4 */
+    /* src/lib/icon-button/IconButton.svelte generated by Svelte v3.4.4 */
 
-    const file$b = "src/examples/svg/StarSVG.svelte";
+    const file$b = "src/lib/icon-button/IconButton.svelte";
 
     function create_fragment$c(ctx) {
+    	var div, current;
+
+    	var button_spread_levels = [
+    		ctx.buttonProps
+    	];
+
+    	let button_props = {};
+    	for (var i = 0; i < button_spread_levels.length; i += 1) {
+    		button_props = assign(button_props, button_spread_levels[i]);
+    	}
+    	var button = new Button({ props: button_props, $$inline: true });
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			button.$$.fragment.c();
+    			add_location(div, file$b, 12, 0, 225);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			mount_component(button, div, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var button_changes = changed.buttonProps ? get_spread_update(button_spread_levels, [
+    				ctx.buttonProps
+    			]) : {};
+    			button.$set(button_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			button.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			button.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			button.$destroy();
+    		}
+    	};
+    }
+
+    function instance$a($$self, $$props, $$invalidate) {
+    	
+
+      let { border = false } = $$props;
+
+      const buttonProps = {
+        ...border
+      };
+
+    	const writable_props = ['border'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<IconButton> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('border' in $$props) $$invalidate('border', border = $$props.border);
+    	};
+
+    	return { border, buttonProps };
+    }
+
+    class IconButton extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$a, create_fragment$c, safe_not_equal, ["border"]);
+    	}
+
+    	get border() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set border(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/examples/icon-button/IconButton.svelte generated by Svelte v3.4.4 */
+
+    const file$c = "src/examples/icon-button/IconButton.svelte";
+
+    function create_fragment$d(ctx) {
+    	var div3, h1, t1, div2, div0, t3, div1, current;
+
+    	var iconbutton = new IconButton({ props: { border: true }, $$inline: true });
+
+    	return {
+    		c: function create() {
+    			div3 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Icon Button";
+    			t1 = space();
+    			div2 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "Icon button";
+    			t3 = space();
+    			div1 = element("div");
+    			iconbutton.$$.fragment.c();
+    			add_location(h1, file$c, 9, 2, 190);
+    			div0.className = "example-info";
+    			add_location(div0, file$c, 12, 4, 240);
+    			div1.className = "example-component";
+    			add_location(div1, file$c, 13, 4, 288);
+    			div2.className = "example";
+    			add_location(div2, file$c, 11, 2, 214);
+    			div3.className = "page";
+    			add_location(div3, file$c, 7, 0, 168);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div3, anchor);
+    			append(div3, h1);
+    			append(div3, t1);
+    			append(div3, div2);
+    			append(div2, div0);
+    			append(div2, t3);
+    			append(div2, div1);
+    			mount_component(iconbutton, div1, null);
+    			current = true;
+    		},
+
+    		p: noop,
+
+    		i: function intro(local) {
+    			if (current) return;
+    			iconbutton.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			iconbutton.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div3);
+    			}
+
+    			iconbutton.$destroy();
+    		}
+    	};
+    }
+
+    class IconButton_1 extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, null, create_fragment$d, safe_not_equal, []);
+    	}
+    }
+
+    /* src/examples/svg/StarSVG.svelte generated by Svelte v3.4.4 */
+
+    const file$d = "src/examples/svg/StarSVG.svelte";
+
+    function create_fragment$e(ctx) {
     	var svg, path;
 
     	return {
@@ -17943,11 +18135,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$b, 0, 48, 48);
+    			add_location(path, file$d, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$b, 0, 0, 0);
+    			add_location(svg, file$d, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -17974,13 +18166,13 @@ var app = (function () {
     class StarSVG$1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$c, safe_not_equal, []);
+    		init(this, options, null, create_fragment$e, safe_not_equal, []);
     	}
     }
 
     /* src/examples/svg/SVG.svelte generated by Svelte v3.4.4 */
 
-    const file$c = "src/examples/svg/SVG.svelte";
+    const file$e = "src/examples/svg/SVG.svelte";
 
     // (32:6) <SVG>
     function create_default_slot_4$1(ctx) {
@@ -18152,7 +18344,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$d(ctx) {
+    function create_fragment$f(ctx) {
     	var div15, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, button, t8, t9, div8, div6, t11, div7, t12, div11, div9, t14, div10, t15, div14, div12, t17, div13, current, dispose;
 
     	var svg0 = new SVG({
@@ -18241,40 +18433,40 @@ var app = (function () {
     			t17 = space();
     			div13 = element("div");
     			svg4.$$.fragment.c();
-    			add_location(h1, file$c, 26, 2, 524);
+    			add_location(h1, file$e, 26, 2, 524);
     			div0.className = "example-info";
-    			add_location(div0, file$c, 29, 4, 566);
+    			add_location(div0, file$e, 29, 4, 566);
     			div1.className = "example-component";
-    			add_location(div1, file$c, 30, 4, 616);
+    			add_location(div1, file$e, 30, 4, 616);
     			div2.className = "example";
-    			add_location(div2, file$c, 28, 2, 540);
+    			add_location(div2, file$e, 28, 2, 540);
     			div3.className = "example-info";
-    			add_location(div3, file$c, 38, 4, 742);
-    			add_location(button, file$c, 40, 6, 822);
+    			add_location(div3, file$e, 38, 4, 742);
+    			add_location(button, file$e, 40, 6, 822);
     			div4.className = "example-component";
-    			add_location(div4, file$c, 39, 4, 784);
+    			add_location(div4, file$e, 39, 4, 784);
     			div5.className = "example";
-    			add_location(div5, file$c, 37, 2, 716);
+    			add_location(div5, file$e, 37, 2, 716);
     			div6.className = "example-info";
-    			add_location(div6, file$c, 48, 4, 971);
+    			add_location(div6, file$e, 48, 4, 971);
     			div7.className = "example-component";
-    			add_location(div7, file$c, 49, 4, 1022);
+    			add_location(div7, file$e, 49, 4, 1022);
     			div8.className = "example";
-    			add_location(div8, file$c, 47, 2, 945);
+    			add_location(div8, file$e, 47, 2, 945);
     			div9.className = "example-info";
-    			add_location(div9, file$c, 57, 4, 1194);
+    			add_location(div9, file$e, 57, 4, 1194);
     			div10.className = "example-component";
-    			add_location(div10, file$c, 58, 4, 1257);
+    			add_location(div10, file$e, 58, 4, 1257);
     			div11.className = "example pe-dark-tone";
-    			add_location(div11, file$c, 56, 2, 1155);
+    			add_location(div11, file$e, 56, 2, 1155);
     			div12.className = "example-info";
-    			add_location(div12, file$c, 66, 4, 1396);
+    			add_location(div12, file$e, 66, 4, 1396);
     			div13.className = "example-component";
-    			add_location(div13, file$c, 67, 4, 1460);
+    			add_location(div13, file$e, 67, 4, 1460);
     			div14.className = "example pe-dark-tone";
-    			add_location(div14, file$c, 65, 2, 1357);
+    			add_location(div14, file$e, 65, 2, 1357);
     			div15.className = "page";
-    			add_location(div15, file$c, 24, 0, 502);
+    			add_location(div15, file$e, 24, 0, 502);
     			dispose = listen(button, "click", ctx.toggleStyle);
     		},
 
@@ -18389,7 +18581,7 @@ var app = (function () {
 
     let initialStyle = "color: inherit";
 
-    function instance$a($$self, $$props, $$invalidate) {
+    function instance$b($$self, $$props, $$invalidate) {
     	
 
       let showStyle = false;
@@ -18415,16 +18607,16 @@ var app = (function () {
     class SVG_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$a, create_fragment$d, safe_not_equal, []);
+    		init(this, options, instance$b, create_fragment$f, safe_not_equal, []);
     	}
     }
 
     /* src/Home.svelte generated by Svelte v3.4.4 */
 
-    const file$d = "src/Home.svelte";
+    const file$f = "src/Home.svelte";
 
-    function create_fragment$e(ctx) {
-    	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3;
+    function create_fragment$g(ctx) {
+    	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3, t8, li4, a4, link_action_4;
 
     	return {
     		c: function create() {
@@ -18437,29 +18629,36 @@ var app = (function () {
     			t2 = space();
     			li1 = element("li");
     			a1 = element("a");
-    			a1.textContent = "Icon";
+    			a1.textContent = "Icon Button";
     			t4 = space();
     			li2 = element("li");
     			a2 = element("a");
-    			a2.textContent = "Shadow";
+    			a2.textContent = "Icon";
     			t6 = space();
     			li3 = element("li");
     			a3 = element("a");
-    			a3.textContent = "SVG";
+    			a3.textContent = "Shadow";
+    			t8 = space();
+    			li4 = element("li");
+    			a4 = element("a");
+    			a4.textContent = "SVG";
     			a0.href = "/button";
-    			add_location(a0, file$d, 8, 6, 99);
-    			add_location(li0, file$d, 7, 4, 88);
-    			a1.href = "/icon";
-    			add_location(a1, file$d, 11, 6, 162);
-    			add_location(li1, file$d, 10, 4, 151);
-    			a2.href = "/shadow";
-    			add_location(a2, file$d, 14, 6, 221);
-    			add_location(li2, file$d, 13, 4, 210);
-    			a3.href = "/svg";
-    			add_location(a3, file$d, 17, 6, 284);
-    			add_location(li3, file$d, 16, 4, 273);
-    			add_location(ul, file$d, 6, 2, 79);
-    			add_location(div, file$d, 4, 0, 64);
+    			add_location(a0, file$f, 8, 6, 99);
+    			add_location(li0, file$f, 7, 4, 88);
+    			a1.href = "/icon-button";
+    			add_location(a1, file$f, 11, 6, 162);
+    			add_location(li1, file$f, 10, 4, 151);
+    			a2.href = "/icon";
+    			add_location(a2, file$f, 14, 6, 235);
+    			add_location(li2, file$f, 13, 4, 224);
+    			a3.href = "/shadow";
+    			add_location(a3, file$f, 17, 6, 294);
+    			add_location(li3, file$f, 16, 4, 283);
+    			a4.href = "/svg";
+    			add_location(a4, file$f, 20, 6, 357);
+    			add_location(li4, file$f, 19, 4, 346);
+    			add_location(ul, file$f, 6, 2, 79);
+    			add_location(div, file$f, 4, 0, 64);
     		},
 
     		l: function claim(nodes) {
@@ -18485,6 +18684,10 @@ var app = (function () {
     			append(ul, li3);
     			append(li3, a3);
     			link_action_3 = link.call(null, a3) || {};
+    			append(ul, t8);
+    			append(ul, li4);
+    			append(li4, a4);
+    			link_action_4 = link.call(null, a4) || {};
     		},
 
     		p: noop,
@@ -18500,6 +18703,7 @@ var app = (function () {
     			if (link_action_1 && typeof link_action_1.destroy === 'function') link_action_1.destroy();
     			if (link_action_2 && typeof link_action_2.destroy === 'function') link_action_2.destroy();
     			if (link_action_3 && typeof link_action_3.destroy === 'function') link_action_3.destroy();
+    			if (link_action_4 && typeof link_action_4.destroy === 'function') link_action_4.destroy();
     		}
     	};
     }
@@ -18507,7 +18711,7 @@ var app = (function () {
     class Home extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$e, safe_not_equal, []);
+    		init(this, options, null, create_fragment$g, safe_not_equal, []);
     	}
     }
 
@@ -18516,12 +18720,13 @@ var app = (function () {
       "/shadow": Shadow_1,
       "/button": Button_1,
       "/icon": Icon_1,
+      "/icon-button": IconButton_1,
       "/svg": SVG_1,
     };
 
     /* src/App.svelte generated by Svelte v3.4.4 */
 
-    function create_fragment$f(ctx) {
+    function create_fragment$h(ctx) {
     	var current;
 
     	var router = new Router({
@@ -18570,7 +18775,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$f, safe_not_equal, []);
+    		init(this, options, null, create_fragment$h, safe_not_equal, []);
     	}
     }
 

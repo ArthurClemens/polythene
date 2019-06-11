@@ -22,6 +22,10 @@
   const uid = uuidv4();
   let domElement;
 
+  onMount(() => {
+    domElement = document.querySelector(`[data-uid="${uid}"]`);
+  });
+
   // Common vars
   export let className = "";
   export let events = {};
@@ -33,7 +37,6 @@
   // Component specific vars
   export let animateOnTap = undefined;
   export let border = false;
-  export let borders = false;
   export let contained = false;
   export let disabled = false;
   export let dropdown = undefined;
@@ -52,6 +55,35 @@
   export let textStyle = undefined;
   export let url = { href: "javascript:false" };
   export let wash = undefined;
+
+  export let props = {
+    className,
+    events,
+    id,
+    style,
+    testId,
+    tone,
+    animateOnTap,
+    border,
+    contained,
+    disabled,
+    dropdown,
+    extraWide,
+    highLabel,
+    inactivate,
+    inactive,
+    ink,
+    label,
+    parentClassName: "",
+    raised: false,
+    selected: false,
+    separatorAtStart: false,
+    shadowDepth,
+    tabindex: 0,
+    textStyle,
+    url: { href: "javascript:false" },
+    wash,
+  };
 
   $: R_inactive = inactive || $isInactive;
 
@@ -104,8 +136,8 @@
       ? parseInt(shadowDepth, 10)
       : 1
     : 0;
-  const _noInk = ink !== undefined && ink === false;
-  const _tabindex = disabled || inactive ? -1 : tabindex || 0;
+  const noInk = ink !== undefined && ink === false;
+  const tabIndex = disabled || inactive ? -1 : tabindex || 0;
 
   $: R_classNames = [
     classes.super,
@@ -126,7 +158,7 @@
     disabled ? classes.disabled : undefined,
     R_inactive ? classes.inactive : undefined,
     separatorAtStart ? classes.separatorAtStart : undefined,
-    border || borders ? classes.border : undefined,
+    border ? classes.border : undefined,
     dropdown ? classes.hasDropdown : undefined,
     !!dropdown
       ? dropdown.open
@@ -138,28 +170,27 @@
     className
   ].join(" ");
 
-  onMount(() => {
-    domElement = document.querySelector(`[data-uid="${uid}"]`);
-  });
+  $: elementProps = {
+    "data-uid": uid,
+    class: R_classNames,
+    ...(style ? { style } : undefined),
+    ...(id ? { id } : undefined),
+    "data-test-id": testId,
+    ...events,
+    ...url,
+    tabindex: tabIndex,
+    onmousedown: onMouseDown,
+    onkeyup: onKeyUp,
+    onclick: onClick,
+  };
+
 </script>
 
-<a
-  {...{ "data-uid": uid }}
-  class={R_classNames}
-  {...(style && {style})}
-  {...(id && { "id": id })}
-  {...{ "data-test-id": testId }}
-  {...events}
-  href={null}
-  {...url}
-  tabindex={_tabindex}
-  on:mousedown={onMouseDown}
-  on:keyup={onKeyUp}
-  on:click={onClick}>
+<a href={null} {...elementProps}>
   <slot name="before" />
   <div class="pe-button__content">
     <Shadow shadowDepth={_shadowDepth} animated />
-    {#if disabled || _noInk}
+    {#if disabled || noInk}
       <div class="pe-ripple" />
     {/if}
     <div class="pe-button__wash">

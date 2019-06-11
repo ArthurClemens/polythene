@@ -73,7 +73,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         disabled ? classes.disabled : null,
         inactive ? classes.inactive : null,
         props.separatorAtStart ? classes.separatorAtStart : null,
-        (props.border || props.borders) ? classes.border : null,
+        props.border ? classes.border : null,
         props.dropdown ? classes.hasDropdown : null,
         props.dropdown
           ? props.dropdown.open
