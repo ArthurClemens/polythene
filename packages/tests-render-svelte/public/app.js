@@ -56,6 +56,13 @@ var app = (function () {
             ? assign({}, assign(ctx.$$scope.changed || {}, definition[1](fn ? fn(changed) : {})))
             : ctx.$$scope.changed || {};
     }
+    function exclude_internal_props(props) {
+        const result = {};
+        for (const k in props)
+            if (k[0] !== '$')
+                result[k] = props[k];
+        return result;
+    }
 
     function append(target, node) {
         target.appendChild(node);
@@ -7997,6 +8004,7 @@ var app = (function () {
     // @ts-check
     var fns$b = [layout$d, color$a];
     var selector$c = ".".concat(classes$c.component.replace(/ /g, "."));
+    var addStyle$4 = styler.createAddStyle(selector$c, fns$b, iconButtonVars);
 
     var addGeneralStyleToHead$c = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -12051,7 +12059,7 @@ var app = (function () {
     // @ts-check
     var fns$o = [layout$q, color$n];
     var selector$p = ".".concat(classes$p.component);
-    var addStyle$4 = styler.createAddStyle(selector$p, fns$o, svgVars);
+    var addStyle$5 = styler.createAddStyle(selector$p, fns$o, svgVars);
 
     var addGeneralStyleToHead$p = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -14340,15 +14348,15 @@ var app = (function () {
     			div2 = element("div");
     			div1 = element("div");
     			shadow.$$.fragment.c();
-    			add_location(p0, file$1, 22, 4, 480);
-    			add_location(p1, file$1, 23, 4, 516);
+    			add_location(p0, file$1, 22, 4, 492);
+    			add_location(p1, file$1, 23, 4, 528);
     			div0.className = "example-info";
-    			add_location(div0, file$1, 21, 2, 449);
+    			add_location(div0, file$1, 21, 2, 461);
     			div1.className = "shadow-example";
-    			add_location(div1, file$1, 26, 4, 622);
+    			add_location(div1, file$1, 26, 4, 634);
     			div2.className = "example-component";
-    			add_location(div2, file$1, 25, 2, 586);
-    			div3.className = "example";
+    			add_location(div2, file$1, 25, 2, 598);
+    			div3.className = "example interactive";
     			add_location(div3, file$1, 20, 0, 425);
     			dispose = listen(div1, "click", ctx.increment);
     		},
@@ -16623,7 +16631,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
     			set_style(div, "margin-top", "1em");
-    			add_location(div, file$8, 120, 8, 3180);
+    			add_location(div, file$8, 120, 8, 3206);
     		},
 
     		m: function mount(target, anchor) {
@@ -16678,7 +16686,7 @@ var app = (function () {
     			set_style(div, "border-top", "1px solid #eee");
     			set_style(div, "padding", "5px 0");
     			set_style(div, "color", "#aaa");
-    			add_location(div, file$8, 122, 12, 3269);
+    			add_location(div, file$8, 122, 12, 3295);
     		},
 
     		m: function mount(target, anchor) {
@@ -16748,16 +16756,16 @@ var app = (function () {
     	});
 
     	var button6 = new Button({
+    		props: { label: "Button", dropdown: true },
+    		$$inline: true
+    	});
+
+    	var button7 = new Button({
     		props: {
     		url: { href: '#/shadow', use: link },
     		raised: true,
     		label: "Go"
     	},
-    		$$inline: true
-    	});
-
-    	var button7 = new Button({
-    		props: { label: "Button", dropdown: true },
     		$$inline: true
     	});
 
@@ -16820,14 +16828,14 @@ var app = (function () {
     			t19 = space();
     			div20 = element("div");
     			div18 = element("div");
-    			div18.textContent = "Link to shadow";
+    			div18.textContent = "Option: dropdown with label (not interactive) -- see Menu examples";
     			t21 = space();
     			div19 = element("div");
     			button6.$$.fragment.c();
     			t22 = space();
     			div23 = element("div");
     			div21 = element("div");
-    			div21.textContent = "Option: dropdown with label (not interactive) -- see Menu examples";
+    			div21.textContent = "Link to shadow";
     			t24 = space();
     			div22 = element("div");
     			button7.$$.fragment.c();
@@ -16880,21 +16888,21 @@ var app = (function () {
     			div18.className = "example-info";
     			add_location(div18, file$8, 100, 4, 2527);
     			div19.className = "example-component";
-    			add_location(div19, file$8, 101, 4, 2578);
+    			add_location(div19, file$8, 101, 4, 2630);
     			div20.className = "example";
     			add_location(div20, file$8, 99, 2, 2501);
     			div21.className = "example-info";
-    			add_location(div21, file$8, 107, 4, 2732);
+    			add_location(div21, file$8, 107, 4, 2766);
     			div22.className = "example-component";
-    			add_location(div22, file$8, 108, 4, 2835);
-    			div23.className = "example";
-    			add_location(div23, file$8, 106, 2, 2706);
+    			add_location(div22, file$8, 108, 4, 2817);
+    			div23.className = "example interactive";
+    			add_location(div23, file$8, 106, 2, 2728);
     			div24.className = "example-info";
-    			add_location(div24, file$8, 114, 4, 2957);
+    			add_location(div24, file$8, 114, 4, 2983);
     			div25.className = "example-component";
-    			add_location(div25, file$8, 115, 4, 3020);
-    			div26.className = "example";
-    			add_location(div26, file$8, 113, 2, 2931);
+    			add_location(div25, file$8, 115, 4, 3046);
+    			div26.className = "example interactive";
+    			add_location(div26, file$8, 113, 2, 2945);
     			div27.className = "page";
     			add_location(div27, file$8, 20, 0, 488);
     		},
@@ -16966,9 +16974,9 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			var button6_changes = {};
-    			if (changed.link) button6_changes.url = { href: '#/shadow', use: link };
-    			button6.$set(button6_changes);
+    			var button7_changes = {};
+    			if (changed.link) button7_changes.url = { href: '#/shadow', use: link };
+    			button7.$set(button7_changes);
 
     			var button8_changes = {};
     			if (changed.addOnMouseUp) button8_changes.events = {
@@ -17945,18 +17953,226 @@ var app = (function () {
     	}
     }
 
+    var classes$x = {
+      component: "pe-button pe-icon-button",
+
+      // elements
+      content:   "pe-icon-button__content",
+      label:     "pe-icon-button__label",
+
+      // states
+      compact:   "pe-icon-button--compact",
+    };
+
     /* src/lib/icon-button/IconButton.svelte generated by Svelte v3.4.4 */
 
     const file$b = "src/lib/icon-button/IconButton.svelte";
 
-    function create_fragment$c(ctx) {
-    	var div, current;
+    // (27:4) <Icon {...$$props}>
+    function create_default_slot_1$1(ctx) {
+    	var current;
 
-    	var button_spread_levels = [
-    		ctx.buttonProps
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	return {
+    		c: function create() {
+    			if (default_slot) default_slot.c();
+    		},
+
+    		l: function claim(nodes) {
+    			if (default_slot) default_slot.l(nodes);
+    		},
+
+    		m: function mount(target, anchor) {
+    			if (default_slot) {
+    				default_slot.m(target, anchor);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (default_slot) default_slot.d(detaching);
+    		}
+    	};
+    }
+
+    // (33:4) {#if label}
+    function create_if_block$3(ctx) {
+    	var div, t, div_class_value;
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			t = text(ctx.label);
+    			div.className = div_class_value = classes$x.label;
+    			add_location(div, file$b, 33, 6, 793);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, t);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.label) {
+    				set_data(t, ctx.label);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+    		}
+    	};
+    }
+
+    // (32:2) <span slot="after">
+    function create_after_slot(ctx) {
+    	var span;
+
+    	var if_block = (ctx.label) && create_if_block$3(ctx);
+
+    	return {
+    		c: function create() {
+    			span = element("span");
+    			if (if_block) if_block.c();
+    			attr(span, "slot", "after");
+    			add_location(span, file$b, 31, 2, 751);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, span, anchor);
+    			if (if_block) if_block.m(span, null);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (ctx.label) {
+    				if (if_block) {
+    					if_block.p(changed, ctx);
+    				} else {
+    					if_block = create_if_block$3(ctx);
+    					if_block.c();
+    					if_block.m(span, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(span);
+    			}
+
+    			if (if_block) if_block.d();
+    		}
+    	};
+    }
+
+    // (25:0) <Button {...buttonProps} {...$$props} label={undefined}>
+    function create_default_slot$3(ctx) {
+    	var div, div_class_value, t, current;
+
+    	var icon_1_spread_levels = [
+    		ctx.$$props
     	];
 
-    	let button_props = {};
+    	let icon_1_props = {
+    		$$slots: { default: [create_default_slot_1$1] },
+    		$$scope: { ctx }
+    	};
+    	for (var i = 0; i < icon_1_spread_levels.length; i += 1) {
+    		icon_1_props = assign(icon_1_props, icon_1_spread_levels[i]);
+    	}
+    	var icon_1 = new Icon({ props: icon_1_props, $$inline: true });
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+    			icon_1.$$.fragment.c();
+    			t = space();
+    			div.className = div_class_value = classes$x.content;
+    			add_location(div, file$b, 25, 2, 630);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div, anchor);
+    			mount_component(icon_1, div, null);
+    			insert(target, t, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var icon_1_changes = changed.$$props ? get_spread_update(icon_1_spread_levels, [
+    				ctx.$$props
+    			]) : {};
+    			if (changed.$$scope) icon_1_changes.$$scope = { changed, ctx };
+    			icon_1.$set(icon_1_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			icon_1.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			icon_1.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			icon_1.$destroy();
+
+    			if (detaching) {
+    				detach(t);
+    			}
+    		}
+    	};
+    }
+
+    function create_fragment$c(ctx) {
+    	var current;
+
+    	var button_spread_levels = [
+    		ctx.buttonProps,
+    		ctx.$$props,
+    		{ label: ctx.undefined }
+    	];
+
+    	let button_props = {
+    		$$slots: {
+    		default: [create_default_slot$3],
+    		after: [create_after_slot]
+    	},
+    		$$scope: { ctx }
+    	};
     	for (var i = 0; i < button_spread_levels.length; i += 1) {
     		button_props = assign(button_props, button_spread_levels[i]);
     	}
@@ -17964,9 +18180,7 @@ var app = (function () {
 
     	return {
     		c: function create() {
-    			div = element("div");
     			button.$$.fragment.c();
-    			add_location(div, file$b, 12, 0, 225);
     		},
 
     		l: function claim(nodes) {
@@ -17974,15 +18188,17 @@ var app = (function () {
     		},
 
     		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
-    			mount_component(button, div, null);
+    			mount_component(button, target, anchor);
     			current = true;
     		},
 
     		p: function update(changed, ctx) {
-    			var button_changes = changed.buttonProps ? get_spread_update(button_spread_levels, [
-    				ctx.buttonProps
+    			var button_changes = (changed.buttonProps || changed.$$props || changed.undefined) ? get_spread_update(button_spread_levels, [
+    				(changed.buttonProps) && ctx.buttonProps,
+    				(changed.$$props) && ctx.$$props,
+    				(changed.undefined) && { label: ctx.undefined }
     			]) : {};
+    			if (changed.$$scope || changed.label) button_changes.$$scope = { changed, ctx };
     			button.$set(button_changes);
     		},
 
@@ -17999,11 +18215,7 @@ var app = (function () {
     		},
 
     		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
-
-    			button.$destroy();
+    			button.$destroy(detaching);
     		}
     	};
     }
@@ -18011,69 +18223,121 @@ var app = (function () {
     function instance$a($$self, $$props, $$invalidate) {
     	
 
-      let { border = false } = $$props;
+      let { wash = false, animateOnTap = false, compact = false, parentClassName = undefined, icon = undefined, label = undefined } = $$props;
+
+      const parentClassNames = [
+        parentClassName || classes$x.component,
+        compact ? classes$x.compact : null,
+      ].join(" ");
 
       const buttonProps = {
-        ...border
+        wash,
+        animateOnTap,
+        parentClassName: parentClassNames,
       };
 
-    	const writable_props = ['border'];
-    	Object.keys($$props).forEach(key => {
-    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<IconButton> was created with unknown prop '${key}'`);
-    	});
+    	let { $$slots = {}, $$scope } = $$props;
 
-    	$$self.$set = $$props => {
-    		if ('border' in $$props) $$invalidate('border', border = $$props.border);
+    	$$self.$set = $$new_props => {
+    		$$invalidate('$$props', $$props = assign(assign({}, $$props), $$new_props));
+    		if ('wash' in $$props) $$invalidate('wash', wash = $$props.wash);
+    		if ('animateOnTap' in $$props) $$invalidate('animateOnTap', animateOnTap = $$props.animateOnTap);
+    		if ('compact' in $$props) $$invalidate('compact', compact = $$props.compact);
+    		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
+    		if ('icon' in $$props) $$invalidate('icon', icon = $$props.icon);
+    		if ('label' in $$props) $$invalidate('label', label = $$props.label);
+    		if ('$$scope' in $$new_props) $$invalidate('$$scope', $$scope = $$new_props.$$scope);
     	};
 
-    	return { border, buttonProps };
+    	return {
+    		wash,
+    		animateOnTap,
+    		compact,
+    		parentClassName,
+    		icon,
+    		label,
+    		buttonProps,
+    		undefined,
+    		$$props,
+    		$$props: $$props = exclude_internal_props($$props),
+    		$$slots,
+    		$$scope
+    	};
     }
 
     class IconButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$a, create_fragment$c, safe_not_equal, ["border"]);
+    		init(this, options, instance$a, create_fragment$c, safe_not_equal, ["wash", "animateOnTap", "compact", "parentClassName", "icon", "label"]);
     	}
 
-    	get border() {
+    	get wash() {
     		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set border(value) {
+    	set wash(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get animateOnTap() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set animateOnTap(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get compact() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set compact(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get parentClassName() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set parentClassName(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get icon() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set icon(value) {
+    		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get label() {
+    		throw new Error("<IconButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set label(value) {
     		throw new Error("<IconButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
-    /* src/examples/icon-button/IconButton.svelte generated by Svelte v3.4.4 */
+    /* src/examples/icon-button/LockSVG.svelte generated by Svelte v3.4.4 */
 
-    const file$c = "src/examples/icon-button/IconButton.svelte";
+    const file$c = "src/examples/icon-button/LockSVG.svelte";
 
     function create_fragment$d(ctx) {
-    	var div3, h1, t1, div2, div0, t3, div1, current;
-
-    	var iconbutton = new IconButton({ props: { border: true }, $$inline: true });
+    	var svg, path;
 
     	return {
     		c: function create() {
-    			div3 = element("div");
-    			h1 = element("h1");
-    			h1.textContent = "Icon Button";
-    			t1 = space();
-    			div2 = element("div");
-    			div0 = element("div");
-    			div0.textContent = "Icon button";
-    			t3 = space();
-    			div1 = element("div");
-    			iconbutton.$$.fragment.c();
-    			add_location(h1, file$c, 9, 2, 190);
-    			div0.className = "example-info";
-    			add_location(div0, file$c, 12, 4, 240);
-    			div1.className = "example-component";
-    			add_location(div1, file$c, 13, 4, 288);
-    			div2.className = "example";
-    			add_location(div2, file$c, 11, 2, 214);
-    			div3.className = "page";
-    			add_location(div3, file$c, 7, 0, 168);
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			attr(path, "d", "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z");
+    			add_location(path, file$c, 0, 83, 83);
+    			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr(svg, "width", "24");
+    			attr(svg, "height", "24");
+    			attr(svg, "viewBox", "0 0 24 24");
+    			add_location(svg, file$c, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -18081,18 +18345,136 @@ var app = (function () {
     		},
 
     		m: function mount(target, anchor) {
-    			insert(target, div3, anchor);
-    			append(div3, h1);
-    			append(div3, t1);
-    			append(div3, div2);
-    			append(div2, div0);
-    			append(div2, t3);
-    			append(div2, div1);
-    			mount_component(iconbutton, div1, null);
-    			current = true;
+    			insert(target, svg, anchor);
+    			append(svg, path);
     		},
 
     		p: noop,
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(svg);
+    			}
+    		}
+    	};
+    }
+
+    class LockSVG extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, null, create_fragment$d, safe_not_equal, []);
+    	}
+    }
+
+    /* src/examples/icon-button/IconButton.svelte generated by Svelte v3.4.4 */
+
+    const file$d = "src/examples/icon-button/IconButton.svelte";
+
+    function get_each_context$2(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.sizeName = list[i];
+    	return child_ctx;
+    }
+
+    // (33:6) <IconButton>
+    function create_default_slot_7(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (43:8) <IconButton size={sizeName}>
+    function create_default_slot_6$1(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (42:6) {#each sizeNames as sizeName}
+    function create_each_block$2(ctx) {
+    	var current;
+
+    	var iconbutton = new IconButton({
+    		props: {
+    		size: ctx.sizeName,
+    		$$slots: { default: [create_default_slot_6$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	return {
+    		c: function create() {
+    			iconbutton.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(iconbutton, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var iconbutton_changes = {};
+    			if (changed.sizeNames) iconbutton_changes.size = ctx.sizeName;
+    			if (changed.$$scope) iconbutton_changes.$$scope = { changed, ctx };
+    			iconbutton.$set(iconbutton_changes);
+    		},
 
     		i: function intro(local) {
     			if (current) return;
@@ -18107,27 +18489,631 @@ var app = (function () {
     		},
 
     		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div3);
-    			}
-
-    			iconbutton.$destroy();
+    			iconbutton.$destroy(detaching);
     		}
     	};
+    }
+
+    // (53:6) <IconButton label="Label">
+    function create_default_slot_5$1(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (62:6) <IconButton disabled>
+    function create_default_slot_4$1(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (71:6) <IconButton wash>
+    function create_default_slot_3$1(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (80:6) <IconButton className="tests-icon-button-themed-icon-button">
+    function create_default_slot_2$1(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (89:6) <IconButton className="tests-icon-button-themed-hover" wash label="Hover">
+    function create_default_slot_1$2(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    // (98:6) <IconButton label="ضع الكلمة المناسبة">
+    function create_default_slot$4(ctx) {
+    	var current;
+
+    	var locksvg = new LockSVG({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			locksvg.$$.fragment.c();
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(locksvg, target, anchor);
+    			current = true;
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			locksvg.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			locksvg.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			locksvg.$destroy(detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$e(ctx) {
+    	var div24, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, t7, div8, div6, t9, div7, t10, div11, div9, t12, div10, t13, div14, div12, t15, div13, t16, div17, div15, t18, div16, t19, div20, div18, t21, div19, t22, div23, div21, t24, div22, current;
+
+    	var iconbutton0 = new IconButton({
+    		props: {
+    		$$slots: { default: [create_default_slot_7] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var each_value = ctx.sizeNames;
+
+    	var each_blocks = [];
+
+    	for (var i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    	}
+
+    	function outro_block(i, detaching, local) {
+    		if (each_blocks[i]) {
+    			if (detaching) {
+    				on_outro(() => {
+    					each_blocks[i].d(detaching);
+    					each_blocks[i] = null;
+    				});
+    			}
+
+    			each_blocks[i].o(local);
+    		}
+    	}
+
+    	var iconbutton1 = new IconButton({
+    		props: {
+    		label: "Label",
+    		$$slots: { default: [create_default_slot_5$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var iconbutton2 = new IconButton({
+    		props: {
+    		disabled: true,
+    		$$slots: { default: [create_default_slot_4$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var iconbutton3 = new IconButton({
+    		props: {
+    		wash: true,
+    		$$slots: { default: [create_default_slot_3$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var iconbutton4 = new IconButton({
+    		props: {
+    		className: "tests-icon-button-themed-icon-button",
+    		$$slots: { default: [create_default_slot_2$1] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var iconbutton5 = new IconButton({
+    		props: {
+    		className: "tests-icon-button-themed-hover",
+    		wash: true,
+    		label: "Hover",
+    		$$slots: { default: [create_default_slot_1$2] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	var iconbutton6 = new IconButton({
+    		props: {
+    		label: "ضع الكلمة المناسبة",
+    		$$slots: { default: [create_default_slot$4] },
+    		$$scope: { ctx }
+    	},
+    		$$inline: true
+    	});
+
+    	return {
+    		c: function create() {
+    			div24 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Icon Button";
+    			t1 = space();
+    			div2 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "Icon";
+    			t3 = space();
+    			div1 = element("div");
+    			iconbutton0.$$.fragment.c();
+    			t4 = space();
+    			div5 = element("div");
+    			div3 = element("div");
+    			div3.textContent = "Option: size";
+    			t6 = space();
+    			div4 = element("div");
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t7 = space();
+    			div8 = element("div");
+    			div6 = element("div");
+    			div6.textContent = "Option: label";
+    			t9 = space();
+    			div7 = element("div");
+    			iconbutton1.$$.fragment.c();
+    			t10 = space();
+    			div11 = element("div");
+    			div9 = element("div");
+    			div9.textContent = "Option: disabled";
+    			t12 = space();
+    			div10 = element("div");
+    			iconbutton2.$$.fragment.c();
+    			t13 = space();
+    			div14 = element("div");
+    			div12 = element("div");
+    			div12.textContent = "Option: wash (true)";
+    			t15 = space();
+    			div13 = element("div");
+    			iconbutton3.$$.fragment.c();
+    			t16 = space();
+    			div17 = element("div");
+    			div15 = element("div");
+    			div15.textContent = "Themed (color and padding)";
+    			t18 = space();
+    			div16 = element("div");
+    			iconbutton4.$$.fragment.c();
+    			t19 = space();
+    			div20 = element("div");
+    			div18 = element("div");
+    			div18.textContent = "Themed (hover color)";
+    			t21 = space();
+    			div19 = element("div");
+    			iconbutton5.$$.fragment.c();
+    			t22 = space();
+    			div23 = element("div");
+    			div21 = element("div");
+    			div21.textContent = "Option: label (RTL)";
+    			t24 = space();
+    			div22 = element("div");
+    			iconbutton6.$$.fragment.c();
+    			add_location(h1, file$d, 27, 2, 772);
+    			div0.className = "example-info";
+    			add_location(div0, file$d, 30, 4, 822);
+    			div1.className = "example-component";
+    			add_location(div1, file$d, 31, 4, 863);
+    			div2.className = "example";
+    			add_location(div2, file$d, 29, 2, 796);
+    			div3.className = "example-info";
+    			add_location(div3, file$d, 39, 4, 1003);
+    			div4.className = "example-component";
+    			add_location(div4, file$d, 40, 4, 1052);
+    			div5.className = "example";
+    			add_location(div5, file$d, 38, 2, 977);
+    			div6.className = "example-info";
+    			add_location(div6, file$d, 50, 4, 1264);
+    			div7.className = "example-component";
+    			add_location(div7, file$d, 51, 4, 1314);
+    			div8.className = "example";
+    			add_location(div8, file$d, 49, 2, 1238);
+    			div9.className = "example-info";
+    			add_location(div9, file$d, 59, 4, 1468);
+    			div10.className = "example-component";
+    			add_location(div10, file$d, 60, 4, 1521);
+    			div11.className = "example";
+    			add_location(div11, file$d, 58, 2, 1442);
+    			div12.className = "example-info";
+    			add_location(div12, file$d, 68, 4, 1682);
+    			div13.className = "example-component";
+    			add_location(div13, file$d, 69, 4, 1738);
+    			div14.className = "example interactive";
+    			add_location(div14, file$d, 67, 2, 1644);
+    			div15.className = "example-info";
+    			add_location(div15, file$d, 77, 4, 1883);
+    			div16.className = "example-component";
+    			add_location(div16, file$d, 78, 4, 1946);
+    			div17.className = "example";
+    			add_location(div17, file$d, 76, 2, 1857);
+    			div18.className = "example-info";
+    			add_location(div18, file$d, 86, 4, 2135);
+    			div19.className = "example-component";
+    			add_location(div19, file$d, 87, 4, 2192);
+    			div20.className = "example";
+    			add_location(div20, file$d, 85, 2, 2109);
+    			div21.className = "example-info";
+    			add_location(div21, file$d, 95, 4, 2394);
+    			div22.className = "example-component pe-rtl";
+    			add_location(div22, file$d, 96, 4, 2450);
+    			div23.className = "example";
+    			add_location(div23, file$d, 94, 2, 2368);
+    			div24.className = "page";
+    			add_location(div24, file$d, 25, 0, 750);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div24, anchor);
+    			append(div24, h1);
+    			append(div24, t1);
+    			append(div24, div2);
+    			append(div2, div0);
+    			append(div2, t3);
+    			append(div2, div1);
+    			mount_component(iconbutton0, div1, null);
+    			append(div24, t4);
+    			append(div24, div5);
+    			append(div5, div3);
+    			append(div5, t6);
+    			append(div5, div4);
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div4, null);
+    			}
+
+    			append(div24, t7);
+    			append(div24, div8);
+    			append(div8, div6);
+    			append(div8, t9);
+    			append(div8, div7);
+    			mount_component(iconbutton1, div7, null);
+    			append(div24, t10);
+    			append(div24, div11);
+    			append(div11, div9);
+    			append(div11, t12);
+    			append(div11, div10);
+    			mount_component(iconbutton2, div10, null);
+    			append(div24, t13);
+    			append(div24, div14);
+    			append(div14, div12);
+    			append(div14, t15);
+    			append(div14, div13);
+    			mount_component(iconbutton3, div13, null);
+    			append(div24, t16);
+    			append(div24, div17);
+    			append(div17, div15);
+    			append(div17, t18);
+    			append(div17, div16);
+    			mount_component(iconbutton4, div16, null);
+    			append(div24, t19);
+    			append(div24, div20);
+    			append(div20, div18);
+    			append(div20, t21);
+    			append(div20, div19);
+    			mount_component(iconbutton5, div19, null);
+    			append(div24, t22);
+    			append(div24, div23);
+    			append(div23, div21);
+    			append(div23, t24);
+    			append(div23, div22);
+    			mount_component(iconbutton6, div22, null);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var iconbutton0_changes = {};
+    			if (changed.$$scope) iconbutton0_changes.$$scope = { changed, ctx };
+    			iconbutton0.$set(iconbutton0_changes);
+
+    			if (changed.sizeNames) {
+    				each_value = ctx.sizeNames;
+
+    				for (var i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    						each_blocks[i].i(1);
+    					} else {
+    						each_blocks[i] = create_each_block$2(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].i(1);
+    						each_blocks[i].m(div4, null);
+    					}
+    				}
+
+    				group_outros();
+    				for (; i < each_blocks.length; i += 1) outro_block(i, 1, 1);
+    				check_outros();
+    			}
+
+    			var iconbutton1_changes = {};
+    			if (changed.$$scope) iconbutton1_changes.$$scope = { changed, ctx };
+    			iconbutton1.$set(iconbutton1_changes);
+
+    			var iconbutton2_changes = {};
+    			if (changed.$$scope) iconbutton2_changes.$$scope = { changed, ctx };
+    			iconbutton2.$set(iconbutton2_changes);
+
+    			var iconbutton3_changes = {};
+    			if (changed.$$scope) iconbutton3_changes.$$scope = { changed, ctx };
+    			iconbutton3.$set(iconbutton3_changes);
+
+    			var iconbutton4_changes = {};
+    			if (changed.$$scope) iconbutton4_changes.$$scope = { changed, ctx };
+    			iconbutton4.$set(iconbutton4_changes);
+
+    			var iconbutton5_changes = {};
+    			if (changed.$$scope) iconbutton5_changes.$$scope = { changed, ctx };
+    			iconbutton5.$set(iconbutton5_changes);
+
+    			var iconbutton6_changes = {};
+    			if (changed.$$scope) iconbutton6_changes.$$scope = { changed, ctx };
+    			iconbutton6.$set(iconbutton6_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			iconbutton0.$$.fragment.i(local);
+
+    			for (var i = 0; i < each_value.length; i += 1) each_blocks[i].i();
+
+    			iconbutton1.$$.fragment.i(local);
+
+    			iconbutton2.$$.fragment.i(local);
+
+    			iconbutton3.$$.fragment.i(local);
+
+    			iconbutton4.$$.fragment.i(local);
+
+    			iconbutton5.$$.fragment.i(local);
+
+    			iconbutton6.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			iconbutton0.$$.fragment.o(local);
+
+    			each_blocks = each_blocks.filter(Boolean);
+    			for (let i = 0; i < each_blocks.length; i += 1) outro_block(i, 0);
+
+    			iconbutton1.$$.fragment.o(local);
+    			iconbutton2.$$.fragment.o(local);
+    			iconbutton3.$$.fragment.o(local);
+    			iconbutton4.$$.fragment.o(local);
+    			iconbutton5.$$.fragment.o(local);
+    			iconbutton6.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div24);
+    			}
+
+    			iconbutton0.$destroy();
+
+    			destroy_each(each_blocks, detaching);
+
+    			iconbutton1.$destroy();
+
+    			iconbutton2.$destroy();
+
+    			iconbutton3.$destroy();
+
+    			iconbutton4.$destroy();
+
+    			iconbutton5.$destroy();
+
+    			iconbutton6.$destroy();
+    		}
+    	};
+    }
+
+    function instance$b($$self) {
+    	
+
+
+      addStyle$4(".tests-icon-button-themed-icon-button", {
+        padding: 24,
+        color_light_background: "purple",
+        color_dark_background: "orange",
+        color_light: "white"
+      });
+
+      addStyle$4(".tests-icon-button-themed-hover", {
+        color_light_hover:            "#fff",
+        color_light_label_hover:      "#673ab7",
+        color_dark_label_hover:       "#fff",
+        color_light_background_hover: "#673ab7",
+        animation_duration:           "100ms",
+      });
+
+      const sizeNames = ["small", "regular", "medium", "large"];
+
+    	return { sizeNames };
     }
 
     class IconButton_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$d, safe_not_equal, []);
+    		init(this, options, instance$b, create_fragment$e, safe_not_equal, []);
     	}
     }
 
     /* src/examples/svg/StarSVG.svelte generated by Svelte v3.4.4 */
 
-    const file$d = "src/examples/svg/StarSVG.svelte";
+    const file$e = "src/examples/svg/StarSVG.svelte";
 
-    function create_fragment$e(ctx) {
+    function create_fragment$f(ctx) {
     	var svg, path;
 
     	return {
@@ -18135,11 +19121,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$d, 0, 48, 48);
+    			add_location(path, file$e, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$d, 0, 0, 0);
+    			add_location(svg, file$e, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -18166,16 +19152,16 @@ var app = (function () {
     class StarSVG$1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$e, safe_not_equal, []);
+    		init(this, options, null, create_fragment$f, safe_not_equal, []);
     	}
     }
 
     /* src/examples/svg/SVG.svelte generated by Svelte v3.4.4 */
 
-    const file$e = "src/examples/svg/SVG.svelte";
+    const file$f = "src/examples/svg/SVG.svelte";
 
     // (32:6) <SVG>
-    function create_default_slot_4$1(ctx) {
+    function create_default_slot_4$2(ctx) {
     	var current;
 
     	var starsvg = new StarSVG$1({ $$inline: true });
@@ -18209,7 +19195,7 @@ var app = (function () {
     }
 
     // (42:6) <SVG {style}>
-    function create_default_slot_3$1(ctx) {
+    function create_default_slot_3$2(ctx) {
     	var current;
 
     	var starsvg = new StarSVG$1({ $$inline: true });
@@ -18243,7 +19229,7 @@ var app = (function () {
     }
 
     // (51:6) <SVG className="tests-svg-themed-svg">
-    function create_default_slot_2$1(ctx) {
+    function create_default_slot_2$2(ctx) {
     	var current;
 
     	var starsvg = new StarSVG$1({ $$inline: true });
@@ -18277,7 +19263,7 @@ var app = (function () {
     }
 
     // (60:6) <SVG>
-    function create_default_slot_1$1(ctx) {
+    function create_default_slot_1$3(ctx) {
     	var current;
 
     	var starsvg = new StarSVG$1({ $$inline: true });
@@ -18311,7 +19297,7 @@ var app = (function () {
     }
 
     // (69:6) <SVG className="tests-svg-themed-svg">
-    function create_default_slot$3(ctx) {
+    function create_default_slot$5(ctx) {
     	var current;
 
     	var starsvg = new StarSVG$1({ $$inline: true });
@@ -18344,12 +19330,12 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$f(ctx) {
+    function create_fragment$g(ctx) {
     	var div15, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, button, t8, t9, div8, div6, t11, div7, t12, div11, div9, t14, div10, t15, div14, div12, t17, div13, current, dispose;
 
     	var svg0 = new SVG({
     		props: {
-    		$$slots: { default: [create_default_slot_4$1] },
+    		$$slots: { default: [create_default_slot_4$2] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18358,7 +19344,7 @@ var app = (function () {
     	var svg1 = new SVG({
     		props: {
     		style: ctx.style,
-    		$$slots: { default: [create_default_slot_3$1] },
+    		$$slots: { default: [create_default_slot_3$2] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18367,7 +19353,7 @@ var app = (function () {
     	var svg2 = new SVG({
     		props: {
     		className: "tests-svg-themed-svg",
-    		$$slots: { default: [create_default_slot_2$1] },
+    		$$slots: { default: [create_default_slot_2$2] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18375,7 +19361,7 @@ var app = (function () {
 
     	var svg3 = new SVG({
     		props: {
-    		$$slots: { default: [create_default_slot_1$1] },
+    		$$slots: { default: [create_default_slot_1$3] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18384,7 +19370,7 @@ var app = (function () {
     	var svg4 = new SVG({
     		props: {
     		className: "tests-svg-themed-svg",
-    		$$slots: { default: [create_default_slot$3] },
+    		$$slots: { default: [create_default_slot$5] },
     		$$scope: { ctx }
     	},
     		$$inline: true
@@ -18433,40 +19419,40 @@ var app = (function () {
     			t17 = space();
     			div13 = element("div");
     			svg4.$$.fragment.c();
-    			add_location(h1, file$e, 26, 2, 524);
+    			add_location(h1, file$f, 26, 2, 524);
     			div0.className = "example-info";
-    			add_location(div0, file$e, 29, 4, 566);
+    			add_location(div0, file$f, 29, 4, 566);
     			div1.className = "example-component";
-    			add_location(div1, file$e, 30, 4, 616);
+    			add_location(div1, file$f, 30, 4, 616);
     			div2.className = "example";
-    			add_location(div2, file$e, 28, 2, 540);
+    			add_location(div2, file$f, 28, 2, 540);
     			div3.className = "example-info";
-    			add_location(div3, file$e, 38, 4, 742);
-    			add_location(button, file$e, 40, 6, 822);
+    			add_location(div3, file$f, 38, 4, 754);
+    			add_location(button, file$f, 40, 6, 834);
     			div4.className = "example-component";
-    			add_location(div4, file$e, 39, 4, 784);
-    			div5.className = "example";
-    			add_location(div5, file$e, 37, 2, 716);
+    			add_location(div4, file$f, 39, 4, 796);
+    			div5.className = "example interactive";
+    			add_location(div5, file$f, 37, 2, 716);
     			div6.className = "example-info";
-    			add_location(div6, file$e, 48, 4, 971);
+    			add_location(div6, file$f, 48, 4, 983);
     			div7.className = "example-component";
-    			add_location(div7, file$e, 49, 4, 1022);
+    			add_location(div7, file$f, 49, 4, 1034);
     			div8.className = "example";
-    			add_location(div8, file$e, 47, 2, 945);
+    			add_location(div8, file$f, 47, 2, 957);
     			div9.className = "example-info";
-    			add_location(div9, file$e, 57, 4, 1194);
+    			add_location(div9, file$f, 57, 4, 1206);
     			div10.className = "example-component";
-    			add_location(div10, file$e, 58, 4, 1257);
+    			add_location(div10, file$f, 58, 4, 1269);
     			div11.className = "example pe-dark-tone";
-    			add_location(div11, file$e, 56, 2, 1155);
+    			add_location(div11, file$f, 56, 2, 1167);
     			div12.className = "example-info";
-    			add_location(div12, file$e, 66, 4, 1396);
+    			add_location(div12, file$f, 66, 4, 1408);
     			div13.className = "example-component";
-    			add_location(div13, file$e, 67, 4, 1460);
+    			add_location(div13, file$f, 67, 4, 1472);
     			div14.className = "example pe-dark-tone";
-    			add_location(div14, file$e, 65, 2, 1357);
+    			add_location(div14, file$f, 65, 2, 1369);
     			div15.className = "page";
-    			add_location(div15, file$e, 24, 0, 502);
+    			add_location(div15, file$f, 24, 0, 502);
     			dispose = listen(button, "click", ctx.toggleStyle);
     		},
 
@@ -18581,7 +19567,7 @@ var app = (function () {
 
     let initialStyle = "color: inherit";
 
-    function instance$b($$self, $$props, $$invalidate) {
+    function instance$c($$self, $$props, $$invalidate) {
     	
 
       let showStyle = false;
@@ -18596,7 +19582,7 @@ var app = (function () {
         }
       };
 
-      addStyle$4(".tests-svg-themed-svg", {
+      addStyle$5(".tests-svg-themed-svg", {
         color_light: "#0D47A1",
         color_dark: "orange"
       });
@@ -18607,15 +19593,15 @@ var app = (function () {
     class SVG_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$b, create_fragment$f, safe_not_equal, []);
+    		init(this, options, instance$c, create_fragment$g, safe_not_equal, []);
     	}
     }
 
     /* src/Home.svelte generated by Svelte v3.4.4 */
 
-    const file$f = "src/Home.svelte";
+    const file$g = "src/Home.svelte";
 
-    function create_fragment$g(ctx) {
+    function create_fragment$h(ctx) {
     	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3, t8, li4, a4, link_action_4;
 
     	return {
@@ -18643,22 +19629,22 @@ var app = (function () {
     			a4 = element("a");
     			a4.textContent = "SVG";
     			a0.href = "/button";
-    			add_location(a0, file$f, 8, 6, 99);
-    			add_location(li0, file$f, 7, 4, 88);
+    			add_location(a0, file$g, 8, 6, 99);
+    			add_location(li0, file$g, 7, 4, 88);
     			a1.href = "/icon-button";
-    			add_location(a1, file$f, 11, 6, 162);
-    			add_location(li1, file$f, 10, 4, 151);
+    			add_location(a1, file$g, 11, 6, 162);
+    			add_location(li1, file$g, 10, 4, 151);
     			a2.href = "/icon";
-    			add_location(a2, file$f, 14, 6, 235);
-    			add_location(li2, file$f, 13, 4, 224);
+    			add_location(a2, file$g, 14, 6, 235);
+    			add_location(li2, file$g, 13, 4, 224);
     			a3.href = "/shadow";
-    			add_location(a3, file$f, 17, 6, 294);
-    			add_location(li3, file$f, 16, 4, 283);
+    			add_location(a3, file$g, 17, 6, 294);
+    			add_location(li3, file$g, 16, 4, 283);
     			a4.href = "/svg";
-    			add_location(a4, file$f, 20, 6, 357);
-    			add_location(li4, file$f, 19, 4, 346);
-    			add_location(ul, file$f, 6, 2, 79);
-    			add_location(div, file$f, 4, 0, 64);
+    			add_location(a4, file$g, 20, 6, 357);
+    			add_location(li4, file$g, 19, 4, 346);
+    			add_location(ul, file$g, 6, 2, 79);
+    			add_location(div, file$g, 4, 0, 64);
     		},
 
     		l: function claim(nodes) {
@@ -18711,7 +19697,7 @@ var app = (function () {
     class Home extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$g, safe_not_equal, []);
+    		init(this, options, null, create_fragment$h, safe_not_equal, []);
     	}
     }
 
@@ -18726,7 +19712,7 @@ var app = (function () {
 
     /* src/App.svelte generated by Svelte v3.4.4 */
 
-    function create_fragment$h(ctx) {
+    function create_fragment$i(ctx) {
     	var current;
 
     	var router = new Router({
@@ -18775,7 +19761,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$h, safe_not_equal, []);
+    		init(this, options, null, create_fragment$i, safe_not_equal, []);
     	}
     }
 

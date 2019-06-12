@@ -22,6 +22,11 @@
 	padding: 30px;
 }
 
+:global(.page) h1,
+:global(.example) {
+	border-left: 5px solid transparent;
+}
+
 :global(.example) {
 	border-top: 1px solid #eaeaea;
 }
@@ -38,6 +43,10 @@
 :global(.example.pe-dark-tone) {
   background-color: #303030;
   color: #777;
+}
+
+:global(.example.interactive:not(.pe-dark-tone)) {
+  border-left: 5px solid #2196f3;
 }
 
 :global(.example-component) {

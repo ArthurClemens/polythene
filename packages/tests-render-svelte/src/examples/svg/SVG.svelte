@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="example">
+  <div class="example interactive">
     <div class="example-info">Style</div>
     <div class="example-component">
       <button on:click={toggleStyle}>Toggle</button>

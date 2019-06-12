@@ -18,7 +18,7 @@
 	
 </script>
 
-<div class="example">
+<div class="example interactive">
   <div class="example-info">
     <p>Themed shadow transition</p>
     <p>The shadowDepth is: {shadowDepth}. Click to change.</p>

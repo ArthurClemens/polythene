@@ -1,6 +1,15 @@
 {
   "name": "tests-render-svelte",
   "version": "1.6.0",
+  "scripts": {
+    "build": "rollup -c",
+    "build-polythene-svelte": "cd ../polythene-svelte && rollup -c",
+    "autobuild": "rollup -c -w",
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public",
+    "start:dev": "sirv public --dev",
+    "serve": "http-server -p 4000 public"
+  },
   "dependencies": {
     "polythene-core": "^1.6.0",
     "polythene-css": "^1.6.0",
@@ -26,15 +35,6 @@
     "rollup-plugin-terser": "^5.0.0",
     "sirv-cli": "^0.4.3",
     "svelte": "^3.4.4"
-  },
-  "scripts": {
-    "build": "rollup -c",
-    "build-polythene-svelte": "cd ../polythene-svelte && rollup -c",
-    "autobuild": "rollup -c -w",
-    "dev": "run-p start:dev autobuild",
-    "start": "sirv public",
-    "start:dev": "sirv public --dev",
-    "serve": "http-server -p 4000 public"
   },
   "author": "Arthur Clemens <arthurclemens@gmail.com> (http://arthurclemens.com)",
   "homepage": "https://github.com/ArthurClemens/polythene",

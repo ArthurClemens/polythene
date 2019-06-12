@@ -98,20 +98,20 @@
   </div>
 
   <div class="example">
+    <div class="example-info">Option: dropdown with label (not interactive) -- see Menu examples</div>
+    <div class="example-component">
+      <Button label="Button" dropdown />
+    </div>
+  </div>
+  
+  <div class="example interactive">
     <div class="example-info">Link to shadow</div>
     <div class="example-component">
       <Button url={{ href: '#/shadow', use: link }} raised label="Go" />
     </div>
   </div>
 
-  <div class="example">
-    <div class="example-info">Option: dropdown with label (not interactive) -- see Menu examples</div>
-    <div class="example-component">
-      <Button label="Button" dropdown />
-    </div>
-  </div>
-
-  <div class="example">
+  <div class="example interactive">
     <div class="example-info">Option: events (onmouseup)</div>
     <div class="example-component">
       <Button label="Button" events={{
