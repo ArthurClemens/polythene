@@ -17,7 +17,7 @@
     "README.md"
   ],
   "dependencies": {
-    "cyano-react": "^0.5.1",
+    "cyano-react": "^0.5.2",
     "polythene-core-search": "^1.6.4",
     "polythene-react-textfield": "^1.6.4"
   },

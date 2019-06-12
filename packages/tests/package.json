@@ -13,8 +13,8 @@
     "polythene-react": "^1.6.4"
   },
   "devDependencies": {
-    "cyano-mithril": "^0.5.1",
-    "cyano-react": "^0.5.1",
+    "cyano-mithril": "^0.5.2",
+    "cyano-react": "^0.5.2",
     "polythene-core": "^1.6.4",
     "polythene-theme": "^1.6.4",
     "powerform": "^3.1.5",
