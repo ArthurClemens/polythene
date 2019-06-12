@@ -8,7 +8,6 @@ const DEFAULT_SHADOW_DEPTH = 1;
 export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Shadow, Icon, ...props }) => {
   const events = props.events || {};
   const [domElement, setDomElement] = useState();
-  const contentElement = useRef();
   const [isInactive, setIsInactive] = useState(props.inactive);
   const disabled = props.disabled;
   const inactive = props.inactive || isInactive;
@@ -47,9 +46,6 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
         return;
       }
       setDomElement(dom);
-      if (dom.querySelector) {
-        contentElement.current = dom.querySelector(`.${classes.content}`);
-      }
       if (props.getRef) {
         props.getRef(dom);
       }
@@ -156,7 +152,7 @@ export const _Button = ({ h, a, getRef, useState, useEffect, useRef, Ripple, Sha
             : h(Ripple, Object.assign({},
               {
                 key: "ripple",
-                target: contentElement.current
+                target: domElement
               },
               props.ripple
             )),

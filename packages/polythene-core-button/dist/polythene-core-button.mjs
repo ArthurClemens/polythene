@@ -201,8 +201,6 @@ var _Button = function _Button(_ref) {
       domElement = _useState2[0],
       setDomElement = _useState2[1];
 
-  var contentElement = useRef();
-
   var _useState3 = useState(props.inactive),
       _useState4 = _slicedToArray(_useState3, 2),
       isInactive = _useState4[0],
@@ -245,10 +243,6 @@ var _Button = function _Button(_ref) {
     }
 
     setDomElement(dom);
-
-    if (dom.querySelector) {
-      contentElement.current = dom.querySelector(".".concat(classes.content));
-    }
 
     if (props.getRef) {
       props.getRef(dom);
@@ -294,7 +288,7 @@ var _Button = function _Button(_ref) {
     animated: true
   }), disabled || noink ? null : h(Ripple, _extends({}, {
     key: "ripple",
-    target: contentElement.current
+    target: domElement
   }, props.ripple)), h("div", {
     key: "wash",
     className: classes.wash

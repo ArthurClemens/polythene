@@ -1,6 +1,6 @@
 {
   "name": "polythene-react-list",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "",
   "main": "dist/polythene-react-list",
   "module": "dist/polythene-react-list.mjs",
@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "cyano-react": "^0.5.1",
-    "polythene-core-list": "^1.6.3",
-    "polythene-react-list-tile": "^1.6.3"
+    "polythene-core-list": "^1.6.4",
+    "polythene-react-list-tile": "^1.6.4"
   },
   "devDependencies": {
     "@types/react": "^16.8.19"
