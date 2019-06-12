@@ -12,7 +12,7 @@
     "serve": "http-server -p 5000 dist"
   },
   "dependencies": {
-    "cyano-react": "^0.5.1",
+    "cyano-react": "^0.5.2",
     "mithril": "^2.0.0-rc.6",
     "polythene-core": "^1.6.4",
     "polythene-core-css": "^1.6.4",

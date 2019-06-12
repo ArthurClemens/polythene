@@ -28,7 +28,7 @@ export const SecondaryButton = {
       vnode.attrs, // pass on other options
       {
         className: "secondary-button",
-        borders: true
+        border: true
       }
     ))
 }
