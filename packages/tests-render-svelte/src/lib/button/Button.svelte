@@ -56,35 +56,6 @@
   export let url = { href: "javascript:false" };
   export let wash = undefined;
 
-  export let props = {
-    className,
-    events,
-    id,
-    style,
-    testId,
-    tone,
-    animateOnTap,
-    border,
-    contained,
-    disabled,
-    dropdown,
-    extraWide,
-    highLabel,
-    inactivate,
-    inactive,
-    ink,
-    label,
-    parentClassName: "",
-    raised: false,
-    selected: false,
-    separatorAtStart: false,
-    shadowDepth,
-    tabindex: 0,
-    textStyle,
-    url: { href: "javascript:false" },
-    wash,
-  };
-
   $: R_inactive = inactive || $isInactive;
 
   const onClickHandler = events.onclick || (() => {});

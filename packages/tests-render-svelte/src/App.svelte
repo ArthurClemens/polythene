@@ -4,6 +4,11 @@
 </script>
 
 <style>
+
+:global(.pe-rtl) {
+	direction: rtl;
+}
+
 :global(body) {
 	margin: 0;
 }

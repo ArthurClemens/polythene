@@ -4,7 +4,7 @@
   import { ShadowCSS } from "polythene-css";
 
   ShadowCSS.addStyle(".example-shadow-themed-shadow", {
-    shadow_bottom_depth_1: "5px 5px 5px 0px rgba(142, 36, 170, 0.5)"
+    shadow_bottom_depth_1: "10px 10px 10px 0px rgba(142, 36, 170, 0.3)"
   });
 
   ShadowCSS.addStyle(".example-shadow-themed-shadow-depth", {

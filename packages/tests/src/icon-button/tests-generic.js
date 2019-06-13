@@ -36,7 +36,6 @@ export default ({ IconButton, Icon, SVG, h, a }) => {
         attrs,
         { size }
       ),
-      size,
       label: size
     })
   );

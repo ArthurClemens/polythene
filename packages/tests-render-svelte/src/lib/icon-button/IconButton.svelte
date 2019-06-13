@@ -3,28 +3,31 @@
   import { Icon } from "../icon";
   import classes from "polythene-css-classes/icon-button";
 
-  export let wash = false;
-  export let animateOnTap = false;
   export let compact = false;
-  export let parentClassName = undefined;
   export let icon = undefined;
   export let label = undefined;
+  export let parentClassName = undefined;
 
   const parentClassNames = [
     parentClassName || classes.component,
     compact ? classes.compact : null,
   ].join(" ");
 
-  const buttonProps = {
-    wash,
-    animateOnTap,
+  const defaultButtonProps = {
+    wash: false,
+    animateOnTap: false,
     parentClassName: parentClassNames,
   };
+
+  // Reset pass through
+  delete $$props.icon;
+  delete $$props.label;
+
 </script>
 
-<Button {...buttonProps} {...$$props} label={undefined}>
+<Button {...defaultButtonProps} {...$$props}>
   <div class={classes.content}>
-    <Icon {...$$props}>
+    <Icon {...icon}>
       <!-- Icon contents -->
       <slot />
     </Icon>

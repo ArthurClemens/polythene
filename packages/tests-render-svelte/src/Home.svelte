@@ -9,10 +9,10 @@
       <a href="/button" use:link>Button</a>
     </li>
     <li>
-      <a href="/icon-button" use:link>Icon Button</a>
+      <a href="/icon" use:link>Icon</a>
     </li>
     <li>
-      <a href="/icon" use:link>Icon</a>
+      <a href="/icon-button" use:link>Icon Button</a>
     </li>
     <li>
       <a href="/shadow" use:link>Shadow</a>

@@ -20,7 +20,7 @@
     animation_duration:           "100ms",
   });
 
-  const sizeNames = ["small", "regular", "medium", "large"];
+  const iconSizeNames = ["small", "regular", "medium", "large"];
 </script>
 
 <div class="page">
@@ -39,8 +39,8 @@
   <div class="example">
     <div class="example-info">Option: size</div>
     <div class="example-component">
-      {#each sizeNames as sizeName}
-        <IconButton size={sizeName}>
+      {#each iconSizeNames as sizeName}
+        <IconButton icon={{ size: sizeName }}>
           <LockSVG />
         </IconButton>
       {/each}
