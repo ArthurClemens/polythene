@@ -37,13 +37,6 @@
   </div>
 
   <div class="example">
-    <div class="example-info">Option: inactivate (for 2 secs)</div>
-    <div class="example-component">
-      <Button label="Button" inactivate="2" />
-    </div>
-  </div>
-
-  <div class="example">
     <div class="example-info">Themed (color)</div>
     <div class="example-component">
       <Button raised label="Button" className="tests-button-themed-button" />
@@ -101,6 +94,13 @@
     <div class="example-info">Option: dropdown with label (not interactive) -- see Menu examples</div>
     <div class="example-component">
       <Button label="Button" dropdown />
+    </div>
+  </div>
+
+  <div class="example interactive">
+    <div class="example-info">Option: inactivate (for 2 secs)</div>
+    <div class="example-component">
+      <Button raised label="Button" inactivate="2" />
     </div>
   </div>
   

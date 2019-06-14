@@ -1795,6 +1795,37 @@ var app = (function () {
 
     var isClient = typeof document !== "undefined";
     var isServer = !isClient;
+
+    // @ts-check
+    /**
+     * @type {{[s: string]: string}} evts
+     */
+
+    var evts = {
+      "animation": "animationend",
+      "OAnimation": "oAnimationEnd",
+      "MozAnimation": "animationend",
+      "WebkitAnimation": "webkitAnimationEnd"
+    };
+    var getAnimationEndEvent = function getAnimationEndEvent() {
+      if (isClient) {
+        var el = document.createElement("fakeelement");
+        /**
+         * @type {string} a
+         */
+
+        for (var a in evts) {
+          /**
+           * @type {object} style
+           */
+          var style = el.style;
+
+          if (style[a] !== undefined) {
+            return evts[a];
+          }
+        }
+      }
+    };
     /**
      * 
      * @param {string} durationStr 
@@ -10730,6 +10761,7 @@ var app = (function () {
     // @ts-check
     var fns$k = [layout$m, color$j];
     var selector$l = ".".concat(classes$l.component);
+    var addStyle$5 = styler.createAddStyle(selector$l, fns$k, rippleVars);
 
     var addGeneralStyleToHead$l = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -12077,7 +12109,7 @@ var app = (function () {
     // @ts-check
     var fns$o = [layout$q, color$n];
     var selector$p = ".".concat(classes$p.component);
-    var addStyle$5 = styler.createAddStyle(selector$p, fns$o, svgVars);
+    var addStyle$6 = styler.createAddStyle(selector$p, fns$o, svgVars);
 
     var addGeneralStyleToHead$p = function addGeneralStyleToHead() {
       return styler.addStyle({
@@ -15546,7 +15578,538 @@ var app = (function () {
     	}
     }
 
+    var ANIMATION_END_EVENT = getAnimationEndEvent();
+    var DEFAULT_START_OPACITY = 0.2;
+    var DEFAULT_END_OPACITY = 0.0;
+    var DEFAULT_START_SCALE = 0.1;
+    var DEFAULT_END_SCALE = 2.0;
+    var OPACITY_DECAY_VELOCITY = 0.35;
+
+    var addStyleToHead = function addStyleToHead(id, stylesheet) {
+      if (isServer) return;
+      var documentRef = window.document;
+      var styleEl = documentRef.createElement("style");
+      styleEl.setAttribute("id", id);
+      styleEl.appendChild(documentRef.createTextNode(stylesheet));
+      documentRef.head.appendChild(styleEl);
+    };
+
+    var removeStyleFromHead = function removeStyleFromHead(id) {
+      if (isServer) return;
+      var el = document.getElementById(id);
+
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    };
+
+    var rippleAnimation = function rippleAnimation(_ref) {
+      var e = _ref.e,
+          id = _ref.id,
+          el = _ref.el,
+          props = _ref.props,
+          classes = _ref.classes;
+      return new Promise(function (resolve) {
+        var container = document.createElement("div");
+        container.setAttribute("class", classes.mask);
+        el.appendChild(container);
+        var waves = document.createElement("div");
+        waves.setAttribute("class", classes.waves);
+        container.appendChild(waves);
+        var rect = el.getBoundingClientRect();
+        var x = isTouch && e.touches ? e.touches[0].pageX : e.clientX;
+        var y = isTouch && e.touches ? e.touches[0].pageY : e.clientY;
+        var w = el.offsetWidth;
+        var h = el.offsetHeight;
+        var waveRadius = Math.sqrt(w * w + h * h);
+        var mx = props.center ? rect.left + rect.width / 2 : x;
+        var my = props.center ? rect.top + rect.height / 2 : y;
+        var rx = mx - rect.left - waveRadius / 2;
+        var ry = my - rect.top - waveRadius / 2;
+        var startOpacity = props.startOpacity !== undefined ? props.startOpacity : DEFAULT_START_OPACITY;
+        var opacityDecayVelocity = props.opacityDecayVelocity !== undefined ? props.opacityDecayVelocity : OPACITY_DECAY_VELOCITY;
+        var endOpacity = props.endOpacity || DEFAULT_END_OPACITY;
+        var startScale = props.startScale || DEFAULT_START_SCALE;
+        var endScale = props.endScale || DEFAULT_END_SCALE;
+        var duration = props.duration ? props.duration : 1 / opacityDecayVelocity * 0.2;
+        var color = window.getComputedStyle(el).color;
+        var style = waves.style;
+        style.width = style.height = waveRadius + "px";
+        style.top = ry + "px";
+        style.left = rx + "px";
+        style["animation-duration"] = style["-webkit-animation-duration"] = style["-moz-animation-duration"] = style["-o-animation-duration"] = duration + "s";
+        style.backgroundColor = color;
+        style.opacity = startOpacity;
+        style.animationName = id;
+        style.animationTimingFunction = props.animationTimingFunction || vars.animation_curve_default;
+        var rippleStyleSheet = "@keyframes ".concat(id, " {\n      0% {\n        transform:scale(").concat(startScale, ");\n        opacity: ").concat(startOpacity, "\n      }\n      100% {\n        transform:scale(").concat(endScale, ");\n        opacity: ").concat(endOpacity, ";\n      }\n    }");
+        addStyleToHead(id, rippleStyleSheet);
+
+        var animationDone = function animationDone(evt) {
+          removeStyleFromHead(id);
+          waves.removeEventListener(ANIMATION_END_EVENT, animationDone, false);
+
+          if (props.persistent) {
+            style.opacity = endOpacity;
+            style.transform = "scale(" + endScale + ")";
+          } else {
+            waves.classList.remove(classes.wavesAnimating);
+            container.removeChild(waves);
+            el.removeChild(container);
+          }
+
+          resolve(evt);
+        };
+
+        waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
+        waves.classList.add(classes.wavesAnimating);
+      });
+    };
+
     var classes$w = {
+      component:      "pe-ripple",
+
+      // elements
+      mask:           "pe-ripple__mask",
+      waves:          "pe-ripple__waves",
+
+      // states
+      unconstrained:  "pe-ripple--unconstrained",
+      wavesAnimating: "pe-ripple__waves--animating",
+    };
+
+    /* src/lib/ripple/Ripple.svelte generated by Svelte v3.5.1 */
+
+    const file$5 = "src/lib/ripple/Ripple.svelte";
+
+    const get_after_slot_changes$3 = ({}) => ({});
+    const get_after_slot_context$3 = ({}) => ({});
+
+    const get_before_slot_changes$3 = ({}) => ({});
+    const get_before_slot_context$3 = ({}) => ({});
+
+    function create_fragment$6(ctx) {
+    	var div, t0, t1, current;
+
+    	const before_slot_1 = ctx.$$slots.before;
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$3);
+
+    	const default_slot_1 = ctx.$$slots.default;
+    	const default_slot = create_slot(default_slot_1, ctx, null);
+
+    	const after_slot_1 = ctx.$$slots.after;
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
+
+    	var div_levels = [
+    		{ "data-uid": ctx.uid },
+    		{ class: ctx.R_classNames },
+    		(ctx.style && {style: ctx.style}),
+    		(ctx.id && { 'id': ctx.id }),
+    		{ 'data-test-id': ctx.testId }
+    	];
+
+    	var div_data = {};
+    	for (var i = 0; i < div_levels.length; i += 1) {
+    		div_data = assign(div_data, div_levels[i]);
+    	}
+
+    	return {
+    		c: function create() {
+    			div = element("div");
+
+    			if (before_slot) before_slot.c();
+    			t0 = space();
+
+    			if (default_slot) default_slot.c();
+    			t1 = space();
+
+    			if (after_slot) after_slot.c();
+
+    			set_attributes(div, div_data);
+    			add_location(div, file$5, 101, 0, 2753);
+    		},
+
+    		l: function claim(nodes) {
+    			if (before_slot) before_slot.l(div_nodes);
+
+    			if (default_slot) default_slot.l(div_nodes);
+
+    			if (after_slot) after_slot.l(div_nodes);
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target_1, anchor) {
+    			insert(target_1, div, anchor);
+
+    			if (before_slot) {
+    				before_slot.m(div, null);
+    			}
+
+    			append(div, t0);
+
+    			if (default_slot) {
+    				default_slot.m(div, null);
+    			}
+
+    			append(div, t1);
+
+    			if (after_slot) {
+    				after_slot.m(div, null);
+    			}
+
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (before_slot && before_slot.p && changed.$$scope) {
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$3), get_slot_context(before_slot_1, ctx, get_before_slot_context$3));
+    			}
+
+    			if (default_slot && default_slot.p && changed.$$scope) {
+    				default_slot.p(get_slot_changes(default_slot_1, ctx, changed, null), get_slot_context(default_slot_1, ctx, null));
+    			}
+
+    			if (after_slot && after_slot.p && changed.$$scope) {
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$3), get_slot_context(after_slot_1, ctx, get_after_slot_context$3));
+    			}
+
+    			set_attributes(div, get_spread_update(div_levels, [
+    				(changed.uid) && { "data-uid": ctx.uid },
+    				(changed.R_classNames) && { class: ctx.R_classNames },
+    				(changed.style) && (ctx.style && {style: ctx.style}),
+    				(changed.id) && (ctx.id && { 'id': ctx.id }),
+    				(changed.testId) && { 'data-test-id': ctx.testId }
+    			]));
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			if (before_slot && before_slot.i) before_slot.i(local);
+    			if (default_slot && default_slot.i) default_slot.i(local);
+    			if (after_slot && after_slot.i) after_slot.i(local);
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			if (before_slot && before_slot.o) before_slot.o(local);
+    			if (default_slot && default_slot.o) default_slot.o(local);
+    			if (after_slot && after_slot.o) after_slot.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div);
+    			}
+
+    			if (before_slot) before_slot.d(detaching);
+
+    			if (default_slot) default_slot.d(detaching);
+
+    			if (after_slot) after_slot.d(detaching);
+    		}
+    	};
+    }
+
+    function instance$6($$self, $$props, $$invalidate) {
+    	let $animationCount;
+
+    	
+       
+      // Store
+      const animationCount = writable(0); validate_store(animationCount, 'animationCount'); subscribe($$self, animationCount, $$value => { $animationCount = $$value; $$invalidate('$animationCount', $animationCount); });
+
+      // DOM bindings
+      let domElement;
+      const uid = v4_1();
+
+      // Common vars
+      let { className = "", id = undefined, style = undefined, testId = undefined, tone = undefined, disabled = false, unconstrained = false, multi = false, target = undefined, start = undefined, end = undefined, duration = undefined, center = false, startOpacity = undefined, endOpacity = undefined, opacityDecayVelocity = undefined, startScale = undefined, endScale = undefined, animationTimingFunction = undefined, persistent = false } = $$props;
+
+      const tap = e => {
+        if (disabled || !domElement || (!multi && $animationCount > 0)) {
+          return;
+        }
+        if (start) {
+          start(e);
+        }
+        const id = `ripple_animation_${new Date().getTime()}`;
+        const props = {
+          duration,
+          center,
+          startOpacity,
+          endOpacity,
+          opacityDecayVelocity,
+          startScale,
+          endScale,
+          animationTimingFunction,
+          persistent,
+        };
+        const animation = rippleAnimation({ e, id, el: domElement, props, classes: classes$w })
+          .then(evt => {
+            if (end) {
+              end(evt);
+            }
+            animationCount.set($animationCount - 1);
+          });
+        animationCount.set($animationCount + 1);
+      };
+
+      onMount(() => {
+        domElement = document.querySelector(`[data-uid="${uid}"]`);
+        const triggerEl = target || (domElement ? domElement.parentElement : undefined);
+
+        if (triggerEl && triggerEl.addEventListener) {
+          pointerEndEvent.forEach(evt =>
+            triggerEl.addEventListener(evt, tap, false));
+        
+          return () => {
+            pointerEndEvent.forEach(evt =>
+              triggerEl.removeEventListener(evt, tap, false));
+          };
+        }
+      });
+
+    	const writable_props = ['className', 'id', 'style', 'testId', 'tone', 'disabled', 'unconstrained', 'multi', 'target', 'start', 'end', 'duration', 'center', 'startOpacity', 'endOpacity', 'opacityDecayVelocity', 'startScale', 'endScale', 'animationTimingFunction', 'persistent'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Ripple> was created with unknown prop '${key}'`);
+    	});
+
+    	let { $$slots = {}, $$scope } = $$props;
+
+    	$$self.$set = $$props => {
+    		if ('className' in $$props) $$invalidate('className', className = $$props.className);
+    		if ('id' in $$props) $$invalidate('id', id = $$props.id);
+    		if ('style' in $$props) $$invalidate('style', style = $$props.style);
+    		if ('testId' in $$props) $$invalidate('testId', testId = $$props.testId);
+    		if ('tone' in $$props) $$invalidate('tone', tone = $$props.tone);
+    		if ('disabled' in $$props) $$invalidate('disabled', disabled = $$props.disabled);
+    		if ('unconstrained' in $$props) $$invalidate('unconstrained', unconstrained = $$props.unconstrained);
+    		if ('multi' in $$props) $$invalidate('multi', multi = $$props.multi);
+    		if ('target' in $$props) $$invalidate('target', target = $$props.target);
+    		if ('start' in $$props) $$invalidate('start', start = $$props.start);
+    		if ('end' in $$props) $$invalidate('end', end = $$props.end);
+    		if ('duration' in $$props) $$invalidate('duration', duration = $$props.duration);
+    		if ('center' in $$props) $$invalidate('center', center = $$props.center);
+    		if ('startOpacity' in $$props) $$invalidate('startOpacity', startOpacity = $$props.startOpacity);
+    		if ('endOpacity' in $$props) $$invalidate('endOpacity', endOpacity = $$props.endOpacity);
+    		if ('opacityDecayVelocity' in $$props) $$invalidate('opacityDecayVelocity', opacityDecayVelocity = $$props.opacityDecayVelocity);
+    		if ('startScale' in $$props) $$invalidate('startScale', startScale = $$props.startScale);
+    		if ('endScale' in $$props) $$invalidate('endScale', endScale = $$props.endScale);
+    		if ('animationTimingFunction' in $$props) $$invalidate('animationTimingFunction', animationTimingFunction = $$props.animationTimingFunction);
+    		if ('persistent' in $$props) $$invalidate('persistent', persistent = $$props.persistent);
+    		if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    	};
+
+    	let R_classNames;
+
+    	$$self.$$.update = ($$dirty = { unconstrained: 1, tone: 1, className: 1 }) => {
+    		if ($$dirty.unconstrained || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
+            classes$w.component,
+            unconstrained ? classes$w.unconstrained : null,
+            tone === "dark" ? "pe-dark-tone" : undefined,
+            tone === "light" ? "pe-light-tone" : undefined,
+            className,
+          ].join(" ")); }
+    	};
+
+    	return {
+    		animationCount,
+    		uid,
+    		className,
+    		id,
+    		style,
+    		testId,
+    		tone,
+    		disabled,
+    		unconstrained,
+    		multi,
+    		target,
+    		start,
+    		end,
+    		duration,
+    		center,
+    		startOpacity,
+    		endOpacity,
+    		opacityDecayVelocity,
+    		startScale,
+    		endScale,
+    		animationTimingFunction,
+    		persistent,
+    		R_classNames,
+    		$$slots,
+    		$$scope
+    	};
+    }
+
+    class Ripple extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, ["className", "id", "style", "testId", "tone", "disabled", "unconstrained", "multi", "target", "start", "end", "duration", "center", "startOpacity", "endOpacity", "opacityDecayVelocity", "startScale", "endScale", "animationTimingFunction", "persistent"]);
+    	}
+
+    	get className() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set className(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get id() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set id(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get style() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set style(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get testId() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set testId(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get tone() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set tone(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get disabled() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set disabled(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get unconstrained() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set unconstrained(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get multi() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set multi(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get target() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set target(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get start() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set start(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get end() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set end(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get duration() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set duration(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get center() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set center(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get startOpacity() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set startOpacity(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get endOpacity() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set endOpacity(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get opacityDecayVelocity() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set opacityDecayVelocity(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get startScale() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set startScale(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get endScale() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set endScale(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get animationTimingFunction() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set animationTimingFunction(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get persistent() {
+    		throw new Error("<Ripple>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set persistent(value) {
+    		throw new Error("<Ripple>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    var classes$x = {
       component:        "pe-text-button",
       super:            "pe-button",
       row:              "pe-button-row",
@@ -15577,9 +16140,9 @@ var app = (function () {
 
     /* src/lib/button/IconDropdownDown.svelte generated by Svelte v3.5.1 */
 
-    const file$5 = "src/lib/button/IconDropdownDown.svelte";
+    const file$6 = "src/lib/button/IconDropdownDown.svelte";
 
-    function create_fragment$6(ctx) {
+    function create_fragment$7(ctx) {
     	var svg, path;
 
     	return {
@@ -15587,13 +16150,13 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M7 10l5 5 5-5z");
-    			add_location(path, file$5, 0, 100, 100);
+    			add_location(path, file$6, 0, 100, 100);
     			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr(svg, "id", "dd-down-svg");
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$5, 0, 0, 0);
+    			add_location(svg, file$6, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -15620,15 +16183,15 @@ var app = (function () {
     class IconDropdownDown extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$6, safe_not_equal, []);
+    		init(this, options, null, create_fragment$7, safe_not_equal, []);
     	}
     }
 
     /* src/lib/button/TextLabel.svelte generated by Svelte v3.5.1 */
 
-    const file$6 = "src/lib/button/TextLabel.svelte";
+    const file$7 = "src/lib/button/TextLabel.svelte";
 
-    function create_fragment$7(ctx) {
+    function create_fragment$8(ctx) {
     	var div1, div0, t, div0_class_value, div1_class_value;
 
     	return {
@@ -15636,11 +16199,11 @@ var app = (function () {
     			div1 = element("div");
     			div0 = element("div");
     			t = text(ctx.label);
-    			div0.className = div0_class_value = classes$w.textLabel;
+    			div0.className = div0_class_value = classes$x.textLabel;
     			div0.style.cssText = ctx.textStyle;
-    			add_location(div0, file$6, 8, 2, 168);
-    			div1.className = div1_class_value = classes$w.label;
-    			add_location(div1, file$6, 7, 0, 138);
+    			add_location(div0, file$7, 8, 2, 168);
+    			div1.className = div1_class_value = classes$x.label;
+    			add_location(div1, file$7, 7, 0, 138);
     		},
 
     		l: function claim(nodes) {
@@ -15674,7 +16237,7 @@ var app = (function () {
     	};
     }
 
-    function instance$6($$self, $$props, $$invalidate) {
+    function instance$7($$self, $$props, $$invalidate) {
     	let { label = "", textStyle = undefined } = $$props;
 
     	const writable_props = ['label', 'textStyle'];
@@ -15693,7 +16256,7 @@ var app = (function () {
     class TextLabel extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$6, create_fragment$7, safe_not_equal, ["label", "textStyle"]);
+    		init(this, options, instance$7, create_fragment$8, safe_not_equal, ["label", "textStyle"]);
     	}
 
     	get label() {
@@ -15715,41 +16278,69 @@ var app = (function () {
 
     /* src/lib/button/Button.svelte generated by Svelte v3.5.1 */
 
-    const file$7 = "src/lib/button/Button.svelte";
+    const file$8 = "src/lib/button/Button.svelte";
 
-    const get_after_slot_changes$3 = ({}) => ({});
-    const get_after_slot_context$3 = ({}) => ({});
+    const get_after_slot_changes$4 = ({}) => ({});
+    const get_after_slot_context$4 = ({}) => ({});
 
     const get_label_slot_changes = ({}) => ({});
     const get_label_slot_context = ({}) => ({});
 
-    const get_before_slot_changes$3 = ({}) => ({});
-    const get_before_slot_context$3 = ({}) => ({});
+    const get_before_slot_changes$4 = ({}) => ({});
+    const get_before_slot_context$4 = ({}) => ({});
 
-    // (164:4) {#if disabled || noInk}
+    // (166:4) {#if disabled || noInk}
     function create_if_block_2(ctx) {
-    	var div;
+    	var current;
+
+    	var ripple_1_spread_levels = [
+    		ctx.ripple,
+    		{ target: ctx.domElement }
+    	];
+
+    	let ripple_1_props = {};
+    	for (var i = 0; i < ripple_1_spread_levels.length; i += 1) {
+    		ripple_1_props = assign(ripple_1_props, ripple_1_spread_levels[i]);
+    	}
+    	var ripple_1 = new Ripple({ props: ripple_1_props, $$inline: true });
 
     	return {
     		c: function create() {
-    			div = element("div");
-    			div.className = "pe-ripple";
-    			add_location(div, file$7, 164, 6, 4808);
+    			ripple_1.$$.fragment.c();
     		},
 
     		m: function mount(target, anchor) {
-    			insert(target, div, anchor);
+    			mount_component(ripple_1, target, anchor);
+    			current = true;
+    		},
+
+    		p: function update(changed, ctx) {
+    			var ripple_1_changes = (changed.ripple || changed.domElement) ? get_spread_update(ripple_1_spread_levels, [
+    				(changed.ripple) && ctx.ripple,
+    				(changed.domElement) && { target: ctx.domElement }
+    			]) : {};
+    			ripple_1.$set(ripple_1_changes);
+    		},
+
+    		i: function intro(local) {
+    			if (current) return;
+    			ripple_1.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			ripple_1.$$.fragment.o(local);
+    			current = false;
     		},
 
     		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(div);
-    			}
+    			ripple_1.$destroy(detaching);
     		}
     	};
     }
 
-    // (175:4) {:else}
+    // (177:4) {:else}
     function create_else_block$1(ctx) {
     	var current;
 
@@ -15796,7 +16387,7 @@ var app = (function () {
     	};
     }
 
-    // (173:4) {#if label !== undefined}
+    // (175:4) {#if label !== undefined}
     function create_if_block_1(ctx) {
     	var current;
 
@@ -15843,13 +16434,13 @@ var app = (function () {
     	};
     }
 
-    // (179:4) {#if dropdown}
+    // (181:4) {#if dropdown}
     function create_if_block$1(ctx) {
     	var current;
 
     	var icon = new Icon({
     		props: {
-    		className: classes$w.dropdown,
+    		className: classes$x.dropdown,
     		$$slots: { default: [create_default_slot$1] },
     		$$scope: { ctx }
     	},
@@ -15868,7 +16459,7 @@ var app = (function () {
 
     		p: function update(changed, ctx) {
     			var icon_changes = {};
-    			if (changed.classes) icon_changes.className = classes$w.dropdown;
+    			if (changed.classes) icon_changes.className = classes$x.dropdown;
     			if (changed.$$scope) icon_changes.$$scope = { changed, ctx };
     			icon.$set(icon_changes);
     		},
@@ -15891,7 +16482,7 @@ var app = (function () {
     	};
     }
 
-    // (180:6) <Icon className={classes.dropdown}>
+    // (182:6) <Icon className={classes.dropdown}>
     function create_default_slot$1(ctx) {
     	var current;
 
@@ -15925,11 +16516,11 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$8(ctx) {
+    function create_fragment$9(ctx) {
     	var a, t0, div2, t1, t2, div1, div0, t3, t4, current_block_type_index, if_block1, t5, t6, current;
 
     	const before_slot_1 = ctx.$$slots.before;
-    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$3);
+    	const before_slot = create_slot(before_slot_1, ctx, get_before_slot_context$4);
 
     	var shadow = new Shadow({
     		props: {
@@ -15939,7 +16530,7 @@ var app = (function () {
     		$$inline: true
     	});
 
-    	var if_block0 = (ctx.disabled || ctx.noInk) && create_if_block_2();
+    	var if_block0 = (ctx.disabled || ctx.noInk) && create_if_block_2(ctx);
 
     	const label_slot_1 = ctx.$$slots.label;
     	const label_slot = create_slot(label_slot_1, ctx, get_label_slot_context);
@@ -15962,7 +16553,7 @@ var app = (function () {
     	var if_block2 = (ctx.dropdown) && create_if_block$1(ctx);
 
     	const after_slot_1 = ctx.$$slots.after;
-    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$3);
+    	const after_slot = create_slot(after_slot_1, ctx, get_after_slot_context$4);
 
     	var a_levels = [
     		{ href: null },
@@ -15999,15 +16590,15 @@ var app = (function () {
     			if (after_slot) after_slot.c();
 
     			div0.className = "pe-button__wash-color";
-    			add_location(div0, file$7, 167, 6, 4884);
+    			add_location(div0, file$8, 169, 6, 4983);
     			div1.className = "pe-button__wash";
-    			add_location(div1, file$7, 166, 4, 4848);
+    			add_location(div1, file$8, 168, 4, 4947);
 
     			div2.className = "pe-button__content";
-    			add_location(div2, file$7, 161, 2, 4690);
+    			add_location(div2, file$8, 163, 2, 4772);
 
     			set_attributes(a, a_data);
-    			add_location(a, file$7, 159, 0, 4629);
+    			add_location(a, file$8, 161, 0, 4711);
     		},
 
     		l: function claim(nodes) {
@@ -16055,7 +16646,7 @@ var app = (function () {
 
     		p: function update(changed, ctx) {
     			if (before_slot && before_slot.p && changed.$$scope) {
-    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$3), get_slot_context(before_slot_1, ctx, get_before_slot_context$3));
+    				before_slot.p(get_slot_changes(before_slot_1, ctx, changed, get_before_slot_changes$4), get_slot_context(before_slot_1, ctx, get_before_slot_context$4));
     			}
 
     			var shadow_changes = {};
@@ -16063,14 +16654,24 @@ var app = (function () {
     			shadow.$set(shadow_changes);
 
     			if (ctx.disabled || ctx.noInk) {
-    				if (!if_block0) {
-    					if_block0 = create_if_block_2();
+    				if (if_block0) {
+    					if_block0.p(changed, ctx);
+    					if_block0.i(1);
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
+    					if_block0.i(1);
     					if_block0.m(div2, t2);
     				}
     			} else if (if_block0) {
-    				if_block0.d(1);
-    				if_block0 = null;
+    				group_outros();
+    				on_outro(() => {
+    					if_block0.d(1);
+    					if_block0 = null;
+    				});
+
+    				if_block0.o(1);
+    				check_outros();
     			}
 
     			if (label_slot && label_slot.p && changed.$$scope) {
@@ -16121,7 +16722,7 @@ var app = (function () {
     			}
 
     			if (after_slot && after_slot.p && changed.$$scope) {
-    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$3), get_slot_context(after_slot_1, ctx, get_after_slot_context$3));
+    				after_slot.p(get_slot_changes(after_slot_1, ctx, changed, get_after_slot_changes$4), get_slot_context(after_slot_1, ctx, get_after_slot_context$4));
     			}
 
     			set_attributes(a, get_spread_update(a_levels, [
@@ -16136,6 +16737,7 @@ var app = (function () {
 
     			shadow.$$.fragment.i(local);
 
+    			if (if_block0) if_block0.i();
     			if (label_slot && label_slot.i) label_slot.i(local);
     			if (if_block1) if_block1.i();
     			if (if_block2) if_block2.i();
@@ -16146,6 +16748,7 @@ var app = (function () {
     		o: function outro(local) {
     			if (before_slot && before_slot.o) before_slot.o(local);
     			shadow.$$.fragment.o(local);
+    			if (if_block0) if_block0.o();
     			if (label_slot && label_slot.o) label_slot.o(local);
     			if (if_block1) if_block1.o();
     			if (if_block2) if_block2.o();
@@ -16173,7 +16776,7 @@ var app = (function () {
     	};
     }
 
-    function instance$7($$self, $$props, $$invalidate) {
+    function instance$8($$self, $$props, $$invalidate) {
     	let $isInactive;
 
     	
@@ -16186,11 +16789,11 @@ var app = (function () {
       let domElement;
 
       onMount(() => {
-        domElement = document.querySelector(`[data-uid="${uid}"]`);
+        $$invalidate('domElement', domElement = document.querySelector(`[data-uid="${uid}"]`));
       });
 
       // Common vars
-      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined } = $$props;
+      let { className = "", events = {}, id = undefined, style = undefined, testId = undefined, tone = undefined, animateOnTap = undefined, border = false, contained = false, disabled = false, dropdown = undefined, extraWide = false, highLabel = false, inactivate = false, inactive = false, ink = false, label = undefined, parentClassName = "", raised = false, ripple = {}, selected = false, separatorAtStart = false, shadowDepth = undefined, tabindex = 0, textStyle = undefined, url = { href: "javascript:false" }, wash = undefined } = $$props;
 
       const onClickHandler = events.onclick || (() => {});
       const onKeyUpHandler = events.onkeyup || onClickHandler;
@@ -16244,7 +16847,7 @@ var app = (function () {
       const noInk = ink !== undefined && ink === false;
       const tabIndex = disabled || inactive ? -1 : tabindex || 0;
 
-    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash'];
+    	const writable_props = ['className', 'events', 'id', 'style', 'testId', 'tone', 'animateOnTap', 'border', 'contained', 'disabled', 'dropdown', 'extraWide', 'highLabel', 'inactivate', 'inactive', 'ink', 'label', 'parentClassName', 'raised', 'ripple', 'selected', 'separatorAtStart', 'shadowDepth', 'tabindex', 'textStyle', 'url', 'wash'];
     	Object.keys($$props).forEach(key => {
     		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Button> was created with unknown prop '${key}'`);
     	});
@@ -16271,6 +16874,7 @@ var app = (function () {
     		if ('label' in $$props) $$invalidate('label', label = $$props.label);
     		if ('parentClassName' in $$props) $$invalidate('parentClassName', parentClassName = $$props.parentClassName);
     		if ('raised' in $$props) $$invalidate('raised', raised = $$props.raised);
+    		if ('ripple' in $$props) $$invalidate('ripple', ripple = $$props.ripple);
     		if ('selected' in $$props) $$invalidate('selected', selected = $$props.selected);
     		if ('separatorAtStart' in $$props) $$invalidate('separatorAtStart', separatorAtStart = $$props.separatorAtStart);
     		if ('shadowDepth' in $$props) $$invalidate('shadowDepth', shadowDepth = $$props.shadowDepth);
@@ -16286,30 +16890,30 @@ var app = (function () {
     	$$self.$$.update = ($$dirty = { inactive: 1, $isInactive: 1, parentClassName: 1, contained: 1, raised: 1, selected: 1, highLabel: 1, extraWide: 1, disabled: 1, R_inactive: 1, separatorAtStart: 1, border: 1, dropdown: 1, tone: 1, className: 1, R_classNames: 1, style: 1, id: 1, testId: 1, events: 1, url: 1 }) => {
     		if ($$dirty.inactive || $$dirty.$isInactive) { $$invalidate('R_inactive', R_inactive = inactive || $isInactive); }
     		if ($$dirty.parentClassName || $$dirty.contained || $$dirty.raised || $$dirty.selected || $$dirty.highLabel || $$dirty.extraWide || $$dirty.disabled || $$dirty.R_inactive || $$dirty.separatorAtStart || $$dirty.border || $$dirty.dropdown || $$dirty.tone || $$dirty.className) { $$invalidate('R_classNames', R_classNames = [
-            classes$w.super,
-            parentClassName || classes$w.component,
-            contained ? classes$w.contained : undefined,
+            classes$x.super,
+            parentClassName || classes$x.component,
+            contained ? classes$x.contained : undefined,
             // Raised button classes
-            raised ? classes$w.contained : undefined,
-            raised ? classes$w.raised : undefined,
+            raised ? classes$x.contained : undefined,
+            raised ? classes$x.raised : undefined,
             raised && doesAnimateOnTap ? shadowClasses.with_active_shadow : undefined,
             raised && doesAnimateOnTap
               ? getShadowDepthClass(_shadowDepth + 1)
               : undefined,
             //
-            hasHover ? classes$w.hasHover : undefined,
-            selected ? classes$w.selected : undefined,
-            highLabel ? classes$w.highLabel : undefined,
-            extraWide ? classes$w.extraWide : undefined,
-            disabled ? classes$w.disabled : undefined,
-            R_inactive ? classes$w.inactive : undefined,
-            separatorAtStart ? classes$w.separatorAtStart : undefined,
-            border ? classes$w.border : undefined,
-            dropdown ? classes$w.hasDropdown : undefined,
+            hasHover ? classes$x.hasHover : undefined,
+            selected ? classes$x.selected : undefined,
+            highLabel ? classes$x.highLabel : undefined,
+            extraWide ? classes$x.extraWide : undefined,
+            disabled ? classes$x.disabled : undefined,
+            R_inactive ? classes$x.inactive : undefined,
+            separatorAtStart ? classes$x.separatorAtStart : undefined,
+            border ? classes$x.border : undefined,
+            dropdown ? classes$x.hasDropdown : undefined,
             !!dropdown
               ? dropdown.open
-                ? classes$w.dropdownOpen
-                : classes$w.dropdownClosed
+                ? classes$x.dropdownOpen
+                : classes$x.dropdownClosed
               : undefined,
             tone === "dark" ? "pe-dark-tone" : undefined,
             tone === "light" ? "pe-light-tone" : undefined,
@@ -16332,6 +16936,7 @@ var app = (function () {
 
     	return {
     		isInactive,
+    		domElement,
     		className,
     		events,
     		id,
@@ -16351,6 +16956,7 @@ var app = (function () {
     		label,
     		parentClassName,
     		raised,
+    		ripple,
     		selected,
     		separatorAtStart,
     		shadowDepth,
@@ -16370,7 +16976,7 @@ var app = (function () {
     class Button extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$8, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash"]);
+    		init(this, options, instance$8, create_fragment$9, safe_not_equal, ["className", "events", "id", "style", "testId", "tone", "animateOnTap", "border", "contained", "disabled", "dropdown", "extraWide", "highLabel", "inactivate", "inactive", "ink", "label", "parentClassName", "raised", "ripple", "selected", "separatorAtStart", "shadowDepth", "tabindex", "textStyle", "url", "wash"]);
     	}
 
     	get className() {
@@ -16525,6 +17131,14 @@ var app = (function () {
     		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
+    	get ripple() {
+    		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ripple(value) {
+    		throw new Error("<Button>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
     	get selected() {
     		throw new Error("<Button>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
@@ -16584,7 +17198,7 @@ var app = (function () {
 
     /* src/examples/button/Button.svelte generated by Svelte v3.5.1 */
 
-    const file$8 = "src/examples/button/Button.svelte";
+    const file$9 = "src/examples/button/Button.svelte";
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -16612,7 +17226,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
     			set_style(div, "margin-top", "1em");
-    			add_location(div, file$8, 120, 8, 3206);
+    			add_location(div, file$9, 120, 8, 3225);
     		},
 
     		m: function mount(target, anchor) {
@@ -16667,7 +17281,7 @@ var app = (function () {
     			set_style(div, "border-top", "1px solid #eee");
     			set_style(div, "padding", "5px 0");
     			set_style(div, "color", "#aaa");
-    			add_location(div, file$8, 122, 12, 3295);
+    			add_location(div, file$9, 122, 12, 3314);
     		},
 
     		m: function mount(target, anchor) {
@@ -16689,7 +17303,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$9(ctx) {
+    function create_fragment$a(ctx) {
     	var div27, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, t7, div8, div6, t9, div7, t10, div11, div9, t12, div10, t13, div14, div12, t15, div13, t16, div17, div15, t18, div16, t19, div20, div18, t21, div19, t22, div23, div21, t24, div22, t25, div26, div24, t27, div25, t28, current;
 
     	var button0 = new Button({
@@ -16703,7 +17317,11 @@ var app = (function () {
     	});
 
     	var button2 = new Button({
-    		props: { label: "Button", inactivate: "2" },
+    		props: {
+    		raised: true,
+    		label: "Button",
+    		className: "tests-button-themed-button"
+    	},
     		$$inline: true
     	});
 
@@ -16720,15 +17338,6 @@ var app = (function () {
     		props: {
     		raised: true,
     		label: "Button",
-    		className: "tests-button-themed-button"
-    	},
-    		$$inline: true
-    	});
-
-    	var button5 = new Button({
-    		props: {
-    		raised: true,
-    		label: "Button",
     		shadowDepth: "1",
     		style: "color: red",
     		testId: "A test id"
@@ -16736,8 +17345,17 @@ var app = (function () {
     		$$inline: true
     	});
 
-    	var button6 = new Button({
+    	var button5 = new Button({
     		props: { label: "Button", dropdown: true },
+    		$$inline: true
+    	});
+
+    	var button6 = new Button({
+    		props: {
+    		raised: true,
+    		label: "Button",
+    		inactivate: "2"
+    	},
     		$$inline: true
     	});
 
@@ -16781,35 +17399,35 @@ var app = (function () {
     			t7 = space();
     			div8 = element("div");
     			div6 = element("div");
-    			div6.textContent = "Option: inactivate (for 2 secs)";
+    			div6.textContent = "Themed (color)";
     			t9 = space();
     			div7 = element("div");
     			button2.$$.fragment.c();
     			t10 = space();
     			div11 = element("div");
     			div9 = element("div");
-    			div9.textContent = "Themed (color)";
+    			div9.textContent = "Themed (color) -- dark tone";
     			t12 = space();
     			div10 = element("div");
     			button3.$$.fragment.c();
     			t13 = space();
     			div14 = element("div");
     			div12 = element("div");
-    			div12.textContent = "Themed (color) -- dark tone";
+    			div12.textContent = "Styled button";
     			t15 = space();
     			div13 = element("div");
     			button4.$$.fragment.c();
     			t16 = space();
     			div17 = element("div");
     			div15 = element("div");
-    			div15.textContent = "Styled button";
+    			div15.textContent = "Option: dropdown with label (not interactive) -- see Menu examples";
     			t18 = space();
     			div16 = element("div");
     			button5.$$.fragment.c();
     			t19 = space();
     			div20 = element("div");
     			div18 = element("div");
-    			div18.textContent = "Option: dropdown with label (not interactive) -- see Menu examples";
+    			div18.textContent = "Option: inactivate (for 2 secs)";
     			t21 = space();
     			div19 = element("div");
     			button6.$$.fragment.c();
@@ -16829,63 +17447,63 @@ var app = (function () {
     			button8.$$.fragment.c();
     			t28 = space();
     			if (if_block) if_block.c();
-    			add_location(h1, file$8, 22, 2, 510);
+    			add_location(h1, file$9, 22, 2, 510);
     			div0.className = "example-info";
-    			add_location(div0, file$8, 25, 4, 555);
+    			add_location(div0, file$9, 25, 4, 555);
     			div1.className = "example-component";
-    			add_location(div1, file$8, 26, 4, 606);
+    			add_location(div1, file$9, 26, 4, 606);
     			div2.className = "example";
-    			add_location(div2, file$8, 24, 2, 529);
+    			add_location(div2, file$9, 24, 2, 529);
     			div3.className = "example-info";
-    			add_location(div3, file$8, 32, 4, 719);
+    			add_location(div3, file$9, 32, 4, 719);
     			div4.className = "example-component";
-    			add_location(div4, file$8, 33, 4, 769);
+    			add_location(div4, file$9, 33, 4, 769);
     			div5.className = "example";
-    			add_location(div5, file$8, 31, 2, 693);
+    			add_location(div5, file$9, 31, 2, 693);
     			div6.className = "example-info";
-    			add_location(div6, file$8, 39, 4, 889);
+    			add_location(div6, file$9, 39, 4, 889);
     			div7.className = "example-component";
-    			add_location(div7, file$8, 40, 4, 957);
+    			add_location(div7, file$9, 40, 4, 940);
     			div8.className = "example";
-    			add_location(div8, file$8, 38, 2, 863);
+    			add_location(div8, file$9, 38, 2, 863);
     			div9.className = "example-info";
-    			add_location(div9, file$8, 46, 4, 1085);
+    			add_location(div9, file$9, 46, 4, 1112);
     			div10.className = "example-component";
-    			add_location(div10, file$8, 47, 4, 1136);
-    			div11.className = "example";
-    			add_location(div11, file$8, 45, 2, 1059);
+    			add_location(div10, file$9, 47, 4, 1176);
+    			div11.className = "example pe-dark-tone";
+    			add_location(div11, file$9, 45, 2, 1073);
     			div12.className = "example-info";
-    			add_location(div12, file$8, 53, 4, 1308);
+    			add_location(div12, file$9, 81, 4, 2067);
     			div13.className = "example-component";
-    			add_location(div13, file$8, 54, 4, 1372);
-    			div14.className = "example pe-dark-tone";
-    			add_location(div14, file$8, 52, 2, 1269);
+    			add_location(div13, file$9, 82, 4, 2117);
+    			div14.className = "example";
+    			add_location(div14, file$9, 80, 2, 2041);
     			div15.className = "example-info";
-    			add_location(div15, file$8, 88, 4, 2263);
+    			add_location(div15, file$9, 93, 4, 2331);
     			div16.className = "example-component";
-    			add_location(div16, file$8, 89, 4, 2313);
+    			add_location(div16, file$9, 94, 4, 2434);
     			div17.className = "example";
-    			add_location(div17, file$8, 87, 2, 2237);
+    			add_location(div17, file$9, 92, 2, 2305);
     			div18.className = "example-info";
-    			add_location(div18, file$8, 100, 4, 2527);
+    			add_location(div18, file$9, 100, 4, 2568);
     			div19.className = "example-component";
-    			add_location(div19, file$8, 101, 4, 2630);
-    			div20.className = "example";
-    			add_location(div20, file$8, 99, 2, 2501);
+    			add_location(div19, file$9, 101, 4, 2636);
+    			div20.className = "example interactive";
+    			add_location(div20, file$9, 99, 2, 2530);
     			div21.className = "example-info";
-    			add_location(div21, file$8, 107, 4, 2766);
+    			add_location(div21, file$9, 107, 4, 2785);
     			div22.className = "example-component";
-    			add_location(div22, file$8, 108, 4, 2817);
+    			add_location(div22, file$9, 108, 4, 2836);
     			div23.className = "example interactive";
-    			add_location(div23, file$8, 106, 2, 2728);
+    			add_location(div23, file$9, 106, 2, 2747);
     			div24.className = "example-info";
-    			add_location(div24, file$8, 114, 4, 2983);
+    			add_location(div24, file$9, 114, 4, 3002);
     			div25.className = "example-component";
-    			add_location(div25, file$8, 115, 4, 3046);
+    			add_location(div25, file$9, 115, 4, 3065);
     			div26.className = "example interactive";
-    			add_location(div26, file$8, 113, 2, 2945);
+    			add_location(div26, file$9, 113, 2, 2964);
     			div27.className = "page";
-    			add_location(div27, file$8, 20, 0, 488);
+    			add_location(div27, file$9, 20, 0, 488);
     		},
 
     		l: function claim(nodes) {
@@ -17043,7 +17661,7 @@ var app = (function () {
     	};
     }
 
-    function instance$8($$self, $$props, $$invalidate) {
+    function instance$9($$self, $$props, $$invalidate) {
     	
 
       addStyle$2$1(".tests-button-themed-button", {
@@ -17066,15 +17684,15 @@ var app = (function () {
     class Button_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$8, create_fragment$9, safe_not_equal, []);
+    		init(this, options, instance$9, create_fragment$a, safe_not_equal, []);
     	}
     }
 
     /* src/examples/icon/StarSVG.svelte generated by Svelte v3.5.1 */
 
-    const file$9 = "src/examples/icon/StarSVG.svelte";
+    const file$a = "src/examples/icon/StarSVG.svelte";
 
-    function create_fragment$a(ctx) {
+    function create_fragment$b(ctx) {
     	var svg, path;
 
     	return {
@@ -17082,11 +17700,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$9, 0, 48, 48);
+    			add_location(path, file$a, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$9, 0, 0, 0);
+    			add_location(svg, file$a, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -17113,13 +17731,13 @@ var app = (function () {
     class StarSVG extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$a, safe_not_equal, []);
+    		init(this, options, null, create_fragment$b, safe_not_equal, []);
     	}
     }
 
     /* src/examples/icon/Icon.svelte generated by Svelte v3.5.1 */
 
-    const file$a = "src/examples/icon/Icon.svelte";
+    const file$b = "src/examples/icon/Icon.svelte";
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -17467,7 +18085,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$b(ctx) {
+    function create_fragment$c(ctx) {
     	var div27, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, t7, div8, div6, t9, div7, t10, div11, div9, t12, div10, t13, div14, div12, t15, div13, t16, div17, div15, t18, div16, t19, div20, div18, t21, div19, t22, div23, div21, t24, div22, t25, div26, div24, t27, div25, current;
 
     	var icon0 = new Icon({
@@ -17648,63 +18266,63 @@ var app = (function () {
     			t27 = space();
     			div25 = element("div");
     			icon6.$$.fragment.c();
-    			add_location(h1, file$a, 16, 2, 359);
+    			add_location(h1, file$b, 16, 2, 359);
     			div0.className = "example-info";
-    			add_location(div0, file$a, 19, 4, 402);
+    			add_location(div0, file$b, 19, 4, 402);
     			div1.className = "example-component";
-    			add_location(div1, file$a, 20, 4, 452);
+    			add_location(div1, file$b, 20, 4, 452);
     			div2.className = "example";
-    			add_location(div2, file$a, 18, 2, 376);
+    			add_location(div2, file$b, 18, 2, 376);
     			div3.className = "example-info";
-    			add_location(div3, file$a, 28, 4, 580);
+    			add_location(div3, file$b, 28, 4, 580);
     			div4.className = "example-component";
-    			add_location(div4, file$a, 29, 4, 630);
+    			add_location(div4, file$b, 29, 4, 630);
     			div5.className = "example";
-    			add_location(div5, file$a, 27, 2, 554);
+    			add_location(div5, file$b, 27, 2, 554);
     			div6.className = "example-info";
-    			add_location(div6, file$a, 37, 4, 758);
+    			add_location(div6, file$b, 37, 4, 758);
     			div7.className = "example-component";
-    			add_location(div7, file$a, 38, 4, 807);
+    			add_location(div7, file$b, 38, 4, 807);
     			div8.className = "example";
-    			add_location(div8, file$a, 36, 2, 732);
+    			add_location(div8, file$b, 36, 2, 732);
     			div9.className = "example-info";
-    			add_location(div9, file$a, 48, 4, 1007);
+    			add_location(div9, file$b, 48, 4, 1007);
     			div10.className = "example-component";
-    			add_location(div10, file$a, 49, 4, 1068);
+    			add_location(div10, file$b, 49, 4, 1068);
     			div11.className = "example";
-    			add_location(div11, file$a, 47, 2, 981);
+    			add_location(div11, file$b, 47, 2, 981);
     			div12.className = "example-info";
-    			add_location(div12, file$a, 57, 4, 1269);
+    			add_location(div12, file$b, 57, 4, 1269);
     			div13.className = "example-component";
-    			add_location(div13, file$a, 58, 4, 1333);
+    			add_location(div13, file$b, 58, 4, 1333);
     			div14.className = "example";
-    			add_location(div14, file$a, 56, 2, 1243);
+    			add_location(div14, file$b, 56, 2, 1243);
     			div15.className = "example-info";
-    			add_location(div15, file$a, 67, 4, 1549);
+    			add_location(div15, file$b, 67, 4, 1549);
     			div16.className = "example-component";
-    			add_location(div16, file$a, 68, 4, 1599);
+    			add_location(div16, file$b, 68, 4, 1599);
     			div17.className = "example";
-    			add_location(div17, file$a, 66, 2, 1523);
+    			add_location(div17, file$b, 66, 2, 1523);
     			div18.className = "example-info";
-    			add_location(div18, file$a, 76, 4, 1750);
+    			add_location(div18, file$b, 76, 4, 1750);
     			div19.className = "example-component";
-    			add_location(div19, file$a, 77, 4, 1810);
+    			add_location(div19, file$b, 77, 4, 1810);
     			div20.className = "example";
-    			add_location(div20, file$a, 75, 2, 1724);
+    			add_location(div20, file$b, 75, 2, 1724);
     			div21.className = "example-info";
-    			add_location(div21, file$a, 85, 4, 1986);
+    			add_location(div21, file$b, 85, 4, 1986);
     			div22.className = "example-component";
-    			add_location(div22, file$a, 86, 4, 2048);
+    			add_location(div22, file$b, 86, 4, 2048);
     			div23.className = "example pe-dark-tone";
-    			add_location(div23, file$a, 84, 2, 1947);
+    			add_location(div23, file$b, 84, 2, 1947);
     			div24.className = "example-info";
-    			add_location(div24, file$a, 96, 4, 2261);
+    			add_location(div24, file$b, 96, 4, 2261);
     			div25.className = "example-component";
-    			add_location(div25, file$a, 97, 4, 2334);
+    			add_location(div25, file$b, 97, 4, 2334);
     			div26.className = "example pe-dark-tone";
-    			add_location(div26, file$a, 95, 2, 2222);
+    			add_location(div26, file$b, 95, 2, 2222);
     			div27.className = "page";
-    			add_location(div27, file$a, 14, 0, 337);
+    			add_location(div27, file$b, 14, 0, 337);
     		},
 
     		l: function claim(nodes) {
@@ -17913,7 +18531,7 @@ var app = (function () {
     	};
     }
 
-    function instance$9($$self) {
+    function instance$a($$self) {
     	
 
       const sizeNames = ["small", "regular", "medium", "large"];
@@ -17930,11 +18548,11 @@ var app = (function () {
     class Icon_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$9, create_fragment$b, safe_not_equal, []);
+    		init(this, options, instance$a, create_fragment$c, safe_not_equal, []);
     	}
     }
 
-    var classes$x = {
+    var classes$y = {
       component: "pe-button pe-icon-button",
 
       // elements
@@ -17947,7 +18565,7 @@ var app = (function () {
 
     /* src/lib/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
 
-    const file$b = "src/lib/icon-button/IconButton.svelte";
+    const file$c = "src/lib/icon-button/IconButton.svelte";
 
     // (30:4) <Icon {...icon}>
     function create_default_slot_1$1(ctx) {
@@ -18004,8 +18622,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			t = text(ctx.label);
-    			div.className = div_class_value = classes$x.label;
-    			add_location(div, file$b, 36, 6, 811);
+    			div.className = div_class_value = classes$y.label;
+    			add_location(div, file$c, 36, 6, 811);
     		},
 
     		m: function mount(target, anchor) {
@@ -18038,7 +18656,7 @@ var app = (function () {
     			span = element("span");
     			if (if_block) if_block.c();
     			attr(span, "slot", "after");
-    			add_location(span, file$b, 34, 2, 769);
+    			add_location(span, file$c, 34, 2, 769);
     		},
 
     		m: function mount(target, anchor) {
@@ -18093,8 +18711,8 @@ var app = (function () {
     			div = element("div");
     			icon_1.$$.fragment.c();
     			t = space();
-    			div.className = div_class_value = classes$x.content;
-    			add_location(div, file$b, 28, 2, 651);
+    			div.className = div_class_value = classes$y.content;
+    			add_location(div, file$c, 28, 2, 651);
     		},
 
     		m: function mount(target, anchor) {
@@ -18138,7 +18756,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$c(ctx) {
+    function create_fragment$d(ctx) {
     	var current;
 
     	var button_spread_levels = [
@@ -18199,14 +18817,14 @@ var app = (function () {
     	};
     }
 
-    function instance$a($$self, $$props, $$invalidate) {
+    function instance$b($$self, $$props, $$invalidate) {
     	
 
       let { compact = false, icon = undefined, label = undefined, parentClassName = undefined } = $$props;
 
       const parentClassNames = [
-        parentClassName || classes$x.component,
-        compact ? classes$x.compact : null,
+        parentClassName || classes$y.component,
+        compact ? classes$y.compact : null,
       ].join(" ");
 
       const defaultButtonProps = {
@@ -18246,7 +18864,7 @@ var app = (function () {
     class IconButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$a, create_fragment$c, safe_not_equal, ["compact", "icon", "label", "parentClassName"]);
+    		init(this, options, instance$b, create_fragment$d, safe_not_equal, ["compact", "icon", "label", "parentClassName"]);
     	}
 
     	get compact() {
@@ -18284,9 +18902,9 @@ var app = (function () {
 
     /* src/examples/icon-button/LockSVG.svelte generated by Svelte v3.5.1 */
 
-    const file$c = "src/examples/icon-button/LockSVG.svelte";
+    const file$d = "src/examples/icon-button/LockSVG.svelte";
 
-    function create_fragment$d(ctx) {
+    function create_fragment$e(ctx) {
     	var svg, path;
 
     	return {
@@ -18294,12 +18912,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z");
-    			add_location(path, file$c, 0, 83, 83);
+    			add_location(path, file$d, 0, 83, 83);
     			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$c, 0, 0, 0);
+    			add_location(svg, file$d, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -18326,13 +18944,13 @@ var app = (function () {
     class LockSVG extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$d, safe_not_equal, []);
+    		init(this, options, null, create_fragment$e, safe_not_equal, []);
     	}
     }
 
     /* src/examples/icon-button/IconButton.svelte generated by Svelte v3.5.1 */
 
-    const file$d = "src/examples/icon-button/IconButton.svelte";
+    const file$e = "src/examples/icon-button/IconButton.svelte";
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -18660,7 +19278,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$e(ctx) {
+    function create_fragment$f(ctx) {
     	var div24, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, t7, div8, div6, t9, div7, t10, div11, div9, t12, div10, t13, div14, div12, t15, div13, t16, div17, div15, t18, div16, t19, div20, div18, t21, div19, t22, div23, div21, t24, div22, current;
 
     	var iconbutton0 = new IconButton({
@@ -18813,57 +19431,57 @@ var app = (function () {
     			t24 = space();
     			div22 = element("div");
     			iconbutton6.$$.fragment.c();
-    			add_location(h1, file$d, 27, 2, 776);
+    			add_location(h1, file$e, 27, 2, 776);
     			div0.className = "example-info";
-    			add_location(div0, file$d, 30, 4, 826);
+    			add_location(div0, file$e, 30, 4, 826);
     			div1.className = "example-component";
-    			add_location(div1, file$d, 31, 4, 867);
+    			add_location(div1, file$e, 31, 4, 867);
     			div2.className = "example";
-    			add_location(div2, file$d, 29, 2, 800);
+    			add_location(div2, file$e, 29, 2, 800);
     			div3.className = "example-info";
-    			add_location(div3, file$d, 39, 4, 1007);
+    			add_location(div3, file$e, 39, 4, 1007);
     			div4.className = "example-component";
-    			add_location(div4, file$d, 40, 4, 1056);
+    			add_location(div4, file$e, 40, 4, 1056);
     			div5.className = "example";
-    			add_location(div5, file$d, 38, 2, 981);
+    			add_location(div5, file$e, 38, 2, 981);
     			div6.className = "example-info";
-    			add_location(div6, file$d, 50, 4, 1282);
+    			add_location(div6, file$e, 50, 4, 1282);
     			div7.className = "example-component";
-    			add_location(div7, file$d, 51, 4, 1332);
+    			add_location(div7, file$e, 51, 4, 1332);
     			div8.className = "example";
-    			add_location(div8, file$d, 49, 2, 1256);
+    			add_location(div8, file$e, 49, 2, 1256);
     			div9.className = "example-info";
-    			add_location(div9, file$d, 59, 4, 1486);
+    			add_location(div9, file$e, 59, 4, 1486);
     			div10.className = "example-component";
-    			add_location(div10, file$d, 60, 4, 1539);
+    			add_location(div10, file$e, 60, 4, 1539);
     			div11.className = "example";
-    			add_location(div11, file$d, 58, 2, 1460);
+    			add_location(div11, file$e, 58, 2, 1460);
     			div12.className = "example-info";
-    			add_location(div12, file$d, 68, 4, 1700);
+    			add_location(div12, file$e, 68, 4, 1700);
     			div13.className = "example-component";
-    			add_location(div13, file$d, 69, 4, 1756);
+    			add_location(div13, file$e, 69, 4, 1756);
     			div14.className = "example interactive";
-    			add_location(div14, file$d, 67, 2, 1662);
+    			add_location(div14, file$e, 67, 2, 1662);
     			div15.className = "example-info";
-    			add_location(div15, file$d, 77, 4, 1901);
+    			add_location(div15, file$e, 77, 4, 1901);
     			div16.className = "example-component";
-    			add_location(div16, file$d, 78, 4, 1964);
+    			add_location(div16, file$e, 78, 4, 1964);
     			div17.className = "example";
-    			add_location(div17, file$d, 76, 2, 1875);
+    			add_location(div17, file$e, 76, 2, 1875);
     			div18.className = "example-info";
-    			add_location(div18, file$d, 86, 4, 2153);
+    			add_location(div18, file$e, 86, 4, 2153);
     			div19.className = "example-component";
-    			add_location(div19, file$d, 87, 4, 2210);
+    			add_location(div19, file$e, 87, 4, 2210);
     			div20.className = "example";
-    			add_location(div20, file$d, 85, 2, 2127);
+    			add_location(div20, file$e, 85, 2, 2127);
     			div21.className = "example-info";
-    			add_location(div21, file$d, 95, 4, 2412);
+    			add_location(div21, file$e, 95, 4, 2412);
     			div22.className = "example-component pe-rtl";
-    			add_location(div22, file$d, 96, 4, 2468);
+    			add_location(div22, file$e, 96, 4, 2468);
     			div23.className = "example";
-    			add_location(div23, file$d, 94, 2, 2386);
+    			add_location(div23, file$e, 94, 2, 2386);
     			div24.className = "page";
-    			add_location(div24, file$d, 25, 0, 754);
+    			add_location(div24, file$e, 25, 0, 754);
     		},
 
     		l: function claim(nodes) {
@@ -19040,7 +19658,7 @@ var app = (function () {
     	};
     }
 
-    function instance$b($$self) {
+    function instance$c($$self) {
     	
 
 
@@ -19067,15 +19685,475 @@ var app = (function () {
     class IconButton_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$b, create_fragment$e, safe_not_equal, []);
+    		init(this, options, instance$c, create_fragment$f, safe_not_equal, []);
+    	}
+    }
+
+    /* src/examples/ripple/Ripple.svelte generated by Svelte v3.5.1 */
+
+    const file$f = "src/examples/ripple/Ripple.svelte";
+
+    function create_fragment$g(ctx) {
+    	var div48, h1, t1, div3, div0, t3, div2, div1, t4, div7, div4, t6, div6, div5, t7, div11, div8, t9, div10, div9, t10, div15, div12, t12, div14, div13, t13, div19, div16, t15, div18, div17, t16, div23, div20, t18, div22, div21, t19, div27, div24, t21, div26, div25, t22, div31, div28, t24, div30, div29, t25, div35, div32, t27, div34, div33, t28, div39, div36, t30, div38, div37, t31, div43, div40, t33, div42, div41, t34, div47, div44, t36, div46, div45, current;
+
+    	var ripple0 = new Ripple({ $$inline: true });
+
+    	var ripple1 = new Ripple({
+    		props: { unconstrained: true },
+    		$$inline: true
+    	});
+
+    	var ripple2 = new Ripple({ props: { center: true }, $$inline: true });
+
+    	var ripple3 = new Ripple({
+    		props: { startOpacity: 0.5 },
+    		$$inline: true
+    	});
+
+    	var ripple4 = new Ripple({
+    		props: { endOpacity: 1 },
+    		$$inline: true
+    	});
+
+    	var ripple5 = new Ripple({
+    		props: { duration: 3 },
+    		$$inline: true
+    	});
+
+    	var ripple6 = new Ripple({
+    		props: { multi: true, duration: 1.5 },
+    		$$inline: true
+    	});
+
+    	var ripple7 = new Ripple({
+    		props: { opacityDecayVelocity: 0.1 },
+    		$$inline: true
+    	});
+
+    	var ripple8 = new Ripple({
+    		props: { disabled: true },
+    		$$inline: true
+    	});
+
+    	var ripple9 = new Ripple({
+    		props: {
+    		style: "color: #2196F3",
+    		startOpacity: 0.7
+    	},
+    		$$inline: true
+    	});
+
+    	var ripple10 = new Ripple({
+    		props: {
+    		className: "tests-ripple-themed-ripple",
+    		endOpacity: 1.0,
+    		persistent: true
+    	},
+    		$$inline: true
+    	});
+
+    	var ripple11 = new Ripple({
+    		props: { style: "color: #fff;" },
+    		$$inline: true
+    	});
+
+    	return {
+    		c: function create() {
+    			div48 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Ripple";
+    			t1 = space();
+    			div3 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "No options";
+    			t3 = space();
+    			div2 = element("div");
+    			div1 = element("div");
+    			ripple0.$$.fragment.c();
+    			t4 = space();
+    			div7 = element("div");
+    			div4 = element("div");
+    			div4.textContent = "Option: unconstrained";
+    			t6 = space();
+    			div6 = element("div");
+    			div5 = element("div");
+    			ripple1.$$.fragment.c();
+    			t7 = space();
+    			div11 = element("div");
+    			div8 = element("div");
+    			div8.textContent = "Option: center";
+    			t9 = space();
+    			div10 = element("div");
+    			div9 = element("div");
+    			ripple2.$$.fragment.c();
+    			t10 = space();
+    			div15 = element("div");
+    			div12 = element("div");
+    			div12.textContent = "Option: startOpacity (0.5)";
+    			t12 = space();
+    			div14 = element("div");
+    			div13 = element("div");
+    			ripple3.$$.fragment.c();
+    			t13 = space();
+    			div19 = element("div");
+    			div16 = element("div");
+    			div16.textContent = "Option: endOpacity (1)";
+    			t15 = space();
+    			div18 = element("div");
+    			div17 = element("div");
+    			ripple4.$$.fragment.c();
+    			t16 = space();
+    			div23 = element("div");
+    			div20 = element("div");
+    			div20.textContent = "Option: duration (3)";
+    			t18 = space();
+    			div22 = element("div");
+    			div21 = element("div");
+    			ripple5.$$.fragment.c();
+    			t19 = space();
+    			div27 = element("div");
+    			div24 = element("div");
+    			div24.textContent = "Option: multi, duration";
+    			t21 = space();
+    			div26 = element("div");
+    			div25 = element("div");
+    			ripple6.$$.fragment.c();
+    			t22 = space();
+    			div31 = element("div");
+    			div28 = element("div");
+    			div28.textContent = "Option: initial opacityDecayVelocity (0.1)";
+    			t24 = space();
+    			div30 = element("div");
+    			div29 = element("div");
+    			ripple7.$$.fragment.c();
+    			t25 = space();
+    			div35 = element("div");
+    			div32 = element("div");
+    			div32.textContent = "Option: disabled";
+    			t27 = space();
+    			div34 = element("div");
+    			div33 = element("div");
+    			ripple8.$$.fragment.c();
+    			t28 = space();
+    			div39 = element("div");
+    			div36 = element("div");
+    			div36.textContent = "Option: style (color)";
+    			t30 = space();
+    			div38 = element("div");
+    			div37 = element("div");
+    			ripple9.$$.fragment.c();
+    			t31 = space();
+    			div43 = element("div");
+    			div40 = element("div");
+    			div40.textContent = "Themed (end with permanent red)";
+    			t33 = space();
+    			div42 = element("div");
+    			div41 = element("div");
+    			ripple10.$$.fragment.c();
+    			t34 = space();
+    			div47 = element("div");
+    			div44 = element("div");
+    			div44.textContent = "Option: style (white) -- dark tone class";
+    			t36 = space();
+    			div46 = element("div");
+    			div45 = element("div");
+    			ripple11.$$.fragment.c();
+    			add_location(h1, file$f, 20, 2, 358);
+    			div0.className = "example-info";
+    			add_location(div0, file$f, 23, 4, 415);
+    			div1.className = "ripple-example";
+    			add_location(div1, file$f, 25, 6, 500);
+    			div2.className = "example-component";
+    			add_location(div2, file$f, 24, 4, 462);
+    			div3.className = "example interactive";
+    			add_location(div3, file$f, 22, 2, 377);
+    			div4.className = "example-info";
+    			add_location(div4, file$f, 32, 4, 622);
+    			div5.className = "ripple-example";
+    			add_location(div5, file$f, 34, 6, 718);
+    			div6.className = "example-component";
+    			add_location(div6, file$f, 33, 4, 680);
+    			div7.className = "example interactive";
+    			add_location(div7, file$f, 31, 2, 584);
+    			div8.className = "example-info";
+    			add_location(div8, file$f, 41, 4, 854);
+    			div9.className = "ripple-example";
+    			add_location(div9, file$f, 43, 6, 943);
+    			div10.className = "example-component";
+    			add_location(div10, file$f, 42, 4, 905);
+    			div11.className = "example interactive";
+    			add_location(div11, file$f, 40, 2, 816);
+    			div12.className = "example-info";
+    			add_location(div12, file$f, 50, 4, 1074);
+    			div13.className = "ripple-example";
+    			add_location(div13, file$f, 52, 6, 1175);
+    			div14.className = "example-component";
+    			add_location(div14, file$f, 51, 4, 1137);
+    			div15.className = "example interactive";
+    			add_location(div15, file$f, 49, 2, 1036);
+    			div16.className = "example-info";
+    			add_location(div16, file$f, 59, 4, 1316);
+    			div17.className = "ripple-example";
+    			add_location(div17, file$f, 61, 6, 1413);
+    			div18.className = "example-component";
+    			add_location(div18, file$f, 60, 4, 1375);
+    			div19.className = "example interactive";
+    			add_location(div19, file$f, 58, 2, 1278);
+    			div20.className = "example-info";
+    			add_location(div20, file$f, 68, 4, 1550);
+    			div21.className = "ripple-example";
+    			add_location(div21, file$f, 70, 6, 1645);
+    			div22.className = "example-component";
+    			add_location(div22, file$f, 69, 4, 1607);
+    			div23.className = "example interactive";
+    			add_location(div23, file$f, 67, 2, 1512);
+    			div24.className = "example-info";
+    			add_location(div24, file$f, 77, 4, 1780);
+    			div25.className = "ripple-example";
+    			add_location(div25, file$f, 79, 6, 1878);
+    			div26.className = "example-component";
+    			add_location(div26, file$f, 78, 4, 1840);
+    			div27.className = "example interactive";
+    			add_location(div27, file$f, 76, 2, 1742);
+    			div28.className = "example-info";
+    			add_location(div28, file$f, 86, 4, 2021);
+    			div29.className = "ripple-example";
+    			add_location(div29, file$f, 88, 6, 2138);
+    			div30.className = "example-component";
+    			add_location(div30, file$f, 87, 4, 2100);
+    			div31.className = "example interactive";
+    			add_location(div31, file$f, 85, 2, 1983);
+    			div32.className = "example-info";
+    			add_location(div32, file$f, 95, 4, 2287);
+    			div33.className = "ripple-example";
+    			add_location(div33, file$f, 97, 6, 2378);
+    			div34.className = "example-component";
+    			add_location(div34, file$f, 96, 4, 2340);
+    			div35.className = "example interactive";
+    			add_location(div35, file$f, 94, 2, 2249);
+    			div36.className = "example-info";
+    			add_location(div36, file$f, 104, 4, 2509);
+    			div37.className = "ripple-example";
+    			add_location(div37, file$f, 106, 6, 2605);
+    			div38.className = "example-component";
+    			add_location(div38, file$f, 105, 4, 2567);
+    			div39.className = "example interactive";
+    			add_location(div39, file$f, 103, 2, 2471);
+    			div40.className = "example-info";
+    			add_location(div40, file$f, 113, 4, 2769);
+    			div41.className = "ripple-example";
+    			add_location(div41, file$f, 115, 6, 2875);
+    			div42.className = "example-component";
+    			add_location(div42, file$f, 114, 4, 2837);
+    			div43.className = "example interactive";
+    			add_location(div43, file$f, 112, 2, 2731);
+    			div44.className = "example-info";
+    			add_location(div44, file$f, 122, 4, 3077);
+    			div45.className = "ripple-example";
+    			add_location(div45, file$f, 124, 6, 3192);
+    			div46.className = "example-component";
+    			add_location(div46, file$f, 123, 4, 3154);
+    			div47.className = "example interactive pe-dark-tone";
+    			add_location(div47, file$f, 121, 2, 3026);
+    			div48.className = "page";
+    			add_location(div48, file$f, 18, 0, 336);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, div48, anchor);
+    			append(div48, h1);
+    			append(div48, t1);
+    			append(div48, div3);
+    			append(div3, div0);
+    			append(div3, t3);
+    			append(div3, div2);
+    			append(div2, div1);
+    			mount_component(ripple0, div1, null);
+    			append(div48, t4);
+    			append(div48, div7);
+    			append(div7, div4);
+    			append(div7, t6);
+    			append(div7, div6);
+    			append(div6, div5);
+    			mount_component(ripple1, div5, null);
+    			append(div48, t7);
+    			append(div48, div11);
+    			append(div11, div8);
+    			append(div11, t9);
+    			append(div11, div10);
+    			append(div10, div9);
+    			mount_component(ripple2, div9, null);
+    			append(div48, t10);
+    			append(div48, div15);
+    			append(div15, div12);
+    			append(div15, t12);
+    			append(div15, div14);
+    			append(div14, div13);
+    			mount_component(ripple3, div13, null);
+    			append(div48, t13);
+    			append(div48, div19);
+    			append(div19, div16);
+    			append(div19, t15);
+    			append(div19, div18);
+    			append(div18, div17);
+    			mount_component(ripple4, div17, null);
+    			append(div48, t16);
+    			append(div48, div23);
+    			append(div23, div20);
+    			append(div23, t18);
+    			append(div23, div22);
+    			append(div22, div21);
+    			mount_component(ripple5, div21, null);
+    			append(div48, t19);
+    			append(div48, div27);
+    			append(div27, div24);
+    			append(div27, t21);
+    			append(div27, div26);
+    			append(div26, div25);
+    			mount_component(ripple6, div25, null);
+    			append(div48, t22);
+    			append(div48, div31);
+    			append(div31, div28);
+    			append(div31, t24);
+    			append(div31, div30);
+    			append(div30, div29);
+    			mount_component(ripple7, div29, null);
+    			append(div48, t25);
+    			append(div48, div35);
+    			append(div35, div32);
+    			append(div35, t27);
+    			append(div35, div34);
+    			append(div34, div33);
+    			mount_component(ripple8, div33, null);
+    			append(div48, t28);
+    			append(div48, div39);
+    			append(div39, div36);
+    			append(div39, t30);
+    			append(div39, div38);
+    			append(div38, div37);
+    			mount_component(ripple9, div37, null);
+    			append(div48, t31);
+    			append(div48, div43);
+    			append(div43, div40);
+    			append(div43, t33);
+    			append(div43, div42);
+    			append(div42, div41);
+    			mount_component(ripple10, div41, null);
+    			append(div48, t34);
+    			append(div48, div47);
+    			append(div47, div44);
+    			append(div47, t36);
+    			append(div47, div46);
+    			append(div46, div45);
+    			mount_component(ripple11, div45, null);
+    			current = true;
+    		},
+
+    		p: noop,
+
+    		i: function intro(local) {
+    			if (current) return;
+    			ripple0.$$.fragment.i(local);
+
+    			ripple1.$$.fragment.i(local);
+
+    			ripple2.$$.fragment.i(local);
+
+    			ripple3.$$.fragment.i(local);
+
+    			ripple4.$$.fragment.i(local);
+
+    			ripple5.$$.fragment.i(local);
+
+    			ripple6.$$.fragment.i(local);
+
+    			ripple7.$$.fragment.i(local);
+
+    			ripple8.$$.fragment.i(local);
+
+    			ripple9.$$.fragment.i(local);
+
+    			ripple10.$$.fragment.i(local);
+
+    			ripple11.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			ripple0.$$.fragment.o(local);
+    			ripple1.$$.fragment.o(local);
+    			ripple2.$$.fragment.o(local);
+    			ripple3.$$.fragment.o(local);
+    			ripple4.$$.fragment.o(local);
+    			ripple5.$$.fragment.o(local);
+    			ripple6.$$.fragment.o(local);
+    			ripple7.$$.fragment.o(local);
+    			ripple8.$$.fragment.o(local);
+    			ripple9.$$.fragment.o(local);
+    			ripple10.$$.fragment.o(local);
+    			ripple11.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(div48);
+    			}
+
+    			ripple0.$destroy();
+
+    			ripple1.$destroy();
+
+    			ripple2.$destroy();
+
+    			ripple3.$destroy();
+
+    			ripple4.$destroy();
+
+    			ripple5.$destroy();
+
+    			ripple6.$destroy();
+
+    			ripple7.$destroy();
+
+    			ripple8.$destroy();
+
+    			ripple9.$destroy();
+
+    			ripple10.$destroy();
+
+    			ripple11.$destroy();
+    		}
+    	};
+    }
+
+    function instance$d($$self) {
+    	
+
+      addStyle$5(".tests-ripple-themed-ripple", {
+        color_light: "#F44336"
+      });
+
+    	return {};
+    }
+
+    class Ripple_1 extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$d, create_fragment$g, safe_not_equal, []);
     	}
     }
 
     /* src/examples/svg/StarSVG.svelte generated by Svelte v3.5.1 */
 
-    const file$e = "src/examples/svg/StarSVG.svelte";
+    const file$g = "src/examples/svg/StarSVG.svelte";
 
-    function create_fragment$f(ctx) {
+    function create_fragment$h(ctx) {
     	var svg, path;
 
     	return {
@@ -19083,11 +20161,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr(path, "d", "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z");
-    			add_location(path, file$e, 0, 48, 48);
+    			add_location(path, file$g, 0, 48, 48);
     			attr(svg, "width", "24");
     			attr(svg, "height", "24");
     			attr(svg, "viewBox", "0 0 24 24");
-    			add_location(svg, file$e, 0, 0, 0);
+    			add_location(svg, file$g, 0, 0, 0);
     		},
 
     		l: function claim(nodes) {
@@ -19114,13 +20192,13 @@ var app = (function () {
     class StarSVG$1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$f, safe_not_equal, []);
+    		init(this, options, null, create_fragment$h, safe_not_equal, []);
     	}
     }
 
     /* src/examples/svg/SVG.svelte generated by Svelte v3.5.1 */
 
-    const file$f = "src/examples/svg/SVG.svelte";
+    const file$h = "src/examples/svg/SVG.svelte";
 
     // (32:6) <SVG>
     function create_default_slot_4$2(ctx) {
@@ -19292,7 +20370,7 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$g(ctx) {
+    function create_fragment$i(ctx) {
     	var div15, h1, t1, div2, div0, t3, div1, t4, div5, div3, t6, div4, button, t8, t9, div8, div6, t11, div7, t12, div11, div9, t14, div10, t15, div14, div12, t17, div13, current, dispose;
 
     	var svg0 = new SVG({
@@ -19381,40 +20459,40 @@ var app = (function () {
     			t17 = space();
     			div13 = element("div");
     			svg4.$$.fragment.c();
-    			add_location(h1, file$f, 26, 2, 524);
+    			add_location(h1, file$h, 26, 2, 524);
     			div0.className = "example-info";
-    			add_location(div0, file$f, 29, 4, 566);
+    			add_location(div0, file$h, 29, 4, 566);
     			div1.className = "example-component";
-    			add_location(div1, file$f, 30, 4, 616);
+    			add_location(div1, file$h, 30, 4, 616);
     			div2.className = "example";
-    			add_location(div2, file$f, 28, 2, 540);
+    			add_location(div2, file$h, 28, 2, 540);
     			div3.className = "example-info";
-    			add_location(div3, file$f, 38, 4, 754);
-    			add_location(button, file$f, 40, 6, 834);
+    			add_location(div3, file$h, 38, 4, 754);
+    			add_location(button, file$h, 40, 6, 834);
     			div4.className = "example-component";
-    			add_location(div4, file$f, 39, 4, 796);
+    			add_location(div4, file$h, 39, 4, 796);
     			div5.className = "example interactive";
-    			add_location(div5, file$f, 37, 2, 716);
+    			add_location(div5, file$h, 37, 2, 716);
     			div6.className = "example-info";
-    			add_location(div6, file$f, 48, 4, 983);
+    			add_location(div6, file$h, 48, 4, 983);
     			div7.className = "example-component";
-    			add_location(div7, file$f, 49, 4, 1034);
+    			add_location(div7, file$h, 49, 4, 1034);
     			div8.className = "example";
-    			add_location(div8, file$f, 47, 2, 957);
+    			add_location(div8, file$h, 47, 2, 957);
     			div9.className = "example-info";
-    			add_location(div9, file$f, 57, 4, 1206);
+    			add_location(div9, file$h, 57, 4, 1206);
     			div10.className = "example-component";
-    			add_location(div10, file$f, 58, 4, 1269);
+    			add_location(div10, file$h, 58, 4, 1269);
     			div11.className = "example pe-dark-tone";
-    			add_location(div11, file$f, 56, 2, 1167);
+    			add_location(div11, file$h, 56, 2, 1167);
     			div12.className = "example-info";
-    			add_location(div12, file$f, 66, 4, 1408);
+    			add_location(div12, file$h, 66, 4, 1408);
     			div13.className = "example-component";
-    			add_location(div13, file$f, 67, 4, 1472);
+    			add_location(div13, file$h, 67, 4, 1472);
     			div14.className = "example pe-dark-tone";
-    			add_location(div14, file$f, 65, 2, 1369);
+    			add_location(div14, file$h, 65, 2, 1369);
     			div15.className = "page";
-    			add_location(div15, file$f, 24, 0, 502);
+    			add_location(div15, file$h, 24, 0, 502);
     			dispose = listen(button, "click", ctx.toggleStyle);
     		},
 
@@ -19529,7 +20607,7 @@ var app = (function () {
 
     let initialStyle = "color: inherit";
 
-    function instance$c($$self, $$props, $$invalidate) {
+    function instance$e($$self, $$props, $$invalidate) {
     	
 
       let showStyle = false;
@@ -19544,7 +20622,7 @@ var app = (function () {
         }
       };
 
-      addStyle$5(".tests-svg-themed-svg", {
+      addStyle$6(".tests-svg-themed-svg", {
         color_light: "#0D47A1",
         color_dark: "orange"
       });
@@ -19555,16 +20633,16 @@ var app = (function () {
     class SVG_1 extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$c, create_fragment$g, safe_not_equal, []);
+    		init(this, options, instance$e, create_fragment$i, safe_not_equal, []);
     	}
     }
 
     /* src/Home.svelte generated by Svelte v3.5.1 */
 
-    const file$g = "src/Home.svelte";
+    const file$i = "src/Home.svelte";
 
-    function create_fragment$h(ctx) {
-    	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3, t8, li4, a4, link_action_4;
+    function create_fragment$j(ctx) {
+    	var div, t0, ul, li0, a0, link_action, t2, li1, a1, link_action_1, t4, li2, a2, link_action_2, t6, li3, a3, link_action_3, t8, li4, a4, link_action_4, t10, li5, a5, link_action_5;
 
     	return {
     		c: function create() {
@@ -19585,28 +20663,35 @@ var app = (function () {
     			t6 = space();
     			li3 = element("li");
     			a3 = element("a");
-    			a3.textContent = "Shadow";
+    			a3.textContent = "Ripple";
     			t8 = space();
     			li4 = element("li");
     			a4 = element("a");
-    			a4.textContent = "SVG";
+    			a4.textContent = "Shadow";
+    			t10 = space();
+    			li5 = element("li");
+    			a5 = element("a");
+    			a5.textContent = "SVG";
     			a0.href = "/button";
-    			add_location(a0, file$g, 8, 6, 99);
-    			add_location(li0, file$g, 7, 4, 88);
+    			add_location(a0, file$i, 8, 6, 99);
+    			add_location(li0, file$i, 7, 4, 88);
     			a1.href = "/icon";
-    			add_location(a1, file$g, 11, 6, 162);
-    			add_location(li1, file$g, 10, 4, 151);
+    			add_location(a1, file$i, 11, 6, 162);
+    			add_location(li1, file$i, 10, 4, 151);
     			a2.href = "/icon-button";
-    			add_location(a2, file$g, 14, 6, 221);
-    			add_location(li2, file$g, 13, 4, 210);
-    			a3.href = "/shadow";
-    			add_location(a3, file$g, 17, 6, 294);
-    			add_location(li3, file$g, 16, 4, 283);
-    			a4.href = "/svg";
-    			add_location(a4, file$g, 20, 6, 357);
-    			add_location(li4, file$g, 19, 4, 346);
-    			add_location(ul, file$g, 6, 2, 79);
-    			add_location(div, file$g, 4, 0, 64);
+    			add_location(a2, file$i, 14, 6, 221);
+    			add_location(li2, file$i, 13, 4, 210);
+    			a3.href = "/ripple";
+    			add_location(a3, file$i, 17, 6, 294);
+    			add_location(li3, file$i, 16, 4, 283);
+    			a4.href = "/shadow";
+    			add_location(a4, file$i, 20, 6, 357);
+    			add_location(li4, file$i, 19, 4, 346);
+    			a5.href = "/svg";
+    			add_location(a5, file$i, 23, 6, 420);
+    			add_location(li5, file$i, 22, 4, 409);
+    			add_location(ul, file$i, 6, 2, 79);
+    			add_location(div, file$i, 4, 0, 64);
     		},
 
     		l: function claim(nodes) {
@@ -19636,6 +20721,10 @@ var app = (function () {
     			append(ul, li4);
     			append(li4, a4);
     			link_action_4 = link.call(null, a4) || {};
+    			append(ul, t10);
+    			append(ul, li5);
+    			append(li5, a5);
+    			link_action_5 = link.call(null, a5) || {};
     		},
 
     		p: noop,
@@ -19652,6 +20741,7 @@ var app = (function () {
     			if (link_action_2 && typeof link_action_2.destroy === 'function') link_action_2.destroy();
     			if (link_action_3 && typeof link_action_3.destroy === 'function') link_action_3.destroy();
     			if (link_action_4 && typeof link_action_4.destroy === 'function') link_action_4.destroy();
+    			if (link_action_5 && typeof link_action_5.destroy === 'function') link_action_5.destroy();
     		}
     	};
     }
@@ -19659,7 +20749,7 @@ var app = (function () {
     class Home extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$h, safe_not_equal, []);
+    		init(this, options, null, create_fragment$j, safe_not_equal, []);
     	}
     }
 
@@ -19669,12 +20759,13 @@ var app = (function () {
       "/button": Button_1,
       "/icon": Icon_1,
       "/icon-button": IconButton_1,
+      "/ripple": Ripple_1,
       "/svg": SVG_1,
     };
 
     /* src/App.svelte generated by Svelte v3.5.1 */
 
-    function create_fragment$i(ctx) {
+    function create_fragment$k(ctx) {
     	var current;
 
     	var router = new Router({
@@ -19723,7 +20814,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$i, safe_not_equal, []);
+    		init(this, options, null, create_fragment$k, safe_not_equal, []);
     	}
     }
 

@@ -15,6 +15,9 @@
       <a href="/icon-button" use:link>Icon Button</a>
     </li>
     <li>
+      <a href="/ripple" use:link>Ripple</a>
+    </li>
+    <li>
       <a href="/shadow" use:link>Shadow</a>
     </li>
     <li>

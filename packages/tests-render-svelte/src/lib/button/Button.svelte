@@ -9,6 +9,7 @@
 
   import { Icon} from "../icon";
   import { Shadow, getShadowDepthClass } from "../shadow";
+  import { Ripple } from "../ripple";
   import { writable } from "svelte/store";
   import classes from "polythene-css-classes/button";
   import IconDropdownDown from "./IconDropdownDown.svelte";
@@ -48,6 +49,7 @@
   export let label = undefined;
   export let parentClassName = "";
   export let raised = false;
+  export let ripple = {}; // ripple options
   export let selected = false;
   export let separatorAtStart = false;
   export let shadowDepth = undefined;
@@ -162,7 +164,7 @@
   <div class="pe-button__content">
     <Shadow shadowDepth={_shadowDepth} animated />
     {#if disabled || noInk}
-      <div class="pe-ripple" />
+      <Ripple {...ripple} target={domElement} />
     {/if}
     <div class="pe-button__wash">
       <div class="pe-button__wash-color" />

@@ -1,6 +1,8 @@
 import { pointerEndEvent, filterSupportedAttributes } from "polythene-core";
-import animation from "./animation";
+import { rippleAnimation } from "./rippleAnimation";
 import classes from "polythene-css-classes/ripple";
+
+export { rippleAnimation };
 
 const useAnimationsState = ({ useState }) => {
   const [animations, setAnimations] = useState({});
@@ -35,14 +37,14 @@ export const _Ripple = ({ h, a, getRef, useState, useEffect, ...props }) => {
       props.start(e);
     }
     const id = `ripple_animation_${new Date().getTime()}`;
-    const rippleAnimation = animation({ e, id, el: domElement, props, classes })
+    const animation = rippleAnimation({ e, id, el: domElement, props, classes })
       .then(evt => {
         if (props.end) {
           props.end(evt);
         }
         removeAnimation(id);
       });
-    addAnimation(id, rippleAnimation);
+    addAnimation(id, animation);
   };
 
   useEffect(

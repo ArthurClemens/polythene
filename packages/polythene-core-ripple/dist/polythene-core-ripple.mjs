@@ -1,4 +1,4 @@
-import { isTouch, getAnimationEndEvent, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
+import { getAnimationEndEvent, isTouch, isServer, pointerEndEvent, filterSupportedAttributes } from 'polythene-core';
 import { vars } from 'polythene-theme';
 
 function _defineProperty(obj, key, value) {
@@ -133,7 +133,7 @@ var removeStyleFromHead = function removeStyleFromHead(id) {
   }
 };
 
-var animation = (function (_ref) {
+var rippleAnimation = function rippleAnimation(_ref) {
   var e = _ref.e,
       id = _ref.id,
       el = _ref.el,
@@ -194,7 +194,7 @@ var animation = (function (_ref) {
     waves.addEventListener(ANIMATION_END_EVENT, animationDone, false);
     waves.classList.add(classes.wavesAnimating);
   });
-});
+};
 
 var classes = {
   component: "pe-ripple",
@@ -258,7 +258,7 @@ var _Ripple = function _Ripple(_ref2) {
     }
 
     var id = "ripple_animation_".concat(new Date().getTime());
-    var rippleAnimation = animation({
+    var animation = rippleAnimation({
       e: e,
       id: id,
       el: domElement,
@@ -271,7 +271,7 @@ var _Ripple = function _Ripple(_ref2) {
 
       removeAnimation(id);
     });
-    addAnimation(id, rippleAnimation);
+    addAnimation(id, animation);
   };
 
   useEffect(function () {
@@ -299,4 +299,4 @@ var _Ripple = function _Ripple(_ref2) {
   return h(props.element || "div", componentProps, content);
 };
 
-export { _Ripple };
+export { _Ripple, rippleAnimation };

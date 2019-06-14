@@ -25,7 +25,7 @@ const removeStyleFromHead = id => {
   }
 };
 
-export default ({ e, id, el, props, classes }) => {
+export const rippleAnimation = ({ e, id, el, props, classes }) => {
   return new Promise(resolve => {
     const container = document.createElement("div");
     container.setAttribute("class", classes.mask);

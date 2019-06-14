@@ -5,8 +5,8 @@
 
 <style>
 
-:global(.pe-rtl) {
-	direction: rtl;
+:global(html) {
+	background-color: #f6f6f6;
 }
 
 :global(body) {
@@ -15,6 +15,9 @@
 
 :global(.page) {
 	padding: 0 0 50px 0;
+	max-width: 520px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 :global(.page) h1 {
@@ -51,7 +54,10 @@
 }
 
 :global(.example.interactive:not(.pe-dark-tone)) {
-  border-left: 5px solid #2196f3;
+  border-left-color: #2196f3;
+}
+:global(.example.interactive.pe-dark-tone) {
+  border-left-color: #015091;
 }
 
 :global(.example-component) {
